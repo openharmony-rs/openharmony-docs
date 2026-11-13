@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes Date operations using Node-API, including creating and retrieving ArkTS Date objects to convert and process date data between Node-API modules and ArkTS."
+keywords: [Node-API, Date, dates, time, napi_create_date, napi_get_date_value, date conversion, milliseconds]
+doctype: guide
+status: active
+---
+
 # Working with Date Using Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=168caf601a8ed7899a458e51351d604fc48a1943 translatedAt=2026-11-09T08:52:17.369Z nl=1 -->
 
 ## Overview
 
@@ -20,7 +29,7 @@ With the functions for interacting with the **Date** object, the JSVM module can
 
 ## Available APIs
 
-The following table lists the APIs for manipulating ArkTS date in C/C++.  
+The following table lists the APIs for manipulating ArkTS date in C/C++.
 | API| Description|
 | -------- | -------- |
 | napi_create_date | Creates an ArkTS **Date** object.|
@@ -37,9 +46,13 @@ Use **napi_create_date** to create an ArkTS **Date** object from a C++ double va
 
 CPP code:
 
-```cpp
+<!-- @[napi_create_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+#include <hilog/log.h>
 #include "napi/native_api.h"
 
+// napi_create_date
 static napi_value CreateDate(napi_env env, napi_callback_info info)
 {
     // Obtain the Unix timestamp passed in.
@@ -50,25 +63,24 @@ static napi_value CreateDate(napi_env env, napi_callback_info info)
     return returnValue;
 }
 ```
-<!-- @[napi_create_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const createDate: () => Date;
+<!-- @[napi_create_date_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
+
+``` TypeScript
+export const createDate: () => Date; // napi_create_date
 ```
-<!-- @[napi_create_date_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
-
-hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_date: %{public}s', testNapi.createDate().toString());
-```
-<!-- @[ark_napi_create_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/ets/pages/Index.ets) -->
+ <!-- @[ark_napi_create_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/ets/pages/Index.ets) -->   
+ 
+ ``` TypeScript
+ // napi_create_date
+ hilog.info(0x0000, 'testTag', 'Test Node-API napi_create_date: %{public}s',
+   testNapi.createDate().toString());
+ ```
 
 ### napi_get_date_value
 
@@ -76,10 +88,10 @@ Use **napi_get_date_value** to obtain the C++ double equivalent of the given Ark
 
 CPP code:
 
-```cpp
-#include <hilog/log.h>
-#include "napi/native_api.h"
+<!-- @[napi_get_date_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// napi_get_date_value
 static napi_value GetDateValue(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -103,31 +115,33 @@ static napi_value GetDateValue(napi_env env, napi_callback_info info)
     return returnValue;
 }
 ```
-<!-- @[napi_get_date_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const getDateValue: (date: Date) => number | undefined;
+<!-- @[napi_get_date_value_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->   
+
+``` TypeScript
+export const getDateValue: (date: Date) => number | undefined; // napi_get_date_value
 ```
-<!-- @[napi_get_date_value_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_get_date_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// napi_get_date_value
 try {
   const date = new Date();
   hilog.info(0x0000, 'testTag', 'Node-API: output the Unix Time Stamp: %{public}d', date.getTime());
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_date_value: %{public}d', testNapi.getDateValue(date));
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_date_value: %{public}d',
+    testNapi.getDateValue(date));
+  // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API napi_get_date_value error: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag', 'Test Node-API napi_get_date_value error: %{public}s',
+    error.message);
+  // ...
 }
 ```
-<!-- @[ark_napi_get_date_value](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_is_date
 
@@ -135,9 +149,10 @@ Use **napi_is_date** to check whether an ArkTS value is an ArkTS **Date** object
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_is_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// napi_is_date
 static napi_value IsDate(napi_env env, napi_callback_info info)
 {
     // Obtain the parameter.
@@ -159,32 +174,32 @@ static napi_value IsDate(napi_env env, napi_callback_info info)
     return returnValue;
 }
 ```
-<!-- @[napi_is_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const isDate: <T>(date: T) => boolean | undefined;
+<!-- @[napi_is_date_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
+
+``` TypeScript
+export const isDate: <T>(date: T) => boolean | undefined; // napi_is_date
 ```
-<!-- @[napi_is_date_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_is_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// napi_is_date
 try {
   let now: Date = new Date();
   let date = "123";
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_date: %{public}s', testNapi.isDate(now));
   hilog.info(0x0000, 'testTag', 'Test Node-API napi_is_date: %{public}s', testNapi.isDate(date));
+  // ...
 } catch (error) {
   hilog.error(0x0000, 'testTag', 'Test Node-API napi_is_date error: %{public}s', error.message);
+  // ...
 }
 ```
-<!-- @[ark_napi_is_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIDate/entry/src/main/ets/pages/Index.ets) -->
 
 To print logs in the native CPP, add the following information to the **CMakeLists.txt** file and add the header file by using **#include "hilog/log.h"**.
 

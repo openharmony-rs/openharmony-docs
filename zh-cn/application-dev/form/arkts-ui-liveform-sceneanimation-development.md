@@ -43,7 +43,7 @@
 
 ### 支持的场景
 1. 当前互动卡片动效只有在[FormLocation](../reference/apis-form-kit/js-apis-app-form-formInfo.md#formlocation20)为“DESKTOP”的单张卡片上面才能生效。
-2. 由于性能功耗影响只支持部分机型，在不支持的机型会报[801](../reference/errorcode-universal.md#801-该设备不支持此api)错误码。
+2. 由于性能功耗影响只支持部分机型，在不支持的机型会报[801](../reference/errorcode-universal.md#801-api功能在部分设备不支持)错误码。
 
 ### 请求参数约束
 1. 互动卡片申请动效的最大合法动效时长：3500ms，倒计时结束时，卡片将切换回非激活态。<!--Del-->系统应用额外支持长时激活卡片，其动效时长不受限制，可参考[场景动效类型互动卡片开发指导（仅对系统应用开放）](arkts-ui-liveform-sceneanimation-development-sys.md)。<!--DelEnd-->
@@ -68,7 +68,7 @@
 
 （2）IA两点水平相距39.5vp，垂直相距39.5vp。
 
-因此，以A点为原点，向右为X轴正方向，向下为Y轴正方向，图5中E点的合法坐标可以是（-20，-20），EF边长合法值可以是200vp，EH边长合法值可以是200vp。
+因此，以A点为原点，向右为X轴正方向，向下为Y轴正方向，图6中E点的合法坐标可以是（-20，-20），EF边长合法值可以是200vp，EH边长合法值可以是200vp。
 
 互动卡片可以通过调用[formProvider.getFormRect](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20)接口获取卡片在窗口中的尺寸及相对坐标位置信息。卡片提供方以此计算动效申请范围，坐标计算时，以上图A点为（0，0）点，计算矩形EFGH对应参数，单位为vp。
 
@@ -412,7 +412,7 @@
 
     互动卡片通过调用[formProvider.requestOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20)接口触发动效，调用时需要明确：（1）动效申请范围。（2）动效持续时间。（3）是否使用系统提供的默认切换动效。具体可参考[formInfo.OverflowInfo](../reference/apis-form-kit/js-apis-app-form-formInfo.md#overflowinfo20)。其中，互动卡片可以通过调用[formProvider.getFormRect](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20)接口获取卡片尺寸和在窗口内的位置信息。卡片提供方以此计算动效申请范围，单位为vp。计算规则具体请参考[互动卡片请求参数约束](#请求参数约束)。
 
-    <!-- @[liveform_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
+    <!-- @[liveform_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/entryformability/EntryFormAbility.ets
@@ -465,13 +465,13 @@
             // 指定是否使用系统提供的默认切换动效
             useDefaultAnimation: true,
           }).then(() => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'requestOverflow requestOverflow succeed');
+            hilog.info(DOMAIN_NUMBER, TAG, 'requestOverflow succeed');
           }).catch((error: BusinessError) => {
-            hilog.info(DOMAIN_NUMBER, TAG, `requestOverflow requestOverflow catch error` + `,
+            hilog.error(DOMAIN_NUMBER, TAG, `requestOverflow catch error` + `,
               code: ${error.code}, message: ${error.message}`);
           })
         } catch (e) {
-          hilog.info(DOMAIN_NUMBER, TAG, `requestOverflow call requestOverflow catch error` + `,
+          hilog.error(DOMAIN_NUMBER, TAG, `requestOverflow catch error` + `,
             code: ${e.code}, message: ${e.message}`);
         }
       }

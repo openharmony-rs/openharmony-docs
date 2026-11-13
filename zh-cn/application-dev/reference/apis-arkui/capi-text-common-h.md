@@ -58,6 +58,7 @@
 | [OH_ArkUI_LineBreakStrategy](#oh_arkui_linebreakstrategy) | OH_ArkUI_LineBreakStrategy | 换行策略类型枚举。 |
 | [ArkUI_TextSpanType](#arkui_textspantype) | ArkUI_TextSpanType | 自定义文本选择菜单的文本识别类型枚举。 |
 | [ArkUI_TextResponseType](#arkui_textresponsetype) | ArkUI_TextResponseType | 自定义文本选择菜单的响应类型枚举。 |
+| [OH_ArkUI_StrokeJoinStyle](#oh_arkui_strokejoinstyle) | OH_ArkUI_StrokeJoinStyle | 定义文本描边拐角样式枚举值。 |
 
 ### 函数
 
@@ -371,6 +372,7 @@ enum ArkUI_TextMenuItemId
 | ARKUI_TEXT_MENU_ITEM_ID_ASK_AI = 15 | 问问AI。对选中的文本提供AI问询能力。该菜单项依赖大模型能力才能生效。 |
 | ARKUI_TEXT_MENU_ITEM_ID_AUTO_FILL = 16 | 自动填充。例如自动填充账号密码。<br>**起始版本：** 24 |
 | ARKUI_TEXT_MENU_ITEM_ID_PASSWORD_VAULT = 17 | 密码保险箱。<br>**起始版本：** 24 |
+| ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE_INPUT = 18 | 快捷翻译。<br>**起始版本：** 26.1.0 |
 | ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_BEGIN = 10000 | 应用自定义菜单项起始id，除了系统内置的菜单项id，应用还可以自定义菜单项id。 |
 | ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_END = 20000 | 应用自定义菜单项结束id，除了系统内置的菜单项id，应用还可以自定义菜单项id。 |
 
@@ -429,6 +431,24 @@ enum ArkUI_TextResponseType
 | ARKUI_TEXT_RESPONSE_TYPE_LONG_PRESS = 1 | 通过长按触发菜单弹出。 |
 | ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2 | 通过鼠标选中触发菜单弹出。 |
 | ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | 如果设置为此类型且设置了其他类型时，触发其他类型的操作会显示对应类型的菜单。如果设置为此类型但其他类型未设置时，触发其他类型的操作会显示此类型对应的菜单。例如，同时设置了响应类型为ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK、ARKUI_TEXT_RESPONSE_TYPE_DEFAULT的两个菜单，此时通过鼠标右键会触发ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK对应的菜单弹出，长按则会触发ARKUI_TEXT_RESPONSE_TYPE_DEFAULT对应的菜单弹出。 |
+
+### OH_ArkUI_StrokeJoinStyle
+
+```c
+enum OH_ArkUI_StrokeJoinStyle
+```
+
+**描述**
+
+定义文本描边拐角样式枚举值。
+
+**起始版本：** 26.1.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_STROKE_JOIN_STYLE_MITER_JOIN = 0 | 尖角样式，文本描边拐角处显示为尖角。 |
+| OH_ARKUI_STROKE_JOIN_STYLE_ROUND_JOIN = 1 | 圆角样式，文本描边拐角处显示为圆角。 |
+| OH_ARKUI_STROKE_JOIN_STYLE_BEVEL_JOIN = 2 | 斜角样式，文本描边拐角处显示为斜角。 |
 
 
 ## 函数说明

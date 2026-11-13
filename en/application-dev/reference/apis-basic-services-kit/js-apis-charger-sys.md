@@ -6,6 +6,7 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=b6e13138f92c3dbb8b70b3fd5db1178bdab496cf translatedAt=2026-11-06T01:37:27.854Z pushedAt=2026-11-09T02:09:14.510Z nl=1 -->
 
 The **charger** module enumerates charging types.
 
@@ -13,13 +14,13 @@ The **charger** module enumerates charging types.
 >
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->The APIs provided by this module are system APIs.
+> The APIs provided by this module are system APIs.
 
 
 ## Modules to Import
 
 ```js
-import {charger} from '@kit.BasicServicesKit';
+import { charger } from '@kit.BasicServicesKit';
 ```
 
 ## ChargeType

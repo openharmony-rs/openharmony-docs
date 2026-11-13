@@ -5,7 +5,7 @@
 <!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=cc86dfabb45b0518451eb8b3c6fe83b3414b6a7f translatedAt=2026-09-14T02:20:49.788Z pushedAt=2026-09-14T10:03:33.584Z -->
+<!-- md-trans-meta sourceCommit=e98d9dbb00880c3983b0d3e888a32f6a37b9f2fd translatedAt=2026-11-03T06:06:02.721Z pushedAt=2026-11-03T12:08:25.592Z nl=1 -->
 
 This module provides user status awareness capabilities, including user gesture recognition, face pose recognition, hand-eye coordination detection, user blowing status detection, user emotion detection, and user ambient sound detection. It is suitable for scenarios that require sensing user status to optimize the interactive experience, and helps applications provide a more natural and personalized user experience. The module adopts a subscription/callback mechanism and implements user status detection through three stages: underlying sensor data collection, feature extraction, and status determination. Developers can subscribe to the corresponding detection features based on business requirements.
 
@@ -280,7 +280,7 @@ For details about the following error codes, see [User Status Awareness Error Co
 | ID | Error Message |
 | --- | --- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 33900001 | Service exception. Possible causes: <br>1. System error, such as a null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status. |
 | 33900002 | Subscription failed. Possible causes: <br>1. Callback registration failed. <br>2. Failed to bind the native object to the JS wrapper. <br>3. Node-API invocation exception, such as invalid Node-API status. <br>4. IPC request exception. |
 
@@ -335,7 +335,7 @@ For details about the following error codes, see [User Status Awareness Error Co
 | ID | Error Message |
 | --- | --- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 33900001 | Service exception. Possible causes: <br>1. System error, such as a null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status. |
 | 33900003 | Unsubscription failed. Possible causes: <br>1. Callback failure. <br>2. Node-API invocation exception, such as invalid Node-API status. <br>3. IPC request exception. |
 

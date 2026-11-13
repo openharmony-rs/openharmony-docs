@@ -142,7 +142,7 @@ Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canva
     }
   
     drawText(): void {
-      console.error('drawText')
+      console.info('drawText')
       this.context.reset()
       this.context.direction = 'inherit'
       this.context.font = '30px sans-serif'

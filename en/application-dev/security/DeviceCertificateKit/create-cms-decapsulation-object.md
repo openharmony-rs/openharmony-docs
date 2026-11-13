@@ -6,16 +6,17 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=e84cbbf2e80bf551a43ab6e8f4f821cb891b50de translatedAt=2026-11-03T05:06:22.099Z pushedAt=2026-11-03T06:48:08.162Z nl=1 -->
 
-Certificate decapsulation with CMS is supported since API version 22.
+Certificate CMS decapsulation is supported since API version 22.
 
-PKCS #7 is a standard syntax for storing signed or encrypted data. The extension of PKCS #7, which is CMS, supports the following data types: data, signed data, encapsulated data, signed and encapsulated data, digest data, and encrypted data. It is often used to protect data integrity and confidentiality.
+PKCS #7 is a standard syntax for storing signed or encrypted data. CMS (Cryptographic Message Syntax), as an extension of PKCS #7, supports the following data types: data, signed data, encapsulated data, signed and encapsulated data, digest data, and encrypted data. This standard is commonly used to protect data integrity and confidentiality.
 
 Currently, only CMS signature data and encapsulated data are supported.
 
 ## How to Develop
 
-1. Import the [cert](../../reference/apis-device-certificate-kit/js-apis-cert.md) module.
+1. Import the [certificate module](../../reference/apis-device-certificate-kit/js-apis-cert.md).
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
@@ -72,7 +73,12 @@ async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
     data: stringToUint8Array(inStream),
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
-  let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+  let x509Cert: cert.X509Cert = {} as cert.X509Cert;
+  try {
+    x509Cert = await cert.createX509Cert(encodingBlob);
+  } catch (error) {
+    console.error(`createX509Cert failed: errCode: ${error.code}, message: ${error.message}`);
+  }
   return x509Cert;
 }
 
@@ -105,10 +111,10 @@ async function testCmsDecryptTest() {
     let cmsDecrypt: cert.CmsParser = cert.createCmsParser();
     await cmsDecrypt.setRawData(envelopeData, cert.CmsFormat.PEM);
     let decPlainText: Uint8Array = await cmsDecrypt.decryptEnvelopedData(config);
-    console.info('[XTS] decryptEnvelopedData result: success, decPlainText = ' + decPlainText);
-    console.info('decryptEnvelopedData result: success.');
+    console.info('decryptEnvelopedData result: success, decPlainText = ' + decPlainText);
   } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, message: ${error.message}`);
+    console.error(`decryptEnvelopedData failed: errCode: ${error.code}, message: ${error.message}`);
   }
 }
 ```
+

@@ -88,7 +88,7 @@ This API is used to restore a styled string from serialized data, for example, r
 
 | Type                            | Description                 |
 | -------------------------------- | --------------------- |
-| Promise\<[StyledString](ts-universal-styled-string.md#styledstring)> |Promise object that returns the styled string on success and an error code on failure. For details about the error codes, see the error code section.<br>**Note:** <br>Currently, only text and images are supported. |
+| Promise\<[StyledString](ts-universal-styled-string.md#styledstring)> |Promise used to return the styled string on success and an error code on failure. For details about the error codes, see the error code section.<br>**Note:** <br>Currently, only text and images are supported. |
 
 **Error codes**
 

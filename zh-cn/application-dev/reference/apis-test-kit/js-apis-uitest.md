@@ -5,7 +5,7 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
 
 
 UiTest提供UI自动化测试能力，供开发者在测试场景使用，主要支持控件查找与操作、坐标点击/滑动、按键注入、截图、窗口管理、多指操作、鼠标/手写笔/触摸板操作等能力。
@@ -7832,7 +7832,7 @@ inputText(text: string): Promise\<void>
 向控件中输入文本，仅针对可编辑的文本组件生效。使用Promise异步回调。
 
 > **说明：**
-
+>
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[inputText<sup>9+</sup>](#inputtext9)替代。
 
 **系统能力**：SystemCapability.Test.UiTest

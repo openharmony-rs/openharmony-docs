@@ -120,8 +120,8 @@ function createPixelMapSync() {
       return;
     }
     console.info('Succeeded in creating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -187,8 +187,8 @@ class MySequence implements rpc.Parcelable {
   unmarshalling(messageSequence: rpc.MessageSequence) {
     try {
       this.pixelMap = sendableImage.createPixelMapFromParcel(messageSequence);
-    } catch (e) {
-      const err = e as BusinessError;
+    } catch (error) {
+      const err = error as BusinessError;
       console.error(`Failed to create the PixelMap from parcel. Code: ${err.code}, message: ${err.message}`);
       return false;
     }
@@ -324,8 +324,8 @@ function convertFromPixelMap() {
   try {
     let sendablePixelMap: sendableImage.PixelMap = sendableImage.convertFromPixelMap(pixelMap);
     console.info('Succeeded in converting the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to convert the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -376,8 +376,8 @@ function convertToPixelMap() {
   try {
     let pixelMap: image.PixelMap = sendableImage.convertToPixelMap(sendablePixelMap);
     console.info('Succeeded in converting the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to convert the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -471,7 +471,7 @@ readPixelsToBufferSync(dst: ArrayBuffer): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -483,8 +483,8 @@ function readPixelsToBufferSync(pixelMap: sendableImage.PixelMap) {
   try {
     pixelMap.readPixelsToBufferSync(readBuffer);
     console.info('Succeeded in reading image pixel data.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to read image pixel data. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -586,7 +586,7 @@ readPixelsSync(area: image.PositionArea): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -604,8 +604,8 @@ function readPixelsSync(pixelMap: sendableImage.PixelMap) {
   try {
     pixelMap.readPixelsSync(area);
     console.info('Succeeded in reading the image data from the specified area.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to read the image data from the specified area. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -713,7 +713,7 @@ writePixelsSync(area: image.PositionArea): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -735,8 +735,8 @@ function writePixelsSync(pixelMap: sendableImage.PixelMap) {
   try {
     pixelMap.writePixelsSync(area);
     console.info('Succeeded in writing pixels into the specified area.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to write pixels into the specified area. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -806,7 +806,7 @@ writeBufferToPixelsSync(src: ArrayBuffer): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -822,8 +822,8 @@ function writeBufferToPixelsSync(pixelMap: sendableImage.PixelMap) {
   try {
     pixelMap.writeBufferToPixelsSync(color);
     console.info('Succeeded in writing data from the buffer to the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to write data from the buffer to the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -882,7 +882,7 @@ getImageInfoSync(): image.ImageInfo
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -894,8 +894,8 @@ function getImageInfoSync(pixelMap: sendableImage.PixelMap) {
   try {
     let imageInfo: image.ImageInfo = pixelMap.getImageInfoSync();
     console.info(`Succeeded in obtaining information of the PixelMap with size ${imageInfo.size} and pixel format ${imageInfo.pixelFormat}.`);
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to obtain information of the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1041,7 +1041,7 @@ opacitySync(rate: number): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -1053,8 +1053,8 @@ function opacitySync(pixelMap: sendableImage.PixelMap) {
   try {
     pixelMap.opacitySync(rate);
     console.info('Succeeded in setting opacity.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to set opacity. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1125,7 +1125,7 @@ createAlphaPixelmapSync(): PixelMap
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -1140,8 +1140,8 @@ function createAlphaPixelmapSync(pixelMap: sendableImage.PixelMap) {
       return;
     }
     console.info('Succeeded in creating alpha PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to create alpha PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1218,7 +1218,7 @@ scaleSync(x: number, y: number): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -1231,8 +1231,8 @@ function scaleSync(pixelMap: sendableImage.PixelMap) {
   try {
     pixelMap.scaleSync(scaleX, scaleY);
     console.info('Succeeded in scaling the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to scale the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1309,7 +1309,7 @@ translateSync(x: number, y: number): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -1322,8 +1322,8 @@ function translateSync(pixelMap: sendableImage.PixelMap) {
   try {
     pixelMap.translateSync(translateX, translateY);
     console.info('Succeeded in translating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to translate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1401,7 +1401,7 @@ rotateSync(angle: number): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -1413,8 +1413,8 @@ function rotateSync(pixelMap: sendableImage.PixelMap) {
   try {
     pixelMap.rotateSync(angle);
     console.info('Succeeded in rotating the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to rotate the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1483,7 +1483,7 @@ flipSync(horizontal: boolean, vertical: boolean): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -1496,8 +1496,8 @@ function flipSync(pixelMap: sendableImage.PixelMap) {
   try {
     pixelMap.flipSync(horizontal, vertical);
     console.info('Succeeded in flipping the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to flip the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1564,7 +1564,7 @@ cropSync(region: image.Region): void
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 |  401    | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-|  501    | The resource is unavailable as it is occupied by another thread. |
+|  501    | Access denied because the resource is occupied by another thread. |
 
 **示例：**
 
@@ -1577,8 +1577,8 @@ function cropSync(pixelMap: sendableImage.PixelMap) {
   try {
     pixelMap.cropSync(region);
     console.info('Succeeded in cropping the PixelMap.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to crop the PixelMap. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1617,8 +1617,8 @@ function getColorSpace(pixelMap: sendableImage.PixelMap) {
   try {
     const csm = pixelMap.getColorSpace();
     console.info(`Succeeded in getting color space: ${csm.getColorSpaceName()}.`);
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to get color space. Code: ${err.code}, message: ${err.message}`);
   }
 }
@@ -1659,8 +1659,8 @@ function setColorSpace(pixelMap: sendableImage.PixelMap) {
   try {
     pixelMap.setColorSpace(csm);
     console.info('Succeeded in setting color space.');
-  } catch (e) {
-    const err = e as BusinessError;
+  } catch (error) {
+    const err = error as BusinessError;
     console.error(`Failed to set color space. Code: ${err.code}, message: ${err.message}`);
   }
 }

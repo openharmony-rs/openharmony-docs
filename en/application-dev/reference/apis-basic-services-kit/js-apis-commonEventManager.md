@@ -2,16 +2,17 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=75c0f0cf34944e262b28608d43f8d720a6e6e07e translatedAt=2026-11-12T04:18:09.463Z pushedAt=2026-11-12T12:18:55.402Z nl=1 -->
 
 This module provides APIs to publish, subscribe to, and unsubscribe from common events. This module provides a system-level event notification mechanism that allows an app to send notifications to other apps that have subscribed to the event when the system status changes (such as power-on completion, battery level change, and screen on/off) or a custom service event occurs. This mechanism enables transferring information across components and apps.
 
 The key concepts involved in this module are as follows:
-- Unordered common events: common events that CES forwards regardless of whether subscribers receive the events and when they subscribe to the events.
-- Ordered common events: common events that CES forwards based on the subscriber priority. CES preferentially forwards an ordered common event to the subscriber with higher priority, waits until the subscriber receives the event, and then forwards the events to the subscriber with lower priority. Subscribers with the same priority receive common events in a random order.
-- Sticky common events: common events that can be sent to a subscriber before or after they initiate a subscription. Only system apps or services can send sticky common events.
+- [Unordered common events](../../basic-services/common-event/common-event-glossary.md#unordered-common-event): common events that CES forwards regardless of whether subscribers receive the events and when they subscribe to the events.
+- [Ordered common events](../../basic-services/common-event/common-event-glossary.md#ordered-common-event): common events that CES forwards based on the subscriber priority. CES preferentially forwards an ordered common event to the subscriber with higher priority, waits until the subscriber receives the event, and then forwards the events to the subscriber with lower priority. Subscribers with the same priority receive common events in a random order.
+- [Sticky common events](../../basic-services/common-event/common-event-glossary.md#sticky-common-event): common events that can be sent to a subscriber before or after they initiate a subscription.
 
 **APIs used in combination**
 
@@ -35,6 +36,10 @@ The event communication of this module involves three processes: subscription, p
 2. The subscriber with a higher priority receives the event first, who can modify the code and data in the callback using methods such as **setCodeAndData** for subsequent subscribers to receive.
 3. After the processing is complete, call **finishCommonEvent** to deliver the event to the subscriber with the next highest priority. To stop delivering the event, call **abortCommonEvent** to mark the event as aborted.
 
+> **Description**
+>
+> The processing duration of an ordered common event for each subscriber is limited (the timeout interval is 10 seconds). If a subscriber does not call [finishCommonEvent](js-apis-inner-commonEvent-commonEventSubscriber.md#finishcommonevent9) within the timeout interval after receiving an ordered common event, the system considers that the subscriber has completed the processing and automatically delivers the event to the subscriber with the next highest priority. In this case, the system does not send a timeout notification to the current subscriber. After that, the **setCode**, **setData**, **setCodeAndData**, and **finishCommonEvent** APIs called by the subscriber will no longer take effect.
+
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -47,7 +52,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 ## Support
 
-System common events refer to events released by system services or system apps. Subscribing to these common events requires specific permissions and event values. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).
+[System common events](../../basic-services/common-event/common-event-glossary.md#system-common-event) refer to events released by system services or system apps. Subscribing to these common events requires specific permissions and event values. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).
 
 ## commonEventManager.publish
 
@@ -63,7 +68,7 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 
 | Name    | Type                | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| event    | string               | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).|
+| event    | string               | Yes   | Common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the common event is successfully published, **err** is **undefined**; if the event fails to be published, **err** is an error object.|
 
 **Error codes**
@@ -111,7 +116,7 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 
 | Name    | Type                  | Mandatory| Description                  |
 | -------- | ---------------------- | ---- | ---------------------- |
-| event    | string                 | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). |
+| event    | string                 | Yes   | Common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Properties of the common event to publish.|
 | callback | AsyncCallback\<void>   | Yes  | Callback used to return the result. If the common event is successfully published, **err** is **undefined**; if the event fails to be published, **err** is an error object. |
 
@@ -453,7 +458,7 @@ setTimeout(() => {
         console.error(`Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
         return;
       }
-      // If the subscriber is no longer used, set it to null to avoid memory leakage.
+      // If the subscriber is no longer used, set it to null to avoid memory leaks.
       subscriber = null;
       console.info(`Succeeded in unsubscribing.`);
     });
@@ -479,7 +484,7 @@ Subscribes to a common event. This API uses a promise to return the result.
 | Name      | Type                                               | Mandatory| Description                            |
 | ---------- | ---------------------------------------------------- | ---- | -------------------------------- |
 | subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)     | Yes  | Subscriber object.                |
-| callback   | Callback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | Yes  | Callback to be invoked when a common event is subscribed to.|
+| callback   | Callback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | Yes   | Callback used to return the common event data. |
 
 **Return value**
 | Type                                                     | Description            |
@@ -594,3 +599,4 @@ Describes the content and properties of a common event.
 | Type| Description|
 | --- | --- |
 | [_CommonEventPublishData](js-apis-inner-commonEvent-commonEventPublishData.md) | Content and properties of a common event.|
+

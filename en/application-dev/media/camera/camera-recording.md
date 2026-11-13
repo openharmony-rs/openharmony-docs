@@ -5,20 +5,21 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=7f4d210fc38f3d9e54eb91674f92d1017632961d translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
 A camera application invokes and controls a camera device to perform basic operations such as preview, photo capture, and video recording.
 
-As another important function of the camera application, video recording is the process of cyclic frame capture. To smooth video recording, you can follow step 4 in [Photo Capture](camera-shooting.md) to set the resolution, flash, focal length, photo quality, and rotation angle.
+Video recording is another key function of camera apps and involves capturing frames continuously. To customize recording, refer to step 6 in [Photo Capture](camera-shooting.md) to configure resolution, flash, focal length, photo quality, rotation angle, and other parameters.
 
 ## How to Develop
 
-Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API reference.
+For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)](../../reference/apis-camera-kit/arkts-apis-camera.md).
 
 1. Import the media module.
 
-   The [APIs](../../reference/apis-media-kit/arkts-apis-media.md) provided by this module are used to obtain the surface ID and create a video output stream.
+   Creating the SurfaceId for the recording output stream and the recording output data requires the media APIs provided by the system, that is, [@ohos.multimedia.media (Media Service)](../../reference/apis-media-kit/arkts-apis-media.md). The following shows how to import the media APIs.
 
    ```ts
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -26,154 +27,128 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
    import { media } from '@kit.MediaKit';
    ```
 
-2. Create a surface.
+2. Check whether the camera supports video mode.
 
-   Call createAVRecorder() of the media module to create an [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md) instance, and call [getInputSurface](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#getinputsurface9) of the instance to obtain the surface ID, which is associated with the video output stream to process the stream data.
+   Call [getSupportedSceneModes](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedscenemodes11) to obtain the modes supported by the camera and check for video mode.
 
    ```ts
-   async function getVideoSurfaceId(aVRecorderConfig: media.AVRecorderConfig): Promise<string | undefined> {  // For details about aVRecorderConfig, see step 3 "Create a video output stream" below.
-     let avRecorder: media.AVRecorder | undefined = undefined;
-     let videoSurfaceId: string | undefined = undefined;
+   function isCaptureModeSupported(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): boolean
+   {
      try {
-       avRecorder = await media.createAVRecorder();
-       if (avRecorder === undefined) {
-         return videoSurfaceId;
-       }
-       await avRecorder.prepare(aVRecorderConfig);
-       videoSurfaceId = await avRecorder.getInputSurface();
+       let modeArray = cameraManager.getSupportedSceneModes(cameraDevice);
+       return modeArray.includes(camera.SceneMode.NORMAL_VIDEO);
      } catch (error) {
        let err = error as BusinessError;
-       console.error(`createAVRecorder call failed. error code: ${err.code}`);
+       console.error(`failed to getSupportedSceneModes, err code: ${err.code}`);
+       return false;
      }
-     return videoSurfaceId;
    }
    ```
 
-3. Create a video output stream.
+3. Create a Surface.
+
+   Call createAVRecorder() of the media module to create an [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md) instance, and call [getInputSurface](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#getinputsurface9) of the instance to obtain the surface ID, which is associated with the video output stream to process the stream data.
+
+   <!-- @[camera_video_getVideoSurface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   
+   ``` TypeScript
+   this.avRecorder = await this.createAVRecorder();
+   if (this.avRecorder === undefined) {
+     Logger.error(TAG, 'Failed to create the avRecorder.');
+     return;
+   }
+   await this.prepareAVRecorder();
+   let videoSurfaceId = await this.avRecorder.getInputSurface();
+   ```
+
+4. Create a video output stream.
 
    Obtain the video output streams supported by the current device from **videoProfiles** in [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability). Then, define video recording parameters and use [createVideoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createvideooutput) to create a video output stream.
 
    > **NOTE**
    >
-   > 1. The preview stream and video output stream must have the same aspect ratio of the resolution. For example, the aspect ratio in the code snippet below is 640:480 (which is equal to 4:3), then the aspect ratio of the resolution of the preview stream must also be 4:3. This means that the resolution can be 640:480, 960:720, 1440:1080, or the like.
+   > 1. The preview and video output streams must use the same resolution aspect ratio. For example, if the video ratio is 640:480 = 4:3, the preview must also use 4:3, such as 640:480, 960:720, or 1440:1080.
    >
-   > 2. Before setting the resolution width and height of the preview output stream, call [AVRecorderProfile](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9) to obtain the configurable width and height range for video frames.
+   > 2. Before setting the preview resolution, query the configurable video frame width and height ranges through [AVRecorderProfile](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9).
    >
-   > 3. To obtain the video rotation angle (specified by **rotation**), call [getVideoRotation](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md#getvideorotation12) in [VideoOutput](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md).
+   > 3. Obtain the actual recording rotation angle through [getVideoRotation](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md#getvideorotation12) in [VideoOutput](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md).
    >
-   > 4. To configure the frame rate for a video output stream, select a suitable **videoProfile** from **videoProfiles** of [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability). Ensure that [frameRateRange](../../reference/apis-camera-kit/arkts-apis-camera-i.md#frameraterange) of the selected profile meets your service requirements.
+   > 4. For the video output stream frame rate, use videoProfiles in [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability) to select a videoProfile whose [frameRateRange](../../reference/apis-camera-kit/arkts-apis-camera-i.md#frameraterange) in [VideoProfile](../../reference/apis-camera-kit/arkts-apis-camera-i.md#videoprofile) meets your requirements.
 
-   ```ts
-   async function getVideoOutput(cameraManager: camera.CameraManager, videoSurfaceId: string, cameraOutputCapability: camera.CameraOutputCapability): Promise<camera.VideoOutput | undefined> {
-     if (!cameraManager || !videoSurfaceId || !cameraOutputCapability || !cameraOutputCapability.videoProfiles) {
-       return;
-     }
-     let videoProfilesArray: Array<camera.VideoProfile> = cameraOutputCapability.videoProfiles;
-     if (!videoProfilesArray || videoProfilesArray.length === 0) {
-       console.error("videoProfilesArray is null or []");
-       return undefined;
-     }
-     // AVRecorderProfile.
-     let aVRecorderProfile: media.AVRecorderProfile = {
-       fileFormat: media.ContainerFormatType.CFT_MPEG_4, // Video file container format. Only MP4 is supported.
-       videoBitrate: 100000, // Video bit rate.
-       videoCodec: media.CodecMimeType.VIDEO_AVC, // Video file encoding format. AVC is supported.
-       videoFrameWidth: 640, // Video frame width.
-       videoFrameHeight: 480, // Video frame height.
-       videoFrameRate: 30 // Video frame rate.
-     };
-     // Define video recording parameters. The ratio of the resolution width (videoFrameWidth) to the resolution height (videoFrameHeight) of the video output stream must be the same as that of the preview stream.
-     let avMetadata: media.AVMetadata = {
-      videoOrientation: '90' // The value of rotation is 90, which is obtained through getVideoRotation.
-     }
-     
-     let aVRecorderConfig: media.AVRecorderConfig = {
-       videoSourceType: media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV,
-       profile: aVRecorderProfile,
-       url: 'fd://35', // This is an example. Replace it with the actual path.
-       metadata: avMetadata
-     };
-     // Create an AVRecorder object and set video recording parameters.
-     let avRecorder: media.AVRecorder | undefined = undefined;
-     try {
-       avRecorder = await media.createAVRecorder();
-       if (avRecorder === undefined) {
-         return undefined;
-       }
-       await avRecorder.prepare(aVRecorderConfig);
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`createAVRecorder call failed. error code: ${err.code}`);
-       await avRecorder?.release();
-       return;
-     }
-
-     // Create a VideoOutput instance.
+   <!-- @[camera_video_createAVRecorder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
+   
+   ``` TypeScript
+   createVideoOutputFn(cameraManager: camera.CameraManager, videoProfileObj: camera.VideoProfile,
+     surfaceId: string): camera.VideoOutput | undefined {
      let videoOutput: camera.VideoOutput | undefined = undefined;
-     // The width and height of the videoProfile object passed in by createVideoOutput must be the same as those of aVRecorderProfile.
-     let videoProfile: undefined | camera.VideoProfile = videoProfilesArray.find((profile: camera.VideoProfile) => {
-       return profile.size.width === aVRecorderProfile.videoFrameWidth && profile.size.height === aVRecorderProfile.videoFrameHeight;
-     });
-     if (!videoProfile) {
-       console.error('videoProfile is not found');
-       await avRecorder.release();
-       return undefined;
-     }
      try {
-       videoOutput = cameraManager.createVideoOutput(videoProfile, videoSurfaceId);
+       videoOutput = cameraManager.createVideoOutput(videoProfileObj, surfaceId);
+       Logger.info(TAG, `createVideoOutputFn success: ${videoOutput}`);
      } catch (error) {
        let err = error as BusinessError;
-       console.error('Failed to create the videoOutput instance. errorCode = ' + err.code);
-       await avRecorder.release();
+       Logger.error(TAG, `createVideoOutputFn failed: ${err.code}`);
      }
      return videoOutput;
    }
    ```
 
-4. Start video recording.
+5. Start recording.
 
    > **NOTE**
    >
-   >  - When setting the frame rate of the preview stream, you must first query the frame rate of the video stream by calling [getActiveFrameRate](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#getactiveframerate12). 
+   >  - Before setting the preview stream frame rate, call [getActiveFrameRate](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#getactiveframerate12) to query the frame rate of the current recording stream.
    >
-   > - If the video stream uses a range of frame rates, the preview stream must be set to the same range.
+   > - If a frame rate range has been set for the recording stream, the preview stream frame rate must be set to the same range.
    >
-   > - If the video stream uses a fixed frame rate, the preview stream must be set to a fixed rate that is a divisor of the video frame rate.
+   > - If a fixed frame rate has been set for the recording stream, the preview stream frame rate must be set to a divisor of the recording frame rate and must also be a fixed frame rate.
+   >
+   > - On some devices, if the front camera recording resolution is set to 3280*2160, the video may appear upside down in recording mode. It is recommended that you call [setVideoStabilizationMode](../../reference/apis-camera-kit/arkts-apis-camera-Stabilization.md#setvideostabilizationmode11) after [commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11) to avoid this issue.
 
    Call [start](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md#start-1) of the VideoOutput instance to start the video output stream, and then call [start](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#start9) of the AVRecorder instance to start recording.
 
-   ```ts
-   async function startVideo(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
-    try {
-      await videoOutput.start();
-    } catch (error) {
-      let err = error as BusinessError;
-      console.error(`start videoOutput failed, error: ${err.code}`);
-    }
-    avRecorder.start(async (err: BusinessError) => {
-    if (err) {
-      console.error(`Failed to start the video output ${err.message}`);
-      return;
-    }
-    console.info('Callback invoked to indicate the video output start success.');
-    });
+   <!-- @[camera_video_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
+   
+   ``` TypeScript
+   async startVideo(): Promise<void> {
+     Logger.info(TAG, 'startVideo is called');
+     try {
+       await this.videoOutput?.start();
+       await this.avRecorder?.start();
+       this.isRecording = true;
+     } catch (error) {
+       let err = error as BusinessError;
+       Logger.error(TAG, `startVideo err: ${err.code}`);
+     }
+     Logger.info(TAG, 'startVideo End of call');
    }
    ```
 
-5. Stop video recording.
+6. Stop recording.
 
    Call [stop](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#stop9-1) of the AVRecorder instance to stop recording, and then call [stop](../../reference/apis-camera-kit/arkts-apis-camera-VideoOutput.md#stop-1) of the VideoOutput instance to stop the video output stream.
 
-   ```ts
-   async function stopVideo(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
-     avRecorder.stop((err: BusinessError) => {
-     if (err) {
-       console.error(`Failed to stop the video output ${err.message}`);
+   <!-- @[camera_video_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
+   
+   ``` TypeScript
+   async stopVideo(): Promise<void> {
+     Logger.info(TAG, 'stopVideo is called');
+     if (!this.isRecording) {
+       Logger.info(TAG, 'not in recording');
        return;
      }
-     console.info('Callback invoked to indicate the video output stop success.');
-     });
-     await videoOutput.stop();
+     try {
+       if (this.avRecorder) {
+         await this.avRecorder.stop();
+       }
+       if (this.videoOutput) {
+         await this.videoOutput.stop();
+       }
+       this.isRecording = false;
+     } catch (error) {
+       let err = error as BusinessError;
+       Logger.error(TAG, `stopVideo err: ${err.code}`);
+     }
+     Logger.info(TAG, 'stopVideo End of call');
    }
    ```
 
@@ -183,39 +158,39 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
 During camera application development, you can listen for the status of the video output stream, including recording start, recording end, and video output errors.
 
 - Register the **'frameStart'** event to listen for recording start events. This event can be registered when a VideoOutput instance is created and is triggered when the bottom layer starts exposure for recording for the first time. Video recording starts as long as a result is returned.
-    
-  ```ts
-  function onVideoOutputFrameStart(videoOutput: camera.VideoOutput): void {
-    videoOutput.on('frameStart', (err: BusinessError) => {
-      if (err !== undefined && err.code !== 0) {
-        return;
-      }
-      console.info('Video frame started');
-    });
-  }
+
+  <!-- @[camera_video_frameStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
+  
+  ``` TypeScript
+  videoOutput.on('frameStart', (err: BusinessError) => {
+    if (err !== undefined && err.code !== 0) {
+      return;
+    }
+    console.info('Video frame started');
+  });
   ```
 
 - Register the **'frameEnd'** event to listen for recording end events. This event can be registered when a VideoOutput instance is created and is triggered when the last frame of recording ends. Video recording ends as long as a result is returned.
-    
-  ```ts
-  function onVideoOutputFrameEnd(videoOutput: camera.VideoOutput): void {
-    videoOutput.on('frameEnd', (err: BusinessError) => {
-      if (err !== undefined && err.code !== 0) {
-        return;
-      }
-      console.info('Video frame ended');
-    });
-  }
+
+  <!-- @[camera_video_frameEnd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
+  
+  ``` TypeScript
+  videoOutput.on('frameEnd', (err: BusinessError) => {
+    if (err !== undefined && err.code !== 0) {
+      return;
+    }
+    console.info('Video frame ended');
+  });
   ```
 
-- Register the **'error'** event to listen for video output errors. The callback function returns an error code when an API is incorrectly used. For details about the error code types, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
-    
-  ```ts
-  function onVideoOutputError(videoOutput: camera.VideoOutput): void {
-    videoOutput.on('error', (error: BusinessError) => {
-      console.error(`Video output error code: ${error.code}`);
-    });
-  }
+- Register an error callback to obtain video output errors. The callback returns the error code corresponding to incorrect use of the video output APIs. For error code types, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
+
+  <!-- @[camera_video_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->   
+  
+  ``` TypeScript
+  videoOutput.on('error', (error: BusinessError) => {
+    console.error(`Video output error code: ${error.code}`);
+  });
   ```
 
 <!--RP1-->

@@ -2,29 +2,35 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @qq_42700029-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=dadc5d2e6bb9c5594236accd7857209621472343 translatedAt=2026-11-03T03:11:47.926Z pushedAt=2026-11-03T03:24:44.319Z nl=1 -->
 
-Web Real-Time Communications (WebRTC) is a real-time communication technology that allows network applications or sites to establish peer-to-peer (P2P) connections between browsers without an intermediary, implementing the transmission of video streams, audio streams, or other data. It enables users to create peer-to-peer (P2P) data sharing and conference calls without installing any plug-in or third-party software. WebRTC is applicable to all modern browsers and native clients on major platforms. The underlying technology is implemented as an open web standard and provided as a common JavaScript API in all major browsers.
+Web Real-Time Communications (WebRTC) is a real-time communication technology that allows web applications or sites to establish peer-to-peer connections between browsers without an intermediary, enabling the transmission of video streams, audio streams, or any other data. The standards included in WebRTC allow users to create peer-to-peer data sharing and audio/video conferencing without installing any plug-ins or third-party software. WebRTC applies to all modern browsers and native clients on major platforms. The underlying technology is implemented as an open web standard and is provided as a regular JavaScript API in all major browsers.
 
-The **Web** component can start a camera and microphone by calling the W3C Standards-compliant API **navigator.mediaDevices.getUserMedia()** in JavaScript, and receive the permission request notification through [onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9). To call these APIs, you need to declare the audio permissions in the **module.json5** file.
+## Applying for Permissions
 
-- For details about how to add audio permissions, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md).
+The **Web** component can access the camera and microphone through W3C standard protocol APIs, and receive permission request notifications through the [onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9) API. You need to declare the corresponding audio and video permissions in the configuration file and perform system-side authorization and app-side authorization.
 
-   ```json
+### Configuring Permissions in module.json5
+- Before using the camera and microphone, add the audio and video permissions in **module.json5**. For details about how to add permissions, see [Declaring Permissions in the Configuration File](../security/AccessToken/declare-permissions.md#declaring-permissions-in-the-configuration-file).
+
+  ```json5
     // src/main/resources/base/element/string.json
-    {
-      "name": "reason_for_camera",
-      "value": "reason_for_camera"
-    },
-    {
-      "name": "reason_for_microphone",
-      "value": "reason_for_microphone"
-    }
+    "string":[
+      {
+        "name": "reason_for_camera",
+        "value": "reason_for_camera"
+      },
+      {
+        "name": "reason_for_microphone",
+        "value": "reason_for_microphone"
+      }
+    ]
   ```
 
-  ```json
+  ```json5
     // src/main/module.json5
     "requestPermissions":[
       {
@@ -50,12 +56,17 @@ The **Web** component can start a camera and microphone by calling the W3C Stand
     ]
    ```
 
-Invoke the **navigator.mediaDevices.getUserMedia()** API in JavaScript to start the camera and microphone. The **constraints** parameter in the API is a **MediaStreamConstraints** object that specifies the types of media to request. It contains two members: **video** and **audio**.
+Call the W3C standard protocol API **navigator.mediaDevices.getUserMedia()** in JavaScript to open the camera and microphone. The **constraints** parameter is a **MediaStreamConstraints** object that contains two members, **video** and **audio**, and specifies the requested media types.
 
-In the following example, when a user clicks the button for enabling the camera on the frontend page and the **onConfirm** button, the **Web** component starts the camera and microphone.
+### System-Side Authorization
+In the [complete sample code](../web/web-rtc.md#samples), requestPermissionsFromUser() is called so that after entering the application, an authorization dialog box appears asking whether to allow the application to access the camera and microphone. You need to tap "Always allow" or "Ask every time" to authorize the application to access the camera and microphone.
 
-- Application code:
-  <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Index.ets) -->
+### App-Side Authorization
+In the [sample code](../web/web-rtc.md#samples), after you click the **Enable Camera** button on the frontend page, a permission request is triggered through **onPermissionRequest**. After you click the **onConfirm** button in the dialog box, the camera and microphone are opened.
+
+## Samples
+
+  <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Index.ets) --> 
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -71,7 +82,7 @@ In the following example, when a user clicks the button for enabling the camera 
     aboutToAppear() {
       // Enable web frontend page debugging.
       webview.WebviewController.setWebDebuggingAccess(true);
-      // Obtain the permission request notification. After the onConfirm button is clicked, the camera and microphone are started.
+      // Obtain the camera and microphone permissions and proactively request them when the component is created.
       let atManager = abilityAccessCtrl.createAtManager();
       atManager.requestPermissionsFromUser(this.uiContext.getHostContext(), ['ohos.permission.CAMERA', 'ohos.permission.MICROPHONE'])
         .then((data) => {
@@ -100,7 +111,9 @@ In the following example, when a user clicks the button for enabling the camera 
                 secondaryButton: {
                   value: 'onConfirm',
                   action: () => {
-                    event.request.grant(event.request.getAccessibleResource());
+                    let resources = event.request.getAccessibleResource();
+                    console.info('Granting permissions for resources: ' + JSON.stringify(resources));
+                    event.request.grant(resources);
                   }
                 },
                 cancel: () => {
@@ -114,7 +127,7 @@ In the following example, when a user clicks the button for enabling the camera 
   }
   ```
 
-- Code of the **index.html** page:
+- Code of the **index.html** page.
 
   ```html
   <!-- index.html -->
@@ -144,10 +157,13 @@ In the following example, when a user clicks the button for enabling the camera 
         video.srcObject = MediaStream;
         video.play();
       }).catch(function(err) {
-    	  console.info(err.name + ": " + err.message);
+          console.error(err.name + ": " + err.message);
       });
     }
   </script>
   </body>
   </html>
   ```
+
+<!--RP1-->
+<!--RP1End-->

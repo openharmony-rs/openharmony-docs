@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "梳理视频编解码中width/height、picWidth/picHeight、stride/sliceHeight及Crop裁剪等尺寸参数的含义与关系，说明解码输出有效区域的计算方法，帮助开发者正确读写图像数据。"
+keywords: [宽高, 跨距, stride, sliceHeight, 裁剪, Crop, picWidth, 内存对齐, 解码输出]
+doctype: faq
+status: active
+---
+
 # 视频编解码宽高、跨距与裁剪信息说明
 
 <!--Kit: AVCodec Kit-->
@@ -316,7 +324,7 @@ Configure 配置参数：
 
 ### Q6：`OH_AVCapability_IsVideoSizeSupported`等能力查询接口中的宽高参数是指什么
 
-**回答**：这些接口中的宽高参数通常指的是码流参数集（如SPS）中定义的**编码帧宽高**，与`avcodec`接口中使用的各种宽高Key（如`OH_MD_KEY_WIDTH`、`OH_MD_KEY_VIDEO_PIC_WIDTH`等）均无直接对标关系。解码时，解码器会据读入的码流参数集中的**编码帧宽高**判断是否支持解码该分辨率。若此前查询的宽高与实际码流中的参数不一致，可能会出现实际是否能解码与查询的结果不一致的情况。
+**回答**：这些接口中的宽高参数通常指的是码流参数集（如SPS）中定义的**编码帧宽高**，与`avcodec`接口中使用的各种宽高Key（如`OH_MD_KEY_WIDTH`、`OH_MD_KEY_VIDEO_PIC_WIDTH`等）均无直接对标关系。解码时，解码器会根据读入的码流参数集中的**编码帧宽高**判断是否支持解码该分辨率。若此前查询的宽高与实际码流中的参数不一致，可能会出现实际是否能解码与查询的结果不一致的情况。
 
 ## 参考文档
 

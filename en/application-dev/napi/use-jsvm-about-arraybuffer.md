@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes how to use JSVM-API to create ArrayBuffer binary buffers, obtain underlying data pointers and lengths, detach buffers, and check their detached status."
+keywords: ["OH_JSVM_CreateArraybuffer","OH_JSVM_GetArraybufferInfo","OH_JSVM_DetachArraybuffer","OH_JSVM_IsArraybuffer","OH_JSVM_IsDetachedArraybuffer","ArrayBuffer","binary data buffer","TypedArray","DataView"]
+doctype: guide
+status: active
+---
+
 # Working with ArrayBuffer Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=1bcf41641a10f17d0f56bfc82362dc9488eaf7eb translatedAt=2026-11-09T08:52:17.323Z nl=1 -->
 
 ## Introduction
 
@@ -35,12 +44,15 @@ Use **OH_JSVM_GetArraybufferInfo** to obtain the underlying data buffer of an **
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/getarraybufferinfo/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_GetArraybufferInfo.
+#include "hilog/log.h"
+// ...
+
+// Sample method for OH_JSVM_GetArraybufferInfo
 static JSVM_Value GetArraybufferInfo(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -52,7 +64,6 @@ static JSVM_Value GetArraybufferInfo(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_IsArraybuffer(env, args[0], &isArrayBuffer);
     if (!isArrayBuffer) {
         OH_LOG_ERROR(LOG_APP, "JSVM GetArraybufferInfo isArrayBuffer:false");
-        return nullptr;
     }
     void *data;
     size_t byteLength = 0;
@@ -74,8 +85,8 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getArraybufferInfo", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS code.
-const char *srcCallNative = R"JS(
+// Sample test JS.
+const char *SRC_CALL_NATIVE = R"JS(
 getArraybufferInfo(new ArrayBuffer(10));
 )JS";
 ```
@@ -85,20 +96,21 @@ Expected result:
 JSVM GetArraybufferInfo: success
 ```
 
-<!-- @[oh_jsvm_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/getarraybufferinfo/src/main/cpp/hello.cpp) -->
-
 ### OH_JSVM_IsArraybuffer
 
 Use **OH_JSVM_IsArraybuffer** to check whether a JS object is an **ArrayBuffer** object.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/isarraybuffer/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_IsArraybuffer.
+#include "hilog/log.h"
+// ...
+
+// Sample method for OH_JSVM_IsArraybuffer
 static JSVM_Value IsArrayBuffer(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -126,8 +138,8 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"isArrayBuffer", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS code.
-const char *srcCallNative = R"JS(
+// Sample test JS.
+const char *SRC_CALL_NATIVE = R"JS(
 isArrayBuffer(new ArrayBuffer(8));
 )JS";
 ```
@@ -138,11 +150,11 @@ JSVM IsArrayBuffer: success
 JSVM IsArrayBuffer: 1
 ```
 
-<!-- @[oh_jsvm_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/isarraybuffer/src/main/cpp/hello.cpp) -->
-
 ### OH_JSVM_DetachArraybuffer
 
 Use **OH_JSVM_DetachArraybuffer** to call the **Detach()** operation of an **ArrayBuffer** object.
+
+The sample code is combined with that for OH_JSVM_IsDetachedArraybuffer. See the `DetachArraybuffer` method in [OH_JSVM_IsDetachedArraybuffer](#oh_jsvm_isdetachedarraybuffer) below.
 
 ### OH_JSVM_IsDetachedArraybuffer
 
@@ -150,12 +162,15 @@ Use **OH_JSVM_IsDetachedArraybuffer** to check whether an **ArrayBuffer** object
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_is_detached_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/isdetachedarraybuffer/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_DetachArraybuffer and OH_JSVM_IsDetachedArraybuffer.
+#include "hilog/log.h"
+// ...
+
+// Sample method for OH_JSVM_DetachArraybuffer and OH_JSVM_IsDetachedArraybuffer.
 static JSVM_Value DetachArraybuffer(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -183,7 +198,7 @@ static JSVM_Value IsDetachedArraybuffer(JSVM_Env env, JSVM_CallbackInfo info)
         OH_LOG_ERROR(LOG_APP, "JSVM IsDetachedArraybuffer: failed");
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM IsDetachedArraybuffer: success");
-        OH_LOG_INFO(LOG_APP, "JSVM IsArrayBuffer: %{public}d", result);
+        OH_LOG_INFO(LOG_APP, "JSVM IsDetachedArraybuffer: %{public}d", result);
     }
     JSVM_Value isDetached = nullptr;
     OH_JSVM_GetBoolean(env, result, &isDetached);
@@ -197,11 +212,11 @@ static JSVM_CallbackStruct param[] = {
 static JSVM_CallbackStruct *method = param;
 // Set property descriptors named DetachArraybuffer and IsDetachedArraybuffer, and associate them with a callback each. This allows the DetachArraybuffer and IsDetachedArraybuffer callbacks to be called from JS.
 static JSVM_PropertyDescriptor descriptor[] = {
-    {"detachArraybuffer", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
-    {"isDetachedArraybuffer", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"detachArraybuffer", nullptr, method, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"isDetachedArraybuffer", nullptr, method+1, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS code.
-const char *srcCallNative = R"JS(
+// Sample test JS.
+const char *SRC_CALL_NATIVE = R"JS(
 let arrayBuffer = new ArrayBuffer(10);
 detachArraybuffer(arrayBuffer);
 isDetachedArraybuffer(arrayBuffer);
@@ -212,10 +227,8 @@ Expected result:
 ```txt
 JSVM DetachArraybuffer: success
 JSVM IsDetachedArraybuffer: success
-JSVM IsArrayBuffer: 1
+JSVM IsDetachedArraybuffer: 1
 ```
-
-<!-- @[oh_jsvm_is_detached_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/isdetachedarraybuffer/src/main/cpp/hello.cpp) -->
 
 ### OH_JSVM_CreateArraybuffer
 
@@ -223,12 +236,15 @@ Use **OH_JSVM_CreateArraybuffer** to create an **ArrayBuffer** object of the spe
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/createarraybuffer/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
-// Define OH_JSVM_CreateArraybuffer.
+#include "hilog/log.h"
+// ...
+
+// Sample method for OH_JSVM_CreateArraybuffer.
 static JSVM_Value CreateArraybuffer(JSVM_Env env, JSVM_CallbackInfo info)
 {
     size_t argc = 1;
@@ -262,8 +278,8 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"createArraybuffer", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Sample test JS code.
-const char *srcCallNative = R"JS(
+// Sample test JS.
+const char *SRC_CALL_NATIVE = R"JS(
 createArraybuffer(8);
 )JS";
 ```
@@ -273,5 +289,3 @@ Expected result:
 JSVM CreateArraybuffer: success
 JSVM ArrayBuffer length: 8
 ```
-
-<!-- @[oh_jsvm_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/createarraybuffer/src/main/cpp/hello.cpp) -->

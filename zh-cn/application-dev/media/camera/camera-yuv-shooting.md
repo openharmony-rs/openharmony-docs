@@ -62,7 +62,7 @@
        photoOutput = cameraManager.createPhotoOutput(photoProfile);
      } catch (error) {
        let err = error as BusinessError;
-       console.error("Failed to createPhotoOutput. error: ${err}");
+       console.error(`Failed to createPhotoOutput. error: ${err}`);
      }
      return photoOutput;
    }
@@ -85,7 +85,7 @@
      - 将处理完的pixelMap通过回调回传，做图片显示或通过安全控件写文件保存图片。
      - 使用完后解注册单段式拍照回调函数。
 
-     <!-- @[set_photo_cb_single](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->
+     <!-- @[set_photo_cb_single](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/YUVPhotoSample/camera/src/main/ets/cameramanagers/PhotoManager.ets) -->    
      
      ``` TypeScript
      setPhotoOutputCbSingle(photoOutput: camera.PhotoOutput, context: Context) {
@@ -103,13 +103,13 @@
      
      async mediaLibSavePhotoSingle(context: Context, imageObj: image.Image | image.Picture) {
        let picture: image.Picture = imageObj as image.Picture;
-       Logger.info(TAG_LOG, 'picture GetMainPixelmap E');
-       await this.GetMainPixelmap(context, picture);
-       Logger.info(TAG_LOG, 'picture GetMainPixelmap X');
+       Logger.info(TAG_LOG, 'picture getMainPixelmap E');
+       await this.getMainPixelmap(context, picture);
+       Logger.info(TAG_LOG, 'picture getMainPixelmap X');
      
-       Logger.info(TAG_LOG, 'picture Release E');
-       await this.Release(picture);
-       Logger.info(TAG_LOG, 'picture Release X');
+       Logger.info(TAG_LOG, 'picture releasePicture E');
+       await this.releasePicture(picture);
+       Logger.info(TAG_LOG, 'picture releasePicture X');
      }
      
      async packToFileFromPixelMap(context : Context, pixelMap : image.PixelMap) {
@@ -155,7 +155,7 @@
      }
      
      // 获取拍照的主图的pixelMap。
-     async GetMainPixelmap(context: Context, pictureObj : image.Picture) {
+     async getMainPixelmap(context: Context, pictureObj : image.Picture) {
        let funcName = 'getMainPixelmap';
        if (pictureObj != null) {
          let mainPixelmap: image.PixelMap = pictureObj.getMainPixelmap();
@@ -169,7 +169,7 @@
            this.callback(mainPixelmap, '');
            mainPixelmap.getImageInfo().then((imageInfo: image.ImageInfo) => {
              if (imageInfo != null) {
-               Logger.info(TAG_LOG, 'GetMainPixelmap information height:' + imageInfo.size.height + ' width:' + imageInfo.size.width +
+               Logger.info(TAG_LOG, 'getMainPixelmap information height:' + imageInfo.size.height + ' width:' + imageInfo.size.width +
                  ' pixelFormat:' + imageInfo.pixelFormat + ' isHdr:' + imageInfo.isHdr);
              }
            }).catch((error: BusinessError) => {
@@ -184,8 +184,8 @@
      }
      
      // 释放资源。
-     async Release(pictureObj : image.Picture) {
-       let funcName = 'Release';
+     async releasePicture(pictureObj : image.Picture) {
+       let funcName = 'releasePicture';
        if (pictureObj != null) {
          pictureObj.release();
          if (pictureObj.getMainPixelmap() == null) {
@@ -290,7 +290,7 @@
 
 5. 触发拍照。
 
-   通过photoOutput的[capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2)方法，执行拍照任务。该方法有两个参数，第一个参数为拍照设置setting，setting中可以设置图片质量，图片旋转角度等信息。第二参数为异步回调函数，用于获取结果。接口调用失败会返回相应错误码。
+   通过photoOutput的[capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2)方法，执行拍照任务。该方法有两个参数，第一个参数为拍照设置setting，setting中可以设置图片质量，图片旋转角度等信息。第二个参数为异步回调函数，用于获取结果。接口调用失败会返回相应错误码。
 
    通过PhotoOutput中的[getPhotoRotation](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#getphotorotation12)方法，可以获取拍照旋转角度。
 

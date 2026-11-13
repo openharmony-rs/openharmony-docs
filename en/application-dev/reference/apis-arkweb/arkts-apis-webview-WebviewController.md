@@ -1,12 +1,11 @@
 # Class (WebviewController)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=97b7cfe47e44ccd95055b91afef33a85efa622a9 translatedAt=2026-08-07T04:36:10.539Z pushedAt=2026-08-12T10:10:19.558Z -->
+<!-- md-trans-meta sourceCommit=31d045953794e03aa2b9b22d12ee8034b9ab7518 translatedAt=2026-11-06T11:10:49.550Z pushedAt=2026-11-10T02:37:12.395Z nl=1 -->
 
 WebviewController is the core controller for various behaviors of the **Web** component, providing extensive functions such as page loading and navigation control, JavaScript interaction, lifecycle management, scroll control, page zoom and content search, message port communication, and cache and certificate management. A WebviewController object can control only one **Web** component, and methods on WebviewController (except static methods) can be called only after the **Web** component is bound to WebviewController.
 
@@ -33,9 +32,9 @@ Constructs a **WebviewController** object.
 > **NOTE**
 >
 > - No parameter: new webview.WebviewController() indicates an empty constructor. No parameter is required when the C API is not used.
->
+> 
 > - Parameter is a valid string: new webview.WebviewController("xxx"), used for developers to distinguish multiple instances and call methods under the corresponding instance.
->
+> 
 > - Empty parameter: new webview.WebviewController("") or new webview.WebviewController(undefined). In this scenario, the parameter is meaningless and cannot distinguish multiple instances. **undefined** is returned directly, and developers need to check whether the return value is normal.
 >
 > After the **Web** component is destroyed, it is unbound from WebViewController. Subsequently, calling non-static methods of WebviewController will throw a [17100001](../apis-arkweb/errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) exception. Pay attention to the call timing and catch exceptions to prevent abnormal process exit.
@@ -105,7 +104,6 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -343,109 +341,105 @@ struct WebComponent {
 There are three methods for loading local resource files:
 
 1. Using $rawfile.
+   ```ts
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@kit.BasicServicesKit';
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('loadUrl')
-        .onClick(() => {
-          try {
-            // Load a local resource file through $rawfile.
-            this.controller.loadUrl($rawfile('index.html'));
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+     build() {
+       Column() {
+         Button('loadUrl')
+           .onClick(() => {
+             try {
+               // Load local resource files through $rawfile.
+               this.controller.loadUrl($rawfile('index.html'));
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
 2. Resource protocol.
 
-Using the `resource://rawfile/` protocol prefix can avoid the issue where the URL is truncated by the number sign (#) when the conventional `$rawfile` method is used to handle URLs containing "#" for routing. When a URL contains a "#", the content following the "#" is treated as a fragment.
+   Using the `resource://rawfile/` protocol prefix can avoid the issue where the URL is truncated by the number sign (#) when the conventional `$rawfile` method is used to handle URLs containing "#" for routing. When a URL contains a "#", the content following the "#" is treated as a fragment.
+   ```ts
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@kit.BasicServicesKit';
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
+     build() {
+       Column() {
+         Button('loadUrl')
+           .onClick(() => {
+             try {
+               // Load local resource files through the resource protocol.
+               this.controller.loadUrl("resource://rawfile/index.html#home");
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
-  build() {
-    Column() {
-      Button('loadUrl')
-        .onClick(() => {
-          try {
-            // Load local resource files through the resource protocol.
-            this.controller.loadUrl("resource://rawfile/index.html#home");
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+   Create an **index.html** file in **src/main/resources/rawfile**.
+   ```html
+   <!-- index.html -->
+   <!DOCTYPE html>
+   <html>
+   <body>
+   <div id="content"></div>
 
-Create an **index.html** file in **src/main/resources/rawfile**.
+   <script>
+     function loadContent() {
+       var hash = window.location.hash;
+       var contentDiv = document.getElementById('content');
 
-```html
-<!-- index.html -->
-<!DOCTYPE html>
-<html>
-<body>
-<div id="content"></div>
+       if (hash === '#home') {
+         contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
+       } else {
+         contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
+       }
+     }
 
-<script>
-  function loadContent() {
-    var hash = window.location.hash;
-    var contentDiv = document.getElementById('content');
+     // Load the page.
+     window.addEventListener('load', loadContent);
 
-    if (hash === '#home') {
-      contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
-    } else {
-      contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
-    }
-  }
-
-  // Load the UI.
-  window.addEventListener('load', loadContent);
-
-  // Update the UI when the hash changes.
-  window.addEventListener('hashchange', loadContent);
-</script>
-</body>
-</html>
-```
+     // Update the page when the hash changes.
+     window.addEventListener('hashchange', loadContent);
+   </script>
+   </body>
+   </html>
+   ```
 
 3. Load the local file through the sandbox path. For details, see the sample code for loading the sandbox path in [Loading Web Pages](../../web/web-page-loading-with-web-components.md#loading-local-pages).
 
-HTML file to be loaded:
-
-```html
-<!-- index.html -->
-<!DOCTYPE html>
-<html>
-  <body>
-    <p>Hello World</p>
-  </body>
-</html>
-```
+   HTML file to be loaded:
+   ```html
+   <!-- index.html -->
+   <!DOCTYPE html>
+   <html>
+     <body>
+       <p>Hello World</p>
+     </body>
+   </html>
+   ```
 
 ## loadData
 
@@ -494,7 +488,6 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 **Example**
 
 When both **baseUrl** and **historyUrl** are empty:
-
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -558,7 +551,6 @@ struct WebComponent {
 ```
 
 Specifies baseUrl.
-
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -592,7 +584,6 @@ struct WebComponent {
 ```
 
 Example of loading local resource:
-
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -622,7 +613,6 @@ struct WebComponent {
 ```
 
 Load the sandbox image.
-
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -651,7 +641,7 @@ struct WebComponent {
           }
         })
       Web({ src: 'www.example.com', controller: this.controller })
-        .fileAccess(true) // Enable the file access functionality to load images in the application sandbox.
+        .fileAccess(true) // Enable the file access functionality to load images in the application sandbox. 
     }
   }
 }
@@ -1293,7 +1283,6 @@ struct Index {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -1327,7 +1316,6 @@ HTML file to be loaded:
     </body>
 </html>
 ```
-
 For more examples, see [Invoking Application Functions on the Frontend Page](../../web/web-in-page-app-function-invoking.md).
 
 ## runJavaScript
@@ -1338,11 +1326,12 @@ Executes a JavaScript script asynchronously in the context of the current page. 
 
 > **NOTE**
 >
-> - The JavaScript status is no longer retained during navigation operations (such as **loadUrl**). For example, the global variables and functions defined before **loadUrl** is called do not exist in the loaded page.
-> - It is recommended that the app use **registerJavaScriptProxy** to ensure that the JavaScript status can be retained across page navigation.
-> - Currently, passing objects is not supported. Passing structs is supported.
-> - Executing asynchronous methods cannot obtain return values. Determine whether to use synchronous or asynchronous methods based on the specific context.
-> - The string data type passed from the frontend page to the app side is treated as JSON-formatted data and needs to be deserialized with JSON.parse.
+> - During cross-navigation operations (such as loadUrl), the JavaScript state is not retained. For example, global variables and functions defined before calling loadUrl will not exist in the loaded page.
+> - It is recommended that applications use registerJavaScriptProxy to ensure that the JavaScript state is retained across page navigation.
+> - Passing objects is not supported; passing structs is supported.
+> - Executing an asynchronous method cannot obtain a return value. Determine whether to use the synchronous or asynchronous mode based on the specific scenario.
+> - The string data passed from the frontend page to the application side is treated as JSON-formatted data and must be deserialized by calling JSON.parse.
+> - When runJavaScript is called multiple times, the scripts are executed in the call order, but the return order of callback results is not guaranteed to be consistent with the call order.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1407,7 +1396,6 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -1435,11 +1423,12 @@ Executes a JavaScript script asynchronously in the context of the current page. 
 
 > **NOTE**
 >
-> - The JavaScript status is no longer retained during navigation operations (such as **loadUrl**). For example, the global variables and functions defined before **loadUrl** is called do not exist in the loaded page.
-> - It is recommended that the app use **registerJavaScriptProxy** to ensure that the JavaScript status can be retained across page navigation.
-> - Currently, passing objects is not supported. Passing structs is supported.
-> - Executing asynchronous methods cannot obtain return values. Determine whether to use synchronous or asynchronous methods based on the specific context.
-> - The string data type passed from the frontend page to the app side is treated as JSON-formatted data and needs to be deserialized with JSON.parse.
+> - During cross-navigation operations (such as loadUrl), the JavaScript state is not retained. For example, global variables and functions defined before calling loadUrl will not exist in the loaded page.
+> - It is recommended that applications use registerJavaScriptProxy to ensure that the JavaScript state is retained across page navigation.
+> - Passing objects is not supported; passing structs is supported.
+> - Executing an asynchronous method cannot obtain a return value. Determine whether to use the synchronous or asynchronous mode based on the specific scenario.
+> - The string data passed from the frontend page to the application side is treated as JSON-formatted data and must be deserialized by calling JSON.parse.
+> - When runJavaScript is called multiple times, the scripts are executed in the call order, but the return order of Promise results is not guaranteed to be consistent with the call order.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1503,7 +1492,6 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -1531,7 +1519,8 @@ Executes a JavaScript script. This API uses an asynchronous callback to return t
 
 > **NOTE**
 >
-> - The string data type passed from the frontend page to the app side is treated as JSON-formatted data and needs to be deserialized with JSON.parse.
+> - The string data passed from the frontend page to the application side is treated as JSON-formatted data and must be deserialized by calling JSON.parse.
+> - When runJavaScriptExt is called multiple times, the scripts are executed in the call order, but the return order of callback results is not guaranteed to be consistent with the call order.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1583,7 +1572,7 @@ struct WebComponent {
                   try {
                     if (result.getErrorDescription()) {
                       // If an exception occurs or the return type is not supported, getErrorDescription is not empty.
-                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      console.error(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
                       return;
                     }
                     let type = result.getType();
@@ -1680,7 +1669,7 @@ struct WebComponent {
                   try {
                     if (result.getErrorDescription()) {
                       // If an exception occurs or the return type is not supported, getErrorDescription is not empty.
-                      console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                      console.error(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
                       return;
                     }
                     let type = result.getType();
@@ -1733,7 +1722,6 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -1757,7 +1745,8 @@ Executes a JavaScript script asynchronously and returns the script execution res
 
 > **NOTE**
 >
-> - The string data type passed from the frontend page to the app side is treated as JSON-formatted data and needs to be deserialized with JSON.parse.
+> - The string data passed from the frontend page to the application side is treated as JSON-formatted data and must be deserialized by calling JSON.parse.
+> - When runJavaScriptExt is called multiple times, the scripts are executed in the call order, but the return order of Promise results is not guaranteed to be consistent with the call order.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1810,7 +1799,7 @@ struct WebComponent {
               try {
                 if (result.getErrorDescription()) {
                   // If an exception occurs or the return type is not supported, getErrorDescription is not empty.
-                  console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                  console.error(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
                   return;
                 }
                 let type = result.getType();
@@ -1896,7 +1885,7 @@ struct WebComponent {
                 try {
                   if (result.getErrorDescription()) {
                     // If an exception occurs or the return type is not supported, getErrorDescription is not empty.
-                    console.info(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
+                    console.error(`runJavaScriptExt getErrorDescription: ${result.getErrorDescription()}`);
                     return;
                   }
                   let type = result.getType();
@@ -1951,7 +1940,6 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -2051,7 +2039,6 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -2079,13 +2066,19 @@ zoom(factor: number): void
 
 Zooms in or out of this web page. This API is effective only when [zoomAccess](arkts-basic-components-web-attributes.md#zoomaccess) is **true**.
 
+> **NOTE**
+>
+> When the input parameter is out of the valid range, this call does not take effect, and the web page zoom ratio remains unchanged.
+>
+> When the web page zoom ratio has reached the maximum or minimum value, continuing to zoom in the same direction also does not take effect.
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| factor | number   | Yes  | Relative zoom ratio. The value must be greater than 0. The value **1** indicates that the page is not zoomed. A value smaller than **1** indicates zoom-out, and a value greater than **1** indicates zoom-in.<br>Value range: (0, 100]|
+| factor | number   | Yes   | Zoom factor, which is multiplied by the current page zoom ratio to obtain the new zoom ratio. When the input is 1, the zoom ratio remains unchanged; when the input is less than 1, the page is zoomed out; when the input is greater than 1, the page is zoomed in.<br>Value range: (0, 100]. |
 
 **Error codes**
 
@@ -2186,7 +2179,6 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -2517,7 +2509,6 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -2540,7 +2531,6 @@ HTML file to be loaded:
 ```
 
 <!--code_no_check-->
-
 ```js
 // xxx.js
 var h5Port;
@@ -2716,6 +2706,159 @@ struct WebComponent {
 }
 ```
 
+## setZoomFactor
+
+setZoomFactor(zoomFactor: number): void
+
+Sets the page zoom factor of the current web page. Page zoom scales both text and images, and triggers page re-layout to fit the width of the Web component.
+
+> **Note:**
+>
+> - The page zoom factor is managed by the host name (Host) of the web page. In the same browsing data context, after the setting succeeds, opened Web components with the same Host are zoomed synchronously, and web pages with the same Host opened later also use the saved factor; different Hosts do not affect each other. When the current Web component navigates to another Host, the page zoom factor of the target Host is used instead of continuing to use the factor of the original Host.
+> - To use the same factor for web pages of different Hosts, call this API again for the current Web component through [onPageBegin](./arkts-basic-components-web-events.md#onpagebegin) when the web page starts loading; the factor of the original Host is not automatically applied to the target Host.
+> - [zoomControlAccess](./arkts-basic-components-web-attributes.md#zoomcontrolaccess22) is the user zoom switch of the Web component: when set to `true`, the user can adjust the page zoom factor through Ctrl+'-/+' or Ctrl+mouse wheel/touchpad; when set to `false`, the above user operations are invalid. This switch does not restrict the programmatic setting of this API.
+> - To adjust the page layout by a specified factor, it is recommended to use this API; [zoom](#zoom), [zoomIn](#zoomin), and [zoomOut](#zoomout) are suitable for visual zoom, and [textZoomRatio](./arkts-basic-components-web-attributes.md#textzoomratio9) is suitable for text zoom. The three are independent of each other.
+> - This API must be called after the Controller is associated with the Web component, and there is no need to wait for the web page to finish loading. If the browser instance has not been created, the set factor is applied after the zoom controller becomes available.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ---- | ---- | ---- |
+| zoomFactor | number | Yes | Page zoom factor to set. `1` indicates no zoom, less than `1` indicates zoom out, and greater than `1` indicates zoom in. The value range is [0.25, 5]; finite values outside the range are clipped to the boundary. |
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**Example**
+
+The following example sets the page zoom factor of the current web page through a button.
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('set zoom factor to 1.5')
+        .onClick(() => {
+          this.controller.setZoomFactor(1.5);
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+The following example applies the target factor to the web page loaded for the first time, and sets the factor again during the page start loading phase when the same Web component switches to a different Host.
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebZoomAcrossHosts {
+  private controller: webview.WebviewController = new webview.WebviewController();
+  private controllerAttached: boolean = false;
+  private targetFactor: number = 1.5;
+
+  private applyTargetFactor(): void {
+    if (this.controllerAttached) {
+      this.controller.setZoomFactor(this.targetFactor);
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Button('Web page A').onClick(() => this.controller.loadUrl('https://www.example.com'))
+        Button('Web page B').onClick(() => this.controller.loadUrl('https://www.example.org'))
+      }
+
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .onControllerAttached(() => {
+          this.controllerAttached = true;
+          this.applyTargetFactor();
+        })
+        .onPageBegin(() => {
+          this.applyTargetFactor();
+        })
+        .height('80%')
+    }
+  }
+}
+```
+
+## getZoomFactor
+
+getZoomFactor(): number
+
+Obtains the page zoom factor of the current web page.
+
+> **Note:**
+>
+> - This API returns the page zoom factor that is actually in effect for the current Web component. This factor may be set by this Controller through [setZoomFactor](#setzoomfactor), or adjusted by the user through Ctrl+'-/+' or Ctrl+mouse wheel/touchpad when `zoomControlAccess` is enabled, and may also be affected by zoom operations of other Web components on the same Host. Therefore, it is not necessarily equal to the value last set by this Controller.
+> - When the browser instance has not been created yet, `getZoomFactor` returns the default value `1.0` and does not return the setting value that is yet to be applied.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Return value**
+
+| Type | Description |
+| ---- | ---- |
+| number | Current page zoom factor. `1` indicates no zoom, a value less than `1` indicates zooming out, and a value greater than `1` indicates zooming in. The value range is [0.25, 5]. |
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**Example**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('get zoom factor')
+        .onClick(() => {
+          console.info(`zoom factor: ${this.controller.getZoomFactor()}`);
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getWebId
 
 getWebId(): number
@@ -2821,7 +2964,6 @@ struct WebComponent {
 ```
 
 You can customize **User-Agent** based on the default **User-Agent**.
-
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -3295,7 +3437,6 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -3384,7 +3525,6 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -3406,7 +3546,6 @@ Scroll Test
 </body>
 </html>
 ```
-
 ## scrollByWithResult<sup>12+</sup>
 
 scrollByWithResult(deltaX: number, deltaY: number): boolean
@@ -3474,7 +3613,6 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -3496,7 +3634,6 @@ Scroll Test
 </body>
 </html>
 ```
-
 ## slideScroll
 
 slideScroll(vx:number, vy:number): void
@@ -3550,7 +3687,6 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -3730,7 +3866,6 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -3869,7 +4004,7 @@ struct WebComponent {
 
 removeCache(clearRom: boolean): void
 
-Removes all resource caches generated by Webview in the app.
+Clears the resource cache associated with the current WebView context.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -4016,7 +4151,6 @@ struct WebComponent {
   }
 }
 ```
-
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -4215,57 +4349,55 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 **Example**
 
 1. To perform operations on files, you must first import the **fs** module. For details, see [File Management](../apis-core-file-kit/js-apis-file-fs.md).
+   ```ts
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { fileIo } from '@kit.CoreFileKit';
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('serializeWebState')
-        .onClick(() => {
-          try {
-            let state = this.controller.serializeWebState();
-            let path:string | undefined = AppStorage.get("cacheDir");
-            if (path) {
-              path += '/WebState';
-              // Synchronously open a file.
-              let file = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
-              fileIo.writeSync(file.fd, state.buffer);
-              fileIo.closeSync(file.fd);
-            }
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+     build() {
+       Column() {
+         Button('serializeWebState')
+           .onClick(() => {
+             try {
+               let state = this.controller.serializeWebState();
+               let path:string | undefined = AppStorage.get("cacheDir");
+               if (path) {
+                 path += '/WebState';
+                 // Open the file synchronously.
+                 let file = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+                 fileIo.writeSync(file.fd, state.buffer);
+                 fileIo.closeSync(file.fd);
+               }
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
 2. Modify the **EntryAbility.ets** file.
 
-Obtain the path of the application cache file.
+   Obtain the path of the application cache file.
+   ```ts
+   // xxx.ets
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
-```ts
-// xxx.ets
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        // Data synchronization between the UIAbility component and the page can be implemented by binding cacheDir to the AppStorage object.
-        AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
-    }
-}
-```
+   export default class EntryAbility extends UIAbility {
+       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+           // Bind cacheDir to the AppStorage object to synchronize data between the UIAbility component and the Page.
+           AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
+       }
+   }
+   ```
 
 ## restoreWebState
 
@@ -4295,66 +4427,64 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 **Example**
 
 1. To perform operations on files, you must first import the **fs** module. For details, see [File Management](../apis-core-file-kit/js-apis-file-fs.md).
+   ```ts
+   // xxx.ets
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { fileIo } from '@kit.CoreFileKit';
 
-```ts
-// xxx.ets
-import { webview } from '@kit.ArkWeb';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
+   @Entry
+   @Component
+   struct WebComponent {
+     controller: webview.WebviewController = new webview.WebviewController();
 
-@Entry
-@Component
-struct WebComponent {
-  controller: webview.WebviewController = new webview.WebviewController();
-
-  build() {
-    Column() {
-      Button('RestoreWebState')
-        .onClick(() => {
-          try {
-            let path: string | undefined = AppStorage.get("cacheDir");
-            if (path) {
-              path += '/WebState';
-              // Synchronously open a file.
-              let file = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE);
-              let stat = fileIo.statSync(path);
-              let size = stat.size;
-              let buf = new ArrayBuffer(size);
-              fileIo.read(file.fd, buf, (err, readLen) => {
-                if (err) {
-                  console.error("console error with error message: " + err.message + ", error code: " + err.code);
-                } else {
-                  console.info("read file data succeed");
-                  this.controller.restoreWebState(new Uint8Array(buf.slice(0, readLen)));
-                  fileIo.closeSync(file);
-                }
-              });
-            }
-          } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-          }
-        })
-      Web({ src: 'www.example.com', controller: this.controller })
-    }
-  }
-}
-```
+     build() {
+       Column() {
+         Button('RestoreWebState')
+           .onClick(() => {
+             try {
+               let path: string | undefined = AppStorage.get("cacheDir");
+               if (path) {
+                 path += '/WebState';
+                 // Open the file synchronously.
+                 let file = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE);
+                 let stat = fileIo.statSync(path);
+                 let size = stat.size;
+                 let buf = new ArrayBuffer(size);
+                 fileIo.read(file.fd, buf, (err, readLen) => {
+                   if (err) {
+                     console.error("console error with error message: " + err.message + ", error code: " + err.code);
+                   } else {
+                     console.info("read file data succeed");
+                     this.controller.restoreWebState(new Uint8Array(buf.slice(0, readLen)));
+                     fileIo.closeSync(file);
+                   }
+                 });
+               }
+             } catch (error) {
+               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+         Web({ src: 'www.example.com', controller: this.controller })
+       }
+     }
+   }
+   ```
 
 2. Modify the **EntryAbility.ets** file.
 
-Obtain the path of the application cache file.
+   Obtain the path of the application cache file.
+   ```ts
+   // xxx.ets
+   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
-```ts
-// xxx.ets
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    // Data synchronization between the UIAbility component and the page can be implemented by binding cacheDir to the AppStorage object.
-    AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
-  }
-}
-```
+   export default class EntryAbility extends UIAbility {
+     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+       // Bind cacheDir to the AppStorage object to synchronize data between the UIAbility component and the Page.
+       AppStorage.setOrCreate("cacheDir", this.context.cacheDir);
+     }
+   }
+   ```
 
 ## customizeSchemes
 
@@ -4870,7 +5000,7 @@ Prefetches resources in the background for a page that is likely to be accessed 
 | ------------------| --------------------------------| ---- | ------------- |
 | url               | string                          | Yes    | URL to preload.|
 | additionalHeaders | Array\<[WebHeader](./arkts-apis-webview-i.md#webheader)> | No    | Additional HTTP request headers for the URL.<br>Default value: [] |
-| prefetchOptions | [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md) | No    | Options for customizing the prefetch behavior.<br>The minimum interval between two prefetches is 500 ms. By default, Cache-Control: no-store in the response header is not ignored.|
+| prefetchOptions | [PrefetchOptions](./arkts-apis-webview-PrefetchOptions.md) | No    | Options used to customize the prefetch behavior. <br>The default minimum interval between two prefetches is 500 ms, and the Cache-Control: no-store in the response header is not ignored by default.|
 
 **Error codes**
 
@@ -5432,6 +5562,7 @@ For details about the default **User-Agent** definition, application scenarios, 
 | ---------------| ------- | ---- | ------------- |
 | userAgent      | string  | Yes  | Information about the custom user agent. It is recommended that you obtain the current default user agent through [getDefaultUserAgent](#getdefaultuseragent14) and then customize the obtained user agent.|
 | hosts      | Array\<string>  | Yes  | List of domain names related to the custom user agent. Only the latest list is retained each time the API is called. The maximum number of entries is 20,000, and the excessive entries are automatically truncated.|
+
 
 **Example**
 
@@ -6179,7 +6310,6 @@ struct WebComponent {
   }
 }
 ```
-
 ## getRenderProcessMode<sup>12+</sup>
 
 static getRenderProcessMode(): RenderProcessMode
@@ -6193,6 +6323,7 @@ Obtains the ArkWeb render subprocess mode.
 | Type                                     | Description                                                        |
 | ----------------------------------------- | ------------------------------------------------------------ |
 | [RenderProcessMode](./arkts-apis-webview-e.md#renderprocessmode12) | Render subprocess mode.<br>You can call **getRenderProcessMode()** to obtain the ArkWeb child render process mode of the current device. The enumerated value **0** indicates the single child render process mode, and **1** indicates the multi-child render process mode.<br>If the obtained value is not an enumerated value of **RenderProcessMode**, the multi-render subprocess mode is used by default.|
+
 
 **Example**
 
@@ -6394,7 +6525,6 @@ struct WebComponent {
   }
 }
 ```
-
 ## isIncognitoMode<sup>11+</sup>
 
 isIncognitoMode(): boolean
@@ -6811,7 +6941,6 @@ struct Index {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -6881,7 +7010,6 @@ struct WebComponent {
   }
 }
 ```
-
 HTML file to be loaded:
 
 ```html
@@ -6954,7 +7082,6 @@ struct WebComponent {
   }
 }
 ```
-
 HTML file to be loaded:
 
 ```html
@@ -7407,7 +7534,6 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
 
 **Example**
-
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -7673,7 +7799,6 @@ The API is recommended for use in conjunction with dynamic components. Employ of
 3. Write a component for generating bytecode caches. In this example, the local JavaScript resource content is read through the file reading API from a local file in the **rawfile** directory.
 
    <!--code_no_check-->
-
    ```ts
    // PrecompileWebview.ets
    import { BuilderData } from "./DynamicComponent";
@@ -7721,7 +7846,6 @@ The API is recommended for use in conjunction with dynamic components. Employ of
 4. Compile the code of the service component.
 
    <!--code_no_check-->
-
    ```ts
    // BusinessWebview.ets
    import { BuilderData } from "./DynamicComponent";
@@ -7765,7 +7889,6 @@ The API is recommended for use in conjunction with dynamic components. Employ of
 6. Use the component on the page.
 
    <!--code_no_check-->
-
    ```ts
    // Index.ets
    import { webview } from '@kit.ArkWeb';
@@ -8080,7 +8203,7 @@ Obtains the full drawing result of the web page.
 > - This API does not support concurrent calls.
 >
 > - Only supports taking snapshots of resources on the rendering process: static images and text.
->
+> 
 > - If the page contains a video, a placeholder image of the video is displayed in the snapshot. If there is no placeholder image, a blank area is displayed.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -8167,7 +8290,6 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 **Example**
 
 When appropriate, use this API in conjunction with dynamic components. Offline **Web** components are used to inject resources into the engine's memory cache, and at the appropriate time, the service **Web** components load and utilize these resources. The following is a code example:
-
 1. First, store the [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md) in [localStorage](../../ui/state-management/arkts-localstorage.md) in EntryAbility.
 
    ```ts
@@ -8247,7 +8369,6 @@ When appropriate, use this API in conjunction with dynamic components. Offline *
 3. Write the component code for injecting resources. In this example, the local resource content reads the local file in the **rawfile** directory through the file reading API.
 
    <!--code_no_check-->
-
    ```ts
    // InjectWebview.ets
    import { webview } from '@kit.ArkWeb';
@@ -8302,7 +8423,6 @@ When appropriate, use this API in conjunction with dynamic components. Offline *
 4. Compile the code of the service component.
 
    <!--code_no_check-->
-
    ```ts
    // BusinessWebview.ets
    import { BuilderData } from "./DynamicComponent";
@@ -8359,9 +8479,7 @@ When appropriate, use this API in conjunction with dynamic components. Offline *
    ```
 
 6. Use the component on the page.
-
    <!--code_no_check-->
-
    ```ts
    // Index.ets
    import { webview } from '@kit.ArkWeb';
@@ -8575,7 +8693,6 @@ Sets a URL trustlist for the Web. Only URLs in the trustlist are allowed to be l
 | urlTrustList | string | Yes | URL trustlist, configured in JSON format. The maximum size is 10 MB.<br/>The trustlist setting API uses an overwrite mode. When the API is called multiple times, the last setting takes effect.<br/>When this parameter is set to an empty string, the trustlist is canceled and access to all URLs is allowed.<br/>JSON format example:<br/>{<br/>&nbsp;&nbsp;"UrlPermissionList":&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"https",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example1.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;443,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"pathA/pathB"<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"http",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example2.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;80,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"test1/test2/test3"<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;]<br/>} |
 
 **Parameters in JSON format**:
-
 | Name  | Type| Mandatory| Description                 |
 | -------- | -------- | ---- | ------------------------- |
 | scheme | string   | No| Optional parameter. The supported protocols are HTTP and HTTPS.|
@@ -8593,7 +8710,6 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
 
 **Example**
-
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -8661,34 +8777,29 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
 Sets a path list. When the file protocol accesses resources in the path list, cross-origin access to local files and other online resources is allowed. In addition, when a path list is set, the file protocol only allows access to resources in the path list. Typical use case: used when the **Web** component needs to be allowed to access local resource files across origins while restricting the access scope to ensure security. (The behavior of [fileAccess](./arkts-basic-components-web-attributes.md#fileaccess) will be overridden by the behavior of this API.)
-
+ 
 Using setPathAllowingUniversalAccess to relax cross-origin access restrictions on directories is a high-risk operation. Based on the principle of least privilege, the paths for el1 and el2 are fixed. The paths in the path list must conform to one of the following path formats:
 
 1. A subdirectory of the app file directory. (The app file directory is obtained through [Context.filesDir](../apis-ability-kit/js-apis-inner-application-context.md#properties) in Ability Kit.) For example:
 
-* /data/storage/el2/base/files/example
-
-* /data/storage/el2/base/haps/entry/files/example
+   * /data/storage/el2/base/files/example
+   * /data/storage/el2/base/haps/entry/files/example
 
 2. The app resource directory or its subdirectory. (The app resource directory is obtained through [Context.resourceDir](../apis-ability-kit/js-apis-inner-application-context.md#properties) in Ability Kit.) For example:
 
-* /data/storage/el1/bundle/entry/resource/resfile
-
-* /data/storage/el1/bundle/entry/resource/resfile/example
+   * /data/storage/el1/bundle/entry/resources/resfile
+   * /data/storage/el1/bundle/entry/resources/resfile/example
 
 3. Since API version 21, the app cache directory and its subdirectory are also included. (The app cache directory is obtained through [Context.cacheDir](../apis-ability-kit/js-apis-inner-application-context.md#properties) in Ability Kit.) For example:
 
-* /data/storage/el2/base/cache
-
-* /data/storage/el2/base/haps/entry/cache/example
-
-* The **cache/web** directory is not allowed. If it is included, an exception with the code **401** will be thrown. If the **cache** directory is set, **cache/web** cannot be accessed.
+   * /data/storage/el2/base/cache
+   * /data/storage/el2/base/haps/entry/cache/example
+   * The **cache/web** directory is not allowed. If it is included, an exception with the code **401** will be thrown. If the **cache** directory is set, **cache/web** cannot be accessed.
 
 4. Since API version 21, the app temporary directory and its subdirectory are also included. (The app temporary directory is obtained through [Context.tempDir](../apis-ability-kit/js-apis-inner-application-context.md#properties) in Ability Kit.) For example:
 
-* /data/storage/el2/base/temp
-
-* /data/storage/el2/base/haps/entry/temp/example
+   * /data/storage/el2/base/temp
+   * /data/storage/el2/base/haps/entry/temp/example
 
 If a path in the list is not of the preceding paths, error code 401 is reported and the path list fails to be set. When the path list is set to empty, the accessible files for the file protocol are subject to the behavior of the [fileAccess](./arkts-basic-components-web-attributes.md#fileaccess).
 
@@ -8747,7 +8858,6 @@ struct WebComponent {
 ```
 
 Load the HTML file, which is located in the application resource directory **resource/resfile/index.html**.
-
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -8794,9 +8904,7 @@ Load the HTML file, which is located in the application resource directory **res
 ```
 
 In the HTML file, use the file protocol to access the local JS file through **XMLHttpRequest**. The JS file is stored in **resource/resfile/js/script.js**.
-
 <!--code_no_check-->
-
 ```javascript
 const body = document.body;
 const element = document.createElement('div');
@@ -8923,7 +9031,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Parameter string is too long. 3.Parameter verification failed. |
 
 **Example**
-
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -9185,9 +9292,7 @@ struct WebComponent {
   }
 }
 ```
-
   HTML file to be loaded:
-
   ```html
   <!-- index.html -->
   <!DOCTYPE html>
@@ -9260,7 +9365,6 @@ struct WebComponent {
   }
 }
 ```
-
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -9358,7 +9462,7 @@ Checks whether the current **WebViewController** is bound to a **Web** component
 
 | Type        | Description                |
 | ------------ | -------------------- |
-| [ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20) | Attach status of **WebViewController** and the **Web** component.|
+| [ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20) | Binding state between WebViewController and the Web component. |
 
 **Example**
 Click the button to obtain the attach status of the current **WebViewController** and output logs.
@@ -9392,7 +9496,6 @@ struct WebComponent {
   }
 }
 ```
-
 ## on('controllerAttachStateChange')<sup>20+</sup>
 
 on(type: 'controllerAttachStateChange', callback: Callback&lt;ControllerAttachState&gt;): void
@@ -9406,7 +9509,7 @@ Registers the attach state event of **WebViewController**, which obtains the att
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Attach state event of **WebViewController**, whose value is fixed to **controllerAttachStateChange**.|
-| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | Yes| Callback triggered when the attach state of **WebViewController** changes.|
+| callback | Callback<[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)> | Yes | Callback invoked when the WebviewController binding state changes. |
 
 **Example**
 
@@ -9425,7 +9528,7 @@ Deregisters the attach state event of **WebViewController**. After the deregistr
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Attach state event of **WebViewController**, whose value is fixed to **controllerAttachStateChange**.|
-| callback | Callback<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | No| Callback triggered when the attach state of **WebViewController** changes. By default, this parameter is left blank. If **Callback** is specified, only the specified callback is deregistered. Otherwise, all callbacks will be deregistered.<br>If **null** or **undefined** is passed, error code **401** is thrown.|
+| callback | Callback<[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)> | No | Callback function invoked when the WebViewController binding state changes. By default, no callback function is provided. If a Callback is provided, only that specific callback is unregistered. If no Callback is provided, all callbacks are unregistered.<br>Throws error code 401 when null or undefined is passed in. |
 
 **Example**
 
@@ -9481,12 +9584,11 @@ struct WebComponent {
   }
 }
 ```
-
 ## waitForAttached<sup>20+</sup>
 
 waitForAttached(timeout: number):Promise&lt;ControllerAttachState&gt;
 
-Asynchronously waits for the **WebViewController** to be attached to the **Web** component. If the attachment is complete or times out, a callback is triggered to return the current [ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20) through a promise.
+Asynchronously waits for the **WebViewController** to be attached to the **Web** component. If the attachment is complete or times out, a callback is triggered to return the current [ControllerAttachState](./arkts-apis-webview-e.md) through a promise.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -9500,7 +9602,8 @@ Asynchronously waits for the **WebViewController** to be attached to the **Web**
 
 | Type                          | Description                         |
 | ------------------------------ | ----------------------------- |
-| Promise<[ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20)> | Promise used to return the current [ControllerAttachState](./arkts-apis-webview-i.md#controllerattachstate20).|
+| Promise<[ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20)> | Promise instance, returns the current [ControllerAttachState](./arkts-apis-webview-e.md#controllerattachstate20) state. |
+
 
 **Example**
 
@@ -9548,7 +9651,6 @@ static setWebDebuggingAccess(webDebuggingAccess: boolean, port: number): void
 Sets whether to enable wireless web debugging. By default, wireless web debugging is disabled.
 
 * If no port is specified, this API is equivalent to the [setWebDebuggingAccess](#setwebdebuggingaccess) API. In this case, ArkWeb starts a local domain socket listener.
-
 * When a port is specified, ArkWeb starts a TCP socket listener. In this case, you can debug the web page wirelessly. For details, see [Wireless Debugging](../../web/web-debugging-with-devtools.md#wireless-debugging).
 
 A port number smaller than 1024 is a well-known or system port and can be enabled only with privileges in the operating system. Therefore, the value of port must be greater than 1024. Otherwise, the API throws an exception.
@@ -9562,7 +9664,8 @@ NOTE: Enabling web debugging allows users to check and modify the internal statu
 | Name             | Type   | Mandatory  |  Description|
 | ------------------ | ------- | ---- | ------------- |
 | webDebuggingAccess | boolean | Yes  | Sets whether to enable web debugging.<br>The value **true** indicates that web page debugging is enabled, and **false** indicates the opposite.|
-| port               | number  | Yes  | Specifies the TCP port number of the DevTools service. If no port is specified, this API is equivalent to the [setWebDebuggingAccess] (#setwebdebuggingaccess) API.<br>Value range: (1024, 65535]<br>If the value of port is within the range of [0, 1024], the **BusinessError** exception is thrown. The error code is **17100023**.|
+| port               | number  | Yes  | Specifies the TCP port number of the DevTools service. If no port is specified, this API is equivalent to the [setWebDebuggingAccess](#setwebdebuggingaccess) API.<br>Value range: (1024, 65535]<br>If the value of port is within the range of [0, 1024], the **BusinessError** exception is thrown. The error code is **17100023**.|
+
 
 **Error codes**
 
@@ -9652,7 +9755,7 @@ Obtains the element type of the area being clicked.
 
 > **NOTE**
 >
-> This API is supported since API version 11 and deprecated since API version 18. You are advised to use [getLastHitTest](#getlasthittest18) instead.
+> This API is supported since API version 9 and deprecated since API version 18. You are advised to use [getLastHitTest](#getlasthittest18) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -9707,7 +9810,7 @@ Obtains the element information of the area being clicked.
 
 > **NOTE**
 >
-> This API is supported since API version 11 and deprecated since API version 18. You are advised to use [getLastHitTest](#getlasthittest18) instead.
+> This API is supported since API version 9 and deprecated since API version 18. You are advised to use [getLastHitTest](#getlasthittest18) instead.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -10063,9 +10166,9 @@ struct WebComponent {
               let info = this.controller.getBlanklessInfoWithKey('https://www.example.com/page1');
               if (info.errCode == webview.WebBlanklessErrorCode.SUCCESS) {
                 if (info.similarity >= 0.5 && info.loadingTime < 1000) {
-                  this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', true);
+                  this.controller.setBlanklessLoadingWithKey('https://www.example.com/page1', true);
                 } else {
-                  this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', false);
+                  this.controller.setBlanklessLoadingWithKey('https://www.example.com/page1', false);
                 }
               } else {
                 console.info('getBlankless info err');
@@ -10136,9 +10239,9 @@ struct WebComponent {
               let info = this.controller.getBlanklessInfoWithKey('https://www.example.com/page1');
               if (info.errCode == webview.WebBlanklessErrorCode.SUCCESS) {
                 if (info.similarity >= 0.5 && info.loadingTime < 1000) {
-                  this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', true);
+                  this.controller.setBlanklessLoadingWithKey('https://www.example.com/page1', true);
                 } else {
-                  this.controller.setBlanklessLoadingWithKey('http://www.example.com/page1', false);
+                  this.controller.setBlanklessLoadingWithKey('https://www.example.com/page1', false);
                 }
               } else {
                 console.info('getBlankless info err');
@@ -10218,7 +10321,7 @@ struct WebComponent {
                     // Data monitoring.
                   },
                 };
-                this.controller.setBlanklessLoadingWithParams('http://www.example.com/page1', param);
+                this.controller.setBlanklessLoadingWithParams('https://www.example.com/page1', param);
               } else {
                 console.info('getBlankless info err');
               }
@@ -10420,7 +10523,6 @@ struct WebComponent {
 ```
 
 HTML file to be loaded:
-
 ```html
 <!--index.html-->
 <!DOCTYPE html>
@@ -10614,7 +10716,6 @@ struct WebComponent {
   }
 }
 ```
-
 ## getSiteIsolationMode<sup>21+</sup>
 
 static getSiteIsolationMode(): SiteIsolationMode
@@ -10628,6 +10729,7 @@ Queries the currently effective site isolation mode.
 | Type                                     | Description                                                        |
 | ----------------------------------------- | ------------------------------------------------------------ |
 | [SiteIsolationMode](./arkts-apis-webview-e.md#siteisolationmode21) | Site isolation mode.<br>getSiteIsolationMode() queries the currently effective site isolation mode.|
+
 
 **Example**
 
@@ -10652,20 +10754,20 @@ struct WebComponent {
   }
 }
 ```
-
 ## setSiteIsolationMode<sup>21+</sup>
 
 setSiteIsolationMode(mode: SiteIsolationMode): void
 
 Sets the site isolation mode. The site isolation mechanism isolates websites from different origins in different rendering processes to reduce the cross-domain attack surface. For example, on devices such as PCs, when site isolation mode is not enabled, the original process model assigns one rendering process per tab. After site isolation is enabled, iframes from different origins within a tab can run in independent rendering processes.
 
-For third-party applications that load only trusted web pages, you can disable this functionality to improve performance, reduce memory usage, and reduce interception of cross-domain access. The default value varies according to the device. [SiteIsolationMode.STRICT](./arkts-apis-webview-e.md#siteisolationmode21) is used for PCs and tablets, and [SiteIsolationMode.PARTIAL](./arkts-apis-webview-e.md#siteisolationmode21) is used for phones. In [Secure Shield mode](../../web/web-secure-shield-mode.md), strict site isolation is used.
+For third-party applications that load only trusted web pages, you can disable this functionality to improve performance, reduce memory usage, and reduce interception of cross-domain access. The default value varies according to the device. [SiteIsolationMode.STRICT](./arkts-apis-webview-e.md#siteisolationmode21) is used for PCs and tablets, and [SiteIsolationMode.PARTIAL](./arkts-apis-webview-e.md#siteisolationmode21) is used for phones. In [Secure Shield mode](../..//web/web-secure-shield-mode.md), strict site isolation is used.
 
 > **NOTE**
 >
 > Strict site isolation cannot be set in single-process mode.
 >
 > This API can be called only once during initialization. The site isolation mode cannot be repeatedly changed.
+
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -10684,6 +10786,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | 17100001 |Init error. Possible causes: 1. Site Isolation mode is already set by the developer. 2. Site Isolation mode cannot be strict in single-render-process mode. 3. Site Isolation mode cannot be changed while Secure Shield mode is active.  |
 
 **Example**
+
 
 ```ts
 // xxx.ets
@@ -10741,7 +10844,6 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
-
 ## setSoftKeyboardBehaviorMode<sup>22+</sup>
 
 setSoftKeyboardBehaviorMode(mode: WebSoftKeyboardBehaviorMode): void
@@ -10804,7 +10906,6 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
 
 **Example**
-
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -11178,7 +11279,6 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | 17100001 | Initialization error. The WebviewController must be associated with a Web component.|
 
 **Example**
-
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -11431,6 +11531,9 @@ struct WebComponent {
         .onControllerAttached(() => {
           // Enable the error page feature for mainframe and subframe.
           this.controller.setErrorPageEnabled(true, true);
+          // Query whether the subframe error page feature is enabled.
+          let isSubframeEnabled: boolean = this.controller.getSubframeErrorPageEnabled();
+          console.info("Subframe error page enabled: " + isSubframeEnabled);
         })
         .onOverrideErrorPage((event) => {
           if (event.request.isMainFrame()) {
@@ -11458,7 +11561,9 @@ struct WebComponent {
 </html>
 ```
 
-> **Example description:** The `iframe_error.html` file used in the example must be placed in the `resources/rawfile/` directory of the app resources. This HTML file contains an iframe that loads a failed URL, used to trigger the subframe error page.
+> **Example description:**
+>
+> The `iframe_error.html` file used in the example must be placed in the `resources/rawfile/` directory of the app resources. This HTML file contains an iframe that loads a failed URL, used to trigger the subframe error page.
 
 ## getSubframeErrorPageEnabled
 
@@ -11488,6 +11593,44 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 **Example**
 
+For the complete sample code, see [setErrorPageEnabled](#seterrorpageenabled).
+
+## enableAutoReload
+
+enableAutoReload(enable: boolean): void
+
+Sets whether to enable automatic reloading of the error page.
+
+When enabled, the Web component automatically retries loading when a network error occurs. The interval between each retry is: 1s → 5s → 30s → 1min → 5min → 10min → 30min. It stops after a maximum of 7 retries.
+
+> **Note:**
+>
+> - Only network errors trigger automatic reloading. The following are excluded: certificate errors, SSL (Secure Sockets Layer) protocol errors, authentication errors, POST requests, non-HTTP(S) protocols, and errors intercepted by the client.
+> - Automatic reloading does not affect the [onOverrideErrorPage](./arkts-basic-components-web-events.md#onoverrideerrorpage20) callback.
+> - When automatic reloading is triggered, the [onErrorReceive](./arkts-basic-components-web-events.md#onerrorreceive) callback is invoked again on each retry.
+
+**Since:** 26.1.0
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | ------- | ---- | -------------------------------------- |
+| enable | boolean | Yes | Whether to enable automatic reloading. **true**: enabled; **false**: disabled. |
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**Example**
+
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -11499,22 +11642,45 @@ struct WebComponent {
 
   build() {
     Column() {
-      Web({ src: $rawfile("iframe_error.html"), controller: this.controller })
+      Web({ src: 'www.example.com', controller: this.controller })
         .onControllerAttached(() => {
-          // Enable the error page feature for mainframe and subframe.
-          this.controller.setErrorPageEnabled(true, true);
-          // Check whether the subframe error page feature is enabled.
-          let isSubframeEnabled: boolean = this.controller.getSubframeErrorPageEnabled();
-          console.info("Subframe error page enabled: " + isSubframeEnabled);
-
-          // Enable only the mainframe error page feature, not the subframe.
-          this.controller.setErrorPageEnabled(true, false);
-          let isSubframeEnabled2: boolean = this.controller.getSubframeErrorPageEnabled();
-          console.info("Subframe error page enabled after disable: " + isSubframeEnabled2);
+          // Enable automatic reload of the error page.
+          this.controller.enableAutoReload(true);
+          // Query whether it is enabled.
+          let isEnabled: boolean = this.controller.isAutoReloadEnabled();
+          console.info("Automatic reload enabled: " + isEnabled);
         })
     }
   }
 }
 ```
 
-> **Example description:** The `iframe_error.html` file used in the example is the same as that in the [setErrorPageEnabled](#seterrorpageenabled) example, and must be placed in the `resources/rawfile/` directory of the app resources.
+## isAutoReloadEnabled
+
+isAutoReloadEnabled(): boolean
+
+Obtains whether automatic reloading of error pages is enabled.
+
+**Since:** 26.1.0
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type                 | Description                      |
+| -------------------- | ------------------------- |
+| boolean | Whether automatic reloading is enabled. If enabled, returns true; otherwise, returns false.|
+
+**Error codes**
+
+For details about the error codes, see [Webview Error Codes](errorcode-webview.md).
+
+| ID | Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**Example**
+
+For the complete sample code, see [enableAutoReload](#enableautoreload).

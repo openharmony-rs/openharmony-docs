@@ -54,3 +54,5 @@
   <!--DelEnd-->
   - [reminderAgentManager错误码](errorcode-reminderAgentManager.md)
   - [workScheduler错误码](errorcode-workScheduler.md)
+- 附录<!--background-tasks-appendix-->
+  - [长时任务主类型与子类型对照表](js-apis-resourceschedule-backgroundTaskManager-continuousTaskTypeMapping.md)

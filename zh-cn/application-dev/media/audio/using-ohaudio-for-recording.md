@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "使用OHAudio的C API配置PCM采集与回调，控制录制流并设置低时延、耳返音效和静音策略。"
+keywords: [OHAudio, 录音数据回调, 低时延录音, 耳返音效采集, 静音打断模式, 录音流静音提示, 回声消除]
+doctype: guide
+status: active
+---
+
 # 推荐使用OHAudio开发音频录制功能(C/C++)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -248,9 +256,13 @@ OH_AudioStream_Result unsetResult = OH_AudioCapturer_SetMuteHint(audioCapturer, 
 
 ## 注意事项
 
-从API version 12开始**不再推荐**使用[OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md)的方式设置音频回调函数。若必须使用，需要注意在设置音频回调函数时，通过下面两种方式中的任意一种来设置音频回调函数，避免不可预期的行为。
+从API version 12开始**不再推荐**使用[OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md)的方式设置音频回调函数。若必须使用，请通过下面任意一种方式完成初始化，再配置回调函数。
 
-- 方式1：请确保[OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md)的每一个回调都被**自定义的回调方法**或**空指针**初始化。
+> **注意：**
+>
+> 必须完成`OH_AudioCapturer_Callbacks`结构体的初始化。未初始化的回调字段可能包含随机地址，系统触发回调时可能将其误当作回调函数执行，产生野指针并导致进程崩溃。
+
+- 方式1：请确保[OH_AudioCapturer_Callbacks](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturer-callbacks-struct.md)的每一个回调都被**自定义的回调方法**或**空指针**显式初始化。未使用的回调必须设置为空指针，不能保留未初始化的值。
 
   <!-- @[callback_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
   
@@ -283,7 +295,7 @@ OH_AudioStream_Result unsetResult = OH_AudioCapturer_SetMuteHint(audioCapturer, 
       callbacks.OH_AudioCapturer_OnError = nullptr;
   ```
 
-- 方式2：使用前，初始化并清零结构体。
+- 方式2：使用前，必须初始化并清零结构体，确保所有未配置的回调字段为空指针。
 
   <!-- @[callbackNullptr_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
   

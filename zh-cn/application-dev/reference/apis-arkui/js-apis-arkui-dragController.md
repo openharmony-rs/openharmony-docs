@@ -1,7 +1,7 @@
 # @ohos.arkui.dragController (DragController)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -817,7 +817,7 @@ struct ImageExample {
                   let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
                   if (arr.length > 0) {
                     if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.VIDEO) {
-                      const insertIndex = extraParams ?
+                      const insertIndex: number = extraParams ?
                         JSON.parse(extraParams as string).insertIndex : this.blockArr.length;
                       this.blockArr.splice(insertIndex, 0, this.uri);
                     }

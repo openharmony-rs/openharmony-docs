@@ -6,14 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-07T03:29:25.065Z pushedAt=2026-08-10T09:13:59.738Z -->
+<!-- md-trans-meta sourceCommit=99672258e158c110c5ee74a166a44dafda8d8dee translatedAt=2026-10-30T03:41:24.838Z pushedAt=2026-10-30T07:22:14.525Z nl=1 -->
 
 Starting from API version 21, you can choose to use a hardware entropy source to generate secure random numbers.
 
 Random numbers are used to generate temporary session keys and asymmetric encryption algorithm keys. In encryption and decryption, a secure random number generator must feature randomness, unrepeatability, and unpredictability.
 
 A stronger entropy source makes random numbers harder to predict or replicate, achieving true randomness.
-
 <!--Del-->You need to use HUKS for generating random numbers with hardware entropy sources. For systems or devices with a secure environment (such as TEE and secure chip), after the hardware entropy source is enabled, the secure random number (with hardware entropy source) is obtained from the TEE through HUKS as the entropy source of the algorithm library. The secure environment depends on the hardware. The implementation in the open source repository is simulated, and subject to adaptation by OEM vendors.<!--DelEnd-->
 
 You need to call the [HUKS](../../../application-dev/security/UniversalKeystoreKit/huks-overview.md) APIs to implement the hardware entropy source.
@@ -24,7 +23,7 @@ You can call APIs to:
 
 - Enable the hardware entropy source.
 
-- Generate a series of random sequences based on a seed.
+- Specify a random seed to generate a series of random sequences.
 
 It will be helpful if you have basic knowledge of encryption and decryption and understand the following basic concepts:
 
@@ -42,9 +41,14 @@ It will be helpful if you have basic knowledge of encryption and decryption and 
 
 After the hardware entropy source is set, use the **RAND_priv_bytes** API of OpenSSL to generate secure random numbers.
 
-| Algorithm| Length (Byte)|
+| Algorithm | Length (Byte)|
 | -------- | -------- |
 | CTR_DRBG | [1, INT_MAX] |
+
+## Linking Related Dynamic Libraries in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 ## How to Develop
 

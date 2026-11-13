@@ -47,4 +47,4 @@ obtainingSupported() {
 
 ## 示例代码
 
-  - [查询支持的认证能力](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - 可参考[用户认证服务](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)示例代码。

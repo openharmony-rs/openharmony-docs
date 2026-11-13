@@ -19,7 +19,7 @@ Web组件可通过[onFullScreenEnter](../reference/apis-arkweb/arkts-basic-compo
 
 可见性[visibility](../reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility)是ArkUI提供的组件通用属性。开发者可通过设置组件属性visibility的不同值，控制组件的显隐状态。
 
-<!-- @[web_full_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry1/src/main/ets/pages/Index.ets) -->
+<!-- @[web_full_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebPictureInPicture/entry1/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -29,6 +29,7 @@ import { webview } from '@kit.ArkWeb';
 struct ShortWebPage {
   controller: webview.WebviewController = new webview.WebviewController();
   CONSTANT_HEIGHT = 100;
+  @State marginTop: number = this.CONSTANT_HEIGHT;
   @State isVisible: boolean = true; // 自定义标志位isVisible，来控制是否需要显示组件
 
   build() {
@@ -123,15 +124,15 @@ let context: common.UIAbilityContext = this.getUIContext().getHostContext() as c
 
 ``` TypeScript
 onBackPress(): boolean | void {
-  if (this.isFullScreen) {
-    this.isFullScreen = false;
-    this.changeOrientation(false);
-    return true;
-  } else {
-    router.back();
-    return true;
+    if (this.isFullScreen) {
+      this.isFullScreen = false;
+      this.changeOrientation(false);
+      return true;
+    } else {
+      this.getUIContext().getRouter().back();
+      return true;
+    }
   }
-}
 ```
 
 完整示例：
@@ -140,7 +141,7 @@ onBackPress(): boolean | void {
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import { window, router } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -167,7 +168,7 @@ struct WebVideo {
       this.changeOrientation(false);
       return true;
     } else {
-      router.back();
+      this.getUIContext().getRouter().back();
       return true;
     }
   }

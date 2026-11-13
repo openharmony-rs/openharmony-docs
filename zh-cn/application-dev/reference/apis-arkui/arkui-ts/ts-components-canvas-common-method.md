@@ -310,7 +310,7 @@ measureText(text: string): TextMetrics
 
 | 类型          | 说明                                       |
 | ----------- | ---------------------------------------- |
-| [TextMetrics](#textmetrics) | 文本的尺寸信息。<br>传入异常值undefined或null时按"undefined"或"null"计算。 |
+| [TextMetrics](#textmetrics8) | 文本的尺寸信息。<br>传入异常值undefined或null时按"undefined"或"null"计算。 |
 
  **示例：**
 
@@ -3119,7 +3119,7 @@ struct Index {
 
 ![image-canvas-fill-rule-example](figures/image-canvas-fill-rule-example.png)
 
-## TextMetrics
+## TextMetrics<sup>8+</sup>
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 

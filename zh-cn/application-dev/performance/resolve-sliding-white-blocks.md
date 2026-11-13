@@ -15,7 +15,7 @@
 
 ## 优化思路
 
-[动态预加载](../reference/apis-arkui/js-apis-arkui-Prefetcher.md)会根据历史任务加载耗时情况，动态调整屏幕可视区域外数据预取数量，配合懒加载设置，可在列表不断滑动时，屏幕可视区外实时更新列表数据，通过预取和预渲染数据提升列表滑动体验。
+动态预加载[Prefetcher](../reference/apis-arkui/js-apis-arkui-Prefetcher.md)会根据历史任务加载耗时情况，动态调整屏幕可视区域外数据预取数量，配合懒加载设置，可在列表不断滑动时，屏幕可视区外实时更新列表数据，通过预取和预渲染数据提升列表滑动体验。
 
 ## 优化前代码示例
 
@@ -42,13 +42,13 @@ build() {
 }
 ```
 
-![](./figures/resolve_sliding_white_blocks_cachedCount(5).gif)
+![](./figures/resolve_sliding_white_blocks_cachedCount5.gif)
 
 处理白块问题的常用方案是使用LazyForEach的cachedCount属性来减少白块（设置cachedCount属性，可以支持列表预加载屏幕以外的Item项）。如上图所示，可以看到当用户在滑动列表时，依旧出现了很多白块。
 
 如若使用更大的cachedCount值来解决，设置`cachedCount=40`：
 
-![](./figures/resolve_sliding_white_blocks_cachedCount(40).gif)
+![](./figures/resolve_sliding_white_blocks_cachedCount40.gif)
 
 如上图所示，可以看到在滑动过程中白块确实变少了。但是新的问题出现了：与较小的cachedCount相比，首屏加载需要更长的时间，这同样影响用户使用体验。
 
@@ -72,15 +72,15 @@ Prefetcher支持应用动态自适应网络状态，通过提前下载一些图�
 
 LazyForEach懒加载可以通过使用Prefetcher来预取和预渲染数据，在使用Prefetcher后，除屏幕内显示的ListItem组件外，还会预先将屏幕可视区外的部分列表项数据进行预渲染和预取。这样当列表向下滑动时，会先显示预渲染组件，屏幕可视区外会动态调整预取范围。预取逻辑在Prefetcher的BasicPrefetcher类中实现，BasicPrefetcher支持预取和预渲染（图像解码、添加到组件树等）过程分离、自适应调整与获取范围、优先加载可视区域、以及取消不必要任务（快速滚动列表的场景下，智能取消不必要任务），其渲染过程如下：
 
-1.首先请求n条数据，并在屏幕上显示m条数据。
+1. 首先请求n条数据，并在屏幕上显示m条数据。
 
-2.当列表滑动，缓存列表项需要从屏幕可视区外进入可视区内时，此时显示预渲染组件，屏幕可视区外会动态调整预取范围，相比仅设置cachedCount提升了显示效率。
+2. 当列表滑动，缓存列表项需要从屏幕可视区外进入可视区内时，此时显示预渲染组件，屏幕可视区外会动态调整预取范围，相比仅设置cachedCount提升了显示效率。
 
-3.当列表不断滑动，屏幕可视区外实时更新列表项、更新预取数据和预渲染数据。
+3. 当列表不断滑动，屏幕可视区外实时更新列表项、更新预取数据和预渲染数据。
 
-图1 动态预加载渲染过程示意图
+   图1 动态预加载渲染过程示意图
 
-![](./figures/resolve_sliding_white_blocks_sketch_map.png)
+   ![](./figures/resolve_sliding_white_blocks_sketch_map.png)
 
 ## 优化后代码示例
 
@@ -199,7 +199,7 @@ export struct LazyForEachListPage {
 
 | cachedCount = 5                                              | cachedCount = 40                                             | 动态预加载                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------- |
-| ![](./figures/resolve_sliding_white_blocks_cachedCount(5).gif) | ![](./figures/resolve_sliding_white_blocks_cachedCount(40).gif) | ![](./figures/resolve_sliding_white_blocks_prefetch.gif) |
+| ![](./figures/resolve_sliding_white_blocks_cachedCount5.gif) | ![](./figures/resolve_sliding_white_blocks_cachedCount40.gif) | ![](./figures/resolve_sliding_white_blocks_prefetch.gif) |
 
 | 数据设置       | 首屏加载   | 滑动过程白块数量                       |
 | -------------- | -------------- | ------------------------------ |
@@ -213,13 +213,13 @@ export struct LazyForEachListPage {
 
 图2 cachedCount=5 CPU占比trace图
 
-![](./figures/resolve_sliding_white_blocks_cachedCount(5)_CPU.png)
+![](./figures/resolve_sliding_white_blocks_cachedCount5_CPU.png)
 
 cachedCount=5的CPU占比为3.96%。
 
 图3 cachedCount=40 CPU占比trace图
 
-![](./figures/resolve_sliding_white_blocks_cachedCount(40)_CPU.png)
+![](./figures/resolve_sliding_white_blocks_cachedCount40_CPU.png)
 
 cachedCount=40的CPU占比为5.04%。
 
@@ -241,13 +241,13 @@ cachedCount=40的CPU占比为5.04%。
 
 图5 cachedCount=5首屏加载时长trace图
 
-![](./figures/resolve_sliding_white_blocks_cachedCount(5)_time.png)
+![](./figures/resolve_sliding_white_blocks_cachedCount5_time.png)
 
 cachedCount=5首屏加载时长为530.4ms
 
 图6 cachedCount=40首屏加载时长trace图
 
-![](./figures/resolve_sliding_white_blocks_cachedCount(40)_time.png)
+![](./figures/resolve_sliding_white_blocks_cachedCount40_time.png)
 
 cachedCount=40首屏加载时长为1.8s
 

@@ -26,7 +26,7 @@
 | hostDeviceName<sup>15+</sup>    | string                              | 是   | 否  | 远端设备名称。若当前无远端设备，返回为空。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | 是   | 否  | 远端设备类型。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | lensEquivalentFocalLength<sup>24+</sup> | Array\<number\> | 是 | 是 | 相机镜头等效焦距。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
-| isLogicalCamera<sup>24+</sup> | boolean | 是 | 是 | 是否为逻辑摄像头（由多个物理相机组成）, true表示是逻辑摄像头，false表示是物理摄像头。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| isLogicalCamera<sup>24+</sup> | boolean | 是 | 是 | 是否为逻辑摄像头（由多个物理相机组成），true表示是逻辑摄像头，false表示是物理摄像头。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 | constituentCameraDevices<sup>24+</sup> | Array\<[CameraDevice](arkts-apis-camera-i.md#cameradevice)\> | 是 | 是 | 组成此逻辑相机的物理相机列表。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 | lensFocalLength<sup>24+</sup> | number | 是 | 是 | 镜头实际焦距。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 | minimumFocusDistance<sup>24+</sup> | number | 是 | 是 | 相机最小对焦距离。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
@@ -519,3 +519,20 @@
 | -------- | ---------- | -------- |-----| ---------- |
 | zoomRatio |   number   |   是     | 否   | 可变焦距比。 |
 | equivalentFocalLength |   number   |   是     | 否   | 当前焦距比对应的等效焦距值。 |
+
+## C2PASignatureConfig
+
+C2PA（Coalition for Content Provenance and Authenticity）签名信息，包括作者姓名和作者ID。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称     | 类型        | 只读 | 可选 | 说明                                       |
+| -------- | ---------- |----|----|------------------------------------------|
+| authorID |   string   | 否  | 是  | C2PA签名作者ID。此字段为可选。若未设置，则C2PA签名中将不包含作者ID。 |
+| authorName |   string   | 否  | 是  | C2PA签名作者姓名。此字段为可选。若未设置，则C2PA签名中将不包含作者姓名。 |

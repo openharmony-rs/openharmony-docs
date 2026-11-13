@@ -81,6 +81,6 @@ Enumerates the error codes of the AbilityRuntime module.
 | ABILITY_RUNTIME_ERROR_CODE_CROSS_APP_IN_PROCESS = 16000176 |  In [OH_ABILITY_RUNTIME_LAUNCH_MODE_IN_PROCESS](capi-modular-object-extension-manager-h.md#oh_abilityruntime_launchmode) mode, the caller and the target ability are not in the same application.<br>**Since:** 26.0.0 |
 | ABILITY_RUNTIME_ERROR_CODE_ABILITY_WRAPPER_INVALID = 16000177 |  The NativeAbility data information is invalid or incomplete.<br>**Since:** 26.0.0 |
 | ABILITY_RUNTIME_ERROR_CODE_METADATA_INVALID = 16000178 |  The type library metadata is invalid.<br>**Since:** 26.0.0 |
-| ABILITY_RUNTIME_ERROR_CODE_BUFFER_TOO_SMALL = 16000179 |  The buffer is too small.<br>**Since:** 26.1.0 |
+| ABILITY_RUNTIME_ERROR_CODE_BUFFER_TOO_SMALL = 16000179 |  The buffer is too small.<br>**Since:** 26.0.1 |
 
 

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍C++线程间数据共享场景的开发方法：支持在C++线程上调用ArkTS能力，以及在C++线程之间操作Sendable共享对象，适用于Native多线程与ArkTS混合开发的数据交互场景。"
+keywords: [C++线程, 线程间数据共享, Sendable共享对象, Native线程, 跨语言调用, ArkTS能力调用, 混合开发, 多线程]
+doctype: guide
+status: active
+---
+
 # C++线程间数据共享场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
@@ -96,7 +104,7 @@ static void* CreateEnvAndSendSendable(void*)
 
 在C++中调用ArkTS能力后，需要通过序列化和反序列化跨线程传递。napi_value不是多线程安全的，不能直接在多线程之间操作和共享。
 
-下面代码例子说明了如何序列化和反序列化传递对象，注意因为Sendable共享对象是引用传递，所以序列化不会产生另外一份拷贝数据，而是直接传递对象引用到反序列化线程，所以在性能上相比非Sendable对象的序列化和反序列化更为高效。
+以下示例演示了如何序列化和反序列化传递对象，注意因为Sendable共享对象是引用传递，所以序列化不会产生另外一份拷贝数据，而是直接传递对象引用到反序列化线程，所以在性能上相比非Sendable对象的序列化和反序列化更为高效。
 
 ArkTS文件定义。
 

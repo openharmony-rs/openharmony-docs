@@ -336,7 +336,7 @@ async function deferredPhotoCase(context: Context, surfaceId: string): Promise<v
     }
   }
 
-  // 判断是否支持连续自动变焦模式。
+  // 判断是否支持连续自动对焦模式。
   let focusModeStatus: boolean = false;
   try {
     let status: boolean = photoSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
@@ -347,7 +347,7 @@ async function deferredPhotoCase(context: Context, surfaceId: string): Promise<v
   }
 
   if (focusModeStatus) {
-    // 设置连续自动变焦模式。
+    // 设置连续自动对焦模式。
     try {
       photoSession.setFocusMode(camera.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
     } catch (error) {

@@ -110,7 +110,7 @@ Obtains the MIME type of a file.
 
 getSuggestedName(): string
 
-Obtains the suggested file name. Corresponds to `suggestedName` in the HTML [option](../../web/web-file-upload.md#custom-handling-of-file-requests-initiated-by-js-interface). If the frontend does not set suggestedName, an empty string is returned. Developers can use this return value as the default file name when building a file selector, and use it together with [getDefaultPath](#getdefaultpath23) to preset the complete file path and name.
+Obtains the suggested file name. Corresponds to `suggestedName` in the HTML [option](../../web/web-file-upload.md#custom-processing-of-file-requests-invoked-by-js-apis). If the frontend does not set suggestedName, an empty string is returned. Developers can use this return value as the default file name when building a file selector, and use it together with [getDefaultPath](#getdefaultpath23) to preset the complete file path and name.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -124,7 +124,7 @@ Obtains the suggested file name. Corresponds to `suggestedName` in the HTML [opt
 
 getDefaultPath(): string
 
-Obtains the default path of the file selector, which corresponds to **startIn** in HTML's [option](../../web/web-file-upload.md#customizing-the-file-request-initiated-by-the-javascript-api).
+Obtains the default path of the file selector, which corresponds to **startIn** in HTML's [option](../../web/web-file-upload.md#custom-processing-of-file-requests-invoked-by-js-apis).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -138,7 +138,7 @@ Obtains the default path of the file selector, which corresponds to **startIn** 
 
 getDescriptions(): Array\<string\>
 
-Obtains the optional description of each group of allowed file types. Corresponds to `description` in the HTML [option](../../web/web-file-upload.md#custom-handling-of-file-requests-initiated-by-js-interface). The returned description array corresponds one-to-one with the file type groups returned by getAcceptableFileTypes. Developers can use these descriptions as the display text for each file type group when building a file selector, helping users understand the selectable file types. If the frontend does not set description, an empty string is returned.
+Obtains the optional description of each group of allowed file types. Corresponds to `description` in the HTML [option](../../web/web-file-upload.md#custom-processing-of-file-requests-invoked-by-js-apis). The returned description array corresponds one-to-one with the file type groups returned by getAcceptableFileTypes. Developers can use these descriptions as the display text for each file type group when building a file selector, helping users understand the selectable file types. If the frontend does not set description, an empty string is returned.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -152,7 +152,7 @@ Obtains the optional description of each group of allowed file types. Correspond
 
 isAcceptAllOptionExcluded(): boolean
 
-Obtains whether the file selector excludes the option (*/*), that is, all files. Corresponds to `excludeAcceptAllOption` in the HTML [option](../../web/web-file-upload.md#custom-handling-of-file-requests-initiated-by-js-interface).
+Obtains whether the file selector excludes the option (*/*), that is, all files. Corresponds to `excludeAcceptAllOption` in the HTML [option](../../web/web-file-upload.md#custom-processing-of-file-requests-invoked-by-js-apis).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -166,7 +166,7 @@ Obtains whether the file selector excludes the option (*/*), that is, all files.
 
 getAcceptableFileTypes(): Array\<Array\<AcceptableFileType\>>
 
-Obtains the file type information. Corresponds to `types` in the HTML [option](../../web/web-file-upload.md#custom-handling-of-file-requests-initiated-by-js-interface). The return value is a two-dimensional array, where each sub-array represents a group of allowed file types. Developers should use this return value to set file type filtering rules when building a file selector, ensuring that users can only select files that meet the frontend requirements. The difference between this parameter and getAcceptType and getMimeTypes is that types supports more fine-grained file type control, allowing grouping by MIME type or file extension.
+Obtains the file type information. Corresponds to `types` in the HTML [option](../../web/web-file-upload.md#custom-processing-of-file-requests-invoked-by-js-apis). The return value is a two-dimensional array, where each sub-array represents a group of allowed file types. Developers should use this return value to set file type filtering rules when building a file selector, ensuring that users can only select files that meet the frontend requirements. The difference between this parameter and getAcceptType and getMimeTypes is that types supports more fine-grained file type control, allowing grouping by MIME type or file extension.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -175,4 +175,3 @@ Obtains the file type information. Corresponds to `types` in the HTML [option](.
 | Type             | Description       |
 | --------------- | --------- |
 | Array\<Array\<[AcceptableFileType](./arkts-basic-components-web-i.md#acceptablefiletype23)\>> | File type information, which is a two-dimensional array structure containing detailed information about multiple groups of optional file types. Corresponds to the types attribute of the HTML option. |
-<!--no_check-->

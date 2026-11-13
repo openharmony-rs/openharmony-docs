@@ -5,6 +5,7 @@
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=80458a2efe8cdf64abe6306e0832d2e2ed08da28 translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
 
 ## Basic Concepts
@@ -30,9 +31,11 @@
 
 Both IPC and RPC implement cross-process communication. IPC uses the Binder driver to implement cross-process communication in a device, while RPC uses the DSoftBus driver to implement cross-process communication across devices. Each process has its own resources and independent memory space, and one process is not allowed to access the resources and memory space of other processes. That is why cross-process communication is required.
 
-IPC and RPC use the client-server model where the client process obtains the proxy of the process where the server is located. The stub object uses the proxy to read and write data to implement inter-process communication. The proxy and stub provide a group of APIs defined by services. The proxy implements each specific request method, and the stub implements the processing method of each specific request and the content of the response data.
+IPC and RPC use the client-server model. The client process obtains a proxy for the server process and uses it to read and write data and send requests. The stub processes the requests and returns the results, enabling inter-process communication.
 
 ## Constraints
+
+### Specifications
 
 - A maximum of 200 KB data can be transferred in cross-process communication on a single device. If the amount of data to be transmitted is larger than 200 KB, use [anonymous shared memory](../reference/apis-ipc-kit/js-apis-rpc.md#ashmem8).
 

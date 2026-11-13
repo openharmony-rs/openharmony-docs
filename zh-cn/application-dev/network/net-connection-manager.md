@@ -142,8 +142,8 @@
 2. 在蜂窝网络状态差的情况下，默认网络可能会切换到Wi-Fi。
 3. 关闭Wi-Fi后，默认网络可能会切换到蜂窝网络。
 4. 关闭蜂窝网络后，默认网络可能会切换到Wi-Fi。
-5. 在Wi-Fi弱信号的情况下，默认网络可能会切换到其他Wi-Fi(存在跨网情况)。
-6. 在蜂窝网络状态差的情况下，默认网络可能会切换到其他蜂窝(存在跨网情况)。
+5. 在Wi-Fi弱信号的情况下，默认网络可能会切换到其他Wi-Fi（存在跨网情况）。
+6. 在蜂窝网络状态差的情况下，默认网络可能会切换到其他蜂窝（存在跨网情况）。
 
 本节旨在介绍监控默认网络的变化后，应用报文能够快速迁移到新默认网络上，具体做法如下。
 ### 导入connection命名空间
@@ -279,7 +279,7 @@ function socketTest() {
    此权限级别为normal，在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[访问控制-声明权限](../security/AccessToken/declare-permissions.md)声明对应权限。
 2. 查询默认网络或指定网络连接信息代码示例
    
-   通过调用[getDefaultNet](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetdefaultnet)方法，获取默认的数据网络(NetHandle)；调用[getNetCapabilities](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilities)方法，获取该NetHandle对应网络的能力信息。能力信息包含了网络类型(蜂窝网络、Wi-Fi网络、以太网网络等)、网络具体能力等网络信息。也可以调用[getConnectionProperties](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetconnectionproperties)方法，获取该NetHandle对应网络的连接信息。
+   通过调用[getDefaultNet](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetdefaultnet)方法，获取默认的数据网络（NetHandle）；调用[getNetCapabilities](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilities)方法，获取该NetHandle对应网络的能力信息。能力信息包含了网络类型（蜂窝网络、Wi-Fi网络、以太网网络等）、网络具体能力等网络信息。也可以调用[getConnectionProperties](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetconnectionproperties)方法，获取该NetHandle对应网络的连接信息。
 
     <!-- @[get_default_network_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetworkBtn.ets) -->
     
@@ -287,17 +287,17 @@ function socketTest() {
     // 从@kit.NetworkKit中导入connection命名空间。
     import { connection } from '@kit.NetworkKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    // ···
+    // ...
         let netHandleInfo:connection.NetHandle|null = null;
         // 调用getDefaultNet方法，获取默认的数据网络(NetHandle)
         connection.getDefaultNet().then((data: connection.NetHandle) => {
           if (data.netId == 0) {
-            hilog.info(0x0000, 'testTag', `don't have defaultNet`);
+            hilog.error(0x0000, 'testTag', `don't have defaultNet`);
             // 当前无默认网络时，获取的netHandler的netid为0,属于异常情况，需要额外处理
             return;
           }
           if (data) {
-            // ···
+            // ...
             hilog.info(0x0000, 'testTag', 'getDefaultNet get data: ' + JSON.stringify(data));
             // 获取netHandle对应网络的能力信息。能力信息包含了网络类型、网络具体能力等网络信息
             netHandleInfo = data;
@@ -342,19 +342,18 @@ function socketTest() {
                   }
                 }
               });
+            // 获取netHandle对应的网络的连接信息。需在获取到有效netHandle后调用。
+            connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
+              hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
+            })
           }
         });
-    
-        // 获取netHandle对应的网络的连接信息。
-        connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
-          hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
-        })
-    // ···
+      // ...
     ```
     
 3. 查询所有网络连接信息代码示例
    
-   通过调用[getAllNets](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetallnets)方法，获取所有处于连接状态的网络列表(Array\<NetHandle>)。然后遍历获取到的NetHandle数组，分别调用[getNetCapabilities](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilities)方法，获取该NetHandle对应网络的能力信息，能力信息包含了网络类型(蜂窝网络、Wi-Fi网络、以太网网络等)、网络具体能力等网络信息。也可以调用[getConnectionProperties](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetconnectionproperties)方法，获取该NetHandle对应网络的连接信息。
+   通过调用[getAllNets](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetallnets)方法，获取所有处于连接状态的网络列表（Array\<NetHandle>）。然后遍历获取到的NetHandle数组，分别调用[getNetCapabilities](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilities)方法，获取该NetHandle对应网络的能力信息，能力信息包含了网络类型（蜂窝网络、Wi-Fi网络、以太网网络等）、网络具体能力等网络信息。也可以调用[getConnectionProperties](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetconnectionproperties)方法，获取该NetHandle对应网络的连接信息。
 
     <!-- @[get_net_capabilities_and_get_connection_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/AllNetworksBtn.ets) -->
     
@@ -397,10 +396,12 @@ function socketTest() {
 
 2. 代码示例
    
-   调用[getDefaultNetSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetdefaultnetsync9)方法，获取当前默认网络的netHandle，netHandle有效的情况下，调用[getNetCapabilitiesSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilitiessync10)方法，获取NetHandle对应网络的能力信息，根据获取到的能力信息，判断networkCap数组中的值判断网络是否可用。
+   调用[getDefaultNetSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetdefaultnetsync9)方法获取当前默认网络的netHandle。若netHandle有效，再调用[getNetCapabilitiesSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilitiessync10)方法获取该NetHandle对应网络的能力信息，并根据能力信息中networkCap数组的取值判断网络是否可用。
    
-   NET_CAPABILITY_CHECKING_CONNECTIVITY表示在进行连通性判断的过程中，当不处于连通性判断过程中，且networkCap数组中包含NET_CAPABILITY_VALIDATED表示网络连通性校验通过，可以访问互联网。
-
+   NET_CAPABILITY_CHECKING_CONNECTIVITY：表示系统正在进行连通性校验，此时网络可用性尚不确定。
+   
+   NET_CAPABILITY_VALIDATED：表示连通性校验通过，当networkCap数组中不包含NET_CAPABILITY_CHECKING_CONNECTIVITY（即未处于连接性校验过程中）、且包含NET_CAPABILITY_VALIDATED时，表示网络可用，可以访问互联网。
+   
     <!-- @[NetConnection_manage_case_default_net_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetSyncBtn.ets) -->
     
     ``` TypeScript
@@ -456,7 +457,7 @@ function socketTest() {
     import { hilog } from '@kit.PerformanceAnalysisKit';
     // ...
           // 使用默认网络解析主机名以获取所有IP地址
-          connection.getAddressesByName('xxxx').then((data: connection.NetAddress[]) => {
+          connection.getAddressesByName('www.example.com').then((data: connection.NetAddress[]) => {
             hilog.info(0x0000, 'testTag', 'Successfully retrieved default network IP address: ' + JSON.stringify(data));
             // ...
           })

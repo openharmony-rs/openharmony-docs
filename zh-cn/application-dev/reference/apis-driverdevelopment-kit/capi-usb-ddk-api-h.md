@@ -45,6 +45,10 @@
 | [int32_t OH_Usb_GetDevices(struct Usb_DeviceArray *devices)](#oh_usb_getdevices) | 获取USB设备ID列表。请保证传入的指针参数是有效的，申请的设备ID数组的大小建议不超过128，以避免过度占用内存。在使用完结构体之后，需释放成员内存，否则会造成资源泄漏。获取到的USB设备ID，已通过驱动配置信息中的vid进行筛选过滤。 |
 | [int32_t OH_Usb_ControlTransfer(uint64_t deviceID, const struct UsbControlRequestSetup *setupPacket, uint8_t *data, uint32_t timeout)](#oh_usb_controltransfer) | 执行USB控制传输，该接口为同步接口。 |
 | [int32_t OH_Usb_GetNonRootHubs(struct Usb_NonRootHubArray *nonRootHub)](#oh_usb_getnonroothubs) | 查询并返回非根集线器列表。请保证传入的指针参数是有效的，申请的非根集线器ID数组的大小建议不超过128，以避免过度占用内存。在使用完结构体之后，需释放成员内存，否则会造成资源泄漏。 |
+| [UsbDdkErrCode OH_Usb_CreateDeviceMemBuffer(uint64_t deviceId, uint32_t size, uint8_t **buffer)](#oh_usb_createdevicemembuffer) | 创建设备内存缓冲区。为避免资源泄漏，请在缓冲区使用完成后调用[OH_Usb_DestroyDeviceMemBuffer](#oh_usb_destroydevicemembuffer)销毁缓冲区。 |
+| [UsbDdkErrCode OH_Usb_DestroyDeviceMemBuffer(uint8_t **buffer)](#oh_usb_destroydevicemembuffer) | 销毁设备内存缓冲区。为防止资源泄漏，请在使用完成后及时销毁缓冲区。 |
+| [UsbDdkErrCode OH_Usb_WritePipe(const struct UsbRequestPipe *pipe, uint8_t *buffer, uint32_t bufferSize, uint32_t offset, uint32_t writeLength, uint32_t *transferredLength)](#oh_usb_writepipe) | 发送管道写请求。该接口以同步方式工作，适用于中断传输和批量传输。 |
+| [UsbDdkErrCode OH_Usb_ReadPipe(const struct UsbRequestPipe *pipe, uint8_t *buffer, uint32_t bufferSize, uint32_t offset, uint32_t readLength, uint32_t *transferredLength)](#oh_usb_readpipe) | 发送管道读请求。该接口以同步方式工作，适用于中断传输和批量传输。 |
 
 ## 函数说明
 
@@ -544,4 +548,119 @@ int32_t OH_Usb_GetNonRootHubs(struct Usb_NonRootHubArray *nonRootHub)
 | -- | -- |
 | int32_t | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 查询操作成功。<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode) 权限检查失败，请检查应用已获取了ohos.permission.ACCESS_DDK_USB权限。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败，请先调用[OH_Usb_Init](#oh_usb_init)完成初始化。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参nonRootHub为空指针，请检查参数有效性。 |
 
+### OH_Usb_CreateDeviceMemBuffer()
+ 
+```c
+UsbDdkErrCode OH_Usb_CreateDeviceMemBuffer(uint64_t deviceId, uint32_t size, uint8_t **buffer)
+```
+ 
+**描述**
+ 
+创建设备内存缓冲区。为避免资源泄漏，请在缓冲区使用完成后调用[OH_Usb_DestroyDeviceMemBuffer](#oh_usb_destroydevicemembuffer)销毁缓冲区。
+ 
+**需要权限：** ohos.permission.ACCESS_DDK_USB
+ 
+**起始版本：** 26.1.0
+ 
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| uint64_t deviceId | 设备ID。 |
+| uint32_t size | 缓冲区大小，单位：Byte。 |
+| uint8_t **buffer | 数据缓冲区，通过该参数将创建的缓冲区返回给调用者。 |
+ 
+**返回：**
+ 
+| 类型 | 说明 |
+| -- | -- |
+| [UsbDdkErrCode](capi-usb-ddk-types-h.md#usbddkerrcode) | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode) 权限检查失败，请检查应用已获取了ohos.permission.ACCESS_DDK_USB权限。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败或设备驱动无效，请先调用[OH_Usb_Init](#oh_usb_init)完成初始化，并检查**deviceId**对应的设备状态。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参**buffer**为空指针，请检查参数有效性。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 内存分配失败，请检查内存大小和有效性。 |
+ 
+### OH_Usb_DestroyDeviceMemBuffer()
+ 
+```c
+UsbDdkErrCode OH_Usb_DestroyDeviceMemBuffer(uint8_t **buffer)
+```
+ 
+**描述**
+ 
+销毁设备内存缓冲区。为防止资源泄漏，请在使用完成后及时销毁缓冲区。
+ 
+**起始版本：** 26.1.0
+ 
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| uint8_t **buffer | 销毁通过[OH_Usb_CreateDeviceMemBuffer](#oh_usb_createdevicemembuffer)创建的缓冲区。 |
+ 
+**返回：**
+ 
+| 类型 | 说明 |
+| -- | -- |
+| [UsbDdkErrCode](capi-usb-ddk-types-h.md#usbddkerrcode) | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 入参**buffer**或***buffer**为空指针，或***buffer**无效，请检查参数有效性。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 解除内存映射失败，请检查缓冲区和设备状态。 |
+ 
+### OH_Usb_WritePipe()
+ 
+```c
+UsbDdkErrCode OH_Usb_WritePipe(const struct UsbRequestPipe *pipe, uint8_t *buffer, uint32_t bufferSize,
+    uint32_t offset, uint32_t writeLength, uint32_t *transferredLength)
+```
+ 
+**描述**
+ 
+发送管道写请求。该接口以同步方式工作，适用于中断传输和批量传输。
+ 
+**需要权限：** ohos.permission.ACCESS_DDK_USB
+ 
+**起始版本：** 26.1.0
+ 
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| [struct UsbRequestPipe](capi-usbddk-usbrequestpipe.md) *pipe | 用于传输数据的管道。 |
+| uint8_t *buffer | 数据缓冲区，即设备内存映射缓冲区。 |
+| uint32_t bufferSize | 缓冲区大小，单位：Byte。 |
+| uint32_t offset | 缓冲区中数据的起始位置，单位：Byte。 |
+| uint32_t writeLength | 待使用的缓冲区长度，表示从offset位置开始写入的数据长度，单位：Byte。 |
+| uint32_t *transferredLength | 输出参数，表示实际传输的数据长度，单位：Byte。仅当函数返回0时有效。 |
+ 
+**返回：**
+ 
+| 类型 | 说明 |
+| -- | -- |
+| [UsbDdkErrCode](capi-usb-ddk-types-h.md#usbddkerrcode) | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode) 权限检查失败，请检查应用已获取了ohos.permission.ACCESS_DDK_USB权限。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败，请先调用[OH_Usb_Init](#oh_usb_init)完成初始化。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 参数校验失败，请检查参数有效性。可能原因：1. **pipe**、**buffer**或**transferredLength**为空指针；<br>2. **offset**大于**bufferSize**或**offset**与**writeLength**之和大于**bufferSize**；3. **pipe**中端点的方向错误。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 拷贝存储写数据的内存失败，请检查内存大小和有效性。<br>         [USB_DDK_IO_FAILED](capi-usb-ddk-types-h.md#usbddkerrcode) 数据I/O异常，请检查参数和设备规格。<br>         [USB_DDK_TIMEOUT](capi-usb-ddk-types-h.md#usbddkerrcode) 操作超时，请检查传输参数和设备状态。 |
+ 
+### OH_Usb_ReadPipe()
+ 
+```c
+UsbDdkErrCode OH_Usb_ReadPipe(const struct UsbRequestPipe *pipe, uint8_t *buffer, uint32_t bufferSize,
+    uint32_t offset, uint32_t readLength, uint32_t *transferredLength)
+```
+ 
+**描述**
+ 
+发送管道读请求。该接口以同步方式工作，适用于中断传输和批量传输。
+ 
+**需要权限：** ohos.permission.ACCESS_DDK_USB
+ 
+**起始版本：** 26.1.0
+ 
+**参数：**
+ 
+| 参数项 | 描述 |
+| -- | -- |
+| [struct UsbRequestPipe](capi-usbddk-usbrequestpipe.md) *pipe | 用于传输数据的管道。 |
+| uint8_t *buffer | 数据缓冲区，即设备内存映射缓冲区。 |
+| uint32_t bufferSize | 缓冲区大小，单位：Byte。 |
+| uint32_t offset | 缓冲区中数据的起始位置，单位：Byte。 |
+| uint32_t readLength | 待使用的缓冲区长度，表示从offset位置开始读取的数据长度，单位：Byte。 |
+| uint32_t *transferredLength | 输出参数，表示实际传输的数据长度，单位：Byte。仅当函数返回0时有效。 |
+ 
+**返回：**
+ 
+| 类型 | 说明 |
+| -- | -- |
+| [UsbDdkErrCode](capi-usb-ddk-types-h.md#usbddkerrcode) | [USB_DDK_SUCCESS](capi-usb-ddk-types-h.md#usbddkerrcode) 调用接口成功。<br>         [USB_DDK_NO_PERM](capi-usb-ddk-types-h.md#usbddkerrcode) 权限检查失败，请检查应用已获取了ohos.permission.ACCESS_DDK_USB权限。<br>         [USB_DDK_INVALID_OPERATION](capi-usb-ddk-types-h.md#usbddkerrcode) 连接USB DDK服务失败，请先调用[OH_Usb_Init](#oh_usb_init)完成初始化。<br>         [USB_DDK_INVALID_PARAMETER](capi-usb-ddk-types-h.md#usbddkerrcode) 参数校验失败，请检查参数有效性。可能原因：1. **pipe**、**buffer**或**transferredLength**为空指针；<br>2. **offset**大于**bufferSize**或**offset**与**readLength**之和大于**bufferSize**；3. **pipe**中端点的方向错误。<br>         [USB_DDK_MEMORY_ERROR](capi-usb-ddk-types-h.md#usbddkerrcode) 拷贝存储读数据的内存失败，请检查内存大小和有效性。<br>         [USB_DDK_IO_FAILED](capi-usb-ddk-types-h.md#usbddkerrcode) 数据I/O异常，请检查参数和设备规格。<br>         [USB_DDK_TIMEOUT](capi-usb-ddk-types-h.md#usbddkerrcode) 操作超时，请检查传输参数和设备状态。 |
 

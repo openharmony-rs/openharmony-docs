@@ -33,6 +33,8 @@ type PairingState = nearlinkConstant.PairingState
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 类型 | 说明 |
@@ -49,6 +51,8 @@ type ConnectionState = nearlinkConstant.ConnectionState
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -67,6 +71,8 @@ type DeviceClass = nearlinkConstant.DeviceClass
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 类型 | 说明 |
@@ -84,6 +90,8 @@ type AcbState = nearlinkConstant.AcbState
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 类型 | 说明 |
@@ -97,9 +105,13 @@ createRemoteDevice(address: string): RemoteDevice
 
 创建远端设备实例。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -121,7 +133,7 @@ createRemoteDevice(address: string): RemoteDevice
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100041 | Invalid address. |
 
 **示例：** 
@@ -147,9 +159,13 @@ onPairingStateChange(callback: Callback&lt;PairingStateParam&gt;): void
 
 应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -165,7 +181,7 @@ onPairingStateChange(callback: Callback&lt;PairingStateParam&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 
@@ -189,9 +205,13 @@ offPairingStateChange(callback?: Callback&lt;PairingStateParam&gt;): void
 
 取消订阅配对状态变化事件。使用callback异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -207,7 +227,7 @@ offPairingStateChange(callback?: Callback&lt;PairingStateParam&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 
@@ -230,9 +250,13 @@ onConnectionStateChange(callback: Callback&lt;ConnectionStateParam&gt;): void
 
 应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -248,7 +272,7 @@ onConnectionStateChange(callback: Callback&lt;ConnectionStateParam&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 
@@ -272,9 +296,13 @@ offConnectionStateChange(callback?: Callback&lt;ConnectionStateParam&gt;): void
 
 取消订阅连接状态变化事件。使用callback异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -290,7 +318,7 @@ offConnectionStateChange(callback?: Callback&lt;ConnectionStateParam&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 
@@ -313,9 +341,13 @@ onAcbStateChange(callback: Callback&lt;AcbStateParam&gt;): void
 
 应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -331,7 +363,7 @@ onAcbStateChange(callback: Callback&lt;AcbStateParam&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 
@@ -355,9 +387,13 @@ offAcbStateChange(callback?: Callback&lt;AcbStateParam&gt;): void
 
 取消订阅逻辑链路连接状态变化事件。使用callback异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -373,7 +409,7 @@ offAcbStateChange(callback?: Callback&lt;AcbStateParam&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 
@@ -426,7 +462,7 @@ startPairing(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -476,7 +512,7 @@ getPairingState(): PairingState
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -523,7 +559,7 @@ getDeviceName(): string
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -570,7 +606,7 @@ getDeviceClass(): DeviceClass
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -617,7 +653,7 @@ getConnectionState(): ConnectionState
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -664,7 +700,7 @@ getAcbState(): AcbState
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -695,6 +731,8 @@ getDeviceInformation(): DeviceInformation
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -711,7 +749,7 @@ getDeviceInformation(): DeviceInformation
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -734,13 +772,15 @@ try {
 ```
 
 
-### DeviceInformation
+## DeviceInformation
 
 表示远端设备信息。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -749,13 +789,15 @@ try {
 | manufacturerData | string | 否 | 否 | 厂商信息。数据为二进制编码格式，可通过buffer.from(manufacturerData, 'binary')等方式解析。 |
 | modelData | string | 否 | 否 | 设备型号信息。数据为二进制编码格式，可通过buffer.from(modelData, 'binary')等方式解析。 |
 
-### ConnectionStateParam
+## ConnectionStateParam
 
 订阅的连接状态变化事件上报结果。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -767,13 +809,15 @@ try {
 | connectionReason | [ConnectionReason](#connectionreason) | 否 | 否 | 原因值。 |
 | reasonMsg | string | 否 | 是 | 原因详情。该字段仅用于日志信息，不应用于逻辑处理。无原因详情时，该字段默认为空字符串。 |
 
-### ConnectionReason
+## ConnectionReason
 
 星闪连接状态变化结果的原因值。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -789,13 +833,15 @@ try {
 | CONNECTION_FAIL_CONNECTION_NUM_LIMITED | 7 | 表示连接数超出限制。 |
 
 
-### PairingStateParam
+## PairingStateParam
 
 订阅的配对状态变化结果。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -808,13 +854,15 @@ try {
 | reasonMsg | string | 否 | 是 | 原因详情。该字段仅用于日志信息，不应用于逻辑处理。无原因详情时，该字段默认为空字符串。 |
 
 
-### PairingRequestParam
+## PairingRequestParam
 
 表示订阅的配对请求事件上报结果。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -825,13 +873,15 @@ try {
 | pairingType | [PairingType](#pairingtype) | 否 | 否 | 表示配对类型。 |
 
 
-### PairingReason
+## PairingReason
 
 表示星闪配对状态变化结果的原因值，为枚举值。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -854,6 +904,8 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 值 | 说明 |
@@ -870,6 +922,8 @@ try {
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 

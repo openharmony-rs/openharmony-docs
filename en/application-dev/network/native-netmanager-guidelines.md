@@ -5,6 +5,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=620bf4182bcb799f841b76719b180bae2faedd52 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 ## When to Use
 
@@ -15,17 +16,17 @@ The **NetConnection** module provides the capability of querying common network 
 The following table lists the common NetConnection APIs. For details, see [net_connection.h](../reference/apis-network-kit/capi-net-connection-h.md).
 
 
-| API| **Test Description**|
+| Name | Description|
 | -------- | -------- |
 | OH_NetConn_HasDefaultNet(int32_t \*hasDefaultNet) | Checks whether the default data network is activated and determines whether a network connection is available.|
 | OH_NetConn_GetDefaultNet(NetConn_NetHandle \*netHandle) | Obtains the default active data network.|
 | OH_NetConn_IsDefaultNetMetered(int32_t \*isMetered) | Checks whether the data traffic usage on the current network is metered.|
 | OH_NetConn_GetConnectionProperties(NetConn_NetHandle \*netHandle, NetConn_ConnectionProperties *prop) | Obtains network connection information based on the specified **netHandle**.|
 | OH_NetConn_GetNetCapabilities (NetConn_NetHandle \*netHandle, NetConn_NetCapabilities \*netCapacities) | Obtains network capability information based on the specified **netHandle**.|
-| OH_NetConn_GetDefaultHttpProxy (NetConn_HttpProxy \*httpProxy) | Obtains the default HTTP proxy configuration of the network. If the global proxy is set, the global HTTP proxy configuration is returned. If the application has been bound to the network specified by **netHandle**, the HTTP proxy configuration of this network is returned. In other cases, the HTTP proxy configuration of the default network is returned.|
+| OH_NetConn_GetDefaultHttpProxy (NetConn_HttpProxy \*httpProxy) | Obtains the default proxy configuration information of the network. If a global proxy is set, the global proxy configuration information is returned. If the process is bound to the network corresponding to the specified `netHandle`, the proxy configuration information of the network corresponding to the network handle is returned. In other cases, the proxy configuration information of the default network is returned. |
 | OH_NetConn_GetAddrInfo (char \*host, char \*serv, struct addrinfo \*hint, struct addrinfo \*\*res, int32_t netId) | Obtains the DNS result based on the specified **netId**.|
 | OH_NetConn_FreeDnsResult(struct addrinfo \*res) | Releases the DNS query result.|
-| OH_NetConn_GetAllNets(NetConn_NetHandleList \*netHandleList) | Obtains the list of all connected networks.|
+| OH_NetConn_GetAllNets(NetConn_NetHandleList \*netHandleList) | Obtains the list of all networks in the connected state. |
 | OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver) | Registers a custom DNS resolver.<br>Note: This API is deprecated since API version 13.<br>You are advised to use **OH_NetConn_RegisterDnsResolver** instead.|
 | OHOS_NetConn_UnregisterDnsResolver(void) | Unregisters a custom DNS resolver.<br>Note: This API is deprecated since API version 13.<br>You are advised to use **OH_NetConn_UnregisterDnsResolver** instead.|
 | OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver) | Registers a custom DNS resolver.|
@@ -64,6 +65,7 @@ libnet_connection.so
 #include "napi/native_api.h"
 #include "network/netmanager/net_connection.h"
 #include "network/netmanager/net_connection_type.h"
+#include "hilog/log.h"
 ```
 ### Building the Project
 
@@ -83,7 +85,7 @@ libnet_connection.so
        napi_get_value_int32(env, args[0], &param); // Obtain an integer from args[0] and store the integer in param.
        
        NetConn_NetHandle netHandle;
-       if (param == 0) { // If the parameter is 0
+       if (param == 0) { // If the argument is 0, pass NULL to demonstrate a parameter error. The API returns 401.
            param = OH_NetConn_GetDefaultNet(NULL);
        } else {
            param = OH_NetConn_GetDefaultNet(&netHandle);
@@ -176,30 +178,35 @@ libnet_connection.so
    struct Index {
      @State message: string = ''; // Display log messages.
      // ...
-   
      build() {
-       Column() { // Display logs output by Logger.
-         // ...
-         Text(this.message)
-           .fontSize(16)
-           .fontColor(Color.Black)
-           .margin({ bottom: 10 })
-           .id('test-message') // Set an ID for the test message to facilitate content obtaining.
-   
-         Button($r('app.string.GetDefaultNet'))
-           .onClick(() => {
-             this.GetDefaultNet();
-           })
+       Scroll() {
+         Column() { // Display the logs output by Logger.
+           // ...
+           Text(this.message)
+             .fontSize(16)
+             .fontColor('#333333')
+             .margin({ bottom: 10 })
+             .id('test-message')
+           Button($r('app.string.GetDefaultNet'))
+             .onClick(() => {
+               this.GetDefaultNet();
+             })
              // ...
-   
-         Button($r('app.string.CodeNumber'))
-           .onClick(() => {
-             this.CodeNumber();
-           })
+           Button($r('app.string.CodeNumber'))
+             .onClick(() => {
+               this.CodeNumber();
+             })
              // ...
-       }.width('100%').height('100%').justifyContent(FlexAlign.Center);
+         }
+         .width('100%')
+         .justifyContent(FlexAlign.Start)
+       }
+       .width('100%')
+       .height('100%')
+       .scrollable(ScrollDirection.Vertical)
+       .scrollBar(BarState.Auto)
+       .backgroundColor('#F5F5F5')
      }
-     
      GetDefaultNet() {
        let netId = testNetManager.NetId();
        // ...
@@ -208,6 +215,7 @@ libnet_connection.so
      }
    
      CodeNumber() {
+       // A nonzero value passes a valid netHandle pointer; 0 passes NULL to demonstrate parameter error 401.
        let testParam = 1;
        // ...
          let codeNumber = testNetManager.GetDefaultNet(testParam);
@@ -229,8 +237,9 @@ libnet_connection.so
              // ...
              break;
          }
-       // ...
+         // ...
      }
+   
      // ...
    }
    ```

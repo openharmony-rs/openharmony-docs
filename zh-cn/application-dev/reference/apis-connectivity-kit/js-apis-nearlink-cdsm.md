@@ -26,9 +26,13 @@ createCdsmClient(address: string): CdsmClient
 
 创建CDSM客户端实例。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 
@@ -52,8 +56,8 @@ createCdsmClient(address: string): CdsmClient
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100041 | Invalid address. |
 | 36100050 | Coordinated Devices Set Management not supported. |
@@ -119,7 +123,7 @@ getCdsmInfo(): CdsmInfo
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -190,6 +194,8 @@ offCdsmInfoChange(callback?: Callback&lt;CdsmInfo&gt;): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 **参数：** 
@@ -227,6 +233,8 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -241,6 +249,8 @@ try {
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -257,6 +267,8 @@ try {
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 

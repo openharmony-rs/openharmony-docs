@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "Audio Kit（音频服务）提供场景化的音频播放和录制接口，支持低时延播放、音效模式、音振协同等能力，并介绍从应用到HAL的音频架构分层。"
+keywords: [Audio Kit, 音频服务, 低时延播放, 音效模式, 音振协同, 空间音频, 音频架构, 音频播放, 音频录制]
+doctype: guide
+status: active
+---
 # Audio Kit简介
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -119,6 +126,8 @@ audio模块下的接口支持PCM编码，包括AudioRenderer、AudioCapturer、T
   由于系统限制，S24LE、S32LE、F32LE仅部分设备支持，请根据实际情况使用。
 
   小尾数指的是小端模式，即数据的高字节保存在内存的高地址中，而数据的低字节保存在内存的低地址中。这种存储模式将地址的高低和数据的位权有效结合起来，高地址部分权值高，低地址部分权值低。
+
+<!--RP2--><!--RP2End-->
 
 ## 相关实例
 

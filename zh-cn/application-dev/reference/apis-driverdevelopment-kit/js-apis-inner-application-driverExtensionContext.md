@@ -1,4 +1,4 @@
-# DriverExtensionContext
+# DriverExtensionContext (定义驱动扩展的上下文)
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
 <!--Owner: @zgene94-->

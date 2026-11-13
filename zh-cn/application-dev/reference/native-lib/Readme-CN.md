@@ -17,6 +17,9 @@
 - [EGL](egl.md)
 - [ICU4C](icu4c.md)
 - [zlib](zlib.md)
+- [musl 26.1.0 新增接口](musl-new-api-26-1-0.md)
+- [group_ipc.h](capi-group-ipc-h.md)
+- [qsort](capi-qsort-h.md)
 - Vulkan<!--vulkan-guide-->
   - Vulkan开发指导<!--vulkan-guides-->
     - [Vulkan开发概述](vulkan-overview.md)

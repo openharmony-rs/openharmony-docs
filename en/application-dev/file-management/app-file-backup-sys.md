@@ -5,7 +5,7 @@
 <!--Designer: @rainlost-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=df6561cd1fa48d9a9e0010adeaf5f5f945da452e translatedAt=2026-08-26T04:26:53.177Z pushedAt=2026-08-28T02:45:51.268Z -->
+<!-- md-trans-meta sourceCommit=02118e4aa702d15b975a9448c87f29f2af268fdb translatedAt=2026-10-29T10:30:53.711Z pushedAt=2026-10-29T10:30:53.711Z nl=1 -->
 
 The backup and restore framework provides a solution for backing up and restoring data of applications and services on a device. You can follow the procedure below to enable an application to trigger data backup or restoration:
 
@@ -33,7 +33,7 @@ Before using the APIs, you need to:
 
 Obtain capability files of all applications of the current user. The capability files are indispensable for application data backup and restoration.
 
-The capability file of an application contains the device type, device version, and basic application information, such as the application name, application size, application version, whether to allow backup and restoration, and whether to install the application during restoration.
+The capability file contains the device type, device version, and basic application information, such as the application name, application data size, application version, whether backup and restore are supported, and whether to install the application during restoration.
 
 Call [backup.getLocalCapabilities()](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#backupgetlocalcapabilities) to obtain the capability file.
 
@@ -68,14 +68,14 @@ export async function getLocalCapabilities(): Promise<void> {
 
 | Name      | Type| Mandatory| Description                  |
 | -------------- | -------- | ---- | ---------------------- |
-| bundleInfos    | Array    | Yes  | Application information.          |
-| allToBackup    | Boolean  | Yes  | Whether to allow backup and restoration. The value **true** means that backup and restoration are allowed; the value **false** means the opposite.      |
-| extensionName  | String  | Yes  | Extension name of the application.          |
-| name           | String  | Yes  | Bundle name of the application.            |
-| spaceOccupied  | Number    | Yes  | Space occupied by an application, in bytes.|
-| versionCode    | Number    | Yes  | Application version number.          |
-| versionName    | String  | Yes  | Application version name.        |
-| deviceType     | String  | Yes  | Device type.              |
+| bundleInfos | Array    | Yes  | Application information.          |
+| allToBackup | Boolean  | Yes  | Whether to allow backup and restoration. The value **true** means that backup and restoration are allowed; the value **false** means the opposite.      |
+| extensionName | String  | Yes  | Extension name of the application.          |
+| name | String  | Yes  | Bundle name of the application.            |
+| spaceOccupied | Number    | Yes  | Space occupied by an application, in bytes.|
+| versionCode | Number    | Yes  | Application version number.          |
+| versionName | String  | Yes  | Application version name.        |
+| deviceType | String  | Yes  | Device type.              |
 | systemFullName | String  | Yes  | Device version.              |
 
 ```json
@@ -98,14 +98,14 @@ export async function getLocalCapabilities(): Promise<void> {
 
 You can select the application data to be backed up based on the application information in the capability files.
 
-The Backup & Restore service packages the application data to be backed up. The package file handle is returned by the [onFileReady](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#onfileready) callback registered when the **SessionBackup** instance is created.
+The backup and restore service packages the application data to be backed up. The package file handle is returned by the [generalcallbacks](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#generalcallbacks) callback registered when the instance is created.
 
 You can save the file to a local directory as required.
 
-**Example**
+**Example:**
 
   <!-- @[session_backup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
-
+  
   ``` TypeScript
   import { fileIo } from '@kit.CoreFileKit';
   import { backup } from '@kit.CoreFileKit';
@@ -197,14 +197,14 @@ You can save the file to a local directory as required.
 
 You can select the application data to be restored based on the application information in the capability files.
 
-The Backup and Restore service returns the FD of the application data to be restored in the [onFileReady](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#onfileready) callback registered when the **SessionRestore** instance is created. The file handle is obtained by [getFileHandle](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#getfilehandle). Then, the data to be restored is written to the file handle based on the [uri](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#filemeta) returned. After the data is written, use [publishFile](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#publishfile) to notify the service that the data write is complete.
+The backup and restore service returns the file handle of the application data to be restored in the [generalcallbacks](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#generalcallbacks) callback registered when the instance is created. The file handle is obtained by [getFileHandle](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#getfilehandle). Then, the data to be restored is written to the file handle based on the [uri](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#filemeta) returned. After the data is written, you can use [publishFile](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#publishfile) to notify the service that the data write is complete.
 
 When all the data of the application is ready, the service starts to restore the application data.
 
-**Example**
+**Example:**
 
-  <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
-
+  <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->  
+  
   ``` TypeScript
   import { fileIo } from '@kit.CoreFileKit';
   import { backup } from '@kit.CoreFileKit';
@@ -219,11 +219,11 @@ When all the data of the application is ready, the service starts to restore the
   // Create a SessionRestore instance for data restoration.
   let gSessionRestore: backup.SessionRestore;
   let initMap = new Map<string, number>();
-  let testFileNum = 2; // Number of files to back up.
+  let testFileNum = 2; // Initial file count.
   let testBundleName = 'com.samples.filebackupextension'; // Test bundle name.
   initMap.set(testBundleName, testFileNum);
   let countMap = new Map<string, number>();
-  countMap.set(testBundleName, 0); // Count of the files backed up.
+  countMap.set(testBundleName, 0); // Initialize the counter.
   
   async function publishFile(file: backup.File): Promise<void> {
     console.info('start publishFile');
@@ -240,7 +240,7 @@ When all the data of the application is ready, the service starts to restore the
         if (err) {
           console.error(`onFileReady err, code is ${err.code}, message is ${err.message}`);
         }
-        // Set bundlePath based on the actual situation.
+        // Adjust bundlePath based on the actual storage location of the files to be restored.
         let bundlePath: string = `${filesDir}/${file.bundleName}/`;
         if (!fileIo.accessSync(bundlePath)) {
           console.error('onFileReady bundlePath err : ' + bundlePath);
@@ -301,7 +301,7 @@ When all the data of the application is ready, the service starts to restore the
     let fileDat = await backup.getLocalCapabilities();
     await gSessionRestore.appendBundles(fileDat.fd, restoreApps);
     console.info('appendBundles success');
-    // After the applications to be restored are added, call getFileHandle() to obtain the handles of the application files to be restored based on the application name.
+    // After the applications to be restored are added successfully, call the getFileHandle API based on the name of the application to be restored to obtain the file handle of the data file.
     // The number of application data files to be restored varies depending on the number of backup files. The following is only an example.
     let handle: backup.FileMeta = {
       bundleName: restoreApps[0],

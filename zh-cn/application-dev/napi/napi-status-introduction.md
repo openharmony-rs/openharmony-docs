@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Node-API接口返回的napi_status状态码枚举值，详细说明各接口可能返回的非napi_ok状态码的原因和修复建议，帮助开发者快速定位接口调用问题。"
+keywords: [Node-API, 状态码, napi_status, napi_ok, napi_invalid_arg, 错误码, 接口返回值, 状态码修复]
+doctype: guide
+status: active
+---
+
 # Node-API接口返回状态码介绍
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
@@ -52,11 +60,11 @@
 | napi_is_exception_pending | 判断是否出现了异常。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
 | napi_is_exception_pending | 判断是否出现了异常。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
 | napi_fatal_error | 引发致命错误以立即终止进程。 | 不涉及 | 不涉及 | 不涉及 |
-| napi_open_handle_scope | 创建一个上下文环境使用。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
-| napi_open_handle_scope | 创建一个上下文环境使用。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
-| napi_close_handle_scope | 关闭传入的上下文环境，关闭后，全部在其中声明的引用都将被关闭。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
-| napi_close_handle_scope | 关闭传入的上下文环境，关闭后，全部在其中声明的引用都将被关闭。 | napi_invalid_arg | 入参scope为nullptr | 确保入参正确 |
-| napi_close_handle_scope | 关闭传入的上下文环境，关闭后，全部在其中声明的引用都将被关闭。 | napi_handle_scope_mismatch | napi_open_handle_scope调用次数小于napi_close_handle_scope | napi_open_handle_scope和napi_close_handle_scope需要成对使用 |
+| napi_open_handle_scope | 创建一个napi_handle_scope。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_open_handle_scope | 创建一个napi_handle_scope。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
+| napi_close_handle_scope | 关闭传入的napi_handle_scope，关闭后，全部在其中声明的引用都将被关闭。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_close_handle_scope | 关闭传入的napi_handle_scope，关闭后，全部在其中声明的引用都将被关闭。 | napi_invalid_arg | 入参scope为nullptr | 确保入参正确 |
+| napi_close_handle_scope | 关闭传入的napi_handle_scope，关闭后，全部在其中声明的引用都将被关闭。 | napi_handle_scope_mismatch | napi_open_handle_scope调用次数小于napi_close_handle_scope | napi_open_handle_scope和napi_close_handle_scope需要成对使用 |
 | napi_open_escapable_handle_scope | 创建出一个可逃逸的handle scope，可将范围内声明的值返回到父作用域。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
 | napi_open_escapable_handle_scope | 创建出一个可逃逸的handle scope，可将范围内声明的值返回到父作用域。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
 | napi_close_escapable_handle_scope | 关闭传入的可逃逸的handle scope。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
@@ -704,3 +712,11 @@
 | napi_get_global_handle_count | 遍历并获取global handle数量。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
 | napi_get_global_handle_count | 遍历并获取global handle数量。 | napi_invalid_arg | 入参count为nullptr | 确保入参正确 |
 | napi_get_global_handle_count | 遍历并获取global handle数量。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS Error | 根据异常信息（hilog/crash栈）处理异常 |
+| napi_open_microtask_scope | 打开微任务作用域，限制微任务的执行。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_open_microtask_scope | 打开微任务作用域，限制微任务的执行。 | napi_invalid_arg | 入参scope为nullptr | 确保入参正确 |
+| napi_open_microtask_scope | 打开微任务作用域，限制微任务的执行。 | napi_invalid_arg | 已存在打开的微任务作用域，微任务作用域不支持嵌套打开 | 确保已关闭当前打开的微任务作用域 |
+| napi_open_microtask_scope | 打开微任务作用域，限制微任务的执行。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常，此时不会打开微任务作用域 | 根据异常信息（hilog/crash栈）处理异常 |
+| napi_close_microtask_scope | 关闭微任务作用域，并同步执行作用域打开期间累积的微任务。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_close_microtask_scope | 关闭微任务作用域，并同步执行作用域打开期间累积的微任务。 | napi_invalid_arg | 入参scope为nullptr | 确保入参正确 |
+| napi_close_microtask_scope | 关闭微任务作用域，并同步执行作用域打开期间累积的微任务。 | napi_invalid_arg | 没有处于打开状态的微任务作用域（如：重复关闭） | 确保微任务作用域处于打开状态且未重复关闭 |
+| napi_close_microtask_scope | 关闭微任务作用域，并同步执行作用域打开期间累积的微任务。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常，此时微任务作用域已完成关闭，尚未执行的累积微任务不会丢失 | 根据异常信息（hilog/crash栈）处理异常 |

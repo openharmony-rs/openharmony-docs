@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导开发者使用AudioLoopback实现低时延耳返，由系统内部搭建低时延数据链路，支持音量、混响、均衡器设置与状态监听。"
+keywords: [耳返, 低时延耳返, AudioLoopback, 音频返听, 混响, 均衡器, 返听音量, K歌]
+doctype: guide
+status: active
+---
 # 实现低时延耳返
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -348,7 +355,6 @@ import { audio } from '@kit.AudioKit'; // 导入audio模块。
 import { BusinessError } from '@kit.BasicServicesKit'; // 导入BusinessError。
 import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit'; // 导入UIAbilityContext。
 
-const TAG = 'AudioLoopbackDemo';
 let mode: audio.AudioLoopbackMode = audio.AudioLoopbackMode.HARDWARE;
 let audioLoopback: audio.AudioLoopback | undefined = undefined;
 let currentReverbPreset: audio.AudioLoopbackReverbPreset = audio.AudioLoopbackReverbPreset.THEATER;

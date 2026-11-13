@@ -235,6 +235,10 @@
 | [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetColor(const OH_ArkUI_BackgroundColorStyle* style, uint32_t* color)](#oh_arkui_backgroundcolorstyle_getcolor) | 获取背景颜色样式的背景色。 |
 | [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetRadius(OH_ArkUI_BackgroundColorStyle* style, float topLeft, float topRight, float bottomLeft, float bottomRight)](#oh_arkui_backgroundcolorstyle_setradius) | 设置背景颜色样式的背景圆角。 |
 | [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetRadius(const OH_ArkUI_BackgroundColorStyle* style, float* topLeft, float* topRight, float* bottomLeft, float* bottomRight)](#oh_arkui_backgroundcolorstyle_getradius) | 获取背景颜色样式的背景圆角。 |
+| [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetBorderWidth(OH_ArkUI_BackgroundColorStyle* style, float borderWidth)](#oh_arkui_backgroundcolorstyle_setborderwidth) | 设置背景颜色样式的边框宽度。 |
+| [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetBorderWidth(const OH_ArkUI_BackgroundColorStyle* style, float* borderWidth)](#oh_arkui_backgroundcolorstyle_getborderwidth) | 获取背景颜色样式的边框宽度。 |
+| [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetBorderColor(OH_ArkUI_BackgroundColorStyle* style, uint32_t borderColor)](#oh_arkui_backgroundcolorstyle_setbordercolor) | 设置背景颜色样式的边框颜色。 |
+| [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetBorderColor(const OH_ArkUI_BackgroundColorStyle* style, uint32_t* borderColor)](#oh_arkui_backgroundcolorstyle_getbordercolor) | 获取背景颜色样式的边框颜色。 |
 | [OH_ArkUI_UrlStyle* OH_ArkUI_UrlStyle_Create()](#oh_arkui_urlstyle_create) | 创建[OH_ArkUI_UrlStyle](capi-arkui-nativemodule-oh-arkui-urlstyle.md)对象。 |
 | [void OH_ArkUI_UrlStyle_Destroy(OH_ArkUI_UrlStyle* style)](#oh_arkui_urlstyle_destroy) | 释放[OH_ArkUI_UrlStyle](capi-arkui-nativemodule-oh-arkui-urlstyle.md)对象占用的内存。 |
 | [ArkUI_ErrorCode OH_ArkUI_UrlStyle_SetUrl(OH_ArkUI_UrlStyle* style, const char* url)](#oh_arkui_urlstyle_seturl) | 设置超链接样式的超链接内容。 |
@@ -275,10 +279,12 @@
 | [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetSyncLoad(const OH_ArkUI_ImageAttachment* imageAttachment, bool* syncLoad)](#oh_arkui_imageattachment_getsyncload) | 获取图片样式中是否同步加载图片。 |
 | [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetSupportSvg(OH_ArkUI_ImageAttachment* imageAttachment, bool supportSvg)](#oh_arkui_imageattachment_setsupportsvg) | 设置图片样式中是否开启SVG标签解析能力增强功能，开启后支持解析扩展SVG标签及属性。 |
 | [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetSupportSvg(const OH_ArkUI_ImageAttachment* imageAttachment, bool* supportSvg)](#oh_arkui_imageattachment_getsupportsvg) | 获取图片样式中是否开启SVG标签解析能力增强功能。 |
-| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResizableSlice(OH_ArkUI_ImageAttachment* imageAttachment, float left, float top, float right, float bottom)](#oh_arkui_imageattachment_setresizableslice) | 设置图片样式中的图片拉伸切片。 |
-| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResizableSlice(const OH_ArkUI_ImageAttachment* imageAttachment, float* left, float* top, float* right, float* bottom)](#oh_arkui_imageattachment_getresizableslice) | 获取图片样式中的图片拉伸切片。 |
-| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResizableLattice(OH_ArkUI_ImageAttachment* imageAttachment, const OH_Drawing_Lattice* lattice)](#oh_arkui_imageattachment_setresizablelattice) | 设置图片样式中的图片拉伸栅格。 |
-| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResizableLattice(const OH_ArkUI_ImageAttachment* imageAttachment, OH_Drawing_Lattice* lattice)](#oh_arkui_imageattachment_getresizablelattice) | 获取图片样式中的图片拉伸栅格。 |
+| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResizableSlice(OH_ArkUI_ImageAttachment* imageAttachment, float left, float top, float right, float bottom)](#oh_arkui_imageattachment_setresizableslice) | 设置图片样式中的图像拉伸切片。 |
+| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResizableSlice(const OH_ArkUI_ImageAttachment* imageAttachment, float* left, float* top, float* right, float* bottom)](#oh_arkui_imageattachment_getresizableslice) | 获取图片样式中的图像拉伸切片。 |
+| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResizableLattice(OH_ArkUI_ImageAttachment* imageAttachment, const OH_Drawing_Lattice* lattice)](#oh_arkui_imageattachment_setresizablelattice) | 设置图片样式中的图像拉伸栅格。 |
+| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResizableLattice(const OH_ArkUI_ImageAttachment* imageAttachment, OH_Drawing_Lattice* lattice)](#oh_arkui_imageattachment_getresizablelattice) | 获取图片样式中的图像拉伸栅格。 |
+| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetImageTag(OH_ArkUI_ImageAttachment *imageAttachment, const char *imageTag)](#oh_arkui_imageattachment_setimagetag) | 设置图片样式中的图片文本标签。 |
+| [ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetImageTag(const OH_ArkUI_ImageAttachment *imageAttachment, int32_t bufferSize, char *buffer, int32_t *writeLength)](#oh_arkui_imageattachment_getimagetag) | 获取图片样式中的图片文本标签。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorChangeEvent_GetRangeBefore(const OH_ArkUI_TextEditorChangeEvent* event, uint32_t* start, uint32_t* end)](#oh_arkui_texteditorchangeevent_getrangebefore) | 获取文本变化信息中待被替换的原文本的范围。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorChangeEvent_GetReplacementStyledString(const OH_ArkUI_TextEditorChangeEvent* event, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorchangeevent_getreplacementstyledstring) | 获取文本变化信息中的用于替换的属性字符串。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorChangeEvent_GetPreviewStyledString(const OH_ArkUI_TextEditorChangeEvent* event, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorchangeevent_getpreviewstyledstring) | 获取文本变化信息中的预览内容属性字符串。 |
@@ -4754,6 +4760,122 @@ ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetRadius(const OH_ArkUI_Backgroun
 | -- | -- |
 | [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
 
+### OH_ArkUI_BackgroundColorStyle_SetBorderWidth()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetBorderWidth(OH_ArkUI_BackgroundColorStyle* style, float borderWidth)
+```
+
+**描述**
+
+设置背景颜色样式的边框宽度。
+
+> **说明：**
+>
+> 所有入参指针需由调用方分配、管理和释放。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)* style | [入参] 指向[OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)对象的指针。 |
+| float borderWidth | [入参] 边框宽度，单位为vp。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_BackgroundColorStyle_GetBorderWidth()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetBorderWidth(const OH_ArkUI_BackgroundColorStyle* style, float* borderWidth)
+```
+
+**描述**
+
+获取背景颜色样式的边框宽度。
+
+> **说明：**
+>
+> 所有入参指针需由调用方分配、管理和释放。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)* style | [入参] 指向[OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)对象的指针。 |
+| float* borderWidth | [出参] 指向边框宽度的指针，单位为vp。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_BackgroundColorStyle_SetBorderColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetBorderColor(OH_ArkUI_BackgroundColorStyle* style, uint32_t borderColor)
+```
+
+**描述**
+
+设置背景颜色样式的边框颜色。
+
+> **说明：**
+>
+> 所有入参指针需由调用方分配、管理和释放。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)* style | [入参] 指向[OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)对象的指针。 |
+| uint32_t borderColor | [入参] 边框颜色，0xARGB格式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_BackgroundColorStyle_GetBorderColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetBorderColor(const OH_ArkUI_BackgroundColorStyle* style, uint32_t* borderColor)
+```
+
+**描述**
+
+获取背景颜色样式的边框颜色。
+
+> **说明：**
+>
+> 所有入参指针需由调用方分配、管理和释放。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)* style | [入参] 指向[OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)对象的指针。 |
+| uint32_t* borderColor | [出参] 指向边框颜色的指针，0xARGB格式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+
 ### OH_ArkUI_UrlStyle_Create()
 
 ```c
@@ -5760,7 +5882,7 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResizableSlice(OH_ArkUI_ImageAttachm
 
 **描述**
 
-设置图片样式中的图片拉伸切片。
+设置图片样式中的图像拉伸切片。
 
 **起始版本：** 26.0.1
 
@@ -5789,7 +5911,7 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResizableSlice(const OH_ArkUI_ImageA
 
 **描述**
 
-获取图片样式中的图片拉伸切片。
+获取图片样式中的图像拉伸切片。
 
 **起始版本：** 26.0.1
 
@@ -5818,7 +5940,7 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResizableLattice(
 
 **描述**
 
-设置图片样式中的图片拉伸栅格。
+设置图片样式中的图像拉伸栅格。
 
 **起始版本：** 26.0.1
 
@@ -5827,7 +5949,7 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetResizableLattice(
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | 指向[OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)对象的指针。 |
-| const [OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)* lattice | 图片拉伸栅格，类型为[OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)。 |
+| const [OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)* lattice | 图像拉伸栅格，类型为[OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)。 |
 
 **返回：**
 
@@ -5844,7 +5966,7 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResizableLattice(
 
 **描述**
 
-获取图片样式中的图片拉伸栅格。
+获取图片样式中的图像拉伸栅格。
 
 **起始版本：** 26.0.1
 
@@ -5853,13 +5975,65 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetResizableLattice(
 | 参数项 | 描述 |
 | -- | -- |
 | const [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)* imageAttachment | 指向[OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)对象的指针。 |
-| [OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)* lattice | 输出参数，指向图片拉伸栅格的指针，类型为[OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)。 |
+| [OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)* lattice | 输出参数，指向图像拉伸栅格的指针，类型为[OH_Drawing_Lattice](../apis-arkgraphics2d/capi-drawing-oh-drawing-lattice.md)。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
 | [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_ImageAttachment_SetImageTag()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetImageTag(OH_ArkUI_ImageAttachment *imageAttachment, const char *imageTag)
+```
+
+**描述**
+
+设置图片样式中的图片文本标签。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) *imageAttachment | [入参] 指向[OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)对象的指针。不可为nullptr，调用者拥有该对象并负责其生命周期。 |
+| const char *imageTag | [入参] 指向图片文本标签字符串的指针。不可为nullptr。该字符串须以NUL结尾，函数内部会拷贝该字符串，调用者保留原字符串的所有权。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_ImageAttachment_GetImageTag()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetImageTag(const OH_ArkUI_ImageAttachment *imageAttachment, int32_t bufferSize, char *buffer, int32_t *writeLength)
+```
+
+**描述**
+
+获取图片样式中的图片文本标签。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) *imageAttachment | [入参] 指向[OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md)对象的指针。不可为nullptr，调用者拥有该对象并负责其生命周期。 |
+| int32_t bufferSize | [入参] 缓冲区大小，单位为字节，须包含NUL结尾符的空间。 |
+| char *buffer | [出参] 指向用于存储图片文本标签字符串的缓冲区的指针。不可为nullptr，调用者需分配和管理该内存。缓冲区存储NUL结尾的UTF-8编码字符串，调用失败时缓冲区内容保持不变。 |
+| int32_t *writeLength | [出参] 指向实际写入缓冲区的字符串长度的指针。不可为nullptr，无论成功或失败该值始终会被设置。返回[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)时，表示实际写入缓冲区的字符串长度，不包含NUL结尾符。返回[ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)时，表示字符串完整写入缓冲区所需的最小长度，不包含NUL结尾符；调用者需分配至少writeLength + 1字节的空间。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。 <br>         [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 缓冲区大小不足。 |
 
 ### OH_ArkUI_TextEditorChangeEvent_GetRangeBefore()
 

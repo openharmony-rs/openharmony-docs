@@ -703,7 +703,7 @@ IMonitor类型、IMonitorValue\<T\>类型以及MonitorDecoratorOptions的接口�
 | obj.objA.* | objA为@ObservedV2装饰的嵌套对象。监听该路径的@Monitor将在以下情况触发：<br>1、对obj整体赋值且objA变化。<br>2、对objA整体赋值。<br>3、objA任意@Trace属性变化。 |
 | arr.1.*    | arr为嵌套可观察数组。监听该路径的@Monitor将在以下情况触发：<br/>1、对arr整体赋值且下标为1的数组发生变化。<br>2、arr下标为1的数组任意元素变化或数组长度变化。<br>3、调用arr下标为1的数组的API。 |
 
-当修改嵌套对象中任意对象时，监听包含该对象的通配符路径遵循最终确定值原则，即通配符前的最后一个确定值变化时，才会触发监听回调。例如，监听上表的路径“obj.objA.*”时，”objA“为通配符前的最后一个确定值，对”obj“整体赋值，若”objA“赋值前后引用同一个对象，则不会触发回调。
+当修改嵌套对象中任意对象时，监听包含该对象的通配符路径遵循最终确定值原则，即通配符前的最后一个确定值变化时，才会触发监听回调。例如，监听上表的路径“obj.objA.*”时，“objA”为通配符前的最后一个确定值，对“obj”整体赋值，若“objA”赋值前后引用同一个对象，则不会触发回调。
 
 此外，使用通配符时，IMonitor的dirty数组能正常包含通配符路径，但其对应的IMonitorValue的before值与now值都将为undefined。
 
@@ -1529,6 +1529,113 @@ struct MonitorWildcardSet {
     }
   }
   ```
+
+- 从API version 24开始，当\@Monitor监听的路径可能不存在或者路径中的变量缺少观测能力时，编辑器会提示告警`The '@Monitor' decorator needs to monitor the state variables that exist.`。以下为\@Monitor路径校验的告警场景及修复方式：
+
+  - **类未被\@ObservedV2装饰**：当\@Monitor监听的路径经过未被\@ObservedV2装饰的类时，该路径无法被正常监听，编辑器会提示告警。
+
+    告警代码：
+    ``` TypeScript
+    class Inner {
+      public num: number = 0;
+    }
+
+    @ObservedV2
+    class Outer {
+      @Trace public inner: Inner = new Inner();
+
+      // inner的类型Inner未被@ObservedV2装饰，路径'inner.num'无法监听'num'属性的修改
+      @Monitor('inner.num')
+      onChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+    修复代码：使用@ObservedV2装饰Inner类，并使用@Trace装饰其属性。
+    ``` TypeScript
+    @ObservedV2
+    class Inner {
+      @Trace public num: number = 0;
+    }
+
+    @ObservedV2
+    class Outer {
+      @Trace public inner: Inner = new Inner();
+
+      @Monitor('inner.num')
+      onChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+  - **属性未被\@Trace装饰**：当\@Monitor监听的属性未被\@Trace装饰时，该属性的变化无法被监听，编辑器会提示告警。
+
+    告警代码：
+    ``` TypeScript
+    @ObservedV2
+    class Info {
+      public name: string = 'Tom';
+
+      // name未被@Trace装饰，路径'name'无法监听修改
+      @Monitor('name')
+      onNameChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+    修复代码：使用@Trace装饰name属性。
+    ``` TypeScript
+    @ObservedV2
+    class Info {
+      @Trace public name: string = 'Tom';
+
+      @Monitor('name')
+      onNameChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+  - **路径类型为interface**：当\@Monitor监听的路径中存在类型为interface的变量时，由于interface本身对其属性没有观测能力，编辑器会提示路径可能不存在的告警。该告警无法去除，开发者需要确认interface数据有UIUtils.makeObserved封装才能被\@Monitor监听。
+
+    告警代码：
+    ``` TypeScript
+    import { UIUtils } from '@kit.ArkUI';
+
+    interface IInfo {
+      name: string;
+    }
+
+    @ObservedV2
+    class Container {
+      // 使用UIUtils.makeObserved封装的interface数据才能被@Monitor监听
+      public info: IInfo = UIUtils.makeObserved({ name: 'Name' }); 
+
+      // info的类型为interface，路径'info.name'可能无法监听'name'属性的修改
+      @Monitor('info.name')
+      onNameChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+  - **路径类型为联合类型**：当\@Monitor监听的路径中存在类型为联合类型的变量时，编辑器会提示路径可能不存在的告警。该告警无法去除，开发者需要确认联合类型中包含目标路径的对象类型存在并具有观测能力。
+
+    告警代码：
+    ``` TypeScript
+    @ObservedV2
+    class User {
+      @Trace public age: number = 10;
+    }
+
+    @ObservedV2
+    class Page {
+      @Trace user: User | number = new User();
+
+      // user的类型为联合类型User | number，路径'user.age'可能不存在
+      @Monitor('user.age')
+      onChange(monitor: IMonitor) {
+      }
+    }
+    ```
 
 ## \@Monitor与\@Watch对比
 

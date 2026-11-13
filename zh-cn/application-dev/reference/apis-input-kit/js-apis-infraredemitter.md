@@ -43,7 +43,7 @@ transmitInfrared(infraredFrequency: number, pattern: Array&lt;number&gt;): void
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**：
@@ -104,7 +104,7 @@ getInfraredFrequencies(): Array&lt;InfraredFrequency&gt;
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例**：
 
@@ -119,12 +119,22 @@ struct Index {
     RelativeContainer() {
       Text()
         .onClick(() => {
-          try {
-            let frequencies = infraredEmitter.getInfraredFrequencies();
-            console.info(`Succeeded in getting infrared frequencies, frequencies: ${JSON.stringify(frequencies)}.`);
-          } catch (error) {
-            console.error(`Failed to get infrared frequencies, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
+          // 查询是否有红外发射器
+          infraredEmitter.hasIrEmitter().then((result: boolean) => {
+            if (result) {
+              try {
+                // 获取红外信号的频率范围
+                let frequencies = infraredEmitter.getInfraredFrequencies();
+                console.info(`Succeeded in getting infrared frequencies, frequencies: ${JSON.stringify(frequencies)}.`);
+              } catch (error) {
+                console.error(`Failed to get infrared frequencies, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              }
+            } else {
+              console.info('The current device does not support IR emitter.');
+            }
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to query infrared emitter, Code: ${error.code}, message: ${error.message}.`);
+          });
         })
     }
   }
@@ -164,7 +174,7 @@ hasIrEmitter(): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 3800001 | Input service exception. |
 
 **示例**：

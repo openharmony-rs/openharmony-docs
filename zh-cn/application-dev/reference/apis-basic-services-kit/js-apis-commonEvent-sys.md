@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 从API version 7 开始支持，从API version 9 开始废弃，建议使用[@ohos.commonEventManager](js-apis-commonEventManager.md)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[@ohos.commonEventManager](js-apis-commonEventManager.md)替代。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[CommonEvent](./js-apis-commonEvent.md)。
 
@@ -34,7 +34,7 @@ publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): vo
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser)替代。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -44,9 +44,9 @@ publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): vo
 
 | 参数名     | 类型                 | 必填 | 说明                               |
 | -------- | -------------------- | ---- | ---------------------------------- |
-| event    | string               | 是   | 表示要发布的公共事件。             |
+| event    | string               | 是   | 表示要发布的公共事件。字符串长度不超过254字节，超出部分会被截断。 |
 | userId   | number               | 是   | 表示指定向该用户ID发布此公共事件。 |
-| callback | AsyncCallback\<void> | 是   | 公共事件发布结果的回调方法。             |
+| callback | AsyncCallback\<void> | 是   | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。 |
 
 **示例：**
 
@@ -77,7 +77,7 @@ publishAsUser(event: string, userId: number, options: CommonEventPublishData, ca
 
 > **说明：**
 >
-> 从API version 8 开始支持，从API version 9 开始废弃，建议使用[commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[commonEventManager.publishAsUser](js-apis-commonEventManager-sys.md#commoneventmanagerpublishasuser-1)替代。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -87,10 +87,10 @@ publishAsUser(event: string, userId: number, options: CommonEventPublishData, ca
 
 | 参数名     | 类型                   | 必填 | 说明                   |
 | -------- | ---------------------- | ---- | ---------------------- |
-| event    | string                 | 是   | 表示要发布的公共事件。  |
+| event    | string                 | 是   | 表示要发布的公共事件。字符串长度不超过254字节，超出部分会被截断。 |
 | userId   | number | 是 | 表示指定向该用户ID发布此公共事件。 |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | 是   | 表示发布公共事件的属性。 |
-| callback | AsyncCallback\<void>   | 是   | 公共事件发布结果的回调方法。  |
+| callback | AsyncCallback\<void>   | 是   | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。 |
 
 **示例：**
 

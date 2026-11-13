@@ -11,6 +11,8 @@
 
 > **说明**
 >
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.security.huksExternalCrypto (外部密钥管理)](js-apis-huksExternalCrypto.md)。
+>
 > 本模块首批接口从API version 22开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -34,7 +36,7 @@ PIN码认证。使用Promise异步回调。
 | 参数名   | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------|
 | resourceId | string | 是   | UKey中某容器的资源ID，可通过[openAuthorizeDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)获取，其结果中附带resourceId。 |
-| params  | Array\<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是   | 操作时需传入的参数，必选TAG：[HUKS_EXT_CRYPTO_TAG_UKEY_PIN](js-apis-huksExternalCrypto.md#huksexternalcryptotag)。 |
+| params  | Array\<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | 是   | 操作时需传入的参数，必选TAG：[HUKS_EXT_CRYPTO_TAG_UKEY_PIN](js-apis-huksExternalCrypto.md#huksexternalcryptotag)。<br>在API版本26.0.1，新增可选TAG：[HUKS_EXT_CRYPTO_TAG_TIMEOUT](js-apis-huksExternalCrypto.md#huksexternalcryptotag)，用于自定义异步接口超时等待时间，未传入时使用默认值60秒。 |
 
 **返回值：**
 

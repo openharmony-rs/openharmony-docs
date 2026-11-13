@@ -1,10 +1,11 @@
 # Immersive Mode of the Input Method Application
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
+<!--Owner: @codexu62-->
 <!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=82cd7d8df08f9f009907ab6dc8749110ae837884 translatedAt=2026-11-03T08:26:27.517Z pushedAt=2026-11-03T08:26:27.517Z nl=1 -->
 
 ## When to Use
 
@@ -17,7 +18,7 @@ To implement consistent immersive experience, a communication mechanism between 
 - The input method application determines the final immersive mode for the input method framework based on the immersive mode of the foreground application.
 
 ## Access Guide
-1. The foreground application [sets the immersive mode for the text box](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#keyboardappearance15). The sample code is as follows:
+1. The foreground application sets the immersive mode for the text box using [keyboardAppearance](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#keyboardappearance15). The sample code is as follows:
 
    <!-- @[input_case_input_KeyboardAppearance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/pages/PrivatePreview.ets) -->
    
@@ -30,7 +31,7 @@ To implement consistent immersive experience, a communication mechanism between 
    ```
 
 
-2. The input method application [subscribes to the text box attribute change event](../reference/apis-ime-kit/js-apis-inputmethodengine.md#oneditorattributechanged10) and detects the immersive mode desired by the foreground application through the **immersiveMode** field in the **EditorAttribute** callback. The sample code is as follows:
+2. The input method application subscribes to the [editorAttributeChanged](../reference/apis-ime-kit/js-apis-inputmethodengine.md#oneditorattributechanged10) event and detects the immersive mode desired by the foreground application through the **immersiveMode** field in the **EditorAttribute** callback. The sample code is as follows:
 
    <!-- @[input_case_input_immersiveMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
    
@@ -38,7 +39,7 @@ To implement consistent immersive experience, a communication mechanism between 
    // Check whether the immersive mode is used. If the immersive mode is used, select the immersive mode.
    inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
      console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
-     if (attr.immersiveMode == 1) {
+     if (attr.immersiveMode == inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE) {
        this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
        console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
      }
@@ -46,10 +47,10 @@ To implement consistent immersive experience, a communication mechanism between 
    ```
 
 
-3. The input method application [sets the immersive mode](../reference/apis-ime-kit/js-apis-inputmethodengine.md#setimmersivemode15).
+3. The input method application sets the immersive mode using [setImmersiveMode](../reference/apis-ime-kit/js-apis-inputmethodengine.md#setimmersivemode15).
    - The **IMMERSIVE** mode is determined by the input method application.
    - The input method application cannot set the **IMMERSIVE** mode to the input method framework.
-   - If the input method application receives **IMMERSIVE** from the foreground application, it is recommended that the input method application set the final immersive mode to **LIGHT_IMMERSIVE** or **DARK_IMMERSIVE** based on the current system color mode.
+   - If the input method application receives **IMMERSIVE** from the foreground application, it is recommended that the input method application set the final immersive mode to **LIGHT_IMMERSIVE** or **DARK_IMMERSIVE** based on the current system theme mode.
 
 
    The following sample code shows how to set the immersive mode. You must first use [createPanel](../reference/apis-ime-kit/js-apis-inputmethodengine.md#createpanel10) to obtain a panel instance, and then call the **setImmersiveMode** API using the obtained instance.
@@ -60,7 +61,7 @@ To implement consistent immersive experience, a communication mechanism between 
    // Check whether the immersive mode is used. If the immersive mode is used, select the immersive mode.
    inputMethodEngine.getKeyboardDelegate().on("editorAttributeChanged", (attr : inputMethodEngine.EditorAttribute) => {
      console.info('recv editorAttributeChanged, immersiveMode: ', attr.immersiveMode);
-     if (attr.immersiveMode == 1) {
+     if (attr.immersiveMode == inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE) {
        this.panel?.setImmersiveMode(inputMethodEngine.ImmersiveMode.DARK_IMMERSIVE);
        console.info('recv editorAttributeChanged, panel:', this.panel?.getImmersiveMode());
      }

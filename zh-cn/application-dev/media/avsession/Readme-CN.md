@@ -7,6 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 - [AVSession Kit简介](avsession-overview.md)
+- [AVSession Kit示例代码汇总](avsession-kit-samples.md)
 - 本地媒体会话<!--local-avsession-->
   - [本地媒体会话概述](local-avsession-overview.md)
   - [媒体会话提供方(ArkTS)](using-avsession-developer.md)

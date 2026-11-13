@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:41:20.072Z pushedAt=2026-06-25T06:58:27.973Z -->
+<!-- md-trans-meta sourceCommit=26e441a4148b38f5526167518497cfd2bec6e930 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## When to Use
 
@@ -20,7 +20,7 @@ import { shortKey } from '@kit.InputKit';
 
 ## Available APIs
 
-The following table lists common APIs for event injection. For details, see [@ohos.multimodalInput.shortKey (Preset Global Shortcut Keys) (System API)](../../reference/apis-input-kit/js-apis-shortKey-sys.md).
+The following table lists common APIs for system preset global shortcut keys. For details, see [@ohos.multimodalInput.shortKey (Preset Global Shortcut Keys) (System API)](../../reference/apis-input-kit/js-apis-shortKey-sys.md).
 
 | API | Description|
 | ------------------------------------------------------------ | -------------------------- |
@@ -42,7 +42,7 @@ struct Index {
       Text()
         .onClick(() => {
           try {
-            shortKey.setKeyDownDuration("screenshot", 500, (error: BusinessError) => { // Set the delay to 5 seconds (500 ms).
+            shortKey.setKeyDownDuration('screenshot', 5000, (error: BusinessError) => { // Set the delay time of the screenshot application to 5 seconds (5000 milliseconds).
               if (error) {
                 console.error(`Set key down duration failed, error: ${JSON.stringify(error, ["code", "message"])}`);
                 return;

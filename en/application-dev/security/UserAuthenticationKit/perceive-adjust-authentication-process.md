@@ -6,6 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=b799bd137584a338db2107c2101b1d6091a6feea translatedAt=2026-11-03T05:46:54.257Z pushedAt=2026-11-03T07:44:41.805Z nl=1 -->
 
 From API version 20, you can adjust and perceive the authentication process using related APIs.
 
@@ -37,7 +38,7 @@ For details about the parameters, return values, and error codes, see [@ohos.use
 
 The following code snippet shows how to skip the disabled biometric authentication and subscribe to the authentication information:
 
-<!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 perceiveAndAdjustAuthentication() {
@@ -65,11 +66,9 @@ perceiveAndAdjustAuthentication() {
       try {
         Logger.info('userAuthInstance callback.');
         this.result[ResultIndex.PERCEIVE_ADJUST] = (`${authTipInfo.tipType}`);
-        // Unsubscribe from the information after authentication is complete.
-        userAuthInstance.off('result');
       } catch (error) {
         const err: BusinessError = error as BusinessError;
-        Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
+        Logger.error(`onAuthTip failed, code: ${err?.code}, Message: ${err?.message}`);
       }
     });
     // Start user authentication.
@@ -92,4 +91,4 @@ perceiveAndAdjustAuthentication() {
 
 ## Sample Code
 
-  - [Perceiving and Adjusting the Authentication Process](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
+  - You can refer to the [User Authentication Service](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication) sample code.

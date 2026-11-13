@@ -1,14 +1,13 @@
 # Class (ScrollActionProposal)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=1679aa2b39603a323ce91f1907155d8cbd2b330b translatedAt=2026-08-11T01:53:22.257Z pushedAt=2026-08-11T06:05:00.478Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-02T12:48:12.911Z pushedAt=2026-11-06T10:51:09.172Z nl=1 -->
 
-Smart gesture scroll action handling, with the default direction being forward scrolling, including rightward and downward. When dynamically customizing smart gesture behavior through the [registerMonitor](./arkts-apis-uicontext-smartgesturecontroller.md#registermonitor) API, setting **selectedProposal** of the return value [Class (GestureHandlingResolution)](./arkts-apis-uicontext-gesturehandlingresolution.md) to an object of this type triggers the scroll operation of the target component.
+Smart gesture scroll action handling, with the default direction being forward scrolling, including rightward and downward. It inherits from [TargetedGestureProposal](arkts-apis-uicontext-targetedgestureproposal.md). When dynamically customizing smart gesture behavior through the [registerMonitor](./arkts-apis-uicontext-smartgesturecontroller.md#registermonitor) API, setting **selectedProposal** of the return value [Class (GestureHandlingResolution)](./arkts-apis-uicontext-gesturehandlingresolution.md) to an object of this type triggers the scroll operation of the target component.
 
 **Since**: 26.0.0
 
@@ -56,6 +55,7 @@ import {
   BaseGestureHandlingProposal,
   GestureHandlingResolution,
   ScrollActionProposal,
+  GestureShortcut,
 } from '@kit.ArkUI';
 
 @Entry

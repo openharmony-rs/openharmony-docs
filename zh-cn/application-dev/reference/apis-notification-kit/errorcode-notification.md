@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -36,7 +36,7 @@ Marshalling or unmarshalling error.
 
 **错误描述**
 
-数据传输前，进行序列化或反序列化错误，方法将返回该错误码。
+数据传输前，进行序列化或反序列化时发生错误，方法将返回该错误码。
 
 **可能原因**
 
@@ -119,7 +119,7 @@ Notification deletion disabled.
 
 **处理步骤**
 
-参考[NotificationRequest](./js-apis-inner-notification-notificationRequest.md)通知禁止删除属性。
+参考[NotificationRequest](js-apis-inner-notification-notificationRequest.md)通知禁止删除属性。
 <!--DelEnd-->
 
 ## 1600007 通知不存在
@@ -411,7 +411,6 @@ Distributed operation timed out.
 检查设备间连接是否正常（例如手机与手表是否配对成功）。
 <!--DelEnd-->
 
-<!--Del-->
 ## 1600022 无效的包信息
 
 **错误信息**
@@ -429,7 +428,6 @@ The specified bundle is invalid.
 **处理步骤**
 
 检查包信息是否正确。
-<!--DelEnd-->
 
 ## 1600023 应用未实现NotificationSubscriberExtensionAbility
 
@@ -542,7 +540,7 @@ This notification is not supported.
 
 **可能原因**
 
-设置[稍后提醒](../../notification/notification-glossary.md#notification-snooze稍后提醒)时，该通知类型为三方实况、系统实况或者其他无法删除的类型。
+设置稍后提醒时，该通知类型为三方实况、系统实况或者其他无法删除的类型。
 
 **处理步骤**
 

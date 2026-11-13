@@ -1353,7 +1353,7 @@ dropMembership(multicastAddress: NetAddress): Promise\<void\>
 
 | 类型            | 说明                                              |
 |  -------------- |  ----------------------------------------------- |
-| Promise\<void\> | 以Promise形式返回MulticastSocket加入多播组的执行结果。 |
+| Promise\<void\> | Promise对象。无返回结果的Promise对象。|
 
 **错误码：**
 
@@ -4102,7 +4102,7 @@ getRemoteAddress(): Promise\<NetAddress\>
 
 | 类型                               | 说明                                        |
 |  --------------------------------- |  ------------------------------------------ |
-| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取本地socket地址的结果。 |
+| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取对端socket地址的结果。 |
 
 **错误码：**
 
@@ -7612,7 +7612,7 @@ getRemoteAddress(): Promise\<NetAddress\>
 
 | 类型                                        | 说明                                        |
 |  ------------------------------------------ |  ------------------------------------------ |
-| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取本地socket地址的结果。失败返回错误码，错误信息。 |
+| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -9832,7 +9832,7 @@ getRemoteAddress(): Promise\<NetAddress\>
 
 | 类型                                 | 说明                                                         |
 |  ----------------------------------- |  ----------------------------------------------------------- |
-| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取本地socket地址的结果。失败返回错误码，错误信息。 |
+| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 

@@ -1,7 +1,7 @@
 # Class (SmartGestureController)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -468,8 +468,7 @@ import {
   NoneActionProposal,
   PageSwitchActionProposal,
   ScrollActionProposal,
-  SelectActionProposal,
-  SmartGestureAction
+  SelectActionProposal
 } from '@kit.ArkUI';
 
 @Entry
@@ -595,7 +594,7 @@ struct SmartGestureControllerExample {
       this.controller.enableSmartTapAndSlideGestures(true);
       this.controller.registerMonitor(this.callback);
     })
-    .onDisappear(() => {
+    .onDisAppear(() => {
       this.controller.unregisterMonitor(this.callback);
       this.controller.enableSmartTapAndSlideGestures(false);
     })

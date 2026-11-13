@@ -3618,7 +3618,7 @@ try {
 | upgradeAction   | [UpgradeAction](#upgradeaction)     | 否 | 否 | 升级方式，取值原则：UPGRADE为差分包，适用于增量升级场景；RECOVERY为修复包，适用于系统故障修复场景。|
 | displayVersion  | string                              | 否 | 否 | 显示版本号。    |
 | innerVersion    | string                              | 否 | 否 | 版本号。      |
-| size            | int                              | 否 | 否 | 升级包大小，单位为B，取值范围[0, +∞]。超出范围时抛出异常。 |
+| size            | number                              | 否 | 否 | 升级包大小，单位为B，取值范围[0, +∞]。超出范围时抛出异常。 |
 | effectiveMode   | [EffectiveMode](#effectivemode)     | 否 | 否 | 生效模式，取值原则：COLD为冷升级，需重启设备生效；LIVE为热升级，无需重启即可生效；LIVE_AND_COLD为融合升级，结合两者特性。|
 | otaMode | [OtaMode](#otamode)                 | 否 | 是 | 升级模式。当需要指定特定的升级模式时传入此参数，适用于存储空间受限、快速升级或A/B分区设备等特殊场景。取值原则：REGULAR_OTA为正常升级，适用于大多数常规升级场景；STREAM_OTA为流式升级，适用于存储空间受限或需要快速升级的场景；AB_REGULAR_OTA为AB正常升级，适用于A/B分区设备；AB_STREAM_OTA为AB流式升级，适用于A/B分区设备。不传入时默认为REGULAR_OTA，使用正常升级模式。|
 
@@ -3768,8 +3768,8 @@ try {
 
 | 名称        | 类型                             | 只读 | 可选 | 说明    |
 | ---------- | -------------------------------- | ---- | ---- | ------ |
-| start | int | 否 | 否 | 开始时间，取值范围[0, 1440]，单位为min。表示一天中的分钟数，0表示00:00，1440表示24:00。<br>必须小于或等于end，超出范围时抛出异常。 |
-| end   | int | 否 | 否 | 结束时间，取值范围[0, 1440]，单位为min。表示一天中的分钟数，0表示00:00，1440表示24:00。<br>必须大于或等于start，超出范围时抛出异常。 |
+| start | number | 否 | 否 | 开始时间，取值范围[0, 1440]，单位为min。表示一天中的分钟数，0表示00:00，1440表示24:00。<br>必须小于或等于end，超出范围时抛出异常。 |
+| end   | number | 否 | 否 | 结束时间，取值范围[0, 1440]，单位为min。表示一天中的分钟数，0表示00:00，1440表示24:00。<br>必须大于或等于start，超出范围时抛出异常。 |
 
 ## TaskInfo
 
@@ -3811,9 +3811,9 @@ try {
 | ---------- | -------------------------------- | ---- | ---- | ------ |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | 否 | 否 | 版本摘要。 |
 | status            | [UpgradeStatus](#upgradestatus)          | 否 | 否 | 升级状态。用于标识升级任务的当前执行阶段。包含下载状态（WAITING_DOWNLOAD到DOWNLOAD_FAIL）、安装状态（WAITING_INSTALL到UPDATING）、生效状态（WAITING_APPLY到APPLYING）和最终结果（UPGRADE_SUCCESS或UPGRADE_FAIL），用于任务状态监控、进度展示和异常处理等场景。 |
-| subStatus         | int                                   | 否 | 否 | 子状态，取值范围参考[UpgradeStatus](#upgradestatus)状态码。  |
-| progress          | int                                   | 否 | 否 | 进度，单位为%，取值范围[0, 100]，超出范围时抛出异常。 |
-| installMode       | int                                   | 否 | 否 | 安装模式，取值范围[0, 2]。取值原则：0为正常升级，适用于用户主动触发升级的场景；1为夜间升级，适用于设置夜间时段自动升级的场景；2为自动升级，适用于系统自动检测并执行升级的场景。应根据升级策略和用户体验需求选择。超出范围时抛出异常。|
+| subStatus         | number                                   | 否 | 否 | 子状态，取值范围参考[UpgradeStatus](#upgradestatus)状态码。  |
+| progress          | number                                   | 否 | 否 | 进度，单位为%，取值范围[0, 100]，超出范围时抛出异常。 |
+| installMode       | number                                   | 否 | 否 | 安装模式，取值范围[0, 2]。取值原则：0为正常升级，适用于用户主动触发升级的场景；1为夜间升级，适用于设置夜间时段自动升级的场景；2为自动升级，适用于系统自动检测并执行升级的场景。应根据升级策略和用户体验需求选择。超出范围时抛出异常。|
 | errorMessages     | Array\<[ErrorMessage](#errormessage)>    | 否 | 否 | 错误信息。 |
 | versionComponents | Array\<[VersionComponent](#versioncomponent)> | 否 | 否 | 版本组件。 |
 
@@ -3827,7 +3827,7 @@ try {
 
 | 名称        | 类型                             | 只读 | 可选 | 说明    |
 | ---------- | -------------------------------- | ---- | ---- | ------ |
-| errorCode    | int | 否 | 否 | 错误码，用于标识具体的错误类型。通过errorCode可快速定位升级失败的原因（如权限错误201、参数错误401、IPC错误11500104等），从而采取针对性的处理措施。<br>使用场景：在升级失败事件(EVENT_UPGRADE_FAIL)回调中，通过errorCode判断失败原因，进行相应的错误处理或提示用户。建议结合errorMessage进行详细的错误分析和处理。 |
+| errorCode    | number | 否 | 否 | 错误码，用于标识具体的错误类型。通过errorCode可快速定位升级失败的原因（如权限错误201、参数错误401、IPC错误11500104等），从而采取针对性的处理措施。<br>使用场景：在升级失败事件(EVENT_UPGRADE_FAIL)回调中，通过errorCode判断失败原因，进行相应的错误处理或提示用户。建议结合errorMessage进行详细的错误分析和处理。 |
 | errorMessage | string | 否 | 否 | 错误描述文本，用于提供错误的详细说明信息。errorMessage提供了错误的具体描述（如'Permission denied.'、'Parameter verification failed'等），帮助开发者理解错误原因和进行调试。<br>使用场景：在错误处理时，可将errorMessage用于日志记录、错误提示展示或错误分析。建议结合errorCode一起使用，errorCode提供错误类型，errorMessage提供详细说明。|
 
 ## EventClassifyInfo
@@ -3887,7 +3887,7 @@ try {
 
 | 名称        | 类型                             | 只读 | 可选 | 说明    |
 | ---------- | -------------------------------- | ---- | ---- | ------ |
-| duration | int                          | 否 | 否 | 恢复出厂设置所需持续时间。单位为min。取值范围[0, +∞]。超出范围时抛出异常。|
+| duration | number                          | 否 | 否 | 恢复出厂设置所需持续时间。单位为min。取值范围[0, +∞]。超出范围时抛出异常。|
 
 ## FactoryResetScope
 

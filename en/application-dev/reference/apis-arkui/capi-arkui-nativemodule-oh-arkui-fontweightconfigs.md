@@ -1,12 +1,11 @@
 # OH_ArkUI_FontWeightConfigs
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8a65b118b29a0c9d1936c3b96f0e90c33fab49ab translatedAt=2026-08-21T04:06:47.351Z pushedAt=2026-08-21T06:01:07.967Z -->
+<!-- md-trans-meta sourceCommit=87f36412b9792c0776f707878176294c4360c8f0 translatedAt=2026-11-09T11:49:27.833Z pushedAt=2026-11-10T03:41:43.960Z nl=1 -->
 
 ```c
 typedef struct OH_ArkUI_FontWeightConfigs OH_ArkUI_FontWeightConfigs
@@ -21,3 +20,4 @@ Defines the font weight configurations of text. It is suitable for scenarios tha
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [text.h](capi-text-h.md)
+

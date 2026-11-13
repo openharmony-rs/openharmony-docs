@@ -1,9 +1,9 @@
 # 使用主题字体（ArkTS）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @gmiao522-->
-<!--Designer: @liumingxiang-->
-<!--Tester: @yhl0101-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @KejiePeng-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 ## 场景介绍
 
@@ -15,7 +15,7 @@
 
 ![themeText_native](figures/themeText_native.jpg)
 
-针对主题字的切换使用，应用方应确保订阅主题字体变更事件，当接收到字体变更事件后，由应用方主动调用页面刷新才能实现主题字的切换，否则主题字只能在重启应用后才生效。
+针对主题字体的切换使用，应用方应确保订阅主题字体变更事件，当接收到字体变更事件后，由应用方主动调用页面刷新才能实现主题字体的切换，否则主题字体只能在重启应用后才生效。
 
 
 ## 接口说明
@@ -55,7 +55,7 @@
    > 
    > 若未在系统**主题应用**中设置一项主题字体，则将使用系统默认字体进行绘制。
 
-   <!-- @[arkts_theme_font_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[arkts_theme_font_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 设置文本样式
@@ -66,7 +66,7 @@
    // 创建一个段落样式对象，以设置排版风格
    let myParagraphStyle: text.ParagraphStyle = {
      textStyle: myTextStyle,
-     align: 3,
+     align: text.TextAlign.JUSTIFY,
      wordBreak: text.WordBreak.NORMAL
    };
    // 创建一个段落生成器
@@ -147,7 +147,7 @@
    }
    ```
 
-8. 在EntryAbility.ets中接收主题字变更事件，并调用渲染节点更新函数。
+8. 在EntryAbility.ets中接收主题字体变更事件，并调用渲染节点更新函数。
 
    <!-- @[arkts_theme_font_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets) -->
    

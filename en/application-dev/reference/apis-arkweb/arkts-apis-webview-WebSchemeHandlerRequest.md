@@ -1,12 +1,11 @@
 # Class (WebSchemeHandlerRequest)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=c3549f5fc26f86afdb3e7a215c50ff6d6d5cab0c translatedAt=2026-08-07T04:47:57.193Z pushedAt=2026-08-07T08:11:46.696Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:06:56.318Z pushedAt=2026-11-09T11:29:25.771Z nl=1 -->
 
 The WebSchemeHandlerRequest class defines a wrapper object for resource requests intercepted through WebSchemeHandler. When a developer registers a custom protocol handler (WebSchemeHandler), the Web kernel creates a WebSchemeHandlerRequest instance and passes it to the callback method upon intercepting a request matching the protocol. This object provides the following request information query methods: getting request header information, request URL, request method, source URL, determining whether it is a main frame request, whether it is associated with a user gesture, getting the request body stream, resource type, and the frame URL that triggered the request, so as to determine whether to intercept the request and construct a corresponding response.
 

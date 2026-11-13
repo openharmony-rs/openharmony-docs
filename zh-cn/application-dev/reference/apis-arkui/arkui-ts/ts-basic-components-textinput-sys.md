@@ -22,7 +22,8 @@
 
 | 名称                                 | 值 | 说明                                       |
 | ---------------------------------- | --- | ---------------------------------------- |
-| SCREEN_LOCK_PASSWORD<sup>11+</sup> | 9 | 锁屏应用密码输入模式。支持输入数字、字母、下划线、空格、特殊字符。密码显示小眼睛图标并且默认会将文字变成圆点，从API version 12开始，Wearable设备上输入文字直接显示为圆点。密码输入模式不支持下划线样式。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SCREEN_LOCK_PASSWORD<sup>11+</sup> | 9 | 锁屏应用密码输入模式。支持输入数字、字母、下划线、空格、特殊字符。该模式显示密码显隐切换图标，且默认将输入文字显示为圆点，从API version 12开始，Wearable设备上输入文字直接显示为圆点。密码输入模式不支持下划线样式。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
 ## voiceButton<sup>23+</sup>
 
 voiceButton(options: Optional\<VoiceButtonOptions\>)
@@ -46,7 +47,7 @@ voiceButton(options: Optional\<VoiceButtonOptions\>)
 
 ## 示例
 
-### 示例1 (设置语音按钮)
+### 示例1（设置语音按钮）
 
 该示例通过配置voiceButton接口，为输入框启用语音输入按钮。
 

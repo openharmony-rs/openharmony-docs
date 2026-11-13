@@ -5,6 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8e22c68cdd7ecb0668db21c4312cda839c2cdaa0 translatedAt=2026-10-29T08:58:30.552Z pushedAt=2026-10-30T03:02:40.530Z nl=1 -->
 
 
 The **&lt;slider&gt;** component is used to quickly adjust settings, such as the volume and brightness. For details, see [slider](../reference/apis-arkui/arkui-js/js-components-basic-slider.md).
@@ -41,7 +42,7 @@ Create a **&lt;slider&gt;** component in the .hml file under **pages/index**.
 
 ## Setting Styles and Attributes
 
-Use the **&lt;slider&gt;** component to set the background color, selected color, and slider color using the **color**, **selected-color**, and **block-color** attributes, respectively.
+The slider component uses the color, scrollbar-color, and background-color styles to set the background color, scrollbar color, and background color of the slider, respectively.
 
 
 ```html
@@ -96,7 +97,7 @@ Add the **min**, **max**, **value**, **step**, and **mode** attributes to set th
 
 ![Styles-and-Attributes-1](figures/Styles-and-Attributes-1.gif)
 
-> **NOTE**
+> **NOTE** 
 >
 > The **mode** attribute indicates the slider style. The options are as follows:
 >

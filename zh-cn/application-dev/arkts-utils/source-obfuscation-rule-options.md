@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "汇总ArkGuard混淆配置选项的功能与起始版本，涵盖属性混淆、顶层作用域混淆、文件名混淆、注释删除、namecache缓存等选项的配置方法。"
+keywords: [混淆, 混淆配置选项, -enable-property-obfuscation, -enable-toplevel-obfuscation, -enable-filename-obfuscation, -remove-comments, namecache, -remove-log]
+doctype: guide
+status: active
+---
+
 # ArkGuard混淆配置选项
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
@@ -914,7 +922,9 @@ const complexComputedPropertyObj = {
        console.info(message);
      }
    }
+   ```
 
+   ``` TypeScript
    // b.ts
    import { MyLog as Log } from './a'
 

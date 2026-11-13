@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "介绍AVScreenCapture的场景化自定义配置，涵盖蜂窝通话保持录屏、B帧编码设置、屏幕捕获Picker弹出等策略配置方法。"
+keywords: [AVScreenCapture, 蜂窝通话录屏, B帧编码, 屏幕捕获Picker, 内容过滤]
+doctype: guide
+status: active
+---
+
 # AVScreenCapture录屏自定义场景
 
 <!--Kit: Media Kit-->
@@ -65,6 +73,10 @@ OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 // 释放CaptureStrategy对象。
 OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 ```
+
+> **说明：**
+>
+> 从API版本26.0.1开始，当录屏模式设置为[OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode).OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN时，无论OH_AVScreenCapture_StrategyForPickerPopUp设置为任何值，都不会弹出Picker。
 
 ## 设置旋转适配
 

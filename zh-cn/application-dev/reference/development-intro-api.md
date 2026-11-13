@@ -14,7 +14,7 @@ API参考主要用于开发者查阅应用开发相关的各类API说明。为�
 API参考采用两种方式标记组件或接口开始支持的版本号：
 
 - 对于新增组件或接口，会在章节开头进行说明，如：本模块首批接口从API version 7开始支持。
-- 对于某个已有组件或接口的新增特性，会在对应特性后进行标注，如：“uid<sup>8+</sup>”表示从API Version 8开始支持属性uid。
+- 对于某个已有组件或接口的新增特性，会在对应特性后进行标注，如：“uid<sup>8+</sup>”表示从API version 8开始支持属性uid。
 
 <!--RP3--><!--RP3End-->
 
@@ -39,9 +39,9 @@ API参考采用两种方式标记组件或接口开始支持的版本号：
 
 ## 权限说明
 
-默认情况下，应用只能访问有限的系统资源。但某些情况下，应用为了扩展功能的诉求，需要访问额外的系统或其他应用的数据（包括用户个人数据）、功能。具体可参考[访问控制开发概述](../security/AccessToken/app-permission-mgmt-overview.md)。
+默认情况下，应用只能访问有限的系统资源。但某些情况下，应用为了扩展功能的诉求，需要访问额外的系统或其他应用的数据（包括用户个人数据）、功能。具体可参考[应用权限管控概述](../security/AccessToken/app-permission-mgmt-overview.md)。
 
-当调用接口访问这些资源时，需要申请对应的权限。申请方式可参考[访问控制开发指导](../security/AccessToken/determine-application-mode.md)。
+当调用接口访问这些资源时，需要[申请对应的权限](../security/AccessToken/determine-application-mode.md)。
 
 - 如果应用需要具备某个权限才能调用该接口，会在具体的接口描述中说明：**需要权限**：ohos.permission.xxxx
 - 如果应用不需要任何权限即可调用该接口，则不做特殊说明。

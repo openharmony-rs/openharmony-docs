@@ -1,16 +1,15 @@
 # AppStorageV2: Storing Application-wide UI State
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:04:35.657Z pushedAt=2026-07-24T01:13:48.668Z -->
+<!-- md-trans-meta sourceCommit=4556237c40588b45737665445826f2a954e917fa translatedAt=2026-09-21T11:06:47.785Z pushedAt=2026-09-23T08:32:48.489Z -->
 
 To enhance the state management framework's capability of sharing application‑wide UI state variables, you can use AppStorageV2 to store the data of global UI state variables for the application.
 
-AppStorageV2 provides the capability of globally sharing state variables within an application. You can bind the same key through **connect** to share data across abilities.
+AppStorageV2 provides the capability of globally sharing state variables within an application. You can bind the same key through **connect** to share data across UIAbility instances.
 
 Before reading this topic, you are advised to read [\@ComponentV2](./arkts-create-custom-components.md#componentv2), [\@ObservedV2 and \@Trace](./arkts-new-observedV2-and-trace.md), and API reference of [AppStorageV2-API](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2).
 
@@ -23,7 +22,7 @@ Before reading this topic, you are advised to read [\@ComponentV2](./arkts-creat
 
 AppStorageV2 is a singleton created when the application UI is started. It is used to provide a central storage of application status data that can be accessed at the application level and remains persistent throughout the application lifecycle. Properties in AppStorageV2 are accessed using unique key strings. It should be noted that data between AppStorage and AppStorageV2 is not shared.
 
-The **connect** API of AppStorageV2 enables synchronization with UI components.
+You can synchronize data with UI components by modifying the return value of the **connect** API of AppStorageV2.
 
 AppStorageV2 supports state sharing among multiple UIAbility instances in the [main thread](../../application-models/thread-model-stage.md) of the same application.
 
@@ -33,15 +32,15 @@ AppStorageV2 supports state sharing among multiple UIAbility instances in the [m
 
 >**NOTE**
 >
->1. The second parameter is used when no **key** is specified, and the third parameter is used otherwise (including when the second parameter is invalid).
+>1. If no key is specified, the second parameter is used as the default constructor; otherwise, the third parameter is used as the default constructor (if the second parameter is invalid, the third parameter is also used as the default constructor).
 >
->2. If the data has been stored in AppStorageV2, you can obtain the stored data without using the default constructor. If the data has not been stored, you must specify a default constructor; otherwise, an application exception will be thrown.
+>2. If the data is already stored in AppStorageV2, you can omit the default constructor to obtain the stored data; otherwise, you must specify the default constructor. Failure to specify it will cause an application exception.
 >
->3. Ensure that the data types match the key. Connecting different types of data to the same key will result in an application exception.
+>3. Connecting data of different types to the same key will cause an application exception. Ensure that the types match.
 >
->4. You are advised to use meaningful values for keys. The values can contain letters, digits, and underscores (_) and a maximum of 255 characters. Using invalid characters or null characters will result in undefined behavior.
+>4. Use a meaningful key. The key can consist of letters, digits, and underscores, with a length not exceeding 255. The behavior of using invalid characters or an empty character is undefined.
 >
->5. When matching the key with the [\@Observed](arkts-observed-and-objectlink.md) object, specify the key or customize the **name** property.
+>5. When associating an [\@Observed](arkts-observed-and-objectlink.md) object, because the name attribute of this type is undefined, you need to specify a key or customize the name attribute.
 
 - **remove**: deletes the stored data of a specified key.
 
@@ -52,6 +51,7 @@ AppStorageV2 supports state sharing among multiple UIAbility instances in the [m
 - **keys**: returns all keys in AppStorageV2.
 
 For details about the preceding APIs, see [AppStorageV2](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2) in the API reference.
+
 
 ## Constraints
 
@@ -111,7 +111,7 @@ struct Index {
           this.message.userName += 'suf';
         })
       // Clicking the button deletes the object with key Message from AppStorageV2.
-      // After removal, changes to the parent component's userId are still synchronized to the child component, because remove only deletes the object from AppStorageV2 and does not affect the existing component data.
+      // After remove, modifying the userID of the parent and child components causes both components to change synchronously, because remove only deletes from AppStorageV2 and does not affect the data already existing in the component.
       Button('remove key: Message')
         .width(300)
         .margin(10)
@@ -119,7 +119,7 @@ struct Index {
           AppStorageV2.remove<Message>(Message);
         })
       // Clicking the button adds an object with key Message to AppStorageV2.
-      // After removal, when the key is re-added and the userID in both parent and child components is modified, it is found that the data is out of sync. Once the child component reconnects via connect(), the data becomes consistent again.
+      // After remove, when the key is re-added and the userID in both parent and child components is modified, it is found that the data is out of sync. Once the child component reconnects via connect(), the data becomes consistent again.
       Button('connect key: Message')
         .width(300)
         .margin(10)
@@ -184,7 +184,6 @@ struct Child {
 ### Storing Data Between Two Pages
 
 Data page
-
 <!-- @[appStorageV2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/Sample.ets) -->
 
 ``` TypeScript
@@ -198,7 +197,6 @@ export class Sample {
 ```
 
 Page 1
-
 <!-- @[appStorageV2_pageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageOne.ets) -->
 
 ``` TypeScript
@@ -264,7 +262,6 @@ struct PageOne {
 ```
 
 Page 2
-
 <!-- @[appStorageV2_pageTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageTwo.ets) -->
 
 ``` TypeScript
@@ -331,7 +328,7 @@ When using **Navigation**, create a **route_map.json** file as shown below in th
       "pageSourceFile": "src/main/ets/pages/PageTwo.ets",
       "buildFunction": "PageTwoBuilder",
       "data": {
-        "description" : "AppStorageV2 example"
+        "description": "AppStorageV2 example"
       }
     }
   ]

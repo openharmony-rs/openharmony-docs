@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @betafringe007-->
 <!--Designer: @taoweihua-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 该模块提供画中画基础功能，包括判断当前设备是否支持画中画功能，以及创建画中画控制器用于启动或停止画中画等。支持用户在进行其他操作时以小窗形式继续观看视频内容，提升多任务处理效率。适用于视频播放、视频通话或视频会议场景。
@@ -34,12 +34,12 @@ isPiPEnabled(): boolean
 
 | 类型       | 说明                                  |
 |----------|-------------------------------------|
-| boolean  | 当前系统是否支持画中画功能。true表示支持，false则表示不支持。 |
+| boolean  | 当前设备是否支持画中画功能。true表示支持，false则表示不支持。 |
 
 **示例：**
 
 ```ts
-let enable: boolean = PiPWindow.isPiPEnabled(); // 获取当前系统是否支持画中画功能
+let enable: boolean = PiPWindow.isPiPEnabled(); // 获取当前设备是否支持画中画功能
 console.info('isPiPEnabled:' + enable);
 ```
 
@@ -417,7 +417,7 @@ type PiPControlGroup = VideoPlayControlGroup | VideoCallControlGroup | VideoMeet
 
 type PiPActionEventType = PiPVideoActionEvent | PiPCallActionEvent | PiPMeetingActionEvent | PiPLiveActionEvent
 
-画中画控制面板控件动作事件类型，支持以下四种。
+画中画控制面板控件动作事件类型。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -596,9 +596,9 @@ startPiP(): Promise&lt;void&gt;
 
 | 错误码ID    | 错误信息                                                |
 |------------|--------------------------------------------------------|
-| 1300012    | The PiP window state is abnormal.                      |
-| 1300013    | Failed to create the PiP window.                       |
-| 1300014    | PiP internal error.                                    |
+| 1300012    | The PiP window state is abnormal. Possible causes: 1. The PiP controller has been destroyed. 2. The PiP window is not created or has been destroyed.     |
+| 1300013    | Failed to create the PiP window. Possible causes: 1. PiP configuration parameters are invalid, such as pipOption or context is null. 2. The XComponentController or main window is null. 3. The main window is not shown (non-auto-start scenario). 4. Navigation component operation failed.          |
+| 1300014    | PiP internal error. Possible cause: Internal error, failed to show the PiP window. Such as insufficient resources or abnormal window service.                             |
 | 1300015    | Repeated PiP operation.                                |
 | 1300034    | This operation conflicts with other floating windows. Possible cause: App has already started float view.</br>适用版本：26.0.0+ |
 
@@ -636,8 +636,8 @@ stopPiP(): Promise&lt;void&gt;
 
 | 错误码ID   | 错误信息                          |
 |---------|-----------------------------------|
-| 1300011 | Failed to destroy the PiP window. |
-| 1300012 | The PiP window state is abnormal. |
+| 1300011 | Failed to destroy the PiP window. Possible cause: Internal error, the window type is not a PiP window.|
+| 1300012 | The PiP window state is abnormal. Possible cause: The PiP window is not created or has been destroyed.|
 | 1300015 | Repeated PiP operation.           |
 
 **示例：**
@@ -660,6 +660,10 @@ setAutoStartEnabled(enable: boolean): void
 在开启自动拉起的情况下，当应用主窗为[智慧多窗悬浮窗](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro#悬浮窗)状态且被收入侧边栏时，应用主窗虽退后台，但不会自动拉起画中画。
 
 在使用XComponent方案实现画中画功能并结合Navigation进行路由管理时，首次调用setAutoStartEnabled(true)方法，系统会缓存当前应用传入的NavigationId的栈顶信息。
+
+> **说明：**
+>
+> 跳转同名页面时会复用缓存页面，如果页面名为缓存的Navigation栈顶则不会跳转。如果需要跳转同名页面，则需要创建同名页面的新实例，将[NavigationOptions](./arkui-ts/ts-basic-components-navigation.md#navigationoptions12)的[launchMode](./arkui-ts/ts-basic-components-navigation.md#launchmode12枚举说明)设置为NEW_INSTANCE即可。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -774,7 +778,7 @@ updateContentNode(contentNode: typeNode.XComponent): Promise&lt;void&gt;
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 401   | Params error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed |
 | 801   | Capability not supported. Failed to call the API due to limited device capabilities.                                                       |
-| 1300014    | PiP internal error.                                    |
+| 1300014    | PiP internal error. PiP internal error. Possible cause: The PiP controller has been destroyed.                                   |
 
 **示例：**
 
@@ -1197,7 +1201,7 @@ on(type: 'pipWindowSizeChange', callback: Callback&lt;PiPWindowSize&gt;): void
 | ------- | -------------------------------------------- |
 | 401     | Params error. Possible causes: Callback is already registered. |
 | 801   | Capability not supported. Failed to call the API due to limited device capabilities.                                                       |
-| 1300014    | PiP internal error.                                    |
+| 1300014    | PiP internal error. Possible cause: The PiP controller has been destroyed. |
 
 **示例：**
 

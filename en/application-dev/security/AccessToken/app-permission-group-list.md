@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=fab51ae1607c595d71580c37f7e5c8c6efddfc33 translatedAt=2026-10-30T08:55:35.869Z pushedAt=2026-10-30T08:57:21.230Z nl=1 -->
 
 ## Usage Guidelines
 
@@ -133,13 +134,19 @@
 - [ohos.permission.SEND_MESSAGES](permissions-for-system-apps-user.md#ohospermissionsend_messages)
 <!--DelEnd-->
 
-## Pasteboard
+## Clipboard
 
 - [ohos.permission.READ_PASTEBOARD](restricted-permissions.md#ohospermissionread_pasteboard)
 
 ## Screenshots
 
 - [ohos.permission.CUSTOM_SCREEN_CAPTURE](permissions-for-all-user.md#ohospermissioncustom_screen_capture)
+
+<!--Del-->
+- [ohos.permission.ONSCREEN_AWARENESS](permissions-for-system-apps-user.md#ohospermissiononscreen_awareness)
+<!--DelEnd-->
+
+- [ohos.permission.WINDOW_CAPTURE](permissions-for-all-user.md#ohospermissionwindow_capture)
 
 ## Directory
 
@@ -150,6 +157,14 @@
 
 - [ohos.permission.READ_WRITE_DESKTOP_DIRECTORY](restricted-permissions.md#ohospermissionread_write_desktop_directory)
 - [ohos.permission.READ_WRITE_DOCUMENTS_DIRECTORY](permissions-for-all-user.md#ohospermissionread_write_documents_directory)
+
+## Input assistance
+ 
+- [ohos.permission.HOOK_KEY_EVENT](restricted-permissions.md#ohospermissionhook_key_event)
+ 
+- [ohos.permission.HOOK_INPUT_EVENT](restricted-permissions.md#ohospermissionhook_input_event)
+ 
+- [ohos.permission.INPUT_RECORDING](restricted-permissions.md#ohospermissioninput_recording)
 
 ## Files<sup>(deprecated)</sup>
 
@@ -179,3 +194,4 @@
 - Read files in the file manager.
 
   Use the file Picker to read documents in **Files**. For details, see [Selecting Documents](../../file-management/select-user-file.md#selecting-documents) and [Saving Documents](../../file-management/save-user-file.md#saving-documents).
+

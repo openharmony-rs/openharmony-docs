@@ -1659,9 +1659,9 @@ preloadPath(info: NavPathInfo, options?: PreloadOptions): Promise&lt;void&gt;
 
 Preloads the **NavDestination** page specified by the **info** parameter. The preloaded page is not displayed immediately but is cached. When [pushPath](#pushpath10) is called later, if the parameters match, the preloaded page instance is used for quick display. This API uses a promise to return the result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2262,9 +2262,9 @@ Defines the routing stack operation options.
 
 Provides the options for preloading a page.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2287,8 +2287,8 @@ Provides the navigation configuration item.
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | stackSizeLimit | number | No| Yes| Maximum number of active page nodes in the navigation routing stack.<br>Default value: **0**, indicating that the routing stack size is not limited.<br>If the value is less than or equal to 0, the routing stack size is not limited.<br>If the value is greater than 0, the number of active page nodes is limited to the specified value. If the number exceeds the limit, the system automatically destroys the page nodes that are pushed to the stack earlier in the first-in-first-out (FIFO) order. The **NavPathInfo** of the pages is completely retained in the routing stack, so that the pages can be recreated later.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
-| recyclePagesOnLowMemory | boolean | No| Yes| Whether to recycle invisible pages when a low memory signal is received.<br>Default value: **false**<br>**true**: Invisible **NavDestination** page instances are recycled when a low memory signal is received. **NavPathInfo** is retained, so that the page can be recreated later.<br>**false**: Invisible **NavDestination** page instances are not recycled when a low memory signal is received.<br>**Since:** 26.1.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.1.0.<br>|
-| clearContentStackOnPrimaryNavigation | boolean | No| Yes| Whether to enable the navigation stack clearing capability from left to right.<br>The default value is **false**. The value **true** indicates that the navigation stack clearing capability from left to right is enabled, and the value **false** indicates that the capability is disabled.<br>**Description of the navigation stack clearing capability from left to right:**<br>When the navigation page is displayed in split mode, if a user's operation (such as clicking a button on the page) on the home page (**NavBar** or **NavDestination**) triggers the page redirection, the system clears the pages before the first newly created page in the navigation page stack, and only the first newly created page and the pages that follow it are retained.<br>**Since:** 26.1.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.1.0.|
+| recyclePagesOnLowMemory | boolean | No| Yes| Whether to recycle invisible pages when a low memory signal is received.<br>Default value: **false**<br>**true**: Invisible **NavDestination** page instances are recycled when a low memory signal is received. **NavPathInfo** is retained, so that the page can be recreated later.<br>**false**: Invisible **NavDestination** page instances are not recycled when a low memory signal is received.<br>**Since:** 26.0.1<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.1.<br>|
+| clearContentStackOnPrimaryNavigation | boolean | No| Yes| Whether to enable the navigation stack clearing capability from left to right.<br>The default value is **false**. The value **true** indicates that the navigation stack clearing capability from left to right is enabled, and the value **false** indicates that the capability is disabled.<br>**Description of the navigation stack clearing capability from left to right:**<br>When the navigation page is displayed in split mode, if a user's operation (such as clicking a button on the page) on the home page (**NavBar** or **NavDestination**) triggers the page redirection, the system clears the pages before the first newly created page in the navigation page stack, and only the first newly created page and the pages that follow it are retained.<br>**Since:** 26.0.1<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.1.|
 
 ## MoreButtonOptions<sup>19+</sup>
 
@@ -5896,7 +5896,7 @@ struct NavigationTitleMaterialDemo {
 
 This example demonstrates how to use the **clearContentStackOnPrimaryNavigation** attribute to enable the stack clearing effect from left to right on the navigation page.
 
-The **clearContentStackOnPrimaryNavigation** attribute is added to [NavigationConfiguration](#navigationconfiguration) since API version 26.1.0.
+The **clearContentStackOnPrimaryNavigation** attribute is added to [NavigationConfiguration](#navigationconfiguration) since API version 26.0.1.
 
 ```ts
 // xxx.ets

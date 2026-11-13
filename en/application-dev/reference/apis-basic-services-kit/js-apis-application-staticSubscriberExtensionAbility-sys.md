@@ -2,9 +2,10 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-09-29T09:41:48.412Z pushedAt=2026-10-08T02:39:02.479Z -->
 
 This module provides extension abilities of Basic Services Kit for static subscribers, which can be used to subscribe to common events in static mode. Static subscription enables receiving common events without keeping the app running in the background. This ability is applicable to scenarios where system services or system apps need to perform background processing when specific common events occur.
 

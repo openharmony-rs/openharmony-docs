@@ -16,7 +16,7 @@ typedef struct OH_AbilityRuntime_ChildProcessInfo *OH_AbilityRuntime_ChildProces
 
 A handle to the child process information, including the PID of the child process, the PID of the corresponding parent process, and the process name.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Related module:** [ChildProcess](capi-childprocess.md)
 

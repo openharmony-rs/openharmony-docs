@@ -45,7 +45,7 @@ addContact(context: Context, contact: Contact, callback: AsyncCallback&lt;number
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait.|
 
 **示例：**
@@ -154,7 +154,7 @@ addContact(context: Context, contact: Contact): Promise<number&gt;
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. |
 
 **示例：**
@@ -250,7 +250,7 @@ deleteContact(context: Context, key: string, callback: AsyncCallback&lt;void&gt;
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例：**
@@ -348,7 +348,7 @@ deleteContact(context: Context,  key: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例：**
@@ -438,7 +438,7 @@ updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;voi
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawId.  |
 
 **示例：**
@@ -547,7 +547,7 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawId. |
 
 **示例：**
@@ -666,7 +666,7 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Failed to open contact portrait file. 3.Internal error. Invalid contact id. Failed to generate contact profile. 4.Internal error. Failed to save contact portrait. 5.Internal error. Invalid contact rawId. |
 
 **示例：**
@@ -775,7 +775,7 @@ isLocalContact(context: Context,  id: number, callback: AsyncCallback&lt;boolean
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
 **示例：**
@@ -866,7 +866,7 @@ isLocalContact(context: Context, id: number): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
 
 **示例：**
@@ -949,7 +949,7 @@ isMyCard(context: Context,  id: number, callback: AsyncCallback&lt;boolean&gt;):
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
 
 **示例：**
@@ -1040,7 +1040,7 @@ isMyCard(context: Context, id: number): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
 
 **示例：**
@@ -1122,7 +1122,7 @@ queryMyCard(context: Context,  callback: AsyncCallback&lt;Contact&gt;): void
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
 
 **示例：**
@@ -1207,7 +1207,7 @@ queryMyCard(context: Context,  attrs: ContactAttributes, callback: AsyncCallback
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -1302,7 +1302,7 @@ queryMyCard(context: Context,  attrs?: ContactAttributes): Promise&lt;Contact&gt
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -1607,7 +1607,7 @@ queryContact(context: Context,  key: string,  callback: AsyncCallback&lt;Contact
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -1694,7 +1694,7 @@ queryContact(context: Context,  key: string, holder: Holder, callback: AsyncCall
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -1790,7 +1790,7 @@ queryContact(context: Context,  key: string,  attrs: ContactAttributes, callback
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -1883,7 +1883,7 @@ queryContact(context: Context,  key: string, holder: Holder, attrs: ContactAttri
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -1990,7 +1990,7 @@ queryContact(context: Context,  key: string, holder?: Holder, attrs?: ContactAtt
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -2086,7 +2086,7 @@ queryContacts(context: Context,  callback: AsyncCallback&lt;Array&lt;Contact&gt;
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -2171,7 +2171,7 @@ queryContacts(context: Context,  holder: Holder, callback: AsyncCallback&lt;Arra
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -2265,7 +2265,7 @@ queryContacts(context: Context,  attrs: ContactAttributes, callback: AsyncCallba
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -2356,7 +2356,7 @@ queryContacts(context: Context,  holder: Holder, attrs: ContactAttributes, callb
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -2461,7 +2461,7 @@ queryContacts(context: Context,  holder?: Holder, attrs?: ContactAttributes): Pr
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -2557,7 +2557,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, callback: Asy
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Internal error. The query resultSet is nullptr. 3.Internal error. The query resultSet is empty.  |
 
 **示例：**
@@ -2644,7 +2644,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Internal error. The query resultSet is nullptr. 3.Internal error. The query resultSet is empty.   |
 
 **示例：**
@@ -2740,7 +2740,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: Contac
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Internal error. The query resultSet is nullptr. 3.Internal error. The query resultSet is empty.   |
 
 **示例：**
@@ -2832,7 +2832,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Internal error. The query resultSet is nullptr. 3.Internal error. The query resultSet is empty.   |
 
 **示例：**
@@ -2938,7 +2938,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Hold
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | 1.Parameter error. Possible causes: Mandatory parameters are left unspecified. 2.Internal error. The query resultSet is nullptr. 3.Internal error. The query resultSet is empty.   |
 
 **示例：**
@@ -3034,7 +3034,7 @@ queryContactsByEmail(context: Context,  email: string, callback: AsyncCallback&l
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -3120,7 +3120,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, callback:
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -3215,7 +3215,7 @@ queryContactsByEmail(context: Context,  email: string, attrs: ContactAttributes,
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -3307,7 +3307,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, attrs: Co
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -3413,7 +3413,7 @@ queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: 
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -3505,7 +3505,7 @@ queryGroups(context: Context,  callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -3589,7 +3589,7 @@ queryGroups(context: Context,  holder: Holder, callback: AsyncCallback&lt;Array&
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -3687,7 +3687,7 @@ queryGroups(context: Context,  holder?: Holder): Promise&lt;Array&lt;Group&gt;&g
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -3776,7 +3776,7 @@ queryHolders(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -3864,7 +3864,7 @@ queryHolders(context: Context): Promise&lt;Array&lt;Holder&gt;&gt;
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
 
 **示例：**
@@ -3940,7 +3940,7 @@ queryKey(context: Context,  id: number, callback: AsyncCallback&lt;string&gt;): 
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
 
 **示例：**
@@ -4026,7 +4026,7 @@ queryKey(context: Context,  id: number, holder: Holder, callback: AsyncCallback&
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
 
 **示例：**
@@ -4126,7 +4126,7 @@ queryKey(context: Context,  id: number, holder?: Holder): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Parameter verification failed.  |
 
 **示例：**
@@ -4223,7 +4223,7 @@ queryContactsCount(context: Context): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 16700001      | General error. |
 
 **示例：**
@@ -4274,7 +4274,7 @@ addContactViaUI(context: Context, contact: Contact): Promise&lt;number&gt;
 | 错误码ID                 | 错误信息                                       |
 | --------------------- | ------------------------------------------ |
 | 401       | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
-| 801       | The specified SystemCapability name was not found. |
+| 801       | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16700001       | General error. |
 | 16700102       | Failed to set value to contacts data. |
 | 16700103       | User cancel. |
@@ -4335,7 +4335,7 @@ saveToExistingContactViaUI(context: Context, contact: Contact): Promise&lt;numbe
 | 错误码ID                 | 错误信息                                       |
 | --------------------- | ------------------------------------------ |
 | 401       | Parameter error. Possible causes: Mandatory parameters are left unspecified. |
-| 801       | The specified SystemCapability name was not found. |
+| 801       | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16700001       | General error. |
 | 16700101       | Failed to get value from contacts data. |
 | 16700102       | Failed to set value to contacts data. |
@@ -4399,7 +4399,7 @@ addContacts(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 16700001      | General error. |
 | 16700002      | Invalid parameter value. |
 
@@ -4464,7 +4464,7 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number, wi
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 16700001      | General error. |
 | 16700002      | Invalid parameter value. |
 
@@ -4525,7 +4525,7 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number): P
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 16700001      | General error. |
 | 16700002      | Invalid parameter value. |
 
@@ -4587,7 +4587,7 @@ syncContacts(context: Context, mode: ContactSyncMode, progress: ContactSyncProgr
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 16700001      | General error. |
 | 16700002      | Invalid parameter value. |
 | 16700003      | Background usage is prohibited. |
@@ -4681,7 +4681,7 @@ queryContactSyncInfo(context: Context): Promise&lt;Array&lt;ContactSyncInfo&gt;&
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 16700001      | General error. |
 
 **示例：**
@@ -4733,7 +4733,7 @@ importContactsViaUI(context: Context, contacts: Array&lt;Contact&gt;): Promise&l
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 801       | The specified SystemCapability name was not found. |
+| 801       | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16700001      | General error. |
 | 16700002      | Invalid parameter value. |
 | 16700004      | The number of contacts exceeds the limit. |
@@ -4896,7 +4896,7 @@ promise.then((data) => {
 | key               | string                                  | 是   | 是   | 联系人的key，由系统自动生成。               |
 | contactAttributes | [ContactAttributes](#contactattributes) | 否   | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                     |
 | emails            | [Email](#email)[]                       | 否   | 是   | 联系人的邮箱地址列表。                 |
-| events            | [Event](#event)[]                       | 否   | 是   | 联系人的生日、周年纪念等重要日期列表。 |
+| events<sup>(deprecated)</sup>            | [Event](#eventdeprecated)[]                       | 否   | 是   | 联系人的生日、周年纪念等重要日期列表。<br> **起始版本：** 7 <br> **废弃版本：** 26.0.1 <br> **替代接口：** significantDates |
 | groups            | [Group](#group)[]                       | 否   | 是   | 联系人的群组列表。<br> **说明**： 添加或更新联系人时，仅支持关联到已有群组，不支持创建新群组。                     |
 | imAddresses       | [ImAddress](#imaddress)[]               | 否   | 是   | 联系人的即时消息地址列表。             |
 | phoneNumbers      | [PhoneNumber](#phonenumber)[]           | 否   | 是   | 联系人的电话号码列表。                 |
@@ -4909,6 +4909,7 @@ promise.then((data) => {
 | nickName          | [NickName](#nickname)                   | 否   | 是   | 联系人的昵称。                         |
 | note              | [Note](#note)                           | 否   | 是   | 联系人的备注。                         |
 | organization      | [Organization](#organization)           | 否   | 是   | 联系人的组织信息。                     |
+| significantDates      | [SignificantDate](#significantdate)[]           | 否   | 是   | 联系人的生日、周年纪念等重要日期列表。<br> **起始版本：** 26.0.1                    |
 
 **示例：**
 
@@ -5057,9 +5058,15 @@ let holder: contact.Holder = {
 };
 ```
 
-## Event
+## Event<sup>(deprecated)</sup>
 
 联系人事件类。
+
+**起始版本**：7
+
+**废弃版本**：26.0.1
+
+**替代接口**：[SignificantDate](#significantdate)
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -5584,4 +5591,61 @@ let website: contact.Website = {
 | completedBatches        | Array&lt;number&gt; |  否  |  否    | 表示已成功同步的联系人批次标识符数组。取值范围为1到totalBatches。      |
 | totalBatches        | number |  否  |  否    | 表示要同步的联系人批次总数。     |
 | lastSyncTime        | number |  否  |  否    | 表示联系人同步的最新时间戳，单位为毫秒(ms)。|
+
+## SignificantDateType
+
+联系人重要日期类型枚举。
+
+**起始版本**：26.0.1
+
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
+| 名称                  | 值 | 说明                               |
+| --------------------- | ---- | ---------------------------------- |
+| DATE_TYPE_OTHER    | 0 | 其他日期类型。 |
+| DATE_TYPE_BIRTHDAY            | 1 | 生日日期类型。                 |
+| DATE_TYPE_LUNAR_BIRTHDAY            | 2 | 农历生日日期类型。                 |
+| DATE_TYPE_ANNIVERSARY            | 3 | 周年纪念日期类型。                 |
+
+
+## SignificantDate
+
+联系人重要日期类。
+
+**起始版本**：26.0.1
+
+**原子化服务API**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.ContactsData
+
+|    名称   |   类型   | 只读 | 可选 | 说明           |
+| --------- | -------- | ---- | ---- | -------------- |
+| dateType      | [SignificantDateType](#significantdatetype)   | 否   | 否   | 重要日期类型。   |
+| dateValue | string   | 否   | 否   | 重要日期取值。 |
+| dateName       | string   | 否   | 是   | 重要日期类型名称。     |
+
+**示例：**
+
+  使用JSON格式创建数据。
+
+```js
+let significantDate: contact.SignificantDate = {
+    dateValue: '2000-01-01',
+    dateType: contact.SignificantDateType.DATE_TYPE_BIRTHDAY
+};
+```
+
+  或使用new一个SignificantDate对象的方式创建数据。
+
+```js
+let significantDate = new contact.SignificantDate();
+significantDate.dateValue = '2000-01-01';
+significantDate.dateType = contact.SignificantDateType.DATE_TYPE_BIRTHDAY;
+```
 

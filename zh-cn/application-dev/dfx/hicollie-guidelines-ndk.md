@@ -62,7 +62,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
            - napi_init.cpp
          ets:
            entryability:
-             - EntryAbility.ts
+             - EntryAbility.ets
            pages:
              - Index.ets
    ```
@@ -339,7 +339,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    void InitStuckDetectionWithTimeout()
    {
      // 初始化线程卡死监控函数
-     int initResult = OH_HiCollie_Init_StuckDetectionWithTimeout(Timer, BLOCK_TIME);
+     int initResult = OH_HiCollie_Init_StuckDetectionWithTimeout(Timer, 5); // 5：卡死检测阈值
      // 成功结果：0
      OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_Init_StuckDetectionWithTimeout: %{public}d", initResult);
    }
@@ -531,10 +531,10 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
    
    static napi_value TestHiCollieAssociateProcessReport(napi_env env, napi_callback_info info)
    {
-      // 上报BUSINESS_THREAD_BLOCK_3S事件
+      // 上报BUSSINESS_THREAD_BLOCK_3S事件
       OH_HiCollie_AssociateProcessReport(false);
       sleep(3);
-      // 上报BUSINESS_THREAD_BLOCK_6S事件
+      // 上报BUSSINESS_THREAD_BLOCK_6S事件
       OH_HiCollie_AssociateProcessReport(true);
       return 0;
    }

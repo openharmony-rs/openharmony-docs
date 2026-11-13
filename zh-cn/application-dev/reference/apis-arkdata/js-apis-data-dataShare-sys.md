@@ -514,7 +514,7 @@ on(event: 'dataChange', type:SubscriptionType, uri: string, callback: AsyncCallb
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
@@ -596,7 +596,7 @@ off(event: 'dataChange', type:SubscriptionType, uri: string, callback?: AsyncCal
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700013 | The DataShareHelper instance is already closed.|
 
@@ -768,9 +768,9 @@ let onCallback: (err: BusinessError, node: dataShare.RdbDataChangeNode) => void 
   console.info("onCallback " + JSON.stringify(node.uri));
   console.info("onCallback " + JSON.stringify(node.templateId));
   console.info("onCallback " + node.data.length);
-  for (let i = 0; i < node.data.length; i++) {
-    console.info("onCallback " + typeof node.data[i] + " " + node.data[i]);
-  }
+  node.data.forEach((data) => {
+    console.info("onCallback " + typeof data + " " + data);
+  });
 }
 
 let uri = "datashareproxy://com.samples.datasharetest.DataShare";
@@ -869,15 +869,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let onPublishCallback: (err: BusinessError, node: dataShare.PublishedDataChangeNode) => void = (err: BusinessError, node:dataShare.PublishedDataChangeNode): void => {
   console.info("onPublishCallback node bundleName " + JSON.stringify(node.bundleName));
   console.info("onPublishCallback node data size" + node.data.length);
-  for (let i = 0; i < node.data.length; i++) {
-    console.info("onPublishCallback node " + typeof node.data[i].data);
-    if (typeof node.data[i].data != 'string') {
-      let array: ArrayBuffer = node.data[i].data as ArrayBuffer;
-      let data: Uint8Array = new Uint8Array(array);
-      console.info("onPublishCallback " + i + " " + JSON.stringify(data));
+  node.data.forEach((data) => {
+    console.info("onPublishCallback node " + typeof data.data);
+    if (typeof data.data != 'string') {
+      let array: ArrayBuffer = data.data as ArrayBuffer;
+      let dataValue: Uint8Array = new Uint8Array(array);
+      console.info("onPublishCallback " + JSON.stringify(dataValue));
     }
-    console.info("onPublishCallback data " + i + " " + JSON.stringify(node.data[i]));
-  }
+    console.info("onPublishCallback data " + JSON.stringify(data));
+  });
 }
 let uris:Array<string> = ['city', 'datashareproxy://com.acts.ohos.data.datasharetest/appInfo', 'key2'];
 let subscriberId = '11';
@@ -1698,7 +1698,7 @@ batchUpdate(operations: Record&lt;string, Array&lt;UpdateOperation&gt;&gt;): Pro
 
 | 错误码ID | 错误信息                             |
 | -------- | ------------------------------------ |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700000 | Inner error. Possible causes: 1.The internal status is abnormal; 2.The interface is incorrectly used; 3.Permission configuration error; 4.A system error. |
 | 15700013 | The DataShareHelper instance is already closed.|
@@ -1742,14 +1742,12 @@ try {
     (dataShareHelper as dataShare.DataShareHelper).batchUpdate(record).then((data: Record<string, Array<number>>) => {
       // 遍历data获取每条数据的更新结果， value为更新成功的数据记录数，若小于0，说明该次更新失败
       let entries = Object.entries(data);
-      for (let i = 0; i < entries.length; i++) {
-        let key = entries[i][0];
-        let values = entries[i][1];
+      entries.forEach(([key, values]) => {
         console.info(`Update uri:${key}`);
-        for (const value of values) {
+        values.forEach((value) => {
           console.info(`Update result:${value}`);
-        }
-      }
+        });
+      });
     }).catch((err: BusinessError) => {
       console.error(`Failed to batch update. Code: ${err.code}, message: ${err.message}`);
     });
@@ -2188,7 +2186,7 @@ notifyChange(data: ChangeInfo): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息              |
 | -------- | -------------------- |
-| 202      | Permission verification failed. A non-system application calls a system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
 | 15700013 | The DataShareHelper instance is already closed.|
 

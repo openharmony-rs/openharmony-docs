@@ -1,17 +1,22 @@
 # @system.file (File Storage)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=25d29e3212d7772c81a1c241ce23ffa36f144075 translatedAt=2026-11-03T05:02:21.131Z pushedAt=2026-11-04T03:11:33.556Z nl=1 -->
 
 > **NOTE**
 >
 > - Module maintenance policy:
 >   - For lite wearables, this module is constantly maintained and available.
->   - For other device types, this module is no longer maintained since API version 10, and you are advised to use [`@ohos.file.fs`](js-apis-file-fs.md) instead.
+>   - For other device types, this module is no longer maintained since API version 10, and you are advised to use [@ohos.file.fs](js-apis-file-fs.md) instead.
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+
+The following describes the URIs in the ArkTS examples:
+  1. The URI must be in the `internal://app/xxx` format.
+  2. `internal://app/` is a fixed prefix that indicates the application root directory, and `xxx` is the directory or file name created by the developer.
 
 ## Modules to Import
 
@@ -35,9 +40,9 @@ Moves a specified file to a given location.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| options | [FileMoveOption](#filemoveoption) | Yes| Options for moving the files.|
+| options | [FileMoveOption](#filemoveoption) | Yes | File move option. |
 
 **Example**
 
@@ -135,9 +140,9 @@ Copies a file to the given URI.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| options | [FileCopyOption](#filecopyoption) | Yes| Options for copying the files.|
+| options | [FileCopyOption](#filecopyoption) | Yes | File copy option. |
 
 **Example**
 
@@ -236,9 +241,9 @@ Obtains all files in the specified directory.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| options | [FileListOption](#filelistoption) | Yes| Options for obtaining all files in the specified directory.|
+| options | [FileListOption](#filelistoption) | Yes | Option for obtaining all files in the specified directory. |
 
 **Example**
 
@@ -335,9 +340,9 @@ Obtains information about a local file.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| options | [FileGetOption](#filegetoption) | Yes| Options for obtaining information about a local file.|
+| options | [FileGetOption](#filegetoption) | Yes | Option for obtaining information about a specified local file. |
 
 **Example**
 
@@ -433,9 +438,9 @@ Deletes a local file.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| options | [FileDeleteOption](#filedeleteoption) | Yes| Options for deleting a local file.|
+| options | [FileDeleteOption](#filedeleteoption) | Yes | Option for deleting a local file. |
 
 **Example**
 
@@ -533,9 +538,9 @@ Writes text into a file. Only text files can be read and written.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| options | [FileWriteTextOption](#filewritetextoption) | Yes| Options for writing text into a file.|
+| options | [FileWriteTextOption](#filewritetextoption) | Yes | Option for writing text content to the specified file. |
 
 **Example**
 
@@ -634,9 +639,9 @@ Writes buffer data into a file. Only text files can be read and written.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| options | [FileWriteArrayBufferOption](#filewritearraybufferoption) | Yes| Options for writing buffer data into a file.|
+| options | [FileWriteArrayBufferOption](#filewritearraybufferoption) | Yes | Option for writing buffer content to the specified file. |
 
 **Example**
 
@@ -649,7 +654,7 @@ export default {
   writeArrayBuffer() {       
     file.writeArrayBuffer({           
       uri: 'internal://app/test',           
-      buffer: new Uint8Array(8),// The buffer is of the Uint8Array type.
+      buffer: new Uint8Array(8),// buffer is of the Uint8Array type
       success: function() {                
         console.info('call writeArrayBuffer success.');            
       },           
@@ -709,7 +714,7 @@ export default {
   writeArrayBuffer() {       
     file.writeArrayBuffer({           
       uri: 'internal://app/test',           
-      buffer: new Uint8Array(8),// The buffer is of the Uint8Array type.
+      buffer: new Uint8Array(8),// buffer is of the Uint8Array type
       success: function() {                
         console.info('call writeArrayBuffer success.');            
       },           
@@ -736,9 +741,9 @@ Reads text from a file. Only text files can be read and written.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| options | [FileReadTextOption](#filereadtextoption) | Yes| Options for reading text from a file.|
+| options | [FileReadTextOption](#filereadtextoption) | Yes | Option for reading text content from the specified file. |
 
 **Example**
 
@@ -836,9 +841,9 @@ Reads buffer data from a file. Only text files can be read and written.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| options | [FileReadArrayBufferOption](#filereadarraybufferoption) | Yes| Options for reading buffer data from a file.|
+| options | [FileReadArrayBufferOption](#filereadarraybufferoption) | Yes | Option for reading buffer content from the specified file. |
 
 **Example**
 
@@ -940,9 +945,9 @@ Checks whether a file or directory exists.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| options | [FileAccessOption](#fileaccessoption) | Yes| Options for checking whether a file or directory exists.|
+| options | [FileAccessOption](#fileaccessoption) | Yes | Option for checking whether a file or directory exists. |
 
 **Example**
 
@@ -1040,9 +1045,9 @@ Creates a directory.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| options | [FileMkdirOption](#filemkdiroption) | Yes| Options for creating a directory.|
+| options | [FileMkdirOption](#filemkdiroption) | Yes | Option for creating the specified directory. |
 
 **Example**
 
@@ -1139,9 +1144,9 @@ Deletes a directory.
 
 **Parameters**
 
-| Name| Type| Mandatory| Description|
+| Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| options | [FileRmdirOption](#filermdiroption) | Yes| Options for deleting a directory.|
+| options | [FileRmdirOption](#filermdiroption) | Yes | Option for deleting the specified directory. |
 
 **Example**
 
@@ -1226,75 +1231,75 @@ export default {
 
 ## FileResponse
 
-Returns a file, including the file information.
+File response. Contains file information.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---- | ---- | ----- |
-| uri | string | No| No| URI of the file.|
-| length | number | No| No| File length, in bytes.|
-| lastModifiedTime | number | No| No| Timestamp when the file is stored the last time, which is the number of milliseconds elapsed since 1970/01/01 00:00:00 GMT.|
-| type | 'dir' \| 'file' | No| No| File type. Available values are as follows:<br> **dir**: directory<br> **file**: file|
-| subFiles | Array&lt;[FileResponse](#fileresponse)&gt; | No| Yes| List of files.|
+| uri | string | No | No | URI of the file. |
+| length | number | No | No | File length, in bytes. |
+| lastModifiedTime | number | No | No | Timestamp when the file is saved, which is the number of milliseconds from 1970/01/01&nbsp;00:00:00 to the current time. |
+| type | 'dir' \| 'file' | No | No | File type. The options are as follows:<br/> -dir: directory;<br/> -file: file. |
+| subFiles | Array&lt;[FileResponse](#fileresponse)&gt; | No | Yes | File list. |
 
 ## FileListResponse
 
-Returns a file list, including the file list information.
+File list response, which contains the file list information.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---- | ---- | ----- |
-| fileList | Array&lt;[FileResponse](#fileresponse)&gt; | No| No| File list. The format of each file is as follows:<br>{<br>uri:'file1',<br>lastModifiedTime:1589965924479,<br>length:10240,<br>type:&nbsp;'file'<br>} |
+| fileList | Array&lt;[FileResponse](#fileresponse)&gt; | No | No | File list obtained. The format of each file is as follows:<br/>{<br/>uri:'file1',<br/>lastModifiedTime:1589965924479,<br/>length:10240,<br/>type:&nbsp;'file'<br/>} |
 
 ## FileReadTextResponse
 
-Returns the text read, including the text content.
+Text read response, containing the text content read.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---- | ---- | ----- |
-| text | string | No| No| Text read from the specified file.|
+| text | string | No | No | Text content read. |
 
 ## FileReadArrayBufferResponse
 
-Returns the file read, including the file content.
+File read response, containing the read file content.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---- | ---- | ----- |
-| buffer | Uint8Array | No| No| Data read.|
+| buffer | Uint8Array | No | No | Read file content. |
 
 ## FileMoveOption
 
-Defines the options used in **move()**.
+Optional type that supports the move interface usage.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---- | ---- | ----- |
-| srcUri | string | No| No| URI of the file to move. Restricted by the underlying file system of lite wearables, the value must meet the following requirements:<br>1. The URI cannot contain the following special characters: \\"*+,:;<=>?[]\\|\x7F<br>2. The value can contain a maximum of 128 characters.|
-| dstUri | string | No| No| URI of the location to which the file is to move. Restricted by the underlying file system of lite wearables, the value must meet the following requirements:<br>1. The URI cannot contain the following special characters: \\"*+,:;<=>?[]\\|\x7F<br>2. The value can contain a maximum of 128 characters.|
-| success | (uri: string) => void | No| Yes| Callback invoked when the API call is successful. This API returns the URI of the destination location.|
-| fail | (data: string, code: number) => void | No| Yes| Callback invoked when the API call fails.<br>**data** indicates the error information.<br>**code** indicates the returned error code:<br>**202**: invalid parameter<br>**300**: I/O error<br>**301**: file or directory not found|
-| complete | () => void | No| Yes| Callback invoked when the API call is complete.|
+| srcUri | string | No | No | URI of the file to move. Due to the restrictions of the underlying file system of lightweight wearable devices, the value must satisfy the following requirements:<br/>1. The URI must not contain the following special characters: \\"*+,:;<=>?[]\\|\x7F, etc.<br/>2. The maximum allowed character length is 128 characters. |
+| dstUri | string | No | No | URI of the position to which the file is moved. Due to the restrictions of the underlying file system of lightweight wearable devices, the value must satisfy the following requirements:<br/>1. The URI must not contain the following special characters: \\"*+,:;<=>?[]\\|\x7F, etc.<br/>2. The maximum allowed character length is 128 characters. |
+| success | (uri: string) => void | No | Yes | Success callback of the interface call. uri is the URI of the position to which the file is moved. |
+| fail | (data: string, code: number) => void | No | Yes | Failure callback of the interface call.<br/>data is the error information.<br/>code is the possible returned error codes:<br/>202: parameter error.<br/>300: I/O error.<br/>301: file or directory does not exist. |
+| complete | () => void | No | Yes | Called when the execution is complete. |
 
 ## FileCopyOption
 
-Defines the options used in **copy()**.
+Optional type that supports the copy interface.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---- | ---- | ----- |
-| srcUri | string | No| No| URI of the file to copy. Restricted by the underlying file system of lite wearables, the value must meet the following requirements:<br>1. The URI cannot contain the following special characters: \\"*+,:;<=>?[]\\|\x7F<br>2. The value can contain a maximum of 128 characters.|
-| dstUri | string | No| No| URI of the location to which the copy is to be saved.<br>The directory of application resources and URI of the **tmp** type are not supported. Restricted by the underlying file system of lite wearables, the value must meet the following requirements:<br>1. The URI cannot contain the following special characters: \\"*+,:;<=>?[]\\|\x7F<br>2. The value can contain a maximum of 128 characters.|
-| success | (uri: string) => void | No| Yes| Callback invoked when the API call is successful. This API returns the URI of the destination location.|
-| fail | (data: string, code: number) => void | No| Yes| Callback invoked when the API call fails.<br>**data** indicates the error information.<br>**code** indicates the returned error code:<br>**202**: invalid parameter<br>**300**: I/O error<br>**301**: file or directory not found|
-| complete | () => void | No| Yes| Callback invoked when the API call is complete.|
+| srcUri | string | No | No | URI of the file to copy. Due to the restrictions of the underlying file system of lightweight wearable devices, the value must satisfy the following requirements:<br/>1. The URI must not contain the following special characters: \\"*+,:;<=>?[]\\|\x7F, etc.<br/>2. The maximum allowed character length is 128 characters. |
+| dstUri | string | No | No | URI of the location to which the file is copied.<br/>Application resource paths or tmp-type URIs are not supported. Due to the restrictions of the underlying file system of lightweight wearable devices, the value must satisfy the following requirements:<br/>1. The URI must not contain the following special characters: \\"*+,:;<=>?[]\\|\x7F, etc.<br/>2. The maximum allowed character length is 128 characters. |
+| success | (uri: string) => void | No | Yes | Callback function for a successful interface call. uri is the URI of the location to which the file is copied. |
+| fail | (data: string, code: number) => void | No | Yes | Callback function for a failed interface call.<br/>data is the error information.<br/>code is the possible returned error code:<br/>202: parameter error.<br/>300: I/O error.<br/>301: file or directory does not exist. |
+| complete | () => void | No | Yes | Called when the execution is complete. |
 
 ## FileListOption
 
@@ -1302,12 +1307,12 @@ Defines the options used in **list()**.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---- | ---- | ----- |
-| uri | string | No| No| URI of the directory. Restricted by the underlying file system of lite wearables, the value must meet the following requirements:<br>1. The URI cannot contain the following special characters: \\"*+,:;<=>?[]\\|\x7F<br>2. The value can contain a maximum of 128 characters.|
-| success | (data: FileListResponse) => void | No| Yes| Callback invoked when the API call is successful. **data** is [FileListResponse](#filelistresponse).|
-| fail | (data: string, code: number) => void | No| Yes| Callback invoked when the API call fails.<br>**data** indicates the error information.<br>**code** indicates the returned error code:<br>**202**: invalid parameter<br>**300**: I/O error<br>**301**: file or directory not found|
-| complete | () => void | No| Yes| Callback invoked when the API call is complete.|
+| uri | string | No | No | URI of the directory. Due to the underlying file system restrictions of lightweight wearable devices, the value must satisfy the following requirements:<br/>1. The URI must not contain the following special characters: \\"*+,:;<=>?[]\\|\x7F, etc.<br/>2. The maximum allowed character length is 128 characters. |
+| success | (data: FileListResponse) => void | No | Yes | Success callback of the interface call. data is [FileListResponse](#filelistresponse). |
+| fail | (data: string, code: number) => void | No | Yes | Failure callback of the interface call.<br/>data is the error information.<br/>code is the possible return error codes:<br/>202: parameter error.<br/>300: I/O error.<br/>301: file or directory does not exist. |
+| complete | () => void | No | Yes | Called when the execution is complete. |
 
 ## FileGetOption
 
@@ -1315,59 +1320,59 @@ Defines the options used in **get()**.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---- | ---- | ----- |
-| uri | string | No| No| URI of the file. Restricted by the underlying file system of lite wearables, the value must meet the following requirements:<br>1. The URI cannot contain the following special characters: \\"*+,:;<=>?[]\\|\x7F<br>2. The value can contain a maximum of 128 characters.|
-| recursive | boolean | No| Yes| Indicates whether to recursively obtain the file list in a subdirectory. The value **true** indicates to recursively obtain the file list, and **false** indicates the opposite. The default value is **false**.|
-| success | (file: FileResponse) => void | No| Yes| Callback invoked when the API call is successful. **file** is [FileResponse](#fileresponse).|
-| fail | (data: string, code: number) => void | No| Yes| Callback invoked when the API call fails.<br>**data** indicates the error information.<br>**code** indicates the returned error code:<br>**202**: invalid parameter<br>**300**: I/O error<br>**301**: file or directory not found|
-| complete | () => void | No| Yes| Callback invoked when the API call is complete.|
+| uri | string | No | No | URI of the file. Due to the restriction of the underlying file system of lightweight wearable devices, the value must satisfy the following requirements:<br/>1. The URI must not contain the following special characters: \\"*+,:;<=>?[]\\|\x7F, etc.<br/>2. The maximum allowed character length is 128 characters. |
+| recursive | boolean | No | Yes | Whether to recursively obtain the list of files in subdirectories. The value **true** indicates recursive operation, and **false** indicates non-recursive operation. When this parameter is omitted, the default is **false**. |
+| success | (file: FileResponse) => void | No | Yes | Callback for a successful interface call. **file** is [FileResponse](#fileresponse). |
+| fail | (data: string, code: number) => void | No | Yes | Callback for a failed interface call.<br/>**data** is the error information.<br/>**code** is the possible returned error code:<br/>202: parameter error.<br/>300: I/O error.<br/>301: the file or directory does not exist. |
+| complete | () => void | No | Yes | Called when the execution is complete. |
 
 ## FileDeleteOption
 
-Defines the options used in **delete()**.
+Optional type that supports the delete interface.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---- | ---- | ----- |
-| uri | string | No| No| URI of the file to delete, which cannot be an application resource path. Restricted by the underlying file system of lite wearables, the value must meet the following requirements:<br>1. The URI cannot contain the following special characters: \\"*+,:;<=>?[]\\|\x7F<br>2. The value can contain a maximum of 128 characters.|
-| success | () => void | No| Yes| Callback invoked when the API call is successful.|
-| fail | (data: string, code: number) => void | No| Yes| Callback invoked when the API call fails.<br>**data** indicates the error information.<br>**code** indicates the returned error code:<br>**202**: invalid parameter<br>**300**: I/O error<br>**301**: file or directory not found|
-| complete | () => void | No| Yes| Callback invoked when the API call is complete.|
+| uri | string | No | No | URI of the file to delete. It cannot be an application resource path. Due to the restriction of the underlying file system of the lightweight wearable device, the value must satisfy the following requirements:<br/>1. The URI must not contain the following special characters: \\"*+,:;<=>?[]\\|\x7F, etc.<br/>2. The maximum allowed character length is 128 characters. |
+| success | () => void | No | Yes | Called when the operation is successful. |
+| fail | (data: string, code: number) => void | No | Yes | Failure callback of the interface call.<br/>data is the error information.<br/>code is the possible returned error code:<br/>202: parameter error.<br/>300: I/O error.<br/>301: file or directory does not exist. |
+| complete | () => void | No | Yes | Called when the execution is complete. |
 
 ## FileWriteTextOption
 
-Defines the options used in **writeText()**.
+Optional type that supports the writeText interface usage.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---- | ---- | ----- |
-| uri | string | No| No| URI of a local file. If it does not exist, a file will be created. Restricted by the underlying file system of lite wearables, the value must meet the following requirements:<br>1. The URI cannot contain the following special characters: \\"*+,:;<=>?[]\\|\x7F<br>2. The value can contain a maximum of 128 characters.|
-| text | string | No | No| String to write into the file.|
-| encoding | string | No | Yes| Encoding format. The default format is **UTF-8**.|
-| append | boolean | No | Yes| Whether to enable the append mode. The default value is **false**. The value **true** means to enable the append mode; the value **false** means the opposite.|
-| success | () => void | No | Yes| Callback invoked when the API call is successful.|
-| fail | (data: string, code: number) => void | No | Yes| Callback invoked when the API call fails.<br>**data** indicates the error information.<br>**code** indicates the returned error code:<br>**202**: invalid parameter<br>**300**: I/O error|
-| complete | () => void | No | Yes| Callback invoked when the API call is complete.|
+| uri | string | No | No | URI of the local file. If the file does not exist, a file is created. Due to the restriction of the underlying file system of the lightweight wearable device, the value must satisfy the following requirements:<br/>1. The URI must not contain the following special characters: \\"*+,:;<=>?[]\\|\x7F, etc.<br/>2. The maximum allowed character length is 128 characters. |
+| text | string | No  | No | String to write. |
+| encoding | string | No  | Yes | Encoding format. The default is UTF-8. |
+| append | boolean | No  | Yes | Whether to use append mode. The default is false. true means append, and false means no append. |
+| success | () => void | No  | Yes | Called when the operation is successful. |
+| fail | (data: string, code: number) => void | No  | Yes | Callback invoked when the interface call fails.<br/>data is the error information.<br/>code is the possible returned error code:<br/>202: parameter error.<br/>300: I/O error. |
+| complete | () => void | No  | Yes | Called when the execution is complete. |
 
 
 ## FileWriteArrayBufferOption
 
-Defines the options used in **writeArrayBuffer()**.
+Optional type that supports the writeArrayBuffer interface usage.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---- | ---- | ----- |
-| uri | string | No| No| URI of a local file. If it does not exist, a file will be created. Restricted by the underlying file system of lite wearables, the value must meet the following requirements:<br>1. The URI cannot contain the following special characters: \\"*+,:;<=>?[]\\|\x7F<br>2. The value can contain a maximum of 128 characters.|
-| buffer | Uint8Array | No| No| Buffer from which the data is derived.|
-| position | number | No| Yes| Offset of the position in the file where writing starts, in bytes. The default value is **0**.|
-| append | boolean | No| Yes| Whether to enable the append mode. The default value is **false**. If the value is **true**, the **position** parameter will become invalid. The value **true** means to enable the append mode; the value **false** means the opposite.|
-| success | () => void | No| Yes| Callback invoked when the API call is successful.|
-| fail | (data: string, code: number) => void | No| Yes| Callback invoked when the API call fails.<br>**data** indicates the error information.<br>**code** indicates the returned error code:<br>**202**: invalid parameter<br>**300**: I/O error|
-| complete | () => void | No| Yes| Callback invoked when the API call is complete.|
+| uri | string | No | No | Local file URI. If the file does not exist, it will be created. Due to the underlying file system restrictions of lightweight wearable devices, the value must satisfy the following requirements:<br/>1. The URI must not contain the following special characters: \\"*+,:;<=>?[]\\|\x7F etc.<br/>2. The maximum allowed character length is 128 characters. |
+| buffer | Uint8Array | No | No | Buffer to write. |
+| position | number | No | Yes | Starting offset position for file writing. The unit is Byte, and the default is 0. |
+| append | boolean | No | Yes | Whether to use append mode. The default is false. When set to true, the position parameter is invalid. true means append, and false means no append. |
+| success | () => void | No | Yes | Called when the operation is successful. |
+| fail | (data: string, code: number) => void | No | Yes | Failure callback of the interface call.<br/>data is the error information.<br/>code is the possible returned error codes:<br/>202: parameter error.<br/>300: I/O error. |
+| complete | () => void | No | Yes | Called when the execution is complete. |
 
 ## FileReadTextOption
 
@@ -1375,70 +1380,70 @@ Defines the options used in **readText()**.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---- | ---- | ----- |
-| uri | string | No| No| URI of the file to which the content is written. Restricted by the underlying file system of lite wearables, the value must meet the following requirements:<br>1. The URI cannot contain the following special characters: \\"*+,:;<=>?[]\\|\x7F<br>2. The value can contain a maximum of 128 characters.|
-| encoding | string | No| Yes| Encoding format. The default format is **UTF-8**.|
-| position | number | No| Yes| Position where the reading starts, in bytes. The default value is the start position of the file.|
-| length | number | No| Yes| Length of the text to be read, in bytes. The default value is **4096**.|
-| success | (data: FileReadTextResponse) => void | No| Yes| Callback invoked when the API call is successful. **data** is [FileReadTextResponse](#filereadtextresponse).|
-| fail | (data: string, code: number) => void | No| Yes| Callback invoked when the API call fails.<br>**data** indicates the error information.<br>**code** indicates the returned error code:<br>**202**: invalid parameter<br>**300**: I/O error<br>**301**: file or directory not found<br>**302**: text to read exceeding 4 KB|
-| complete | () => void | No| Yes| Callback invoked when the API call is complete.|
+| uri | string | No | No | URI of the local file. Due to the restrictions of the underlying file system of lightweight wearable devices, the value must satisfy the following requirements:<br/>1. The URI must not contain the following special characters: \\"*+,:;<=>?[]\\|\x7F, etc.<br/>2. The maximum allowed character length is 128 characters. |
+| encoding | string | No | Yes | Encoding format, which defaults to UTF-8. |
+| position | number | No | Yes | Start position for reading, in bytes. The default is the start position of the file. |
+| length | number | No | Yes | Length to read, in bytes. The value range is [1, 4096]. When this parameter is empty, the default value is 4096. |
+| success | (data: FileReadTextResponse) => void | No | Yes | Success callback of the interface call. **data** is [FileReadTextResponse](#filereadtextresponse). |
+| fail | (data: string, code: number) => void | No | Yes | Failure callback of the interface call.<br/>**data** is the error information.<br/>**code** is the possible returned error codes:<br/>202: parameter error.<br/>300: I/O error.<br/>301: the file or directory does not exist.<br/>302: the file content to read exceeds 4KB. |
+| complete | () => void | No | Yes | Called when the execution is complete. |
 
 ## FileReadArrayBufferOption
 
-Defines the options used in **readArrayBuffer()**.
+Optional type, which supports the readArrayBuffer interface usage.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---- | ---- | ----- |
-| uri | string | No| No| URI of the file to which the content is written. Restricted by the underlying file system of lite wearables, the value must meet the following requirements:<br>1. The URI cannot contain the following special characters: \\"*+,:;<=>?[]\\|\x7F<br>2. The value can contain a maximum of 128 characters.|
-| position | number | No| Yes| Position where the reading starts, in bytes. The default value is the start position of the file.|
-| length | number | No| Yes| Length of data to read, in bytes. If this parameter is not set, the reading proceeds until the end of the file.|
-| success | (data: FileReadArrayBufferResponse) => void | No| Yes| Callback invoked when the API call is successful. **data** is [FileReadArrayBufferResponse](#filereadarraybufferresponse).|
-| fail | (data: string, code: number) => void | No| Yes| Callback invoked when the API call fails.<br>**data** indicates the error information.<br>**code** indicates the returned error code:<br>**202**: invalid parameter<br>**300**: I/O error<br>**301**: file or directory not found|
-| complete | () => void | No| Yes| Callback invoked when the API call is complete.|
+| uri | string | No | No | Local file URI. Due to the underlying file system restrictions of lightweight wearable devices, the value must satisfy the following requirements:<br/>1. The URI must not contain the following special characters: \\"*+,:;<=>?[]\\|\x7F, etc.<br/>2. The maximum allowed character length is 128 characters. |
+| position | number | No | Yes | Start position to read from, in bytes. It defaults to the start position of the file. |
+| length | number | No | Yes | Length to read, in bytes. By default, it reads to the end of the file. |
+| success | (data: FileReadArrayBufferResponse) => void | No | Yes | Success callback of the interface call. data is [FileReadArrayBufferResponse](#filereadarraybufferresponse). |
+| fail | (data: string, code: number) => void | No | Yes | Failure callback of the interface call.<br/>data is the error information.<br/>code is the possible returned error code:<br/>202: parameter error.<br/>300: I/O error.<br/>301: file or directory does not exist. |
+| complete | () => void | No | Yes | Called when the execution is complete. |
 
 ## FileAccessOption
 
-Defines the options used in **access()**.
+Optional type, supports access interface usage.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---- | ---- | ----- |
-| uri | string | No| No| URI of the directory or file. Restricted by the underlying file system of lite wearables, the value must meet the following requirements:<br>1. The URI cannot contain the following special characters: \\"*+,:;<=>?[]\\|\x7F<br>2. The value can contain a maximum of 128 characters.|
-| success | () => void | No| Yes| Callback invoked when the API call is successful.|
-| fail | (data: string, code: number) => void | No| Yes| Callback invoked when the API call fails.<br>**data** indicates the error information.<br>**code** indicates the returned error code:<br>**202**: invalid parameter<br>**300**: I/O error<br>**301**: file or directory not found|
-| complete | () => void | No| Yes| Callback invoked when the API call is complete.|
+| uri | string | No | No | Directory or file URI. Due to the restrictions of the underlying file system of lightweight wearable devices, the value must satisfy the following requirements:<br/>1. The URI must not contain the following special characters: \\"*+,:;<=>?[]\\|\x7F etc.<br/>2. The maximum allowed character length is 128 characters. |
+| success | () => void | No | Yes | Called when the operation is successful. |
+| fail | (data: string, code: number) => void | No | Yes | Failure callback of the interface call.<br/>data is the error information.<br/>code is the possible returned error codes:<br/>202: parameter error.<br/>300: I/O error.<br/>301: file or directory does not exist. |
+| complete | () => void | No | Yes | Called when the execution is complete. |
 
 
 ## FileMkdirOption
 
-Defines the options used in **mkdir()**.
+Optional type that supports mkdir interface usage.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---- | ---- | ----- |
-| uri | string | No| No| URI of the directory. Restricted by the underlying file system of lite wearables, the value must meet the following requirements:<br>1. The URI cannot contain the following special characters: \\"*+,:;<=>?[]\\|\x7F<br>2. The value can contain a maximum of 128 characters.|
-| recursive | boolean | No| Yes| Whether to recursively create the upper-level directory of the specified directory. The default value is **false**. The value **true** means to create upper-level directory recursively; the value false means the opposite.|
-| success | () => void | No| Yes| Callback invoked when the API call is successful.|
-| fail | (data: string, code: number) => void | No| Yes| Callback invoked when the API call fails.<br>**data** indicates the error information.<br>**code** indicates the returned error code:<br>**202**: invalid parameter<br>**300**: I/O error|
-| complete | () => void | No| Yes| Callback invoked when the API call is complete.|
+| uri | string | No | No | Directory URI. Due to the restriction of the underlying file system of the lightweight wearable device, the value must satisfy the following requirements:<br/>1. The URI must not contain the following special characters: \\"*+,:;<=>?[]\\|\x7F, etc.<br/>2. The maximum allowed character length is 128 characters. |
+| recursive | boolean | No | Yes | Whether to recursively create the parent directory of this directory. The default is false. true means recursive creation, and false means non-recursive creation. |
+| success | () => void | No | Yes | Called when the operation is successful. |
+| fail | (data: string, code: number) => void | No | Yes | Callback function for a failed interface call.<br/>data is the error information.<br/>code is the possible returned error code:<br/>202: parameter error.<br/>300: I/O error. |
+| complete | () => void | No | Yes | Called when the execution is complete. |
 
 
 ## FileRmdirOption
 
-Defines the options used in **rmdir()**.
+Optional type, supports rmdir interface usage.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO.Lite
 
-| Name| Type| Read-Only| Optional| Description|
+| Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---- | ---- | ----- |
-| uri | string | No| No| URI of the directory. Restricted by the underlying file system of lite wearables, the value must meet the following requirements:<br>1. The URI cannot contain the following special characters: \\"*+,:;<=>?[]\\|\x7F<br>2. The value can contain a maximum of 128 characters.|
-| recursive | boolean | No| Yes| Whether to recursively delete files and subdirectories of the specified directory. The default value is **false**. The value **true** means to recursively delete files and subdirectories of the specified directory; the value **false** means the opposite.|
-| success | () => void | No| Yes| Callback invoked when the API call is successful.|
-| fail | (data: string, code: number) => void | No| Yes| Callback invoked when the API call fails.<br>**data** indicates the error information.<br>**code** indicates the returned error code:<br>**202**: invalid parameter<br>**300**: I/O error<br>**301**: file or directory not found|
-| complete | () => void | No| Yes| Callback invoked when the API call is complete.|
+| uri | string | No | No | Directory URI. Due to the underlying file system restrictions of lightweight wearable devices, the value must satisfy the following requirements:<br/>1. The URI must not contain the following special characters: \\"*+,:;<=>?[]\\|\x7F, etc.<br/>2. The maximum allowed character length is 128 characters. |
+| recursive | boolean | No | Yes | Whether to recursively delete subfiles and subdirectories. Defaults to false. true means recursive deletion, and false means non-recursive deletion. |
+| success | () => void | No | Yes | Called when the operation is successful. |
+| fail | (data: string, code: number) => void | No | Yes | Failure callback of the interface call.<br/>data is the error information.<br/>code is the possible return error codes:<br/>202: parameter error.<br/>300: I/O error.<br/>301: file or directory does not exist. |
+| complete | () => void | No | Yes | Called when the execution is complete. |

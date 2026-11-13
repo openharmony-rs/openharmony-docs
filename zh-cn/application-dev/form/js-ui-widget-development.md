@@ -1,4 +1,4 @@
-﻿# JS卡片开发指导（Stage模型）
+# JS卡片开发指导（Stage模型）
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
@@ -74,7 +74,7 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
 
 2. 在JsCardFormAbility.ets中，实现FormExtension生命周期接口。
 
-   <!-- @[JSForm_JsCardFormAbility_FormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
+   <!-- @[JSForm_JsCardFormAbility_FormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -148,7 +148,7 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
        };
        let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
        formProvider.updateForm(formId, formData).catch((error: BusinessError) => {
-         hilog.info(DOMAIN_NUMBER, TAG, 'updateForm, error:' + JSON.stringify(error));
+         hilog.error(DOMAIN_NUMBER, TAG, 'updateForm, error:' + JSON.stringify(error));
        });
      }
    
@@ -365,7 +365,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 当卡片应用需要更新数据时（如触发了定时更新或定点更新），卡片应用获取最新数据，并调用updateForm()接口主动触发卡片的更新。
 
 代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
-<!-- @[JSForm_JsCardFormAbility_onUpdateForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+<!-- @[JSForm_JsCardFormAbility_onUpdateForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
 
 ``` TypeScript
 // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -385,7 +385,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
     };
     let formData: formBindingData.FormBindingData = formBindingData.createFormBindingData(obj);
     formProvider.updateForm(formId, formData).catch((error: BusinessError) => {
-      hilog.info(DOMAIN_NUMBER, TAG, 'updateForm, error:' + JSON.stringify(error));
+      hilog.error(DOMAIN_NUMBER, TAG, 'updateForm, error:' + JSON.stringify(error));
     });
   }
 
@@ -612,7 +612,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 > 
 > "data"中JSON Value支持多级嵌套数据，在更新数据时，需要注意携带完整数据。
 
-当前卡片显示07.18日Mr.Zhang的课程信息，示例如下。
+当前卡片显示7月18日Mr.Zhang的课程信息，示例如下。
   ```ts
   "data": {
       "Day": "07.18",
@@ -622,7 +622,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
       }
   }
   ```
-当卡片内容需要更新为07.18日Mr.Li的课程信息时，需要传递待更新的完整数据，不能只传递单个数据项，如只传name或只传course，示例如下。
+当卡片内容需要更新为7月18日Mr.Li的课程信息时，需要传递待更新的完整数据，不能只传递单个数据项，如只传name或只传course，示例如下。
   ```ts
   "teacher": {
       "name": "Mr.Li",

@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导开发者实现音频输入设备路由切换，包括使用蓝牙或星闪设备录音、选择任意设备录音及PC/2in1设备切换场景，说明如何查询设备切换能力并完成切换。"
+keywords: [输入设备切换, 蓝牙录音, 星闪录音, AudioSessionManager, setBluetoothAndNearlinkPreferredRecordCategory, selectMediaInputDevice, AudioDeviceEnhanceManager, PC/2in1, 应用级, 音频流级, 切换麦克风]
+doctype: guide
+status: active
+---
 # 实现音频输入设备路由切换
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -51,7 +58,7 @@ let audioSessionManager = audioManager.getSessionManager();
 >
 > 通话场景下，输入设备跟随当前输出设备，此时其他与通话并发的录音流也会跟随通话输入设备。
 
-<!-- @[selectMediaInputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceSwitcher.ets) -->  
+<!-- @[selectMediaInputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceSwitcher.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -311,8 +318,8 @@ C/C++示例：
 
 - **音频流级：** 通过[OH_AudioDeviceEnhanceManager_SelectInputDeviceForAudioCapturer](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_selectinputdeviceforaudiocapturer)为指定音频录制流选择输入设备。
 
-  <!-- @[select_InputDeviceForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
-
+  <!-- @[select_InputDeviceForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->  
+  
   ``` C++
   // 获取音频设备增强管理器。
   static OH_AudioDeviceEnhanceManager *GetEnhanceManager(std::string &errorMsg)
@@ -384,7 +391,7 @@ C/C++示例：
   }
   
   // ...
-  // 为指定音频播放流设置首选输入设备。
+  // 为指定音频录制流设置首选输入设备。
   napi_value SelectInputDeviceForAudioCapturer(napi_env env, napi_callback_info info)
   {
       int32_t deviceId = 0;
@@ -402,3 +409,9 @@ C/C++示例：
       // ...
   }
   ```
+
+## 相关主题推荐
+
+- [查询和监听音频输入设备](audio-input-device-management.md)
+- [实现音频输出设备路由切换](audio-output-device-switcher.md)
+- [录音无声定位指导](audio-recording-no-audio-troubleshooting.md)

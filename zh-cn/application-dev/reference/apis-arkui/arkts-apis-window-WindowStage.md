@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 > **说明：**
@@ -235,7 +235,7 @@ createSubWindow(name: string, callback: AsyncCallback&lt;Window&gt;): void
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and cannot be created again. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed; 2. Internal task error; 3. The subWindow has been created and cannot be created again; 4. It is not allowed to create non-secure window when secure extension exists; 5. The parent window and the subwindow are not created by the same process. |
 | 1300005 | This window stage is abnormal.<br>适用版本：9|
 
 **示例：**
@@ -308,7 +308,7 @@ createSubWindow(name: string): Promise&lt;Window&gt;
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: The subWindow has been created and cannot be created again. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed; 2. Internal task error; 3. The subWindow has been created and cannot be created again; 4. It is not allowed to create non-secure window when secure extension exists; 5. The parent window and the subwindow are not created by the same process. |
 | 1300005 | This window stage is abnormal.<br>适用版本：9|
 
 **示例：**
@@ -377,7 +377,7 @@ createSubWindowWithOptions(name: string, options: SubWindowOptions): Promise&lt;
 | ------- | ------------------------------ |
 | 401     | Parameter error. Possible cause: Incorrect parameter types. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. The subWindow has been created and cannot be created again. |
+| 1300002 | This window state is abnormal. Possible causes: 1. The window is not created or destroyed; 2. The subWindow has been created and cannot be created again; 3. Internal task error; 4. It is not allowed to create non-secure window when secure extension exists; 5. The parent window and the subwindow are not created by the same process. |
 | 1300005 | This window stage is abnormal. |
 
 **示例：**
@@ -1127,7 +1127,7 @@ export default class EntryAbility extends UIAbility {
 
   onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
-    windowStage.loadContent('page/Index', (err) => {
+    windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
         console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
@@ -1618,13 +1618,13 @@ setWindowModal(isModal: boolean): Promise&lt;void&gt;
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
 
-| 错误码ID | 错误信息                       |
-| -------- | ------------------------------ |
+| 错误码ID | 错误信息                                                                                                         |
+| -------- | -------------------------------------------------------------------------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
-| 1300003  | This window manager service works abnormally. |
-| 1300005 | This window stage is abnormal. Possible cause: The window is not created or destroyed.<br>适用版本：20+ |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                         |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed.                       |
+| 1300003  | This window manager service works abnormally.                                                                |
+| 1300005 | This window stage is abnormal. Possible cause: The window stage is not created or destroyed.<br>适用版本：20+     |
 
 **示例：**
 
@@ -1986,7 +1986,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
         return;
       }
       console.info('Succeeded in loading the content.');

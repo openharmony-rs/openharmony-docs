@@ -41,7 +41,7 @@ Obtains a text embedding model. This API uses a promise to return the result.
 
 | Type                         | Description                                |
 | ----------------------------- | ------------------------------------ |
-| Promise&lt;[TextEmbedding](#textembedding)&gt; | Promise object that returns the text embedding model for text vectorization. |
+| Promise&lt;[TextEmbedding](#textembedding)&gt; | Promise used to return the text embedding model for text vectorization. |
 
 **Error codes**
 
@@ -130,7 +130,7 @@ Obtains an image embedding model. This API uses a promise to return the result.
 
 | Type                         | Description                                |
 | ----------------------------- | ------------------------------------ |
-| Promise&lt;[ImageEmbedding](#imageembedding)&gt; | Promise object that returns the image embedding model for image vectorization. |
+| Promise&lt;[ImageEmbedding](#imageembedding)&gt; | Promise used to return the image embedding model for image vectorization. |
 
 **Error codes**
 

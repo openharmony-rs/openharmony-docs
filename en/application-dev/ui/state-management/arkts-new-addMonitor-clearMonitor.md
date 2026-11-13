@@ -1,12 +1,11 @@
 # addMonitor and clearMonitor APIs: Dynamically Adding and Removing Listeners
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:06:35.594Z pushedAt=2026-07-22T09:54:10.562Z -->
+<!-- md-trans-meta sourceCommit=f40d976a55afa9474832553b7faba446f7655708 translatedAt=2026-09-21T11:02:55.895Z pushedAt=2026-09-23T07:59:30.660Z -->
 
 The [addMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#addmonitor20) and [clearMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#clearmonitor20) APIs enable you to dynamically add or remove listeners for state variables in state management V2.
 
@@ -16,8 +15,8 @@ Before using these APIs, it is recommended that you familiarize yourself with th
 >
 >The **addMonitor** and **clearMonitor** APIs from **UIUtils** are supported in state management V2 since API version 20.
 
-## **Overview**
 
+## **Overview**
 If the decorator [\@Monitor](./arkts-new-monitor.md) is declared in [\@ObservedV2](./arkts-new-observedV2-and-trace.md) and [\@ComponentV2](./arkts-create-custom-components.md#componentv2), all \@ObservedV2 and \@ComponentV2 instances will have the same listening callback by default, and the corresponding listening callback cannot be canceled or deleted.
 
 For scenarios requiring dynamic management of listeners, use the [addMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#addmonitor20) and [clearMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#clearmonitor20) APIs to add or remove listeners on individual \@ObservedV2 and \@ComponentV2 instances.
@@ -27,22 +26,22 @@ For scenarios requiring dynamic management of listeners, use the [addMonitor](..
   ```ts
   import { UIUtils } from '@kit.ArkUI';
   ```
-
 - These APIs only support state variables from state management V2.
 
 - The **clearMonitor** API can only remove listeners added dynamically via **addMonitor**; it cannot remove static callbacks defined using the \@Monitor decorator.
 
 ## Use Rules
-
 - The **addMonitor** and **clearMonitor** APIs support batch processing by accepting an array of state variable paths to add or remove listeners for multiple properties simultaneously.
 
-```ts
+<!-- @[AddMonitorArray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/AddMonitorArray.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class User {
-  @Trace age: number = 0;
-  @Trace name: string = 'Jack';
+  @Trace public age: number = 0;
+  @Trace public name: string = 'Jack';
 
   onChange1(mon: IMonitor) {
     mon.dirty.forEach((path: string) => {
@@ -84,15 +83,16 @@ struct Page {
   }
 }
 ```
-
 - A single state variable path can have multiple listeners registered via **addMonitor**. However, attempting to register a listener with the same function name more than once for the same path will result in operation failure and generate an error log.
 
-```ts
+<!-- @[AddMonitorDuplicateFunc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/AddMonitorDuplicateFunc.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class User {
-  @Trace age: number = 0;
+  @Trace public age: number = 0;
 
   onChange1(mon: IMonitor) {
     mon.dirty.forEach((path: string) => {
@@ -127,7 +127,8 @@ struct Page {
 
   aboutToAppear(): void {
     // Error: Attempting to register another listener named onChange1 for age
-    // Print an error log indicating the addition failure: FIX THIS APPLICATION ERROR: AddMonitor 'onChange1' owned by 'User' path: 'age' - failed when adding duplicate path
+    // Print an error log indicating the addition failed: FIX THIS APPLICATION ERROR: AddMonitor 'onChange1' owned
+    // by 'User' path: 'age' - failed when adding duplicate path
     UIUtils.addMonitor(this.user, 'age', this.onChange1);
   }
 
@@ -143,15 +144,16 @@ struct Page {
   }
 }
 ```
-
 - The [isSynchronous](../../reference/apis-arkui/js-apis-stateManagement.md#monitoroptions20) configuration option for a listener is established during its initial registration and becomes immutable thereafter. Any subsequent attempt to modify it for the same listener will fail and produce an error log.
 
-```ts
+<!-- @[AddMonitorIsSynchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/AddMonitorIsSynchronous.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class User {
-  @Trace age: number = 0;
+  @Trace public age: number = 0;
 
   onChange1(mon: IMonitor) {
     mon.dirty.forEach((path: string) => {
@@ -163,7 +165,8 @@ class User {
     // Correct usage: register the listener function onChange1 for age. When options is not set, the default is an asynchronous listener callback.
     UIUtils.addMonitor(this, 'age', this.onChange1);
     // Error: Attempting to modify the synchronization mode after initial registration
-    // Fails with this log: FIX THIS APPLICATION ERROR: addMonitor failed, current function onChange1 has already register as async, cannot change to sync anymore.
+    // Print the error log: FIX THIS APPLICATION ERROR: addMonitor failed, current function
+    // onChange1 has already register as async, cannot change to sync anymore
     UIUtils.addMonitor(this, 'age', this.onChange1, { isSynchronous: true });
   }
 }
@@ -187,20 +190,21 @@ struct Page {
   }
 }
 ```
-
 - The **clearMonitor** API enables removal of listeners for specified paths. You can either remove a specific listener by providing the listener parameter, or remove all listeners for the path by omitting this parameter.
 
-  Note that when **clearMonitor** is called, if it is found that the current callback has not been registered on the state variable corresponding to the path, or if the state variable currently has no listener functions, a warning log will be printed to alert you that the deletion has failed.
+  Note that when **clearMonitor** is called, if it is found that the current callback has not been registered on the state variable corresponding to the path, or if the state variable currently has no listener functions, an error log will be printed to alert you that the deletion has failed.
 
 After a listener function is removed, changes to the state variable will no longer trigger the corresponding listener function.
 
-```ts
+<!-- @[ClearMonitorUsage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/ClearMonitorUsage.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class User {
-  @Trace age: number = 0;
-  @Trace name: string = 'Jack';
+  @Trace public age: number = 0;
+  @Trace public name: string = 'Jack';
 
   onChange1(mon: IMonitor) {
     mon.dirty.forEach((path: string) => {
@@ -243,7 +247,8 @@ struct Page {
       Button('clear age onChange1').onClick(() => {
         // Step 2: Click the button to remove the onChange1 listener. Subsequent clicks on User age will only trigger onChange2 and onChange3.
         // Step 3: Click the button to attempt removal again. This attempt fails because onChange1 has already been removed.
-        // Error log: FIX THIS APPLICATION ERROR: cannot clear path age for onChange1 because it was never registered with addMonitor.
+        // Print the error log: FIX THIS APPLICATION ERROR: cannot clear path age for onChange1
+        // because it was never registered with addMonitor
         UIUtils.clearMonitor(this.user, 'age', this.user.onChange1);
       })
       Button('clear age monitors').onClick(() => {
@@ -252,7 +257,8 @@ struct Page {
       })
       Button('clear name monitors').onClick(() => {
         // Step 5: Click the button to remove listeners for the name property. This operation fails because there are no listeners registered.
-        // Print error log: FIX THIS APPLICATION ERROR: cannot clear path name for current target User because no Monitor function for this path was registered
+        // Print the error log: FIX THIS APPLICATION ERROR: cannot clear path name for current target
+        // User because no Monitor function for this path was registered
         UIUtils.clearMonitor(this.user, 'name');
       })
     }
@@ -261,11 +267,9 @@ struct Page {
 ```
 
 ## Constraints
-
 - The **addMonitor** and **clearMonitor** APIs only support adding or removing listeners for instances decorated with \@ComponentV2 or \@ObservedV2 that contain at least one \@Trace decorated variable. Attempting to use these APIs on non-conforming instances will result in a runtime error (error code: 130000).
 
   The following example demonstrates this constraint for **addMonitor**; the same limitation applies to **clearMonitor**.
-
   ```ts
   import { UIUtils } from '@kit.ArkUI';
 
@@ -325,11 +329,9 @@ struct Page {
   let b: B = new B();
   let c: C = new C();
   ```
-
 - The observation path in **addMonitor** and **clearMonitor** must be a string or array. Passing any unsupported type will trigger a runtime error with code 130001.
 
   The following example demonstrates this constraint for **addMonitor**; the same limitation applies to **clearMonitor**.
-
   ```ts
   import { UIUtils } from '@kit.ArkUI';
   
@@ -359,11 +361,9 @@ struct Page {
   
   let a: A = new A();
   ```
-
 - The callback function in **addMonitor** is mandatory and must be a named function (not anonymous) and of method type. Passing an unsupported type will trigger a runtime error with code 130002.
 
   For **clearMonitor**, the callback function is optional. When provided, it must be a named function (not anonymous) and of function type.
-
   ```ts
   import { UIUtils } from '@kit.ArkUI';
   
@@ -413,45 +413,39 @@ struct Page {
   ```
 
 ## Rules for Listening for Changes with addMonitor
-
 The rules for listening for changes with **addMonitor** and the [\@Monitor](./arkts-new-monitor.md) decorator are largely consistent. The comparison is shown in the table below.
 
 |  Scenario | addMonitor| @Monitor  |
 |------|----|------|
 | [Listening for @Trace decorated properties in \@ObservedV2 classes](#listening-for-trace-decorated-properties-in-observedv2-classes-and-state-variables-in-componentv2-components)   | Supported| Supported|
-| [Listening for state variables in \@ComponentV2 components](#listening-for-trace-decorated-properties-in-observedv2-classes-and-state-variables-in-componentv2-components) | Supported| Supported|
-| [Listening for Index and Length Changes of Array-Type State Variables](#listening-for-index-and-length-changes-of-array-type-state-variables) | Supported| Supported|
-| [Monitoring API Calls on Built-in Type State Variables](#monitoring-api-calls-on-built-in-type-state-variables) | Not supported by default. Supported via configuration options starting from API version 26.0.0 | Not supported by default. Supported via configuration options starting from API version 26.0.0 |
-| [Independent Path Change Monitoring](#listening-for-paths-independently) | Supported | Not supported by default. Supported via configuration options starting from API version 26.0.0 |
-| [Listening for Variable Accessibility Changes](#listening-for-variable-accessibility-changes) | Supported | Not supported by default. Supported via configuration options starting from API version 26.0.0 |
-| [Configuring Synchronous Listeners](#configuring-synchronous-listeners) | Supported| Not supported|
-| [Listening for Synchronous State Variable Changes in Constructors](#listening-for-synchronous-state-variable-changes-in-constructors)  | Supported| Not supported|
-| [Dynamically Canceling Listening of \@ObservedV2/\@ComponentV2 Instances](#dynamically-canceling-listening-of-observedv2componentv2-instances)  | Supported| Not supported|
-| [Using Paths with Wildcards](#using-paths-with-wildcards) | Not supported by default. Supported via configuration options starting from API version 26.0.0 | Not supported by default. Supported via configuration options starting from API version 26.0.0 |
+| [Listening for changes in state variables in \@ComponentV2 components](#listening-for-trace-decorated-properties-in-observedv2-classes-and-state-variables-in-componentv2-components) | Supported| Supported|
+| [Listening for index and length changes of array-type state variables](#listening-for-index-and-length-changes-of-array-type-state-variables) | Supported| Supported|
+| [Monitoring API calls on built-in type state variables](#monitoring-api-calls-on-built-in-type-state-variables) | Not supported by default. Supported via configuration options starting from API version 26.0.0 | Not supported by default. Supported via configuration options starting from API version 26.0.0 |
+| [Listening for paths independently](#listening-for-paths-independently) | Supported | Not supported by default. Supported via configuration options starting from API version 26.0.0 |
+| [Listening for variables accessibility changes](#listening-for-variable-accessibility-changes)  | Supported | Not supported by default. Starting from API version 26.0.0, it can be supported through configuration |
+| [Configuring synchronous listeners](#configuring-synchronous-listeners) | Supported| Not supported|
+| [Listening for synchronous state variable changes in constructors](#listening-for-synchronous-state-variable-changes-in-constructors)  | Supported| Not supported|
+| [Dynamically canceling listening of \@ObservedV2/\@ComponentV2 instances](#dynamically-canceling-listening-of-observedv2componentv2-instances)  | Supported| Not supported|
+| [Using paths with wildcards](#using-paths-with-wildcards) | Not supported by default. Supported via configuration options starting from API version 26.0.0 | Not supported by default. Supported via configuration options starting from API version 26.0.0 |
 
 ## When to Use
-
 ### Listening for @Trace Decorated Properties in \@ObservedV2 Classes and State Variables in \@ComponentV2 Components
 
 In the following example:
-
 - An **onChange** listener is added for **age** and **name** in the constructor of **User**.
-
 - In the **aboutToAppear** lifecycle callback of the custom component **Page**, an **onChangeInView** listener is added for **user**.
-
 - Clicking **Text(`User name ${this.user.name}`)** changes the value of **name** and triggers **onChange**.
-
 - Clicking **Text(`User age ${this.user.age}`)** changes the value of **age** and triggers **onChange**.
-
 - Clicking **Text(`reset User`)** reassigns the entire **user** object and triggers **onChangeInView**.
+<!-- @[MonitorObservedV2ComponentV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorObservedV2ComponentV2.ets) -->
 
-```ts
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class User {
-  @Trace age: number = 0;
-  @Trace name: string = 'Jack';
+  @Trace public age: number = 0;
+  @Trace public name: string = 'Jack';
 
   onChange(mon: IMonitor) {
     mon.dirty.forEach((path: string) => {
@@ -508,7 +502,9 @@ struct Page {
 
 The following example shows how to listen for index and length changes of an array.
 
-```ts
+<!-- @[MonitorArrayIndexLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorArrayIndexLength.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @Entry
@@ -570,22 +566,22 @@ struct Page {
 ```
 
 ### Listening for Paths Independently
-
 \@Monitor does not support independent path listening, requiring correct parameters to be passed. [Passing non-state variables may cause unintended side-effect monitoring](./arkts-new-monitor.md#passing-correct-input-parameters-to-monitor).
 
 **addMonitor** implements independent listening for different paths. In this example, clicking **Button('change age&name')** outputs:
-
 ``` ts
 property path:age change from 24 to 25
 ```
 
-```ts
+<!-- @[MonitorIndependentPath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorIndependentPath.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class Info {
-  name: string = 'John';
-  @Trace age: number = 24;
+  public name: string = 'John';
+  @Trace public age: number = 24;
 
   onPropertyChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
@@ -615,17 +611,18 @@ struct Index {
 ```
 
 ### Listening for Variable Accessibility Changes
-
-[\@Monitor does not record the state of a state variable when it is inaccessible](./arkts-new-monitor.md#variables-cannot-be-observed-during-accessibility-changes), so it cannot listen for accessibility changes.
+**[\@Monitor does not record the state of a state variable when it is inaccessible](./arkts-new-monitor.md#variables-cannot-be-observed-during-accessibility-changes), so it cannot listen for accessibility changes.**
 
 **addMonitor** records inaccessible states, enabling listening for accessibility changes. Example:
 
-```ts
+<!-- @[MonitorAccessibleChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorAccessibleChange.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class User {
-  @Trace age: number = 10;
+  @Trace public age: number = 10;
 }
 
 @Entry
@@ -665,22 +662,21 @@ struct Page {
   }
 }
 ```
-
 ### Configuring Synchronous Listeners
-
 Unlike \@Monitor, which only supports asynchronous listening, **addMonitor** can be configured with synchronous listeners. In the following example, clicking **Text(`User age ${this.user.age}`)** increments the value of **age** twice, triggering the **onChange** listener twice:
-
 ``` ts
 onChange: User property user.age change from 10 to 11
 onChange: User property user.age change from 11 to 12
 ```
 
-```ts
+<!-- @[AddMonitorSynchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/AddMonitorSynchronous.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class User {
-  @Trace age: number = 10;
+  @Trace public age: number = 10;
 }
 
 @Entry
@@ -709,17 +705,17 @@ struct Page {
   }
 }
 ```
-
 With \@Monitor, only one callback is triggered:
-
 ``` ts
 onChange: User property user.age change from 10 to 12
 ```
 
-```ts
+<!-- @[MonitorAsyncOnly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorAsyncOnly.ets) -->
+
+``` TypeScript
 @ObservedV2
 class User {
-  @Trace age: number = 10;
+  @Trace public age: number = 10;
 }
 
 @Entry
@@ -747,27 +743,25 @@ struct Page {
 ```
 
 ### Listening for Synchronous State Variable Changes in Constructors
-
 Unlike [\@Monitor, which constructs asynchronously](./arkts-new-monitor.md#effective-and-expiration-time-of-variable-listening-by-the-monitor-in-the-class), **addMonitor** operates synchronously. The listener **this.onMessageChange** is added to **message** immediately after **UIUtils.addMonitor(this, 'message', this.onMessageChange);** execution. In the following example:
-
 - Page initialization constructs an **Info** instance, triggering **onMessageChange**.
-
 - Clicking **Button('change message')** also triggers **onMessageChange**.
 
 The output logs are as follows:
-
 ``` ts
 message change from not initialized to initialized
 message change from initialized to Index aboutToAppear
 message change from Index aboutToAppear to Index click to change message
 ```
 
-```ts
+<!-- @[MonitorConstructorSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorConstructorSync.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class Info {
-  @Trace message: string = 'not initialized';
+  @Trace public message: string = 'not initialized';
 
   constructor() {
     // addMonitor can monitor changes to message in the constructor.
@@ -803,12 +797,14 @@ struct Page {
 
 Unlike @Monitor, **addMonitor** and **clearMonitor** enable dynamic management of listeners for different \@ObservedV2/\@ComponentV2 instances. Example:
 
-```ts
+<!-- @[DynamicCancelMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/DynamicCancelMonitor.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class User {
-  @Trace age: number = 10;
+  @Trace public age: number = 10;
 
   onChange(mon: IMonitor) {
     mon.dirty.forEach((path: string) => {
@@ -902,13 +898,15 @@ For the rules on using wildcard paths, refer to the description of [listening fo
 
 The following is an example of using **addMonitor** with wildcards to observe object property changes.
 
-```ts
+<!-- @[MonitorWildcardObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorWildcardObject.ets) -->
+
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { UIUtils } from '@kit.ArkUI';
 @ObservedV2
 class ClassA {
-  @Trace propA: number = 8;
-  @Trace propB: number = 99;
+  @Trace public propA: number = 8;
+  @Trace public propB: number = 99;
 
   constructor(a: number, b: number) {
     this.propA = a;
@@ -960,14 +958,16 @@ Starting from API version 26.0.0, you can monitor API calls on Array, Map, Set, 
 
 addMonitor with wildcards enabled can monitor Array API calls. When any Array method is called, the callback registered by addMonitor is executed, even if the array is empty or the method does not actually modify the array content. The APIs include `push`, `pop`, `shift`, `splice`, `unshift`, `copyWithin`, `fill`, `reverse`, and `sort`.
 
-```ts
+<!-- @[MonitorWildcardArray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorWildcardArray.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @ObservedV2
 class Person {
-  @Trace firstName: string = 'first';
-  @Trace lastName: string = 'last';
+  @Trace public firstName: string = 'first';
+  @Trace public lastName: string = 'last';
   constructor(first: string = 'no first', last: string = 'no last') {
     this.firstName = first;
     this.lastName = last;
@@ -1099,12 +1099,13 @@ UIUtils.addMonitor(target, 'dateInstance.*', callback, { enableWildcard: true })
 The listener registered by addMonitor is invoked in the following cases:
 
 - `dateInstance` is assigned a new value.
-
 - Any Date API is called, including `setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, and `setUTCMilliseconds`. The listener callback registered by addMonitor is triggered even if these APIs do not actually change the Date value.
 
 The following is an example of using wildcards to monitor a Date object.
 
-```ts
+<!-- @[MonitorWildcardDate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorWildcardDate.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1165,14 +1166,15 @@ UIUtils.addMonitor(target, 'mapInstance.*', callback, { enableWildcard: true });
 The listener registered by **addMonitor** is invoked in the following cases:
 
 - `mapInstance` is assigned a new value.
-
 - **Map** APIs such as `set`, `delete`, and `clear` are called. Unlike **Array** and **Date**, the callback is triggered only when a change actually occurs. This means that calling `clear` on an empty **Map**, calling `delete` on a non-existent **Map** key, and calling `set` without actually changing the value do not trigger the listener callback registered by **addMonitor**.
 
 Unlike **Array**, **addMonitor** cannot monitor a specific key of a **Map**.
 
 The following is an example of using wildcards to monitor a Map object.
 
-```ts
+<!-- @[MonitorWildcardMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorWildcardMap.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1273,14 +1275,15 @@ UIUtils.addMonitor(target, 'setInstance.*', callback, { enableWildcard: true });
 The listener registered by **addMonitor** is invoked in the following cases:
 
 - `setInstance` is assigned a new value.
-
 - **Set** APIs such as `add`, `delete`, and `clear` are called. Unlike **Array** and **Date**, the callback is triggered only when a change actually occurs. This means that calling `clear` on an empty **Set**, calling `delete` on a non-existent **Set** element, and calling `add` without actually adding a new element do not trigger the listener callback registered by **addMonitor**.
 
 Unlike **Array**, **addMonitor** cannot monitor a specific element of a Set.
 
 The following is an example of using wildcards to monitor a **Set** object.
 
-```ts
+<!-- @[MonitorWildcardSet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorWildcardSet.ets) -->
+
+``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 

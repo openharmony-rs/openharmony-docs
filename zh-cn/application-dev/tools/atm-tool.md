@@ -151,6 +151,8 @@ atm dump [-h] [-d [-p <permission-name>]] [-t [-i <token-id>] [-b <bundle-name>]
 
 示例：
 
+从API版本26.1.0开始，查询权限信息时，显示结果新增字段"uid"，表示该系统服务或应用的uid。
+
 ```bash
 #查询系统中所有的权限定义
 atm dump -d
@@ -163,6 +165,7 @@ atm dump -d -p *********
 #     "grantMode": "SYSTEM_GRANT",
 #     "availableLevel": "SYSTEM_CORE",
 #     "availableType": "SYSTEM",
+#     "provisionEnable": true,
 #     "distributedSceneEnable": true,
 #     "isKernelEffect": true,
 #     "hasValue": true,
@@ -181,6 +184,7 @@ atm dump -t -i *********
 #   "tokenId": 672078897,
 #   "processName": "samgr",
 #   "apl": 2,
+#   "uid": 5555,
 #   "permStateList": [
 #     {
 #       "permissionName": "ohos.permission.DISTRIBUTED_DATASYNC",
@@ -198,6 +202,7 @@ atm dump -t -b ohos.telephony.resources
 #   "tokenAttr": 1,
 #   "ver": 1,
 #   "userId": 100,
+#   "uid": 20010042,
 #   "bundleName": "ohos.telephony.resources",
 #   "instIndex": 0,
 #   "dlpType": 0,

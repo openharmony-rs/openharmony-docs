@@ -45,7 +45,7 @@ getTotalSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -99,7 +99,7 @@ getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -161,7 +161,7 @@ getFreeSizeOfVolume(volumeUuid: string): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -215,7 +215,7 @@ getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;number&gt;): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -278,7 +278,7 @@ getBundleStats(packageName: string, index?: number): Promise&lt;BundleStats&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -339,7 +339,7 @@ getBundleStats(packageName: string, callback: AsyncCallback&lt;BundleStats&gt;, 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -380,6 +380,75 @@ getBundleStats(packageName: string, callback: AsyncCallback&lt;BundleStats&gt;, 
   }
   ```
 
+## storageStatistics.getBundleStats
+
+getBundleStats(packageName: string, option?: BundleStatsOptions): Promise&lt;BundleStats&gt;
+
+异步获取应用存储数据的空间大小（单位为Byte）。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.STORAGE_MANAGER
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**系统接口**：此接口为系统接口。
+
+**参数：**
+
+| 参数名      | 类型   | 必填 | 说明     |
+| ----------- | ------ | ---- | -------- |
+| packageName | string | 是   | 应用包名。 |
+| option | [BundleStatsOptions](#bundlestatsoptions) | 否   | 获取应用存储空间信息的选项。|
+
+**返回值：**
+
+| 类型                                       | 说明                       |
+| ------------------------------------------ | -------------------------- |
+| Promise&lt;[BundleStats](js-apis-file-storage-statistics.md#bundlestats9)&gt; | Promise对象，返回应用存储数据的空间大小（单位为Byte）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600008 | No such object. |
+
+**示例：**
+
+```ts
+import { bundleResourceManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = "com.example.myapplication";
+let bundleFlags = bundleResourceManager.ResourceFlag.GET_RESOURCE_INFO_ALL;
+try {
+  let resourceInfo = bundleResourceManager.getBundleResourceInfo(bundleName, bundleFlags);
+  hilog.info(0x0000, 'testTag', 'getBundleResourceInfo successfully. Data label: %{public}s', JSON.stringify(resourceInfo.label));
+  let packageName:string = bundleName;
+  let option: storageStatistics.BundleStatsOptions = {
+    index: resourceInfo.appIndex,
+    statFlag: storageStatistics.GetBundleStatsFlag.GET_BUNDLE_WITH_ALL_SIZE
+  };
+  storageStatistics.getBundleStats(packageName, option).then((bundleStats: storageStatistics.BundleStats) => {
+    hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(bundleStats));
+  }).catch((err: BusinessError) => {
+    console.error(`getBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
+  });
+
+} catch (err) {
+  let message = (err as BusinessError).message;
+  console.error(`getBundleResourceInfo failed with err, message is: ${message}`);
+}
+```
+
 ## storageStatistics.getSystemSize<sup>9+</sup>
 
 getSystemSize(): Promise&lt;number&gt;
@@ -400,7 +469,7 @@ getSystemSize(): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -441,7 +510,7 @@ getSystemSize(callback: AsyncCallback&lt;number&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -486,7 +555,7 @@ getUserStorageStats(): Promise&lt;StorageStats&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -527,7 +596,7 @@ getUserStorageStats(callback: AsyncCallback&lt;StorageStats&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -577,7 +646,7 @@ getUserStorageStats(userId: number): Promise&lt;StorageStats&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -621,7 +690,7 @@ getUserStorageStats(userId: number, callback: AsyncCallback&lt;StorageStats&gt;)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -861,6 +930,42 @@ getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 | path   | string | 否 | 否 | /data目录下子目录的路径，如'/data/app'。    |
 | totalSize | number  |否 | 否 | 路径占用的总空间大小，单位为Byte。  |
 | totalCnt  | number | 否 | 否 | 路径下目录和文件总数量。 |
+
+## BundleStatsOptions
+  
+获取应用存储空间信息的选项。
+
+**起始版本：** 26.0.1
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。  
+
+**系统接口**：此接口为系统接口。
+
+| 名称      | 类型   | 只读  | 可选  | 说明           |
+| --------- | ------ | ---- | ----- | -------------- |
+| index   | number | 否 | 是 | 分身应用的索引号，取值范围为大于等于0的整数，默认值为0（表示未分身的主应用）。<br>传入不满足范围的值时返回错误码401。<br>分身应用索引号在分身创建时默认占用从1开始且当前未被占用的最小索引号，并赋值给该应用的[BundleResourceInfo](../apis-ability-kit/js-apis-bundleManager-BundleResourceInfo-sys.md#bundleresourceinfo)的appIndex属性，后续可以通过调用[getBundleResourceInfo](../apis-ability-kit/js-apis-bundleResourceManager-sys.md#bundleresourcemanagergetbundleresourceinfo12)()接口获得。  |
+| statFlag | [GetBundleStatsFlag](#getbundlestatsflag)  |否 | 是 | 应用存储空间统计信息的标志，用于指定统计范围。默认值是GET_BUNDLE_WITH_ALL_SIZE。  |
+
+## GetBundleStatsFlag
+
+枚举，应用存储空间统计信息的标志。
+
+**起始版本**：26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**系统接口**：此接口为系统接口。
+
+| 名称         | 值    | 说明                 |
+| ----------- | ------- | -------------------- |
+| GET_BUNDLE_WITH_ALL_SIZE      | 0x00000000  | 获取应用的全部数据大小。 |
+| GET_BUNDLE_WITHOUT_INSTALL_SIZE    | 0x00000001  | 不包含应用安装文件大小。     |
+| GET_BUNDLE_WITHOUT_DATA_SIZE    | 0x00000002  | 不包含应用文件存储大小。    |
+| GET_BUNDLE_WITHOUT_CACHE_SIZE  | 0x00000004  | 不包含应用缓存文件大小。    |
 
 ## storageStatistics.listUserdataDirInfo<sup>23+</sup>
 

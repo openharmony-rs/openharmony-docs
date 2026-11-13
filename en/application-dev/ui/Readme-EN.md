@@ -23,8 +23,8 @@
         - [\@ReusableV2 Decorator: Reusing V2 Components](state-management/arkts-new-reusableV2.md)
         - [Global Reuse: Centralized Component Recycling and Reuse](state-management/arkts-global-reuse-pool.md)<!--RP7--><!--RP7End-->
       - Custom Component Freezing<!--arkts-component-freeze-->
-        - [V1 Custom Component Freezing](state-management/arkts-custom-components-freeze.md)
-        - [Custom Component Freezing V2](state-management/arkts-custom-components-freezeV2.md)<!--RP8--><!--RP8End-->
+        - [Freezing a Custom Component (V1)](state-management/arkts-custom-components-freeze.md)
+        - [Freezing a Custom Component (V2)](state-management/arkts-custom-components-freezeV2.md)<!--RP8--><!--RP8End-->
     - Component Extension<!--arkts-extend-components-->
       - [Component Extension Overview](state-management/arkts-extend-components-overview.md)
       - [\@Builder Decorator: Custom Builder Function](state-management/arkts-builder.md)
@@ -32,7 +32,7 @@
       - [\@BuilderParam Decorator: Referencing the \@Builder Function](state-management/arkts-builderparam.md)
       - [wrapBuilder: Encapsulating Global @Builder](state-management/arkts-wrapBuilder.md)
       - [mutableBuilder: Implementing Dynamic Update of Global @Builder](state-management/arkts-mutableBuilder.md)
-      - [\@Styles Decorator: Defining Reusable Styles](state-management/arkts-style.md)
+      - [\@Styles Decorator: Defining Reusable Component Styles](state-management/arkts-style.md)
       - [\@Extend Decorator: Defining Extended Component Styles](state-management/arkts-extend.md)
       - [stateStyles: Applying Polymorphic Styles](state-management/arkts-statestyles.md)
       - [\@AnimatableExtend Decorator: Defining Animatable Properties](state-management/arkts-animatable-extend.md)
@@ -41,8 +41,8 @@
     - [State Management Overview](state-management/arkts-state-management-overview.md)
     - [State Management Principles](state-management/arkts-state-management-introduce.md)
     - [Differences Between State Management V1 and V2 Update Mechanisms](state-management/arkts-v1-v2-update-difference.md)
-    - [MVVM V1](state-management/arkts-mvvm.md)
-    - [MVVM V2](state-management/arkts-mvvm-v2.md)
+    - [MVVM (V1)](state-management/arkts-mvvm.md)
+    - [MVVM (V2)](state-management/arkts-mvvm-v2.md)
     - State Management V1<!--arkts-state-management-v1-->
       - Component State Management<!--arkts-v1-component-state-management-->
         - [\@State Decorator: State Owned by Component](state-management/arkts-state.md)
@@ -57,7 +57,7 @@
         - [Application State Management Overview](state-management/arkts-application-state-management-overview.md)
         - [LocalStorage: Storing Page-Level UI State](state-management/arkts-localstorage.md)
         - [AppStorage: Storing Application-wide UI State](state-management/arkts-appstorage.md)
-        - [PersistentStorage: Persisting Application State](state-management/arkts-persiststorage.md)
+        - [PersistentStorage: Persisting UI State](state-management/arkts-persiststorage.md)
         - [Environment: Querying the Device Environment](state-management/arkts-environment.md)
     - State Management V2<!--arkts-state-management-v2-->
       - Component State Management<!--arkts-v2-manage-component-state-->
@@ -74,7 +74,7 @@
         - [\@Type Decorator: Marking the Types of the Class Property](state-management/arkts-new-type.md)
       - Application State Management<!--arkts-v2-manage-application-state-->
         - [AppStorageV2: Storing Application-wide UI State](state-management/arkts-new-appstoragev2.md)
-        - [PersistenceV2: Persisting Application State](state-management/arkts-new-persistencev2.md)
+        - [PersistenceV2: Persisting UI States](state-management/arkts-new-persistencev2.md)
     - Auxiliary APIs<!--arkts-state-management-uiutils-->
       - [getTarget API: Obtaining Original Objects](state-management/arkts-new-getTarget.md)
       - [makeObserved API: Changing Unobservable Data to Observable Data](state-management/arkts-new-makeObserved.md)
@@ -241,7 +241,7 @@
       - [Shadow Effect](arkts-shadow-effect.md)
       - [Color Effect](arkts-color-effect.md)
       - Blur<!--arkts-blur-->
-        - [Dynamic Blur](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
+        - [Motion Blur](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
     - [Frame Animation (ohos.animator)](arkts-animator.md)<!--RP10--><!--RP10End-->
   - Using Customization Capabilities<!--arkts-user-defined-capabilities-->
     - [Customization Capability Overview](arkts-user-defined.md)
@@ -275,7 +275,7 @@
     - [Inspecting Page Layouts](arkts-inspector-overview.md)
     - [Media Query (@ohos.mediaquery)](arkts-layout-development-media-query.md)
     - Using Embedded Components<!--arkts-ui-cross-process-->
-      - [Atomic Service Full Screen Launch Component (FullScreenLaunchComponent)](arkts-FullScreenComponent.md)
+      - [Full-Screen Launch of Atomic Services (FullScreenLaunchComponent)](arkts-FullScreenComponent.md)
       - [In-Application Embedded Component (EmbeddedComponent)](arkts-embedded-components.md)
     <!--Del-->
     - [Cross-Process Application Capability Extension (UIExtension, for System Applications Only)](arkts-ui-extension-components-sys.md)
@@ -415,7 +415,7 @@
     - [FAQs About Dynamic Attribute Setting](arkts-attribute-modifier-faq.md)
     - [FAQs About Imperative Nodes](arkts-arkui-frameNode-faq.md)
     - [FAQs About UI Parallelization](multi-thread-ui-build-faq.md)<!--RP6--><!--RP6End-->
-    - [FAQs About Immersive Light Sense](arkts-immersive-light-sense-faq.md)
+    - [FAQs About Immersive Lighting](arkts-immersive-light-sense-faq.md)
     
 - [Window Manager](../windowmanager/Readme-EN.md)<!--window-manager-->
 - [Display Management](../displaymanager/Readme-EN.md)<!--display-manager-->

@@ -1,17 +1,25 @@
 # Updating a Notification
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1369c074f8382c69f9641b4418089da1b0b15cc1 translatedAt=2026-11-03T09:36:31.446Z pushedAt=2026-11-03T09:36:31.446Z -->
 
 Starting from API version 18, applications can update only published notifications. such as the upload/download progress and IMs.
 
+> **NOTE**
+>
+> Starting from API version 26.0.1, for progress updates in data transfer scenarios such as upload and download, you are advised to use the API [backgroundTaskManager.updateDataTransferProgress](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerupdatedatatransferprogress) provided by continuous tasks to update the notification progress, without calling `notificationManager.publish`. Before using this API, you must first request a continuous task of the data transfer type. For the development guide, see [Continuous Task (ArkTS)](../task-management/continuous-task.md).
+>
+> Compared with calling `notificationManager.publish`, this API offers the following advantages:
+> - Flexible configuration of the reminder mode for notifications in transfer scenarios: when the progress reaches 100, you can use the `isMute` field of [ProgressInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#progressinfo) to choose between silent mode and ringtone-plus-vibration reminder.
+> - Binding to the continuous task lifecycle: the notification is created when the continuous task is requested and removed when it is canceled, eliminating the need to separately maintain the notification ID and cancellation logic.
+
 ## Available APIs
 
-The table below lists the API for updating notifications. You can use the **updateOnly** field in [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1) to specify the notification to update. The value is set to **false** if no notification is specified.
+The following table describes the APIs for publishing and updating notifications. [Notification update](notification-glossary.md#notification-update) can be specified by carrying the **updateOnly** field in the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1) parameter. If this field is not specified, it defaults to **false**.
 
 - When **updateOnly** is set to **true**, if a notification with the same ID exists, it will be updated. If no notification with the same ID exists, the update fails and no new notification is created.
 

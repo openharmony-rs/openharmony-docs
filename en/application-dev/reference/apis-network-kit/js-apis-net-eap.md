@@ -3,10 +3,10 @@
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @foredward-->
-<!--Designer: @h00918518-->
+<!--Designer: @gcw_3Lx1FoMT-->
 <!--Tester: @WIFIroam-test-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:50:42.905Z pushedAt=2026-06-26T03:00:41.291Z -->
+<!-- md-trans-meta sourceCommit=06f26ddc98a61fec0504f596ec2fbe414c98aaa1 translatedAt=2026-09-23T02:03:30.332Z pushedAt=2026-09-24T06:00:14.193Z -->
 
 The **eap** module provides the extensible authentication mechanism to enable third-party clients to access custom 802.1X (a port-based network access control protocol) authentication, such as Extensible Authentication Protocol (EAP) authentication.
 
@@ -36,7 +36,7 @@ The system will encapsulate the eligible EAP packets into the callback function 
 
 | Name                             | Type|Mandatory|Description|
 | ----------------------------- | ---------- |---------- |---------- |
-| netType| number|Yes|Network type. The value can be **1** or **2**.<br>The value **1** indicates WLAN, and the value **2** indicates Ethernet.|
+| netType| number| Yes| Network type. The value is 1 or 2.<br>netType=1 indicates WLAN (WLAN is supported only on PC/2-in-1 devices), and netType=2 indicates Ethernet.|
 | eapCode|number |Yes|EAP code. The value can be any of the following:<br>code=1 Request, code=2 Response, code=3 Success, code=4 Failure.|
 | eapType| number |Yes|EAP method. The value range is [0, 255].<br>Common values include the following: eapType=1 Identity, eapType=2 Notification, eapType=3 NAK, eapType=4 MD5-Challenge, eapType=5 OTP (One-Time Password), eapType=6 GTC (Generic Token Card), eapType=13 EAP-TLS, eapType=21 EAP-TTLS, eapType=25 EAP-PEAP, eapType=254 Expanded Types, and eapType=255 Experimental use.|
 | callback| Callback\<[EapData](#eapdata)\> |Yes|Callback function, which returns the packet of the specified eapCode+eapType.|
@@ -83,7 +83,7 @@ Unregisters the custom handler of EAP packets for extensible authentication. Thi
 
 | Name                           | Type|Mandatory|Description|
 | ----------------------------- | ---------- |---------- |---------- |
-| netType| number|Yes|Network type. The value can be **1** or **2**.<br>The value **1** indicates WLAN, and the value **2** indicates Ethernet.|
+| netType| number|Yes|Network type. The value 1 indicates WLAN (WLAN is supported only on PCs/2-in-1 devices), and the value 2 indicates Ethernet.|
 | eapCode|number |Yes|EAP code. The value can be any of the following:<br>code=1 Request, code=2 Response, code=3 Success, code=4 Failure.|
 | eapType| number |Yes|EAP method. The value range is [0, 255].<br>Common values include the following: eapType=1 Identity, eapType=2 Notification, eapType=3 NAK, eapType=4 MD5-Challenge, eapType=5 OTP (One-Time Password), eapType=6 GTC (Generic Token Card), eapType=13 EAP-TLS, eapType=21 EAP-TTLS, eapType=25 EAP-PEAP, eapType=254 Expanded Types, and eapType=255 Experimental use.|
 | callback| Callback\<[EapData](#eapdata)\> |Yes|Callback function, which returns the packet of the specified eapCode+eapType.|
@@ -124,8 +124,8 @@ Notifies the system of the extensible authentication result.
 
  > **NOTE**
  >
- >- If this callback is used to process received EAP data packets, the customized portion added by the server must be removed from the EAP data transmitted to the system.
- >- If this callback is used to process sent EAP data packets, the EAP data transmitted to the system is the EAP data with the customized portion added by the server.
+ >- If the callback is used to process received EAP packets (rx), the EAP data passed to the system must have the custom part added by the server stripped.
+ >- If the callback is used to process sent EAP packets (tx), the EAP data passed to the system is the EAP data after the custom part is added.
 
 **Required permissions**: ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION
 
@@ -149,6 +149,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 |33200005 | Invalid size of eap data.          |
 |33200009 | netmanager stop.          |
 |33200099 | internal error.          |
+
+**Example**
 
 ```js
 import {eap} from '@kit.NetworkKit';
@@ -274,7 +276,7 @@ try{
 
 Defines the EAP data.
 
-​**System capability**: SystemCapability.Communication.NetManager.Eap
+**System capability**: SystemCapability.Communication.NetManager.Eap
 
 | **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
@@ -286,7 +288,7 @@ Defines the EAP data.
 
 Enumerates the EAP authentication results.
 
-​**System capability**: SystemCapability.Communication.NetManager.Eap
+**System capability**: SystemCapability.Communication.NetManager.Eap
 
 | **Name**| **Value**| **Description**|
 | -------- | -------- | -------- |

@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -51,3 +51,5 @@
       - [notification.h](capi-notification-h.md)
 - 错误码<!--notification-arkts-errcode-->
   - [通知错误码](errorcode-notification.md)
+<!--RP1-->
+<!--RP1End-->

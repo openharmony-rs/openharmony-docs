@@ -1,16 +1,17 @@
-# Dynamic Blur
-
+# Motion Blur
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=12b2cd63ed349116d480bc7806471549d9a7ea45 translatedAt=2026-07-29T12:42:53.423Z pushedAt=2026-07-30T02:07:52.893Z -->
+<!-- md-trans-meta sourceCommit=64f0c8d8142926f071f02583b7d1ae397c76db87 translatedAt=2026-11-03T08:15:20.289Z pushedAt=2026-11-03T08:49:16.790Z nl=1 -->
 
 Animation effects can add detail to your animations and create a sense of realism. For example, blur and shadow effects can lend a 3D look to objects and deliver a more engaging animation experience. ArkUI provides a diverse array of efficient APIs for you to develop exquisite and personalized effects. This topic covers the common blur, shadow, and color effects.
 
+
 Blur effects add a sense of depth and allow for distinction of hierarchical relationship between elements.
+
 
 | API                                                        | Description                                        |
 | ------------------------------------------------------------ | -------------------------------------------- |
@@ -22,7 +23,7 @@ Blur effects add a sense of depth and allow for distinction of hierarchical rela
 
 >  **NOTE**
 >
->  The preceding APIs are real-time blurring APIs that perform rendering on a frame-by-frame basis, which incurs significant performance overhead. When both the blur content and blur radius remain unchanged, it is recommended that you use the static blur API [blur](../reference/apis-arkgraphics2d/js-apis-effectKit.md#blur). For best practices, see [Image Blurring Optimization – When to Use](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519).
+>  The preceding APIs are all real-time blur APIs that perform real-time rendering for each frame, resulting in a heavy performance load. When neither the blur content nor the blur radius needs to change, you are advised to use the static blur API [blur](../reference/apis-arkgraphics2d/js-apis-effectKit.md#blur). For best practices, see the [usage scenarios](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ui-dynamic-vs-static-blur-examples#when-to-use) in Comparison Between Motion Blur and Static Blur.
 
 ## Applying Background Blur with backdropBlur
 
@@ -52,9 +53,11 @@ struct BlurEffectsExample {
 }
 ```
 
+
 ![en-us_image_0000001599812870](figures/backdropBlur.png)
 
-## Applying Foreground Blur with blur
+
+## Applying Foreground Blur with Blur
 
 <!-- @[animationBlur_template2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/animationBlur/template2/Index.ets) -->
 
@@ -116,7 +119,9 @@ struct Index {
 }
 ```
 
+
 ![en-us_image_0000001599813588](figures/Applying-Foreground-Blur.gif)
+
 
 ## Applying Background Blur with backgroundBlurStyle
 
@@ -388,7 +393,10 @@ struct BackDropBlurStyleDemo {
 }
 ```
 
+
 ![en-us_image_0000001649455517](figures/backgroundBlurStyle.png)
+
+
 
 ## Applying Foreground Blur with foregroundBlurStyle
 
@@ -658,7 +666,9 @@ struct ForegroundBlurStyleDemo {
 }
 ```
 
+
 ![en-us_image_0000001599658168](figures/foregroundBlurStyle.png)
+
 
 ## Applying Motion Blur with motionBlur
 
@@ -669,7 +679,7 @@ import { curves } from '@kit.ArkUI';
 
 @Entry
 @Component
-struct motionBlurTest {
+struct MotionBlurTest {
   @State widthSize: number = 300;
   @State heightSize: number = 240;
   @State flag: boolean = true;
@@ -706,6 +716,8 @@ struct motionBlurTest {
 }
 ```
 
-![motionBlurTest](figures/motionBlur.gif)
+
+
+![MotionBlurTest](figures/motionBlur.gif)
 
 <!--no_check-->

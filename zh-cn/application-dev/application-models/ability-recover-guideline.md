@@ -9,11 +9,13 @@
 
 ## 场景介绍
 
-当应用后台运行时，可能由于系统资源管控等原因导致应用关闭、进程退出，应用直接退出可能会导致用户数据丢失。如果应用在[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中启用了[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)备份恢复功能，并对临时数据进行保存，则可以在应用退出后的下一次启动时恢复先前的状态和数据（包括应用的页面栈以及[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)接口中保存的数据），从而保证用户体验的连贯性。
+当应用后台运行时，可能由于系统资源管控等原因导致应用关闭、进程退出，应用直接退出可能会导致用户数据丢失。如果应用在[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)中启用了[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)备份恢复功能，并对临时数据进行保存，则可以在应用退出后的下一次启动时恢复先前的状态和数据（包括应用的页面栈以及[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)接口中保存的数据），从而保证用户体验的连贯性。
 
 > **说明：**
 >
 > 应用正常关闭时，不会触发[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)备份流程。应用正常启动（例如通过startAbility接口启动或点击图标启动）时，不触发[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)恢复流程。
+
+Navigation/router等多页面应用的页面栈恢复配置与深栈补推，详见[UIAbility备份恢复适配指导](app-restore-adaptation.md)。
 
 ## 运行机制
 - [UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)数据备份：当应用后台运行时，如果因系统资源管控、进程被kill、异常崩溃等非正常原因退出时，系统自动调用[onSaveState()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onsavestate)进行备份。
@@ -33,7 +35,7 @@
 
 ## 接口说明
 
-[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)备份恢复接口由[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)模块提供，开发者可以通过在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)中通过this.context直接调用，详见[开发步骤](#开发步骤)。
+[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)备份恢复接口由[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)模块提供，开发者可以通过在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)中通过this.context直接调用，详见[开发步骤](#开发步骤)。
 
 | 接口名称                                                       | 说明                                                 |
 | ------------------------------------------------------------ | ---------------------------------------------------- |

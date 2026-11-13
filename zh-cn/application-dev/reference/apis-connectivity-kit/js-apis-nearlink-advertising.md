@@ -13,7 +13,6 @@
 
 **起始版本：** 26.0.0
 
-
 ## 导入模块
 
 ```typescript
@@ -28,6 +27,8 @@ import { advertising } from '@kit.ConnectivityKit';
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -45,6 +46,8 @@ import { advertising } from '@kit.ConnectivityKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -52,6 +55,7 @@ import { advertising } from '@kit.ConnectivityKit';
 | interval | number | 否 | 是 | 广播间隔配置参数。单位slot，范围160-16777215，默认值为5000。1个slot对应的时间长度是0.125ms，例如：5000\*0.125=625ms。 |
 | power | [TxPowerMode](#txpowermode) | 否 | 是 | 广播发射功率配置参数。如果不配置，则默认值为ADV_TX_POWER_LOW。 |
 | isConnectable | boolean | 否 | 是 | 表示广播能否连接。true：表示可连接的广播。false：表示不可连接的广播。默认值为true。 |
+| frameType | [nearlinkConstant.FrameType](js-apis-nearlink-constant.md#frametype) | 否 | 是 | 广播无线帧类型。默认值为FRAME_TYPE_1。<br>**起始版本：** 26.1.0 |
 
 
 ## AdvertisingData
@@ -61,6 +65,8 @@ import { advertising } from '@kit.ConnectivityKit';
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -80,6 +86,8 @@ import { advertising } from '@kit.ConnectivityKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -95,6 +103,8 @@ import { advertising } from '@kit.ConnectivityKit';
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -112,6 +122,8 @@ import { advertising } from '@kit.ConnectivityKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -127,6 +139,8 @@ import { advertising } from '@kit.ConnectivityKit';
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -145,6 +159,8 @@ import { advertising } from '@kit.ConnectivityKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 值 | 说明 |
@@ -159,9 +175,13 @@ startAdvertising(advertisingParams: AdvertisingParams): Promise&lt;number&gt;
 
 发送星闪广播。使用Promise异步回调。适用于设备发现、设备信息广播等需要将本端设备能力或数据对外发布的业务场景，配合[advertising.onAdvertisingStateChange](#advertisingonadvertisingstatechange)可监听广播启停状态。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 
@@ -185,8 +205,8 @@ startAdvertising(advertisingParams: AdvertisingParams): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100040 | Integer out of range. |
 | 36100043 | Invalid UUID. |
@@ -210,21 +230,21 @@ serviceValueBuffer[3] = 8;
 console.info('manufactureValueBuffer = ' + JSON.stringify(manufactureValueBuffer));
 console.info('serviceValueBuffer = ' + JSON.stringify(serviceValueBuffer));
 let setting: advertising.AdvertisingSettings = {
-  interval:5000,
-  power:advertising.TxPowerMode.ADV_TX_POWER_LOW
+  interval: 5000,
+  power: advertising.TxPowerMode.ADV_TX_POWER_LOW
 };
 let manufactureDataUnit: advertising.ManufacturerData = {
-  manufacturerId:4567,
-  manufacturerData:manufactureValueBuffer.buffer
+  manufacturerId: 4567,
+  manufacturerData: manufactureValueBuffer.buffer
 };
 let serviceDataUnit: advertising.ServiceData = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000001234',
-  serviceData:serviceValueBuffer.buffer
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
+  serviceData: serviceValueBuffer.buffer
 };
 let advData: advertising.AdvertisingData = {
-  serviceUuids:['FFFFFFFF-1234-5678-ABCD-000000001234'],
-  manufacturerData:[manufactureDataUnit],
-  serviceData:[serviceDataUnit]
+  serviceUuids: ['FFFFFFFF-1234-5678-ABCD-000000001234'],
+  manufacturerData: [manufactureDataUnit],
+  serviceData: [serviceDataUnit]
 };
 let advertisingParams: advertising.AdvertisingParams = {
   advertisingSettings: setting,
@@ -250,9 +270,13 @@ stopAdvertising(advertisingId: number): Promise&lt;void&gt;
 
 停止发送星闪广播。使用Promise异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 
@@ -276,8 +300,8 @@ stopAdvertising(advertisingId: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100040 | Invalid advertising ID. |
 | 36100099 | Operation failed. |
@@ -308,9 +332,13 @@ onAdvertisingStateChange(callback: Callback&lt;AdvertisingStateChangeInfo&gt;): 
 
 应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -326,7 +354,7 @@ onAdvertisingStateChange(callback: Callback&lt;AdvertisingStateChangeInfo&gt;): 
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：** 
 ```typescript
@@ -352,9 +380,13 @@ offAdvertisingStateChange(callback?: Callback&lt;AdvertisingStateChangeInfo&gt;)
 
 取消订阅星闪广播状态变化事件。使用callback异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
@@ -370,7 +402,7 @@ offAdvertisingStateChange(callback?: Callback&lt;AdvertisingStateChangeInfo&gt;)
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：** 
 ```typescript

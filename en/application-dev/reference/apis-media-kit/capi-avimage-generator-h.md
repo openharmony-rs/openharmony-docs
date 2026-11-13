@@ -5,6 +5,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=1fec3b62fbf5a59d81a89ab1b9d984a58ea26ade translatedAt=2026-11-09T06:25:20.077Z pushedAt=2026-11-09T08:29:56.723Z nl=1 -->
 
 ## Overview
 
@@ -57,12 +58,12 @@ Creates an OH_AVImageGenerator instance, which is used to generate video frames 
 
 | Type| Description|
 | -- | -- |
-| [OH_AVImageGenerator](capi-avimagegenerator-oh-avimagegenerator.md)* | Pointer to the OH_AVImageGenerator instance created if the operation is successful; nullptr otherwise.<br>         Possible cause of failures: HstEngineFactory fails to create an AVMetadataHelperEngine.|
+| [OH_AVImageGenerator](capi-avimagegenerator-oh-avimagegenerator.md)* | Pointer to the **OH_AVImageGenerator** instance created if the operation is successful; a null pointer otherwise.<br>         Possible cause of failures: **HstEngineFactory** fails to create an **AVImageGeneratorEngine** instance. |
 
 ### OH_AVImageGenerator_SetFDSource()
 
 ```c
-OH_AVErrCode OH_AVImageGenerator_SetFDSource(OH_AVImageGenerator* generator,int32_t fd, int64_t offset, int64_t size)
+OH_AVErrCode OH_AVImageGenerator_SetFDSource(OH_AVImageGenerator* generator, int32_t fd, int64_t offset, int64_t size)
 ```
 
 **Description**
@@ -92,7 +93,7 @@ Sets a data source based on the media file descriptor.
 ### OH_AVImageGenerator_FetchFrameByTime()
 
 ```c
-OH_AVErrCode OH_AVImageGenerator_FetchFrameByTime(OH_AVImageGenerator* generator,int64_t timeUs, OH_AVImageGenerator_QueryOptions options, OH_PixelmapNative** pixelMap)
+OH_AVErrCode OH_AVImageGenerator_FetchFrameByTime(OH_AVImageGenerator* generator, int64_t timeUs, OH_AVImageGenerator_QueryOptions options, OH_PixelmapNative** pixelMap)
 ```
 
 **Description**
@@ -112,7 +113,7 @@ This function must be called after [OH_AVImageGenerator_SetFDSource](#oh_avimage
 | -- | -- |
 | [OH_AVImageGenerator](capi-avimagegenerator-oh-avimagegenerator.md)* generator | Pointer to the OH_AVImageGenerator instance.|
 | int64_t timeUs | Time point of the video frame to be extracted in the video, in μs.|
-| [OH_AVImageGenerator_QueryOptions](capi-avimage-generator-base-h.md#oh_avimagegenerator_queryoptions) options | Mappings between the given time points and video frames.|
+| [OH_AVImageGenerator_QueryOptions](capi-avimage-generator-base-h.md#oh_avimagegenerator_queryoptions) options | Options that specify how to search for video frames based on the given time points. |
 | [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md)** pixelMap | Double pointer to the video frame object obtained.|
 
 **Return value**
@@ -147,3 +148,5 @@ Releases the resources used by the OH_AVImageGenerator instance and destroys the
 | Type| Description|
 | -- | -- |
 | [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The operation is successful.<br>         **AV_ERR_INVALID_VAL**: The input parameter **generator** is nullptr or a parameter is invalid.|
+
+

@@ -5,7 +5,7 @@
 <!--Designer: @hwzhangchuang; @Dyylll-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=85f4ad230c339e5ea4b30b35bbaf41ac4f501095 translatedAt=2026-08-26T04:39:23.144Z pushedAt=2026-08-28T07:38:14.572Z -->
+<!-- md-trans-meta sourceCommit=85f4ad230c339e5ea4b30b35bbaf41ac4f501095 translatedAt=2026-10-29T10:30:53.876Z pushedAt=2026-10-29T10:30:53.876Z nl=1 -->
 
 User files are the private [images, videos](../media/medialibrary/photoAccessHelper-overview.md), audio clips, and documents of the user who has logged in to the device.
 
@@ -13,7 +13,7 @@ User files are the private [images, videos](../media/medialibrary/photoAccessHel
 
 2. User files can be stored in [built-in storage](#built-in-storage) and [external storage](#external-storage) of the device.
 
-3. An application cannot access user files without user authorization, or the operations on user files must be performed by the user.
+3. Operations such as creating, accessing, and deleting user files require prior user authorization or must be performed by the user.
 
 ## User File Storage
 
@@ -27,11 +27,11 @@ Built-in storage is the internal storage device (space) of a device. The built-i
   - Image/Video files<br>
 
     The files have attributes, such as the shooting time, location, rotation angle, and file width and height information, and are stored in media file formats. Generally, these files are presented as media files or albums, without the specific storage location in the system.
-
+  
   - Audio files<br>
 
     The files' characteristics include information such as the album, artist, and duration. Audio files are stored in the system as media files and are typically presented by categories such as all files, albums, and artists, without exposing their specific storage locations in the system.
-
+  
   - Other files (documents)<br>
 
     The files are stored as common files, including common text files, compressed files, and images, videos and audio clips stored as common files. Generally, these files are presented in a directory tree.

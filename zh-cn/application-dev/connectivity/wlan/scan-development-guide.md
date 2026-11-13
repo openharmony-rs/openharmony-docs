@@ -19,7 +19,7 @@ Wi-Fi扫描是指设备（如手机、电脑、路由器等）搜索周围可用
 
 ## 接口说明
 
-完整的JS API说明以及示例代码请参考：[SCAN接口](../../reference/apis-connectivity-kit/js-apis-wifiManager.md)。
+完整的JS API说明以及示例代码请参考：[@ohos.wifiManager (WLAN)](../../reference/apis-connectivity-kit/js-apis-wifiManager.md)。
 
 接口具体说明如下表所示。
 
@@ -36,7 +36,7 @@ Wi-Fi扫描是指设备（如手机、电脑、路由器等）搜索周围可用
 1. 导入需要的Wi-Fi模块。
 2. 需要SystemCapability.Communication.WiFi.STA系统能力。
 3. 需要权限ohos.permission.GET_WIFI_INFO。
-4. 开启设备的Wi-Fi。
+4. 开启设备的Wi-Fi，开启之前您可以调用[wifiManager.isWlanSupported](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 5. 示例代码：
 
    > **说明：**
@@ -45,11 +45,11 @@ Wi-Fi扫描是指设备（如手机、电脑、路由器等）搜索周围可用
    ```ts
    import { wifiManager } from '@kit.ConnectivityKit';
 
-   try {
-     let recvWifiScanStateChangeFunc = (result:number) => {
-         console.info("Receive Wifi scan state change event: " + result);
-     }
+   let recvWifiScanStateChangeFunc = (result:number) => {
+       console.info("Receive Wifi scan state change event: " + result);
+   }
 
+   try {
      // 获取扫描状态 0：扫描失败；1：扫描成功。
      wifiManager.on("wifiScanStateChange", recvWifiScanStateChangeFunc);
 
@@ -78,15 +78,19 @@ Wi-Fi扫描是指设备（如手机、电脑、路由器等）搜索周围可用
          console.info("isHiLinkNetwork: " + scanInfoList[i].isHiLinkNetwork);
        }
      }
-
-     // 取消注册，停止获取扫描状态。
-     wifiManager.off("wifiScanStateChange", recvWifiScanStateChangeFunc);
    } catch (error) {
      console.error(`WiFi scan fail. ${error.message}`);
+   } finally {
+     // 取消注册，停止获取扫描状态。放在finally块中，确保异常时也能解绑，避免资源泄漏。
+     try {
+       wifiManager.off("wifiScanStateChange", recvWifiScanStateChangeFunc);
+     } catch (e) {
+       console.error(`WiFi scan off failed. ${e.message}`);
+     }
    }
    ```
 
-6. 错误码详情请参见[WIFI错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。
+6. 错误码详情请参见[Wi-Fi错误码](../../reference/apis-connectivity-kit/errorcode-wifi.md)。
 
  ### PNO扫描
 

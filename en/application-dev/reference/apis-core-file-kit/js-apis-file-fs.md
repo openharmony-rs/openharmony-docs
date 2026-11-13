@@ -5,6 +5,7 @@
 <!--Designer: @Hun_Dun-->
 <!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=fa9d8beb34c9c36d5c088263fe228c1ceec6f643 translatedAt=2026-11-03T04:32:03.125Z pushedAt=2026-11-04T03:11:33.522Z nl=1 -->
 
 This module is the core module of Core File Kit. It provides APIs for basic file operations, such as creating, opening, reading, writing, copying, moving, deleting, and querying files and directories in the application sandbox.
 
@@ -2391,7 +2392,7 @@ Reads a file text line by line. Only the files in UTF-8 format are supported. Th
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | filePath | string | Yes| Application sandbox path of the file.|
-| options | [Options](#options11) | No| Options for reading the text. The options are as follows:<br>- **encoding** (string): format of the data to be encoded.<br>It is valid only when the data is of the string type.<br>The default value is **'utf-8'**, which is the only value supported.|
+| options | [Options](#options11) | No| Options for reading the text. The options are as follows:<br>- **encoding** (string): format of the data to be encoded.<br>It is valid only when the data is of the string type. The default value is **'utf-8'**, which is the only value supported.|
 
 **Return value**
 
@@ -2471,7 +2472,7 @@ Reads a file text line by line. Read options can be configured. Only the files i
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | filePath | string | Yes| Application sandbox path of the file.|
-| options | [Options](#options11) | Yes| Read options. The options are as follows:<br>- **encoding** (string): format of the data to be encoded.<br>It is valid only when the data is of the string type.<br>The default value is **'utf-8'**, which is the only value supported.|
+| options | [Options](#options11) | Yes| Read options. The options are as follows:<br>- **encoding** (string): format of the data to be encoded.<br>It is valid only when the data is of the string type. The default value is **'utf-8'**, which is the only value supported.|
 | callback | AsyncCallback&lt;[ReaderIterator](#readeriterator11)&gt; | Yes| Callback used to return a **ReaderIterator** object.|
 
 **Error codes**
@@ -2512,7 +2513,7 @@ Reads a file text line by line synchronously. Only the files in UTF-8 format are
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | filePath | string | Yes| Application sandbox path of the file.|
-| options | [Options](#options11) | No| Options for reading the text. The options are as follows:<br>- **encoding** (string): format of the data to be encoded.<br>It is valid only when the data is of the string type.<br>The default value is **'utf-8'**, which is the only value supported.|
+| options | [Options](#options11) | No| Options for reading the text. The options are as follows:<br>- **encoding** (string): format of the data to be encoded.<br>It is valid only when the data is of the string type. The default value is **'utf-8'**, which is the only value supported.|
 
 **Return value**
 
@@ -4054,6 +4055,8 @@ Moves a file to the destination path. This API returns the result synchronously.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
@@ -4402,6 +4405,8 @@ Creates a **RandomAccessFile** instance based on a file path or file object. Thi
 **Error codes**
 
 For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+
+**Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -5372,7 +5377,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let isBLockDevice = fileIo.statSync(filePath).isBlockDevice();
+  let isBlockDevice = fileIo.statSync(filePath).isBlockDevice();
   ```
 
 ### isCharacterDevice
@@ -7909,4 +7914,4 @@ Defines the options used in **createWriteStream()**.
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | start | number | No| Yes| Start position to write the data, in bytes. This parameter is optional. By default, data is written from the current position.|
-| mode | number | No| Yes| [OpenMode](#openmode) for creating the writeable stream. You must specify one of the following options.<br>- **OpenMode.READ_ONLY(0o0)**: read-only, which is the default value.<br>- **OpenMode.WRITE_ONLY(0o1)**: write-only.<br>- **OpenMode.READ_WRITE(0o2)**: read/write.<br>You can also specify the following options, separated by a bitwise OR operator (&#124;). By default, no additional options are given.<br>- **OpenMode.CREATE(0o100)**: If the file does not exist, create it.<br>- **OpenMode.TRUNC(0o1000)**: If the file exists and is opened in write mode, truncate the file length to 0.<br>- **OpenMode.APPEND(0o2000)**: Open the file in append mode. New data will be added to the end of the file.<br>- **OpenMode.NONBLOCK(0o4000)**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the opened file and in subsequent I/Os.<br>- **OpenMode.DIR(0o200000)**: If **path** does not point to a directory, throw an exception. The write permission is not allowed.<br>- **OpenMode.NOFOLLOW(0o400000)**: If **path** points to a symbolic link, throw an exception.<br>- **OpenMode.SYNC(0o4010000)**: Open the file in synchronous I/O mode.|
+| mode | number | No| Yes| [OpenMode](#openmode) for creating the writeable stream. You must specify one of the following options. By default, the write-only mode is used.<br>- **OpenMode.READ_ONLY(0o0)**: read-only.<br>- **OpenMode.WRITE_ONLY(0o1)**: write-only.<br>- **OpenMode.READ_WRITE(0o2)**: read/write.<br>You can also specify the following options, separated by a bitwise OR operator (&#124;). By default, no additional options are given.<br>- **OpenMode.CREATE(0o100)**: If the file does not exist, create it.<br>- **OpenMode.TRUNC(0o1000)**: If the file exists and is opened in write mode, truncate the file length to 0.<br>- **OpenMode.APPEND(0o2000)**: Open the file in append mode. New data will be added to the end of the file.<br>- **OpenMode.NONBLOCK(0o4000)**: If **path** points to a named pipe (also known as a FIFO), block special file, or character special file, perform non-blocking operations on the opened file and in subsequent I/Os.<br>- **OpenMode.DIR(0o200000)**: If **path** does not point to a directory, throw an exception. The write permission is not allowed.<br>- **OpenMode.NOFOLLOW(0o400000)**: If **path** points to a symbolic link, throw an exception.<br>- **OpenMode.SYNC(0o4010000)**: Open the file in synchronous I/O mode.|

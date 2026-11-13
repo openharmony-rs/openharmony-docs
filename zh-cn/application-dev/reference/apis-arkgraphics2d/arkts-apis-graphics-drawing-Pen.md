@@ -173,7 +173,7 @@ getColorFilter(): ColorFilter
 
 | 类型                        | 说明               |
 | --------------------------- | ------------------ |
-| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 返回画笔当前设置的颜色滤波器，可用于查询当前画笔的颜色过滤效果。 |
+| [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | 返回画笔当前设置的颜色滤波器，可用于查询当前画笔的颜色过滤效果。当前画笔未设置颜色滤波器时返回undefined。 |
 
 **示例：**
 
@@ -293,7 +293,7 @@ setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceMa
 **示例：**
 
 ```ts
-import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
+import { common2D, drawing, colorSpaceManager } from '@kit.ArkGraphics2D';
 
 const pen = new drawing.Pen();
 let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);
@@ -343,7 +343,7 @@ getColor4f(): common2D.Color4f
 **示例：**
 
 ```ts
-import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
+import { common2D, drawing, colorSpaceManager } from '@kit.ArkGraphics2D';
 
 const pen = new drawing.Pen();
 let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);

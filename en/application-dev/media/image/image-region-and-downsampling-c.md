@@ -1,17 +1,15 @@
 # Image Region Decoding and Downsampling (C/C++)
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=02a76210ad9a480aced53e2ee2f43b01791ed8f2 translatedAt=2026-07-22T07:46:45.218Z pushedAt=2026-07-22T11:06:20.300Z -->
+<!-- md-trans-meta sourceCommit=6390c7092d7c521347e2f8699be33d9cd3458eb0 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 When processing large images, directly decoding the entire image may cause excessive memory usage and long decoding time for an app. Region decoding and downsampling can effectively optimize these scenarios:
 
 - **Region decoding**: Decodes only a specified rectangular region of the image, suitable for scenarios where only a portion of the image needs to be viewed.
-
 - **Downsampling**: Decodes the image to the desired dimensions, with the decoder automatically selecting the optimal sampling rate, suitable for large image preview scenarios.
 
 **Application scenarios**:
@@ -36,7 +34,7 @@ Region decoding specifies the rectangular region to decode by setting the decodi
 2. Set the `cropRegion` parameter to perform region decoding.
 
    <!-- @[decode_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) --> 
-
+   
    ``` C++
    // Region decoding example.
    napi_value DecodeRegion(napi_env env, napi_callback_info info)
@@ -73,7 +71,6 @@ Region decoding specifies the rectangular region to decode by setting the decodi
 ### Constraints
 
 - The region coordinates and size must be within the original image boundaries.
-
 - The region size must be a positive integer.
 
 ## Downsampling
@@ -81,9 +78,7 @@ Region decoding specifies the rectangular region to decode by setting the decodi
 Downsampling specifies the expected output image size by setting the decoding parameter `desiredSize`. The decoder outputs a `PixelMap` based on the desired size, reducing the final memory usage.
 
 **Decoding process differences**:
-
 - **JPEG, PNG, and HEIF formats**: A downsampling strategy is adopted during decoding, using the optimal sampling rate for higher decoding efficiency.
-
 - **Other formats**: The original image is fully decoded first, then scaled to the desired size.
 
 For parameter details, see [OH_DecodingOptions](../../reference/apis-image-kit/capi-image-nativemodule-oh-decodingoptions.md).
@@ -95,7 +90,7 @@ For parameter details, see [OH_DecodingOptions](../../reference/apis-image-kit/c
 2. Set the `desiredSize` parameter to perform downsampling.
 
    <!-- @[decode_downsample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) --> 
-
+   
    ``` C++
    // Downsampling example.
    napi_value DownsampleDecode(napi_env env, napi_callback_info info)
@@ -138,7 +133,7 @@ When both `cropRegion` and `desiredSize` are set, use the `cropAndScaleStrategy`
 | IMAGE_CROP_AND_SCALE_STRATEGY_SCALE_FIRST | 1 | Scale first, then crop. | - |
 | IMAGE_CROP_AND_SCALE_STRATEGY_CROP_FIRST | 2 | Crop first, then scale. | Recommended. Reduces peak decoding memory. |
 
-**CROP_FIRST is recommended**: Cropping before scaling allows precise control over the crop region and ensures consistent decoding results across different formats.
+**IMAGE_CROP_AND_SCALE_STRATEGY_CROP_FIRST is recommended**: cropping before scaling allows precise control over the crop region and ensures consistent decoding results across different formats.
 
 For details about the parameter, see [Image_CropAndScaleStrategy](../../reference/apis-image-kit/capi-image-source-native-h.md#image_cropandscalestrategy).
 
@@ -149,7 +144,7 @@ For details about the parameter, see [Image_CropAndScaleStrategy](../../referenc
 2. Set the `cropRegion`, `desiredSize`, and `cropAndScaleStrategy` parameters.
 
    <!-- @[decode_combined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) --> 
-
+   
    ``` C++
    // Example of combining region decoding and downsampling.
    napi_value CombinedDecode(napi_env env, napi_callback_info info)
@@ -193,5 +188,4 @@ For details about the parameter, see [Image_CropAndScaleStrategy](../../referenc
 ## Notes
 
 - When setting both `cropRegion` and `desiredSize`, you are advised to set `cropAndScaleStrategy` to `IMAGE_CROP_AND_SCALE_STRATEGY_CROP_FIRST` to ensure consistent decoding results.
-
 - For images whose raw pixel memory exceeds 2 GB, you are advised to use downsampling to avoid memory overflow.

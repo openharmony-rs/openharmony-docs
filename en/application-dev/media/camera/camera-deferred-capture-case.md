@@ -1,16 +1,17 @@
-# Deferred Photo Delivery Practices (ArkTS)
+# Deferred Photo Capture Practices (ArkTS)
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=5b07902590fb199cb04245dab2e16d7a5ef1f972 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
-This topic provides sample code that covers the complete deferred photo delivery process to help you understand the complete API calling sequence.
+This topic provides sample code that covers the complete deferred photo capture process to help you understand the complete API calling sequence.
 
-Before referring to the sample code, you are advised to read [Deferred Photo Delivery (ArkTS)](camera-deferred-capture.md), [Device Input Management](camera-device-input.md), [Camera Session Management](camera-session-management.md), and [Photo Capture](camera-shooting.md).
+Before referring to the sample code, you are advised to read [Deferred Photo Capture (ArkTS)](camera-deferred-capture.md), [Device Input Management](camera-device-input.md), [Camera Session Management](camera-session-management.md), and [Photo Capture](camera-shooting.md).
 
 ## Development Process
 
@@ -147,7 +148,7 @@ async function deferredCaptureCase(context: Context, surfaceId: string): Promise
     console.error('photo mode not support');
     return;
   }
-  // Obtain the output stream capability supported by the camera.
+  // Obtain the output stream capabilities supported by the camera device.
   let cameraOutputCap: camera.CameraOutputCapability =
     cameraManager.getSupportedOutputCapability(cameraArray[0], camera.SceneMode.NORMAL_PHOTO);
   if (!cameraOutputCap) {
@@ -166,7 +167,7 @@ async function deferredCaptureCase(context: Context, surfaceId: string): Promise
     console.error('createOutput photoProfilesArray == null || undefined');
   }
 
-  // Create a preview output stream. For details about the surfaceId parameter, see the XComponent. The preview stream uses the surface provided by the XComponent.
+  // Create a preview output stream. The surfaceId parameter is provided by the XComponent component described above. The preview stream uses the surface provided by the XComponent component.
   try {
     previewOutput = cameraManager.createPreviewOutput(previewProfilesArray[0], surfaceId);
   } catch (error) {
@@ -196,7 +197,7 @@ async function deferredCaptureCase(context: Context, surfaceId: string): Promise
   // Register the photoAssetAvailable callback.
   setPhotoOutputCb(photoOutput, context);
 
-  // Create a session.
+  // Create the session.
   try {
     photoSession = cameraManager.createSession(camera.SceneMode.NORMAL_PHOTO) as camera.PhotoSession;
   } catch (error) {
@@ -247,9 +248,13 @@ async function deferredCaptureCase(context: Context, surfaceId: string): Promise
   await photoSession.commitConfig();
 
   // Start the session.
-  await photoSession.start().then(() => {
-    console.info('Promise returned to indicate the session start success.');
-  });
+  try {
+    await photoSession.start();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error('Failed to start. errorCode = ', err.code);
+  }
+
   // Check whether the camera has flash.
   let flashStatus: boolean = false;
   try {
@@ -321,7 +326,7 @@ async function deferredCaptureCase(context: Context, surfaceId: string): Promise
     console.error('Failed to set the zoom ratio value. errorCode = ' + err.code);
   }
   let photoCaptureSetting: camera.PhotoCaptureSetting = {
-    quality: camera.QualityLevel.QUALITY_LEVEL_HIGH, // Set the photo quality to high.
+    quality: camera.QualityLevel.QUALITY_LEVEL_HIGH, // Set the image quality to high.
     rotation: camera.ImageRotation.ROTATION_0 // Set the rotation angle of the photo to 0.
   }
 
@@ -337,19 +342,44 @@ async function deferredCaptureCase(context: Context, surfaceId: string): Promise
 
 async function releaseCamSession() {
   // Stop the session.
-  await photoSession?.stop();
+  try {
+    await photoSession?.stop();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error('Failed to stop, error = ' + err.code);
+  }
 
   // Release the photo output stream.
-  await photoOutput?.release();
+  try {
+    await photoOutput?.release();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error('Failed to release photo, error = ' + err.code);
+  }
 
   // Release the preview output stream.
-  await previewOutput?.release();
+  try {
+    await previewOutput?.release();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error('Failed to release preview, error = ' + err.code);
+  }
 
   // Release the camera input stream.
-  await cameraInput?.close();
+  try {
+    await cameraInput?.close();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error('Failed to close, error = ' + err.code);
+  }
 
   // Release the session.
-  await photoSession?.release();
+  try {
+    await photoSession?.release();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error('Failed to release session, error = ' + err.code);
+  }
 
   // Set the session to null.
   photoSession = undefined;

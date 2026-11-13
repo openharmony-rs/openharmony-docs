@@ -6,7 +6,7 @@
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
 
-提供星闪数传相关的端口通道建立和数据传输等功能，同一设备可以同时承担数据发送端和接收端的角色。
+提供星闪数据传输相关的端口通道建立和数据收发等功能，同一设备可以同时承担数据发送端和接收端的角色。
 
 ## 场景介绍
 
@@ -16,17 +16,17 @@
 
 > **说明：**
 >
-> 1. 数据传输通道不保证链路加密。如需加密数传，需先进行配对流程，通过[startPairing()](../../reference/apis-connectivity-kit/js-apis-nearlink-remote-device.md#startpairing)接口发起。
+> 1. 端口通道不保证链路加密。如需加密数据传输，需先进行配对流程，通过[startPairing()](../../reference/apis-connectivity-kit/js-apis-nearlink-remote-device.md#startpairing)接口发起。
 > 2. 链路是否加密可通过[getAcbState()](../../reference/apis-connectivity-kit/js-apis-nearlink-remote-device.md#getacbstate)接口查询，ENCRYPTED状态表示链路已加密。
 
 ## 接口说明
 
-使用星闪传输数据，完整的API说明以及示例代码请参考：[@ohos.nearlink.dataTransfer (星闪数传能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md)。
+使用星闪传输数据，完整的API说明以及示例代码请参考：[@ohos.nearlink.dataTransfer (星闪数据传输能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| createPort(uuid: string): void | 注册端口服务。 |
-| destroyPort(uuid: string): void | 销毁端口服务。 |
+| createPort(uuid: string): void | 注册端口通道。 |
+| destroyPort(uuid: string): void | 销毁端口通道。 |
 | connect(params: ConnectionParams): Promise&lt;void&gt; | 连接远端设备，建立端口通道。使用Promise异步回调。 |
 | disconnect(params: ConnectionParams): Promise&lt;void&gt; | 断开端口通道连接。使用Promise异步回调。 |
 | writeData(params: DataParams): Promise&lt;void&gt; | 通过设备地址和UUID向远端设备发数据。使用Promise异步回调。 |
@@ -101,7 +101,7 @@
     }
     ```
 
-6. 连接远端设备，建立端口通道。其中chosenDeviceAddr为从[发起星闪扫描](nearlink-device-discovery-guide.md#发起星闪扫描)结果中选择的设备地址，UUID需与步骤3中注册的保持一致。
+6. 连接远端设备，建立端口通道。其中chosenDeviceAddr为从[发起星闪扫描](nearlink-device-discovery-guide.md#发起星闪扫描)结果中选择的设备地址，UUID需与步骤3中注册的保持一致。连接参数中的frameType用于指定帧类型，默认值为FRAME_TYPE_1（参见[星闪常见问题 > 什么是帧类型](nearlink-faq-guide.md#什么是帧类型)）。
 
     <!-- @[datatransfer_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/DataTransferPage.ets) -->
     

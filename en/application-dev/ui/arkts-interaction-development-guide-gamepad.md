@@ -1,10 +1,11 @@
 # Handling Gamepad Input Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T08:22:58.925Z pushedAt=2026-11-03T09:12:55.643Z nl=1 -->
 
 Since API version 15, ArkUI supports gamepads as input devices. When a user operates a gamepad, the system recognizes its input actions and reports them as key events or focus axis events. You can receive and handle these events by registering the corresponding callbacks, enabling gamepad interaction logic.
 
@@ -110,7 +111,7 @@ After setting the parameters mentioned above, the focus is always on the **JoySt
 
 ## Handling Joystick Input
 
-The joystick input of the gamepad triggers the focus axis event. You can bind the [onFocusAxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-focus_axis.md#onfocusaxisevent) callback to the focused component to process the corresponding event logic. Example:
+Joystick input from a gamepad triggers focus axis events. Developers can bind the [onFocusAxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-focus-axis.md#onfocusaxisevent) interface callback to the focused component to handle the corresponding event logic. The following is an example:
 <!-- @[gamepad_joystick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/gamepad/Joystick.ets) -->
 
 ``` TypeScript
@@ -163,13 +164,13 @@ struct GamepadSample {
             let absX = event.axisMap.get(AxisModel.ABS_X);
             let absY = event.axisMap.get(AxisModel.ABS_Y);
             let absZ = event.axisMap.get(AxisModel.ABS_Z);
-            let absRz = event.axisMap.get(AxisModel.ABS_RZ);
+            let absRZ = event.axisMap.get(AxisModel.ABS_RZ);
             let absGas = event.axisMap.get(AxisModel.ABS_GAS);
             let absBrake = event.axisMap.get(AxisModel.ABS_BRAKE);
             let absHat0X = event.axisMap.get(AxisModel.ABS_HAT0X);
             let absHat0Y = event.axisMap.get(AxisModel.ABS_HAT0Y);
             this.axisValue =
-              'absX: ' + absX + '\nabsY: ' + absY + '\nabsZ: ' + absZ + '\nabsRz: ' + absRz + '\nabsGas: ' + absGas +
+              'absX: ' + absX + '\nabsY: ' + absY + '\nabsZ: ' + absZ + '\nabsRZ: ' + absRZ + '\nabsGas: ' + absGas +
                 '\nabsBrake: ' + absBrake + '\nabsHat0X: ' + absHat0X + '\nabsHat0Y: ' + absHat0Y;
           })
           .onKeyEvent((event: KeyEvent) => {

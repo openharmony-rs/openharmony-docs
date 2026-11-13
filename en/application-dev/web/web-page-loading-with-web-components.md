@@ -2,9 +2,10 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=95d2818bb09ee126bc2417fe2f2587d9e29fc623 translatedAt=2026-11-03T03:10:04.001Z pushedAt=2026-11-03T03:23:51.049Z nl=1 -->
 
 
 Page loading is a basic capability of the **Web** component. Depending on the data source, page loading falls into three types: loading of network pages, loading of local pages, and loading of HTML rich text data.
@@ -22,7 +23,7 @@ To obtain network resources during page loading, configure the network access pe
 
 ## Loading Network Pages
 
-You can specify the default network page to be loaded when creating a **Web** component. After the default network page is loaded, call [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) if you want to change the network page displayed by the **Web** component. The value of the first parameter **src** of the [Web component](../reference/apis-arkweb/arkts-basic-components-web.md) cannot be dynamically changed through a state variable (for example, @State). To change the value, call [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl).
+You can specify the default network page to load when creating a Web component. After the default page is loaded, to change the network page displayed by the Web component, call the [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) API to load the specified web page. The first parameter variable `src` of the [Web component](../reference/apis-arkweb/arkts-basic-components-web.md) cannot be dynamically changed through a state variable (for example, [@State](../ui/state-management/arkts-state.md)). To change the address, call [loadUrl()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#loadurl) to reload the page.
 
 
 In the following example, after the **www.\example.com** page is loaded by the **Web** component, **loadUrl** is called to change the displayed page to **www\.example1.com**.
@@ -74,7 +75,7 @@ To reference a local CSS file when loading a local HTML file, perform the follow
 
 - Local page file in the application's resources/rawfile directory:
 
-    **Figure 1** Path of local page files 
+    **Figure 1** Path of local page files
 
     ![resource-path](figures/resource-path.png)
 
@@ -190,21 +191,23 @@ Example of loading local page files in the sandbox:
 2. Modify the **EntryAbility.ets** file.
 
    The following uses **filesDir** as an example to describe how to obtain the path of the sandbox. For details about how to obtain other paths, see [Obtaining Application File Paths](../application-models/application-context-stage.md#obtaining-application-file-paths).
-
-   ```ts
-   // xxx.ets
-   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-   import { webview } from '@kit.ArkWeb';
-   import { GlobalContext } from '../GlobalContext';
-
-   export default class EntryAbility extends UIAbility {
-     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-       // Data synchronization between the UIAbility component and UI can be implemented by binding filesDir to the GlobalContext object.
-       GlobalContext.getContext().setObject("filesDir", this.context.filesDir);
-       console.info("Sandbox path is " + GlobalContext.getContext().getObject("filesDir"));
-     }
-   }
-   ```
+  <!-- @[EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/entryability/EntryAbility.ets) -->
+  
+  ``` TypeScript
+  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { window } from '@kit.ArkUI';
+  import { GlobalContext } from '../pages/GlobalContext';
+  
+  export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {    
+         // Bind filesDir to the GlobalContext object to synchronize data between the UIAbility component and the UI.    
+         GlobalContext.getContext().setObject('filesDir', this.context.filesDir);    
+         console.info('Sandbox path is ' + GlobalContext.getContext().getObject('filesDir'));    
+       }
+    // ...
+  }
+  ```
 
    HTML file to be loaded:
 

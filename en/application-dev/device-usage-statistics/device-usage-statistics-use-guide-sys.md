@@ -1,4 +1,4 @@
-# Device Usage Statistics Development (for System Applications Only)
+# Device Usage Statistics Development (ArkTS) (for System Applications Only)
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
@@ -6,6 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a60989359172fe977b9570d828e33a8aefe08845 translatedAt=2026-11-03T13:00:53.698Z pushedAt=2026-11-03T13:00:53.698Z nl=1 -->
 
 ## When to Use
 
@@ -316,8 +317,8 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // Promise mode
     usageStatistics.queryDeviceEventStats(0, 20000000000000).then((res: Array<usageStatistics.DeviceEventStats>) => {
-        console.info('BUNDLE_ACTIVE queryDeviceEventStates promise success.');
-        console.info('BUNDLE_ACTIVE queryDeviceEventStates promise result ' + JSON.stringify(res));
+        console.info('BUNDLE_ACTIVE queryDeviceEventStats promise success.');
+        console.info('BUNDLE_ACTIVE queryDeviceEventStats promise result ' + JSON.stringify(res));
     }).catch( (err: BusinessError) => {
         console.error('BUNDLE_ACTIVE queryDeviceEventStats promise failed. code is: ' + err.code + ',message is: ' + err.message);
     });

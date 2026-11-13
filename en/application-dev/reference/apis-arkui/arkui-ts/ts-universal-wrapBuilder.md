@@ -1,11 +1,11 @@
-# wrapBuilder
+# wrapBuilder: Wrapping a Global @Builder
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhangboren-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=9bb36595a2813e8704f3d2210b29cb79f60cb17a translatedAt=2026-09-02T12:35:43.903Z -->
+<!-- md-trans-meta sourceCommit=2495040792c8da8de232a60f3eafa9d33ca50fa6 translatedAt=2026-10-30T09:01:17.264Z pushedAt=2026-10-30T09:32:33.718Z nl=1 -->
 
 `wrapBuilder` is used to encapsulate a global [@Builder](./ts-universal-builder-dynamic.md#builder) function, so that the global `@Builder` function can be passed as a parameter to implement pass-by-reference and dynamic invocation, improving code reusability.
 

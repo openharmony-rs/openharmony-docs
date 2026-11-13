@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍语言基础类库的XML转换能力：使用ConvertXML将XML文本转换为JSON对象便于数据处理，涵盖开发步骤与注意事项，适用于XML与JSON格式互转的数据处理场景。"
+keywords: [XML转换, ConvertXML, XML转JSON, 文本转换, 数据格式转换, 开发步骤]
+doctype: guide
+status: active
+---
+
 # XML转换
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

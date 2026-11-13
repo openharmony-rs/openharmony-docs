@@ -1,11 +1,11 @@
 # Notification Kit (User Notification Service)<!--notification-kit-->
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=d92fd96c7713dc18450281df98f1c9ed5f77b2c9 translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
 - [About This Kit](notification-overview.md)
 - [Requesting Notification Authorization](notification-enable.md)
@@ -33,5 +33,7 @@
 - ExtensionAbility for Notification Subscription<!--notification-subscriber-extension-->
   - [Introduction to NotificationSubscriberExtensionAbility](notification-subscriber-extension-ability.md)
   - [Developing the ExtensionAbility for Notification Subscription](notification-subscriber-extension-ability-development-steps.md)
+- [Glossary](notification-glossary.md)
 <!--RP1--><!--RP1End-->
 <!--RP2--><!--RP2End-->
+<!--RP3--><!--RP3End-->

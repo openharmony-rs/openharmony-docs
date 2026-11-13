@@ -5,17 +5,17 @@
 <!--Designer: @charlie3wx-->
 <!--Tester: @fhzs-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=561a48f0279b682322ad16aa122a3161b679e716 translatedAt=2026-09-14T01:43:01.196Z pushedAt=2026-09-14T10:03:33.568Z -->
+<!-- md-trans-meta sourceCommit=24b4df4dc27495886e9363f251875137a29942b4 translatedAt=2026-11-03T05:57:00.356Z pushedAt=2026-11-03T12:08:25.575Z nl=1 -->
 
-This module provides system-level car awareness capabilities, including pointing recognition, body gesture recognition, and car state awareness.
+This module provides system-level vehicle awareness capabilities, including pointing recognition, gesture recognition, and vehicle state awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 > **NOTE**
 > 
-> This page contains only the system APIs of this module. For other public APIs, see [@ohos.multimodalAwareness.carAwareness (Car Awareness)](js-apis-awareness-carAwareness.md).
+> This page contains only the system APIs of this module. For other public APIs, see [@ohos.multimodalAwareness.carAwareness (Vehicle Awareness)](js-apis-awareness-carAwareness.md).
 
-## Modules to Import
+## Importing Modules
 
 ```ts
 import { carAwareness } from '@kit.MultimodalAwarenessKit';
@@ -23,84 +23,85 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## Capability
 
-Enumerates the capability types supported by car awareness.
+Enumerates the capability types supported by vehicle awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Model restriction:** This API can be used only in the stage model.
+**Model Constraint:** This API can be used only in the stage model.
 
-**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+**System API:** This is a system API.
+
+**System Capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 | Name | Value | Description |
 | ---- | ---- | ---- |
-| SPATIAL_MOTION | 'SpatialMotion' | Air gesture awareness capability. It supports recognition of the user's air gestures for operating the screen. |
-| SPATIAL_POINT | 'SpatialPoint' | Pointing recognition capability. It supports recognition of the in-car components pointed to by the user.<br>**System API:** This enum member is a system API. |
-| SPATIAL_GESTURE | 'SpatialGesture' | Body gesture awareness capability. It supports recognition of the user's specific posture gestures.<br>**System API:** This enum member is a system API. |
-| REALTIME_WEATHER | 'RealTimeWeather' | Real-time weather awareness capability. It supports recognition of the weather conditions in the vehicle's current environment. |
-| REFUELING | 'Refueling' | Refueling recognition capability. It supports recognition of the start and end states of car refueling. |
-| CAR_STATUS | 'CarStatus' | Car status awareness capability. It supports obtaining vehicle-related status information.<br>**System API:** This enum member is a system API. |
-| CAR_CFG | 'CarCfg' | Car configuration awareness capability. It supports obtaining car configuration-related information.<br>**System API:** This enum member is a system API. |
-| HABIT_RECOMMENDATION | 'HabitRecommendation' | Habit recommendation awareness capability. It supports generating recommendations based on user habits.<br>**System API:** This enum member is a system API. |
+| SPATIAL_POINT | 'SpatialPoint' | Pointing recognition capability, which supports recognizing the in-vehicle components pointed to by the user. |
+| SPATIAL_GESTURE | 'SpatialGesture' | Gesture awareness capability, which supports recognizing specific user gestures. |
+| CAR_STATUS | 'CarStatus' | Vehicle status awareness capability, which supports obtaining vehicle-related status information. |
+| HABIT_RECOMMENDATION | 'HabitRecommendation' | Habit recommendation awareness capability, which supports generating recommendations based on user habits. |
+| SPATIAL_DRAW | 'SpatialDraw' | Spatial drawing capability, which supports recognizing the user's mid-air drawing gestures. |
+| GESTURE_CLOSEDOOR | 'GestureCloseDoor' | Hand-wave door-closing recognition capability, which supports recognizing the user's hand gesture for closing the door. |
+| OCCUPANT_SENSE | 'OccupantSense' | Occupant awareness capability, which supports recognizing the layout and classification of occupants in the vehicle. |
 
 ## CarAwarenessInfo
 
-Defines the general result information API for car awareness.
+Defines the general result information interface for vehicle awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Model restriction:** This API can be used only in the stage model.
+**Model Constraint:** This interface can be used only in the stage model.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+**System Capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
-| Name | Type | Read Only | Optional | Description |
+| Name | Type | Read-only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
-| timestamp | number | Yes | No | Timestamp of the recognition result.<br>Unit: ms. |
-| capability | [Capability](#capability) | Yes | No | Corresponding awareness capability type. |
-| awarenessEvent | Record\<string, Object\> | Yes | Yes | Key-value pair of the awareness result data. Different capabilities return different fields.<br>- **SPATIAL_POINT**: contains fields such as **object**, **zone**, **value**, and **errorCode**<br>- **SPATIAL_GESTURE**: contains the **action** field |
+| timestamp | number | No | No | Timestamp of the recognition result.<br>Unit: ms. |
+| capability | [Capability](#capability) | No | No | Specified awareness capability type. |
+| awarenessEvent | Record\<string, Object\> | No | Yes | Key-value pairs of the awareness result data. Different capabilities return different fields. |
 
 ## CarAwarenessOptions
 
-Defines the subscription configuration options API for car awareness.
+Defines the subscription configuration options interface for vehicle awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Model restriction:** This API can be used only in the stage model.
+**Model constraint:** This interface can be used only in the stage model.
 
-**System API**: This is a system API.
+**System API:** This interface is a system API.
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
-| Name | Type | Read Only | Optional | Description |
+| Name | Type | Read-only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
-| parameters | Record\<string, Object\> | Yes | Yes | Custom awareness parameter key-value pairs, used to pass in configuration items for a specific capability. |
+| parameters | Record\<string, Object\> | No | Yes | Custom awareness parameter key-value pairs, used to pass configuration items for a specific capability. |
 
 ## carAwareness.onCarAwareness
 
 onCarAwareness(capability: Capability, callback: Callback<CarAwarenessInfo[]>, options?: CarAwarenessOptions): void
 
-Enables car awareness and subscribes to car awareness results. If the device does not support the capability, error code 34000002 is thrown. You can call **getAllCapabilityList** to query the capabilities available on the device. The data is returned asynchronously through the callback.
+Subscribes to the vehicle awareness result. If the device does not support the capability, error code 34000002 is thrown. You can call getAllCapabilityList to query the capabilities available on the device. The data is returned asynchronously through the callback.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Model restriction:** This API can be used only in the stage model.
+**Model Constraint:** This API can be used only in the stage model.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+**System Capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **Parameters**
 
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
-| capability | [Capability](#capability) | Yes | Specifies the type of the awareness capability to subscribe to.<br/>**Note:** This parameter cannot be `SpatialMotion`, `RealTimeWeather`, or `Refueling`; otherwise, error code 34000002 is thrown. |
-| callback | Callback\<CarAwarenessInfo[]\> | Yes | Callback used to return the array of awareness result data. |
-| options | [CarAwarenessOptions](#carawarenessoptions) | No | Optional configuration items of the awareness capability. |
+| capability | [Capability](#capability) | Yes | Type of the awareness capability to subscribe to. |
+| callback | Callback\<CarAwarenessInfo[]\> | Yes | Callback invoked to return the awareness result data array. |
+| options | [CarAwarenessOptions](#carawarenessoptions) | No | Optional configuration options for the awareness capability. |
 
-**Error codes**
+**Error Codes**
 
-For details about the error codes, see [Car Awareness error codes](errorcode-carAwareness.md).
+For details about the following error codes, see [Vehicle Awareness Error Codes](errorcode-carAwareness.md).
 
 | Error Code ID | Error Message |
 | ---- | ---- |
@@ -108,7 +109,7 @@ For details about the error codes, see [Car Awareness error codes](errorcode-car
 | 34000001 | Service exception. |
 | 34000002 | Specific capability not supported. |
 
-**Example**:
+**Example**
 
 ```ts
 import { carAwareness } from '@kit.MultimodalAwarenessKit';
@@ -130,36 +131,36 @@ try {
 
 ## carAwareness.offCarAwareness
 
-offCarAwareness(capability: Capability, callback: Callback<CarAwarenessInfo[]>, options?: CarAwarenessOptions): void
+offCarAwareness(capability: Capability, callback?: Callback<CarAwarenessInfo[]>, options?: CarAwarenessOptions): void
 
-Unsubscribes from the car awareness of the specified subscription type.
+Unsubscribes from the vehicle awareness result of the specified type.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Model restriction:** This API can be used only in the stage model.
+**Model Constraint:** This API can be used only in the stage model.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+**System Capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **Parameters**
 
-| Name | Type | Mandatory | Description |
+| Parameter Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
-| capability | [Capability](#capability) | Yes | Awareness capability type to unsubscribe from. |
-| callback | Callback\<CarAwarenessInfo[]\> | No | Callback for the car awareness event. If a callback is passed in, the corresponding listener is unregistered; otherwise, all listeners are unregistered. |
-| options | [CarAwarenessOptions](#carawarenessoptions) | No | Optional configuration of the awareness capability. |
+| capability | [Capability](#capability) | Yes | Type of the awareness capability to unsubscribe from. |
+| callback | Callback\<CarAwarenessInfo[]\> | No | Callback function. If a specific callback is passed in, the corresponding listener is unregistered; otherwise, all listeners are unregistered. |
+| options | [CarAwarenessOptions](#carawarenessoptions) | No | Optional configuration options of the awareness capability. |
 
-**Error Codes**
+**Error Code**
 
-For details about the following error codes, see [Car Awareness Error Codes](errorcode-carAwareness.md).
+For details about the following error codes, see [Vehicle Awareness Error Codes](errorcode-carAwareness.md).
 
 | Error Code ID | Error Message |
 | ---- | ---- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 34000001 | Service exception. |
 
-**Example**:
+**Example**
 
 ```ts
 import { carAwareness } from '@kit.MultimodalAwarenessKit';
@@ -186,27 +187,27 @@ try {
 
 updateSpatialActionEnableStatus(event: number): void
 
-Updates the start/stop status of spatial action awareness.
+Updates the enable/disable status of spatial action awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Model restriction:** This API can be used only in the stage model.
+**Model Constraint:** This API can be used only in the stage model.
 
-**System API**: This is a system API.
+**System API:** This API is a system API.
 
 **Required permissions:** ohos.permission.vehicle.MMA_SPATIALACTION
 
-**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+**System Capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **Parameters**
 
-| Name | Type | Mandatory | Description |
+| Parameter Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
-| event | number | Yes | Start/stop status value.<br>**0**: end<br>**1**: start<br>The value must be an integer. |
+| event | number | Yes | Enable/disable status value.<br>0: end<br>1: start<br>The value must be an integer. |
 
-**Error codes**
+**Error Code**
 
-For details about the following error codes, see [Car Awareness Error Codes](errorcode-carAwareness.md).
+For details about the following error codes, see [Vehicle Awareness Error Codes](errorcode-carAwareness.md).
 
 | Error Code ID | Error Message |
 | ---- | ---- |
@@ -216,7 +217,7 @@ For details about the following error codes, see [Car Awareness Error Codes](err
 | 34000001 | Service exception. |
 | 34000002 | Specific capability not supported. |
 
-**Example**:
+**Example**
 
 ```ts
 import { carAwareness } from '@kit.MultimodalAwarenessKit';
@@ -241,11 +242,11 @@ updateSpatialActionZone(zone: number): void
 
 Updates the sound zone information for spatial action awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Model restriction:** This API can be used only in the stage model.
+**Model constraint:** This API can be used only in the stage model.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
 **Required permissions:** ohos.permission.vehicle.MMA_SPATIALACTION
 
@@ -255,11 +256,11 @@ Updates the sound zone information for spatial action awareness.
 
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
-| zone | number | Yes | Sound zone ID.<br>**3**: rear left<br>**4**: rear right<br>The value must be an integer. |
+| zone | number | Yes | Sound zone ID.<br>3: rear left<br>4: rear right<br>The value must be an integer. |
 
-**Error codes**
+**Error Codes**
 
-For details about the following error codes, see [Car Awareness Error Codes](errorcode-carAwareness.md).
+For details about the error codes, see [Vehicle Awareness Error Codes](errorcode-carAwareness.md).
 
 | Error Code ID | Error Message |
 | ---- | ---- |
@@ -269,7 +270,7 @@ For details about the following error codes, see [Car Awareness Error Codes](err
 | 34000001 | Service exception. |
 | 34000002 | Specific capability not supported. |
 
-**Example**:
+**Example**
 
 ```ts
 import { carAwareness } from '@kit.MultimodalAwarenessKit';
@@ -292,32 +293,32 @@ try {
 
 getCarAwareness(capability: Capability, options?: CarAwarenessOptions): Promise<CarAwarenessInfo[]>
 
-Obtains the car awareness result of the specified type once.
+Obtains the vehicle awareness result of the specified type once.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Model restriction:** This API can be used only in the stage model.
+**Model Constraint:** This API can be used only in the stage model.
 
-**System API**: This is a system API.
+**System API:** This is a system API.
 
-**System capability:** SystemCapability.MultimodalAwareness.CarAwareness
+**System Capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
 **Parameters**
 
-| Name | Type | Mandatory | Description |
+| Parameter Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
 | capability | [Capability](#capability) | Yes | Type of the awareness capability to obtain. |
-| options | [CarAwarenessOptions](#carawarenessoptions) | No | Optional configuration of the awareness capability. |
+| options | [CarAwarenessOptions](#carawarenessoptions) | No | Optional configuration options of the awareness capability. |
 
-**Returns**
+**Return value**
 
 | Type | Description |
 | ---- | ---- |
-| Promise\<CarAwarenessInfo[]\> | Promise object that returns an array of awareness result data. |
+| Promise\<CarAwarenessInfo[]\> | Promise used to return the array of awareness result data. |
 
-**Error codes**
+**Error Codes**
 
-For details about the following error codes, see [Car Awareness Error Codes](errorcode-carAwareness.md).
+For details about the following error codes, see [Vehicle Awareness Error Codes](errorcode-carAwareness.md).
 
 | Error Code ID | Error Message |
 | ---- | ---- |
@@ -326,7 +327,7 @@ For details about the following error codes, see [Car Awareness Error Codes](err
 | 34000001 | Service exception. |
 | 34000002 | Specific capability not supported. |
 
-**Example**:
+**Example**
 
 ```ts
 import { carAwareness } from '@kit.MultimodalAwarenessKit';

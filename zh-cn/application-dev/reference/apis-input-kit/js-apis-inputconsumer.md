@@ -72,7 +72,7 @@ getAllSystemHotkeys(): Promise&lt;Array&lt;HotkeyOptions&gt;&gt;
 
 | 错误码ID | 错误信息                  |
 | -------- | ------------------------- |
-| 801      | Capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -103,7 +103,7 @@ struct Index {
 
 on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;HotkeyOptions&gt;): void
 
-订阅应用快捷键。获取满足条件的组合按键输入事件，使用callback异步回调。
+订阅应用快捷键。获取满足条件的组合按键输入事件，使用callback异步回调。调用此接口前，建议先调用[getAllSystemHotkeys](#inputconsumergetallsystemhotkeys)接口查询系统快捷键列表，确认待订阅的组合按键未被系统占用，避免订阅失败。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputConsumer
 
@@ -124,7 +124,7 @@ on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;Hot
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801 | Capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 4200002  | The hotkey has been used by the system. |
 | 4200003  | The hotkey has been subscribed to by another. |
 
@@ -151,12 +151,25 @@ struct Index {
           let hotkeyCallback = (hotkeyOptions: inputConsumer.HotkeyOptions) => {
             console.info(`Succeeded in consuming hotkey, hotkeyOptions: ${JSON.stringify(hotkeyOptions)}.`);
           };
-          try {
-            // 订阅热键变更事件
-            inputConsumer.on('hotkeyChange', hotkeyOptions, hotkeyCallback);
-          } catch (error) {
-            console.error(`Failed to Subscribe hot key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
-          }
+          // 先查询系统快捷键列表，确认待订阅的组合按键未被系统占用
+          inputConsumer.getAllSystemHotkeys().then((hotkeys: Array<inputConsumer.HotkeyOptions>) => {
+            let isOccupied: boolean = hotkeys.some((hotkey: inputConsumer.HotkeyOptions) => {
+              return hotkey.finalKey === zKey && hotkey.preKeys.length === hotkeyOptions.preKeys.length &&
+                hotkeyOptions.preKeys.every((preKey: number) => hotkey.preKeys.includes(preKey));
+            });
+            if (!isOccupied) {
+              try {
+                // 订阅热键变更事件
+                inputConsumer.on('hotkeyChange', hotkeyOptions, hotkeyCallback);
+              } catch (error) {
+                console.error(`Failed to Subscribe hot key, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+              }
+            } else {
+              console.info(`The hotkey has been used by the system, please change another hotkey.`);
+            }
+          }).catch((error: BusinessError) => {
+            console.error(`Failed to get all system hotkeys, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          });
         })
     }
   }
@@ -186,7 +199,7 @@ off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;H
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801 | Capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -283,7 +296,7 @@ on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback&lt;KeyEvent
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801 | Capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -341,7 +354,7 @@ off(type: 'keyPressed', callback?: Callback&lt;KeyEvent&gt;): void
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801 | Capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 

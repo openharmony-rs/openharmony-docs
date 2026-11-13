@@ -3638,7 +3638,7 @@ Enumerates the P2P service protocol types.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -3656,7 +3656,7 @@ Represents the P2P service information.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -3676,7 +3676,7 @@ Adds and registers the local P2P service description of DNS-SD (DNS service disc
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -3723,7 +3723,7 @@ Adds and registers the local P2P service description of the UPnP (Universal Plug
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -3771,7 +3771,7 @@ Removes a registered local service that was added through [addDnsSdLocalP2pServi
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -3818,7 +3818,7 @@ Queries the local P2P services. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.WiFi.P2P
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

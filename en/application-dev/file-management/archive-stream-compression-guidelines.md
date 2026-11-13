@@ -6,7 +6,7 @@
 <!--Designer: @selina_jiang; @RainbowLLL-->
 <!--Tester: @zheng1368-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=51a4d474cf496c221e08074148023a74c0addf3b translatedAt=2026-08-26T04:30:17.258Z pushedAt=2026-08-28T03:23:36.878Z -->
+<!-- md-trans-meta sourceCommit=51a4d474cf496c221e08074148023a74c0addf3b translatedAt=2026-10-29T10:30:53.758Z pushedAt=2026-10-29T10:30:53.758Z nl=1 -->
 
 ## When to Use
 
@@ -14,7 +14,7 @@ Starting from API version 26.0.0, streaming compression and decompression is sup
 
 - Performing streaming compression on log data as it is generated, enabling on-the-fly compression.
 - Performing real-time compression or decompression on network data streams to reduce the amount of data transmitted.
-- Processes large volumes of data in chunks, eliminating the need to load all data into memory at once.
+- Processing large volumes of data in chunks to avoid loading all the data into memory at once.
 
 ## Available APIs
 
@@ -22,7 +22,7 @@ For detailed API descriptions, see [oh_archive.h](../reference/apis-core-file-ki
 
 ### Streaming Compression and Decompression APIs
 
-| API | Description |
+| Name | Description |
 | -------- | ---- |
 | OH_Archive_StreamWrite_Create(OH_Archive_Stream_Config config) | Creates a streaming compression writer. |
 | OH_Archive_StreamWrite_Start(OH_Archive_StreamWrite_Ctx ctx, OH_Archive_Stream_OutputHandler outputHandler, void *userData) | Starts streaming compression. |

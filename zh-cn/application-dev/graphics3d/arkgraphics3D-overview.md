@@ -1,9 +1,17 @@
+---
+kits: ["ArkGraphics 3D / 方舟3D图形"]
+description: "介绍ArkGraphics 3D的整体能力、框架原理与核心特性，涵盖glTF模型加载、自定义场景节点、资源创建、动画控制及后处理等能力，帮助开发者快速了解3D图形渲染的入口与适用场景。"
+keywords: [ArkGraphics 3D, 方舟3D图形, 3D渲染, glTF, 3D引擎]
+doctype: guide
+status: active
+---
+
 # ArkGraphics 3D简介
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
 
 ArkGraphics 3D（方舟3D图形）基于轻量级的3D引擎以及渲染管线为开发者提供基础3D场景绘制能力，供开发者便捷、高效地构建3D场景并完成渲染。
@@ -32,9 +40,9 @@ ArkGraphics 3D以自定义场景模式为核心能力，支持开发者自行构
 - 接口层：基于引擎的ECS Framework，通过NAPI层对数据进行组织处理，向开发者暴露简单易用的3D渲染接口，支持开发者使用少量代码完成3D场景的开发。
 
 
-## 约束限制
-
-使用ArkGraphics 3D模块需要硬件设备支持OpenGL ES 3.2以上或者Vulkan 1.0以上的GPU驱动。
-
 <!--RP1-->
+## 约束与限制
+
+硬件设备需支持OpenGL ES 3.2以上或者Vulkan 1.0以上的GPU驱动，才能正常使用ArkGraphics 3D相关能力。
+
 <!--RP1End-->

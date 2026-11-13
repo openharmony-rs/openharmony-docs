@@ -37,6 +37,7 @@ import { Configuration } from '@kit.AbilityKit';
 | mcc<sup>12+</sup> | string | 否  | 是 | 表示移动设备国家代码。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | mnc<sup>12+</sup> | string | 否  | 是 | 表示移动设备网络代码。<br>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
 | locale<sup>20+</sup> | [Intl.Locale](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Locale) | 否  | 是 | 表示区域设置。<br>应用会根据当前的区域设置自动调整其行为，以符合用户的本地化需求。该属性可以通过设置系统语言、设置系统地区和设置应用偏好语言等方式设置。<br>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
+| hasBrandColorChanged | boolean | 否 | 是 | 表示品牌色是否发生过变化，仅支持在Stage模型下使用。true表示品牌色曾经发生过变化，false表示品牌色未发生变化，默认值为false。<br>该属性为一次性标记，系统完成本次环境变量更新分发后即清除，开发者不应缓存该值。<br> **起始版本：** 26.1.0<br>**原子化服务API**：从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 > **说明：**
 > 
@@ -65,6 +66,7 @@ export default class EntryAbility extends UIAbility {
         let mcc = config.mcc;
         let mnc = config.mnc;
         let locale = config.locale;
+        let hasBrandColorChanged = config.hasBrandColorChanged;
       },
       onMemoryLevel(level) {
         console.info(`onMemoryLevel level: ${level}`);

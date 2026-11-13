@@ -258,12 +258,13 @@ static toHtml(styledString: StyledString): string
 
 继承于[StyledString](#styledstring)类。
 
->  **以下接口异常入参处理统一说明：**
+> **说明：**
 >
-> 当start和length越界或者必填传入undefined时，会抛出异常；
+> 以下接口异常入参统一处理：
 >
-> 当styledKey和styledValue传入异常值或者两者对应关系不匹配时，会抛出异常。
-> 
+> - 当start和length越界或者必填传入undefined时，会抛出异常；
+>
+> - 当styledKey和styledValue传入异常值或者两者对应关系不匹配时，会抛出异常。
 
 ### replaceString
 
@@ -1000,7 +1001,8 @@ ShadowOptions对象中不支持fill字段。
 | layoutStyle  | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) |  是  |  是  | 获取属性字符串的图片布局。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  是  |  是  | 获取属性字符串的图片颜色滤镜效果。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | supportSvg2<sup>22+</sup>  | boolean |  是  |  是  | 获取属性字符串是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  是  |  是  | 获取属性字符串的图片拉伸选项。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  是  |  是  | 获取属性字符串的图像拉伸时可调整大小的图像选项。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| imageTag  | string |  是  |  是  | 获取属性字符串的图片文本标签。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ### constructor
 
@@ -1076,7 +1078,8 @@ type ColorFilterType = ColorFilter | DrawingColorFilter
 | objectFit | [ImageFit](ts-appendix-enums.md#imagefit) | 否    | 是 | 设置图片的缩放类型，当前枚举类型不支持ImageFit.MATRIX。具体枚举及说明请参考ImageFit。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br>默认值：ImageFit.Cover |
 | layoutStyle | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle对象说明) | 否    | 是 | 设置图片布局。不传入时使用默认布局（外边距、内边距和圆角均为0）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  否   | 是 | 设置属性字符串的图片颜色滤镜效果。不传入时不应用颜色滤镜，图片显示原始颜色。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  否   | 是 | 设置属性字符串的图片拉伸选项。不传入时不进行拉伸。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  否   | 是 | 设置属性字符串的图像拉伸时可调整大小的图像选项。不传入时不进行拉伸。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| imageTag  | string |  否   | 是 | 设置属性字符串的图片文本标签。不传入时不设置文本标签。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## ImageAttachmentLayoutStyle对象说明
 
@@ -1106,7 +1109,8 @@ ResourceStr类型图片设置项。
 | colorFilter  | [ColorFilterType](#colorfiltertype15) |  否  | 是 | 设置属性字符串的图片颜色滤镜效果。不传入时不应用颜色滤镜，图片显示原始颜色。<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | syncLoad  | boolean |  否  | 是 | 是否同步加载图片，默认是异步加载。同步加载时阻塞UI线程，不会显示占位图。<br>true：同步加载；false：异步加载。<br>默认值：false<br>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | supportSvg2<sup>22+</sup>  | boolean |  否  |  是  | 控制是否开启[SVG标签解析能力增强功能](ts-image-svg2-capabilities.md)。<br>true：支持SVG解析新能力；false：保持原有SVG解析能力。<br>默认值：false<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  否  |  是  | 设置属性字符串的图片拉伸选项。不传入时不进行拉伸。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  否  |  是  | 设置属性字符串的图像拉伸时可调整大小的图像选项。不传入时不进行拉伸。<br>**起始版本：** 26.0.1<br>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| imageTag  | string |  否  |  是  | 设置属性字符串的图片文本标签。不传入时不设置文本标签。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## CustomSpan
 
@@ -1377,7 +1381,7 @@ abstract getLeadingMargin(): LengthMetrics
 
 | 名称           | 类型              | 只读   | 可选  | 说明     |
 | ------------ |---------------------| ---- | ---- | ------ |
-| textBackgroundStyle  |  [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明)  |  是  | 否 | 获取属性字符串的文本背景颜色。<br>默认值：<br>{<br> color: Color.Transparent,<br>  radius: 0<br>} |
+| textBackgroundStyle  |  [TextBackgroundStyle](ts-basic-components-span.md#textbackgroundstyle11对象说明)  |  是  | 否 | 获取属性字符串的文本背景样式。<br>默认值：<br>{<br> color: Color.Transparent,<br>  radius: 0,<br>  borderWidth: 0,<br>  borderColor: 跟随字体颜色<br>} <br/>从API版本26.1.0开始，新增borderWidth和borderColor属性。 |
 
 ### constructor<sup>14+</sup>
 
@@ -1698,7 +1702,9 @@ struct StyledStringBindEventsDemo {
 
 ### 示例3（设置文本样式）
 
-从API version 12开始，该示例通过[getStyles](#getstyles)、[setStyle](#setstyle)接口实现属性字符串查询和设置样式。
+该示例通过[getStyles](#getstyles)、[setStyle](#setstyle)接口实现属性字符串查询和设置样式；通过borderWidth和borderColor属性设置文本边框。
+
+从API version 12开始，新增[getStyles](#getstyles)、[setStyle](#setstyle)接口；从API版本26.1.0开始，[BackgroundColorStyle](#backgroundcolorstyle14)新增borderWidth和borderColor属性。
 
 ```ts
 // xxx.ets
@@ -1725,7 +1731,7 @@ struct StyledStringSetTextStyleDemo {
     superscript: SuperscriptStyle.SUBSCRIPT
   });
   // 创建多重TextStyle样式的对象mutableStyledString1
-  mutableStyledString1: MutableStyledString = new MutableStyledString('运动45分钟', [{
+  mutableStyledString1: MutableStyledString = new MutableStyledString('运动45分钟 Text Border', [{
     start: 0,
     length: 2,
     styledKey: StyledStringKey.FONT,
@@ -1735,6 +1741,11 @@ struct StyledStringSetTextStyleDemo {
     length: 2,
     styledKey: StyledStringKey.FONT,
     styledValue: this.fontStyleAttr2
+  }, {
+    start: 7,
+    length: 11,
+    styledKey: StyledStringKey.BACKGROUND_COLOR,
+    styledValue: new BackgroundColorStyle({ color: '#33007DFF', radius: 5, borderWidth: 2, borderColor: Color.Blue })
   }
   ]);
   // 创建有多种样式组合对象mutableStyledString2
@@ -3497,29 +3508,38 @@ struct TailIndentsExample {
 
 ### 示例22（设置图片拉伸）
 
-该示例通过设置[ImageAttachment](#imageattachmentinterface对象说明)中的resizable属性，对图片不同方向进行拉伸。
+该示例通过设置[ImageAttachment](#imageattachmentinterface对象说明)中的resizable属性，分别使用slice和lattice选项对图片进行拉伸。
 
 从API版本26.0.1开始，ImageAttachment接口新增resizable属性。
 
 ```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
 @Entry
 @Component
 struct StyledStringResizablePage {
   controller: TextController = new TextController();
+  private xDivs: Array<number> = [1, 2, 200];
+  private yDivs: Array<number> = [1, 2, 200];
+  private fXCount: number = 3;
+  private fYCount: number = 3;
+  private drawingLattice: DrawingLattice =
+    drawing.Lattice.createImageLattice(this.xDivs, this.yDivs, this.fXCount, this.fYCount);
+
   build() {
     Column({ space: 20 }) {
       Text('StyledString resizable Demo')
-        .fontSize(28)
+        .fontSize(25)
         .fontWeight(FontWeight.Bold)
 
       Text(undefined, { controller: this.controller })
         .width('90%')
         .margin({ top: 10 })
-        .fontSize(28)
+        .fontSize(25)
         .onAppear(() => {
-          let mutableStyledString2: MutableStyledString = new MutableStyledString(new ImageAttachment({
+          let sliceStyledString: MutableStyledString = new MutableStyledString(new ImageAttachment({
             resourceValue: $r('app.media.landscape'),
-            size: { width: 260, height: 260 },
+            size: { width: 200, height: 200 },
             resizable: {
               slice: {
                 left: '200px',
@@ -3529,13 +3549,22 @@ struct StyledStringResizablePage {
               }
             }
           }));
+          let latticeStyledString: MutableStyledString = new MutableStyledString(new ImageAttachment({
+            resourceValue: $r('app.media.landscape'),
+            size: { width: 200, height: 200 },
+            resizable: {
+              lattice: this.drawingLattice
+            }
+          }));
           let mutableStyledString: MutableStyledString = new MutableStyledString(new ImageAttachment({
             resourceValue: $r('app.media.landscape'),
-            size: { width: 260, height: 260 },
+            size: { width: 200, height: 200 },
           }));
           mutableStyledString.insertString(0, "原图\n")
-          mutableStyledString.insertString(mutableStyledString.length, "\n设置Resizable后\n")
-          mutableStyledString.appendStyledString(mutableStyledString2);
+          mutableStyledString.insertString(mutableStyledString.length, "\n设置slice后\n")
+          mutableStyledString.appendStyledString(sliceStyledString);
+          mutableStyledString.insertString(mutableStyledString.length, "\n设置lattice后\n")
+          mutableStyledString.appendStyledString(latticeStyledString);
           this.controller.setStyledString(mutableStyledString);
         })
     }
@@ -3549,4 +3578,81 @@ struct StyledStringResizablePage {
 ```
 
 ![imageAttachmentResizable](figures/styledstring-resizable.png)
+
+### 示例23（获取图片文本标签）
+
+该示例通过[ImageAttachment](#imageattachment)的imageTag属性为表情图片设置图片文本标签，使用[getStyles](#getstyles)获取属性字符串中的图片样式。随后从图片样式中读取图片文本标签，将图片替换为“标签”形式的纯文本内容。
+
+从API版本26.1.0开始，[ImageAttachment](#imageattachment)、[ImageAttachmentInterface](#imageattachmentinterface对象说明)和[ResourceImageAttachmentOptions](#resourceimageattachmentoptions15)新增imageTag属性。
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct StyledStringImageTagDemo {
+  @State tagResult: string = '点击按钮获取图片文本标签';
+  plainText: string = '图片标签设置';
+  mutableStr: MutableStyledString = new MutableStyledString(this.plainText);
+  controller: TextController = new TextController();
+
+  aboutToAppear(): void {
+    // $r('app.media.startIcon')为统一占位资源，可替换为开发者所需的表情图片资源。
+    this.mutableStr.appendStyledString(new MutableStyledString(new ImageAttachment({
+      resourceValue: $r('app.media.startIcon'),
+      imageTag: '【微笑】',
+      size: { width: 30, height: 30 },
+      layoutStyle: { margin: LengthMetrics.vp(10) }
+    })));
+    this.mutableStr.appendStyledString(new MutableStyledString(new ImageAttachment({
+      resourceValue: $r('app.media.startIcon'),
+      imageTag: '【哭泣】',
+      size: { width: 30, height: 30 },
+      layoutStyle: { margin: LengthMetrics.vp(10) }
+    })));
+    this.mutableStr.appendStyledString(new MutableStyledString(new ImageAttachment({
+      resourceValue: $r('app.media.startIcon'),
+      imageTag: '【捂脸】',
+      size: { width: 30, height: 30 },
+      layoutStyle: { margin: LengthMetrics.vp(10) }
+    })));
+    this.controller.setStyledString(this.mutableStr);
+  }
+
+  build() {
+    Column() {
+      // 展示图片替换为文本标签后的纯文本内容
+      Text(this.tagResult)
+        .fontSize(18)
+        .fontWeight(FontWeight.Bold)
+        .padding(10)
+      // 展示纯文本加三个表情图片
+      Text(undefined, { controller: this.controller })
+        .fontSize(18)
+        .margin(10)
+
+      Button('getImageTag')
+        .margin(10)
+        .onClick(() => {
+          // 获取图片文本标签
+          let imageStyles = this.mutableStr.getStyles(0, this.mutableStr.length, StyledStringKey.IMAGE);
+          let tags = '';
+          for (let i = 0; i < imageStyles.length; i++) {
+            let attachment = imageStyles[i].styledValue as ImageAttachment;
+            if (attachment.imageTag !== undefined) {
+              tags += attachment.imageTag;
+            }
+          }
+          this.tagResult = this.plainText + tags;
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('70%')
+  }
+}
+```
+
+![imageAttachmentImageTag](figures/styledStringImageTag.gif)
 

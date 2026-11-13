@@ -439,7 +439,7 @@ status为true时，[addPermissionUsedRecord](#privacymanageraddpermissionusedrec
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus).<br>适用版本：26.0.1+ |
 | 12100007 | Service exception. |
-| 12100009 | Common inner error. Possible causes: 1. A database error occurs; 2. Failed to query all applications under the user. |
+| 12100009 | Common inner error. Possible causes: 1. Database error. 2. Failed to query all applications under the user. |
 
 **示例：**
 
@@ -496,7 +496,7 @@ setPermissionUsedRecordToggleStatus(status: boolean, subProfileId: number): Prom
 | 12100001 | Invalid parameter. The specified subProfileId does not exist for the current user. |
 | 12100006 | Operation not allowed. The toggle status of the specified permission has already been set by [setPermissionUsedRecordToggleStatus](#privacymanagersetpermissionusedrecordtogglestatus18). |
 | 12100007 | Service exception. |
-| 12100009 | Common inner error. Possible causes: 1. A database error occurs; 2. Failed to query applications under the user. |
+| 12100009 | Common inner error. Possible causes: 1. Database error. 2. Failed to query applications under the user. |
 
 **示例：**
 

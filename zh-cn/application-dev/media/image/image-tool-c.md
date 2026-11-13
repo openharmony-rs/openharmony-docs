@@ -28,7 +28,7 @@ Exif信息的读取与编辑相关C API如下，详细介绍请参考[image_sour
 
 | 接口 | 说明 |
 | -------- | -------- |
-| [OH_ImageSourceNative_GetImageProperty()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getimageproperty) | 获取指定属性键的Exif信息。 |
+| [OH_ImageSourceNative_GetImagePropertyWithNull()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertywithnull) | 获取指定属性键的Exif信息。 |
 | [OH_ImageSourceNative_ModifyImageProperty()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_modifyimageproperty) | 修改指定属性键的Exif信息。 |
 
 ## 注意事项
@@ -127,7 +127,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
    >
    > 创建ImageSource对象可参考[图片解码](../image/image-source-c.md)。
 
-   <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->      
+   <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->  
    
    ``` C++
    // 获取指定property的value值。
@@ -140,7 +140,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
            OH_LOG_ERROR(LOG_APP, "GetImageProperty napi_get_cb_info failed!");
            return GetJsResult(env, IMAGE_BAD_PARAMETER);
        }
-       // 修改指定属性键的值。
+       // 获取指定属性键的值。
        char key[MAX_STRING_LENGTH] = {0};
        size_t keySize = 0;
        if (napi_get_value_string_utf8(env, argValue[0], key, sizeof(key), &keySize) != napi_ok) {

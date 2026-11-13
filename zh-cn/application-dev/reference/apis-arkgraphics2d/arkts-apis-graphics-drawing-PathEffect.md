@@ -44,7 +44,7 @@ static createDashPathEffect(intervals: Array\<number>, phase: number): PathEffec
 
 | 类型                      | 说明                   |
 | ------------------------- | --------------------- |
-| [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) | 返回创建的虚线路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。 |
+| [PathEffect](arkts-apis-graphics-drawing-PathEffect.md) | 返回创建的虚线路径效果对象，可通过[Pen.setPathEffect](arkts-apis-graphics-drawing-Pen.md#setpatheffect12)将其应用到画笔上以改变路径渲染样式。创建失败时返回undefined。 |
 
 **错误码：**
 

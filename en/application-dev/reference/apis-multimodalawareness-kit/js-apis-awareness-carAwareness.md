@@ -5,11 +5,11 @@
 <!--Designer: @charlie3wx-->
 <!--Tester: @fhzs-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=561a48f0279b682322ad16aa122a3161b679e716 translatedAt=2026-09-14T01:47:38.457Z pushedAt=2026-09-14T10:03:33.569Z -->
+<!-- md-trans-meta sourceCommit=24b4df4dc27495886e9363f251875137a29942b4 translatedAt=2026-11-03T05:58:04.565Z pushedAt=2026-11-03T12:08:25.578Z nl=1 -->
 
-This module provides car awareness capabilities, including air gesture interaction, real-time weather recognition, and refueling status recognition.
+This module provides car awareness capabilities, including spatial motion interaction, real-time weather recognition, and refueling status recognition.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 ## Modules to Import
 
@@ -21,7 +21,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 
 Enumerates the capability types supported by car awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -29,39 +29,34 @@ Enumerates the capability types supported by car awareness.
 
 | Name | Value | Description |
 | ---- | ---- | ---- |
-| SPATIAL_MOTION | 'SpatialMotion' | Air gesture awareness capability, which supports recognizing the user's air gestures for operating the screen. |
-| SPATIAL_POINT | 'SpatialPoint' | Pointing recognition capability, which supports recognizing the in-car components pointed to by the user.<br>**System API:** This enum member is a system API. |
-| SPATIAL_GESTURE | 'SpatialGesture' | Body motion awareness capability, which supports recognizing the user's specific postures and actions.<br>**System API:** This enum member is a system API. |
-| REALTIME_WEATHER | 'RealTimeWeather' | Real-time weather awareness capability, which supports recognizing the weather conditions of the environment where the car is currently located. |
-| REFUELING | 'Refueling' | Refueling recognition capability, which supports recognizing the start and end states of car refueling. |
-| CAR_STATUS | 'CarStatus' | Car status awareness capability, which supports obtaining vehicle-related status information.<br>**System API:** This enum member is a system API. |
-| CAR_CFG | 'CarCfg' | Car configuration awareness capability, which supports obtaining car configuration-related information.<br>**System API:** This enum member is a system API. |
-| HABIT_RECOMMENDATION | 'HabitRecommendation' | Habit recommendation awareness capability, which supports generating recommendations based on user habits.<br>**System API:** This enum member is a system API. |
+| SPATIAL_MOTION | 'SpatialMotion' | Air gesture awareness capability. Supports recognition of the user's air gestures for operating the screen. |
+| REALTIME_WEATHER | 'RealTimeWeather' | Real-time weather awareness capability. Supports recognition of the weather status of the environment where the vehicle is currently located. |
+| REFUELING | 'Refueling' | Recharge recognition capability. Supports recognition of the start and end status of vehicle refueling. |
 
 ## SpatialMotionInfo
 
-Defines the result information API for air gesture awareness.
+Interface for spatial motion response info.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
-| Name | Type | Read Only | Optional | Description |
+| Name | Type | Read-Only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
-| timestamp | number | Yes | No | Timestamp of the recognition result.<br>Unit: ms. |
-| pointX | number | Yes | No | X-axis coordinate of the hand on the screen. |
-| pointY | number | Yes | No | Y-axis coordinate of the hand on the screen. |
-| event | number | Yes | No | Gesture event type.<br>**-1**: invalid<br>**0**: ready<br>**1**: move<br>**2**: tap |
+| timestamp | number | No | No | Timestamp of the recognition result.<br>Unit: ms. |
+| pointX | number | No | No | X-axis coordinate of the hand on the screen. |
+| pointY | number | No | No | Y-axis coordinate of the hand on the screen. |
+| event | number | No | No | Gesture event type.<br>-1: invalid<br>0: ready<br>1: move<br>2: tap |
 
 ## carAwareness.onSpatialMotion
 
 onSpatialMotion(callback: Callback\<SpatialMotionInfo\>): void
 
-Enables air gesture awareness and subscribes to air gesture awareness results. If the device does not support this capability, error code 34000002 is thrown. You can call **getAllCapabilityList** to query the available capabilities of the device. The data is returned asynchronously through the callback.
+Subscribes to spatial motion awareness results. If the device does not support this capability, error code 34000002 is thrown. You can obtain the supported capabilities by calling getAllCapabilityList. The data is returned asynchronously via callback.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -73,7 +68,7 @@ Enables air gesture awareness and subscribes to air gesture awareness results. I
 
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
-| callback | Callback\<SpatialMotionInfo\> | Yes | Callback invoked to return the air gesture awareness data. |
+| callback | Callback\<SpatialMotionInfo\> | Yes | Callback invoked to return the spatial motion awareness data. |
 
 **Error codes**
 
@@ -110,9 +105,9 @@ try {
 
 offSpatialMotion(callback?: Callback\<SpatialMotionInfo\>): void
 
-Closes air gesture awareness and unsubscribes from air gesture results.
+Unsubscribes from spatial motion results.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -124,7 +119,7 @@ Closes air gesture awareness and unsubscribes from air gesture results.
 
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
-| callback | Callback\<SpatialMotionInfo\> | No | Callback for the air gesture event. If a specific callback is passed in, only the corresponding listener is unregistered; if no callback is passed in, all listeners are unregistered. |
+| callback | Callback\<SpatialMotionInfo\> | No | Callback for spatial motion event. If a specific callback is passed in, only the corresponding listener is unregistered; otherwise, all listeners are unregistered. |
 
 **Error Codes**
 
@@ -146,7 +141,7 @@ const DOMAIN = 0x0000;
 const TAG = 'CarAwareness';
 
 // Unsubscribe the specified listener.
-let motionCallback = (data) => {
+let motionCallback = (motionInfo : carAwareness.SpatialMotionInfo) => {
   hilog.info(DOMAIN, TAG, 'Spatial motion data received');
 };
 
@@ -169,26 +164,26 @@ try {
 
 ## RealTimeWeatherInfo
 
-Defines the result information of real-time weather awareness.
+Interface for real-time weather response info.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
-| Name | Type | Read Only | Optional | Description |
+| Name | Type | Read-Only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
-| timestamp | number | Yes | No | Timestamp of the recognition result.<br>Unit: ms. |
-| weather | number | Yes | No | Weather status.<br>-1: Invalid<br>0: Sunny/Cloudy<br>1: Light fog<br>2: Dense fog<br>3: Light snow<br>4: Heavy snow<br>5: Light rain<br>6: Heavy rain |
+| timestamp | number | No | No | Timestamp of the recognition result.<br>Unit: ms. |
+| weather | number | No | No | Weather status.<br>-1: invalid<br>0: other<br>1: fog<br>2: dense fog<br>3: snow<br>4: heavy snow<br>5: rain<br>6: heavy rain |
 
 ## carAwareness.onRealTimeWeather
 
 onRealTimeWeather(callback: Callback\<RealTimeWeatherInfo\>): void
 
-Enables real-time weather awareness and subscribes to real-time weather awareness results. If the device does not support this capability, error code 34000002 is thrown. You can call **getAllCapabilityList** to query the available capabilities of the device. The data is returned asynchronously through the callback.
+Subscribes to real-time weather awareness results. If the device does not support this capability, error code 34000002 is thrown. You can obtain the supported capabilities by calling getAllCapabilityList. The data is returned asynchronously via callback.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -236,9 +231,9 @@ try {
 
 offRealTimeWeather(callback?: Callback\<RealTimeWeatherInfo\>): void
 
-Closes real-time weather awareness and unsubscribes from real-time weather results.
+Unsubscribes from real-time weather results.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -250,7 +245,7 @@ Closes real-time weather awareness and unsubscribes from real-time weather resul
 
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
-| callback | Callback\<RealTimeWeatherInfo\> | No | Callback for the real-time weather event. If a specific callback is passed in, the corresponding listener is unregistered; if no callback is passed in, all listeners are unregistered. |
+| callback | Callback\<RealTimeWeatherInfo\> | No | Callback for the real-time weather event. If a specific callback is passed in, only the corresponding listener is unregistered; otherwise, all listeners are unregistered. |
 
 **Error codes**
 
@@ -282,32 +277,32 @@ try {
 
 ## RefuelingInfo
 
-Defines the result information API for refueling recognition.
+Interface for refueling response info.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API supports use in atomic services since API version 26.0.1.
 
 **System capability:** SystemCapability.MultimodalAwareness.CarAwareness
 
-| Name | Type | Read Only | Optional | Description |
+| Name | Type | Read-Only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
-| timestamp | number | Yes | No | Timestamp of the recognition result.<br>Unit: ms. |
-| status | number | Yes | No | Refueling status.<br>-1: invalid<br>0: idle (refueling not started)<br>1: refueling started<br>2: refueling finished |
+| timestamp | number | No | No | Timestamp of the recognition result.<br>Unit: ms. |
+| status | number | No | No | Refueling status.<br>-1: invalid<br>0: idle (refueling not started)<br>1: refueling started<br>2: refueling finished |
 
 ## carAwareness.onRefueling
 
 onRefueling(callback: Callback\<RefuelingInfo\>): void
 
-Enables refueling awareness and subscribes to the refueling status awareness result. If the device does not support this capability, error code 34000002 is thrown. You can call getAllCapabilityList to query the available capabilities of the device. The data is returned asynchronously through the callback.
+Subscribes to the refueling status awareness result. If the device does not support this capability, error code 34000002 is thrown. You can obtain the supported capabilities by calling getAllCapabilityList. This API uses an asynchronous callback to return the data.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API supports use in atomic services since API version 26.0.1.
 
 **Required permission:** ohos.permission.vehicle.MMA_ENERGYREFILL
 
@@ -353,13 +348,13 @@ try {
 
 offRefueling(callback?: Callback\<RefuelingInfo\>): void
 
-Closes refueling awareness and unsubscribes from the refueling status result.
+Unsubscribes from the refueling status result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+**Atomic service API:** This API can be used in an atomic service since API version 26.0.1.
 
 **Required permission:** ohos.permission.vehicle.MMA_ENERGYREFILL
 
@@ -369,7 +364,7 @@ Closes refueling awareness and unsubscribes from the refueling status result.
 
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
-| callback | Callback\<RefuelingInfo\> | No | Callback for the refueling status event. If a specific callback is passed in, the corresponding listener is unregistered; otherwise, all listeners are unregistered. |
+| callback | Callback\<RefuelingInfo\> | No | Callback for the refueling status event. If a specific callback is passed in, only the corresponding listener is unregistered; otherwise, all listeners are unregistered. |
 
 **Error codes**
 
@@ -405,7 +400,7 @@ getAllCapabilityList(): Promise&lt;Capability[]&gt;
 
 Obtains the list of all car awareness capabilities supported by the current device.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -415,7 +410,7 @@ Obtains the list of all car awareness capabilities supported by the current devi
 
 | Type | Description |
 | ---- | ---- |
-| Promise\<Capability[]\> | Promise object that returns the list of awareness capability enums supported by the device. |
+| Promise\<Capability[]\> | Promise used to return the list of awareness capability enums supported by the device. |
 
 **Error code:**
 

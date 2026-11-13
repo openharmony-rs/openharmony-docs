@@ -293,7 +293,7 @@ export default class EntryAbility extends UIAbility {
 
 ## 常见问题
 
-### onNewWant回调非预期触发导致页面变化
+### onNewWant()回调非预期触发导致页面变化
 
 **问题现象**
 

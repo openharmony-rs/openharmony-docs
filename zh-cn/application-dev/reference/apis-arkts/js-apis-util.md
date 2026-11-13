@@ -847,7 +847,7 @@ static getGlobalHandleCount(): number
 >
 > 该接口仅统计强引用（global handle）的数量，不包含弱引用（WeakRef）和Sendable引用（SendableRef）的数量。弱引用存储在独立的弱引用链表中，Sendable引用存储在独立的Sendable全局存储中，均不在本接口的遍历范围内。返回值受强引用创建/删除操作的影响，例如napi_create_strong_reference、napi_delete_strong_reference等接口会相应增减计数，napi_create_strong_sendable_reference、napi_delete_strong_sendable_reference等接口不会影响计数结果。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3631,7 +3631,7 @@ encodeSync(src: Uint8Array, options?: Type): Uint8Array
 
 ### encodeToStringSync<sup>9+</sup>
 
-encodeToStringSync(src: Uint8Array, options?: Type): string
+encodeToStringSync(src: Uint8Array | collections.Uint8Array, options?: Type): string
 
 将输入的Uint8Array字节数组进行Base64编码，返回一个字符串结果。该方法支持多种编码格式，包括标准Base64编码、MIME格式的Base64编码（带有换行符）、URL安全格式的Base64编码等。
 
@@ -3643,7 +3643,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
 
 | 参数名 | 类型       | 必填 | 说明                |
 | ------ | ---------- | ---- | ------------------- |
-| src    | Uint8Array | 是   | 待编码Uint8Array对象。 |
+| src    | Uint8Array&nbsp;\|&nbsp;[collections.Uint8Array](arkts-apis-arkts-collections-Uint8Array.md)<sup>26.1.0+</sup> | 是   | 待编码的Uint8Array对象。<br/>**说明**：从API version 26.1.0开始，支持传入collections.Uint8Array（Sendable字节数组），可直接编码跨并发实例（TaskPool/Worker）传递的字节数据，无需先拷贝为普通Uint8Array。 |
 | options<sup>10+</sup>    | [Type](#type10) | 否   | 从API version 10开始支持该参数，表示对应的编码格式。<br/>此参数可选，可选值为：util.Type.BASIC，util.Type.MIME，util.Type.BASIC_URL_SAFE 和util.Type.MIME_URL_SAFE，默认值为：util.Type.BASIC。<br/>- 当参数取值为util.Type.BASIC，表示Base64编码，返回值没有回车符、换行符。<br/>- 当参数取值为util.Type.MIME，表示使用Base64编码。如果返回值超过76个字符，则会在每76个字符处进行换行，并以'\r\n'结束每行。如果返回值少于76个字符，则会抛出异常。<br/>- 当参数取值为util.Type.BASIC_URL_SAFE，表示Base64URL编码，返回值没有回车符、换行符。<br/>- 当参数取值为util.Type.MIME_URL_SAFE，表示Base64URL编码，返回值每一行不超过76个字符，而且每行以'\r\n'符结束。 |
 
 **返回值：**
@@ -3655,6 +3655,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
 **示例：**
 
   ```ts
+  import { util, collections } from '@kit.ArkTS';
   // MIME编码
   let base64Helper = new util.Base64Helper();
   let array =
@@ -3688,8 +3689,8 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   /*
   输出结果：result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
    */
-  
-  // MIME_URL_SAFE编码
+
+  // BASIC_URL_SAFE编码
   let base64Helper = new util.Base64Helper();
   let array =
     new Uint8Array([77, 97, 110, 105, 115, 100, 105, 115, 116, 105, 110, 103, 117, 105, 115, 104, 101, 100, 110, 111, 116,
@@ -3720,6 +3721,15 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   输出结果：result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
   aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
   aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU
+   */
+
+  // 从API version 26.1.0开始，支持传入collections.Uint8Array（Sendable字节数组）
+  let base64Helper = new util.Base64Helper();
+  let sendableArray = new collections.Uint8Array([77, 97, 110]);
+  let result = base64Helper.encodeToStringSync(sendableArray, util.Type.BASIC);
+  console.info("result = " + result);
+  /*
+  输出结果：result = TWFu
    */
   ```
 
@@ -3796,7 +3806,7 @@ encode(src: Uint8Array, options?: Type): Promise&lt;Uint8Array&gt;
 
 ### encodeToString<sup>9+</sup>
 
-encodeToString(src: Uint8Array, options?: Type): Promise&lt;string&gt;
+encodeToString(src: Uint8Array | collections.Uint8Array, options?: Type): Promise&lt;string&gt;
 
 将输入参数异步编码后输出对应文本。使用Promise异步回调。
 
@@ -3808,7 +3818,7 @@ encodeToString(src: Uint8Array, options?: Type): Promise&lt;string&gt;
 
 | 参数名 | 类型       | 必填 | 说明                    |
 | ------ | ---------- | ---- | ----------------------- |
-| src    | Uint8Array | 是   | 异步编码输入Uint8Array对象。 |
+| src    | Uint8Array&nbsp;\|&nbsp;[collections.Uint8Array](arkts-apis-arkts-collections-Uint8Array.md)<sup>26.1.0+</sup> | 是   | 异步编码输入的Uint8Array对象。<br/>**说明**：从API version 26.1.0开始，支持传入collections.Uint8Array（Sendable字节数组），可直接编码跨并发实例（TaskPool/Worker）传递的字节数据，无需先拷贝为普通Uint8Array。 |
 | options<sup>10+</sup>    | [Type](#type10) | 否   | 从API version 10开始支持该参数，表示对应的编码格式。<br/>此参数可选，可选值为：util.Type.BASIC，util.Type.MIME，util.Type.BASIC_URL_SAFE和util.Type.MIME_URL_SAFE，默认值为：util.Type.BASIC。<br/>- 当参数取值为util.Type.BASIC，表示Base64编码，返回值没有回车符、换行符。<br/>- 当参数取值为util.Type.MIME，表示Base64编码，返回值每一行不超过76个字符，而且每行以'\r\n'符结束。<br/>- 当参数取值为util.Type.BASIC_URL_SAFE，表示Base64URL编码，返回值没有回车符、换行符。<br/>- 当参数取值为util.Type.MIME_URL_SAFE，表示Base64URL编码，返回值每一行不超过76个字符，而且每行以'\r\n'符结束。 |
 
 **返回值：**
@@ -3820,6 +3830,7 @@ encodeToString(src: Uint8Array, options?: Type): Promise&lt;string&gt;
 **示例：**
 
   ```ts
+  import { util, collections } from '@kit.ArkTS';
   let base64Helper = new util.Base64Helper();
   let array = new Uint8Array([77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101]);
   base64Helper.encodeToString(array, util.Type.MIME).then((val) => {
@@ -3831,6 +3842,16 @@ encodeToString(src: Uint8Array, options?: Type): Promise&lt;string&gt;
      */
 
   })
+
+  // 从API version 26.1.0开始，支持传入collections.Uint8Array（Sendable字节数组）
+  let base64Helper = new util.Base64Helper();
+  let sendableArray = new collections.Uint8Array([77, 97, 110]);
+  base64Helper.encodeToString(sendableArray, util.Type.BASIC).then((val) => {
+    console.info(val);
+    /*
+    输出结果：TWFu
+     */
+  });
   ```
 
 

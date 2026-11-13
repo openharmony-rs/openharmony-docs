@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "提供业务模块并发加载场景的开发指导：通过TaskPool将定位、打车、导航等业务初始化任务移入子线程并行执行，结合Sendable对象或NativeBinding对象返回初始化结果，有效缩短应用冷启动时间。"
+keywords: [并发加载模块, 冷启动优化, TaskPool, Sendable对象, NativeBinding, 子线程初始化, 启动耗时]
+doctype: guide
+status: active
+---
+
 # 业务模块并发加载场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

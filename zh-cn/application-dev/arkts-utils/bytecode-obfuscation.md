@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍ArkGuard字节码混淆的生效范围、混淆机制及流程，详解混淆选项、保留选项、通配符与多模块规则合并策略，提升release构建防逆向能力并降低包大小。"
+keywords: [ArkGuard, 混淆, 字节码混淆, 混淆机制, 混淆选项, 保留选项, 通配符, 混淆规则合并, 防逆向]
+doctype: guide
+status: active
+---
+
 # ArkGuard字节码混淆原理及功能
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

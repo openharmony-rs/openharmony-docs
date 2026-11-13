@@ -23,7 +23,7 @@
 - \@ReusableV2仅能装饰V2的自定义组件，即\@ComponentV2装饰的自定义组件。并且仅能将\@ReusableV2装饰的自定义组件作为V2自定义组件的子组件使用。
 - \@ReusableV2同样提供了[aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)和[aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse18)的生命周期，在组件被回收时调用aboutToRecycle，在组件被复用时调用aboutToReuse，但与\@Reusable不同的是，aboutToReuse没有入参。
 - 在回收阶段，会递归地调用所有子组件的aboutToRecycle回调（即使子组件未被标记可复用）；在复用阶段，会递归地调用所有子组件的aboutToReuse回调（即使子组件未被标记可复用）。
-- \@ReusableV2装饰的自定义组件会在被回收期间保持冻结状态，即无法触发UI刷新、无法触发[\@Monitor](./arkts-new-monitor.md)回调，与[freezeWhenInactive](./arkts-custom-components-freezeV2.md)标记位不同的是，在解除冻结状态后，不会触发延后的刷新。
+- \@ReusableV2装饰的自定义组件会在被回收期间保持冻结状态，即无法触发UI刷新、无法触发[\@Monitor](./arkts-new-monitor.md)回调，与[自定义组件冻结](./arkts-custom-components-freezeV2.md)freezeWhenInactive标记位不同的是，在解除冻结状态后，不会触发延后的刷新。
 - \@ReusableV2装饰的自定义组件会在复用时自动重置组件内状态变量的值、重新计算组件内[\@Computed](./arkts-new-computed.md)以及与之相关的\@Monitor。不建议开发者在aboutToRecycle中更改组件内状态变量，详见[复用前的组件内状态变量重置](#复用前的组件内状态变量重置)。
 - V1和V2的复用组件可在一定规则下混用，详见[使用限制](#使用限制)第二点。
 - 不建议开发者嵌套滥用\@ReusableV2装饰器，这可能会导致复用效率降低以及内存开销变大。
@@ -650,6 +650,86 @@ struct ReusableV2Component {
 由于冻结机制的存在，在aboutToRecycle中赋值不会被\@Monitor观察到。而在经历完变量重置后，变量又会被赋予新的值，因此对于组件内状态变量来说，在aboutToRecycle中赋值不会有明显的效果；而常量（例如上面的`noDecoInfo`）由于冻结机制的存在，在aboutToRecycle中更改`age`也不会被观察到，并且因为不会被重置，所以相关的\@Monitor也不会被重置，即这里的`age`值本身未被重置，也就不会重置与之绑定的\@Monitor。最终表现出来的现象即：第二步回调的\@Monitor中，`monitor.value()?.before`得到的值为31，而非age的初始值30。
 
 针对这一现象，推荐开发者在复用的场景减少使用类似的常量对象包含[\@Trace](./arkts-new-observedV2-and-trace.md)属性的写法，以确保复用场景的功能符合预期。
+
+## 主动清理复用池
+
+从API version 26.1.0开始，当开发者需要主动释放复用池中的组件时，可以通过[UIUtils.getCustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#getcustomcomponentcontext)获取当前组件的[CustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#customcomponentcontext)，调用CustomComponentContext的[getDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#getdefaultreusepool)方法获取默认复用池[IDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#idefaultreusepool)，并调用IDefaultReusePool的[clearCache](../../reference/apis-arkui/js-apis-stateManagement.md#clearcache)方法实现。
+
+> **说明：**
+>
+> 1. 指定reuseId时，仅清理该reuseId对应的可复用自定义组件；未指定时，清理复用池中的全部组件。
+> 2. 已从复用池中取出、正参与复用的组件不受影响。
+> 3. 传入不存在或空字符串的`reuseId`时，本次调用不产生效果。
+
+以下示例中，点击Recycle A按钮或Recycle B按钮可将自定义组件回收进默认复用池，点击Clear All按钮可释放默认复用池中的所有组件，点击Clear A按钮可释放默认复用池中reuseId为A的组件。
+
+<!-- @[DefaultReusePoolClearCache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableV2/entry/src/main/ets/view/DefaultReusePoolClearCache.ets) -->
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  @Param label: string = '';
+  aboutToAppear() {
+    console.info(`ReusableChild [${this.label}] aboutToAppear`);
+  }
+  aboutToDisappear() {
+    console.info(`ReusableChild [${this.label}] aboutToDisappear`);
+  }
+  aboutToRecycle() {
+    console.info(`ReusableChild [${this.label}] aboutToRecycle`);
+  }
+  aboutToReuse() {
+    console.info(`ReusableChild [${this.label}] aboutToReuse`);
+  }
+
+  build() {
+    Text(`ReusableChild: ${this.label}`)
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local showA: boolean = true;
+  @Local showB: boolean = true;
+
+  build() {
+    Column() {
+      if (this.showA) {
+        ReusableChild({ label: 'A' })
+          .reuse({ reuseId: () => 'A' })
+      }
+      if (this.showB) {
+        ReusableChild({ label: 'B' })
+          .reuse({ reuseId: () => 'B' })
+      }
+      Button('Recycle A')
+        .onClick(() => {
+          // 切换if分支，触发子组件回收
+          this.showA = false;
+        })
+      Button('Recycle B')
+        .onClick(() => {
+          // 切换if分支，触发子组件回收
+          this.showB = false;
+        })
+      Button('Clear All')
+        .onClick(() => {
+          // 清理默认复用池中的全部组件
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache();
+        })
+      Button('Clear A')
+        .onClick(() => {
+          // 仅清理reuseId为'A'的组件
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache('A');
+        })
+    }
+  }
+}
+```
 
 ## 使用场景
 

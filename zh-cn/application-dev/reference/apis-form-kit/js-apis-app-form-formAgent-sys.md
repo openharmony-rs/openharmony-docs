@@ -35,7 +35,7 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 
 | 参数名   | 类型                                | 必填 | 说明                                                         |
 | -------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 发布请求，需包含以下字段。<br>bundleName: 目标卡片所属应用的bundleName<br>abilityName: 目标卡片所属应用的Ability<br>parameters:<br>- ohos.extra.param.key.form_dimension: 目标卡片规格，取值原则：1-2x2、2-2x4、3-4x4等，具体规格见卡片配置<br>- ohos.extra.param.key.form_name: 目标卡片名<br>- ohos.extra.param.key.module_name: 目标卡片moduleName|
+| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 发布请求，需包含以下字段。<br>bundleName: 目标卡片所属应用的bundleName。<br>abilityName: 目标卡片所属应用的Ability。<br>parameters:<br>- ohos.extra.param.key.form_dimension: 目标卡片规格，取值原则：1-2x2、2-2x4、3-4x4等，具体规格见卡片配置。<br>- ohos.extra.param.key.form_name: 目标卡片名。<br>- ohos.extra.param.key.module_name: 目标卡片moduleName。|
 | callback | AsyncCallback&lt;string&gt; | 是 | 回调函数，用于异步返回卡片标识。回调参数：error为错误对象（成功时为null），data为卡片标识（string类型）。 |
 
 **错误码：**
@@ -49,10 +49,10 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.0.1 |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>适用版本：26.0.1 |
 | 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：12+ |
-| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.0.1 |
-| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>适用版本：26.0.1 |
+| 16501018 | This form does not support publishing. <br/>适用版本：26.0.1 |
 
 **示例：**
 
@@ -99,7 +99,7 @@ requestPublishForm(want: Want): Promise&lt;string&gt;
 
 | 参数名          | 类型                                                         | 必填 | 说明                                                         |
 | --------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 发布请求，需包含以下字段。<br>bundleName: 目标卡片所属应用的bundleName<br>abilityName: 目标卡片所属应用的Ability<br>parameters:<br>- ohos.extra.param.key.form_dimension: 目标卡片规格<br>- ohos.extra.param.key.form_name: 目标卡片名<br>- ohos.extra.param.key.module_name: 目标卡片moduleName |
+| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 发布请求，需包含以下字段。<br>bundleName: 目标卡片所属应用的bundleName。<br>abilityName: 目标卡片所属应用的Ability。<br>parameters:<br>- ohos.extra.param.key.form_dimension: 目标卡片规格。<br>- ohos.extra.param.key.form_name: 目标卡片名。<br>- ohos.extra.param.key.module_name: 目标卡片moduleName。 |
 
 **返回值：**
 
@@ -118,10 +118,10 @@ requestPublishForm(want: Want): Promise&lt;string&gt;
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.0.1 |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>适用版本：26.0.1 |
 | 16501008 | Waiting for the form addition to the desktop timed out. <br/>适用版本：12+ |
-| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.0.1 |
-| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>适用版本：26.0.1 |
+| 16501018 | This form does not support publishing. <br/>适用版本：26.0.1 |
 
 **示例：**
 
@@ -289,7 +289,7 @@ requestPublishFormCrossDevice(peerServiceInfo: formInfo.PeerFormHostServiceInfo,
 | ------ | ------ | ---- | -------|
 | peerServiceInfo | [formInfo.PeerFormHostServiceInfo](js-apis-app-form-formInfo-sys.md#peerformhostserviceinfo) | 是 | 远端设备的卡片使用方服务信息。 |
 | want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 发布请求，需包含以下字段。<br>bundleName: 目标卡片所属应用的bundleName。<br>abilityName: 目标卡片所属应用的Ability。<br>parameters:<br>- ohos.extra.param.key.form_dimension: 目标卡片规格。<br>- ohos.extra.param.key.form_name: 目标卡片名。<br>- ohos.extra.param.key.module_name: 目标卡片moduleName。 |
-| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 否 | 用于更新的卡片数据。 |
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | 否 | 用于更新的卡片数据。默认值为空。 |
 
 **返回值：**
 
@@ -346,6 +346,65 @@ let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData
 try {
   formAgent.requestPublishFormCrossDevice(peerServiceInfo, want, obj).then((data: formInfo.PublishFormCrossDeviceResult) => {
     console.info(`formAgent requestPublishFormCrossDevice success, form ID is: ${data.formId}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formAgent.getVisibleFormRect
+
+getVisibleFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
+
+获取可见卡片区域的位置和尺寸。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | -------|
+| formId | string | 是 | 卡片标识。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise对象，返回卡片相对于屏幕左上角的位置和尺寸，单位为vp。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: <br>1. The hardware does not support the capability. <br>2. The chip does not support the capability. <br>3. A dependent service feature is not supported. |
+| 16500050 | IPC connection error. |
+| 16500060 | Service connection error. |
+| 16500100 | Failed to obtain the configuration information. |
+| 16501001 | The ID of the form to be operated does not exist. |
+| 16501003 | The form cannot be operated by the current application. |
+
+**示例：**
+
+```ts
+import { formAgent, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '123456789'; // 卡片标识，请替换为实际的卡片标识。
+try {
+  formAgent.getVisibleFormRect(formId).then((data: formInfo.Rect) => {
+    console.info(`formAgent getVisibleFormRect success, left: ${data.left}, top: ${data.top},` +
+      `width: ${data.width}, height: ${data.height}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });

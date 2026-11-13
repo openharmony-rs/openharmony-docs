@@ -34,7 +34,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | ERR_RUNTIME_ERROR                     | 19020002 | 运行时错误。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。              |
 | ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>             | 19020003 | 参数检查失败。 <br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。               |
 | ERR_CRYPTO_OPERATION                  | 19030001 | 调用三方算法库API出错。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。      |
-| ERR_CERT_SIGNATURE_FAILURE            | 19030002 | 证书签名验证错误。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
+| ERR_CERT_SIGNATURE_FAILURE            | 19030002 | 证书验签错误。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
 | ERR_CERT_NOT_YET_VALID                | 19030003 | 证书尚未生效。  <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。              |
 | ERR_CERT_HAS_EXPIRED                  | 19030004 | 证书过期。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                  |
 | ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY | 19030005 | 无法获取证书的颁发者。 <br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
@@ -50,11 +50,11 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | ERR_CRL_NOT_FOUND                | 19030015 | 无法获取证书吊销列表。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | ERR_CRL_NOT_YET_VALID            | 19030016 | 证书吊销列表尚未生效。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | ERR_CRL_HAS_EXPIRED              | 19030017 | 证书吊销列表已过期。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
-| ERR_CRL_SIGNATURE_FAILURE        | 19030018 | 证书吊销列表签名验证失败。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_CRL_SIGNATURE_FAILURE        | 19030018 | 证书吊销列表验签失败。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | ERR_CRL_ISSUER_NOT_FOUND         | 19030019 | 无法获取证书吊销列表颁发者。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | ERR_OCSP_RESPONSE_NOT_FOUND      | 19030020 | 无法获取在线证书状态协议（OCSP）响应。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | ERR_OCSP_RESPONSE_INVALID        | 19030021 | OCSP响应无效。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
-| ERR_OCSP_SIGNATURE_FAILURE       | 19030022 | OCSP签名验证失败。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| ERR_OCSP_SIGNATURE_FAILURE       | 19030022 | OCSP验签失败。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | ERR_OCSP_CERT_STATUS_UNKNOWN     | 19030023 | OCSP证书状态未知。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 | ERR_NETWORK_TIMEOUT              | 19030024 | 网络连接超时。 <br> **起始版本**：26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
 
@@ -285,7 +285,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 | authorityKeyIdentifier<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书颁发机构密钥。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | minPathLenConstraint<sup>12+</sup> | number | 否  | 是 |指定证书CA路径长度。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | extendedKeyUsage<sup>12+</sup> | Array\<string> | 否  | 是 |指定证书扩展用途。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| nameConstraints<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书的使用者名称。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| nameConstraints<sup>12+</sup> | Uint8Array | 否  | 是 |指定待匹配名称约束条目，与证书nameConstraints扩展中任一名称约束条目的类型与值进行匹配。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | certPolicy<sup>12+</sup> | Array\<string> | 否  | 是 |指定证书策略。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | privateKeyValid<sup>12+</sup> | string | 否  | 是 |指定证书私钥有效期。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | subjectKeyIdentifier<sup>12+</sup> | Uint8Array | 否  | 是 |指定证书主体公钥标识符（Subject Key Identifier扩展）。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -483,7 +483,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 | hostnames | Array\<string> | 否   | 是   | 主机名列表。验证证书的主体备用名（SAN）或通用名（CN）是否包含指定的主机名。最大数量：100，每个主机名最大长度：128。<br>用于HTTPS等场景。<br>只要匹配其中一个主机名即校验成功。 |
 | emailAddresses | Array\<string> | 否   | 是   | 邮箱地址列表。验证证书是否包含指定的邮箱地址。最大数量：1，邮箱地址最大长度：128。 |
 | keyUsage | Array\<[KeyUsageType](#keyusagetype12)> | 否   | 是   | 密钥用途列表。验证证书的密钥用途扩展是否包含指定的用途。最大数量：9。<br>证书必须包含所有指定的密钥用途才校验成功。 |
-| userId | Uint8Array | 否   | 是   | 用户ID。用于验证国密SM2证书时设置签名验证所需的用户标识符。最大长度：128。<br>国密证书场景最常用的值为`[0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38]`（对应ASCII字符串为"1234567812345678"，16字节）。<br>设置userId后不支持证书吊销检查。 |
+| userId | Uint8Array | 否   | 是   | 用户ID。用于验证国密SM2证书时设置验签所需的用户标识符。最大长度：128。<br>国密证书场景最常用的值为`[0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38]`（对应ASCII字符串为"1234567812345678"，16字节）。<br>设置userId后不支持证书吊销检查。 |
 | revokedParams | [X509CertRevokedParams](#x509certrevokedparams) | 否   | 是   | 证书吊销检查参数。用于检查证书是否被吊销。包含CRL列表、OCSP响应数据、是否允许在线检查等配置。 |
 
 ## CertValidationResult
@@ -872,7 +872,7 @@ createX509Cert(inStream : EncodingBlob, callback : AsyncCallback\<X509Cert>) : v
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed. |
 | 19030001 | Crypto operation error.      |
@@ -945,7 +945,7 @@ createX509Cert(inStream : EncodingBlob) : Promise\<X509Cert>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed. |
 | 19030001 | Crypto operation error.      |
@@ -1016,7 +1016,7 @@ verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | Crypto operation error.      |
 
 **示例：**
@@ -1105,7 +1105,7 @@ verify(key : cryptoFramework.PubKey) : Promise\<void>
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | Crypto operation error.      |
 
 **示例：**
@@ -1151,8 +1151,9 @@ cert.createX509Cert(encodingBlob).then(x509Cert => {
     }).catch((error: BusinessError) => {
       console.error(`verify failed, errCode: ${error.code}, errMsg: ${error.message}`);
     });
-  } catch (error) {
-    console.error(`getPublicKey failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getPublicKey failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }).catch((error: BusinessError) => {
   console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -1181,7 +1182,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.                                     |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | Crypto operation error.|
@@ -1255,7 +1256,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.                                     |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | Crypto operation error.|
@@ -1398,7 +1399,7 @@ checkValidityWithDate(date: string) : void
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.                                     |
 | 19030001 | Crypto operation error.|
 | 19030003 | The certificate has not taken effect.                                     |
@@ -1852,7 +1853,7 @@ getSubjectName(encodingType?: EncodingType) : DataBlob
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters.  Possible causes: <br>1. Incorrect parameter types;<br>2. Parameter verification failed. <br>适用版本：12+          |
+| 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Incorrect parameter types;<br>2. Parameter verification failed. <br>适用版本：12+          |
 | 19020001 | Memory malloc failed.                                     |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | Crypto operation error.|
@@ -2802,7 +2803,7 @@ getItem(itemType: CertItemType) : DataBlob
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -2884,7 +2885,7 @@ match(param: X509CertMatchParameters): boolean
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19030001 | Crypto operation error. |
 
@@ -3575,7 +3576,7 @@ createCertExtension(inStream : EncodingBlob, callback : AsyncCallback\<CertExten
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed. |
 | 19030001 | Crypto operation error.      |
@@ -3641,7 +3642,7 @@ createCertExtension(inStream : EncodingBlob) : Promise\<CertExtension>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed. |
 | 19030001 | Crypto operation error.      |
@@ -3777,7 +3778,7 @@ getOidList(valueType : ExtensionOidType) : DataArray
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -3852,7 +3853,7 @@ getEntry(valueType: ExtensionEntryType, oid : DataBlob) : DataBlob
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -4051,7 +4052,7 @@ createX509Crl(inStream : EncodingBlob, callback : AsyncCallback\<X509Crl>) : voi
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed. |
 
@@ -4124,7 +4125,7 @@ createX509Crl(inStream : EncodingBlob) : Promise\<X509Crl>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed. |
 
@@ -4189,7 +4190,7 @@ createX509CRL(inStream : EncodingBlob, callback : AsyncCallback\<X509CRL>) : voi
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed. |
 
@@ -4260,7 +4261,7 @@ createX509CRL(inStream : EncodingBlob) : Promise\<X509CRL>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed. |
 
@@ -4340,7 +4341,7 @@ isRevoked(cert : X509Cert) : boolean
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 
 **示例：**
 
@@ -4495,7 +4496,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -4570,7 +4571,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -4643,7 +4644,7 @@ verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | Crypto operation error. |
 
 **示例：**
@@ -4801,7 +4802,7 @@ verify(key : cryptoFramework.PubKey) : Promise\<void>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | Crypto operation error. |
 
 **示例：**
@@ -5239,7 +5240,7 @@ getRevokedCert(serialNumber : number) : X509CrlEntry
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -5320,7 +5321,7 @@ getRevokedCertWithCert(cert : X509Cert) : X509CrlEntry
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -5431,7 +5432,7 @@ getRevokedCerts(callback : AsyncCallback<Array\<X509CrlEntry>>) : void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -5505,7 +5506,7 @@ getRevokedCerts() : Promise<Array\<X509CrlEntry>>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -5959,7 +5960,7 @@ isRevoked(cert : X509Cert) : boolean
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 
 **示例：**
 
@@ -6110,7 +6111,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -6183,7 +6184,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -6254,7 +6255,7 @@ verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | Crypto operation error. |
 
 **示例：**
@@ -6410,7 +6411,7 @@ verify(key : cryptoFramework.PubKey) : Promise\<void>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19030001 | Crypto operation error. |
 
 **示例：**
@@ -6925,7 +6926,7 @@ getRevokedCert(serialNumber : bigint) : X509CRLEntry
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -7004,7 +7005,7 @@ getRevokedCertWithCert(cert : X509Cert) : X509CRLEntry
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -7113,7 +7114,7 @@ getRevokedCerts(callback : AsyncCallback<Array\<X509CRLEntry>>) : void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -7185,7 +7186,7 @@ getRevokedCerts() : Promise<Array\<X509CRLEntry>>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -7702,7 +7703,7 @@ match(param: X509CRLMatchParameters): boolean
 
 | 错误码ID | 错误信息       |
 | -------- | -------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.  |
 | 19030001 | Crypto operation error. |
 
@@ -8189,7 +8190,7 @@ createCertChainValidator(algorithm :string) : CertChainValidator
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | This operation is not supported. |
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
@@ -8248,7 +8249,7 @@ validate(certChain : CertChainData, callback : AsyncCallback\<void>) : void
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.                                     |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | Crypto operation error.                           |
@@ -8382,7 +8383,7 @@ validate(certChain : CertChainData) : Promise\<void>
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.                                     |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | Crypto operation error.                           |
@@ -8495,7 +8496,7 @@ validateCert(cert: X509Cert, params: CertValidationParams): Promise&lt;CertValid
 2. 颁发者搜索顺序：系统首先从信任锚源中搜索颁发者。如果无法找到颁发者，系统将在不受信任的证书列表（untrustedCerts）中搜索。在线下载的中间CA证书即为不受信任的证书。
 3. 信任锚锁定：一旦在信任锚源中找到颁发者，后续的查找过程就不会回溯到不受信任的证书，即后续的证书必须来自信任锚源。
 4. 构建完成条件：如果partialChain为false（默认值），则仅当找到根证书（来自签名证书）时，构建才算完成。如果partialChain为true，则当在信任锚源中首次找到颁发者时，构建即完成。
-5. 后续验证：证书链构建完成后，执行其他验证操作，如证书签名验证和证书吊销检查。
+5. 后续验证：证书链构建完成后，执行其他验证操作，如证书验签和证书吊销检查。
 
 **起始版本**：26.0.0
 
@@ -8699,7 +8700,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -8782,7 +8783,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -9086,7 +9087,7 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -9167,7 +9168,7 @@ getEncoded() : Promise\<EncodingBlob>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
 | 19030001 | Crypto operation error. |
@@ -10063,7 +10064,7 @@ createCertCRLCollection(certs: Array\<X509Cert>, crls?: Array\<X509CRL>): CertCR
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 
 **示例：**
@@ -10179,7 +10180,7 @@ selectCerts(param: X509CertMatchParameters): Promise\<Array\<X509Cert>>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -10271,7 +10272,7 @@ selectCerts(param: X509CertMatchParameters, callback: AsyncCallback\<Array\<X509
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -10368,7 +10369,7 @@ selectCRLs(param: X509CRLMatchParameters): Promise\<Array\<X509CRL>>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -10494,7 +10495,7 @@ selectCRLs(param: X509CRLMatchParameters, callback: AsyncCallback\<Array\<X509CR
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -10625,7 +10626,7 @@ createX509CertChain(inStream: EncodingBlob): Promise\<X509CertChain>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19030001 | Crypto operation error. |
 
@@ -10742,7 +10743,7 @@ createX509CertChain(inStream: EncodingBlob, callback: AsyncCallback\<X509CertCha
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19030001 | Crypto operation error. |
 
@@ -10859,7 +10860,7 @@ createX509CertChain(certs: Array\<X509Cert>): X509CertChain
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19030001 | Crypto operation error. |
 
@@ -10949,7 +10950,7 @@ buildX509CertChain(param: CertChainBuildParameters): Promise\<CertChainBuildResu
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.                                     |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | Crypto operation error.                           |
@@ -11090,7 +11091,7 @@ parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.                                     |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | Crypto operation error.                           |
@@ -11100,6 +11101,7 @@ parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function doTestParsePkcs12() {
   try {
@@ -11263,12 +11265,13 @@ function doTestParsePkcs12() {
       needsOtherCerts: false
     };
     let p12: cert.Pkcs12Data = cert.parsePkcs12(p12Cert, conf);
-    console.info('parsePKCS12 result: success.');
+    console.info('parsePkcs12 result: success.');
     if (p12.privateKey) {
       console.info('privateKey:' + p12.privateKey.toString());
     }
   } catch (error) {
-    console.error(`parsePKCS12 failed: errCode: ${error.code}, errMsg: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`parsePkcs12 failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -11312,6 +11315,7 @@ parsePkcs12(data: Uint8Array, password: string): Promise\<Pkcs12Data>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function doTestParsePkcs12() {
   try {
@@ -11468,7 +11472,7 @@ async function doTestParsePkcs12() {
         0x7e, 0x02, 0x02, 0x08, 0x00]);
 
     let p12: cert.Pkcs12Data = await cert.parsePkcs12(p12Cert, '123456');
-    console.info('parsePKCS12 result: success.');
+    console.info('parsePkcs12 result: success.');
     if (p12.privateKey) {
       console.info('privateKey:' + p12.privateKey.toString());
     }
@@ -11484,7 +11488,8 @@ async function doTestParsePkcs12() {
       console.info('otherCerts is empty or not an array.');
     }
   } catch (err) {
-    console.error(`parsePKCS12 failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`parsePkcs12 failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -11527,6 +11532,7 @@ createPkcs12(data: Pkcs12Data, config: Pkcs12CreationConfig): Promise\<Uint8Arra
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKey = '-----BEGIN PRIVATE KEY-----\n' +
   'MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC9kBV6Cqd3vSi5\n' +
@@ -11622,7 +11628,8 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createX509Cert failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509Cert;
 }
@@ -11662,7 +11669,8 @@ async function doTestCreatePkcs12() {
     let p12 = await cert.createPkcs12(data, config);
     console.info('createPkcs12 result: success, p12 = ' + p12);
   } catch (err) {
-    console.error(`createPkcs12 failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createPkcs12 failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -11705,6 +11713,7 @@ createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8Array
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKey = '-----BEGIN PRIVATE KEY-----\n' +
   'MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC9kBV6Cqd3vSi5\n' +
@@ -11800,7 +11809,8 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`createX509Cert failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
   return x509Cert;
 }
@@ -11840,7 +11850,8 @@ async function doTestCreatePkcs12Sync() {
     let p12 = cert.createPkcs12Sync(data, config);
     console.info('createPkcs12Sync result: success, p12 = ' + p12);
   } catch (err) {
-    console.error(`createPkcs12Sync failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`createPkcs12Sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -11874,7 +11885,7 @@ createTrustAnchorsWithKeyStore(keystore: Uint8Array, pwd: string): Promise<Array
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.                                     |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 | 19030001 | Crypto operation error.                           |
@@ -11998,8 +12009,9 @@ try {
   }).catch((err: BusinessError) => {
     console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${err.code}, errMsg: ${err.message}`);
   });
-} catch (error) {
-  console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${error.code}, errMsg: ${error.message}`);
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 
 ```
@@ -12030,7 +12042,7 @@ getCertList(): Array\<X509Cert>
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19030001 | Crypto operation error. |
 
@@ -12154,7 +12166,7 @@ validate(param: CertChainValidationParameters): Promise\<CertChainValidationResu
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error.           |
@@ -12304,7 +12316,7 @@ validate(param: CertChainValidationParameters, callback: AsyncCallback\<CertChai
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed.           |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error.           |
@@ -12707,7 +12719,7 @@ generateCsr(keyInfo: PrivateKeyInfo, config: CsrGenerationConfig): string | Uint
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |
@@ -12806,7 +12818,7 @@ createX500DistinguishedName(nameStr: string): Promise\<X500DistinguishedName>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |
@@ -12877,7 +12889,7 @@ createX500DistinguishedName(nameDer: Uint8Array): Promise\<X500DistinguishedName
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync/Async] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |
@@ -12998,7 +13010,7 @@ getName(type: string): Array\<string>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |
@@ -13225,7 +13237,7 @@ createCmsGenerator(contentType: CmsContentType): CmsGenerator
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |
@@ -13295,7 +13307,7 @@ function testCreateCmsGenerator() {
 
 ### addSigner<sup>18+</sup>
 
-addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void;
+addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void
 
 用于为内容类型为SIGNED_DATA的CMS添加签名者信息。
   
@@ -13321,7 +13333,7 @@ addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): voi
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401      | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
+| 401      | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |
@@ -13437,7 +13449,7 @@ addCert(cert: X509Cert): void
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401      | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
+| 401      | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |
@@ -13532,6 +13544,7 @@ setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): voi
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetRecipientEncryptionAlgorithm() {
   try {
@@ -13542,7 +13555,8 @@ function testSetRecipientEncryptionAlgorithm() {
     cmsGenerator.setRecipientEncryptionAlgorithm(algorithm);
     console.info(`setRecipientEncryptionAlgorithm result: success.`);
   } catch (err) {
-    console.error(`testSetRecipientEncryptionAlgorithm failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetRecipientEncryptionAlgorithm failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -13586,6 +13600,7 @@ addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise\<void>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let eccCertData = '-----BEGIN CERTIFICATE-----\n' +
   'MIICOjCCAd+gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMHkxCzAJBgNVBAYTAmNo\n' +
@@ -13660,7 +13675,8 @@ async function testAddRecipientInfo() {
     await cmsGenerator.addRecipientInfo(recipientInfo);
     console.info(`addRecipientInfo result: success.`);
   } catch (err) {
-    console.error(`testAddRecipientInfo failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`testAddRecipientInfo failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -13694,7 +13710,7 @@ doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | s
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401      | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
+| 401      | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |
@@ -13827,7 +13843,7 @@ doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | strin
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 401      | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
+| 401      | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 | 19030001 | Crypto operation error. |
@@ -13960,6 +13976,7 @@ getEncryptedContentData(): Promise\<Uint8Array>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let eccCertData = '-----BEGIN CERTIFICATE-----\n' +
   'MIICOjCCAd+gAwIBAgIGAXKnJjrAMAoGCCqGSM49BAMCMHkxCzAJBgNVBAYTAmNo\n' +
@@ -14048,7 +14065,8 @@ async function testGetEncryptedContentData() {
     let data = await cmsGenerator.getEncryptedContentData();
     console.info(`getEncryptedContentData result: success, data = %s`, data);
   } catch (err) {
-    console.error(`testGetEncryptedContentData failed: errCode: ${err.code}, errMsg: ${err.message}`);
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetEncryptedContentData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14082,6 +14100,7 @@ createCmsParser(): CmsParser
 **示例：**
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14184,8 +14203,9 @@ async function testCmsVerifyTest() {
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
     console.info('verifySignedData result: success.');
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14241,6 +14261,7 @@ setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14345,8 +14366,9 @@ async function testCmsVerifyTest() {
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
     console.info('verifySignedData result: success.');
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14381,6 +14403,7 @@ getContentType(): CmsContentType
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14487,8 +14510,9 @@ async function testCmsVerifyTest() {
     console.info('contentType = ' + contentType);
     await verify.verifySignedData(config);
     console.info('verifySignedData result: success.');
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14533,6 +14557,7 @@ verifySignedData(config: CmsVerificationConfig): Promise\<void>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14636,8 +14661,9 @@ async function testCmsVerifyTest() {
     await verify.setRawData(signData, cert.CmsFormat.PEM);
     await verify.verifySignedData(config);
     console.info('verifySignedData result: success.');
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14672,6 +14698,7 @@ getContentData(): Promise\<Uint8Array>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14777,8 +14804,9 @@ async function testCmsVerifyTest() {
     console.info('verifySignedData result: success.');
     let contentData = await verify.getContentData();
     console.info('getContentData result: success, contentData = ' + contentData);
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14820,6 +14848,7 @@ getCerts(type: CmsCertType): Promise<Array\<X509Cert>>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUB_ENTRY_CERT: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -14927,8 +14956,9 @@ async function testCmsVerifyTest() {
     let signerCerts: cert.X509Cert[] = await verify.getCerts(cert.CmsCertType.SIGNER_CERTS);
     console.info('getCerts result: success, signerCerts.length = ' + signerCerts.length);
     await verify.getContentData();
-  } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifySignedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```
@@ -14970,6 +15000,7 @@ decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise\<Uint8Array>
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUBKEY: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -15044,8 +15075,9 @@ async function testCmsDecryptTest() {
     let decPlainText: Uint8Array = await cmsDecrypt.decryptEnvelopedData(config);
     console.info('[XTS] Decrypt result: success, decPlainText = ' + decPlainText);
     console.info('decryptEnvelopedData result: success.');
-  } catch (error) {
-    console.error(`decryptEnvelopedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`decryptEnvelopedData failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
 ```

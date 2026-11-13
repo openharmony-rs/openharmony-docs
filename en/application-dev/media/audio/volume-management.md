@@ -5,7 +5,7 @@
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9df5810babc63c57eb4ff32976085f00bae048de translatedAt=2026-09-18T04:20:31.441Z pushedAt=2026-09-18T10:35:33.258Z -->
+<!-- md-trans-meta sourceCommit=a5c4025f0a49c38ca3b820343623fb4e2630f524 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 This module provides capabilities for managing playback volume, covering system volume, application volume, and audio stream volume.
 
@@ -202,7 +202,7 @@ let appVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
 
-let uid: number = 20010041; // Application ID.
+let uid: number = 20010041; // Application UID.
 let audioManager = audio.getAudioManager();
 let audioVolumeManager = audioManager.getVolumeManager();
 

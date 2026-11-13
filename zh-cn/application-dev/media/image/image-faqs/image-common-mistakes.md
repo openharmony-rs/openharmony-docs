@@ -233,9 +233,7 @@ image.getComponent()是异步操作，而image.release()也是异步操作，其
 
 ``` TypeScript
 import { image } from '@kit.ImageKit';
-import { camera } from '@kit.CameraKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { abilityAccessCtrl, common } from '@kit.AbilityKit';
 
 /**
  * UAF写法：getComponent异步 + 立即release。
@@ -248,13 +246,13 @@ function onImageArrivalUAF(receiver: image.ImageReceiver): void {
     const cur = frame;
     receiver.readNextImage((err, img: image.Image) => {
       if (err || !img) {
-        console.info(`[UAF] #${cur} readNextImage err: ${err?.code}`);
+        console.error(`[UAF] #${cur} readNextImage err: ${err?.code}`);
         return;
       }
       img.getComponent(image.ComponentType.JPEG).then(() => {
         console.info(`[UAF] #${cur} getComponent done`);
       }).catch((e: BusinessError) => {
-        console.info(`[UAF] #${cur} getComponent err: ${e.code}`);
+        console.error(`[UAF] #${cur} getComponent err: ${e.code}`);
       });
       // BUG：不等待getComponent完成就release → UAF。
       img.release().catch(() => {});
@@ -267,9 +265,7 @@ function onImageArrivalUAF(receiver: image.ImageReceiver): void {
 
 ``` TypeScript
 import { image } from '@kit.ImageKit';
-import { camera } from '@kit.CameraKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { abilityAccessCtrl, common } from '@kit.AbilityKit';
 
 /**
  * 安全写法：getComponent完成后再release。
@@ -282,7 +278,7 @@ function onImageArrivalSafe(receiver: image.ImageReceiver): void {
     const cur = frame;
     receiver.readNextImage((err, img: image.Image) => {
       if (err || !img) {
-        console.info(`[Safe] #${cur} readNextImage err: ${err?.code}`);
+        console.error(`[Safe] #${cur} readNextImage err: ${err?.code}`);
         return;
       }
       // FIX：getComponent完成后再release。
@@ -292,7 +288,7 @@ function onImageArrivalSafe(receiver: image.ImageReceiver): void {
       }).then(() => {
         console.info(`[Safe] #${cur} released`);
       }).catch((e: BusinessError) => {
-        console.info(`[Safe] #${cur} err: ${e.code}`);
+        console.error(`[Safe] #${cur} err: ${e.code}`);
         img.release().catch(() => {});
       });
     });

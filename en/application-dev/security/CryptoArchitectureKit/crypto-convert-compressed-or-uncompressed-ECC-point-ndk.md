@@ -6,16 +6,20 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:26:06.542Z pushedAt=2026-08-10T07:27:34.572Z -->
+<!-- md-trans-meta sourceCommit=99672258e158c110c5ee74a166a44dafda8d8dee translatedAt=2026-10-30T03:35:49.206Z pushedAt=2026-10-30T06:58:59.450Z nl=1 -->
 
 Compressed or uncompressed point data can be converted into a `Point` object for key object generation. A `Point` object can also be converted into compressed or uncompressed point data.<br>
 For ECC algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc).<br>
 The format of the point data to obtain can be specified by passing the string parameter `format`. To obtain the compressed format, set `format` to `"COMPRESSED"`; to obtain the uncompressed format, set `format` to `"UNCOMPRESSED"`.
 
+## Linking Related Dynamic Libraries in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
+
 ## Converting Uncompressed Point Data into Compressed Point Data
 
 1. Pass the uncompressed ECC point data of the uint8_t type, and call [OH_CryptoEcPoint_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoecpoint_create) to construct a [OH_CryptoEcPoint](../../reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoecpoint.md) object for generating point data.
-
 2. Call [OH_CryptoEcPoint_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoecpoint_encode) to obtain the compressed point data.
 
 <!-- @[convert_ecc_uncompressed_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/cpp/types/project/compressedPointData.cpp) -->
@@ -48,10 +52,10 @@ OH_Crypto_ErrCode doTestEccPointUncompressedToCompressed()
 }
 ```
 
+
 ## Converting Compressed Point Data into a Key Object
 
 1. Pass the compressed ECC point data of the uint8_t type, and call [OH_CryptoEcPoint_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoecpoint_create) to construct a [OH_CryptoEcPoint](../../reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoecpoint.md) object for generating point data.
-
 2. Call [OH_CryptoEcPoint_Encode](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoecpoint_encode) to obtain the uncompressed point data.
 
 <!-- @[specify_ecc_uncompressed_point_get_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/ECCCompressPublicKeyFormatConversion/entry/src/main/cpp/types/project/getKeyObject.cpp) -->
@@ -82,5 +86,3 @@ OH_Crypto_ErrCode doTestEccPointCompressedToPoint()
     return ret;
 }
 ```
-
-<!--no_check-->

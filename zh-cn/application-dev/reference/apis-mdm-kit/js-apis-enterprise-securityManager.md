@@ -509,9 +509,9 @@ setScreenLockDisabledForAccount(admin: Want, disable: boolean): void
 >
 > 3. 设备上存在密码时，设置禁用滑动解锁会失败，抛出9201021错误码。
 >
-> 4.下发禁用滑动解锁的策略后，用户输入了设备密码，此时密码会生效，设备需要验证密码后才能进入桌面，之前下发的策略失效。
+> 4. 下发禁用滑动解锁的策略后，用户输入了设备密码，此时密码会生效，设备需要验证密码后才能进入桌面，之前下发的策略失效。
 >
-> 5.在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+> 5. 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
 
 **起始版本：** 26.0.0
 
@@ -969,9 +969,9 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 >
 > 1. 本接口适用于企业场景下为三方应用设置水印，降低企业信息泄露风险。不建议为系统应用设置水印（如：桌面应用），可能存在未知异常。
 >
-> 2.水印图片会以平铺方式重复覆盖整个应用界面。
+> 2. 水印图片会以平铺方式重复覆盖整个应用界面。
 >
-> 3.在多个MDM应用场景下，同一个用户下的同一个应用的水印遵循[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)规则。不同用户、不同应用的水印遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+> 3. 在多个MDM应用场景下，同一个用户下的同一个应用的水印遵循[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)规则。不同用户、不同应用的水印遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -1079,11 +1079,17 @@ try {
 
 setPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance, permissions: Array\<string>, managedState: PermissionManagedState): void
 
-设置指定应用的[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)的管理策略。适用于企业应用批量部署场景，如静默授权减少权限弹窗干扰、统一企业应用权限管理策略，提升员工使用体验和管理效率。
+设置指定应用的[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)和[manual_settings权限](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)的管理策略。适用于企业应用批量部署场景，如静默授权减少权限弹窗干扰、统一企业应用权限管理策略，提升员工使用体验和管理效率。
 
 > **说明：**
 >
+> 在接入、使用本能力前，您需要在隐私政策中向用户告知收集的个人信息类型、使用目的及隐私政策链接等信息，并获取用户的同意或取得其他合法性基础。
+>
 > 在多个MDM应用场景下，同一个应用实例的同一个权限[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)，不同应用实例不同权限[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+>
+> 从API版本26.1.0开始，支持管理[manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限。
+>
+> 未设置管理策略（managedState为DEFAULT）时，权限由用户按默认方式管理：user_grant权限由用户在权限弹窗中授权，manual_settings权限由用户在系统设置应用中授权。策略设置后，对应权限的授权状态将被固定为策略指定的状态：设置为GRANTED表示权限被静默授予，设置为DENIED表示权限被静默拒绝。权限被管控期间，用户无法通过权限弹窗或系统设置界面修改该权限的授权状态，应用可通过权限校验接口（如[checkAccessTokenSync](../apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstokensync10)）感知权限的授权结果。将managedState设置为DEFAULT可取消管控，取消管控后权限恢复为用户可管理的状态。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
 
@@ -1097,7 +1103,7 @@ setPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance,
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
 | applicationInstance    | [ApplicationInstance](#applicationinstance20)  | 是 | 指定应用实例。 |
-| permissions | Array&lt;string&gt;  | 是 | 需要管理的权限名称列表，仅支持[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)。权限名称列表以[应用权限组](../../security/AccessToken/app-permission-group-list.md)为单位。列表中应包含应用在[module.json5](../../quick-start/module-configuration-file.md)中声明的同一权限组内的所有权限。例如：应用如果在module.json5中声明需要ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR权限，则传入的权限名称列表必须同时包含ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR两个权限。 |
+| permissions | Array&lt;string&gt;  | 是 | 需要管理的权限名称列表，支持[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)和[manual_settings权限](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)。权限名称列表以[应用权限组](../../security/AccessToken/app-permission-group-list.md)为单位。列表中应包含应用在[module.json5](../../quick-start/module-configuration-file.md)中声明的同一权限组内的所有权限。例如：应用如果在module.json5中声明需要ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR权限，则传入的权限名称列表必须同时包含ohos.permission.READ_CALENDAR和ohos.permission.WRITE_CALENDAR两个权限。 |
 | managedState | [PermissionManagedState](#permissionmanagedstate20) | 是 | 应用权限的管理策略。 |
 
 **错误码**：
@@ -1143,7 +1149,15 @@ try {
 
 getPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance, permission: string): PermissionManagedState
 
-获取指定应用的指定[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)的管理策略。
+获取指定应用的指定[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)和[manual_settings权限](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)的管理策略。
+
+> **说明：**
+>
+> 在接入、使用本能力前，您需要在隐私政策中向用户告知收集的个人信息类型、使用目的及隐私政策链接等信息，并获取用户的同意或取得其他合法性基础。
+>
+> 在多个MDM应用场景下，同一个应用实例的同一个权限[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)，不同应用实例不同权限[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+>
+> 从API版本26.1.0开始，支持获取[manual_settings](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)类型的权限的管理策略。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_USER_GRANT_PERMISSION
 
@@ -1157,7 +1171,7 @@ getPermissionManagedState(admin: Want, applicationInstance: ApplicationInstance,
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | 是    | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。      |
 | applicationInstance  | [ApplicationInstance](#applicationinstance20)  | 是 | 指定应用实例。 |
-| permission | string | 是 | 需要获取管理策略的权限名称，仅支持user_grant权限。 |
+| permission | string | 是 | 需要获取管理策略的权限名称，支持[user_grant权限](../../security/AccessToken/permissions-for-all-user.md)和[manual_settings权限](../../security/AccessToken/app-permission-mgmt-overview.md#manual_settings手动设置授权)。 |
 
 **返回值：**
 
@@ -1388,7 +1402,7 @@ try {
 
 installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: number, accountId: number): void
 
-安装企业应用重签名证书。安装成功后，企业可使用该证书对应用进行重签名。
+安装企业应用重签名证书。安装成功后，企业可使用该证书对应用进行重签名。<!--RP5--><!--RP5End-->
 
 同一用户下最多可下发10本不同证书。证书别名作为证书的唯一标识，不支持重复下发相同别名的证书。如需更新同一别名的证书，需先调用[uninstallEnterpriseReSignatureCertificate](#securitymanageruninstallenterpriseresignaturecertificate24)进行卸载。
 
@@ -1535,9 +1549,9 @@ setScreenWatermarkImage(admin: Want, pixelMap: image.PixelMap): void
 >
 > 1. 屏幕水印策略会将设置的图片平铺覆盖整个屏幕，建议使用带透明度的图片以确保设备屏幕内容可见。
 >
-> 2.当水印图片尺寸小于屏幕时，图片会被拉伸；当水印图片尺寸大于屏幕时，图片会被压缩。该实现方式与应用级别水印的重复平铺方式不同。
+> 2. 当水印图片尺寸小于屏幕时，图片会被拉伸；当水印图片尺寸大于屏幕时，图片会被压缩。该实现方式与应用级别水印的重复平铺方式不同。
 >
-> 3.在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+> 3. 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
 
 **起始版本：** 26.0.0
 
@@ -1657,9 +1671,9 @@ setDisallowedPermission(admin: Want, permission: string, disallow: boolean, acco
 >
 > 2. 单个用户下最多可以禁用200个权限。
 >
-> 3.权限禁用后，仅影响应用（系统应用和普通应用）使用对应的权限，不影响系统SA使用对应的权限。
+> 3. 权限禁用后，仅影响应用（系统应用和普通应用）使用对应的权限，不影响系统SA使用对应的权限。
 >
-> 4.在多个MDM应用场景下，针对同一个权限设置[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)，不同权限设置[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+> 4. 在多个MDM应用场景下，针对同一个权限设置[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)，不同权限设置[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **起始版本：** 26.0.0
 
@@ -1786,11 +1800,11 @@ addAllowedPermissionBundle(admin: Want, permission: string, applicationInstance:
 >
 > 3. 当指定权限通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口取消禁用后，该权限对应的权限使用例外名单会同步清理。
 >
-> 4.所有用户下单个权限最多可以设置1024个应用到权限使用例外名单。
+> 4. 所有用户下单个权限最多可以设置1024个应用到权限使用例外名单。
 >
-> 5.系统应用和普通应用都可以添加。
+> 5. 系统应用和普通应用都可以添加。
 >
-> 6.在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+> 6. 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.0
 
@@ -2170,11 +2184,11 @@ try {
 
 setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void
 
-设置设备安全级别策略。适用于企业统一管控终端安全基线的场景，如要求设备仅保持在出厂默认安全级别。
+设置设备安全等级策略。适用于企业统一管控终端安全基线的场景，如要求设备仅保持在出厂默认安全等级。调用本接口前，可通过[common.isFeatureSupported](./js-apis-enterprise-common.md#commonisfeaturesupported)接口（入参为common.ManagedFeature.DEVICE_SECURITY_LEVEL）查询设备是否支持设备安全等级特性。
 
 > **说明：**
 >
-> 1. 设备安全级别是在PC/2in1设备上提供的分级安全机制，按照对系统安全性的影响程度划分为不同等级，系统安全性由高到低依次为DSL0、DSL1、DSL2。
+> 1. 设备安全等级是在PC/2in1设备上提供的分级安全机制，按照对系统安全性的影响程度划分为不同等级，系统安全性由高到低依次为DSL0、DSL1、DSL2。
 >
 > 2. DSL0：出厂默认安全，设备保持出厂时的默认安全配置，未对系统安全能力做降级，安全性最高。
 >
@@ -2182,7 +2196,7 @@ setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void
 >
 > 4. DSL2：宽松安全性，在DSL1的基础上进一步放宽系统安全管控，安全性最低。
 >
-> 5. 本接口用于设置用户可选择的设备安全级别范围，各策略对应的可选等级请参见[DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy)。
+> 5. 本接口用于设置用户可选择的设备安全等级范围，各策略对应的可选等级请参见[DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy)。
 
 **起始版本：** 26.0.1
 
@@ -2198,7 +2212,7 @@ setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| level | [DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy) | 是 | 设备安全级别策略。 |
+| level | [DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy) | 是 | 设备安全等级策略。 |
 
 **错误码：**
 
@@ -2209,19 +2223,26 @@ setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void
 | 9200001 | The application is not an administrator application of the device. |
 | 9200002 | The administrator application does not have permission to manage the device. |
 | 9200012 | Parameter verification failed. |
+| 9200016 | Service timeout. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 
 **示例：**
 
 ```ts
-import { securityManager } from '@kit.MDMKit';
+import { common, securityManager } from '@kit.MDMKit';
 
-try {
+// 调用本接口前，先查询设备是否支持设备安全等级特性
+let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.DEVICE_SECURITY_LEVEL);
+if (isSupported) {
+  try {
     securityManager.setDeviceSecurityLevelPolicy(securityManager.DeviceSecurityLevelPolicy.ALLOW_BALANCED);
     console.info('setDeviceSecurityLevelPolicy success');
-} catch (err) {
+  } catch (err) {
     console.error('setDeviceSecurityLevelPolicy fail: ' + JSON.stringify(err));
+  }
+} else {
+  console.info('The device security level feature is not supported.');
 }
 ```
 
@@ -2229,11 +2250,11 @@ try {
 
 getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy
 
-获取设备安全级别策略。
+获取设备安全等级策略。
 
 > **说明：**
 >
-> 1. 本接口返回的设备安全级别策略为用户可选择的设备安全级别范围，分级机制及各策略对应的可选等级请参见[setDeviceSecurityLevelPolicy](#securitymanagersetdevicesecuritylevelpolicy)。
+> 1. 本接口返回的设备安全等级策略为用户可选择的设备安全等级范围，分级机制及各策略对应的可选等级请参见[setDeviceSecurityLevelPolicy](#securitymanagersetdevicesecuritylevelpolicy)。
 >
 > 2. 设备未设置过该策略时，返回默认值DEFAULT_ENFORCED。
 
@@ -2249,7 +2270,7 @@ getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy) | 设备安全级别策略。 |
+| [DeviceSecurityLevelPolicy](#devicesecuritylevelpolicy) | 设备安全等级策略。 |
 
 **错误码：**
 
@@ -2259,6 +2280,7 @@ getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy
 | -------- | -------- |
 | 9200001 | The application is not an administrator application of the device. |
 | 9200002 | The administrator application does not have permission to manage the device. |
+| 9200016 | Service timeout. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**
@@ -2267,10 +2289,569 @@ getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy
 import { securityManager } from '@kit.MDMKit';
 
 try {
-    let policy = securityManager.getDeviceSecurityLevelPolicy();
-    console.info('getDeviceSecurityLevelPolicy policy: ' + policy);
+  let policy = securityManager.getDeviceSecurityLevelPolicy();
+  console.info('getDeviceSecurityLevelPolicy policy: ' + policy);
 } catch (err) {
-    console.error('getDeviceSecurityLevelPolicy fail: ' + JSON.stringify(err));
+  console.error('getDeviceSecurityLevelPolicy fail: ' + JSON.stringify(err));
+}
+```
+
+## securityManager.openSession
+
+openSession(accountId: number): Promise&lt;Uint8Array&gt;
+
+打开用户身份认证凭据变更会话，获取挑战值（challenge，用于后续身份认证的防重放校验）。
+
+> **说明：**
+>
+> 系统会话是唯一的，多次调用openSession开启会话，只有最后一次开启的会话生效，之前的会话会被自动关闭。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                                                     |
+| --------- | ------------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------- |
+| accountId | number                                                  | 是   | 操作系统账户ID。取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
+
+**返回值：**
+
+| 类型                   | 说明                                   |
+| ---------------------- | -------------------------------------- |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回挑战值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                       |
+| -------- | ------------------------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device.             |
+| 9200002  | The administrator application does not have permission to manage the device.   |
+| 9200012  | Parameter verification failed.                                                 |
+| 9200016  | Service timeout.                                                               |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 开发者需替换为实际的账户ID
+let accountId: number = 100;
+securityManager.openSession(accountId).then((challenge: Uint8Array) => {
+  console.info(`Succeeded in opening session, challenge: ${JSON.stringify(challenge)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to open session. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## securityManager.closeSession
+
+closeSession(accountId: number): void
+
+关闭用户身份认证凭据变更会话。
+
+> **说明：**
+>
+> 系统会话是唯一的，同一时刻只有一个有效会话。会话在以下情况下会被关闭：
+>
+> 1. 主动调用closeSession关闭。
+>
+> 2. 再次调用openSession时，旧会话自动关闭。
+>
+> 3. 会话超期（默认10分钟）自动关闭。
+>
+> 会话关闭后，该会话对应的挑战值和authToken均失效，需重新获取。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                                                     |
+| --------- | ------------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------- |
+| accountId | number                                                  | 是   | 操作系统账户ID。取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                       |
+| -------- | ------------------------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device.             |
+| 9200002  | The administrator application does not have permission to manage the device.   |
+| 9200012  | Parameter verification failed.                                                 |
+| 9200016  | Service timeout.                                                               |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+let accountId: number = 100;
+try {
+  securityManager.closeSession(accountId);
+  console.info('Succeeded in closing session.');
+} catch(err) {
+  console.error(`Failed to close session. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.addUserExtendCredential
+
+addUserExtendCredential(info: AddCredentialInfo, accountId: number): Promise&lt;Uint8Array&gt;
+
+为指定账户添加三方自定义身份认证凭据，传入认证插件信息和认证令牌（可选），并获取凭据ID。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                                                     |
+| --------- | ------------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------- |
+| info      | [AddCredentialInfo](#addcredentialinfo)                 | 是   | 指示添加凭据的信息。                                                                     |
+| accountId | number                                                  | 是   | 操作系统账户ID。取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
+
+**返回值：**
+
+| 类型                   | 说明                                   |
+| ---------------------- | -------------------------------------- |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回凭据ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                       |
+| -------- | ------------------------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device.             |
+| 9200002  | The administrator application does not have permission to manage the device.   |
+| 9200012  | Parameter verification failed.                                                 |
+| 9200016  | Service timeout.                                                               |
+| 9201052  | USB key session time out.                                                |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: number = 100;
+let info: securityManager.AddCredentialInfo = {
+  pluginInfo: 'com.example.ukey_plugin'
+};
+securityManager.addUserExtendCredential(info, accountId).then((credentialId: Uint8Array) => {
+  console.info(`Succeeded in adding credential, credentialId: ${JSON.stringify(credentialId)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to add credential. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## securityManager.removeUserExtendCredential
+
+removeUserExtendCredential(info: RemoveCredentialInfo, accountId: number): void
+
+根据凭据ID删除三方自定义身份认证凭据，传入凭据ID和认证令牌（可选）。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                                                     |
+| --------- | ------------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------- |
+| info   | [RemoveCredentialInfo](#removecredentialinfo)           | 是   | 指示删除凭据的信息。                                                                     |
+| accountId | number                                                  | 是   | 操作系统账户ID。取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                       |
+| -------- | ------------------------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device.             |
+| 9200002  | The administrator application does not have permission to manage the device.   |
+| 9200012  | Parameter verification failed.                                                 |
+| 9200016  | Service timeout.                                                               |
+| 9201052  | USB key session time out.                                                |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+let accountId: number = 100;
+let credentialId: Uint8Array = new Uint8Array([1, 2, 3, 4]);
+let info: securityManager.RemoveCredentialInfo = {
+  credentialId: credentialId
+};
+try {
+  securityManager.removeUserExtendCredential(info, accountId);
+  console.info('Succeeded in removing credential.');
+} catch(err) {
+  console.error(`Failed to remove credential. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.getUserExtendCredential
+
+getUserExtendCredential(accountId: number): Promise&lt;UserExtCredentialInfo[]&gt;
+
+获取指定账户的三方自定义身份认证凭据信息。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                                                     |
+| --------- | ------------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------- |
+| accountId | number                                                  | 是   | 操作系统账户ID。取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
+
+**返回值：**
+
+| 类型                              | 说明                                       |
+| --------------------------------- | ------------------------------------------ |
+| Promise&lt;[UserExtCredentialInfo](#userextcredentialinfo)[]&gt; | Promise对象，返回三方自定义身份认证凭据信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                       |
+| -------- | ------------------------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device.             |
+| 9200002  | The administrator application does not have permission to manage the device.   |
+| 9200012  | Parameter verification failed.                                                 |
+| 9200016  | Service timeout.                                                               |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let accountId: number = 100;
+securityManager.getUserExtendCredential(accountId).then((credentials: securityManager.UserExtCredentialInfo[]) => {
+  console.info(`Succeeded in getting credentials: ${JSON.stringify(credentials)}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get credentials. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## securityManager.setUnlockPolicy
+
+setUnlockPolicy(policy: UnlockPolicy, accountId: number): void
+
+设置指定账户的设备解锁策略。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                                                     |
+| --------- | ------------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------- |
+| policy    | [UnlockPolicy](#unlockpolicy)                           | 是   | 指示设备解锁策略。                                                                       |
+| accountId | number                                                  | 是   | 操作系统账户ID。取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                       |
+| -------- | ------------------------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device.             |
+| 9200002  | The administrator application does not have permission to manage the device.   |
+| 9200012  | Parameter verification failed.                                                 |
+| 9200016  | Service timeout.                                                               |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+let accountId: number = 100;
+try {
+  securityManager.setUnlockPolicy(securityManager.UnlockPolicy.EXTENDED_AUTH_REQUIRED, accountId);
+  console.info('Succeeded in setting unlock policy.');
+} catch(err) {
+  console.error(`Failed to set unlock policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.getUnlockPolicy
+
+getUnlockPolicy(accountId: number): UnlockPolicy
+
+获取指定账户的设备解锁策略。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名    | 类型                                                    | 必填 | 说明                                                                                     |
+| --------- | ------------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------- |
+| accountId | number                                                  | 是   | 操作系统账户ID。取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。 |
+
+**返回值：**
+
+| 类型                          | 说明               |
+| ----------------------------- | ------------------ |
+| [UnlockPolicy](#unlockpolicy) | 指示设备解锁策略。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                       |
+| -------- | ------------------------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device.             |
+| 9200002  | The administrator application does not have permission to manage the device.   |
+| 9200012  | Parameter verification failed.                                                 |
+| 9200016  | Service timeout.                                                               |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+let accountId: number = 100;
+try {
+  let policy = securityManager.getUnlockPolicy(accountId);
+  console.info(`Succeeded in getting unlock policy: ${policy}`);
+} catch(err) {
+  console.error(`Failed to get unlock policy. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.setWeakPinEnable
+ 
+setWeakPinEnable(isEnable: boolean, fd?: number): void
+ 
+设置锁屏弱密码校验的弱密码库。设置弱密码库后，用户设置锁屏密码时，系统会根据弱密码库中的弱密码列表对用户设置的密码进行校验，如果密码存在于弱密码列表中，将拒绝设置该密码，防止用户设置过于简单的密码。适用于企业安全合规场景，如防止员工使用常见弱密码（如123456、000000等），提升设备安全防护能力。取消弱密码库后，用户设置锁屏密码时将不再进行弱密码校验。弱密码校验是在已有密码校验逻辑基础上的补充，不会替代已有的校验规则（如密码长度、复杂度等），设置和取消弱密码库，都不会影响已有的密码校验逻辑。
+ 
+**起始版本：** 26.0.1
+ 
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+ 
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**参数：**
+ 
+| 参数名   | 类型    | 必填 | 说明                                                         |
+| -------- | ------- | ---- | ------------------------------------------------------------ |
+| isEnable | boolean | 是   | 是否设置弱密码库。true表示设置，false表示取消。            |
+| fd       | number  | 否   | 弱密码库文件的文件描述符。设置弱密码库时必填，取消弱密码库时忽略。<br>弱密码库文件需要放置于应用沙箱路径（应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)）等应用有权限访问的路径下。<br>文件每行对应一个弱密码。<br>文件大小不能超过16MB。 |
+ 
+**错误码**：
+ 
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+ 
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+ 
+**示例：**
+
+弱密码库文件示例（weak_pin.txt），每行对应一个弱密码：
+
+```txt
+123456
+000000
+111111
+888888
+666666
+```
+
+代码示例：
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+import { fileIo } from '@kit.CoreFileKit';
+ 
+// 需根据实际情况进行替换，弱密码文件需要放置在应用沙箱目录下
+// 弱密码文件格式：每行对应一个弱密码，如123456、000000等
+const filePath = '/data/storage/el1/base/weak_pin.txt';
+let fd: number = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY).fd;
+try {
+  securityManager.setWeakPinEnable(true, fd);
+  console.info(`Succeeded in setting weak pin enable.`);
+} catch (err) {
+  console.error(`Failed to set weak pin enable. Code: ${err.code}, message: ${err.message}`);
+} finally {
+  fileIo.closeSync(fd);
+}
+```
+ 
+## securityManager.isWeakPinEnabled
+ 
+isWeakPinEnabled(): boolean
+ 
+查询锁屏弱密码库是否已设置。企业可通过此接口查询当前弱密码库的状态，用于策略审计和合规性检查。
+ 
+**起始版本：** 26.0.1
+ 
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+ 
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**返回值：**
+ 
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| boolean | 返回true表示弱密码库已设置，false表示未设置。              |
+ 
+**错误码**：
+ 
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+ 
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+ 
+**示例：**
+ 
+```ts
+import { securityManager } from '@kit.MDMKit';
+ 
+try {
+  let result: boolean = securityManager.isWeakPinEnabled();
+  console.info(`Succeeded in checking weak pin enabled, result: ${result}`);
+} catch (err) {
+  console.error(`Failed to check weak pin enabled. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## securityManager.getPasswordLastChangedTime
+
+getPasswordLastChangedTime(accountId: number): number
+
+根据系统账号ID获取用户最近一次修改锁屏密码的时间，以同步方式返回。账号ID指系统账号ID（首用户为100，子用户依次递增），非三方应用账号；密码指设备锁屏密码（口令），不包含指纹、人脸等其他认证凭据。企业可以通过该接口查询最近一次修改密码的时间，用于密码策略审计和合规性检查。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型   | 必填 | 说明                                                         |
+| --------- | ------ | ---- | ------------------------------------------------------------ |
+| accountId | number | 是   | 用户ID，指定具体用户，取值范围：大于等于0。accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+
+**返回值：**
+
+| 类型   | 说明                               |
+| ------ | ---------------------------------- |
+| number | 最近一次修改密码的时间戳，单位为毫秒 (ms) 。返回值为Unix时间戳（自1970-01-01 00:00:00 UTC起算的毫秒数），应用需结合时区设置将其转换为本地时间。如果用户从未设置锁屏密码或已关闭锁屏密码，接口返回错误码9200016。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200006  | The specified account ID is invalid. |
+| 9200016  | Service timeout. |
+
+**示例：**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+
+// 需根据实际情况进行替换
+let accountId: number = 100;
+try {
+  let result: number = securityManager.getPasswordLastChangedTime(accountId);
+  console.info(`Succeeded in getting password last changed time, result: ${result}`);
+  // result为Unix时间戳（毫秒），需结合时区设置转换为本地时间。
+  // 例如一个小时前修改的密码，当前UTC时间为2026-08-27 16:01:36，则返回值为1787842896000，表示UTC时间2026-08-27 15:01:36。
+  let date: Date = new Date(result);
+  console.info(`Password last changed time: ${date.toLocaleString()}`);
+} catch (err) {
+  console.error(`Failed to get password last changed time. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -2377,7 +2958,7 @@ try {
 
 ## DeviceSecurityLevelPolicy
 
-设备安全级别策略枚举。
+设备安全等级策略枚举。
 
 **起始版本：** 26.0.1
 
@@ -2390,3 +2971,64 @@ try {
 | DEFAULT_ENFORCED | 0 | 仅可选出厂默认安全（DSL0）。 |
 | ALLOW_BALANCED | 1 | 可选出厂默认安全（DSL0）和降低安全性（DSL1）。 |
 | ALLOW_FLEXIBLE | 2 | 可选出厂默认安全（DSL0）、降低安全性（DSL1）和宽松安全性（DSL2）。 |
+
+## AddCredentialInfo
+
+表示添加凭据的信息。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称       | 类型       | 只读 | 可选 | 说明               |
+| ---------- | ---------- | ---- | ---- | ------------------ |
+| pluginInfo | string     | 否   | 否   | 指示认证插件信息。 |
+| authToken  | Uint8Array | 否   | 是   | 指示认证令牌。     |
+
+## RemoveCredentialInfo
+
+表示删除凭据的信息。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 类型       | 只读 | 可选 | 说明               |
+| ------------ | ---------- | ---- | ---- | ------------------ |
+| credentialId | Uint8Array | 否   | 否   | 指示凭据ID。       |
+| authToken    | Uint8Array | 否   | 是   | 指示认证令牌。     |
+
+## UserExtCredentialInfo
+
+表示三方自定义身份认证凭据的信息。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 类型       | 只读 | 可选 | 说明               |
+| ------------ | ---------- | ---- | ---- | ------------------ |
+| credentialId | Uint8Array | 否   | 否   | 指示凭据ID。       |
+| pluginInfo   | string     | 否   | 否   | 指示认证插件信息。 |
+
+## UnlockPolicy
+
+表示设备解锁策略。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称                  | 值 | 说明                                       |
+| --------------------- | -- | ------------------------------------------ |
+| DEFAULT               | 0  | 系统内置认证方式单独解锁，使用系统内置的锁屏认证方式解锁设备。                         |
+| EXTENDED_AUTH_ONLY    | 1  | 三方自定义认证单独解锁，解锁设备时仅通过三方自定义认证方式进行身份验证，无需系统锁屏密码。                       |
+| EXTENDED_AUTH_REQUIRED | 2  | 三方自定义认证与系统内置认证融合解锁，解锁设备时需同时通过三方自定义认证方式和系统锁屏密码进行身份验证。           |

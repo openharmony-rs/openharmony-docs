@@ -112,28 +112,26 @@ Failed to deactivate the administrator application of the device.
 2. 检查解除激活时设备管理应用中指定设备管理元能力组件是否激活过。
 3. 检查调用者是否解除激活自身，设备管理器应用不能解除激活其他设备管理器应用。
 
-<!--Del-->
 ## 9200006 指定的用户ID非法
 
 **错误信息**
 
-The specified user ID is invalid.
+The specified account ID is invalid.
 
 **错误描述**
 
-当应用调用接口设置用户策略，指定的user ID不存在、或DA管理器跨用户设置，则会产生此错误码。
+当应用调用接口设置用户策略，指定的account ID不存在，则会产生此错误码。
 
 **可能原因**
 
 该错误码表示指定的用户ID非法，可能原因如下。
-1. 调用接口设置用户策略，指定的user ID不存在。
-2. DA管理器不允许跨用户设置，指定的user ID和调用者user ID不同。
+1. 调用接口设置用户策略，指定的account ID不存在。
+2. 指定的account ID和调用者account ID不同。
 
 **处理步骤**
 
-1. 检查调用接口中指定的user ID是否是有效的user ID。
-2. 检查调用者user ID和指定设置的user ID是否是同一user ID，DA模式下不允许跨用户设置策略。
-<!--DelEnd-->
+1. 检查调用接口中指定的account ID是否是有效的account ID。
+2. 检查调用者account ID和指定设置的account ID是否是同一account ID。
 
 ## 9200007 系统服务工作异常
 
@@ -374,6 +372,24 @@ This device is not an enterprise device.
 **处理步骤**
 
 检查该设备是否设置为企业设备。
+
+## 9200019 策略列表超限
+
+**错误信息**
+
+The policy list has exceeded the limit.
+
+**错误描述**
+
+策略列表已超出限制。
+
+**可能原因**
+
+添加策略列表数据超过可设置的最大范围。
+
+**处理步骤**
+
+查看策略可设置的最大范围，根据已设置的策略值，调整输入参数，避免超限。
 
 ## 9201001 管理证书失败
 
@@ -1295,6 +1311,84 @@ The number of signed-in accounts reaches the upper limit.
 
 尝试注销多余的系统账号，并及时移除不再需要保留的系统账号。
 
+## 9201048 设备操作失败
+
+**错误信息**
+
+Failed to operate the device.
+
+**错误描述**
+
+当前设备操作失败。
+
+**可能原因**
+
+磁盘擦除失败。
+
+**处理步骤**
+
+擦除失败，请重试。
+
+## 9201052 会话超期
+
+**错误信息**
+
+USB key session time out.
+
+**错误描述**
+
+三方自定义身份认证操作过程中会话超期或authToken过期时，会产生此错误码。
+
+**可能原因**
+
+1. 调用openSession后长时间未操作，会话已过期（超过10分钟）。
+2. 通过userAuth获取的authToken已超过有效时长（10分钟）。
+
+**处理步骤**
+
+1. 重新调用openSession获取新的会话和挑战值。
+2. 重新发起用户身份认证，获取新的authToken。
+3. 使用新的会话和authToken重新执行操作。
+
+## 9201053 定时器数量已达上限
+
+**错误信息**
+
+The number of timers has reached the upper limit.
+
+**错误描述**
+
+当设备管理应用同时生效的精确定时器数量超过上限（5个）时，会产生此错误码。
+
+**可能原因**
+
+单个设备管理应用同时生效的精确定时器数量已超过5个上限。
+
+**处理步骤**
+
+销毁不再使用的定时器后重试。可通过[systemManager.destroyExactTimer](./js-apis-enterprise-systemManager.md#systemmanagerdestroyexacttimer)接口销毁定时器，释放定时器资源后再创建新的定时器。
+
+## 9201054 指定的定时器不存在或不属于当前设备管理应用
+
+**错误信息**
+
+The specified timer does not exist or does not belong to the current administrator.
+
+**错误描述**
+
+当操作不存在的定时器或操作非当前设备管理应用创建的定时器时，会产生此错误码。
+
+**可能原因**
+
+该错误码表示指定的定时器不存在或不属于当前设备管理应用，可能原因如下。
+1. 传入的定时器ID对应的定时器不存在。
+2. 传入的定时器ID对应的定时器不属于当前设备管理应用。
+
+**处理步骤**
+
+1. 检查传入的定时器ID是否正确，定时器ID由[systemManager.createExactTimer](./js-apis-enterprise-systemManager.md#systemmanagercreateexacttimer)接口创建时返回。
+2. 检查传入的定时器ID是否属于当前设备管理应用，设备管理应用只能操作自身创建的定时器。
+
 ## 9201055 获取USB设备序列号失败
 
 **错误信息**
@@ -1312,3 +1406,22 @@ USB设备未连接或不支持序列号获取。
 **处理步骤**
 
 重新拔插USB设备，再尝试获取序列号。
+
+## 9201056 外置存储设备挂载策略不合法
+
+**错误信息**
+
+Invalid external storage mount policy.
+
+**错误描述**
+
+当进行外置存储设备挂载，传入的挂载策略不合法时，会产生此错误码。
+
+**可能原因**
+
+1. 在不同的挂载策略之间切换。
+2. 传入的挂载策略和该外置存储设备已挂载的策略相同。
+
+**处理步骤**
+
+先将该外置存储设备卸载，再传入相应的挂载策略进行挂载。

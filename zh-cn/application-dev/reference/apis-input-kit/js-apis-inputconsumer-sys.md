@@ -50,7 +50,7 @@ on(type: 'key', keyOptions: KeyOptions, callback: Callback&lt;KeyOptions&gt;): v
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api.<br/>适用版本：12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：** 
@@ -112,7 +112,7 @@ off(type: 'key', keyOptions: KeyOptions, callback?: Callback&lt;KeyOptions&gt;):
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api.<br/>适用版本：12+ |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：** 
@@ -212,7 +212,7 @@ onKey(keyOptions: KeyOptions, callback: KeyCommandCallback): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -312,7 +312,7 @@ offKey(keyOptions: KeyOptions, callback?: KeyCommandCallback): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
@@ -407,8 +407,8 @@ setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | SystemAPI permission error. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：** 
@@ -466,8 +466,8 @@ getShieldStatus(shieldMode: ShieldMode): boolean
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202  | SystemAPI permission error. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：** 

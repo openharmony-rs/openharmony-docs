@@ -1,7 +1,7 @@
 # Class (ClickActionProposal)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -44,8 +44,7 @@ import {
   BaseGestureHandlingProposal,
   ClickActionProposal,
   GestureHandlingResolution,
-  TargetedGestureProposal,
-  GestureShortcut,
+  TargetedGestureProposal
 } from '@kit.ArkUI';
 
 @Entry

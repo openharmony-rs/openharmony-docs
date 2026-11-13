@@ -1,12 +1,11 @@
 # Class (MeasureUtils)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=89682c631d1be2b78acdb9477c9eda01133e0baf translatedAt=2026-08-05T03:05:03.598Z pushedAt=2026-08-06T01:28:54.306Z -->
+<!-- md-trans-meta sourceCommit=1f6a707ca936446d60386695c7ad678a6fa39392 translatedAt=2026-11-02T12:46:22.950Z pushedAt=2026-11-05T08:46:03.897Z nl=1 -->
 
 The MeasureUtils class provides text width, height, and other related measurement capabilities, suitable for scenarios such as text-adaptive layout, multi-line text truncation, and dynamic UI adaptation. With this class, you can accurately calculate text dimensions, helping you predict text display effects before layout, and thereby avoiding issues such as text overflow or layout misalignment.
 
@@ -51,9 +50,9 @@ Calculates the width of the specified text when displayed as a single-line text.
 
 | Type         | Description      |
 | ------------  | --------- |
-| number | Text width.<br>**NOTE**<br>Floating-point numbers are rounded up.<br>Unit: px |
+| number        | Text width.<br>**NOTE**<br>Floating-point numbers are rounded up.<br>Unit: px<br>When the parameter is abnormal or internal calculation fails, **undefined** will be returned.|
 
-**Example**
+**Example** 
 
 This example uses the **measureText** API of **MeasureUtils** to obtain the width of the **"Hello World"** text.
 
@@ -73,7 +72,8 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text(`The width of 'Hello World': ${this.textWidth}`)
+        // measureText returns undefined when the parameter is abnormal or internal calculation fails. Perform a null check when using it.
+        Text(`The width of 'Hello World': ${this.textWidth ?? 0}`)
       }
       .width('100%')
     }
@@ -108,9 +108,9 @@ Calculates the width and height of the specified text.
 
 | Type         | Description      |
 | ------------  | --------- |
-| [SizeOptions](arkui-ts/ts-types.md#sizeoptions)   | Layout width and height occupied by the text.<br>**NOTE**<br>When **constraintWidth** is not set, the returned text width is rounded up; when **constraintWidth** is passed, the returned text width is not rounded.<br>Both the text width and height return values are in px. |
+| [SizeOptions](arkui-ts/ts-types.md#sizeoptions)   | Layout width and height occupied by the text.<br>**NOTE**<br>If **constraintWidth** is not set, the returned text width is rounded up. If **constraintWidth** is passed in, the returned text width is not rounded.<br>The unit of the returned text width and height is px.<br>When the parameter is abnormal or internal calculation fails, **undefined** will be returned.|
 
-**Example 1**
+**Example 1** 
 
 This example uses the **measureTextSize** API of **MeasureUtils** to obtain the width and height of the **"Hello World"** text.
 
@@ -129,8 +129,9 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text(`The width of 'Hello World': ${this.textSize.width}`)
-        Text(`The height of 'Hello World': ${this.textSize.height}`)
+        // measureTextSize returns undefined when the parameter is abnormal or internal calculation fails. Perform a null check when using it.
+        Text(`The width of 'Hello World': ${this.textSize?.width ?? 0}`)
+        Text(`The height of 'Hello World': ${this.textSize?.height ?? 0}`)
       }
       .width('100%')
     }
@@ -139,7 +140,7 @@ struct Index {
 }
 ```
 
-**Example 2**
+**Example 2** 
 
 This example implements custom text truncation using the **measureTextSize** method from **MeasureUtils** combined with Unicode code point calculation. This approach achieves the same effect as setting [maxLines](./arkui-ts/ts-basic-components-text.md#maxlines) and [textOverflow](./arkui-ts/ts-basic-components-text.md#textoverflow).
 
@@ -149,16 +150,16 @@ This example implements custom text truncation using the **measureTextSize** met
 struct TextDemo {
   @State displayedText: string = '';
   @State textWidth: number = 150;
-  @State numLenghth: number = 0;
-  @State numUnocde: number = 0;
+  @State numLength: number = 0;
+  @State numUnicode: number = 0;
   private fullText: string =
     'This is a long text example. When the text content exceeds three lines, the excess part 😀😀 will be displayed with an ellipsis. Click the ellipsis to expand all content. This is test text used to verify multi-line text truncation.'
   private maxLines: number = 3;
 
   aboutToAppear() {
     const codePoints = this.getCodePoints(this.fullText);
-    this.numLenghth = this.fullText.length;
-    this.numUnocde = codePoints.length;
+    this.numLength = this.fullText.length;
+    this.numUnicode = codePoints.length;
     this.calculateText(this.maxLines, this.fullText);
   }
 
@@ -171,7 +172,7 @@ struct TextDemo {
         break;
       }
       codePoints.push(codePoint);
-      index += codePoint > 0xFFFF? 2 : 1; // Handle 4-byte characters.
+      index += codePoint > 0xFFFF ? 2 : 1; // Handle 4-byte characters.
     }
     return codePoints;
   }
@@ -201,19 +202,26 @@ struct TextDemo {
       constraintWidth: this.textWidth,
       maxLines: this.maxLines
     });
+    // measureTextSize returns undefined when the parameter is abnormal or internal calculation fails. Perform a null check when using it.
+    if (!noMaxLinesSize || !hasMaxLinesSize) {
+      return;
+    }
 
     this.displayedText = this.fullText;
     if (Number(noMaxLinesSize.height) > Number(hasMaxLinesSize.height)) { // Truncation exists.
       while (this.displayedText.length > 0) {
         this.displayedText =
           this.displayedText.slice(0,
-            this.displayedText.length - this.lastUnicodeLength(this.displayedText)); // Remove characters.
+            this.displayedText.length - this.lastUnicodeLength(this.displayedText)); // Remove a few characters.
         let textAfterCut = this.displayedText + '...'; // Append an ellipsis.
-        let sizeAfteCut = this.getUIContext().getMeasureUtils().measureTextSize({
+        let sizeAfterCut = this.getUIContext().getMeasureUtils().measureTextSize({
           textContent: textAfterCut,
           constraintWidth: this.textWidth
         });
-        if (Number(sizeAfteCut.height) <= Number(hasMaxLinesSize.height)) {
+        if (!sizeAfterCut) {
+          continue;
+        }
+        if (Number(sizeAfterCut.height) <= Number(hasMaxLinesSize.height)) {
           break;
         } else {
           console.info('displayedText: ' + this.displayedText);
@@ -225,8 +233,8 @@ struct TextDemo {
 
   build() {
     Column({ space: 10 }) {
-      Text(`Text length calculated by length: ${this.numLenghth}`)
-      Text(`Text length calculated by codePointAt: ${this.numUnocde}`)
+      Text(`Text length calculated by length: ${this.numLength}`)
+      Text(`Text length calculated by codePointAt: ${this.numUnicode}`)
       Text('Text to be truncated')
       Text(this.fullText)
         .borderWidth(1)
@@ -271,9 +279,9 @@ Converts a styled string into an array of corresponding [Paragraph](../apis-arkg
 
 | Type    | Description       |
 | ------ | --------- |
-| Array\<[Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)> | Array of [Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) objects obtained after conversion based on the text layout options, used for subsequent text layout calculation. |
+| Array\<[Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)> | Array of [Paragraph](../apis-arkgraphics2d/js-apis-graphics-text.md#paragraph) objects obtained after conversion based on the text layout options, used for subsequent text layout calculation.<br>**NOTE**<br>When the parameter is abnormal or internal calculation fails, **undefined** will be returned.|
 
-**Example**
+**Example** 
 
 The following example demonstrates how to use the **getParagraphs** API from **MeasureUtils** to measure text. When the content exceeds the maximum number of display lines, the text is truncated and displays a "... Full Text" indicator.
 
@@ -357,6 +365,10 @@ struct Index {
   // Measure the number of lines a styled string can display within a specified width.
   getLineNum(styledString: StyledString, width: LengthMetrics) {
     let paragraphArr = this.getUIContext().getMeasureUtils().getParagraphs(styledString, { constraintWidth: width });
+    // getParagraphs returns undefined when the parameter is abnormal or internal calculation fails. Perform a null check when using it.
+    if (!paragraphArr) {
+      return 0;
+    }
     let lineCount = 0;
     for (let i = 0; i < paragraphArr.length; ++i) {
       lineCount += paragraphArr[i].getLineCount();
@@ -477,5 +489,4 @@ struct Index {
   }
 }
 ```
-
 ![](figures/styledString_15.png)

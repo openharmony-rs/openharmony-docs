@@ -4,7 +4,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @yyuehao-->
 <!--Designer: @yyuehao-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 ## 场景介绍
@@ -189,7 +189,7 @@
 
   > **说明：**
   > 
-  > 更多关于智慧多窗悬浮窗的信息，请参考[智慧多窗简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)和[智慧多窗最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-window-practice)。
+  > 更多关于智慧多窗悬浮窗的信息，请参考[智慧多窗简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)。
 
 ### SPLIT_SCREEN
 

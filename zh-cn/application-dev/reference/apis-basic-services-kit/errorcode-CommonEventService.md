@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -94,7 +94,7 @@ The subscriber is not found.
 
 **可能原因**
 
-订阅者已取消订阅被系统删除。
+订阅者已取消订阅或订阅者已被系统删除。
 
 **处理步骤**
 
@@ -177,7 +177,7 @@ Failed to obtain system parameters.
 
 **错误信息**
 
-The count of subscriber exceed system specification.
+The count of subscriber exceeds system specification.
 
 **错误描述**
 

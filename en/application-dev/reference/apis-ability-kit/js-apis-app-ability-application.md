@@ -284,7 +284,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message       |
 | -------- | --------------- |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 16000115 | The current process cannot be set as a candidate master process. |
 
 
@@ -335,7 +335,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message       |
 | -------- | --------------- |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 16000116 | The current process is already a master process and does not support cancellation. |
 | 16000117 | The current process is not a candidate master process and does not support cancellation. |
 
@@ -386,7 +386,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message       |
 | -------- | --------------- |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 16000118 | Not a master process. |
 | 16000119 | Cannot exit because there is an unfinished request. |
 
@@ -456,9 +456,9 @@ Creates the context of a specified module. In the created module context, the [r
 >
 > Creating a module context involves resource querying and initialization, which can be time-consuming. In scenarios where application fluidity is critical, avoid frequently or repeatedly calling the **createModuleContextSync** API to create multiple context instances, as this may negatively impact user experience.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 

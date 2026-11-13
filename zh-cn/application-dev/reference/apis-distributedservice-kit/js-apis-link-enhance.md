@@ -52,7 +52,7 @@ createServer(name:&nbsp;string):&nbsp;Server
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 801      | Capability not supported because the linkEnhance function has been trimmed. <br>适用版本：26.0.0+ |
 | 32390203      | Duplicate server name.|
 | 32390206 | Invalid parameter.  |
@@ -110,7 +110,7 @@ createConnection(deviceId:&nbsp;string,&nbsp;name:&nbsp;string):&nbsp;Connection
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 801      | Capability not supported because the linkEnhance function has been trimmed. <br>适用版本：26.0.0+ |
 | 32390206 | Invalid parameter.  |
 
@@ -164,7 +164,7 @@ start():&nbsp;void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390202 | The number of servers exceeds the limit. |
 | 32390300 | Internal error. |
 
@@ -207,7 +207,7 @@ stop():&nbsp;void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 
 **示例：**
 
@@ -250,7 +250,7 @@ close():&nbsp;void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 
 **示例：**
 
@@ -298,7 +298,7 @@ on(type: 'connectionAccepted', callback: Callback&lt;Connection&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390206 | Invalid parameter.  |
 
 **示例：**
@@ -354,7 +354,7 @@ off(type: 'connectionAccepted', callback?: Callback&lt;Connection&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390206 | Invalid parameter.  |
 
 **示例：**
@@ -411,7 +411,7 @@ on(type: 'serverStopped', callback: Callback&lt;number&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390206 | Invalid parameter.  |
 
 **示例：**
@@ -468,7 +468,7 @@ off(type: 'serverStopped', callback?: Callback&lt;number&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390206 | Invalid parameter.  |
 
 **示例：**
@@ -541,7 +541,7 @@ connect():&nbsp;void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390204 | The number of connection exceeds the limit. |
 | 32390300 | Internal error. |
 
@@ -592,7 +592,7 @@ disconnect():&nbsp;void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 
 **示例：**
 
@@ -640,7 +640,7 @@ close():&nbsp;void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 
 
 **示例：**
@@ -695,7 +695,7 @@ getPeerDeviceId():&nbsp;string
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 
 **示例：**
 
@@ -743,7 +743,7 @@ sendData(data:&nbsp;ArrayBuffer):&nbsp;void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390205 | Connection is not ready. |
 | 32390206 | Invalid parameter.  |
 | 32390300 | Internal error. |
@@ -805,7 +805,7 @@ on(type: 'connectResult', callback: Callback&lt;ConnectResult&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390206 | Invalid parameter.|
 
 **示例：**
@@ -861,7 +861,7 @@ off(type: 'connectResult', callback?: Callback&lt;ConnectResult&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390206 | Invalid parameter. |
 
 **示例：**
@@ -917,7 +917,7 @@ on(type: 'disconnected', callback: Callback&lt;number&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390206 | Invalid parameter.|
 
 **示例：**
@@ -970,7 +970,7 @@ off(type: 'disconnected', callback?: Callback&lt;number&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390206 | Invalid parameter. |
 
 **示例：**
@@ -1026,7 +1026,7 @@ on(type: 'dataReceived', callback: Callback&lt;ArrayBuffer&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390206 | Invalid parameter.  |
 
 **示例：**
@@ -1080,7 +1080,7 @@ off(type: 'dataReceived', callback?: Callback&lt;ArrayBuffer&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission denied.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 32390206 | Invalid parameter.  |
 
 **示例：**

@@ -1,10 +1,11 @@
 # Asset Store Kit (Asset Store Service)
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=d910972754a03f29eabea013ac43af463c14ec75 translatedAt=2026-11-06T11:55:46.646Z pushedAt=2026-11-09T11:48:25.094Z nl=1 -->
 
 - ArkTS APIs<!--asset-store-arkts-->
   - [@ohos.security.asset (Asset Store Service)](js-apis-asset.md)

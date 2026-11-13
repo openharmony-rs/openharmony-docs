@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=5720b2f81c487a09e9ae58a51adcf5efdcc5b55e translatedAt=2026-07-28T09:20:42.936Z pushedAt=2026-07-28T12:43:56.938Z -->
+<!-- md-trans-meta sourceCommit=55475b8d201845bcd9989a5f64cef91cd4c2751f translatedAt=2026-11-03T13:00:53.698Z pushedAt=2026-11-03T13:00:53.698Z nl=1 -->
 
 ## Overview
 
@@ -18,7 +18,7 @@ If the [application recovery](#available-apis) functionality is enabled in [Abil
 
 In API version 9, application recovery is supported only for single-UIAbility applications developed using the stage model. Application state saving and automatic restart are performed when a JsError occurs.
 
-In API version 10, application recovery is supported for multi-UIAbility applications developed using the stage model. Application state storage and restore are performed when an AppFreeze occurs. If an application is killed in control mode, the application state will be restored upon next startup.
+In API version 10, application recovery is supported for multi-UIAbility applications developed using the stage model. Application state saving and restore are performed when an AppFreeze occurs. If an application is killed in control mode, the application state will be restored upon next startup.
 
 ## Available APIs
 
@@ -60,7 +60,7 @@ The application recovery state flag is set when **saveAppState** is actively or 
 
 ### Application State Saving and Restore
 
-API version 10 or later supports saving of the application state when an application is frozen. If a JsError occurs, **onSaveState** is called in the main thread. If an AppFreeze occurs, however, the main thread may be suspended, and therefore **onSaveState** is called in a non-main thread. The following figure shows the main service flow.
+API version 10 or later supports saving of the application state when an application is frozen. If a JsError occurs, **onSaveState** is called in the main thread. If an AppFreeze occurs, however, the main thread may be frozen, and therefore **onSaveState** is called in a non-main thread. The following figure shows the main service flow.
 
 ![20230315112235.png](figures/20230315112235.png)
 
@@ -102,32 +102,37 @@ Here, state saving refers to state saving upon a fault. For app freeze scenarios
 
 ### Enabling Application Recovery
 
-Enable **appRecovery** during application initialization. The following is an example of **AbilityStage**:
+Import the required module.
+<!-- @[import_appRecovery_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-```ts
-import { AbilityStage, appRecovery } from '@kit.AbilityKit';
+``` TypeScript
+import {
+  appRecovery,
+// ...
+} from '@kit.AbilityKit';
+```
 
-export default class MyAbilityStage extends AbilityStage {
-    onCreate() {
-        console.info("[Demo] MyAbilityStage onCreate");
-        appRecovery.enableAppRecovery(appRecovery.RestartFlag.ALWAYS_RESTART,
-            appRecovery.SaveOccasionFlag.SAVE_WHEN_ERROR | appRecovery.SaveOccasionFlag.SAVE_WHEN_BACKGROUND,
-            appRecovery.SaveModeFlag.SAVE_WITH_FILE);
-    }
-}
+Enable **appRecovery** during application module initialization, in the **onCreate** lifecycle callback.
+<!-- @[enable_app_recovery](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+appRecovery.enableAppRecovery(appRecovery.RestartFlag.ALWAYS_RESTART,
+  appRecovery.SaveOccasionFlag.SAVE_WHEN_ERROR | appRecovery.SaveOccasionFlag.SAVE_WHEN_BACKGROUND,
+  appRecovery.SaveModeFlag.SAVE_WITH_FILE);
 ```
 
 ### Configuring the Recoverable UIAbility
 
 Generally, the UIAbility configuration list is named **module.json5**.
 
-```ts
+<!-- @[recoverable_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/module.json5) -->
+
+``` JSON5
 {
-    "abilities": [
-      {
-        "name": "EntryAbility",
-        "recoverable": true,
-      }]
+  "name": "EntryAbility",
+  // ...
+  "recoverable": true,
+  // ...
 }
 ```
 
@@ -139,58 +144,62 @@ The following is an example of **EntryAbility**:
 
 **Importing modules**
 
-```ts
-import { AbilityConstant, appRecovery, errorManager } from '@kit.AbilityKit';
+``` TypeScript
+import {
+  appRecovery,
+  AbilityConstant,
+  errorManager,
+  UIAbility,
+  Want,
+  wantConstant
+} from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+```
+
+Customize the domain value used by hilog.
+<!-- @[domain_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) -->
+
+``` TypeScript
+const DOMAIN = 0x0000;
 ```
 
 **Actively saving state and restoring data**
 
 - Define and register the [ErrorObserver](../reference/apis-ability-kit/js-apis-inner-application-errorObserver.md) callback. For details about its usage, see [errorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md).
 
-```ts
-import { appRecovery, errorManager, UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
+<!-- @[error_observer_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
+``` TypeScript
 let registerId = -1;
 let callback: errorManager.ErrorObserver = {
-    onUnhandledException(errMsg) {
-    console.error(errMsg);
+  onUnhandledException(errMsg) {
+    hilog.error(DOMAIN, 'testRecoveryTag', `errMsg: ${errMsg}`);
     appRecovery.saveAppState();
     appRecovery.restartApp();
-    }
+  }
 }
+```
 
-export default class EntryAbility extends UIAbility {
-    onWindowStageCreate(windowStage: window.WindowStage) {
-    // Set the main page for the created main window.
-    console.info("[Demo] EntryAbility onWindowStageCreate");
-    registerId = errorManager.on('error', callback);
+- Register the ErrorObserver and load the page in **onWindowStageCreate**.
+<!-- @[errormanager_on_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-    windowStage.loadContent("pages/index", (err, data) => {
-        if (err.code) {
-            console.error('Failed to load the content. Cause:' + JSON.stringify(err));
-            return;
-        }
-        console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data));
-    })
-    }
-}
+``` TypeScript
+registerId = errorManager.on('error', callback);
 ```
 
 - Save data.
 
 After the callback triggers **appRecovery.saveAppState()**, **onSaveState(state, wantParams)** of **EntryAbility** is triggered.
 
-```ts
-import { AbilityConstant, UIAbility } from '@kit.AbilityKit';
+<!-- @[on_save_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-export default class EntryAbility extends UIAbility {
-    onSaveState(state:AbilityConstant.StateType, wantParams: Record<string, Object>) {
-        // The UIAbility is called to save application data.
-        console.info("[Demo] EntryAbility onSaveState");
-        wantParams["myData"] = "my1234567";
-        return AbilityConstant.OnSaveResult.ALL_AGREE;
-    }
+``` TypeScript
+onSaveState(state: AbilityConstant.StateType, wantParams: Record<string, Object>) {
+  // Ability has called to save app data
+  hilog.info(DOMAIN, 'testRecoveryTag', '[Demo] EntryAbility onSaveState');
+  wantParams['myData'] = 'my1234567';
+  return AbilityConstant.OnSaveResult.ALL_AGREE;
 }
 ```
 
@@ -198,78 +207,54 @@ export default class EntryAbility extends UIAbility {
 
 After the callback triggers **appRecovery.restartApp()**, the application is restarted. After the restart, **onCreate(want, launchParam)** of **EntryAbility** is called, and the saved data is stored in **parameters** of **want**.
 
-```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+<!-- @[on_create_recovery](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-let abilityWant: Want;
-
-export default class EntryAbility extends UIAbility {
-    storage: LocalStorage | undefined = undefined;
-
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        console.info("[Demo] EntryAbility onCreate");
-        abilityWant = want;
-        if (launchParam.launchReason == AbilityConstant.LaunchReason.APP_RECOVERY) {
-            this.storage = new LocalStorage();
-            if (want.parameters) {
-                let recoveryData = want.parameters["myData"];
-                this.storage.setOrCreate("myData", recoveryData);
-                this.context.restoreWindowStage(this.storage);
-            }
-        }
-    }
+``` TypeScript
+if (launchParam.launchReason == AbilityConstant.LaunchReason.APP_RECOVERY) {
+  this.storage = new LocalStorage();
+  if (want.parameters) {
+    let recoveryData = want.parameters['myData'];
+    this.storage.setOrCreate('myData', recoveryData);
+    this.context.restoreWindowStage(this.storage);
+  }
 }
 ```
 
 - Unregister the **ErrorObserver** callback.
 
-```ts
-import { errorManager, UIAbility } from '@kit.AbilityKit';
+<!-- @[errormanager_off_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-let registerId = -1;
-
-export default class EntryAbility extends UIAbility {
-    onWindowStageDestroy() {
-        // Destroy the main window and release related UI resources.
-        console.info("[Demo] EntryAbility onWindowStageDestroy");
-
-        errorManager.off('error', registerId, (err) => {
-            console.error("[Demo] err:", err);
-        });
-    }
-}
+``` TypeScript
+errorManager.off('error', registerId, (err) => {
+  hilog.error(DOMAIN, 'testRecoveryTag', '[Demo] err:', err);
+});
 ```
 
 **Passively saving state and restoring data**
 
 This is triggered by the recovery framework. You do not need to register an **ErrorObserver** callback. You only need to implement **onSaveState** for application state saving and **onCreate** for data restore.
 
-```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+<!-- @[on_create_recovery](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-let abilityWant: Want;
+``` TypeScript
+if (launchParam.launchReason == AbilityConstant.LaunchReason.APP_RECOVERY) {
+  this.storage = new LocalStorage();
+  if (want.parameters) {
+    let recoveryData = want.parameters['myData'];
+    this.storage.setOrCreate('myData', recoveryData);
+    this.context.restoreWindowStage(this.storage);
+  }
+}
+```
 
-export default class EntryAbility extends UIAbility {
-    storage: LocalStorage | undefined = undefined
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.info("[Demo] EntryAbility onCreate");
-        abilityWant = want;
-        if (launchParam.launchReason == AbilityConstant.LaunchReason.APP_RECOVERY) {
-            this.storage = new LocalStorage();
-            if (want.parameters) {
-                let recoveryData = want.parameters["myData"];
-                this.storage.setOrCreate("myData", recoveryData);
-                this.context.restoreWindowStage(this.storage);
-            }
-        }
-    }
+<!-- @[on_save_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-    onSaveState(state:AbilityConstant.StateType, wantParams: Record<string, Object>) {
-        // The UIAbility is called to save application data.
-        console.info("[Demo] EntryAbility onSaveState");
-        wantParams["myData"] = "my1234567";
-        return AbilityConstant.OnSaveResult.ALL_AGREE;
-    }
+``` TypeScript
+onSaveState(state: AbilityConstant.StateType, wantParams: Record<string, Object>) {
+  // Ability has called to save app data
+  hilog.info(DOMAIN, 'testRecoveryTag', '[Demo] EntryAbility onSaveState');
+  wantParams['myData'] = 'my1234567';
+  return AbilityConstant.OnSaveResult.ALL_AGREE;
 }
 ```
 
@@ -277,18 +262,14 @@ export default class EntryAbility extends UIAbility {
 
 When the faulty UIAbility is restarted, the **parameters** member of the **want** parameter in the **onCreate** lifecycle callback contains the [ABILITY_RECOVERY_RESTART](../reference/apis-ability-kit/js-apis-app-ability-wantConstant.md#params) flag, with the value **true**.
 
-```ts
-import { AbilityConstant, UIAbility, Want, wantConstant } from '@kit.AbilityKit';
+<!-- @[recovery_restart_flag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/AppRecovery/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        if (want.parameters === undefined) {
-            return;
-        }
-        if (want.parameters[wantConstant.Params.ABILITY_RECOVERY_RESTART] != undefined &&
-            want.parameters[wantConstant.Params.ABILITY_RECOVERY_RESTART] == true) {
-            console.info("This ability need to recovery");
-        }
-    }
+``` TypeScript
+if (want.parameters === undefined) {
+  return;
+}
+if (want.parameters[wantConstant.Params.ABILITY_RECOVERY_RESTART] != undefined &&
+  want.parameters[wantConstant.Params.ABILITY_RECOVERY_RESTART] == true) {
+  hilog.info(DOMAIN, 'testRecoveryTag', 'This ability need to recovery');
 }
 ```

@@ -1,7 +1,7 @@
 # 兼容JS的类Web开发范式（ArkUI.Full）<!--arkui-js-full-comp-->
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->

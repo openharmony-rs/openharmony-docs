@@ -2,14 +2,15 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b21bd82a68f5cb2fefefde92a7afef87223beafc translatedAt=2026-07-09T08:20:46.565Z pushedAt=2026-07-09T10:42:12.503Z -->
+<!-- md-trans-meta sourceCommit=0d8c45b21d8a570119acc3e826554bd3c3d6e189 translatedAt=2026-11-12T12:34:02.129Z pushedAt=2026-11-03T12:47:30.238Z nl=1 -->
 
 - [Display Management Overview](displayManager-overview.md)
-- [Using OH_DisplayManager to Obtain Basic Display Information and Listen for Status Changes (C/C++)](native-display-manager.md)
-- [Using Display to Obtain Display Properties and Listen for Status Changes (ArkTS)](screenProperty-guideline.md)
+- [Obtaining Display Properties and Listening for Status Changes (C/C++)](native-display-manager.md)
+- [Obtaining Display Properties and Listening for Status Changes (ArkTS)](screenProperty-guideline.md)
+- [Coordinate Conversion for Extended Screens](extend-coordinate-transformation-guideline.md)
 <!--Del-->
 - [Creating and Using a Virtual Screen (ArkTS) (for System Applications Only)](virtualScreen-guideline-sys.md)
 <!--DelEnd-->

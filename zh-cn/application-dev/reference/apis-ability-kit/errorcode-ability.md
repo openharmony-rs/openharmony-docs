@@ -369,6 +369,7 @@ Internal error.
 2. 设备解锁前拉起非系统应用。
 3. 调用openAtomicService拉起原子化服务时，安装未完成前用户点击取消，<!--RP1--><!--RP1End-->返回user_cancel错误码，导致安装失败。
 4. 开发者无法处理的系统内部错误。包括但不限于：内部对象为空指针、处理超时、IPC跨进程通信失败、包管理获取应用信息失败、系统服务获取失败、启动的Ability实例已达到上限等。
+5. 启动Ability时触发启动频率限制。
 <!--RP2--><!--RP2End-->
 
 
@@ -378,6 +379,7 @@ Internal error.
 2. 确保在设备解锁前只拉起系统应用，或者延迟拉起非系统应用直到设备解锁。
 3. 若因用户取消原子化服务安装导致报错，属于正常用户行为，可引导用户重新调用openAtomicService完成安装。
 4. 对于开发者无法处理的系统内部错误，请尝试重新调用该接口，或者重启设备。
+5. 确保启动Ability时不超过20次/s。
 <!--RP3--><!--RP3End-->
 
 
@@ -732,7 +734,7 @@ The caller does not exist.
 
 **错误描述**
 
-通过backToCallerAbilityWithResult接口向调用方返回结果时，如果根据传入的requestCode无法找到调用方，返回该错误码。
+通过backToCallerAbilityWithResult或backToCallerAppWithResult接口向调用方返回结果时，如果根据传入的requestCode无法找到调用方，返回该错误码。
 
 **可能原因**
 
@@ -754,7 +756,7 @@ BackToCaller is not supported.
 
 **错误描述**
 
-不支持通过backToCallerAbilityWithResult接口返回到调用方时，返回该错误码。
+不支持通过backToCallerAbilityWithResult或backToCallerAppWithResult接口返回到调用方时，返回该错误码。
 
 **可能原因**
 
@@ -2176,6 +2178,46 @@ The API is not called in the main thread.
 
 请将接口调用逻辑迁移到主线程中执行。
 
+<!--Del-->
+## 16000207 指定应用未获授解锁前启动权限
+
+**错误信息**
+
+The specified application is not authorized to start before the user is unlocked.
+
+**错误描述**
+
+目标应用未获授ohos.permission.ALLOW_DIRECT_BOOT权限，无法设置用户解锁前自启动。
+
+**可能原因**
+
+调用setApplicationAutoStartup接口时，info.isDirectBoot为true，但目标应用未获授ohos.permission.ALLOW_DIRECT_BOOT权限。
+
+**处理步骤**
+
+确认目标应用已申请并获授[ohos.permission.ALLOW_DIRECT_BOOT](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionallow_direct_boot)权限，再重新设置用户解锁前自启动。
+<!--DelEnd-->
+
+<!--Del-->
+## 16000210 目标进程受MDM应用保护无法终止
+
+**错误信息**
+
+The target process is protected by an MDM application and cannot be terminated.
+
+**错误描述**
+
+调用[appManager.killProcessWithAccountSafely](js-apis-app-ability-appManager-sys.md#appmanagerkillprocesswithaccountsafely)终止应用进程时，如果查询到目标应用已被MDM设置为禁止停止，方法将返回该错误码。
+
+**可能原因**
+
+目标应用已被MDM设置为禁止停止。
+
+**处理步骤**
+
+确认目标应用的MDM防禁用配置。如需终止该应用进程，请先由MDM解除防禁用配置，再重试。
+<!--DelEnd-->
+
 ## 10110000 装饰器参数声明错误
 
 **错误信息**
@@ -2793,6 +2835,62 @@ write系统调用失败。
 
 缓冲区满或对端异常，尝试等待一段时间后重新写入。
 
+## 35600034 设备未处于开发者模式
+
+**错误信息**
+
+The device is not in developer mode.
+
+**错误描述**
+
+设备未处于开发者模式，不允许注册Hook。
+
+**可能原因**
+
+设备未开启开发者模式，调用[registerCliHook()](js-apis-app-cli-cliManager-sys.md#climanagerregisterclihook)或[registerFunctionHook()](js-apis-app-function-functionManager-sys.md#functionmanagerregisterfunctionhook)接口时返回该错误码。
+
+**处理步骤**
+
+1. 进入设备设置，开启开发者模式。
+2. 开发者模式开启后重新调用注册Hook的接口。
+
+## 35600035 Hook已注册
+
+**错误信息**
+
+A hook is already registered; unregister it first.
+
+**错误描述**
+
+已注册了同类型的Hook，无法重复注册，需要先取消原注册Hook。
+
+**可能原因**
+
+同一时间对同一类型的Hook只允许注册一个。如果已有Hook处于注册状态时，再次调用[registerCliHook()](js-apis-app-cli-cliManager-sys.md#climanagerregisterclihook)或[registerFunctionHook()](js-apis-app-function-functionManager-sys.md#functionmanagerregisterfunctionhook)接口，系统会返回该错误码。
+
+**处理步骤**
+
+1. 先调用[unregisterCliHook()](js-apis-app-cli-cliManager-sys.md#climanagerunregisterclihook)或[unregisterFunctionHook()](js-apis-app-function-functionManager-sys.md#functionmanagerunregisterfunctionhook)接口取消已注册的Hook。
+2. 确保前一个Hook成功取消注册后，再次调用相应的注册接口。
+
+## 35600036 Hook未注册
+
+**错误信息**
+
+No hook is registered; nothing to unregister.
+
+**错误描述**
+
+当前未注册任何Hook，无需执行取消注册操作。
+
+**可能原因**
+
+设备未注册Hook时，调用[unregisterCliHook()](js-apis-app-cli-cliManager-sys.md#climanagerunregisterclihook)或[unregisterFunctionHook()](js-apis-app-function-functionManager-sys.md#functionmanagerunregisterfunctionhook)接口会返回该错误码。
+
+**处理步骤**
+
+确认是否已注册Hook，仅在已注册Hook后调用取消注册接口。
+
 ## 35600050 偶发性报错
 
 **错误信息**
@@ -2943,6 +3041,24 @@ Failed to parse the configuration file.
 
 检查对应模块目录下`src/main/resources/rawfile/memory_optimizer.json`配置文件是否存在，并确认其内容格式是否正确。
 
+## 16000165 应用注册的观察者数量已达到上限
+
+**错误信息**
+
+The number of registered observers for the current application has reached the upper limit.
+
+**错误描述**
+
+当前应用已注册的observer数量达到上限，注册失败。
+
+**可能原因**
+
+当前应用已注册的observer数量达到上限。
+
+**处理步骤**
+
+注销掉当前应用其他进程中的observer。
+
 ## 35600004 指定的AgentCard版本低于当前版本
 
 **错误信息**
@@ -3032,3 +3148,44 @@ The number of AgentCards in the bundle reaches the limit.
 **处理步骤**
 
 调用agentManager.deleteAgentCard删除不再需要的AgentCard。
+
+<!--Del-->
+## 16000301 任务已存在
+
+**错误信息**
+
+Task already exists.
+
+**错误描述**
+
+启动任务时，若指定任务ID的任务已存在，方法将返回该错误码。
+
+**可能原因**
+
+调用[startTask](js-apis-app-agent-taskManager-sys.md#taskmanagerstarttask)接口时，传入的taskId对应的任务尚未结束。任务存续期间，不允许重复启动相同taskId的任务。
+
+**处理步骤**
+
+1. 若该任务已存在，请先调用[finishTask](js-apis-app-agent-taskManager-sys.md#taskmanagerfinishtask)接口结束该任务，再重新启动。
+2. 若需要并行执行多个任务，请使用不同的taskId。
+
+## 16000302 任务不存在
+
+**错误信息**
+
+Task not found.
+
+**错误描述**
+
+结束任务时，若指定的任务不存在或已结束，方法将返回该错误码。
+
+**可能原因**
+
+1. 调用[finishTask](js-apis-app-agent-taskManager-sys.md#taskmanagerfinishtask)接口时，传入的taskId未通过[startTask](js-apis-app-agent-taskManager-sys.md#taskmanagerstarttask)接口启动，或该任务已结束（包括被系统自动结束，例如任务超时、创建者进程退出）。
+2. 调用方不是创建该任务的应用，仅任务创建者可以结束任务。
+
+**处理步骤**
+
+1. 确认传入的taskId对应的任务已启动且尚未结束。
+2. 确认调用方为创建该任务的应用。
+<!--DelEnd-->

@@ -1,7 +1,7 @@
 # 添加事件监听
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -331,7 +331,7 @@ nodeAPI->unregisterNodeEventReceiver();
    ```
 
 2. 在ArkUIListNode对象中注册列表事件[NODE_LIST_ON_SCROLL_INDEX](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)。
-   <!-- @[arkui_list_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUIListNode.h) -->
+   <!-- @[arkui_list_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUIListNode.h) -->  
    
    ``` C
    // ArkUIListNode.h
@@ -373,7 +373,7 @@ nodeAPI->unregisterNodeEventReceiver();
        }
    
    protected:
-      // 处理List相关事件。
+       // 处理List相关事件。
        void OnNodeEvent(ArkUI_NodeEvent *event) override
        {
            auto eventType = OH_ArkUI_NodeEvent_GetEventType(event);
@@ -724,10 +724,10 @@ void onColorModeChange(ArkUI_SystemColorMode colorMode, void *userData)
 {
     ColorModeInfo* info = static_cast<ColorModeInfo*>(userData);
     if (colorMode == ARKUI_SYSTEM_COLOR_MODE_LIGHT) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
                      "NdkAddInteractionEvent_Light mode: ", info->lightMsg);
     } else if (colorMode == ARKUI_SYSTEM_COLOR_MODE_DARK) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "[Sample_NdkAddInteractionEvent]",
                      "NdkAddInteractionEvent_Dark mode: ", info->darkMsg);
     }
 }
