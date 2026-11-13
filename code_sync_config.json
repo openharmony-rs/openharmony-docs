@@ -42483,12 +42483,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingNestedQuotationMarks.ets",
 				"functions":[
 					{
-						"end_line":47,
+						"end_line":48,
 						"name":"json_nesting_method1",
 						"start_line":16
 					},
 					{
-						"end_line":66,
+						"end_line":75,
 						"name":"json_nesting_method2",
 						"start_line":17
 					}
@@ -42723,7 +42723,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/TaskpoolCancel.ets",
 				"functions":[
 					{
-						"end_line":73,
+						"end_line":75,
 						"name":"taskpool_cancel",
 						"start_line":16
 					}
@@ -51786,7 +51786,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/ConcurrentLoadingModulesGuide.ets",
 				"functions":[
 					{
-						"end_line":99,
+						"end_line":103,
 						"name":"distribute_child_thread",
 						"start_line":16
 					}
@@ -51925,7 +51925,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/MakeobservedSendable.ets",
 				"functions":[
 					{
-						"end_line":59,
+						"end_line":61,
 						"name":"update_arkui_data",
 						"start_line":16
 					}
@@ -51997,7 +51997,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/MultiTask.ets",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":42,
 						"name":"execute_task_group",
 						"start_line":16
 					}
@@ -53738,12 +53738,12 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":75,
+						"end_line":79,
 						"name":"transferableObject_makeObserved",
-						"start_line":69
+						"start_line":71
 					},
 					{
-						"end_line":80,
+						"end_line":82,
 						"name":"transferableObject_Text",
 						"start_line":15
 					}
