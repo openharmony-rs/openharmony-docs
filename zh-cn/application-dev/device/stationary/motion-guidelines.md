@@ -2,7 +2,7 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @osmanthusblossom-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
