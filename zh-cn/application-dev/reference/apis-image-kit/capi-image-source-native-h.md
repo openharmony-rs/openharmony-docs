@@ -331,7 +331,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetMimeType(OH_ImageSource_Info *info, Image_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | OH_ImageSource_Info指针。 |
-| [Image_MimeType](capi-image-nativemodule-image-string.md) *mimeType | 图片源的MIME类型。 |
+| [Image_MimeType](capi-image-nativemodule-image-string.md) *mimetype | 图片源的MIME类型。 |
 
 **返回：**
 
