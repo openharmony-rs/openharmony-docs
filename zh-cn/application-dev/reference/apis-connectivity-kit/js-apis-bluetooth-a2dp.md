@@ -93,7 +93,7 @@ getPlayingState(deviceId: string): PlayingState
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 对端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -121,7 +121,7 @@ getPlayingState(deviceId: string): PlayingState
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    let state = a2dpSrc.getPlayingState('XX:XX:XX:XX:XX:XX');
+    let state = a2dpSrc.getPlayingState('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }

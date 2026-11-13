@@ -41,7 +41,7 @@ disconnect(deviceId: string): void
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **错误码**：
 
@@ -64,7 +64,7 @@ disconnect(deviceId: string): void
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    pbapServerProfile.disconnect('XX:XX:XX:XX:XX:XX');
+    pbapServerProfile.disconnect('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -86,7 +86,7 @@ setShareType(deviceId: string, type: ShareType, callback: AsyncCallback&lt;void&
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："11:22:33:44:55:66"。 |
 | type | [ShareType](#sharetype) | 是    | 表示共享类型的枚举值。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功，err为undefined，否则为错误对象。   |
 
@@ -111,7 +111,7 @@ setShareType(deviceId: string, type: ShareType, callback: AsyncCallback&lt;void&
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    pbapServerProfile.setShareType('XX:XX:XX:XX:XX:XX', 0, (err: BusinessError) => {
+    pbapServerProfile.setShareType('11:22:33:44:55:66', 0, (err: BusinessError) => {
        console.info('setShareType'); 
     });
 } catch (err) {
@@ -136,7 +136,7 @@ setShareType(deviceId: string, type: ShareType): Promise&lt;void&gt;
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："11:22:33:44:55:66"。 |
 | type | [ShareType](#sharetype) | 是    | 表示共享类型的枚举值。 |
 
 **返回值：**
@@ -166,7 +166,7 @@ setShareType(deviceId: string, type: ShareType): Promise&lt;void&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    pbapServerProfile.setShareType('XX:XX:XX:XX:XX:XX', 0).then(() => {
+    pbapServerProfile.setShareType('11:22:33:44:55:66', 0).then(() => {
         console.info('setShareType');
     });
 } catch (err) {
@@ -190,7 +190,7 @@ getShareType(deviceId: string, callback: AsyncCallback&lt;ShareType&gt;): void
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："11:22:33:44:55:66"。 |
 | callback | AsyncCallback&lt;[ShareType](#sharetype)&gt; | 是    | 回调函数。当获取成功，err为undefined，否则为错误对象。   |
 
 **错误码**：
@@ -214,7 +214,7 @@ getShareType(deviceId: string, callback: AsyncCallback&lt;ShareType&gt;): void
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    pbapServerProfile.getShareType('XX:XX:XX:XX:XX:XX', (err, type) => {
+    pbapServerProfile.getShareType('11:22:33:44:55:66', (err, type) => {
         console.info('getShareType ' + type);
     });
 } catch (err) {
@@ -238,7 +238,7 @@ getShareType(deviceId: string): Promise&lt;ShareType&gt;
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -267,7 +267,7 @@ getShareType(deviceId: string): Promise&lt;ShareType&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    pbapServerProfile.getShareType('XX:XX:XX:XX:XX:XX').then((type) => {
+    pbapServerProfile.getShareType('11:22:33:44:55:66').then((type) => {
         console.info('getShareType ' + type);
     });
 } catch (err) {
@@ -291,7 +291,7 @@ setPhoneBookAccessAuthorization(deviceId: string, authorization: AccessAuthoriza
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："11:22:33:44:55:66"。 |
 | authorization | [AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11) | 是    | 表示访问权限枚举值。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功，err为undefined，否则为错误对象。   |
 
@@ -316,7 +316,7 @@ setPhoneBookAccessAuthorization(deviceId: string, authorization: AccessAuthoriza
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    pbapServerProfile.setPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX', 0, (err: BusinessError) => {
+    pbapServerProfile.setPhoneBookAccessAuthorization('11:22:33:44:55:66', 0, (err: BusinessError) => {
        console.info('setPhoneBookAccessAuthorization'); 
     });
 } catch (err) {
@@ -341,7 +341,7 @@ setPhoneBookAccessAuthorization(deviceId: string, authorization: AccessAuthoriza
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："11:22:33:44:55:66"。 |
 | authorization | [AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11) | 是    | 表示访问权限枚举值。 |
 
 **返回值：**
@@ -371,7 +371,7 @@ setPhoneBookAccessAuthorization(deviceId: string, authorization: AccessAuthoriza
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    pbapServerProfile.setPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX', 0).then(() => {
+    pbapServerProfile.setPhoneBookAccessAuthorization('11:22:33:44:55:66', 0).then(() => {
         console.info('setPhoneBookAccessAuthorization');
     });
 } catch (err) {
@@ -395,7 +395,7 @@ getPhoneBookAccessAuthorization(deviceId: string, callback: AsyncCallback&lt;Acc
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："11:22:33:44:55:66"。 |
 | callback | AsyncCallback&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | 是    | 回调函数。当获取成功，err为undefined，否则为错误对象。   |
 
 **错误码**：
@@ -419,7 +419,7 @@ getPhoneBookAccessAuthorization(deviceId: string, callback: AsyncCallback&lt;Acc
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    pbapServerProfile.getPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX', (err, authorization) => {
+    pbapServerProfile.getPhoneBookAccessAuthorization('11:22:33:44:55:66', (err, authorization) => {
         console.info('authorization ' + authorization);
     });
 } catch (err) {
@@ -443,7 +443,7 @@ getPhoneBookAccessAuthorization(deviceId: string): Promise&lt;AccessAuthorizatio
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -472,7 +472,7 @@ getPhoneBookAccessAuthorization(deviceId: string): Promise&lt;AccessAuthorizatio
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let pbapServerProfile = pbap.createPbapServerProfile();
-    pbapServerProfile.getPhoneBookAccessAuthorization('XX:XX:XX:XX:XX:XX').then((authorization) => {
+    pbapServerProfile.getPhoneBookAccessAuthorization('11:22:33:44:55:66').then((authorization) => {
         console.info('authorization ' + authorization);
     });
 } catch (err) {
