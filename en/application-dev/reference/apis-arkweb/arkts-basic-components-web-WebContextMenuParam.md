@@ -271,7 +271,7 @@ It is recommended to use this API in the [onContextMenuShow](./arkts-basic-compo
 
 **Example**
 
-For sample code, see [onContextMenuUpdate](./arkts-basic-components-web-events.md#oncontextmenuupdate).
+For sample code, see [onContextMenuUpdate](./arkts-basic-components-web-events.md).
 
 ## getTextFragmentGeneratedLink
 
@@ -295,7 +295,7 @@ It is recommended to use this API in the [onContextMenuShow](./arkts-basic-compo
 
 **Example**
 
-For sample code, see [onContextMenuUpdate](./arkts-basic-components-web-events.md#oncontextmenuupdate).
+For sample code, see [onContextMenuUpdate](./arkts-basic-components-web-events.md).
 
 ## isOverTextFragment
 
@@ -319,4 +319,4 @@ It is recommended to use this API in the [onContextMenuShow](./arkts-basic-compo
 
 **Example**
 
-For sample code of Text Fragment-related APIs, see [onContextMenuUpdate](./arkts-basic-components-web-events.md#oncontextmenuupdate).
+For sample code of Text Fragment-related APIs, see [onContextMenuUpdate](./arkts-basic-components-web-events.md).

@@ -341,11 +341,11 @@ Callback triggered when the Web component detects a blank screen.
 
 | Name | Type | Mandatory | Description |
 |--------|------|------|------|
-| event | [MonitoredBlankScreenEventInfo](./arkts-basic-components-web-i.md#monitoredblankscreeneventinfo) | Yes | Detailed information when a blank screen is detected. |
+| event | [MonitoredBlankScreenEventInfo](./arkts-basic-components-web-i.md) | Yes | Detailed information when a blank screen is detected. |
 
 **Example**
 
-For details about the sample code, see [onMonitoredBlankScreen](./arkts-basic-components-web-events.md#onmonitoredblankscreen).
+For details about the sample code, see [onMonitoredBlankScreen](./arkts-basic-components-web-events.md).
 
 ## OnCameraCaptureStateChangeCallback<sup>23+</sup>
 
@@ -526,7 +526,7 @@ Callback function type invoked when the page zoom ratio changes.
 
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ---- | ---- |
-| zoomChangeInfo | [OnZoomChangeEvent](./arkts-basic-components-web-i.md#onzoomchangeevent) | Yes | Detailed information about the page zoom ratio change. |
+| zoomChangeInfo | [OnZoomChangeEvent](./arkts-basic-components-web-i.md) | Yes | Detailed information about the page zoom ratio change. |
 
 ## OnContextMenuUpdateCallback
 
@@ -545,8 +545,8 @@ Callback type for context menu item status updates.
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
 | menuItemId | [WebContextMenuItemId](./arkts-basic-components-web-e.md#webcontextmenuitemid) | Yes | ID of the context menu item. |
-| options | [WebContextMenuOptions](./arkts-basic-components-web-i.md#webcontextmenuoptions) | No | Options of the context menu item. |
+| options | [WebContextMenuOptions](./arkts-basic-components-web-i.md) | No | Options of the context menu item. |
 
 **Example**
 
-For complete sample code, see [onContextMenuUpdate](./arkts-basic-components-web-events.md#oncontextmenuupdate).
+For complete sample code, see [onContextMenuUpdate](./arkts-basic-components-web-events.md).

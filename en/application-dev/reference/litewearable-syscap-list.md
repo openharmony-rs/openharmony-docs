@@ -1,4 +1,4 @@
-# Lite Wearable
+# LiteWearable
 
 <!--Kit: Common-->
 <!--Subsystem: Common-->
@@ -6,7 +6,7 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=760a4e1dedfe737eb637a85efb3b53543e602f0b translatedAt=2026-11-06T12:23:14.733Z pushedAt=2026-11-13T11:46:58.297Z nl=1 -->
+<!-- md-trans-meta sourceCommit=760a4e1dedfe737eb637a85efb3b53543e602f0b translatedAt=2026-11-06T12:23:14.733Z pushedAt=2026-11-13T13:18:19.150Z nl=1 -->
 
 SystemCapability (SysCap) is a standalone feature in the operating system.
 

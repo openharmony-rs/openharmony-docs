@@ -1,4 +1,4 @@
-# Document Description
+# Development Description
 
 <!--Kit: Common-->
 <!--Subsystem: Common-->
@@ -6,7 +6,7 @@
 <!--Designer: @RayShih-->
 <!--Tester: @RayShih-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=714e48ace2337db6c5d136b0714f8325862b56dd translatedAt=2026-11-06T12:21:52.517Z pushedAt=2026-11-13T11:45:39.157Z nl=1 -->
+<!-- md-trans-meta sourceCommit=714e48ace2337db6c5d136b0714f8325862b56dd translatedAt=2026-11-06T12:21:52.517Z pushedAt=2026-11-13T13:12:32.985Z nl=1 -->
 
 API references provide the description of APIs used for application development. This topic describes common fields in the API references to help you better use the reference document.
 
@@ -27,8 +27,8 @@ The following description is provided for each API in the reference document to 
 
 <!--Del-->
 - You can use the [SystemCapability list](phone-syscap-list.md) to quickly look up the devices supported by a specific capability set; <!--DelEnd-->
-- The system provides the canIUse API. You can [use canIUse to check whether a SysCap is callable](./syscap.md#using-caniuse-to-check-whether-a-syscap-is-callable);
-- The same system capability may differ across devices. You can perform [adaptation development in multi-device application development scenarios](./syscap.md#adaptation-development-in-multi-device-application-development-scenarios).
+- The system provides the canIUse API. You can [use canIUse to check whether a SysCap is callable](./syscap.md#using-caniuse-to-determine-whether-a-syscap-can-be-called);
+- The same system capability may differ across devices. You can perform [adaptation development in multi-device application development scenarios](./syscap.md#adaptation-development-in-multi-device-app-development-scenarios).
 
 <!--RP1--><!--RP1End-->
 

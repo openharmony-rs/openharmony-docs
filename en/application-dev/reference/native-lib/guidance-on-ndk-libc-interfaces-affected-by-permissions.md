@@ -1,11 +1,11 @@
-# NDK-Related musl libc Interface Usage Restrictions
+# Notes on Usage Restrictions of musl libc Interfaces Involved in NDK
 <!--Kit: ArkTS-->
 <!--Subsystem: commonlibrary-->
 <!--Owner: @liyiming13-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=6df432d6e98eabe45df0f220a25bf9077b530bbb translatedAt=2026-11-06T12:14:09.735Z pushedAt=2026-11-13T11:21:44.275Z nl=1 -->
+<!-- md-trans-meta sourceCommit=6df432d6e98eabe45df0f220a25bf9077b530bbb translatedAt=2026-11-06T12:14:09.735Z pushedAt=2026-11-13T13:20:05.955Z nl=1 -->
 
 ## Overview
 
