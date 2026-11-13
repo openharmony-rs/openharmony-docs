@@ -297,11 +297,11 @@
 | napi_get_element | 获取给定Object指定索引处的元素。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
 | napi_get_element | 获取给定Object指定索引处的元素。 | napi_object_expected | 入参object不为ArkTS Object类型 | 确保入参正确 |
 | napi_get_element | 获取给定Object指定索引处的元素。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常 | 根据异常信息（hilog/crash栈）处理异常 |
-| napi_has_element | 若给定Object的指定索引处拥有属性，获取该元素。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
-| napi_has_element | 若给定Object的指定索引处拥有属性，获取该元素。 | napi_invalid_arg | 入参object为nullptr | 确保入参正确 |
-| napi_has_element | 若给定Object的指定索引处拥有属性，获取该元素。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
-| napi_has_element | 若给定Object的指定索引处拥有属性，获取该元素。 | napi_object_expected | 入参object不为ArkTS Object类型 | 确保入参正确 |
-| napi_has_element | 若给定Object的指定索引处拥有属性，获取该元素。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常 | 根据异常信息（hilog/crash栈）处理异常 |
+| napi_has_element | 判断给定Object在指定索引处是否存在元素。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
+| napi_has_element | 判断给定Object在指定索引处是否存在元素。 | napi_invalid_arg | 入参object为nullptr | 确保入参正确 |
+| napi_has_element | 判断给定Object在指定索引处是否存在元素。 | napi_invalid_arg | 入参result为nullptr | 确保入参正确 |
+| napi_has_element | 判断给定Object在指定索引处是否存在元素。 | napi_object_expected | 入参object不为ArkTS Object类型 | 确保入参正确 |
+| napi_has_element | 判断给定Object在指定索引处是否存在元素。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常 | 根据异常信息（hilog/crash栈）处理异常 |
 | napi_delete_element | 尝试删除给定Object的指定索引处的元素。 | napi_invalid_arg | 入参env为nullptr | 确保入参正确 |
 | napi_delete_element | 尝试删除给定Object的指定索引处的元素。 | napi_invalid_arg | 入参object为nullptr | 确保入参正确 |
 | napi_delete_element | 尝试删除给定Object的指定索引处的元素。 | napi_object_expected | 入参object不为ArkTS Object类型 | 确保入参正确 |
