@@ -178,7 +178,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
       console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
     } finally {
       await pendingRecordingWrite;
-      fs.closeSync(recordingFile.fd);
+      fileIo.closeSync(recordingFile.fd);
     }
 ```
 
