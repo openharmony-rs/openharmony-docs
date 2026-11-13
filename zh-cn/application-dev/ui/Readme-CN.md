@@ -410,6 +410,7 @@
 - UI开发调试调优<!--ui-debug-optimize-->
   - UI稳定性故障调试<!--ui-stability-->
     - [UI稳定性故障分析概述](arkts-stability-guide.md)
+    - [ArkUI NDK稳定性检测](ndk-stability-detection.md)
     - [UI相关应用崩溃常见问题](arkts-stability-crash-issues.md)
     - [UI相关应用无响应常见问题](arkts-stability-freeze-issues.md)
   - [UI显示异常调试](arkts-layout-debug.md)

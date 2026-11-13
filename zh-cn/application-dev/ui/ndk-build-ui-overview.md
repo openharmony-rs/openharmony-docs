@@ -82,4 +82,6 @@ ArkUI NDK接口能力主要包括：
 
 ## 注意事项
 
-使用NDK接口开发UI界面时，需要保证相关UI接口调用在应用主线程上调用，避免多线程操作导致应用崩溃问题。
+使用NDK接口开发UI界面时，应遵守各接口的线程要求。要求在UI线程调用的接口不能从子线程调用；需要并行构建UI时，请参考[NDK多线程创建组件](ndk-build-on-multi-thread.md)并遵守其使用约束。
+
+NDK接口的稳定性检测与问题定位方法请参见[ArkUI NDK稳定性检测](ndk-stability-detection.md)。

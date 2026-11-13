@@ -10,8 +10,7 @@
 
 应用稳定性问题主要包括应用崩溃、应用无响应、应用资源泄漏等问题。性能问题不属于稳定性范畴，要了解性能相关内容可以参考[UI性能优化概览](ui-performance-overview.md)。
 
-<!--RP1-->
-<!--RP1End-->
+从API版本26.1.0开始，ArkUI提供了NDK稳定性检测能力，用于辅助定位ArkUI NDK接口误用，帮助排查UI线程误用、节点销毁后使用、属性错配和多线程竞争等问题，具体请参考[ArkUI NDK稳定性检测](ndk-stability-detection.md)。
 
 ## 应用崩溃
 
