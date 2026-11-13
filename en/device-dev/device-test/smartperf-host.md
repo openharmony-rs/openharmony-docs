@@ -10,7 +10,7 @@ The device end consists of modules such as Native Hook (application-embedded com
 
 The PC end is accessible from the Smartperf-Host website. It consists of modules such as Trace Streamer, SQLite, HDC device management, data import, UI drawing, and data analysis.  
 ## Project Directory
-```
+```text
 /smartperf_host
 ├── host                          # Smartperf-Host related code
 │   ├── doc                       # Smartperf-Host documentation
@@ -48,9 +48,9 @@ The PC end is accessible from the Smartperf-Host website. It consists of modules
 - Using Native Memory
 
   With Native Memory in Smartperf_Host, you can track the allocation and release of your application's native memory (specific to C and C++). For details, see [Native Memory Usage](https://gitcode.com/openharmony-sig/developtools_smartperf_host/blob/master/ide/src/doc/md/quickstart_native_memory.md).
-- Using Hiperf
+- Using HiPerf
   
-  With Hiperf in Smartperf_Host, you can view the CPU usage of your application and the call stack. For details, see [Hiperf Usage](https://gitcode.com/openharmony-sig/developtools_smartperf_host/blob/master/ide/src/doc/md/quickstart_hiperf.md).
+  With HiPerf in Smartperf_Host, you can view the CPU usage of your application and the call stack. For details, see [HiPerf Usage](https://gitcode.com/openharmony-sig/developtools_smartperf_host/blob/master/ide/src/doc/md/quickstart_hiperf.md).
 - Using HiSystemEvent
 
   With HiSystemEvent in Smartperf_Host, you can inspect the power consumption of each category (CPU, network, and location, and more) of your application, resource application and usage records (WorkScheduler, Runninglock, Alarm, and Location Request), power consumption exceptions, and system states associated with the power consumption (battery level and screen status). For details, see [HiSystemEvent Usage](https://gitcode.com/openharmony-sig/developtools_smartperf_host/blob/master/ide/src/doc/md/quickstart_hisystemevent.md).
