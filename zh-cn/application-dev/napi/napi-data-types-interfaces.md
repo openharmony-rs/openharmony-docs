@@ -228,10 +228,6 @@ napi_async_complete_callback用于异步操作完成后的回调。当需要进�
 
 函数指针，在事件循环线程中执行，可与ArkTS/JS交互，从而实现更加复杂的功能，用于napi_create_threadsafe_function(napi_env env,…,napi_threadsafe_function_call_js call_js_cb,...)接口。
 
-**napi_cleanup_hook**
-
-函数指针，用于napi_add_env_cleanup_hook接口，当环境销毁时会被执行。
-
 **napi_async_cleanup_hook**
 
 函数指针，用于napi_add_async_cleanup_hook接口，当环境销毁时会被执行。
