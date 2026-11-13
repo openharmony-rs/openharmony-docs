@@ -307,7 +307,7 @@ UART模块适配HDF框架包含以下四个步骤：
 
         返回值：
 
-        HDF_STATUS相关状态（表3为部分展示，如需使用其他状态，可参考//drivers/hdf_core/interfaces/inner_api/utils/hdf_base.h中HDF_STATUS中HDF_STATUS定义）。
+        HDF_STATUS相关状态（表3为部分展示，如需使用其他状态，可参考//drivers/hdf_core/interfaces/inner_api/utils/hdf_base.h中HDF_STATUS定义）。
 
         **表 3** HDF_STATUS相关状态说明
 
@@ -432,8 +432,9 @@ UART模块适配HDF框架包含以下四个步骤：
 
         该函数需要在驱动入口结构体中赋值给Release接口，当HDF框架调用Init函数初始化驱动失败时，可以调用Release释放驱动资源，该函数中需包含释放内存和删除控制器等操作。
 
-        > ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**<br>
-        > 所有强制转换获取相应对象的操作前提是在Init函数中具备对应赋值的操作。
+        >**说明：**
+        >
+        >所有强制转换获取相应对象的操作前提是在Init函数中具备对应赋值的操作。
 
         ```c
         void HdfUartDeviceRelease(struct HdfDeviceObject *device)
