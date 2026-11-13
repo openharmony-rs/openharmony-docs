@@ -32,7 +32,7 @@
 
 ### 属性差异
 
-下面提供[自定义弹窗 (CustomDialog)](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)、[警告弹窗 (AlertDialog)](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)、[列表选择弹窗 (ActionSheet)](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md)、[showDialog（对话框）](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)、[showActionMenu（操作菜单）](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)、[presentCustomDialog（自定义弹出框）](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)、[openCustomDialogWithController（带控制器的自定义弹出框）](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)新旧接口的差异，并提供示例。
+下面提供[自定义弹窗 (CustomDialog)](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)、[警告弹窗 (AlertDialog)](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)、[列表选择弹窗 (ActionSheet)](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md)、[showDialog（对话框）](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)、[showActionMenu（操作菜单）](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)、[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)、[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)新旧接口的差异，并提供示例。
 
 - CustomDialog（自定义弹出框）
 
