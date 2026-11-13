@@ -8,6 +8,8 @@ typedef struct OH_UDMF_VirtualItem OH_UDMF_VirtualItem
 
 描述虚拟文件或虚拟目录节点。
 
+单棵虚拟文件树最多4096个节点，包含根节点和全部目录、文件节点。根节点深度为0，子节点深度逐层加1，最大深度为64。
+
 <!--Device-typedef struct OH_UDMF_VirtualItem OH_UDMF_VirtualItem--><!--Device-typedef struct OH_UDMF_VirtualItem OH_UDMF_VirtualItem-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
