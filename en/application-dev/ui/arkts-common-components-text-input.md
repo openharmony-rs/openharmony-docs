@@ -1,14 +1,15 @@
 # Text Input (TextInput/TextArea/Search)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=16d5012cdda87180d94e0c1ee3584d2af7b86146 translatedAt=2026-07-29T12:47:34.065Z pushedAt=2026-07-31T01:56:14.396Z -->
+<!-- md-trans-meta sourceCommit=0343ad56d42e26eda6bc28a12b6d16a9b839072e translatedAt=2026-11-12T03:37:03.254Z pushedAt=2026-11-13T01:10:23.382Z nl=1 -->
+
 
 TextInput and TextArea are input box components used to respond to user input, such as input in comment sections, chat boxes, and forms. They can also be combined with other components to build functional pages, for example, login and registration pages. For details, see the API documentation for [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md) and [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md). Search is a special input box component called a search box, which includes a search icon in its default style. For details, see the API documentation for [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md).
+
 
 > **NOTE**
 >
@@ -21,17 +22,18 @@ TextInput is a single-line input box, TextArea is a multiline input box, and Sea
 - A single-line input box.
 
   <!-- @[create_text_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
-
+  
   ``` TypeScript
   TextInput()
   ```
 
   ![textinput-create](figures/textinput-create.png)
 
+
 - A multiline input box. Text automatically wraps when it exceeds one line.
 
   <!-- @[create_text_area_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
-
+  
   ``` TypeScript
   /*Replace $r('app.string.CreatTextInput_textContent') with the actual resource file. In this example, the value of the resource file is
    * "I am TextArea I am TextArea I am TextArea I am TextArea"
@@ -45,7 +47,7 @@ TextInput is a single-line input box, TextArea is a multiline input box, and Sea
 - Search box.
 
   <!-- @[create_text_search](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/CreatTextInput.ets) -->
-
+  
   ``` TypeScript
   Search()
     // Replace $r('app.string.Creat_TextInput_Content') with the actual resource file. In this example, the value of the resource file is "Search"
@@ -76,7 +78,6 @@ TextInput()
 This includes the `Password` password input mode, `NUMBER_PASSWORD` numeric password mode, and `NEW_PASSWORD` new password input mode.
 
 The following example shows an input box in `Password` password input mode.
-
 <!-- @[set_password_input_type_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetTextInputType.ets) -->
 
 ``` TypeScript
@@ -100,7 +101,6 @@ TextInput()
 ![text_input_type_email](figures/text_input_type_email.PNG)
 
 ## Setting the Input Box Style
-
 You can set the input box style through attributes such as style, placeholder, backgroundColor, and contentType. For richer styling, you can combine them with [universal attributes](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md).
 
 ### Setting Multi-State Styles for Input Boxes
@@ -110,9 +110,8 @@ TextInput and TextArea support multi-state styles for input boxes, which can be 
 TextArea offers the following two types: the default style, with the parameter value `TextContentStyle.DEFAULT`; and inline mode, also known as inline input style, with the parameter value `TextContentStyle.INLINE`.
 
 - For an input box with the default style, there is no visual difference between the editing state and the non-editing state.
-
   <!-- @[textArea_style_default](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
-
+  
   ``` TypeScript
   TextArea()
     .style(TextContentStyle.DEFAULT)
@@ -121,9 +120,8 @@ TextArea offers the following two types: the default style, with the parameter v
 ![textArea_style_default](figures/textArea_style_default.gif)
 
 - Inline mode, also known as inline input style. In inline mode, the input box has clearly distinct styles between the editing state and the non-editing state.
-
   <!-- @[textArea_style_inline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SetInputMultiTypeStyle.ets) -->
-
+  
   ``` TypeScript
   TextArea()
     .style(TextContentStyle.INLINE)
@@ -144,6 +142,7 @@ TextInput({ placeholder: $r('app.string.i_am_placeholder') })
 
 ![textinput-placeholder](figures/textinput-placeholder.png)
 
+
 ### Setting the Current Text Content of the Input Box
 
 The following example shows the effect of the current text content in the input box.
@@ -159,7 +158,11 @@ TextInput({
 })
 ```
 
+
+
  ![textinput-border](figures/textinput-border.png)
+
+
 
 ### Setting the Input Box Background Color
 
@@ -177,12 +180,15 @@ TextInput({
   .backgroundColor(Color.Pink)
 ```
 
+
+
+
 ![Text input with pink background](figures/textinput-pink-bg.png)
+
 
 ### Setting the Auto-Fill Type of the Input Box
 
 The input box allows you to set the auto-fill type through the [contentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12) attribute. For supported types, see [ContentType](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#contenttype12).
-
 <!-- @[auto_fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/AutoFill.ets) -->
 
 ``` TypeScript
@@ -193,6 +199,7 @@ TextInput({ placeholder: $r('app.string.Auto_Fill_PlaceHolder') })
   .margin(20)
   .contentType(ContentType.EMAIL_ADDRESS)
 ```
+
 
 ## Binding Text Input Box Events
 
@@ -299,7 +306,6 @@ struct TextInputEventAdd {
 ![text input event](figures/text_input_event.gif)
 
 ## Text Menu Management
-
 The content carried by TextInput and TextArea components is plain text, without scenarios involving multiple span types such as images or mixed content. Therefore, only the system text menu is provided. You can customize system menu items through the [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#editmenuoptions12) API, including appending custom menu items, removing system menu items, modifying menu item content, and intercepting menu item tap events, thereby enabling customization of menu options within the system menu framework.
 
 ### System Menu
@@ -329,7 +335,6 @@ TextArea({ text: $r('app.string.show_selected_menu') })
 ![TextArea_select_menu](figures/TextArea_select_menu.jpg)
 
 ### Custom Menu Items in the System Menu
-
 Starting from API version 12, this example uses the [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#editmenuoptions12) API to implement the functionality of setting the text content, icon, and callback for custom menu extension items. Starting from API version 20, you can configure menu data in the [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#properties-1) callback.
 
 <!-- @[editMenu_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textInput/SelectMenu.ets) -->
@@ -403,7 +408,7 @@ TextInput({ text: $r('app.string.show_selected_menu') })
   })
 ```
 
-<!--Del-->![TextInput-edit-menu-options](figures/TextInput-edit-menu-options.gif)<!--DelEnd-->
+<!--Del--> <!--DelEnd-->
 
 ### Hiding System Menu Items in the System Menu
 
@@ -529,6 +534,9 @@ TextInput({ text: $r('app.string.Service_MenuItems_Text') })
   .copyOption(CopyOptions.InApp)
 ```
 
+
+
+
 <!--Del-->![TextInput-menu-subwindow](figures/TextInput-menu-subwindow.gif)<!--DelEnd-->
 
 ## Setting Input Box Avoidance
@@ -563,6 +571,7 @@ struct KeyboardAvoid {
 }
 ```
 
+
 ![textinputkeyboardavoid](figures/TextInputKeyboardAvoid.gif)
 
 ### Cursor Avoidance
@@ -582,9 +591,9 @@ import { KeyboardAvoidMode } from '@kit.ArkUI';
 <!-- @[cursor_avoid_part2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
-// Used in UIAbility
+// Use in UIAbility.
 onWindowStageCreate(windowStage: window.WindowStage): void {
-  // Main window is created, set main page for this ability
+  // The main window has been created. Set the main page for this Ability.
   hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
   windowStage.loadContent('pages/Index', (err, data) => {
@@ -647,5 +656,3 @@ struct CursorAvoid {
 ![textinputkeyboardavoid](figures/caretavoid.gif)
 
 <!--RP1--><!--RP1End-->
-
-<!--no_check-->

@@ -5,7 +5,7 @@
 <!--Designer: @VictorS67-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=843d6fa3247ca83eb1fb22363d3e4b77bc027d58 translatedAt=2026-09-21T11:35:07.262Z pushedAt=2026-09-23T09:18:35.576Z -->
+<!-- md-trans-meta sourceCommit=3771eed7d1b608be53a497766203274bdad3faa1 translatedAt=2026-11-12T03:32:40.676Z pushedAt=2026-11-12T09:20:06.714Z nl=1 -->
 
 [\@Require](../../reference/apis-arkui/arkui-ts/ts-universal-require-dynamic.md#require) is a decorator that validates whether \@Prop, \@State, \@Provide, \@BuilderParam, \@Param, and regular variables (variables without stateless decorator modification) require constructor parameter passing.
 
@@ -27,7 +27,9 @@ When \@Require is applied to a regular variable or a variable decorated with [\@
 
 The \@Require decorator can only decorate a regular variable or a variable decorated with \@Prop, \@State, \@Provide, \@BuilderParam, or \@Param in a struct.
 
-For details about the usage in DevEco Studio Previewer, see [PreviewChecker Inspection Rules](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-previewer-previewchecker-V5).
+<!--RP1-->
+
+<!--RP1End-->
 
 ## Use Cases
 
