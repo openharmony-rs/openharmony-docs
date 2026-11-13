@@ -729,7 +729,7 @@ setDefaultSmdpAddress\(slotId: number, address: string\): Promise\<ResultCode\>
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ----- | ----- |
 | slotId  | number | 是 | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。<br>取值限定为整数。 |
-| address | string | 是 | 要设置的默认SM-DP+地址，需为合法的URL格式，如（https://example.com）。 |
+| address | string | 是 | 要设置的默认SM-DP+地址，需为合法的URL格式，如https://example.com。 |
 
 **返回值：**
 
