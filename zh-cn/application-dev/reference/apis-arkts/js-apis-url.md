@@ -471,11 +471,9 @@ console.info(params.toString()); // Output 'fod=1&bard=2&fod=3'
 
 URLUtil是URL相关的工具类，提供URL查询参数序列化的辅助能力。[URLParams.toString](#tostring9)遵循application/x-www-form-urlencoded规范将空格编码为'+'，在需要将空格编码为%20的场景（如URL参数序列化后再解析、与其他系统对接）下，可以使用URLUtil的序列化能力。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -485,11 +483,11 @@ static toString(urlParams: URLParams): string
 
 将URLParams对象序列化为查询字符串，其中空格百分比编码为%20（而非'+'）。该接口不会修改入参urlParams及其所属URL对象的状态。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -508,8 +506,6 @@ static toString(urlParams: URLParams): string
 **示例：**
 
 ```ts
-import { url } from '@kit.ArkTS';
-
 // 序列化URLParams对象，空格编码为%20
 let params = new url.URLParams('detailAddress=a%20b');
 let result = url.URLUtil.toString(params); // Output 'detailAddress=a%20b'

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "概述ArkTS基于Actor内存隔离模型的线程间通信机制：普通对象采用结构化克隆算法深拷贝传递，同时支持ArrayBuffer转移、SharedArrayBuffer共享与Sendable引用传递，并介绍TaskPool和Worker的通信能力。"
+keywords: [线程间通信, Actor模型, 内存隔离, 结构化克隆, 序列化反序列化, 数据转移, 数据共享, 引用传递]
+doctype: guide
+status: active
+---
+
 # ArkTS线程间通信概述
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

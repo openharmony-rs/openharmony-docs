@@ -6,6 +6,7 @@
 <!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=f639ec0e8ba9607828f21f451876341bf5ee8fe1 translatedAt=2026-11-09T06:28:39.811Z pushedAt=2026-11-09T08:42:57.747Z nl=1 -->
 
 ## Overview
 
@@ -27,8 +28,8 @@ The file declares the structs and enums of the LowPowerVideoSink.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md) | OH_LowPowerVideoSink | Describes the declaration for the LowPowerVideoSink.|
-| [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md) | OH_LowPowerVideoSinkCallback | Contains a set of callback function pointers for the LowPowerVideoSink.<br> To ensure the normal running of the LowPowerVideoSink, you must register the instance of this struct with the [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md) instance and process the information reported by the callback functions.|
+| [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md) | OH_LowPowerVideoSink | **OH_LowPowerVideoSink** is a data structure used in low-power video output scenarios. You can use this structure to implement the low-power video output function. |
+| [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md) | OH_LowPowerVideoSinkCallback | Contains a set of callback function pointers for the **OH_LowPowerVideoSink**.<br> To ensure the normal running of the **LowPowerVideoSink**, you must register the instance of this struct with the [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md) instance and process the information reported by the callback functions. |
 
 ### Functions
 
@@ -189,3 +190,5 @@ Called when the playback is complete in the LowPowerVideoSink.
 | -- | -- |
 | [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)* sink | Pointer to an OH_LowPowerVideoSink instance.|
 | void* userData | Pointer to the data on which the caller depends when executing the callback.|
+
+

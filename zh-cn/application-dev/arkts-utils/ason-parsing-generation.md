@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍ASON解析与生成能力：支持JSON字符串与Sendable对象的互相转换，转换得到的Sendable对象可在并发任务间高性能传递，适用于跨线程传输结构化数据的开发场景。"
+keywords: [ASON, 解析与生成, 序列化, 反序列化, JSON字符串, Sendable对象, 跨线程传输, 结构化数据]
+doctype: guide
+status: active
+---
+
 # ASON解析与生成
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

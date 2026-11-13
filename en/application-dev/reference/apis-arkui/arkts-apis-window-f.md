@@ -1,10 +1,11 @@
 # Functions
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @waterwin-->
-<!--Designer: @nyankomiya-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @fei_1007-->
+<!--Designer: @gcw_sPCsris4-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=39c39bc7d6f38e5435e335a13e8450290f36df13 translatedAt=2026-11-02T13:01:13.959Z pushedAt=2026-11-09T06:12:10.556Z nl=1 -->
 
 > **NOTE**
 >
@@ -22,13 +23,17 @@ import { window } from '@kit.ArkUI';
 
 createWindow(config: Configuration, callback: AsyncCallback&lt;Window&gt;): void
 
-Creates a child window or system window. This API uses an asynchronous callback to return the result.
+Creates a child window, global floating window, modal window, or system window. This API uses an asynchronous callback to return the result.
 
-In non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, the child window created uses an [immersive layout](../../windowmanager/window-terminology.md#immersive-layout) by default.
+In non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, the child window created uses the [immersive layout](../../windowmanager/immersive-window-feature.md#immersive-layout) by default.
 
 In freeform window mode, the child window created uses an immersive layout when [decorEnabled](arkts-apis-window-i.md#configuration9) is set to **false**, and it uses a non-immersive layout when this parameter is set to **true**.
 
-**Required permissions**: ohos.permission.SYSTEM_FLOAT_WINDOW (required only when the window type is **window.WindowType.TYPE_FLOAT**.)
+A global floating window, modal window, or system window uses a non-immersive layout by default after creation.
+
+**Required permissions**:
+- API versions 12+: ohos.permission.SYSTEM_FLOAT_WINDOW (required only when the window type to create is **window.WindowType.TYPE_FLOAT**)
+- API versions 9 to 11: none
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -49,11 +54,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities. |
-| 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
-| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow. |
-| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid. |
+| 801     | Capability not supported. createWindow cannot work correctly due to limited device capabilities.<br>Applicable versions: 12+ |
+| 1300001 | Repeated operation. Possible cause: The window has been created and cannot be created again. |
+| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow.<br>Applicable versions: 12+ |
+| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid.<br>Applicable versions: 12+ |
 | 1300006 | This window context is abnormal. |
+| 1300008 | The display device is abnormal.<br>Applicable versions: 9-16 |
 | 1300009 | The parent window is invalid. |
 
 **Example**
@@ -67,7 +73,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     let windowClass: window.Window | undefined = undefined;
     let config: window.Configuration = {
-      name: "test",
+      name: 'test',
       windowType: window.WindowType.TYPE_DIALOG,
       ctx: this.context
     };
@@ -93,13 +99,17 @@ export default class EntryAbility extends UIAbility {
 
 createWindow(config: Configuration): Promise&lt;Window&gt;
 
-Creates a child window or system window. This API uses a promise to return the result.
+Creates a child window, global floating window, modal window, or system window. This API uses a promise to return the result.
 
-In non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, the child window created uses an [immersive layout](../../windowmanager/window-terminology.md#immersive-layout) by default.
+In non-[freeform window](../../windowmanager/window-terminology.md#freeform-window) mode, the child window created uses the [immersive layout](../../windowmanager/immersive-window-feature.md#immersive-layout) by default.
 
 In freeform window mode, the child window created uses an immersive layout when [decorEnabled](arkts-apis-window-i.md#configuration9) is set to **false**, and it uses a non-immersive layout when this parameter is set to **true**.
 
-**Required permissions**: ohos.permission.SYSTEM_FLOAT_WINDOW (required only when the window type is **window.WindowType.TYPE_FLOAT**.)
+A global floating window, modal window, or system window uses a non-immersive layout by default after creation.
+
+**Required permissions**:
+- API versions 12+: ohos.permission.SYSTEM_FLOAT_WINDOW (required only when the window type to create is **window.WindowType.TYPE_FLOAT**)
+- API versions 9 to 11: none
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -125,11 +135,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801     | Capability not supported. createWindow can not work correctly due to limited device capabilities. |
-| 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
-| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow. |
-| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid. |
+| 801     | Capability not supported. createWindow cannot work correctly due to limited device capabilities.<br>Applicable versions: 12+ |
+| 1300001 | Repeated operation. Possible cause: The window has been created and cannot be created again. |
+| 1300002 | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow.<br>Applicable versions: 12+ |
+| 1300004 | Unauthorized operation. Possible cause: The window type in the configuration is invalid.<br>Applicable versions: 12+ |
 | 1300006 | This window context is abnormal. |
+| 1300008 | The display device is abnormal.<br>Applicable versions: 9-16 |
 | 1300009 | The parent window is invalid. |
 
 **Example**
@@ -143,7 +154,7 @@ export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     let windowClass: window.Window | undefined = undefined;
     let config: window.Configuration = {
-      name: "test",
+      name: 'test',
       windowType: window.WindowType.TYPE_DIALOG,
       ctx: this.context
     };
@@ -152,7 +163,7 @@ export default class EntryAbility extends UIAbility {
         console.info('Succeeded in creating the window. Data: ' + JSON.stringify(value));
         windowClass = value;
         windowClass.resize(500, 1000);
-      }).catch((err:BusinessError)=> {
+      }).catch((err:BusinessError) => {
         console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
       });
     } catch (exception) {
@@ -176,13 +187,13 @@ Finds a window based on the name.
 
 | Name| Type  | Mandatory| Description    |
 | ------ | ------ | ---- | -------- |
-| name   | string | Yes  | Window name. When searching for a child window or system window, use the window name in [Configuration](arkts-apis-window-i.md#configuration9). When searching for the main window, use [getWindowName](arkts-apis-uicontext-uicontext.md#getwindowname12) to obtain the window name of the current instance.|
+| name   | string | Yes   | Window name. When searching for a child window, global floating window, modal window, or system window, use the window name in [Configuration](arkts-apis-window-i.md#configuration9). When searching for the main window, use [getWindowName](arkts-apis-uicontext-uicontext.md#getwindowname12) to obtain the window name of the current instance. |
 
 **Return value**
 
 | Type| Description|
 | ----------------- | ------------------- |
-| [Window](arkts-apis-window-Window.md) | Window found. If the window with the specified name does not exist, an empty object is returned.|
+| [Window](arkts-apis-window-Window.md) | Window found. If the window corresponding to the specified name does not exist, error code 1300002 is thrown. |
 
 **Error codes**
 
@@ -191,7 +202,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
 
 **Example**
 
@@ -212,6 +223,8 @@ Obtains the topmost layer child window of the current application. This API uses
 
 If no child window exists or the child window is not displayed by calling [showWindow()](arkts-apis-window-Window.md#showwindow9), the main window of the application is returned.
 
+In freeform window mode, [independent child windows](../../windowmanager/window-type-overview.md#auxiliary-window) are not included in the calculation scope of this API.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
@@ -230,7 +243,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is null or destroyed; 2. This window context is abnormal.  |
+| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is not created or destroyed; 2. Stage mode without context. |
 | 1300006 | This window context is abnormal. |
 
 **Example**
@@ -286,6 +299,8 @@ Obtains the topmost layer child window of the current application. This API uses
 
 If no child window exists or the child window is not displayed by calling [showWindow()](arkts-apis-window-Window.md#showwindow9), the main window of the application is returned.
 
+In freeform window mode, [independent child windows](../../windowmanager/window-type-overview.md#auxiliary-window) are not included in the calculation scope of this API.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.WindowManager.WindowManager.Core
@@ -309,7 +324,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is null or destroyed; 2. This window context is abnormal.   |
+| 1300002 | This window state is abnormal. Possible cause: 1. Top window or main window is not created or destroyed; 2. Stage mode without context.  |
 | 1300006 | This window context is abnormal. |
 
 **Example**
@@ -362,9 +377,11 @@ Shifts the window focus from the source window to the target window in the same 
 
 Ensure that the target window can gain focus (configurable by calling [setWindowFocusable()](arkts-apis-window-Window.md#setwindowfocusable9)) and that [showWindow()](arkts-apis-window-Window.md#showwindow9) has been successfully executed.
 
+This API is supported for non-independent child windows. Calling this API on an [independent child window](../../windowmanager/window-type-overview.md#auxiliary-window) has no effect and reports no error.
+
 > **NOTE**
 >
-> Before calling **shiftAppWindowFocus()**, ensure that the target window has called [loadContent()](arkts-apis-window-Window.md#loadcontent9) or [setUIContent()](arkts-apis-window-Window.md#setuicontent9) and these operations have been effective. Otherwise, an invisible window may gain focus, causing function exceptions or affecting user experience.
+> Before calling **shiftAppWindowFocus()**, ensure that the target window has called [loadContent()](arkts-apis-window-Window.md#loadcontent9) or [setUIContent()](arkts-apis-window-Window.md#setuicontent9) and these operations have been effective. Otherwise, an invisible window may gain focus, causing functional exceptions or affecting user experience.
 >
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -375,8 +392,8 @@ Ensure that the target window can gain focus (configurable by calling [setWindow
 
 | Name         | Type  | Mandatory | Description                   |
 | -------------- | ------ | ----- | ----------------------- |
-| sourceWindowId | number | Yes   | ID of the source window, which is having the focus. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
-| targetWindowId | number | Yes   | ID of the target window. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
+| sourceWindowId | number | Yes    | ID of the source window, which is having the focus. The value must be an integer greater than 0. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
+| targetWindowId | number | Yes    | ID of the target window. This value must be an integer greater than 0. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
 
 **Return value**
 
@@ -474,14 +491,14 @@ To transfer mouse input events, the source window must call this API within the 
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. On a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows, this API returns error code 801.
 
 **Parameters**
 
 | Name         | Type  | Mandatory | Description                   |
 | -------------- | ------ | ----- | ----------------------- |
-| sourceWindowId | number | Yes   | ID of the source window. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.           |
-| targetWindowId | number | Yes   | ID of the target window. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.            |
+| sourceWindowId | number | Yes    | ID of the source window. The value must be an integer greater than 0. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.            |
+| targetWindowId | number | Yes    | ID of the target window. The value must be an integer greater than 0. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.             |
 
 **Return value**
 
@@ -509,6 +526,7 @@ import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
+@Component
 struct Index {
   build() {
     Row() {
@@ -546,14 +564,14 @@ To transfer touchscreen input events, the source window must call this API withi
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
+**Device behavior differences**: This API can be called properly on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. On a device that supports freeform windows but is not in the freeform window state, or on a device that does not support freeform windows, this API returns error code 801.
 
 **Parameters**
 
 | Name         | Type  | Mandatory | Description                   |
 | -------------- | ------ | ----- | ----------------------- |
-| sourceWindowId | number | Yes   | ID of the source window. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID. The value must be an integer greater than 0. If it is less than or equal to 0, error code 1300016 is returned.           |
-| targetWindowId | number | Yes   | ID of the target window. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID. The value must be an integer greater than 0. If it is less than or equal to 0, error code 1300016 is returned.            |
+| sourceWindowId | number | Yes    | ID of the source window. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID. The value must be an integer greater than 0. If it is less than or equal to 0, error code 1300016 is returned.            |
+| targetWindowId | number | Yes    | ID of the target window. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID. The value must be an integer greater than 0. If it is less than or equal to 0, error code 1300016 is returned.             |
 | fingerId | number | Yes   | Unique ID of the finger in the touchscreen input event. You are advised to use the **touches** attribute in the [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent) object to obtain the ID. This parameter must be an integer greater than or equal to 0. If the value is less than 0, error code 1300016 is returned.            |
 
 **Return value**
@@ -568,7 +586,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                     |
 | ------- | --------------------------------------------- |
-| 801     | Capability not supported. Function shiftAppWindowTouchEvent can not work correctly due to limited device capabilities. |
+| 801     | Capability not supported. Function shiftAppWindowTouchEvent cannot work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: 1. SourceWindow cannot find: not created or not belong to current process; 2. TargetWindow cannot find: not created or not belong to current process; 3. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
 | 1300004 | Unauthorized operation. Possible cause: 1. Invalid window type. Only main windows and subwindows are supported; 2. The two windows are not from the same process. |
@@ -582,6 +600,7 @@ import { window } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
+@Component
 struct Index {
   build() {
     Row() {
@@ -615,7 +634,7 @@ struct Index {
 
 getWindowsByCoordinate(displayId: number, windowNumber?: number, x?: number, y?: number): Promise&lt;Array&lt;Window&gt;&gt;
 
-Obtains visible windows at the specified coordinates within the current application, sorted by their current layer order. The window at the topmost layer corresponds to index 0 of the array. This API uses a promise to return the result.
+Obtains the array of visible windows (which can be listened for through the [on('windowVisibilityChange')](arkts-apis-window-Window.md#onwindowvisibilitychange11) API) at the specified coordinates within the current application, sorted by their current layer order. The window at the topmost layer corresponds to index 0 of the array. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -627,8 +646,8 @@ Obtains visible windows at the specified coordinates within the current applicat
 | ------ | ---------- |----|---------------------------------------------------------------------------|
 | displayId   | number| Yes | ID of the display where the windows are located. The value must be an integer. If a non-integer is passed, the decimal part is ignored. The value can be obtained from [WindowProperties](arkts-apis-window-i.md#windowproperties).|
 | windowNumber    | number| No | Number of windows to obtain. The value must be an integer greater than 0. If a non-integer is passed, the decimal part is ignored. If this parameter is not set or is less than or equal to 0, all windows that meet the conditions are returned.                                 |
-| x    | number | No | X coordinate, with the top-left corner of the screen used as the origin. The value must be a non-negative integer. If a non-integer is passed, the decimal part is ignored. If this parameter is not set or is less than 0, all visible windows are returned.                                        |
-| y    | number| No | Y coordinate, with the top-left corner of the screen used as the origin. The value must be a non-negative integer. If a non-integer is passed, the decimal part is ignored. If this parameter is not set or is less than 0, all visible windows are returned.                                        |
+| x    | number | No  | X coordinate, with the top-left corner of the screen used as the origin, in px. The value must be a non-negative integer. If a non-integer is passed, the decimal part is ignored. If this parameter is not set or is less than 0, all visible windows are returned.                                 |
+| y    | number| No  | Y coordinate, with the top-left corner of the screen used as the origin, in px. The value must be a non-negative integer. If a non-integer is passed, the decimal part is ignored. If this parameter is not set or is less than 0, all visible windows are returned.                                 |
 
 **Return value**
 
@@ -645,6 +664,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
+
+**Example**
 
 ```ts
 import { window } from '@kit.ArkUI';
@@ -678,6 +699,13 @@ getAllWindowLayoutInfo(displayId: number): Promise&lt;Array&lt;WindowLayoutInfo&
 
 Obtains an array of visible window layout information on the specified screen. The width and height of each returned Rect are the scaled values after calculation, arranged according to the current window hierarchy. The highest level corresponds to index 0 in the array. This operation uses **Promise** for asynchronous callbacks.
 
+> **NOTE**
+>
+> The visible windows returned by this API may differ from what is seen by the naked eye, for example, in the following scenarios:
+> - When an upper-layer window has a transparency effect (any degree of transparency other than fully opaque), it does not block the lower-layer window, in which case the lower-layer window is visible.
+> - When a window has an irregular mask set through the [setWindowMask](arkts-apis-window-Window.md#setwindowmask12) API, the visibility calculation of the window is not affected, and the window remains visible. Even if the mask is set to all zeros, the window still participates in the visibility calculation based on its original rectangular size.
+> - Most windows under animation effects do not block the lower-layer window either. For example, when dragging a smart multi-window floating window on a phone, the returned lower-layer window is still visible.
+
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
 **System capability**: SystemCapability.Window.SessionManager
@@ -701,8 +729,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID   | Error Message|
 |----------| ------------------------------ |
 | 401     | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported. function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. Function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
+| 1300002 | This window state is abnormal.<br>Applicable versions: 15-18 |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
+
+**Example:**
 
 ```ts
 import { window } from '@kit.ArkUI';
@@ -726,6 +757,13 @@ try {
 getAllWindowLayoutInfo(displayId: number, option?: WindowInfoOptions): Promise&lt;Array&lt;WindowLayoutInfo&gt;&gt;
 
 Obtains an array of visible window layout information on the specified screen based on the filtering criteria specified by **option**. The width and height of each returned Rect are the scaled values after calculation, arranged according to the current window hierarchy. The highest level corresponds to index 0 in the array. This API returns the result asynchronously through a promise. If **option** is not passed or all fields in the passed **option** are set to their default values, this API is equivalent to [getAllWindowLayoutInfo](#windowgetallwindowlayoutinfo15).
+
+> **NOTE**
+>
+> The visible windows returned by this API may differ from what is seen by the naked eye, for example, in the following scenarios:
+> - When an upper-layer window has a transparency effect (any degree of transparency other than fully opaque), it does not block the lower-layer window, in which case the lower-layer window is visible.
+> - When a window has an irregular mask set through the [setWindowMask](arkts-apis-window-Window.md#setwindowmask12) API, the visibility calculation of the window is not affected, and the window remains visible. Even if the mask is set to all zeros, the window still participates in the visibility calculation based on its original rectangular size.
+> - Most windows under animation effects do not block the lower-layer window either. For example, when dragging a smart multi-window floating window on a phone, the returned lower-layer window is still visible.
 
 **Since**: 26.0.0
 
@@ -754,9 +792,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID   | Error Message|
 |----------| ------------------------------ |
-| 801      | Capability not supported. function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. Function getAllWindowLayoutInfo can not work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
-| 1300016 | Parameter error. Possible cause: Invalid parameter range. |
+| 1300016 | Parameter error. Possible cause: 1. Invalid parameter range. |
 
 ```ts
 import { window } from '@kit.ArkUI';
@@ -814,7 +852,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let promise = window.getVisibleWindowInfo();
   promise.then((data) => {
-    data.forEach(windowInfo=>{
+    data.forEach((windowInfo) => {
       console.info(`left:${windowInfo.rect.left}`);
       console.info(`top:${windowInfo.rect.top}`);
       console.info(`width:${windowInfo.rect.width}`);
@@ -824,9 +862,12 @@ try {
       console.info(`abilityName:${windowInfo.abilityName}`);
       console.info(`bundleName:${windowInfo.bundleName}`);
       console.info(`isFocused:${windowInfo.isFocused}`);
-    })
+      console.info(`displayId:${windowInfo.displayId}`);
+      console.info(`globalDisplayRect:${JSON.stringify(windowInfo.globalDisplayRect)}`);
+      console.info(`globalRect:${JSON.stringify(windowInfo.globalRect)}`);
+    });
   }).catch((err: BusinessError) => {
-    console.error('Failed to getWindowInfo. Cause: ' + JSON.stringify(err));
+    console.error(`Failed to getWindowInfo. Cause code: ${err.code}, message: ${err.message}`);
   });
 } catch (exception) {
   console.error(`Failed to get visible window info. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -853,7 +894,7 @@ Obtains the window mode of the window that is in the foreground lifecycle on the
 
 | Type                            | Description                     |
 | -------------------------------- |-------------------------|
-| Promise&lt;number&gt; | Promise used to return the window mode. Each binary bit represents a window mode. For details about the supported window modes, see [GlobalWindowMode](arkts-apis-window-e.md#globalwindowmode20). The return value is the result of a bitwise OR operation on the corresponding window mode values. For example, if there are full-screen, floating, and PiP windows on the current screen, the return value is **0b1\|0b100\|0b1000 = 13**.|
+| Promise&lt;number&gt; | Promise used to return the window mode. Each binary bit represents a window mode. For details about the supported window modes, see [GlobalWindowMode](arkts-apis-window-e.md#globalwindowmode20). The return value is the result of a bitwise OR operation on the corresponding window mode values. For example, if there are full-screen, floating, and PiP windows on the current screen, the return value is `0b1\|0b100\|0b1000 = 13`. |
 
 **Error codes**
 
@@ -895,7 +936,7 @@ Sets a watermark image for windows in the current application process. This API 
 
 | Name  | Type                                                                         | Mandatory| Description                                                                                                          |
 | -------- | ----------------------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------- |
-| pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined | Yes  | If this parameter is set to **image.PixelMap**, a watermark image is set. If this parameter is set to **undefined**, the watermark is removed.<br>If the width and height of the image both surpass the window and screen sizes, error code 1300016 is returned.<br>If the width or height of the image goes beyond the window dimensions, the excess part is trimmed.<br>If the width or height of the image falls short of the window dimensions, the shortfall is automatically repeated to complete the image.|
+| pixelMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined | Yes | If this parameter is set to `image.PixelMap`, a watermark image is set. If this parameter is set to `undefined`, the watermark is removed.<br>If the width and height of the image both surpass the window and screen sizes, error code 1300016 is returned.<br>If the width or height of the image goes beyond the window size, the excess part is trimmed.<br>If the width or height of the image falls short of the window size, the shortfall is automatically repeated to complete the image.|
 
 **Return value**
 
@@ -909,7 +950,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                                                                                 |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- |
-| 801       | Capability not supported. Function setWatermarkImageForAppWindows can not to work correctly due to limited device capabilities. |
+| 801       | Capability not supported. Function setWatermarkImageForAppWindows can not work correctly due to limited device capabilities. |
 | 1300003   | This window manager service works abnormally.                                                                             |
 | 1300016   | Parameter error. Possible cause: 1. Invalid parameter range.                                                              |
 
@@ -961,8 +1002,8 @@ This API takes effect for all processes of the same bundle name, for example, in
 
 | Name  | Type                         | Mandatory| Description                                                    |
 | -------- | ----------------------------- | ---- | -------------------------------------------------------- |
-| moduleName     | string                        | Yes  | Module name of the UIAbility. The value is a string of 0 to 200 bytes. Only the module names within the same application can be set. The module name is specified in the **name** field of the [module.json5 file](../../quick-start/module-configuration-file.md#tags-in-the-configuration-file).|
-| abilityName     | string                        | Yes  | Name of the UIAbility. The value is a string of 0 to 200 bytes. Only the ability names within the same application can be set. The UIAbility name is specified in the **name** field under [abilities in the module.json5 file](../../quick-start/module-configuration-file.md#abilities).|
+| moduleName     | string                        | Yes  | Module name of the UIAbility. The value is a string of 0 to 200 bytes. Only the module names within the same application package can be set. The module name is specified in the **name** field of the [module.json5 file](../../quick-start/module-configuration-file.md#tags-in-the-configuration-file).|
+| abilityName     | string                        | Yes  | Name of the UIAbility. The value is a string of 0 to 200 bytes. Only the ability names within the same application package can be set. The UIAbility name is specified in the **name** field under [abilities in the module.json5 file](../../quick-start/module-configuration-file.md#abilities).|
 | color | [ColorMetrics](js-apis-arkui-graphics.md#colormetrics12) | Yes  | Background color of the splash screen.                      |
 
 **Return value**
@@ -977,7 +1018,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------------------- |
-| 801     | Capability not supported.function setStartWindowBackgroundColor can not to work correctly due to limited device capabilities. |
+| 801     | Capability not supported. The setStartWindowBackgroundColor function cannot work correctly due to limited device capabilities. |
 | 1300003 | This window manager service works abnormally. Possible cause: Internal task error. |
 | 1300016 | Parameter error. Possible cause: Parameter exceeds the allowed length. |
 
@@ -988,7 +1029,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { ColorMetrics, window } from '@kit.ArkUI';
 
 try {
-  let promise = window.setStartWindowBackgroundColor("entry", "EntryAbility", ColorMetrics.numeric(0xff000000));
+  let promise = window.setStartWindowBackgroundColor('entry', 'EntryAbility', ColorMetrics.numeric(0xff000000));
   promise.then(() => {
     console.info('Succeeded in setting the starting window color.');
   }).catch((err: BusinessError) => {
@@ -1003,13 +1044,13 @@ try {
 
 getAllMainWindowInfo(): Promise&lt;Array&lt;MainWindowInfo&gt;&gt;
 
-Obtains the information about all main windows. This API uses a promise to return the result.
+Obtains the main window information of all applications. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.CUSTOM_SCREEN_CAPTURE
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Return value**
 
@@ -1038,7 +1079,8 @@ export default class EntryAbility extends UIAbility {
     console.info('Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error(`Failed to load the content. Cause: ${JSON.stringify(err)}`);
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
       }
       reqPermissionsFromUser(permissions, this.context);
       console.info('Succeeded in loading the content');
@@ -1048,10 +1090,10 @@ export default class EntryAbility extends UIAbility {
       windowInfoPromise.then((list: Array<window.MainWindowInfo>) => {
         console.info('Get all main window info success.');
       }).catch((err: BusinessError) => {
-        console.error(`Get all main window info failed. Error info: ${JSON.stringify(err)}`);
+        console.error(`Get all main window info failed. Cause code: ${err.code}, message: ${err.message}`);
       });
     } catch (err) {
-      console.error(`Get all main window info failed. Cause info: ${JSON.stringify(err)}`);
+      console.error(`Get all main window info failed. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -1087,7 +1129,7 @@ Obtains the screenshots of one or more main windows specified by **windowId**. T
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -1124,7 +1166,8 @@ export default class EntryAbility extends UIAbility {
     console.info('Ability onWindowStageCreate');
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {
-        console.error(`Failed to load the content. Cause: JSON.stringify(err)`);
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
       }
       reqPermissionsFromUser(permissions, this.context);
       console.info('Success in loading the content');
@@ -1145,13 +1188,13 @@ export default class EntryAbility extends UIAbility {
             console.info(`Get main window snapshot, getBytesNumberPerRow: ${list[i]?.getBytesNumberPerRow()}`);
           }
         }).catch((err: BusinessError) => {
-          console.error(`Get main window snapshot failed. Error info: ${JSON.stringify(err)}`);
+          console.error(`Get main window snapshot failed. Cause code: ${err.code}, message: ${err.message}`);
         });
       }).catch((err: BusinessError) => {
-        console.error(`Get all main window info failed. Error info: ${JSON.stringify(err)}`);
+        console.error(`Get all main window info failed. Cause code: ${err.code}, message: ${err.message}`);
       });
     } catch (err) {
-      console.error(`Get all main window info failed. Cause info: ${JSON.stringify(err)}`);
+      console.error(`Get all main window info failed. Cause code: ${err.code}, message: ${err.message}`);
     }
   }
 }
@@ -1202,10 +1245,10 @@ Registers listening for application process focus state changes. This listener i
 import { window } from '@kit.ArkUI';
 
 try {
-  window.onApplicationFocusStateChange((data) =>{
+  window.onApplicationFocusStateChange((data) => {
       console.info(`Succeeded in enabling the listener for application focus state changes. Data: ${data}`);
   })
-} catch(exception){
+} catch (exception) {
   console.error(`Failed to enable the listener for application focus state changes. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
@@ -1216,7 +1259,7 @@ offApplicationFocusStateChange(callback?: Callback\<boolean\>): void
 
 Unregisters listening for application process focus state changes.
 
-**System capability**: SystemCapability.WindowManager.WindowManager.Core
+**System capability**: SystemCapability.Window.SessionManager
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1242,7 +1285,72 @@ try {
   // Unregister all the callbacks that have been registered through on().
   window.offApplicationFocusStateChange(); 
 } catch (exception) {
-  console.error(`Failed to enable or disable the listener for application focus state changes. Cause code: ${exception.code}, message: ${exception.message}`);
+  console.error(`Failed to disable the listener for application focus state changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## window.setWindowPosition
+
+setWindowPosition(list: Array&lt;WindowPositionParams&gt;): Promise&lt;void&gt;
+
+Adjusts the z-order of one or more main windows in the current application process. For the supported adjustment modes, see the [WindowPosition](arkts-apis-window-e.md#windowposition) enumeration. This API uses a promise to return the result.
+
+It is not supported to adjust the z-order of the main window on a [virtual screen](../../displaymanager/display-terminology.md#virtual-screen).
+
+**Required permissions**: ohos.permission.WINDOW_TOPMOST (required when setting the main window to the top or canceling the top state of the main window that is currently at the top; not required when canceling the top state of a window that is not at the top)
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Device behavior differences**: This API can be properly called on PC/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+
+**Parameters**
+
+| Name | Type                                                                                       | Mandatory | Description                                        |
+| ---- | --------------------------------------------------------------------------------------- | ---- | --------------------------------------------- |
+| list | Array&lt;[WindowPositionParams](arkts-apis-window-i.md#windowpositionparams)&gt; | Yes   | List of position parameters of the main windows to be adjusted. The list cannot be empty, and the maximum number of entries cannot exceed 50. If the number of entries exceeds 50, error code 1300016 is returned.|
+
+**Return value**
+
+| Type                | Description                    |
+| -------------- | -------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID | Error Message |
+| ------- | -------------------------------------------- |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window to be adjusted cannot be found: not created, has been destroyed or not belong to current process; 2. The target main window specified by insertAfter cannot be found: not created or has been destroyed. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only main windows are supported. |
+| 1300008 | The display device is abnormal. Possible cause: The window to be adjusted or the target main window specified by insertAfter is on a virtual screen. |
+| 1300016 | Parameter error. Possible cause: The windowPositions list exceeds the maximum size of 50. |
+
+**Example**
+
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let list: Array<window.WindowPositionParams> = [{
+  windowId: 1,
+  insertAfter: 2,
+}];
+try {
+  window.setWindowPosition(list).then(() => {
+    console.info('Succeeded in adjusting the window position.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to adjust the window position. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  console.error(`Failed to adjust the window position. Cause info: ${JSON.stringify(err)}`);
 }
 ```
 
@@ -1252,7 +1360,7 @@ create(id: string, type: WindowType, callback: AsyncCallback&lt;Window&gt;): voi
 
 Creates a child window. This API uses an asynchronous callback to return the result.
 
-The child window created uses an [immersive layout](../../windowmanager/window-terminology.md#immersive-layout) by default.
+The child window created uses the [immersive layout](../../windowmanager/immersive-window-feature.md#immersive-layout) by default.
 
 > **NOTE**
 >
@@ -1294,7 +1402,7 @@ create(id: string, type: WindowType): Promise&lt;Window&gt;
 
 Creates a child window. This API uses a promise to return the result.
 
-The child window created uses an [immersive layout](../../windowmanager/window-terminology.md#immersive-layout) by default.
+The child window created uses the [immersive layout](../../windowmanager/immersive-window-feature.md#immersive-layout) by default.
 
 > **NOTE**
 >
@@ -1315,7 +1423,7 @@ The child window created uses an [immersive layout](../../windowmanager/window-t
 
 | Type                            | Description                                   |
 | -------------------------------- | --------------------------------------- |
-| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise used to return the child window created.|
+| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise used to return the window object created. |
 
 
 **Example**
@@ -1352,7 +1460,7 @@ Creates a system window. This API uses an asynchronous callback to return the re
 | ctx      | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes  | Current application context.                |
 | id       | string                                                  | Yes  | Window name, that is, the value of name in [Configuration](arkts-apis-window-i.md#configuration9).  |
 | type     | [WindowType](arkts-apis-window-e.md#windowtype7)                              | Yes  | Window type.                          |
-| callback | AsyncCallback&lt;[Window](arkts-apis-window-Window.md)&gt;                  | Yes  | Callback used to return the child window created.|
+| callback | AsyncCallback&lt;[Window](arkts-apis-window-Window.md)&gt;                  | Yes   | Callback used to return the created window object. |
 
 
 **Example**
@@ -1397,7 +1505,7 @@ Creates a system window. This API uses a promise to return the result.
 
 | Type                            | Description                                   |
 | -------------------------------- | --------------------------------------- |
-| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise used to return the child window created.|
+| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise used to return the window object created. |
 
 
 **Example**
@@ -1419,7 +1527,7 @@ promise.then((data) => {
 
 find(id: string, callback: AsyncCallback&lt;Window&gt;): void
 
-Finds a window based on the ID. This API uses an asynchronous callback to return the result.
+Finds a window based on the name. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -1455,7 +1563,7 @@ window.find('test', (err: BusinessError, data) => {
 
 find(id: string): Promise&lt;Window&gt;
 
-Finds a window based on the ID. This API uses a promise to return the result.
+Finds a window based on the name. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1589,7 +1697,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage:window.WindowStage){
+  onWindowStageCreate(windowStage: window.WindowStage){
     console.info('onWindowStageCreate');
     let windowClass: window.Window | undefined = undefined;
     try {
@@ -1641,7 +1749,7 @@ import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage:window.WindowStage) {
+  onWindowStageCreate(windowStage: window.WindowStage) {
     console.info('onWindowStageCreate');
     let windowClass: window.Window | undefined = undefined;
     let promise = window.getTopWindow(this.context);

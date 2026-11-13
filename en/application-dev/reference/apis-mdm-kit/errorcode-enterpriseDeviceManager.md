@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=a894d7980411a2984f50dafd44488a2990ac825c translatedAt=2026-11-03T04:37:22.525Z pushedAt=2026-11-03T12:08:25.499Z nl=1 -->
 
 > **NOTE**
 >
@@ -375,6 +376,24 @@ The device is not an enterprise device.
 
 Ensure that the device is an enterprise device.
 
+## 9200019 Policy List Exceeds the Limit
+
+**Error Message**
+
+The policy list has exceeded the limit.
+
+**Description**
+
+The policy list has exceeded the limit.
+
+**Possible Causes**
+
+The added policy list data exceeds the maximum configurable range.
+
+**Solution**
+
+Check the maximum configurable range of the policy, and adjust the input parameters based on the configured policy values to avoid exceeding the limit.
+
 ## 9201001 Failed to Manage the Certificate
 
 **Error Message**
@@ -412,6 +431,7 @@ If the called API is [bundleManager.install](./js-apis-enterprise-bundleManager.
 2. The operation attempts to install multiple apps with different bundle names.
 3. The application to be installed already exists when the installation parameter flag is 0.
 4. The user ID is invalid.
+5. The application installation package does not contain a valid certificate.
 
 <!--RP3--><!--RP3End-->
 
@@ -779,7 +799,7 @@ Add the application to another location.
 
 **Error Message**
 
-set default data sim failed.
+Failed to set the default data SIM card. The airplane mode is enabled or no SIM card is inserted.
 
 **Description**
 
@@ -1204,6 +1224,24 @@ The system account of the current type does not support this operation.
 
 Check whether the system account of the current type supports this operation.
 
+## 9201042 Failed to Toggle the Switch State
+
+**Error Message**
+
+Failed to toggle the switch state.
+
+**Description**
+
+This error code is reported when the switch state fails to be toggled.
+
+**Possible Causes**
+
+The Bluetooth, Wi-Fi, NFC, or NearLink related services on the current device are in an abnormal state.
+
+**Solution**
+
+Check whether the device-related services are running properly.
+
 ## 9201043 Prerequisites for Calling the API Not Met
 
 **Error Message**
@@ -1212,7 +1250,7 @@ Prerequisites for the API call have not been satisfied. For example, distributed
 
 **Description**
 
-This error code is reported when the prerequisites for calling the API are not met.
+This error code is reported when an application list that allows distributed bidirectional collaboration is added without disabling the one-way transmission capability between devices.
 
 **Possible Causes**
 
@@ -1248,7 +1286,7 @@ This permission cannot be disallowed.
 
 **Description**
 
-This error code is reported when an attempt is made to disable a specified permission.
+When a permission whose APL level is not normal or system_basic is disabled, this error code occurs.
 
 **Possible Causes**
 
@@ -1266,7 +1304,7 @@ The number of signed-in accounts reaches the upper limit.
 
 **Description**
 
-The number of signed-in system accounts on the current device has reached the upper limit.
+The number of system accounts that have been logged in on the current device reaches the upper limit.
 
 **Possible Causes**
 
@@ -1275,3 +1313,118 @@ The number of created and signed-in system accounts has reached the upper limit.
 **Solution**
 
 Try to sign out unnecessary system accounts and promptly remove system accounts that no longer need to be retained.
+
+## 9201048 Device Operation Failure
+
+**Error Message**
+
+Failed to operate the device.
+
+**Description**
+
+The current device operation failed.
+
+**Possible Causes**
+
+Disk erasure failed.
+
+**Solution**
+
+Erasure failed. Try again.
+
+## 9201052 Session Timeout
+
+**Error Message**
+
+USB key session time out.
+
+**Description**
+
+This error code is returned when the session times out or the authToken expires during third-party custom identity authentication.
+
+**Possible Causes**
+
+1. The session has expired (exceeding 10 minutes) because no operation was performed for a long time after openSession was called.
+2. The authToken obtained through userAuth has exceeded its validity period (10 minutes).
+
+**Solution**
+
+1. Call openSession again to obtain a new session and challenge value.
+2. Initiate user identity authentication again to obtain a new authToken.
+3. Use the new session and authToken to perform the operation again.
+
+## 9201053 The Number of Timers Has Reached the Upper Limit
+
+**Error Message**
+
+The number of timers has reached the upper limit.
+
+**Description**
+
+This error code occurs when the number of exact timers that are simultaneously effective for a device management application exceeds the upper limit (5).
+
+**Possible Causes**
+
+The number of exact timers that are simultaneously effective for a single device management application has exceeded the upper limit of 5.
+
+**Solution**
+
+Destroy the timers that are no longer in use and try again. You can destroy a timer through the [systemManager.destroyExactTimer](./js-apis-enterprise-systemManager.md#systemmanagerdestroyexacttimer) API, and create a new timer after the timer resources are released.
+
+## 9201054 The Specified Timer Does Not Exist or Does Not Belong to the Current Device Management Application
+
+**Error Message**
+
+The specified timer does not exist or does not belong to the current administrator.
+
+**Description**
+
+This error occurs when an operation is performed on a timer that does not exist or on a timer that is not created by the current device management application.
+
+**Possible Causes**
+
+This error code indicates that the specified timer does not exist or does not belong to the current device management application. The possible causes are as follows.
+1. The timer corresponding to the passed timer ID does not exist.
+2. The timer corresponding to the passed timer ID does not belong to the current device management application.
+
+**Solution**
+
+1. Check the passed timer ID to see whether it is correct. The timer ID is returned when the timer is created by the [systemManager.createExactTimer](./js-apis-enterprise-systemManager.md#systemmanagercreateexacttimer) API.
+2. Check whether the passed timer ID belongs to the current device management application. A device management application can operate only the timers created by itself.
+
+## 9201055 Failed to Obtain the USB Serial Number
+
+**Error Message**
+
+Failed to obtain the USB serial number.
+
+**Description**
+
+Failed to obtain the serial number of the specified USB device.
+
+**Possible Causes**
+
+The USB device is not connected or does not support serial number retrieval.
+
+**Solution**
+
+Replug the USB device and try to obtain the serial number again.
+
+## 9201056 Invalid External Storage Mount Policy
+
+**Error Message**
+
+Invalid external storage mount policy.
+
+**Description**
+
+This error code occurs when the mount policy passed in is invalid during external storage device mounting.
+
+**Possible Causes**
+
+1. Switching between different mount policies.
+2. The mount policy passed in is the same as the policy already mounted on the external storage device.
+
+**Solution**
+
+Unmount the external storage device first, and then pass in the corresponding mount policy to mount it.

@@ -1,10 +1,11 @@
 # Object Tracking Photography Development
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
-<!--Owner: @hobbycao-->
-<!--Designer: @saga2025-->
-<!--Tester: @zhaodengqi-->
+<!--Owner: @qxqxqxqxqx-->
+<!--Designer: @peter_1024-->
+<!--Tester: @Aullar-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=7a8f3f74f6fa8e0d7bd6e3d3ab9a0ba6dcc13e39 translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
 Mechanic Manager is supported since API version 20, offering richer photography experiences with professional features such as object tracking and automatic composition for applications (including third-party applications).
 
@@ -12,7 +13,7 @@ The object camera tracking function enables automated tracking of faces and obje
 
 ## Available APIs
 
-For details about how to use the public APIs of Mechanic Manager, see [@ohos.distributedHardware.mechanicManager (Mechanic Manager)](../reference/apis-mechanic-kit/js-apis-mechanicManager.md).
+For API usage instructions, see [@ohos.distributedHardware.mechanicManager (Mechanic Manager)](../reference/apis-mechanic-kit/js-apis-mechanicManager.md).
 
 | Name                                                              | Description                      |
 | -------------------------------------------------------------------- | -------------------------- |
@@ -23,16 +24,13 @@ For details about how to use the public APIs of Mechanic Manager, see [@ohos.dis
 |getCameraTrackingEnabled(): boolean | Checks whether camera tracking is enabled.<br>**Note**: This API is supported since API version 20.|
 |on(type: 'trackingStateChange', callback: Callback\<TrackingEventInfo>): void | Registers a callback listener for the **trackingStateChange** events.<br>**Note**: This API is supported since API version 20.|
 |off(type: 'trackingStateChange', callback?: Callback\<TrackingEventInfo>): void | Unregisters the callback listener for **trackingStateChange** events.<br>**Note**: This API is supported since API version 20.|
-|setCameraTrackingLayout(trackingLayout: CameraTrackingLayout): void | Sets the camera tracking layout.<br>**Note**: This API is supported since API version 20.|
-|getCameraTrackingLayout(): CameraTrackingLayout | Obtains the camera tracking layout of the mechanic device.<br>**Note**: This API is supported since API version 20.|
-|on(type: 'rotationAxesStatusChange', callback: Callback\<RotationAxesStateChangeInfo>): void | Registers a callback listener for the **rotationAxesStatusChange** events.<br>**Note**: This API is supported since API version 20.|
-|off(type: 'rotationAxesStatusChange', callback?: Callback\<RotationAxesStateChangeInfo>): void | Unregisters the callback listener for **rotationAxesStatusChange** events.<br>**Note**: This API is supported since API version 20.|
+|getCameraTrackingLayout(): CameraTrackingLayout | Obtains the camera tracking layout of the mechanic device.<br>**Note:** This API is supported since API version 20.|
 
 ## How to Develop
 
 ### Getting Started
 
-1. Prepare a mechanic device that supports Mechanic Kit.
+1. Prepare a mechanic device that supports the Mechanic Kit protocol. For details, see point 2 in Managing the Device Connection State.
 2. To verify the object camera tracking function, check that the camera driver of the main device supports face detection.
 3. Update the SDK to API 20 or later. For details, please refer to https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-software-install.
 4. Ensure that the gimbal is connected to the control device through Bluetooth.
@@ -48,7 +46,15 @@ Device connection status management helps to ensure that the application respond
     import { mechanicManager } from '@kit.MechanicKit';
     ```
 
-2. Obtain the list of connected mechanic devices.
+2. Query whether the device supports the mechanic device control capability.
+   <!-- @[is_control_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+
+   ``` TypeScript
+   let isSupported: boolean = mechanicManager.isControlSupported();
+   console.info(`'isSupported:' ${isSupported}`);
+   ```
+
+3. Obtain the list of connected mechanic devices.
    <!-- @[get_mechDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
@@ -78,7 +84,7 @@ Device connection status management helps to ensure that the application respond
     }
     ```
 
-3. Listen for the connection state changes of the device.
+4. Listen for the connection state changes of the device.
    <!-- @[on_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
 
     ```ts
@@ -98,7 +104,7 @@ Device connection status management helps to ensure that the application respond
     mechanicManager.on('attachStateChange', attachStateChangeCallback);
     ```
 
-4. Process device connection and disconnection events.
+5. Process device connection and disconnection events.
    <!-- @[handle_device_attached_detached](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
    
     ```ts
@@ -110,12 +116,12 @@ Device connection status management helps to ensure that the application respond
    
     function handleDeviceDetached(mechInfo: mechanicManager.MechInfo) {
     console.info(`Device disconnected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
-    savedMechanicIds.filter(id => id !== mechInfo.mechId);
+    savedMechanicIds = savedMechanicIds.filter(id => id !== mechInfo.mechId);
     // To do sth.
     }
     ```
    
-5. Cancel listening for device connection state changes.
+6. Cancel listening for device connection state changes.
    <!-- @[off_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
    
     ```ts

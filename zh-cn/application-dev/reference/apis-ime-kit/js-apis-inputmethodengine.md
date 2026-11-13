@@ -188,7 +188,7 @@ getInputMethodEngine(): InputMethodEngine
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.getInputMethodAbility()](#inputmethodenginegetinputmethodability9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.getInputMethodAbility()](#inputmethodenginegetinputmethodability9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -213,7 +213,7 @@ createKeyboardDelegate(): KeyboardDelegate
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.getKeyboardDelegate()](#inputmethodenginegetkeyboarddelegate9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.getKeyboardDelegate()](#inputmethodenginegetkeyboarddelegate9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -262,7 +262,7 @@ type SizeChangeCallback = (size: window.Size, keyboardArea?: KeyboardArea) => vo
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 23开始废弃。建议使用[InputMethodAbility](#inputmethodability)替代。
+> 从API version 8开始支持，从API version 23开始废弃。建议使用[InputMethodAbility](#inputmethodability)替代。
 
 下列API均需使用[getInputMethodEngine](js-apis-inputmethodengine.md#inputmethodenginegetinputmethodenginedeprecated)获取到InputMethodEngine实例后，通过实例调用。
 
@@ -2526,7 +2526,7 @@ panel.updateRegion(inputRegion);
 
 on(type: 'show', callback: () => void): void
 
-监听当前面板显示状态，使用 callback 异步回调。
+监听当前面板显示状态，使用callback异步回调。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3079,7 +3079,7 @@ hideKeyboard(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.KeyboardController.hide](#hide9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.KeyboardController.hide](#hide9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3111,7 +3111,7 @@ hideKeyboard(): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.KeyboardController.hide](#hide9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.KeyboardController.hide](#hide9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -3242,6 +3242,38 @@ keyboardController.exitCurrentInputType().then(() => {
 | CURSOR_LEFT  | 3 |向左。 |
 | CURSOR_RIGHT  | 4 |向右。 |
 
+## UnderlineStyle
+
+枚举，预上屏文本的下划线样式。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -- | -- | -- |
+| NONE | 0 | 无下划线。 |
+| SOLID | 1 | 实线下划线。 |
+| WAVY | 2 | 波浪线下划线。 |
+| DASHED | 3 | 虚线下划线。 |
+
+## PreviewTextStyle
+
+预上屏文本的样式。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -- | -- | -- | -- | -- |
+| underlineStyle | [UnderlineStyle](#underlinestyle) | 否 | 否 | 下划线样式。 |
+| underlineColor | number | 否 | 是 | 颜色格式为0xRRGGBB。透明度通道无效，由编辑框忽略。未设置时默认跟随光标颜色，显式设置0时为黑色。 |
+
 ## Range<sup>10+</sup>
 
 选中的文本范围。
@@ -3360,6 +3392,7 @@ InputClient是输入法客户端对象，代表当前绑定到输入法应用的
 - 编辑框属性：通过[getEditorAttribute](#geteditorattribute9)/[getEditorAttributeSync](#geteditorattributesync10)获取编辑框属性信息（输入类型、回车键类型等），据此调整键盘布局。
 - 文本预览：通过[setPreviewText](#setpreviewtext12)/[setPreviewTextSync](#setpreviewtextsync12)设置预览文本，通过[finishTextPreview](#finishtextpreview12)/[finishTextPreviewSync](#finishtextpreviewsync12)结束文本预览。
 - 私有通信：通过[sendPrivateCommand](#sendprivatecommand12)向应用发送私有命令，通过[sendMessage](#sendmessage15)/[recvMessage](#recvmessage15)进行消息通信。
+- 富文本获取：通过[getLeftRichText](#getleftrichtext)/[getLeftRichTextSync](#getleftrichtextsync)获取光标前的富文本内容，通过[getRightRichText](#getrightrichtext)/[getRightRichTextSync](#getrightrichtextsync)获取光标后的富文本内容，包括编辑框中的纯文本、图片、符号等多种span类型的富文本数据。
 
 注意事项：
 - InputClient实例与当前绑定的编辑框关联，当编辑框失去焦点或输入法解绑时，该实例可能失效。
@@ -4852,6 +4885,118 @@ inputClient.getCallingWindowInfo().then((windowInfo: inputMethodEngine.WindowInf
 });
 ```
 
+### setPreviewTextWithStyle
+
+setPreviewTextWithStyle(text: string, range: Range, style: PreviewTextStyle): Promise&lt;void&gt;
+
+设置预上屏文本及其样式。使用Promise异步返回结果。编辑框须支持预上屏，且已与当前输入法绑定并获得焦点。自绘编辑框需接收样式回调并自行绘制下划线。
+
+颜色省略时默认跟随光标颜色。显式传入0表示黑色。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -- | -- | -- | -- |
+| text | string | 是 | 要设置的预上屏文本。接口未单独限制文本长度，数据量过大时可能因IPC传输限制而调用失败。 |
+| range | [Range](#range10) | 是 | 替换范围，遵循[setPreviewText](#setpreviewtext12)的范围约束。传入{ start: -1, end: -1 }表示替换当前预上屏文本；无预上屏文本时按当前编辑位置处理。除该组合外，起止位置均须非负且start不大于end，范围不得超出当前允许替换的文本区域。 |
+| style | [PreviewTextStyle](#previewtextstyle) | 是 | 预上屏文本的下划线样式及可选的下划线颜色。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| Promise&lt;void&gt; | Promise对象，无返回值。 |
+
+**错误码：**
+
+详细说明请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| -- | -- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800011 | text preview not supported. |
+
+**示例：**
+
+```ts
+import { inputMethodEngine } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// client由输入法inputStart事件提供，须已与当前获焦编辑框绑定。
+async function setStyledPreview(client: inputMethodEngine.InputClient): Promise<void> {
+  const range: inputMethodEngine.Range = { start: -1, end: -1 };
+  const style: inputMethodEngine.PreviewTextStyle = {
+    underlineStyle: inputMethodEngine.UnderlineStyle.WAVY,
+    underlineColor: 0xFF0000
+  };
+  try {
+    await client.setPreviewTextWithStyle('预上屏文本', range, style);
+  } catch (err) {
+    const error = err as BusinessError;
+    console.error(`Failed to set preview text style, code=${error.code}, message=${error.message}`);
+  }
+}
+```
+
+### setPreviewTextWithStyleSync
+
+setPreviewTextWithStyleSync(text: string, range: Range, style: PreviewTextStyle): void
+
+设置预上屏文本及其样式。同步接口，失败时抛出异常。编辑框须支持预上屏，且已与当前输入法绑定并获得焦点。自绘编辑框需接收样式回调并自行绘制下划线。
+
+颜色省略时默认跟随光标颜色。显式传入0表示黑色。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -- | -- | -- | -- |
+| text | string | 是 | 要设置的预上屏文本。接口未单独限制文本长度，数据量过大时可能因IPC传输限制而调用失败。 |
+| range | [Range](#range10) | 是 | 替换范围，遵循[setPreviewText](#setpreviewtext12)的范围约束。传入{ start: -1, end: -1 }表示替换当前预上屏文本；无预上屏文本时按当前编辑位置处理。除该组合外，起止位置均须非负且start不大于end，范围不得超出当前允许替换的文本区域。 |
+| style | [PreviewTextStyle](#previewtextstyle) | 是 | 预上屏文本的下划线样式及可选的下划线颜色。 |
+
+**错误码：**
+
+详细说明请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
+| 错误码ID | 错误信息 |
+| -- | -- |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+| 12800011 | text preview not supported. |
+
+**示例：**
+
+```ts
+import { inputMethodEngine } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// client由输入法inputStart事件提供，须已与当前获焦编辑框绑定。
+function setStyledPreviewSync(client: inputMethodEngine.InputClient): void {
+  const range: inputMethodEngine.Range = { start: -1, end: -1 };
+  const style: inputMethodEngine.PreviewTextStyle = {
+    underlineStyle: inputMethodEngine.UnderlineStyle.WAVY,
+    underlineColor: 0xFF0000
+  };
+  try {
+    client.setPreviewTextWithStyleSync('预上屏文本', range, style);
+  } catch (err) {
+    const error = err as BusinessError;
+    console.error(`Failed to set preview text style, code=${error.code}, message=${error.message}`);
+  }
+}
+```
+
 ### setPreviewText<sup>12+</sup>
 
 setPreviewText(text: string, range: Range): Promise&lt;void&gt;
@@ -5130,7 +5275,7 @@ getAttachOptions(): AttachOptions
 
 > **注意：**
 >
-> 从API version 20 开始，错误码`801 Capability not supported.`被移除。
+> 从API version 20开始，错误码`801 Capability not supported.`被移除。
 
 **示例：**
 
@@ -5164,7 +5309,7 @@ on(type: 'attachOptionsDidChange', callback: Callback\<AttachOptions>): void
 
 > **注意：**
 >
-> 从API version 20 开始，错误码`801 Capability not supported.`被移除。
+> 从API version 20开始，错误码`801 Capability not supported.`被移除。
 
 **示例：**
 
@@ -5210,6 +5355,481 @@ inputClient.on('attachOptionsDidChange', attachOptionsDidChangeCallback);
 console.info(`attachOptionsDidChangeCallback subscribed to attachOptionsDidChange`);
 inputClient.off('attachOptionsDidChange', attachOptionsDidChangeCallback);
 console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
+```
+
+### getLeftRichText
+
+getLeftRichText(length: number): Promise&lt;InputMethodRichText&gt;
+
+获取光标前指定长度的富文本内容。使用Promise异步回调。
+
+使用场景：获取编辑框中光标前的富文本内容（包括纯文本、图片、符号等），用于输入法应用分析已输入的多模态内容，提供更精准的智能补全和输入建议。
+
+使用后效果：成功时返回光标前指定长度的[InputMethodRichText](#inputmethodrichtext)对象，输入法应用可通过该对象提取纯文本或遍历span数组获取各类型内容。
+
+> **说明：**
+>
+> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回对应获取区间的富文本内容；如果绑定的不是富文本组件，则返回的getSpans()数组中只包含SpanType.TEXT类型的span，不包含IMAGE等其他类型的span。
+>
+> 可获取的富文本总大小最大为128KB，超过该限制将导致请求失败。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| length | number | 是 | 文本长度。不能小于0，取值范围为[0, 4096]的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[InputMethodRichText](#inputmethodrichtext)&gt; | Promise对象，返回光标前指定长度的富文本。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let length: number = 5;
+inputClient?.getLeftRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting left rich text, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getLeftRichText. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+### getLeftRichTextSync
+
+getLeftRichTextSync(length: number): InputMethodRichText
+
+获取光标前指定长度的富文本内容。
+
+> **说明：**
+>
+> 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getLeftRichText](#getleftrichtext)。
+>
+> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回对应获取区间的富文本内容；如果绑定的不是富文本组件，则返回的getSpans()数组中只包含SpanType.TEXT类型的span，不包含IMAGE等其他类型的span。
+>
+> 可获取的富文本总大小最大为128KB，超过该限制将导致请求失败。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| length | number | 是 | 文本长度。不能小于0，取值范围为[0, 4096]的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [InputMethodRichText](#inputmethodrichtext) | 光标前指定长度的富文本。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let length: number = 5;
+  let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting left rich text sync, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  }
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getLeftRichTextSync. Code is ${error.code}, message is ${error.message}`);
+}
+```
+
+### getRightRichText
+
+getRightRichText(length: number): Promise&lt;InputMethodRichText&gt;
+
+获取光标后指定长度的富文本内容。使用Promise异步回调。
+
+使用场景：获取编辑框中光标后的富文本内容（包括纯文本、图片、符号等），用于输入法应用分析光标后的多模态内容，提供更精准的智能补全和输入建议。
+
+使用后效果：成功时返回光标后指定长度的[InputMethodRichText](#inputmethodrichtext)对象，输入法应用可通过该对象提取纯文本或遍历span数组获取各类型内容。
+
+> **说明：**
+>
+> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回对应获取区间的富文本内容；如果绑定的不是富文本组件，则返回的getSpans()数组中只包含SpanType.TEXT类型的span，不包含IMAGE等其他类型的span。
+>
+> 可获取的富文本总大小最大为128KB，超过该限制将导致请求失败。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| length | number | 是 | 文本长度。不能小于0，取值范围为[0, 4096]的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[InputMethodRichText](#inputmethodrichtext)&gt; | Promise对象，返回光标后指定长度的富文本。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let length: number = 5;
+inputClient?.getRightRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting right rich text, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getRightRichText. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+### getRightRichTextSync
+
+getRightRichTextSync(length: number): InputMethodRichText
+
+获取光标后指定长度的富文本内容。
+
+> **说明：**
+>
+> 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getRightRichText](#getrightrichtext)。
+>
+> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回对应获取区间的富文本内容；如果绑定的不是富文本组件，则返回的getSpans()数组中只包含SpanType.TEXT类型的span，不包含IMAGE等其他类型的span。
+>
+> 可获取的富文本总大小最大为128KB，超过该限制将导致请求失败。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| length | number | 是 | 文本长度。不能小于0，取值范围为[0, 4096]的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [InputMethodRichText](#inputmethodrichtext) | 光标后指定长度的富文本。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let length: number = 5;
+  let richText: inputMethodEngine.InputMethodRichText = inputClient!.getRightRichTextSync(length);
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting right rich text sync, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  }
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getRightRichTextSync. Code is ${error.code}, message is ${error.message}`);
+}
+```
+
+## SpanType
+
+枚举，定义富文本中span的类型。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+| 名称 | 值 | 说明 |
+| -------- | -- | -------- |
+| TEXT | 0 | 纯文本。|
+| IMAGE | 1 | 图片。|
+| SYMBOL | 2 | 符号。|
+| CUSTOM | 3 | 自定义。|
+
+## InputMethodRichText
+
+定义富文本内容。输入法应用通过[getLeftRichText](#getleftrichtext)/[getLeftRichTextSync](#getleftrichtextsync)/[getRightRichText](#getrightrichtext)/[getRightRichTextSync](#getrightrichtextsync)获取该对象实例后，可调用下列方法提取纯文本或遍历span数组。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+### getString
+
+getString(): string
+
+从富文本中提取纯文本。
+
+> **说明：**
+>
+> 提取规则因[SpanType](#spantype)类型而异：TEXT按原始文本内容正常提取；IMAGE和CUSTOM各替换为一个占位符；SYMBOL替换为两个占位符。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| string | 从富文本中提取的纯文本。 |
+
+**示例：**
+
+```ts
+inputMethodEngine.getInputMethodAbility()!
+  .on('inputStart',
+    (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+      let length: number = 5;
+      let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+      let plainText: string = richText.getString();
+      console.info(`plainText: ${plainText}`);
+    });
+```
+
+### getSpans
+
+getSpans(): Array&lt;RichTextSpan&gt;
+
+获取组成富文本的span数组。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Array&lt;[RichTextSpan](#richtextspan)&gt; | 富文本中的span数组。 |
+
+**示例：**
+
+```ts
+inputMethodEngine.getInputMethodAbility()!
+  .on('inputStart',
+    (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+      let length: number = 5;
+      let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+      let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+      for (let i = 0; i < spans.length; i++) {
+        let span = spans[i];
+        let type: inputMethodEngine.SpanType = span.getType();
+        let content: string = span.getContent();
+        let range: inputMethodEngine.Range = span.getRange();
+        console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+      }
+    });
+```
+
+## RichTextSpan
+
+定义富文本中的一个span。通过该对象可获取span的类型、内容和在富文本中的范围。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+### getType
+
+getType(): SpanType
+
+获取span的类型。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [SpanType](#spantype) | span的类型。 |
+
+**示例：**
+
+```ts
+inputMethodEngine.getInputMethodAbility()!
+  .on('inputStart',
+    (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+      let length: number = 5;
+      let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+      let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+      for (let i = 0; i < spans.length; i++) {
+        let type: inputMethodEngine.SpanType = spans[i].getType();
+        console.info(`span[${i}] type: ${type}`);
+      }
+    });
+```
+
+### getContent
+
+getContent(): string
+
+获取span的内容。
+
+> **说明：**
+>
+> 如果span类型为[SpanType.IMAGE](#spantype)，则content为图片插入到ArkUI富文本组件时携带的标签信息，即[RichEditorImageSpanOptions](../apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorimagespanoptions)中的imageTag属性。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| string | span的内容。 |
+
+**示例：**
+
+```ts
+inputMethodEngine.getInputMethodAbility()!
+  .on('inputStart',
+    (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+      let length: number = 5;
+      let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+      let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+      for (let i = 0; i < spans.length; i++) {
+        let content: string = spans[i].getContent();
+        console.info(`span[${i}] content: ${content}`);
+      }
+    });
+```
+
+### getRange
+
+getRange(): Range
+
+获取span在富文本中的范围，由起始位置和结束位置表示。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [Range](#range10) | span在富文本中的范围。 |
+
+**示例：**
+
+```ts
+inputMethodEngine.getInputMethodAbility()!
+  .on('inputStart',
+    (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+      let length: number = 5;
+      let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+      let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+      for (let i = 0; i < spans.length; i++) {
+        let range: inputMethodEngine.Range = spans[i].getRange();
+        console.info(`span[${i}] range: {start:${range.start}, end:${range.end}}`);
+      }
+    });
 ```
 
 ## CapitalizeMode<sup>20+</sup>
@@ -5420,7 +6040,7 @@ console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[InputClient](#inputclient9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[InputClient](#inputclient9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5436,7 +6056,7 @@ getForward(length:number, callback: AsyncCallback&lt;string&gt;): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getForward](#getforward9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getForward](#getforward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5470,7 +6090,7 @@ getForward(length:number): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getForward](#getforward9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getForward](#getforward9-1)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5507,7 +6127,7 @@ getBackward(length:number, callback: AsyncCallback&lt;string&gt;): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getBackward](#getbackward9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getBackward](#getbackward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5541,7 +6161,7 @@ getBackward(length:number): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getBackward](#getbackward9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getBackward](#getbackward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5582,7 +6202,7 @@ deleteForward(length:number, callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.deleteForward](#deleteforward9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.deleteForward](#deleteforward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5620,7 +6240,7 @@ deleteForward(length:number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.deleteForward](#deleteforward9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.deleteForward](#deleteforward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5665,7 +6285,7 @@ deleteBackward(length:number, callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.deleteBackward](#deletebackward9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.deleteBackward](#deletebackward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5703,7 +6323,7 @@ deleteBackward(length:number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.deleteBackward](#deletebackward9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.deleteBackward](#deletebackward9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5743,7 +6363,7 @@ sendKeyFunction(action: number, callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.sendKeyFunction](#sendkeyfunction9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.sendKeyFunction](#sendkeyfunction9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5781,7 +6401,7 @@ sendKeyFunction(action: number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.sendKeyFunction](#sendkeyfunction9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.sendKeyFunction](#sendkeyfunction9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5826,7 +6446,7 @@ insertText(text:string, callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.insertText](#inserttext9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.insertText](#inserttext9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5863,7 +6483,7 @@ insertText(text:string): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.insertText](#inserttext9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.insertText](#inserttext9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5907,7 +6527,7 @@ getEditorAttribute(callback: AsyncCallback&lt;EditorAttribute&gt;): void
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getEditorAttribute](#geteditorattribute9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getEditorAttribute](#geteditorattribute9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
@@ -5942,7 +6562,7 @@ getEditorAttribute(): Promise&lt;EditorAttribute&gt;
 
 > **说明：**
 >
-> 从 API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getEditorAttribute](#geteditorattribute9)替代。
+> 从API version 8开始支持，从API version 9开始废弃。建议使用[inputMethodEngine.InputClient.getEditorAttribute](#geteditorattribute9)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 

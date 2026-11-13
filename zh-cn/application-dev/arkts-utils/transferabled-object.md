@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Transferable对象（NativeBinding对象）的两种传递模式：共享模式支持跨线程共享访问，转移模式转移对象所有权且原线程不再拥有访问权限，适用于文件描述符、图形资源等需要高效传递的对象。"
+keywords: [Transferable对象, NativeBinding对象, 共享模式, 转移模式, 所有权转移, 文件描述符, 图形资源]
+doctype: guide
+status: active
+---
+
 # Transferable对象 (NativeBinding对象)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

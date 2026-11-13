@@ -47,6 +47,7 @@ RecentPhotoComponent({ recentPhotoOptions?: RecentPhotoOptions, onRecentPhotoChe
 | onRecentPhotoCheckResult | [RecentPhotoCheckResultCallback](#recentphotocheckresultcallback) | 否  | 最近图片查询结果回调函数。当应用需要知道最近图片是否存在时配置此回调；不填写时不影响组件正常显示，但应用无法获取最近图片的存在状态。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。              |
 | onRecentPhotoClick       | [RecentPhotoClickCallback](#recentphotoclickcallback)             | 是  | 选择最近图片回调函数。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                |
 | onRecentPhotoCheckInfo<sup>13+</sup>   | [RecentPhotoCheckInfoCallback](#recentphotocheckinfocallback13)   | 否  | 最近图片查询结果回调函数，并且返回该照片的相关信息。当应用需要获取最近图片是否存在以及图片详细信息时配置此回调；不填写时不影响组件正常显示，但应用无法获取图片的详细信息。<br> **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| onError | [ErrorCallback](ohos-file-PhotoPickerComponent.md#errorcallback23) | 否 | 使用RecentPhotoComponent组件发生错误时产生的回调。<br> **起始版本：** 26.0.1<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
 
 ## RecentPhotoOptions
 
@@ -56,11 +57,14 @@ RecentPhotoComponent({ recentPhotoOptions?: RecentPhotoOptions, onRecentPhotoChe
 
 | 名称                    | 类型                                                                                      | 只读 | 可选  | 说明   |
 |-------------------------|-----------------------------------------------------------------------------------------|-------|-------|--------|
-| period                  | number                                                                                  | 否 | 是    | 配置显示多久时间段内按创建时间排序的最新一个照片或视频，单位为秒（s），取值范围(0, 86400]。最长可配置时长为1天（86400s）。<br>当值小于等于0、大于86400或者未设置该值时，默认显示1天内最近照片或视频。当配置时间段内无符合的照片或视频时，组件不显示。<br> **注意：**<br>当isAutoRefreshSupported为true时，period字段失效。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| period                  | number                                                                                  | 否 | 是    | 配置最近图片或视频显示的时间范围，单位为秒（s）。配置后，系统将显示距离当前时间点指定时长内按创建时间排序的最新一个图片或视频。<br>- 在API版本26.0.1之前，取值范围为(0, 86400]，配置时长最长为1天（86400秒）。当值小于等于0、大于86400或者未设置该值时，默认显示1天内最近照片或视频。<br>- 从API版本26.0.1开始，配置时长最长（INT_MAX）为2147483647秒。当值为正无穷大（Number.POSITIVE_INFINITY）时，系统显示INT_MAX时间范围内的最新一个图片或视频；当值小于等于0、大于INT_MAX或者未配置时，默认按1天处理。<br>当配置时间段内无符合的图片或视频时，组件不显示。<br> **注意：**<br>当isAutoRefreshSupported为true时，period字段失效。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | MIMEType                | [photoAccessHelper.PhotoViewMIMETypes](arkts-apis-photoAccessHelper-e.md#photoviewmimetypes) | 否    | 是 | 最近图片控件显示的文件类型。可设置为IMAGE_TYPE（仅显示图片）、VIDEO_TYPE（仅显示视频）或IMAGE_VIDEO_TYPE（显示图片和视频）。默认为IMAGE_VIDEO_TYPE。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
 | photoSource             | [PhotoSource](#photosource)                                                             | 否    | 是 | 配置最近照片或视频显示内容的来源，比如拍照、截屏等。默认不限制来源。<br>**说明：**当isAutoRefreshSupported为true时，仍受此字段约束。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                               |
 | isAutoRefreshSupported<sup>20+</sup>  | boolean                                                                                 | 否    | 是| 配置最近图片组件在符合要求的最近照片或视频发生变更（包括新增、删除、修改）时是否进行刷新。<br>当组件原显示的最近照片或视频被删除，而无符合要求的照片或视频时，则显示占位符（可通过colorMode配置占位符颜色模式），组件不自动退出。<br>默认为false，不支持自动刷新。<br>配置为true时显示全部符合筛选条件的照片或视频（不受period限制，仍受photoSource和MIMEType约束）。<br>period字段失效。<br> **说明**：开启自动刷新会监听媒体库变更，建议在需要实时更新场景使用，避免频繁刷新影响性能。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 | colorMode<sup>20+</sup>               | [PickerColorMode](ohos-file-PhotoPickerComponent.md#pickercolormode)                                                      | 否    | 是 | 支持应用配置占位符的颜色模式。<br>当isAutoRefreshSupported为true，且无符合要求的最近照片或视频时，显示占位符，colorMode字段生效。<br>默认为跟随系统深浅色模式。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
+| isPersistAfterClick | boolean | 否 | 是 | 配置点击最近图片后是否保留组件。true表示点击后组件不销毁，false表示点击后组件销毁。默认为false。<br> **起始版本：** 26.0.1<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。|
+| assetFilter | Array\<[photoAccessHelper.OperationItem](arkts-apis-photoAccessHelper-class.md#operationitem22)\> | 否 | 是 | 媒体资产过滤器，长度限制为50个，超出取前50个。<br>**注意：**<br>1. 当使用该过滤器时，其他过滤器会失效。<br>2. 当配置多个条件时，过滤条件前后需要配置英文括号，否则可能和内部过滤项冲突。<br> **起始版本：** 26.0.1<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。|
+| isShowBadge | boolean | 否 | 是 | 配置最近图片上是否显示角标。true表示显示角标信息，如动态照片角标、视频时长等；false表示不显示任何角标，仅显示图片缩略图。默认为true。<br> **起始版本：** 26.0.1<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。|
 
 ## RecentPhotoInfo<sup>13+</sup>
 

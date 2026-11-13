@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用OH_JSVM_CreateInt32、OH_JSVM_CreateDouble等JSVM-API接口在C/C++的int32、uint32、int64、double与JavaScript number之间完成数值的创建与获取，适用于Native与JS跨语言数值传递场景，并需注意数据范围与符号类型的匹配。"
+keywords: [OH_JSVM_CreateInt32, OH_JSVM_CreateUint32, OH_JSVM_CreateInt64, OH_JSVM_CreateDouble, OH_JSVM_GetValueInt32, OH_JSVM_GetValueUint32, OH_JSVM_GetValueDouble, 数值类型, 数据类型转换]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口创建和获取数值
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

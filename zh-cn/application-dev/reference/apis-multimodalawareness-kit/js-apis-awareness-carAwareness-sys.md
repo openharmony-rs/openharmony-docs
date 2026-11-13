@@ -28,20 +28,19 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：** 此接口为系统接口。
+
 **系统能力：** SystemCapability.MultimodalAwareness.CarAwareness
 
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
-| SPATIAL_MOTION | 'SpatialMotion' | 隔空手势感知能力，支持识别用户隔空操作屏幕的动作。 |
-| SPATIAL_POINT | 'SpatialPoint' | 指向识别能力，支持识别用户指向的车内零部件。<br>**系统接口：** 此枚举成员为系统接口。 |
-| SPATIAL_GESTURE | 'SpatialGesture' | 肢体动作感知能力，支持识别用户特定姿势动作。<br>**系统接口：** 此枚举成员为系统接口。 |
-| REALTIME_WEATHER | 'RealTimeWeather' | 实时天气感知能力，支持识别车辆当前所处环境的天气状态。 |
-| REFUELING | 'Refueling' | 补能识别能力，支持识别车辆加油的开始与结束状态。 |
-| CAR_STATUS | 'CarStatus' | 车辆状态感知能力，支持获取车辆相关状态信息。<br>**系统接口：** 此枚举成员为系统接口。 |
-| HABIT_RECOMMENDATION | 'HabitRecommendation' | 习惯推荐感知能力，支持基于用户习惯生成推荐。<br>**系统接口：** 此枚举成员为系统接口。 |
-| SPATIAL_DRAW | 'SpatialDraw' | 空间绘画能力，支持识别用户隔空画画的动作。<br>**系统接口：** 此枚举成员为系统接口。 |
-| GESTURE_CLOSEDOOR | 'GestureCloseDoor' | 挥手关门识别能力，支持识别用户手部关门动作。<br>**系统接口：** 此枚举成员为系统接口。 |
-| OCCUPANT_SENSE | 'OccupantSense' | 乘员感知能力，支持识别车内乘员布局和分类。<br>**系统接口：** 此枚举成员为系统接口。 |
+| SPATIAL_POINT | 'SpatialPoint' | 指向识别能力，支持识别用户指向的车内零部件。|
+| SPATIAL_GESTURE | 'SpatialGesture' | 肢体动作感知能力，支持识别用户特定姿势动作。|
+| CAR_STATUS | 'CarStatus' | 车辆状态感知能力，支持获取车辆相关状态信息。|
+| HABIT_RECOMMENDATION | 'HabitRecommendation' | 习惯推荐感知能力，支持基于用户习惯生成推荐。|
+| SPATIAL_DRAW | 'SpatialDraw' | 空间绘画能力，支持识别用户隔空画画的动作。|
+| GESTURE_CLOSEDOOR | 'GestureCloseDoor' | 挥手关门识别能力，支持识别用户手部关门动作。|
+| OCCUPANT_SENSE | 'OccupantSense' | 乘员感知能力，支持识别车内乘员布局和分类。|
 
 ## CarAwarenessInfo
 

@@ -1,45 +1,47 @@
 # native_audio_stream_manager.h
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=4a6423166cec7f4a80883cd681b0b752ac39bc94 translatedAt=2026-11-03T03:54:33.924Z pushedAt=2026-11-04T03:11:46.955Z nl=1 -->
 
 ## Overview
 
-The file declares the functions related to an audio stream manager.
+Declares the APIs related to the audio stream manager.<br> The APIs in this file are used to create an AudioStreamManager and to set and manage audio streams.
 
-You can call the functions to create an audio stream manager and set and manage audio streams.
+**File to include:** <ohaudio/native_audio_stream_manager.h>
 
-**File to include**: <ohaudio/native_audio_stream_manager.h>
+**Library:** libohaudio.so
 
-**Library**: libohaudio.so
+**System capability:** SystemCapability.Multimedia.Audio.Core
 
-**System capability**: SystemCapability.Multimedia.Audio.Core
+**Since:** 19
 
-**Since**: 19
-
-**Related module**: [OHAudio](capi-ohaudio.md)
+**Related module:** [OHAudio](capi-ohaudio.md)
 
 ## Summary
 
 ### Structs
 
-| Name| typedef Keyword| Description|
+| Name | typedef Keyword | Description |
 | -- | -- | -- |
-| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) | OH_AudioStreamManager | Describes an audio stream manager, which is used for audio stream management.|
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) | OH_AudioStreamManager | Declares the audio stream manager, which is used to manage audio stream related functions. |
 
 ### Functions
 
-| Name| Description|
+| Name | Description |
 | -- | -- |
-| [OH_AudioCommon_Result OH_AudioManager_GetAudioStreamManager(OH_AudioStreamManager **streamManager)](#oh_audiomanager_getaudiostreammanager) | Obtains the handle to the audio stream manager.|
-| [OH_AudioCommon_Result OH_AudioStreamManager_GetDirectPlaybackSupport(OH_AudioStreamManager *audioStreamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage, OH_AudioStream_DirectPlaybackMode *directPlaybackMode)](#oh_audiostreammanager_getdirectplaybacksupport) | Obtains the direct playback mode supported by an audio stream.|
-| [OH_AudioCommon_Result OH_AudioStreamManager_IsAcousticEchoCancelerSupported(OH_AudioStreamManager *streamManager, OH_AudioStream_SourceType sourceType, bool *supported)](#oh_audiostreammanager_isacousticechocancelersupported) | Checks whether the audio stream of the specified source type supports acoustic echo cancellation.|
-| [bool OH_AudioStreamManager_IsFastPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)](#oh_audiostreammanager_isfastplaybacksupported) | Checks whether the current device supports low-latency playback for the specified audio stream information and usage scenario.|
-| [bool OH_AudioStreamManager_IsFastRecordingSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_SourceType source)](#oh_audiostreammanager_isfastrecordingsupported) | Checks whether the current device supports low-latency recording for the specified audio stream information and usage scenario.|
-| [bool OH_AudioStreamManager_IsIntelligentNoiseReductionEnabledForCurrentDevice(OH_AudioStreamManager *streamManager, OH_AudioStream_SourceType source)](#oh_audiostreammanager_isintelligentnoisereductionenabledforcurrentdevice) | Checks whether the intelligent noise reduction feature is enabled for the audio stream of the specified source type.|
+| [OH_AudioCommon_Result OH_AudioManager_GetAudioStreamManager(OH_AudioStreamManager **streamManager)](#oh_audiomanager_getaudiostreammanager) | Obtains the audio stream manager handle. |
+| [OH_AudioCommon_Result OH_AudioStreamManager_GetDirectPlaybackSupport(OH_AudioStreamManager *audioStreamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage, OH_AudioStream_DirectPlaybackMode *directPlaybackMode)](#oh_audiostreammanager_getdirectplaybacksupport) | Obtains the direct playback mode through a route supported by the current audio stream. |
+| [OH_AudioCommon_Result OH_AudioStreamManager_IsAcousticEchoCancelerSupported(OH_AudioStreamManager *streamManager, OH_AudioStream_SourceType sourceType, bool *supported)](#oh_audiostreammanager_isacousticechocancelersupported) | Queries whether the specified recording stream type usage scenario supports acoustic echo cancellation. |
+| [bool OH_AudioStreamManager_IsFastPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)](#oh_audiostreammanager_isfastplaybacksupported) | Queries whether the current device supports low-latency playback for the specified audio stream information and usage scenario. |
+| [bool OH_AudioStreamManager_IsFastRecordingSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_SourceType source)](#oh_audiostreammanager_isfastrecordingsupported) | Queries whether the current device supports low-latency recording for the specified audio stream information and usage scenario. |
+| [bool OH_AudioStreamManager_IsIntelligentNoiseReductionEnabledForCurrentDevice(OH_AudioStreamManager *streamManager, OH_AudioStream_SourceType source)](#oh_audiostreammanager_isintelligentnoisereductionenabledforcurrentdevice) | Queries whether intelligent noise reduction is enabled for the specified recording stream type. |
+| [bool OH_AudioStreamManager_IsMultichannelPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)](#oh_audiostreammanager_ismultichannelplaybacksupported) | Queries whether the current device supports multichannel playback for the specified audio stream information and usage scenario. |
+| [bool OH_AudioStreamManager_IsDirectPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)](#oh_audiostreammanager_isdirectplaybacksupported) | Queries whether the current device supports direct playback for the specified audio stream information and usage scenario. |
+| [bool OH_AudioStreamManager_IsOffloadPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)](#oh_audiostreammanager_isoffloadplaybacksupported) | Queries whether the current device supports low-power playback for the specified audio stream information and usage scenario. |
 
 ## Function Description
 
@@ -51,21 +53,21 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioStreamManager(OH_AudioStreamManage
 
 **Description**
 
-Obtains the handle to the audio stream manager.
+Obtains the audio stream manager handle.
 
-**Since**: 19
+**Since:** 19
 
 **Parameters**
 
-| Name| Description|
+| Parameter Item | Description |
 | -- | -- |
-| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) **streamManager | Double pointer to the audio stream manager.|
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) **streamManager | Audio stream manager handle. |
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS = 0**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM = 6800301**: The system status is incorrect.|
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | Result code.<br>         AUDIOCOMMON_RESULT_SUCCESS = 0: the function is executed successfully.<br>         AUDIOCOMMON_RESULT_ERROR_SYSTEM = 6800301: system state error. |
 
 ### OH_AudioStreamManager_GetDirectPlaybackSupport()
 
@@ -75,24 +77,24 @@ OH_AudioCommon_Result OH_AudioStreamManager_GetDirectPlaybackSupport(OH_AudioStr
 
 **Description**
 
-Obtains the direct playback mode supported by an audio stream.
+Obtains the direct playback mode through a route supported by the current audio stream.
 
-**Since**: 19
+**Since:** 19
 
 **Parameters**
 
-| Name| Description|
+| parameter item | Description |
 | -- | -- |
-| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *audioStreamManager | Handle to the audio stream manager. The handle is obtained by calling [OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager).|
-| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | Pointer to the audio stream information.|
-| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | Usage scenario of the audio stream.|
-| [OH_AudioStream_DirectPlaybackMode](capi-native-audiostream-base-h.md#oh_audiostream_directplaybackmode) *directPlaybackMode | Pointer to [OH_AudioStream_DirectPlaybackMode](capi-native-audiostream-base-h.md#oh_audiostream_directplaybackmode), which is used to receive the direct playback mode supported.|
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *audioStreamManager | Audio stream manager handle. Obtain the handle through [OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager). |
+| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | Audio stream information pointer. |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | Audio stream usage scenario. |
+| [OH_AudioStream_DirectPlaybackMode](capi-native-audiostream-base-h.md#oh_audiostream_directplaybackmode) *directPlaybackMode | Pointer to [OH_AudioStream_DirectPlaybackMode](capi-native-audiostream-base-h.md#oh_audiostream_directplaybackmode), used to obtain the direct playback mode through a route supported by the current audio stream. |
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS = 0**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101**:<br>                                                        1. The **audioStreamManager** parameter is nullptr.<br>                                                        2. The **streamInfo** parameter is nullptr.<br>                                                        3. The **usage** parameter is invalid.<br>                                                        4. The **directPlaybackMode** parameter is nullptr.|
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | Result code.<br>         AUDIOCOMMON_RESULT_SUCCESS = 0: the function is executed successfully.<br>         AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101:<br>                                                        1. The parameter audioStreamManager is nullptr;<br>                                                        2. The parameter streamInfo is nullptr;<br>                                                        3. The parameter usage is invalid;<br>                                                        4. The parameter directPlaybackMode is nullptr. |
 
 ### OH_AudioStreamManager_IsAcousticEchoCancelerSupported()
 
@@ -102,23 +104,23 @@ OH_AudioCommon_Result OH_AudioStreamManager_IsAcousticEchoCancelerSupported(OH_A
 
 **Description**
 
-Checks whether the audio stream of the specified source type supports acoustic echo cancellation.
+Queries whether the specified recording stream type usage scenario supports acoustic echo cancellation.
 
-**Since**: 20
+**Since:** 20
 
 **Parameters**
 
-| Name| Description|
+| Parameter item | Description |
 | -- | -- |
-| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | Handle to the audio stream manager. The handle is obtained by calling [OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager).|
-| [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) sourceType | Usage scenario ([OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)) of the audio input stream.|
-| bool *supported | Pointer to the result for the support of acoustic echo cancellation. **true** if supported, **false** otherwise.|
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | Audio stream manager handle. Obtain the handle through [OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager). |
+| [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) sourceType | Usage scenario of the specified audio input stream. |
+| bool *supported | Pointer to the parameter indicating whether the specified source type supports acoustic echo cancellation. The value **true** indicates that acoustic echo cancellation is supported, and **false** indicates that it is not supported. |
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
-| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS = 0**: The function is executed successfully.<br>          **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101**:<br>                                                    1. The **audioStreamManager** parameter is nullptr.<br>                                                    2. The **sourceType** parameter is invalid.<br>                                                    3. The **supported** parameter is nullptr.|
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | Result code.<br>          AUDIOCOMMON_RESULT_SUCCESS = 0: the function is executed successfully.<br>          AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM = 6800101:<br>                                                    1. The parameter audioStreamManager is nullptr;<br>                                                    2. The parameter sourceType is invalid;<br>                                                    3. The parameter supported is nullptr. |
 
 ### OH_AudioStreamManager_IsFastPlaybackSupported()
 
@@ -128,23 +130,23 @@ bool OH_AudioStreamManager_IsFastPlaybackSupported(OH_AudioStreamManager *stream
 
 **Description**
 
-Checks whether the current device supports low-latency playback for the specified audio stream information and usage scenario.
+Queries whether the current device supports low-latency playback for the specified audio stream information and usage scenario.
 
-**Since**: 20
+**Since:** 20
 
 **Parameters**
 
-| Name| Description|
+| Parameter Item | Description |
 | -- | -- |
-| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | Handle to the audio stream manager. The handle is obtained by calling [OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager).|
-| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | Pointer to the audio stream information.|
-| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | Usage scenario of the audio stream.|
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | Audio stream manager handle. Obtain the handle through [OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager). |
+| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | Audio stream information pointer. |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | Audio stream usage scenario. |
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
-| bool | Check result for the support of low-latency playback. **true** if supported, **false** otherwise.|
+| bool | true if low-latency playback is supported; false otherwise. |
 
 ### OH_AudioStreamManager_IsFastRecordingSupported()
 
@@ -154,23 +156,23 @@ bool OH_AudioStreamManager_IsFastRecordingSupported(OH_AudioStreamManager *strea
 
 **Description**
 
-Checks whether the current device supports low-latency recording for the specified audio stream information and usage scenario.
+Queries whether the current device supports low-latency recording for the specified audio stream information and usage scenario.
 
-**Since**: 20
+**Since:** 20
 
 **Parameters**
 
-| Name| Description|
+| Parameter Item | Description |
 | -- | -- |
-| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | Handle to the audio stream manager. The handle is obtained by calling [OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager).|
-| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | Pointer to the audio stream information.|
-| [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) source | Usage scenario of the audio stream.|
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | Audio stream manager handle. Obtain the handle through [OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager). |
+| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | Audio stream information pointer. |
+| [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) source | Audio stream usage scenario. |
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
-| bool | Check result for the support of low-latency recording. **true** if supported, **false** otherwise.|
+| bool | true indicates that low-latency recording is supported, and false indicates the opposite. |
 
 ### OH_AudioStreamManager_IsIntelligentNoiseReductionEnabledForCurrentDevice()
 
@@ -180,19 +182,99 @@ bool OH_AudioStreamManager_IsIntelligentNoiseReductionEnabledForCurrentDevice(OH
 
 **Description**
 
-Checks whether the intelligent noise reduction feature is enabled for the audio stream of the specified source type.
+Queries whether the intelligent noise reduction switch is enabled for the specified recording stream type.
 
-**Since**: 21
+**Since:** 21
 
 **Parameters**
 
-| Name| Description|
+| parameter item | Description |
 | -- | -- |
-| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | Handle to the audio stream manager. which is obtained by calling [OH_AudioManager_GetAudioStreamManager](#oh_audiomanager_getaudiostreammanager).|
-| [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) source | Audio stream usage scenario determined based on the audio device and pipe type.|
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | Audio stream manager handle. Obtain the handle through [OH_AudioManager_GetAudioStreamManager](#oh_audiomanager_getaudiostreammanager). |
+| [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype) source | Audio stream usage scenario determined based on the audio device and pipeline type selection result. |
 
-**Returns**
+**Return**
 
-| Type| Description|
+| Type | Description |
 | -- | -- |
-| bool | Check result for whether the intelligent noise reduction feature is enabled. **true** if enabled, and **false** otherwise.|
+| bool | true indicates that the intelligent noise reduction switch is enabled, and false indicates that the switch is disabled. |
+
+### OH_AudioStreamManager_IsMultichannelPlaybackSupported()
+
+```c
+bool OH_AudioStreamManager_IsMultichannelPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)
+```
+
+**Description**
+
+Queries whether the current device supports multichannel playback for the specified audio stream information and usage scenario.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| parameter item | Description |
+| -- | -- |
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | Audio stream manager handle. Obtain the handle through [OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager). |
+| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | Audio stream information pointer, used to describe the basic audio format. |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | Audio stream usage scenario, used to determine the selection result of the audio device and route type. |
+
+**Return**
+
+| Type | Description |
+| -- | -- |
+| bool | Returns true if multichannel playback is supported, and false otherwise. |
+
+### OH_AudioStreamManager_IsDirectPlaybackSupported()
+
+```c
+bool OH_AudioStreamManager_IsDirectPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)
+```
+
+**Description**
+
+Queries whether the current device supports direct playback for the specified audio stream information and usage scenario.
+
+**Since:** 26.0.0
+
+**Parameters:**
+
+| Parameter Item | Description |
+| -- | -- |
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | Audio stream manager handle. Obtain the handle through [OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager). |
+| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | Audio stream information pointer, used to describe the basic audio format. |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | Audio stream usage scenario, used to determine the selection result of the audio device and route type. |
+
+**Return:**
+
+| Type | Description |
+| -- | -- |
+| bool | The value**true** indicates that direct playback is supported, and **false** indicates the opposite. |
+
+### OH_AudioStreamManager_IsOffloadPlaybackSupported()
+
+```c
+bool OH_AudioStreamManager_IsOffloadPlaybackSupported(OH_AudioStreamManager *streamManager, OH_AudioStreamInfo *streamInfo, OH_AudioStream_Usage usage)
+```
+
+**Description**
+
+Queries whether the current device supports low-power playback for the specified audio stream information and usage scenario.
+
+**Since:** 26.0.0
+
+**Parameters:**
+
+| Parameter item | Description |
+| -- | -- |
+| [OH_AudioStreamManager](capi-ohaudio-oh-audiostreammanager.md) *streamManager | Audio stream manager handle. Obtain the handle through [OH_AudioManager_GetAudioStreamManager](capi-native-audio-stream-manager-h.md#oh_audiomanager_getaudiostreammanager). |
+| [OH_AudioStreamInfo](capi-ohaudio-oh-audiostreaminfo.md) *streamInfo | Pointer to the audio stream information, used to describe the basic audio format. |
+| [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) usage | Audio stream usage scenario, used to determine the selection result of the audio device and route type. |
+
+**Return:**
+
+| Type | Description |
+| -- | -- |
+| bool | true if low-power playback is supported; false otherwise. |
+
+

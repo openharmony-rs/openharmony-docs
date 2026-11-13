@@ -969,6 +969,8 @@ isSupportEffectSync(effectId: string): boolean
      // 查询是否支持预设'haptic.notice.success'
      let ret = vibrator.isSupportEffectSync('haptic.notice.success');
      console.info(`The query result is ${ret}`);
+     let imeRet = vibrator.isSupportEffectSync(vibrator.HapticFeedback.EFFECT_IME_STRENGTH1);
+     console.info(`IME strength1 supported: ${imeRet}`);
    } catch (error) {
      let e: BusinessError = error as BusinessError;
      console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
@@ -1030,7 +1032,7 @@ getVibratorInfoSync(param?: VibratorInfoParam): Array&lt;VibratorInfo&gt;;
 
 查询一个或所有设备的马达信息列表。适用于在触发振动前查询设备马达能力和多马达设备的马达ID，以便选择合适的马达触发振动。
 
-不传param时查询所有设备马达信息；传入VibratorInfoParam可查询指定设备或马达。返回VibratorInfo数组，包含deviceId、vibratorId、deviceName、isHdHapticSupported、isLocalVibrator等属性，可用于startVibration (#vibratorstartvibration9)和stopVibration (#vibratorstopvibration19)中指定马达和设备。
+不传param时查询所有设备马达信息；传入VibratorInfoParam可查询指定设备或马达。返回VibratorInfo数组，包含deviceId、vibratorId、deviceName、isHdHapticSupported、isSupportIntensity、isLocalVibrator等属性，可用于startVibration (#vibratorstartvibration9)和stopVibration (#vibratorstopvibration19)中指定马达和设备。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
@@ -1044,7 +1046,7 @@ getVibratorInfoSync(param?: VibratorInfoParam): Array&lt;VibratorInfo&gt;;
 
 | 类型                            | 说明                                                      |
 |-------------------------------| --------------------------------------------------------- |
-| Array&lt;[VibratorInfo](#vibratorinfo19)&gt; | 马达设备的信息数组。每个元素包含deviceId、vibratorId、deviceName、isHdHapticSupported、isLocalVibrator等属性，可用于选择合适的马达触发振动或判断设备振动能力。 |
+| Array&lt;[VibratorInfo](#vibratorinfo19)&gt; | 马达设备的信息数组。每个元素包含deviceId、vibratorId、deviceName、isHdHapticSupported、isSupportIntensity、isLocalVibrator等属性，可用于选择合适的马达触发振动或判断设备振动能力。 |
 
 
 **示例**：
@@ -1056,6 +1058,9 @@ getVibratorInfoSync(param?: VibratorInfoParam): Array&lt;VibratorInfo&gt;;
    try {
      const vibratorInfoList: vibrator.VibratorInfo[] = vibrator.getVibratorInfoSync({ deviceId: 1, vibratorId: 3 });
      console.info(`vibratorInfoList: ${JSON.stringify(vibratorInfoList)}`);
+     if (vibratorInfoList.length > 0 && vibratorInfoList[0].isSupportIntensity) {
+       console.info('intensity adjustment is supported');
+     }
    } catch (error) {
      let e: BusinessError = error as BusinessError;
      console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
@@ -1215,6 +1220,7 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 | vibratorId          | number  | 否  | 否  | 马达ID。可用于[startVibration](#vibratorstartvibration9)和[stopVibration](#vibratorstopvibration19)等接口指定目标马达。     |
 | deviceName          | string  | 否  | 否  | 设备名称。     |
 | isHdHapticSupported | boolean | 否  | 否  | 是否支持高清振动。true表示支持高清振动，可使用VibrateFromFile和VibrateFromPattern类型触发振动；false表示不支持，使用自定义振动类型可能效果不佳。 |
+| isSupportIntensity | boolean | 否  | 是  | 是否支持振动强度调节。true表示支持振动强度调节，false表示不支持振动强度调节。默认值：false。<br>**起始版本：** 26.1.0 |
 | isLocalVibrator     | boolean | 否  | 否  | 是否为本地设备。true表示本地设备，可直接触发振动；false表示远程设备，需在分布式场景下使用。 |
 
 
@@ -1473,6 +1479,11 @@ build(): VibratorPattern;
 | EFFECT_NOTICE_SUCCESS<sup>18+</sup> | 'haptic.notice.success' | 表达成功通知的振动效果。适用于操作成功提醒场景。     |
 | EFFECT_NOTICE_FAILURE<sup>18+</sup> | 'haptic.notice.fail'    | 表达失败通知的振动效果。适用于操作失败提醒场景。     |
 | EFFECT_NOTICE_WARNING<sup>18+</sup> | 'haptic.notice.warning' | 表达警告通知的振动效果。适用于风险警告提醒场景。     |
+| EFFECT_IME_STRENGTH1 | 'haptic.grade.normal.strength1' | 输入法键盘的振动效果。强度为1（最小强度）。<br>**起始版本：** 26.1.0 |
+| EFFECT_IME_STRENGTH2 | 'haptic.grade.normal.strength2' | 输入法键盘的振动效果。强度为2。<br>**起始版本：** 26.1.0 |
+| EFFECT_IME_STRENGTH3 | 'haptic.grade.normal.strength3' | 输入法键盘的振动效果。强度为3（中等强度）。<br>**起始版本：** 26.1.0 |
+| EFFECT_IME_STRENGTH4 | 'haptic.grade.normal.strength4' | 输入法键盘的振动效果。强度为4。<br>**起始版本：** 26.1.0 |
+| EFFECT_IME_STRENGTH5 | 'haptic.grade.normal.strength5' | 输入法键盘的振动效果。强度为5（最大强度）。<br>**起始版本：** 26.1.0 |
 
 ## VibratorStopMode
 

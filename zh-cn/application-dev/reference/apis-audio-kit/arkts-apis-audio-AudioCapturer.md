@@ -1121,7 +1121,7 @@ audioCapturer.off('markReach', markReachCallback);
 
 on(type: 'periodReach', frame: number, callback: Callback&lt;number&gt;): void
 
-监听标记到达事件（当采集的帧数达到frame参数的值时触发，即按周期上报信息）。使用callback异步回调。
+监听周期到达事件（当采集的帧数达到frame参数的值时触发，即按周期上报信息）。使用callback异步回调。
 
 如果将frame设置为10，每采集10帧数据均会上报信息（例如：第10帧、第20帧、第30帧......）。
 

@@ -51,8 +51,7 @@ on(type: 'block', callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 @Entry
@@ -112,8 +111,7 @@ on(type: 'succeed', callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 @Entry
@@ -173,8 +171,7 @@ on(type: 'fail', callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 @Entry
@@ -234,8 +231,7 @@ on(type: 'cancel', callback: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 @Entry
@@ -295,8 +291,7 @@ off(type: 'block', callback?: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 @Entry
@@ -356,8 +351,7 @@ off(type: 'succeed', callback?: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 @Entry
@@ -417,8 +411,7 @@ off(type: 'fail', callback?: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 @Entry
@@ -478,8 +471,7 @@ off(type: 'cancel', callback?: Callback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 @Entry
@@ -598,8 +590,7 @@ onJobStateChanged(jobId: string, state: PrintDocumentAdapterState): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
     onStartLayoutWrite(jobId: string, oldAttrs: print.PrintAttributes, newAttrs: print.PrintAttributes, fd: number,
@@ -655,8 +646,7 @@ print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): voi
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 // 传入文件的URI
@@ -711,8 +701,7 @@ print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 // 传入文件的URI
@@ -757,8 +746,7 @@ print(files: Array&lt;string&gt;, context: Context, callback: AsyncCallback&lt;P
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 @Entry
@@ -826,8 +814,7 @@ print(files: Array&lt;string&gt;, context: Context): Promise&lt;PrintTask&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
 @Entry
@@ -895,8 +882,7 @@ print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: Prin
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -967,8 +953,6 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**属性：**
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | copyNumber | number | 否 | 是 | 表示文件打印份数。取值应为正整数。不传入时默认值为0。 |
@@ -984,8 +968,6 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**属性：**
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | startPage | number | 否 | 是 | 表示起始页。取值应为正整数，默认值为1。 |
@@ -998,8 +980,6 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 定义打印页面尺寸的接口。
 
 **系统能力：** SystemCapability.Print.PrintFramework
-
-**属性：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -1160,6 +1140,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 | PRINT_JOB_BLOCK_FILE_UPLOADING_ERROR<sup>18+</sup> | 30 | 表示文件上传失败。 |
 | PRINT_JOB_BLOCK_DRIVER_MISSING<sup>20+</sup> | 34 | 表示打印驱动缺失。 |
 | PRINT_JOB_BLOCK_INTERRUPT<sup>20+</sup> | 35 | 表示打印任务中断。 |
+| PRINT_JOB_BLOCK_EDM_POLICY_RESTRICTED | 44 | 表示打印任务受EDM策略限制。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.1<br> |
 | PRINT_JOB_BLOCK_PRINTER_UNAVAILABLE<sup>20+</sup> | 98 | 表示打印机不可用。 |
 | PRINT_JOB_BLOCK_UNKNOWN | 99 | 表示打印未知问题。 |
 
@@ -1185,6 +1166,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 | E_PRINT_SMB_LOGIN_LOCKOUT<sup>24+</sup> | 13100012 | 表示当前SMB协议共享打印机账号因多次登录失败而被锁定。请等待账号解锁后重试，或联系管理员处理。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
 | E_PRINT_SMB_CONNECTION_FAILURE<sup>24+</sup> | 13100013 | 表示SMB协议共享打印机连接失败（发生网络错误、主机不可达或端口被阻止）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
 | E_PRINT_SMB_INVALID_CREDENTIALS<sup>24+</sup> | 13100014 | 表示SMB协议共享打印机账号/密码错误。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> |
+| E_PRINT_EDM_POLICY_RESTRICTED | 13100015 | 表示打印操作受EDM策略限制。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.1<br> |
 
 ## ApplicationEvent<sup>14+</sup>
 
@@ -1218,7 +1200,7 @@ addPrinterToDiscovery(printerInformation: PrinterInformation): Promise&lt;void&g
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果，用于异步操作。resolve表示操作成功，reject表示操作失败。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1232,8 +1214,7 @@ addPrinterToDiscovery(printerInformation: PrinterInformation): Promise&lt;void&g
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerInformation : print.PrinterInformation = {
     printerId : 'testPrinterId', // printerId可通过on('printerChange')回调获取
@@ -1271,7 +1252,7 @@ updatePrinterInDiscovery(printerInformation: PrinterInformation): Promise&lt;voi
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果，用于异步操作。resolve表示操作成功，reject表示操作失败。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1285,8 +1266,7 @@ updatePrinterInDiscovery(printerInformation: PrinterInformation): Promise&lt;voi
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let testPageSize : print.PrintPageSize = {
     id : 'ISO_A4',
@@ -1342,7 +1322,7 @@ removePrinterFromDiscovery(printerId: string): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果，用于异步操作。resolve表示操作成功，reject表示操作失败。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1356,8 +1336,7 @@ removePrinterFromDiscovery(printerId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 // printerId可通过on('printerChange')回调获取
 let printerId : string = 'testPrinterId';
@@ -1402,8 +1381,7 @@ getPrinterInformationById(printerId: string): Promise&lt;PrinterInformation&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 // printerId可通过on('printerChange')回调获取
 let printerId : string = 'testPrinterId';
@@ -1419,8 +1397,6 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 定义打印机信息的接口。
 
 **系统能力：** SystemCapability.Print.PrintFramework
-
-**属性：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -1442,8 +1418,6 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 定义打印机能力的接口。
 
 **系统能力：** SystemCapability.Print.PrintFramework
-
-**属性：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -1501,8 +1475,6 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**属性：**
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | defaultDuplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 是 | 表示默认单双面模式。 |
@@ -1549,7 +1521,7 @@ getAddedPrinters(): Promise&lt;Array&lt;string&gt;&gt;
 
 获取系统中已添加的打印机列表，使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1570,8 +1542,7 @@ getAddedPrinters(): Promise&lt;Array&lt;string&gt;&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 print.getAddedPrinters().then((printers: string[]) => {
     console.info('getAddedPrinters success ' + JSON.stringify(printers));
@@ -1681,7 +1652,7 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;, callback: AsyncCallback
 
 通过指定“打印扩展能力列表”来发现打印机，发现的打印机具备指定的打印扩展能力。如果指定空的打印扩展能力列表，则表示加载所有扩展能力。使用callback异步回调。在不需要继续发现时，调用[stopDiscoverPrinter](#printstopdiscoverprinter20)停止发现，释放系统资源，否则会导致系统持续进行打印机发现，消耗系统资源。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1703,8 +1674,7 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;, callback: AsyncCallback
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 // 加载所有打印扩展能力
 let extensionList: string[] = [];
@@ -1725,7 +1695,7 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;): Promise&lt;void&gt;
 
 通过指定“打印扩展能力列表”来发现打印机，发现的打印机具备指定的打印扩展能力。如果指定空的打印扩展能力列表，则表示加载所有扩展能力，使用Promise异步回调。在不需要继续发现时，调用[stopDiscoverPrinter](#printstopdiscoverprinter20)停止发现，释放系统资源，否则会导致系统持续进行打印机发现，消耗系统资源。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1739,7 +1709,7 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果，用于异步操作。resolve表示操作成功，reject表示操作失败。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1752,8 +1722,7 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 // 加载所有打印扩展能力
 let extensionList: string[] = [];
@@ -1772,7 +1741,7 @@ stopDiscoverPrinter(callback: AsyncCallback&lt;void&gt;): void
 
 停止发现打印机，使用callback异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1793,8 +1762,7 @@ stopDiscoverPrinter(callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 print.stopDiscoverPrinter((error: BusinessError) => {
     if (error) {
@@ -1811,7 +1779,7 @@ stopDiscoverPrinter(): Promise&lt;void&gt;
 
 停止发现打印机，使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1819,7 +1787,7 @@ stopDiscoverPrinter(): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果，用于异步操作。resolve表示操作成功，reject表示操作失败。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1832,8 +1800,7 @@ stopDiscoverPrinter(): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 print.stopDiscoverPrinter().then(() => {
     console.info('stop Discovery success');
@@ -1848,7 +1815,7 @@ connectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 
 通过打印机ID连接打印机，使用callback异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1870,8 +1837,7 @@ connectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 // printerId可通过on('printerChange')回调获取
 let printerId: string = 'printerId_32';
@@ -1890,7 +1856,7 @@ connectPrinter(printerId: string): Promise&lt;void&gt;
 
 通过打印机ID连接打印机，使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -1904,7 +1870,7 @@ connectPrinter(printerId: string): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果，用于异步操作。resolve表示操作成功，reject表示操作失败。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1917,8 +1883,7 @@ connectPrinter(printerId: string): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 // printerId可通过on('printerChange')回调获取
 let printerId: string = 'printerId_32';
@@ -1951,7 +1916,7 @@ startPrint(job: PrintJobData): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果，用于异步操作。resolve表示操作成功，reject表示操作失败。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1964,8 +1929,7 @@ startPrint(job: PrintJobData): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
 
 let tempPath = '/data/storage/el2/base/haps/entry/files/note.jpg';
@@ -2058,8 +2022,6 @@ print.startPrint(printJobData).then(() => {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**属性：**
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | top | number | 否 | 是 | 表示页面上边距。默认值为0。单位：毫米。|
@@ -2073,8 +2035,6 @@ print.startPrint(printJobData).then(() => {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**属性：**
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | startPage | number | 否 | 是 | 表示起始页。取值应为正整数，默认值为1。 |
@@ -2087,8 +2047,6 @@ print.startPrint(printJobData).then(() => {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**属性：**
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | previewRange | [PrinterRange](#printerrange24) | 否 | 否 | 表示预览页面范围。 |
@@ -2099,8 +2057,6 @@ print.startPrint(printJobData).then(() => {
 定义打印分辨率的接口。
 
 **系统能力：** SystemCapability.Print.PrintFramework
-
-**属性：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -2113,8 +2069,6 @@ print.startPrint(printJobData).then(() => {
 定义打印机能力的接口。
 
 **系统能力：** SystemCapability.Print.PrintFramework
-
-**属性：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -2131,8 +2085,6 @@ print.startPrint(printJobData).then(() => {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**属性：**
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | printerId | string | 否 | 否 | 表示打印机ID。 |
@@ -2148,8 +2100,6 @@ print.startPrint(printJobData).then(() => {
 定义打印任务的接口。
 
 **系统能力：** SystemCapability.Print.PrintFramework
-
-**属性：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -2176,7 +2126,7 @@ updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubSt
 
 更新打印任务状态，使用callback异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.ENTERPRISE_MANAGE_PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.ENTERPRISE_MANAGE_PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -2187,7 +2137,7 @@ updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubSt
 | jobId | string | 是 | 表示打印任务ID。 |
 | state | [PrintJobState](#printjobstate14) | 是 | 表示打印任务状态。 |
 | subState | [PrintJobSubState](#printjobsubstate14) | 是 | 表示打印任务子状态。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 异步更新打印任务状态之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当更新打印任务状态成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -2195,14 +2145,13 @@ updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubSt
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
-| 201 | The application does not have permission to call this function. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 // jobId可通过打印扩展能力PrintExtensionAbility的onStartPrintJob回调获得
 let jobId : string = 'jobId';
@@ -2223,7 +2172,7 @@ updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubSt
 
 更新打印任务状态，使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.ENTERPRISE_MANAGE_PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.ENTERPRISE_MANAGE_PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -2239,7 +2188,7 @@ updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubSt
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果，用于异步操作。resolve表示操作成功，reject表示操作失败。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2247,14 +2196,13 @@ updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubSt
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
-| 201 | the application does not have permission to call this function. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
 
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 // jobId可通过打印扩展能力PrintExtensionAbility的onStartPrintJob回调获得
 let jobId : string = 'jobId';
@@ -2273,7 +2221,7 @@ updatePrinterInformation(printerInformation: PrinterInformation): Promise&lt;voi
 
 更新系统中打印机的部分信息，使用Promise异步回调。当前仅允许更新[PrinterInformation](#printerinformation14)的alias和options字段。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.ENTERPRISE_MANAGE_PRINT
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.ENTERPRISE_MANAGE_PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -2287,7 +2235,7 @@ updatePrinterInformation(printerInformation: PrinterInformation): Promise&lt;voi
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果，用于异步操作。resolve表示操作成功，reject表示操作失败。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2301,8 +2249,7 @@ updatePrinterInformation(printerInformation: PrinterInformation): Promise&lt;voi
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let testPageSize : print.PrintPageSize = {
     id : 'ISO_A4',
@@ -2346,8 +2293,6 @@ print.updatePrinterInformation(printerInformation).then(() => {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**属性：**
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | manufacturer | string | 否 | 否 | 表示当前PPD文件内的打印机厂商名称。 |
@@ -2362,8 +2307,6 @@ print.updatePrinterInformation(printerInformation).then(() => {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**属性：**
-
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | ip | string | 否 | 否 | 表示共享设备的IP地址。 |
@@ -2376,7 +2319,7 @@ addPrinter(printerName: string, uri: string, ppdName?: string, options?: string)
 
 添加打印机到系统中，使用Promise异步回调。该接口面向打印驱动、打印管理软件、三方打印管理软件、云打印等需要管理打印机或扫描仪的场景。
 
-**需要权限：** ohos.permission.MANAGE_PRINT_JOB或ohos.permission.PRINTER_DRIVER
+**需要权限：** <!--Del-->ohos.permission.MANAGE_PRINT_JOB或<!--DelEnd-->ohos.permission.PRINTER_DRIVER
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -2409,8 +2352,7 @@ addPrinter(printerName: string, uri: string, ppdName?: string, options?: string)
 **示例：**
 
 ```ts
-import { print } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { print, BusinessError } from '@kit.BasicServicesKit';
 
 let printerName : string = 'printerName';
 let uri : string = 'uri';

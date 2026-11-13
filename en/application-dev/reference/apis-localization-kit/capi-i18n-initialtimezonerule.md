@@ -3,9 +3,10 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=9da32f18d9f596600b1bcf7b3e4ed4f31b219c61 translatedAt=2026-11-09T06:18:52.849Z pushedAt=2026-11-09T06:55:39.340Z nl=1 -->
 
 ```c
 typedef struct InitialTimeZoneRule {...} InitialTimeZoneRule
@@ -13,7 +14,7 @@ typedef struct InitialTimeZoneRule {...} InitialTimeZoneRule
 
 ## Overview
 
-Start time zone rule.
+Describes the initial time zone rule.
 
 **Since**: 22
 
@@ -29,3 +30,5 @@ Start time zone rule.
 | -- | -- |
 | int32_t rawOffset | Raw offset of the time zone, in milliseconds.|
 | int32_t dstSavings | Daylight saving time offset, in milliseconds.|
+
+

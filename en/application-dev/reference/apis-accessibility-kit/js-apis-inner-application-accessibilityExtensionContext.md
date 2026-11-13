@@ -1,4 +1,4 @@
-# AccessibilityExtensionContext
+# AccessibilityExtensionContext (Accessibility Extension Context)
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->

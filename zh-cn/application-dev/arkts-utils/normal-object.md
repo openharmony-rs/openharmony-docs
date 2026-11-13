@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍普通对象作为线程间通信对象的传递方式：数字、字符串、Array、Map等基础类型及满足序列化规范的自定义对象，可通过序列化以值拷贝方式在并发实例间传递，并附使用示例。"
+keywords: [普通对象, 序列化, 值拷贝, 跨线程传递, 自定义对象, 基础数据类型, 序列化规范]
+doctype: guide
+status: active
+---
+
 # 普通对象
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

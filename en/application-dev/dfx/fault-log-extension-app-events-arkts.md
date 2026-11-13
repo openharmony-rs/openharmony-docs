@@ -6,7 +6,7 @@
 <!--Designer: @Maplestory91-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=5190a496e705e7a7abad7605c46f720b1c829b58 translatedAt=2026-08-21T03:18:08.846Z pushedAt=2026-08-21T08:48:26.956Z -->
+<!-- md-trans-meta sourceCommit=2ea0ba89d6cbfa2d7d56e7da6453e9c870d092d4 translatedAt=2026-10-30T03:21:54.349Z pushedAt=2026-08-21T08:48:26.956Z nl=1 -->
 
 Since API version 21, you can use HiAppEvent event subscription APIs in FaultLogExtensionAbility to implement delayed notification of app fault events (only [crash events](./hiappevent-watcher-crash-events.md) and [app freeze events](./hiappevent-watcher-freeze-events.md)). When an app exits due to a crash or freeze and cannot be restarted or remains unstarted for a long time, you can receive subscription callbacks for fault event information without relying on app startup. FaultLogExtensionAbility is only used to supplement fault event processing and cannot replace fault event handling when the main process starts normally.
 
@@ -19,23 +19,14 @@ The working principles of FaultLogExtensionAbility are illustrated in the follow
 ![Working principles](figures/fault_log_extension_ability_1.PNG)
 
 1. After the main process starts, add Event Observer A and Event Observer B in the main process. Observer A contains a normally implemented callback function and event subscription filter criteria [appEventFilter](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#appeventfilter). When the app restarts normally after a fault, Observer A's callback handles the HiAppEvent events. Observer B has an empty callback implementation and is used only to generate the event subscription filter criteria that need to be saved.
-
 2. The event subscription filter criteria of Event Observer A and Event Observer B are saved to the app sandbox. When the app removes an event observer, the corresponding observer's event subscription filter criteria saved in the app sandbox are also deleted.
-
 3. A crash event or app freeze event occurs during app service execution.
-
 4. After detecting the app fault, the system service collects app fault information.
-
 5. After the system service finishes collecting the app fault site information, the app exits.
-
 6. Based on the HiAppEvent subscription event types subscribed by the app, the system saves the collected app fault information to the app sandbox. If the app restarts in time, HiAppEvent detects the unprocessed fault events in the app sandbox. If these events meet the filter criteria of Event Observer A, Observer A's callback function is triggered to process the events. Since Event Observer B has an empty callback implementation, the same events are not processed again.
-
 7. If the app does not restart in time to process the fault events after a fault occurs, the system service creates a task with a 30-minute delay to start the app's FaultLogExtensionAbility process. If a delayed start task for the current process already exists in the task queue, no new delayed task is created. Regardless of whether the events have been processed, the FaultLogExtensionAbility process exits after 10 seconds.
-
 8. Add Event Observer B in the FaultLogExtensionAbility process. You need to implement a normal callback function for this Event Observer B, and it must have the same name as the Event Observer B previously added in the main process.
-
 9. Since the Event Observer B added in the FaultLogExtensionAbility process has the same name as the Event Observer B added in the main process, the app sandbox overwrites the previously saved event subscription filter criteria of Observer B.
-
 10. HiAppEvent detects unprocessed fault events in the app sandbox. When these fault events meet the filter criteria of Event Observer B in the FaultLogExtensionAbility process, Observer B's callback processing logic is triggered. The unprocessed event information stored in the sandbox is deleted after the fault events are processed by the callback.
 
 ## Constraints
@@ -76,141 +67,147 @@ The following walks you through on how to subscribe to the appfreeze event.
 
 1. Create an ArkTS application project. In the **entry/src/main/ets/pages/Index.ets** file in the project, construct an appfreeze fault as follows:
 
-   ```ts
+   <!-- @[fault_log_extension_arkts_dyn_code_free](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Faultlogger/FaultLogExtensionAbilityDyn/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    @Entry
    @Component
    struct Index {
      build() {
        Button("AppInput")
-       .onClick(() => {
-         let t = Date.now();
-         while (Date.now() - t <= 15000) {}
-       })
+         .onClick(() => {
+           let t = Date.now();
+           while (Date.now() - t <= 15000) {}
+         })
      }
    }
    ```
 
 2. Edit the **entry > src > main > ets > entryability > EntryAbility.ets** file in the project. The sample code is as follows:
 
-   ```ts
-   // Import the hiAppEvent module.
-   import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
-       // Omitted code...
-       // Add a system event subscription in the onCreate function, observer A.
+   <!-- @[fault_log_extension_arkts_dyn_code_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Faultlogger/FaultLogExtensionAbilityDyn/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
+   ``` TypeScript
+   import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+   import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   import { window } from '@kit.ArkUI';
+   // ...
        hiAppEvent.addWatcher ({
-          // Developers can customize the observer name. The system uses the name to identify different observers.
-          name: "EntryAbilityWatcherNormal",
-          // Developers can subscribe to system events of interest. Here, the app freeze event is subscribed.
-          appEventFilters: [
-              {
-                  domain: hiAppEvent.domain.OS,
-                  names: [hiAppEvent.event.APP_FREEZE]
-              }
-          ],
-          // After a fault occurs, restart normally and execute observer A to process the event callback.
-          onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
-              // Omitted code...
-          }
+         // Developers can customize the observer name. The system uses the name to identify different observers.
+         name: 'EntryAbilityWatcherNormal',
+         // Subscribe to the required system events; this example subscribes to app freeze events.
+         appEventFilters: [
+           {
+             domain: hiAppEvent.domain.OS,
+             names: [hiAppEvent.event.APP_FREEZE]
+           }
+         ],
+         // After a fault occurs, restart normally and execute observer A to process the event callback.
+         onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+   // ...
+         }
        });
        // Add a system event subscription in the onCreate function, observer B.
        hiAppEvent.addWatcher ({
-          // Developers can customize the observer name. The system uses the name to identify different observers.
-          name: "EntryAbilityWatcherExtension",
-          // Developers can subscribe to system events of interest. Here, the app freeze event is subscribed.
-          appEventFilters: [
-              {
-                  domain: hiAppEvent.domain.OS,
-                  names: [hiAppEvent.event.APP_FREEZE]
-              }
-          ],
-          // Empty implementation, used only to generate filter rules so that fault events are retained in the app sandbox before being processed.
-          // If the app restarts normally, observer A has already processed the same event, and observer B consumes the event obtained from the sandbox through empty processing without duplicate processing of the event.
-          onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
-
-          }
+         // Developers can customize the observer name. The system uses the name to identify different observers.
+         name: 'EntryAbilityWatcherExtension',
+         // Subscribe to the required system events; this example subscribes to app freeze events.
+         appEventFilters: [
+           {
+             domain: hiAppEvent.domain.OS,
+             names: [hiAppEvent.event.APP_FREEZE]
+           }
+         ],
+         // Empty implementation, used only to generate filter rules so that fault events are retained in the app sandbox before being processed.
+         // If the app restarts normally, observer A has already processed the same event, and observer B consumes the event obtained from the sandbox through empty processing without duplicate processing of the event.
+         onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+   // ...
+         }
        });
-       // Omitted code...
+   // ...
    ```
 
 3. Create the **faultlogextension/MyFaultLogExtensionAbility.ets** file in the **entry/src/main/ets** directory. Create the MyFaultLogExtensionAbility class that inherits from FaultLogExtensionAbility and override the three subscription APIs. The sample code is as follows:
 
-   ```ts
+   <!-- @[fault_log_extension_arkts_dyn_code_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/Faultlogger/FaultLogExtensionAbilityDyn/entry/src/main/ets/faultlogextension/MyFaultLogExtensionAbility.ets) -->
+   
+   ``` TypeScript
    // Import the FaultLogExtensionAbility class.
    import { FaultLogExtensionAbility, hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
-
+   
    export default class MyFaultLogExtensionAbility extends FaultLogExtensionAbility {
-    // Override onConnect().
-    onConnect() {
-      hilog.info(0x0000, 'testTag', `FaultLogExtensionAbility onConnect`);
-    }
-
-    // Override onDisconnect().
-    onDisconnect() {
-      hilog.info(0x0000, 'testTag', `FaultLogExtensionAbility onDisconnect`);
-    }
-
-    // Override onFaultReportReady().
-    onFaultReportReady() {
-      hilog.info(0x0000, 'testTag', `FaultLogExtensionAbility onFaultReportReady`);
-      hiAppEvent.addWatcher({
-        // Observer name, which must be consistent with the event observer B in the main process.
-        name: "EntryAbilityWatcherExtension",
-        // You can subscribe to system events that you are interested in. Here, the application freeze event is subscribed to.
-        appEventFilters: [
-          {
-            domain: hiAppEvent.domain.OS,
-            names: [hiAppEvent.event.APP_FREEZE]
-          }
-        ],
-        // Implement a callback for the registered system event so that you can apply custom processing to the event data obtained.
-        onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
-          hilog.info(0x0000, 'testTag', `HiAppEvent onReceive: domain=${domain}`);
-          for (const eventGroup of appEventGroups) {
-            // The event name uniquely identifies a system event.
-            hilog.info(0x0000, 'testTag', `HiAppEvent eventName=${eventGroup.name}`);
-            for (const eventInfo of eventGroup.appEventInfos) {
-              // Apply custom processing to the event data obtained, for example, print the event data in the log.
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.domain=${eventInfo.domain}`);
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.name=${eventInfo.name}`);
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.eventType=${eventInfo.eventType}`);
-              // Obtain the timestamp when the application freeze event occurs.
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.time=${eventInfo.params['time']}`);
-              // Obtain the foreground/background status of the application when the application freeze event occurs.
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
-              // Obtain the version information of the application when the application freeze event occurs.
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
-              // Obtain the unique correlation ID of the app when an Application Freeze event occurs.
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_running_unique_id=${eventInfo.params['app_running_unique_id']}`);
-              // Obtain the bundle name of the application when the application freeze event occurs.
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.bundle_name=${eventInfo.params['bundle_name']}`);
-              // Obtain the process name of the application when the application freeze event occurs.
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_name=${eventInfo.params['process_name']}`);
-              // Obtain the process ID of the application when the application freeze event occurs.
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.pid=${eventInfo.params['pid']}`);
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uid=${eventInfo.params['uid']}`);
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uuid=${eventInfo.params['uuid']}`);
-              // Obtain the exception type and cause of the application freeze event.
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.exception=${JSON.stringify(eventInfo.params['exception'])}`);
-              // Obtain the log information when the application freeze event occurs.
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.hilog.size=${eventInfo.params['hilog'].length}`);
-              // Obtain the messages that are not yet processed by the main thread when the application freezes.
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler=${eventInfo.params['event_handler']}`);
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler_size_3s=${eventInfo.params['event_handler_size_3s']}`);
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.event_handler_size_6s=${eventInfo.params['event_handler_size_6s']}`);
-              // Obtain the synchronous binder call information when the application freezes.
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.peer_binder=${eventInfo.params['peer_binder']}`);
-              // Obtain the full thread call stack when the application freezes.
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.threads.size=${eventInfo.params['threads'].length}`);
-              // Obtain the memory information when the application freezes.
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.memory=${JSON.stringify(eventInfo.params['memory'])}`);
-              // Obtain the fault log file when the application freezes.
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
-              hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
-            }
-          }
-        }
-      });
-    }
+     // Override onConnect().
+     onConnect() {
+       hilog.info(0x0000, 'FaultLogExtension', `FaultLogExtensionAbility onConnect`);
+     }
+   
+     // Override onDisconnect().
+     onDisconnect() {
+       hilog.info(0x0000, 'FaultLogExtension', `FaultLogExtensionAbility onDisconnect`);
+     }
+   
+     // Override onFaultReportReady().
+     onFaultReportReady() {
+       hilog.info(0x0000, 'FaultLogExtension', `FaultLogExtensionAbility onFaultReportReady`);
+       hiAppEvent.addWatcher({
+         // Observer name, which must be consistent with the event observer B in the main process.
+         name: 'EntryAbilityWatcherExtension',
+         // Subscribe to the required system events; this example subscribes to app freeze events.
+         appEventFilters: [
+           {
+             domain: hiAppEvent.domain.OS,
+             names: [hiAppEvent.event.APP_FREEZE]
+           }
+         ],
+         // Implement a callback for the registered system event so that you can apply custom processing to the event data obtained.
+         onReceive: (domain: string, appEventGroups: Array<hiAppEvent.AppEventGroup>) => {
+           hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent onReceive: domain=${domain}`);
+           for (const eventGroup of appEventGroups) {
+             // The event name uniquely identifies a system event.
+             hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventName=${eventGroup.name}`);
+             for (const eventInfo of eventGroup.appEventInfos) {
+               // Apply custom processing to the event data obtained, for example, print the event data in the log.
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.domain=${eventInfo.domain}`);
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.name=${eventInfo.name}`);
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.eventType=${eventInfo.eventType}`);
+               // Obtain the timestamp when the application freeze event occurs.
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.time=${eventInfo.params['time']}`);
+               // Obtain the foreground/background status of the application when the application freeze event occurs.
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.foreground=${eventInfo.params['foreground']}`);
+               // Obtain the version information of the application when the application freeze event occurs.
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.bundle_version=${eventInfo.params['bundle_version']}`);
+               // Obtain the unique correlation ID of the app when an Application Freeze event occurs.
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.app_running_unique_id=${eventInfo.params['app_running_unique_id']}`);
+               // Obtain the bundle name of the application when the application freeze event occurs.
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.bundle_name=${eventInfo.params['bundle_name']}`);
+               // Obtain the process name of the application when the application freeze event occurs.
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.process_name=${eventInfo.params['process_name']}`);
+               // Obtain the process ID of the application when the application freeze event occurs.
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.pid=${eventInfo.params['pid']}`);
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.uid=${eventInfo.params['uid']}`);
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.uuid=${eventInfo.params['uuid']}`);
+               // Obtain the exception type and cause of the application freeze event.
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.exception=${JSON.stringify(eventInfo.params['exception'])}`);
+               // Obtain the log information when the application freeze event occurs.
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.hilog.size=${eventInfo.params['hilog'].length}`);
+               // Obtain the messages that are not yet processed by the main thread when the application freezes.
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.event_handler=${eventInfo.params['event_handler']}`);
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.event_handler_size_3s=${eventInfo.params['event_handler_size_3s']}`);
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.event_handler_size_6s=${eventInfo.params['event_handler_size_6s']}`);
+               // Obtain the synchronous binder call information when the application freezes.
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.peer_binder=${eventInfo.params['peer_binder']}`);
+               // Obtain the full thread call stack when the application freezes.
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.threads.size=${eventInfo.params['threads'].length}`);
+               // Obtain the memory information when the application freezes.
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.memory=${JSON.stringify(eventInfo.params['memory'])}`);
+               // Obtain the fault log file when the application freezes.
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.external_log=${JSON.stringify(eventInfo.params['external_log'])}`);
+               hilog.info(0x0000, 'FaultLogExtension', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
+             }
+           }
+         }
+       });
+     }
    }
    ```
 
@@ -230,7 +227,7 @@ The following walks you through on how to subscribe to the appfreeze event.
 
 Click the run button in the DevEco Studio interface to start the app project. On the app screen, tap the **AppInput** button to trigger a freeze event. After the app exits, do not restart the app or the device, and wait for about 30 minutes.
 
-In the HiLog window, search for the keyword "testTag" to view the result of FaultLogExtensionAbility's callback.
+Search for `FaultLogExtension` in the HiLog window to view the results of the callbacks executed by FaultLogExtensionAbility:
 
    ```text
    FaultLogExtensionAbility onConnect
@@ -243,7 +240,6 @@ In the HiLog window, search for the keyword "testTag" to view the result of Faul
    ......
    FaultLogExtensionAbility onDisconnect
    ```
-
   The FaultLogExtensionAbility executes connection, processing, and disconnection in sequence.
 
 ## FAQs
@@ -253,7 +249,6 @@ In the HiLog window, search for the keyword "testTag" to view the result of Faul
 After the FaultLogExtensionAbility process starts, the callback subscribed by HiAppEvent is not received. The possible causes are as follows:
 
 - Before the FaultLogExtensionAbility process starts, the main process has subscribed to and processed the event.
-
 - The subscription in the FaultLogExtensionAbility process is the first subscription after the app is installed. HiAppEvent is not aware of events that occurred before the subscription. You need to subscribe to the relevant events normally in the main process. After a fault occurs, HiAppEvent records the relevant events and triggers the callback after FaultLogExtensionAbility is started.
 
 ### What should I do if system events are repeatedly reported
@@ -265,5 +260,6 @@ System events are notified via HiAppEvent callbacks to all event observers that 
 Events that occur after the application starts and before the watcher is registered are lost. Check whether multiple event watchers with the same name are registered.
 
 To prevent event loss, HiAppEvent, after the app starts but before the event observer is registered, first scans the subscription filter criteria of event observers that were not removed before the app last exited, and subscribes to and saves events accordingly. When an event observer with the same name is registered again, the later registration overwrites the previous observer's information, causing the subscription filter criteria to be overwritten and events to be lost.
+
 
 <!--no_check-->

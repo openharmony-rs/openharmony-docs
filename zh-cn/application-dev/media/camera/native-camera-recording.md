@@ -70,11 +70,13 @@
    )
    ```
 
-3. 获取SurfaceId。
+3. 创建并打开相机设备，参考设备输入(C/C++)的[开发步骤](./native-camera-device-input.md#开发步骤)3-5。
+
+4. 获取SurfaceId。
 
    系统提供的[OH_AVRecorder_Create()](../../reference/apis-media-kit/capi-avrecorder-h.md#oh_avrecorder_create)接口可以创建一个录像AVRecorder实例，通过该实例的[OH_AVRecorder_GetInputSurface()](../../reference/apis-media-kit/capi-avrecorder-h.md#oh_avrecorder_getinputsurface)方法获取SurfaceId。
 
-4. 创建录像输出流。
+5. 创建录像输出流。
 
    根据传入的SurfaceId，通过[OH_CameraManager_GetSupportedCameraOutputCapability](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapability)接口获取[Camera_OutputCapability](../../reference/apis-camera-kit/capi-oh-camera-camera-outputcapability.md)能力，可以通过[Camera_OutputCapability](../../reference/apis-camera-kit/capi-oh-camera-camera-outputcapability.md)中的videoProfiles，获取当前设备支持的录像输出流。然后，定义创建录像的参数，通过OH_CameraManager_CreateVideoOutput方法创建录像输出流。
   
@@ -105,7 +107,7 @@
    }
    ```
 
-5. 开始录像。
+6. 开始录像。
 
    通过[OH_VideoOutput_Start()](../../reference/apis-camera-kit/capi-video-output-h.md#oh_videooutput_start)方法启动录像输出流。
 
@@ -125,7 +127,7 @@
    }
    ```
 
-6. 停止录像。
+7. 停止录像。
 
    通过[OH_VideoOutput_Stop()](../../reference/apis-camera-kit/capi-video-output-h.md#oh_videooutput_stop)方法停止录像输出流。
 

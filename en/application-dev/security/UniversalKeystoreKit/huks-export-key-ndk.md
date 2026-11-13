@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=fc50c8d990bffee49b4e7ddbe84b245946468e4c translatedAt=2026-11-03T05:15:30.789Z pushedAt=2026-11-03T06:53:46.374Z nl=1 -->
 
 This topic walks you through on how to export the public key of a persistently stored asymmetric key. Currently, HUKS supports export of the ECC, RSA, Ed25519, X25519, and SM2 public keys.
 
@@ -25,9 +26,9 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 1. Set parameters.
    - **keyAlias**: key alias encapsulated in an [OH_Huks_Blob](../../reference/apis-universal-keystore-kit/capi-hukstypeapi-oh-huks-blob.md) struct. The maximum length of the key alias is 128 bytes.
    - **paramSetIn**: This parameter is reserved. Leave it empty.
-   - **key**: [OH_Huks_Blob](../../reference/apis-universal-keystore-kit/capi-hukstypeapi-oh-huks-blob.md) object used to hold the key exported. Ensure that there is enough memory for storing the key exported.
+   - **key**: [OH_Huks_Blob](../../reference/apis-universal-keystore-kit/capi-hukstypeapi-oh-huks-blob.md) structure used to hold the exported public key. The service must allocate memory in advance, and the allocated memory must be large enough to hold the exported public key.
 
-2. Call [OH_Huks_GetKeyItemParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_getkeyitemparamset) to pass in the preceding parameters.
+2. Call [OH_Huks_ExportPublicKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_exportpublickeyitem) and pass in the parameters above.
 
 3. Check the return value. If the operation is successful, the exported key is in the **key** field in the DER format defined in X.509. For details about the format, see [Public Key Material Format](huks-concepts.md#public-key-material-format). If the operation fails, an error code is returned.
 
@@ -114,4 +115,3 @@ static napi_value ExportKey(napi_env env, napi_callback_info info)
     return ret;
 }
 ```
-<!--no_check-->

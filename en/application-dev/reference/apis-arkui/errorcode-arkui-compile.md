@@ -5,6 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=60cd60bc199b514f70b827b2d76dcdc9b730dfc6 translatedAt=2026-10-30T11:31:57.697Z pushedAt=2026-10-31T02:09:57.587Z nl=1 -->
 
 > **NOTE**
 >
@@ -30,7 +31,7 @@ Define a callback function with the same name in the struct to handle the watche
 **Description**<br>
 This error code is reported when @BuilderParam decorated variables are initialized using methods other than those decorated with @Builder or @LocalBuilder.
 
-**Possible Causes**<br>
+**Possible Causes**<br> 
 The @BuilderParam decorated variable is being initialized using a regular function or variable of another type.
 
 **Solution**<br>
@@ -1051,7 +1052,7 @@ A class decorated with @ObservedV2 is used as the type of a state variable.
 Avoid using classes decorated with @ObservedV2 as the type for state variables.
 
 ## 10905122 Incorrect Use of the @Concurrent Decorator
-**Error Message**<br> 
+**Error Message**<br>  
 \'@Concurrent\' can not be used on \'xxx\' function declaration.
 
 **Description**<br>
@@ -1310,6 +1311,58 @@ The setter method is decorated using the @Computed decorator.
 **Solution**<br>
 Use the @Computed decorator only on a getter method.
 
+## 10905131 Exception in Verifying the @Builder Decorator Usage Location
+**Error Message**<br>
+The \'@Builder\' decorator can only pass arguments when decorating a global function.
+
+**Description**<br>
+This error code is reported because the @Builder decorator with arguments only supports decorating global functions.
+
+**Possible Causes**<br>
+You use the @Builder decorator with arguments on a member method or member variable of a custom component.
+
+**Solution**<br>
+Use the @Builder decorator with arguments to decorate a global function, or remove the decorator arguments and use the @Builder decorator without arguments.
+
+## 10905132 Exception in Verifying @Builder Decorator Arguments
+**Error Message**<br>
+The \'@Builder\' decorator only supports passing a single object literal.
+
+**Description**<br>
+This error code is reported because the @Builder decorator only supports passing a single object literal as an argument.
+
+**Possible Causes**<br>
+The argument you pass to the global @Builder decorator is not a single object literal.
+
+**Solution**<br>
+Pass a single object literal as the argument to the global @Builder decorator.
+
+## 10905133 Exception in Verifying isPlaceholder of @Builder
+**Error Message**<br>
+The \'isPlaceholder\' option of the \'@Builder\' decorator only supports passing true/false.
+
+**Description**<br>
+This error code is reported because the **isPlaceholder** attribute in the @Builder decorator only supports the **true** or **false** value.
+
+**Possible Causes**<br>
+The **isPlaceholder** key in the object literal you pass is missing, misspelled, or its value is not an explicit boolean literal (for example, a variable, an enumerated value, **undefined**, or **null**).
+
+**Solution**<br>
+Change the value of **isPlaceholder** to an explicit boolean literal **true** or **false**, and check whether the key name is spelled correctly.
+
+## 10905134 Exception in Verifying Placeholder Builder Function Parameters
+**Error Message**<br>
+The \'@Builder\' function cannot have parameters when it serves as a placeholder.
+
+**Description**<br>
+This error code is reported because the @Builder function cannot declare parameters when it serves as a placeholder builder function.
+
+**Possible Causes**<br>
+When declaring a placeholder builder function using the @Builder decorator with **isPlaceholder** set to **true**, you declare parameters for the function.
+
+**Solution**<br>
+Remove the parameters of the placeholder builder function, or set **isPlaceholder** to **false** and use it as a regular @Builder function.
+
 ## 10905358 !! Syntax Error
 **Error Message**<br>
 When the two-way binding syntax is used, do not assign a value to \'xxx\' variable \'yyy\' because the framework generates the default assignment.
@@ -1318,7 +1371,7 @@ When the two-way binding syntax is used, do not assign a value to \'xxx\' variab
 This error code is reported when a value is assigned to the variable in an @Event decorated method while two-way binding syntax is used.
 
 **Possible Causes**<br>
-Two-way binding syntax is used and a value is passed to the @Event method.
+Two-way binding syntax is used and a value is passed to the @Event method. 
 
 **Solution**<br>
 When using two-way binding syntax, do not pass values to the @Event method. The ArkUI framework will handle the default assignment.

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口进行函数创建和调用，包括获取回调参数、调用ArkTS函数和创建ArkTS函数，支持在Node-API模块中实现函数式编程能力。"
+keywords: [Node-API, 函数, napi_get_cb_info, napi_call_function, napi_create_function, 回调参数, ArkTS函数, 函数调用]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行函数创建和调用
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

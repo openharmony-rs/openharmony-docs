@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Node-API开发中异常日志和崩溃的分析方法，涵盖env不一致、napi_value失效、线程安全等问题场景的关键日志和定位手段，帮助开发者快速排查崩溃问题。"
+keywords: [Node-API, 崩溃分析, 异常日志, cppcrash, env不一致, 线程安全, 维测, SIGSEGV, 多线程检测]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口产生的异常日志/崩溃分析
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

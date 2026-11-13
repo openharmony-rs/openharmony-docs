@@ -6,6 +6,7 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=b42d2f19b4147ca317f040c00ccc3c0d556652e1 translatedAt=2026-11-06T01:34:19.693Z pushedAt=2026-11-06T10:13:57.956Z nl=1 -->
 
 > **NOTE**
 >
@@ -23,21 +24,23 @@ This error code is reported if a service connection failure occurs.
 
 **Possible Causes**
 
-1. The system service stops running.
+1. The power manager service that the power management module depends on stops running, causing the API call to fail to establish a service connection.
 
-2. The internal communication of system services is abnormal.
+2. An exception occurs in the communication between the power management module and the power manager service, causing failure to establish a connection or respond to the connection request.
 
 **Procedure**
 
-Check whether the system services are running properly.
+Check whether the system service is running properly. If the service is not running or is running abnormally, restart the device and call the API again.
 
 1. Run the following command on the console to view the current system service list:
 
     ```bash
-    > hdc shell hidumper -ls
+      hdc shell hidumper -ls
     ```
 
-2. Check whether **PowerManagerService** is included in the system service list.
+2. Check whether the power manager service is included in the system service list.
+
+3. Manually restart the device and perform the operation again.
 
 ## 4900102 System Shutting Down
 
@@ -55,17 +58,17 @@ The system is shutting down.
 
 **Procedure**
 
-Make sure that the operation is performed when the system is running properly.
+Call the related API again after the system runs normally.
 
-## 4900201 Frequent Status Refreshes
+## 4900201 Short Refresh Interval of the Device Active Status
 
 **Error Message**
 
-The device activity is being refreshed too frequently; the minimum timeinterval is 100 ms.
+The device activity is being refreshed too frequently; the minimum time interval is 100 ms.
 
 **Description**
 
-This error code is reported if the refresh of the device activity status fails due to short intervals (< 100 ms).
+The device active status is refreshed too frequently. The minimum interval for refreshing the device active status is 100 ms.
 
 **Possible Causes**
 
@@ -87,13 +90,13 @@ This error code is reported if the power mode fails to be set.
 
 **Possible Causes**
 
-The power mode fails to be set due to the power mode control rules.
+The power mode control rules do not allow switching from the current power mode to the target power mode, causing the power mode setting to fail.
 
 **Procedure**
 
-The current power mode cannot be switched to the target power mode. You can call the [getPowerMode](js-apis-power.md#powergetpowermode9) API to query the current power mode.
+The current power mode cannot be switched to the target power mode. Use the [getPowerMode](js-apis-power.md#powergetpowermode9) API to query the current power mode.
 
-## 4900400 Incorrect Input Parameter
+## 4900400 Invalid Input Parameter
 
 **Error Message**
 
@@ -101,7 +104,7 @@ The input parameter is invalid.
 
 **Description**
 
-The input parameter is incorrect.
+The input parameter of the API is invalid.
 
 **Possible Causes**
 
@@ -109,9 +112,9 @@ The parameter is a null pointer or the parameter value is out of range.
 
 **Procedure**
 
-The input parameter value does not meet the requirements. Check whether the input parameter value is correct.
+This error indicates that the input parameter value does not meet the requirements. Check whether the type and value range of the input parameter fall within the valid range defined by the API, and do not pass in null values or parameters that exceed the valid range.
 
-## 4900501 Failure to Read the Power Supply Configuration Node
+## 4900501 Failed to Read the Power Configuration Value
 
 **Error Message**
 
@@ -119,17 +122,17 @@ Failed to read the power configuration value.
 
 **Description**
 
-The read operation fails.
+The power configuration value fails to be read.
 
 **Possible Causes**
 
-The node does not exist.
+The configuration node in the **power_config.json** file on the device does not exist.
 
 **Procedure**
 
-Check whether the input parameter node exists.
+Refer to the parameter description of the power configuration API to confirm the valid node values, and check whether the input node is within the valid range.
 
-## 4900601 Failure to Write the Power Supply Configuration Node
+## 4900601 Failed to Write the Power Configuration Value
 
 **Error Message**
 
@@ -137,12 +140,30 @@ Failed to write the power configuration value.
 
 **Description**
 
-The write operation fails.
+The power configuration value fails to be written.
 
 **Possible Causes**
 
-The node does not exist.
+The configuration node in the **power_config.json** file on the device does not exist.
 
 **Procedure**
 
-Check whether the input parameter node exists.
+Refer to the parameter description of the power configuration API to confirm the valid node values, and check whether the input node is within the valid range.
+
+## 4900701 Failed to Suspend the Device
+
+**Error Message**
+
+Failed to suspend the device.
+
+**Description**
+
+The device fails to be suspended.
+
+**Possible Causes**
+
+The device is not allowed to be suspended during an exam.
+
+**Solution**
+
+The device is not allowed to be suspended during an exam based on system specification. It is recommended that the caller record a log when this error code is received.

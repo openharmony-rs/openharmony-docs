@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=665be589d79a3180083d96aee62f545380893b81 translatedAt=2026-09-18T02:10:30.088Z pushedAt=2026-09-18T07:58:14.486Z -->
+<!-- md-trans-meta sourceCommit=665be589d79a3180083d96aee62f545380893b81 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 During the use of various terminal devices, users have different core performance requirements, such as smoothness, response speed, and power saving, for audio-related features in different scenarios. Typical scenarios include:
 
@@ -76,19 +76,13 @@ This section describes how to use HiSmartPerf to analyze audio playback scenario
 
 1. Enter the CPU trace mode.
 
-<!--Del--> <!--DelEnd-->
-
    Open the HiSmartPerf tool and navigate to the **CPU Trace** page for game performance analysis. Although titled for game performance analysis, the tool is not limited to game scenarios.
 
 2. Configure capture.
 
-<!--Del--> <!--DelEnd-->
-
    The main configuration items include the data file name, buffer capacity, maximum file size, data items, and capture duration. To capture system audio-related data items, select **zaudio**. The capture duration can be adjusted according to the test scenario. Note that the test duration and the number of selected data items will affect the file size and often need to be adjusted simultaneously.
 
 3. Start capture.
-
-<!--Del--> <!--DelEnd-->
 
    After the capture is complete, a message is displayed, indicating that the file is sent back. If the file is large, wait patiently.
 

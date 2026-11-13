@@ -827,8 +827,7 @@ import { ECStoreManager } from '../encryptedEStoreGuidelines/ECStoreManager';
 import { StoreInfo } from '../encryptedEStoreGuidelines/Store';
 import { Mover } from '../encryptedEStoreGuidelines/Mover';
 import { SecretKeyObserver } from '../encryptedEStoreGuidelines/SecretKeyObserver';
-import { commonEventManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 
 export let storeManager = new ECStoreManager();
 export let e_secretKeyObserver = new SecretKeyObserver();

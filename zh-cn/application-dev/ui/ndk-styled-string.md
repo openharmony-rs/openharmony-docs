@@ -170,7 +170,7 @@ static void SerializeAndDeserializeStyledString()
 
     // 反序列化字节数据
     auto status = OH_ArkUI_UnmarshallStyledStringDescriptor(data_bytes, dataSize, desc);
-    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "styledString", "Unmarshall status: %{public}d", status);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "styledString", "Unmarshall status: %{public}d", status);
 
     // 转换为HTML格式
     const char* html = OH_ArkUI_ConvertToHtml(desc);

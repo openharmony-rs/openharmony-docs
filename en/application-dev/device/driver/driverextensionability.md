@@ -6,7 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=d8985113333b8c3c0dd4e2a9924806e724527539 translatedAt=2026-08-20T06:24:26.179Z pushedAt=2026-08-20T12:54:55.353Z -->
+<!-- md-trans-meta sourceCommit=30ff403ace182f0de0060bb4c7a6927c49cd76ac translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## When to Use
 
@@ -164,19 +164,19 @@ To implement a driver, create a DriverExtensionAbility in the DevEco Studio proj
                "value": "string"
              },
              {
-               "name": "vid," // List of USB vendor IDs. Enter a hex value. Here, the value is the hex value of 4817.
+               "name": "vid", // List of USB vendor IDs. Enter a hex value. Here, the value is the hex value of 4817.
                "value": "0x12D1"
              },
              {
-               "name": "pid," // List of USB product IDs. Enter a hex value. Here, the value is the hex value of 4258.
+               "name": "pid", // List of USB product IDs. Enter a hex value. Here, the value is the hex value of 4258.
                "value": "0x10A2"
              },
              {
-               "name": "launchOnBind," // Whether to enable delayed driver startup. This parameter is optional. The value **true** indicates delayed startup, and the value **false** indicates immediate startup. The value is **false** by default if the specified value is incorrect or the value is left unspecified.
+               "name": "launchOnBind", // Whether to enable delayed driver startup. This parameter is optional. The value true indicates delayed startup, and false indicates immediate startup. The default is false if the value is incorrect or omitted.
                "value": "true"
              },
              {
-               "name": "ohos.permission.ACCESS_DDK_ALLOWED," // Whether to allow DDK access. This parameter is optional. The value **true** indicates that DDK access is allowed, and the value **false** indicates the opposite. The default value is **false** if the specified value is incorrect or the value is left unspecified.
+               "name": "ohos.permission.ACCESS_DDK_ALLOWED", // Whether to allow application access. This parameter is optional. The value true allows access, and false denies it. The default is false if the value is incorrect or omitted.
                "value": "true"
              }
            ]

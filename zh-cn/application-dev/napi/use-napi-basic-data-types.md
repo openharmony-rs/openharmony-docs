@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用Node-API接口创建和获取基本数值类型，包括双精度浮点数、int32、uint32、int64等数值类型的转换和交互，适用于Node-API模块与ArkTS数值交互场景。"
+keywords: [Node-API, 基本数据类型, 数值类型, double, int32, uint32, int64, 数值转换, napi_create_double]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口创建基本数据类型 
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

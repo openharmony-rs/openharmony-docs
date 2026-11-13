@@ -5,6 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9b68e9bd323a4758dba9706806b2ee04d8e7264e translatedAt=2026-10-29T09:00:03.062Z pushedAt=2026-10-30T03:11:40.940Z nl=1 -->
 
 ## Overview
 
@@ -54,7 +55,7 @@ To enhance user experience, applications should adapt to the system's dark and l
      }
      ```
 
-   - System Resource Implementation
+   - System resource implementation
 
      You can use [system-provided resources](../quick-start/resource-categories-and-access.md#system-resources), which automatically adapt to different configurations including the device type and dark or light mode. The same resource ID can have different values under these configurations. This means you don't need to create separate color resources for dark and light modes. Instead, you can reference system resources to maintain a consistent look. For example, to set your application's text color, simply use:
 
@@ -63,7 +64,7 @@ To enhance user experience, applications should adapt to the system's dark and l
        .fontColor($r('sys.color.ohos_id_color_text_primary'))
      ```
 
-2. Image Resource Adaptation
+2. Image resource adaptation
 
     To adapt images to dark and light modes, use resource qualifier directories. Specifically, place images with the same name in the **dark/media** directory. Reference these images using the [$r](../reference/apis-arkui/js-apis-arkui-resource.md#r) syntax based on their **key** values. The system will automatically load the appropriate image based on the current mode.
 
@@ -109,9 +110,9 @@ To enhance user experience, applications should adapt to the system's dark and l
       }
     ```
 
-5. Listening for Color Mode Switching Events
+5. Listening for color mode switching events
 
-    Applications can listen for system color mode changes and perform custom logic, such as initializing resources of other types. When an application uses [setColorMode](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setcolormode18) to manually set the color mode, it will not receive the **onConfigurationUpdate** callback. Except for this case, this listener remains effective regardless of whether the application follows the system's color mode changes.
+    The application can actively listen for system dark/light mode changes to perform custom logic such as initializing other types of resources. If the application uses [setColorMode](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setcolormode18) to manually set the dark/light mode, it will not receive the onConfigurationUpdate() callback. Otherwise, this listening method takes effect regardless of whether the application follows the system dark/light mode changes.
 
     a. Obtain the current color mode of the application during the [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate) lifecycle of AbilityStage and save it to [AppStorage](../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage).
 
@@ -177,11 +178,11 @@ To enhance user experience, applications should adapt to the system's dark and l
     }
     ```
 
-6. Partial Adaptation
+6. Partial adaptation
 
     Using [WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md), you can set three [color modes](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#themecolormode): follow the system, light mode, and dark mode.
 
-    Within the scope of **WithTheme**, component styles adapt to the specified color mode by accessing the corresponding system and application resource values, ensuring components adjust their appearance based on the configured mode. For details, see [Setting a Custom Theme Style for Specific Application Pages](./theme_skinning.md#setting-a-custom-theme-style-for-specific-application-pages).
+    Within the scope of [WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md), the style resource values of components are read from the corresponding dark/light mode system and application resources based on the specified mode. This indicates that, within the scope of WithTheme, the color scheme of components is adjusted according to the specified dark/light mode. For details, see [Setting the Color Mode for Application Pages](./theme-skinning.md#setting-the-color-mode-for-application-pages).
 
 ## Setting the Color Mode Independently
 
@@ -207,9 +208,9 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
 
 ## System Rules for Determining the Application Color Mode
 
-1. If the application calls the **setColorMode** API, its effect takes precedence.
+1. If the application calls the setColorMode() API to actively set the dark/light mode, the API effect takes precedence.
 
-2. If the application does not call the **setColorMode** API:
+2. If the application does not call the setColorMode() API:
 
    - If there are dark resources in the **dark** directory of the application project, system components automatically switch to dark mode.
 
@@ -234,11 +235,11 @@ onCreate(): void {
 
 ## Recommendations and Precautions
 
-- Recommended Approach
+- Recommended
 
   Use the AbilityStage listener callback [onConfigurationUpdate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onconfigurationupdate) or Ability listener callback [onConfigurationUpdate](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) to proactively listen for system code mode changes. Execute specific service logic by binding state variables when color mode changes.
 
-- Not Recommended Approach
+- Not recommended
 
   Avoid adapting to color mode changes through function return values in attribute settings that rely on re-executing attribute setting code during the color mode switching process. Incorrect usage:
 

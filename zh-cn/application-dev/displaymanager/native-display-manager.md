@@ -1,3 +1,11 @@
+---
+kits: ["ArkUI / 方舟UI框架"]
+description: "介绍如何使用OH_DisplayManager模块查询屏幕分辨率、旋转角度及挖孔屏刘海屏等不可用区域，监听屏幕状态变化和折叠设备折叠状态。"
+keywords: [屏幕信息查询, 屏幕旋转角度, 可用区域, 屏幕状态监听, 折叠状态监听, 像素密度]
+doctype: guide
+status: active
+---
+
 # 使用OH_DisplayManager实现屏幕基础信息查询和状态监听 (C/C++)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->

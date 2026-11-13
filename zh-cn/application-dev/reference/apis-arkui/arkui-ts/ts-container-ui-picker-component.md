@@ -196,7 +196,7 @@ selectedTextStyle(style: Optional\<PickerComponentTextStyle>)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -204,7 +204,7 @@ selectedTextStyle(style: Optional\<PickerComponentTextStyle>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerComponentTextStyle](ts-picker-common.md#pickercomponenttextstyle对象说明)> | 是   | 选中项的文本样式。<br>默认值：<br>{<br>color: $r('sys.color.font_primary'),<br>font: {<br>size: '20fp',<br>weight: FontWeight.Normal<br>},<br>overflow: TextOverflow.Clip<br>}<br>当style的值为undefined时，使用默认值。 |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerComponentTextStyle](ts-picker-common.md#pickercomponenttextstyle)> | 是   | 选中项的文本样式。<br>默认值：<br>{<br>color: $r('sys.color.font_primary'),<br>font: {<br>size: '20fp',<br>weight: FontWeight.Normal<br>},<br>overflow: TextOverflow.Clip<br>}<br>当style的值为undefined时，使用默认值。 |
 
 ## 事件
 
@@ -1679,7 +1679,7 @@ struct UIPickerComponentTextStyleExample {
       })
       .width('70%')
       .selectedTextStyle({
-        color: '#FFFF0000',
+        color: '#ff1d95f1',
         font: {
           size: '24fp',
           weight: FontWeight.Bold

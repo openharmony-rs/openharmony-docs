@@ -6,23 +6,24 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=b76bd7a9e6c072482cb45abb2f62e2af3730ea79 translatedAt=2026-11-03T05:11:53.585Z pushedAt=2026-11-03T06:48:52.591Z nl=1 -->
 
 A certificate chain is an ordered list of certificates, in which each certificate is signed by the entity identified by the next certificate in the chain.
 
 As shown in the following figure, the certificate chain consists of three certificates. The root certificate is self-signed by GlobalSign, which signed the intermediate certificate held by GlobalSign RSA OV SSL CA 2018. GlobalSign RSA OV SSL CA 2018 (the holder of the intermediate certificate) signed the end certificate.
 
-![](figures/certificate_chain_example.png)
+![certificate-chain-example](figures/certificate-chain-example.png)
 
 You can refer to the following example to construct a certificate chain from multiple certificates.
 
 ## How to Develop
 
-1. Import the [certFramework](../../reference/apis-device-certificate-kit/js-apis-cert.md) module.
+1. Import the [certificate module](../../reference/apis-device-certificate-kit/js-apis-cert.md).
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
 
-2. Use [cert.createCertChainValidator](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecertchainvalidator) to create a certificate chain validator (**CertChainValidator**) object.
+2. Call [cert.createCertChainValidator](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecertchainvalidator) to create a certificate chain validator object.
 
 3. Create a [CertChainData](../../reference/apis-device-certificate-kit/js-apis-cert.md#certchaindata) object.
    
@@ -89,7 +90,13 @@ function certChainValidatorSample(): void {
   let algorithm = 'PKIX';
 
   // Create a CertChainValidator object.
-  let validator = cert.createCertChainValidator(algorithm);
+  let validator: cert.CertChainValidator;
+  try {
+    validator = cert.createCertChainValidator(algorithm);
+  } catch (err) {
+    console.error(`createCertChainValidator failed, errCode: ${err.code}, errMsg: ${err.message}`);
+    return;
+  }
 
   // CA certificate data.
   let uint8ArrayOfCaCertData = textEncoder.encodeInto(caCertData);

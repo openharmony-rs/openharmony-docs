@@ -5,7 +5,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ba32ae7549d23d861c8bdba778164f5581b7e59b translatedAt=2026-09-22T13:40:40.075Z pushedAt=2026-09-23T02:33:28.981Z -->
+<!-- md-trans-meta sourceCommit=ba32ae7549d23d861c8bdba778164f5581b7e59b translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -60,7 +60,7 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
 1. Import the **http**, **BusinessError**, and **common** modules.
 
    <!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->  
-
+   
    ``` TypeScript
    import { http } from '@kit.NetworkKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -73,7 +73,7 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
     Call [createHttp()](../reference/apis-network-kit/js-apis-http.md#httpcreatehttp) to create an **HttpRequest** object.
 
     <!-- @[HTTP_case_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // Each httpRequest corresponds to an HTTP request task and cannot be reused.
@@ -85,7 +85,7 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
     Call the corresponding [on()](../reference/apis-network-kit/js-apis-http.md#onheadersreceive8) method of the object to subscribe to HTTP response header events. This API returns before the request does. You can subscribe to this message based on your business requirement.
 
    <!-- @[HTTP_case_http_request_on_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // This API is used to listen for HTTP Response Header events, which is returned earlier than the result of the HTTP request. It is up to you whether to listen for HTTP response header events.
    // on('headerReceive', AsyncCallback) will be replaced by on('headersReceive', Callback) in API version 8.
@@ -100,7 +100,7 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
     Call the corresponding [request()](../reference/apis-network-kit/js-apis-http.md#httprequest) method of the object, pass in the URL and optional parameters of the HTTP request, initiate the network request, and parse the returned result based on your actual service requirement.
 
    <!-- @[HTTP_case_http_request_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    httpRequest.request(
      // Customize EXAMPLE_URL in extraData on your own. It is up to you whether to add parameters to the URL.
@@ -116,11 +116,11 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
        expectDataType: http.HttpDataType.STRING, // Optional. This parameter specifies the type of the return data.
        usingCache: true, // Optional. The default value is true.
        priority: 1, // Optional. The default value is 1.
-       connectTimeout: 60000 // Optional. The default value is 60000, in ms.
+       connectTimeout: 60000, // Optional. The default value is 60000, in ms.
        readTimeout: 60000, // Optional. The default value is 60000, in ms.
        usingProtocol: http.HttpProtocol.HTTP1_1, // Optional. The default protocol type is automatically specified by the system.
        usingProxy: false, // Optional. By default, network proxy is not used. This field is supported since API version 10.
-       caPath: '/path/to/cacert.pem', // Optional. The preinstalled CA certificate is used by default. This field is supported since API version 10.
+       caPath:'/path/to/cacert.pem', // Optional. The preinstalled CA certificate is used by default. This field is supported since API version 10.
        clientCert: { // Optional. The client certificate is not used by default. This field is supported since API version 11.
          certPath: '/path/to/client.pem', // The client certificate is not used by default. This field is supported since API version 11.
          keyPath: '/path/to/client.key', // If the certificate contains key information, an empty string is passed. This field is supported since API version 11.
@@ -144,19 +144,19 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
          }, {
            name: 'Part3', // Data name. This field is supported since API version 11.
            contentType: 'image/png', // Data type. This field is supported since API version 11. The data to be uploaded must be a PNG image.
-           // Example: data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.png
-           filePath: `${context.filesDir}/fileName.png`, // File path, optional. This field is supported since API version 11.
+           // data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.png.
+           filePath: `${context.filesDir}/fileName.png`, // File path, optional. This field is supported since API version 11
            remoteFileName: 'fileName.png' // Optional. This field is supported since API version 11.
          }, {
            name: 'Part4', // Data name. This field is supported since API version 11.
            contentType: 'audio/mpeg', // Data type. This field is supported since API version 11. The data to be uploaded must be an MPEG audio file.
-           // Example: data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.mpeg.
-           filePath: `${context.filesDir}/fileName.mpeg`, // File path, optional. This field is supported since API version 11.
+           // data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.mpeg.
+           filePath: `${context.filesDir}/fileName.mpeg`, // File path, optional. This field is supported since API version 11
            remoteFileName: 'fileName.mpeg' // Optional. This field is supported since API version 11.
          }, {
            name: 'Part5', // Data name. This field is supported since API version 11.
            contentType: 'video/mp4', // Data type. This field is supported since API version 11. The data to be uploaded must be an MP4 video file.
-           // Example: data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.mp4.
+           // data/app/el2/100/base/com.example.myapplication/haps/entry/files/fileName.mp4.
            filePath: `${context.filesDir}/fileName.mp4`, // File path, optional. This field is supported since API version 11
            remoteFileName: 'fileName.mp4' // Optional. This field is supported since API version 11.
          }
@@ -210,7 +210,7 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
 1. Import the **http**, **BusinessError**, and **common** modules.
 
      <!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
+     
      ``` TypeScript
      import { http } from '@kit.NetworkKit';
      import { BusinessError } from '@kit.BasicServicesKit';
@@ -223,7 +223,7 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
     Call [createHttp()](../reference/apis-network-kit/js-apis-http.md#httpcreatehttp) to create an **HttpRequest** object.
 
     <!-- @[request_in_stream_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     // Each httpRequest corresponds to an HTTP request task and cannot be reused.
     let httpRequest = http.createHttp();
@@ -232,9 +232,9 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
 3. Subscribe to HTTP streaming response events on demand.
 
    The data returned by the server is returned in the **dataReceive** callback. You can obtain the server response data by subscribing to this message. Other streaming response events can be subscribed to on demand.
-
+  
    <!-- @[request_in_stream_data_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    // Subscribe to events indicating receiving of HTTP streaming responses.
    let res = new ArrayBuffer(0);
@@ -268,7 +268,7 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
 4. Initiate an HTTP streaming request to obtain server data.
 
    <!-- @[request_in_stream_get_server_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    let streamInfo: http.HttpRequestOptions = {
      method: http.RequestMethod.POST, // Optional. The default value is http.RequestMethod.GET. The GET method is used to retrieve data from the server while the POST method is used to submit data such as forms and files to the server.
@@ -281,7 +281,7 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
      expectDataType: http.HttpDataType.STRING, // Optional. This parameter specifies the type of the return data.
      usingCache: true,  // Optional. The default value is true.
      priority: 1, // Optional. The default value is 1.
-     connectTimeout: 60000 // Optional. The default value is 60000, in ms.
+     connectTimeout: 60000, // Optional. The default value is 60000, in ms.
      readTimeout: 60000, // Optional. The default value is 60000, in ms. If a large amount of data needs to be transmitted, you are advised to set this parameter to a larger value to ensure normal data transmission.
      usingProtocol: http.HttpProtocol.HTTP1_1 // Optional. The default protocol type is automatically specified by the system.
    };
@@ -309,7 +309,7 @@ Complete sample code: [Http_case](https://gitcode.com/openharmony/applications_a
     Call the corresponding [off()](../reference/apis-network-kit/js-apis-http.md#offdatareceive10) method of the object to unsubscribe from the events in step 3, and when the request is no longer needed, call [destroy()](../reference/apis-network-kit/js-apis-http.md#destroy) to destroy it. For the timing of calling this method, see the sample code in step 4.
 
    <!-- @[request_in_stream_destroy_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    public destroyRequest(httpRequest: http.HttpRequest) {
      // Unsubscribe from the events indicating receiving of HTTP streaming responses.
@@ -629,7 +629,7 @@ Certificate-related configurations are required for using the HTTPS protocol. Th
    During the TLS handshake, the client verifies the server certificate to ensure that the connection is trusted. The server certificate usually includes the domain name certificate and intermediate CA certificate.
 
  **Certificate Chain Composition**
-
+ 
    The certificate chain adopts the hierarchical trust structure: **server certificate ← intermediate CA certificate ← root CA certificate**. The **←** symbol indicates the issuance and trust relationship. The certificate chain must be fully traceable back to a trusted root certificate.
 
 **Process to Be Verified**
@@ -653,14 +653,14 @@ Certificate-related configurations are required for using the HTTPS protocol. Th
    - Certificate revocation status check: Certificate Revocation List (CRL) and Online Certificate Status Protocol (OCSP).
 
  Verification Result
-
+ 
    - Verification succeeds: The TLS handshake continues and a secure connection is established.
    - Verification fails: The connection is terminated and an error message is displayed.
 
 This process ensures that only the server that holds a valid and trusted certificate can establish a secure connection.
 
  **Configuration Reference**
-
+ 
 1. Configure the application to trust certificates. For details about the configuration method, see [Network Connection Security Configuration](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/network-connection-security-configuration#network-connection-security-configuration-1).
 2. Configuring the request-level CA certificate:
    - Configuring the HTTPS request CA certificate through the caPath and caData fields of [httprequestoptions](../reference/apis-network-kit/js-apis-http.md#httprequestoptions).
@@ -672,7 +672,7 @@ This process ensures that only the server that holds a valid and trusted certifi
    - TLSSocket: configure through skipRemoteValidation = true of [tlsconnectoptions](../reference/apis-network-kit/js-apis-socket.md#tlsconnectoptions9).
 
  **Debugging Reference**
-
+ 
    - Check whether the specified certificate is trusted through the API. For details, see [networkSecurity.certVerification](../reference/apis-network-kit/js-apis-networkSecurity.md#networksecuritycertverification).
    - Use the OpenSSL command to verify whether the domain name server certificate chain is trusted by the system: `hdc shell openssl s_client -connect host:port -CApath /etc/security/certificates -brief`. If `Verification: OK` appears, the certificate chain is trusted. Replace `-brief` with `-trace -showcerts` to print detailed TLS handshake information.
 
@@ -713,9 +713,9 @@ The public key hash value of the domain name certificate can be calculated using
 ```ts
 # Extract the public key from the certificate.
 openssl x509 -in www.example.com.pem -pubkey -noout > www.example.com.pubkey.pem
-# Convert the public key from the pem format to the der format.
+# Convert the public key from PEM to DER.
 openssl asn1parse -noout -inform pem -in www.example.com.pubkey.pem -out www.example.com.pubkey.der
-# Calculate the SHA256 of the public key and convert it to Base64.
+# Calculate the public key's SHA-256 hash and encode it in Base64.
 openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 ```
 
@@ -918,7 +918,7 @@ From API version 22, the HTTP Interceptor module provides a powerful and customi
 1.  Import the modules required by the HTTP request interceptor.
 
     <!-- @[HTTP_interceptor_case_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->  
-
+    
     ``` TypeScript
     import { http } from '@kit.NetworkKit';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -928,7 +928,7 @@ From API version 22, the HTTP Interceptor module provides a powerful and customi
 2.  Call [createHttp()](../reference/apis-network-kit/js-apis-http.md#httpcreatehttp) to create an **HttpRequest** object.
 
      <!-- @[HTTP_interceptor_case_creat_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
+     
      ``` TypeScript
      // Create an HTTP request.
      let httpRequest: http.HttpRequest = http.createHttp();
@@ -937,7 +937,7 @@ From API version 22, the HTTP Interceptor module provides a powerful and customi
 3.  Call [HttpInterceptorChain()](../reference/apis-network-kit/js-apis-http.md#httpinterceptorchain22) to create an interceptor chain object.
 
     <!-- @[HTTP_interceptor_case_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     // Create an interceptor chain.
     let chain: http.HttpInterceptorChain = new http.HttpInterceptorChain();
@@ -946,7 +946,7 @@ From API version 22, the HTTP Interceptor module provides a powerful and customi
 4.  Create an interceptor class to implement the **http.HttpInterceptor** API.
 
     <!-- @[HTTP_interceptor_case_creat_http_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     class InitialHttpInterceptor implements http.HttpInterceptor {
       interceptorType: http.InterceptorType = http.InterceptorType.INITIAL_REQUEST;
@@ -1039,7 +1039,7 @@ From API version 22, the HTTP Interceptor module provides a powerful and customi
 5.  Call [addChain()](../reference/apis-network-kit/js-apis-http.md#addchain22) to add the required interceptor instances to the interceptor chain.
 
     <!-- @[HTTP_interceptor_case_addChain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     // Create the required interceptor object and add it to the interceptor chain.
     chain.addChain([
@@ -1052,7 +1052,7 @@ From API version 22, the HTTP Interceptor module provides a powerful and customi
 6.  Call [apply()](../reference/apis-network-kit/js-apis-http.md#apply22) to attach the currently configured interceptor chain to the httpRequest.
 
     <!-- @[HTTP_interceptor_case_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     // Attach the configured interceptor chain to **httpRequest**.
     chain.apply(httpRequest);
@@ -1061,7 +1061,7 @@ From API version 22, the HTTP Interceptor module provides a powerful and customi
 7.  Create request options.
 
     <!-- @[HTTP_interceptor_case_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     // Create request options.
     let options: http.HttpRequestOptions = {
@@ -1074,7 +1074,7 @@ From API version 22, the HTTP Interceptor module provides a powerful and customi
 8.  Call the corresponding [request()](../reference/apis-network-kit/js-apis-http.md#request-1) method of the object, pass in the URL and optional parameters of the HTTP request, initiate the network request, and parse the server response events based on your actual service requirement.
 
     <!-- @[HTTP_interceptor_case_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     // Initiate a request.
     httpRequest.request(EXAMPLE_URL, options, (err: BusinessError, res: http.HttpResponse) => {
@@ -1092,7 +1092,7 @@ From API version 22, the HTTP Interceptor module provides a powerful and customi
 9.  Call [destroy()](../reference/apis-network-kit/js-apis-http.md#destroy) to destroy the HTTP request.
 
     <!-- @[HTTP_interceptor_case_request_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
-
+    
     ``` TypeScript
     // Destroy the request.
     httpRequest.destroy();

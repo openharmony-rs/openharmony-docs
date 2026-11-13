@@ -2,10 +2,11 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=f2af545c246f936c8ef3293100dc9e0e1fc9326d translatedAt=2026-10-31T06:53:40.771Z pushedAt=2026-10-31T08:57:32.040Z nl=1 -->
 
 ## Adding Dependencies
 
@@ -67,10 +68,10 @@ You can call **OH_Asset_QuerySyncResult** to query the sync result of assets. Fo
 
 The following table describes the attributes for querying an asset.
 
-| Attribute Name (Asset_Tag)           | Attribute Content (Asset_Value)                                      | Mandatory or Not| Description                                                        |
+| Attribute Name (Asset_Tag)           | Attribute Content (Asset_Value)                                      | Mandatory | Description                                                        |
 | ------------------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
-| ASSET_TAG_REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: bool| Yes| Whether to query the sync result of the asset whose custom additional information is encrypted. The value **true** means to query the sync result; the value **false** means the opposite. The default value is **false**.|
-| ASSET_TAG_GROUP_ID<sup>18+</sup> | Type: Uint8[]<br>Length: 7-127 bytes| Yes| Group to which the asset to be queried belongs. By default, this parameter is not specified.|
+| ASSET_TAG_REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: bool | No | Whether to query the asset synchronization result for assets whose service-defined additional information is encrypted. **true** indicates to query the synchronization result of assets for which the service-defined additional information is stored in encrypted form. **false** indicates to query the synchronization result of assets for which the service-defined additional information is stored in unencrypted form. The default value is **false**.|
+| ASSET_TAG_GROUP_ID<sup>18+</sup> | Type: Uint8[]<br>Length: 7-127 bytes | Optional | Group to which the assets to be queried belong. By default, the synchronization result of assets that do not belong to any group is queried.|
 
 
 ### Sample Code

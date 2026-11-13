@@ -2,10 +2,11 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @yhf-->
+<!--Owner: @HarMonkey-->
 <!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=b6d8047b40d431ad6818c00a4470c6e01ad2e41e translatedAt=2026-10-31T06:50:55.221Z pushedAt=2026-10-31T08:47:25.601Z nl=1 -->
 
 Before managing assets in a group, ensure that you are familiar with the following operations:
 
@@ -16,30 +17,35 @@ Before managing assets in a group, ensure that you are familiar with the followi
 
 ## Prerequisites
 
-Set the group ID, such as **demo_group_id**, in the **app.json5** file. You can set multiple group IDs for a group.
+1. Set the group ID, such as **demo_group_id**, in the **app.json5** file. You can set multiple group IDs for a group.
 
-```json5
-{
-  "app": {
-    // Other configuration items are omitted here.
-    "assetAccessGroups": [
-      "demo_group_id",
-      // "another_group_id",
-      // ...
-    ]
-  }
-}
-```
+   ```json5
+   {
+     "app": {
+       // Other configuration items are omitted here.
+       "assetAccessGroups": [
+         "demo_group_id",
+         // "another_group_id",
+         // ...
+       ]
+     }
+   }
+   ```
 
-Include header files.
+2. Link the dynamic libraries in the CMake script.
+   ```txt
+   target_link_libraries(entry PUBLIC libasset_ndk.z.so)
+   ```
 
-<!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+3. Include header files.
 
-``` C++
-#include "napi/native_api.h"
-#include <string.h>
-#include "asset/asset_api.h"
-```
+   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   #include "napi/native_api.h"
+   #include <string.h>
+   #include "asset/asset_api.h"
+   ```
 
 
 ## Adding an Asset to a Group
@@ -212,3 +218,4 @@ static napi_value QueryGroupAssetAttribute(napi_env env, napi_callback_info info
     return ret;
 }
 ```
+

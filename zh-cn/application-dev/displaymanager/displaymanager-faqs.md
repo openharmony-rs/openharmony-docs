@@ -1,3 +1,11 @@
+---
+kits: ["ArkUI / 方舟UI框架"]
+description: "汇总屏幕开发中的常见问题，涵盖虚拟屏orientation属性值含义、屏幕方向枚举与实际表现不一致等典型场景，帮助开发者快速定位原因并理解相关概念。"
+keywords: [虚拟屏, Display对象, orientation, 屏幕方向]
+doctype: faq
+status: active
+---
+
 # 屏幕开发常见问题
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->

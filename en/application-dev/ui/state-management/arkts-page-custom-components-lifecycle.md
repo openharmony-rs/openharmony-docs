@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-09-21T11:30:04.532Z pushedAt=2026-09-23T09:16:30.685Z -->
+<!-- md-trans-meta sourceCommit=573d2637cab96a99cee2d519873c5f2bff4c2c9e translatedAt=2026-11-03T06:34:36.501Z pushedAt=2026-11-03T07:54:46.210Z nl=1 -->
 
 The following lifecycle callbacks are provided for the lifecycle of a custom component, which is one decorated with [@Component](arkts-create-custom-components.md#component) or [@ComponentV2](./arkts-create-custom-components.md#componentv2):
 
@@ -74,17 +74,17 @@ struct Parent {
   @State showChild: boolean = true;
   @State btnColor: string = '#FF007DFF';
 
-  // Component lifecycle
+  // Callback invoked when Parent is about to appear.
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', 'Parent aboutToAppear');
   }
 
-  // Component lifecycle
+  // Callback invoked after the build function triggered by Parent's first render completes execution.
   onDidBuild() {
     hilog.info(0x0000, 'testTag', 'Parent onDidBuild');
   }
 
-  // Component lifecycle
+  // Callback invoked before Parent is destroyed.
   aboutToDisappear() {
     hilog.info(0x0000, 'testTag', 'Parent aboutToDisappear');
   }
@@ -113,17 +113,17 @@ struct Parent {
 struct Child {
   @State title: string = 'Hello World';
 
-  // Component lifecycle
+  // Callback invoked before Child is destroyed.
   aboutToDisappear() {
     hilog.info(0x0000, 'testTag', 'Child aboutToDisappear');
   }
 
-  // Component lifecycle
+  // Callback invoked after the build function triggered by Child's first render completes execution.
   onDidBuild() {
     hilog.info(0x0000, 'testTag', 'Child onDidBuild');
   }
 
-  // Component lifecycle
+  // Callback invoked when Child is about to appear.
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', 'Child aboutToAppear');
   }

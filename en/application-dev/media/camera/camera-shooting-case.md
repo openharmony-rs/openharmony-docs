@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=5b3ab60fe000eb4bad70440a3e7f30019a2671f9 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
@@ -44,7 +45,7 @@ function setPhotoOutputCb(photoOutput: camera.PhotoOutput): void {
     console.error('photoOutput is null');
     return;
   }
-  // After the callback is set, call capture() of photoOutput to transfer the photo buffer back to the callback.
+  // After the callback is set, calling the capture method of photoOutput returns the photo buffer to the callback.
   photoOutput?.on('photoAvailable', (err: BusinessError, photo: camera.Photo): void => {
     console.info('getPhoto start');
     console.error(`err: ${err}`);
@@ -158,7 +159,7 @@ async function cameraShootingCase(context: Context, surfaceId: string): Promise<
       return;
     }
 
-    // Create a preview output stream. For details about the surfaceId parameter, see the XComponent. The preview stream uses the surface provided by the XComponent.
+    // Create a preview output stream. The surfaceId parameter is provided by the XComponent component described above. The preview stream uses the surface provided by the XComponent component.
     resources.previewOutput = cameraManager.createPreviewOutput(previewProfilesArray[0], surfaceId);
     if (!resources.previewOutput) {
       console.error('previewOutput is null');
@@ -182,7 +183,7 @@ async function cameraShootingCase(context: Context, surfaceId: string): Promise<
       return;
     }
 
-    // Call the preceding callback to save the image.
+    // Call the callback function above to save the image.
     setPhotoOutputCb(resources.photoOutput);
 
     // Create a session.
@@ -299,3 +300,4 @@ async function releaseResources(): Promise<void> {
   await resources.photoSession?.release().catch((e: BusinessError) => {console.error('Failed to release the session:', e)});
 }
 ```
+

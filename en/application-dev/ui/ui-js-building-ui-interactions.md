@@ -1,24 +1,27 @@
 # Adding Interactions
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=94d4b6639979fd973f19e3626ef6f712a42de479 translatedAt=2026-08-05T10:11:00.287Z pushedAt=2026-08-06T03:51:53.181Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-10-29T09:02:53.666Z pushedAt=2026-10-30T02:58:19.225Z nl=1 -->
 
 You can make the UI interactive by binding events to components. This topic describes how to associate a click event with **\<div>**, **\<text>**, and **\<image>** components to build a like button, as shown below.
 
 ![Adding-Interactions](figures/Adding-Interactions.gif)
 
+
 The like button is implemented by binding a click event to a **\<div>** component, which contains an **\<image>** component and a **\<text>** component.
+
 
 - The **\<image>** component displays the liked or unliked state. The click event handler toggles the image source between the liked and unliked versions.
 
 - The **\<text>** component displays the number of likes, which is updated synchronously in the click event handler.
 
+
 The click event is defined as a function in the JS file, which changes the state of `isPressed` to update the displayed `image` component. If `isPressed` is `false`, the number of likes increases by 1. This function takes effect on the corresponding `div` component in the HML file, and the styles of the child components of the like button are set in the CSS file. The following is an implementation example:
+
 
 ```html
 <!-- xxx.hml -->
@@ -30,6 +33,7 @@ The click event is defined as a function in the JS file, which changes the state
   </div>
 </div>
 ```
+
 
 ```css
 /* xxx.css */
@@ -54,6 +58,7 @@ The click event is defined as a function in the JS file, which changes the state
 }
 ```
 
+
 ```js
 // xxx.js
 export default {
@@ -76,5 +81,6 @@ export default {
   },
 }
 ```
+
 
 In addition, a variety of form components, such as switches, tags, and pickers, are available to help you create flexible and engaging interactions in your layouts.

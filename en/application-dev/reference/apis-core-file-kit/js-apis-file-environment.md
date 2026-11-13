@@ -1,12 +1,13 @@
 # @ohos.file.environment (Directory Environment Capability)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=6c0893247bd78c129e32a38e52ccc47805b1914a translatedAt=2026-11-03T04:29:04.887Z pushedAt=2026-11-04T03:11:33.519Z nl=1 -->
 
-This module provides ArkTS APIs for obtaining the root directories of the storage and user files.
+This module provides user environment directory capabilities, used to obtain the sandbox paths of the user's download directory, desktop directory, and document directory. The three methods above are respectively applicable to scenarios of obtaining different types of user directories, and developers can select the corresponding directory type as needed.
 
 > **NOTE**
 >
@@ -22,17 +23,24 @@ import { Environment } from '@kit.CoreFileKit';
 
 getUserDownloadDir(): string
 
-Obtains the sandbox path of the pre-authorized **Download** directory.
+Get the current user's download directory sandbox path, used to access files in the corresponding directory.
+
+**Required permissions**:
+
+- API version 12+: NA
+- API version 11: ohos.permission.READ_WRITE_DOWNLOAD_DIRECTORY
 
 **System capability**: SystemCapability.FileManagement.File.Environment.FolderObtain
 
-**Device behavior differences**: This API can be called on 2-in-1 devices. If it is called on other devices, error code 801 is returned.
+**Device behavior differences**
+- Since API version 26.0.0, this API can be called on PCs, 2-in-1 devices, and tablets only. If it is called on other device types, error code 801 is returned.
+- Before API version 26.0.0, this API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **Return value**
 
 | Type                 | Description                 |
 | --------------------- |---------------------|
-| string | Sandbox path of the **Download** directory obtained.|
+| string | Return the sandbox path of the current user's download directory. |
 
 **Error codes**
 
@@ -40,6 +48,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 | ID   | Error Message      |
 |----------| --------- |
+| 201 | Permission verification failed, usually the result returned by VerifyAccessToken.<br>Applicable version: 11|
 | 801      | Capability not supported. |
 | 13900042 | Unknown error. |
 
@@ -47,6 +56,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 function getUserDownloadDirExample() {
   try {
     let path = Environment.getUserDownloadDir();
@@ -61,17 +71,24 @@ function getUserDownloadDirExample() {
 
 getUserDesktopDir(): string
 
-Obtains the sandbox path of the pre-authorized **Desktop** directory.
+Get the current user's desktop directory sandbox path, used to access files in the corresponding directory.
+
+**Required permissions**:
+
+- API version 12+: NA
+- API version 11: ohos.permission.READ_WRITE_DESKTOP_DIRECTORY
 
 **System capability**: SystemCapability.FileManagement.File.Environment.FolderObtain
 
-**Device behavior differences**: This API can be called on 2-in-1 devices. If it is called on other devices, error code 801 is returned.
+**Device behavior differences**
+- Since API version 26.0.0, this API can be called on PCs, 2-in-1 devices, and tablets only. If it is called on other device types, error code 801 is returned.
+- Before API version 26.0.0, this API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **Return value**
 
 | Type                 | Description                 |
 | --------------------- |---------------------|
-| string | Sandbox path of the **Desktop** directory obtained.|
+| string | Return Current user's desktop directory sandbox path. |
 
 **Error codes**
 
@@ -79,6 +96,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 | ID   | Error Message      |
 |----------| --------- |
+| 201 | Permission verification failed, usually the result returned by VerifyAccessToken.<br>Applicable version: 11|
 | 801      | Capability not supported. |
 | 13900042 | Unknown error. |
 
@@ -86,6 +104,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 function getUserDesktopDirExample() {
   try {
     let path = Environment.getUserDesktopDir();
@@ -100,17 +119,24 @@ function getUserDesktopDirExample() {
 
 getUserDocumentDir(): string
 
-Obtains the sandbox path of the pre-authorized **Document** directory.
+Get the current user's document directory sandbox path, used to access files in the corresponding directory.
+
+**Required permissions**:
+
+- API version 12+: NA
+- API version 11: ohos.permission.READ_WRITE_DOCUMENTS_DIRECTORY
 
 **System capability**: SystemCapability.FileManagement.File.Environment.FolderObtain
 
-**Device behavior differences**: This API can be called on 2-in-1 devices. If it is called on other devices, error code 801 is returned.
+**Device behavior differences**
+- Since API version 26.0.0, this API can be called on PCs, 2-in-1 devices, and tablets only. If it is called on other device types, error code 801 is returned.
+- Before API version 26.0.0, this API can be properly called on PCs/2-in-1 devices. If it is called on other devices, error code 801 is returned.
 
 **Return value**
 
 | Type                 | Description                 |
 | --------------------- |---------------------|
-| string | Sandbox path of the **Documents** directory obtained.|
+| string | Returns the sandbox path of the current user's document directory. |
 
 **Error codes**
 
@@ -118,6 +144,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 | ID   | Error Message      |
 |----------| --------- |
+| 201 | Permission verification failed, usually the result returned by VerifyAccessToken.<br>Applicable version: 11|
 | 801      | Capability not supported. |
 | 13900042 | Unknown error. |
 
@@ -125,6 +152,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 function getUserDocumentDirExample() {
   try {
     let path = Environment.getUserDocumentDir();

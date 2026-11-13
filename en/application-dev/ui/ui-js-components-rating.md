@@ -5,6 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8e22c68cdd7ecb0668db21c4312cda839c2cdaa0 translatedAt=2026-10-29T08:57:45.776Z pushedAt=2026-10-30T03:02:38.037Z nl=1 -->
 
 
 The **\<rating>** component provides a rating bar, commonly used for reviews and ratings. For details, see [rating](../reference/apis-arkui/arkui-js/js-components-basic-rating.md)
@@ -163,7 +164,7 @@ Add the **change** event to the **\<rating>** component to display the current r
 export default {
   showrating(e) {
     this.getUIContext().getPromptAction().showToast({
-      message:'Rating' + e.rating
+      message: 'Current rating' + e.rating
     })
   }
 }
@@ -252,7 +253,7 @@ export default {
     showrating(e) {
         this.rate = e.rating
         this.getUIContext().getPromptAction().showToast({
-            message:'Rating' + e.rating
+            message: 'Current rating' + e.rating
         })
     }
 }

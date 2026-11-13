@@ -3,7 +3,7 @@
 <!--Subsystem: Multimedia-->
 <!--Owner: @yaozhupeng-->
 <!--Designer: @yaozhupeng-->
-<!--Tester: @zhaoxiaoguang2-->
+<!--Tester: @yhl0101-->
 <!--Adviser: @w_Machine_cc-->
 
 ## 概述
@@ -30,11 +30,11 @@
 | [OH_Pixelmap_HdrDynamicMetadata](capi-image-nativemodule-oh-pixelmap-hdrdynamicmetadata.md) | OH_Pixelmap_HdrDynamicMetadata | [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)中HDR_DYNAMIC_METADATA关键字对应的元数据值类型，用于存储HDR动态元数据，格式遵循相关HDR动态元数据标准。 |
 | [OH_Pixelmap_HdrGainmapMetadata](capi-image-nativemodule-oh-pixelmap-hdrgainmapmetadata.md) | OH_Pixelmap_HdrGainmapMetadata | [OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)中HDR_GAINMAP_METADATA关键字对应的元数据值类型，用于存储HDR增益图元数据，参考ISO 21496-1。 |
 | [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) | OH_Pixelmap_HdrMetadataValue | Pixelmap使用的HDR元数据值，和[OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)关键字相对应。当传入相应的[OH_Pixelmap_HdrMetadataKey](capi-pixelmap-native-h.md#oh_pixelmap_hdrmetadatakey)关键字作为入参时，可通过本结构体设置或获取对应类型的元数据值，用于[OH_PixelmapNative_SetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_setmetadata)及[OH_PixelmapNative_GetMetadata](capi-pixelmap-native-h.md#oh_pixelmapnative_getmetadata)。 |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) | - | OH_PixelmapNative结构体是Native层封装的图像解码后无压缩的位图格式结构体。<br> 创建OH_PixelmapNative使用[OH_PixelmapNative_CreatePixelmap](#oh_pixelmapnative_createpixelmap)函数，默认采用BGRA_8888格式处理数据。<br> 释放OH_PixelmapNative对象使用[OH_PixelmapNative_Release](#oh_pixelmapnative_release)函数。 |
-| [OH_NativeBuffer](capi-image-nativemodule-image-nativemodule-oh-nativebuffer.md) | - | NativeBuffer结构体类型，用于执行NativeBuffer相关操作。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) | OH_PixelmapNative | OH_PixelmapNative结构体是Native层封装的图像解码后无压缩的位图格式结构体。<br> 创建OH_PixelmapNative使用[OH_PixelmapNative_CreatePixelmap](#oh_pixelmapnative_createpixelmap)函数，默认采用BGRA_8888格式处理数据。<br> 释放OH_PixelmapNative对象使用[OH_PixelmapNative_Release](#oh_pixelmapnative_release)函数。 |
+| [OH_NativeBuffer](capi-image-nativemodule-image-nativemodule-oh-nativebuffer.md) | OH_NativeBuffer | NativeBuffer结构体类型，用于执行NativeBuffer相关操作。 |
 | [OH_NativeColorSpaceManager](capi-image-nativemodule-oh-nativecolorspacemanager.md) | OH_NativeColorSpaceManager | NativeColorSpaceManager结构体类型，用于执行NativeColorSpaceManager相关操作。 |
-| [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) | - | OH_Pixelmap_InitializationOptions是Native层封装的初始化参数结构体，用于设置Pixelmap的初始化参数。<br> 创建OH_Pixelmap_InitializationOptions对象使用[OH_PixelmapInitializationOptions_Create](#oh_pixelmapinitializationoptions_create)函数。<br> 释放OH_Pixelmap_InitializationOptions对象使用[OH_PixelmapInitializationOptions_Release](#oh_pixelmapinitializationoptions_release)函数。 |
-| [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) | - | 图像像素信息结构体。 |
+| [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) | OH_Pixelmap_InitializationOptions | OH_Pixelmap_InitializationOptions是Native层封装的初始化参数结构体，用于设置Pixelmap的初始化参数。<br> 创建OH_Pixelmap_InitializationOptions对象使用[OH_PixelmapInitializationOptions_Create](#oh_pixelmapinitializationoptions_create)函数。<br> 释放OH_Pixelmap_InitializationOptions对象使用[OH_PixelmapInitializationOptions_Release](#oh_pixelmapinitializationoptions_release)函数。 |
+| [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) | OH_Pixelmap_ImageInfo | 图像像素信息结构体。 |
 
 ### 枚举
 
@@ -1707,7 +1707,7 @@ Image_ErrorCode OH_PixelmapNative_ConvertAlphaType(OH_PixelmapNative *srcPixelma
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_GET_IMAGE_DATA_FAILED：获取图像数据失败。可能的原因：内部数据损坏。详情请检查日志。<br>         IMAGE_PIXELMAP_RELEASED：任一Pixelmap已被释放。<br>         IMAGE_UNSUPPORTED_OPERATION：Pixelmap被锁定，不支持该操作。<br>         IMAGE_INVALID_PARAMETER：无效参数。可能的原因：1. 任一Pixelmap不符合要求。2. 任意入参为空。<br>         IMAGE_UNSUPPORTED_DATA_FORMAT：任一Pixelmap的像素格式不被支持。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>         IMAGE_GET_IMAGE_DATA_FAILED：获取图像数据失败。可能的原因：内部数据损坏。详情请检查日志。<br>         IMAGE_PIXELMAP_RELEASED：任一Pixelmap已被释放。<br>         IMAGE_INVALID_PARAMETER：无效参数。可能的原因：1. 任一Pixelmap不符合要求。2. 任意入参为空。<br>         IMAGE_UNSUPPORTED_DATA_FORMAT：任一Pixelmap的像素格式不被支持。 |
 
 ### OH_PixelmapNative_ConvertAlphaFormat()
 

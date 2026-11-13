@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=716304dd0f214493c61a62f4ca83a3f10fd2771c translatedAt=2026-11-03T05:03:41.699Z pushedAt=2026-11-03T12:08:25.527Z nl=1 -->
 
 The **deviceControl** module provides APIs for device control.
 
@@ -257,7 +258,7 @@ try {
 
 lockScreen(admin: Want): void
 
-Locks the device screen immediately.  
+Locks the device screen immediately.
 
 **Deprecated since:** 26.0.0
 

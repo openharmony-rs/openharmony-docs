@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=5b3ab60fe000eb4bad70440a3e7f30019a2671f9 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
@@ -28,7 +29,7 @@ import { camera } from '@kit.CameraKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { media } from '@kit.MediaKit';
 import { common } from '@kit.AbilityKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { JSON } from '@kit.ArkTS';
 
 interface RecordingResources {
@@ -37,7 +38,7 @@ interface RecordingResources {
   cameraInput?: camera.CameraInput;
   previewOutput?: camera.PreviewOutput;
   videoSession?: camera.VideoSession;
-  file?: fs.File;
+  file?: fileIo.File;
 }
 
 // Track global resources.
@@ -65,7 +66,7 @@ async function releaseResources(): Promise<void> {
     async () => {
       if (resources.file) {
         try {
-          await fs.close(resources.file);
+          await fileIo.close(resources.file);
         } catch (e) {
           console.error('Failure to close file');
         }
@@ -145,7 +146,7 @@ async function videoRecording(context: common.Context, surfaceId: string): Promi
   const videoProfile: camera.VideoProfile = cameraOutputCap.videoProfiles[0];
   let videoUri: string = context.filesDir + '/' + 'VIDEO_' + Date.parse(new Date().toString()) + '.mp4'; // Local sandbox path.
   try {
-    resources.file = fs.openSync(videoUri, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    resources.file = fileIo.openSync(videoUri, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   } catch (error) {
     console.error(`openSync call failed, error: ${JSON.stringify(error)}`);
     return;
@@ -172,7 +173,7 @@ async function videoRecording(context: common.Context, surfaceId: string): Promi
   };
 
   let avMetadata: media.AVMetadata = {
-    videoOrientation: '0' // The value can be 0, 90, 180, or 270. If any other value is used, prepare() reports an error.
+    videoOrientation: '0', // The value can be 0, 90, 180, or 270. If any other value is used, prepare() reports an error.
     location: { latitude: 30, longitude: 130 }
   }
   let aVRecorderConfig: media.AVRecorderConfig = {
@@ -207,7 +208,7 @@ async function videoRecording(context: common.Context, surfaceId: string): Promi
   }
 
   // Obtain the video input surface.
-  let videoSurfaceId: string | undefined = undefined; // The surfaceID is passed in to the camera API to create a VideoOutput instance.
+  let videoSurfaceId: string | undefined = undefined; // Surface ID passed to the camera interface to create a videoOutput.
   try {
     videoSurfaceId = await resources.avRecorder.getInputSurface();
   } catch (error) {
@@ -352,7 +353,7 @@ async function videoRecording(context: common.Context, surfaceId: string): Promi
 
   // Close the file.
   try {
-    fs.closeSync(resources.file);
+    fileIo.closeSync(resources.file);
   } catch (error) {
     let err = error as BusinessError;
     console.error(`closeSync failed, error: ${err}`);

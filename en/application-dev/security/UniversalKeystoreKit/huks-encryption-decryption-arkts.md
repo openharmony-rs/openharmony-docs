@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=c0257fe4d4c19484da13f637b2b9e43a96431456 translatedAt=2026-10-30T09:02:54.132Z pushedAt=2026-10-31T00:48:51.687Z nl=1 -->
 
 This topic uses AES-128, RSA-2048, SM2, and DES64 as examples to describe the encryption and decryption workflows. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-encryption-decryption-overview.md#supported-algorithms).
 
@@ -95,11 +96,7 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 function getAesGenerateProperties() {
@@ -298,11 +295,7 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 function getAesGenerateProperties() {
@@ -688,7 +681,7 @@ async function DecryptData() {
     })
 }
 
-async function DeleteKey() {
+async function deleteKey() {
   /*
    * Simulate the key deletion scenario.
    * 1. Obtain the key alias.
@@ -711,7 +704,7 @@ async function TestEncryptDecrypt() {
   await GenerateAesKey();
   await EncryptData();
   await DecryptData();
-  await DeleteKey();
+  await deleteKey();
 }
 ```
 
@@ -739,11 +732,7 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 function getRsaGenerateProperties() {
@@ -938,11 +927,7 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 function getRsaGenerateProperties() {
@@ -1104,7 +1089,7 @@ async function deleteKey() {
    * 1. Call deleteKeyItem to delete the key.
    */
   await huks.deleteKeyItem(rsaKeyAlias, emptyOptions)
-    .then((data) => {
+    .then(() => {
       console.info(`promise: delete data success`);
     }).catch((error: BusinessError) => {
       console.error(`promise: delete data failed, errCode : ${error.code}, errMsg : ${error.message}`);
@@ -1137,11 +1122,7 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 function getSm2GenerateProperties() {
@@ -1327,13 +1308,8 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
-
 function getDesGenerateProperties() {
   let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,

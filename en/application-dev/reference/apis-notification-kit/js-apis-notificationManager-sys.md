@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:35:30.892Z pushedAt=2026-10-12T01:59:47.233Z -->
+<!-- md-trans-meta sourceCommit=523587af0396fce9af8dfb1a1fcd6595324a4b23 translatedAt=2026-10-28T11:24:45.473Z pushedAt=2026-10-28T12:15:40.127Z nl=1 -->
 
 This module provides system APIs for notification management, including publishing notifications to specified users, publishing [proxy notification](../../notification/notification-glossary.md#notification-proxy), canceling proxy notifications, creating, obtaining, and removing [notification slot](../../notification/notification-glossary.md#notification-slot), setting and querying the notification enabled status, badge enabled status, and slot enabled status, setting and querying the Do Not Disturb time and Do Not Disturb mode configuration, managing [distributed notification](../../notification/notification-glossary.md#distributed-notification) collaboration, managing notification publish permission control, obtaining active notification information, setting the [notification reminder mode](../../notification/notification-glossary.md#notification-reminder-mode), subscribing to [system live view](../../notification/notification-glossary.md#system-live-view), registering [notification check](../../notification/notification-glossary.md#notification-check) callbacks, managing notification priority policies, and setting advanced features such as [geofence](../../notification/notification-glossary.md#geofence), ringtone information, and [silent reminder](../../notification/notification-glossary.md#silent-reminder).
 
@@ -1596,6 +1596,61 @@ notificationManager.getAllActiveNotifications().then((data: Array<notificationMa
     console.info(`getAllActiveNotifications success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getAllActiveNotifications failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getActiveNotification
+
+getActiveNotification(hashCode: string): Promise\<NotificationRequest\>
+
+Obtains the notification information that has not been deleted based on the unique identifier **hashCode** of the notification. This API uses a promise to return the result.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name     | Type   | Mandatory| Description                    |
+| -------- | ------ | -------- | ------------------------------ |
+| hashCode | string | Yes      | Unique identifier of the notification. |
+
+**Return value**
+
+| Type                                                                                                          | Description                             |
+| ------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| Promise\<[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)\> | Promise object. Returns the obtained notification information. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600007  | The notification does not exist. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Change this to the unique identifier of the notification that the developer needs to query.
+let hashCode: string = 'hashCode';
+notificationManager.getActiveNotification(hashCode).then((data: notificationManager.NotificationRequest) => {
+    console.info(`getActiveNotification success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getActiveNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 

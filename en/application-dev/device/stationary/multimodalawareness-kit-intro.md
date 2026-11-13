@@ -6,7 +6,7 @@
 <!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=8648ab4787de7d114dfc1264faf7a465bc0d55ba translatedAt=2026-08-20T06:26:07.473Z pushedAt=2026-08-20T13:29:25.538Z -->
+<!-- md-trans-meta sourceCommit=b8d36a2cf004aeffeb4b7215b5d1db30919cc81c translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 Multimodal Awareness Kit allows an application to identify user activities (walking, running, driving, etc.) or postures based on the data collected by sensors including gyroscopes and acceleration sensors built in a HarmonyOS device.
 
@@ -17,6 +17,8 @@ Multimodal Awareness Kit is offered by the system as a basic service for applica
 ## Constraints
 
 Using multimodal awareness capabilities requires your application to request the relevant permissions from the user. The device must support the sensors required for the intended capabilities.
+
+<!--RP2--><!--RP2End-->
 
 <!--RP1-->
 

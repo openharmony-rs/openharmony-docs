@@ -5,11 +5,11 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:10.501Z pushedAt=2026-06-25T06:57:09.523Z -->
+<!-- md-trans-meta sourceCommit=f78ab21ce47ccf91f4a9260cbc609297b8e86f9f translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Overview
 
-The Human Interface Device (HID) Driver Development Kit (HidDdk) is a toolset that helps you develop HID drivers at the application layer based on the user mode. It provides APIs for accessing HID devices on a host, including creating a HID device, sending events to a device, destroying a device, opening or closing a device, reading and writing a report, and obtaining device information.
+The Human Interface Device (HID) Driver Development Kit (HidDdk) is a toolkit that helps you develop HID drivers at the application layer based on the user mode. It provides APIs for accessing HID devices on a host, including creating a HID device, sending events to a device, destroying a device, opening or closing a device, reading and writing a report, and obtaining device information.
 
 The HidDdk can be used to develop drivers for devices that use HID protocol to transfer data over a USB bus, or for devices that use peripheral drivers to create virtual devices to exchange information with non-standard devices.
 
@@ -183,7 +183,7 @@ libhid.z.so
    uint32_t bInterfaceNum1 = 0x00;
    // Open the HID device specified by deviceId and interfaceIndex1. Generally, it is a /dev/hidraw0 file.
    ret = OH_Hid_Open(deviceID_, bInterfaceNum1, &hid_);
-   if (ret != 0) {
+   if (ret != HID_DDK_SUCCESS) {
        OH_LOG_ERROR(LOG_APP, "Failed to open hid device, interface number:%{public}u ret:%{public}d",
            bInterfaceNum1, ret);
        return ret;
@@ -191,7 +191,7 @@ libhid.z.so
    uint32_t bInterfaceNum2 = 0x01;
    // Open the HID device specified by deviceId and interfaceIndex2. Generally, it is a /dev/hidraw1 file.
    ret = OH_Hid_Open(deviceID_, bInterfaceNum2, &hid2_);
-   if (ret != 0) {
+   if (ret != HID_DDK_SUCCESS) {
        OH_LOG_ERROR(LOG_APP, "Failed to open hid device, interface number:%{public}u ret:%{public}d",
            bInterfaceNum2, ret);
        return ret;

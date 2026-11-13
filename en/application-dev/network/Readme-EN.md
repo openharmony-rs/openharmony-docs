@@ -6,10 +6,9 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=2f87b9dfe2b0c8123e363983479a312814a874c2 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T06:41:24.028Z nl=1 -->
 
 - [About This Kit](net-mgmt-overview.md)
-
-- [Network Kit Terms](network-terminology.md)
 
 - Network Access<!--network-kit-data-transmission-->
     - [Using HTTP for Network Access](http-request.md)
@@ -17,15 +16,19 @@
     - [Using WebSocket for Network Access (C/C++)](native-websocket-guidelines.md)
     - [Using Socket for Network Access](socket-connection.md)
     - [Using MDNS for LAN Access](net-mdns.md)
+    - [Using DNS for Domain Name Resolution](net-dns.md)
+    - [Using HTTP Global Interceptor (C/C++)](native-httpinterceptor-guidelines.md)
 
 - Network Connection<!--network-kit-network-connection-->
     - [Network Connection Management](net-connection-manager.md)
     - [Network Connection Management (C/C++)](native-netmanager-guidelines.md)
-    - [VPN Management](net-vpnExtension.md)
+    - [VPN Management](net-vpnExtension.md)<!--RP1--><!--RP1End-->
 
 - Network Management<!--network-kit-network-management-->
     - [Collecting Network Statistics](net-statistics.md)
     - [Using the Network Firewall](net-netfirewall.md)
+    - [Redirecting Network Traffic (C/C++)](net-trafficfilter-redirect.md)
+    - [Filtering Network Packets (C/C++)](net-trafficfilter-packet.md)
     - [Extensible Authentication](net-eap.md)
   
     <!--Del-->
@@ -33,3 +36,5 @@
     - [Ethernet Connection Management (for System Applications Only)](net-ethernet-sys.md)  
     - [VPN Management (for System Applications Only)](net-vpn-sys.md)
     <!--DelEnd-->
+
+- [Glossary](network-terminology.md)

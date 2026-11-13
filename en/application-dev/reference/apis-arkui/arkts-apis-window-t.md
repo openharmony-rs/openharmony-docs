@@ -3,8 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-02T13:05:05.613Z pushedAt=2026-11-09T06:24:45.524Z nl=1 -->
 
 > **NOTE**
 >
@@ -25,7 +26,7 @@ Defines the type of system bar that can be displayed or hidden.
 | Type      | Description    |
 |------------|--------|
 | 'status'   | Status bar.  |
-| 'navigation'   | <!--RP13--><!--RP13End-->Three-button navigation bar.  |
+| 'navigation'   | Three-button navigation bar<!--RP13--> or toolbar. Currently, the toolbar is supported only on cars.<!--RP13End-->   |
 | 'navigationIndicator'   | Bottom navigation bar. <!--RP12-->OpenHarmony devices do not support this capability.<!--RP12End--> |
 
 ## WindowAnimationCurveParam<sup>20+</sup>
@@ -74,7 +75,7 @@ When the curve type is **CUBIC_BEZIER**, **WindowAnimationCurveParam** must be s
 
 ## RotationChangeCallback<sup>19+</sup>
 
-type RotationChangeCallback<T, U> = (info: T) => U
+type RotationChangeCallback&lt;T, U&gt; = (info: T) => U
 
 Describes a generic callback function for rotation event notifications.
 
@@ -88,13 +89,13 @@ In this callback function, the parameter type is [RotationChangeInfo](arkts-apis
 
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | -------------------------- |
-| info | T    | Yes  | Parameter of type [RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19) passed by the system when the callback function is called.|
+| info | T    | Yes  | Rotation event information. The system passes a parameter of the [RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19) type to notify you of the window information when a rotation change occurs.|
 
 **Return value**
 
 | Type| Description|
 | -------------------------------- | ------------------------------------ |
-| U | Value of the [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) or void type returned by the callback.|
+| U | Value of the [RotationChangeResult](arkts-apis-window-i.md#rotationchangeresult19) \| void type, which is used to specify the window position after rotation. When void is returned, the system does not change the window position. |
 
 ## WindowEventListener
 
@@ -112,5 +113,5 @@ Callback function for window lifecycle event notifications.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | ---- | ------------------ |
-| windowId | number  | Yes | ID of the window whose lifecycle changes.|
+| windowId | number  | Yes  | ID of the window that triggers the lifecycle change, used to identify the specific window whose state has changed. |
 | event | window.[WindowEventType](arkts-apis-window-e.md#windoweventtype10)  | Yes| Window lifecycle event type.|
