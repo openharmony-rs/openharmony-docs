@@ -321,7 +321,7 @@ Tid:39450, Name:xample.dfx_test
 | `failed to exchange ownership of file descriptor: fd <fd> is unowned, was expected to be owned by <owner>` | exchange时fd已无属主 | fd已被关闭后仍尝试以原属主tag调用fdsan_exchange_owner_tag，属于use-after-close |
 | `failed to exchange ownership of file descriptor: fd <fd>, was owned by <owner1>, was expected to be owned by <owner2>` | exchange时属主不匹配 | fd的所有权已被其他对象接管，再尝试以原属主tag调用fdsan_exchange_owner_tag |
 
-OpenFiles列出所有打开的文件
+OpenFiles列出所有打开的文件。
 
 **字段说明：**
 
@@ -510,7 +510,7 @@ void good_write()
 
 **fd快速回收导致报错指向错误属主：** 当线程A关闭一个fd后，该fd可能立即被线程B回收并绑定新的tag。此时如果线程A（或系统中其他模块）对该fd执行了非法close或double close，fdsan报错信息中显示的owner将是线程B的tag，而非原始属主的信息。这并不意味着线程B的tag设置有误，而是当前进程内其他业务逻辑存在非法close或double close的问题。
 
-**检测与执行的竞态窗口：** `fdsan_close_with_tag`内部在"校验tag"与"执行close"之间存在极小的时间窗口。在多线程并发场景下，fd可能在该窗口内被回收并重新分配给其他线程，导致校验结果指向的属主并非当前fd的实际使用者。
+**检测与执行的竞态窗口：** `fdsan_close_with_tag`内部在“校验tag”与“执行close”之间存在极小的时间窗口。在多线程并发场景下，fd可能在该窗口内被回收并重新分配给其他线程，导致校验结果指向的属主并非当前fd的实际使用者。
 
 **排查建议：** 当看到fdsan报错时，不应直接认定日志中显示的owner就是问题的直接责任方。建议结合fd的生命周期、调用栈信息以及系统中其他模块对fd的使用情况进行综合排查，确认是否存在其他模块的非法close或double close行为。
 
