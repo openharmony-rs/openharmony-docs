@@ -55,7 +55,7 @@ struct Index {
 
   private async loadImageFromThread(): Promise<void> {
     const resourceMgr = this.uiContext?.getHostContext()?.resourceManager;
-    // 此处‘startIcon.png’为media下复制到工程中的resources/rawfile文件夹中，请开发者自行替换，
+    // 此处的‘startIcon.png’需要开发者自行从resources/base/media下复制到工程中的resources/rawfile文件夹中，
     // 否则imageSource创建失败会导致后续无法正常执行（日志中会打印Failed to get RawFd）。
     await resourceMgr?.getRawFd('startIcon.png').then(async rawFileDescriptor => {
       await taskpool.execute(loadPixelMap, rawFileDescriptor).then(pixelMap => {
@@ -71,7 +71,7 @@ struct Index {
         }
       }).catch((e: BusinessError) => {
         this.message = 'failed';
-           console.error(`taskpool execute loadPixelMap failed. Code: ${e.code}, message: ${e.message}`);
+        console.error(`taskpool execute loadPixelMap failed. Code: ${e.code}, message: ${e.message}`);
       });
     }).catch(() => {
       this.message = 'failed';
@@ -116,10 +116,10 @@ export async function loadPixelMap(rawFileDescriptor: resourceManager.RawFileDes
   imageSource.release();
   // 使pixelMap在跨线程传输完成后，脱离原线程的引用。
   try {
-       pixelMap.setTransferDetached(true);
-     } catch (err) {
-       hilog.error(0x0000, 'testTag', 'Failed to set transferDetached. Cause: %{public}s', JSON.stringify(err));
-     }
+    pixelMap.setTransferDetached(true);
+  } catch (err) {
+    hilog.error(0x0000, 'testTag', 'Failed to set transferDetached. Cause: %{public}s', JSON.stringify(err));
+  }
   // 返回pixelMap给主线程。
   return pixelMap;
 }
