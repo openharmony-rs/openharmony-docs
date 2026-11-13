@@ -1,12 +1,11 @@
 # OhosImageSourceDelayTimeList
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9329f19aa2995f079ff9cf109a20aad0033a91a3 translatedAt=2026-08-03T04:03:58.383Z pushedAt=2026-08-04T02:53:35.233Z -->
+<!-- md-trans-meta sourceCommit=a71c0a82e5ac85b488b13af278b7bfd23da513e9 translatedAt=2026-11-06T02:03:40.643Z pushedAt=2026-11-12T06:11:03.852Z nl=1 -->
 
 ```c
 struct OhosImageSourceDelayTimeList {...}
@@ -28,5 +27,7 @@ The struct describes the delay time list of an image source. The delay time list
 
 | Name| Description|
 | -- | -- |
-| int32_t* delayTimeList | Pointer to the starting address of the image source delay time list.|
-| size_t size = 0 | Size of the image source delay time list.|
+| int32_t* delayTimeList | Pointer to the starting address of the delay time list of an image source.|
+| size_t size = 0 | Size of the delay time list of an image source. This setting is only applicable to the C++ compilation environment. |
+| size_t size | Size of the delay time list of an image source. This setting is only applicable to the C compilation environment. |
+

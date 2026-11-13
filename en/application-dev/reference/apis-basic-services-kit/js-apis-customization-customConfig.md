@@ -6,6 +6,7 @@
 <!--Designer: @sunshine_1984-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=19aa9ebf7474f4275c28ee8e89d124c377ef0eca translatedAt=2026-11-12T04:18:46.016Z pushedAt=2026-11-12T12:18:59.968Z nl=1 -->
 
 This module provides APIs for applications to obtain custom configurations, such as channel IDs.
 
@@ -27,7 +28,7 @@ Obtains a pre-installed channel ID of this application.
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
 
-**System capability**: SystemCapability.Customization.CustomConfig
+**System capability:** SystemCapability.Customization.CustomConfig
 
 **Return value**
 

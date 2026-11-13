@@ -6,6 +6,7 @@
 <!--Designer: @hwymlgitcode-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=e450dd9fcbc0ebd74c74d42993a4576a6180f22b translatedAt=2026-11-12T04:15:51.622Z pushedAt=2026-11-12T12:16:45.868Z nl=1 -->
 
 This module provides APIs for serial port management, which are applicable to scenarios where data needs to be exchanged with serial port devices, such as industrial control, sensor data collection, and embedded device communication. This module provides functions such as obtaining the serial port list, opening and closing serial ports, reading and writing data, and managing hardware flow control signals. It helps you easily communicate with external serial port devices, improving device interconnection efficiency.
 
@@ -134,9 +135,9 @@ serial.getSerialPortList().then(async (portList: serial.SerialPort[]) => {
     parity: serial.Parity.NONE
   };
   await port.open(config);
-  console.info('open success');
-  // Call port.close() to release resources after the serial port is used.
-  await port.close();
+console.info('open success');
+// Call port.close() to release resources after the serial port is used.
+await port.close();
 }).catch((error: BusinessError) => {
   console.error(`Failed to open serial port. Code: ${error.code}, message: ${error.message}`);
 });
@@ -222,6 +223,7 @@ For details about the error codes, see [Serial Port Management Error Codes](erro
 
 | ID| Error Message                         |
 | -------- | --------------------------------- |
+| 401      | Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. undefined is passed as the optional parameter. |
 | 35700001 | Service error.                    |
 | 35700002 | Invalid parameter.                |
 | 35700003 | Virtual serial port disconnected. |
@@ -327,14 +329,17 @@ For details about the error codes, see [Serial Port Management Error Codes](erro
 <!--code_no_check-->
 ```ts
 // port is a serial port object, which needs to be obtained through serial.getSerialPortList().
-// Cancel listening for data receiving events on the serial port.
-port.offDataRead();
-
-// Cancel the specified listener callback.
+// Register callbacks first.
 let callback = (data: Uint8Array) => {
   console.info(`received data length: ${data.length}`);
 };
+port.onDataRead(callback);
+
+// Cancel the specified listening callback.
 port.offDataRead(callback);
+
+// Or cancel all listening.
+port.offDataRead();
 ```
 
 ### flush
@@ -397,7 +402,7 @@ Waits until all write requests are complete. This API uses a promise to return t
 - You are advised to call **drain()** before **close()** to ensure that all data is transferred before the serial port is closed.
 - If **drain()** is called before **open()**, error code 35700005 (Port not open) will be thrown.
 
-The differences between **drain()** and **flush()** are as follows:
+The differences between **drain()** and **flush()** are as follows: 
 - **drain()** waits until the data in the write buffer is sent completely, which is suitable for scenarios where complete data transmission is required. **flush()** directly discards all data in the buffer, which is suitable for scenarios where the buffer needs to be quickly cleared or invalid data needs to be discarded.
 
 **Since:** 26.0.0
@@ -500,7 +505,7 @@ Obtains the status of the Clear to Send (CTS) signal. This API uses a promise to
 - You must call **open()** to open the serial port before calling **getCts()** to obtain the CTS signal.
 - If **getCts()** is called before **open()**, error code 35700005 (Port not open) will be thrown.
 
-The differences between **getCts()** and **getDsr()** are as follows:
+The differences between **getCts()** and **getDsr()** are as follows: 
 - **getCts()** queries the CTS signal, and the RTS/CTS signal is used to implement hardware-based flow control and determine whether data can be sent. **getDsr()** queries the DSR signal, and the DTR/DSR signal is used to determine whether the communication device is ready.
 
 **Since:** 26.0.0
@@ -757,14 +762,17 @@ For details about the error codes, see [Serial Port Management Error Codes](erro
 <!--code_no_check-->
 ```ts
 // port is a serial port object, which needs to be obtained through serial.getSerialPortList().
-// Unsubscribe from serial port disconnection events.
-port.offDisconnect();
-
-// Cancel the specified listener callback.
+// Register callbacks first.
 let disconnectedCallback = () => {
   console.info('serial port disconnected');
 };
+port.onDisconnect(disconnectedCallback);
+
+// Cancel the specified listening callback.
 port.offDisconnect(disconnectedCallback);
+
+// Or cancel all listening.
+port.offDisconnect();
 ```
 
 ## SerialPortInfo

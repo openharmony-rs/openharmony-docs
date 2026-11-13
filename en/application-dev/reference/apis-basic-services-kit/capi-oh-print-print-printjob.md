@@ -1,10 +1,11 @@
 # Print_PrintJob
  <!--Kit: Basic Services Kit-->
  <!--Subsystem: Print-->
- <!--Owner: @guoshengbang-->
+ <!--Owner: @Zouhaifeng1-->
  <!--Designer: @baozewei-->
  <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=8ee0eefda2c8f7c51afc8d61427d4e7289d6c89f translatedAt=2026-11-12T03:59:12.477Z pushedAt=2026-11-12T12:11:58.456Z nl=1 -->
 
 ```cpp
 typedef struct {...} Print_PrintJob
@@ -16,7 +17,7 @@ Represents a print job, which is used to configure the attributes of a print job
 
 **Since**: 12
 
-**Related module**: [OH_Print](capi-oh-print.md)
+**Related module**: [Print](capi-oh-print.md)
 
 **Header file**: [ohprint.h](capi-ohprint-h.md)
 
@@ -42,4 +43,6 @@ Represents a print job, which is used to configure the attributes of a print job
 | [Print_OrientationMode](capi-ohprint-h.md#print_orientationmode) orientationMode | Orientation mode. The portrait mode is suitable for printing regular documents. The landscape mode is suitable for printing wide content such as tables and charts. The reverse landscape mode is suitable for printing horizontal content that requires mirroring. The reverse portrait mode is suitable for printing vertical content that requires mirroring. If no mode is specified, the system automatically selects an orientation.|
 | [Print_Quality](capi-ohprint-h.md#print_quality) printQuality | Print quality. The high-quality mode is suitable for final output or formal documents. The normal mode is suitable for daily printing. The draft mode is suitable for quick preview to save consumables.|
 | [Print_DocumentFormat](capi-ohprint-h.md#print_documentformat) documentFormat | MIME media type of the document, for example, PDF (application/pdf) or JPEG (image/jpeg).|
-| char *advancedOptions | Advanced options in JSON format.<br>The following keys are supported:<br>- **isReverse**: Boolean type, indicating whether to print in reverse order.<br>- **isCollate**: Boolean type, indicating whether to print copies one by one.|
+| char *advancedOptions | Advanced options in JSON format.<br>The following keys are supported:<br>- **isReverse**: Boolean type, indicating whether to print in reverse order.<br>- **isCollate**: Boolean type, indicating whether to print copies one by one.<br>- **printPages**: integer type, indicating the number of pages to be printed. The value must be greater than or equal to 1. The default value is **1**. |
+
+

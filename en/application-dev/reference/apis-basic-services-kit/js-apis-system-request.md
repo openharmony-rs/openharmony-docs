@@ -5,6 +5,7 @@
 <!--Designer: @hu-kai45-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=0b7589dd9a4f19a2068a2478661709085033922d translatedAt=2026-11-12T05:01:14.116Z pushedAt=2026-11-12T12:26:38.445Z nl=1 -->
 
 The **system.request** module provides applications with basic upload and download capabilities.
 
@@ -31,7 +32,7 @@ Uploads a file. This API returns no value.
 
 > **NOTE**
 >
-> This API has been supported since API version 3 and deprecated since API version 9. You are advised to use [request.uploadFile](js-apis-request.md#requestuploadfile9) instead.
+> This API is supported since API version 3 and deprecated since API version 9. You are advised to use [request.uploadFile](js-apis-request.md#requestuploadfile9) instead.
 
 **Parameters**
 
@@ -83,7 +84,7 @@ Uploads a file. This API returns no value.
 
 > **NOTE**
 >
-> This API has been supported since API version 3 and deprecated since API version 9. You are advised to use [UploadConfig](js-apis-request.md#uploadconfig) instead.
+> This API is supported since API version 3 and deprecated since API version 9. You are advised to use [UploadConfig](js-apis-request.md#uploadconfig) instead.
 
   | Name| Type| Read-Only| Optional| Description|
   | -------- | -------- | -------- | -------- | -------- |
@@ -170,7 +171,7 @@ Downloads a file. This API returns no value.
   try {
     Request.download(downloadRequestOptions);
     console.info('Start download');
-  } catch(err) {
+  } catch (err) {
     console.error('Failed to download, err:' + err);
   }
   ```
@@ -182,7 +183,7 @@ Downloads a file. This API returns no value.
 
 > **NOTE**
 >
-> This API has been supported since API version 3 and deprecated since API version 9. You are advised to use [UploadConfig](js-apis-request.md#uploadconfig) instead.
+> This API is supported since API version 3 and deprecated since API version 9. You are advised to use [UploadConfig](js-apis-request.md#uploadconfig) instead.
 
 **Parameters**
   | Name| Type| Read-Only| Optional| Description|

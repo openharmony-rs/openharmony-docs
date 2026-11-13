@@ -2,10 +2,11 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
-<!--Tester:@baozewei-->
+<!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=5618c9fdb4c9f994d48984cc769916e7ae8246d3 translatedAt=2026-11-12T04:44:38.592Z pushedAt=2026-11-12T12:23:43.711Z nl=1 -->
 
 This module provides JavaScript APIs of the scan framework, which support scanner discovery and management, scanning execution, and device event listening. It is applicable to scenarios where an app needs to integrate a scanner for digital document collection and device management.
 
@@ -113,7 +114,6 @@ Defines the range.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-**Properties**
 | **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
 | minValue | number | No| No| Minimum value.|
@@ -126,7 +126,6 @@ Defines the scanner parameters.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-**Properties**
 | **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
 | optionName | string | No| No| Option name.|
@@ -146,7 +145,6 @@ Defines the scanner option value. When the constraint type of the option is **SC
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-**Properties**
 | **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
 | valueType | [OptionValueType](#optionvaluetype) | No| No| Value type, which determines the value field to be used.|
@@ -160,7 +158,6 @@ Defines the progress of scanning pictures.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-**Properties**
 | **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
 | progress | number | No| No| Processing progress, in percentage. The value ranges from 0 to 100.|
@@ -173,7 +170,6 @@ Defines the scanner.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-**Properties**
 | **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
 | scannerId | string | No| No| Scanner ID.|
@@ -189,7 +185,6 @@ Defines the device to be synced from the scanner.
 
 **System capability**: SystemCapability.Print.PrintFramework
 
-**Properties**
 | **Name**| **Type**| **Read-Only**| **Optional**| **Description**|
 | -------- | -------- | -------- | -------- | -------- |
 | scannerId | string | No| No| Scanner ID.|
@@ -209,6 +204,7 @@ Initializes the scan service. This API must be called before other scanning APIs
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Return value**
+
 | **Type**| **Description**|
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise used to return the result. If the scan service is initialized successfully, **resolve** will be called. If the initialization fails, **reject** will be called.|
@@ -222,8 +218,7 @@ Initializes the scan service. This API must be called before other scanning APIs
 **Example**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 scan.init().then(() => {
     console.info('scan init success');
@@ -243,6 +238,7 @@ Exits the scan service. This API uses a promise to return the result. After the 
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Return value**
+
 | **Type**| **Description**|
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise used to return the result. If the scan service is exited successfully, **resolve** will be called. If the exit fails, **reject** will be called.|
@@ -256,8 +252,7 @@ Exits the scan service. This API uses a promise to return the result. After the 
 **Example**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 scan.exit().then(() => {
     console.info('scan exit success');
@@ -277,6 +272,7 @@ Starts scanner discovery. The discovered scanner information is returned through
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Return value**
+
 | **Type**| **Description**|
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise used to return the result. If the discovery starts successfully, **resolve** will be called. If the discovery fails to start, **reject** will be called.|
@@ -290,8 +286,7 @@ Starts scanner discovery. The discovered scanner information is returned through
 **Example**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 scan.startScannerDiscovery().then(() => {
     console.info('start scanner discovery success');
@@ -311,11 +306,13 @@ Opens a scanner. This API can be used only after initialization is complete by c
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
+
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | scannerId | string | Yes| ID of the scanner to be opened, which can be obtained using the **scanDeviceFound** callback after **startScannerDiscovery** is called.|
 
 **Return value**
+
 | **Type**| **Description**|
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise used to return the result. If the scanner is opened successfully, **resolve** will be called. If the scanner fails to be opened, **reject** will be called.|
@@ -329,8 +326,7 @@ Opens a scanner. This API can be used only after initialization is complete by c
 **Example**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.openScanner(scannerId).then(() => {
@@ -351,11 +347,13 @@ Closes a scanner. This API uses a promise to return the result. After a scanner 
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
+
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | scannerId | string | Yes| ID of the scanner to be closed, which can be obtained using the **scanDeviceFound** callback after **startScannerDiscovery** is called.|
 
 **Return value**
+
 | **Type**| **Description**|
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise used to return the result. If the scanner is closed successfully, **resolve** will be called. If the scanner fails to be closed, **reject** will be called.|
@@ -369,8 +367,7 @@ Closes a scanner. This API uses a promise to return the result. After a scanner 
 **Example**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.closeScanner(scannerId).then(() => {
@@ -391,11 +388,13 @@ Obtains scanner parameters. This API uses a promise to return the result. This m
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
+
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | scannerId | string | Yes| ID of the scanner, which can be obtained using the **scanDeviceFound** callback after **startScannerDiscovery** is called.|
 
 **Return value**
+
 | **Type**| **Description**|
 | -------- | -------- |
 | Promise&lt;[ScannerParameter](#scannerparameter)[]&gt; | Promise used to return the result. If the scanner parameters are obtained successfully, **resolve** returns the scanner parameter array. If the scanner parameters fail to be obtained, **reject** will be called.|
@@ -409,8 +408,7 @@ Obtains scanner parameters. This API uses a promise to return the result. This m
 **Example**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.getScannerParameter(scannerId).then((parameters: scan.ScannerParameter[]) => {
@@ -431,6 +429,7 @@ Sets scanner parameters. This API uses a promise to return the result. This meth
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
+
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | scannerId | string | Yes| ID of the scanner whose parameter is to be set. The ID can be obtained using the **scanDeviceFound** callback after **startScannerDiscovery** is called.|
@@ -438,6 +437,7 @@ Sets scanner parameters. This API uses a promise to return the result. This meth
 | value | [ScannerOptionValue](#scanneroptionvalue) | Yes| Scanner option value to be set, including the value type (**valueType**) and the corresponding numeric value (**numValue**), string value (**strValue**), or Boolean value (**boolValue**).|
 
 **Return value**
+
 | **Type**| **Description**|
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise used to return the result. If the scanner parameters are set successfully, **resolve** will be called. If the scanner parameters fail to be set, **reject** will be called.|
@@ -451,8 +451,7 @@ Sets scanner parameters. This API uses a promise to return the result. This meth
 **Example**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
@@ -478,12 +477,14 @@ Sets the scan option to auto mode, in which the scanner automatically determines
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
+
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | scannerId | string | Yes| ID of the scanner, which can be obtained using the **scanDeviceFound** callback after **startScannerDiscovery** is called.|
 | optionIndex | number | Yes| Index of the option to be set to automatic mode, which can be obtained using **getScannerParameter()**.|
 
 **Return value**
+
 | **Type**| **Description**|
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise used to return the result. If the scanning option is set to automatic mode successfully, **resolve** will be called. If the scanning option fails to be set to automatic mode, **reject** will be called.|
@@ -497,8 +498,7 @@ Sets the scan option to auto mode, in which the scanner automatically determines
 **Example**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
@@ -520,12 +520,14 @@ Obtains the current scanner settings. This API uses a promise to return the resu
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
+
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | scannerId | string | Yes| ID of the scanner to be obtained, which can be obtained using the **scanDeviceFound** callback after **startScannerDiscovery** is called.|
 | optionIndex | number | Yes| Index of the option to be obtained, which can be obtained using **getScannerParameter()**.|
 
 **Return value**
+
 | **Type**| **Description**|
 | -------- | -------- |
 | Promise&lt;[ScannerOptionValue](#scanneroptionvalue)&gt; | Promise used to return the result. If the scanner settings are obtained successfully, **resolve** returns the scanner option value. If the scanner settings fail to be obtained, **reject** will be called.|
@@ -539,8 +541,7 @@ Obtains the current scanner settings. This API uses a promise to return the resu
 **Example**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 let optionIndex: number = 1;
@@ -562,12 +563,14 @@ Starts scanning. This API uses a promise to return the result. This method can b
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
+
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | scannerId | string | Yes| ID of the scanner, which can be obtained using the **scanDeviceFound** callback after **startScannerDiscovery** is called.|
 | batchMode | boolean | Yes| Whether to use the batch processing mode. **true** indicates that the batch processing mode is used, and multiple pages of documents can be continuously scanned. **false** indicates that the batch processing mode is not used, and only a single page is scanned.|
 
 **Return value**
+
 | **Type**| **Description**|
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise used to return the result. If the scanning starts successfully, **resolve** will be called. If the scanning fails to start, **reject** will be called.|
@@ -581,8 +584,7 @@ Starts scanning. This API uses a promise to return the result. This method can b
 **Example**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 let batchMode: boolean = true;
@@ -604,11 +606,13 @@ Cancels scanning. This API uses a promise to return the result. This method can 
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
+
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | scannerId | string | Yes| Scanner ID, which can be obtained using the **scanDeviceFound** callback after **startScannerDiscovery** is called.|
 
 **Return value**
+
 | **Type**| **Description**|
 | -------- | -------- |
 | Promise&lt;void&gt; | Promise used to return the result. If the scanning is canceled successfully, **resolve** will be called. If the scanning fails to start, **reject** will be called.|
@@ -622,8 +626,7 @@ Cancels scanning. This API uses a promise to return the result. This method can 
 **Example**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.cancelScan(scannerId).then(() => {
@@ -644,11 +647,13 @@ Obtains the progress of scanning a picture. This API uses a promise to return th
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
+
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | scannerId | string | Yes| Scanner ID, which can be obtained using the **scanDeviceFound** callback after **startScannerDiscovery** is called.|
 
 **Return value**
+
 | **Type**| **Description**|
 | -------- | -------- |
 | Promise&lt;[PictureScanProgress](#picturescanprogress)&gt; | Promise used to return the result. If the image scanning progress is obtained successfully, **resolve** returns the image scanning progress. If the image scanning progress fails to be obtained, **reject** will be called.|
@@ -662,8 +667,7 @@ Obtains the progress of scanning a picture. This API uses a promise to return th
 **Example**
 
 ```ts
-import { scan } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { scan, BusinessError } from '@kit.BasicServicesKit';
 
 let scannerId: string = 'scanner_001';
 scan.getPictureScanProgress(scannerId).then((progress: scan.PictureScanProgress) => {
@@ -684,6 +688,7 @@ Registers a callback to listen for the scanner discovery event. This callback is
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
+
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceFound' | Yes| Event type.|
@@ -716,6 +721,7 @@ Unregisters a callback used to listen for the scanner discovery event.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
+
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceFound' | Yes| Event type.|
@@ -751,6 +757,7 @@ Registers a callback to listen for the scanner sync event. This callback is trig
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
+
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceSync' | Yes| Event type.|
@@ -783,6 +790,7 @@ Unregisters a callback used to listen for the scanner sync event.
 **System capability**: SystemCapability.Print.PrintFramework
 
 **Parameters**
+
 | **Name**| **Type**| **Mandatory**| **Description**|
 | -------- | -------- | -------- | -------- |
 | type | 'scanDeviceSync' | Yes| Event type.|

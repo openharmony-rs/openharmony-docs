@@ -5,29 +5,30 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=bc48ffe9aa34c36ff84c94445d484e1a30fe3ef6 translatedAt=2026-11-06T02:21:10.946Z pushedAt=2026-11-12T11:48:02.612Z nl=1 -->
 
 
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 501 API Call Failed
+## 501 Resource Occupied by Another Thread, Access Denied
 
 **Error Message**
 
-Resource unavailable.
+Access denied because the resource is occupied by another thread.
 
 **Symptom**
 
-This error code is reported when an API fails to be called.
+The resource has been occupied and locked by another thread, and this access request is denied.
 
 **Possible Cause**
 
-The image is transferred across threads, and the original object cannot call the API.
+The resource is currently being used by another thread, so the operation cannot be completed.
 
 **Solution**
 
-Check the image and follow the instructions to decode it.
+Ensure that the same component/resource is used in only one thread.
 
 ## 62980096 Operation Failed
 
@@ -51,7 +52,7 @@ This error code is reported when the operations fails.
 
 Check the image and follow the instructions to decode it.
 
-## 62980097 PixelMap Serialization Failed
+## 62980097 PixelMap Serialization Transfer Failure
 
 **Error Message**
 
@@ -59,7 +60,7 @@ IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception
 
 **Symptom**
 
-This error code is reported when PixelMap serialization and transmission fails.
+PixelMap serialization transfer failed.
 
 **Possible Cause**
 
@@ -193,7 +194,7 @@ Change the image type and try again.
 
 **Error Message**
 
-Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap.
+Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty PixelMap.
 
 **Symptom**
 
@@ -492,7 +493,7 @@ Correct the input data or use another image.
 
 **Error Message**
 
-Add pixelmap out of range.
+Add PixelMap out of range.
 
 **Symptom**
 
@@ -1070,11 +1071,11 @@ PixelMap has been passed to another thread.
 
 **Symptom**
 
-The PixelMap has been passed to another thread.
+The PixelMap has been passed to another thread and is occupied by that thread, so this access request is rejected.
 
 **Possible Cause**
 
-The PixelMap object has been passed to another thread, and the object in the original thread cannot continue to call the API.
+After the PixelMap object is passed to another thread, its usage right is transferred to that thread, and the original thread can no longer operate on the object.
 
 **Solution**
 
@@ -1092,11 +1093,16 @@ This error code is reported if the DMA memory does not exist.
 
 **Possible Cause**
 
-The DMA memory is not used to decode HDR images.
+The current operation requires the PixelMap to use DMA memory, but the passed-in PixelMap does not use DMA memory. For example, reading or writing HDR metadata of a PixelMap in shared memory, or obtaining its underlying NativeBuffer.
 
 **Solution**
 
-Use a correct memory allocation type.
+Recreate a PixelMap that uses DMA memory, and call the original API with the new object. Choose a creation method based on the input data:
+
+- Decode an image: Since API version 15, you can call [createPixelMapUsingAllocator](arkts-apis-image-ImageSource.md#createpixelmapusingallocator15) and set allocatorType to image.AllocatorType.DMA. In the C API, call [OH_ImageSourceNative_CreatePixelmapUsingAllocator()](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator) and set allocator to IMAGE_ALLOCATOR_TYPE_DMA.
+- Create from pixel data: Since API version 20, you can call [image.createPixelMapUsingAllocator](arkts-apis-image-f.md#imagecreatepixelmapusingallocator20) and set allocatorType to image.AllocatorType.DMA; for the C API, call [OH_PixelmapNative_CreatePixelmapUsingAllocator()](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmapusingallocator) and set allocator to IMAGE_ALLOCATOR_MODE_DMA.
+
+For more information about DMA memory, see [Image Decoding Memory Optimization (ArkTS)](../../media/image/image-allocator-type.md) and [Image Decoding Memory Optimization (C/C++)](../../media/image/image-allocator-type-c.md).
 
 ## 7600174 DMA Operation Failed
 

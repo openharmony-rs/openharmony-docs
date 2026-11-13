@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=54656b3da3e41e2ba7f2b57573523f0dbf41c1e3 translatedAt=2026-10-08T09:13:58.169Z pushedAt=2026-10-09T03:03:08.714Z -->
+<!-- md-trans-meta sourceCommit=75c0f0cf34944e262b28608d43f8d720a6e6e07e translatedAt=2026-11-12T04:27:45.861Z pushedAt=2026-11-12T12:20:55.347Z nl=1 -->
 
 This module provides APIs for providing subscriber information. It allows you to configure parameters such as the subscribed common event type, publisher permission, publisher device ID, user ID, and subscription priority. This module is applicable to scenarios where an app needs to subscribe to [system common events](../../basic-services/common-event/common-event-glossary.md#system-common-event) or custom common events and requires refined control over event sources.
 
@@ -13,11 +13,11 @@ This module provides APIs for providing subscriber information. It allows you to
 >
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> After users subscribe to custom common events, any app can send potential malicious common events to subscribers. Use the **publisherPermission** and **publisherBundleName** parameters of this module to restrict the publishing scope of common events.
+> After subscribing to custom common events, any application can send potential malicious common events to subscribers. Use the **publisherPermission** and **publisherBundleName** parameters of this module to restrict the publishing scope of common events.
 
 ## Attributes
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Notification.CommonEvent
 

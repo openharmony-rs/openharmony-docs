@@ -6,6 +6,7 @@
 <!--Designer: @jinjunwen-->
 <!--Tester: @gx1016-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=9660e5ebdee060b245691d28399a441f3df3ed9e translatedAt=2026-11-12T04:29:01.463Z pushedAt=2026-11-12T12:21:22.806Z nl=1 -->
 
 The **intelligentVoice** module provides the intelligent voice enrollment and voice wakeup functions. <!--Del-->Currently, the features are related to chips and are not supported on OpenHarmony yet.<!--DelEnd-->
 
@@ -54,7 +55,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | 202 | Not system application.                             |
 | 22700101 | No memory.                              |
 
-**Example**
+**Example** 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -138,7 +139,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | 22700101 | No memory.                           |
 | 22700102 | Invalid parameter.                            |
 
-**Example**
+**Example** 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -192,7 +193,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | 22700101 | No memory.                           |
 | 22700102 | Invalid parameter.                            |
 
-**Example**
+**Example** 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -239,7 +240,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | 22700101 | No memory.                           |
 | 22700102 | Invalid parameter.                            |
 
-**Example**
+**Example** 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -293,7 +294,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | 22700101 | No memory.                           |
 | 22700102 | Invalid parameter.                            |
 
-**Example**
+**Example** 
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1134,7 +1135,7 @@ enrollForResult(isLast: boolean, callback: AsyncCallback&lt;EnrollCallbackInfo&g
 
 Obtains the enrollment result. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.MANAGE_INTELLIGENT_VOICE
+**Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE, ohos.permission.MICROPHONE
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core
 
@@ -1180,7 +1181,7 @@ enrollForResult(isLast: boolean): Promise&lt;EnrollCallbackInfo&gt;
 
 Obtains the enrollment result. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.MANAGE_INTELLIGENT_VOICE
+**Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE, ohos.permission.MICROPHONE
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core
 
@@ -2397,7 +2398,7 @@ startCapturer(channels: number): Promise\<void\>
 
 Starts the capturer. This API uses a promise to return the result.
 
-**Required permissions**: ohos.permission.MANAGE_INTELLIGENT_VOICE
+**Required permissions:** ohos.permission.MANAGE_INTELLIGENT_VOICE, ohos.permission.MICROPHONE
 
 **System capability**: SystemCapability.AI.IntelligentVoice.Core
 
@@ -2421,7 +2422,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 | 22700102 | Invalid parameter.                         |
 | 22700105 | Start capturer failed.                          |
 | 22700107 | System error.                          |
@@ -2660,8 +2661,7 @@ Unsubscribes from wakeup events.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md). 
 | ID| Error Message|
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |

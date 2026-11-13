@@ -2,11 +2,11 @@
 
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @pxh123456-->
+<!--Owner: @zy_194-->
 <!--Designer: @gongzheng92-->
 <!--Tester: @gongzheng92-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=8218ce4f0c841d9882101f31e06f9891ffe801ce translatedAt=2026-08-03T04:08:00.178Z pushedAt=2026-08-04T02:18:43.521Z -->
+<!-- md-trans-meta sourceCommit=eaddc7f7d47dc349f012544f133498ba4435e7f1 translatedAt=2026-11-06T02:25:27.179Z pushedAt=2026-11-12T08:49:59.761Z nl=1 -->
 
 The module provides the capabilities for enhancing the clarity and scaling of image content.
 
@@ -42,6 +42,7 @@ Initializes the environment. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Video Processing Engine Error Codes](errorcode-videoprocessingengine.md).
 
+
 | ID | Error Message |
 | :------------ | :------------ |
 | 801  | Capability not supported. Function initializeEnvironment can not work correctly due to limited device capabilities.|
@@ -55,7 +56,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { videoProcessingEngine } from '@kit.ImageKit';
 
 async function initializeEnvironment() {
-  videoProcessingEngine.initializeEnvironment();
+  await videoProcessingEngine.initializeEnvironment();
 }
 ```
 
@@ -89,8 +90,8 @@ For details about the error codes, see [Video Processing Engine Error Codes](err
 import { videoProcessingEngine } from '@kit.ImageKit';
 
 async function deinitializeEnvironment() {
-  videoProcessingEngine.initializeEnvironment();
-  videoProcessingEngine.deinitializeEnvironment();
+  await videoProcessingEngine.initializeEnvironment();
+  await videoProcessingEngine.deinitializeEnvironment();
 }
 ```
 
@@ -126,7 +127,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { videoProcessingEngine } from '@kit.ImageKit';
 
 async function create() {
-  videoProcessingEngine.initializeEnvironment();
+  await videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
 }
 ```
@@ -138,7 +139,6 @@ Image processing class, which provides capabilities for enhancing the clarity an
 Constraints:
 
 - Only Standard Dynamic Range (SDR) images can be processed.
-
 - Images in RGBA, BGRA, NV12, and NV21 pixel formats can be processed. The output format is the same as the input format.
 
 ### enhanceDetail
@@ -158,7 +158,7 @@ Carries out detail enhancement processing. This API uses a promise to return the
 |  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | Yes | Input image, which must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types).|
 |  width |  number |  Yes  |  Target width, in pixels. <br>When **level** is **HIGH**, the supported range is [512, 2000]; when **level** is **other**, the supported range is [32, 3000].  |
 |  height |  number |  Yes  |  Target height, in pixels. <br>When **level** is **HIGH**, the supported range is [512, 2000]; when **level** is **other**, the supported range is [32, 3000].  |
-|  level | [QualityLevel](#qualitylevel)| No |  Algorithm level (**HIGH**, **MEDIUM**, **LOW**, or **NONE**). The default value is **NONE**.|
+| level | [QualityLevel](#qualitylevel) | No | Algorithm level (**HIGH**, **MEDIUM**, **LOW**, **NONE**). The default value is **LOW**. |
 
 **Return value**
 
@@ -182,10 +182,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { image, videoProcessingEngine } from '@kit.ImageKit';
 
 async function enhanceDetail(sourceImage: image.PixelMap, width: number, height: number) {
-  videoProcessingEngine.initializeEnvironment();
+  await videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
   // Example: The width can be set to 1024, and the height can be set to 1280.
-  let enhancedPixelmap: Promise<image.PixelMap> =
+  let enhancedPixelMap: Promise<image.PixelMap> =
     imageProcessor.enhanceDetail(sourceImage, width, height, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
@@ -205,8 +205,8 @@ Carries out detail enhancement processing. This API uses a promise to return the
 |  Name| Type | Mandatory | Description |
 | :------------ | :------------ | :------------ | :------------ |
 |  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | Yes | Input image, which must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types). |
-|  scale |  number |  Yes|  Target scale factor. Its value range is (0.0, 32.0]. The maximum supported scale is 32x, provided the [resulting resolution](#enhancedetail) stays within the required bounds.|
-|  level | [QualityLevel](#qualitylevel)| No |  Algorithm level (**HIGH**, **MEDIUM**, **LOW**, or **NONE**). The default value is **NONE**.|
+|  scale |  number |  Yes |  Target scale factor. The value range is (0.0, 32.0]. |
+|  level | [QualityLevel](#qualitylevel)| No  |  Algorithm level (**HIGH**, **MEDIUM**, **LOW**, **NONE**). The default value is **LOW**. |
 
 **Return value**
 
@@ -230,10 +230,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { image, videoProcessingEngine } from '@kit.ImageKit';
 
 async function enhanceDetail(sourceImage: image.PixelMap, scale: number) {
-  videoProcessingEngine.initializeEnvironment();
+  await videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
   // Example: The scale can be set to 2.0.
-  let enhancedPixelmap: Promise<image.PixelMap> =
+  let enhancedPixelMap: Promise<image.PixelMap> =
     imageProcessor.enhanceDetail(sourceImage, scale, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
@@ -255,7 +255,7 @@ Carries out detail enhancement processing. This API returns the result synchrono
 |  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | Yes | Input image, which must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types). |
 |  width |  number | Yes  |  Target width, in pixels. <br>When **level** is **HIGH**, the supported range is [512, 2000]; when **level** is **other**, the supported range is [32, 3000].  |
 |  height |  number | Yes |  Target height, in pixels. <br>When **level** is **HIGH**, the supported range is [512, 2000]; when **level** is **other**, the supported range is [32, 3000].  |
-|  level | [QualityLevel](#qualitylevel)| No |  Algorithm level (**HIGH**, **MEDIUM**, **LOW**, or **NONE**). The default value is **NONE**.|
+| level | [QualityLevel](#qualitylevel) | No | Algorithm level (**HIGH**, **MEDIUM**, **LOW**, **NONE**). The default value is **LOW**. |
 
 **Return value**
 
@@ -279,11 +279,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { image, videoProcessingEngine } from '@kit.ImageKit';
 
-async function enhanceDetailSync(sourceImage: image.PixelMap, width: number, height: number) {
+function enhanceDetailSync(sourceImage: image.PixelMap, width: number, height: number) {
   videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
   // Example: The width can be set to 1024, and the height can be set to 1280.
-  let enhancedPixelmap: image.PixelMap = imageProcessor.enhanceDetailSync(
+  let enhancedPixelMap: image.PixelMap = imageProcessor.enhanceDetailSync(
     sourceImage, width, height, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
@@ -303,8 +303,8 @@ Carries out detail enhancement processing. This API returns the result synchrono
 |  Name| Type | Mandatory | Description |
 | :------------ | :------------ | :------------ | :------------ |
 |  sourceImage | [image.PixelMap](arkts-apis-image-PixelMap.md)  | Yes | Input image, which must be allocated in DMA memory. For details, see [PixelMap Memory Types](../../media/image/image-allocator-type.md#memory-types). |
-|  scale |  number |  Yes|  Target scale factor. Its value range is (0.0, 32.0]. The maximum supported scale is 32x, provided the [resulting resolution](#enhancedetail) stays within the required bounds.|
-|  level | [QualityLevel](#qualitylevel)| No |  Algorithm level (**HIGH**, **MEDIUM**, **LOW**, or **NONE**). The default value is **NONE**.|
+|  scale |  number |  Yes |  Target scale factor. The value range is (0.0, 32.0]. |
+|  level | [QualityLevel](#qualitylevel)| No  |  Algorithm level (**HIGH**, **MEDIUM**, **LOW**, **NONE**). The default value is **LOW**. |
 
 **Return value**
 
@@ -328,11 +328,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { image, videoProcessingEngine } from '@kit.ImageKit';
 
-async function enhanceDetailSync(sourceImage: image.PixelMap, scale: number) {
+function enhanceDetailSync(sourceImage: image.PixelMap, scale: number) {
   videoProcessingEngine.initializeEnvironment();
   let imageProcessor = videoProcessingEngine.create() as videoProcessingEngine.ImageProcessor;
   // Example: The scale can be set to 2.0.
-  let enhancedPixelmap: image.PixelMap = imageProcessor.enhanceDetailSync(
+  let enhancedPixelMap: image.PixelMap = imageProcessor.enhanceDetailSync(
     sourceImage, scale, videoProcessingEngine.QualityLevel.HIGH);
 }
 ```
@@ -348,6 +348,6 @@ Enumerates the algorithm levels.
 | Name | Value | Description |
 | ------------ | ------------ | ------------ |
 | NONE  | 0  | Applies only to scaling scenarios. Changing the aspect ratio is supported.<br>- Input resolution requirements (in px): width: [32, 3000]; height: [32, 3000]<br>- Output resolution requirements (in px): width: [32, 3000]; height: [32, 3000] |
-|  LOW |  1 | Applies only to scaling scenarios. Changing the aspect ratio is supported.<br>- Input resolution requirements (in px): width: [32, 3000]; height: [32, 3000]<br>- Output resolution requirements (in px): width: [32, 3000]; height: [32, 3000] |
+|  LOW |  1 | Applies only to scaling scenarios and supports changing the aspect ratio. This is the default level.<br>- Input resolution requirements (in pixels): width: [32, 3000], height: [32, 3000].<br>- Output resolution requirements (in pixels): width: [32, 3000], height: [32, 3000].  |
 |  MEDIUM | 2  | Applies only to scaling scenarios. Changing the aspect ratio is supported.<br>- Input resolution requirements (in px): width: [32, 3000]; height: [32, 3000]<br>- Output resolution requirements (in px): width: [32, 3000]; height: [32, 3000] |
 |  HIGH |  3 |  1. In scaling scenarios: Changing the aspect ratio is not supported.<br>- Input resolution requirements (in px): width: (32, 512) (2000, 8192]; height: (32, 512) (2000, 8192]<br>- Output resolution requirements (in px): width: (32, 512) (2000, 8192]; height: (32, 512) (2000, 8192]<br>2. In clarity enhancement and scaling scenarios: Changing the aspect ratio is supported.<br>- Input resolution requirements (in px): width: [512, 2000]; height: [512, 2000]<br>- Output resolution requirements (in px): width: [512, 2000]; height: [512, 2000]|
