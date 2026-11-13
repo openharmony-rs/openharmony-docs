@@ -10,7 +10,7 @@ Smartperf-Host是一款深入挖掘数据、细粒度地展示数据的性能功
 
 PC端以Smartperf-Host网站的形式进行发布，内部分为Trace Streamer数据解析、SQLite数据存储、hdc设备管理、数据导入、UI绘制、数据分析等模块。下文会重点对Smartperf-Host提供的各项能力进行介绍。
 ## 项目目录
-```
+```text
 /smartperf_host
 ├── host                          # Smartperf-Host 相关代码。
 │   ├── doc                       # Smartperf-Host 相关使用文档。
@@ -48,7 +48,7 @@ PC端以Smartperf-Host网站的形式进行发布，内部分为Trace Streamer�
 - Native Memory抓取
 
   使用Smartperf-Host抓取应用的Native Memory（C和C++部分）的分配和释放情况，详见《[Native Memory抓取和展示说明](https://gitcode.com/openharmony-sig/developtools_smartperf_host/blob/master/ide/src/doc/md/quickstart_native_memory.md)》。
-- Hiperf抓取
+- HiPerf抓取
   
   使用Smartperf-Host抓取应用的cpu使用量、方法的调用栈等，详见《[HiPerf的抓取和展示说明](https://gitcode.com/openharmony-sig/developtools_smartperf_host/blob/master/ide/src/doc/md/quickstart_hiperf.md)》。
 - HiSystemEvent抓取
@@ -62,7 +62,7 @@ PC端以Smartperf-Host网站的形式进行发布，内部分为Trace Streamer�
   使用Smartperf-Host抓取页内存相关事件的开始时间、持续时间、触发进程、触发线程、事件类型、内存地址、内存大小等，详见《[页内存的抓取和展示说明](https://gitcode.com/openharmony-sig/developtools_smartperf_host/blob/master/ide/src/doc/md/quickstart_page_fault.md)》。
 - Bio抓取
 
-  使用Smartperf-Host抓取每次IO访问的起始时间、总延迟、进程、每4k数据的平均延迟、线程、操作（写数据、页面换入、Metadata）、访问量、路径等、Block number、优先级、Backtrace调用栈，详见《[Bio的抓取和展示说明](https://gitcode.com/openharmony-sig/developtools_smartperf_host/blob/master/ide/src/doc/md/quickstart_bio.md)》。
+  使用Smartperf-Host抓取每次IO访问的起始时间、总延迟、进程、每4k数据的平均延迟、线程、操作（写数据、页面换入、Metadata）、访问量、路径、Block number、优先级、Backtrace调用栈等，详见《[Bio的抓取和展示说明](https://gitcode.com/openharmony-sig/developtools_smartperf_host/blob/master/ide/src/doc/md/quickstart_bio.md)》。
 - 进程Smaps抓取
 
   使用Smartperf-Host抓取单个进程的smaps数据（类别、Pss、Rss、Vss等），数据源为/proc/$pid/smaps，详见《[进程smaps的抓取和展示说明](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/ide/src/doc/md/quickstart_memory_template.md)》。
