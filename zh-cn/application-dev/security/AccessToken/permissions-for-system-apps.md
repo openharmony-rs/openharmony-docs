@@ -9940,6 +9940,6 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：Phone | 2in1 | Tablet | TV
+**支持设备**：Phone | PC/2in1 | Tablet | TV
 
 **起始版本**：26.1.0
