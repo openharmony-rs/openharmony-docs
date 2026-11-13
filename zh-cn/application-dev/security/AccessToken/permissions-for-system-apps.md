@@ -9887,6 +9887,20 @@
 **支持设备**：Car
  
 **起始版本**：26.0.1
+
+## ohos.permission.ACCESS_INSTANTSHARE_RECOMMEND_DATA
+ 
+允许应用连接提供智能推荐分享数据的ServiceExtensionAbility，获取智能推荐的分享数据。
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+ 
+**支持设备**：General
+ 
+**起始版本**：26.1.0
  
 ## ohos.permission.vehicle.HIMA_DEVICE_AUTH
  
