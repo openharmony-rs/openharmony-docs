@@ -117,6 +117,7 @@ try {
     panProfile.disconnect('XX:XX:XX:XX:XX:XX');
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
 ```
 
 
@@ -166,4 +167,5 @@ try {
     panProfile.setTethering(false);
 } catch (err) {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
 ```
