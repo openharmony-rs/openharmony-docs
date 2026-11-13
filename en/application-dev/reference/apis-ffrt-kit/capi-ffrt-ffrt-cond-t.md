@@ -28,4 +28,4 @@ Condition variable structure, used to store the internal data of a condition var
 
 | Name| Description|
 | -- | -- |
-| uint32_t storage[(ffrt_cond_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Internal storage of the condition variable. Do not access it directly. Manage it using API such as **ffrt_cond_***. |
+| uint32_t storage[(ffrt_cond_storage_size + sizeof(uint32_t) - 1) / sizeof(uint32_t)] | Internal storage of the condition variable. Do not access it directly. Manage it using APIs such as **ffrt_cond_***. |

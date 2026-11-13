@@ -166,7 +166,7 @@ Initializes the mutex. When the mutex is no longer used, it must be destroyed by
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **ffrt_success** if the mutex is initialized successfully.<br>         Returns **ffrt_error_inval** is if **mutex** is null, or when **attr** is not null but does not specify a valid mutex type. |
+| FFRT_C_API int | Returns **ffrt_success** if the mutex is initialized successfully.<br>         Returns **ffrt_error_inval** is **mutex** is null, or when **attr** is not null but does not specify a valid mutex type. |
 
 ### ffrt_mutex_lock()
 

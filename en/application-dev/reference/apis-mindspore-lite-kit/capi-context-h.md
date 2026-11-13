@@ -10,7 +10,7 @@
 
 ## Overview
 
-Provides context-related APIs for configuring runtime information. These API are not thread-safe.
+Provides context-related APIs for configuring runtime information. These APIs are not thread-safe.
 
 **File to include:** <mindspore/context.h>
 
