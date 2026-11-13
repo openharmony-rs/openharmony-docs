@@ -90,7 +90,7 @@ When **type** is set to **multi-text**, a multi-column text selector is used.
 | -------- | ------- | --------- | ---- | ---------------------------------------- |
 | columns  | number  | -         | Yes   | Number of columns in the multi-column text selector.                            |
 | range    | 2-dimensional array | -         | No    | Items of the multi-column text selector. **range** is a two-dimensional array that indicates the number of columns. Each item in the array indicates the data of each column, for example,&nbsp;**[["a","b"],&nbsp;["c","d"]]**.<br/>When using this attribute, use data binding in the form of `range ={{data}}`, and declare the corresponding variable `data:[["a","b"], ["c","d"]]` in JavaScript. |
-| selected | Array   | [0,0,0,…] | No    | Default value of the multi-column text selector. This value is an array of the indexes of the selected items in each column, and it indicates the default selected value on the pop-up window UI. |
+| selected | Array   | [0,0,0,...] | No    | Default value of the multi-column text selector. This value is an array of the indexes of the selected items in each column, and it indicates the default selected value on the pop-up window UI. |
 | value    | Array   | -         | No    | Value of the multi-column text selector. It is an array of the values of the selected items in each column.            |
 
 
@@ -153,7 +153,7 @@ In addition to the [universal events](js-components-common-events.md), the follo
 
 | Name           | Parameters                                       | Description                                       |
 | ------------ | ---------------------------------------- | ---------------------------------------- |
-| change       | {&nbsp;newValue:&nbsp;[newValue1,&nbsp;newValue2,&nbsp;newValue3,&nbsp;…],&nbsp;newSelected:[newSelected1,&nbsp;newSelected2,&nbsp;newSelected3,&nbsp;…]&nbsp;} | Triggered when an item is selected and the OK button is clicked in the displayed pop-up window.<br/>-&nbsp;**newValue** is an array consisting of the values of the selected items.<br/>-&nbsp;**newSelected** is an array consisting of the indexes of the selected items. The lengths of **newValue** and **newSelected** are the same as the length of **range**. |
+| change       | {&nbsp;newValue:&nbsp;[newValue1,&nbsp;newValue2,&nbsp;newValue3,&nbsp;…],&nbsp;newSelected:[newSelected1,&nbsp;newSelected2,&nbsp;newSelected3,&nbsp;...]&nbsp;} | Triggered when an item is selected and the OK button is clicked in the displayed pop-up window.<br/>-&nbsp;**newValue** is an array consisting of the values of the selected items.<br/>-&nbsp;**newSelected** is an array consisting of the indexes of the selected items. The lengths of **newValue** and **newSelected** are the same as the length of **range**. |
 | columnchange | {&nbsp;column:&nbsp;column,&nbsp;newValue:&nbsp;newValue,&nbsp;newSelected:&nbsp;newSelected&nbsp;} | Triggered when the value of a column in the multi-column selector changes.<br/>-&nbsp;**column**: column whose value has changed.<br/>-&nbsp;**newValue**: selected value.<br/>-&nbsp;**newSelected**: index of the selected value. |
 | cancel       | -                                        | Triggered when the cancel button is clicked.                      |
 
@@ -324,4 +324,4 @@ export default {
 }
 ```
 
-![picker](figures/picker.gif)
+
