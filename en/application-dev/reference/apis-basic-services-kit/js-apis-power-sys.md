@@ -6,7 +6,7 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=dd5b685f010c5165097ee61a87d6b3f816c00eb8 translatedAt=2026-11-06T01:43:27.927Z pushedAt=2026-11-09T03:05:41.346Z nl=1 -->
+<!-- md-trans-meta sourceCommit=5aff2357dc56653b2222b40c616bb5d5d16a22ec translatedAt=2026-11-12T04:31:38.773Z pushedAt=2026-11-12T12:22:54.030Z nl=1 -->
 
 This module provides system APIs for device power state management, including shutting down and restarting a device, waking up a device, putting a device to sleep or into hibernation, setting the power mode, setting the screen-off timeout, refreshing the device active state, configuring the power key filtering policy, subscribing to and unsubscribing from shutdown/restart callbacks, and querying and setting power configurations. It applies to scenarios where system apps need to manage and control the device power state, such as controlling device power-on/off, hibernation and wakeup, power saving mode switching, and screen timeout management by device management apps. This module can help you implement refined management and automated control of device power behavior.
 
@@ -131,7 +131,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1.Incorrect parameter types. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.<br>Applicable versions: 19+ |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 801     | Capability not supported. This API cannot work in car devices. <br>Applicable versions: 26.0.1+|
 
@@ -179,7 +179,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API.<br>Applicable versions: 19+|
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 | 4900701 | Failed to suspend the device. Possible causes: 1. Not allowed to turn off the screen during the exam.<br>Applicable versions: 26.0.1+ |
@@ -220,7 +220,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 
 | ID  | Error Message   |
 |---------|---------|
-| 4900301 | Setting the power mode failed. |
+| 4900301 | Setting the power mode failed.<br>Applicable versions: 23+ |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
@@ -268,7 +268,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 
 | ID  | Error Message   |
 |---------|---------|
-| 4900301 | Setting the power mode failed. |
+| 4900301 | Setting the power mode failed.<br>Applicable versions: 23+ |
 | 401     | Parameter error. Possible causes: 1.Parameter verification failed. |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 202     | Permission verification failed. A non-system application calls a system API.  |
@@ -316,7 +316,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. <br>Applicable versions: 19+|
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 801     | Capability not supported. This API cannot work in car devices.<br>Applicable versions: 26.0.1+|
 
@@ -359,7 +359,7 @@ For details about the error codes, see [Power Manager Error Codes](errorcode-pow
 | ID  | Error Message   |
 |---------|---------|
 | 4900101 | Failed to connect to the service. |
-| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. <br>Applicable versions: 19+|
 | 202     | Permission verification failed. A non-system application calls a system API.  |
 | 401     | Parameter error. Possible causes: 1. Parameter verification failed. |
 

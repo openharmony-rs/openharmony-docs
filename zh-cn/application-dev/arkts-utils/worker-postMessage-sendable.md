@@ -150,7 +150,6 @@ status: active
    <!-- @[multi_worker_high_performance_communication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationScenario/entry/src/main/ets/managers/WorkerPostMessageSendable.ets) -->   
    
    ``` TypeScript
-   // Index.ets
    import { worker, collections } from '@kit.ArkTS';
    import { CopyEntry } from '../Sendable/CopyEntry';
    

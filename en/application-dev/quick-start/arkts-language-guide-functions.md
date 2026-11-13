@@ -9,30 +9,21 @@ status: active
 # Functions
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @jokerxd-liu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=17ae88719a2d37a0c07e3b6e33ddb120ebd3dbc5 translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8923bda514baa1452b967ea964ea779c7417bd8e translatedAt=2026-11-12T12:34:02.384Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
 ArkTS provides rich function features, including parameters, return values, type definitions, overloads, higher-order functions, and more.
 
 ## Declaring and Calling Functions
 
-A function is declared with the `function` keyword and consists of a function name, a parameter list, a return type, and a function body. It is called by using the function name followed by parentheses.
+A function is declared with the `function` keyword and consists of a function name, a parameter list, a return type, and a function body. It is called by using the function name followed by parentheses. Functions serve four purposes: encapsulating repeated logic to avoid code redundancy, encapsulating complex operations to provide clear interfaces, decomposing large tasks into smaller functions for easier management and testing, and hiding implementation details while exposing only the necessary interfaces. The resulting benefits are improved reusability (write once, call from multiple places), enhanced readability (function names intuitively convey their purpose), easier maintenance (a change in one place takes effect at all call sites), and easier testing (independent functions are simpler to test and debug in isolation).
 
 ### Basic Syntax of Functions
 
 ArkTS functions are declared with the `function` keyword and support typed parameters and return values, optional/default/rest parameters, function types, overloading, and higher-order functions.
-
-Functions serve four purposes: encapsulating repeated logic to avoid code redundancy, encapsulating complex operations to provide clear interfaces, decomposing large tasks into smaller functions for easier management and testing, and hiding implementation details while exposing only the necessary interfaces. The resulting benefits are improved reusability (write once, call from multiple places), enhanced readability (function names intuitively convey their purpose), easier maintenance (a change in one place takes effect at all call sites), and easier testing (independent functions are simpler to test and debug in isolation).
-
-``` TypeScript
-function functionName(parameters: parameterTypes): returnType {
-  // Function body.
-  return returnValue;
-}
-```
 
 <!-- @[function_declaration_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
 
@@ -68,7 +59,7 @@ function calculateArea(width: number, height: number): number {
 let area: number = calculateArea(10, 20);  // 200
 ```
 
-ArkTS requires explicit type annotations for function parameters and return values. In contextual type inference scenarios (such as callback function parameters), the compiler can infer parameter types from the function signature, in which case the type annotations of the callback parameters can be omitted. A function whose return type is `void` can omit `return`, or use `return;` to exit early.
+ArkTS requires explicit type annotations for function parameters; omitting them causes a compilation error due to implicit `any`. Return types can be inferred in most scenarios. However, when a `return` expression calls a function or method without a return type annotation (for example, in a recursive function), an explicit return type annotation is required. In contextual type inference scenarios (such as callback function parameters), the compiler can infer parameter types from the function signature, in which case the type annotations of the callback parameters can be omitted. A function whose return type is `void` can omit `return`, or use `return;` to exit early.
 
 ### Function and Parameter Naming Conventions
 
@@ -105,11 +96,11 @@ interface Point {
 // Recommended: function calculateSum(firstValue: number, secondValue: number) {}
 ```
 
-Naming is a convention rather than a compilation constraint: `function f(a, b)` compiles successfully but reduces readability. In ArkTS, functions and parameters use camelCase, while types (such as `Point`) use PascalCase.
+Naming is a convention rather than a compilation constraint: poor naming only reduces readability. However, omitting parameter type annotations (as in `function f(a, b)`) causes a compilation error due to implicit `any`. In ArkTS, functions and parameters use camelCase, while types (such as `Point`) use PascalCase.
 
 ### How to Call Functions
 
-Functions support direct calls, chained calls, nested calls, and conditional calls. A chained call executes from the inside out, with the return value of a function used as the argument of the outer call. A nested call invokes other functions inside a function, which is suitable for composing complex logic.
+Functions support direct calls, nested calls, and conditional calls. A nested call invokes other functions inside a function. A function return value can also be used directly as an argument of another call, which is suitable for composing complex logic.
 
 <!-- @[function_invocation_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
 
@@ -135,23 +126,12 @@ function invokeAdd(a: number, b: number): number {
 
 let sum: number = invokeAdd(1, 2);
 
-// Chained call.
+// Nested call.
 function double(x: number): number {
   return x * 2;
 }
 
 let invokeResult: number = double(double(5));  // 20
-
-// Nested call.
-function square(x: number): number {
-  return x * x;
-}
-
-function sumOfSquares(a: number, b: number): number {
-  return square(a) + square(b);
-}
-
-let squaresSum: number = sumOfSquares(3, 4);  // 25
 
 // Conditional call.
 function invokeProcessData(data: string | null): void {
@@ -165,79 +145,7 @@ function processValidData(data: string): void {
 }
 ```
 
-The evaluation order of nested and chained calls is from the inside out: in `double(double(5))`, `double(5)` is evaluated first to obtain 10, and then `double(10)` is evaluated to obtain 20. A chained call requires the return type of the inner function to match the parameter type of the outer function; a type mismatch is reported at compile time. A conditional call decouples "whether to call" from "what to call", and serves as the underlying pattern for the subsequent optional chaining call (`?.()`).
-
-### Handling Function Return Values
-
-A function returns a result through the `return` statement, and the return type is determined by the declaration. Use `void` when there is no return value.
-
-<!-- @[function_return_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-// Single return value
-function getMax(a: number, b: number): number {
-  return a > b ? a : b;
-}
-
-let max: number = getMax(10, 20);
-
-// No return value
-function logInfo(info: string): void {
-  console.info(`${info}`);
-  // No return or return;
-}
-
-// Early return
-function validateAge(age: number): boolean {
-  if (age < 0) {
-    return false;
-  }
-  if (age > 150) {
-    return false;
-  }
-  return true;
-}
-
-// Multiple return paths
-function classifyNumber(value: number): string {
-  if (value > 0) {
-    return 'positive';
-  }
-  if (value < 0) {
-    return 'negative';
-  }
-  return 'zero';
-}
-
-// Return an object
-function createUser(id: number, name: string): User {
-  return {
-    id: id,
-    name: name,
-    active: true
-  };
-}
-
-interface User {
-  id: number;
-  name: string;
-  active: boolean;
-}
-
-let user: User = createUser(1, 'Alice');
-
-// Return an array
-function createRange(start: number, end: number): number[] {
-  let result: number[] = [];
-  for (let i: number = start; i <= end; i++) {
-    result.push(i);
-  }
-  return result;
-}
-
-let range: number[] = createRange(1, 5);
-console.info(`${range.join(', ')}`);  // 1, 2, 3, 4, 5
-```
+The evaluation order of nested calls is from the inside out: in `double(double(5))`, `double(5)` is evaluated first to obtain 10, and then `double(10)` is evaluated to obtain 20. A nested call requires the return type of the inner function to match the parameter type of the outer function; a type mismatch is reported at compile time. A conditional call decouples "whether to call" from "what to call", and serves as the underlying pattern for the subsequent optional chaining call (`?.()`).
 
 ## Function Parameters
 
@@ -250,11 +158,6 @@ Formal parameters are the parameter names in a function declaration, while actua
 <!-- @[parameters_formal_and_actual](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
 
 ``` TypeScript
-interface FormalPoint {
-  x: number;
-  y: number;
-}
-
 // Formal parameters: parameters defined in the function declaration.
 function addNumbers(a: number, b: number): number {
   return a + b;
@@ -269,21 +172,7 @@ console.info(`${paramsResult}`); // 3
 // addNumbers(1, 2, 3);  // Compilation error: too many arguments.
 
 // Parameter types must match.
-function greetUser(name: string): string {
-  return `Hello, ${name}`;
-}
-
-let greeting: string = greetUser('Alice');
-console.info(`${greeting}`); // Hello, Alice
-// greetUser(123);  // Compilation error: type mismatch.
-
-// Parameter order must match.
-function createPoint(x: number, y: number): FormalPoint {
-  return { x: x, y: y };
-}
-
-let fpPoint: FormalPoint = createPoint(10, 20);
-console.info(`${fpPoint.x}, ${fpPoint.y}`); // 10, 20
+// addNumbers('1', '2');  // Compilation error: type mismatch.
 ```
 
 ### Optional Parameter
@@ -311,6 +200,7 @@ function buildMessage(
   suffix?: string
 ): string {
   let result: string = content;
+  // Check the optional parameters.
   if (prefix !== undefined) {
     result = prefix + result;
   }
@@ -323,21 +213,6 @@ function buildMessage(
 buildMessage('Hello');           // "Hello"
 buildMessage('Hello', '[');      // "[Hello"
 buildMessage('Hello', '[', ']'); // "[Hello]"
-
-// Check the optional parameter.
-function processConfig(config: Config): void {
-  if (config.timeout !== undefined) {
-    console.info(`Timeout: ${config.timeout}`);
-  }
-  if (config.retries !== undefined) {
-    console.info(`Retry count: ${config.retries}`);
-  }
-}
-
-interface Config {
-  timeout?: number;
-  retries?: number;
-}
 ```
 
 ### Default Parameter Values
@@ -374,7 +249,7 @@ createMessage('Hello', '[WARN]', '!'); // "[WARN] Hello!"
 
 // The default value can be an expression
 function createTimer(
-  interval: number = 1000,
+  interval: number = 60 * 1000,
   callback: () => void = () => {}
 ): Timer {
   return {
@@ -405,7 +280,7 @@ calculatePrice(100, 0.2); // 100 + 20 - 5 = 115
 
 ### Rest Parameters (Variable Parameters)
 
-Use the `...` syntax to collect a variable number of arguments into an array, implementing a function that accepts a variable number of parameters.
+Use the `...` syntax to define a rest parameter, collecting an indefinite number of arguments into an array. A function can define only one rest parameter, and it must be at the end of the parameter list.
 
 <!-- @[rest_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
 
@@ -434,93 +309,18 @@ function greetAll(greeting: string, ...names: string[]): string {
 }
 
 greetAll('Hello', 'Alice', 'Bob', 'Charlie');
-
-// Rest parameters must be the last parameter
-function buildArray(first: number, ...rest: number[]): number[] {
-  let result: number[] = [first];
-  for (let value of rest) {
-    result.push(value);
-  }
-  return result;
-}
-
-let single: number[] = buildArray(1);
-console.info(`${single.join(', ')}`);  // 1
-let multiple: number[] = buildArray(1, 2, 3, 4);
-console.info(`${multiple.join(', ')}`);  // 1, 2, 3, 4
-
-// Rest parameter type
-function concatenate(...strings: string[]): string {
-  return strings.join('');
-}
-
-concatenate('a', 'b', 'c');  // "abc"
-
-// Rest parameter used for forwarding
-function logAll(...messages: string[]): void {
-  for (let message of messages) {
-    console.info(`${message}`);
-  }
-}
-```
-
-### Destructuring Parameter Comparison (Tuples and Objects)
-
-TypeScript supports destructuring parameters to extract tuple or object members directly as parameters (for example, `function foo({x, y}: Point)`). ArkTS does not support destructuring parameters. Instead, you need to receive them through an interface type parameter and extract the properties manually.
-
-<!-- @[parameter_destructuring_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-// ArkTS does not support destructuring parameters. Receive them through an interface type parameter and extract the properties manually.
-
-interface PdPoint {
-  x: number;
-  y: number;
-}
-
-function processPoint(point: PdPoint): number {
-  let x: number = point.x;
-  let y: number = point.y;
-  return x + y;
-}
-
-let pdPoint: PdPoint = { x: 10, y: 20 };
-console.info(`${processPoint(pdPoint)}`); // 30
-
-function processTuple(tuple: [number, string]): string {
-  let id: number = tuple[0];
-  let name: string = tuple[1];
-  return `ID: ${id}, Name: ${name}`;
-}
-
-let tuple: [number, string] = [1, 'Alice'];
-processTuple(tuple);
-
-// Use an interface instead of destructuring.
-interface Options {
-  timeout: number;
-  retries: number;
-  verbose: boolean;
-}
-
-function configure(options: Options): void {
-  let timeout: number = options.timeout;
-  let retries: number = options.retries;
-  let verbose: boolean = options.verbose;
-  
-  console.info(`Timeout: ${timeout}, Retries: ${retries}`);
-}
-
-configure({ timeout: 5000, retries: 3, verbose: true });
+// Hello, Alice
+// Hello, Bob
+// Hello, Charlie
 ```
 
 ## Return Values of Functions
 
-This section describes different return modes, including void functions, single return values, multiple return values (tuples), and optional return values (T | undefined).
+This section describes different return patterns, including `void` functions, single return values, multiple return values (tuples), and optional return values (`T | undefined`).
 
 ### Functions with No Return Value (void Type)
 
-A void function does not return a value. It is used to perform operations without producing a result.
+A `void` function does not return a value. It performs an operation without producing a result.
 
 <!-- @[void_type_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
 
@@ -689,7 +489,7 @@ let error: Error | null = dataResult[1];
 
 ### Optional Return Value Functions (T | undefined Type)
 
-A function whose return type is `T | undefined` indicates that the result may not exist.
+A function with the return type `T | undefined` indicates that the result may not exist.
 
 <!-- @[optional_return_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
 
@@ -745,7 +545,7 @@ function getElement(arr: string[], index: number): string | undefined {
 }
 
 let element: string | undefined = getElement(['a', 'b', 'c'], 1);
-console.info(`${element}`); // b
+console.info(`${element}`); // 'b'
 
 // Return null or a value.
 function getConfigValue(key: string): string | null {
@@ -761,13 +561,84 @@ function getConfigValue(key: string): string | null {
 }
 ```
 
-## Function Type
+## Recursive Functions
 
-Use the `(params) => returnType` form to describe the parameter and return value signature of a function. It can be used as the type of a variable, parameter, and property.
+A recursive function calls itself in its function body. It is suitable for problems that can be decomposed into subproblems of the same form, such as factorials, the Fibonacci sequence, and tree traversal. A recursive function must include a base case (termination condition): when the base case is met, it returns a result directly without further recursion. A missing or unreachable base case causes infinite recursion and a call stack overflow.
+
+<!-- @[recursive_factorial](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+
+``` TypeScript
+// Factorial: n! = n * (n-1)!
+function factorial(n: number): number {
+  if (n <= 1) {
+    return 1;  // Base case: terminate recursion.
+  }
+  return n * factorial(n - 1);  // Recursive call.
+}
+
+console.info(`${factorial(5)}`);  // 120
+
+// Fibonacci sequence: fib(n) = fib(n-1) + fib(n-2)
+function fibonacci(n: number): number {
+  if (n <= 1) {
+    return n;  // Base case.
+  }
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+console.info(`${fibonacci(10)}`);  // 55
+```
+
+### Tail Recursion
+
+Tail recursion means that the recursive call is the last operation in the function body. Its return value is used directly as the return value of the current function, with no further computation. In ordinary recursion (such as `n * factorial(n - 1)`), multiplication must still be performed after the recursive call returns, so the outer stack frames must be retained and the call stack grows with recursion depth. Tail recursion passes intermediate results to the next call through parameters, leaving no pending computation in the current call. Some languages and compilers support tail call optimization, which converts tail recursion into a loop to avoid stack overflows. When recursion depth is large, you can also rewrite the function as a loop directly.
+
+<!-- @[tail_vs_normal_recursion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+
+``` TypeScript
+// Ordinary recursion: multiplication follows the recursive call, so the call stack grows with depth.
+function factorialNormal(n: number): number {
+  if (n <= 1) {
+    return 1;
+  }
+  return n * factorialNormal(n - 1);
+}
+
+// Tail recursion: pass the accumulated result through acc, with the recursive call as the last operation.
+function factorialTail(n: number, acc: number = 1): number {
+  if (n <= 1) {
+    return acc;
+  }
+  return factorialTail(n - 1, n * acc);
+}
+
+console.info(`${factorialNormal(5)}`);  // 120
+console.info(`${factorialTail(5)}`);    // 120
+```
+
+## Arrow Functions and Function Types
+
+Functions are first-class citizens in ArkTS: you can declare named functions with the `function` keyword or define anonymous functions with arrow functions (lambda expressions). Functions have their own types, using `(param1: paramType1, param2: paramType2, ...) => returnType` to describe parameter and return value signatures. These types can be used for variables, parameters, and properties. Functions can be assigned to variables, passed as arguments, or returned as values, supporting functional programming.
+
+### Defining Arrow Functions (Lambdas)
+
+An arrow function (lambda expression) provides concise syntax for defining a function: a parameter list in parentheses and an optional return type annotation, followed by `=>` and the function body. If the body is a single expression, the braces and `return` can be omitted. Arrow functions are often used with function type annotations.
+
+<!-- @[arrow_function_body_forms](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+
+``` TypeScript
+// Block body: use an explicit return statement inside braces.
+let addFn: (a: number, b: number) => number = (a: number, b: number): number => {
+  return a + b;
+};
+
+// Expression body: omit braces and return for a single expression.
+let doubleFn: (value: number) => number = (value: number): number => value * 2;
+```
 
 ### Defining and Matching Function Types
 
-When assigning a function type, both parameter compatibility and return value compatibility must be satisfied, and parameter types are covariant in the subtype direction.
+Function type assignment must follow function subtyping rules: parameter types are contravariant (supertypes), and return types are covariant (subtypes).
 
 <!-- @[ts_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Functions.ts) -->
 
@@ -841,7 +712,7 @@ let processed: string[] = paramsProcessData(
   ['hello', 'world'],
   (s: string): string => s.toUpperCase()
 );
-console.info(`${processed[0]}, ${processed[1]}`); // HELLO, WORLD
+console.info(`${processed[0]}, ${processed[1]}`); // 'HELLO, WORLD'
 
 // Condition-checking function
 function filterNumbers(
@@ -913,21 +784,21 @@ let descComparator: (a: number, b: number) => number = createComparator(false);
 
 ### Type Alias to Simplify Function Types
 
-Use `type` to create an alias for a complex function type, simplifying signature writing.
+Use `type` to create aliases for complex function types and simplify signatures.
 
 <!-- @[function_type_aliases](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
 
 ``` TypeScript
 // Use a type alias.
-type Callback = (result: string) => void;
+type MyCallback = (result: string) => void;
 type Predicate = (value: number) => boolean;
 type Transformer = (input: string) => string;
 type Comparator = (a: number, b: number) => number;
 
 // Simplify complex function types.
-type EventHandler = (event: Event) => void;
+type EventHandler = (event: MyEvent) => void;
 
-interface Event {
+interface MyEvent {
   type: string;
   data: string | number | boolean;
 }
@@ -935,21 +806,6 @@ interface Event {
 function addEventListener(handler: EventHandler): void {
   // Register the event handler.
 }
-
-// Use a generic function type.
-type Mapper<T, R> = (value: T) => R;
-type Filter<T> = (value: T) => boolean;
-type Reducer<T, R> = (acc: R, value: T) => R;
-
-function mapArray<T, R>(arr: T[], mapper: Mapper<T, R>): R[] {
-  let result: R[] = [];
-  for (let item of arr) {
-    result.push(mapper(item));
-  }
-  return result;
-}
-
-let doubled: number[] = mapArray([1, 2, 3], (n: number): number => n * 2);
 ```
 
 ## Closures and Arrow Functions
@@ -1001,33 +857,6 @@ console.info(`${multiplierDouble(5)}`);  // 10
 ```
 Closures are suitable for holding a small amount of configuration or state. If there is more state or a complex lifecycle, prefer using a class to express it.
 
-### Shorthand Rules for Arrow Functions
-
-Arrow functions support expression body shorthand: for a single expression, you can omit `return` and the curly braces, which is commonly used in callbacks.
-
-<!-- @[arrow_function_syntax](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-let arrowAdd: (a: number, b: number) => number = (a: number, b: number): number => {
-  return a + b;
-};
-
-let subtract: (a: number, b: number) => number = (a: number, b: number): number => a - b;
-let doubleValue: (value: number) => number = (value: number): number => value * 2;
-let arrowGreet: () => string = (): string => 'Hello';
-```
-
-The most common use of arrow functions is as callbacks for array methods, and their concise syntax is especially useful in higher-order function calls.
-
-<!-- @[arrow_function_array_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-let numbers: number[] = [1, 2, 3, 4, 5];
-let callbackDoubled: number[] = numbers.map((value: number): number => {
-  return value * 2;
-});
-```
-
 ### this in Arrow Functions
 
 Arrow functions do not bind their own `this`; instead, they capture the `this` of the enclosing scope, making them suitable for use as callbacks in class methods.
@@ -1039,79 +868,19 @@ class BindingTimer {
   private seconds: number = 0;
 
   start(): void {
-    setInterval((): void => {
+    mySetInterval((): void => {
       this.seconds++;
       console.info(`${this.seconds.toString()}`);
     }, 1000);
   }
 }
 
-function setInterval(callback: () => void, ms: number): void {
+// Stub: simulate an asynchronous timer call synchronously. Use system or third-party asynchronous timer APIs in actual development.
+function mySetInterval(callback: () => void, ms: number): void {
   callback();
 }
 ```
 A standalone function body should not rely on `this`. When instance state is required, use a class method or pass it as an explicit parameter.
-
-## Local Helper Functions
-
-TypeScript allows declaring local functions inside a function and using `function` expressions. ArkTS restricts both forms: local function declarations are not supported, and function expressions should also be avoided; use arrow functions with an explicit function type instead.
-
-### Local Helper Function
-
-Nested function declarations in TypeScript are not supported in ArkTS. Use an arrow function expression with an explicit function type instead.
-
-**TypeScript Comparison**
-
-<!-- @[ts_nested_function_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Functions.ts) -->
-
-``` TypeScript
-function addNum(a: number, b: number): void {
-  function logToConsole(message: string): void {
-    console.info(`${message}`);
-  }
-
-  let result: number = a + b;
-  logToConsole('result is ' + result);
-}
-```
-
-ArkTS does not support the nested function declarations described above. Rewrite the local function as an arrow function expression with an explicit function type:
-
-<!-- @[local_function_expression](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-function expressionAddNum(a: number, b: number): void {
-  let logToConsole: (message: string) => void = (message: string): void => {
-    console.info(`${message}`);
-  };
-
-  let result: number = a + b;
-  logToConsole('result is ' + result);
-}
-```
-
-### Local Helper Logic
-
-A local function encapsulates helper logic and limits its scope to improve cohesion.
-
-<!-- @[multiple_local_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-function functionsProcessData(data: string[]): string {
-  let clean: (item: string) => string = (item: string): string => {
-    return item.trim();
-  };
-
-  let format: (item: string) => string = (item: string): string => {
-    return `[${item}]`;
-  };
-
-  let cleaned: string[] = data.map(clean);
-  let formatted: string[] = cleaned.map(format);
-  return formatted.join(', ');
-}
-```
-This approach preserves local readability while complying with ArkTS requirements on the position of function declarations.
 
 ## Function Overloads
 
@@ -1166,9 +935,9 @@ interface OverloadPoint {
 }
 
 let point1: OverloadPoint = overloadCreatePoint(10);
-console.info(`${JSON.stringify(point1)}`);  // {"x":10,"y":0}
+console.info(`${JSON.stringify(point1)}`);  // '{"x":10,"y":0}'
 let point2: OverloadPoint = overloadCreatePoint(10, 20);
-console.info(`${JSON.stringify(point2)}`);  // {"x":10,"y":20}
+console.info(`${JSON.stringify(point2)}`);  // '{"x":10,"y":20}'
 ```
 
 ### Matching Overload Signatures with the Implementation Signature
@@ -1241,7 +1010,7 @@ function getData(idOrName: number | string): OverloadData {
 
 let otcData1: OverloadData = getData(1);
 let otcData2: OverloadData = getData('test');
-console.info(`${otcData1.id}, ${otcData2.type}`); // 1, named
+console.info(`${otcData1.id}, ${otcData2.type}`); // '1, named'
 
 // Overloads with different return types.
 function parseInput(input: string): number;
@@ -1257,6 +1026,27 @@ let parsedNum: number = parseInput('42');
 let parsedDate: Date = parseInput('2024-01-01', 'date');
 console.info(`${parsedNum}`); // 42
 ```
+
+## Generic Functions
+
+A generic function declares a type parameter with `<T>` after the function name and uses it in parameter and return types. This allows the same function body to work with multiple types while retaining type checking. When calling a generic function, you can specify type arguments explicitly or let the compiler infer them from the arguments.
+
+<!-- @[generic_function_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
+
+``` TypeScript
+// Generic function signature: T is a type parameter whose concrete type is determined at the call site.
+function firstOrDefault<T>(values: T[], defaultValue: T): T {
+  if (values.length > 0) {
+    return values[0];
+  }
+  return defaultValue;
+}
+
+let firstNum: number = firstOrDefault<number>([1, 2, 3], 0);  // Specify the type argument explicitly.
+let firstStr: string = firstOrDefault(['a', 'b'], 'none');    // Infer T as string from the arguments.
+```
+
+For details about generics (type constraints, generic interfaces, generic classes, and more), see [Generics](arkts-language-guide-generics.md).
 
 ## Higher-Order Functions
 
@@ -1324,7 +1114,7 @@ let squared: number[] = orderNumbers.map((n: number): number => n * n);
 console.info(`${squared.join(', ')}`);  // 1, 4, 9, 16, 25
 
 let strings: string[] = orderNumbers.map((n: number): string => `Item ${n}`);
-console.info(`${strings.join(', ')}`);  // Item 1, Item 2, Item 3, Item 4, Item 5
+console.info(`${strings.join(', ')}`);  // 'Item 1, Item 2, Item 3, Item 4, Item 5'
 
 // filter: Filter elements.
 let orderEvens: number[] = orderNumbers.filter((n: number): boolean => n % 2 === 0);
@@ -1419,11 +1209,11 @@ function customFind<T>(arr: T[], predicate: (item: T) => boolean): T | undefined
 
 ## Optional Chaining Call of Functions
 
-The optional chaining call (`?.()`) safely invokes a function that may be `undefined`, avoiding runtime errors.
+The optional chaining call (?.()) safely invokes a function that may be `undefined`, avoiding runtime errors.
 
 ### Optional Call Syntax for Functions (func?.())
 
-func?.() performs the call only when func is not undefined; otherwise, it returns undefined.
+`func?.()` performs the call only when `func` is not `undefined`; otherwise, it returns `undefined`.
 
 <!-- @[ts_optional_chaining_function_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Functions.ts) -->
 
@@ -1526,159 +1316,6 @@ let response: APIResponse | null = null;
 
 response?.callback?.();  // Not executed.
 response?.data?.items?.forEach?.(item => console.info(`${item}`));
-```
-
-## Call Signature
-
-A call signature describes an object that is callable (it has properties and can also be called like a function). The syntax uses `:` instead of `=>`.
-
-**TypeScript Comparison**
-
-<!-- @[ts_call_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Functions.ts) -->
-
-``` TypeScript
-// TypeScript comparison: in ArkTS, use an interface to separate properties and methods.
-type DescribableFunction = {
-  description: string;
-  (someArg: number): boolean;
-};
-```
-
-In ArkTS, use an interface to separate properties and methods.
-
-<!-- @[call_signature_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-interface CsDescribableFunction {
-  description: string;
-  call(someArg: number): boolean;
-}
-
-class CsMyFunc implements CsDescribableFunction {
-  public description: string = 'default description';
-
-  call(someArg: number): boolean {
-    return someArg > 3;
-  }
-}
-
-function csDoSomething(fn: CsDescribableFunction): void {
-  console.info(`${fn.description + ' returned ' + fn.call(6)}`);
-}
-
-let csFn: CsMyFunc = new CsMyFunc();
-csDoSomething(csFn);  // default description returned true
-```
-
-## Construct Signatures
-
-A construct signature describes a function that can be called with `new`. Add the `new` keyword before the call signature.
-
-**TypeScript Comparison**
-
-<!-- @[ts_construct_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Functions.ts) -->
-
-``` TypeScript
-// TypeScript construct signature, not supported in ArkTS (arkts-no-ctor-signatures-type)
-class SomeObject {
-  public value: string;
-  constructor(s: string) {
-    this.value = s;
-  }
-}
-
-type SomeConstructor = {
-  new (s: string): SomeObject;
-};
-
-function createSomeInstance(ctor: SomeConstructor, s: string): SomeObject {
-  return new ctor(s);
-}
-
-let someObj: SomeObject = createSomeInstance(SomeObject, 'hello');
-console.info(`${someObj.value}`); // hello
-```
-
-ArkTS does not support constructor function types (`arkts-no-ctor-signatures-funcs`). For details, see [TypeScript to ArkTS Cookbook](typescript-to-arkts-migration-guide.md#constructor-function-type-is-not-supported). Use the factory pattern instead.
-
-<!-- @[construct_signature_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-class CsaPoint {
-  public x: number;
-  public y: number;
-
-  constructor(x: number, y: number) {
-    this.x = x;
-    this.y = y;
-  }
-}
-
-interface CsaPointFactory {
-  create(x: number, y: number): CsaPoint;
-}
-
-class CsaPointFactoryImpl implements CsaPointFactory {
-  create(x: number, y: number): CsaPoint {
-    return new CsaPoint(x, y);
-  }
-}
-
-function createCsaPoint(factory: CsaPointFactory, x: number, y: number): CsaPoint {
-  return factory.create(x, y);
-}
-
-let csaP: CsaPoint = createCsaPoint(new CsaPointFactoryImpl(), 3, 4);
-console.info(`${csaP.x}, ${csaP.y}`); // 3, 4
-```
-
-## Optional Parameters in Callbacks
-
-In TypeScript, optional parameters should not be used in callback function types, because an optional parameter implies that the function may be called without that parameter, whereas the caller of a callback usually passes all parameters. A function with fewer parameters can be assigned to a function type with more parameters (parameter contravariance).
-
-<!-- @[callback_no_optional_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-// All callback parameters are required.
-type CbCallback = (value: string, index: number) => void;
-
-let cbNames: string[] = ['Alice', 'Bob'];
-cbNames.forEach((value: string, index: number) => {
-  console.info(`${index}: ${value}`);
-});
-
-// A callback with fewer parameters can be assigned to a type with more parameters.
-type UnaryCallback = (value: string) => void;
-let cbSimple: CbCallback = (value: string): void => {
-  console.info(`${value}`);
-};
-```
-
-> **NOTE**
-> 
-> Do not use optional parameters (`?`) in callback function types. Otherwise, the caller may not pass the parameter, causing the callback to access `undefined` internally.
-
-## Function Type
-
-TypeScript has a global `Function` type that accepts any function. Calling the `Function` type returns `any`, which is unsafe. When you need to accept any function, use `() => void` instead.
-
-<!-- @[function_type_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Functions.ets) -->
-
-``` TypeScript
-// Not recommended: Use the Function type.
-let ftFn: Function = (x: number): number => x * 2;
-console.info(`${ftFn(10)}`); // 20
-
-// Recommended: Use a specific function type.
-let ftSafeFn: (x: number) => number = (x: number): number => x * 2;
-console.info(`${ftSafeFn(10)}`); // 20
-
-// Use () => void when you need to accept any function.
-function ftRunCallback(cb: () => void): void {
-  cb();
-}
-
-ftRunCallback((): void => console.info('executed'));
 ```
 
 ## Assignment Compatibility of void Return Type

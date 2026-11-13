@@ -6,6 +6,7 @@
 <!--Designer: @JiDong-CS1-->
 <!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=9d3ea4782188cef062b48dc50fc08708cab7583d translatedAt=2026-11-12T04:20:42.498Z pushedAt=2026-11-12T12:19:31.016Z nl=1 -->
 
 The **distributedAccount** module provides APIs for managing distributed accounts, including querying and updating account login states. This module is applicable to multi-device collaboration, improving the consistency and user experience of cross-device account management. Typical application scenarios include multi-device collaboration, distributed data synchronization, and cross-device capability calling.
 
@@ -34,7 +35,11 @@ Obtains the distributed account information about an OS account. This API uses a
 
 **System capability**: SystemCapability.Account.OsAccount
 
-**Required permissions**: ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS; or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.GET_DISTRIBUTED_ACCOUNTS
+**Required permissions**:
+
+- API version 20+: ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS or (ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.GET_DISTRIBUTED_ACCOUNTS)
+
+- API version 10-19: ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **Parameters**
 
@@ -47,8 +52,8 @@ Obtains the distributed account information about an OS account. This API uses a
 
 | ID| Error Message|
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300003 | Account not found. |
 
@@ -84,7 +89,11 @@ Obtains the distributed account information about an OS account. This API uses a
 
 **System capability**: SystemCapability.Account.OsAccount
 
-**Required permissions**: ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS; or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.GET_DISTRIBUTED_ACCOUNTS
+**Required permissions**:
+
+- API version 20+: ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS or (ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS and ohos.permission.GET_DISTRIBUTED_ACCOUNTS)
+
+- API version 10-19: ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS or ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
 **Parameters**
 
@@ -102,8 +111,8 @@ Obtains the distributed account information about an OS account. This API uses a
 
 | ID| Error Message|
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300003 | Account not found. |
 
@@ -151,13 +160,14 @@ Sets the distributed account information about an OS account. This API uses an a
 
 | ID| Error Message|
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid distributedInfo. |
 | 12300003 | Account identified by localId or by distributedInfo not found. |
 | 12300008 | Restricted OS account. |
+| 12300406 | The distributed account information has already been bound to a sub-profile of the target OS account.<br>Applicable versions: 26.0.0+ |
 
 **Example**
 
@@ -211,13 +221,14 @@ Sets the distributed account information about an OS account. This API uses a pr
 
 | ID| Error Message|
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid distributedInfo. |
 | 12300003 | Account identified by localId or by distributedInfo not found. |
 | 12300008 | Restricted OS account. |
+| 12300406 | The distributed account information has already been bound to a sub-profile of the target OS account.<br>Applicable versions: 26.0.0+ |
 
 **Example**
 

@@ -64,19 +64,19 @@
 
 | 名称 | 描述 |
 | -------- | -------- |
-| OH_UsbSerial_Init(void) | 初始化USBSerialDDK。 |
-| OH_UsbSerial_Release(void) | 释放USBSerialDDK。 |
-| OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_Device **dev) | 通过deviceId和interfaceIndex打开USB串口设备。请在设备使用完后调用OH_UsbSerial_Close()关闭设备，否则会造成内存泄漏。 |
-| OH_UsbSerial_Close(UsbSerial_Device **dev) | 关闭USB串口设备，请在设备使用完后关闭设备，否则会造成内存泄漏。 |
-| OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesRead) | 从USB串口设备读取数据到缓冲区。 |
-| OH_UsbSerial_Write(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesWritten) | 将buff中的数据写入USB串口设备。 |
-| OH_UsbSerial_SetBaudRate(UsbSerial_Device *dev, uint32_t baudRate) | 设置USB串口设备的波特率。如果USB串口设备的参数为默认值（数据位为8，停止位为1，数据传输无校验），则只需要调用该接口设置波特率即可。 |
-| OH_UsbSerial_SetParams(UsbSerial_Device *dev, UsbSerial_Params *params) | 设置USB串口设备的参数，包含波特率、数据位、停止位、校验设置。 |
-| OH_UsbSerial_SetTimeout(UsbSerial_Device *dev, int timeout) | 设置读取USB串口设备上报数据的超时时间，默认时间为0。 |
-| OH_UsbSerial_SetFlowControl(UsbSerial_Device *dev, UsbSerial_FlowControl flowControl) | 设置流控参数。 |
-| OH_UsbSerial_Flush(UsbSerial_Device *dev) | 写入完成后清空输入和输出缓冲区。 |
-| OH_UsbSerial_FlushInput(UsbSerial_Device *dev) | 刷新输入缓冲区，缓冲区中的数据会被立刻清空。 |
-| OH_UsbSerial_FlushOutput(UsbSerial_Device *dev) | 刷新输出缓冲区，缓冲区中的数据会被立刻清空。 |
+| int32_t OH_UsbSerial_Init(void) | 初始化USBSerialDDK。 |
+| int32_t OH_UsbSerial_Release(void) | 释放USBSerialDDK。 |
+| int32_t OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_Device **dev) | 通过deviceId和interfaceIndex打开USB串口设备。请在设备使用完后调用OH_UsbSerial_Close()关闭设备，否则会造成内存泄漏。 |
+| int32_t OH_UsbSerial_Close(UsbSerial_Device **dev) | 关闭USB串口设备，请在设备使用完后关闭设备，否则会造成内存泄漏。 |
+| int32_t OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesRead) | 从USB串口设备读取数据到缓冲区。 |
+| int32_t OH_UsbSerial_Write(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesWritten) | 将buff中的数据写入USB串口设备。 |
+| int32_t OH_UsbSerial_SetBaudRate(UsbSerial_Device *dev, uint32_t baudRate) | 设置USB串口设备的波特率。如果USB串口设备的参数为默认值（数据位为8，停止位为1，数据传输无校验），则只需要调用该接口设置波特率即可。 |
+| int32_t OH_UsbSerial_SetParams(UsbSerial_Device *dev, UsbSerial_Params *params) | 设置USB串口设备的参数，包含波特率、数据位、停止位、校验设置。 |
+| int32_t OH_UsbSerial_SetTimeout(UsbSerial_Device *dev, int timeout) | 设置读取USB串口设备上报数据的超时时间，默认时间为0。 |
+| int32_t OH_UsbSerial_SetFlowControl(UsbSerial_Device *dev, UsbSerial_FlowControl flowControl) | 设置流控参数。 |
+| int32_t OH_UsbSerial_Flush(UsbSerial_Device *dev) | 写入完成后清空输入和输出缓冲区。 |
+| int32_t OH_UsbSerial_FlushInput(UsbSerial_Device *dev) | 刷新输入缓冲区，缓冲区中的数据会被立刻清空。 |
+| int32_t OH_UsbSerial_FlushOutput(UsbSerial_Device *dev) | 刷新输出缓冲区，缓冲区中的数据会被立刻清空。 |
 
 详细的接口说明请参考[USBSerialDDK](../../reference/apis-driverdevelopment-kit/capi-serialddk.md)。
 

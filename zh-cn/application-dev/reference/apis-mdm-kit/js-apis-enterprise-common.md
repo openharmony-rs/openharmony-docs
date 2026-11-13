@@ -159,6 +159,23 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](js-apis-Ente
 | productId   | number                | 否   | 否   | 产品ID。                                                     |
 | serial      | string                | 否   | 否   | 序列号。                                                     |
 
+## SmsReceiveInfo
+
+短信接收信息。当设备接收到短信时，该信息通过[EnterpriseAdminExtensionAbility.onSmsReceived](./js-apis-EnterpriseAdminExtensionAbility.md#onsmsreceived)回调上报给设备管理应用，作为回调入参使用。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称            | 类型   | 只读 | 可选 | 说明           |
+| --------------- | ------ | ---- | ---- | -------------- |
+| slotId          | number | 否   | 否   | SIM卡槽号，取值范围为0或1，其中0表示卡槽1，1表示卡槽2。    |
+| telephoneNumber | string | 否   | 否   | 电话号码。     |
+| count           | number | 否   | 否   | 短信条数。单条短信容量固定为140字节，可容纳的字符数因编码方式而异：UCS-2编码下为70个字符（如中文），GSM-7编码下为160个字符（如英文）；内容超出单条容量时拆分为多个分段，每个分段计为一条。        |
+| content         | string | 否   | 否   | 短信内容。单条短信长度无限制。    |
+
 ## QueryPolicy
 
 获取策略。
