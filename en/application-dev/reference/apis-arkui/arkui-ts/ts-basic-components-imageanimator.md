@@ -603,6 +603,6 @@ struct ImageAnimatorAutoPauseTest {
 }
 ```
 
-![imageAnimatorMonitorInvisibleAreaExample](figures/imageAnimatorMonitorInvisibleArea.gif)
+
 
 <!--no_check-->

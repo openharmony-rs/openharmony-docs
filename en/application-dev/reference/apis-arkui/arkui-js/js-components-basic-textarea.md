@@ -1,12 +1,11 @@
 # textarea
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=bbe820b15aaf29733c2f40fbe62bda7f1f6a0b03 translatedAt=2026-06-22T07:51:30.527Z pushedAt=2026-06-23T01:37:10.366Z -->
+<!-- md-trans-meta sourceCommit=9a5da59cdf4f4c3dc0f87035f85ddf06f80ecfc4 translatedAt=2026-11-12T04:18:29.816Z pushedAt=2026-11-12T08:30:38.122Z nl=1 -->
 
 >  **NOTE**
 >
@@ -14,13 +13,16 @@
 
 The **\<textarea>** component provides a text box to receive multi-line text input.
 
+
 ## Required Permissions
 
 None
 
+
 ## Child Components
 
 Not supported
+
 
 ## Attributes
 
@@ -47,6 +49,7 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | icon    | string | Path of the icon for a menu option.|
 | content | string | Text content of a menu option.|
 
+
 ## Styles
 
 In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
@@ -61,6 +64,7 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | font-family              | string                     | sans-serif | No   | Font family, in which fonts are separated by commas (,). Each font is set using a font name or font family name. The first font in the family or the specified [custom font](js-components-common-customizing-font.md) is used for the text.|
 | caret-color<sup>6+</sup> | &lt;color&gt;              | -          | No   | Color of the caret.                              |
 
+
 ## Events
 
 In addition to the [universal events](js-components-common-events.md), the following events are supported.
@@ -74,9 +78,11 @@ In addition to the [universal events](js-components-common-events.md), the follo
 | optionselect<sup>5+</sup> | { index:optionIndex, value: selectedText } | Triggered when users click a menu option in the menu displayed after they select a text segment. This event is valid only when the **menuoptions** attribute is set. The option index and selected text content are returned.|
 | selectchange<sup>6+</sup> | { start: number, end: number } | Triggered when the text selection changes. |
 
+
 ## Methods
 
 The [universal methods](js-components-common-methods.md) are supported.
+
 
 ## Example
 

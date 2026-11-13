@@ -1,11 +1,11 @@
-# OHNativeWindow
+# NativeWindow
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=420f11b70e0bbee097f4c7f6c9277b6d6f72479a translatedAt=2026-08-27T08:44:02.520Z pushedAt=2026-08-28T01:28:16.315Z -->
+<!-- md-trans-meta sourceCommit=36e830acae5012c9e52481b9c5e25fb169bd709c translatedAt=2026-11-13T10:44:28.953Z pushedAt=2026-11-13T10:44:45.950Z nl=1 -->
 
 ```c
 typedef struct NativeWindow OHNativeWindow
