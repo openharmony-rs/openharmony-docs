@@ -106,6 +106,11 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
     在查询结果为支持的前提下，通过 `OH_AudioStreamBuilder_SetLatencyMode` 设置超低时延模式，并创建音频流。
     <!-- @[Render_SetUltraFastLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+    
+    ``` C++
+    OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST;
+    OH_AudioStreamBuilder_SetLatencyMode(g_ultraBuilder, latencyMode);
+    ```
 
 4. 查询超低时延流实际运行状态。
 
