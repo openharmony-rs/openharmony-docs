@@ -22,7 +22,7 @@ typedef struct OH_UDMF_VirtualItem OH_UDMF_VirtualItem
 
 **起始版本：** 26.1.0
 
-**相关模块：** [UDMF](capi-arkdata-udmf.md)
+**相关模块：** [UDMF](capi-udmf.md)
 
 **所在头文件：** [uds.h](capi-uds-h.md)
 
