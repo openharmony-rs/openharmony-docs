@@ -22,9 +22,15 @@ import { Env, SystemProperties, SystemEnvKey, WritableSystemEnvKey, ReadonlySyst
 
 ## Env
 
+@interface Env
+
 环境变量装饰器，用于获取系统环境变量信息。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 类型 | 说明 |
 | --- | --- | --- |
