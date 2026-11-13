@@ -5,8 +5,9 @@
 <!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=3d9f03d1199ee939c370fe00ebac462ca6b3b973 translatedAt=2026-11-13T05:02:12.720Z pushedAt=2026-11-13T06:53:22.956Z nl=1 -->
 
-AVPlayer provides APIs to manage and play media assets. It supports audio and video playback, playback control (play, pause, stop, seek, and speed adjustment), status management, and event listening. It is applicable to various scenarios such as local audio and video playback, network streaming media playback, and livestreaming. The AVPlayer can be used to quickly implement playback functions, simplifying the development process and improving app performance and user experience. Before calling any API in AVPlayer, you must use [createAVPlayer()](arkts-apis-media-f.md#mediacreateavplayer9) to create an AVPlayer instance.
+Provides APIs to manage and play media assets. It supports audio and video playback, playback control (play, pause, stop, jump, playback speed, and more), state management, and event listening. It is applicable to various scenarios such as local audio and video playback, network stream media playback, and live streaming. AVPlayer can be used to quickly implement playback, simplify the development process, and improve application performance and user experience. Before calling the methods of AVPlayer, an AVPlayer instance must be created through [createAVPlayer()](arkts-apis-media-f.md#mediacreateavplayer9). AVPlayer uses a state machine to manage the playback process, including the idle, initialized, prepared, playing, paused, completed, stopped, released, and error states. State transitions are triggered by both user operations and system events.
 
 When using the AVPlayer instance, you are advised to register the following callbacks to proactively obtain status changes: [on('stateChange')](#onstatechange9): listens for AVPlayer state changes. [on('error')](#onerror9): listens for error events.
 
@@ -31,12 +32,12 @@ import { media } from '@kit.MediaKit';
 
 | Name                                               | Type                                                        | Read-Only| Optional| Description                                                        |
 | --------------------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| url<sup>9+</sup>                                    | string                                                       | No  | Yes  | URL of the media asset. It can be set only when the AVPlayer is in the idle state. If this parameter is not set, the player has no media source to play.<br>Supported video formats: MP4, MPEG-TS, and MKV.<br>Supported audio formats: M4A, AAC, MP3, OGG, WAV, FLAC, AMR, and APE.<br>**Example of supported URLs**:<br>1. FD: fd://xx<br>![](figures/image-url.png)<br>2. HTTP: http://xx<br>3. HTTPS: https://xx<br>4. HLS: http://xx or https://xx<br>**NOTE**<br>- To set the playback URL, you need to declare the [ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet) permission. The related error code is [201 Permission Denied](../errorcode-universal.md#201-permission-denied).<br>- WebM is no longer supported since API version 11.<br> - After the resource handle (FD) is transferred to an AVPlayer instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance. Competition occurs when multiple AVPlayers use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| url<sup>9+</sup>                                    | string                                                       | No  | Yes  | URL of the media asset. It can be set only when the AVPlayer is in the idle state. If this parameter is not set, the player has no media source to play.<br>Supported video formats: MP4, MPEG-TS, and MKV.<br>Supported audio formats: M4A, AAC, MP3, OGG, WAV, FLAC, AMR, and APE.<br>**Example of supported URLs**:<br>1. FD: fd://xx<br>![](figures/image-url.png)<br>2. HTTP: http://xx<br>3. HTTPS: https://xx<br>4. HLS: http://xx or https://xx<br>**NOTE**<br>- To set the playback URL, you need to declare the [ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet) permission. The related error code is [201 API Permission Verification Failed](../errorcode-universal.md#201-api-permission-verification-failed).<br>- WebM is no longer supported since API version 11.<br> - After the resource handle (FD) is transferred to an AVPlayer instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance. Competition occurs when multiple AVPlayers use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | fdSrc<sup>9+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | No  | Yes  | FD of the media asset. It can be set only when the AVPlayer is in the idle state. If this parameter is not set, the player has no media source to play.<br>**Use scenario**: This property is required when media assets of an application are continuously stored in a file.<br>The video formats MP4, MPEG-TS, and MKV are supported.<br>The audio formats M4A, AAC, MP3, OGG, WAV, FLAC, AMR, and APE are supported.<br>**Example:**<br>Assume that a media file that stores continuous assets consists of the following:<br>Video 1 (address offset: 0, byte length: 100)<br>Video 2 (address offset: 101; byte length: 50)<br>Video 3 (address offset: 151, byte length: 150)<br>1. To play video 1: AVFileDescriptor { fd = resource handle; offset = 0; length = 100; }<br>2. To play video 2: AVFileDescriptor { fd = resource handle; offset = 101; length = 50; }<br>3. To play video 3: AVFileDescriptor { fd = resource handle; offset = 151; length = 150; }<br>To play an independent media file, use **src=fd://xx**.<br>**NOTE**<br>WebM is no longer supported since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| dataSrc<sup>10+</sup>                               | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10)                | No  | Yes  | Descriptor of a streaming media asset. It can be set only when the AVPlayer is in the idle state. If this parameter is not set, the player has no media source to play.<br>**Use scenario**: An application plays a file that has been downloaded from a remote source and saved locally. When the application has not yet downloaded the complete audio or video resources, it can start playing the data that has already been retrieved. By writing the retrieved data to a local file and simultaneously reading from that file, the application can achieve the capability of playing while caching.<br>The video formats MP4, MPEG-TS, and MKV are supported.<br>The audio formats M4A, AAC, MP3, OGG, WAV, FLAC, AMR, and APE are supported.<br>**Example:**<br>A user is obtaining an audio and video file from a remote server and wants to play the downloaded file content. To implement this scenario, do as follows:<br>1. Obtain the total file size, in bytes. If the total size cannot be obtained, set **fileSize** to **-1**.<br>2. Implement the **func** callback to fill in data. If **fileSize** is **-1**, the format of **func** is **func(buffer: ArrayBuffer, length: number)**, and the AVPlayer obtains data in sequence; otherwise, the format is **func(buffer: ArrayBuffer, length: number, pos: number)**, and the AVPlayer seeks and obtains data in the required positions.<br>3. Set **AVDataSrcDescriptor {fileSize = size, callback = func}**.<br>**Notes:**<br>If the media file to play is in MP4/M4A format, ensure that the **moov** field (specifying the media information) is before the **mdat** field (specifying the media data) or the fields before the **moov** field is less than 10 MB. Otherwise, the parsing fails and the media file cannot be played.<br>**NOTE**<br>WebM is no longer supported since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| dataSrc<sup>10+</sup>                               | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10)                | No   | Yes   | Streaming media resource descriptor. It can be set only in the **idle** state. If it is not set, the player has no playback source and cannot play.<br/>**Use scenarios:** An app plays a file downloaded from a remote server to the local device. When the app has not downloaded the complete audio and video resource, it plays the obtained resource data in advance. If the obtained resource data is written to a local file and read from the local file simultaneously, the capability of playing while caching can be implemented.<br/>Supported video formats include mp4, mpeg-ts, and mkv.<br>Supported audio formats include m4a, aac, mp3, ogg, wav, flac, amr, and ape.<br/>**Example:**<br/>Assume that a user is obtaining an audio and video media file from a remote server and wants to play the downloaded part while downloading it to the local device:<br/>1. The user needs to obtain the total size of the media file (in bytes). If the size cannot be obtained, set it to **-1**.<br/>2. The user needs to implement a callback function **func** to fill in data. If **size** is set to **-1**, the form of **func** is **func(buffer: ArrayBuffer, length: number)**, in which case the player obtains data only in sequence. Otherwise, the form of func is **func(buffer: ArrayBuffer, length: number, pos: number)**, in which case the player jumps and obtains data as needed.<br/>3. The user sets **AVDataSrcDescriptor {fileSize = size, callback = func}**.<br/>**Note:**<br/>If the file to be played is in mp4/m4a format, the user must ensure that the **moov** field (media information field) is before the **mdat** field (media data field), or that the fields before **moov** are smaller than 10 MB; otherwise, parsing fails and the file cannot be played.<br>**Description:**<br>**webm** is not supported since API version 11.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
 | surfaceId<sup>9+</sup>                              | string                                                       | No  | Yes  | Video window ID.<br>This property can be set for the first time only when the AVPlayer is in the initialized state.<br>It can be updated when the AVPlayer is in the prepared, playing, paused, completed, or stopped state. After the reset, the video is played in the new window.<br>**Use scenario**: It is used to render the window for video playback (not involved in audio-only playback scenarios).<br>**Example:**<br>Create a surface ID using the [getXComponentSurfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9) API.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | loop<sup>9+</sup>                                   | boolean                                                      | No  | No  | Whether to loop playback. **true** to loop, **false** otherwise. The default value is **false**. It is a dynamic property<br>and can be set only when the AVPlayer is in the prepared, playing, or paused state.<br>This property cannot be set in live streaming mode.<br>Loop playback behavior: If **loop** is set to **true**, the AVPlayer seeks to the beginning of the stream and plays the stream again after the end of the stream is played, triggering the [endOfStream](#onendofstream9) event. If **loop** is not set or is set to **false**, the [stateChange](#onstatechange9) event is triggered to report the completed state when the end of the stream is played.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| videoScaleType<sup>9+</sup>                         | [VideoScaleType](arkts-apis-media-e.md#videoscaletype9)                           | No  | Yes  | Video scale type. The default value is **VIDEO_SCALE_TYPE_FIT**. It is a dynamic property<br>and can be set only when the AVPlayer is in the prepared, playing, paused, or completed state.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| videoScaleType<sup>9+</sup>                         | [VideoScaleType](arkts-apis-media-e.md#videoscaletype9)                           | No   | Yes   | Video scaling mode. The default value is **VIDEO_SCALE_TYPE_FIT**. It is a dynamic property. There are three optional values: **VIDEO_SCALE_TYPE_FIT**, **VIDEO_SCALE_TYPE_FIT_CROP**, and **VIDEO_SCALE_TYPE_SCALED_ASPECT**.<br>This parameter can be set in the prepared, playing, paused, or completed state.<br>It can also be set when the video display ratio needs to be adjusted (for example, to adapt to different screen sizes or to maintain the original ratio).<br>If it is not set, the default value **VIDEO_SCALE_TYPE_FIT** is used. <br/>**Atomic service API:** This API can be used in atomic services since API version 12.|
 | audioInterruptMode<sup>9+</sup>                     | [audio.InterruptMode](../apis-audio-kit/arkts-apis-audio-e.md#interruptmode9)       | No  | Yes  | Audio interruption mode. The default value is **SHARE_MODE**. It is a dynamic property<br>and can be set only when the AVPlayer is in the prepared, playing, paused, or completed state.<br>To take effect, this property must be set before [play()](#play9) is called for the first time.<br>Audio focus event: After **audioInterruptMode** is set, the [audioInterrupt](#onaudiointerrupt9) event is triggered based on the audio focus model when multiple audio and video resources are played at the same time.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | audioRendererInfo<sup>10+</sup>                     | [audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8) | No  | Yes  | Audio renderer information. If the media source contains videos, the default value of **usage** is **STREAM_USAGE_MOVIE**. Otherwise, the default value of **usage** is **STREAM_USAGE_MUSIC**. The default value of **rendererFlags** is 0. If the default value of **usage** does not meet the requirements, configure [audio.AudioRendererInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8).<br>This parameter can be set only when the AVPlayer is in the initialized state.<br>To take effect, this property must be set before [prepare()](#prepare9) is called for the first time.<br>Restrictions: [audioEffectMode](#properties) is restored to the default value when **usage** of **audioRendererInfo** is changed<br>- Before calling [setLoudnessGain](#setloudnessgain21), you must set **audioRendererInfo** and ensure that the **usage** parameter is set to **STREAM_USAGE_MUSIC**, **STREAM_USAGE_MOVIE**, or **STREAM_USAGE_AUDIOBOOK**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | audioEffectMode<sup>10+</sup>                       | [audio.AudioEffectMode](../apis-audio-kit/arkts-apis-audio-e.md#audioeffectmode10)  | No  | Yes  | Sets the audio sound effect mode.<br>This parameter is set when a specific sound effect needs to be enabled. If this parameter is not set, the default value **EFFECT_DEFAULT** (default sound effect, suitable for common playback scenarios) is used. This is a dynamic property.<br>The **EFFECT_NONE** mode is suitable for scenarios where the original audio is required. Other sound effect modes are suitable for specific audio processing requirements<br>and are restored to the default value **EFFECT_DEFAULT** when **usage** of **audioRendererInfo** is changed. It can be set only when the AVPlayer is in the prepared, playing, paused, or completed state.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -191,8 +192,7 @@ async function test(){
   let avPlayer = await media.createAVPlayer();
   // Subscribe to AVPlayer errors. This event is used only for error prompt and does not require the user to stop playback control.
   avPlayer.on('error', (error: BusinessError) => {
-    console.info('error happened,and error message is :' + error.message);
-    console.info('error happened,and error code is :' + error.code);
+    console.error(`error happened, Code: ${error.code}, message: ${error.message}`);
   });
 }
 ```
@@ -312,7 +312,7 @@ async function test() {
   player.getTrackSelectionFilter().then((selectionFilter: media.TrackSelectionFilter) => {
     console.info(`Succeeded in getting TrackSelectionFilter: ${selectionFilter}`);
   }).catch((err: BusinessError) => {
-    console.error('Failed to getTrackSelectionFilter, error message is:' + err.message);
+    console.error(`Failed to getTrackSelectionFilter. Code: ${err.code}, message: ${err.message}`);
   });
 }
 
@@ -375,7 +375,7 @@ async function test() {
   player.setTrackSelectionFilter(selectionFilter).then(() => {
     console.info('Succeeded in setting TrackSelectionFilter');
   }).catch((err: BusinessError) => {
-    console.error('Failed to setTrackSelectionFilter, error message is:' + err.message);
+    console.error(`Failed to setTrackSelectionFilter. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -506,7 +506,7 @@ For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
-| 5400102  | operation not allowed . Returned via promise. |
+| 5400102  | Operation not allowed. Returned via promise. |
 
 **Example**
 
@@ -601,6 +601,59 @@ async function test() {
   let mediaSource2: media.MediaSource = media.createMediaSourceWithUrl("http://example.com/video2.mp4", headers);
   let sourceId2 = await player.addPlaybackMediaSource(mediaSource2);
   let sources: Array<media.MediaSource | undefined> = player.getMediaSources();
+}
+```
+
+## checkSupportPlaybackCommand
+
+checkSupportPlaybackCommand(command: PlaybackCommand): Promise\<boolean>
+
+Checks whether the specified playback command can be executed on the current playback source. This function can be called only after [prepare()](#prepare9) is executed successfully. This API uses a promise to return the result.
+
+Use scenarios: Before playback, check whether the current media source supports playback control operations such as seek or playback rate adjustment, so that the app can decide whether to display or enable the corresponding playback control entry.
+
+**Since:** 26.1.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+**Parameters**
+
+| Name   | Type     | Mandatory | Description                 |
+| -------- | -------- | ---- | -------------------- |
+| command | [PlaybackCommand](arkts-apis-media-e.md#playbackcommand) | Yes   | Enum value of the playback command to query. For the value constraints, see [PlaybackCommand](arkts-apis-media-e.md#playbackcommand). |
+
+**Return value**
+
+| Type           | Description                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the command can be executed; the value **false** indicates the opposite. |
+
+**Error codes**
+
+For details about the error codes, see [Media Error Codes](errorcode-media.md).
+
+| ID | Error Message                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. If this function is invoked before Prepare(), it is returned. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { media } from '@kit.MediaKit';
+
+async function test() {
+  let player = await media.createAVPlayer();
+  // This is only an example. In actual development, you need to call it only after the stateChange event is successfully triggered to the prepared state.
+  player.checkSupportPlaybackCommand(media.PlaybackCommand.PLAYBACK_COMMAND_SEEK).then((isSupported: boolean) => {
+    console.info(`Succeeded in checking support playback command: ${isSupported}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to checkSupportPlaybackCommand. Code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -793,6 +846,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { common } from '@kit.AbilityKit';
 
 let player = await media.createAVPlayer();
+// this is the component instance. Obtain the UI context through getUIContext(), and then obtain the UIAbilityContext through getHostContext().
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let fileDescriptor = await context.resourceManager.getRawFd('xxx.mp4');
 player.fdSrc = fileDescriptor;
@@ -822,7 +876,7 @@ Sets the playback range and seeks to the start position of the range based on th
 
 | Name  | Type                  | Mandatory| Description                       |
 | -------- | ---------------------- | ---- | --------------------------- |
-| startTimeMs | number | Yes  | Start position of the interval, in milliseconds.<br>The value must be an integer in the range of [0, **duration**). The value **-1** indicates that the playback starts from position 0. If the value is less than -1, an error is reported.|
+| startTimeMs | number | Yes | Start position of the interval, in milliseconds.<br>This value must be an integer. The normal value range is [0, duration).<br>Special cases:<br>- The value **-1** indicates that playback starts from position 0.<br>- Values less than -1 do not meet the requirement and an error is reported. |
 | endTimeMs | number | Yes  | End position of the interval, in milliseconds.<br>The value must be an integer. The value range is (**startTimeMs**, **duration**]. The value **-1** indicates that the asset is played until its end is reached.|
 | mode | [SeekMode](arkts-apis-media-e.md#seekmode8) | No  | Seek mode, which can be **SeekMode.SEEK_PREV_SYNC** or **SeekMode.SEEK_CLOSEST**.<br>If this parameter is not passed, the default value **SeekMode.SEEK_PREV_SYNC** is used.|
 
@@ -851,7 +905,7 @@ async function test(){
   avPlayer.setPlaybackRange(0, 6000, media.SeekMode.SEEK_CLOSEST).then(() => {
     console.info('Succeeded setPlaybackRange');
   }).catch((err: BusinessError) => {
-    console.error('Failed to setPlaybackRange' + err.message);
+    console.error(`Failed to setPlaybackRange. Code: ${err.code}, message: ${err.message}`);
   });
 }
 ```
@@ -861,6 +915,8 @@ async function test(){
 prepare(callback: AsyncCallback\<void>): void
 
 Prepares for audio/video playback. This method initializes the decoder, parses media asset information, and prepares the audio/video output device for playback. This API can be called only when the AVPlayer is in the initialized state. The state changes can be detected by subscribing to the [stateChange](#onstatechange9) event. This API uses an asynchronous callback to return the result.
+
+Use scenarios: Call this API after the media asset is set and before formal playback. For example, an audio and video player app preloads resources before the user taps the play button, and a short video app preloads the next video to improve switching smoothness.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -987,6 +1043,7 @@ async function test(){
   // Here is only an example. In real development, you must wait for the stateChange event to successfully trigger and reach the initialized state before proceeding.
   avPlayer.prepare().then(() => {
     console.info('Succeeded in preparing');
+    // setMediaMuted should be called after the stateChange event is triggered to the prepared/playing/paused/completed state.
     avPlayer.setMediaMuted(media.MediaType.MEDIA_TYPE_AUD, true);
   }, (err: BusinessError) => {
     console.error(`Failed to prepare. Code:${err.code},message:${err.message}`);
@@ -1080,7 +1137,9 @@ async function test(){
 
 pause(callback: AsyncCallback\<void>): void
 
-Pauses audio and video playback. This API can be called only when the AVPlayer is in the playing state. This API uses an asynchronous callback to return the result.
+Pauses audio and video playback. This API uses an asynchronous callback to return the result. This API can be called only in the playing state.
+
+Use scenarios: When the user taps the pause button to pause playback, the app switches to the background, a call is answered, or an audio focus preemption is handled.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1163,6 +1222,8 @@ async function test(){
 stop(callback: AsyncCallback\<void>): void
 
 Stops audio and video playback. This API can be called only when the AVPlayer is in the prepared, playing, paused, or completed state. This API uses an asynchronous callback to return the result.
+
+Use scenarios: The user ends playback, switches to a new media asset, or resets the player state after playback is complete.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1326,7 +1387,9 @@ async function test(){
 
 release(callback: AsyncCallback\<void>): void
 
-Apps must create AVPlayer instances based on their specific needs and call the **release()** method to free up resources promptly after playback ends. Holding too many instances simultaneously can lead to excessive memory usage, and in some cases, the system may terminate the app to free up resources.
+An app needs to create an AVPlayer object based on actual service requirements and call **release()** in a timely manner after playback ends to release resources, so as to avoid holding too many instances simultaneously and causing excessive memory consumption, which may otherwise lead to the system terminating the application. This API uses an asynchronous callback to return the result.
+
+Releases the playback resources. This API can be called when the AVPlayer is in any state except released.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1438,7 +1501,7 @@ async function test(){
   // Here is only an example. In real development, you must wait for the stateChange event to successfully trigger and reach the prepared, playing, or paused state before proceeding.
   avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
     if (error) {
-      console.error(`Failed to do getTrackDescription, error:${error}`);
+      console.error(`Failed to getTrackDescription. Code: ${error.code}, message: ${error.message}`);
     } else {
       console.info('Succeeded in doing getTrackDescription');
     }
@@ -1492,6 +1555,8 @@ getSelectedTracks(): Promise\<Array\<number>>
 
 Obtains the indexes of the selected audio or video tracks. This API can be called only when the AVPlayer is in the prepared, playing, or paused state. This API uses a promise to return the result.
 
+Difference between **getSelectedTracks** and **getTrackDescription**: **getTrackDescription** obtains the complete information of all tracks (a **MediaDescription** array); **getSelectedTracks** obtains only the indexes of the selected tracks (a number array). Therefore, use **getTrackDescription** when complete track information is required, and use **getSelectedTracks** when only the currently selected indexes are required.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
@@ -1543,6 +1608,7 @@ Obtains the playback information. This API can be called only when the AVPlayer 
 **Example**
 
 ```ts
+import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let avPlayer: media.AVPlayer | undefined;
@@ -1556,7 +1622,7 @@ media.createAVPlayer(async (err: BusinessError, player: media.AVPlayer) => {
         playbackInfo = await avPlayer.getPlaybackInfo();
         console.info(`AVPlayer getPlaybackInfo = ${JSON.stringify(playbackInfo)}`); // Print PlaybackInfo.
       } catch (error) {
-        console.error(`error = ${error}`);
+        console.error(`Failed to getPlaybackInfo. Code: ${error.code}, message: ${error.message}`);
       }
     }
   } else {
@@ -1583,7 +1649,7 @@ Difference from **getCurrentPresentationTimestamp**, this method returns the tim
 | ------------------------------------------------------ | ------------------------------------------------- |
 | number | Current playback time, in milliseconds.|
 
-**Error codes**
+**Error codes** 
 
 For details about the error codes, see [Media Error Codes](errorcode-media.md).
 
@@ -1642,7 +1708,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // Here is only an example. In real development, you must wait for the stateChange event to successfully trigger and reach the initialized state before proceeding.
+  // This is only an example. In actual development, you need to call this API only after the stateChange event is successfully triggered to the prepared state.
   avPlayer.play().then(() => {
     console.info('Succeeded in playing');
     let currentPresentation: number = avPlayer.getCurrentPresentationTimestamp();
@@ -1657,7 +1723,9 @@ async function test(){
 
 selectTrack(index: number, mode?: SwitchMode): Promise\<void>
 
-When AVPlayer is used to play multi-audio and multi-video track resources, users can switch to a specified track in a specified mode to continue playback. This API can be called only when the AVPlayer is in the prepared, playing, or paused state. This API uses a promise to return the result.
+When the AVPlayer plays resources with multiple audio and video tracks, this API allows the user to switch to a specified track in a specified mode to continue playback. This API uses a promise to return the result. It can be called in the prepared, playing, or paused state.
+
+Use scenarios: Switch between multilingual audio tracks (for example, switching between Chinese and English dubbing), switch between video tracks of different resolutions, and select a subtitle track.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1720,6 +1788,8 @@ async function test(){
 deselectTrack(index: number): Promise\<void>
 
 Deselects the specified track when the AVPlayer plays multimedia resources with multiple audio or video tracks. This API can be called only when the AVPlayer is in the prepared, playing, or paused state. This API uses a promise to return the result.
+
+Difference between **deselectTrack** and **selectTrack**: **selectTrack** selects a specified track for playback, whereas **deselectTrack** cancels playback of a specified track (restoring the default track). Therefore, use **selectTrack** when switching to a specific track is required, and use **deselectTrack** when closing a track is required.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1857,7 +1927,9 @@ async function test(){
 
 seek(timeMs: number, mode?:SeekMode): void
 
-Seeks to the specified playback position. This API can be called only when the AVPlayer is in the prepared, playing, paused, or completed state. You can check whether the seek operation takes effect by subscribing to the [on('seekDone')](#onseekdone9) event.
+Jumps to a specified playback position. This API can be called only in the prepared, playing, paused, or completed state. Whether it takes effect can be confirmed through the [on('seekDone')](#onseekdone9) event.
+
+Use scenarios: The user drags the progress bar to jump, skips the opening or ending credits, replays a specific segment, or locates a key time point.
 
 > **NOTE**
 >
@@ -1874,7 +1946,7 @@ Seeks to the specified playback position. This API can be called only when the A
 | Name| Type                  | Mandatory| Description                                                        |
 | ------ | ---------------------- | ---- | ------------------------------------------------------------ |
 | timeMs | number                 | Yes  | Position to seek to, in ms. The value range is [0, [duration](#properties)].<br>When the seek mode is [SEEK_CONTINUOUS](arkts-apis-media-e.md#seekmode8), you can set this parameter to **-1** to end the **SEEK_CONTINUOUS** mode. The value must be an integer.|
-| mode   | [SeekMode](arkts-apis-media-e.md#seekmode8) | No  | Seek mode based on the video I frame. The default value is **SEEK_PREV_SYNC**. **Set this parameter only for video playback.**|
+| mode | [SeekMode](arkts-apis-media-e.md#seekmode8) | No | Seek mode based on video I-frames. If the mode parameter is not passed, the default value is **SEEK_PREV_SYNC**. Set only when playing a video resource. |
 
 **Example**
 
@@ -1940,7 +2012,7 @@ Subscribes to the event to check whether the [seek](#seek9) operation takes effe
 
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | Yes  | Event type, which is **'seekDone'** in this case. This event is triggered each time **seek()** is called, except in SEEK_CONTINUOUS mode.|
+| type     | string   | Yes  | Event type, which is **'seekDone'** in this case. This event is triggered each time **seek()** is called, except [SeekMode](arkts-apis-media-e.md#seekmode8) in **SEEK_CONTINUOUS** mode.|
 | callback | Callback\<number> | Yes  |  Callback invoked when the event is triggered. It reports the time position requested by the user.<br>For video playback, [SeekMode](arkts-apis-media-e.md#seekmode8) may cause the actual position to be different from that requested by the user. The exact position can be obtained from the **currentTime** property. The time in this callback only means that the requested seek operation is complete.|
 
 **Example**
@@ -2088,7 +2160,7 @@ Sets the playback rate. This API can be called only when the AVPlayer is in the 
 
 | Name| Type                            | Mandatory| Description              |
 | ------ | -------------------------------- | ---- | ------------------ |
-| rate  | number | Yes  | Playback rate to set (x).<br>The value range is [0.125, 4.0] for API versions earlier than 26.0.0 and [0.125, 8.0] for API version 26.0.0 or later. The default value is 1.0x (normal speed).<br>This parameter is used to precisely control the playback rate since API version 20.|
+| rate  | number | Yes   | Playback speed multiplier. The value range is [0.125, 4.0] before API version 26.0.0, and [0.125, 8.0] from API version 26.0.0 onward. The default value is **1.0** (normal speed).<br>Use this parameter in API version 20 or later and when precise playback speed control is required. |
 
 **Error codes**
 
@@ -2113,7 +2185,7 @@ async function test(){
 
 getPlaybackRate(): Promise\<number\>
 
-Obtains the playback speed of an AVPlayer. This API uses a promise to return the result.
+Obtains the playback rate of the current player. This API can be called in the prepared, playing, paused, or completed state. This API uses a promise to return the result asynchronously.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -2407,7 +2479,7 @@ Subscribes to available bitrates of HLS/DASH streams. This event is reported onl
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // After subscription, when the playback state changes to prepared, the callback for the available bitrate list of HLS/DASH protocol network streams is received. 
+  // After subscription, when the playback state changes to prepared, the callback for the available bitrate list of HLS/DASH protocol network streams is received.
   avPlayer.on('availableBitrates', (bitrates: Array<number>) => {
     console.info('availableBitrates called,and availableBitrates length is:' + bitrates.length);
   });
@@ -2509,6 +2581,8 @@ setLoudnessGain(loudnessGain: number): Promise\<void>
 
 Sets the loudness gain of the AVPlayer. Loudness refers to the subjective perception of audio intensity. The loudness gain changes the perceived volume by adjusting the intensity of audio signals, which is different from the relative volume adjustment of **setVolume**. After this API is called, the loudness gain takes effect immediately. This API uses a promise to return the result.
 
+Use scenarios: It can be used for loudness normalization (keeping a consistent perceived volume for audio from different sources) and unifying the loudness when playing multiple audio segments with significant volume differences.
+
 > **NOTE**
 >
 > - This API can be called when the AVPlayer is in the prepared, playing, paused, completed, or stopped state.
@@ -2552,7 +2626,7 @@ async function test(){
 
 setVolume(volume: number): void
 
-Sets the playback volume of the current video/audio. This API can be called only when the AVPlayer is in the prepared, playing, paused, or completed state. You can check whether the volume setting takes effect by subscribing to the [on('volumeChange')](#onvolumechange9) event. This API does not take effect on other system volumes. To adjust other volumes (such as the system volume and app volume), see [Volume Management](../../media/audio/volume-management.md).
+Adjusts the media playback volume of the video/audio being played. This API can be called only in the prepared, playing, paused, or completed state. You can use the [on('volumeChange')](#onvolumechange9) event to confirm whether the adjustment takes effect. This API does not affect other system volumes. To adjust other volumes (such as the system volume and app volume), see [Volume Management](../../media/audio/volume-management.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2807,7 +2881,7 @@ Subscribes to media asset duration changes. It is used to refresh the length of 
 | Name  | Type    | Mandatory| Description                                              |
 | -------- | -------- | ---- | -------------------------------------------------- |
 | type     | string   | Yes  | Event type, which is **'durationUpdate'** in this case.|
-| callback | Callback\<number> | Yes  | Callback used to return the resource duration.       |
+| callback | Callback\<number> | Yes | Callback used to return the resource duration, in milliseconds. |
 
 **Example**
 
@@ -2881,7 +2955,7 @@ async function test(){
 
 off(type: 'bufferingUpdate', callback?: OnBufferingUpdateHandler): void
 
-Unsubscribes from audio and video buffer changes. 
+Unsubscribes from audio and video buffer changes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2993,7 +3067,7 @@ async function test(){
 
 off(type: 'videoSizeChange', callback?: OnVideoSizeChangeHandler): void
 
-Unsubscribes from video size changes. 
+Unsubscribes from video size changes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3597,16 +3671,16 @@ async function test(){
   await avPlayer.setSuperResolution(true);
 }
 ```
-
 ## setVideoWindowSize<sup>18+</sup>
 
 setVideoWindowSize(width: number, height: number) : Promise\<void>
 
 Sets the resolution of the output video after super resolution. This API can be called when the AVPlayer is in the initialized, prepared, playing, paused, completed, or stopped state. This API uses a promise to return the result.
 
-The input parameter values must be in the range of 320 × 320 to 1920 × 1080 (in px).
-
-Before calling [prepare()](#prepare9), enable super resolution by using [PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12).
+> **NOTE**
+>
+> - Before calling [prepare()](#prepare9), enable super resolution through [PlaybackStrategy](arkts-apis-media-i.md#playbackstrategy12).
+> - The input parameters must be within the range of 320x320 to 1920x1080, in pixels.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -3791,6 +3865,7 @@ Obtains the statistic metrics of the current player. This API can be called when
 **Example**
 
 ```ts
+import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let avPlayer: media.AVPlayer | undefined;
@@ -3804,7 +3879,7 @@ media.createAVPlayer(async (err: BusinessError, player: media.AVPlayer) => {
         playbackMetrics = await avPlayer.getPlaybackStatisticMetrics();
         console.info(`AVPlayer getPlaybackStatisticMetrics = ${JSON.stringify(playbackMetrics)}`); // Print the value of playbackMetrics.
       } catch (error) {
-        console.error(`error = ${error}`);
+        console.error(`Failed to getPlaybackStatisticMetrics. Code: ${error.code}, message: ${error.message}`);
       }
     }
   } else {

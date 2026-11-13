@@ -5,7 +5,7 @@
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @zzs911-->
-<!-- md-trans-meta sourceCommit=b307803a33130c0e4efc7fa43a3a1e1f246ced00 translatedAt=2026-11-09T06:24:03.039Z pushedAt=2026-11-09T08:19:08.917Z nl=1 -->
+<!-- md-trans-meta sourceCommit=645883d5025b00ef56f278053b6c68e42376f40c translatedAt=2026-11-13T06:52:31.222Z pushedAt=2026-11-13T07:05:19.916Z nl=1 -->
 
 > **NOTE**
 >
@@ -87,6 +87,23 @@ Enumerates the codec MIME types.
 | AUDIO_AMR_NB<sup>18+</sup>   | 'audio/3gpp'     | Audio in AMR-NB format.|
 | AUDIO_AMR_WB<sup>18+</sup>   | 'audio/amr-wb'     | Audio in AMR-WB format.|
 
+## DestHDRMode
+
+Enumerates the High Dynamic Range (HDR) formats of the target file for transcoding.
+
+**Since:** 26.1.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVTranscoder
+
+| Name            | Value                  | Description                     |
+| --------------- | --------------------- | ------------------------ |
+| SDR             | 0                     | Transcoding to the Standard Dynamic Range (SDR) video mode.      |
+| AUTO_HDR_VIVID  | 1                     | Automatic transcoding mode for HDR Vivid. The target file format is HDR Vivid only when the source file format is HDR Vivid; in other situations, the target file format is SDR. |
+
 ## AacProfile<sup>22+</sup>
 
 Enumerates the supported Advanced Audio Coding (AAC) formats.
@@ -128,6 +145,7 @@ Enumerates the media description keys.
 | MD_KEY_MIME_TYPE<sup>23+</sup>  | 'mime_type'  | MIME type of the track. The corresponding key value type is string. For audio and video tracks, the value is the same as that of **MD_KEY_CODEC_MIME**.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | MD_KEY_REFERENCE_TRACK_IDS<sup>23+</sup>  | 'ref_track_ids'  | Reference relationships between this track and other tracks. The corresponding key value type is string, with values separated by commas (,).<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 | MD_KEY_TRACK_REFERENCE_TYPE<sup>23+</sup>  | 'track_ref_type'  | Auxiliary type of this track when it acts as a reference track. The corresponding key value type is string.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| MD_KEY_TRACK_PLAYABLE  | 'is_playable'  | Whether this track can be played normally. The corresponding key-value type is boolean. The value **true** indicates that it can be played normally, and **false** indicates otherwise.<br>**Since:** 26.1.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.1.0.<br>**Model restriction:** This API can only be used in the stage model.|
 ## FetchResult<sup>23+</sup>
 
 Enumerates the results of obtaining thumbnails in batches.
@@ -499,6 +517,44 @@ Enumerates the loop modes of playlist playback.
 | PLAYLIST_LOOP_MODE_SHUFFLE | 3    | Shuffle.|
 | PLAYLIST_LOOP_MODE_NONE | 4    | Loop off.|
 
+## PlaybackCommand
+
+Enumerates the playback control commands that can be executed. It is used by an application to query whether the source supports the corresponding playback control operation after [prepare()](arkts-apis-media-AVPlayer.md#prepare9) is complete.
+
+**Since:** 26.1.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.AVPlayer
+
+| Name                      | Value  | Description                                  |
+| -------------------------- | ---- | -------------------------------------- |
+| PLAYBACK_COMMAND_SEEK | 0    | Video seek operation. Whether the current source supports this operation can be obtained via [checkSupportPlaybackCommand](arkts-apis-media-AVPlayer.md#checksupportplaybackcommand). |
+| PLAYBACK_COMMAND_RATE | 1    | Adjusting the playback rate. Whether the current source supports this operation can be obtained via [checkSupportPlaybackCommand](arkts-apis-media-AVPlayer.md#checksupportplaybackcommand). |
+
+## SideBySideTransparentVideoLayoutMode
+
+Enumerates the transparent video layout modes in side-by-side mode.
+
+> **NOTE**
+>
+> This method specifies the position of the alpha data of a transparent video in the image, so that the player can correctly composite the transparent video. Alpha is scalar data that describes the opacity of a pixel.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+| Name                       | Value   | Description                                   |
+| -------------------------- | ---- | -------------------------------------- |
+| SIDE_BY_SIDE_LAYOUT_HORIZONTAL | 0    | Left-right layout of the alpha video, with the left data being the alpha data. |
+| SIDE_BY_SIDE_LAYOUT_VERTICAL | 1    | Top-bottom layout of the alpha video, with the top data being the alpha data. |
+| SIDE_BY_SIDE_LAYOUT_HORIZONTAL_REVERSE | 2    | Left-right layout of the alpha video, with the right data being the alpha data. |
+| SIDE_BY_SIDE_LAYOUT_VERTICAL_REVERSE | 3    | Top-bottom layout of the alpha video, with the bottom data being the alpha data. |
+
 ## AudioEncoder<sup>(deprecated)</sup>
 
 > **NOTE**
@@ -554,3 +610,4 @@ Enumerates the media error codes.
 | MSERR_SERVICE_DIED         | 7    | Invalid server.                      |
 | MSERR_INVALID_STATE        | 8    | The operation is not allowed in the current state.  |
 | MSERR_UNSUPPORTED          | 9    | The operation is not supported in the current version.      |
+
