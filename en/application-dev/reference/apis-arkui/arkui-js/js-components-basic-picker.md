@@ -96,7 +96,7 @@ When **type** is set to **multi-text**, a multi-column text selector is used.
 
 ## Styles
 
-In addition to the [common styles](js-components-common-styles.md), the following styles are supported.
+In addition to the [universal styles](js-components-common-styles.md), the following styles are supported.
 
 | Name                        | Type                       | Default Value | Mandatory | Description                                |
 | -------------------------- | -------------------------- | ---------- | ---- | ---------------------------------------- |
@@ -160,7 +160,7 @@ In addition to the [universal events](js-components-common-events.md), the follo
 
 ## Methods
 
-In addition to the [common methods](js-components-common-methods.md), the following methods are supported.
+In addition to the [universal methods](js-components-common-methods.md), the following methods are supported.
 
 | Name | Parameter | Description |
 | ---- | ---- | --------------- |
