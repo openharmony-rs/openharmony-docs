@@ -200,7 +200,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        g_outputFd = open((avrecorderRoot + "/audio_example.m4a").c_str(), O_RDWR | O_CREAT, FILE_PERMISSIONS);
        std::string fileUrl = "fd://" + std::to_string(g_outputFd);
        config.url = strdup(fileUrl.c_str());
-       OH_LOG_INFO(LOG_APP, "config.url is: %s", config.url);
+       OH_LOG_INFO(LOG_APP, "config.url is: %{public}s", config.url);
    
        OH_AVErrCode err = OH_AVRecorder_Prepare(g_recorder, &config);
        free(config.url);
@@ -402,7 +402,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        g_outputFd = open((avrecorderRoot + "/audio_example.m4a").c_str(), O_RDWR | O_CREAT, FILE_PERMISSIONS);
        std::string fileUrl = "fd://" + std::to_string(g_outputFd);
        config.url = strdup(fileUrl.c_str());
-       OH_LOG_INFO(LOG_APP, "config.url is: %s", config.url);
+       OH_LOG_INFO(LOG_APP, "config.url is: %{public}s", config.url);
    
        OH_AVErrCode err = OH_AVRecorder_Prepare(g_recorder, &config);
        free(config.url);
