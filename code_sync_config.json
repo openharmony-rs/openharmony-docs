@@ -71068,9 +71068,9 @@
 						"start_line":41
 					},
 					{
-						"end_line":424,
+						"end_line":450,
 						"name":"decoder_sync_output_buffer",
-						"start_line":381
+						"start_line":407
 					}
 				]
 			},
