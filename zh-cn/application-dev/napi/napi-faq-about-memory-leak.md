@@ -1,5 +1,13 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "汇总Node-API开发中的内存泄漏问题，含napi_ref引用未释放、napi_threadsafe_function计数未归零两类泄漏，并提供Allocation工具检测与环境清理钩子修复方案。"
+keywords: [Node-API, 内存泄漏, napi_ref, napi_threadsafe_function, Allocation工具, napi_handle_scope, env_cleanup_hook, 引用计数]
+doctype: faq
+status: active
+---
+
 # 内存泄漏相关问题汇总
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->

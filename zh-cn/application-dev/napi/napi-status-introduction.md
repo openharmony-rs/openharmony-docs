@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍Node-API接口返回的napi_status状态码枚举值，详细说明各接口可能返回的非napi_ok状态码的原因和修复建议，帮助开发者快速定位接口调用问题。"
 keywords: [Node-API, 状态码, napi_status, napi_ok, napi_invalid_arg, 错误码, 接口返回值, 状态码修复]
 doctype: guide

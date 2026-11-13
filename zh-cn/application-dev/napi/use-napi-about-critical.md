@@ -1,5 +1,5 @@
 ---
-kits: ["NDK / Native Development Kit"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍使用Node-API扩展接口创建和销毁临界区作用域及访问字符串内容，通过napi_open_critical_scope管理临界区，支持在临界区内调用临界接口。"
 keywords: [Node-API, 临界区, napi_open_critical_scope, napi_close_critical_scope, 临界接口, 字符串访问, gc阻塞]
 doctype: guide
@@ -8,7 +8,7 @@ status: active
 
 # 使用扩展的Node-API接口创建和销毁临界区作用域及访问字符串内容
 
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
