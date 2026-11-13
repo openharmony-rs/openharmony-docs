@@ -399,7 +399,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
    
    // ...
@@ -413,7 +413,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      pendingRecordingWrite = Promise.resolve();
      let path = context.cacheDir;
      let filePath = path + '/S16LE_2_48000.pcm';
-     recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+     recordingFile = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
      onReadData = (buffer: ArrayBuffer) => {
        let recordingBuffer = buffer.slice(0);
        let writeOffset = writtenBytes;
@@ -423,7 +423,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
          length: recordingBuffer.byteLength
        }
        pendingRecordingWrite = pendingRecordingWrite.then(async () => {
-         await fs.write(recordingFile.fd, recordingBuffer, options);
+         await fileIo.write(recordingFile.fd, recordingBuffer, options);
        }).catch((error: BusinessError) => {
          console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
        });
