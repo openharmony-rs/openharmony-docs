@@ -95,7 +95,7 @@ Light驱动模型支持获取系统中所有灯的信息、动态配置闪烁模
                          busRNum = 147;    // Light的效果颜色红色对应GPIO值。
                          busGNum = 146;    // Light的效果颜色绿色对应GPIO值。
                          busBNum = 149;    // Light的效果颜色蓝色对应GPIO值。
-                         defaultBrightness = 0X00FFFFFF;    // 系统默认亮度值，B：0-7位，R：8-15位，G：16-23，扩展位24-31位。
+                         defaultBrightness = 0X00FFFFFF;    // 系统默认亮度值，蓝色：0-7位，绿色：8-15位，红色：16-23位，扩展位24-31位。
                          onTime = 50;    // 当闪光灯亮起时，系统支持的最短持续时间（以毫秒为单位）。
                          offTime = 50;    // 当闪光灯熄灭时，系统支持的最短持续时间（以毫秒为单位）。
                      }

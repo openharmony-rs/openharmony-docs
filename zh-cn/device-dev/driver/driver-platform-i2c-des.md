@@ -64,7 +64,9 @@ DevHandle I2cOpen(int16_t number);
 | **参数** | **参数描述** | 
 | -------- | -------- |
 | number | int16_t类型，I2C控制器号。 | 
+
 | **返回值** | **返回值描述** | 
+| -------- | -------- |
 | NULL | 打开I2C控制器失败。 | 
 | 设备句柄 | 打开的I2C控制器设备句柄。 | 
 
@@ -96,7 +98,9 @@ int32_t I2cTransfer(DevHandle handle, struct I2cMsg *msgs, int16_t count);
 | handle | DevHandle类型，I2C控制器设备句柄。 | 
 | msgs | 结构体指针，待传输数据的消息结构体数组。 | 
 | count | int16_t类型，消息数组长度。 | 
+
 | **返回值** | **返回值描述** | 
+| -------- | -------- |
 | 正整数 | 成功传输的消息结构体数目。 | 
 | 负数 | 执行失败。 | 
 
@@ -114,7 +118,7 @@ msgs[0].flags = 0;            // 传输标记为0，默认为写。
 msgs[1].buf = rbuff;          // 要读取的数据。
 msgs[1].len = 2;              // 读取数据长度为2。
 msgs[1].addr = 0x5A;          // 读取设备地址为0x5A。
-msgs[1].flags = I2C_FLAG_READ // I2C_FLAG_READ置位。
+msgs[1].flags = I2C_FLAG_READ; // I2C_FLAG_READ置位。
 // 进行一次自定义传输，传输的消息个数为2。 
 ret = I2cTransfer(i2cHandle, msgs, 2);
 if (ret != 2) {
@@ -123,10 +127,11 @@ if (ret != 2) {
 }
 ```
 
-> ![icon-caution.gif](public_sys-resources/icon-caution.gif) **注意：**
+>**注意：**
+>
 > - I2cMsg结构体中的设备地址不包含读写标志位，读写信息由flags成员变量的读写控制位传递。
 > 
-> - 本函数不对消息结构体个数count做限制，其最大个数度由具体I2C控制器决定。
+> - 本函数不对消息结构体个数count做限制，其最大个数由具体I2C控制器决定。
 > 
 > - 本函数也不对每个消息结构体中的数据长度做限制，同样由具体I2C控制器决定。
 > 
@@ -167,8 +172,9 @@ I2cClose(i2cHandle); // 关闭I2C控制器。
 
 本例程首先对Touch IC进行复位操作（开发板上电默认会给TouchIC供电，本例程不考虑供电），然后对其内部寄存器进行随机读写，测试I2C通路是否正常。
 
-> ![icon-note.gif](public_sys-resources/icon-note.gif) **说明：**<br>
-> 本示例重点在于展示I2C设备访问流程，并验证I2C通路，所以对于设备寄存器读写值不做关注，读写寄存器导致的行为由设备自身决定。
+>**说明：**
+>
+>本示例重点在于展示I2C设备访问流程，并验证I2C通路，所以对于设备寄存器读写值不做关注，读写寄存器导致的行为由设备自身决定。
 
 示例如下：
 
@@ -188,7 +194,7 @@ struct TpI2cDevice {
     DevHandle i2cHandle;  /* I2C控制器句柄 */ 
 };
 
-/* I2C管脚io配置，需要查阅SOC寄存器手册  */
+/* I2C管脚io配置，需要查阅SOC寄存器手册 */
 #define I2C3_DATA_REG_ADDR 0x112f008c /* 3号I2C控制器SDA管脚配置寄存器地址 */
 #define I2C3_CLK_REG_ADDR 0x112f0090  /* 3号I2C控制器SCL管脚配置寄存器地址 */
 #define I2C_REG_CFG 0x5f1             /* 3号I2C控制器SDA及SCL管脚配置值 */
@@ -200,7 +206,7 @@ static void TpSocIoCfg(void)
     OSAL_WRITEL(I2C_REG_CFG, IO_DEVICE_ADDR(I2C3_CLK_REG_ADDR));
 }
 
-/* 对TP的复位管脚进行初始化， 拉高维持20ms, 再拉底维持50ms，最后再拉高维持20ms， 完成复位动作 */
+/* 对TP的复位管脚进行初始化， 拉高维持20ms, 再拉低维持50ms，最后再拉高维持20ms， 完成复位动作 */
 static int32_t TestCaseGpioInit(struct TpI2cDevice *tpDevice)
 {
     int32_t ret;
@@ -214,7 +220,7 @@ static int32_t TestCaseGpioInit(struct TpI2cDevice *tpDevice)
 
     ret = GpioWrite(tpDevice->rstGpio, GPIO_VAL_HIGH);
     if (ret != HDF_SUCCESS) {
-        HDF_LOGE("%s: set rst hight fail!:%d", __func__, ret);
+        HDF_LOGE("%s: set rst high fail!:%d", __func__, ret);
         return ret;
     }
     OsalMSleep(20);
