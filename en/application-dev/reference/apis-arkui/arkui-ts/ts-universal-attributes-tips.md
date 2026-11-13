@@ -5,7 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e6c8f80367b2ac46842bf47d90ff527cf89d1de0 translatedAt=2026-09-02T12:08:40.639Z -->
+<!-- md-trans-meta sourceCommit=2a6b077cd9777cb5f22da52ceb3b252e61dabecf translatedAt=2026-11-03T03:45:38.839Z pushedAt=2026-11-13T01:06:00.135Z nl=1 -->
 
 You can bind a floating tooltip to a component. The tooltip automatically appears when a pointer hovers over the component and disappears when the pointer moves away.
 
@@ -24,20 +24,20 @@ Binds a tooltip to the component.
 
 > **NOTE**
 >
-> When the [enabled](ts-universal-attributes-enable.md#enabled) universal attribute of the component bound with **bindTips** is set to **false**, the floating bubble can still be displayed.
+> When the [enabled](ts-universal-attributes-enable.md#enabled) universal attribute of the component bound with **bindTips** is set to **false**, the tooltip can still be displayed.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| message|  [TipsMessageType](#tipsmessagetype)                                                     | Mandatory   | Content of the floating bubble. |
+| message|  [TipsMessageType](#tipsmessagetype)                                                     | Mandatory   | Content of the tooltip. |
 | options  | [TipsOptions](#tipsoptions) | No  | Parameters of the tooltip.<br>Default value:<br>{<br>appearingTime: 700,<br>disappearingTime: 300,<br>appearingTimeWithContinuousOperation: 300,<br>disappearingTimeWithContinuousOperation: 0, enableArrow: true,<br>arrowPointPosition: ArrowPointPosition.CENTER,<br>arrowWidth: 16,arrowHeight: 8,<br>showAtAnchor: TipsAnchorType.TARGET<br>} |
 
-**Return value**
+**Return value** 
 
 |Type|Description|
 |---|---|
@@ -56,7 +56,7 @@ Defines the parameters of the tooltip.
 | appearingTimeWithContinuousOperation    |     number   | No  | Yes | Delay before the tooltip appears when multiple tooltips are displayed consecutively. The maximum delay is 4000 ms. Values exceeding 4000 ms are capped at 4000 ms.<br>Default value: **300**.<br>Unit: ms.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | disappearingTimeWithContinuousOperation |     number   | No  | Yes | Delay before the tooltip disappears when multiple tooltips are displayed consecutively. The maximum delay is 4000 ms. Values exceeding 4000 ms are capped at 4000 ms.<br>Default value: **0**.<br>Unit: ms.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | enableArrow        | boolean                                                      | No  | Yes | Whether to display the tooltip arrow.<br>Default value: **true**.<br>**true**: yes. **false**: no.<br>**NOTE**<br>If the available space on the screen is insufficient, the tooltip will cover part of the component and the arrow will not be displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| arrowPointPosition     | [ArrowPointPosition](ts-appendix-enums.md#arrowpointposition11) | No   | Yes  | Position of the tooltip arrow relative to the parent component. The bubble arrow has three optional positions in the vertical and horizontal directions: **Start**, **Center**, and **End**. All positions are within the parent component area, and do not exceed the boundary of the parent component or cover the rounded corner area.<br/>Default value: **ArrowPointPosition.CENTER**<br/>**Atomic service API:** This API can be used in atomic services since API version 19. |
+| arrowPointPosition     | [ArrowPointPosition](ts-appendix-enums.md#arrowpointposition11) | No   | Yes  | Position of the tooltip arrow relative to the parent component. The tooltip arrow has three optional positions in the vertical and horizontal directions: **Start**, **Center**, and **End**. All positions are within the parent component area, and do not exceed the boundary of the parent component or cover the rounded corner area.<br/>Default value: **ArrowPointPosition.CENTER**<br/>**Atomic service API:** This API can be used in atomic services since API version 19. |
 | arrowWidth           | [Dimension](ts-types.md#dimension10)                  | No  | Yes | Width of the tooltip arrow. If the set width exceeds the length of the edge minus twice the tooltip's corner radius, the arrow is not drawn.<br>Default value: **16**.<br>Unit: vp.<br>**NOTE**<br>Percentage values are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | arrowHeight          | [Dimension](ts-types.md#dimension10)                  | No  | Yes | Height of the tooltip arrow.<br>Default value: **8**.<br>Unit: vp.<br>**NOTE**<br>Percentage values are not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 | showAtAnchor<sup>20+</sup> | [TipsAnchorType](ts-appendix-enums.md#tipsanchortype20)                  | No  | Yes | Anchor type of the tooltip.<br>Default value: **TipsAnchorType.TARGET**.<br>**NOTE**<br>If the anchor type of the tooltip is **TipsAnchorType.CURSOR**, the tooltip does not display an arrow.<br>**Atomic service API**: This API can be used in atomic services since API version 20.   |
@@ -149,7 +149,7 @@ struct TipsExample {
 
 This example sets the system material of a component through the **systemMaterial** attribute in [TipsOptions](#tipsoptions), implementing the immersive light-sensing visual effect of **bindTips**.
 
-The immersive light-sensing effect of a component is adaptively adjusted based on the device computing power and the immersive light-sensing effect set by the user in the system, requiring no additional adaptation by developers.
+The illustration for this example shows the strong effect on a high-computing-power device. The immersive light effect of the component is adaptively adjusted based on the device computing power and the immersive light effect set by the user in the system, so you do not need to perform additional adaptation.
 
 Since API version 26.0.0, the **systemMaterial** attribute is added to **TipsOptions**.
 
@@ -178,10 +178,10 @@ struct TipsExample {
 }
 ```
 
-When the system material is not set:
+Without system material
 
 <!--Del--> <!--DelEnd-->
 
-After the system material is set:
+With system material
 
 <!--Del--> <!--DelEnd-->

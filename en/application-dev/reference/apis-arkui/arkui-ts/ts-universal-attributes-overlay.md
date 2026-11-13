@@ -1,11 +1,11 @@
 # Overlay Control
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=828befee530895124aaf1637c9402999a598c883 translatedAt=2026-09-02T11:59:17.885Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:26:44.889Z pushedAt=2026-11-13T01:06:00.113Z nl=1 -->
 
 Sets an overlay for a component, which can be used to place mask text, a custom component, or ComponentContent on top of the current component. The overlay supports positioning based on the current component, and is suitable for scenarios such as displaying prompt information and watermarks where content needs to be overlaid on top of a component.
 
@@ -64,8 +64,8 @@ Adds mask text, a custom component, or [ComponentContent](#componentcontent12) a
 
 | Name                 | Type                                      | Read-Only| Optional | Description                                               |
 | --------------------- | -------------------------------------------| --- | -------| --------------------------------------------------- |
-| align<sup>7+</sup>   | [Alignment](ts-appendix-enums.md#alignment) | No  | Yes      | Sets the overlay position relative to the component. When set together with offset, the overlay is positioned relative to the component, and then offset based on the top-left corner of the current position.<br>Default value: TopStart<br>**Card capability:** Since API version 9, this API supports being used in ArkTS cards.<br>**Atomic service API:** Since API version 11, this API supports being used in atomic services.         |
-| offset<sup>7+</sup>  | [OverlayOffset](#overlayoffset12)          | No  | Yes     | Sets the offset of the overlay based on its own top-left corner. When set together with align, the overlay is positioned relative to the component, and then offset based on the top-left corner of the current position. By default, the overlay is at the top-left corner of the component.<br>**Card capability:** Since API version 9, this API supports being used in ArkTS cards.<br>**Atomic service API:** Since API version 11, this API supports being used in atomic services. |
+| align<sup>7+</sup>   | [Alignment](ts-appendix-enums.md#alignment) | No  | Yes      | Sets the overlay position relative to the component. When set together with offset, the overlay is positioned relative to the component, and then offset based on the top-left corner of the current position.<br>Default value: TopStart<br>**Widget capability:** Since API version 9, this API supports being used in ArkTS cards.<br>**Atomic service API:** Since API version 11, this API supports being used in atomic services.         |
+| offset<sup>7+</sup>  | [OverlayOffset](#overlayoffset12)          | No  | Yes     | Sets the offset of the overlay based on its own top-left corner. When set together with align, the overlay is positioned relative to the component, and then offset based on the top-left corner of the current position. By default, the overlay is at the top-left corner of the component.<br>**Widget capability:** Since API version 9, this API supports being used in ArkTS cards.<br>**Atomic service API:** Since API version 11, this API supports being used in atomic services. |
 
 > **NOTE**
 >
@@ -203,9 +203,10 @@ struct OverlayContentPage {
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: ComponentContent<Params> =
     new ComponentContent(this.uiContext, wrapBuilder(overlayBuilder), new Params(this.overlayColor));
+  private timer: number = -1;
 
   aboutToAppear(): void {
-    setInterval(() => {
+    this.timer = setInterval(() => {
       if (this.overlayColor.includes('0.6')) {
         this.overlayColor = 'rgba(0, 0, 0, 0.1)';
         this.overlayNode.update(new Params(this.overlayColor));
@@ -214,6 +215,9 @@ struct OverlayContentPage {
         this.overlayNode.update(new Params(this.overlayColor));
       }
     }, 1000);
+  }
+  aboutToDisappear(): void {
+    clearInterval(this.timer);
   }
 
   build() {

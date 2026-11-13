@@ -1,11 +1,11 @@
 # Custom Event Interception
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=828befee530895124aaf1637c9402999a598c883 translatedAt=2026-09-02T11:56:49.873Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:25:46.702Z pushedAt=2026-11-13T01:06:00.112Z nl=1 -->
 
 Provides components with a custom event interception capability. It is applicable to scenarios where the **HitTestMode** attribute of a component needs to be dynamically determined based on event information such as the position where the event is pressed on the component and the input source, so as to control the hit testing and event response behavior of the component.
 

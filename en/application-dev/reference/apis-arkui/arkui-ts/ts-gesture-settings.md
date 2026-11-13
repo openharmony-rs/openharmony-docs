@@ -1,11 +1,11 @@
 # Binding Gesture Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=10a20f217ecf0e77e23c0c78c466ce20e1033d43 translatedAt=2026-09-07T08:05:00.627Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T02:43:12.049Z pushedAt=2026-11-13T01:06:00.004Z nl=1 -->
 
 Binds different types of gesture events to a component and sets the event response methods. It supports common gesture binding, parent component priority gesture recognition, and simultaneous gesture triggering of parent and child components. It is applicable to scenarios such as component interaction response, gesture priority control between parent and child components, and coordinated gesture triggering of multiple components.
 
@@ -34,7 +34,7 @@ Binds a gesture.
 | Name | Type                                       | Mandatory | Description                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
 | gesture  |  [GestureType](./ts-gesture-common.md#gesturetype) | Yes   | Type of the gesture to bind. |
-| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask) | No   | Event response setting. Pass this parameter when you need to set whether to block child component gestures when the parent component recognizes a gesture first: **GestureMask.Normal** indicates that child component gestures are not blocked, which applies to the scenario where the parent component recognizes the gesture first but child component gestures are still allowed to participate in recognition according to the default rules; **GestureMask.IgnoreInternal** indicates that child component gestures are blocked, which applies to the scenario where you want the gesture bound by the parent component's **priorityGesture** to respond first and ignore child component gestures. If this parameter is not passed, the default value is **GestureMask.Normal**. |
+| mask  |  [GestureMask](./ts-gesture-common.md#gesturemask) | No   | Event response setting. Pass this parameter when you need to control whether to block child component gestures: **GestureMask.Normal** indicates that child component gestures are not blocked, and is applicable to the scenario where child component gestures are still allowed to participate in recognition according to the default rules after the parent component gesture responds; **GestureMask.IgnoreInternal** indicates that child component gestures are blocked, and is applicable to the scenario where you want the gesture bound to the parent component to respond and ignore child component gestures. If this parameter is not passed, the default value is **GestureMask.Normal**. |
 
 **Return value**
 
@@ -50,7 +50,7 @@ Binds a gesture that is recognized with priority.
 
 1. By default, the child component recognizes the gesture bound through **gesture** first. When the parent component configures **priorityGesture**, the parent component recognizes the gesture bound through **priorityGesture** first.
 
-2. When a long press gesture is bound, the component with a smaller minimum long press duration takes precedence in responding and ignores the **priorityGesture** setting.
+2. When long press gestures are bound, the gesture with a shorter minimum time to trigger the long press responds first, and the **priorityGesture** setting is ignored.
 
 > **NOTE**
 >
@@ -64,7 +64,7 @@ Binds a gesture that is recognized with priority.
 
 | Name | Type                                       | Mandatory | Description                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| gesture | [GestureType](./ts-gesture-common.md#gesturetype) | Yes | Gesture object to bind. When a long press gesture is bound, the component with a smaller minimum long press duration takes precedence in responding and ignores the **priorityGesture** setting. |
+| gesture | [GestureType](./ts-gesture-common.md#gesturetype) | Yes | Gesture object to bind. When binding a long press gesture, the gesture with a shorter minimum long press duration responds first, and the **priorityGesture** setting is ignored. |
 | mask  |  [GestureMask](./ts-gesture-common.md#gesturemask) | No   | Event response setting.<br/>Default value: **GestureMask.Normal** |
 
 **Return value**
@@ -111,8 +111,8 @@ Defines the device types corresponding to the input sources.
 | Unknown | 0 | Unknown input source.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
 | Mouse | 1 | Mouse.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
 | TouchScreen | 2 | Touchscreen.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
-| KEY<sup>22+</sup> | 4 | Key.<br>**Atomic service API:** This API can be used in atomic services since API version 22.<br>**Model constraint:** This API can be used only in the stage model. |
-| JOYSTICK<sup>22+</sup> | 5 | Joystick.<br>**Atomic service API:** This API can be used in atomic services since API version 22.<br>**Model constraint:** This API can be used only in the stage model. |
+| KEY<sup>22+</sup> | 4 | Key.<br>**Atomic service API:** This API can be used in atomic services since API version 22.<br>**Model restriction:** This API can be used only in the stage model. |
+| JOYSTICK<sup>22+</sup> | 5 | Joystick.<br>**Atomic service API:** This API can be used in atomic services since API version 22.<br>**Model restriction:** This API can be used only in the stage model. |
 
 ## SourceTool<sup>9+</sup>
 
@@ -125,9 +125,9 @@ Enumerates the tool types corresponding to the input sources.
 | Unknown | 0 | Unknown input source.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
 | Finger | 1 | Finger input.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
 | Pen | 2 | Stylus input.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
-| MOUSE<sup>12+</sup> | 7 | Mouse input.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br>**Model constraint:** This API can be used only in the stage model. |
-| TOUCHPAD<sup>12+</sup> | 9 | Touchpad input. A single-finger input on the touchpad is treated as a mouse input operation.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br>**Model constraint:** This API can be used only in the stage model. |
-| JOYSTICK<sup>12+</sup> | 10 | Joystick input.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br>**Model constraint:** This API can be used only in the stage model. |
+| MOUSE<sup>12+</sup> | 7 | Mouse input.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br>**Model restriction:** This API can be used only in the stage model. |
+| TOUCHPAD<sup>12+</sup> | 9 | Touchpad input. A single-finger input on the touchpad is treated as a mouse input operation.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br>**Model restriction:** This API can be used only in the stage model. |
+| JOYSTICK<sup>12+</sup> | 10 | Joystick input.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br>**Model restriction:** This API can be used only in the stage model. |
 
 ## Examples
 

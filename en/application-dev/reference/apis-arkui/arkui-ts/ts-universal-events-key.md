@@ -1,11 +1,11 @@
 # Key Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-09-02T12:28:10.605Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:55:29.063Z pushedAt=2026-11-13T01:06:00.166Z nl=1 -->
 
 A key event is an event triggered when a component interacts with key input devices such as a physical keyboard or remote control. It applies to all focusable components, for example, **Button**. For components that are not focusable by default, such as **Text** and **Image**, set the [focusable](ts-universal-attributes-focus.md#focusable) attribute to **true** before using key events.
 
@@ -238,6 +238,7 @@ struct KeyEventExample {
   build() {
     Column({ space: 10 }) {
       Button('KeyEvent')
+        .defaultFocus(true)
         .onKeyEvent((event?: KeyEvent) => {
           if (event) {
             if (event.type === KeyType.Down) {
@@ -282,11 +283,12 @@ struct PreImeEventExample {
       Search({
         placeholder: 'Search...'
       })
+        .defaultFocus(true)
         .width('80%')
         .height('40vp')
         .border({ radius: '20vp' })
         .onKeyPreIme((event: KeyEvent) => {
-          // Prevent the left arrow key from working.
+          // Disable the left arrow key.
           if (event.keyCode === KeyCode.KEYCODE_DPAD_LEFT) {
             return true;
           }

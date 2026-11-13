@@ -5,7 +5,7 @@
 <!--Designer: @Hu_ZeQi-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=0db97a5b7fb8643c5f5eff515ac260c481581357 translatedAt=2026-09-01T11:47:28.347Z -->
+<!-- md-trans-meta sourceCommit=f4d85c5ccaaf75c42bd1b40efa00b5d3993e7161 translatedAt=2026-11-03T03:06:35.676Z pushedAt=2026-11-13T01:06:00.049Z nl=1 -->
 
 The **Indicator** component provides two types of navigation indicators: dot indicators and digit indicators.
 
@@ -50,7 +50,7 @@ A constructor used to create an **Indicator** component. You can optionally pass
 
 ## Attributes
 
-In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported.
+In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported. 
 
 ### style
 
@@ -64,7 +64,7 @@ Sets the style of the navigation indicator.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -72,7 +72,7 @@ Sets the style of the navigation indicator.
 
 > **NOTE**
 >
-> When the **indicatorStyle** type is **DotIndicator** and the component is not bound to a **Swiper** component, [maxDisplayCount](ts-container-swiper.md#maxdisplaycount12) does not take effect before API version 26.0.1, and takes effect from API version 26.0.1.
+> When the **indicatorStyle** type is **DotIndicator** and the component is not bound to **Swiper**, [maxDisplayCount](ts-container-swiper.md#maxdisplaycount12) does not take effect before API version 26.0.1, and takes effect from API version 26.0.1.
 
 ### count
 
@@ -88,7 +88,7 @@ When the **Indicator** component is bound to a **Swiper** component, the count i
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                            |
 | ------ | ------ | ---- | ------------------------------------------------ |
@@ -108,7 +108,7 @@ This attribute does not take effect when the **Indicator** component is bound to
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                            |
 | ------ | ------ | ---- | ------------------------------------------------ |
@@ -128,7 +128,7 @@ This attribute does not take effect when the **Indicator** component is bound to
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
@@ -148,7 +148,7 @@ This attribute does not take effect when the **Indicator** component is bound to
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
@@ -170,7 +170,7 @@ Triggered when the currently selected navigation index changes. The callback pro
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |

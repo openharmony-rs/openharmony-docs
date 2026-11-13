@@ -1,22 +1,21 @@
 # OffscreenCanvas
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=0ac6eaf21c519d27b118617e6aaa0ba03069a649 translatedAt=2026-07-30T02:35:51.899Z pushedAt=2026-08-01T06:42:55.883Z -->
+<!-- md-trans-meta sourceCommit=10d9d950521b56d45a248e72cf3829c88f761599 translatedAt=2026-11-03T01:53:48.263Z pushedAt=2026-11-13T01:05:59.917Z nl=1 -->
 
 The **OffscreenCanvas** component is used to draw custom graphics.
 
 When the [Canvas](ts-components-canvas-canvas.md) component or [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) object is used, rendering, animation, and user interaction usually occur on the main thread of the application. Calculations related to canvas animation and rendering may affect application performance. **OffscreenCanvas** allows for rendering off the screen. This means that some tasks can be run in a separate thread to reduce the load on the main thread.
 
-> **NOTE**
+> **NOTE** 
 >
-> This component is supported since API version 8. Updates to new APIs in later versions are marked with a superscript to indicate the initial API version of the API.
+> This component is supported since API version 8. Newly added APIs in later versions are marked with a superscript to indicate their earliest version.
 >
-> **OffscreenCanvas** cannot be used in **ServiceExtensionAbility**. For offscreen drawing in **ServiceExtensionAbility**, use the [drawing module](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md) instead.
+> **OffscreenCanvas** depends on the UI context. It cannot be used when the UI context is not loaded (for example, in scenarios such as **ServiceExtensionAbility** and MDM enterprise device management services that may have no UI page, note this constraint). For such scenarios without a UI context, use the [drawing module](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md) for offscreen drawing.
 
 ## Child Components
 
@@ -298,6 +297,7 @@ struct OffscreenCanvasExamplePage {
 
 ![en-us_image_0000001194032666](figures/offscreen_canvas.png)
 
+
 ## Concurrent Thread Drawing
 
 Since API version 11, when an app creates a [worker thread](../../../arkts-utils/worker-introduction.md), it can use **postMessage** to pass the **OffscreenCanvas** instance to the worker for drawing, and use **onmessage** to receive the **ImageBitmap** object sent by the worker thread for display.
@@ -410,3 +410,4 @@ workerPort.onmessage = (e: MessageEvents) => {
 ```
 
 ![offscreenCanvasPostMessage](figures/offscreen_canvas_postMessage.png)
+

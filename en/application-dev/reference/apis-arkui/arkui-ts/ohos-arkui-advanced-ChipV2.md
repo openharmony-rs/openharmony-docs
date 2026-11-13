@@ -1,12 +1,11 @@
 # ChipV2
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @song-song-song-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:24:12.300Z pushedAt=2026-07-24T01:47:23.171Z -->
+<!-- md-trans-meta sourceCommit=e24d0625b7ede5731df2b467389dcb20efd4f8bf translatedAt=2026-11-03T01:25:00.160Z pushedAt=2026-11-13T01:05:59.849Z nl=1 -->
 
 The **ChipV2** component is a chip component that delivers rich styles and interaction capabilities. It provides features such as prefix icons, suffix icons, active states, and close buttons, supports the symbol and image icon types, and offers comprehensive accessibility capabilities. This component is suitable for scenarios such as search history, email recipient lists, tag selection, filters, and contact display.
 
@@ -14,8 +13,9 @@ This component is implemented based on [state management V2](../../../ui/state-m
 
 > **NOTE**
 >
-> The APIs of this module can only be used in the stage model.
+> - This module's APIs can only be used in the stage model.
 >
+> - If [universal attributes](ts-component-general-attributes.md) or [universal events](ts-component-general-events.md) are set for **ChipV2**, the compilation toolchain will generate an additional node **\_\_Common\_\_** and mount the universal attributes or universal events on **\_\_Common\_\_**, rather than directly applying them to **ChipV2** itself. This may cause the set universal attributes or universal events to not take effect or behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events on **ChipV2**.
 
 **Since:** 26.0.0
 
@@ -93,7 +93,7 @@ Defines the style and specific style parameters of the **ChipV2** component.
 
 **Device behavior differences:** On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-| Name            | Type                                                         | Read-only | Optional | Description                                                         |
+| Name            | Type                                                         | Read-Only | Optional | Description                                                         |
 | --------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | label            | [ChipV2Label](#chipv2label) | No   | No  | Text of **ChipV2**.<br>**Decorator:** @Trace |
 | prefixIcon      | [ChipV2Icon](#chipv2icon)                      | No  | Yes  | Prefix icon of **ChipV2**.<br>Default value: no prefix icon is displayed.<br>If the value is **undefined**, the default value is used.<br>For the symbol icon, the default **fontColor** values are as follows: **normalFontColor**: `[$r('sys.color.chip_usually_icon_color')]`, **activatedFontColor**: `[$r('sys.color.chip_active_icon_color')]`. The default **fontSize** is 16.<br>For the image icon, the default **fillColor** is `$r('sys.color.chip_usually_icon_color')`, and the default **activatedFillColor** is `$r('sys.color.chip_active_icon_color')`. The color parsing of **fillColor** and **activatedFillColor** is consistent with that of the **Image** component. The **fillColor** and **activatedFillColor** attributes take effect only when the image format is SVG; for non-SVG images, the default values are not applied.<br>**Decorator:** @Trace |
@@ -114,8 +114,8 @@ Defines the style and specific style parameters of the **ChipV2** component.
 | minFontScale | number \| [Resource](ts-types.md#resource) | No | Yes | Minimum font scale factor for the text and icons of the **ChipV2** component.<br>Value range: [0, 1]<br>If the set value is less than 0, the value **0** is used. If the set value is greater than 1, the value **1** is used. Abnormal values do not take effect by default.<br>Default value: **1**<br>If the value is **undefined**, the default value is used.<br>**Decorator:** @Trace |
 | padding | [LocalizedPadding](ts-types.md#localizedpadding12) | No | Yes | Padding of the **ChipV2** component.<br>Default values:<br>- When **size** is **ChipV2Size.SMALL** and **activated** is **true**, the default value is: `{ start: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'), end: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}`.<br>- When **size** is **ChipV2Size.SMALL** and **activated** is **false**, the default value is: `{ start: LengthMetrics.resource('sys.float.chip_small_text_padding'), end: LengthMetrics.resource('sys.float.chip_small_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}`.<br>- When **size** is not **ChipV2Size.SMALL** and **activated** is **true**, the default value is: `{ start: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'), end: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}`.<br>- When **size** is not **ChipV2Size.SMALL** and **activated** is **false**, the default value is: `{ start: LengthMetrics.resource('sys.float.chip_normal_text_padding'), end: LengthMetrics.resource('sys.float.chip_normal_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}`.<br>If the value is **undefined**, the default value is used.<br>**Decorator:** @Trace |
 | fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | Yes | Uniformly sets the font size of the text and icons of the **ChipV2** component. Percentage values are not supported. If a percentage value is passed, the default value is used.<br>The priority of this **fontSize** is lower than that of the **fontSize** attributes in **prefixIcon**, **label**, **suffixIcon**, and **closeIcon**.<br>Default values:<br>- When **size** is **ChipV2Size.SMALL**, the default text value is `$r('sys.float.chip_small_font_size')`, and the default icon value is `$r('sys.float.chip_small_icon_size')`.<br>- In other cases, the default text value is `$r('sys.float.chip_normal_font_size')`, and the default icon value is `$r('sys.float.chip_normal_icon_size')`.<br>Unit: fp<br>If the value is **undefined**, the default value is used.<br>**Decorator:** @Trace |
-| backgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the component. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, meaning no material style is applied.<br>**Decorator:** @Trace |
-| activatedBackgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the activated component. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, meaning no material style is applied.<br>**Decorator:** @Trace |
+| backgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the component. The immersive light effect takes effect only when the component is placed in the title bar of **Navigation** or **NavDestination**, or in the bottom **TabBar** of horizontal **Tabs**. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, meaning no material style is applied.<br>**Decorator:** @Trace |
+| activatedBackgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the component in the active state. The immersive light effect takes effect only when the component is placed in the title bar of **Navigation** or **NavDestination**, or in the bottom **TabBar** of horizontal **Tabs**. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, meaning no material style is applied.<br>**Decorator:** @Trace |
 | onClose         | [VoidCallback](ts-types.md#voidcallback12)  | No  | Yes  | Callback for the default close icon tap event.<br>When **allowClose** is **true** and no value is passed to **suffixIcon**, this callback is invoked when the close icon is tapped.<br>Default value: The callback is not executed.<br>If the value is **undefined**, the default value is used. |
 | onClicked     | [Callback](ts-types.md#callback12)\<void> | No  | Yes  | Callback for the **ChipV2** tap event.<br>When **enabled** is **true**, tapping **ChipV2** triggers the tap event. When **enabled** is **false**, the tap event is not triggered.<br>Default value: The callback is not executed.<br>If the value is **undefined**, the default value is used. |
 
@@ -155,7 +155,7 @@ Defines the configuration API of **ChipV2** options.
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-| Name | Type | Read-only | Optional | Description |
+| Name | Type | Read-Only | Optional | Description |
 | ---- | ---- | --- | ---- | ---- |
 | label | [ChipV2Label](#chipv2label) | No | No | Text of **ChipV2**. |
 | prefixIcon | [ChipV2Icon](#chipv2icon) | No | Yes | Prefix icon of **ChipV2**.<br>Default value: no prefix icon is displayed.<br>If the value is **undefined**, the default value is used. |
@@ -176,8 +176,8 @@ Defines the configuration API of **ChipV2** options.
 | minFontScale | number \| [Resource](ts-types.md#resource) | No | Yes | Minimum font scale factor for the text and icons of the **ChipV2** component.<br>Value range: [0, 1]<br>If the set value is less than 0, the value **0** is used. If the set value is greater than 1, the value **1** is used. Abnormal values do not take effect by default.<br>Default value: **1**<br>If the value is **undefined**, the default value is used. |
 | padding | [LocalizedPadding](ts-types.md#localizedpadding12) | No | Yes | Padding of the **ChipV2** component.<br>Default values:<br>- When **size** is **ChipV2Size.SMALL** and **activated** is **true**, the default value is: `{ start: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'), end: LengthMetrics.resource('sys.float.chip_activated_small_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}`.<br>- When **size** is **ChipV2Size.SMALL** and **activated** is **false**, the default value is: `{ start: LengthMetrics.resource('sys.float.chip_small_text_padding'), end: LengthMetrics.resource('sys.float.chip_small_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}`.<br>- When **size** is not **ChipV2Size.SMALL** and **activated** is **true**, the default value is: `{ start: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'), end: LengthMetrics.resource('sys.float.chip_activated_normal_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}`.<br>- When **size** is not **ChipV2Size.SMALL** and **activated** is **false**, the default value is: `{ start: LengthMetrics.resource('sys.float.chip_normal_text_padding'), end: LengthMetrics.resource('sys.float.chip_normal_text_padding'), top: LengthMetrics.vp(4), bottom: LengthMetrics.vp(4)}`.<br>If the value is **undefined**, the default value is used. |
 | fontSize | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | Yes | Uniformly sets the font size of the text and icons of the **ChipV2** component. Percentage values are not supported. If a percentage value is passed, the default value is used.<br>The priority of this **fontSize** is lower than that of the **fontSize** attributes in **prefixIcon**, **label**, **suffixIcon**, and **closeIcon**.<br>Default values:<br>- When **size** is **ChipV2Size.SMALL**, the default text value is `$r('sys.float.chip_small_font_size')`, and the default icon value is `$r('sys.float.chip_small_icon_size')`.<br>- In other cases, the default text value is `$r('sys.float.chip_normal_font_size')`, and the default icon value is `$r('sys.float.chip_normal_icon_size')`.<br>Unit: fp<br>If the value is **undefined**, the default value is used. |
-| backgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the component. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, meaning no material style is applied. |
-| activatedBackgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the activated component. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, meaning no material style is applied. |
+| backgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the component. The immersive light effect takes effect only when the component is placed in the title bar of **Navigation** or **NavDestination**, or in the bottom **TabBar** of horizontal **Tabs**. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, meaning no material style is applied. |
+| activatedBackgroundSystemMaterial | uiMaterial.[Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the component in the active state. The immersive light effect takes effect only when the component is placed in the title bar of **Navigation** or **NavDestination**, or in the bottom **TabBar** of horizontal **Tabs**. Different materials have different effects, which can affect the component's [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [borderColor](ts-universal-attributes-border.md#bordercolor), [borderWidth](ts-universal-attributes-border.md#borderwidth), [shadow](ts-universal-attributes-image-effect.md#shadow) effect, and [materialFilter](ts-universal-attributes-filter-effect.md#materialfilter23) effect.<br>Default value: **undefined**, meaning no material style is applied. |
 | onClose | [VoidCallback](ts-types.md#voidcallback12) | No | Yes | Callback for the default close icon tap event.<br>When **allowClose** is **true** and no value is passed to **suffixIcon**, this callback is invoked when the close icon is tapped.<br>Default value: The callback is not executed.<br>If the value is **undefined**, the default value is used. |
 | onClicked | [Callback](ts-types.md#callback12)\<void> | No | Yes | Callback for the **ChipV2** tap event.<br>When **enabled** is **true**, tapping **ChipV2** triggers the tap event. When **enabled** is **false**, the tap event is not triggered.<br>Default value: The callback is not executed.<br>If the value is **undefined**, the default value is used. |
 
@@ -499,11 +499,11 @@ This API inherits from [ChipV2SymbolIcon](#chipv2symbolicon).
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-| Name | Type | Read-only | Optional | Description |
+| Name | Type | Read-Only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
 | normalAccessibility | [ChipV2Accessibility](#chipv2accessibility) | No | Yes | Accessibility attribute in the inactive state.<br>Default value: **undefined**, meaning no content is read aloud.<br>**Decorator:** @Trace |
 | activatedAccessibility | [ChipV2Accessibility](#chipv2accessibility) | No | Yes | Accessibility attribute in the active state.<br>Default value: **undefined**, meaning no content is read aloud.<br>**Decorator:** @Trace |
-| action | [VoidCallback](ts-types.md#voidcallback12) | No | Yes | Callback for the suffix icon tap event, which is triggered when the suffix icon is tapped.<br>Default value: no suffix icon event is set.<br>When the value is **undefined**, the default value is used.<br>**Decorator:** @Trace |
+| action | [VoidCallback](ts-types.md#voidcallback12) | No | Yes | Callback for the suffix icon click event. Pass in this callback when you need to bind a click event to the suffix icon and perform custom operations (for example, trigger a specific function or open a dialog box). This callback is invoked when the suffix icon is clicked.<br>Default value: **undefined**, which means no suffix icon event is set. If this parameter is not passed in or undefined is passed in, clicking the suffix icon triggers no custom response.<br>**Decorator type:** @Trace |
 
 ### constructor
 
@@ -717,12 +717,12 @@ This API inherits from [ChipV2ImageIcon](#chipv2imageicon).
 
 **Device behavior differences:** On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-| Name | Type | Read-only | Optional | Description |
+| Name | Type | Read-Only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
 | accessibilityLevel | string | No | Yes | Accessibility level. This attribute controls whether the suffix icon can be recognized by accessibility services.<br>Supported values:<br>**"auto"**: The attribute value of the current component is converted to **"yes"**.<br>**"yes"**: The current component can be recognized by accessibility services.<br>**"no"**: The current component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: The current component and all its child components cannot be recognized by accessibility services.<br>Default value: **"auto"**<br>When the value is **undefined**, the default value is used.<br>**Decorator:** @Trace |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text. When a component has no text attribute, the screen reader does not read it aloud when this component is selected, making it difficult for users to identify the currently selected component. You can set accessibility text for such components so that the screen reader reads the text aloud, helping users identify the selected component.<br>Default value: empty string.<br>When the value is **undefined**, the default value is used.<br>**Decorator:** @Trace |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description. This description is used to explain the current component to users in detail. You should provide comprehensive text descriptions to help users understand the actions to be performed and their consequences, especially when these consequences cannot be directly inferred from the component's attributes and accessibility text. When a component that is selected has both a text attribute and an accessibility description attribute, the system first reads the component's text attribute, followed by the accessibility description.<br>Default value: empty string.<br>When the value is **undefined**, the default value is used.<br>**Decorator:** @Trace |
-| action | [VoidCallback](ts-types.md#voidcallback12) | No | Yes | Callback for the suffix icon tap event. This callback is invoked when the suffix icon is tapped.<br>Default value: no suffix icon event is set.<br>When the value is **undefined**, the default value is used.<br>**Decorator:** @Trace |
+| action | [VoidCallback](ts-types.md#voidcallback12) | No | Yes | Callback invoked when the suffix icon is clicked. Pass this callback when you need to bind a click event to the suffix icon and perform a custom operation (for example, trigger a specific function or open a dialog box). This callback is invoked when the suffix icon is clicked.<br>Default value: **undefined**, which means no suffix icon event is set. If this parameter is not passed or **undefined** is passed, no custom response is triggered when the suffix icon is clicked.<br>**Decorator type:** @Trace |
 
 ### constructor
 
@@ -957,7 +957,7 @@ Defines the selected state types that can be specified for **ChipV2**. This API 
 | CHECKED | 1 | Check type. The component reports its selected state to the accessibility service through the [accessibilityChecked](ts-universal-attributes-accessibility.md#accessibilitychecked13) attribute. This is suitable for multi-select scenarios, such as tag filtering and attribute selection.|
 | SELECTED | 2 | Select type. The component reports its selected state to the accessibility service through the [accessibilitySelected](ts-universal-attributes-accessibility.md#accessibilityselected13) attribute. This is suitable for scenarios indicating the currently selected item, such as navigation bar tabs and single-select list items.|
 
-## Example
+## Examples
 
 ### Example 1: Setting a Custom Icon
 
@@ -1015,7 +1015,7 @@ struct Index {
 }
 ```
 
-![](figures/chipv2_1.png)
+<!--Del--> <!--DelEnd-->
 
 ### Example 2: Setting the Active State of ChipV2
 
@@ -1080,7 +1080,7 @@ struct Index {
 }
 ```
 
-![](figures/chipv2_2.gif)
+<!--Del--> <!--DelEnd-->
 
 ### Example 3: Setting a Symbol Icon
 
@@ -1139,7 +1139,7 @@ struct Index {
 }
 ```
 
-![](figures/chipv2_3.gif)
+<!--Del--> <!--DelEnd-->
 
 ### Example 4: Listening for Internal Attribute Changes of Object-Type Attributes in ChipV2Options
 
@@ -1182,5 +1182,63 @@ struct Index {
 }
 ```
 
-![chipv2-sample4](figures/chipv2-make-observed.gif)
-<!--no_check-->
+<!--Del--> <!--DelEnd-->
+
+### Example 5: Setting System Material Style
+
+This example sets the backgroundSystemMaterial attribute of [ChipV2Options](#chipv2options) to implement the system material style effect of [ChipV2](#chipv2-1), including the immersive material and automatic color inversion features. The component must be placed in the title bar of Navigation for the immersive light effect to take effect.
+
+Since API version 26.0.0, the **backgroundSystemMaterial** attribute has been added to [ChipV2Options](#chipv2options).
+
+```ts
+import { ChipV2, ChipV2Options, ChipV2Label, LengthMetrics, ColorMetrics, UIUtils, uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local chipV2Options: ChipV2Options = new ChipV2Options({
+    // Set the text attribute.
+    label: new ChipV2Label({ text: 'Chip' }),
+    // Use UIUtils.makeObserved to wrap padding so that the internal properties start and end can be observed.
+    padding: UIUtils.makeObserved({ start: LengthMetrics.fp(20), end: LengthMetrics.fp(20) }),
+    backgroundSystemMaterial: new uiMaterial.ImmersiveMaterial({
+      style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+      colorInvert: true
+    }),
+    // backgroundColor: ColorMetrics.resourceColor($r('sys.color.ohos_id_color_button_normal')),
+    borderRadius: LengthMetrics.resource($r('sys.float.ohos_id_corner_radius_button')),
+    enabled: true,
+  });
+  @Local currentPadding: number = 20;
+
+  @Builder
+  NavigationTitle() {
+    Row({ space: 10 }) {
+      ChipV2({ chipV2Options: this.chipV2Options })
+      ChipV2({ chipV2Options: this.chipV2Options })
+    }
+    .linearGradient({
+      angle: 90, // Gradient angle. 90 degrees means from left to right.
+      colors: [
+        ['#FF9A9E', 0.0], // Start color and position (0.0 indicates the start point).
+        ['#FECFEF', 0.5], // Middle color and position.
+        ['#3B324C', 1.0] // End color and position (1.0 indicates the end point).
+      ]
+    })
+    .padding(12)
+    .width('100%')
+  }
+  build() {
+    Column() {
+      Navigation() {
+        // Page content.
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
+  }
+}
+```
+
+The illustration for this example shows the high-performance effect on a high-computing-power device.
+
+<!--Del--> <!--DelEnd-->

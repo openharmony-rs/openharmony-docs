@@ -1,11 +1,11 @@
 # Drag Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8de0c2610841efa4333c462e6a318256c709bce8 translatedAt=2026-09-07T08:08:17.412Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:53:53.749Z pushedAt=2026-11-13T01:06:00.162Z nl=1 -->
 
 A drag event is a series of events triggered when a user drags an object (such as a file, control, or element) in the user interface. These events allow developers to customize drag behavior and implement functions such as drag-and-drop and position adjustment.
 
@@ -632,7 +632,7 @@ Sets the execution function of the custom drop animation, which is effective onl
 
 **Parameters**
 
-| Name    | Type  | Required | Description      |
+| Name    | Type  | Mandatory | Description      |
 | ------ | ------ | --- | --------- |
 | customDropAnimation | [Callback\<void\>](../../../reference/apis-basic-services-kit/js-apis-base.md#callback)  | Yes | Implements the custom drop animation in this callback function.<br> **Note:** <br>1. This API is effective only when used in the onDrop callback.<br> 2. Set useCustomDropAnimation to true before using this API; otherwise, this API does not take effect.<br> 3. Do not implement logic unrelated to the animation in the animation callback to avoid affecting execution efficiency.|
 
@@ -658,7 +658,7 @@ Gets the ID of the screen where the current drag event occurs. This API can be u
 
 getDragSource(): string
 
-Obtains the package name of the drag initiator. This API can be used in cross-application drag scenarios to identify the source application of the data, and to perform data reception verification or service processing based on the source application.
+Obtains the bundle name of the drag initiator. This API can be used in cross-application drag scenarios to identify the source application of the data, and to perform data reception verification or service processing based on the source application.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -790,7 +790,7 @@ Enumerates the results of drag operations and the drop-enabled states of compone
 
 | Name   | Value | Description |
 | ----- | -- | --------------- |
-| UNKNOWN<sup>24+</sup> | -1 |The drag result has not been set. Used in [onDragStart](#ondragstart), [onDragEnter](#ondragenter), [onDragMove](#ondragmove), [onDragLeave](#ondragleave), and [onDrop](#ondrop).<br>**Model constraint:** This API can be used only in the stage model.<br>**Atomic service API:** This API is supported in atomic services since API version 24. |
+| UNKNOWN<sup>24+</sup> | -1 |The drag result has not been set. Used in [onDragStart](#ondragstart), [onDragEnter](#ondragenter), [onDragMove](#ondragmove), [onDragLeave](#ondragleave), and [onDrop](#ondrop).<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API is supported in atomic services since API version 24. |
 | DRAG_SUCCESSFUL | 0 |Drag succeeded. Used in [onDrop](#ondrop).<br>**Atomic service API:** This API is supported in atomic services since API version 11. |
 | DRAG_FAILED | 1 |Drag failed. Used in [onDrop](#ondrop).<br>**Atomic service API:** This API is supported in atomic services since API version 11. |
 | DRAG_CANCELED | 2 |Drag canceled. Used in [onDrop](#ondrop).<br>**Atomic service API:** This API is supported in atomic services since API version 11. |
@@ -1323,7 +1323,7 @@ struct ImageExample {
                       // The type matches. Record the data URI.
                       let image = arr[0] as unifiedDataChannel.Image;
                       this.uri = image.imageUri;
-                      this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+                      this.blockArr.splice(extraParams ? JSON.parse(extraParams).insertIndex : this.blockArr.length, 0, this.uri);
                     }
                   } else {
                     console.info('dragData arr is null');
@@ -1536,7 +1536,7 @@ struct Index {
 
 ### Example 5 (Obtaining the Package Name and Checking Whether It Is a Cross-Device Drag)
 
-Starting from API version 20, Example 5 shows how to obtain a drag event through the onDragXXX API, call the [getDragSource](#getdragsource20) API of the drag event to obtain the package name, and call the isRemote API to determine whether it is a cross-device drag.
+Starting from API version 20, Example 5 shows how to obtain a drag event through the onDragXXX API, call the [getDragSource](#getdragsource20) API of the drag event to obtain the bundle name, and call the isRemote API to determine whether it is a cross-device drag.
 
 ```ts
 @Entry
@@ -1804,8 +1804,10 @@ struct VideoExample {
                 if (dragData != null) {
                   let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
                   if (arr.length > 0) {
-                    if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.VIDEO) {
-                      this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+                    if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.FILE_URI) {
+                      let fileUri = arr[0].getEntry(uniformTypeDescriptor.UniformDataType.FILE_URI) as uniformDataStruct.FileUri;
+                      this.blockArr.splice(extraParams ? JSON.parse(extraParams).insertIndex : this.blockArr.length, 0, fileUri.oriUri);
+
                     }
                   } else {
                     console.info('dragData arr is null');
@@ -1816,7 +1818,7 @@ struct VideoExample {
                 console.info(`percentage: ${progress.progress}`);
               };
             let info: unifiedDataChannel.DataLoadInfo =
-              { types: new Set([uniformTypeDescriptor.UniformDataType.VIDEO]), recordCount: 100 };
+              { types: new Set([uniformTypeDescriptor.UniformDataType.FILE_URI]), recordCount: 1 };
             let options: DataSyncOptions = {
               destUri: destUri,
               fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,

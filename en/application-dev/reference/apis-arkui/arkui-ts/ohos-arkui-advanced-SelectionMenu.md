@@ -1,12 +1,12 @@
 # SelectionMenu
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=976793f1477a1ea1d1147f29cf593c7a491f596e translatedAt=2026-08-24T06:50:45.518Z pushedAt=2026-08-25T07:34:38.266Z -->
+<!-- md-trans-meta sourceCommit=34fe1d6e01c790d69a02ff62c7235fcb9e5f3dd8 translatedAt=2026-11-03T01:34:21.387Z pushedAt=2026-11-13T01:05:59.874Z nl=1 -->
+
 
 The text selection menu is used for the [RichEditor](ts-basic-components-richeditor.md) component through [bindSelectionMenu](ts-basic-components-richeditor.md#bindselectionmenu) or the [Text](ts-basic-components-text.md) component through [bindSelectionMenu](ts-basic-components-text.md#bindselectionmenu11) to bind a custom text selection menu. It supports two types: edit menu and extended dropdown menu. Built-in functions such as copy, paste, cut, and select all can be implemented through configuration, and extended functions can be implemented through custom menu items and event callbacks. It is recommended to trigger the menu by right-clicking or selecting text with the mouse. It cannot be used as a standalone component. It is suitable for rich text editing scenarios, providing users with convenient text operation access and improving text editing efficiency.
 
@@ -15,6 +15,7 @@ The text selection menu is used for the [RichEditor](ts-basic-components-richedi
 > - This component is supported since API version 11. New APIs added in later versions will be marked with a superscript to indicate their earliest API version.
 >
 > - The APIs of this module can be used only in the stage model.
+
 
 ## Modules to Import
 
@@ -55,12 +56,11 @@ Describes the optional menu type items and their configuration parameters for **
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
-
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | editorMenuOptions | Array&lt;[EditorMenuOptions](#editormenuoptions)&gt; | No | Yes | Edit menu.<br>When **editorMenuOptions** is not configured, the edit menu is not displayed.<br>When both **action** and **builder** in **EditorMenuOptions** are configured, tapping the icon triggers both responses.<br>Tapping an edit menu icon does not close the entire menu by default. The app can configure **RichEditorController**'s **closeSelectionMenu** through the **action** API to actively close the menu.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | expandedMenuOptions | Array&lt;[ExpandedMenuOptions](#expandedmenuoptions)&gt; | No | Yes | Extended dropdown menu.<br>When expandedMenuOptions is empty, there is no More button and the extended dropdown menu is not displayed.<br>When expandedMenuOptions is not empty, the More button is displayed, and the configured menu items are collapsed in the More button. Tap the More button to display them.<br>When controller is empty, the More button is not displayed. If expandedMenuOptions is not empty, the items are displayed in the dropdown menu.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| controller | [RichEditorController](ts-basic-components-richeditor.md#richeditorcontroller) | No | Yes | When the rich text controller is not empty, the default system menu (including cut, copy, paste, and other options) is displayed and the default menu functions are built-in.<br>When controller is empty, the More button is not displayed. If expandedMenuOptions is not empty, the items are displayed in the dropdown menu.<br>By default, the system only supports copying and pasting rich text content. For mixed text and images, the app needs to customize the onCopy and onPaste APIs. When the app configures the onCopy \| onPaste APIs, the system menu's default copy and paste become invalid, and the app's custom functions are called instead.<br>**NOTE**<br>After tapping the built-in copy option in the custom text selection menu, the custom menu disappears and the selected text highlight is retained.<br>After tapping the built-in select all option in the custom text selection menu, the custom menu disappears and all text is selected and highlighted.<br>After tapping the built-in paste option in the custom text selection menu, pasting in a blank area or replacing selected text with paste both retain the style of the copied text.<br>When the copyOptions attribute of the rich text component [RichEditor](ts-basic-components-richeditor.md) is set to `CopyOptions.None`, the built-in copy and cut functions are not restricted.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| controller | [RichEditorController](ts-basic-components-richeditor.md#richeditorcontroller) | No | Yes | When the rich text controller is not empty, the default system menu (including cut, copy, paste, and other parts) is displayed, and the default menu functions are built in.<br>When **controller** is empty, the More button is not displayed. If the **expandedMenuOptions** parameter is not empty, it is displayed in the dropdown menu.<br>The system only supports copying and pasting rich text content by default. For mixed text and image content, the application needs to customize the **onCopy** and **onPaste** APIs. When the application configures the **onCopy** \| **onPaste** APIs by itself, the default copy and paste functions of the system menu become invalid, and the application's custom functions are called. <br>**NOTE**<br> After the built-in copy option of the custom text selection menu is tapped, the custom menu disappears and the highlight of the selected text is retained.<br> After the built-in select-all option of the custom text selection menu is tapped, the custom menu disappears and all text is selected and highlighted.<br> After the built-in paste option of the custom text selection menu is tapped, pasting in a blank area or replacing selected text with pasted content retains the style of the copied text.<br> When the **copyOptions** attribute of the rich text component [RichEditor](ts-basic-components-richeditor.md) is set to `CopyOptions.None`, the built-in copy and cut functions are restricted.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services.|
 | onCopy | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | No | Yes | Event callback that replaces the copy option of the built-in system menu.<br>Prerequisite: The controller parameter must be provided. The built-in copy function can be replaced only when the system default menu exists.<br>**NOTE**<br>event is the return information.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | onPaste | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | No | Yes | Event callback that replaces the paste option of the built-in system menu.<br>Prerequisite: The controller parameter must be provided. The built-in paste function can be replaced only when the system default menu exists.<br>**NOTE**<br>event is the return information.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | onCut | (event?: [EditorEventInfo](#editoreventinfo))&nbsp;=&gt;&nbsp;void | No | Yes | Event callback that replaces the cut option of the built-in system menu.<br>Prerequisite: The controller parameter must be provided. The built-in cut function can be replaced only when the system default menu exists.<br>**NOTE**<br>event is the return information.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
@@ -77,10 +77,11 @@ Describes the edit menu options.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| icon | [ResourceStr](ts-types.md#resourcestr) | No | No | Icon resource of the edit menu item. If symbolStyle is also set, this attribute does not take effect.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| builder | ()&nbsp;=&gt;&nbsp;void | No | Yes | Displays a user-defined component when tapped. The custom component is used with @Builder during construction. When not set, no custom component is displayed.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| icon | [ResourceStr](ts-types.md#resourcestr) | No | No | Icon resource of the edit menu item. If **symbolStyle** is also set, this attribute does not take effect.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| builder | ()&nbsp;=&gt;&nbsp;void | No | Yes | Displays a custom component when tapped. The custom component is used with **@Builder** during construction. When not set, no custom component is displayed.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | action | ()&nbsp;=&gt;&nbsp;void | No | Yes | Event callback for tapping a menu item. When both builder and action are configured, tapping the icon triggers both. When not set, no response occurs on tap.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-text-style.md#symbolglyphmodifier12) | No | Yes | Symbol icon resource. Pass this parameter when a system Symbol icon (supporting advanced features such as dynamic color and multi-color) is needed. When not passed, the icon resource specified by the icon attribute is used. Has higher priority than icon. When both are set, symbolStyle is used preferentially.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
+| symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-text-style.md#symbolglyphmodifier12) | No | Yes | Symbol icon resource. Pass this parameter when a system Symbol icon (supporting advanced features such as dynamic colors and multicolor) is required. If this parameter is not passed, the icon resource specified by the **icon** attribute is used. This parameter takes precedence over **icon**. When both are set, **symbolStyle** is used first.<br>**Atomic service API:** This API is supported in atomic services since API version 18. |
+
 
 ## ExpandedMenuOptions
 
@@ -117,12 +118,10 @@ Provides the information about the selected content.
 The [universal attributes](ts-component-general-attributes.md) are not supported. The default width is 224 vp, and the height is adaptive.
 
 ## Events
-
 The [universal events](ts-component-general-events.md) are not supported.
 
-## Example
-
-### Example 1: Binding Context Menus on Selection with Different Trigger Methods
+## Examples
+### Example 1: Binding Custom Text Selection Menus with Different Trigger Methods to RichEditor
 
 This example demonstrates the effects of a custom context menu on selection bound to text with different triggering modes.
 
@@ -452,7 +451,6 @@ struct Index {
   }
 }
 ```
-
 > **NOTE**
 >
 > The system does not currently have built-in icons for bold, italic, and other styles. The sample code uses local resource icons. When using this feature, replace the icon resources in **editorMenuOptions** with your own.
@@ -463,7 +461,7 @@ struct Index {
 
 ### Example 2: Setting the Symbol Icon
 
-Starting from API version 18, this example demonstrates custom Symbol type icons by setting the **symbolStyle** property of [EditorMenuOptions](#editormenuoptions).
+Since API version 18, this example demonstrates how to use system Symbol icons by setting the **symbolStyle** attribute of [EditorMenuOptions](#editormenuoptions).
 
 ```ts
 import {
@@ -802,14 +800,14 @@ struct Index {
 
 This example demonstrates the ultra-thin background material by setting the **backgroundSystemMaterial** property of [SelectionMenuOptions](#selectionmenuoptions).
 
+The illustration for this example shows the strong effect on a high-performance device. The immersive light effect of the component is adaptively adjusted based on the device computing power and the immersive light effect set by the user in the system, so you do not need to perform additional adaptation.
+
 Starting from API version 26.0.0, the **backgroundSystemMaterial** property is added to **SelectionMenuOptions**.
 
 ```ts
 import {
-  SelectionMenu, EditorEventInfo, SelectionMenuOptions
+  SelectionMenu, EditorEventInfo, SelectionMenuOptions, uiMaterial
 } from '@kit.ArkUI';
-
-import { uiMaterial } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -909,5 +907,11 @@ struct Index {
   }
 }
 ```
+
+Without system material
+
+<!--Del--> <!--DelEnd-->
+
+With system material
 
 <!--Del--> <!--DelEnd-->

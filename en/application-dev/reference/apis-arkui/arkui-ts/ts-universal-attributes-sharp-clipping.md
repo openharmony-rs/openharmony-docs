@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-09-02T12:08:22.466Z -->
+<!-- md-trans-meta sourceCommit=355c6914f2e82c479561815701626bc73158b1a1 translatedAt=2026-11-03T03:28:09.694Z pushedAt=2026-11-13T01:06:00.120Z nl=1 -->
 
 Shape clipping changes the visible portion of a component through clipping or masking.
 
@@ -71,7 +71,7 @@ clip(value: boolean | CircleAttribute | EllipseAttribute | PathAttribute | RectA
 
 Clips the current component based on the specified shape, or sets whether to clip based on the edge contour of the current component.
 
-> **NOTE** 
+> **NOTE**  
 >
 > This API is supported since API version 7 and deprecated since API version 12. You are advised to use [clipShape](#clipshape12) instead.
 
@@ -99,7 +99,7 @@ clipShape(value: CircleShape | EllipseShape | PathShape | RectShape): T
 
 Clips the current component based on the specified shape (which may contain position information), clipping away the areas of the component that extend beyond the shape so that they become invisible. Unlike [maskShape](#maskshape12), **clipShape** clips away the areas of the component that extend beyond the shape (making them invisible), whereas **maskShape** overlays a mask layer of the specified shape on the component.
 
-> **NOTE** 
+> **NOTE**  
 >
 > Different shapes support different ranges of attributes. A path is one type of shape, along with others like ellipses and rectangles.
 >
@@ -133,7 +133,7 @@ clipShape(shape: Optional\<CircleShape | EllipseShape | PathShape | RectShape>):
 
 Clips this component according to the specified shape (which may include position information). Compared with [clipShape<sup>12+</sup>](#clipshape12), this API supports the **undefined** type.
 
-> **NOTE** 
+> **NOTE**  
 >
 > Different shapes support different ranges of attributes. A path is one type of shape, along with others like ellipses and rectangles.
 >
@@ -153,7 +153,7 @@ Clips this component according to the specified shape (which may include positio
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | Yes   | The parameter is a component of the corresponding type, which clips the current component according to the specified shape (the shape can contain position information).<br>**Note:** Clipping does not prevent the clipped area from responding to bound gesture events.<br>When the value of shape is undefined, the mask with the specified shape is removed. |
+| shape  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[CircleShape](#circleshape12)&nbsp;\|&nbsp;[EllipseShape](#ellipseshape12)&nbsp;\|&nbsp;[PathShape](#pathshape12)&nbsp;\|&nbsp;[RectShape](#rectshape12)> | Yes   | Shape by which the component is to be clipped (the shape may include position information).<br>**Note:** Clipping does not cause the clipped region to be unable to respond to bound gesture events.<br>When the value of **shape** is **undefined**, the clipping with the specified shape is removed. |
 
 **Return value**
 
@@ -287,7 +287,7 @@ mask(value: CircleAttribute | EllipseAttribute | PathAttribute | RectAttribute |
 
 Adds a mask of the specified shape or adjustable progress to the component.
 
-> **NOTE** 
+> **NOTE**  
 >
 > This API is supported since API version 7 and deprecated since API version 12. You are advised to use [maskShape](#maskshape12) instead.
 

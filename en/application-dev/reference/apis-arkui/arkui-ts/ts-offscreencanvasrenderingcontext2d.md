@@ -5,19 +5,19 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=07d05947a90cbd4c215e5174f7648fcf076bc9eb translatedAt=2026-09-01T11:35:56.732Z pushedAt=2026-09-02T11:24:38.005Z -->
+<!-- md-trans-meta sourceCommit=10d9d950521b56d45a248e72cf3829c88f761599 translatedAt=2026-11-03T03:00:52.295Z pushedAt=2026-11-13T01:06:00.037Z nl=1 -->
 
 Use **OffscreenCanvasRenderingContext2D** to draw shapes, images, and text offscreen onto a canvas. Offscreen drawing is a process where content to draw is first drawn into a buffer, then converted into an image, and finally drawn onto the canvas at once. Offscreen drawing uses the CPU for rendering, which is relatively slow. Therefore, avoid using offscreen drawing in scenarios that require high rendering speed.
 
 >  **NOTE**
 >
->  * The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>  *  The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  * **OffscreenCanvasRenderingContext2D** cannot be used in **ServiceExtensionAbility**. In **ServiceExtensionAbility**, you are advised to use the [drawing module](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md) for offscreen drawing.
+>  *  **OffscreenCanvasRenderingContext2D** depends on the UI context and cannot be used when the UI context is not loaded (for example, in scenarios such as ServiceExtensionAbility and MDM enterprise device management services that may have no UI page, pay attention to this constraint). For such scenarios without a UI context, you are advised to use the [drawing module](../../apis-arkgraphics2d/arkts-apis-graphics-drawing.md) for offscreen rendering.
 >
->  * The [beginPath](./ts-components-canvas-common-method.md#beginpath), [moveTo](./ts-components-canvas-common-method.md#moveto), [lineTo](./ts-components-canvas-common-method.md#lineto), [closePath](./ts-components-canvas-common-method.md#closepath), [bezierCurveTo](./ts-components-canvas-common-method.md#beziercurveto), [quadraticCurveTo](./ts-components-canvas-common-method.md#quadraticcurveto), [arc](./ts-components-canvas-common-method.md#arc), [arcTo](./ts-components-canvas-common-method.md#arcto), [ellipse](./ts-components-canvas-common-method.md#ellipse), [rect](./ts-components-canvas-common-method.md#rect), and [roundRect](./ts-components-canvas-common-method.md#roundrect20) APIs take effect only on the path in **OffscreenCanvasRenderingContext2D**, and cannot take effect on the path set in [CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md) and [Path2D](./ts-components-canvas-path2d.md) objects.
+>  *  The [beginPath](./ts-components-canvas-common-method.md#beginpath), [moveTo](./ts-components-canvas-common-method.md#moveto), [lineTo](./ts-components-canvas-common-method.md#lineto), [closePath](./ts-components-canvas-common-method.md#closepath), [bezierCurveTo](./ts-components-canvas-common-method.md#beziercurveto), [quadraticCurveTo](./ts-components-canvas-common-method.md#quadraticcurveto), [arc](./ts-components-canvas-common-method.md#arc), [arcTo](./ts-components-canvas-common-method.md#arcto), [ellipse](./ts-components-canvas-common-method.md#ellipse), [rect](./ts-components-canvas-common-method.md#rect), and [roundRect](./ts-components-canvas-common-method.md#roundrect20) APIs take effect only on the paths in **OffscreenCanvasRenderingContext2D**, and do not take effect on the paths set in [CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md) and [Path2D](./ts-components-canvas-path2d.md) objects.
 >
-> * The [common canvas drawing methods](./ts-components-canvas-common-method.md) and [common canvas drawing properties](./ts-components-canvas-common-property.md) are supported.
+> *  The [common canvas drawing methods](./ts-components-canvas-common-method.md) and [common canvas drawing properties](./ts-components-canvas-common-property.md) are supported.
 
 ## constructor
 
@@ -74,14 +74,14 @@ Creates a Data URL that contains a representation of an image. This API involves
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type  | Mandatory  | Description                                      |
 | ------- | ------ | ---- | ---------------------------------------- |
 | type    | string | No  | Used to specify the image format.<br>Optional values: "image/png", "image/jpeg", and "image/webp".<br>The exception values **undefined** and **null** are handled as the default value.<br>Default value: **image/png** |
 | quality | any | No  | When the image format is image/jpeg or image/webp, selects the image quality in the range [0, 1]. If the value is out of range, the default value **0.92** is used.<br>The exception values **undefined**, **null**, **NaN**, and **Infinity** are handled as the default value.<br>Default value: **0.92** |
 
-**Return value**
+**Return value** 
 
 | Type    | Description       |
 | ------ | --------- |
@@ -131,7 +131,7 @@ Creates an **ImageBitmap** object from the most recently rendered image of the o
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
+**Return value** 
 
 | Type                                      | Description             |
 | ---------------------------------------- | --------------- |

@@ -1,11 +1,11 @@
 # Focus Control
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=3ddb6f7d5458e03f96ae5f64e626eb2fb03d26f6 translatedAt=2026-09-01T12:31:29.464Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:20:41.367Z pushedAt=2026-11-13T01:06:00.097Z nl=1 -->
 
 Focus control manages the focus capability and focus movement behavior of components. It supports setting whether a component can gain focus, the default focus, focus on touch, focus box style, focus group and focus priority, Tab key and arrow key focus navigation order, focus stay rules, as well as actively requesting focus and customizing focus navigation logic through APIs. It is suitable for non-touch interaction scenarios such as keyboards and remote controls, helping improve focus navigation efficiency on complex pages.
 
@@ -551,7 +551,7 @@ When the **Tab** key is pressed for the second time, the focus switches to the c
 
 ![groupDefaultFocus2](figures/groupDefaultFocus2.png)
 
-When the **Tab** key is pressed for the third time, the focus switches to the container with **tabIndex(3)**, and automatically navigates to the component configured with **defaultFocus** inside it:
+When the **Tab** key is pressed for the third time, the focus switches to the container with **tabIndex(3)**, and automatically navigates to the first focusable component inside it:
 
 ![groupDefaultFocus3](figures/groupDefaultFocus3.png)
 
@@ -928,9 +928,10 @@ Press the **Tab** key again, and the focus cycles back to button1.
 
 This example demonstrates how to implement custom focus movement logic using the [nextFocus](#nextfocus18) API, available since API version 18.
 
-If [nextFocus](#nextfocus18) is not configured, the default focus navigation order when pressing the Tab key is: M->A->B->C->D->E->F. After [nextFocus](#nextfocus18) is configured, the focus navigation order changes to: M->D->F->B->C.
+If [nextFocus](#nextfocus18) is not configured, the default focus navigation order when pressing the Tab key is: M->A->B->C->D->E->F. After [nextFocus](#nextfocus18) is configured, the focus navigation order for the first few Tab key presses changes to: M->D->F->B->C. After the focus reaches C, C continues to move according to the default focus navigation rules.
 
 ```ts
+import { AttributeModifier, ButtonAttribute } from '@kit.ArkUI';
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   applyNormalAttribute(instance: ButtonAttribute): void {
     instance.id('M');

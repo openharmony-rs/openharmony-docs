@@ -6,11 +6,11 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=937aa556d9f58747c9a612a2370c25cbc5101587 translatedAt=2026-08-21T02:24:13.226Z pushedAt=2026-08-21T08:35:31.598Z -->
+<!-- md-trans-meta sourceCommit=740dbb7604952a9e4ff4c9e3c848cb10d774c82a translatedAt=2026-11-03T02:04:08.312Z pushedAt=2026-11-13T01:05:59.947Z nl=1 -->
 
 This component implements a dynamic layout container that supports lazy loading and allows developers to customize the layout algorithm. It is suitable for scenarios where a large number of child components need to be displayed in a scrollable component. By loading and laying out only the child components within the visible area on demand, it reduces the first frame rendering time and memory overhead.
 
-Its parent components are limited to [List](ts-container-list.md), [Scroll](ts-container-scroll.md), [WaterFlow](ts-container-waterflow.md), [FlowItem](ts-container-flowitem.md), or [LazyColumnLayout](ts-container-lazycolumnlayout.md), and it can be wrapped in a custom component or [NodeContainer](ts-basic-components-nodecontainer.md) and then applied to the preceding components.
+Its parent components are limited to [List](ts-container-list.md), [Scroll](ts-container-scroll.md), [WaterFlow](ts-container-waterflow.md), [FlowItem](ts-container-flowitem.md), or [LazyColumnLayout](ts-container-lazycolumnlayout.md), and it can be wrapped in a [custom component](../../../ui/state-management/arkts-create-custom-components.md) or [NodeContainer](ts-basic-components-nodecontainer.md) and then applied to the preceding components.
 
 > **NOTE**
 >
@@ -56,6 +56,7 @@ The [universal attributes](ts-component-general-attributes.md) are supported.
 > **NOTE**
 >
 > When the layout algorithm is [LazyCustomLayoutAlgorithm](../js-apis-arkui-lazyLayoutAlgorithm.md#lazycustomlayoutalgorithm), the [setMeasuredSize](../js-apis-arkui-frameNode.md#setmeasuredsize12) method of the **LazyDynamicLayout** component's [FrameNode](../js-apis-arkui-frameNode.md#framenode-1) takes precedence over the [size](ts-universal-attributes-size.md) and [border](ts-universal-attributes-border.md) attributes, and the [measure](../js-apis-arkui-frameNode.md#measure12) and [layout](../js-apis-arkui-frameNode.md#layout12) methods of the child component's [FrameNode](../js-apis-arkui-frameNode.md#framenode-1) take precedence over the [ignoreLayoutSafeArea](ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20) attribute. After the custom algorithm completes measurement or layout, the framework no longer executes the default measurement or layout process, but instead adopts the size and position set by the custom algorithm.
+
 
 ## Events
 
@@ -347,7 +348,6 @@ export class LazyListLayout extends LazyCustomLayoutAlgorithm {
 ```
 
 <!--code_no_check-->
-
 ```ts
 // MyDataSource.ets
 // Basic data source class that implements the IDataSource interface.
@@ -444,5 +444,4 @@ export class MyDataSource<T> extends BasicDataSource<T> {
   }
 }
 ```
-
 ![LazyDynamicLayout1.gif](figures/LazyDynamicLayout1.gif)

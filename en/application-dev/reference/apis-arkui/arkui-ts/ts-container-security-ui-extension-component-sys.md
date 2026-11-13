@@ -1,12 +1,11 @@
 # SecurityUIExtensionComponent (System API)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e2e8608c64e606248f00eb66f3b2d4805fae44da translatedAt=2026-08-19T07:17:20.536Z pushedAt=2026-08-20T10:45:03.050Z -->
+<!-- md-trans-meta sourceCommit=a8dff8da29d74f73892503431388b3b04b042cba translatedAt=2026-11-03T02:15:42.142Z pushedAt=2026-11-13T01:05:59.968Z nl=1 -->
 
 **SecurityUIExtensionComponent** is used to embed the UI provided by another application on the current page. The displayed content runs in another process, and the current application does not participate in its layout and rendering.
 
@@ -76,7 +75,7 @@ Defines the enum of the resolution following strategy for **SecurityUIExtensionC
 
 ## Attributes
 
-The [universal attributes](ts-component-general-attributes.md) are supported.
+Only the [width](ts-universal-attributes-size.md#width), [height](ts-universal-attributes-size.md#height), and [backgroundColor](ts-universal-attributes-background.md#backgroundcolor) universal attributes are supported.
 
 ## Events
 
@@ -140,7 +139,7 @@ Callback triggered when an exception occurs during the running of the launched *
 
 onTerminated(callback: Callback\<TerminationInfo\>)
 
-Triggered when the started **UIExtensionAbility** exits normally by calling [terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult) or [terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself). This API uses an asynchronous callback to return the result.
+Triggered when the launched **UIExtensionAbility** exits normally by calling [terminateSelfWithResult](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult) or [terminateSelf](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself). This API uses an asynchronous callback to return the result.
 
 **Since:** 26.0.0
 
@@ -166,7 +165,7 @@ Defines the result returned when the started **UIExtensionAbility** exits normal
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| code | number | No | No | Result code returned when the launched **UIExtensionAbility** exits. The value **0** indicates normal exit, and a non-zero value indicates abnormal exit. The specific meaning of the result code is defined by the launched **UIExtensionAbility**. |
+| code | number | No | No | Result code returned when the launched **UIExtensionAbility** exits. When **terminateSelfWithResult** is called to exit, the result code is determined by the passed-in **resultCode**; when **terminateSelf** is called to exit, the result code is the default value 0. |
 | want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md#want) | No | Yes | Data returned when the launched **UIExtensionAbility** exits. This field is empty if no data is returned. |
 
 ## SecurityUIExtensionProxy
@@ -183,7 +182,7 @@ Used to send data to the launched **Ability** and subscribe to and unsubscribe f
 
 send(data: Record\<string, Object\>): void
 
-Used to send data to the launched **Ability** after a successful connection is established, providing asynchronous sending capability. The data will be received and processed by the extension **Ability** through [setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback).
+Sends data to the launched Ability after a successful connection is established, providing asynchronous sending capability. The data will be received and processed by the launched Ability through [setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback).
 
 **Since:** 26.0.0
 
@@ -247,7 +246,7 @@ After a successful connection is established, subscribes to the callback trigger
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes | Fixed value **'asyncReceiverRegister'**, which indicates the callback triggered when the launched **Ability** performs asynchronous registration. |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | Yes | Callback triggered after the launched **Ability** registers [setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback). |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](../../apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)\> | Yes | Callback invoked when the launched Ability registers [setReceiveDataCallback](../../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback). |
 
 ### on('syncReceiverRegister')
 
@@ -272,7 +271,7 @@ After a successful connection is established, subscribes to the callback trigger
 
 off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
-Unsubscribes from the callback triggered when the launched **Ability** performs asynchronous registration. This API uses an asynchronous callback to return the result.
+Unsubscribes from the callback triggered when the launched Ability performs asynchronous registration.
 
 **Since:** 26.0.0
 
@@ -291,7 +290,7 @@ Unsubscribes from the callback triggered when the launched **Ability** performs 
 
 off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 
-Unsubscribes from the callback triggered when the launched **Ability** performs synchronous registration. This API uses an asynchronous callback to return the result.
+Unsubscribes from the callback triggered when the launched Ability performs synchronous registration.
 
 **Since:** 26.0.0
 
@@ -423,7 +422,7 @@ const syncRegisterCallback = (proxy: UIExtensionProxy) => {
 The provider needs to modify the following three files.
 
 - The provider adds the extension entry file `/src/main/ets/uiextensionability/SecurityUIExtProvider.ets`.
-
+  
   ```ts
   import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -468,7 +467,7 @@ The provider needs to modify the following three files.
   ```
 
 - The provider adds the extension **Ability** entry page file `/src/main/ets/pages/SecurityExtension.ets`.
-
+  
   ```ts
   import { UIExtensionContentSession } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -574,7 +573,7 @@ The provider needs to modify the following three files.
   ```
 
 - Provider module.json5 configuration.
-
+  
   ```json
   "extensionAbilities": [
         {

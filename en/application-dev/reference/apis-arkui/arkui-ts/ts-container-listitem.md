@@ -6,7 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d78b3fb65ab1cedf6a668b0bed3dbffdd0bd3b5a translatedAt=2026-08-19T07:12:51.951Z pushedAt=2026-08-20T10:45:03.049Z -->
+<!-- md-trans-meta sourceCommit=b099c92b963b4f3255627c2895a794338431568d translatedAt=2026-11-03T02:11:16.559Z pushedAt=2026-11-13T01:05:59.960Z nl=1 -->
 
 **ListItem** is used to display a specific list item in a list. It supports capabilities such as swipe-out menus, selected states, mouse frame selection, and card styles. It must be used with the **List** component. It is applicable to scenarios where content needs to be displayed in a list and interactive operations (such as swipe-to-delete and selection marking) need to be performed on individual list items.
 
@@ -78,7 +78,7 @@ Sets the sticky effect of the list item.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                               | Mandatory| Description                                      |
 | ------ | ----------------------------------- | ---- | ------------------------------------------ |
@@ -96,7 +96,7 @@ Sets whether to enable edit mode, where the list item can be deleted or moved.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                      |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------ |
@@ -114,7 +114,7 @@ Sets whether the current **ListItem** element can be selected by mouse frame sel
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                             |
 | ------ | ------- | ---- | ------------------------------------------------- |
@@ -124,7 +124,7 @@ Sets whether the current **ListItem** element can be selected by mouse frame sel
 
 selected(value: boolean)
 
-Sets whether the list item is selected. This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md). This attribute must be used before the [polymorphic style](./ts-universal-attributes-polymorphic-style.md) is set. Otherwise, the style settings will not take effect.
+Sets whether the list item is selected. This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md). This attribute must be used before the [polymorphic style](./ts-universal-attributes-polymorphic-style.md) is set. Otherwise, the selected style settings will not take effect.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -134,7 +134,7 @@ Sets whether the list item is selected. This attribute supports two-way binding 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                    |
 | ------ | ------- | ---- | ---------------------------------------- |
@@ -150,7 +150,7 @@ Sets the swipe action item displayed when the list item is swiped out from the s
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                             | Mandatory| Description                |
 | ------ | ------------------------------------------------- | ---- | -------------------- |
@@ -198,8 +198,8 @@ Enumerates the edge effects.
 
 | Name    | Value| Description     |
 | ------ | ------ | --------- |
-|   Spring   |    0    | The **ListItem** can continue to be swiped after the swipe distance exceeds the size of the swipe-out component.<br>If a delete area is set, the **ListItem** can continue to be swiped after the swipe distance exceeds the delete threshold,<br/>and it rebounds along the spring damping curve after being released. |
-|   None   |    1    | The swipe distance of the **ListItem** cannot exceed the size of the swipe-out component.<br>If a delete area is set, the swipe distance of the **ListItem** cannot exceed the delete threshold,<br/>and when a delete callback is set, releasing the **ListItem** after the delete threshold is reached triggers the delete callback. |
+|   Spring   |    0    | The **ListItem** can continue to be swiped after the swipe distance exceeds the size of the swipe-out component.<br/>If a delete area is set, the **ListItem** can continue to be swiped after the swipe distance exceeds the delete threshold,<br/>and it rebounds along the spring damping curve after being released. |
+|   None   |    1    | The swipe distance of the **ListItem** cannot exceed the size of the swipe-out component.<br/>If a delete area is set, the swipe distance of the **ListItem** cannot exceed the delete threshold,<br/>and when a delete callback is set, releasing the ListItem after the delete threshold is reached triggers the delete callback. |
 
 ## SwipeActionOptions<sup>9+</sup>
 
@@ -211,14 +211,14 @@ The swipe gesture works only in the list item area. If a child component is swip
 
 | Name                        | Type                                                        | Read-Only| Optional| Description                                                        |
 | ---------------------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| start                        | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10) | No   | Yes | Component on the left of the item when the **ListItem** is swiped right (when the **List** is laid out vertically) or component above the item when the **ListItem** is swiped down (when the **List** is laid out horizontally).<br/>Default value: none (the swipe-out component on this side is not displayed when it is not set)<br/>**NOTE**<br/>When the value is a **CustomBuilder** or the builder of **SwipeActionItem**, the top level of the **@builder** function must be a single component. Otherwise, undefined behavior occurs.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
-| end                          | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10) | No   | Yes | Component on the right of the item when the **ListItem** is swiped left (when the **List** is laid out vertically) or component below the item when the **ListItem** is swiped up (when the **List** is laid out horizontally).<br/>Default value: none (the swipe-out component on this side is not displayed when it is not set)<br/>**NOTE**<br/>When the value is a **CustomBuilder** or the builder of **SwipeActionItem**, the top level of the **@builder** function must be a single component. Otherwise, undefined behavior occurs.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
-| edgeEffect                   | [SwipeEdgeEffect](#swipeedgeeffect9)                 | No   | Yes | Swipe effect.<br/>Default value: **SwipeEdgeEffect.Spring**<br/>**SwipeEdgeEffect.Spring** indicates the spring effect. After the swipe distance exceeds the size of the swipe-out component, the item can continue to be swiped and rebounds along the spring damping curve. **SwipeEdgeEffect.None** indicates no spring effect, and the swipe distance cannot exceed the size of the swipe-out component.<br/>**Atomic service API:** This API can be used in atomic services since API version 11.                                                |
+| start                        | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10) | No   | Yes | Component on the left of the list item when the list item is swiped right (when the **List** is laid out vertically) or component above the list item when the list item is swiped down (when the **List** is laid out horizontally).<br/>Default value: none (the swipe-out component on this side is not displayed when this parameter is not set)<br/>**Note:** <br/>When the value is the builder of **CustomBuilder** or **SwipeActionItem**, the top level of the **@builder** function must be a single component. Otherwise, undefined behavior occurs. <br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| end                          | [CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[SwipeActionItem](#swipeactionitem10) | No   | Yes | Component on the right of the list item when the list item is swiped left (when the **List** is laid out vertically) or component below the list item when the list item is swiped up (when the **List** is laid out horizontally).<br/>Default value: none (the swipe-out component on this side is not displayed when this parameter is not set)<br/>**Note:** <br/>When the value is the builder of **CustomBuilder** or **SwipeActionItem**, the top level of the **@builder** function must be a single component. Otherwise, undefined behavior occurs. <br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| edgeEffect                   | [SwipeEdgeEffect](#swipeedgeeffect9)                 | No   | Yes | Swipe effect.<br/>Default value: **SwipeEdgeEffect.Spring**<br/>**SwipeEdgeEffect.Spring** indicates the spring effect. When the swipe distance exceeds the size of the swipe-out component, the list item can continue to be swiped and then bounces back along the spring damping curve. **SwipeEdgeEffect.None** indicates no spring effect, and the swipe distance cannot exceed the size of the swipe-out component. <br/>**Atomic service API:** This API can be used in atomic services since API version 11.                                                |
 | onOffsetChange<sup>11+</sup> | (offset: number) => void                                     | No   | Yes | Triggered when the position changes as the list item is swiped left or right (when the list direction is vertical) or swiped up or down (when the list direction is horizontal). The unit is vp.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model.|
 
 ## SwipeActionItem<sup>10+</sup>
 
-Used to configure the **start** or **end** swipe-out item in [SwipeActionOptions](#swipeactionoptions9), including the action item displayed when swiping out, the distance threshold of the long-distance action area, and the callbacks for entering and exiting the long-distance action area, triggering the action when the finger is lifted, and state changes.
+Configures the **start** or **end** swipe-out item in [SwipeActionOptions](#swipeactionoptions9), including the action item displayed when swiping out, the distance threshold of the long-distance action area, and the callbacks for entering and exiting the long-distance action area, triggering the action when the finger is lifted, and state changes.
 
 When used as a **start** swipe-out item, it is displayed on the left of the **ListItem** when the **List** is in vertical layout, and above the **ListItem** when the **List** is in horizontal layout. When used as an end swipe-out item, it is displayed on the right of the **ListItem** when the **List** is in vertical layout, and below the **ListItem** when the **List** is in horizontal layout.
 
@@ -226,14 +226,14 @@ When used as a **start** swipe-out item, it is displayed on the left of the **Li
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type | Read Only | Optional | Description |
+| Name | Type | Read-Only | Optional | Description |
 | -------------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
-| actionAreaDistance | [Length](ts-types.md#length) | No | Yes | Distance threshold for long-distance swipe-to-delete of the component. That is, after the swipe-out component is completely swiped into the viewport, the distance threshold for continuing to swipe to trigger deletion.<br/>Default value: **56vp**<br/>**NOTE**<br/>Percentage values are not supported.<br/>If the delete distance threshold is greater than or equal to the size of the **ListItem** in the swipe direction minus the size of the swipe-out component in the swipe direction, or if it is less than or equal to 0, no delete area is formed.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
-| onAction | () => void | No | Yes | Callback triggered when the finger is lifted after the component enters the long-distance delete area.<br/>**NOTE**<br/>When the final value of **actionAreaDistance** is greater than 0 and less than the size of the **ListItem** in the swipe direction minus the size of the swipe-out component in the swipe direction, the callback is triggered only when the position where the finger is released after swiping is greater than or equal to this value. If **actionAreaDistance** is not set, the default value **56vp** is used for calculation.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
-| onEnterActionArea | () => void | No | Yes | Callback triggered when the swiped item enters the delete area. It is triggered only once, but is triggered again upon re-entry.<br/>**NOTE**<br/>When the final value of **actionAreaDistance** is greater than 0 and less than the size of the **ListItem** in the swipe direction minus the size of the swipe-out component in the swipe direction, the callback is triggered only when the item enters this area. If **actionAreaDistance** is not set, the default value **56vp** is used for calculation.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
-| onExitActionArea | () => void | No | Yes | Callback triggered when the swiped item exits the delete area. It is triggered only once, but is triggered again upon re-exit.<br/>**NOTE**<br/>When the final value of **actionAreaDistance** is greater than 0 and less than the size of the **ListItem** in the swipe direction minus the size of the swipe-out component in the swipe direction, the callback is triggered only when the item exits this area. If **actionAreaDistance** is not set, the default value **56vp** is used for calculation.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| actionAreaDistance | [Length](ts-types.md#length) | No | Yes | Distance threshold for triggering deletion after a long swipe. That is, after the swipe-out component is completely swiped into the viewport (the visible area), the distance threshold for continuing to swipe to trigger deletion.<br/>Default value: **56vp**<br/>**Note:**<br/>Percentage values are not supported.<br/>If the deletion distance threshold is greater than or equal to the size of the **ListItem** in the swipe direction minus the size of the swipe-out component in the swipe direction, or if the deletion distance threshold is less than or equal to 0, no delete area is formed.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| onAction | () => void | No | Yes | Triggered when the finger is lifted after the component enters the long-swipe delete area.<br/>**Note:**<br/>When the final value of **actionAreaDistance** is greater than 0 and less than the size of the **ListItem** in the swipe direction minus the size of the swipe-out component in the swipe direction, the callback is triggered only when the position where the finger is released after swiping is greater than or equal to this value. If **actionAreaDistance** is not set, the default value **56vp** is used for calculation.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| onEnterActionArea | () => void | No | Yes | Callback triggered when the swiped list item enters the delete area. It is triggered only once each time the item enters the area.<br/>**Note:**<br/>When the final value of **actionAreaDistance** is greater than 0 and less than the size of the **ListItem** in the swipe direction minus the size of the swipe-out component in the swipe direction, the callback is triggered only when the item enters this area. If **actionAreaDistance** is not set, the default value **56vp** is used for calculation.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| onExitActionArea | () => void | No | Yes | Callback triggered when the swiped list item exits the delete area. It is triggered only once each time the item exits the area.<br/>**Note:**<br/>When the final value of **actionAreaDistance** is greater than 0 and less than the size of the **ListItem** in the swipe direction minus the size of the swipe-out component in the swipe direction, the callback is triggered only when the item exits this area. If actionAreaDistance is not set, the default value **56vp** is used for calculation.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
 | builder | [CustomBuilder](ts-types.md#custombuilder8) | No | Yes | Operation item displayed when the list item is swiped left or right (when the list direction is vertical) or swiped up or down (when the list direction is horizontal).<br/>Default value: none (no operation item is displayed when this parameter is not set)<br/>**NOTE**<br/>When **builderComponent** is also set, **builderComponent** takes precedence over this parameter. That is, when both **builder** and **builderComponent** are set, the value set by **builderComponent** prevails.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
-| builderComponent<sup>18+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md) | No | Yes | Operation item displayed when the list item is swiped left or right (when the list direction is vertical) or swiped up or down (when the list direction is horizontal).<br/>Default value: none (no operation item is displayed when this parameter is not set)<br/>**NOTE**<br/>This parameter takes precedence over the **builder** parameter. That is, when both **builder** and **builderComponent** are set, the value set by **builderComponent** prevails.<br/>The same **builderComponent** is not recommended to be used for different **start**/**end** items at the same time; otherwise, display issues may occur.<br/>**Atomic service API:** This API can be used in atomic services since API version 18. |
+| builderComponent<sup>18+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md) | No | Yes | Operation item displayed when the list item is swiped left or right (when the list direction is vertical) or swiped up or down (when the list direction is horizontal).<br/>Default value: none (no operation item is displayed when this parameter is not set)<br/>**NOTE**<br/>This parameter takes precedence over the **builder** parameter. That is, when both **builder** and **builderComponent** are set, the value set by **builderComponent** prevails.<br/>It is not recommended to use the same **builderComponent** for different **start**/**end** items at the same time; otherwise, display issues may occur.<br/>**Atomic service API:** This API can be used in atomic services since API version 18. |
 | onStateChange<sup>11+</sup> | (state:[SwipeActionState](#swipeactionstate11)) => void | No | Yes | Callback triggered when the swipe state of the list item changes.<br/>**Atomic service API:** This API can be used in atomic services since API version 12. |
 
 ## ListItemOptions<sup>10+</sup>
@@ -247,10 +247,9 @@ Defines **ListItem** component configuration options.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 10%; auto; 10%; 10%; auto-->
-
 | Name | Type                                 | Read-Only| Optional| Description                                                        |
 | ----- | ----------------------------------------- | ---- | -- | ------------------------------------------------------------ |
-| style | [ListItemStyle](#listitemstyle10) | No | Yes | Card style of the **ListItem** component.<br/>Default value: **ListItemStyle.NONE**<br/>When set to **ListItemStyle.NONE**, no style is applied.<br/>When set to **ListItemStyle.CARD**, it is recommended to use it together with **ListItemGroupStyle.CARD** of [ListItemGroup](ts-container-listitemgroup.md) to display the default card style.<br/>In card style, the default specifications of **ListItem** are: height 48 vp, width 100%, and left and right padding 8 vp. To implement adaptive height of **ListItem**, set **height** to **undefined**.<br/>In card style, default **focus**, **hover**, **press**, **selected**, and **disable** styles are provided for the list items in the card.<br/>**NOTE**<br/>When set to **ListItemStyle.CARD**, the **listDirection** attribute of **List** must be **Axis.Vertical**. If it is set to **Axis.Horizontal**, the display will be disordered. The **alignListItem** attribute of **List** defaults to **ListItemAlign.Center**, which centers the items. |
+| style | [ListItemStyle](#listitemstyle10) | No | Yes | Card style of the ListItem component.<br/>Default value: **ListItemStyle.NONE**<br/>When set to **ListItemStyle.NONE**, no style is applied.<br/>When set to **ListItemStyle.CARD**, it is recommended to use it together with **ListItemGroupStyle.CARD** of [ListItemGroup](ts-container-listitemgroup.md) to display the default card style.<br/>In card style, the default specifications of ListItem are as follows: height 48 vp, width 100%, and left and right padding 8 vp. To implement adaptive height of ListItem, set **height** to **undefined**.<br/>In card style, default styles are provided for the focused, hovered, pressed, selected, and disabled states of the list items in the card.<br/>**Note:**<br/>When set to **ListItemStyle.CARD**, the **listDirection** attribute of List must be **Axis.Vertical**. If it is set to **Axis.Horizontal**, the display will be disordered. The **alignListItem** attribute of List defaults to **ListItemAlign.Center**, and the list items are displayed centered. |
 
 ## ListItemStyle<sup>10+</sup>
 
@@ -299,7 +298,7 @@ This callback is triggered when the outer [List](ts-container-list.md) component
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type   | Mandatory| Description                                                        |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
@@ -309,8 +308,13 @@ This callback is triggered when the outer [List](ts-container-list.md) component
 
 Implements the swipe action menu manager for list items.
 
-### expand<sup>21+</sup>
+**Atomic service API**: This API can be used in atomic services since API version 21.
 
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+### expand<sup>21+</sup>
 expand(node: FrameNode, direction: ListItemSwipeActionDirection): void
 
 Expands the swipe action menu for the specified list item.
@@ -325,7 +329,7 @@ Expands the swipe action menu for the specified list item.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type   | Mandatory| Description                                                        |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
@@ -342,7 +346,6 @@ For details about the error codes, see [Custom Node Error Codes](../errorcode-no
 | 106203   | The node not mounted to component tree. |
 
 ### collapse<sup>21+</sup>
-
 collapse(node: FrameNode): void
 
 Collapses the swipe action menu for the specified list item.
@@ -353,7 +356,7 @@ Collapses the swipe action menu for the specified list item.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type   | Mandatory| Description                                                        |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
@@ -380,13 +383,12 @@ Enumerates the swipe action menu display directions for **ListItem** components.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| START |  0  | For vertical lists: left side in LTR mode, right side in RTL mode. For horizontal lists: top side.|
+| START |  0  | When the list direction is vertical, this value indicates the left side of the **ListItem** in LTR (Left-To-Right) mode and the right side of the **ListItem** in RTL (Right-To-Left) mode. When the list direction is horizontal, this value indicates the top side of the **ListItem**. |
 | END   |  1  | For vertical lists: right side in LTR mode, left side in RTL mode. For horizontal lists: bottom side.|
 
 ## Example
 
 ### Example 1: Creating a List Item
-
 This example demonstrates the basic usage of creating a list item.
 
 ```ts
@@ -442,7 +444,6 @@ struct ListItemExample {
 ![listItem1](figures/listItem1.gif)
 
 ### Example 2: Setting the Swipe Action Item
-
 This example shows how to set the swipe action item for a list item using **swipeAction**.
 
 ```ts
@@ -520,11 +521,9 @@ struct ListItemExample2 {
   }
 }
 ```
-
 ![deleteListItem](figures/deleteListItem.gif)
 
 ### Example 3: Applying a Card-style Effect
-
 This example illustrates the card-style effect of the **ListItem** component.
 
 ```ts
@@ -562,8 +561,7 @@ struct ListItemExample3 {
   }
 }
 ```
-
-![ListItemStyle](figures/listItem3.jpeg)
+![listItem3](figures/listItem3.jpeg)
 
 ### Example 4: Setting the Swipe Action Item Using ComponentContent
 
@@ -572,6 +570,7 @@ This example demonstrates how to set the action items displayed during swipe ope
 ```ts
 // xxx.ets
 import { ComponentContent } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 class BuilderParams {
   text: string | Resource;
@@ -588,7 +587,12 @@ function itemBuilder(params: BuilderParams) {
   Row() {
     Button(params.text).margin(4)
     Button('Set').margin(4).onClick(() => {
-      params.scroller.closeAllSwipeActions();
+      try {
+        params.scroller.closeAllSwipeActions();
+      } catch (err) {
+        let error: BusinessError = err as BusinessError;
+        console.error(`closeAllSwipeActions failed, error code: ${error.code}, message: ${error.message}`);
+      }
     })
   }.padding(4).justifyContent(FlexAlign.SpaceEvenly)
 }
@@ -677,16 +681,15 @@ struct ListItemExample {
   }
 }
 ```
-
-![ListItemStyle](figures/deleteListItem_example04.gif)
+![deleteListItem_example04](figures/deleteListItem_example04.gif)
 
 ### Example 5: Managing the Swipe Action Menu Through ListItemSwipeActionManager
-
 This example demonstrates how to manage the swipe action menu of a list item using [ListItemSwipeActionManager](#listitemswipeactionmanager21), available since API version 21.
 
 ```ts
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
+import { FrameNode } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -775,5 +778,4 @@ struct ListItemExample5 {
   }
 }
 ```
-
 ![ListItemSwipeActionManager](figures/listItemSwipeActionManager_example05.gif)

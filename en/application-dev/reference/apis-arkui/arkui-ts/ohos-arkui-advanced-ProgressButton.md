@@ -1,10 +1,11 @@
 # ProgressButton
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
-<!--Designer: @YanSanzo-->
+<!--Owner: @zhangwentao96-->
+<!--Designer: @song-song-song-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=42500bbbc602d56c8fbfa6bd5fe37a6d7cf3a324 translatedAt=2026-11-03T01:32:02.560Z pushedAt=2026-11-13T01:05:59.868Z nl=1 -->
 
 
 The **ProgressButton** component is a text-based download button with a progress indicator that shows the download progress.
@@ -12,11 +13,11 @@ The **ProgressButton** component is a text-based download button with a progress
 
 > **NOTE**
 >
-> - This component is supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 10. Newly added content in later versions will be marked with a superscript to indicate the version in which it was introduced.
 >
-> - This component can be used only in the stage model.
+> - The APIs of this module can be used only in the stage model.
 >
-> - If the **ProgressButton** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **ProgressButton** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **ProgressButton** component.
+> - If [universal attributes](ts-component-general-attributes.md) or [universal events](ts-component-general-events.md) are set for **ProgressButton**, the compilation toolchain generates an additional node **\_\_Common\_\_** and mounts the universal attributes or universal events on **\_\_Common\_\_** instead of applying them directly to **ProgressButton**. As a result, the universal attributes or universal events set by the developer may not take effect or may not behave as expected. Therefore, it is not recommended to set universal attributes and universal events for **ProgressButton**.
 
 
 ## Modules to Import
@@ -62,9 +63,6 @@ Defines the color options for the download button.
 | borderColor     | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Border color of the button.<br>Default value: **#330A59F7**                                       |
 | textColor       | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Text color of the button.<br>Default value: system default value **#CE000000**                                |
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Background color of the button.<br>Default value: **\$r('sys.color.ohos_id_color_foreground_contrary')**|
-
-## Events
-The [universal events](ts-component-general-events.md) are not supported.
 
 ## Examples
 
@@ -121,7 +119,7 @@ struct Index {
 ```
 
 
-![img.png](./figures/img.png)
+<!--Del--> <!--DelEnd-->
 
 ### Example 2: Implementing a Download Button with Custom Colors
 This example shows how to implement a download button with custom colors.
@@ -181,7 +179,7 @@ struct Index {
   }
 }
 ```
-![en-us_image_progressbutton_example02](figures/image-progressbutton-example02.png)
+<!--Del--> <!--DelEnd-->
 
 ### Example 3: Implementing a Download Button with Custom Corner Radius
 This example shows how to implement a download button with custom corner radius.
@@ -235,4 +233,4 @@ struct Index {
   }
 }
 ```
-![en-us_image_progressbutton_example03](figures/image-progressbutton-example03.png)
+<!--Del--> <!--DelEnd-->

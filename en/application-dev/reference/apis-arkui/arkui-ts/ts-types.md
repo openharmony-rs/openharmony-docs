@@ -1,11 +1,11 @@
 # Basic Types
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=3ddb6f7d5458e03f96ae5f64e626eb2fb03d26f6 translatedAt=2026-09-01T11:58:12.308Z -->
+<!-- md-trans-meta sourceCommit=5dd8c23696230866b1eeee0c9aa4f7a0e884575e translatedAt=2026-11-03T03:11:31.438Z pushedAt=2026-11-13T01:06:00.063Z nl=1 -->
 
 >**NOTE**
 >
@@ -91,8 +91,6 @@ type LengthMetrics = import('../api/arkui/Graphics').LengthMetrics
 
 Defines a length attribute.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 12.
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -119,7 +117,7 @@ Defines a mixed color.
 
 | Type                    | Description                                     |
 | --------------------- | -------------------------------------- |
-|import('../api/arkui/Graphics').[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)   | Blended color. |
+|import('../api/arkui/Graphics').[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)   | Mixed color. |
 
 ## ResourceStr
 
@@ -232,10 +230,10 @@ To reference this object, at least one parameter must be passed.
 
 | Name   | Type | Mandatory | Description             |
 | ------ | ---- | ------| ---------------- |
-| top    | [Length](#length) | No | Width of the top border of the component. |
-| right  | [Length](#length) | No | Width of the right border of the component. |
-| bottom | [Length](#length) | No | Width of the bottom border of the component. |
-| left   | [Length](#length) | No | Width of the left border of the component. |
+| top    | [Length](#length) | No | Width of the top edge of the component. |
+| right  | [Length](#length) | No | Width of the right edge of the component. |
+| bottom | [Length](#length) | No | Width of the bottom edge of the component. |
+| left   | [Length](#length) | No | Width of the left edge of the component. |
 
 ## EdgeWidth<sup>10+</sup>
 
@@ -253,7 +251,7 @@ To reference this object, at least one parameter must be passed.
 
 | Type | Description |
 | ---- | ---------------- |
-| [EdgeWidths](#edgewidths9) | Width of the component border in different directions. |
+| [EdgeWidths](#edgewidths9) | Width of the component edge in different directions. |
 
 ## LocalizedEdgeWidths<sup>12+</sup>
 
@@ -334,10 +332,10 @@ To reference this object, at least one parameter must be passed.
 
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ------| ---------------- |
-| top    | [ResourceColor](#resourcecolor) | No | Color of the top border of the component. |
-| right  | [ResourceColor](#resourcecolor) | No | Color of the right border of the component. |
-| bottom | [ResourceColor](#resourcecolor) | No | Color of the bottom border of the component. |
-| left   | [ResourceColor](#resourcecolor) | No | Color of the left border of the component. |
+| top    | [ResourceColor](#resourcecolor) | No | Color of the top edge of the component. |
+| right  | [ResourceColor](#resourcecolor) | No | Color of the right edge of the component. |
+| bottom | [ResourceColor](#resourcecolor) | No | Color of the bottom edge of the component. |
+| left   | [ResourceColor](#resourcecolor) | No | Color of the left edge of the component. |
 
 ## LocalizedEdgeColors<sup>12+</sup>
 
@@ -376,10 +374,10 @@ To reference this object, at least one parameter must be passed.
 
 | Name | Type | Mandatory | Description |
 | -------- | -------- | -------- | -------- |
-| top    | [BorderStyle](ts-appendix-enums.md#borderstyle) | No | Style of the top border of the component. |
-| right  | [BorderStyle](ts-appendix-enums.md#borderstyle) | No | Style of the right border of the component. |
-| bottom | [BorderStyle](ts-appendix-enums.md#borderstyle) | No | Style of the bottom border of the component. |
-| left   | [BorderStyle](ts-appendix-enums.md#borderstyle) | No | Style of the left border of the component. |
+| top    | [BorderStyle](ts-appendix-enums.md#borderstyle) | No | Style of the top edge of the component. |
+| right  | [BorderStyle](ts-appendix-enums.md#borderstyle) | No | Style of the right edge of the component. |
+| bottom | [BorderStyle](ts-appendix-enums.md#borderstyle) | No | Style of the bottom edge of the component. |
+| left   | [BorderStyle](ts-appendix-enums.md#borderstyle) | No | Style of the left edge of the component. |
 
 ## Offset
 
@@ -584,8 +582,8 @@ Defines border information.
 | color  | [EdgeColors](./ts-types.md#edgecolors9)<sup>9+</sup>&nbsp;\|&nbsp;[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | No|Yes  | Border color.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.    |
 | radius | [BorderRadiuses](#borderradiuses9)<sup>9+</sup>&nbsp;\|&nbsp;[Length](ts-types.md#length)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](#localizedborderradiuses12)<sup>12+</sup> | No|Yes  | Border corner radius.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
 | style  | [EdgeStyles](#edgestyles9)<sup>9+</sup>&nbsp;\|&nbsp;[BorderStyle](ts-appendix-enums.md#borderstyle) | No|Yes  | Border style.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.   |
-| dashGap<sup>12+</sup>  | [EdgeWidths](#edgewidths9)&nbsp;\|&nbsp;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[LocalizedEdgeWidths](#localizededgewidths12) | No|Yes  | Sets the gap between dashed line segments. This takes effect only when the border style is dashed.<br/>Percentage values are not supported.<br/>**Atomic service API:** Since API version 12, this interface is supported in atomic services.<br/>**Model constraint:** This interface is only used in the stage model.<br/>**Card capability:** This interface is not supported in ArkTS cards.|
-| dashWidth<sup>12+</sup>  | [EdgeWidths](#edgewidths9)&nbsp;\|&nbsp;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[LocalizedEdgeWidths](#localizededgewidths12) | No|Yes   | Sets the length of dashed line segments. This takes effect only when the border style is dashed.<br/>Percentage values are not supported.<br/>**Atomic service API:** Since API version 12, this interface is supported in atomic services.<br/>**Model constraint:** This interface is only used in the stage model.<br/>**Card capability:** This interface is not supported in ArkTS cards.     |
+| dashGap<sup>12+</sup>  | [EdgeWidths](#edgewidths9)&nbsp;\|&nbsp;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[LocalizedEdgeWidths](#localizededgewidths12) | No|Yes  | Gap between dashed line segments. This takes effect only when the border style is dashed.<br/>Percentage values are not supported.<br/>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br/>**Model restriction:** This API is only used in the stage model.<br/>**Widget capability:** This API is not supported in ArkTS cards.|
+| dashWidth<sup>12+</sup>  | [EdgeWidths](#edgewidths9)&nbsp;\|&nbsp;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[LocalizedEdgeWidths](#localizededgewidths12) | No|Yes   | Length of dashed line segments. This takes effect only when the border style is dashed.<br/>Percentage values are not supported.<br/>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br/>**Model restriction:** This API is only used in the stage model.<br/>**Widget capability:** This API is not supported in ArkTS cards.     |
 
 ## ColorFilter<sup>9+</sup>
 
@@ -618,11 +616,20 @@ Constructor of ColorFilter, which creates a color filter with a 4\*5 matrix.
 
 ## CustomBuilder<sup>8+</sup>
 
+type CustomBuilder = (() => any) \| void
+
 Defines a custom UI content builder for component attribute methods.
 
-| Name           | Type                  | Description                                      |
-| ------------- | ---------------------- | ---------------------------------------- |
-| CustomBuilder | (()&nbsp;=&gt;&nbsp;any) \| void | Builder used to generate a custom UI component when used with the [@Builder](../../../ui/state-management/arkts-builder.md) decorator.|
+**Widget capability**: This API can be used in ArkTS widgets since API version 9.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type | Description |
+| ---  | --- |
+| (() => any) |  Used with [@Builder](../../../ui/state-management/arkts-builder.md) to generate a custom component.  |
+| void |  No [@Builder](../../../ui/state-management/arkts-builder.md) function is passed in.   |
 
 ## CustomBuilderT\<T><sup>23+</sup>
 
@@ -638,7 +645,7 @@ Defines a custom UI content builder. Compared with **CustomBuilder**, this API s
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type| Mandatory| Description|
 | ----------- | -------- | ---- | ---------------------------------------- |
@@ -920,19 +927,17 @@ Defines the callback with parameters.
 
 Defines divider information.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name    | Type                                     | Read-Only| Optional| Description             |
 | ------ | --------------------------------------- |---| -------- |-----------------|
-| strokeWidth  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | No | Yes | Width of the divider line.         |
-| color  | [ResourceColor](#resourcecolor) | No | Yes| Color of the divider.        |
-| startMargin | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | Yes | Distance between the divider and the start edge of the menu side. |
-| endMargin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)| No  | Yes | Distance between the divider and the end edge of the menu side. |
-| mode<sup>19+</sup>  | [DividerMode](ts-appendix-enums.md#dividermode19)| No  | Yes | Sets the divider mode. |
+| strokeWidth  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | No | Yes | Width of the stroke.<br>**Atomic service API**: This API can be used in atomic services since API version 12.         |
+| color  | [ResourceColor](#resourcecolor) | No  | Yes | Color of the stroke.<br>**Atomic service API**: This API can be used in atomic services since API version 12.         |
+| startMargin | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | Yes | Distance between the stroke and the start edge of the menu side.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| endMargin  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)| No  | Yes | Distance between the stroke and the end edge of the menu side.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| mode<sup>19+</sup>  | [DividerMode](ts-appendix-enums.md#dividermode19)| No  | Yes | Divider mode.<br>**Atomic service API**: This API can be used in atomic services since API version 19. |
 
 ## ChainWeightOptions<sup>14+</sup>
 
@@ -1011,7 +1016,7 @@ Responsive layout fill mode, used for the WaterFlow, Grid, List, Swiper, and Laz
 
 ## ItemFillPolicy<sup>22+</sup>
 
-Defines a responsive layout policy applicable to the WaterFlow, Grid, List, Swiper, and LazyVWaterFlowLayout components. The LazyVWaterFlowLayout component is supported since API version 26.0.0.
+Defines a responsive layout strategy for the **WaterFlow**, **Grid**, **List**, **Swiper**, **LazyVWaterFlowLayout**, and **LazyVGridLayout** components. The **LazyVWaterFlowLayout** component is supported since API version 26.0.0, and the **LazyVGridLayout** component is supported since API version 26.1.0.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 

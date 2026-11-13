@@ -1,12 +1,11 @@
 # ContainerReader
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @song-song-song-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=dac4f2b07a7203d2a3ed445760648d35364b1673 translatedAt=2026-08-21T02:21:54.305Z pushedAt=2026-08-21T07:15:45.052Z -->
+<!-- md-trans-meta sourceCommit=1d7744169f647bc48a2c65086f0061aa3c69406b translatedAt=2026-11-03T01:56:23.868Z pushedAt=2026-11-13T01:05:59.926Z nl=1 -->
 
 **ContainerReader** is a container breakpoint component used to obtain breakpoint information based on container size in dynamic scenarios and perform responsive layout. This component returns the container's size and breakpoint in real time through [two-way binding](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters), enabling you to create and lay out components based on container size.
 
@@ -19,6 +18,12 @@
 > - For more development guidance and complete examples on container breakpoints, see [Container Breakpoint (ContainerReader)](../../../ui/arkts-layout-development-container-reader.md).
 
 **Since:** 26.0.0
+
+## Modules to Import
+
+```ts
+import { ContainerReader } from '@kit.ArkUI';
+```
 
 ## Child Components
 
@@ -113,9 +118,11 @@ Defines the breakpoint configuration options, which are used to specify threshol
 | width | Array\<number\> | No | Yes | Array of width breakpoint values. The array must be monotonically increasing.<br/>Default value: **[320, 600, 840, 1440]**, in vp, consistent with the default window width breakpoints.<br/>Note:<br/>A maximum of 5 breakpoints are supported, meaning the maximum array length is 4. |
 | height | Array\<number\> | No | Yes | Array of height breakpoint values. The height breakpoint value is the ratio of the component's height to its width. No unit. The array must be monotonically increasing.<br/>Default value: **[0.8, 1.2]**, consistent with the default window height breakpoints.<br/>Note:<br/>A maximum of 3 breakpoints are supported, meaning the maximum array length is 2. |
 
+
 ## Events
 
 [Universal events](ts-component-general-events.md) are supported.
+
 
 ## Example
 

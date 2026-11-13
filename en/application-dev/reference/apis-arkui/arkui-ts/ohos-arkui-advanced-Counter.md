@@ -1,12 +1,11 @@
 # advanced.Counter
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @song-song-song-->
-<!--Designer: @fenglinbailu-->
-<!--Tester: @weixin_45530366-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=f61ce95179b4c1b9fc3671fde09ef06c73b5f91d translatedAt=2026-08-28T01:30:51.553Z pushedAt=2026-08-28T09:09:12.920Z -->
+<!-- md-trans-meta sourceCommit=34fe1d6e01c790d69a02ff62c7235fcb9e5f3dd8 translatedAt=2026-11-03T01:26:20.353Z pushedAt=2026-11-13T01:05:59.851Z nl=1 -->
 
 The **Counter** component is used for precise numerical value adjustment. It supports four styles: list, compact, inline numeric, and inline date, and is suitable for scenarios such as shopping quantity adjustment, parameter setting, and date selection. It provides flexible style configuration and event callback capabilities.
 
@@ -58,9 +57,9 @@ Defines the type and style of the **Counter** component.
 | ----------- | ---------- | ---- | ------------------------------- | ------------------------------- |
 | type | [CounterType](#countertype) | No | No | Type of the current Counter. It must be used with the corresponding style parameters. For details about the mapping, see the Counter Type and Style Mapping table. |
 | direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction) | No | Yes | Layout direction. This parameter is passed when adapting to right-to-left languages (such as Arabic) or implementing a mirrored layout. **Direction.Auto**: automatically follows the system language direction (default). **Direction.Ltr**: left-to-right layout, applicable to most languages. **Direction.Rtl**: right-to-left layout, applicable to RTL languages such as Arabic.<br>Default value: **Direction.Auto**<br>If this parameter is set to **undefined**, the default value is used. |
-| numberOptions | [NumberStyleOptions](#numberstyleoptions) | No | Yes | Style of the list-type or compact-type Counter. It must be used with the type set to **CounterType.LIST** or **CounterType.COMPACT**.<br>Default value: a list-type or compact-type Counter with the counter displayed as **0**.<br>If this parameter is set to **undefined**, the default value is used. |
+| numberOptions | [NumberStyleOptions](#numberstyleoptions) | No | Yes | Style of the list-type or compact counter. It must be used with the type set to **CounterType.LIST** or **CounterType.COMPACT**.<br>Default value: a list-type or compact counter with the counter displayed as **0**.<br>If this parameter is set to **undefined**, the default value is used. |
 | inlineOptions | [InlineStyleOptions](#inlinestyleoptions) | No | Yes | Style of the inline number Counter. It must be used with the type set to **CounterType.INLINE**.<br>Default value: an inline number Counter with the counter displayed as **0**.<br>If this parameter is set to **undefined**, the default value is used. |
-| dateOptions | [DateStyleOptions](#datestyleoptions) | No | Yes | Style of the inline date Counter. It must be used with the type set to **CounterType.INLINE_DATE**.<br>Default value: an inline date Counter displaying **0001/01/01**.<br>If this parameter is set to **undefined**, the default value is used. |
+| dateOptions | [DateStyleOptions](#datestyleoptions) | No | Yes | Style of the inline date counter. It must be used with the type set to **CounterType.INLINE_DATE**.<br>Default value: an inline date counter displaying **0001/01/01**.<br>If this parameter is set to **undefined**, the default value is used. |
 
 When you select a **Counter** type, you must select the corresponding **Counter** style. If the style parameter does not match the type, the default style of that type is used.
 
@@ -103,7 +102,7 @@ Defines the common attributes and events of the **Counter** component.
 
 ## InlineStyleOptions
 
-Defines the inline numeric counter attributes and events.
+Defines the inline number counter attributes and events.
 
 Inherits from [CommonOptions](#commonoptions).
 
@@ -271,9 +270,9 @@ struct CompactCounterExample {
 
 ![compactcounter](figures/compactcounter.gif)
 
-### Example 3: Implementing an Inline Numeric Counter
+### Example 3: Implementing an Inline Number Counter
 
-This example implements an inline numeric counter by setting **type** to **CounterType.INLINE** and configuring **inlineOptions**.
+This example implements an inline number counter by setting **type** to **CounterType.INLINE** and configuring **inlineOptions**.
 
 ```ts
 import { CounterType, CounterComponent } from '@kit.ArkUI';
@@ -381,7 +380,7 @@ struct CounterPage {
         }
       })
 
-      // Inline numeric counter
+      // Inline number counter
       CounterComponent({
         options: {
           type: CounterType.INLINE,

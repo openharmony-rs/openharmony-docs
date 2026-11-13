@@ -1,12 +1,11 @@
 # Show/Hide Event
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-08-24T07:03:05.841Z pushedAt=2026-08-25T07:34:59.649Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:56:41.296Z pushedAt=2026-11-13T01:06:00.169Z nl=1 -->
 
 The show/hide event is triggered when a component is attached to or detached from the component tree. It can be used to listen for lifecycle changes during component attach and detach, and to execute related business processing at the corresponding time.
 
@@ -44,11 +43,12 @@ Triggered when this component is mounted to the component tree. Due to the follo
 | -------- | -------- |
 | T | Current component, used for chained calls. |
 
+
 ## onDetach<sup>12+</sup>
 
 onDetach(callback: Callback\<void>): T
 
-Triggered when this component is detached from the component tree.
+This callback is triggered when the component is unmounted from the component tree. If you need to modify the component tree in the callback, use [onDisAppear](#ondisappear) instead of this API.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -96,11 +96,12 @@ Triggered when this component appears.
 | -------- | -------- |
 | T | Current component, used for chained calls. |
 
+
 ## onDisAppear
 
 onDisAppear(event: () => void): T
 
-Triggered when this component disappears.
+This callback is triggered when the component disappears.
 
 **Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
 
@@ -112,7 +113,7 @@ Triggered when this component disappears.
 
 | Name| Type | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| event  | () => void| Yes  | Callback function of the **onDisAppear** event, which indicates that the component is hidden.|
+| event  | () => void| Yes   | Callback for the onDisAppear event, indicating that the component has disappeared.|
 
 **Return value**
 
@@ -120,7 +121,10 @@ Triggered when this component disappears.
 | -------- | -------- |
 | T | Current component, used for chained calls. |
 
+
 ## Example
+
+### Example 1 (onAttach and onDetach events)
 
 This example demonstrates how to control the mounting and unmounting of a component using a button, triggering **onAttach** and **onDetach** events.
 
@@ -162,3 +166,44 @@ struct AppearExample {
 ```
 
 ![attach_and_detach](figures/onDisAppear.gif)
+
+### Example 2 (onAppear and onDisAppear Events)
+
+This example uses a button to control the display and disappearance of a component, triggering the onAppear and onDisAppear events.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct AppearDisappearExample {
+  @State isShow: boolean = true;
+  @State changeAppear: string = 'Tap to hide or show the component';
+  private myText: string = 'Text for onDisAppear';
+
+  build() {
+    Column() {
+      Button(this.changeAppear)
+        .onClick(() => {
+          this.isShow = !this.isShow;
+        }).margin(15)
+      if (this.isShow) {
+        Text(this.myText).fontSize(26).fontWeight(FontWeight.Bold)
+          .onAppear(() => {
+            this.getUIContext().getPromptAction().showToast({
+              message: 'The text is shown',
+              duration: 2000,
+              bottom: 500
+            })
+          })
+          .onDisAppear(() => {
+            this.getUIContext().getPromptAction().showToast({
+              message: 'The text is hidden',
+              duration: 2000,
+              bottom: 500
+            })
+          })
+      }
+    }.padding(30).width('100%')
+  }
+}
+```

@@ -5,6 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @l30014443-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=995a4ca3e920338c4297efcb34b432fd4c05b496 translatedAt=2026-11-03T01:51:39.046Z pushedAt=2026-11-13T01:05:59.912Z nl=1 -->
 
 Common properties of the canvas drawing components [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) and [OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md).
 
@@ -576,7 +577,7 @@ struct TextBaseline {
 
 ## globalAlpha
 
-Sets the transparency. This is a write-only property. You can set its value through an assignment statement, but you cannot obtain its current value through a read operation. If you attempt to read it, **undefined** is returned.
+Sets the alpha. This is a write-only property. You can set its value through an assignment statement, but you cannot obtain its current value through a read operation. If you attempt to read it, **undefined** is returned.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
@@ -586,7 +587,7 @@ Sets the transparency. This is a write-only property. You can set its value thro
 
 | Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---------- | -------------- | ---------------------------------------- |
-| globalAlpha | number | No | No | Transparency.<br/>The value range is [0.0, 1.0], where 0.0 means fully transparent and 1.0 means fully opaque. If the given value is less than 0.0, the value 0.0 is used; if the given value is greater than 1.0, the value 1.0 is used.<br>Before API version 18, when **NaN** or **Infinity** is set, drawing methods executed after this method cannot draw. Since API version 18, when **NaN** or **Infinity** is set, the current API does not take effect, and other drawing methods with valid parameters draw normally.<br/>Default value: 1.0 |
+| globalAlpha | number | No | No | Alpha.<br/>The value range is [0.0, 1.0], where 0.0 means fully transparent and 1.0 means fully opaque. If the given value is less than 0.0, the value 0.0 is used; if the given value is greater than 1.0, the value 1.0 is used.<br>Before API version 18, when **NaN** or **Infinity** is set, drawing methods executed after this method cannot draw. Since API version 18, when **NaN** or **Infinity** is set, the current API does not take effect, and other drawing methods with valid parameters draw normally.<br/>Default value: 1.0 |
 
 **Example**
 
@@ -761,7 +762,7 @@ struct GlobalCompositeOperation {
       .height('30%')
 
       Row() {
-        // 3. source-in: Only the overlapping part of the new and original graphics is retained (clipping or masking).
+        // 3. source-in: Only the overlapping part of the new and existing graphics is retained (clipping or masking).
         Canvas(this.context3)
           .width('45%')
           .borderWidth(1)
@@ -769,12 +770,12 @@ struct GlobalCompositeOperation {
           .onReady(() => {
             let ctx3 = this.context3;
             let offContext = new OffscreenCanvasRenderingContext2D(ctx3.width, ctx3.height, this.settings);
-            // Draw the original graphic (circular mask) first.
+            // Draw the existing graphic (circular mask) first.
             offContext.beginPath();
             offContext.arc(ctx3.width / 2, ctx3.height / 2, 80, 0, Math.PI * 2);
             offContext.fillStyle = '#fff';
             offContext.fill();
-            // Set the compositing mode.
+            // Set the composite mode.
             offContext.globalCompositeOperation = 'source-in';
             // Draw the new graphic (gradient rectangle).
             const gradient = offContext.createLinearGradient(0, 0, ctx3.width, ctx3.height);
@@ -785,7 +786,7 @@ struct GlobalCompositeOperation {
             let image = offContext.transferToImageBitmap();
             this.context3.transferFromImageBitmap(image);
           })
-        // 4. lighter: The new graphic is superimposed on the original graphic (brightness addition, screen effect).
+        // 4. lighter: The new graphic is superimposed on the existing graphic (brightness addition, screen effect).
         Canvas(this.context4)
           .width('45%')
           .borderWidth(1)
@@ -812,7 +813,7 @@ struct GlobalCompositeOperation {
       .height('30%')
 
       Row() {
-        // 5. destination-atop: Retains the overlapping portion of the original graphic and the new graphic, and removes other areas.
+        // 5. destination-atop: Retains the overlapping portion of the existing graphic and the new graphic, and removes other areas.
         Canvas(this.context5)
           .width('45%')
           .borderWidth(1)
@@ -1083,7 +1084,7 @@ Sets whether to perform image smoothing adjustment when drawing images. The valu
 
 | Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---------- | -------------- | ---------------------------------------- |
-| imageSmoothingEnabled | boolean | No | No | Whether to perform image smoothing adjustment when drawing images.<br/>Default value: **true** |
+| imageSmoothingEnabled | boolean | No | No | Whether to adjust image smoothing when drawing an image.<br/>Default value: true<br/>true: image smoothing adjustment is enabled when drawing an image.<br/>false: image smoothing adjustment is not enabled when drawing an image. |
 
 **Example**
 
@@ -1166,11 +1167,11 @@ justifyContent: FlexAlign.Center }) {
           .backgroundColor('#ffff00')
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            let offctx = offContext
-            offctx.imageSmoothingEnabled = true
+            let offCtx = offContext
+            offCtx.imageSmoothingEnabled = true
             // Set the imageSmoothingQuality property.
-            offctx.imageSmoothingQuality = 'high'
-            offctx.drawImage(this.img, 0, 0, 400, 200)
+            offCtx.imageSmoothingQuality = 'high'
+            offCtx.drawImage(this.img, 0, 0, 400, 200)
 
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
@@ -1219,16 +1220,16 @@ justifyContent: FlexAlign.Center }) {
           .backgroundColor('#ffff00')
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            let offctx = offContext
-            offctx.font = '48px serif';
-            offctx.textAlign = 'start'
-            offctx.fillText("Hi ltr!", 200, 50);
+            let offCtx = offContext
+            offCtx.font = '48px serif';
+            offCtx.textAlign = 'start'
+            offCtx.fillText("Hi ltr!", 200, 50);
 
             // Set the direction property.
-            offctx.direction = "rtl";
-            offctx.fillText("Hi rtl!", 200, 100);
+            offCtx.direction = "rtl";
+            offCtx.fillText("Hi rtl!", 200, 100);
 
-            let image = offctx.transferToImageBitmap()
+            let image = offCtx.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
           })
       }
@@ -1253,7 +1254,7 @@ Sets image filters. Any number of filters can be combined. This is a write-only 
 <!--Table: 10%; 10%; 10%; 70%-->
 | Name | Type | Read-Only | Optional | Description |
 | ------ | ------ | ---------- | -------------- | ---------------------------------------- |
-| filter | string | No | No | Image filter.<br/>The following filter effects are supported:<br/>- **'none'**: No filter effect.<br/>- **'blur(\<length>)'**: Applies Gaussian blur to the image. The value range is ≥ 0. Supported units: px, vp, rem. Default value: **blur(0px)**.<br/>- 'brightness([\<number>\|\<percentage>])': Applies a linear multiplier to the image, making it appear brighter or darker. Supports numeric and percentage parameters. The value range is ≥ 0. Default value: **brightness(1)**.<br/>- **'contrast([\<number>\|\<percentage>])'**: Adjusts the contrast of the image. Supports numeric and percentage parameters. The value range is ≥ 0. Default value: **contrast(1)**.<br/>- **'grayscale([\<number>\|\<percentage>])'**: Converts the image to grayscale. Supports numeric and percentage parameters. The value range is [0, 1]. Default value: **grayscale(0)**.<br/>- **'hue-rotate(\<angle>)'**: Applies hue rotation to the image. The value range is 0deg-360deg. Default value: **hue-rotate(0deg)**.<br/>- **'invert([\<number>\|\<percentage>])'**: Inverts the input image. Supports numeric and percentage parameters. The value range is [0, 1]. Default value: **invert(0)**.<br/>- **'opacity([\<number>\|\<percentage>])'**: Adjusts the transparency of the image. Supports numeric and percentage parameters. The value range is [0, 1]. Default value: **opacity(1)**.<br/>- **'saturate([\<number>\|\<percentage>])'**: Adjusts the saturation of the image. Supports numeric and percentage parameters. The value range is ≥ 0. Default value: **saturate(1)**.<br/>- **'sepia([\<number>\|\<percentage>])'**: Converts the image to sepia. Supports numeric and percentage parameters. The value range is [0, 1]. Default value: **sepia(0)**.|
+| filter | string | No | No | Image filter.<br/>The following filter effects are supported:<br/>- **'none'**: No filter effect.<br/>- **'blur(\<length>)'**: Applies Gaussian blur to the image. The value range is ≥ 0. Supported units: px, vp, rem. Default value: **blur(0px)**.<br/>- 'brightness([\<number>\|\<percentage>])': Applies a linear multiplier to the image, making it appear brighter or darker. Supports numeric and percentage parameters. The value range is ≥ 0. Default value: **brightness(1)**.<br/>- **'contrast([\<number>\|\<percentage>])'**: Adjusts the contrast of the image. Supports numeric and percentage parameters. The value range is ≥ 0. Default value: **contrast(1)**.<br/>- **'grayscale([\<number>\|\<percentage>])'**: Converts the image to grayscale. Supports numeric and percentage parameters. The value range is [0, 1]. Default value: **grayscale(0)**.<br/>- **'hue-rotate(\<angle>)'**: Applies hue rotation to the image. The value range is 0deg-360deg. Default value: **hue-rotate(0deg)**.<br/>- **'invert([\<number>\|\<percentage>])'**: Inverts the input image. Supports numeric and percentage parameters. The value range is [0, 1]. Default value: **invert(0)**.<br/>- **'opacity([\<number>\|\<percentage>])'**: Adjusts the opacity of the image. Supports numeric and percentage parameters. The value range is [0, 1]. Default value: **opacity(1)**.<br/>- **'saturate([\<number>\|\<percentage>])'**: Adjusts the saturation of the image. Supports numeric and percentage parameters. The value range is ≥ 0. Default value: **saturate(1)**.<br/>- **'sepia([\<number>\|\<percentage>])'**: Converts the image to sepia. Supports numeric and percentage parameters. The value range is [0, 1]. Default value: **sepia(0)**.|
 
 **Example**
 
@@ -1330,7 +1331,11 @@ Sets image filters. Any number of filters can be combined. This is a write-only 
 
 Specifies the spacing between letters when drawing text. This is a write-only property. You can set its value through an assignment statement, but you cannot obtain its current value through a read operation. If you attempt to read it, **undefined** is returned.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Atomic service API:** This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1347,7 +1352,7 @@ Specifies the spacing between letters when drawing text. This is a write-only pr
 
   @Entry
   @Component
-  struct letterSpacingDemo {
+  struct LetterSpacingDemo {
     private settings: RenderingContextSettings = new RenderingContextSettings(true);
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
     private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);

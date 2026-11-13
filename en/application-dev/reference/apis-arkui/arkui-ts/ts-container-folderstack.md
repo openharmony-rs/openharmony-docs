@@ -1,24 +1,29 @@
 # FolderStack
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu; @song-song-song-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-08-21T02:24:09.654Z pushedAt=2026-08-21T07:32:35.990Z -->
+<!-- md-trans-meta sourceCommit=eb093f069028c22436c2a76b8e266be5c22ac869 translatedAt=2026-11-03T01:59:42.996Z pushedAt=2026-11-13T01:05:59.941Z nl=1 -->
 
 **FolderStack** extends the [Stack](ts-container-stack.md) container, adding the <!--RP1-->foldable screen hover<!--RP1End--> capability. By setting child component IDs in the **upperItems** array of the [FolderStackOptions](#folderstackoptions18) configuration, the corresponding child components automatically avoid the fold crease area and move to the upper screen. **FolderStack** is designed for the hover status scenario of dual-fold devices, such as video playback and video conferencing apps, where the video image automatically moves to the upper screen while the control panel remains on the lower screen. This component addresses the adaptation challenges of dual-fold devices, delivering benefits such as improved user experience and simplified layout adaptation for developers.
 
 > **NOTE**
 >
-> - This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 11. New APIs in later versions are marked with a superscript to indicate their earliest API version.
 >
 > - The APIs of this module can be used only in the stage model.
 >
-> - The hover capability of this component is designed for <!--RP2-->dual-fold<!--RP2End--> devices and takes effect only on dual-fold devices. You can use [FoldStatus](ts-appendix-enums.md#foldstatus11) to determine the fold status of the device.
+> - Since API version 26.1.0, the hover state capability of this component takes effect on all foldable devices. Before API version 26.1.0, the hover state capability of this component was designed for <!--RP2-->dual-fold<!--RP2End--> devices and takes effect only on dual-fold devices. You can use [FoldStatus](ts-appendix-enums.md#foldstatus11) to determine the fold status of the device.
 >
 > - When the parent component of this component is an [if/else: conditional rendering](../../../ui/rendering-control/arkts-rendering-control-ifelse.md) node, the foldable screen hover capability becomes invalid.
+>
+> - If the FolderStack does not fill the entire page, it is used as a common Stack.
+>
+> - When not in the hover state, the layout of FolderStack follows [Stack](ts-container-stack.md); in the hover state, it fills the parent container by default. If it does not fill the entire page, it is used as a common Stack.
+>
+> - The hover state capability of FolderStack takes effect only when the window mode [WindowStatusType](../arkts-apis-window-e.md#windowstatustype11) is full-screen mode.
 
 ## Child Components
 
@@ -144,7 +149,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 onFolderStateChange(callback: OnFoldStatusChangeCallback)
 
-Triggered when the fold status of the current device changes <!--RP3-->(This callback takes effect only in landscape mode.)<!--RP3End-->.<br>Typical usage: Adjust the app layout based on the fold status, for example, displaying a two-column layout in the expanded state and adjusting the content distribution between the upper and lower screens in the half-fold status.
+Triggered when the fold status of the current device changes (this callback takes effect only when the fold crease area direction is horizontal).<br>Typical usage: Adjust the application layout based on the fold status, for example, displaying a two-column layout in the expanded state and adjusting the content distribution between the upper and lower screens in the half-folded state.
 
 >**NOTE**
 >
@@ -206,7 +211,7 @@ Defines the current callback invoked when the hover state of the device changes.
 
 type OnFoldStatusChangeCallback = (event: OnFoldStatusChangeInfo) => void
 
-Triggered when the fold status changes<!--RP4-->, which takes effect only in landscape mode<!--RP4End-->.
+Callback triggered when the fold status changes, which takes effect only when the fold crease area direction is horizontal.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -218,11 +223,12 @@ Triggered when the fold status changes<!--RP4-->, which takes effect only in lan
 
 | Name    | Type                                           | Mandatory| Description                |
 | ---------- | ----------------------------------------------- | ---- | -------------------- |
-| event | [OnFoldStatusChangeInfo](#onfoldstatuschangeinfo18) | Yes | Information about the fold status change. This takes effect only in landscape mode. |
+| event | [OnFoldStatusChangeInfo](#onfoldstatuschangeinfo18) | Yes | Information about the folded state change. |
+
 
 ## OnFoldStatusChangeInfo<sup>18+</sup>
 
-Defines the information about the fold status change, which takes effect only in landscape mode.
+Information about the fold status change, which takes effect only when the fold crease area direction is horizontal.
 
 > **NOTE**
 >
@@ -269,7 +275,7 @@ Enumerates the window modes.
 | ---------- | ---------------------|
 | import('../api/@ohos.window').default.[WindowStatusType](../arkts-apis-window-e.md#windowstatustype11)  | Window mode enum. |
 
-## Example
+## Examples
 
 ### Example 1: Implementing the Foldable Device Hover Capability with FolderStack
 
@@ -344,7 +350,6 @@ struct Index {
   }
 }
 ```
-
 **Figure 1** Expanded state in landscape mode<br>
 ![FolderStack01.png](figures/FolderStack01.png)<br>
 **Figure 2** Half-fold state in landscape mode<br>

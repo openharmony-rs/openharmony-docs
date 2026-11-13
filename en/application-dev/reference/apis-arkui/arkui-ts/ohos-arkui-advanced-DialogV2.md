@@ -5,6 +5,7 @@
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=1df0084f62f831231c783942b6a94e81f3c93a30 translatedAt=2026-11-03T01:28:34.028Z pushedAt=2026-11-13T01:05:59.859Z nl=1 -->
 
 
 The dialog box is a modal window that commands attention while retaining the current context. It is frequently used to draw the user's attention to vital information or prompt the user to complete a specific task. As all modal windows, this component requires the user to interact before exiting.
@@ -127,11 +128,11 @@ Displays an alert dialog box to prompt the user to confirm an action that is irr
 
 | Name             | Type                                               | Mandatory| Decorator               | Description                  |
 | --------------- | ------------------------------------------------- | -- | :------------------- | -------------------- |
-| primaryTitle    | [ResourceStr](ts-types.md#resourcestr)            | No | @Param               | Primary title of the dialog box.<br>It is not displayed by default.<br>**NOTE**<br>If the title exceeds two lines, it will be truncated with an ellipsis (...). |
-| secondaryTitle  | [ResourceStr](ts-types.md#resourcestr)            | No | @Param               | Secondary title of the dialog box.<br>It is not displayed by default.<br>**NOTE**<br>If the title exceeds two lines, it will be truncated with an ellipsis (...).      |
-| content         | [ResourceStr](ts-types.md#resourcestr)            | Yes | @Param<br>@Require | Content of the dialog box.<br>      |
-| primaryButton   | [AdvancedDialogV2Button](#advanceddialogv2button) | No | @Param               | Left button of the dialog box.<br>It is not displayed by default.|
-| secondaryButton | [AdvancedDialogV2Button](#advanceddialogv2button) | No | @Param               | Right button of the dialog box.<br>It is not displayed by default.|
+| primaryTitle    | [ResourceStr](ts-types.md#resourcestr)            | No  | @Param               | Title of the alert dialog box.<br/>Hidden by default.<br/>**Note:** A title exceeding two lines will display "...".  |
+| secondaryTitle  | [ResourceStr](ts-types.md#resourcestr)            | No  | @Param               | Auxiliary text of the alert dialog box.<br/>Hidden by default.<br/>**Note:** Auxiliary text exceeding two lines will display "...".       |
+| content         | [ResourceStr](ts-types.md#resourcestr)            | Yes  | @Param<br/>@Require | Content of the alert dialog box.       |
+| primaryButton   | [AdvancedDialogV2Button](#advanceddialogv2button) | No  | @Param               | Left button of the alert dialog box.<br/>Hidden by default. |
+| secondaryButton | [AdvancedDialogV2Button](#advanceddialogv2button) | No  | @Param               | Right button of the alert dialog box.<br/>Hidden by default. |
 
 ## LoadingDialogV2
 
@@ -151,7 +152,7 @@ Displays a loading dialog box to inform the user of the operation progress.
 
 ## CustomContentDialogV2
 
-CustomContentDialogV2({contentBuilder: () => void, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, contentAreaPadding?: LocalizedPadding, buttons?: AdvancedDialogV2Button\[]})
+CustomContentDialogV2({contentBuilder: CustomBuilder, primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, contentAreaPadding?: LocalizedPadding, buttons?: AdvancedDialogV2Button\[]})
 
 Displays a dialog box that contains custom content and operation area.
 
@@ -288,7 +289,7 @@ Provides options used to initialize an **AdvancedDialogV2Button** object.
 | enabled       | boolean                                                                | No | Yes | Whether the button is enabled.<br>**true**: The button is enabled.<br>**false**: The button is disabled.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.  |
 | textAlign<sup>24+</sup> | [TextAlign](ts-appendix-enums.md#textalign) | No| Yes| Alignment method of the button text.<br>Default value: **TextAlign.Start**<br>**Atomic service API**: This API can be used in atomic services since API version 24. |
 
-## Example
+## Examples
 
 ### Example 1: Dialog Box with an Image Above Text
 
@@ -305,54 +306,54 @@ struct Index {
   @Builder
   dialogBuilder(): void {
     TipsDialogV2({
-      imageRes: $r('sys.media.ohos_ic_public_voice'),
+    imageRes: $r('sys.media.ohos_ic_public_voice'),
       content: 'Delete this app?',
       title: 'TipsDialogV2',
       checkTips: 'Do not show again',
       checked: this.checked,
       primaryButton: new AdvancedDialogV2Button({
-        content: 'Cancel',
+      content: 'Cancel',
         action: () => {
-          console.info('Callback when the first button is clicked');
-        },
-      }),
+        console.info('Callback when the first button is clicked');
+          },
+        }),
       secondaryButton: new AdvancedDialogV2Button({
-        content: 'Delete',
+      content: 'Delete',
         role: ButtonRole.ERROR,
         action: () => {
-          console.info('Callback when the second button is clicked');
-        }
-      }),
+        console.info('Callback when the second button is clicked');
+          }
+        }),
       onCheckedChange: (checked: boolean) => {
-        console.info('Callback when the checkbox is clicked');
+      console.info('Callback when the checkbox is clicked');
         this.checked = checked;
-      }
-    })
-  }
-
-  build() {
-    Row() {
-      Stack() {
-        Column() {
-          Button("TipsDialogV2")
-            .width(96)
+        }
+      })
+    }
+  
+build() {
+  Row() {
+    Stack() {
+      Column() {
+        Button("TipsDialogV2")
+          .width(96)
             .height(40)
             .onClick(() => {
-              let uiContext: UIContext = this.getUIContext();
+            let uiContext: UIContext = this.getUIContext();
               uiContext.getPromptAction().openCustomDialog({
-                builder: () => {
-                  this.dialogBuilder();
-                },
-              });
-            })
-        }.margin({ bottom: 300 })
-      }.align(Alignment.Bottom)
+              builder: () => {
+                this.dialogBuilder();
+                  },
+                });
+              })
+            }.margin({ bottom: 300 })
+        }.align(Alignment.Bottom)
       .width('100%').height('100%')
-    }
+      }
     .backgroundImageSize({ width: '100%', height: '100%' })
     .height('100%')
+    }
   }
-}
 ```
 
 ![TipsDialog](figures/TipsDialog.png)
@@ -371,57 +372,57 @@ struct Index {
   @Builder
   dialogBuilder(): void {
     SelectDialogV2({
-      title:'Title',
+    title:'Title',
       selectedIndex: this.radioIndex,
       confirm: new AdvancedDialogV2Button({
-        content: 'Cancel',
+      content: 'Cancel',
         action: () => {},
-      }),
+        }),
       radioContent: [
-        {
-          title: 'List item',
+      {
+        title: 'List item',
           action: () => {
-            this.radioIndex = 0
-          }
-        },
+          this.radioIndex = 0
+            }
+          },
         {
-          title: 'List item',
+        title: 'List item',
           action: () => {
-            this.radioIndex = 1
-          }
-        },
+          this.radioIndex = 1
+            }
+          },
         {
-          title: 'List item',
+        title: 'List item',
           action: () => {
-            this.radioIndex = 2
-          }
-        },
-      ]
-    })
-  }
+          this.radioIndex = 2
+            }
+          },
+        ]
+      })
+    }
   build() {
-    Row() {
-      Stack() {
-        Column() {
-          Button("List Dialog Box")
-            .width(96)
+  Row() {
+    Stack() {
+      Column() {
+        Button("List Dialog Box")
+          .width(96)
             .height(40)
             .onClick(() => {
-              let uiContext: UIContext = this.getUIContext();
+            let uiContext: UIContext = this.getUIContext();
               uiContext.getPromptAction().openCustomDialog({
-                builder: () => {
-                  this.dialogBuilder();
-                }
+              builder: () => {
+                this.dialogBuilder();
+                  }
+                })
               })
-            })
-        }.margin({ bottom: 300 })
-      }.align(Alignment.Bottom)
+            }.margin({ bottom: 300 })
+        }.align(Alignment.Bottom)
       .width('100%').height('100%')
-    }
+      }
     .backgroundImageSize({ width: '100%', height: '100%' })
     .height('100%')
+    }
   }
-}
 ```
 
 ![SelectDialog](figures/SelectDialog.png)
@@ -441,54 +442,54 @@ struct Index {
   @Builder
   dialogBuilder(): void {
     ConfirmDialogV2({
-      title:'Title',
+    title:'Title',
       content: 'This is where the content of this dialog box is presented.',
       checked: this.checked,
       checkTips: 'Do not ask me again',
       primaryButton: new AdvancedDialogV2Button({
-        content: 'Deny',
+      content: 'Deny',
         action: () => {
-          console.info('Callback when the primary button is clicked');
-        },
-      }),
+        console.info('Callback when the primary button is clicked');
+          },
+        }),
       secondaryButton: new AdvancedDialogV2Button({
-        content: 'Allow',
+      content: 'Allow',
         action: () => {
-          this.checked = false
+        this.checked = false
           console.info('Callback when the second button is clicked');
-        }
-      }),
+          }
+        }),
       onCheckedChange: (checked: boolean) => {
-        console.info('Callback when the checkbox is clicked');
+      console.info('Callback when the checkbox is clicked');
         this.checked = checked;
-      },
-    })
-  }
-
-  build() {
-    Row() {
-      Stack() {
-        Column() {
-          Button("Open ConfirmDialogV2")
-            .width(96)
+        },
+      })
+    }
+  
+build() {
+  Row() {
+    Stack() {
+      Column() {
+        Button("Open ConfirmDialogV2")
+          .width(96)
             .height(40)
             .onClick(() => {
-              let uiContext: UIContext = this.getUIContext();
+            let uiContext: UIContext = this.getUIContext();
               uiContext.getPromptAction().openCustomDialog({
-                builder: () => {
-                  this.dialogBuilder();
-                },
+              builder: () => {
+                this.dialogBuilder();
+                  },
                 alignment: DialogAlignment.Bottom
-              });
-            })
-        }.margin({ bottom: 300 })
-      }.align(Alignment.Bottom)
+                });
+              })
+            }.margin({ bottom: 300 })
+        }.align(Alignment.Bottom)
       .width('100%').height('100%')
-    }
+      }
     .backgroundImageSize({ width: '100%', height: '100%' })
     .height('100%')
+    }
   }
-}
 ```
 
 ![2024-06-03](figures/2024-06-03_150422.png)
@@ -506,48 +507,48 @@ struct Index {
   @Builder
   dialogBuilder(): void {
     AlertDialogV2({
-      primaryTitle: 'Primary title',
+    primaryTitle: 'Primary title',
       secondaryTitle: 'Secondary title',
       content: 'This is where content is displayed.',
       primaryButton: new AdvancedDialogV2Button({
-        content: 'Cancel',
+      content: 'Cancel',
         action: () => {
-          console.info('Callback when the primary button is clicked');
-        },
-      }),
+        console.info('Callback when the primary button is clicked');
+          },
+        }),
       secondaryButton: new AdvancedDialogV2Button({
-        content: 'OK',
+      content: 'OK',
         role: ButtonRole.ERROR,
         action: () => {
-          console.info('Callback when the second button is clicked');
-        }
-      }),
-    })
-  }
-
-  build() {
-    Row() {
-      Stack() {
-        Column() {
-          Button("Open AlertDialogV2")
-            .width(96)
+        console.info('Callback when the second button is clicked');
+          }
+        }),
+      })
+    }
+  
+build() {
+  Row() {
+    Stack() {
+      Column() {
+        Button("Open AlertDialogV2")
+          .width(96)
             .height(40)
             .onClick(() => {
-              let uiContext: UIContext = this.getUIContext();
+            let uiContext: UIContext = this.getUIContext();
               uiContext.getPromptAction().openCustomDialog({
-                builder: () => {
-                  this.dialogBuilder();
-                }
-              });
-            })
-        }.margin({ bottom: 300 })
-      }.align(Alignment.Bottom)
+              builder: () => {
+                this.dialogBuilder();
+                  }
+                });
+              })
+            }.margin({ bottom: 300 })
+        }.align(Alignment.Bottom)
       .width('100%').height('100%')
-    }
+      }
     .backgroundImageSize({ width: '100%', height: '100%' })
     .height('100%')
+    }
   }
-}
 ```
 
 ![AlertDialog](figures/AlertDialog.png)
@@ -565,33 +566,33 @@ struct Index {
   @Builder
   dialogBuilder(): void {
     LoadingDialogV2({
-      content: 'This is where content is displayed.',
-    })
-  }
-
-  build() {
-    Row() {
-      Stack() {
-        Column() {
-          Button("Open LoadingDialogV2")
-            .width(96)
+    content: 'This is where content is displayed.',
+      })
+    }
+  
+build() {
+  Row() {
+    Stack() {
+      Column() {
+        Button("Open LoadingDialogV2")
+          .width(96)
             .height(40)
             .onClick(() => {
-              let uiContext: UIContext = this.getUIContext();
+            let uiContext: UIContext = this.getUIContext();
               uiContext.getPromptAction().openCustomDialog({
-                builder: () => {
-                  this.dialogBuilder();
-                }
-              });
-            })
-        }.margin({ bottom: 300 })
-      }.align(Alignment.Bottom)
+              builder: () => {
+                this.dialogBuilder();
+                  }
+                });
+              })
+            }.margin({ bottom: 300 })
+        }.align(Alignment.Bottom)
       .width('100%').height('100%')
-    }
+      }
     .backgroundImageSize({ width: '100%', height: '100%' })
     .height('100%')
+    }
   }
-}
 ```
 
 ![LoadingDialog](figures/LoadingDialog.gif)
@@ -668,49 +669,49 @@ struct Index {
   @Builder
   dialogBuilder(): void {
     CustomContentDialogV2({
-      primaryTitle: 'Primary title',
+    primaryTitle: 'Primary title',
       secondaryTitle: 'Secondary title',
       contentBuilder: () => {
-        this.buildContent();
-      },
+      this.buildContent();
+        },
       buttons: [
-        new AdvancedDialogV2Button({
-          content: 'Button 1', buttonStyle: ButtonStyleMode.TEXTUAL,
+      new AdvancedDialogV2Button({
+        content: 'Button 1', buttonStyle: ButtonStyleMode.TEXTUAL,
           action: () => {
-            console.info('Callback when the button is clicked');
-          }
-        }),
+          console.info('Callback when the button is clicked');
+            }
+          }),
         new AdvancedDialogV2Button({
-          content: 'Button 2', buttonStyle: ButtonStyleMode.TEXTUAL, role: ButtonRole.ERROR,
-        })
-      ],
-    })
-  }
-
-  build() {
-    Column() {
-      Button("Open CustomContentDialogV2")
-        .onClick(() => {
-            let uiContext: UIContext = this.getUIContext();
+        content: 'Button 2', buttonStyle: ButtonStyleMode.TEXTUAL, role: ButtonRole.ERROR,
+          })
+        ],
+      })
+    }
+  
+build() {
+  Column() {
+    Button("Open CustomContentDialogV2")
+      .onClick(() => {
+        let uiContext: UIContext = this.getUIContext();
             uiContext.getPromptAction().openCustomDialog({
             builder: () => {
-              this.dialogBuilder();
-            }
+            this.dialogBuilder();
+              }
+            })
           })
-        })
-    }
+        }
     .width('100%')
     .height('100%')
     .justifyContent(FlexAlign.Center)
-  }
-
-  @Builder
+    }
+  
+@Builder
   buildContent(): void {
-    Column() {
-      Text('Content area')
+  Column() {
+    Text('Content area')
+      }
     }
   }
-}
 ```
 
 ![custom\_content\_dialog](figures/advanced_dialog_custom_content_dialog.png)
@@ -759,15 +760,15 @@ struct Index {
   build() {
     Column() {
       PopoverDialogV2({
-        visible: this.isShow!!,
+      visible: this.isShow!!,
         popover: this.popoverOptions,
         targetBuilder: () => {
-          this.buttonBuilder();
-        },
-      })
+        this.buttonBuilder();
+          },
+        })
+      }
     }
   }
-}
 ```
 
 ![popover\_dialog](figures/advanced_dialog_popover_dialog.png)

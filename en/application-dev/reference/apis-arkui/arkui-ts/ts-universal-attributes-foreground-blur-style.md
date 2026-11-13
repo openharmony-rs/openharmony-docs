@@ -5,17 +5,17 @@
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-09-01T12:35:50.302Z -->
+<!-- md-trans-meta sourceCommit=2045d93f33c68e812aa7acefa43d73e8c50ea466 translatedAt=2026-11-03T03:21:30.756Z pushedAt=2026-11-13T01:06:00.096Z nl=1 -->
 
 You can apply foreground blur effects to a component.
 
 >  **NOTE**
 >
-> - Supported since API version 10. If new content is added in later versions, the starting version of the new content is marked separately with a superscript.
+> - Supported since API version 10. If new content is added in later versions, the starting version of the content is marked separately with a superscript.
 >
 > - The APIs of this module can be used only in the stage model.
 >
-> - The **foregroundBlurStyle** API is a real-time blurring API that performs rendering frame by frame, which incurs significant performance overhead. When neither the blur content nor the blur radius needs to change, use the static blurring API [blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur) instead. For best practices, see [Image Blurring Optimization - When to Use](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4652132214525).
+> - **foregroundBlurStyle** is a real-time blur API that performs real-time rendering per frame, resulting in high performance overhead. When neither the blur content nor the blur radius needs to change, use the static blur API [blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur). For best practices, see [When to Use](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ui-dynamic-vs-static-blur-examples#when-to-use) in Comparing Dynamic Blur and Static Blur.
 
 ## foregroundBlurStyle
 
@@ -31,7 +31,7 @@ Applies a foreground blur style to the component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                    |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------ |
@@ -54,7 +54,7 @@ Applies a foreground blur style to the component. Compared to [foregroundBlurSty
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -75,14 +75,14 @@ Provides content blur capability for the current component. Compared to [foregro
 
 >  **NOTE**
 >
->  The **foregroundBlurStyle** API is a real-time blurring API that performs rendering frame by frame, which incurs higher performance overhead than the static blurring API. When neither the blur content nor the blur radius needs to change, use the static blurring API [blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur) instead. For best practices, see [Image Blurring Optimization - When to Use](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4652132214525).
+>  **foregroundBlurStyle** is a real-time blur API that performs real-time rendering per frame, resulting in higher performance overhead than the static blur API. When neither the blur content nor the blur radius needs to change, use the static blur API [blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur). For best practices, see [When to Use](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ui-dynamic-vs-static-blur-examples#when-to-use) in Comparing Dynamic Blur and Static Blur.
 
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |

@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=8dd2d5cdf88acdc31ee17ec2006247a008c91d7c translatedAt=2026-08-28T01:28:33.403Z pushedAt=2026-08-31T09:26:37.964Z -->
+<!-- md-trans-meta sourceCommit=3b365726b52a7fd55dd12da9d2f0c21ef3ca8b4c translatedAt=2026-11-03T02:41:25.785Z pushedAt=2026-11-13T01:05:59.999Z nl=1 -->
 
 Provides the global **animateTo** explicit animation API to insert transition effects for state changes caused by closure code. As with attribute animations, for animations that change layout attributes (such as width and height), the content usually jumps directly to the final state, for example, the text or content in [Canvas](ts-components-canvas-canvas.md). If you want the content to follow the width and height changes, you can use the [renderFit](ts-universal-attributes-renderfit.md#renderfit) attribute for configuration.
 
