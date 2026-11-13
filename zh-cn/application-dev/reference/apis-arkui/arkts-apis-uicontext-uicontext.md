@@ -20,11 +20,28 @@ UIContext实例对象，用于提供与当前UI实例关联的上下文能力，
 
 **示例：**
 
-以下示例展示了三种获取UIContext实例的方法。
+以下示例展示了三种获取UIContext实例的方法，三种方法获取到的UIContext没有差异。三种方法分布在两个文件中，因此由两个互相独立的示例脚本承载：示例脚本一须完整拷贝到UIAbility文件EntryAbility.ets中，示例脚本二须完整拷贝到页面文件index.ets中，请勿将两个脚本拷贝到同一个文件。
+
+**示例脚本一（EntryAbility.ets）：**
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // 第一种：通过ohos.window中的getUIContext()方法获取UIContext实例
+    windowStage.getMainWindowSync().getUIContext();
+    // 其他运行逻辑
+  }
+}
+```
+
+**示例脚本二（index.ets）：**
 
 ```ts
 // index.ets
-// 三种方法获取到的UIContext没有差异
 import { UIContext } from '@kit.ArkUI';
 
 @Entry
@@ -34,27 +51,13 @@ struct Index {
     Column() {
       Button('Button')
           .onClick(() => {
-            // 通过自定义组件内置方法获取
+            // 第二种：通过自定义组件内置方法getUIContext()获取UIContext实例
             this.getUIContext();
-            // 通过UIContext类的静态方法获取
+            // 第三种：通过UIContext类的静态方法（如getCallingScopeUIContext）获取UIContext实例
             let uiContext = UIContext.getCallingScopeUIContext();
             // 其他运行逻辑
           })
     }
-  }
-}
-```
-
-```ts
-// EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { window } from '@kit.ArkUI';
-
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // 通过ohos.window获取
-    windowStage.getMainWindowSync().getUIContext();
-    // 其他运行逻辑
   }
 }
 ```
@@ -815,8 +818,6 @@ animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
 
 ```ts
 // xxx.ets
-import { UIContext } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct AnimateToImmediatelyExample {
@@ -904,8 +905,6 @@ animateTo(value: AnimateParam, event: () => void): void
 
 ```ts
 // xxx.ets
-import { UIContext } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct AnimateToExample {
@@ -1347,8 +1346,6 @@ showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButto
 **示例：**
 
 ```ts
-import { UIContext } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct Index {
@@ -1403,8 +1400,6 @@ showActionSheet(value: ActionSheetOptions): void
 **示例：**
 
 ```ts
-import { UIContext } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct Index {
@@ -1891,8 +1886,7 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 <!--code_no_check-->
 ```ts
 // EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { KeyboardAvoidMode, UIContext, window } from '@kit.ArkUI';
+import { KeyboardAvoidMode, UIContext } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility{
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -1932,8 +1926,7 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 <!--code_no_check-->
 ```ts
 // EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { KeyboardAvoidMode, UIContext, window } from '@kit.ArkUI';
+import { KeyboardAvoidMode, UIContext } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility{
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -3186,7 +3179,7 @@ openBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOp
 **示例：**
 
 ```ts
-import { FrameNode, ComponentContent, UIContext } from "@kit.ArkUI";
+import { FrameNode, ComponentContent } from "@kit.ArkUI";
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class Params {
@@ -3314,7 +3307,7 @@ updateBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheet
 **示例：**
 
 ```ts
-import { FrameNode, ComponentContent, UIContext } from '@kit.ArkUI';
+import { FrameNode, ComponentContent } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class Params {
@@ -3440,7 +3433,7 @@ closeBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>): Promi
 **示例：**
 
 ```ts
-import { FrameNode, ComponentContent, UIContext } from "@kit.ArkUI";
+import { FrameNode, ComponentContent } from "@kit.ArkUI";
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class Params {
@@ -4002,8 +3995,7 @@ setPixelRoundMode(mode: PixelRoundMode): void
 <!--code_no_check-->
 ```ts
 // EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { UIContext, window } from '@kit.ArkUI';
+import { UIContext } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -4037,8 +4029,7 @@ getPixelRoundMode(): PixelRoundMode
 <!--code_no_check-->
 ```ts
 // EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { UIContext, window } from '@kit.ArkUI';
+import { UIContext } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility{
   onWindowStageCreate(windowStage: window.WindowStage) {
@@ -4374,8 +4365,6 @@ getPageRootNode(): FrameNode | null
 **示例：**
 
 ```ts
-import { FrameNode } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct NavigationExample {
@@ -4625,8 +4614,6 @@ addLocalInputEventMonitor(eventMask: number, listener: InputEventListener): Inpu
 **示例：**
 
 ```ts
-import { UIContext } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct InputEventMonitorSample {
@@ -4693,8 +4680,6 @@ removeLocalInputEventMonitor(monitor: InputEventMonitor): void
 **示例：**
 
 ```ts
-import { UIContext } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct RemoveMonitorSample {
@@ -4806,8 +4791,7 @@ applyDefaultImmersiveStrategy(...types: ImmersiveStrategy[]): void
 
 ```ts
 // EntryAbility.ets
-import { UIAbility } from '@kit.AbilityKit';
-import { UIContext, window } from '@kit.ArkUI';
+import { UIContext } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
