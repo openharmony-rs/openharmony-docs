@@ -312,7 +312,7 @@ Enumerates the exchangeable image file format (Exif) image information.
 
 ## FragmentMapPropertyKey<sup>13+</sup>
 
-Enumerates thefragment map information.
+Enumerates the fragment map information.
 
 **System capability**: SystemCapability.Multimedia.Image.Core
 
@@ -320,8 +320,8 @@ Enumerates thefragment map information.
 | ------------- | --------------------- | ----------------------------------- |
 | X_IN_ORIGINAL | "XInOriginal"         | X coordinate of the top-left corner of the fragment map in the original image.|
 | Y_IN_ORIGINAL | "YInOriginal"         | Y coordinate of the top-left corner of the fragment map in the original image.|
-| WIDTH         | "FragmentImageWidth"  | Width of thefragment map, in pixels.                    |
-| HEIGHT        | "FragmentImageHeight" | Height of thefragment map, in pixels.                    |
+| WIDTH         | "FragmentImageWidth"  | Width of the fragment map, in pixels.                    |
+| HEIGHT        | "FragmentImageHeight" | Height of the fragment map, in pixels.                    |
 
 ## GifPropertyKey<sup>20+</sup>
 
