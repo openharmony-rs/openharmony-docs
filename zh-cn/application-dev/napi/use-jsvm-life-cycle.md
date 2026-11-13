@@ -44,7 +44,7 @@ JSVM-API提供了一组功能，使开发人员能够在JSVM-API模块中创建�
 | OH_JSVM_DeleteReference      | 释放由OH_JSVM_CreateReference创建的引用，确保对象在不再被使用时能够被正确地释放和回收，避免内存泄漏。 |
 | OH_JSVM_ReferenceRef         | 增加由OH_JSVM_CreateReference创建的引用的引用计数，以确保对象在有引用时不会被提前释放。 |
 | OH_JSVM_ReferenceUnref       | 减少引用计数，用于管理引用计数。|
-| OH_JSVM_GetReferenceValue   | 减少由OH_JSVM_CreateReference创建的引用的引用计数，以确保没有任何引用指向该对象时能正确地释放和回收。 |
+| OH_JSVM_GetReferenceValue   | 获取由OH_JSVM_CreateReference创建的引用所关联的值。 |
 | OH_JSVM_AddFinalizer          | 为对象添加JSVM_Finalize回调，以便在JavaScript对象被垃圾回收时调用来释放原生对象。|
 
 ## 使用示例
