@@ -549,7 +549,7 @@
       - [@ReusableV2: Component Reuse V2](arkui-ts/ts-custom-component-decorator-reusablev2.md)
       - [@Styles: Component Reuse Styles](arkui-ts/ts-custom-component-decorator-styles.md)
       - [wrapBuilder: Wrapping a Global @Builder](arkui-ts/ts-universal-wrapBuilder.md)
-      - [mutableBuilder](arkui-ts/ts-universal-mutableBuilder.md)
+      - [mutableBuilder: Dynamic Update of Global @Builder](arkui-ts/ts-universal-mutableBuilder.md)
   - Component Preview<!--component-preview-->
     - [Component Preview](arkui-ts/ts-universal-component-previewer.md)
   - System Preset UI Component Library<!--system-preset-ui-component-library-->

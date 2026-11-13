@@ -63,7 +63,7 @@ function log(message: string): void {
 
 ### null与undefined
 
-`null`表示有意赋予的空值，`undefined`表示变量未赋值或属性不存在，两者语义不同，需显式区分。建议优先使用`undefined`表示值不存在，仅在明确需要表达空值语义时使用`null`。ArkTS默认开启空安全，`null`和`undefined`不能赋给非可空类型（`let name: string = null`是编译错误），访问可空值前需通过判空检查、可选链（?.）或空值合并（??）处理，详见[基础知识](arkts-language-guide-basics.md)。
+`null`表示有意赋予的空值，`undefined`表示变量未赋值或属性不存在，两者语义不同，需显式区分。建议优先使用`undefined`表示值不存在，仅在明确需要表达空值语义时使用`null`。ArkTS默认开启空安全，`null`和`undefined`不能赋给非可空类型（`let name: string = null`是编译错误），访问可空值前需通过判空检查、可选链（`?.`）或空值合并（`??`）处理，详见[基础知识](arkts-language-guide-basics.md)。
 
 <!-- @[null_undefined_types_basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
@@ -119,7 +119,7 @@ if (typeof boxed === 'string') {
 }
 ```
 
-除上述类型外，ArkTS还提供`never`（永不存在的值，如总是抛出异常的函数的返回类型）、`bigint`（任意精度整数）、数组（`T[]`）等类型，详见[基础知识](arkts-language-guide-basics.md)和[集合类型](arkts-language-guide-collection-types.md)。
+除上述类型外，ArkTS还提供`never`（永不存在的值，如总是抛出异常的函数的返回类型）、`bigint`（任意精度整数）、数组（`T[]`）等类型。各类型的详细介绍参见[基础知识](arkts-language-guide-basics.md)和[集合类型](arkts-language-guide-collection-types.md)。
 
 ## 自定义类型
 
@@ -349,7 +349,7 @@ let config: Readonly<AppConfig> = { appId: 'com.example.app', version: '1.0.0' }
 
 ### Record
 
-`Record<K, V>`将键类型K映射到值类型V，适合表达键值结构。通过索引访问`Record`对象的值时，结果类型是包含`undefined`的联合类型。`Record`的更多用法详见[集合类型](arkts-language-guide-collection-types.md)。
+`Record<K, V>`将键类型K映射到值类型V，键类型`K`可为`string`或`number`，适合表达键值结构。通过索引访问`Record`对象的值时，结果类型是包含`undefined`的联合类型。`Record`的更多用法详见[集合类型](arkts-language-guide-collection-types.md)。
 
 <!-- @[record_type_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
@@ -370,7 +370,7 @@ let info: CityInfo | undefined = cityMap['Beijing']; // 索引访问结果包含
 
 ## 子类型
 
-若类型S的任意值都可以安全地赋给类型T的变量，则称S是T的子类型。ArkTS不支持结构类型（鸭子类型），编译器不通过比较两个类型的结构判定兼容性，类型之间的子类型关系基于显式的继承和`implements`关系，详见[从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md#不支持-structural-typing)。
+若类型S的任意值都可以安全地赋给类型T的变量，则称S是T的子类型。ArkTS不支持结构化类型（即鸭子类型），编译器不通过比较两个类型的结构判定兼容性，类型之间的子类型关系基于显式的继承和`implements`关系，详见[从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md#不支持-structural-typing)。
 
 ### 父子类
 

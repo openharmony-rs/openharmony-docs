@@ -1,11 +1,11 @@
 # Crown Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b7d29dcb4c10e7f74b8709493d673af25bbc5983 translatedAt=2026-09-02T12:23:36.033Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:53:10.991Z pushedAt=2026-11-13T01:06:00.153Z nl=1 -->
 
 A crown event is an event triggered when the crown is rotated. Event dispatch relies on application focus, and you can customize event handling through [focus events](ts-universal-focus-event.md).
 

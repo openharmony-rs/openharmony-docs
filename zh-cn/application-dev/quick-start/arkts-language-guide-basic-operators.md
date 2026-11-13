@@ -1,12 +1,12 @@
 ---
 kits: ["ArkTS Kit / 方舟编程语言"]
 description: "讲解ArkTS的赋值、算术、比较、逻辑、三元条件等基本运算符的用法与运算符优先级规则。"
-keywords: [ArkTS, 基本操作符, 赋值运算符, 算术运算符, 比较运算符, 逻辑运算符, 三元条件运算符, 运算符优先级]
+keywords: [ArkTS, 基本运算符, 赋值运算符, 算术运算符, 比较运算符, 逻辑运算符, 三元条件运算符, 运算符优先级]
 doctype: guide
 status: active
 ---
 
-# 基本操作符
+# 基本运算符
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @jokerxd-liu-->
@@ -14,7 +14,7 @@ status: active
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-ArkTS提供丰富的操作符用于数据运算、逻辑判断和赋值操作。
+ArkTS提供丰富的运算符用于数据运算、逻辑判断和赋值操作。
 
 ## 赋值运算符
 
@@ -178,7 +178,6 @@ let negNegative: number = -negA;  // -5
 let negB: number = -10;
 let positive: number = -negB;  // 10
 ```
-
 
 ### 指数运算符 (**)
 
@@ -372,7 +371,7 @@ console.info(`${gtB > gtA}`);   // false
 console.info(`${gtA > gtA}`);   // false
 
 // 字符串比较Unicode码点
-console.info(`${'gtB' > 'gtA'}`);     // true
+console.info(`${'b' > 'a'}`);     // true
 console.info(`${'abc' > 'abb'}`); // true
 ```
 
@@ -400,10 +399,10 @@ console.info(`${ltA < ltA}`);   // false
 ``` TypeScript
 let gteA: number = 10;
 let gteB: number = 5;
-let c: number = 10;
+let gteC: number = 10;
 
 console.info(`${gteA >= gteB}`);  // true
-console.info(`${gteA >= c}`);  // true
+console.info(`${gteA >= gteC}`);  // true
 console.info(`${gteB >= gteA}`);  // false
 ```
 
@@ -616,8 +615,8 @@ let circuitResult2: string = provided ?? expensiveDefault();  // 不执行expens
 | 1 | `()` | 括号分组 | — |
 | 2 | `?.` | 可选链 | 从左到右 |
 | 3 | `++`、`--`（后置）、`!`（后置） | 后置递增、后置递减、非空断言 | — |
-| 4 | `**` | 指数 | 从右到左 |
-| 5 | `!`、`+`、`-`（一元）、`++`、`--`（前置） | 一元运算符 | 从右到左 |
+| 4 | `!`、`+`、`-`（一元）、`++`、`--`（前置） | 一元运算符 | 从右到左 |
+| 5 | `**` | 指数 | 从右到左 |
 | 6 | `*`、`/`、`%` | 乘法、除法、取余 | 从左到右 |
 | 7 | `+`、`-` | 加法、减法 | 从左到右 |
 | 8 | `<`、`<=`、`>`、`>=` | 关系比较 | 从左到右 |

@@ -1,12 +1,11 @@
 # Property Animation (animation)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-08-28T01:36:23.529Z pushedAt=2026-08-28T08:18:58.650Z -->
+<!-- md-trans-meta sourceCommit=1ee49228e04f8c10608514e171ff5dc0dce26627 translatedAt=2026-11-03T01:43:58.292Z pushedAt=2026-11-13T01:05:59.897Z nl=1 -->
 
 When certain universal attributes of a component change, if no animation is set, the attribute values will jump directly to the target values. Attribute animation can be used to achieve a gradient transition effect, making UI changes more natural and smooth. Supported attributes include [width](ts-universal-attributes-size.md#width), [height](ts-universal-attributes-size.md#height), [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [opacity](ts-universal-attributes-opacity.md#opacity), [scale](ts-universal-attributes-transformation.md#scale), [rotate](ts-universal-attributes-transformation.md#rotate), [translate](ts-universal-attributes-transformation.md#translate), and others. For animations of attributes that change the layout (such as width and height), the content usually jumps directly to the final state, for example, text or content in [Canvas](ts-components-canvas-canvas.md). If you want the content to follow the width and height changes, you can use the [renderFit](ts-universal-attributes-renderfit.md#renderfit) attribute for configuration.
 
@@ -22,10 +21,10 @@ Sets a property animation for the component. When the universal attributes of th
 
 > **NOTE**
 >
-> - When a single page contains dozens or more components with animations applied, use [renderGroup](ts-universal-attributes-image-effect.md#rendergroup10) to resolve frame freezing and improve animation performance. For best practices, see [Animation Usage Guide - Using renderGroup](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-fair-use-animation#section1223162922415).
+> - When dozens or more components with animation effects exist on a single page, you can use the [renderGroup](ts-universal-attributes-image-effect.md#rendergroup10) method to resolve the lag issue and improve animation performance. For best practices, see [Using renderGroup](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/arkts-animation-usage-guide#using-rendergroup) in Optimizing Animation Performance.
 >
-> - This API cannot be called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). Calling **animation** in **attributeModifier** does not produce an animation effect. To animate attribute changes in **attributeModifier**, use [explicit animation](ts-explicit-animation.md) (**animateTo**) instead.
-> - It takes effect only on some universal attributes (including **width**, **height**, **backgroundColor**, **opacity**, **scale**, **rotate**, and **translate**). For animations that change layout attributes (such as width and height), the component content (such as text or content in Canvas) usually jumps directly to the final state. To make the content transition smoothly with the width and height changes, use the [renderFit](ts-universal-attributes-renderfit.md#renderfit) attribute together. It is recommended to set **renderFit** to a value such as **RenderFit.CENTER** or **RenderFit.TOP_LEFT** so that the content changes synchronously with the component size during the animation.
+> - This API cannot be called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). Calling animation in **attributeModifier** does not produce an animation effect. To implement an attribute change animation in **attributeModifier**, use [explicit animation](ts-explicit-animation.md) (**animateTo**) instead.
+> - It takes effect only on some universal attributes (including **width**, **height**, **backgroundColor**, **opacity**, **scale**, **rotate**, and **translate**). For animations that change layout attributes (such as width and height), the component content (such as text or content in **Canvas**) usually jumps directly to the final state. If you want the content to transition smoothly as the width and height change, you can use the [renderFit](ts-universal-attributes-renderfit.md#renderfit) attribute together. It is recommended that **renderFit** be set to a value such as **RenderFit.CENTER** or **RenderFit.TOP_LEFT** so that the content changes synchronously with the component size during the animation.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -34,7 +33,6 @@ Sets a property animation for the component. When the universal attributes of th
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-
 | Name  | Type                               | Mandatory| Description                                   |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
 | value | [AnimateParam](ts-explicit-animation.md#animateparam) | Yes    | Animation effect parameters. For details about the value range and meaning of each attribute, see [AnimateParam](ts-explicit-animation.md#animateparam).                           |

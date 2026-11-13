@@ -1,7 +1,7 @@
 ---
 kits: ["ArkTS Kit"]
-description: "ArkTS error handling, including try-catch-finally exception handling, throwing errors with throw, handling errors in asynchronous code, recovery strategies, and assertion functions."
-keywords: ["ArkTS", "error handling", "try-catch-finally", "throw", "Error objects", "asynchronous error handling", "error recovery", "assertion functions"]
+description: "Explains ArkTS error handling, including try-catch-finally, throwing errors with throw, asynchronous error handling, and error recovery strategies."
+keywords: ["ArkTS", "error handling", "try-catch-finally", "throw", "Error object", "asynchronous error handling", "error recovery"]
 doctype: guide
 status: active
 ---
@@ -9,17 +9,17 @@ status: active
 # Error Handling
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @jokerxd-liu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=17ae88719a2d37a0c07e3b6e33ddb120ebd3dbc5 translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8923bda514baa1452b967ea964ea779c7417bd8e translatedAt=2026-11-12T12:34:02.353Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
-Error handling is an important part of program development. A sound error handling mechanism improves the robustness and maintainability of a program. ArkTS is based on TypeScript and inherits the error handling mechanism of JavaScript, on top of which it provides more comprehensive type support.
+Error handling is an important part of programming. A sound error handling mechanism improves program robustness and maintainability.
 
 ## Basic Concepts of Error Handling
 
-ArkTS catches runtime exceptions through try-catch-finally and actively throws `Error` objects through throw, ensuring that programs can still handle exceptions gracefully.
+ArkTS uses `try-catch-finally` to catch runtime errors and `throw` to explicitly throw `Error` objects, allowing programs to handle exceptional conditions gracefully.
 
 ### Definition and Classification of Errors
 
@@ -53,7 +53,7 @@ try {
 
 ### Core Goals of Error Handling
 
-The goal of error handling is to catch exceptions, provide recovery mechanisms, and convey error information, thereby ensuring program robustness and availability. The basic principles are: catch only the exceptions that can be handled (do not catch all exceptions), record error information for traceability, provide a reasonable recovery mechanism or fallback plan, and do not ignore exceptions in the catch block.
+Error handling aims to catch errors, provide recovery mechanisms, and propagate error information to ensure program robustness and availability. Follow these principles: catch only errors you can handle (do not catch all errors), log error information for tracing, provide appropriate recovery or fallback mechanisms, and do not ignore errors in `catch` blocks.
 
 <!-- @[divide_with_error_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -76,47 +76,9 @@ try {
 }
 ```
 
-### Common Approaches to Error Handling in TypeScript
-
-Common approaches to error handling in TypeScript include try-catch, returning error information, and asynchronous error handling.
-
-<!-- @[error_handling_patterns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandlingPatterns.ets) -->
-
-``` TypeScript
-// Approach 1: Catch exceptions with try-catch
-function tryCatchExample(): void {
-  try {
-    // Code that may throw an error
-    let data: Object = JSON.parse('invalid json');
-  } catch (error) {
-    console.error(`Parsing failed: ${(error as Error).message}`);
-  }
-}
-
-// Option 2: Return error information (functional style).
-function parseJSON(jsonStr: string): [Object | null, Error | null] {
-  try {
-    let data: Object = JSON.parse(jsonStr) as Object;
-    return [data, null];
-  } catch (error) {
-    return [null, error as Error];
-  }
-}
-
-// Option 3: Asynchronous error handling.
-async function asyncErrorHandling(): Promise<void> {
-  try {
-    let response = await http.createHttp().request('EXAMPLE_API_URL');
-    let data = response.result;
-  } catch (error) {
-    console.error(`Request failed: ${(error as Error).message}`);
-  }
-}
-```
-
 ## Creating and Using Error Objects
 
-Create an error object through `new Error(message)`. The object can carry properties such as `name`, `message`, and `stack`. In the `catch` block, use `instanceof` to distinguish error types and read the details.
+Create an error object using `new Error(message)`. It can carry properties such as `name`, `message`, and `stack`. In a `catch` block, use `instanceof` to distinguish error types and read details.
 
 ### Using the Native Error Class
 
@@ -243,11 +205,11 @@ try {
 
 ### Concepts and Mechanisms of Error Propagation
 
-Error propagation refers to the process in which an error object, after being created and thrown at the current location, is passed upward along the call stack until it is caught by the nearest try-catch block; if it is never caught, the program terminates.
+Error propagation means that an error object, once created and thrown, travels up the call stack until caught by the nearest `try-catch`. If it remains uncaught, the program terminates.
 
 ### Encapsulating Error Information
 
-A custom error class inherits from Error and extends it with fields such as code, details, context, and timestamp, encapsulating the error code, context, stack, and other information together. It also provides methods such as toErrorInfo to output a structured error object, facilitating unified handling and logging at the upper layer.
+Custom error classes extend `Error` with fields such as `code`, `details`, `context`, and `timestamp` to encapsulate error codes, context, and stack information. Methods such as `toErrorInfo` output structured error objects for unified handling and logging by higher layers.
 
 <!-- @[detailed_error_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -321,23 +283,23 @@ try {
 }
 ```
 
-## try-catch-finally Exception Catching
+## Catching Errors with try-catch-finally
 
-The try block wraps code that may throw an exception, the catch block catches and handles the exception, and the finally block executes regardless of whether an exception occurs, and is commonly used for resource cleanup.
+The `try` block contains code that may throw errors, the `catch` block catches and handles errors, and the `finally` block runs regardless of whether an error occurs, typically to clean up resources.
 
 ### Basic Syntax Structure
 
-The try-catch-finally statement consists of three blocks: the `try` block wraps the code that may throw an exception, the `catch` block catches and handles the exception, and the `finally` block executes regardless of whether an exception occurs (commonly used for resource cleanup). At least one of `catch` and `finally` must be present.
+`try-catch-finally` consists of three blocks: `try` contains code that may throw errors, `catch` catches and handles errors, and `finally` runs regardless of whether an error occurs (typically for resource cleanup). At least one of `catch` and `finally` must be present.
 
 <!-- @[try_catch_finally_syntax](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
 ``` TypeScript
 try {
-  // Code that may throw an exception.
+  // Code that may throw errors.
 } catch (error) {
-  // Exception handling code.
+  // Error handling code.
 } finally {
-  // Code that executes regardless of whether an exception occurs (optional).
+  // Code that runs whether or not an error occurs (optional).
 }
 ```
 <!-- @[try_catch_finally_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
@@ -345,7 +307,7 @@ try {
 ``` TypeScript
 function divideNumbers(a: number, b: number): number {
   if (b === 0) {
-    throw new Error('Divisor cannot be zero.');
+    throw new Error('The divisor cannot be zero');
   }
   return a / b;
 }
@@ -373,7 +335,7 @@ calculateExample();
 
 ### Catching Specific Error Types
 
-Use `instanceof` in the `catch` block to determine the error type, and perform different handling logic such as retry and logging for `NetworkError`, `DatabaseError`, and other error types respectively.
+Use `instanceof` in a `catch` block to determine the error type and apply handling such as retries or logging for `NetworkError`, `DatabaseError`, and other types.
 
 <!-- @[error_type_discrimination](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -437,7 +399,7 @@ handleFetchData('other');    // Unknown error: Unknown error
 
 ### Execution Characteristics of the finally Block
 
-The finally block always executes regardless of whether the try block throws an exception or whether the catch block catches it. It is commonly used for cleanup tasks such as releasing resources and closing connections. Even if a return statement is used in the try block, the finally block still runs before the function returns.
+The `finally` block runs whether or not `try` throws an error or `catch` catches it. It is typically used for cleanup such as releasing resources and closing connections. Even if `try` contains a `return`, `finally` runs before the function returns.
 
 <!-- @[resource_cleanup_finally](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -484,7 +446,7 @@ useResource();
 // Database connection resource cleaned up
 ```
 
-In addition to resource cleanup, the finally block has another noteworthy feature: even if a return statement is used in the try block, the finally block still executes before the function returns.
+Besides resource cleanup, the `finally` block has another noteworthy property: even when `try` uses `return`, `finally` still runs before the function returns.
 
 <!-- @[finally_with_return](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -512,7 +474,7 @@ console.info(`Return value: ${result}`);
 
 ### When to Use Nested try-catch
 
-Nested try-catch is an error handling approach that uses try-catch inside a try-catch block to handle errors at different levels in a layered manner.
+Nested `try-catch` blocks place a `try-catch` inside another `try-catch` to handle errors at different layers.
 
 <!-- @[ts_nested_try_catch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ErrorHandling.ts) -->
 
@@ -527,10 +489,10 @@ function nestedErrorHandling(): void {
     } catch (innerError) {
       console.info(`Inner catch: ${(innerError as Error).message}`);
       // Decide whether to throw the error to the upper layer.
-      throw innerError; // Pass the error to the outer layer.
+      throw innerError as Error; // Propagate the error to the outer block.
     }
 
-    console.info(`Outer try continues`);
+    console.info(`Outer try continues`); // Not executed: rethrowing in the inner catch transfers control directly to the outer catch.
   } catch (outerError) {
     console.info(`Outer catch: ${(outerError as Error).message}`);
   }
@@ -540,17 +502,17 @@ nestedErrorHandling();
 // Output:
 // Outer try
 // Inner try
-// Inner catch: inner error
-// Outer try continues
+// Inner catch: Inner error
+// Outer catch: Inner error
 ```
 
 ## Throwing Errors (throw Statement)
 
-The throw statement throws an Error object, interrupts the execution of the current function, and transfers control to the nearest try-catch block in the call stack.
+The `throw` statement throws an `Error` object, interrupts the current function, and transfers control to the nearest `try-catch` block in the call stack.
 
 ### Throwing Native Error Instances
 
-Use the `throw` keyword to throw an `Error` object or an instance of its child class, which interrupts the execution of the current function and transfers control to the nearest `catch` block in the call stack. ArkTS should throw objects of the `Error` hierarchy, and avoid throwing non-Error values such as strings or numbers.
+Use `throw` to throw an `Error` object or a subclass instance, interrupting the current function and transferring control to the nearest `catch` block in the call stack. In ArkTS, throw objects in the `Error` hierarchy rather than non-`Error` values such as strings or numbers.
 
 <!-- @[email_validation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -576,7 +538,7 @@ try {
 
 ### Throwing Custom Error Instances
 
-Create a custom error class (such as AppError) by inheriting from Error, and extend business fields such as code and field so that the catch block can distinguish errors by business semantics.
+Extend `Error` to create a custom error class (such as `AppError`) with business-specific fields such as `code` and `field`, so that `catch` blocks can distinguish errors by business semantics.
 
 <!-- @[custom_error_with_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -619,54 +581,11 @@ try {
 
 ### Restrictions on Throwing Non-Error Values
 
-TypeScript allows throwing values of any type, but in ArkTS you should throw objects of the `Error` hierarchy to prevent callers from being unable to reliably read error information and the stack.
+In ArkTS, a `throw` statement can throw only objects constructed from `Error` or its subtypes. Throwing non-`Error` values such as strings or numbers prevents callers from reliably reading error information and stack traces. Always throw `Error` instances.
 
-**TypeScript comparison**
+## Documenting Errors with @throws
 
-<!-- @[ts_throw_non_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ErrorHandling.ts) -->
-
-``` TypeScript
-// TypeScript allows throwing any type, while ArkTS can only throw Error
-throw 'Something went wrong';
-```
-
-**TypeScript comparison**
-
-<!-- @[ts_throw_best_practices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ErrorHandling.ts) -->
-
-``` TypeScript
-// TypeScript comparison; do not write this in ArkTS:
-function badExample1(): void {
-  throw 'This is a string error';
-}
-
-function badExample2(): void {
-  throw 404;
-}
-
-function badExample3(): void {
-  throw { code: 1001, message: 'Custom error object' };
-}
-
-// Correct approach: always throw an Error instance
-function goodExample(): void {
-  throw new Error('This is a standard error');
-}
-
-try {
-  goodExample();
-} catch (error) {
-  if (error instanceof Error) {
-    console.error(`Error object: ${error.message}`);
-  } else {
-    console.error('Unknown type error');
-  }
-}
-```
-
-### Declaring and Hinting Errors Thrown in Functions
-
-Use the JSDoc `@throws` tag to annotate the error types that a function may throw.
+Use `@throws` in comments to document potential errors from methods or functions. This informs callers but does not require them to use `try-catch`.
 
 <!-- @[function_throws_documentation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -680,7 +599,7 @@ Use the JSDoc `@throws` tag to annotate the error types that a function may thro
  */
 function documentationDivide(a: number, b: number): number {
   if (b === 0) {
-    throw new Error('The divisor cannot be zero.');
+    throw new Error('The divisor cannot be zero');
   }
   return a / b;
 }
@@ -700,13 +619,9 @@ function documentationParseJSON(jsonStr: string): Object {
 }
 ```
 
-## Error Declaration and Handling Conventions for Functions
+## Including Error Information in Function Return Values
 
-Function error declaration conventions specify how exceptions are handled and clarify the error propagation path, enabling callers to understand the errors a function may produce and write handling logic accordingly. Common conventions include: using JSDoc `@throws` to annotate the error types that may be thrown, returning a `Result<T>` object (containing `data` and `error` fields) instead of throwing exceptions, and using error codes to distinguish different error scenarios.
-
-### Returning Error Information in Function Return Values
-
-Use an explicit result object to return data and errors instead of exception handling. This provides a structured way to return error information and data.
+Return data and errors using an explicit result object instead of throwing errors. This provides a structured way to return error information and data.
 
 <!-- @[result_type_pattern](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -762,9 +677,9 @@ if (divideResult.error !== null) {
 }
 ```
 
-### Combining Optional Chaining and Nullish Coalescing to Handle Potential Errors
+## Combining Optional Chaining and Nullish Coalescing to Handle Potential Errors
 
-Use optional chaining `?.` to safely access deep properties that may be `null` or `undefined`, avoiding runtime errors. Use nullish coalescing `??` to provide a default value when the chain result is nullish. Combining the two allows you to gracefully handle missing data without writing try-catch.
+Use optional chaining `?.` to safely access nested properties that may be `null` or `undefined`, avoiding runtime errors. Use nullish coalescing `??` to provide a default when the chain result is nullish. Together, they handle missing data gracefully without `try-catch`.
 
 <!-- @[optional_chaining_nullish_coalescing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -805,44 +720,13 @@ console.info(`${getAvatar(errorUser1)}`);    // 'default-avatar.png'
 console.info(`${getAvatar(errorUser3)}`);    // 'charlie.png'
 ```
 
-### Error Handling in Async Functions
-
-Error handling in async functions can be implemented using async/await combined with try-catch or Promise.catch().
-
-<!-- @[async_await_error_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
-
-``` TypeScript
-async function fetchUserData(userId: number): Promise<string> {
-  try {
-    if (userId <= 0) {
-      throw new Error(`Invalid user ID: ${userId}`);
-    }
-    return `Data of user ${userId}`;
-  } catch (error) {
-    console.error(`Failed to obtain user data: ${(error as Error).message}`);
-    throw new Error((error as Error).message);
-  }
-}
-
-async function aehMain(): Promise<void> {
-  try {
-    let user: string = await fetchUserData(1);
-    console.info(`User information: ${user}`);
-  } catch (error) {
-    console.error(`Main process error: ${(error as Error).message}`);
-  }
-}
-
-aehMain();
-```
-
 ## Error Handling in Asynchronous Code
 
-In an async function, wrap the await expression in try-catch to catch a Promise rejection.
+In an `async` function, wrap `await` expressions in `try-catch` to catch `Promise` rejections.
 
 ### Catching Async Errors with async/await and try-catch
 
-Combining async/await with try-catch is the standard way to handle asynchronous errors, providing a clear flow for asynchronous error handling.
+Combining `async`/`await` with `try-catch` is the standard way to handle asynchronous errors and provides a clear handling flow.
 
 <!-- @[promise_try_catch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -876,7 +760,7 @@ handleAsyncOperation();
 
 ### Chained Error Catching with Promise.catch()
 
-The `Promise.catch()` method is a way to catch Promise errors in a chain, providing an error handling mechanism for Promise chains.
+The `.catch()` method catches errors in a `Promise` chain, providing error handling for chained operations.
 
 <!-- @[promise_catch_finally_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -908,12 +792,12 @@ promiseCatchExample();
 
 ### Error Handling for Multiple Asynchronous Operations
 
-In `Promise.all`, if any task fails, the whole operation enters `catch`. You can handle each task independently with its own `catch`.
+If any task in `Promise.all` fails, the entire operation enters `catch`. Attach a separate `catch` to each task to handle errors independently.
 
 <!-- @[promise_all_error_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/PromiseAllErrorHandling.ets) -->
 
 ``` TypeScript
-import http from '@ohos.net.http';
+import { http } from '@kit.NetworkKit';
 
 async function parallelErrorHandling(): Promise<void> {
   try {
@@ -992,28 +876,36 @@ async function serialErrorHandling(): Promise<void> {
 serialErrorHandling();
 ```
 
-### Listening for Global Asynchronous Errors
+### Listening for Unhandled Promise Rejections in the Current Thread
 
-Capture unhandled promise rejections through the `unhandledRejection` event.
+Use the `unhandledRejection` event of [errorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md) to listen for unhandled `Promise` rejections in the current thread (supported since API version 12). This listener applies only to the current thread and cannot catch errors in other runtime instances such as `Worker` or `TaskPool`. Save the callback in an `observer` variable and call `off` to unregister it when no longer needed (for example, when the page is destroyed), avoiding duplicate registration or difficulty removing the exact listener.
 
-<!-- @[unhandled_rejection_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/UnhandledRejectionHandler.ets) -->
+<!-- @[unhandled_rejection_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/UnhandledRejectionHandler.ts) -->
 
 ``` TypeScript
-import errorManager from '@ohos.app.ability.errorManager';
+import { errorManager } from '@kit.AbilityKit';
 
-// Listen for unhandled promise rejections.
-errorManager.on('unhandledRejection', (reason: Error, promise: Promise<Object>) => {
+// Save the callback as observer so it can be unregistered precisely later.
+let observer: errorManager.UnhandledRejectionObserver = (reason: Error, promise: Promise<void>) => {
   console.error(`Unhandled promise rejection: ${reason.message}`);
-});
+};
 
-// Example: Trigger global error handling.
+// Register the listener (registration is supported only in the main thread).
+errorManager.on('unhandledRejection', observer);
+
+// Example: trigger an unhandled Promise rejection.
 async function triggerUnhandledRejection(): Promise<void> {
   // This error is not handled by try-catch or .catch().
   await Promise.reject(new Error('Uncaught Promise error'));
 }
 
-triggerUnhandledRejection(); // A runtime error occurs, triggering the global error listener.
+triggerUnhandledRejection(); // This unhandled rejection triggers the listener registered above.
+
+// Unregister the listener at an appropriate time (for example, when the page is destroyed):
+errorManager.off('unhandledRejection', observer);
 ```
+
+To listen for unhandled `Promise` rejections throughout the process (including instances such as `Worker` and `TaskPool`), use the `globalUnhandledRejectionDetected` event of `errorManager` (supported since API version 18). This event can be registered in any thread in the process to catch unhandled `Promise` rejections in the current process.
 
 ## Error Recovery and Fallback Strategies
 
@@ -1021,7 +913,7 @@ After catching an error, return a default value or execute fallback logic to ens
 
 ### Returning Default Values After Catching Errors
 
-Return a default value in the catch block to ensure that the function always returns a valid result.
+Return a default value in the `catch` block to ensure that the function always returns a valid value.
 
 <!-- @[fallback_default_values](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -1041,10 +933,10 @@ function safeParseJSON(jsonStr: string, defaultValue: FallbackData | null = null
 }
 
 let fbData1: FallbackData | null = safeParseJSON('{"name": "Alice"}', { name: 'Unknown' });
-console.info(`${JSON.stringify(fbData1)}`);  // {"name":"Alice"}
+console.info(`${JSON.stringify(fbData1)}`);  // '{"name":"Alice"}'
 
 let fbData2: FallbackData | null = safeParseJSON('invalid json', { name: 'Unknown' });
-console.info(`${JSON.stringify(fbData2)}`);  // {"name":"Unknown"}
+console.info(`${JSON.stringify(fbData2)}`);  // '{"name":"Unknown"}'
 
 function safeArrayAccess<T>(arr: T[], index: number, defaultValue: T): T {
   try {
@@ -1106,7 +998,7 @@ async function retryExampleAsyncOperation<T>(
   throw new Error(`Retry failed after ${options.maxRetries} attempts: ${lastError ? lastError.message : 'unknown error'}`);
 }
 
-// Usage example
+// Usage example.
 let retryAttemptCount: number = 0;
 
 async function retryExampleUnstableOperation(): Promise<string> {
@@ -1134,7 +1026,7 @@ testRetry();
 
 ### Degradation Handling
 
-When an exception occurs, execute degradation logic to ensure that the basic functions of the system continue to run normally.
+When an error occurs, execute fallback logic to keep the system's basic functions running.
 
 <!-- @[service_fallback_pattern](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
 
@@ -1184,7 +1076,7 @@ class ResilientDataFetcher {
   }
 }
 
-// Usage example
+// Usage example.
 async function runDataFetcherExample(): Promise<void> {
   let fetcher: ResilientDataFetcher = new ResilientDataFetcher();
   let data = await fetcher.fetchData();
@@ -1221,7 +1113,7 @@ class ApiClient {
     let url: string = `${this.baseUrl}${endpoint}`;
     let lastError: Error | null = null;
 
-    for (let attempt: number = 0; attempt <= this.maxRetries; attempt++) {
+    for (let attempt = 0; attempt <= this.maxRetries; attempt++) {
       try {
         let result: string = await this.mockRequest(url);
         return result;
@@ -1270,129 +1162,4 @@ async function retryFetchUserInfo(): Promise<void> {
 }
 
 retryFetchUserInfo();
-```
-
-## Type of the catch Variable
-
-In `strict` mode, the variable in a `catch` clause is of type `unknown`, so you must perform a type check before accessing error properties.
-
-<!-- @[catch_unknown_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
-
-``` TypeScript
-function cuProcessData(data: string): void {
-  try {
-    let parsed: number = Number.parseInt(data, 10);
-    if (Number.isNaN(parsed)) {
-      throw new Error(`Invalid number: ${data}`);
-    }
-    console.info(`Parsed: ${parsed}`);
-  } catch (error) {
-    // The error type cannot directly access .message
-    if (error instanceof Error) {
-      console.info(`Error: ${error.message}`);
-    } else {
-      console.info(`Unknown error: ${error}`);
-    }
-  }
-}
-
-cuProcessData('abc');  // Error: Invalid number: abc
-```
-
-When catching errors of a specific type, use `instanceof` to distinguish between different error types.
-
-<!-- @[catch_specific_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
-
-``` TypeScript
-class CsValidationError extends Error {
-  public field: string;
-
-  constructor(field: string, message: string) {
-    super(message);
-    this.field = field;
-  }
-}
-
-class CsNetworkError extends Error {
-  public statusCode: number;
-
-  constructor(statusCode: number, message: string) {
-    super(message);
-    this.statusCode = statusCode;
-  }
-}
-
-function csHandleRequest(url: string): void {
-  try {
-    if (url.length === 0) {
-      throw new CsValidationError('url', 'URL cannot be empty');
-    }
-    throw new CsNetworkError(500, 'Server error');
-  } catch (error) {
-    if (error instanceof CsValidationError) {
-      console.info(`Validation error [${error.field}]: ${error.message}`);
-    } else if (error instanceof CsNetworkError) {
-      console.info(`Network error [${error.statusCode}]: ${error.message}`);
-    } else if (error instanceof Error) {
-      console.info(`Unknown error: ${error.message}`);
-    } else {
-      console.info(`Unknown exception: ${error}`);
-    }
-  }
-}
-
-csHandleRequest('');  // Validation error [url]: URL cannot be empty
-csHandleRequest('EXAMPLE_API_URL');  // Network error [500]: Server error
-```
-
-## Assertion Functions
-
-An assertion function checks a condition at runtime and throws an exception when the condition is not met. In TypeScript, calling it narrows the type. In ArkTS, use an `if` check instead.
-
-**TypeScript comparison**
-
-<!-- @[ts_assertion_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ErrorHandling.ts) -->
-
-``` TypeScript
-// TypeScript comparison syntax; in ArkTS, use an if check instead
-function assert(value: unknown): asserts value {
-  if (value === undefined || value === null) {
-    throw new Error('Value must be defined');
-  }
-}
-
-function assertString(val: unknown): asserts val is string {
-  if (typeof val !== 'string') {
-    throw new Error('Expected string');
-  }
-}
-```
-
-In ArkTS, use an `if` check and a type guard function instead.
-
-<!-- @[assertion_function_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ErrorHandling.ets) -->
-
-``` TypeScript
-function afAssertDefined(value: string | null): string {
-  if (value === null) {
-    throw new Error('Value must be defined');
-  }
-  return value;
-}
-
-function afIsString(val: Object): boolean {
-  return typeof val === 'string';
-}
-
-function afProcess(value: string | number): void {
-  if (typeof value === 'string') {
-    let v: string = afAssertDefined(value);
-    console.info(`${v.toUpperCase()}`);
-  } else {
-    console.info(`${value.toString()}`);
-  }
-}
-
-afProcess('hello');  // HELLO
-afProcess(42);       // 42
 ```

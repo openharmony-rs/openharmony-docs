@@ -1,20 +1,21 @@
 # Chip
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @song-song-song-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=f61ce95179b4c1b9fc3671fde09ef06c73b5f91d translatedAt=2026-08-24T06:52:15.071Z pushedAt=2026-08-25T07:34:30.945Z -->
+<!-- md-trans-meta sourceCommit=665adf4fb95a722c1a737b295def57bebe022212 translatedAt=2026-11-03T01:23:03.071Z pushedAt=2026-11-13T01:05:59.842Z nl=1 -->
 
 The **Chip** component is used for label display and interaction scenarios. It supports custom styles, icons, and activated states, and is suitable for scenarios such as search box history records and email recipient lists. It enables quick creation, deletion, and interaction of labels.
 
 > **NOTE**
 >
-> - This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 11. If new content is added in later versions, the starting version of the content is marked separately with a superscript.
 >
-> - The APIs of this module can be used only in the stage model.
+> - The APIs of this module can be used only under the stage model.
+>
+> - If the Chip component is configured with [universal attributes](ts-component-general-attributes.md) or [universal events](ts-component-general-events.md), the compilation toolchain additionally generates a node named __Common__ and mounts the universal attributes or universal events on __Common__ instead of directly applying them to the **Chip** component itself. This may cause the universal attributes or universal events set by developers to fail to take effect or behave unexpectedly. Therefore, it is not recommended to configure universal attributes and universal events for the **Chip** component.
 
 ## Modules to Import
 
@@ -67,8 +68,8 @@ Defines the style and specific style parameters of the **Chip** component.
 | suffixSymbolOptions<sup>14+</sup> | [ChipSuffixSymbolGlyphOptions](#chipsuffixsymbolglyphoptions14) | No | Yes | Accessibility reading function attributes and tap event callback of the symbol-type suffix icon.<br>Default value: No corresponding attribute is set<br>If the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 14. |
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | No  | Yes  | Background color of the Chip.<br>Default value: **$r('sys.color.ohos_id_color_button_normal')**<br>If the value is **undefined**, the default value is used. If an invalid value is assigned, the background color is transparent.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | activatedBackgroundColor<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor)          | No  | Yes  | Background color of the Chip in the activated state.<br>Default value: **$r('sys.color.ohos_id_color_emphasize')**<br>If the value is **undefined**, the default value is used. If an invalid value is assigned, the background color is transparent.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the component. It is suitable for scenarios such as immersive background effects and semi-transparent frosted glass effects. Different materials have different effects and can affect visual attributes such as [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [border](ts-universal-attributes-border.md#border), and [shadow](ts-universal-attributes-image-effect.md#shadow) of the component.<br>Default value: **undefined**<br>If the value is **undefined**, no material style is applied.<br>**Note:** When **backgroundSystemMaterial** is set, **backgroundColor** should be set to **Color.Transparent**, otherwise it will conflict with the system material. When **backgroundSystemMaterial** is **undefined**, the **backgroundColor** attribute takes effect.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
-| activatedBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the component in the activated state. It is suitable for interactive scenarios where the material effect needs to be maintained or switched in the activated state, such as tag selection and state switching. Different materials have different effects and can affect visual attributes such as [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [border](ts-universal-attributes-border.md#border), and [shadow](ts-universal-attributes-image-effect.md#shadow) of the component.<br>Default value: **undefined**<br>If the value is **undefined**, no material style is applied.<br>**Note:** When **activatedBackgroundSystemMaterial** is set, **activatedBackgroundColor** should be set to **Color.Transparent**, otherwise it will conflict with the system material. When **activatedBackgroundSystemMaterial** is **undefined**, the **activatedBackgroundColor** attribute takes effect.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the component. The immersive light effect takes effect only when the component is placed in the title bar of **Navigation** or **NavDestination**, or in the bottom **TabBar** of horizontal **Tabs**. Applicable to scenarios that require immersive background effects, semi-transparent frosted effects, and the like. Different materials have different effects and can affect visual attributes of the component such as [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [border](ts-universal-attributes-border.md#border), and [shadow](ts-universal-attributes-image-effect.md#shadow).<br>Default value: **undefined**<br>When the value is **undefined**, no material style is applied.<br>**Note:** When **backgroundSystemMaterial** is set, **backgroundColor** should be set to **Color.Transparent**; otherwise, it conflicts with the system material. When **backgroundSystemMaterial** is **undefined**, the **backgroundColor** attribute takes effect.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** Since API version 26.0.0, this API supports use in atomic services. |
+| activatedBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | No | Yes | System material style of the component in the activated state. The immersive light effect takes effect only when the component is placed in the title bar of **Navigation** or **NavDestination**, or in the bottom **TabBar** of horizontal **Tabs**. Applicable to interactive scenarios that require maintaining or switching material effects in the activated state, such as tag selection and state switching. Different materials have different effects and can affect visual attributes of the component such as [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [border](ts-universal-attributes-border.md#border), and [shadow](ts-universal-attributes-image-effect.md#shadow).<br>Default value: **undefined**<br>When the value is **undefined**, no material style is applied.<br>**Note:** When **activatedBackgroundSystemMaterial** is set, **activatedBackgroundColor** should be set to **Color.Transparent**; otherwise, it conflicts with the system material. When **activatedBackgroundSystemMaterial** is **undefined**, the **activatedBackgroundColor** attribute takes effect.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** Since API version 26.0.0, this API supports use in atomic services. |
 | borderRadius    | [Dimension](ts-types.md#dimension10)                         | No  | Yes  | Corner radius of the Chip background. Percentage is not supported. If a percentage is passed in, the default value is used.<br>Value range: [0, +∞)<br>Default value: **$r('sys.float.ohos_id_corner_radius_button')**<br>Unit: vp<br>If the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | allowClose      | boolean                                                      | No  | Yes  | Whether the close icon is displayed.<br>Default value: **true**<br>**true**: The close icon is displayed; **false**: The close icon is not displayed.<br>If the value is **undefined**, the default value is used.<br>**Note:** When **suffixSymbol** has a value passed in, **allowClose** does not take effect. When **suffixSymbol** has no value passed in but **suffixIcon** does, **allowClose** does not take effect. When neither **suffixSymbol** nor **suffixIcon** has a value passed in, **allowClose** determines whether the close icon is displayed.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | onClose         | ()=>void                                                     | No  | Yes  | Default close icon tap event callback. It has no parameters or return value. This callback is triggered when the user taps the default close icon.<br>If the value is **undefined**, the close icon tap event is not triggered.<br>**Note:** This takes effect only when the close icon is displayed, that is, when neither **suffixSymbol** nor **suffixIcon** has a value passed in and **allowClose** is **true**.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
@@ -349,6 +350,7 @@ struct Index {
 }
 ```
 
+
 ![](figures/chip1.png)
 
 ### Example 2: Using the Default Suffix Icon
@@ -398,6 +400,7 @@ struct Index {
 }
 ```
 
+
 ![](figures/chip2.png)
 
 ### Example 3: Displaying No Suffix Icon
@@ -445,6 +448,7 @@ struct Index {
   }
 }
 ```
+
 
 ![](figures/chip3.png)
 
@@ -494,7 +498,7 @@ struct Index {
           console.info('chip on clicked');
         }
       })
-      // Tap "Change Activation Status" to control the activation and deactivation of the operation block.
+      // Tap "Activate/Deactivate" to control the activation and deactivation of the chip.
       Button('Activate/Deactivate')
         .onClick(() => {
           this.isActivated = !this.isActivated;
@@ -503,6 +507,7 @@ struct Index {
   }
 }
 ```
+
 
 ![](figures/chip4.gif)
 
@@ -611,6 +616,7 @@ struct ChipPage {
 }
 ```
 
+
 ![](figures/chip6.png)
 
 ### Example 7: Implementing Accessibility for an Image-Type Suffix Icon
@@ -702,6 +708,9 @@ struct ChipExample2 {
   }
 }
 ```
+
+
+<!--Del--> <!--DelEnd-->
 
 ### Example 8: Implementing Accessibility for a Symbol-Type Suffix Icon
 
@@ -831,6 +840,9 @@ struct ChipExample2 {
 }
 ```
 
+
+<!--Del--> <!--DelEnd-->
+
 ### Example 9: Implementing Chip Accessibility
 
 This example shows the accessibility property settings of the **Chip** component, including different **accessibilitySelectedType** types and various accessibility properties.
@@ -931,6 +943,9 @@ struct ChipAccessibilityExample {
 }
 ```
 
+
+<!--Del--> <!--DelEnd-->
+
 ### Example 10: Setting the System Material Style
 
 This example implements the system material style by configuring **backgroundSystemMaterial** and **activatedBackgroundSystemMaterial**, and enables the auto-invert feature to adapt the label text color.
@@ -966,7 +981,8 @@ struct ChipMaterialExample {
     })
   }
 
-  build() {
+  @Builder
+  NavigationTitle() {
     Column({ space: 50 }) {
       Chip(this.chipOptions)
       Chip(this.chipOptions)
@@ -983,7 +999,18 @@ struct ChipMaterialExample {
     .width('100%')
     .height(150)
   }
+
+  build() {
+    Column() {
+      Navigation() {
+        // Page content.
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
+  }
 }
 ```
+
+The figure in this example shows the effect on a high-performance device in the strong mode.
 
 <!--Del--> <!--DelEnd-->

@@ -40,7 +40,7 @@
 
    当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
 
-   - 当待签名的数据较短时，可以在init完成后直接调用verify。
+   - 当待验签的数据较短时，可以在init完成后直接调用verify。
    - 当数据量较大时，可以多次调用update，即[分段签名验签](crypto-rsa-sign-sig-verify.md#使用rsa密钥对pkcs1模式分段签名验签)。
 
 4. 调用[Verify.verify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#verify-1)，对数据进行验签。

@@ -6,7 +6,7 @@
 <!--Designer: @JiDong-CS1-->
 <!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e69ec64ac858719fcfee7d95c940787db87ff304 translatedAt=2026-09-23T02:04:31.088Z pushedAt=2026-09-23T10:54:51.525Z -->
+<!-- md-trans-meta sourceCommit=29118146ac73833ef621894eaa7634828db12bbb translatedAt=2026-11-12T03:50:00.894Z pushedAt=2026-11-12T12:04:07.768Z nl=1 -->
 
 The following table lists the privileges that can be granted by the OS account authorization module.
 
@@ -17,4 +17,4 @@ The following table lists the privileges that can be granted by the OS account a
 | Privilege                                      | Privilege Value                                   | Description                           | Validity Period                           | Associated Permissions                           |
 | ----------------------------------------- | ---------------------------------------- | ------------------------------ |------------------------------ |------------------------------ |
 | ohos.privilege.operate_raw_net_packets | PRIVILEGE_OPERATE_RAW_NET_PACKETS        | Privilege to operate raw network packets. | Lifecycle of the authorized process. | ohos.permission.kernel.NET_RAW |
-<!--no_check-->
+| ohos.privilege.monitor_raw_usb_packets | PRIVILEGE_MONITOR_RAW_USB_PACKETS        | Privilege to monitor USB packets. |Lifecycle of the authorized process.| ohos.permission.kernel.USB_CAPTURE|

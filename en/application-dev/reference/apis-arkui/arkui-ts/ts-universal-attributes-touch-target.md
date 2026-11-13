@@ -1,11 +1,11 @@
 # Touch Target
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-09-02T12:12:07.570Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:49:06.440Z pushedAt=2026-11-13T01:06:00.140Z nl=1 -->
 
 Sets the touch target of a component. In the ArkUI development framework, when touch events and mouse events are processed, [hit testing](../../../ui/arkts-interaction-basic-principles.md#hit-testing) is performed on the pressed point and the component response region before the event is triggered, to collect the components that need to respond to the event. Based on the test result, the framework distributes the corresponding event. This affects the distribution of [click events](ts-universal-events-click.md), [touch events](ts-universal-events-touch.md), [drag and drop events](ts-universal-events-drag-drop.md), [mouse events](ts-universal-mouse-key.md), [axis events](ts-universal-events-axis.md), [hover events](ts-universal-events-hover.md), [accessibility hover events](ts-universal-accessibility-hover-event.md), and [gesture events](ts-gesture-settings.md).
 
@@ -32,7 +32,7 @@ Sets one or more touch targets. When the [responseRegionList](#responseregionlis
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;[Rectangle](#rectangle )&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle) | Yes   | Touch target, including its position and size.<br>The default touch target is the entire component. Default value:<br>{<br>x: 0,<br>y: 0,<br>width: '100%',<br>height: '100%'<br>}<br> |
+| value  | Array&lt;[Rectangle](#rectangle)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle) | Yes   | Touch target, including its position and size.<br>The default touch target is the entire component. Default value:<br>{<br>x: 0,<br>y: 0,<br>width: '100%',<br>height: '100%'<br>}<br>Abnormal value: when the parameter is undefined or null, the default value is used. |
 
 **Return value**
 
@@ -80,7 +80,7 @@ Sets the touch target list for the component. When this API is called, the [resp
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| regions  | Array&lt;[ResponseRegion](#responseregion22)&gt;&nbsp; | Yes   | Array of touch targets of the component.<br>Each touch target includes the input tool type, position, and size.<br>Default value:<br>[{<br>tool: ResponseRegionSupportedTool.ALL,<br>x: LengthMetrics.vp(0),<br>y: LengthMetrics.vp(0),<br>width: LengthMetrics.percent(1),<br>height: LengthMetrics.percent(1)<br>}] |
+| regions  | Array&lt;[ResponseRegion](#mouseresponseregion10)&gt;&nbsp; | Yes   | Array of touch targets of the component.<br>Each touch target includes the input tool type, position, and size.<br>Default value:<br>[{<br>tool: ResponseRegionSupportedTool.ALL,<br>x: LengthMetrics.vp(0),<br>y: LengthMetrics.vp(0),<br>width: LengthMetrics.percent(1),<br>height: LengthMetrics.percent(1)<br>}]<br>Exception value: if the parameter is undefined or null, the default value is used. |
 
 **Return value**
 
@@ -221,7 +221,7 @@ The **responseRegionList** API is supported since API version 22.
 
 ```ts
 // xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
+import { LengthMetrics, ResponseRegionSupportedTool } from '@kit.ArkUI';
 
 @Entry
 @Component

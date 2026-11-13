@@ -1,11 +1,11 @@
 # Cursor Control
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-09-01T12:20:37.480Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:17:18.417Z pushedAt=2026-11-13T01:06:00.080Z nl=1 -->
 
 Mouse cursor control is used to set the display style of the mouse cursor. It supports setting multiple preset cursor styles and restoring the default arrow style. It is applicable to scenarios where the cursor style needs to be switched based on the component state or interaction area, resolving the issue that the default cursor style cannot match the interaction intent, and helping improve the user's interaction recognition and operation feedback experience.
 
