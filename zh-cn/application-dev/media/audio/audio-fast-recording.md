@@ -46,40 +46,48 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 ### 设置超低时延模式
 
-从API版本26.1.0开始，开发者可按以下流程使用超低时延模式进行录制：
+1. 申请ACL权限。
 
-1. 起流前，通过[OH_AudioStreamManager_IsUltraFastRecordingSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastrecordingsupported)查询当前设备及流参数是否支持超低时延录制。
-2. 将[OH_AudioStream_LatencyMode](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode)设置为AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST，并创建录制流。
-3. 起流后，通过[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)获取录制流的实际运行能力。
-4. 通过注册状态变化回调，获取实际运行能力变化时的通知。
+    应用需要申请 `ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM` 权限后，才具备请求超低时延音频流的能力。具体请参考[申请受限权限](../../security/AccessToken/declare-permissions-in-acl.md)。如果应用未具备该权限，在创建超低时延音频流时，`OH_AudioStreamBuilder_GenerateCapturer` 可能返回 `AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED`。权限申请完成后，应用仍然需要继续执行能力查询。权限只表示应用具备请求资格，不表示当前设备、当前路由或当前音频流配置一定支持超低时延。
 
-设置超低时延模式开发示例：
+2. 判断当前设备和当前音频场景是否支持超低时延。
 
-<!-- @[latencyMode_UltraFast_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+    查询当前设备和当前音频场景是否支持。
+    <!-- @[IsUltraFastRecordingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
-``` C++
-OH_AudioStreamBuilder_SetLatencyMode(builder, AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST);
-```
+    ``` C++
+    bool supported = false;
+    OH_AudioCommon_Result queryRet = OH_AudioStreamManager_IsUltraFastRecordingSupported(
+        streamManager, &streamInfo, AUDIOSTREAM_SOURCE_TYPE_MIC, &supported);
+    ```
 
-超低时延状态变化回调开发示例：
+3. 设置超低时延模式。
 
-<!-- @[OnUltraFastStatusChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+    在查询结果为支持的前提下，通过 `OH_AudioStreamBuilder_SetLatencyMode` 设置超低时延模式，并创建音频流。
+    <!-- @[latencyMode_UltraFast_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
-``` C++
-void MyOnUltraFastStatusChange(OH_AudioCapturer* capturer, void* userData, OH_AudioStream_FastStatus status)
-{
-    // 通过状态变化回调记录录制流当前的实际运行状态
-    g_ultraFastStatus.store(status);
-}
-```
+    ``` C++
+    OH_AudioStreamBuilder_SetLatencyMode(builder, AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST);
+    ```
 
-注册超低时延状态变化回调开发示例：
+4. 查询超低时延流实际运行状态。
 
-<!-- @[SetCapturerFastStatusChangeCallback_UltraFast](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+    音频流创建并启动后，通过 `OH_AudioCapturer_GetFastStatus`查询实际运行状态。
+    <!-- @[GetFastStatus_UltraFast](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
-``` C++
-OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(builder, MyOnUltraFastStatusChange, nullptr);
-```
+    ``` C++
+    OH_AudioStream_FastStatus fastStatus = AUDIOSTREAM_FASTSTATUS_NORMAL;
+    OH_AudioCapturer_GetFastStatus(g_ultraFastCapturer, &fastStatus);
+    ```
+
+5. 查询状态及监听。
+
+    可通过注册`OH_AudioCapturer_OnFastStatusChange`回调，在运行态发生变化时及时感知状态变化。
+    <!-- @[SetCapturerFastStatusChangeCallback_UltraFast](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+
+    ``` C++
+    OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(builder, MyOnUltraFastStatusChange, nullptr);
+    ```
 
 针对OHAudio开发音频录制，有以下相关实例可供参考：
 
