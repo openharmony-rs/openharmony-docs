@@ -177,7 +177,7 @@
 
 4. 创建组件，用于显示预览流，在页面相关生命周期中构造ThreadWorker实例，在worker线程中完成相机初始化和释放。
 
-   <!-- @[camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/cameraByWorker.ets) -->
+   <!-- @[camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/cameraByWorker.ets) -->    
   
    ``` TypeScript
    @Entry
