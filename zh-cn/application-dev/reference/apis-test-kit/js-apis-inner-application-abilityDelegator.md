@@ -15,7 +15,7 @@ AbilityDelegator是用于调度和管理UIAbility测试生命周期的代理控�
 > 
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
-> 本模块接口仅可在<!--RP1-->[单元测试框架](../../application-test/unittest-guidelines.md)<!--RP1End-->中使用。
+> 本模块接口仅可在[单元测试框架](https://developer.huawei.com/consumer/cn/doc/doccenter-testing/unittest-guidelines)中使用。
 
 ## 导入模块
 
