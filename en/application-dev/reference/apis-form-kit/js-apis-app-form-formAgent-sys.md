@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=dd4b1a73262c500744612964e6bee5247a37ca94 translatedAt=2026-11-04T04:24:30.736Z pushedAt=2026-11-04T10:12:50.108Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e0d58fe583fd0784caa9530631f0d71ee228acb3 translatedAt=2026-11-13T03:56:30.942Z pushedAt=2026-11-13T09:12:04.048Z nl=1 -->
 
 The FormAgent module provides APIs for widget agent-related capabilities, currently including only requesting to publish a widget. It is applicable to scenarios where a system app needs to publish a widget to the widget host (such as the home screen), helping system apps conveniently request form publishing and simplifying the widget publishing process.
 
@@ -182,7 +182,7 @@ Updates a widget across apps. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Code](../errorcode-universal.md) and [Widget Error Code](errorcode-form.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | ID | Error Message |
 | -------- | -------- |
@@ -347,6 +347,65 @@ let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData
 try {
   formAgent.requestPublishFormCrossDevice(peerServiceInfo, want, obj).then((data: formInfo.PublishFormCrossDeviceResult) => {
     console.info(`formAgent requestPublishFormCrossDevice success, form ID is: ${data.formId}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formAgent.getVisibleFormRect
+
+getVisibleFormRect(formId: string): Promise&lt;formInfo.Rect&gt;
+
+Obtains the position and size of the visible form area. This API uses a promise to return the result.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Ability.Form
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ------ | ---- | -------|
+| formId | string | Yes | Form ID. |
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise used to return the position and size of the form relative to the upper-left corner of the screen, in vp. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: <br>1. The hardware does not support the capability. <br>2. The chip does not support the capability. <br>3. A dependent service feature is not supported. |
+| 16500050 | IPC connection error. |
+| 16500060 | Service connection error. |
+| 16500100 | Failed to obtain the configuration information. |
+| 16501001 | The ID of the form to be operated does not exist. |
+| 16501003 | The form cannot be operated by the current application. |
+
+**Example**
+
+```ts
+import { formAgent, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '123456789'; // Form ID. Replace with the actual form ID.
+try {
+  formAgent.getVisibleFormRect(formId).then((data: formInfo.Rect) => {
+    console.info(`formAgent getVisibleFormRect success, left: ${data.left}, top: ${data.top},` +
+      `width: ${data.width}, height: ${data.height}`);
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });

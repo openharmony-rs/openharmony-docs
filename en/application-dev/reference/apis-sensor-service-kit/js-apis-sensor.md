@@ -5,6 +5,7 @@
 <!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=6537bb99ea3084554b976340d2f07296ebe62ba7 translatedAt=2026-11-13T04:30:59.290Z pushedAt=2026-11-13T10:56:43.276Z nl=1 -->
 
 The **@ohos.sensor** module is a sensor service module provided by HarmonyOS in Sensor Service Kit. This module provides unified APIs to access sensor data, including data subscription, query, and algorithm calculation for various physical sensors on the device.
 
@@ -14,7 +15,7 @@ Use this module to subscribe to sensor data when your app needs to detect the de
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version. Before subscribing to sensor data, call [getSingleSensor](#sensorgetsinglesensor9) to obtain the target sensor. For details about how to use the API, see [Sensor Development](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/sensor-guidelines#how-to-develop). If any error occurs, see the error code description of the API. When you subscribe to the sensor data, ensure that the **on** and **off** APIs are used in pairs.
+> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version. Before subscribing to sensor data, call [getSingleSensor](#sensorgetsinglesensor9) to obtain the target sensor. For how to handle errors, see [getSingleSensor](#sensorgetsinglesensor9). For details about how to use the API, see [Sensor Development](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/sensor-guidelines#how-to-develop). If any error occurs, see the error code description of the API. When you subscribe to the sensor data, ensure that the **on** and **off** APIs are used in pairs.
 
 The **sensor** module provides APIs for subscribing to and querying sensor data. The core process is as follows:
 
@@ -66,9 +67,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -116,8 +117,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -147,9 +148,9 @@ on(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;Acceleromete
 
 Subscribes to data of the uncalibrated acceleration sensor. This API uses an asynchronous callback to return the result. The difference between the uncalibrated acceleration sensor and the acceleration sensor is that the **biasX**, **biasY**, and **biasZ** values reported by the uncalibrated acceleration sensor are not calibrated by the system. This sensor is suitable for scenarios where raw acceleration data is required or a custom calibration algorithm is implemented. Compared with **sensor.on('SensorId.ACCELEROMETER')**, this API provides additional bias information, which is suitable for scenarios where device calibration bias needs to be analyzed.
 
-**Required permissions**: ohos.permission.ACCELEROMETER
+**Required permissions**: ohos.permission.ACCELEROMETER 
 
-**System capability**: SystemCapability.Sensors.Sensor
+**System capability**: SystemCapability.Sensors.Sensor 
 
 **Parameters**
 
@@ -165,9 +166,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -218,8 +219,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -265,8 +266,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -312,8 +313,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -359,8 +360,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -412,9 +413,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -446,9 +447,9 @@ on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalib
 
 Subscribes to data of the uncalibrated gyroscope sensor. This API uses an asynchronous callback to return the result. The difference between the uncalibrated gyroscope sensor and the gyroscope sensor is that the **biasX**, **biasY**, and **biasZ** values reported by the uncalibrated gyroscope sensor are not calibrated by the system. This sensor is suitable for scenarios where raw gyroscope data is required or where the calibration algorithm needs to be implemented by the app. Compared with **sensor.on('SensorId.GYROSCOPE')**, this API additionally provides bias information, which is suitable for scenarios where the gyroscope calibration bias needs to be analyzed.
 
-**Required permissions**: ohos.permission.GYROSCOPE
+**Required permissions**: ohos.permission.GYROSCOPE 
 
-**System capability**: SystemCapability.Sensors.Sensor 
+**System capability**: SystemCapability.Sensors.Sensor  
 
 **Parameters**
 
@@ -464,9 +465,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -518,8 +519,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -550,7 +551,7 @@ on(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;, optio
 
 Subscribes to data of the heart rate sensor. This API uses an asynchronous callback to return the result. The heart rate sensor is used to measure the heart rate of a user. It is applicable to scenarios such as health monitoring and exercise assistance. After this method is called, the system continuously reports heart rate data at the specified frequency through the callback.
 
-**Required permissions**: ohos.permission.READ_HEALTH_DATA
+**Required permissions**: ohos.permission.READ_HEALTH_DATA 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -568,9 +569,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -616,8 +617,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -647,9 +648,9 @@ on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAcceleromete
 
 Subscribes to data of the linear acceleration sensor. This API uses an asynchronous callback to return the result. The linear acceleration sensor measures the acceleration (excluding the gravity component) of the device along the x, y, and z axes. It is applicable to scenarios where the pure motion acceleration of the device needs to be sensed, such as motion tracking and collision detection. Compared with **sensor.on('SensorId.ACCELEROMETER')**, this API does not contain the gravity component and is applicable to scenarios where only the device's motion acceleration is required.
 
-**Required permissions**: ohos.permission.ACCELEROMETER
+**Required permissions**: ohos.permission.ACCELEROMETER 
 
-**System capability**: SystemCapability.Sensors.Sensor
+**System capability**: SystemCapability.Sensors.Sensor 
 
 **Parameters**
 
@@ -665,9 +666,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -699,7 +700,7 @@ on(type: SensorId.MAGNETIC_FIELD, callback: Callback&lt;MagneticFieldResponse&gt
 
 Subscribes to data of the magnetic field sensor. This API uses an asynchronous callback to return the result. The magnetic field sensor is used to measure the magnetic field strength around the device in the x, y, and z axes. It is applicable to scenarios such as compass, direction detection, and metal detection. After this method is called, the system continuously reports magnetic field component data at the specified frequency through the callback.
 
-**System capability**: SystemCapability.Sensors.Sensor
+**System capability**: SystemCapability.Sensors.Sensor 
 
 **Parameters**
 
@@ -715,8 +716,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -748,7 +749,7 @@ on(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback: Callback&lt;MagneticFie
 
 Subscribes to data of the uncalibrated magnetic field sensor. This API uses an asynchronous callback to return the result. The difference between the uncalibrated magnetic field sensor and the magnetic field sensor is that the **biasX**, **biasY**, and **biasZ** values reported by the uncalibrated magnetic field sensor are not calibrated by the system. This sensor is suitable for scenarios where raw magnetic field data is required or a custom calibration algorithm is implemented. Compared with **sensor.on('SensorId.MAGNETIC_FIELD')**, this API provides the bias information, which is suitable for scenarios where the geomagnetic calibration deviation of the device needs to be analyzed.
 
-**System capability**: SystemCapability.Sensors.Sensor
+**System capability**: SystemCapability.Sensors.Sensor 
 
 **Parameters**
 
@@ -764,8 +765,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -806,7 +807,7 @@ Subscribes to data of the orientation sensor. This API uses an asynchronous call
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.Sensors.Sensor
+**System capability**: SystemCapability.Sensors.Sensor 
 
 **Parameters**
 
@@ -822,8 +823,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -859,9 +860,9 @@ Subscribes to data of the pedometer sensor. This API uses an asynchronous callba
 > 
 > The pedometer sensor data is reset only when the device is rebooted, not on a daily basis. The step count reported before the reboot is the accumulated value.
 
-**Required permissions**: ohos.permission.ACTIVITY_MOTION
+**Required permissions**: ohos.permission.ACTIVITY_MOTION 
 
-**System capability**: SystemCapability.Sensors.Sensor
+**System capability**: SystemCapability.Sensors.Sensor 
 
 **Parameters**
 
@@ -877,9 +878,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -909,9 +910,9 @@ on(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionR
 
 Subscribes to data of the pedometer detection sensor. This API uses an asynchronous callback to return the result. The pedometer detection sensor is used to detect whether a step event (such as a step) occurs. It is applicable to scenarios where the walking status needs to be detected in real time. Compared with **sensor.on('SensorId.PEDOMETER')**, this API reports the scalar value of a step event instead of the accumulated step count. It is applicable to scenarios where single-step events need to be detected.
 
-**Required permissions**: ohos.permission.ACTIVITY_MOTION
+**Required permissions**: ohos.permission.ACTIVITY_MOTION 
 
-**System capability**: SystemCapability.Sensors.Sensor
+**System capability**: SystemCapability.Sensors.Sensor 
 
 **Parameters**
 
@@ -927,9 +928,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -975,8 +976,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3.Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -1006,7 +1007,7 @@ on(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&
 
 Subscribes to data of the rotation vector sensor. This API uses an asynchronous callback to return the result. The rotation vector sensor is used to indicate the orientation of a device. The data consists of the X, Y, and Z components and the scalar W, and can be used for device orientation estimation and AR/VR scenarios. After this method is called, the system continuously reports rotation vector data at the specified frequency through the callback.
 
-**System capability**: SystemCapability.Sensors.Sensor
+**System capability**: SystemCapability.Sensors.Sensor 
 
 **Parameters**
 
@@ -1022,8 +1023,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3.Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -1070,8 +1071,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3.Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -1115,8 +1116,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3.Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -1159,7 +1160,7 @@ For details about the following error codes, see [Sensor Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -1189,7 +1190,7 @@ once(type: SensorId.ACCELEROMETER, callback: Callback&lt;AccelerometerResponse&g
 
 Obtains data of the acceleration sensor once. This method applies to scenarios where the current acceleration data needs to be obtained only once and continuous listening is not required. After the method is called, the callback is triggered only once, and the subscription is automatically canceled.
 
-**Required permissions**: ohos.permission.ACCELEROMETER
+**Required permissions**: ohos.permission.ACCELEROMETER 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -1206,9 +1207,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -1235,7 +1236,7 @@ once(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback: Callback&lt;Accelerome
 
 Obtains data of the uncalibrated acceleration sensor once. This method applies to scenarios where the raw acceleration and offset data needs to be obtained only once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled.
 
-**Required permissions**: ohos.permission.ACCELEROMETER
+**Required permissions**: ohos.permission.ACCELEROMETER 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -1252,9 +1253,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -1299,8 +1300,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -1340,8 +1341,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -1381,8 +1382,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -1422,8 +1423,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -1450,7 +1451,7 @@ once(type: SensorId.GYROSCOPE, callback: Callback&lt;GyroscopeResponse&gt;): voi
 
 Obtains data of the gyroscope sensor once. This method applies to scenarios where only the current angular velocity needs to be obtained once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled.
 
-**Required permissions**: ohos.permission.GYROSCOPE
+**Required permissions**: ohos.permission.GYROSCOPE 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -1467,9 +1468,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -1513,9 +1514,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -1545,7 +1546,7 @@ once(type: SensorId.HALL, callback: Callback&lt;HallResponse&gt;): void
 
 Obtains data of the Hall effect sensor once. This method applies to scenarios where the current Hall effect status needs to be detected only once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled.
 
-**System capability**: SystemCapability.Sensors.Sensor
+**System capability**: SystemCapability.Sensors.Sensor 
 
 **Parameters**
 
@@ -1560,8 +1561,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -1586,9 +1587,9 @@ once(type: SensorId.HEART_RATE, callback: Callback&lt;HeartRateResponse&gt;): vo
 
 Obtains data of the heart rate sensor once. This method applies to scenarios where only the current heart rate needs to be obtained once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled.
 
-**Required permissions**: ohos.permission.READ_HEALTH_DATA
+**Required permissions**: ohos.permission.READ_HEALTH_DATA 
 
-**System capability**: SystemCapability.Sensors.Sensor
+**System capability**: SystemCapability.Sensors.Sensor 
 
 **Parameters**
 
@@ -1603,9 +1604,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -1630,7 +1631,7 @@ once(type: SensorId.HUMIDITY, callback: Callback&lt;HumidityResponse&gt;): void
 
 Obtains data of the humidity sensor once. This method applies to the scenario where the current humidity needs to be obtained only once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled.
 
-**System capability**: SystemCapability.Sensors.Sensor
+**System capability**: SystemCapability.Sensors.Sensor 
 
 **Parameters**
 
@@ -1645,8 +1646,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -1671,9 +1672,9 @@ once(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerome
 
 Obtains data of the linear acceleration sensor once. This method applies to scenarios where only the current linear acceleration (excluding the gravity component) needs to be obtained once. After the method is called, the callback is triggered only once, and the subscription is automatically canceled.
 
-**Required permissions**: ohos.permission.ACCELEROMETER
+**Required permissions**: ohos.permission.ACCELEROMETER 
 
-**System capability**: SystemCapability.Sensors.Sensor
+**System capability**: SystemCapability.Sensors.Sensor 
 
 **Parameters**
 
@@ -1688,9 +1689,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -1732,8 +1733,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -1775,8 +1776,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -1821,8 +1822,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -1853,9 +1854,9 @@ Obtains data of the pedometer sensor once. The step counter sensor's data report
 > 
 > The pedometer sensor data is reset only when the device is rebooted, not on a daily basis. The step count reported before the reboot is the accumulated value.
 
-**Required permissions**: ohos.permission.ACTIVITY_MOTION
+**Required permissions**: ohos.permission.ACTIVITY_MOTION 
 
-**System capability**: SystemCapability.Sensors.Sensor
+**System capability**: SystemCapability.Sensors.Sensor 
 
 **Parameters**
 
@@ -1870,9 +1871,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -1897,9 +1898,9 @@ once(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectio
 
 Obtains data of the pedometer sensor once. This method applies to scenarios where only one-time step counting is required. After the method is called, the callback is triggered only once, and the subscription is automatically canceled.
 
-**Required permissions**: ohos.permission.ACTIVITY_MOTION
+**Required permissions**: ohos.permission.ACTIVITY_MOTION 
 
-**System capability**: SystemCapability.Sensors.Sensor
+**System capability**: SystemCapability.Sensors.Sensor 
 
 **Parameters**
 
@@ -1914,9 +1915,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -1956,8 +1957,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -1997,8 +1998,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -2041,8 +2042,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -2082,8 +2083,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -2128,8 +2129,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2185,8 +2186,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -2248,13 +2249,13 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-## sensor.off('SensorId.ACCELEROMETER_UNCALIBRATED')<sup>9+</sup>  
+## sensor.off('SensorId.ACCELEROMETER_UNCALIBRATED')<sup>9+</sup>
 
 off(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;): void
 
 Unsubscribes from data of the uncalibrated acceleration sensor. Call this method when you no longer need to receive data of the uncalibrated acceleration sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs.
 
-**Required permissions**: ohos.permission.ACCELEROMETER
+**Required permissions**: ohos.permission.ACCELEROMETER 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -2271,8 +2272,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2324,8 +2325,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -2411,8 +2412,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -2474,7 +2475,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-## sensor.off('SensorId.AMBIENT_LIGHT')<sup>9+</sup> 
+## sensor.off('SensorId.AMBIENT_LIGHT')<sup>9+</sup>
 
 off(type: SensorId.AMBIENT_LIGHT, callback?: Callback&lt;LightResponse&gt;): void
 
@@ -2495,7 +2496,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2547,7 +2548,7 @@ For details about the following error codes, see [Sensor Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -2609,7 +2610,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-## sensor.off('SensorId.AMBIENT_TEMPERATURE')<sup>9+</sup> 
+## sensor.off('SensorId.AMBIENT_TEMPERATURE')<sup>9+</sup>
 
 off(type: SensorId.AMBIENT_TEMPERATURE, callback?: Callback&lt;AmbientTemperatureResponse&gt;): void
 
@@ -2630,7 +2631,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2682,7 +2683,7 @@ For details about the following error codes, see [Sensor Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -2745,7 +2746,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-## sensor.off('SensorId.BAROMETER')<sup>9+</sup>  
+## sensor.off('SensorId.BAROMETER')<sup>9+</sup>
 
 off(type: SensorId.BAROMETER, callback?: Callback&lt;BarometerResponse&gt;): void
 
@@ -2766,7 +2767,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2818,7 +2819,7 @@ For details about the following error codes, see [Sensor Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -2880,7 +2881,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-## sensor.off('SensorId.GRAVITY')<sup>9+</sup> 
+## sensor.off('SensorId.GRAVITY')<sup>9+</sup>
 
 off(type: SensorId.GRAVITY, callback?: Callback&lt;GravityResponse&gt;): void
 
@@ -2901,7 +2902,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -2954,7 +2955,7 @@ For details about the following error codes, see [Sensor Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -3016,7 +3017,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-## sensor.off('SensorId.GYROSCOPE')<sup>9+</sup> 
+## sensor.off('SensorId.GYROSCOPE')<sup>9+</sup>
 
 off(type: SensorId.GYROSCOPE, callback?: Callback&lt;GyroscopeResponse&gt;): void
 
@@ -3041,8 +3042,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -3098,8 +3099,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -3161,7 +3162,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-## sensor.off('SensorId.GYROSCOPE_UNCALIBRATED')<sup>9+</sup> 
+## sensor.off('SensorId.GYROSCOPE_UNCALIBRATED')<sup>9+</sup>
 
 off(type: SensorId.GYROSCOPE_UNCALIBRATED, callback?: Callback&lt;GyroscopeUncalibratedResponse&gt;): void
 
@@ -3184,8 +3185,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -3239,8 +3240,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -3302,7 +3303,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-## sensor.off('SensorId.HALL')<sup>9+</sup> 
+## sensor.off('SensorId.HALL')<sup>9+</sup>
 
 off(type: SensorId.HALL, callback?: Callback&lt;HallResponse&gt;): void
 
@@ -3323,7 +3324,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -3375,7 +3376,7 @@ For details about the following error codes, see [Sensor Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -3437,13 +3438,13 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-## sensor.off('SensorId.HEART_RATE')<sup>9+</sup> 
+## sensor.off('SensorId.HEART_RATE')<sup>9+</sup>
 
 off(type: SensorId.HEART_RATE, callback?: Callback&lt;HeartRateResponse&gt;): void
 
 Unsubscribes from data of the heart rate sensor. Call this method to cancel the subscription when the heart rate sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs.
 
-**Required permissions**: ohos.permission.READ_HEALTH_DATA
+**Required permissions**: ohos.permission.READ_HEALTH_DATA 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -3460,8 +3461,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -3515,8 +3516,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -3578,7 +3579,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-## sensor.off('SensorId.HUMIDITY')<sup>9+</sup> 
+## sensor.off('SensorId.HUMIDITY')<sup>9+</sup>
 
 off(type: SensorId.HUMIDITY, callback?: Callback&lt;HumidityResponse&gt;): void
 
@@ -3599,7 +3600,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -3651,7 +3652,7 @@ For details about the following error codes, see [Sensor Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -3713,15 +3714,15 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-## sensor.off('SensorId.LINEAR_ACCELEROMETER')<sup>9+</sup> 
+## sensor.off('SensorId.LINEAR_ACCELEROMETER')<sup>9+</sup>
 
 off(type: SensorId.LINEAR_ACCELEROMETER, callback?: Callback&lt;LinearAccelerometerResponse&gt;): void
 
 Unsubscribes from data of the linear acceleration sensor. Call this method to cancel the subscription when the linear acceleration sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs.
 
-**Required permissions**: ohos.permission.ACCELEROMETER
+**Required permissions**: ohos.permission.ACCELEROMETER 
 
-**System capability**: SystemCapability.Sensors.Sensor
+**System capability**: SystemCapability.Sensors.Sensor 
 
 **Parameters**
 
@@ -3736,8 +3737,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -3791,8 +3792,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -3854,13 +3855,13 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-## sensor.off('SensorId.MAGNETIC_FIELD')<sup>9+</sup> 
+## sensor.off('SensorId.MAGNETIC_FIELD')<sup>9+</sup>
 
 off(type: SensorId.MAGNETIC_FIELD, callback?: Callback&lt;MagneticFieldResponse&gt;): void
 
 Unsubscribes from data of the magnetic field sensor. When the magnetic field sensor data is no longer needed, call this method to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs.
 
-**System capability**: SystemCapability.Sensors.Sensor
+**System capability**: SystemCapability.Sensors.Sensor 
 
 **Parameters**
 
@@ -3875,7 +3876,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -3927,7 +3928,7 @@ For details about the following error codes, see [Sensor Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -3989,13 +3990,13 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-## sensor.off('SensorId.MAGNETIC_FIELD_UNCALIBRATED')<sup>9+</sup> 
+## sensor.off('SensorId.MAGNETIC_FIELD_UNCALIBRATED')<sup>9+</sup>
 
 off(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback?: Callback&lt;MagneticFieldUncalibratedResponse&gt;): void
 
 Unsubscribes from data of the uncalibrated magnetic field sensor. When the uncalibrated magnetic field sensor data is no longer needed, call this method to cancel the subscription. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs.
 
-**System capability**: SystemCapability.Sensors.Sensor
+**System capability**: SystemCapability.Sensors.Sensor 
 
 **Parameters**
 
@@ -4010,7 +4011,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -4062,7 +4063,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 14500101 | Service exception.Possible causes:1. Sensor HDF service exception;2. Sensor service IPC exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -4147,7 +4148,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -4201,7 +4202,7 @@ For details about the following error codes, see [Sensor Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -4269,7 +4270,7 @@ off(type: SensorId.PEDOMETER, callback?: Callback&lt;PedometerResponse&gt;): voi
 
 Unsubscribes from data of the pedometer sensor. Call this method to cancel the subscription when the pedometer sensor data is no longer needed. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs.
 
-**Required permissions**: ohos.permission.ACTIVITY_MOTION
+**Required permissions**: ohos.permission.ACTIVITY_MOTION 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -4286,8 +4287,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -4341,8 +4342,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -4404,13 +4405,13 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-## sensor.off('SensorId.PEDOMETER_DETECTION')<sup>9+</sup> 
+## sensor.off('SensorId.PEDOMETER_DETECTION')<sup>9+</sup>
 
 off(type: SensorId.PEDOMETER_DETECTION, callback?: Callback&lt;PedometerDetectionResponse&gt;): void
 
 Unsubscribes from data of the pedometer detection sensor. Call this method when you no longer need to receive data of the pedometer detection sensor. The **off** API for canceling subscription and the **on** API for subscription must be used in pairs.
 
-**Required permissions**: ohos.permission.ACTIVITY_MOTION
+**Required permissions**: ohos.permission.ACTIVITY_MOTION 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -4427,8 +4428,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -4482,8 +4483,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -4545,7 +4546,7 @@ function sensorUnsubscribe(): Ret {
 }
 ```
 
-## sensor.off('SensorId.PROXIMITY')<sup>9+</sup>  
+## sensor.off('SensorId.PROXIMITY')<sup>9+</sup>
 
 off(type: SensorId.PROXIMITY, callback?: Callback&lt;ProximityResponse&gt;): void
 
@@ -4566,7 +4567,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -4618,7 +4619,7 @@ For details about the following error codes, see [Sensor Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -4701,7 +4702,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -4753,7 +4754,7 @@ For details about the following error codes, see [Sensor Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -4836,7 +4837,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -4888,7 +4889,7 @@ For details about the following error codes, see [Sensor Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -4971,7 +4972,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -5023,7 +5024,7 @@ For details about the following error codes, see [Sensor Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -5106,7 +5107,7 @@ For details about the following error codes, see [Sensor Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -5141,7 +5142,7 @@ try {
 ```
 
 
-## sensor.getSensorListByDeviceSync<sup>19+</sup> 
+## sensor.getSensorListByDeviceSync<sup>19+</sup>
 
 getSensorListByDeviceSync(deviceId?: number): Array&lt;Sensor&gt; 
 
@@ -5182,7 +5183,7 @@ try {
 ```
 
 
-## sensor.getSingleSensorByDeviceSync<sup>19+</sup> 
+## sensor.getSingleSensorByDeviceSync<sup>19+</sup>
 
 getSingleSensorByDeviceSync(type: SensorId, deviceId?: number): Array&lt;Sensor&gt;
 
@@ -5223,7 +5224,7 @@ try {
 ```
 
 
-## sensor.getGeomagneticInfo<sup>9+</sup> 
+## sensor.getGeomagneticInfo<sup>9+</sup>
 
 getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: number, callback: AsyncCallback&lt;GeomagneticResponse&gt;): void
 
@@ -5245,8 +5246,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -5276,7 +5277,7 @@ try {
 }
 ```
 
-## sensor.getGeomagneticInfo<sup>9+</sup> 
+## sensor.getGeomagneticInfo<sup>9+</sup>
 
 getGeomagneticInfo(locationOptions: LocationOptions, timeMillis: number): Promise&lt;GeomagneticResponse&gt;
 
@@ -5303,8 +5304,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -5332,7 +5333,7 @@ try {
 }
 ```
 
-## sensor.getDeviceAltitude<sup>9+</sup> 
+## sensor.getDeviceAltitude<sup>9+</sup>
 
 getDeviceAltitude(seaPressure: number, currentPressure: number, callback: AsyncCallback&lt;number&gt;): void
 
@@ -5354,8 +5355,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -5380,7 +5381,7 @@ try {
 }
 ```
 
-## sensor.getDeviceAltitude<sup>9+</sup> 
+## sensor.getDeviceAltitude<sup>9+</sup>
 
 getDeviceAltitude(seaPressure: number, currentPressure: number): Promise&lt;number&gt;
 
@@ -5407,8 +5408,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -5432,7 +5433,7 @@ try {
 }
 ```
 
-## sensor.getInclination<sup>9+</sup> 
+## sensor.getInclination<sup>9+</sup>
 
 getInclination(inclinationMatrix: Array&lt;number&gt;, callback: AsyncCallback&lt;number&gt;): void
 
@@ -5453,8 +5454,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -5483,7 +5484,7 @@ try {
 }
 ```
 
-## sensor.getInclination<sup>9+</sup> 
+## sensor.getInclination<sup>9+</sup>
 
  getInclination(inclinationMatrix: Array&lt;number&gt;): Promise&lt;number&gt;
 
@@ -5509,8 +5510,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -5560,8 +5561,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -5628,8 +5629,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -5668,7 +5669,7 @@ try {
 }
 ```
 
-## sensor.getRotationMatrix<sup>9+</sup> 
+## sensor.getRotationMatrix<sup>9+</sup>
 
 getRotationMatrix(rotationVector: Array&lt;number&gt;, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
@@ -5689,8 +5690,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -5742,8 +5743,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -5768,7 +5769,7 @@ try {
 }
 ```
 
-## sensor.transformRotationMatrix<sup>9+</sup> 
+## sensor.transformRotationMatrix<sup>9+</sup>
 
 transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
@@ -5790,8 +5791,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -5848,8 +5849,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -5878,7 +5879,7 @@ try {
 }
 ```
 
-## sensor.getQuaternion<sup>9+</sup> 
+## sensor.getQuaternion<sup>9+</sup>
 
 getQuaternion(rotationVector: Array&lt;number&gt;, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void 
 
@@ -5899,8 +5900,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -5952,8 +5953,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -5999,8 +6000,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -6059,8 +6060,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -6089,7 +6090,7 @@ try {
 }
 ```
 
-## sensor.getRotationMatrix<sup>9+</sup> 
+## sensor.getRotationMatrix<sup>9+</sup>
 
 getRotationMatrix(gravity: Array&lt;number&gt;, geomagnetic: Array&lt;number&gt;, callback: AsyncCallback&lt;RotationMatrixResponse&gt;): void 
 
@@ -6111,8 +6112,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -6137,7 +6138,7 @@ try {
 }
 ```
 
-## sensor.getRotationMatrix<sup>9+</sup> 
+## sensor.getRotationMatrix<sup>9+</sup>
 
 getRotationMatrix(gravity: Array&lt;number&gt;, geomagnetic: Array&lt;number&gt;): Promise&lt;RotationMatrixResponse&gt;
 
@@ -6164,8 +6165,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -6209,8 +6210,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -6255,8 +6256,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -6299,7 +6300,7 @@ For details about the following error codes, see [Sensor Error Codes](errorcode-
 
 | ID| Error Message          |
 | -------- | ------------------ |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 
 **Example**
 
@@ -6340,8 +6341,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 | 14500102 | The sensor is not supported by the device. [since 12]                  |
 
 **Example**
@@ -6399,8 +6400,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor hdf service exception; 2. Sensor service ipc exception; 3. Sensor data channel exception. |
 | 14500102 | The sensor is not supported by the device. [since 12]                   |
 
 **Example**
@@ -6448,8 +6449,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception. Possible causes: 1. Sensor HDF service exception; 2. Sensor service IPC exception; 3. Sensor data channel exception. |
 | 14500102 | The sensor is not supported by the device.                   |
 
 **Example**
@@ -7009,7 +7010,7 @@ Subscribes to data changes of the linear acceleration sensor. This API uses an a
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.LINEAR_ACCELEROMETER](#sensoronsensoridlinear_accelerometer9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.LINEAR_ACCELEROMETER](#sensoronsensoridlinear_accelerometer9) instead. 
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -7212,7 +7213,7 @@ Subscribes to data changes of the pedometer detection sensor. This API uses an a
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.PEDOMETER_DETECTION](#sensoronsensoridpedometer_detection9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.PEDOMETER_DETECTION](#sensoronsensoridpedometer_detection9) instead. 
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
@@ -7248,7 +7249,7 @@ Subscribes to data changes of the pedometer sensor. This API uses an asynchronou
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.PEDOMETER](#sensoronsensoridpedometer9) instead.
 
-**Required permissions**: ohos.permission.ACTIVITY_MOTION
+**Required permissions**: ohos.permission.ACTIVITY_MOTION 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7312,7 +7313,7 @@ Subscribes to data changes of the magnetic field sensor. This API uses an asynch
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.MAGNETIC_FIELD](#sensoronsensoridmagnetic_field9) instead. 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.MAGNETIC_FIELD](#sensoronsensoridmagnetic_field9) instead.  
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7346,7 +7347,7 @@ Subscribes to data changes of the uncalibrated magnetic field sensor. This API u
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.MAGNETIC_FIELD_UNCALIBRATED](#sensoronsensoridmagnetic_field_uncalibrated9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.MAGNETIC_FIELD_UNCALIBRATED](#sensoronsensoridmagnetic_field_uncalibrated9) instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7383,7 +7384,7 @@ Subscribes to data changes of the proximity sensor. This API uses an asynchronou
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.PROXIMITY](#sensoronsensoridproximity9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.PROXIMITY](#sensoronsensoridproximity9) instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7415,7 +7416,7 @@ Subscribes to data changes of the humidity sensor. This API uses an asynchronous
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.HUMIDITY](#sensoronsensoridhumidity9) instead. 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.HUMIDITY](#sensoronsensoridhumidity9) instead.  
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -7579,7 +7580,7 @@ Subscribes to data changes of the heart rate sensor. This API uses an asynchrono
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.on.HEART_RATE](#sensoronsensoridheart_rate9) instead.
 
-**Required permissions**: ohos.permission.HEALTH_DATA
+**Required permissions**: ohos.permission.HEALTH_DATA 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8189,7 +8190,7 @@ Subscribes to only one data change of the orientation sensor. This method applie
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.ORIENTATION](#sensoroncesensoridorientation9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.ORIENTATION](#sensoroncesensoridorientation9) instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8220,7 +8221,7 @@ Subscribes to only one data change of the rotation vector sensor. This method ap
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.ROTATION_VECTOR](#sensoroncesensoridrotation_vector9) instead. 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.ROTATION_VECTOR](#sensoroncesensoridrotation_vector9) instead.  
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8254,7 +8255,7 @@ Subscribes to only one data change of the heart rate sensor. This method applies
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.once.HEART_RATE](#sensoroncesensoridheart_rate9) instead.
 
-**Required permissions**: ohos.permission.HEART_RATE 
+**Required permissions**: ohos.permission.HEART_RATE  
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8350,7 +8351,7 @@ Unsubscribes from data of the uncalibrated acceleration sensor. The **off** API 
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.ACCELEROMETER_UNCALIBRATED](#sensoroffsensoridaccelerometer_uncalibrated9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.ACCELEROMETER_UNCALIBRATED](#sensoroffsensoridaccelerometer_uncalibrated9) instead. 
 
 **Required permissions**: ohos.permission.ACCELEROMETER
 
@@ -8388,7 +8389,7 @@ Unsubscribes from data of the ambient light sensor. The **off** API for cancelin
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.AMBIENT_LIGHT](#sensoroffsensoridambient_light9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.AMBIENT_LIGHT](#sensoroffsensoridambient_light9) instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8419,7 +8420,7 @@ Unsubscribes from data of the ambient temperature sensor. The **off** API for ca
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.AMBIENT_TEMPERATURE](#sensoroffsensoridambient_temperature9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.AMBIENT_TEMPERATURE](#sensoroffsensoridambient_temperature9) instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8450,7 +8451,7 @@ Unsubscribes from data of the barometer sensor. The **off** API for canceling su
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.BAROMETER](#sensoroffsensoridbarometer9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.BAROMETER](#sensoroffsensoridbarometer9) instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8481,7 +8482,7 @@ Unsubscribes from data of the gravity sensor. The **off** API for canceling subs
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.GRAVITY](#sensoroffsensoridgravity9) instead. 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.GRAVITY](#sensoroffsensoridgravity9) instead.  
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8514,7 +8515,7 @@ Unsubscribes from data of the gyroscope sensor. The **off** API for canceling su
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.GYROSCOPE](#sensoroffsensoridgyroscope9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.GYROSCOPE](#sensoroffsensoridgyroscope9) instead. 
 
 **Required permissions**: ohos.permission.GYROSCOPE
 
@@ -8584,7 +8585,7 @@ Unsubscribes from data of the Hall effect sensor. The **off** API for canceling 
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.HALL](#sensoroffsensoridhall9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.HALL](#sensoroffsensoridhall9) instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8617,7 +8618,7 @@ Unsubscribes from data of the heart rate sensor. The **off** API for canceling s
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.HEART_RATE](#sensoroffsensoridheart_rate9) instead.
 
-**Required permissions**: ohos.permission.HEALTH_DATA
+**Required permissions**: ohos.permission.HEALTH_DATA 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8648,7 +8649,7 @@ Unsubscribes from data of the humidity sensor. The **off** API for canceling sub
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.HUMIDITY](#sensoroffsensoridhumidity9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.HUMIDITY](#sensoroffsensoridhumidity9) instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8714,7 +8715,7 @@ Unsubscribes from data of the magnetic field sensor. The **off** API for canceli
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.MAGNETIC_FIELD](#sensoroffsensoridmagnetic_field9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.MAGNETIC_FIELD](#sensoroffsensoridmagnetic_field9) instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8783,7 +8784,7 @@ Unsubscribes from data of the orientation sensor. The **off** API for canceling 
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.ORIENTATION](#sensoroffsensoridorientation9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.ORIENTATION](#sensoroffsensoridorientation9) instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8816,7 +8817,7 @@ Unsubscribes from data of the pedometer sensor. The **off** API for canceling su
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.PEDOMETER](#sensoroffsensoridpedometer9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.PEDOMETER](#sensoroffsensoridpedometer9) instead. 
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
@@ -8849,7 +8850,7 @@ Unsubscribes from data of the pedometer detection sensor. The **off** API for ca
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.PEDOMETER_DETECTION](#sensoroffsensoridpedometer_detection9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.PEDOMETER_DETECTION](#sensoroffsensoridpedometer_detection9) instead. 
 
 **Required permissions**: ohos.permission.ACTIVITY_MOTION
 
@@ -8882,7 +8883,7 @@ Unsubscribes from data of the proximity sensor. The **off** API for canceling su
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.PROXIMITY](#sensoroffsensoridproximity9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.PROXIMITY](#sensoroffsensoridproximity9) instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8913,7 +8914,7 @@ Unsubscribes from data of the rotation vector sensor. The **off** API for cancel
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.ROTATION_VECTOR](#sensoroffsensoridrotation_vector9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.ROTATION_VECTOR](#sensoroffsensoridrotation_vector9) instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -8978,7 +8979,7 @@ Unsubscribes from data of the wear detection sensor. The **off** API for canceli
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.WEAR_DETECTION](#sensoroffsensoridwear_detection9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [sensor.off.WEAR_DETECTION](#sensoroffsensoridwear_detection9) instead. 
 
 **System capability**: SystemCapability.Sensors.Sensor
 
@@ -9729,3 +9730,4 @@ Enumerates the sensor types.
 | SENSOR_TYPE_ID_HEART_RATE                  | 278  | Heart rate sensor.          |
 | SENSOR_TYPE_ID_WEAR_DETECTION              | 280  | Wear detection sensor.      |
 | SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED  | 281  | Uncalibrated acceleration sensor.|
+

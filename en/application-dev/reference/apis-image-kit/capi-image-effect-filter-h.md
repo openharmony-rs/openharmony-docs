@@ -6,6 +6,7 @@
 <!--Designer: @wangshoucheng-->
 <!--Tester: @gengfei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=bb03b70711eed1701a4b821a59381bb2c59a1bcd translatedAt=2026-11-13T03:23:40.365Z pushedAt=2026-11-13T10:27:43.772Z nl=1 -->
 
 ## Overview
 
@@ -118,7 +119,7 @@ Enumerates the data types.
 | Enum Item| Description|
 | -- | -- |
 | EFFECT_DATA_TYPE_UNKNOWN = 0 | Undefined.|
-| EFFECT_DATA_TYPE_INT32 = 1 | Integer.|
+| EFFECT_DATA_TYPE_INT32 = 1 | Integer. |
 | EFFECT_DATA_TYPE_FLOAT = 2 | Single-precision floating point.|
 | EFFECT_DATA_TYPE_DOUBLE = 3 | Double-precision floating point.|
 | EFFECT_DATA_TYPE_CHAR = 4 | Byte.|
@@ -1233,3 +1234,5 @@ Obtains the filter timestamp.
 | Type| Description|
 | -- | -- |
 | [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | **EFFECT_SUCCESS**: The function is successfully called.<br>         **EFFECT_ERROR_PARAM_INVALID**: A parameter is a null pointer.|
+
+

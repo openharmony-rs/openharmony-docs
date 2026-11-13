@@ -4,7 +4,8 @@
 <!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
 <!--Tester: @fei_0805-->
-<!--Adviser: @luwy2025-->
+<!--Adviser: @yuwenliang0514-->
+<!-- md-trans-meta sourceCommit=698fdd7ed932a62b5bd9158bd9ffe3069b1c6af5 translatedAt=2026-11-13T03:55:57.173Z pushedAt=2026-11-13T09:17:46.051Z nl=1 -->
 
 - C API<!--game-controller-c-->
     - Module<!--game-controller-module-->

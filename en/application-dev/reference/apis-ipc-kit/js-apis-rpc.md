@@ -5,7 +5,7 @@
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=890206e015e5429a353f02b3abe88fd25a8da027 translatedAt=2026-11-04T03:50:12.380Z pushedAt=2026-11-04T10:13:14.882Z nl=1 -->
+<!-- md-trans-meta sourceCommit=56722c576baed7ef92c65a5679e0431a26ac4442 translatedAt=2026-11-13T04:00:34.045Z pushedAt=2026-11-13T10:51:37.897Z nl=1 -->
 
 The **RPC** module implements communication between processes, including inter-process communication (IPC) on a single device and remote procedure call (RPC) between processes on difference devices. IPC is implemented based on the Binder driver, and RPC is based on the DSoftBus driver.
 
@@ -3215,7 +3215,7 @@ Reads the **IRemoteObject** array from this **MessageSequence** object.
 
 | Type           | Description                       |
 | --------------- | --------------------------- |
-| [IRemoteObject](#iremoteobject)[] | Returns an array of IRemoteObject objects; returns nullptr when an empty array is written. |
+| [IRemoteObject](#iremoteobject)[] | Returns an array of **IRemoteObject** objects; returns null when an empty array is written. |
 
 **Error codes**
 

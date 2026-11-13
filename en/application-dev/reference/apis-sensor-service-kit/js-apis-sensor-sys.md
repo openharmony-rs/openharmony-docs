@@ -5,6 +5,7 @@
 <!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=6537bb99ea3084554b976340d2f07296ebe62ba7 translatedAt=2026-11-13T04:12:09.457Z pushedAt=2026-11-13T10:52:25.968Z nl=1 -->
 
 The **@system.sensor** module is a sensor data subscription module for lite wearables. It provides the data subscription and subscription cancellation capabilities for the acceleration, compass, distance, ambient light, pedometer, barometric pressure, heart rate, device wearing status, device orientation, and gyroscope sensors.
 
@@ -52,9 +53,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. <br>Applicable versions: 11+|
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 202      | Permission verification failed. A non-system application calls a system API. <br>Applicable versions: 11+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -102,9 +103,9 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. <br>Applicable versions: 11+|
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 202      | Permission verification failed. A non-system application calls a system API. <br>Applicable versions: 11+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -152,8 +153,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. <br>Applicable versions: 11+|
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 202      | Permission verification failed. A non-system application calls a system API. <br>Applicable version: 11+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -210,8 +211,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
@@ -298,8 +299,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 202      | Permission check failed. A non-system application uses the system API. <br>Applicable versions: 11+|
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 202      | Permission verification failed. A non-system application calls a system API. <br>Applicable versions: 11+ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -356,8 +357,8 @@ For details about the error codes, see [Sensor Error Codes](errorcode-sensor.md)
 
 | ID| Error Message                                                                                                                                   |
 | -------- |-----------------------------------------------------------------------------------------------------------------------------------------|
-| 202      | Permission check failed. A non-system application uses the system API.                                                                  |
-| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
+| 202      | Permission verification failed. A non-system application calls a system API.                                                                  |
+| 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3. Sensor data channel exception. |
 
 **Example**
 
