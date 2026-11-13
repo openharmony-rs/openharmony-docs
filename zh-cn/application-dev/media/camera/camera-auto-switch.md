@@ -118,7 +118,7 @@ unregisterAutoDeviceSwitchStatus(photoSession: camera.PhotoSession): void {
 
 ## 完整示例代码
 
-<!-- @[camera_autoSwitchPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/pages/autoSwitch.ets) -->
+<!-- @[camera_autoSwitchPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/pages/autoSwitch.ets) -->    
 
 ``` TypeScript
 import { camera } from '@kit.CameraKit';
