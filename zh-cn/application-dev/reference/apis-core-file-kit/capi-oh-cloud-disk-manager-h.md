@@ -569,7 +569,7 @@ CloudDisk_ErrorCode OH_CloudDisk_CreatePlaceholder(const CloudDisk_SyncFolderPat
 
 **描述**
 
-在已注册的同步根路径下创建占位符文件。
+在已注册的同步根路径下创建占位符文件。创建时系统将本地文件大小设置为placeholderInfo中预设的logicalSize，系统不保障本地占位符文件与云侧文件大小的一致性，应用需通过OH_CloudDisk_UpdatePlaceholder()接口保障本地占位符文件的元数据与云侧文件元数据的一致性。
 
 **起始版本：** 26.0.1
 
@@ -750,7 +750,7 @@ CloudDisk_ErrorCode OH_CloudDisk_Execute(const OH_CloudDisk_CallbackReqHead reqH
 
 **描述**
 
-响应回调请求，将获取的数据块写入活跃的占位符水合任务。单个数据块不能超过128KiB。函数在返回前会拷贝所有输入字段和数据。
+响应回调请求，将获取的数据块写入活跃的占位符水合任务。单个数据块不能超过128KiB。函数在返回前会拷贝所有输入字段和数据。水合总量以首次回传的fetchData.totalSize为准，后续回传需保持一致。
 
 **起始版本：** 26.0.1
 

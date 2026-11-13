@@ -570,7 +570,7 @@ CloudDisk_ErrorCode OH_CloudDisk_CreatePlaceholder(const CloudDisk_SyncFolderPat
 
 **Description**
 
-Creates a placeholder file under a registered sync root path.
+Creates a placeholder file under a registered sync root path. Upon creation, the system sets the local file size to the logicalSize preset in placeholderInfo. The system does not guarantee consistency between the local placeholder file size and the cloud file size; the application must use OH_CloudDisk_UpdatePlaceholder() to keep the local placeholder file metadata consistent with the cloud file metadata.
 
 **Since:** 26.0.1
 
@@ -751,7 +751,7 @@ CloudDisk_ErrorCode OH_CloudDisk_Execute(const OH_CloudDisk_CallbackReqHead reqH
 
 **Description**
 
-Responds to a callback request and writes the obtained data block into the active placeholder hydration task. A single data block cannot exceed 128 KiB. The function copies all input fields and data before returning.
+Responds to a callback request and writes the obtained data block into the active placeholder hydration task. A single data block cannot exceed 128 KiB. The function copies all input fields and data before returning. The hydration total size is determined by the fetchData.totalSize of the first Execute call and must stay the same in subsequent calls.
 
 **Since:** 26.0.1
 
