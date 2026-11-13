@@ -74,7 +74,7 @@ target_link_libraries(nativedisplay PUBLIC libnative_display_manager.so)
         } else {
             napi_value errorCode;
             napi_create_int32(env, errCode, &errorCode);
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "DMSTest",
                 "GetDefaultDisplayRotation errCode=%{public}d", errCode);
             return errorCode;
         }
@@ -90,7 +90,7 @@ target_link_libraries(nativedisplay PUBLIC libnative_display_manager.so)
     {
         NativeDisplayManager_CutoutInfo *cutOutInfo = NULL;
         NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo(&cutOutInfo);
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "GetDefaultCutoutInfo errCode=%{public}d", errCode);
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "DMSTest", "GetDefaultCutoutInfo errCode=%{public}d", errCode);
         if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
             if (cutOutInfo != NULL && cutOutInfo->boundingRectsLength != 0) {
                 OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
@@ -150,7 +150,7 @@ static napi_value RegisterDisplayChangeListener(napi_env env, napi_callback_info
     uint32_t listenerIndex;
     NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterDisplayChangeListener(
         DisplayChangeCallback, &listenerIndex);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "DMSTest",
         "RegisterDisplayChangeListener listenerIndex =%{public}d errCode=%{public}d.", listenerIndex, errCode);
     if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
         napi_value registerIndex;
@@ -174,7 +174,7 @@ static napi_value UnregisterDisplayChangeListener(napi_env env, napi_callback_in
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
         "UnregisterDisplayChangeListener listenerIndex =%{public}d.", listenerIndex);
     NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_UnregisterDisplayChangeListener(listenerIndex);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest",
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "DMSTest",
         "UnregisterDisplayChangeListener errCode=%{public}d.", errCode);
     napi_value errorCode;
     napi_create_int32(env, errCode, &errorCode);
@@ -215,7 +215,7 @@ static napi_value UnregisterDisplayChangeListener(napi_env env, napi_callback_in
         uint32_t listenerIndex = 0;
         NativeDisplayManager_ErrorCode errCode = OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener(
             FoldDisplayModeChangeCallback, &listenerIndex);
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "DMSTest", "listenerIndex =%{public}d errCode=%{public}d.",
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "DMSTest", "listenerIndex =%{public}d errCode=%{public}d.",
             listenerIndex, errCode);
         if (errCode == NativeDisplayManager_ErrorCode::DISPLAY_MANAGER_OK) {
             napi_value registerIndex;
