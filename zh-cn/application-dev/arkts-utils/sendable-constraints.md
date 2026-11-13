@@ -517,9 +517,32 @@ let a2: SendableA = new A() as SendableA; // 编译报错
 
 ### 箭头函数不可标记为Sendable
 
-<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/typecannot/src/main/ets/pages/Index.ets) --> 
+箭头函数不支持\@Sendable装饰器，因此它是非Sendable函数，不支持共享。
 
+**正例：**
+<!-- @[counter_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/RulesAndRestrictions/arrowfunctions/src/main/ets/pages/Index.ets) --> 
 
+``` TypeScript
+// 正例：
+@Sendable
+type SendableFuncType = () => void;
+
+@Sendable
+function sendableFunc() {
+  console.info('Sendable func');
+}
+
+@Sendable
+class SendableClass {
+  constructor(f: SendableFuncType) {
+    this.func = f;
+  }
+
+  func: SendableFuncType;
+}
+
+let sendableClass = new SendableClass(sendableFunc);
+```
 
 **反例：**
 
