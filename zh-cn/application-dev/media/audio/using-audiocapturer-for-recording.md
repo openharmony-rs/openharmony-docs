@@ -87,7 +87,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { fileIo as fs } from '@kit.CoreFileKit';
    import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
    
    // ...
@@ -101,7 +101,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      pendingRecordingWrite = Promise.resolve();
      let path = context.cacheDir;
      let filePath = path + '/S16LE_2_48000.pcm';
-     recordingFile = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+     recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
      onReadData = (buffer: ArrayBuffer) => {
        let recordingBuffer = buffer.slice(0);
        let writeOffset = writtenBytes;
@@ -111,7 +111,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
          length: recordingBuffer.byteLength
        }
        pendingRecordingWrite = pendingRecordingWrite.then(async () => {
-         await fileIo.write(recordingFile.fd, recordingBuffer, options);
+         await fs.write(recordingFile.fd, recordingBuffer, options);
        }).catch((error: BusinessError) => {
          console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
        });
@@ -173,7 +173,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
       console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
     } finally {
       await pendingRecordingWrite;
-      fileIo.closeSync(recordingFile.fd);
+      fs.closeSync(recordingFile.fd);
     }
 ```
 
@@ -222,8 +222,8 @@ let audioRendererOptions: audio.AudioRendererOptions = {
   rendererInfo: audioRendererInfo
 };
 
-let file: fileIo.File;
-let recordingFile: fileIo.File;
+let file: fs.File;
+let recordingFile: fs.File;
 let onReadData: Callback<ArrayBuffer>;
 let writeDataCallback: audio.AudioRendererWriteDataCallback;
 let pendingRecordingWrite: Promise<void> = Promise.resolve();
@@ -235,7 +235,7 @@ async function initRecordingResources(context: common.UIAbilityContext): Promise
   pendingRecordingWrite = Promise.resolve();
   let path = context.cacheDir;
   let filePath = path + '/S16LE_2_48000.pcm';
-  recordingFile = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+  recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   onReadData = (buffer: ArrayBuffer) => {
     let recordingBuffer = buffer.slice(0);
     let writeOffset = writtenBytes;
@@ -245,7 +245,7 @@ async function initRecordingResources(context: common.UIAbilityContext): Promise
       length: recordingBuffer.byteLength
     }
     pendingRecordingWrite = pendingRecordingWrite.then(async () => {
-      await fileIo.write(recordingFile.fd, recordingBuffer, options);
+      await fs.write(recordingFile.fd, recordingBuffer, options);
     }).catch((error: BusinessError) => {
       console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
     });
@@ -257,7 +257,7 @@ async function initRender(context: common.UIAbilityContext) {
   let path = context.cacheDir;
   // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
   let filePath = path + '/S16LE_2_48000.pcm';
-  file = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY);
+  file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
   writeDataCallback = (buffer: ArrayBuffer) => {
     let options: Options = {
       offset: bufferSize,
@@ -265,7 +265,7 @@ async function initRender(context: common.UIAbilityContext) {
     };
 
     try {
-      let bufferLength = fileIo.readSync(file.fd, buffer, options);
+      let bufferLength = fs.readSync(file.fd, buffer, options);
       bufferSize += buffer.byteLength;
       // 如果当前回调传入的数据不足一帧，空白区域需要使用静音数据填充，否则会导致播放出现杂音。
       if (bufferLength < buffer.byteLength) {
@@ -349,7 +349,7 @@ async function releaseRender(updateCallback?: (msg: string, isError: boolean) =>
       if (err) {
         console.error('Renderer release failed.');
       } else {
-        fileIo.closeSync(file.fd);
+        fs.closeSync(file.fd);
         console.info('Renderer release success.');
       }
     });
@@ -486,7 +486,7 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
       console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
     } finally {
       await pendingRecordingWrite;
-      fileIo.closeSync(recordingFile.fd);
+      fs.closeSync(recordingFile.fd);
     }
   }
 }

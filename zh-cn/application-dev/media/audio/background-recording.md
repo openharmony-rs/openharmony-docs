@@ -62,8 +62,8 @@
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
-   import { wantAgent, WantAgent } from '@kit.AbilityKit';
+   import { backgroundTaskManager } from '@kit.BackgroundTasksKit'
+   import { wantAgent, WantAgent } from '@kit.AbilityKit'
    // ...
    
      // 开启长时任务。
