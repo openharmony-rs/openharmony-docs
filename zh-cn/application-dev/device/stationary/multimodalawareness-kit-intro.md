@@ -2,7 +2,7 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @saga2025-->
+<!--Designer: @osmanthusblossom-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -18,8 +18,4 @@
 
 <!--RP2--><!--RP2End-->
 
-<!--RP1-->
-### 模拟器支持情况
- 
-本Kit不支持模拟器。
-<!--RP1End-->
+<!--RP1--><!--RP1End-->
