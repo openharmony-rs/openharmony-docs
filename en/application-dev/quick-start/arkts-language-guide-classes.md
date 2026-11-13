@@ -1441,7 +1441,7 @@ let derived: Derived = new Derived();
 console.info(`${derived.publicValue}`);  // 1 (public accessible)
 ```
 
-**ES Private Fields (#field)**: TypeScript supports private fields prefixed with `#` that remain private at runtime. Unlike the `private` keyword, `#field` remains private after compilation. In ArkTS, use the `private` modifier instead. For details, see [TypeScript to ArkTS Cookbook](typescript-to-arkts-migration-guide.md#private-identifiers-are-not-supported).
+**ES Private Fields (#field)**: TypeScript supports private fields prefixed with `#` that remain private at runtime. Unlike the `private` keyword, `#field` remains private after compilation. In ArkTS, use the `private` modifier instead. For details, see [TypeScript to ArkTS Cookbook](typescript-to-arkts-migration-guide.md#private--identifiers-are-not-supported).
 
 **TypeScript Comparison**
 
