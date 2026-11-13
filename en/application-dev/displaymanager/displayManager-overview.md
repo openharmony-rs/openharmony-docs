@@ -1,3 +1,11 @@
+---
+kits: ["ArkUI"]
+description: "Display management provides unified management of physical, virtual, and foldable displays, supports queries of properties such as resolution and pixel density, and listens for changes such as rotation and folding to broadcast them to subscribed services. Virtual screen capabilities are available only to system applications."
+keywords: [display property query, display status monitoring, display rotation, virtual screen, physical screen]
+doctype: guide
+status: active
+---
+
 # Display Management Overview
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
@@ -5,7 +13,7 @@
 <!--Designer: @wulong158-->
 <!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-03T12:47:30.238Z pushedAt=2026-11-03T12:47:30.238Z -->
+<!-- md-trans-meta sourceCommit=0d8c45b21d8a570119acc3e826554bd3c3d6e189 translatedAt=2026-11-12T12:34:02.142Z pushedAt=2026-11-03T12:47:30.238Z nl=1 -->
 
 Display management is responsible for managing various types of displays on a device, including physical, virtual, and foldable displays. It manages their properties and acts as a publisher, broadcasting display-related events and information to subscribed services that require display information.
 
@@ -15,7 +23,7 @@ Display management includes the following capabilities:
 - Listening for various display events, including rotation, resolution changes, refresh rate changes, and folding state changes.
 - Creating and using virtual screens. This capability is available only for system applications.
 
-For details about how to obtain display properties and listen for status changes, see [Using OH_DisplayManager to Obtain Basic Display Information and Listen for Status Changes (C/C++)](native-display-manager.md) and [Using Display to Obtain Display Properties and Listen for Status Changes (ArkTS)](screenProperty-guideline.md).<!--Del--> For details about how to use virtual screens, see [Creating and Using a Virtual Screen (ArkTS) (for System Applications Only)](virtualScreen-guideline-sys.md).<!--DelEnd-->
+For details about how to obtain display properties and listen for status changes, see [Obtaining Display Properties and Listening for Status Changes (C/C++)](native-display-manager.md) and [Obtaining Display Properties and Listening for Status Changes (ArkTS)](screenProperty-guideline.md). For details about how to query extended screen display modes and use coordinate systems in each mode, see [Coordinate Conversion for Extended Screens](extend-coordinate-transformation-guideline.md).<!--Del--> For details about how to use virtual screens, see [Creating and Using a Virtual Screen (ArkTS) (for System Applications Only)](virtualScreen-guideline-sys.md).<!--DelEnd-->
 
 ## Constraints
 

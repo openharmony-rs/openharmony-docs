@@ -5,7 +5,7 @@
 <!--Designer: @hanfeng6-->
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=2583699ed0911c786b3be3e9491f0736485d6f2e translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8923bda514baa1452b967ea964ea779c7417bd8e translatedAt=2026-11-12T12:34:02.186Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
 <!--Del-->
 - Getting Started<!--quick-start-->
@@ -53,15 +53,11 @@
     - [Functions](arkts-language-guide-functions.md)
     - [Enums](arkts-language-guide-enums.md)
     - [Classes](arkts-language-guide-classes.md)
-    - [Properties](arkts-language-guide-properties.md)
-    - [Methods](arkts-language-guide-methods.md)
-    - [Initialization](arkts-language-guide-initialization.md)
-    - [Inheritance](arkts-language-guide-inheritance.md)
     - [Interfaces](arkts-language-guide-interfaces.md)
     - [Error Handling](arkts-language-guide-error-handling.md)
-    - [Type Conversion](arkts-language-guide-type-conversion.md)
+    - [Types](arkts-language-guide-types.md)
     - [Generics](arkts-language-guide-generics.md)
-    - [Asynchronous Concurrency](arkts-language-guide-async-concurrency.md)
+    - [Concurrent Programming](arkts-language-guide-async-concurrency.md)
     - [Advanced Operators](arkts-language-guide-advanced-operators.md)
     - [Module System](arkts-language-guide-module-system.md)
     - [Annotations](arkts-language-guide-annotations.md)
