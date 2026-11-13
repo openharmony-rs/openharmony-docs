@@ -48,7 +48,7 @@ connect(deviceId: string): void
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **错误码**：
 
@@ -71,7 +71,7 @@ connect(deviceId: string): void
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.connect('XX:XX:XX:XX:XX:XX');
+    a2dpSrc.connect('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -94,7 +94,7 @@ disconnect(deviceId: string): void
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **错误码**：
 
@@ -117,7 +117,7 @@ disconnect(deviceId: string): void
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.disconnect('XX:XX:XX:XX:XX:XX');
+    a2dpSrc.disconnect('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -140,7 +140,7 @@ isAbsoluteVolumeSupported(deviceId: string, callback: AsyncCallback&lt;boolean&g
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当接口调用返回成功，err为undefined，data为获取到的设备是否支持绝对音量结果；否则为错误对象。 |
 
 
@@ -164,7 +164,7 @@ isAbsoluteVolumeSupported(deviceId: string, callback: AsyncCallback&lt;boolean&g
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.isAbsoluteVolumeSupported('XX:XX:XX:XX:XX:XX', (err, supported) => {
+    a2dpSrc.isAbsoluteVolumeSupported('11:22:33:44:55:66', (err, supported) => {
         console.info('device support absolute volume ' + supported);
     });
 } catch (err) {
@@ -188,7 +188,7 @@ isAbsoluteVolumeSupported(deviceId: string): Promise&lt;boolean&gt;
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -216,7 +216,7 @@ isAbsoluteVolumeSupported(deviceId: string): Promise&lt;boolean&gt;
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.isAbsoluteVolumeSupported('XX:XX:XX:XX:XX:XX').then((supported) => {
+    a2dpSrc.isAbsoluteVolumeSupported('11:22:33:44:55:66').then((supported) => {
         console.info('device support absolute volume ' + supported);
     });
 } catch (err) {
@@ -240,7 +240,7 @@ isAbsoluteVolumeEnabled(deviceId: string, callback: AsyncCallback&lt;boolean&gt;
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当接口调用返回成功，err为undefined，data为获取到的绝对音量能力开启结果，true表示设备支持绝对音量能力，返回false表示设备不支持绝对音量能力；否则为错误对象。 |
 
 
@@ -264,7 +264,7 @@ isAbsoluteVolumeEnabled(deviceId: string, callback: AsyncCallback&lt;boolean&gt;
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.isAbsoluteVolumeEnabled('XX:XX:XX:XX:XX:XX', (err, enabled) => {
+    a2dpSrc.isAbsoluteVolumeEnabled('11:22:33:44:55:66', (err, enabled) => {
         console.info('device absolute volume enable ' + enabled);
     });
 } catch (err) {
@@ -288,7 +288,7 @@ isAbsoluteVolumeEnabled(deviceId: string): Promise&lt;boolean&gt;
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -316,7 +316,7 @@ isAbsoluteVolumeEnabled(deviceId: string): Promise&lt;boolean&gt;
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.isAbsoluteVolumeEnabled('XX:XX:XX:XX:XX:XX').then((enabled) => {
+    a2dpSrc.isAbsoluteVolumeEnabled('11:22:33:44:55:66').then((enabled) => {
         console.info('device absolute volume enable ' + enabled);
     });
 } catch (err) {
@@ -340,7 +340,7 @@ enableAbsoluteVolume(deviceId: string, callback: AsyncCallback&lt;void&gt;): voi
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。如果成功，err为undefined，否则为错误对象。 |
 
 
@@ -364,7 +364,7 @@ enableAbsoluteVolume(deviceId: string, callback: AsyncCallback&lt;void&gt;): voi
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.enableAbsoluteVolume('XX:XX:XX:XX:XX:XX', (err) => {
+    a2dpSrc.enableAbsoluteVolume('11:22:33:44:55:66', (err) => {
         if (err) {
             console.error("enableAbsoluteVolume error");
         }
@@ -390,7 +390,7 @@ enableAbsoluteVolume(deviceId: string): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -418,7 +418,7 @@ enableAbsoluteVolume(deviceId: string): Promise&lt;void&gt;
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.enableAbsoluteVolume('XX:XX:XX:XX:XX:XX').then(() => {
+    a2dpSrc.enableAbsoluteVolume('11:22:33:44:55:66').then(() => {
             console.info("enableAbsoluteVolume");
         }
     );
@@ -443,7 +443,7 @@ disableAbsoluteVolume(deviceId: string, callback: AsyncCallback&lt;void&gt;): vo
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。如果成功，err为undefined，否则为错误对象。 |
 
 
@@ -467,7 +467,7 @@ disableAbsoluteVolume(deviceId: string, callback: AsyncCallback&lt;void&gt;): vo
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.disableAbsoluteVolume('XX:XX:XX:XX:XX:XX', (err) => {
+    a2dpSrc.disableAbsoluteVolume('11:22:33:44:55:66', (err) => {
         if (err) {
             console.error("disableAbsoluteVolume error");
         }
@@ -493,7 +493,7 @@ disableAbsoluteVolume(deviceId: string): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -521,7 +521,7 @@ disableAbsoluteVolume(deviceId: string): Promise&lt;void&gt;
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.disableAbsoluteVolume('XX:XX:XX:XX:XX:XX').then(() => {
+    a2dpSrc.disableAbsoluteVolume('11:22:33:44:55:66').then(() => {
         console.info("disableAbsoluteVolume");
     });
 } catch (err) {
@@ -545,7 +545,7 @@ getCurrentCodecInfo(deviceId: string): CodecInfo
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -573,7 +573,7 @@ getCurrentCodecInfo(deviceId: string): CodecInfo
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    let codecInfo : a2dp.CodecInfo = a2dpSrc.getCurrentCodecInfo('XX:XX:XX:XX:XX:XX');
+    let codecInfo : a2dp.CodecInfo = a2dpSrc.getCurrentCodecInfo('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -595,7 +595,7 @@ getCurrentFullCodecInfo(deviceId: string): CodecInfoList[]
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 对端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -623,7 +623,7 @@ getCurrentFullCodecInfo(deviceId: string): CodecInfoList[]
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    let codecInfoList : a2dp.CodecInfoList[] = a2dpSrc.getCurrentFullCodecInfo('XX:XX:XX:XX:XX:XX');
+    let codecInfoList : a2dp.CodecInfoList[] = a2dpSrc.getCurrentFullCodecInfo('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -645,7 +645,7 @@ setCurrentCodecInfo(deviceId: string, codecInfo: CodecInfo): void
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 | codecInfo | [CodecInfo](js-apis-bluetooth-a2dp.md#codecinfo11) | 是    | 编码器信息。 |
 
 **错误码**：
@@ -674,7 +674,7 @@ try {
         codecChannelMode: 2,
         codecSampleRate: 1
     }
-    a2dpSrc.setCurrentCodecInfo('XX:XX:XX:XX:XX:XX', codecInfo);
+    a2dpSrc.setCurrentCodecInfo('11:22:33:44:55:66', codecInfo);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -697,7 +697,7 @@ disableAutoPlay(deviceId: string, duration: number): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 | duration | number | 是    | 拦截时长，取值范围：[3000, 20000]，单位：ms。 |
 
 **返回值：**
@@ -727,7 +727,7 @@ import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
     let durationNumber = 1000;
-    a2dpSrc.disableAutoPlay('XX:XX:XX:XX:XX:XX', durationNumber).then(() => {
+    a2dpSrc.disableAutoPlay('11:22:33:44:55:66', durationNumber).then(() => {
         console.info("disableAutoPlay");
     });
 } catch (err) {
@@ -752,7 +752,7 @@ enableAutoPlay(deviceId: string): Promise&lt;void&gt;
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -780,7 +780,7 @@ enableAutoPlay(deviceId: string): Promise&lt;void&gt;
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.enableAutoPlay('XX:XX:XX:XX:XX:XX').then(() => {
+    a2dpSrc.enableAutoPlay('11:22:33:44:55:66').then(() => {
         console.info("enableAutoPlay");
     });
 } catch (err) {
@@ -805,7 +805,7 @@ getAutoPlayDisabledDuration(deviceId: string): Promise&lt;number&gt;
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -833,7 +833,7 @@ getAutoPlayDisabledDuration(deviceId: string): Promise&lt;number&gt;
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.getAutoPlayDisabledDuration('XX:XX:XX:XX:XX:XX').then((data: number) => {
+    a2dpSrc.getAutoPlayDisabledDuration('11:22:33:44:55:66').then((data: number) => {
         console.info('number' + JSON.stringify(data));
     });
 } catch (err) {
@@ -876,7 +876,7 @@ connect(deviceId: string): void
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **错误码：**
 
@@ -899,7 +899,7 @@ connect(deviceId: string): void
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSink = a2dp.createA2dpSnkProfile();
-    a2dpSink.connect('XX:XX:XX:XX:XX:XX');
+    a2dpSink.connect('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -926,7 +926,7 @@ disconnect(deviceId: string): void
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **错误码：**
 
@@ -948,7 +948,7 @@ disconnect(deviceId: string): void
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSink = a2dp.createA2dpSnkProfile();
-    a2dpSink.disconnect('XX:XX:XX:XX:XX:XX');
+    a2dpSink.disconnect('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -975,7 +975,7 @@ getPlayingState(deviceId: string): PlayingState
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -1003,7 +1003,7 @@ getPlayingState(deviceId: string): PlayingState
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let a2dpSink = a2dp.createA2dpSnkProfile();
-    let state = a2dpSink.getPlayingState('XX:XX:XX:XX:XX:XX');
+    let state = a2dpSink.getPlayingState('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }

@@ -39,7 +39,7 @@ cancelPairedDevice(deviceId: string): boolean
 
 | 参数名      | 类型     | 必填   | 说明                                    |
 | -------- | ------ | ---- | ------------------------------------- |
-| deviceId | string | 是    | 表示要删除的远程设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示要删除的远程设备的地址，例如："11:22:33:44:55:66"。 |
 
 **返回值：**
 
@@ -50,5 +50,5 @@ cancelPairedDevice(deviceId: string): boolean
 **示例：**
 
 ```js
-let result : boolean = bluetooth.cancelPairedDevice("XX:XX:XX:XX:XX:XX");
+let result : boolean = bluetooth.cancelPairedDevice("11:22:33:44:55:66");
 ```
