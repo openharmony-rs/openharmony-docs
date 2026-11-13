@@ -27,7 +27,7 @@
 
 2. 通过[cameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)中的[createCameraInput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createcamerainput)方法创建相机输入流。
 
-   <!-- @[camera_createCameraInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   <!-- @[camera_createCameraInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->   
 
    ``` TypeScript
    /**
