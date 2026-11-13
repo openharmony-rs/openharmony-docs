@@ -1,5 +1,13 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "汇总Node-API开发中常见的基本功能问题，涵盖模块加载失败、异步任务保序、回调ArkTS、数据类型映射、napi_env多线程使用及线程安全函数执行异常等问题的排查与解决。"
+keywords: [Node-API, 模块加载失败, 线程安全函数, napi_call_threadsafe_function, 异步任务保序, napi_env, 回调ArkTS, napi_get_uv_event_loop]
+doctype: faq
+status: active
+---
+
 # 常见基本功能问题汇总
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->

@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍使用Node-API扩展接口创建对ArkTS对象的Sendable强引用，支持跨ArkTS线程共享引用，适用于多线程间对象传递和共享场景。"
 keywords: [Node-API, Sendable强引用, napi_sendable_ref, 跨线程, Sendable对象, 线程共享, 引用管理]
 doctype: guide
