@@ -2,14 +2,15 @@
 
 <!--Kit: Function Flow Runtime Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @chuchihtung; @yanleo-->
-<!--Designer: @geoffrey_guo; @huangyouzhong-->
-<!--Tester: @lotsof; @sunxuhao-->
+<!--Owner: @chuchihtung-->
+<!--Designer: @zhanglu161-->
+<!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=1c82fe64143ca179b80fafe272ca5a84323e9159 translatedAt=2026-11-13T03:06:27.376Z pushedAt=2026-11-13T08:37:30.019Z nl=1 -->
 
 ## Overview
 
-The **loop.h** file declares the loop APIs in C.
+Declares the C APIs of the event loop.
 
 **File to include**: <ffrt/loop.h>
 
@@ -27,20 +28,19 @@ The **loop.h** file declares the loop APIs in C.
 
 | Name             | Description|
 |-----------------|----|
-| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) | Defines the handle to a loop.  |
-
+| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) | Loop handle used to identify different loops.   |
 
 ### Function
 
 | Name| Description|
 | -- | -- |
-| [FFRT_C_API ffrt_loop_t ffrt_loop_create(ffrt_queue_t queue)](#ffrt_loop_create) | Creates a loop.|
-| [FFRT_C_API int ffrt_loop_destroy(ffrt_loop_t loop)](#ffrt_loop_destroy) | Destroys a loop.|
-| [FFRT_C_API int ffrt_loop_run(ffrt_loop_t loop)](#ffrt_loop_run) | Runs a loop.|
-| [FFRT_C_API void ffrt_loop_stop(ffrt_loop_t loop)](#ffrt_loop_stop) | Stops a loop.|
-| [FFRT_C_API int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t events, void *data, ffrt_poller_cb cb)](#ffrt_loop_epoll_ctl) | Manages listening events on a loop.<br> You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.|
-| [FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout, void* data, ffrt_timer_cb cb, bool repeat)](#ffrt_loop_timer_start) | Starts the timer on a loop.<br> You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.|
-| [FFRT_C_API int ffrt_loop_timer_stop(ffrt_loop_t loop, ffrt_timer_t handle)](#ffrt_loop_timer_stop) | Stops the timer on a loop.|
+| [FFRT_C_API ffrt_loop_t ffrt_loop_create(ffrt_queue_t queue)](#ffrt_loop_create) | Creates a loop on the specified queue to run an event loop. |
+| [FFRT_C_API int ffrt_loop_destroy(ffrt_loop_t loop)](#ffrt_loop_destroy) | Destroys a loop. Calling this API releases the resources associated with the loop. |
+| [FFRT_C_API int ffrt_loop_run(ffrt_loop_t loop)](#ffrt_loop_run) | Starts a loop iteration. This function exclusively occupies the calling thread and runs the event loop synchronously on the current calling thread until [ffrt_loop_stop](capi-loop-h.md#ffrt_loop_stop) is called. |
+| [FFRT_C_API void ffrt_loop_stop(ffrt_loop_t loop)](#ffrt_loop_stop) | Stops the loop. After this API is called, the thread running [ffrt_loop_run](capi-loop-h.md#ffrt_loop_run) stops the loop and returns. |
+| [FFRT_C_API int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t events, void *data, ffrt_poller_cb cb)](#ffrt_loop_epoll_ctl) | Controls the epoll file descriptor on the ffrt loop. Adds, modifies, or removes the events to listen for on the target file descriptor. |
+| [FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout, void* data, ffrt_timer_cb cb, bool repeat)](#ffrt_loop_timer_start) | Starts a timer on the ffrt loop. The callback is invoked after the timeout. If **repeat** is **true**, the timer is triggered periodically. |
+| [FFRT_C_API int ffrt_loop_timer_stop(ffrt_loop_t loop, ffrt_timer_t handle)](#ffrt_loop_timer_stop) | Stops a timer on the ffrt loop. After this API is called, the timer is no longer triggered. |
 
 ## Function Description
 
@@ -52,7 +52,7 @@ FFRT_C_API ffrt_loop_t ffrt_loop_create(ffrt_queue_t queue)
 
 **Description**
 
-Creates a loop.
+Creates a loop on the specified queue to run an event loop.
 
 **Since**: 12
 
@@ -60,13 +60,13 @@ Creates a loop.
 
 | Name                   | Description|
 |------------------------| -- |
-| [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) queue | Concurrent queue.|
+| [ffrt_queue_t](capi-ffrt-ffrt-queue-t.md) queue | Queue. |
 
 **Returns**
 
 | Type                        | Description|
 |----------------------------| -- |
-| FFRT_C_API [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) | Returns the **ffrt_loop_t** object if the loop is created;<br>          returns a null pointer otherwise.|
+| FFRT_C_API [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) | Returns a non-null loop handle if the loop is created successfully.<br>         Returns a null pointer otherwise. |
 
 ### ffrt_loop_destroy()
 
@@ -76,7 +76,7 @@ FFRT_C_API int ffrt_loop_destroy(ffrt_loop_t loop)
 
 **Description**
 
-Destroys a loop.
+Destroys a loop. Calling this API releases the resources associated with the loop.
 
 **Since**: 12
 
@@ -84,13 +84,13 @@ Destroys a loop.
 
 | Name| Description|
 | -- | -- |
-| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) loop | Loop object.|
+| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) loop | Loop handle. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **0** if the loop is destroyed;<br>          returns **-1** otherwise.|
+| FFRT_C_API int | Returns **0** if the loop is destroyed successfully.<br>         Returns** -1** otherwise. |
 
 ### ffrt_loop_run()
 
@@ -100,7 +100,7 @@ FFRT_C_API int ffrt_loop_run(ffrt_loop_t loop)
 
 **Description**
 
-Runs a loop.
+Starts a loop iteration. This function exclusively occupies the calling thread and runs the event loop synchronously on the current calling thread until [ffrt_loop_stop](capi-loop-h.md#ffrt_loop_stop) is called.
 
 **Since**: 12
 
@@ -108,13 +108,18 @@ Runs a loop.
 
 | Name| Description|
 | -- | -- |
-| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) loop | Loop object.|
+| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) loop | Loop handle. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **0** if the loop runs successfully;<br>          returns **-1** otherwise.|
+| FFRT_C_API int | Returns **0** if the loop runs successfully<br>         Returns** -1** otherwise. |
+
+**Reference**
+
+[ffrt_loop_stop](capi-loop-h.md#ffrt_loop_stop)
+
 
 ### ffrt_loop_stop()
 
@@ -124,7 +129,7 @@ FFRT_C_API void ffrt_loop_stop(ffrt_loop_t loop)
 
 **Description**
 
-Stops a loop.
+Stops the loop. After this API is called, the thread running [ffrt_loop_run](capi-loop-h.md#ffrt_loop_run) stops the loop and returns.
 
 **Since**: 12
 
@@ -132,7 +137,12 @@ Stops a loop.
 
 | Name| Description|
 | -- | -- |
-| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) loop | Loop object.|
+| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) loop | Loop handle. |
+
+**Reference**
+
+[ffrt_loop_run](capi-loop-h.md#ffrt_loop_run)
+
 
 ### ffrt_loop_epoll_ctl()
 
@@ -142,9 +152,7 @@ FFRT_C_API int ffrt_loop_epoll_ctl(ffrt_loop_t loop, int op, int fd, uint32_t ev
 
 **Description**
 
-Manages listening events on a loop.
-
-You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
+Controls the epoll file descriptor on the ffrt loop. Adds, modifies, or removes the events to listen for on the target file descriptor.
 
 **Since**: 12
 
@@ -152,18 +160,18 @@ You are not advised to call the `exit` function in `cb`. Otherwise, undefined be
 
 | Name| Description|
 | -- | -- |
-| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) loop | Loop object.|
-| int op | Operation to be performed.|
-| int fd | File descriptor.|
-| uint32_t events | Event.|
-| void *data | Pointer to the input parameter in the callback function invoked upon event changes.|
-| [ffrt_poller_cb](capi-type-def-h.md#ffrt_poller_cb) cb | Callback function invoked upon event changes.|
+| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) loop | Loop handle. |
+| int op | Type of the operation to perform on the target file descriptor, such as add, modify, or delete. |
+| int fd | Target file descriptor on which the operation is performed. |
+| uint32_t events | Type of the events to listen for (for example, readable or writable). Bitwise OR combination is supported. |
+| void *data | Pointer to the user data passed to `cb`. |
+| [ffrt_poller_cb](capi-type-def-h.md#ffrt_poller_cb) cb | Callback invoked when the target fd is polled. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **0** if the operation is successful;<br>          returns **-1** otherwise.|
+| FFRT_C_API int | Returns **0** if the operation is successful. <br>         Returns **-1** otherwise. |
 
 ### ffrt_loop_timer_start()
 
@@ -173,9 +181,7 @@ FFRT_C_API ffrt_timer_t ffrt_loop_timer_start(ffrt_loop_t loop, uint64_t timeout
 
 **Description**
 
-Starts the timer on a loop.
-
-You are not advised to call the `exit` function in `cb`. Otherwise, undefined behavior may occur.
+Starts a timer on the ffrt loop. The callback is invoked after the timeout. If **repeat** is **true**, the timer is triggered periodically.
 
 **Since**: 12
 
@@ -183,17 +189,22 @@ You are not advised to call the `exit` function in `cb`. Otherwise, undefined be
 
 | Name| Description|
 | -- | -- |
-| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) loop | Loop object.|
-| uint64_t timeout | Timeout, in milliseconds.|
-| void* data | Pointer to the input parameter in the callback function invoked upon event changes.|
-| [ffrt_timer_cb](capi-type-def-h.md#ffrt_timer_cb) cb | Callback function invoked upon event changes.|
-| bool repeat | Whether to repeat the timer.|
+| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) loop | Loop handle. |
+| uint64_t timeout | Timeout duration, in milliseconds. The value ranges from 0 to +∞. |
+| void* data | Pointer to the user data passed to `cb`. |
+| [ffrt_timer_cb](capi-type-def-h.md#ffrt_timer_cb) cb | User callback executed after the timeout. |
+| bool repeat | Whether to repeat the timer. The value **true** indicates repeating the timer, and **false** indicates execution only once. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API [ffrt_timer_t](capi-type-def-h.md#variables)| Returns the timer handle.|
+| FFRT_C_API [ffrt_timer_t](capi-type-def-h.md#variables) | Timer handle. If **loop** or **cb** is null, **-1** is returned. |
+
+**Reference**
+
+[ffrt_loop_timer_stop](capi-loop-h.md#ffrt_loop_timer_stop)
+
 
 ### ffrt_loop_timer_stop()
 
@@ -203,7 +214,7 @@ FFRT_C_API int ffrt_loop_timer_stop(ffrt_loop_t loop, ffrt_timer_t handle)
 
 **Description**
 
-Stops the timer on a loop.
+Stops a timer on the ffrt loop. After this API is called, the timer is no longer triggered.
 
 **Since**: 12
 
@@ -211,11 +222,18 @@ Stops the timer on a loop.
 
 | Name| Description|
 | -- | -- |
-| ffrt_loop_t loop | Loop object.|
-| ffrt_timer_t handle | Timer handle.|
+| [ffrt_loop_t](capi-ffrt-ffrt-loop-t.md) loop | Loop handle. |
+| [ffrt_timer_t](capi-type-def-h.md#variables) handle | Timer handle, returned by [ffrt_loop_timer_start](capi-loop-h.md#ffrt_loop_timer_start). |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| FFRT_C_API int | Returns **0** if the operation is successful;<br>returns **-1** otherwise.|
+| FFRT_C_API int | Returns **0** if the operation is successful. <br>         Returns **-1** otherwise. |
+
+**Reference**
+
+[ffrt_loop_timer_start](capi-loop-h.md#ffrt_loop_timer_start)
+
+
+

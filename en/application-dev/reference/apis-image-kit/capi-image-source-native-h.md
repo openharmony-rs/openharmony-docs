@@ -5,6 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=23a12558b10702b09c66bf2ed8d3141d9d476772 translatedAt=2026-11-13T03:37:45.648Z pushedAt=2026-11-13T10:43:50.436Z nl=1 -->
 
 ## Overview
 
@@ -39,6 +40,7 @@ The file declares the APIs for image decoding.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [IMAGE_DYNAMIC_RANGE](#image_dynamic_range) | IMAGE_DYNAMIC_RANGE | Enumerates the desired dynamic range for decoding.|
+| <!--DelRow--> [OH_ImageSource_SVGResourceLimitLevel](#oh_imagesource_svgresourcelimitlevel) | OH_ImageSource_SVGResourceLimitLevel | Enumerates the SVG resource limit levels. The higher the level, the fewer resources are allowed for parsing and rendering SVG images. Regardless of the level specified, the system resource limit takes effect. |
 | [IMAGE_ALLOCATOR_TYPE](#image_allocator_type) | IMAGE_ALLOCATOR_TYPE | Enumerates the types of allocators used to allocate PixelMap memory.|
 | [Image_CropAndScaleStrategy](#image_cropandscalestrategy) | Image_CropAndScaleStrategy | Enumerates the cropping and scaling strategies when **desiredSize** and **desiredRegion** are both specified.|
 
@@ -77,8 +79,10 @@ The file declares the APIs for image decoding.
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSize, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromdata) | Creates the pointer to an OH_ImageSourceNative object based on buffer data.<br> The passed **data** must be undecoded. Do not pass the pixel buffer data such as RGBA and YUV. If you want to create a PixelMap based on the pixel buffer data, call [OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap).|
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data, size_t datalength, OH_ImageSourceNative **imageSource)](#oh_imagesourcenative_createfromdatawithuserbuffer) | Creates an image source from data buffer. The data buffer is directly accessed by the image source object, and therefore the data buffer must remain accessible within the lifecycle of the image source object.|
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromRawFile(RawFileDescriptor *rawFile, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromrawfile) | Creates the pointer to an OH_ImageSourceNative object by using the raw file descriptor of an image resource file.|
+| <!--DelRow--> [Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel level)](#oh_imagesourcenative_setsvgresourcelimitlevel) | Sets the SVG resource limit level of the image source. This function takes effect only on SVG-formatted images. It must be called before [OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap), and the configured resource limit takes effect during DOM parsing and rendering. |
+| <!--DelRow--> [Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel *level)](#oh_imagesourcenative_getsvgresourcelimitlevel) | Obtains the SVG resource limit level of the image source. |
 | [Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmap) | Creates the pointer to an OH_PixelmapNative object based on decoding options.|
-| [Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSourceNative *source, OH_DecodingOptions *options, IMAGE_ALLOCATOR_TYPE allocator, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmapusingallocator) | Creates an OH_PixelmapNative object based on decoding options and memory type, where **allocatorType** specifies the memory type of the PixelMap.<br> By default, the system selects an appropriate memory type based on the image type, image size, and platform capability. When processing the returned PixelMap object, consider the impact of stride.|
+| [Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSourceNative *source, OH_DecodingOptions *options, IMAGE_ALLOCATOR_TYPE allocator, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmapusingallocator) | Creates a pixel map based on the decoding parameters, with the memory type specified by allocator. When **IMAGE_ALLOCATOR_TYPE_AUTO** is passed in, the system automatically selects shared memory or DMA memory. When a specific memory type is required, pass in **IMAGE_ALLOCATOR_TYPE_DMA** or **IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY**. When processing the pixel map returned by this API, consider the impact of the stride. |
 | [Image_ErrorCode OH_ImageSourceNative_CreatePixelmapList(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative *resVecPixMap[], size_t size)](#oh_imagesourcenative_createpixelmaplist) | Creates an array of OH_PixelmapNative objects based on decoding options.<br> This function decodes all frames at once. If the number of frames is high or the size of individual frames is large, it can lead to significant memory usage. In these cases, you are advised to use the **Image** component for displaying animations. The **Image** component decodes frames one by one, which uses less memory than this function.|
 | [Image_ErrorCode OH_ImageSourceNative_CreatePicture(OH_ImageSourceNative *source, OH_DecodingOptionsForPicture *options, OH_PictureNative **picture)](#oh_imagesourcenative_createpicture) | Creates the pointer to an OH_PictureNative object based on decoding options.|
 | [Image_ErrorCode OH_ImageSourceNative_CreatePictureAtIndex(OH_ImageSourceNative *source, uint32_t index, OH_PictureNative **picture)](#oh_imagesourcenative_createpictureatindex) | Creates the pointer to an OH_PictureNative object at the specified index.|
@@ -140,6 +144,29 @@ Enumerates the desired dynamic range for decoding.
 | IMAGE_DYNAMIC_RANGE_SDR = 1 | Standard dynamic range (SDR).|
 | IMAGE_DYNAMIC_RANGE_HDR = 2 | High dynamic range (HDR).|
 
+<!--Del-->
+### OH_ImageSource_SVGResourceLimitLevel
+ 
+```c
+enum OH_ImageSource_SVGResourceLimitLevel
+```
+ 
+**Description**
+ 
+Enumerates the SVG resource limit levels. The higher the level, the fewer resources are allowed for parsing and rendering SVG images. Regardless of the level specified, the system resource limit takes effect.
+ 
+**Since:** 26.0.1
+ 
+**System API**: This is a system API.
+ 
+| Enum Item | Description |
+| -- | -- |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_NONE = 0 | Default SVG resource limit. This level does not disable SVG resource protection. |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_LOW = 1 | Low-level limit, allowing a larger SVG resource budget for complex SVG images. |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_MEDIUM = 2 | Medium-level limit, allowing a moderate SVG resource budget and striking a balance between SVG image compatibility and resource consumption. It applies to most SVG images. |
+| OH_IMAGESOURCE_SVG_RESOURCE_LIMIT_LEVEL_HIGH = 3 | High-level limit, allowing a smaller SVG resource budget. It applies to simple SVG images, such as icons and basic UI resources. |
+ 
+<!--DelEnd-->
 ### IMAGE_ALLOCATOR_TYPE
 
 ```c
@@ -916,7 +943,7 @@ Creates the pointer to an OH_ImageSourceNative object based on buffer data.<br> 
 
 Usage scenario: This API is applicable for scenarios where the application has already obtained complete encoded image data (such as binary data in JPEG, PNG, or WebP formats) through a network, file, or other modules. The API creates an image source object, which can then be used to call [OH_ImageSourceNative_GetImageInfo](#oh_imagesourcenative_getimageinfo) to read image information, or [OH_ImageSourceNative_CreatePixelmap](#oh_imagesourcenative_createpixelmap) to decode the data into a PixelMap.
 
-Resource management: The successfully created OH_ImageSourceNative object is held by the caller and must be released through [OH_ImageSourceNative_Release](#oh_imagesourcenative_release) after use. The input data is managed by the caller and should not be decoded pixel data. 
+Resource management: The successfully created OH_ImageSourceNative object is held by the caller and must be released through [OH_ImageSourceNative_Release](#oh_imagesourcenative_release) after use. The input data is managed by the caller and should not be decoded pixel data.
 
 **Since**: 12
 
@@ -990,6 +1017,62 @@ Creates the pointer to an OH_ImageSourceNative object by using the raw file desc
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
+<!--Del-->
+### OH_ImageSourceNative_SetSvgResourceLimitLevel()
+ 
+```c
+Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel level)
+```
+ 
+**Description**
+ 
+Sets the SVG resource limit level of the image source. This function takes effect only on SVG-formatted images. It must be called before [OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap), and the configured resource limit takes effect during DOM parsing and rendering.
+ 
+**Since:** 26.0.1
+ 
+**System API**: This is a system API.
+ 
+**Parameters:**
+ 
+| Name | Description |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to the image source. |
+| [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel) level | SVG resource limit level. For details, see **OH_ImageSource_SVGResourceLimitLevel**. |
+ 
+**Returns:**
+ 
+| Type | Description |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**OH_IMAGE_ERROR_NOT_SYSTEM_APPLICATION**: A non-system app calls this system API.<br>**IMAGE_SOURCE_INVALID_PARAMETER**: **source** is a null pointer. |
+ 
+### OH_ImageSourceNative_GetSvgResourceLimitLevel()
+ 
+```c
+Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNative *source, OH_ImageSource_SVGResourceLimitLevel *level)
+```
+ 
+**Description**
+ 
+Obtains the SVG resource limit level of the image source.
+ 
+**Since:** 26.0.1
+ 
+**System API**: This is a system API.
+ 
+**Parameters**
+ 
+| Name | Description |
+| -- | -- |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to the image source. |
+| [OH_ImageSource_SVGResourceLimitLevel](capi-image-source-native-h.md#oh_imagesource_svgresourcelimitlevel) *level | Pointer to the variable that receives the SVG resource limit level. For details, see **OH_ImageSource_SVGResourceLimitLevel**. |
+ 
+**Return**
+ 
+| Type | Description |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>**OH_IMAGE_ERROR_NOT_SYSTEM_APPLICATION**: A non-system app calls this system API.<br>**IMAGE_SOURCE_INVALID_PARAMETER**: **source** or **level** is a null pointer. |
+ 
+<!--DelEnd-->
 ### OH_ImageSourceNative_CreatePixelmap()
 
 ```c
@@ -999,6 +1082,8 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source
 **Description**
 
 Creates the pointer to an OH_PixelmapNative object based on decoding options.
+
+The system automatically selects shared memory or DMA memory. Starting from API version 15, when the memory type needs to be specified, call [OH_ImageSourceNative_CreatePixelmapUsingAllocator](#oh_imagesourcenative_createpixelmapusingallocator) and set **allocator** to **IMAGE_ALLOCATOR_TYPE_DMA** or **IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY**. For details, see [Default Memory Allocation Method](../../media/image/image-allocator-type-c.md#default-system-memory-allocation).
 
 Usage scenario: This API is applicable for decoding encoded images such as JPEG, PNG, WebP, and single-frame GIF into PixelMaps that can be read, processed, or re-encoded. Before decoding, you can use OH_DecodingOptions to set parameters such as frame index, target pixel format, target size, crop region, and desired dynamic range.
 
@@ -1031,7 +1116,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSource
 
 **Description**
 
-Creates an OH_PixelmapNative object based on decoding options and memory type, where **allocatorType** specifies the memory type of the PixelMap.<br> By default, the system selects an appropriate memory type based on the image type, image size, and platform capability. When processing the returned PixelMap object, consider the impact of stride.
+Creates a pixel map based on the decoding parameters, with the memory type specified by allocator. When **IMAGE_ALLOCATOR_TYPE_AUTO** is passed in, the system automatically selects shared memory or DMA memory. When a specific memory type is required, pass in **IMAGE_ALLOCATOR_TYPE_DMA** or **IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY**. When processing the pixel map returned by this API, consider the impact of the stride.
 
 Usage scenario: This API is applicable for scenarios where the caller needs to explicitly specify the memory type of the PixelMap. For example, when the subsequent image processing pipeline requires DMA memory, IMAGE_ALLOCATOR_TYPE_DMA can be specified.
 
@@ -1048,7 +1133,7 @@ Resource management: The successfully created PixelMap must be released by calli
 | -- | -- |
 | [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | Pointer to an OH_ImageSourceNative object.|
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | Pointer to the decoding options.|
-| [IMAGE_ALLOCATOR_TYPE](#image_allocator_type) allocator | Memory type used by the returned PixelMap.|
+| [IMAGE_ALLOCATOR_TYPE](#image_allocator_type) allocator | Memory type of the pixel map. When **IMAGE_ALLOCATOR_TYPE_AUTO** is passed in, the system automatically selects shared memory or DMA memory. To specify the memory type, pass in **IMAGE_ALLOCATOR_TYPE_DMA** or **IMAGE_ALLOCATOR_TYPE_SHARE_MEMORY**. |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmap | Double pointer to the OH_PixelmapNative object created at the C++ local layer.|
 
 **Returns**
@@ -2238,4 +2323,3 @@ Resource management: This API only destroys the OH_ImageRawData object and its i
 | Type| Description|
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_SOURCE_INVALID_PARAMETER**: The rawData object is invalid.|
-<!--no_check-->

@@ -1,12 +1,11 @@
 # image_mdk.h
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9329f19aa2995f079ff9cf109a20aad0033a91a3 translatedAt=2026-08-03T03:57:48.859Z pushedAt=2026-08-04T03:14:14.862Z -->
+<!-- md-trans-meta sourceCommit=0e69f38feb9f0bcec6da6be8d5b55fe5597cf52d translatedAt=2026-11-13T03:25:20.936Z pushedAt=2026-11-13T10:27:59.362Z nl=1 -->
 
 ## Overview
 
@@ -30,7 +29,7 @@ The file declares the APIs used to access the image rectangle, size, format, and
 | -- | -- | -- |
 | [OhosImageRect](capi-image-ohosimagerect.md) | - | Describes the information about an image rectangle.|
 | [ImageNative_](capi-image-imagenative-.md) | ImageNative | Describes an image object at the native layer.|
-| [OhosImageComponent](capi-image-ohosimagecomponent.md) | - | Describes the information about an image component.|
+| [OhosImageComponent](capi-image-ohosimagecomponent.md) | - | Defines the image component information. |
 
 ### Enums
 
@@ -88,6 +87,7 @@ Enumerates the image color channel types.
 | OHOS_IMAGE_COMPONENT_FORMAT_YUV_V = 3 | Chrominance difference information.|
 | OHOS_IMAGE_COMPONENT_FORMAT_JPEG = 4 | JPEG.|
 
+
 ## Function Description
 
 ### OH_Image_InitImageNative()
@@ -101,6 +101,7 @@ ImageNative* OH_Image_InitImageNative(napi_env env, napi_value source)
 Parses the native ImageNative object from the input JavaScript Native API image object.
 
 **Since**: 10
+
 
 **Parameters**
 
@@ -131,6 +132,7 @@ Obtains OhosImageRect of a native ImageNative object.
 
 **Since**: 10
 
+
 **Parameters**
 
 | Name| Description|
@@ -160,6 +162,7 @@ The type of data stored in the ImageNative object depends on whether the applica
 
 **Since**: 10
 
+
 **Parameters**
 
 | Name| Description|
@@ -185,6 +188,7 @@ Obtains the format of an ImageNative object.
 
 **Since**: 10
 
+
 **Parameters**
 
 | Name| Description|
@@ -209,6 +213,7 @@ int32_t OH_Image_GetComponent(const ImageNative* native, int32_t componentType, 
 Obtains OhosImageComponent of an ImageNative object.
 
 **Since**: 10
+
 
 **Parameters**
 
@@ -238,6 +243,7 @@ This function is not used to release an Image object at the JavaScript native AP
 
 **Since**: 10
 
+
 **Parameters**
 
 | Name| Description|
@@ -253,3 +259,5 @@ This function is not used to release an Image object at the JavaScript native AP
 **Reference**
 
 [OH_Image_InitImageNative](#oh_image_initimagenative)
+
+

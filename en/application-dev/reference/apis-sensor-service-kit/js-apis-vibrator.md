@@ -5,6 +5,7 @@
 <!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=6537bb99ea3084554b976340d2f07296ebe62ba7 translatedAt=2026-11-13T04:18:41.864Z pushedAt=2026-11-13T10:58:06.129Z nl=1 -->
 
 The **vibrator** module is a device vibration control module in Sensor Service Kit. This module provides precise control over device vibration. It allows you to trigger vibration based on the specified duration, preset effect, custom configuration file, or custom vibration pattern, and to stop vibration in a specified pattern or all patterns. In addition, this module provides capabilities such as querying vibration effects, querying vibration information, and listening for vibrator status changes.
 
@@ -79,9 +80,9 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 801      | Capability not supported.                                    |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                                    |
 | 14600101 | Device operation failed.                                     |
 
 **Example**
@@ -240,9 +241,9 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
-| 801      | Capability not supported.                                    |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                                    |
 | 14600101 | Device operation failed.                                     |
 
 **Example**
@@ -384,8 +385,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -503,8 +504,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -610,7 +611,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message          |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **Example**
 
@@ -660,7 +661,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message          |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **Example**
 
@@ -712,7 +713,7 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
 
 | ID| Error Message          |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 14600101 | Device operation failed. |
 
 **Example**
@@ -769,7 +770,7 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
 
 | ID| Error Message                |
 | -------- | ------------------------ |
-| 201      | Permission denied.       |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.       |
 | 14600101 | Device operation failed. |
 
 **Example**
@@ -812,8 +813,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -874,7 +875,7 @@ This API is used when you need to check whether the current device supports the 
 | -------- | ------ | ---- | ---------------------- |
 | effectId | string | Yes  | ID of the preset vibration effect to be confirmed. The value can contain a maximum of 64 characters. If the length exceeds 64 characters, the first 64 characters are used. Use scenarios: The preset vibration effects may vary depending on the device. You need to pass the specific effect ID to check whether the effect is supported. For details about the values, see [EffectId](#effectid) and [HapticFeedback](#hapticfeedback12).|
 
-**Return value**
+**Return value** 
 
 | Type                  | Description                                                        |
 | ---------------------- | ------------------------------------------------------------ |
@@ -886,8 +887,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -955,7 +956,7 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14600101 | Device operation failed.                                     |
 
 **Example**
@@ -1097,7 +1098,7 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
    import { vibrator } from '@kit.SensorServiceKit';
    import { BusinessError } from '@kit.BasicServicesKit';
 
-   // Callback
+   // Callback 
    const vibratorStateChangeCallback = (data: vibrator.VibratorStatusEvent) => {
      console.info('vibrator state callback info:', JSON.stringify(data));
    }
@@ -1145,7 +1146,7 @@ For details about the error codes, see [Vibrator Error Codes](errorcode-vibrator
    import { vibrator } from '@kit.SensorServiceKit';
    import { BusinessError } from '@kit.BasicServicesKit';
 
-   // Callback
+   // Callback 
    const vibratorStateChangeCallback = (data: vibrator.VibratorStatusEvent) => {
      console.info('vibrator state callback info:', JSON.stringify(data));
    }
@@ -1297,7 +1298,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message        |
 | -------- | ---------------- |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1362,7 +1363,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message        |
 | -------- | ---------------- |
-| 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -1699,7 +1700,7 @@ Triggers vibration based on a specified duration. This API uses a promise to ret
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | duration | number | Yes  | Vibrator vibration duration, in ms. The value must be an integer within the range of (0,1800000]. The maximum vibration duration varies with devices due to different component protection design specifications of drivers provided by different vendors. It is recommended that a single vibration duration be less than or equal to 10,000 ms (10s) to maximize user experience.|
 
-**Return value**
+**Return value** 
 
 | Type               | Description         |
 | ------------------- | ------------- |

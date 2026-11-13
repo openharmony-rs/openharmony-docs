@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=465fb4d57a1447327363d6485241bf8b06b62dc9 translatedAt=2026-11-04T04:30:11.571Z pushedAt=2026-11-04T10:12:50.122Z nl=1 -->
+<!-- md-trans-meta sourceCommit=6f89da6818f45f532a8889d62c375bea33722c9b translatedAt=2026-11-13T03:57:08.700Z pushedAt=2026-11-13T09:14:12.717Z nl=1 -->
 
 The **formHost** module provides APIs related to the widget host, which is an application that displays the widget content and controls the position where the widget is displayed. You can use the APIs to delete, release, and update widgets installed by the same user, and obtain widget information and status.
 
@@ -2855,7 +2855,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permissions denied.                                          |
-| 202      | The caller is not a system app.                |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16500050 | IPC connection error.                            |
 | 16500060 | Service connection error. |
 | 16501000 | An internal functional error occurred.                       |
@@ -3843,6 +3843,113 @@ try {
   }).catch((error: BusinessError) => {
     console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.onGetVisibleFormRect
+
+onGetVisibleFormRect(callback: formInfo.GetFormRectInfoCallback): void
+
+Subscribes to the request visible form location and size event.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability**: SystemCapability.Ability.Form
+
+**Parameters**
+
+| Name | Type    | Mandatory | Description    |
+| ------ | ------ | ---- | ------- |
+| callback | [formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | Yes   | Callback used by the form user to process the query request and return the form location information relative to the upper-left corner of the screen and the card size information, in vp. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 16500050 | IPC connection error. |
+| 16500060 | Service connection error. |
+
+**Example**
+
+```ts
+import { formHost, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  const callback = (formId: string): Promise<formInfo.Rect> => {
+    // The form user needs to process the query request, calculate and return the card size and location information.
+    return new Promise<formInfo.Rect>((resolve: Function) => {
+      console.info(`formHost onGetVisibleFormRect, formId is ${formId}`);
+      let formRect: formInfo.Rect = {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0
+      };
+      resolve(formRect);
+    })
+  };
+  formHost.onGetVisibleFormRect(callback);
+  console.info(`formHost onGetVisibleFormRect success`);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formHost.offGetVisibleFormRect
+
+offGetVisibleFormRect(callback?: formInfo.GetFormRectInfoCallback): void
+
+Unsubscribes from the event of requesting the visible form location and size.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**System capability**: SystemCapability.Ability.Form
+
+**Parameters**
+
+| Name | Type    | Mandatory | Description    |
+| ------ | ------ | ---- | ------- |
+| callback | [formInfo.GetFormRectInfoCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | No   | Callback for the corresponding subscribed event of requesting the visible form location and size. By default, indicates to unregister all registered callbacks for the event of requesting the visible form location and size.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 16500050 | IPC connection error. |
+| 16500060 | Service connection error. |
+
+**Example**
+
+```ts
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.offGetVisibleFormRect();
+  console.info(`formHost offGetVisibleFormRect success`);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }

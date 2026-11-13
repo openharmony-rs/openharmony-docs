@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=8f23a5c75070a51c77c3e04564ece94c40931dcb translatedAt=2026-11-04T04:31:23.050Z pushedAt=2026-11-04T10:12:50.129Z nl=1 -->
+<!-- md-trans-meta sourceCommit=6f89da6818f45f532a8889d62c375bea33722c9b translatedAt=2026-11-13T03:56:54.338Z pushedAt=2026-11-13T09:15:50.054Z nl=1 -->
 
 The **formInfo** module provides types and enums related to the widget information and state.
 
@@ -194,7 +194,7 @@ Defines the request for interactive widget animations.
 |-----|-----|----|----|-----|
 | formId       | string  | No | No | Widget ID.|
 | isOverflow   | boolean | No | No | Animation request type. The value **true** indicates the interactive widget requests to trigger the animation; the value **false** indicates the interactive widget requests to cancel the animation.|
-| overflowInfo | [formInfo.OverflowInfo](js-apis-app-form-formInfo.md#overflowinfo20) | No| Yes| Animation request parameters, including the animation duration (unit: ms) and animation area (the upper left corner of the widget is used as the origin of the animation area, in vp). The default value is empty.|
+| overflowInfo | [OverflowInfo](js-apis-app-form-formInfo.md#overflowinfo20) | No | Yes | Animation request parameters, including the animation duration (unit: ms) and animation area (the upper left corner of the widget is used as the origin of the animation area, in vp). The default value is null. |
 
 ## ChangeSceneAnimationStateRequest<sup>20+</sup>
 
@@ -304,8 +304,8 @@ Describes the actual template widget information.
 | bundleName | string | No| No | Name of the bundle to which the widget belongs.          |
 | moduleName | string | No | No | Name of the module to which the widget belongs. |
 | abilityName | string | No| No | Name of the ability to which the widget belongs.|
-| formName | string | No| No | Widget name.|
-| dimension | [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension) | No | No | Widget dimensions. |
+| formName | string | No| No | Form name.|
+| dimension | [FormDimension](js-apis-app-form-formInfo.md#formdimension) | No | No  | Form dimensions. |
 | detailId | string | No | No | Widget information ID. |
 | displayName | string | No | No | Widget display name. |
 | description | string | No | No | Widget description. |

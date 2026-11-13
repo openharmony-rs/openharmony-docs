@@ -6,6 +6,7 @@
 <!--Designer: @wangshoucheng-->
 <!--Tester: @gengfei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=bb03b70711eed1701a4b821a59381bb2c59a1bcd translatedAt=2026-11-13T03:24:24.364Z pushedAt=2026-11-13T10:27:49.999Z nl=1 -->
 
 ## Overview
 
@@ -58,7 +59,7 @@ The file declares the APIs related to an image effector.<br> You can use the API
 | [ImageEffect_ErrorCode OH_ImageEffect_SetInputTextureId(OH_ImageEffect *imageEffect, int32_t textureId,int32_t colorSpace)](#oh_imageeffect_setinputtextureid) | Sets the ID of the input texture that contains the image information.|
 | [ImageEffect_ErrorCode OH_ImageEffect_SetOutputTextureId(OH_ImageEffect *imageEffect, int32_t textureId)](#oh_imageeffect_setoutputtextureid) | Sets the ID of the output texture that contains the rendered image information.|
 | [ImageEffect_ErrorCode OH_ImageEffect_Start(OH_ImageEffect *imageEffect)](#oh_imageeffect_start) | Starts an image effector.|
-| [ImageEffect_ErrorCode OH_ImageEffect_Stop(OH_ImageEffect *imageEffect)](#oh_imageeffect_stop) | Stops an image effector.|
+| [ImageEffect_ErrorCode OH_ImageEffect_Stop(OH_ImageEffect *imageEffect)](#oh_imageeffect_stop) | Stops the image effect. |
 | [ImageEffect_ErrorCode OH_ImageEffect_Release(OH_ImageEffect *imageEffect)](#oh_imageeffect_release) | Releases an OH_ImageEffect instance.|
 | [ImageEffect_ErrorCode OH_ImageEffect_Save(OH_ImageEffect *imageEffect, char **info)](#oh_imageeffect_save) | Serializes an image effector.|
 | [OH_ImageEffect *OH_ImageEffect_Restore(const char *info)](#oh_imageeffect_restore) | Deserializes an image effector.|
@@ -775,7 +776,7 @@ ImageEffect_ErrorCode OH_ImageEffect_Stop(OH_ImageEffect *imageEffect)
 
 **Description**
 
-Stops an image effector.
+Stops the image effect.
 
 **System capability**: SystemCapability.Multimedia.ImageEffect.Core
 
@@ -875,3 +876,5 @@ Deserializes an image effector.
 | Type| Description|
 | -- | -- |
 | [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) * | OH_ImageEffect instance. If the deserialization fails, a null pointer is returned.|
+
+
