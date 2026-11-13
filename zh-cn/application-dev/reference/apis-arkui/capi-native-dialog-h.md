@@ -917,10 +917,10 @@ int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandednessInOptions(ArkUI_C
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 指向弹窗参数对象的指针。指针不能为NULL。 |
-| [OH_ArkUI_NativeModule_HandednessMode](#oh_arkui_nativemodule_handednessmode) mode | 握持手适配模式。 |
+| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | [入参] 指向弹窗参数对象的指针。指针不能为NULL。 |
+| [OH_ArkUI_NativeModule_HandednessMode](#oh_arkui_nativemodule_handednessmode) mode | [入参] 握持手适配模式。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
@@ -948,10 +948,10 @@ int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandedness(ArkUI_NativeDial
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | 指向自定义弹窗控制器的指针。 |
-| [OH_ArkUI_NativeModule_HandednessMode](#oh_arkui_nativemodule_handednessmode) mode | 握持手适配模式。 |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | [入参] 指向自定义弹窗控制器的指针。 |
+| [OH_ArkUI_NativeModule_HandednessMode](#oh_arkui_nativemodule_handednessmode) mode | [入参] 握持手适配模式。 |
 
-**返回：**
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
