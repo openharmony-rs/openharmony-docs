@@ -33,7 +33,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 ## 创建XComponent
 使用[XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)展示摄像头的预览画面。
 
-<!-- @[camera_autoSwitchComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/autoSwitchCamera.ets) -->
+<!-- @[camera_autoSwitchComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/autoSwitchCamera.ets) -->   
 
 ``` TypeScript
 @Entry
