@@ -1,8 +1,13 @@
 # @ohos.resourceschedule.suspendManager (冻结管理模块)(系统接口)
+
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
+<!--Owner: @xufu7-->
+<!--Designer: @zhouben25-->
+<!--Tester: @leetestnady-->
+<!--Adviser: @HelloCrease-->
 
-提供查询应用卡顿状态和注册监听器的API，可监听应用挂起状态改变，并通过进程PID列表查询应用当前的冻结状态。
+提供查询应用卡顿状态和注册监听器的API，可监听应用冻结状态改变，并通过进程PID列表查询应用当前的冻结状态。
 
 >  **说明**:
 >
@@ -20,7 +25,7 @@ import { suspendManager } from '@kit.BackgroundTasksKit';
 
 registerSuspendStateObserver(observer: SuspendStateObserver, stateList: Array&lt;FreezeState&gt;, pidList?: Array&lt;number&gt;): void
 
-注册一个挂起状态观察者来监听应用的挂起状态变化。
+注册一个冻结状态观察者来监听应用的冻结状态变化。
 
 **系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
@@ -50,6 +55,7 @@ registerSuspendStateObserver(observer: SuspendStateObserver, stateList: Array&lt
 
 ```ts
 import { suspendManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: suspendManager.SuspendStateObserver = {
   onActive: (pidList: Array<number>, uid: number) => {
@@ -75,7 +81,7 @@ try {
 
 unregisterSuspendStateObserver(observer: SuspendStateObserver): void
 
-注销先前注册的挂起状态观察者。
+注销先前注册的冻结状态观察者。
 
 **系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
@@ -103,6 +109,7 @@ unregisterSuspendStateObserver(observer: SuspendStateObserver): void
 
 ```ts
 import { suspendManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: suspendManager.SuspendStateObserver = {
   onActive: (pidList: Array<number>, uid: number) => {
@@ -161,8 +168,10 @@ getSuspendStateByPidList(pidList: Array&lt;number&gt;): Array&lt;FreezeState&gt;
 
 ```ts
 import { suspendManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { process } from '@kit.ArkTS';
 
-let pidList: Array<number> = [1234, 5678];
+let pidList: Array<number> = [process.pid];
 try {
   let stateList: Array<suspendManager.FreezeState> = suspendManager.getSuspendStateByPidList(pidList);
   console.info('getSuspendStateByPidList result: ' + JSON.stringify(stateList));
@@ -170,6 +179,19 @@ try {
   console.error(`getSuspendStateByPidList failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
+
+## SuspendStateObserver
+
+定义冻结状态变化的观察者。
+
+**系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
+
+
+|名称  |类型   | 只读   | 可选   |说明   |
+| ------------ | ------------ |------------ |------------ | ------------ |
+|onActive   | (pidList: Array&lt;number&gt;, uid: number) =&gt; void  | 否   | 否   |当应用程序转换到活动状态时调用。pidList为转换为活动的进程ID列表，uid为应用的UID。   |
+|onDoze   |(pidList: Array&lt;number&gt;, uid: number) =&gt; void   | 否   | 否   |  当应用程序进入doze状态时调用。pidList为被doze的进程ID列表，uid为应用的UID。  |
+|onFrozen   | (pidList: Array&lt;number&gt;, uid: number) =&gt; void  | 否   | 否   | 当应用程序完全冻结时调用。pidList为被冻结的进程ID列表，uid为应用的UID。 |
 
 ## FreezeState
 
@@ -183,16 +205,3 @@ try {
 |ACTIVE    |0   |应用处于激活状态。|
 |DOZE    |1   |应用处于doze状态，进入冻结过程，但尚未完全冻结。|
 |FROZEN     |2   |应用处于冻结状态。|
-
-## SuspendStateObserver
-
-定义挂起状态变化的观察者。
-
-**系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
-
-
-|名称  |类型   | 只读   | 可选   |说明   |
-| ------------ | ------------ |------------ |------------ | ------------ |
-|onActive   | (pidList: Array&lt;number&gt;, uid: number) =&gt; void  | 否   | 否   |当应用程序转换到活动状态时调用。pidList为转换为活动的进程ID列表，uid为应用的UID。   |
-|onDoze   |(pidList: Array&lt;number&gt;, uid: number) =&gt; void   | 否   | 否   |  当应用程序进入doze状态时调用。pidList为被doze的进程ID列表，uid为应用的UID。  |
-|onFrozen   | (pidList: Array&lt;number&gt;, uid: number) =&gt; void  | 否   | 否   | 当应用程序完全冻结时调用。pidList为被冻结的进程ID列表，uid为应用的UID。 |
