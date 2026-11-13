@@ -131,7 +131,7 @@ The specified permission is not found.
 
 **错误描述**
 
-调用bundleManager模块中的[getPermissionDef接口](../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagergetpermissiondef)时，传入的权限不存在。
+调用bundleManager模块中的[getPermissionDef](../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagergetpermissiondef)接口时，传入的权限不存在。
 
 **可能原因**
 
@@ -173,7 +173,7 @@ Failed to install the HAP because the HAP fails to be parsed.
 **错误描述**
 
 <!--Del-->
-调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->传入的HAP或APP解析失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+调用installer模块中的[install](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)接口时，<!--DelEnd-->传入的HAP或APP解析失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -206,7 +206,7 @@ Failed to install the HAP because the HAP signature fails to be verified.
 **错误描述**
 
 <!--Del-->
-调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->签名校验失败导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+调用installer模块中的[install](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)接口时，<!--DelEnd-->签名校验失败导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -232,7 +232,7 @@ Failed to install the HAP because the HAP path is invalid or the HAP is too larg
 **错误描述**
 
 <!--Del-->
-调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->安装包路径无效或者文件过大导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+调用installer模块中的[install](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)接口时，<!--DelEnd-->安装包路径无效或者文件过大导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -255,7 +255,7 @@ Failed to install the HAPs because they have different configuration information
 **错误描述**
 
 <!--Del-->
-调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->多个HAP配置信息不同导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+调用installer模块中的[install](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)接口时，<!--DelEnd-->多个HAP配置信息不同导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -274,7 +274,7 @@ Failed to install the HAP because of insufficient system disk space.
 **错误描述**
 
 <!--Del-->
-调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->系统磁盘空间不足导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+调用installer模块中的[install](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)接口时，<!--DelEnd-->系统磁盘空间不足导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -293,7 +293,7 @@ Failed to install the HAP since the version of the HAP to install is too early.
 **错误描述**
 
 <!--Del-->
-调用installer模块中的[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)时，<!--DelEnd-->新安装的应用版本号低于已安装的版本号导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
+调用installer模块中的[install](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)接口时，<!--DelEnd-->新安装的应用版本号低于已安装的版本号导致应用安装失败。<!--Del-->[BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall)抛出该错误码时，错误信息后会追加内部错误码用于定位错误原因，例如`[8519687]`。<!--DelEnd-->
 
 **可能原因**
 
@@ -341,7 +341,7 @@ The preinstalled app cannot be uninstalled.
 
 **错误描述**
 
-调用installer模块中的[uninstall接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstalleruninstall)卸载预置应用时，无法卸载。
+调用installer模块中的[uninstall](../apis-ability-kit/js-apis-installer-sys.md#bundleinstalleruninstall)接口卸载预置应用时，无法卸载。
 
 **可能原因**
 
@@ -384,7 +384,7 @@ The input source file is invalid.
 
 **错误描述**
 
-调用bundleManager模块中的[getBundleArchiveInfo接口](../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagergetbundlearchiveinfo)时，传入的HAP或APP路径无效。
+调用bundleManager模块中的[getBundleArchiveInfo](../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagergetbundlearchiveinfo)接口时，传入的HAP或APP路径无效。
 
 **可能原因**
 
@@ -404,7 +404,7 @@ The specified default app does not exist.
 
 **错误描述**
 
-调用defaultAppManager模块中的[getDefaultApplication接口](../apis-ability-kit/js-apis-defaultAppManager-sys.md#defaultappmanagergetdefaultapplication)时，指定的默认应用不存在。
+调用defaultAppManager模块中的[getDefaultApplication](../apis-ability-kit/js-apis-defaultAppManager-sys.md#defaultappmanagergetdefaultapplication)接口时，指定的默认应用不存在。
 
 **可能原因**
 
@@ -499,7 +499,7 @@ The ability does not match the type.
 
 **错误描述**
 
-当调用defaultAppManager模块中的[setDefaultApplication接口](../apis-ability-kit/js-apis-defaultAppManager-sys.md#defaultappmanagersetdefaultapplication)时，输入的ability与type不匹配。
+当调用defaultAppManager模块中的[setDefaultApplication](../apis-ability-kit/js-apis-defaultAppManager-sys.md#defaultappmanagersetdefaultapplication)接口时，输入的ability与type不匹配。
 
 **可能原因**
 
@@ -535,7 +535,7 @@ The specified bundle does not support clearing of cache files.
 
 **错误描述**
 
-当调用bundleManager模块中的[cleanBundleCacheFiles接口](../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagercleanbundlecachefiles)时，指定的应用不支持清除缓存文件。
+当调用bundleManager模块中的[cleanBundleCacheFiles](../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagercleanbundlecachefiles)接口时，指定的应用不支持清除缓存文件。
 
 **可能原因**
 
@@ -712,7 +712,7 @@ Failed to install the HSP because installing a shared bundle specified by hapFil
 **可能原因**
 
 1. 通过[bm工具](../../tools/bm-tool.md)安装应用时，-p参数传入了应用间共享库的安装包路径。
-2. 通过[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)安装应用时，hapFilePaths参数传入了应用间共享库的安装包路径。
+2. 通过[install](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)接口安装应用时，hapFilePaths参数传入了应用间共享库的安装包路径。
 
 **处理步骤**
 
@@ -731,7 +731,7 @@ The specified bundle is a shared bundle which cannot be uninstalled.
 **可能原因**
 
 1. 通过[bm工具](../../tools/bm-tool.md)卸载应用时，-n参数传入了应用间共享库的包名。
-2. 通过[uninstall接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstalleruninstall)卸载应用时，bundleName传入的是应用间共享库的包名。
+2. 通过[uninstall](../apis-ability-kit/js-apis-installer-sys.md#bundleinstalleruninstall)接口卸载应用时，bundleName传入的是应用间共享库的包名。
 
 **处理步骤**
 
@@ -1076,7 +1076,7 @@ The specified application cannot be uninstalled.
 
 **错误描述**
 
-调用BundleInstaller模块中的[uninstall接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstalleruninstall)或bundleManager模块中的[switchUninstallState](../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerswitchuninstallstate12)时，指定的应用不允许被卸载。
+调用BundleInstaller模块中的[uninstall](../apis-ability-kit/js-apis-installer-sys.md#bundleinstalleruninstall)接口或bundleManager模块中的[switchUninstallState](../apis-ability-kit/js-apis-bundleManager-sys.md#bundlemanagerswitchuninstallstate12)时，指定的应用不允许被卸载。
 
 **可能原因**
 
@@ -1237,7 +1237,7 @@ It is not allowed to install the enterprise bundle.
 
 **处理步骤**
 
-请更换[install接口](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)。<!--DelEnd-->
+请更换[install](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall)接口。<!--DelEnd-->
 
 
 ## 17700072 Launch Want不存在
@@ -2081,5 +2081,22 @@ const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
 **处理步骤**
 
 请检查shortcutInfo列表中，是否有不同的bundleName和appIndex组合。
+
+## 18400001 调用方未配置处置规则
+**错误信息**
+
+The caller has not configured disposal rules.
+
+**错误描述**
+
+调用[getRecoverDisposedRule](../apis-ability-kit/js-apis-appControl-sys.md#appcontrolgetrecoverdisposedrule)接口时，调用方未设置处置规则。
+
+**可能原因**
+
+调用getRecoverDisposedRule接口获取恢复处置规则前，调用方未调用[setRecoverDisposedRule](../apis-ability-kit/js-apis-appControl-sys.md#appcontrolsetrecoverdisposedrule)接口设置恢复处置规则。
+
+**处理步骤**
+
+先调用setRecoverDisposedRule接口设置恢复处置规则，再调用getRecoverDisposedRule接口。
 
 <!--DelEnd-->
