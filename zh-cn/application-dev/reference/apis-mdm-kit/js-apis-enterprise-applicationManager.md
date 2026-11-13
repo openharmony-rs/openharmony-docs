@@ -3851,3 +3851,76 @@ systemManager.stopExactTimer(timerId).then(() => {
 | 名称     | 值 | 说明           |
 | -------- | -- | -------------- |
 | NETWORK  | 1  | 网络访问资源。申请后，指定应用在设备待机期间可以继续访问网络。适用于企业通信工具、推送通知服务、实时数据同步等需要持续网络连接的应用场景。 |
+
+## applicationManager.getAllMainWindowStates
+ 
+getAllMainWindowStates(): Array\<MainWindowStates\>
+ 
+获取当前设备上所有[主窗口](../../windowmanager/window-type-overview.md#主窗口)的状态信息列表。
+ 
+> **说明：**
+>
+> 1. 本接口返回当前用户下所有主窗口的状态。多用户场景下，各用户的主窗口相互隔离，本接口不返回其他用户的主窗口。
+>
+> 2. 当前用户无主窗口时，返回空数组。
+>
+> 3. 同一应用（进程）可以拥有多个主窗口，此时返回结果中包含多条pid（应用进程ID）相同的记录，每条记录的state（主窗口状态）对应其中一个主窗口的当前状态。
+ 
+**起始版本：** 26.1.0
+ 
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+ 
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**返回值：**
+ 
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[MainWindowStates](#mainwindowstates)&gt; | 返回主窗口状态信息的数组。|
+ 
+**错误码**：
+ 
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+ 
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+ 
+**示例：**
+ 
+```ts
+import { applicationManager } from '@kit.MDMKit';
+ 
+try {
+  let result: Array<applicationManager.MainWindowStates> = applicationManager.getAllMainWindowStates();
+  console.info(`Succeeded in getting all main window states, result: ${JSON.stringify(result)}`);
+  // state字段可用于过滤前台应用
+  let foregroundWindows: Array<applicationManager.MainWindowStates> = result.filter((window) => {
+    return window.state === applicationManager.WindowState.ACTIVE;
+  });
+  console.info(`Foreground windows: ${JSON.stringify(foregroundWindows)}`);
+} catch (err) {
+  console.error(`Failed to get all main window states. Code: ${err.code}, message: ${err.message}`);
+}
+```
+ 
+## MainWindowStates
+ 
+主窗口状态信息。
+ 
+**起始版本：** 26.1.0
+ 
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+| 名称         | 类型     | 只读 | 可选 | 说明                            |
+| ----------- | --------| ----- | ---- | ------------------------------- |
+| pid | number | 否 | 否 | 应用进程ID。 |
+| bundleName | string | 否 | 否 | 应用包名。 |
+| state | [WindowState](#windowstate) | 否 | 否 | 应用窗口状态。在本结构体中只代表主窗口状态（主窗口属于应用窗口的一种）。|
