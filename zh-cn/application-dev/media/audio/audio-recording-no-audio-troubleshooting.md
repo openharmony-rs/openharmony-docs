@@ -145,7 +145,7 @@
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
    
    // ...
@@ -159,7 +159,7 @@
       pendingRecordingWrite = Promise.resolve();
       let path = context.cacheDir;
       let filePath = path + '/S16LE_2_48000.pcm';
-      recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+      recordingFile = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
       onReadData = (buffer: ArrayBuffer) => {
         let recordingBuffer = buffer.slice(0);
         let writeOffset = writtenBytes;
@@ -169,7 +169,7 @@
           length: recordingBuffer.byteLength
         }
         pendingRecordingWrite = pendingRecordingWrite.then(async () => {
-          await fs.write(recordingFile.fd, recordingBuffer, options);
+          await fileIo.write(recordingFile.fd, recordingBuffer, options);
         }).catch((error: BusinessError) => {
           console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
         });
