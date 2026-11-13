@@ -48,6 +48,12 @@
 | [ArkUI_RenderNodeClipOption](./capi-arkui-nativemodule-arkui-rendernodeclipoption.md)               | ArkUI_RenderNodeClipOption                                | 定义渲染节点裁剪配置项，用于通过矩形、圆角矩形、圆形、椭圆形或自定义绘制路径描述渲染节点的裁剪区域，并作为[OH_ArkUI_RenderNodeUtils_SetClip](capi-native-render-h.md#oh_arkui_rendernodeutils_setclip)的入参为渲染节点应用裁剪。       |
 | [ArkUI_RenderBlurStyleOption](./capi-arkui-nativemodule-arkui-rendernodeblurstyleoption.md)               | ArkUI_RenderBlurStyleOption                                | 定义模糊样式结构体。       |
 
+### 枚举
+
+| 名称 | 描述 |
+| -- | -- |
+| [OH_ArkUI_RenderNodeAttachPolicy](#oh_arkui_rendernodeattachpolicy) | 定义子渲染节点的挂载策略，用于指定子节点及其完整渲染节点子树是否继承父渲染节点的实例。 |
+
 ### 函数
 
 <!--Table: 40%; 20%; 40%-->
@@ -61,6 +67,8 @@
 | [int32_t OH_ArkUI_RenderNodeUtils_DisposeNode(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_disposenode) | - | 销毁渲染节点。|
 | [int32_t OH_ArkUI_RenderNodeUtils_AddChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_addchild) | - | 向目标父渲染节点上添加子节点。|
 | [int32_t OH_ArkUI_RenderNodeUtils_InsertChildAfter(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling)](#oh_arkui_rendernodeutils_insertchildafter) | - | 向父节点的目标子节点后添加子节点。|
+| [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_AddChildWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, OH_ArkUI_RenderNodeAttachPolicy policy)](#oh_arkui_rendernodeutils_addchildwithpolicy) | - | 向目标父渲染节点添加子节点，并根据挂载策略将子节点及其完整渲染节点子树迁移到父节点实例。 |
+| [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling, OH_ArkUI_RenderNodeAttachPolicy policy)](#oh_arkui_rendernodeutils_insertchildafterwithpolicy) | - | 向父节点的目标子节点后插入子节点，并根据挂载策略将子节点及其完整渲染节点子树迁移到父节点实例。 |
 | [int32_t OH_ArkUI_RenderNodeUtils_RemoveChild(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_removechild) | - | 从指定渲染节点中移除子节点。|
 | [int32_t OH_ArkUI_RenderNodeUtils_ClearChildren(ArkUI_RenderNodeHandle node)](#oh_arkui_rendernodeutils_clearchildren) | - | 清空指定渲染节点的所有子节点。|
 | [int32_t OH_ArkUI_RenderNodeUtils_GetChild(ArkUI_RenderNodeHandle node, int32_t index, ArkUI_RenderNodeHandle* child)](#oh_arkui_rendernodeutils_getchild) | - | 获取指定索引位置的子节点。|
@@ -204,6 +212,25 @@
 | [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertRenderNodeAt(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child, int32_t position)](#oh_arkui_rendernodeutils_insertrendernodeat) | - | 在父自定义节点下的指定位置插入子渲染节点。|
 | [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeChildrenCount(ArkUI_NodeHandle node, int32_t* count)](#oh_arkui_rendernodeutils_getrendernodechildrencount) | - | 获取父自定义节点在混合挂载顺序中的全部子节点数量。|
 | [ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_GetRenderNodeAt(ArkUI_NodeHandle node, int32_t position, ArkUI_RenderNodeHandle* child)](#oh_arkui_rendernodeutils_getrendernodeat) | - | 获取父自定义节点在混合挂载顺序中指定位置子节点对应的渲染节点句柄。|
+
+## 枚举类型说明
+
+### OH_ArkUI_RenderNodeAttachPolicy
+
+```c
+enum OH_ArkUI_RenderNodeAttachPolicy
+```
+
+**描述：**
+
+定义子渲染节点的挂载策略，用于指定子节点及其完整渲染节点子树是否继承父渲染节点的实例。
+
+**起始版本：** 26.1.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_NOT_INHERIT_PARENT_INSTANCE = 0 | 子节点及其渲染节点子树不继承父节点实例。 |
+| OH_ARKUI_RENDER_NODE_UTILS_ATTACH_POLICY_INHERIT_PARENT_INSTANCE = 1 | 子节点及其渲染节点子树继承父节点实例。 |
 
 ## 函数说明
 
@@ -397,6 +424,59 @@ int32_t OH_ArkUI_RenderNodeUtils_InsertChildAfter(ArkUI_RenderNodeHandle node, A
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 函数参数异常。<br>         [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) CAPI初始化失败。<br>         [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 目标节点是从一个FrameNode获取的。从API version 22开始支持。<br>         [ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁。从API version 22开始支持。 |
+
+### OH_ArkUI_RenderNodeUtils_AddChildWithPolicy()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_AddChildWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, OH_ArkUI_RenderNodeAttachPolicy policy)
+```
+
+**描述：**
+
+向目标父渲染节点添加子节点，并根据挂载策略将子节点及其完整渲染节点子树迁移到父节点实例。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) node | [入参] 目标父渲染节点。 |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) child | [入参] 待挂载的子渲染节点，调用前应解除其已有父子关系。 |
+| [OH_ArkUI_RenderNodeAttachPolicy](#oh_arkui_rendernodeattachpolicy) policy | [入参] 挂载策略，用于指定子节点及其渲染节点子树是否继承父节点实例。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 参数错误。<br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) CAPI初始化失败。<br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 目标节点来自FrameNode。<br>[ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 当前渲染节点来自FrameNode，且该FrameNode已被取消接纳为附属节点或销毁。 |
+
+### OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_RenderNodeUtils_InsertChildAfterWithPolicy(ArkUI_RenderNodeHandle node, ArkUI_RenderNodeHandle child, ArkUI_RenderNodeHandle sibling, OH_ArkUI_RenderNodeAttachPolicy policy)
+```
+
+**描述：**
+
+向父节点的目标子节点后插入子节点，并根据挂载策略将子节点及其完整渲染节点子树迁移到父节点实例。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) node | [入参] 目标父渲染节点。 |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) child | [入参] 待挂载的子渲染节点，调用前应解除其已有父子关系。 |
+| [ArkUI_RenderNodeHandle](capi-arkui-nativemodule-arkui-rendernodehandle.md) sibling | [入参] 用于确定插入位置的参考兄弟渲染节点。若该有效节点不在node的当前子节点列表中，则将child追加到末尾。 |
+| [OH_ArkUI_RenderNodeAttachPolicy](#oh_arkui_rendernodeattachpolicy) policy | [入参] 挂载策略，用于指定子节点及其渲染节点子树是否继承父节点实例。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 参数错误。<br>[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) CAPI初始化失败。<br>[ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 目标节点或子节点来自FrameNode。<br>[ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 当前渲染节点来自FrameNode，且该FrameNode已被取消接纳为附属节点或销毁。 |
 
 ### OH_ArkUI_RenderNodeUtils_RemoveChild()
 
