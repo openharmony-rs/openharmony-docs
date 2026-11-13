@@ -3891,12 +3891,11 @@ addOptimizationBatteryExclusionApps(appIdentifiers: Array\<string>, accountId: n
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200006  | The user does not exist. |
+| 9200006  | The specified account ID is invalid. |
 | 9200016  | Service timeout. |
-| 9200019  | The number of applications in the policy list exceeds the upper limit. |
+| 9200019  | The policy list has exceeded the limit. |
 | 9201015  | The application is not installed. |
 
 **示例：**
@@ -3949,12 +3948,11 @@ removeOptimizationBatteryExclusionApps(appIdentifiers: Array\<string>, accountId
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200006  | The user does not exist. |
+| 9200006  | The specified account ID is invalid. |
 | 9200016  | Service timeout. |
-| 9200019  | The number of applications in the policy list exceeds the upper limit. |
+| 9200019  | The policy list has exceeded the limit. |
 
 **示例：**
 
@@ -4006,10 +4004,10 @@ getOptimizationBatteryExclusionApps(accountId: number, queryPolicy?: common.Quer
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200006  | The user does not exist. |
+| 9200006  | The specified account ID is invalid. |
 | 9200016  | Service timeout. |
 
 **示例：**
