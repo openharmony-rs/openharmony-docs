@@ -5,7 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c43314d48e5bb6db0c940e002f5fb3a101c7f656 translatedAt=2026-09-01T12:05:27.390Z -->
+<!-- md-trans-meta sourceCommit=51eb0aaff3da49a8b0f853b9c41d52698e595ed3 translatedAt=2026-11-03T03:15:01.809Z pushedAt=2026-11-13T01:06:00.079Z nl=1 -->
 
 Sets accessibility attributes and events for components to fully leverage accessibility features. It supports setting accessibility grouping, accessibility text, accessibility description, accessibility importance, accessibility virtual child nodes, accessibility component types, screen reader focus control, status announcement, and custom accessibility actions. It applies to scenarios where screen reader assistance is required for visually impaired users and where application accessibility needs to be improved.
 
@@ -88,7 +88,7 @@ Since API version 23, you can specify a specific child component through the rel
 
 accessibilityText(value: string): T
 
-Sets the accessibility text. If a component lacks text content, you can set the accessibility text attribute to enable text-to-speech playback for accessibility purposes. If a component already contains text content, the accessibility text takes precedence during screen reading scenarios.
+Sets the accessibility text. If a component lacks text content, you can set the accessibility text attribute to enable text-to-speech playback for accessibility purposes. If a component already contains text content, only the accessibility text is announced during screen reading scenarios.
 
 > **NOTE**
 >
@@ -116,7 +116,7 @@ Sets the accessibility text. If a component lacks text content, you can set the 
 
 accessibilityText(text: Resource): T
 
-Sets the accessibility text, with support for resource references using [Resource](ts-types.md#resource). If a component lacks text content, you can set the accessibility text attribute to enable text-to-speech playback for accessibility purposes. If a component already contains text content, the accessibility text takes precedence during screen reading scenarios.
+Sets the accessibility text, with support for resource references using [Resource](ts-types.md#resource). If a component lacks text content, you can set the accessibility text attribute to enable text-to-speech playback for accessibility purposes. If a component already contains text content, only the accessibility text is announced during screen reading scenarios.
 
 > **NOTE**
 >
@@ -226,7 +226,7 @@ Sets the accessibility level. It determines whether the component can be recogni
 
 accessibilityVirtualNode(builder: CustomBuilder): T
 
-Sets the accessibility virtual child node. Passes a CustomBuilder to a self-drawn component. The components in the CustomBuilder are laid out but not displayed on the backend. When an assistive application obtains accessibility node information, the node information in the CustomBuilder is returned. For example, when using the canvas component [Canvas](ts-components-canvas-canvas.md), you can set placeholder components with matching positions and sizes through virtual nodes, so that the accessibility service can identify the self-drawn information of the corresponding area.
+Sets the accessibility virtual child node. Pass a **CustomBuilder** to the component. The components in the **CustomBuilder** are laid out but not displayed on the backend. When an assistive application obtains accessibility node information, the node information in the **CustomBuilder** is returned. It is recommended to use this API on self-drawn components. For example, content drawn by the canvas component [Canvas](ts-components-canvas-canvas.md) cannot be directly recognized by accessibility services. You can set placeholder components with matching positions and sizes as virtual nodes so that accessibility services can recognize the self-drawn information in the corresponding area. For usage examples, see [Setting the Accessibility Virtual Child Node](../../../ui/arkts-universal-attributes-accessibility.md#setting-accessibility-virtual-nodes).
 
 > **NOTE**
 >
@@ -242,7 +242,7 @@ Sets the accessibility virtual child node. Passes a CustomBuilder to a self-draw
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| builder  | [CustomBuilder](ts-types.md#custombuilder8) | Yes   | Accessibility virtual child node. It allows developers to pass a CustomBuilder for a self-drawn component. The components in the CustomBuilder are only laid out, not displayed, on the backend. When an assistive application obtains accessibility node information, the node information in the CustomBuilder is returned. |
+| builder  | [CustomBuilder](ts-types.md#custombuilder8) | Yes   | Accessibility virtual child node, which allows developers to pass a **CustomBuilder** to a component. The components in the **CustomBuilder** only perform layout without display on the backend. When an assistive application obtains accessibility node information, the node information in the **CustomBuilder** is returned. |
 
 **Return value**
 
@@ -712,7 +712,7 @@ Sets the optional parameters for accessibility operations of a component, which 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| option  | [AccessibilityActionOptions](ts-types.md#accessibilityactionoptions23)\| undefined | Yes  | Parameter of the accessibility operation, which is used to restrict or modify the sliding behavior in the accessibility operation.<br>The **scrollStep** parameter in **AccessibilityActionOptions** is used to set the number of sliding steps in the accessibility operation.<br>When the value is **undefined**, **scrollStep** is processed as **1**.|
+| option  | [AccessibilityActionOptions](ts-types.md#accessibilityactionoptions23)\| undefined | Yes  | Parameter of the accessibility operation, which is used to restrict or modify the scrolling behavior in the accessibility operation.<br>The **scrollStep** parameter in **AccessibilityActionOptions** is used to set the number of scrolling steps in the accessibility operation.<br>When the value is **undefined**, **scrollStep** is processed as **1**.|
 
 **Return value**
 
@@ -748,7 +748,7 @@ Sets the custom accessibility actions of a component. Developers can set an arra
 | -------- | -------- |
 | T | Current object. |
 
-## Example
+## Examples
 
 ### Example 1: Setting Accessibility Text and Description
 
@@ -861,7 +861,7 @@ struct Index {
 
 ### Example 4: Setting the Accessibility Component Type and Text Hint
 
-This example demonstrates the use of **accessibilityRole** to set the accessibility component type and **accessibilityTextHint** to provide text hints for components that can be queried by assistive technologies.
+This example demonstrates how to use **accessibilityRole** to set the accessibility component type and **accessibilityTextHint** to set the text hint of the component (which is listened to and responded to by the in-vehicle accessibility service only in in-vehicle interaction scenarios).
 
 ```ts
 // xxx.ets
@@ -1084,7 +1084,7 @@ struct Index {
 ```
 ### Example 8: Setting the Accessibility Action Options to Modify the Component Scrolling Step
 
-This example demonstrates how to customize the scrolling step of a component by using the **scrollStep** parameter in [accessibilityActionOptions](ts-types.md#accessibilityactionoptions23). The following uses a sliding distance change of the **Slider** component in screen reading scenarios.
+This example demonstrates how to customize the scrolling step of a component by using the **scrollStep** parameter in [accessibilityActionOptions](ts-types.md#accessibilityactionoptions23). The following uses a scrolling distance change of the **Slider** component in screen reading scenarios.
 
 **AccessibilityActionOptions** is available since API version 23.
 
@@ -1101,8 +1101,8 @@ struct Index {
           max: 100,
           style: SliderStyle.OutSet
         })
-        // Adjust the step size of slider sliding under screen reader gestures.
-          .accessibilityActionOptions({ scrollStep: 10 })
+        // Adjust the step count for slider scrolling under Screen Reader gestures.
+        .accessibilityActionOptions({ scrollStep: 10 })
       }
       .width('80%')
     }

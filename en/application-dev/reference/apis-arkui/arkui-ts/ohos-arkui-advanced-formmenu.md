@@ -1,12 +1,11 @@
 # FormMenu
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=821c74215aeca4d678118a56c1e1a598f447c058 translatedAt=2026-08-28T01:32:32.834Z pushedAt=2026-08-28T06:06:02.356Z -->
+<!-- md-trans-meta sourceCommit=52f99645386fad68a24a9caaad59f022fb863f8e translatedAt=2026-11-03T01:30:15.642Z pushedAt=2026-11-13T01:05:59.861Z nl=2 -->
 
 The **FormMenu** component encapsulates an **Add to home screen** menu, which allows users to long-press a component in the application to add it to their home screen for direct access. During application usage, this component acts as a portal for retention and re-engagement, encouraging users to conveniently add features to their home screen.
 
@@ -18,13 +17,17 @@ This component facilitates the quick addition of service widgets to the home scr
 
 3. The service widget framework triggers the addition of the service widget to the home screen by sending the addition data to the home screen, initiating the service widget placement operation.
 
+
 > **NOTE**
 >
-> This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> This component is supported since API version 12. Newly added content in later versions will be marked with a superscript to indicate its initial version.
 >
 > This component is not supported on wearables.
 >
-> For details about how to develop a service widget, see the [service widget development guidelines](../../../form/formkit-overview.md).
+> For details about widget development, see [Widget Development Guide](../../../form/formkit-overview.md).
+>
+> Since API version 18, you are advised to use [formProvider.openFormManager](../../apis-form-kit/js-apis-app-form-formProvider.md#formprovideropenformmanager18).
+
 
 ## Modules to Import
 
@@ -32,12 +35,12 @@ This component facilitates the quick addition of service widgets to the home scr
 import { AddFormMenuItem } from '@kit.ArkUI';
 ```
 
+
 ## Child Components
 
 Not supported
 
 ## Attributes
-
 The [universal attributes](ts-component-general-attributes.md) are not supported.
 
 ## AddFormMenuItem
@@ -65,12 +68,12 @@ AddFormMenuItem(want: Want, componentId: string, options?: AddFormOptions): void
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-
 | Name            | Type|Read-Only|Optional| Description                                                     |
 | --------------- | ---- | ---- | ---- | ---------------------------------------------------------------- |
 | formBindingData | [formBindingData.FormBindingData](../../apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdata) | No| Yes| Service widget data.|
 | callback        | AsyncCallback\<string>                                                                                                | No| Yes | Callback used to return the result. The value **0** means that the service widget is added successfully, and a non-zero value means that the service widget fails to be added. For details about the error codes, see [Form Error Codes](../../apis-form-kit/errorcode-form.md). |
 | style           | [FormMenuItemStyle](#formmenuitemstyle)                                                                              | No| Yes | Custom menu style.|
+
 
 ## FormMenuItemStyle
 
@@ -79,7 +82,6 @@ AddFormMenuItem(want: Want, componentId: string, options?: AddFormOptions): void
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-
 | Name| Type| Read-Only|Optional| Description|
 | --------------- | ----------------- | ---- | ---- | ---- |
 | options | [MenuItemOptions](ts-basic-components-menuitem.md#menuitemoptions) | No  | Yes | Information about the menu item.|
@@ -89,7 +91,6 @@ AddFormMenuItem(want: Want, componentId: string, options?: AddFormOptions): void
 > If **style** is left empty or unspecified, the default icon and menu text are applied.
 
 ## Events
-
 Menu click events are supported.
 
 ## Example

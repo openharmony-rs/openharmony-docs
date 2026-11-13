@@ -5,9 +5,9 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=11c46acbe9df6fc188da088a51a1ed091ee20c28 translatedAt=2026-08-28T01:23:44.907Z pushedAt=2026-08-31T02:42:25.669Z -->
+<!-- md-trans-meta sourceCommit=69c407040f576942fb168782eab7b193850836b4 translatedAt=2026-11-03T02:40:40.313Z pushedAt=2026-11-13T01:05:59.995Z nl=1 -->
 
- The **Circle** component is used to draw a circle.
+ The **Circle** component is used to draw a circle. 
 
 >  **NOTE**
 >
@@ -79,7 +79,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md) an
 
 stroke(value: ResourceColor | ColorMetrics)
 
-Sets the stroke color. [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) can be used to describe the color for HDR brightening. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is not set, the default stroke color is [Color](ts-appendix-enums.md#color).Transparent, that is, no stroke is drawn. Abnormal values undefined and null are treated as the default value, and NaN and Infinity are treated as [Color](ts-appendix-enums.md#color).Black.
+Sets the stroke color. Compared with the [stroke](ts-drawing-components-common.md#stroke) interface in the universal drawing attributes, this interface additionally supports using [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) to describe the color<!--Del--> for HDR brightening<!--DelEnd-->. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is not set, the default stroke color is [Color](ts-appendix-enums.md#color).Transparent, that is, no stroke is drawn. Abnormal values **undefined** and **null** are treated as the default value, and **NaN** and **Infinity** are treated as [Color](ts-appendix-enums.md#color).Black.
 
 **Since**: 26.0.0
 
@@ -99,7 +99,7 @@ Sets the stroke color. [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics1
 
 fill(value: ResourceColor | ColorMetrics)
 
-Sets the color of the fill area. [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) can be used to describe the color for HDR brightening. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is not set, the default fill color is [Color](ts-appendix-enums.md#color).Black. Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are treated as the default value. When this attribute is set together with the universal attribute **foregroundColor**, the one set later takes effect.
+Sets the color of the fill area. Compared with the [fill](ts-drawing-components-common.md#fill) interface in the universal drawing attributes, this interface additionally supports using [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) to describe the color<!--Del--> for HDR brightening<!--DelEnd-->. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is not set, the default fill color is [Color](ts-appendix-enums.md#color).Black. Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are treated as the default value. When this attribute is set together with the universal attribute **foregroundColor**, the one set later takes effect.
 
 **Since**: 26.0.0
 
@@ -206,46 +206,3 @@ struct CircleModifierDemo {
 ```
 
 ![](figures/circleModifier.png)
-
-### Example 4: Using ColorMetrics to Set HDR Fill and Stroke Colors
-
-You can use [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) to set HDR colors for the **Circle** component, achieving a brightness effect beyond the normal display range. The [fill](#fill) API is used to set the color of the fill area, and the [stroke](#stroke) API is used to set the stroke color. In the following example, the left side uses an HDR warm gold fill and an ice blue stroke (with a brightness multiplier greater than 1.0), while the right side uses ordinary SDR colors as a comparison. On an HDR-capable screen, the left side is noticeably brighter and more vivid than the right side.
-
-Since API version 26.0.0, the **Circle** component-specific [fill](#fill) and [stroke](#stroke) APIs are added, which support passing the [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) type to achieve the HDR brightening effect.
-
-```ts
-// xxx.ets
-import { ColorMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct CircleHDRDemo {
-  build() {
-    Column({ space: 30 }) {
-      Row({ space: 60 }) {
-        // HDR fill and stroke: Color component values can exceed 1.0, and the portion exceeding 1.0 is used to represent highlights beyond the normal screen brightness range.
-        Column({ space: 8 }) {
-          Circle()
-            .width(120).height(120).strokeWidth(6)
-            .fill(ColorMetrics.createHDRColor(ColorSpace.BT2020, 2.5, 1.2, 0.0, 1)) // Highlight warm gold
-            .stroke(ColorMetrics.createHDRColor(ColorSpace.BT2020, 0.0, 0.8, 2.5, 1)) // Highlight ice blue
-          Text('HDR').fontColor(Color.White).fontSize(14)
-        }
-
-        // SDR fill and stroke: Color component values range from 0.0 to 1.0, which is the conventional standard dynamic range color display.
-        Column({ space: 8 }) {
-          Circle()
-            .width(120).height(120).strokeWidth(6)
-            .fill('#ffc800') // Normal golden yellow
-            .stroke('#0066ff') // Normal dark blue
-          Text('SDR').fontColor(Color.White).fontSize(14)
-        }
-      }
-    }
-    .width('100%').height('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-}
-```
-
-![circleHdr](figures/circleHdr.png)

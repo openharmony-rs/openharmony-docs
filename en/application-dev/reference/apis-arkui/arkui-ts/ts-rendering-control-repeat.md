@@ -5,7 +5,7 @@
 <!--Designer: @keerecles-->
 <!--Tester: @khq-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ee226a61937d72488771ef2e8f8022bbdda3a37a translatedAt=2026-10-30T09:02:17.797Z pushedAt=2026-10-30T09:32:33.721Z nl=1 -->
+<!-- md-trans-meta sourceCommit=6ec208c5d70b7a595645b78f754ebe12921aad62 translatedAt=2026-11-03T03:05:26.445Z pushedAt=2026-11-13T01:06:00.045Z nl=1 -->
 
 **Repeat** performs iterative rendering based on array data and is typically used together with scrollable components.
 
@@ -41,7 +41,7 @@ Repeat\<T\>(arr: Array\<T\>)
 Repeat<string>(this.arr)
 ```
 
-### Repeat
+### Repeat<sup>18+</sup>
 
 Repeat\<T\>(arr: RepeatArray\<T\>, options?: RepeatOptions)
 

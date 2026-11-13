@@ -5,7 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e8a3df3f036267095aa2be3a05bfa4ba7c1727ba translatedAt=2026-09-01T12:19:40.469Z -->
+<!-- md-trans-meta sourceCommit=33898b66eb6c0bf66810bb0d90faa36b55a4ad07 translatedAt=2026-11-03T03:16:45.189Z pushedAt=2026-11-13T01:06:00.082Z nl=1 -->
 
 **id** is the unique identifier of a component, which is unique within the entire application. This module provides APIs related to component IDs. You can obtain the attributes of a component with a specified ID, obtain the component tree and component attributes, and send events to a component with a specified ID. The preceding extended capabilities are intended for application testing purposes only.
 
@@ -58,7 +58,7 @@ This API is used only for test purposes. When this attribute is used with **id**
 
 | Name  | Type     | Mandatory| Description                      |
 | ------ | -------- | -----|---------------------- |
-| value   | string   | Yes | Unique identifier of the component. The uniqueness is guaranteed by the user. In concurrent use with id, the attribute assigned later overrides the attribute assigned earlier. It is recommended that only id be set.<br>Default value: '' |
+| value   | string   | Yes | Component's unique identifier, with uniqueness determined by the user. When used concurrently with id, later assigned attributes override earlier assignments. It is recommended to set only id. |
 
 **Return value**
 

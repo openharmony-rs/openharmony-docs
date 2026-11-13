@@ -1,12 +1,11 @@
 # SegmentButton
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @song-song-song-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=91dd63b1005715af7367fe6e4ce97d615a44a8bf translatedAt=2026-07-29T03:10:28.757Z pushedAt=2026-08-04T07:22:47.312Z -->
+<!-- md-trans-meta sourceCommit=4525b24c7c492d357f406b796636d16ca53b082c translatedAt=2026-11-03T01:34:35.952Z pushedAt=2026-11-13T01:05:59.877Z nl=1 -->
 
 The segment button component includes tab-style segment buttons and capsule-style segment buttons. Tab-style segment buttons are suitable for switching between pages or content areas. Capsule-style segment buttons are suitable for single-select or multi-select scenarios, including capsule-style single-select segment buttons and capsule-style multi-select segment buttons. This component supports custom appearance attributes such as text color, font size, font weight, background color, image size, padding, and background blur material. It supports three button styles: text-only, icon-only, and icon + text. It also provides capabilities such as accessibility reading, layout direction mirroring, custom rounded corners, and property animation, making it suitable for scenarios where you need to quickly build a segmented selection interface that complies with design specifications.
 
@@ -44,7 +43,7 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-> **NOTE**
+> **NOTE** 
 >
 > - The segment button does not support [universal attributes](ts-component-general-attributes.md). The segment button uses the maximum available width in the current area as the component width, and evenly distributes the width among the buttons based on the number of buttons. The segment button height automatically adapts to the button content (text and images), with a minimum height of 28 vp.
 >
@@ -53,14 +52,14 @@ SegmentButton({ options: SegmentButtonOptions, selectedIndexes: number[], onItem
 | Name           | Type                                     | Mandatory| Decorator | Description                                                        |
 | --------------- | --------------------------------------------- | ---- | ----------- | ------------------------------------------------------------ |
 | options         | [SegmentButtonOptions](#segmentbuttonoptions) | Yes   | @ObjectLink | Configuration options of the segment button, used to set the button type (tab type or capsule type), appearance style (color, font, size, etc.), button content, selected state, and other attributes.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| selectedIndexes | number[]                                      | Yes   | @Link       | Index of the selected item in the segment button. The index of the first item is 0, and subsequent items are numbered sequentially.<br>**NOTE**<br>`selectedIndexes` uses the [@Link decorator: two-way synchronization between parent and child](../../../ui/state-management/arkts-link.md). Only valid button indexes are supported (the first button index is 0, and subsequent indexes increase sequentially, with the maximum index being the number of buttons minus 1). If an invalid index is passed in, it does not take effect. If no item is selected, an empty array `[]` can be passed in.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| selectedIndexes | number[]                                      | Yes   | @Link       | Indexes of the selected items in the segment button. The index of the first item is 0, and subsequent items are numbered sequentially.<br>**NOTE**<br>`selectedIndexes` uses the [@Link decorator: two-way synchronization between parent and child](../../../ui/state-management/arkts-link.md). Only valid button indexes are supported (the first button index is 0, and subsequent indexes increase sequentially, with the maximum index being the number of buttons minus 1). If an invalid index is passed in, it does not take effect. If no item is selected, an empty array `[]` can be passed in.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | onItemClicked<sup>13+</sup> | Callback\<number\> | No | - | Callback invoked when a segment button option is clicked. It receives the index of the clicked option as a parameter. If this parameter is not passed in, no callback is triggered upon clicking.<br>**Atomic service API:** This API can be used in atomic services since API version 13. |
-| maxFontScale<sup>14+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No | @Prop | Maximum font scale factor for the segment button option text, used to limit the upper bound of font scaling. Pass in this parameter when you need to control the font scale factor to fit a specific UI layout or avoid excessively large text.<br>Value range: [1, 2]<br>If the set value is less than 1, the value **1** is used. If the set value is greater than 2, the value **2** is used.<br>Default value: **1**<br>**Atomic service API:** This API can be used in atomic services since API version 14. |
-| enableStateAnimation<sup>24+</sup>       | boolean   | No | @Prop | Whether to enable the attribute animation of the segment button when the **selectedIndexes** value is modified through a variable.<br>The value **true** means to enable the attribute animation of the segment button, and **false** means the opposite.<br>Default value: **false**<br>**Atomic service API:** This API can be used in atomic services since API version 24.<br>**Model restriction:** This API can be used only in the stage model. |
+| maxFontScale<sup>14+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes | @Prop | Maximum font scale of the **SegmentButton** option text, used to limit font scaling. Pass this parameter when you need to control the font scale to adapt to a specific UI layout or to avoid oversized text.<br>Value range: [1, 2]<br>If the set value is less than 1, the value **1** is used. If the set value is greater than 2, the value **2** is used.<br>Default value: 1<br>**Atomic service API:** Since API version 14, this API is supported in atomic services. |
+| enableStateAnimation<sup>24+</sup>       | boolean   | Yes | @Prop | Whether to enable the attribute animation of the segment button when the selectedIndexes value is modified through a variable.<br>**true** indicates that the attribute animation of the segment button is enabled; **false** indicates that the attribute animation of the segment button is not enabled.<br>Default value: **false**<br>**Atomic service API:** This API can be used in atomic services since API version 24.<br>**Model constraint:** This API can be used only in the stage model. |
 
 ## SegmentButtonOptions
 
->**NOTE**
+>**NOTE** 
 > 
 > The component does not support custom font type settings.
 
@@ -75,7 +74,6 @@ Provides initial data and custom properties for the **SegmentButton** component.
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
-
 | Name                 | Type                                                        | Read-Only                                                    | Optional                                                    | Description                                                      |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | type                    | "tab" \| "capsule"                                  | No                                       | No                                       | Type of the segment button component.<br>**Note:**<br>**"tab"**: tab-type segment button, suitable for switching between pages or content areas.<br>**"capsule"**: capsule-type segment button, suitable for single-selection or multi-selection scenarios.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
@@ -99,7 +97,8 @@ Provides initial data and custom properties for the **SegmentButton** component.
 | borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | No | Yes | Border radius mode, which controls how the corner radius is calculated.<br>Default value: **BorderRadiusMode.DEFAULT**<br>When the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
 | backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | No | Yes | Border radius of the overall container of the segment button.<br>**NOTE**<br>This attribute takes effect only when **borderRadiusMode** is **BorderRadiusMode.CUSTOM**.<br>For capsule-type multi-selection segment buttons (**type** is **"capsule"** and **multiply** is **true**), this attribute does not take effect. Use **itemBorderRadius** to configure the corner radius instead.<br>The corner radius is limited by the component size. The maximum value is half of the component width or height. Percentage setting is not supported. When the value exceeds the maximum, it is automatically corrected to the maximum. When a percentage is used, the default value is used.<br>Default value: `$r('sys.float.segmentbutton_container_shape')`<br>When the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
 | itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | No | Yes | Border radius of the button items in the segment button.<br>**NOTE**<br>This attribute takes effect only when **borderRadiusMode** is **BorderRadiusMode.CUSTOM**.<br>For capsule-type multi-selection segment buttons (**type** is **"capsule"** and **multiply** is **true**), only the corner radius of the items at both ends can be controlled.<br>The corner radius is limited by the component size. The maximum value is half of the component width or height. Percentage setting is not supported. When the value exceeds the maximum, it is automatically corrected to the maximum. When a percentage is used, the default value is used.<br>Default value: `$r('sys.float.segmentbutton_selected_background_shape')`<br>When the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | No | Yes | System material of the background of the segment button component. Different system materials have different properties and produce different effects. After a material is passed in, the animation effect of **SegmentButton** changes.<br>For capsule-type multi-selection segment buttons (**type** is **"capsule"** and **multiply** is **true**), this attribute does not take effect.<br>Default value: no material effect.<br>**Since:** 26.0.0 <br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. <br>**Model restriction:** This API can be used only in the stage model. |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)    | No | Yes | System material of the background of the **SegmentButton** component. The component must be placed in the title bar of **Navigation** or **NavDestination**, or in the bottom **TabBar** of horizontal Tabs, for the immersive light effect to take effect. Different system materials have different properties and produce different effects. After a material is passed in, the animation effect of **SegmentButton** changes.<br>For a capsule-type multi-select **SegmentButton** (where **type** is **"capsule"** and **multiply** is **true**), this attribute does not take effect.<br>Default value: no material effect.<br>**Since:** 26.0.0 <br>**Atomic service API:** Since API version 26.0.0, this API is supported in atomic services. <br>**Model restriction:** This API can only be used in the stage model. |
+| interactionMode | [SegmentButtonInteractionMode](#segmentbuttoninteractionmode) | No | Yes | Drag interaction mode of the **SegmentButton**.<br>Default value: **undefined**<br>When not set, or when the value is **undefined** or invalid, hand-following drag is used if **backgroundSystemMaterial** is configured; otherwise, normal drag is used.<br>Switching the drag mode does not change the original material appearance, background scaling and slight displacement, selected item deformation, or the configured light source effect. When **backgroundSystemMaterial** is not configured, hand-following drag does not add a material effect.<br>Dragging does not trigger **onItemClicked**.<br>This attribute does not take effect in a capsule-type multi-select **SegmentButton** (where **type** is **"capsule"** and **multiply** is **true**).<br>**Since:** 26.1.0<br>**Atomic service API:** Since API version 26.1.0, this API is supported in atomic services.<br>**Model restriction:** This API can only be used in the stage model. |
 
 > **NOTE**
 >
@@ -209,7 +208,7 @@ Defines the customizable attributes of a segment button component.
 | selectedFontWeight      | [FontWeight](ts-appendix-enums.md#fontweight)                | No              | Yes              | Font weight of the button in selected state.<br>Default value: **FontWeight.Medium**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | backgroundColor         | [ResourceColor](ts-types.md#resourcecolor)                   | No                 | Yes                 | Color of the background.<br>Default value: **$r('sys.color.ohos_id_color_button_normal')**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | selectedBackgroundColor | [ResourceColor](ts-types.md#resourcecolor)                   | No                 | Yes                 | Color of the background for the button in selected state.<br>Default value:<br>When **type** is **"tab"**, the default value is `$r('sys.color.segment_button_checked_foreground_color')`.<br>When **type** is **"capsule"**, the default value is `$r('sys.color.ohos_id_color_emphasize')`.<br>If the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| imageSize               | [SizeOptions](ts-types.md#sizeoptions)                       | No                     | Yes                     | Image size.<br>Default value: **{ width: 24, height: 24 }**<br>Unit: vp<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>The `imageSize` attribute takes effect only for icon buttons and icon + text buttons, and does not respond on text-only buttons.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| imageSize               | [SizeOptions](ts-types.md#sizeoptions)                       | No                     | Yes                     | Image size.<br>Default value: **{ width: 24, height: 24 }**<br>Unit: vp<br>If the value is **undefined**, the default value is used.<br>**NOTE**<br>The `imageSize` attribute takes effect only for icon buttons and icon + text buttons, and does not take effect on text-only buttons.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | buttonPadding           | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | No | Yes | Button padding.<br>Default value:<br>For icon-only buttons and text-only buttons: `{ top: 4, right: 8, bottom: 4, left: 8 }`<br>For icon+text buttons: `{ top: 6, right: 8, bottom: 6, left: 8 }`<br>Unit: vp<br>If the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | textPadding             | [Padding](ts-types.md#padding)&nbsp;\|&nbsp;[Dimension](ts-types.md#dimension10) | No | Yes | Text padding.<br>Default value: **0**<br>Unit: vp<br>If the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | localizedButtonPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12)                 | No               | Yes               | Button padding, which supports adaptive adjustment based on the layout direction (LTR/RTL).<br>Default value:<br>For icon-only buttons and text-only buttons: `{ top: LengthMetrics.vp(4), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(4), start: LengthMetrics.vp(8) }`<br>For icon + text buttons: `{ top: LengthMetrics.vp(6), end: LengthMetrics.vp(8), bottom: LengthMetrics.vp(6), start: LengthMetrics.vp(8) }`<br>If the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
@@ -219,7 +218,27 @@ Defines the customizable attributes of a segment button component.
 | borderRadiusMode<sup>20+</sup> | [BorderRadiusMode](#borderradiusmode20) | No | Yes | Border radius mode, which controls the radius calculation method.<br>Default value: **BorderRadiusMode.DEFAULT**<br>If the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
 | backgroundBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | No | Yes | Border radius of the overall container of the segment button.<br>**NOTE**<br>This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.<br>For capsule-type multi-select segment buttons (**type** is **"capsule"** and **multiply** is **true**), this attribute does not take effect. Use **itemBorderRadius** to configure the radius instead.<br>The radius size is limited by the component size. The maximum value is half of the component width or height. Percentage setting is not supported. If the value exceeds the maximum, it is automatically corrected to the maximum. If a percentage is used, the default value is used.<br>Default value: `$r('sys.float.segmentbutton_container_shape')`<br>If the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
 | itemBorderRadius<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | No | Yes | Border radius of the button items in the segment button.<br>**NOTE**<br>This attribute takes effect only when **borderRadiusMode** is set to **BorderRadiusMode.CUSTOM**.<br>For capsule-type multi-select segment buttons (**type** is **"capsule"** and **multiply** is **true**), only the radius of the options at both ends can be controlled.<br>The radius size is limited by the component size. The maximum value is half of the component width or height. Percentage setting is not supported. If the value exceeds the maximum, it is automatically corrected to the maximum. If a percentage is used, the default value is used.<br>Default value: `$r('sys.float.segmentbutton_selected_background_shape')`<br>If the value is **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)   | No | Yes | System material of the background of the segment button component. Different system materials have different properties and produce different effects. After a material is passed in, the animation effects of the **SegmentButton** change.<br>For capsule-type multi-select segment buttons (type is **"capsule"** and **multiply** is **true**), this attribute does not take effect.<br>Default value: no material effect.<br>Since API version 26.0.0, except for capsule-type multi-select segment buttons (**type** is **"capsule"** and **multiply** is **true**), when **backgroundSystemMaterial** is set to a system material with automatic inverted color, **fontColor** and **selectedFontColor** use special system resources that support inverted color, and the colors automatically adapt to the inverted color of the material background color.<br>**Since:** 26.0.0<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model. |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material)   | No | Yes | System material of the background of the **SegmentButton** component. The immersive light effect takes effect only when the component is placed in the title bar of **Navigation** or **NavDestination**, or in the bottom **TabBar** of horizontal **Tabs**. Different system materials have different properties and produce different effects. After a material is passed in, the animation effects of **SegmentButton** change.<br>For a capsule-type multi-select segment button (that is, **type** is **"capsule"** and **multiply** is **true**), this attribute does not take effect.<br>Default value: no material effect.<br>Since API version 26.0.0, except for the capsule-type multi-select segment button (that is, **type** is **\"capsule\"** and **multiply** is **true**), when **backgroundSystemMaterial** is set to a system material with automatic inverted color, **fontColor** and **selectedFontColor** use special system resources that support inverted color, and the colors automatically adapt to the inverted color of the material background color.<br>**Since:** 26.0.0 <br>**Atomic service API:** Since API version 26.0.0, this API is supported in atomic services. <br>**Model restriction:** This API can be used only in the stage model. |
+| interactionMode | [SegmentButtonInteractionMode](#segmentbuttoninteractionmode) | No | Yes | Drag interaction mode of the **SegmentButton**.<br>Default value: **undefined**<br>When it is not set, or its value is **undefined** or invalid, hand-following drag is used if **backgroundSystemMaterial** is configured; otherwise, normal drag is used.<br>Switching the drag mode does not change the original material appearance, background scaling and slight displacement, selected item deformation, or the configured light source effect. When **backgroundSystemMaterial** is not configured, hand-following drag does not add a material effect.<br>Dragging does not trigger **onItemClicked**.<br>This attribute does not take effect in a capsule-type multi-select segment button (**type** is **"capsule"** and **multiply** is **true**).<br>**Since:** 26.1.0<br>**Atomic service API:** Since API version 26.1.0, this API is supported in atomic services.<br>**Model restriction:** This API can be used only in the stage model. |
+
+## SegmentButtonInteractionMode
+
+Enumerates the drag interaction modes, which are used to set the drag mode of a single-select segment button.
+
+**Since:** 26.1.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name | Value | Description |
+| --- | --- | --- |
+| FOLLOWING_DRAG | 0 | Hand-following drag. When dragging starts from the currently selected item, the background of the selected item continuously follows the finger movement. The index of the selected item remains unchanged during dragging and is updated when the finger is lifted. When **backgroundSystemMaterial** is not configured, enabling this mode does not add material deformation or light source effects. |
+| NORMAL_DRAG | 1 | Normal drag. When dragging starts from the currently selected item, the background of the selected item transitions according to the option positions. The index of the selected item is updated when the finger drags across items. When **backgroundSystemMaterial** is configured, the original material feedback (including the configured light source effects) is retained. |
 
 ## BorderRadiusMode<sup>20+</sup>
 
@@ -349,6 +368,7 @@ Constructor.
 
 **Parameters**
 
+
 | Name  | Type                                             | Mandatory| Description      |
 | -------- | ------------------------------------------------- | ---- | ---------- |
 | elements | [SegmentButtonItemTuple](#segmentbuttonitemtuple) | Yes | Button information tuple used to initialize the array, containing 2 to 5 button option elements, each defining attributes such as the icon and text of a button. |
@@ -370,6 +390,7 @@ Adds the specified elements to the end of this array and returns the new length 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters**
+
 
 | Name| Type                                             | Mandatory| Description                                                       |
 | ------ | ------------------------------------------------- | ---- | ----------------------------------------------------------- |
@@ -427,7 +448,7 @@ Removes the first element from this array and returns that element.
 
 > **NOTE**
 >
-> The segment button component array supports storing only 2 to 5 button information elements. If the number of buttons after removal is fewer than 2, the operation is not performed, **undefined** is returned, and the array remains unchanged.
+> The segment button component array supports storing only 2 to 5 button information elements. If the number of buttons after removal is fewer than 2, the operation is not performed, **undefined** is returned, and the array remains unchanged. 
 
 ### unshift
 
@@ -443,6 +464,7 @@ Adds new elements to the beginning of the array and returns the length of the ar
 
 **Parameters**
 
+
 | Name | Type                                             | Mandatory| Description                |
 | ----- | ------------------------------------------------- | ---- | -------------------- |
 | items | [SegmentButtonItemArray](#segmentbuttonitemarray) | No | Array of button information to add.<br>Default value: no button information elements are passed in. |
@@ -455,7 +477,7 @@ Adds new elements to the beginning of the array and returns the length of the ar
 
 > **NOTE**
 >
-> The segment button component array supports storing only 2 to 5 button information elements. When the number of elements to be added causes the array to exceed 5, the operation is not performed and the current array length is returned.
+> The segment button component array supports storing only 2 to 5 button information elements. When the number of elements to be added causes the array to exceed 5, the operation is not performed and the current array length is returned. 
 
 ### splice
 
@@ -470,6 +492,7 @@ Changes the contents of this array by removing the specified number of elements 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters**
+
 
 | Name     | Type                                                   | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -499,7 +522,8 @@ Creates a **SegmentButtonItemOptionsArray** object. It accepts the same paramete
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
-**Parameters**
+**Parameters** 
+
 
 | Name  | Type                                             | Mandatory| Description      |
 | -------- | ------------------------------------------------- | ---- | ---------- |
@@ -640,6 +664,7 @@ Constructor.
 
 **Parameters**
 
+
 | Name | Type                                                        | Mandatory| Description              |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
 | options | [SegmentButtonItemOptionsConstructorOptions](#segmentbuttonitemoptionsconstructoroptions) | Yes  | Configuration options for a single segment button, including the icon, text, and accessibility attributes.|
@@ -666,7 +691,7 @@ Construct parameters for SegmentButtonItemOptions.
 >
 > Both the unselected icon `icon` and the selected icon `selectedIcon` must be set. Setting only one of them is invalid.
 
-## Example
+## Examples
 
 ### Example 1: Setting the Type of the SegmentButton component
 
@@ -952,7 +977,6 @@ struct Index {
 ![segmentbutton-sample3](figures/segmentbutton-sample3.gif)
 
 ### Example 4: Implementing a Mirrored Layout
-
 This example shows how to implement a mirrored layout for a **SegmentButton** component by configuring **direction**.
 
 ```ts
@@ -1062,7 +1086,6 @@ struct Index {
 ![segmentbutton-sample4](figures/segmentbutton-sample4.png)
 
 ### Example 5: Setting Accessibility
-
 This example showcases how to implement accessibility features for the **SegmentButton** component by configuring attributes such as **accessibilityLevel** and **selectedIconAccessibilityText**.
 
 ```ts
@@ -1206,6 +1229,8 @@ struct Index {
 }
 ```
 
+<!--Del--> <!--DelEnd-->
+
 ### Example 6: Setting Custom Border Radius
 
 This example demonstrates how to set a custom border radius for the **SegmentButton** component.
@@ -1328,7 +1353,6 @@ struct Index {
 ![segmentbutton-sample83](figures/segmentbutton-sample83.gif)
 
 ### Example 8: Setting the Background Material
-
 The following example uses the **backgroundSystemMaterial** attribute to set a transparent background material for the segment button, enable automatic color inversion and interactive deformation effects, and customize the color of the feedback light effect.
 
 Starting from API version 26.0.0, the **backgroundSystemMaterial** attribute has been added to [SegmentButtonOptions](#segmentbuttonoptions) and [CommonSegmentButtonOptions](#commonsegmentbuttonoptions).
@@ -1363,7 +1387,8 @@ struct Index {
   });
   @State tabSelectedIndexes: number[] = [0];
 
-  build() {
+  @Builder
+  NavigationTitle() {
     Column({ space: 20 }) {
       SegmentButton({
         options: this.tabOptions,
@@ -1382,10 +1407,21 @@ struct Index {
       ]
     })
   }
+
+  build() {
+    Column() {
+      Navigation() {
+        // Page content.
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
+  }
 }
 ```
 
-![segmentbutton-sample7](figures/segment_button_material.gif)
+The illustration for this example shows the strong-gear effect on a high-computing-power device.
+
+<!--Del--> <!--DelEnd-->
 
 ### Example 9: Listening for Changes to Properties in SegmentButtonOptions
 
@@ -1449,5 +1485,4 @@ struct Index {
 }
 ```
 
-![segmentbutton-sample9](figures/segmentbutton-make-observed.gif)
-<!--no_check-->
+<!--Del--> <!--DelEnd-->

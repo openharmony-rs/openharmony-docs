@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=92567145241181b97abe57e944e177355e50f4eb translatedAt=2026-09-02T12:30:39.903Z -->
+<!-- md-trans-meta sourceCommit=08942777370a0b90b1f82affd44908847b9279aa translatedAt=2026-11-03T03:56:20.866Z pushedAt=2026-11-13T01:06:00.168Z nl=1 -->
 
 When a component gains focus, the focused component triggers this event, which is used to flexibly control the display and hiding of the soft keyboard during focus switching. The system determines whether a keyboard is required based on the return value of the callback function of this event. It is mainly applicable to keyboard continuation scenarios, helping developers avoid frequent keyboard collapse and pop-up, and optimizing the user interaction experience.
 
@@ -19,7 +19,7 @@ When a component gains focus, the focused component triggers this event, which i
 
 onNeedSoftkeyboard(onNeedSoftkeyboardCallback: OnNeedSoftkeyboardCallback | undefined): T
 
-Called when the component determines whether the keyboard is required. This callback is mainly used in the keyboard continuation scenario. When the focus is switched from the text box to another component, if the return value of [OnNeedSoftkeyboardCallback](#onneedsoftkeyboardcallback) of the target component is set to **true**, the keyboard will not be collapsed; if set to **false**, the keyboard will be collapsed.
+Sets the callback triggered when a component determines whether it needs a keyboard. This API is mainly used in keyboard continuation scenarios. When a component gains focus, the system invokes the [OnNeedSoftkeyboardCallback](#onneedsoftkeyboardcallback) callback bound to the component and determines whether a keyboard is needed based on the return value: if the return value is `true`, the component needs a keyboard and the keyboard will not be collapsed; if the return value is `false`, the component does not need a keyboard and the keyboard will be collapsed.
 
 This API does not take effect for components that cannot gain focus.
 
@@ -35,7 +35,7 @@ This API is applicable only to the scenario of input method application continua
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,7 +59,7 @@ This callback is triggered when the component bound to this method determines wh
 
 **Atomic service API**: This API can be used in atomic services since API version 24.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

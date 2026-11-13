@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0e7fa3d18a6c13eddd500d4196d9d29085b6f525 translatedAt=2026-11-03T02:58:46.452Z pushedAt=2026-11-13T01:06:00.034Z nl=1 -->
 
 Creates a time picker with a 24-hour time range and displays it in a dialog box. It is suitable for scenarios where precise time selection is required in a dialog box, providing a smooth user interaction experience and helping apps quickly implement time selection functionality while maintaining an aesthetically pleasing UI.
 
@@ -19,6 +20,8 @@ Creates a time picker with a 24-hour time range and displays it in a dialog box.
 ## TimePickerDialogOptions
 
 Defines the options of the time picker dialog box.
+
+Inherited from [TimePickerOptions](ts-basic-components-timepicker.md#timepickeroptions).
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

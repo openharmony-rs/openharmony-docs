@@ -1,12 +1,11 @@
 # Action Sheet (ActionSheet)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d0654055576ab02270c2677e50b67065ca2d2e7e translatedAt=2026-08-24T06:57:11.438Z pushedAt=2026-08-25T07:34:43.989Z -->
+<!-- md-trans-meta sourceCommit=36feeee0c23b24a74a08883c144b7f4adb756ef9 translatedAt=2026-11-03T02:50:16.219Z pushedAt=2026-11-13T01:06:00.026Z nl=1 -->
 
 A dialog box component used to display list selection items.
 
@@ -23,7 +22,6 @@ Provides **ActionSheet** configuration options.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
-
 | Name      | Type                    | Read-Only | Optional | Description                          |
 | ---------- | -------------------------- | ------- | ----------------------------- | ----------------------------- |
 | title      | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No    | No    |  Dialog box title.<br/>When the text is too long to be displayed, an ellipsis is used to replace the part that is not displayed.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
@@ -39,7 +37,7 @@ Provides **ActionSheet** configuration options.
 | showInSubWindow<sup>11+</sup> | boolean | No | Yes | Whether to display the dialog box in a subwindow when it needs to be displayed outside the main window. The value **true** indicates that the dialog box is displayed in a subwindow.<br/>Default value: **false**, which means the dialog box is displayed within the app instead of in an independent subwindow.<br/>**NOTE**<br/>A dialog box with **showInSubWindow** set to **true** cannot trigger the display of another dialog box with **showInSubWindow** set to **true**.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model. |
 | isModal<sup>11+</sup> | boolean | No | Yes | Whether the dialog box is a modal window. A modal window has a mask, while a non-modal window does not. When the value is **false**, the dialog box is a non-modal window without a mask.<br/>Default value: **true**, which means the dialog box has a mask.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model. |
 | backgroundColor<sup>11+</sup> | [ResourceColor](ts-types.md#resourcecolor)  | No | Yes | Background color of the dialog box.<br/>Default value: **Color.Transparent**<br/>**NOTE**<br/>**backgroundColor** is superimposed with the blur attribute **backgroundBlurStyle** to produce an effect. If the effect does not meet expectations, set **backgroundBlurStyle** to **BlurStyle.NONE** to cancel the blur. When **backgroundBlurStyle** is set to a value other than NONE, do not set **backgroundColor**; otherwise, the color display will not meet expectations.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model. |
-| backgroundBlurStyle<sup>11+</sup> | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No | Yes | Blur material of the dialog box background.<br/>Default value: **BlurStyle.NONE** since API version 26.0.0, and **BlurStyle.COMPONENT_ULTRA_THICK** before API version 26.0.0.<br/>**NOTE**<br/>Set this attribute to **BlurStyle.NONE** to disable background blur. When **backgroundBlurStyle** is set to a value other than NONE, do not set **backgroundColor**; otherwise, the color display will not meet expectations.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model. |
+| backgroundBlurStyle<sup>11+</sup> | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No | Yes | Blur material of the dialog box background.<br/>Default value: **BlurStyle.COMPONENT_ULTRA_THICK**.<br/>**Note:** <br/>Set this parameter to **BlurStyle.NONE** to disable background blur. When **backgroundBlurStyle** is set to a value other than **NONE**, do not set **backgroundColor**; otherwise, the color display will not meet the expected effect.<br/>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br/>**Model restriction:** This API can be used only in the stage model. |
 | backgroundBlurStyleOptions<sup>19+</sup> | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10) | No | Yes | Background blur effect. For the default value, see the **BackgroundBlurStyleOptions** type description.<br />**Atomic service API:** This API can be used in atomic services since API version 19.<br/>**Model restriction:** This API can be used only in the stage model. |
 | backgroundEffect<sup>19+</sup> | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | No | Yes | Background effect parameters. For the default value, see the **BackgroundEffectOptions** type description.<br />**Atomic service API:** This API can be used in atomic services since API version 19.<br/>**Model restriction:** This API can be used only in the stage model. |
 | onWillDismiss<sup>12+</sup> | Callback<[DismissDialogAction](#dismissdialogaction12)> | No | Yes | Interactive dismiss callback.<br/>**NOTE**<br/>1. When the user performs interactive operations such as tapping the mask to close, swiping (left/right), pressing the three-key back button, or pressing ESC on the keyboard, if this callback is registered, the dialog box will not be closed immediately. In the callback, you can obtain the operation type that blocks the dialog box closure through reason, and determine whether the dialog box can be closed based on the reason. To close the dialog box, call the **dismiss** method of [DismissDialogAction](#dismissdialogaction12) in the callback. The reason returned by the current component does not support the **CLOSE_BUTTON** enum value.<br/>2. In the **onWillDismiss** callback, **onWillDismiss** interception cannot be performed again.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model. |
@@ -62,6 +60,7 @@ Provides **ActionSheet** configuration options.
 | immersiveMode<sup>15+</sup>       | [ImmersiveMode](#immersivemode15) | No   | Yes  | Mask effect of the dialog box within the page.<br />**NOTE**<br />- Default value: **ImmersiveMode.DEFAULT** <br />- This attribute takes effect only when **levelMode** is set to **LevelMode.EMBEDDED**.<br/>**Atomic service API:** This API can be used in atomic services since API version 15.<br/>**Model restriction:** This API can be used only in the stage model. |
 | levelOrder<sup>18+</sup>       | [LevelOrder](../js-apis-promptAction.md#levelorder18) | No   | Yes  | Display order of the dialog box.<br />**NOTE**<br />- Default value: **LevelOrder.clamp(0)** <br />- Dynamic refresh of the order is not supported.<br/>**Atomic service API:** This API can be used in atomic services since API version 18.<br/>**Model restriction:** This API can be used only in the stage model. |
 | systemMaterial  | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | No | Yes | System material of the dialog box.<br/>**NOTE**<br/>- Default value: an [ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) object whose style in [ImmersiveOptions](../arkts-apis-uimaterial.md#immersiveoptions) is **ImmersiveStyle.ULTRA_THICK**. When set to **undefined**, the default value is used.<br/>- Different materials have different effects. This API affects the background color [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), background blur [backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9), background effect [backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11), border color [borderColor](ts-universal-attributes-border.md#bordercolor), border width [borderWidth](ts-universal-attributes-border.md#borderwidth), and shadow [shadow](ts-universal-attributes-image-effect.md#shadow). When the system material is set, the preceding APIs do not take effect.<br/>**Since:** 26.0.0<br/>**Model restriction:** This API can be used only in the stage model.<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.|
+| adaptToHandedness | [HandednessFollowMode](../js-apis-dialog.md#handednessfollowmode) | No | Yes | Whether and how the dialog box adapts to handedness.<br/>Default value: **HandednessFollowMode.NONE**<br/>**Note:**<br/>This API does not take effect when **alignment** is not **DialogAlignment.Default** or when the **offset** value is not 0.<br/>**Since:** 26.1.0<br/>**Model restriction:** This API can be used only in the stage model.<br/>**Atomic service API:** Since API version 26.1.0, this API is supported in atomic services. |
 
 ## SheetInfo
 
@@ -97,7 +96,7 @@ Defines the display level mode for the dialog box.
 
 type ImmersiveMode = import('../api/@ohos.promptAction').ImmersiveMode
 
-Defines the overlay effect for the dialog box.
+Defines the mask effect for the dialog box.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -187,7 +186,7 @@ Shows an action sheet in the given settings.
 | ------ | ------------------------------------------------- | ---- | ------------------------ |
 | value  | [ActionSheetOptions](#actionsheetoptions) | Yes  | Parameters of the action sheet.|
 
-## Example
+## Examples
 
 > **NOTE**
 > 
@@ -627,8 +626,6 @@ struct Example1 {
 }
 ```
 
-
-
 ![image-action-lifecycle](figures/image-action-lifecycle.gif)
 
 ### Example 7: Customizing the Background Blur Effect
@@ -749,12 +746,13 @@ struct ActionSheetExample {
   }
 }
 ```
-
 ![image-action-backgroundEffect](figures/image-action-backgroundEffect.png)
 
 ### Example 9: Setting the System Material of the Dialog Box
 
-This example implements the system material effect by configuring the systemMaterial attribute in [ActionSheetOptions](#actionsheetoptions).
+This example sets the system material of the component through the **systemMaterial** attribute in [ActionSheetOptions](#actionsheetoptions) to implement the immersive light effect. After the system material is set, nonlinear deformation and edge light flow occur during the popup process of the **ActionSheet**.
+
+The illustration for this example shows the strong effect on a high-computing-power device. The immersive light effect of the component is adaptively adjusted based on the device computing power and the immersive light effect set by the user in the system, so you do not need to perform additional adaptation.
 
 Since API version 26.0.0, the systemMaterial attribute has been added to [ActionSheetOptions](#actionsheetoptions).
 
@@ -801,10 +799,73 @@ struct ActionSheetExample {
       }
       .height('100%')
       .width('100%')
-      .backgroundColor(Color.Gray)
+      // Replace with the actual resource file by the developer.
+      .backgroundImage($r("app.media.img"))
+      .backgroundImageSize({ width: '100%', height: '100%' })
     }
   }
 }
 ```
+Without system material
 
-![en-us_image_action_sheet_systemMaterial](figures/en-us_image_action_systemMaterial.png)
+![Without system material](figures/actionsheetwithoutmaterial.gif)
+
+With system material
+
+![With system material](figures/actionsheetwithmaterial.gif)
+
+### Example 10: Setting the Dialog Box to Adapt to Handedness
+
+This example uses the **adaptToHandedness** attribute in [ActionSheetOptions](#actionsheetoptions) to set the dialog box to adapt to handedness, so that the dialog box follows the position offset of the component that triggers it.
+
+Since API version 26.1.0, the **adaptToHandedness** attribute has been added to [ActionSheetOptions](#actionsheetoptions).
+
+```ts
+import { HandednessFollowMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ActionSheetExample {
+  build() {
+    Column() {
+      Button("ActionSheet")
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().showActionSheet({
+            title: 'ActionSheet Title',
+            subtitle: 'ActionSheet Subtitle',
+            message: 'ActionSheet Text',
+            alignment: DialogAlignment.Default,
+            offset: { dx: 0, dy: 0 },
+            sheets: [
+              {
+                title: 'Apples',
+                action: () => {
+                  console.info('apples');
+                }
+              },
+              {
+                title: 'Bananas',
+                action: () => {
+                  console.info('bananas');
+                }
+              },
+              {
+                title: 'Pears',
+                action: () => {
+                  console.info('pears');
+                }
+              }
+            ],
+            adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+![Set popup to adapt to handedness](figures/actionsheethandedness.gif)
+<!--no_check-->

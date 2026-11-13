@@ -6,7 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=a1851c4d823f8d0aa6d877d6e720d89b0f7206a1 translatedAt=2026-08-21T02:21:01.411Z pushedAt=2026-08-21T06:17:14.538Z -->
+<!-- md-trans-meta sourceCommit=740dbb7604952a9e4ff4c9e3c848cb10d774c82a translatedAt=2026-11-03T01:55:21.057Z pushedAt=2026-11-13T01:05:59.924Z nl=1 -->
 
 An arc list consists of a series of list items arranged along an arc, suitable for circular screen devices. It is ideal for continuously presenting multiple rows of similar data, such as images and text.
 
@@ -15,6 +15,7 @@ An arc list consists of a series of list items arranged along an arc, suitable f
 > - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
 > - This component can be used on phones, PCs, 2-in-1 devices, tablets, TVs, and wearables. In API version 22 and earlier versions, a compilation warning will be reported when this component is used on phones, PCs, 2-in-1 devices, tablets, and TVs, but the component can still run properly.
 
+
 ## Modules to Import
 
 > **NOTE**
@@ -22,6 +23,7 @@ An arc list consists of a series of list items arranged along an arc, suitable f
 > - **ArcListAttribute** is essential for configuring the **ArcList** component. In API version 21 and earlier, you must manually import **ArcListAttribute** after importing the **ArcList** component. Otherwise, a compilation error is reported. However, starting from API version 22, the compilation toolchain automatically imports **ArcListAttribute** when it detects the **ArcList** component, so manual import is no longer necessary.
 >
 > - If you manually import **ArcListAttribute**, DevEco Studio shows it as disabled (grayed out). In API version 21 and earlier, removing this import causes a compilation error. But from API version 22 onward, removing it does not affect the functionality.
+
 
 API version 21 and earlier:
 
@@ -37,7 +39,7 @@ import { ArcList } from '@kit.ArkUI';
 
 ## Child Components
 
-Only the [ArcListItem](ts-container-arclistitem.md) component is supported.
+Only [ArcListItem](ts-container-arclistitem.md) and [custom components](../../../ui/state-management/arkts-create-custom-components.md) are supported. When a custom component is used under **ArcList**, use **ArcListItem** as the top-level component of the custom component. Do not directly set attributes and event methods on the custom component, because **ArcList** manages the layout and event handling of child components through **ArcListItem**. Directly setting them may cause some functions to fail to take effect.
 
 > **NOTE**
 >
@@ -52,6 +54,7 @@ Only the [ArcListItem](ts-container-arclistitem.md) component is supported.
 > - When [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) change, the child component index values are updated.
 >
 > - Child components of **ArcList** with the [visibility](ts-universal-attributes-visibility.md#visibility) attribute set to **Hidden** or **None** still have their index values calculated.
+
 
 ## APIs
 
@@ -217,7 +220,7 @@ Sets the width of the **ArcList** scrollbar in the pressed state. If not set, th
 
 | Name| Type                                                        | Mandatory| Description                                                       |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | Yes   | Width of the **ArcList** scrollbar in the pressed state.<br>Default value: **LengthMetrics.vp(24)**<br>Width in the unpressed state: **LengthMetrics.vp(4)**<br>If this parameter is set to an abnormal value such as a negative value or **undefined**, the width of the scrollbar in the normal state is used.<br>Unit: vp |
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&gt; | Yes   | Width of the **ArcList** scrollbar in the pressed state.<br>Default value: **LengthMetrics.vp(24)**<br>Width in the non-pressed state: **LengthMetrics.vp(4)**<br>If it is set to an invalid value such as a negative value or **undefined**, the width in the non-pressed state is used.<br>Unit: vp |
 
 ### scrollBarColor
 
@@ -264,7 +267,6 @@ Sets the size information of the child components of the **ArcList** component a
 **Parameters**
 
 <!--Table: 10%; auto; 10%; auto-->
-
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | size   | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12)&gt; | Yes   | Provides precise size information of all child components in the main axis direction to the **ArcList** component through the [ChildrenMainSize](ts-container-scrollable-common.md#childrenmainsize12) object. This ensures that the **ArcList** component can maintain the accuracy of its scroll position in scenarios such as inconsistent child component main axis sizes, addition or removal of child components, and when using [scrollToIndex](ts-container-scroll.md#scrolltoindex). It further guarantees that [scrollTo](ts-container-scroll.md#scrollto) can accurately jump to the specified position, [currentOffset](ts-container-scroll.md#currentoffset) or [offset](ts-container-scroll.md#offset23) accurately reflects the current scroll position, and the built-in scrollbar can move smoothly without any jumps or abrupt changes. Since API version 23, the **offset** API is added.<br> **NOTE**<br>The provided main axis size must be consistent with the actual main axis size of the child components. Otherwise, the **ArcList** component may display abnormally. When the main axis size of a child component changes or when child components are added or removed, the **ArcList** component must be notified of the changes by calling the methods of the **ChildrenMainSize** object. Otherwise, the **ArcList** component may display abnormally. |

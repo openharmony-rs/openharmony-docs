@@ -1,22 +1,25 @@
 # FoldSplitContainer
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu; @song-song-song-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-08-28T01:32:22.106Z pushedAt=2026-08-28T06:01:38.723Z -->
+<!-- md-trans-meta sourceCommit=eb093f069028c22436c2a76b8e266be5c22ac869 translatedAt=2026-11-03T01:29:42.906Z pushedAt=2026-11-13T01:05:59.862Z nl=1 -->
 
-The **FoldSplitContainer** component implements split-screen layout, providing region control for two-panel and three-panel layouts on foldable screens in the expanded state (device fully unfolded), hover state (device half-folded), and folded state (device fully folded). It is suitable for responsive layout adaptation scenarios in foldable screen apps, helping developers implement intelligent split-panel layouts across multiple screen states and improving user experience. For details about fold status, see [display.FoldStatus](../js-apis-display.md#foldstatus10).
+
+The **FoldSplitContainer** component implements layout, providing region control for two-panel and three-panel layouts on foldable screens in the expanded state (device fully unfolded), hover state (device half-folded), and folded state (device fully folded). It is suitable for responsive layout adaptation scenarios in foldable screen apps, helping developers implement intelligent split-panel layouts across multiple screen states and improving user experience. For details about fold status, see [display.FoldStatus](../js-apis-display.md#foldstatus10).
+
 
 > **NOTE**
 >
-> - This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 12. For new APIs in later versions, the initial version is marked with a superscript.
 >
 > - The APIs of this module can be used only in the stage model.
 >
-> - When the window width is less than or equal to 600 vp, the two-panel layout is used by default. When the window width is greater than 600 vp, an expanded area can be supported in addition to the top-bottom split. When the window width is greater than 600 vp and the device is in landscape half-folded state, the hover state layout can be triggered. In the hover state layout, the crease area is avoided and the expanded area cannot cross the crease area. In the hover state, you can set not to display the expanded area. For details, see [Examples](#examples).
+> - Since API version 26.1.0, when the window mode [WindowStatusType](../arkts-apis-window-e.md#windowstatustype11) is full-screen, the device is half-folded, and the crease area is horizontal, the hover state layout can be triggered. Before API version 26.1.0, a two-panel layout is used by default when the window width is less than or equal to 600 vp; when the window width is greater than 600 vp, an expanded area is supported in addition to the top-bottom split layout; and when the window width is greater than 600 vp and the device is half-folded in landscape orientation, the hover state layout can be triggered. In the hover state layout, avoidance of the crease area is added, the expanded area cannot run through the crease area, and the expanded area can be set not to be displayed in the hover state. For details, see [Examples](#examples).
+>
+> - If [common attributes](ts-component-general-attributes.md) or [common events](ts-component-general-events.md) are set for **FoldSplitContainer**, the compilation toolchain additionally generates a node named **\_\_Common\_\_** and mounts the common attributes or common events on **\_\_Common\_\_** instead of directly applying them to **FoldSplitContainer** itself. This may cause the common attributes or common events set by developers to fail to take effect or behave unexpectedly. Therefore, it is not recommended to set common attributes and common events for **FoldSplitContainer**.
 
 ## Modules to Import
 
@@ -32,7 +35,7 @@ Not supported
 
 FoldSplitContainer({primary: Callback&lt;void&gt;, secondary: Callback&lt;void&gt;, extra?: Callback&lt;void&gt;, expandedLayoutOptions: ExpandedRegionLayoutOptions, hoverModeLayoutOptions: HoverModeRegionLayoutOptions, foldedLayoutOptions: FoldedRegionLayoutOptions, animationOptions?: AnimateParam | null, onHoverStatusChange?: OnHoverStatusChangeHandler})
 
-Implements region control for the two-panel split-screen layout (primary area + secondary area) and three-panel layout (primary area + secondary area + expanded area) on foldable screens in the expanded, hover, and folded states.
+Implements region control for the two-panel layout (primary area + secondary area) and three-panel layout (primary area + secondary area + expanded area) on foldable screens in the expanded, hover, and folded states.
 
 **Decorator**: [\@Component](../../../ui/state-management/arkts-create-custom-components.md#component)
 
@@ -44,10 +47,10 @@ Implements region control for the two-panel split-screen layout (primary area + 
 | -------- | -------- | -------- | -------- | -------- |
 | primary | Callback\<void> | Yes | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for building the UI content of the primary area. This callback function has no parameters and no return value, and is invoked during component layout. |
 | secondary | Callback\<void> | Yes | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for building the UI content of the secondary area. This callback function has no parameters and no return value, and is invoked during component layout. |
-| extra | Callback\<void> | No | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for building the UI content of the expanded area. Pass this parameter when a three-column layout or an additional content area is needed. This parameter can be omitted when no expanded area is required. This callback function has no parameters and no return value. When not passed, no corresponding area is displayed. |
-| expandedLayoutOptions | [ExpandedRegionLayoutOptions](#expandedregionlayoutoptions) | Yes | [\@Prop](../../../ui/state-management/arkts-prop.md) | Expanded state layout information, used to control whether the expanded area spans through, the area ratio, and the position in the expanded state of a foldable screen. The expanded area is supported when the window width is greater than 600 vp. |
-| hoverModeLayoutOptions | [HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions) | Yes | [\@Prop](../../../ui/state-management/arkts-prop.md) | Hover state layout information, used to control whether the expanded area is displayed, the area ratio, and the position in the semi-folded hover state of a foldable screen. The hover state layout is triggered when the window width is greater than 600 vp and the device is in landscape semi-folded state. |
-| foldedLayoutOptions | [FoldedRegionLayoutOptions](#foldedregionlayoutoptions) | Yes | [\@Prop](../../../ui/state-management/arkts-prop.md) | Folded state layout information, used to control the height ratio between the primary area and the secondary area in the folded state of a foldable screen. This takes effect when the device is in the folded state. A split-screen layout is used by default when the window width is less than or equal to 600 vp. |
+| extra | Callback\<void> | No | [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md) | Callback function for building the UI content of the expanded area. Pass this parameter when a three-panel layout or an additional content area is needed. This parameter can be omitted when no expanded area is required. This callback function has no parameters and no return value. When not passed, no corresponding area is displayed. |
+| expandedLayoutOptions | [ExpandedRegionLayoutOptions](#expandedregionlayoutoptions) | Yes | [\@Prop](../../../ui/state-management/arkts-prop.md) | Expanded state layout information, used to control whether the expanded area runs through, the area ratio, and the position in the expanded state of the foldable screen. Since API version 26.1.0, the expanded area is supported without being limited by the window width. Before API version 26.1.0, the expanded area is supported when the window width is greater than 600 vp. |
+| hoverModeLayoutOptions | [HoverModeRegionLayoutOptions](#hovermoderegionlayoutoptions) | Yes | [\@Prop](../../../ui/state-management/arkts-prop.md) | Hover state layout information, used to control whether the expanded area is displayed, the area ratio, and the position in the half-folded hover state of the foldable screen. Since API version 26.1.0, the hover state layout can be triggered when the device is half-folded and the crease area direction is horizontal. Before API version 26.1.0, the hover state layout can be triggered when the window width is greater than 600 vp and the device is in the landscape half-folded state. |
+| foldedLayoutOptions | [FoldedRegionLayoutOptions](#foldedregionlayoutoptions) | Yes | [\@Prop](../../../ui/state-management/arkts-prop.md) | Collapsed state layout information, used to control the height ratio between the primary area and the secondary area in the collapsed state of the foldable screen. Since API version 26.1.0, the two-panel layout is used when the device is in the collapsed state. Before API version 26.1.0, it takes effect when the device is in the collapsed state, and the two-panel layout is used by default when the window width is less than or equal to 600 vp. |
 | animationOptions | [AnimateParam](ts-explicit-animation.md#animateparam) \| null | No | [\@Prop](../../../ui/state-management/arkts-prop.md) | Parameters for setting animation effects. The value **null** indicates that animation is disabled.<br>Default value: **null** |
 | onHoverStatusChange | [OnHoverStatusChangeHandler](#onhoverstatuschangehandler) | No | - | Callback function triggered when the foldable screen enters or exits hover mode. When not passed, no callback is made for hover state changes. |
 
@@ -107,7 +110,7 @@ Defines an event handler for hover state changes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |

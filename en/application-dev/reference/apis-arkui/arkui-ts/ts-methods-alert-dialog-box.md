@@ -1,12 +1,11 @@
 # Alert Dialog Box (AlertDialog)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c48e99653addcebc1ddb3fe176c39e9f27289a83 translatedAt=2026-08-24T06:57:05.333Z pushedAt=2026-08-25T07:34:46.486Z -->
+<!-- md-trans-meta sourceCommit=36feeee0c23b24a74a08883c144b7f4adb756ef9 translatedAt=2026-11-03T02:49:47.115Z pushedAt=2026-11-13T01:06:00.027Z nl=1 -->
 
 You can set the text content and response callback for an alert dialog box.
 
@@ -44,7 +43,7 @@ Enumerates the alert dialog box styles.
 | transition<sup>12+</sup>          | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10) | No   | Yes  | Transition effect for the display and exit of the dialog box.<br/>**NOTE**<br/> 1. If this attribute is not set, the default display/exit animation is used.<br/> 2. If the back key is pressed during the display animation, the display animation is interrupted and the exit animation is executed. The animation effect is the result of superimposing the curves of the display animation and the exit animation.<br/> 3. If the back key is pressed during the exit animation, the exit animation is not interrupted and continues to execute. Pressing the back key again exits the app.                               <br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model. |
 | width<sup>12+</sup>               | [Dimension](ts-types.md#dimension10) | No   | Yes | Width of the dialog box backdrop.<br />**NOTE**<br>- Default maximum dialog width: **400vp**.<br />- Percentage parameter: the reference width of the dialog box is the width of the window where it is located, and the width is adjusted smaller or larger based on this.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model. |
 | height<sup>12+</sup>              | [Dimension](ts-types.md#dimension10)                         | No   | Yes  | Height of the dialog box backdrop.<br />**NOTE**<br />- Default maximum dialog height: 0.9 × (window height - safe area).<br />- Percentage parameter: the reference height of the dialog box is (window height - safe area), and the height is adjusted smaller or larger based on this.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model. |
-| borderWidth<sup>12+</sup>         | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeWidths](ts-types.md#edgewidths9)&nbsp;\|&nbsp;[LocalizedEdgeWidths](ts-types.md#localizededgewidths12) | No   | Yes  |Width of the four borders separately. When the system material **systemMaterial** is set, **borderWidth** does not take effect.<br />Default value: **0**<br /> Percentage parameter: the border width of the dialog box is set as a percentage of the width of the dialog box backdrop itself.<br />When the left and right borders of the dialog box are greater than the dialog box width, and the top and bottom borders are greater than the dialog box height, the display may not meet expectations.<br/>**NOTE**<br/>When the **borderWidth** attribute type is **LocalizedEdgeWidths**, the layout order can be changed according to the language habit.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model. |
+| borderWidth<sup>12+</sup>         | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeWidths](ts-types.md#edgewidths9)&nbsp;\|&nbsp;[LocalizedEdgeWidths](ts-types.md#localizededgewidths12) | No   | Yes  |Width of the four borders. When the system material **systemMaterial** is set, **borderWidth** does not take effect.<br />Default value: **0**<br /> Percentage parameter: the border width of the dialog box is set as a percentage of the width of the dialog box backdrop itself.<br />When the left and right borders of the dialog box are greater than the dialog box width, and the top and bottom borders are greater than the dialog box height, the display may not meet expectations.<br/>**NOTE**<br/>When the **borderWidth** attribute type is **LocalizedEdgeWidths**, the layout order can be changed according to the language habit.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model. |
 | borderColor<sup>12+</sup>         | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](ts-types.md#localizededgecolors12) | No   | Yes  | Border color of the dialog box backdrop. When the system material **systemMaterial** is set, **borderColor** does not take effect.<br/>Default value: **Color.Black**<br/> If the **borderColor** attribute is used, it must be used together with the **borderWidth** attribute.<br/>**NOTE**<br/>When the **borderColor** attribute type is **LocalizedEdgeColors**, the layout order can be changed according to the language habit.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model. |
 | borderStyle<sup>12+</sup>         | [BorderStyle](ts-appendix-enums.md#borderstyle)&nbsp;\|&nbsp;[EdgeStyles](ts-types.md#edgestyles9) | No   | Yes  | Border style of the dialog box backdrop.<br/>Default value: **BorderStyle.Solid**<br/>If the **borderStyle** attribute is used, it must be used together with the **borderWidth** attribute. <br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model. |
 | shadow<sup>12+</sup>              | [ShadowOptions](ts-universal-attributes-image-effect.md#shadowoptions)&nbsp;\|&nbsp;[ShadowStyle](ts-universal-attributes-image-effect.md#shadowstyle10) | No   | Yes  | Shadow of the dialog box backdrop.<br /> When the device is a 2-in-1 device, in the default scenario, the focused shadow value is **ShadowStyle.OUTER_FLOATING_MD**, and the unfocused shadow value is **ShadowStyle.OUTER_FLOATING_SM**. Other devices have no shadow by default.<br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model. |
@@ -60,6 +59,7 @@ Enumerates the alert dialog box styles.
 | immersiveMode<sup>15+</sup>       | [ImmersiveMode](../js-apis-promptAction.md#immersivemode15) | No   | Yes  | Mask effect of the in-page dialog box.<br />**NOTE**<br />- Default value: **ImmersiveMode.DEFAULT** <br />- Takes effect only when the **levelMode** attribute is set to **LevelMode.EMBEDDED**.<br/>**Atomic service API:** This API can be used in atomic services since API version 15.<br/>**Model restriction:** This API can be used only in the stage model. |
 | levelOrder<sup>18+</sup>       | [LevelOrder](#levelorder18) | No   | Yes  | Display order of the dialog box.<br />**NOTE**<br />- Default value: **LevelOrder.clamp(0)** <br />- Dynamic refresh of the order is not supported.<br/>**Atomic service API:** This API can be used in atomic services since API version 18.<br/>**Model restriction:** This API can be used only in the stage model. |
 | systemMaterial  | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | No | Yes | System material of the dialog box.<br/>**NOTE**<br/>- Default value: the [ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) object whose [ImmersiveOptions](../arkts-apis-uimaterial.md#immersiveoptions) style is **ImmersiveStyle.ULTRA_THICK**. When set to **undefined**, it is consistent with the default value.<br/>- Different materials have different effects. This API affects the background color [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), background blur [backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9), background effect [backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11), border color [borderColor](ts-universal-attributes-border.md#bordercolor), border width [borderWidth](ts-universal-attributes-border.md#borderwidth), and shadow [shadow](ts-universal-attributes-image-effect.md#shadow). When the system material is set, the preceding APIs do not take effect.<br/>**Since:** 26.0.0<br/>**Model restriction:** This API can be used only in the stage model.<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.|
+| adaptToHandedness | [HandednessFollowMode](../js-apis-dialog.md#handednessfollowmode) | No | Yes | Whether and how the dialog box adapts to the handedness.<br/>Default value: **HandednessFollowMode.NONE**<br/>**Note:**<br/>When alignment is not **DialogAlignment.Default**, or the offset value is not 0, this API does not take effect.<br/>**Since:** 26.1.0<br/>**Model restriction:** This API can be used only in the stage model.<br/>**Atomic service API:** Since API version 26.1.0, this API is supported in atomic services. |
 
 ## LevelOrder<sup>18+</sup>
 
@@ -252,7 +252,7 @@ Provides information about the action to dismiss the dialog box.
 
 ## TextStyle<sup>12+</sup>
 
-Text style of the message in the dialog box, including the text truncation mode.
+Text style of the message in the dialog box, including the word break rule.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -622,7 +622,7 @@ struct AlertDialogExample {
 
 ### Example 5: Configuring a Dialog Box in the Hover State
 
-<!--RP1-->This example demonstrates how to set the layout area of a dialog box when the device is in semi-folded mode.<!--RP1End-->
+<!--RP1-->This example demonstrates how to set the layout area of a dialog box when the device is in hover state.<!--RP1End-->
 
 ```ts
 // xxx.ets
@@ -831,9 +831,11 @@ struct AlertDialogExample {
 
 ![image-alert-backgroundEffect](figures/image-alert-backgroundEffect.png)
 
-### Example 9: Setting the System Material of the Dialog Box
+### Example 9: Setting the Immersive Light Effect of the Dialog Box
 
-This example implements the system material effect by configuring the **systemMaterial** attribute in [AlertDialogParam](#alertdialogparam).
+This example sets the system material of the component through the **systemMaterial** attribute in [AlertDialogParam](#alertdialogparam) to implement the immersive light effect. After the system material is set, nonlinear deformation and edge light flow occur during the pop-up of the **AlertDialog**.
+
+The illustration for this example shows the strong effect on a high-computing-power device. The immersive light effect of the component is adaptively adjusted based on the device computing power and the immersive light effect set by the user in the system, so you do not need to perform additional adaptation.
 
 Since API version 26.0.0, the **systemMaterial** attribute is added to **AlertDialogParam**.
 
@@ -870,10 +872,62 @@ struct AlertDialogExample {
       }
       .height('100%')
       .width('100%')
-      .backgroundColor(Color.Gray)
+      // Replace with the actual resource file.
+      .backgroundImage($r("app.media.img"))
+      .backgroundImageSize({width: '100%', height: '100%'})
     }
+  }
+}
+```
+Without system material
+
+<!--Del--> <!--DelEnd-->
+
+With system material
+
+<!--Del--> <!--DelEnd-->
+
+### Example 10: Setting the Dialog Box to Adapt to Handedness
+
+This example uses the **adaptToHandedness** attribute in [AlertDialogParam](#alertdialogparam) to set the dialog box to adapt to handedness, so that the dialog box is offset along with the position of the component that triggers it.
+
+Since API version 26.1.0, the **adaptToHandedness** attribute has been added to [AlertDialogParam](#alertdialogparam).
+
+```ts
+import { HandednessFollowMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct AlertDialogExample {
+  build() {
+    Column() {
+      Button("AlertDialog")
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().showAlertDialog({
+            title: 'AlertDialog Title',
+            message: 'AlertDialog Text',
+            primaryButton: {
+              value: 'OK',
+              action: () => {
+                console.info('primaryButton');
+              }
+            },
+            secondaryButton: {
+              value: 'Cancel',
+              action: () => {
+                console.info('secondaryButton');
+              }
+            },
+            adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
   }
 }
 ```
 
 <!--Del--> <!--DelEnd-->
+<!--no_check-->

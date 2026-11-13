@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=0e7fa3d18a6c13eddd500d4196d9d29085b6f525 translatedAt=2026-11-03T02:49:06.871Z pushedAt=2026-11-13T01:06:00.022Z nl=1 -->
 
 The calendar picker dialog box provides date selection functionality, allowing users to select a date in the dialog box. It is suitable for scenarios that require date input, such as appointment management and task scheduling.
 
@@ -19,6 +20,8 @@ The calendar picker dialog box provides date selection functionality, allowing u
 ## CalendarDialogOptions
 
 Defines the options for the calendar picker dialog box.
+
+Inherits from [CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions).
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

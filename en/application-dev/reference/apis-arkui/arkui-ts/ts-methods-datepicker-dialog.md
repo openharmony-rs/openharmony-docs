@@ -1,12 +1,11 @@
 # Date Picker Dialog Box (DatePickerDialog)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @luoying_ace_admin-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9970006b63f1cf75a6caa0b3b5184fbee5a0f063 translatedAt=2026-08-24T06:55:41.398Z pushedAt=2026-08-25T07:34:48.434Z -->
+<!-- md-trans-meta sourceCommit=36feeee0c23b24a74a08883c144b7f4adb756ef9 translatedAt=2026-11-03T02:56:23.886Z pushedAt=2026-11-13T01:06:00.032Z nl=1 -->
 
 Creates a date picker based on the specified date range and displays it in a dialog box. This component is suitable for scenarios where users need to quickly select a date, such as schedule arrangement, activity arrangement, and birthday setting. Using this component simplifies the development process, provides a unified date selection user experience, and supports multiple customization options to meet different requirements.
 
@@ -57,7 +56,6 @@ Inherited from [DatePickerOptions](ts-basic-components-datepicker.md#datepickero
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
-
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | lunar | boolean | No | Yes | Whether the date is displayed in the lunar calendar.<br>- **true**: displayed in the lunar calendar.<br>- **false**: not displayed in the lunar calendar.<br>Default value: **false**<br>**NOTE**<br>This attribute takes effect only in the Simplified Chinese and Traditional Chinese language environments. In other language environments, setting this attribute has no effect.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
@@ -93,6 +91,7 @@ Inherited from [DatePickerOptions](ts-basic-components-datepicker.md#datepickero
 | enableHapticFeedback<sup>18+</sup> | boolean | No  | Yes  | Whether to enable touch feedback.<br>- **true**: enable touch feedback (select this when you need to provide operation feedback to users).<br>- **false**: disable touch feedback (select this when touch feedback is not needed or the device does not support it).<br>Default value: **true**<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 18.<br>**NOTE**<br>1. After this parameter is set to **true**, whether it takes effect depends on whether the system hardware supports it.<br>2. To enable touch feedback, configure the **requestPermissions** field in the "module" of the **src/main/module.json5** file of the project to enable the vibration permission. The configuration is as follows:<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
 | canLoop<sup>20+</sup> | boolean | No | Yes | Whether cyclic scrolling is supported.<br>- **true**: cyclic scrolling is supported. The year is linked and incremented or decremented as the month scrolls cyclically, and the month is linked and incremented or decremented as the day scrolls cyclically.<br>- **false**: cyclic scrolling is not supported. When the year, month, or day reaches the top or bottom of its column, it can no longer be scrolled, and the year, month, and day can no longer be linked and incremented or decremented.<br>Default value: **true**<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
 | systemMaterial | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | No | Yes | System material of the dialog box.<br>**NOTE**<br>- The default value is an **ImmersiveMaterial** object whose style of **ImmersiveOptions** is **ImmersiveStyle.ULTRA_THICK**. When set to **undefined**, it is consistent with the default value. Different materials have different effects. For details about **ImmersiveMaterial**, see the [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) type definition.<br>- This interface affects the background color [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), background blur [backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9), background blur effect [backgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10), background effect [backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11), border color [borderColor](ts-universal-attributes-border.md#bordercolor), border width [borderWidth](ts-universal-attributes-border.md#borderwidth), and shadow [shadow](ts-universal-attributes-image-effect.md#shadow). When the system material is set, the preceding interfaces do not take effect.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
+| adaptToHandedness | [HandednessFollowMode](../js-apis-dialog.md#handednessfollowmode) | No | Yes | Whether and how the dialog box adapts to handedness.<br>Default value: **HandednessFollowMode.NONE**<br>**Note:**<br>When **alignment** is not **DialogAlignment.Default** or **offset** is not 0, this API does not take effect.<br>**Since:** 26.1.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** Since API version 26.1.0, this API is supported in atomic services. |
 
 ## LunarSwitchStyle<sup>14+</sup>
 
@@ -258,7 +257,7 @@ struct DatePickerDialogExample {
 
 ### Example 3: Configuring a Dialog Box in the Hover State
 
-This example demonstrates how to set the layout area of a dialog box when the device is in semi-folded mode.
+This example demonstrates how to set the layout area of a dialog box when the device is in hover state.
 
 ```ts
 @Entry
@@ -638,9 +637,12 @@ struct DatePickerDialogExample {
 
 ![DatePickerDialog](figures/DatePickerDialog_BackgroundEffect.png)
 
-### Example 12: Setting the System Material
 
-This example implements the system material effect by configuring [systemMaterial](#datepickerdialogoptions).
+### Example 12: Setting the Immersive Light Effect
+
+This example implements the immersive light effect by configuring [systemMaterial](#datepickerdialogoptions).
+
+The illustration for this example shows the strong effect on a high-computing-power device. The immersive light effect of the component is adaptively adjusted based on the device computing power and the immersive light effect set by the user in the system, so you do not need to perform additional adaptation.
 
 Since API version 26.0.0, the **systemMaterial** attribute has been added to **DatePickerDialogOptions**.
 
@@ -664,11 +666,46 @@ struct DatePickerDialogExample {
             });
           })
       }.width('100%')
+      .height('100%')
+      .backgroundImage($r('app.media.bgImg'))  // $r('app.media.bgImg') needs to be replaced with the resource file required by the developer.
+      .backgroundImageSize(ImageSize.FILL)
     }
   }
 }
 ```
 
-
 <!--Del--> <!--DelEnd-->
 
+### Example 13: Setting the Dialog Box to Adapt to Handedness
+
+This example uses the **adaptToHandedness** attribute in [DatePickerDialogOptions](#datepickerdialogoptions) to set the dialog box to adapt to the handedness, so that the dialog box is offset along with the position of the component that triggers it.
+
+Since API version 26.1.0, the **adaptToHandedness** attribute has been added to [DatePickerDialogOptions](#datepickerdialogoptions).
+
+```ts
+import { HandednessFollowMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct DatePickerDialogExample {
+  private selectedDate: Date = new Date('2010-01-01');
+
+  build() {
+    Column() {
+      Button('DatePickerDialog')
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().showDatePickerDialog({
+            selected: this.selectedDate,
+            adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+<!--Del--> <!--DelEnd-->
+<!--no_check-->

@@ -1,12 +1,11 @@
 # Spatial Effect (System API)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=bb3c2a8816ac5d1e8b05da72cf79834d93e12fa9 translatedAt=2026-08-21T02:20:51.096Z pushedAt=2026-08-22T07:59:31.247Z -->
+<!-- md-trans-meta sourceCommit=abab9ab05c550a25ca3c1a9f49c37fd11454dc1c translatedAt=2026-11-03T03:37:09.205Z pushedAt=2026-11-13T01:06:00.133Z nl=1 -->
 
 Used to set spatial effect parameters for a component.
 
@@ -65,7 +64,7 @@ Defines the spatial effect parameters.
 | Name | Type | Read Only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
 | position | [SpatialPosition](#spatialposition) \| number | No | No | Spatial position of the component. Supports depth information of the struct type or the numeric type.<br/> The struct type [SpatialPosition](#spatialposition) defines the spatial position by four corners. <br/> The numeric type defines the spatial depth information of the component. |
-| occlusionWeight | number | No | Yes | Occlusion weight of the spatial effect. Value range: [0, 1]. Default value: **0**.<br>**0** indicates that the component is not occluded, **1** indicates that the component is completely occluded, and an intermediate value indicates partial occlusion. |
+| occlusionWeight | number | No | Yes | Occlusion weight of the spatial effect. Value range: [0, 1]; default value: **0**.<br/>**0** indicates no occlusion, **1** indicates complete occlusion, and intermediate values indicate partial occlusion. |
 
 ## SpatialPosition
 
@@ -83,10 +82,10 @@ Defines the four corner positions in 3D space.
 
 | Name | Type | Read Only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| leftTop | [DepthVector3](#depthvector3) | No | No | Position of the upper left corner in 3D space. The value is unitless and represents the coordinates in 3D space. |
-| rightTop | [DepthVector3](#depthvector3) | No | No | Position of the upper right corner in 3D space. The value is unitless and represents the coordinates in 3D space. |
-| leftBottom | [DepthVector3](#depthvector3) | No | No | Position of the lower left corner in 3D space. The value is unitless and represents the coordinates in 3D space. |
-| rightBottom | [DepthVector3](#depthvector3) | No | No | Position of the lower right corner in 3D space. The value is unitless and represents the coordinates in 3D space. |
+| leftTop | [DepthVector3](#depthvector3) | No | No | Position of the upper-left corner in 3D space. Unitless, and the value represents the coordinates in 3D space. |
+| rightTop | [DepthVector3](#depthvector3) | No | No | Position of the upper-right corner in 3D space. Unitless, and the value represents the coordinates in 3D space. |
+| leftBottom | [DepthVector3](#depthvector3) | No | No | Position of the lower-left corner in 3D space. Unitless, and the value represents the coordinates in 3D space. |
+| rightBottom | [DepthVector3](#depthvector3) | No | No | Position of the lower-right corner in 3D space. Unitless, and the value represents the coordinates in 3D space. |
 | positionMode | [SpatialPositionMode](#spatialpositionmode) | No | Yes | Coordinate mode of the corner positions. Default value: **SpatialPositionMode.WORLD_XYZ**. |
 
 ## DepthVector3
@@ -105,9 +104,9 @@ Defines a 3D vector in the depth space.
 
 | Name | Type | Read Only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| x | number | No | No | X component. Unitless, its value represents the coordinates in 3D space. |
-| y | number | No | No | Y component. Unitless, its value represents the coordinates in 3D space. |
-| z | number | No | No | Z component. Unitless, its value represents the coordinates in 3D space. |
+| x | number | No | No | X component. Unitless, and its value represents the coordinate in 3D space. |
+| y | number | No | No | Y component. Unitless, and its value represents the coordinate in 3D space. |
+| z | number | No | No | Z component. Unitless, and its value represents the coordinate in 3D space. |
 
 ## SpatialPositionMode
 
@@ -144,7 +143,7 @@ Defines a 4D vector in the depth space.
 
 | Name | Type | Read Only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| x | number | No | No | X component. Unitless, its value represents a coordinate in 3D space. Default value: **0** |
+| x | number | No | No | X component. Unitless, its value represents a coordinate in 3D space. |
 | y | number | No | No | Y component. Unitless, its value represents a coordinate in 3D space. |
 | z | number | No | No | Z component. Unitless, its value represents a coordinate in 3D space. |
 | w | number | No | No | W component. Unitless, its value represents a coordinate in 3D space. |
@@ -171,5 +170,4 @@ Defines the RGB color in the depth space.
 
 ## Examples
 
-See DepthComponent [example](./ts-basic-components-depthcomponent-sys.md#examples).
-<!--no_check-->
+See DepthComponent [example](./ts-basic-components-depthcomponent-sys.md#example).

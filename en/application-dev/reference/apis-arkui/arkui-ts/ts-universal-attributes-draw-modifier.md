@@ -5,7 +5,7 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=aacbe0ecdb6d917ab568af42254d52ee08ae5829 translatedAt=2026-09-01T12:26:51.728Z -->
+<!-- md-trans-meta sourceCommit=665adf4fb95a722c1a737b295def57bebe022212 translatedAt=2026-11-03T03:18:19.122Z pushedAt=2026-11-13T01:06:00.087Z nl=1 -->
 
 When the drawn content of a component does not meet the requirements, you can use the custom component drawing feature to draw part of the component on the basis of the original component, or draw the entire component by yourself, so as to achieve the expected effect. For example, a unique button shape, an icon that combines text and images, and so on. The custom component drawing feature provides a custom drawing modifier to implement more flexible component drawing.
 
@@ -33,7 +33,7 @@ Creates a drawing modifier.
 
 [AlphabetIndexer](ts-container-alphabet-indexer.md), [Badge](ts-container-badge.md), [Blank](ts-basic-components-blank.md), [Button](ts-basic-components-button.md), [CalendarPicker](ts-basic-components-calendarpicker.md), [Checkbox](ts-basic-components-checkbox.md), [CheckboxGroup](ts-basic-components-checkboxgroup.md), [Circle](ts-drawing-components-circle.md), [Column](ts-container-column.md), [ColumnSplit](ts-container-columnsplit.md), [Counter](ts-container-counter.md), [DataPanel](ts-basic-components-datapanel.md), [DatePicker](ts-basic-components-datepicker.md), [Ellipse](ts-drawing-components-ellipse.md), [Flex](ts-container-flex.md), [FlowItem](ts-container-flowitem.md), [FolderStack](ts-container-folderstack.md), [FormLink](ts-container-formlink.md), [Gauge](ts-basic-components-gauge.md), [Grid](ts-container-grid.md), [GridCol](ts-container-gridcol.md), [GridItem](ts-container-griditem.md), [GridRow](ts-container-gridrow.md), [Hyperlink](ts-container-hyperlink.md), [Image](ts-basic-components-image.md), [ImageAnimator](ts-basic-components-imageanimator.md), [ImageSpan](ts-basic-components-imagespan.md), [Line](ts-drawing-components-line.md), [List](ts-container-list.md), [ListItem](ts-container-listitem.md), [ListItemGroup](ts-container-listitemgroup.md), [LoadingProgress](ts-basic-components-loadingprogress.md), [Marquee](ts-basic-components-marquee.md), [Menu](ts-basic-components-menu.md), [MenuItem](ts-basic-components-menuitem.md), [MenuItemGroup](ts-basic-components-menuitemgroup.md), [NavDestination](ts-basic-components-navdestination.md), [Navigation](ts-basic-components-navigation.md), [Navigator](ts-container-navigator.md), [NavRouter](ts-basic-components-navrouter.md), [NodeContainer](ts-basic-components-nodecontainer.md), [Path](ts-drawing-components-path.md), [PatternLock](ts-basic-components-patternlock.md), [Polygon](ts-drawing-components-polygon.md), [Polyline](ts-drawing-components-polyline.md), [Progress](ts-basic-components-progress.md), [QRCode](ts-basic-components-qrcode.md), [Radio](ts-basic-components-radio.md), [Rating](ts-basic-components-rating.md), [Rect](ts-drawing-components-rect.md), [Refresh](ts-container-refresh.md), [RelativeContainer](ts-container-relativecontainer.md), [RichEditor](ts-basic-components-richeditor.md), [Row](ts-container-row.md), [RowSplit](ts-container-rowsplit.md), [Scroll](ts-container-scroll.md), [ScrollBar](ts-basic-components-scrollbar.md), [Search](ts-basic-components-search.md), [Select](ts-basic-components-select.md), [Shape](ts-drawing-components-shape.md), [SideBarContainer](ts-container-sidebarcontainer.md), [Slider](ts-basic-components-slider.md), [Stack](ts-container-stack.md), [Stepper](ts-basic-components-stepper.md), [StepperItem](ts-basic-components-stepperitem.md), [Swiper](ts-container-swiper.md), [SymbolGlyph](ts-basic-components-symbolGlyph.md), [TabContent](ts-container-tabcontent.md), [Tabs](ts-container-tabs.md), [Text](ts-basic-components-text.md), [TextArea](ts-basic-components-textarea.md), [TextClock](ts-basic-components-textclock.md), [TextInput](ts-basic-components-textinput.md), [TextPicker](ts-basic-components-textpicker.md), [TextTimer](ts-basic-components-texttimer.md), [TimePicker](ts-basic-components-timepicker.md), [Toggle](ts-basic-components-toggle.md), [WaterFlow](ts-container-waterflow.md), [XComponent](ts-basic-components-xcomponent.md)
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -267,7 +267,7 @@ class MyFullDrawModifier extends DrawModifier {
     this.uiContext = uiContext;
   }
 
-  // Override the drawBehind API for custom background drawing. 
+  // Override the drawBehind API for custom background drawing.  
   drawBehind(context: DrawContext): void {
     const brush = new drawing.Brush();
     brush.setColor({

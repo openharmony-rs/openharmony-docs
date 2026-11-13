@@ -1,14 +1,13 @@
 # Swiper
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @Hu_ZeQi-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=6e65e5ab1f4f5d9b7a30f0ce59276e478113d638 translatedAt=2026-08-19T07:37:18.720Z pushedAt=2026-08-20T10:45:03.065Z -->
+<!-- md-trans-meta sourceCommit=f7759f2de2c7e80ce9af21b23ed944c517949c82 translatedAt=2026-11-03T02:18:35.790Z pushedAt=2026-11-13T01:05:59.973Z nl=1 -->
 
-Defines a container that provides the capability to swipe and display child components in a carousel. It is suitable for scenarios such as carousel image display, image browsing, guide pages, and card carousels.
+Defines a container that provides the capability to swipe and display child components in a carousel. It is suitable for scenarios such as carousel image display, image browsing, guide pages, and card carousels. 
 
 > **NOTE**
 >
@@ -22,11 +21,11 @@ Defines a container that provides the capability to swipe and display child comp
 
 Supported
 
->  **NOTE**
+>  **NOTE** 
 >
 >  - Allowed child component types: built-in and custom components, including rendering control types ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)). To maximize the benefits of lazy loading, avoid mixing lazy loading components (including **LazyForEach** and **Repeat**) and non-lazy loading components, and exercise caution when using multiple lazy loading components. Avoid modifying the data source while an animation is in progress, as doing so can lead to layout issues.
 >
->  - If a child component has its [visibility](ts-universal-attributes-visibility.md#visibility) attribute set to **Visibility.None** and the **Swiper** component has its **displayCount** attribute set to **'auto'**, the child component does not take up space in the viewport, but does not affect the number of navigation points. If a child component has its **visibility** attribute set to **Visibility.None** or **Visibility.Hidden**, it takes up space in the viewport, but is not displayed.
+>  - If a child component has its [visibility](ts-universal-attributes-visibility.md#visibility) attribute set to **Visibility.None** and the **Swiper** component has its **displayCount** attribute set to **'auto'**, the child component does not take up space in the viewport, but does not affect the number of navigation indicators. If a child component has its **visibility** attribute set to **Visibility.None** or **Visibility.Hidden**, it takes up space in the viewport, but is not displayed.
 >
 >  - Child components of the **Swiper** component are drawn based on their level if they have the [offset](ts-universal-attributes-location.md#offset) attribute set. A child component with a higher level overwrites one with a lower level. For example, if the **Swiper** contains three child components and **offset({ x: 100 })** is set for the third child component, the third child component overwrites the first child component during horizontal loop playback. To prevent the first child component from being overwritten, set its [zIndex](ts-universal-attributes-z-order.md#zindex) attribute to a value greater than that of the third child component.
 >
@@ -46,11 +45,12 @@ Creates a **Swiper** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name       | Type                                 | Mandatory  | Description                |
 | ---------- | ------------------------------------- | ---- | -------------------- |
 | controller | [SwiperController](#swipercontroller) | No   | Controller to bind to the component to manage page switching and preload specific child components.|
+
 
 ## Attributes
 
@@ -74,7 +74,7 @@ Since API version 10, this attribute supports two-way binding through [$$](../..
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                            |
 | ------ | ------ | ---- | ------------------------------------------------ |
@@ -94,7 +94,7 @@ When [loop](#loop) is set to **false**, auto play stops when the last page is re
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                  |
 | ------ | ------- | ---- | -------------------------------------- |
@@ -116,7 +116,7 @@ If [loop](#loop) is set to **false**, automatic playback stops at the last page 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                  |
 | ------ | ------- | ---- | -------------------------------------- |
@@ -135,7 +135,7 @@ Sets the style of the navigation indicator.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -147,7 +147,7 @@ indicator(indicator: IndicatorComponentController | DotIndicator | DigitIndicato
 
 Sets the navigation indicator for the component.
 
->  **NOTE**
+>  **NOTE** 
 >
 > An externally bound navigation indicator component can be used together if it is set. The display position and size can be customized for the external navigation indicator. For details, see [Indicator](ts-swiper-components-indicator.md).
 
@@ -181,7 +181,7 @@ Sets the nested scroll mode between the **Swiper** component and its parent comp
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                       | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -203,7 +203,7 @@ Sets whether to enable looping. In the **LazyForEach** lazy loop loading mode, i
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                           |
 | ------ | ------- | ---- | ------------------------------- |
@@ -221,7 +221,7 @@ Edge sliding effect. This parameter takes effect only when [loop](#loop) is set 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                         | Mandatory| Description                                        |
 | ------ | --------------------------------------------- | ---- | -------------------------------------------- |
@@ -239,7 +239,7 @@ Sets the interval for automatic playback.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                                      |
 | ------ | ------ | ---- | ---------------------------------------------------------- |
@@ -259,7 +259,7 @@ The default curve for the animation is [interpolatingSpring](../js-apis-curve.md
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                                 |
 | ------ | ------ | ---- | ----------------------------------------------------- |
@@ -277,7 +277,7 @@ Sets the animation curve. The interpolating spring curve is used by default. For
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                       |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------- |
@@ -295,7 +295,7 @@ Sets whether vertical swiping is used.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
@@ -315,7 +315,7 @@ If the type is number, the default unit is vp. If the type is string, the pixel 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                      | Mandatory| Description                                  |
 | ------ | -------------------------- | ---- | -------------------------------------- |
@@ -327,7 +327,7 @@ cachedCount(value: number)
 
 Sets the number of child components to be preloaded. Based on the current page, the child components before and after the current displayed page are loaded. When an item before the current page is deleted, the items after it shift forward to fill the gap. For example, when **cachedCount** is set to **1**, the child components of the previous page and the next page adjacent to the current displayed page in index order are preloaded. If group-based page turning is set, that is, the **swipeByGroup** parameter of **displayCount** is set to true, preloading is performed in groups. For example, when **cachedCount** is set to **1** and **swipeByGroup** is set to **true**, the child components of the group before and the group after the current group are preloaded.
 
->  **NOTE**
+>  **NOTE** 
 >
 >  - In continuous scrolling scenarios where one **Swiper** child component is displayed per screen, setting **cachedCount** to **1** or **2** is typically sufficient. For best practices, see [Optimizing Frame Loss During Swiper Component Loading – Caching Data Items](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-swiper_high_performance_development_guide#section143504547145).
 >
@@ -339,7 +339,7 @@ Sets the number of child components to be preloaded. Based on the current page, 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                            |
 | ------ | ------ | ---- | -------------------------------- |
@@ -351,7 +351,7 @@ cachedCount(count: number, isShown: boolean)
 
 Sets the number of child components to be cached.
 
->  **NOTE**
+>  **NOTE** 
 >
 >  - This attribute takes effect only in [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) with the **virtualScroll** switch enabled. After it takes effect, child nodes beyond the cache range are released.
 >
@@ -365,7 +365,7 @@ Sets the number of child components to be cached.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                            |
 | ------ | ------ | ---- | -------------------------------- |
@@ -411,7 +411,7 @@ Sets whether to disable the component swipe switching feature. This is applicabl
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                    |
 | ------ | ------- | ---- | ---------------------------------------- |
@@ -519,7 +519,7 @@ Sets the arrow style of the navigation indicator.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name                    | Type                                            | Mandatory| Description                                                        |
 | -------------------------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -538,7 +538,7 @@ Sets the mode in which elements are displayed along the main axis. This API take
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                           | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -566,7 +566,7 @@ When using the **nextMargin**/**prevMargin** API, do not set the [constraintSize
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type | Mandatory | Description |
 | ------ | ---------------------------- | ---- | ---------------------- |
@@ -595,7 +595,7 @@ When using the **nextMargin**/**prevMargin** API, do not set the [constraintSize
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                  |
 | ------ | ---------------------------- | ---- | ---------------------- |
@@ -614,7 +614,7 @@ Sets whether the navigation dot is interactive. This is applicable to scenarios 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                       | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -668,17 +668,18 @@ indicatorStyle(value?: IndicatorStyle)
 
 Sets the style of the navigation indicator.
 
-> **NOTE**
+> **NOTE** 
 >
 > Supported from API version 8 and deprecated since API version 10. You are advised to use [indicator(value: DotIndicator | DigitIndicator | boolean)](#indicator) instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                               | Mandatory| Description        |
 | ------ | --------------------------------------------------- | ---- | ------------ |
 | value  | [IndicatorStyle](#indicatorstyledeprecated) | No  | Style of the navigation indicator.|
+
 
 ## SwiperDisplayMode
 
@@ -687,7 +688,6 @@ Enumerates the modes in which elements are displayed along the main axis.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 30%; 10%; 60%-->
-
 | Name                              |  Value|Description                                                        |
 | ---------------------------------- | -- |------------------------------------------------------------ |
 | Stretch<sup>(deprecated)</sup>     | 0 |The width of one page swiped by Swiper is the width of the Swiper component itself.<br/>**Note:** This is supported since API version 7 and deprecated since API version 10. You are advised to use STRETCH instead.<br/>**Widget capability:** This API can be used in ArkTS widgets since API version 7. |
@@ -817,7 +817,7 @@ Stops an animation.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type      | Mandatory | Description    |
 | -------- | ---------- | ---- | -------- |
@@ -1014,7 +1014,7 @@ Sets the position of the navigation indicator relative to the left edge of the *
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
@@ -1040,7 +1040,7 @@ Sets the position of the navigation indicator relative to the top edge of the **
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
@@ -1066,7 +1066,7 @@ Sets the position of the navigation indicator relative to the right edge of the 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
@@ -1092,7 +1092,7 @@ Sets the position of the navigation indicator relative to the bottom edge of the
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
@@ -1118,10 +1118,9 @@ Sets the position of the navigation indicator relative to the bottom edge of the
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 <!--Table: 15%; 25%; 10%; 50%-->
-
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
 | bottom  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)&nbsp;\|&nbsp;[Length](ts-types.md#length)| Yes   | Sets the position of the bottom of the navigation dot relative to Swiper.<br/>When top and bottom are not set, adaptive size layout is performed. Based on the size of the indicator itself and the size of Swiper, the indicator is placed at the bottom in the cross-axis direction, with the same effect as setting bottom to 0.<br/>When set to 0: the layout is calculated based on position 0.<br/>Priority: lower than the top attribute.<br/>Value range: [0, Swiper height - navigation dot area height]. If the value exceeds this range, the nearest boundary value is used.<br/>For the unit, see the description of the [Length](ts-types.md#length) type.  |
@@ -1147,7 +1146,7 @@ Sets the distance between the navigation indicator and the right edge (in [RTL](
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -1163,7 +1162,7 @@ Sets the distance between the navigation indicator and the right edge (in [RTL](
 
 end(value: LengthMetrics): T
 
-Sets the distance between the navigation point indicator and the left edge (in right-to-left scripts) or the right edge (in left-to-right scripts) of the **Swiper** component.
+Sets the distance between the navigation indicator and the left edge (in right-to-left scripts) or the right edge (in left-to-right scripts) of the **Swiper** component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -1173,7 +1172,7 @@ Sets the distance between the navigation point indicator and the left edge (in r
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory | Description                                    |
 | ------ | ---------------------------- | ---- | ---------------------------------------- |
@@ -1223,7 +1222,7 @@ Returns a **DigitIndicator** object.
 
 | Type                               | Description        |
 | ----------------------------------- | ------------ |
-| [DigitIndicator](#digitindicator10) | Numeric indicator object, used to set the numeric navigation style of the Swiper component. |
+| [DigitIndicator](#digitindicator10) | Digit-style indicator object, used to set the numeric navigation style of the Swiper component. |
 
 ## DotIndicator<sup>10+</sup>
 
@@ -1243,7 +1242,7 @@ constructor()
 
 A constructor used to create a **DotIndicator** object.
 
-> **NOTE**
+> **NOTE** 
 >
 > - When pressed, the navigation indicator is zoomed in to 1.33 times. To account for this, there is a certain distance between the navigation indicator's visible boundary and its actual boundary in the non-pressed state. The distance increases with the value of **itemWidth**, **itemHeight**, **selectedItemWidth**, and **selectedItemHeight**.
 >
@@ -1271,13 +1270,13 @@ Sets the width of a dot-style navigation indicator of the **Swiper** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [Length](ts-types.md#length) | Yes   | Width of the dot indicator of the **Swiper** component. Percentage is not supported.<br/>Default value: **6**<br/>Unit: vp<br/>Value range: (0, +∞). If the value is out of range, the default value is used. |
 
-**Return value**
+**Return value** 
 
 | Type                           | Description        |
 | ------------------------------- | ------------ |
@@ -1297,13 +1296,13 @@ Sets the height of a dot-style navigation indicator of the **Swiper** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [Length](ts-types.md#length) | Yes   | Height of the dot indicator of the **Swiper** component. Percentages are not supported.<br/>Default value: **6**<br/>Unit: vp<br/>Value range: (0, +∞). If the value is out of range, the default value is used. |
 
-**Return value**
+**Return value** 
 
 | Type                           | Description        |
 | ------------------------------- | ------------ |
@@ -1323,13 +1322,13 @@ Sets the width of the selected dot-style navigation indicator.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [Length](ts-types.md#length) | Yes   | Width of the dot indicator of the selected **Swiper** component. Percentages are not supported.<br/>Default value: **6**<br/>Unit: vp<br/>Value range: (0, +∞). If the value is out of range, the default value is used. |
 
-**Return value**
+**Return value** 
 
 | Type                           | Description        |
 | ------------------------------- | ------------ |
@@ -1349,13 +1348,13 @@ Sets the height of the selected dot-style navigation indicator.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [Length](ts-types.md#length) | Yes   | Height of the selected dot indicator of the **Swiper** component. Percentages are not supported.<br/>Default value: **6**<br/>Unit: vp<br/>Value range: (0, +∞). If the value is out of range, the default value is used. |
 
-**Return value**
+**Return value** 
 
 | Type                           | Description        |
 | ------------------------------- | ------------ |
@@ -1375,13 +1374,13 @@ Sets whether to enable the mask for the dot-style navigation indicator.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | boolean | Yes   | Whether to display the mask style of the dot navigation indicator of the Swiper component. The value **true** means to display the mask style of the dot navigation indicator of the Swiper component, and **false** means the opposite.<br/>Default value: **false** |
 
-**Return value**
+**Return value** 
 
 | Type                           | Description        |
 | ------------------------------- | ------------ |
@@ -1401,13 +1400,13 @@ Sets the color of the dot-style navigation indicator.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the dot-style navigation indicator.<br>Default value: **'#1A182431'** (light gray)|
 
-**Return value**
+**Return value** 
 
 | Type                           | Description        |
 | ------------------------------- | ------------ |
@@ -1427,13 +1426,13 @@ Sets the color of the selected dot-style navigation indicator.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the selected dot-style navigation indicator.<br>Default value: **'\#007DFF'** (blue)|
 
-**Return value**
+**Return value** 
 
 | Type                           | Description        |
 | ------------------------------- | ------------ |
@@ -1451,13 +1450,13 @@ Sets the maximum number of navigation dots in the dot-style navigation indicator
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name         | Type  | Mandatory| Description                                                        |
 | --------------- | ------ | ---- | ------------------------------------------------------------ |
 | maxDisplayCount | number | Yes | Maximum number of navigation dots displayed in the dot indicator style. When the actual number of navigation dots is greater than the maximum number, the overlong display style takes effect, as shown in [Example 5](#example-5-configuring-overflow-for-the-dot-style-indicator).<br/>Value range: [6, 9]. When the value is out of range, it is equivalent to no overlong display effect.<br/>**NOTE**<br/>1. In the overlong display scenario, interaction (including finger tap and drag and mouse operation) is not supported before API version 26.0.0. Since API version 26.0.0, finger tap and drag interaction is supported, but mouse operation interaction is not supported.<br/>2. In the overlong display scenario, the position of the selected navigation dot corresponding to the middle page is not completely fixed, and depends on the previous page turn operation sequence.<br/>3. Currently, only the scenario where **displayCount** is 1 is supported. |
 
-**Return value**
+**Return value** 
 
 | Type                           | Description        |
 | ------------------------------- | ------------ |
@@ -1477,13 +1476,13 @@ Sets the spacing between dot-style navigation indicators of the **Swiper** compo
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
 | space  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | Yes   | Spacing between dot indicators. Percentages are not supported.<br/>Default value: **10** on PC/2-in-1 devices and **8** on other devices.<br/>Unit: vp<br/>Value range: [0, +∞). If a value less than 0 is set, the default value is used. |
 
-**Return value**
+**Return value** 
 
 | Type                            | Description         |
 | ------------------------------- | ------------ |
@@ -1551,17 +1550,17 @@ Sets the font color of the digit-style navigation indicator.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color of the digit-style navigation indicator.<br>Default value: **'\#ff182431'**|
 
-**Return value**
+**Return value** 
 
 | Type                               | Description        |
 | ----------------------------------- | ------------ |
-| [DigitIndicator](#digitindicator10) | Returns the current numeric indicator, which supports chained calls to configure other numeric style attributes. |
+| [DigitIndicator](#digitindicator10) | Returns the current digit-style indicator, which supports chained calls to configure other numeric style attributes. |
 
 ### selectedFontColor
 
@@ -1577,17 +1576,17 @@ Sets the font color of the selected digit-style navigation indicator.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color of the selected digit-style navigation indicator.<br>Default value: **'\#ff182431'**|
 
-**Return value**
+**Return value** 
 
 | Type                               | Description        |
 | ----------------------------------- | ------------ |
-| [DigitIndicator](#digitindicator10) | Returns the current numeric indicator, which supports chained calls to configure other numeric style attributes. |
+| [DigitIndicator](#digitindicator10) | Returns the current digit-style indicator, which supports chained calls to configure other numeric style attributes. |
 
 ### digitFont
 
@@ -1603,17 +1602,17 @@ Sets the font style of the numeric navigation indicator of the **Swiper** compon
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
 | value  | [Font](ts-types.md#font) | Yes  | Font style of the digit-style navigation indicator.<br>Only the **size** and **weight** parameters in **Font** are adjustable. Setting **family** and **style** has no effect.<br>Default value:<br>{&nbsp;size:&nbsp;14,&nbsp;weight:&nbsp;FontWeight.Normal&nbsp;} |
 
-**Return value**
+**Return value** 
 
 | Type                               | Description        |
 | ----------------------------------- | ------------ |
-| [DigitIndicator](#digitindicator10) | Returns the current numeric indicator, which supports chained calls to configure other numeric style attributes. |
+| [DigitIndicator](#digitindicator10) | Returns the current digit-style indicator, which supports chained calls to configure other numeric style attributes. |
 
 ### selectedDigitFont
 
@@ -1629,7 +1628,7 @@ Sets the font style of the selected digit-style navigation indicator.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
@@ -1639,11 +1638,11 @@ Sets the font style of the selected digit-style navigation indicator.
 >
 > When pages are turned by group, the child nodes displayed in the digit-style navigation indicator do not count placeholder nodes.
 
-**Return value**
+**Return value** 
 
 | Type                               | Description        |
 | ----------------------------------- | ------------ |
-| [DigitIndicator](#digitindicator10) | Returns the current numeric indicator, which supports chained calls to configure other numeric style attributes. |
+| [DigitIndicator](#digitindicator10) | Returns the current digit-style indicator, which supports chained calls to configure other numeric style attributes. |
 
 ### constructor
 
@@ -1760,9 +1759,10 @@ onChange(event: Callback\<number>)
 
 Triggered when the index of the currently displayed element changes. The return value is the index of the currently displayed element.
 
+
 When the **Swiper** component is used together with **LazyForEach**, the subpage UI update cannot be triggered in the **onChange** event.
 
-> **NOTE**
+> **NOTE** 
 >
 > - If the index change is caused by an animation, the callback is triggered when the animation ends.
 > - Difference from onSelected: onSelected is triggered immediately when the selected state changes, while onChange is triggered after the animation ends.
@@ -1773,7 +1773,7 @@ When the **Swiper** component is used together with **LazyForEach**, the subpage
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
@@ -1785,7 +1785,7 @@ onAnimationStart(event: OnSwiperAnimationStartCallback)
 
 Triggered when the page transition animation starts.
 
-> **NOTE**
+> **NOTE** 
 >
 > - When this callback is invoked, the page transition animation logic is executed in the rendering thread, allowing the idle main thread to load resources required by child components. This reduces preloading time for nodes within the **cachedCount** range. For best practices, see [Optimizing Frame Loss During Swiper Component Loading – Preloading Data](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-swiper_high_performance_development_guide#section8783121513246).
 >
@@ -1797,7 +1797,7 @@ Triggered when the page transition animation starts.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
@@ -1817,7 +1817,7 @@ This event is triggered when the switching animation of the **Swiper** component
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
@@ -1839,7 +1839,7 @@ Triggered on a frame-by-frame basis when the page is turned by a swipe.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
@@ -1853,7 +1853,13 @@ Defines a custom page transition animation. During finger-following swipes and p
 
 Instructions:
 
-1) In a loop scenario, when the **prevMargin** and **nextMargin** attributes are set so that the front and rear areas of the **Swiper** viewport display the same page, this API does not take effect.<br>2) During finger-following swiping and the switch animation after the finger is released, the [SwiperContentTransitionProxy](#swipercontenttransitionproxy12) callback is triggered frame by frame for all pages in the viewport. For example, when there are two pages with indexes **0** and **1** in the viewport, the callback is triggered twice per frame, with the index values **0** and **1** respectively.<br>3) When the **swipeByGroup** parameter of the **displayCount** attribute is set to **true**, if at least one page in the same group is in the viewport, the callback is triggered for all pages in the group; if no page in the group is in the viewport, all pages in the group are removed from the render tree together.<br>4) During finger-following swiping and the switch animation after the finger is released, the default animation (page sliding) still occurs. If you want the page not to slide, you can set a negative displacement (translate attribute) along the main axis to offset the page sliding. For example, when the **displayCount** attribute value is 2 and there are two pages with indexes 0 and 1 in the viewport, during horizontal page sliding, you can set the translate attribute of page 0 on the x-axis to -position * mainAxisLength frame by frame to offset the displacement of page 0, and set the **translate** attribute of page 1 on the x-axis to -(position - 1) * mainAxisLength to offset the displacement of page 1.
+1. In a loop scenario, when the **prevMargin** and **nextMargin** attributes are set so that the front and rear areas of the **Swiper** viewport display the same page, this API does not take effect.
+
+2. During finger-following swipes and post-release transition animations, the [SwiperContentTransitionProxy](#swipercontenttransitionproxy12) callback is invoked for all pages in the viewport on a frame-by-frame basis. For example, when there are two pages whose subscripts are 0 and 1 in the viewport, two callbacks whose indexes are 0 and 1 are invoked in each frame.
+
+3. When the **swipeByGroup** parameter of the **displayCount** attribute is set to **true**, if at least one page in the same group is within the viewport, the callback is triggered for all pages in the group; if all pages in the group are outside the viewport, they are removed from the render tree together.
+
+4. During finger-following swipes and post-release transition animations, the default animation (page sliding) still occurs. If you want the pages not to slide, you can set a negative displacement along the main axis (the **translate** attribute) to offset the page sliding. For example, when the **displayCount** attribute is set to **2** and there are two pages with subscripts **0** and **1** in the viewport, during horizontal page sliding, you can set the **translate** attribute of page 0 to **-position * mainAxisLength** on the x-axis frame by frame to offset the displacement of page 0, and set the **translate** attribute of page 1 to **-(position - 1) * mainAxisLength** on the x-axis to offset the displacement of page 1.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
@@ -1877,7 +1883,11 @@ Triggered when content in the **Swiper** component scrolls.
 
 Instructions:
 
-1) In a loop scenario, when the **prevMargin** and **nextMargin** attributes are set so that the front and rear areas of the Swiper viewport display the same page, this API does not take effect.<br>2) During page sliding, the [ContentDidScrollCallback](#contentdidscrollcallback12) callback is triggered frame by frame for all pages in the viewport. For example, when there are two pages with indexes 0 and 1 in the viewport, the callback is triggered twice per frame, with the index values **0** and **1** respectively.<br>3) When the **swipeByGroup** parameter of the **displayCount** attribute is set to **true**, if at least one page in the same group is in the viewport, the callback is triggered for all pages in the group.
+1. In a loop scenario, when the **prevMargin** and **nextMargin** attributes are set so that the front and rear areas of the **Swiper** viewport display the same page, this API does not take effect.
+
+2. During page swiping, the [ContentDidScrollCallback](#contentdidscrollcallback12) callback is triggered frame by frame for all pages in the viewport. For example, when there are two pages with indexes 0 and 1 in the viewport, the callback is triggered twice per frame, with the index values 0 and 1 respectively.
+
+3. When the **swipeByGroup** parameter of the **displayCount** attribute is set to **true**, if at least one page in the same group is within the viewport, the callback is triggered for all pages in the group.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1910,7 +1920,7 @@ Triggered when the selected element changes. The index of the currently selected
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
@@ -1918,7 +1928,7 @@ Triggered when the selected element changes. The index of the currently selected
 
 > **NOTE**
 >
-> In the **onSelected** callback, do not modify the **index** attribute of the **Swiper** component, or call the **SwiperController.changeIndex()**, **SwiperController.showNext()**, or **SwiperController.showPrevious()** APIs.
+> In the **onSelected** callback, do not modify the **index** attribute of the **Swiper** component, or call the **SwiperController.changeIndex()**, **SwiperController.showNext()**, or **SwiperController.showPrevious()** APIs. 
 
 ### onUnselected<sup>18+</sup>
 
@@ -1934,7 +1944,7 @@ Triggered when the selected element changes. The index of the element that is ab
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
@@ -1942,7 +1952,7 @@ Triggered when the selected element changes. The index of the element that is ab
 
 > **NOTE**
 >
-> In the **onUnselected** callback, do not modify the **index** attribute of the **Swiper** component, nor call the **SwiperController.changeIndex()**, **SwiperController.showNext()**, or **SwiperController.showPrevious()** APIs.
+> In the **onUnselected** callback, do not modify the **index** attribute of the **Swiper** component, nor call the **SwiperController.changeIndex()**, **SwiperController.showNext()**, or **SwiperController.showPrevious()** APIs. 
 
 ### onContentWillScroll<sup>15+</sup>
 
@@ -2004,7 +2014,7 @@ Defines the callback triggered when the page transition animation starts.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name                   | Type                                                      | Mandatory| Description                                                        |
 | ------------------------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -2026,7 +2036,7 @@ Defines the callback triggered when the page transition animation ends.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name                 | Type                                                      | Mandatory| Description                                                        |
 | ----------------------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -2045,7 +2055,7 @@ Defines the callback triggered on a frame-by-frame basis when the page is turned
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type                                                      | Mandatory| Description                                                        |
 | --------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -2064,7 +2074,7 @@ Triggered during the swipe action of the **Swiper** component. For details about
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type| Mandatory| Description|
 | ------ | ---- | ---- | ---- |
@@ -2179,11 +2189,12 @@ Implements the proxy object returned during the execution of the custom page tra
 | position | number | No| No| Position of the page specified by **index** relative to the start position of the **Swiper** main axis (start position of the page corresponding to **selectedIndex**).|
 | mainAxisLength | number | No| No| Length of the page specified by **index** along the main axis, in vp.|
 
->**NOTE**
+>**NOTE** 
 >
 >- For example, when the index of the currently selected child component is 0, during a transition animation from page 0 to page 1, the callback is triggered for all pages within the viewport on every frame. When pages 0 and 1 are both in the viewport, the callback is triggered twice per frame. The first callback has **selectedIndex** as **0**, **index** as **0**, **position** as the ratio of how much page 0 has moved relative to its position before the animation started on the current frame, and **mainAxisLength** as the length of page 0 on the main axis. The second callback has **selectedIndex** as **0**, **index** as **1**, **position** as the ratio of how much page 1 has moved relative to page 0 before the animation started on the current frame, and **mainAxisLength** as the length of page 1 on the main axis.
 >
 >- If the animation curve is a spring interpolation curve, during the transition animation from page 0 to page 1, due to the position and velocity when the user lifts their finger off the screen, animation may overshoot and slide past to page 2, then bounce back to page 1. Throughout this process, a callback is triggered for pages 1 and 2 within the viewport on every frame.
+
 
 ### finishTransition<sup>12+</sup>
 
@@ -2199,11 +2210,12 @@ Notifies the **Swiper** component that the custom animation has finished playing
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+
 ## IndicatorStyle<sup>(deprecated)</sup>
 
 Defines the style of the navigation indicator.
 
-> **NOTE**
+> **NOTE** 
 >
 > This API is supported since API version 8 and deprecated since API version 10. You are advised to use [indicator](#indicator10) instead.
 
@@ -2446,7 +2458,6 @@ struct SwiperExample {
   }
 }
 ```
-
 ![swiper](figures/swiper-digit.gif)
 
 ### Example 3: Setting the Page Turning by Group
@@ -2536,7 +2547,6 @@ struct SwiperExample {
   }
 }
 ```
-
 ![swiper](figures/swiper-swipe-by-group.gif)
 
 ### Example 4: Customizing the Page Transition Animation
@@ -2678,7 +2688,6 @@ struct SwiperCustomAnimationExample {
   }
 }
 ```
-
 ![swiper](figures/swiper-custom-animation.gif)
 
 ### Example 5: Configuring Overflow for the Dot-Style Indicator
@@ -2956,7 +2965,6 @@ struct TabsSwiperExample {
   }
 }
 ```
-
 ![swiper](figures/tabs_swiper.gif)
 
 ### Example 8: Intercepting the Scrolling Behavior
@@ -3045,7 +3053,6 @@ struct SwiperExample {
   }
 }
 ```
-
 ![swiper](figures/oncontentwillscroll.gif)
 
 ### Example 9: Using the space and bottom APIs on the Navigation Indicator
@@ -3149,7 +3156,6 @@ struct SwiperExample {
   }
 }
 ```
-
 ![swiper](figures/indicator_space.gif)
 
 ### Example 10: Displaying the Number of Elements Displayed in the Swiper Component Based on Breakpoints
@@ -3281,7 +3287,6 @@ struct SwiperFakeDragExample {
   }
 }
 ```
-
 ![swiper](figures/fakedrag.gif)
 
 ### Example 12: Configuring the Navigation Dot Icon of the Swiper Component
@@ -3328,5 +3333,4 @@ struct SwiperIndicatorIconExample {
   }
 }
 ```
-
 ![swiper](figures/indicatorIcon.jpg)

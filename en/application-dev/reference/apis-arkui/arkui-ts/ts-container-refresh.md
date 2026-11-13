@@ -6,7 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=da78d1d0fef30c934e6eea5cb9ebe0033208326a translatedAt=2026-08-19T07:02:32.837Z pushedAt=2026-08-20T10:45:03.040Z -->
+<!-- md-trans-meta sourceCommit=a20a2ba74fc664bd80299c5fd56e7862f24b1659 translatedAt=2026-11-03T02:10:07.430Z pushedAt=2026-11-13T01:05:59.958Z nl=1 -->
 
 **Refresh** is a container component that provides the pull-to-refresh interaction. It is suitable for scenarios where users need to trigger data updates, such as list data refresh and page content update. It supports custom refresh area display content and text, setting the pull-down offset and drag coefficient, controlling the maximum pull-down distance, and more. It can flexibly adapt to the pull-to-refresh requirements of different apps, delivering a consistent and smooth refresh experience.
 
@@ -51,7 +51,6 @@ Defines the options of the **Refresh** component.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
-
 | Name        | Type                                     | Read-Only  | Optional| Description                                    |
 | ---------- | ---------------------------------------- | ---- | -- | ---------------------------------------- |
 | refreshing | boolean                                  | No    | No | Whether the component is currently in the refresh state. The value **true** indicates that the component is refreshing, and **false** indicates that it is not refreshing.<br/>Default value: **false**<br/>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md). <br/>**Atomic service API:** This API can be used in atomic services since API version 11.|
@@ -62,9 +61,11 @@ Defines the options of the **Refresh** component.
 | refreshingContent<sup>12+</sup>    | [ComponentContent](../js-apis-arkui-ComponentContent.md) | No    | Yes | Custom refresh area display content.<br/>**NOTE**<br/>When this parameter is set together with the **builder** parameter, the **builder** parameter does not take effect. When this parameter is used to customize the refresh area display content, **promptText** is not displayed.<br/>If the custom component has a fixed height, it is displayed below the refresh area at the fixed height. If the custom component has no height set, its height adapts to the refresh area height and changes to **0** as the refresh area height changes. You are advised to set a minimum height constraint for the custom component to prevent its height from being smaller than expected. For details, see [Example 4](#example-4-customizing-the-refreshing-area-content-with-refreshingcontent). <br/>**Atomic service API:** This API can be used in atomic services since API version 12.<br/>**Model restriction:** This API can be used only in the stage model.|
 
 >  **NOTE**
->  - When neither **builder** nor **refreshingContent** is set, the pull-down displacement effect is implemented by updating the [translate](ts-universal-attributes-transformation.md#translate) attribute of the child component. During the pull-down displacement, the [onAreaChange](ts-universal-component-area-change-event.md#onareachange) event of the child component is not triggered. The [translate](ts-universal-attributes-transformation.md#translate) attribute set on the child component does not take effect.
->  - When **builder** or **refreshingContent** is set, the pull-down displacement effect is implemented by updating the position of the child component relative to the **Refresh** component. During the pull-down displacement, the [onAreaChange](ts-universal-component-area-change-event.md#onareachange) event of the child component can be triggered. When the [position](ts-universal-attributes-location.md#position) attribute is set on the child component, the position of the child component relative to the **Refresh** component is fixed, causing the child component not to follow the pull-down displacement.
->  - When the custom component set through the **builder** parameter has no width or height specified, its size adapts to the child component. When the width is specified but the height is not, its height adapts to the pull-down distance. If the custom component set through the **refreshingContent** parameter has no height specified, its height also adapts to the pull-down distance. When the height of the custom component adapts to the pull-down distance, the height of the component increases as the pull-down distance increases. When the height of the custom component is set to a fixed value or adapts to the maximum height, the spacing between the custom component and the upper boundary of the **Refresh** component increases as the pull-down distance increases.
+>  - When neither **builder** nor **refreshingContent** is set, the pull-down displacement effect is implemented by updating the [translate](ts-universal-attributes-transformation.md#translate) attribute of the child component. During the pull-down displacement, the [onAreaChange](ts-universal-component-area-change-event.md#onareachange) event of the child component will not be triggered. The [translate](ts-universal-attributes-transformation.md#translate) attribute set on the child component will not take effect.
+>  - When **builder** or **refreshingContent** is set, the pull-down displacement effect is implemented by updating the position of the child component relative to the **Refresh** component. During the pull-down displacement, the [onAreaChange](ts-universal-component-area-change-event.md#onareachange) event of the child component can be triggered. When the [position](ts-universal-attributes-location.md#position) attribute is set on the child component, the position of the child component relative to the **Refresh** component is fixed, so that the child component will not follow the pull-down gesture.
+>  - When the custom component set through the **builder** parameter has neither width nor height specified, its size adapts to the child component. When its width is specified but its height is not, its height adapts to the pull-down distance. If the custom component set through the **refreshingContent** parameter has no height specified, its height also adapts to the pull-down distance. When the height of the custom component adapts to the pull-down distance, the height of the component increases as the pull-down distance increases. When the height of the custom component is set to a fixed value or adapts to the maximum height, the spacing between the custom component and the upper boundary of the **Refresh** component also increases as the pull-down distance increases.
+>  - After the custom refresh content is set through **builder** or **refreshingContent**, when the user quickly swipes a child component such as **List** and lifts their finger, the list may continue to slide and exceed the top boundary, driving the **Refresh** component to pull down. If the refresh has ended, the previous completion prompt may be displayed again. In this case, the **Refresh** component may still be in the Done state. When the state does not change, the [onStateChange](#onstatechange) callback will not be triggered.
+>  - When the completion prompt no longer needs to be displayed, set the [visibility](ts-universal-attributes-visibility.md#visibility) of the custom refresh area component to [Visibility.Hidden](ts-appendix-enums.md#visibility) to hide the content while retaining the original layout space. When pulling down to refresh again, restore it to **Visibility.Visible**. For details, refer to [Example 11](#example-11-controlling-the-visibility-of-custom-refresh-area-content-through-builder) and [Example 12](#example-12-controlling-the-visibility-of-custom-refresh-area-content-through-refreshingcontent).
 
 ## Attributes
 
@@ -82,7 +83,7 @@ Sets the minimum pull-down offset required to trigger a refresh. If the distance
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
@@ -104,7 +105,7 @@ If this API and [promptText](#refreshoptions) are not set, the default offset is
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
@@ -122,7 +123,7 @@ Sets whether to initiate a refresh when the pull-down distance exceeds the value
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
@@ -140,7 +141,7 @@ Sets whether to cancel refresh when swiping up.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                | Mandatory| Description                                                        |
 | ------- | -------------------- | ---- | ------------------------------------------------------------ |
@@ -218,7 +219,7 @@ Called when the refresh status changes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                   | Mandatory| Description      |
 | ------ | --------------------------------------- | ---- | ---------- |
@@ -256,11 +257,12 @@ Called when the pull-down distance changes.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                   | Mandatory| Description      |
 | ------ | --------------------------------------- | ---- | ---------- |
 | callback  | Callback\<number> | Yes  | Callback used to listen for the pull-down distance changes. It is triggered when the pull-down distance changes and returns the current pull-down distance.<br>Unit: vp|
+
 
 ## RefreshStatus
 
@@ -278,7 +280,8 @@ Enumerates the states of a refresh operation.
 | Refresh  | 3 | The pull-down ends, and the component rebounds to the minimum length required to trigger the refresh and enters the refreshing state.|
 | Done     | 4 | The refresh is complete, and the component returns to the initial state (at the top).    |
 
-## Example
+
+## Examples
 
 ### Example 1: Using the Default Refreshing Style
 
@@ -571,7 +574,6 @@ struct RefreshExample {
   }
 }
 ```
-
 ![en-us_image_refresh_refreshingcontent](figures/image-refresh-refreshingcontent.gif)
 
 ### Example 5: Implementing the Maximum Pull-down Distance
@@ -1056,3 +1058,298 @@ struct RefreshExample {
 ```
 
 ![refresh_pullUpToCancelRefresh](figures/refresh_pullUpToCancelRefresh.gif)
+
+### Example 11: Controlling the Visibility of Custom Refresh Area Content Through builder
+
+This example uses [builder](#refreshoptions) to customize the refresh area, updates the prompt text in the [onStateChange](#onstatechange) callback, and simulates data retrieval and appending to the List in the [onRefreshing](#onrefreshing) callback.
+
+At refresh end, "Refresh completed" is displayed, and a two-second timer is started. When the timer fires, the **visibility** of the custom refresh content is set to **Visibility.Hidden** to hide the completion prompt. When the user pulls down to refresh again, the previous hide timer is canceled and the display is restored.
+
+The two seconds in the example can be adjusted based on actual requirements. Within these two seconds, the completion prompt has not been hidden yet. If the list continues to slide after the user releases and exceeds the top boundary, it may still drag the Refresh downward, causing the completion prompt to appear again.
+
+Since API version 12, the [refreshOffset](#refreshoffset12) API is added to set the pull-down distance for triggering refresh.
+
+```ts
+// xxx.ets
+@Component
+struct RefreshHeader {
+  @Prop status: RefreshStatus = RefreshStatus.Inactive;
+  @Prop headerVisibility: Visibility = Visibility.Hidden;
+
+  build() {
+    Stack() {
+      Row() {
+        if (this.status !== RefreshStatus.Inactive && this.status !== RefreshStatus.Done) {
+          LoadingProgress().height(32)
+          Text('Refreshing').fontSize(16).margin({ left: 20 })
+        } else if (this.status === RefreshStatus.Done) {
+          Text('Refresh completed').fontSize(16)
+        }
+      }
+      .alignItems(VerticalAlign.Center)
+    }
+    .align(Alignment.Center)
+    .clip(true)
+    .constraintSize({ minHeight: 32 })
+    .width('100%')
+    .visibility(this.headerVisibility)
+  }
+}
+
+@Entry
+@Component
+struct RefreshBuilderDemo {
+  @State private refreshing: boolean = false;
+  @State private items: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  @State private refreshState: RefreshStatus = RefreshStatus.Inactive;
+  @State private headerVisibility: Visibility = Visibility.Hidden;
+  private refreshTimer: number = -1;
+  private hideHeaderTimer: number = -1;
+
+  @Builder
+  refreshHeader() {
+    RefreshHeader({ status: this.refreshState, headerVisibility: this.headerVisibility })
+  }
+
+  aboutToDisappear(): void {
+    this.clearHideHeaderTimer();
+    if (this.refreshTimer !== -1) {
+      clearTimeout(this.refreshTimer);
+      this.refreshTimer = -1;
+    }
+  }
+
+  private clearHideHeaderTimer(): void {
+    if (this.hideHeaderTimer !== -1) {
+      clearTimeout(this.hideHeaderTimer);
+      this.hideHeaderTimer = -1;
+    }
+  }
+
+  private handleStateChange(state: RefreshStatus): void {
+    // When a new pull-down starts, cancel the timer that hides the previous completion state.
+    this.clearHideHeaderTimer();
+    this.refreshState = state;
+    this.headerVisibility = state === RefreshStatus.Inactive ? Visibility.Hidden : Visibility.Visible;
+    if (state === RefreshStatus.Done) {
+      // Hide the custom refresh area content two seconds after refresh completes.
+      this.hideHeaderTimer = setTimeout(() => {
+        this.hideHeaderTimer = -1;
+        if (this.refreshState === RefreshStatus.Done) {
+          this.headerVisibility = Visibility.Hidden;
+        }
+      }, 2000);
+    }
+  }
+
+  build() {
+    Column() {
+      Refresh({ refreshing: $$this.refreshing, builder: this.refreshHeader() }) {
+        List() {
+          ForEach(this.items, (item: number) => {
+            ListItem() {
+              Text('' + item)
+                .width('70%')
+                .height(80)
+                .fontSize(16)
+                .margin(10)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
+            }
+          }, (item: number) => item.toString())
+        }
+        .width('100%')
+        .height('100%')
+        .alignListItem(ListItemAlign.Center)
+        .scrollBar(BarState.Off)
+      }
+      .backgroundColor(0x89CFF0)
+      .pullToRefresh(true)
+      .refreshOffset(64)
+      .onStateChange((state: RefreshStatus) => {
+        this.handleStateChange(state);
+        console.info(`[builder] state=${state}`);
+      })
+      .onRefreshing(() => {
+        this.refreshTimer = setTimeout(() => {
+          this.refreshTimer = -1;
+          const start: number = this.items.length + 1;
+          const added: number[] = [];
+          for (let i: number = 0; i < 5; i++) {
+            added.push(start + i);
+          }
+          this.items = this.items.concat(added);
+          this.refreshing = false;
+        }, 1500);
+      })
+    }
+  }
+}
+```
+
+The following figure shows the refresh process. After the completion prompt is hidden, quickly slide the **List** back to the top. Even if the list exceeds the top boundary and drags the **Refresh** downward, the completion prompt will not be displayed again.
+
+<!--Del--> <!--DelEnd-->
+
+### Example 12: Controlling the Visibility of Custom Refresh Area Content Through refreshingContent
+
+This example uses the [refreshingContent](#refreshoptions) parameter to set [ComponentContent](../js-apis-arkui-ComponentContent.md) and build a custom refresh area. The prompt text is updated in the [onStateChange](#onstatechange) callback, and data retrieval is simulated and the data is appended to the **List** in the [onRefreshing](#onrefreshing) callback.
+
+When the refresh ends, "Refresh completed" is displayed, and a two-second timer is started. After the timer is triggered, the **visibility** of the custom refresh content is set to **Visibility.Hidden** to hide the completion prompt. When the user pulls down to refresh again, the previous hiding timer is canceled and the display is restored. After the state or visibility changes, the [update](../js-apis-arkui-ComponentContent.md#update) method of ComponentContent must be called to update the display content.
+
+The two seconds in this example can be adjusted based on actual requirements. Within these two seconds, the completion prompt has not been hidden yet. If the list continues to slide after the user releases it and exceeds the top boundary, it may still drive the **Refresh** to pull down, causing the completion prompt to appear again.
+
+Since API version 12, the [refreshingContent](#refreshoptions) parameter is added, which supports customizing the refresh area content through **ComponentContent**.
+
+```ts
+// xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+
+@Component
+struct RefreshHeader {
+  @Prop status: RefreshStatus = RefreshStatus.Inactive;
+  @Prop headerVisibility: Visibility = Visibility.Hidden;
+
+  build() {
+    Stack() {
+      Row() {
+        if (this.status !== RefreshStatus.Inactive && this.status !== RefreshStatus.Done) {
+          LoadingProgress().height(32)
+          Text('Refreshing').fontSize(16).margin({ left: 20 })
+        } else if (this.status === RefreshStatus.Done) {
+          Text('Refresh completed').fontSize(16)
+        }
+      }
+      .alignItems(VerticalAlign.Center)
+    }
+    .align(Alignment.Center)
+    .clip(true)
+    .constraintSize({ minHeight: 32 })
+    .width('100%')
+    .visibility(this.headerVisibility)
+  }
+}
+
+class RefreshHeaderParams {
+  status: RefreshStatus;
+  headerVisibility: Visibility;
+
+  constructor(status: RefreshStatus, headerVisibility: Visibility) {
+    this.status = status;
+    this.headerVisibility = headerVisibility;
+  }
+}
+
+@Builder
+function buildRefreshHeader(params: RefreshHeaderParams) {
+  RefreshHeader({ status: params.status, headerVisibility: params.headerVisibility })
+}
+
+@Entry
+@Component
+struct RefreshContentDemo {
+  @State private refreshing: boolean = false;
+  @State private items: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  private refreshState: RefreshStatus = RefreshStatus.Inactive;
+  private headerVisibility: Visibility = Visibility.Hidden;
+  private customContent?: ComponentContent<RefreshHeaderParams> = undefined;
+  private refreshTimer: number = -1;
+  private hideHeaderTimer: number = -1;
+
+  aboutToAppear(): void {
+    this.customContent = new ComponentContent<RefreshHeaderParams>(
+      this.getUIContext(), wrapBuilder(buildRefreshHeader),
+      new RefreshHeaderParams(this.refreshState, this.headerVisibility)
+    );
+  }
+
+  aboutToDisappear(): void {
+    this.clearHideHeaderTimer();
+    if (this.refreshTimer !== -1) {
+      clearTimeout(this.refreshTimer);
+      this.refreshTimer = -1;
+    }
+    this.customContent?.dispose();
+    this.customContent = undefined;
+  }
+
+  private clearHideHeaderTimer(): void {
+    if (this.hideHeaderTimer !== -1) {
+      clearTimeout(this.hideHeaderTimer);
+      this.hideHeaderTimer = -1;
+    }
+  }
+
+  private handleStateChange(state: RefreshStatus): void {
+    // When a new pull-down starts, cancel the timer that hides the previous completion state.
+    this.clearHideHeaderTimer();
+    this.refreshState = state;
+    this.headerVisibility = state === RefreshStatus.Inactive ? Visibility.Hidden : Visibility.Visible;
+    this.updateHeaderContent();
+    if (state === RefreshStatus.Done) {
+      // Hide the custom refresh area content two seconds after refresh completes.
+      this.hideHeaderTimer = setTimeout(() => {
+        this.hideHeaderTimer = -1;
+        if (this.refreshState === RefreshStatus.Done) {
+          this.headerVisibility = Visibility.Hidden;
+          // Synchronize the visibility change to ComponentContent.
+          this.updateHeaderContent();
+        }
+      }, 2000);
+    }
+  }
+
+  private updateHeaderContent(): void {
+    this.customContent?.update(new RefreshHeaderParams(this.refreshState, this.headerVisibility));
+  }
+
+  build() {
+    Column() {
+      Refresh({ refreshing: $$this.refreshing, refreshingContent: this.customContent }) {
+        List() {
+          ForEach(this.items, (item: number) => {
+            ListItem() {
+              Text('' + item)
+                .width('70%')
+                .height(80)
+                .fontSize(16)
+                .margin(10)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
+            }
+          }, (item: number) => item.toString())
+        }
+        .width('100%')
+        .height('100%')
+        .alignListItem(ListItemAlign.Center)
+        .scrollBar(BarState.Off)
+      }
+      .backgroundColor(0x89CFF0)
+      .pullToRefresh(true)
+      .refreshOffset(64)
+      .onStateChange((state: RefreshStatus) => {
+        this.handleStateChange(state);
+        console.info(`[ComponentContent] state=${state}`);
+      })
+      .onRefreshing(() => {
+        this.refreshTimer = setTimeout(() => {
+          this.refreshTimer = -1;
+          const start: number = this.items.length + 1;
+          const added: number[] = [];
+          for (let i: number = 0; i < 5; i++) {
+            added.push(start + i);
+          }
+          this.items = this.items.concat(added);
+          this.refreshing = false;
+        }, 1500);
+      })
+    }
+  }
+}
+```
+
+The following figure shows the refresh process. After the completion prompt is hidden, quickly slide the **List** back to the top. Even if the list exceeds the top boundary and drives the **Refresh** to pull down, the completion prompt will not be displayed again.
+
+<!--Del--> <!--DelEnd-->

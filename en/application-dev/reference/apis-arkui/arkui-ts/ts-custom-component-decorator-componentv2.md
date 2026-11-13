@@ -6,6 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=7860d2a947413b5f8775dab763bab3b6b2651151 translatedAt=2026-11-03T02:27:01.343Z pushedAt=2026-11-13T01:05:59.982Z nl=1 -->
 
 **@ComponentV2** is primarily used with state management V2. Compared with [\@Component](../../../ui/state-management/arkts-create-custom-components.md#component), **@ComponentV2** supports deep observation and deep listening of objects. The decorator is highly easy to use and extensible, and is suitable for scenarios requiring deep observation of nested object states. Unless otherwise specified, custom components decorated with **@ComponentV2** behave the same as those decorated with **@Component**.
 
@@ -21,11 +22,13 @@ See the development guide: [\@ComponentV2](../../../ui/state-management/arkts-cr
 
 const ComponentV2: ClassDecorator & ((options: ComponentOptions) => ClassDecorator)
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 12.
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 

@@ -1,12 +1,11 @@
 # CounterV2
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @song-song-song-->
-<!--Designer: @fenglinbailu-->
-<!--Tester: @weixin_45530366-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e3759c69d65e24a59d611c9befe1266734e11881 translatedAt=2026-07-27T11:05:57.539Z pushedAt=2026-07-28T03:23:51.374Z -->
+<!-- md-trans-meta sourceCommit=34fe1d6e01c790d69a02ff62c7235fcb9e5f3dd8 translatedAt=2026-11-03T01:27:07.769Z pushedAt=2026-11-13T01:05:59.855Z nl=1 -->
 
 The **CounterV2** component enables precise numeric value adjustment. It provides four types: list, compact, inline number, and inline date, which are applicable to scenarios such as shopping cart quantity adjustment and date selection.
 
@@ -14,9 +13,9 @@ This component is implemented based on [state management V2](../../../ui/state-m
 
 > **NOTE**
 >
-> - If [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) are set for **CounterV2**, the compilation toolchain generates an additional node \_\_Common\_\_ and attaches the universal attributes or universal events to \_\_Common\_\_, rather than directly applying them to **CounterV2** itself. This may cause the universal attributes or universal events you set to not take effect or behave unexpectedly. Therefore, setting universal attributes and universal events for **CounterV2** is not recommended.
+> - This module's APIs can only be used in the stage model.
 >
-> - This component API can only be used in the stage model.
+> - If [universal attributes](ts-component-general-attributes.md) or [universal events](ts-component-general-events.md) are set for **CounterV2**, the compilation toolchain will generate an additional node **\_\_Common\_\_** and mount the universal attributes or universal events on **\_\_Common\_\_**, rather than directly applying them to **CounterV2** itself. This may cause the set universal attributes or universal events to not take effect or behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events on **CounterV2**.
 
 **Since:** 26.0.0
 
@@ -283,14 +282,6 @@ This API inherits from [CounterV2CommonOptions](#counterv2commonoptions) and con
 | month        | number                              | No  | Yes  | Initial month of the inline date type.<br>Default value: **1**<br>Value range: [1, 12]<br>If the value is out of the range, the default value is used.<br>If the value is **undefined**, the default value is used. |
 | day          | number                              | No  | Yes  | Initial day of the inline date type.<br>Default value: **1**<br>Value range: [1, 31]<br>It must be a valid date. For example, if **month** is **2**, passing **30** for **day** is treated as an invalid value and the default value will be used.<br>If the value is out of the range, the default value is used.<br>If the value is **undefined**, the default value is used. |
 | onDateChange | [OnDateCounterV2ChangeCallback](#ondatecounterv2changecallback) | No  | Yes  | Callback invoked when the date changes. The parameter **date** indicates the currently displayed date value.<br>Use scenario: Pass in this callback when you need to perform custom operations (such as updating associated data, triggering business logic, and logging) when the date changes.<br>Default value: **undefined**, indicating that this callback is not triggered.<br>If the value is **undefined**, the default value is used. |
-
-## Attributes
-
-[Universal attributes](ts-component-general-attributes.md) are not supported.
-
-## Events
-
-[Universal events](ts-component-general-events.md) are not supported.
 
 ## Examples
 

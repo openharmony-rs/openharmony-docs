@@ -1,11 +1,11 @@
 # Gesture Handler
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-08-28T01:44:21.498Z pushedAt=2026-09-01T02:40:13.259Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T02:44:08.631Z pushedAt=2026-11-13T01:06:00.010Z nl=1 -->
 
 Used to set the gestures bound to a component. It supports gesture handlers such as tap, long press, pan, swipe, pinch, rotation, and gesture group, and is suitable for scenarios where gestures need to be dynamically added, removed, or configured for a component. It helps developers manage component gesture interactions in a unified manner. You can use the [UIGestureEvent](./ts-uigestureevent.md#uigestureevent) object to call its APIs to add or remove gestures.
 
@@ -61,7 +61,7 @@ Sets the event input sources supported by the gesture handler. This is suitable 
 
 | Type| Description|
 | -------- | -------- |
-| T | Current component.|
+| T | Current gesture handler object. |
 
 ## BaseHandlerOptions<sup>15+</sup>
 
@@ -740,7 +740,7 @@ Provides the parameters of the rotation gesture handler. Inherits from [BaseHand
 
 | Name        | Type                               |Read-Only  |Optional| Description                |
 | ------------ | ---------------------------------|----- | ---- | -------------------- |
-| fingers | number | No | Yes | Minimum number of fingers required to trigger rotation. The minimum is 2 and the maximum is 5.<br>Default value: **2**<br>Value range: [2, 5], inclusive. If the value is set to less than 2 or greater than 5, the default value **2** is used.<br>When **isFingerCountLimited** is not enabled, the number of fingers touching the screen can be greater than the value of **fingers** when the gesture is triggered, but only the first two fingers that touch the screen participate in gesture calculation. When **isFingerCountLimited** is enabled, the number of fingers touching the screen must be equal to the value of **fingers**; otherwise, the gesture will not be recognized. |
+| fingers | number | No | Yes | Minimum number of fingers that trigger a rotation. The value ranges from 2 to 5.<br>Default value: **2**<br>Value range: [2, 5]<br>If the value is less than 2 or greater than 5, the default value **2** is used.<br>If **isFingerCountLimited** is not enabled, the number of fingers that trigger the gesture can be greater than the value of **fingers**, but only the first **fingers** fingers that touch the screen participate in gesture calculation. If **isFingerCountLimited** is enabled, the number of fingers touching the screen must be equal to the value of **fingers**; otherwise, the gesture will not be recognized. |
 | angle | number | No | Yes | Minimum angle change, in degrees, required to trigger the rotation gesture. To recognize slight rotations more sensitively, set a smaller positive angle. To reduce accidental touches or respond only to obvious rotations, set a larger angle. It is recommended to use the default value first and then adjust it based on the rotation interaction precision requirements. If this parameter is not set, the default value 1 is used.<br>Default value: **1**<br>Value range: (0, 360]<br>**NOTE**<br>If the angle change is less than or equal to 0 or greater than 360, the default value is used. |
 | isFingerCountLimited<sup>15+</sup> | boolean | No | Yes | Whether to check the number of fingers touching the screen. The value **true** indicates to check the number of fingers touching the screen, and **false** indicates not to check. If the number of fingers touching the screen is not equal to the minimum number of fingers set for triggering rotation (that is, the **fingers** parameter), the gesture will not be recognized. The gesture can be recognized successfully only when the number of fingers touching the screen is equal to the minimum number of fingers set for triggering rotation and the rotation angle change reaches the **angle** threshold. If the rotation angle change does not reach the **angle** threshold, the gesture will not be recognized successfully (only the first two fingers that touch the screen participate in gesture calculation; if one of them is lifted, gesture recognition fails).<br>For a gesture that has been recognized successfully, subsequently changing the number of fingers touching the screen does not trigger the [onActionUpdate](ts-basic-gestures-rotationgesture.md#onactionupdate) event, but can trigger the [onActionEnd](ts-basic-gestures-rotationgesture.md#onactionend) event.<br>Default value: false<br>**Atomic service API:** This API can be used in atomic services since API version 15. |
 

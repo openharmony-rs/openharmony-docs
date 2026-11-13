@@ -1,11 +1,11 @@
 # Common Event Callbacks
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=828befee530895124aaf1637c9402999a598c883 translatedAt=2026-09-01T11:59:03.124Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:11:52.355Z pushedAt=2026-11-13T01:06:00.065Z nl=1 -->
 
 >**NOTE**
 >
@@ -133,7 +133,7 @@ Sets the callback for the [onBlur](./ts-universal-focus-event.md#onblur) blur ev
 
 setOnHover(callback: HoverCallback \| undefined): void
 
-Sets the callback for the [onHover](./ts-universal-events-hover.md#onhover) floating event. When callback is undefined, resets the callback for the floating event.
+Sets the callback for the [onHover](./ts-universal-events-hover.md#onhover) hover event. When callback is undefined, resets the callback for the hover event.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -143,7 +143,7 @@ Sets the callback for the [onHover](./ts-universal-events-hover.md#onhover) floa
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback | [HoverCallback](#hovercallback)  \| undefined | Yes | Callback for the floating event, with the signature (isHover: boolean, event: HoverEvent) => void, used to receive the floating state and event object when the component enters or exits the floating state. |
+| callback | [HoverCallback](#hovercallback)  \| undefined | Yes | Callback for the hover event, with the signature (isHover: boolean, event: HoverEvent) => void, used to receive the floating state and event object when the component enters or exits the floating state. |
 
 ### setOnMouse
 
@@ -215,4 +215,4 @@ Callback type for the hover event.
 | Name           | Type           | Mandatory        | Description                                      |
 | ------------- | ---------------------- |---------------------| --------------------------------------- |
 | isHover | boolean | Yes | Whether the component is in the floating state. The value **true** indicates that it is in the floating state, and **false** indicates the opposite. |
-| event | [HoverEvent](./ts-universal-events-hover.md#hoverevent10) | Yes | Mouse or stylus floating event object, which provides event information such as the floating position coordinates. |
+| event | [HoverEvent](./ts-universal-events-hover.md#hoverevent10) | Yes | Mouse or stylus hover event object, which provides event information such as the floating position coordinates. |

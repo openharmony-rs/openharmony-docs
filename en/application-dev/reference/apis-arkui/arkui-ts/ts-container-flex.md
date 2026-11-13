@@ -1,12 +1,11 @@
 # Flex
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-08-21T02:23:08.218Z pushedAt=2026-08-21T07:32:26.152Z -->
+<!-- md-trans-meta sourceCommit=a03d32af9e2912ff154772319bc8120aa7fff612 translatedAt=2026-11-03T01:59:03.430Z pushedAt=2026-11-13T01:05:59.936Z nl=1 -->
 
 The **Flex** component is a container that uses the flexible box model for layout. It provides an efficient mechanism for arranging and aligning child elements, as well as distributing available space among them.
 
@@ -19,6 +18,7 @@ For details, see [Flex Layout](../../../ui/arkts-layout-development-flex-layout.
 > - When the main axis length of the **Flex** component is not set, it fills the parent container by default. If a child component with [position](ts-universal-attributes-location.md#position) set is included, the **Flex** component will not fill the parent container. When the main axis length of the [Column](ts-container-column.md) or [Row](ts-container-row.md) component is not set, it follows the child node size by default.
 > - When the **Flex**, **Column**, or **Row** component has no child nodes and no width or height is set, the default width and height are **-1**.
 > - The main axis length can be set to **auto** to make the **Flex** component adapt to the child component layout. During adaptation, the **Flex** length is constrained by the [constraintSize](ts-universal-attributes-size.md#constraintsize) attribute and the maximum and minimum lengths passed by the parent container, with the **constraintSize** attribute taking higher priority.
+
 
 ## Child Components
 
@@ -55,7 +55,7 @@ Describes the layout and alignment of child components within the **Flex** compo
 | justifyContent | [FlexAlign](ts-appendix-enums.md#flexalign) | No | Yes     | Alignment of all child components on the main axis of the **Flex** container. After this attribute is set, child components are distributed and arranged along the main axis according to the specified alignment.<br>Default value: **FlexAlign.Start**<br>Invalid values are handled as the default value.<br>The options are as follows:<br>- **Start**: Aligned with the start edge.<br>- **Center**: Center alignment.<br>- **End**: Aligned with the end edge.<br>- **SpaceBetween**: Aligned with both edges, with equal spacing between child components.<br>- **SpaceAround**: Equal spacing on both sides of each child component.<br>- **SpaceEvenly**: Equal spacing between child components and at both ends.<br>**Note:** When **justifyContent** is set to **SpaceBetween**, **SpaceAround**, or **SpaceEvenly**, the **space** parameter does not take effect.<br>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11.                  |
 | alignItems     | [ItemAlign](ts-appendix-enums.md#itemalign) | No | Yes     | Alignment of all child components on the cross axis of the **Flex** container. After this attribute is set, child components are positioned along the cross axis according to the specified alignment.<br>Default value: **ItemAlign.Start**<br>Invalid values are handled as the default value.<br>The options are as follows:<br>- **Auto**: Uses the alignment of the parent container.<br>- **Start**: Aligned with the start edge.<br>- **Center**: Center alignment.<br>- **End**: Aligned with the end edge.<br>- **Stretch**: Stretched to fill the container.<br>- **Baseline**: Aligned with the baseline.<br>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11.               |
 | alignContent   | [FlexAlign](ts-appendix-enums.md#flexalign) | No | Yes     | Alignment of multiple lines of content when there is extra space on the cross axis. This attribute takes effect only when wrap is set to **Wrap** or **WrapReverse**.<br>Default value: **FlexAlign.Start**<br>Invalid values are handled as the default value.<br>The options are as follows:<br>- **Start**: Aligned with the start edge.<br>- **Center**: Center alignment.<br>- **End**: Aligned with the end edge.<br>- **SpaceBetween**: Aligned with both edges, with equal spacing between lines.<br>- **SpaceAround**: Equal spacing on both sides of each line.<br>- **SpaceEvenly**: Equal spacing between lines and at both ends.<br>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11.  |
-| space<sup>12+</sup>          | [FlexSpaceOptions<sup>12+</sup>](#flexspaceoptions12) | No | Yes   | Spacing between child components in the **Flex** container on the main axis and cross axis. It contains two attributes: **main** and **cross**. Pass this parameter when you need to adjust the spacing between child components. If not passed, there is no spacing between child components.<br>Default value: **{main: LengthMetrics.px(0), cross: LengthMetrics.px(0)}**<br>Invalid values are handled as the default value.<br>When **space.main** or **space.cross** is a negative value, or when **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**, the **space** parameter does not take effect. The **main** attribute takes effect in both single-line and multi-line layouts, while the **cross** attribute takes effect only when **wrap** is set to **Wrap** or **WrapReverse** (multi-line layout).<br>**Atomic service API:** This API can be used in atomic services since API version 12.<br>**Model restriction:** This API can be used only in the stage model.|
+| space<sup>12+</sup>          | [FlexSpaceOptions<sup>12+</sup>](#flexspaceoptions12) | No | Yes   | Sets the spacing between child components of the Flex container on the main axis and cross axis, including the main and cross attributes. Pass this parameter when the spacing between child components needs to be adjusted. If it is not passed, there is no spacing between child components.<br>Default value: {main: LengthMetrics.px(0), cross: LengthMetrics.px(0)} <br>Abnormal value: processed as the default value. <br>When the value of space.main or space.cross is negative, or when justifyContent is set to FlexAlign.SpaceBetween, FlexAlign.SpaceAround, or FlexAlign.SpaceEvenly, the space parameter does not take effect. The main attribute takes effect in both single-line and multi-line layouts, while the cross attribute takes effect only when wrap is set to Wrap or WrapReverse (multi-line layout).<br>Neither space.main nor space.cross supports setting a percentage.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## FlexSpaceOptions<sup>12+</sup>
 
@@ -69,8 +69,8 @@ Sets the spacing between child components along the main axis or cross axis of t
 
 | Name         | Type       |  Read-Only    | Optional     | Description     |
 | ----------- | --------- | ----------- | --------- |----------- |
-| main   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | No | Yes | Spacing between adjacent child components on the main axis of the **Flex** container. After being set, adjacent child components in the main axis direction are separated by the specified spacing. This takes effect in both single-line and multi-line layouts. This parameter does not take effect when **space.main** is a negative number, or when **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>Default value: **LengthMetrics.px(0)** |
-| cross  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | Yes | Spacing between adjacent lines on the cross axis of the **Flex** container. After being set, adjacent lines in the cross axis direction are separated by the specified spacing. This takes effect only in multi-line layouts (when **wrap** is set to **Wrap** or **WrapReverse**). This parameter does not take effect when **space.cross** is a negative number, or when **justifyContent** is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**.<br>Default value: **LengthMetrics.px(0)** |
+| main   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)  | No | Yes | Spacing between adjacent child components on the main axis of the Flex container. After it is set, adjacent child components on the main axis are separated by the specified spacing, which takes effect in both single-line and multi-line layouts. When space.main is a negative number or a percentage, or when justifyContent is set to FlexAlign.SpaceBetween, FlexAlign.SpaceAround, or FlexAlign.SpaceEvenly, this parameter does not take effect.<br> Default value: LengthMetrics.px(0) |
+| cross  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | Yes | Spacing between adjacent lines on the cross axis of the Flex container. After it is set, adjacent lines on the cross axis are separated by the specified spacing, which takes effect only in multi-line layouts (when wrap is Wrap or WrapReverse). When space.cross is a negative number or a percentage, or when justifyContent is set to FlexAlign.SpaceBetween, FlexAlign.SpaceAround, or FlexAlign.SpaceEvenly, this parameter does not take effect.<br> Default value: LengthMetrics.px(0) |
 
 ## Attributes
 
@@ -83,9 +83,7 @@ The [universal events](ts-component-general-events.md) are supported.
 ## Example
 
 ### Example 1: Setting the Child Component Layout Direction
-
 This example demonstrates different layout directions for child components by setting the **direction** property.
-
 ```ts
 // xxx.ets
 @Entry
@@ -150,9 +148,7 @@ struct FlexExample1 {
 ![flex1](figures/flex1.PNG)
 
 ### Example 2: Implementing Single- and Multi-Line Layouts
-
 This example demonstrates single-line and multi-line layouts for child components by setting the **wrap** property.
-
 ```ts
 // xxx.ets
 @Entry
@@ -200,9 +196,7 @@ struct FlexExample2 {
 ![flex2](figures/flex2.png)
 
 ### Example 3: Setting Alignment Along the Main Axis
-
 This example demonstrates different alignment effects for child components along the main axis by setting the **justifyContent** property.
-
 ```ts
 // xxx.ets
 @Component
@@ -253,9 +247,7 @@ struct FlexExample3 {
 ![flex3](figures/flex3.PNG)
 
 ### Example 4: Setting Alignment Along the Cross Axis
-
 This example demonstrates different alignment effects for child components along the cross axis by setting the **alignItems** property.
-
 ```ts
 // xxx.ets
 @Component
@@ -306,9 +298,7 @@ struct FlexExample4 {
 ![flex4](figures/flex4.png)
 
 ### Example 5: Setting Alignment of Multiple Lines
-
 This example demonstrates different alignment effects for multiple lines of content by setting the **alignContent** property.
-
 ```ts
 // xxx.ets
 @Component
@@ -371,9 +361,7 @@ struct FlexExample5 {
 ![flex5](figures/flex5.PNG)
 
 ### Example 6: Setting the Spacing Between Child Components Along the Main Axis or Cross Axis
-
 This example sets the spacing along the main axis and cross axis for child components in single-line or multi-line arrangement by configuring the **space** attribute.
-
 ```ts
 import {LengthMetrics} from '@kit.ArkUI';
 
@@ -422,9 +410,7 @@ struct FlexExample6 {
 ![flex6](figures/flex6.PNG)
 
 ### Example 7: Implementing a Flex Component with Adaptive Width
-
 This example shows how the **Flex** component can automatically adjust to fit the layout of child components when the width is set to **auto**.
-
 ```ts
 @Component
 struct Demo {

@@ -1,12 +1,11 @@
 # PopupV2
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d1b102fd25833b7df24baa458c6e325b88131994 translatedAt=2026-07-29T03:02:24.070Z pushedAt=2026-08-04T02:47:00.286Z -->
+<!-- md-trans-meta sourceCommit=b82cf13d76cafcd9f6a6ebcdbb3b0bf6f438477a translatedAt=2026-11-03T01:31:25.130Z pushedAt=2026-11-13T01:05:59.866Z nl=1 -->
 
 The **PopupV2** component is used to display popup bubbles of specific styles, suitable for scenarios that require user attention or response, such as prompts, operation confirmations, or information notifications.
 
@@ -66,6 +65,7 @@ Defines the specific style parameters of **PopupV2**.
 | direction | [Direction](ts-appendix-enums.md#direction) | No   | Yes  | Layout direction of **PopupV2**, which controls text arrangement and alignment. This is applicable to RTL (right-to-left) layout in internationalization scenarios. For details about the enum values, see [Direction](ts-appendix-enums.md#direction).<br/>Default value: **Direction.Auto** |
 | maxWidth  | [Dimension](ts-types.md#dimension10)                                             | No                                | Yes                               |  Maximum width of **PopupV2**, allowing **PopupV2** to be displayed with a custom width.<br/>Default value: **400vp**<br/>NOTE<br/>1. When using a referenced resource type, the parameter type must be consistent with the attribute method type.<br/>2. **maxWidth** is of the [Dimension](ts-types.md#dimension10) type, which supports numbers, percentages, or strings with units (such as 400, '50%', '400vp'). When using a referenced resource type, the resource type supports float and integer, for example, `$r('app.float.maxWidth')` and `$r('app.integer.maxWidth')`.<br/>3. When the type is Resource, if no unit is set, the default unit is px. |
 
+
 ## PopupV2Button
 
 Defines the related attributes and events of a button.
@@ -80,7 +80,7 @@ Defines the related attributes and events of a button.
 | --------- | ---------------------------------------------------- | ---- | ---------------------- | ---------------------- |
 | text      | [ResourceStr](ts-types.md#resourcestr)               | No  | No  | Button content.         |
 | action    | Callback\<void\>                                            | No   | Yes  | Callback for the button click event.<br/>No operation is performed by default. |
-| buttonTextModifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No   | Yes  | Text properties of the button, such as the text color and font size.<br/>Default value: **undefined**<br/>When the value is **undefined**, the system button text properties are used by default.<br/>**Model constraint**: This API can only be used in the stage model. |
+| buttonTextModifier  | [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No   | Yes  | Text properties of the button, such as the text color and font size.<br/>Default value: **undefined**<br/>When the value is **undefined**, the system button text properties are used by default.<br/>**Model restriction**: This API can only be used in the stage model. |
 
 ## Examples
 
@@ -92,8 +92,7 @@ Since API version 26.0.0, **titleModifier**, **messageModifier**, and **PopupV2B
 
 ```ts
 // xxx.ets
-import { PopupV2, PopupV2Button } from '@kit.ArkUI';
-import { ImageModifier, TextModifier } from '@kit.ArkUI';
+import { PopupV2, PopupV2Button, ImageModifier, TextModifier } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -148,8 +147,7 @@ Since API version 26.0.0, the **direction** parameter is added.
 
 ```ts
 // xxx.ets
-import { PopupV2, PopupV2Button } from '@kit.ArkUI';
-import { ImageModifier, TextModifier } from '@kit.ArkUI';
+import { PopupV2, PopupV2Button, ImageModifier, TextModifier } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -204,8 +202,7 @@ Since API version 26.0.0, the **maxWidth** parameter is added.
 
 ```ts
 // xxx.ets
-import { PopupV2, PopupV2Button } from '@kit.ArkUI';
-import { ImageModifier, TextModifier } from '@kit.ArkUI';
+import { PopupV2, PopupV2Button, ImageModifier, TextModifier } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -252,3 +249,4 @@ struct PopupExample {
 ```
 
 ![](figures/popupv2_3.png)
+

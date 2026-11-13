@@ -1,11 +1,11 @@
 # Gesture Modifier
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-09-01T12:37:31.896Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:21:41.197Z pushedAt=2026-11-13T01:06:00.099Z nl=1 -->
 
 Dynamically sets the gestures bound to a component. It supports the **if/else** syntax during attribute setting, and is applicable to scenarios where a single gesture or gesture group binding needs to be switched based on the component state or user operation, improving the flexibility of gesture configuration.
 

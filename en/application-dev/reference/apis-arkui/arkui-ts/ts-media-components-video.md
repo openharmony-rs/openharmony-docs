@@ -5,7 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=48422a8cba8102090ab3a5b055a79ff6f52ce339 translatedAt=2026-08-28T01:44:03.625Z pushedAt=2026-09-01T08:14:36.081Z -->
+<!-- md-trans-meta sourceCommit=1d7744169f647bc48a2c65086f0061aa3c69406b translatedAt=2026-11-03T02:47:03.695Z pushedAt=2026-11-13T01:06:00.018Z nl=1 -->
 
 The **Video** component is used to play a video and control its playback state. It supports playback, pause, progress control, playback speed, full-screen switching, and other functions.
 
@@ -91,7 +91,7 @@ Sets whether to mute the video. This attribute can be dynamically set using [att
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                        |
 | ------ | ------- | ---- | ---------------------------- |
@@ -112,7 +112,7 @@ Sets whether to enable autoplay. This attribute can be dynamically set using [at
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                            |
 | ------ | ------- | ---- | -------------------------------- |
@@ -129,7 +129,7 @@ Sets whether to display the video playback control bar. This attribute can be dy
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                           |
 | ------ | ------- | ---- | ----------------------------------------------- |
@@ -150,7 +150,7 @@ Sets the fill mode for the video content. This attribute can be dynamically set 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                     | Mandatory| Description                            |
 | ------ | ----------------------------------------- | ---- | -------------------------------- |
@@ -167,7 +167,7 @@ Sets whether to loop the video. This attribute can be dynamically set using [att
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                    |
 | ------ | ------- | ---- | ---------------------------------------- |
@@ -260,7 +260,7 @@ Triggered when playback starts. This attribute supports dynamic setting through 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                          | Mandatory| Description                                |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
@@ -276,7 +276,7 @@ Triggered when video playback is paused. Dynamic property modification using [at
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                          | Mandatory| Description                                |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
@@ -292,7 +292,7 @@ Triggered when video playback is finished. Dynamic property modification using [
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                          | Mandatory| Description                                |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
@@ -312,7 +312,7 @@ Triggered when video playback fails. Dynamic property modification using [attrib
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                          | Mandatory| Description                                |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
@@ -346,7 +346,7 @@ Triggered when video preparation is complete. Dynamic property modification usin
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type  | Mandatory| Description                      |
 | -------- | ------ | ---- | -------------------------- |
@@ -362,7 +362,7 @@ Triggered to report the time information while seeking is in progress (the progr
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                          |
 | ------ | ------ | ---- | ------------------------------ |
@@ -378,7 +378,7 @@ Triggered to report the time information while seeking is completed. Dynamic pro
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                          |
 | ------ | ------ | ---- | ------------------------------ |
@@ -394,7 +394,7 @@ Triggered when playback progress changes. Dynamic property modification using [a
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                          |
 | ------ | ------ | ---- | ------------------------------ |
@@ -410,7 +410,7 @@ Triggered when video playback is switched between full-screen mode and non-full-
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type   | Mandatory| Description                                                 |
 | ---------- | ------- | ---- | ----------------------------------------------------- |
@@ -1299,7 +1299,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct VideoControllerAsyncExample {
-  @State videoSrc: Resource = $rawfile('video1.mp4');// Replace with the video resource file required by the developer.
+  @State videoSrc: Resource = $rawfile('video1.mp4'); // Replace with the video resource file required by the developer.
   controller: VideoControllerAsync = new VideoControllerAsync();
 
   build() {
@@ -1358,7 +1358,7 @@ struct VideoControllerAsyncExample {
               console.info('start success')
             })
             .catch((err: BusinessError) => { // Use catch to handle the failure scenario.
-              console.info(`start failed: ${err.message}`)
+              console.error(`start failed: ${err.message}`)
             })
         }).margin(2)
         Button('pause').onClick(() => {
@@ -1367,7 +1367,7 @@ struct VideoControllerAsyncExample {
               console.info('pause success')
             })
             .catch((err: BusinessError) => {
-              console.info(`pause failed: ${err.message}`)
+              console.error(`pause failed: ${err.message}`)
             })
         }).margin(2)
         Button('stop').onClick(() => {
@@ -1376,7 +1376,7 @@ struct VideoControllerAsyncExample {
               console.info('stop success')
             })
             .catch((err: BusinessError) => {
-              console.info(`stop failed: ${err.message}`)
+              console.error(`stop failed: ${err.message}`)
             })
         }).margin(2)
         Button('reset').onClick(() => {
@@ -1385,7 +1385,7 @@ struct VideoControllerAsyncExample {
               console.info('reset success')
             })
             .catch((err: BusinessError) => {
-              console.info(`reset failed: ${err.message}`)
+              console.error(`reset failed: ${err.message}`)
             })
         }).margin(2)
       }

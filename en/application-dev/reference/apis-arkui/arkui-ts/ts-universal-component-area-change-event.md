@@ -1,11 +1,11 @@
 # Component Area Change Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=93ecf6af6da13066f2099922b6ffa0050aa111bb translatedAt=2026-09-02T12:18:25.494Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:51:35.303Z pushedAt=2026-11-13T01:06:00.150Z nl=1 -->
 
 The component area change event is triggered when the component's displayed size, position, or other attributes change. It applies to scenarios where you need to listen for component layout changes and obtain the area information before and after the change, helping developers update page content or execute related business logic in a timely manner based on component size or position changes.
 
@@ -35,7 +35,7 @@ This event is not triggered for render attribute changes caused by re-rendering,
 
 | Name  | Type                     | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| event | (oldValue: [Area](ts-types.md#area8), newValue: [Area](ts-types.md#area8)) => void  | Yes   | Callback invoked when the component area changes. oldValue indicates the width and height of the target element before the change, as well as the coordinates of the target element relative to the upper left corner of the parent element and the page. newValue indicates the width and height of the target element after the change, as well as the coordinates of the target element relative to the upper left corner of the parent element and the page. |
+| event | (oldValue: [Area](ts-types.md#area8), newValue: [Area](ts-types.md#area8)) => void  | Yes   | Callback invoked when the component area changes. **oldValue** indicates the width and height of the target element before the change, its coordinates relative to the parent element, and the position coordinates of the top-left corner of the target element in the current window coordinate system. **newValue** indicates the width and height of the target element after the change, its coordinates relative to the parent element, and the position coordinates of the top-left corner of the target element in the current window coordinate system. |
 
 **Return value**
 
@@ -67,7 +67,7 @@ This callback is triggered when the component area changes. The interval for tri
 | Name   | Type                      | Mandatory | Description                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | event | [AreaChangeCallback](#areachangecallback) | Yes   | Callback for the onAreaChange event. This callback is triggered when the displayed size or position of the component changes. |
-| options | [AreaChangeOptions](#areachangeoptions) | No   | Configuration parameters related to area changes, used to set the calculation interval of the area change callback. The callback trigger interval can be set through expectedUpdateInterval, in ms. If options is not passed in, expectedUpdateInterval is processed as 0. |
+| options | [AreaChangeOptions](#areachangeoptions) | No | Configuration parameters related to the area change, used to set the calculation interval of the area change callback. You can use **expectedUpdateInterval** to set the callback trigger interval, in ms. If **options** is not passed, **expectedUpdateInterval** is processed with the default value **1000**. |
 
 **Return value**
 
@@ -150,7 +150,7 @@ struct AreaExample {
 
 ### Example 2: Using onAreaChange to Listen for Area Changes at a Custom Interval
 
-In this example, by setting [expectedUpdateInterval](#areachangeoptions), the [onAreaChange](#onareachange-1) event can be triggered when the Text layout changes, achieving the effect of interval callbacks.
+This example sets [expectedUpdateInterval](#areachangeoptions) to a non-default value, so that when the Text layout changes, the [onAreaChange](#onareachange-1) event can be triggered, achieving the effect of callback at a custom interval.
 
 Since API version 26.0.0, [onAreaChange](#onareachange-1), [AreaChangeCallback](#areachangecallback), and [AreaChangeOptions](#areachangeoptions) are added.
 

@@ -1,15 +1,15 @@
 # ToolBarV2
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
-<!--Designer: @YanSanzo-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4c495f520711bb7a7c0f878dd925391606600e97 translatedAt=2026-07-29T03:10:26.323Z pushedAt=2026-08-04T02:47:36.665Z -->
+<!-- md-trans-meta sourceCommit=6c6731d8c211a054088251a3775adf3cf1c41f0d translatedAt=2026-11-03T01:41:48.783Z pushedAt=2026-11-13T01:05:59.891Z nl=1 -->
 
-The toolbar is used to display action options for the current screen content. It is displayed at the bottom of the screen and is suitable for scenarios where quick action entries need to be provided to users. A maximum of five entries can be displayed at the bottom. Any excess entries are collapsed into a "More" item, which is displayed on the far right. It is suitable for scenarios where quick operations on the current page content are needed, helping users quickly access common functions and improving operation efficiency.<br />
-This component is implemented based on [state management (V2)](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management (V1)](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), state management (V2) enhances the deep observation and management capabilities of data objects, no longer limited to the component level. With state management (V2), developers can more flexibly control the data and state of the toolbar through this component, achieving more efficient UI refresh.<br>
+A toolbar is used to display operation options for the current screen content. It is displayed at the bottom of the screen and is suitable for scenarios where users need quick access to operations. A maximum of five entries are displayed at the bottom; any excess entries are collapsed into a "More" item, which is displayed at the far right. It is suitable for scenarios where quick operations on the current page content are required, helping users quickly access frequently used functions and improve operation efficiency.<br />
+This component is implemented based on [State Management (V2)](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [State Management (V1)](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), State Management (V2) enhances the deep observation and management capabilities of data objects and is no longer limited to the component hierarchy. With State Management (V2), developers can use this component to control the data and state of the toolbar more flexibly, achieving more efficient UI refresh.<br>
+Since API version 26.1.0, when **ToolBarV2** sets the [AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier) parameter, the advanced toolbar feature can be used, which supports configuring advanced toolbar items through [AdvancedToolbarV2Item](#advancedtoolbarv2item) (inherited from [ToolBarV2Item](#toolbarv2item)). A toolbar configured with advanced items is more flexible, allowing overflow menus, sub-item grouping, and more.<br>
 
 > **NOTE**
 >
@@ -31,9 +31,10 @@ import { ToolBarV2 } from '@kit.ArkUI';
 
 Not supported
 
+
 ## ToolBarV2
 
-ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifier: DividerModifier, toolBarModifier: ToolBarV2Modifier})
+ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifier?: DividerModifier, toolBarModifier?: ToolBarV2Modifier, advancedToolBarModifier?: AdvancedToolBarV2Modifier})
 
 Creates a toolbar.
 
@@ -51,6 +52,7 @@ Creates a toolbar.
 | activatedIndex    | number                                                           | No  | @Param              | Index of the activated item.<br />Default value: **-1**, which means no toolbar item is activated.<br />Value range: [-1, 4].      |
 | dividerModifier | [DividerModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier) | No  | @Param              | Divider attribute for the toolbar header. It can be used to set the divider height, color, and more. After configuration, a divider with the specified style is displayed at the top of the toolbar.<br />This attribute does not take effect by default.                         |
 | toolBarModifier | [ToolBarV2Modifier](#toolbarv2modifier)                          | No  | @Param              | Toolbar attribute. It can be used to set the toolbar height, background color, padding (takes effect only when the number of toolbar items is less than 5), and whether to display the pressed state. After configuration, the toolbar appearance is customized according to the specified style.<br />This attribute does not take effect by default. |
+| advancedToolBarModifier | [AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier) | No | @Param | Advanced toolbar attribute that merges layout attributes, style configuration, and overflow menu style into a single modifier. It can set the toolbar main axis length, cross axis length, and layout direction. Specifically, the main axis refers to the length along the layout direction (the width in horizontal layout), and the cross axis refers to the length perpendicular to the layout direction (the height in horizontal layout). The overflow menu refers to the menu that accommodates the remaining items when the toolbar space is insufficient. After setting, the toolbar is customized according to the specified style and can use advanced toolbar features (such as configuring [AdvancedToolbarV2Item](#advancedtoolbarv2item), the overflow menu, and sub-item grouping).<br />Not effective by default.<br />**Since:** 26.1.0<br />**Model restriction:** This API is only available in the Stage model. |
 
 ## ToolBarV2Item
 
@@ -273,6 +275,7 @@ backgroundColor(backgroundColor: ColorMetrics): ToolBarV2Modifier
 
 Sets the background color of the toolbar. This method can be called for custom drawing.
 
+
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -314,7 +317,6 @@ Sets the left and right padding of the toolbar. This method can be called for cu
 | Type                                      | Description                              |
 |-----------------------------------------|---------------------------------|
 | [ToolBarV2Modifier](#toolbarv2modifier) | **ToolBarV2Modifier** object with the padding set, which can be used for chained calls to further customize the toolbar style. |
-
 ### height
 
 height(height: LengthMetrics): ToolBarV2Modifier
@@ -430,6 +432,311 @@ Defines the attributes of the symbol icon.
 | --------- | -------------------------------------------------------------------- | -- | -- | ------------------------------------------------------------------------------------ |
 | normal    | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| No | Icon symbol of the toolbar item in normal state.  |
 | activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes | Icon symbol of the toolbar item in activated state.<br>Default value:<br>**fontColor**: **\$r('sys.color.icon\_emphasize')**, **fontSize**: **24vp**|
+
+## ToolbarV2ItemPlacement
+
+Enumerates the placement positions of toolbar items.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name     | Value | Description                                                          |
+| -------- | ----- | -------------------------------------------------------------------- |
+| MAIN     | 0     | Middle area (default). Used for the primary toolbar actions displayed in the main content area. |
+| LEADING  | 1     | Leading half. Used for the primary actions placed before the main content. |
+| TRAILING | 2     | Trailing half. Used for the secondary or overflow actions placed after the main content. |
+
+**Example**
+
+See the example of the [AdvancedToolbarV2Item](#advancedtoolbarv2item) API.
+
+## AdvancedToolbarV2Item
+
+Defines an advanced toolbar item, which inherits from [ToolBarV2Item](#toolbarv2item) and extends it with advanced layout capabilities, including support for custom builders, placement, display priority, activated background color, item size, dividers, text visibility, overflow menu, and sub-item grouping.
+
+Sub-items with the same non-empty groupID form a group. Group-level configuration (placement) is read from the first sub-item in the array that carries the groupID.
+
+**Since:** 26.1.0
+
+**Decorator type**: @ObservedV2
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+### Attributes
+
+**Since:** 26.1.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+
+| Name                     | Type                                              | Read-Only | Optional | Description                                                                                                                                                                                                                  |
+| :----------------------- | :------------------------------------------------ | :--- | :--- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| builder                  | [CustomBuilder](ts-types.md#custombuilder8)       | No   | Yes   | Custom content builder of the toolbar item. After it is set, the text and icon do not take effect.<br />Default value: **undefined**.<br />When the value is **undefined**, the custom builder is not used, and the text and icon take effect normally.<br />Decorator type: @Trace                                                                                                          |
+| placement                | [ToolbarV2ItemPlacement](#toolbarv2itemplacement) | No   | Yes   | Placement of the toolbar item.<br />Default value: **ToolbarV2ItemPlacement.MAIN**.<br />Decorator type: @Trace                                                                                                                              |
+| displayPriority          | number                                            | No   | Yes   | Display priority of the toolbar item in the layout container. A larger value indicates a higher priority.<br />Value range: [0, 10].<br />Default value: **1**.<br />Decorator type: @Trace                                                                                               |
+| activatedBackgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Background color of the item in the activated state ([ACTIVATE](#toolbarv2itemstate)). This property takes effect only when the item is rendered as an icon only; when the item renders both an icon and text, this property is ignored without reporting an error. If not specified, it is transparent by default. It is recommended to use **$r('sys.color.comp_background_emphasize')**.<br />Default value: **Color.Transparent**.<br />Decorator type: @Trace |
+| id                       | string                                            | No   | Yes   | Unique identifier of the toolbar item.<br />Default value: **undefined**.<br />When the value is **undefined**, no unique identifier is set.<br />Decorator type: @Trace                                                                                                                                                                        |
+| itemSize                 | [Size](../js-apis-arkui-graphics.md#size)          | No   | Yes   | Size (width × height) of the toolbar item.<br />Horizontal: 56vp (width) × 48vp (height); vertical: 48vp (width) × 56vp (height).<br />Default value: 56vp on the main axis × 48vp on the cross axis.<br />Decorator type: @Trace                                                              |
+| isShowSeparator          | boolean                                           | No   | Yes   | Whether to display a divider after this item. **true** indicates that a divider is displayed after this item (not displayed after the last item of the toolbar); **false** indicates that no divider is displayed after this item.<br />Default value: **false**.<br />Decorator type: @Trace                                                                                          |
+| isShowText               | boolean                                           | No   | Yes   | Whether to display the text content of the item. **true** indicates that the text content of the item is displayed; **false** indicates that the text specified by content is not displayed, but content is still used for accessibility and overflow menu recognition. This is applicable to scenarios where an icon-only item still needs to be recognized by text in the overflow menu.<br />Default value: **true**.<br />Decorator type: @Trace                                   |
+| groupID                  | string                                            | No   | Yes   | Group identifier. Items with the same non-empty groupID are rendered as one visual group. Group-level configuration is read from the first item carrying this groupID in the array.<br />Default value: **undefined**.<br />When the value is **undefined**, the item does not participate in grouping.<br />Decorator type: @Trace                                                              |
+
+### constructor
+
+constructor(options: AdvancedToolbarV2ItemOptions)
+
+Constructor of **AdvancedToolbarV2Item**.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+**Parameters**
+
+| Name   | Type                                                            | Mandatory | Description         |
+| :------- | :-------------------------------------------------------------- | :--- | :----------- |
+| options  | [AdvancedToolbarV2ItemOptions](#advancedtoolbarv2itemoptions) | Yes   | Information about the toolbar item. |
+
+**Example**
+
+This example enables the advanced toolbar feature by setting [AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier), and uses [AdvancedToolbarV2Item](#advancedtoolbarv2item) to configure the placement ([ToolbarV2ItemPlacement](#toolbarv2itemplacement)) (**LEADING**/**MAIN**/**TRAILING**) and groupID grouping, demonstrating the placement effect of items in different areas and the grouped display.
+
+```ts
+import {
+  AdvancedToolbarV2Item, AdvancedToolBarV2Modifier, ToolbarV2ItemPlacement, ToolBarV2ItemText,
+  ToolBarV2ItemImage, ToolBarV2, LengthMetrics
+} from '@kit.ArkUI';
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local toolbarList: AdvancedToolbarV2Item[] = [];
+  private advancedToolBarModifier: AdvancedToolBarV2Modifier =
+    new AdvancedToolBarV2Modifier().mainAxisLength(LengthMetrics.vp(350));
+
+  aboutToAppear() {
+    // Group 1: Sub-items with the same groupID form a visible group.
+    // Middle area (default): Primary actions displayed in the main content area.
+    this.toolbarList.push(
+      new AdvancedToolbarV2Item({
+        content: new ToolBarV2ItemText({ text: 'Copy' }),
+        icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_copy') }),
+        groupID: 'group1',
+        action: () => {
+        },
+      })
+    );
+    this.toolbarList.push(
+      new AdvancedToolbarV2Item({
+        content: new ToolBarV2ItemText({ text: 'Paste' }),
+        icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_paste') }),
+        groupID: 'group1',
+        action: () => {
+        },
+      })
+    );
+    // Leading half: Actions placed before the main content.
+    this.toolbarList.push(
+      new AdvancedToolbarV2Item({
+        content: new ToolBarV2ItemText({ text: 'Select all' }),
+        icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_select_all') }),
+        placement: ToolbarV2ItemPlacement.LEADING,
+        action: () => {
+        },
+      })
+    );
+    // Trailing half: Actions placed after the main content.
+    this.toolbarList.push(
+      new AdvancedToolbarV2Item({
+        content: new ToolBarV2ItemText({ text: 'Share' }),
+        icon: new ToolBarV2ItemImage({ src: $r('sys.media.ohos_ic_public_share') }),
+        placement: ToolbarV2ItemPlacement.TRAILING,
+        action: () => {
+        },
+      })
+    );
+  }
+
+  build() {
+    Row() {
+      Stack() {
+        Column() {
+          ToolBarV2({
+            advancedToolBarModifier: this.advancedToolBarModifier,
+            toolBarList: this.toolbarList,
+          })
+        }
+      }
+      .backgroundColor('#F0FAFF')
+      .align(Alignment.Bottom)
+      .width('100%')
+      .height('50%')
+      .padding({ bottom: 10 })
+    }
+  }
+}
+```
+
+<!--Del--> <!--DelEnd-->
+
+## AdvancedToolbarV2ItemOptions
+
+Used to construct an **AdvancedToolbarV2Item** object. It inherits from [ToolBarV2ItemOptions](#toolbarv2itemoptions) and extends it with advanced fields.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name                     | Type                                              | Read-Only | Optional | Description                                                                                                                                                                                                                  |
+| :----------------------- | :------------------------------------------------ | :--- | :--- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| builder                  | [CustomBuilder](ts-types.md#custombuilder8)       | No   | Yes   | Custom content builder of the toolbar item. After it is set, the text and icon do not take effect.<br />Default value: **undefined**.<br />When the value is **undefined**, the custom builder is not used, and the text and icon take effect normally.                                                                                                                                  |
+| placement                | [ToolbarV2ItemPlacement](#toolbarv2itemplacement) | No   | Yes   | Placement of the toolbar item.<br />Default value: **ToolbarV2ItemPlacement.MAIN**.                                                                                                                                                     |
+| displayPriority          | number                                            | No   | Yes   | Display priority of the toolbar item in the layout container. A larger value indicates a higher priority.<br />Value range: [0, 10].<br />Default value: **1**.                                                                                                                       |
+| activatedBackgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Background color of the item in the activated state ([ACTIVATE](#toolbarv2itemstate)). It takes effect only when the item is rendered as a pure icon; when the item renders both an icon and text, this attribute is ignored without reporting an error. If not specified, it is transparent by default. It is recommended to use **$r('sys.color.comp_background_emphasize'**).<br />Default value: **Color.Transparent**.                                 |
+| id                       | string                                            | No   | Yes   | Unique identifier of the toolbar item.<br />Default value: **undefined**.<br />When the value is **undefined**, no unique identifier is set.                                                                                                                                                                       |
+| itemSize                 | [Size](../js-apis-arkui-graphics.md#size)          | No   | Yes   | Size (width × height) of the toolbar item.<br />Horizontal direction: 56vp (width) × 48vp (height); vertical direction: 48vp (width) × 56vp (height).<br />Default value: 56vp on the main axis × 48vp on the cross axis.                                                                                  |
+| isShowSeparator          | boolean                                           | No   | Yes   | Whether to display a separator after this item. **true** indicates that a separator is displayed after this item (not displayed after the last toolbar item); **false** indicates that no separator is displayed after this item.<br />Default value: **false**.                                                                                                            |
+| isShowText               | boolean                                           | No   | Yes   | Whether to display the text content of the item. **true** indicates that the text content of the item is displayed; **false** indicates that the text specified by content is not displayed, but content is still used for accessibility and overflow menu recognition. This applies to the scenario where a pure-icon item still needs to be recognized by text in the overflow menu.<br />Default value: **true**.                                                |
+| groupID                  | string                                            | No   | Yes   | Group identifier. Items with the same non-empty groupID are rendered as one visual group.<br />Default value: **undefined**.<br />When the value is **undefined**, the item does not participate in grouping.                                                                                                                                   |
+
+## AdvancedToolBarV2Modifier
+
+Defines the advanced modifier of **ToolBarV2**. It merges layout attributes, style configuration, and overflow menu style into a single modifier class, and provides methods for setting the toolbar main axis length (**mainAxisLength**), cross axis length (**crossAxisLength**), and layout direction (**direction**). These methods support chained calls.
+
+**Since:** 26.1.0
+
+**Decorator type**: @ObservedV2
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+### mainAxisLength
+
+mainAxisLength(value: LengthMetrics): AdvancedToolBarV2Modifier
+
+Sets the toolbar length along the layout direction.
+
+Horizontal direction: controls the width. Vertical direction: controls the height.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+**Parameters**
+
+| Name | Type                                                            | Mandatory | Description                                 |
+| ------ | --------------------------------------------------------------- | :--- | ------------------------------------ |
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes   | Length value along the layout direction. |
+
+**Return value**
+
+| Type                                                     | Description                                       |
+| -------------------------------------------------------- | ------------------------------------------ |
+| [AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier) | Modifier object, which can be used for chained calls to other methods. |
+
+### crossAxisLength
+
+crossAxisLength(value: LengthMetrics): AdvancedToolBarV2Modifier
+
+Sets the width of the toolbar perpendicular to the layout direction.
+
+Horizontal direction: controls the height. Vertical direction: controls the width. When not set, the cross axis adapts to the content.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+**Parameters**
+
+| Name | Type                                                            | Mandatory | Description                           |
+| ------ | --------------------------------------------------------------- | :--- | ------------------------------ |
+| value  | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes   | Width value perpendicular to the layout direction. |
+
+**Return value**
+
+| Type                                                     | Description                                       |
+| -------------------------------------------------------- | ------------------------------------------ |
+| [AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier) | Modifier object, which can be used for chained calls to other methods. |
+
+### direction
+
+direction(value: Axis): AdvancedToolBarV2Modifier
+
+Sets the layout direction of the toolbar. If this API is not called, the default value is Axis.Horizontal.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+**Parameters:**
+
+| Name | Type                               | Mandatory | Description                           |
+| ------ | ---------------------------------- | :--- | ------------------------------ |
+| value  | [Axis](ts-appendix-enums.md#axis) | Yes   | Layout direction. |
+
+**Return value**
+
+| Type                                                     | Description                                       |
+| -------------------------------------------------------- | ------------------------------------------ |
+| [AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier) | Modifier object, which can be used for chained calls to other methods. |
+
+**Example**
+
+See the example in [AdvancedToolbarV2Item](#advancedtoolbarv2item).
 
 ## Example
 

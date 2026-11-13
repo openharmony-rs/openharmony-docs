@@ -1,13 +1,13 @@
 # Axis Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b24031338522f038cd1d23c8fccf029a2befef35 translatedAt=2026-09-02T12:23:17.816Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:52:40.193Z pushedAt=2026-11-13T01:06:00.154Z nl=1 -->
 
-An axis event is triggered when the pointer from a device like a mouse or touchpad is within a component's area, and an action such as scrolling the wheel, sliding two fingers along a specific direction (axis) on the touchpad, or pinching with two fingers on the touchpad occurs. An "axis" refers to a direction in a two-dimensional coordinate system, which is divided into horizontal (X-axis) and vertical (Y-axis).
+An axis event is an event triggered when the pointer of a pointer input device such as a mouse or touchpad is within the component area and the mouse wheel is scrolled, the touchpad two-finger gesture slides along a specific direction (axis), or the touchpad two-finger pinch is performed. The axis types in an axis event include the horizontal axis (X-axis), the vertical axis (Y-axis), and the two-finger pinch axis.
 
 >  **NOTE**
 >
@@ -110,7 +110,7 @@ Obtains the two-finger pinch zoom ratio from the axis event.
 
 | Type             |Description      |
 | ------- | --------------------------------- |
-| number | Two-finger pinch scale.<br> **Note:** The scale refers to the ratio of the current distance between the two fingers to the initial distance between them when the touchpad two-finger pinch event is triggered. If the current axis event does not contain the pinch axis, the default value 0 is used.<br>Default value: 0<br>Value Range: [0, +∞)<br> |
+| number | Two-finger pinch scale.<br> **Note:** The scale refers to the ratio of the current distance between the two fingers to the initial distance between them when the touchpad two-finger pinch event is triggered. The default value 0 is used when the current axis event does not contain the pinch axis.<br>Value range: [0, +∞)<br> |
 
 ### hasAxis<sup>22+</sup>
 
@@ -138,7 +138,7 @@ Checks whether this axis event contains the specified axis type.
 
 getCurrentLocalPosition?(): Coordinate2D
 
-Obtains the coordinates of the mouse cursor relative to the upper left corner of the current component's real-time position.
+Obtains the coordinates of the mouse cursor relative to the top-left corner of the current component's real-time position. If the event cannot provide valid real-time component coordinates, a null value is returned. Perform a null check before use.
 
 **Since**: 26.0.0
 
@@ -229,4 +229,3 @@ struct GetCurrentLocalPositionExample {
 ```
 
 <!--Del--> <!--DelEnd-->
-<!--no_check-->

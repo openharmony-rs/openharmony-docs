@@ -5,7 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9970006b63f1cf75a6caa0b3b5184fbee5a0f063 translatedAt=2026-08-28T01:41:41.547Z pushedAt=2026-09-01T07:28:52.521Z -->
+<!-- md-trans-meta sourceCommit=36feeee0c23b24a74a08883c144b7f4adb756ef9 translatedAt=2026-11-03T02:50:36.922Z pushedAt=2026-11-13T01:06:00.035Z nl=1 -->
 
 Tapping a date opens a calendar picker dialog, where you can select a date. It is suitable for scenarios requiring date selection within an app, such as schedule management, booking systems, and form filling.
 
@@ -60,7 +60,7 @@ Inherits from [CalendarOptions](ts-basic-components-calendarpicker.md#calendarop
 | backgroundColor<sup>11+</sup> | [ResourceColor](ts-types.md#resourcecolor)  | No | Yes | Background color of the dialog box.<br>Default value: **Color.Transparent**<br>**NOTE**<br>When **backgroundColor** is set to a non-transparent color, **backgroundBlurStyle** must be set to **BlurStyle.NONE**. Otherwise, the displayed background color will not meet the expected effect.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | backgroundBlurStyle<sup>11+</sup> | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No | Yes | Background blur material of the dialog box.<br>Default value: **BlurStyle.COMPONENT_ULTRA_THICK**<br>**NOTE**<br>Set this parameter to **BlurStyle.NONE** to disable the background blur. When **backgroundBlurStyle** is set to a value other than NONE, do not set **backgroundColor**. Otherwise, the displayed background color will not meet the expected effect. When **backgroundEffect** is set, it overrides the effect of this attribute.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | backgroundBlurStyleOptions<sup>19+</sup> | [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10) | No | Yes | Background blur effect parameters, used to customize the display style of the dialog box background blur. It supports configuring attributes such as the color mode, adaptive color, and scale ratio to achieve different background blur visual effects. For the default value, see the **BackgroundBlurStyleOptions** type description.<br>**NOTE**<br>When not set, the default effect of **backgroundBlurStyle (BlurStyle.COMPONENT_ULTRA_THICK)** is used.<br>**Atomic service API:** This API can be used in atomic services since API version 19. |
-| backgroundEffect<sup>19+</sup> | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | No | Yes | Background effect parameters, used to customize the display effect of the dialog box background. It supports configuring attributes such as the blur radius, saturation, brightness, and color to achieve different background visual effects. For the default value, see the **BackgroundEffectOptions** type description.<br>**NOTE**<br>When not set, this parameter does not take effect, and the dialog box background blur effect is determined by **backgroundBlurStyle**. When set, it overrides the effect of **backgroundBlurStyle**. Since API version 26.0.0, after **systemMaterial** is set, neither **backgroundEffect** nor **backgroundBlurStyle** takes effect.<br>**Atomic service API:** This API can be used in atomic services since API version 19. |
+| backgroundEffect<sup>19+</sup> | [BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11) | No | Yes | Background effect, used to customize the display effect of the dialog box background. It supports configuring attributes such as the blur radius, saturation, brightness, and color to achieve different background visual effects. For the default value, see the **BackgroundEffectOptions** type description.<br>**NOTE**<br>When not set, this parameter does not take effect, and the dialog box background blur effect is determined by **backgroundBlurStyle**. When set, it overrides the effect of **backgroundBlurStyle**. Since API version 26.0.0, after **systemMaterial** is set, neither **backgroundEffect** nor **backgroundBlurStyle** takes effect.<br>**Atomic service API:** This API can be used in atomic services since API version 19. |
 | acceptButtonStyle<sup>12+</sup> | [PickerDialogButtonStyle](ts-picker-common.md#pickerdialogbuttonstyle12) | No | Yes | Display style, importance, role, background color, corner radius, text color, font size, font weight, font style, font list, and whether the button responds to the Enter key by default for the confirm button.<br>**NOTE**<br>1. At most one of **acceptButtonStyle** and **cancelButtonStyle** can have the **primary** field set to **true**. If both are set to **true**, neither takes effect.<br>2. The button height is 40 vp by default and does not change in the care mode - large font scenario. Even if the button style is set to the rounded rectangle [ROUNDED_RECTANGLE](ts-basic-components-button.md#buttontype), in the care mode - large font scenario the button is still displayed as a capsule button [Capsule](ts-basic-components-button.md#buttontype).<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
 | cancelButtonStyle<sup>12+</sup> | [PickerDialogButtonStyle](ts-picker-common.md#pickerdialogbuttonstyle12) | No | Yes | Display style, importance, role, background color, corner radius, text color, font size, font weight, font style, font list, and whether the button responds to the Enter key by default for the cancel button.<br>**NOTE**<br>1. At most one of **acceptButtonStyle** and **cancelButtonStyle** can have the **primary** field set to **true**. If both are set to **true**, neither takes effect.<br>2. The button height is 40 vp by default and does not change in the care mode - large font scenario. Even if the button style is set to the rounded rectangle [ROUNDED_RECTANGLE](ts-basic-components-button.md#buttontype), in the care mode - large font scenario the button is still displayed as a capsule button [Capsule](ts-basic-components-button.md#buttontype).<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
 | onDidAppear<sup>12+</sup> | [VoidCallback](ts-types.md#voidcallback12) | No | Yes | Event callback after the dialog box is shown.<br>**NOTE**<br>1. The normal timing sequence is: **onWillAppear** >> **onDidAppear** >> (onAccept/onCancel/onChange) >> **onWillDisappear** >> **onDidDisappear**.<br>2. Callback events that change the display effect set in **onDidAppear** take effect when **show** is called again.<br>3. When the dialog box is rapidly and consecutively triggered to pop up and close, **onWillDisappear** may take effect before **onDidAppear**.<br>4. When the dialog box is closed before its entrance animation is complete, this callback is not triggered.<br>**Selection guidance:**<br>- **onWillAppear**: suitable for preparing data and resetting the state before the dialog box is displayed.<br>- **onDidAppear**: suitable for performing animations, initiating network requests, and setting focus after the dialog box is fully displayed, that is, operations that require the dialog box to be visible.<br>- **onWillDisappear**: suitable for saving data, cleaning up resources, and canceling network requests before the dialog box disappears.<br>- **onDidDisappear**: suitable for performing cleanup, resetting the state, and restoring other UI after the dialog box fully disappears.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
@@ -71,7 +71,9 @@ Inherits from [CalendarOptions](ts-basic-components-calendarpicker.md#calendarop
 | enableHoverMode<sup>14+</sup>     | boolean | No  | Yes  | Whether the dialog box responds to the hover mode. This parameter applies to devices that support the hover mode, such as foldable devices.<br>- **true**: The dialog box responds to the hover mode. In the hover mode of foldable devices, the layout area is adaptively adjusted to provide a better multitasking experience.<br>- **false**: The dialog box does not respond to the hover mode, and the default layout is retained in the hover mode.<br>Default value: **false**<br>**Atomic service API:** This API can be used in atomic services since API version 14.|
 | hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | No  | Yes  | Default display area of the dialog box in the hover mode. This parameter takes effect only when **enableHoverMode** is **true**. Different area values correspond to different layout positions of the dialog box in the hover mode of foldable devices (for example, **BOTTOM_SCREEN** indicates that the dialog box is displayed in the lower half of the screen, and **TOP_SCREEN** indicates that the dialog box is displayed in the upper half of the screen).<br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**<br>**Atomic service API:** This API can be used in atomic services since API version 14.|
 | markToday<sup>19+</sup>       | boolean | No  | Yes  | Whether the current system date remains highlighted in the calendar picker dialog box.<br>- **true**: The current system date remains highlighted in the calendar picker dialog box.<br>- **false**: The current system date is not highlighted in the calendar picker dialog box.<br>Default value: **false**<br>**Atomic service API:** This API can be used in atomic services since API version 19. |
-| systemMaterial | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | No | Yes | System material of the dialog box.<br>**NOTE**<br>- Default value: the [ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) object whose [ImmersiveOptions](../arkts-apis-uimaterial.md#immersiveoptions) style is **ImmersiveStyle.ULTRA_THICK**. When set to **undefined**, it is consistent with the default value.<br>- Different materials have different visual effects, including differences in background transparency, blur degree, and shadow style. This API affects the background color [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), background blur [backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9), background effect [backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11), border color [borderColor](ts-universal-attributes-border.md#bordercolor), border width [borderWidth](ts-universal-attributes-border.md#borderwidth), and shadow [shadow](ts-universal-attributes-image-effect.md#shadow). When the system material is set, the preceding APIs do not take effect.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.|
+| systemMaterial | [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | No | Yes | System material of the dialog box.<br>**NOTE**<br>- Default value: the [ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) object whose [ImmersiveOptions](../arkts-apis-uimaterial.md#immersiveoptions) style is **ImmersiveStyle.ULTRA_THICK**. When set to **undefined**, it is consistent with the default value.<br>- Different materials have different visual effects, including differences in background opacity, blur degree, and shadow style. This API affects the background color [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), background blur [backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle9), background effect [backgroundEffect](ts-universal-attributes-background.md#backgroundeffect11), border color [borderColor](ts-universal-attributes-border.md#bordercolor), border width [borderWidth](ts-universal-attributes-border.md#borderwidth), and shadow [shadow](ts-universal-attributes-image-effect.md#shadow). When the system material is set, the preceding APIs do not take effect.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0.|
+| firstDayOfWeek | [CalendarFirstDayOfWeek](ts-basic-components-calendarpicker.md#calendarfirstdayofweek) | No | Yes | First day of each week for the calendar picker dialog box.<br>Default value: **CalendarFirstDayOfWeek.LOCAL** (follows the system locale)<br>**Since:** 26.1.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** Since API version 26.1.0, this API is supported in atomic services. |
+| adaptToHandedness | [HandednessFollowMode](../js-apis-dialog.md#handednessfollowmode) | No | Yes | Whether and how the dialog box adapts to handedness.<br>Default value: **HandednessFollowMode.NONE**.<br>**Since:** 26.1.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** Since API version 26.1.0, this API is supported in atomic services. |
 
 > **NOTE**
 >
@@ -193,7 +195,7 @@ struct CalendarPickerDialogExample {
 
 ### Example 3: Configuring a Dialog Box in the Hover State
 
-This example demonstrates how to set the layout area of a dialog box when the device is in semi-folded mode. This functionality is supported since API version 14.
+This example demonstrates how to set the layout area of a dialog box when the device is in hover state. This functionality is supported since API version 14.
 
 ```ts
 @Entry
@@ -423,6 +425,8 @@ struct CalendarPickerDialogExample {
 
 This example implements the system material effect by configuring [systemMaterial](#calendardialogoptions).
 
+The illustration for this example shows the strong effect on a high-computing-power device. The immersive light effect of the component is adaptively adjusted based on the device computing power and the immersive light effect set by the user in the system, so you do not need to perform additional adaptation.
+
 Since API version 26.0.0, the **systemMaterial** attribute has been added to **CalendarDialogOptions**.
 
 ```ts
@@ -445,9 +449,89 @@ struct CalendarPickerDialogExample {
             });
           })
       }.width('100%')
+      .height('100%')
+      .backgroundImage($r('app.media.bgImg'))  // $r('app.media.bgImg') needs to be replaced with the resource file required by the developer.
+      .backgroundImageSize(ImageSize.FILL)
     }
   }
 }
 ```
 
 <!--Del--> <!--DelEnd-->
+
+### Example 10: Setting the First Day of Week
+
+This example sets the first day of week of the calendar picker dialog to Monday by configuring **firstDayOfWeek** in [CalendarDialogOptions](#calendardialogoptions).
+
+Since API version 26.1.0, the [firstDayOfWeek](#calendardialogoptions) API is newly added.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct CalendarPickerDialogExample {
+  private selectedDate: Date = new Date('2025-01-15');
+
+  build() {
+    Column() {
+      Button('Show CalendarPicker Dialog')
+        .margin(20)
+        .onClick(() => {
+          console.info('CalendarDialog.show');
+          CalendarPickerDialog.show({
+            selected: this.selectedDate,
+            firstDayOfWeek: CalendarFirstDayOfWeek.MON,
+            onAccept: (value) => {
+              // Triggered when the OK button in the dialog box is clicked. The value indicates the selected date.
+              this.selectedDate = value;
+              console.info('calendar onAccept:' + JSON.stringify(value));
+            },
+            onCancel: () => {
+              // Triggered when the Cancel button in the dialog box is clicked.
+              console.info('calendar onCancel');
+            },
+            onChange: (value) => {
+              // Triggered when the selected item changes as a date in the dialog box is selected. The value indicates the selected date.
+              console.info('calendar onChange:' + JSON.stringify(value));
+            }
+          });
+        })
+    }.width('100%')
+  }
+}
+```
+
+<!--Del--> <!--DelEnd-->
+
+### Example 11: Setting the Dialog to Adapt to Handedness
+
+This example configures **adaptToHandedness** in [CalendarDialogOptions](#calendardialogoptions) to set the dialog to adapt to handedness, so that the dialog follows the position offset of the component that triggers it.
+
+Since API version 26.1.0, the **adaptToHandedness** attribute has been newly added to [CalendarDialogOptions](#calendardialogoptions).
+
+```ts
+// xxx.ets
+import { HandednessFollowMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CalendarPickerDialogExample {
+  private selectedDate: Date = new Date('2025-01-15');
+
+  build() {
+    Column() {
+      Button('Show CalendarPicker Dialog')
+        .margin(20)
+        .onClick(() => {
+          CalendarPickerDialog.show({
+            selected: this.selectedDate,
+            adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR
+          });
+        })
+    }.width('100%')
+  }
+}
+```
+
+<!--Del--> <!--DelEnd-->
+<!--no_check-->

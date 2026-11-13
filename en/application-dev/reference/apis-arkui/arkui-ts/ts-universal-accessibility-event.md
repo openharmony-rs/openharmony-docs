@@ -5,7 +5,7 @@
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e2e8608c64e606248f00eb66f3b2d4805fae44da translatedAt=2026-09-01T12:00:26.963Z -->
+<!-- md-trans-meta sourceCommit=33898b66eb6c0bf66810bb0d90faa36b55a4ad07 translatedAt=2026-11-03T03:13:44.039Z pushedAt=2026-11-13T01:06:00.070Z nl=1 -->
 
 After accessibility mode is enabled, this module provides the capabilities of intercepting accessibility control operations and listening for the focus acquisition and blur states of accessibility nodes. You can use onAccessibilityFocus to listen for focus acquisition and blur state changes of a component, and use onAccessibilityActionIntercept to intercept and determine accessibility control operations before they are triggered. This is suitable for scenarios where the component interaction logic needs to be customized in accessibility mode.
 
@@ -33,7 +33,7 @@ In accessibility mode, this API sets the callback for the focus acquisition and 
 
 | Name  | Type   | Mandatory| Description                                                        |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| callback | [AccessibilityFocusCallback](#accessibilityfocuscallback) | Yes | Callback invoked when the focus acquisition or blurred state of the current component changes in accessibility mode, to notify the registrant of the current state. Setting the input parameter to undefined cancels the callback registration. |
+| callback | [AccessibilityFocusCallback](#accessibilityfocuscallback) | Yes | In accessibility mode, notifies the registered party of the current state when the component gains or loses focus. If the input parameter is set to **undefined**, the callback registration is canceled. |
 
 **Return value**
 
@@ -142,7 +142,7 @@ Enumerates possible results for accessibility action interception.
 
 ### Example 1: Setting onAccessibilityActionIntercept to Intercept Click Events
 
-This example demonstrates how to use the onAccessibilityActionIntercept event to intercept the click event of a Toggle component before it is triggered in accessibility mode, and the developer decides whether to allow the click event.
+This example demonstrates how, in accessibility mode, the **onAccessibilityActionIntercept** event intercepts a click event on the **Toggle** component before it is triggered, and a confirmation dialog box is displayed for the user to confirm whether to allow the click event.
 
 ```ts
 // xxx.ets
@@ -208,9 +208,9 @@ struct OnAccessibilityFocusExample {
       Column() {
         Text("onAccessibilityFocus doesn't take effect")
         Text('onAccessibilityFocus takes effect')
-        .onAccessibilityFocus((isFocus: boolean) => {
-          console.info(`[testingTag] isFocus current is ${isFocus}`);
-        })
+          .onAccessibilityFocus((isFocus: boolean) => {
+            console.info(`[testingTag] isFocus current is ${isFocus}`);
+          })
       }
       .padding(24)
       .width('100%')

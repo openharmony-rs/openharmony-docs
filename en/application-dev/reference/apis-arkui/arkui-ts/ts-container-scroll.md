@@ -6,7 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=33a389a0fc34d0c1a1567d26d02e828fcea05659 translatedAt=2026-08-19T07:19:30.134Z pushedAt=2026-08-20T10:45:03.060Z -->
+<!-- md-trans-meta sourceCommit=13b9954a1adbf6bd3f9dd12f64777873bdde5cc7 translatedAt=2026-11-03T02:14:02.914Z pushedAt=2026-11-13T01:05:59.966Z nl=1 -->
 
 A scrollable container component. When the layout size of a child component exceeds the size of its parent component, the content can be scrolled. It supports setting the scroll direction, scroll bar, edge effect, nested scroll, and free scroll zoom, and is suitable for scenarios where the content exceeds the display area or complex scroll interactions are required.
 
@@ -23,6 +23,7 @@ A scrollable container component. When the layout size of a child component exce
 
 This component supports only one child component.
 > Starting from API version 21, the maximum width or height for a single child component inside a **Scroll** container is 16,777,216 px. In API version 20 and earlier versions, the limit was 1,000,000 px. If a child component exceeds the applicable size limit, scrolling or display behavior may become abnormal.
+
 
 ## APIs
 
@@ -54,7 +55,7 @@ Sets the scroll direction. After this value is modified, the scroll offset is re
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                       | Mandatory| Description                                           |
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------- |
@@ -74,7 +75,7 @@ Since API version 10, when the scrollable component has rounded corners, to prev
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                     | Mandatory| Description                                  |
 | -------- | ----------------------------------------- | ---- | -------------------------------------- |
@@ -90,7 +91,7 @@ Sets the scrollbar color.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
@@ -108,11 +109,12 @@ Sets the scrollbar color. Compared with [scrollBarColor](#scrollbarcolor), this 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
 | color  | [Color](ts-appendix-enums.md#color)&nbsp;\|&nbsp;number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes   | Scrollbar color.<br/>Default value: **'\#66182431'**<br/>A number value indicates a HEX color in RGB or ARGB format, with a value range of [0x0, 0xFFFFFFFF], for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**.   |
+
 
 ### scrollBarWidth
 
@@ -124,7 +126,7 @@ Sets the width of the scroll bar. Percentage values are not supported. After the
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                      | Mandatory| Description                                     |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
@@ -146,7 +148,7 @@ If this attribute is not set, the scrollbar width is 4 vp.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                      | Mandatory| Description                                     |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
@@ -166,7 +168,7 @@ During the snap animation, the scroll operation source type reported by the [onW
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                     | Mandatory| Description                      |
 | ------ | ----------------------------------------- | ---- | -------------------------- |
@@ -182,7 +184,7 @@ Sets the effect used when the scroll boundary is reached.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name               | Type                                             | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -201,13 +203,13 @@ Sets whether to support scroll gestures. It can be used to temporarily disable u
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                               |
 | ------ | ------- | ---- | ----------------------------------- |
 | value  | boolean | Yes  | Whether to enable scroll gestures. With the value **true**, scrolling via finger or mouse is enabled. With the value **false**, scrolling via finger or mouse is disabled, but this does not affect the scrolling APIs of the [Scroller](ts-container-scroll.md#scroller).<br>Default value: **true**|
 
-> **NOTE**
+> **NOTE** 
 >
 > The component cannot be scrolled by dragging the mouse.
 
@@ -223,7 +225,7 @@ Sets the nested scroll mode in both forward and backward directions to implement
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                 | Mandatory| Description          |
 | ------ | ----------------------------------------------------- | ---- | -------------- |
@@ -241,7 +243,7 @@ Sets the friction coefficient. It takes effect when the scroll area is swiped, a
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                | Mandatory| Description                                                     |
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
@@ -259,7 +261,7 @@ Sets whether to enable swipe paging. If both swipe paging (**enablePaging**) and
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
@@ -277,7 +279,7 @@ Sets the initial scroll offset. It takes effect only during the first layout, an
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
@@ -295,7 +297,7 @@ Sets the maximum gesture-based zoom scale for the **Scroll** component's content
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
@@ -313,7 +315,7 @@ Sets the minimum gesture-based zoom scale for the **Scroll** component's content
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
@@ -335,7 +337,7 @@ Sets the zoom scale of the **Scroll** component's content.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
@@ -353,7 +355,7 @@ Sets whether to enable the zoom bounce effect.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
@@ -431,17 +433,13 @@ If the **onScrollFrameBegin** event and [scrollBy](#scrollby9) method are used t
 This event is triggered when any of the following conditions is met:
 
 1. Scrolling is initiated by user interaction (for example, finger swipe, keyboard, or mouse operation).
-
 2. The **Scroll** component scrolls by inertia.
-
 3. Scrolling is triggered by calling the [fling](#fling12) API.
 
 This event is not triggered when any of the following conditions is met:
 
 1. A scroll control API other than [fling](#fling12) is called.
-
 2. The out-of-bounds bounce effect is active.
-
 3. The scrollbar is dragged.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -557,7 +555,7 @@ Trigger conditions:
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                             | Mandatory| Description              |
 | ------ | --------------------------------- | ---- | ------------------ |
@@ -724,7 +722,7 @@ Callback triggered before scrolling.
 | scrollState | [ScrollState](ts-container-list.md#scrollstate) | Yes | Current scroll state. **Idle** indicates the idle state, **Scroll** indicates the scroll state, and **Fling** indicates the inertial scroll state. |
 | scrollSource | [ScrollSource](ts-appendix-enums.md#scrollsource12) | Yes | Source of the current scroll operation. **DRAG** indicates that the scroll is triggered by dragging, **FLING** indicates that the scroll is triggered by inertial sliding, **SCROLLER** indicates that the scroll is triggered by a Scroller method without animation, and **SCROLLER_ANIMATION** indicates that the scroll is triggered by a Scroller method with animation. |
 
-**Return value**
+**Return value** 
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -760,14 +758,14 @@ Represents the callback triggered before each frame scrolling starts.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                   | Mandatory| Description                      |
 | ------ | ------------------------------------------------------- | ---- | -------------------------- |
 | offset | number                                                  | Yes  | Amount to scroll by, in vp.|
 | state  | [ScrollState](ts-container-list.md#scrollstate) | Yes   | Current scroll state. Idle indicates the idle state, Scroll indicates the scroll state, and Fling indicates the inertial scroll state. |
 
-**Return value**
+**Return value** 
 
 | Type                    | Description                |
 | ------------------------ | -------------------- |
@@ -808,6 +806,7 @@ Defines the callback triggered when the scroll scaling of each frame is complete
 | Name     | Type                                                   | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | scale     | number                                                  | Yes  | Current scale factor.|
+
 
 ## Scroller
 
@@ -858,7 +857,7 @@ Scrolls to a specified position. This API can be used for scenarios such as dire
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type| Mandatory  | Description     |
 | ----- | ---- | ---- | --------- |
@@ -886,6 +885,7 @@ By default, the **Scroll** component comes with an animation, while the **Grid**
 ### fling<sup>12+</sup>
 
 fling(velocity: number): void
+
 
 The scroll component performs inertial scrolling based on the initial velocity passed in. This API can be used to simulate a fling effect.
 
@@ -952,7 +952,7 @@ currentOffset(): OffsetResult
 Obtains the current scroll offset.
 
 > **NOTE**
->
+> 
 > 1. When the **Scroller** is not bound to a component, this API returns **undefined**, which is not declared in the API. It is recommended to use the [offset](#offset23) function, whose return type explicitly includes **undefined**.
 >
 > 2. The **Grid**, **List**, and **WaterFlow** components have a lazy loading mechanism. When the component content has not been loaded and laid out, the total content offset is obtained through estimation, and the estimation result may contain errors. For the **List** component, the [childrenMainSize](./ts-container-list.md#childrenmainsize12) attribute can be used to resolve the inaccurate estimation. For **Grid** and **WaterFlow**, there is currently no solution for the inaccurate estimation.
@@ -991,7 +991,10 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 
 Scrolls to a specified index, with support for setting an extra offset for the scroll.
 
-When the smooth animation is enabled, all items passed through are loaded and laid out. Loading a large number of items may cause performance issues. To optimize performance, you should first call **scrollToIndex** without animation to jump to a position near the target, and then call **scrollToIndex** with animation to scroll to the target position.
+When the smooth animation is enabled and fast scroll optimization is not enabled, all items passed through are loaded and laid out. Loading a large number of items may cause performance issues. To optimize performance, you should first call **scrollToIndex** without animation to jump to a position near the target, and then call **scrollToIndex** with animation to scroll to the target position.
+
+Since API version 26.1.0, the **List** component supports setting the [fast scroll mode](#fastscrollmode) through **options.fastScroll**. When **smooth** is **true** and **fastScroll** is set to **FastScrollMode.SKIP_MEASURE** or **FastScrollMode.SKIP_CREATE_AND_MEASURE**, a long-distance scroll animation can skip part of the scroll path and reduce the overhead of creating or measuring child components along the skipped path according to the selected mode. This option does not change the meaning of **value**, **align**, and **extraOffset**, and it does not take effect when **smooth** is **false**. The **Grid**, **WaterFlow**, and **ArcList** components do not support this optimization and still scroll in the original way.
+
 
 > **NOTE**
 >
@@ -1002,9 +1005,9 @@ When the smooth animation is enabled, all items passed through are loaded and la
 > 3. Since API version 11, [contentStartOffset](ts-container-list.md#contentstartoffset11) and [contentEndOffset](ts-container-list.md#contentendoffset11) are supported in **List**. Since API version 22, [contentStartOffset](ts-container-scrollable-common.md#contentstartoffset22) and [contentEndOffset](ts-container-scrollable-common.md#contentendoffset22) can be set in the **Grid** and **WaterFlow** components.
 >
 >    - When **contentStartOffset** is set for the scroll container component and **ScrollAlign** is set to **START**, the head of the specified item is aligned with the **contentStartOffset** position of the scroll container component when scrolling ends.
->
+> 
 >    - When **contentEndOffset** is set for the scroll container component and **ScrollAlign** is set to **END**, the tail of the specified item is aligned with the **contentEndOffset** position of the scroll container component when scrolling ends.
->
+> 
 >    - When **contentStartOffset** or **contentEndOffset** is set for the scroll container component and **ScrollAlign** is set to **AUTO**, no adjustment is made if the specified item is completely within the display area. Otherwise, based on the principle of the shortest scrolling distance, the head of the specified item is aligned with the **contentStartOffset** position of the scroll component, or the tail of the specified item is aligned with the **contentEndOffset** position of the scroll component, so that the specified item is fully displayed.
 > 
 
@@ -1019,7 +1022,7 @@ When the smooth animation is enabled, all items passed through are loaded and la
 | value | number   | Yes  | Index of the item to be scrolled to in the container.<br>**NOTE**<br>If the value set is a negative value or greater than the maximum index of the items in the container, the value is deemed abnormal, and no scrolling will be performed.                    |
 | smooth | boolean  | No   | Whether to animate scrolling to the index of a list item. The value **true** indicates that animation is used, and **false** indicates that no animation is used. When not passed, no animation is used by default.<br/>Default value: **false**. |
 | align | [ScrollAlign](#scrollalign10)  | No   | Alignment between the element to scroll to and the current container. You can select the corresponding alignment based on whether the item is expected to be displayed at the start, end, or center.<br/>Default value: **ScrollAlign.START** for **List**, **ScrollAlign.AUTO** for **Grid**, and **ScrollAlign.START** for **WaterFlow**.<br/>**NOTE**<br/>This parameter is supported only by the **List**, **Grid**, and **WaterFlow** components. |
-| options<sup>12+</sup> | [ScrollToIndexOptions](#scrolltoindexoptions12)  | No   | Options for scrolling to the specified index, including the **extraOffset** field, which specifies the extra offset after scrolling.<br/>When not passed, there is no extra offset.<br/>**Model restriction:** This API can be used only in the stage model. |
+| options<sup>12+</sup> | [ScrollToIndexOptions](#scrolltoindexoptions12)  | No   | Options for scrolling to a specified index, including the extra offset extraOffset and the fast scroll mode fastScroll.<br/>When not passed, there is no extra offset and fast scroll optimization is not enabled.<br/>**Model restriction:** This API only can be used under the Stage model. |
 
 ### scrollBy<sup>9+</sup>
 
@@ -1113,7 +1116,6 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100004   | Controller not bound to a component.                               |
-
 ### getItemIndex<sup>14+</sup>
 
 getItemIndex(x: number, y: number): number
@@ -1215,6 +1217,38 @@ Obtains the **FrameNode** bound to the current **Scroller**.
 | --- | --- |
 | [FrameNode](../js-apis-arkui-frameNode.md) \| undefined | If the scroller has been bound to a scrolling component such as **Scroll**, **List**, **Grid**, or **WaterFlow**, the **FrameNode** of the corresponding component is returned. Otherwise, **undefined** is returned.|
 
+### getScrollState
+
+getScrollState(): ScrollState
+
+Obtains the current scroll state of the scroll component.
+
+> **NOTE**
+>
+> When scrolling is performed with the mouse wheel in [ArcList](ts-container-arclist.md), a **List** with [scrollSnapAlign](ts-container-list.md#scrollsnapalign10) set, and a **Scroll** with [scrollSnap](#scrollsnap10) set, this API returns [Fling](ts-container-list.md#scrollstate).
+
+**Since:** 26.1.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value**
+
+| Type | Description |
+| --- | --- |
+| [ScrollState](ts-container-list.md#scrollstate) | Current scroll state. |
+
+**Error codes**
+
+For details about the error codes, see [Scrollable Component Error Codes](../errorcode-scroll.md).
+
+| ID | Error Message |
+| ------- | -------- |
+| 100004   | Controller not bound to a component. |
+
 ## OffsetResult<sup>11+</sup>
 
 Represents the offset values resulting from a scroll operation.
@@ -1267,15 +1301,39 @@ Enumerates alignment modes.
 
 Provides parameters for scrolling to a specific index.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
 **Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name  | Type | Read Only| Optional| Description             |
+| Name  | Type | Read-Only| Optional| Description             |
 | ----- | ------ | ------ | -- | ----------------- |
-| extraOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No| Yes| Extra offset for scrolling to a specified index. A positive value offsets the scroll position downward (or toward the end); a negative value offsets it upward (or toward the start).|
+| extraOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | Yes | Extra offset for scrolling to the specified index. If the value is positive, the offset is toward the bottom; if the value is negative, the offset is toward the top.<br/>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
+| fastScroll | [FastScrollMode](#fastscrollmode) | No | Yes | Fast scroll mode used when scrolling to the specified index. When set to **SKIP_MEASURE**, measurement of intermediate child components is skipped; when set to **SKIP_CREATE_AND_MEASURE**, creation and measurement of intermediate child components are skipped. This is supported only by the **List** component and takes effect only when the **smooth** parameter of **scrollToIndex** is **true**.<br/>Default value: **FastScrollMode.NONE**, which behaves the same as when this parameter is not set.<br/>Value range: 0, 1, and 2 defined in this enum. When other values are passed, they are processed as **FastScrollMode.NONE**, the fast scroll optimization is not enabled, and the other scrolling parameters still take effect according to the original rules.<br/>**Since:** 26.1.0<br/>**Atomic service API:** Since API version 26.1.0, this API is supported in atomic services. |
+
+## FastScrollMode
+
+Defines the fast scrolling mode used when scrolling to a specified index. It is used together with the **fastScroll** field of [ScrollToIndexOptions](#scrolltoindexoptions12).
+
+> **NOTE**
+>
+> - When the scrolling distance is large and a jump is triggered, the component usually scrolls continuously for about two screens from the start position, then jumps to a position about two screens away from the final stop position, and continues scrolling to the final position. One screen refers to the length of the visible area of the **List** in the scroll direction.
+> - Skipping creation or measurement applies only to the skipped scrolling path described above. Child components that need to be displayed in the two continuous scrolling segments before and after are still created and measured on demand. The actual range of creation and measurement is also affected by factors such as the alignment, extra offset, and child component size, and is not fixed at four screens.
+> - Fast scrolling does not guarantee traversing and displaying every child component on the scrolling path.
+> - When **fastScroll** is passed a value not defined in this enum, it is processed as **FastScrollMode.NONE**, and fast scrolling optimization is not enabled. Other scrolling parameters still take effect according to the original rules.
+
+**Since:** 26.1.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name | Value | Description |
+| -- | -- | -- |
+| NONE | 0 | Does not enable fast scrolling optimization. The behavior is the same as when the **fastScroll** parameter is not set. When animation is enabled, all child components on the scrolling path are created and measured before the animation starts. |
+| SKIP_MEASURE | 1 | Skips the measurement of intermediate child components, but still creates intermediate child components to confirm the type and the target row. This applies to the scenario where a multi-column List contains both **ListItem** and **ListItemGroup**: a ListItem occupies one column of a row, while a **ListItemGroup** occupies an entire row, and the target row needs to be determined based on the child component type. |
+| SKIP_CREATE_AND_MEASURE | 2 | Skips the creation and measurement of intermediate child components to further reduce overhead.<br/>**Note:**<br/>This does not apply to the scenario where a multi-column **List** contains both **ListItem** and **ListItemGroup**. Using this mode in that scenario causes List layout and scrolling exceptions. Use **SKIP_MEASURE** instead. |
 
 ## ScrollPageOptions<sup>14+</sup>
 
@@ -1343,7 +1401,6 @@ Provides parameters for scrolling to a specific position in a scrollable contain
 | canOverScroll<sup>20+</sup>   | boolean                                   | No  | Yes| Whether the scroll target position is allowed to stay beyond the boundary. This setting only takes effect when the component's **edgeEffect** is set to **EdgeEffect.Spring**.<br>**true**: The scroll position can stay beyond the boundary. **false**: The scroll position cannot stay beyond the boundary.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## UIScrollEvent<sup>19+</sup>
-
 Represents the return value of the [getEvent('Scroll')](../js-apis-arkui-frameNode.md#geteventscroll19) method in **frameNode**, which can be used to set scroll events for a **Scroll** node.
 
 **UIScrollEvent** inherits from [UIScrollableCommonEvent](./ts-container-scrollable-common.md#uiscrollablecommonevent19).
@@ -1389,9 +1446,7 @@ Passing **undefined** as the input parameter resets the event callback.
 | callback  | [ScrollOnScrollCallback](./ts-container-scroll.md#scrollonscrollcallback12)&nbsp;\|&nbsp;undefined | Yes  | Callback for the **onDidScroll** event.|
 
 ## Example
-
 ### Example 1: Setting the Scroller
-
 This example demonstrates the use of some attributes of the **Scroll** component and the **Scroller**.
 
 ```ts
@@ -1495,9 +1550,7 @@ struct ScrollExample {
 ![en-us_image_0000001174104386](figures/scroll_scroller.gif)
 
 ### Example 2: Implementing Nested Scrolling (Method 1)
-
 This example uses the **onScrollFrameBegin** event to achieve nested scrolling between an inner **List** component and an outer **Scroll** component.
-
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
 
@@ -1572,9 +1625,7 @@ struct NestedScroll {
 ![NestedScroll](figures/NestedScroll.gif)
 
 ### Example 3: Implementing Nested Scrolling (Method 2)
-
 This example uses the [nestedScroll](#nestedscroll10) attribute to achieve nested scrolling between an inner **List** component and an outer **Scroll** component.
-
 ```ts
 @Entry
 @Component
@@ -1636,13 +1687,9 @@ struct StickyNestedScroll {
   }
 }
 ```
-
 ![NestedScroll2](figures/NestedScroll2.gif)
-
 ### Example 4: Implementing Nested Scrolling with Parent-to-Child Scrolling Propagation
-
 This example demonstrates how to propagate scrolling from a parent component to a child component using the [enableScrollInteraction](#enablescrollinteraction10) attribute and the [onScrollFrameBegin](#onscrollframebegin9) event.
-
 ```ts
 @Entry
 @Component
@@ -1731,13 +1778,9 @@ struct NestedScroll {
   }
 }
 ```
-
 ![NestedScroll3](figures/NestedScroll3.gif)
-
 ### Example 5: Setting Scroll Snapping
-
 This example shows how to set scroll snapping for a **Scroll** component.
-
 ```ts
 @Entry
 @Component
@@ -1767,11 +1810,9 @@ struct Index {
   }
 }
 ```
-
 ![NestedScrollSnap](figures/NestedScrollSnap.gif)
 
 ### Example 6: Obtaining the Index of a Child Component
-
 This example demonstrates how to obtain the index of a child component in a **List** component.
 
 ```ts
@@ -1856,7 +1897,6 @@ struct ListExample {
 ![ScrollEdgeAtVelocity](figures/getItemIndex_list.gif)
 
 ### Example 7: Setting Edge Fading
-
 This example demonstrates how to implement a **Scroll** component with an edge fading effect and set the length of the fading edge.
 
 ```ts
@@ -2028,10 +2068,10 @@ struct StickyNestedScroll {
 
 ![canOverScroll_scroll](figures/canOverScroll_scroll.gif)
 
+
 ### Example 11: Implementing Free Scrolling and Scaling
 
 This example demonstrates how to implement free scrolling and scaling of the **Scroll** component. This functionality is supported since API version 20.
-
 ```ts
 @Entry
 @Component
@@ -2061,13 +2101,11 @@ struct ScrollZoomExample {
   }
 }
 ```
-
 ![free_scroll_zoom](figures/free_scroll_zoom.gif)
 
 ### Example 12: Obtaining the Total Content Size
 
 This example demonstrates how to obtain the total content size. This functionality is supported since API version 22.
-
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -2136,7 +2174,6 @@ struct ScrollExample1 {
   }
 }
 ```
-
 ![scrollContentSize](figures/scrollContentSize.gif)
 
 ### Example 13: Setting Scrolling Events
@@ -2247,3 +2284,93 @@ struct Index {
   }
 }
 ```
+
+### Example 14: Obtaining the Scroll State
+
+This example uses the [getScrollState](#getscrollstate) API to obtain the scroll state.
+
+Since API version 26.1.0, the getScrollState API is added.
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/**
+ * Scroll state query example
+ *
+ * Obtain the current scroll state through Scroller.getScrollState(), and use a timer to query it automatically every 4 ms to display the state changes during scrolling in real time.
+ */
+@Entry
+@Component
+struct ScrollExample {
+  // Current scroll state (Idle: idle, Scroll: finger dragging, Fling: inertial scrolling).
+  @State scrollStateStr: string = 'Idle';
+  // Scroll controller, used to bind the Scroll component and query the scroll state.
+  scroller: Scroller = new Scroller();
+  // Timer ID, used to clear the timer when the page is destroyed.
+  private timerId: number = -1;
+  // List data.
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  aboutToAppear() {
+    // Query the scroll state automatically every 4 ms to achieve near-real-time display.
+    this.timerId = setInterval(() => {
+      this.queryScrollState();
+    }, 4);
+  }
+
+  aboutToDisappear() {
+    // Clear the timer when the page is destroyed to avoid resource leakage.
+    clearInterval(this.timerId);
+  }
+
+  // Obtain the current scroll state and update the display text.
+  private queryScrollState(): void {
+    try {
+      // Obtain the current scroll state by calling the getScrollState function.
+      const state: ScrollState = this.scroller.getScrollState();
+      // Convert the scroll state to readable text.
+      this.scrollStateStr = this.scrollStateToStr(state);
+    } catch (error) {
+      // An exception is thrown when the Scroller is not bound to a component, so add try-catch protection.
+      let err: BusinessError = error as BusinessError;
+      console.error(`Failed to get scrollState. Code: ${err.code}, message: ${err.message}`);
+    }
+  }
+
+  // Convert the scroll state enum to readable text.
+  private scrollStateToStr(state: ScrollState): string {
+    return state === ScrollState.Idle ? 'Idle' :
+      state === ScrollState.Scroll ? 'Scroll' : 'Fling';
+  }
+
+  build() {
+    Column() {
+      // Display the scroll state obtained by getScrollState in real time, refreshing automatically every 4 ms.
+      Text('ScrollState: ' + this.scrollStateStr)
+        .fontColor(Color.Black)
+        .height(50)
+
+      Stack({ alignContent: Alignment.TopStart }) {
+        Scroll(this.scroller) {
+          Column() {
+            ForEach(this.arr, (item: number) => {
+              Text(item.toString())
+                .width('90%')
+                .height(150)
+                .backgroundColor(0xFFFFFF)
+                .border({ width: 1, color: 0xCCCCCC })
+                .borderRadius(15)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .margin({ top: 15 })
+            }, (item: number) => item.toString())
+          }.width('100%')
+        }
+        .edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true, effectEdge: EffectEdge.START })
+      }
+    }
+  }
+}
+```
+
+![scrollGetScrollState](figures/scrollGetScrollState.gif)

@@ -1,11 +1,11 @@
 # Custom Event Dispatch
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-09-02T11:56:11.176Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:25:45.686Z pushedAt=2026-11-13T01:06:00.110Z nl=1 -->
 
 When handling a touch event, ArkUI performs [hit testing](../../../ui/arkts-interaction-basic-principles.md#hit-testing) on the touch point and the component area before the event is triggered – to determine the components targeted by the event – and dispatches the event based on the test result. You can use **onChildTouchTest** on a parent node to specify how to perform the hit test on child nodes and thereby exert an impact on touch event dispatch. For details about the impact, see [TouchTestStrategy](#touchteststrategy11).
 
@@ -37,7 +37,7 @@ Allows the current component to customize the hit test and control child compone
 
 | Name| Type                                      | Mandatory| Description                  |
 | ------ | ------------------------------------------ | ---- | ---------------------- |
-| event | (value: Array<[TouchTestInfo](#touchtestinfo11)>) => [TouchResult](#touchresult11) | Yes | Callback invoked for the custom touch test. It receives an array **value** that contains the touch test information of child nodes. The array contains only the information of named nodes whose IDs are set through the **id** attribute. It returns a **TouchResult** to control the event dispatch policy of child nodes. |
+| event | (value: Array<[TouchTestInfo](#touchtestinfo11)>) => [TouchResult](#touchresult11) | Yes | Callback invoked for the custom touch test. It receives an array **value** that contains the hit testing information of child nodes. The array contains only the information of named nodes whose IDs are set through the **id** attribute. It returns a **TouchResult** to control the event dispatch policy of child nodes. |
 
 **Return value**
 
@@ -47,7 +47,7 @@ Allows the current component to customize the hit test and control child compone
 
 ## TouchTestInfo<sup>11+</sup>
 
-Provides information about the coordinate system, ID, and size of the component where the current touch point is located.
+Coordinates of the current screen touch point relative to the window, parent component, and child component, as well as the ID, position, and size information of the child component.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -55,12 +55,12 @@ Provides information about the coordinate system, ID, and size of the component 
 
 | Name         | Type | Read-Only   | Optional  |  Description                                      |
 | ------------- | ------ | ------ | ------ | ---------------------------------------- |
-| windowX | number | No | No | X-axis coordinate of the press point relative to the window's top-left corner.<br>Unit: vp |
-| windowY   | number| No |No|Y-axis coordinate of the press point relative to the window's top-left corner.<br>Unit: vp|
-| parentX   | number| No  |No|X-axis coordinate of the press point relative to the parent component's top-left corner.<br>Unit: vp  |
-| parentY   | number| No |No|Y-axis coordinate of the press point relative to the parent component's top-left corner.<br>Unit: vp  |
-| x   | number| No  | No|X-axis coordinate of the press point relative to the child component's top-left corner.<br>Unit: vp |
-| y   | number| No  |No| Y-axis coordinate of the press point relative to the child component's top-left corner.<br>Unit: vp |
+| windowX | number | No | No | X-axis coordinate of the touch point relative to the window's top-left corner.<br>Unit: vp |
+| windowY   | number| No |No|Y-axis coordinate of the touch point relative to the window's top-left corner.<br>Unit: vp|
+| parentX   | number| No  |No|X-axis coordinate of the touch point relative to the parent component's top-left corner.<br>Unit: vp  |
+| parentY   | number| No |No|Y-axis coordinate of the touch point relative to the parent component's top-left corner.<br>Unit: vp  |
+| x   | number| No  | No|X-axis coordinate of the touch point relative to the child component's top-left corner.<br>Unit: vp |
+| y   | number| No  |No| Y-axis coordinate of the touch point relative to the child component's top-left corner.<br>Unit: vp |
 | rect   | [RectResult](#rectresult)| No |No|Position, width, and height of the child component. |
 | [id](ts-universal-attributes-component-id.md#id)   | string| No  | No|Unique identifier of the child component. |
 

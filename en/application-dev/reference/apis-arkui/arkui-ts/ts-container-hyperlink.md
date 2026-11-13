@@ -1,12 +1,11 @@
 # Hyperlink
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=92567145241181b97abe57e944e177355e50f4eb translatedAt=2026-08-04T12:07:40.661Z pushedAt=2026-08-07T03:11:50.563Z -->
+<!-- md-trans-meta sourceCommit=08942777370a0b90b1f82affd44908847b9279aa translatedAt=2026-11-03T02:02:42.987Z pushedAt=2026-11-13T01:05:59.942Z nl=1 -->
 
 The **Hyperlink** component supports two display forms: text and image. Tapping within the component area redirects to a specified web page. It is suitable for scenarios where external web links are opened within an app. This component must be used with the system browser.
 
@@ -36,7 +35,7 @@ Hyperlink(address: string | Resource, content?: string | Resource)
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | address | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes | Web page address that the **Hyperlink** component navigates to. |
-| content | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No | Text displayed for the hyperlink in the **Hyperlink** component.<br>Default value: **''**. If this parameter is not set and the component has no child components, the **address** parameter value is displayed by default.<br>**NOTE**<br>If the component has child components, the hyperlink text is not displayed. |
+| content | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No | Text displayed by the **Hyperlink** component.<br>Default value: ''. If this parameter is not set and the component has no child component, the value of the address parameter is displayed by default.<br>**Note:** <br>If the component has child components, the hyperlink text is not displayed. |
 
 ## Attributes
 
@@ -52,7 +51,7 @@ Sets the color of the hyperlink text.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
@@ -78,8 +77,7 @@ struct HyperlinkExample {
       }
 
       Column() {
-        Hyperlink('https://example.com/', 'Go to the developer website') {
-        }
+        Hyperlink('https://example.com/', 'Go to the developer website')
         .color(Color.Blue)
       }
     }.width('100%').height('100%').justifyContent(FlexAlign.Center)

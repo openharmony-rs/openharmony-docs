@@ -1,13 +1,13 @@
 # Focus Axis Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=a306693f0f46e5633c549769b8338f6bd7c191f4 translatedAt=2026-09-20T10:08:13.477Z pushedAt=2026-09-20T10:15:10.098Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:54:32.472Z pushedAt=2026-11-13T01:06:00.159Z nl=1 -->
 
-A focus axis event is an axis event reported through the D-pad or joystick when interacting with a gamepad. The axis event is distributed and called back to the application through the focused component. If a component is focusable by default, such as Button, no additional attribute settings are required. If a component is not focusable by default, such as Text and Image, you can set the [focusable](./ts-universal-attributes-focus.md#focusable) attribute to true to enable the focus axis event.
+A focus axis event is an axis event reported through the D-pad or joystick when interacting with a gamepad. The axis event is distributed and called back to the application through the focused component. If a component is focusable by default, such as **Button**, no additional attribute settings are required. If a component is not focusable by default, such as **Text** and **Image**, you can set the [focusable](./ts-universal-attributes-focus.md#focusable) attribute to **true** to enable the focus axis event.
 
 >  **NOTE**
 >
@@ -19,7 +19,7 @@ A focus axis event is an axis event reported through the D-pad or joystick when 
 
 onFocusAxisEvent(event: Callback\<FocusAxisEvent>): T
 
-Binds a focus axis event callback to a component. After the component bound with this method is focused, operations on the joystick, D-pad, and the like of a gamepad trigger this callback. If the component cannot be focused by default, set the [focusable](./ts-universal-attributes-focus.md#focusable) attribute to true first to enable the focus axis event.
+Binds a focus axis event callback to a component. After the component bound with this method is focused, operations on the joystick, D-pad, and the like of a gamepad trigger this callback. If the component cannot be focused by default, set the [focusable](./ts-universal-attributes-focus.md#focusable) attribute to **true** first to enable the focus axis event.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 

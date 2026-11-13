@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b0395888e9f91cb6bfb01f0c7fcec66a0083da3e translatedAt=2026-09-01T12:18:13.079Z -->
+<!-- md-trans-meta sourceCommit=6d74ca95001f9040a8bf01679a06503988d4b8dc translatedAt=2026-11-03T03:14:33.898Z pushedAt=2026-11-13T01:06:00.073Z nl=1 -->
 
 You can set the background for a component.
 
@@ -31,7 +31,7 @@ Sets the background of the component. Since API version 20, the **content** para
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                | Mandatory| Description                                                        |
 | ------- | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -87,7 +87,7 @@ Sets the background color of the component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description              |
 | ------ | ------------------------------------------ | ---- | ------------------ |
@@ -113,7 +113,7 @@ Sets the background color of the component. Compared to [backgroundColor](#backg
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                 | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -147,7 +147,7 @@ Sets the background color of the component. Compared with [backgroundColor](#bac
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                 | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -171,7 +171,7 @@ Sets the background image of the component. Network images, local images, Base64
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                           | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -202,7 +202,7 @@ Sets the background image of the component. Compared with [backgroundImage](#bac
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 <!--Table: 10%; auto; 10%; auto-->
 | Name| Type                                           | Mandatory| Description                                                        |
@@ -228,7 +228,7 @@ Sets the width and height of the background image for the component. If **backgr
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -252,7 +252,7 @@ Sets the position of the background image. When backgroundImagePosition is not s
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -272,19 +272,19 @@ Enumerates blur styles.
 
 | Name                  | Value| Description       |
 | -------------------- | ------- | --------- |
-| Thin                 | - | Thin material blur.<br>**Card capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
-| Regular              | - | Regular material blur.<br>**Card capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| Thick                | - | Thick material blur.<br>**Card capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.    |
-| BACKGROUND_THIN<sup>10+</sup>       | 3 | Near-distance depth-of-field blur.<br>**Card capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model constraint**: This API can be used only in the stage model.   |
-| BACKGROUND_REGULAR<sup>10+</sup>    | 4 | Medium-distance depth-of-field blur.<br>**Card capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model constraint**: This API can be used only in the stage model.   |
-| BACKGROUND_THICK<sup>10+</sup>      | 5 | Far-distance depth-of-field blur.<br>**Card capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model constraint**: This API can be used only in the stage model.   |
-| BACKGROUND_ULTRA_THICK<sup>10+</sup> | 6 | Ultra-far-distance depth-of-field blur.<br>**Card capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model constraint**: This API can be used only in the stage model.  |
-| NONE<sup>10+</sup> | 7 | Disables blur.<br>**Card capability**: This API can be used in ArkTS widgets since API version 10.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model constraint**: This API can be used only in the stage model.  |
-| COMPONENT_ULTRA_THIN<sup>11+</sup> | 8 | Ultra-thin material blur for components.<br>**Card capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model constraint**: This API can be used only in the stage model. |
-| COMPONENT_THIN<sup>11+</sup> | 9 | Thin material blur for components.<br>**Card capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model constraint**: This API can be used only in the stage model. |
-| COMPONENT_REGULAR<sup>11+</sup> | 10 | Regular material blur for components.<br>**Card capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model constraint**: This API can be used only in the stage model. |
-| COMPONENT_THICK<sup>11+</sup> | 11 | Thick material blur for components.<br>**Card capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model constraint**: This API can be used only in the stage model. |
-| COMPONENT_ULTRA_THICK<sup>11+</sup> | 12 | Ultra-thick material blur for components.<br>**Card capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model constraint**: This API can be used only in the stage model. |
+| Thin                 | - | Thin material blur.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
+| Regular              | - | Regular material blur.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| Thick                | - | Thick material blur.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.    |
+| BACKGROUND_THIN<sup>10+</sup>       | 3 | Near-distance depth-of-field blur.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model restriction**: This API can be used only in the stage model.   |
+| BACKGROUND_REGULAR<sup>10+</sup>    | 4 | Medium-distance depth-of-field blur.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model restriction**: This API can be used only in the stage model.   |
+| BACKGROUND_THICK<sup>10+</sup>      | 5 | Far-distance depth-of-field blur.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model restriction**: This API can be used only in the stage model.   |
+| BACKGROUND_ULTRA_THICK<sup>10+</sup> | 6 | Ultra-far-distance depth-of-field blur.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model restriction**: This API can be used only in the stage model.  |
+| NONE<sup>10+</sup> | 7 | Disables blur.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Model restriction**: This API can be used only in the stage model.  |
+| COMPONENT_ULTRA_THIN<sup>11+</sup> | 8 | Ultra-thin material blur for components.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model. |
+| COMPONENT_THIN<sup>11+</sup> | 9 | Thin material blur for components.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model. |
+| COMPONENT_REGULAR<sup>11+</sup> | 10 | Regular material blur for components.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model. |
+| COMPONENT_THICK<sup>11+</sup> | 11 | Thick material blur for components.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model. |
+| COMPONENT_ULTRA_THICK<sup>11+</sup> | 12 | Ultra-thick material blur for components.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 11.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Model restriction**: This API can be used only in the stage model. |
 
 ## SystemAdaptiveOptions<sup>19+</sup>
 
@@ -319,12 +319,12 @@ Defines the background material blur style. It encapsulates various blur radius,
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name               | Type                                                        | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value                 | [BlurStyle](#blurstyle9)                                     | Yes  | Settings of the background blur style, including the blur radius, mask color, mask opacity, saturation, and brightness.|
-| options | [BackgroundBlurStyleOptions](#backgroundblurstyleoptions10) | No   | Background blur options, used to configure the blur activation policy and the background color when the blur is not in effect. If not passed, the default activation policy [BlurStyleActivePolicy](#blurstyleactivepolicy14).ALWAYS_ACTIVE is used.<br>This parameter is not supported in ArkTS cards.                                              |
+| options | [BackgroundBlurStyleOptions](#backgroundblurstyleoptions10) | No   | Background blur options, used to configure the blur activation policy and the background color when the blur is not in effect. If not passed, the default activation policy [BlurStyleActivePolicy](#blurstyleactivepolicy14).ALWAYS_ACTIVE is used.<br>This parameter is not supported in ArkTS widgets.                                              |
 
 **Return value**
 
@@ -346,12 +346,12 @@ Defines the background material blur style. It encapsulates various blur radius,
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name               | Type                                                        | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style                 | Optional\<[BlurStyle](#blurstyle9)>                          | Yes   | Background blur style. The blur style encapsulates five parameters: blur radius, mask color, mask transparency, saturation, and brightness.<br>When the value of style is undefined, the background is restored to the default state with blur disabled. |
-| options | [BackgroundBlurStyleOptions](#backgroundblurstyleoptions10) | No   | Background blur options. For configuration of the blur activation policy and the background color when the blur does not take effect. If not passed, the default activation policy [BlurStyleActivePolicy](#blurstyleactivepolicy14).ALWAYS_ACTIVE is used.<br>This parameter is not supported in ArkTS cards.                                            |
+| style                 | Optional\<[BlurStyle](#blurstyle9)>                          | Yes   | Background blur style. The blur style encapsulates five parameters: blur radius, mask color, mask opacity, saturation, and brightness.<br>When the value of style is undefined, the background is restored to the default state with blur disabled. |
+| options | [BackgroundBlurStyleOptions](#backgroundblurstyleoptions10) | No   | Background blur options. For configuration of the blur activation policy and the background color when the blur does not take effect. If not passed, the default activation policy [BlurStyleActivePolicy](#blurstyleactivepolicy14).ALWAYS_ACTIVE is used.<br>This parameter is not supported in ArkTS widgets.                                            |
 
 **Return value**
 
@@ -377,12 +377,12 @@ Defines the background material blur style. It encapsulates various blur radius,
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name               | Type                                                        | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style                 | Optional\<[BlurStyle](#blurstyle9)>                          | Yes   | Background blur style. The blur style encapsulates five parameters: blur radius, mask color, mask transparency, saturation, and brightness.<br>When the value of style is undefined, the background is restored to the default state with blur disabled. |
-| options | [BackgroundBlurStyleOptions](#backgroundblurstyleoptions10) | No   | Background blur options. Used to configure the blur activation policy and the background color when the blur does not take effect. If not passed, the default activation policy [BlurStyleActivePolicy](#blurstyleactivepolicy14).ALWAYS_ACTIVE is used.<br>This parameter is not supported in ArkTS cards.                                            |
+| style                 | Optional\<[BlurStyle](#blurstyle9)>                          | Yes   | Background blur style. The blur style encapsulates five parameters: blur radius, mask color, mask opacity, saturation, and brightness.<br>When the value of style is undefined, the background is restored to the default state with blur disabled. |
+| options | [BackgroundBlurStyleOptions](#backgroundblurstyleoptions10) | No   | Background blur options. Used to configure the blur activation policy and the background color when the blur does not take effect. If not passed, the default activation policy [BlurStyleActivePolicy](#blurstyleactivepolicy14).ALWAYS_ACTIVE is used.<br>This parameter is not supported in ArkTS widgets.                                            |
 | sysOptions   |  [SystemAdaptiveOptions](#systemadaptiveoptions19)    |   No   |  System adaptive adjustment parameters.<br>Default value: { disableSystemAdaptation: false }    |
 
 **Return value**
@@ -407,7 +407,7 @@ Applies a background blur effect to the component. It samples and blurs the visu
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name               | Type                                                        | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -434,7 +434,7 @@ Applies a background blur effect to the component. It samples and blurs the visu
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name               | Type                                                        | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -465,7 +465,7 @@ Applies a background blur effect to the component. You can customize the blur ra
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name               | Type                                                        | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -479,9 +479,9 @@ Applies a background blur effect to the component. You can customize the blur ra
 | ------ | ------------------------ |
 | T | Current component, used for chained calls. |
 
->  **NOTE**
+> **NOTE**
 >
->  **backgroundBlurStyle**, **blur**, and **backdropBlur** perform real-time rendering per frame, resulting in high performance overhead. When both the blur content and blur radius remain unchanged, it is recommended that you use the static blur API [blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur). For best practices, see [Image Blurring Optimization – When to Use](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519).
+> **backgroundBlurStyle**, **blur**, and **backdropBlur** are real-time APIs that perform real-time rendering per frame, resulting in high performance overhead. When neither the blur content nor the blur radius needs to change, use the static blur API [blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur). For best practices, see [When to Use](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ui-dynamic-vs-static-blur-examples#when-to-use) in Comparing Dynamic Blur and Static Blur.
 
 ## backgroundEffect<sup>11+</sup>
 
@@ -499,7 +499,7 @@ Sets the component background attributes, which are processed in real-time rende
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                 | Mandatory| Description                                      |
 | ------- | ----------------------------------------------------- | ---- | ------------------------------------------ |
@@ -523,7 +523,7 @@ Sets the component background attributes, including parameters such as the backg
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -541,9 +541,9 @@ backgroundEffect(options: Optional\<BackgroundEffectOptions>, sysOptions?: Syste
 
 Sets the background effect of the component, including the blur radius, brightness, saturation, and color. Compared with [backgroundEffect<sup>18+</sup>](#backgroundeffect18), this API adds the **sysOptions** parameter, which allows for system adaptive adjustments.
 
->  **NOTE**
+> **NOTE**
 >
->  **backgroundEffect** is a real-time API that performs real-time rendering of the blur effect per frame, resulting in high performance overhead. When the component background blur effect does not need to change, use the static blur API [blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur) to implement the blur effect. For best practices, see [Image Blurring Optimization - When to Use](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-fuzzy-scene-performance-optimization#section4945532519).
+> **backgroundEffect** is a real-time API that performs real-time rendering of the blur effect per frame, resulting in high performance overhead. When the component background blur effect does not need to change, use the static blur API [blur](../../apis-arkgraphics2d/js-apis-effectKit.md#blur) to implement the blur effect. For best practices, see [When to Use](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ui-dynamic-vs-static-blur-examples#when-to-use) in Comparing Dynamic Blur and Static Blur.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -551,7 +551,7 @@ Sets the background effect of the component, including the blur radius, brightne
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -578,8 +578,8 @@ Describes the background effect.
 | radius       | number        |   No   |   No   |   Blur radius, in vp. Value range: [0, +∞), default value: 0. <br> **Atomic service API:** Since API version 12, this API is supported in atomic services. |
 | saturation   | number        |   No   |   Yes   |  Saturation. Value range: [0, +∞), default value: 1. Recommended value range: [0, 50]. If a negative value is passed in, the default value 1 is restored. If the value exceeds the recommended range, the effect may not meet expectations. <br> **Atomic service API:** Since API version 12, this API is supported in atomic services.    |
 | brightness   | number        |   No   |   Yes   |  Brightness. Value range: [0, +∞), default value: 1. Recommended value range: [0, 2]. If a negative value is passed in, the default value 1 is restored. If the value exceeds the recommended range, the effect may not meet expectations.<br> **Atomic service API:** Since API version 12, this API is supported in atomic services. |
-| color        | [ResourceColor](ts-types.md#resourcecolor)         |   No   |   Yes   |   Mask color of the background effect. The default value is transparent. When adaptiveColor is AVERAGE, color must have transparency for the color sampling mode to take effect. Setting different color values overlays a mask layer of the corresponding color on the background blur effect.<br> **Atomic service API:** Since API version 12, this API is supported in atomic services.  |
-| adaptiveColor | [AdaptiveColor](ts-universal-attributes-foreground-blur-style.md#adaptivecolor) |   No  |   Yes  | Color sampling mode used by the background blur effect. The default value is DEFAULT. When AVERAGE is used, color must have transparency for the color sampling mode to take effect; if color does not have transparency, the color sampling mode does not take effect. <br> **Atomic service API:** Since API version 12, this API is supported in atomic services.  |
+| color        | [ResourceColor](ts-types.md#resourcecolor)         |   No   |   Yes   |   Mask color of the background effect. The default value is transparent. When adaptiveColor is AVERAGE, color must have opacity for the color sampling mode to take effect. Setting different color values overlays a mask layer of the corresponding color on the background blur effect.<br> **Atomic service API:** Since API version 12, this API is supported in atomic services.  |
+| adaptiveColor | [AdaptiveColor](ts-universal-attributes-foreground-blur-style.md#adaptivecolor) |   No  |   Yes  | Color sampling mode used by the background blur effect. The default value is DEFAULT. When AVERAGE is used, color must have opacity for the color sampling mode to take effect; if color does not have opacity, the color sampling mode does not take effect. <br> **Atomic service API:** Since API version 12, this API is supported in atomic services.  |
 | blurOptions  | [BlurOptions](ts-universal-attributes-foreground-blur-style.md#bluroptions11) |   No   |   Yes   |   Grayscale blur parameters. The default value is [0,0]. <br> **Atomic service API:** Since API version 12, this API is supported in atomic services. |
 | policy<sup>14+</sup>    | [BlurStyleActivePolicy](#blurstyleactivepolicy14) | No  |   Yes  | Blur activation policy.<br> Default value: BlurStyleActivePolicy.ALWAYS_ACTIVE <br> **Atomic service API:** Since API version 14, this API is supported in atomic services.|
 | inactiveColor<sup>14+</sup>  | [ResourceColor](ts-types.md#resourcecolor)  | No   |   Yes  | Background color used when the blur does not take effect. This parameter must be used together with the policy parameter. When policy disables the blur, the component blur effect is removed. If inactiveColor is set, it is used as the component background color; if inactiveColor is not set, the component background color is restored to the default transparent color. By default, inactiveColor is not set.<br> **Atomic service API:** Since API version 14, this API is supported in atomic services. |
@@ -656,11 +656,11 @@ Sets the component background brightening effect, which changes the brightness p
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| params | [BackgroundBrightnessOptions](#backgroundbrightnessoptions12) | Yes | Sets the background brightness effect of the component, including the brightness change rate and brightness level. |
+| params | [BackgroundBrightnessOptions](#backgroundbrightnessoptions12) | Yes | Background brightness effect of the component, including the brightness change rate and brightening degree. |
 
 **Return value**
 
@@ -680,7 +680,7 @@ Sets the component background brightening effect, which changes the brightness p
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -704,7 +704,7 @@ Provides background brightness options.
 
 | Name         | Type  | Read-Only |  Optional| Description                                                        |
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| rate          | number | No   |  No   | Rate of brightness change. A larger value means the light-up degree decreases faster. If rate is 0, lightUpDegree does not take effect, that is, no light-up effect is produced.<br>Default value: 0.0 <br>Value range: [0.0, +∞) |
+| rate          | number | No   |  No   | Rate of brightness change. A larger value means the brightening degree decreases faster. If rate is 0, lightUpDegree does not take effect, that is, no light-up effect is produced.<br>Default value: 0.0 <br>Value range: [0.0, +∞) |
 | lightUpDegree | number | No   |  No   | Light-up degree. A larger value means a more obvious brightness increase.<br>**Note:**<br>When rate is 0, lightUpDegree does not take effect.<br> Default value: 0.0 <br>Value range: [-1.0, 1.0] |
 
 >  **NOTE**

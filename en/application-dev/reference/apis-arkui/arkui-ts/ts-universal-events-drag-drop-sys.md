@@ -1,11 +1,11 @@
 # Drag Event (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-09-02T12:24:56.976Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:53:42.219Z pushedAt=2026-11-13T01:06:00.158Z nl=1 -->
 
 A drag event refers to a sequence of events triggered in the UI when a user drags an object (such as a file, component, or element). These events allow you to customize drag and drop behaviors, enabling functionalities like drag and drop operations and position adjustments.
 
@@ -17,7 +17,7 @@ A drag event refers to a sequence of events triggered in the UI when a user drag
 >
 >  This document describes only the system APIs of the current module. For details about other public APIs, see [Drag Event](ts-universal-events-drag-drop.md).
 
-## DragEvent<sup>7+</sup>
+## DragEvent
 
 DragEvent represents drag event information and provides the event data and drag animation configuration capabilities during the drag process. It is used to obtain or set drag behaviors at each stage of the drag process.
 
@@ -27,7 +27,7 @@ DragEvent represents drag event information and provides the event data and drag
 
 | Name | Type | Read-only | Optional | Description |
 | --------- | ----------------------------------------- | --------- | --------- | ---------------------------------- |
-| dragAnimationType | [DragAnimationType](#draganimationtype) | No | Yes | Sets the drag animation type. This attribute can be set only in the [onDragStart](ts-universal-events-drag-drop.md#ondragstart) phase, and can be obtained in the [onDragStart](ts-universal-events-drag-drop.md#ondragstart), [onDragEnter](ts-universal-events-drag-drop.md#ondragenter), [onDragMove](ts-universal-events-drag-drop.md#ondragmove), [onDragLeave](ts-universal-events-drag-drop.md#ondragleave), [onDrop](ts-universal-events-drag-drop.md#ondrop), and [onDragEnd](ts-universal-events-drag-drop.md#ondragend10) callbacks.<br> The default value is DEFAULT.<br>**Since Version:** 26.0.0<br>**Model Constraint:** This API can be used only in the stage model. <br>**System API:** This is a system API.|
+| dragAnimationType | [DragAnimationType](#draganimationtype) | No | Yes | Sets the drag animation type. This attribute can be set only in the [onDragStart](ts-universal-events-drag-drop.md#ondragstart) phase, and can be obtained in the [onDragStart](ts-universal-events-drag-drop.md#ondragstart), [onDragEnter](ts-universal-events-drag-drop.md#ondragenter), [onDragMove](ts-universal-events-drag-drop.md#ondragmove), [onDragLeave](ts-universal-events-drag-drop.md#ondragleave), [onDrop](ts-universal-events-drag-drop.md#ondrop), and [onDragEnd](ts-universal-events-drag-drop.md#ondragend10) callbacks.<br> The default value is DEFAULT.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. <br>**System API:** This is a system API.|
 
 ### enableInternalDropAnimation<sup>20+</sup>
 
@@ -136,8 +136,8 @@ Since API version 26.0.0, the [dragAnimationType](#attributes) attribute, the [e
 // xxx.ets
 // Animation parameter class.
 class AnimationOption {
-  CubicCurveEnable: boolean = false;
-  SpringEnable: boolean = false;
+  cubicCurveEnable: boolean = false;
+  springEnable: boolean = false;
   dropAnimationCurve: number[] = [];
   dropPosition: number[] = [];
   dropSize: number[] = [];
@@ -199,8 +199,8 @@ struct FollowHandMorphDemo {
 
           // Build the animation parameters.
           let animationOption = new AnimationOption();
-          animationOption.CubicCurveEnable = false;
-          animationOption.SpringEnable = true;
+          animationOption.cubicCurveEnable = false;
+          animationOption.springEnable = true;
           animationOption.dropAnimationCurve = [0.416, 0.99, 0];
           animationOption.dropPosition = [830, 600];
           animationOption.dropSize = [100, 100];

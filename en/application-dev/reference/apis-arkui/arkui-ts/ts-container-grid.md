@@ -6,7 +6,7 @@
 <!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=db7b4cb04ab79eca7c282f261364ec79047f0c01 translatedAt=2026-08-21T02:27:27.988Z pushedAt=2026-08-21T08:30:21.055Z -->
+<!-- md-trans-meta sourceCommit=7203d660f89ed9a214ae8ebcf9c86f3d971ef4f3 translatedAt=2026-11-03T02:02:59.516Z pushedAt=2026-11-13T01:05:59.949Z nl=1 -->
 
 The **Grid** component consists of cells formed by rows and columns. You can specify the cells where items are located to form various layouts.
 
@@ -16,9 +16,10 @@ The **Grid** component consists of cells formed by rows and columns. You can spe
 >
 >  The component has been bound with gestures to implement functions such as follow-up scrolling. If you need to add custom gestures, refer to [Gesture Blocking Enhancement](ts-gesture-blocking-enhancement.md).
 
+
 ## Child Components
 
-Child components are limited to [GridItem](ts-container-griditem.md) and custom components. When using custom components inside **Grid**, it is recommended to wrap the custom component with a **GridItem** as the top-level container. Setting attributes or event methods directly on custom components is not recommended.
+Only [GridItem](ts-container-griditem.md) child components and [custom components](../../../ui/state-management/arkts-create-custom-components.md) are supported. When a custom component is used in **Grid**, you are advised to use **GridItem** as the top-level component of the custom component. It is not recommended to set attributes and event methods for the custom component.
 
 Child components can be dynamically generated using rendering control types [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md). **LazyForEach** or **Repeat** is recommended to optimize performance.
 
@@ -65,14 +66,13 @@ Creates a **Grid** component.
 
 Defines the grid layout options. In this API, **irregularIndexes** and **onGetIrregularSizeByIndex** can be used for grids where either **rowsTemplate** or **columnsTemplate** is set. These properties allow you to specify an index array and set the number of rows and columns to be occupied by a grid item at the specified index. For details about the usage, see [Example 3](#example-3-implementing-a-scrollable-grid-with-grid-items-spanning-rows-and-columns). On the other hand, **onGetRectByIndex** can be used for grids where both **rowsTemplate** and **columnsTemplate** are set. It allows you to specify the position and size for the grid item at the specified index. For details about the usage, see [Example 1](#example-1-creating-a-fixed-row-and-column-grid-layout).
 
-To improve the performance of **Grid** in scenarios such as jumps and column quantity changes, you are advised to use **GridLayoutOptions** whenever possible. Even if there are no special cross-row or cross-column nodes in **Grid**, performance during jumps can still be enhanced by using 'Grid(this.scroller, {regularSize: [1, 1]})'.  
+To improve the performance of **Grid** in scenarios such as jumps and column quantity changes, you are advised to use **GridLayoutOptions** whenever possible. Even if there are no special cross-row or cross-column nodes in **Grid**, performance during jumps can still be enhanced by using 'Grid(this.scroller, {regularSize: [1, 1]})'. For details, see <!--RP1-->[Using GridLayoutOptions to Improve Grid Performance](../../../performance/grid-optimization.md#using-gridlayoutoptions-to-improve-grid-performance)<!--RP1End-->.
 
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
-
 | Name   | Type     | Read Only  | Optional| Description                   |
 | ----- | ------- | ---- | --  | --------------------- |
 | regularSize  | [number, number]  | No   | No| Number of rows and columns occupied by a grid item with regular size. The only supported value is **[1, 1]**, meaning that the grid item occupies one row and one column.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
@@ -83,7 +83,7 @@ To improve the performance of **Grid** in scenarios such as jumps and column qua
 ## Attributes
 
 In addition to [universal attributes](ts-component-general-attributes.md) and [scrollable component common attributes](ts-container-scrollable-common.md#attributes), the following attributes are also supported.
-> **NOTE**
+> **NOTE** 
 >
 > When the universal attributes [clip<sup>12+</sup>](ts-universal-attributes-sharp-clipping.md#clip12) and [clip<sup>18+</sup>](ts-universal-attributes-sharp-clipping.md#clip18) are used, the default values are **true**.
 >
@@ -108,6 +108,8 @@ For example, **&nbsp;'1fr&nbsp;1fr&nbsp;2fr'&nbsp;** indicates three columns, wi
 **repeat**, **auto-fit**, **auto-fill**, and **auto-stretch** are keywords. **track-size** indicates the column width, in the unit of px, vp (default), %, or any valid digit. The value must be greater than or equal to one valid column width.<br>
 In auto-fit and auto-stretch modes, only a valid column width value is supported for **track-size**. Additionally, in auto-stretch mode, **track-size** only supports units such as px, vp, and valid numbers, but does not support percentage (%). The auto-fill mode supports one or more valid column widths, for example, columnsTemplate('repeat(auto-fill, 20)') or columnsTemplate('repeat(auto-fill, 20 80px)').
 
+In a template string that is not in the repeat form, each item supports only the following three formats: 'number+fr', 'number+px', and 'number+%'. The vp unit is not supported (for example, columnsTemplate('100vp 100vp')). To automatically calculate the number of columns based on a fixed vp size, use **repeat(auto-fill, track-size)**.
+
 For details about the effect, see [Example 8](#example-8-using-adaptive-column-count-settings).
 
 If this attribute is set to **'0fr'**, the column width is 0, and grid item in the column is not displayed. If this attribute is set to any other invalid value, the grid item is displayed as one column.
@@ -116,7 +118,7 @@ If this attribute is set to **'0fr'**, the column width is 0, and grid item in t
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                              |
 | ------ | ------ | ---- | ---------------------------------- |
@@ -140,7 +142,7 @@ For example, **ItemFillPolicy.BREAKPOINT_DEFAULT** displays two columns when the
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                | Mandatory| Description                                                     |
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
@@ -163,48 +165,50 @@ For example, **'1fr 1fr 2fr'** indicates three rows, with the first row taking u
 **repeat**, **auto-fit**, **auto-fill**, and **auto-stretch** are keywords. **track-size** indicates the row height, in the unit of px, vp (default), %, or any valid digit. The value must be greater than or equal to one valid row height.<br>
 In auto-fit and auto-stretch modes, only a valid row height value is supported for **track-size**. Additionally, in auto-stretch mode, **track-size** only supports units such as px, vp, and valid numbers, but does not support percentage (%). The auto-fill mode supports one or more valid row heights, for example, rowsTemplate('repeat(auto-fill, 20)') or rowsTemplate('repeat(auto-fill, 20 80px)').
 
+In a template string that is not in the repeat form, each item supports only the following three formats: 'number+fr', 'number+px', and 'number+%'. The vp unit is not supported (for example, rowsTemplate('100vp 100vp')). To automatically calculate the number of rows based on a fixed vp size, use **repeat(auto-fill, track-size)**.
+
 If this attribute is set to **'0fr'**, the row height is 0, and grid item in the row is not displayed. If this attribute is set to any other invalid value, the grid item is displayed as one row.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                              |
 | ------ | ------ | ---- | ---------------------------------- |
 | value  | string | Yes  | Number of rows or minimum row height of the grid.|
 
->  **NOTE**
+> **NOTE**
 >
->  Depending on the settings of the **rowsTemplate** and **columnsTemplate** attributes, the **Grid** component supports the following layout modes:
+> Based on the settings of the **rowsTemplate** and **columnsTemplate** attributes, **Grid** supports the following three layout modes:
 >
->  1. **rowsTemplate** and **columnsTemplate** are both set
+> 1. When both **rowsTemplate** and **columnsTemplate** are set:
 >
->  - The **Grid** component displays only elements in a fixed number of rows and columns and cannot be scrolled.
->  - In this mode, the following attributes do not take effect: **layoutDirection**, **maxCount**, **minCount**, and **cellLength**.
->  - If the width and height of a grid are not set, the grid adapts to the size of its parent component by default.
->  - The size of the grid rows and columns is the size of the grid content area minus the gap between rows and columns. It is allocated based on the proportion of each row and column.
->  - By default, the grid items fill the entire grid.
+>    - **Grid** displays only the elements within the fixed number of rows and columns. Other elements are not displayed, and **Grid** cannot be scrolled.
+>    - In this mode, the following attributes do not take effect: **layoutDirection**, **maxCount**, **minCount**, and **cellLength**.
+>    - If the width and height of **Grid** are not set, the grid adapts to the size of the parent component by default.
+>    - The size of each grid cell is allocated based on the proportion of each row and column after subtracting all row and column gaps from the content area size of **Grid**.
+>    - **GridItem** fills the grid cell by default.
 >
->  2. Either **rowsTemplate** or **columnsTemplate** is set
+> 2. When only one of **rowsTemplate** and **columnsTemplate** is set:
 >
->  - The **Grid** component arranges elements in the specified direction and allows for scrolling to display excess elements.
->  - If **columnsTemplate** is set, the component scrolls vertically, the main axis runs vertically, and the cross axis runs horizontally.
->  - If **rowsTemplate** is set, the component scrolls horizontally, the main axis runs horizontally, and the cross axis runs vertically.
->  - In this mode, the following attributes do not take effect: **layoutDirection**, **maxCount**, **minCount**, and **cellLength**.
->  - The cross axis size of the grid is the cross axis size of the grid content area minus the gaps along the cross axis. It is allocated based on the proportion of each row and column.
->  - The main axis size of the grid is the maximum value of the main axis sizes of all grid items in the cross axis direction of the grid.
->  - In this mode, the size of **GridItem** in the cross-axis is the same as that of the grid. You can set **maxWidth** or **maxHeight** in [constraintSize](./ts-universal-attributes-size.md#constraintsize) to limit the size of **GridItem** in the cross axis to be less than that of the grid.
+>    - Elements are laid out in the set direction. When they exceed the display area of **Grid**, they can be displayed by scrolling.
+>    - If **columnsTemplate** is set, **Grid** scrolls vertically, with the main axis in the vertical direction and the cross axis in the horizontal direction.
+>    - If **rowsTemplate** is set, **Grid** scrolls horizontally, with the main axis in the horizontal direction and the cross axis in the vertical direction.
+>    - In this mode, the following attributes do not take effect: **layoutDirection**, **maxCount**, **minCount**, and **cellLength**.
+>    - The cross-axis size of the grid is allocated based on the proportion after subtracting all gaps in the cross-axis direction from the cross-axis size of the content area of **Grid**.
+>    - The main-axis size of the grid is the maximum main-axis size of all **GridItem** components in the cross-axis direction.
+>    - In this mode, the cross-axis size of **GridItem** is the same as that of the grid. You can set **maxWidth** or **maxHeight** in [constraintSize](./ts-universal-attributes-size.md#constraintsize) to limit the cross-axis size of **GridItem** to be smaller than the grid.
 >
->  3. Neither **rowsTemplate** nor **columnsTemplate** is set
+> 3. When neither **rowsTemplate** nor **columnsTemplate** is set:
 >
->  - The **Grid** component arranges elements in the direction specified by **layoutDirection**. The number of columns is jointly determined by the grid width, width of the first element, **minCount**, **maxCount**, and **columnsGap**.
->  - The number of rows is jointly determined by the grid height, height of the first element, **cellLength**, and **rowsGap**. Elements outside the determined range of rows and columns are not displayed and cannot be viewed through scrolling.
->  - In this mode, only the following attributes take effect: **layoutDirection**, **maxCount**, **minCount**, **cellLength**, **editMode**, **columnsGap**, and **rowsGap**.
->  - When **layoutDirection** is set to **Row**, child components are arranged from left to right. When a row is full, a new row will be added. If the remaining height is insufficient, no more elements will be laid out, and the whole content is centered at the top.
->  - When **layoutDirection** is set to **Column**, elements are arranged column by column from top to bottom. If the remaining height is insufficient, no more elements will be laid out, and the whole content is centered at the top.
->  - If there are no grid items in the grid, the width and height of the grid are set to 0.
+>    - Elements are laid out in the **layoutDirection** direction. The number of columns is determined by the width of **Grid**, the width of the first element, **minCount**, **maxCount**, and **columnsGap**.
+>    - The number of rows is determined by the height of **Grid**, the height of the first element, **cellLength**, and **rowsGap**. Elements beyond the row and column capacity are not displayed and cannot be displayed by scrolling.
+>    - In this mode, only the following attributes take effect: **layoutDirection**, **maxCount**, **minCount**, **cellLength**, **editMode**, **columnsGap**, and **rowsGap**.
+>    - When **layoutDirection** is set to **Row**, elements are laid out from left to right, filling one row before moving to the next. When the remaining height is insufficient, no more elements are laid out, and the overall content is centered at the top.
+>    - When **layoutDirection** is set to **Column**, elements are laid out from top to bottom, filling one column before moving to the next. When the remaining width is insufficient, no more elements are laid out, and the overall content is centered at the top.
+>    - When there is no **GridItem** under **Grid**, the width and height of **Grid** are 0.
 >
 
 ### columnsGap
@@ -217,7 +221,7 @@ Sets the gap between columns. A value less than 0 evaluates to the default value
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                        |
 | ------ | ---------------------------- | ---- | ---------------------------- |
@@ -233,7 +237,7 @@ Sets the gap between rows. A value less than 0 evaluates to the default value.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                        |
 | ------ | ---------------------------- | ---- | ---------------------------- |
@@ -249,7 +253,7 @@ Sets the scrollbar state.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                     | Mandatory| Description                                                        |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -265,7 +269,7 @@ Sets the scrollbar color.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
@@ -283,7 +287,7 @@ Sets the scrollbar color. Compared with [scrollBarColor](#scrollbarcolor), the p
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
@@ -299,7 +303,7 @@ Sets the width of the scrollbar. Percentage values are not supported. After the 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                      | Mandatory| Description                                     |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
@@ -321,11 +325,12 @@ If this attribute is not set, the scrollbar width is 4 vp.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                      | Mandatory| Description                                     |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
 | value  | number&nbsp;\|&nbsp;string \| [Resource](ts-types.md#resource) | Yes  | Scrollbar width.<br>Unit: vp<br>The value range is [0, +∞). If this parameter is set to a value less than 0, **4vp** is used. The value **0** means not to show the scrollbar.|
+
 
 ### cachedCount
 
@@ -341,11 +346,12 @@ After caching is set, **cachedCount** grid rows/columns are preloaded on both si
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value  | number | Yes  | Number of grid items to be cached (preloaded).<br>Default value: the number of rows visible on the screen for vertical scrolling, or the number of columns visible on the screen for horizontal scrolling. The maximum value is 16.<br>Value range: [0, +∞).<br>Values less than 0 are treated as **1**.<br>When **value** is updated using a state variable, the **Grid** component does not trigger a layout update. The number of cached nodes is updated only during the next layout.|
+
 
 ### cachedCount<sup>14+</sup>
 
@@ -361,12 +367,13 @@ After caching is set, **cachedCount** grid rows/columns are preloaded on both si
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
 | count  | number | Yes  | Number of grid items to be cached (preloaded).<br>Default value: the number of rows visible on the screen for vertical scrolling, or the number of columns visible on the screen for horizontal scrolling. The maximum value is 16.<br>Value range: [0, +∞).<br>Values less than 0 are treated as **1**.<br>When the count value is updated using the state variable, the **Grid** component does not trigger a layout update. The number of cached nodes is updated only during the next layout.|
 | show  | boolean | Yes  | Whether to display the preloaded nodes. If this parameter is set to **true**, the preloaded **GridItem** is displayed. If this parameter is set to **false**, the preloaded **GridItem** is not displayed.<br> Default value: **false**|
+
 
 ### editMode<sup>8+</sup>
 
@@ -382,7 +389,7 @@ Sets whether to enable edit mode. In edit mode, the user can drag the [grid item
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                    |
 | ------ | ------ | ---- | ---------------------------------------- |
@@ -402,7 +409,7 @@ Sets the main axis layout direction of the grid.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                    | Mandatory| Description                                          |
 | ------ | ---------------------------------------- | ---- | ---------------------------------------------- |
@@ -428,7 +435,7 @@ If the value of **maxCount** is smaller than that of **minCount**, the default v
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                         |
 | ------ | ------ | ---- | --------------------------------------------- |
@@ -454,7 +461,7 @@ If the value of **minCount** is greater than that of **maxCount**, both **minCou
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
@@ -478,7 +485,7 @@ When **layoutDirection** is **Column** or **ColumnReverse**, the value indicates
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------- |
@@ -494,7 +501,7 @@ Sets whether to enable multiselect. After multiselect is enabled, you can use **
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
@@ -512,7 +519,7 @@ For details about the **supportAnimation** animation effect, see [Example 5: Imp
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                            |
 | ------ | ------- | ---- | -------------------------------- |
@@ -530,7 +537,7 @@ Sets the effect used when the scroll boundary is reached.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name               | Type                                                        | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -549,13 +556,13 @@ Sets whether to support the scrolling gesture.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                               |
 | ------ | ------- | ---- | ----------------------------------- |
 | value  | boolean | Yes  | Whether to support scroll gestures. With the value **true**, scrolling via finger or mouse is enabled. With the value **false**, scrolling via finger or mouse is disabled, but this does not affect the scrolling APIs of the [Scroller](ts-container-scroll.md#scroller).<br>Default value: **true**|
 
-> **NOTE**
+> **NOTE** 
 >
 > The component cannot be scrolled through mouse press-and-drag operations.
 
@@ -571,7 +578,7 @@ Sets the nested scrolling options. Sets the nested scrolling modes for both forw
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
@@ -589,7 +596,7 @@ Sets the friction coefficient. It takes effect when the scroll area is swiped, a
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                | Mandatory| Description                                                       |
 | ------ | ---------------------------------------------------- | ---- | ----------------------------------------------------------- |
@@ -607,7 +614,7 @@ Sets the alignment mode of grid items in the grid. For details about the usage, 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -625,7 +632,7 @@ Sets the focus wrap mode for cross-axis arrow keys.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -643,7 +650,7 @@ Sets whether to synchronously load all child components in the grid.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -661,7 +668,7 @@ Sets whether the current **Grid** component supports the use of the if/else rend
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                              |
 | ------ | ------ | ---- | -------------------------------------------------- |
@@ -705,6 +712,33 @@ Sets whether to enable the edit mode for the **Grid** component. After the edit 
 | ------ | ------ | ---- | ---------------------------------------- |
 | enabled  | boolean \| undefined | Yes   | Whether to enable the editing mode. This parameter supports two-way binding with a variable through [!!](../../../ui/state-management/arkts-new-binding.md). When set to **true**, the editing mode is enabled and multiple items can be selected by swiping. When set to **false** or **undefined**, the editing mode is disabled and multiple items cannot be selected by swiping. |
 
+### scrollSnapStrategy
+
+scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
+
+Sets the scroll snap strategy of the grid so that the grid aligns items in a specified manner when scrolling ends, or stops at a custom snap position. For the built-in alignment modes, see [Example 23](#example-23-setting-scroll-snap-alignment). For the custom snap position, see [Example 24](#example-24-customizing-scroll-snap-position).
+
+This API is not supported for layouts that contain cross-column (irregular) grid items.
+
+> **NOTE**
+>
+> - The final snap position is always within the valid scroll range.
+> - After snap scrolling is enabled, snap scrolling is also triggered when a drag or mouse box selection operation ends.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ------ | ---- | ------------------------------------ |
+| strategy  | [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | No  | Scroll snap strategy.<br/>When a [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10) enum is passed, the built-in alignment modes are used: **START**, **CENTER**, and **END** align items to the start, center, and end positions of the viewport along the scroll axis, respectively.<br/>When an object that implements the [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) API is passed, you need to calculate the scroll distance and the final snap position: [calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset) determines the scroll distance in the inertia phase, and [calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset) determines the final snap position.<br/>If this parameter is not set or **ScrollSnapAlign.NONE** or **undefined** is passed, snap scrolling is not enabled, and the grid does not perform snap alignment but slides naturally to a stop by inertia. |
+
 ## GridItemAlignment<sup>12+</sup>
 
 Enumerates the alignment modes of grid items.
@@ -720,12 +754,13 @@ Enumerates the alignment modes of grid items.
 | DEFAULT  |  0  | Use the default alignment mode of the grid.|
 | STRETCH |  1  | Use the height of the tallest grid item in a row as the height for all other grid items in that row.|
 
-> **NOTE**
+
+> **NOTE** 
 >
-> 1. The **STRETCH** option only takes effect in scrollable grids.<br>
-> 2. The **STRETCH** option takes effect only if each grid item in a row is of a regular size (occupying only one row and one column). It is not effective in scenarios where there are grid items spanning across rows or columns.<br>
-> 3. When **STRETCH** is used, only grid items without a set height will adopt the height of the tallest grid item in the current row; the height of grid items with a set height will remain unchanged.<br>
-> 4. When **STRETCH** is used, the grid undergoes an additional layout process, which may incur additional performance overhead.
+> 1. The **STRETCH** parameter takes effect only in a scrollable grid and does not take effect in other scenarios.<br/>
+> 2. In a row of the grid, the **STRETCH** parameter takes effect only if each grid item is of a regular size (occupying only one row and one column). It does not take effect if any grid item spans rows or columns.<br/>
+> 3. After **STRETCH** is set, only grid items without a specified height use the height of the tallest grid item in the current row as their own height. The height of grid items with a specified height does not change.<br/>
+> 4. After **STRETCH** is set, an additional layout process is involved in grid layout, which may incur extra performance overhead.
 
 ## GridDirection<sup>8+</sup>
 
@@ -750,13 +785,13 @@ In addition to [universal events](ts-component-general-events.md) and [scrollabl
 
 onScrollIndex(event: (first: number, last: number) => void)
 
-Triggered when the first or last item displayed in the grid changes, that is, when the index of either the first or last item changes. It is triggered once when the grid is initialized.  
+Triggered when the first or last item displayed in the grid changes, that is, when the index of either the first or last item changes. It is triggered once when the grid is initialized.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name            | Type  | Mandatory| Description                            |
 | ------------------ | ------ | ---- | -------------------------------- |
@@ -781,7 +816,7 @@ Automatic scrolling when dragging to the edge of the **Grid** is not supported. 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type                                 | Mandatory| Description                  |
 | --------- | ------------------------------------- | ---- | ---------------------- |
@@ -797,7 +832,7 @@ Triggered when a dragged item enters the range of a **GridItem**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                 | Mandatory| Description          |
 | ------ | ------------------------------------- | ---- | -------------- |
@@ -813,7 +848,7 @@ Triggered when a dragged item moves within the range of a **GridItem**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                                 | Mandatory| Description          |
 | ----------- | ------------------------------------- | ---- | -------------- |
@@ -831,7 +866,7 @@ Triggered when a dragged item leaves a **GridItem**.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name   | Type                                 | Mandatory| Description                      |
 | --------- | ------------------------------------- | ---- | -------------------------- |
@@ -850,7 +885,7 @@ When the drop position is within the **GridItem**, **isSuccess** returns **true*
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                                 | Mandatory| Description          |
 | ----------- | ------------------------------------- | ---- | -------------- |
@@ -873,14 +908,14 @@ This API is intended solely for setting the scroll position of the grid. Avoid i
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | index  | number | Yes  | Index of the first item of the grid.                            |
 | offset | number | Yes  | Offset of the displayed first item relative to the start position of the grid, in vp.|
 
-**Return value**
+**Return value** 
 
 | Type                                                 | Description                |
 | ----------------------------------------------------- | -------------------- |
@@ -935,17 +970,13 @@ When this API is called back, the event parameter passes the scroll offset that 
 This event is triggered when either of the following conditions is met:
 
 1. Scrolling is initiated by user interaction (for example, finger swipe, keyboard, or mouse operation).
-
 2. The **Grid** component scrolls by inertia.
-
 3. Call the [fling](ts-container-scroll.md#fling12) API to trigger scrolling.
 
 This event is not triggered in the following scenarios:
 
 1. A scroll control API other than [fling](ts-container-scroll.md#fling12) is called.
-
 2. The out-of-bounds bounce effect is active.
-
 3. The scrollbar is dragged.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -954,7 +985,7 @@ This event is not triggered in the following scenarios:
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                   | Mandatory| Description                      |
 | ------ | ------------------------------------------------------- | ---- | -------------------------- |
@@ -997,7 +1028,6 @@ Triggered when the grid stops scrolling after the user's finger leaves the scree
 | event | () => void | Yes| Callback when the grid stops scrolling.|
 
 ### onScroll<sup>(deprecated)</sup>
-
 onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-list.md#scrollstate)) => void) 
 
 Triggered when the grid scrolls.
@@ -1049,13 +1079,12 @@ Provides information about the position and length of the scrollbar.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name        | Type        | Read Only| Optional|   Description        |
+| Name        | Type        | Read-Only| Optional|   Description        |
 | ----------- | ------------ | ---- | ---- | ---------- |
-| totalOffset | number | No| No|  Total offset of the grid content relative to the display area, in px.   |
-| totalLength   | number | No| No|  Total length of the grid content, in px.   |
+| totalOffset | number | No | No | Total offset of the **Grid** content relative to the display area, in vp. |
+| totalLength   | number | No | No | Total length of the **Grid** content, in vp. |
 
 ## UIGridEvent<sup>19+</sup>
-
 Represents the return value of the [getEvent('Grid')](../js-apis-arkui-frameNode.md#geteventgrid19) method in **frameNode**, which can be used to set scroll events for a **Grid** node.
 
 **UIGridEvent** inherits from [UIScrollableCommonEvent](./ts-container-scrollable-common.md#uiscrollablecommonevent19).
@@ -1121,7 +1150,6 @@ If the input parameter is **undefined**, the event callback is reset.
 | callback  | [OnGridScrollIndexCallback](#ongridscrollindexcallback19)&nbsp;\|&nbsp;undefined | Yes   | Callback for the **onScrollIndex** event. When **undefined** is passed in, the event callback is reset. |
 
 ## OnGridScrollIndexCallback<sup>19+</sup>
-
 type OnGridScrollIndexCallback = (first: number, last: number) => void
 
 Represents a callback for item changes in the visible area of the **Grid** component.
@@ -1139,7 +1167,7 @@ Represents a callback for item changes in the visible area of the **Grid** compo
 | first | number | Yes| Index of the first item of the **Grid** component.|
 | last | number | Yes| Index of the last item of the **Grid** component.|
 
-## Example
+## Examples
 
 ### Example 1: Creating a Fixed Row and Column Grid Layout
 
@@ -1232,7 +1260,6 @@ This example shows a scrollable grid with all its scrolling attributes and event
 **GridDataSource** implements the **LazyForEach** data source API [IDataSource](ts-rendering-control-lazyforeach.md#idatasource), which is used to provide child components for **Grid** through **LazyForEach**.
 
 <!--code_no_check-->
-
 ```ts
 // GridDataSource.ets
 export class GridDataSource implements IDataSource {
@@ -1289,7 +1316,6 @@ export class GridDataSource implements IDataSource {
 ```
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 import { GridDataSource } from './GridDataSource';
@@ -1385,7 +1411,6 @@ struct GridExample {
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 import { GridDataSource } from './GridDataSource';
@@ -1480,7 +1505,6 @@ This example demonstrates how to use [nestedScroll](#nestedscroll10) and [onScro
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 
 <!--code_no_check-->
-
 ```ts
 import { GridDataSource } from './GridDataSource';
 
@@ -1660,21 +1684,17 @@ struct GridExample {
 ### Example 5: Implementing Dragging in a Grid
 
 1.  Set [editMode](#editmode8) to enable edit mode for a grid, where the user can drag grid items.
-
 2.  In the [onItemDragStart](#onitemdragstart8) callback, set the image to be displayed during dragging.
-
 3.  Through [onItemDrop](#onitemdrop8), obtain the initial position of the dragged item and the position to which the dragged item will be dropped. Through [onItemDrop](#onitemdrop8), complete the array position exchange logic.
-
 4.  Set the **supportAnimation(true)** attribute to support animations.
 
-> **NOTE**
+> **NOTE** 
 >
 > The drag and drop action is not displayed in the preview.
 
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 
 <!--code_no_check-->
-
 ```ts
 import { GridDataSource } from './GridDataSource';
 
@@ -1772,7 +1792,6 @@ This example demonstrates how to use [layoutDirection](#layoutdirection8), [maxC
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 
 <!--code_no_check-->
-
 ```ts
 import { GridDataSource } from './GridDataSource';
 
@@ -1827,7 +1846,6 @@ This example demonstrates how to adjust the number of columns in the grid with a
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 import { GridDataSource } from './GridDataSource';
@@ -1909,7 +1927,6 @@ struct GridExample {
 ![pinch](figures/grid-pinch.gif)
 
 ### Example 8: Using Adaptive Column Count Settings
-
 This example shows the usage of **auto-fill**, **auto-fit**, and **auto-stretch** in [columnsTemplate](#columnstemplate).
 
 ```ts
@@ -1979,7 +1996,6 @@ struct GridColumnsTemplate {
 ![gridColumnsTemplate](figures/gridColumnsTemplate.png)
 
 ### Example 9: Setting Grid Item Heights Based on the Tallest Item in the Current Row
-
 This example implements a grid that contains two columns. The grid item in each column consists of two **Column** components with determined heights and one **Text** component with an undetermined height.
 
 By default, the heights of the left and right grid items may differ; however, after the grid's [alignItems](#alignitems12) attribute is set to **GridItemAlignment.STRETCH**, the grid item with a shorter height in a row will adopt the height of the taller grid item, aligning their heights within the same row.
@@ -1987,7 +2003,6 @@ By default, the heights of the left and right grid items may differ; however, af
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 
 <!--code_no_check-->
-
 ```ts
 import { GridDataSource } from './GridDataSource';
 
@@ -2047,17 +2062,14 @@ struct Index {
 }
 
 ```
-
 ![gridAlignItems](figures/gridAlignItems.png)
 
 ### Example 10: Setting Edge Fading
-
 This example demonstrates how to enable the edge fading effect using [fadingEdge](ts-container-scrollable-common.md#fadingedge14).
 
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 // This example demonstrates how to implement a Grid component with an edge fading effect and set the length of the fading edge.
@@ -2115,7 +2127,6 @@ This example uses the [edgeEffect](#edgeeffect10) API to set the single-edge eff
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 import { GridDataSource } from './GridDataSource';
@@ -2344,7 +2355,6 @@ struct Index {
   }
 }
 ```
-
 ### Example 14: Scrolling to a Specified Position
 
 This example uses the [scrollToIndex](ts-container-scroll.md#scrolltoindex) API to scroll the **Grid** component to a specified position.
@@ -2352,7 +2362,6 @@ This example uses the [scrollToIndex](ts-container-scroll.md#scrolltoindex) API 
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 
 <!--code_no_check-->
-
 ```ts
 import { GridDataSource } from './GridDataSource';
 @Entry
@@ -2406,8 +2415,8 @@ struct GridScrollToIndexSample {
   }
 }
 ```
-
 ![grid_scrollToIndex](figures/gridScrollToIndex.gif)
+
 
 ### Example 15: Implementing Panning Selection in Grid
 
@@ -2416,7 +2425,6 @@ This example uses the [PanGesture](./ts-basic-gestures-pangesture.md#pangesture-
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 import { GridDataSource } from './GridDataSource';
@@ -2991,7 +2999,6 @@ This example demonstrates dragging **GridItem** components to the **Grid** compo
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 import { GridDataSource } from './GridDataSource';
@@ -3063,7 +3070,6 @@ struct Example {
 In API version 22 and later versions, this example shows how to configure the number of columns in the **Grid** component based on breakpoints.
 
 <!--code_no_check-->
-
 ```ts
 // Index.ets
 // xxx.ets
@@ -3109,7 +3115,6 @@ struct GridExample {
   }
 }
 ```
-
 When the grid width is within the breakpoint range of sm or smaller, two columns are displayed.
 
 ![sm_grid](figures/grid_itemFillPolicy_SM.png)
@@ -3129,7 +3134,6 @@ This example demonstrates how to obtain the total content size. This functionali
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 
 <!--code_no_check-->
-
 ```ts
 import { GridDataSource } from './GridDataSource';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3207,7 +3211,6 @@ struct GridExample {
   }
 }
 ```
-
 ![gridContentSize](figures/gridContentSize.gif)
 
 ### Example 20: Setting the Multi-selection Gather Animation
@@ -3219,7 +3222,6 @@ Since API version 23, the [editModeOptions](#editmodeoptions23) API is added to 
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 import { GridDataSource } from './GridDataSource';
@@ -3325,7 +3327,6 @@ Since API version 26.0.0, the **Grid** component adds the [enableEditMode](#enab
 For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 import { GridDataSource } from './GridDataSource';
@@ -3627,3 +3628,141 @@ struct GridOnMoveExample {
 ```
 
 ![grid-onmove-drag](figures/grid-onmove-drag.gif)
+
+### Example 23: Setting Scroll Snap Alignment
+
+This example uses the [scrollSnapStrategy](#scrollsnapstrategy) API to set **ScrollSnapAlign.CENTER**, so that items are automatically aligned to the center of the viewport when scrolling ends.
+
+Since API version 26.1.0, the **scrollSnapStrategy** API is added.
+
+For details about **GridDataSource** and the complete code, see [Example 2: Implementing a Scrollable Grid with Scroll Events](#example-2-implementing-a-scrollable-grid-with-scroll-events).
+
+<!--code_no_check-->
+```ts
+// xxx.ets
+// Set ScrollSnapAlign.CENTER to align the item to the center of the viewport when scrolling ends.
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridSnapExample {
+  numbers: GridDataSource = new GridDataSource([]);
+  scroller: Scroller = new Scroller();
+
+  aboutToAppear() {
+    let list: string[] = [];
+    for (let i = 0; i < 50; i++) {
+      list.push(i.toString());
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Text('Grid').fontColor(0x000000).fontSize(16).width('90%')
+      Grid(this.scroller) {
+        LazyForEach(this.numbers, (item: string) => {
+          GridItem() {
+            Text(item)
+              .fontSize(20)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(150)
+              .textAlign(TextAlign.Center)
+          }
+        }, (index: number) => index.toString())
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(20)
+      .height(400)
+      .scrollSnapStrategy(ScrollSnapAlign.CENTER)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+![scrollSnapStrategy-grid](figures/scrollSnapStrategy-grid.gif)
+
+### Example 24: Customizing Scroll Snap Position
+
+This example customizes the snap position of the Grid by implementing the [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) API. Every two rows (240 vp) form a group, and after a fling, the **Grid** snaps along the original direction.
+
+Since API version 26.1.0, the **ScrollSnapOffsetProvider** API is added.
+
+```ts
+// xxx.ets
+const ITEM_HEIGHT: number = 100;
+const ROW_GAP: number = 20;
+const SNAP_INTERVAL: number = 2 * (ITEM_HEIGHT + ROW_GAP);
+
+class GridSnapProvider implements ScrollSnapOffsetProvider {
+  private scroller: Scroller;
+
+  constructor(scroller: Scroller) {
+    this.scroller = scroller;
+  }
+
+  calculateApproachOffset(velocity: number, decayOffset: number): number {
+    // Return the distance. The scrolling direction is handled by the component based on the velocity.
+    return velocity === 0 ? 0 : Math.min(decayOffset, SNAP_INTERVAL);
+  }
+
+  calculateSnapOffset(velocity: number): number {
+    const offset = this.scroller.currentOffset().yOffset;
+    const group = offset / SNAP_INTERVAL;
+    let targetGroup = Math.round(group);
+    if (velocity > 0) {
+      targetGroup = Math.ceil(group);
+    } else if (velocity < 0) {
+      targetGroup = Math.floor(group);
+    }
+    return Math.max(0, targetGroup * SNAP_INTERVAL);
+  }
+}
+
+@Entry
+@Component
+struct GridSnapProviderExample {
+  private scroller: Scroller = new Scroller();
+  private provider: ScrollSnapOffsetProvider = new GridSnapProvider(this.scroller);
+  private numbers: number[] = [];
+
+  aboutToAppear(): void {
+    for (let index = 0; index < 40; index++) {
+      this.numbers.push(index);
+    }
+  }
+
+  build() {
+    Column({ space: 8 }) {
+      Text('Grid').fontColor(0x000000).fontSize(16)
+      Grid(this.scroller) {
+        ForEach(this.numbers, (item: number) => {
+          GridItem() {
+            Text(item.toString())
+              .fontSize(20)
+              .width('100%')
+              .height('100%')
+              .textAlign(TextAlign.Center)
+          }
+          .height(ITEM_HEIGHT)
+          .backgroundColor(0xF9CF93)
+        }, (item: number) => item.toString())
+      }
+      .columnsTemplate('1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(ROW_GAP)
+      .width('100%')
+      .height(400)
+      .backgroundColor(0xFAEEE0)
+      .scrollSnapStrategy(this.provider)
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+![scrollSnapStrategy-provider-grid](figures/scrollSnapStrategy-provider-grid.gif)
+<!--no_check-->

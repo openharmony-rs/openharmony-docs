@@ -1,12 +1,11 @@
 # UIExtensionComponent (System API)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7a9882ee5242543d92919229e2e1f78806e99a9b translatedAt=2026-08-21T02:28:17.848Z pushedAt=2026-08-22T03:24:31.781Z -->
+<!-- md-trans-meta sourceCommit=33898b66eb6c0bf66810bb0d90faa36b55a4ad07 translatedAt=2026-11-03T02:23:09.918Z pushedAt=2026-11-13T01:05:59.976Z nl=1 -->
 
 **UIExtensionComponent** is used to embed UIs provided by other apps in the local page. The displayed content runs in another process, and the local app does not participate in its layout or rendering. Through process isolation, secure UI isolation and crash isolation between apps can be achieved, while supporting independent development and deployment of modules.
 
@@ -28,7 +27,8 @@ The launched Ability (app component) must be a UI-enabled Ability extension. For
 
 The width and height of the component must be explicitly set to non-zero valid values.
 
-The scenario where scrolling continues after the edge is reached is not supported. When both the **UIExtensionComponent** host and the UIExtensionAbility support content scrolling, gesture-based scrolling will cause simultaneous responses from both inside and outside the **UIExtensionComponent**. This includes, but is not limited to, scrollable containers such as [Scroll](ts-container-scroll.md), [Swiper](ts-container-swiper.md), [List](ts-container-list.md), and [Grid](ts-container-grid.md). For details about how to avoid the simultaneous scrolling inside and outside the **UIExtensionComponent**, see [Example 2](#example-2-isolating-scrolling-inside-and-outside-of-uiextensioncomponent).
+The scenario where scrolling continues after the edge is reached is not supported. When both the **UIExtensionComponent** host and the UIExtensionAbility support content scrolling, gesture-based scrolling will cause simultaneous responses from both inside and outside the **UIExtensionComponent**. This includes, but is not limited to, scrollable containers such as [Scroll](ts-container-scroll.md), [Swiper](ts-container-swiper.md), [List](ts-container-list.md), and [Grid](ts-container-grid.md). For details about how to avoid the simultaneous scrolling inside and outside the **UIExtensionComponent**, see [Example 2](#example-2-isolation-handling-when-both-inside-and-outside-of-uiextensioncomponent-respond-to-scrolling-simultaneously).
+
 
 ## Child Components
 
@@ -81,7 +81,7 @@ Invoked when the connection to the remote UIExtensionAbility is set up, that is,
 
 onReceive(callback: ReceiveCallback)
 
-Invoked when the data sent by the started UIExtensionAbility is received. This API uses an asynchronous callback to return the result.
+Invoked when the data sent by the launched UIExtensionAbility is received. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -91,7 +91,7 @@ Invoked when the data sent by the started UIExtensionAbility is received. This A
 
 | Name                      | Type  | Mandatory| Description                                                        |
 | ---------------------------- | ------ | ------ | ------------------------------------------------------- |
-| callback | [ReceiveCallback](#receivecallback18) | Yes | Callback invoked to return the data received from the launched Ability. |
+| callback | [ReceiveCallback](#receivecallback18) | Yes | Callback invoked to return the data received from the launched Ability. Before API version 18, the type of callback is [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\>. |
 
 ### onResult<sup>(deprecated)</sup>
 
@@ -118,11 +118,11 @@ The result data of the launched **Ability** can be processed in this callback. F
 
 onRelease(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number>)
 
-Invoked when the started UIExtensionAbility is destroyed.
+Invoked when the launched UIExtensionAbility is destroyed.
 
-If the UIExtensionAbility is destroyed correctly by calling **terminateSelfWithResult** or **terminateSelf**, the value of **releaseCode** is **0**.
+If the **UIExtensionAbility** is destroyed correctly by calling **terminateSelfWithResult** or **terminateSelf**, the value of **code** is **0**.
 
-If the UIExtensionAbility is destroyed because it crashes or is forced stopped, the value of **releaseCode** is **1**.
+If the **UIExtensionAbility** is destroyed because it crashes or is forced stopped, the value of **code** is **1**.
 
 > **NOTE**
 > This API is supported since API version 10 and deprecated since API version 12. You are advised to use [onTerminated](#onterminated12) and [onError](#onerror) instead.
@@ -157,7 +157,7 @@ Invoked when an error occurs during the running of the UIExtensionAbility. Throu
 
 onTerminated(callback: Callback&lt;TerminationInfo&gt;)
 
-Called when the started UIExtensionAbility is terminated by calling **terminateSelfWithResult** or **terminateSelf**.
+Called when the launched UIExtensionAbility is terminated by calling **terminateSelfWithResult** or **terminateSelf**.
 
 **System API**: This is a system API.
 
@@ -171,14 +171,14 @@ Called when the started UIExtensionAbility is terminated by calling **terminateS
 
 > **NOTE**
 >
-> - If the UIExtensionAbility is terminated by calling **terminateSelfWithResult**, the carried information is passed as arguments into the callback function.
-> - If the UIExtensionAbility is terminated by calling **terminateSelf**, the input parameters **code** and **want** in the callback will take their default values: **0** and **undefined**, respectively.
+> - If the **UIExtensionAbility** is terminated by calling `terminateSelfWithResult`, the carried information is passed as arguments into the callback function.
+> - If the **UIExtensionAbility** is terminated by calling `terminateSelf`, the input parameters **code** and **want** in the callback will take their default values: **0** and **undefined**, respectively.
 
 ### onDrawReady<sup>18+</sup>
 
 onDrawReady(callback: Callback\<void>)
 
-Triggered when the started UIExtensionAbility draws the first frame.
+Triggered when the launched UIExtensionAbility draws the first frame.
 
 **System API**: This is a system API.
 
@@ -192,7 +192,7 @@ Triggered when the started UIExtensionAbility draws the first frame.
 
 ### TerminationInfo<sup>12+</sup>
 
-Triggered when the started UIExtensionAbility exits properly by calling **terminateSelfWithResult** or **terminateSelf**.
+Triggered when the launched UIExtensionAbility exits properly by calling **terminateSelfWithResult** or **terminateSelf**.
 
 **System API**: This is a system API.
 
@@ -200,14 +200,13 @@ Triggered when the started UIExtensionAbility exits properly by calling **termin
 
 |  Name| Type  | Read-Only|Optional| Description                                                |
 | ------- | ------ | ------ | ------ |---------------------------------------------------  |
-| code    | number | No | No | Result code returned when the launched **UIExtensionAbility** exits. The result code is determined by the data passed in when `terminateSelfWithResult` or `terminateSelf` is called. |
+| code    | number | No | No | Result code returned when the launched **UIExtensionAbility** exits. When the **UIExtensionAbility** exits by calling `terminateSelfWithResult`, the result code is determined by the passed-in **resultCode**; when it exits by calling `terminateSelf`, the result code is the default value **0**. |
 | want    | [Want](../../apis-ability-kit/js-apis-app-ability-want.md)   | No | Yes | Data returned when the launched **UIExtensionAbility** exits. The default value is **undefined**.   |
 
 ## ReceiveCallback<sup>18+</sup>
-
 type ReceiveCallback = [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\>
 
-Triggered to encapsulate the data sent by the started ability.
+Triggered to encapsulate the data sent by the launched ability.
 
 **System API**: This is a system API.
 
@@ -215,7 +214,7 @@ Triggered to encapsulate the data sent by the started ability.
 
 | Type  | Description                                                        |
 | ------ | --------------------------------------------------------- |
-| [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\> | Callback invoked to encapsulate the data sent by the started ability.                |
+| [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<Record\<string, Object\>\> | Callback invoked to encapsulate the data sent by the launched ability.                |
 
 ## UIExtensionOptions<sup>11+</sup>
 
@@ -224,6 +223,7 @@ Used to pass optional construction parameters when the **UIExtensionComponent** 
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 
 | Name              | Type                            | Read-Only| Optional| Description                                                                                                     |
 | ----                 | ---------------------------------------- | ---- | ---- | ---------------                                                                                               |
@@ -309,7 +309,6 @@ Used in the scenario where the component user sends data to the launched Ability
 **Error codes**
 
 For details about the error codes, see [UIExtension Error Codes](../errorcode-uiextension.md).
-
 | ID| Error Message|
 | ------- | --------|
 | 100011 | No callback has been registered to respond to this request. |
@@ -319,7 +318,7 @@ For details about the error codes, see [UIExtension Error Codes](../errorcode-ui
 
 on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
-Subscribes to asynchronous registration of the started UIExtensionAbility through the connection established between the component host and UIExtensionAbility.
+Subscribes to asynchronous registration of the launched UIExtensionAbility through the connection established between the component host and UIExtensionAbility.
 
 > **NOTE**
 > **asyncReceiverRegister** and **syncReceiverRegister** subscribe to the asynchronous and synchronous data receiving registration events of the extension Ability, respectively. When the extension Ability calls **setReceiveDataCallback** to register asynchronous receiving, the **asyncReceiverRegister** callback is triggered. When the extension Ability calls **setReceiveDataForResultCallback** to register synchronous receiving, the **syncReceiverRegister** callback is triggered. Developers should select the corresponding event to subscribe to based on the data receiving mode used by the extension Ability.
@@ -339,7 +338,7 @@ Subscribes to asynchronous registration of the started UIExtensionAbility throug
 
 on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
-Subscribes to synchronous registration of the started UIExtensionAbility through the connection established between the component host and UIExtensionAbility.
+Subscribes to synchronous registration of the launched UIExtensionAbility through the connection established between the component host and UIExtensionAbility.
 
 **System API**: This is a system API.
 
@@ -367,7 +366,7 @@ Used in the scenario where the component user unsubscribes from the asynchronous
 | Name | Type| Mandatory| Description|
 | ------ | -------- | ----- | ------- |
 | type   | string | Yes | Event type. The value is **'asyncReceiverRegister'**, which indicates unsubscribing from the asynchronous registration callback of the extension Ability. |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | No | Callback for the asynchronous registration event. If this parameter is left empty, all asynchronous registration callbacks of the extension Ability are unsubscribed.<br> If it is not empty, the corresponding asynchronous registration callback is unsubscribed. |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | No | Callback function. If empty, unsubscribes from the callbacks triggered after the asynchronous registration of all extension Abilities.<br> If not empty, unsubscribes from the corresponding asynchronous registration callback. |
 
 ### off('syncReceiverRegister')<sup>11+</sup>
 
@@ -384,7 +383,7 @@ Used in the scenario where the component user unsubscribes from the synchronous 
 | Name | Type| Mandatory| Description|
 | ------ | -------- | ----- | ------- |
 | type   | string | Yes | Event type. The value is **'syncReceiverRegister'**, which indicates unsubscribing from the synchronous registration callback of the extension Ability. |
-| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | No | Callback for the synchronous registration event. If this parameter is left empty, it indicates unsubscribing from all callbacks triggered after the synchronous registration of the extension Ability.<br> If this parameter is not empty, it indicates unsubscribing from the corresponding synchronous registration callback. |
+| callback | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<[UIExtensionProxy](#uiextensionproxy)> | No | Callback function. If empty, it means unsubscribing from all callbacks triggered after synchronous registration of all extension Abilities.<br> If not empty, it means unsubscribing from the corresponding synchronous registration callback. |
 
 ## Example
 
@@ -395,7 +394,6 @@ The **UIExtensionComponent** component can be used by both the host and provider
 **Component host**
 
 The content of the user's entry page Index.ets is as follows:
-
 ```ts
 import { ComponentContent } from '@kit.ArkUI';
 
@@ -426,8 +424,8 @@ struct Second {
   @State hei: number = 300;
   @State windowStrategy: WindowModeFollowStrategy = WindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE;
   private proxy: UIExtensionProxy | null = null;
-  private initPlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(LoadingBuilder), new Params);
-  private areaChangePlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(AreaChangePlaceholderBuilder), new Params);
+  private initPlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(LoadingBuilder), new Params());
+  private areaChangePlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(AreaChangePlaceholderBuilder), new Params());
 
   aboutToDisappear(): void {
     console.info('start do proxy off!');
@@ -458,7 +456,7 @@ struct Second {
           .height(this.hei)
           .border({width: 5, color: Color.Blue})
           .onReceive((data) => {
-            console.info('Lee onReceive, for test');
+            console.info('onReceive, for test');
             this.message3 = JSON.stringify(data['data']);
           })
           .onError((info) => {
@@ -505,13 +503,10 @@ function syncRegisterCallback2(proxy: UIExtensionProxy) {
   console.info("on invoke for test, syncRegisterCallback2, type is syncReceiverRegister");
 };
 ```
-
 **Component provider**
 
 The provider has three files that need to be modified:
-
 - /src/main/ets/uiextensionability/UIExtensionProvider.ets
-
 ```ts
 import { UIExtensionAbility, UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
@@ -550,7 +545,6 @@ export default class UIExtAbility extends UIExtensionAbility {
 ```
 
 - Entry page file of the provider's extension Ability: **/src/main/ets/pages/extension.ets**
-
 ```ts
 import { UIExtensionContentSession } from '@kit.AbilityKit';
 
@@ -660,7 +654,6 @@ function onReceiveDataForResult(data: Record<string, Object>): Record<string, Ob
 ```
 
 - The provider's extension Ability. Add the corresponding configuration to the module configuration file **/src/main/module.json5**.
-
 ```json
 {
     "name": "UIExtensionProvider",
@@ -672,7 +665,7 @@ function onReceiveDataForResult(data: Record<string, Object>): Record<string, Ob
 }
 ```
 
-### Example 2: Isolating Scrolling Inside and Outside of UIExtensionComponent
+### Example 2: Isolation Handling When Both Inside and Outside of UIExtensionComponent Respond to Scrolling Simultaneously
 
 This example demonstrates a scenario where both the **UIExtensionComponent** host and the UIExtensionAbility use [Scroll](ts-container-scroll.md) containers. By setting gesture interception on **UIExtensionComponent**, it achieves that external components do not respond to scrolling when the internal layer of the UIExtensionComponent is being scrolled.
 
@@ -686,10 +679,9 @@ Before running, ensure that an ability whose **bundleName** is **com.example.new
 
 The entry point file **UIExtensionProvider.ets** and the module configuration file **UIExtensionProvider.ets** are identical to those in [Example 1](#example-1-loading-a-uiextension).
 
-The provider's extension Ability and module configuration file are the same as the module.json5 code of the extension module in [Example 1](#example-1-loading-a-uiextension).
+The module configuration file of the provider's extension Ability is the same as the **module.json5** code of the extension module in [Example 1](#example-1-loading-a-uiextension).
 
 - Example of the user's component usage:
-
 ```ts
 @Entry
 @Component
@@ -722,13 +714,13 @@ struct Second {
               })
               .width(this.wid)
               .height(this.hei)
-               // Use gesture interception to prevent external components from responding to scrolling.
+              // Set gesture interception so that the outside of UIExtensionComponent does not respond to scrolling.
               .gesture(PanGesture().onActionStart(() => {
                 console.info('UIExtensionComponent PanGesture onAction');
               }))
               .border({ width: 5, color: Color.Blue })
               .onReceive((data) => {
-                console.info('Lee onReceive, for test');
+                console.info('onReceive, for test');
                 this.message3 = JSON.stringify(data['data']);
               })
               .onTerminated((info) => {
@@ -763,7 +755,6 @@ struct Second {
 ```
 
 - extension.ets (entry page file of the provider's UIExtensionAbility)
-
 ```ts
 @Entry
 @Component

@@ -1,12 +1,11 @@
 # AlphabetIndexer
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @Hu_ZeQi-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7c02fd7d3bf79d983e83eb56a10b2587305ecd75 translatedAt=2026-07-30T02:35:52.464Z pushedAt=2026-08-01T06:42:55.885Z -->
+<!-- md-trans-meta sourceCommit=48cb290caabd2dc21e273d24c62670726f51cd55 translatedAt=2026-11-03T01:55:12.560Z pushedAt=2026-11-13T01:05:59.921Z nl=1 -->
 
 The **AlphabetIndexer** component can be used with container components to quickly locate the display area of the container based on logical structure. It is suitable for scenarios requiring quick content location, such as contacts, city lists, and category lists.
 
@@ -20,9 +19,11 @@ The **AlphabetIndexer** component can be used with container components to quick
 >
 > - Since API version 12, haptic feedback is enabled by default. Before using it, configure the vibration permission as described in [enableHapticFeedback](#enablehapticfeedback12).
 
+
 ## Child Components
 
 Not supported
+
 
 ## APIs
 
@@ -79,7 +80,7 @@ Sets the text color for unselected items.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description                               |
 | ------ | ------------------------------------------ | ---- | ----------------------------------- |
@@ -95,7 +96,7 @@ Sets the text color for the selected item.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description                                     |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
@@ -111,7 +112,7 @@ Sets the text color for the primary index item in the pop-up window.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------- |
@@ -127,7 +128,7 @@ Sets the background color of the selected item.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description                                     |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
@@ -148,7 +149,7 @@ If **popupBackgroundBlurStyle** is actively called with a valid **value**, the d
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -164,7 +165,7 @@ Sets whether to display the pop-up window.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                  |
 | ------ | ------- | ---- | -------------------------------------- |
@@ -180,7 +181,7 @@ Sets the text style for the selected item.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
@@ -196,7 +197,7 @@ Sets the text style for the primary index item in the pop-up window.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
@@ -212,7 +213,7 @@ Sets the text style for unselected items.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
@@ -228,7 +229,7 @@ Sets the size of the index item area.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                      | Mandatory| Description                                                        |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
@@ -244,7 +245,7 @@ Sets the alignment style of the indexer pop-up window.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name              | Type                                 | Mandatory| Description                                                        |
 | -------------------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -263,7 +264,7 @@ Since API version 10, this parameter supports two-way binding through [$$](../..
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                        |
 | ------ | ------ | ---- | ---------------------------- |
@@ -279,7 +280,7 @@ Sets the position of the pop-up window relative to the midpoint of the top edge 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                             | Mandatory| Description                                                        |
 | ------ | --------------------------------- | ---- | ------------------------------------------------------------ |
@@ -297,7 +298,7 @@ Sets the text color for the selected secondary index item in the pop-up window.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description                                                 |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------------------- |
@@ -315,7 +316,7 @@ Sets the text color for the unselected secondary index items in the pop-up windo
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description                                                   |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------- |
@@ -333,7 +334,7 @@ Sets the text style for the secondary index item in the pop-up window.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                    | Mandatory| Description                                                        |
 | ------ | ------------------------ | ---- | ------------------------------------------------------------ |
@@ -343,7 +344,7 @@ Sets the text style for the secondary index item in the pop-up window.
 
 popupItemBackgroundColor(value: ResourceColor)
 
-Sets the background color for the secondary index item in the pop-up window.
+Sets the background color for the secondary index item in the pop-up window. 
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -351,7 +352,7 @@ Sets the background color for the secondary index item in the pop-up window.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                    | Mandatory| Description                                           |
 | ------ | ------------------------ | ---- | ----------------------------------------------- |
@@ -377,7 +378,7 @@ When the first index item is not **"#"**: All items ≤ 9: Full display mode (al
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | ------------------------------------------ |
@@ -395,7 +396,7 @@ Sets the radius of the index border corners in the pop-up window.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -413,7 +414,7 @@ Sets the radius of the index background border corners in the alphabetic index b
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -431,7 +432,7 @@ Sets the background blur material of the pop-up window. Before API version 26.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                        | Mandatory| Description                                                        |
 | ------ | -------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -449,7 +450,7 @@ Sets the background color for the primary index item in the pop-up window.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -494,7 +495,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 onSelected(callback:&nbsp;(index:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
-Registers the callback for the index item selection event. The callback parameter is the current selected item index.
+Registers the callback for the index item selection event. The callback parameter is the current selected item index. 
 
 > **NOTE**
 >
@@ -502,7 +503,7 @@ Registers the callback for the index item selection event. The callback paramete
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
@@ -518,7 +519,7 @@ Triggered when an index item is selected, with the callback parameter being the 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
@@ -534,7 +535,7 @@ Triggered for a secondary index item content event in the pop-up window. The cal
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -550,14 +551,13 @@ Triggered when a secondary index item in the pop-up window is selected. The call
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
 | callback  | [OnAlphabetIndexerPopupSelectCallback](#onalphabetindexerpopupselectcallback18) | Yes  | Callback used to process the secondary index selection event of the pop-up window. You need to set [usingPopup](#usingpopup) to **true** first.|
 
 ## OnAlphabetIndexerSelectCallback<sup>18+</sup>
-
 type OnAlphabetIndexerSelectCallback = (index: number) => void
 
 Represents the callback invoked when an index item is selected.
@@ -569,13 +569,11 @@ Represents the callback invoked when an index item is selected.
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-
 | Name | Type  | Mandatory| Description   |
 | ------- | ----- | ---- | ------ |
 | index    | number  | Yes  | Index of the currently selected index item.|
 
 ## OnAlphabetIndexerPopupSelectCallback<sup>18+</sup>
-
 type OnAlphabetIndexerPopupSelectCallback = (index: number) => void
 
 Represents the callback invoked when a secondary index item in the pop-up window is selected.
@@ -587,13 +585,11 @@ Represents the callback invoked when a secondary index item in the pop-up window
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-
 | Name | Type  | Mandatory| Description   |
 | ------- | ----- | ---- | ------ |
 | index   | number  | Yes  | Index of the currently selected secondary index item in the pop-up window.|
 
 ## OnAlphabetIndexerRequestPopupDataCallback<sup>18+</sup>
-
 type OnAlphabetIndexerRequestPopupDataCallback = (index: number) => Array\<string\>
 
 Represents the callback invoked when an index item is selected and [usingPopup](#usingpopup) is set to **true**.
@@ -605,19 +601,17 @@ Represents the callback invoked when an index item is selected and [usingPopup](
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-
 | Name | Type  | Mandatory| Description   |
 | ------- | ----- | ---- | ------ |
 | index   | number  | Yes  | Index of the currently selected index item.|
 
 **Return value**
-
 | Type         | Description                |
 | ------------- | -------------------- |
 | Array\<string\> | Array of secondary index items to be displayed in the pop-up window. Up to 5 items can be displayed vertically, with scrollable support for more items.|
 
 ## Example
-
+ 
 ### Example 1: Setting the Display Text for the Index Pop-up Window
 
 This example demonstrates how to customize the display text for the index pop-up window using the [onRequestPopupData](#onrequestpopupdata8) event.
@@ -1006,3 +1000,120 @@ struct AlphabetIndexerSample {
 ```
 
 ![alphabetIndexerBlurStyleSample](figures/alphabetIndexerBlurStyleSample.gif)
+
+
+### Example 4: Setting the Immersive Light Effect of the Popup
+
+This example demonstrates the immersive light effect of the index bar popup.
+
+The illustration for this example shows the strong effect on a high-computing-power device. The immersive light effect of the component is adaptively adjusted based on the device computing power and the immersive light effect set by the user in the system, so you do not need to perform additional adaptation.
+
+Since API version 26.0.0, when neither [popupBackground](#popupbackground) nor [popupBackgroundBlurStyle](#popupbackgroundblurstyle12) of the index bar is explicitly set (or the **value** passed in is **undefined**), the popup enables the immersive light effect by default, with the default material style being **THICK**.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct AlphabetIndexerSample {
+  private arrayA: string[] = ['An'];
+  private arrayB: string[] = ['Bu', 'Bai', 'Bao', 'Bi', 'Bing'];
+  private arrayC: string[] = ['Cao', 'Cheng', 'Chen', 'Cui'];
+  private arrayL: string[] = ['Liu', 'Li', 'Lou', 'Liang', 'Lei', 'Lv', 'Liao', 'Lu'];
+  private value: string[] = ['#', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
+    'H', 'I', 'J', 'K', 'L', 'M', 'N',
+    'O', 'P', 'Q', 'R', 'S', 'T', 'U',
+    'V', 'W', 'X', 'Y', 'Z'];
+
+  build() {
+    Stack({ alignContent: Alignment.Start }) {
+      Row() {
+        List({ space: 20, initialIndex: 0 }) {
+          ForEach(this.arrayA, (item: string) => {
+            ListItem() {
+              Text(item)
+                .width('80%')
+                .height('5%')
+                .fontSize(30)
+                .textAlign(TextAlign.Center)
+            }
+          }, (item: string) => item)
+
+          ForEach(this.arrayB, (item: string) => {
+            ListItem() {
+              Text(item)
+                .width('80%')
+                .height('5%')
+                .fontSize(30)
+                .textAlign(TextAlign.Center)
+            }
+          }, (item: string) => item)
+
+          ForEach(this.arrayC, (item: string) => {
+            ListItem() {
+              Text(item)
+                .width('80%')
+                .height('5%')
+                .fontSize(30)
+                .textAlign(TextAlign.Center)
+            }
+          }, (item: string) => item)
+
+          ForEach(this.arrayL, (item: string) => {
+            ListItem() {
+              Text(item)
+                .width('80%')
+                .height('5%')
+                .fontSize(30)
+                .textAlign(TextAlign.Center)
+            }
+          }, (item: string) => item)
+        }
+        .width('30%')
+        .height('100%')
+
+        Column() {
+          Column() {
+            AlphabetIndexer({ arrayValue: this.value, selected: 0 })
+              .usingPopup(true) // Display a popup when an index item is selected.
+              .alignStyle(IndexerAlign.Left) // The popup is displayed on the right side of the index bar.
+              .popupItemBorderRadius(24) // Set the corner radius of the popup index item background.
+              .itemBorderRadius(14) // Set the corner radius of the index item background.
+              .popupTitleBackground(0xCCCCCC) // Set the background color of the first-level index item in the popup.
+              .onSelect((index: number) => {
+                console.info(this.value[index] + ' Selected!');
+              })
+              .onRequestPopupData((index: number) => {
+                // When A is selected, the second-level index text list in the popup displays arrayA corresponding to A. The same applies to B, C, and L.
+                // When other index items are selected, the second-level index text list in the popup is empty, and the popup displays only the first-level index item.
+                if (this.value[index] == 'A') {
+                  return this.arrayA;
+                } else if (this.value[index] == 'B') {
+                  return this.arrayB;
+                } else if (this.value[index] == 'C') {
+                  return this.arrayC;
+                } else if (this.value[index] == 'L') {
+                  return this.arrayL;
+                } else {
+                  return [];
+                }
+              })
+              .onPopupSelect((index: number) => {
+                console.info('onPopupSelected:' + index);
+              })
+          }
+          .height('80%')
+        }
+        .width('70%')
+      }
+      .width('100%')
+      .height('100%')
+      // Replace $r('app.media.image') with the actual image resource file as required.
+      .backgroundImage($r("app.media.image"))
+    }
+  }
+}
+```
+
+| Comparison | Without system material | With system material |
+| -------- | -------- | -------- |
+| Example | <!--Del--> <!--DelEnd--> | <!--Del--> <!--DelEnd--> |

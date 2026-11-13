@@ -1,11 +1,11 @@
 # Visible Area Change Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-09-02T12:21:50.323Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:51:30.866Z pushedAt=2026-11-13T01:06:00.148Z nl=1 -->
 
 The visible area change event of a component refers to the change in the visual portion of the component on the screen. It can be used to determine whether the component is completely or partially displayed on the screen. It is usually applicable to scenarios such as advertisement exposure tracing.
 
@@ -140,7 +140,7 @@ Parameters related to the visible area change.
 
 | Name| Type                                               | Read-Only| Optional| Description                                                        |
 | ------ | --------------------------------------------------- | ---- | -------- | ------------------------------------------------------------ |
-| ratios | Array&lt;number&gt;                                 | No | No   | Threshold array. Each threshold represents the ratio of the component's visible area (that is, the area of the component in the screen display area; only the area within the parent component is calculated, and the part beyond the parent component is not calculated) to the component's own area. The value range of each threshold is [0.0, 1.0]. If the threshold set by the developer is less than 0.0, the actual value is 0.0; if the threshold set is greater than 1.0, the actual value is 1.0.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
+| ratios | Array&lt;number&gt;                                 | No  | No   | Threshold array. Each threshold represents the ratio of the visible area of the component to its own area. When **measureFromViewport** is not set or is set to false, only the area within the parent component is calculated, and the part beyond the parent component is not calculated. When **measureFromViewport** is set to true, whether the part beyond the parent component is included in the visible area calculation is determined by the clip attribute of the parent component. The value range of each threshold is [0.0, 1.0]. If a threshold set by the developer is less than 0.0, the actual value is 0.0. If a threshold set by the developer is greater than 1.0, the actual value is 1.0.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
 | expectedUpdateInterval | number | No | Yes | Defines the calculation interval expected by the developer, used to control the calculation frequency of the visible area ratio, in ms. When more timely perception of visible area changes is required, a smaller interval can be set; when many nodes are registered or more attention is paid to reducing the calculation frequency and power consumption, a larger interval is recommended. If not set, the default value 1000 is used. When this field is less than 100 or is NaN, the default value is 100; when this field is greater than 2^31-1, the default value is 2^31-1.<br>Default value: 1000 <br>**Atomic service API:** Since API version 12, this API is supported in atomic services.|
 | measureFromViewport<sup>22+</sup> | boolean | No | Yes | Sets the visible area calculation mode.<br>When measureFromViewport is set to true, the system considers the [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute setting of the parent component when calculating the visible area of this component. If the parent component's [clip](./ts-universal-attributes-sharp-clipping.md#clip12) is false, the child components within it are considered to be able to display beyond its area, so the area beyond the parent component is also regarded as the visible area and included in the calculation; if the parent component's [clip](./ts-universal-attributes-sharp-clipping.md#clip12) is set to true, the area of the component beyond the parent component is clipped and cannot be displayed, so it is regarded as the invisible area for calculation. When measureFromViewport is set to false, the impact of [clip](./ts-universal-attributes-sharp-clipping.md#clip12) is not considered, and the part of the component beyond the parent component is directly regarded as the invisible area.<br>Default value: false <br>When measureFromViewport is set to true, if the ancestor node sets the [scale](ts-universal-attributes-transformation.md#scale) attribute, the component's visible ratio is calculated correctly.<br>**Atomic service API:** Since API version 22, this API is supported in atomic services.|
 
@@ -385,7 +385,7 @@ struct OnVisibleAreaChangeSample {
 
   build() {
     Column() {
-      Text(`onVisibleChange1 with measureFromViewport \nratio: ${this.ratio1}`)
+      Text(`onVisibleAreaChange1 and onVisibleAreaApproximateChange1 with measureFromViewport \nratio: ${this.ratio1}`)
       Column() {
         Row() {
           Row() {
@@ -416,7 +416,7 @@ struct OnVisibleAreaChangeSample {
       .height(200)
       .width(200)
 
-      Text(`onVisibleChange2 without measureFromViewport \nratio: ${this.ratio2}`)
+      Text(`onVisibleAreaChange2 and onVisibleAreaApproximateChange2 without measureFromViewport \nratio: ${this.ratio2}`)
       Column() {
         Row() {
           Row() {
@@ -444,7 +444,7 @@ struct OnVisibleAreaChangeSample {
       .height(200)
       .width(200)
 
-      Text(`parent set clip(true) onVisibleChange3 with measureFromViewport \nratio: ${this.ratio3}`)
+      Text(`parent set clip(true) onVisibleAreaChange3 and onVisibleAreaApproximateChange3 with measureFromViewport \nratio: ${this.ratio3}`)
       Column() {
         Row() {
           Row() {
@@ -454,7 +454,7 @@ struct OnVisibleAreaChangeSample {
           .height(120)
           .width(120)
           .offset({ x: 0, y: 60 })
-          // If measureFromViewport is set to true and clip(true) is set for the parent component, any area of the child component that extends beyond its parent component regarded as an invisible area.
+          // If measureFromViewport is set to true and clip(true) is set for the parent component, any area of the child component that extends beyond its parent component is regarded as an invisible area.
           .onVisibleAreaApproximateChange({
             ratios: [0.0, 1.0],
             expectedUpdateInterval: 500,

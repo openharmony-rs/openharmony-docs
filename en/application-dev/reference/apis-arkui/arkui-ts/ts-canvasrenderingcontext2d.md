@@ -1,12 +1,11 @@
 # CanvasRenderingContext2D
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7c884c9f6dfb342890791e2b7e204f38a62dbc15 translatedAt=2026-07-30T02:32:52.747Z pushedAt=2026-08-04T10:38:04.633Z -->
+<!-- md-trans-meta sourceCommit=f7759f2de2c7e80ce9af21b23ed944c517949c82 translatedAt=2026-11-03T01:49:20.042Z pushedAt=2026-11-13T01:05:59.898Z nl=1 -->
 
 **CanvasRenderingContext2D** is the 2D drawing context object of the **Canvas** component, used for custom drawing on the **Canvas** component. It supports drawing shapes (rectangles, circles, ellipses, paths, etc.), text, images, gradients, shadows, and many other drawing types, and is suitable for scenarios such as data visualization, game development, image editing, and custom UI drawing. With this object, developers can flexibly control the drawing process to achieve complex 2D graphic effects.
 
@@ -139,14 +138,14 @@ Creates a data URL that contains a representation of an image. This API involves
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type  | Mandatory | Description |
 | ------- | ------ | ---- | ---------------------------------------- |
 | type    | string | No  | Used to specify the image format.<br>Available options: **"image/png"** (lossless compression, suitable for scenarios requiring precise pixels), **"image/jpeg"** (lossy compression, suitable for photo-like images), **"image/webp"** (efficient compression, suitable for network transmission scenarios).<br>If abnormal values **undefined** and **null** are passed in, the default value is used.<br>Default value: **image/png**            |
 | quality | any | No  | When the image format is set to **image/jpeg** or **image/webp**, specifies the image quality in the range from 0 to 1. 0-0.5 is suitable for fast transmission or low-bandwidth scenarios, 0.6-0.8 is suitable for common scenarios, and 0.9-1.0 is suitable for high-quality requirements. If the value is out of range, the default value 0.92 is used.<br>If abnormal values **undefined**, **null**, **NaN**, and **Infinity** are passed in, the default value is used.<br>Default value: **0.92** |
 
-**Return value**
+**Return value** 
 
 | Type    | Description       |
 | ------ | --------- |
@@ -182,7 +181,6 @@ struct CanvasExample {
   }
 }
 ```
-
 ![toDataURL](figures/toDataURL.png)
 
 ## on('onAttach')<sup>13+</sup>
@@ -218,9 +216,9 @@ For details about the following error codes, see [Universal Error Codes](../../e
 > When a **CanvasRenderingContext2D** object is bound to a **Canvas** component, the **'onAttach'** callback is triggered, indicating that [canvas](#attributes) can be obtained.<br>
 > Avoid executing drawing methods in **'onAttach'**. Ensure that the **Canvas** component has triggered '[onReady](ts-components-canvas-canvas.md#onready)' before drawing.<br>
 > Common scenarios for triggering the **'onAttach'** callback:<br>
-> 1. When a **Canvas** component is created and bound to a **CanvasRenderingContext2D** object.<br>
+> 1. When a **Canvas** component is created and bound to a **CanvasRenderingContext2D** object;<br>
 > 2. When a **CanvasRenderingContext2D** object is newly bound to a **Canvas** component.<br>
-
+  
 ## on('onDetach')<sup>13+</sup>
 
 on(type: 'onDetach', callback: Callback\<void>): void
@@ -252,7 +250,7 @@ For details about the following error codes, see [Universal Error Codes](../../e
 >
 > When a **CanvasRenderingContext2D** object is unbound from a **Canvas** component, the **'onDetach'** callback is triggered, indicating that drawing behavior should be stopped.<br>
 > Common scenarios for triggering the **'onDetach'** callback:<br>
-> 1. When a **Canvas** component is destroyed and unbound from the **CanvasRenderingContext2D** object.<br>
+> 1. When a **Canvas** component is destroyed and unbound from the **CanvasRenderingContext2D** object;<br>
 > 2. When a **CanvasRenderingContext2D** object is newly bound to a **Canvas** component, the existing binding is unbound first.<br>
 
 ## off('onAttach')<sup>13+</sup>
@@ -749,4 +747,3 @@ struct CanvasExample {
 ```
 
 ![image-canvas](figures/image-canvas.png)
-<!--no_check-->

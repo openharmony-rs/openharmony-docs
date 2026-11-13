@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=21fb9e079b1023fcdd94644c9006a9dfa64d9f96 translatedAt=2026-09-02T12:12:43.451Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-03T03:30:55.118Z pushedAt=2026-11-13T01:06:00.124Z nl=1 -->
 
 You can bind a sheet to a component through the **bindSheet** attribute. The sheet supports multiple styles, including bottom, center, follow-hand, side, and full-screen. When the component is inserted, you can set a custom or preset height to determine the sheet size. (Side sheets and full-screen sheets do not support custom heights.)
 
@@ -31,13 +31,13 @@ Binds a sheet to a component. The **isShow** parameter controls whether the shee
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                       | Mandatory| Description                                                        |
 | ------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| isShow  | boolean                          | Yes  | Whether to show the semi-modal page.<br>true: The semi-modal page is shown.<br>false: The semi-modal page is hidden.<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>Since API version 18, this parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md).|
+| isShow  | boolean                          | Yes  | Whether to show the sheet.<br>true: The sheet is shown.<br>false: The sheet is hidden.<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>Since API version 18, this parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md).|
 | builder | [CustomBuilder](ts-types.md#custombuilder8) | Yes  | Content of the sheet.                                        |
-| options | [SheetOptions](#sheetoptions)               | No  | Optional attributes of the semi-modal page. If this parameter is not passed, no additional attributes are configured for the semi-modal page, and each attribute uses its default value.                                   |
+| options | [SheetOptions](#sheetoptions)               | No  | Optional attributes of the sheet. If this parameter is not passed, no additional attributes are configured for the sheet, and each attribute uses its default value.                                   |
 
 **Return value**
 
@@ -105,7 +105,9 @@ Provides content configuration options of the sheet.
 | enableFloatingDragBar<sup>20+</sup>              | boolean | No | Yes   | Whether the drag bar is displayed in a floating manner. true means floating display, and false means non-floating display.<br>Default value: false <br> **Note:** <br>The floating effect takes effect only in the scenario where the drag bar is displayed, and the drag bar does not occupy space.<br> When title is set to [CustomBuilder](ts-types.md#custombuilder8), enableFloatingDragBar is always false.<br>The side sheet style does not support the floating drag bar.<br>**Atomic service API:** This API is supported in atomic services since API version 20. |
 | modalTransition<sup>20+</sup> | [ModalTransition](#modaltransition) | No | Yes | System transition mode of the full-screen modal style of bindSheet. This attribute takes effect only when [preferType](#sheetoptions) is set to [SheetType.CONTENT_COVER](#sheettype11) (full-screen sheet style). Setting this attribute for other sheet styles does not take effect.<br>Default value: ModalTransition.DEFAULT<br>**Atomic service API:** This API is supported in atomic services since API version 20. |
 | radiusRenderStrategy<sup>23+</sup> |  [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | No | Yes  |Sets the mode for rendering the component corners.<br>Default value: RenderStrategy.FAST <br>**Note:** When the sheet has blur set, setting OFFSCREEN (off-screen mode) can resolve the abnormal display effect in the top or top corner area of the sheet. The popup style does not support setting the component corner rendering mode.<br>**Atomic service API:** This API is supported in atomic services since API version 23.<br>**Model restriction:** This API can be used only in the stage model. |
-| systemMaterial |  [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | No | Yes  |Sets the system material of the component.<br>Default value: undefined, which clears the material effect set by this API. <br>**Note:** Different system materials correspond to different attribute effects. This API affects the background color [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), border color [borderColor](ts-universal-attributes-border.md#bordercolor), border width [borderWidth](ts-universal-attributes-border.md#borderwidth), and shadow [shadow](ts-universal-attributes-image-effect.md#shadow). Using it together with the preceding APIs is not recommended. For a usage example, see [Example 10 (Setting the System Material for a Half-Modal)](#example-10-setting-the-system-material-for-a-half-modal).<br>**Since:** 26.0.0<br>**Atomic service API:** This API is supported in atomic services since API version 26.0.0.<br>**Model restriction:** This API can be used only in the stage model. |
+| systemMaterial |  [SystemUiMaterial](ts-universal-attributes-image-effect.md#systemuimaterial) | No | Yes  |System material of the component.<br>Default value: **undefined**, which clears the material effect set by this API. <br>**Note:** <br> - Different system materials correspond to different attribute effect results. This API affects the background color [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), border color [borderColor](ts-universal-attributes-border.md#bordercolor), border width [borderWidth](ts-universal-attributes-border.md#borderwidth), and shadow [shadow](ts-universal-attributes-image-effect.md#shadow). It is not recommended to use it together with the preceding APIs. For a usage example, see [Example 10 (Setting the System Material for a Sheet)](#example-10-setting-the-system-material-for-a-sheet).<br> - Using this API to set the material gives the close button a built-in system material effect.<br>**Since:** 26.0.0<br>**Atomic service API:** Since API version 26.0.0, this API is supported in atomic services.<br>**Model restriction:** This API can be used only in the stage model. |
+| titleBarHoverMode | [SheetTitleBarHoverMode](#sheettitlebarhovermode) | No | Yes |Title bar hover mode. It takes effect only when the title bar exists.<br>Default value: **SheetTitleBarHoverMode.STANDARD**<br>**Since:** 26.0.1<br>**Atomic service API:** Since API version 26.0.1, this API is supported in atomic services.<br>**Model restriction:** This API can be used only in the stage model. |
+| scrollBarState | [BarState](ts-appendix-enums.md#barstate) | No | Yes |Display state of the Scroll bar in the sheet content area.<br>Default value: **BarState.Off**<br>**Since:** 26.0.1<br>**Atomic service API:** Since API version 26.0.1, this API is supported in atomic services.<br>**Model restriction:** This API can be used only in the stage model. |
 
 ## SheetSize
 
@@ -115,9 +117,9 @@ Enumerates the sheet height modes.
 
 | Name                     | Value   | Description                        |
 | ------------------------- | ---- | -------------------------------- |
-| MEDIUM                    | 0    | Specifies the half-modal height as 60% of the window where the half-modal is located.<br>On TV devices, the half-modal height is 50% of the window where the half-modal is located.<br>**Note:**<br>This value is invalid for a centered dialog box or a follow-hand dialog box, in which case the default height 560 vp is used.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services.   |
-| LARGE                     | 1    | Specifies the half-modal height as almost the height of the window where the half-modal is located.<br>On TV devices, the half-modal height is the height of the window where the half-modal is located.<br>**Note:**<br>This value is invalid for a centered dialog box or a follow-hand dialog box, in which case the default height 560 vp is used.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services.   |
-| FIT_CONTENT<sup>11+</sup> | 2    | Specifies the half-modal height as the height that fits the content.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br>**Note:**<br>1. FIT_CONTENT means that the half-modal container height adapts to the layout of the root node of the child builder. In this scenario, the height of the root node of the builder cannot use a percentage, because the two cannot depend on each other's layout.<br>2. If the half-modal uses the SheetSize.FIT_CONTENT adaptive mode and its type is set to a centered dialog box or a follow-hand dialog box, in API version 22 and earlier, the maximum height is displayed when the height is greater than the maximum height, and the minimum height is displayed when the height is less than the minimum height.<br>Starting from API version 23, the maximum height is displayed when the height is greater than the maximum height, and the actual adaptive height takes effect when the height is less than the minimum height.<br>For a centered dialog box and a follow-hand dialog box, the minimum height is 320 vp and the maximum height is 90% of the short side of the window. |
+| MEDIUM                    | 0    | Specifies the sheet height as 60% of the window where the sheet is located.<br>On TV devices, the sheet height is 50% of the window where the sheet is located.<br>**Note:**<br>This value is invalid for a centered sheet or a follow-hand sheet, in which case the default height 560 vp is used.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services.   |
+| LARGE                     | 1    | Specifies the sheet height as almost the height of the window where the sheet is located.<br>On TV devices, the sheet height is the height of the window where the sheet is located.<br>**Note:**<br>This value is invalid for a centered sheet or a follow-hand sheet, in which case the default height 560 vp is used.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services.   |
+| FIT_CONTENT<sup>11+</sup> | 2    | Specifies the sheet height as the height that fits the content.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services.<br>**Note:**<br>1. FIT_CONTENT means that the sheet container height adapts to the layout of the root node of the child builder. In this scenario, the height of the root node of the builder cannot use a percentage, because the two cannot depend on each other's layout.<br>2. If the sheet uses the SheetSize.FIT_CONTENT adaptive mode and its type is set to a centered sheet or a follow-hand sheet, in API version 22 and earlier, the maximum height is displayed when the height is greater than the maximum height, and the minimum height is displayed when the height is less than the minimum height.<br>Starting from API version 23, the maximum height is displayed when the height is greater than the maximum height, and the actual adaptive height takes effect when the height is less than the minimum height.<br>For a centered sheet and a follow-hand sheet, the minimum height is 320 vp and the maximum height is 90% of the short side of the window. |
 
 ## HoverModeAreaType<sup>14+</sup>
 
@@ -140,11 +142,11 @@ Defines the common configuration for sheets and modals.
 
 | Name           | Type                                      | Read-Only| Optional| Description                    |
 | --------------- | --------------------------------- | --------- | ---- | ------------------------ |
-| backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Background color of the semi-modal page.<br>Default value: Color.White.<br>**NOTE**<br>When the systemMaterial attribute is set, the effect of this attribute may be overwritten. It is not recommended to use this attribute together with systemMaterial.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
-| onWillAppear<sup>12+</sup>        | () => void                                 | No | Yes | Callback invoked when the semi-modal page is about to be displayed (before the animation starts). Timing relationship with onAppear: onWillAppear is triggered before the display animation starts, and onAppear is triggered after the display animation ends. Both can be used at the same time. To do preparation work before the animation starts, use onWillAppear. To update the UI after the animation ends, use onAppear. If not set, the callback is not triggered.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
-| onAppear        | () => void                                 | No | Yes | Callback invoked when the semi-modal page is displayed (after the animation ends). If not set, the callback is not triggered.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
-| onWillDisappear<sup>12+</sup>     | () => void                                 | No | Yes | Callback invoked when the semi-modal page is about to be dismissed (before the animation starts). Timing relationship with onDisappear: onWillDisappear is triggered before the dismiss animation starts, and onDisappear is triggered after the dismiss animation ends. Both can be used at the same time. To save the state before the animation starts, use onWillDisappear. To release resources after the animation ends, use onDisappear. If not set, the callback is not triggered.<br>**NOTE**<br>Do not modify state variables in the onWillDisappear function, as this may cause unstable component behavior. **Atomic service API:** Since API version 12, this API is supported in atomic services. |
-| onDisappear     | () => void                                 | No | Yes | Callback invoked when the semi-modal page is dismissed (after the animation ends). If not set, the callback is not triggered.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Background color of the sheet.<br>Default value: Color.White.<br>**NOTE**<br>When the systemMaterial attribute is set, the effect of this attribute may be overwritten. It is not recommended to use this attribute together with systemMaterial.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| onWillAppear<sup>12+</sup>        | () => void                                 | No | Yes | Callback invoked when the sheet is about to be displayed (before the animation starts). Timing relationship with onAppear: onWillAppear is triggered before the display animation starts, and onAppear is triggered after the display animation ends. Both can be used at the same time. To do preparation work before the animation starts, use onWillAppear. To update the UI after the animation ends, use onAppear. If not set, the callback is not triggered.<br>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
+| onAppear        | () => void                                 | No | Yes | Callback invoked when the sheet is displayed (after the animation ends). If not set, the callback is not triggered.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
+| onWillDisappear<sup>12+</sup>     | () => void                                 | No | Yes | Callback invoked when the sheet is about to be dismissed (before the animation starts). Timing relationship with onDisappear: onWillDisappear is triggered before the dismiss animation starts, and onDisappear is triggered after the dismiss animation ends. Both can be used at the same time. To save the state before the animation starts, use onWillDisappear. To release resources after the animation ends, use onDisappear. If not set, the callback is not triggered.<br>**NOTE**<br>Do not modify state variables in the onWillDisappear function, as this may cause unstable component behavior. **Atomic service API:** Since API version 12, this API is supported in atomic services. |
+| onDisappear     | () => void                                 | No | Yes | Callback invoked when the sheet is dismissed (after the animation ends). If not set, the callback is not triggered.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
 
 ## ModalTransition
 
@@ -168,11 +170,11 @@ Enumerates the sheet styles.
 
 | Name  | Value  | Description                                              |
 | ------ | ---- | ------------------------------------------------------ |
-| BOTTOM | 0    | Bottom dialog box. <br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| CENTER | 1    | Center dialog box. <br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| POPUP  | 2    | Follow-hand dialog box. The follow-hand dialog box panel does not support follow-hand sliding, and swiping down does not close the panel.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| SIDE<sup>20+</sup>   | 3    | Side dialog box.<br>**Atomic service API:** This API can be used in atomic services since API version 20.|
-| CONTENT_COVER<sup>20+</sup>   | 4    | Full-screen dialog box.<br>**Atomic service API:** This API can be used in atomic services since API version 20.|
+| BOTTOM | 0    | Bottom sheet. <br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| CENTER | 1    | Center sheet. <br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| POPUP  | 2    | Follow-hand sheet. The follow-hand sheet panel does not support follow-hand sliding, and swiping down does not close the panel.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| SIDE<sup>20+</sup>   | 3    | Side sheet.<br>**Atomic service API:** This API can be used in atomic services since API version 20.|
+| CONTENT_COVER<sup>20+</sup>   | 4    | Full-screen sheet.<br>**Atomic service API:** This API can be used in atomic services since API version 20.|
 
 **Side sheet styles**
 
@@ -180,11 +182,11 @@ Enumerates the sheet styles.
 
 2. The multi-level detent is unavailable, and the **detents** and **detentSelection** APIs are not supported. The control bar-related APIs, such as **dragBar**, are not supported.
 
-3. The bottom dialog box style can be swiped up after the transition ends. However, the side dialog box style can only be swiped right to close. The capabilities in the mirroring scenario are opposite.
+3. The bottom sheet style can be swiped up after the transition ends. However, the side sheet style can only be swiped right to close. The capabilities in the mirroring scenario are opposite.
 
 4. The height cannot be customized and it is full screen by default.
 
-5. Other display level APIs, such as **showInSubWindow = true** and **mode = SheetMode.EMBEDDED**, cannot be specified. The level of the side dialog box is the same as that of **SheetMode.OVERLAY**. Such dialog box can be displayed only at the top of the current **UIContext**. It is displayed at the same level as dialog boxes.
+5. Other display level APIs, such as **showInSubWindow = true** and **mode = SheetMode.EMBEDDED**, cannot be specified. The level of the side sheet is the same as that of **SheetMode.OVERLAY**. Such sheet can be displayed only at the top of the current **UIContext**. It is displayed at the same level as a sheet.
 
 6. Hover state avoidance is not supported.
 
@@ -259,6 +261,8 @@ Enumerates the sheet styles.
 | effectEdge     | The edge rebound effect is not supported. |
 | enableFloatingDragBar | Does not support the floating drag bar.  |
 | onWillSpringBackWhenDismiss | The spring effect is not supported. |
+| titleBarHoverMode | The title bar hover mode is not supported. |
+| scrollBarState | The built-in scroll bar display state is not supported. |
 
 ## SheetDismiss<sup>11+</sup>
 
@@ -283,7 +287,7 @@ Provides the options for configuring the title of a sheet.
 | Name    | Type                                  | Read-Only| Optional| Description                |
 | -------- | -------------------------------------- | ---- | ---- | -------------------- |
 | title    | [ResourceStr](ts-types.md#resourcestr) | No  | No  | Main title of the sheet.|
-| subtitle | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Subtitle of the half-modal panel. By default, no subtitle is displayed when this parameter is not passed. Pass this parameter when supplementary text needs to be displayed below the title. |
+| subtitle | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Subtitle of the sheet panel. By default, no subtitle is displayed when this parameter is not passed. Pass this parameter when supplementary text needs to be displayed below the title. |
 
 ## SheetMode<sup>12+</sup>
 
@@ -295,8 +299,8 @@ Enumerates the display layer modes of a sheet.
 
 | Name                     | Value  | Description                        |
 | ------------------------- | ---- | -------------------------------- |
-| OVERLAY                   | 0    | The sheet is displayed at the top of the window corresponding to the current **UIContext** instance, above all pages. It is displayed at the same level as dialog boxes.  |
-| EMBEDDED                  | 1    | Sets the semi-modal panel to be displayed at the top level of the current page. <br>**Note:**<br>Currently, the panel can be mounted only on a Page or NavDestination node. If a NavDestination exists, it is mounted on the NavDestination first. Top-level display is supported only in these two types of pages.<br> In this mode, a newly opened page can cover the semi-modal dialog box. After returning from the page, the semi-modal dialog box still exists and its content is not lost. <br> In this mode, ensure that the target page node (for example, the Page node) is mounted to the tree before the semi-modal dialog box is displayed. Otherwise, the semi-modal dialog box cannot be mounted to the corresponding page node.|
+| OVERLAY                   | 0    | The sheet is displayed at the top of the window corresponding to the current **UIContext** instance, above all pages. It is displayed at the same level as a sheet.  |
+| EMBEDDED                  | 1    | Sets the sheet to be displayed at the top level of the current page. <br>**Note:**<br>Currently, the panel can be mounted only on a Page or NavDestination node. If a NavDestination exists, it is mounted on the NavDestination first. Top-level display is supported only in these two types of pages.<br> In this mode, a newly opened page can cover the sheet. After returning from the page, the sheet still exists and its content is not lost. <br> In this mode, ensure that the target page node (for example, the Page node) is mounted to the tree before the sheet is displayed. Otherwise, the sheet cannot be mounted to the corresponding page node.|
 
 ## ScrollSizeMode<sup>12+</sup>
 
@@ -322,7 +326,7 @@ Defines the callback triggered when a sheet is about to be dismissed.
 | Name             | Type                                      | Read-Only  | Optional  | Description           |
 | --------------- | ---------------------------------------- | ---- | ---- | ------------- |
 | dismiss | [Callback](./ts-types.md#callback12)\<void> | No   | No   | Callback for dismissing the sheet. Call this API when you need to exit the page.|
-| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12) | No    | No    | Returns the operation type for exiting the current semi-modal page.<br>**Note:**<br> DismissReason.SLIDE takes effect only for the side popup style of the semi-modal page, indicating exit by swiping right. In a mirrored scenario, it indicates exit by swiping left.<br> DismissReason.SLIDE_DOWN takes effect for the bottom popup style and center popup style of the semi-modal page, indicating exit by swiping down.<br> The bubble popup style of the semi-modal page does not support swipe-to-exit.|
+| reason | [DismissReason](ts-universal-attributes-popup.md#dismissreason12) | No    | No    | Returns the operation type for exiting the current sheet.<br>**Note:**<br> DismissReason.SLIDE takes effect only for the side popup style of the sheet, indicating exit by swiping right. In a mirrored scenario, it indicates exit by swiping left.<br> DismissReason.SLIDE_DOWN takes effect for the bottom popup style and center popup style of the sheet, indicating exit by swiping down.<br> The bubble popup style of the sheet does not support swipe-to-exit.|
 
 ## SpringBackAction<sup>12+</sup>
 
@@ -348,12 +352,28 @@ Defines how the sheet avoids the soft keyboard when it is brought up.
 | TRANSLATE_AND_RESIZE    | 1    | Sets the semi-modal to first lift the panel to avoid the soft keyboard;<br>when the panel is lifted to the maximum height but still cannot avoid the soft keyboard, the overall content is compressed to complete the avoidance.<br>**Atomic service API:** Since API version 13, this API is supported in atomic services.|
 | RESIZE_ONLY    | 2    | Sets the semi-modal to avoid the soft keyboard by compressing the overall content.<br>**Atomic service API:** Since API version 13, this API is supported in atomic services.|
 | TRANSLATE_AND_SCROLL    | 3    | Sets the semi-modal to first lift the panel to avoid the soft keyboard;<br>when the panel is lifted to the maximum height but still cannot avoid the soft keyboard, the content is scrolled to complete the avoidance.<br>**Atomic service API:** Since API version 13, this API is supported in atomic services.|
-| POPUP_SHEET<sup>20+</sup>    | 4    | Sets the semi-modal popup-style dialog box to avoid the soft keyboard. This avoidance mode takes effect only when [preferType](#sheetoptions) is set to [SheetType.POPUP](#sheettype11) (follow-hand popup style); other popup styles do not support this avoidance mode.<br> 1. When avoiding the soft keyboard, if the current display position of the popup-style dialog box cannot accommodate the dialog box size, the display position is adjusted following the rule of first vertical flip avoidance and then 90° horizontal rotation avoidance. Taking the preset direction as downward as an example, the avoidance order is: down, up, right, left.<br>2. If the set alignment causes the component layout to exceed the window range, the component is shifted horizontally or vertically according to the alignment until it is fully displayed within the window.<br>3. When avoiding the soft keyboard, if the current popup-style dialog box cannot be accommodated in any of the four directions, the handling follows the placementOnTarget attribute set by the developer:<br>(1) If the attribute value is true, the dialog box is translated toward the mirror direction of the set placement until it can be fully displayed.<br>(2) If the attribute value is false, among the four directions, the direction that can fully display the dialog box width and has the largest remaining height is selected, and the semi-modal height is adjusted to fit the current direction, ensuring that the dialog box can be placed while keeping the alignment corresponding to the preset placement unchanged.<br>4. If the semi-modal is not in the follow-hand style at this time, it does not have the ability to avoid the soft keyboard.<br>**Atomic service API:** Since API version 20, this API is supported in atomic services.|
+| POPUP_SHEET<sup>20+</sup>    | 4    | Sets the semi-modal popup-style sheet to avoid the soft keyboard. This avoidance mode takes effect only when [preferType](#sheetoptions) is set to [SheetType.POPUP](#sheettype11) (follow-hand popup style); other popup styles do not support this avoidance mode.<br> 1. When avoiding the soft keyboard, if the current display position of the popup-style sheet cannot accommodate the sheet size, the display position is adjusted following the rule of first vertical flip avoidance and then 90° horizontal rotation avoidance. Taking the preset direction as downward as an example, the avoidance order is: down, up, right, left.<br>2. If the set alignment causes the component layout to exceed the window range, the component is shifted horizontally or vertically according to the alignment until it is fully displayed within the window.<br>3. When avoiding the soft keyboard, if the current popup-style sheet cannot be accommodated in any of the four directions, the handling follows the placementOnTarget attribute set by the developer:<br>(1) If the attribute value is true, the sheet is translated toward the mirror direction of the set placement until it can be fully displayed.<br>(2) If the attribute value is false, among the four directions, the direction that can fully display the sheet width and has the largest remaining height is selected, and the semi-modal height is adjusted to fit the current direction, ensuring that the sheet can be placed while keeping the alignment corresponding to the preset placement unchanged.<br>4. If the semi-modal is not in the follow-hand style at this time, it does not have the ability to avoid the soft keyboard.<br>**Atomic service API:** Since API version 20, this API is supported in atomic services.|
 
 > **NOTE**
 >
 > When the **POPUP_SHEET** avoidance mode is set, the sheet avoids only the soft keyboard started by the text box in the panel.
 >
+
+## SheetTitleBarHoverMode
+
+Enumerates the title bar hover modes.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name      | Value | Description           |
+| ------- | ---- | -------- |
+| STANDARD | 0 | Standard mode. The title bar and the content area are arranged vertically without overlapping.<br/>**Atomic service API:** Since API version 26.0.1, this API is supported in atomic services. |
+| STACK    | 1 | Stack mode. The title bar hovers above the content area. When this style is set, developers need to add padding at the top of the content area to avoid occlusion.<br/>**Atomic service API:** Since API version 26.0.1, this API is supported in atomic services. |
+| SAFE_AREA_PADDING | 2 | Safe area mode. The title bar is placed in the safe area padding region, the content area extends to the safe area, and the clipping range of the scrolling content extends to the safe area range.<br/>**Since:** 26.1.0<br/>**Atomic service API:** Since API version 26.1.0, this API is supported in atomic services. |
 
 ## Example
 ### Example 1: Setting Sheets with Different Heights
@@ -579,9 +599,9 @@ struct BindSheetExample {
           preferType: SheetType.CENTER,
 
           onWillDismiss: ((dismissSheetAction: DismissSheetAction) => {
-            // Call dismiss to close the half-modal page only when the user swipes down.
+            // Call dismiss to close the sheet page only when the user swipes down.
             if (dismissSheetAction.reason == DismissReason.SLIDE_DOWN) {
-                dismissSheetAction.dismiss(); // Close the half-modal page.
+                dismissSheetAction.dismiss(); // Close the sheet page.
             }
           }),
 
@@ -988,9 +1008,11 @@ struct ContentCoverExample {
 ```
 ![en-us_sheet](figures/sheet9_content_cover.gif)
 
-### Example 10: Setting the System Material for a Half-Modal
+### Example 10: Setting the System Material for a Sheet
 
-This example sets the system material through the systemMaterial attribute of the half-modal.
+This example sets the system material through the systemMaterial attribute of the sheet.
+
+The illustration for this example shows the strong effect on a high-computing-power device. The immersive light effect of the component is adaptively adjusted based on the device computing power and the immersive light effect set by the user in the system, so you do not need to perform additional adaptation.
 
 Since API version 26.0.0, the [SheetOptions](#sheetoptions) adds the systemMaterial attribute.
 
@@ -1036,8 +1058,6 @@ struct SheetMaterialExample {
             // borderColor: Color.Red,
             // backgroundColor: Color.Green,
             // shadow: { radius: 30, type: ShadowType.COLOR, color: Color.Yellow },
-            // Some material effects do not have a background of their own and will be overridden by the color set through backgroundColor. To present such material effects, set the background color to transparent.
-            backgroundColor: Color.Transparent,
             systemMaterial: this.myMaterial // The systemMaterial attribute is added since API version 26.0.0.
           })
       }
@@ -1050,3 +1070,184 @@ struct SheetMaterialExample {
 ```
 
 ![en-us_sheet](figures/sheetMaterial-new-s.jpg)
+
+
+### Example 11: Setting the Title Bar Hover Mode for a Sheet
+
+This example uses the **titleBarHoverMode** attribute to demonstrate the effects of different sheet title bar hover modes ([SheetTitleBarHoverMode](#sheettitlebarhovermode)).
+
+Since API version 26.0.1, [SheetOptions](#sheetoptions) supports the **titleBarHoverMode** attribute. Since API version 26.1.0, **SheetTitleBarHoverMode** supports the [SAFE_AREA_PADDING](#sheettitlebarhovermode) enum value.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct SheetTitleBarHoverModeDemo {
+  @State isShowStandard: boolean = false;
+  @State isShowStack: boolean = false;
+  @State isShowSafeAreaPadding: boolean = false;
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Column()
+        .backgroundColor(Color.Pink)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Orange)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Pink)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Orange)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Pink)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Orange)
+        .height(200)
+        .width('100%')
+    }
+    .width('100%')
+  }
+
+  build() {
+    Stack() {
+      Column() {
+        Button('STANDARD')
+          .onClick(() => {
+            this.isShowStandard = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShowStandard, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            title: { title: 'title standard' },
+            titleBarHoverMode: SheetTitleBarHoverMode.STANDARD,
+          })
+        Button('STACK')
+          .onClick(() => {
+            this.isShowStack = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShowStack, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            title: { title: 'title stack' },
+            titleBarHoverMode: SheetTitleBarHoverMode.STACK,
+          })
+        Button('SAFE_AREA_PADDING')
+          .onClick(() => {
+            this.isShowSafeAreaPadding = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShowSafeAreaPadding, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            title: { title: 'title safeArea' },
+            titleBarHoverMode: SheetTitleBarHoverMode.SAFE_AREA_PADDING,
+          })
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
+![en-us_sheet](figures/sheetTitleBarHoverMode.gif)
+
+
+### Example 12: Customizing the Scrollbar State of the Sheet
+
+This example uses the **scrollBarState** attribute to set the display state of the scrollbar in the sheet content area. Clicking the button switches among Off, On, Auto, and not set of [BarState](ts-appendix-enums.md#barstate).
+
+Since API version 26.0.1, [SheetOptions](#sheetoptions) adds the **scrollBarState** attribute.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct SheetMaterialExample {
+  @State isShow: boolean = false;
+  @State myScrollBarMode: BarState | undefined = BarState.Off;
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Row() {
+        Button('Current ScrollBarMode: ' + this.myScrollBarMode)
+          .onClick(() => {
+            if (this.myScrollBarMode == undefined) {
+              this.myScrollBarMode = BarState.Off
+            } else if (this.myScrollBarMode == BarState.Off) {
+              this.myScrollBarMode = BarState.On
+            } else if (this.myScrollBarMode == BarState.On) {
+              this.myScrollBarMode = BarState.Auto
+            } else if (this.myScrollBarMode == BarState.Auto) {
+              this.myScrollBarMode = undefined
+            }
+          })
+      }.width('100%').justifyContent(FlexAlign.Center).margin(25)
+
+      Column() {
+        Column()
+          .backgroundColor(Color.Pink)
+          .height(200)
+          .width('100%')
+        Column()
+          .backgroundColor(Color.Orange)
+          .height(200)
+          .width('100%')
+        Column()
+          .backgroundColor(Color.Pink)
+          .height(200)
+          .width('100%')
+        Column()
+          .backgroundColor(Color.Orange)
+          .height(200)
+          .width('100%')
+        Column()
+          .backgroundColor(Color.Pink)
+          .height(200)
+          .width('100%')
+        Column()
+          .backgroundColor(Color.Orange)
+          .height(200)
+          .width('100%')
+      }
+    }
+    .width('100%')
+  }
+
+  build() {
+    Stack() {
+      Column() {
+        Button('Open sheet')
+          .onClick(() => {
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShow, this.myBuilder(), {
+            height: SheetSize.MEDIUM,
+            scrollBarState: this.myScrollBarMode,
+          })
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
+<!--Del--> <!--DelEnd-->
