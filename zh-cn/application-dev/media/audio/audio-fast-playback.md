@@ -107,7 +107,11 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 5. 查询状态及监听。
 
     可通过注册`OH_AudioRenderer_OnFastStatusChange`回调，在运行态发生变化时及时感知状态变化。
-    <!-- @[Render_SetRendererUltraFastStatusChangeCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->  
+    <!-- @[Render_SetRendererUltraFastStatusChangeCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+    ``` C++
+    OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback(g_ultraBuilder, MyOnUltraFastStatusChange, nullptr);
+    ```
 
 针对OHAudio开发音频播放，有以下相关实例可供参考：
 
