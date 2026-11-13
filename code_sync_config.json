@@ -69644,7 +69644,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/AlertDialogAfterMigrate.ets",
 				"functions":[
 					{
-						"end_line":90,
+						"end_line":91,
 						"name":"alert_dialog_after_migrate",
 						"start_line":16
 					}
@@ -69664,7 +69664,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionSheetAfterMigrate.ets",
 				"functions":[
 					{
-						"end_line":82,
+						"end_line":83,
 						"name":"action_sheet_after_migrate",
 						"start_line":16
 					}
@@ -69684,7 +69684,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ShowDialogAfterMigrate.ets",
 				"functions":[
 					{
-						"end_line":77,
+						"end_line":78,
 						"name":"show_dialog_after_migrate",
 						"start_line":16
 					}
@@ -69704,7 +69704,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionMenuAfterMigrate.ets",
 				"functions":[
 					{
-						"end_line":77,
+						"end_line":78,
 						"name":"action_menu_after_migrate",
 						"start_line":16
 					}
@@ -69724,7 +69724,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/PresentCustomDialogAfterMigrate.ets",
 				"functions":[
 					{
-						"end_line":90,
+						"end_line":91,
 						"name":"present_custom_dialog_after_migrate",
 						"start_line":16
 					}
@@ -69744,7 +69744,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/OpenCustomDialogWithControllerAfterMigrate.ets",
 				"functions":[
 					{
-						"end_line":91,
+						"end_line":92,
 						"name":"open_custom_dialog_with_controller_after_migrate",
 						"start_line":16
 					}
