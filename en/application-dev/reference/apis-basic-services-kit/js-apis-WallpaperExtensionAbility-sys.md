@@ -1,4 +1,4 @@
-# @ohos.WallpaperExtensionAbility (WallpaperExtensionAbility) (System API)
+# @ohos.WallpaperExtensionAbility (WallpaperExtensionAbility) (System APIs)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->

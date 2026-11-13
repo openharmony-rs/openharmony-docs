@@ -40,7 +40,7 @@
     - [@ohos.systemCapability (System Capability) (System API)](js-apis-system-capability-sys.md)
     - [@ohos.systemParameterEnhance (System Parameter) (System API)](js-apis-system-parameterEnhance-sys.md)
     - [@ohos.screenLock (Lock Screen Management) (System API)](js-apis-screen-lock-sys.md)
-    - [@ohos.usbManager (USB Management) (System API)](js-apis-usbManager-sys.md)
+    - [@ohos.usbManager (USB Manager) (System API)](js-apis-usbManager-sys.md)
     - [@ohos.usbManager.serial (Serial Port Management) (System API)](js-apis-serialManager-sys.md)
     - [@ohos.update (Upgrade) (System API)](js-apis-update-sys.md)
     <!--DelEnd-->
