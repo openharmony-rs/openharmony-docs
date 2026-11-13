@@ -14,7 +14,8 @@
 > 该组件从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当需要在该组件中实现一个可嵌入式运行的原子化服务时，必须继承自[EmbeddableUIAbility](../../apis-ability-kit/js-apis-app-ability-embeddableUIAbility.md)。若不继承自EmbeddableUIAbility，系统无法保证原子化服务功能正常。
-
+>
+> 本模块为系统接口。
 
 ## 导入模块
 
@@ -59,7 +60,7 @@ InnerFullScreenLaunchComponent({ content: Callback\<void>, controller: LaunchCon
 >
 > - 若原子化服务通过调用[terminateSelfWithResult](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateselfwithresult)退出，其携带的信息会传给回调函数的入参；
 > - 若原子化服务通过调用[terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)退出，上述回调函数的入参中，"code"取默认值"0"，"want"为"undefined"；
-> - 从API version 26.0.0开始，原子化服务通过手势侧滑退出触发onTerminated回调。
+> - 从API版本26.0.0开始，原子化服务通过手势侧滑退出触发onTerminated回调。
 
 ## LaunchController
 
