@@ -3,7 +3,7 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @saga2025-->
+<!--Designer: @osmanthusblossom-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 <!-- md-trans-meta sourceCommit=b8d36a2cf004aeffeb4b7215b5d1db30919cc81c translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
@@ -20,10 +20,4 @@ Using multimodal awareness capabilities requires your application to request the
 
 <!--RP2--><!--RP2End-->
 
-<!--RP1-->
-
-### Emulator Support
-
-This Kit does not support the Emulator.
-
-<!--RP1End-->
+<!--RP1--><!--RP1End-->
