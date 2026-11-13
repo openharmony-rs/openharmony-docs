@@ -1,4 +1,4 @@
-# Window Layout
+# Managing Window Position and Size
 
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
@@ -6,20 +6,20 @@
 <!--Designer: @yyuehao-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-03T02:53:56.445Z pushedAt=2026-11-03T03:00:03.869Z nl=1 -->
+<!-- md-trans-meta sourceCommit=d684d7b70be0b295369416b5b440cee05a2b512e translatedAt=2026-11-12T04:55:00.120Z pushedAt=2026-11-12T07:51:36.004Z nl=1 -->
 
 ## When to Use
 
-Window layout refers to the capability of setting and managing the position and size attributes of windows. Through the window layout capability, you can flexibly control the display form of app windows on the screen, achieving diverse UI presentation effects.
+Managing window position and size refers to the capability of setting and managing the position and size attributes of windows. Through this capability, you can flexibly control the display form of application windows on the screen, achieving diverse UI presentation effects.
 
-Window layout mainly includes the following capabilities:
+Managing window position and size mainly provides the following capabilities:
 
 - [Managing window size or aspect ratio limits](#managing-the-window-size-or-aspect-ratio-limits): By setting the minimum/maximum size constraints and aspect ratio limits of a window, the adjustable range and display ratio of the window can be constrained.
 
 - [Adjusting the window position and size](#adjusting-the-window-position-and-size): Set the position coordinates of a window on the screen and the width and height dimensions of the window, and provide query and listening capabilities for window position and size changes.
 
 
-Proper use of window layout capabilities helps developers:
+Proper use of the window position and size management capability can help you:
 
 - Adapt to different screen sizes and window modes.
 
@@ -136,7 +136,7 @@ The initial position and size of an app window at startup can be set. This is av
 
   > **NOTE**
   > 
-  > - This configuration method takes effect only in the [freefrom window](freeform-window-overview.md#freeform-window) state.
+  > - This configuration method takes effect only in the [freeform window](freeform-window-overview.md#freeform-window) state.
   > 
   > - This configuration method has a higher priority than the configuration method via the [module.json5 configuration file](../quick-start/module-configuration-file.md).
   > 
@@ -169,7 +169,7 @@ After a window is created, you can dynamically adjust its position and size thro
 
   | API | Coordinate System Origin | Description |
   | -------- | -------- | -------- |
-  | [moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1) | [Freeform window](freeform-window-overview.md#freeform-window): The origin is the top-left vertex of the screen.<br/>Non-[freeform window](freeform-window-overview.md#freeform-window): when moving a subwindow or modal window, the origin is the top-left vertex of the parent window; when moving other windows, the origin is the top-left vertex of the screen | Moves the window position. The call returns upon success, and the final effective result cannot be obtained immediately after the return. |
+  | [moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1) | [freeform window](freeform-window-overview.md#freeform-window) state: the origin is the top-left vertex of the screen<br/>In the non-freeform window state: when a child window or modal window is moved, the origin is the top-left vertex of the parent window; when other windows are moved, the origin is the top-left vertex of the screen | Moves the window position. The call returns upon success, and the final effective result cannot be obtained immediately after the return. |
   | [moveWindowToAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync12) with input parameters **x** and **y**<br/>[moveWindowToAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync15) with input parameters **x**, **y**, **moveConfiguration** | [Freeform window](freeform-window-overview.md#freeform-window): The origin is the top-left vertex of the screen.<br/>Non-[freeform window](freeform-window-overview.md#freeform-window): The origin is the top-left vertex of the main window. | Moves the window position. The call returns after the operation takes effect. |
   | [moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15) with input parameters **x** and **y**<br/>[moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15) with input parameters **x**, **y**, and **moveConfiguration** | Top-left vertex of the target screen | Moves the window position based on screen coordinates. The call returns after the operation takes effect. |
   | [moveWindowToGlobalDisplay()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobaldisplay20) | Top-left vertex of the main screen (global coordinate system) | Moves the window position based on the [global coordinate system](window-terminology.md#global-coordinate-system). |
@@ -303,7 +303,7 @@ Currently, the following two window dragging capabilities are provided.
     }
   
     /**
-     * Enable system drag-and-move for the sub-window via startMoving
+     * Enable system drag-and-move for the subwindow via startMoving
      */
     private startMoveSubWindow(): void {
       const subWindow = AppStorage.get<window.Window>('SUB_WINDOW');
@@ -341,7 +341,7 @@ Currently, the following two window dragging capabilities are provided.
         })
   
         Column() {
-          Text('Current sub-window size')
+          Text('Current subwindow size')
             .fontSize(16)
             .fontWeight(FontWeight.Bold)
   

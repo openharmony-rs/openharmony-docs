@@ -6,7 +6,7 @@
 <!--Designer: @shinmy; @jingbotao-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=f497de52e896f067c7fd3af00a21a3c6710c0615 translatedAt=2026-11-03T02:51:09.747Z pushedAt=2026-11-03T02:58:16.053Z nl=1 -->
+<!-- md-trans-meta sourceCommit=47f14374df754a1283c527fb9510e93dc26781af translatedAt=2026-11-12T04:52:05.717Z pushedAt=2026-11-12T07:48:30.206Z nl=1 -->
 
 ## When to Use
 
@@ -14,7 +14,7 @@ Window appearance describes the display form and visual effect of a window on th
 
 You can customize the window appearance based on UI design and interaction requirements. For example:
 
-- Display a subwindow or [global floating window](global-floating-window-guide.md) as an irregular-shaped window by setting the window mask.
+- Display a subwindow or [global floating window](global-floating-window-guide.md) as an shaped window by setting the window mask.
 
 - Adjust the shadow effect of a subwindow or global floating window by setting the blur radius of the window edge shadow.<!--Del-->System apps can also set the color and offset of the window edge shadow.<!--DelEnd-->
 
@@ -24,7 +24,7 @@ You can customize the window appearance based on UI design and interaction requi
 
 ## Shaped Window
 
-An irregular-shaped window is a window with a non-rectangular shape, and a mask is used to describe the shape of the irregular-shaped window. Only subwindows and global floating windows can be set as irregular-shaped windows.
+An shaped window is a window with a non-rectangular shape, and a mask is used to describe the shape of the shaped window. Only subwindows and global floating windows can be set as shaped windows.
 
 You can set the mask of a shaped window through the [setWindowMask()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmask12) or [setWindowMaskWithAlpha()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmaskwithalpha) API to define the visible region of the window.
 
@@ -42,7 +42,7 @@ After setting the mask, the window will be displayed according to the mask shape
 
   ![setWindowMaskWithAlpha](figures/setWindowMaskWithAlpha.png)
 
-The following takes setting an irregular-shaped window for a subwindow as an example. This example mainly implements the following effects:
+The following takes setting an shaped window for a subwindow as an example. This example mainly implements the following effects:
 
 1. Tap **Create Sub Window** to create a subwindow.
 
@@ -278,7 +278,7 @@ You can choose to set the background color of the app content area or the window
 
 - When both [setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20) and [setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9) are used, the content area displays the color set by [setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9), while the title bar displays the color set by [setWindowContainerColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainercolor20).
 
-- Starting from API version 26.0.0, the [setWindowContainerModalColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainermodalcolor) interface is supported for setting the background color of the main window container area on PCs or 2-in-1 devices to accommodate different UI design requirements. The background color set through this API applies to the entire window container area, including the title bar and content area. This API supports setting the main window background to transparent when it is not in focus.
+- Starting from API version 26.0.0, the [setWindowContainerModalColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowcontainermodalcolor) API is supported for setting the background color of the main window container area on PCs or 2-in-1 devices to accommodate different UI design requirements. The background color set through this API applies to the entire window container area, including the title bar and content area. This API supports setting the main window background to transparent when it is not in focus.
 
 > **NOTE**
 >
@@ -288,7 +288,7 @@ You can choose to set the background color of the app content area or the window
 
 ![backgroundColor](figures/backgroundColor.gif)
 
-The sample code is as follows:
+Here, [setWindowBackgroundColor()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbackgroundcolor9) is used as an example to set the window content area background color:
 
 <!--@[backgroundColor_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/backgroundColor/entry/src/main/ets/pages/Index.ets) -->
 
@@ -344,4 +344,3 @@ struct Index {
   // ...
 }
 ```
-<!--no_check-->

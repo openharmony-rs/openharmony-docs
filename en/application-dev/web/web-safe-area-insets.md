@@ -5,7 +5,7 @@
 <!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=8b5408a78b1779be5394664afc53fc3cab8e1cce translatedAt=2026-09-21T02:31:12.722Z pushedAt=2026-09-21T14:04:03.740Z -->
+<!-- md-trans-meta sourceCommit=bba73b5d9ea980d77cc86ca2a3809bffa5922aca translatedAt=2026-11-12T04:46:14.628Z pushedAt=2026-11-12T08:36:42.711Z nl=1 -->
 
 In earlier versions, the screen of most devices is rectangular, and the application UI can be completely displayed. With the popularization of irregular screens such as bezel-less screen and notch screens, rounded corners, cameras, or system navigation bars may appear on the edge of the screen. As a result, some parts of the screen are obscured.
 
@@ -21,39 +21,66 @@ The **Web** component provides the W3C CSS capability for calculating and adjust
 
 - Use [setWindowLayoutFullScreen](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9) to set the application window to full screen. When the window is displayed in full screen, the **Web** component can be displayed in non-safe areas.
 
-  ```ts
-  // EntryAbility.ets
-  import { UIAbility } from '@kit.AbilityKit';
-  import { window } from '@kit.ArkUI';
+<!-- @[set_window_layout_full_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/ImmersiveWeb.ets) -->
 
-  export default class EntryAbility extends UIAbility {
-    // ...
-    onWindowStageCreate(windowStage: window.WindowStage): void {
-      windowStage.getMainWindow().then(window => {
-        // Set the window to full screen.
-        window.setWindowLayoutFullScreen(true);
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+import { window } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN: number = 0x0000;
+const TAG: string = 'ImmersiveWeb';
+const TITLE_HEIGHT: number = 56;
+const TITLE_FONT_SIZE: number = 20;
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  private win: window.Window | null = null;
+
+  aboutToAppear(): void {
+    // Set the window to full screen and enable the immersive effect.
+    const ctx = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    window.getLastWindow(ctx).then((win) => {
+      this.win = win;
+      win.setWindowLayoutFullScreen(true).catch((error: BusinessError) => {
+        hilog.error(DOMAIN, TAG, `setWindowLayoutFullScreen failed: %{public}s`, error.message);
+      });
+    }).catch((error: BusinessError) => {
+      hilog.error(DOMAIN, TAG, `getLastWindow failed: %{public}s`, error.message);
+    });
+  }
+
+  aboutToDisappear(): void {
+    // Restore the window layout when leaving the page.
+    if (this.win) {
+      this.win.setWindowLayoutFullScreen(false).catch((error: BusinessError) => {
+        hilog.error(DOMAIN, TAG, `setWindowLayoutFullScreen failed: %{public}s`, error.message);
       });
     }
   }
-  ```
 
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
+  build() {
+    Column() {
+      // The top title bar extends its background color to the status bar, visually reflecting the immersive full-screen effect.
+      Text($r('app.string.immersive_web_title'))
+        .width('100%')
+        .height(TITLE_HEIGHT)
+        .fontSize(TITLE_FONT_SIZE)
+        .fontColor($r('app.color.immersive_title_font'))
+        .textAlign(TextAlign.Center)
+        .backgroundColor($r('app.color.immersive_title_bg'))
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP])
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller })
-          .width('100%').height('100%')
-      }
+      Web({ src: 'www.example.com', controller: this.controller })
+        .width('100%').height('100%')
     }
   }
-  ```
+}
+```
 
 - Use [expandSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea) to expand the safe area for **Web** components. You can customize the expansion type and direction. In the following example, the **Web** component can be expanded to the status bar and navigation bar to achieve an immersive effect.
 
@@ -86,7 +113,7 @@ Use **viewport-fit**, which is an attribute of the `<meta name="viewport">` tag,
 <meta name='viewport' content='viewport-fit=cover'>
 ```
 
-As shown in Table 1, the default value of **viewport-fit** is **auto**, which has the same effect as **contain**, indicating that all web page content is displayed within the safe area. **cover** indicates that the web page content completely covers the visible window and may overlap with the non-safe area.
+As shown in Table 1, the default value of **viewport-fit** is **auto**, which has the same effect as **contain**, indicating that all web page content is displayed within the safe area. **cover** indicates that the web page content completely covers the viewport and may overlap with the non-safe area.
 
 **Table 1** Values of viewport-fit
 

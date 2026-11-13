@@ -6,7 +6,7 @@
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b5bac46b123c8ef772e6a1f04f3d13c5b3c45368 translatedAt=2026-11-03T02:49:23.946Z pushedAt=2026-11-03T03:04:35.605Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0ebec3b1d2e176109fe439d58888a4e9114ba429 translatedAt=2026-11-12T04:50:33.762Z pushedAt=2026-11-12T08:18:43.052Z nl=1 -->
 
 - [Window Overview](window-overview.md)
 - Window Types<!--window-type-->
@@ -27,7 +27,11 @@
   - Window Rotation and Practical Cases<!--rotation-->
     - [Window Rotation](window-rotation.md)
     - [Window Rotation Practical Cases](window-rotation-practical-case.md)
-  - [Window Layout](window-layout.md)
+  - Window Layout<!--window-layout-development-->
+    - [Window Layout Development](window-layout-overview.md)
+    - [Managing Window Position and Size](window-layout.md)
+    - [Freeform Window Resize Development Practice (PC/2-in-1 Device)](window-freeform-resize-practical-case.md)
+    - [Window Adaptive Layout Development Practice (PC/2-in-1 Device)](window-adaptive-practical-case.md)
   - [Window Focus](window-focus-guide.md)
   - [Window Z-Order](window-zorder-guide.md)
   - [Immersive Window](immersive-window-feature.md)

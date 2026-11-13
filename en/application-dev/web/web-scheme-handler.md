@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=c2be3abe94ed6c91175ab7c2d1b71d1ec29601bc translatedAt=2026-11-03T03:12:40.794Z pushedAt=2026-11-03T03:25:12.671Z nl=1 -->
+<!-- md-trans-meta sourceCommit=939254bc3f45b3b1a8e176556c718e336d265976 translatedAt=2026-11-12T04:47:16.299Z pushedAt=2026-11-12T08:42:13.720Z nl=1 -->
 
 The application can use [onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9) or the ArkTS and NDK APIs provided by **SchemeHandler** to intercept network requests initiated by **Web** components.
 
@@ -42,7 +42,7 @@ ArkTS: [onRequestStop](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHand
 > **NOTE**
 >
 > - You need to set SchemeHandler after the **Web** component is initialized. Otherwise, the setting will fail. 
-> - To intercept the first request sent by a **Web** component, you can use the [initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) method to initialize the **Web** component in advance, and then set the SchemeHandler to intercept the request. For details, see [Sample Code](#sample-code).
+> - To intercept the first request sent by a **Web** component, you can use the [initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) method to initialize the **Web** component in advance, and then set the SchemeHandler to intercept the request. For details, see [Sample Code](#sample-code).
 
 In C++, use the NDK APIs to set SchemeHandler for **Web** components.
 
@@ -78,9 +78,9 @@ In ArkTS, set SchemeHandler for **Web** components.
 
 To intercept requests from a custom scheme, you need to register the scheme with the web kernel before the **Web** component is initialized. Otherwise, the registration will fail.
 
-The creation of a **Web** component triggers the initialization of the web kernel. ArkWeb also provides the **initializeWebEngine** API to initialize the web kernel independently.
+The creation of a **Web** component triggers the initialization of the web kernel. ArkWeb also provides the **initializeWebEngine()** API to initialize the web kernel independently.
 
-In the NDK, you can call **testNapi.registerCustomSchemes** on the ETS side to register a custom scheme, and then call [initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) to initialize the web kernel. The sample code is as follows:
+In the NDK, you can call **testNapi.registerCustomSchemes** on the ETS side to register a custom scheme, and then call [initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine) to initialize the web kernel. The sample code is as follows:
 
 <!-- @[register_init_scheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets) -->    
 
@@ -261,10 +261,10 @@ In the NDK, provide custom responses for intercepted requests.
     OH_ArkWebResourceHandler_DidFinish(resourceHandler);
   ```
 
-In ArkTS, provide custom response information for intercepted requests.
+In ArkTS, provide custom responses for intercepted requests.
 
-   ```ts
-   this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
+  ```ts
+  this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
     let response = new webview.WebSchemeHandlerResponse();
     try {
       // Set the network error code to OK, indicating that the request is successful.
@@ -297,8 +297,8 @@ In ArkTS, provide custom response information for intercepted requests.
       console.error(`[schemeHandler] ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
     }
     return true;
-   })
-   ```
+  })
+  ```
 
 Network interception supports streaming requests. You can call [didReceiveResponseBody](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponsebody12) or [OH_ArkWebResourceHandler_DidReceiveData](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceivedata) multiple times to construct the response body in chunks. When returning the response body for the last time, call [didFinish](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfinish12) or [OH_ArkWebResourceHandler_DidFinish](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfinish) to notify the Web component that the intercepted request has been completed.
 
