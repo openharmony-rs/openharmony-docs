@@ -3993,6 +3993,62 @@ try {
 }
 ```
 
+### setPointerInterceptable
+
+setPointerInterceptable(isInterceptable: boolean): Promise&lt;void&gt;
+
+设置当前窗口的指针事件是否允许被拦截，使用Promise异步回调。
+
+指针事件包括鼠标事件、触摸事件、触控板事件和手写笔事件。设置允许被拦截后，该窗口的指针事件将被拦截，不再分发到窗口内部组件；设置不允许被拦截时，指针事件正常分发到窗口内部组件。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名           | 类型    | 必填 | 说明                                                         |
+| ---------------- | ------- | ---- | ------------------------------------------------------------ |
+| isInterceptable  | boolean | 是   | 当前窗口的指针事件是否允许被拦截。true表示允许被拦截，false表示不允许被拦截。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. Possible causes:<br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. |
+| 1300003 | This window manager service works abnormally. Possible cause: Internal IPC error. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let isInterceptable: boolean = true;
+try {
+  let promise = windowClass.setPointerInterceptable(isInterceptable);
+  promise.then(() => {
+    console.info('Succeeded in setting pointer interceptable.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set pointer interceptable. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set pointer interceptable. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ### setTitleButtonVisible<sup>12+</sup>
 
 setTitleButtonVisible(isMaximizeVisible: boolean, isMinimizeVisible: boolean, isSplitVisible: boolean): void
