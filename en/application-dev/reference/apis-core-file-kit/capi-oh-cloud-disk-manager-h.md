@@ -406,7 +406,7 @@ Registers a sync root with placeholder information for an application. This API 
 
 | Parameter| Description|
 | -- | -- |
-| [const OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md) *syncFolder | Sync root path with placeholder to be registered. |
+| [OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md) *syncFolder | Sync root path with placeholder to be registered. |
 
 **Returns:**
 
@@ -580,8 +580,8 @@ Creates a placeholder file under a registered sync root path.
 | -- | -- |
 | const CloudDisk_SyncFolderPath syncFolderPath | The registered sync root path. |
 | [const CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) relativePathInfo | The relative path of the placeholder file under the sync root path. The path cannot be empty, cannot start or end with "/", and cannot contain "./" or "../" path segments. |
-| [const OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md) placeholderInfo | The metadata used when creating the placeholder file. |
-| [const OH_CloudDisk_PlaceholderCustomInfo](capi-clouddisk-oh-clouddisk-placeholdercustominfo.md) *customInfo | Optional opaque custom information. Pass NULL to indicate that it is not provided. |
+| [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md) placeholderInfo | The metadata used when creating the placeholder file. |
+| [OH_CloudDisk_PlaceholderCustomInfo](capi-clouddisk-oh-clouddisk-placeholdercustominfo.md) *customInfo | Optional opaque custom information. Pass NULL to indicate that it is not provided. |
 
 **Returns:**
 
@@ -759,7 +759,7 @@ Responds to a callback request and writes the obtained data block into the activ
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_CloudDisk_CallbackReqHead](capi-clouddisk-oh-clouddisk-callbackreqhead.md) reqHead | Callback request header received by the application. |
+| [OH_CloudDisk_CallbackReqHead](capi-clouddisk-oh-clouddisk-callbackreqhead.md) reqHead | Callback request header received by the application. |
 | [OH_CloudDisk_CallbackContext](capi-clouddisk-oh-clouddisk-callbackcontext.md) reqContext | Callback request context, which contains the relative file path of the callback request. |
 | [OH_CloudDisk_CallbackResponse](capi-clouddisk-oh-clouddisk-callbackresponse.md) rsp | Data block obtained by the application. |
 
@@ -811,8 +811,8 @@ Updates the metadata of a file under the sync root path. Supports both placehold
 | Parameter | Description |
 | -- | -- |
 | const CloudDisk_SyncFolderPath syncFolderPath | The registered sync root path. |
-| [const CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) relativePathInfo | The relative path information of the file whose metadata is to be updated. |
-| [const OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md) placeholderInfo | The file metadata information to be updated. For details, see [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md). |
+| [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md) relativePathInfo | The relative path information of the file whose metadata is to be updated. |
+| [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md) placeholderInfo | The file metadata information to be updated. For details, see [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md). |
 | [const OH_CloudDisk_PlaceholderCustomInfo](capi-clouddisk-oh-clouddisk-placeholdercustominfo.md) *customInfo | Optional opaque custom information. Pass NULL to retain the existing value. |
 
 **Returns:**
