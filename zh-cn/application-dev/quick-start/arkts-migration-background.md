@@ -2,8 +2,8 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao; @cy917474985-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
@@ -173,11 +173,11 @@ foo(c);
 
 **应用环境限制**
 
-1. 强制使用严格模式（use strict）
-2. 禁止使用`eval()`
-3. 禁止使用`with() {}`
-4. 禁止以字符串为代码创建函数
-5. 禁止循环依赖
+1. 强制使用严格模式（use strict）。
+2. 禁止使用`eval()`。
+3. 禁止使用`with() {}`。
+4. 禁止以字符串为代码创建函数。
+5. 禁止循环依赖。
 
     循环依赖示例:
     

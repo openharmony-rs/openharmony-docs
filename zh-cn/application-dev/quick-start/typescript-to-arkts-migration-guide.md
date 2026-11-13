@@ -2,8 +2,8 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao; @cy917474985-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
@@ -409,10 +409,10 @@ let valueO2: Object = 42;
 
 在以下上下文中不支持使用字面量初始化类和接口：
 
-* 初始化具有`any`、`Object`或`object`类型的任何对象
-* 初始化带有方法的类或接口
-* 初始化包含自定义含参数的构造函数的类
-* 初始化带`readonly`字段的类
+* 初始化具有`any`、`Object`或`object`类型的任何对象。
+* 初始化带有方法的类或接口。
+* 初始化包含自定义含参数的构造函数的类。
+* 初始化带`readonly`字段的类。
 
 **例子1**
 
@@ -1174,6 +1174,44 @@ foo();
 
 由于ArkTS不支持动态改变函数对象布局，因此，不支持对函数声明属性。
 
+**TypeScript**
+
+<!-- @[no_func_props_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoFuncProps.ts) -->
+
+``` TypeScript
+function logNumber(value: number): void {
+  console.info(value.toString());
+}
+
+logNumber.add = (left: number, right: number) => {
+  return left + right;
+};
+
+logNumber.sub = (left: number, right: number) => {
+  return left - right;
+};
+```
+
+**ArkTS**
+
+<!-- @[no_func_props](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoFuncProps.ets) -->
+
+``` TypeScript
+class NumberUtils {
+  static logNumber(value: number): void {
+    console.info(value.toString());
+  }
+
+  static add(left: number, right: number): number {
+    return left + right;
+  }
+
+  static sub(left: number, right: number): number {
+    return left - right;
+  }
+}
+```
+
 ### 不支持`Function.apply`和`Function.call`
 
 **规则：**`arkts-no-func-apply-call`
@@ -1183,6 +1221,32 @@ foo();
 **错误码：10605152**
 
 ArkTS不允许使用标准库函数`Function.apply`和`Function.call`，因为这些函数用于显式设置被调用函数的`this`参数。在ArkTS中，`this`的语义仅限于传统的OOP风格，函数体中禁止使用`this`。
+
+**TypeScript**
+
+<!-- @[no_func_apply_call_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoFuncApplyCall.ts) -->
+
+``` TypeScript
+function sumValues(a: number, b: number): number {
+  return a + b;
+}
+
+let args: number[] = [2, 3];
+let result: number = sumValues.apply(null, args);
+```
+
+**ArkTS**
+
+<!-- @[no_func_apply_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoFuncApplyCall.ets) -->
+
+``` TypeScript
+function sumValues(a: number, b: number): number {
+  return a + b;
+}
+
+let args: number[] = [2, 3];
+let result: number = sumValues(args[0], args[1]);
+```
 
 ### 不支持`Function.bind`
 
@@ -1194,6 +1258,41 @@ ArkTS不允许使用标准库函数`Function.apply`和`Function.call`，因为�
 
 ArkTS禁用标准库函数`Function.bind`。标准库使用这些函数显式设置被调用函数的`this`参数。在ArkTS中，`this`仅限于传统OOP风格，函数体中禁用使用`this`。
 
+**TypeScript**
+
+<!-- @[no_func_bind_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoFuncBind.ts) -->
+
+``` TypeScript
+class ValueHolder {
+  value: number = 42;
+
+  printValue() {
+    console.info(this.value.toString());
+  }
+}
+
+let holder = new ValueHolder();
+let boundPrintValue = holder.printValue.bind(holder);
+boundPrintValue(); // 42
+```
+
+**ArkTS**
+
+<!-- @[no_func_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoFuncBind.ets) -->
+
+``` TypeScript
+class ValueHolder {
+  public value: number = 42;
+
+  printValue(): void {
+    console.info(this.value.toString());
+  }
+}
+
+let holder = new ValueHolder();
+let boundPrintValue = () => { holder.printValue(); };
+boundPrintValue(); // 42
+```
 
 ### 不支持以`#`开头的私有字段
 
@@ -1480,6 +1579,34 @@ c3.foo(); // Extra foo
 **错误码：10605149**
 
 在ArkTS中，`class`声明的是一个新类型，不是值。因此，不支持将`class`用作对象，例如将其赋值给一个对象。
+
+**TypeScript**
+
+<!-- @[no_classes_as_obj_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoClassesAsObj.ts) -->
+
+``` TypeScript
+function classDecorator(constructor: Function) {}
+
+class MyClass {
+  constructor() {}
+}
+
+// 将类作为对象传递给函数
+classDecorator(MyClass);
+```
+
+**ArkTS**
+
+<!-- @[no_classes_as_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoClassesAsObj.ets) -->
+
+``` TypeScript
+class MyClass {
+  constructor() {}
+}
+
+// 使用类的实例而非类本身
+let myInstance = new MyClass();
+```
 
 ### 使用`class`而非具有call signature的类型
 
@@ -1951,6 +2078,28 @@ type YI<Item, T extends Array<Item>> = Item;
 
 ArkTS不支持索引访问类型。
 
+**TypeScript**
+
+<!-- @[no_aliases_by_index_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoAliasesByIndex.ts) -->
+
+``` TypeScript
+class Point {
+  x: number = 0;
+}
+
+// 通过索引访问类型
+type PointXType = Point['x'];
+```
+
+**ArkTS**
+
+<!-- @[no_aliases_by_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoAliasesByIndex.ets) -->
+
+``` TypeScript
+// 直接使用对应的类型，而非通过索引访问
+type PointXType = number;
+```
+
 ### 不支持structural typing
 
 **规则：**`arkts-no-structural-typing`
@@ -2192,6 +2341,65 @@ ArkTS仅支持`Partial`、`Required`、`Readonly`和`Record`，不支持TypeScri
 对于`Partial<T>`类型，泛型参数T必须为类或者接口类型。
 
 对于`Record`类型的对象，通过索引访问到的值的类型是包含`undefined`的联合类型。
+
+**TypeScript**
+
+<!-- @[no_utility_types_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoUtilityTypes.ts) -->
+
+``` TypeScript
+interface Todo {
+  title: string;
+  description: string;
+  completed: boolean;
+}
+
+// 使用Pick选择部分属性
+type TodoPreview = Pick<Todo, 'title' | 'completed'>;
+
+const todo: TodoPreview = {
+  title: 'Clean room',
+  completed: false,
+};
+
+// 使用Omit省略部分属性
+type TodoInfo = Omit<Todo, 'completed' | 'description'>;
+
+const todoInfo: TodoInfo = {
+  title: 'Pick up kids',
+};
+```
+
+**ArkTS**
+
+<!-- @[no_utility_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoUtilityTypes.ets) -->
+
+``` TypeScript
+interface Todo {
+  title: string;
+  description: string;
+  completed: boolean;
+}
+
+// 直接定义所需接口，替代Pick
+interface TodoPreview {
+  title: string;
+  completed: boolean;
+}
+
+const todo: TodoPreview = {
+  title: 'Clean room',
+  completed: false,
+};
+
+// 直接定义所需接口，替代Omit
+interface TodoInfo {
+  title: string;
+}
+
+const todoInfo: TodoInfo = {
+  title: 'Pick up kids',
+};
+```
 
 ### 不支持`as const`断言
 
@@ -3418,6 +3626,39 @@ interface Document {
 
 ArkTS只支持`Symbol.iterator`。
 
+**TypeScript**
+
+<!-- @[no_symbol_api_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoSymbolApi.ts) -->
+
+``` TypeScript
+const uniqueId = Symbol('userId');
+const user = {
+  [uniqueId]: 'abc123',
+  name: 'Alice',
+};
+
+console.info(user[uniqueId]); // abc123
+```
+
+**ArkTS**
+
+<!-- @[no_symbol_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoSymbolApi.ets) -->
+
+``` TypeScript
+class User {
+  public userId: string = 'abc123';
+  public name: string = 'Alice';
+}
+
+let user = new User();
+console.info(user.userId); // abc123
+
+// ArkTS支持Symbol.iterator
+let arr: number[] = [1, 2, 3];
+let iterator = arr[Symbol.iterator]();
+let result = iterator.next();
+```
+
 ### 不支持`globalThis`
 
 **规则：**`arkts-no-globalthis`
@@ -3468,6 +3709,41 @@ let x = M.abc;
 
 ArkTS没有原型的概念，因此不支持`new.target`。此特性不符合静态类型的原则。
 
+**TypeScript**
+
+<!-- @[no_new_target_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoNewTargetCheck.ts) -->
+
+``` TypeScript
+class Logger {
+  constructor() {
+    if (!new.target) {
+      throw new Error('Logger must be called with new');
+    }
+    console.info('Logger instantiated with new');
+  }
+}
+
+new Logger();
+```
+
+**ArkTS**
+
+<!-- @[no_new_target](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/NoNewTargetCheck.ets) -->
+
+``` TypeScript
+class Logger {
+  constructor() {
+    // 使用instanceof替代new.target
+    if (!(this instanceof Logger)) {
+      throw new Error('Logger must be called with new');
+    }
+    console.info('Logger instantiated with new');
+  }
+}
+
+new Logger();
+```
+
 ### 限制使用标准库
 
 **规则：**`arkts-limited-stdlib`
@@ -3513,6 +3789,45 @@ ArkTS不允许使用TypeScript或JavaScript标准库中的某些接口。大部�
 `handler.has()`、`handler.isExtensible()`、`handler.ownKeys()`、
 
 `handler.preventExtensions()`、`handler.set()`、`handler.setPrototypeOf()`
+
+**TypeScript**
+
+<!-- @[limited_stdlib_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/LimitedStdlib.ts) -->
+
+``` TypeScript
+interface Target {
+  a: number;
+  b: number;
+}
+
+interface Source {
+  b: number;
+  c: number;
+}
+
+const target: Target = { a: 1, b: 2 };
+const source: Source = { b: 4, c: 5 };
+// 使用Object.assign合并对象
+const returnedTarget = Object.assign(target, source);
+```
+
+**ArkTS**
+
+<!-- @[limited_stdlib](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/ArkTSLimitations/LimitedStdlib.ets) -->
+
+``` TypeScript
+class TargetClass {
+  public a: number = 0;
+  public b: number = 0;
+  public c: number = 0;
+}
+
+// 逐个赋值替代Object.assign
+let target: TargetClass = new TargetClass();
+target.a = 1;
+target.b = 4;
+target.c = 5;
+```
 
 ### 限制使用`ESObject`类型
 
