@@ -5,7 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=0e195b413ac684e2f8f44c9b887d66d23c5fa72f translatedAt=2026-06-22T03:29:00.199Z pushedAt=2026-06-22T06:15:01.438Z -->
+<!-- md-trans-meta sourceCommit=319a7243298a7fa377f627ada9c62506ed57207e translatedAt=2026-11-12T04:14:40.809Z pushedAt=2026-11-12T06:14:23.643Z nl=1 -->
 
 >  **NOTE**
 >
@@ -25,13 +25,13 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 
 | Name                    | Type                        | Default Value     | Mandatory  | Description                                      |
 | ---------------------- | -------------------------- | -------- | ---- | ---------------------------------------- |
-| images                 | Array&lt;ImageFrame&gt;    | -        | Yes   | Image frame information. The frame information includes the image path, size, and location. The supported image formats include PNG and JPG.  <br>Set this attribute using data binding.<br>- Reference image resources in the HML file: **images = {{images}}**.<br>- Declare the corresponding variables in the JS file:<br>**images: [{src: "/common/heart-rate01.png",duration:"100"}]** Since API version 6,the duration (in milliseconds) per image frame can be set.|
+| images                 | Array&lt;ImageFrame&gt;    | -        | Yes    | Image frame information set. The frame information of each frame includes the image path, image size, and image position. Currently, the following image formats are supported: PNG, JPG, SVG, and HEIF. For details about **ImageFrame**, see the **ImageFrame** description table.<br/>Data binding is required when using this attribute:<br>- Reference the image resource in the HML file: `images = {{images}}`,<br>- Declare the corresponding variable in the JavaScript file:<br>`images: [{src: "/common/heart-rate01.png",duration:100}]`. Since API version 6, the duration of each frame can be set, in milliseconds. |
 | predecode<sup>6+</sup> | number                     | 0        | No   | Whether to enable pre-decoding. The default value **0** indicates that pre-decoding is disabled. The value **2** indicates that two images following the currently playing frame will be cached in advance to improve performance.|
 | iteration              | number \| string | infinite | No   | Number of times that the frame animation is played. **number** indicates a fixed number of playback operations, and **infinite** indicates an unlimited number of playback operations.|
 | reverse                | boolean                    | false    | No   | Playback sequence. The value **false** indicates that images are played from the first one to the last one, and **true** indicates that images are played from the last one to the first one.|
 | fixedsize              | boolean                    | true     | No   | Whether the image size is the same as the component size.<br> **true**: The image size is the same as the component size. In this case, the width, height, top, and left attributes of the image are invalid. **false**: The width, height, top, and left attributes of each image must be set separately.|
 | duration               | string                     | -        | Yes   | Single video playback duration. The unit can be s (standing for seconds) or ms. The default unit is ms. If the value is **0**, no image is played. The value change takes effect only at the start of the next cycle. If image-specific durations have been set, the settings of this attribute do not take effect. |
-| fillmode<sup>5+</sup>  | string                     | forwards | No   | Status of the frame animation after its playback is complete. Available values are as follows:<br>- **none**: Restores to the initial status.<br>- **forwards**: Retains the ending status defined for the last key frame.|
+| fillmode<sup>5+</sup>  | string                     | forwards | No   | Status of the frame animation after its playback is complete. Available values are as follows:<br>- **none**: Restores to the initial status.<br>- **forwards**: Retains the ending status defined for the last keyframe.|
 
 **Table 1** ImageFrame
 
@@ -58,7 +58,7 @@ In addition to the [universal events](js-components-common-events.md), the follo
 | ------ | ---- | --------- |
 | start  | -    | Triggered when the frame animation starts.|
 | pause  | -    | Triggered when the frame animation pauses.|
-| stop   | -    | Triggered when the frame animation stops.|
+| stop   | -    | Triggered when the frame animation stops. |
 | resume | -    | Triggered when the frame animation resumes.|
 
 
@@ -71,7 +71,7 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
 | start    | -    | Starts to play the frame animation of an image. If this method is called again, the playback starts from the first frame.              |
 | pause    | -    | Pauses the frame animation playback of an image.                              |
 | stop     | -    | Stops the frame animation playback of an image.                              |
-| resume   | -    | Resumes the frame animation playback of an image.                                |
+| resume   | -    | Resumes the frame animation playback of an image. |
 | getState | -    | Obtains the playback state. Available values are as follows:<br>- playing<br>- paused<br>- stopped|
 
 

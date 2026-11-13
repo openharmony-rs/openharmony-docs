@@ -244,7 +244,7 @@ Customizes the position of the child component to be arranged. When the position
 
 > **NOTE**
 >
-> - In this callback, you can call the [getChild()](js-apis-arkui-frameNode.md#getchild12) API of [FrameNode](js-apis-arkui-frameNode.md#framenode-1) to obtain the child component FrameNode and call the [layout()](js-apis-arkui-frameNode.md#layout12) API of [FrameNode](js-apis-arkui-frameNode.md#framenode-1) to set the position of the child component. For details, see [Example 1: Implementing Custom Lazy Loading Layout](./arkui-ts/ts-container-lazydynamiclayout.md#example-1-implementing-custom-lazy-loading-layout) of the **LazyDynamicLayout** component.
+> - In this callback, you can call the [getChild()](js-apis-arkui-frameNode.md#getchild12) API of [FrameNode](js-apis-arkui-frameNode.md#framenode-1) to obtain the child component FrameNode and call the [layout()](js-apis-arkui-frameNode.md#layout12) API of [FrameNode](js-apis-arkui-frameNode.md#framenode-1) to set the position of the child component. For details, see [Example 1: Implementing Custom Lazy Loading Layout](./arkui-ts/ts-container-lazydynamiclayout.md#example-1-implementing-lazy-loading-custom-layout) of the **LazyDynamicLayout** component.
 > - When calling [getChild()](js-apis-arkui-frameNode.md#getchild12) in this callback to obtain a child component, you must pass [ExpandMode.LAZY_NOT_EXPAND](js-apis-arkui-frameNode.md#expandmode15) to prevent lazy loading from becoming invalid due to full loading of child components. When calling [getChildrenCount()](js-apis-arkui-frameNode.md#getchildrencount12) to obtain the total number of child components, you must pass [ChildrenCountMode.ALL_NOT_EXPAND](js-apis-arkui-frameNode.md#childrencountmode) to prevent lazy loading from becoming invalid due to full loading of child components.
 
 **Since:** 26.0.0
@@ -264,7 +264,7 @@ Customizes the position of the child component to be arranged. When the position
 
 **Example**
 
-For details, see [Example 1: Implementing Custom Lazy Loading Layout](./arkui-ts/ts-container-lazydynamiclayout.md#example-1-implementing-custom-lazy-loading-layout) of the **LazyDynamicLayout** component.
+For details, see [Example 1: Implementing Custom Lazy Loading Layout](./arkui-ts/ts-container-lazydynamiclayout.md#example-1-implementing-lazy-loading-custom-layout) of the **LazyDynamicLayout** component.
 
 ## LazyCustomLayoutAlgorithmOptions
 

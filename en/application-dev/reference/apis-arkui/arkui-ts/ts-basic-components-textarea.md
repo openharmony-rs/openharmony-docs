@@ -3336,7 +3336,7 @@ struct PunctuationDemo {
   }
 }
 ```
-![textAreaPunctuation](figures/textAreaPunctuation.gif)
+
 
 ### Example 28: Setting Adaptive Spacing
 
@@ -3581,7 +3581,7 @@ Hello World Hello World Hello World Hello World Hello World\n
 }
 ```
 
-![horizontal_scrolling](figures/textarea_horizontal_scrolling.png)
+
 
 ### Example 34: Enabling/Disabling Orphan Character Optimization During Text Typesetting
 
@@ -3620,7 +3620,7 @@ struct TextExample {
 
 The display effect may vary depending on the device sizes and is for reference only.
 
-![textAreaOrphanCharOptimization](figures/textAreaOrphanCharOptimization.png)
+
 
 ### Example 35: Setting the Text Shader Effect
 
@@ -3689,7 +3689,7 @@ struct ShaderColorStyle {
   }
 }
 ```
-![TextAreaShaderStyle](figures/textAreaShaderStyle.png)
+
 
 ### Example 36: Setting an AI Menu for Text Selection
 

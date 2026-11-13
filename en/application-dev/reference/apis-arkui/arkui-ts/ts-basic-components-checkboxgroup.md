@@ -647,7 +647,7 @@ struct Index {
 }
 ```
 
-![checkboxGroup](figures/checkboxGroup3.gif)
+
 
 ### Example 4: Implementing the Select-All Functionality
 

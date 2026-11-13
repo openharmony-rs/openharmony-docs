@@ -9,7 +9,7 @@
 
 This module provides APIs for system materials. Different system materials correspond to different UI effects, including the [background color](arkui-ts/ts-universal-attributes-background.md#backgroundcolor), [border color](arkui-ts/ts-universal-attributes-border.md#bordercolor), [border width](arkui-ts/ts-universal-attributes-border.md#borderwidth), [shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow), and [material filter](arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23) effects. The system material currently provided is the immersive material type [ImmersiveMaterial](#immersivematerial). For its device compatibility and computing power performance, see the description of [ImmersiveMaterial](#immersivematerial).
 
-For the development guide, see [Immersive Light Sense](../../ui/arkts-immersive-light-sense-overview.md).
+For the development guide, see [Immersive Lighting Sense](../../ui/arkts-immersive-light-sense-overview.md).
 
 **Since**: 26.0.0
 

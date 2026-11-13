@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3594f4f7911eac49a1432a74a842b11a7e25b680 translatedAt=2026-11-12T04:14:31.617Z pushedAt=2026-11-12T06:18:15.401Z nl=1 -->
 
 >  **NOTE**
 >
@@ -35,9 +36,9 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | Name                          | Type     | Default Value         | Mandatory  | Description                                      |
 | ---------------------------- | ------- | ------------ | ---- | ---------------------------------------- |
 | object-fit                   | string  | cover        | No   | Image scale type. This style is not supported for SVG images. For details about available values, see **object-fit**.|
-| match-text-direction         | boolean | false        | No   | Whether image orientation changes with the text direction. This style is not supported for SVG images.                    |
-| fit-original-size            | boolean | false        | No   | Whether the **\<image>** component adapts to the image source size when its width and height are not set. If this style is set to **true**, **object-fit** will not take effect. This style is not supported for SVG images.|
-| object-position<sup>7+</sup> | string  | 0px 0px | No   | Position of the image in the component.<br>The options are as follows:<br>1. Pixels, in px. For example, **15px 15px** indicates the position to move along the x-axis or y-axis.<br>2. Characters. Optional values are as follows:<br>- **left**: The image is displayed on the left of the component.<br>- **top**: The image is displayed on the top of the component.<br>- **right**: The image is displayed on the right of the component.<br>- **bottom**: The image is displayed at the bottom of the component.|
+| match-text-direction         | boolean | false        | No   | Whether the image orientation changes with the text direction. This style is not supported for SVG images.<br/>Default value: **false**, indicating that the image orientation does not change with the test direction.                    |
+| fit-original-size            | boolean | false        | No   | Whether the [image](js-components-basic-image.md) component adapts to the image source size when its width and height are not set. If this style is set to **true**, **object-fit** will not take effect. This style is not supported for SVG images.<br/>The default value is **false**, indicating that the [image](js-components-basic-image.md) component does not adapt to the image source when its width and height are not set. |
+| object-position<sup>7+</sup> | string  | 0px&nbsp;0px | No    | Position where the image is displayed within the component.<br/>There are two setting types:<br/>1.&nbsp;Pixel, in px. For example, **15px&nbsp;15px** represents the positions moved along the x axis and y axis, respectively.<br/>2.&nbsp;Character. The options are as follows:<br/>-&nbsp;**left**: the image is displayed on the left of the component.<br/>-&nbsp;**top**: the image is displayed at the top of the component.<br/>-&nbsp;**right**: the image is displayed on the right of the component.<br/>-&nbsp;**bottom**: the image is displayed at the bottom of the component. |
 
 **Table 1** object-fit
 
@@ -120,3 +121,5 @@ export default {
 ```
 
 ![example](figures/example.gif)
+
+
