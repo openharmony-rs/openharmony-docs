@@ -49,7 +49,7 @@ Creates a toolbar composed of [ToolBarItem](ts-basic-components-toolbaritem.md) 
 >
 >  3. toolbar currently supports only single-line layout, not multi-line layout. Therefore, avoid placing multi-line layout elements in a toolbar.
 >
->  4. toolbar can be used only when [NavigationMode](ts-basic-components-navigation.md#navigationmode) is set to Split.
+>  4. toolbar can be used only when [NavigationMode](ts-basic-components-navigation.md) is set to Split.
 >
 >  5. The title bar height floats within a limited range based on the [ToolBarItem](ts-basic-components-toolbaritem.md) components in the toolbar:
 >     * By default, there is a 4vp margin between the [ToolBarItem](ts-basic-components-toolbaritem.md) component and the title bar.

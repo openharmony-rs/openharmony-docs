@@ -5,7 +5,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:29:48.387Z pushedAt=2026-10-08T09:32:57.375Z -->
+<!-- md-trans-meta sourceCommit=734000d7541e45073c1418b7d3adb90d2d5defac translatedAt=2026-11-13T02:21:56.612Z pushedAt=2026-11-13T09:44:30.418Z nl=1 -->
 
 The **Notification** module provides notification management capabilities, covering notifications, notification slots, notification subscription, notification enabled status, and notification badge enabled status.
 
@@ -2286,7 +2286,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 
 **System capability**: SystemCapability.Notification.Notification
 
-> **NOTE**<br>
+> **NOTE**
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [notificationManager.DoNotDisturbDate](js-apis-notificationManager-sys.md#donotdisturbdate) instead.
 
 **System API**: This is a system API and cannot be called by third-party applications.
@@ -2301,7 +2301,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 
 **System capability**: SystemCapability.Notification.Notification
 
-> **NOTE**<br>
+> **NOTE**
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [notificationManager.DoNotDisturbType](js-apis-notificationManager-sys.md#donotdisturbtype) instead.
 
 **System API**: This is a system API and cannot be called by third-party applications.
@@ -2319,7 +2319,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 
 **System API**: This is a system API and cannot be called by third-party applications.
 
-> **NOTE**<br>
+> **NOTE**
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [notificationManager.DeviceRemindType](js-apis-notificationManager-sys.md#deviceremindtype) instead.
 
 | Name                | Value | Description                              |
@@ -2336,7 +2336,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 
 **System API**: This is a system API and cannot be called by third-party applications.
 
-> **NOTE**<br>
+> **NOTE**
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [notificationManager.SourceType](js-apis-notificationManager-sys.md#sourcetype) instead.
 
 | Name                | Value | Description                 |
@@ -2351,7 +2351,7 @@ Notification.getDeviceRemindType().then((data: Notification.DeviceRemindType) =>
 
 **System API**: This is a system API and cannot be called by third-party applications.
 
-> **NOTE**<br>
+> **NOTE**
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [notificationManager.RemoveReason](js-apis-notificationSubscribe-sys.md#removereason) instead.
 
 | Name                | Value | Description                 |
