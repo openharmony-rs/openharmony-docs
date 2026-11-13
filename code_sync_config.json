@@ -73410,5 +73410,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/camera/camera-c2pa.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/PhotoAndVideoCamera/camera/src/main/ets/cameramanagers/PhotoManager.ets",
+				"functions":[
+					{
+						"end_line":415,
+						"name":"enable_c2pa",
+						"start_line":409
+					}
+				]
+			}
+		]
 	}
 ]
