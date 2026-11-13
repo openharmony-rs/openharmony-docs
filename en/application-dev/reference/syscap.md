@@ -14,7 +14,6 @@ This document systematically describes the definition and purpose of SystemCapab
 
 SystemCapability, hereinafter referred to as SysCap, identifies a collection of APIs that implement a specific open capability, as shown in the following figure.
 
-![Syscap-image](figures/Syscap-image.png)
 
 Take the Bluetooth SysCap named SystemCapability.Communication.Bluetooth.Core as an example. It represents a set of Bluetooth capability-related APIs, including:
 
@@ -49,7 +48,6 @@ The purposes of SysCap are as follows:
 
 SysCap, SDK, and Kit form a structured and hierarchical architecture, as shown in the following figure:
 
-![Syscap-SDK](figures/Syscap-SDK.png) 
 
 1. The SDK consists of multiple functionally independent Kits.
 
@@ -62,7 +60,6 @@ This structured design enables developers to precisely and efficiently locate an
 
 Take the Tablet device as an example. If a developer imports the specific content of a module starting with "a" in an .ets file (for example, interfaces, classes, functions, variables, objects, etc.), DevEco Studio auto-completes all the specific content of the module that is available on the Tablet, as shown in the following figure:
 
-![Syscap-DEV](figures/Syscap-DEV.png) 
 
 ## Relationship Between SysCap and Device Type
 
@@ -72,15 +69,12 @@ In the "device-define" folder of the SDK, JSON files define the SysCap set suppo
 
 As shown in the following figure:
 
-![Syscap-DT](figures/Syscap-DT.png) 
 
 When creating a project in DevEco Studio, developers need to select the device type of the app:
 
-![Syscap-DEVDT](figures/Syscap-DEVDT.png) 
 
 Alternatively, after creating a project, developers can specify the device types supported by the app by modifying [deviceTypes](../quick-start/module-configuration-file.md#devicetypes) in the module.json5 file:
 
-![Syscap-DTS](figures/Syscap-DTS.png) 
 
 DevEco Studio automatically identifies the device types in the project, locates the corresponding SysCap collection under "device-define" in the SDK, and then extracts the APIs supported by the device for intelligent prompts and auto-completion, helping developers precisely and efficiently call the required APIs.
 
@@ -240,7 +234,6 @@ App development can be divided into the following:
 
 In single-device app development, DevEco Studio identifies only one device type. The adaptation development process is shown in the following figure:
 
-![Syscap-ONE](figures/Syscap-ONE.png) 
 
 1. If an API has inconsistent capabilities across different device models of the same device type, use the capability query interface to determine the API capability availability. (Note: The capability query mechanism here is not canIUse. For details, see [Using the Capability Query Interface to Determine Whether an API Is Available](#using-the-capability-query-interface-to-determine-whether-an-api-is-available).)
 
@@ -251,7 +244,6 @@ In single-device app development, DevEco Studio identifies only one device type.
 
 In multi-device app development, DevEco Studio needs to identify multiple device types simultaneously. The adaptation development process is shown in the following figure:
 
-![Syscap-MORE](figures/Syscap-MORE.png) 
 
 1. Use canIUse to determine whether the SysCap collection within the union but outside the intersection is available. 
 
