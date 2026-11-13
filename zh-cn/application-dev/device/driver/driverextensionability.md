@@ -63,11 +63,12 @@
            reply.writeString(optFir + ` World`);
          }
        } catch (err) {
-          console.info('testTag', `onRemoteMessageRequest error code is: ${err.code} with info: ${err.message}`);
+         console.info('testTag', `onRemoteMessageRequest error code is: ${err.code} with info: ${err.message}`);
        }
        return true;
      }
    }
+  
    ```
 
 6. 在DriverExtAbility.ets文件中，增加导入[DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md)的依赖包，该包提供了onInit()、onRelease()、onConnect()和onDisconnect()生命周期回调，自定义类继承[DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md)并根据需要重写生命周期回调。
@@ -117,6 +118,9 @@
        "requestPermissions": [
          {
            "name": "ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER" // 此处为扩展外设相关权限，必须配置。
+         },
+         {
+          "name": "ohos.permission.ACCESS_DDK_DRIVERS"
          }
        ],
        "deliveryWithInstall": true,
