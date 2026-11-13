@@ -2541,6 +2541,34 @@
 
 **起始版本**：7
 
+## ohos.permission.INSTALL_QUICK_FIX_BUNDLE
+
+允许应用安装快速修复补丁。
+
+该权限仅系统应用可申请。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**起始版本**：11
+
+## ohos.permission.UNINSTALL_QUICK_FIX_BUNDLE
+
+允许应用卸载快速修复补丁。
+
+该权限仅系统应用可申请。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**起始版本**：11
+
 ## ohos.permission.INSTALL_ALLOW_DOWNGRADE
 
 允许应用降级安装其他应用。

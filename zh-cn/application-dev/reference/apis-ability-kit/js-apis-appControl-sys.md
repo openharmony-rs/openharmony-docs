@@ -1000,7 +1000,7 @@ try {
 | priority | number | 否   | 否 | 拦截规则的优先级，用于规则列表查询结果排序。取值为整数，数值越小，优先级越高，排序越靠前。 |
 | pageJump | [PageJumpMode](#pagejumpmode) | 否   | 是 | 指定目标应用被拦截时是否跳转到页面。默认值为PageJumpMode.PAGE_JUMP_WINDOW_SHOW。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 
-### ComponentType<sup>11+</sup>
+## ComponentType<sup>11+</sup>
 
 标识功能组件类型。
 
@@ -1013,7 +1013,7 @@ try {
 | UI_ABILITY | 1    | UI基础功能类型。 |
 | UI_EXTENSION | 2    | UI扩展能力类型。 |
 
-### DisposedType<sup>11+</sup>
+## DisposedType<sup>11+</sup>
 
 标识拦截应用程序的方式，例如禁用应用的全部能力、禁用应用的指定能力、或者不禁用。
 
@@ -1027,7 +1027,7 @@ try {
 | BLOCK_ABILITY | 2    | 应用指定的能力才会被禁用。 |
 | NON_BLOCK | 3 | 应用所有能力不会被禁用。 |
 
-### ControlType<sup>11+</sup>
+## ControlType<sup>11+</sup>
 
 标识拦截指定应用程序的不同策略。
 
@@ -1040,7 +1040,7 @@ try {
 | ALLOWED_LIST | 1    | 允许运行指定功能的列表。 |
 | DISALLOWED_LIST | 2    | 不允许运行指定功能的列表。 |
 
-### PageJumpMode
+## PageJumpMode
 
 标识目标应用被拦截时是否跳转到页面。
 
@@ -1071,7 +1071,7 @@ try {
 | uninstallComponentType | [UninstallComponentType](#uninstallcomponenttype15)  | 否   | 否   | 拦截时将拉起能力的类型。 |
 | priority | number | 否 | 否 | 卸载处置规则的优先级，用于规则列表查询结果排序。取值为整数，数值越小，优先级越高，排序越靠前。 |
 
-### UninstallComponentType<sup>15+</sup>
+## UninstallComponentType<sup>15+</sup>
 
 标识卸载时功能组件类型。
 
