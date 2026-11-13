@@ -200,7 +200,7 @@ sppConnect(deviceId: string, options: SppOptions, callback: AsyncCallback&lt;num
 
 | 参数名      | 类型                          | 必填   | 说明                             |
 | -------- | --------------------------- | ---- | ------------------------------ |
-| deviceId | string                      | 是    | 对端设备地址，例如："XX:XX:XX:XX:XX:XX"。|
+| deviceId | string                      | 是    | 对端设备地址，例如："11:22:33:44:55:66"。|
 | options   | [SppOptions](#sppoptions)     | 是    | 客户端套接字连接配置参数。                  |
 | callback | AsyncCallback&lt;number&gt; | 是    | 回调函数。当客户端发起连接成功，err为undefined，data为当前客户端套接字的ID，有效值为非负值；否则为错误对象。        |
 
@@ -236,7 +236,7 @@ let clientSocket = (code: BusinessError, number: number) => {
 // 以RFCOMM链路类型套接字为例
 let sppOption:socket.SppOptions = {uuid: '00001810-0000-1000-8000-00805F9B34FB', secure: false, type: socket.SppType.SPP_RFCOMM};
 try {
-    socket.sppConnect('XX:XX:XX:XX:XX:XX', sppOption, clientSocket);
+    socket.sppConnect('11:22:33:44:55:66', sppOption, clientSocket);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
