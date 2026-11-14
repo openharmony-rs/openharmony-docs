@@ -29,6 +29,6 @@ PageNodeInfo defines the page node information used for auto-fill.
 | placeholder    | string              | No  | Yes  | Placeholder of the page node.                              |
 | passwordRules    | string              | No  | Yes  | Rules for generating passwords.                              |
 | enableAutoFill    | boolean              | No  | No  | Status of the auto-fill feature. **true** if enabled, **false** otherwise.           |
-| rect<sup>12+</sup>    | [AutoFillRect](js-apis-inner-application-autoFillRect-sys.md) | No  | No  | Coordinates, width, and height of the page node. |
+| rect<sup>12+</sup>    | [AutoFillRect] | No  | No  | Coordinates, width, and height of the page node. |
 | isFocus<sup>12+</sup>    | boolean              | No  | No  | Whether the page node has focus. **true** if the page node has focus, **false** otherwise.  |
 | metadata<sup>12+</sup>    | string              | No  | Yes  | Metadata of the page node.                              |

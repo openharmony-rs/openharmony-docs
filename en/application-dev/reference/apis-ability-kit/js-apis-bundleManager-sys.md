@@ -5224,7 +5224,7 @@ Obtains all the plugin information in the system based on the given host bundle 
 
 | Type                                                        | Description                                  |
 | ------------------------------------------------------------ | -------------------------------------- |
-| Promise<Array\<[PluginBundleInfo](js-apis-bundleManager-pluginBundleInfo-sys.md)>> | Promise used to return the array of plugin information obtained.|
+| Promise<Array\<[PluginBundleInfo]>> | Promise used to return the array of plugin information obtained.|
 
 **Error codes**
 
@@ -6625,7 +6625,7 @@ Defines the plugin information.
 
 | Type                                                        | Description          |
 | ------------------------------------------------------------ | -------------- |
-| [_PluginBundleInfo](js-apis-bundleManager-pluginBundleInfo-sys.md#pluginbundleinfo) |Plugin information.|
+| [_PluginBundleInfo] |Plugin information.|
 
 ## PluginModuleInfo<sup>19+</sup>
 
@@ -6639,7 +6639,7 @@ Defines the module information of a plugin.
 
 | Type                                                        | Description          |
 | ------------------------------------------------------------ | -------------- |
-| [_PluginModuleInfo](js-apis-bundleManager-pluginBundleInfo-sys.md#pluginmoduleinfo) |Module information of the plugin.|
+| [_PluginModuleInfo] |Module information of the plugin.|
 
 ## DynamicIconInfo<sup>20+</sup>
 

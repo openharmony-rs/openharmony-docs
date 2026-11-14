@@ -183,7 +183,7 @@ Defines the rectangle used for auto-fill.
 
 | Type| Description|
 | --- | --- |
-| [_AutoFillRect.default](js-apis-inner-application-autoFillRect-sys.md) | Rectangle used for auto-fill.|
+| [_AutoFillRect.default] | Rectangle used for auto-fill.|
 
 ## AutoFillPopupConfig<sup>12+</sup>
 

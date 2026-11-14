@@ -182,13 +182,13 @@ let rect: Rect;
 
 type AccessibilityExtensionContext = _AccessibilityExtensionContext.default
 
-Indicates the context of the accessibility extension. For details, see [AccessibilityExtensionContext](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityextensioncontext).
+Indicates the context of the accessibility extension. For details, see [AccessibilityExtensionContext](js-apis-inner-application-accessibilityExtensionContext.md).
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 | Type                     | Description                    |
 | ----------------------- |------------------------|
-| _AccessibilityExtensionContext.default | Indicates the context of the accessibility extension. For details, see [AccessibilityExtensionContext](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityextensioncontext). |
+| _AccessibilityExtensionContext.default | Indicates the context of the accessibility extension. For details, see [AccessibilityExtensionContext](js-apis-inner-application-accessibilityExtensionContext.md). |
 
 **Example**
 
@@ -290,7 +290,7 @@ AccessibilityExtensionAbility provides the accessibility extension service capab
 
 | Name    | Type                                                                                          | Read-Only | Optional | Description           |
 | ------- |---------------------------------------------------------------------------------------------| ---- | ---- | ------------ |
-| context | [AccessibilityExtensionContext](js-apis-inner-application-accessibilityExtensionContext.md#accessibilityextensioncontext) | No    | No    | Represents the context of the accessibility extension. |
+| context | [AccessibilityExtensionContext](js-apis-inner-application-accessibilityExtensionContext.md) | No    | No    | Represents the context of the accessibility extension. |
 
 ### onConnect<sup>(deprecated)</sup>
 
