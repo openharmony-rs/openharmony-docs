@@ -138,10 +138,14 @@
      aboutToAppear(): void {
        taskpool.execute(initCalculator).then((ret) => {
          this.calc = ret as Calculator;
-       })
+       }).catch((e: BusinessError) => {
+         console.error(`taskpool execute initCalculator error, code: ${e.code}, message is: ${e.message}`);
+       });
        taskpool.execute(initTimerSdk).then((ret) => {
          this.timer = ret as TimerSdk;
-       })
+       }).catch((e: BusinessError) => {
+         console.error(`taskpool execute initTimerSdk error, code: ${e.code}, message is: ${e.message}`);
+       });
      }
    
      build() {
