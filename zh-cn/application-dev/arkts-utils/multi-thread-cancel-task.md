@@ -87,6 +87,8 @@ status: active
                taskpool.execute(cancel, send).then(() => {
                  this.returnMessage = 'Taskpool canceled!';
                  this.promptAction.showToast({ message: this.returnMessage });
+               }).catch((e: BusinessError) => {
+                 console.error(`taskpool execute cancel error, message is: ${e.message}`);
                });
              })
            // ...

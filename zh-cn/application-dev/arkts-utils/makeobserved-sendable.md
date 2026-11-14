@@ -73,7 +73,9 @@ struct Index {
         taskpool.execute(threadGetData, this.send.name).then(val => {
           // 和@Local一起使用，可以观察this.send的变化
           this.send = UIUtils.makeObserved(val as SendableData);
-        })
+        }).catch((e: BusinessError) => {
+          console.error(`taskpool execute error, message is: ${e.message}`);
+        });
       })
         .id('task')
     }
