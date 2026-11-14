@@ -55,7 +55,7 @@ Enumerates the rectangle types for filling the lattice, which determine how the 
 | -- | -- |
 | DEFAULT | Draws an image into the rectangular lattice.|
 | TRANSPARENT | Sets the rectangular lattice to be transparent.|
-| FIXED_COLOR | Draws the colors from the **fColors** array of the rectangular lattice object into the lattice.|
+| FIXED_COLOR | Draws the colors from the **colors** array of the rectangular lattice object into the lattice.|
 
 ## Function Description
 
