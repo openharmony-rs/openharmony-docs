@@ -20,9 +20,11 @@
 
 Inner error.
 
+可识别具体错误原因时，错误信息中会携带该场景的描述，例如：`The number of bind args is incorrect.`、`Invalid args: table is empty or row is empty`、`No transaction in session for rollback`、`Failed to rename backup file`；无法识别具体原因时，错误信息为`Inner error.`。
+
 **错误描述**
 
-内部错误。
+内部错误。错误信息会尽量携带具体错误原因，便于定位问题根因。
 
 **可能原因**
 
@@ -34,6 +36,7 @@ Inner error.
 6. 根密钥生成失败。HUKS生成根密钥失败，无法进一步生成加密数据库的密钥，因此调用[getRdbStore](arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)等开库接口打开加密数据库会失败。
 7. 远程查询时，没有查询到数据。在对端数据库中不存在要查询的数据的情况下，调用[remoteQuery](arkts-apis-data-relationalStore-RdbStore.md#remotequery)接口进行远程查询，获取到结果集后，再调用[goToFirstRow](arkts-apis-data-relationalStore-ResultSet.md#gotofirstrow)等接口获取数据会失败。
 8. 数据管理服务启动失败。在数据管理服务启动失败的情况下，无法设置分布式表，因此调用[setDistributedTables](arkts-apis-data-relationalStore-RdbStore.md#setdistributedtables)等设置分布式表接口会失败。
+9. SQL绑定参数数量与占位符数量不匹配，调用[execute](arkts-apis-data-relationalStore-RdbStore.md#execute12)或[executeSync](arkts-apis-data-relationalStore-RdbStore.md#executesync12)等接口执行SQL时会失败。
 
 **处理步骤**
 
@@ -60,6 +63,9 @@ Inner error.
    - 否：确保要查询的数据存在，再进行远程查询。
 8. 确认问题时间点附近，是否可搜索到关键日志：`Get distributed data manager failed`。
    - 是：数据管理服务启动失败，业务需要重试设置分布式表。
+   - 否：提供hilog系统日志，联系技术支撑人员定位。
+9. 排查业务代码中SQL语句的占位符数量与传入的绑定参数数量是否一致。
+   - 是：确保占位符数量与绑定参数数量一致后再执行SQL。
    - 否：提供hilog系统日志，联系技术支撑人员定位。
 
 ## 14800001 无效的参数
@@ -216,11 +222,11 @@ The target instance is already closed.
 
 **错误信息**
 
-The database does not respond.
+The database does not respond. database busy, dbName: {数据库名}
 
 **错误描述**
 
-数据库没有响应。
+数据库没有响应。错误信息中会携带故障数据库名（不含绝对路径），便于定位是哪个数据库无响应。
 
 **可能原因**
 
@@ -575,11 +581,11 @@ SQLite：TEXT或BLOB超出大小限制。
 
 **错误信息**
 
-SQLite: Abort due to constraint violation.
+SQLite: Abort due to constraint violation. {约束冲突详情，如 UNIQUE constraint failed: test.id} database: {数据库名} table: {表名}
 
 **错误描述**
 
-SQLite：由于违反约束而中止。
+SQLite：由于违反约束而中止。错误信息中会携带约束冲突详情（表名、列名）、数据库名和表名，便于定位冲突发生的具体位置。
 
 **可能原因**
 
