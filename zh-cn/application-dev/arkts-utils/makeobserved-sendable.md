@@ -74,7 +74,7 @@ struct Index {
           // 和@Local一起使用，可以观察this.send的变化
           this.send = UIUtils.makeObserved(val as SendableData);
         }).catch((e: BusinessError) => {
-          console.error(`taskpool execute error, message is: ${e.message}`);
+          console.error(`taskpool execute error, code: ${e.code}, message is: ${e.message}`);
         });
       })
         .id('task')
