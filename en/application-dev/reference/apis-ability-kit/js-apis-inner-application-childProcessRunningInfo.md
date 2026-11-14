@@ -34,4 +34,3 @@ import { childProcessManager } from '@kit.AbilityKit';
 | pid | number | No | No | PID of the child process. |
 | parentPid | number | No | No | PID of the parent process of the child process. |
 | processName | string | No | No | Name of the child process. |
-<!--no_check-->
