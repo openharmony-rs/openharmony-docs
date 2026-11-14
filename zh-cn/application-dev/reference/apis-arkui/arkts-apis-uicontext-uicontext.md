@@ -12,8 +12,6 @@ UIContext实例对象，用于提供与当前UI实例关联的上下文能力，
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 本模块接口仅可在Stage模型下使用。
->
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
 > - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的[getUIContext()](arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定义组件内置方法[getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](#getcallingscopeuicontext22)获取UIContext实例。本文中UIContext对象以uiContext表示。
@@ -75,6 +73,8 @@ constructor()
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **示例：**
 
@@ -160,6 +160,8 @@ static getCallingScopeUIContext(): UIContext | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 |类型|说明|
@@ -206,6 +208,8 @@ static getLastFocusedUIContext(): UIContext | undefined
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -254,6 +258,8 @@ static getLastForegroundUIContext(): UIContext | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 |类型|说明|
@@ -300,6 +306,8 @@ static getAllUIContexts(): UIContext[]
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -360,6 +368,8 @@ static resolveUIContext(): ResolvedUIContext
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 |类型|说明|
@@ -397,6 +407,8 @@ isAvailable(): boolean
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -474,6 +486,8 @@ getFont(): Font
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型            | 说明          |
@@ -493,6 +507,8 @@ getComponentUtils(): ComponentUtils
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -514,6 +530,8 @@ getUIInspector(): UIInspector
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型                          | 说明                 |
@@ -533,6 +551,8 @@ getUIObserver(): UIObserver
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -598,6 +618,8 @@ getId(): number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型   | 说明               |
@@ -631,6 +653,8 @@ getMediaQuery(): MediaQuery
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型                        | 说明                |
@@ -651,6 +675,8 @@ getRouter(): Router
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型                | 说明            |
@@ -670,6 +696,8 @@ getPromptAction(): PromptAction
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -715,6 +743,8 @@ getOverlayManager(): OverlayManager
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型                           | 说明                 |
@@ -734,6 +764,8 @@ setOverlayManagerOptions(options: OverlayManagerOptions): boolean
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -761,6 +793,8 @@ getOverlayManagerOptions(): OverlayManagerOptions
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型                           | 说明                 |
@@ -780,6 +814,8 @@ animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -859,6 +895,8 @@ animateTo(value: AnimateParam, event: () => void): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 > **说明：**
 > - 不推荐在aboutToAppear、aboutToDisappear中调用动画。
@@ -1073,6 +1111,8 @@ getFrameNodeById(id: string): FrameNode | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型                                       | 必填   | 说明                                    |
@@ -1102,6 +1142,8 @@ getAttachedFrameNodeById(id: string): FrameNode | null
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1163,6 +1205,8 @@ getFrameNodeByUniqueId(id: number): FrameNode | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型                                       | 必填   | 说明                                    |
@@ -1210,6 +1254,8 @@ getPageInfoByUniqueId(id: number): PageInfo
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1282,6 +1328,8 @@ getNavigationInfoByUniqueId(id: number): observer.NavigationInfo | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型                                       | 必填   | 说明                                    |
@@ -1311,6 +1359,8 @@ showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButto
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1366,6 +1416,8 @@ showActionSheet(value: ActionSheetOptions): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：** 
 
@@ -1441,6 +1493,8 @@ showDatePickerDialog(options: DatePickerDialogOptions): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -1518,6 +1572,8 @@ showTimePickerDialog(options: TimePickerDialogOptions): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **参数：** 
@@ -1584,6 +1640,8 @@ showTextPickerDialog(options: TextPickerDialogOptions): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -1663,6 +1721,8 @@ showTextPickerDialog(style: TextPickerDialogOptions\|TextPickerDialogOptionsExt)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **参数：** 
@@ -1680,6 +1740,8 @@ createAnimator(options: AnimatorOptions): AnimatorResult
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1747,6 +1809,8 @@ createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明      |
@@ -1803,6 +1867,8 @@ runScopedTask(callback: () => void): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名      | 类型         | 必填   | 说明   |
@@ -1840,6 +1906,8 @@ setKeyboardAvoidMode(value: KeyboardAvoidMode): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1889,6 +1957,8 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型         | 说明   |
@@ -1925,6 +1995,8 @@ getAtomicServiceBar(): Nullable\<AtomicServiceBar>
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -1965,6 +2037,8 @@ getDragController(): DragController
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 |类型|说明|
@@ -1984,6 +2058,8 @@ keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array&lt;KeyframeState
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -2062,6 +2138,8 @@ getFocusController(): FocusController
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 |类型|说明|
@@ -2081,6 +2159,8 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -2183,6 +2263,8 @@ getFilteredInspectorTreeById(id: string, depth: number, filters?: Array\<string\
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名  | 类型            | 必填 | 说明                                                         |
@@ -2263,6 +2345,8 @@ getCursorController(): CursorController
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 |类型|说明|
@@ -2282,6 +2366,8 @@ getContextMenuController(): ContextMenuController
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -2323,6 +2409,8 @@ getMeasureUtils(): MeasureUtils
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：** 
 
 | 类型   | 说明                                         |
@@ -2344,6 +2432,8 @@ getComponentSnapshot(): ComponentSnapshot
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -2374,6 +2464,8 @@ vp2px(value : number) : number
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -2433,6 +2525,8 @@ px2vp(value : number) : number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
@@ -2490,6 +2584,8 @@ fp2px(value : number) : number
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -2549,6 +2645,8 @@ px2fp(value : number) : number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                   |
@@ -2602,6 +2700,8 @@ lpx2px(value : number) : number
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -2657,6 +2757,8 @@ px2lpx(value : number) : number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                    |
@@ -2704,6 +2806,8 @@ getWindowName(): string | undefined
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：** 
 
@@ -2759,6 +2863,8 @@ getWindowId(): number | undefined
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：** 
 
 | 类型   | 说明                                         |
@@ -2803,6 +2909,8 @@ getWindowWidthBreakpoint(): WidthBreakpoint
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：** 
 
@@ -2852,6 +2960,8 @@ getWindowHeightBreakpoint(): HeightBreakpoint
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：** 
 
@@ -2903,6 +3013,8 @@ postFrameCallback(frameCallback: FrameCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                    |
@@ -2950,6 +3062,8 @@ postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: number): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -2999,6 +3113,8 @@ requireDynamicSyncScene(id: string): Array&lt;DynamicSyncScene&gt;
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -3080,6 +3196,8 @@ openBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheetOp
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -3212,6 +3330,8 @@ updateBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>, sheet
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明      |
@@ -3340,6 +3460,8 @@ closeBindSheet\<T extends Object>(bindSheetContent: ComponentContent\<T>): Promi
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明      |
@@ -3461,6 +3583,8 @@ isFollowingSystemFontScale(): boolean
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型      | 说明            |
@@ -3493,6 +3617,8 @@ getMaxFontScale(): number
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -3530,6 +3656,8 @@ bindTabsToScrollable(tabsController: TabsController, scroller: Scroller): void
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -3647,6 +3775,8 @@ unbindTabsFromScrollable(tabsController: TabsController, scroller: Scroller): vo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明      |
@@ -3667,6 +3797,8 @@ bindTabsToNestedScrollable(tabsController: TabsController, parentScroller: Scrol
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -3689,6 +3821,8 @@ unbindTabsFromNestedScrollable(tabsController: TabsController, parentScroller: S
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -3749,6 +3883,8 @@ getTextMenuController(): TextMenuController
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 |类型|说明|
@@ -3772,6 +3908,8 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 **原子化服务API：** 从API version 17 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -3823,6 +3961,8 @@ static destroyUIContextWithoutWindow(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **示例：**
 
 ```ts
@@ -3851,6 +3991,8 @@ dispatchKeyEvent(node: number | string, event: KeyEvent): boolean
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：** 
 
@@ -3916,6 +4058,8 @@ setPixelRoundMode(mode: PixelRoundMode): void
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名      | 类型         | 必填   | 说明   |
@@ -3949,6 +4093,8 @@ getPixelRoundMode(): PixelRoundMode
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -3987,6 +4133,8 @@ static setResourceManagerCacheMaxCountForHSP(count: number): void
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -4043,6 +4191,8 @@ setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -4087,6 +4237,8 @@ setImageRawDataCacheSize方法需要在@Entry标记的页面，[onPageShow](../a
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -4128,6 +4280,8 @@ getMagnifier(): Magnifier
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
