@@ -1,4 +1,4 @@
-# Stage Model Development Overview
+# Application Model Overview
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
