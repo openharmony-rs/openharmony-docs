@@ -106,7 +106,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 3. 设置超低时延模式。
 
-    在查询结果为支持的前提下，通过 `OH_AudioStreamBuilder_SetLatencyMode` 设置超低时延模式，并创建音频流。
+    在查询结果为支持的前提下，通过 `OH_AudioStreamBuilder_SetLatencyMode` 设置超低时延模式。
     <!-- @[Render_SetUltraFastLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
     ``` C++
@@ -114,7 +114,16 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
     OH_AudioStreamBuilder_SetLatencyMode(g_ultraBuilder, latencyMode);
     ```
 
-4. 查询超低时延流实际运行状态。
+4. 监听状态变化。
+
+    在创建音频流之前，可通过注册`OH_AudioRenderer_OnFastStatusChange`回调，在运行态发生变化时及时感知状态变化。
+    <!-- @[Render_SetRendererUltraFastStatusChangeCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+
+    ``` C++
+    OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback(g_ultraBuilder, MyOnUltraFastStatusChange, nullptr);
+    ```
+
+5. 查询超低时延流实际运行状态。
 
     音频流创建并启动后，可通过[OH_AudioRenderer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus)来获取音频播放流是否正在低时延状态下工作。其返回值为OH_AudioStream_FastStatus枚举：AUDIOSTREAM_FASTSTATUS_NORMAL表示运行在普通模式，AUDIOSTREAM_FASTSTATUS_FAST表示运行在低时延模式，AUDIOSTREAM_FASTSTATUS_ULTRA_FAST表示运行在超低时延模式（从API版本26.1.0起，该接口可返回该值）。
     <!-- @[Render_GetUltraFastStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
@@ -123,15 +132,6 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
     // 查询音频流实际运行的低时延状态。
     OH_AudioStream_FastStatus fastStatus = AUDIOSTREAM_FASTSTATUS_NORMAL;
     OH_AudioStream_Result result = OH_AudioRenderer_GetFastStatus(g_ultraAudioRenderer, &fastStatus);
-    ```
-
-5. 监听状态变化。
-
-    可通过注册`OH_AudioRenderer_OnFastStatusChange`回调，在运行态发生变化时及时感知状态变化。
-    <!-- @[Render_SetRendererUltraFastStatusChangeCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
-    ``` C++
-    OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback(g_ultraBuilder, MyOnUltraFastStatusChange, nullptr);
     ```
 
 针对OHAudio开发音频播放，有以下相关实例可供参考：
