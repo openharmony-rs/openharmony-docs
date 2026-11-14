@@ -908,7 +908,7 @@ int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandednessInOptions(ArkUI_C
 **描述：**
 
 
-设置弹窗参数的握持手适配模式。弹窗向触发组件位置（OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_ANCHOR）或握持手（握持设备的手）（OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_GRIP_HAND）一侧偏移。当不存在触发组件或感知服务不可用时，回退至当前布局。
+设置弹窗参数的握持手适配模式。弹窗根据设置的握持手适配模式mode，向触发组件位置或握持手（握持设备的手）一侧偏移。当不存在触发组件或感知服务不可用时，回退至当前布局。
 
 **起始版本：** 26.1.0
 
@@ -935,7 +935,7 @@ int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandedness(ArkUI_NativeDial
 **描述：**
 
 
-设置指定弹窗的握持手适配模式。弹窗向触发组件位置（OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_ANCHOR）或握持手（握持设备的手）（OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_GRIP_HAND）一侧偏移。当不存在触发组件或感知服务不可用时，回退至当前布局。
+设置指定弹窗的握持手适配模式。弹窗根据设置的握持手适配模式mode，向触发组件位置或握持手（握持设备的手）一侧偏移。当不存在触发组件或感知服务不可用时，回退至当前布局。
 
 > **说明：**
 >
