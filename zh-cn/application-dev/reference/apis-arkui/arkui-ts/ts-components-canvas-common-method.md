@@ -1280,6 +1280,8 @@ fill(fillRule?: CanvasFillRule): void
 | -------- | -------------- | ---- | ---------------------------------------- |
 | fillRule | [CanvasFillRule](#canvasfillrule) | 否 | 指定要填充对象的规则。<br/>可选参数为："nonzero"，"evenodd"。<br>异常值undefined或null按默认值处理。<br>默认值："nonzero" |
 
+**示例：** 
+
   ```ts
   // xxx.ets
   @Entry
@@ -1554,7 +1556,7 @@ saveLayer(): void
   // xxx.ets
   @Entry
   @Component
-  struct saveLayer {
+  struct SaveLayer {
     private settings: RenderingContextSettings = new RenderingContextSettings(true);
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
     private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
