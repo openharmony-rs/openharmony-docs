@@ -43,7 +43,7 @@
 
   > **说明：**
   > 
-  > 若应用已激活音频会话，建议暂停音频播放后并调用[deactivateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#deactivateaudiosession12)停用音频会话，否则可能影响其他应用播放。
+  > 若应用已激活音频会话，建议暂停音频播放后调用[deactivateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#deactivateaudiosession12)停用音频会话，否则可能影响其他应用播放。
 
 - **REASON_OVERRODE**：用户强制选择设备。
 
