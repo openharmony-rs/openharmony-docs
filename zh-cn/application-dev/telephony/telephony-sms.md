@@ -191,6 +191,39 @@ sms:106XXXXXXXXXX?body=发送短信内容
 
 <!-- @[SmsService_Web](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Telephony_Kit/SmsService/SmsService_Web/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// 示例代码
+import { common, Want } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+
+  build() {
+    Column() {
+      Button('发送短信')
+        .onClick(() => {
+          let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+          let exampleUrl = 'sms:106XXXXXXXXXX?body=%E5%8F%91%E9%80%81%E7%9F%AD%E4%BF%A1%E5%86%85%E5%AE%B9';
+        
+          let want: Want = {
+              bundleName: 'com.ohos.mms',
+              action: 'ohos.want.action.viewData',
+              uri:exampleUrl,
+            }
+        
+          context.startAbility(want).then((data) => {
+              console.info('Success' + JSON.stringify(data));
+          }).catch(() => {
+              console.error('error');
+          });
+
+        })
+    }
+  }
+}
+```
+
 ## 相关实例
 
 针对短信的使用，有以下相关实例可供参考：
