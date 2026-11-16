@@ -1,6 +1,13 @@
 # \@Param装饰器：组件外部输入
 
-\@Param表示组件外部输入，接收从父组件传入的变量，若数据源为状态变量，还能与之单向同步。
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
+[\@Param](../../reference/apis-arkui/arkui-ts/ts-state-management-param-static.md#param-1)表示组件外部输入，接收从父组件传入的变量，若数据源为状态变量，还能与之单向同步。
 
 ## 概述
 

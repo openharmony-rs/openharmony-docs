@@ -1,5 +1,12 @@
 # @Component：自定义组件
 
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zhangboren-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
 \@Component装饰器能装饰struct关键字声明的数据结构。struct被\@Component装饰后具备组件化的能力，需要实现build方法描述UI，一个struct只能被一个\@Component装饰。开发指南参考：[\@Component装饰器：自定义组件](../../../ui/state-management-static/arkts-static-create-component.md)。
 
 > **说明：**

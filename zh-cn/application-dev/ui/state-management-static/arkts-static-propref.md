@@ -1,6 +1,13 @@
 # \@PropRef装饰器：父子单向同步
 
-\@PropRef装饰的变量可以与父组件传入变量建立单向同步。该变量允许在本地修改，但修改后的变化不会同步回父组件。
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @jiyujia926-->
+<!--Designer: @zhangboren-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
+
+[\@PropRef](../../reference/apis-arkui/arkui-ts/ts-state-management-propref-static.md#propref-1)装饰的变量可以与父组件传入变量建立单向同步。该变量允许在本地修改，但修改后的变化不会同步回父组件。
 
 > **说明：**
 >
