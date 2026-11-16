@@ -24,11 +24,6 @@
 
 1. 获取公共目录路径。
 
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { Environment } from '@kit.CoreFileKit';
-   
-   ```
    <!--@[get_user_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->    
    
    ``` TypeScript
@@ -49,16 +44,6 @@
 
 2. 以Download目录为例，访问Download目录下的文件。
 
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { Environment } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
-   import { common } from '@kit.AbilityKit';
-   
-   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-   
-   ```
    <!--@[read_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->      
    
    ``` TypeScript
@@ -91,12 +76,6 @@
 
 3. 以Download目录为例，保存文件到Download目录。
 
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { Environment } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
-   
-   ```
    <!--@[write_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->      
    
    ``` TypeScript
@@ -144,23 +123,11 @@
 CMakeLists.txt中添加以下lib。
 
 ```txt
-target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
+target_link_libraries(entry PUBLIC libohenvironment.so libhilog_ndk.z.so)
 ```
 
-**添加头文件**
+1. 调用OH_Environment_GetUserDownloadDir接口获取用户Download目录沙箱路径，在接口中使用malloc申请的内存需要在使用完后释放，因此需要free对应的内存。示例代码如下所示：
 
-```c++
-#include <filemanagement/environment/oh_environment.h>
-#include <filemanagement/fileio/oh_fileio.h>
-#include <hilog/log.h>
-```
-
-1. 调用OH_Environment_GetUserDownloadDir接口获取用户Download目录沙箱路径，在接口中使用malloc申请的内存需要在使用完后释放因此需要free对应的内存。示例代码如下所示：
-
-   ```c++
-   #include <cstdlib>
-   
-   ```
    <!--@[get_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->      
    
    ``` C++
@@ -180,11 +147,6 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 
 2. 调用OH_Environment_GetUserDownloadDir接口获取用户Download目录沙箱路径，并查看Download目录下的文件。示例代码如下所示：
 
-   ```c++
-   #include <cstdlib>
-   #include <dirent.h>
-   
-   ```
    <!--@[scan_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
    
    ``` C++
@@ -222,10 +184,6 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 
 3. 调用OH_Environment_GetUserDownloadDir接口获取用户Download目录沙箱路径，并保存temp.txt到Download目录下。示例代码如下所示：
 
-   ```c++
-   #include <fstream>
-   
-   ```
    <!--@[write_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->    
    
    ``` C++
