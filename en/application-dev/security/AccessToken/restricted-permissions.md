@@ -1649,7 +1649,7 @@ Allows in-vehicle applications to obtain the real-time weather of the environmen
 
 ## ohos.permission.vehicle.MMA_SPATIALACTION
 
-Allows an application on the in-vehicle rear-seat screen to call the spatial gesture APIs to complete air-gesture interaction between the passenger and the screen.
+Allows an in-vehicle application to call spatial gesture APIs to enable contactless interaction for passengers.
 
 <!--RP106--><!--RP106End-->
 

@@ -9889,6 +9889,34 @@ Allows an application to mount the specified file directory to the sandbox direc
 
 **Since**: 26.0.1
 
+## ohos.permission.vehicle.MMA_OCCUPANT
+ 
+Allows an in-vehicle application to call spatial gesture APIs to enable contactless interaction for passengers.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: Car
+ 
+**Valid since**: 26.0.1
+ 
+## ohos.permission.vehicle.MMA_CARSTATUS
+ 
+Allows an in-vehicle application to obtain the real-time status of vehicle components.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: Car
+ 
+**Valid since**: 26.0.1
+
 ## ohos.permission.MANAGE_CURSOR_STYLE
 
 Allows an application to manage mouse cursor styles.
