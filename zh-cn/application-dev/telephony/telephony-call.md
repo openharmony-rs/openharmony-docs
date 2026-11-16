@@ -98,6 +98,35 @@ observer模块为开发者提供订阅和取消订阅通话业务状态的功能
 4. （可选）订阅通话业务状态变化。
 
    <!-- @[MakeCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Telephony_Kit/MakeCall/MakeCall/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { call, observer } from '@kit.TelephonyKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+         // 调用查询能力接口
+         let isSupport = call.hasVoiceCapability();
+         if (isSupport) {
+             // 如果设备支持呼叫能力，则继续跳转到拨号界面，并显示拨号的号码
+             // 从API15开始支持tel格式电话号码，如："tel:13xxxx"
+             call.makeCall('13xxxx', (err: BusinessError) => {
+                 if (!err) {
+                     console.info('make call success.');
+                 } else {
+                     console.error('make call fail, err is:' + JSON.stringify(err));
+                 }
+             });
+             // 订阅通话业务状态变化（可选）
+             class SlotId {public slotId: number = 0}
+             class CallStateCallback {
+                 public state: call.CallState = call.CallState.CALL_STATE_UNKNOWN;
+                 public number: string = '';
+             }
+             let slotId: SlotId = {slotId: 0}
+             observer.on('callStateChange', slotId, (data: CallStateCallback) => {
+                 console.info('call state change, data is:' + JSON.stringify(data));
+             });
+         }
+   ```
 
 ## 相关实例
 
