@@ -1756,7 +1756,7 @@ audioVolumeManager.onVolumeLimitExceeded((event: audio.VolumeLimitExceededEvent)
 
 offVolumeLimitExceeded(callback?: Callback\<VolumeLimitExceededEvent>): void
 
-取消监听当前音量超过音量保护阈值的事件。callback不传时，取消该事件的所有监听。
+取消当前音量超过音量保护阈值的事件监听。callback参数为空时，取消该事件的所有监听。
 
 **起始版本：** 26.0.1
 
