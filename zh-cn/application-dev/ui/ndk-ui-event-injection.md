@@ -83,7 +83,7 @@ UI事件注入接口为应用内智能体和UI自动化场景提供UI控制能�
 // backpress：返回
 { "schemaVersion": 1, "cmd": { "type": "backpress" } }
 
-// key：注入键码为2049的按键
+// key：注入Tab键（键码2049）
 { "schemaVersion": 1, "cmd": { "type": "key", "action_info": { "code": 2049 } } }
 ```
 
