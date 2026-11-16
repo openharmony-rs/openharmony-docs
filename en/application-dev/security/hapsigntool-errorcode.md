@@ -6,7 +6,7 @@
 <!--Designer: @scuteehuangjun; @liuchibin-->
 <!--Tester: @wwrongs-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=7874ed5a9b27c4f8bf820de615e2cfd32359db29 translatedAt=2026-10-31T02:20:53.229Z pushedAt=2026-10-31T02:35:38.236Z nl=1 -->
+<!-- md-trans-meta sourceCommit=b152143536062c9aaad487aa5b9c58a4165ab0c0 translatedAt=2026-11-16T07:12:49.189Z pushedAt=2026-11-16T07:15:18.652Z nl=1 -->
 
 ## 11010001 Unknown Error
 
