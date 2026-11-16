@@ -60,7 +60,7 @@ import { window } from '@kit.ArkUI';
 | TYPE_FLOAT_NAVIGATION<sup>17+</sup>         | 24   | 表示悬浮的三键导航窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 17<br>**ArkTS-Sta起始版本：** 23 |
 | TYPE_DYNAMIC<sup>20+</sup>                  | 25   | 表示可设置窗口层级的系统窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
 | TYPE_MUTISCREEN_COLLABORATION<sup>20+</sup> | 26   | 表示多屏协同窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
-
+| TYPE_ACCESSIBILITY_CALL_HELPER | 27      | 表示无障碍通话窗口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口：** 此接口为系统接口。<br>**系统能力：** SystemCapability.Window.SessionManager<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0  |
 ## Configuration<sup>9+</sup>
 
 创建子窗口或系统窗口时的参数。
