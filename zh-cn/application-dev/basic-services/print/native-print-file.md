@@ -33,7 +33,7 @@ OpenHarmony提供以下两种文件打印方式：
 
 <!-- @[print_native_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
+``` C++
 #include "BasicServicesKit/ohprint.h"
 #include "hilog/log.h"
 #include "napi/native_api.h"
@@ -56,7 +56,7 @@ OpenHarmony提供以下两种文件打印方式：
 
 <!-- @[print_native_import_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
+``` TypeScript
 import { Context } from '@kit.AbilityKit';
 import { fileIo } from '@kit.CoreFileKit';
 import nativePrint from 'libentry.so';
@@ -81,7 +81,7 @@ import { PrintFileUtils } from '../print/utils/PrintFileUtils';
 
 <!-- @[print_native_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/CMakeLists.txt) -->
 
-```cmake
+``` Text
 cmake_minimum_required(VERSION 3.5.0)
 project(NativePrintFile)
 
@@ -97,7 +97,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so ${PRINT_LOG_LIBRARY} libohpr
 
 <!-- @[print_native_declarations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
+``` C++
 struct PageSizeData {
     std::string id;
     std::string name;
@@ -140,7 +140,7 @@ struct PrintJobStateEventData {
 
 <!-- @[print_native_lifecycle_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
+``` C++
 napi_value NativeInit(napi_env env, napi_callback_info)
 {
     std::lock_guard<std::mutex> lock(g_serviceMutex);
@@ -187,37 +187,37 @@ napi_value NativeRelease(napi_env env, napi_callback_info)
 
 <!-- @[print_native_lifecycle_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-  aboutToAppear(): void {
-    this.operationResult = this.getResourceText($r('app.string.waiting_operation'));
-    const initCode: number = nativePrint.nativeInit();
-    if (initCode !== 0) {
-      this.setCodeResult('OH_Print_Init', initCode);
-      return;
-    }
-    const listenerCode: number = nativePrint.nativeRegisterPrinterChangeListener(
-      (event: number, printerInfo: nativePrint.PrinterInfo): void => {
-        this.handlePrinterChange(event, PrinterInfoModel.fromNative(printerInfo));
-      });
-    if (listenerCode !== 0) {
-      this.setCodeResult('OH_Print_RegisterPrinterChangeListener', listenerCode);
-    }
-    this.startDiscovery();
+``` TypeScript
+aboutToAppear(): void {
+  this.operationResult = this.getResourceText($r('app.string.waiting_operation'));
+  const initCode: number = nativePrint.nativeInit();
+  if (initCode !== 0) {
+    this.setCodeResult('OH_Print_Init', initCode);
+    return;
   }
+  const listenerCode: number = nativePrint.nativeRegisterPrinterChangeListener(
+    (event: number, printerInfo: nativePrint.PrinterInfo): void => {
+      this.handlePrinterChange(event, PrinterInfoModel.fromNative(printerInfo));
+    });
+  if (listenerCode !== 0) {
+    this.setCodeResult('OH_Print_RegisterPrinterChangeListener', listenerCode);
+  }
+  this.startDiscovery();
+}
 
-  aboutToDisappear(): void {
-    this.printerDialogController.close();
-    nativePrint.nativeStopPrinterDiscovery();
-    nativePrint.nativeUnregisterPrinterChangeListener();
-    nativePrint.nativeRelease();
-  }
+aboutToDisappear(): void {
+  this.printerDialogController.close();
+  nativePrint.nativeStopPrinterDiscovery();
+  nativePrint.nativeUnregisterPrinterChangeListener();
+  nativePrint.nativeRelease();
+}
 ```
 
 步骤3：在Native层注册发现回调并封装开始发现、停止发现和连接打印机接口。线程安全函数采用单会话管理，停止发现时同步释放。
 
 <!-- @[print_native_discovery_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
+``` C++
 void PrinterDiscoveryCallback(Print_DiscoveryEvent event, const Print_PrinterInfo *printerInfo)
 {
     if (printerInfo == nullptr) {
@@ -285,78 +285,78 @@ napi_value NativeConnectPrinter(napi_env env, napi_callback_info info)
 
 <!-- @[print_native_discovery_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-  private startDiscovery(): void {
-    const addedPrinters: nativePrint.PrinterIdListResult = nativePrint.nativeQueryPrinterList();
-    if (addedPrinters.code === 0) {
-      for (const printerId of addedPrinters.printerIds) {
-        const result: nativePrint.PrinterInfoResult = nativePrint.nativeQueryPrinterInfo(printerId);
-        if (result.code === 0 && result.printerInfo !== undefined) {
-          this.upsertPrinter(PrinterInfoModel.fromNative(result.printerInfo));
-        }
+``` TypeScript
+private startDiscovery(): void {
+  const addedPrinters: nativePrint.PrinterIdListResult = nativePrint.nativeQueryPrinterList();
+  if (addedPrinters.code === 0) {
+    for (const printerId of addedPrinters.printerIds) {
+      const result: nativePrint.PrinterInfoResult = nativePrint.nativeQueryPrinterInfo(printerId);
+      if (result.code === 0 && result.printerInfo !== undefined) {
+        this.upsertPrinter(PrinterInfoModel.fromNative(result.printerInfo));
       }
-    }
-    const code: number = nativePrint.nativeStartPrinterDiscovery(
-      (event: number, printerInfo: nativePrint.PrinterInfo): void => {
-        this.handleDiscoveryEvent(event, PrinterInfoModel.fromNative(printerInfo));
-      });
-    this.setCodeResult('OH_Print_StartPrinterDiscovery', code);
-  }
-
-  private handleDiscoveryEvent(event: number, printer: PrinterInfoModel): void {
-    if (event === DiscoveryEvent.LOST) {
-      if (this.selectedPrinter.printerId === printer.printerId) {
-        const result: nativePrint.PrinterInfoResult = nativePrint.nativeQueryPrinterInfo(printer.printerId);
-        if (result.code === 0 && result.printerInfo !== undefined) {
-          this.selectPrinter(PrinterInfoModel.fromNative(result.printerInfo));
-          return;
-        }
-      }
-      this.removePrinter(printer.printerId);
-      return;
-    }
-    if (event === DiscoveryEvent.DISCOVERED) {
-      this.upsertPrinter(printer);
-      return;
-    }
-    if (event === DiscoveryEvent.CONNECTING) {
-      if (this.selectedPrinter.printerId !== printer.printerId) {
-        this.operationResult = this.getResourceText($r('app.string.connecting')) + ': ' + printer.printerName;
-      }
-      return;
-    }
-    if (event === DiscoveryEvent.CONNECTED) {
-      this.upsertPrinter(printer);
-      this.selectPrinter(printer);
-      this.operationResult = this.getResourceText($r('app.string.connected')) + ': ' + printer.printerName;
     }
   }
+  const code: number = nativePrint.nativeStartPrinterDiscovery(
+    (event: number, printerInfo: nativePrint.PrinterInfo): void => {
+      this.handleDiscoveryEvent(event, PrinterInfoModel.fromNative(printerInfo));
+    });
+  this.setCodeResult('OH_Print_StartPrinterDiscovery', code);
+}
 
-  private connectPrinter(printer: PrinterInfoModel): void {
-    const addedPrinters: nativePrint.PrinterIdListResult = nativePrint.nativeQueryPrinterList();
-    if (addedPrinters.code === 0 && addedPrinters.printerIds.includes(printer.printerId)) {
-      const existing: nativePrint.PrinterInfoResult = nativePrint.nativeQueryPrinterInfo(printer.printerId);
-      if (existing.code === 0 && existing.printerInfo !== undefined) {
-        const addedPrinter: PrinterInfoModel = PrinterInfoModel.fromNative(existing.printerInfo);
-        this.upsertPrinter(addedPrinter);
-        this.selectPrinter(addedPrinter);
-        this.setCodeResult('OH_Print_QueryPrinterInfo (added)', existing.code);
+private handleDiscoveryEvent(event: number, printer: PrinterInfoModel): void {
+  if (event === DiscoveryEvent.LOST) {
+    if (this.selectedPrinter.printerId === printer.printerId) {
+      const result: nativePrint.PrinterInfoResult = nativePrint.nativeQueryPrinterInfo(printer.printerId);
+      if (result.code === 0 && result.printerInfo !== undefined) {
+        this.selectPrinter(PrinterInfoModel.fromNative(result.printerInfo));
         return;
       }
     }
-    const code: number = nativePrint.nativeConnectPrinter(printer.printerId);
-    this.setCodeResult('OH_Print_ConnectPrinter', code);
-    if (code !== 0) {
+    this.removePrinter(printer.printerId);
+    return;
+  }
+  if (event === DiscoveryEvent.DISCOVERED) {
+    this.upsertPrinter(printer);
+    return;
+  }
+  if (event === DiscoveryEvent.CONNECTING) {
+    if (this.selectedPrinter.printerId !== printer.printerId) {
+      this.operationResult = this.getResourceText($r('app.string.connecting')) + ': ' + printer.printerName;
+    }
+    return;
+  }
+  if (event === DiscoveryEvent.CONNECTED) {
+    this.upsertPrinter(printer);
+    this.selectPrinter(printer);
+    this.operationResult = this.getResourceText($r('app.string.connected')) + ': ' + printer.printerName;
+  }
+}
+
+private connectPrinter(printer: PrinterInfoModel): void {
+  const addedPrinters: nativePrint.PrinterIdListResult = nativePrint.nativeQueryPrinterList();
+  if (addedPrinters.code === 0 && addedPrinters.printerIds.includes(printer.printerId)) {
+    const existing: nativePrint.PrinterInfoResult = nativePrint.nativeQueryPrinterInfo(printer.printerId);
+    if (existing.code === 0 && existing.printerInfo !== undefined) {
+      const addedPrinter: PrinterInfoModel = PrinterInfoModel.fromNative(existing.printerInfo);
+      this.upsertPrinter(addedPrinter);
+      this.selectPrinter(addedPrinter);
+      this.setCodeResult('OH_Print_QueryPrinterInfo (added)', existing.code);
       return;
     }
-    const result: nativePrint.PrinterInfoResult = nativePrint.nativeQueryPrinterInfo(printer.printerId);
-    if (result.code === 0 && result.printerInfo !== undefined) {
-      const connectedPrinter: PrinterInfoModel = PrinterInfoModel.fromNative(result.printerInfo);
-      this.upsertPrinter(connectedPrinter);
-      this.selectPrinter(connectedPrinter);
-      this.operationResult = this.getResourceText($r('app.string.connected')) + ': ' + connectedPrinter.printerName;
-    }
   }
+  const code: number = nativePrint.nativeConnectPrinter(printer.printerId);
+  this.setCodeResult('OH_Print_ConnectPrinter', code);
+  if (code !== 0) {
+    return;
+  }
+  const result: nativePrint.PrinterInfoResult = nativePrint.nativeQueryPrinterInfo(printer.printerId);
+  if (result.code === 0 && result.printerInfo !== undefined) {
+    const connectedPrinter: PrinterInfoModel = PrinterInfoModel.fromNative(result.printerInfo);
+    this.upsertPrinter(connectedPrinter);
+    this.selectPrinter(connectedPrinter);
+    this.operationResult = this.getResourceText($r('app.string.connected')) + ': ' + connectedPrinter.printerName;
+  }
+}
 ```
 
 ## 通过接口拉起系统打印预览界面下发任务
@@ -389,7 +389,7 @@ Native层使用`dup()`持有ArkTS传入的源文件描述符；系统请求写�
 
 <!-- @[print_native_preview_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
+``` C++
 void NativeStartLayoutWrite(const char *jobId, uint32_t fd, const Print_PrintAttributes *,
     const Print_PrintAttributes *, Print_WriteResultCallback writeCallback)
 {
@@ -459,39 +459,39 @@ napi_value NativeStartPrintByNative(napi_env env, napi_callback_info info)
 
 <!-- @[print_native_preview_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-  private async startSystemPreviewPrint(): Promise<void> {
-    if (this.selectedDocumentFormat !== 'application/pdf') {
-      this.operationResult = this.getResourceText($r('app.string.preview_pdf_only'));
-      return;
-    }
-    const context: Context | undefined = this.getContext();
-    if (context === undefined) {
-      this.setCodeResult('OH_Print_StartPrintByNative', 401);
-      return;
-    }
-    let file: fileIo.File | undefined = undefined;
-    try {
-      file = await PrintFileUtils.openSample(context, this.selectedFileName);
-      if (file === undefined) {
-        this.operationResult = this.getResourceText($r('app.string.open_file_failed'));
-        return;
-      }
-      const code: number = nativePrint.nativeStartPrintByNative('NativePrintFile', file.fd, context,
-        (event: nativePrint.NativePrintEvent): void => {
-          if (event.eventType === NativePrintEventType.WRITE_RESULT) {
-            this.operationResult = 'OH_Print_StartPrintByNative writeCode=' + event.writeCode.toString();
-          } else {
-            this.operationResult = 'OH_Print_StartPrintByNative state=' + event.state.toString();
-          }
-        });
-      this.setCodeResult('OH_Print_StartPrintByNative', code);
-    } catch {
-      this.operationResult = this.getResourceText($r('app.string.open_file_failed'));
-    } finally {
-      PrintFileUtils.close(file);
-    }
+``` TypeScript
+private async startSystemPreviewPrint(): Promise<void> {
+  if (this.selectedDocumentFormat !== 'application/pdf') {
+    this.operationResult = this.getResourceText($r('app.string.preview_pdf_only'));
+    return;
   }
+  const context: Context | undefined = this.getContext();
+  if (context === undefined) {
+    this.setCodeResult('OH_Print_StartPrintByNative', 401);
+    return;
+  }
+  let file: fileIo.File | undefined = undefined;
+  try {
+    file = await PrintFileUtils.openSample(context, this.selectedFileName);
+    if (file === undefined) {
+      this.operationResult = this.getResourceText($r('app.string.open_file_failed'));
+      return;
+    }
+    const code: number = nativePrint.nativeStartPrintByNative('NativePrintFile', file.fd, context,
+      (event: nativePrint.NativePrintEvent): void => {
+        if (event.eventType === NativePrintEventType.WRITE_RESULT) {
+          this.operationResult = 'OH_Print_StartPrintByNative writeCode=' + event.writeCode.toString();
+        } else {
+          this.operationResult = 'OH_Print_StartPrintByNative state=' + event.state.toString();
+        }
+      });
+    this.setCodeResult('OH_Print_StartPrintByNative', code);
+  } catch {
+    this.operationResult = this.getResourceText($r('app.string.open_file_failed'));
+  } finally {
+    PrintFileUtils.close(file);
+  }
+}
 ```
 
 ## 通过打印接口直接下发打印任务
@@ -502,7 +502,7 @@ napi_value NativeStartPrintByNative(napi_env env, napi_callback_info info)
 
 <!-- @[print_native_job_storage_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
+``` C++
 struct PrintJobStorage {
     Print_PrintJob job = {};
     std::vector<uint32_t> fdList;
@@ -517,7 +517,7 @@ struct PrintJobStorage {
 
 <!-- @[print_native_build_job_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
+``` C++
 bool BuildPrintJob(napi_env env, napi_value printJobValue, napi_value pageSizeValue, napi_value marginValue,
     napi_value optionValue, PrintJobStorage &storage)
 {
@@ -578,7 +578,7 @@ bool BuildPrintJob(napi_env env, napi_value printJobValue, napi_value pageSizeVa
 
 <!-- @[print_native_start_job_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
+``` C++
 napi_value NativeStartPrintJob(napi_env env, napi_callback_info info)
 {
     napi_value args[PRINT_JOB_ARGUMENT_COUNT] = {nullptr};
@@ -604,50 +604,50 @@ napi_value NativeStartPrintJob(napi_env env, napi_callback_info info)
 
 <!-- @[print_native_request_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-  private createPrintRequest(fd: number): PrintRequest {
-    const margin: MarginModel = new MarginModel(this.parseMargin(this.leftMargin),
-      this.parseMargin(this.topMargin), this.parseMargin(this.rightMargin), this.parseMargin(this.bottomMargin));
-    const printJob: PrintJobModel = new PrintJobModel(fd, this.selectedPrinter.printerId, this.copyNumber,
-      this.colorMode, this.duplexMode, this.orientationMode);
-    const option: PrintOptionModel = new PrintOptionModel(this.selectedDocumentFormat, this.printQuality,
-      this.borderless, this.mediaType);
-    return new PrintRequest(printJob, this.selectedPageSize, margin, option);
-  }
+``` TypeScript
+private createPrintRequest(fd: number): PrintRequest {
+  const margin: MarginModel = new MarginModel(this.parseMargin(this.leftMargin),
+    this.parseMargin(this.topMargin), this.parseMargin(this.rightMargin), this.parseMargin(this.bottomMargin));
+  const printJob: PrintJobModel = new PrintJobModel(fd, this.selectedPrinter.printerId, this.copyNumber,
+    this.colorMode, this.duplexMode, this.orientationMode);
+  const option: PrintOptionModel = new PrintOptionModel(this.selectedDocumentFormat, this.printQuality,
+    this.borderless, this.mediaType);
+  return new PrintRequest(printJob, this.selectedPageSize, margin, option);
+}
 ```
 
 步骤4：检查是否已选择打印机，在调用期间临时打开文件，并在`finally`中关闭文件描述符。
 
 <!-- @[print_native_start_job_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-  private async startDirectPrint(): Promise<void> {
-    if (this.selectedPrinter.printerId.length === 0) {
-      this.setCodeResult('OH_Print_StartPrintJob', INVALID_PRINTER_ERROR);
-      return;
-    }
-    const context: Context | undefined = this.getContext();
-    if (context === undefined) {
-      this.setCodeResult('OH_Print_StartPrintJob', 401);
-      return;
-    }
-    let file: fileIo.File | undefined = undefined;
-    try {
-      file = await PrintFileUtils.openSample(context, this.selectedFileName);
-      if (file === undefined) {
-        this.operationResult = this.getResourceText($r('app.string.open_file_failed'));
-        return;
-      }
-      const request: PrintRequest = this.createPrintRequest(file.fd);
-      const code: number = nativePrint.nativeStartPrintJob(request.printJob, request.pageSize, request.margin,
-        request.option);
-      this.setCodeResult('OH_Print_StartPrintJob', code);
-    } catch {
-      this.operationResult = this.getResourceText($r('app.string.open_file_failed'));
-    } finally {
-      PrintFileUtils.close(file);
-    }
+``` TypeScript
+private async startDirectPrint(): Promise<void> {
+  if (this.selectedPrinter.printerId.length === 0) {
+    this.setCodeResult('OH_Print_StartPrintJob', INVALID_PRINTER_ERROR);
+    return;
   }
+  const context: Context | undefined = this.getContext();
+  if (context === undefined) {
+    this.setCodeResult('OH_Print_StartPrintJob', 401);
+    return;
+  }
+  let file: fileIo.File | undefined = undefined;
+  try {
+    file = await PrintFileUtils.openSample(context, this.selectedFileName);
+    if (file === undefined) {
+      this.operationResult = this.getResourceText($r('app.string.open_file_failed'));
+      return;
+    }
+    const request: PrintRequest = this.createPrintRequest(file.fd);
+    const code: number = nativePrint.nativeStartPrintJob(request.printJob, request.pageSize, request.margin,
+      request.option);
+    this.setCodeResult('OH_Print_StartPrintJob', code);
+  } catch {
+    this.operationResult = this.getResourceText($r('app.string.open_file_failed'));
+  } finally {
+    PrintFileUtils.close(file);
+  }
+}
 ```
 
 完整Sample还提供`OH_Print_QueryPrinterList()`、`OH_Print_QueryPrinterInfo()`、`OH_Print_QueryPrinterProperties()`、`OH_Print_UpdatePrinterProperties()`、`OH_Print_RestorePrinterProperties()`和`OH_Print_LaunchPrinterManager()`的操作入口。属性的 Key 和 Value 应使用目标打印机及其 Print Extension 支持的值；界面展示接口返回码和查询结果，操作说明见 [Sample README](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/README.md)。
@@ -671,7 +671,7 @@ napi_value NativeStartPrintJob(napi_env env, napi_callback_info info)
 
 <!-- @[print_native_job_state_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
+``` C++
 void PrintJobStateChanged(const char *jobId, OH_Print_JobState state)
 {
     PrintJobStateEventData *data = new PrintJobStateEventData;
@@ -719,37 +719,37 @@ napi_value NativeStartPrintWithJobStateCallback(napi_env env, napi_callback_info
 
 <!-- @[print_native_job_state_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
 
-```ts
-  private async startPrintWithStateCallback(): Promise<void> {
-    if (this.selectedPrinter.printerId.length === 0) {
-      this.setCodeResult('OH_Print_StartPrintWithJobStateCallback', INVALID_PRINTER_ERROR);
-      return;
-    }
-    const context: Context | undefined = this.getContext();
-    if (context === undefined) {
-      this.setCodeResult('OH_Print_StartPrintWithJobStateCallback', 401);
-      return;
-    }
-    let file: fileIo.File | undefined = undefined;
-    try {
-      file = await PrintFileUtils.openSample(context, this.selectedFileName);
-      if (file === undefined) {
-        this.operationResult = this.getResourceText($r('app.string.open_file_failed'));
-        return;
-      }
-      const request: PrintRequest = this.createPrintRequest(file.fd);
-      const code: number = nativePrint.nativeStartPrintWithJobStateCallback(request.printJob, request.pageSize,
-        request.margin, request.option, (event: nativePrint.PrintJobStateEvent): void => {
-          this.operationResult = 'OH_Print_StartPrintWithJobStateCallback jobId=' + event.jobId + ', state=' +
-            event.state.toString();
-        });
-      this.setCodeResult('OH_Print_StartPrintWithJobStateCallback', code);
-    } catch {
-      this.operationResult = this.getResourceText($r('app.string.open_file_failed'));
-    } finally {
-      PrintFileUtils.close(file);
-    }
+``` TypeScript
+private async startPrintWithStateCallback(): Promise<void> {
+  if (this.selectedPrinter.printerId.length === 0) {
+    this.setCodeResult('OH_Print_StartPrintWithJobStateCallback', INVALID_PRINTER_ERROR);
+    return;
   }
+  const context: Context | undefined = this.getContext();
+  if (context === undefined) {
+    this.setCodeResult('OH_Print_StartPrintWithJobStateCallback', 401);
+    return;
+  }
+  let file: fileIo.File | undefined = undefined;
+  try {
+    file = await PrintFileUtils.openSample(context, this.selectedFileName);
+    if (file === undefined) {
+      this.operationResult = this.getResourceText($r('app.string.open_file_failed'));
+      return;
+    }
+    const request: PrintRequest = this.createPrintRequest(file.fd);
+    const code: number = nativePrint.nativeStartPrintWithJobStateCallback(request.printJob, request.pageSize,
+      request.margin, request.option, (event: nativePrint.PrintJobStateEvent): void => {
+        this.operationResult = 'OH_Print_StartPrintWithJobStateCallback jobId=' + event.jobId + ', state=' +
+          event.state.toString();
+      });
+    this.setCodeResult('OH_Print_StartPrintWithJobStateCallback', code);
+  } catch {
+    this.operationResult = this.getResourceText($r('app.string.open_file_failed'));
+  } finally {
+    PrintFileUtils.close(file);
+  }
+}
 ```
 
 ## 导出NAPI接口
@@ -758,38 +758,38 @@ napi_value NativeStartPrintWithJobStateCallback(napi_env env, napi_callback_info
 
 <!-- @[print_native_napi_exports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
-    napi_property_descriptor properties[] = {
-        {"nativeInit", nullptr, NativeInit, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"nativeRelease", nullptr, NativeRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"nativeRegisterPrinterChangeListener", nullptr, NativeRegisterPrinterChangeListener, nullptr, nullptr,
-            nullptr, napi_default, nullptr},
-        {"nativeUnregisterPrinterChangeListener", nullptr, NativeUnregisterPrinterChangeListener, nullptr, nullptr,
-            nullptr, napi_default, nullptr},
-        {"nativeStartPrinterDiscovery", nullptr, NativeStartPrinterDiscovery, nullptr, nullptr, nullptr, napi_default,
-            nullptr},
-        {"nativeStopPrinterDiscovery", nullptr, NativeStopPrinterDiscovery, nullptr, nullptr, nullptr, napi_default,
-            nullptr},
-        {"nativeConnectPrinter", nullptr, NativeConnectPrinter, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"nativeLaunchPrinterManager", nullptr, NativeLaunchPrinterManager, nullptr, nullptr, nullptr, napi_default,
-            nullptr},
-        {"nativeQueryPrinterList", nullptr, NativeQueryPrinterList, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"nativeQueryPrinterInfo", nullptr, NativeQueryPrinterInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"nativeQueryPrinterProperties", nullptr, NativeQueryPrinterProperties, nullptr, nullptr, nullptr,
-            napi_default, nullptr},
-        {"nativeUpdatePrinterProperties", nullptr, NativeUpdatePrinterProperties, nullptr, nullptr, nullptr,
-            napi_default, nullptr},
-        {"nativeRestorePrinterProperties", nullptr, NativeRestorePrinterProperties, nullptr, nullptr, nullptr,
-            napi_default, nullptr},
-        {"nativeStartPrintByNative", nullptr, NativeStartPrintByNative, nullptr, nullptr, nullptr, napi_default,
-            nullptr},
-        {"nativeStartPrintJob", nullptr, NativeStartPrintJob, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"nativeStartPrintJobWithDefaultSettings", nullptr, NativeStartPrintJobWithDefaultSettings, nullptr, nullptr,
-            nullptr, napi_default, nullptr},
-        {"nativeStartPrintWithJobStateCallback", nullptr, NativeStartPrintWithJobStateCallback, nullptr, nullptr,
-            nullptr, napi_default, nullptr},
-    };
-    napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties);
+``` C++
+napi_property_descriptor properties[] = {
+    {"nativeInit", nullptr, NativeInit, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"nativeRelease", nullptr, NativeRelease, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"nativeRegisterPrinterChangeListener", nullptr, NativeRegisterPrinterChangeListener, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
+    {"nativeUnregisterPrinterChangeListener", nullptr, NativeUnregisterPrinterChangeListener, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
+    {"nativeStartPrinterDiscovery", nullptr, NativeStartPrinterDiscovery, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
+    {"nativeStopPrinterDiscovery", nullptr, NativeStopPrinterDiscovery, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
+    {"nativeConnectPrinter", nullptr, NativeConnectPrinter, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"nativeLaunchPrinterManager", nullptr, NativeLaunchPrinterManager, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
+    {"nativeQueryPrinterList", nullptr, NativeQueryPrinterList, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"nativeQueryPrinterInfo", nullptr, NativeQueryPrinterInfo, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"nativeQueryPrinterProperties", nullptr, NativeQueryPrinterProperties, nullptr, nullptr, nullptr,
+        napi_default, nullptr},
+    {"nativeUpdatePrinterProperties", nullptr, NativeUpdatePrinterProperties, nullptr, nullptr, nullptr,
+        napi_default, nullptr},
+    {"nativeRestorePrinterProperties", nullptr, NativeRestorePrinterProperties, nullptr, nullptr, nullptr,
+        napi_default, nullptr},
+    {"nativeStartPrintByNative", nullptr, NativeStartPrintByNative, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
+    {"nativeStartPrintJob", nullptr, NativeStartPrintJob, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"nativeStartPrintJobWithDefaultSettings", nullptr, NativeStartPrintJobWithDefaultSettings, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
+    {"nativeStartPrintWithJobStateCallback", nullptr, NativeStartPrintWithJobStateCallback, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
+};
+napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties);
 ```
 
 ## 资源释放
