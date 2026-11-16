@@ -102,7 +102,16 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
     OH_AudioStreamBuilder_SetLatencyMode(builder, AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST);
     ```
 
-4. 查询超低时延流实际运行状态。
+4. 查询状态及监听。
+
+    可通过注册`OH_AudioCapturer_OnFastStatusChange`回调，在运行态发生变化时及时感知状态变化。
+    <!-- @[SetCapturerFastStatusChangeCallback_UltraFast](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+
+    ``` C++
+    OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(builder, MyOnUltraFastStatusChange, nullptr);
+    ```
+
+5. 查询超低时延流实际运行状态。
 
     音频流创建并启动后，通过 `OH_AudioCapturer_GetFastStatus`查询实际运行状态。
     <!-- @[GetFastStatus_UltraFast](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
@@ -110,15 +119,6 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
     ``` C++
     OH_AudioStream_FastStatus fastStatus = AUDIOSTREAM_FASTSTATUS_NORMAL;
     OH_AudioCapturer_GetFastStatus(g_ultraFastCapturer, &fastStatus);
-    ```
-
-5. 查询状态及监听。
-
-    可通过注册`OH_AudioCapturer_OnFastStatusChange`回调，在运行态发生变化时及时感知状态变化。
-    <!-- @[SetCapturerFastStatusChangeCallback_UltraFast](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
-
-    ``` C++
-    OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(builder, MyOnUltraFastStatusChange, nullptr);
     ```
 
 针对OHAudio开发音频录制，有以下相关实例可供参考：
