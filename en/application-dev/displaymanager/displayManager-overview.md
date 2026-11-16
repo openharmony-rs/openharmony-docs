@@ -23,7 +23,7 @@ Display management includes the following capabilities:
 - Listening for various display events, including rotation, resolution changes, refresh rate changes, and folding state changes.
 - Creating and using virtual screens. This capability is available only for system applications.
 
-For details about how to obtain display properties and listen for status changes, see [Obtaining Display Properties and Listening for Status Changes (C/C++)](native-display-manager.md) and [Obtaining Display Properties and Listening for Status Changes (ArkTS)](screenProperty-guideline.md). For details about how to query extended screen display modes and use coordinate systems in each mode, see [Coordinate Conversion for Extended Screens](extend-coordinate-transformation-guideline.md).<!--Del--> For details about how to use virtual screens, see [Creating and Using a Virtual Screen (ArkTS) (for System Applications Only)](virtualScreen-guideline-sys.md).<!--DelEnd-->
+For details about how to obtain display properties and listen for status changes, see [Obtaining Display Properties and Listening for Status Changes (C/C++)](native-display-manager.md) and [Obtaining Display Properties and Listening for Status Changes (ArkTS)](screenProperty-guideline.md). For details about how to query extended screen display modes and use coordinate systems in each mode, see [Coordinate Conversion for Extended Screens](extended-coordinate-transformation-guideline.md).<!--Del--> For details about how to use virtual screens, see [Creating and Using a Virtual Screen (ArkTS) (for System Applications Only)](virtualScreen-guideline-sys.md).<!--DelEnd-->
 
 ## Constraints
 
