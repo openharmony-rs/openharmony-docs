@@ -22,11 +22,11 @@ UI事件注入接口为应用内智能体(In-App Agent)与UI自动化场景提�
 | --- | --- |
 | 版本要求 | 接口始于 26.1.0,使用前需确认设备支持。 |
 | 注入范围 | 仅支持向本应用自身的UI实例注入,不支持跨应用注入。 |
-| 线程要求 | 接口线程安全,可从任意线程调用,不会阻塞调用线程。 |
-| 并发与取消 | 多条命令可入队执行,执行顺序不保证;接口不提供取消操作,也没有固定的完成超时。 |
-| 实例失效 | 命令被接受后,若UI实例失效,回调返回TARGET_NOT_FOUND。 |
-| 回调时序 | 每个被接受的请求在注入函数返回后,在原UI线程恰好回调一次;回调通知命令的派发结果和组件的即时处理结果,不等待渲染或动画完成。 |
-| 坐标语义 | 坐标相对当前窗口,单位为物理像素(px)。 |
+| 线程要求 | 接口线程安全,可从任意线程调用,不会阻塞调用线程,且非异步信号安全;命令的执行与回调在目标UI实例的UI线程进行。 |
+| 并发与取消 | 可同时提交多个命令,不保证执行或回调顺序;接口不提供取消操作,也没有固定的完成超时。 |
+| 实例失效 | 请求被接受后,若目标UI实例不可用,回调报告TARGET_NOT_FOUND。 |
+| 回调时序 | callback非NULL时,每个被接受的请求在命令执行完成后恰好回调一次,不等待组件延迟效果或渲染完成;从目标UI线程调用时,回调在本函数返回后执行,从其他线程调用时,回调可能在本函数返回前执行。不同UI实例UI线程上的回调不保证全局串行执行。 |
+| 坐标语义 | 所有位置坐标均相对于窗口,单位为物理像素(px)。 |
 
 ## 接口说明
 
@@ -119,8 +119,8 @@ target_link_libraries(entry PUBLIC libace_ndk.z.so)
 以向当前UI实例注入一次点击为例:
 
 ```C++
-// 1. 定义完成回调:每个被接受的请求在注入函数返回后,在原UI线程恰好回调一次
-//    (回调为可选参数,不需要结果通知时注入接口的callback可传NULL)
+// 1. 定义完成回调:命令的执行与回调在目标UI实例的UI线程进行
+//    (callback非NULL时,每个被接受的请求在命令执行完成后恰好回调一次;不需要结果通知时callback可传NULL)
 static void OnInjectionResult(OH_ArkUI_NativeModule_UIEventInjection_ResultCode result, void* userData)
 {
     // result为执行结果:SUCCESS(0)、TARGET_NOT_FOUND(1)、COMMAND_NOT_SUPPORTED(2)、INTERRUPTED_BY_USER(3)
@@ -139,7 +139,7 @@ if (ret != ARKUI_ERROR_CODE_NO_ERROR || command == nullptr) {
     return; // JSON非法或内存分配失败,command为nullptr
 }
 
-// 3. 注入命令(接口线程安全,可在任意线程调用,不会阻塞)
+// 3. 注入命令(接口线程安全,可在任意线程调用;从非目标UI线程调用时,回调可能在本函数返回前执行)
 int finished = 0;
 ret = OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(uiContext, command, OnInjectionResult, &finished);
 
@@ -163,24 +163,24 @@ if (ret != ARKUI_ERROR_CODE_NO_ERROR) {
 | 返回值 | 说明 |
 | --- | --- |
 | ARKUI_ERROR_CODE_NO_ERROR | 命令入队成功,执行结果经回调返回。 |
-| ARKUI_ERROR_CODE_PARAM_INVALID | 参数无效或缺少必填字段。 |
-| ARKUI_ERROR_CODE_UI_CONTEXT_INVALID | UI上下文无效。 |
+| ARKUI_ERROR_CODE_PARAM_INVALID | command为空、JSON格式或命令参数非法、缺少必填字段,或命令投递失败。 |
+| ARKUI_ERROR_CODE_UI_CONTEXT_INVALID | uiContext为空,或目标UI实例及其任务执行器不可用。 |
 
 **回调结果码(命令执行结果):**
 
 | 结果码 | 说明 |
 | --- | --- |
 | OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_SUCCESS | 命令执行成功。 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_TARGET_NOT_FOUND | 未找到能够响应注入命令的组件或目标,例如无法定位执行模式所需的目标,或命令被接受后UI实例已失效。 |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_TARGET_NOT_FOUND | 未找到能够响应注入命令的组件或目标,例如无法定位执行模式所需的目标(如target模式坐标未命中组件),或命令被接受后目标UI实例不可用。 |
 | OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_COMMAND_NOT_SUPPORTED | 命令结构有效,但当前UI状态不支持该命令的类型或执行模式。 |
 | OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_INTERRUPTED_BY_USER | 命令被用户操作中断。 |
 
 **生命周期注意事项:**
 
-- 命令JSON在注入接口返回前即被拷贝;返回后调用方可立即销毁`command`对象。若需再次注入相同命令,须重新创建命令对象。
+- 注入接口返回前完成JSON校验与复制;返回后调用方可立即销毁`command`对象。若需再次注入相同命令,须重新创建命令对象。
 - `callback`为可选参数;传入非NULL回调时,请求被接受后回调须保持可调用,直到其返回。
 - `userData`由调用方管理,框架仅透传指针,不访问、不拷贝、不释放;请求被接受后至回调返回前,非空的`userData`须保持有效。
-- 多条命令可入队执行,执行顺序不保证;接口不提供取消操作。
+- 可同时提交多个命令,不保证执行或回调顺序;接口不提供取消操作。
 
 ## 相关资料
 
