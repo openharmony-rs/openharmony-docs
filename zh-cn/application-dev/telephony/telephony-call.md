@@ -63,6 +63,31 @@ observer模块为开发者提供订阅和取消订阅通话业务状态的功能
 4. 调用dialCall接口，拨打电话。
 5. （可选）订阅通话业务状态变化。
    <!-- @[DialCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Telephony_Kit/MakeCall/MakeCall/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { call, observer } from '@kit.TelephonyKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+       // 调用查询能力接口
+       let isSupport = call.hasVoiceCapability();
+       if (isSupport) {
+           // 如果设备支持呼叫能力，调用以下接口进行拨号
+           call.dialCall('13xxxx', (err: BusinessError) => {
+               console.error(`callback: dial call err->${JSON.stringify(err)}`);
+           })
+   
+           // 订阅通话业务状态变化（可选）
+           class SlotId {public slotId: number = 0}
+           class CallStateCallback {
+               public state: call.CallState = call.CallState.CALL_STATE_UNKNOWN;
+               public number: string = '';
+           }
+           let slotId: SlotId = {slotId: 0}
+           observer.on('callStateChange', slotId, (data: CallStateCallback) => {
+               console.info('call state change, data is:' + JSON.stringify(data));
+           });
+       }
+   ```
 
 <!--DelEnd-->
 ### 使用makeCall拨打电话
