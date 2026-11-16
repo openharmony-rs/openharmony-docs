@@ -1,7 +1,7 @@
 # @ohos.telephony.esim (eSIM卡管理) (系统接口)
 <!--Kit: Telephony Kit-->
 <!--Subsystem: Telephony-->
-<!--Owner: @yangyannanyangyannan-->
+<!--Owner: @Fanyl8-->
 <!--Designer: @ghxbob-->
 <!--Tester: @weitiantian-->
 <!--Adviser: @zhang_yixin13-->
