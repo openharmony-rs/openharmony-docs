@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:25:19.514Z pushedAt=2026-10-08T09:33:04.712Z -->
+<!-- md-trans-meta sourceCommit=734000d7541e45073c1418b7d3adb90d2d5defac translatedAt=2026-11-13T02:22:53.410Z pushedAt=2026-11-13T09:44:30.421Z nl=1 -->
 
 The **Notification** module provides notification management capabilities, covering notifications, notification slots, notification subscription, notification enabled status, and notification badge status.
 
@@ -972,7 +972,7 @@ Notification.isDistributedEnabled().then((data: boolean) => {
 **System capability**: SystemCapability.Notification.Notification
 
 > **NOTE**
-> This API is supported since API version 7 and deprecated since API version 9. <!--Del-->You are advised to use [notificationManager.NotificationKey](js-apis-notificationSubscribe-sys.md#notificationkey).<!--DelEnd-->
+> This API is supported since API version 7 and deprecated since API version 9.<!--Del--> You are advised to use [notificationManager.NotificationKey](js-apis-notificationSubscribe-sys.md#notificationkey) instead.<!--DelEnd-->
 
 | Name | Type  | Readable| Writable| Description    |
 | ----- | ------ | ---- | --- | -------- |

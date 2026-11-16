@@ -1859,3 +1859,20 @@ type Nullable\<T> = T \| undefined
 | ------ | ---- | ---------- |
 | DEFAULT_SHAPE | 0 | 按默认形状裁切（优先级顺序：[shadowShape](ts-universal-attributes-image-effect.md#shadowshape) > [clipShape](ts-universal-attributes-sharp-clipping.md#clipshape12) > 组件边界）。 |
 | BOUNDS_SHAPE | 1 | 按组件边界裁切。 |
+
+## AgentControlMode
+
+Agent生成事件的输入管控模式，用于[agentControlMode](ts-universal-attributes-agent-control-mode.md#agentcontrolmode)属性。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| ALLOW | 0 | 允许Agent生成的输入操作，无需用户确认。 |
+| DENY | 1 | 阻止Agent生成的输入操作。 |

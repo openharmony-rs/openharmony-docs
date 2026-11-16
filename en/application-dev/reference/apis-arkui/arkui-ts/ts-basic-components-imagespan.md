@@ -542,6 +542,6 @@ struct ImageSpanResizablePage {
 }
 ```
 
-![resizable](figures/imagespan-resizable.png)
+
 
 <!--no_check-->

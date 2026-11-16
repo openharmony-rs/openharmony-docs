@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=523587af0396fce9af8dfb1a1fcd6595324a4b23 translatedAt=2026-10-28T11:25:22.103Z pushedAt=2026-10-28T12:15:40.124Z nl=1 -->
+<!-- md-trans-meta sourceCommit=c840b9a8f02f445d6c590b1f99e03469a633d5eb translatedAt=2026-11-13T02:23:46.869Z pushedAt=2026-11-13T09:44:30.425Z nl=1 -->
 
 This module provides the capabilities for managing notification extensions, including opening the notification extension subscription settings page, subscribing to and unsubscribing from notification extensions, and obtaining and setting the [notification authorization](../../notification/notification-glossary.md#notification-authorization) status.
 
@@ -282,7 +282,7 @@ notificationExtensionSubscription.setUserGrantedBundleState(targetBundle, enable
 
 subscribeNotification(priorityStrategy?: number): Promise\<void\>
 
-Subscribes to notifications based on the [priority notification](../../notification/notification-glossary.md#priority-notification) filter criteria. This API uses a promise to return the result.
+Subscribes to notifications based on the priority notification filtering condition. This API uses a promise to return the result.
 
 **Since:** 26.1.0
 
