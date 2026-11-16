@@ -6,7 +6,7 @@
 <!--Designer: @wanyanglan; @KejiePeng-->
 <!--Tester: @nobuggers; @yhl0101; @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=ba1b6704bf7552d9b6a8a06ca0cf38b43a773032 translatedAt=2026-11-03T13:36:05.113Z pushedAt=2026-11-04T08:33:43.179Z nl=1 -->
+<!-- md-trans-meta sourceCommit=a100856430377b9a5ee0bd89073e8514d4ec7990 translatedAt=2026-11-14T08:10:44.084Z pushedAt=2026-11-14T08:15:24.299Z nl=1 -->
 
 - ArkTS APIs<!--arkgraphics-arkts-->
   - [@ohos.effectKit (Image Effects)](js-apis-effectKit.md)
@@ -163,6 +163,7 @@
     - [Rect](capi-nativewindow-rect.md)
     - [OHHDRMetaData](capi-nativewindow-ohhdrmetadata.md)
     - [OHExtDataHandle](capi-nativewindow-ohextdatahandle.md)
+    - [OH_NativeWindow_ScreenInfoRect](capi-nativewindow-oh-nativewindow-screeninforect.md)
     - [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md)
     - [OH_DisplaySoloist](capi-nativedisplaysoloist-oh-displaysoloist.md)
     - [NativePixelMap_](capi-drawing-nativepixelmap-.md)

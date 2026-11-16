@@ -32,7 +32,7 @@ Runs startup framework startup tasks or loads .so files. During the application 
 >
 > This API cannot be used to run startup tasks defined in a feature-type HAP (Harmony Ability Package). To use the related capability, call [startupManager.run](#startupmanagerrun20).
 >
-> This API supports only [application-level .so](../../application-models/ability-terminology.md#application-level-so) file loading, and does not support [system-level .so](../../application-models/ability-terminology.md#system-level-so) file loading.
+> This API supports only [application-level .so](../../application-models/ability-terminology.md) file loading, and does not support [system-level .so](../../application-models/ability-terminology.md#system-level-so) file loading.
 
 **System capability**: SystemCapability.Ability.AppStartup
 
@@ -99,7 +99,7 @@ Runs startup framework startup tasks or loads .so files. You can specify [Abilit
 
 > **NOTE**
 >
-> This API supports only [application-level .so](../../application-models/ability-terminology.md#application-level-so) file loading, and does not support [system-level .so](../../application-models/ability-terminology.md#system-level-so) file loading.
+> This API supports only [application-level .so](../../application-models/ability-terminology.md) file loading, and does not support [system-level .so](../../application-models/ability-terminology.md#system-level-so) file loading.
 
 **System capability**: SystemCapability.Ability.AppStartup
 

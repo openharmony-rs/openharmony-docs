@@ -1,12 +1,11 @@
 # ArkWeb_WebMessagePortAPI
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-03T09:56:04.927Z pushedAt=2026-08-06T12:25:56.646Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:50:31.506Z pushedAt=2026-11-13T11:17:25.622Z nl=1 -->
 
 ```c
 typedef struct {...} ArkWeb_WebMessagePortAPI
@@ -31,6 +30,7 @@ Web message port related APIs must be called on the UI thread by using the OH_Ar
 | Name| Description|
 | -- | -- |
 | size_t size | Size of the struct, in bytes. |
+
 
 ### Member Functions
 
@@ -102,3 +102,4 @@ Sets a callback for receiving HTML messages. It is used when messages, requests,
 | const char* webTag                                                                                     |  Name of the **Web** component.                    |
 | [ArkWeb_OnMessageEventHandler](capi-arkweb-type-h.md#arkweb_onmessageeventhandler) messageEventHandler | Callback used to handle messages.                    |
 | void* userData                                                                                         | User-defined data that is passed to the messageEventHandler callback when triggered. It can be used to carry context information or additional service data, and its lifecycle is managed by the app.                     |
+

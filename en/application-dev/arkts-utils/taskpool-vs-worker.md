@@ -1,12 +1,22 @@
+---
+kits: ["ArkTS / Ark Programming Language"]
+description: "Compares TaskPool and Worker from two dimensions, implementation characteristics and applicable scenarios: covers differences in memory model, parameter passing mechanism, lifecycle management, thread count limit, and task execution duration limit, and provides scenarios where Worker and TaskPool are respectively recommended."
+keywords: [TaskPool vs. Worker comparison, implementation characteristics, applicable scenarios, concurrency selection, memory model, parameter passing, lifecycle management, thread count limit, multithreading]
+doctype: guide
+status: active
+---
+
 # Comparison Between TaskPool and Worker
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
-<!--Designer: @weng-changcheng-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=3621e01243307de1ff4f06e11dd17a074cf484af translatedAt=2026-11-06T10:49:30.268Z pushedAt=2026-11-12T13:33:20.816Z nl=1 -->
 
 
+<!--RP1-->
 TaskPool and Worker provide a multithreaded runtime environment for applications, allowing them to handle time-consuming computing tasks or resource intensive tasks, preventing tasks from blocking the host thread, and improving system performance and resource utilization.
 
 
@@ -20,12 +30,13 @@ This topic compares TaskPool and Worker based on their [implementation character
 | Item| TaskPool | Worker |
 | -------- | -------- | -------- |
 | Memory model| Threads are isolated from each other, and memory is not shared.| Threads are isolated from each other, and memory is not shared.|
+| Memory overhead | Worker threads are reusable and automatically scaled by the system, resulting in low memory overhead. | Each Worker initializes an independent virtual machine instance (including independent heap memory, interpreter, and module system) at creation. The base memory overhead of a single Worker is approximately several MB to 20 MB, resulting in high memory overhead. |
 | Parameter passing mechanism| The structured clone algorithm is used for serialization and deserialization.<br>ArrayBuffer, SharedArrayBuffer, and Sendable are supported.| The structured clone algorithm is used for serialization and deserialization.<br>ArrayBuffer, SharedArrayBuffer, and Sendable are supported.|
 | Parameter passing| Parameters are directly passed without being encapsulated.| The message object should be encapsulated as a unique parameter.|
 | Method invocation| Directly pass and call methods decorated with @Concurrent.| Messages are parsed in the Worker thread to invoke the corresponding methods.|
 | Return value| Results are returned asynchronously by default.| Messages must be proactively sent and parsed by calling **onmessage()** for value assignment.|
 | Lifecycle management| TaskPool automatically manages its lifecycle, without considering task load.| You need to manage the number and lifecycle of Worker threads.|
-| Maximum number of tasks| The number is automatically managed, rather than being manually configured.| A maximum of 64 Worker threads can run simultaneously in the same process. The actual number is determined by the process memory.|
+| Maximum number of task pools | Managed automatically, no configuration required. | Within the same process, up to 64 Worker threads can be opened simultaneously; the actual number is determined by the process memory. |
 | Maximum task duration| 3 minutes (excluding time spent on Promise and async/await calls, such as network downloads and file read/write operations). There is no upper limit on the duration of continuous tasks.| There is no limit.|
 | Task priority setting| Setting the task priority is supported.| Since API version 18, the Worker thread priority can be configured.|
 | Task cancellation| Supported.| Not supported.|
@@ -43,6 +54,8 @@ This topic compares TaskPool and Worker based on their [implementation character
 Both TaskPool and Worker support multi-threaded concurrency. TaskPool worker threads are bound to the system scheduling priority and support load balancing (automatic scaling). In contrast, Worker threads need to be created and destroyed manually by developers, incurring certain costs for creation and management. Therefore, TaskPool is recommended in most scenarios.
 
 Worker applies to scenarios where threads need to be occupied for an extended period and the thread lifecycle needs to be managed manually by developers. TaskPool applies to scenarios where relatively independent tasks are executed, and there is no need to focus on thread lifecycle when tasks run in threads.
+
+In addition, from the perspective of memory overhead, TaskPool's worker threads support reuse and are uniformly scaled by the system, resulting in relatively low memory usage. In contrast, each Worker initializes an independent virtual machine instance upon creation, with a base memory overhead of approximately several MB to 20 MB, which further grows with the complexity of the business modules loaded by the Worker. When an application runs multiple Workers simultaneously, the memory overhead increases proportionally, which is especially noticeable on memory-constrained devices. Therefore, for memory-sensitive scenarios, TaskPool should be preferred; when multiple resident Workers are indeed required, the number of Workers should be planned reasonably and existing Workers should be reused. For details, refer to [Worker Introduction](worker-introduction.md) and [Resident Task Development Guide](resident-task-guide.md).
 
 ### Recommended Scenarios for Worker
 
@@ -70,7 +83,7 @@ In the following scenarios, tasks are typically relatively independent and have 
 
   In versions earlier than API version 18, Worker does not support setting scheduling priorities, so TaskPool is necessary.
 
-  Since API version 18, Worker supports priority settings, allowing you to choose between TaskPool and Worker based on your use case and task characteristics. 
+  Since API version 18, Worker supports priority settings, allowing you to choose between TaskPool and Worker based on your use case and task characteristics.
 
   For example, in a [histogram rendering scenario](cpu-intensive-task-development.md#using-taskpool-for-image-histogram-processing), the histogram data calculated in the background is used for foreground UI display (which impacts user experience), and the task is relatively independent. Therefore, TaskPool is recommended.
 
@@ -83,3 +96,4 @@ In the following scenarios, tasks are typically relatively independent and have 
   For applications with multiple modules containing numerous time-consuming tasks, you are advised to use TaskPool instead of Worker for load management.
 
   For details about the scenario example, see [Batch Database Operations](batch-database-operations-guide.md).
+<!--RP1End-->

@@ -241,7 +241,7 @@ Notifies the ArkWeb kernel that the intercepted request should return a failure 
 | --------| ------- | ---- | ---------------------------|
 | code | [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) | Yes | Network error code. |
 | completeIfNoResponse | boolean | Yes | When the value is true, if [didReceiveResponse](#didreceiveresponse12) has not been called before, a response is automatically generated to complete this network request. When the value is false, if [didReceiveResponse](#didreceiveresponse12) has not been called before, the application waits for [didReceiveResponse](#didreceiveresponse12) to be called and a response to be passed in, and this network request is not completed directly. |
-| customErrorCode | number | Yes | The custom error code of this request, which is directly passed to the application through the [onErrorReceive](./arkts-basic-components-web-events.md#onerrorreceive) event. For details, see [WebResourceError.getCustomErrorCode](arkts-basic-components-web-WebResourceError.md#getcustomerrorcode). |
+| customErrorCode | number | Yes | The custom error code of this request, which is directly passed to the application through the [onErrorReceive](./arkts-basic-components-web-events.md#onerrorreceive) event. For details, see [WebResourceError.getCustomErrorCode](arkts-basic-components-web-WebResourceError.md). |
 
 **Error codes**
 
