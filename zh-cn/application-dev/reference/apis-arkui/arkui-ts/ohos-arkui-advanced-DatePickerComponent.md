@@ -46,17 +46,18 @@ DatePickerComponentOptions定义日期时间选择器组件的选项。
 
 **起始版本：** 26.0.0
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| displayMode | [DisplayMode](#displaymode) | 否 | 是 | 选择器的显示模式。<br>默认值：DisplayMode.DATE<br>**说明：**<br>- DATE：仅显示日期，使用dateOptions，适用于只需要用户选择日期的场景，如生日选择、日程日期设置等。<br>- TIME：仅显示时间，使用timeOptions，适用于只需要用户选择时间的场景，如闹钟设置、提醒时间设置等。<br>- DATE_TIME：同时显示日期和时间，dateOptions与timeOptions同时生效，适用于需要用户同时选择日期和时间的场景，如日程安排、会议时间设置等。 |
-| dateOptions | [DateOptions](#dateoptions) | 否 | 是 | 日期选项。 |
-| timeOptions | [TimeOptions](#timeoptions) | 否 | 是 | 时间选项。 |
+| displayMode | [DisplayMode](#displaymode) | 否 | 是 | 选择器的显示模式。<br>默认值：DisplayMode.DATE<br>**说明：**<br>- DATE：仅显示日期，使用dateOptions，适用于只需要用户选择日期的场景，如生日选择、日程日期设置等。<br>- TIME：仅显示时间，使用timeOptions，适用于只需要用户选择时间的场景，如闹钟设置、提醒时间设置等。<br>- DATE_TIME：同时显示日期和时间，dateOptions与timeOptions同时生效，适用于需要用户同时选择日期和时间的场景，如日程安排、会议时间设置等。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| dateOptions | [DateOptions](#dateoptions) | 否 | 是 | 日期选项。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| timeOptions | [TimeOptions](#timeoptions) | 否 | 是 | 时间选项。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| selectedTextStyle | [PickerComponentTextStyle](ts-picker-common.md#pickercomponenttextstyle) | 否 | 是 | 选中项的文本样式。<br>默认值：<br>{<br>color: $r('sys.color.font_primary'),<br>font: {<br>size: '14vp'（显示列数大于或等于6时）或 '16vp'（其他情况）,<br>weight: FontWeight.Normal<br>},<br>overflow: TextOverflow.Clip<br>}<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| itemTextStyle | [PickerComponentTextStyle](ts-picker-common.md#pickercomponenttextstyle) | 否 | 是 | 全部项的文本样式。当selectedTextStyle与itemTextStyle同时设置时，itemTextStyle应用于非选中项。<br>默认值：<br>{<br>color: $r('sys.color.font_primary'),<br>font: {<br>size: '14vp'（显示列数大于或等于6时）或 '16vp'（其他情况）,<br>weight: FontWeight.Normal<br>},<br>overflow: TextOverflow.Clip<br>}<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| selectionIndicator | [PickerIndicatorStyle](ts-container-ui-picker-component.md#pickerindicatorstyle对象说明) | 否 | 是 | 选中项指示器的样式。<br>默认值：<br>{<br>type: PickerIndicatorType.BACKGROUND,<br>strokeWidth: {<br>value: 2,<br>unit: LengthUnit.px<br>},<br>dividerColor: 'sys.color.comp_divider',<br>startMargin: {<br>value: 0,<br>unit: LengthUnit.px<br>},<br>endMargin: {<br>value: 0,<br>unit: LengthUnit.px<br>},<br>borderRadius: {<br>value: 12,<br>unit: LengthUnit.vp<br>},<br>backgroundColor: 'sys.color.comp_background_tertiary'<br>}<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## DisplayMode
 
@@ -464,3 +465,212 @@ struct HideYearAndExtendSelectedExample {
 ```
 
 ![hideyear](figures/datepickercomponenthideyear.gif)
+
+### 示例6（设置选项文本样式）
+
+该示例通过设置[DatePickerComponentOptions](#datepickercomponentoptions)中的selectedTextStyle和itemTextStyle，实现选中项与非选中项的文本样式自定义。具体包括：单独设置选中项样式、单独设置全部项样式、同时设置两种样式。
+
+从API版本26.1.0开始，[DatePickerComponentOptions](#datepickercomponentoptions)新增selectedTextStyle和itemTextStyle属性。
+
+```ts
+import { DatePickerComponent, DisplayMode, DateMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct DatePickerTextStyleExample {
+  // 控制文本样式设置模式：0为默认，1为仅设置选中项样式，2为仅设置全部项样式，3为同时设置选中项和全部项样式。
+  @State mode: number = 0;
+
+  build() {
+    Column({ space: 12 }) {
+      if (this.mode === 1) {
+        DatePickerComponent({
+          options: {
+            displayMode: DisplayMode.DATE,
+            dateOptions: {
+              mode: DateMode.DATE,
+              selected: new Date(),
+            },
+            selectedTextStyle: {
+              color: '#FF007DFF',
+              font: {
+                size: '20vp',
+                weight: FontWeight.Bold
+              },
+              overflow: TextOverflow.Clip
+            }
+          }
+        })
+      } else if (this.mode === 2) {
+        DatePickerComponent({
+          options: {
+            displayMode: DisplayMode.DATE,
+            dateOptions: {
+              mode: DateMode.DATE,
+              selected: new Date(),
+            },
+            itemTextStyle: {
+              color: '#ff2de0c6',
+              font: {
+                size: '16vp',
+                weight: FontWeight.Normal
+              },
+              overflow: TextOverflow.Clip
+            }
+          }
+        })
+      } else if (this.mode === 3) {
+        DatePickerComponent({
+          options: {
+            displayMode: DisplayMode.DATE,
+            dateOptions: {
+              mode: DateMode.DATE,
+              selected: new Date(),
+            },
+            selectedTextStyle: {
+              color: '#FF007DFF',
+              font: {
+                size: '20vp',
+                weight: FontWeight.Bold
+              },
+              overflow: TextOverflow.Clip
+            },
+            itemTextStyle: {
+              color: '#ff2de0c6',
+              font: {
+                size: '16vp',
+                weight: FontWeight.Normal
+              },
+              overflow: TextOverflow.Clip
+            }
+          }
+        })
+      } else {
+        DatePickerComponent({
+          options: {
+            displayMode: DisplayMode.DATE,
+            dateOptions: {
+              mode: DateMode.DATE,
+              selected: new Date(),
+            }
+          }
+        })
+      }
+
+      Row({ space: 12 }) {
+        Button('仅设置选中项样式')
+          .width(160)
+          .onClick(() => {
+            this.mode = 1;
+          })
+        Button('仅设置全部项样式')
+          .width(160)
+          .onClick(() => {
+            this.mode = 2;
+          })
+      }
+
+      Row({ space: 12 }) {
+        Button('同时设置')
+          .width(120)
+          .onClick(() => {
+            this.mode = 3;
+          })
+        Button('恢复默认')
+          .width(120)
+          .onClick(() => {
+            this.mode = 0;
+          })
+      }
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+![textStyle](figures/DatePickerComponent-text-style.jpg)
+
+### 示例7（设置选中项的指示器样式）
+
+该示例通过设置[DatePickerComponentOptions](#datepickercomponentoptions)中的selectionIndicator，实现选中项指示器的样式自定义。具体包括：切换指示器类型为BACKGROUND和DIVIDER，以及恢复默认值。
+
+从API版本26.1.0开始，[DatePickerComponentOptions](#datepickercomponentoptions)新增selectionIndicator属性。
+
+```ts
+import { DatePickerComponent, DisplayMode, DateMode, LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct DatePickerIndicatorExample {
+  // 控制指示器类型：0为默认，1为BACKGROUND类型，2为DIVIDER类型。
+  @State mode: number = 0;
+
+  build() {
+    Column({ space: 12 }) {
+      if (this.mode === 1) {
+        DatePickerComponent({
+          options: {
+            displayMode: DisplayMode.DATE,
+            dateOptions: {
+              mode: DateMode.DATE,
+              selected: new Date(),
+            },
+            selectionIndicator: {
+              type: PickerIndicatorType.BACKGROUND,
+              borderRadius: LengthMetrics.vp(12),
+              backgroundColor: '#33007DFF'
+            }
+          }
+        })
+      } else if (this.mode === 2) {
+        DatePickerComponent({
+          options: {
+            displayMode: DisplayMode.DATE,
+            dateOptions: {
+              mode: DateMode.DATE,
+              selected: new Date(),
+            },
+            selectionIndicator: {
+              type: PickerIndicatorType.DIVIDER,
+              strokeWidth: LengthMetrics.px(2),
+              dividerColor: '#FFCCCCCC',
+              startMargin: LengthMetrics.px(0),
+              endMargin: LengthMetrics.px(0)
+            }
+          }
+        })
+      } else {
+        DatePickerComponent({
+          options: {
+            displayMode: DisplayMode.DATE,
+            dateOptions: {
+              mode: DateMode.DATE,
+              selected: new Date(),
+            }
+          }
+        })
+      }
+
+      Row({ space: 8 }) {
+        Button('BACKGROUND')
+          .onClick(() => {
+            this.mode = 1;
+          })
+        Button('DIVIDER')
+          .onClick(() => {
+            this.mode = 2;
+          })
+        Button('reset')
+          .onClick(() => {
+            this.mode = 0;
+          })
+      }
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+![indicator](figures/DatePickerComponent-selection-indicator.jpg)
