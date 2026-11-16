@@ -367,7 +367,9 @@ export function observeProtobuf(): test_pb {
 runTests() {
   taskpool.execute(observeJSON1).then((res) => {
     this.layout = UIUtils.makeObserved(res as LayoutS);
-  })
+  }).catch((e: BusinessError) => {
+    console.error(`taskpool execute error, code: ${e.code}, message is: ${e.message}`);
+  });
 }
 ```
 

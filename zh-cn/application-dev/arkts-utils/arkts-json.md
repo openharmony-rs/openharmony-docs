@@ -135,10 +135,23 @@ interface TestStr {
    * 修改为`{"info": {"name": "zhangsan", "age": 18}}`。
    * */
   let jsonStr = `{"info": {"name": "zhangsan", "age": 18}}`;
-  let obj1  = JSON.parse(jsonStr) as TestObj;
-  console.info(JSON.stringify(obj1));    // {"info":{"name":"zhangsan","age":18}}
-  // 获取JSON字符串中的name信息
-  console.info(obj1.info.name); // zhangsan
+  try {
+    let obj1  = JSON.parse(jsonStr) as TestObj;
+    console.info(JSON.stringify(obj1));    // {"info":{"name":"zhangsan","age":18}}
+    // 获取JSON字符串中的name信息
+    console.info(obj1.info.name); // zhangsan
+    let logMsg = 'JSON.stringify(obj1): ' + JSON.stringify(obj1) + '\nobj1.info.name: ' + obj1.info.name;
+    if (globalLogUpdate) {
+      globalLogUpdate(logMsg, false);
+    }
+    return true;
+  } catch(err) {
+    console.error('Parsing1 error:', err);
+    if (globalLogUpdate) {
+      globalLogUpdate(err, true);
+    }
+    return false;
+  }
 ```
 
 方式2：将JSON字符串中嵌套的引号进行双重转义，恢复JSON的正常结构。
@@ -166,11 +179,24 @@ interface TestStr {
    * 修改为`{"info": "{\\"name\\": \\"zhangsan\\", \\"age\\": 18}"}`
    * */
   let jsonStr = `{"info": "{\\"name\\": \\"zhangsan\\", \\"age\\": 18}"}`;
-  let obj2 = JSON.parse(jsonStr) as TestStr;
-  console.info(JSON.stringify(obj2));    // {"info":"{\"name\": \"zhangsan\", \"age\": 18}"}
-  // 获取JSON字符串中的name信息
-  let obj3 = JSON.parse(obj2.info) as Info;
-  console.info(obj3.name); // zhangsan
+  try {
+    let obj2 = JSON.parse(jsonStr) as TestStr;
+    console.info(JSON.stringify(obj2));    // {"info":"{\"name\": \"zhangsan\", \"age\": 18}"}
+    // 获取JSON字符串中的name信息
+    let obj3 = JSON.parse(obj2.info) as Info;
+    console.info(obj3.name); // zhangsan
+    let logMsg = 'JSON.stringify(obj2): ' + JSON.stringify(obj2) + '\nobj3.name: ' + obj3.name;
+    if (globalLogUpdate) {
+      globalLogUpdate(logMsg, false);
+    }
+    return true;
+  } catch(err) {
+    console.error('Parsing2 error:', err);
+    if (globalLogUpdate) {
+      globalLogUpdate(err, true);
+    }
+    return false;
+  }
 ```
 
 ### 解析包含大整数的JSON字符串场景
@@ -183,22 +209,37 @@ interface TestStr {
 import { JSON } from '@kit.ArkTS';
   // ...
   let numberText = '{"number": 10, "largeNumber": 112233445566778899}';
+  try {
+    let numberObj1 = JSON.parse(numberText) as Object;
+    console.info((numberObj1 as object)?.['largeNumber']);    // 112233445566778900
 
-  let numberObj1 = JSON.parse(numberText) as Object;
-  console.info((numberObj1 as object)?.['largeNumber']);    // 112233445566778900
+    // 使用PARSE_AS_BIGINT的BigInt模式进行解析，避免出现大整数解析错误
+    let options: JSON.ParseOptions = {
+      bigIntMode: JSON.BigIntMode.PARSE_AS_BIGINT,
+    }
 
-  // 使用PARSE_AS_BIGINT的BigInt模式进行解析，避免出现大整数解析错误
-  let options: JSON.ParseOptions = {
-    bigIntMode: JSON.BigIntMode.PARSE_AS_BIGINT,
+    let numberObj2 = JSON.parse(numberText, null, options) as Object;
+
+    console.info(typeof (numberObj2 as object)?.['number']);   // number
+    console.info((numberObj2 as object)?.['number']);    // 10
+
+    console.info(typeof (numberObj2 as object)?.['largeNumber']);    // bigint
+    console.info((numberObj2 as object)?.['largeNumber']);    // 112233445566778899
+    let logMsg = 'typeof (numberObj2 as object)?.[\'number\']: ' + typeof (numberObj2 as object)?.['number'] + '\n' +
+      '(numberObj2 as object)?.[\'number\']: ' + (numberObj2 as object)?.['number'] + '\n' +
+      'typeof (numberObj2 as object)?.[\'largeNumber\']: ' + typeof (numberObj2 as object)?.['largeNumber'] + '\n' +
+      '(numberObj2 as object)?.[\'largeNumber\']: ' + (numberObj2 as object)?.['largeNumber'];
+    if (globalLogUpdate) {
+      globalLogUpdate(logMsg, false);
+    }
+    return true;
+  } catch(err) {
+    console.error('ParsingContainingBigInts error:', err);
+    if (globalLogUpdate) {
+      globalLogUpdate(err, true);
+    }
+    return false;
   }
-
-  let numberObj2 = JSON.parse(numberText, null, options) as Object;
-
-  console.info(typeof (numberObj2 as object)?.['number']);   // number
-  console.info((numberObj2 as object)?.['number']);    // 10
-
-  console.info(typeof (numberObj2 as object)?.['largeNumber']);    // bigint
-  console.info((numberObj2 as object)?.['largeNumber']);    // 112233445566778899
 ```
 
 ### 序列化BigInt对象场景
