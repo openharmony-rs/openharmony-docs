@@ -5784,6 +5784,34 @@ Allows an application to install freely distributable applications.
  
 **Valid since**: 26.0.1
 
+## ohos.permission.vehicle.MMA_OCCUPANT
+
+Allows an in-vehicle application to call spatial gesture APIs to enable contactless interaction for passengers.
+
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+ 
+**Supported devices**: Car
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.MMA_CARSTATUS
+
+Allows an in-vehicle application to obtain the real-time status of vehicle components.
+
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+ 
+**Supported devices**: Car
+
+**Valid since**: 26.0.1
+
 ## ohos.permission.ALLOW_DIRECT_BOOT
 
 Allows an application to start after a device cold boot or restart, before the user unlocks the device for the first time.

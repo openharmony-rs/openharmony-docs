@@ -1196,31 +1196,3 @@ Allows an application to obtain the device hardware information.
 **Supported devices**: PCs/2-in-1 devices
  
 **Since**: 26.0.1
-
-## ohos.permission.vehicle.MMA_OCCUPANT
- 
-Allows an in-vehicle application to obtain occupant status, including seat occupancy and occupant types.
- 
-<!--RP119--><!--RP119End-->
- 
-**Permission level**: system_basic
- 
-**Authorization mode**: system_grant
- 
-**Supported devices**: cars
- 
-**Since**: 26.0.1
- 
-## ohos.permission.vehicle.MMA_CARSTATUS
- 
-Allows an in-vehicle application to obtain the real-time status of vehicle components.
- 
-<!--RP120--><!--RP120End-->
- 
-**Permission level**: system_basic
- 
-**Authorization mode**: system_grant
- 
-**Supported devices**: cars
- 
-**Since**: 26.0.1
