@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=59c43aed2026bf661a322032daecc86d61224e0f translatedAt=2026-09-21T11:37:58.988Z pushedAt=2026-09-23T09:23:31.762Z -->
+<!-- md-trans-meta sourceCommit=0921892cc4e11d5994b47202929d914ab0d557e3 translatedAt=2026-11-12T03:33:50.133Z pushedAt=2026-11-12T09:23:39.681Z nl=1 -->
 
 A large number of data objects need to be encapsulated in large-scale applications. The use of internal state variables of data objects greatly affects the development efficiency of developers. This document describes common problems and solutions of data object state management.
 
@@ -14,7 +14,7 @@ In state management, a class is wrapped by a layer of "proxy." When a member var
 - Update the data source synchronously to ensure that the original data is correctly modified.
 - Trigger UI refresh: Instruct all components that depend on this variable to re-render.
 
-You can use the [getTarget](./arkts-new-getTarget.md) API to obtain the original object and use the following method to determine whether the object is wrapped by the state manager. If the expression result is **false**, the value is an object wrapped by the state management module. Otherwise, the value is not an object wrapped by the state management module.
+You can use the [getTarget](./arkts-new-getTarget.md) API to obtain the original object and use the following method to determine whether the object is wrapped by the state management. If the expression result is **false**, the value is an object wrapped by the state management module. Otherwise, the value is not an object wrapped by the state management module.
 
 ``` ts
 UIUtils.getTarget(value) === value
@@ -22,7 +22,7 @@ UIUtils.getTarget(value) === value
 
 ## Capturing this in constructor() Fails to Observe Variable Changes
 
-When the [arrow function](../../quick-start/arkts-language-guide-functions.md#arrow-functions-and-function-types) that modifies `isSuccess` is initialized in the constructor, the `TestModel` instance has not yet been wrapped by a proxy, and `this` points to the `TestModel` instance itself. Therefore, when the `query` event is subsequently triggered, state management cannot observe the change.
+When the [arrow function](../../quick-start/arkts-language-guide-functions.md#arrow-functions-and-function-types) for modifying `isSuccess` is initialized in the constructor, the `TestModel` instance has not been wrapped by a proxy, and `this` points to the `TestModel` instance itself. Therefore, when the `query` event is triggered subsequently, state management cannot observe changes.
 
 When you place the arrow function for modifying `isSuccess` in `query`, the `TestModel` object has already been initialized and wrapped by a proxy. When `query` is called via `this.viewModel.query()`, `this` inside the `query` function points to the `viewModel` proxy object, and changes to the proxy object's member property `isSuccess` can be observed. Therefore, triggering the `query` event is observable to the state management.
 
@@ -1271,7 +1271,7 @@ You may notice that **childList** is initialized in the same way when it is defi
 ```
 
 
-However, because `childList` here is actually decorated with @State, according to the observation capability of state management, even though the value assigned on the right is data of the `Child[]` type that is not decorated with @Observed, `childList` still has the ability to be observed, so it can trigger UI re-rendering normally. If the @State decorator of `childList` is removed, the data source is not reset, and re-rendering cannot be triggered by clicking the "X" button.
+However, because `childList` here is actually decorated with @State, according to the observation capability of state management, even though the value assigned on the right is data of the `Child[]` type that is not decorated with @Observed, `childList` still has the ability to be observed, so it can trigger UI re-rendering normally. If the @State decorator of `childList` is removed, the data source is not reset, and re-rendering cannot be triggered by clicking the "X" button either.
 
 Therefore, it is necessary to bind class objects that have the ability to be observed to components, to ensure that the UI re-renders normally when the content of these class objects changes.
 
@@ -1452,5 +1452,3 @@ public loadData() {
 
 
 In the preceding code, the **ChildList** type is decorated with @Observed when defined, allowing the **tempList** object created using **new** to be observed. As such, when you click **X** to delete an item, this change to the **childList** variable is observed and the **ForEach** view is updated, leading to UI re-rendering.
-
-<!--no_check-->

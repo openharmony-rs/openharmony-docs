@@ -6,7 +6,7 @@
 <!--Designer: @camlostshi-->
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=087470085268b4c7968360a1498b1da15f27d467 translatedAt=2026-07-06T13:07:36.226Z pushedAt=2026-07-07T10:34:42.081Z -->
+<!-- md-trans-meta sourceCommit=d1f4b34ba5b5f2e3b936bdd0c132a53fcd4e91b5 translatedAt=2026-11-12T04:21:56.606Z pushedAt=2026-11-13T09:20:43.393Z nl=1 -->
 
 Since API version 12, ArkUI provides a set of common layout attributes in the NDK to control the layout of components, such as dimensions, position, and borders.
 
@@ -215,7 +215,7 @@ Apply these two attributes to different components for comparison.
 
 <!-- @[layout_position_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKLayoutSample/entry/src/main/cpp/LayoutAttributeExample.h) -->
 
-```C
+``` C
 inline std::shared_ptr<ArkUITextNode> CreatePositionedItem()
 {
     auto positioned = CreateDemoItem("position(20, 18)", POSITION_ITEM_ORANGE);
@@ -226,10 +226,10 @@ inline std::shared_ptr<ArkUITextNode> CreatePositionedItem()
 
 inline std::shared_ptr<ArkUITextNode> CreateOffsetItem()
 {
-    auto offset = CreateDemoItem("offset(110, 80)", POSITION_ITEM_BLUE);
+    auto offset = CreateDemoItem("offset(110, 18)", POSITION_ITEM_BLUE);
     offset->SetWidth(LARGE_ITEM_WIDTH);
     offset->SetMargin(OFFSET_MARGIN_TOP, 0.0F, 0.0F, 0.0F);
-    offset->SetOffset(OFFSET_X, POSITION_Y);
+    offset->SetOffset(OFFSET_X, OFFSET_Y);
     return offset;
 }
 ```

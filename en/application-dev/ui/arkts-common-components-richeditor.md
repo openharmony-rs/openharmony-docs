@@ -1,4 +1,4 @@
-# Rich Text Editing (RichEditor)
+# Rich Text Editor (RichEditor)
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->

@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=54563f4d762a79828d807de44c3263058eb36558 translatedAt=2026-10-30T03:44:02.348Z pushedAt=2026-10-30T07:23:17.258Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:32:54.170Z pushedAt=2026-11-16T02:06:53.432Z nl=1 -->
 
 This topic uses AES and SM4 as an example to describe how to generate a symmetric key and obtain the binary data.
 
@@ -28,6 +28,7 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function testGenerateAesKey() {
     // Create a SymKeyGenerator instance.
@@ -38,6 +39,8 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
       // Obtain the binary data of the symmetric key and output a 256-bit key, which is of 32 bytes.
       let encodedKey = key.getEncoded();
       console.info('key hex: ' + encodedKey.data);
+    }).catch((error: BusinessError) => {
+      console.error(`testGenerateAesKey failed: errCode: ${error.code}, message: ${error.message}`);
     });
   }
   ```
@@ -48,15 +51,21 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function testSyncGenerateAesKey() {
-    // Create a SymKeyGenerator instance.
-    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-    // Use SymKeyGenerator to randomly generate a symmetric key.
-    let symKey = symKeyGenerator.generateSymKeySync();
-    // Obtain the binary data of the symmetric key and output a 256-bit key, which is of 32 bytes.
-    let encodedKey = symKey.getEncoded();
-    console.info('key hex: ' + encodedKey.data);
+    try {
+      // Create a SymKeyGenerator instance.
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+      // Use the key generator to generate a symmetric key randomly.
+      let symKey = symKeyGenerator.generateSymKeySync();
+      // Obtain the binary data of the symmetric key, and output a 256-bit key with a length of 32 bytes.
+      let encodedKey = symKey.getEncoded();
+      console.info('key hex: ' + encodedKey.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`testSyncGenerateAesKey failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 
@@ -79,6 +88,7 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function testGenerateSM4Key() {
     // Create a SymKeyGenerator instance.
@@ -89,6 +99,8 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
       // Obtain the binary data of the symmetric key and output a 128-bit byte stream, which is of 16 bytes.
       let encodedKey = key.getEncoded();
       console.info('key hex: ' + encodedKey.data);
+    }).catch((error: BusinessError) => {
+      console.error(`testGenerateSM4Key failed: errCode: ${error.code}, message: ${error.message}`);
     });
   }
   ```
@@ -99,15 +111,21 @@ For the corresponding algorithm specifications, see [Symmetric Key Generation an
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function testSyncGenerateSm4Key() {
-    // Create a SymKeyGenerator instance.
-    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('SM4_128');
-    // Use SymKeyGenerator to randomly generate a symmetric key.
-    let symKey = symKeyGenerator.generateSymKeySync();
-    // Obtain the binary data of the symmetric key and output a 128-bit byte stream, which is of 16 bytes.
-    let encodedKey = symKey.getEncoded();
-    console.info('key hex: ' + encodedKey.data);
+    try {
+      // Create a SymKeyGenerator instance.
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('SM4_128');
+      // Use the key generator to generate a symmetric key randomly.
+      let symKey = symKeyGenerator.generateSymKeySync();
+      // Obtain the binary data of the symmetric key, output a 128-bit byte stream. The length is 16 bytes.
+      let encodedKey = symKey.getEncoded();
+      console.info('key hex: ' + encodedKey.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`testSyncGenerateSm4Key failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 

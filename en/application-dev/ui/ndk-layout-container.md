@@ -6,7 +6,7 @@
 <!--Designer: @camlostshi-->
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=087470085268b4c7968360a1498b1da15f27d467 translatedAt=2026-07-06T13:07:18.465Z pushedAt=2026-07-09T11:31:54.115Z -->
+<!-- md-trans-meta sourceCommit=36e7207cad20c4ef453cb5bda48f835acde97674 translatedAt=2026-11-12T04:25:59.448Z pushedAt=2026-11-13T09:26:21.455Z nl=1 -->
 
 Starting from API version 12, ArkUI provides node types and attribute setting APIs in the NDK for common layout components: [Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md), [Row](../reference/apis-arkui/arkui-ts/ts-container-row.md), [Column](../reference/apis-arkui/arkui-ts/ts-container-column.md), and [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md). **Flex** is used for flex layout, **Row** and **Column** for linear layout, and **Stack** for stacked layout. For the corresponding node types and attribute setting enums, refer to [ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype).
 
@@ -42,7 +42,7 @@ public:
 };
 ```
 
-After the node is created, a Flex component with a preset style is constructed using the pre-implemented common attributes and the SetFlexOption implemented above. The following code shows how to set the container to arrange child components in rows, automatically wrap when child components exceed the width, and start layout from the beginning of each row by default.
+After the node is created, a Flex component with a preset style is constructed using the pre-implemented universal attributes and the SetFlexOption implemented above. The following code shows how to set the container to arrange child components in rows, automatically wrap when child components exceed the width, and start layout from the beginning of each row by default.
 
 <!-- @[flex_container_helper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKFlexSample/entry/src/main/cpp/FlexLayoutExample.h) -->
 

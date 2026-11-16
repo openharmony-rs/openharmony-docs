@@ -5,6 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-11-12T04:12:20.616Z pushedAt=2026-11-13T09:12:01.304Z nl=1 -->
 
 ## Application Lifecycle
 
@@ -27,7 +28,7 @@ You can define the following page lifecycle functions in the **.js** file of the
 | onInit | ()&nbsp;=&gt;&nbsp;void | Listens for page initialization.| Page initialization is complete. This function is called only once in the page lifecycle.|
 | onReady | ()&nbsp;=&gt;&nbsp;void | Listens for page creation.| A page is created. This function is called only once in the page lifecycle.|
 | onShow | ()&nbsp;=&gt;&nbsp;void | Listens for page display.| The page is displayed.|
-| onHide | ()&nbsp;=&gt;&nbsp;void | Listens for page hiding.| The page is hidden.|
+| onHide | ()&nbsp;=&gt;&nbsp;void | Page hide | Triggered when the page is hidden. |
 | onDestroy | ()&nbsp;=&gt;&nbsp;void | Listens for page destruction.| The page is destroyed.|
 | onBackPress | ()&nbsp;=&gt;&nbsp;boolean | Listens for the back button action.| The back button is touched.<br>- **true**: The page handles the return logic itself.<br>- **false**: The default return logic is used.<br>- No value: The default return logic is used.|
 | onActive()<sup>5+</sup> | ()&nbsp;=&gt;&nbsp;void | Listens for page activation.| The page is activated.|
