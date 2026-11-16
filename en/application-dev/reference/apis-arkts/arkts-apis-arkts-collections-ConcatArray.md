@@ -1,11 +1,13 @@
 # Interface (ConcatArray)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
-An array-like object that can be concatenated. This API extends **ISendable**.
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=71db7138e2704708b0a19c70a4e677ab1c2014cd translatedAt=2026-11-06T08:21:22.374Z pushedAt=2026-11-12T13:59:03.219Z nl=2 -->
+
+This interface defines an object that supports array concatenation operations and inherits the `ISendable` interface, giving it both efficient array concatenation and cross-thread transfer capabilities.
 
 > **NOTE**
 >
@@ -55,17 +57,16 @@ Returns the element at a given index in this ConcatArray.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                            |
 | ------- | ------------------------------------ |
-| 401 |  Parameter error. Illegal index.         |
 | 10200001 | The value of index is out of range. |
 
 **Example**
 
 ```ts
-let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 4);
+let concatArray: collections.ConcatArray<number> = new collections.Array<number>(1, 2, 4);
 console.info("Element at index 1: ", concatArray[1]);
 ```
 
@@ -91,18 +92,10 @@ Concatenates all elements in this array into a string, with a given separator.
 | ------ | ------------------------------------------------------------ |
 | string | String obtained. If the array is empty, an empty string is returned.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| ------- | -------- |
-| 401 |  Parameter error. Invalid separator. |
-
 **Example**
 
 ```ts
-let concatArray : collections.ConcatArray<string> = new collections.Array<string>('a', 'b', 'c');
+let concatArray: collections.ConcatArray<string> = new collections.Array<string>('a', 'b', 'c');
 let joinedString = concatArray.join('-'); // "a-b-c" is returned.
 ```
 
@@ -119,8 +112,8 @@ Selects a range of elements in this array to create an array.
 **Parameters**
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| start  | number | No  | Start index of the range. If a negative number is passed in, it refers to the index of `start + array.length`. The default value is **0**.  |
-| end    | number | No  | End index of the range (exclusive). If a negative number is passed in, it refers to the index of `end + array.length`. The default value is the length of the ArkTS array.|
+| start  | number | No   | Start index. If `start < 0`, it starts from the position `start + ConcatArray.length`. The default value is 0.   |
+| end    | number | No   | End index (excluding the element at this index). If `end < 0`, it ends at the position `end + ConcatArray.length`. The default value is the length of the ArkTS ConcatArray. |
 
 **Return value**
 
@@ -128,17 +121,9 @@ Selects a range of elements in this array to create an array.
 | --------- | -------------------------- |
 | ConcatArray\<T> | New array containing the selected elements.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| ------- | -------- |
-| 401 |  Parameter error. Invalid \`start\` or \`end\` parameters. |
-
 **Example**
 
 ```ts
-let concatArray : collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);
-let slicedArray = concatArray.slice (1, 3); // [2, 3] is returned. The original array remains unchanged.
+let concatArray: collections.ConcatArray<number> = new collections.Array<number>(1, 2, 3, 4, 5);
+let slicedArray = concatArray.slice(1, 3); // Returns [2, 3], the original ConcatArray remains unchanged
 ```

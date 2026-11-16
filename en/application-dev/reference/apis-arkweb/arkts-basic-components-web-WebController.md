@@ -1,12 +1,11 @@
 # Class (WebController)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-07T04:39:30.026Z pushedAt=2026-08-12T04:09:03.919Z -->
+<!-- md-trans-meta sourceCommit=50fa8924684469a617d1457712cc6a349e4caea4 translatedAt=2026-11-06T11:28:47.890Z pushedAt=2026-11-13T09:07:40.619Z nl=1 -->
 
 WebController is the controller class of the ArkWeb component, used to control various behaviors of the Web component. A WebController object can be bound to only one Web component. After binding, developers can use the controller to perform operations on the Web component, such as page navigation (forward/backward/loading), focus control, zoom adjustment, page refresh and stop, cookie management, and JavaScript injection and execution.
 
@@ -14,18 +13,17 @@ WebController is suitable for scenarios where active control of the embedded Web
 
 > **NOTE**
 >
-> - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The initial APIs of this class are supported since API version 8.
+> - This class is supported since API version 8.
 >
-> - This component is deprecated since API version 9. You are advised to use [WebviewController](./arkts-apis-webview-WebviewController.md) instead.
+> - This component is deprecated since API version 9. You are recommended to use [WebviewController](./arkts-apis-webview-WebviewController.md) instead.
 >
 > - The sample effects are subject to the actual running on a real device.
 
 ## Creating an Object
 
 <!--deprecated_code_no_check-->
-
 ```ts
 let webController: WebController = new WebController()
 ```
@@ -564,7 +562,7 @@ Sets a zoom factor for the current web page.
 
 | Name   | Type  | Mandatory  | Description                          |
 | ------ | ------ | ---- | ------------------------------ |
-| factor | number | Yes | Zoom factor. The value **1** indicates that the current zoom ratio remains unchanged. A value less than **1** indicates zooming out, and a value greater than **1** indicates zooming in. The value ranges from (0, 100]. |
+| factor | number | Yes | Zoom factor. 1 means restoring the default zoom ratio of the loaded web page; less than 1 means zooming out, and greater than 1 means zooming in. Value range: (0, 100]. |
 
 **Example**
 
@@ -681,8 +679,7 @@ Injects a JavaScript object into the window object and calls the methods of the 
   }
   ```
 
-Loaded HTML file.
-
+  Loaded HTML file.
   ```html
   <!-- index.html -->
   <!DOCTYPE html>
@@ -751,9 +748,7 @@ Executes a JavaScript script. This API uses an asynchronous callback to return t
     }
   }
   ```
-
-Loaded HTML file.
-
+  Loaded HTML file.
   ```html
   <!-- index.html -->
   <!DOCTYPE html>

@@ -1,11 +1,11 @@
 # Hover Effect
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-09-01T12:40:02.135Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:22:46.940Z pushedAt=2026-11-13T01:06:00.104Z nl=1 -->
 
 Sets the mouse hover display effect of a component. It supports multiple hover effect types such as scaling, fade-in/fade-out, and the system default, providing visual feedback when the mouse pointer hovers over a component to help users identify the current interaction area and improve the UI interaction experience.
 

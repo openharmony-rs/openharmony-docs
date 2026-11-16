@@ -1,11 +1,11 @@
 # Bound Gesture Configuration
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=828befee530895124aaf1637c9402999a598c883 translatedAt=2026-09-01T11:58:05.497Z -->
+<!-- md-trans-meta sourceCommit=22f08c7b2a38a36648571dd50b7fc7eb8ad585b6 translatedAt=2026-11-03T03:12:53.713Z pushedAt=2026-11-13T01:06:00.068Z nl=1 -->
 
 Used to set the gestures bound to a component. You can use the UIGestureEvent object to dynamically add, remove, or clear gestures on a component, configure gesture priority and event response settings, and set parallel gestures that can be triggered simultaneously with child component gestures. This is suitable for scenarios where component gesture interactions are managed at runtime.
 
@@ -15,7 +15,7 @@ Used to set the gestures bound to a component. You can use the UIGestureEvent ob
 >
 > - The APIs of this module can be used only in the stage model.
 >
-> - In the **fingerList** of [GestureEvent](ts-gesture-common.md#gestureevent), the finger index corresponds to the position, that is, the id of fingerList[index] is index. For a finger that is pressed first but does not participate in triggering the current gesture, the corresponding position in **fingerList** is empty. It is recommended that you use **fingerInfos** preferentially.
+> - In the **fingerList** of [GestureEvent](ts-gesture-common.md#gestureevent), the finger index numbers correspond to their positions, that is, the id of fingerList[index] is index. For a finger that is pressed down first but does not participate in triggering the current gesture, the corresponding position in **fingerList** is **undefined**. It is recommended that you use **fingerInfos** preferentially.
 
 ## UIGestureEvent
 
@@ -60,7 +60,7 @@ Adds a gesture that can be recognized at once by the component and its child com
 
 removeGestureByTag(tag: string): void
 
-Removes the gesture with the specified tag that is bound to this component through modifier. This is suitable for scenarios where a tagged gesture is canceled when the component interaction mode is switched or the service state changes.
+Removes the gesture that is bound through **modifier** and has the specified tag from this component. This applies to scenarios where a marked gesture needs to be canceled when the component interaction mode is switched or the service state changes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

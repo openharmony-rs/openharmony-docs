@@ -1,12 +1,11 @@
 # Class (VerifyPinHandler)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-07T04:48:50.825Z pushedAt=2026-08-07T08:12:36.231Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:26:04.204Z pushedAt=2026-11-13T09:05:17.705Z nl=1 -->
 
 VerifyPinHandler is a class in the Web component that handles PIN code verification requests. It is used to enhance app security in scenarios requiring identity authentication on web pages (such as secure payment, sensitive operation confirmation, etc.). When user PIN authentication is required, this handler is provided to the app through the onVerifyPin event callback, allowing the app to respond to the PIN verification result, effectively preventing unauthorized access and protecting user privacy. For sample code, see [onVerifyPin](./arkts-basic-components-web-events.md#onverifypin22).
 
@@ -14,7 +13,7 @@ VerifyPinHandler is a class in the Web component that handles PIN code verificat
 >
 > - This component is supported since API version 22. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The initial APIs of this class are supported since API version 22.
+> - This class is supported since API version 22.
 >
 > - The sample effect is subject to the actual device.
 

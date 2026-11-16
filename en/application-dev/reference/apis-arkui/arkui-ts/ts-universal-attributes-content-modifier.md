@@ -5,7 +5,7 @@
 <!--Designer: @liyi0309; @weixin_52725220-->
 <!--Tester: @lxl007; @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=2e4d13ff9e1ae9bb430b232821e0c1f92e4b358a translatedAt=2026-09-01T12:19:34.846Z -->
+<!-- md-trans-meta sourceCommit=b8324c027658771f98ef8b737ea8f258c193c8ff translatedAt=2026-11-03T03:17:20.293Z pushedAt=2026-11-13T01:06:00.084Z nl=1 -->
 
 You can apply a content modifier to a component to customize its content area using a style builder.
 
@@ -29,7 +29,7 @@ Builder of the custom content area.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
+**Return value** 
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -37,11 +37,11 @@ Builder of the custom content area.
 
 **Value range of the T parameter:**
 
-ButtonConfiguration, CheckBoxConfiguration, DataPanelConfiguration, TextClockConfiguration, ToggleConfiguration, GaugeConfiguration, LoadingProgressConfiguration, RadioConfiguration, ProgressConfiguration, RatingConfiguration, SliderConfiguration
+[ButtonConfiguration](ts-basic-components-button.md#buttonconfiguration12), [CheckBoxConfiguration](ts-basic-components-checkbox.md#checkboxconfiguration12), [DataPanelConfiguration](ts-basic-components-datapanel.md#datapanelconfiguration12), [TextClockConfiguration](ts-basic-components-textclock.md#textclockconfiguration12), [ToggleConfiguration](ts-basic-components-toggle.md#toggleconfiguration12), [GaugeConfiguration](ts-basic-components-gauge.md#gaugeconfiguration12), [LoadingProgressConfiguration](ts-basic-components-loadingprogress.md#loadingprogressconfiguration12), [RadioConfiguration](ts-basic-components-radio.md#radioconfiguration12), [ProgressConfiguration](ts-basic-components-progress.md#progressconfiguration12), [RatingConfiguration](ts-basic-components-rating.md#ratingconfiguration12), [SliderConfiguration](ts-basic-components-slider.md#sliderconfiguration12)
 
 **Supported attributes**
 
-The universal attributes **enabled** and **contentModifier** are supported.
+Supports the universal attribute [enabled](ts-universal-attributes-enable.md#enabled) and [contentModifier](#contentmodifiert).
 ## CommonConfiguration\<T>
 
 You need a custom class to implement the **ContentModifier** API.

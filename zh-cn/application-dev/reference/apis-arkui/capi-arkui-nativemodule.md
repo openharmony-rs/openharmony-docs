@@ -31,6 +31,7 @@
 | 名称 | 描述 |
 | -- | -- |
 | [common_attributes.h](capi-common-attributes-h.md) | 提供NativeModule通用属性和事件的类型定义。 |
+| [common_type.h](capi-common-type-h.md) | 定义ArkUI Native API的公共类型。 |
 | [embedded_component.h](capi-embedded-component-h.md) | EmbeddedComponent组件相关的结构体和方法定义。 |
 | [image.h](capi-image-h.md) | 为NativeNode API提供Image节点类型定义。 |
 | [image_animator.h](capi-image-animator-h.md) | 为NativeNode API提供ImageAnimator节点类型定义。 |

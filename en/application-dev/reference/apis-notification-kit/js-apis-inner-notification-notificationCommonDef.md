@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:17:13.795Z pushedAt=2026-10-08T09:16:44.966Z -->
+<!-- md-trans-meta sourceCommit=734000d7541e45073c1418b7d3adb90d2d5defac translatedAt=2026-11-13T02:20:18.217Z pushedAt=2026-11-13T09:44:30.415Z nl=1 -->
 
 The **NotificationCommonDef** module defines the common data structures used in notification-related APIs.
 
@@ -33,7 +33,7 @@ Describes the authorized bundle information.
 | Name  | Type  | Read Only| Optional| Description  |
 | ------ | ------ | ----| -- |  ------ |
 | bundleName | string | No | No | Bundle name of the application. |
-| appIndex   | number | Yes | No | Index of an application clone, which takes effect only for application clones. The value is obtained from the **appIndex** of [ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1). |
+| appIndex   | number | No  | No | Index of an application clone, which takes effect only for application clones. The value is obtained from the **appIndex** of [ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1). |
 | appName    | string | Yes | Yes | Application name, which is obtained from the **label** of [ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1). |
 
 ## UserGrantSetting

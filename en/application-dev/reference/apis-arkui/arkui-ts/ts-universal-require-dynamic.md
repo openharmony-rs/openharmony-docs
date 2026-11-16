@@ -1,4 +1,4 @@
-# \@Require Decorator: Validating Constructor Input Parameters
+# @Require Decorator: Validating Constructor Input Parameters
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
@@ -6,6 +6,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=2495040792c8da8de232a60f3eafa9d33ca50fa6 translatedAt=2026-11-03T03:57:45.773Z pushedAt=2026-11-13T01:06:00.176Z nl=1 -->
 
 The **\@Require** decorator validates whether [\@Prop](../../../ui/state-management/arkts-prop.md), [\@State](../../../ui/state-management/arkts-state.md), [\@Provide](../../../ui/state-management/arkts-provide-and-consume.md), [\@BuilderParam](../../../ui/state-management/arkts-builderparam.md), [\@Param](../../../ui/state-management/arkts-new-param.md), and regular variables (variables not decorated by any state decorator) require constructor input parameters. When a variable is decorated with **\@Require**, the parent component must pass the corresponding parameter when constructing the child component. Otherwise, a compile-time error is reported, thereby preventing runtime exceptions caused by missing parameters. This decorator is suitable for scenarios where mandatory parameters of a custom component must be properly initialized.
 

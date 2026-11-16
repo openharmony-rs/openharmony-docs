@@ -1,12 +1,11 @@
 # Interface (AuxiliaryPicture)
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=a569cef255f0bfd2be482f42d11f341117248869 translatedAt=2026-08-03T03:54:57.890Z pushedAt=2026-08-04T03:36:08.540Z -->
+<!-- md-trans-meta sourceCommit=b6010258b176a9b8b14d351931adaa2bb27bf1e5 translatedAt=2026-11-06T01:45:27.270Z pushedAt=2026-11-11T06:14:04.152Z nl=1 -->
 
 The **AuxiliaryPicture** class is used to read or write auxiliary picture data of an image and obtain auxiliary picture information of an image. The supported types of auxiliary pictures can be found in [AuxiliaryPictureType](arkts-apis-image-e.md#auxiliarypicturetype13).
 
@@ -323,6 +322,54 @@ async function SetAuxiliaryPictureInfo(auxPictureObj: image.AuxiliaryPicture) {
       colorSpace: colorSpaceManager.create(colorSpaceName),
     };
     auxPictureObj.setAuxiliaryPictureInfo(info);
+  }
+}
+```
+
+## acquirePixelmap
+
+acquirePixelmap(): PixelMap | null
+
+Obtains the pixel map of the auxiliary picture. The returned pixel map shares the same underlying memory with the auxiliary picture, and no pixel copy occurs during the acquisition.
+
+The lifecycle of the returned pixel map is independent of the **AuxiliaryPicture** object. After using the pixel map, call the release method of the pixel map to release it in a timely manner.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+**Return value**
+
+| Type | Description |
+| ---- | ---- |
+| [PixelMap](arkts-apis-image-PixelMap.md) \| null | Pixel map object obtained. Null is returned if the auxiliary picture does not contain pixel map data. |
+
+**Example**
+
+```ts
+async function AcquirePixelmap(context: Context) {
+  const resourceMgr = context.resourceManager;
+  // An HDR picture containing a gainmap is required.
+  const rawFile = await resourceMgr.getRawFileContent("picture.jpg");
+  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer);
+  // Decode using createPicture.
+  let pictureObj: image.Picture = await imageSource.createPicture();
+  // Obtain the gainmap auxiliary picture.
+  let auxPictureObj: image.AuxiliaryPicture | null =
+    pictureObj.getAuxiliaryPicture(image.AuxiliaryPictureType.GAINMAP);
+  if (auxPictureObj != null) {
+    let auxPixelmap: image.PixelMap | null = auxPictureObj.acquirePixelmap();
+    if (auxPixelmap != null) {
+      console.info('Succeeded in acquiring pixelmap.');
+      // Release the pixel map separately after use.
+      auxPixelmap.release();
+    } else {
+      console.error('Auxiliary picture contains no pixelmap.');
+    }
+  } else {
+    console.error('AuxPictureObj is null.');
   }
 }
 ```

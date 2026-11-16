@@ -1,12 +1,11 @@
 # GridContainer
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu; @zju_ljz-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-08-21T02:23:31.734Z pushedAt=2026-08-21T08:32:41.938Z -->
+<!-- md-trans-meta sourceCommit=36e7207cad20c4ef453cb5bda48f835acde97674 translatedAt=2026-11-03T02:01:58.147Z pushedAt=2026-11-13T01:05:59.939Z nl=1 -->
 
 A vertical grid layout container, used only in grid layout scenarios. The grid layout implements responsive layout by dividing the container width into a specified number of columns, allowing child components to occupy different numbers of columns and offsets. It is suitable for responsive page layouts, multi-column content display, dashboard layouts, and other scenarios.
 
@@ -15,6 +14,7 @@ A vertical grid layout container, used only in grid layout scenarios. The grid l
 >  This component is deprecated since API version 9. You are advised to use the new components [GridCol](ts-container-gridcol.md) and [GridRow](ts-container-gridrow.md) instead.
 >
 >  This component is supported since API version 7. New APIs added in later versions are marked with superscripts to indicate their starting version.
+
 
 ## Child Components
 
@@ -42,7 +42,7 @@ Creates a vertical grid layout container.
 
 ## GridContainerOptions<sup>(deprecated)</sup>
 
-Defines the grid layout container configuration parameter object, used to set the number of columns, device width type, gutter, and margin for the **GridContainer** component.
+Defines the grid layout container configuration parameter object, which is used to set the number of columns, device width type, gutter, and margin for the **GridContainer** component.
 
 >  **NOTE**
 >
@@ -75,9 +75,11 @@ Enumerates device width types, used to distinguish device types of different wid
 | LG | Device with large width. Width ≥ 840 vp. |
 | Auto | Automatically matches the appropriate size type based on the device width. |
 
+
 ## Attributes
 
 The [universal attributes](ts-component-general-attributes.md) and attributes of the [Column](ts-container-column.md#attributes) component are supported.
+
 
 ## Events
 

@@ -108,8 +108,8 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 | 名称                         | 值   | 说明         |
 | ----------------------------|-----|------------|
-| PRE_INSTALLED<sup>12+</sup> | 0   | 预安装铃声类型。 |
-| CUSTOMIZED<sup>12+</sup>    | 1   | 自定义铃声类型。 |
+| PRE_INSTALLED<sup> | 0   | 预安装铃声类型。 |
+| CUSTOMIZED<sup>    | 1   | 自定义铃声类型。 |
 
 ## ToneAttrs<sup>12+</sup>
 

@@ -5,7 +5,7 @@
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=2ad5fc6234f7f269bb6601ed8aa7fb97b91184d8 translatedAt=2026-11-03T03:11:11.535Z pushedAt=2026-11-03T03:24:38.553Z nl=1 -->
+<!-- md-trans-meta sourceCommit=47c341fd96878f63302426cc10515b4a7384fa50 translatedAt=2026-11-12T04:45:23.014Z pushedAt=2026-11-12T08:31:53.975Z nl=1 -->
 
 The **Web** component can print HTML pages in two ways: through the W3C standard protocol API and through the app-side API.
 
@@ -19,7 +19,7 @@ Before using the print capability, declare related permissions in the **module.j
     ]
   ```
 
-## Initiating a Print Task Through the W3C Standards-compliant API
+## Initiating a Print Task Through the W3C Standards-Compliant API
 A print adapter is created to start the print app and render the current web page content. The PDF file information generated after rendering is passed to the print framework through a file descriptor (fd). The W3C standard protocol API `window.print()` is used to print the current page or pop up a print dialog box. This method takes no parameters and only needs to be called in JavaScript.
 
 You can use frontend CSS styles to control whether to print, for example, **@media print**. Then load the HTML page in the **Web** component.
@@ -27,8 +27,6 @@ You can use frontend CSS styles to control whether to print, for example, **@med
 - Sample code of the **print.html** page:
 
   Example 1:
-
-  <!-- @[w3c_print_html_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/resources/rawfile/print.html) -->
   
   ``` HTML
   <!DOCTYPE html>
@@ -82,8 +80,6 @@ You can use frontend CSS styles to control whether to print, for example, **@med
   ```
   
   Example 2 (nesting a page in an iframe):
-
-  <!-- @[w3c_print_html_iframe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/resources/rawfile/iframe.html) --> 
   
   ``` HTML
   <!DOCTYPE html>

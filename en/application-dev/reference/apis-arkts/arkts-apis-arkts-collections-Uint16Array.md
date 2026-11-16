@@ -1,11 +1,13 @@
 # Class (Uint16Array)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
-A linear data structure that is implemented on [ArkTS ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md).
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=71db7138e2704708b0a19c70a4e677ab1c2014cd translatedAt=2026-11-06T08:50:21.536Z pushedAt=2026-11-13T02:36:27.136Z nl=2 -->
+
+A linear data structure implemented based on [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md).
 
 > **NOTE**
 >
@@ -29,20 +31,20 @@ import { collections } from '@kit.ArkTS';
 
 | Name  | Type  | Read Only| Optional| Description             |
 | ------ | ------ | ---- | ---- | ----------------|
-| buffer | ArrayBuffer | Yes  | No | Bottom-layer buffer used by an ArkTS Uint16Array.|
-| byteLength | number | Yes  | No  | Number of bytes occupied by an ArkTS Uint16Array.|
-| byteOffset | number | Yes  | No  | Offset between the ArkTS Uint16Array and the start position of the ArrayBuffer.|
+| buffer | [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md) | Yes | No | The [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md) object used by the ArkTS Uint16Array as its underlying buffer. |
+| byteLength | number | Yes | No | The number of bytes occupied by the ArkTS Uint16Array. |
+| byteOffset | number | Yes | No | The byte offset of the ArkTS Uint16Array from the start of its ArrayBuffer. |
 | length | number | Yes  | No | Number of elements in an ArkTS Uint16Array.|
-| BYTES_PER_ELEMENT | number | Yes  | No  | Number of bytes occupied by each element in the ArkTS Uint16Array.|
+| BYTES_PER_ELEMENT | number | Yes | No | The number of bytes occupied by each element in the ArkTS Uint16Array. |
 
 ## constructor
 constructor()
 
 A constructor used to create an empty ArkTS Uint16Array.
 
-**System capability**: SystemCapability.Utils.Lang
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**System capability**: SystemCapability.Utils.Lang
 
 **Error codes**
 
@@ -71,15 +73,14 @@ A constructor used to create an ArkTS Uint16Array of a given length.
 
 | Name | Type  | Mandatory| Description                         |
 | ------- | ------ | ---- | --------------------------- |
-| length | number | Yes| Length of the ArkTS Uint16Array.|
+| length | number | Yes | Used to specify the length of the ArkTS Uint16Array, which must be a non-negative integer. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                                 |
 | -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
 | 10200012 | The Uint16Array's constructor cannot be directly invoked. |
 
 
@@ -103,15 +104,14 @@ A constructor that creates an ArkTS Uint16Array from an iterable object.
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| elements |  Iterable\<number> | Yes| An iterable collection of numbers used to construct an ArkTS Uint16Array object.|
+| elements |  Iterable\<number> | Yes | Iterable numeric collection used to create an ArkTS Uint16Array object. The value range of each element is 0 to 2^16-1, that is, 0 to 65535. If an element is out of this range, it is converted to a value in the range 0 to 65535 through a modulo operation (that is, the value & 0xFFFF operation is performed). |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                         |
 | 10200012 | The Uint16Array's constructor cannot be directly invoked. |
 
 **Example**
@@ -136,15 +136,14 @@ A constructor that creates an ArkTS Uint16Array from an array-like object or Ark
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| array |  ArrayLike\<number> \| ArrayBuffer | Yes| Object used to construct the ArkTS Uint16Array. When the parameter type is ArrayBuffer, the number of bytes occupied by the buffer must be an integer multiple of 4.|
+| array |  ArrayLike\<number> \| ArrayBuffer | Yes | Used to create an ArkTS Uint16Array object. When the parameter type is ArrayBuffer, the number of bytes occupied by the buffer must be a multiple of 2. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                         |
 | 10200012 | The Uint16Array's constructor cannot be directly invoked. |
 
 **Example**
@@ -183,33 +182,32 @@ A constructor that creates an ArkTS Uint16Array from an ArrayBuffer.
 
 | Name | Type  | Mandatory| Description                                        |
 | ------- | ------ | ---- | ------------------------------------------ |
-| buffer | ArrayBuffer | Yes| ArrayBuffer object used to construct the ArkTS Uint16Array. The number of bytes occupied by the buffer must be an integer multiple of 4.|
-| byteOffset | number | No| Byte offset of the buffer, beginning at 0. The default value is **0**.|
-| length | number | No| Length of the ArkTS Uint16Array. The default value is **0**.|
+| buffer | [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md) | Yes | The [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md) object used to create the ArkTS Uint16Array. The bytes occupied by the buffer must be a multiple of 2. |
+| byteOffset | number | No | Specifies the byte offset of the buffer, which must be a non-negative integer. The default value is 0. |
+| length | number | No | Specifies the length of the ArkTS Uint16Array, which must be a non-negative integer. The default value is 0, in which case it indicates all elements from byteOffset to the end of the buffer. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                                  |
 | -------- | -------------------------------------------------------   |
-| 401      | Parameter error.                                         |
 | 10200012 | The Uint16Array's constructor cannot be directly invoked. |
 
 **Example**
 
 ```ts
 let uint16Array: collections.Uint16Array = collections.Uint16Array.from([1, 2, 3, 4, 5, 6]);
-console.info("byteLength: " + uint16Array.buffer.byteLength); // byteLength: 12
-// Start from the second byte of the buffer corresponding to uint16Array. The length is 5.
+console.info(`byteLength: ${uint16Array.buffer.byteLength}`); // byteLength: 12
+// Start from the 3rd byte of the buffer corresponding to uint16Array, with a length of 5.
 let uint16Array1: collections.Uint16Array = new collections.Uint16Array(uint16Array.buffer, 2, 5);
-console.info("[" + uint16Array1 + "]"); // [2, 3, 4, 5, 6]
+console.info(`[${uint16Array1}]`); // [2, 3, 4, 5, 6]
 ```
 
 ## from
 static from(arrayLike: ArrayLike\<number>): Uint16Array
 
-Creates an ArkTS Uint16Array from an array-like or iterator object.
+Creates an ArkTS Uint16Array object from an ArrayLike.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -226,14 +224,6 @@ Creates an ArkTS Uint16Array from an array-like or iterator object.
 | Type        | Description     |
 | ------------ | --------- |
 | Uint16Array | New ArkTS Uint16Array generated.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
-
-| ID| Error Message                                                 |
-| -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
 
 **Example**
 ```ts
@@ -253,22 +243,14 @@ Creates an ArkTS Uint16Array from an array-like object.
 **Parameters**
 | Name | Type  | Mandatory| Description                                       |
 | ------- | ------ | ---- | ------------------------------------------|
-| arrayLike | ArrayLike\<T> | Yes| Array-like object used to construct the ArkTS Uint16Array.             |
-| mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<T, number> | Yes| Mapping function.|
+| arrayLike | ArrayLike\<T> | Yes | ArrayLike object used to create an ArkTS Uint16Array.              |
+| mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<T, number> | Yes | Mapping function that maps each element of type T in the ArrayLike to the number type. The mapping result is used to create the corresponding element of the ArkTS Uint16Array.|
 
 **Return value**
 
 | Type        | Description     |
 | ------------ | --------- |
 | Uint16Array | New ArkTS Uint16Array generated.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                                 |
-| -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
 
 **Example**
 
@@ -305,22 +287,14 @@ Creates an ArkTS Uint16Array from an iterator object.
 **Parameters**
 | Name | Type  | Mandatory| Description                               |
 | ------- | ------ | ---- | -----------------------------------|
-| arrayLike | Iterable\<number> | Yes| Iterator object used to construct the ArkTS Uint16Array.  |
-| mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<number, number> | No| Mapping function. If no value is passed in, no special processing is conducted on the elements.|
+| arrayLike | Iterable\<number> | Yes | Iterable object used to create an ArkTS Uint16Array. |
+| mapFn | [TypedArrayFromMapFn](arkts-apis-arkts-collections-Types.md#typedarrayfrommapfn)\<number, number> | No | Mapping function. If omitted, the elements are not mapped and the original element values are used directly. |
 
 **Return value**
 
 | Type        | Description     |
 | ------------ | --------- |
 | Uint16Array | New ArkTS Uint16Array generated.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                                                 |
-| -------- | -------------------------------------------------------  |
-| 401      | Parameter error.                                         |
 
 **Example**
 
@@ -343,7 +317,7 @@ let array: collections.Uint16Array = collections.Uint16Array.from(
 
 static of(...items: number[]): Uint16Array
 
-Creates an ArkTS Uint16Array with a variable number of parameters.
+Creates a new ArkTS Uint16Array object from a variable number of arguments.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -359,15 +333,7 @@ Creates an ArkTS Uint16Array with a variable number of parameters.
 
 | Type     | Description                   |
 | --------- | ----------------------- |
-| Uint16Array | New ArkTS Uint16Array instance.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                        |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
+| Uint16Array | New ArkTS Uint16Array object. |
 
 **Example**
 
@@ -394,7 +360,7 @@ Converts an ArkTS Uint16Array into a string.
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID   | Error Message                                |
 | -------- | ------------------------------------ |
@@ -413,7 +379,7 @@ console.info(stringArray); // Expected output: 1,2,3,4,5
 
 toLocaleString(): string
 
-Generates a string of digits that matches the cultural conventions of the current system locale. Each element converts its digits to a string via its **toLocaleString** API, and these strings are then joined in sequence with commas (,).
+Obtains the numeric representation that conforms to the current cultural conventions based on the system locale of the current application, calls the toLocaleString method on each element to convert the number to a string, and then concatenates the resulting strings of each element in order using commas.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -427,7 +393,7 @@ Generates a string of digits that matches the cultural conventions of the curren
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID   | Error Message                                      |
 | -------- | ------------------------------------------ |
@@ -456,23 +422,22 @@ Copies elements within a given range from this ArkTS Uint16Array to another posi
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| target | number | Yes| Start index of the range. If a negative number is passed in, it refers to the index of `target + array.length`.|
+| target | number | Yes | Subscript of the target start position. If `target < 0`, it starts from `target + Uint16Array.length`. |
 | start | number | Yes| Start index of the range. If a negative number is passed in, it refers to the index of `start + Uint16Array.length`.|
-| end | number | No| End index of the range (exclusive). If a negative number is passed in, it refers to the index of `end + Uint16Array.length`. The default value is the length of the ArkTS Uint16Array.|
+| end | number | No | Subscript of the source end position (excluding the element at the end position). If `end < 0`, it ends at `end + Uint16Array.length`. The default value is the length of the ArkTS Uint16Array. |
 
 **Return value**
 
 | Type        | Description     |
 | ------------ | --------- |
-| Uint16Array | ArkTS Uint16Array after being modified.|
+| Uint16Array | The modified ArkTS Uint16Array. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error.                                 |
 | 10200011 | The copyWithin method cannot be bound.           |
 | 10200201 | Concurrent modification error.               |
 
@@ -487,7 +452,7 @@ let copied: collections.Uint16Array = array.copyWithin(3, 1, 3);
 ## some
 some(predicate: TypedArrayPredicateFn\<number, Uint16Array>): boolean
 
-Checks whether any element in this ArkTS Uint16Array meets a given condition.
+Tests whether an element that meets the specified condition exists in the ArkTS Uint16Array.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -507,11 +472,10 @@ Checks whether any element in this ArkTS Uint16Array meets a given condition.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                           |
 | -------- | ---------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The some method cannot be bound.   |
 | 10200201 | Concurrent modification error. |
 
@@ -546,11 +510,10 @@ Checks whether all elements in this ArkTS Uint16Array meet a given condition.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                  |
 | 10200011 | The every method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -575,7 +538,7 @@ Fills all elements in a given range in this ArkTS Uint16Array with a value.
 
 | Name | Type  | Mandatory| Description                                                     |
 | ------- | ------ | ---- | --------------------------------------------------------|
-| value | number | Yes| Value to fill in.|
+| value | number | Yes | Value to be filled. The value range is 0 to 2^16-1, that is, 0 to 65535. If an element is out of this range, the element is converted to a value in the range of 0 to 65535 through a modulo operation (that is, the value & 0xFFFF operation is performed). |
 | start | number | No| Start index of the range. If a negative number is passed in, it refers to the index of `start + Uint16Array.length`. The default value is **0**.|
 | end | number | No| End index of the range (exclusive). If a negative number is passed in, it refers to the index of `end + Uint16Array.length`. The default value is the length of the ArkTS Uint16Array.|
 
@@ -583,15 +546,14 @@ Fills all elements in a given range in this ArkTS Uint16Array with a value.
 
 | Type        | Description     |
 | ------------ | --------- |
-| Uint16Array | Filled ArkTS Uint16Array.|
+| Uint16Array | The filled ArkTS Uint16Array. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The fill method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -627,11 +589,10 @@ Returns a new ArkTS Uint16Array that contains all elements that meet the given c
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The filter method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -666,11 +627,10 @@ Returns the value of the first element that passes a test provided by a callback
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The find method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -705,11 +665,10 @@ Returns the index of the first element that passes a test provided by a callback
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                      |
 | 10200011 | The findIndex method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -738,11 +697,10 @@ Calls a callback function for each element in this ArkTS Uint16Array.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The forEach method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -769,21 +727,20 @@ Returns the index of the first occurrence of a value in this ArkTS Uint16Array. 
 | Name       | Type  | Mandatory| Description                       |
 | ------------- | ------ | ---- | ---------------------------|
 | searchElement | number | Yes  | Value to search for.               |
-| fromIndex     | number | No  | Index from which the search starts. The default value is **0**. If the index is greater than or equal to the length of the ArkTS Uint16Array, **-1** is returned. If a negative number is passed in, the search starts from the end of the ArkTS Uint16Array.|
+| fromIndex     | number | No   | Start index for the search. The default value is 0. If the index is greater than or equal to the length of the ArkTS Uint16Array, -1 is returned. If the index is negative, it is treated as an offset from the end of the array, searching from front to back. |
 
 **Return value**
 
 | Type        | Description     |
 | ------------ | --------- |
-| number | Index of the first occurrence of the value. If the value is not found, **-1** is returned.|
+| number | The first index of the given element in the ArkTS Uint16Array; returns -1 if not found. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The indexOf method cannot be bound. |
 | 10200201 | Concurrent modification error.                |
 
@@ -801,7 +758,7 @@ array.indexOf(9, -2); // 2
 
 lastIndexOf(searchElement: number, fromIndex?: number): number
 
-Obtains the index of the last occurrence of the specified value in this ArkTS Uint16Array.
+Returns the index of the last occurrence of searchElement in the ArkTS Uint16Array instance, or -1 if the element is not contained.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -812,13 +769,13 @@ Obtains the index of the last occurrence of the specified value in this ArkTS Ui
 | Name          | Type    | Mandatory | Description                                                                               |
 | ------------- | ------ | --- | --------------------------------------------------------------------------------- |
 | searchElement | number | Yes  | Value to search for.                                                                           |
-| fromIndex     | number | No  | Index from which the search starts. The default value is **0**. If the index is greater than or equal to the length of the ArkTS Uint16Array, **-1** is returned. If a negative number is passed in, the search starts from the end of the ArkTS Uint16Array.|
+| fromIndex     | number | No   | Start index for the search, searching backward from this position. The default value is the length of the ArkTS Uint16Array minus 1 (that is, starting from the end). If the provided index value is negative, it is treated as an offset from the end of the array, searching from back to front. |
 
 **Return value**
 
 | Type    | Description                     |
 | ------ | ----------------------- |
-| number | Index of the last occurrence of the value. If the value is not found, **-1** is returned.|
+| number | The last index of the given element in the ArkTS Uint16Array; returns -1 if not found. |
 
 **Error codes**
 
@@ -862,11 +819,10 @@ Concatenates all elements in this ArkTS Uint16Array into a string, with a given 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The join method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -889,7 +845,7 @@ Applies a callback function to each element in this ArkTS Uint16Array and uses t
 **Parameters**
 | Name   | Type  | Mandatory| Description                                                |
 | --------- | ------ | ---- | ---------------------------------------------------- |
-| callbackFn | [TypedArrayMapCallback](arkts-apis-arkts-collections-Types.md#typedarraymapcallback)\<number, Uint16Array> | Yes | Callback function to run for each element.|
+| callbackFn | [TypedArrayMapCallback](arkts-apis-arkts-collections-Types.md#typedarraymapcallback)\<number, Uint16Array> | Yes | Callback function used to transform each element, whose return values sequentially form the corresponding elements of the new ArkTS Uint16Array. |
 
 
 **Return value**
@@ -900,11 +856,10 @@ Applies a callback function to each element in this ArkTS Uint16Array and uses t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                |
 | 10200011 | The map method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -912,7 +867,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let array: collections.Uint16Array = collections.Uint16Array.from([25, 36, 49]);
-const mapped: collections.Uint16Array = array.map(Math.sqrt); // Uint16Array [5, 6 ,7]
+const mapped: collections.Uint16Array = array.map(Math.sqrt); // Uint16Array [5, 6, 7]
 ```
 
 ## reduce
@@ -937,11 +892,10 @@ Applies a reduce function on each element in this ArkTS Uint16Array and returns 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID|                      Error Message                    |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error.                                 |
 | 10200011 | The reduce method cannot be bound.               |
 | 10200201 | Concurrent modification error.               |
 
@@ -957,7 +911,7 @@ let reducedValue: number = array.reduce((accumulator: number, value: number) => 
 
 reduceRight(callbackFn: TypedArrayReduceCallback\<number, number, Uint16Array>): number
 
-Reversely traverses this ArkTS Uint16Array, applies a reduce function on each element in the array, and returns the final reduction result.
+Traverses the ArkTS Uint16Array in reverse order, executes the reduction function on each element, and returns the final reduction result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -976,11 +930,10 @@ Reversely traverses this ArkTS Uint16Array, applies a reduce function on each el
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID   | Error Message                                   |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -995,7 +948,7 @@ console.info(reducedValue + ''); // Expected output: 15
 ## reduce
 reduce(callbackFn: TypedArrayReduceCallback\<number, number, Uint16Array>, initialValue: number): number
 
-Applies a reduce function for each element in this ArkTS Uint16Array, receives an initial value as the parameter called by the reduce function for the first time, and returns the final reduction result.
+Executes the reduction function on each element in the ArkTS Uint16Array, receives the initial value as the first call argument, and returns the final reduction result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1016,11 +969,10 @@ Applies a reduce function for each element in this ArkTS Uint16Array, receives a
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The reduce method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -1036,7 +988,7 @@ let reducedValue: number = array.reduce((accumulator: number, value: number) => 
 
 reduceRight\<U = number>(callbackFn: TypedArrayReduceCallback\<U, number, Uint16Array>, initialValue: U): U
 
-Reversely traverses this ArkTS Uint16Array, applies a reduce function for each element in the array, receives an initial value as the parameter called by the reduce function for the first time, and returns the final reduction result.
+Traverses the ArkTS Uint16Array in reverse order, executes the reduction function on each element, receives the initial value as the first call argument, and returns the final reduction result.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1056,11 +1008,10 @@ Reversely traverses this ArkTS Uint16Array, applies a reduce function for each e
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID   | Error Message                                   |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -1096,11 +1047,10 @@ Applies a reduce function for each element in this ArkTS Uint16Array, receives a
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The reduce method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -1115,7 +1065,7 @@ let reducedValue: string = array.reduce<string>((accumulator: string, value: num
 ## reverse
 reverse(): Uint16Array
 
-Reverses this ArkTS Uint16Array.
+Reverses the order of the elements of the ArkTS Uint16Array in place (modifies the original array), and returns the reference to the modified original array.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1156,15 +1106,14 @@ Writes the elements in an array-like object to the given start position in seque
 | Name   | Type  | Mandatory| Description                                                |
 | --------- | ------ | ---- | ---------------------------------------------------- |
 | array | ArrayLike\<number> | Yes | Array-like object whose elements will be written.|
-| offset | number | No | Start position for writing data. The default value is **0**.|
+| offset | number | No  | Start position for writing, which must be a non-negative integer. The default value is 0.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                |
 | 10200011 | The set method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -1189,22 +1138,21 @@ Selects a range of elements in this ArkTS Uint16Array to create an ArkTS Uint16A
 
 | Name| Type  | Mandatory| Description                                                  |
 | ------ | ------ | ---- | -----------------------------------------------------|
-| start  | number | No  | Start index of the range. If a negative number is passed in, it refers to the index of `start + Uint16Array.length`. The default value is **0**.|
-| end    | number | No  | End index of the range (exclusive). If a negative number is passed in, it refers to the index of `end + Uint16Array.length`. The default value is the length of the ArkTS Uint16Array.|
+| start  | number | No   | Start index, with a value range of [0, Uint16Array.length - 1]. If `start < 0`, it starts from the position `start + Uint16Array.length`. When out of range, it is automatically corrected to the boundary value. The default value is 0. |
+| end    | number | No   | End index (excluding the element at this index), with a value range of [0, Uint16Array.length]. If `end < 0`, it ends at the position `end + Uint16Array.length`. When out of range, it is automatically corrected to the boundary value. The default value is the length of the ArkTS Uint16Array. |
 
 **Return value**
 
 | Type        | Description     |
 | ------------ | --------- |
-| Uint16Array | New ArkTS Uint16Array.|
+| Uint16Array | A new ArkTS Uint16Array object containing the content of the specified range of the original ArkTS Uint16Array. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                  |
 | 10200011 | The slice method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -1220,7 +1168,7 @@ array.slice(-2); // Uint16Array [4, 5]
 ## sort
 sort(compareFn?: TypedArrayCompareFn\<number>): Uint16Array
 
-Sorts elements in this ArkTS Uint16Array and returns the sorted ArkTS Uint16Array.
+Sorts the ArkTS Uint16Array in place (modifies the original array) and returns a reference to the sorted original array.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1240,11 +1188,10 @@ Sorts elements in this ArkTS Uint16Array and returns the sorted ArkTS Uint16Arra
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                   |
 | -------- | ------------------------------------------ |
-| 401      | Parameter error.                 |
 | 10200011 | The sort method cannot be bound. |
 | 10200201 | Concurrent modification error.         |
 
@@ -1253,14 +1200,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let array: collections.Uint16Array = collections.Uint16Array.from([1, 3, 5, 4, 2]);
 array.sort(); // Uint16Array [1, 2, 3, 4, 5]
-array.sort((a: number, b: number) => a - b); // Uint16Array [1, 2, 3, 4, 5]
-array.sort((a: number, b: number) => b - a); // Uint16Array [5, 4, 3, 2, 1]
+array.sort((first: number, second: number) => first - second); // Uint16Array [1, 2, 3, 4, 5]
+array.sort((first: number, second: number) => second - first); // Uint16Array [5, 4, 3, 2, 1]
 ```
 
 ## subarray
 subarray(begin?: number, end?: number): Uint16Array
 
-Truncates an array from a specified position and returns a new ArkTS Uint16Array based on the same ArkTS ArrayBuffer.
+Extracts a portion of the array from the specified position and returns a new ArkTS Uint16Array object based on the same ArkTS ArrayBuffer. Modifying the returned subarray or the original Uint16Array affects each other because they share the same underlying [ArrayBuffer](arkts-apis-arkts-collections-ArrayBuffer.md) data. To create an independent copy, use the [slice](#slice) method.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1270,7 +1217,7 @@ Truncates an array from a specified position and returns a new ArkTS Uint16Array
 
 | Name| Type  | Mandatory| Description                                               |
 | ------ | ------ | ---- | ------------------------------------------------- |
-| begin  | number | No  | Start index of the range. If a negative number is passed in, it refers to the index of `begin + Uint16Array.length`. The default value is **0**.|
+| begin  | number | No   | Start index, with a value range of [0, Uint16Array.length - 1]. If `begin < 0`, it starts from the position `begin + Uint16Array.length`. When out of range, it is automatically corrected to the boundary value. The default value is 0. |
 | end    | number | No  | End index of the range (exclusive). If a negative number is passed in, it refers to the index of `end + Uint16Array.length`. The default value is the length of the ArkTS Uint16Array.|
 
 **Return value**
@@ -1281,11 +1228,10 @@ Truncates an array from a specified position and returns a new ArkTS Uint16Array
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID|            Error Message                              |
 | -------- | -------------------------------------------------|
-| 401      | Parameter error.                                 |
 | 10200011 | The subarray method cannot be bound.             |
 | 10200201 | Concurrent modification error.               |
 
@@ -1309,7 +1255,7 @@ Returns the element at the given index. If no element is found, **undefined** is
 **Parameters**
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| index  | number | Yes  | Index of the element. The index in an array always starts from 0 and is an integer. If a negative number is passed in, it refers to the index of `index + Uint16Array.length`.|
+| index  | number | Yes   | Index of the element to return (starting from 0), which is an integer. If `index < 0`, the element at the position `index + Uint16Array.length` is accessed.|
 
 **Return value**
 
@@ -1319,11 +1265,10 @@ Returns the element at the given index. If no element is found, **undefined** is
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID|                       Error Message                   |
 | -------- | ------------------------------------------------ |
-| 401      | Parameter error.                                 |
 | 10200011 | The at method cannot be bound.                   |
 | 10200201 | Concurrent modification error.               |
 
@@ -1331,9 +1276,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let array: collections.Uint16Array = collections.Uint16Array.from([1, 2, 3, 4, 5]);
-console.info("element: " + array.at(2));  // element: 3
-console.info("element: " + array.at(-1)); // element: 5
-console.info("element: " + array.at(6));  // element: undefined
+console.info(`element: ${array.at(2)}`);  // element: 3
+console.info(`element: ${array.at(-1)}`); // element: 5
+console.info(`element: ${array.at(6)}`);  // element: undefined
 ```
 
 ## includes
@@ -1360,11 +1305,10 @@ Checks whether elements are contained in this ArkTS Uint16Array.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                     |
 | 10200011 | The includes method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -1372,9 +1316,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let array: collections.Uint16Array = collections.Uint16Array.from([1, 2, 3]);
-console.info("includes: " + array.includes(2));    // includes: true
-console.info("includes: " + array.includes(4));    // includes: false
-console.info("includes: " + array.includes(3, 3)); // includes: false
+console.info(`includes: ${array.includes(2)}`);    // includes: true
+console.info(`includes: ${array.includes(4)}`);    // includes: false
+console.info(`includes: ${array.includes(3, 3)}`); // includes: false
 ```
 
 ## entries
@@ -1406,9 +1350,9 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 ```ts
 let array: collections.Uint16Array = collections.Uint16Array.from([11, 22, 33]);
 let iterator: IterableIterator<[number, number]> = array.entries();
-console.info("value: " + iterator.next().value); // value: 0,11
-console.info("value: " + iterator.next().value); // value: 1,22
-console.info("value: " + iterator.next().value); // value: 2,33
+console.info(`value: ${iterator.next().value}`); // value: 0,11
+console.info(`value: ${iterator.next().value}`); // value: 1,22
+console.info(`value: ${iterator.next().value}`); // value: 2,33
 ```
 
 ## keys
@@ -1441,7 +1385,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 let array: collections.Uint16Array = collections.Uint16Array.from([1, 2, 3, 4, 5]);
 let iterator: IterableIterator<number> = array.keys();
 for (const key of iterator) {
-  console.info("" + key); // 0, 1, 2, 3, and 4 are returned in sequence.
+  console.info(`${key}`); // Output 0,1,2,3,4 in sequence.
 }
 ```
 
@@ -1475,7 +1419,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 let array: collections.Uint16Array = collections.Uint16Array.from([1, 2, 3, 4, 5]);
 let iterator: IterableIterator<number> = array.values();
 for (const value of iterator) {
-  console.info("" + value); // 1, 2, 3, 4, and 5 are returned in sequence.
+  console.info(`${value}`); // Output 1,2,3,4,5 in sequence.
 }
 ```
 
@@ -1483,7 +1427,7 @@ for (const value of iterator) {
 
 [Symbol.iterator]\(): IterableIterator&lt;number&gt;
 
-Returns an iterator, each item of which is a JavaScript object.
+Returns an iterator, where each item of the iterator is the element value at the corresponding position in the Uint16Array.
 
 > **NOTE**
 >
@@ -1531,17 +1475,17 @@ Returns the element at a given index in this Uint16Array.
 
 | Name   | Type  | Mandatory| Description                    |
 | ----- | ------ | ---- | -------------------------- |
-| index | number | Yes  | Index of the element. The index starts from zero.|
+| index | number | Yes | Zero-based index of the required element. |
 
 **Return value**
 
 | Type  | Description                |
 | ----- | ---------------------|
-| number | Number data type.|
+| number | Returns the element value at the specified index position. |
 
 **Example**
 
 ```ts
 let uint16Array = collections.Uint16Array.from([1, 2, 4]);
-console.info("Element at index 1: ", uint16Array[1]);
+console.info(`Element at index 1: ${uint16Array[1]}`);
 ```

@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e10e7def4863f4f964c4d0cb425b7650081cb83e translatedAt=2026-08-28T01:40:00.344Z pushedAt=2026-09-01T06:23:05.554Z -->
+<!-- md-trans-meta sourceCommit=c1b7a56abc2d7fdf7314bbdd452db251effbd7f7 translatedAt=2026-11-03T02:46:50.068Z pushedAt=2026-11-13T01:06:00.017Z nl=1 -->
 
 The [UIContext](../arkts-apis-uicontext-uicontext.md) provides the **keyframeAnimateTo** API that allows you to define one or more keyframe states to implement segment-based animations. A keyframe animation divides the animation process into multiple segments based on the states at several key moments. For the same attribute, the transition is not a monotonic change from the start point to the end point, but a segment-based transition. Similar to the attribute animation of [animateTo](../arkts-apis-uicontext-uicontext.md#animateto), for layout animations that change the width and height, the content (for example, text and [Canvas](ts-components-canvas-canvas.md) content) directly reaches the end state. To make the content change with the width and height, use the [renderFit](ts-universal-attributes-renderfit.md#renderfit) attribute. **keyframeAnimateTo** and [animateTo](../arkts-apis-uicontext-uicontext.md#animateto) cannot be applied to the same attribute of the same component at the same time. If they are called on the same attribute in sequence, the animation called later overrides the effect of the previous one.
 
@@ -27,7 +27,7 @@ Sets the keyframe animation. This API must be called through a UIContext instanc
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name       | Type                                             | Mandatory| Description                        |
 | ------------ | ---------------------------------------------------- | ------- | ---------------------------- |
@@ -90,7 +90,7 @@ struct KeyframeDemo {
         .scale({ x: this.myScale, y: this.myScale })
         .onClick(() => {
           if (!this.uiContext) {
-            console.info('no uiContext, keyframe failed');
+            console.error('no uiContext, keyframe failed');
             return;
           }
           this.myScale = 1;
