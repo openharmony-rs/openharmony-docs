@@ -1348,59 +1348,10 @@ static napi_value Execute(napi_env env, napi_callback_info info)
 **logicalSize设置要求**
 
 - 创建占位符时按云侧文件实际大小设置logicalSize，云侧大小未知时先查询元数据获得实际大小后再创建。
-- 云侧文件大小变化或水合完成后实际大小与预设值不一致时，通过OH_CloudDisk_UpdatePlaceholder()修正占位符元数据，避免尾部残留稀疏空洞。
+- 云侧文件大小变化时，先通过OH_CloudDisk_GetPlaceholderState()确认占位符未处于水合流程，再调用OH_CloudDisk_UpdatePlaceholder()按云侧最新元数据重置占位符：本地已水合数据会被清空，占位符回到未水合状态，后续打开文件时重新水合获取云侧最新内容。
 - 不要以st_size判断文件实际数据量：未水合占位符的st_size等于预设值但本地无数据，应以应用自身记录的云侧文件大小为准。
 
-以云侧文件大小变化为例：云侧文件被编辑后大小发生变化，应用从云侧查询到最新大小，需调用OH_CloudDisk_UpdatePlaceholder()将本地占位符的logicalSize修正为最新大小，保持本地占位符元数据与云侧一致，示例代码如下：
-
-<!-- @[update_placeholder_on_cloud_size_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
-
-``` C++
-static napi_value UpdatePlaceholderOnCloudSizeChange(napi_env env, napi_callback_info info)
-{
-    size_t argc = 5;
-    napi_value args[5] = {nullptr};
-    GetArgs(env, info, argc, args);
-
-    char* syncPath = GetStringParam(env, args[0]);
-    char* relativePath = GetStringParam(env, args[1]);
-    if (!syncPath || !relativePath) {
-        LOGE("UpdatePlaceholderOnCloudSizeChange invalid params.");
-        delete[] syncPath;
-        delete[] relativePath;
-        napi_value result;
-        napi_create_int32(env, CLOUD_DISK_INVALID_ARG, &result);
-        return result;
-    }
-
-    // 云侧文件变化后的最新大小（应用应从云侧元数据查询获得，此处由入参模拟）
-    uint64_t newCloudSize = static_cast<uint64_t>(GetNumberParam(env, args[2]));
-    uint64_t atimeMs = static_cast<uint64_t>(GetNumberParam(env, args[3]));
-    uint64_t mtimeMs = static_cast<uint64_t>(GetNumberParam(env, args[4]));
-
-    CloudDisk_SyncFolderPath syncFolderPath = MakePathInfo(syncPath);
-    CloudDisk_PathInfo relativePathInfo = MakePathInfo(relativePath);
-
-    // 按云侧最新大小构造占位符元数据，修正本地占位符logicalSize
-    OH_CloudDisk_PlaceholderInfo placeholderInfo = {};
-    placeholderInfo.atimeMs = atimeMs;
-    placeholderInfo.mtimeMs = mtimeMs;
-    placeholderInfo.logicalSize = newCloudSize;
-    auto ret = OH_CloudDisk_UpdatePlaceholder(syncFolderPath, relativePathInfo, placeholderInfo, NULL);
-    if (ret != CLOUD_DISK_OK) {
-        LOGE("OH_CloudDisk_UpdatePlaceholder failed, errorCode: %{public}d.", ret);
-    } else {
-        LOGI("OH_CloudDisk_UpdatePlaceholder success, logicalSize updated to cloud size.");
-    }
-
-    delete[] syncPath;
-    delete[] relativePath;
-
-    napi_value result;
-    napi_create_int32(env, ret, &result);
-    return result;
-}
-```
+以云侧文件大小变化为例：云侧文件被编辑后大小发生变化，应用从云侧查询到最新大小，先调用OH_CloudDisk_GetPlaceholderState()确认该占位符未处于水合流程（水合中更新会被拒绝，返回OH_CLOUD_DISK_HYDRATE_IN_PROGRESS），再调用OH_CloudDisk_UpdatePlaceholder()将本地占位符重置为云侧最新大小，本地旧数据被清空，占位符回到未水合状态，后续打开文件时重新水合。完整示例参见[CloudDisk示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/README_zh.md)（更新占位符元数据模块，云侧大小变化修正占位符）。
 
 **取消水合**
 
