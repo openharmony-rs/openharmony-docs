@@ -49,9 +49,9 @@ status: active
 
 录屏启动成功且回调未报错，但录制的视频画面帧率明显偏低。
 
-在buffer模式下，应用侧通过OH_AVScreenCapture_OnBufferAvailable()获取到的视频帧稀疏，单位时间内收到的帧率远低于配置的目标帧率，表现为画面长时间静止期间几乎收不到新帧。
+OH_ORIGINAL_STREAM模式下，应用侧通过OH_AVScreenCapture_OnBufferAvailable()获取到的视频帧稀疏，单位时间内收到的帧率远低于配置的目标帧率，表现为画面长时间静止期间几乎收不到新帧。
 
-CAPTURE_FILE模式下生成的mp4文件可播放，但视频轨帧率远低于预期值。例如配置30fps，实际仅 5~10fps。
+OH_CAPTURE_FILE模式下生成的mp4文件可播放，但视频轨帧率远低于预期值。例如配置30fps，实际仅 5~10fps。
 
 ### 可能原因
 
