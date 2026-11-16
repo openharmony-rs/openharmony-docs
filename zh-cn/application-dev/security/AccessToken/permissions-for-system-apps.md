@@ -9901,7 +9901,7 @@
 **支持设备**：Car
  
 **起始版本**：26.0.1
-
+ 
 ## ohos.permission.vehicle.HIMA_DEVICE_AUTH
  
 允许应用调用正品认证API，进行设备正品认证。
