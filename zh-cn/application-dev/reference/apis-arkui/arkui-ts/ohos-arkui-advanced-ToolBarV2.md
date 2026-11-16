@@ -3,7 +3,7 @@
 <!--Subsystem: ArkUI-->
 <!--Owner: @song-song-song-->
 <!--Designer: @fenglinbailu-->
-<!--Tester: @ybhou1993-->
+<!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
 
 工具栏用于展示针对当前界面内容的操作选项，适用于需要为用户提供快速操作入口的场景。普通工具栏最多显示5个入口，超过则收纳入“更多”子项中，在最右侧显示。适用于需要对当前页面内容进行快捷操作的场景，可帮助用户快速访问常用功能，提升操作效率。<br />
@@ -18,7 +18,7 @@
 >
 > - 如果ToolBarV2设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ToolBarV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ToolBarV2设置通用属性和通用事件。
 >
-> - 当系统切换深浅色模式时，工具栏背景色不会自动跟随切换。
+> - 当系统切换深浅色模式时，普通工具栏背景色不会自动跟随切换。
 
 ## 导入模块
 
@@ -115,24 +115,6 @@ ToolBarV2Item的构造函数。
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)          | 否  | 是  | 工具栏子项的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br />默认值：“单指双击即可执行”。                        |
 | accessibilityLevel       | string                                          | 否  | 是  | 工具栏子项无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。<br />支持的值为：<br />"auto"：当前值转换为"yes"。<br />"yes"：当前组件可被无障碍辅助服务所识别。<br />"no"：当前组件不可被无障碍辅助服务所识别。<br />"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br />默认值："auto" |
 
-## ToolBarV2ItemAction
-
-type ToolBarV2ItemAction = (index: number) => void
-
-工具栏子项点击事件回调类型。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
-**参数：**
-
-| 参数名   | 类型     | 必填 | 说明 |
-|:------|:-------|:---|----|
-| index | number | 是  | 触发点击事件的工具栏子项索引。 |
-
 ## ToolBarV2ItemText
 
 定义工具栏子项的文本。
@@ -186,6 +168,24 @@ ToolBarV2ItemText的构造函数。
 | text                | [ResourceStr](ts-types.md#resourcestr)                      | 否  | 否  | 工具栏子项的文本。                                                |
 | color          | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项的文本的颜色。<br/>默认值：$r('sys.color.font_primary')       |
 | activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项在激活态下文本的颜色。<br />默认值：$r('sys.color.font_emphasize') |
+
+## ToolBarV2ItemAction
+
+type ToolBarV2ItemAction = (index: number) => void
+
+工具栏子项点击事件回调类型。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明 |
+|:------|:-------|:---|----|
+| index | number | 是  | 触发点击事件的工具栏子项索引。 |
 
 ## ToolBarV2ItemImage
 
@@ -241,6 +241,58 @@ ToolBarV2ItemImage的构造函数。
 | color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项的图标的颜色。<br/>默认值：$r('sys.color.icon_primary')       |
 | activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项在激活态下图标的颜色。<br/>默认值：$r('sys.color.icon_emphasize') |
 
+## ToolBarV2SymbolGlyph
+
+ToolBarV2SymbolGlyph定义Symbol图标的属性。
+
+**装饰器类型**：@ObservedV2
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+### 属性
+
+| 名称        | 类型                                                                   | 只读 | 可选 | 说明                                                                                   |
+| :-------- | :------------------------------------------------------------------- |:---|:---|  :----------------------------------------------------------------------------------- |
+| normal    | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否  | 否  | 工具栏symbol图标普通态样式。<br/>装饰器类型：@Trace   |
+| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否  | 是  | 工具栏symbol图标激活态样式。<br />默认值：fontColor：\$r('sys.color.icon\_emphasize')，fontSize：24vp。<br/>装饰器类型：@Trace |
+
+### constructor
+
+constructor(options: ToolBarV2SymbolGlyphOptions)
+
+ToolBarV2SymbolGlyph的构造函数。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**参数：**
+
+| 参数名     | 类型                                                        | 必填 | 说明          |
+| :------ | :---------------------------------------------------------- | :- | :---------- |
+| options | [ToolBarV2SymbolGlyphOptions](#toolbarv2symbolglyphoptions) | 是  | Symbol图标信息。 |
+
+## ToolBarV2SymbolGlyphOptions
+
+ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+| 名称        | 类型                                                                   | 只读 | 可选 | 说明                                                                                   |
+| --------- | -------------------------------------------------------------------- | -- | -- | ------------------------------------------------------------------------------------ |
+| normal    | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 否  | 工具栏symbol图标普通态样式。   |
+| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是  | 工具栏symbol图标激活态样式。<br />默认值：fontColor：\$r('sys.color.icon\_emphasize')，fontSize：24vp。 |
+
 ## ToolBarV2ItemIconType
 
 type ToolBarV2ItemIconType = ToolBarV2ItemImage | ToolBarV2SymbolGlyph
@@ -257,6 +309,22 @@ type ToolBarV2ItemIconType = ToolBarV2ItemImage | ToolBarV2SymbolGlyph
 |:----------------------------------------------| :------------ |
 | [ToolBarV2ItemImage](#toolbarv2itemimage)     | 用于定义普通图标。     |
 | [ToolBarV2SymbolGlyph](#toolbarv2symbolglyph) | 用于定义Symbol图标。 |
+
+## ToolBarV2ItemState
+
+工具栏子项状态枚举。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+| 名称       | 值 | 说明              |
+| -------- | - | --------------- |
+| ENABLE   | 1 | 工具栏子项为正常可点击状态。  |
+| DISABLE  | 2 | 工具栏子项为不可点击状态。   |
+| ACTIVATE | 3 | 工具栏子项为激活状态，可点击。 |
 
 ## ToolBarV2Modifier
 
@@ -363,74 +431,6 @@ stateEffect(stateEffect: boolean): ToolBarV2Modifier
 | 类型                                      | 说明                                  |
 |-----------------------------------------|-------------------------------------|
 | [ToolBarV2Modifier](#toolbarv2modifier) | 设置按压态效果后的ToolBarV2Modifier对象，可用于链式调用其他方法进一步自定义工具栏样式。 |
-
-## ToolBarV2ItemState
-
-工具栏子项状态枚举。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
-| 名称       | 值 | 说明              |
-| -------- | - | --------------- |
-| ENABLE   | 1 | 工具栏子项为正常可点击状态。  |
-| DISABLE  | 2 | 工具栏子项为不可点击状态。   |
-| ACTIVATE | 3 | 工具栏子项为激活状态，可点击。 |
-
-## ToolBarV2SymbolGlyph
-
-ToolBarV2SymbolGlyph定义Symbol图标的属性。
-
-**装饰器类型**：@ObservedV2
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
-### 属性
-
-| 名称        | 类型                                                                   | 只读 | 可选 | 说明                                                                                   |
-| :-------- | :------------------------------------------------------------------- |:---|:---|  :----------------------------------------------------------------------------------- |
-| normal    | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否  | 否  | 工具栏symbol图标普通态样式。<br/>装饰器类型：@Trace   |
-| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否  | 是  | 工具栏symbol图标激活态样式。<br />默认值：fontColor：\$r('sys.color.icon\_emphasize')，fontSize：24vp。<br/>装饰器类型：@Trace |
-
-### constructor
-
-constructor(options: ToolBarV2SymbolGlyphOptions)
-
-ToolBarV2SymbolGlyph的构造函数。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
-**参数：**
-
-| 参数名     | 类型                                                        | 必填 | 说明          |
-| :------ | :---------------------------------------------------------- | :- | :---------- |
-| options | [ToolBarV2SymbolGlyphOptions](#toolbarv2symbolglyphoptions) | 是  | Symbol图标信息。 |
-
-## ToolBarV2SymbolGlyphOptions
-
-ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
-| 名称        | 类型                                                                   | 只读 | 可选 | 说明                                                                                   |
-| --------- | -------------------------------------------------------------------- | -- | -- | ------------------------------------------------------------------------------------ |
-| normal    | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 否  | 工具栏symbol图标普通态样式。   |
-| activated | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是  | 工具栏symbol图标激活态样式。<br />默认值：fontColor：\$r('sys.color.icon\_emphasize')，fontSize：24vp。 |
 
 ## ToolbarV2ItemPlacement
 
