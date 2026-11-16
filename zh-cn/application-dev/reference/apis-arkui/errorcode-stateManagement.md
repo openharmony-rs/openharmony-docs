@@ -380,7 +380,7 @@ Unsupported type or parameters.
 **处理步骤**
 
 1. 确认type参数为对象类型（class、interface等），并满足T extends object约束。
-2. 确认component参数传入的是自定义组件内的this（BaseCustomComponent实例）。
+2. 确认component参数传入的是自定义组件的实例。
 3. 确认key非空且长度小于1024字节，建议由字母、数字、下划线组成。
 4. 确认同一key使用相同类型连接；如需更换类型，先调用remove注销原key。
 5. 确认defaultCreator返回指定type的实例，而非其他类型。
