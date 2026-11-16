@@ -17,7 +17,7 @@ status: active
 
 低时延音频播放是一种通过软硬芯协同设计实现的音频渲染方案。其核心机制是通过减少buffer大小、优化读写数据架构，使该模式下音频播放具有更低的时延。
 
-从API版本26.1.0开始，在低时延模式的基础上新增超低时延模式。该模式相比低时延模式，可以进一步降低播放时延，但是对应用处理时长和系统资源要求更高，可能会增加卡顿率，所以建议仅在下文描述的场景使用。该模式需在开发者网站申请ACL权限（ACL，Access Control List，访问控制列表，一种跨权限级别申请受限权限的方式）ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM。
+从API版本26.1.0开始，在低时延模式的基础上新增超低时延模式。该模式相比低时延模式，可以进一步降低播放时延，但是对应用处理时长和系统资源要求更高，可能会增加卡顿率，所以建议仅在下文描述的场景使用。该模式需在开发者网站申请ACL权限（ACL，Access Control List，访问控制列表）ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM。
 
 ## 使用场景
 
@@ -29,17 +29,19 @@ status: active
 ### 使用超低时延流的场景
 
 - 如果使用低时延模式后，时延指标依然无法满足用户体验要求，并且与目标时延差距在10ms左右时，可以考虑使用超低时延模式，如K歌实时耳返场景（需要注意该模式的性能要求和功耗影响高于低时延模式，从而可能带来音频卡顿风险和功耗的升高，建议开发者做好完备的评估和验证后再使用）。
-- 该模式仅推荐在连续音频播放场景使用，不建议用于短音频场景，否则可能会带来不好的用户体验。
+- 该模式仅推荐在连续音频播放场景使用，不要使用在短音频的场景，否则可能会带来不好的用户体验。
 
 ## 约束与限制
 
-### 使用前提
+### 低时延模式使用前提
 
 - 支持低时延模式的音频输出设备。
 - 可通过[OH_AudioRenderer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus)验证当前设备是否支持低时延模式。
-- 使用超低时延模式还需满足：
-  - 申请权限`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`。该权限为受限开放权限（system_basic），需在module.json5中声明后，再通过ACL方式跨级别申请。
-  - 可通过[OH_AudioStreamManager_IsUltraFastPlaybackSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastplaybacksupported)查询当前流类型对应的输出设备是否支持超低时延模式。
+
+### 超低时延模式使用前提
+
+- 应用已申请超低时延音频流权限`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`。
+- 设备支持超低时延播放，可通过[OH_AudioStreamManager_IsUltraFastPlaybackSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastplaybacksupported)查询当前流类型对应的输出设备是否支持。
 
 ### 低时延模式限制
 
@@ -51,9 +53,7 @@ status: active
 
 ### 超低时延模式限制
 
-超低时延模式与上述低时延模式存在类似限制，超出限制时系统会回落到低时延模式或普通模式。
-
-此外，超低时延模式创建播放实例时，系统会校验权限和设备能力：若应用未申请`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`权限，接口返回错误码201（AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED）；若当前硬件不支持超低时延能力，接口返回错误码6800104（AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY）。以上两种情况均不会创建播放实例。
+超低时延模式与上述低时延模式存在类似限制，超出限制时系统会回落到低时延模式或普通模式。此外，超低时延模式创建播放实例时，系统会校验权限和设备能力：若应用未申请`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`权限，接口返回错误码201（AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED）；若当前硬件不支持超低时延能力，接口返回错误码6800104（AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY）。以上两种情况均不会创建播放实例。
 
 ## 开发步骤
 
