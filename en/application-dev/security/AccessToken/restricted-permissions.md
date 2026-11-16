@@ -1827,7 +1827,7 @@ Allows an application to obtain the device hardware information.
 
 Allows an application to start the HiShell command-line terminal.
 
-After obtaining this permission, an application can start the HiShell command-line terminal to create new terminal tabs or new terminal window instances. Applicable scenarios and functionalities: The application is an IDE application provides a feature to launch a terminal application. Applicant requirements: Individual developer accounts or enterprise developer accounts that have completed real-name verification can apply for this permission.
+After obtaining this permission, an application can start the HiShell command-line terminal to create new terminal tabs or new terminal window instances. 
 
 <!--RP123--><!--RP123End-->
 
