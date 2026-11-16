@@ -1,7 +1,7 @@
 ---
 kits: ["ArkWeb Kit / 方舟Web"]
-description: "汇总ArkWeb指南配套示例代码，按页面加载、请求拦截、多媒体、同层渲染、离线Web组件等场景归类ArkTS与C/C++示例，动态与静态两种范式工程各成一行。"
-keywords: [ArkWeb, 示例代码, Web组件, JSBridge, 网络请求拦截, 同层渲染, 画中画, 离线Web组件, 静态范式]
+description: "汇总ArkWeb指南配套示例代码，按页面加载、请求拦截、多媒体、同层渲染、离线Web组件等场景归类ArkTS与C/C++示例，多数场景提供ArkTS静态范式工程。"
+keywords: [ArkWeb, 示例代码, Web组件, 函数互调, 网络请求拦截, 同层渲染, 画中画, 离线Web组件, 静态范式]
 doctype: guide
 status: active
 ---
