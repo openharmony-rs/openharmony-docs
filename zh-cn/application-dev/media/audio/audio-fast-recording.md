@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 10开始支持低时延音频录制。
+从API版本10开始支持低时延音频录制。
 
 低时延音频录制是一种通过软硬芯协同设计实现的音频采集方案。其核心机制是通过减少buffer大小、优化读写数据架构，使该模式下音频录制具有更低的时延。
 
@@ -26,27 +26,18 @@
 
 ## 约束与限制
 
-### 使用前提
+### 设备使用约束
 
-### 低时延模式使用前提
+- 使用低时延模式，需要通过[OH_AudioStreamManager_IsFastRecordingSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isfastrecordingsupported)查询当前流类型对应的输入设备是否支持。
+- 使用超低时延模式，需要通过[OH_AudioStreamManager_IsUltraFastRecordingSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastrecordingsupported)查询当前流类型对应的输入设备是否支持。
 
-- 支持低时延模式的音频输入设备。
-- 可通过[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)验证当前设备是否支持低时延模式。
-
-### 超低时延模式使用前提
-
-- 应用已申请超低时延音频流权限`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`。
-- 设备支持超低时延录制，可通过[OH_AudioStreamManager_IsUltraFastRecordingSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastrecordingsupported)查询是否支持。
-
-### 低时延模式限制
+### 多业务并发限制
 
 在以下场景中，即使设置了低时延模式，系统仍会使用普通模式：
 - 当前设备不支持低时延模式。
 - 当前流格式不支持低时延模式。
 - 系统低时延资源已被全部占用。
 - 当前系统中存在更高优先级流（如：VoIP通话）。
-
-### 超低时延模式限制
 
 超低时延模式与上述低时延模式存在类似限制，超出限制时系统会回落到低时延模式或普通模式。此外，超低时延模式创建录制实例时，系统会校验权限和设备能力：若应用未申请`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`权限，接口返回错误码201（AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED）；若当前硬件不支持超低时延能力，接口返回错误码6800104（AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY）。以上两种情况均不会创建录制实例。
 
