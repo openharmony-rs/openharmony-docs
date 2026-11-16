@@ -1265,13 +1265,24 @@ static napi_value UnregisterCallbackTable(napi_env env, napi_callback_info info)
 
 **响应回调请求**
 
-应用在回调中收到水合取数请求后，从云侧下载完文件数据，可调用OH_CloudDisk_Execute()接口将数据回传给网盘服务底座完成落盘；收到取消取数请求时，也通过该接口响应。该接口为统一的Execute函数，根据不同的回调类型处理不同的请求。水合总量以首次回传的fetchDataRsp.totalSize为准，后续回传需保持一致。
+应用在回调中收到水合取数请求后，从云侧下载完文件数据，可调用OH_CloudDisk_Execute()接口将数据回传给网盘服务底座完成落盘；收到取消取数请求时，也通过该接口响应。该接口为统一的Execute函数，根据不同的回调类型处理不同的请求。
 
 > **注意：**
 >
 > - 数据分多次传输时，需重复调用直至fetchDataRsp.isComplete为true。
-> - 水合总量以首次调用OH_CloudDisk_Execute()回传的fetchDataRsp.totalSize为准，占位符logicalSize仅为创建占位符时的预设值、不参与水合总量控制；若预设值与回传totalSize不一致，水合完成后本地文件体积可能与实际数据量不一致（预设值偏大时尾部以稀疏空洞形式保留，预设值偏小时文件被实际数据扩展）。
+> - 水合总量以首次调用OH_CloudDisk_Execute()回传的fetchDataRsp.totalSize为准，占位符logicalSize仅为创建占位符时的预设值，不参与水合总量控制；若预设值与回传totalSize不一致，水合完成后本地文件体积可能与实际数据量不一致（预设值偏大时尾部以稀疏空洞形式保留，预设值偏小时文件被实际数据扩展）。
 > - 系统不保障本地占位符文件与云侧文件大小的一致性，应用需通过OH_CloudDisk_UpdatePlaceholder()接口保障本地占位符文件的元数据与云侧文件元数据的一致性。
+
+**系统侧size与并发约束**
+
+调用OH_CloudDisk_Execute()回传数据前，需了解网盘服务底座对占位符与水合任务的以下限制：
+
+| 约束项 | 上限/规则 | 超限后果 |
+| -------- | -------- | -------- |
+| 占位符logicalSize上限 | INT64_MAX（即 2^63-1 字节） | 创建/更新占位符返回OH_CLOUD_DISK_FILE_TOO_LARGE |
+| 单次Execute回传数据块上限 | 128 KiB | 回传请求被拒绝，返回CLOUD_DISK_INVALID_ARG |
+| 同一应用并发水合任务上限 | 5个（水合中状态） | 超出的水合请求排队等待，取数回调延迟下发 |
+| 水合任务空闲超时 | 5分钟（每次Execute回传刷新计时） | 任务被取消，并通过回调表下发取消取数请求 |
 
 <!-- @[execute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -1331,24 +1342,65 @@ static napi_value Execute(napi_env env, napi_callback_info info)
 
 **占位符size与云侧文件实际size不一致的影响**
 
-- 预设值偏小：水合后文件被实际数据扩展至真实大小，进度总量、展示大小与应用侧记录对不上，难以对账。
-- 预设值偏大：水合完成后本地文件体积虚高，尾部为全零空洞；按st_size全量读取、拷贝、上传的链路会把空洞当作有效数据处理，空洞被写实时转为真实磁盘块，磁盘占用与流量被成倍放大；占位符反复水合、脱水时预设值口径漂移，无法对账实际占用。
+- 预设值偏小：水合后文件被实际数据扩展至真实大小，进度总量、展示大小与应用侧记录的大小不一致，无法进行一致性校验。
+- 预设值偏大：水合完成后本地文件体积虚高，尾部为全零空洞；按st_size全量读取、拷贝、上传的链路会把空洞当作有效数据处理，空洞被写实时转为真实磁盘块，磁盘占用与流量被成倍放大；占位符反复水合、脱水时预设值与实际大小持续偏离，无法校验实际占用。
 
-**应用侧防滥用实践**
+**logicalSize设置要求**
 
-- 创建占位符时按云侧真实大小设置logicalSize；云侧大小未知时先查询元数据、拿到真实大小后再创建，避免为未知大小的文件创建占位符。
-- 回传水合数据时保持fetchDataRsp.totalSize与云侧真实大小一致，多次回传totalSize不变。
-- 云侧真实大小变化或水合完成后发现实际大小与预设值不一致时，通过OH_CloudDisk_UpdatePlaceholder()修正占位符元数据，不要放任尾部空洞。
-- 不要依赖st_size判断文件实际数据量：未水合占位符的st_size等于预设值但本地无数据，应以应用自身记录的云侧大小为准。
+- 创建占位符时按云侧文件实际大小设置logicalSize，云侧大小未知时先查询元数据获得实际大小后再创建。
+- 云侧文件大小变化或水合完成后实际大小与预设值不一致时，通过OH_CloudDisk_UpdatePlaceholder()修正占位符元数据，避免尾部残留稀疏空洞。
+- 不要以st_size判断文件实际数据量：未水合占位符的st_size等于预设值但本地无数据，应以应用自身记录的云侧文件大小为准。
 
-**系统侧size与并发约束**
+以云侧文件大小变化为例：云侧文件被编辑后大小发生变化，应用从云侧查询到最新大小，需调用OH_CloudDisk_UpdatePlaceholder()将本地占位符的logicalSize修正为最新大小，保持本地占位符元数据与云侧一致，示例代码如下：
 
-| 约束项 | 上限/规则 | 触发表现 |
-| -------- | -------- | -------- |
-| 占位符logicalSize上限 | off_t最大值（INT64_MAX） | 创建/更新占位符返回OH_CLOUD_DISK_FILE_TOO_LARGE |
-| 单次Execute回传数据块上限 | 128 KiB | 回传请求被拒绝，返回CLOUD_DISK_INVALID_ARG |
-| 同一应用并发水合任务上限 | 5个（水合中状态） | 超出的水合请求排队等待，取数回调延迟下发 |
-| 水合任务空闲超时 | 5分钟（每次Execute回传刷新计时） | 任务被取消，并通过回调表下发取消取数请求 |
+<!-- @[update_placeholder_on_cloud_size_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+static napi_value UpdatePlaceholderOnCloudSizeChange(napi_env env, napi_callback_info info)
+{
+    size_t argc = 5;
+    napi_value args[5] = {nullptr};
+    GetArgs(env, info, argc, args);
+
+    char* syncPath = GetStringParam(env, args[0]);
+    char* relativePath = GetStringParam(env, args[1]);
+    if (!syncPath || !relativePath) {
+        LOGE("UpdatePlaceholderOnCloudSizeChange invalid params.");
+        delete[] syncPath;
+        delete[] relativePath;
+        napi_value result;
+        napi_create_int32(env, CLOUD_DISK_INVALID_ARG, &result);
+        return result;
+    }
+
+    // 云侧文件变化后的最新大小（应用应从云侧元数据查询获得，此处由入参模拟）
+    uint64_t newCloudSize = static_cast<uint64_t>(GetNumberParam(env, args[2]));
+    uint64_t atimeMs = static_cast<uint64_t>(GetNumberParam(env, args[3]));
+    uint64_t mtimeMs = static_cast<uint64_t>(GetNumberParam(env, args[4]));
+
+    CloudDisk_SyncFolderPath syncFolderPath = MakePathInfo(syncPath);
+    CloudDisk_PathInfo relativePathInfo = MakePathInfo(relativePath);
+
+    // 按云侧最新大小构造占位符元数据，修正本地占位符logicalSize
+    OH_CloudDisk_PlaceholderInfo placeholderInfo = {};
+    placeholderInfo.atimeMs = atimeMs;
+    placeholderInfo.mtimeMs = mtimeMs;
+    placeholderInfo.logicalSize = newCloudSize;
+    auto ret = OH_CloudDisk_UpdatePlaceholder(syncFolderPath, relativePathInfo, placeholderInfo, NULL);
+    if (ret != CLOUD_DISK_OK) {
+        LOGE("OH_CloudDisk_UpdatePlaceholder failed, errorCode: %{public}d.", ret);
+    } else {
+        LOGI("OH_CloudDisk_UpdatePlaceholder success, logicalSize updated to cloud size.");
+    }
+
+    delete[] syncPath;
+    delete[] relativePath;
+
+    napi_value result;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+```
 
 **取消水合**
 
