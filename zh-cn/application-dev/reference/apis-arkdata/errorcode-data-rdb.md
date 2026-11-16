@@ -18,11 +18,13 @@
 
 **错误信息**
 
-针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->以下版本的设备，错误信息为：
-Inner error.
+- 针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->以下版本的设备，错误信息为：
 
-针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息为：
-Inner error. Possible causes: 1. The number of bind args is incorrect; 2. Invalid args: table is empty or row is empty; 3. No transaction in session for rollback; 4. Failed to rename backup file; 5. Other inner errors.
+  Inner error.
+
+- 针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息为：
+
+  Inner error. Possible causes: 1. The number of bind args is incorrect; 2. Invalid args: table is empty or row is empty; 3. No transaction in session for rollback; 4. Failed to rename backup file; 5. Other inner errors.
 
 **错误描述**
 
@@ -225,11 +227,13 @@ The target instance is already closed.
 
 **错误信息**
 
-针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->以下版本的设备，错误信息为：
-The database does not respond.
+- 针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->以下版本的设备，错误信息为：
 
-针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息为：
-The database does not respond. database busy, dbName: {dbName}.
+  The database does not respond.
+
+- 针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息为：
+
+  The database does not respond. database busy, dbName: {dbName}.
 
 **错误描述**
 
@@ -588,11 +592,13 @@ SQLite：TEXT或BLOB超出大小限制。
 
 **错误信息**
 
-针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->以下版本的设备，错误信息为：
-SQLite: Abort due to constraint violation.
+- 针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->以下版本的设备，错误信息为：
 
-针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息为：
-SQLite: Abort due to constraint violation. UNIQUE constraint failed: {tableName}.{columnName} database: {dbName} table: {tableName}.
+  SQLite: Abort due to constraint violation.
+
+- 针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息为：
+
+  SQLite: Abort due to constraint violation. UNIQUE constraint failed: {tableName}.{columnName} database: {dbName} table: {tableName}.
 
 **错误描述**
 
