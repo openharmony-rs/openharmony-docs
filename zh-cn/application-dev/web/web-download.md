@@ -270,7 +270,7 @@ struct WebComponent {
 
 使用[DocumentViewPicker()](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)获取当前示例的默认下载目录，将该目录设置为下载目录。
 
-<!-- @[select_download_dir](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/SelectDownloadDir.ets) -->
+<!-- @[select_download_dir](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/SelectDownloadDir.ets) -->  
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -313,7 +313,7 @@ struct WebComponent {
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
       Web({ src: $rawfile('index.html'), controller: this.controller })
@@ -340,7 +340,7 @@ function getDownloadPathFromPicker(): Promise<string> {
         const uri = new fileUri.FileUri(uriString);
         resolve(uri.path);
       }).catch((err: BusinessError) => {
-        console.error(`ErrorCode: ${err.code},  Message: ${err.message}`);
+        console.error(`ErrorCode: ${err.code}, Message: ${err.message}`);
         resolve('');
       });
     } catch (error) {
