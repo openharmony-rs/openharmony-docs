@@ -1411,8 +1411,8 @@ skillProfiles标签示例：
 
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| name | 标识启动服务的名称。命名规则如下：<br/>-&nbsp;由字母、数字、下划线（_）和点号（.）组成，且必须以字母开头。<br/>-&nbsp;最大长度255字节。 | 字符串 | 否。 |
-| binaryPath | 标识启动服务对应的可执行文件的相对路径。取值为长度不超过255字节的字符串，且路径中不允许包含表示上级目录的".."路径段。 | 字符串 | 否。 |
+| name | 标识启动服务的名称。命名规则如下：<br/>-&nbsp;由字母、数字、下划线（_）和点号（.）组成，且必须以字母开头。<br/>-&nbsp;最大长度255字节。 | 字符串 | 否 |
+| binaryPath | 标识启动服务对应的可执行文件的相对路径。取值为长度不超过255字节的字符串，且路径中不允许包含表示上级目录的".."路径段。 | 字符串 | 否 |
 | runAtLoad | 标识模块加载时是否自动启动该服务。<br/>-&nbsp;true：模块加载时启动该服务。<br/>-&nbsp;false：模块加载时不启动该服务。 | 布尔值 | 是，缺省值为false。 |
 | keepAlive | 标识服务启动后是否保持常驻存活。<br/>-&nbsp;true：服务启动后保持存活。<br/>-&nbsp;false：服务启动后不保持存活。 | 布尔值 | 是，缺省值为false。 |
 | provideIpcService | 标识启动服务是否提供IPC服务。<br/>-&nbsp;true：提供IPC服务。<br/>-&nbsp;false：不提供IPC服务。 | 布尔值 | 是，缺省值为false。 |
@@ -1421,22 +1421,3 @@ skillProfiles标签示例：
 launchServices标签示例：
 
 <!-- @[module_launchServices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile05/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-    // ...
-    "launchServices": [
-      {
-        "name": "mydaemon",
-        "binaryPath": "mydaemon/testdaemon",
-        "runAtLoad": true,
-        "keepAlive": true,
-        "provideIpcService": false,
-        "type": "daemon"
-      }
-    ],
-    // ...
-  },
-}
-```
