@@ -2,10 +2,11 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=d910972754a03f29eabea013ac43af463c14ec75 translatedAt=2026-11-16T04:15:05.251Z pushedAt=2026-11-16T06:31:14.003Z nl=1 -->
 
 ```c
 typedef struct {...} Asset_Blob
@@ -29,3 +30,5 @@ Defines a binary array, that is, an array of bytes with variable length.
 | -- | -- |
 | uint32_t size | Size of the byte array.|
 | uint8_t *data | Pointer to the byte array.|
+
+

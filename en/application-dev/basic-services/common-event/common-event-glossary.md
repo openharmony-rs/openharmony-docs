@@ -1,12 +1,11 @@
-# Common Event Service Terminology
-
+# Common Event Service Glossary
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-31T12:45:14.229Z pushedAt=2026-08-31T14:37:36.441Z -->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-11-16T04:20:11.814Z pushedAt=2026-11-16T07:27:51.947Z nl=1 -->
 
 ## C
 

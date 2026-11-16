@@ -1,14 +1,15 @@
 # @ohos.buffer (Buffer)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=31ba07988632b6f2ed98a078bdae886436926502 translatedAt=2026-11-16T05:26:29.498Z pushedAt=2026-11-16T06:31:14.204Z nl=1 -->
 
-A **Buffer** object represents a byte sequence of a fixed length. It is used to store binary data.
+A Buffer object represents a fixed-length byte sequence and is a buffer specifically used to store binary data.
 
-**Recommended use case**: Use Buffer when you need to process images and a large amount of binary data, and receive or upload files.
+**Recommended scenarios:** Suitable for handling large amounts of binary data, such as image processing, file receiving and uploading, network communication data transmission, binary protocol parsing, and encoding/decoding conversion.
 
 > **NOTE**
 >
@@ -22,7 +23,7 @@ import { buffer } from '@kit.ArkTS';
 
 ## BufferEncoding
 
-type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'
+type BufferEncoding = | 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'
 
 Enumerates the supported encoding formats.
 
@@ -48,7 +49,7 @@ Enumerates the supported encoding formats.
 
 alloc(size: number, fill?: string | Buffer | number, encoding?: BufferEncoding): Buffer
 
-Creates and initializes a **Buffer** object of the specified length.
+Creates a Buffer object of the specified byte length and initializes it with the specified value (0 by default).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -58,23 +59,15 @@ Creates and initializes a **Buffer** object of the specified length.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| size | number | Yes| Size of the **Buffer** object to create, in bytes.|
-| fill | string \| [Buffer](#buffer) \| number | No| Value to be filled in the buffer. The default value is **0**.|
-| encoding | [BufferEncoding](#bufferencoding) | No| Encoding format (valid only when **fill** is a string). The default value is **'utf8'**.|
+| size | number | Yes | Length of the specified Buffer object, unit: Byte. The value is a positive integer, with a maximum value of 2^32-1, that is, 4294967295. |
+| fill | string \| [Buffer](#buffer) \| number | No | Value to fill into the new buffer. Default value: 0. |
+| encoding | [BufferEncoding](#bufferencoding) | No | Encoding format (is meaningful only when the `fill` parameter is a string). Default value: 'utf8'. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
 | [Buffer](#buffer) | **Buffer** object created.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -95,7 +88,7 @@ console.info(JSON.stringify(buf3)); // {"type":"Buffer","data":[104,101,108,108,
 
 allocUninitializedFromPool(size: number): Buffer
 
-Creates a **Buffer** object of the specified size from the buffer pool, without initializing it.
+Creates an uninitialized Buffer object of the specified size. The memory is allocated from the buffer pool, which is a pre-allocated memory area. It is suitable for reducing the overhead of frequent memory allocation and improving performance when creating smaller Buffers. For scenarios that require independent memory, use [allocUninitialized](#bufferallocuninitialized).
 
 You need to use [fill()](#fill) to initialize the **Buffer** object created.
 
@@ -115,14 +108,6 @@ You need to use [fill()](#fill) to initialize the **Buffer** object created.
 | -------- | -------- |
 | [Buffer](#buffer) | Uninitialized **Buffer** object.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **Example**
 
 ```ts
@@ -137,7 +122,7 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0,0,0,0,0,0,0,0
 
 allocUninitialized(size: number): Buffer
 
-Creates a **Buffer** object of the specified size, without initializing it. This API does not allocate memory from the buffer pool.
+Creates an uninitialized Buffer object of the specified size. The memory is not allocated from the buffer pool. It is suitable for scenarios that require creating larger Buffers or precise control over memory allocation, such as allocating a large memory area at once (to avoid memory fragmentation accumulation and cache performance loss that the buffer pool may cause).
 
 You need to use [fill()](#fill) to initialize the **Buffer** object created.
 
@@ -157,14 +142,6 @@ You need to use [fill()](#fill) to initialize the **Buffer** object created.
 | -------- | -------- |
 | [Buffer](#buffer) | Uninitialized **Buffer** object.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **Example**
 
 ```ts
@@ -179,7 +156,7 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0,0,0,0,0,0,0,0
 
 byteLength(string: string | Buffer | TypedArray | DataView | ArrayBuffer | SharedArrayBuffer, encoding?: BufferEncoding): number
 
-Obtains the number of bytes of a string based on the encoding format.
+Returns the number of bytes of the specified data based on different encoding formats.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -189,22 +166,14 @@ Obtains the number of bytes of a string based on the encoding format.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| string | string \| [Buffer](#buffer) \| TypedArray \| DataView \| ArrayBuffer \| SharedArrayBuffer | Yes| Target string.|
-| encoding | [BufferEncoding](#bufferencoding) | No| Encoding format. The default value is **'utf8'**.|
+| string | string \| [Buffer](#buffer) \| TypedArray \| DataView \| ArrayBuffer \| SharedArrayBuffer | Yes | String or other data object whose byte length is to be calculated. |
+| encoding | [BufferEncoding](#bufferencoding) | No | Encoding format (is meaningful only when the `string` parameter is of the string type). Default value: 'utf8'. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
 | number | Number of bytes of the string.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -220,7 +189,7 @@ console.info(`${str}: ${str.length} characters, ${buffer.byteLength(str, 'utf-8'
 
 compare(buf1: Buffer | Uint8Array, buf2: Buffer | Uint8Array): -1 | 0 | 1
 
-Compares two **Buffer** objects. This API is used for sorting **Buffer** objects.
+Returns the comparison result of two Buffer or Uint8Array objects, typically used to sort an array of Buffer or Uint8Array objects.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -230,22 +199,14 @@ Compares two **Buffer** objects. This API is used for sorting **Buffer** objects
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| buf1 | [Buffer](#buffer) \| Uint8Array | Yes| **Buffer** object to compare.|
-| buf2 | [Buffer](#buffer) \| Uint8Array | Yes| **Buffer** object to compare.|
+| buf1 | [Buffer](#buffer) \| Uint8Array | Yes | The first Buffer or Uint8Array Instance to be compared. |
+| buf2 | [Buffer](#buffer) \| Uint8Array | Yes | The second Buffer or Uint8Array Instance to be compared. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
 | -1&nbsp;\|&nbsp;0&nbsp;\|&nbsp;1 | Returns **0** if **buf1** is the same as **buf2**.<br>Returns **1** if **buf1** comes after **buf2** when sorted.<br>Returns **-1** if **buf1** comes before **buf2** when sorted.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -264,18 +225,18 @@ console.info(Number(res).toString());
 
 concat(list: Buffer[] | Uint8Array[], totalLength?: number): Buffer
 
-Concatenates an array of **Buffer** objects of the specified length into a new object.
-
-**System capability**: SystemCapability.Utils.Lang
+Copies the content in the array (by default copies all content, or copies the specified byte length) into a new Buffer object and returns it.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Utils.Lang
 
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| list | [Buffer](#buffer)[]&nbsp;\|&nbsp;Uint8Array[] | Yes| Array of objects to concatenate.|
-| totalLength | number | No| Total length of bytes to be copied. The default value is **0**.|
+| list | [Buffer](#buffer)[]&nbsp;\|&nbsp;Uint8Array[] | Yes | Array of Buffer or Uint8Array instances, used to concatenate and merge to create a new Buffer object. |
+| totalLength | number | No | Total byte length to copy. Default value: 0. |
 
 **Return value**
 
@@ -285,11 +246,10 @@ Concatenates an array of **Buffer** objects of the specified length into a new o
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "length" is out of range. It must be >= 0 and <= uint32 max. Received value is: [length] |
 
 **Example**
@@ -308,31 +268,23 @@ console.info(buf.toString('hex'));
 
 from(array: number[]): Buffer
 
-Creates a **Buffer** object with the specified array.
-
-**System capability**: SystemCapability.Utils.Lang
+Creates a new Buffer object according to the specified array, where each element in the array is stored as the byte at the corresponding position.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Utils.Lang
 
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| array | number[] | Yes| Array to create a **Buffer** object.|
+| array | number[] | Yes | An Array composed of integers in the range of 0 to 255, used to create a new Buffer object according to the Array content. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
 | [Buffer](#buffer) | **Buffer** object created.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -348,7 +300,7 @@ console.info(buf.toString('hex'));
 
 from(arrayBuffer: ArrayBuffer | SharedArrayBuffer, byteOffset?: number, length?: number): Buffer
 
-Creates a **Buffer** object of the specified length that shares memory with ArrayBuffer.
+Creates a **Buffer** object of the specified length that shares memory with `arrayBuffer`. Sharing memory means that the **Buffer** and `arrayBuffer` reference the same memory area. Modifications to the **Buffer** data are synchronously reflected in `arrayBuffer`, and vice versa. (Note: This approach avoids memory copying and improves performance, but the timing of memory release must be considered.)
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -358,8 +310,8 @@ Creates a **Buffer** object of the specified length that shares memory with Arra
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| arrayBuffer | ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | Yes| Instance object.|
-| byteOffset | number | No| Byte offset. The default value is **0**.|
+| arrayBuffer | ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | Yes | ArrayBuffer or SharedArrayBuffer object used to create the Buffer. |
+| byteOffset | number | No | Byte offset. Specifies the number of bytes to offset from the start position of arrayBuffer. The created Buffer starts from this offset position. Default value: 0. |
 | length | number | No| Length of the **Buffer** object to create, in bytes. The default value is **arrayBuffer.byteLength** minus **byteOffset**. If null is passed, the byte length is 0.|
 
 **Return value**
@@ -370,11 +322,10 @@ Creates a **Buffer** object of the specified length that shares memory with Arra
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[byteOffset/length]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [byteOffset/length] |
 
 **Example**
@@ -393,7 +344,7 @@ from(buffer: Buffer | Uint8Array): Buffer
 
 Copies the data of a passed **Buffer** object to create a new **Buffer** object and returns the new one.
 
-Creates a **Buffer** object based on the memory of a passed **Uint8Array** object and returns the new object, maintaining the memory association of the data.
+Creates a new **Buffer** object based on the memory of a **Uint8Array** object and returns it. The new **Buffer** and the original **Uint8Array** share the same underlying **ArrayBuffer** memory area.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -403,21 +354,13 @@ Creates a **Buffer** object based on the memory of a passed **Uint8Array** objec
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| buffer | [Buffer](#buffer) \| Uint8Array | Yes| Target object.|
+| buffer | [Buffer](#buffer) \| Uint8Array | Yes | Buffer or Uint8Array object used to create a new Buffer. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
 | [Buffer](#buffer) | **Buffer** object created.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -440,7 +383,7 @@ console.info("uint8Array:", uint8Array);
 
 from(object: Object, offsetOrEncoding: number | string, length: number): Buffer
 
-Creates a **Buffer** object based on the specified object.
+Creates a new **Buffer** object according to the specified `object` type data. When the valueOf() of the object returns an **ArrayBuffer**, the **Buffer** is created according to the byte offset and length. For other types, the object value is converted to a **Buffer** according to the encoding format.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -450,8 +393,8 @@ Creates a **Buffer** object based on the specified object.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| object | Object | Yes| Object that supports **Symbol.toPrimitive** or **valueOf()**.|
-| offsetOrEncoding | number&nbsp;\|&nbsp;string | Yes| Byte offset or encoding format.|
+| object | Object | Yes | Object that supports Symbol.toPrimitive or valueOf(). The return value of valueOf() or Symbol.toPrimitive supports types such as string and ArrayBuffer. |
+| offsetOrEncoding | number&nbsp;\|&nbsp;string | Yes | Byte offset or encoding format. When the return value of valueOf() of object is ArrayBuffer, it is used as the byte offset; in other cases, it is used as the encoding format. |
 | length | number | Yes| Length of the **Buffer** object to create, in bytes. This parameter is valid only when the return value of **valueOf()** of **object** is **ArrayBuffer**. Value range: 0 <= length <= ArrayBuffer.byteLength. Error 10200001 is reported if a value outside this range is reported. In other cases, you can set this parameter to any value of the number type. This parameter does not affect the result.|
 
 **Return value**
@@ -459,14 +402,6 @@ Creates a **Buffer** object based on the specified object.
 | Type| Description|
 | -------- | -------- |
 | [Buffer](#buffer) | **Buffer** object created.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -481,7 +416,7 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[116,104,105,115,3
 
 from(string: String, encoding?: BufferEncoding): Buffer
 
-Creates a **Buffer** object based on a string in the given encoding format.
+Creates a new **Buffer** object according to the string in the specified encoding format. The string is converted to a byte sequence according to the encoding format and stored in the **Buffer**.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -491,7 +426,7 @@ Creates a **Buffer** object based on a string in the given encoding format.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| string | String | Yes| String.|
+| string | String | Yes | String content to be encoded to create the Buffer object. |
 | encoding | [BufferEncoding](#bufferencoding) | No| Encoding format. The default value is **'utf8'**.|
 
 **Return value**
@@ -499,14 +434,6 @@ Creates a **Buffer** object based on a string in the given encoding format.
 | Type| Description|
 | -------- | -------- |
 | [Buffer](#buffer) | **Buffer** object created.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -537,7 +464,7 @@ Checks whether the specified object is a **Buffer** object.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| obj | Object | Yes| Object to check.|
+| obj | Object | Yes | Object to determine whether it is a Buffer. |
 
 **Return value**
 
@@ -581,7 +508,7 @@ Checks whether the encoding format is supported.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| encoding | string | Yes| Encoding format.|
+| encoding | string | Yes | Encoding format. The supported format range is [BufferEncoding](#bufferencoding). |
 
 **Return value**
 
@@ -608,17 +535,17 @@ console.info(buffer.isEncoding('').toString());
 
 transcode(source: Buffer | Uint8Array, fromEnc: string, toEnc: string): Buffer
 
-Transcodes a **Buffer** or **Uint8Array** object from one encoding format to another.
-
-**System capability**: SystemCapability.Utils.Lang
+Re-encodes a **Buffer** or **Uint8Array** object from one character encoding to another. It is applicable to the scenario for converting existing **Buffer** data between different encoding formats.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Utils.Lang
 
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| source | [Buffer](#buffer) \| Uint8Array | Yes| Instance object.|
+| source | [Buffer](#buffer) \| Uint8Array | Yes | The Buffer or Uint8Array instance to be transcoded, providing the source data that needs to be re-encoded. |
 | fromEnc | string | Yes| Current encoding format. For details about the supported formats, see [BufferEncoding](#bufferencoding).|
 | toEnc | string | Yes| Target encoding format. For details about the supported formats, see [BufferEncoding](#bufferencoding).|
 
@@ -627,14 +554,6 @@ Transcodes a **Buffer** or **Uint8Array** object from one encoding format to ano
 | Type| Description|
 | -------- | -------- |
 | [Buffer](#buffer) | New **Buffer** object in the target encoding format.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -650,9 +569,9 @@ console.info("newBuf = " + newBuf.toString('ascii'));
 
 ### Properties
 
-**System capability**: SystemCapability.Utils.Lang
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Utils.Lang
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
@@ -690,7 +609,7 @@ console.info(JSON.stringify(buf1.byteOffset));
 
 compare(target: Buffer | Uint8Array, targetStart?: number, targetEnd?: number, sourceStart?: number, sourceEnd?: number): -1 | 0 | 1
 
-Compares this **Buffer** object with another object.
+Compares the current **Buffer** object with the target **Buffer** or **Uint8Array** object and returns the result in sorting.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -701,7 +620,7 @@ Compares this **Buffer** object with another object.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | target | [Buffer](#buffer) \| Uint8Array | Yes| Target **Buffer** object to compare.|
-| targetStart | number | No| Offset to the start of the data to compare in the target **Buffer** object. The default value is **0**.|
+| targetStart | number | No | Offset at which copying starts in the `target` instance. Value range: >= 0 and <= the byte length of `target`. Default value: 0. |
 | targetEnd | number | No| Offset to the end of the data to compare in the target **Buffer** object (not inclusive). The default value is the length of the target **Buffer** object.|
 | sourceStart | number | No| Offset to the start of the data to compare in this **Buffer** object. The default value is **0**.|
 | sourceEnd | number | No| Offset to the end of the data to compare in this **Buffer** object (not inclusive). The default value is the length of this **Buffer** object.|
@@ -710,15 +629,14 @@ Compares this **Buffer** object with another object.
 
 | Type| Description|
 | -------- | -------- |
-| number | Comparison result. The value **0** is returned if the two **Buffer** objects are the same; **1** is returned if this object comes after the target object when sorted; **-1** is returned if this object comes before the target object when sorted.|
+| -1&nbsp;\|&nbsp;0&nbsp;\|&nbsp;1 | Returns the comparison result. -1: the current one is placed before the target, 0: the current one is the same as the target, 1: the current one is placed after the target. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[targetStart/targetEnd/sourceStart/sourceEnd]" is out of range. It must be >= 0 and <= [right range]. Received value is: [targetStart/targetEnd/sourceStart/sourceEnd] |
 
 **Example**
@@ -752,7 +670,7 @@ Copies data at the specified position in this **Buffer** object to the specified
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | target | [Buffer](#buffer) \| Uint8Array | Yes| **Buffer** or **Uint8Array** object to which data is copied.|
-| targetStart | number | No| Offset to the start position in the target object where data is copied. The default value is **0**.|
+| targetStart | number | No | Offset at which writing starts in the `target` instance. Value range: >= 0 and <= the byte length of target. Default value: 0. |
 | sourceStart | number | No| Offset to the start position in this **Buffer** object where data is copied. The default value is **0**.|
 | sourceEnd | number | No| Offset to the end position in this **Buffer** object (not inclusive). The default value is the length of this **Buffer** object.|
 
@@ -764,11 +682,10 @@ Copies data at the specified position in this **Buffer** object to the specified
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[targetStart/sourceStart/sourceEnd]" is out of range. It must be >= 0. Received value is: [targetStart/sourceStart/sourceEnd] |
 
 **Example**
@@ -792,7 +709,7 @@ console.info(buf2.toString('ascii', 0, 25));
 
 entries(): IterableIterator&lt;[number,&nbsp;number]&gt;
 
-Creates and returns an iterator that contains key-value pairs of this **Buffer** object.
+Returns an iterator containing byte indexes (keys) and byte values (values).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -848,14 +765,6 @@ Checks whether this **Buffer** object is the same as another **Buffer** object.
 | -------- | -------- |
 | boolean | Check result. The value **true** is returned if the two objects are the same; otherwise, **false** is returned.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```ts
@@ -875,7 +784,7 @@ console.info(buf1.equals(buf3).toString());
 
 fill(value: string | Buffer | Uint8Array | number, offset?: number, end?: number, encoding?: BufferEncoding): Buffer
 
-Fills this **Buffer** object at the specified position. By default, data is filled cyclically.
+Fills the data at the specified position of the current object with `value`. When the length of `value` is less than the range to be filled, `value` is repeated for filling, and the filled **Buffer** object is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -886,9 +795,9 @@ Fills this **Buffer** object at the specified position. By default, data is fill
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | string \| [Buffer](#buffer) \| Uint8Array \| number | Yes| Value to fill.|
-| offset | number | No| Offset to the start position in this **Buffer** object where data is filled. The default value is **0**.|
+| offset | number | No | Start offset. Value range: >= 0 and <= Buffer.length. Default value: 0. |
 | end | number | No| Offset to the end position in this **Buffer** object (not inclusive). The default value is the length of this **Buffer** object.|
-| encoding | [BufferEncoding](#bufferencoding) | No| Encoding format (valid only when **value** is a string). The default value is **'utf8'**.|
+| encoding | [BufferEncoding](#bufferencoding) | No | Character encoding format (is meaningful only when the `value` parameter is a string). Default value: 'utf8'. |
 
 **Return value**
 
@@ -898,11 +807,10 @@ Fills this **Buffer** object at the specified position. By default, data is fill
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[offset/end]" is out of range. It must be >= 0 and <= [right range]. Received value is: [offset/end] |
 
 **Example**
@@ -932,21 +840,13 @@ Checks whether this **Buffer** object contains the specified value.
 | -------- | -------- | -------- | -------- |
 | value | string \| number \| [Buffer](#buffer) \| Uint8Array | Yes| Value to match.|
 | byteOffset | number | No| Number of bytes to skip before starting to check data. If the offset is a negative number, data is checked from the end of the **Buffer** object. The default value is **0**.|
-| encoding | [BufferEncoding](#bufferencoding) | No| Encoding format (valid only when **value** is a string). The default value is **'utf8'**.|
+| encoding | [BufferEncoding](#bufferencoding) | No | Character encoding format (is meaningful only when the `value` parameter is a string). Default value: 'utf8'. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
 | boolean | Check result. The value **true** is returned if the object contains the specified value; otherwise, **false** is returned.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -976,21 +876,13 @@ Obtains the index of the first occurrence of the specified value in this **Buffe
 | -------- | -------- | -------- | -------- |
 | value | string \| number \| [Buffer](#buffer) \| Uint8Array | Yes| Value to match.|
 | byteOffset | number | No| Number of bytes to skip before starting to check data. If the offset is a negative number, data is checked from the end of the **Buffer** object. The default value is **0**.|
-| encoding | [BufferEncoding](#bufferencoding) | No| Encoding format (valid only when **value** is a string). The default value is **'utf8'**.|
+| encoding | [BufferEncoding](#bufferencoding) | No | Character encoding format (is meaningful only when the `value` parameter is a string). Default value: 'utf8'. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
 | number | Index obtained.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -1056,21 +948,13 @@ Obtains the index of the last occurrence of the specified value in this **Buffer
 | -------- | -------- | -------- | -------- |
 | value | string \| number \| [Buffer](#buffer) \| Uint8Array | Yes| Value to match.|
 | byteOffset | number | No| Number of bytes to skip before starting to check data. If the offset is a negative number, data is checked from the end of the **Buffer** object. The default value is the length of this **Buffer** object.|
-| encoding | [BufferEncoding](#bufferencoding) | No| Encoding format (valid only when **value** is a string). The default value is **'utf8'**.|
+| encoding | [BufferEncoding](#bufferencoding) | No | Character encoding format (is meaningful only when the `value` parameter is a string). Default value: 'utf8'. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
 | number | Index obtained.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 
@@ -1105,15 +989,14 @@ Reads a 64-bit, big-endian, signed big integer from this **Buffer** object at th
 
 | Type| Description|
 | -------- | -------- |
-| bigint | Data read.|
+| bigint | Signed big-endian 64-bit integer value read. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset]. |
 
 **Example**
@@ -1146,21 +1029,20 @@ Reads a 64-bit, little-endian, signed big integer from this **Buffer** object at
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 8|
+| offset | number | No | Offset. Default value: 0. Value range: 0 <= offset <= Buffer.length - 8. This method cannot be used when the Buffer length is less than 8. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| bigint | Data read.|
+| bigint | Signed 64-bit little-endian integer value read from the Buffer, which can be used for binary data handling in high-precision integer operations. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset]. |
 
 **Example**
@@ -1199,15 +1081,14 @@ Reads a 64-bit, big-endian, unsigned big integer from this **Buffer** object at 
 
 | Type| Description|
 | -------- | -------- |
-| bigint | Data read.|
+| bigint | Unsigned big-endian 64-bit integer value read from the Buffer. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset]. |
 
 **Example**
@@ -1245,15 +1126,14 @@ Reads a 64-bit, little-endian, unsigned big integer from this **Buffer** object 
 
 | Type| Description|
 | -------- | -------- |
-| bigint | Data read.|
+| bigint |  Unsigned little-endian 64-bit integer value read from the Buffer. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset]. |
 
 **Example**
@@ -1296,11 +1176,10 @@ Reads a 64-bit, big-endian, double-precision floating-point number from this **B
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset]. |
 
 **Example**
@@ -1341,11 +1220,10 @@ Reads a 64-bit, little-endian, double-precision floating-point number from this 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset]. |
 
 **Example**
@@ -1386,11 +1264,10 @@ Reads a 32-bit, big-endian, single-precision floating-point number from this **B
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset]. |
 
 **Example**
@@ -1431,11 +1308,10 @@ Reads a 32-bit, little-endian, single-precision floating-point number from this 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset]. |
 
 **Example**
@@ -1476,11 +1352,10 @@ Reads an 8-bit signed integer from this **Buffer** object at the specified offse
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 1. Received value is: [offset]. |
 
 **Example**
@@ -1523,11 +1398,10 @@ Reads a 16-bit, big-endian, signed integer from this **Buffer** object at the sp
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2. Received value is: [offset]. |
 
 **Example**
@@ -1568,11 +1442,10 @@ Reads a 16-bit, little-endian, signed integer from this **Buffer** object at the
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2. Received value is: [offset]. |
 
 **Example**
@@ -1613,11 +1486,10 @@ Reads a 32-bit, big-endian, signed integer from this **Buffer** object at the sp
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset]. |
 
 **Example**
@@ -1658,11 +1530,10 @@ Reads a 32-bit, little-endian, signed integer from this **Buffer** object at the
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | 10200001 |  The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset]. |
 
 **Example**
@@ -1693,7 +1564,7 @@ Reads the specified number of bytes from this **Buffer** object at the specified
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
+| offset | number | Yes | Offset. Value range: 0 <= offset <= Buffer.length - byteLength. |
 | byteLength | number | Yes| Number of bytes to read. Value range: 1 <= byteLength <= 6|
 
 
@@ -1705,11 +1576,10 @@ Reads the specified number of bytes from this **Buffer** object at the specified
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -1754,11 +1624,10 @@ Reads the specified number of bytes from this **Buffer** object at the specified
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -1779,7 +1648,7 @@ console.info("result = " + result);
 
 readUInt8(offset?: number): number
 
-Reads an 8-bit unsigned integer from this **Buffer** object at the specified offset.
+Reads an 8-bit unsigned integer from the specified `offset`.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1800,11 +1669,10 @@ Reads an 8-bit unsigned integer from this **Buffer** object at the specified off
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 1. Received value is: [offset]. |
 
 **Example**
@@ -1829,9 +1697,9 @@ readUInt16BE(offset?: number): number
 
 Reads a 16-bit, big-endian, unsigned integer from this **Buffer** object at the specified offset.
 
-**System capability**: SystemCapability.Utils.Lang
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Utils.Lang
 
 **Parameters**
 
@@ -1848,11 +1716,10 @@ Reads a 16-bit, big-endian, unsigned integer from this **Buffer** object at the 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2. Received value is: [offset]. |
 
 **Example**
@@ -1875,7 +1742,7 @@ console.info("result = " + result);
 
 readUInt16LE(offset?: number): number
 
-Reads a 16-bit, little-endian, unsigned integer from this **Buffer** object at the specified offset.
+Reads an unsigned little-endian 16-bit integer from the specified `offset`.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1896,11 +1763,10 @@ Reads a 16-bit, little-endian, unsigned integer from this **Buffer** object at t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 2. Received value is: [offset]. |
 
 **Example**
@@ -1944,11 +1810,10 @@ Reads a 32-bit, big-endian, unsigned integer from this **Buffer** object at the 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset]. |
 
 **Example**
@@ -1971,9 +1836,9 @@ readUInt32LE(offset?: number): number
 
 Reads a 32-bit, little-endian, unsigned integer from this **Buffer** object at the specified offset.
 
-**System capability**: SystemCapability.Utils.Lang
-
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Utils.Lang
 
 **Parameters**
 
@@ -1990,11 +1855,10 @@ Reads a 32-bit, little-endian, unsigned integer from this **Buffer** object at t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset]. |
 
 **Example**
@@ -2026,7 +1890,7 @@ Reads the specified number of bytes from this **Buffer** object at the specified
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
-| byteLength | number | Yes| Number of bytes to read.  Value range: 1 <= byteLength <= 6|
+| byteLength | number | Yes | Number of bytes to read. Value range: 1 <= byteLength <= 6. |
 
 
 **Return value**
@@ -2037,11 +1901,10 @@ Reads the specified number of bytes from this **Buffer** object at the specified
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -2084,11 +1947,10 @@ Reads the specified number of bytes from this **Buffer** object at the specified
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -2109,11 +1971,11 @@ console.info("result = " + result);
 
 subarray(start?: number, end?: number): Buffer
 
-Truncates this **Buffer** object from the specified position to create a new **Buffer** object.
-
-**System capability**: SystemCapability.Utils.Lang
+Intercepts the data at the specified position of the current object and returns it. The returned **Buffer** and the original **Buffer** share the same memory area. Modifying the data of either object synchronously affects the other object.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**System capability**: SystemCapability.Utils.Lang
 
 **Parameters**
 
@@ -2147,7 +2009,7 @@ console.info(buf2.toString('ascii', 0, buf2.length));
 
 swap16(): Buffer
 
-Converts this **Buffer** object into an array of unsigned 16-bit integers and swaps the byte order in place.
+Converts the current object to an unsigned 16-bit integer array and swaps the byte order. It is applicable to the scenario for converting 16-bit data between big-endian and little-endian.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2185,7 +2047,7 @@ console.info(buf1.toString('hex'));
 
 swap32(): Buffer
 
-Converts this **Buffer** object into an array of unsigned 32-bit integers and swaps the byte order in place.
+Converts the current object to an unsigned 32-bit integer array and swaps the byte order. It is suitable for scenarios where 32-bit data needs to be converted between Big-endian and Little-endian.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2223,7 +2085,7 @@ console.info(buf1.toString('hex'));
 
 swap64(): Buffer
 
-Converts this **Buffer** object into an array of unsigned 64-bit integers and swaps the byte order in place.
+Converts the current object to an unsigned 64-bit integer array and swaps the byte order. It is suitable for scenarios where 64-bit data needs to be converted between Big-endian and Little-endian.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2261,7 +2123,7 @@ console.info(buf1.toString('hex'));
 
 toJSON(): Object
 
-Converts this **Buffer** object into a JSON object.
+Converts the Buffer to a JSON object and returns it. The object includes a type attribute (with the value 'Buffer') and a data attribute (with the value being an array arranged in byte order).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2299,8 +2161,8 @@ Converts the data at the specified position in this **Buffer** object into a str
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| encoding | string | No| Encoding format (valid only when **value** is a string). The default value is **'utf8'**.|
-| start  | number | No|  Offset to the start position of the data to convert. The default value is **0**.|
+| encoding | string | No | Character encoding format. The supported format range is [BufferEncoding](#bufferencoding). Default value: 'utf8'. |
+| start  | number | No |  Start position, unit: Byte. Default value: 0. |
 | end  | number | No|  Offset to the end position of data. The default value is the length of this **Buffer** object.|
 
 **Return value**
@@ -2308,14 +2170,6 @@ Converts the data at the specified position in this **Buffer** object into a str
 | Type| Description|
 | -------- | -------- |
 | string | String. When the value of **start** is greater than or equal to **Buffer.length** or **start** is greater than **end**, an empty string is returned.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 **Example**
 
@@ -2344,7 +2198,7 @@ Creates and returns an iterator that contains the values of this **Buffer** obje
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;number&gt; | Iterator.|
+| IterableIterator&lt;number&gt; | Returns an iterator of values for each byte in the Buffer. |
 
 **Example**
 
@@ -2383,9 +2237,9 @@ Writes a string of the specified length to this **Buffer** object at the specifi
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | str | string | Yes| String to write.|
-| offset | number | No| Offset. The default value is **0**.|
+| offset | number | No | Offset. Value range: >= 0 and <= Buffer.length. Default value: 0. |
 | length | number | No| Maximum number of bytes to write. The default value is **Buffer.length** minus **offset**.|
-| encoding | string | No| Encoding format of the string. The default value is **'utf8'**.|
+| encoding | string | No | Character encoding. The supported format range is [BufferEncoding](#bufferencoding). Default value: 'utf8'. |
 
 
 **Return value**
@@ -2396,11 +2250,10 @@ Writes a string of the specified length to this **Buffer** object at the specifi
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[offset/length]" is out of range. It must be >= 0 and <= buf.length. Received value is: [offset/length]. |
 
 **Example**
@@ -2445,11 +2298,10 @@ Writes a 64-bit, big-endian, signed big integer to this **Buffer** object at the
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -2489,11 +2341,10 @@ Writes a 64-bit, little-endian, signed big integer to this **Buffer** object at 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -2533,11 +2384,10 @@ Writes a 64-bit, big-endian, unsigned big integer to this **Buffer** object at t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -2577,11 +2427,10 @@ Writes a 64-bit, little-endian, unsigned big integer to this **Buffer** object a
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -2621,11 +2470,10 @@ Writes a 64-bit, big-endian, double-precision floating-point number to this **Bu
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
 
 **Example**
@@ -2665,11 +2513,10 @@ Writes a 64-bit, little-endian, double-precision floating-point number to this *
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 8. Received value is: [offset] |
 
 **Example**
@@ -2709,11 +2556,10 @@ Writes a 32-bit, big-endian, single-precision floating-point number to this **Bu
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
 
 **Example**
@@ -2754,11 +2600,10 @@ Writes a 32-bit, little-endian, single-precision floating-point number to this *
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "offset" is out of range. It must be >= 0 and <= buf.length - 4. Received value is: [offset] |
 
 **Example**
@@ -2786,7 +2631,7 @@ Writes an 8-bit signed integer to this **Buffer** object at the specified offset
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | number | Yes| Data to write.|
+| value | number | Yes | Data to write to the Buffer. Value range: -128 <= value <= 127 (8-bit signed integer). |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 1|
 
 
@@ -2798,11 +2643,10 @@ Writes an 8-bit signed integer to this **Buffer** object at the specified offset
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -2846,11 +2690,10 @@ Writes a 16-bit, big-endian, signed integer to this **Buffer** object at the spe
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -2891,11 +2734,10 @@ Writes a 16-bit, little-endian, signed integer to this **Buffer** object at the 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -2935,11 +2777,10 @@ Writes a 32-bit, big-endian, signed integer to this **Buffer** object at the spe
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -2980,11 +2821,10 @@ Writes a 32-bit, little-endian, signed integer to this **Buffer** object at the 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -3013,8 +2853,8 @@ Writes a big-endian signed value of the specified length to this **Buffer** obje
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write.|
-| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - byteLength|
-| byteLength | number | Yes| Number of bytes to write.|
+| offset | number | Yes | Offset. Value range: 0 <= offset <= Buffer.length - byteLength. |
+| byteLength | number | Yes | Number of bytes to write. Value range: 1 <= byteLength <= 6. |
 
 
 **Return value**
@@ -3025,11 +2865,10 @@ Writes a big-endian signed value of the specified length to this **Buffer** obje
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -3071,11 +2910,10 @@ Writes a little-endian signed value of the specified length to this **Buffer** o
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -3103,7 +2941,7 @@ Writes an 8-bit unsigned integer to this **Buffer** object at the specified offs
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | number | Yes| Data to write.|
+| value | number | Yes | Data to write to the buffer. Value range: 0 <= value <= 255 (8-bit unsigned integer). |
 | offset | number | No| Offset. The default value is **0**. Value range: 0 <= offset <= Buffer.length - 1|
 
 
@@ -3115,11 +2953,10 @@ Writes an 8-bit unsigned integer to this **Buffer** object at the specified offs
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -3168,11 +3005,10 @@ Writes a 16-bit, big-endian, unsigned integer to this **Buffer** object at the s
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -3215,11 +3051,10 @@ Writes a 16-bit, little-endian, unsigned integer to this **Buffer** object at th
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -3262,11 +3097,10 @@ Writes a 32-bit, big-endian, unsigned integer to this **Buffer** object at the s
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -3306,11 +3140,10 @@ Writes a 32-bit, little-endian, unsigned integer to this **Buffer** object at th
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -3351,11 +3184,10 @@ Writes an unsigned big-endian value of the specified length to this **Buffer** o
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -3396,11 +3228,10 @@ Writes an unsigned little-endian value of the specified length to this **Buffer*
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of "[param]" is out of range. It must be >= [left range] and <= [right range]. Received value is: [param] |
 
 **Example**
@@ -3415,6 +3246,8 @@ console.info("result = " + result);
 ```
 
 ## Blob
+
+Blob (Binary Large Object) represents an immutable raw data file-like object and is suitable for encapsulating and handling large amounts of binary data.
 
 ### Properties
 
@@ -3431,7 +3264,7 @@ console.info("result = " + result);
 
 constructor(sources: string[] | ArrayBuffer[] | TypedArray[] | DataView[] | Blob[] , options?: Object)
 
-A constructor used to create a **Blob** object.
+Creates a Blob object according to the passed-in data sources and optional configuration items. The Blob instance will include the content of the data sources.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -3441,16 +3274,8 @@ A constructor used to create a **Blob** object.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| sources | string[]&nbsp;\|&nbsp;ArrayBuffer[]&nbsp;\|&nbsp;TypedArray[]&nbsp;\|&nbsp;DataView[]&nbsp;\|&nbsp;Blob[] | Yes| Data sources of the **Blob** object.|
+| sources | string[]&nbsp;\|&nbsp;ArrayBuffer[]&nbsp;\|&nbsp;TypedArray[]&nbsp;\|&nbsp;DataView[]&nbsp;\|&nbsp;[Blob](#blob)[] | Yes | Data source of the Blob instance. |
 | options | Object | No| options:<br>- **endings**: specifies how the terminator **'\n'** is output. The value can be **'native'** or **'transparent'**. **'native'** means that the terminator follows the system. **'transparent'** means that the terminator stored in the **Blob** object remains unchanged. The default value is **'transparent'**.<br>- **type**: type of the data in the **Blob** object. This type represents the MIME type of the data. However, it is not used for type format validation. The default value is **''**.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **Example**
 ```ts
@@ -3479,7 +3304,7 @@ Puts the **Blob** data into an **ArrayBuffer** object. This API uses a promise t
 **Return value**
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;ArrayBuffer&gt; | Promise used to return the **ArrayBuffer** containing the **Blob** data.|
+| Promise&lt;ArrayBuffer&gt; | Promise object. If the operation is successful, resolve returns an ArrayBuffer containing the Blob data. If the operation fails, reject returns an error message. |
 
 **Example**
 ```ts
@@ -3539,7 +3364,7 @@ Decodes data using UTF-8 and returns a string. This API uses a promise to return
 **Return value**
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;string&gt; | Promise used to return the string decoded using UTF-8.|
+| Promise&lt;string&gt; | Promise object. Resolve returns the string decoded in UTF-8, and reject returns the error message. |
 
 **Example**
 ```ts

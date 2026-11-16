@@ -6,6 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=2b056c451ac9f646cc5fe9b238bb736e1dc1be5c translatedAt=2026-11-16T04:35:14.762Z pushedAt=2026-11-16T06:31:14.098Z nl=1 -->
 
 ## Basic Concepts
 
@@ -18,7 +19,7 @@ The USB subsystem logically consists of three parts: USB API, USB Service, and U
 
 **Figure 1** Implementation of the USB service
 
-![USB-service](figures/USB-service.png)
+![USB-service.png](figures/USB-service.png)
 
 - USB API: provides USB APIs that implement various basic functions, for example, query of the USB device list, bulk data transfer, control transfer, and right management.
 

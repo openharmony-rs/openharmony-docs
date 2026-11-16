@@ -1,10 +1,11 @@
 # Publishing Common Events
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-11-16T04:23:05.426Z pushedAt=2026-11-16T06:31:14.016Z nl=1 -->
 
 ## When to Use
 
@@ -16,7 +17,7 @@ You can use [publish()](../../reference/apis-basic-services-kit/js-apis-commonEv
 
 ## Available APIs
 
-For details about the APIs, see [commonEventManager.publish](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagerpublish).
+For details about the API, see [commonEventManager.publish](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagerpublish).
 
 | API                                                      | Description                    |
 | ------------------------------------------------------------ | ---------------------------- |

@@ -1,10 +1,11 @@
-# @ohos.util.PlainArray (Nonlinear Container PlainArray) 
+# @ohos.util.PlainArray (Nonlinear Container PlainArray)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-11-16T05:48:04.802Z pushedAt=2026-11-16T06:31:14.248Z nl=1 -->
 
 PlainArray stores key-value (KV) pairs. Each key must be unique, be of the number type, and have only one value.
 
@@ -14,8 +15,8 @@ Both PlainArray and [LightWeightMap](js-apis-lightweightmap.md) are used to stor
 
 **Recommended use case**: Use PlainArray when you need to store KV pairs whose keys are of the **number** type.
 
-This topic uses the following to identify the use of generics:
-- T: Type
+Generics are used in this document. The following generic type parameters are involved:
+- T: Type, a generic type parameter, which can be of any type
 
 > **NOTE**
 >
@@ -96,9 +97,9 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-const plainArray = new PlainArray<string>();
+let plainArray = new PlainArray<string>();
 let result = plainArray.isEmpty();
-console.info("result = ", result); // result =  true
+console.info("result:", result); // result: true
 ```
 
 
@@ -116,7 +117,7 @@ Checks whether PlainArray has the specified key.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| key | number | Yes| Target key. The value must be less than or equal to int32_max, that is, 2147483647.|
+| key | number | Yes | Specified key. The value range is [-2147483648, 2147483647], i.e., the int32 range. |
 
 **Return value**
 
@@ -126,11 +127,10 @@ Checks whether PlainArray has the specified key.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The has method cannot be bound. |
 
 **Example**
@@ -139,7 +139,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let plainArray = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 let result = plainArray.has(1);
-console.info("result = ", result); // result = true
+console.info("result:", result); // result: true
 ```
 
 
@@ -157,7 +157,7 @@ Obtains the value of the specified key in this PlainArray.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| key | number | Yes| Target key. The value must be less than or equal to int32_max, that is, 2147483647.|
+| key | number | Yes | Specified key to find. Value range is [-2147483648, 2147483647], i.e., the int32 range. |
 
 **Return value**
 
@@ -167,11 +167,10 @@ Obtains the value of the specified key in this PlainArray.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The get method cannot be bound. |
 
 **Example**
@@ -209,11 +208,10 @@ Obtains the index of the element with the specified key in this PlainArray.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The getIndexOfKey method cannot be bound. |
 
 **Example**
@@ -223,7 +221,7 @@ let plainArray = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
 let result = plainArray.getIndexOfKey(2);
-console.info("result = ", result); // result = 1
+console.info("result:", result); // result: 1
 ```
 
 
@@ -288,15 +286,14 @@ Obtains the key of the element at the specified position in this PlainArray.
 
 | Type| Description|
 | -------- | -------- |
-| number | Key of the element. If no match is found, **-1** is returned.|
+| number | Returns the key in the key-value pair of the element at the specified index, or undefined on failure. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The getKeyAt method cannot be bound. |
 
 **Example**
@@ -306,14 +303,14 @@ let plainArray = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
 let result = plainArray.getKeyAt(1);
-console.info("result = ", result); // result = 2
+console.info("result:", result); // result: 2
 ```
 
 ### getValueAt
 
 getValueAt(index: number): T
 
-Obtains the value of an element at the specified position in this PlainArray.
+Finds the value in the key-value pair of the element at the specified index. Returns undefined if the search fails.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -333,11 +330,10 @@ Obtains the value of an element at the specified position in this PlainArray.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The getValueAt method cannot be bound. |
 
@@ -365,7 +361,7 @@ Clones this PlainArray and returns a copy. The modification to the copy does not
 
 | Type| Description|
 | -------- | -------- |
-| PlainArray&lt;T&gt; | New **PlainArray** instance obtained.|
+| PlainArray&lt;T&gt; | Returns a clone instance of the new object. |
 
 **Error codes**
 
@@ -390,7 +386,7 @@ console.info("result:", newPlainArray.get(1));  // result: squirrel
 
 add(key: number, value: T): void
 
-Adds an element to this PlainArray.
+Adds a group of data to the container. If the specified key does not exist, a new key-value pair is added and length increases; if the specified key exists, the value corresponding to the key is replaced.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -400,16 +396,15 @@ Adds an element to this PlainArray.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| key | number | Yes| Key of the target element. The value must be less than or equal to int32_max, that is, 2147483647.|
+| key | number | Yes | Key name of the member data to add. The value range is [-2147483648, 2147483647], i.e., the int32 range. |
 | value | T | Yes| Value of the target element.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The add method cannot be bound. |
 
 **Example**
@@ -425,7 +420,7 @@ console.info("result:", plainArray.get(1));  // result: squirrel
 
 remove(key: number): T
 
-Removes a key-value pair with the specified key.
+Deletes the key-value pair corresponding to the specified key. Returns undefined if the specified key does not exist.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -441,15 +436,14 @@ Removes a key-value pair with the specified key.
 
 | Type| Description|
 | -------- | -------- |
-| T | Value in the key-value pair removed.|
+| T | Returns the value in the deleted key-value pair. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The remove method cannot be bound. |
 
 **Example**
@@ -467,7 +461,7 @@ console.info("result:", result);  // result: sparrow
 
 removeAt(index: number): T
 
-Removes an element at the specified position from this PlainArray.
+Deletes the element at the specified index. Returns undefined if the value is outside [0, PlainArray.length-1].
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -487,11 +481,10 @@ Removes an element at the specified position from this PlainArray.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The removeAt method cannot be bound. |
 
 **Example**
@@ -519,8 +512,8 @@ Removes elements within the specified range.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| index | number | Yes| Start position of the elements to remove. The value must be less than or equal to int32_max, that is, 2147483647.|
-| size | number | Yes| Number of elements to remove. The value must be less than or equal to int32_max, that is, 2147483647.|
+| index | number | Yes | Start index of the element to delete. The value range is [0, PlainArray.length-1], and it must be less than or equal to int32_max, i.e., 2147483647. |
+| size | number | Yes | Expected number of elements to delete. It must be greater than 0 and less than or equal to int32_max, i.e., 2147483647. |
 
 **Return value**
 
@@ -530,11 +523,10 @@ Removes elements within the specified range.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The removeRangeFrom method cannot be bound. |
 
@@ -544,6 +536,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let plainArray = new PlainArray<string>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
+// Delete elements starting from index 1.
 let result = plainArray.removeRangeFrom(1, 3);
 console.info("result:", result);  // result: 1
 ```
@@ -553,7 +546,7 @@ console.info("result:", result);  // result: 1
 
 setValueAt(index: number, value: T): void
 
-Sets a value for an element at the specified position in this PlainArray.
+Replaces the value in the key-value pair corresponding to the specified index in the container.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -563,16 +556,15 @@ Sets a value for an element at the specified position in this PlainArray.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| index | number | Yes| Position index of the target element. The value must be less than or equal to int32_max, that is, 2147483647.|
+| index | number | Yes | Specifies the index of the data to be replaced. The value range is [0, PlainArray.length-1], and it must be less than or equal to int32_max, i.e., 2147483647. |
 | value | T | Yes| Value of the target element.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The setValueAt method cannot be bound. |
 
@@ -582,7 +574,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let plainArray = new PlainArray<string | number>();
 plainArray.add(1, "squirrel");
 plainArray.add(2, "sparrow");
+// Replace the value in the key-value pair at index 1 in plainArray with 3546.
 plainArray.setValueAt(1, 3546);
+// Get and print the value in the key-value pair at index 1 in plainArray.
 let result = plainArray.getValueAt(1);
 console.info("result:", result);  // result: 3546
 ```
@@ -679,11 +673,10 @@ callbackFn parameters
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **Example**
@@ -700,13 +693,13 @@ plainArray.forEach((value: string, index: number) => {
 ```
 
 ```ts
-// You are not advised to use the add, remove, or removeAt APIs in forEach because they may cause unpredictable risks such as infinite loops. You can use the for loop when inserting or deleting data.
+// Not recommended to use the add, remove, and removeAt methods in forEach, as they may cause state exceptions during iteration. It is recommended to use a for loop for safe Insert and Delete operations.
 let plainArray = new PlainArray<string>();
-for(let i = 0; i < 10; i++) {
-  plainArray.add(i,"123");
+for (let i = 0; i < 10; i++) {
+  plainArray.add(i, "123");
 }
 
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   plainArray.remove(i);
 }
 ```

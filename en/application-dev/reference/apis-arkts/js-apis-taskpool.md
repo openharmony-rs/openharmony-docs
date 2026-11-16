@@ -5,7 +5,7 @@
 <!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=08d9523ef0226b259d674e299ae60897c53575d4 translatedAt=2026-09-09T03:23:12.533Z pushedAt=2026-09-09T04:20:57.856Z -->
+<!-- md-trans-meta sourceCommit=31ba07988632b6f2ed98a078bdae886436926502 translatedAt=2026-11-16T05:53:26.243Z pushedAt=2026-11-16T06:31:14.255Z nl=1 -->
 
 TaskPool provides a multi-thread running environment for applications. It helps reduce resource consumption and improve system performance. It also frees you from caring about the thread lifecycle. You can use the task pool APIs to create background tasks (Task), execute or cancel tasks, and so on. Theoretically, the number of tasks that can be created using the task pool APIs is unlimited. However, due to memory limits, it is not recommended to create a large number of tasks without restriction. In addition, it is not recommended to perform blocking operations in tasks, especially indefinite blocking operations, because blocking operations occupy worker threads and affect the scheduling of other tasks and application performance.
 
@@ -2036,7 +2036,6 @@ For details about the following error codes, see [Utils Error Codes](errorcode-u
 ```ts
 import { taskpool } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { HashMap } from '@kit.ArkTS';
 
 @Concurrent
 function hashMapFunc(args: number) {
