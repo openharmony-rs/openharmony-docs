@@ -296,16 +296,14 @@ Failed to crop the image.
 
 **可能原因**
 
-1. 裁剪参数设置错误。
+1. 裁剪参数设置错误。尤其是当解码接口同时传入desiredSize参数和desiredRegion参数时，没有同时设置cropAndScaleStrategy参数。
 2. 图片数据错误。
-3. 当图片是HDR时，在createPixelMap和packing的步骤中，没有将options里的desiredDynamicRange参数设置成AUTO，这个参数默认值是SDR。
-4. 当解码接口同时传入desiredSize参数和desiredRegion参数时，没有同时设置cropAndScaleStrategy参数，指定缩放与裁剪的先后顺序。
 
 **处理步骤**
 
-1. 请检查图片数据或修改正确的裁剪参数。
-2. 如果报错场景符合原因3，需要将options里的desiredDynamicRange参数值设置成AUTO。
-3. 如果报错场景符合原因4，需要同时设置cropAndScaleStrategy参数，指定缩放与裁剪的先后顺序，推荐设置成CROP_FIRST。
+请检查图片数据或修改正确的裁剪参数。
+尤其是当解码接口同时传入desiredSize参数和desiredRegion参数时，需要同时设置cropAndScaleStrategy参数，指定缩放与裁剪的先后顺序，推荐设置成CROP_FIRST。
+详见cropAndScaleStrategy(arkts-apis-image-e.md#CropAndScaleStrategy)参数介绍。
 
 ## 62980110 图片源数据错误
 
