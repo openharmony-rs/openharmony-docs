@@ -518,7 +518,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_GenerateRenderer(OH_AudioStreamBuild
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>        AUDIOSTREAM_ERROR_INVALID_PARAM：<br>                                                1. 参数builder为nullptr；<br>                                                2. StreamType无效；<br>                                                3. 创建OHAudioRenderer失败。<br>AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED：权限缺失。<br>**起始版本：** 26.1.0 <br>AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY：当前硬件不支持超低时延。<br>**起始版本：** 26.1.0 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>        AUDIOSTREAM_ERROR_INVALID_PARAM：<br>                                                1. 参数builder为nullptr；<br>                                                2. StreamType无效；<br>                                                3. 创建OHAudioRenderer失败。<br>AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED：权限缺失。<br>适用版本：26.1.0 +<br>AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY：当前硬件不支持超低时延。<br>适用版本：26.1.0+ |
 
 ### OH_AudioStreamBuilder_GenerateCapturer()
 
@@ -544,7 +544,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_GenerateCapturer(OH_AudioStreamBuild
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>        AUDIOSTREAM_ERROR_INVALID_PARAM：<br>                                                1. 参数builder为nullptr；<br>                                                2. StreamType无效；<br>                                                3. 创建OHAudioCapturer失败。<br>AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED：权限缺失。<br>**起始版本：** 26.1.0 <br>AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY：当前硬件不支持超低时延。<br>**起始版本：** 26.1.0 |
+| [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | AUDIOSTREAM_SUCCESS：函数执行成功。<br>        AUDIOSTREAM_ERROR_INVALID_PARAM：<br>                                                1. 参数builder为nullptr；<br>                                                2. StreamType无效；<br>                                                3. 创建OHAudioCapturer失败。<br>AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED：权限缺失。<br><br>适用版本：26.1.0+<br>AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY：当前硬件不支持超低时延。<br><br>适用版本：26.1.0+ |
 
 ### OH_AudioStreamBuilder_SetFrameSizeInCallback()
 
