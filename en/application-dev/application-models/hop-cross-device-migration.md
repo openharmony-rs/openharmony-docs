@@ -664,7 +664,7 @@ If the size of the data to migrate is greater than 100 KB or a file needs to be 
 
 To use a distributed data object, you must save data in the [onContinue()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncontinue) API on the source device and restore data in the [onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate) or [onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant) API of the target device.
 
-On the source device, save the data to migrate to a distributed [data object](../reference/apis-arkdata/js-apis-data-distributedobject.md#dataobject).
+On the source device, save the data to migrate to a distributed [data object](../reference/apis-arkdata/js-apis-data-distributedobject.md#dataobject9).
 
 - Use [create()](../reference/apis-arkdata/js-apis-data-distributedobject.md#distributeddataobjectcreate9) in **onContinue()** to create a distributed data object and add the data to migrate to the object.
 - Use [genSessionId()](../reference/apis-arkdata/js-apis-data-distributedobject.md#distributeddataobjectgensessionid) to generate a data object network ID, use the ID to call [setSessionId()](../reference/apis-arkdata/js-apis-data-distributedobject.md#setsessionid9) to add the data object to the network, and activate the distributed data object.
@@ -826,7 +826,7 @@ export default class MigrationAbility extends UIAbility {
 
 A file, such as an image or document, must be converted to the [commonType.Asset](../reference/apis-arkdata/js-apis-data-commonType.md#asset) type before being encapsulated into a distributed data objects for migration. The migration implementation is similar to that of a common distributed data object. The following describes only the differences.
 
-On the source device, save the file asset to migrate to a distributed [data object](../reference/apis-arkdata/js-apis-data-distributedobject.md#dataobject).
+On the source device, save the file asset to migrate to a distributed [data object](../reference/apis-arkdata/js-apis-data-distributedobject.md#dataobject9).
 
 - Copy the file asset to the [distributed file directory](application-context-stage.md#obtaining-application-file-paths). For details about related APIs and usage, see [basic file APIs](../file-management/app-file-access.md).
 - Use the file in the distributed file directory to create an asset object.
