@@ -12001,3 +12001,111 @@ struct WebComponent {
   }
 }
 ```
+
+## removeVisitedLinksSince
+
+static removeVisitedLinksSince(date: Date, callback: Callback\<void\>): void
+
+删除指定日期之后发生变化的已访问链接记录。使用callback异步回调。
+
+本接口是静态方法，通过`WebviewController`类调用。日期用于指定删除的起始时间，不用于删除该日期之前的过期记录。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| date | Date | 是 | 数据删除的时间点，删除该日期之后发生变化的已访问链接记录。 |
+| callback | Callback\<void\> | 是 | 删除操作完成时调用的回调函数，无返回值。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  // 保存时间分界，便于删除此后产生的已访问链接记录。
+  removeSince: Date = new Date();
+
+  build() {
+    Column() {
+      Button('remove visited links (callback)')
+        .onClick(() => {
+          webview.WebviewController.removeVisitedLinksSince(this.removeSince, () => {
+            console.info('Visited link removal completed.');
+          });
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .visitedLinkPersistEnabled(true)
+    }
+  }
+}
+```
+
+## removeVisitedLinksSince
+
+static removeVisitedLinksSince(date: Date): Promise\<void\>
+
+删除指定日期之后发生变化的已访问链接记录。使用Promise异步回调。
+
+本接口是静态方法，通过`WebviewController`类调用。日期用于指定删除的起始时间，不用于删除该日期之前的过期记录。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| date | Date | 是 | 数据删除的时间点，删除该日期之后发生变化的已访问链接记录。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  // 保存时间分界，便于删除此后产生的已访问链接记录。
+  removeSince: Date = new Date();
+
+  build() {
+    Column() {
+      Button('remove visited links (promise)')
+        .onClick(() => {
+          webview.WebviewController.removeVisitedLinksSince(this.removeSince)
+            .then(() => {
+              console.info('Visited link removal completed.');
+            })
+            .catch((error: BusinessError) => {
+              console.error(`Failed to remove visited links. Code: ${error.code}, message: ${error.message}`);
+            });
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+        .visitedLinkPersistEnabled(true)
+    }
+  }
+}
+```
