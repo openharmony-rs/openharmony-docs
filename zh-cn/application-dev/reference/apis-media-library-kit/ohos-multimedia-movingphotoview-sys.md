@@ -359,7 +359,6 @@ startPlayback(mode: DisplayMode): void
 **ArkTS-Dyn起始版本：** 26.1.0
  
 **ArkTS-Sta起始版本：** 26.1.0
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | 参数名  | 类型    | 必填 | 说明                         |
 | ------- | ------- | ---- | ---------------------------- |
