@@ -1279,10 +1279,10 @@ static napi_value UnregisterCallbackTable(napi_env env, napi_callback_info info)
 
 | 约束项 | 上限/规则 | 超限后果 |
 | -------- | -------- | -------- |
-| 占位符logicalSize上限 | INT64_MAX（即 2^63-1 字节） | 创建/更新占位符返回OH_CLOUD_DISK_FILE_TOO_LARGE |
-| 单次Execute回传数据块上限 | 128 KiB | 回传请求被拒绝，返回CLOUD_DISK_INVALID_ARG |
-| 同一应用并发水合任务上限 | 5个（水合中状态） | 超出的水合请求排队等待，取数回调延迟下发 |
-| 水合任务空闲超时 | 5分钟（每次Execute回传刷新计时） | 任务被取消，并通过回调表下发取消取数请求 |
+| 占位符logicalSize上限 | INT64_MAX（即 2^63-1 字节） | 创建/更新占位符返回OH_CLOUD_DISK_FILE_TOO_LARGE。 |
+| 单次Execute回传数据块上限 | 128 KiB | 回传请求被拒绝，返回CLOUD_DISK_INVALID_ARG。 |
+| 同一应用并发水合任务上限 | 5个（水合中状态） | 超出的水合请求排队等待，取数回调延迟下发。 |
+| 水合任务空闲超时 | 5分钟（每次Execute回传刷新计时） | 任务被取消，并通过回调表下发取消取数请求。 |
 
 <!-- @[execute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
