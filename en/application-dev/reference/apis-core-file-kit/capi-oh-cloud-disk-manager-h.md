@@ -751,7 +751,7 @@ CloudDisk_ErrorCode OH_CloudDisk_Execute(const OH_CloudDisk_CallbackReqHead reqH
 
 **Description**
 
-Responds to a callback request and writes the obtained data block into the active placeholder hydration task. A single data block cannot exceed 128 KiB. The function copies all input fields and data before returning. The hydration total size is determined by the fetchData.totalSize of the first Execute call and must stay the same in subsequent calls.
+Responds to a callback request and writes the obtained data block into the active placeholder hydration task. A single data block cannot exceed 128 KiB. The function copies all input fields and data before returning. The total hydration size is determined by the fetchData.totalSize of the first Execute call and must stay the same in subsequent calls.
 
 **Since:** 26.0.1
 
