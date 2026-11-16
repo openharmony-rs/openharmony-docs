@@ -1048,7 +1048,7 @@ This window type is invalid.
 
 **错误描述**
 
-窗口类型不支持该操作
+窗口类型不支持该操作。
 
 **可能原因**
 主窗、子窗、dialog、TYPE_FLOAT非系统窗类型不支持某些操作。
