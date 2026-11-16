@@ -39,6 +39,8 @@ ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifi
 
 **装饰器类型：**@ComponentV2
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -59,6 +61,8 @@ ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifi
 
 **装饰器类型：**@ObservedV2
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -66,6 +70,14 @@ ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifi
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 ### 属性
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称                           | 类型                                              | 只读 | 可选 | 说明                                                                                                                                                                                                                  |
 | ---------------------------- | ----------------------------------------------- | -- | -- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -83,6 +95,8 @@ constructor(options: ToolBarV2ItemOptions)
 
 ToolBarV2Item的构造函数。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -98,6 +112,8 @@ ToolBarV2Item的构造函数。
 ## ToolBarV2ItemOptions
 
 用于构建ToolBarV2Item对象。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -121,6 +137,8 @@ ToolBarV2Item的构造函数。
 
 **装饰器类型：**@ObservedV2
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -128,6 +146,14 @@ ToolBarV2Item的构造函数。
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 ### 属性
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称                  | 类型                                                          | 只读 | 可选 | 说明                                                       |
 |:--------------------|:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
@@ -140,6 +166,8 @@ ToolBarV2Item的构造函数。
 constructor(options: ToolBarV2ItemTextOptions)
 
 ToolBarV2ItemText的构造函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -156,6 +184,8 @@ ToolBarV2ItemText的构造函数。
 ## ToolBarV2ItemTextOptions
 
 用于构建ToolBarV2ItemText对象。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -175,6 +205,8 @@ type ToolBarV2ItemAction = (index: number) => void
 
 工具栏子项点击事件回调类型。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -193,6 +225,8 @@ type ToolBarV2ItemAction = (index: number) => void
 
 **装饰器类型：**@ObservedV2
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -200,6 +234,14 @@ type ToolBarV2ItemAction = (index: number) => void
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 ### 属性
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 | 名称                 | 类型                                                          | 只读 | 可选 | 说明                                                       |
 |:-------------------|:------------------------------------------------------------|:---|:---| :---------------------------------------------------------|
@@ -212,6 +254,8 @@ type ToolBarV2ItemAction = (index: number) => void
 constructor(options: ToolBarV2ItemImageOptions)
 
 ToolBarV2ItemImage的构造函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -228,6 +272,8 @@ ToolBarV2ItemImage的构造函数。
 ## ToolBarV2ItemImageOptions
 
 用于构建ToolBarV2ItemImage对象。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -276,6 +322,8 @@ constructor(options: ToolBarV2SymbolGlyphOptions)
 
 ToolBarV2SymbolGlyph的构造函数。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -291,6 +339,8 @@ ToolBarV2SymbolGlyph的构造函数。
 ## ToolBarV2SymbolGlyphOptions
 
 ToolBarV2SymbolGlyphOptions定义Symbol图标的属性。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -309,6 +359,8 @@ type ToolBarV2ItemIconType = ToolBarV2ItemImage | ToolBarV2SymbolGlyph
 
 工具栏子项图标内容的联合类型。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -323,6 +375,8 @@ type ToolBarV2ItemIconType = ToolBarV2ItemImage | ToolBarV2SymbolGlyph
 ## ToolBarV2ItemState
 
 工具栏子项状态枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -340,6 +394,8 @@ type ToolBarV2ItemIconType = ToolBarV2ItemImage | ToolBarV2SymbolGlyph
 
 ToolBarV2Modifier提供设置工具栏高度(height)、背景色(backgroundColor)、左右内边距（padding，仅在子项数量小于5个时生效）、是否显示按压态（stateEffect）的方法。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -352,6 +408,8 @@ backgroundColor(backgroundColor: ColorMetrics): ToolBarV2Modifier
 
 设置工具栏背景色的接口，调用该方法可自定义绘制。
 
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -377,6 +435,8 @@ padding(padding: LengthMetrics): ToolBarV2Modifier
 
 设置工具栏左右内边距的接口，调用该方法可自定义绘制。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -399,6 +459,8 @@ padding(padding: LengthMetrics): ToolBarV2Modifier
 height(height: LengthMetrics): ToolBarV2Modifier
 
 设置工具栏高度的接口，调用该方法可自定义绘制，此高度不包含分割线高度。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -423,6 +485,8 @@ height(height: LengthMetrics): ToolBarV2Modifier
 stateEffect(stateEffect: boolean): ToolBarV2Modifier
 
 设置是否显示按压态效果的接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
