@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:22:50.223Z pushedAt=2026-11-16T01:00:27.752Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:22:50.223Z pushedAt=2026-11-16T02:06:53.404Z nl=1 -->
 
 The cipher-based message authentication code (CMAC) uses a block cipher (such as AES) and a key to generate an authentication code, which verifies that a message has not been tampered with during transmission.
 

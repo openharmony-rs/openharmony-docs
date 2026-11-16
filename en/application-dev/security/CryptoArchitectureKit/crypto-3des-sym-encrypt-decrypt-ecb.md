@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:20:54.327Z pushedAt=2026-11-16T01:00:23.477Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:20:54.327Z pushedAt=2026-11-16T02:06:53.401Z nl=1 -->
 
 For the corresponding algorithm specifications, see [Symmetric Key Encryption/Decryption Algorithm Specifications: 3DES](crypto-encryption-decryption.md#3des).
 

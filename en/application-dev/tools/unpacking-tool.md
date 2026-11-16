@@ -5,7 +5,7 @@
 <!--Designer: @jsjzju-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=31661175150dbd26aebd7a7c4c7a32ee3048209a translatedAt=2026-11-13T12:20:14.468Z pushedAt=2026-11-16T01:15:01.657Z nl=1 -->
+<!-- md-trans-meta sourceCommit=31661175150dbd26aebd7a7c4c7a32ee3048209a translatedAt=2026-11-13T12:20:14.468Z pushedAt=2026-11-16T02:06:53.371Z nl=1 -->
 
 The unpacking tool is a commissioning tool used to unpack HAP (an application package), HSP (dynamically shared library), and APP (application set to launch to the application market) files. It also provides Java APIs to parse the HAP, HSP, and APP files.
 

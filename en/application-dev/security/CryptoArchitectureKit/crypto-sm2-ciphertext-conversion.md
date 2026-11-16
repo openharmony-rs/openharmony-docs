@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:36:25.743Z pushedAt=2026-11-16T01:12:12.234Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:36:25.743Z pushedAt=2026-11-16T02:06:53.453Z nl=1 -->
 
 The currently supported SM2 ciphertext format is the ASN.1 format defined by the Chinese cryptographic standard, where the parameters are combined in C1C3C2 order. For details about the parameters, see [SM2](crypto-encryption-decryption.md#sm2) in the asymmetric key encryption/decryption algorithm specification.
 

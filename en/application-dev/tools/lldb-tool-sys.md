@@ -14,7 +14,7 @@ status: active
 <!--Designer: @da_wei_li11-->
 <!--Tester: @chenhliang-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=8165a7c4aa25ed8c5cfd13847e43274ee9dbfa86 translatedAt=2026-11-13T12:17:08.195Z pushedAt=2026-11-16T01:14:52.144Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8165a7c4aa25ed8c5cfd13847e43274ee9dbfa86 translatedAt=2026-11-13T12:17:08.195Z pushedAt=2026-11-16T02:06:53.361Z nl=1 -->
 
 ## Overview
 Low Level Debugger (LLDB) is a next-generation, high-performance debugger. It can be used to set breakpoints, view and modify variables, perform memory operations, control threads, calculate expressions, backtrack stacks, and support cross-platform and plugin extension.

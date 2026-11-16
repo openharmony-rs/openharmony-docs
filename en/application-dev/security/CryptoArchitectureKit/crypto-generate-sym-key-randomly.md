@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:32:54.170Z pushedAt=2026-11-16T01:07:39.833Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:32:54.170Z pushedAt=2026-11-16T02:06:53.432Z nl=1 -->
 
 This topic uses AES and SM4 as an example to describe how to generate a symmetric key and obtain the binary data.
 

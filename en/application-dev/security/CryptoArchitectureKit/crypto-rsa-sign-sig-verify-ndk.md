@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=f125faebecb74e0ac91596bf752ffa6043e4b775 translatedAt=2026-11-13T12:35:53.825Z pushedAt=2026-11-16T01:12:06.667Z nl=1 -->
+<!-- md-trans-meta sourceCommit=f125faebecb74e0ac91596bf752ffa6043e4b775 translatedAt=2026-11-13T12:35:53.825Z pushedAt=2026-11-16T02:06:53.451Z nl=1 -->
 
 For the corresponding algorithm specifications, see [Signing and Signature Verification Algorithm Specifications: RSA](crypto-sign-sig-verify-overview.md#rsa).
 

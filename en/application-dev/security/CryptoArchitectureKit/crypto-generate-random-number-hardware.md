@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:31:54.219Z pushedAt=2026-11-16T01:07:33.469Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:31:54.219Z pushedAt=2026-11-16T02:06:53.427Z nl=1 -->
 
 Starting from API version 21, a hardware entropy source can be used to generate secure random numbers.
 

@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=51c7d0d76eb53d3c36eed35b7e9afd4ac18e191c translatedAt=2026-11-13T12:32:43.842Z pushedAt=2026-11-16T01:07:42.229Z nl=1 -->
+<!-- md-trans-meta sourceCommit=51c7d0d76eb53d3c36eed35b7e9afd4ac18e191c translatedAt=2026-11-13T12:32:43.842Z pushedAt=2026-11-16T02:06:53.430Z nl=1 -->
 
 Starting from API version 26.0.0, key encapsulation and decapsulation using the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM) algorithm is supported. For the corresponding algorithm specifications, see [KEM Encapsulation and Decapsulation Algorithm Specifications](#algorithm-specifications).
 

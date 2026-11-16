@@ -5,7 +5,7 @@
 <!--Designer: @liuzuming-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=2348ec05ef98b768ce1767324aeb24767349c321 translatedAt=2026-11-13T12:16:10.103Z pushedAt=2026-11-16T01:14:49.165Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2348ec05ef98b768ce1767324aeb24767349c321 translatedAt=2026-11-13T12:16:10.103Z pushedAt=2026-11-16T02:06:53.342Z nl=1 -->
 
 Enterprise Device Manager (edm) provides debugging and testing capabilities for device management applications. For example, it can be used to enable or disable extended enterprise device management capabilities.
 

@@ -6,7 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=a6852e07af10719772909bedca1b70c6b19fcc3c translatedAt=2026-11-13T12:15:26.450Z pushedAt=2026-11-16T01:05:38.719Z nl=1 -->
+<!-- md-trans-meta sourceCommit=a6852e07af10719772909bedca1b70c6b19fcc3c translatedAt=2026-11-13T12:15:26.450Z pushedAt=2026-11-16T02:06:53.340Z nl=1 -->
 
 Access Token Manager (atm) is a tool used to query and set the information such as permission and usage type of an application process. It provides the capability of access control based on the token ID, bundle name, and process name.
 
