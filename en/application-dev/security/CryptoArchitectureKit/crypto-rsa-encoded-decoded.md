@@ -6,13 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:32:45.210Z pushedAt=2026-08-10T09:36:45.348Z -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:35:06.694Z pushedAt=2026-11-16T01:11:56.781Z nl=1 -->
 
 **Encoding**
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to generate a 1024-bit RSA asymmetric key pair (**KeyPair**) with two primes. The **KeyPair** object includes a public key (**PubKey**) and a private key (**PriKey**).
 
-To understand how to generate an RSA asymmetric key pair, refer to the following example, along with [Asymmetric Key Generation and Conversion Specifications: RSA](crypto-key-generation-conversion.md#rsa) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). Note that the reference documents may differ from the current example in input parameters.
+   To understand how to generate an RSA asymmetric key pair, refer to the following example, along with [Asymmetric Key Generation and Conversion Specifications: RSA](crypto-key-generation-conversion.md#rsa) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). Note that the reference documents may differ from the current example in input parameters.
 
 2. Call [prikey.getEncodedPem](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedpem18) with the [KeyEncodingConfig](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#keyencodingconfig18) and **PKCS1/PKCS8** parameters to generate an encoded private key string.
 
@@ -20,7 +20,7 @@ To understand how to generate an RSA asymmetric key pair, refer to the following
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) to create an RSA asymmetric key generator (**asyKeyGenerator**) instance.
 
-To understand how to generate an RSA asymmetric key pair, refer to the following example, along with [Asymmetric Key Generation and Conversion Specifications: RSA](crypto-key-generation-conversion.md#rsa).
+   To understand how to generate an RSA asymmetric key pair, refer to the following example, along with [Asymmetric Key Generation and Conversion Specifications: RSA](crypto-key-generation-conversion.md#rsa).
 
    > **NOTE**
    > The algorithm passed in for encoding must be the same as that used in encoding.
@@ -30,28 +30,35 @@ To understand how to generate an RSA asymmetric key pair, refer to the following
 - Encoding example:
 
   <!-- @[prikey_encoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyEncoding.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function prikeyEncoding() {
-    let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-    let keyPair = rsaGenerator.generateKeyPairSync();
-    let options : cryptoFramework.KeyEncodingConfig = {
-        password: '123456',
-        cipherName: 'AES-128-CBC'
+    try {
+      let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+      let keyPair = rsaGenerator.generateKeyPairSync();
+      let options : cryptoFramework.KeyEncodingConfig = {
+          password: '123456',
+          cipherName: 'AES-128-CBC'
+      }
+      let priPemKey = keyPair.priKey;
+      let priString = priPemKey.getEncodedPem('PKCS1', options);
+      console.info('[sync]TestPriKeyPkcs1Encoded priString output: ' + priString);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`prikeyEncoding failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
-    let priPemKey = keyPair.priKey;
-    let priString = priPemKey.getEncodedPem('PKCS1', options);
-    console.info('[sync]TestPriKeyPkcs1Encoded priString output: ' + priString);
   }
   ```
+
 
 - Decoding example:
 
   <!-- @[prikey_decoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyDecoding.ets) -->
-
+  
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -89,5 +96,3 @@ To understand how to generate an RSA asymmetric key pair, refer to the following
     });
   }
   ```
-
-  <!--no_check-->

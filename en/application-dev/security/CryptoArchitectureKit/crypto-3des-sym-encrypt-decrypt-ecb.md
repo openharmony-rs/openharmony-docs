@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e05ec3d2ee7cce7d8d3040e5e28cede18b1bdce7 translatedAt=2026-10-30T03:22:53.657Z pushedAt=2026-10-30T06:01:35.666Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:20:54.327Z pushedAt=2026-11-16T01:00:23.477Z nl=1 -->
 
 For the corresponding algorithm specifications, see [Symmetric Key Encryption/Decryption Algorithm Specifications: 3DES](crypto-encryption-decryption.md#3des).
 
@@ -59,6 +59,7 @@ If the CBC, CTR, OFB, or CFB block mode is used, you need to set the IV. For det
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   // Encrypt the message.
@@ -86,19 +87,24 @@ If the CBC, CTR, OFB, or CFB block mode is used, you need to set the IV. For det
   }
   
   async function main() {
-    let keyData =
-      new Uint8Array([238, 249, 61, 55, 128, 220, 183, 224, 139, 253, 248, 239, 239, 41, 71, 25, 235, 206, 230, 162, 249,
-        27, 234, 114]);
-    let symKey = await genSymKeyByData(keyData);
-    let message = 'This is a test';
-    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-    let encryptText = await encryptMessagePromise(symKey, plainText);
-    let decryptText = await decryptMessagePromise(symKey, encryptText);
-    if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
-      console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
-    } else {
-      console.error('decrypt failed');
+    try {
+      let keyData =
+        new Uint8Array([238, 249, 61, 55, 128, 220, 183, 224, 139, 253, 248, 239, 239, 41, 71, 25, 235, 206, 230, 162,
+          249, 27, 234, 114]);
+      let symKey = await genSymKeyByData(keyData);
+      let message = 'This is a test';
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = await encryptMessagePromise(symKey, plainText);
+      let decryptText = await decryptMessagePromise(symKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok');
+        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+      } else {
+        console.error('decrypt failed');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```
@@ -108,6 +114,7 @@ If the CBC, CTR, OFB, or CFB block mode is used, you need to set the IV. For det
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   // Encrypt the message.
@@ -135,19 +142,24 @@ If the CBC, CTR, OFB, or CFB block mode is used, you need to set the IV. For det
   }
   
   function main() {
-    let keyData =
-      new Uint8Array([238, 249, 61, 55, 128, 220, 183, 224, 139, 253, 248, 239, 239, 41, 71, 25, 235, 206, 230, 162, 249,
-        27, 234, 114]);
-    let symKey = genSymKeyByData(keyData);
-    let message = 'This is a test';
-    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-    let encryptText = encryptMessage(symKey, plainText);
-    let decryptText = decryptMessage(symKey, encryptText);
-    if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok');
-      console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
-    } else {
-      console.error('decrypt failed');
+    try {
+      let keyData =
+        new Uint8Array([238, 249, 61, 55, 128, 220, 183, 224, 139, 253, 248, 239, 239, 41, 71, 25, 235, 206, 230, 162,
+          249, 27, 234, 114]);
+      let symKey = genSymKeyByData(keyData);
+      let message = 'This is a test';
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = encryptMessage(symKey, plainText);
+      let decryptText = decryptMessage(symKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok');
+        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+      } else {
+        console.error('decrypt failed');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```

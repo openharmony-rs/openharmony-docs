@@ -6,7 +6,7 @@
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=bf461f9e49979e0e2a40b198fc481fabca470628 translatedAt=2026-11-03T02:59:25.036Z pushedAt=2026-11-03T03:04:18.197Z nl=1 -->
+<!-- md-trans-meta sourceCommit=713e0950280e51b65f5485cb7ba4c41c0297cfd7 translatedAt=2026-11-13T12:17:22.136Z pushedAt=2026-11-16T01:14:00.895Z nl=1 -->
 
 ## When to Use
 
@@ -44,6 +44,19 @@ This section systematically explains the window z-order management mechanism fro
 
 ### Z-Order Rules for Window Types
 
+- **Z-order for all window types**
+
+  The hierarchical relationship of all window types in the system, from top to bottom, is shown in the following table (levels from high to low):
+
+  | Window category | Description |
+  | -------- | -------- |
+  | Picture-in-picture window | Created through the [PiPWindow.create()](../reference/apis-arkui/js-apis-pipWindow.md#pipwindowcreate) API. It is used to display video content in a small window. For example, during a video call or video playback, when you swipe up to exit the application, the screen continues to be displayed in a small window. |
+  | Global floating window | A window of the [WindowType.TYPE_FLOAT](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7) type created through [createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1). It requires the [ohos.permission.SYSTEM_FLOAT_WINDOW](../security/AccessToken/restricted-permissions.md#ohospermissionsystem_float_window) permission and is located above all application windows. |
+  | Pinned main window | A main window pinned to the top by calling [setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14). It is located above the normal main windows of other applications, but still lower than the picture-in-picture window and the global floating window above it. |
+  | Main window | An application main window created by default. Multiple main windows are stacked in the order in which they are activated. |
+
+  The specific values of each level vary across devices (such as PC/2-in-1 and Phone devices). The table above describes only the relative hierarchical relationship.
+
 - **Z-order adjustment for windows of the same type**
 
   For windows of the same type (multiple main windows, multiple regular subwindows), the z-order can be adjusted by tapping or using shortcuts (such as **Alt+Tab**).
@@ -71,7 +84,7 @@ This section systematically explains the window z-order management mechanism fro
 
 ### Z-Order Rules for TopMost Windows
 
-- In the [free window](window-terminology.md#freeform-window) state, an application main window can call the [setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14) interface and pass in true to place itself above other application windows, achieving a persistent display effect of "not being obscured". This should be used reasonably to avoid affecting the user experience. Using this interface requires the permission [ohos.permission.WINDOW_TOPMOST](../security/AccessToken/permissions-for-all.md#ohospermissionwindow_topmost).
+- In the [freeform window](window-terminology.md#freeform-window) state, an application main window can call the [setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14) interface and pass in true to place itself above other application windows, achieving a persistent display effect of "not being obscured". This should be used reasonably to avoid affecting the user experience. Using this interface requires the permission [ohos.permission.WINDOW_TOPMOST](../security/AccessToken/permissions-for-all.md#ohospermissionwindow_topmost).
 
 - Starting from API version 26.0.1, the topmost state of a main window can also be adjusted through the [setWindowPosition()](../reference/apis-arkui/arkts-apis-window-f.md#windowsetwindowposition) interface. When using this interface to set a main window as topmost or to cancel the topmost state of a main window that is currently topmost, the permission [ohos.permission.WINDOW_TOPMOST](../security/AccessToken/permissions-for-all.md#ohospermissionwindow_topmost) is required.
 
@@ -105,4 +118,155 @@ This section systematically explains the window z-order management mechanism fro
 >
 > - [setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14) takes effect only in the [freeform window](window-terminology.md#freeform-window) state. You can use [isInFreeWindowMode()](../reference/apis-arkui/arkts-apis-window-Window.md#isinfreewindowmode22) to check whether the current window is in freeform window mode, and combine it with the [on('freeWindowModeChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onfreewindowmodechange22) event listener to listen for window mode changes in real time, thereby accurately determining when it is safe to call [setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14).
 
-<!--no_check-->
+## Practice Cases
+
+### Implementing Key Operation Confirmation with a Modal Subwindow
+
+It is recommended to create a modal subwindow for key operations such as deletion, payment, and logout. These operations usually require a second confirmation from the user, and other operations on the page should be blocked until the confirmation is complete. The level of a modal subwindow is higher than that of its main window and normal subwindows. After it pops up, the windows within its occlusion range cannot be interacted with until the subwindow is closed.
+
+1. The main window can create a modal subwindow by calling the [createSubWindowWithOptions()](../reference/apis-arkui/arkts-apis-window-Window.md#createsubwindowwithoptions12) API and setting the isModal field to true. The default level of a modal subwindow is higher than that of a normal subwindow, so there is no need to additionally call [setSubWindowZLevel()](../reference/apis-arkui/arkts-apis-window-Window.md#setsubwindowzlevel18) to adjust the level.
+   - When modalityType is set to WINDOW_MODALITY, only the parent window is occluded, which is suitable for operation confirmation within a single page.
+   - When modalityType is set to APPLICATION_MODALITY, all windows of the current application are occluded, which is suitable for global blocking.
+   - To cancel the modal state midway, call [setSubWindowModal()](../reference/apis-arkui/arkts-apis-window-Window.md#setsubwindowmodal12) and pass in false.
+2. Call [loadContent()](../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9) to load the confirmation dialog page, and call [showWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#showwindow9-1) to display the subwindow.
+3. After the user confirms or cancels, call [destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9) to destroy the subwindow, and the occluded windows resume interaction.
+
+<!-- @[modal_sub_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowZOrder/entry/src/main/ets/pages/Index.ets) -->
+
+```ts
+import { window } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Pop up a modal window for confirming the delete operation.
+async function showDeleteConfirm(context: common.UIAbilityContext): Promise<void> {
+  let mainWindow = context.windowStage.getMainWindowSync();
+  let options: window.SubWindowOptions = {
+    title: 'Delete Confirmation',
+    decorEnabled: false,
+    isModal: true,
+    modalityType: window.ModalityType.WINDOW_MODALITY
+  };
+  try {
+    // Step 1: Create a modal window.
+    let subWindow = await mainWindow.createSubWindowWithOptions('deleteConfirm', options);
+    // Step 2: Load and display the confirmation dialog page.
+    subWindow.loadContent('pages/DeleteConfirm', (err: BusinessError) => {
+      if (err.code) {
+        console.error(`Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
+        return;
+      }
+      subWindow.showWindow();
+    });
+  } catch (exception) {
+    console.error(`Failed to create the subwindow. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
+}
+```
+
+In step 3, the logic for destroying the modal window is located in the confirmation dialog page (DeleteConfirm.ets). After the user taps the **Cancel** or **Delete** button, the modal window is destroyed. The sample code is as follows:
+
+<!-- @[modal_sub_window_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowZOrder/entry/src/main/ets/pages/DeleteConfirm.ets) -->
+
+```ts
+@Entry
+@Component
+struct DeleteConfirm {
+  build() {
+    Column({ space: 24 }) {
+      Text('Are you sure you want to delete this item?')
+        .fontSize(20)
+        .fontWeight(FontWeight.Medium)
+
+      Row({ space: 16 }) {
+        Button('Cancel')
+          .onClick(() => {
+            this.destroySubWindow();
+          })
+        Button('Delete')
+          .onClick(() => {
+            // Execute the delete logic.
+            this.destroySubWindow();
+          })
+      }
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+
+  // Step 3: After the user confirms or cancels, destroy the modal window and restore interaction for the occluded window.
+  private destroySubWindow(): void {
+    let subWindow = window.findWindow('deleteConfirm');
+    subWindow.destroyWindow().then(() => {
+      console.info('Succeeded in destroying the subwindow.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to destroy the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
+### Implementing Main Window Always-on-Top
+
+In scenarios such as video calls and real-time navigation, the application main window needs persistent display without being occluded by other application windows. You can call [setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14) to pin it to top.
+
+> **NOTE**
+>
+> - A pinned main window is only higher than the normal main windows of other applications, and is still lower than windows at higher levels (such as picture-in-picture windows and global floating windows).
+> - It is recommended that you provide a clear pin/unpin entry on the page to avoid long-term pinning that interferes with the user's multitasking operations.
+
+1. Declare the permission [ohos.permission.WINDOW_TOPMOST](../security/AccessToken/permissions-for-all.md#ohospermissionwindow_topmost) in [module.json5](../quick-start/module-configuration-file.md).
+
+   ```json
+   {
+     "module": {
+       "requestPermissions": [
+         {
+           "name": "ohos.permission.WINDOW_TOPMOST"
+         }
+       ]
+     }
+   }
+   ```
+
+2. Call [isInFreeWindowMode()](../reference/apis-arkui/arkts-apis-window-Window.md#isinfreewindowmode22) to check whether the window is currently in the [freeform window](window-terminology.md#freeform-window) state (pinning takes effect only in this state). If necessary, register [on('freeWindowModeChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onfreewindowmodechange22) to listen for window mode changes.
+3. Call [setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14) and pass in `true` to implement main window always-on-top. When the window no longer needs to be pinned, call `setWindowTopmost()` and pass in `false` to unpin it.
+
+<!-- @[window_topmost](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowZOrder/entry/src/main/ets/pages/Index.ets) -->
+
+```ts
+// Index.ets
+@Entry
+@Component
+struct Index {
+  @State isTopmost: boolean = false;
+  private context = (this.getUIContext()?.getHostContext() as common.UIAbilityContext);
+
+  build() {
+    Column({ space: 24 }) {
+      // ...
+      Button(this.isTopmost ? 'Cancel Topmost' : 'Set Topmost')
+        .onClick(() => {
+          let mainWindow = this.context.windowStage.getMainWindowSync();
+          // Step 2: Confirm whether the current state is freeform window (pinning to top takes effect only in this state).
+          if (!mainWindow.isInFreeWindowMode()) {
+            console.info('The window is not in freeform window mode, topmost is not supported.');
+            return;
+          }
+          // Step 3: Call setWindowTopmost() and pass in true to implement main window pinning; pass in false to unpin when the window is already always-on-top.
+          this.isTopmost = !this.isTopmost;
+          mainWindow.setWindowTopmost(this.isTopmost).then(() => {
+            console.info('Succeeded in setting window topmost.');
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to set window topmost. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+

@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=c9e628eed25087b5223e2b581e63caf4541ed2be translatedAt=2026-10-30T03:51:26.927Z pushedAt=2026-10-30T08:07:39.226Z nl=1 -->
+<!-- md-trans-meta sourceCommit=f125faebecb74e0ac91596bf752ffa6043e4b775 translatedAt=2026-11-13T12:35:53.825Z pushedAt=2026-11-16T01:12:06.667Z nl=1 -->
 
 For the corresponding algorithm specifications, see [Signing and Signature Verification Algorithm Specifications: RSA](crypto-sign-sig-verify-overview.md#rsa).
 
@@ -29,7 +29,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 4. Call [OH_CryptoSign_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_final), and obtain the data after signing.
 
-5. Call [OH_CryptoSign_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_destroy) to release memory.
+5. Call [OH_CryptoSign_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_destroy) to free the memory.
 
 <!-- @[pkcs1_rsa_keypair_sign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pkcs1_signature.cpp) -->
 
@@ -317,7 +317,7 @@ OH_Crypto_ErrCode DoTestRsaSignatureRecover()
 
 4. Call [OH_CryptoSign_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_final), and obtain the data after signing.
 
-5. Call [OH_CryptoSign_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_destroy) to release memory.
+5. Call [OH_CryptoSign_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_destroy) to free the memory.
 
 <!-- @[pkcs1_seg_rsa_keypair_sign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pkcs1_segment_signature.cpp) -->
 
@@ -552,7 +552,7 @@ bool DoTestRsaSignatureVerifySeg()
 2. Call [OH_CryptoSign_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_init), and initialize the Sign instance using the private key (OH_CryptoPrivKey).
 3. Call [OH_CryptoSign_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_update), and pass the data to be signed. The current single operation has no length limit for update, so you can determine how to call update based on the amount of data. If the data is small, you can directly call the OH_CryptoSign_Final interface once to pass it in.
 4. Call [OH_CryptoSign_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_final), and obtain the data after signing.
-5. Call [OH_CryptoSign_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_destroy) to release memory.
+5. Call [OH_CryptoSign_Destroy](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_destroy) to free the memory.
 
 <!-- @[pss_rsa_keypair_sign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerification/entry/src/main/cpp/types/project/rsa_pss_signature_tool.cpp) -->
 

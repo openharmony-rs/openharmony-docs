@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=54563f4d762a79828d807de44c3263058eb36558 translatedAt=2026-10-30T03:46:44.964Z pushedAt=2026-10-30T07:25:04.631Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:33:00.197Z pushedAt=2026-11-16T01:08:03.915Z nl=1 -->
 
 For details about the algorithm specifications, see [ECDH](crypto-key-agreement-overview.md#ecdh).
 
@@ -26,33 +26,40 @@ For details about the algorithm specifications, see [ECDH](crypto-key-agreement-
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function ecdhAwait() {
-    // The public and private key pair data is transferred from an external system.
-    let pubKeyArray =
-      new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
-        83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26,
-        105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92,
-        235, 215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
-    let priKeyArray =
-      new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171,
-        57, 10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
-    let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
-    // Key pair A passed from an external system.
-    let keyPairA = await eccGen.convertKey({ data: pubKeyArray }, { data: priKeyArray });
-    // Key pair B generated internally.
-    let keyPairB = await eccGen.generateKeyPair();
-    let eccKeyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-    // Use the public key of A and the private key of B to perform key agreement.
-    let secret1 = await eccKeyAgreement.generateSecret(keyPairB.priKey, keyPairA.pubKey);
-    // Use the private key of A and the public key of B to perform key agreement.
-    let secret2 = await eccKeyAgreement.generateSecret(keyPairA.priKey, keyPairB.pubKey);
-    // The two key agreement results should be the same.
-    if (secret1.data.toString() === secret2.data.toString()) {
-      console.info('ecdh result: success.');
-      console.info('ecdh output: ' + secret1.data);
-    } else {
-      console.error('ecdh result is not equal.');
+    try {
+      // Assume that the public-private key pair data is externally passed in.
+      let pubKeyArray =
+        new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0,
+          4, 83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121,
+          26, 105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99,
+          92, 235, 215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
+      let priKeyArray =
+        new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171,
+          57, 10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1,
+          7]);
+      let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
+      // Externally passed in public-private key pair A.
+      let keyPairA = await eccGen.convertKey({ data: pubKeyArray }, { data: priKeyArray });
+      // Internally generated public-private key pair B.
+      let keyPairB = await eccGen.generateKeyPair();
+      let eccKeyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+      // Perform key agreement using the public key of A and the private key of B.
+      let secret1 = await eccKeyAgreement.generateSecret(keyPairB.priKey, keyPairA.pubKey);
+      // Perform key agreement using the private key of A and the public key of B.
+      let secret2 = await eccKeyAgreement.generateSecret(keyPairA.priKey, keyPairB.pubKey);
+      // The results of the two agreements should be consistent.
+      if (secret1.data.toString() === secret2.data.toString()) {
+        console.info('ecdh result: success.');
+        console.info('ecdh output: ' + secret1.data);
+      } else {
+        console.error('ecdh result is not equal.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```

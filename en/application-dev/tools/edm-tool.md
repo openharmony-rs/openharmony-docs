@@ -5,21 +5,21 @@
 <!--Designer: @liuzuming-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=df60ad9cbfe305c82c28cfa362d22098a00c90fe translatedAt=2026-11-02T07:55:21.397Z pushedAt=2026-11-03T01:31:39.216Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2348ec05ef98b768ce1767324aeb24767349c321 translatedAt=2026-11-13T12:16:10.103Z pushedAt=2026-11-16T01:14:49.165Z nl=1 -->
 
 Enterprise Device Manager (edm) provides debugging and testing capabilities for device management applications. For example, it can be used to enable or disable extended enterprise device management capabilities.
 
 ## Environment Setup
 
-Before using this tool, you must obtain the <!--Del-->[<!--DelEnd-->hdc tool<!--Del-->](../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)<!--DelEnd--> and run the **hdc shell** command.
+Before using this tool, you must obtain the <!--Del-->[hdc](../../device-dev/subsystems/subsys-toolchain-hdc-guide.md) tool<!--DelEnd--> and run the **hdc shell** command.
 
 ## Commands
 
-| Command         | Description                                                        |
+| Command       | Description                                                         |
 | ------------- | ------------------------------------------------------------ |
-| help          | Displays the commands supported by the edm tool.                       |
-| enable-admin  | Enables the extended enterprise device management capabilities of a component. The target component must be an [EnterpriseAdminExtensionAbility](../mdm/mdm-kit-admin.md).|
-| disable-admin | Disables the extended enterprise device management capabilities of a component.            |
+| help          | Displays the commands supported by the edm tool.                        |
+| enable-admin  | Activation command, used to activate the enterprise device management extension capability. The target component must be an [EnterpriseAdminExtensionAbility](../mdm/mdm-kit-admin.md). |
+| disable-admin | Disables the extended enterprise device management capabilities of a component.             |
 
 ## help
 

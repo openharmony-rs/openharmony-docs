@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=d72018541c8c2dd5dad395009d1fba92751f60f3 translatedAt=2026-10-30T03:42:36.536Z pushedAt=2026-10-30T07:22:27.429Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:31:54.219Z pushedAt=2026-11-16T01:07:33.469Z nl=1 -->
 
 Starting from API version 21, a hardware entropy source can be used to generate secure random numbers.
 
@@ -63,8 +63,10 @@ After the hardware entropy source is set, use the **RAND_priv_bytes** API of Ope
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function doRand() {
+    try {
       let rand = cryptoFramework.createRandom();
       rand.enableHardwareEntropy();
       let seed = new Uint8Array([1, 2, 3]);
@@ -72,7 +74,11 @@ After the hardware entropy source is set, use the **RAND_priv_bytes** API of Ope
       let len = 12;
       let randOutput = await rand.generateRandom(len);
       console.info('rand output: ' + randOutput.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
+  }
   ```
 
 

@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=79c965e8e98a1b9ec686c81b298af1075b43b9bc translatedAt=2026-10-30T03:45:54.956Z pushedAt=2026-10-30T07:24:46.057Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:33:03.200Z pushedAt=2026-11-16T01:07:59.405Z nl=1 -->
 
 For details about the algorithm specifications, see [DH](crypto-key-agreement-overview.md#dh).
 
@@ -26,24 +26,30 @@ For details about the algorithm specifications, see [DH](crypto-key-agreement-ov
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function dhAwait() {
-    let keyGen = cryptoFramework.createAsyKeyGenerator('DH_modp1536');
-    // Randomly generate public-private key pair A.
-    let keyPairA = await keyGen.generateKeyPair();
-    // Randomly generate public-private key pair B with the same specifications.
-    let keyPairB = await keyGen.generateKeyPair();
-    let keyAgreement = cryptoFramework.createKeyAgreement('DH_modp1536');
-    // Use the public key of A and the private key of B to perform key agreement.
-    let secret1 = await keyAgreement.generateSecret(keyPairB.priKey, keyPairA.pubKey);
-    // Use the private key of A and the public key of B to perform key agreement.
-    let secret2 = await keyAgreement.generateSecret(keyPairA.priKey, keyPairB.pubKey);
-    // The two key agreement results should be the same.
-    if (secret1.data.toString() === secret2.data.toString()) {
-      console.info('DH result: success.');
-      console.info('DH output: ' + secret1.data);
-    } else {
-      console.error('DH result is not equal.');
+    try {
+      let keyGen = cryptoFramework.createAsyKeyGenerator('DH_modp1536');
+      // Randomly generate a public-private key pair A.
+      let keyPairA = await keyGen.generateKeyPair();
+      // Randomly generate a public-private key pair B with consistent specifications.
+      let keyPairB = await keyGen.generateKeyPair();
+      let keyAgreement = cryptoFramework.createKeyAgreement('DH_modp1536');
+      // Perform key agreement using the public key of A and the private key of B.
+      let secret1 = await keyAgreement.generateSecret(keyPairB.priKey, keyPairA.pubKey);
+      // Perform key agreement using the private key of A and the public key of B.
+      let secret2 = await keyAgreement.generateSecret(keyPairA.priKey, keyPairB.pubKey);
+      // The results of the two agreements should be consistent.
+      if (secret1.data.toString() === secret2.data.toString()) {
+        console.info('DH result: success.');
+        console.info('DH output: ' + secret1.data);
+      } else {
+        console.error('DH result is not equal.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```
@@ -55,24 +61,30 @@ For details about the algorithm specifications, see [DH](crypto-key-agreement-ov
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   function dhSync() {
-    let keyGen = cryptoFramework.createAsyKeyGenerator('DH_modp1536');
-    // Randomly generate public-private key pair A.
-    let keyPairA = keyGen.generateKeyPairSync();
-    // Randomly generate public-private key pair B with the same specifications.
-    let keyPairB = keyGen.generateKeyPairSync();
-    let keyAgreement = cryptoFramework.createKeyAgreement('DH_modp1536');
-    // Use the public key of A and the private key of B to perform key agreement.
-    let secret1 = keyAgreement.generateSecretSync(keyPairB.priKey, keyPairA.pubKey);
-    // Use the private key of A and the public key of B to perform key agreement.
-    let secret2 = keyAgreement.generateSecretSync(keyPairA.priKey, keyPairB.pubKey);
-    // The two key agreement results should be the same.
-    if (secret1.data.toString() === secret2.data.toString()) {
-      console.info('DH result: success.');
-      console.info('DH output: ' + secret1.data);
-    } else {
-      console.error('DH result is not equal.');
+    try {
+      let keyGen = cryptoFramework.createAsyKeyGenerator('DH_modp1536');
+      // Randomly generate public-private key pair A.
+      let keyPairA = keyGen.generateKeyPairSync();
+      // Randomly generate public-private key pair B with consistent specifications.
+      let keyPairB = keyGen.generateKeyPairSync();
+      let keyAgreement = cryptoFramework.createKeyAgreement('DH_modp1536');
+      // Perform key agreement using the public key of A and the private key of B.
+      let secret1 = keyAgreement.generateSecretSync(keyPairB.priKey, keyPairA.pubKey);
+      // Perform key agreement using the private key of A and the public key of B.
+      let secret2 = keyAgreement.generateSecretSync(keyPairA.priKey, keyPairB.pubKey);
+      // The results of the two agreements should be consistent.
+      if (secret1.data.toString() === secret2.data.toString()) {
+        console.info('DH result: success.');
+        console.info('DH output: ' + secret1.data);
+      } else {
+        console.error('DH result is not equal.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```

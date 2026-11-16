@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=d72018541c8c2dd5dad395009d1fba92751f60f3 translatedAt=2026-10-30T03:43:27.727Z pushedAt=2026-10-30T07:22:49.900Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:31:59.491Z pushedAt=2026-11-16T01:07:37.400Z nl=1 -->
 
 > **NOTE**
 >
@@ -56,15 +56,21 @@ The random number generation algorithm uses the **RAND_priv_bytes** interface of
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
   async function doRand() {
+    try {
       let rand = cryptoFramework.createRandom();
       let seed = new Uint8Array([1, 2, 3]);
       rand.setSeed({ data: seed });
       let len = 12;
       let randOutput = await rand.generateRandom(len);
       console.info('rand output: ' + randOutput.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
+  }
   ```
 
 
