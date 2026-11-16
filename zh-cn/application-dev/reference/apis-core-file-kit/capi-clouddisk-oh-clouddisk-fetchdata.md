@@ -28,6 +28,6 @@ typedef struct OH_CloudDisk_FetchData {...} OH_CloudDisk_FetchData
 | -- | -- |
 | uint64_t offset | 本次数据在文件中的起始偏移，以字节为单位。<br>**起始版本：** 26.0.1 |
 | uint64_t size | 本次下载数据长度，以字节为单位。<br>**起始版本：** 26.0.1 |
-| uint64_t totalSize | 云侧文件总大小，以字节为单位。由首次调用OH_CloudDisk_Execute()回传时决定，后续回传需保持一致。<br>**起始版本：** 26.0.1 |
+| uint64_t totalSize | 云端文件总大小，以字节为单位。由首次调用[OH_CloudDisk_Execute()](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_execute)回传时决定，后续回传需保持一致。<br>**起始版本：** 26.0.1 |
 | [OH_CloudDisk_DataBuf](capi-clouddisk-oh-clouddisk-databuf.md) data | 文件数据缓冲区。<br>**起始版本：** 26.0.1 |
 | bool isComplete | 是否是最后一块数据。true表示当前数据块是文件水合的最后一块；false表示后续还有数据需要传输。<br>**起始版本：** 26.0.1 |

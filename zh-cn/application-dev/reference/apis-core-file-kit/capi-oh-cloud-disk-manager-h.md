@@ -569,7 +569,7 @@ CloudDisk_ErrorCode OH_CloudDisk_CreatePlaceholder(const CloudDisk_SyncFolderPat
 
 **描述**
 
-在已注册的同步根路径下创建占位符文件。创建时系统将本地文件大小设置为placeholderInfo中预设的logicalSize，系统不保障本地占位符文件与云侧文件大小的一致性，应用需通过OH_CloudDisk_UpdatePlaceholder()接口保障本地占位符文件的元数据与云侧文件元数据的一致性。
+在已注册的同步根路径下创建占位符文件。创建时系统将本地文件大小设置为placeholderInfo中预设的logicalSize，系统不保障本地占位符文件与云端文件大小的一致性，应用需通过OH_CloudDisk_UpdatePlaceholder()接口保障本地占位符文件的元数据与云端文件元数据的一致性。
 
 **起始版本：** 26.0.1
 
