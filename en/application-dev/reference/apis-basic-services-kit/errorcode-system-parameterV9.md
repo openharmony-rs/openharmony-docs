@@ -5,7 +5,7 @@
 <!--Designer: @chenjinxiang3-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=0deae5163530b594a8b9c0420a3cfff159fa8146 translatedAt=2026-09-01T03:26:24.079Z pushedAt=2026-09-03T08:04:57.433Z -->
+<!-- md-trans-meta sourceCommit=6d4bbbb5c864f728420d925decd6d58c3c8b79be translatedAt=2026-11-12T04:09:54.890Z pushedAt=2026-11-12T12:14:31.427Z nl=1 -->
 
 System parameter error codes are used to identify errors that occur during system parameter operations, including parameter query failures, invalid values, insufficient permissions, and internal system errors. Specific error codes and descriptions help developers quickly locate and resolve issues.
 
@@ -83,5 +83,5 @@ The socket connection is abnormal, the node fails to be added or obtained, an at
 
 **Solution**
 
-1. Analyze the memory usage of the entire process and eliminate memory leak.
+1. Analyze the memory usage of the entire process and eliminate memory leaks.
 2. If you are in a multi-thread scenario, check the error stack for deadlock.

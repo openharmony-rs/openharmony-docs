@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=89682c631d1be2b78acdb9477c9eda01133e0baf translatedAt=2026-09-01T11:47:06.250Z -->
+<!-- md-trans-meta sourceCommit=ec6f48e0f437b7c978b5fa7fb10a6343afcd8d2c translatedAt=2026-11-03T03:09:27.488Z pushedAt=2026-11-13T01:06:00.054Z nl=1 -->
 
 Provides common control capabilities for text components such as TextInput, TextArea, and Search, including text content retrieval, keyboard appearance configuration, and content change reason tracking. It applies to scenarios where text input components need to be managed and controlled in a unified manner.
 
@@ -50,7 +50,7 @@ Obtains the text content within a specified range. This API can be used in the f
 
 | Type   | Description              |
 | ------ | ---------------- |
-| string | Returns the text content string in the specified range. When the specified start position is greater than the end position, an empty string is returned. |
+| string | Text content string within the specified range. When the specified start position is greater than the end position, returns the text content between the end position and the start position. |
 
 ## KeyboardGradientMode<sup>20+</sup>
 
@@ -130,3 +130,78 @@ Sets the voice button options.
 | Name               | Type                                             | Read-Only| Optional| Description                                                                                 |
 |--------------------|-------------------------------------------------|----|----|-------------------------------------------------------------------------------------|
 | enabled              | boolean                                         | No  | Yes | Whether to enable or disable the voice button in the input box.<br>The value true means to enable the voice button, and false means to disable it.<br>Default value: false|
+
+## Examples
+
+### Example 1: Obtaining Text Content in a Specified Range
+
+This example demonstrates how to call the [getText](#gettext19) API through the [TextAreaController](ts-basic-components-textarea.md#textareacontroller8) controller to obtain the text content in a specified range of the input box.
+
+The **getText** API is added since API version 19.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct GetTextExample {
+  @State text: string = 'Hello World';
+  @State resultText: string = '';
+  controller: TextAreaController = new TextAreaController();
+
+  build() {
+    Column() {
+      TextArea({
+        text: this.text,
+        placeholder: 'Enter the text content',
+        controller: this.controller
+      })
+        .width(336)
+        .height(56)
+        .margin(20)
+        .fontSize(16)
+        .onChange((value: string) => {
+          this.text = value;
+        })
+
+      Text(`Obtained result: ${this.resultText}`)
+        .width('90%')
+        .fontSize(16)
+        .margin(10)
+
+      Button('Obtain all text')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          // Obtain all text content by default when range is not specified.
+          this.resultText = this.controller.getText();
+        })
+
+      Button('Obtain the first 5 characters')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          // Specify range as { start: 0, end: 5 } to obtain the text content between indexes 0 and 5.
+          this.resultText = this.controller.getText({ start: 0, end: 5 });
+        })
+
+      Button('Obtain characters 6 to 11')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          // Specify range as { start: 6, end: 11 } to obtain the text content between indexes 6 and 11.
+          this.resultText = this.controller.getText({ start: 6, end: 11 });
+        })
+
+      Button('Start position greater than end position')
+        .width('80%')
+        .margin(10)
+        .onClick(() => {
+          // When the start position is greater than the end position, return the text content between the end position and the start position.
+          this.resultText = this.controller.getText({ start: 8, end: 3 });
+        })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
+<!--Del--> <!--DelEnd-->

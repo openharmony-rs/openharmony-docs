@@ -1,11 +1,11 @@
 # Gesture Blocking Enhancement
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=481cb7d52c0615d226e853287e9b8dda2fee725a translatedAt=2026-08-28T01:28:58.344Z pushedAt=2026-08-31T10:12:00.933Z -->
+<!-- md-trans-meta sourceCommit=aeab4ab351af0e65f501d93f6c45e863dc3b02c4 translatedAt=2026-11-03T02:42:12.657Z pushedAt=2026-11-13T01:06:00.002Z nl=1 -->
 
 Provides components with gesture blocking capabilities, applicable to scenarios such as nested scrolling, gesture coordination between parent and child components, and gesture conflict handling. As needed, developers can process built-in gestures in parallel with gestures that have a higher priority, and dynamically control the triggering of gesture events, thereby managing the gesture response order and interaction behavior more precisely.
 
@@ -84,7 +84,7 @@ For scenarios where the gestures of built-in components in ArkUI system combinat
 | Name       | Type                   | Mandatory | Description                         |
 | ---------- | -------------------------- | ------- | ----------------------------- |
 | callback      | [GestureRecognizerJudgeBeginCallback](#gesturerecognizerjudgebegincallback) | Yes    |  Custom gesture recognizer judgment callback to bind to the component. When the gesture bound to the component is about to succeed, the user-defined callback is triggered to obtain the result.|
-| exposeInnerGesture   | boolean         | Yes    | Whether to expose the internal gesture identifier.<br>Default value: **false**<br>**NOTE**<br>If the target component is a combination component, when this parameter is set to **true**, the **current** parameter in the callback contains the gesture recognizers inside the combination component.<br>Currently, only [Tabs](ts-container-tabs.md) is supported. Do not set this parameter for other components.<br>When this parameter is set to **false**, the behavior is the same as that of the original API [onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin). |
+| exposeInnerGesture   | boolean         | Yes    | Whether to expose the internal gesture identifier.<br>**Note:**<br>If the target component is a combination component, when this parameter is set to **true**, the **current** parameter in the callback contains the gesture recognizers inside the combination component.<br>Currently, only [Tabs](ts-container-tabs.md) is supported. Do not set this parameter to **true** for other components.<br>When this parameter is set to **false**, the behavior is the same as that of the original API [onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin). |
 
 **Return value**
 
@@ -180,7 +180,7 @@ Defines the callback event type for dynamically specifying whether a gesture rec
 
 | Name   | Type                      | Mandatory | Description                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11) | Yes   | Information about the base gesture event after the [hit testing](../../../ui/arkts-interaction-basic-principles.md#hit-testing) ends. <br>**NOTE** <br>Only the information of BaseGestureEvent is included, excluding the extended information of its subclasses.<br>The values of axisHorizontal and axisVertical are 0. |
+| event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11) | Yes   | Information about the base gesture event after the [hit testing](../../../ui/arkts-interaction-basic-principles.md#hit-testing) ends. <br>**NOTE** <br>Only the information of BaseGestureEvent is included, excluding the extended information of its child classes.<br>The values of axisHorizontal and axisVertical are 0. |
 | recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | Yes   | All gesture recognizer objects after the [hit testing](../../../ui/arkts-interaction-basic-principles.md#hit-testing) ends. |
 
 ## onGestureCollectIntercept
@@ -201,7 +201,7 @@ Triggered after the events and gestures on the current node and higher-priority 
 
 | Name        | Type                    | Mandatory  | Description                          |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | [GestureCollectInterceptCallback](#gesturecollectinterceptcallback) | Yes   |  Callback used when the component performs a touch test. It is executed after the collection of events and gestures on the current node and higher-priority nodes is complete, to intervene in the collection result. |
+| callback      | [GestureCollectInterceptCallback](#gesturecollectinterceptcallback) | Yes   |  Callback used when the component performs a hit testing. It is executed after the collection of events and gestures on the current node and higher-priority nodes is complete, to intervene in the collection result. |
 
 **Return value**
 
@@ -288,11 +288,11 @@ Defines the callback event type for setting the parallel relationship between a 
 | ------ | --------- |
 | [GestureRecognizer](ts-gesture-common.md#gesturerecognizer12) | A gesture recognizer that is bound to the current recognizer in a parallel relationship. |
 
-## Example
+## Examples
 
 ### Example 1: Implementing Nested Scrolling
 
-This example demonstrates how to implement nested scrolling using **shouldBuiltInRecognizerParallelWith** and **onGestureRecognizerJudgeBegin**. The inner component takes precedence in responding to swipe gestures. When the inner component reaches the top or bottom, the outer component can then take over the scrolling.
+This example demonstrates how to implement nested scrolling using **shouldBuiltInRecognizerParallelWith** and **onGestureRecognizerJudgeBegin**. The inner component takes precedence in responding to pan gestures. When the inner component reaches the top or bottom, the outer component can then take over the scrolling.
 
 ```ts
 // xxx.ets
@@ -458,9 +458,9 @@ struct FatherControlChild {
 
 ### Example 2: Blocking Inner Container Gestures in Nested Scrolling
 
-This example demonstrates how to set the **exposeInnerGesture** parameter to **true** to enable a first-level **Tabs** container to intercept the swipe gestures of a nested second-level **Tabs** container, thereby triggering the swipe gestures of the built-in **Swiper** component of the first-level **Tabs** container.
+This example demonstrates how to set the **exposeInnerGesture** parameter to **true** to enable a first-level **Tabs** container to intercept the pan gestures of a nested second-level **Tabs** container, thereby triggering the pan gestures of the built-in **Swiper** component of the first-level **Tabs** container.
 
-You can define variables to record the index of the inner **Tabs** container and use this index to determine whether the swipe has reached the boundary of the inner **Tabs** container. When the boundary is reached, the callback is triggered to return a rejection result, blocking the swipe gesture of the inner **Tabs** container so that the outer **Tabs** container generates the swipe gesture.
+You can define variables to record the index of the inner **Tabs** container and use this index to determine whether the swipe has reached the boundary of the inner **Tabs** container. When the boundary is reached, the callback is triggered to return a rejection result, blocking the pan gesture of the inner **Tabs** container so that the outer **Tabs** container generates the pan gesture.
 
 ```ts
 // xxx.ets
@@ -615,7 +615,7 @@ struct Index {
             this.message = 'RotationGesture\nangle:' + target.getAngle() + '\nfingers:' +
             target.getFingerCount() + '\nisFingerCountLimited:' + target.isFingerCountLimit();
           }
-          // Check whether the gesture is a swipe gesture.
+          // Check whether the gesture is a pan gesture.
           if (current.getType() === GestureControl.GestureType.SWIPE_GESTURE) {
             let target = current as SwipeRecognizer;
             this.message = 'SwipeGesture\ndirection:' + target.getDirection() + '\nfingers:' +
@@ -1002,23 +1002,12 @@ struct Index {
 ![example](figures/gestureCollectIntercept.gif)
 
 The component tree corresponding to the example is shown in the following figure.
-```mermaid
-graph TD
-    A((Column))
-    B((Column))
-    C((Row))
-    D((Button1))
-    E((Button2))
 
-    A --> B
-    A --> C
-    C --> D
-    C --> E
-```
+![gesture-collect-intercept](figures/gesture-collect-intercept.png)
 
 ### Example 7: Nested Scrolling with Non-Built-in Gestures
 
-This example implements nested scrolling using [shouldRecognizerParallelWith](#shouldrecognizerparallelwith) and [onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin). The inner component takes precedence in responding to the swipe gesture. When the inner component scrolls to the top or bottom, the outer component can take over the scrolling.
+This example implements nested scrolling using [shouldRecognizerParallelWith](#shouldrecognizerparallelwith) and [onGestureRecognizerJudgeBegin](#ongesturerecognizerjudgebegin). The inner component takes precedence in responding to the pan gesture. When the inner component scrolls to the top or bottom, the outer component can take over the scrolling.
 
 The **shouldRecognizerParallelWith** API is added since API version 26.0.0.
 

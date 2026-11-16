@@ -1,12 +1,11 @@
 # DynamicLayout
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zju_ljz-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=dac4f2b07a7203d2a3ed445760648d35364b1673 translatedAt=2026-08-21T02:22:25.492Z pushedAt=2026-08-21T07:28:16.897Z -->
+<!-- md-trans-meta sourceCommit=1d7744169f647bc48a2c65086f0061aa3c69406b translatedAt=2026-11-03T01:58:01.623Z pushedAt=2026-11-13T01:05:59.930Z nl=1 -->
 
 A dynamic layout container component that supports dynamically switching between different layout algorithms at runtime without altering the state of child components. Using **DynamicLayout** improves layout flexibility and simplifies the development process for UI adaptation and multi-view switching. It is suitable for scenarios such as responsive layouts (adapting to different screen sizes), multi-view mode switching (e.g., switching between list, grid, and waterfall layouts), and user-defined layouts.
 
@@ -15,6 +14,12 @@ A dynamic layout container component that supports dynamically switching between
 > - This component is supported since API version 24. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > - The APIs of this module can be used only in the stage model.
+
+## Modules to Import
+
+```ts
+import { DynamicLayout } from '@kit.ArkUI';
+```
 
 ## Child Components
 
@@ -39,6 +44,7 @@ Defines the dynamic layout container.
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | algorithm | [LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1) | Yes | Layout algorithm for the dynamic layout container. Supported layout algorithm instances include [RowLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#rowlayoutalgorithm) (horizontal linear layout, suitable for horizontal arrangement scenarios), [ColumnLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#columnlayoutalgorithm) (vertical linear layout, suitable for vertical arrangement scenarios), [StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm) (stack layout, suitable for overlapping scenarios), [GridLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#gridlayoutalgorithm) (grid layout, suitable for regular grid scenarios), and [CustomLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#customlayoutalgorithm) (custom layout, suitable for complex and special layout scenarios). For details, see [LayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#layoutalgorithm-1). If an invalid value (such as **null**, **undefined**, or an invalid layout algorithm object) is passed, child components are laid out according to [StackLayoutAlgorithm](../js-apis-arkui-layoutAlgorithm.md#stacklayoutalgorithm), with child components stacked on top of each other. |
+
 
 ## Attributes
 
@@ -231,7 +237,6 @@ interface Product {
   image: string;
 }
 ```
-
 ![](figures/dynamiclayout_waterflow_customlayout.png)
 
 ### Example 2: Switching the Layout Algorithm
@@ -352,7 +357,6 @@ struct LayoutSwitchExample {
   }
 }
 ```
-
 ![](figures/dynamiclayout_change_flag.gif)
 
 ### Example 3: Modifying the Layout Algorithm Attributes
@@ -422,5 +426,4 @@ struct PropertyChangeExample {
   }
 }
 ```
-
 ![](figures/dynamiclayout_change_property.gif)

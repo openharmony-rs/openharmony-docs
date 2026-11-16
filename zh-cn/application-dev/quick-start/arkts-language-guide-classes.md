@@ -402,7 +402,7 @@ console.info(`${counter.getCount().toString()}`);  // 1
 
 ### 静态属性
 
-静态属性使用`static`关键字声明，属于类本身而非实例：在类加载时创建，所有实例共享，通过`类名.属性名`访问，无需创建实例。实例属性需要通过类实例访问、随实例创建而存在，两者在访问方式和生命周期上有明显区别。静态属性适合全局状态管理等类级别数据，其生命周期与类绑定，无论创建多少实例，静态属性只有一个副本。
+静态属性使用`static`关键字声明，属于类本身而非实例。静态属性在类加载时创建，由所有实例共享，通过`类名.属性名`访问，无需创建实例。实例属性随实例创建而存在，需要通过实例访问，两者在访问方式和生命周期上有明显区别。静态属性适合全局状态管理等类级别数据，无论创建多少实例，静态属性都只有一个副本。
 
 <!-- @[instance_vs_static_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
 
@@ -737,7 +737,13 @@ AppConfig.APP_NAME = 'NewApp';  // 编译错误
 
 ### 属性默认值
 
-属性默认值在属性声明处（如`public name: string = 'default'`）直接给出，未提供值时使用预设值，避免出现`undefined`。属性初始化的时机有三种：声明时赋值适合固定默认值，构造函数体内赋值适合依赖参数或需要动态计算的值，可空类型延迟赋值适合运行时才能确定的值。
+属性默认值在属性声明处（如`public name: string = 'default'`）直接给出，未提供值时使用预设值，避免出现`undefined`。
+
+属性初始化的时机有三种：
+
+- 声明时赋值：适合固定默认值。
+- 构造函数体内赋值：适合依赖参数或需要动态计算的值。
+- 可空类型延迟赋值：适合运行时才能确定的值。
 
 <!-- @[property_initialization_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Properties.ets) -->
 
@@ -1144,7 +1150,7 @@ let tsThisEx: TsThisExample = new TsThisExample();
 console.info(`${tsThisEx.getName()}`);  // 'MyClass'
 
 let tsThisG = tsThisEx.getName;
-tsThisG();  // 运行时错误：Cannot read property 'name' of undefined
+tsThisG();  // 运行时错误：Cannot read property name of undefined
 ```
 
 使用箭头函数属性可绑定`this`，在创建时固定`this`指向；注意箭头函数属性每个实例都有一份函数副本，无法通过`super`调用基类方法。
@@ -1329,8 +1335,8 @@ class Service {
 let service: Service = new Service();
 
 // public方法可调用
-service.start();  // Service started, Initializing..., Loading config
-service.stop();   // Cleaning up..., Service stopped
+service.start();  // Service started, Initializing..., Loading configuration
+service.stop();   // Cleaning up resources, Service stopped
 
 // private方法不可访问
 service.initialize();  // 编译错误
@@ -1750,7 +1756,9 @@ let debugConfig: FactoryConfiguration = FactoryConfiguration.createDebug();
 let copiedConfig: FactoryConfiguration = FactoryConfiguration.copy(factoryDefaultConfig);
 ```
 
-**初始化顺序**：当基类和派生类都有字段初始化时，执行顺序为：基类字段初始化→基类构造函数→派生类字段初始化→派生类构造函数；基类构造函数中看到的派生类字段还是基类自己的值，因为派生类字段初始化在基类构造函数之后才执行。此外，静态初始化块（`static { }`）在类首次被加载时执行，先于所有实例字段初始化和构造函数调用；静态字段的初始化按声明顺序执行，静态初始化块穿插在静态字段之间按顺序执行。
+**初始化顺序**：当基类和派生类都有字段初始化时，执行顺序为：基类字段初始化→基类构造函数→派生类字段初始化→派生类构造函数。基类构造函数中看到的派生类字段还是基类自己的值，因为派生类字段初始化在基类构造函数之后才执行。
+
+**静态初始化**：静态初始化块（`static { }`）在类首次被加载时执行，先于所有实例字段初始化和构造函数调用。静态字段按声明顺序初始化，静态初始化块穿插在静态字段之间按顺序执行。
 
 <!-- @[init_order](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Initialization.ets) -->
 
@@ -2503,7 +2511,7 @@ let car: Car = new Car('Toyota', 'Camry');
 
 // super() 规则：
 // 1. 子类构造函数必须调用super()
-// 2. super() 必须在第一行
+// 2. super() 必须在访问this之前调用（不一定是第一行）
 // 3. super() 参数匹配父类构造函数
 
 class InvalidChild extends Vehicle {
@@ -2733,7 +2741,7 @@ class SuperChild extends SuperBase {
 
     // 应使用this或父类名访问属性
     console.info(`${this.value}`);          // 20（子类属性）
-    console.info(`${SuperChild.prototype.value}`); // 反例：父类属性
+    console.info(`${SuperChild.prototype.value}`); // 反例：不应通过prototype访问属性
   }
 
   anotherMethod(): void {

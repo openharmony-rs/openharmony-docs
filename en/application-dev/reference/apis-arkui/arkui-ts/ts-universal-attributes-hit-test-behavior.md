@@ -1,11 +1,11 @@
 # Hit Test Control
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-09-01T12:39:45.097Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:22:45.753Z pushedAt=2026-11-13T01:06:00.100Z nl=1 -->
 
 Sets the [hit testing](../../../ui/arkts-interaction-basic-principles.md#hit-testing) mode for the component. In the ArkUI framework, when processing touchscreen events and mouse events, a hit test is performed between the press point and the response hot zone of components before the event is triggered, to collect the components that need to respond to the event. Based on the test result, the framework dispatches the event to the components that pass the hit test. When components have touch response conflicts such as overlapping and penetration, you can set different hit test response modes through the hitTestBehavior attribute to affect the hit test collection result and subsequent event dispatch, avoiding unnecessary touch responses. For details about the impact, see the [HitTestMode](./ts-appendix-enums.md#hittestmode9) enum. This attribute affects the dispatch of [click events](./ts-universal-events-click.md), [touch events](./ts-universal-events-touch.md), [drag events](./ts-universal-events-drag-drop.md), [mouse events](./ts-universal-mouse-key.md), [axis events](./ts-universal-events-axis.md), [hover events](./ts-universal-events-hover.md), [accessibility hover events](./ts-universal-accessibility-hover-event.md), and [gesture events](./ts-gesture-settings.md).
 
@@ -225,7 +225,7 @@ This example demonstrates the hit testing effect when multiple nodes have overla
 @Entry
 @Component
 struct Index {
-  @State @Watch('onModeChange') mode: number = HitTestMode.None;
+  @State @Watch('onModeChange') mode: HitTestMode = HitTestMode.None;
   @State modeStr: string = 'None';
 
   onModeChange() {

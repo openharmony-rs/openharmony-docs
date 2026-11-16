@@ -720,6 +720,98 @@ try {
 }
 ```
 
+## adminManager.subscribeSmsEvent
+
+subscribeSmsEvent(): void
+
+订阅监听短信事件。调用成功后，当设备收到短信时，已订阅的设备管理应用将通过[EnterpriseAdminExtensionAbility.onSmsReceived](./js-apis-EnterpriseAdminExtensionAbility.md#onsmsreceived)回调接收到短信内容。可通过[unsubscribeSmsEvent](#adminmanagerunsubscribesmsevent)取消订阅。
+
+> **说明：**
+>
+> 重复调用本接口订阅短信事件不会报错，重复订阅仅生效一次。
+> 设备管理应用被取消激活后，其短信事件订阅自动失效。
+> 设备重启后订阅仍然保留，无需重新订阅。
+> 多个设备管理应用各自独立订阅，互不影响。
+>
+> 在接入、使用本能力前，您需要在隐私政策中向用户告知收集的个人信息类型（短信内容、电话号码）、使用目的及隐私政策链接等信息，并获取用户的同意或取得其他合法性基础。
+> 本接口接收的短信内容属于用户敏感数据。首次调用本接口订阅短信事件时，系统会向设备用户发送敏感内容访问通知，告知用户企业设备管理应用正在接收短信内容。建议企业管理员提前告知终端用户。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_RECEIVE_SMS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Possible causes:<br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout.                                             |
+
+**示例：**
+
+```ts
+import { adminManager } from '@kit.MDMKit';
+
+try {
+  adminManager.subscribeSmsEvent();
+  console.info('Succeeded in subscribing SMS event.');
+} catch (err) {
+  console.error(`Failed to subscribe SMS event. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## adminManager.unsubscribeSmsEvent
+
+unsubscribeSmsEvent(): void
+
+取消订阅监听短信事件。调用成功后，设备管理应用将不再收到短信接收事件通知。可通过[subscribeSmsEvent](#adminmanagersubscribesmsevent)订阅短信事件。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_RECEIVE_SMS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Possible causes:<br>1. The hardware does not support the capability.<br>2. The chip does not support the capability.<br>3. A dependent service feature is not supported. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout.                                             |
+
+**示例：**
+
+```ts
+import { adminManager } from '@kit.MDMKit';
+
+try {
+  adminManager.unsubscribeSmsEvent();
+  console.info('Succeeded in unsubscribing SMS event.');
+} catch (err) {
+  console.error(`Failed to unsubscribe SMS event. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## ManagedEvent
 
 可订阅的系统管理事件。

@@ -1,10 +1,11 @@
 # @ohos.resourceschedule.systemload (System Load Level Management)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @baiheng-->
+<!--Owner: @xupeng_-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=eca33008ac05d5d8e80dc5a14e49d0914094780c translatedAt=2026-11-12T04:40:24.711Z pushedAt=2026-11-12T12:23:24.894Z nl=1 -->
 
 The **systemload** module allows the system to determine the system load level based on the current temperature, load, and scenario, and notifies registered applications of level changes, if any.
 
@@ -92,7 +93,7 @@ function onSystemLoadChange(res: systemLoad.SystemLoadLevel) {
 
 try {
     systemLoad.off('systemLoadChange', onSystemLoadChange);
-    console.info(`unregister systemload callback succeeded:. `);
+    console.info(`unregister systemload callback succeeded. `);
 } catch (err) {
     console.error(`unregister systemload callback failed: ` + JSON.stringify(err));
 }
@@ -100,7 +101,7 @@ try {
 
 ## systemLoad.getLevel
 
-getLevel(): Promise&lt;[SystemLoadLevel](#systemloadlevel)&gt;
+getLevel(): Promise&lt;SystemLoadLevel&gt;
 
 Obtains the system load level. This API uses a promise to return the result.
 

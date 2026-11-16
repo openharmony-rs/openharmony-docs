@@ -1,3 +1,11 @@
+---
+kits: ["AVSession Kit / 音视频播控服务"]
+description: "介绍音视频应用实现后台长时间播放的开发步骤，涵盖启动播放器、接入AVSession、申请长时任务、监听前后台状态及设置后台播放模式等关键流程。"
+keywords: [后台播放, 长时任务, 后台播放模式, setBackgroundPlayMode, 后台播放管控]
+doctype: guide
+status: active
+---
+
 # 后台播放
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
@@ -154,3 +162,9 @@ AVSession的接入开发请参考指南[应用接入AVSession场景介绍](avses
  ```
  
  <!--RP1--><!--RP1End-->
+
+## 相关主题推荐
+
+- [应用接入AVSession场景介绍](avsession-access-scene.md)
+- [AVSession Kit简介](avsession-overview.md)
+- [AVSession Kit示例代码汇总](avsession-kit-samples.md)

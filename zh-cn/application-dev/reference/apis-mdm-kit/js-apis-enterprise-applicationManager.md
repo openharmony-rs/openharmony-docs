@@ -3666,6 +3666,53 @@ async function publishFormToDesktop() {
 }
 ```
 
+## applicationManager.removeAllNotifications
+
+removeAllNotifications(accountId: number): void
+
+清除指定用户的所有通知。系统实况窗类型通知、企业设备管理服务发布的通知不会被清除。支持跨用户调用。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_NOTIFICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型   | 必填 | 说明                                                         |
+| --------- | ------ | ---- | ------------------------------------------------------------ |
+| accountId | number | 是   | 用户ID，取值范围：大于等于0的整数。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200006  | The specified account ID is invalid. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+
+try {
+  // 需根据实际情况进行替换
+  applicationManager.removeAllNotifications(100);
+  console.info('Succeeded in removing all notifications.');
+} catch (err) {
+  console.error(`Failed to remove all notifications. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## FormInfo
 
 卡片信息。

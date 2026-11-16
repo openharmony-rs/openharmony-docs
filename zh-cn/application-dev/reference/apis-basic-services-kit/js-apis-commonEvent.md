@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 从API版本7开始支持，从API版本9开始废弃，建议使用[@ohos.commonEventManager](js-apis-commonEventManager.md)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[@ohos.commonEventManager](js-apis-commonEventManager.md)替代。
 
 ## 导入模块
 
@@ -31,7 +31,7 @@ publish(event: string, callback: AsyncCallback\<void>): void
 以回调形式发布公共事件。
 
 > **说明：**
-> 从API版本7开始支持，从API版本9开始废弃，建议使用[commonEventManager.publish](js-apis-commonEventManager.md#commoneventmanagerpublish)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[commonEventManager.publish](js-apis-commonEventManager.md#commoneventmanagerpublish)替代。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -67,7 +67,7 @@ publish(event: string, options: CommonEventPublishData, callback: AsyncCallback\
 以回调形式发布公共事件。
 
 > **说明：**
-> 从API版本7开始支持，从API版本9开始废弃，建议使用[commonEventManager.publish](js-apis-commonEventManager.md#commoneventmanagerpublish-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[commonEventManager.publish](js-apis-commonEventManager.md#commoneventmanagerpublish-1)替代。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -113,7 +113,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo, callback: AsyncCallbac
 以回调形式创建订阅者。
 
 > **说明：** 
-> 从API版本7开始支持，从API版本9开始废弃，建议使用[commonEventManager.createSubscriber](js-apis-commonEventManager.md#commoneventmanagercreatesubscriber)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[commonEventManager.createSubscriber](js-apis-commonEventManager.md#commoneventmanagercreatesubscriber)替代。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -159,7 +159,7 @@ createSubscriber(subscribeInfo: CommonEventSubscribeInfo): Promise\<CommonEventS
 以Promise形式创建订阅者。
 
 > **说明：** 
-> 从API版本7开始支持，从API版本9开始废弃，建议使用[commonEventManager.createSubscriber](js-apis-commonEventManager.md#commoneventmanagercreatesubscriber-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[commonEventManager.createSubscriber](js-apis-commonEventManager.md#commoneventmanagercreatesubscriber-1)替代。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -203,7 +203,7 @@ subscribe(subscriber: CommonEventSubscriber, callback: AsyncCallback\<CommonEven
 以回调形式订阅公共事件。
 
 > **说明：** 
-> 从API版本7开始支持，从API版本9开始废弃，建议使用[commonEventManager.subscribe](js-apis-commonEventManager.md#commoneventmanagersubscribe)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[commonEventManager.subscribe](js-apis-commonEventManager.md#commoneventmanagersubscribe)替代。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 
@@ -259,7 +259,7 @@ unsubscribe(subscriber: CommonEventSubscriber, callback?: AsyncCallback\<void>):
 以回调形式取消订阅公共事件。
 
 > **说明：** 
-> 从API版本7开始支持，从API版本9开始废弃，建议使用[commonEventManager.unsubscribe](js-apis-commonEventManager.md#commoneventmanagerunsubscribe)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[commonEventManager.unsubscribe](js-apis-commonEventManager.md#commoneventmanagerunsubscribe)替代。
 
 **系统能力：** `SystemCapability.Notification.CommonEvent`
 

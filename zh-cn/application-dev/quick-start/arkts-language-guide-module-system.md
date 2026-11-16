@@ -192,7 +192,7 @@ export class UserService {
 }
 ```
 
-随后通过桶文件将这些分散的导出聚合为统一入口。
+随后通过桶文件将这些分散的导出聚合为统一入口，例如在`pages`目录下创建桶文件`ModuleSystem.ets`：
 
 <!-- @[barrel_file_reexport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
 
@@ -206,7 +206,7 @@ export { UserService } from '../common/Service';
 <!-- @[barrel_file_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/BarrelFileImport.ets) -->
 
 ``` TypeScript
-import { User, UserService } from '../common/User';
+import { User, UserService } from './ModuleSystem';
 
 let service: UserService = new UserService();
 let user: User | null = service.findById(1);

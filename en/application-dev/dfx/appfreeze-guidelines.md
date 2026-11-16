@@ -181,7 +181,7 @@ Since API version 20, when a `THREAD_BLOCK_6S` fault occurs, [HiTraceId](../refe
 - **Since API version 26.0.0**, the system supports the following output prompt: Main thread is blocked by GC, which may be caused by high memory usage or system resource overload.
   - If the [Garbage Collection (GC)](../arkts-utils/gc-introduction.md) type is Shared GC, the system does not output this information.
   - If an Appfreeze event occurs during [GC](../arkts-utils/gc-introduction.md) and the GC type is not Shared GC, the system outputs this information in the NOTE. In this case, you can ignore the app freeze fault.
-  - For details about the Shared GC type, see [SharedHeap Structure](../arkts-utils/gc-introduction.md#sharedheap-structure) and [SharedHeap Related Parameters](../arkts-utils/gc-introduction.md#sharedheap-related-parameters).
+  - For details about the Shared GC type, see [SharedHeap Structure](../arkts-utils/gc-introduction.md#shared-heap-structure) and [SharedHeap Related Parameters](../arkts-utils/gc-introduction.md#sharedheap-related-parameters).
   - For details about the Local GC type, see [LocalHeap Structure](../arkts-utils/gc-introduction.md#localheap-structure) and [LocalHeap Related Parameters](../arkts-utils/gc-introduction.md#localheap-related-parameters).
 
 The following table lists information in AppFreeze events (`THREAD_BLOCK_6S` and `APP_INPUT_BLOCK`).

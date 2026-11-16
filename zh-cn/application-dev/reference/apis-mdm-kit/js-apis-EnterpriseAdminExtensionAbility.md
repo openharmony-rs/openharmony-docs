@@ -1099,6 +1099,42 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 }
 ```
 
+### onSmsReceived
+
+onSmsReceived(smsInfo: common.SmsReceiveInfo): void
+
+短信接收回调。当设备收到短信时触发此回调。需要先通过[adminManager.subscribeSmsEvent](./js-apis-enterprise-adminManager.md#adminmanagersubscribesmsevent)接口订阅短信事件，系统接收到短信后才会触发此回调，适用于企业需要对设备收到的短信进行审计等场景。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名  | 类型                                                                   | 必填 | 说明                                                                                                          |
+| ------- | ---------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------- |
+| smsInfo | [common.SmsReceiveInfo](./js-apis-enterprise-common.md#smsreceiveinfo) | 是   | 短信接收信息，包含SIM卡槽号（slotId）、电话号码（telephoneNumber）、短信条数（count）和短信内容（content）。 |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility, adminManager, common } from '@kit.MDMKit';
+
+try {
+  adminManager.subscribeSmsEvent();
+  console.info('Succeeded in subscribing sms event.');
+} catch (err) {
+  console.error(`Failed to subscribe sms event. Code: ${err.code}, message: ${err.message}`);
+}
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onSmsReceived(smsInfo: common.SmsReceiveInfo): void {
+    console.info('Succeeded in calling onSmsReceived callback');
+  }
+}
+```
 ### onPasswordFailed
 
 onPasswordFailed(cumulativeFailedCount: number, accountId: number): void

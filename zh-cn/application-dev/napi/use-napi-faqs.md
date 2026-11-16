@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "Node-API常见问题汇总入口，按稳定性、内存泄漏、常见基本功能三大类别整理高频问题，提供问题索引和快速跳转，帮助开发者快速定位典型问题。"
+keywords: [Node-API, 常见问题, 稳定性, 内存泄漏, 模块加载, 线程安全, 闪退, napi_ref泄漏, napi_env]
+doctype: faq
+status: active
+---
+
 # Node-API常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
