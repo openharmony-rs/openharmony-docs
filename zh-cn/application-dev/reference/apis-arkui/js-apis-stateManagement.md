@@ -427,7 +427,7 @@ globalConnect参数类型。
 |key         | string   |否   |是   |传入的key，不传则使用type的名字作为key。             |
 |defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |否   |是   |默认数据的构造器，建议传递，如果globalConnect是第一次连接key，不传会报错。 |
 |areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |否   |是    |加密级别：EL1-EL5，对应数值：0-4，详见[加密级别](../../application-models/application-context-stage.md#获取和修改加密分区)。不传时默认为EL2，不同加密级别对应不同的加密分区，即不同的存储路径，传入的加密级别数值不在0-4会直接运行crash。同一个key使用不同的加密级别时，以第一次globalConnect的加密级别为准。 |
-|ignoreReadOnlyProperties      | boolean   |否   |是    |是否忽略只读属性。当值为false时，反序列化含有只读属性的类（例如被[@Computed](../../ui/state-management/arkts-new-computed.md)装饰的getter函数）时会抛出错误。当值为true时，将忽略只读属性，不会抛出错误。默认值为false。<br>**起始版本：** 26.1.0 <br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+|ignoreReadOnlyProperties      | boolean   |否   |是    |是否忽略只读属性。当值为false时，反序列化含有只读属性的类（例如被[@Computed](../../ui/state-management/arkts-new-computed.md)装饰的getter函数）时会抛出错误。当值为true时，将忽略只读属性，不会抛出错误。默认值为false。<br>RecoverableStorage从API版本26.1.0开始支持。 <br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## ConnectOptionsCollections\<T, S\><sup>23+</sup>
 
@@ -2248,7 +2248,7 @@ getDefaultReusePool(): IDefaultReusePool | undefined
 
 返回该自定义组件拥有的默认复用池。与[getReusePool](#getreusepool)返回的全局复用池不同，默认复用池用于缓存该组件回收的直接子组件，无需开发者配置。当组件存在默认复用池时返回默认复用池，否则返回`undefined`。
 
-**起始版本：** 26.1.0
+connect从API版本26.1.0开始支持。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -2557,7 +2557,7 @@ struct CompA {
 
 `IDefaultReusePool`接口提供自定义组件上的默认复用池的相关功能，包括清理复用池中的组件。通过[CustomComponentContext.getDefaultReusePool](#getdefaultreusepool)获取实例，开发者请勿自行实现或重写该接口。
 
-**起始版本：** 26.1.0
+keys从API版本26.1.0开始支持。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -2576,7 +2576,7 @@ clearCache(reuseId?: string): void
 > 1. 已从复用池中取出、正参与复用的组件不受影响。
 > 2. 传入不存在或空字符串的`reuseId`时，本次调用不产生效果。
 
-**起始版本：** 26.1.0
+remove从API版本26.1.0开始支持。
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -2783,11 +2783,11 @@ type ReusableComponentConstructor = Function
 >
 >1. 资源管控终止（如低内存）场景：恢复退后台时保存的值。
 >
->2. **JS_ERROR**与**APP_FREEZE**异常退出场景：异常发生时刻的值被保存，并在系统自动重启后恢复。前提是应用已调用**enableAppRecovery**（默认参数即可满足）且未注册错误观察者。
+>2. JS_ERROR与APP_FREEZE异常退出场景：异常发生时刻的值被保存，并在系统自动重启后恢复。前提是应用已在AbilityStage的onCreate中调用[enableAppRecovery](../apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)（默认参数即可满足）且未注册错误观察者。
 >
->3. 仅系统携带恢复重启参数拉起的启动会执行恢复。用户手动启动应用始终为冷启动，**connect**返回默认值。
+>3. 仅系统携带恢复重启参数拉起的启动会执行恢复。用户手动启动应用始终为冷启动，[connect](#recoverablestorage)返回默认值。
 
-**起始版本：** 26.1.0
+RecoverableConnectOptions从API版本26.1.0开始支持。
 
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
@@ -2801,7 +2801,7 @@ static&nbsp;connect\<T&nbsp;extends&nbsp;object,&nbsp;S&nbsp;extends&nbsp;object
 &nbsp;&nbsp;&nbsp;&nbsp;params:&nbsp;RecoverableConnectOptions\<T,&nbsp;S\> <br>
 ):&nbsp;T
 
-声明一个可恢复的状态变量。若该变量已存在（内存或快照中），返回已存的值；否则通过**defaultCreator**构造默认值并返回。
+声明一个可恢复的状态变量。若该变量已存在（内存或快照中），返回已存的值；否则通过[defaultCreator](#recoverableconnectoptionst-s)构造默认值并返回。
 
 >**说明：**
 >
@@ -2809,13 +2809,13 @@ static&nbsp;connect\<T&nbsp;extends&nbsp;object,&nbsp;S&nbsp;extends&nbsp;object
 >
 >2. 同一实例的同一key以相同类型重复连接时，返回已有引用；类型不匹配时抛出BusinessError(140124)。
 >
->3. 恢复重启时恢复值优先于默认值；恢复失败时返回通过**defaultCreator**构造的默认值，并经**notifyOnError**上报错误。
+>3. 恢复重启时恢复值优先于默认值；恢复失败时返回通过[defaultCreator](#recoverableconnectoptionst-s)构造的默认值，并经[notifyOnError](#recoverableconnectoptionst-s)上报错误。
 >
->4. 典型用法为修改所连接对象的属性。对V1 \@State变量整体重新赋值会导致已存引用失效，不被跟踪。
+>4. 典型用法为修改所连接对象的属性。对例如[状态管理V1](../../ui/state-management/arkts-application-state-management-overview.md)的[\@State](../../ui/state-management/arkts-state.md)变量整体重新赋值会导致已存引用失效，不被跟踪。
 >
->5. 变量按**component**获取的窗口级实例ID隔离，不同实例的变量互不影响。
+>5. 变量按**component**获取的窗口级实例ID隔离，归属于不同窗口实例的变量互不影响。
 
-**起始版本：** 26.1.0
+RecoverableStorageError从API版本26.1.0开始支持。
 
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
@@ -2881,7 +2881,7 @@ static&nbsp;keys(component:&nbsp;BaseCustomComponent):&nbsp;Array\<string\>
 >
 >key在Array中的顺序是无序的，与key注册的顺序无关。
 
-**起始版本：** 26.1.0
+NotifyOnErrorCallback从API版本26.1.0开始支持。
 
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
@@ -2906,13 +2906,23 @@ static&nbsp;keys(component:&nbsp;BaseCustomComponent):&nbsp;Array\<string\>
 ```ts
 import { RecoverableStorage } from '@kit.ArkUI';
 
+// 可恢复状态变量的类型
+class Draft { text: string = ''; }
+
 @Entry
 @Component
 struct MyPage {
-  @State keys: string[] = [];
+  // 先连接一个可恢复状态变量，keys 才有内容可查
+  @State draft: Draft = RecoverableStorage.connect({
+    component: this,            // 传入当前组件实例
+    type: Draft,
+    defaultCreator: (): Draft => new Draft()
+  });
+  @State keys: string[] = [];   // 保存查询结果
 
   build() {
     Column() {
+      // 查询当前实例已注册的所有key
       Button('keys').onClick(() => {
         this.keys = RecoverableStorage.keys(this);
       })
@@ -2952,16 +2962,26 @@ static&nbsp;remove\<T\>(component:&nbsp;BaseCustomComponent,&nbsp;keyOrType:&nbs
 ```ts
 import { RecoverableStorage } from '@kit.ArkUI';
 
+// 可恢复状态变量的类型
 class Draft { text: string = ''; }
 
 @Entry
 @Component
 struct MyPage {
+  // 先连接一个可恢复状态变量，remove 才有已注册的key可注销
+  @State draft: Draft = RecoverableStorage.connect({
+    component: this,            // 传入当前组件实例
+    type: Draft,
+    defaultCreator: (): Draft => new Draft()
+  });
+
   build() {
     Column() {
+      // 按key字符串注销
       Button("remove 'draft'").onClick(() => {
         RecoverableStorage.remove(this, 'draft');
       })
+      // 按类型注销（以类型名为key）
       Button('remove(Draft)').onClick(() => {
         RecoverableStorage.remove(this, Draft);
       })
@@ -2972,7 +2992,7 @@ struct MyPage {
 
 ## RecoverableConnectOptions\<T, S\>
 
-定义[RecoverableStorage.connect](#recoverablestorage)的连接选项。
+定义[RecoverableStorage.connect](#recoverablestorage)的连接选项，用于指定连接的组件实例（component）、变量类型（type）与默认值构造器（defaultCreator），可选配置key、容器元素构造器与错误回调。
 
 **起始版本：** 26.1.0
 
@@ -2984,7 +3004,7 @@ struct MyPage {
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------| ---- | ---------------------- |
-| component | [BaseCustomComponent](../../ui/state-management/arkts-create-custom-components.md) | 是 | 自定义组件实例，传入**this**，用于获取窗口级实例ID实现实例间隔离。 |
+| component | [BaseCustomComponent](../../ui/state-management/arkts-create-custom-components.md) | 是 | 自定义组件实例，在自定义组件中使用时，直接传入**this**。 |
 | type | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | 是 | 可恢复状态变量的类型。仅支持对象类型。 |
 | key | string | 否 | 可恢复状态变量的key。不指定时使用类型名作为key。 |
 | defaultCreator | [StorageDefaultCreator\<T\>](#storagedefaultcreatort) | 是 | 默认值构造器。首次连接时使用，恢复失败时作为回退。 |
@@ -2993,7 +3013,7 @@ struct MyPage {
 
 ## RecoverableStorageError
 
-定义[RecoverableStorage](#recoverablestorage)回调上报的错误信息。
+定义[RecoverableStorage](#recoverablestorage)通过notifyOnError回调上报的错误信息，包含错误原因（reason）、受影响的key列表（keys）与附加信息（message），用于定位保存/恢复失败的原因。
 
 **起始版本：** 26.1.0
 
@@ -3003,17 +3023,17 @@ struct MyPage {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-|--------|------|------------|-----------|--------------|
-| reason | 'serialization' \| 'deserialization' | 否 | 否 | 错误原因。'serialization'表示序列化失败（如超出序列化上限或字段不可序列化），'deserialization'表示反序列化失败（如数据损坏、类型不匹配）。connect入口错误（类型不支持、参数非法）以BusinessError(140124)直接抛出，不经本回调上报。推荐用户数据总量：每实例≤100KB（150KB序列化预算，与系统数据共享）。 |
-| keys | Array\<string\> | 否 | 否 | 受错误影响的key列表。 |
-| message | string | 否 | 否 | 错误的附加信息。 |
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------| ---- | ---------------------- |
+| reason | 'serialization' \| 'deserialization' | 是 | 错误原因。'serialization'表示序列化失败（如超出序列化上限或字段不可序列化），'deserialization'表示反序列化失败（如数据损坏、类型不匹配）。connect入口错误（类型不支持、参数非法）以BusinessError(140124)直接抛出，不经本回调上报。推荐用户数据总量：每实例≤100KB（150KB序列化预算，与系统数据共享）。 |
+| keys | Array\<string\> | 是 | 受错误影响的key列表。 |
+| message | string | 是 | 错误的附加信息。 |
 
 ## NotifyOnErrorCallback
 
 type&nbsp;NotifyOnErrorCallback&nbsp;=&nbsp;(error:&nbsp;RecoverableStorageError)&nbsp;=>&nbsp;void
 
-定义用于上报[RecoverableStorage](#recoverablestorage)错误的回调。回调在UI线程执行，回调内不应抛出异常。
+定义用于上报[RecoverableStorage](#recoverablestorage)序列化/反序列化错误的回调类型。设置于连接选项（notifyOnError），回调在UI线程执行，回调内不应抛出异常。
 
 **起始版本：** 26.1.0
 

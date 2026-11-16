@@ -10,7 +10,7 @@
 
 RecoverableStorage是应用程序中的可选单例对象。此对象的作用是：当应用被系统以资源管控方式终止（如低内存）或因JS_ERROR、APP_FREEZE异常退出时，自动保存所声明的状态变量的当前值；应用被系统重新拉起后，自动恢复这些值，实现UI无感恢复。
 
-与[PersistenceV2](./arkts-new-persistencev2.md)的持久化模型不同，RecoverableStorage采用**快照模型**（非写穿）：仅在系统存盘时机（应用退后台时预备存档/异常发生时点存档）一次性提取当前值，而非每次变量变更即写盘。这意味着静止UI零开销，恢复数据为临时数据（用户上滑删除即清除），适合保存页面草稿、滚动位置等轻量UI状态。
+与[PersistenceV2](./arkts-new-persistencev2.md)的持久化模型不同，RecoverableStorage采用**快照模型**：仅在系统存盘时机（应用退后台时预备存档/异常发生时点存档）一次性提取当前值，而非每次变量变更即写入磁盘。这意味着静止UI零开销，恢复数据为临时数据（用户上滑删除即清除），适合保存页面草稿、滚动位置等轻量UI状态。
 
 在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[RecoverableStorage-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#recoverablestorage)。
 
@@ -20,24 +20,26 @@ RecoverableStorage是应用程序中的可选单例对象。此对象的作用�
 
 ## 概述
 
-RecoverableStorage是应用启动时创建的单例，提供资源管控终止/异常退出场景下状态变量的声明、保存与恢复能力。开发者通过`connect`声明变量后，系统在存盘时机自动提取当前值；应用被系统重新拉起后，再次执行`connect`即可读回保存的值。
+RecoverableStorage是应用启动时创建的单例，提供资源管控终止/异常退出场景下状态变量的声明、保存与恢复能力。开发者通过[connect](../../reference/apis-arkui/js-apis-stateManagement.md#recoverablestorage)声明变量后，系统在存盘时机自动提取当前值；应用被系统恢复重启（系统携带恢复参数自动拉起，区别于用户手动打开）后，再次执行connect即可读回保存的值。
 
-**快照模型 vs 写穿模型**：
+**快照模型与实时持久化模型的差异**：
 
-| 维度 | RecoverableStorage（快照） | PersistenceV2（写穿） |
+| 维度 | RecoverableStorage（快照） | PersistenceV2（实时持久化） |
 |------|---------------------------|----------------------|
 | 写入时机 | 仅系统存盘时机（退后台/异常退出） | 每次变量变更即写盘 |
 | 静止UI开销 | 零 | 有持续IO |
 | 数据生命周期 | 临时（上滑删除/重启后清除） | 持久（写入磁盘） |
 | 适用场景 | 页面草稿、滚动位置等轻量UI状态 | 用户设置、历史记录等持久数据 |
 
-RecoverableStorage支持V1（\@State + 普通类）和V2（\@Local + \@ObservedV2）双状态系统，支持嵌套对象、容器（Array/Map/Set）和\@Computed属性。
+RecoverableStorage同时适用于[状态管理V1](arkts-application-state-management-overview.md)与[状态管理V2](arkts-application-state-management-overview.md)，支持保存普通对象、[\@Observed](arkts-observed-and-objectlink.md)装饰的对象、[\@ObservedV2](arkts-new-observedV2-and-trace.md)装饰的对象、嵌套对象、容器（Array/Map/Set）等。
 
 ## 系统前提
 
-RecoverableStorage依赖系统恢复链路，需要完成以下三处配置（缺少任一处将导致对应恢复功能无法生效）：
+RecoverableStorage依赖系统恢复链路，两种恢复场景的使能配置分别说明如下。
 
-### 公共配置（两种场景共用同一份EntryAbility）
+### 公共配置（两种场景共用）
+
+在UIAbility的onCreate中调用[setRestoreEnabled](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setrestoreenabled)(true)开启恢复门控，并调用[restoreWindowStage](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#restorewindowstage)提前就绪contentStorage：
 
 ```ts
 // EntryAbility.ets
@@ -46,34 +48,31 @@ import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onCreate(): void {
-    // ② 资源管控终止链门控（点卡恢复通道）
-    this.context.setRestoreEnabled(true);
-
-    // ③ 系统判定"是否走默认恢复"时需要读取contentStorage；
-    // 提前调用restoreWindowStage使其就绪，否则异常重启将退化为冷启动
-    const storage = new LocalStorage();
-    this.context.restoreWindowStage(storage);
+    this.context.setRestoreEnabled(true);       // 开启恢复门控
+    this.context.restoreWindowStage(new LocalStorage()); // 就绪contentStorage
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
-    windowStage.loadContent('pages/Index', (err) => { /* 常规加载 */ });
+    windowStage.loadContent('pages/Index');
   }
 }
 ```
 
-### 两场景唯一差异：是否调用enableAppRecovery
+### 资源管控终止场景的使能配置
 
-**资源管控终止场景**：不创建AbilityStage（或创建但不调`enableAppRecovery`）。
+公共配置即可，无需调用[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)：保持系统默认恢复模式，应用退后台时自动存档，资源管控终止后经最近任务重新打开即恢复。
 
-**异常退出场景**：
+### 异常退出场景的使能配置
+
+在公共配置基础上，还须在AbilityStage的onCreate中调用[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)：
 
 ```ts
-// MyAbilityStage.ets（module.json5 srcEntry 指向）
+// MyAbilityStage.ets（module.json5中srcEntry指向该文件）
 import { AbilityStage, appRecovery } from '@kit.AbilityKit';
 
 export default class MyAbilityStage extends AbilityStage {
   onCreate(): void {
-    // ① 必须在AbilityStage.onCreate调用（时序要求）
+    // 必须在AbilityStage.onCreate调用，写在UIAbility.onCreate会因晚于配置固化而无效
     appRecovery.enableAppRecovery(
       appRecovery.RestartFlag.ALWAYS_RESTART,
       appRecovery.SaveOccasionFlag.SAVE_WHEN_ERROR | appRecovery.SaveOccasionFlag.SAVE_WITH_FILE
@@ -84,13 +83,13 @@ export default class MyAbilityStage extends AbilityStage {
 
 >**注意：**
 >
->`enableAppRecovery`必须在**AbilityStage.onCreate**（app级入口）调用，写在UIAbility.onCreate会晚于挂载时的配置固化，导致配置不生效且无告警日志。`setRestoreEnabled(true)`和`restoreWindowStage(storage)`则在UIAbility.onCreate（ability级）调用。
+>`enableAppRecovery`必须在**AbilityStage.onCreate**（app级入口）调用，且未注册errorManager错误观察器；否则异常退出场景不保存、不自动重启。
 
 ## 使用说明
 
-- connect：声明一个可恢复的状态变量。变量已存在时返回已有引用；否则通过defaultCreator构造默认值并返回。
-- keys：获取当前实例（窗口）注册的所有可恢复状态变量的key。
-- remove：注销当前实例指定key的可恢复状态变量。注销后该变量不再保存与恢复。
+- [connect](../../reference/apis-arkui/js-apis-stateManagement.md#recoverablestorage)：声明一个可恢复的状态变量。变量已存在时返回已有引用；否则通过defaultCreator构造默认值并返回。
+- [keys](../../reference/apis-arkui/js-apis-stateManagement.md#recoverablestorage)：获取当前实例（窗口）注册的所有可恢复状态变量的key。
+- [remove](../../reference/apis-arkui/js-apis-stateManagement.md#recoverablestorage)：注销当前实例指定key的可恢复状态变量。注销后该变量不再保存与恢复。
 - notifyOnError（connect选项）：响应序列化或反序列化失败的回调。
 
 以上接口详细描述请参考[RecoverableStorage-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#recoverablestorage)。
@@ -125,6 +124,7 @@ class Draft {
 @Entry
 @Component
 struct MyPage {
+  // 连接可恢复状态变量：component传this，恢复时读回保存值或走默认构造
   @State draft: Draft = RecoverableStorage.connect({
     component: this,
     type: Draft,
@@ -147,6 +147,7 @@ class Envelope {
 @Entry
 @ComponentV2
 struct MyPage {
+  // V2形态：@ObservedV2类 + @Type元数据驱动嵌套重建
   @Local env: Envelope = RecoverableStorage.connect({
     component: this,
     type: Envelope,
@@ -163,6 +164,7 @@ struct MyPage {
 @Entry
 @Component
 struct CartPage {
+  // 容器形态：type传Array，defaultSubCreator使元素恢复为类实例
   @State cart: CartItem[] = RecoverableStorage.connect({
     component: this,
     type: Array,
