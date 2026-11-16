@@ -619,58 +619,6 @@ struct AlertDialogExample {
 
 ![image-alert-style](figures/image-alert-style.gif)
 
-### 示例5（悬停态弹窗）
-
-<!--RP1-->该示例展示了在悬停态下设置dialog布局区域的效果。<!--RP1End-->
-
-```ts
-// xxx.ets
-@Entry
-@Component
-struct AlertDialogExample {
-  build() {
-    Column({ space: 5 }) {
-      Button('one button dialog')
-        .onClick(() => {
-          this.getUIContext().showAlertDialog(
-            {
-              title: 'title',
-              message: 'text',
-              autoCancel: true,
-              alignment: DialogAlignment.Bottom,
-              gridCount: 3,
-              confirm: {
-                value: 'button',
-                action: () => {
-                  console.info('Button-clicking callback');
-                }
-              },
-              cancel: () => {
-                console.info('Closed callbacks');
-              },
-              onWillDismiss: (dismissDialogAction: DismissDialogAction) => {
-                console.info(`reason= ${dismissDialogAction.reason}`);
-                console.info('AlertDialog onWillDismiss');
-                if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
-                  dismissDialogAction.dismiss();
-                }
-                if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
-                  dismissDialogAction.dismiss();
-                }
-              },
-              enableHoverMode: true,
-              hoverModeArea: HoverModeAreaType.TOP_SCREEN
-            }
-          )
-        })
-        .backgroundColor(0x317aff)
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
-
-<!--RP2--><!--RP2End-->
-
 ### 示例6（弹窗生命周期）
 
 该示例展示了弹窗生命周期的相关接口的使用方法。
