@@ -2570,7 +2570,7 @@ import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsAscii("www.示例.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info("Succeeded to getDnsAscii: " + result);  // 预期结果：www.xn--fsq092h.com
-let result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
+result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info("Succeeded to getDnsAscii: " + result);  // 预期结果：www.example.com
 ```
 
@@ -2612,7 +2612,7 @@ import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info("Succeeded to getDnsUnicode: " + result);  // 预期结果：www.示例.com
-let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
+result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
 console.info("Succeeded to getDnsUnicode: " + result);  // 预期结果：www.example.com
 ```
 
