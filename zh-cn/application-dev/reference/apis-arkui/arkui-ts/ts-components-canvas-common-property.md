@@ -1330,8 +1330,6 @@ justifyContent: FlexAlign.Center }) {
 
 用于指定绘制文本时字母之间的间距，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1387,15 +1385,15 @@ justifyContent: FlexAlign.Center }) {
 
 用于设置绘制图形和文本时是否开启抗锯齿。设置此接口会覆盖[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)中的抗锯齿效果，未通过该接口设置时，默认值为undefined，与[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)中的抗锯齿效果保持一致。
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ------ | ------ | ------ | ------ |
-| antialias | boolean | 否 | 否 | 设置绘制图形和文本时是否开启抗锯齿。<br/>true表示开启抗锯齿；false表示不开启抗锯齿。<br/>值为undefined时，与[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)中的抗锯齿效果保持一致。 |
+| antialias | boolean \| undefined | 否 | 否 | 设置绘制图形和文本时是否开启抗锯齿。<br/>true表示开启抗锯齿；false表示不开启抗锯齿。<br/>值为undefined时，与[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)中的抗锯齿效果保持一致。 |
 
 **示例：** 
 
