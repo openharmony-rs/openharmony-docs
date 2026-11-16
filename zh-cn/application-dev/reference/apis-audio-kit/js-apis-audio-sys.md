@@ -408,7 +408,9 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 ## VolumeLimitExceededEvent
 
-音量超过阈值时，应用接收的通知事件。收到通知后，应用必须通过**confirmVolumeLimitExceeded**提交确认结果，才能继续调节音量。
+音量超过阈值时，应用接收的通知事件。
+
+收到通知后，应用必须通过`confirmVolumeLimitExceeded`提交确认结果，才能继续调节音量。
 
 **起始版本：** 26.0.1
 
