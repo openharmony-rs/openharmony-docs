@@ -376,11 +376,11 @@ barOverlap(value: boolean)
 
 barOverlap(value: BarOverlapMode \| boolean)
 
-设置TabBar与TabContent的重叠模式。
+设置TabBar与TabContent的重叠模式。未通过该接口设置时，默认为false。
 
 > **说明：**
 >
-> 当设置为**BarOverlapMode.SAFE_AREA_PADDING**模式时，TabContent上已设置的[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)和[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性会被组件设置的值覆盖。当切换为其他模式时，先前设置的[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)和[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性值将会还原。
+> 当设置为BarOverlapMode.SAFE_AREA_PADDING模式时，TabContent上已设置的[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)和[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性会被组件设置的值覆盖。当切换为其他模式时，先前设置的[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)和[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性值将会还原。
 
 **起始版本：** 26.1.0
 
@@ -394,7 +394,7 @@ barOverlap(value: BarOverlapMode \| boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | [BarOverlapMode](#baroverlapmode) \| boolean | 是   | TabBar与TabContent的重叠模式。取值为true对应BarOverlapMode.STACK，false对应BarOverlapMode.STANDARD。<br />默认值：false |
+| value  | [BarOverlapMode](#baroverlapmode) \| boolean | 是   | TabBar与TabContent的重叠模式。取值为true对应BarOverlapMode.STACK，false对应BarOverlapMode.STANDARD。 |
 
 ### barBackgroundColor<sup>10+</sup>
 
