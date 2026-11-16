@@ -423,7 +423,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 | uid | number | 否 | 否 | 触发音量超过阈值的进程UID。该值为整数。 |
 | volumeType | [AudioVolumeType](#audiovolumetype) | 否 | 否 | 当前音量类型。 |
 | currentVolume | number | 否 | 否 | 当前音量级别。范围介于`getMinSystemVolume()`和`getMaxSystemVolume()`接口获取的值之间。 |
-| volumeThreshold | number | 否 | 否 | 当前音量类型的音量阈值。该值为整数，范围介于**getMinSystemVolume**和**getMaxSystemVolume**接口获取的值之间。 |
+| volumeThreshold | number | 否 | 否 | 当前音量类型的音量阈值。范围介于`getMinSystemVolume()`和`getMaxSystemVolume()`接口获取的值之间。 |
 
 ## ConnectType<sup>9+</sup>
 
