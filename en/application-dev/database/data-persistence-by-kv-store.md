@@ -5,7 +5,8 @@
 <!--Designer: @ding_dong_dong-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=986d1cb5e3914fb11967cf9fe6c64e0607e31e45 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+<!-- md-trans-meta sourceCommit=719afb6014e5fc7832501f2b23253a69d7269de9 translatedAt=2026-11-16T01:46:00.331Z pushedAt=2026-11-16T13:08:43.271Z nl=1 -->
+
 
 ## When to Use
 
@@ -14,9 +15,9 @@ The key-value (KV) database stores data in the form of KV pairs. You can use KV 
 
 ## Constraints
 
-- For each record in a device KV store, the key cannot exceed 896 bytes and the value cannot exceed 4 MB.
+- For each record in a device collaboration database, the key cannot exceed 896 bytes and the value must be less than 4 MB.
 
-- For each record in a single KV store, the key cannot exceed 1 KB and the value cannot exceed 4 MB.
+- For each record in a single-version database, the key cannot exceed 1 KB and the value must be less than 4 MB.
 
 - A maximum of 16 distributed KV stores can be opened simultaneously for an application.
 

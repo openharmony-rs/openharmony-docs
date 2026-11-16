@@ -5,7 +5,7 @@
 <!--Designer: @cuile44-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=937a80eb167419199390c0c4ac6ab793f1de76dc translatedAt=2026-11-03T12:47:30.238Z pushedAt=2026-11-03T12:47:30.238Z nl=1 -->
+<!-- md-trans-meta sourceCommit=719afb6014e5fc7832501f2b23253a69d7269de9 translatedAt=2026-11-16T01:47:12.158Z pushedAt=2026-11-16T13:26:25.382Z nl=1 -->
 
 ## When to Use
 Use the **Preferences** module to store small amounts of data in key-value (KV) format. The data is stored in files and memory for fast access. If a large amount of data needs to be stored, consider using a KV store or RDB store.
@@ -35,11 +35,11 @@ For details about the APIs, see [Preferences](../reference/apis-arkdata/capi-pre
 | int OH_Preferences_RegisterDataObserver (OH_Preferences \*preference, void \*context, OH_PreferencesDataObserver observer, const char \*keys[], uint32_t keyCount) | Subscribes to data changes of the specified keys. If the value of the specified key changes, a callback will be invoked after **OH_Preferences_Close()** is called.|
 | int OH_Preferences_UnregisterDataObserver (OH_Preferences \*preference, void \*context, OH_PreferencesDataObserver observer, const char \*keys[], uint32_t keyCount) | Unsubscribes from data changes of the specified keys.|
 | int OH_Preferences_IsStorageTypeSupported (Preferences_StorageType type, bool \*isSupported) | Checks whether the specified storage type is supported.|
-| OH_PreferencesOption \* OH_PreferencesOption_Create (void) | Creates an **OH_PreferencesOption** instance and a pointer to it. If this pointer is no longer required, use **OH_PreferencesOption_Destroy** to destroy it. Otherwise, memory leaks may occur.|
+| OH_PreferencesOption \* OH_PreferencesOption_Create (void) | Creates an **OH_PreferencesOption** instance object and a pointer to it. When the pointer is no longer needed, use **OH_PreferencesOption_Destroy** to destroy the instance object; otherwise, a memory leak occurs. |
 | int OH_PreferencesOption_SetFileName (OH_PreferencesOption \*option, const char \*fileName) | Sets the file name for an **OH_PreferencesOption** instance. The file name cannot contain a slash (/) or exceed 255 bytes.|
 | int OH_PreferencesOption_SetBundleName (OH_PreferencesOption \*option, const char \*bundleName) | Sets the bundle name for an OH_PreferencesOption instance.|
 | int OH_PreferencesOption_SetDataGroupId (OH_PreferencesOption \*option, const char \*dataGroupId) | Sets the application group ID for an **OH_PreferencesOption** instance.|
-| int OH_PreferencesOption_SetStorageType (OH_PreferencesOption \*option, Preferences_StorageType type) | Sets the storage type for an **OH_PreferencesOption** instance.|
+| int OH_PreferencesOption_SetStorageType (OH_PreferencesOption \*option, Preferences_StorageType type) | Sets the storage mode of the **OH_PreferencesOption** instance object. |
 | int OH_PreferencesOption_Destroy (OH_PreferencesOption \*option) | Destroys an **OH_PreferencesOption** instance.|
 | const char \* OH_PreferencesPair_GetKey (const OH_PreferencesPair \*pairs, uint32_t index) | Obtains the key based on the specified index from the KV data.|
 | const OH_PreferencesValue \* OH_PreferencesPair_GetPreferencesValue (const OH_PreferencesPair \*pairs, uint32_t index) | Obtains the value based on the specified index from the KV pairs.|

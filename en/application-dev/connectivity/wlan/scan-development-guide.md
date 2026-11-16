@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=393e4c1fba444fc360bbd35a1699da817cae9a32 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z nl=1 -->
+<!-- md-trans-meta sourceCommit=a3b70e0b614c65d58f29d38f413bdbf9ee199487 translatedAt=2026-11-16T01:42:56.535Z pushedAt=2026-11-16T13:03:51.460Z nl=1 -->
 
 ## Introduction
 Wi-Fi scan is the process where devices (such as smartphones, PCs, and routers) search for available Wi-Fi networks in their surrounding environment. Through this scan process, devices can gather fundamental information about nearby networks—such as network name, signal strength, and encryption type—thereby enabling connection to, management of, or analysis of these networks.
@@ -37,7 +37,7 @@ The following table describes the related APIs.
 1. Import the required Wi-Fi module.
 2. Check that the **SystemCapability.Communication.WiFi.STA** capability is available.
 3. Apply for the **ohos.permission.GET_WIFI_INFO** permission.
-4. Enable Wi-Fi on the device.
+4. Enable the device's Wi-Fi. Before enabling, call [wifiManager.isWlanSupported](../../reference/apis-connectivity-kit/js-apis-wifiManager.md#wifimanageriswlansupported) to check whether the device supports Wi-Fi.
 5. Sample code:
 
    > **NOTE**<br>
@@ -93,12 +93,12 @@ The following table describes the related APIs.
 
 6. For details about error codes, see [Wi-Fi Error Codes](../../reference/apis-connectivity-kit/errorcode-wifi.md).
 
- ### PNO Scan
+### PNO Scan
 
   Preferred Network Offload (PNO) scan is a Wi-Fi scan technology that reduces power consumption of mobile devices.<br>
   PNO scan is triggered when a device is not connected to any Wi-Fi network and the screen is off. The device then searches for and connects to the preferred Wi-Fi network in the background.
 
- ### Periodic Scan
+### Periodic Scan
 
   Periodic scan is the process where a wireless device (such as a smartphone, tablet, or laptop) automatically searches for available Wi-Fi networks at the specified interval.<br>
   This function can be used in the following scenarios:<br>
