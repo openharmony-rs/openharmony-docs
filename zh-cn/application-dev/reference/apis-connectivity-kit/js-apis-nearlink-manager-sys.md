@@ -82,7 +82,7 @@ enableWithOptions(options?: EnableOptions): void
 
 **系统接口：**  此接口为系统接口。
 
-**需要权限：** ohos.permission.ACCESS_NEARLINK and ohos.permission.MANAGE_NEARLINK
+**需要权限：** ohos.permission.ACCESS_NEARLINK 和 ohos.permission.MANAGE_NEARLINK
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
