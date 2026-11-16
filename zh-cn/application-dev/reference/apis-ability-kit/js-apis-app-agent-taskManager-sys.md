@@ -6,14 +6,14 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-任务是用户意图执行的归因单元。taskManager 模块提供完整的任务生命周期管理能力，支持启动任务、结束任务等操作。任务存续期间，系统按任务优先级对归属该任务的进程进行统一的资源调度管理。
+任务是用户意图执行的归因单元。taskManager模块提供完整的任务生命周期管理能力，支持启动任务、结束任务等操作。任务存续期间，系统对归因至该任务的进程进行统一的资源调度管理。
 
 系统应用调用 startTask 接口创建并激活任务。任务可通过以下任一方式结束：
 - 调用finishTask接口正常结束；
 - 任务超时，由系统自动结束；
 - 任务创建者进程退出，由系统自动结束。
 
-任务结束后，系统撤销对该任务归属进程施加的资源管理，进程调度状态随之恢复。任务信息仅保存在内存中，设备重启后任务自动结束。
+任务结束后，系统撤销对归因至该任务的进程施加的资源管理，进程调度状态随之恢复。任务信息仅保存在内存中，设备重启后任务自动结束。
 
 **起始版本：** 26.1.0
 
@@ -27,29 +27,13 @@
 import { taskManager } from '@kit.AbilityKit';
 ```
 
-## TaskPriority
-
-表示任务优先级。任务启动后，系统按照该优先级对归属到任务的进程进行管理。
-
-**起始版本：** 26.1.0
-
-**系统能力**：SystemCapability.Ability.AgentRuntime.Core
-
-**模型约束**：仅可在Stage模型下使用。
-
-| 名称 | 值 | 说明 |
-| -------- | -------- | -------- |
-| LOW | 100 | 低优先级。 |
-| MEDIUM | 200 | 中优先级。 |
-| HIGH | 300 | 高优先级。 |
-
 ## taskManager.startTask
 
-startTask(taskId: string, priority?: TaskPriority): Promise&lt;void&gt;
+startTask(taskId: string): Promise&lt;void&gt;
 
 启动指定任务ID的任务，任务立即激活。使用Promise异步回调。
 
-任务激活后，归属到该任务的进程由系统按指定优先级进行管理。任务在调用[finishTask](#taskmanagerfinishtask)结束或被系统自动结束（例如任务超时、创建者进程退出）前保持活跃。若指定任务ID的任务已存在，则返回错误码16000301。
+任务激活后，系统对归因至该任务的进程进行统一管理。任务在调用[finishTask](#taskmanagerfinishtask)结束或被系统自动结束（例如任务超时、创建者进程退出）前保持活跃。若指定任务ID的任务已存在，则返回错误码16000301。
 
 > **说明：**
 >
@@ -70,7 +54,6 @@ startTask(taskId: string, priority?: TaskPriority): Promise&lt;void&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | taskId | string | 是 | 任务ID，作为任务执行期间拉起进程的归因键，取值范围为1~256个字符。 |
-| priority | [TaskPriority](#taskpriority) | 否 | 任务优先级，不传入时默认为**MEDIUM**。 |
 
 **返回值：**
 
@@ -94,8 +77,8 @@ import { taskManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  // 以高优先级启动任务
-  taskManager.startTask('task_001', taskManager.TaskPriority.HIGH)
+  // 启动任务
+  taskManager.startTask('task_001')
     .then(() => {
       console.info('Succeeded in starting task.');
     })
@@ -115,7 +98,7 @@ finishTask(taskId: string): Promise&lt;void&gt;
 
 结束指定任务ID的任务。使用Promise异步回调。
 
-任务结束后，系统撤销对该任务归属进程施加的资源管理，进程的调度状态恢复。若任务不存在或已结束，则返回错误码16000302。
+任务结束后，系统撤销对归因至该任务的进程施加的资源管理，恢复进程的调度状态。若任务不存在或已结束，则返回错误码16000302。
 
 > **说明：**
 >
