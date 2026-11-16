@@ -281,22 +281,20 @@ readPixelsToArea(area: PositionArea): Promise\<void\>
 
 读取PixelMap指定区域内的像素数据并存入缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则按照PixelMap的像素格式存入缓冲区，否则按照BGRA_8888格式存入缓冲区。使用Promise异步回调。
 
-> **说明：**
->
-> 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
->
-> - [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
-> - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
->
-> 公式中各符号的含义如下：
->
-> | 符号 | 含义 | 对应字段 |
-> | --- | --- | --- |
-> | `offset` | 缓冲区内首像素的字节偏移量。 | `PositionArea.offset` |
-> | `stride` | 内存中每行像素（含行末填充字节）所占的字节数。 | `PositionArea.stride` |
-> | `width` | 读取区域的宽度，单位为像素（px）。 | `PositionArea.region.size.width` |
-> | `height` | 读取区域的高度，单位为像素（px）。 | `PositionArea.region.size.height` |
-> | 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。 | - |
+所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
+
+- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+- [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
+
+公式中各符号的含义如下：
+
+| 符号 | 含义 | 对应字段 |
+| --- | --- | --- |
+| `offset` | 缓冲区内首像素的字节偏移量。 | `PositionArea.offset` |
+| `stride` | 内存中每行像素（含行末填充字节）所占的字节数。 | `PositionArea.stride` |
+| `width` | 读取区域的宽度，单位为像素（px）。 | `PositionArea.region.size.width` |
+| `height` | 读取区域的高度，单位为像素（px）。 | `PositionArea.region.size.height` |
+| 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。 | - |
 
 **起始版本：** 26.0.0
 
@@ -388,22 +386,20 @@ readPixelsToAreaSync(area: PositionArea): void
 
 读取PixelMap指定区域内的像素数据并存入缓冲区。如果PixelMap的像素格式为[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式，则按照PixelMap的像素格式存入缓冲区，否则按照BGRA_8888格式存入缓冲区。同步返回结果。
 
-> **说明：**
->
-> 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
->
-> - [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
-> - [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
->
-> 公式中各符号的含义如下：
->
-> | 符号 | 含义 | 对应字段 |
-> | --- | --- | --- |
-> | `offset` | 缓冲区内首像素的字节偏移量。 | `PositionArea.offset` |
-> | `stride` | 内存中每行像素（含行末填充字节）所占的字节数。 | `PositionArea.stride` |
-> | `width` | 读取区域的宽度，单位为像素（px）。 | `PositionArea.region.size.width` |
-> | `height` | 读取区域的高度，单位为像素（px）。 | `PositionArea.region.size.height` |
-> | 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。 | - |
+所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
+
+- [RGB](../../media/image/image-glossary.md#rgb-pixel-formatrgb像素格式)格式：`offset + (height - 1) × stride + width × 每像素字节数`（其中`stride ≥ width × 每像素字节数`且`stride`为每像素字节数的整数倍，当`stride`等于`width × 每像素字节数`（无行末填充）时，该公式可化简为`offset + width × height × 每像素字节数`）
+- [YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式：`offset + width × height × 每像素字节数`（此类格式不使用`stride`）
+
+公式中各符号的含义如下：
+
+| 符号 | 含义 | 对应字段 |
+| --- | --- | --- |
+| `offset` | 缓冲区内首像素的字节偏移量。 | `PositionArea.offset` |
+| `stride` | 内存中每行像素（含行末填充字节）所占的字节数。 | `PositionArea.stride` |
+| `width` | 读取区域的宽度，单位为像素（px）。 | `PositionArea.region.size.width` |
+| `height` | 读取区域的高度，单位为像素（px）。 | `PositionArea.region.size.height` |
+| 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。 | - |
 
 **起始版本：** 26.0.0
 

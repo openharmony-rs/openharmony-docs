@@ -1047,10 +1047,10 @@ Pixelmap宽度 × Pixelmap高度 × 每像素字节数
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 待修改像素数据的Pixelmap指针，不能为空指针。 |
-| const uint8_t *source | 源像素数据缓冲区指针，不能为空指针，该缓冲区内的像素数据会被拷贝至Pixelmap。缓冲区内的像素数据必须至少包含整个PixelMap的像素数据，且不包含内存对齐填充字节。 |
-| uint32_t bufferSize | 缓冲区大小。单位：字节（Byte）。所需的最小缓冲区大小请参考上方说明中的计算公式。 |
-| [PIXEL_FORMAT](#pixel_format) sourcePixelFormat | 源数据的像素格式。支持的值为PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565和PIXEL_FORMAT_RGBA_F16。 |
+| [入参][出参] [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 待修改像素数据的Pixelmap指针，不能为空指针。 |
+| [入参] const uint8_t *source | 源像素数据缓冲区指针，不能为空指针，该缓冲区内的像素数据会被拷贝至Pixelmap。缓冲区内的像素数据必须至少包含整个PixelMap的像素数据，且不包含内存对齐填充字节。 |
+| [入参] uint32_t bufferSize | 缓冲区大小。单位：字节（Byte）。所需的最小缓冲区大小请参考上方说明中的计算公式。 |
+| [入参] [PIXEL_FORMAT](#pixel_format) sourcePixelFormat | 源数据的像素格式。支持的值为PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565和PIXEL_FORMAT_RGBA_F16。 |
 
 **返回：**
 
@@ -1173,9 +1173,9 @@ offset + (height - 1) × stride + width × 每像素字节数（其中stride ≥
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 待修改像素数据的Pixelmap指针，不能为空指针。 |
-| const [Image_PositionArea](capi-image-nativemodule-image-positionarea.md) *area | 写入的区域数据。<br>数据将从area->pixels拷贝至area->region指定的区域。 |
-| [PIXEL_FORMAT](#pixel_format) sourcePixelFormat | 源数据的像素格式。支持的值为PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565和PIXEL_FORMAT_RGBA_F16。 |
+| [入参][出参] [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 待修改像素数据的Pixelmap指针，不能为空指针。 |
+| [入参] const [Image_PositionArea](capi-image-nativemodule-image-positionarea.md) *area | 写入的区域数据。<br>数据将从area->pixels拷贝至area->region指定的区域。 |
+| [入参] [PIXEL_FORMAT](#pixel_format) sourcePixelFormat | 源数据的像素格式。支持的值为PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565和PIXEL_FORMAT_RGBA_F16。 |
 
 **返回：**
 
