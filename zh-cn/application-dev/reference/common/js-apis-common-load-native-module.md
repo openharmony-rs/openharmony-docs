@@ -58,7 +58,7 @@ loadNativeModule(moduleName: string): Object
 
 以加载`libentry.so`为例，需要完成以下配置。
 
-1. 在模块级`oh-package.json5`文件中配置`dependencies`字段。配置说明见[模块级oh-package.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-oh-package-json5#zh-cn_topic_0000001792256137_oh-packagejson5-%E5%AD%97%E6%AE%B5%E8%AF%B4%E6%98%8E)。
+1. 在模块级`oh-package.json5`文件中配置`dependencies`字段。配置说明见[模块级oh-package.json5](https://developer.huawei.com/consumer/cn/doc/doccenter-deveco-studio/ide-oh-package-json5#section13378134951212)。
 
     ```json
     {
