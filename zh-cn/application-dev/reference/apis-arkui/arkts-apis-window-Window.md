@@ -1463,6 +1463,42 @@ try {
 }
 ```
 
+## getAvoidAreaInsets<sup>26+</sup>
+
+getAvoidAreaInsets(): AvoidAreaInsets
+
+获取当前窗口的避让区边衬。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**返回值：**
+
+| 类型 | 说明 |
+|----------------------------------| ----------------- |
+| [AvoidAreaInsets](arkts-apis-window-i.md#avoidareainsets26) | 窗口避让区边衬。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+
+**示例：**
+
+```ts
+try {
+  // windowClass为已创建/获取的Window实例
+  let avoidAreaInsets = windowClass.getAvoidAreaInsets();
+} catch (exception) {
+  console.error(`Failed to obtain the avoid area insets. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## setSystemAvoidAreaEnabled<sup>18+</sup>
 
 setSystemAvoidAreaEnabled(enabled: boolean): Promise&lt;void&gt;
@@ -3578,6 +3614,97 @@ try {
   windowClass.off('avoidAreaChange');
 } catch (exception) {
   console.error(`Failed to enable or disable the listener for system avoid area changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## onAvoidAreaInsetsChange<sup>26+</sup>
+
+onAvoidAreaInsetsChange(callback: Callback&lt;void&gt;): void
+
+订阅窗口避让区边衬变化事件。
+
+当窗口避让区域发生变化时，触发回调。如果多个避让区域同时发生变化，在相关避让区域信息更新完成后，仅触发一次回调。
+
+> **说明：**
+>
+> - 可以在回调中调用[getAvoidAreaInsets()](#getavoidareainsets26)获取窗口最新的避让区边衬，或使用[getWindowAvoidArea()](#getwindowavoidarea9)获取指定类型的避让区域。
+> - [TYPE_KEYBOARD](arkts-apis-window-e.md#avoidareatype7)类型的避让区域变化不会触发该回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                       |
+| -------- | ------------------- | ---- | -------------------------- |
+| callback | Callback&lt;void&gt; | 是   | 回调函数。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+
+**示例：**
+
+```ts
+try {
+  // windowClass为已创建/获取的Window实例
+  windowClass.onAvoidAreaInsetsChange(() => {
+    let avoidAreaInsets = windowClass.getAvoidAreaInsets();
+    console.info('onAvoidAreaInsetsChange triggered. top: ' + avoidAreaInsets.top +
+    ', left: ' + avoidAreaInsets.left + ', right: ' + avoidAreaInsets.right +
+    ', bottom: ' + avoidAreaInsets.bottom);
+  });
+} catch (exception) {
+  console.error(`Failed to enable the listener for avoid area insets changes. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offAvoidAreaInsetsChange<sup>26+</sup>
+
+offAvoidAreaInsetsChange(callback?: Callback&lt;void&gt;): void
+
+取消订阅窗口避让区边衬变化事件。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                                         |
+| -------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;void&gt; | 否   | 回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有避让区边衬变化事件的监听。默认值为**undefined**。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
+| 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+
+**示例：**
+
+```ts
+const callback = () => {
+  // ...
+}
+try {
+  // windowClass为已创建/获取的Window实例
+  windowClass.onAvoidAreaInsetsChange(callback);
+
+  windowClass.offAvoidAreaInsetsChange(callback);
+  // 如果通过onAvoidAreaInsetsChange开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offAvoidAreaInsetsChange();
+} catch (exception) {
+  console.error(`Failed to enable or disable the listener for avoid area insets changes. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
 
