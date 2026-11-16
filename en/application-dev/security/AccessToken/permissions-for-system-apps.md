@@ -3954,6 +3954,20 @@ Allows a system service or system application to use the **instantshare** privat
 
 **Valid since**: 11
 
+## ohos.permission.ACCESS_INSTANTSHARE_RECOMMEND_DATA
+
+Allows an application to connect to a ServiceExtensionAbility that provides smart recommendation sharing data and obtain the shared data.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | phones | TVs | tablets
+
+**Valid since**: 26.1.0
+
 ## ohos.permission.ACCESS_MCP_AUTHORIZATION
 
 Allows the MCP host application to perform user account authorization and login for its sub-applications.

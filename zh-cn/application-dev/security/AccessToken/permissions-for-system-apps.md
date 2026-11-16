@@ -3950,6 +3950,20 @@
 
 **起始版本**：11
 
+## ohos.permission.ACCESS_INSTANTSHARE_RECOMMEND_DATA
+
+允许应用连接提供智能推荐分享数据的ServiceExtensionAbility，获取智能推荐的分享数据。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1 | Phone | TV | Tablet
+
+**起始版本**：26.1.0
+
 ## ohos.permission.ACCESS_MCP_AUTHORIZATION
 
 允许MCP宿主应用代理其子应用进行用户账号授权登录。
