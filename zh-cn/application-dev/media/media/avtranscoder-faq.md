@@ -1,14 +1,14 @@
 # 转码常见问题
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @yangde_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
 ## 应用发送视频进行转码，音频编码格式为什么变化
 
-在转码过程中，若未指定音频轨道格式，系统默认将其转换为AAC编码格式。
+在转码过程中，若未指定音频编码格式，系统默认将其转换为AAC编码格式。
 
 <!--RP2--><!--RP2End-->
 
@@ -19,3 +19,10 @@
    当前转码能力支持情况：[AVTranscoder支持的格式](media-kit-intro.md#avtranscoder)、[AVCodec支持的格式](../avcodec/avcodec-support-formats.md)<!--RP1--><!--RP1End-->。
 
 2. 应用在收到error事件后，建议发送原视频；应用在收到complete事件后，建议先调用release再对转码后的视频做发送、上云等操作。
+
+## 转码参数对输出分辨率、画质与文件大小的影响
+
+- 未设置视频分辨率时，输出分辨率与源视频一致。
+- 相同分辨率下，视频码率设置越高，输出画质越清晰，文件体积也越大。
+- 未设置视频码率时，默认码率由视频分辨率决定，详细规格参见[AVTranscoderConfig](../../reference/apis-media-kit/arkts-apis-media-i.md#avtranscoderconfig12)。
+- 编码器输出的码率受视频内容影响，存在实际输出码率与目标码率有一定偏差的情况，属于正常现象。
