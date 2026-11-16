@@ -6,7 +6,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-10T09:20:13.418Z pushedAt=2026-08-10T12:53:45.423Z -->
+<!-- md-trans-meta sourceCommit=c6f226a3788f6b33198faab5bb944561f506cafd translatedAt=2026-11-05T06:16:33.950Z pushedAt=2026-08-10T12:53:45.423Z nl=1 -->
 
 ## Overview
 
@@ -31,7 +31,41 @@ For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)]
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. Create a photo output stream.
+2. Check whether the camera supports photo capture mode.
+
+   Call [getSupportedSceneModes](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedscenemodes11) to obtain the modes supported by the specified camera and check whether photo capture mode is supported.
+
+   ```ts
+   function isCaptureModeSupported(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): boolean
+   {
+     try {
+       let modeArray = cameraManager.getSupportedSceneModes(cameraDevice);
+       return modeArray.includes(camera.SceneMode.NORMAL_PHOTO);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`failed to getSupportedSceneModes, err code: ${err.code}`);
+       return false;
+     }
+   }
+   ```
+
+3. Call [getSupportedOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11) to obtain the [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability) list supported by the camera.
+
+   ```ts
+   function getSupportedOutputCapability(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): camera.CameraOutputCapability | undefined
+   {
+     try {
+       // Pass the mode to enable to the API.
+       return cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`failed to getSupportedOutputCapability, err code: ${err.code}`);
+       return undefined;
+     }
+   }
+   ```
+
+4. Create a photo output stream.
 
    Obtain the photo output streams supported by the current device from **photoProfiles** in [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability). Call [createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11), passing in a supported output stream [profile](../../reference/apis-camera-kit/arkts-apis-camera-i.md#profile), to create a photo output stream.
 
@@ -56,7 +90,7 @@ For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)]
    }
    ```
 
-3. Set the callback for the [on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11) event and save the photo buffer as an image.
+5. Set the callback for the [on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11) event and save the photo buffer as an image.
 
    For details about how to obtain the context, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
@@ -64,7 +98,7 @@ For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)]
 
    When the buffer is obtained through the [photoOutput.on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11) API, save the buffer to the media library in a security component.
 
-   <!-- @[camera_photoAvailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+   <!-- @[camera_photoAvailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->    
 
    ``` TypeScript
    setPhotoOutputCb(photoOutput: camera.PhotoOutput, context: Context) {
@@ -72,7 +106,7 @@ For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)]
      photoOutput.on('photoAvailable', (errCode: BusinessError, photo: camera.Photo): void => {
        console.info('getPhoto start');
        if (errCode || photo === undefined) {
-         console.error('getPhoto failed, err: ${errCode}');
+         console.error(`getPhoto failed, err: ${errCode}`);
          return;
        }
          // To view saved images and videos in Gallery, use a security component to create media assets.
@@ -113,7 +147,7 @@ For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)]
    }
    ```
 
-4. Set camera parameters.
+6. Set camera parameters.
 
    You can set camera parameters to adjust photo capture functions, including the flash, zoom ratio, and focal length.
 
@@ -187,7 +221,7 @@ For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)]
    }
    ```
 
-5. Trigger photo capture.
+7. Trigger photo capture.
 
    Call [capture](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#capture-2) in **PhotoOutput** to capture a photo. In this API, the first parameter specifies the settings (for example, photo quality and rotation angle) for photo capture, and the second parameter is a callback function.
 

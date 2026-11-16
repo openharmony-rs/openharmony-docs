@@ -6,9 +6,8 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=228f11e5a45e83f03749e535518c3566dacf5eca translatedAt=2026-08-10T09:15:16.700Z pushedAt=2026-08-10T11:58:24.132Z -->
-
 <!--RP1-->
+<!-- md-trans-meta sourceCommit=c6f226a3788f6b33198faab5bb944561f506cafd translatedAt=2026-11-05T06:16:33.950Z pushedAt=2026-08-10T11:58:24.132Z nl=1 -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
@@ -61,7 +60,23 @@ For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)]
     }
     ```
 
-3. Use **previewProfiles** in [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability) to obtain the preview output capabilities, in the format of a **previewProfilesArray** array, supported by the current device. Then call [createPreviewOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput) to create a PreviewOutput object, with the first parameter set to the preview profile supported by the camera and the second parameter set to the surface ID obtained in step 2.
+3. Call [getSupportedOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11) to obtain the [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability) list supported by the camera.
+
+   ```ts
+   function getSupportedOutputCapability(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): camera.CameraOutputCapability | undefined
+   {
+     try {
+       // Pass the mode to enable to the API. Photo mode is used here as an example.
+       return cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`failed to getSupportedOutputCapability, err code: ${err.code}`);
+       return undefined;
+     }
+   }
+   ```
+
+4. Use **previewProfiles** in [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability) to obtain the preview output capabilities, in the format of a **previewProfilesArray** array, supported by the current device. Then call [createPreviewOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput) to create a PreviewOutput object, with the first parameter set to the preview profile supported by the camera and the second parameter set to the surface ID obtained in step 2.
 
    ```ts
    function getPreviewOutput(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability, surfaceId: string): camera.PreviewOutput | undefined {
@@ -85,7 +100,7 @@ For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)]
    }
    ```
 
-4. Call [Session.start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11) to output the preview stream. If the API call fails, an error code is returned. For details about the error code types, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
+5. Call [Session.start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11) to output the preview stream. If the API call fails, an error code is returned. For details about the error code types, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
 
    ```ts
    async function startPreviewOutput(cameraManager: camera.CameraManager, previewOutput: camera.PreviewOutput): Promise<void> {

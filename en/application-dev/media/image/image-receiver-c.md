@@ -6,7 +6,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9329f19aa2995f079ff9cf109a20aad0033a91a3 translatedAt=2026-08-11T01:47:08.591Z pushedAt=2026-08-11T08:31:47.235Z -->
+<!-- md-trans-meta sourceCommit=aad831774b1da8de19dc0461cecd5eff8a4db830 translatedAt=2026-11-05T06:16:33.955Z pushedAt=2026-08-11T08:31:47.235Z nl=1 -->
 
 You can use the **ImageReceiver** class to obtain the surface ID of a component, read the latest image or the next image, and release ImageReceiver instances. For details about the sample code of camera preview implemented with the use of the camera API, see [Secondary Processing of Preview Streams (C/C++)](../camera/native-camera-preview-imageReceiver.md).
 

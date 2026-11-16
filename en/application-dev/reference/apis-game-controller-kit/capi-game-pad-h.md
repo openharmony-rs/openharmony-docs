@@ -1,12 +1,11 @@
 # game_pad.h
-
 <!--Kit: Game Controller Kit-->
 <!--Subsystem: Game-->
 <!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
 <!--Tester: @fei_0805-->
-<!--Adviser: @luwy2025-->
-<!-- md-trans-meta sourceCommit=77c72b42e08d6a4d9b4548171e0024968c7d2a99 translatedAt=2026-07-30T08:29:15.965Z pushedAt=2026-07-30T09:07:05.234Z -->
+<!--Adviser: @yuwenliang0514-->
+<!-- md-trans-meta sourceCommit=1114c01c6d6bc126b9025685c4a37a86c8ed6e1f translatedAt=2026-11-13T03:54:23.895Z pushedAt=2026-11-13T09:17:19.456Z nl=1 -->
 
 ## Overview
 
@@ -54,6 +53,8 @@ Defines APIs for gamepads.
 | [GameController_ErrorCode OH_GamePad_ButtonY_UnregisterButtonInputMonitor(void)](#oh_gamepad_buttony_unregisterbuttoninputmonitor) | Unregisters the callback for Y button events.|
 | [GameController_ErrorCode OH_GamePad_ButtonC_RegisterButtonInputMonitor(GamePad_ButtonInputMonitorCallback inputMonitorCallback)](#oh_gamepad_buttonc_registerbuttoninputmonitor) | Registers a callback for C button events.|
 | [GameController_ErrorCode OH_GamePad_ButtonC_UnregisterButtonInputMonitor(void)](#oh_gamepad_buttonc_unregisterbuttoninputmonitor) | Unregisters the callback for C button events.|
+| [GameController_ErrorCode OH_GamePad_ButtonNonstandard_RegisterButtonInputMonitor(GamePad_ButtonInputMonitorCallback inputMonitorCallback)](#oh_gamepad_buttonnonstandard_registerbuttoninputmonitor) | Registers a callback for listening to non-standard key events. |
+| [GameController_ErrorCode OH_GamePad_ButtonNonstandard_UnregisterButtonInputMonitor(void)](#oh_gamepad_buttonnonstandard_unregisterbuttoninputmonitor) | Unregisters the callback for listening to non-standard key events. |
 | [GameController_ErrorCode OH_GamePad_Dpad_LeftButton_RegisterButtonInputMonitor(GamePad_ButtonInputMonitorCallback inputMonitorCallback)](#oh_gamepad_dpad_leftbutton_registerbuttoninputmonitor) | Registers a callback for D-pad Left button events.|
 | [GameController_ErrorCode OH_GamePad_Dpad_LeftButton_UnregisterButtonInputMonitor(void)](#oh_gamepad_dpad_leftbutton_unregisterbuttoninputmonitor) | Unregisters the callback for D-pad Left button events.|
 | [GameController_ErrorCode OH_GamePad_Dpad_RightButton_RegisterButtonInputMonitor(GamePad_ButtonInputMonitorCallback inputMonitorCallback)](#oh_gamepad_dpad_rightbutton_registerbuttoninputmonitor) | Registers a callback for D-pad Right button events.|
@@ -237,7 +238,7 @@ Registers a callback for Left Trigger axis events.
 
 | Type| Description|
 | -- | -- |
-| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>      <li>If **inputMonitorCallback** is **null**, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode): The execution is successful.</li>      <li>[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode): The parameter **inputMonitorCallback** is null.</li></ul> |
 
 ### OH_GamePad_LeftTrigger_UnregisterAxisInputMonitor()
 
@@ -283,7 +284,7 @@ Registers a callback for Right Trigger button events.
 
 | Type| Description|
 | -- | -- |
-| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li>      <li>If **inputMonitorCallback** is **null**, [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.</li></ul> |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>[GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode): The execution is successful.</li>      <li>[GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode): The parameter **inputMonitorCallback** is null.</li></ul> |
 
 ### OH_GamePad_RightTrigger_UnregisterButtonInputMonitor()
 
@@ -666,6 +667,52 @@ Unregisters the callback for C button events.
 **System capability:** SystemCapability.Game.GameController
 
 **Since:** 21
+
+**Returns:**
+
+| Type | Description |
+| -- | -- |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned. |
+
+### OH_GamePad_ButtonNonstandard_RegisterButtonInputMonitor()
+
+```c
+GameController_ErrorCode OH_GamePad_ButtonNonstandard_RegisterButtonInputMonitor(GamePad_ButtonInputMonitorCallback inputMonitorCallback)
+```
+
+**Description**
+
+Registers a callback for listening to non-standard key events.
+
+**System capability:** SystemCapability.Game.GameController
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [GamePad_ButtonInputMonitorCallback](capi-game-pad-event-h.md#gamepad_buttoninputmonitorcallback) inputMonitorCallback | Callback function [GamePad_ButtonInputMonitorCallback](capi-game-pad-event-h.md#gamepad_buttoninputmonitorcallback), which cannot be null. |
+
+**Return**
+
+| Type | Description |
+| -- | -- |
+| [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | <ul><li>Returns [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) if executed successfully.</li>     <li>Returns [GAME_CONTROLLER_PARAM_ERROR](capi-game-controller-type-h.md#gamecontroller_errorcode) if the inputMonitorCallback parameter is null.</li></ul> |
+
+### OH_GamePad_ButtonNonstandard_UnregisterButtonInputMonitor()
+
+```c
+GameController_ErrorCode OH_GamePad_ButtonNonstandard_UnregisterButtonInputMonitor(void)
+```
+
+**Description**
+
+Unregisters the callback for listening to non-standard key events.
+
+**System capability:** SystemCapability.Game.GameController
+
+**Since:** 26.0.1
 
 **Return value**
 
@@ -1086,3 +1133,5 @@ Unregisters the callback for Right Thumbstick axis events.
 | Type| Description|
 | -- | -- |
 | [GameController_ErrorCode](capi-game-controller-type-h.md#gamecontroller_errorcode) | If the operation is successful, [GAME_CONTROLLER_SUCCESS](capi-game-controller-type-h.md#gamecontroller_errorcode) is returned.|
+
+

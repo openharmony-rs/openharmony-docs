@@ -59,7 +59,7 @@
 
     void CaptureSessionOnError(Camera_CaptureSession* session, Camera_ErrorCode errorCode)
     {
-        OH_LOG_INFO(LOG_APP, "CaptureSessionOnError = %{public}d", errorCode);
+        OH_LOG_ERROR(LOG_APP, "CaptureSessionOnError = %{public}d", errorCode);
     }
 
     CaptureSession_Callbacks* GetCaptureSessionRegister(void)
@@ -83,7 +83,7 @@
 
     void PreviewOutputOnError(Camera_PreviewOutput* previewOutput, Camera_ErrorCode errorCode)
     {
-        OH_LOG_INFO(LOG_APP, "PreviewOutputOnError = %{public}d", errorCode);
+        OH_LOG_ERROR(LOG_APP, "PreviewOutputOnError = %{public}d", errorCode);
     }
 
     PreviewOutput_Callbacks* GetPreviewOutputListener(void)

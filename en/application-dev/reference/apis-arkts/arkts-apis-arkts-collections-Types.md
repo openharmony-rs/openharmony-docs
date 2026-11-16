@@ -23,7 +23,7 @@ type ISendable = lang.ISendable
 
 | Type| Description  |
 | ------ | ------ |
-| [lang.ISendable](js-apis-arkts-lang.md#langisendable)   | Parent type of all sendable types.|
+| [lang.ISendable](js-apis-arkts-lang.md#isendable)   | Parent type of all sendable types.|
 
 ## ArrayFromMapFn<sup>18+</sup>
 type ArrayFromMapFn<FromElementType, ToElementType> = (value: FromElementType, index: number) => ToElementType

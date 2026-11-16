@@ -1,6 +1,6 @@
 # mDNS Error Codes
 
-<!-- md-trans-meta sourceCommit=fe47b7db75861b58ddb0d93e5f0db87ae361144c translatedAt=2026-09-28T01:18:57.979Z pushedAt=2026-10-09T02:26:22.732Z -->
+<!-- md-trans-meta sourceCommit=c8d611da517c0df9bbfb2e4952764bf8397e713e translatedAt=2026-11-04T06:37:27.152Z pushedAt=2026-11-04T08:04:44.872Z nl=1 -->
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -43,13 +43,13 @@ This error code is reported if a system internal error occurs.
 
 **Possible Causes**
 
-1. The memory is abnormal.
+1. Memory exception.
 
-2. A null pointer is present.
+2. Null pointer.
 
 **Solution**
 
-1. Check whether the memory space is sufficient. If not, clear the memory and try again.
+1. Check whether the memory space is sufficient, and clear the memory and try again.
 
 2. The system is abnormal. Try again later or restart the device. If the problem persists, collect complete logs and contact technical support for assistance.
 

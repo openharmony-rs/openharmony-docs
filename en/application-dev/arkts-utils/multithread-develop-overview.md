@@ -1,10 +1,11 @@
 # Overview of Multithreaded Development
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @huanghello-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=ef97b4f4e99b757e3a4cb9958ae751b6d982f951 translatedAt=2026-11-04T09:25:30.388Z pushedAt=2026-11-04T09:36:46.013Z nl=1 -->
 
 In ArkTS application development, different service scenarios require different concurrency capabilities and task types.
 

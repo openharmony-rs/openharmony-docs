@@ -5,7 +5,7 @@
 <!--Designer: @zhengdu_628-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=88b7d1a434c3781479c68e1ea5d6cdb038f89cd7 translatedAt=2026-08-31T01:19:20.186Z pushedAt=2026-09-01T01:54:59.321Z -->
+<!-- md-trans-meta sourceCommit=2b4d557c82db21b31d129b2b99157a9d3034221b translatedAt=2026-11-04T04:56:03.173Z pushedAt=2026-11-04T10:12:33.514Z nl=1 -->
 
 This module identifies sensitive information in a specified file based on the input [Policy](#policy). The system matches the file content against the provided [Policy](#policy) (including sensitive labels, keyword sets, and regular expressions) and returns the matched sensitive content.
 

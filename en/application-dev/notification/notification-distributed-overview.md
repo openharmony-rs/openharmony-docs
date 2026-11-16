@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-08T03:48:50.077Z pushedAt=2026-10-08T06:47:24.093Z -->
+<!-- md-trans-meta sourceCommit=d13608155981ddb4a909ac86f719d96a9e2b7178 translatedAt=2026-11-05T01:00:48.377Z pushedAt=2026-10-08T06:47:24.093Z nl=2 -->
 
 [Cross-device collaboration](notification-glossary.md#cross-device-collaboration) notifications aim to use the phone as the center to implement collaborative interaction of notification messages with other devices such as watches. Typical scenarios are as follows:
 

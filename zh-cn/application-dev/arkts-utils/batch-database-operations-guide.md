@@ -34,12 +34,12 @@ async function create(context: Context) {
   console.info(`Get Store.db successfully!`);
 
   // 创建表
-  const CREATE_TABLE_SQL = 'CREATE TABLE IF NOT EXISTS test (' +
-    'id INTEGER PRIMARY KEY AUTOINCREMENT, ' +
-    'name TEXT NOT NULL, ' +
-    'age INTEGER, ' +
-    'salary REAL, ' +
-    'blobType BLOB)';
+  const CREATE_TABLE_SQL = `CREATE TABLE IF NOT EXISTS test (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    age INTEGER,
+    salary REAL,
+    blobType BLOB)`;
   await store.executeSql(CREATE_TABLE_SQL);
   console.info(`Create table test successfully!`);
 }
@@ -201,12 +201,12 @@ struct Index {
      console.info(`Get Store.db successfully!`);
    
      // 创建表
-     const CREATE_TABLE_SQL = 'CREATE TABLE IF NOT EXISTS test (' +
-       'id INTEGER PRIMARY KEY AUTOINCREMENT, ' +
-       'name TEXT NOT NULL, ' +
-       'age INTEGER, ' +
-       'salary REAL, ' +
-       'blobType BLOB)';
+     const CREATE_TABLE_SQL = `CREATE TABLE IF NOT EXISTS test (
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       name TEXT NOT NULL,
+       age INTEGER,
+       salary REAL,
+       blobType BLOB)`;
      await store.executeSql(CREATE_TABLE_SQL);
      console.info(`Create table test successfully!`);
    }
@@ -413,12 +413,12 @@ struct Index {
        console.info('Get Store.db successfully!');
    
        // 创建表
-       const CREATE_TABLE_SQL = 'CREATE TABLE IF NOT EXISTS test (' +
-         'id INTEGER PRIMARY KEY AUTOINCREMENT, ' +
-         'name TEXT NOT NULL, ' +
-         'age INTEGER, ' +
-         'salary REAL, ' +
-         'blobType BLOB)';
+       const CREATE_TABLE_SQL = `CREATE TABLE IF NOT EXISTS test (
+         id INTEGER PRIMARY KEY AUTOINCREMENT,
+         name TEXT NOT NULL,
+         age INTEGER,
+         salary REAL,
+         blobType BLOB)`;
        await store.executeSql(CREATE_TABLE_SQL);
        console.info('Create table test successfully!');
        return true;

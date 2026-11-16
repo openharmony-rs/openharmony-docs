@@ -6,7 +6,7 @@
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=4df20884379aac255f1543b2903732709a7e9dcf translatedAt=2026-09-14T08:27:44.774Z pushedAt=2026-09-14T11:20:49.128Z -->
+<!-- md-trans-meta sourceCommit=49eb80979d24efc646f232a5fdee339bb63c977e translatedAt=2026-11-09T07:43:54.371Z pushedAt=2026-11-09T07:47:11.123Z nl=1 -->
 
 ## Introduction
 Near Field Communication (NFC) is a high-frequency radio technology that enables communication between devices over a distance less than 10 cm. NFC operates at 13.56 MHz. With NFC technologies, electronic devices can read data from tags or write data to tags.<br>
@@ -187,7 +187,7 @@ async function readerModeCb(error: BusinessError, tagInfo: tag.TagInfo) {
       return;
     }
   } else {
-    hilog.info(0x0000, 'testTag', 'readerModeCb readerModeCb error %{public}s', JSON.stringify(error));
+    hilog.error(0x0000, 'testTag', 'readerModeCb readerModeCb error %{public}s', JSON.stringify(error));
   }
 }
 
@@ -244,7 +244,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 ### Accessing an NFC Tag Without Starting an Application
-1. In the **module.json5** configuration file, declare the NFC tag operation permission, the NFC tag action, and the technology type.
+1. Declare the permissions required for reading NFC tags in the **module.json5** file, specify the action for NFC tags, and declare the NFC tag technology types that the application can handle.
 2. Import related modules.
 3. Obtain an NFC tag object of the specific technology type.
 4. Read and write the tag data.

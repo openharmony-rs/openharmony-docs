@@ -6,7 +6,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=5ebc42431866e478171b45f0c3c1a73229dae334 translatedAt=2026-08-11T01:46:39.513Z pushedAt=2026-08-11T07:31:05.659Z -->
+<!-- md-trans-meta sourceCommit=aad831774b1da8de19dc0461cecd5eff8a4db830 translatedAt=2026-11-05T06:16:33.954Z pushedAt=2026-08-11T07:31:05.659Z nl=1 -->
 
 You can decode an image file in a supported format into a [Picture](image-overview.md#basic-concepts) object for HDR image display, auxiliary picture processing, and other operations in an app or system. Currently supported image file formats include JPEG and HEIF.
 
@@ -167,7 +167,7 @@ For details about the APIs related to image decoding, see [ImageSource](../../re
    <!-- @[create_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
 
    ``` TypeScript
-   async createPicture(imageSource : image.ImageSource | undefined, isReturnAux: Boolean)
+   async createPicture(imageSource : image.ImageSource | undefined, isReturnAux: boolean)
      : Promise<image.PixelMap | undefined | image.Picture> {
      // Set the decoding options.
      let options: image.DecodingOptionsForPicture = {

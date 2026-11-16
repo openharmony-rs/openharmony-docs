@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
-<!--Designer: @gcw_sPCsris4; @qinliwen0417-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @gcw_sPCsris4; @jingbotao-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=50d1c0b25b69166867a5980e73fb2fa37223d98b translatedAt=2026-10-08T09:01:54.058Z pushedAt=2026-10-08T11:14:58.273Z -->
+<!-- md-trans-meta sourceCommit=0447f4302801fab3245fb8443c542c37eb3b5085 translatedAt=2026-11-05T10:49:18.661Z pushedAt=2026-11-06T01:40:56.699Z nl=1 -->
 
 ## When to Use
 
@@ -26,7 +26,7 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
    In the [freeform window](freeform-window-overview.md#freeform-window) state, an independent subwindow does not follow the main window's foreground/background switching and is only destroyed together with the main window. The independent subwindow and the main window can adjust their z-order by clicking.
 
    <!-- @[create_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
-
+   
    ``` TypeScript
    let windowStage_: window.WindowStage | undefined = undefined;
    let subWindowClass: window.Window | undefined = undefined;
@@ -44,7 +44,7 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
              }
              subWindowClass = data;
              if (!subWindowClass) {
-               console.error('sub_windowClass is null');
+               console.error('subWindowClass is null');
                return;
              }
              console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
@@ -52,9 +52,9 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
            })
          }
    ```
-
+   
    <!-- @[create_independent_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
-
+   
    ``` TypeScript
    let independentWindowClass: window.Window | undefined = undefined;
    // ...
@@ -71,7 +71,7 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
            promise.then((data: window.Window | undefined) => {
              independentWindowClass = data;
              if (!independentWindowClass) {
-               console.error('independent_sub_windowClass is null');
+               console.error('independentSubWindowClass is null');
                return;
              }
              console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
@@ -90,11 +90,11 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
       - In the [freeform window](freeform-window-overview.md#freeform-window) state, the default subwindow size is the size of the current physical screen.
 
       - In the non-[freeform window](freeform-window-overview.md#freeform-window) state, the default subwindow size is the size of the main window.
-
+  
    Take setting the attributes of an independent subwindow as an example. The sample code is as follows:
 
    <!-- @[independent_subWindow_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
-
+   
    ``` TypeScript
    // 2. After the subwindow is created, set its position, size, and related attributes.
    independentWindowClass.moveWindowTo(100, 100, (err) => {
@@ -104,7 +104,7 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
      }
      console.info('Succeeded in moving the window.');
      if (!independentWindowClass) {
-       console.error('independent_windowClass is null');
+       console.error('independentWindowClass is null');
        return;
      }
      independentWindowClass.resize(1000, 500, (err) => {
@@ -124,7 +124,7 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
    Take loading and displaying the specific content of an independent subwindow as an example. The sample code is as follows:
 
    <!-- @[independent_subWindow_uiContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
-
+   
    ``` TypeScript
    // 3. Load the corresponding target page for the subwindow.
    independentWindowClass.setUIContent('pages/IndependentSubWindow', (err) => {
@@ -134,7 +134,7 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
      }
      console.info('Succeeded in loading the content.');
      if (!independentWindowClass) {
-       console.error('independent_windowClass is null');
+       console.error('independentWindowClass is null');
        return;
      }
      // Show the subwindow.
@@ -155,9 +155,9 @@ A subwindow is the most basic type of auxiliary window, used to provide auxiliar
    The following takes destroying an independent subwindow as an example. The sample code is as follows:
 
    <!-- @[destroy_independent_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) -->  
-
+   
    ``` TypeScript
-   // 4. Destroy the subwindow. When the subwindow is no longer needed, you can destroy it using destroy based on the specific implementation logic.
+   // 4. Destroy the subwindow. When the subwindow is no longer needed, destroy it by calling destroyWindow based on the specific implementation logic.
    independentWindowClass.destroyWindow((err) => {
      if (err?.code) {
        console.error(`Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);

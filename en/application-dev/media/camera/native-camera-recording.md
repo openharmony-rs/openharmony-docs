@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-09-28T02:45:28.903Z pushedAt=2026-09-29T08:28:36.806Z -->
+<!-- md-trans-meta sourceCommit=c6f226a3788f6b33198faab5bb944561f506cafd translatedAt=2026-11-05T06:16:33.952Z pushedAt=2026-09-29T08:28:36.806Z nl=1 -->
 
 Recording is cyclic frame capture and one of the most important features of a camera app. For recording smoothness, refer to step 7 in the development procedure of [Photo Capture (C/C++)](native-camera-shooting.md#how-to-develop) to set the resolution, flash, focal length, photo quality, rotation angle, and other parameters.
 
@@ -71,11 +71,13 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
    )
    ```
 
-3. Obtain the surface ID.
+3. Create and open the camera device. For details, see steps 3-5 in [How to Develop](./native-camera-device-input.md#how-to-develop) in Device Input (C/C++).
+
+4. Obtain the surface ID.
 
    The system-provided [OH_AVRecorder_Create()](../../reference/apis-media-kit/capi-avrecorder-h.md#oh_avrecorder_create) API creates an AVRecorder instance for recording, and the [OH_AVRecorder_GetInputSurface()](../../reference/apis-media-kit/capi-avrecorder-h.md#oh_avrecorder_getinputsurface) method of this instance obtains the surface ID.
 
-4. Create a video output stream.
+5. Create a video output stream.
 
    Based on the surface ID passed in, call [OH_CameraManager_GetSupportedCameraOutputCapability](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapability) to obtain [Camera_OutputCapability](../../reference/apis-camera-kit/capi-oh-camera-camera-outputcapability.md). From there, you can access **videoProfiles** to obtain the video output streams supported by the device. Then, define video recording parameters and use **OH_CameraManager_CreateVideoOutput** to create a video output stream.
   
@@ -106,7 +108,7 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
    }
    ```
 
-5. Start video recording.
+6. Start video recording.
 
    Call [OH_VideoOutput_Start()](../../reference/apis-camera-kit/capi-video-output-h.md#oh_videooutput_start) to start the video output stream.
 
@@ -126,7 +128,7 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
    }
    ```
 
-6. Stop video recording.
+7. Stop video recording.
 
    Call [OH_VideoOutput_Stop()](../../reference/apis-camera-kit/capi-video-output-h.md#oh_videooutput_stop) to stop the video output stream.
 

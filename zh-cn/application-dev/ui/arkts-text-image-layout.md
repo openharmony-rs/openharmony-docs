@@ -71,8 +71,8 @@ struct styled_string_demo {
 
   private async getPixmapFromMedia(resource: Resource) {
     try {
-      let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
-      let imageSource = image.createImageSource(unit8Array?.buffer?.slice(0, unit8Array?.buffer?.byteLength));
+      let uint8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
+      let imageSource = image.createImageSource(uint8Array?.buffer?.slice(0, uint8Array?.buffer?.byteLength));
       let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
         desiredPixelFormat: image.PixelMapFormat.RGBA_8888
       });

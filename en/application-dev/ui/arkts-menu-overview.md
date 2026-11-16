@@ -1,12 +1,11 @@
 # Menu Overview
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @H-xinwei-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=3617037f719a273622289ce7b8b4beb6d174e3b3 translatedAt=2026-08-04T06:35:08.237Z pushedAt=2026-08-04T07:43:35.147Z -->
+<!-- md-trans-meta sourceCommit=8d75ae784f56fc7e62ba636f357115f8f4b9c3ff translatedAt=2026-11-05T11:18:52.841Z pushedAt=2026-11-09T10:02:18.748Z nl=1 -->
 
 A menu is a pop-up window that allows users to perform specific actions. It typically appears when users right-click, long-press, or touch an item.
 
@@ -20,10 +19,9 @@ A menu is a pop-up window that allows users to perform specific actions. It typi
 ## Constraints
 
 * When [bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11) is triggered via the **isShow** parameter or [bindContextMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu12) is triggered via the **isShown** parameter, the menu requires complete page construction before display. Therefore, avoid setting **isShow** or **isShown** to **true** during the page build phase, as this may cause incorrect menu positioning and rendering.
-
 * When using **openMenu**, you must provide valid [TargetInfo](../reference/apis-arkui/arkts-apis-uicontext-i.md#targetinfo18). Otherwise, the menu won't display correctly.
-
 * For details about other specifications, see [Menu Control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md) and [openMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openmenu18).
+
 
 ## Lifecycle
 

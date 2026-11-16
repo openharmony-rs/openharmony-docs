@@ -6,7 +6,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=2b8002975a0c421d94edbe70b3817da05adefb9a translatedAt=2026-08-12T06:26:10.234Z pushedAt=2026-08-12T08:51:13.346Z -->
+<!-- md-trans-meta sourceCommit=0b50ff1c6d77ec00cd47e1216c043c17663c7283 translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## Fault Location
 
@@ -81,7 +81,7 @@ Unexpected execution result issues: Locate the issue by checking the JSVM-API re
 4. Q: The app crashes when a JS data type instance is created (for example, `OH_JSVM_CreateDouble`) in a JSVM instance. The call stack is as follows:
 
    ```txt
-   #00 pc 0000000001d209e4/system/lib64/ndk/libjsvm.so(v8::base::0S::Abort()+28)
+   #00 pc 0000000001d209e4/system/lib64/ndk/libjsvm.so(v8::base::OS::Abort()+28)
    #01 pc 0000000001408480/system/lib64/ndk/libjsvm.so(v8::Utils::ReportApiFailure(char const*,char const*)+124)
    #02 pc 00000000015c99b8/system/lib64/ndk/libjsvm.so(v8::internal::HandleScope::Extend(v8::internal::Isolate*)+200)
    ```
@@ -139,3 +139,7 @@ Unexpected execution result issues: Locate the issue by checking the JSVM-API re
 3. Q: The class defined by `OH_JSVM_DefineClass` cannot be found during JS execution.
 
    A: Check whether the defined class is bound to the JS context. For details, see [Binding Objects to Context](jsvm-guidelines.md#binding-objects-to-context).
+
+4. Q: `OH_JSVM_CompileScript()` fails with `JSVM_GENERIC_FAILURE`.
+
+   A: See item 6 in [Application Crash Issues](#application-crash-issues).

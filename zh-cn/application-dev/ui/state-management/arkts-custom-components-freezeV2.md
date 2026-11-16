@@ -914,7 +914,7 @@ class TextNodeController extends NodeController {
   }
 }
 
-// 定义一个Index组件，它包含一个message属性和一个data数组
+// 定义一个Index组件，它包含一个storage属性和一个data数组
 @Entry
 @ComponentV2
 struct Index {
@@ -948,7 +948,7 @@ struct Index {
   }
 }
 
-// 定义一个FreezeBuildNode组件，它包含一个message属性和一个index属性
+// 定义一个FreezeBuildNode组件，它包含一个storage属性和一个index属性
 @ComponentV2({ freezeWhenInactive: true })
 struct FreezeBuildNode {
   // 使用Params实例作为storage属性

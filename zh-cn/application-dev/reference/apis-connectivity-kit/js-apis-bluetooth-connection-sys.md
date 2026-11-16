@@ -34,6 +34,8 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport, callback: As
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明                                  |
@@ -86,6 +88,8 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Promise&lt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -142,6 +146,8 @@ cancelPairedDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明                                    |
@@ -189,6 +195,8 @@ cancelPairedDevice(deviceId: string): Promise&lt;void&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -246,6 +254,8 @@ cancelPairingDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明                                    |
@@ -290,6 +300,8 @@ cancelPairingDevice(deviceId: string): Promise&lt;void&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -341,6 +353,8 @@ getLocalProfileUuids(callback: AsyncCallback&lt;Array&lt;ProfileUuids&gt;&gt;): 
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明                                  |
@@ -386,6 +400,8 @@ getLocalProfileUuids(): Promise&lt;Array&lt;ProfileUuids&gt;&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -505,9 +521,9 @@ disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |201     | Permission denied.                       |
-|202     | Non-system applications are not allowed to use system APIs.                       |
-|401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                       |
-|801     | Capability not supported.                |
+|202     | Non-system applications are not allowed to use system APIs. <br>适用版本：11-24                       |
+|401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：11-24                       |
+|801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.                |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
 |2900099 | Operation failed.                        |
@@ -540,6 +556,8 @@ getRemoteProductId(deviceId: string): string
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -587,6 +605,8 @@ setRemoteDeviceType(deviceId: string, type: DeviceType): Promise&lt;void&gt;
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -640,6 +660,8 @@ getRemoteDeviceType(deviceId: string): Promise&lt;DeviceType&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名    | 类型      | 必填   | 说明                               |
@@ -658,7 +680,8 @@ getRemoteDeviceType(deviceId: string): Promise&lt;DeviceType&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-|202 | Non-system applications are not allowed to use system APIs. |
+|201 | Permission denied. <br>适用版本：12-17 |
+|202 | Non-system applications are not allowed to use system APIs. <br>适用版本：18+ |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -689,6 +712,8 @@ controlDeviceAction(controlDeviceActionParams: ControlDeviceActionParams): Promi
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -749,6 +774,8 @@ updateCloudBluetoothDevice(trustedPairedDevices: TrustedPairedDevices): Promise&
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -1018,7 +1045,7 @@ getCarKeyDfxData(): string
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |202 | Non-system applications are not allowed to use system APIs. |
-|801 | Capability not supported.          |
+|801 | Capability not supported. Failed to call the API when the short-range chip is not inserted on the 2in1 device.          |
 |2900003 | Bluetooth disabled.                 |
 |2900099 | Operation failed.                        |
 
@@ -1039,6 +1066,8 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**： 此接口仅可在Stage模型下使用。
+
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
 | pinType | [PinType](#pintype) | 否    | 否    | 表示要配对的设备类型。<br/>此接口为系统接口。   |
@@ -1050,6 +1079,8 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**： 此接口仅可在Stage模型下使用。
 
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
@@ -1065,6 +1096,8 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**： 此接口仅可在Stage模型下使用。
 
 | 名称                               | 值    | 说明              |
 | -------------------------------- | ------ | --------------- |
@@ -1087,6 +1120,8 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**： 此接口仅可在Stage模型下使用。
+
 | 名称                               | 值    | 说明              |
 | -------------------------------- | ------ | --------------- |
 | DEVICE_TYPE_DEFAULT | 0 | 默认设备类型，与原类型一致。<br/>此接口为系统接口。 |
@@ -1105,6 +1140,8 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**： 此接口仅可在Stage模型下使用。
+
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
 | deviceId | string | 否    | 否    | 表示远端设备的MAC地址。<br/>此接口为系统接口。 |
@@ -1117,6 +1154,8 @@ try {
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**： 此接口仅可在Stage模型下使用。
 
 | 名称                               | 值    | 说明              |
 | -------------------------------- | ------ | --------------- |
@@ -1135,6 +1174,8 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**： 此接口仅可在Stage模型下使用。
+
 | 名称    | 值   | 说明       |
 | ------- | ---- | ---------- |
 | DISABLE | 0    | 表示禁用。 |
@@ -1149,6 +1190,8 @@ try {
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**： 此接口仅可在Stage模型下使用。
 
 | 名称           | 值   | 说明                 |
 | -------------- | ---- | -------------------- |
@@ -1165,6 +1208,8 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**： 此接口仅可在Stage模型下使用。
+
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
 | trustedPairedDevices  | Array&lt;[TrustedPairedDevice](#trustedpaireddevice15)&gt; | 否    | 否    | 表示云设备列表。   |
@@ -1176,6 +1221,8 @@ try {
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
+
+**模型约束**： 此接口仅可在Stage模型下使用。
 
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |

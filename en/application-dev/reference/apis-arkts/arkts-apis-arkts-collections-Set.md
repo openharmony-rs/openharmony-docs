@@ -1,11 +1,13 @@
 # Class (Set)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
-A non-linear data structure.
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=08d9523ef0226b259d674e299ae60897c53575d4 translatedAt=2026-11-04T10:36:36.476Z pushedAt=2026-11-04T10:42:10.551Z nl=2 -->
+
+A non-linear data structure that stores unique values and efficiently performs element existence detection and deduplication operations.
 
 > **NOTE**
 >
@@ -13,7 +15,7 @@ A non-linear data structure.
 >
 > - This module can be imported only to ArkTS files (with the file name extension .ets).
 
-This section uses the following to identify the use of generics:
+Generics are used in this document, involving the following generic type parameter:
 
 - T: type, which can be any of the [sendable data types](../../arkts-utils/arkts-sendable.md#sendable-data-types).
 
@@ -49,26 +51,27 @@ A constructor used to create an ArkTS set.
 
 | Name| Type| Mandatory| Description                                                     |
 | ------ | ---- | ---- | --------------------------------------------------------- |
-| values | readonly T[] \| null | No| Array or iterator object. The default value is **null**, indicating that an empty set is created.|
+| values | readonly T[] \| null | No | Array or null. Default value is null, which creates an empty Set object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                        |
 | 10200012 | The ArkTS Set's constructor cannot be directly invoked. |
 
 **Example**
 
 ```ts
 // Positive example 1:
+// Create an empty Set object.
 const mySet = new collections.Set<number>();
 ```
 
 ```ts
 // Positive example 2:
+// Create a Set using array initial values.
 const mySet = new collections.Set<number>([1, 2, 3, 4, 5]);
 ```
 
@@ -91,7 +94,7 @@ const mySet2: collections.Set<number|SharedClass> = new collections.Set<number|O
 
 constructor(iterable: Iterable\<T>)
 
-A constructor used to create an ArkTS set.
+Constructor used to create an ArkTS Set object from an iterable object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -101,27 +104,28 @@ A constructor used to create an ArkTS set.
 
 | Name| Type| Mandatory| Description                             |
 | ------ | ---- | ---- | ------------------------------- |
-| iterable | Iterable\<T> | Yes| Object used to construct an ArkTS set.|
+| iterable | Iterable\<T> | Yes | Iterable object used to construct the ArkTS Set. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                               |
 | -------- | ------------------------------------------------------- |
-| 401      | Parameter error.                                        |
 | 10200012 | The ArkTS Set's constructor cannot be directly invoked. |
 
 **Example**
 
 ```ts
+// Create a standard Map object.
 const mapper = new Map([
-  ['1', 'a'],
-  ['2', 'b'],
+  ["1", "a"],
+  ["2", "b"]
 ]);
+// Obtain the iterator through the values() method of the standard Map to construct an ArkTS Set object.
 let newSet = new collections.Set<string>(mapper.values());
-console.info(newSet.has('a').toString()); // Expected output: true
-console.info(newSet.has('b').toString()); // Expected output: true
+console.info(`has a: ${newSet.has("a")}`); // Expected output: has a: true
+console.info(`has b: ${newSet.has("b")}`); // Expected output: has b: true
 ```
 
 ## entries
@@ -151,13 +155,14 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
+// Create a Set object.
 const mySet = new collections.Set<number>([0, 1, 2, 3]);
-
+// Obtain the entries iterator of the Set.
 const iterator = mySet.entries();
-// Expected output: [0, 0]
-console.info(iterator.next().value);
-// Expected output: [1, 1]
-console.info(iterator.next().value);
+// Expected output: entry: [0, 0]
+console.info(`entry: ${iterator.next().value}`);
+// Expected output: entry: [1, 1]
+console.info(`entry: ${iterator.next().value}`);
 ```
 
 ## keys
@@ -187,13 +192,14 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
+// Create a Set object.
 const mySet = new collections.Set<number>([0, 1, 2, 3]);
-
+// Obtain the keys iterator of the Set.
 const iterator = mySet.keys();
-// Expected output: 0
-console.info(iterator.next().value);
-// Expected output: 1
-console.info(iterator.next().value);
+// Expected output: key: 0
+console.info(`key: ${iterator.next().value}`);
+// Expected output: key: 1
+console.info(`key: ${iterator.next().value}`);
 ```
 
 ## values
@@ -224,28 +230,31 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 // Example 1:
+// Create a Set object.
 const mySet = new collections.Set<number>([0, 1, 2, 3]);
-
+// Obtain the values iterator.
 const iterator = mySet.values();
-// Expected output: 0
-console.info(iterator.next().value);
-// Expected output: 1
-console.info(iterator.next().value);
+// Expected output: value: 0
+console.info(`value: ${iterator.next().value}`);
+// Expected output: value: 1
+console.info(`value: ${iterator.next().value}`);
 ```
 
 ```ts
 // Example 2:
+// Create a Set object.
 const mySet = new collections.Set<number>([0, 1, 2, 3]);
-
+// Obtain the values iterator.
 const valueIter = mySet.values();
+// Traverse the Set and delete even elements.
 for (let value of valueIter) {
-    if (value % 2 == 0) {
-        mySet.delete(value);
-    }
+  if (value % 2 == 0) {
+    mySet.delete(value);
+  }
 }
 
-// Expected output: 2
-console.info("size:" + mySet.size);
+// Expected output: size: 2
+console.info(`size: ${mySet.size}`);
 ```
 
 ## clear
@@ -269,12 +278,14 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
+// Create a Set object.
 const mySet = new collections.Set<number>([0, 1]);
-// Expected output: 2
-console.info("size:" + mySet.size);
+// Expected output: size: 2
+console.info(`size: ${mySet.size}`);
+// Clear all elements in the Set.
 mySet.clear();
-// Expected output: 0
-console.info("size:" + mySet.size);
+// Expected output: size: 0
+console.info(`size: ${mySet.size}`);
 ```
 
 ## delete
@@ -296,7 +307,7 @@ Deletes an element from this ArkTS set.
 
 | Type   | Description                             |
 | ------- | --------------------------------- |
-| boolean | Operation result. The value **true** is returned if the key is deleted; otherwise, **false** is returned.|
+| boolean | Returns true if the deletion is successful, and returns false if the specified element does not exist. |
 
 **Error codes**
 
@@ -311,19 +322,23 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
+// Create a Set object.
 const mySet = new collections.Set<string>(["hello", "world"]);
-// Expected result: true
-console.info("result:" + mySet.delete("hello"));
-// Expected result: false
-console.info("result:" + mySet.has("hello"));
-// Expected result: false
-console.info("result:" + mySet.delete("hello"));
+// Delete the specified element from the Set.
+// Expected result: result: true
+console.info(`result: ${mySet.delete("hello")}`);
+// Check whether the element still exists.
+// Expected result: result: false
+console.info(`result: ${mySet.has("hello")}`);
+// Delete the already-deleted element again.
+// Expected result: result: false
+console.info(`result: ${mySet.delete("hello")}`);
 ```
 
 ## forEach
 forEach(callbackFn: (value: T, value2: T, set: Set\<T>) => void): void
 
-Calls a callback function for each key-value pair in this ArkTS set.
+Executes a callback function once for each key-value pair in this Set in insertion order.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -333,22 +348,21 @@ Calls a callback function for each key-value pair in this ArkTS set.
 
 | Name    | Type                                        | Mandatory| Description      |
 | ---------- | -------------------------------------------- | ---- | ---------- |
-| callbackFn | (value: T, value2: T, set: Set\<T>) => void  | Yes  | Callback function to run for each key-value pair. |
+| callbackFn | (value: T, value2: T, set: Set\<T>) => void  | Yes   | Callback function. The current Set object should not be modified during callback execution; otherwise, a concurrent modification error is triggered.  |
 
 callbackFn parameters
 | Name| Type        | Mandatory| Description                        |
 | ------ | ------------ | ---- | ---------------------------- |
 | value  | T            | No  | Value of the element that is currently traversed.|
 | value2 | T            | No  | Key of the element that is currently traversed.|
-| set    | Set&lt;T&gt; | No  | Current set object.           |
+| set    | Set&lt;T&gt; | No   | Current Set instance object.            |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                             |
 | -------- | ----------------------------------------------------- |
-| 401      | Parameter error.                                      |
 | 10200011 | The forEach method cannot be bound with non-sendable. |
 | 10200201 | Concurrent modification error.                    |
 
@@ -356,17 +370,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 // Positive example:
-new collections.Set<string>(['foo', 'bar', 'baz']).forEach((value1, value2, set) => {
-  console.info(`s[${value1}] = ${value2}`);
+// Traverse each element in the Set.
+new collections.Set<string>(["foo", "bar", "baz"]).forEach((value, value2, set) => {
+  console.info(`s[${value}] = ${value2}`);
 });
 ```
 
 <!--code_no_check-->
 ```ts
 // Negative example:
-new collections.Set<string>(['foo', 'bar', 'baz']).forEach((value1, value2, set) => {
+new collections.Set<string>(["foo", "bar", "baz"]).forEach((value, value2, set) => {
   // Throw exception `Concurrent modification error.`
-  set.delete(value1);
+  set.delete(value);
 });
 ```
 
@@ -393,28 +408,29 @@ Checks whether a value exists in this ArkTS set.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401      | Parameter error.                                  |
 | 10200011 | The has method cannot be bound with non-sendable. |
 | 10200201 | Concurrent modification error.                |
 
 **Example**
 
 ```ts
+// Create a Set object.
 const mySet = new collections.Set<string>(["hello", "world"]);
-// Expected output: true
-console.info("result:" + mySet.has("hello"));
-// Expected output: true
-console.info("result:" + mySet.has("world"));
+// Check whether the Set contains the specified element.
+// Expected output: result: true
+console.info(`result: ${mySet.has("hello")}`);
+// Expected output: result: true
+console.info(`result: ${mySet.has("world")}`);
 ```
 
 ## add
 add(value: T): Set\<T>
 
-Checks whether a value exists in this ArkTS set, and if not, adds the value to the set.
+If the element does not exist in the Set, inserts it into the Set.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -430,7 +446,7 @@ Checks whether a value exists in this ArkTS set, and if not, adds the value to t
 
 | Type        | Description     |
 | ------------ | --------- |
-| Set&lt;T&gt; | Set object.|
+| Set&lt;T&gt; | The Set object itself after the element is inserted. |
 
 **Error codes**
 
@@ -445,7 +461,9 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 // Positive example:
+// Create an empty Set object.
 const mySet: collections.Set<string> = new collections.Set<string>();
+// Add a new element to the Set.
 mySet.add("foo");
 ```
 
@@ -462,7 +480,7 @@ mySet.add(obj);
 
 [Symbol.iterator]\(): IterableIterator&lt;T&gt;
 
-Returns an iterator, each item of which is a JavaScript object.
+Returns an iterator that contains all elements in the Set.
 
 > **NOTE**
 >
@@ -476,7 +494,7 @@ Returns an iterator, each item of which is a JavaScript object.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;T&gt; | Iterator obtained.|
+| IterableIterator&lt;T&gt; | Iterator containing all elements in the Set. |
 
 **Error codes**
 
@@ -489,10 +507,12 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-let set = new collections.Set<number>([1, 2, 3, 4, 5]);
-
-let val: Array<number> = Array.from(set.values());
-for (let item of val) {
-  console.info("value: " + item);
+// Create a Set object
+let mySet = new collections.Set<number>([1, 2, 3, 4, 5]);
+// Convert the Set values to an array
+let values: Array<number> = Array.from(mySet.values());
+// Iterate over and output each element
+for (let item of values) {
+  console.info(`value: ${item}`);
 }
 ```

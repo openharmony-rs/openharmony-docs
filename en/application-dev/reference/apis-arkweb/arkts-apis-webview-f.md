@@ -1,14 +1,17 @@
 # Functions
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-11-04T10:50:14.235Z pushedAt=2026-11-04T10:52:13.176Z nl=1 -->
+
+The ArkWeb Functions module is a collection of function capabilities of ArkWeb (Web subsystem). It provides independent functions required during the running of the Web component, such as subscribing to the Web engine initialization completion event. When using the Web component, developers can use the functions in this module to listen for key lifecycle events of the Web engine or perform global Web operations.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 9. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > - The sample effect is subject to the actual device.
 
@@ -24,7 +27,7 @@ once(type: string, callback: Callback\<void\>): void
 
 Registers a one-time callback for web events of the specified type. Currently, only **webInited** is supported. This callback is triggered when the Web engine initialization is complete.
 
-When the first **Web** component is loaded in an application, the web engine is initialized. When other **Web** components are loaded in the same application, **once()** is not triggered. When the first **Web** component is loaded after the last **Web** component is destroyed in the application, the web engine will be initialized again.
+When the first **Web** component is loaded in an app, the Web engine is initialized, and the once() callback is not triggered when other **Web** components are subsequently loaded in the same app. When the app destroys the last **Web** component, if the first **Web** component is loaded again, the app re-enters the Web engine initialization process.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -32,8 +35,8 @@ When the first **Web** component is loaded in an application, the web engine is 
 
 | Name | Type             | Mandatory| Description                 |
 | ------- | ---------------- | ---- | -------------------- |
-| type     | string          | Yes  | Web event type. The value can be **"webInited"**, indicating completion of web initialization.     |
-| callback | Callback\<void\> | Yes  | Callback to register.|
+| type     | string          | Yes   | Type of the Web event. Currently, only "webInited" (Web engine initialization complete) is supported.      |
+| callback | Callback\<void\> | Yes   | Callback function triggered when Web engine initialization is complete. |
 
 **Error codes**
 
@@ -49,10 +52,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
-webview.once("webInited", () => {
-  console.info("configCookieSync");
-  webview.WebCookieManager.configCookieSync("https://www.example.com", "a=b");
-})
+webview.once('webInited', () => {
+  console.info('configCookieSync');
+  webview.WebCookieManager.configCookieSync('https://www.example.com', 'a=b');
+});
 
 @Entry
 @Component

@@ -5,6 +5,7 @@
 <!--Designer: @hwzhangchuang-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=9935917043324da581e5b450388051be2fee82d3 translatedAt=2026-11-04T05:28:53.721Z pushedAt=2026-11-04T10:12:33.566Z nl=1 -->
 
 This module provides distributed device management capabilities, including device discovery, authentication, status listening, and information query. Device management is based on the device trust model. Trusted connections are established by discovering nearby devices and authenticating and binding them. Authenticated trusted devices can be used for distributed services.
 
@@ -1236,9 +1237,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ### on('serviceDie')
 
-on(type: 'serviceDie', callback: Callback&lt;{}&gt;): void
+on(type: 'serviceDie', callback?: Callback&lt;{}&gt;): void
 
-Registers a callback for unavailable**DeviceManager** service events. Your app will be notified when the **DeviceManager** service is terminated unexpectedly. This API uses an asynchronous callback to return the result.
+Registers a callback for the death of the device management service, so that the application is notified when the service dies. This API uses an asynchronous callback.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -1250,8 +1251,8 @@ Registers a callback for unavailable**DeviceManager** service events. Your app w
 
   | Name      | Type                   | Mandatory  | Description                                      |
   | -------- | ----------------------- | ---- | ---------------------------------------- |
-  | type     | string                  | Yes   | Event type. Your app will be notified when the **DeviceManager** service is terminated unexpectedly. The value is **serviceDie**.|
-  | callback | Callback&lt;{}&gt; | Yes   | Callback for the **serviceDie** event, which is triggered when the **DeviceManager** service is terminated unexpectedly.                      |
+  | type     | string                  | Yes    | Event type. A callback is registered for the death of the device management service, so that the app is notified when the **DeviceManager** service terminates abnormally. The value is fixed at **serviceDie**. |
+  | callback | Callback&lt;{}&gt; | No    | Callback for the **serviceDie** event. If this parameter is not passed, the death callback notification cannot be received.                       |
 
 **Error codes**
 

@@ -5,6 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=a26c0fadb345e394f1bacb5ffe8622bbf5052072 translatedAt=2026-11-09T10:30:30.722Z pushedAt=2026-11-09T11:35:07.804Z nl=1 -->
 
 The module provides basic audio management capabilities, including audio volume and audio device management, and audio data collection and rendering.
 
@@ -799,7 +800,48 @@ audioManager.disableSafeMediaVolume().then(() => {
   console.error(`disableSafeMediaVolume fail: ${err.code},${err.message}`);
 });
 ```
+### getSuiteDownloadManager
 
+getSuiteDownloadManager(): AudioSuiteDownloadManager
+
+Obtains an AudioSuiteDownloadManager instance for downloading audio authoring features.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**Return value**
+
+| Type                                           | Description                          |
+|----------------------------------------------| ----------------------------- |
+| [AudioSuiteDownloadManager](js-apis-audio-sys.md#audiosuitedownloadmanager) | AudioSuiteDownloadManager instance. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message |
+| ------- | --------------------------------------------|
+| 202     | Permission verification failed. A non-system application calls a system API. |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  console.info(`Succeeded in getting suite download manager.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get suite download manager. Code: ${error.code}, message: ${error.message}`);
+}
+```
 ### on('volumeChange')<sup>(deprecated)</sup>
 
 on(type: 'volumeChange', callback: Callback\<VolumeEvent>): void
@@ -2362,7 +2404,7 @@ Sets an audio effect in use. This API returns the result synchronously.
 
 **System API**: This is a system API.
 
-**System capability**: SystemCapability.Multimedia.Audio.core
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Parameters**
 
@@ -2680,6 +2722,741 @@ deviceEnhanceManager.getSoundCardInfo().then((soundCardInfo: audio.SoundCardInfo
 .catch((err: BusinessError) => {
   console.error(`Failed to get sound card info. Code: ${err.code}, Message: ${err.message}`);
 });
+```
+
+## AudioSuiteFeatureType
+
+Enumerates the audio suite feature types.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+| Name                              |  Value     | Description                                          |
+| :-------------------------------- | :----- | :-------------------------------------------- |
+| AUDIO_DIALOG_ENHANCEMENT          | 0      | Enhances the dialog portion of the human voice in the audio. |
+| AUDIO_CENTER_VOICE_ENHANCEMENT    | 1      | Enhances the main human voice portion in the audio. |
+| AUDIO_VOICE_ENHANCEMENT           | 2      | Enhances the human voice portion in the audio. |
+| AUDIO_MUSIC_ENHANCEMENT           | 3      | Enhances the music portion in the audio. |
+| AUDIO_SOURCE_SEPARATION           | 4      | Separates the audio sources. |
+
+## AudioSuiteFeatureStatus
+
+Enumerates the audio suite feature status.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+| Name                       |  Value     | Description                                          |
+| :------------------------- | :----- | :-------------------------------------------- |
+| INVALID                    | -1     | Invalid state. |
+| INITIALIZED                | 0      | Initialized state. |
+| VERSION_CHECKING           | 10     | The feature is checking the version. |
+| VERSION_CHECK_FAILED       | 11     | Version check failed. |
+| VERSION_CHECK_SUCCEEDED    | 12     | Version check succeeded. |
+| DOWNLOADING                | 20     | Downloading. |
+| DOWNLOAD_PAUSED            | 21     | Download paused. |
+| DOWNLOAD_FAILED            | 22     | Download failed. |
+| DOWNLOAD_SUCCEEDED         | 23     | Download succeeded. |
+| INSTALLING                 | 30     | Installing. |
+| WAITING_FOR_INSTALLATION   | 31     | Waiting for installation. |
+| INSTALLATION_FAILED        | 35     | Installation failed. |
+| INSTALLATION_SUCCEEDED     | 36     | Installation succeeded. |
+| UNINSTALLING               | 40     | Uninstalling. |
+| WAITING_FOR_UNINSTALLATION | 41     | Waiting for uninstallation. |
+| UNINSTALLATION_FAILED      | 42     | Uninstallation failed. |
+| UNINSTALLATION_SUCCEEDED   | 43     | Uninstallation succeeded. |
+
+## NetworkType
+
+Enumerates the network types for downloading audio authoring features.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+| Name                              |  Value     | Description                                          |
+| :-------------------------------- | :----- | :-------------------------------------------- |
+| WIFI                              | 6      | Wi-Fi network. |
+| CELLULAR_AND_WIFI                 | 7      | Cellular and Wi-Fi network. |
+
+## AudioSuiteFeatureStatusInfo
+
+Defines the status information of the audio suite feature.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+| Name | Type | Read-Only | Optional | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| featureType | [AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype) | No | No | Feature Module Type. |
+| status | [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus) | No | No | Feature Module Status. |
+| installPath | string | No | No | Installation path. |
+| progress | number | No | No | Download progress. The value ranges from 0 to 100 and must be an integer. |
+| errorCode | [AudioErrors](arkts-apis-audio-e.md#audioerrors9) | No | No | Error code after the feature enters the abnormal state.<br>If the error code is 6800301, it indicates an internal system database exception or I/O exception, which is unrelated to application calls. |
+
+## AudioSuiteFeatureStatusInfoArray
+
+type AudioSuiteFeatureStatusInfoArray = Array&lt;AudioSuiteFeatureStatusInfo&gt;
+
+Defines the status information array of audio suite features.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+| Type      | Description                                                            |
+|---------|---------------------------------------------------------------|
+|  Array&lt;[AudioSuiteFeatureStatusInfo](js-apis-audio-sys.md#audiosuitefeaturestatusinfo)&gt; | Array type, an array of [AudioSuiteFeatureStatusInfo](js-apis-audio-sys.md#audiosuitefeaturestatusinfo). |
+
+## AudioSuiteFeatureVersionInfo
+
+Defines the version information of the audio suite feature.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+| Name | Type | Read-Only | Optional | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| featureType | [AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype) | No | No | Feature Module Type. |
+| status | [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus) | No | No | Feature Module Status. |
+| version | string | No | No | Feature version. |
+| size | number | No | No | Space occupied by the feature module, in bytes. |
+| errorCode | [AudioErrors](arkts-apis-audio-e.md#audioerrors9) | No | No | Error code after the feature enters the abnormal state.<br>If the error code is 6800301, it indicates an internal system database exception or I/O exception, which is unrelated to application calls. |
+
+## AudioSuiteDownloadManager
+
+Provides the download management capabilities for audio authoring features, including starting, pausing, and canceling downloads, querying the status, and uninstalling features. You need to use [getSuiteDownloadManager](js-apis-audio-sys.md#getsuitedownloadmanager) to obtain an AudioSuiteDownloadManager instance.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+### isFeatureInstalled
+
+isFeatureInstalled(featureTypes: Array&lt;AudioSuiteFeatureType&gt;): Promise&lt;Array&lt;boolean&gt;&gt;
+
+Obtains whether the specified features are installed. This API uses a promise to return the result.
+
+This API queries only the local installation status of the features and does not depend on the network environment.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype)&gt; | Yes | Feature types to query. The maximum length is 5. |
+
+**Return value**
+
+| Type                                                                      | Description                                    |
+| --------------------------------------------------------------------------| --------------------------------------- |
+| Promise&lt;Array&lt;boolean&gt;&gt;     | Promise object that returns an array of installation states. Each element corresponds to the feature at the same index in featureTypes.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID | Error Message |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800101 | Parameter verification failed. The value of featureTypes is invalid. |
+| 6800302 | System service process terminated. |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let featureTypes: audio.AudioSuiteFeatureType[] = [
+    audio.AudioSuiteFeatureType.AUDIO_MUSIC_ENHANCEMENT,
+    audio.AudioSuiteFeatureType.AUDIO_SOURCE_SEPARATION
+  ];
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.isFeatureInstalled(featureTypes).then((featureInstalled: Array<boolean>) => {
+    console.info(`Succeeded in checking feature installed state: ${JSON.stringify(featureInstalled)}.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to check feature installed state. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to check feature installed state. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### getFeatureStatus
+
+getFeatureStatus(featureTypes: Array&lt;AudioSuiteFeatureType&gt;): Promise&lt;AudioSuiteFeatureStatusInfoArray&gt;
+
+Obtains the status of the specified features. This API uses a promise to return the result.
+
+This API queries only the local installation status of the features and does not depend on the network environment.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype)&gt; | Yes | Feature types to query. The maximum length is 5. |
+
+**Return value**
+
+| Type                                                                      | Description                                    |
+| --------------------------------------------------------------------------| --------------------------------------- |
+| Promise&lt;[AudioSuiteFeatureStatusInfoArray](js-apis-audio-sys.md#audiosuitefeaturestatusinfoarray)&gt;    | Promise object that returns the feature status array. Each element corresponds to the feature at the same index in featureTypes.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID | Error Message |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800101 | Parameter verification failed. The value of featureTypes is invalid. |
+| 6800302 | System service process terminated. |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let featureTypes: audio.AudioSuiteFeatureType[] = [
+    audio.AudioSuiteFeatureType.AUDIO_MUSIC_ENHANCEMENT,
+    audio.AudioSuiteFeatureType.AUDIO_SOURCE_SEPARATION
+  ];
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.getFeatureStatus(featureTypes).then((featureStatus: audio.AudioSuiteFeatureStatusInfoArray) => {
+    console.info(`Succeeded in getting feature status: ${JSON.stringify(featureStatus)}.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get feature status. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get feature status. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### getNewVersionInfo
+
+getNewVersionInfo(featureTypes: Array&lt;AudioSuiteFeatureType&gt;): Promise&lt;Array&lt;AudioSuiteFeatureVersionInfo&gt;&gt;
+
+Obtains the latest version information of the specified features. This API uses a Promise-based asynchronous callback.
+
+Before calling this API, ensure that the device is connected to an available network.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype)&gt; | Yes | Feature types to query. The maximum length is 5. |
+
+**Return value**
+
+| Type                                                                      | Description                                    |
+| --------------------------------------------------------------------------| --------------------------------------- |
+| Promise&lt;Array&lt;[AudioSuiteFeatureVersionInfo](js-apis-audio-sys.md#audiosuitefeatureversioninfo)&gt;&gt; | Promise object that returns an array of version information. Each element corresponds to the feature at the same index in featureTypes.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID | Error Message |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800101 | Parameter verification failed. The value of featureTypes is invalid. |
+| 6800302 | System service process terminated. |
+| 6800501 | Required network conditions not met. The current network status is unavailable. |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let featureTypes: audio.AudioSuiteFeatureType[] = [
+    audio.AudioSuiteFeatureType.AUDIO_MUSIC_ENHANCEMENT,
+    audio.AudioSuiteFeatureType.AUDIO_SOURCE_SEPARATION
+  ];
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.getNewVersionInfo(featureTypes).then((versionInfos: Array<audio.AudioSuiteFeatureVersionInfo>) => {
+    console.info(`Succeeded in getting new version info: ${JSON.stringify(versionInfos)}.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get new version info. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to get new version info. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### startDownload
+
+startDownload(featureTypes: Array&lt;AudioSuiteFeatureType&gt;, networkType: NetworkType): Promise&lt;void&gt;
+
+Starts downloading features over the specified network. This API uses a promise to return the result. Call [getNewVersionInfo](js-apis-audio-sys.md#getnewversioninfo) to query the new version first. After the query succeeds and the status changes to [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).VERSION_CHECK_SUCCEEDED, call this API, or call this API in the [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOAD_PAUSED state to resume the download. After the call, the status changes to [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOADING. After the download succeeds, the status automatically changes to [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).INSTALLING.
+
+This API returns immediately after the download starts. During the download, the download progress can be obtained through the download status change event subscribed to by [onDownloadStatusChange](js-apis-audio-sys.md#ondownloadstatuschange).
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype)&gt; | Yes | Feature types to download. The maximum length is 5. |
+| networkType | [NetworkType](js-apis-audio-sys.md#networktype) | Yes | Network type for the download. |
+
+**Return value**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID | Error Message |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800101 | Parameter verification failed. The value of featureTypes is invalid. |
+| 6800302 | System service process terminated. |
+| 6800501 | Required network conditions not met. The current network conditions do not match the type specified by networkType. |
+| 6800502 | Insufficient storage space. |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let featureTypes: audio.AudioSuiteFeatureType[] = [
+    audio.AudioSuiteFeatureType.AUDIO_MUSIC_ENHANCEMENT,
+    audio.AudioSuiteFeatureType.AUDIO_SOURCE_SEPARATION
+  ];
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.startDownload(featureTypes, audio.NetworkType.WIFI).then(() => {
+    console.info(`Succeeded in starting download.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to start download. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to start download. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### pauseDownload
+
+pauseDownload(featureTypes: Array&lt;AudioSuiteFeatureType&gt;): Promise&lt;void&gt;
+
+Pauses the download of the specified features. This API uses a promise to return the result. It should be called after the feature status changes to [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOADING. After the call, the status changes to [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOAD_PAUSED.
+
+If this API is called when the feature status is not [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOADING, the API returns success and the original status remains unchanged.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype)&gt; | Yes | Feature types to be paused. The maximum length is 5. |
+
+**Return value**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID | Error Message |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800101 | Parameter verification failed. The value of featureTypes is invalid. |
+| 6800302 | System service process terminated. |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let featureTypes: audio.AudioSuiteFeatureType[] = [
+    audio.AudioSuiteFeatureType.AUDIO_MUSIC_ENHANCEMENT,
+    audio.AudioSuiteFeatureType.AUDIO_SOURCE_SEPARATION
+  ];
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.pauseDownload(featureTypes).then(() => {
+    console.info(`Succeeded in pausing download.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to pause download. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to pause download. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### cancelDownload
+
+cancelDownload(featureTypes: Array&lt;AudioSuiteFeatureType&gt;): Promise&lt;void&gt;
+
+Cancels the download of the specified features. This API uses a Promise-based asynchronous callback. It should be called when the feature status is [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOADING or [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOAD_PAUSED. After the call, the status changes to [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).VERSION_CHECK_SUCCEEDED.
+
+If this API is called when the feature status is not [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOADING or [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).DOWNLOAD_PAUSED, the API returns success and the original status remains unchanged.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype)&gt; | Yes | Feature types to cancel. The maximum length is 5. |
+
+**Return value**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID | Error Message |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800101 | Parameter verification failed. The value of featureTypes is invalid. |
+| 6800302 | System service process terminated. |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let featureTypes: audio.AudioSuiteFeatureType[] = [
+    audio.AudioSuiteFeatureType.AUDIO_MUSIC_ENHANCEMENT,
+    audio.AudioSuiteFeatureType.AUDIO_SOURCE_SEPARATION
+  ];
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.cancelDownload(featureTypes).then(() => {
+    console.info(`Succeeded in canceling download.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to cancel download. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to cancel download. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### startBackgroundDownload
+
+startBackgroundDownload(featureTypes: Array&lt;AudioSuiteFeatureType&gt;): Promise&lt;void&gt;
+
+Starts downloading features in the background. This API uses a Promise-based asynchronous callback. If the current network is a Wi-Fi network, the system audio service downloads the features directly. If the current network is not a Wi-Fi network, the system audio service automatically downloads the features after switching to a Wi-Fi network. This API can be called in any [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus) state. After the client process exits, the system audio service keeps monitoring the network environment until the download task succeeds.
+
+This API returns immediately after the command is sent. During the download, the download progress can be obtained through the download status change event subscribed by [onDownloadStatusChange](js-apis-audio-sys.md#ondownloadstatuschange).
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype)&gt; | Yes | Feature types to download. The maximum length is 5. |
+
+**Return value**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID | Error Message |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800101 | Parameter verification failed. The value of featureTypes is invalid. |
+| 6800302 | System service process terminated. |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let featureTypes: audio.AudioSuiteFeatureType[] = [
+    audio.AudioSuiteFeatureType.AUDIO_MUSIC_ENHANCEMENT,
+    audio.AudioSuiteFeatureType.AUDIO_SOURCE_SEPARATION
+  ];
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.startBackgroundDownload(featureTypes).then(() => {
+    console.info(`Succeeded in starting background download.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to start background download. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to start background download. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### uninstallFeature
+
+uninstallFeature(featureTypes: Array&lt;AudioSuiteFeatureType&gt;): Promise&lt;void&gt;
+
+Uninstalls the downloaded features. This API uses a promise to return the result. It should be called after the feature status becomes [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).INSTALLATION_SUCCEEDED. After this API is called, uninstallation starts when the status changes to [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).UNINSTALLING.
+
+If this API is called when the feature status is not [AudioSuiteFeatureStatus](js-apis-audio-sys.md#audiosuitefeaturestatus).INSTALLATION_SUCCEEDED, the API returns success and the original status remains unchanged.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| featureTypes | Array&lt;[AudioSuiteFeatureType](js-apis-audio-sys.md#audiosuitefeaturetype)&gt; | Yes | Types of the features to uninstall. The maximum length is 5. |
+
+**Return value**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID | Error Message |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800101 | Parameter verification failed. The value of featureTypes is invalid. |
+| 6800302 | System service process terminated. |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let featureTypes: audio.AudioSuiteFeatureType[] = [
+    audio.AudioSuiteFeatureType.AUDIO_MUSIC_ENHANCEMENT,
+    audio.AudioSuiteFeatureType.AUDIO_SOURCE_SEPARATION
+  ];
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.uninstallFeature(featureTypes).then(() => {
+    console.info(`Succeeded in uninstalling feature.`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to uninstall feature. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to uninstall feature. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### onDownloadStatusChange
+
+onDownloadStatusChange(callback: Callback&lt;AudioSuiteFeatureStatusInfoArray&gt;): void
+
+Subscribes to the download status change event. When the download status or download progress of any feature changes, the subscribed callback is triggered.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | Callback&lt;[AudioSuiteFeatureStatusInfoArray](js-apis-audio-sys.md#audiosuitefeaturestatusinfoarray)&gt; | Yes | Callback invoked to return the array of changed download status information. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID | Error Message |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800302 | System service process terminated. |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+  downloadManager.onDownloadStatusChange((statusInfos: audio.AudioSuiteFeatureStatusInfoArray) => {
+    console.info(`Download status changed: ${JSON.stringify(statusInfos)}`);
+  });
+  console.info(`Succeeded in subscribing download status change.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to subscribe download status change. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### offDownloadStatusChange
+
+offDownloadStatusChange(callback?: Callback&lt;AudioSuiteFeatureStatusInfoArray&gt;): void
+
+Unsubscribes from the download status change event. After unsubscription, the system will no longer trigger the callback.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System API:** This is a system API.
+
+**System capability:** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | Callback&lt;[AudioSuiteFeatureStatusInfoArray](js-apis-audio-sys.md#audiosuitefeaturestatusinfoarray)&gt; | No | Callback function to be unsubscribed. The default value is empty. If this parameter is not set, all callbacks previously subscribed in the current process are unsubscribed. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+
+| ID | Error Message |
+| ------- | --------------------------------------------|
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 6800302 | System service process terminated. |
+
+**Example**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let downloadManager: audio.AudioSuiteDownloadManager = audio.getAudioManager().getSuiteDownloadManager();
+let callback = (statusInfos: audio.AudioSuiteFeatureStatusInfoArray) => {
+  console.info(`Download status changed: ${JSON.stringify(statusInfos)}`);
+};
+
+try {
+  downloadManager.onDownloadStatusChange(callback);
+  console.info(`Succeeded in subscribing download status change.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to subscribe download status change. Code: ${error.code}, message: ${error.message}`);
+}
+
+try {
+  downloadManager.offDownloadStatusChange(callback);
+  console.info(`Succeeded in unsubscribing download status change.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to unsubscribe download status change. Code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ## SoundCardInfo
@@ -3227,6 +4004,8 @@ Cancels the listening for highest-priority input device change events under the 
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
+**Parameters**
+
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | No| Callback used to return the information about the input device with the highest priority.|
@@ -3369,6 +4148,8 @@ Unsubscribes from changes in the highest-priority output device based on specifi
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
 
 | Name  | Type                                  | Mandatory| Description                                                        |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -3785,7 +4566,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 202 | Not system application. |
+| 202 | Not a system application. |
 
 **Example**
 
@@ -3961,6 +4742,7 @@ Describes the audio renderer filter criteria.
 | uid          | number                                   |  No | Yes| Application ID.<br> **System capability**: SystemCapability.Multimedia.Audio.Core|
 | rendererInfo | [AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8) |  No | Yes| Audio renderer information.<br> **System capability**: SystemCapability.Multimedia.Audio.Renderer|
 | rendererId   | number                                   |  No | Yes| Unique ID of an audio stream.<br> **System capability**: SystemCapability.Multimedia.Audio.Renderer|
+| blockFirstOverrode   | boolean |  No  | Yes | Whether to keep the first selected device from being cleared. true indicates that the selected device will not be cleared, and false indicates that the selected device will be cleared.<br>Default value: false.<br>**Since:** 26.0.1 <br> **System capability:** SystemCapability.Multimedia.Audio.Renderer|
 
 **Example**
 
@@ -3973,7 +4755,8 @@ let outputAudioRendererFilter: audio.AudioRendererFilter = {
     usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
     rendererFlags : 0
   },
-  rendererId : 0
+  rendererId : 0,
+  blockFirstOverrode : true
 };
 ```
 
@@ -4778,7 +5561,7 @@ Enables or disables head tracking for a device. This API uses a promise to retur
 | Name                | Type                                                        | Mandatory| Description                     |
 | ----------------------| ------------------------------------------------------------ | ---- | ------------------------- |
 | deviceDescriptor | [AudioDeviceDescriptor](arkts-apis-audio-i.md#audiodevicedescriptor)         | Yes  | Device descriptor.|
-| enable                | boolean                                                      | Yes  | Whether to enable or disable head tracking. **true** to enable, **false** otherwise. |
+| enabled                | boolean                                                      | Optional   | Whether to enable or disable head tracking. **true** to enable, **false** otherwise.  |
 
 **Return value**
 
@@ -4934,7 +5717,7 @@ try {
 
 on(type: 'headTrackingEnabledChange', callback: Callback<boolean\>): void
 
-Subscribes to the head tracking status change event, which is triggered when the head tracking status is changed. This API uses an asynchronous callback to return the result.
+Subscribes to the head tracking switch state change event (triggered when the head tracking switch state changes). This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 > This API is supported since API version 11 and deprecated since API version 12. You are advised to use [on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void](#onheadtrackingenabledchangeforanydevice12) instead.
@@ -4947,7 +5730,7 @@ Subscribes to the head tracking status change event, which is triggered when the
 
 | Name  | Type                                                | Mandatory| Description                                      |
 | :------- | :--------------------------------------------------- | :--- | :----------------------------------------- |
-| type     | string | Yes  | Event type. The event **'headTrackingEnabledChange'** is triggered when the head tracking status is changed.|
+| type     | string | Yes   | Event callback type. The supported event is 'headTrackingEnabledChange', which is triggered when the head tracking switch state changes. |
 | callback | Callback<boolean\> | Yes  | Callback used to return the result, indicating whether head tracking is enabled. **true** if enabled, **false** otherwise.|
 
 **Error codes**
@@ -4974,7 +5757,7 @@ audioSpatializationManager.on('headTrackingEnabledChange', (isHeadTrackingEnable
 
 on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void
 
-Subscribes to the head tracking status change event, which is triggered when the head tracking status is changed. This API uses an asynchronous callback to return the result.
+Subscribes to the head tracking switch state change event (triggered when the head tracking switch state changes). This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -4984,7 +5767,7 @@ Subscribes to the head tracking status change event, which is triggered when the
 
 | Name  | Type                                                | Mandatory| Description                                      |
 | :------- | :--------------------------------------------------- | :--- | :----------------------------------------- |
-| type     | string | Yes  | Event type. The event **'headTrackingEnabledChangeForAnyDevice'** is triggered when the head tracking status is changed.|
+| type     | string | Yes  | Event callback type. The supported event is 'headTrackingEnabledChangeForAnyDevice', which is triggered when the head tracking switch state changes. |
 | callback | Callback\<[AudioSpatialEnabledStateForDevice](#audiospatialenabledstatefordevice12)> | Yes  | Callback used to return the result, indicating whether head tracking is enabled. **true** if enabled, **false** otherwise.|
 
 **Error codes**
@@ -5695,9 +6478,9 @@ Checks whether the system supports collaborative audio. This API returns the res
 
 **Return value**
 
-| Type   | Mandatory| Description                                                   |
-| ------- |------|------------------------------------------------------- |
-| boolean |  Yes | Check result for the support of collaborative audio. **true** if supported, **false** otherwise.|
+| Type    | Description                                                    |
+| ------- |------------------------------------------------------- |
+| boolean | Whether the system supports the mobile panoramic sound capability. The value true means supported, and false means not supported. |
 
 **Error codes**
 
@@ -5753,7 +6536,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
-| 201     | Not system application.                     |
+| 202     | Not system application.                     |
 | 6800101 | Parameter verification failed. Possible causes:1. The specified device is not an A2DP device.2. The specified device is not connected.|
 | 801     | Capability not supported.                   |
 
@@ -5804,9 +6587,9 @@ Checks whether collaborative audio is enabled for a device. This API returns the
 
 **Return value**
 
-| Type   | Mandatory| Description                                                   |
-| ------- |------|------------------------------------------------------- |
-| boolean |  Yes | Check result for whether collaborative audio is enabled. **true** if enabled, **false** otherwise.  |
+| Type    | Description                                                    |
+| ------- |------------------------------------------------------- |
+| boolean | Whether mobile panoramic sound is enabled or disabled for the specified device. The value true means enabled, and false means disabled.   |
 
 **Error codes**
 

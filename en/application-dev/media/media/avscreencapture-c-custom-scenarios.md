@@ -6,7 +6,7 @@
 <!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @zzs911-->
-<!-- md-trans-meta sourceCommit=9debe03e456cd9546017cca228787eecf595247b translatedAt=2026-08-22T02:08:36.297Z pushedAt=2026-08-22T06:48:18.402Z -->
+<!-- md-trans-meta sourceCommit=a91a01426138844875e1751dfb9ac9d03dbae252 translatedAt=2026-11-05T06:16:33.956Z pushedAt=2026-08-22T06:48:18.402Z nl=1 -->
 
 AVScreenCapture enables applications to implement scenario-based custom configurations. Refer to the guidelines below for specific setup instructions.
 
@@ -66,6 +66,10 @@ OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
 // Release the CaptureStrategy object.
 OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 ```
+
+> **NOTE**
+>
+> Starting from API version 26.0.1, when the capture mode is [OH_CaptureMode](../../reference/apis-media-kit/capi-native-avscreen-capture-base-h.md#oh_capturemode).OH_CAPTURE_VIRTUAL_EXTENDED_SCREEN, the Picker is not displayed, regardless of the value set by OH_AVScreenCapture_StrategyForPickerPopUp.
 
 ## Setting Rotation Adaptation
 

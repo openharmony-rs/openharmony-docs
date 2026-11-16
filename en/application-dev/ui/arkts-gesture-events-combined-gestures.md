@@ -1,12 +1,12 @@
 # Combined Gestures
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b25be4a3a7c309443271c4d1da44080f20a23712 translatedAt=2026-08-01T00:26:43.144Z pushedAt=2026-08-01T02:39:49.545Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-05T11:07:14.110Z pushedAt=2026-11-09T10:02:18.697Z nl=1 -->
+
 
 A combined gesture is composed of multiple single gestures. Its type is declared by using different [GestureMode](../reference/apis-arkui/arkui-ts/ts-combined-gestures.md#gesturemode) values in [GestureGroup](../reference/apis-arkui/arkui-ts/ts-combined-gestures.md), and three types are supported: [sequential recognition](#sequential-recognition), [parallel recognition](#parallel-recognition), and [exclusive recognition](#exclusive-recognition).
 
@@ -14,9 +14,11 @@ A combined gesture is composed of multiple single gestures. Its type is declared
 GestureGroup(mode:GestureMode, gesture:GestureType[])
 ```
 
+
 - **mode**: recognition mode of combined gestures. The value belongs to the **GestureMode** enumeration class.
 
-- **gesture**: array of multiple gestures.  
+- **gesture**: array of multiple gestures.
+
 
 ## Sequential Recognition
 
@@ -27,7 +29,7 @@ In the following example, the combined gestures for sequential recognition are t
 The [translate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transformation.md#translate) attribute is bound to a **Column** component. You can set the attribute to translate the component. Then, bind [LongPressGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-longpressgesture.md) and [PanGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md) to the component in the **Sequence** recognition mode. When a long press gesture is recognized, the displayed number is updated. When the user drags the component after the long press gesture, the component is dragged based on the callback function of the pan gesture.
 
   <!-- @[sequence_identification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Sequence.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -105,18 +107,20 @@ The [translate](../reference/apis-arkui/arkui-ts/ts-universal-attributes-transfo
 
 ![sequence](figures/sequence.gif)
 
+
 >**NOTE**
 >
 >The drag event is a typical use case of sequential recognition on the long press gesture and pan gesture. It is triggered only when the user performs a pan gesture within the preset time frame after a long press gesture is recognized. If the long press gesture is not recognized or the pan gesture is not performed within the preset time frame, the drag event will not be triggered.
+
 
 ## Parallel Recognition
 
 For parallel recognition, the value of **GestureMode** is **Parallel**. In this gesture recognition mode, gestures registered in the combined gestures will be recognized at the same time until they are all recognized successfully. The gestures are recognized in parallel without affecting each other.
 
-For example, if the tap gesture and the double-tap gesture are bound to the **Column** component in parallel recognition mode, they can be recognized at the same time, and the recognition of these two gestures does not interfere with each other. 
+For example, if the tap gesture and the double-tap gesture are bound to the **Column** component in parallel recognition mode, they can be recognized at the same time, and the recognition of these two gestures does not interfere with each other.
 
   <!-- @[parallel_recognition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Parallel.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   @Entry
@@ -150,7 +154,9 @@ For example, if the tap gesture and the double-tap gesture are bound to the **Co
   }
   ```
 
+
 ![parallel](figures/parallel.gif)
+
 
 >**NOTE**
 >
@@ -162,6 +168,7 @@ For example, if the tap gesture and the double-tap gesture are bound to the **Co
 >
 > - When there are two taps, but the interval between the two taps exceeds the specified time, two tap events are triggered but the double-tap event is not triggered.
 
+
 ## Exclusive Recognition
 
 For exclusive recognition, the value of **GestureMode** is **Exclusive**. In this gesture recognition mode, all registered gestures are recognized at once. Once any of the gestures is recognized successfully, the gesture recognition ends, and all other gestures fail to be recognized.
@@ -169,7 +176,7 @@ For exclusive recognition, the value of **GestureMode** is **Exclusive**. In thi
 For example, consider a Column component bound with both a tap gesture and a double‑tap gesture in an exclusive recognition combination. If the tap gesture is bound before the double‑tap, the double‑tap cannot be triggered because the tap requires only a single tap to fire, whereas the double‑tap requires two; each tap event is consumed by the tap gesture and never accumulates into a double‑tap. Conversely, if the double‑tap is bound first, the double‑tap is recognized and the tap gesture is not triggered.
 
   <!-- @[mutual_exclusion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/Exclusive.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   @Entry
@@ -203,7 +210,9 @@ For example, consider a Column component bound with both a tap gesture and a dou
   }
   ```
 
+
 ![exclusive](figures/exclusive.gif)
+
 
 >**NOTE**
 >
@@ -218,7 +227,7 @@ For example, consider a Column component bound with both a tap gesture and a dou
 The following example implements a child component bound to both a long press gesture and a pan gesture. These two gestures can trigger in parallel, but when the long press gesture is not successfully recognized, the built‑in pan gesture of the parent **Swiper** component should take effect. Because the child's pan gesture competes with the parent's built‑in pan gesture and has higher priority, dynamic control is required to decide whether the child's pan gesture should be triggered.
 
   <!-- @[scene_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureGroup/entry/src/main/ets/pages/SceneExample.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   import { PromptAction } from '@kit.ArkUI';

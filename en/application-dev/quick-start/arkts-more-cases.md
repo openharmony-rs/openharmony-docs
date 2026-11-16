@@ -929,9 +929,9 @@ Explicitly declare the type of array elements (using **interface** or **class**)
 
 ``` TypeScript
 let permissionList = [
-  {name: 'Device information', value: 'Used to analyze the battery life, call, Internet access, and SIM card issues of the device.'},
-  {name: 'Microphone', value: 'Used to add voice for issue reporting.'},
-  {"name: 'Storage', value: 'Used to add local file attachments for issue reporting.'}
+  { name: 'Device information', value: 'Used to analyze the battery life, call, Internet access, and SIM card issues of the device.' },
+  { name: 'Microphone', value: 'Used to add voice for issue reporting.' },
+  { name: 'Storage', value: 'Used to add local file attachments for issue reporting.' }
 ]
 ```
 
@@ -948,9 +948,9 @@ class PermissionItem {
 }
 
 let permissionList: PermissionItem[] = [
-  {name: 'Device information', value: 'Used to analyze the battery life, call, Internet access, and SIM card issues of the device.'},
-  {name: 'Microphone', value: 'Used to add voice for issue reporting.'},
-  {"name: 'Storage', value: 'Used to add local file attachments for issue reporting.'}
+  { name: 'Device information', value: 'Used to analyze the battery life, call, Internet access, and SIM card issues of the device.' },
+  { name: 'Microphone', value: 'Used to add voice for issue reporting.' },
+  { name: 'Storage', value: 'Used to add local file attachments for issue reporting.'}
 ]
 ```
 

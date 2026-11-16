@@ -5,7 +5,7 @@
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=e384b5132f5430ed3ed4b21decb8b098345fc7f2 translatedAt=2026-10-08T03:46:46.737Z pushedAt=2026-10-08T06:46:23.633Z -->
+<!-- md-trans-meta sourceCommit=bed3030f36da6f2dce7d11f3dc23830114644c93 translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## When to Use
 

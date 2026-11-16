@@ -6,14 +6,13 @@
 <!--Designer: @zhanglu161-->
 <!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=6898c19983123924e2ebcb1542bddb55d0f6c972 translatedAt=2026-08-15T01:48:44.324Z pushedAt=2026-08-15T07:43:16.832Z -->
+<!-- md-trans-meta sourceCommit=e120139c5f4a3d08416eef7f1ce68c868bf983ca translatedAt=2026-11-04T08:36:56.815Z pushedAt=2026-11-04T09:30:38.358Z nl=1 -->
 
 ## Overview
 
 The FFRT concurrent queue provides the capability of setting the priority and queue concurrency. Tasks in the queue can be executed on multiple threads at the same time, achieving better effects.
 
 - **Queue concurrency**: You can set the maximum concurrency of a queue to control the number of tasks that can be executed at the same time. This avoids system resource impact caused by excessive concurrent tasks, ensuring system stability and performance.
-
 - **Task priority**: You can set a priority for each task. Different tasks are scheduled and executed strictly based on the priority. Tasks with the same priority are executed in sequence. Tasks with higher priorities are executed prior to those with lower priorities to ensure that key tasks can be processed in a timely manner.
 
 ## Example: Bank Service System
@@ -23,9 +22,7 @@ For example, each customer (common customer or VIP customer) submits a service r
 You can use the FFRT paradigm to perform the following modeling:
 
 - **Queuing logic**: concurrent queue.
-
 - **Service window**: concurrency of the concurrent queue, which also equals the number of FFRT Worker threads.
-
 - **Customer level**: priority of concurrent queue tasks.
 
 The implementation code is as follows:
@@ -61,7 +58,7 @@ ffrt_queue_t CreateBankSystem(const char *name, int concurrency)
     // Destroy the queue attributes after the queue is created.
     ffrt_queue_attr_destroy(&queue_attr);
     if (!queue) {
-        OH_LOG_INFO(LOG_APP, "create queue failed");
+        OH_LOG_ERROR(LOG_APP, "create queue failed");
         return NULL;
     }
 
@@ -114,7 +111,7 @@ int ConcurrentQueueCExec()
     ffrt_queue_t bank = CreateBankSystem("Bank", BANK_CONCURRENCY);
     if (!bank) {
         printf("create bank system failed\n");
-        OH_LOG_INFO(LOG_APP, "create bank system failed");
+        OH_LOG_ERROR(LOG_APP, "create bank system failed");
         return -1;
     }
 
@@ -165,7 +162,5 @@ The main FFRT APIs involved in the preceding sample are as follows. For details,
 ## Constraints
 
 1. `ffrt_queue_attr_t` must be initialized by calling `ffrt_queue_attr_init` before the attribute is set or obtained. If `ffrt_queue_attr_t` is no longer used, `ffrt_queue_attr_destroy` needs to be explicitly called to release resources.
-
 2. `ffrt_queue_t` must explicitly call `ffrt_queue_destroy` to release resources before the process exits.
-
 3. It is recommended that the maximum concurrency of a concurrent queue be within a proper range. If the value is too large, it is meaningless to exceed the number of Worker threads. If the value is too small, the system resource utilization may be low.

@@ -1,12 +1,11 @@
 # @ohos.application.formHost (formHost) (System API)
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=e51968c7c56d4fd4ec628eff339eeb09ceb3837b translatedAt=2026-07-31T08:24:30.779Z pushedAt=2026-07-31T09:36:45.729Z -->
+<!-- md-trans-meta sourceCommit=ca70525a1677454924647cb159f071c08cb08bc5 translatedAt=2026-11-04T04:36:13.222Z pushedAt=2026-11-04T10:12:50.134Z nl=1 -->
 
 The **formHost** module provides APIs related to the widget host, which is an application that displays the widget content and controls the position where the widget is displayed. You can use the APIs to delete, release, and update widgets installed by the same user, and obtain widget information and status.
 
@@ -22,7 +21,7 @@ The **formHost** module provides APIs related to the widget host, which is an ap
 import formHost from '@ohos.application.formHost';
 ```
 
-## deleteForm
+## formHost.deleteForm
 
 deleteForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -52,7 +51,7 @@ formHost.deleteForm(formId, (error: Base.BusinessError) => {
 });
 ```
 
-## deleteForm
+## formHost.deleteForm
 
 deleteForm(formId: string): Promise&lt;void&gt;
 
@@ -87,7 +86,7 @@ formHost.deleteForm(formId).then(() => {
 });
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -119,7 +118,7 @@ formHost.releaseForm(formId, (error: Base.BusinessError) => {
 });
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -152,7 +151,7 @@ formHost.releaseForm(formId, true, (error: Base.BusinessError) => {
 });
 ```
 
-## releaseForm
+## formHost.releaseForm
 
 releaseForm(formId: string, isReleaseCache?: boolean): Promise&lt;void&gt;
 
@@ -188,7 +187,7 @@ formHost.releaseForm(formId, true).then(() => {
 });
 ```
 
-## requestForm
+## formHost.requestForm
 
 requestForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -218,7 +217,7 @@ formHost.requestForm(formId, (error: Base.BusinessError) => {
 });
 ```
 
-## requestForm
+## formHost.requestForm
 
 requestForm(formId: string): Promise&lt;void&gt;
 
@@ -253,7 +252,7 @@ formHost.requestForm(formId).then(() => {
 });
 ```
 
-## castTempForm
+## formHost.castTempForm
 
 castTempForm(formId: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -283,7 +282,7 @@ formHost.castTempForm(formId, (error: Base.BusinessError) => {
 });
 ```
 
-## castTempForm
+## formHost.castTempForm
 
 castTempForm(formId: string): Promise&lt;void&gt;
 
@@ -318,7 +317,7 @@ formHost.castTempForm(formId).then(() => {
 });
 ```
 
-## notifyVisibleForms
+## formHost.notifyVisibleForms
 
 notifyVisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -348,7 +347,7 @@ formHost.notifyVisibleForms(formIds, (error: Base.BusinessError) => {
 });
 ```
 
-## notifyVisibleForms
+## formHost.notifyVisibleForms
 
 notifyVisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -383,7 +382,7 @@ formHost.notifyVisibleForms(formIds).then(() => {
 });
 ```
 
-## notifyInvisibleForms
+## formHost.notifyInvisibleForms
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -413,7 +412,7 @@ formHost.notifyInvisibleForms(formIds, (error: Base.BusinessError) => {
 });
 ```
 
-## notifyInvisibleForms
+## formHost.notifyInvisibleForms
 
 notifyInvisibleForms(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -448,7 +447,7 @@ formHost.notifyInvisibleForms(formIds).then(() => {
 });
 ```
 
-## enableFormsUpdate
+## formHost.enableFormsUpdate
 
 enableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -478,7 +477,7 @@ formHost.enableFormsUpdate(formIds, (error: Base.BusinessError) => {
 });
 ```
 
-## enableFormsUpdate
+## formHost.enableFormsUpdate
 
 enableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -513,7 +512,7 @@ formHost.enableFormsUpdate(formIds).then(() => {
 });
 ```
 
-## disableFormsUpdate
+## formHost.disableFormsUpdate
 
 disableFormsUpdate(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
 
@@ -543,7 +542,7 @@ formHost.disableFormsUpdate(formIds, (error: Base.BusinessError) => {
 });
 ```
 
-## disableFormsUpdate
+## formHost.disableFormsUpdate
 
 disableFormsUpdate(formIds: Array&lt;string&gt;): Promise&lt;void&gt;
 
@@ -578,7 +577,7 @@ formHost.disableFormsUpdate(formIds).then(() => {
 });
 ```
 
-## isSystemReady
+## formHost.isSystemReady
 
 isSystemReady(callback: AsyncCallback&lt;void&gt;): void
 
@@ -605,7 +604,7 @@ formHost.isSystemReady((error: Base.BusinessError) => {
 });
 ```
 
-## isSystemReady
+## formHost.isSystemReady
 
 isSystemReady(): Promise&lt;void&gt;
 
@@ -632,7 +631,7 @@ formHost.isSystemReady().then(() => {
 });
 ```
 
-## getAllFormsInfo
+## formHost.getAllFormsInfo
 
 getAllFormsInfo(callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -663,7 +662,7 @@ formHost.getAllFormsInfo((error: Base.BusinessError, data: formInfo.FormInfo[]) 
 });
 ```
 
-## getAllFormsInfo
+## formHost.getAllFormsInfo
 
 getAllFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -692,7 +691,7 @@ Obtains the widget information provided by all applications on the device. This 
   });
   ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -724,7 +723,7 @@ formHost.getFormsInfo('com.example.ohos.formjsdemo', (error: Base.BusinessError,
 });
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, moduleName: string, callback: AsyncCallback&lt;Array&lt;formInfo.FormInfo&gt;&gt;): void
 
@@ -757,7 +756,7 @@ formHost.getFormsInfo('com.example.ohos.formjsdemo', 'entry', (error: Base.Busin
 });
 ```
 
-## getFormsInfo
+## formHost.getFormsInfo
 
 getFormsInfo(bundleName: string, moduleName?: string): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
 
@@ -793,7 +792,7 @@ Obtains the widget information provided by a given application on the device. Th
   });
   ```
 
-## deleteInvalidForms
+## formHost.deleteInvalidForms
 
 deleteInvalidForms(formIds: Array&lt;string&gt;, callback: AsyncCallback&lt;number&gt;): void
 
@@ -825,7 +824,7 @@ formHost.deleteInvalidForms(formIds, (error: Base.BusinessError, data: number) =
 });
 ```
 
-## deleteInvalidForms
+## formHost.deleteInvalidForms
 
 deleteInvalidForms(formIds: Array&lt;string&gt;): Promise&lt;number&gt;
 
@@ -860,7 +859,7 @@ formHost.deleteInvalidForms(formIds).then((data: number) => {
 });
 ```
 
-## acquireFormState
+## formHost.acquireFormState
 
 acquireFormState(want: Want, callback: AsyncCallback&lt;formInfo.FormStateInfo&gt;): void
 
@@ -903,7 +902,7 @@ formHost.acquireFormState(want, (error: Base.BusinessError, data: formInfo.FormS
 });
 ```
 
-## acquireFormState
+## formHost.acquireFormState
 
 acquireFormState(want: Want): Promise&lt;formInfo.FormStateInfo&gt;
 
@@ -949,7 +948,7 @@ formHost.acquireFormState(want).then((data: formInfo.FormStateInfo) => {
 });
 ```
 
-## on('formUninstall')
+## formHost.on('formUninstall')
 
 on(type: 'formUninstall', callback: Callback&lt;string&gt;): void
 
@@ -978,7 +977,7 @@ formHost.on('formUninstall', (formId: string) => {
 });
 ```
 
-## off('formUninstall')
+## formHost.off('formUninstall')
 
 off(type: 'formUninstall', callback?: Callback&lt;string&gt;): void
 
@@ -1007,7 +1006,7 @@ formHost.off('formUninstall', (formId: string) => {
 });
 ```
 
-## notifyFormsVisible
+## formHost.notifyFormsVisible
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1038,7 +1037,7 @@ formHost.notifyFormsVisible(formIds, true, (error: Base.BusinessError) => {
 });
 ```
 
-## notifyFormsVisible
+## formHost.notifyFormsVisible
 
 notifyFormsVisible(formIds: Array&lt;string&gt;, isVisible: boolean): Promise&lt;void&gt;
 
@@ -1074,7 +1073,7 @@ formHost.notifyFormsVisible(formIds, true).then(() => {
 });
 ```
 
-## notifyFormsEnableUpdate
+## formHost.notifyFormsEnableUpdate
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1105,7 +1104,7 @@ formHost.notifyFormsEnableUpdate(formIds, true, (error: Base.BusinessError) => {
 });
 ```
 
-## notifyFormsEnableUpdate
+## formHost.notifyFormsEnableUpdate
 
 notifyFormsEnableUpdate(formIds: Array&lt;string&gt;, isEnableUpdate: boolean): Promise&lt;void&gt;
 

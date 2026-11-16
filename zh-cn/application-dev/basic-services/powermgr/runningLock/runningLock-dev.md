@@ -74,17 +74,14 @@
 
    ``` TypeScript
    // 导入runningLock、commonEventManager模块
-   import { runningLock } from '@kit.BasicServicesKit';
-   import { commonEventManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { runningLock, commonEventManager, BusinessError} from '@kit.BasicServicesKit';
    ```
 
 3. 开发公共事件工具类以及运行锁工具类。
 
    ``` TypeScript
    // CommonEventHelper.ets
-   import { commonEventManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { commonEventManager, BusinessError} from '@kit.BasicServicesKit';
 
    type SubscriberInfo = commonEventManager.CommonEventSubscribeInfo;
    type Subscriber = commonEventManager.CommonEventSubscriber;

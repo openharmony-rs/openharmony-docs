@@ -5,6 +5,7 @@
 <!--Designer: @liu-binjun-->
 <!--Tester: @mhy123456789-->
 <!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=2c7620d54062997379c5f7d2a16c6e4e49a1ae66 translatedAt=2026-11-04T04:58:45.953Z pushedAt=2026-11-04T08:04:44.731Z nl=1 -->
 
 The **geolocation** module provides a wide array of location services, including GNSS positioning, network positioning, geocoding, reverse geocoding, and geofencing.
 
@@ -600,7 +601,7 @@ Obtains the current position. This API uses a promise to return the result.
 
 getLastLocation(callback: AsyncCallback&lt;Location&gt;): void
 
-Obtains the previous location. This API uses an asynchronous callback to return the result. 
+Obtains the previous location. This API uses an asynchronous callback to return the result.
 
 > **NOTE**<br>
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.getLastLocation](js-apis-geoLocationManager.md#geolocationmanagergetlastlocation) instead.
@@ -635,7 +636,7 @@ Obtains the previous location. This API uses an asynchronous callback to return 
 
 getLastLocation(): Promise&lt;Location&gt;
 
-Obtains the previous location. This API uses a promise to return the result. 
+Obtains the previous location. This API uses a promise to return the result.
 
 > **NOTE**<br>
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.getLastLocation](js-apis-geoLocationManager.md#geolocationmanagergetlastlocation) instead.
@@ -665,7 +666,7 @@ Obtains the previous location. This API uses a promise to return the result.
 
 isLocationEnabled(callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether the location service is enabled. This API uses an asynchronous callback to return the result. 
+Checks whether the location service is enabled. This API uses an asynchronous callback to return the result.
 
 > **NOTE**<br>
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.isLocationEnabled](js-apis-geoLocationManager.md#geolocationmanagerislocationenabled) instead.
@@ -699,7 +700,7 @@ Checks whether the location service is enabled. This API uses an asynchronous ca
 
 isLocationEnabled(): Promise&lt;boolean&gt;
 
-Checks whether the location service is enabled. This API uses a promise to return the result. 
+Checks whether the location service is enabled. This API uses a promise to return the result.
 
 > **NOTE**<br>
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.isLocationEnabled](js-apis-geoLocationManager.md#geolocationmanagerislocationenabled) instead.
@@ -854,7 +855,7 @@ Checks whether the (reverse) geocoding service is available. This API uses a pro
 
 getAddressesFromLocation(request: ReverseGeoCodeRequest, callback: AsyncCallback&lt;Array&lt;GeoAddress&gt;&gt;): void
 
-Converts coordinates into geographic descriptions through reverse geocoding. This API uses an asynchronous callback to return the result. 
+Converts coordinates into geographic descriptions through reverse geocoding. This API uses an asynchronous callback to return the result.
 
 > **NOTE**<br>
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.getAddressesFromLocation](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocation) instead.
@@ -890,7 +891,7 @@ Converts coordinates into geographic descriptions through reverse geocoding. Thi
 
 getAddressesFromLocation(request: ReverseGeoCodeRequest): Promise&lt;Array&lt;GeoAddress&gt;&gt;
 
-Converts coordinates into geographic descriptions through reverse geocoding. This API uses a promise to return the result. 
+Converts coordinates into geographic descriptions through reverse geocoding. This API uses a promise to return the result.
 
 > **NOTE**<br>
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.getAddressesFromLocation](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocation-1) instead.
@@ -926,7 +927,7 @@ Converts coordinates into geographic descriptions through reverse geocoding. Thi
 
 getAddressesFromLocationName(request: GeoCodeRequest, callback: AsyncCallback&lt;Array&lt;GeoAddress&gt;&gt;): void
 
-Converts geographic descriptions into coordinates through geocoding. This API uses an asynchronous callback to return the result. 
+Converts geographic descriptions into coordinates through geocoding. This API uses an asynchronous callback to return the result.
 
 > **NOTE**<br>
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.getAddressesFromLocationName](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocationname) instead.
@@ -962,7 +963,7 @@ Converts geographic descriptions into coordinates through geocoding. This API us
 
 getAddressesFromLocationName(request: GeoCodeRequest): Promise&lt;Array&lt;GeoAddress&gt;&gt;
 
-Converts geographic descriptions into coordinates through geocoding. This API uses a promise to return the result. 
+Converts geographic descriptions into coordinates through geocoding. This API uses a promise to return the result.
 
 > **NOTE**<br>
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [geoLocationManager.getAddressesFromLocationName](js-apis-geoLocationManager.md#geolocationmanagergetaddressesfromlocationname-1) instead.
@@ -1253,7 +1254,7 @@ Geocoding address information.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | latitude<sup>7+</sup> | number | No| Yes| Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**.|
-| longitude<sup>7+</sup> | number | No| Yes| Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude. The value ranges from **-180** to **180**.|
+| longitude<sup>7+</sup> | number | No | Yes | Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude. The value ranges from **-180** to **180**. |
 | locale<sup>7+</sup> | string | No| Yes| Language used for the location description. **zh** indicates Chinese, and **en** indicates English.|
 | placeName<sup>7+</sup> | string | No| Yes| Landmark of the location.|
 | countryCode<sup>7+</sup> | string | No| Yes| Country code.|
@@ -1422,7 +1423,7 @@ Defines location information.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | latitude<sup>7+</sup> | number | No| No| Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**.|
-| longitude<sup>7+</sup> | number | No| No| Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude. The value ranges from **-180** to **180**.|
+| longitude<sup>7+</sup> | number | No | No | Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude. The value ranges from **-180** to **180**. |
 | altitude<sup>7+</sup> | number | No| No| Location altitude, in meters.|
 | accuracy<sup>7+</sup> | number | No| No| Location accuracy, in meters.|
 | speed<sup>7+</sup> | number | No| No| Speed, in m/s.|
@@ -1489,7 +1490,7 @@ Sets the priority of a location request.
 | TRAJECTORY_TRACKING | 0x302 | Trajectory tracking scenario.<br>This option is applicable when your application needs to record user trajectories, for example, the track recording function of sports applications. In this scenario, the GNSS positioning technology is mainly used to ensure the location accuracy.<br>The location result is reported at a minimum interval of 1 second by default.|
 | CAR_HAILING | 0x303 | Ride hailing scenario.<br>This option is applicable when your application needs to obtain the current location of a user who is hailing a taxi.<br>The location result is reported at a minimum interval of 1 second by default.|
 | DAILY_LIFE_SERVICE | 0x304 | Daily life service scenario.<br>This option is applicable when your application only needs the approximate user location for recommendations and push notifications in scenarios such as when the user is browsing news, shopping online, and ordering food.<br>The location result is reported at a minimum interval of 1 second by default.|
-| NO_POWER | 0x305 | Power efficiency scenario.<br>This option is applicable when your application does not proactively start the location service. When responding to another application requesting the same location service, the system marks a copy of the location result to your application. In this way, your application will not consume extra power for obtaining the user location.|
+| NO_POWER | 0x305 | Indicates a no-power-consumption scenario. In this scenario, positioning is not actively triggered, and the location is returned to the current application only when other applications perform positioning. |
 
 
 ## GeoLocationErrorCode<sup>(deprecated)</sup>

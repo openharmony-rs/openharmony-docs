@@ -227,8 +227,6 @@ unregisterSource(id: number): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let id = 0; // 需要通过registerSource或registerSourceFromFd方法获取。
 
 audioHapticManagerInstance.unregisterSource(id).then(() => {
@@ -265,8 +263,6 @@ setAudioLatencyMode(id:number, latencyMode: AudioLatencyMode): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let id = 0; // 需要通过registerSource或registerSourceFromFd方法获取。
 
 let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;

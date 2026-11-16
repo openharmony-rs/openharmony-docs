@@ -1178,10 +1178,10 @@ static getTimeZoneCityItemArray(): Array&lt;TimeZoneCityItem&gt;
 
   try {
     let timeZoneCityItemArray: Array<i18n.TimeZoneCityItem> = i18n.SystemLocaleManager.getTimeZoneCityItemArray();
-    for (let i = 0; i < timeZoneCityItemArray.length; i++) {
-        console.info(timeZoneCityItemArray[i].zoneId + ", " + timeZoneCityItemArray[i].cityId + ", " + timeZoneCityItemArray[i].cityDisplayName +
-            ", " + timeZoneCityItemArray[i].offset + "\r\n");
-    }
+    timeZoneCityItemArray.forEach((item: i18n.TimeZoneCityItem) => {
+      console.info(item.zoneId + ", " + item.cityId + ", " + item.cityDisplayName +
+          ", " + item.offset + "\r\n");
+    });
   } catch(error) {
     let err: BusinessError = error as BusinessError;
     console.error(`call SystemLocaleManager.getTimeZoneCityItemArray failed, error code: ${err.code}, message: ${err.message}.`);

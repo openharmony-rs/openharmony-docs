@@ -1,10 +1,11 @@
 # XML Overview
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=21434ce8d323ecbd7d67463989a2ef075be92cec translatedAt=2026-11-04T09:43:05.996Z pushedAt=2026-11-04T09:45:28.350Z nl=1 -->
 
 
 Extensible Markup Language (XML) is a markup language used to describe data, providing a universal method for data transmission and storage. Unlike predefined languages, XML offers greater flexibility, making it suitable for a wide range of applications.

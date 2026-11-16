@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e614d89ea989f36e0b13aa6a29dc8dc8d371310c translatedAt=2026-10-09T02:00:57.632Z pushedAt=2026-10-10T02:43:56.750Z -->
+<!-- md-trans-meta sourceCommit=2abb6d40560bb8e1a9913751e42e44a0192e5f14 translatedAt=2026-11-10T01:10:50.786Z pushedAt=2026-11-10T02:43:58.348Z nl=1 -->
 
 For the corresponding algorithm specifications, see [Asymmetric Encryption and Decryption Algorithm Specifications: SM2](crypto-encryption-decryption.md#sm2).
 
@@ -37,9 +37,10 @@ For the corresponding algorithm specifications, see [Asymmetric Encryption and D
 - Example (using asynchronous APIs):
 
   <!-- @[sm2_encrypt_decrypt_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM2/entry/src/main/ets/pages/sm2/SM2EncryptionDecryptionAsync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   // Encrypt the message.
@@ -69,30 +70,39 @@ For the corresponding algorithm specifications, see [Asymmetric Encryption and D
   }
   
   async function main() {
-    let pkData =
-      new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 129, 28, 207, 85, 1, 130, 45, 3, 66, 0,
-        4, 90, 3, 58, 157, 190, 248, 76, 7, 132, 200, 151, 208, 112, 230, 96, 140, 90, 238, 211, 155, 128, 109, 248, 40,
-        83, 214, 78, 42, 104, 106, 55, 148, 249, 35, 61, 32, 221, 135, 143, 100, 45, 97, 194, 176, 52, 73, 136, 174, 40,
-        70, 70, 34, 103, 103, 161, 99, 27, 187, 13, 187, 109, 244, 13, 7]);
-    let skData =
-      new Uint8Array([48, 49, 2, 1, 1, 4, 32, 54, 41, 239, 240, 63, 188, 134, 113, 31, 102, 149, 203, 245, 89, 15, 15, 47,
-        202, 170, 60, 38, 154, 28, 169, 189, 100, 251, 76, 112, 223, 156, 159, 160, 10, 6, 8, 42, 129, 28, 207, 85, 1,
-        130, 45]);
-    let keyPair = await genKeyPairByData(pkData, skData);
-    let pubKey = keyPair.pubKey;
-    let priKey = keyPair.priKey;
-    let message = 'This is a test';
-    // Encode the string into a Uint8Array in UTF-8.
-    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-    let encryptText = await encryptMessagePromise(pubKey, plainText);
-    let decryptText = await decryptMessagePromise(priKey, encryptText);
-    if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok.');
-      // Decode the Uint8Array into a string in UTF-8.
-      let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
-      console.info('decrypted result string:' + messageDecrypted);
-    } else {
-      console.error('decrypt failed.');
+    try {
+      let pkData =
+        new Uint8Array(
+          [48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 129, 28, 207, 85, 1, 130, 45, 3, 66, 0,
+            4, 90, 3, 58, 157, 190, 248, 76, 7, 132, 200, 151, 208, 112, 230, 96, 140, 90, 238, 211, 155, 128, 109, 248,
+            40,
+            83, 214, 78, 42, 104, 106, 55, 148, 249, 35, 61, 32, 221, 135, 143, 100, 45, 97, 194, 176, 52, 73, 136, 174,
+            40,
+            70, 70, 34, 103, 103, 161, 99, 27, 187, 13, 187, 109, 244, 13, 7]);
+      let skData =
+        new Uint8Array(
+          [48, 49, 2, 1, 1, 4, 32, 54, 41, 239, 240, 63, 188, 134, 113, 31, 102, 149, 203, 245, 89, 15, 15, 47,
+            202, 170, 60, 38, 154, 28, 169, 189, 100, 251, 76, 112, 223, 156, 159, 160, 10, 6, 8, 42, 129, 28, 207, 85, 1,
+            130, 45]);
+      let keyPair = await genKeyPairByData(pkData, skData);
+      let pubKey = keyPair.pubKey;
+      let priKey = keyPair.priKey;
+      let message = 'This is a test';
+      // Encode the string into a Uint8Array in UTF-8.
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = await encryptMessagePromise(pubKey, plainText);
+      let decryptText = await decryptMessagePromise(priKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok.');
+        // Decode the Uint8Array into a string in UTF-8.
+        let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
+        console.info('decrypted result string:' + messageDecrypted);
+      } else {
+        console.error('decrypt failed.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```
@@ -101,7 +111,7 @@ For the corresponding algorithm specifications, see [Asymmetric Encryption and D
 - Example (using synchronous APIs):
 
   <!-- @[sm2_encrypt_decrypt_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM2/entry/src/main/ets/pages/sm2/SM2EncryptionDecryptionSync.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';

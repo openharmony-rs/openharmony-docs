@@ -222,7 +222,7 @@ class Tmp {
 @Builder
 function overBuilder(param: Tmp) {
   Column() {
-    Text(`wrapBuildervalue:${param.paramA2}`)
+    Text(`wrapBuilder value: ${param.paramA2}`)
       .fontSize(20)
       .margin(10)
   }

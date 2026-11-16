@@ -2384,7 +2384,7 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 26.0.0开始废弃，建议使用[setDistributedEnabled](#notificationmanagersetdistributedenabled20)替代。
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[setDistributedEnabled](#notificationmanagersetdistributedenabled20)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2438,7 +2438,7 @@ setDistributedEnable(enable: boolean): Promise\<void>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 26.0.0开始废弃，建议使用[setDistributedEnabled](#notificationmanagersetdistributedenabled20)替代。
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[setDistributedEnabled](#notificationmanagersetdistributedenabled20)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2494,7 +2494,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 26.0.0开始废弃，建议使用[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)替代。
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2555,7 +2555,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 26.0.0开始废弃，建议使用[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)替代。
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2616,7 +2616,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 26.0.0开始废弃，建议使用[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)替代。
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2673,7 +2673,7 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 26.0.0开始废弃，建议使用[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)替代。
+> 从API version 9开始支持，从API版本26.0.0开始废弃，建议使用[isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)替代。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2733,7 +2733,7 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 26.0.0开始废弃。
+> 从API version 9开始支持，从API版本26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -2784,7 +2784,7 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 26.0.0开始废弃。
+> 从API version 9开始支持，从API版本26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3673,7 +3673,7 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: 
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 26.0.0开始废弃。
+> 从API version 9开始支持，从API版本26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3731,7 +3731,7 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 26.0.0开始废弃。
+> 从API version 9开始支持，从API版本26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3791,7 +3791,7 @@ getSyncNotificationEnabledWithoutApp(userId: number, callback: AsyncCallback\<bo
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 26.0.0开始废弃。
+> 从API version 9开始支持，从API版本26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -3847,7 +3847,7 @@ getSyncNotificationEnabledWithoutApp(userId: number): Promise\<boolean>
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 26.0.0开始废弃。
+> 从API version 9开始支持，从API版本26.0.0开始废弃。
 
 **系统能力**：SystemCapability.Notification.Notification
 

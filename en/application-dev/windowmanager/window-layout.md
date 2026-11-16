@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @yyuehao-->
 <!--Designer: @yyuehao-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=975702a2d077718c3bdd4829338e3368ce6451f2 translatedAt=2026-10-08T09:03:57.551Z pushedAt=2026-10-08T11:39:34.991Z -->
+<!-- md-trans-meta sourceCommit=d173cf451b7a5f1eac198f550e30fdc6348976ed translatedAt=2026-11-10T03:32:21.556Z pushedAt=2026-11-10T07:53:10.826Z nl=1 -->
 
 ## When to Use
 
@@ -169,7 +169,7 @@ After a window is created, you can dynamically adjust its position and size thro
 
   | API | Coordinate System Origin | Description |
   | -------- | -------- | -------- |
-  | [moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1) | [Freeform window](freeform-window-overview.md#freeform-window): The origin is the top-left vertex of the screen.<br/>Non-[freeform window](freeform-window-overview.md#freeform-window): when moving a subwindow or modal window, the origin is the top-left vertex of the parent window; when moving other windows, the origin is the top-left vertex of the screen | Moves the window position. The call returns upon success, and the final effective result cannot be obtained immediately after the return. |
+  | [moveWindowTo()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowto9-1) | [freeform window](freeform-window-overview.md#freeform-window) state: the origin is the top-left vertex of the screen<br/>In the non-freeform window state: when a child window or modal window is moved, the origin is the top-left vertex of the parent window; when other windows are moved, the origin is the top-left vertex of the screen | Moves the window position. The call returns upon success, and the final effective result cannot be obtained immediately after the return. |
   | [moveWindowToAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync12) with input parameters **x** and **y**<br/>[moveWindowToAsync()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoasync15) with input parameters **x**, **y**, **moveConfiguration** | [Freeform window](freeform-window-overview.md#freeform-window): The origin is the top-left vertex of the screen.<br/>Non-[freeform window](freeform-window-overview.md#freeform-window): The origin is the top-left vertex of the main window. | Moves the window position. The call returns after the operation takes effect. |
   | [moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15) with input parameters **x** and **y**<br/>[moveWindowToGlobal()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobal15) with input parameters **x**, **y**, and **moveConfiguration** | Top-left vertex of the target screen | Moves the window position based on screen coordinates. The call returns after the operation takes effect. |
   | [moveWindowToGlobalDisplay()](../reference/apis-arkui/arkts-apis-window-Window.md#movewindowtoglobaldisplay20) | Top-left vertex of the main screen (global coordinate system) | Moves the window position based on the [global coordinate system](window-terminology.md#global-coordinate-system). |
@@ -192,7 +192,7 @@ After a window is created, you can dynamically adjust its position and size thro
   Sample
 
   <!-- @[sub_move_resize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+  
   ``` TypeScript
   // EntryAbility.ets
   import { UIAbility } from '@kit.AbilityKit';
@@ -277,7 +277,7 @@ Currently, the following two window dragging capabilities are provided.
   Sample:
 
   <!-- @[startMoving](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/pages/SubWindowPage.ets) -->
-
+  
   ``` TypeScript
   import { window } from '@kit.ArkUI';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -341,7 +341,7 @@ Currently, the following two window dragging capabilities are provided.
         })
   
         Column() {
-          Text('Current sub-window size')
+          Text('Current subwindow size')
             .fontSize(16)
             .fontWeight(FontWeight.Bold)
   
@@ -418,7 +418,7 @@ Currently, the following two window dragging capabilities are provided.
   > During drag resizing, the window size is subject to [WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11) constraints.
 
   <!-- @[enableDrag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AdjustLayout/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   // Index.ets
   import { window } from '@kit.ArkUI';

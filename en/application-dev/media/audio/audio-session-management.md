@@ -1,11 +1,11 @@
 # Audio Session Management (ArkTS)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @funny_sunix-->
+<!--Owner: @LauJianghu-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=1fc37bb32330967012f419321b27588787af533d translatedAt=2026-09-28T02:35:32.780Z pushedAt=2026-09-29T06:49:42.264Z -->
+<!-- md-trans-meta sourceCommit=dff939467669b2f6241fb34beb5719b2442a3ba6 translatedAt=2026-11-05T00:59:45.661Z pushedAt=2026-09-29T06:49:42.264Z nl=2 -->
 
 In the scenario where multiple audio streams are concurrently playing, the system has preset a default [audio focus strategy](audio-playback-concurrency.md#audio-focus-strategy) for unified audio focus management across all audio streams (including playback and recording).
 
@@ -273,13 +273,14 @@ Typical usage scenarios are as follows:
 
 ### Audio Session Scene
 
-When an audio session holds focus in a unified manner, the system provides three audio session scenes. Before activating the AudioSession, you must call [setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) to set the corresponding audio session scene. When the AudioSession is activated, the system requests the corresponding audio focus based on the audio session scene selected by the app.
+When an audio session holds focus in a unified manner, the system provides the following audio session scenes. Before activating the AudioSession, you must call [setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20) to set the corresponding audio session scene. When the AudioSession is activated, the system requests the corresponding audio focus based on the audio session scene selected by the app.
 
 | Name                   | Value | Matching StreamUsage | Description | Applicable Scenario      |
 | :--------------------- |:--|:---------------|:--------|:----------|
-| AUDIO_SESSION_SCENE_MEDIA | 0 | STREAM_USAGE_MUSIC, STREAM_USAGE_MOVIE, STREAM_USAGE_AUDIOBOOK | Media audio session.     | Scenarios where focus is frequently requested and released (for example, swiping through multiple short videos), and media playback scenarios where you do not hold an AudioRenderer object but need to listen for focus changes. |
-| AUDIO_SESSION_SCENE_GAME | 1 | STREAM_USAGE_GAME | Game audio session.     | Game audio scenarios such as in-game background music and voice-overs. |
-| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | STREAM_USAGE_RINGTONE, STREAM_USAGE_VOICE_COMMUNICATION, STREAM_USAGE_VIDEO_COMMUNICATION | VoIP call audio session. | Call scenarios such as VoIP calls where a ringtone stream must be started simultaneously. |
+| AUDIO_SESSION_SCENE_MEDIA | 0 | STREAM_USAGE_MUSIC, STREAM_USAGE_MOVIE, STREAM_USAGE_AUDIOBOOK | Media audio session.     | Scenarios where focus is frequently requested and released (for example, swiping through multiple short videos), and media playback scenarios where you do not hold an AudioRenderer object but need to listen for focus changes.<br>**Note:** Supported since API version 20. |
+| AUDIO_SESSION_SCENE_GAME | 1 | STREAM_USAGE_GAME | Game audio session.     | Game audio scenarios such as in-game background music and voice-overs.<br>**Note:** Supported since API version 20. |
+| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | STREAM_USAGE_RINGTONE, STREAM_USAGE_VOICE_COMMUNICATION, STREAM_USAGE_VIDEO_COMMUNICATION | VoIP call audio session. | Call scenarios such as VoIP calls where a ringtone stream must be started simultaneously.<br>**Note:** Supported since API version 20. |
+| AUDIO_SESSION_SCENE_VOICE_MESSAGE | 3 | STREAM_USAGE_VOICE_MESSAGE | Voice message audio session. | Voice message playback in chat apps.<br>**Note:** Supported since API version 26.0.1. |
 
 > **NOTE**
 >
@@ -387,6 +388,7 @@ You can call [on('audioSessionStateChanged')](../../reference/apis-audio-kit/ark
            break;
          case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
            // This branch indicates that the system has restored the volume of all playback audio streams of the app to normal.
+           break;
          case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION:
            // This branch indicates that another app has started playing non-mixable audio. The system may decide whether to mute.
            break;
@@ -486,6 +488,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
         break;
       case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK:
         // This branch indicates that the system has restored the volume of all playback audio streams of the app to normal.
+        break;
       case audio.AudioSessionStateChangeHint.AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION:
         // This branch indicates that another app has started playing non-mixable audio. The system may decide whether to mute at its own discretion.
         break;
@@ -589,7 +592,20 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 Starting from API version 24, you can call [setAudioSessionBehavior](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24) to set audio session behavior parameters for a better audio focus experience in specific scenarios.
 
-In a live streaming scenario, when another app starts an audio stream (such as using a keyboard for speech-to-text) that interrupts the live stream, the live stream's audio and video are paused, affecting the viewing experience. A live streaming app can set the [AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED session behavior to keep the live stream playing in mute mode instead of pausing when interrupted, thereby avoiding video interruption.
+| Enum Value | API Version | Recommended Scenario |
+| -------- | -------- | -------- |
+| [AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED | 24 | Interruption of live-streaming audio. |
+| [AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).PAUSE_WHEN_INTERRUPTED | 26.0.0 | Media audio that needs to resume after being interrupted by other short-duration media audio, such as an audio advertisement. |
+
+In a live streaming scenario, when another app starts an audio stream (such as using a keyboard for speech-to-text) that interrupts the live stream, the live stream's audio and video are paused, affecting the viewing experience. A live streaming app sets the [AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED session behavior to keep the live stream playing in mute mode instead of pausing when interrupted, thereby avoiding video interruption. Audio is automatically unmuted when the interruption ends.
+
+When media audio is interrupted by other short-duration media audio, the system does not notify the app to resume playback by default. If the app sets the [AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).PAUSE_WHEN_INTERRUPTED session behavior, the system notifies it to resume playback, preventing playback from remaining paused after a short-duration interruption. If the interruption exceeds the specified duration (that is, the interrupting audio is long-duration media audio), this setting does not take effect.
+
+> **NOTE**
+>
+> - PAUSE_WHEN_INTERRUPTED cannot coexist with MUTE_WHEN_INTERRUPTED. If both are set, only PAUSE_WHEN_INTERRUPTED takes effect.
+> - When calling [setAudioSessionBehavior](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24) to configure this behavior, you must also call [setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20); otherwise, the configuration does not take effect.
+> - If you call [setAudioSessionBehavior](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24) while the audio session is active, you must call [activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12) again for the change to take effect.
 
 If your app does not use audio session management, you can also set independent audio session behavior for a single audio stream. For playback streams, see [setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24). For recording streams, see [setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24).
 

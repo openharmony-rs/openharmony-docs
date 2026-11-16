@@ -146,6 +146,7 @@ nodeApi->setAttribute(text, NODE_TEXT_CONTENT_WITH_STYLED_STRING, &styledStringI
 | ---- | ---- |
 | [OH_ArkUI_StyledString_Descriptor_Create](../reference/apis-arkui/capi-styled-string-h.md#oh_arkui_styledstring_descriptor_create) | 创建StyledString描述符。 |
 | [OH_ArkUI_UnmarshallStyledStringDescriptor](../reference/apis-arkui/capi-styled-string-h.md#oh_arkui_unmarshallstyledstringdescriptor) | 反序列化字节数据到描述符。 |
+| [OH_ArkUI_MarshallStyledStringDescriptor](../reference/apis-arkui/capi-styled-string-h.md#oh_arkui_marshallstyledstringdescriptor) | 将描述符序列化为字节数据。 |
 | [OH_ArkUI_ConvertToHtml](../reference/apis-arkui/capi-styled-string-h.md#oh_arkui_converttohtml) | 将描述符转换为HTML格式。 |
 | [OH_ArkUI_StyledString_Descriptor_Destroy](../reference/apis-arkui/capi-styled-string-h.md#oh_arkui_styledstring_descriptor_destroy) | 销毁StyledString描述符。 |
 
@@ -174,29 +175,17 @@ static void SerializeAndDeserializeStyledString()
     // 转换为HTML格式
     const char* html = OH_ArkUI_ConvertToHtml(desc);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "styledString", "html: [%{public}s]", html);
-    size_t resultSize = dataSize + 2;
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "styledString", "resultSize: %{public}zu", resultSize);
-    uint8_t *buf2 = (uint8_t *)malloc(resultSize * sizeof(uint8_t));
-
-    // 验证反序列化后的数据
-    if (buf2 != nullptr) {
-        if (resultSize >= dataSize) {
-            for (size_t i = 0; i < dataSize; i++) {
-                buf2[i] = data_bytes[i];
-            }
-        } else {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "styledString",
-                         "Buf too small: %{public}zu < %{public}zu", resultSize, dataSize);
-            free(buf2);
-            OH_ArkUI_StyledString_Descriptor_Destroy(desc);
-            return;
-        }
-        bool equal = true;
+    // 验证反序列化后的数据：将描述符重新序列化，与原始数据对比
+    uint8_t buf2[1024] = {0};
+    size_t resultSize = 0;
+    auto marshallStatus = OH_ArkUI_MarshallStyledStringDescriptor(buf2, sizeof(buf2), desc, &resultSize);
+    bool equal = false;
+    if (marshallStatus == ARKUI_ERROR_CODE_NO_ERROR && resultSize == dataSize) {
+        equal = true;
         for (size_t i = 0; i < dataSize && equal; i++) equal = (data_bytes[i] == buf2[i]);
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "styledString",
-            "Before: %{public}zu, After: %{public}zu, Equal: %{public}d", dataSize, resultSize, equal);
-        free(buf2);
     }
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "styledString",
+        "Before: %{public}zu, After: %{public}zu, Equal: %{public}d", dataSize, resultSize, equal);
 
     // 释放描述符
     OH_ArkUI_StyledString_Descriptor_Destroy(desc);

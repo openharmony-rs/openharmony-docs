@@ -1,4 +1,4 @@
-# External Key Management Extension Overview
+# Key Management Extension Overview
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -6,60 +6,74 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=f7243bd9bbc19d6bb1c1a460201c8c6cbf7dc7b6 translatedAt=2026-08-13T08:21:28.035Z pushedAt=2026-08-13T10:20:24.679Z -->
+<!-- md-trans-meta sourceCommit=d5358c6da14ce433fab40ec69edadd4e380d9588 translatedAt=2026-11-10T03:09:24.431Z pushedAt=2026-11-10T07:31:11.921Z nl=1 -->
 
-HUKS provides unified Ability extension APIs for the driver HAP to implement external key management extension as well as register and unregister the custom hardware key management module, meeting identity authentication requirements in scenarios such as browser-based two-way SSL authentication of Ukey certificates in the financial sector.
+Applications need to use external key management devices (such as UKey) in scenarios such as digital signature and certificate authentication. The interfaces and implementations of external key management devices from different vendors vary greatly. Directly adapting to multiple protocols imposes high development costs and is difficult to maintain.
 
-A USB key (Ukey) is a hardware device based on the USB API, which can be used to store user private keys, certificates, and identity authentication information.
+HUKS provides a unified Ability extension interface, enabling external key management capabilities to be integrated into the OpenHarmony system: CryptoExtensionAbility adapts to underlying implementation differences and provides unified key management and certificate management APIs to upper-layer applications.
 
-This guide describes how to implement identity authentication in scenarios such as browser-based two-way SSL authentication of Ukey certificates.
+This document targets two types of developers of the key management extended capability:
 
-## Working Principles
+- **Implementer**: responsible for integrating external key management capabilities into the HUKS framework, and completing capability exposure by implementing the CryptoExtensionAbility callback interfaces.
 
-The following figure shows the process of calling APIs to implement identity authentication. For details about the process, see the marks in the figure.
+- **Consumer**: uses the external key management extended capability by calling the standard huksExternalCrypto and huks module interfaces provided by HUKS, and by calling the standard interfaces of the certificate management module to trigger pop-up flows such as certificate selection and PIN code authentication.
 
-![huks_extension](figures/huks_extension.png)
+The HUKS framework remains device-agnostic, supporting both UKey physical devices and software forms, covering typical application scenarios such as [browser mutual TLS login](huks-extension-ability-best-dev.md).
 
-- Mark 1: A Ukey device is inserted.
+## Overall Architecture
 
-- Mark 2: The driver HAP registers the external key management extension capability (Ukey Extension) through the Provider management API.
+![huks_extension](figures/huks-extension.png)
 
-  The driver HAP can register and unregister the external key management extension capability through the Provider management capability. For details, see [Provider Management Overview and Specifications](huks-provider-management-overview.md).
+The key management extension adopts a layered architecture, which is divided from top to bottom into the ecosystem partner layer, application layer, system service layer, and key management extended application layer. The layers collaborate with each other through IPC.
 
-- Mark 3: The application displays a selection dialog box for certificate authorization for the user to select a certificate.
+- Ecosystem partner layer: represented by upper-layer applications (such as browsers), it is the ultimate consumer of the key management extended capability.
+- Application layer: includes Universal Keystore Kit and Device Certificate Kit, providing unified key management and certificate management APIs to applications. Consumers invoke capabilities through the Kits without needing to know where the underlying keys are stored or who provides them.
+- System service layer: centered on the key management service and certificate management service, which collaborate through IPC to jointly support the capabilities of the upper-layer Kits. The certificate management service carries the pop-up capabilities that require UI interaction, such as certificate selection and PIN code authentication.
+- Key management extended application layer: implemented and run by external key management capability providers, it is the host of CryptoExtensionAbility instances. A key management extended application can register one or more CryptoExtensionAbility instances based on business needs, integrating the vendor's own external key management capability into the key management service.
 
-  3.1: Read certificate information from the Ukey hardware through IPC calls.
+## Capability Exposure Overview
 
-- Mark 4: The application layer queries HUKS for certificate details.
+Before an application or system module (such as certificate management) can use external key management capabilities, the capability implementer must complete the following tasks:
 
-  4.1: Read certificate information from the Ukey hardware through IPC calls.
+- Design and develop the external key management capabilities of the application based on service scenarios.
 
-- Mark 5: After the user selects a certificate, the application obtains the certificate index **KeyUri** (that is, **resourceId**) to open the resource and query the PIN authentication status.
-
-  HUKS provides PIN authentication and authentication status query capabilities. Before performing PIN authentication, the app can query the authentication status first. For details, see [Ukey PIN Authentication](huks-ukey-pin-authentication-management-overview.md).
-
-  5.1: If the resource has not been authenticated, that is, the PIN has not been authenticated, the application needs to call the certificate management capability to display the PIN authentication dialog box. The user enters the PIN to complete the authentication. After the authentication is complete, the process goes to mark 5. The application calls the unified HUKS APIs to perform the corresponding operations.
-
-- Mark 6: The application calls the unified APIs provided by HUKS to perform operations such as resource management, signing, and signature verification. Example:
-
-  - [Open and close resources](huks-resource-management-overview.md).
-
-  - [Verify the authenticity of the message content and the message sender](huks-ukey-signing-signature-verification-overview.md)
-
-  In addition, HUKS allows the app to query key-related attributes of the Ukey. For details, see [General Query](huks-ukey-general-query-overview.md).
-
-- Mark 7: Core operations, such as certificate query, resource management, PIN authentication, and signing, are performed at the HUKS SA layer.
-
-Before the app initiates identity authentication based on the Ukey, the third-party driver HAP must complete the following:
-
-- Design and develop the external key management extension capabilities of the application based on service scenarios.
-
-  The driver HAP must inherit **CryptoExtensionAbility** provided by HUKS and implement the capability APIs. For details, see [CryptoExtensionAbility Extension Capability Overview](huks-extension-ability-support-overview.md).
-
-  **CryptoExtensionAbility** is a derived class of [ExtensionAbility](../../application-models/extensionability-overview.md) in the stage model. You can customize external hardware key management by inheriting **CryptoExtensionAbility** and implementing custom APIs, including calling APIs for opening and closing resources of external hardware key management, implementing PIN authentication for external hardware key management, and calling general APIs of external hardware key management. For details, see [CryptoExtensionAbility Adaptation Development Guide](huks-extension-ability-support-dev.md).
+  The key management extension application must inherit **CryptoExtensionAbility** provided by HUKS and implement the capability APIs as required. For details, see [CryptoExtensionAbility Extension Capability Overview](huks-extension-ability-support-overview.md).
 
 - Register the key management extension capabilities with the system HUKS service.
 
-  CryptoExtensionAbility can isolate the implementation differences among Ukey driver vendors. The capabilities implemented by the driver HAP are exposed to apps through the SDKs of HUKS and [certificate management](../DeviceCertificateKit/certManager-overview.md).
+  **CryptoExtensionAbility** can isolate the implementation differences among different external key management capability implementers. After the key management extension application completes the API implementation, it must register **CryptoExtensionAbility** with HUKS when the device or service is available. **Once registration succeeds, the capability is exposed to the outside.** In unavailable scenarios such as device removal or service stop, the registered capability must be unregistered to avoid resource residue. For details about the specific implementation of registration and unregistration, see [CryptoExtensionAbility Registration and Unregistration](huks-extension-registration-and-unregistration-arkts-ndk.md).
 
-In this way, the applications such as the browser can call the APIs provided by HUKS and [certificate management](../DeviceCertificateKit/certManager-overview.md) to use the external key management capabilities provided by the driver HAP, including certificate query, PIN authentication, and signing and signature verification.
+  After the capability is successfully registered, it is exposed to upper-layer applications and system modules through the SDKs of HUKS and [certificate management](../DeviceCertificateKit/certManager-overview.md), covering typical operations such as certificate query, PIN authentication, and signing and signature verification.
+
+In this way, capability consumers can call the APIs provided by HUKS and [certificate management](../DeviceCertificateKit/certManager-overview.md) to use the external key management capabilities provided by the key management extension application, including certificate query, PIN authentication, and signing and signature verification.
+
+## Document Organization
+
+The following documents are arranged according to the development process. It is recommended that you read them in order:
+
+- For capability implementers, the documents progress from capability introduction to interface implementation and then to registration and launch, helping you complete the entire capability development process step by step.
+- For capability consumers, the documents progress from key operations to signing/signature verification and then to access control, helping you master the invocation methods for each business scenario from basic to advanced.
+
+Please select the corresponding path based on your role.
+
+### Capability Implementer
+
+1. [Introduction to CryptoExtensionAbility Extended Capability](huks-extension-ability-support-overview.md): Understand the positioning, capability exposure, capability lifecycle, and constraints of the CryptoExtensionAbility extension component.
+
+2. [CryptoExtensionAbility Adaptation Development Guide](huks-extension-ability-support-dev.md): Refer to implementation examples of project setup, state management, and functional interfaces.
+
+3. [CryptoExtensionAbility Registration and Unregistration](huks-extension-registration-and-unregistration-arkts-ndk.md): When the device or service is available, call registerProvider to register the implemented CryptoExtensionAbility with HUKS to expose capabilities externally; when unavailable, call unregisterProvider to unregister it and avoid resource residue.
+
+### Capability Consumer
+
+1. [Key Generation and Import/Export](huks-extension-key-generation-import-export.md): Capability introduction and development guide for key generation and import/export.
+
+2. [Signing/Signature Verification](huks-extension-ability-signing-signature-verification.md): Provides capability introduction and development guide for signing/signature verification through the three-stage interface in the key management extension scenario provided by HUKS.
+
+3. [PIN Code Access Control](huks-extension-ability-pin-authentication-management.md): PIN code access control capability and development guide in the key management extension scenario.
+
+4. [General Operations](huks-extension-ability-general-operation.md): Introduces general capabilities such as opening/closing resources, querying, setting properties, and obtaining error information, and provides development guide.
+
+### Use Case
+
+[Browser Mutual SSL Login](huks-extension-ability-best-dev.md): Taking browser mutual SSL login as an example, connects the complete end-to-end process of certificate selection, PIN code authentication, and signing/signature verification.

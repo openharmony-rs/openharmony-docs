@@ -5,6 +5,7 @@
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=34cd16280279f0d6f069ad8ff4c1b2be405f1e89 translatedAt=2026-11-13T03:42:02.704Z pushedAt=2026-11-13T10:44:31.255Z nl=1 -->
 
 ## Overview
 
@@ -114,6 +115,8 @@ Type of the auxiliary picture.
 | AUXILIARY_PICTURE_TYPE_UNREFOCUS_MAP = 3 | Defocused portrait original image, which provides a method to emphasize background blur in portrait photographing. It helps users select a focus region in post-processing, allowing for greater creative control.|
 | AUXILIARY_PICTURE_TYPE_LINEAR_MAP = 4 | Linear map, which is used to provide additional viewpoints or supplementary information. It is usually used to enhance visual effects and can contain linear representations of lighting, colors, or other visual elements in a scene.|
 | AUXILIARY_PICTURE_TYPE_FRAGMENT_MAP = 5 | Fragment map, which indicates regions obscured by watermarks in the original image. It is used to remove or correct the watermark interference, thereby enhancing the image completeness and visibility.|
+| OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_OXY_MAP = 11 | Oxygen saturation map, which records the oxygen saturation of pixels in the face area. It can be used for skin quality analysis. Currently, it is only used as an intermediate result in the camera capture process and is not supported for encoding or decoding.<br>**Since:** 26.0.1 |
+| OH_IMAGE_NATIVEMODULE_AUXILIARY_PICTURE_TYPE_MEL_MAP = 12 | Melanin map, which records the distribution of melanin spots in the face area. It can be used for skin quality analysis. Currently, it is only used as an intermediate result in the camera capture process and is not supported for encoding or decoding.<br>**Since:** 26.0.1 |
 
 ## Function Description
 

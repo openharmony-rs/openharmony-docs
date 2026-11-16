@@ -6,7 +6,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=fea077926b0978d03b1b37767b2d1723ff105d6c translatedAt=2026-08-11T01:56:01.670Z pushedAt=2026-08-12T03:35:32.466Z -->
+<!-- md-trans-meta sourceCommit=46a65bcb61cdd388d4c6a0e37f6cb262dbf640d5 translatedAt=2026-11-05T06:16:33.959Z pushedAt=2026-08-12T03:35:32.466Z nl=1 -->
 
 ## Symptom
 
@@ -89,11 +89,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 For details about geolocation fields and how to use them, see [PropertyKey](../../../reference/apis-image-kit/arkts-apis-image-e.md#propertykey7) in Image Kit.
 
-| Name |  Description|
-| ----- | ---- |
-| GPSLatitude | Image latitude.|
-| GPSLongitude | Image longitude.|
-| GPSTimeStamp | GPS timestamp.|
-| GPSDateStamp | GPS date stamp.|
-| GPSAltitude | Altitude based on **GPSAltitudeRef**.|
-| GPSVersionID | GPS information version.|
+| Name | Value | Description |
+| ----- | ---- | ---- |
+| GPS_LATITUDE | GPSLatitude | Image latitude.|
+| GPS_LONGITUDE | GPSLongitude | Image longitude.|
+| GPS_TIME_STAMP | GPSTimeStamp | GPS timestamp.|
+| GPS_DATE_STAMP | GPSDateStamp | GPS date stamp.|
+| GPS_ALTITUDE | GPSAltitude | Altitude based on **GPSAltitudeRef**.|
+| GPS_VERSION_ID | GPSVersionID | GPS information version.|

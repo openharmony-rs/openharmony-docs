@@ -244,17 +244,12 @@ getPowerMode(callback: AsyncCallback&lt;PowerMode&gt;): void
 
   wifiManagerExt.getPowerMode((err, data:wifiManagerExt.PowerMode) => {
       if (err) {
-          console.error("Failed to get linked information");
+          console.error("get power mode info failed");
           return;
       }
       console.info("get power mode info: " + JSON.stringify(data));
   });
 
-  wifiManagerExt.getPowerMode().then(data => {
-      console.info("get power mode info: " + JSON.stringify(data));
-  }).catch((error:number) => {
-      console.error("get power mode error");
-  });
 ```
 
 ## wifiManagerExt.setPowerMode<sup>(deprecated)</sup>

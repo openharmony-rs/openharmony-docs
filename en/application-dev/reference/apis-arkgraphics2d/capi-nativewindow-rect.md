@@ -1,17 +1,19 @@
 # Rect
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-```
+<!-- md-trans-meta sourceCommit=bf4e8b1b3f7116a2198584d9fc507a5588bb0071 translatedAt=2026-11-04T10:33:44.632Z pushedAt=2026-11-04T10:35:36.019Z nl=2 -->
+
+```c
 struct Rect { ... }
 ```
 
 ## Overview
 
-If **rects** is a null pointer, the buffer size is the same as the size of the dirty region by default.
+Defines the structure of a rectangular area, including the start coordinates and width/height information of the rectangle.
 
 **Related module**: [NativeWindow](capi-nativewindow.md)
 
@@ -27,3 +29,4 @@ If **rects** is a null pointer, the buffer size is the same as the size of the d
 | int32_t y  | Start Y coordinate of the rectangle.|
 | uint32_t w | Width of the rectangle.     |
 | uint32_t h | Height of the rectangle.     |
+

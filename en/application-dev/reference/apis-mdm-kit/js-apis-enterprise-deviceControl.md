@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=561778325285960b1a615ee544f3813e8847893f translatedAt=2026-11-04T05:27:06.464Z pushedAt=2026-11-04T08:04:44.775Z nl=1 -->
 
 This module provides device control capabilities for enterprise device management scenarios. Administrators can remotely control devices through this module, including operations such as device restart, shutdown, screen lock, and factory reset, helping enterprises achieve unified device management and security control.
 
@@ -78,7 +79,7 @@ try {
 
 operateDevice(admin: Want, operation: Operation, addition?: string): void
 
-Allows the administrator to operate devices, for example, erasing disks.
+Allows administrators to operate devices. For example, in enterprise device management scenarios, administrators can remotely control employee devices to perform operations such as disk erasure, reset to factory settings, restart, power off, screen lock, device lock, or device unlock.
 
 **Since:** 26.0.0
 
@@ -95,7 +96,7 @@ Allows the administrator to operate devices, for example, erasing disks.
 | --------- | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | operation | [Operation](#operation)                                  | Yes  | Operation to be performed, which can be any of the following:                                              |
-| addition  | string                                                   | No  | Additional parameter for the operation. When the operation type is disk erasure, the additional parameter is the sandbox path of the image. If a message needs to be displayed to the user after the disk erasure is successfully completed, this parameter can be set to deliver the information. The image size must be less than 5 KB (a QR code image is recommended). The length limit is 1024 bytes.|
+| addition  | string                                                   | No   | Additional parameter for the operation. When the operation type is disk erasure, this parameter is the sandbox path of an image. If information needs to be displayed to the user after the disk erasure succeeds, set this parameter to pass the information. The image must be smaller than 5 KB (a QR code image is recommended). The length limit is 1024 bytes. When the operation type is device lock, this parameter indicates the description displayed after the screen is locked. For other operation types, this parameter is not required currently. |
 
 **Error codes**
 
@@ -107,6 +108,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 | 9200002  | The administrator application does not have permission to manage the device. |
 | 9200010 | A conflict policy has been configured. |
 | 9200012  | Parameter verification failed.|
+| 9201048  | Failed to operate the device.|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
 
@@ -145,3 +147,9 @@ Defines the device operation.
 | Name         | Value  | Description                                                        |
 | ------------- | ---- | ------------------------------------------------------------ |
 | DISK_ERASURE  | 0    | Disk erasure. After this API is called, the device immediately performs a disk erasure operation. Once completed, all data on the device will be erased and cannot be recovered. To protect against data loss caused by potential application attacks, enterprises should implement robust security measures for their applications. It is support only on PCs/2-in-1 devices.|
+| RESET_FACTORY | 1 | Restores the device to factory settings. After the API is called, the device is restored to factory settings immediately. After the restoration is complete, all data on the device is erased and cannot be recovered. Enterprises must design applications securely to prevent enterprise data loss caused by application attacks. If factory reset has been disabled through the [setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy24) API, the restriction must be removed first.<br>**Since:** 26.0.1 |
+| REBOOT | 2 | Restarts the device.<br>**Since:** 26.0.1 |
+| SHUT_DOWN | 3 | Powers off the device.<br>**Since:** 26.0.1 |
+| LOCK_SCREEN | 4 | Locks the device screen.<br>**Since:** 26.0.1 |
+| LOCK_DEVICE | 5 | Locks the device. After this capability is used, the device screen becomes unusable and the keys do not respond. Only lock screen text customization is supported, and interactive functions cannot be customized on the lock screen. During development, an escape channel must be reserved before the device lock policy is delivered, and the escape channel must be verified to work properly. It is recommended to retain the hdc capability and remote communication capability during development, so that the device unlock function can be triggered through hdc commands or the remote push capability.<br>If custom behavior needs to be supported while the screen is locked, it is recommended to use the [setAllowedKioskApps](js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20) API to configure Kiosk mode support, and use the [enterKioskMode](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode) API to enter Kiosk mode.<br>**Since:** 26.0.1 |
+| UNLOCK_DEVICE | 6 | Unlocks the device. After the API is called, the device is unlocked and the user can operate the device normally.<br>**Since:** 26.0.1 |

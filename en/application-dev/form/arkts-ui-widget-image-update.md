@@ -6,7 +6,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=95db9cefd559cc896d806e0e7b41b79f1d647956 translatedAt=2026-08-03T02:26:24.250Z pushedAt=2026-08-03T06:45:25.680Z -->
+<!-- md-trans-meta sourceCommit=14c25dcfa79d2f07b35a4a6bbbdc3d13f8f727f0 translatedAt=2026-11-05T00:54:18.361Z pushedAt=2026-08-03T06:45:25.680Z nl=2 -->
 
 To display local images or images downloaded from the network on a widget, you need to use FormExtensionAbility to obtain them. The following sample code demonstrates how to display local and network images on a widget.
 
@@ -90,8 +90,8 @@ To display local images or images downloaded from the network on a widget, you n
        let formInfo: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
        formProvider.updateForm(formId, formInfo);
    
-       // Note: After being started with the triggering of the lifecycle callback, the FormExtensionAbility can run in the background for only 5 seconds.
-       // When possible, limit the size of the image to download. If an image cannot be downloaded within 5 seconds, it will not be updated to the widget page.
+       // Note: After being started with the triggering of the lifecycle callback, the FormExtensionAbility can run in the background for only 10 seconds.
+       // When possible, limit the size of the image to download. If an image cannot be downloaded within 10 seconds, it will not be updated to the widget page.
        let netFile =
          'https://cn-assets.gitee.com/assets/mini_app-e5eee5a21c552b69ae6bf2cf87406b59.jpg';
        // Specify the URL of the image to download.

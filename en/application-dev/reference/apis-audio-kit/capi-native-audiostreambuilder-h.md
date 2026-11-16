@@ -5,6 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=934897d3f5563bc0da441a583cbcf4253e669ce4 translatedAt=2026-11-09T10:26:19.115Z pushedAt=2026-11-09T11:28:28.408Z nl=1 -->
 
 ## Overview
 
@@ -58,7 +59,7 @@ The file declares the functions related to an audio stream builder.<br>You can u
 | [OH_AudioStream_Result OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback(OH_AudioStreamBuilder* builder, OH_AudioRenderer_OnFastStatusChange callback, void* userData)](#oh_audiostreambuilder_setrendererfaststatuschangecallback) | Sets a callback for low-latency status changes during audio playback.|
 | [OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(OH_AudioStreamBuilder* builder, OH_AudioCapturer_OnFastStatusChange callback, void* userData)](#oh_audiostreambuilder_setcapturerfaststatuschangecallback) | Sets a callback for low-latency status changes during audio recording.|
 | [OH_AudioStream_Result OH_AudioStreamBuilder_SetCapturerLoopbackEffectEnabled(OH_AudioStreamBuilder* builder, bool enabled)](#oh_audiostreambuilder_setcapturerloopbackeffectenabled) | Sets whether the audio recording stream captures audio data with reverb effects. When audio loopback is set to hardware mode and reverb is enabled, the low-latency capturer can acquire recorded data with reverb effects.|
-| [OH_AudioStream_Result OH_AudioStreamBuilder_SetPlaybackCaptureMode(OH_AudioStreamBuilder* builder, uint32_t mode)](#oh_audiostreambuilder_setplaybackcapturemode) | Sets the audio modes for internal audio recording (capturing sound from the applications on the device). The modes determine the types of audio streams to be recorded. This function applies only to [AudioStream_Type_Capturer](./capi-native-audiostream-base-h.md#oh_audiostream_type). This API is not currently supported for external use.|
+| [OH_AudioStream_Result OH_AudioStreamBuilder_SetPlaybackCaptureMode(OH_AudioStreamBuilder* builder, uint32_t mode)](#oh_audiostreambuilder_setplaybackcapturemode) | Sets the audio mode that can be captured when using internal capture (recording the sound of applications inside the device). This mode determines the type of audio stream to be captured. This function is available only for the [AUDIOSTREAM_TYPE_CAPTURER](./capi-native-audiostream-base-h.md#oh_audiostream_type) type. This API was initially available only to specific system applications. Starting from API version 26.0.0, it supports use by any application. |
 | [OH_AudioStream_Result OH_AudioStreamBuilder_SetSensitiveRecordPermitCallback(OH_AudioStreamBuilder* builder, OH_AudioCapturer_SensitiveRecordPermitCallback callback, void* userData)](#oh_audiostreambuilder_setsensitiverecordpermitcallback) | Sets the callback function for when the risk warning prompt finishes playing in the cellular call downlink recording scenario. This function needs to be set only when [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype).AUDIOSTREAM_SOURCE_TYPE_VOICE_DOWNLINK is used for recording. This callback must be set successfully. Otherwise, the audio capturer cannot be created. After the audio capturer is created, the risk warning prompt will be automatically added to the voice data sent to the call recipient. Your app should start the audio capturer after receiving the callback result. Otherwise, [OH_AudioCapturer_Start](capi-native-audiocapturer-h.md#oh_audiocapturer_start) will return an error. Ensure that the audio capturer is created after the cellular call starts. Otherwise, [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer) will return an error.|
 | [OH_AudioStream_Result OH_AudioStreamBuilder_SetCellularRecordSecurityParams(OH_AudioStreamBuilder* builder, const char* cellularRecordPhoneNum, const char* cellularRecordToken)](#oh_audiostreambuilder_setcellularrecordsecurityparams) | Sets the phone number and security token for cellular call downlink recording. This function needs to be set only when [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype).AUDIOSTREAM_SOURCE_TYPE_VOICE_DOWNLINK is used for recording. The phone number and security token are used to verify whether the cellular call downlink capturer matches the corresponding cellular call. They must be set successfully. Otherwise, the capturer cannot be created.|
 
@@ -927,7 +928,7 @@ OH_AudioStream_Result OH_AudioStreamBuilder_SetPlaybackCaptureMode(OH_AudioStrea
 
 **Description**
 
-Sets the audio modes for internal audio recording (capturing sound from the applications on the device). The modes determine the types of audio streams to be recorded. This function applies only to [AudioStream_Type_Capturer](./capi-native-audiostream-base-h.md#oh_audiostream_type). This API is not currently supported for external use.
+Sets the audio mode that can be captured when using internal capture (recording the sound of applications inside the device). This mode determines the type of audio stream to be captured. This function is available only for the [AUDIOSTREAM_TYPE_CAPTURER](./capi-native-audiostream-base-h.md#oh_audiostream_type) type. This API was initially available only to specific system applications. Starting from API version 26.0.0, it supports use by any application.
 
 **Since**: 23
 
@@ -995,3 +996,5 @@ Sets the phone number and security token for cellular call downlink recording. T
 | Type| Description|
 | -- | -- |
 | [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) | <ul><br>         <li>**AUDIOSTREAM_SUCCESS**: The function is executed successfully.</li><br>         <li>**AUDIOSTREAM_ERROR_INVALID_PARAM**: The **builder**, **cellularRecordPhoneNum**, or **cellularRecordToken** parameter is a null pointer.</li><br>         </ul> |
+
+

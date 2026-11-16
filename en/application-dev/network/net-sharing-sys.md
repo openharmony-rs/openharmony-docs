@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=742fd8e7f742ee980eb300ddfd075065ca362dff translatedAt=2026-08-13T03:09:02.389Z pushedAt=2026-08-13T06:39:53.673Z -->
+<!-- md-trans-meta sourceCommit=8e9bab72312dfbfdd6694d93b2af68b6058e6bfd translatedAt=2026-11-05T00:50:31.270Z pushedAt=2026-08-13T06:39:53.673Z nl=2 -->
 
 ## Overview
 
@@ -118,7 +118,7 @@ sharing.on('sharingStateChange', (data: boolean) => {
 sharing.stopSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
   console.info('stop wifi sharing successful');
 }).catch((error: BusinessError) => {
-  console.error('start wifi sharing failed');
+  console.error('stop wifi sharing failed');
 });
 ```
 
@@ -157,7 +157,7 @@ sharing.getStatsTotalBytes().then((data: number) => {
 sharing.stopSharing(sharing.SharingIfaceType.SHARING_WIFI).then(() => {
   console.info('stop wifi sharing successful');
 }).catch((error: BusinessError) => {
-  console.error('start wifi sharing failed');
+  console.error('stop wifi sharing failed');
 });
 
 // Call getStatsTotalBytes again. The data volume of network sharing has been cleared.

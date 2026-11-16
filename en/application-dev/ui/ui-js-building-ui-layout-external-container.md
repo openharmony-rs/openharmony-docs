@@ -2,9 +2,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=45ec2d938cfede23d9ca90fe41c0d1f3e7b2b01d translatedAt=2026-11-05T11:55:00.646Z pushedAt=2026-11-09T10:02:18.997Z nl=1 -->
 
 To assemble the basic elements of a page, you need a container component. The &lt;div&gt;, &lt;list&gt;, and &lt;tabs&gt; components are commonly used for laying out page elements. You can use &lt;div&gt; as the container in a page with simple layout. &lt;div&gt; supports a variety of child components required to build the page.
 
@@ -73,4 +74,4 @@ export default {
 }
 ```
 
-The &lt;tab-content&gt; component is used to display the tab content, which vertically fills the remaining space of the &lt;tabs&gt; component by default. 
+The &lt;tab-content&gt; component is used to display the tab content, which vertically fills the remaining space of the &lt;tabs&gt; component by default.

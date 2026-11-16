@@ -2336,7 +2336,7 @@ scale(x: number, y: number, level: AntiAliasingLevel): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function scaleSync(pixelMap: image.PixelMap) {
+function scale(pixelMap: image.PixelMap) {
   const scaleX: number = 2.0;
   const scaleY: number = 1.0;
   pixelMap.scale(scaleX, scaleY, image.AntiAliasingLevel.LOW).then(() => {
@@ -4081,14 +4081,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function setMetadata(pixelMap: image.PixelMap) { // 入参pixelMap内存类型需为DMA_ALLOC内存类型，其创建方法请参考上方说明。
   let staticMetadata: image.HdrStaticMetadata = {
-    displayPrimariesX: [1.1, 1.1, 1.1],
-    displayPrimariesY: [1.2, 1.2, 1.2],
-    whitePointX: 1.1,
-    whitePointY: 1.2,
-    maxLuminance: 2.1,
-    minLuminance: 1.0,
-    maxContentLightLevel: 2.1,
-    maxFrameAverageLightLevel: 2.1,
+    displayPrimariesX: [0.1, 0.2, 0.3],
+    displayPrimariesY: [0.4, 0.5, 0.6],
+    whitePointX: 0.5,
+    whitePointY: 0.5,
+    maxLuminance: 65535,
+    minLuminance: 0,
+    maxContentLightLevel: 65535,
+    maxFrameAverageLightLevel: 8192,
   };
   pixelMap.setMetadata(image.HdrMetadataKey.HDR_STATIC_METADATA, staticMetadata).then(() => {
     console.info('Succeeded in setting the metadata.');

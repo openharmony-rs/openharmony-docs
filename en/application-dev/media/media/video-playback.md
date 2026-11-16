@@ -1,12 +1,11 @@
 # Using AVPlayer to Play Videos (ArkTS)
-
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=5431dfef3480aa170de3ea7c328962a87045baac translatedAt=2026-08-11T01:55:19.326Z pushedAt=2026-08-12T03:26:46.348Z -->
+<!-- md-trans-meta sourceCommit=a941c2967fbada19bd502bbb405ec212160e4aac translatedAt=2026-11-09T07:45:33.870Z pushedAt=2026-11-09T08:11:59.274Z nl=1 -->
 
 The system provides two solutions for video playback development:
 
@@ -18,7 +17,7 @@ This section describes how to use AVPlayer to implement video playback. It uses 
 
 The full playback process includes creating an AVPlayer instance, setting the media asset to play and the window to display the video, setting playback parameters (volume, speed, and scale type), controlling playback (play, pause, seek, and stop), resetting the playback configuration, and releasing the instance. During application development, you can use the **state** property of AVPlayer to obtain its state or call **on('stateChange')** to listen for state changes. If the application performs an operation when the AVPlayer is not in the given state, the system may throw an exception or generate other undefined behavior.
 
-**Figure 1** Playback state transition 
+**Figure 1** Playback state transition
 
 ![Playback state change](figures/video-playback-status-change.png)
 
@@ -29,11 +28,8 @@ For details about the states, see [AVPlayerState](../../reference/apis-media-kit
 This topic describes only how to implement the playback of a media asset. In practice, background playback and playback conflicts may be involved. You can refer to the following description to handle the situation based on your service requirements.
 
 - If you want the application to continue playing the media asset in the background or when the screen is off, use the [AVSession](../avsession/avsession-access-scene.md) and [continuous task](../../task-management/continuous-task.md) to prevent the playback from being forcibly interrupted by the system.
-
 - If the media asset being played involves audio, the playback may be interrupted by other applications based on the system audio management policy. (For details, see [Processing Audio Interruption Events](../audio/audio-playback-concurrency.md).) It is recommended that the player application proactively listen for audio interruption events and handle the events accordingly to avoid the inconsistency between the application status and the expected effect.
-
 - When a device is connected to multiple audio output devices, the application can listen for audio output device changes through [on('audioOutputDeviceChangeWithInfo')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onaudiooutputdevicechangewithinfo11) and handle them accordingly.
-
 - To access online media resources, you must request the ohos.permission.INTERNET permission.
 
 ## How to Develop
@@ -42,15 +38,16 @@ For details about the APIs, see [AVPlayer](../../reference/apis-media-kit/arkts-
 
 1. Call **createAVPlayer()** to create an AVPlayer instance. The AVPlayer is the idle state.
 
-    ```ts
-    import { media } from '@kit.MediaKit';
-
-    // Create an AVPlayer instance.
-    let avPlayer = await media.createAVPlayer();
-    ```
+   <!-- @[createAVPlayer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { media } from '@kit.MediaKit';
+   // ...
+       // Create an avPlayer instance.
+       this.avPlayer = await media.createAVPlayer();
+   ```
 
 2. Set the events to listen for, which will be used in the full-process scenario. The table below lists the supported events.
-
    | Event Type| Description|
    | -------- | -------- |
    | stateChange | Mandatory; used to listen for changes of the **state** property of the AVPlayer.<br>To ensure proper functionality, the listener must be configured when the AVPlayer is in the idle state and before the resource setting API is called. If the listener is set after the resource setting API is called, the stateChange event reported during resource setting may fail to be received.|
@@ -67,54 +64,148 @@ For details about the APIs, see [AVPlayer](../../reference/apis-media-kit/arkts-
    | videoSizeChange | Used to listen for the width and height of video playback and adjust the window size and ratio.|
    | audioInterrupt | Used to listen for audio interruption. This event is used together with the **audioInterruptMode** property.<br>This event is reported when the current audio playback is interrupted by another (for example, when a call is coming), so the application can process the event in time.|
 
-    ```ts
-    // This is only an example. You can set the events to listen for as required.
-    import { BusinessError } from '@kit.BasicServicesKit';
-    import { audio } from '@kit.AudioKit';
-
-    avPlayer.on('stateChange', async (state: string, reason: media.StateChangeReason) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('error', (error: BusinessError) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('durationUpdate', (duration: number) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('timeUpdate', (time:number) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('seekDone', (seekDoneTime:number) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('speedDone', (speed:number) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('volumeChange', (vol: number) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('bitrateDone', (bitrate:number) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('availableBitrates', (bitrates: Array<number>) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('startRenderFrame', () => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('videoSizeChange', (width: number, height: number) => {
-        // Add your service logic as required.
-    });
-    avPlayer.on('audioInterrupt', (info: audio.InterruptEvent) => {
-        // Add your service logic as required.
-    });
-    ```
+   <!-- @[setAVPlayerCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.avPlayer == null) {
+     console.error(`${this.tag}: avPlayer has not init!`);
+     return;
+   }
+   this.avPlayer.on('seekDone', (seekDoneTime) => {
+     console.info(`${this.tag}: setAVPlayerCallback AVPlayer seek succeeded, seek time is ${seekDoneTime}`);
+   });
+   this.avPlayer.on('speedDone', (speed) => {
+     console.info(`${this.tag}: setAVPlayerCallback AVPlayer speedDone, speed is ${speed}`);
+   });
+   this.avPlayer.on('durationUpdate', (duration: number) => {
+     console.info(`${this.tag}: setAVPlayerCallback AVPlayer durationUpdate, duration is ${duration}`);
+   });
+   this.avPlayer.on('volumeChange', (vol: number) => {
+     console.info(`${this.tag}: setAVPlayerCallback AVPlayer volumeChange, vol is ${vol}`);
+   });
+   this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
+     console.info(`${this.tag}: setAVPlayerCallback AVPlayer bufferingUpdate, vol is ${infoType}, value is ${value}`);
+   });
+   this.avPlayer.on('audioInterrupt', (info: audio.InterruptEvent) => {
+     console.info(`${this.tag}: setAVPlayerCallback AVPlayer audioInterrupt, info is ${info}`);
+   });
+   // Error callback: call reset to reset avPlayer if an error occurs during an operation.
+   this.avPlayer.on('error', (err) => {
+     console.error(`${this.tag}: setAVPlayerCallback Invoke avPlayer failed ${JSON.stringify(err)}`);
+     if (this.avPlayer == null) {
+       console.error(`${this.tag}: avPlayer has not init on error`);
+       return;
+     }
+     this.avPlayer.reset();
+   });
+   // State change callback.
+   this.avPlayer.on('stateChange', async (state, reason) => {
+     if (this.avPlayer == null) {
+       console.info(`${this.tag}: avPlayer has not init on state change`);
+       return;
+     }
+     switch (state) {
+       case 'idle': // Reported after reset is successfully called.
+         console.info(`${this.tag}: setAVPlayerCallback AVPlayer state idle called.`);
+         break;
+       case 'initialized': // Reported after the playback source is set for avPlayer.
+         console.info(`${this.tag}: setAVPlayerCallback AVPlayer state initialized called.`);
+         if (this.surfaceId) {
+           this.avPlayer.surfaceId = this.surfaceId; // Set the display surface. This is not required for audio-only resources.
+           console.info(`${this.tag}: setAVPlayerCallback this.avPlayer.surfaceId = ${this.avPlayer.surfaceId}`);
+           this.avPlayer.prepare();
+         }
+         break;
+       case 'prepared': // Reported after prepare is successfully called.
+         console.info(`${this.tag}: setAVPlayerCallback AVPlayer state prepared called.`);
+         this.avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
+           console.info(`${this.tag}: bufferingUpdate called, infoType value: ${infoType}, value:${value}}`);
+         })
+         this.durationTime = this.avPlayer.duration;
+         this.currentTime = this.avPlayer.currentTime;
+         this.avPlayer.play(); // Call play to start playback.
+         console.info(`${this.tag}:
+           setAVPlayerCallback speedSelect: ${this.speedSelect}, duration: ${this.durationTime}`);
+         if (this.speedSelect != -1) {
+           switch (this.speedSelect) {
+             case SPEED_ZERO:
+               this.avSetSpeed(media.PlaybackSpeed.SPEED_FORWARD_1_00_X);
+               break;
+             case SPEED_ONE:
+               this.avSetSpeed(media.PlaybackSpeed.SPEED_FORWARD_1_25_X);
+               break;
+             case SPEED_TWO:
+               this.avSetSpeed(media.PlaybackSpeed.SPEED_FORWARD_1_75_X);
+               break;
+             case SPEED_THREE:
+               this.avSetSpeed(media.PlaybackSpeed.SPEED_FORWARD_2_00_X);
+               break;
+           }
+         }
+         callback(this.avPlayer);
+         break;
+       case 'playing': // Reported after play is successfully called.
+         console.info(`${this.tag}: setAVPlayerCallback AVPlayer state playing called.`);
+         if (this.intervalID != -1) {
+           clearInterval(this.intervalID)
+         }
+         this.intervalID = setInterval(() => { // Update the current time.
+           AppStorage.setOrCreate('durationTime', this.durationTime);
+           AppStorage.setOrCreate('currentTime', this.currentTime);
+         }, 100);
+         let eventDataTrue: emitter.EventData = {
+           data: {
+             'flag': true
+           }
+         };
+         let innerEventTrue: emitter.InnerEvent = {
+           eventId: 2,
+           priority: emitter.EventPriority.HIGH
+         };
+         emitter.emit(innerEventTrue, eventDataTrue);
+         break;
+       case 'completed': // Reported after playback is complete.
+         console.info(`${this.tag}: setAVPlayerCallback AVPlayer state completed called.`);
+         let eventDataFalse: emitter.EventData = {
+           data: {
+             'flag': false
+           }
+         };
+         let innerEvent: emitter.InnerEvent = {
+           eventId: 1,
+           priority: emitter.EventPriority.HIGH
+         };
+         emitter.emit(innerEvent, eventDataFalse);
+         if (this.intervalID != -1) {
+           clearInterval(this.intervalID)
+         }
+         this.avPlayer.off('bufferingUpdate')
+         AppStorage.setOrCreate('currentTime', this.durationTime);
+         break;
+       case 'released':
+         console.info(`${this.tag}: setAVPlayerCallback released called.`);
+         break
+       case 'stopped':
+         console.info(`${this.tag}: setAVPlayerCallback AVPlayer state stopped called.`);
+         break
+       case 'error':
+         console.error(`${this.tag}: setAVPlayerCallback AVPlayer state error called.`);
+         break
+       case 'paused':
+         console.info(`${this.tag}: setAVPlayerCallback AVPlayer state paused called.`);
+         break
+       default:
+         console.info(`${this.tag}: setAVPlayerCallback AVPlayer state unknown called.`);
+         break;
+     }
+   });
+   // Playback time update callback.
+   this.avPlayer.on('timeUpdate', (time: number) => {
+     this.currentTime = time;
+   });
+   ```
 
 3. Set the media asset URL. The AVPlayer enters the **initialized** state.
-
    > **NOTE**
    >
    > The URL in the code snippet below is for reference only. You need to check the media asset validity and set the URL based on service requirements.
@@ -127,115 +218,144 @@ For details about the APIs, see [AVPlayer](../../reference/apis-media-kit/arkts-
    > 
    > - The [playback formats and protocols](media-kit-intro.md#supported-formats-and-protocols) in use must be those supported by the system.
 
-    ```ts
-    let url = 'https://xxx.xxx.xxx.mp4';
-    if (avPlayer == null) {
-        return;
-    }
-    avPlayer.url = url;
-    ```
+   <!-- @[changeUrl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->    
+   
+   ``` TypeScript
+   // Change the URL.
+   let url = '';
+   if (this.avPlayer == null) {
+       return;
+   }
+   this.avPlayer.url = url;
+   ```
 
 4. Obtain and set the surface ID of the window to display the video.
 
    The application obtains the surface ID from the **XComponent**. For details about the process, see [getXComponentSurfaceId](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9).
 
-    ```ts
-    // Obtain the surface ID by calling getXComponentSurfaceId.
-    let surfaceId = '';
-    if (avPlayer == null) {
-        return;
-    }
-    if (surfaceId === '') {
-        return;
-    }
-    avPlayer.surfaceId = surfaceId;
-    ```
+   <!-- @[setSurfaceId](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->    
+   
+   ``` TypeScript
+   if (this.avPlayer) {
+     try {
+       this.avPlayer.surfaceId = this.xComponentController.getXComponentSurfaceId();
+     } catch (e) {
+       console.error(`${this.tag}: setSurfaceId = ${JSON.stringify(e)}`);
+     }
+   }
+   ```
 
 5. Call **prepare()** to switch the AVPlayer to the **prepared** state. In this state, you can obtain the duration of the media asset to play and set the scale type and volume.
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    avPlayer.prepare((err: BusinessError) => {
-        if (err) {
-            console.error('Failed to prepare,error message is :' + err.message);
-        } else {
-            console.info('Succeeded in preparing');
-        }
-    });
-    ```
+   <!-- @[avPrepare](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.avPlayer) {
+     try {
+       this.avPlayer.prepare();
+       console.info(`${this.tag}: avPrepare==`);
+     } catch (e) {
+       console.error(`${this.tag}: avPrepare== ${JSON.stringify(e)}`);
+     }
+   }
+   ```
 
 6. Call **play()**, **pause()**, **seek()**, and **stop()** to perform video playback control as required.
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
+   <!-- @[avPlay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.avPlayer) {
+     try {
+       this.avPlayer.play();
+     } catch (e) {
+       console.error(`${this.tag}: avPlay = ${JSON.stringify(e)}`);
+     }
+   }
+   ```
 
-    // Playback operation.
-    avPlayer.play().then(() => {
-        console.info('Succeeded in playing');
-    }, (err: BusinessError) => {
-        console.error('Failed to play,error message is :' + err.message);
-    });
-    // Pause operation.
-    avPlayer.pause((err: BusinessError) => {
-        if (err) {
-            console.error('Failed to pause,error message is :' + err.message);
-        } else {
-            console.info('Succeeded in pausing');
-        }
-    });
-    // Seek operation.
-    let seekTime: number = 1000;
-    avPlayer.seek(seekTime, media.SeekMode.SEEK_PREV_SYNC);
-    // Stop operation.
-    avPlayer.stop((err: BusinessError) => {
-        if (err) {
-            console.error('Failed to stop,error message is :' + err.message);
-        } else {
-            console.info('Succeeded in stopping');
-        }
-    });
-    ```
+   <!-- @[avPause](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.avPlayer) {
+     try {
+       this.avPlayer.pause();
+       console.info(`${this.tag}: avPause==`);
+     } catch (e) {
+       console.error(`${this.tag}: avPause== ${JSON.stringify(e)}`);
+     }
+   }
+   ```
+
+   <!-- @[avSeek](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.avPlayer) {
+     try {
+       console.info(`${this.tag}: videoSeek  seekTime== ${seekTime}`);
+       this.avPlayer.seek(seekTime, 2);
+       this.currentTime = seekTime;
+     } catch (e) {
+       console.error(`${this.tag}: videoSeek== ${JSON.stringify(e)}`);
+     }
+   }
+   ```
+
+   <!-- @[avStop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.avPlayer) {
+     try {
+       this.avPlayer.stop();
+       console.info(`${this.tag}: avStop==`);
+     } catch (e) {
+       console.error(`${this.tag}: avStop== ${JSON.stringify(e)}`);
+     }
+   }
+   ```
 
 7. (Optional) Call **reset()** to reset the AVPlayer. The AVPlayer enters the **idle** state again and you can change the media asset URL.
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
+   <!-- @[avReset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   if (this.avPlayer) {
+     try {
+       this.avPlayer.reset();
+     } catch (e) {
+       console.error(`${this.tag}: reset== ${JSON.stringify(e)}`);
+     }
+   }
+   ```
 
-    avPlayer.reset((err: BusinessError) => {
-        avPlayer.url = url;
-        if (err) {
-            console.error('Failed to reset,error message is :' + err.message);
-        } else {
-            console.info('Succeeded in resetting');
-        }
-    });
-    // Change the URL.
-    let url = 'https://xxx.xxx.xxx.mp4';
-    if (avPlayer == null) {
-        return;
-    }
-    avPlayer.url = url;
-    ```
+   <!-- @[changeUrl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // Change the URL.
+   let url = '';
+   if (this.avPlayer == null) {
+       return;
+   }
+   this.avPlayer.url = url;
+   ```
 
 8. Call **release()** to switch the AVPlayer to the **released** state. Now your application exits the playback.
 
-    ```ts
-    import { BusinessError } from '@kit.BasicServicesKit';
-
-    avPlayer.release((err: BusinessError) => {
-        if (err) {
-            console.error('Failed to release,error message is :' + err.message);
-        } else {
-            console.info('Succeeded in releasing');
-        }
-    });
-    ```
+   <!-- @[release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   this.avPlayer.release((err) => {
+     if (err == null) {
+       console.info(`${this.tag}: videoRelease release success`);
+     } else {
+       console.error(`${this.tag}: videoRelease release failed, error message is = ${JSON.stringify(err.message)}`);
+     }
+   });
+   ```
 
 ## Running the Sample Project
 
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo), and copy its resources to the corresponding directories.
-
     ```text
     AVPlayerArkTSVideo
     entry/src/main/ets/
@@ -253,7 +373,6 @@ For details about the APIs, see [AVPlayer](../../reference/apis-media-kit/arkts-
     └── rawfile
         └── test1.mp4 (video resource)
     ```
-
 2. Compile and run the project.
 
 ## Samples

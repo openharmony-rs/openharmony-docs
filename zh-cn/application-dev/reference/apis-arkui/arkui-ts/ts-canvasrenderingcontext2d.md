@@ -643,6 +643,22 @@ constructor(antialias?: boolean)
 | ------ | -------- | --------- | ---------- | ------------------------------ |
 | antialias | boolean | 否 | 是 | 表明canvas是否开启抗锯齿。<br>异常值undefined或null按默认值处理。<br>true：表示开启抗锯齿，false：表示不开启抗锯齿功能。<br>默认值：false<br>**说明：**<br>绘制文本默认开启抗锯齿效果，RenderingContextSettings的antialias无法影响绘制文本的抗锯齿效果，如需修改文本抗锯齿效果，请使用[antialias<sup>24+</sup>](./ts-components-canvas-common-property.md#antialias24)接口。 |
 
+## FrameNode<sup>13+</sup>
+ 
+type FrameNode = import('../api/arkui/FrameNode').FrameNode
+ 
+为Canvas导入的FrameNode类型对象。
+ 
+**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+ 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+| 类型   | 说明 |
+| ------ | ------------------------------ |
+| import('../api/arkui/FrameNode').[FrameNode](../../apis-arkui/js-apis-arkui-frameNode.md) | FrameNode类型对象。|
+
 ## 示例
 
 ### 示例1（width属性用法）

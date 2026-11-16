@@ -1,10 +1,11 @@
 # OH_Drawing_Point2D
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=3b75f30d038321e59d140485862ef0f48205e17e translatedAt=2026-11-04T10:31:10.039Z pushedAt=2026-11-04T10:32:31.098Z nl=1 -->
 
 ```c
 typedef struct {...} OH_Drawing_Point2D
@@ -30,3 +31,4 @@ typedef OH_Drawing_Point2D OH_Drawing_Corner_Radii
 | ------- | ------- |
 | float x | X coordinate.|
 | float y | Y coordinate.|
+

@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=8cfdeec6aa2651d1fcceb81e1322f68e07fb2f6e translatedAt=2026-11-04T05:34:18.377Z pushedAt=2026-11-04T08:04:44.789Z nl=1 -->
 
 This **restrictions** module provides APIs for disallowing general features of devices. You can globally disable and re-enable features such as Bluetooth, HDC, USB, Wi-Fi, cellular data, camera, and microphone.
 
@@ -46,7 +47,9 @@ Disallows a feature.
 
 > **NOTE**
 > 
-> This API applies a device-level restriction policy that affects all users of the device. To set a restriction policy for a specific user, use the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated) API.
+> This API is a device-level disabling policy and affects all users on the device. To set a disabling policy for a specific user, use the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated) API.
+>
+> In a multi-MDM application scenario, the [Strict Control](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule applies.
 
 **Since:** 12
 
@@ -54,13 +57,12 @@ Disallows a feature.
 
 **Substitutes:** [restrictions.setDisallowedPolicy](#restrictionssetdisallowedpolicy24)
 
-**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS, ohos.permission.PERSONAL_MANAGE_RESTRICTIONS<sup>15+</sup>, or ohos.permission.ENTERPRISE_MANAGE_NETWORK (The required permissions vary depending on the feature to be set. For details, see Table 1.)
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS<sup>15+</sup> or ohos.permission.ENTERPRISE_MANAGE_NETWORK (different features require different permissions; refer to Table 1 for details)
+<br/>- Starting from API version 20, the ohos.permission.ENTERPRISE_MANAGE_NETWORK permission can be requested.<br/>- Starting from API version 15, the ohos.permission.PERSONAL_MANAGE_RESTRICTIONS permission can be requested.<br/>- For API version 14 and earlier, the ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS permission must be requested.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
 
 **Parameters**
 
@@ -79,14 +81,14 @@ Disallows a feature.
 |hdc|Capability for other devices to connect to and debug this device via HDC. Disabling this capability prevents external devices from connecting or debugging via HDC.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |microphone|Device microphone capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |fingerprint|Device fingerprint authentication capability. Calling this API will trigger a policy conflict if fingerprint authentication has already been disabled for a user via [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated).|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
-|usb|Device USB capability. Disabling this capability prohibits the use of external USB devices (the device cannot act as a USB host to connect external devices).<br>A policy conflict occurs in the following scenarios:<br>1. A list of allowed USB devices has been configured via the [addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices) API.<br>2. USB storage device access policy has been set to read-only or disabled via the [setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy) API.<br>3. Specific USB device types have been blocked via the [addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14) API.<br>4. USB storage write has been disabled for specific users via the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated) API.<br>5. The USB-to-serial port has been disabled via the [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated) API (with the **feature** parameter set to **usbSerial**).|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
+|usb|Device USB capability. After it is disabled, external USB devices cannot be used, that is, when the current device is in HOST mode, it cannot connect to other DEVICE devices.<br/>In the following six cases, disabling the device USB capability through this API again will report a policy conflict.<br/>1) A USB device allowlist has been added through the [addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices) API.<br/>2) The USB storage device access policy has been set to read-only/disabled through the [setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy) API.<br/>3) Disallowed USB device types have been added through the [addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14) API.<br/>4) The USB storage device write capability of a user has been disabled through the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated) API.<br/>5) USB-to-serial has been disabled through the [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated) API (with the feature parameter set to usbSerial).<br/>6) External storage device mount interception has been enabled through the [setExternalStorageInterceptEnable](js-apis-enterprise-usbManager.md#usbmanagersetexternalstorageinterceptenable) API.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |wifi|Device Wi-Fi capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |tethering<sup>14+</sup>|Network tethering capability (the ability to share the device's internet connection with other devices, that is, hotspot sharing).|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
 |inactiveUserFreeze<sup>14+</sup>|Capability of freezing inactive users. When this capability is disabled, non-**UIAbility** processes will generally not be frozen, and background tasks requested by **UIAbility** (such as transient tasks, continuous tasks, deferred tasks, or energy efficiency resources) will also not be frozen. Currently, this capability is supported only on PCs/2-in-1 devices. When the system switches to the enterprise space user, the personal space users are inactive users.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |camera<sup>14+</sup>|Device camera capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
-|mtpClient<sup>18+</sup>|Media Transfer Protocol (MTP) client capability (including read and write capabilities), currently supported only on PC/2-in-1 devices. MTP allows users to linearly access media files on mobile devices. A policy conflict occurs if this API is used to disable MTP client capability after MTP client write access has been disabled for specific users via [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated).|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|mtpClient<sup>18+</sup>|MTP client capability (including read and write). Currently, it is supported only on PC/2in1 devices.<!--RP7--><!--RP7End-->MTP (Media Transfer Protocol) allows users to linearly access media files on mobile devices. When the MTP client write capability of a user has been disabled through [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated), disabling the MTP client capability through this API reports a policy conflict.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |mtpServer<sup>18+</sup>|MTP server capability, currently supported only on phone and tablets.|Before API version 26.0.0: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS; Since API version 26.0.0: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS|
-|sambaClient<sup>20+</sup>|Samba client capability, currently supported only on PC/2-in-1 devices. <br>Samba is a free software that implements the SMB protocol on Linux and UNIX systems, consisting of both server and client programs. Server Message Block (SMB) is a communication protocol for sharing files and printers over the local area network (LAN). It provides resource-sharing services, such as files and printers, among different computers within the LAN. As a client/server protocol, SMB allows clients to access shared resources hosted on servers.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
+|sambaClient<sup>20+</sup>|samba client capability. Currently, it is supported only on PC/2in1 devices. samba is free software that implements the SMB protocol on Linux and UNIX systems, consisting of server and client programs. SMB (Server Message Block) is a communication protocol for sharing files and printers on a local area network, providing file and printer resource sharing services among different computers on the LAN. The SMB protocol is a client/server protocol through which a client can access shared file systems, printers, and other resources on a server. The control policy is loaded when the file manager is initialized. If the policy is delivered while the file manager is running, the file manager must be restarted for the policy to take effect.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |sambaServer<sup>20+</sup>|Samba server capability, currently supported only on PC/2-in-1 devices.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |backupAndRestore<sup>20+</sup>|Backup and restore capability. If this feature is disabled, the **Settings** > **System** > **Backup & Restore** and **Settings** > **Cloud** options will be dimmed. Currently, this feature is supported only on phones and tablets. To completely disable the backup and restore capability, you are advised to call [applicationManager.addDisallowedRunningBundlesSync](./js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync) to disable applications with this feature, such as Backup & Restore, HiSuite, and Cloud.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
 |maintenanceMode<sup>20+</sup>|Device maintenance mode capability.|ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS|
@@ -152,7 +154,8 @@ Queries whether a feature is disabled.
 
 **Substitutes:** [restrictions.getDisallowedPolicy](#restrictionsgetdisallowedpolicy24)
 
-**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS, ohos.permission.PERSONAL_MANAGE_RESTRICTIONS<sup>15+</sup>, or ohos.permission.ENTERPRISE_MANAGE_NETWORK (The required permissions vary depending on the feature to be queried. For details, see Table 2.)
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS<sup>15+</sup> or ohos.permission.ENTERPRISE_MANAGE_NETWORK (the required permission varies with the feature to be queried; refer to Table 2 for details)
+<br/>- Since API version 20, the ohos.permission.ENTERPRISE_MANAGE_NETWORK permission can be applied for.<br/>- Since API version 15, the ohos.permission.PERSONAL_MANAGE_RESTRICTIONS permission can be applied for.<br/>- For API version 14 and earlier, the ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS permission is required.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -162,7 +165,7 @@ Queries whether a feature is disabled.
 
 | Name | Type                                                   | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                      |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise Device Management Extension component. The Want must contain the abilityName of the Enterprise Device Management Extension capability and the bundleName of the application where it resides. Before API version 20, this API is called to query whether a feature is disabled. When multiple MDM applications exist on the device, pass admin to query the policy set by the corresponding admin. Starting from API version 20, admin additionally supports passing null. When null is passed, the policy actually in effect on the entire device is queried.                                       |
 | feature | string                                                  | Yes  | For features that can be queried, see Table 2.<br> **Note:** Since API version 15, applications granted with the ohos.permission.PERSONAL_MANAGE_RESTRICTIONS permission and activated as the [BDA](../../mdm/mdm-kit-term.md#byod-device-admin-bda) via [startAdminProvision](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15) can use this API to obtain the status of the following features: bluetooth, hdc, microphone, usb, wifi, tethering, and camera<!--RP4--><!--RP4End-->. Since API version 26.0.0, this API can also be used to obtain the status of the mtpServer feature.|
 
 **Table 2** Features that can be queried
@@ -252,13 +255,15 @@ Disallows a feature for a specified user.
 
 **Substitutes:** [restrictions.setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount)
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [Strict Control](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule applies.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
 
 **Parameters**
 
@@ -266,7 +271,7 @@ Disallows a feature for a specified user.
 | Name  | Type                                                   | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
-| feature  | string                                                  | Yes  | Feature to set.<br>- **fingerprint**: device fingerprint authentication capability. Currently, this feature is supported only on PCs/2-in-1 devices. The rules for using this parameter are as follows:<br>1. If the device fingerprint authentication capability has been disabled through the [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated) API, calling this API with this parameter passed will throw a policy conflict.<br>2. After the device fingerprint authentication capability is enabled or disabled via this API for a specified user, any subsequent action via the [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated) API will override the previous setting. If [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated) enables the capability, all users gain access to the device fingerprint authentication.<br>- **print**<sup>20+</sup>: device printing capability, which is supported only on PCs/2-in-1 devices for API versions earlier than 23, and on PCs/2-in-1 devices, smartphones, and tablets for API version 23 and later versions. If the device printing capability is disabled via this API, it remains disabled for specific users even if the [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated) API is used to enable it for those users.<br>- **mtpClient**<sup>20+</sup>: Media Transfer Protocol (MTP) client capability (write only). Currently, this feature is supported only on PCs/2-in-1 devices. MTP allows users to linearly access media files on mobile devices. A policy conflict error will occur if this API is used to disable the MTP client capability after MTP client write has been disabled for specific users via the [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated) API.<br>- **usbStorageDeviceWrite**<sup>20+</sup>: USB storage device write capability. Currently, this feature is supported only on enterprise PCs/2-in-1 devices.<!--RP5--><!--RP5End--><br>  If the USB storage device write permission of a user is disabled via this API in any of the following situations, a policy conflict will be reported:<br>  1. The device USB capability has been disabled via the [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated) API.<br>  2. USB storage device access policy has been set to read-only or disabled via the [setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy) API.<br>  3. Storage USB devices have been disabled via the [addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14) API.<br>- **diskRecoveryKey**<sup>20+</sup>: recovery [key export](../../security/UniversalKeystoreKit/huks-export-key-arkts.md) capability. Currently, this feature is supported only on PCs/2-in-1 devices.<br>- **sudo**<sup>20+</sup>: superuser do (execution with superuser privileges). Currently, this feature is supported only on PCs/2-in-1 devices. If this feature is disabled, neither enterprise spaces nor personal spaces can perform operations with superuser privileges.<br>- **distributedTransmissionOutgoing**<sup>20+</sup>: distributed one-way data transmission between devices (only data transmission to other devices is supported). A policy conflict occurs if this API is used to disable distributed one-way data transmission between devices after the distributed service has already been disabled via the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount) API.<br>- **openFileBoost**<sup>23+</sup>: <!--RP6-->file opening acceleration capability<!--RP6End-->, which provides the file opening acceleration status awareness capability for apps. By integrating the corresponding APIs, apps can detect the acceleration status of files, and further implement features such as displaying unique UI identifiers for accelerated files, thereby optimizing user experience of file opening. Currently, this feature is supported only on PCs/2-in-1 devices.|
+| feature  | string                                                  | Yes   | Feature name.<br/>- fingerprint: device fingerprint authentication capability. Currently, it is supported only on PC/2in1 devices. The following rules apply when this parameter is used:<br/>1. If the device fingerprint authentication capability has been disabled through the [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated) API, passing this parameter through this API reports a policy conflict.<br/>2. After the device fingerprint authentication capability of a specified user is disabled/enabled through this API, if the device fingerprint authentication capability is then disabled through the [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated) API, the latter overrides the former policy. If the device fingerprint authentication capability is then enabled through the [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated) API, all users are allowed to use the device fingerprint authentication capability.<br/>- print<sup>20+</sup>: device printing capability. Before API version 23, it is supported only on PC/2in1 devices. Starting from API version 23, it is supported on PC/2in1, Phone, and Tablet devices. If the device printing capability of a specified user is disabled through this API, and the device printing capability is then enabled through the [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated) API, the device printing capability of that user remains disabled.<br/>- mtpClient<sup>20+</sup>: MTP client capability (write only). Currently, it is supported only on PC/2in1 devices. MTP (Media Transfer Protocol) allows users to linearly access media files on mobile devices. If the device MTP client capability has been disabled through the [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated) API, disabling the MTP client write capability of a user through this API reports a policy conflict.<br/>- usbStorageDeviceWrite<sup>20+</sup>: USB storage device write capability. Currently, it is supported only on PC/2in1 enterprise devices. <!--RP5--><!--RP5End--><br/>  In the following four cases, disabling the USB storage device write capability of a user through this API reports a policy conflict.<br/>  1) The device USB capability has been disabled through the [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated) API.<br/>  2) The USB storage device access policy has been set to read-only/disabled through the [setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy) API.<br/>  3) A storage-type USB device has been added to the disallowed list through the [addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14) API.<br/>  4) External storage device mount interception has been enabled through the [setExternalStorageInterceptEnable](js-apis-enterprise-usbManager.md#usbmanagersetexternalstorageinterceptenable) API. <br/>- diskRecoveryKey<sup>20+</sup>: [key export](../../security/UniversalKeystoreKit/huks-export-key-arkts.md) recovery capability. Currently, it is supported only on PC/2in1 devices.<br/>- sudo<sup>20+</sup>: superuser do, which means executing as a superuser. Currently, it is supported only on PC/2in1 devices. After it is disabled, the enterprise space or personal space cannot execute as a superuser. If the device-level sudo capability has been disabled through the [setDisallowedPolicy](#restrictionssetdisallowedpolicy24) API, calling this API to disable the user-level sudo capability causes a policy conflict and throws error code 9200010.<br/>- distributedTransmissionOutgoing<sup>20+</sup>: capability of one-way distributed data transmission between devices (only transmitting data to other devices). <!--RP8--><!--RP8End-->If the distributed service has been disabled through the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount) API, disabling the capability of one-way distributed data transmission between devices through this API reports a policy conflict.<br/>- openFileBoost<sup>23+</sup>: <!--RP6-->file open acceleration capability<!--RP6End-->, which provides applications with the capability to perceive the file open acceleration status. By integrating the corresponding APIs, applications can perceive the acceleration status of files, and then implement features such as displaying a unique UI (user interface) indicator for accelerated files, optimizing the user file open experience. Currently, it is supported only on PC/2in1 devices. |
 | disallow | boolean                                                 | Yes  | Whether to disallow the feature. The value **true** means to disallow the feature; the value **false** means the opposite.                       |
 | accountId | number                                                 | Yes  | User ID, which must be greater than or equal to 0.<br>**accountId** can be obtained via APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1).|
 
@@ -325,8 +330,8 @@ Obtains the status of a feature for a specified user.
 <!--Table: 10%; 20%; 10%; 60%-->
 | Name | Type                                                   | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
-| feature | string                                                  | Yes  | Feature to set.<br>- **fingerprint**: device fingerprint authentication capability. Currently, this feature is supported only on PCs/2-in-1 devices. Note that when [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated) is used to disable or enable the device fingerprint authentication capability for a specified user, any subsequent action via the [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated) API will override the previous setting. The value **false** will be returned.<br>- **mtpClient**<sup>20+</sup>: Media Transfer Protocol (MTP) client capability (write only). Currently, this feature is supported only on PCs/2-in-1 devices. MTP allows users to linearly access media files on mobile devices.<br>- **usbStorageDeviceWrite**<sup>20+</sup>: USB storage device write capability. Currently, this feature is supported only on enterprise PCs/2-in-1 devices.<br>- **diskRecoveryKey**<sup>20+</sup>: recovery [key export](../../security/UniversalKeystoreKit/huks-export-key-arkts.md) capability. Currently, this feature is supported only on PCs/2-in-1 devices.<br>- **sudo**<sup>20+</sup>: superuser do (execution with superuser privileges). Currently, this feature is supported only on PCs/2-in-1 devices. If this feature is disabled, neither enterprise spaces nor personal spaces can perform operations with superuser privileges.<br>- **distributedTransmissionOutgoing**<sup>20+</sup>: one-way data transmission between devices (only data transmission to other devices is supported).<br>- **print**<sup>20+</sup>: device printing capability, which is supported only on PCs/2-in-1 devices for API versions earlier than 23, and on PCs/2-in-1 devices, smartphones, and tablets for API version 23 and later versions. If printing is disabled via the [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated) API, it remains disabled even if the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated) API is used to enable it for specific users.<br>- **openFileBoost**<sup>23+</sup>: <!--RP6-->file opening acceleration capability<!--RP6End-->, which provides the file opening acceleration status awareness capability for apps. By integrating the corresponding APIs, apps can detect the acceleration status of files, and further implement features such as displaying unique UI identifiers for accelerated files, thereby optimizing user experience of file opening. Currently, this feature is supported only on PCs/2-in-1 devices.|
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise Device Management Extension. The Want must contain the abilityName of the Enterprise Device Management Extension capability and the bundleName of the application where it resides. Before API version 20, this API is called to obtain the status of a feature for a specified user. When multiple MDM applications exist on a device, pass in admin to query the policy set by the corresponding admin. Starting from API version 20, admin additionally supports passing in null. When null is passed in, the policy that actually takes effect on the entire device is queried.                                   |
+| feature | string                                                  | Yes   | Feature name.<br/>- fingerprint: Device Fingerprint Authentication Capability, which is currently supported only on PC/2-in-1 devices. When this parameter is used, the following rules apply: after the Device Fingerprint Authentication Capability of a specified user has been disabled/enabled through [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated), if the Device Fingerprint Authentication Capability is then disabled through [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated), the latter overrides the former. In this case, the result returned by this API is false.<br/>- mtpClient<sup>20+</sup>: MTP client capability (write only), which is currently supported only on PC/2-in-1 devices. MTP (Media Transfer Protocol) allows users to linearly access media files on mobile devices.<br/>- usbStorageDeviceWrite<sup>20+</sup>: USB storage device write capability, which is currently supported only on PC/2-in-1 Enterprise Devices.<br/>- diskRecoveryKey<sup>20+</sup>: recovery [key export](../../security/UniversalKeystoreKit/huks-export-key-arkts.md) capability, which is currently supported only on PC/2-in-1 devices.<br/>- sudo<sup>20+</sup>: superuser do, which means executing as a superuser. It is currently supported only on PC/2-in-1 devices. After it is disabled, the Enterprise Space or Personal Space cannot execute as a superuser.<br/>- distributedTransmissionOutgoing<sup>20+</sup>: capability of distributed one-way data transmission between devices (only including transmitting data to other devices), <!--RP8--><!--RP8End--><br/>- print<sup>20+</sup>: Device Printing Capability. Before API version 23, it is supported only on PC/2-in-1 devices. Starting from API version 23, it is supported on PC/2-in-1, Phone, and Tablet devices. If the Device Printing Capability is disabled through [setDisallowedPolicy](#restrictionssetdisallowedpolicydeprecated) and then enabled for a user through [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated), the result returned by this API is that the user has enabled the printing capability, but the actual printing capability has been disabled.<br/>- openFileBoost<sup>23+</sup>: <!--RP6-->file open acceleration capability<!--RP6End-->, which provides applications with the capability to perceive the file open acceleration status. By integrating the corresponding API, an application can perceive the acceleration status of a file, and then provide a unique UI (user interface) identifier for accelerated files to optimize the user file open experience. It is currently supported only on PC/2-in-1 devices. |
 | accountId | number                                                 | Yes  | User ID, which must be greater than or equal to 0.<br>**accountId** can be obtained via APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1).|
 
 **Return value**
@@ -370,15 +375,17 @@ try {
 
 addDisallowedListForAccount(admin: Want, feature: string, list: Array\<string>, accountId: number): void
 
-Adds a list of applications that are not allowed to use a feature for a specified user.  
+Adds a list of applications that are not allowed to use a feature for a specified user.
+
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -428,13 +435,15 @@ removeDisallowedListForAccount(admin: Want, feature: string, list: Array\<string
 
 Removes the list of applications that are not allowed to use a feature for a specified user.
 
+> **NOTE**
+>
+> In multiple MDM application scenarios, follow the [merge](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging) rule.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -548,13 +557,15 @@ Sets restrictions on user behaviors.
 
 **Substitutes:** [restrictions.setUserRestriction](#restrictionssetuserrestriction)
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [Strict Control](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule applies.
+
 **Required permissions**: ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
 
 **Parameters**
 
@@ -670,13 +681,15 @@ Sets restrictions on specified user behaviors.
 
 **Substitutes:** [restrictions.setUserRestrictionForAccount](#restrictionssetuserrestrictionforaccount)
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [Strict Control](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule applies.
+
 **Required permissions**: ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
 
 **Parameters**
 
@@ -742,7 +755,7 @@ Obtains the disabled status of a setting item for a specified user.
 | Name | Type                                                   | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                  |
-| settingsItem | string                                             | Yes  | Setting item.<br>- **modifyWallpaper**: Modify the wallpaper, including the lock screen wallpaper and home screen wallpaper.<!--RP7--><!--RP7End-->|
+| settingsItem | string                                             | Yes   | Specified setting item.<br/>- modifyWallpaper: modifies the wallpaper, including the lock screen wallpaper and the home screen wallpaper.|
 | accountId | number                                                 | Yes  | User ID, which must be greater than or equal to 0.<br>**accountId** can be obtained via APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1).                      |
 
 
@@ -791,13 +804,15 @@ setDisallowedPolicy(admin: Want, feature: FeatureForDevice, disallow: boolean): 
 
 Enables or disables a specified device feature. Once disabled, the feature cannot be used.
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [Strict Control](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule applies.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
-
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
 
 **Parameters**
 
@@ -904,20 +919,22 @@ Disallows a feature for a specified user.
 
 **Since**: 26.0.0
 
+> **NOTE**
+>
+> In a multi-MDM application scenario, the [Strict Control](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first) rule applies.
+
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
-
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| feature   | [FeatureForAccount](#featureforaccount)                 | Yes  | User feature to be disabled or enabled.<br>If SuperHub has been added to the user's list of non-disableable applications through the [addUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddusernonstopapps22) API, setting this parameter to **SUPER_HUB** will cause a policy conflict and error code 9200010 will be reported. In this case, call the [removeUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanagerremoveusernonstopapps22) API to remove SuperHub from the user's list of non-disableable applications to resolve the conflict.<br>When **feature** is **DISTRIBUTED_TRANSMISSION**, if the capability of distributed one-way data transmission between devices has been disabled via the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated) API, calling this API to disable the distributed management service will result in a policy conflict and error code 9200010 will be reported. You can call the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated) API to enable distributed one-way data transmission between devices to resolve the conflict.|
+| feature   | [FeatureForAccount](#featureforaccount)                 | Yes   | User feature to be disabled or allowed.<br>When the value of feature is SUPER_HUB, if the transfer station has been added to the list of apps that cannot be stopped for the current user through the [addUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanageraddusernonstopapps22) API, calling this API to disable the transfer station causes a policy conflict and throws error code 9200010. You can remove the transfer station from the list of apps that cannot be stopped for the current user through the [removeUserNonStopApps](./js-apis-enterprise-applicationManager.md#applicationmanagerremoveusernonstopapps22) API to resolve the conflict.<br>When the value of feature is DISTRIBUTED_TRANSMISSION, if the capability of distributed one-way data transmission between devices has been disabled through the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated) API, calling this API to disable the distributed management service causes a policy conflict and throws error code 9200010. You can cancel the disabling of distributed one-way data transmission between devices through the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccountdeprecated) API to resolve the conflict.<br>When the value of feature is SUDO, if the device-level sudo capability has been disabled through the [setDisallowedPolicy](#restrictionssetdisallowedpolicy24) API, calling this API to disable the user-level sudo capability causes a policy conflict and throws error code 9200010. |
 | disallow  | boolean                                                 | Yes  | Whether to disallow the feature. The value **true** means to disallow the feature; the value **false** means the opposite.                               |
 | accountId | number                                                  | Yes  | User ID, which must be greater than or equal to 0.<br>**accountId** can be obtained via APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1).<br>When **feature** is set to **SUPER_HUB**, this parameter can only be set to the ID of the current user. Otherwise, error code 9200012 will be reported.|
 
@@ -973,7 +990,7 @@ Obtains the status of a feature for a specified user.
 
 | Name   | Type                                                        | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) \| null | Yes   | Enterprise Device Management Extension component. The Want must contain the abilityName of the Enterprise Device Management Extension capability and the bundleName of the application where it resides. When multiple MDM applications exist on the device, pass admin to query the policy set by the corresponding admin. Pass null to query the policy that actually takes effect on the entire device. |
 | feature   | [FeatureForAccount](#featureforaccount)                      | Yes  | User feature to be queried.|
 | accountId | number                                                       | Yes  | User ID, which must be greater than or equal to 0.<br>**accountId** can be obtained via APIs such as [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1).|
 
@@ -1009,7 +1026,8 @@ let wantTemp: Want = {
 
 try {
   // Replace parameters with actual values.
-  let result: boolean = restrictions.getDisallowedPolicyForAccount(wantTemp, restrictions.FeatureForAccount.SUPER_HUB, 100);
+  let result: boolean = restrictions.getDisallowedPolicyForAccount(wantTemp,
+    restrictions.FeatureForAccount.SUPER_HUB, 100);
   console.info(`Succeeded in querying whether the super hub is disabled: ${result}`);
 } catch (err) {
   console.error(`Failed to get whether super hub is disabled. Code is ${err.code}, message is ${err.message}`);
@@ -1255,8 +1273,11 @@ Enumerates device features.
 | Name                       | Value | Description   |
 | ----------------------------| ----| ------------------------------- |
 | WIFI_P2P   | 0   | Wi-Fi P2P (peer-to-peer connection), which allows devices to directly connect to each other without an access point. Once this feature is disallowed, devices cannot be connected through Wi-Fi P2P, affecting application functions that require direct Wi-Fi connections, such as file transfer, online gaming, and screen sharing.|
+| X_KEY   | 1   | X key capability. After it is disabled, the X key cannot be used to directly access applications or services (for example, opening the camera, flashlight, or calculator).<br>**Since:** 26.0.1 |
 | LOCAL_INPUT   | 2   | After local input (including the keyboard, mouse, touchpad, and touchscreen) is disabled, operations cannot be performed through local input. You can restart the device to cancel the disabling. If local input is disabled when the screen is off, the screen cannot be woken up. If the screen automatically turns off after this feature is disabled, the screen also cannot be woken up.<br>**Since**: 26.0.0|
-| TRAFFIC_REDIRECTION   | 5   | Policy for controlling network traffic redirection. After this capability is disabled, TCP traffic cannot be redirected to other ports. You can cancel the disabling to restore the feature. Currently, this capability is supported only on PCs/2-in-1 devices.<br>**Since**: 26.0.0|
+| PACKET_FILTERING   | 3   | Network packet filtering control policy, which determines whether to allow or discard network data packets based on preset rules. For details, see [net_trafficfilter.h](../apis-network-kit/capi-net-trafficfilter-h.md). After it is disabled, packet filtering rules added through the [OH_TrafficFilter_AddPacketRule](../apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_addpacketrule) API can still be added successfully, but they no longer take effect. They can be used again after the disabling is canceled. Currently, this capability is supported only on PC/2-in-1 devices.<br>**Since:** 26.0.1 |
+| SUDO   | 4   | Device-level SUDO control policy. Currently, this capability is supported only on PC/2-in-1 devices. After it is disabled, the sudo command cannot be used. If the sudo capability of a user has been disabled through [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount), enabling the sudo capability again will report a policy conflict.<br>**Since:** 26.0.1 |
+| TRAFFIC_REDIRECTION   | 5   | Network traffic redirection control policy, which forwards matching TCP traffic to other ports based on preset rules. For details, see [net_trafficfilter.h](../apis-network-kit/capi-net-trafficfilter-h.md). After it is disabled, redirection rules added through the [OH_TrafficFilter_AddRedirectRule](../apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_addredirectrule) API can still be added successfully, but they no longer take effect. They can be used again after the disabling is canceled. Currently, this capability is supported only on PC/2-in-1 devices.<br>**Since:** 26.0.0 |
 | CORE_DUMP   | 6   | Create a file dump. After this capability is disabled, file dumps cannot be created through the task manager. Currently, this capability is supported only on PCs/2-in-1 devices.<br>**Since**: 26.0.0|
 | RS232   | 7   | RS-232 serial port control policy. If this capability is disabled, data cannot be transmitted via the RS-232 serial port. Currently, this capability is supported only on PCs/2-in-1 devices. (some devices do not support the RS-232 serial port).<br>**Since**: 26.0.0|
 | DISK_ERASURE   | 8   | Disk erasure capability. Once disabled, the "Disk Erasure" entry will be grayed out. Currently, this capability is supported only on PCs/2-in-1 devices.<br>**Since**: 26.0.0|
@@ -1266,12 +1287,12 @@ Enumerates device features.
 | HDC   | 12   | Capability for other devices to connect to and debug this device via HDC. Disabling this capability prevents external devices from connecting or debugging via HDC.<br>**Since**: 26.0.0|
 | MICROPHONE   | 13   | Device microphone capability.<br>**Since**: 26.0.0|
 | FINGERPRINT   | 14   | Device fingerprint authentication capability. Enable device fingerprint authentication will trigger a policy conflict if fingerprint authentication has already been disabled for a user via [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount).<br>**Since**: 26.0.0|
-| USB   | 15   | Device USB capability. Disabling this capability prohibits the use of external USB devices (the device cannot act as a USB host to connect external devices).<br>If the device USB capability is disabled in any of the following scenarios, a policy conflict will be reported:<br>1. A list of allowed USB devices has been configured via the [addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices) API.<br>2. USB storage device access policy has been set to read-only or disabled via the [setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy) API.<br>3. Specific USB device types have been blocked via the [addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14) API.<br>4. USB storage write has been disabled for specific users via the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount) API.<br>5. USB-to-serial conversion ([USB_SERIAL](#featurefordevice24)) is disabled.<br>**Since**: 26.0.0|
+| USB   | 15   | Device USB capability. After it is disabled, external USB devices cannot be used, that is, when the current device is in HOST mode, other DEVICE devices cannot be connected externally.<br/>In the following six cases, disabling the device USB capability again will report a policy conflict.<br/>1) A USB device allowlist has been added through the [addAllowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageraddallowedusbdevices) API.<br/>2) The USB storage device access policy has been set to read-only or disabled through the [setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy) API.<br/>3) A prohibited USB device type has been added through the [addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14) API.<br/>4) The USB storage device write capability of a user has been disabled through the [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount) API.<br/>5) USB-to-serial is disabled ([USB_SERIAL](#featurefordevice24)).<br/>6) External storage device mount interception has been enabled through the [setExternalStorageInterceptEnable](js-apis-enterprise-usbManager.md#usbmanagersetexternalstorageinterceptenable) API.<br>**Since:** 26.0.0 |
 | WIFI   | 16   | Device Wi-Fi capability.<br>**Since**: 26.0.0|
 | TETHERING   | 17   | Network tethering capability (the ability to share the device's internet connection with other devices, that is, hotspot sharing).<br>**Since**: 26.0.0|
 | INACTIVE_USER_FREEZE   | 18   | Capability of freezing inactive users. When this capability is disabled, non-**UIAbility** processes will generally not be frozen, and background tasks requested by **UIAbility** (such as transient tasks, continuous tasks, deferred tasks, or energy efficiency resources) will also not be frozen. Currently, this capability is supported only on PCs/2-in-1 devices. When the system switches to the enterprise space user, the personal space users are inactive users.<br>**Since**: 26.0.0|
 | CAMERA   | 19   | Device camera capability.<br>**Since**: 26.0.0|
-| MTP_CLIENT   | 20   | Media Transfer Protocol (MTP) client capability (including read and write capabilities), currently supported only on PC/2-in-1 devices. MTP allows users to linearly access media files on mobile devices. A policy conflict occurs when you disable the MTP client capability after MTP client write has been disabled for specific users via [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount).<br>**Since**: 26.0.0|
+| MTP_CLIENT   | 20   | MTP client capability (including reading and writing). Currently, this feature is supported only on PC/2-in-1 devices. <!--RP7--><!--RP7End-->MTP (Media Transfer Protocol) allows users to linearly access media files on mobile devices. When the MTP client write capability of a user has been disabled through [setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount), disabling the MTP client capability again will report a policy conflict.<br>**Since:** 26.0.0 |
 | MTP_SERVER   | 21   | MTP server capability, currently supported only on phone and tablets.<br>**Since**: 26.0.0|
 | SAMBA_CLIENT   | 22   | Samba client capability, currently supported only on PC/2-in-1 devices. <br>Samba is a free software that implements the SMB protocol on Linux and UNIX systems, consisting of both server and client programs. Server Message Block (SMB) is a communication protocol for sharing files and printers over the local area network (LAN). It provides resource-sharing services, such as files and printers, among different computers within the LAN. As a client/server protocol, SMB allows clients to access shared resources hosted on servers.<br>**Since**: 26.0.0|
 | SAMBA_SERVER   | 23   | Samba server capability, currently supported only on PC/2-in-1 devices.<br>**Since**: 26.0.0|
@@ -1302,6 +1323,9 @@ Enumerates device features.
 | REMOTE_DESK   | 48   | Remote desktop capability.<br>**Since**: 26.0.0|
 | REMOTE_DIAGNOSIS   | 49   | Remote diagnosis capability.<br>**Since**: 26.0.0|
 | OTA_UPDATE   | 50   | Public network system upgrade capability.<br>**Since**: 26.0.0|
+| SYSTEM_ROLLBACK   | 51   | System rollback capability. After it is disabled, the system version cannot be rolled back. Currently, this capability is supported only on phones and tablets.<br>**Since:** 26.0.1 |
+| SATA_ODD_BURN   | 52   | Built-in optical drive burning capability. After it is disabled, burning cannot be performed through the built-in optical drive. Currently, this capability is supported only on PC/2-in-1 devices. On other devices, calling the setting API returns error code 801, and calling the query API returns the default value.<br>**Since:** 26.0.1 |
+| SUPER_PRIVACY   | 53   | Super privacy mode. After it is disabled, the super privacy mode cannot be enabled. Currently, this capability is supported only on phones and tablets.<br>**Since:** 26.0.1 |
 
 ## FeatureForAccount
 
@@ -1320,10 +1344,10 @@ Enumerates the features that can be disabled or enabled for a specified user.
 | SUPER_HUB | 2    | SuperHub. Currently, this feature is available only on phones and tablets. Once disabled, the SuperHub feature cannot be used. If SuperHub is currently active, the current usage remains unaffected. However, it cannot be used once closed.|
 | FINGERPRINT | 3    | Device fingerprint authentication capability. Currently, this feature is supported only on PCs/2-in-1 devices. The rules for using this capability are as follows:<br>1. After the device fingerprint authentication capability ([FeatureForDevice.FINGERPRINT](#featurefordevice24)) is disabled, disabling this capability for a specific user will result in a policy conflict.<br>2. After the device fingerprint authentication capability is disabled or enabled for a specific user, disabling this capability ([FeatureForDevice.FINGERPRINT](#featurefordevice24)) globally will override the user-specific policy. Subsequently, re-enabling this capability ([FeatureForDevice.FINGERPRINT](#featurefordevice24)) globally will allow all users to use device fingerprint authentication.|
 | PRINT | 4    | Device printing capability. If the device printing capability is disabled for a specific user, it remains disabled for that user even if the device printing capability ([FeatureForDevice.PRINTER](#featurefordevice24)) capability is enabled globally.|
-| MTP_CLIENT | 5    | MTP client capability (including read and write capabilities). Currently, it is supported only on PC/2-in-1 devices. MTP allows users to linearly access media files on mobile devices. After the device MTP client capability ([FeatureForDevice.MTP_CLIENT](#featurefordevice24)) is disabled, disabling the MTP client write capability for a specific user will result in a policy conflict.|
-| USB_STORAGE_DEVICE_WRITE | 6    | USB storage device write capability. Currently, it is supported only on enterprise PCs/2-in-1 devices.<!--RP5--><!--RP5End--><br>Disabling the USB storage device write capability for a specific user in any of the following scenarios will result in a policy conflict:<br>1. The device USB capability ([FeatureForDevice.USB](#featurefordevice24)) has been disabled.<br>2. USB storage device access policy has been set to read-only or disabled via the [setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy) API.<br>3. Storage USB devices have been disabled via the [addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14) API.|
+| MTP_CLIENT | 5    | MTP client capability (write only), currently supported only on PC/2-in-1 devices. MTP (Media Transfer Protocol) allows users to linearly access media files on mobile devices. Taking a phone as an example, for file operations, the phone can be dragged to a computer, but the computer cannot be dragged to the phone. When the device MTP client capability ([FeatureForDevice.MTP_CLIENT](#featurefordevice24)) is already disabled, disabling the MTP client write capability of a specific user reports a policy conflict. |
+| USB_STORAGE_DEVICE_WRITE | 6    | USB storage device write capability. Currently, it is supported only on PC/2-in-1 enterprise devices. <!--RP5--><!--RP5End--><br/>In the following four cases, disabling the USB storage device write capability of a user reports a policy conflict.<br/>1) The device USB capability has been disabled ([FeatureForDevice.USB](#featurefordevice24)).<br/>2) The USB storage device access policy has been set to read-only or disabled through the [setUsbStorageDeviceAccessPolicy](js-apis-enterprise-usbManager.md#usbmanagersetusbstoragedeviceaccesspolicy) API.<br/>3) A storage-type USB device has been added to the disallowed list through the [addDisallowedUsbDevices](js-apis-enterprise-usbManager.md#usbmanageradddisallowedusbdevices14) API.<br/>4) The mounting interception of external storage devices has been enabled through the [setExternalStorageInterceptEnable](js-apis-enterprise-usbManager.md#usbmanagersetexternalstorageinterceptenable) API. |
 | DISK_RECOVERY_KEY | 7    | [Key export](../../security/UniversalKeystoreKit/huks-export-key-arkts.md) recovery capability. Currently, it is supported only on PCs/2-in-1 devices.|
-| SUDO | 8    | superuser do (execution with superuser privileges). Currently, it is supported only on PCs/2-in-1 devices. If this feature is disabled, neither enterprise spaces nor personal spaces can perform operations with superuser privileges.|
+| SUDO | 8    | superuser do, which means executing as a superuser. Currently, it is supported only on PC/2-in-1 devices. After it is disabled, the enterprise space or personal space cannot execute as a superuser. If the device-level sudo capability has been disabled through the [setDisallowedPolicy](#restrictionssetdisallowedpolicy24) API, calling this API to disable the user-level sudo capability causes a policy conflict and throws error code 9200010. |
 | DISTRIBUTED_TRANSMISSION_OUTGOING | 9    | Distributed one-way data transmission between devices (only data transmission to other devices is supported). Disabling distributed one-way data transmission capability between devices after the distributed management service ([DISTRIBUTED_TRANSMISSION](#featureforaccount)) has been disabled will result in a policy conflict.|
 | OPEN_FILE_BOOST | 10    | <!--RP6-->File open acceleration capability<!--RP6End-->, providing applications with the ability to sense the file open acceleration status. By integrating the corresponding APIs, apps can detect the acceleration status of files, and further implement features such as displaying unique UI identifiers for accelerated files, thereby optimizing user experience of file opening. Currently, this feature is supported only on PCs/2-in-1 devices.|
 
@@ -1357,5 +1381,4 @@ Enumerates user setting items.
 
 | Name| Value| Description|
 |------|-----|------|
-| MODIFY_WALLPAPER | 0 | Modifies the wallpaper, including both the lock screen wallpaper and the home screen wallpaper.|
-<!--no_check-->
+| MODIFY_WALLPAPER | 0 | Modifies the wallpaper, including the lock screen wallpaper and the home screen wallpaper.<!--RP7--><!--RP7End--> |

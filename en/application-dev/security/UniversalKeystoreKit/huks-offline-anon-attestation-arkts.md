@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=0746b42c9dbf01beee6196ddda305df16bf5b28b translatedAt=2026-08-13T08:24:34.085Z pushedAt=2026-08-13T10:20:24.714Z -->
+<!-- md-trans-meta sourceCommit=39815d040555efa480022a8a2ab48b3872b91195 translatedAt=2026-11-10T03:17:01.196Z pushedAt=2026-11-10T07:30:00.145Z nl=1 -->
 
 Starting from API version 26.0.0, HUKS supports offline anonymous key attestation. This API is used to attest the validity of a key in a network-free environment. Compared with online anonymous key attestation, it does not require a network connection within the validity period of the offline certificate, so offline anonymous key attestation is recommended. The offline certificate is issued by a third-level CA in this process and is valid for one month.
 
@@ -33,7 +33,7 @@ Starting from API version 26.0.0, HUKS supports offline anonymous key attestatio
 import { huks } from "@kit.UniversalKeystoreKit";
 import { BusinessError } from "@kit.BasicServicesKit";
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = new Array();
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -41,8 +41,8 @@ function StringToUint8Array(str: string) {
   return new Uint8Array(arr);
 }
 
-let g_challenge: Uint8Array = StringToUint8Array("hi_challenge_data");
-let g_keyAlias: Uint8Array = StringToUint8Array("testKey");
+let g_challenge: Uint8Array = stringToUint8Array("hi_challenge_data");
+let g_keyAlias: Uint8Array = stringToUint8Array("testKey");
 
 let gCommonParam: Array<huks.HuksParam> = [
   { tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE, value: g_challenge },

@@ -1,16 +1,17 @@
 # Embedding ArkTS Components
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=4cd6ff07550739998f1b5508c7b8a32b6b4ff448 translatedAt=2026-08-05T01:28:37.643Z pushedAt=2026-08-05T06:58:33.601Z -->
+<!-- md-trans-meta sourceCommit=a01012ccd8c79ddbbc2ab67035fed55cbb823eb8 translatedAt=2026-11-05T11:44:54.159Z pushedAt=2026-11-09T10:02:18.945Z nl=1 -->
 
 ArkUI on the native side offers a subset of ArkTS features, which excludes certain capabilities such as declarative UI syntax, custom struct components, and some advanced UI components.
 
+
 For scenarios requiring ArkTS-specific features, ArkUI provides a mechanism to embed ArkTS components using [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md). This involves encapsulating ArkTS components and passing them to the native side, where they are converted into **ArkUI_NodeHandle** objects through the [OH_ArkUI_GetNodeHandleFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodehandlefromnapivalue) API for component mounting.
+
 
 > **NOTE**
 >
@@ -20,16 +21,18 @@ For scenarios requiring ArkTS-specific features, ArkUI provides a mechanism to e
 > 
 > - During the process of [building custom components](ndk-build-custom-components.md), functions such as **measureNode** cannot be used to call components within the ArkTS module.
 
+
 The following example introduces the ArkTS **Refresh** component based on the [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md) section.
+
 
 **Figure 1** Mounting a text list to a Refresh component
 
 ![refresh_text_list](figures/refresh_text_list.gif)
 
+
 1. Register the ArkTS component creation function to the native side for it to call, and use the **ComponentContent** capability to encapsulate the creation function.
-
    <!-- @[mixed_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/ets/pages/MixedModule.ets) -->
-
+   
    ``` TypeScript
    
    // Create ArkTS components using the ComponentContent capability.
@@ -88,9 +91,9 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    // Define the return value of the creation function for interaction between the ArkTS side and the native side.
    interface MixedModuleResult {
      // Define the encapsulated object for the Refresh construction function, used by the native side to convert to an ArkUI_NodeHandle object.
-     content?: ComponentContent<RefreshAttribute>;
+     content: ComponentContent<RefreshAttribute>;
      // As a container component, Refresh needs to use the ContentSlot mechanism to mount child components from the native side.
-     childSlot?: NodeContent;
+     childSlot: NodeContent;
    }
    
    // Provide an entry function for creating ArkTS components.
@@ -99,19 +102,19 @@ The following example introduces the ArkTS **Refresh** component based on the [I
      // Use the AppStorage object to maintain the UI context object when the ability starts.
      let uiContent = AppStorage.get<UIContext>('context');
      let modifier = new RefreshModifier();
-     if (value.width) {
+     if (value.width !== undefined) {
        modifier.width(value.width);
      }
-     if (value.height) {
+     if (value.height !== undefined) {
        modifier.height(value.height);
      }
-     if (value.backgroundColor) {
+     if (value.backgroundColor !== undefined) {
        modifier.backgroundColor(value.backgroundColor);
      }
-     if (value.pullToRefresh) {
+     if (value.pullToRefresh !== undefined) {
        modifier.pullToRefresh(value.pullToRefresh);
      }
-     if (value.refreshOffset) {
+     if (value.refreshOffset !== undefined) {
        modifier.refreshOffset(value.refreshOffset);
      }
      // Create a NodeContent slot object for mounting Refresh child components.
@@ -130,23 +133,23 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    }
    
    // Define the update function for the Refresh component for updating by the native side.
-   // In the update scenario, you need to return the encapsulated object of the Refresh component and its child component slot object to prevent the component from being re-created.
+   // In the update scenario, pass the wrapper object of the Refresh component and its child component slot object to the update function and reuse them to prevent the component from being re-created.
    export function updateMixedRefresh(refresh: ComponentContent<RefreshAttribute>, childSlot: NodeContent,
      value: NativeRefreshAttribute): void {
      let modifier = new RefreshModifier();
-     if (value.width) {
+     if (value.width !== undefined) {
        modifier.width(value.width);
      }
-     if (value.height) {
+     if (value.height !== undefined) {
        modifier.height(value.height);
      }
-     if (value.backgroundColor) {
+     if (value.backgroundColor !== undefined) {
        modifier.backgroundColor(value.backgroundColor);
      }
-     if (value.pullToRefresh) {
+     if (value.pullToRefresh !== undefined) {
        modifier.pullToRefresh(value.pullToRefresh);
      }
-     if (value.refreshOffset) {
+     if (value.refreshOffset !== undefined) {
        modifier.refreshOffset(value.refreshOffset);
      }
      // Call the update API of ComponentContent to update.
@@ -158,13 +161,11 @@ The following example introduces the ArkTS **Refresh** component based on the [I
        onOffsetChange: value.onOffsetChange
      });
    }
-   
    ```
 
 2. Register the creation and update functions with the native side.
-
    <!-- @[page_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/ets/pages/Index.ets) -->
-
+   
    ``` TypeScript
    //  Index.ets
    import nativeNode from 'libentry.so';
@@ -214,7 +215,7 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    ```
 
    <!-- @[native_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/NapiInit.cpp) -->
-
+   
    ``` C++
    // NapiInit.cpp
    #include "napi/native_api.h"
@@ -251,9 +252,8 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    ```
 
 3. The native side saves the creation and update functions through the Node-API for subsequent calls.
-
    <!-- @[arkui_mixed_refresh_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefreshTemplate.h) -->
-
+   
    ``` C
    
    // Mixed mode interaction class.
@@ -284,7 +284,7 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    Related implementation class description:
 
    <!-- @[arkui_mixed_refresh_template_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefreshTemplate.cpp) -->
-
+   
    ``` C++
    
    // Mixed mode interaction class.
@@ -387,9 +387,8 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    ```
 
 4. Abstract the base class of components in mixed mode for general logic management.
-
    <!-- @[arkui_mixed_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedNode.h) -->
-
+   
    ``` C
    // ArkUIMixedNode.h
    // Base class for mixed mode.
@@ -425,9 +424,8 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    ```
 
 5. Implement the encapsulation object for the **Refresh** component in mixed mode.
-
    <!-- @[arkui_mixed_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefresh.h) -->
-
+   
    ``` C
    // ArkUIMixedRefresh.h
    // The encapsulation object of Refresh in mixed mode on the native side.
@@ -447,7 +445,7 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    
    // Define the interaction data structure between the native side and the ArkTS side.
    struct NativeRefreshAttribute {
-       std::optional<bool> isRefreshing;
+       std::optional<bool> isRefreshing = false;
        std::optional<float> width;
        std::optional<float> height;
        std::optional<uint32_t> backgroundColor;
@@ -466,9 +464,15 @@ The following example introduces the ArkTS **Refresh** component based on the [I
                          napi_ref componentContent, napi_ref nodeContent)
            : ArkUIMixedNode(handle, env, componentContent), contentHandle_(contentHandle), nodeContent_(nodeContent) {}
    
-       ArkUIMixedRefresh() : ArkUIMixedNode(nullptr, nullptr, nullptr) {}
+       ArkUIMixedRefresh()
+           : ArkUIMixedNode(nullptr, nullptr, nullptr), contentHandle_(nullptr), nodeContent_(nullptr) {}
    
-       ~ArkUIMixedRefresh() override { napi_delete_reference(env_, nodeContent_); } // Release the placeholder component slot object for the child node.
+       ~ArkUIMixedRefresh() override
+       {
+           if (env_ != nullptr && nodeContent_ != nullptr) {
+               napi_delete_reference(env_, nodeContent_);
+           }
+       } // Release the child node placeholder component slot object.
    
        void SetWidth(float width) { attribute_.width = width; }
    
@@ -514,7 +518,7 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    private:
        // Use the Node-API to create the data structure on the ArkTS side.
        static napi_value CreateRefreshAttribute(const NativeRefreshAttribute &attribute, void *userData);
-       
+   
        static void Attribute2Descriptor(const NativeRefreshAttribute &attribute, napi_property_descriptor *desc);
    
        ArkUI_NodeContentHandle contentHandle_;
@@ -530,7 +534,7 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    Related implementation class description:
 
    <!-- @[arkui_mixed_refresh_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefresh.cpp) -->
-
+   
    ``` C++
    // ArkUIMixedRefresh.cpp
    
@@ -571,12 +575,12 @@ The following example introduces the ArkTS **Refresh** component based on the [I
        }
        if (attribute.pullToRefresh) {
            napi_value pullToRefresh;
-           napi_create_int32(g_env, attribute.pullToRefresh.value(), &pullToRefresh);
+           napi_get_boolean(g_env, attribute.pullToRefresh.value(), &pullToRefresh);
            desc[REFRESH_OFFSET_INDEX3].value = pullToRefresh;
        }
        if (attribute.isRefreshing) {
            napi_value isRefreshing;
-           napi_create_int32(g_env, attribute.isRefreshing.value(), &isRefreshing);
+           napi_get_boolean(g_env, attribute.isRefreshing.value(), &isRefreshing);
            desc[REFRESH_OFFSET_INDEX4].value = isRefreshing;
        }
        if (attribute.refreshOffset) {
@@ -661,13 +665,21 @@ The following example introduces the ArkTS **Refresh** component based on the [I
        // Obtain the ArkTS Refresh component.
        napi_value componentContent = nullptr;
        napi_get_named_property(g_env, result, "content", &componentContent);
-       ArkUI_NodeHandle handle;
-       OH_ArkUI_GetNodeHandleFromNapiValue(g_env, componentContent, &handle);
+       ArkUI_NodeHandle handle = nullptr;
+       auto code = OH_ArkUI_GetNodeHandleFromNapiValue(g_env, componentContent, &handle);
+       if (code != ARKUI_ERROR_CODE_NO_ERROR) {
+           napi_close_handle_scope(g_env, scope);
+           return nullptr;
+       }
        // Obtain the child component slot of the ArkTS Refresh component.
        napi_value nodeContent = nullptr;
        napi_get_named_property(g_env, result, "childSlot", &nodeContent);
-       ArkUI_NodeContentHandle contentHandle;
-       OH_ArkUI_GetNodeContentFromNapiValue(g_env, nodeContent, &contentHandle);
+       ArkUI_NodeContentHandle contentHandle = nullptr;
+       code = OH_ArkUI_GetNodeContentFromNapiValue(g_env, nodeContent, &contentHandle);
+       if (code != ARKUI_ERROR_CODE_NO_ERROR) {
+           napi_close_handle_scope(g_env, scope);
+           return nullptr;
+       }
        // Save the ArkTS ComponentContent to prevent the object on the ArkTS side from being released and for subsequent updates.
        napi_ref componentContentRef;
        napi_create_reference(g_env, componentContent, 1, &componentContentRef);
@@ -744,90 +756,128 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    ```
 
 6. Implement a simple timer module.
-
-   <!-- @[ui_timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/UITimer.h) -->
-
-   ``` C
-   // UITimer.h
+   <!-- @[ui_timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/UITimer.cpp) -->
+   
+   ``` C++
+   // UITimer.cpp
    // Timer module.
    
-   #ifndef MYAPPLICATION_UITIMER_H
-   #define MYAPPLICATION_UITIMER_H
+   #include "UITimer.h"
    
    #include <hilog/log.h>
-   #include <js_native_api.h>
-   #include <js_native_api_types.h>
-   #include <node_api.h>
-   #include <node_api_types.h>
    #include <string>
    #include <thread>
    #include <uv.h>
    
    namespace NativeModule {
-   
+   namespace {
    struct UIData {
-       void *userData = nullptr;
+       std::weak_ptr<ArkUIMixedRefresh> refresh;
        int32_t count = 0;
        int32_t totalCount = 0;
-       void (*func)(void *userData, int32_t count) = nullptr;
+       TimerCallback func = nullptr;
+       napi_threadsafe_function threadSafeFunction = nullptr;
    };
    
-   napi_threadsafe_function threadSafeFunction = nullptr;
-   
-   void CreateNativeTimer(napi_env env, void *userData, int32_t totalCount, void (*func)(void *userData, int32_t count))
+   void DeleteTimerHandle(uv_handle_t *handle)
    {
-       napi_value name;
-       std::string str = "UICallback";
-       napi_create_string_utf8(env, str.c_str(), str.size(), &name);
-       // UI main thread callback function.
-       napi_create_threadsafe_function(
-           env, nullptr, nullptr, name, 0, 1, nullptr, nullptr, nullptr,
-           [](napi_env env, napi_value value, void *context, void *data) {
-               auto userdata = reinterpret_cast<UIData *>(data);
-               userdata->func(userdata->userData, userdata->count);
-               delete userdata;
-           },
-           &threadSafeFunction);
-       // Start the timer to simulate data changes.
-       std::thread timerThread([data = userData, totalCount, func]() {
-           uv_loop_t *loop = uv_loop_new();
-           uv_timer_t *timer = new uv_timer_t();
-           uv_timer_init(loop, timer);
-           timer->data = new UIData{data, 0, totalCount, func};
-           uint64_t timeout = 4000;
-           uint64_t repeat = 4000;
-           uv_timer_start(
-               timer,
-               [](uv_timer_t *handle) {
-                   OH_LOG_INFO(LOG_APP, "on timeout");
-                   napi_acquire_threadsafe_function(threadSafeFunction);
-                   auto *customData = reinterpret_cast<UIData *>(handle->data);
-                   // Create callback data.
-                   auto *callbackData =
-                       new UIData{customData->userData, customData->count, customData->totalCount, customData->func};
-                   napi_call_threadsafe_function(threadSafeFunction, callbackData, napi_tsfn_blocking);
-                   customData->count++;
-                   if (customData->count > customData->totalCount) {
-                       uv_timer_stop(handle);
-                       delete handle;
-                       delete customData;
-                   }
-               },
-               timeout, repeat);
-           uv_run(loop, UV_RUN_DEFAULT);
+       delete reinterpret_cast<uv_timer_t *>(handle);
+   }
+   
+   void CloseTimer(uv_timer_t *timer)
+   {
+       uv_timer_stop(timer);
+       uv_close(reinterpret_cast<uv_handle_t *>(timer), DeleteTimerHandle);
+   }
+   
+   void CallRefreshOnUI(napi_env, napi_value, void *, void *data)
+   {
+       auto *callbackData = reinterpret_cast<UIData *>(data);
+       auto refresh = callbackData->refresh.lock();
+       if (refresh != nullptr && callbackData->func != nullptr) {
+           callbackData->func(refresh, callbackData->count);
+       }
+       delete callbackData;
+   }
+   
+   napi_status CreateTimerThreadSafeFunction(napi_env env, UIData *customData)
+   {
+       napi_value name = nullptr;
+       const std::string callbackName = "UICallback";
+       auto status = napi_create_string_utf8(env, callbackName.c_str(), callbackName.size(), &name);
+       if (status != napi_ok) {
+           return status;
+       }
+       return napi_create_threadsafe_function(env, nullptr, nullptr, name, 0, 1, nullptr, nullptr, nullptr,
+                                              CallRefreshOnUI, &customData->threadSafeFunction);
+   }
+   
+   void OnTimer(uv_timer_t *timer)
+   {
+       OH_LOG_INFO(LOG_APP, "on timeout");
+       auto *customData = reinterpret_cast<UIData *>(timer->data);
+       auto *callbackData = new UIData(*customData);
+       if (napi_call_threadsafe_function(customData->threadSafeFunction, callbackData,
+                                         napi_tsfn_blocking) != napi_ok) {
+           delete callbackData;
+       }
+       customData->count++;
+       if (customData->count <= customData->totalCount) {
+           return;
+       }
+       CloseTimer(timer);
+   }
+   
+   void ReleaseTimerData(UIData *customData)
+   {
+       napi_release_threadsafe_function(customData->threadSafeFunction, napi_tsfn_release);
+       delete customData;
+   }
+   
+   void RunTimer(UIData *customData)
+   {
+       uv_loop_t *loop = uv_loop_new();
+       if (loop == nullptr) {
+           ReleaseTimerData(customData);
+           return;
+       }
+       auto *timer = new uv_timer_t();
+       if (uv_timer_init(loop, timer) != 0) {
+           delete timer;
+           ReleaseTimerData(customData);
            uv_loop_delete(loop);
-       });
+           return;
+       }
+       timer->data = customData;
+       constexpr uint64_t timeout = 4000;
+       constexpr uint64_t repeat = 4000;
+       if (uv_timer_start(timer, OnTimer, timeout, repeat) != 0) {
+           CloseTimer(timer);
+       }
+       uv_run(loop, UV_RUN_DEFAULT);
+       ReleaseTimerData(customData);
+       uv_loop_delete(loop);
+   }
+   } // namespace
+   
+   void CreateNativeTimer(napi_env env, const std::weak_ptr<ArkUIMixedRefresh> &refresh, int32_t totalCount,
+                          TimerCallback func)
+   {
+       auto *customData = new UIData {refresh, 0, totalCount, func, nullptr};
+       if (CreateTimerThreadSafeFunction(env, customData) != napi_ok) {
+           delete customData;
+           return;
+       }
+       // Start the timer to simulate data changes.
+       std::thread timerThread(RunTimer, customData);
        timerThread.detach();
    }
    } // namespace NativeModule
-   
-   #endif // MYAPPLICATION_UITIMER_H
    ```
 
 7. Use the page structure described in [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md), making the **Refresh** component the parent component of the text list.
-
    <!-- @[mixed_refresh_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/MixedRefreshExample.h) -->
-
+   
    ``` C
    // MixedRefreshExample.h
    // Sample code for mixed mode.
@@ -851,20 +901,26 @@ The following example introduces the ArkTS **Refresh** component based on the [I
        NativeRefreshAttribute nativeRefreshAttribute{
            .backgroundColor = 0xFF89CFF0, .refreshOffset = 64, .pullToRefresh = true};
        auto refresh = ArkUIMixedRefresh::Create(nativeRefreshAttribute);
+       if (refresh == nullptr) {
+           return nullptr;
+       }
        refresh->AddChild(list);
    
        // Set the event for mixed mode.
        refresh->SetOnOffsetChange(
            [](float offset) { OH_LOG_INFO(LOG_APP, "on refresh offset changed: %{public}f", offset); });
-       refresh->SetRefreshCallback([refreshPtr = refresh.get(), env]() {
+       std::weak_ptr<ArkUIMixedRefresh> weakRefresh = refresh;
+       refresh->SetRefreshCallback([weakRefresh, env]() {
            OH_LOG_INFO(LOG_APP, "on refreshing");
-           // Start the timer to simulate data acquisition.
-           CreateNativeTimer(env, refreshPtr, 1, [](void *userData, int32_t count) {
-               // Disable the refresh feature after data is obtained.
-               auto refresh = reinterpret_cast<ArkUIMixedRefresh *>(userData);
-               refresh->SetRefreshState(false);
-               refresh->FlushMixedModeCmd();
-           });
+           if (auto refresh = weakRefresh.lock()) {
+               // Start the timer to simulate data retrieval. The timer stores only a weak reference to avoid accessing a destroyed Refresh object.
+               CreateNativeTimer(env, weakRefresh, 1,
+                   [](const std::shared_ptr<ArkUIMixedRefresh> &refresh, int32_t count) {
+                       // Stop refreshing after the data is retrieved.
+                       refresh->SetRefreshState(false);
+                       refresh->FlushMixedModeCmd();
+                   });
+           }
        });
    
        // Update the event to the ArkTS side.
@@ -880,7 +936,7 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    Replace the entry component creation with the pull-to-refresh text list.
 
    <!-- @[native_entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/NativeEntry.cpp) -->
-
+   
    ``` C++
    // NativeEntry.cpp
    
@@ -905,12 +961,18 @@ The following example introduces the ArkTS **Refresh** component based on the [I
        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
    
        // Obtain NodeContent.
-       ArkUI_NodeContentHandle contentHandle;
-       OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+       ArkUI_NodeContentHandle contentHandle = nullptr;
+       auto code = OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+       if (code != ARKUI_ERROR_CODE_NO_ERROR) {
+           return nullptr;
+       }
        NativeEntry::GetInstance()->SetContentHandle(contentHandle);
    
        // Create a Refresh text list.
        auto refresh = CreateMixedRefreshList(env);
+       if (refresh == nullptr) {
+           return nullptr;
+       }
    
        // Keep the native side object in the management class to maintain its lifecycle.
        NativeEntry::GetInstance()->SetRootNode(refresh);
@@ -927,14 +989,42 @@ The following example introduces the ArkTS **Refresh** component based on the [I
    } // namespace NativeModule
    ```
 
-8. Implement Node-API bridging to expose NativeNode module APIs from the native side to ArkTS.
-
+8. Implement Node-API bridging to expose NativeNode module APIs from the native side to ArkTS. 
    <!-- @[bridge_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-
+   
    ``` TypeScript
-   export const createNativeRoot: (content: Object) => void;
+   import { ComponentContent, NodeContent, RefreshModifier } from '@kit.ArkUI';
+   
+   interface NativeRefreshAttribute {
+     isRefreshing: boolean;
+     width?: number;
+     height?: number;
+     backgroundColor?: number;
+     refreshOffset?: number;
+     pullToRefresh?: boolean;
+     onRefreshing?: () => void;
+     onOffsetChange?: (offset: number) => void;
+   }
+   
+   interface RefreshAttribute {
+     isRefreshing: boolean;
+     modifier?: RefreshModifier;
+     slot?: NodeContent;
+     onRefreshing?: () => void;
+     onOffsetChange?: (offset: number) => void;
+   }
+   
+   interface MixedModuleResult {
+     content: ComponentContent<RefreshAttribute>;
+     childSlot: NodeContent;
+   }
+   
+   export const createNativeRoot: (content: NodeContent) => void;
    export const destroyNativeRoot: () => void;
    
-   export const registerCreateMixedRefreshNode: (content: Object) => void;
-   export const registerUpdateMixedRefreshNode: (content: Object) => void;
+   export const registerCreateMixedRefreshNode: (
+     callback: (value: NativeRefreshAttribute) => MixedModuleResult) => void;
+   export const registerUpdateMixedRefreshNode: (
+     callback: (refresh: ComponentContent<RefreshAttribute>, childSlot: NodeContent,
+       value: NativeRefreshAttribute) => void) => void;
    ```

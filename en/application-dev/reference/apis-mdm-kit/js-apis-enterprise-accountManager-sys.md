@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=5a568794ad7ad869a67daecc62f8915341ba0a9a translatedAt=2026-11-04T05:02:45.005Z pushedAt=2026-11-04T08:04:44.739Z nl=1 -->
 
 This module provides device account management capabilities, including forbidding the creation of local accounts.
 
@@ -335,3 +336,4 @@ try {
   console.error(`Failed to create os account. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+

@@ -1,12 +1,11 @@
 # app.json5 Configuration File
-
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=74dbad5c7db60e1e7acbdd97ecfcb9536c7d7b13 translatedAt=2026-08-13T08:49:18.174Z pushedAt=2026-08-13T11:14:41.106Z -->
+<!-- md-trans-meta sourceCommit=237622a70b3ceec3206b41471e0593098f99081d translatedAt=2026-11-09T07:45:52.294Z pushedAt=2026-11-09T08:12:11.186Z nl=1 -->
 
 An application-level configuration file provides the global configuration of an application and configuration of a specific device type for the compilation tool, OS, and AppGallery. Each project must contain an **app.json5** configuration file, which is stored in the ***project name*/AppScope/app.json5** directory.
 
@@ -19,6 +18,7 @@ An application-level configuration file provides the global configuration of an 
 >
 
 ## Configuration File Example
+
 
 The following example describes the structure and content of the **app.json5** configuration file.
 
@@ -87,7 +87,6 @@ As shown above, the **app.json5** file contains several tags.
 **Table 1** Tags in the app.json5 file
 
 <!--Table: 15%; 60%; 10%; 15%-->
-
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | bundleName | Bundle name, which uniquely identifies an application. The value must comply with the following rules:<br>- The bundle name contains at least three segments, separated by periods (.). Each segment can contain only letters, digits, and underscores (_).<br>- The first segment starts with a letter, and other segments start with a digit or letter. Each segment ends with a digit or letter.<br>- Consecutive periods (.) are not allowed.<br>- Contains 7 to 128 bytes.<br>You are advised to use the reverse domain name notation, for example, *com.example.demo*, where the first part is the domain suffix **com**, the second part is the vendor/individual name, and the third part is the application name, which can be of multiple levels.| String| No|
@@ -118,7 +117,7 @@ As shown above, the **app.json5** file contains several tags.
 | 2in1 | Special configurations for PCs/2-in-1 devices. The configurable attribute tag is **minAPIVersion**.<br>When running on PCs/2-in-1 devices, the application applies the attribute settings under this tag and ignores the general settings in the **app.json5** file.| Object| Yes (initial value: general settings in the **app.json5** file)|
 | GWPAsanEnabled | Whether to enable GWP-ASan for detecting memory safety violations, including use-after-free and out-of-bounds memory read/write operations.<br>- **true**: The GWP-asan detection is enabled for the application.<br>- **false**: The GWP-asan detection is disabled for the application.| Boolean| Yes (initial value: **false**)|
 | [appEnvironments](#appenvironments) | Application environment variables configured for the current application.| Object array| Yes (initial value: left empty)|
-| maxChildProcess | Maximum number of child processes that can be created by the current application. The value ranges from 0 to 512. The value **0** indicates that the number is not limited. If the application has multiple modules, use the configuration of the **entry** module.| Number| Yes (initial value: <!--RP2-->**1**<!--RP2End-->)|
+| maxChildProcess | Indicates the maximum total number of processes that the application can create through fork or clone. If the application contains multiple modules, the configuration of the entry module takes precedence.<br/>Value range: [0, 512]. 0 indicates the maximum value of 512, and other values take effect as configured. | Number | Yes (initial value: <!--RP2-->1<!--RP2End-->) |
 | [multiAppMode](#multiappmode)| Multi-app mode of the application. This tag takes effect only for the entry or feature module of the application whose **bundleType** is **app**. If there are multiple modules, use the configuration of the **entry** module.| Object| Yes (initial value: left empty)|
 | hwasanEnabled | Whether [Hardware-assisted Address Sanitizer (HWASan)](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hwasan) is enabled for an application. HWAsan is an enhanced Asan improved by the Top-Byte-Ignore feature. Compared with Asan, HWAsan has a lower memory overhead and a larger range of detection for memory errors.<br>- **true**: HWAsan is enabled.<br>- **false**: HWAsan is disabled.<br>**NOTE**<br>This tag is supported since API version 14.| Boolean| Yes (initial value: **false**)|
 | tsanEnabled | Whether TSan is enabled for the application to detect thread-related errors.<br>[ThreadSanitizer (TSan)](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-tsan) is a tool used to detect data races.<br>- **true**: TSan is enabled.<br>- **false**: TSan is disabled.| Boolean| Yes (initial value: **false**)|
@@ -220,7 +219,6 @@ Define the **configuration.json** file under **AppScope/resources/base/profile**
    **Table 4** configuration
 
 <!--Table: 15%; 50%; 10%; 25%-->
-
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | fontSizeScale | Settings of the application font size. The options are as follows:<br>- **followSystem**: The font size follows the system.<br>- **nonFollowSystem**: The font size does not follow the system.| String| Yes (initial value: **nonFollowSystem**)|

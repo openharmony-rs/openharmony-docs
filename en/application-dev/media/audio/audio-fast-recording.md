@@ -5,7 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4d1b3ad6de802e96ea2dba644ca7d60992013b31 translatedAt=2026-10-08T03:45:38.647Z pushedAt=2026-10-08T06:41:27.749Z -->
+<!-- md-trans-meta sourceCommit=5e5bc4ab7c8a2764e5680f4b6b16418c04da6f57 translatedAt=2026-11-05T00:59:45.660Z pushedAt=2026-10-08T06:41:27.749Z nl=2 -->
 
 Starting from API version 10, low-latency audio recording is available.
 
@@ -89,8 +89,8 @@ int32_t MyOnReadData_Legacy(
     OH_AudioStreamBuilder_SetCapturerReadDataCallback(builder, readDataCb, nullptr);
 ```
 
-- To prevent audio stuttering, do not perform time-consuming operations in the callback function **OH_AudioCapturer_OnReadData**.
-- To maintain independence between **OH_AudioCapturer_OnReadData** and stream state control, do not call the audio stream control APIs in the callback function **OH_AudioCapturer_OnReadData**.
+- To prevent audio stuttering, do not perform time-consuming operations in the callback function **OH_AudioCapturer_OnReadDataCallback**.
+- To maintain independence between **OH_AudioCapturer_OnReadDataCallback** and stream state control, do not call the audio stream control APIs in the callback function **OH_AudioCapturer_OnReadDataCallback**.
   
     | Audio Stream Control API                                                   | Description        |
     | ------------------------------------------------------------ | ------------ |

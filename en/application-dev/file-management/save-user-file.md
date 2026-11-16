@@ -1,23 +1,19 @@
 # Saving User Files
-
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @yangwei_814916-->
 <!--Designer: @hwzhangchuang; @Dyylll-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=26db867956892783b25f638a74cb23fb0a676944 translatedAt=2026-08-01T07:28:27.106Z pushedAt=2026-08-01T11:09:43.815Z -->
+<!-- md-trans-meta sourceCommit=2f92eb18f93a1300c309ec4c70975e5c136947d1 translatedAt=2026-11-04T08:47:42.764Z pushedAt=2026-11-04T09:32:55.389Z nl=1 -->
 
 When a user needs to download a file from the Internet or save a file to another directory, use **FilePicker** to save the file. Pay attention to the following key points:
 
 **Permission Description**
 
 - The read and write permissions on the file URI granted by Picker is temporary by default, and will be automatically invalidated once the application exits.
-
 - If the [autoCreateEmptyFile](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions) parameter is set to **false**, the obtained URI has **temporary create and delete permissions** in addition to **temporary read and write permissions**.
-
 - You can persist the permissions on the URI. For details, see [Persisting a Temporary Permission Granted by Picker](file-persistPermission.md#persisting-a-temporary-permission-granted-by-picker).
-
 - No permission is required if your application uses Picker to save audio clips, images, videos, and document files.
 
 **Constraints**
@@ -34,7 +30,6 @@ if (!canIUse('SystemCapability.FileManagement.UserFileService.FolderSelection'))
 **System Isolation Description**
 
 - The files saved by the Picker are stored in the specified directory. They are isolated from the assets managed by **Gallery** and cannot be viewed in **Gallery**.
-
 - To save images and videos to Gallery, [use the SaveButton](../media/medialibrary/photoAccessHelper-savebutton.md#creating-a-media-asset-using-savebutton).
 
 ## Saving Images or Videos
@@ -48,8 +43,7 @@ If the security component cannot be called to save images and videos in your dev
 1. Import modules.
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -66,7 +60,7 @@ If the security component cannot be called to save images and videos in your dev
    // File type. The value is in ['Suffix type description|Suffix type'] format. To save all files, use 'All files (*.*)|.*' (optional). If multiple suffixes are selected (a maximum of 100 suffixes can be filtered), the first suffix is selected by default. If this parameter is not transferred, no suffix is filtered by default.
    documentSaveOptions.fileSuffixChoices = ['Document|.txt', '.pdf'];
    // When saving files, the application determines whether to pre-create empty files. The default value is true, where the Picker pre-creates empty files and returns an array of file URIs. When the value is set to false, no empty files are pre-created, and only an array of file URIs is returned.
-   documentSaveOptions.autoCreateEmptyFile = false; 
+   documentSaveOptions.autoCreateEmptyFile = false;
    ```
 
 3. Create a [DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker) instance, and call [save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save) to open the FilePicker interface for file saving.
@@ -117,8 +111,7 @@ If the security component cannot be called to save images and videos in your dev
 1. Import modules.
 
    ```ts
-   import { picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```
@@ -127,7 +120,7 @@ If the security component cannot be called to save images and videos in your dev
 
    ```ts
    const audioSaveOptions = new picker.AudioSaveOptions();
-   // (Optional) Name of the document to save.
+   // (Optional) Name of the document to save. 
    audioSaveOptions.newFileNames = ['AudioViewPicker01.mp3'];
    ```
 
@@ -180,9 +173,7 @@ If the security component cannot be called to save images and videos in your dev
 **Characteristics**
 
 - The directory is automatically created in `Download/bundle name/`.
-
 - Files can be directly saved without file selection.
-
 - You can create files under the returned URI that has persisting permissions.
 
 > **NOTE**
@@ -192,8 +183,7 @@ If the security component cannot be called to save images and videos in your dev
 1. Import modules.
 
    ```ts
-   import { fileUri, picker } from '@kit.CoreFileKit';
-   import { fileIo } from '@kit.CoreFileKit';
+   import { fileUri, picker, fileIo } from '@kit.CoreFileKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
    ```

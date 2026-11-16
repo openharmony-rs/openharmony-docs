@@ -1388,7 +1388,7 @@ try {
 
 installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: number, accountId: number): void
 
-安装企业应用重签名证书。安装成功后，企业可使用该证书对应用进行重签名。
+安装企业应用重签名证书。安装成功后，企业可使用该证书对应用进行重签名。<!--RP5--><!--RP5End-->
 
 同一用户下最多可下发10本不同证书。证书别名作为证书的唯一标识，不支持重复下发相同别名的证书。如需更新同一别名的证书，需先调用[uninstallEnterpriseReSignatureCertificate](#securitymanageruninstallenterpriseresignaturecertificate24)进行卸载。
 
@@ -2710,6 +2710,7 @@ setDeviceSecurityLevelPolicy(level: DeviceSecurityLevelPolicy): void
 | 9200001 | The application is not an administrator application of the device. |
 | 9200002 | The administrator application does not have permission to manage the device. |
 | 9200012 | Parameter verification failed. |
+| 9200016 | Service timeout. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
 
@@ -2766,6 +2767,7 @@ getDeviceSecurityLevelPolicy(): DeviceSecurityLevelPolicy
 | -------- | -------- |
 | 9200001 | The application is not an administrator application of the device. |
 | 9200002 | The administrator application does not have permission to manage the device. |
+| 9200016 | Service timeout. |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 
 **示例：**

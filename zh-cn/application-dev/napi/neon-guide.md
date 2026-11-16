@@ -45,7 +45,7 @@ ARMv8a架构CPU默认集成Neon扩展，在AArch64与AArch32两种状态下都�
 
 ## 如何使用
 
-使用Neon扩展的主要通过如下几种方式：
+使用Neon扩展主要通过如下几种方式：
 
 - 使用LLVM的Auto-Vectorization特性，由编译器来生成对应指令，默认开启，可以通过-fno-vectorize关闭，具体参考《[Auto-Vectorization in LLVM](https://llvm.org/docs/Vectorizers.html)》。
 

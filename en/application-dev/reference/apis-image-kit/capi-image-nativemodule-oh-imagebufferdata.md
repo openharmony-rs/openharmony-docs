@@ -1,12 +1,11 @@
 # OH_ImageBufferData
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9329f19aa2995f079ff9cf109a20aad0033a91a3 translatedAt=2026-08-03T03:59:00.348Z pushedAt=2026-08-04T03:02:16.040Z -->
+<!-- md-trans-meta sourceCommit=7309d91550473d80535b32eca83cb9c0b600f845 translatedAt=2026-11-13T03:27:01.010Z pushedAt=2026-11-13T10:28:41.133Z nl=1 -->
 
 ```c
 typedef struct {...} OH_ImageBufferData
@@ -14,7 +13,7 @@ typedef struct {...} OH_ImageBufferData
 
 ## Overview
 
-**OH_ImageBufferData** is the image data struct encapsulated at the native layer. To obtain an **OH_ImageNative_GetBufferData** object, call [OH_ImageNative_GetBufferData](capi-image-native-h.md#oh_imagenative_getbufferdata).<br> The struct stores the shallow copy of the original image data. Once the original data is released, no read or write operations should be performed on the pointers within this struct; otherwise, undefined behavior will occur.
+**OH_ImageBufferData** is an image data struct encapsulated at the native layer. To obtain an **OH_ImageBufferData** object, use the [OH_ImageNative_GetBufferData](capi-image-native-h.md#oh_imagenative_getbufferdata) function.<br> The struct stores a shallow copy of the original image data. After the original data is released, do not perform any read or write operations on the pointers in this struct; otherwise, undefined behavior may occur.
 
 **Since**: 23
 
@@ -33,3 +32,5 @@ typedef struct {...} OH_ImageBufferData
 | int32_t numStride | Array length.|
 | size_t bufferSize | Buffer size, in bytes.|
 | OH_NativeBuffer *nativeBuffer | Pointer to the **OH_NativeBuffer** object of the image.|
+
+

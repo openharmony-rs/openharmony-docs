@@ -5,6 +5,7 @@
 <!--Designer: @Terence_Super-->
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=1d011e31cddbb3991792e7c30ca94f1bf0202f67 translatedAt=2026-11-13T04:23:47.533Z pushedAt=2026-11-13T11:03:45.842Z nl=1 -->
 
 The **radio** module provides basic network search management functions. Using the APIs provided by this module, you can obtain the radio access technology (RAT) used in the CS and PS domains, network status, current network selection mode, ISO country code of the registered network, ID of the slot in which the primary card is located, list of signal strengths of the registered network for the SIM card in the specified slot, and carrier name. Besides, you can check whether the current device supports New Radio \(NR\) and whether the radio service is enabled on the primary SIM card. The CS domain refers to the Circuit Switched domain, and the PS domain refers to the Packet Switched domain.
 
@@ -147,8 +148,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                           |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
 | 8300001  | Invalid parameter value.                     |
-| 8300002  | Service connection failed.                   |
-| 8300003  | Operation failed. Cannot connect service.    |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error.                       |
 | 8300999  | Unknown error code.                          |
 
 **Example**
@@ -1223,3 +1224,4 @@ Defines the cell information.
 | ----------------- | --------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | networkType       | [NetworkType](#networktype)             |  No |  No | Network type of the cell.                                    |
 | signalInformation | [SignalInformation](#signalinformation) |  No |  No | Signal information.                                                  |
+

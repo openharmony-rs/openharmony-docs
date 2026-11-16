@@ -5,10 +5,11 @@
 <!--Designer: @wnazgul-->
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=465a4053e9effe4731a562b5aa8381b246da66b5 translatedAt=2026-11-13T04:18:19.829Z pushedAt=2026-11-13T11:02:51.823Z nl=1 -->
 
 The **call** module provides call management functions, including making calls, redirecting to the dial screen, obtaining the call status, and formatting phone numbers.
 
-To subscribe to call status changes, use [`observer.on('callStateChange')`](js-apis-observer.md#observeroncallstatechange).
+To subscribe to call state changes, use [observer.on('callStateChange')](js-apis-observer.md#observeroncallstatechange).
 
 >**NOTE**
 >
@@ -384,6 +385,59 @@ call.makeCallWithToken("138xxxxxxxx", makeOptions).then(() => {
     console.error(`makeCallWithToken fail, promise: err->Code${err.code}, message:${err.message}`);
 });
 ```
+
+
+## call.makeDirectCall
+ 
+makeDirectCall\(phoneNumber: string\): Promise\<void\>
+ 
+Allows an app to make a one-tap call. Only supported in [UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability). This API uses an asynchronous callback in Promise form.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+ 
+**System capability**: SystemCapability.Telephony.CallManager
+ 
+**Required permissions**: ohos.permission.DIRECT_CALL
+ 
+**Parameters**
+ 
+| Name        | Type   | Mandatory | Description    |
+| ----------- | ------ | -------- | -------------- |
+| phoneNumber | string | Yes      | Phone number. |
+ 
+**Return value**
+ 
+| Type              | Description                        |
+| ----------------- | ---------------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+ 
+**Error codes**
+ 
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+ 
+| ID | Error Message                                     |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied. |
+| 8300001  | Invalid parameter value. |
+| 8300002  | Operation failed. Cannot connect to service. |
+| 8300003  | System internal error. |
+| 8300005  | Airplane mode is on. |
+| 8300006  | Network not in service. |
+ 
+**Example**
+ 
+```ts
+import { call } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+call.makeDirectCall("138xxxxxxxx").then(() => {
+    console.info(`makeDirectCall success`);
+}).catch((err: BusinessError) => {
+    console.error(`makeDirectCall fail, promise: err->Code${err.code}, message:${err.message}`);
+});
+```
+
 
 ## call.hasCall
 

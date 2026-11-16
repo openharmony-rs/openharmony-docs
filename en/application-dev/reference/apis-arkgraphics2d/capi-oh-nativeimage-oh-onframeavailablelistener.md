@@ -1,12 +1,14 @@
 # OH_OnFrameAvailableListener
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @BruceXu; @dingpy-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
-```
-typedef struct {...} OH_OnFrameAvailableListener
+<!-- md-trans-meta sourceCommit=c9742d4d4a757fbb6f0510281af0e732af135c64 translatedAt=2026-11-04T10:35:18.710Z pushedAt=2026-11-04T10:36:26.017Z nl=2 -->
+
+```c
+typedef struct OH_OnFrameAvailableListener {...} OH_OnFrameAvailableListener
 ```
 
 ## Overview
@@ -39,7 +41,7 @@ Defines an **OH_NativeImage** listener, which is registered through [OH_NativeIm
 
 ### OH_OnFrameAvailable()
 
-```
+```c
 typedef void (*OH_OnFrameAvailable)(void *context)
 ```
 
@@ -56,3 +58,4 @@ Callback function triggered when a frame is available.
 | Name       | Description                                              |
 | ------------- | -------------------------------------------------- |
 | void *context | User-defined context information, which is returned when the callback is triggered.|
+

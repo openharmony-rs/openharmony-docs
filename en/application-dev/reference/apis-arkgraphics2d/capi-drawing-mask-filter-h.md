@@ -2,14 +2,15 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=62bc4f23d24b83a1b01a0a5be01e7684232ae4a4 translatedAt=2026-11-04T10:27:10.273Z pushedAt=2026-11-04T10:31:00.122Z nl=1 -->
 
 ## Overview
 
-This file declares the functions related to the mask filter in the drawing module.
+Declares functions related to the mask filter object in the drawing module.<br>This module adopts a single-thread model policy, and the caller must manage thread safety and context state switching.
 
 **File to include**: <native_drawing/drawing_mask_filter.h>
 
@@ -34,7 +35,7 @@ This file declares the functions related to the mask filter in the drawing modul
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_MaskFilter* OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType blurType, float sigma, bool respectCTM)](#oh_drawing_maskfiltercreateblur) | Creates an **OH_Drawing_MaskFilter** object with a blur type.|
-| [void OH_Drawing_MaskFilterDestroy(OH_Drawing_MaskFilter* maskFilter)](#oh_drawing_maskfilterdestroy) | Destroys an **OH_Drawing_MaskFilter** object and reclaims the memory occupied by the object.|
+| [void OH_Drawing_MaskFilterDestroy(OH_Drawing_MaskFilter* maskFilter)](#oh_drawing_maskfilterdestroy) | Destroys a mask filter object and reclaims the memory occupied by the object. |
 
 ## Enum Description
 
@@ -97,7 +98,7 @@ void OH_Drawing_MaskFilterDestroy(OH_Drawing_MaskFilter* maskFilter)
 
 **Description**
 
-Destroys an **OH_Drawing_MaskFilter** object and reclaims the memory occupied by the object.
+Destroys a mask filter object and reclaims the memory occupied by the object.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -109,3 +110,5 @@ Destroys an **OH_Drawing_MaskFilter** object and reclaims the memory occupied by
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_MaskFilter](capi-drawing-oh-drawing-maskfilter.md)* maskFilter | Pointer to an **OH_Drawing_MaskFilter** object.|
+
+

@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-08-26T02:58:08.022Z pushedAt=2026-08-26T03:41:18.454Z -->
+<!-- md-trans-meta sourceCommit=7d9ce201efa894024f69109a8bec89b278e1456d translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## Introduction
 
@@ -23,13 +23,13 @@ Before using JSVM-API to create and obtain numbers, you need to understand the f
 
 | API                 | Description                                       |
 | --------------------- | -----------------------------------------------|
-| OH_JSVM_GetValueUint32 | Obtains the C Uint32 primitive equivalent of the given JS number.  |
-| OH_JSVM_GetValueInt32  | Obtains the C Int32 primitive equivalent of the given JS number.   |
-| OH_JSVM_GetValueInt64  | Obtains the C Int64 primitive equivalent of the given JS number.   |
-| OH_JSVM_GetValueDouble | Obtains the C Double primitive equivalent of the given JS number.  |
-| OH_JSVM_CreateInt32     | Creates a JS number object from a C Int32_t object.|
-| OH_JSVM_CreateUint32    | Creates a JS number object from a C Uint32_t object.|
-| OH_JSVM_CreateInt64     | Creates a JS number object from a C Int64_t object.|
+| OH_JSVM_GetValueUint32 | Obtains the C uint32_t primitive equivalent of the given JS number.  |
+| OH_JSVM_GetValueInt32  | Obtains the C int32_t primitive equivalent of the given JS number.   |
+| OH_JSVM_GetValueInt64  | Obtains the C int64_t primitive equivalent of the given JS number.   |
+| OH_JSVM_GetValueDouble | Obtains the C double primitive equivalent of the given JS number.  |
+| OH_JSVM_CreateInt32     | Creates a JS number object from a C int32_t object.|
+| OH_JSVM_CreateUint32    | Creates a JS number object from a C uint32_t object.|
+| OH_JSVM_CreateInt64     | Creates a JS number object from a C int64_t object.|
 | OH_JSVM_CreateDouble    | Creates a JS number object from a C double object. |
 
 ## Example
@@ -38,7 +38,7 @@ If you are just starting out with JSVM-API, see [JSVM-API Development Process](u
 
 ### OH_JSVM_GetValueUint32
 
-Use **OH_JSVM_GetValueUint32** to obtain a C uint32 value from a JS value.
+Use **OH_JSVM_GetValueUint32** to obtain a C uint32_t value from a JS value.
 
 CPP code:
 
@@ -93,7 +93,7 @@ JSVM GetValueUint32 success: 123
 
 ### OH_JSVM_GetValueInt32
 
-Use **OH_JSVM_GetValueInt32** to obtain a C Int32 value from a JS value.
+Use **OH_JSVM_GetValueInt32** to obtain a C int32_t value from a JS value.
 
 CPP code:
 
@@ -147,7 +147,7 @@ JSVM GetValueInt32 success: -123
 
 ### OH_JSVM_GetValueInt64
 
-Use **OH_JSVM_GetValueInt64** to obtain a C Int64 value from a JS value.
+Use **OH_JSVM_GetValueInt64** to obtain a C int64_t value from a JS value.
 
 CPP code:
 
@@ -317,7 +317,7 @@ CPP code:
 
 
 // Sample method for OH_JSVM_CreateUint32
-static JSVM_Value CreateUInt32(JSVM_Env env, JSVM_CallbackInfo info)
+static JSVM_Value CreateUint32(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // If you use
     // uint32_t to define -26, overflow occurs. When overflow occurs, a modulo operation is performed on the result, converting the two's complement of the negative number to the corresponding positive number. -26 outputs 4294967270.
@@ -328,33 +328,33 @@ static JSVM_Value CreateUInt32(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value result = nullptr;
     JSVM_Status status = OH_JSVM_CreateUint32(env, value, &result);
     if (status != JSVM_OK) {
-        OH_LOG_ERROR(LOG_APP, "JSVM CreateUInt32 fail");
+        OH_LOG_ERROR(LOG_APP, "JSVM CreateUint32 fail");
     } else {
         uint32_t number = 0;
         OH_JSVM_GetValueUint32(env, result, &number);
-        OH_LOG_INFO(LOG_APP, "JSVM CreateUInt32 success: %{public}u", number);
+        OH_LOG_INFO(LOG_APP, "JSVM CreateUint32 success: %{public}u", number);
     }
     return result;
 }
 
-// CreateUInt32 registration callback
+// CreateUint32 registration callback
 static JSVM_CallbackStruct param[] = {
-    {.data = nullptr, .callback = CreateUInt32},
+    {.data = nullptr, .callback = CreateUint32},
 };
 static JSVM_CallbackStruct *method = param;
-// CreateUInt32 method alias for JS invocation
+// CreateUint32 method alias for JS invocation
 static JSVM_PropertyDescriptor descriptor[] = {
-    {"createUInt32", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"createUint32", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
 // Sample test JS
-const char* SRC_CALL_NATIVE = R"JS(createUInt32())JS";
+const char* SRC_CALL_NATIVE = R"JS(createUint32())JS";
 ```
 
 Expected result:
 
 ```txt
-JSVM CreateUInt32 success: 26
+JSVM CreateUint32 success: 26
 ```
 
 ### OH_JSVM_CreateInt64

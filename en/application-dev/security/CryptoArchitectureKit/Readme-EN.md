@@ -72,7 +72,7 @@
   - [Key Agreement Using DH (ArkTS)](crypto-key-agreement-using-dh.md)
   - [Key Agreement Using DH (C/C++)](crypto-key-agreement-using-dh-ndk.md)
 - Key Encapsulation and Decapsulation<!--crypto-kem-->
-  - [Key Encapsulation and Decapsulation with KEM (ArkTS)](crypto-kem-encapsulate-decapsulate.md)
+  - [Key Encapsulation and Decapsulation Using KEM (ArkTS)](crypto-kem-encapsulate-decapsulate.md)
 - [MD](crypto-generate-message-digest-overview.md)
   - [Generating an MD Using SHA-256 (ArkTS)](crypto-generate-message-digest.md)
   - [Generating an MD Using SHA-256 (C/C++)](crypto-generate-message-digest-ndk.md)

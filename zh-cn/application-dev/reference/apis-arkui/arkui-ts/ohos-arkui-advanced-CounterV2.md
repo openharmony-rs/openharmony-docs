@@ -1,9 +1,9 @@
 # CounterV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @song-song-song-->
-<!--Designer: @fenglinbailu-->
-<!--Tester: @weixin_45530366-->
+<!--Owner: @Zhang-Dong-hui-->
+<!--Designer: @xiangyuan6-->
+<!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
 CounterV2组件用于精确调节数值，包含列表型、紧凑型、数值内联型和日期内联型四种类型，适用于购物车数量调节、日期选择等场景。
@@ -112,7 +112,7 @@ type OnCounterV2HoverCallback = (isHover: boolean) => void
 
 ## CounterV2CommonOptions
 
-CounterV2CommonOptions定义了CounterV2的共通属性和事件。
+CounterV2CommonOptions定义了CounterV2的通用属性和事件。
 
 **起始版本：** 26.0.0
 

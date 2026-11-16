@@ -5,7 +5,7 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=f08a2bc7585a47e3ee5a2e60edcdd8af21f269f1 translatedAt=2026-10-31T01:22:54.178Z pushedAt=2026-10-31T03:35:23.946Z nl=1 -->
+<!-- md-trans-meta sourceCommit=d31b5b9fafe7863957862b8e708ec8c3ae990d52 translatedAt=2026-11-04T08:34:06.802Z pushedAt=2026-11-04T08:39:38.885Z nl=1 -->
 
 
 ## When to Use
@@ -249,11 +249,11 @@ If error 14800011 is thrown, you need to rebuild the database and restore data t
 
    > **NOTE**
    >
-   > - The RDB store created by an application varies with the context. Multiple RDB stores are created for the same database name with different application contexts. For example, each UIAbility has its own context.
+   > - The database created by an application is associated with its context ([Context](../reference/apis-ability-kit/js-apis-inner-application-context.md)). Even if the same database name is used, different application contexts produce multiple databases. For example, each UIAbility has its own context.
    > 
-   > - When an application calls **getRdbStore()** to obtain an RDB store instance for the first time, the corresponding database file is generated in the application sandbox. When the RDB store is used, temporary files ended with **-wal** and **-shm** may be generated in the same directory as the database file. If you want to move the database files to other places, you must also move these temporary files. After the application is uninstalled, the database files and temporary files generated on the device are also removed.
+   > - After the application obtains the database for the first time (by calling [getRdbStore()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)), a corresponding database file is generated in the application sandbox. During database use, temporary files ending with -wal and -shm may be generated in the same directory as the database file. At this time, if you want to move the database file elsewhere for use and viewing, you need to move these temporary files as well. After the application is uninstalled, the database file and temporary files generated on the device are also removed.
    > 
-   > - For details about the error codes, see [Universal Error Codes](../reference/errorcode-universal.md) and [RDB Store Error Codes](../reference/apis-arkdata/errorcode-data-rdb.md).
+   > - For details about error codes, see [Universal Error Codes](../reference/errorcode-universal.md) and [RDB Error Codes](../reference/apis-arkdata/errorcode-data-rdb.md).
 
 2. After obtaining the RDB store and creating the data table, call **insert()** to insert data. <br>Example:
    <!--@[persistence_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datapersistence/RdbDataPersistence.ets)-->

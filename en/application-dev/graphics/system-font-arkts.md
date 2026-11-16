@@ -6,7 +6,7 @@
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=0876b7ba2fa1777332890da7f5059310feded633 translatedAt=2026-08-22T01:34:30.018Z pushedAt=2026-08-22T03:30:10.465Z -->
+<!-- md-trans-meta sourceCommit=21d5d5f3f928e5fc857cd41aae0935ab534c5ac6 translatedAt=2026-11-05T01:00:48.366Z pushedAt=2026-08-22T03:30:10.465Z nl=2 -->
 
 ## Overview
 
@@ -114,7 +114,7 @@ If no font is specified, the default system font "HarmonyOS Sans" is used to dis
    // Create a paragraph style object to set the typography style.
    let myParagraphStyle: text.ParagraphStyle = {
      textStyle: textStyle1,
-     align: 3,
+     align: text.TextAlign.JUSTIFY,
      wordBreak: text.WordBreak.NORMAL
    };
    // Obtain the global font set instance.

@@ -1,10 +1,11 @@
-# ArkTSUtils.ASON
+# namespace (ASON)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
-<!--Designer: @weng-changcheng-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=cc99e5187aa152bc96569f8b87fca412b6552a60 translatedAt=2026-11-04T10:35:58.164Z pushedAt=2026-11-04T10:37:16.130Z nl=1 -->
 
 A utility class used to parse JSON strings into [sendable data](../../arkts-utils/arkts-sendable.md#sendable-data-types). ASON allows you to parse JSON strings and generate Sendable data for pass-by-reference across concurrent instances. It also supports conversion from Sendable data into JSON strings.
 
@@ -17,7 +18,7 @@ A utility class used to parse JSON strings into [sendable data](../../arkts-util
 ## Modules to Import
 
 ```ts
-import { ArkTSUtils } from '@kit.ArkTS'
+import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
 ## ISendable
@@ -32,7 +33,7 @@ type ISendable = lang.ISendable
 
 | Type| Description  |
 | ------ | ------ |
-| [lang.ISendable](js-apis-arkts-lang.md#langisendable)   | Parent type of all sendable types.|
+| [lang.ISendable](js-apis-arkts-lang.md#isendable)   | The parent type of all Sendable types. |
 
 ## Transformer
 
@@ -122,14 +123,6 @@ Parses a JSON string to generate ISendable data or null.
 | -------- | -------- |
 | [ISendable](#isendable) \| null | ISendable data or **null** (if **null** is passed in).|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message     |
-| -------- | ------------- |
-| 401      | Parameter error. Invalid JSON string. |
-
 **Example**
 
 ```ts
@@ -150,20 +143,20 @@ let options: ArkTSUtils.ASON.ParseOptions = {
   parseReturnType: ArkTSUtils.ASON.ParseReturnType.OBJECT,
 }
 let numberText = '{"largeNumber":112233445566778899}';
-let numberObj = ArkTSUtils.ASON.parse(numberText,undefined,options) as ISendable;
+let parsedNumberData = ArkTSUtils.ASON.parse(numberText, undefined, options) as ISendable;
 
-console.info((numberObj as object)?.["largeNumber"]);
+console.info((parsedNumberData as object)?.["largeNumber"]);
 // Expected output: 112233445566778899
 
 let options2: ArkTSUtils.ASON.ParseOptions = {
-    bigIntMode: ArkTSUtils.ASON.BigIntMode.PARSE_AS_BIGINT,
-    parseReturnType: ArkTSUtils.ASON.ParseReturnType.MAP,
-  }
+  bigIntMode: ArkTSUtils.ASON.BigIntMode.PARSE_AS_BIGINT,
+  parseReturnType: ArkTSUtils.ASON.ParseReturnType.MAP,
+}
 let mapText = '{"largeNumber":112233445566778899}';
-let map  = ArkTSUtils.ASON.parse(mapText,undefined,options2);
-console.info("map is " + map);
-// Expected output: map is [object SendableMap]
-console.info("largeNumber is " + (map as collections.Map<string,bigint>).get("largeNumber"));
+let parsedMap = ArkTSUtils.ASON.parse(mapText, undefined, options2);
+console.info(`parsedMap is ${parsedMap}`);
+// Expected output: parsedMap is [object SendableMap]
+console.info(`largeNumber is ${(parsedMap as collections.Map<string,bigint>).get("largeNumber")}`);
 // Expected output: largeNumber is 112233445566778899
 ```
 
@@ -193,59 +186,51 @@ Converts ArkTS object data into a JSON string, with additional support for Map a
 | -------- | -------- |
 | string | JSON string.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message     |
-| -------- | ------------- |
-| 401      | Parameter error. Invalid ArkTS value. |
-
 **Example**
 
 ```ts
 import { ArkTSUtils, collections, HashMap, HashSet } from '@kit.ArkTS';
 
 let hashMap = new HashMap<string,string>();
-hashMap.set("ha","a");
-hashMap.set("sh","b");
-hashMap.set("map","c");
+hashMap.set("ha", "a");
+hashMap.set("sh", "b");
+hashMap.set("map", "c");
 let str1 = ArkTSUtils.ASON.stringify(hashMap);
 console.info(str1);
-// The storage sequence of HashMap is determined by hashCode. Therefore, the storage location is uncertain. The output may be '{"sh":"b","ha":"a","map":"c"}'.
+// Because the storage order of HashMap is determined by hashCode, the storage position is uncertain. The output may be: '{"sh":"b", "ha":"a", "map":"c"}'
 let hashSet = new HashSet<string>();
 hashSet.add("ha");
 hashSet.add("sh");
 hashSet.add("set");
 let str2 = ArkTSUtils.ASON.stringify(hashSet);
 console.info(str2);
-// The storage sequence of HashSet is determined by hashCode. Therefore, the storage location is uncertain. The output may be '["set","sh","ha"]'.
+// Because the storage order of HashSet is determined by hashCode, the storage position is uncertain. The output may be: '["set", "sh", "ha"]'
 let map = new Map<string,string>();
-map.set("m","a");
-map.set("a","b");
-map.set("p","c");
+map.set("m", "a");
+map.set("a", "b");
+map.set("p", "c");
 let str3 = ArkTSUtils.ASON.stringify(map);
 console.info(str3);
-// Expected output: '{"m":"a","a":"b","p":"c"}'
+// Expected output: '{"m":"a", "a":"b", "p":"c"}'
 let set = new Set<string>();
 set.add("s");
 set.add("e");
 set.add("t");
 let str4 = ArkTSUtils.ASON.stringify(set);
 console.info(str4);
-// Expected output: '["s","e","t"]'
+// Expected output: '["s", "e", "t"]'
 let sendableMap = new collections.Map<string,string>();
-sendableMap.set("send","a");
-sendableMap.set("able","b");
-sendableMap.set("map","c");
+sendableMap.set("send", "a");
+sendableMap.set("able", "b");
+sendableMap.set("map", "c");
 let str5 = ArkTSUtils.ASON.stringify(sendableMap);
 console.info(str5);
-// Expected output: '{"send":"a","able":"b","map":"c"}'
+// Expected output: '{"send":"a", "able":"b", "map":"c"}'
 let sendableSet = new collections.Set<string>();
 sendableSet.add("send");
 sendableSet.add("able");
 sendableSet.add("set");
 let str6 = ArkTSUtils.ASON.stringify(sendableSet);
 console.info(str6);
-// Expected output: '["send","able","set"]'
+// Expected output: '["send", "able", "set"]'
 ```

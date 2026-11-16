@@ -6,10 +6,14 @@
 <!--Designer: @JiDong-CS1-->
 <!--Tester: @zhaimengchao-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=62ead3b95b6ae54a87ae4b3237ba0d6836b10368 translatedAt=2026-11-04T09:43:54.061Z pushedAt=2026-11-04T09:48:14.226Z nl=1 -->
 
-You can use the [application account SDK](../../reference/apis-basic-services-kit/js-apis-appAccount.md) to manage application accounts.
+Application developers can use [@ohos.account.appAccount](../../reference/apis-basic-services-kit/js-apis-appAccount.md) to manage the account data of the application.
 
 When an application is uninstalled, the account data of the application will be automatically deleted. When a local account is deleted, the account data of all applications of the local account will be automatically deleted.
+
+<!--RP2-->
+<!--RP2End-->
 
 ## Before You Start
 

@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=5a568794ad7ad869a67daecc62f8915341ba0a9a translatedAt=2026-11-04T05:31:10.059Z pushedAt=2026-11-04T08:04:44.782Z nl=1 -->
 
 This **restrictions** module provides APIs for setting general restriction policies, including disabling or enabling the printer and OpenHarmony Device Connector (hdc) for devices.
 
@@ -28,7 +29,7 @@ import { restrictions } from '@kit.MDMKit';
 
 setPrinterDisabled(admin: Want, disabled: boolean, callback: AsyncCallback\<void>): void
 
-Enables or disables the printing capability of the device. This API uses an asynchronous callback to return the result.
+Enables or disables the printing capability of the device. This API uses an asynchronous callback to return the result. 
 
 **Deprecated since:** 26.0.0
 
@@ -270,7 +271,7 @@ restrictions.isPrinterDisabled(wantTemp).then((result) => {
 
 setHdcDisabled(admin: Want, disabled: boolean, callback: AsyncCallback\<void>): void
 
-Enables or disables [HDC](../../../device-dev/subsystems/subsys-toolchain-hdc-guide.md). This API uses an asynchronous callback to return the result.
+Enables or disables [HDC](../../../device-dev/subsystems/subsys-toolchain-hdc-guide.md). This API uses an asynchronous callback to return the result. 
 
 **Deprecated since:** 26.0.0
 

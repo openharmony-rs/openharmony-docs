@@ -115,7 +115,7 @@ let enOption: huks.HuksOptions = {
 let cipherData: Uint8Array;
 let handle: number;
 
-async function EnvelopRsaTest()
+async function envelopRsaTest()
 {
   let wrappingKeyAlias = "WrappedKey";
   await huks.generateKeyItem(wrappingKeyAlias, option)

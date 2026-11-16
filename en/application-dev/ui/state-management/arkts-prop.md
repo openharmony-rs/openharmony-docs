@@ -1,16 +1,15 @@
 # \@Prop Decorator: Implementing One-Way Synchronization from Parent to Child Components
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:13:16.114Z pushedAt=2026-07-23T11:00:13.229Z -->
+<!-- md-trans-meta sourceCommit=471200c68ae4e4e45485585923907f9999ef399d translatedAt=2026-11-09T11:04:53.766Z pushedAt=2026-11-10T02:02:50.434Z nl=1 -->
 
 A variable decorated by [@Prop](../../reference/apis-arkui/arkui-ts/ts-state-management-prop.md#prop) can establish a one-way synchronization relationship with its parent component.
 
-Before reading the @Prop documentation, you are advised to first understand the basic usage of [@State](./arkts-state.md). For best practices, see [State Management Best Practices](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management). For FAQs, see [State Management FAQs](./arkts-state-management-faq.md).
+Before reading the \@Prop documentation, developers are advised to first understand the basic usage of [\@State](./arkts-state.md). For common issues, refer to [State Management FAQ](./arkts-state-management-faq.md).
 
 > **NOTE**
 >
@@ -29,7 +28,6 @@ Variables decorated with \@Prop have the following features:
 ## Usage Rules
 
 <!--Table: 30%; 70%-->
-
 | \@Prop Decorator| Description                                      |
 | ----------- | ---------------------------------------- |
 | Parameters      | None.                                       |
@@ -38,6 +36,7 @@ Variables decorated with \@Prop have the following features:
 | Disallowed variable types| Function.     |
 | Number of nested layers       | In component reuse scenarios, it is recommended that @Prop be nested with no more than five layers of data. If @Prop is nested with too many layers of data, garbage collection and increased memory usage caused by deep copy will arise, resulting in performance issues. To avoid such issues, use [\@ObjectLink](arkts-observed-and-objectlink.md) instead.|
 | Initial value for the decorated variable  | Local initialization is allowed. Since API version 11, if this decorator is used together with [\@Require](arkts-require.md), the parent component must pass parameters through its constructor.|
+
 
 ## Variable Transfer/Access Rules
 
@@ -70,10 +69,10 @@ Variables decorated with \@Prop have the following features:
   this.title = new Model('Hi');
   ```
 
-- When the decorated type is a complex type such as Object or class, both object assignments and top-level property changes can be observed. Top-level properties include all properties returned by **Object.keys(observedObject)**. For a complete example of complex types, see [Synchronizing Simple Data Types in the Parent Component to @Prop in the Child Component](#synchronizing-simple-data-types-in-the-parent-component-to-prop-in-the-child-component).
+- When the decorated type is a complex type such as Object or class, both object assignments and top-level property changes can be observed. Top-level properties include all properties returned by Object.keys(observedObject). For a complete example of complex types, see [Synchronizing from \@State Class Object Properties to \@Prop Simple Data Types](#synchronizing-from-state-class-object-properties-to-prop-simple-data-types).
 
   <!-- @[prop_seventeen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
-
+  
   ``` TypeScript
   // Define a nested class.
   class Info {
@@ -94,26 +93,24 @@ Variables decorated with \@Prop have the following features:
     }
   }
   ```
-
   <!-- @[prop_twentyone_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
-
+  
   ``` TypeScript
   @Prop title: Model;
   ```
-
   <!-- @[prop_nineteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
-
+  
   ``` TypeScript
   // Can observe first-layer changes.
   this.title.value = 'Hi';
   ```
-
   <!-- @[prop_twenty_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
-
+  
   ``` TypeScript
   // Cannot observe second-layer changes.
   this.title.info.value = 'ArkUI';
   ```
+
 
 In the scenarios of nested objects, if a class is decorated by \@Observed, the value changes of the class property can be observed. For details, see [Nesting \@Prop](#nesting-prop).
 
@@ -135,11 +132,8 @@ In the scenarios of nested objects, if a class is decorated by \@Observed, the v
 For synchronization between \@State and \@Prop decorated variables:
 
 - The @Prop decorated variable in the child component is initialized with the value of the @State variable from the parent component. When the @State variable changes, its value is synchronously updated to the @Prop decorated variable.
-
 - However, any change to the @Prop decorated variable does not affect the value of its source @State decorated variable.
-
 - In addition to \@State, the source can also be decorated with \@Link or \@Prop, where the mechanism for syncing the \@Prop decorated variable is the same.
-
 - The data source and the @Prop decorated variable must be of the same type.
 
 - When the decorated object is of the Date type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**. For details, see [Decorating Variables of the Date Type](#decorating-variables-of-the-date-type).
@@ -153,15 +147,11 @@ For synchronization between \@State and \@Prop decorated variables:
 To understand the initialization and update mechanism of @Prop decorated variables, you need to understand the rendering and update process of the parent and child components.
 
 1. Initial rendering:
-
    1. The parent component's **build()** function is executed, creating child component instances with data source propagation.
-
    2. \@Prop decorated variables are initialized with parent-provided values.
 
 2. Update:
-
    1. When the \@Prop decorated variable is modified locally, the change does not propagate back to its parent component.
-
    2. When the data source in the parent component updates, variables decorated with @Prop in the child component will be reset from the parent component's data source, and any local modifications to @Prop-decorated variables will be overwritten by the parent component's updates.
 
 > **NOTE**
@@ -211,9 +201,9 @@ struct Father {
    Starting from API version 23, a related check has been added during app compilation. Decorating a Function type variable with @Prop will prompt an ERROR, and the @Prop decorator should be removed from the Function type variable in the code.
 
 - When the parent component passes in **undefined**, the @Prop decorated variable is still initialized with its local default value.
-
+  
   <!-- @[prop_twenty_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwenty.ets) --> 
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -310,7 +300,7 @@ In the preceding example:
 
 5. Updating **countDownStartValue** will overwrite the local value changes of the @Prop decorated **count** in the **CountDownComponent** child component.
 
-### Synchronizing Simple Data Types from @State Array Items in the Parent Component to @Prop in the Child Component 
+### Synchronizing Simple Data Types from @State Array Items in the Parent Component to @Prop in the Child Component
 
 If @State in the parent component decorates a variable of the array type, its array item can also initialize @Prop. In the following example, the \@State decorated array **arr** in the parent component **Index** initializes the \@Prop decorated **value** variable in the child component **Child**.
 
@@ -361,6 +351,7 @@ struct Index {
   }
 }
 ```
+
 
 Initial render creates six instances of the **Child** component. Each \@Prop decorated variable is initialized with a copy of an array item. The **onClick** event handler of the **Child** component changes the local variable value.
 
@@ -658,6 +649,7 @@ struct MainProgram {
   }
 }
 ```
+
 
 ![Video-prop-UsageScenario-two](figures/Video-prop-UsageScenario-two.gif)
 
@@ -1080,7 +1072,7 @@ struct Zoo {
           if (this.animal instanceof Animals) {
             this.animal.name = 'Dog';
           } else {
-            hilog.info(DOMAIN, TAG, 'num is undefined, cannot change property');
+            hilog.info(DOMAIN, TAG, 'animal is undefined, cannot change property');
           }
         })
 

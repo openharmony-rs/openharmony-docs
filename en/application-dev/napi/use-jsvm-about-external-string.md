@@ -5,7 +5,7 @@
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:39:49.173Z pushedAt=2026-09-02T06:19:24.740Z -->
+<!-- md-trans-meta sourceCommit=0b50ff1c6d77ec00cd47e1216c043c17663c7283 translatedAt=2026-11-05T00:56:15.859Z nl=2 -->
 
 ## Introduction
 
@@ -50,7 +50,7 @@ static JSVM_Value testExternalString(JSVM_Env env, JSVM_CallbackInfo info) {
     OH_JSVM_GetValueStringUtf8(env, jsStrLatin1, buf, 10, nullptr);
     OH_LOG_INFO(LOG_APP, "created latin1 string is : %{public}s\n", buf);
     // If the value of copied is true, the external string fails to be created. Otherwise, the external string is created successfully.
-    OH_LOG_INFO(LOG_APP, "create external string failed : %{public}d\n", copied);
+    OH_LOG_INFO(LOG_APP, "create external string result, copied : %{public}d\n", copied);
     copied = true;
     JSVM_Value jsStrUTF16 = nullptr;
     OH_JSVM_CreateExternalStringUtf16(env, stringUTF16, std::char_traits<char16_t>::length(stringUTF16),
@@ -58,7 +58,7 @@ static JSVM_Value testExternalString(JSVM_Env env, JSVM_CallbackInfo info) {
     OH_JSVM_GetValueStringUtf8(env, jsStrUTF16, buf, 10, nullptr);
     OH_LOG_INFO(LOG_APP, "created utf16 string is : %{public}s\n", buf);
     // If the value of copied is true, the external string fails to be created. Otherwise, the external string is created successfully.
-    OH_LOG_INFO(LOG_APP, "create external string failed : %{public}d\n", copied);
+    OH_LOG_INFO(LOG_APP, "create external string result, copied : %{public}d\n", copied);
     OH_JSVM_CloseHandleScope(env, handleScope);
 
     return nullptr;
@@ -70,7 +70,7 @@ static JSVM_CallbackStruct param[] = {
 
 static JSVM_CallbackStruct *method = param;
 
-// Alias for the wrapperObject method to be called from JS.
+// Alias for the testExternalString method to be called from JS.
 static JSVM_PropertyDescriptor descriptor[] = {
     {"testExternalString", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
@@ -83,7 +83,7 @@ const char *srcCallNative = R"JS(testExternalString();)JS";
 ## Expected Result
 ```txt
 created latin1 string is : hello
-create external string failed: 0
+create external string result, copied : 0
 created utf16 string is : world
-create external string failed: 0
+create external string result, copied : 0
 ```

@@ -152,7 +152,7 @@ ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(i
 
 | 参数项 | 描述 |
 | -- | -- |
-| int32_t length | 指定ArkUI_TextPickerRangeContentArray数组的长度。取值必须大于0；传入非正整数或创建失败时返回空指针。 |
+| int32_t length | 指定ArkUI_TextPickerRangeContentArray数组的长度。取值必须大于0；传入非正整数或创建失败时返回空指针。<br>**说明：**<br>建议取值不要超过10000，否则易出现因一次性申请内存过大导致内存不足。 |
 
 **返回：**
 

@@ -6,7 +6,7 @@
 <!--Designer: @andeszhang-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=95b635b2657acaf53c78b86c96c7e9bdaf7f7668 translatedAt=2026-08-22T01:39:10.483Z pushedAt=2026-08-22T03:35:23.238Z -->
+<!-- md-trans-meta sourceCommit=fae04e78fd8904ef3ffb66b71d408ca039141566 translatedAt=2026-11-05T01:00:48.374Z pushedAt=2026-08-22T03:35:23.238Z nl=2 -->
 
 ## When to Use
 
@@ -22,6 +22,7 @@ Add the following library to **CMakeLists.txt**.
 
 ```txt
 libohinputmethod.so
+libhilog_ndk.z.so
 ```
 
 ## Including Header Files
@@ -175,7 +176,7 @@ The entry is the **InputMethodNdkDemo** function.
    InputMethod_AttachOptions *attachOptions = nullptr;
    InputMethod_InputMethodProxy *inputMethodProxy = nullptr;
    
-   void InputMethodDestroy();
+   static napi_value InputMethodDestroy(napi_env env, napi_callback_info info);
    
    void InitText()
    {
@@ -309,7 +310,7 @@ The entry is the **InputMethodNdkDemo** function.
    int32_t ReceivePrivateCommandFunc(InputMethod_TextEditorProxy *proxy, InputMethod_PrivateCommand *privateCommand[],
        size_t size)
    {
-       SetText("Process the extended edit request.");
+       SetText("Process the private command request.");
        return 0;
    }
    

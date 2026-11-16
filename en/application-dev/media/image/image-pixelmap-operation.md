@@ -6,7 +6,7 @@
 <!--Designer: @yaozhupeng-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=ba3f6c99832577d149cf0c227912c266e5256745 translatedAt=2026-08-11T01:46:46.106Z pushedAt=2026-08-11T08:07:23.623Z -->
+<!-- md-trans-meta sourceCommit=8237b3ce2f52b25ad481c3dd8ddab13d041379ad translatedAt=2026-11-05T06:16:33.955Z pushedAt=2026-08-11T08:07:23.623Z nl=1 -->
 
 To process a certain area in an image, you can perform PixelMap operations, which are usually used to beautify the image.
 
@@ -69,7 +69,7 @@ For details about the APIs for PixelMap operations, see [Interface (PixelMap)](.
 
    ``` TypeScript
    // Scenario 2: Read and modify image data in a specified region.
-   // Read the pixel data in the specified region of the PixelMap and write it to the PositionArea.pixels buffer in RGBA_8888 pixel format. The region is specified by PositionArea.region.
+   // Read the pixel data in the specified region of the PixelMap and write it to the PositionArea.pixels buffer in BGRA_8888 pixel format. The region is specified by PositionArea.region.
    const regionWidth: number = 200;
    const regionHeight: number = 100;
    const area: image.PositionArea = {

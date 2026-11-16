@@ -5,6 +5,7 @@
 <!--Designer: @wnazgul-->
 <!--Tester: @jiang_99-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=465a4053e9effe4731a562b5aa8381b246da66b5 translatedAt=2026-11-13T04:20:43.000Z pushedAt=2026-11-13T11:03:36.290Z nl=1 -->
 
 The **observer** module provides event subscription management functions. You can register or unregister an observer that listens for the following events: network status change, signal status change, call status change, cellular data connection status, uplink and downlink data flow status of cellular data services, and SIM status change.
 
@@ -1422,3 +1423,153 @@ Defines event subscription parameters.
 |     Name           |         Type     | Read-Only| Optional| Description                                   |
 | ------------------- | ------------------| ---- | ---- | --------------------------------------- |
 | slotId              | number            | No  | No  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2   |
+
+## observer.onVoIPStateChange
+
+onVoIPStateChange\(callback: Callback\<VoIPCallStateInfo\>\): void
+
+Subscribes to the VoIP call status change event. This API uses an asynchronous callback to return the result.
+
+**Since:** 26.0.1
+
+**Required permission:** ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+**System capability:** SystemCapability.Telephony.StateRegistry
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | --------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
+| callback | Callback\<[VoIPCallStateInfo](#voipcallstateinfo)\> | Yes | Callback used to return the VoIP call status information. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Telephony Error Codes](errorcode-telephony.md).
+
+| ID |                  Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+
+**Example**
+
+```ts
+import { observer } from '@kit.TelephonyKit';
+
+let callback: (data: observer.VoIPCallStateInfo) => void = (data: observer.VoIPCallStateInfo) => {
+  console.info(`onVoIPStateChange, appName: ${data.appName}, contactName: ${data.contactName}, ` +
+    `callType: ${data.callType}, callState: ${data.callState} ` +
+    `isVoiceAnswerSupported: ${data.isVoiceAnswerSupported}`);
+}
+
+// Subscribe to third-party VoIP call state changes.
+try {
+  observer.onVoIPStateChange(callback);
+} catch (err) {
+  console.error(`observer.onVoIPStateChange failed: ${JSON.stringify(err)}`);
+}
+```
+
+## observer.offVoIPStateChange
+
+offVoIPStateChange\(callback?: Callback\<VoIPCallStateInfo\>\): void
+
+Unsubscribes from the VoIP call status change event. This API uses an asynchronous callback to return the result.
+
+**Since:** 26.0.1
+
+**Required permission:** ohos.permission.MANAGE_CALL_FOR_DEVICES
+
+**System capability:** SystemCapability.Telephony.StateRegistry
+
+**Parameters**
+
+|  Name  |                              Type                         | Mandatory |                            Description                                   |
+| -------- | --------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
+| callback | Callback\<[VoIPCallStateInfo](#voipcallstateinfo)\> | No   | Callback used to return the VoIP call status information. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Telephony Error Codes](errorcode-telephony.md).
+
+| ID |                  Error Message                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
+
+**Example**
+
+```ts
+import { observer } from '@kit.TelephonyKit';
+
+let callback: (data: observer.VoIPCallStateInfo) => void = (data: observer.VoIPCallStateInfo) => {
+  console.info(`onVoIPStateChange, appName: ${data.appName}, contactName: ${data.contactName}, ` +
+    `callType: ${data.callType}, callState: ${data.callState} ` +
+    `isVoiceAnswerSupported: ${data.isVoiceAnswerSupported}`);
+}
+
+// Unsubscribe: cancel a single subscription by specifying the callback.
+try {
+  observer.offVoIPStateChange(callback);
+} catch (err) {
+  console.error(`observer.offVoIPStateChange failed: ${JSON.stringify(err)}`);
+}
+
+// Unsubscribe: cancel all subscriptions without parameters.
+try {
+  observer.offVoIPStateChange();
+} catch (err) {
+  console.error(`observer.offVoIPStateChange failed: ${JSON.stringify(err)}`);
+}
+```
+
+## VoIPCallStateInfo
+
+Defines the VoIP call status information.
+
+**Since:** 26.0.1
+
+**System capability:** SystemCapability.Telephony.StateRegistry
+
+| Name | Type                                   |  Read-Only | Optional | Description |
+| ----- |--------------------------------------| ----- | ---- | -----|
+|  appName  | string |  No  |  No  | Name of the VoIP app. |
+| contactName | string  |  No  |  No  | Name of the contact of the VoIP call. |
+| callType | [VoIPCallType](#voipcalltype)  |  No  |  No  | Type of the VoIP call. |
+| callState | [VoIPCallState](#voipcallstate)  |  No  |  No  | State of the VoIP call. |
+| isVoiceAnswerSupported | boolean  |  No  |  No  | Whether the VoIP app supports answering the current call as a voice call.<br>- **true**: supports answering the current call as a voice call.<br>- **false**: does not support answering the current call as a voice call. |
+
+## VoIPCallType
+
+Enumerates the VoIP call types.
+
+**Since:** 26.0.1
+
+**System capability:** SystemCapability.Telephony.StateRegistry
+
+| Name        | Value   | Description              |
+| ----------- | ---- | ----------------- |
+| VOICE   | 0    | Voice call.            |
+| VIDEO     | 1    | Video call.           |
+
+## VoIPCallState
+
+Defines the VoIP call status.  
+
+**Since:** 26.0.1
+
+**System capability:** SystemCapability.Telephony.StateRegistry
+
+| Name        | Value   | Description              |
+| ----------- | ---- | ----------------- |
+| IDLE           | 0    | VoIP call idle.            |
+| INCOMING       | 1    | VoIP call incoming.           |
+| OUTGOING       | 2    | VoIP call outgoing.       |
+| DIALING        | 3    | VoIP call dialing.       |
+| ANSWERED       | 4    | VoIP incoming call answered by the user.       |
+| ACTIVE         | 5    | VoIP call active.       |
+| HOLDING        | 6    | VoIP call on hold.       |
+| DISCONNECTING  | 7    | VoIP call disconnecting.       |
+| DISCONNECTED   | 8    | VoIP call disconnected.       |

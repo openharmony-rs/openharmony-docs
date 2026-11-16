@@ -1,13 +1,14 @@
 # OH_EqualizerFrequencyBandGains
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @xxngwang-->
+<!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=e9ec8701c87cf0327fd7aa17be40e1c4aeed0156 translatedAt=2026-11-09T10:27:19.855Z pushedAt=2026-11-09T11:31:38.464Z nl=1 -->
 
 ```c
-typedef struct {...} OH_EqualizerFrequencyBandGains
+typedef struct OH_EqualizerFrequencyBandGains {...} OH_EqualizerFrequencyBandGains
 ```
 
 ## Overview
@@ -26,4 +27,4 @@ The struct describes the configuration parameters for the equalizer effect node 
 
 | Name| Description|
 | -- | -- |
-| int32_t gains[EQUALIZER_BAND_NUM] | Settings for the equalizer band gains. The value of **EQUALIZER_BAND_NUM** is **10**, with each gain value ranging from -10 to 10 dB.<br> Frequency bands: 31 Hz, 62 Hz, 125 Hz, 250 Hz, 500 Hz, 1 kHz, 2 kHz, 4 kHz, 8 kHz, and 16 kHz.<br>**Since**: 22|
+| int32_t gains[EQUALIZER_BAND_NUM] | Equalizer frequency band gain configuration. The array length EQUALIZER_BAND_NUM is 10, and the gain input range is [-10, 10], in dB (decibel).<br> Frequency bands: 31Hz, 62Hz, 125Hz, 250Hz, 500Hz, 1kHz, 2kHz, 4kHz, 8kHz, 16kHz.<br>**Since:** 22 |

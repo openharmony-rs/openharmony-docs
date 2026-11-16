@@ -6,7 +6,7 @@
 <!--Designer: @qq_42718467-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=473631a7b8b0e711377f954eb896291c00dfc0f9 translatedAt=2026-10-31T01:17:19.296Z pushedAt=2026-10-31T01:26:51.537Z nl=1 -->
+<!-- md-trans-meta sourceCommit=6b1427ae243c8d46c606b8ba916dc39a9af22ea3 translatedAt=2026-11-09T07:43:50.305Z pushedAt=2026-11-09T07:44:43.806Z nl=1 -->
 
 Calendar is used to store and manage personal or team events. Users can easily view, edit, and share event information on the calendar.
 
@@ -138,7 +138,16 @@ The table below lists the main APIs used for calendar management. For details ab
     });
     ```
 
-5. After a calendar account is created, its color is black by default. If no color is specified, the display effect of the calendar account in dark mode may be poor on some versions or devices. You need to call **setConfig()** to set calendar configuration information, including event reminder and calendar color.
+5. After a calendar account is created, it has a default color. If no color is specified, the display effect of the calendar account in dark mode may be poor on some versions or devices. You need to call **setConfig()** to set calendar configuration information, including whether to enable the event reminder capability under the calendar account and the calendar account color.
+
+   > **NOTE**
+   >
+   > For devices running OpenHarmony versions earlier than 5.1.0, the default color is black.
+   >
+   > For devices running OpenHarmony 5.1.0 to<!--RP1-->OpenHarmony 7.0<!--RP1End--> (exclusive), the default color is red.
+   >
+   > For devices running<!--RP1-->OpenHarmony 7.0<!--RP1End--> or later, the default color value is 0xFF0A59F7.
+
 
     <!-- @[calendarData_setConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
     

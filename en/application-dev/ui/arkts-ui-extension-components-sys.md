@@ -1,12 +1,11 @@
 # Cross-Process Application Capability Extension (UIExtension, for System Applications Only)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=5ed0cc4164abf79790ec16923fb6361d2a756da9 translatedAt=2026-08-04T06:41:34.742Z pushedAt=2026-08-04T08:55:41.364Z -->
+<!-- md-trans-meta sourceCommit=aa29dec93e410da65f7fdab5b2413e7cee011b39 translatedAt=2026-11-05T11:27:42.853Z pushedAt=2026-11-09T10:02:18.783Z nl=1 -->
 
 [UIExtension](../reference/apis-arkui/js-apis-arkui-uiExtension.md) allows you to create UI extensions that can be embedded into other app windows, enabling apps to deliver richer and more flexible user experiences.
 
@@ -18,9 +17,10 @@
 
   Defined and used in the host application, this is a component provided by ArkUI. It allows you to use the ArkTS declarative paradigm to define and use components directly within your own application.
 
-- [UIExtensionAbility](../application-models/uiextensionability-sys.md) component
+- [UIExtensionAbility](../application-models/uiextensionability-sys.md)
 
-  Defined in the provider application, this component runs in an independent process. It can be instantiated by the host application and embedded into its own window as a UI extension, thereby enhancing inter-application interactivity and user experience.
+  A `UIExtensionAbility` defined in the provider application runs in an independent process. It can be created by the host application and embedded into its window as a UI extension, thereby enhancing interaction and user experience between applications.
+
 
 ## Implementation Principles
 
@@ -35,7 +35,6 @@ After being started by AMS, the provider application can exchange data with the 
 ![uiextension-process-model](figures/uiextension-process-model.png)
 
 - The host application sends messages to the provider application through [UIExtensionProxy.send](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#send), and the provider can obtain the messages using [UIExtensionContentSession.setReceiveDataCallback](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#setreceivedatacallback).
-
 - The provider application sends messages to the host application through [UIExtensionContentSession.sendData](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession-sys.md#senddata), and the host can receive the messages using [UIExtensionProxy.onReceive](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#onreceive).
 
 ## Available Capabilities
@@ -43,7 +42,6 @@ After being started by AMS, the provider application can exchange data with the 
 ### Basic Component Capabilities
 
 - Component-based [UIExtensionComponent](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md): provides an embedded extension capability that allows embedding and invoking page extensions from other apps within an app page.
-
 - Full-screen modal UIExtension: displays a full-screen modal page for interaction and cannot be obscured. System apps expose specific components or Node-APIs based on the internal capabilities of UIExtension, providing specific capabilities for third-party apps to use.
 
 ### Available Capabilities of the UIExtensionAbility Process
@@ -61,7 +59,6 @@ Currently, the component can affect other components or host app information (su
 In scenarios where component attributes involve cross-component interactions, the following capabilities are not supported:
 
 - The attributes of the provider component cannot control, assign, or merge with the attributes of other components or host application components. For example, the [component ID](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md) is not supported.
-
 - The attributes of the provider component cannot control display effects or animations that extend beyond the boundaries of the **UIExtension** component. For example, the [modal transition](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md) is not supported.
 
 The details are as follows.
@@ -80,9 +77,7 @@ The details are as follows.
 By default, the provider application cannot interact with the host application's components or process context. Specifically, the following are not supported:
 
 - Effects that exceed a component's boundaries, such as the **Navigation** component displaying into the safe area
-
 - Components that rely on other components or require cross-component or cross-application control and access, for example, **PluginComponent** for accessing other components or **FormComponent** for displaying pages from other applications across processes
-
 - Components that depend on the host application's window information or process **UIContext** instance for capabilities, interactions, or animations, such as the **FolderStack** component
 
 The details are as follows.
@@ -91,12 +86,12 @@ The details are as follows.
 | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [PluginComponent (System API)](../reference/apis-arkui/arkui-ts/ts-basic-components-plugincomponent-sys.md) | Not supported | Used by the component consumer to request components and data. The consumer sends a component template and data. Supports the SystemUI in integrating UI provided by other services through a plug-in approach. | 1. Similar to the UIExtension capability, this component is prone to nesting, which increases complexity.<br>2. Since the provider of the UIExtension component operates in a separate process, it cannot access or interact with components within the host component by default. |
 | [FormComponent (System API)](../reference/apis-arkui/arkui-ts/ts-basic-components-formcomponent-sys.md)| Not supported  | **FormComponent** is a component used to display widgets.                          | This component facilitates cross-process component calls. However, nesting it within UIExtension can complicate the process relationships, potentially leading to functional and performance issues.|
-| [IsolatedComponent (System API)](../reference/apis-arkui/arkui-ts/ts-container-isolated-component-sys.md) | Not supported | IsolatedComponent is used to embed and display UI provided by an independent Abc (.abc file) within the current page. The displayed content runs in a restricted worker thread. | Because the capabilities carried by IsolatedComponent (such as cloud cards) involve cross-app scheduling, nested use in UIExtension cross-process scenarios would complicate the process relationship. It is not currently supported in UIExtension. |
+| [IsolatedComponent (System API)](../reference/apis-arkui/arkui-ts/ts-container-isolated-component-sys.md) | Not supported   | **IsolatedComponent** is designed to support the embedding and display of UIs provided by independent ABC (.abc file) within the current page, with the displayed content running in a restricted worker thread. | Because the capabilities carried by IsolatedComponent (such as cloud cards) involve cross-application scheduling, nesting it in the UIExtension cross-process scenario would complicate the process relationship. Therefore, it is not supported in UIExtension for now. |
 | [FullScreenLaunchComponent](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-FullScreenLaunchComponent.md) | Not supported  | **FullScreenLaunchComponent** is a component designed for launching atomic services in full screen. If the invoked application (the one being launched) grants the invoker the authorization to run the atomic service in an embedded manner, the invoker can operate the atomic service in full-screen embedded mode. If authorization is not provided, the invoker will launch the atomic service in a pop-up manner.| Due to its cross-application scheduling capability, UIExtension does not support nested launching of this component. |
 | [EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md) | Not supported | EmbeddedComponent is used to embed UI provided by another [EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md) within the same app on the current page. EmbeddedUIExtensionAbility runs in an independent process and handles page layout and rendering. | Because EmbeddedComponent involves launching an independent EmbeddedUIExtensionAbility process across processes, nested use in the existing cross-process UIExtension scenario would complicate the process relationship. Nested launching is not currently supported in UIExtension. |
 | [RemoteWindow](../reference/apis-arkui/arkui-ts/ts-basic-components-remotewindow-sys.md) | Not supported  | **RemoteWindow** is a component that enables remote management of application windows, offering the capability to create synchronized animations between the application window and components during application startup and exit.| The components in UIExtension are already in another process and cannot affect or control the host application's window.|
 | [RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md) | Not supported  | The **RichText** component parses and displays HTML text.                        | —                                                            |
-| [FolderStack](../reference/apis-arkui/arkui-ts/ts-container-folderstack.md) | Not supported | FolderStack inherits from [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md) (stack layout) and adds foldable screen hover capability. By identifying upperItems, it automatically avoids the foldable screen crease area and moves content to the upper half of the screen. | The foldable screen area division capability requires coordination with the host-side window, which in turn requires obtaining the host's main window information from the provider. This is not currently supported. |
+| [FolderStack](../reference/apis-arkui/arkui-ts/ts-container-folderstack.md) | Not supported   | **FolderStack** inherits from the [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md) (stack layout) component and adds the foldable screen hover capability. By identifying `upperItems`, it automatically avoids the foldable screen crease area and moves to the upper half of the screen. | The component's capabilities require linkage with the host application's window, necessitating access to the host application's main window information within the provider. This is currently not supported. |
 | [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) | Not supported | Can be used for EGL/OpenGLES and media data writing, with the content displayed on the XComponent. | — |
 | [FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md) | Not supported  | The **FormLink** component is provided for interactions between static widgets and widget providers. It supports three types of events: router, message, and call.| This component facilitates cross-process component calls. However, nesting it within UIExtension can complicate the process relationships, potentially leading to functional and performance issues.|
 | [HyperLink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md) | Not supported  | The **Hyperlink** component implements a link from a location in the component to another location.                    | —                                                            |
@@ -111,7 +106,6 @@ The details are as follows.
 The capabilities provided by Node-APIs in the **UIExtension** scenario must account for their potential to extend beyond the current component and interact with the host application's components and process context. Specifically, the following are not supported:
 
 - The API may require information from the host application's context or window, such as **UIContext**.
-
 - The API may control or influence not just the component itself but also other components or aspects of the host application, such as UI appearance.
 
 The details are as follows.
@@ -137,13 +131,13 @@ The **UIExtensionComponent** (on the host side) can access applications that hav
 
 Considering the extensive capabilities of UIExtension (including those derived from UIExtension, such as those for **CreateModalUIExtension** in the system), if there are security concerns within the provider application that cannot be resolved within UIExtension, alternative approaches should be considered. Using UIExtension without proper security measures poses potential risks to both the provider and host applications.
 
-**Usage modes:**
+**Usage Modes:**
 
 - **CreateModalUIExtension** (full-screen modal mode): **CreateModalUIExtension** is an inner class interface used exclusively by system applications to launch cross-process UIs through the development of Node-APIs or components. In this mode, a modal that overlays the application is created, preventing any components or windows from the host application from obscuring the UIExtension, and resizing of the component is not permitted.
 
 - UIExtensionComponent component mode: available only to system apps and can be used in apps through the ArkTS declarative development paradigm. It is integrated into apps as a component, achieving interaction effects similar to those of other components.
 
-In component mode, to avoid being obscured by the host application's subwindows:
+**Avoiding occlusion by the host application's subwindows in component mode:**
 
 - The provider application can determine, based on its service needs, whether to allow the host application to obscure the UI.
 
@@ -151,7 +145,7 @@ In component mode, to avoid being obscured by the host application's subwindows:
 
 - This approach has a drawback: Once applied, it restricts the host application's interaction capabilities, as it can no longer create subwindows that could cover the provider application's window.
 
-**Lock screen display control policy**:
+**Display control on the lock screen:**
 
 Aligned with the `UIAbility` specifications, the app being launched by `UIExtension` must have the lock screen display permission to successfully display on the lock screen. (This control applies only when the device is in an unlocked state, such as when the device owner has set up lock screen password, fingerprint, face recognition, or other security authentication, and the screen lights up after the user actively locks the screen.)
 
@@ -169,7 +163,6 @@ Only the UIAbility components of system applications can be launched on the lock
 Due to the capability characteristics of UIExtension, a nested capability dependency such as App A (UIAbility) -> App B (UIExtensionAbility) -> App C (UIExtensionAbility) can be implemented. However, because of cross-process relationships, excessive nesting levels can cause a sharp decline in app interaction performance. Therefore, the following constraints are imposed:
 
 - No more than three levels of nesting: Excessive nesting levels can lead to frequent cross-process interactions, degrading response performance and resulting in a poor user experience.
-
 - Circular nesting is not allowed: Circular nesting refers to App A (UIAbility) -> App B (UIExtensionAbility) -> App C (UIExtensionAbility) -> App B (UIExtensionAbility). Since app processing involves synchronous scenarios, in such scenarios, App B becomes unresponsive, ultimately leading to a deadlock.
 
 **Event Processing Mechanism Constraints**
@@ -177,13 +170,11 @@ Due to the capability characteristics of UIExtension, a nested capability depend
 Events are handled synchronously or asynchronously based on their use case:
 
 - Interactions between the host process and the provider process are handled asynchronously by default: This avoids performance issues and deadlocks, which could affect the overall interaction experience.
-
 - Synchronous event handling principles: Synchronous events are supported where they have a low trigger frequency and minimal performance impact; they should meet the actual use scenarios.
 
 When using the UIExtension capabilities, comply with the following design constraints:
 
 - Synchronous event handling scenarios: Performance issues due to deep nesting or functional issues due to circular nesting cannot be resolved by the UIExtension component mechanism. You need to analyze and resolve these issues based on their service scenarios, such as reducing nesting levels or using non-UIExtension component solutions.
-
 - Asynchronous event handling scenarios: Both the UIExtension component and the host application's components may receive events simultaneously. You need to manage this based on the use scenario. For example, you can configure the host application components not to handle the events. If this is not feasible, you are advised to replace the UIExtension component to ensure a seamless interaction experience.
 
 | Scenario    | Category                      | Supported or Not| Synchronous/Asynchronous (Host and Provider)| Remarks                                                        |
@@ -202,21 +193,19 @@ When using the UIExtension capabilities, comply with the following design constr
 As UIExtension involves cross-process application calls, the processing between the host application process and the provider application process cannot be synchronized, leading to different experience issues compared to regular components. Be aware of the performance constraints of rendering pages across multiple processes with this component and take targeted measures.
 
 - **Flickering white screen**: Initiating a new process through UIExtension to deliver functionality involves a sequence of steps – creation, launch, and page rendering – that require time to complete. During this period, users may notice a brief display of the **UIExtensionComponent**'s default white background, resulting in a flickering white screen.
-
 - **Desynchronization between rendering and display**: When the host app page changes rapidly (such as during screen rotation or window resizing), there can be a desynchronization between the rendering of the host app page and the content displayed within the UIExtension component. This issue arises from cross-process interactions; while the provider app's process tasks are triggered by the host app, layout tasks are handled in the respective process's JS thread. There is no guarantee of synchronization between the host app's and provider app's rendering tasks, resulting in desynchronization.
+
+
 
 When developing the provider application, consider the following design constraints:
 
 - Use scenarios with minimal layout changes.
-
 - When layout changes occur, the provider app's JS thread should execute as few tasks as possible to ensure that the JS thread can respond to layout change tasks promptly.
 
 You can mitigate the flickering white screen issue with the provider application in the following ways:
 
 - Adjust the background color of the UIExtensionComponent (for instructions, see [Background](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md)) to match the background color of the host application's and provider application's pages, to deliver a seamless transition and prevent noticeable changes during the loading process.
-
 - Utilize the [placeholder](../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionoptions11) mechanism provided by this component to configure a custom UI, which will be displayed before the provider application page is fully displayed.
 
 If the mitigation does not fully meet the application's interaction requirements due to the constraints of cross-process capabilities, it is recommended that you consider alternative solutions.
 
-<!--no_check-->

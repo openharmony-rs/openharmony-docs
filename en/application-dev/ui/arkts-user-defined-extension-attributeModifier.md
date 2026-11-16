@@ -1,29 +1,22 @@
 # Attribute Modifier (AttributeModifier)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c95bfd438188db0f5250ce0308aede264df6c96f translatedAt=2026-08-05T01:24:34.366Z pushedAt=2026-08-05T01:57:22.506Z -->
+<!-- md-trans-meta sourceCommit=bcc10e53814ae990919907519b35f76173365a16 translatedAt=2026-11-05T11:33:36.506Z pushedAt=2026-11-09T10:02:18.791Z nl=1 -->
 
 ## Overview
-
 The introduction of the [@Styles](../ui/state-management/arkts-style.md) and [@Extend](../ui/state-management/arkts-extend.md) decorators in declarative syntax helps with reuse of custom styles, but they encounter limitations in certain scenarios:
-
 - Both @Styles and @Extend are processed at compile time and do not support cross-file exports for reuse.
-
 - @Styles only supports universal attributes and events, not component-specific attributes.
-
 - While @Styles allows for polymorphic styles, it does not support parameter passing, which means it cannot expose certain properties externally.
-
 - @Extend supports private attributes and events of specific components, but it does not support cross-file exports for reuse either.
-
 - Neither @Styles nor @Extend supports service logic for dynamically determining whether to set certain attributes. They only allow setting all possible attributes using ternary expressions, which is inefficient when dealing with a large number of attributes.
 
-To address the above issues, ArkUI introduces the **AttributeModifier** mechanism, which allows for dynamic modification of attributes through **Modifier** objects. The table below is a comparison of the capabilities between the **AttributeModifier** mechanism and the @Styles and @Extend decorators.
 
+To address the above issues, ArkUI introduces the **AttributeModifier** mechanism, which allows for dynamic modification of attributes through **Modifier** objects. The table below is a comparison of the capabilities between the **AttributeModifier** mechanism and the @Styles and @Extend decorators.
 |  Capability |  @Styles  |  @Extend  |  AttributeModifier  |
 | :-----: | :-----: | :-----: | :-----: |
 |  Cross-file export |  Not supported |  Not supported |  Supported |
@@ -40,7 +33,7 @@ Clearly, when compared to @Styles and @Extend, **AttributeModifier** provides su
 ## API Definition
 
   <!-- @[Common_AttributeModifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier01.ets) -->
-
+  
   ``` TypeScript
   declare interface AttributeModifier<T> {
   
@@ -57,36 +50,30 @@ Clearly, when compared to @Styles and @Extend, **AttributeModifier** provides su
   }
   ```
 
+
 **AttributeModifier** is an API that requires you to implement methods in the form of **apply*Xxx*Attribute**. *Xxx* signifies various states of polymorphism and can be in the following: **Normal**, **Pressed**, **Focused**, **Disabled**, and **Selected**. **T** represents the attribute type of the component. Within the callback, you can access the attribute object and use it to set the attributes.
 
   <!-- @[Common_CommonMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier01.ets) -->
-
+  
   ``` TypeScript
   declare class CommonMethod<T> {
     attributeModifier(modifier: AttributeModifier<T>): T;
   }
   ```
 
+
 **attributeModifier** is a universal component method that allows you to pass in a custom modifier. Since the type **T** is explicitly defined when a component is instantiated, the type **T** passed to the method must be the corresponding attribute type for that component, or it must be **CommonAttribute**.
 
 ## How to Use
 
 - The component universal method `attributeModifier` supports passing an instance that implements the `AttributeModifier<T>` interface, where `T` must be specified as the corresponding Attribute type of the component, or as [Universal Attribute](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md) (CommonAttribute).
-
 - When a component is initialized for the first time or when its associated state variable changes, if the passed instance implements the corresponding API, the **applyNormalAttribute** callback will be invoked.
-
 - When the [applyNormalAttribute](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#applynormalattribute) callback is invoked, the component attribute object is passed in, through which you can set the attributes/events of the current component.
-
 - If an attempt is made to execute attributes or events that are not yet supported, an exception will be thrown during execution.
-
 - When an attribute change triggers the **apply*Xxx*Attribute** API, any attributes that were previously set on the component but not included in the current change will revert to their default values.
-
 - This API can be used to leverage polymorphic styling capabilities. For example, if you need to set certain attributes when the component enters a pressed state, you can implement the [applyPressedAttribute](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#applypressedattribute) method to achieve this.
-
 - Avoid setting the same attributes in `attributeModifier` as those set through other methods, to prevent `attributeModifier` from not taking effect during page refresh.
-
 - A single **Modifier** instance object can be used across multiple components.
-
 - If **applyNormalAttribute** is used multiple times on a single component with different **Modifier** instances, each time the state variables are updated, the attribute settings of these instances will be executed in the order they were applied, which also follows the principle of property override.
 
 ## Setting and Modifying Component Attributes
@@ -94,7 +81,7 @@ Clearly, when compared to @Styles and @Extend, **AttributeModifier** provides su
 **AttributeModifier** provides a mechanism to separate the UI from styling. It supports parameter passing and service logic writing, and triggers updates through state variables.
 
   <!-- @[Common_MyButtonModifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier01.ets) -->
-
+  
   ``` TypeScript
   export class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
     // A private member variable that can be dynamically modified externally
@@ -121,7 +108,7 @@ Clearly, when compared to @Styles and @Extend, **AttributeModifier** provides su
   ```
 
   <!-- @[main_button1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/Button1.ets) -->
-
+  
   ``` TypeScript
   
   // pages/Button1.ets
@@ -152,8 +139,9 @@ Clearly, when compared to @Styles and @Extend, **AttributeModifier** provides su
 
   ![AttributeModifier](figures/AttributeModifier01.gif)
 
-  <!-- @[Common_MyButtonModifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier01.ets) -->
 
+  <!-- @[Common_MyButtonModifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier01.ets) -->
+  
   ``` TypeScript
   export class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
     // A private member variable that can be dynamically modified externally
@@ -178,9 +166,8 @@ Clearly, when compared to @Styles and @Extend, **AttributeModifier** provides su
     }
   }
   ```
-
   <!-- @[main_button2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/Button2.ets) -->
-
+  
   ``` TypeScript
   
   // pages/Button2.ets
@@ -214,7 +201,7 @@ Clearly, when compared to @Styles and @Extend, **AttributeModifier** provides su
 If **applyNormalAttribute** is used multiple times on a single component with different **Modifier** instances, each time the state variables are updated, the attribute settings of these instances will be executed in the order they were applied, which also follows the principle of property override, meaning that the properties set later will override earlier ones.
 
   <!-- @[Common_MyButtonModifier2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier02.ets) -->
-
+  
   ``` TypeScript
   export class MyButtonModifier2 implements AttributeModifier<ButtonAttribute> {
     public isDark: boolean = false
@@ -234,9 +221,8 @@ If **applyNormalAttribute** is used multiple times on a single component with di
     }
   }
   ```
-
   <!-- @[Common_MyButtonModifier3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier03.ets) -->
-
+  
   ``` TypeScript
   export class MyButtonModifier3 implements AttributeModifier<ButtonAttribute> {
     public isDark2: boolean = false
@@ -254,9 +240,8 @@ If **applyNormalAttribute** is used multiple times on a single component with di
     }
   }
   ```
-
   <!-- @[main_button3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/Button3.ets) -->
-
+  
   ``` TypeScript
   
   // pages/Button3.ets
@@ -294,7 +279,7 @@ If **applyNormalAttribute** is used multiple times on a single component with di
 You can use **AttributeModifier** to set polymorphic styles and events, which enables the reuse of event logic and supports various states such as **Normal**, **Pressed**, **Focused**, **Disabled**, and **Selected**. For example, if you need to set certain attributes when the component enters a pressed state, you can implement the **applyPressedAttribute** method to achieve this.
 
   <!-- @[Common_MyButtonModifier4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier04.ets) -->
-
+  
   ``` TypeScript
   export class MyButtonModifier4 implements AttributeModifier<ButtonAttribute> {
     applyNormalAttribute(instance: ButtonAttribute): void {
@@ -312,9 +297,8 @@ You can use **AttributeModifier** to set polymorphic styles and events, which en
     }
   }
   ```
-
   <!-- @[main_button4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/Button4.ets) -->
-
+  
   ``` TypeScript
   
   // pages/Button4.ets
@@ -337,17 +321,17 @@ You can use **AttributeModifier** to set polymorphic styles and events, which en
     }
   }
   ```
-
+  
   ![AttributeModifier](figures/AttributeModifier02.gif) 
 
 ## attributeModifier Support for Attributes and Events
-
+  
   Dynamic attribute and event configuration via **attributeModifier** is supported since API version 11.
-
+  
 ### Attributes and Events Not Supporting attributeModifier
-
+  
   The following table lists attributes and events that currently do not support attributeModifier. Unless otherwise specified, attributes and events support **attributeModifier** by default from their initial release.
-
+  
   | Component/Attribute Category| Attribute/Event Name            | Error Message                 | Description                                   |
   | ------------------------ | -------- | ----------------------------------------- | ------------------------ |
   | CommonAttribute | [accessibilityText](../reference/apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitytext12)     | -   | -  |
@@ -355,7 +339,6 @@ You can use **AttributeModifier** to set polymorphic styles and events, which en
   | CommonAttribute | [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md#animation)                | Method not implemented.   | Animation attributes are not supported.                |
   | CommonAttribute | [attributeModifier](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier)        | -                         | **attributeModifier** does not take effect when nested.|
   | CommonAttribute | [backgroundFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#backgroundfilter)         | is not callable           | -                                         |
-  | CommonAttribute | [chainWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainweight14)              | is not callable           | -                                         |
   | CommonAttribute | [compositingFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#compositingfilter)        | is not callable           | -                                         |
   | CommonAttribute | [drawModifier](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawmodifier)             | is not callable           | Modifier attributes are not supported.               |
   | CommonAttribute | [foregroundFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#foregroundfilter)         | is not callable           | -                                         |
@@ -413,11 +396,11 @@ You can use **AttributeModifier** to set polymorphic styles and events, which en
   | TextInput | [onWillAttachIME](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#onwillattachime20) | - | - |
   | TextPicker | [onEnterSelectedArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md#onenterselectedarea18) | - | - |
   | TimePicker | [onEnterSelectedArea](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md#onenterselectedarea18) | - | - |
-
+  
 ### Version Differences Between Attribute/Event Initial Release and attributeModifier Support
-
+  
   The following table shows cases where the initial release version of an attribute or event differs from its **attributeModifier** support version. Unless otherwise specified, attributes and events support **attributeModifier** by default from their initial release.
-
+  
   | Component/Attribute Category| Attribute/Event Name                                             | Initial Release Version| attributeModifier Support Version|
   | --------------------------- | ------------------------------------------------------------ | ------------------- | --------------------------- |
   | AlphabetIndexer | [autoCollapse](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md#autocollapse11) | 11 | 12 |

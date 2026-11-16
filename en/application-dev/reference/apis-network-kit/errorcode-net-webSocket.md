@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=2188f48fcd967ec2074a4390970c003bc388f9d7 translatedAt=2026-09-28T01:24:53.629Z pushedAt=2026-10-09T02:44:31.113Z -->
+<!-- md-trans-meta sourceCommit=c8d611da517c0df9bbfb2e4952764bf8397e713e translatedAt=2026-11-04T06:39:15.785Z pushedAt=2026-11-04T08:04:44.876Z nl=1 -->
 
 > **NOTE**
 >
@@ -40,7 +40,7 @@ WebSocket connection failed.
 
 3. Check whether the added headers are correct.
 
-4. If the issue persists, collect complete logs and contact technical support for assistance.
+4. If the issue persists, collect complete logs and contact technical support for assistance. 
 
 ## 2302001 WebSocket URL Error
 
@@ -60,7 +60,7 @@ The WebSocket URL is incorrect.
 
 1. Check whether the URL is empty or does not contain the correct protocol (ws:// or wss://).
 
-2. Check whether the WebSocket URL length exceeds 2048 characters.
+2. Check whether the URL length exceeds 2048 characters.
 
 ## 2302002 WebSocket Certificate Does Not Exist
 
@@ -80,7 +80,7 @@ The certificate path is incorrect or no certificate is configured.
 
 1. Check whether the CA certificate path is valid.
 
-2. If the **WebSocketRequestOptions.clientCert** is specified, check whether the certificate path and private key path are valid.
+2. If WebSocketRequestOptions.clientCert is specified, check whether the certificate path and the private key path are valid.
 
 
 ## 2302003 WebSocket Connection Already Exists
@@ -138,21 +138,21 @@ The port number in the WebSocketServer configuration file is invalid.
 Check whether the port number is valid.
 
 ## 2302006 WebSocketServer Connection Does Not Exist
-
+ 
 **Error Message**
-
+ 
 websocket connection does not exist.
-
+ 
 **Description**
-
+ 
 The WebSocketServer connection does not exist.
-
+ 
 **Possible Causes**
-
+ 
 The WebSocketServer connection to be operated (closed or sent a message) has been disconnected or does not exist.
-
+ 
 **Solution**
-
+ 
 Check whether the connection is still valid, and re-establish the connection before performing the operation if necessary.
 
 ## 2302007 Listening Port Already Occupied

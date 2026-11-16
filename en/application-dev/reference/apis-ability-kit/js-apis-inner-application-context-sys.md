@@ -31,9 +31,9 @@ Creates the context based on the bundle name.
 
 > **NOTE**
 >
-> If there are multiple modules in the stage model, resource ID conflicts may occur. You are advised to use [application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext12) instead.
+> If there are multiple modules in the stage model, resource ID conflicts may occur. You are advised to use [application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext) instead.
 >
-> This API has been supported since API version 9 and deprecated since API version 12. You are advised to use [application.createBundleContext](./js-apis-app-ability-application-sys.md#applicationcreatebundlecontext12) instead.
+> This API has been supported since API version 9 and deprecated since API version 12. You are advised to use [application.createBundleContext](./js-apis-app-ability-application-sys.md#applicationcreatebundlecontext) instead.
 
 **System API**: This is a system API.
 
@@ -90,7 +90,7 @@ Creates the context based on the bundle name and module name.
 
 > **NOTE**
 >
-> This API has been supported since API version 9 and deprecated since API version 12. You are advised to use [application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext12) instead.
+> This API has been supported since API version 9 and deprecated since API version 12. You are advised to use [application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext) instead.
 
 **System API**: This is a system API.
 

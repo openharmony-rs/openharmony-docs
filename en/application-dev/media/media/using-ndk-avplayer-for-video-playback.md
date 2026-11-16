@@ -3,10 +3,10 @@
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-11T01:54:47.809Z pushedAt=2026-08-12T03:05:09.586Z -->
+<!-- md-trans-meta sourceCommit=774ee88b079997f3457691443b6794eabf8e6f3a translatedAt=2026-11-05T06:16:33.958Z pushedAt=2026-08-12T03:05:09.586Z nl=1 -->
 
 The [AVPlayer](../../reference/apis-media-kit/capi-avplayer.md) is used to play raw media assets in an end-to-end manner. In this topic, you will learn how to use the AVPlayer to play a complete video.
 
@@ -35,29 +35,29 @@ This topic describes only how to implement the playback of a media asset. In pra
 
 ## How to Develop
 
-Link the dynamic library in the CMake script.
+Link the following dynamic libraries in the CMake script:
 
-```C++
-target_link_libraries(sample PUBLIC libavplayer.so)
+<!-- @[target_link_libraries](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/CMakeLists.txt) -->
+   
+``` Text
+target_link_libraries(entry PUBLIC 
+    libavplayer.so 
+    libnative_media_core.so 
+    libhilog_ndk.z.so
+)
 ```
 
-To use [OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback) to set the information callback and error callback, link the following dynamic libraries in the CMake script:
-
-```C++
-target_link_libraries(sample PUBLIC libnative_media_core.so)
-```
+To use [OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback) to set the information callback and error callback, link libnative_media_core.so in the CMake script.
 
 To use system logging, include the following header file:
 
-```C++
+<!-- @[hilog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVPlayer/AVPlayerNDKStreamingMedia/entry/src/main/cpp/napi_init.cpp) -->
+   
+``` C++
 #include <hilog/log.h>
 ```
 
-Link the following dynamic library in the CMake script:
-
-```C++
-target_link_libraries(sample PUBLIC libhilog_ndk.z.so)
-```
+Link libhilog_ndk.z.so in the CMake script.
 
 You can use C/C++ APIs related to video playback by including the header files [avplayer.h](../../reference/apis-media-kit/capi-avplayer-h.md), [avplayer_base.h](../../reference/apis-media-kit/capi-avplayer-base-h.md), and [native_averrors.h](../../reference/apis-avcodec-kit/capi-native-averrors-h.md).
 
@@ -70,7 +70,7 @@ Read [AVPlayer](../../reference/apis-media-kit/capi-avplayer.md) for the API ref
    | Callback Type | Description |
    | -------- | -------- |
    | OH_AVPlayerOnInfoCallback | Mandatory callback function; used to listen for player process information.<br>The listener must be set when the player is in the AV_IDLE state and before any resource setting API is called. If the listener is set after calling a resource setting API, information events reported during resource setting may be missed. |
-   | OH_AVPlayerOnErrorCallback | Mandatory callback function; used to listen for player error information.<br>The listener must be set when the player is in the AV_IDLE state and before any resource setting API is called. If the listener is set after calling a resource setting API, information events reported during resource setting may be missed. |
+   | OH_AVPlayerOnErrorCallback | Mandatory callback function; used to listen for player error information.<br>The listener must be set when the player is in the AV_IDLE state and before any resource setting API is called. If the listener is set after calling a resource setting API, error events reported during resource setting may be missed. |
 
     The application can obtain more information from the callbacks set by calling [OH_AVPlayer_SetOnInfoCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setoninfocallback) and [OH_AVPlayer_SetOnErrorCallback()](../../reference/apis-media-kit/capi-avplayer-h.md#oh_avplayer_setonerrorcallback). In addition, it can set **userData** to distinguish different AVPlayer instances.
 

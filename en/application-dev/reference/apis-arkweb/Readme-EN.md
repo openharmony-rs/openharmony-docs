@@ -5,7 +5,7 @@
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d96db6dbe792bc577106b8fe7b2f1f6d0125cb3e translatedAt=2026-09-09T03:05:46.955Z pushedAt=2026-09-09T04:24:25.491Z -->
+<!-- md-trans-meta sourceCommit=4f72102b8a0bac1cc7ca6b2233006d07e03be688 translatedAt=2026-11-04T11:58:11.469Z pushedAt=2026-11-04T12:00:05.589Z nl=1 -->
 
 - ArkTS API<!--arkweb-arkts-->
   - @ohos.web.webview (Webview)<!--js-apis-webview-->
@@ -114,6 +114,7 @@
     - [ArkWeb_ProxyObjectWithResult](capi-web-arkweb-proxyobjectwithresult.md)
     - [ArkWeb_ControllerAPI](capi-web-arkweb-controllerapi.md)
     - [ArkWeb_ComponentAPI](capi-web-arkweb-componentapi.md)
+    - [ArkWeb_ErrorInfo_](capi-web-arkweb-errorinfo.md)
     - [ArkWeb_WebMessagePortAPI](capi-web-arkweb-webmessageportapi.md)
     - [ArkWeb_WebMessageAPI](capi-web-arkweb-webmessageapi.md)
     - [ArkWeb_CookieManagerAPI](capi-web-arkweb-cookiemanagerapi.md)

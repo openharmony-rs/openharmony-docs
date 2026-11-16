@@ -2,14 +2,15 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=357665bbb6caa6d8123e7eb4a2cbf8a969d1a249 translatedAt=2026-11-04T10:26:14.054Z pushedAt=2026-11-04T10:29:22.691Z nl=1 -->
 
 ## Overview
 
-This file declares the functions related to the color in the drawing module.
+This module defines the functions related to colors.<br>This module adopts a single-thread model. The caller must manage thread safety and context state switching.
 
 **File to include**: <native_drawing/drawing_color.h>
 
@@ -60,3 +61,5 @@ Converts four variables (alpha, red, green, and blue) into a 32-bit (ARGB) varia
 | Type| Description|
 | -- | -- |
 | uint32_t | Returns a 32-bit (ARGB) variable that describes the color.|
+
+

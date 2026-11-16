@@ -6,6 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=b3e6988e0ab25cc1b7ee9318b620b0d585c1093c translatedAt=2026-11-05T06:16:33.940Z pushedAt=2026-11-05T06:16:33.940Z nl=1 -->
 
 ## Introduction
 
@@ -72,7 +73,7 @@ The main thread jank stack sampling configuration parameters are defined as foll
 
    (1) **2500** means that, according to the system rule, the time from detection to reporting of a main thread jank event cannot exceed 2.5 seconds (2500 ms). Therefore, the configured **sample_count** cannot exceed the maximum value calculated using the formula.
 
-   (2) **4** means the first timeout interval detection time, the second timeout interval detection time (the system provides two chances to detect a repeated timeout event), and the time required to collect and report stack information.
+   (2) **4** represents four sampling intervals reserved by the system: one interval from the timeout to the first detection, two intervals for the waiting and checks between the two fault-tolerance detections, and one interval for stack collection and reporting.
 
    (3) Configure this parameter according to your scenario.
 
@@ -128,7 +129,7 @@ The main thread jank stack sampling configuration parameters are defined as foll
    hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => {
      hilog.info(0x0000, 'hiAppEvent', `Set to only collect trace successfully.`);
    }).catch((err: BusinessError) => {
-     hilog.error(0x0000, 'hiAppEvent', `Failed to set only collect trace. code: ${err.code}, message: ${err.message}`);
+     hilog.error(0x0000, 'hiAppEvent', `Failed to set only collect trace. Code: ${err.code}, message: ${err.message}`);
    });
    ```
 
@@ -194,21 +195,21 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 (3) **logType=2**, used to collect only traces. Other parameters do not take effect and do not need to be set.
 
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+  import { hilog, hiAppEvent } from '@kit.PerformanceAnalysisKit';
 
-let policy: hiAppEvent.EventPolicy = {
-  "mainThreadJankPolicy" : {
-    "logType": 2 // Type of logs to collect.
-  }
-};
-hiAppEvent.configEventPolicy(policy).then(() => {
-  hilog.info(0x0000, 'hiAppEvent', `Set to only collect trace successfully.`);
-}).catch((err: BusinessError) => {
-  hilog.error(0x0000, 'hiAppEvent', `Failed to set only collect trace. code: ${err.code}, message: ${err.message}`);
-});
-```
+  let policy: hiAppEvent.EventPolicy = {
+    "mainThreadJankPolicy" : {
+      "logType": 2 // Type of logs to collect.
+    }
+  };
+  hiAppEvent.configEventPolicy(policy).then(() => {
+    hilog.info(0x0000, 'hiAppEvent', `Set to only collect trace successfully.`);
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'hiAppEvent', `Failed to set only collect trace. Code: ${err.code}, message: ${err.message}`);
+  });
+  ```
 
 ### OH_HiAppEvent_SetEventConfig
 
@@ -273,13 +274,15 @@ The following value ranges are described based on the converted variable types.
    #undef LOG_TAG
    #define LOG_TAG "testTag"
 
-   HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
+   HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();    
    OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "0");
-   int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK, config);
-   if (ret == HIAPPEVENT_SUCCESS) {
-       OH_LOG_INFO(LogType::LOG_APP, "Setting default value successfully.");
-   }
-   OH_HiAppEvent_DestroyConfig(config);
+    int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK, config);
+    if (ret == HIAPPEVENT_SUCCESS) {
+        OH_LOG_INFO(LogType::LOG_APP, "Setting default value successfully.");
+    }
+    if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+    }
    ```
 
    (2) **MAIN_THREAD_JANK_PARAM_LOG_TYPE="1"**, used to collect only call stacks.
@@ -291,7 +294,7 @@ The following value ranges are described based on the converted variable types.
 
    #undef LOG_TAG
    #define LOG_TAG "testTag"
-
+   
    HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
    OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "1");
    OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL, "100");
@@ -303,7 +306,9 @@ The following value ranges are described based on the converted variable types.
    if (ret == HIAPPEVENT_SUCCESS) {
        OH_LOG_INFO(LogType::LOG_APP, "Successfully set sampling stack parameters.");
    }
-   OH_HiAppEvent_DestroyConfig(config);
+   if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+   }
    ```
 
    (3) **MAIN_THREAD_JANK_PARAM_LOG_TYPE="2"**, used to collect only traces.
@@ -315,7 +320,7 @@ The following value ranges are described based on the converted variable types.
 
    #undef LOG_TAG
    #define LOG_TAG "testTag"
-
+   
    HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
    OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "2");
 
@@ -323,8 +328,10 @@ The following value ranges are described based on the converted variable types.
    if (ret == HIAPPEVENT_SUCCESS) {
        OH_LOG_INFO(LogType::LOG_APP, "Set to only collect trace successfully");
    }
-   OH_HiAppEvent_DestroyConfig(config);
-   ```
+   if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+   }
+   ```  
 
 **name** = **EVENT_MAIN_THREAD_JANK_V2**
 
@@ -375,14 +382,16 @@ The following value ranges are described based on the converted variable types.
    #undef LOG_TAG
    #define LOG_TAG "testTag"
 
-   HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
+   HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();    
    OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "0");
    OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING, "true");
    int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK_V2, config);
    if (ret == HIAPPEVENT_SUCCESS) {
        OH_LOG_INFO(LogType::LOG_APP, "Setting default value successfully.");
    }
-   OH_HiAppEvent_DestroyConfig(config);
+   if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+   }
    ```
 
    (2) **MAIN_THREAD_JANK_PARAM_LOG_TYPE="1"**, used to collect only call stacks.
@@ -394,7 +403,7 @@ The following value ranges are described based on the converted variable types.
 
    #undef LOG_TAG
    #define LOG_TAG "testTag"
-
+   
    HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
    OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "1");
    OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_SAMPLE_INTERVAL, "100");
@@ -407,7 +416,9 @@ The following value ranges are described based on the converted variable types.
    if (ret == HIAPPEVENT_SUCCESS) {
        OH_LOG_INFO(LogType::LOG_APP, "Successfully set sampling stack parameters.");
    }
-   OH_HiAppEvent_DestroyConfig(config);
+   if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+   }
    ```
 
    (3) **MAIN_THREAD_JANK_PARAM_LOG_TYPE="2"**, used to collect only traces.
@@ -419,7 +430,7 @@ The following value ranges are described based on the converted variable types.
 
    #undef LOG_TAG
    #define LOG_TAG "testTag"
-
+   
    HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();
    OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "2");
 
@@ -427,8 +438,10 @@ The following value ranges are described based on the converted variable types.
    if (ret == HIAPPEVENT_SUCCESS) {
        OH_LOG_INFO(LogType::LOG_APP, "Set to only collect trace successfully");
    }
-   OH_HiAppEvent_DestroyConfig(config);
-   ```
+   if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+   }
+   ```  
 
 ## Event Fields
 

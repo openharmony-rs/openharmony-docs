@@ -2,11 +2,11 @@
 
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=29f3919446ee01733553b9b39493ee11224dad86 translatedAt=2026-07-31T02:12:32.641Z pushedAt=2026-07-31T03:50:44.367Z -->
+<!--Adviser: @qin_wei_jie-->
+<!-- md-trans-meta sourceCommit=ad59843e50284b5e122a86c5f91046ab9ac62787 translatedAt=2026-11-04T04:14:19.409Z pushedAt=2026-11-04T10:12:50.072Z nl=1 -->
 
 MediaKeySession implements media key management. Before calling any API in MediaKeySession, you must use [createMediaKeySession](arkts-apis-drm-MediaKeySystem.md#createmediakeysession) to create a MediaKeySession instance.
 
@@ -52,8 +52,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                | The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.              |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -98,8 +98,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -137,8 +137,8 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -166,8 +166,8 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -213,8 +213,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.         |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -262,8 +262,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -313,8 +313,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.              |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -352,8 +352,8 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -395,8 +395,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.      |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 
@@ -432,7 +432,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.         |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -472,7 +472,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.             |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -508,7 +508,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.          |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -546,7 +546,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -582,7 +582,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.              |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -620,7 +620,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.      |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -656,7 +656,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.        |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -694,7 +694,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.       |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -730,7 +730,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.             |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -770,7 +770,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID        | Error Message       |
 | --------------- | --------------- |
 | 401                |  The parameter check failed. Possibly because: 1.Mandatory parameters are left unspecified or too many parameters. 2.Incorrect parameter types. 3.Parameter verification failed.            |
-| 24700101                |  All unknown errors                  |
+| 24700101                | All unknown errors.                  |
 
 **Example**
 
@@ -798,8 +798,8 @@ For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
-| 24700101                |  All unknown errors                  |
-| 24700201                |  Fatal service error, for example, service died                  |
+| 24700101                | All unknown errors.                  |
+| 24700201                | Fatal service error, for example, service died.                  |
 
 **Example**
 

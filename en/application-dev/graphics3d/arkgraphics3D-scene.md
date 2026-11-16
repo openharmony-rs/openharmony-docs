@@ -5,7 +5,7 @@
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=574d191c949d463a333fe17e34f0b44a5e6f2931 translatedAt=2026-09-20T06:49:29.167Z pushedAt=2026-09-20T08:26:47.385Z -->
+<!-- md-trans-meta sourceCommit=ddd49882b283aa764208d35a0eb116b6585ecaaa translatedAt=2026-11-05T01:00:48.371Z pushedAt=2026-09-20T08:26:47.385Z nl=2 -->
 
 A 3D scene consists of three essential parts: light, camera, and model.
 - Light provides illumination for a 3D scene so that the models in the 3D scene become visible. Without light, the rendering result is all black.

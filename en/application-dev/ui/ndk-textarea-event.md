@@ -1,12 +1,11 @@
 # Adding a Text Event Listener for a Text Box
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9a5da59cdf4f4c3dc0f87035f85ddf06f80ecfc4 translatedAt=2026-08-05T10:08:28.613Z pushedAt=2026-08-06T06:18:46.434Z -->
+<!-- md-trans-meta sourceCommit=bf76fce28aeb3204bb6f3347753ae4a1bf29e8ba translatedAt=2026-11-05T11:48:12.261Z pushedAt=2026-11-09T10:02:18.957Z nl=1 -->
 
 Text boxes support various interactive behaviors, allowing you to register event listeners and obtain status information. The following uses a multi-line text box as an example; the steps for adding text event listeners to a single-line text box are similar.
 
@@ -19,11 +18,11 @@ Layout changes during editing: Register the [NODE_TEXT_AREA_ON_EDIT_CHANGE](../.
 The following example demonstrates how to listen for text box events and parse data based on the [Integrating with ArkTS Pages](../ui/ndk-access-the-arkts-page.md) section.
 
 - Registering events
-
+    
     Events are registered through a unified API. For details, see [registerNodeEvent](../../application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent). For details about the event types supported by the text box, see the [ArkUI_NodeEventType](../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) section, searching for **NODE_TEXT_AREA_**.
 
     <!-- @[obtain_create_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextAreaEventNDK/entry/src/main/cpp/manager.cpp) -->
-
+    
     ``` C++
     ArkUI_NodeHandle text = nodeApi->createNode(ARKUI_NODE_TEXT);
     ArkUI_NumberValue textWidth[] = {{.f32 = 300}};
@@ -47,7 +46,7 @@ The following example demonstrates how to listen for text box events and parse d
     Event callbacks are registered through a unified API. For details, see [registerNodeEventReceiver](../../application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver).
 
     <!-- @[obtain_textarea_NodeEventReceiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextAreaEventNDK/entry/src/main/cpp/manager.cpp) -->
-
+    
     ``` C++
     nodeApi->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
         ArkUI_NodeEventType eventType = OH_ArkUI_NodeEvent_GetEventType(event);
@@ -75,9 +74,9 @@ The following example demonstrates how to listen for text box events and parse d
 - Sample
 
    This section demonstrates core API usage only. For the complete sample project, see <!--RP1-->[TextAreaEventNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/TextAreaEventNDK)<!--RP1End-->.
-
+    
     <!-- @[obtain_textarea_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextAreaEventNDK/entry/src/main/cpp/manager.cpp) -->
-
+    
     ``` C++
     #include "manager.h"
     #include <sstream>
@@ -113,7 +112,7 @@ The following example demonstrates how to listen for text box events and parse d
         napi_value args[ConstIde::NUMBER_1] = {nullptr};
         napi_status st = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
         if (st != napi_ok || argc < ConstIde::NUMBER_1) {
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s napi_get_cb_info failed",
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s napi_get_cb_info failed",
                          who);
             return nullptr;
         }
@@ -128,7 +127,7 @@ The following example demonstrates how to listen for text box events and parse d
 
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s after GetNodeContent", who);
 
-        // Optional: Keep the robustness check for nodeAPI_ (consistent with your existing code).
+        // Optional: keep the robustness check on nodeAPI_ (consistent with the existing code).
         if (Manager::nodeAPI_ == nullptr) {
             OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s nodeAPI_ is null", who);
             return nullptr;
@@ -145,7 +144,7 @@ The following example demonstrates how to listen for text box events and parse d
         OH_ArkUI_NodeContent_AddNode(nodeContentHandle, page);
         return nullptr;
     }
-    
+
     constexpr int32_t NUM_10 = 10;
     constexpr int32_t NUM_28 = 28;
     constexpr int32_t NUM_400 = 400;
@@ -159,7 +158,7 @@ The following example demonstrates how to listen for text box events and parse d
     ArkUI_NodeHandle Manager::CreateTextAreaNativeNode()
     {
         ArkUI_NativeNodeAPI_1 *nodeApi = Manager::nodeAPI_;
-    
+
         ArkUI_NodeHandle column = nodeApi->createNode(ARKUI_NODE_COLUMN);
         ArkUI_NumberValue colWidth[] = {{.f32 = 300}};
         ArkUI_AttributeItem widthItem = {.value = colWidth, .size = 1};
@@ -224,5 +223,6 @@ The following example demonstrates how to listen for text box events and parse d
         });
     }
     ```
+
 
 ![textarea_getstringevent](figures/textarea_getstringevent.gif)

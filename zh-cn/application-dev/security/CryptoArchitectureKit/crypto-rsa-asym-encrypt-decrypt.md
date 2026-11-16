@@ -258,6 +258,7 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   // 分段加密消息
@@ -301,24 +302,29 @@
   }
   
   async function rsaEncryptLongMessage() {
-    let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
-    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024'); // 创建非对称密钥生成器对象
-    let keyPair = await asyKeyGenerator.generateKeyPair(); // 随机生成RSA密钥
-    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-    let encryptText = await rsaEncryptBySegment(keyPair.pubKey, plainText);
-    let decryptText = await rsaDecryptBySegment(keyPair.priKey, encryptText);
-    if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok.');
-      console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
-    } else {
-      console.error('decrypt failed.');
+    try {
+      let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
+      let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024'); // 创建非对称密钥生成器对象
+      let keyPair = await asyKeyGenerator.generateKeyPair(); // 随机生成RSA密钥
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = await rsaEncryptBySegment(keyPair.pubKey, plainText);
+      let decryptText = await rsaDecryptBySegment(keyPair.priKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok.');
+        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+      } else {
+        console.error('decrypt failed.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```
@@ -330,6 +336,7 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   // 分段加密消息
@@ -373,24 +380,29 @@
   }
   
   function main() {
-    let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
-      'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
-    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024'); // 创建非对称密钥生成器对象
-    let keyPair = asyKeyGenerator.generateKeyPairSync(); // 随机生成RSA密钥
-    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-    let encryptText = rsaEncryptBySegment(keyPair.pubKey, plainText);
-    let decryptText = rsaDecryptBySegment(keyPair.priKey, encryptText);
-    if (plainText.data.toString() === decryptText.data.toString()) {
-      console.info('decrypt ok.');
-      console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
-    } else {
-      console.error('decrypt failed.');
+    try {
+      let message = 'This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!' +
+        'This is a long plainText! This is a long plainText! This is a long plainText! This is a long plainText!';
+      let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024'); // 创建非对称密钥生成器对象
+      let keyPair = asyKeyGenerator.generateKeyPairSync(); // 随机生成RSA密钥
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = rsaEncryptBySegment(keyPair.pubKey, plainText);
+      let decryptText = rsaDecryptBySegment(keyPair.priKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok.');
+        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+      } else {
+        console.error('decrypt failed.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```
@@ -429,6 +441,7 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   // 根据密钥参数属性构造RSA非对称密钥对密钥参数
@@ -459,61 +472,66 @@
   }
   
   async function rsaUseSpecDecryptOAEPPromise() {
-    let plan = 'This is a test';
-    // 获得RSA密钥对密钥参数对象
-    let rsaKeyPairSpec = genRsa2048KeyPairSpec();
-    // 根据RSA密钥对参数生成RSA密钥对
-    let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
-    let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
-    let decoder = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
-    // RSA加解密PKCS1-OAEP模式填充字节流P
-    let pSource = new Uint8Array([1, 2, 3, 4]);
-    let input: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(plan, 'utf-8').buffer) };
-    // 生成密钥对
-    let keyPair = await rsaGeneratorSpec.generateKeyPair();
-    // 进行加密操作初始化
-    await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, keyPair.pubKey, null);
-    // get和set操作可以放在Cipher对象init之后，此处对cipher进行set和get操作
-    cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
-    let retP = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR);
-    // 比较get出来的P字节流与set进去的P字节流是否一致
-    if (retP.toString() != pSource.toString()) {
-      console.error('error init pSource ' + retP);
-    } else {
-      console.info('pSource changed == ' + retP);
-    }
-    // 进行OAEP其他参数的get操作
-    let md = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
-    console.info('md == ' + md);
-    let mgf = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF_NAME_STR);
-    console.info('mgf == ' + mgf);
-    let mgf1Md = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_MD_STR);
-    console.info('mgf1Md == ' + mgf1Md);
-    let cipherDataBlob = await cipher.doFinal(input);
-    // get和set操作可以放在Cipher对象init之前，且与init之后等价，此处对decoder进行set和get操作
-    decoder.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
-    retP = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR);
-    // 比较get出来的P字节流与set进去的P字节流是否一致
-    if (retP.toString() != pSource.toString()) {
-      console.error('error init pSource ' + retP);
-    } else {
-      console.info('pSource changed == ' + retP);
-    }
-    // 进行OAEP其他参数的get操作
-    md = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
-    console.info('md == ' + md);
-    mgf = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF_NAME_STR);
-    console.info('mgf == ' + mgf);
-    mgf1Md = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_MD_STR);
-    console.info('mgf1Md == ' + mgf1Md);
-    // 初始化解密操作
-    await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, keyPair.priKey, null);
-    let decodeData = await decoder.doFinal(cipherDataBlob);
-    // 解密成功
-    if (decodeData.data.toString() === input.data.toString()) {
-      console.info('oaep decrypt result: success.');
-    } else {
-      console.error('oaep decrypt result: fail.');
+    try {
+      let plan = 'This is a test';
+      // 获得RSA密钥对密钥参数对象
+      let rsaKeyPairSpec = genRsa2048KeyPairSpec();
+      // 根据RSA密钥对参数生成RSA密钥对
+      let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
+      let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
+      let decoder = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
+      // RSA加解密PKCS1-OAEP模式填充字节流P
+      let pSource = new Uint8Array([1, 2, 3, 4]);
+      let input: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(plan, 'utf-8').buffer) };
+      // 生成密钥对
+      let keyPair = await rsaGeneratorSpec.generateKeyPair();
+      // 进行加密操作初始化
+      await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, keyPair.pubKey, null);
+      // get和set操作可以放在Cipher对象init之后，此处对cipher进行set和get操作
+      cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+      let retP = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR);
+      // 比较get出来的P字节流与set进去的P字节流是否一致
+      if (retP.toString() != pSource.toString()) {
+        console.error('error init pSource ' + retP);
+      } else {
+        console.info('pSource changed == ' + retP);
+      }
+      // 进行OAEP其他参数的get操作
+      let md = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
+      console.info('md == ' + md);
+      let mgf = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF_NAME_STR);
+      console.info('mgf == ' + mgf);
+      let mgf1Md = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_MD_STR);
+      console.info('mgf1Md == ' + mgf1Md);
+      let cipherDataBlob = await cipher.doFinal(input);
+      // get和set操作可以放在Cipher对象init之前，且与init之后等价，此处对decoder进行set和get操作
+      decoder.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+      retP = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR);
+      // 比较get出来的P字节流与set进去的P字节流是否一致
+      if (retP.toString() != pSource.toString()) {
+        console.error('error init pSource ' + retP);
+      } else {
+        console.info('pSource changed == ' + retP);
+      }
+      // 进行OAEP其他参数的get操作
+      md = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
+      console.info('md == ' + md);
+      mgf = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF_NAME_STR);
+      console.info('mgf == ' + mgf);
+      mgf1Md = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_MD_STR);
+      console.info('mgf1Md == ' + mgf1Md);
+      // 初始化解密操作
+      await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, keyPair.priKey, null);
+      let decodeData = await decoder.doFinal(cipherDataBlob);
+      // 解密成功
+      if (decodeData.data.toString() === input.data.toString()) {
+        console.info('oaep decrypt result: success.');
+      } else {
+        console.error('oaep decrypt result: fail.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```
@@ -524,6 +542,7 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   // 根据密钥参数属性构造RSA非对称密钥对密钥参数
   function genRsaKeyPairSpec(nIn: bigint, eIn: bigint, dIn: bigint) {
@@ -549,61 +568,66 @@
     return genRsaKeyPairSpec(nIn, eIn, dIn);
   }
   function main() {
-    let plan = 'This is a test';
-    // 获得RSA密钥对密钥参数对象
-    let rsaKeyPairSpec = genRsa2048KeyPairSpec();
-    // 根据RSA密钥对参数生成RSA密钥对
-    let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
-    let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
-    let decoder = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
-    // RSA加解密PKCS1-OAEP模式填充字节流P
-    let pSource = new Uint8Array([1, 2, 3, 4]);
-    let input: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(plan, 'utf-8').buffer) };
-    // 生成密钥对
-    let keyPair = rsaGeneratorSpec.generateKeyPairSync();
-    // 进行加密操作初始化
-    cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, keyPair.pubKey, null);
-    // get和set操作可以放在Cipher对象init之后，此处对cipher进行set和get操作
-    cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
-    let retP = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR);
-    // 比较get出来的P字节流与set进去的P字节流是否一致
-    if (retP.toString() != pSource.toString()) {
-      console.error('error init pSource ' + retP);
-    } else {
-      console.info('pSource changed == ' + retP);
-    }
-    // 进行OAEP其他参数的get操作
-    let md = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
-    console.info('md == ' + md);
-    let mgf = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF_NAME_STR);
-    console.info('mgf == ' + mgf);
-    let mgf1Md = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_MD_STR);
-    console.info('mgf1Md == ' + mgf1Md);
-    let cipherDataBlob = cipher.doFinalSync(input);
-    // get和set操作可以放在Cipher对象init之前，且与init之后等价，此处对decoder进行set和get操作
-    decoder.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
-    retP = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR);
-    // 比较get出来的P字节流与set进去的P字节流是否一致
-    if (retP.toString() != pSource.toString()) {
-      console.error('error init pSource ' + retP);
-    } else {
-      console.info('pSource changed == ' + retP);
-    }
-    // 进行OAEP其他参数的get操作
-    md = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
-    console.info('md == ' + md);
-    mgf = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF_NAME_STR);
-    console.info('mgf == ' + mgf);
-    mgf1Md = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_MD_STR);
-    console.info('mgf1Md == ' + mgf1Md);
-    // 初始化解密操作
-    decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, keyPair.priKey, null);
-    let decodeData = decoder.doFinalSync(cipherDataBlob);
-    // 解密成功
-    if (decodeData.data.toString() === input.data.toString()) {
-      console.info('oaep decrypt result: success.');
-    } else {
-      console.error('oaep decrypt result: fail.');
+    try {
+      let plan = 'This is a test';
+      // 获得RSA密钥对密钥参数对象
+      let rsaKeyPairSpec = genRsa2048KeyPairSpec();
+      // 根据RSA密钥对参数生成RSA密钥对
+      let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaKeyPairSpec);
+      let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
+      let decoder = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
+      // RSA加解密PKCS1-OAEP模式填充字节流P
+      let pSource = new Uint8Array([1, 2, 3, 4]);
+      let input: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(plan, 'utf-8').buffer) };
+      // 生成密钥对
+      let keyPair = rsaGeneratorSpec.generateKeyPairSync();
+      // 进行加密操作初始化
+      cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, keyPair.pubKey, null);
+      // get和set操作可以放在Cipher对象init之后，此处对cipher进行set和get操作
+      cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+      let retP = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR);
+      // 比较get出来的P字节流与set进去的P字节流是否一致
+      if (retP.toString() != pSource.toString()) {
+        console.error('error init pSource ' + retP);
+      } else {
+        console.info('pSource changed == ' + retP);
+      }
+      // 进行OAEP其他参数的get操作
+      let md = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
+      console.info('md == ' + md);
+      let mgf = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF_NAME_STR);
+      console.info('mgf == ' + mgf);
+      let mgf1Md = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_MD_STR);
+      console.info('mgf1Md == ' + mgf1Md);
+      let cipherDataBlob = cipher.doFinalSync(input);
+      // get和set操作可以放在Cipher对象init之前，且与init之后等价，此处对decoder进行set和get操作
+      decoder.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+      retP = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR);
+      // 比较get出来的P字节流与set进去的P字节流是否一致
+      if (retP.toString() != pSource.toString()) {
+        console.error('error init pSource ' + retP);
+      } else {
+        console.info('pSource changed == ' + retP);
+      }
+      // 进行OAEP其他参数的get操作
+      md = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
+      console.info('md == ' + md);
+      mgf = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF_NAME_STR);
+      console.info('mgf == ' + mgf);
+      mgf1Md = decoder.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_MD_STR);
+      console.info('mgf1Md == ' + mgf1Md);
+      // 初始化解密操作
+      decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, keyPair.priKey, null);
+      let decodeData = decoder.doFinalSync(cipherDataBlob);
+      // 解密成功
+      if (decodeData.data.toString() === input.data.toString()) {
+        console.info('oaep decrypt result: success.');
+      } else {
+        console.error('oaep decrypt result: fail.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```

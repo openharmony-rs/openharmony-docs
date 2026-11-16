@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=1a8a5b4e7336401b1823c689884b3d262fdca43f translatedAt=2026-08-13T03:07:29.211Z pushedAt=2026-08-13T06:15:25.208Z -->
+<!-- md-trans-meta sourceCommit=8d943dc882a0dffb799d76a7697a0461f7e0fc3b translatedAt=2026-11-05T00:50:31.268Z pushedAt=2026-08-13T06:15:25.208Z nl=2 -->
 
 ## When to Use
 
@@ -30,7 +30,7 @@ The following table lists the common NetConnection APIs. For details, see [net_c
 | OHOS_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver) | Registers a custom DNS resolver.<br>Note: This API is deprecated since API version 13.<br>You are advised to use **OH_NetConn_RegisterDnsResolver** instead.|
 | OHOS_NetConn_UnregisterDnsResolver(void) | Unregisters a custom DNS resolver.<br>Note: This API is deprecated since API version 13.<br>You are advised to use **OH_NetConn_UnregisterDnsResolver** instead.|
 | OH_NetConn_RegisterDnsResolver(OH_NetConn_CustomDnsResolver resolver) | Registers a custom DNS resolver.|
-| OH_NetConn_UnregisterDnsResolver(void) | Unregisters a custom DNS resolver.|
+| OH_NetConn_UnregisterCustomDnsResolver(void) | Unregisters a custom DNS resolver.|
 | OH_NetConn_SetPacUrl(const char \*pacUrl) | Sets the URL of the system-level proxy auto-config (PAC) script.|
 | OH_NetConn_GetPacUrl(char \*pacUrl) | Obtains the URL of the system-level PAC script.|
 | OH_NetConn_QueryProbeResult(char *destination, int32_t duration, NetConn_ProbeResultInfo *probeResultInfo)| Queries the probe result.|

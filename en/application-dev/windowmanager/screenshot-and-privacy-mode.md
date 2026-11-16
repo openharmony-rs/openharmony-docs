@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=ac2c5e9f74ce9bcf182c95f541d22451265f0894 translatedAt=2026-10-08T09:01:14.021Z pushedAt=2026-10-08T11:13:45.917Z -->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-05T10:49:10.360Z pushedAt=2026-11-06T01:39:02.300Z nl=1 -->
 
 ## How to Use
 
@@ -54,7 +54,7 @@ Window screenshots are classified into single-window screenshot and multi-window
 You can take a screenshot of the current window by calling the [snapshot()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshot9-1)/[snapshotSync()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshotsync20) API.  
 
   <!--@[Snapshot_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   import { display, screenshot, window } from '@kit.ArkUI';
   import { common, abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
@@ -220,7 +220,7 @@ You can take a screenshot of the current window by calling the [snapshot()](../r
 You can call the [getMainWindowSnapshot()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetmainwindowsnapshot21) API to capture one or more main windows (specified by **windowId**).  
 
   <!--@[SnapshotMore_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
-
+  
   ``` TypeScript
   import { display, screenshot, window } from '@kit.ArkUI';
   import { common, abilityAccessCtrl, Permissions } from '@kit.AbilityKit';

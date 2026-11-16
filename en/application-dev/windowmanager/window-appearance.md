@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @liu_hongxian-->
-<!--Designer: @shinmy; @qinliwen0417-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @shinmy; @jingbotao-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=7f6d052803cbd907f6a8b345be71946d829a57f9 translatedAt=2026-10-08T09:01:58.058Z pushedAt=2026-10-08T11:18:57.984Z -->
+<!-- md-trans-meta sourceCommit=0f81f77662b418fdb2ccd9cc974a26cc411c9cef translatedAt=2026-11-05T10:50:45.566Z pushedAt=2026-11-06T01:41:28.703Z nl=1 -->
 
 ## When to Use
 
@@ -14,17 +14,17 @@ Window appearance describes the display form and visual effect of a window on th
 
 You can customize the window appearance based on UI design and interaction requirements. For example:
 
-- Display a subwindow or global floating window as a shaped window by setting the window mask.
+- Display a subwindow or [global floating window](global-floating-window-guide.md) as an irregular-shaped window by setting the window mask.
 
-- Adjust the shadow effect of a subwindow or global floating window by setting the blur radius of the window edge shadow.<!--Del--> System apps can also set the color and offset of the window edge shadow.<!--DelEnd-->
+- Adjust the shadow effect of a subwindow or global floating window by setting the blur radius of the window edge shadow.<!--Del-->System apps can also set the color and offset of the window edge shadow.<!--DelEnd-->
 
-- Adjust the edge display effect of a subwindow or global floating window by setting window rounded corners. <!--Del-->System apps can also set the blur radius of the window content and the blur radius of the window background. <!--DelEnd-->
+- Adjust the edge display effect of a subwindow or global floating window by setting window rounded corners.<!--Del-->System apps can also set the blur radius of the window content and the blur radius of the window background.<!--DelEnd-->
 
 - Make the window background consistent with the app page or theme style by setting the window background color.
 
 ## Shaped Window
 
-A shaped window is a window with a non-rectangular shape, and a mask is used to describe the shape of the shaped window. Only app subwindows and global floating windows can be set as shaped windows.
+An irregular-shaped window is a window with a non-rectangular shape, and a mask is used to describe the shape of the irregular-shaped window. Only subwindows and global floating windows can be set as irregular-shaped windows.
 
 You can set the mask of a shaped window through the [setWindowMask()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmask12) or [setWindowMaskWithAlpha()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowmaskwithalpha) API to define the visible region of the window.
 
@@ -42,7 +42,7 @@ After setting the mask, the window will be displayed according to the mask shape
 
   ![setWindowMaskWithAlpha](figures/setWindowMaskWithAlpha.png)
 
-The following takes setting a shaped window for a subwindow as an example.
+The following takes setting an irregular-shaped window for a subwindow as an example. This example mainly implements the following effects:
 
 1. Tap **Create Sub Window** to create a subwindow.
 
@@ -52,11 +52,10 @@ The following takes setting a shaped window for a subwindow as an example.
      - The shadow and rounded corners of the subwindow disappear.
      - The upper-left part of the subwindow's rectangular area becomes transparent and non-interactive. Tapping the **Create Test Window** button allows the event to pass through to that button, creating a green test window.
 
-<!-- @[setWindowMaskSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[setWindowMaskSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/EventDistribution/setWindowMask/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { window } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -116,10 +115,10 @@ A window shadow is a projection effect displayed at the window edge, which enhan
 <!--Del-->
 - For system apps, you can use the [setShadow()](../reference/apis-arkui/js-apis-window-sys.md#setshadow9) API to set the window edge shadow. This API supports setting the blur radius, color, X-axis offset, and Y-axis offset of the window edge shadow. It is only supported for system windows, app subwindows, global floating windows, and dialog windows.
 
-  The following takes a subwindow as an example to call **setShadow()** to set the window shadow.
+  The following takes a subwindow as an example to call `setShadow()` to set the window edge shadow.
 
   <!-- @[windowShadowSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowSample/entry/src/main/ets/pages/Index.ets) --> 
-
+  
   ``` TypeScript
   // Index.ets
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -171,7 +170,7 @@ A window shadow is a projection effect displayed at the window edge, which enhan
   Here, a global floating window is used as an example to set the blur radius of its window shadow.
 
   <!-- @[window_shadow_radius](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowShadowRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
-
+  
   ``` TypeScript
   // pages/page1.ets
   import { window } from '@kit.ArkUI';
@@ -202,7 +201,7 @@ A window shadow is a projection effect displayed at the window edge, which enhan
   Here, a global floating window is used as an example to set its window corner radius.
 
   <!-- @[window_corner_radius](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowCornerRadiusSample/entry/src/main/ets/pages/Page1.ets) --> 
-
+  
   ``` TypeScript
   // pages/page1.ets
   import { window } from '@kit.ArkUI';

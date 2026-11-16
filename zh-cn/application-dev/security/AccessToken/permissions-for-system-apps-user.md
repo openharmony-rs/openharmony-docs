@@ -316,3 +316,17 @@
 **支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
 
 **起始版本**：26.0.0
+
+## ohos.permission.ONSCREEN_AWARENESS
+ 
+允许应用获取屏幕上的内容。
+ 
+**权限级别**：system_core
+ 
+**授权方式**：用户授权（user_grant）
+ 
+**是否支持证书授权**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car
+ 
+**起始版本**：26.0.0

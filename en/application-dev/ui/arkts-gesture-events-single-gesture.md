@@ -1,18 +1,18 @@
 # Single Gesture
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9b7116624d5eed08082261dee12697d1cac202a2 translatedAt=2026-08-01T00:27:17.684Z pushedAt=2026-08-01T03:44:25.343Z -->
+<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-05T11:07:47.608Z pushedAt=2026-11-09T10:02:18.705Z nl=1 -->
 
 ## Click Event (onClick)
 
 A click is a common gesture that can be easily implemented using the [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick) API. Although it is called an event, it is essentially a basic gesture type equivalent to **TapGesture** with **count** set to **1**, that is, a single-tap gesture.
 
 **onClick** behaves like other gesture types and also participates in processes such as hit testing and response chain collection. You can [intervene in gesture processing](./arkts-interaction-development-guide-support-gesture.md#intervention-in-gesture-processing) to dynamically control how **onClick** responses are handled.
+
 
 <!-- @[click_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/OnClickGesture.ets) --> 
 
@@ -73,7 +73,9 @@ export struct OnClickGesture {
 
 In this example, the child component's click event is temporarily disabled every five taps, ensuring that the parent component's tap gesture is triggered first on those occasions.
 
+
 ## Tap Gesture (TapGesture)
+
 
 ```ts
 TapGesture(value?: TapGestureParameters)
@@ -123,7 +125,9 @@ export struct Tap {
 
   ![tap](figures/tap.gif)
 
+
 ## Long Press Gesture (LongPressGesture)
+
 
 ```ts
 LongPressGesture(value?:{fingers?:number, repeat?:boolean, duration?:number})
@@ -178,9 +182,12 @@ export struct LongPress {
 }
 ```
 
+
 ![longPress](figures/longPress.gif)
 
+
 ## Pan Gesture (PanGesture)
+
 
 ```ts
 PanGesture(value?: { fingers?: number; direction?: PanDirection; distance?: number } | PanGestureOptions)
@@ -191,15 +198,10 @@ A pan gesture triggers a pan gesture event. The gesture is recognized when the p
 The following example implements a simple volume control slider. The callback of the pan gesture processes volume increase or decrease logic for different input sources.
 
 Five input modes are supported:
-
 1. One-finger vertical swipe on the screen.
-
 2. Mouse drag with the left button pressed.
-
 3. Mouse wheel scrolling.
-
 4. One-finger vertical swipe on the touchpad.
-
 5. Two-finger vertical swipe on the touchpad.
 
 <!-- @[sliding_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/PanCombinationGesture.ets) -->
@@ -285,7 +287,9 @@ export struct VolumeControlDemo {
 }
 ```
 
+
 ![pan](figures/pan.gif)
+
 
 >**NOTE**
 >
@@ -295,7 +299,9 @@ export struct VolumeControlDemo {
 >
 > - An inappropriate value can lead to slow response or lagging.
 
+
 ## Pinch Gesture (PinchGesture)
+
 
 ```ts
 PinchGesture(value?: { fingers?: number; distance?: number })
@@ -361,9 +367,12 @@ export struct Pinch {
 }
 ```
 
+
 <!--Del-->  <!--DelEnd-->
 
+
 ## Rotation Gesture (RotationGesture)
+
 
 ```ts
 RotationGesture(value?: { fingers?: number; angle?: number })
@@ -428,9 +437,12 @@ export struct Rotation {
 }
 ```
 
+
 <!--Del--> <!--DelEnd-->
 
+
 ## Swipe Gesture (SwipeGesture)
+
 
 ```ts
 SwipeGesture(value?: { fingers?: number; direction?: SwipeDirection; speed?: number })
@@ -487,7 +499,9 @@ export struct Swipe {
 }
 ```
 
+
 ![swipe](figures/swipe.gif)
+
 
 >**NOTE**
 >

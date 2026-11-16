@@ -5,7 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-09-28T02:44:08.620Z pushedAt=2026-09-29T08:23:55.322Z -->
+<!-- md-trans-meta sourceCommit=416db6eb13a016384f62df8f06e9a44f2b2b3fc1 translatedAt=2026-11-05T06:16:33.951Z pushedAt=2026-09-29T08:23:55.322Z nl=1 -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
@@ -44,7 +44,7 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
    // Listen for camera input errors.
    void OnCameraInputError(const Camera_Input* cameraInput, Camera_ErrorCode errorCode)
    {
-      OH_LOG_INFO(LOG_APP, "OnCameraInput errorCode: %{public}d", errorCode);
+      OH_LOG_ERROR(LOG_APP, "OnCameraInput errorCode: %{public}d", errorCode);
    }
 
    CameraInput_Callbacks* GetCameraInputListener(void)

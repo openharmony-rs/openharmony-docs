@@ -5,10 +5,10 @@
 <!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=231a0f852838e757ab03536e79d2ff209c5f5457 translatedAt=2026-10-08T12:40:24.259Z pushedAt=2026-10-13T05:57:32.107Z -->
+<!-- md-trans-meta sourceCommit=96f4a6288457dc7323c09f4157fef4291d5dc537 translatedAt=2026-11-09T10:26:34.403Z pushedAt=2026-11-09T11:30:18.886Z nl=1 -->
 
 ```c
-typedef struct OH_AudioAccessoryNoiseReductionCapability {...} OH_AudioAccessoryNoiseReductionCapability
+typedef struct {...} OH_AudioAccessoryNoiseReductionCapability
 ```
 
 ## Overview

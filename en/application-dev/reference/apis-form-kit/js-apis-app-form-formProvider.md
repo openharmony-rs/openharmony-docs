@@ -5,6 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=a09aabfaf5a6fc50afffd8c8ce0b055893ba508c translatedAt=2026-11-04T04:33:05.548Z pushedAt=2026-11-04T10:12:50.126Z nl=1 -->
 
 This module provides capabilities such as retrieving widget information, updating widgets, and setting widget refresh intervals. This module acts as a bridge between the widget provider and the widget management service, communicating with **FormExtension** through the IPC mechanism to perform operations like widget updates and information retrieval. It is suitable for scenarios where the widget provider needs to proactively update widget content, manage the widget lifecycle, and obtain widget running status, helping you implement dynamic widget updates and state management.
 
@@ -131,10 +132,7 @@ try {
 
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback&lt;void&gt;): void
 
-Updates a widget. This API uses an asynchronous callback to return the result. This API is applicable to scenarios where widget content needs to be proactively updated when data changes, such as weather data changes, stock price updates, or task progress updates.
-> **NOTE**
->
-> Starting from API version 20, when widget refresh data is updated via shared memory, the total size of the refreshed data must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19 and earlier versions, the upper limit for image files is 5, with a per-image memory limit of 2 MB. Any images that exceed these limits will display abnormally.
+Updates the specified card. This API uses an asynchronous callback to return the result. This is applicable to scenarios where the card content is proactively updated when card data changes, such as weather data changes, stock price updates, and task progress updates.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -145,7 +143,7 @@ Updates a widget. This API uses an asynchronous callback to return the result. T
 | Name| Type                                                                   | Mandatory| Description            |
 | ------ | ---------------------------------------------------------------------- | ---- | ---------------- |
 | formId | string                                                                 | Yes  | ID of the widget to update.|
-| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | Yes  | Data to be used for the update. For details about the restrictions, see the preceding note.   |
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | Yes | Data used for the update. |
 | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the operation is successful, **error** is **undefined**.|
 
 **Error codes**
@@ -191,10 +189,7 @@ try {
 
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 
-Updates a widget. This API uses a promise to return the result. This API is applicable to scenarios where widget content needs to be proactively updated when data changes, such as weather data changes, stock price updates, or task progress updates.
-> **NOTE**
->
-> Starting from API version 20, when widget refresh data is updated via shared memory, the total size of the refreshed data must not exceed 10 MB, and the number of refreshed images must not exceed 20. For API version 19 and earlier versions, the upper limit for image files is 5, with a per-image memory limit of 2 MB. Any images that exceed these limits will display abnormally.
+Updates the specified card. This API uses a promise to return the result. This is applicable to scenarios where the card content is proactively updated when card data changes, such as weather data changes, stock price updates, and task progress updates.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -205,7 +200,7 @@ Updates a widget. This API uses a promise to return the result. This API is appl
 | Name| Type                                                                   | Mandatory| Description            |
 | ------ | ---------------------------------------------------------------------- | ---- | ---------------- |
 | formId | string                                                                 | Yes  | ID of the widget to update.|
-| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | Yes  | Data to be used for the update. For details about the restrictions, see the preceding note.   |
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | Yes | Data used for the update. |
 
 **Return value**
 
@@ -422,7 +417,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | Error Code ID   | Error Message|
 |----------| -------- |
-| 801      | Capability not supported.function openFormEditAbility can not work correctly due to limited device capabilities. |
+| 801      | Capability not supported. The function openFormEditAbility cannot work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
@@ -735,7 +730,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16501000 | An internal functional error occurred. |
 | 16501001 | The ID of the form to be operated does not exist. |
 | 16501003 | The form cannot be operated by the current application. |
-| 16501011 | The form can not support this operation. |
+| 16501011 | The form cannot support this operation. |
 
 **Example**
 
@@ -808,7 +803,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16501000 | An internal functional error occurred. |
 | 16501001 | The ID of the form to be operated does not exist. |
 | 16501003 | The form cannot be operated by the current application. |
-| 16501011 | The form can not support this operation. |
+| 16501011 | The form cannot support this operation. |
 
 **Example**
 
@@ -857,7 +852,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | Error Code ID| Error Message|
 | -------- | -------- |
-| 801 |   Capability not supported.function getFormRect can not work correctly due to limited device capabilities. |
+| 801 |   Capability not supported. The getFormRect function cannot work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
