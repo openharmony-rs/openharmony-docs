@@ -3987,6 +3987,11 @@
 						"end_line":384,
 						"name":"render_standby_exit",
 						"start_line":372
+					},
+					{
+						"end_line":194,
+						"name":"init_oncallback",
+						"start_line":17
 					}
 				]
 			},
