@@ -592,7 +592,7 @@ SQLite：TEXT或BLOB超出大小限制。
 SQLite: Abort due to constraint violation.
 
 针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息为：
-SQLite: Abort due to constraint violation. UNIQUE constraint failed: {tableName}.{columnName} database: {dbName} table: {tableName}
+SQLite: Abort due to constraint violation. UNIQUE constraint failed: {tableName}.{columnName} database: {dbName} table: {tableName}.
 
 **错误描述**
 
