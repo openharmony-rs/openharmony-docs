@@ -91,11 +91,11 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    >   1. 静音期间仍需保持录音流运行：应用在`readData`回调中复制采集数据，并将副本中的全部采样数据设置为静音值后保存或发送。有符号PCM格式的静音值为`0`；`SAMPLE_FORMAT_U8`格式的静音值为`0x80`。
    >   2. 业务允许静音期间不再采集数据：由应用主动停止录音流，后续需要录音时再重新启动，以停止采集替代静音处理。
 
-   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
-   import { fileIo as fs } from '@kit.CoreFileKit';
+   import { fileIo } from '@kit.CoreFileKit';
    import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
    
    // ...
@@ -109,7 +109,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      pendingRecordingWrite = Promise.resolve();
      let path = context.cacheDir;
      let filePath = path + '/S16LE_2_48000.pcm';
-     recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+     recordingFile = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
      onReadData = (buffer: ArrayBuffer) => {
        let recordingBuffer = buffer.slice(0);
        let writeOffset = writtenBytes;
@@ -119,7 +119,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
          length: recordingBuffer.byteLength
        }
        pendingRecordingWrite = pendingRecordingWrite.then(async () => {
-         await fs.write(recordingFile.fd, recordingBuffer, options);
+         await fileIo.write(recordingFile.fd, recordingBuffer, options);
        }).catch((error: BusinessError) => {
          console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
        });
@@ -162,7 +162,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
        }
    ```
 5. 调用[release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8)方法销毁实例，释放资源。
-<!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+<!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -178,7 +178,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
       console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
     } finally {
       await pendingRecordingWrite;
-      fs.closeSync(recordingFile.fd);
+      fileIo.closeSync(recordingFile.fd);
     }
 ```
 
@@ -186,12 +186,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 下面展示了使用AudioCapturer录制音频的完整示例代码。
 
-<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { common, abilityAccessCtrl, PermissionRequestResult } from '@kit.AbilityKit';
 
 const TAG = 'AudioCapturerDemo';
@@ -227,8 +227,8 @@ let audioRendererOptions: audio.AudioRendererOptions = {
   rendererInfo: audioRendererInfo
 };
 
-let file: fs.File;
-let recordingFile: fs.File;
+let file: fileIo.File;
+let recordingFile: fileIo.File;
 let onReadData: Callback<ArrayBuffer>;
 let writeDataCallback: audio.AudioRendererWriteDataCallback;
 let pendingRecordingWrite: Promise<void> = Promise.resolve();
@@ -240,7 +240,7 @@ async function initRecordingResources(context: common.UIAbilityContext): Promise
   pendingRecordingWrite = Promise.resolve();
   let path = context.cacheDir;
   let filePath = path + '/S16LE_2_48000.pcm';
-  recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  recordingFile = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   onReadData = (buffer: ArrayBuffer) => {
     let recordingBuffer = buffer.slice(0);
     let writeOffset = writtenBytes;
@@ -250,7 +250,7 @@ async function initRecordingResources(context: common.UIAbilityContext): Promise
       length: recordingBuffer.byteLength
     }
     pendingRecordingWrite = pendingRecordingWrite.then(async () => {
-      await fs.write(recordingFile.fd, recordingBuffer, options);
+      await fileIo.write(recordingFile.fd, recordingBuffer, options);
     }).catch((error: BusinessError) => {
       console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
     });
@@ -262,7 +262,7 @@ async function initRender(context: common.UIAbilityContext) {
   let path = context.cacheDir;
   // 此处仅作示例，实际使用时需要将文件替换为应用要播放的PCM文件。
   let filePath = path + '/S16LE_2_48000.pcm';
-  file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+  file = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY);
   writeDataCallback = (buffer: ArrayBuffer) => {
     let options: Options = {
       offset: bufferSize,
@@ -270,7 +270,7 @@ async function initRender(context: common.UIAbilityContext) {
     };
 
     try {
-      let bufferLength = fs.readSync(file.fd, buffer, options);
+      let bufferLength = fileIo.readSync(file.fd, buffer, options);
       bufferSize += buffer.byteLength;
       // 如果当前回调传入的数据不足一帧，空白区域需要使用静音数据填充，否则会导致播放出现杂音。
       if (bufferLength < buffer.byteLength) {
@@ -354,7 +354,7 @@ async function releaseRender(updateCallback?: (msg: string, isError: boolean) =>
       if (err) {
         console.error('Renderer release failed.');
       } else {
-        fs.closeSync(file.fd);
+        fileIo.closeSync(file.fd);
         console.info('Renderer release success.');
       }
     });
@@ -491,12 +491,10 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
       console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
     } finally {
       await pendingRecordingWrite;
-      fs.closeSync(recordingFile.fd);
+      fileIo.closeSync(recordingFile.fd);
     }
   }
 }
-
-// ...
 
 // ...
 ```
