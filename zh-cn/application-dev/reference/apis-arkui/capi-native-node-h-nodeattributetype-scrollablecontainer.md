@@ -2404,7 +2404,7 @@ NODE_GRID_SCROLL_TO_INDEX = 1013014
 > **说明：**
 >
 > - 快速滚动模式不改变目标索引、对齐方式和额外偏移量的含义；未开启动效时，仍按原有方式跳转。
-> - 使用OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE时，如果目标项或中间项的跨行、跨列信息尚未确定，需先通过NODE_GRID_LAYOUT_OPTIONS配置完整、准确的跨度信息，包括影响目标位置的所有跨行跨列项（不仅是目标项）；缺少该信息时不保证滚动到目标位置，且不会自动降级为其他模式。
+> - 使用OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE时，如果目标项或中间项的跨行、跨列信息尚未确定，需先通过NODE_GRID_LAYOUT_OPTIONS配置完整、准确的跨度信息；该信息应覆盖影响目标位置的所有跨行跨列项，不能只提供目标项。缺少该信息时不保证滚动到目标位置，也不会自动降级为其他模式。
 > - 使用OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE时，可按需创建中间GridItem以确认其跨行或跨列信息。
 
 **起始版本：** 23
