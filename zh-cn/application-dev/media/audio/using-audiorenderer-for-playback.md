@@ -84,12 +84,12 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      > - 在无法填满回调所需长度数据的情况下，建议开发者返回audio.AudioDataCallbackResult.INVALID，系统不会处理该段音频数据，然后会再次向应用请求数据，确认数据填满后返回audio.AudioDataCallbackResult.VALID。
      > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数据不够填满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
 
-     <!-- @[init_oncallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+     <!-- @[init_oncallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->  
      
      ``` TypeScript
      import { audio } from '@kit.AudioKit';
      import { BusinessError } from '@kit.BasicServicesKit';
-     import { fileIo as fs } from '@kit.CoreFileKit';
+     import { fileIo } from '@kit.CoreFileKit';
      import { common } from '@kit.AbilityKit';
      // ...
      class Options {
@@ -108,7 +108,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
            return audio.AudioDataCallbackResult.INVALID;
          }
          try {
-           let bufferLength = fs.readSync(file.fd, buffer, options);
+           let bufferLength = fileIo.readSync(file.fd, buffer, options);
            bufferSize += buffer.byteLength;
            // 系统会判定buffer有效，正常播放。
            // ...
