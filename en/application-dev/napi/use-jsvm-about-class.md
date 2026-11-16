@@ -1,8 +1,8 @@
 # Working with Classes Using JSVM-API
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 <!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:39:08.051Z pushedAt=2026-09-02T03:50:03.905Z -->

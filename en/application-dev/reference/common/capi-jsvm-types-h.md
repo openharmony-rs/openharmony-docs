@@ -2,8 +2,8 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 <!-- md-trans-meta sourceCommit=37cfbf44f0027523cb1a164e0fc24cbc14f1bf78 translatedAt=2026-08-27T03:50:22.992Z pushedAt=2026-08-27T06:55:28.416Z -->

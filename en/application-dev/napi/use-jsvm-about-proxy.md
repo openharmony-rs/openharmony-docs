@@ -1,8 +1,8 @@
 # Working with Proxies Using JSVM-API
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 <!-- md-trans-meta sourceCommit=e7d54c65a024645f8f688ed024b0b4059342e5b3 translatedAt=2026-09-01T02:42:14.767Z pushedAt=2026-09-02T06:35:50.967Z -->

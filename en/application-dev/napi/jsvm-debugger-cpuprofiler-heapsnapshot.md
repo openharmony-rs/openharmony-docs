@@ -1,8 +1,8 @@
 # JSVM-API Debugging
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 <!-- md-trans-meta sourceCommit=3e79a444d5d1643ba7987f03ac4845efaffe1d36 translatedAt=2026-11-09T07:45:26.885Z pushedAt=2026-11-09T08:12:03.019Z nl=1 -->
