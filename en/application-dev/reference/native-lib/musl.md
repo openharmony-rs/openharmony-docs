@@ -43,7 +43,7 @@ To better adapt to the basic characteristics of OpenHarmony devices, including h
 3. The symbol-versioning is supported.
 4. **dlopen()** can directly load uncompressed files in a .zip package.
 5. Supports C API compatibility version protection.
-6. Starting from API version 26.2.0, creating and accessing shared memory and named semaphores by business group identifier is supported. For details, see [group_ipc.h](capi-group-ipc-h.md).
+6. Starting from API version 26.2.0, creating and accessing shared memory and named semaphores by business group identifier is supported. For details, see group_ipc.h.
 <!--Del-->
 ### Debugging Capabilities
 The libc provides dynamic enabling of debug logging (enabled by default). The debug logs help you learn about exceptions of the libc. With this function, you only need to set **param**, which eliminates the need for rebuilding the libc. However, you are advised not to enable debug logging in official versions because it affects the running performance.
