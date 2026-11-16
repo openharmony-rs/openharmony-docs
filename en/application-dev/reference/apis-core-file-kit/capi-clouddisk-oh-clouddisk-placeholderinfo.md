@@ -27,6 +27,6 @@ File metadata information used for placeholder-related operations.
 
 | Name | Description |
 | -- | -- |
-| uint64_t logicalSize | Logical size of the placeholder file, indicating the size of its corresponding cloud file, in bytes. The system does not guarantee the consistency between the local placeholder file size and the cloud file size.<br>**Since:** 26.0.1 |
+| uint64_t logicalSize | Logical size of the placeholder file, indicating the size of its corresponding cloud file, in bytes.<br>**Since:** 26.0.1 |
 | uint64_t atimeMs | Creation time of the cloud file corresponding to the placeholder file, in milliseconds.<br>**Since:** 26.0.1 |
 | uint64_t mtimeMs | Last modification time of the cloud file corresponding to the placeholder file, in milliseconds.<br>**Since:** 26.0.1 |
