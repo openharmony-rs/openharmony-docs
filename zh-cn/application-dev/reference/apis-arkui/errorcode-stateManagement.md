@@ -361,23 +361,23 @@ The data source of the @Link-decorated variable 'xxx' in custom component 'yyy' 
 
 ## 140124 RecoverableStorage使用不支持的类型或参数
 
-**错误信息：**
+**错误信息**
 
 Unsupported type or parameters.
 
-**错误描述：**
+**错误描述**
 
-调用RecoverableStorage.connect时传入了不支持的类型（如number、string、boolean等简单类型）或非法参数（如null/undefined组件实例、非构造器类型、非法key等）。
+调用RecoverableStorage.connect时传入了不支持的类型（如number、string、boolean等基本类型）或非法参数（如null/undefined组件实例、非构造器类型、非法key等）。
 
-**可能原因：**
+**可能原因**
 
-1. type参数传入简单类型（number、string、boolean）或不支持的数据类型（如PixelMap、NativePointer、ArrayList等）。
+1. type参数传入基本类型（number、string、boolean）或不支持的数据类型（如PixelMap、NativePointer、ArrayList等）。
 2. component参数传入null、undefined或非自定义组件实例。
-3. key为空字符串或长度不小于1024字节。
+3. key为空字符串或长度超过1024字节。
 4. 同一key连接不同类型的数据。
 5. defaultCreator返回的值不是指定type的实例。
 
-**处理步骤：**
+**处理步骤**
 
 1. 确认type参数为对象类型（class、interface等），并满足T extends object约束。
 2. 确认component参数传入的是自定义组件内的this（BaseCustomComponent实例）。

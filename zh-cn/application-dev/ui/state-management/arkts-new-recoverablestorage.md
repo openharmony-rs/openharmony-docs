@@ -10,9 +10,9 @@
 
 RecoverableStorage是应用程序中的可选单例对象。此对象的作用是：当应用被系统以资源管控方式终止（如低内存）或因JS_ERROR、APP_FREEZE异常退出时，自动保存所声明的状态变量的当前值；应用被系统重新拉起后，自动恢复这些值，实现UI无感恢复。
 
-与[PersistenceV2](./arkts-new-persistencev2.md)的持久化模型不同，RecoverableStorage采用**快照模型**（非写穿）：仅在系统存盘时机（退后台预备档/异常时点档）一次性提取当前值，而非每次变量变更即写盘。这意味着静止UI零开销，恢复数据为临时数据（用户上滑删除即清除），适合保存页面草稿、滚动位置等轻量UI状态。
+与[PersistenceV2](./arkts-new-persistencev2.md)的持久化模型不同，RecoverableStorage采用**快照模型**（非写穿）：仅在系统存盘时机（应用退后台时预备存档/异常发生时点存档）一次性提取当前值，而非每次变量变更即写盘。这意味着静止UI零开销，恢复数据为临时数据（用户上滑删除即清除），适合保存页面草稿、滚动位置等轻量UI状态。
 
-在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[RecoverableStorage-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#recoverablestorage26100)。
+在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[RecoverableStorage-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#recoverablestorage)。
 
 >**说明：**
 >
@@ -35,21 +35,22 @@ RecoverableStorage支持V1（\@State + 普通类）和V2（\@Local + \@ObservedV
 
 ## 系统前提
 
-RecoverableStorage依赖系统恢复链路，需要完成以下配置（三处时序各就各位，缺一处对应链路静默失效）：
+RecoverableStorage依赖系统恢复链路，需要完成以下三处配置（缺少任一处将导致对应恢复功能无法生效）：
 
 ### 公共配置（两种场景共用同一份EntryAbility）
 
 ```ts
 // EntryAbility.ets
 import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onCreate(): void {
     // ② 资源管控终止链门控（点卡恢复通道）
     this.context.setRestoreEnabled(true);
 
-    // ③ 异常链恢复的关键一步：系统判定"是否走默认恢复"时要读contentStorage，
-    // 提前调restoreWindowStage让其就绪，否则异常重启降级为冷启动
+    // ③ 系统判定"是否走默认恢复"时需要读取contentStorage；
+    // 提前调用restoreWindowStage使其就绪，否则异常重启将退化为冷启动
     const storage = new LocalStorage();
     this.context.restoreWindowStage(storage);
   }
@@ -60,7 +61,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-### 两场景唯一差异：调不调enableAppRecovery
+### 两场景唯一差异：是否调用enableAppRecovery
 
 **资源管控终止场景**：不创建AbilityStage（或创建但不调`enableAppRecovery`）。
 
@@ -83,7 +84,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 >**注意：**
 >
->`enableAppRecovery`必须在**AbilityStage.onCreate**（app级入口）调用，写在UIAbility.onCreate会晚于挂载时的配置固化，**静默失效**。`setRestoreEnabled(true)`和`restoreWindowStage(storage)`则在UIAbility.onCreate（ability级）调用。
+>`enableAppRecovery`必须在**AbilityStage.onCreate**（app级入口）调用，写在UIAbility.onCreate会晚于挂载时的配置固化，导致配置不生效且无告警日志。`setRestoreEnabled(true)`和`restoreWindowStage(storage)`则在UIAbility.onCreate（ability级）调用。
 
 ## 使用说明
 
@@ -92,11 +93,11 @@ export default class MyAbilityStage extends AbilityStage {
 - remove：注销当前实例指定key的可恢复状态变量。注销后该变量不再保存与恢复。
 - notifyOnError（connect选项）：响应序列化或反序列化失败的回调。
 
-以上接口详细描述请参考[RecoverableStorage-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#recoverablestorage26100)。
+以上接口详细描述请参考[RecoverableStorage-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#recoverablestorage)。
 
 ## 使用限制
 
-1. 仅支持**对象类型**（`T extends object`）。连接number、string、boolean等简单类型会抛出[BusinessError(140124)](../../reference/apis-arkui/errorcode-stateManagement.md#140124)。类的**成员属性**可为基本类型。
+1. 仅支持**对象类型**（`T extends object`），不支持基本类型。连接number、string、boolean等基本类型会抛出[BusinessError(140124)](../../reference/apis-arkui/errorcode-stateManagement.md#140124)。类的**成员属性**支持基本类型与联合类型（如`string | null`、`number | undefined`），`null`/`undefined`属性值可正常保存与恢复。
 
 2. 单实例序列化预算为**150KB**，推荐用户数据总量≤100KB。超限项会被剔除出快照并经notifyOnError上报，不会导致应用崩溃。
 
@@ -105,6 +106,8 @@ export default class MyAbilityStage extends AbilityStage {
 4. 多实例（multiton ability各窗口）各自独立分区，同一key在不同窗口互不干扰。
 
 5. 不支持非built-in类型，如PixelMap、NativePointer、ArrayList等Native类型。
+
+6. 对象图包含**循环引用**时，环上的嵌套类字段须能提供类型信息：V2类使用\@Type装饰，或在字段初始化器中实例化（如`peer: Node = new Node()`）。初始化为`null`且未标注\@Type的嵌套类字段，恢复时无法确定其类型，该变量将回退为默认构造值，并通过notifyOnError上报（reason为'deserialization'）。
 
 ## 支持的类型
 

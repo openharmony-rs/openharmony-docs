@@ -2586,7 +2586,7 @@ clearCache(reuseId?: string): void
 
 **参数：**
 
-| 参数名 | 类型 | 必填 | 说明 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ------ | ---- | -------- |
 | reuseId | string | 否   | 需要清理的复用池中可复用自定义组件的复用标识ID。<br>默认值：undefined，即清理复用池中的全部组件。 |
 
@@ -2773,7 +2773,7 @@ type ReusableComponentConstructor = Function
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-## RecoverableStorage<sup>26.1.0+</sup>
+## RecoverableStorage
 
 提供在应用被资源管控终止或异常退出时自动保存与恢复所声明的状态变量的能力。通过connect声明变量后，其值在系统恢复链路的保存时机自动保存，并在下一次恢复重启时自动恢复。具体UI使用说明，详见[RecoverableStorage: 资源管控终止恢复](../../ui/state-management/arkts-new-recoverablestorage.md)。
 
@@ -2785,13 +2785,15 @@ type ReusableComponentConstructor = Function
 >
 >3. 仅系统携带恢复重启参数拉起的启动会执行恢复。用户手动启动应用始终为冷启动，**connect**返回默认值。
 
+**起始版本：** 26.1.0
+
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-### connect<sup>26.1.0+</sup>
+### connect
 
 static&nbsp;connect\<T&nbsp;extends&nbsp;object,&nbsp;S&nbsp;extends&nbsp;object\>( <br>
 &nbsp;&nbsp;&nbsp;&nbsp;params:&nbsp;RecoverableConnectOptions\<T,&nbsp;S\> <br>
@@ -2801,7 +2803,7 @@ static&nbsp;connect\<T&nbsp;extends&nbsp;object,&nbsp;S&nbsp;extends&nbsp;object
 
 >**说明：**
 >
->1. 仅支持对象类型。连接number、string、boolean等简单类型会抛出BusinessError(140124)。
+>1. 仅支持对象类型，不支持基本类型。连接number、string、boolean等基本类型会抛出[BusinessError(140124)](./errorcode-stateManagement.md#140124)。
 >
 >2. 同一实例的同一key以相同类型重复连接时，返回已有引用；类型不匹配时抛出BusinessError(140124)。
 >
@@ -2810,6 +2812,8 @@ static&nbsp;connect\<T&nbsp;extends&nbsp;object,&nbsp;S&nbsp;extends&nbsp;object
 >4. 典型用法为修改所连接对象的属性。对V1 \@State变量整体重新赋值会导致已存引用失效，不被跟踪。
 >
 >5. 变量按**component**获取的窗口级实例ID隔离，不同实例的变量互不影响。
+
+**起始版本：** 26.1.0
 
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
@@ -2821,7 +2825,7 @@ static&nbsp;connect\<T&nbsp;extends&nbsp;object,&nbsp;S&nbsp;extends&nbsp;object
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------| ---- | ---------------------- |
-| params | [RecoverableConnectOptions\<T, S\>](#recoverableconnectoptionst-s26100) | 是 | 连接选项，包含component、type、defaultCreator等配置项。 |
+| params | [RecoverableConnectOptions\<T, S\>](#recoverableconnectoptionst-s) | 是 | 连接选项，包含component、type、defaultCreator等配置项。 |
 
 **返回值：**
 
@@ -2831,7 +2835,7 @@ static&nbsp;connect\<T&nbsp;extends&nbsp;object,&nbsp;S&nbsp;extends&nbsp;object
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../../errorcodes/errorcode-common.md)。
+以下错误码的详细介绍请参见[状态管理错误码](./errorcode-stateManagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -2865,7 +2869,7 @@ struct DraftPage {
 }
 ```
 
-### keys<sup>26.1.0+</sup>
+### keys
 
 static&nbsp;keys(component:&nbsp;BaseCustomComponent):&nbsp;Array\<string\>
 
@@ -2874,6 +2878,8 @@ static&nbsp;keys(component:&nbsp;BaseCustomComponent):&nbsp;Array\<string\>
 >**说明：**
 >
 >key在Array中的顺序是无序的，与key注册的顺序无关。
+
+**起始版本：** 26.1.0
 
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
@@ -2914,7 +2920,7 @@ struct MyPage {
 }
 ```
 
-### remove<sup>26.1.0+</sup>
+### remove
 
 static&nbsp;remove\<T\>(component:&nbsp;BaseCustomComponent,&nbsp;keyOrType:&nbsp;string&nbsp;|&nbsp;TypeConstructorWithArgs\<T\>):&nbsp;void
 
@@ -2923,6 +2929,8 @@ static&nbsp;remove\<T\>(component:&nbsp;BaseCustomComponent,&nbsp;keyOrType:&nbs
 >**说明：**
 >
 >注销不存在的key时会报告警告。
+
+**起始版本：** 26.1.0
 
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
@@ -2960,9 +2968,11 @@ struct MyPage {
 }
 ```
 
-## RecoverableConnectOptions\<T, S\><sup>26.1.0+</sup>
+## RecoverableConnectOptions\<T, S\>
 
-定义[RecoverableStorage.connect](#connect26100)的连接选项。
+定义[RecoverableStorage.connect](#recoverablestorage)的连接选项。
+
+**起始版本：** 26.1.0
 
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
@@ -2977,11 +2987,13 @@ struct MyPage {
 | key | string | 否 | 可恢复状态变量的key。不指定时使用类型名作为key。 |
 | defaultCreator | [StorageDefaultCreator\<T\>](#storagedefaultcreatort) | 是 | 默认值构造器。首次连接时使用，恢复失败时作为回退。 |
 | defaultSubCreator | [StorageDefaultCreator\<S\>](#storagedefaultcreatort) | 否 | 集合嵌套\@Type成员的构造器，恢复时用于重建嵌套对象。仅对容器类型（Array/Map/Set）顶层生效。 |
-| notifyOnError | [NotifyOnErrorCallback](#notifyonerrorcallback26100) | 否 | 序列化/反序列化错误回调。不指定时错误在内部处理，不会导致应用崩溃。 |
+| notifyOnError | [NotifyOnErrorCallback](#notifyonerrorcallback) | 否 | 序列化/反序列化错误回调。不指定时错误在内部处理，不会导致应用崩溃。 |
 
-## RecoverableStorageError<sup>26.1.0+</sup>
+## RecoverableStorageError
 
-定义[RecoverableStorage](#recoverablestorage26100)回调上报的错误信息。
+定义[RecoverableStorage](#recoverablestorage)回调上报的错误信息。
+
+**起始版本：** 26.1.0
 
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
@@ -2989,17 +3001,19 @@ struct MyPage {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-| 参数名 | 类型 | 必填 | 说明 |
-|--------|------| ---- | ---------------------- |
-| reason | 'serialization' \| 'deserialization' | 是 | 错误原因。'serialization'表示序列化失败（如超出序列化上限或字段不可序列化），'deserialization'表示反序列化失败（如数据损坏、类型不匹配）。connect入口错误（类型不支持、参数非法）以BusinessError(140124)直接抛出，不经本回调上报。推荐用户数据总量：每实例≤100KB（150KB序列化预算，与系统数据共享）。 |
-| keys | Array\<string\> | 是 | 受错误影响的key列表。 |
-| message | string | 是 | 错误的附加信息。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+|--------|------|------------|-----------|--------------|
+| reason | 'serialization' \| 'deserialization' | 否 | 否 | 错误原因。'serialization'表示序列化失败（如超出序列化上限或字段不可序列化），'deserialization'表示反序列化失败（如数据损坏、类型不匹配）。connect入口错误（类型不支持、参数非法）以BusinessError(140124)直接抛出，不经本回调上报。推荐用户数据总量：每实例≤100KB（150KB序列化预算，与系统数据共享）。 |
+| keys | Array\<string\> | 否 | 否 | 受错误影响的key列表。 |
+| message | string | 否 | 否 | 错误的附加信息。 |
 
-## NotifyOnErrorCallback<sup>26.1.0+</sup>
+## NotifyOnErrorCallback
 
 type&nbsp;NotifyOnErrorCallback&nbsp;=&nbsp;(error:&nbsp;RecoverableStorageError)&nbsp;=>&nbsp;void
 
-定义用于上报[RecoverableStorage](#recoverablestorage26100)错误的回调。回调在UI线程执行，回调内不应抛出异常。
+定义用于上报[RecoverableStorage](#recoverablestorage)错误的回调。回调在UI线程执行，回调内不应抛出异常。
+
+**起始版本：** 26.1.0
 
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
@@ -3011,4 +3025,4 @@ type&nbsp;NotifyOnErrorCallback&nbsp;=&nbsp;(error:&nbsp;RecoverableStorageError
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------| ---- | ---------------------- |
-| error | [RecoverableStorageError](#recoverablestorageerror26100) | 是 | 错误信息。 |
+| error | [RecoverableStorageError](#recoverablestorageerror) | 是 | 错误信息。 |
