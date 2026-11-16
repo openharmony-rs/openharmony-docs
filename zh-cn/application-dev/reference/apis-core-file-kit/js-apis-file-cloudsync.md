@@ -1052,7 +1052,6 @@ cleanAllFileCache(): Promise&lt;void&gt;
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
 
 let fileCache = new cloudSync.CloudFileCache();
 
