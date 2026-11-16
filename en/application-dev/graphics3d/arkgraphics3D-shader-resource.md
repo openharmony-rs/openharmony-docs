@@ -1,10 +1,20 @@
+---
+kits: ["ArkGraphics 3D"]
+description: "Describes the JSON format requirements for .shader resource files in ArkGraphics 3D, including compatibility_info, vertex and fragment shader paths, vertexInputDeclaration, and rasterization, depth-stencil, and color-blending state fields."
+keywords: [ArkGraphics 3D, shader file, vertex shader, fragment shader]
+doctype: guide
+status: active
+---
+
 # Requirements on the .shader File Format
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
-<!--Tester: @zhangyue283-->
+<!--Tester: @dongchao01-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=bfc96144fd212df11635a7acc693723c4ad0b55f translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+
 
 In ArkGraphics 3D, .shader files are based on the JSON format and must adhere to JSON syntax. These files consist of the following sections:
 

@@ -1,7 +1,7 @@
 ---
 kits: ["Media Kit / 媒体服务"]
 description: "介绍如何使用AVRecorder的C/C++接口实现视频录制，涵盖创建实例、配置录制参数、获取Surface及录制控制等全流程，适用于Native层视频录制开发。"
-keywords: [AVRecorder, 视频录制, 录制状态机, 相机录制]
+keywords: [AVRecorder, OH_AVRecorder_Config, 视频录制, 录制状态机, 相机录制]
 doctype: guide
 status: active
 ---
@@ -186,10 +186,10 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
            }
            MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_FILE_VIDEO;
            int32_t result = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, imageFileType);
-           OH_LOG_INFO(LOG_APP, "result of OH_MediaAssetChangeRequest_SaveCameraPhoto: %d", result);
+           OH_LOG_INFO(LOG_APP, "result of OH_MediaAssetChangeRequest_SaveCameraPhoto: %{public}d", result);
    
            int32_t resultChange = OH_MediaAccessHelper_ApplyChanges(changeRequest);
-           OH_LOG_INFO(LOG_APP, "result of OH_MediaAccessHelper_ApplyChanges: %d", resultChange);
+           OH_LOG_INFO(LOG_APP, "result of OH_MediaAccessHelper_ApplyChanges: %{public}d", resultChange);
    
            OH_MediaAsset_Release(asset);
            OH_MediaAssetChangeRequest_Release(changeRequest);
@@ -251,7 +251,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        g_outputFd = open((avrecorderRoot + "/video_example.mp4").c_str(), O_RDWR | O_CREAT, FILE_PERMISSIONS);
        std::string fileUrl = "fd://" + std::to_string(g_outputFd);
        config.url = strdup(fileUrl.c_str());
-       OH_LOG_INFO(LOG_APP, "config.url is: %s", config.url);
+       OH_LOG_INFO(LOG_APP, "config.url is: %{public}s", config.url);
    
        OH_AVErrCode err = OH_AVRecorder_Prepare(g_recorder, &config);
        free(config.url);
@@ -423,10 +423,10 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
            }
            MediaLibrary_ImageFileType imageFileType = MEDIA_LIBRARY_FILE_VIDEO;
            int32_t result = OH_MediaAssetChangeRequest_SaveCameraPhoto(changeRequest, imageFileType);
-           OH_LOG_INFO(LOG_APP, "result of OH_MediaAssetChangeRequest_SaveCameraPhoto: %d", result);
+           OH_LOG_INFO(LOG_APP, "result of OH_MediaAssetChangeRequest_SaveCameraPhoto: %{public}d", result);
    
            int32_t resultChange = OH_MediaAccessHelper_ApplyChanges(changeRequest);
-           OH_LOG_INFO(LOG_APP, "result of OH_MediaAccessHelper_ApplyChanges: %d", resultChange);
+           OH_LOG_INFO(LOG_APP, "result of OH_MediaAccessHelper_ApplyChanges: %{public}d", resultChange);
    
            OH_MediaAsset_Release(asset);
            OH_MediaAssetChangeRequest_Release(changeRequest);
@@ -525,7 +525,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
        g_outputFd = open((avrecorderRoot + "/video_example.mp4").c_str(), O_RDWR | O_CREAT, FILE_PERMISSIONS);
        std::string fileUrl = "fd://" + std::to_string(g_outputFd);
        config.url = strdup(fileUrl.c_str());
-       OH_LOG_INFO(LOG_APP, "config.url is: %s", config.url);
+       OH_LOG_INFO(LOG_APP, "config.url is: %{public}s", config.url);
    
        OH_AVErrCode err = OH_AVRecorder_Prepare(g_recorder, &config);
        free(config.url);

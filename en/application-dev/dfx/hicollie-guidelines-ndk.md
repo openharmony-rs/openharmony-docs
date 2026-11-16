@@ -5,7 +5,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=10d653f7dbab0bb99e80334f55a14c60227169b9 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
+<!-- md-trans-meta sourceCommit=380302020c3e797188855ad9895a83c0437ababa translatedAt=2026-11-03T13:00:53.698Z pushedAt=2026-11-03T13:00:53.698Z nl=1 -->
 
 ## Overview
 
@@ -63,7 +63,7 @@ The following demonstrates how to add a button to an app and click the button to
            - napi_init.cpp
          ets:
            entryability:
-             - EntryAbility.ts
+             - EntryAbility.ets
            pages:
              - Index.ets
    ```
@@ -504,7 +504,7 @@ The following demonstrates how to add a button to an app and click the button to
    #include <thread>
    #include <string>
    #include <unistd.h>
-   
+
    #undef LOG_TAG
    #define LOG_TAG "StuckTest"
 
@@ -522,20 +522,20 @@ The following demonstrates how to add a button to an app and click the button to
       int needed = snprintf(buffer1, size, "UserCallback%s", source.c_str());
       return needed; 
    }
-   
+
    static napi_value TestHiCollieSetFreezeCallback(napi_env env, napi_callback_info info)
    {
       // Set the user callback.
       OH_HiCollie_SetFreezeCallback(UserCall);
       return 0;
    }
-   
+
    static napi_value TestHiCollieAssociateProcessReport(napi_env env, napi_callback_info info)
    {
-      // Report the BUSINESS_THREAD_BLOCK_3S event.
+      // Report the BUSSINESS_THREAD_BLOCK_3S event.
       OH_HiCollie_AssociateProcessReport(false);
       sleep(3);
-      // Report the BUSINESS_THREAD_BLOCK_6S event.
+      // Report the BUSSINESS_THREAD_BLOCK_6S event.
       OH_HiCollie_AssociateProcessReport(true);
       return 0;
    }
@@ -551,7 +551,7 @@ The following demonstrates how to add a button to an app and click the button to
        return exports;
    }
    EXTERN_C_END
-   
+
    static napi_module demoModule = {
        .nm_version = 1,
        .nm_flags = 0,
@@ -561,7 +561,7 @@ The following demonstrates how to add a button to an app and click the button to
        .nm_priv = ((void*)0),
        .reserved = { 0 },
    };
-   
+
    extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
    {
        napi_module_register(&demoModule);

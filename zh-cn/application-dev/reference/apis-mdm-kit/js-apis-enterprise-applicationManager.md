@@ -6,7 +6,7 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供应用管理能力，包括管理应用运行禁止名单、应用运行允许名单、开机自启动应用名单、保活应用名单、不可关停应用名单、后台防冻结应用名单、允许发送通知应用名单、允许跨设备应用名单等。适用于企业设备管理场景，可实现应用运行权限管控、开机自启动管理、保活应用管理等，提升企业设备安全性和合规性。
+本模块提供应用管理能力，包括管理应用运行禁止名单、应用运行允许名单、开机自启动应用名单、保活应用名单、不可关停应用名单、后台防冻结应用名单、允许发送通知应用名单、允许跨设备应用名单、电池优化排除列表等。适用于企业设备管理场景，可实现应用运行权限管控、开机自启动管理、保活应用管理、电池优化排除管理等，提升企业设备安全性和合规性。
 
 > **说明：**
 >
@@ -1185,9 +1185,9 @@ addKeepAliveApps(admin: Want, bundleNames: Array\<string>, accountId: number, di
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
-| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定需要添加至保活名单的应用，最大支持5个。从API版本26.0.1开始，最大支持10个。<br>应用需要满足条件：安装在1用户下（1用户是支持三方应用单例运行的用户），且应用接入[后台服务](../../application-models/app-service-extension-ability.md#实现一个后台服务)<!--RP3--><!--RP3End-->。否则，会报错误码9201005。  |
+| bundleNames    | Array&lt;string&gt;                                     | 是   | 应用包名数组，指定需要添加至保活名单的应用，最大支持5个。从API版本26.0.1开始，最大支持10个。<br>应用需要满足条件：安装在系统账号ID为1的用户（详情请参考[系统账号ID体系](../../basic-services/account/os-account-introduction.md#系统账号id体系)）下，且应用接入[后台服务](../../application-models/app-service-extension-ability.md#实现一个后台服务)<!--RP3--><!--RP3End-->。否则，会报错误码9201005。  |
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
-| disallowModify | boolean | 是   | 是否禁止用户手动取消应用保活，true表示禁止，false表示允许。<!--RP2--><!--RP2End--> |
+| disallowModify | boolean | 是   | 是否禁止用户手动取消应用保活，true表示禁止，false表示允许。在系统账号ID为1的用户（详情请参考[系统账号ID体系](../../basic-services/account/os-account-introduction.md#系统账号id体系)）下支持设置禁止或允许；在系统账号ID不为1的用户下只支持设置禁止，设置允许时会返回801错误码。<!--RP2--><!--RP2End--> |
 
 **错误码**：
 
@@ -3394,7 +3394,7 @@ try {
 
 addHideLauncherIcon(admin: Want, bundleNames: Array\<string\>): void
 
-添加隐藏桌面应用图标名单。
+添加隐藏桌面应用图标名单。<!--RP9--><!--RP9End-->
 
 > **说明：**
 >
@@ -3666,6 +3666,53 @@ async function publishFormToDesktop() {
 }
 ```
 
+## applicationManager.removeAllNotifications
+
+removeAllNotifications(accountId: number): void
+
+清除指定用户的所有通知。系统实况窗类型通知、企业设备管理服务发布的通知不会被清除。支持跨用户调用。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_NOTIFICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型   | 必填 | 说明                                                         |
+| --------- | ------ | ---- | ------------------------------------------------------------ |
+| accountId | number | 是   | 用户ID，取值范围：大于等于0的整数。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200006  | The specified account ID is invalid. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+
+try {
+  // 需根据实际情况进行替换
+  applicationManager.removeAllNotifications(100);
+  console.info('Succeeded in removing all notifications.');
+} catch (err) {
+  console.error(`Failed to remove all notifications. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## FormInfo
 
 卡片信息。
@@ -3851,3 +3898,170 @@ systemManager.stopExactTimer(timerId).then(() => {
 | 名称     | 值 | 说明           |
 | -------- | -- | -------------- |
 | NETWORK  | 1  | 网络访问资源。申请后，指定应用在设备待机期间可以继续访问网络。适用于企业通信工具、推送通知服务、实时数据同步等需要持续网络连接的应用场景。 |
+
+## applicationManager.addOptimizationBatteryExclusionApps
+
+addOptimizationBatteryExclusionApps(appIdentifiers: Array\<string>, accountId: number): void
+
+添加应用至电池优化排除列表。添加后，指定应用将获得以下豁免能力，避免因系统省电策略导致应用进程被终止。
+- 应用资源异常管控豁免：应用进程不受系统资源管控机制的异常管控。
+- 省电模式豁免：省电模式会关闭息屏显示、自动同步等功能并降低系统运行性能，排除列表中的应用不受影响。
+- 应急模式豁免：应急模式会禁用游戏软件、视频软件等应用，并精简下拉菜单，排除列表中的应用不受影响。
+- 户外管控策略豁免：户外管控策略会限制部分系统功能以提升续航时间，排除列表中的应用不受影响。
+
+适用于企业通信工具、推送通知服务、实时数据同步等需要持续后台运行的应用场景。可通过[getOptimizationBatteryExclusionApps](#applicationmanagergetoptimizationbatteryexclusionapps)查询当前电池优化排除列表，通过[removeOptimizationBatteryExclusionApps](#applicationmanagerremoveoptimizationbatteryexclusionapps)将应用从排除列表中移除。
+
+> **说明：**
+>
+>- 单个用户下，电池优化排除列表最多支持包含10个应用。
+>- 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名         | 类型                | 必填 | 说明                                                         |
+| -------------- | ------------------- | ---- | ------------------------------------------------------------ |
+| appIdentifiers | Array&lt;string&gt; | 是   | 应用[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)的数组，可以通过接口[bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)获取bundleInfo.signatureInfo.appIdentifier。|
+| accountId      | number              | 是   | 用户账号ID。<br>取值范围：大于等于0。<br>accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+
+// 需根据实际情况进行替换
+let appIdentifiers: Array<string> = ['6917****3569'];
+let accountId: number = 100;
+
+try {
+  applicationManager.addOptimizationBatteryExclusionApps(appIdentifiers, accountId);
+  console.info('Succeeded in adding optimization battery exclusion apps.');
+} catch (err) {
+  console.error(`Failed to add optimization battery exclusion apps. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## applicationManager.removeOptimizationBatteryExclusionApps
+
+removeOptimizationBatteryExclusionApps(appIdentifiers: Array\<string>, accountId: number): void
+
+将应用从电池优化排除列表中移除。移除后，应用将失去应用资源异常管控豁免、省电模式豁免、应急模式豁免和户外管控策略豁免能力，在设备进入省电模式、应急模式或户外管控策略时，应用进程可能被系统终止。可通过[getOptimizationBatteryExclusionApps](#applicationmanagergetoptimizationbatteryexclusionapps)查询当前电池优化排除列表。
+
+> **说明：**
+>
+>- 若移除的应用不在排除列表中，调用仍可成功执行，不产生错误。
+>- 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名         | 类型                | 必填 | 说明                                                         |
+| -------------- | ------------------- | ---- | ------------------------------------------------------------ |
+| appIdentifiers | Array&lt;string&gt; | 是   | 应用[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)的数组，可以通过接口[bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)获取bundleInfo.signatureInfo.appIdentifier。|
+| accountId      | number              | 是   | 用户账号ID。<br>取值范围：大于等于0。<br>accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+
+// 需根据实际情况进行替换
+let appIdentifiers: Array<string> = ['6917****3569'];
+let accountId: number = 100;
+
+try {
+  applicationManager.removeOptimizationBatteryExclusionApps(appIdentifiers, accountId);
+  console.info('Succeeded in removing optimization battery exclusion apps.');
+} catch (err) {
+  console.error(`Failed to remove optimization battery exclusion apps. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+## applicationManager.getOptimizationBatteryExclusionApps
+
+getOptimizationBatteryExclusionApps(accountId: number, queryPolicy?: common.QueryPolicy): Array\<string&gt;
+
+获取电池优化排除列表。通过[addOptimizationBatteryExclusionApps](#applicationmanageraddoptimizationbatteryexclusionapps)可将应用添加至排除列表，通过[removeOptimizationBatteryExclusionApps](#applicationmanagerremoveoptimizationbatteryexclusionapps)可将应用从排除列表中移除。若未添加过应用，则返回空数组。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名      | 类型                                                          | 必填 | 说明                                                         |
+| ----------- | ------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| accountId   | number                                                        | 是   | 用户账号ID。<br>取值范围：大于等于0。<br>accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
+| queryPolicy | [common.QueryPolicy](./js-apis-enterprise-common.md#querypolicy) | 否   | 查询策略。如果不指定该参数，则默认使用[common.QueryPolicy.SELF](./js-apis-enterprise-common.md#querypolicy)，即查询当前设备管理应用设置的策略；传入[common.QueryPolicy.ALL](./js-apis-enterprise-common.md#querypolicy)时，可查询当前设备上所有设备管理应用设置的电池优化排除列表。|
+
+**返回值：**
+
+| 类型                | 说明                                     |
+| ------------------- | ---------------------------------------- |
+| Array&lt;string&gt; | 返回电池优化排除列表中的应用唯一标识符。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { applicationManager, common } from '@kit.MDMKit';
+
+let accountId: number = 100;
+
+try {
+  let result: Array<string> = applicationManager.getOptimizationBatteryExclusionApps(accountId, common.QueryPolicy.SELF);
+  console.info(`Succeeded in getting optimization battery exclusion apps, result: ${JSON.stringify(result)}`);
+} catch (err) {
+  console.error(`Failed to get optimization battery exclusion apps. Code is ${err.code}, message is ${err.message}`);
+}
+```

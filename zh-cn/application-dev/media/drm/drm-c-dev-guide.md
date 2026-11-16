@@ -26,7 +26,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 1. 导入DRM Kit接口。
 
-   <!-- @[drm_import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    // ...
@@ -45,7 +45,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 3. 获取设备支持的DRM解决方案名称和唯一标识的列表。
 
-   <!-- @[drm_getMediaKeySystems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_getMediaKeySystems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    uint32_t count = 3; // count是当前设备实际支持的DRM插件的个数，用户根据实际情况设置。
@@ -57,7 +57,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 4. （可选）查询设备是否支持对应DRM解决方案名称、媒体类型、安全保护级别的DRM解决方案。
 
-   <!-- @[drm_isSupported3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_isSupported3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    bool isSupported = OH_MediaKeySystem_IsSupported3(name, mimeType, CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
@@ -66,7 +66,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 5. 创建MediaKeySystem实例。
 
-   <!-- @[drm_createMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_createMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    Drm_ErrCode ret = OH_MediaKeySystem_Create(name, &mediaKeySystem);
@@ -79,7 +79,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 6. （可选）设置MediaKeySystem事件监听回调。
 
-   <!-- @[drm_bindMediaKeySystemCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_bindMediaKeySystemCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    ret = OH_MediaKeySystem_SetCallback(mediaKeySystem, SystemCallBackWithObj);
@@ -88,7 +88,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 7. （可选）获取设备DRM证书状态。
 
-   <!-- @[drm_getCertificateStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_getCertificateStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    DRM_CertificateStatus certStatus = CERT_STATUS_NOT_PROVISIONED;
@@ -98,7 +98,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 8. （可选）生成设备DRM证书请求与处理设备DRM证书响应。
 
-   <!-- @[drm_generateKeySystemRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_generateKeySystemRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    unsigned char request[MAX_DRM_PROVISION_BUF_SIZE] = {0x00};
@@ -109,7 +109,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
    // ...
    ```
 
-   <!-- @[drm_processKeySystemResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_processKeySystemResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    // 应用通过网络请求将设备DRM证书请求传到DRM服务获取响应keySystemResponse，请按实际数据传入。
@@ -120,7 +120,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 9. （可选）获取设备支持的最大内容保护级别。
 
-   <!-- @[drm_getMaxContentProtectionLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+   <!-- @[drm_getMaxContentProtectionLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
    
    ``` C++
    DRM_ContentProtectionLevel level = CONTENT_PROTECTION_LEVEL_UNKNOWN;
@@ -130,7 +130,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 10. 创建MediaKeySession实例。
 
-    <!-- @[drm_createMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+    <!-- @[drm_createMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
     
     ``` C++
     DRM_ContentProtectionLevel securityLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
@@ -140,7 +140,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 11. （可选）设置MediaKeySession事件监听回调。
 
-    <!-- @[drm_bindMediaKeySessionCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+    <!-- @[drm_bindMediaKeySessionCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
     
     ``` C++
     OH_MediaKeySession_Callback sessionCallback = { SessionEventCallBackWithObj, SessionKeyChangeCallBackWithObj };
@@ -150,7 +150,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 12. （可选）查询是否需要安全解码。
 
-    <!-- @[drm_requireSecureDecoderModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+    <!-- @[drm_requireSecureDecoderModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
     
     ``` C++
     bool requireSecureDecoder = false;
@@ -160,7 +160,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 13. 生成媒体密钥请求与处理媒体密钥响应，以请求许可证完成DRM节目授权。
 
-    <!-- @[drm_generateMediaKeyRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+    <!-- @[drm_generateMediaKeyRequest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
     
     ``` C++
     DRM_MediaKeyRequest mediaKeyRequest;
@@ -179,7 +179,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
     // ...
     ```
 
-    <!-- @[drm_processMediaKeyResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+    <!-- @[drm_processMediaKeyResponse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
     
     ``` C++
     // 应用通过网络请求DRM服务获取媒体密钥响应mediaKeyResponse，请按实际数据传入。
@@ -194,7 +194,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 14. （可选）恢复离线媒体密钥。
 
-    <!-- @[drm_restoreOfflineMediaKeys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+    <!-- @[drm_restoreOfflineMediaKeys](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
     
     ``` C++
     ret = OH_MediaKeySession_RestoreOfflineMediaKeys(mediaKeySession, mediaKeyId, mediaKeyIdLen);
@@ -203,7 +203,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 15. （可选）检查媒体密钥状态。
 
-    <!-- @[drm_checkMediaKeyStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+    <!-- @[drm_checkMediaKeyStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
     
     ``` C++
     DRM_MediaKeyStatus mediaKeyStatus = {0};
@@ -213,7 +213,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 16. （可选）获取离线媒体密钥标识列表、获取离线媒体密钥状态与清除离线媒体密钥。
 
-    <!-- @[drm_offlineMediaKeyManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+    <!-- @[drm_offlineMediaKeyManagement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
     
     ``` C++
     DRM_OfflineMediakeyIdArray offlineMediaKeyIds;
@@ -232,7 +232,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 17. 销毁MediaKeySession实例。
 
-    <!-- @[drm_destroyMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+    <!-- @[drm_destroyMediaKeySession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
     
     ``` C++
     ret = OH_MediaKeySession_Destroy(mediaKeySession);
@@ -241,7 +241,7 @@ DRM Kit提供MediaKeySystem实现DRM证书管理、DRM许可证管理功能，�
 
 18. 销毁MediaKeySystem实例。
 
-    <!-- @[drm_destroyMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/entry/src/main/cpp/drm_sample.cpp) -->
+    <!-- @[drm_destroyMediaKeySystem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Drm/DrmNDK/entry/src/main/cpp/drm_sample.cpp) -->
     
     ``` C++
     ret = OH_MediaKeySystem_Destroy(mediaKeySystem);

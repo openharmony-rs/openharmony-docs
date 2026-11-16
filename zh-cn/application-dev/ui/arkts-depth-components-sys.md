@@ -302,7 +302,7 @@ DepthComponent(背景资源) {
 <!--deprecated_code_no_check-->
 ``` TypeScript
 // 第 ① 步：传入背景资源，并设置深度图
-DepthComponent($r('app.media.background')) {
+DepthComponent($r('app.media.depthcomponent_background')) {
   // 子组件在闭包内声明，稍后为其配置空间效果
 }
   .width('100%')
@@ -374,6 +374,7 @@ Text('Depth Component')
 将以上各步组合（并为组件补充`onComplete`/`onError`事件回调以感知背景加载结果，其中onComplete在背景资源加载成功时触发，onError在加载失败时触发），即可得到完整示例：
 
 <!-- @[depth_component_2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DepthComponentSample/entry/src/main/ets/pages/DepthComponent_2D.ets) -->
+
 ``` TypeScript
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -384,7 +385,7 @@ struct DepthComponent2DExample {
   build() {
     Column() {
       // 请开发者替换为实际的资源文件
-      DepthComponent($r('app.media.background')) {
+      DepthComponent($r('app.media.depthcomponent_background')) {
         Text('Depth Component')
           .fontSize(100)
           .spatialEffect({
@@ -592,6 +593,7 @@ Text('Spatial Effect')
 **完整代码**
 
 <!-- @[depth_component_depth](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DepthComponentSample/entry/src/main/ets/pages/DepthComponent_Depth.ets) -->
+
 ``` TypeScript
 // xxx.ets
 @Entry
@@ -600,7 +602,7 @@ struct DepthComponentDepthExample {
   build() {
     Column() {
       // 请开发者替换为实际的资源文件
-      DepthComponent($r('app.media.background')) {
+      DepthComponent($r('app.media.depthcomponent_background')) {
         Text('Spatial Effect')
           .fontSize(100)
           .spatialEffect({
@@ -669,6 +671,7 @@ Text('NDC Mode')
 **完整代码**
 
 <!-- @[depth_component_ndc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DepthComponentSample/entry/src/main/ets/pages/DepthComponent_NDC.ets) -->
+
 ``` TypeScript
 // xxx.ets
 @Entry
@@ -677,7 +680,7 @@ struct DepthComponentNdcExample {
   build() {
     Column() {
       // 请开发者替换为实际的资源文件
-      DepthComponent($r('app.media.background')) {
+      DepthComponent($r('app.media.depthcomponent_background')) {
         Text('NDC Mode')
           .textAlign(TextAlign.Center)
           .fontSize(120)
@@ -762,6 +765,7 @@ cameraBufferCrop在camera中的位置及其四个子参数如下：
 **完整代码**
 
 <!-- @[depth_component_crop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DepthComponentSample/entry/src/main/ets/pages/DepthComponent_Crop.ets) -->
+
 ``` TypeScript
 // xxx.ets
 @Entry
@@ -770,7 +774,7 @@ struct DepthComponentCropExample {
   build() {
     Column() {
       // 请开发者替换为实际的资源文件
-      DepthComponent($r('app.media.background')) {
+      DepthComponent($r('app.media.depthcomponent_background')) {
         Text('Spatial Effect')
           .fontSize(100)
           .spatialEffect({

@@ -2,10 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-29T11:12:38.621Z pushedAt=2026-09-30T09:38:13.193Z -->
+<!-- md-trans-meta sourceCommit=23b90a9f0d809e2f9c0564bfb86befaf8a00ba9e translatedAt=2026-11-10T07:44:15.571Z pushedAt=2026-11-10T07:53:00.932Z nl=1 -->
 
 To receive notifications, an application must subscribe to notifications first. The notification subsystem provides two types of subscription APIs, allowing applications to subscribe to notifications from all applications or notifications from a specific application.
 
@@ -40,23 +40,23 @@ The major APIs for [notification subscription](notification-glossary.md#notifica
 
 For details about the API, see [NotificationSubscriber](../reference/apis-notification-kit/js-apis-inner-notification-notificationSubscriber-sys.md).
 
-| **API**| **Description**|
+| Name | Description |
 | -------- | -------- |
-| onConsume?: (data:&nbsp;SubscribeCallbackData)&nbsp;=&gt;&nbsp;void  | Callback for receiving notifications.              |
-| onCancel?: (data:&nbsp;SubscribeCallbackData)&nbsp;=&gt;&nbsp;void   | Callback for canceling notifications.          |
-| onUpdate?: (data:&nbsp;NotificationSortingMap)&nbsp;=&gt;&nbsp;void  | Callback for [notification sorting](notification-glossary.md#notification-sorting) updates.       |
-| onConnect?: ()&nbsp;=&gt;&nbsp;void                                 | Callback for successful subscription.           |
-| onDisconnect?: ()&nbsp;=&gt;&nbsp;void                              | Callback for subscription cancellation.           |
-| onDestroy?: ()&nbsp;=&gt;&nbsp;void                                  | Callback for disconnecting from the notification subsystem.  |
-| onDoNotDisturbChanged?: (mode:&nbsp;notificationManager.DoNotDisturbDate)&nbsp;=&gt;&nbsp;void           | Callback for the Do Not Disturb (DNT) time changes.|
-| onEnabledNotificationChanged?: (callbackData:&nbsp;EnabledNotificationCallbackData)&nbsp;=&gt;&nbsp;void | Callback for notification switch changes.      |
-| onBadgeChanged?: (data:&nbsp;BadgeNumberCallbackData)&nbsp;=&gt;&nbsp;void                               | Callback for notification badge number changes.  |
-| onBatchCancel?: (data:&nbsp;Array&lt;SubscribeCallbackData&gt;)&nbsp;=&gt;&nbsp;void                               | Callback for batch deletion.   |
-| onEnabledPriorityChanged?: (callbackData:&nbsp;EnabledPriorityNotificationCallbackData)&nbsp;=&gt;&nbsp;void                               | Callback for changes in the master switch state of notification priority.   |
-| onEnabledPriorityByBundleChanged?: (callbackData:&nbsp;EnabledPriorityNotificationByBundleCallbackData)&nbsp;=&gt;&nbsp;void                               | Callback for changes in the app notification priority switch state.   |
-| onSystemUpdate?: SystemUpdateCallback            | Callback for changes in system property values.   |
-| onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback   | Callback for changes in the enabled state of [silent reminder](notification-glossary.md#silent-reminder) for app notifications.   |
-| onBadgeEnabledChanged?: BadgeEnabledChangedCallback   | Callback for changes in the enabled state of the app badge.   |
+| onConsume?: (data:&nbsp;SubscribeCallbackData)&nbsp;=&gt;&nbsp;void  | Notification callback.               |
+| onCancel?: (data:&nbsp;SubscribeCallbackData)&nbsp;=&gt;&nbsp;void   | Notification cancellation callback.           |
+| onUpdate?: (data:&nbsp;NotificationSortingMap)&nbsp;=&gt;&nbsp;void  | Notification sorting update callback.       |
+| onConnect?: ()&nbsp;=&gt;&nbsp;void                                 | Subscription success callback.           |
+| onDisconnect?: ()&nbsp;=&gt;&nbsp;void                              | Subscription cancellation callback.           |
+| onDestroy?: ()&nbsp;=&gt;&nbsp;void                                  | Callback for disconnection from the notification subsystem.   |
+| onDoNotDisturbChanged?: (mode:&nbsp;notificationManager.DoNotDisturbDate)&nbsp;=&gt;&nbsp;void           | Callback for changes to the Do Not Disturb time option. |
+| onEnabledNotificationChanged?: (callbackData:&nbsp;EnabledNotificationCallbackData)&nbsp;=&gt;&nbsp;void | Callback for changes to the notification switch.       |
+| onBadgeChanged?: (data:&nbsp;BadgeNumberCallbackData)&nbsp;=&gt;&nbsp;void                               | Callback for changes to the number of application badges.   |
+| onBatchCancel?: (data:&nbsp;Array&lt;SubscribeCallbackData&gt;)&nbsp;=&gt;&nbsp;void                               | Batch deletion callback.   |
+| onEnabledPriorityChanged?: (callbackData:&nbsp;EnabledPriorityNotificationCallbackData)&nbsp;=&gt;&nbsp;void                               | Callback for changes to the notification priority master switch.   |
+| onEnabledPriorityByBundleChanged?: (callbackData:&nbsp;EnabledPriorityNotificationByBundleCallbackData)&nbsp;=&gt;&nbsp;void                               | Callback for changes to the application notification priority switch.   |
+| onSystemUpdate?: SystemUpdateCallback            | Callback for changes to system property values.   |
+| onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback   | Callback for changes to the enabled state of silent reminders for application notifications.   |
+| onBadgeEnabledChanged?: BadgeEnabledChangedCallback   | Callback for changes to the enabled state of application badges.   |
 
 
 ## How to Develop

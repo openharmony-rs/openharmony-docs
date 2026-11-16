@@ -5,7 +5,7 @@
 <!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-09-21T02:19:45.761Z pushedAt=2026-09-22T01:38:13.905Z -->
+<!-- md-trans-meta sourceCommit=8966df412c54d2c183da4a3942a542a75feca1f4 translatedAt=2026-11-03T03:09:23.855Z pushedAt=2026-11-03T03:23:07.362Z nl=1 -->
 
 There may be times when you want to implement nested scrolling for the **Web** component. A typical use case is a page that contains multiple scrollable areas including the **Web** component, whose scrolling is intrinsically linked with the scroll positions in other areas. To implement nested scrolling between **Web** components and ArkUI scrollable containers ([Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md), [List](../reference/apis-arkui/arkui-ts/ts-container-list.md), [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md), [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md), [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md), [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md), [Refresh](../reference/apis-arkui/arkui-ts/ts-container-refresh.md) and [bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)), you should set the ArkUI [NestedScrollMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#nestedscrollmode10) attribute for the **Web** components after receiving the scrolling gesture events.
 
@@ -138,7 +138,7 @@ This issue exists in versions earlier than API 26.0.0 and has been fixed in API 
     ```
     (2) Then use the [onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin13) method to prevent the built-in scrolling gesture of the **Web** component from being triggered.
     ```ts
-    .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, otherArray<GestureRecognizer>) => {
+    .onGestureRecognizerJudgeBegin((event: BaseGestureEvent, current: GestureRecognizer, others: Array<GestureRecognizer>) => {
       if (current.isBuiltIn() && current.getType() == GestureControl.GestureType.PAN_GESTURE) {
         return GestureJudgeResult.REJECT;
       }
@@ -163,9 +163,9 @@ This issue exists in versions earlier than API 26.0.0 and has been fixed in API 
 
    (3) Determine whether the **Web** component scrolls to the bottom: **webController.getPageOffset().y + this.webHeight >= webController.getPageHeight()**;
 
-   (4) Obtain the height of the **Web** component: webController.[getPageHeight()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight);
+   (4) Get the page content height of the **Web** component: webController.[getPageHeight()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight);
 
-   (5) Obtain the height of the **Web** component window: webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window.innerHeight');
+   (5) Get the height of the **Web** component itself (window): webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window.innerHeight');
 
    (6) Obtain the scrolling offset of the **Web** component: webController.[getPageOffset()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageoffset20);
 5. Disable the scrolling feature of the **Scroll** component.

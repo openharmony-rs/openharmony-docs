@@ -3084,7 +3084,7 @@ struct ShaderColorStyle {
   }
 }
 ```
-![SearchShaderStyle](figures/searchShaderStyle.png)
+
 
 ### Example 32: Setting an AI Menu for Text Selection
 

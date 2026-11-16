@@ -22,7 +22,7 @@ UIUtils.getTarget(value) === value
 
 ## Capturing this in constructor() Fails to Observe Variable Changes
 
-When the [arrow function](../../quick-start/arkts-language-guide-functions.md#closures-and-arrow-functions) that modifies `isSuccess` is initialized in the constructor, the `TestModel` instance has not yet been wrapped by a proxy, and `this` points to the `TestModel` instance itself. Therefore, when the `query` event is subsequently triggered, state management cannot observe the change.
+When the [arrow function](../../quick-start/arkts-language-guide-functions.md#arrow-functions-and-function-types) that modifies `isSuccess` is initialized in the constructor, the `TestModel` instance has not yet been wrapped by a proxy, and `this` points to the `TestModel` instance itself. Therefore, when the `query` event is subsequently triggered, state management cannot observe the change.
 
 When you place the arrow function for modifying `isSuccess` in `query`, the `TestModel` object has already been initialized and wrapped by a proxy. When `query` is called via `this.viewModel.query()`, `this` inside the `query` function points to the `viewModel` proxy object, and changes to the proxy object's member property `isSuccess` can be observed. Therefore, triggering the `query` event is observable to the state management.
 

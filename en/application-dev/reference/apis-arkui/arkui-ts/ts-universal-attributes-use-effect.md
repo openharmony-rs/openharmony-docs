@@ -5,7 +5,7 @@
 <!--Designer: @CCFFWW-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-09-02T12:14:31.816Z -->
+<!-- md-trans-meta sourceCommit=43a46920a5e8d4d772a7a07b18011d728e124a04 translatedAt=2026-11-03T03:49:34.880Z pushedAt=2026-11-13T01:06:00.143Z nl=1 -->
 
 Used to set whether the component applies an effect template to merge the drawing of background blur and other effects.
 
@@ -40,7 +40,7 @@ Used to control whether the component inherits the effect attribute parameters<!
 
 useEffect(useEffect: boolean, effectType: EffectType): T
 
-Used to set whether the component applies the effect template defined by<!--Del--> the parent [EffectComponent](ts-container-effectcomponent-sys.md) or<!--DelEnd--> the window. When effectType is DEFAULT, this attribute must be used on a child component of EffectComponent, and EffectComponent must be configured with effect attributes for it to take effect. When effectType is WINDOW_EFFECT, it must be used together with the window effect template. When it is not used in the corresponding container, useEffect produces no effect. An effect template is a set of predefined visual effect parameters (including blur radius, saturation, brightness, and color) applied to a component to achieve a unified visual effect style.
+Used to set whether the component applies the effect template defined by <!--Del-->the parent [EffectComponent](ts-container-effectcomponent-sys.md) or <!--DelEnd-->the window. <!--Del-->When **effectType** is **DEFAULT**, it must be used on a child component of **EffectComponent**, and **EffectComponent** must be configured with effect attributes for it to take effect. <!--DelEnd-->When **effectType** is **WINDOW_EFFECT**, it must be used together with the window effect template. <!--Del-->When it is not used in the corresponding container, useEffect produces no effect. <!--DelEnd-->An effect template is a set of predefined visual effect parameters (including blur radius, saturation, brightness, and color) applied to a component to achieve a unified visual effect style.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -63,7 +63,7 @@ Used to set whether the component applies the effect template defined by<!--Del-
 
 useEffect(useEffect: Optional\<boolean>, effectType?: EffectType): T
 
-Used to set whether the component applies the effect template defined by<!--Del--> the parent [EffectComponent](ts-container-effectcomponent-sys.md) or<!--DelEnd--> the window. Compared with [useEffect<sup>14+</sup>](#useeffect14), the useEffect parameter adds support for the undefined type. When effectType is DEFAULT, this attribute must be used on a child component of EffectComponent, and EffectComponent must be configured with effect attributes for it to take effect. When effectType is WINDOW_EFFECT, it must be used together with the window effect template. When it is not used in the corresponding container, useEffect produces no effect.
+Used to set whether the component applies the effect template defined by <!--Del-->the parent [EffectComponent](ts-container-effectcomponent-sys.md) or <!--DelEnd-->the window. Compared with [useEffect<sup>14+</sup>](#useeffect14), the **useEffect** parameter adds support for the **undefined** type. <!--Del-->When **effectType** is **DEFAULT**, it must be used on a child component of **EffectComponent**, and **EffectComponent** must be configured with effect attributes for it to take effect. <!--DelEnd-->When **effectType** is **WINDOW_EFFECT**, it must be used together with the window effect template. <!--Del-->When it is not used in the corresponding container, **useEffect** produces no effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -95,7 +95,7 @@ Enumerates the effect template types. An effect template is a preset visual effe
 | DEFAULT  | 0   | Uses the effect template <!--Del-->defined by the parent EffectComponent <!--DelEnd-->to render the component effect. |
 | WINDOW_EFFECT  | 1   | Uses the effect template defined by the window to render the component effect. |
 
-Effect Template
+Effect template defined by the window
 
 |  Device Type    | Blur Radius (Unit: px)   | Saturation                 |  Brightness  |  Color  |
 | -------- | ---- | ---------------------- | -------- | -------- |

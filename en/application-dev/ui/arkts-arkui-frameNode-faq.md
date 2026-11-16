@@ -1,11 +1,11 @@
 # FAQs About Imperative Nodes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangjunman1-->
+<!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=0ade3bea7748333e85428e30651ba8b6f27a27e4 translatedAt=2026-09-21T02:35:38.054Z pushedAt=2026-09-21T09:05:14.138Z -->
+<!-- md-trans-meta sourceCommit=dbda7514fc4d743a6408faca2950d6a1c0cb2262 translatedAt=2026-11-03T06:40:05.541Z pushedAt=2026-11-03T07:59:21.295Z nl=1 -->
 
 This topic addresses common issues related to imperative nodes.
 
@@ -21,7 +21,7 @@ A [JS crash](../dfx/jscrash-guidelines.md) occurs after [FrameNode](../reference
 
 **Solution**
 
-Go to the error log as prompted, view the error cause, and rectify the fault. For details, see the code example below. 
+Go to the error log as prompted, view the error cause, and rectify the fault. For details, see the code example below.  
 
 **Sample Code**
 
@@ -59,13 +59,13 @@ struct FrameNodeTypeTest {
 
 **Problem**
 
-Before calling [disposeNode](./../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) on [ArkUI_NodeHandle](./../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md), the node-related resource objects (such as callbacks and captured references) are not cleared. As a result, there is a high probability that the program crashes after the node is detached from the tree. The crash cause is Use After Free.
+Before calling [disposeNode()](./../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) on [ArkUI_NodeHandle](./../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md), the node-related resource objects (such as callbacks and captured references) are not cleared. As a result, there is a high probability that the program crashes after the node is detached from the tree. The crash cause is Use After Free.
 
 <!--RP2-->
 ![](figures/cppcrash_happened.png)
 <!--RP2End-->
 
-The following figure shows the typical fault log of this type of problem. The **Reason:Signal** field in the log is **SIGSEGV(SEGV_MAPERR)**, indicating that the crash address is not fixed and a wild pointer or null pointer dereference may occur. In this case, each stack frame in the crash stack is basically a system stack, such as the system functions **DetachFromMainTree** and **~FrameNode**. These system functions are mostly related to the **disposeNode** API and node destruction when the node is detached from the tree.
+The following figure shows the typical fault log of this type of problem. The **Reason:Signal** field in the log is **SIGSEGV(SEGV_MAPERR)**, indicating that the crash address is not fixed and a wild pointer or null pointer dereference may occur. In this case, each stack frame in the crash stack is basically a system stack, such as the system functions **DetachFromMainTree** and **~FrameNode**. These system functions are mostly related to the **disposeNode()** API and node destruction when the node is detached from the tree.
 
 ![](figures/frameNode_cppcrash_log.png)
 
@@ -75,7 +75,7 @@ Adjust the resource disposal sequence. Dispose of the derived resources (objects
 
 The following is a cppcrash example. In the specific implementation, **BindNode** is called when creating an [XComponent](./../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md), passing the TS-side **XComponent** to the native side and creating an [OH_ArkUI_SurfaceCallback](./../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md). When the **XComponent** is detached from the tree, **UnbindNode** is called to reclaim related resources. **BindNode** creates an [OH_ArkUI_SurfaceHolder](./../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md) object through the **XComponent** node and registers the [OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent](./../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_surfacecallback_setsurfacedestroyedevent) event. In **UnbindNode**, because **dispose** of **XComponent** is executed before **dispose** of **OH_ArkUI_SurfaceHolder**, the latter uses the already-disposed XComponent node during disposal, thus triggering the cppcrash.
 
-For the preceding example, in the **UnbindNode** function, move **disposeNode** to be executed before the end of the function to fix this issue.
+For the preceding example, in the **UnbindNode** function, move **disposeNode()** to be executed before the end of the function to fix this issue.
 
 <!-- @[dispose_in_wrong_sequence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisposeNodeCrash/entry/src/main/cpp/BindCallback.cpp) -->
 

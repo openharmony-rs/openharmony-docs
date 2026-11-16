@@ -5,7 +5,7 @@
 <!--Designer: @keerecles-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-10-30T09:02:29.185Z pushedAt=2026-10-30T09:32:33.723Z nl=1 -->
+<!-- md-trans-meta sourceCommit=47f9c14d2b7ae7fd0b1bba3ae27c5c3f47551aaf translatedAt=2026-11-03T03:04:45.946Z pushedAt=2026-11-13T01:06:00.043Z nl=1 -->
 
 > **NOTE**
 >
@@ -397,6 +397,15 @@ type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperatio
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Type | Description |
+| ----- | ------------------------- |
+| [DataAddOperation](#dataaddoperation12) | Operation for adding data. |
+| [DataDeleteOperation](#datadeleteoperation12) | Operation for deleting data. |
+| [DataChangeOperation](#datachangeoperation12) | Operation for changing data. |
+| [DataMoveOperation](#datamoveoperation12) | Operation for moving data. |
+| [DataExchangeOperation](#dataexchangeoperation12) | Operation for exchanging data. |
+| [DataReloadOperation](#datareloadoperation12) | Operation for reloading all data, and configures whether to allow reusing old child components during the update. |
 
 ### DataAddOperation<sup>12+</sup>
 

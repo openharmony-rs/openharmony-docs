@@ -166,6 +166,7 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
    import { UIContext, NodeController, FrameNode, RenderNode, DrawContext} from '@kit.ArkUI';
    import { image } from '@kit.ImageKit';
    import { taskpool } from '@kit.ArkTS';
+   import { BusinessError } from '@kit.BasicServicesKit';
    import { drawing } from '@kit.ArkGraphics2D';
    ```
 
@@ -230,6 +231,8 @@ Canvas是图形绘制的核心，本章中提到的所有绘制操作（包括�
        taskpool.execute(task).then((pixel:Object)=>{
          this.myRenderNode.setPixelMap(pixel as image.PixelMap);
          this.myRenderNode.invalidate();
+       }).catch((err:BusinessError)=>{
+         console.error(`Failed to create pixelMap. Code is ${err.code}, message is ${err.message}`);
        })
      }
    

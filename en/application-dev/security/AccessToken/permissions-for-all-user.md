@@ -265,6 +265,22 @@ Allows an application to read media files from and write media files into the us
 
 See the [alternative solution of the **Files** permission group](app-permission-group-list.md#filesdeprecated).
 
+## ohos.permission.WINDOW_CAPTURE
+
+Allows an application to obtain the content of a specified window and capture screenshots of it.
+
+With this permission, the application can query the ID of a specified window and the package name of the application that owns it, and take screenshots of that window.
+
+This permission applies to window content awareness scenarios for agent applications, such as passing the window content to a large language model (LLM) for analysis.
+
+**Permission level**: normal
+
+**Authorization mode**: user_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.1.0
+
 ## ohos.permission.DISABLE_SCREEN_PRIVACY_PROTECTION
 
 Allows an application to record content protected by screen privacy guard.

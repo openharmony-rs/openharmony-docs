@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-09-21T02:08:25.652Z pushedAt=2026-09-22T01:30:56.886Z -->
+<!-- md-trans-meta sourceCommit=5668366a159f16539a2265dedf4ff5dbc382d638 translatedAt=2026-11-12T04:41:43.764Z pushedAt=2026-11-12T08:24:28.804Z nl=1 -->
 
 To download files on the web page, you can use the following method to invoke the web APIs.
 
@@ -154,8 +154,10 @@ struct WebComponent {
 ```
 
 Use [DocumentViewPicker()](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker) to obtain the default download directory and set it as the download directory.
-```ts
-// xxx.ets
+
+<!-- @[select_download_dir](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/SelectDownloadDir.ets) -->
+
+``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { picker, fileUri } from  '@kit.CoreFileKit';
@@ -171,7 +173,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download.");
+              console.info('will start a download.');
               // Use DocumentViewPicker() to obtain the default download directory and set it as the download directory.
               getDownloadPathFromPicker().then((downloadPath) => {
                 webDownloadItem.start(downloadPath + '/' + webDownloadItem.getSuggestedFileName());
@@ -180,19 +182,19 @@ struct WebComponent {
             })
             this.delegate.onDownloadUpdated((webDownloadItem: webview.WebDownloadItem) => {
               // Unique ID of a download task.
-              console.info("download update guid: " + webDownloadItem.getGuid());
+              console.info('download update guid: ' + webDownloadItem.getGuid());
               // Download progress.
-              console.info("download update percent complete: " + webDownloadItem.getPercentComplete());
+              console.info('download update percent complete: ' + webDownloadItem.getPercentComplete());
               // Current download speed.
-              console.info("download update speed: " + webDownloadItem.getCurrentSpeed())
+              console.info('download update speed: ' + webDownloadItem.getCurrentSpeed())
             })
             this.delegate.onDownloadFailed((webDownloadItem: webview.WebDownloadItem) => {
-              console.error("download failed guid: " + webDownloadItem.getGuid());
+              console.error('download failed guid: ' + webDownloadItem.getGuid());
               // Error code of a download task failure.
-              console.error("download failed last error code: " + webDownloadItem.getLastErrorCode());
+              console.error('download failed last error code: ' + webDownloadItem.getLastErrorCode());
             })
             this.delegate.onDownloadFinish((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("download finish guid: " + webDownloadItem.getGuid());
+              console.info('download finish guid: ' + webDownloadItem.getGuid());
             })
             this.controller.setDownloadDelegate(this.delegate);
           } catch (error) {
@@ -235,11 +237,11 @@ function getDownloadPathFromPicker(): Promise<string> {
 
 > **NOTE**
 >
->Call [WebDownloadItem.start](../reference/apis-arkweb/arkts-apis-webview-WebDownloadItem.md#start11) to specify the path for storing downloaded files.
+> The download feature of the Web component requires the application to specify the save path of the downloaded file by calling [WebDownloadItem.start()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadItem.md#start11).
 >
->Note that **WebDownloadItem.start** does not start the download. The download process starts when the user clicks the page link. **WebDownloadItem.start** is used to move the content that has been downloaded to the temporary directory (**/data/storage/el2/base/cache/web/Temp/**) to the specified path, and directly save the remaining content to the specified path. Call[WebDownloadItem.cancel](../reference/apis-arkweb/arkts-apis-webview-WebDownloadItem.md#cancel11) to cancel the current download task. In this case, the temporary file is deleted.
+> It is worth noting that WebDownloadItem.start() does not start the download. The download process actually begins when the user taps the page link. The role of WebDownloadItem.start() is to move the portion that has already been downloaded to a temporary file to the specified target path. The content of the subsequent unfinished download is saved directly to the specified target path. The temporary directory is located at `/data/storage/el2/base/cache/web/Temp/`. To cancel the current download, call [WebDownloadItem.cancel()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadItem.md#cancel11), which deletes the temporary file.
 >
->If you do not want to download the file to the temporary directory before **WebDownloadItem.start**, you can also use **WebDownloadItem.cancel** to interrupt the download. In addition, the interrupted download can be resumed using [WebDownloadManager.resumeDownload](../reference/apis-arkweb/arkts-apis-webview-WebDownloadManager.md#resumedownload11).
+> To avoid downloading the file to the temporary directory before WebDownloadItem.start(), the download can be interrupted through WebDownloadItem.cancel(). The interrupted download can then be resumed through [WebDownloadManager.resumeDownload()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadManager.md#resumedownload11).
 
 ## Resuming Unfinished Download Tasks Due to Process Exit
 When the **Web** component is started, you can resume the unfinished download task through the [resumeDownload()](../reference/apis-arkweb/arkts-apis-webview-WebDownloadManager.md#resumedownload11) API.

@@ -1,11 +1,19 @@
+---
+kits: ["ArkUI"]
+description: "Answers common display development questions, including the meaning of the orientation value for virtual screens and discrepancies between screen orientation enumerations and actual behavior, to help you identify causes and understand related concepts."
+keywords: [virtual screen, Display object, orientation, screen orientation]
+doctype: faq
+status: active
+---
+
 # Display Development FAQs
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
-<!--Designer: @logn; @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b21bd82a68f5cb2fefefde92a7afef87223beafc translatedAt=2026-07-09T08:20:45.072Z pushedAt=2026-07-09T10:42:12.501Z -->
+<!-- md-trans-meta sourceCommit=27bf6967fc994505af5bc56dd1e6eb560ab219d9 translatedAt=2026-11-12T12:34:02.148Z pushedAt=2026-11-03T12:47:30.238Z nl=1 -->
 
 <!--RP1-->
 <!--RP1End-->

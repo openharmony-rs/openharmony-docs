@@ -1,18 +1,17 @@
 # Common Crash and Error Issues
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=02a76210ad9a480aced53e2ee2f43b01791ed8f2 translatedAt=2026-07-22T12:05:13.210Z pushedAt=2026-07-22T12:38:13.790Z -->
+<!-- md-trans-meta sourceCommit=db23f819b446632ed6824be390a69c493ce7e993 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 This section demonstrates typical misuse cases of Image Kit APIs, helping you avoid common development issues and improve app stability and performance.
 
 ## PixelMap Released or Modified During Encoding Causes a Crash
 
-**Typical crash stack example:**
+**Typical crash stack:**
 
 ``` text
 Fault thread info:
@@ -41,7 +40,6 @@ Tid:5005, Name:OS_FFRT_3_0
  ...
  
 ```
-
 **Cause:**
 During encoding, asynchronous operations are not properly awaited. As a result, resource objects are released or modified before the asynchronous operations are complete, causing a crash.
 
@@ -60,7 +58,7 @@ import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function wrongPackingExample(pixelMap: image.PixelMap, fd: number): Promise<void> {
-  let imagePacker = image.ImagePacker | null = null;
+  let imagePacker: image.ImagePacker | null = null;
 
   try {
     imagePacker = image.createImagePacker();
@@ -68,7 +66,7 @@ async function wrongPackingExample(pixelMap: image.PixelMap, fd: number): Promis
     // Incorrect: The pixelMap is modified during asynchronous encoding.
     pixelMap.crop({x:1, y:1, size: {height:200, width:200}});
     
-     // Incorrect: The asynchronous operation is not awaited.
+     // Incorrect: await is not used for the asynchronous operation.
     imagePacker.packToFile(pixelMap, fd, packOpts).then(() => {
       console.info('Succeeded in packing the image to file.');
     }).catch((error: BusinessError) => {
@@ -78,7 +76,7 @@ async function wrongPackingExample(pixelMap: image.PixelMap, fd: number): Promis
   } catch (error) {
     console.error('Pack failed: ' + error);
   } finally {    
-    // Incorrect: The PixelMap is released before the asynchronous encoding is complete, causing the app to crash.
+    // Incorrect: The PixelMap is released before asynchronous encoding completes, causing the app to crash.
     pixelMap?.release();
     imagePacker?.release();
   }
@@ -91,16 +89,16 @@ async function wrongPackingExample(pixelMap: image.PixelMap, fd: number): Promis
 import { image } from '@kit.ImageKit';
 
 async function correctPackingExample(pixelMap: image.PixelMap, fd: number): Promise<void> {
-  let imagePacker = image.ImagePacker | null = null;
+  let imagePacker: image.ImagePacker | null = null;
 
   try {
     imagePacker = image.createImagePacker();
     let packOpts: image.PackingOption = { format: 'image/jpeg', quality: 95 };
 
-    // Correct: Await the crop operation before continuing.
+    // Correct: When cropping a PixelMap, await must be used to wait for the operation to complete.
     await pixelMap.crop({x:1, y:1, size: {height:200, width:200}});
     
-    // Correct: Await the asynchronous operation before releasing resources.
+    // Correct: Use await to wait for the asynchronous operation to complete.
     await imagePacker.packToFile(pixelMap, fd, packOpts);
     console.info('Pack success');
 
@@ -132,7 +130,6 @@ pc 000000000008d13c /system/lib64/ndk/libffrt.so(ffrt::ExecuteTask(ffrt::TaskBas
 #08 pc 00000000001d8c5c /system/lib/ld-musl-aarch64.so.1(start+240)(05aecbbf0bdce12d75badb7b497d0f9f)
  ...
 ```
-
 **Cause:**
 Concurrent operations on the same `ImageSource` object cause resource race conditions, leading to a crash.
 
@@ -143,6 +140,7 @@ Concurrent operations on the same `ImageSource` object cause resource race condi
 2. **Manage resource lifecycle:** The lifecycle of an `ImageSource` should cover all asynchronous operations that use it. Release the `ImageSource` only after confirming that all asynchronous operations have completed.
 
 3. **Consider performance:** Although sequential execution may reduce concurrency performance, it helps avoid race conditions and crashes. If concurrent processing is required, create multiple independent `ImageSource` instances.
+
 
 **Incorrect code example:**
 
@@ -201,5 +199,101 @@ async function correctSharedImageSourceExample(filePath: string): Promise<void> 
 
   // Release the ImageSource safely after all operations are complete.
   imageSource.release();
+}
+```
+
+## Image Object Released Before Asynchronous getComponent Call Completes
+
+**Typical crash stack:**
+
+``` text
+Fault thread info:
+Tid:9589, Name:OS_FFRT_2_0
+#00 pc 00000000000a431c /system/lib64/platformsdk/libimage_native.z.so(OHOS::Media::NativeImage::GetComponent(int)+48)(915bf0936fb72b5d73478ab6f47e091f)
+#01 pc 00000000000910e8 /system/lib64/platformsdk/libimage_napi.z.so(OHOS::Media::JsGetComponentExec(napi_env__, OHOS::Media::ImageAsyncContext)+44)(5aea949db77850d22719993f9fa30591)
+#02 pc 0000000000061880 /system/lib64/platformsdk/libace_napi.z.so(NativeAsyncWork::AsyncWorkCallback(uv_work_s*)+264)(eb4e54d33bdc523abe3e5a5c8e57df7b)
+#03 pc 0000000000014c80 /system/lib64/platformsdk/libuv.so(uv__queue_work+48)(d25bc8d4fd1cdf784a3645c9a4b124f6)
+#04 pc 00000000000827d8 /system/lib64/ndk/libffrt.so(ffrt::UVTask::ExecuteImpl(ffrt::UVTask*, void ()(ffrt_executor_task, int))+148)(e135a1a6a62d4d06e957f3c7bf9fb095)
+#05 pc 000000000007f5a4 /system/lib64/ndk/libffrt.so(ffrt::ExecuteTask(ffrt::TaskBase*)+184)(e135a1a6a62d4d06e957f3c7bf9fb095)
+#06 pc 000000000004c270 /system/lib64/ndk/libffrt.so(ffrt::CPUWorker::RunTask(ffrt::TaskBase*, ffrt::CPUWorker*)+84)(e135a1a6a62d4d06e957f3c7bf9fb095)
+#07 pc 000000000004c494 /system/lib64/ndk/libffrt.so(ffrt::CPUWorker::WorkerLooper()+268)(e135a1a6a62d4d06e957f3c7bf9fb095)
+#08 pc 000000000004c0f8 /system/lib64/ndk/libffrt.so(ffrt::CPUWorker::Dispatch(ffrt::CPUWorker*)+152)(e135a1a6a62d4d06e957f3c7bf9fb095)
+#09 pc 000000000004bedc /system/lib64/ndk/libffrt.so(ffrt::CPUWorker::WrapDispatch(void*)+52)(e135a1a6a62d4d06e957f3c7bf9fb095)
+#10 pc 00000000001f8e00 /system/lib/ld-musl-aarch64.so.1(start+236)(d4dce499aee129fd4449af41d61ee794)
+...
+```
+**Crash Cause:**
+`image.getComponent()` is an asynchronous operation, and `image.release()` is also an asynchronous operation whose complete callback deletes the underlying native ImageNapi object. Because `image.getComponent()` is still executing, this results in Use After Free (UAF).
+
+**Solution**
+
+**Solution:**
+For the same Image object, you must wait until all asynchronous operations are complete before calling `release()` to release resources.
+
+
+**Incorrect code example:**
+
+``` TypeScript
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/**
+ * UAF pattern: getComponent async + immediate release.
+ * getComponent is dispatched to the FFRT thread, while release directly frees the native object without waiting → UAF crash.
+ */
+function onImageArrivalUAF(receiver: image.ImageReceiver): void {
+  let frame = 0;
+  receiver.on('imageArrival', () => {
+    frame++;
+    const cur = frame;
+    receiver.readNextImage((err, img: image.Image) => {
+      if (err || !img) {
+        console.error(`[UAF] #${cur} readNextImage err: ${err?.code}`);
+        return;
+      }
+      img.getComponent(image.ComponentType.JPEG).then(() => {
+        console.info(`[UAF] #${cur} getComponent done`);
+      }).catch((e: BusinessError) => {
+        console.error(`[UAF] #${cur} getComponent err: ${e.code}`);
+      });
+      // BUG: release is called without waiting for getComponent to complete → UAF.
+      img.release().catch(() => {});
+    });
+  });
+}
+```
+
+**Correct code example:**
+
+``` TypeScript
+import { image } from '@kit.ImageKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/**
+ * Safe approach: Call release after getComponent completes.
+ * Promise chaining ensures ordering and prevents UAF.
+ */
+function onImageArrivalSafe(receiver: image.ImageReceiver): void {
+  let frame = 0;
+  receiver.on('imageArrival', () => {
+    frame++;
+    const cur = frame;
+    receiver.readNextImage((err, img: image.Image) => {
+      if (err || !img) {
+        console.error(`[Safe] #${cur} readNextImage err: ${err?.code}`);
+        return;
+      }
+      // FIX: Call release after getComponent completes.
+      img.getComponent(image.ComponentType.JPEG).then(() => {
+        console.info(`[Safe] #${cur} getComponent done`);
+        return img.release();
+      }).then(() => {
+        console.info(`[Safe] #${cur} released`);
+      }).catch((e: BusinessError) => {
+        console.error(`[Safe] #${cur} err: ${e.code}`);
+        img.release().catch(() => {});
+      });
+    });
+  });
 }
 ```

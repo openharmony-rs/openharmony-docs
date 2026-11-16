@@ -1,12 +1,11 @@
-# ArkUI_NodeBorderStyleOption
-
+# ArkUI_NodeBorderStyle
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=814c7cb9af37d443e12a84b71f28815df508c584 translatedAt=2026-08-19T08:26:09.400Z pushedAt=2026-08-20T03:54:48.714Z -->
+<!-- md-trans-meta sourceCommit=1e574c3201e96cfe7f2709f4dc19e462d9daf562 translatedAt=2026-11-09T11:47:09.815Z pushedAt=2026-11-10T03:35:43.341Z nl=1 -->
 
 ```c
 typedef struct ArkUI_NodeBorderStyle ArkUI_NodeBorderStyleOption

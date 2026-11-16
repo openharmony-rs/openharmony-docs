@@ -1,12 +1,11 @@
 # Persisting Vector Store Data (ArkTS)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @htt1997-->
 <!--Designer: @widecode-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=b33d67f4be19823da8fc8d0464c3e2f4ea32702e translatedAt=2026-07-07T01:14:15.482Z pushedAt=2026-07-07T03:50:14.281Z -->
+<!-- md-trans-meta sourceCommit=8172efdc94c065e1de022814d66012668129fd88 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=1 -->
 
 ## When to Use
 
@@ -16,14 +15,13 @@ Since API version 18, data in vector stores can be persisted.
 ## Basic Concepts
 
 - **ResultSet**: a set of query results, which allows access to the required data in flexible modes.
-
 - **floatvector**: vector data, for example, **[1.0, 3.0, 2.4, 5.1, 6.2, 11.7]**.
 
 ## Constraints
 
-- The default log mode is Write Ahead Log ([WAL](data-terminology.md#write-ahead-log-wal)), and the default flush mode is [FULL](data-terminology.md#full).
+- The system uses the Write Ahead Log ([WAL](data-terminology.md#write-ahead-log-wal)) mode for logging by default, and flushes data to disk in [FULL mode](data-terminology.md#full-mode) by default.
 
-- By default, a vector store has four read connections and one write connection. A thread can perform read operations after obtaining an available read connection. If no read connections are available, a new read connection is created.
+- By default, there are four read connections and one write connection. A thread can perform the read operation when acquiring an idle read connection. If there is no idle read connection, a new read connection will be created.
 
 - To ensure data accuracy, the database supports only one write operation at a time. Concurrent write operations are performed in serial mode.
 
@@ -39,15 +37,15 @@ Since API version 18, data in vector stores can be persisted.
 
 Types of database table fields are as follows.
 
-| Type | Description | Supported |
+| Type| Description| Supported|
 | -------- | -------- | -------- |
-| NULL | Null value | Yes |
-| INTEGER | Integer | Yes |
-| DOUBLE | Floating-point type | Yes |
-| TEXT | String type | Yes |
-| BLOB | Binary type | Yes |
-| FLOATVECTOR | Vector data type | Yes |
-| GEOMETRY (supported on devices running OpenHarmony 7.0.0 or later) | Geographic coordinate type | Yes |
+| NULL | Null.| Yes|
+| INTEGER | Integer. | Yes |
+| DOUBLE | Floating point.| Yes|
+| TEXT | String.| Yes|
+| BLOB | Binary.| Yes|
+| FLOATVECTOR | Vector data.| Yes|
+| GEOMETRY (supported by devices running OpenHarmony 7.0.0 or later) | Geographic coordinate type. | Yes |
 
 ### Field Constraints
 
@@ -79,7 +77,7 @@ Clauses in a query statement are as follows.
 
 ### Sets
 
-Set operations in a query statement are as follows.
+Set statements in a query statement are as follows.
 
 | Keyword| Description| Supported|
 | -------- | -------- | -------- |
@@ -88,7 +86,7 @@ Set operations in a query statement are as follows.
 
 ### Operators
 
-The following lists the operators used to filter data based on a condition. Generally, they are used in query statements.
+The following lists the operators used to filter data based on a condition. Generally, they are used in query statements.  
 
 | Type| Operator| Supported|
 | -------- | -------- | -------- |
@@ -126,24 +124,11 @@ Functions in SQL statements are as follows.
 | UPPER/LOWER | Converts a string to uppercase or lowercase letters.| Yes|
 | LENGTH | Returns the length of a string.| Yes|
 
-## Available APIs
-
-The following are APIs for the vector database persistence feature. For details about more APIs and their usage, see [@ohos.data.relationalStore (RDB Store)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md).
-
-| API| Description|
-| -------- | -------- |
-| getRdbStore(context: Context, config: StoreConfig): Promise&lt;RdbStore&gt; | Obtains an **RdbStore** instance for data operations.|
-| execute(sql: string, txId: number, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt; | Executes SQL statements that contain specified parameters. The number of operators (such as =, >, and <) in the SQL statements cannot exceed 1000.|
-| querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt; | Queries data in the RDB store using the specified SQL statement. The number of operators (such as =, >, and <) in the SQL statements cannot exceed 1000.|
-| beginTrans(): Promise&lt;number&gt; | Starts the transaction before executing the SQL statements.|
-| commit(txId : number):Promise&lt;void&gt; | Commits the executed SQL statements. This API must be used together with **beginTrans**.|
-| rollback(txId : number):Promise&lt;void&gt; | Rolls back the executed SQL statements. This API must be used together with **beginTrans**.|
-| deleteRdbStore(context: Context, config: StoreConfig): Promise&lt;void&gt; | Deletes a database.|
-| isVectorSupported(): boolean | Checks whether the system supports vector stores.|
-
 ## How to Develop
 
-1. Check whether the current system supports vector stores. The sample code is as follows:
+For details about more APIs and their usage, see [@ohos.data.relationalStore (RDB Store)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md).
+
+1. Call [isVectorSupported()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoreisvectorsupported18) to check whether the current system supports vector stores. A return value of `false` means that vector store capabilities are unavailable. The sample code is as follows:
 
    <!--@[vector_TS_isVectorSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
 
@@ -151,7 +136,6 @@ The following are APIs for the vector database persistence feature. For details 
    import { relationalStore } from '@kit.ArkData'; // Import a module.
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
-   import { UIContext } from '@kit.ArkUI';
    // ...
      // Check whether the current system supports vector stores.
      let ret = relationalStore.isVectorSupported();
@@ -161,7 +145,7 @@ The following are APIs for the vector database persistence feature. For details 
      }
    ```
 
-2. If the system supports vector stores, obtain an **RdbStore** instance. Call **getRdbStore()** to create a database and create a table.
+2. If the system supports vector stores, obtain an **RdbStore** instance. Call [getRdbStore()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore) to create a database and [execute()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12) to create a table.
 
    > **NOTE**
    >
@@ -177,8 +161,6 @@ The following are APIs for the vector database persistence feature. For details 
 
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
-   /* context is the context of the application. The example here is for demonstration purposes only. */
-   let context: Context = new UIContext().getHostContext() as common.UIAbilityContext;
    const STORE_CONFIG: relationalStore.StoreConfig = {
      name: 'VectorTest.db', // Database file name.
      securityLevel: relationalStore.SecurityLevel.S1, // Database security level.
@@ -196,11 +178,11 @@ The following are APIs for the vector database persistence feature. For details 
      };
    ```
 
-3. Call **execute()** to insert data to the vector store.
+3. Call [execute()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12) to insert data to the vector store.
 
    > **NOTE**
    >
-   > Vector store does not provide explicit flush operations for data persistence. The data inserted is persisted.
+   > **RelationalStore** does not provide explicit flush operations for data persistence. The data inserted is persisted.
 
    The sample code is as follows:
 
@@ -218,7 +200,7 @@ The following are APIs for the vector database persistence feature. For details 
    }
    ```
 
-4. Call **execute()** to modify or delete data. The sample code is as follows:
+4. Call [execute()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12) to modify or delete data. The sample code is as follows:
 
    <!--@[vector_TS_execute_update_and_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
 
@@ -245,7 +227,7 @@ The following are APIs for the vector database persistence feature. For details 
    }
    ```
 
-5. Call **querySql()** to query data. A **ResultSet** instance is returned.
+5. Call [querySql()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#querysql) to query data. A **ResultSet** instance is returned.
 
    > **NOTE**
    >
@@ -346,7 +328,6 @@ The following are APIs for the vector database persistence feature. For details 
 
      DROP INDEX table_name.index_name;
      ```
-
    - Extended syntax:
 
      ```sql
@@ -408,13 +389,10 @@ The following are APIs for the vector database persistence feature. For details 
 8. Manually reclaim disk fragmentation generated during index deletion. This function is supported since API version 20.
 
     After the vector store deletes vectors on the table where the GSDiskANN index has been created, disk defragmentation is automatically performed. However, automatic disk defragmentation may not be triggered in the following scenarios:
-
     - After vectors are deleted from the GSDiskANN index, the vector store is closed immediately.
-
     - After vectors are deleted in batches from the GSDiskANN index, no operation is performed on the table.
 
    Therefore, the following statement is provided for you to trigger the disk defragmentation from the GSDiskANN index:
-
    ```sql
    PRAGMA DISKANN_ASYNC_COLLECTING;
    ```
@@ -457,7 +435,7 @@ The following are APIs for the vector database persistence feature. For details 
    | time_col | Yes| Column name. The value must be an integer and cannot be empty.|
    | interval | No| Interval for executing the aging task thread. If a write operation is performed after the interval, an aging task will be triggered to delete the data that meets the aging conditions. If the write operation is performed within the interval, no aging task will be triggered. <br>Value range: [5 second, 1 year]<br>Default value: **1 day**<br>Time units supported include **second**, **minute**, **hour**, **day**, **month** and **year**. The value is case-insensitive and supports both singular and plural forms (for example, **2 hour** and **2 hours** are acceptable).|
    | ttl | No| Data retention period. <br>Value range: [1 hour, 1 year]<br>Default value: **3 month**<br>Time units supported include **second**, **minute**, **hour**, **day**, **month** and **year**. The value is case-insensitive and supports both singular and plural forms (for example, **2 hour** and **2 hours** are acceptable).|
-   | max_num | No| Maximum data volume allowed. <br>Value range: [100, 1024]<br>Default value: **1024**<br> After the aging task deletes expired data, if the remaining data in the table exceeds the value of **max_num**, data tied to the time point closest to the expiration time will be deleted until the total row count falls below **max_num**.|
+   | max_num | No| Maximum data volume allowed. <br>Value range: [100, 1024]<br>Default value: **1024**<br> After the aging task deletes expired data, if the remaining data in the table exceeds the value of **max_num**, data tied to the nearest expiration-adjacent time point will be deleted until the total row count falls below **max_num**.|
 
    Time-related parameters are converted into seconds as follows.
 
@@ -511,7 +489,7 @@ The following are APIs for the vector database persistence feature. For details 
 
 11. Delete the database.
 
-    Call **deleteRdbStore()** to delete the vector store and related database files. The sample code is as follows:
+    Call [deleteRdbStore()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoredeleterdbstore) to delete the vector store and related database files. The sample code is as follows:
 
     <!--@[vector_TS_deleteStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
 

@@ -6,6 +6,7 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-03T03:29:51.115Z pushedAt=2026-11-03T06:14:24.585Z nl=1 -->
 
 The **reminderAgentManager** module provides APIs related to agent-powered reminders. When your application is frozen or exits, the application's scheduled notification capability will be taken over by a system service running in the background. You can use the APIs to create scheduled reminders for countdown timers, calendar events, and alarm clocks. For details, see [Agent-powered Reminder](../../task-management/agent-powered-reminder.md).
 
@@ -49,7 +50,8 @@ For details about the error codes, see [reminderAgentManager Error Codes](errorc
 
 | ID  | Error Message|
 | --------- | ------- |
-| 401 | If the input parameter is not valid parameter. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700001    | Notification is not enabled. |
 | 1700002    | The number of reminders exceeds the limit. |
 
@@ -106,7 +108,8 @@ For details about the error codes, see [reminderAgentManager Error Codes](errorc
 
 | ID  | Error Message|
 | --------- | ------- |
-| 401 | If the input parameter is not valid parameter. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700001    | Notification is not enabled. |
 | 1700002    | The number of reminders exceeds the limit. |
 
@@ -149,7 +152,7 @@ For details about the error codes, see [reminderAgentManager Error Codes](errorc
 
 | ID  | Error Message|
 | --------- | ------- |
-| 401 | If the input parameter is not valid parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700003    | The reminder does not exist. |
 | 1700004    | The bundle name does not exist. |
 
@@ -195,7 +198,7 @@ For details about the error codes, see [reminderAgentManager Error Codes](errorc
 
 | ID  | Error Message|
 | --------- | ------- |
-| 401 | If the input parameter is not valid parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700003    | The reminder does not exist. |
 | 1700004    | The bundle name does not exist. |
 
@@ -233,7 +236,7 @@ For details about the error codes, see [reminderAgentManager Error Codes](errorc
 
 | ID  | Error Message|
 | --------- | ------- |
-| 401 | If the input parameter is not valid parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700004    | The bundle name does not exist. |
 
 **Example**
@@ -291,7 +294,7 @@ For details about the error codes, see [reminderAgentManager Error Codes](errorc
 
 | ID  | Error Message|
 | --------- | ------- |
-| 401 | If the input parameter is not valid parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700004    | The bundle name does not exist. |
 
 **Example**
@@ -347,7 +350,7 @@ For details about the error codes, see [reminderAgentManager Error Codes](errorc
 
 | ID  | Error Message|
 | --------- | ------- |
-| 401 | If the input parameter is not valid parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700004    | The bundle name does not exist. |
 
 **Example**
@@ -385,7 +388,7 @@ For details about the error codes, see [reminderAgentManager Error Codes](errorc
 
 | ID  | Error Message|
 | --------- | ------- |
-| 401 | If the input parameter is not valid parameter. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700004    | The bundle name does not exist. |
 
 **Example**
@@ -423,7 +426,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                      |
 | -------- | ---------------------------------------------- |
-| 401      | If the input parameter is not valid parameter. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -472,7 +475,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                      |
 | -------- | ---------------------------------------------- |
-| 401      | If the input parameter is not valid parameter. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -513,7 +516,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                      |
 | -------- | ---------------------------------------------- |
-| 401      | If the input parameter is not valid parameter. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -559,7 +562,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                      |
 | -------- | ---------------------------------------------- |
-| 401      | If the input parameter is not valid parameter. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -579,7 +582,9 @@ reminderAgentManager.removeNotificationSlot(notificationManager.SlotType.CONTENT
 
 getAllValidReminders(): Promise\<Array\<ReminderInfo>>
 
-Obtains all [valid (not yet expired) reminders](../../task-management/agent-powered-reminder.md#constraints) set by the current application. This API uses a promise to return the result. To call this API, you need to request the ohos.permission.PUBLISH_AGENT_REMINDER permission.
+Obtains all [valid (not yet expired) reminders](../../task-management/agent-powered-reminder.md#constraints) set by the current application. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.PUBLISH_AGENT_REMINDER
 
 **System capability**: SystemCapability.Notification.ReminderAgent
 
@@ -595,7 +600,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message          |
 | -------- | ------------------ |
-| 201      | Permission denied. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 
 **Example**
 
@@ -636,6 +641,8 @@ addExcludeDate(reminderId: number, date: Date): Promise\<void>
 
 Adds a non-reminder date for a recurring calendar reminder with a specific ID. For example, configure a daily reminder to skip notifications on Tuesdays. This API uses a promise to return the result.
 
+**Required permissions**: ohos.permission.PUBLISH_AGENT_REMINDER
+
 **System capability**: SystemCapability.Notification.ReminderAgent
 
 **Parameters**
@@ -657,8 +664,8 @@ For details about the error codes, see [reminderAgentManager Error Codes](errorc
 
 | ID| Error Message                                      |
 | -------- | ---------------------------------------------- |
-| 201      | Permission denied.                             |
-| 401      | If the input parameter is not valid parameter. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 1700003  | The reminder does not exist.                   |
 
 **Example**
@@ -682,6 +689,8 @@ deleteExcludeDates(reminderId: number): Promise\<void>
 
 Deletes all non-reminder dates for a recurring calendar reminder with a specific ID. This API uses a promise to return the result.
 
+**Required permissions**: ohos.permission.PUBLISH_AGENT_REMINDER
+
 **System capability**: SystemCapability.Notification.ReminderAgent
 
 **Parameters**
@@ -702,7 +711,7 @@ For details about the error codes, see [reminderAgentManager Error Codes](errorc
 
 | ID| Error Message                    |
 | -------- | ---------------------------- |
-| 201      | Permission denied.           |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 1700003  | The reminder does not exist. |
 
 **Example**
@@ -725,6 +734,8 @@ getExcludeDates(reminderId: number): Promise\<Array\<Date>>
 
 Obtains all non-reminder dates for a recurring calendar reminder with a specific ID. This API uses a promise to return the result.
 
+**Required permissions**: ohos.permission.PUBLISH_AGENT_REMINDER
+
 **System capability**: SystemCapability.Notification.ReminderAgent
 
 **Parameters**
@@ -745,7 +756,7 @@ For details about the error codes, see [reminderAgentManager Error Codes](errorc
 
 | ID| Error Message                    |
 | -------- | ---------------------------- |
-| 201      | Permission denied.           |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 1700003  | The reminder does not exist. |
 
 **Example**
@@ -794,7 +805,7 @@ For details about the error codes, see [reminderAgentManager Error Codes](errorc
 
 | ID| Error Message                    |
 | -------- | ---------------------------- |
-| 201      | Permission denied.           |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 1700003  | The reminder does not exist. |
 | 1700007  | If the input parameter is not valid parameter. |
 
@@ -890,7 +901,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                    |
 | -------- | ---------------------------- |
-| 201      | Permission denied.           |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 1700007  | If the input parameter is not valid parameter. |
 
 **Example**
@@ -1070,6 +1081,8 @@ Sends a notification request message.
 
 Defines the request for publishing a reminder.
 
+Before API version 26.1.0, countdown and alarm agent-powered reminders did not support one-tap clearing in the Notification Center. Starting from API version 26.1.0, notifications of all agent-powered reminders support one-tap clearing in the Notification Center.
+
 **System capability**: SystemCapability.Notification.ReminderAgent
 
 <!--Table: 20%; 20%; 8%; 8%; 44%-->
@@ -1091,11 +1104,11 @@ Defines the request for publishing a reminder.
 | snoozeContent | string | No| Yes| Content to be displayed when the reminder is snoozing. (It is not applicable to countdown reminders.)|
 | snoozeContentResourceId<sup>18+</sup> | number | No| Yes| Resource ID of the content to be displayed when the reminder is snoozing, which can be obtained through $r(*resource-name*).id.|
 | notificationId | number | No| Yes| Notification ID used by the reminder. You must pass in a notification ID. If there are reminders with the same notification ID, the later one will overwrite the earlier one. The default value is **0**.|
-| groupId<sup>11+</sup> | string | No| Yes| Group ID used for the reminder. If "Don't ask again" or similar information is selected for the reminder, other reminders with the same group ID are also canceled.|
-| slotType | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | No| Yes| Type of the slot used by the reminder.|
+| groupId<sup>11+</sup> | string | No | Yes | Same group ID used by reminders. In the same group ID, when one reminder is clicked and no longer reminds, other reminders in the group are also canceled. |
+| slotType | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | No | Yes | Notification channel type of the reminder. |
 | tapDismissed<sup>10+</sup> | boolean | No| Yes| Whether the reminder is automatically cleared. The default value is **true**. For details, see [NotificationRequest.tapDismissed](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1).<br> - **true** (default): The reminder is automatically cleared after the notification or button is tapped.<br> - **false**: The reminder is retained after the notification or button is tapped.|
 | autoDeletedTime<sup>10+</sup> | number | No| Yes| Time when the notification is automatically cleared.<br> The data format is timestamp, in milliseconds. For details, please refer to [NotificationRequest.autoDeletedTime](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1).|
-| snoozeSlotType<sup>11+</sup> | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | No| Yes| Type of the slot used by the snoozed reminder. (It is not applicable to countdown reminders.)|
+| snoozeSlotType<sup>11+</sup> | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | No | Yes | Notification channel type of the delayed reminder (not applicable to countdown reminders). |
 | customRingUri<sup>11+</sup> | string | No| Yes| URI of the custom prompt tone. The prompt tone file must be stored in the **resources/rawfile** directory and supports formats such as M4A, AAC, MP3, OGG, WAV, FLAC, and AMR.|
 | ringChannel<sup>20+</sup> | [RingChannel](#ringchannel20) | No| Yes| Audio channel of the custom prompt tone. The default channel is the alarm channel.|
 | fixedTimeZone | [TimeZoneType](#timezonetype) | No| Yes| Time zone type. The default value is **TimeZoneType.DEFAULT**.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
@@ -1103,9 +1116,7 @@ Defines the request for publishing a reminder.
 
 ## ReminderRequestCalendar
 
-ReminderRequestCalendar extends ReminderRequest
-
-Defines a reminder for a calendar event.
+Defines a calendar instance used to set the reminder time. **ReminderRequestCalendar** inherits from [ReminderRequest](#reminderrequest).
 
 **System capability**: SystemCapability.Notification.ReminderAgent
 
@@ -1120,9 +1131,7 @@ Defines a reminder for a calendar event.
 
 ## ReminderRequestAlarm
 
-ReminderRequestAlarm extends ReminderRequest
-
-Defines a reminder for an alarm.
+Defines an alarm instance used to set the reminder time. **ReminderRequestAlarm** inherits from [ReminderRequest](#reminderrequest).
 
 **System capability**: SystemCapability.Notification.ReminderAgent
 
@@ -1135,9 +1144,7 @@ Defines a reminder for an alarm.
 
 ## ReminderRequestTimer
 
-ReminderRequestTimer extends ReminderRequest
-
-Defines a reminder for a scheduled timer.
+Defines a countdown instance used to set the reminder time. **ReminderRequestTimer** inherits from [ReminderRequest](#reminderrequest).
 
 **System capability**: SystemCapability.Notification.ReminderAgent
 
@@ -1178,7 +1185,7 @@ Defines the reminder information.
 
 Defines the agent-powered reminder state information, for which notifications are triggered in the following scenarios:<br>
 1. When a user taps a button on an agent-powered reminder notification, a notification specifying the tapped button type is sent to the application if it is running. If the application is not running, the notification will not be received.
-2. Since the above scenario cannot guarantee that the application receives the notification, all callbacks associated with user-tapped button types under the application are returned to the application when it registers a new callback function. State information is retained for a maximum of 30 days. Cached state information is cleared when the application registers a new callback function or has not registered any callback function for more than 30 days. 
+2. Since the above scenario cannot guarantee that the application receives the notification, all callbacks associated with user-tapped button types under the application are returned to the application when it registers a new callback function. State information is retained for a maximum of 30 days. Cached state information is cleared when the application registers a new callback function or has not registered any callback function for more than 30 days.
 
 **Model restriction**: This API can be used only in the stage model.
 

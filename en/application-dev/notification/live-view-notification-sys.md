@@ -2,10 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=360e3b864d0b779a5bf0680256175881b58bdff9 translatedAt=2026-09-29T11:04:26.863Z pushedAt=2026-09-30T06:51:24.773Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
 
 The live view notification provides real-time progress of long-duration tasks, including voice recording, screen recording, audio and video playback, timing, and phone call. Such type of notification is not stored persistently, and its lifecycle is consistent with that of the notification publisher.
 

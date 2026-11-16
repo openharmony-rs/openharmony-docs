@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes how to handle asynchronous operations using Node-API by creating and managing Promise objects for non-blocking processing and controlling Promise states through deferred objects, for scenarios such as network requests and file reading."
+keywords: [Node-API, Promise, asynchronous operations, deferred, resolve, reject, napi_create_promise, non-blocking]
+doctype: guide
+status: active
+---
+
 # Implementing Asynchronous Operations Using Node-API
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=cafe730c03f95c1273b115a81e96d29ade5b9ef8 translatedAt=2026-11-09T08:52:17.381Z nl=1 -->
 
 ## Introduction
 
@@ -17,7 +26,7 @@ Node-API provides APIs for implementing asynchronous operations for time-consumi
 - Synchronous: Code is executed line by line in sequence. Each line of code is executed after the previous line of code is executed. If an operation takes a long time, the entire application will be blocked.
 - Asynchronous: Tasks can be executed concurrently without waiting for the end of the previous task. Common asynchronous operations apply for timers, event listening, and network requests. Instead of blocking subsequent tasks, the asynchronous task uses a callback or promise to process its result.
 - **Promise**: an ArkTS object used to handle asynchronous operations. It is customized by using **then()**, **catch()**, and **finally()**.
-- **deferred**: a deferred object associated with **Promise**. It is used to set the callbacks **resolve()** and **reject()** of **Promise** to maintain the asynchronous model state.
+- **deferred**: an object used to control the state of a Promise. It allows you to mark the Promise state as **fulfilled** or **rejected** at a future moment.
 - **resolve**: a function used to change the promise state from **pending** to **fulfilled**. The parameters passed to **resolve()** can be obtained from **then()** of the **Promise** object.
 - **reject**: a function used to change the promise state from **pending** to **rejected**. The parameters passed to **reject()** can be obtained from **catch()** of the **Promise** object.
 
@@ -44,9 +53,10 @@ Call **napi_is_promise** to check whether the given **napi_value** is a **Promis
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_is_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// napi_is_promise
 static napi_value IsPromise(napi_env env, napi_callback_info info)
 {
     napi_value argv[1] = {nullptr};
@@ -67,28 +77,26 @@ static napi_value IsPromise(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_is_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
-export const isPromise: <T>(value: T) => boolean;
-```
 <!-- @[napi_is_promise_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const isPromise: <T>(value: T) => boolean; // napi_is_promise
+```
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_is_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// napi_is_promise
 let value = Promise.resolve();
 // Return true if the object passed in is a promise; return false otherwise.
 hilog.info(0x0000, 'Node-API', 'napi_is_promise %{public}s', testNapi.isPromise(value));
 hilog.info(0x0000, 'Node-API', 'napi_is_promise string %{public}s', testNapi.isPromise(''));
 ```
-<!-- @[ark_napi_is_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/ets/pages/Index.ets) -->
 
 ### napi_create_promise
 
@@ -119,20 +127,19 @@ napi_value NapiPromiseDemo(napi_env env, napi_callback_info info)
 
 ### napi_resolve_deferred & napi_reject_deferred
 
-Call **napi_resolve_deferred** to change the promise state from **pending** to **fulfilled**, and call **napi_reject_deferred** to change the promise state from **pending** to **rejected**.
+Use **napi_resolve_deferred** to resolve the deferred object associated with a Promise, changing its state from pending to fulfilled; use **napi_reject_deferred** to reject the deferred object, changing its state from pending to rejected.
 
 To ensure execution of microtasks, the ArkTS runtime will trigger a microtask execution when fulfilling a promise using Node-API.
 
 CPP code:
 
-```cpp
-#include "napi/native_api.h"
+<!-- @[napi_resolve_reject_deferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/napi_init.cpp) -->
 
-static constexpr int INT_ARG_2 = 2; // Input parameter index.
-
+``` C++
+// napi_resolve_deferred & napi_reject_deferred
 static napi_value CreatePromise(napi_env env, napi_callback_info info)
 {
-    // The deferred object is used to delay the execution of a function for a certain period of time.
+    // deferred is an object associated with a Promise object, used to control the Promise state (resolve or reject).
     napi_deferred deferred = nullptr;
     napi_value promise = nullptr;
     // Create a Promise object.
@@ -178,50 +185,55 @@ static napi_value ResolveRejectDeferred(napi_env env, napi_callback_info info)
     }
     // Set the promise state based on the third parameter.
     if (promiseStatus) {
-        napi_resolve_deferred(env, deferred, args[0]);
+        napi_resolve_deferred(env, deferred, args[INT_ARG_0]);
     } else {
-        napi_reject_deferred(env, deferred, args[1]);
+        napi_reject_deferred(env, deferred, args[INT_ARG_1]);
     }
     // Return the Promise object with the state set.
     return promise;
 }
 ```
-<!-- @[napi_resolve_reject_deferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration example:
 
-```ts
-// index.d.ts
-export const createPromise: () => boolean | undefined;
+<!-- @[napi_resolve_reject_deferred_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
+export const createPromise: () => boolean | undefined; // napi_resolve_deferred & napi_reject_deferred
+
 export const resolveRejectDeferred: (resolve: string, reject: string, status: boolean) => Promise<string> | undefined;
 ```
-<!-- @[napi_resolve_reject_deferred_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_resolve_reject_deferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// napi_resolve_deferred & napi_reject_deferred
 // Create a promise. Return true if the operation is successful, and return false otherwise.
 hilog.info(0x0000, 'Node-API', 'napi_create_promise %{public}s', testNapi.createPromise());
 // Call resolveRejectDeferred to resolve or reject the promise and set the promise state.
 // Resolve the promise. The return value is passed to the then function.
-let promiseSuccess: Promise<string> = testNapi.resolveRejectDeferred('success', 'fail', true) as Promise<string>;
+let promiseSuccess: Promise<string> =
+  testNapi.resolveRejectDeferred('success', 'fail', true) as Promise<string>;
 promiseSuccess.then((res) => {
-  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred resolve %{public}s', res)
+  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred resolve %{public}s', res);
+  // ...
 }).catch((err: Error) => {
-  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred reject %{public}s', err)
+  hilog.error(0x0000, 'Node-API', 'get_resolve_deferred reject %{public}s', err);
+  // ...
 })
 // Reject the promise. The return value is passed to the catch function.
-let promiseFail: Promise<string> = testNapi.resolveRejectDeferred('success', 'fail', false) as Promise<string>;
+let promiseFail: Promise<string> =
+  testNapi.resolveRejectDeferred('success', 'fail', false) as Promise<string>;
 promiseFail.then((res) => {
-  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred resolve %{public}s', res)
+  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred resolve %{public}s', res);
+  // ...
 }).catch((err: Error) => {
-  hilog.info(0x0000, 'Node-API', 'get_resolve_deferred reject %{public}s', err)
+  hilog.error(0x0000, 'Node-API', 'get_resolve_deferred reject %{public}s', err);
+  // ...
 })
 ```
-<!-- @[ark_napi_resolve_reject_deferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIPromise/entry/src/main/ets/pages/Index.ets) -->
 
 To print logs in the native CPP, add the following information to the **CMakeLists.txt** file and add the header file by using **#include "hilog/log.h"**.
 

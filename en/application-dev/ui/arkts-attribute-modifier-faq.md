@@ -1,11 +1,11 @@
 # FAQs About Dynamic Attribute Setting
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangjunman1-->
+<!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=7ad1c90a6f0725a10b9d0139373b5bca022b08ee translatedAt=2026-09-21T02:37:09.976Z pushedAt=2026-09-21T09:06:42.256Z -->
+<!-- md-trans-meta sourceCommit=dbda7514fc4d743a6408faca2950d6a1c0cb2262 translatedAt=2026-11-03T08:15:18.523Z pushedAt=2026-11-03T08:22:13.203Z nl=1 -->
 
 This topic addresses common issues related to dynamic attribute setting.
 
@@ -21,7 +21,7 @@ A [JS crash](../dfx/jscrash-guidelines.md) occurs after **AttributeModifier** is
 
 **Solution**
 
-Go to the error log as prompted, view the error cause, and rectify the fault. For details, see the code example below.
+Go to the error log as prompted, view the error cause, and rectify the fault. For details, see the code example below. 
 
 **Code Example**
 
@@ -40,7 +40,7 @@ class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
 
 @Entry
 @Component
-struct attributeDemo {
+struct AttributeDemo {
   @State modifier: MyButtonModifier = new MyButtonModifier();
 
   build() {

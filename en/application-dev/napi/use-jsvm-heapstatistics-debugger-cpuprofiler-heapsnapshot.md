@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Examples of JSVM debugging and tuning APIs, including using OH_JSVM_GetVM to obtain VM instances, OH_JSVM_GetHeapStatistics to output heap statistics, and APIs for CPU profiling and heap snapshots."
+keywords: [OH_JSVM_GetVM, OH_JSVM_GetHeapStatistics, heap statistics, CPU Profiler, heap snapshots, JSVM_HeapStatistics, debugging and tuning, VM instance]
+doctype: guide
+status: active
+---
+
 # Debugging and Profiling JS Code Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=23d7ff60c67cd3075712762902e4e8f21f8c70ac translatedAt=2026-11-09T08:52:17.350Z nl=1 -->
 
 ## Introduction
 
@@ -39,11 +48,13 @@ Retrieves VM instances in an environment.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_vm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getvm/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
 
 // Define OH_JSVM_GetVM.
 static JSVM_Value GetVM(JSVM_Env env, JSVM_CallbackInfo info)
@@ -70,17 +81,12 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getVM", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-```
 
-JS example:
-
-```c++
-const char *srcCallNative = R"JS(getVM())JS";
+const char *SRC_CALL_NATIVE = R"JS(getVM())JS";
 ```
-<!-- @[oh_jsvm_get_vm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getvm/src/main/cpp/hello.cpp) -->
 
 Expected result:
-```
+```txt
 JSVM OH_JSVM_GetVM: success
 ```
 
@@ -90,11 +96,13 @@ Obtains heap statistics of a VM.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_get_heap_statistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getheapstatistics/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
+#include "hilog/log.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+// ...
 
 // Define OH_JSVM_GetHeapStatistics.
 void PrintHeapStatistics(JSVM_HeapStatistics result)
@@ -138,16 +146,12 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getHeapStatistics", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
+
+const char *SRC_CALL_NATIVE = R"JS(getHeapStatistics())JS";
 ```
 
-JS example:
-
-```c++
-const char *srcCallNative = R"JS(getHeapStatistics())JS";
-```
-<!-- @[oh_jsvm_get_heap_statistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getheapstatistics/src/main/cpp/hello.cpp) -->
-Expected result:
-```
+Expected output (virtual machine heap statistics, which change in real time):
+```txt
 JSVM API heap totalHeapSize: 1597440
 JSVM API heap totalHeapSizeExecutable: 0
 JSVM API heap totalPhysicalSize: 1323008
@@ -181,7 +185,7 @@ Obtains the current heap snapshot and outputs it to the stream.
 
 ### OH_JSVM_OpenInspector
 
-Opens an inspector instance on a specified host and port for debugging JS code.
+Activates the inspector on the specified host and port for debugging JS code.
 
 ### OH_JSVM_CloseInspector
 

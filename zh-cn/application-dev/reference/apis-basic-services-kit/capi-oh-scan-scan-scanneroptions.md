@@ -16,7 +16,7 @@ typedef struct {...} Scan_ScannerOptions
 
 **起始版本：** 12
 
-**相关模块：** [OH_Scan](capi-oh-scan.md)
+**相关模块：** [Scan](capi-oh-scan.md)
 
 **所在头文件：** [ohscan.h](capi-ohscan-h.md)
 

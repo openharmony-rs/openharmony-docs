@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "How to use OH_JSVM_StrictEquals to check whether two JavaScript values are strictly equal, with the same semantics as the JS === operator and no type conversion."
+keywords: [OH_JSVM_StrictEquals, strict equality, value comparison, equality checking, JSVM_Value, same type]
+doctype: guide
+status: active
+---
+
 # Comparing JS Values Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=1bcf41641a10f17d0f56bfc82362dc9488eaf7eb translatedAt=2026-11-09T08:52:17.356Z nl=1 -->
 
 ## Introduction
 
@@ -12,13 +21,13 @@ This topic walks you through on how to use JSVM-API to check whether two JavaScr
 
 ## Basic Concepts
 
-Strictly equal: If two values are strictly equal, they are equal in both value and type. When type conversion is considered, if the values being compared are of different types, **false** will be returned even if the values are the same.
+Strictly equal: Two values are strictly equal only if they are equal in both value and type. No type conversion is performed. If the values being compared are of different types, **false** is returned even if their values appear the same.
 
 ## Available APIs
 
 | API                      | Description                           |
 |----------------------------|-------------------------------------|
-| OH_JSVM_StrictEquals         | Checks whether two **JSVM_Value** objects are strictly equal.|
+| OH_JSVM_StrictEquals         | Checks whether two JSVM_Value objects are strictly equal |
 
 ## Example
 
@@ -30,15 +39,18 @@ Use **OH_JSVM_StrictEquals** to check whether two JS values are strictly equal.
 
 CPP code:
 
-```cpp
-// hello.cpp
+<!-- @[oh_jsvm_strict_equals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/strictequals/src/main/cpp/hello.cpp) -->
+
+``` C++
 #include "napi/native_api.h"
 #include "ark_runtime/jsvm.h"
-#include <hilog/log.h>
+#include "hilog/log.h"
+// ...
+
 // Define OH_JSVM_StrictEquals.
 static JSVM_Value IsStrictEquals(JSVM_Env env, JSVM_CallbackInfo info)
 {
-    // Obtain the input parameters.
+    // Receive two input parameters.
     size_t argc = 2;
     JSVM_Value args[2] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
@@ -64,9 +76,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"isStrictEquals", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 // Call the C++ code from JS.
-const char* srcCallNative = R"JS(data = '123';value = '123';isStrictEquals(data,value);)JS";
+const char* SRC_CALL_NATIVE = R"JS(data = '123';value = '123';isStrictEquals(data,value);)JS";
 ```
-<!-- @[oh_jsvm_strict_equals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/strictequals/src/main/cpp/hello.cpp) -->
 
 Expected result:
 

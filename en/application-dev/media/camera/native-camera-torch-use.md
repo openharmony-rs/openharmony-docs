@@ -1,4 +1,4 @@
-# Using the Flashlight (C++)
+# Using the Flashlight (C/C++)
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->

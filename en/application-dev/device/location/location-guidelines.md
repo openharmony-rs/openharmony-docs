@@ -5,7 +5,7 @@
 <!--Designer: @liu-binjun-->
 <!--Tester: @gcw_MslijYkf-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=45bd746ae860f1fef969073ffaa0af763a0251fa translatedAt=2026-06-29T06:19:16.321Z pushedAt=2026-06-30T02:10:26.547Z -->
+<!-- md-trans-meta sourceCommit=fc55bc873ba69e52c86a22f79ef1bde961ea38b4 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## When to Use
 
@@ -62,7 +62,7 @@ This module supports only the WGS-84 coordinate system.<!--RP2--><!--RP2End-->
       try {
           let location = geoLocationManager.getLastLocation();
       } catch (err) {
-          console.error("errCode:" + JSON.stringify(err));
+          console.error("errCode:" + err.code + ", message:"  + err.message);
       }
       ```
 
@@ -92,7 +92,7 @@ This module supports only the WGS-84 coordinate system.<!--RP2--><!--RP2End-->
             console.error('promise, getCurrentLocation: error=' + JSON.stringify(error));
          });
        } catch (err) {
-         console.error("errCode:" + JSON.stringify(err));
+         console.error("errCode:" + err.code + ", message:"  + err.message);
        }
       ```
    The coordinates obtained by this module are in the WGS-84 coordinate system. If you need to use coordinates in other coordinate systems, perform a coordinate system conversion.
@@ -120,11 +120,15 @@ This module supports only the WGS-84 coordinate system.<!--RP2--><!--RP2End-->
    try {
       geoLocationManager.on('locationChange', request, locationCallback);
    } catch (err) {
-      console.error("errCode:" + JSON.stringify(err));
+      console.error("errCode:" + err.code + ", message:"  + err.message);
    }
    ```
    If your application no longer needs the device location, stop obtaining the device location to avoid high power consumption.
    ```ts
    // The callback must be the same as that passed by the **on** API.
-   geoLocationManager.off('locationChange', locationCallback);
+   try {
+      geoLocationManager.off('locationChange', locationCallback);
+   } catch (err) {
+      console.error("errCode:" + err.code + ", message:"  + err.message);
+   }
    ```

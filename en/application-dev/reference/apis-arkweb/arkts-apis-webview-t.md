@@ -1,12 +1,11 @@
 # Types
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=4c6e46376c53087343f078f67879182b88d2f76c translatedAt=2026-08-07T04:25:05.902Z pushedAt=2026-08-07T08:11:23.326Z -->
+<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-11-06T11:04:35.851Z pushedAt=2026-11-09T11:18:30.988Z nl=1 -->
 
 The ArkWeb Types module is a collection of type aliases and callback function type definitions in the ArkWeb framework. It provides unified data type constraints and callback signature specifications for capabilities such as message communication, proxy configuration, and media playback control of the WebView component, serving as the type support layer in the interface declarations of core classes related to the WebView component.
 

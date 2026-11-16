@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "汇总ArkTS语言模块化加载异常的常见问题解答：涵盖模块未编译到应用包、入口模块找不到、导出符号缺失、so加载失败、模块间循环依赖及符号未初始化报错等问题的原因分析与解决方法。"
+keywords: [模块化FAQ, 模块加载异常, 动态import, Cannot find module, No export named, 循环依赖, 符号未初始化, so加载失败, HAR, HSP]
+doctype: faq
+status: active
+---
+
 # ArkTS语言模块化加载异常常见问题
 
 <!--Kit: ArkTS-->

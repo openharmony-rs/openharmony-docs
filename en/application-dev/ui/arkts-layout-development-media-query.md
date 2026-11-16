@@ -5,6 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=1f1a840a86d7f807ccde6d8e5ee488921520a5e5 translatedAt=2026-11-04T01:24:52.074Z pushedAt=2026-11-04T01:45:23.324Z nl=1 -->
 
 
 ## Overview
@@ -232,11 +233,11 @@ struct MediaQueryExample {
 }
 ```
 
-  **Figure 1** Portrait mode 
+  **Figure 1** Portrait mode
 
-![portralit](figures/portralit.jpg)
+![portrait](figures/portrait.jpg)
 
-  **Figure 2** Landscape mode 
+  **Figure 2** Landscape mode
 
 ![landscape](figures/landscape.jpg)
 
@@ -334,11 +335,11 @@ struct MediaQueryFlex {
 }
 ```
 
-  **Figure 3** Portrait mode 
+  **Figure 3** Portrait mode
 
-![portralit](figures/PortraitWidthFlex.png)
+![portrait](figures/PortraitWidthFlex.png)
 
-  **Figure 4** Landscape mode 
+  **Figure 4** Landscape mode
 
 ![landscape](figures/LandscapeWidthFlex.png)
 

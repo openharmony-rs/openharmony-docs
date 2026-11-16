@@ -1,4 +1,12 @@
-# 使用Display实现屏幕属性查询及状态监听 (ArkTS)
+---
+kits: ["ArkUI / 方舟UI框架"]
+description: "介绍如何使用@ohos.display模块获取Display对象并查询屏幕属性，以及如何监听屏幕插拔、截屏/投屏/录屏状态、可用区域和折叠状态变化，从而适配不同屏幕形态下的界面显示。"
+keywords: [Display, 屏幕属性查询, 屏幕插拔监听, 屏幕状态监听, 可用区域, 折叠状态监听]
+doctype: guide
+status: active
+---
+
+# 实现屏幕属性查询及状态监听 (ArkTS)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->

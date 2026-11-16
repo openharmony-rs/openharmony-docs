@@ -5,7 +5,7 @@
 <!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-09-21T01:56:24.481Z pushedAt=2026-09-21T09:18:24.256Z -->
+<!-- md-trans-meta sourceCommit=8e028149653aac680bb71205be9d457ce2f38bfe translatedAt=2026-11-03T03:03:27.041Z pushedAt=2026-11-03T03:05:56.610Z nl=1 -->
 
 The **Web** component can be attached to and detached from the component trees in different windows, which enables the same **Web** component to be migrated between different windows. For example, you can drag a tab page to an independent window or drag it to another window.
 
@@ -44,7 +44,7 @@ import { createNWeb, defaultUrl } from '../pages/common';
 // ...
 ```
 
-<!-- @[dynamic_web_module_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/common.ets) -->
+<!-- @[dynamic_web_module_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/common.ets) -->  
 
 ``` TypeScript
 // Provide the capability for attaching Web components dynamically.
@@ -103,7 +103,7 @@ export class MyNodeController extends NodeController {
       let frameNode : FrameNode | null = this.builderNode.getFrameNode();
       if (frameNode?.getParent() != null) {
         // Before attaching the custom node, check whether the node has already been attached.
-        hilog.error(0x0000, 'testTag', '%{public}s', 'The frameNode is already attached');
+        hilog.warn(0x0000, 'testTag', '%{public}s', 'The frameNode is already attached');
         return;
       }
       this.rootNode = this.builderNode.getFrameNode();

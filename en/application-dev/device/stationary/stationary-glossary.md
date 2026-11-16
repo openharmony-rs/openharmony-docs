@@ -1,12 +1,11 @@
 # Glossary
-
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
 <!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=ef263162c0e701490ace3ecdc6784cd59640626d translatedAt=2026-08-20T06:26:25.742Z pushedAt=2026-08-20T13:31:08.326Z -->
+<!-- md-trans-meta sourceCommit=535da5fa1a4f632e9b32ff60824cd7d59fa27647 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## H
 
@@ -18,11 +17,11 @@ The hand currently holding the device. You can subscribe to holding hand state c
 
 ### Metadata Binding
 
-The memory link (metadata binding) feature is used to associate and save the content the user is currently browsing (such as a page screenshot) with the HarmonyOS App Linking link provided by a third-party app. When the user browses the same content again, the system parses the bound metadata and prompts the user to jump to the corresponding third-party app to view details.
+A feature used to associate and save the content the user is currently browsing (such as a page screenshot) with the HarmonyOS App Linking link provided by a third-party app. When the user browses the same content again, the system parses the bound metadata and prompts the user to jump to the corresponding third-party app to view details.
 
-### Motion Awareness
+### multimodalAwareness.motion
 
-The motion awareness module provided by the system for apps. It identifies how users operate the device through sensors and provides motion awareness capabilities such as the operating hand and holding hand, used to perceive device states, recognize user behaviors, and optimize the interaction experience. To use this module, an app must apply for the corresponding permissions.
+The motion awareness module provided by the system for apps. It identifies how users operate the device through sensors and provides motion awareness capabilities such as the operating hand and holding hand, which are used to perceive device states, recognize user behaviors, and optimize the interaction experience. To use this module, an app must apply for the corresponding permissions.
 
 ### Multimodal Awareness
 
@@ -36,7 +35,7 @@ The hand currently operating the device screen. You can subscribe to operating h
 
 ## S
 
-### Stationary Awareness
+### stationary
 
 A device stationary awareness module provided by the system for apps. This module supports subscribing to entry and exit events of device stationary states such as absolute stationary and relative stationary, and reports the results to apps when the state changes.
 

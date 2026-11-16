@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=89346475f8d3330eb3cf2dc1d1fe16bf74dc4998 translatedAt=2026-09-01T12:05:10.780Z -->
+<!-- md-trans-meta sourceCommit=644f67aa94f68e9077504aa31447c68dfa9d35e7 translatedAt=2026-11-03T03:10:14.040Z pushedAt=2026-11-13T01:06:00.058Z nl=1 -->
 
 > **NOTE**
 >
@@ -402,24 +402,24 @@ Defines the unique identifier for a custom menu item. It is used to identify men
 
 | Name          | Type             | Read-Only  | Optional | Description    |
 | ------------ |---------------------| ---- | ---- | ------ |
-| CUT  | [TextMenuItemId](#textmenuitemid12) |  Yes  |  No | Default cut, a first-level menu item.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| COPY  | [TextMenuItemId](#textmenuitemid12) |  Yes  |  No  | Default copy, a first-level menu item.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| PASTE | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Default paste, a first-level menu item.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| SELECT_ALL   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Default select all, a first-level menu item.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| COLLABORATION_SERVICE   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Collaboration service, a first-level menu item.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| CAMERA_INPUT   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No   | Camera input, a first-level menu item.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| AI_WRITER<sup>13+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | <!--RP1--><!--RP1End-->Polishes, summarizes, and formats the selected text, a first-level menu item. This menu item depends on the large model capability; otherwise, it does not take effect.<br>**Atomic service API:** This API can be used in atomic services since API version 13. |
-| TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Translation, a first-level menu item. Provides translation service for the selected text.<br>**Atomic service API:** This API can be used in atomic services since API version 15. |
-| SHARE<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Share, a first-level menu item. Provides share service for the selected text and opens the share window to share the selected text content.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
-| SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Search, a first-level menu item. Provides search service for the selected text and opens the browser to search the selected text content.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
-| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Open link, a first-level menu item. Provides a jump service for the selected URL and opens the browser to search or the application page.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
-| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | New email, a first-level menu item. Provides a jump service for the selected email address and opens the email application.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
-| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Call, a first-level menu item. Provides a jump service for the selected phone number and opens the dialing page.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
-| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Navigate, a first-level menu item. Provides a jump service for the selected address and opens the map application.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
-| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | New schedule, a first-level menu item. Provides a jump service for the selected date and time and opens the new schedule page.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
-| askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | <!--RP2--><!--RP2End-->Provides AI query capability for the selected text, a first-level menu item. This menu item depends on the large model capability; otherwise, it does not take effect.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
-| autoFill<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Auto fill, a first-level menu item. Tapping it expands the second-level menu item "Password vault". It is supported only by [Search](ts-basic-components-search.md), [TextInput](ts-basic-components-textinput.md), [TextArea](ts-basic-components-textarea.md), or [RichEditor](ts-basic-components-richeditor.md).<br>**Atomic service API:** This API can be used in atomic services since API version 23. |
-| passwordVault<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Password vault, a second-level menu item. Tapping this menu item opens the password vault application, which provides the capability of auto-filling account and password. It is supported only by [Search](ts-basic-components-search.md), [TextInput](ts-basic-components-textinput.md), [TextArea](ts-basic-components-textarea.md), or [RichEditor](ts-basic-components-richeditor.md).<br>**Atomic service API:** This API can be used in atomic services since API version 23.<br>**Model constraint:** This API can be used only in the stage model. |
+| CUT  | [TextMenuItemId](#textmenuitemid12) |  Yes  |  No | Default cut, a level-1 menu item.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| COPY  | [TextMenuItemId](#textmenuitemid12) |  Yes  |  No  | Default copy, a level-1 menu item.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| PASTE | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Default paste, a level-1 menu item.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| SELECT_ALL   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Default select all, a level-1 menu item.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| COLLABORATION_SERVICE   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Collaboration service, a level-1 menu item.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| CAMERA_INPUT   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No   | Camera input, a level-1 menu item.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| AI_WRITER<sup>13+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | <!--RP1--><!--RP1End-->Polishes, summarizes, and formats the selected text, a level-1 menu item. This menu item depends on the large model capability; otherwise, it does not take effect.<br>**Atomic service API:** This API can be used in atomic services since API version 13. |
+| TRANSLATE<sup>15+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Translation, a level-1 menu item. Provides translation service for the selected text.<br>**Atomic service API:** This API can be used in atomic services since API version 15. |
+| SHARE<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Share, a level-1 menu item. Provides share service for the selected text and opens the share window to share the selected text content.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
+| SEARCH<sup>18+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Search, a level-1 menu item. Provides search service for the selected text and opens the browser to search the selected text content.<br>**Atomic service API:** This API can be used in atomic services since API version 18. |
+| url<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Open link, a level-1 menu item. Provides a jump service for the selected URL and opens the browser to search or the application page.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
+| email<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | New email, a level-1 menu item. Provides a jump service for the selected email address and opens the email application.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
+| phoneNumber<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Call, a level-1 menu item. Provides a jump service for the selected phone number and opens the dialing page.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
+| address<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Navigate, a level-1 menu item. Provides a jump service for the selected address and opens the map application.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
+| dateTime<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | New schedule, a level-1 menu item. Provides a jump service for the selected date and time and opens the new schedule page.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
+| askAI<sup>20+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | <!--RP2--><!--RP2End-->Provides AI query capability for the selected text, a level-1 menu item. This menu item depends on the large model capability; otherwise, it does not take effect.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
+| autoFill<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Auto fill, a level-1 menu item. Tapping it expands the level-2 menu item "Password vault". It is supported only by [Search](ts-basic-components-search.md), [TextInput](ts-basic-components-textinput.md), [TextArea](ts-basic-components-textarea.md), or [RichEditor](ts-basic-components-richeditor.md).<br>**Atomic service API:** This API can be used in atomic services since API version 23. |
+| passwordVault<sup>23+</sup>   | [TextMenuItemId](#textmenuitemid12)   | Yes    | No    | Password vault, a level-2 menu item. Tapping this menu item opens the password vault application, which provides the capability of auto-filling account and password. It is supported only by [Search](ts-basic-components-search.md), [TextInput](ts-basic-components-textinput.md), [TextArea](ts-basic-components-textarea.md), or [RichEditor](ts-basic-components-richeditor.md).<br>**Atomic service API:** This API can be used in atomic services since API version 23.<br>**Model restriction:** This API can be used only in the stage model. |
 ### of
 
 static of(id: ResourceStr): TextMenuItemId
@@ -525,7 +525,7 @@ Triggered when a menu item is tapped, used to handle the tap behavior of the men
 
 | Name | Type                             | Mandatory| Description  |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| menuItem | [TextMenuItem](#textmenuitem12) | Yes | Menu item.<br>**Note:** <br>Since API version 23, for a first-level menu item that supports an expandable second-level menu, such as auto-fill, only the system default logic is executed, and user-defined logic is not executed. |
+| menuItem | [TextMenuItem](#textmenuitem12) | Yes | Menu item.<br>**Note:** <br>Since API version 23, for a level-1 menu item that supports an expandable second-level menu, such as auto-fill, only the system default logic is executed, and user-defined logic is not executed. |
 | range | [TextRange](#textrange12) | Yes  | Selected text.|
 
 **Return value**
@@ -749,7 +749,7 @@ Defines font configurations.
 
 | Name    | Type                                            | Read-Only| Optional| Description                                                    |
 | -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
-| fontWeightConfigs | [FontWeightConfigs](#fontweightconfigs24) | No | Yes | Font weight configuration. The default value inherits [FontWeightConfigs](#fontweightconfigs24).<br>**Model constraint:** This interface can only be used in the Stage model. |
+| fontWeightConfigs | [FontWeightConfigs](#fontweightconfigs24) | No | Yes | Font weight configuration. The default value inherits [FontWeightConfigs](#fontweightconfigs24).<br>**Model restriction:** This interface can only be used in the Stage model. |
 
 ## FontWeightConfigs<sup>24+</sup>
 
@@ -963,7 +963,7 @@ Sets the offset of the caret.
 
 | Type     | Description       |
 | ------- | --------- |
-| boolean | Whether the cursor is set successfully.<br>The value **true** indicates that the cursor is set successfully, and **false** indicates the opposite. |
+| boolean | Whether the caret is set successfully.<br>The value **true** indicates that the caret is set successfully, and **false** indicates the opposite. |
 
 ### getPreviewText<sup>12+</sup>
 
@@ -1003,7 +1003,7 @@ Sets the styled string displayed in the rich text component.
 
 | Name  | Type  | Mandatory  | Description               |
 | ----- | ------ | ---- | ------------------- |
-| styledString | [StyledString](ts-universal-styled-string.md#styledstring) | Yes | Styled string.<br>**Note:** <br>The subclass [MutableStyledString](ts-universal-styled-string.md#mutablestyledstring) of StyledString can also be used as the input parameter value. |
+| styledString | [StyledString](ts-universal-styled-string.md#styledstring) | Yes | Styled string.<br>**Note:** <br>The child class [MutableStyledString](ts-universal-styled-string.md#mutablestyledstring) of StyledString can also be used as the input parameter value. |
 
 ### getStyledString<sup>12+</sup>
 
@@ -1360,7 +1360,7 @@ Configures the line spacing of text and whether it applies only between lines.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Read-Only| Optional| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---- | ---------------- |
@@ -1502,9 +1502,9 @@ Defines the style of line corners, that is, the brush style at the corners of li
 
 | Name                   | Value  | Description                  |
 | --------------------- | -------  | ------------------- |
-| MITER_JOIN            | 0  | Sharp corner. |
+| MITER_JOIN            | 0  | Miter join. |
 | ROUND_JOIN            | 1  | Rounded corner. |
-| BEVEL_JOIN            | 2  | Beveled corner. |
+| BEVEL_JOIN            | 2  | Bevel join. |
 
 ## TextDirection<sup>22+</sup>
 
@@ -1558,6 +1558,8 @@ type FontVariation = import('../api/@ohos.graphics.text').default.FontVariation
 Properties of a variable font.
 
 **Since**: 26.0.0
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.1.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 

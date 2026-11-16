@@ -6,7 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=fbe0163aaead73cd556bd2af5d17113e27dcb5ac translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T07:39:08.000Z nl=1 -->
+<!-- md-trans-meta sourceCommit=55475b8d201845bcd9989a5f64cef91cd4c2751f translatedAt=2026-11-03T13:00:53.698Z pushedAt=2026-11-03T13:00:53.698Z nl=1 -->
 
 ## Overview
 
@@ -189,7 +189,7 @@ The following describes how to subscribe to the freeze event triggered by a butt
    static HiAppEvent_Watcher *appHicollieWatcherT;
    ```
 
-   <!-- @[App_Hicollie_Trigger](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) --> 
+   <!-- @[App_Hicollie_Trigger](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // Implement the callback function used to return the listened events. The content pointed to by the events pointer is valid only in this function.
@@ -243,14 +243,14 @@ The following describes how to subscribe to the freeze event triggered by a butt
            }
        }
    }
-   
+
    // Implement the subscription callback function to apply custom processing to the obtained event logging data.
    static void AppHicollieOnTrigger(int row, int size)
    {
        // After the callback is received, obtain the specified number of received events.
        OH_HiAppEvent_TakeWatcherData(appHicollieWatcherT, row, AppHicollieOnTake);
    }
-   
+
    static napi_value RegisterAppHicollieWatcherT(napi_env env, napi_callback_info info)
    {
        // Set the watcher name. The system identifies different watchers based on their names.
@@ -264,7 +264,10 @@ The following describes how to subscribe to the freeze event triggered by a butt
        // Set the conditions for triggering the subscription callback. For example, trigger this onTrigger callback when the number of new event logs is 1.
        OH_HiAppEvent_SetTriggerCondition(appHicollieWatcherT, 1, 0, 0);
        // Add a watcher to listen for the specified event.
-       OH_HiAppEvent_AddWatcher(appHicollieWatcherT);
+       int ret = OH_HiAppEvent_AddWatcher(appHicollieWatcherT);
+       if (ret != 0) {
+           OH_LOG_ERROR(LogType::LOG_APP, "HiAppEvent AddWatcher failed, ret=%{public}d", ret);
+       }
        return {};
    }
    ```
@@ -287,7 +290,7 @@ The following describes how to subscribe to the freeze event triggered by a butt
    {
        OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimerNdk CallBack");  // Logs are printed in the callback.
    }
-   
+
    static napi_value TestHiCollieTimerNdk(napi_env env, napi_callback_info info)
    {
        int id;
@@ -298,6 +301,8 @@ The following describes how to subscribe to the freeze event triggered by a butt
            OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimer taskId: %{public}d", id); // Print the task ID.
            sleep(2);  // Simulate a time-consuming function to block the thread for 2s.
            OH_HiCollie_CancelTimer(id);  // Cancel the registered timer based on the ID.
+       } else {
+           OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_SetTimer failed, errorCode is %{public}d", errorCode);
        }
        return nullptr;
    }

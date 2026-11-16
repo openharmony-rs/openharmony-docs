@@ -567,3 +567,33 @@ struct DatePickerExample {
 }
 ```
 ![datePicker](figures/DatePickerDemo4.gif)
+
+### 示例5（设置起始和结束日期）
+
+该示例通过配置[DatePickerOptions](#datepickeroptions对象说明)中的start和end参数限定可选日期范围，将可选日期限定在2020-01-01至2030-12-31之间，并预设选中日期为2024-06-15。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct DatePickerExample {
+  private selectedDate: Date = new Date('2024-06-15');
+
+  build() {
+    Column() {
+      DatePicker({
+        // 设置了start或end且为非默认值的场景下，API版本26.1.0之前canLoop不生效，从API版本26.1.0开始，canLoop对非边界列生效，对边界列不生效。
+        start: new Date('2020-01-01'),
+        end: new Date('2030-12-31'),
+        selected: this.selectedDate
+      })
+        .onDateChange((value: Date) => {
+          this.selectedDate = value;
+          console.info('select current date is: ' + value.toString());
+        })
+    }.width('100%')
+  }
+}
+```
+
+![datePicker](figures/DatePickerDemo5.gif)

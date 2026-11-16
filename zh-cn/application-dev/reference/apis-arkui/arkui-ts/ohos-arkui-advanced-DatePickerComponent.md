@@ -269,6 +269,7 @@ struct DatePickerExample {
           dateOptions: {
             mode: DateMode.DATE,
             selected: new Date(this.selectedYear, this.selectedMonth, this.selectedDay),
+            // 设置了start或end且为有效值的场景下，API版本26.1.0之前loop不生效，从API版本26.1.0开始，loop对非边界列生效，对边界列不生效。
             start: new Date('2020-03-01'),
             end: new Date('2030-10-31'),
             enableHapticFeedback: true,

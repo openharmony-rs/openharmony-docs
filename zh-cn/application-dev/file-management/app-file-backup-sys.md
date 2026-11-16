@@ -39,8 +39,7 @@
 <!-- @[get_local_cap_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
 
 ``` TypeScript
-import { fileIo } from '@kit.CoreFileKit';
-import { backup } from '@kit.CoreFileKit';
+import { fileIo, backup } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
 
@@ -106,8 +105,7 @@ export async function getLocalCapabilities(): Promise<void> {
   <!-- @[session_backup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
   
   ``` TypeScript
-  import { fileIo } from '@kit.CoreFileKit';
-  import { backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   // ...
   
@@ -205,8 +203,7 @@ export async function getLocalCapabilities(): Promise<void> {
   <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->  
   
   ``` TypeScript
-  import { fileIo } from '@kit.CoreFileKit';
-  import { backup } from '@kit.CoreFileKit';
+  import { fileIo, backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   // ...
   

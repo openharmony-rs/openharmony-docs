@@ -1,7 +1,7 @@
 ---
 kits: ["ArkTS Kit"]
-description: "How to define and implement ArkTS interfaces, including interface inheritance and composition, optional members, interfaces with generic constraints, excess property checks, and differences between type and interface."
-keywords: ["ArkTS", "interfaces", "interface", "interface inheritance", "optional members", "generic constraints", "excess property checks", "differences from type"]
+description: "How to define and implement ArkTS interfaces, covering interface inheritance and composition, optional members, and generic constraint interfaces."
+keywords: [ArkTS, interfaces, interface, interface inheritance, optional members, generic constraints]
 doctype: guide
 status: active
 ---
@@ -9,23 +9,21 @@ status: active
 # Interfaces
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @jokerxd-liu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=17ae88719a2d37a0c07e3b6e33ddb120ebd3dbc5 translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8923bda514baa1452b967ea964ea779c7417bd8e translatedAt=2026-11-12T12:34:02.418Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
-Interfaces are an important way to define the structure of objects in TypeScript/ArkTS. An interface defines a contract of a set of properties and methods, which constrains the shape of an object and enables code decoupling and reuse.
+Interfaces are an important way to define object structures in ArkTS. An interface defines a contract consisting of properties and methods to constrain object structures, enabling code decoupling and reuse.
 
 ## Basic Concepts of Interfaces
 
 An interface defines the structural contract of an object, specifying property names, types, and optionality without containing implementations. It is used for type constraints and code decoupling.
 
-### Interface Definition and Core Purpose
+### Core Roles of Interfaces
 
-An interface defines a structural contract for objects—specifying property names, types, and optionality. A class implements an interface to ensure that its instances have the required members.
-
-Interfaces constrain object structures at compile time, decouple module dependencies through unified contracts, and allow multiple classes to reuse the same type definition. They are the core mechanism by which TypeScript/ArkTS achieves loose coupling and type safety.
+Interfaces constrain object structures at compile time, decouple module dependencies through common contracts, and allow multiple classes to reuse the same type definition. They are a core mechanism for loose coupling and type safety in ArkTS. A class implements an interface with `implements` to ensure that its instances have the required members.
 
 <!-- @[simple_interface_definition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -44,121 +42,16 @@ let user: User = {
   email: 'alice@example.com'
 };
 
-console.info(user.name); // Alice
-```
-
-### Relationship Between Interfaces and Protocols
-
-An interface can serve as a protocol that defines a set of methods and properties that must be implemented, allowing different implementation classes to be invoked in a unified manner.
-
-<!-- @[interface_as_protocol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
-
-``` TypeScript
-// Define a protocol with an interface.
-interface PaymentProtocol {
-  // Method that must be implemented.
-  processPayment(amount: number): boolean;
-  refundPayment(transactionId: string): boolean;
-  
-  // Property that must be included.
-  currency: string;
-}
-
-// The class implements the interface protocol.
-class CreditCardPayment implements PaymentProtocol {
-  public currency: string = 'USD';
-  
-  public processPayment(amount: number): boolean {
-    console.info('Processing credit card payment: $' + amount);
-    return true;
-  }
-  
-  public refundPayment(transactionId: string): boolean {
-    console.info(`Refunding transaction: ${transactionId}`);
-    return true;
-  }
-}
-
-class PayPalPayment implements PaymentProtocol {
-  public currency: string = 'EUR';
-  
-  public processPayment(amount: number): boolean {
-    console.info(`Processing PayPal payment: €${amount}`);
-    return true;
-  }
-  
-  public refundPayment(transactionId: string): boolean {
-    console.info(`Refunding PayPal transaction: ${transactionId}`);
-    return true;
-  }
-}
-
-// Use the interface type.
-function makePayment(payment: PaymentProtocol, amount: number): void {
-  if (payment.processPayment(amount)) {
-    console.info('Payment successful');
-  }
-}
-
-let creditCard = new CreditCardPayment();
-let paypal = new PayPalPayment();
-
-makePayment(creditCard, 100); // Processing credit card payment: $100
-makePayment(paypal, 50);      // Processing PayPal payment: €50
-```
-
-### Interface Design Goals
-
-Interface design follows principles such as the Single Responsibility Principle, Interface Segregation Principle, and Dependency Inversion Principle, avoiding overly large interfaces.
-
-The Single Responsibility Principle requires each interface to define only one set of related members; the Interface Segregation Principle avoids forcing implementers to provide methods they do not need; the Dependency Inversion Principle lets high-level modules depend on abstractions rather than concrete implementations; and naming should clearly express the purpose.
-
-<!-- @[interface_segregation_principle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
-
-``` TypeScript
-// Good design: single responsibility
-interface Reader {
-  read(): string;
-}
-
-interface Writer {
-  write(data: string): void;
-}
-
-// Good design: interface segregation
-interface ReadOnlyRepository<T> {
-  findById(id: number): T | null;
-  findAll(): T[];
-}
-
-interface WriteOnlyRepository<T> {
-  save(entity: T): void;
-  delete(id: number): void;
-}
-
-interface Repository<T> extends ReadOnlyRepository<T>, WriteOnlyRepository<T> {
-  // Inherit the read and write interfaces to provide complete functionality.
-}
-
-// Poor design: the interface is too large (violates the Interface Segregation Principle).
-interface BadRepository<T> {
-  findById(id: number): T | null;
-  findAll(): T[];
-  save(entity: T): void;
-  delete(id: number): void;
-  batchInsert(entities: T[]): void;
-  batchDelete(ids: number[]): void;
-  // ... more methods
-}
+console.info(user.name); // 'Alice'
 ```
 
 ## Interface Declaration and Implementation
 
-The `interface` keyword declares the interface structure, and a class implements the interface contract through `implements`.
+The `interface` keyword declares an interface structure, and a class implements the interface contract with `implements`.
 
 ### Interface Declaration Syntax
 
-Use the `interface` keyword to declare an interface, defining properties (name: type), method signatures, and index signatures to describe the structural contract of an object.
+Declare an interface with the `interface` keyword, defining properties (name: type) and method signatures to describe a structural contract for objects.
 
 <!-- @[basic_interface_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -179,7 +72,7 @@ console.info(`Point: (${point.x}, ${point.y})`);
 
 ### Defining Interface Members
 
-Interface members include properties, methods, and index signatures.
+Interface members include properties, methods, and accessors.
 
 **Property Types**
 
@@ -220,20 +113,17 @@ product.createdAt = new Date(); // Compilation error.
 
 **Method declaration**
 
-Interface methods include methods without parameters, methods with parameters, and optional methods (`?`). A class implements interface methods through `implements`.
+Interface methods include required and optional methods (`?`). Classes implement interface methods with `implements`.
 
-<!-- @[interface_method_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
+<!-- @[interface_method_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
 
 ``` TypeScript
 interface Calculator {
-    // Method declaration (no parameters)
   reset(): void;
-  
-  // Method declaration (with parameters)
   add(a: number, b: number): number;
   subtract(a: number, b: number): number;
-  
-  // Optional method
+
+  // Optional method (using ?).
   logResult?(): void;
 }
 
@@ -255,7 +145,7 @@ class BasicCalculator implements Calculator {
     return this.result;
   }
   
-  // Optional methods can be left unimplemented.
+  // Optional methods can be omitted. To implement one, use the following example.
   public logResult(): void {
     console.info(`Result: ${this.result}`);
   }
@@ -266,77 +156,48 @@ let sum: number = calculator.add(10, 5);
 console.info(`${sum}`); // 15
 ```
 
-**Index Signature**
+**Accessors (Getters/Setters)**
 
-Index signatures allow accessing properties with dynamic keys. ArkTS does not support them (`arkts-no-indexed-signatures`); use `Map` instead.
+An interface can declare `get`/`set` accessors, requiring the implementing class to provide getters and setters with the same names. Their usage is the same as computed properties in classes. For details, see [Computed Properties](arkts-language-guide-classes.md#computed-properties).
 
-**TypeScript comparison**
-
-<!-- @[ts_index_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
+<!-- @[interface_accessors](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
 ``` TypeScript
-// Numeric index signature
-interface NumberArray {
-  [index: number]: number;
-  length: number;
+interface PersonInfo {
+  get fullName(): string;
+  set fullName(name: string);
 }
 
-let numArray: NumberArray = [1, 2, 3, 4, 5];
-console.info(`${numArray[0]}`); // 1
+class Person implements PersonInfo {
+  private firstName: string;
+  private lastName: string;
 
-// String index signature.
-interface StringDictionary {
-  [key: string]: string | number;
-  name: string; // Must conform to the index signature type.
-  age: number;  // Must conform to the index signature type.
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  get fullName(): string {
+    return `${this.firstName} ${this.lastName}`;
+  }
+
+  set fullName(name: string) {
+    let parts: string[] = name.split(' ');
+    this.firstName = parts[0];
+    this.lastName = parts[1];
+  }
 }
 
-let person: StringDictionary = {
-  name: 'Alice',
-  age: 25,
-  city: 'New York',  // Dynamic property.
-  country: 'USA'     // Dynamic property.
-};
+let person: PersonInfo = new Person('John', 'Smith');
+console.info(`${person.fullName}`); // 'John Smith'
 
-console.info(`${person.city}`); // New York
-
-// Use both index signature types.
-interface MixedDictionary {
-  [key: string]: string | number;
-  [index: number]: string;
-  length: number;
-}
-
-let mixed: MixedDictionary = {
-  length: 3,
-  0: 'First',
-  1: 'Second',
-  2: 'Third',
-  key1: 'Value1',
-  key2: 'Value2'
-};
-
-console.info(`${mixed[1]}`);    // Second
-console.info(`${mixed.key1}`);  // Value1
-```
-
-In ArkTS, use `Map` instead of index signatures to implement dynamic key-value storage:
-
-<!-- @[map_replaces_index_signature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
-
-``` TypeScript
-// ArkTS alternative: use Map.
-let dictMap: Map<string, string | number> = new Map();
-dictMap.set('name', 'Alice');
-dictMap.set('age', 25);
-dictMap.set('city', 'New York');
-
-console.info(`${dictMap.get('city')}`);  // New York
+person.fullName = 'Bob Brown';
+console.info(`${person.fullName}`); // 'Bob Brown'
 ```
 
 ### Implementing an Interface with a Class
 
-A class implements an interface using the `implements` keyword and must provide concrete implementations of all members in the interface. Different classes can implement the same interface to provide different behaviors.
+A class implements an interface with the `implements` keyword and must provide concrete implementations of all required members. Different classes can implement the same interface to provide different behaviors.
 
 <!-- @[class_implements_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -392,9 +253,13 @@ fileLogger.error('Connection failed');
 // Writing to app.log: [ERROR] Connection failed
 ```
 
-### Interface Inheritance
+## Interface Inheritance and Composition
 
-An interface can inherit from other interfaces through `extends`, forming a multi-level hierarchy. A child interface contains all members of its parent interface and can add new members.
+Interfaces use `extends` for single and multiple inheritance to reuse and compose type definitions.
+
+### Single Inheritance of Interfaces
+
+An interface uses `extends` to inherit a single parent interface and adds new members to those inherited from the parent. The child interface can be further inherited to form a multilevel hierarchy, with the final child containing the members of all parent interfaces.
 
 <!-- @[interface_multi_level_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -433,43 +298,12 @@ class DemoDog implements Dog {
 
 let myDog: Dog = new DemoDog('Buddy', 3, 'Alice', 'Golden Retriever');
 
-myDog.bark(); // Buddy barks: Woof! Woof!
-```
-
-## Interface Inheritance and Composition
-
-Interfaces reuse type definitions through single and multiple inheritance via `extends`, and combine multiple interfaces through intersection types (&).
-
-### Single Inheritance of Interfaces
-
-An interface uses `extends` to inherit a single parent interface. The child interface adds new members on top of the parent interface's members, and an object must satisfy the structures of both the parent and child interfaces.
-
-<!-- @[interface_inheritance_object_literal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
-
-``` TypeScript
-interface Vehicle {
-  brand: string;
-  year: number;
-}
-
-interface Car extends Vehicle {
-  model: string;
-  doors: number;
-}
-
-let myCar: Car = {
-  brand: 'Toyota',
-  year: 2020,
-  model: 'Camry',
-  doors: 4
-};
-
-console.info(`${myCar.brand} ${myCar.model} (${myCar.year})`);
+myDog.bark(); // 'Buddy barks: Woof! Woof!'
 ```
 
 ### Multiple Interface Inheritance
 
-An interface can extend multiple parent interfaces to combine multiple type contracts.
+Use `extends` to inherit multiple parent interfaces and combine multiple type contracts.
 
 <!-- @[interface_multiple_inheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -478,42 +312,23 @@ interface MiSerializable {
   serialize(): string;
 }
 
-interface MiCloneable {
-  clone(): Object;
-}
-
 interface MiComparable {
   compareTo(other: Object): number;
 }
 
-interface MiEntity extends MiSerializable, MiCloneable, MiComparable {
+interface MiEntity extends MiSerializable, MiComparable {
   id: number;
-  createdAt: Date;
 }
 
 class MiUserEntity implements MiEntity {
   public id: number;
-  public createdAt: Date;
-  public name: string;
 
-  constructor(id: number, name: string) {
+  constructor(id: number) {
     this.id = id;
-    this.name = name;
-    this.createdAt = new Date();
   }
 
   public serialize(): string {
-    return JSON.stringify({
-      id: this.id,
-      name: this.name,
-      createdAt: this.createdAt
-    });
-  }
-
-  public clone(): Object {
-    let cloned: MiUserEntity = new MiUserEntity(this.id, this.name);
-    cloned.createdAt = new Date(this.createdAt);
-    return cloned;
+    return `User#${this.id}`;
   }
 
   public compareTo(other: Object): number {
@@ -522,68 +337,16 @@ class MiUserEntity implements MiEntity {
   }
 }
 
-let miUser1: MiUserEntity = new MiUserEntity(1, 'Alice');
-let miUser2: MiUserEntity = new MiUserEntity(2, 'Bob');
+let miUser1: MiUserEntity = new MiUserEntity(1);
+let miUser2: MiUserEntity = new MiUserEntity(2);
 
-console.info(`${miUser1.serialize()}`);
+console.info(`${miUser1.serialize()}`);        // 'User#1'
 console.info(`${miUser1.compareTo(miUser2)}`); // -1
-let miCloned: Object = miUser1.clone();
-let miClonedUser: MiUserEntity = miCloned as MiUserEntity;
-console.info(`${miClonedUser.name}`); // Alice
-```
-
-### Interface Composition Type
-
-An intersection type (`&`) combines multiple interfaces into a composite type that satisfies all constraints. ArkTS does not support intersection types (`arkts-no-intersection-types`). Use interface multiple inheritance instead. For details, see [TypeScript to ArkTS Cookbook](typescript-to-arkts-migration-guide.md#use-inheritance-instead-of-intersection-types).
-
-**TypeScript comparison**
-
-<!-- @[ts_interface_composition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
-
-``` TypeScript
-interface Nameable {
-  name: string;
-}
-
-interface Ageable {
-  age: number;
-}
-
-interface Emailable {
-  email: string;
-}
-
-// Combine interfaces using an intersection type
-type Person = Nameable & Ageable & Emailable;
-
-let composePerson: Person = {
-  name: 'Alice',
-  age: 25,
-  email: 'alice@example.com'
-};
-
-console.info(`${composePerson.name}`); // Alice
-
-// Alternative approach: use interface inheritance
-interface Employee extends Nameable, Ageable, Emailable {
-  department: string;
-  salary: number;
-}
-
-let employee: Employee = {
-  name: 'Bob',
-  age: 30,
-  email: 'bob@company.com',
-  department: 'Engineering',
-  salary: 50000
-};
-
-console.info(`${employee.name} works in ${employee.department}`);
 ```
 
 ### Constraints on Interface Inheritance
 
-When an interface inherits another interface, it can add new members and override methods with the same name (keeping the signature consistent), but it cannot change the type of a member inherited from the parent interface; otherwise, a compilation error occurs.
+When inheriting an interface, you can add new members or override members with the same names. An overriding method must have a signature compatible with the parent interface; its return type can differ. However, redeclaring a member with an incompatible type causes a compilation error.
 
 <!-- @[ts_interface_inheritance_rules](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
 
@@ -593,41 +356,31 @@ interface Base {
 }
 
 interface Derived extends Base {
-  // Add new methods.
+  // New members can be added.
   newMethod(): void;
 
-  // Override the parent interface method (keeping the same signature).
-  method(): void;
-
-  // Do not change the method return type (compilation error).
+  // Methods with the same name can be overridden with a different return type, provided the signatures are compatible.
   method(): string;
 }
 
-// Property constraints during interface inheritance
+// An overriding property must have a type compatible with the parent interface.
 interface Colorable {
   color: string;
 }
 
-interface Sized {
-  size: number;
-}
-
-interface Shape extends Colorable, Sized {
-  // You can add new properties.
-  area(): number;
-
-  // You cannot redefine properties of the parent interface.
+interface BadColorable extends Colorable {
+  // A property cannot be redeclared with an incompatible type.
   color: number; // Compilation error: type mismatch.
 }
 ```
 
 ## Optional Members of an Interface
 
-Optional members are marked with `?` and can be omitted during implementation.
+Optional members are marked with `?` and can be omitted in implementations.
 
-### Optional Members Based on the optional Modifier
+### Optional Properties and Methods
 
-An optional member is marked with `?`, which is placed after the member name in the declaration. The implementing object can omit this member.
+Optional properties and methods are marked with `?` after the member name, indicating that the member may not exist. Implementing objects can provide them as needed.
 
 <!-- @[optional_properties_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -635,35 +388,27 @@ An optional member is marked with `?`, which is placed after the member name in 
 interface Configuration {
   // Required property.
   apiUrl: string;
-  
+
   // Optional property (using ?).
   timeout?: number;
-  retries?: number;
-  debugMode?: boolean;
-  
+
   // Optional method.
   logError?: (error: Error) => void;
-  validateResponse?: (response: HttpResponse) => boolean;
 }
 
-interface HttpResponse {
-  status: number;
-  body: string;
-}
-
+// Provide only required members.
 let config1: Configuration = {
   apiUrl: 'EXAMPLE_API_URL'
 };
 
+// Provide optional members as needed.
 let config2: Configuration = {
   apiUrl: 'EXAMPLE_API_URL',
-  timeout: 5000,
-  retries: 3,
-  debugMode: true
+  timeout: 5000
 };
 
-// Use the optional member.
-if (config2.timeout) {
+// Check whether an optional member exists before using it.
+if (config2.timeout !== undefined) {
   console.info(`Timeout: ${config2.timeout}ms`);
 }
 
@@ -672,89 +417,9 @@ if (config2.logError) {
 }
 ```
 
-### Declaring Optional Properties and Methods
-
-Optional properties (`?`) and methods indicate that the members may not exist, so check them before access.
-
-<!-- @[optional_members_implementation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
-
-``` TypeScript
-interface Service {
-  // Required method
-  initialize(): void;
-  shutdown(): void;
-  
-  // Optional method
-  preInitialize?(): void;
-  postShutdown?(): void;
-  
-  // Required property
-  name: string;
-  
-  // Optional property.
-  version?: string;
-  description?: string;
-}
-
-class BasicService implements Service {
-  public name: string;
-  
-  constructor(name: string) {
-    this.name = name;
-  }
-  
-  public initialize(): void {
-    console.info(`${this.name} initialized`);
-  }
-  
-  public shutdown(): void {
-    console.info(`${this.name} shutdown`);
-  }
-  
-  // Optional methods do not need to be implemented.
-}
-
-class AdvancedService implements Service {
-  public name: string;
-  public version: string;
-  public description: string;
-  
-  constructor(name: string, version: string, description: string) {
-    this.name = name;
-    this.version = version;
-    this.description = description;
-  }
-  
-  public initialize(): void {
-    console.info(`${this.name} v${this.version} initialized`);
-  }
-  
-  public shutdown(): void {
-    console.info(`${this.name} shutdown`);
-  }
-  
-  public preInitialize(): void {
-    console.info(`${this.name} pre-initialization`);
-  }
-  
-  public postShutdown(): void {
-    console.info(`${this.name} post-shutdown cleanup`);
-  }
-}
-
-let basicService = new BasicService('BasicService');
-let advancedService = new AdvancedService('AdvancedService', '1.0', 'Advanced service with all features');
-
-basicService.initialize();
-advancedService.preInitialize();
-advancedService.initialize();
-advancedService.shutdown();
-advancedService.postShutdown();
-```
-
 ### Calling Notes for Optional Members
 
-Before calling an optional member, check whether it exists to avoid accessing undefined.
+Check whether an optional member exists before calling it to avoid accessing `undefined`.
 
 <!-- @[using_optional_members](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -793,7 +458,7 @@ function useOptionalInterface(obj: OptionalInterface): void {
 
 ### Alternative: Use Interface Extension to Implement Optional Members
 
-By having an extended interface inherit a base interface and add optional members, you can provide a flexible approach that allows different implementers to offer optional capabilities on demand.
+By extending a base interface and adding optional members, implementing classes can decide whether to provide optional capabilities as needed.
 
 <!-- @[extending_interface_with_optionals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -853,13 +518,9 @@ processObject(baseObj);
 processObject(extendedObj);
 ```
 
-## Interfaces with Generic Constraints
+## Generic Interfaces
 
-A generic interface introduces a type parameter through `<T>` and can use `extends` to constrain the type range, allowing a single interface to adapt to multiple data types.
-
-### Declaring a Generic Interface
-
-Declare a type parameter with `<T>` after the interface name to make the interface applicable to multiple types.
+Generic interfaces introduce type parameters with `<T>`, allowing one interface to accommodate multiple data types.
 
 <!-- @[generic_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -907,152 +568,18 @@ let numContainer = new NumberContainer(42);
 let strContainer = new StringContainer('Hello');
 
 console.info(`${numContainer.getValue().toString()}`); // 42
-console.info(`${strContainer.getValue()}`); // Hello
+console.info(`${strContainer.getValue()}`); // 'Hello'
 ```
 
-### Constraints on Generic Parameters
-
-By constraining a generic parameter with `<T extends SomeType>` to satisfy a specific interface, a generic interface can safely access the members of the constrained type.
-
-<!-- @[generic_constraint_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
-
-``` TypeScript
-interface Lengthwise {
-  length: number;
-}
-
-// Generic constraint: T must have the length property.
-interface LengthContainer<T extends Lengthwise> {
-  value: T;
-  getLength(): number;
-}
-
-class ArrayContainer<T extends Lengthwise> implements LengthContainer<T> {
-  public value: T;
-  
-  constructor(value: T) {
-    this.value = value;
-  }
-  
-  public getLength(): number {
-    return this.value.length;
-  }
-}
-
-let stringContainer = new ArrayContainer('Hello, ArkTS!');
-let arrayContainer = new ArrayContainer([1, 2, 3, 4, 5]);
-
-console.info(`${stringContainer.getLength()}`); // 13
-console.info(`${arrayContainer.getLength()}`);  // 5
-```
-
-### Implementing a Generic Interface
-
-A class implements a generic interface by specifying concrete type arguments (for example, `implements Repository<User>`) and providing concrete implementations for all methods in the interface.
-
-<!-- @[generic_repository_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
-
-``` TypeScript
-interface RepoRepository<T> {
-  findById(id: number): T | null;
-  findAll(): T[];
-  save(entity: T): void;
-  delete(id: number): void;
-}
-
-interface RepoUser {
-  id: number;
-  name: string;
-  email: string;
-}
-
-class UserRepository implements RepoRepository<RepoUser> {
-  private users: RepoUser[] = [];
-  
-  public findById(id: number): RepoUser | null {
-    return this.users.find((user: RepoUser): boolean => user.id === id) ?? null;
-  }
-  
-  public findAll(): RepoUser[] {
-    return this.users;
-  }
-  
-  public save(entity: RepoUser): void {
-    let existingUser: RepoUser | null = this.findById(entity.id);
-    if (existingUser !== null) {
-      // Update the existing user.
-      let index = this.users.indexOf(existingUser);
-      this.users[index] = entity;
-    } else {
-      // Add the new user.
-      this.users.push(entity);
-    }
-  }
-  
-  public delete(id: number): void {
-    this.users = this.users.filter((user: RepoUser): boolean => user.id !== id);
-  }
-}
-
-let userRepo = new UserRepository();
-
-userRepo.save({ id: 1, name: 'Alice', email: 'alice@example.com' });
-userRepo.save({ id: 2, name: 'Bob', email: 'bob@example.com' });
-
-console.info(`${userRepo.findAll().length}`); // 2
-console.info(`${userRepo.findById(1)?.name}`); // Alice
-
-userRepo.delete(1);
-console.info(`${userRepo.findAll().length}`); // 1
-```
-
-### When to Use Generic Interfaces
-
-Generic interfaces are commonly used in scenarios such as generic data structures (Collection), transformers (Mapper/Filter/Reducer), and callback contracts (Callback).
-
-<!-- @[generic_interface_use_cases](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
-
-``` TypeScript
-// Use case 1: Generic data structure
-interface Collection<T> {
-  add(item: T): void;
-  remove(item: T): void;
-  contains(item: T): boolean;
-  size(): number;
-}
-
-// Use case 2: Generic utility interface
-interface Mapper<T, U> {
-  map(input: T): U;
-}
-
-interface Filter<T> {
-  filter(predicate: (item: T) => boolean): T[];
-}
-
-interface Reducer<T, U> {
-  reduce(accumulator: (prev: U, current: T) => U, initial: U): U;
-}
-
-// Use case 3: Generic callback interface
-interface Callback<T> {
-  onSuccess(result: T): void;
-  onError(error: Error): void;
-}
-
-interface AsyncCallback<T> {
-  onSuccess(result: T): Promise<void>;
-  onError(error: Error): Promise<void>;
-}
-```
+For details about generics (type constraints, generic classes, generic functions, and more), see [Generics](arkts-language-guide-generics.md).
 
 ## Combining Interfaces with Classes
 
-A class implements an interface through `implements`. The interface defines the contract, and the class provides the implementation.
+A class implements an interface with `implements`: the interface defines the contract, and the class provides the implementation.
 
 ### Implementing a Single Interface
 
-A class uses the `implements` keyword to implement a single interface and must provide concrete implementations of all members of the interface.
+A class uses the `implements` keyword to implement a single interface and must provide concrete implementations of all required members.
 
 <!-- @[single_interface_implementation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -1079,7 +606,7 @@ circle.draw(); // Drawing a circle with radius 5
 
 ### Implementing Multiple Interfaces
 
-A class implements multiple interfaces separated by commas (for example, `implements A, B, C`) and must provide implementations for all members of the interfaces.
+A class can implement multiple interfaces separated by commas (for example, `implements A, B, C`) and must implement the required members of all interfaces.
 
 <!-- @[multiple_interface_implementation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -1127,7 +654,7 @@ document.load();
 
 ### Inheriting a Class and Implementing Interfaces
 
-A class can use `extends` to inherit from a parent class and `implements` to implement interfaces at the same time, reusing the parent class code while satisfying the interface contract.
+A class can use `extends` to inherit a parent class and `implements` to implement interfaces, reusing parent class code while satisfying interface contracts.
 
 <!-- @[class_inheritance_with_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -1183,8 +710,8 @@ class InterfaceUser extends BaseEntity implements Named, Active {
 }
 
 let interfaceUser = new InterfaceUser(1, 'Alice');
-console.info(`${interfaceUser.getInfo()}`);  // ID: 1, Created: ...
-console.info(`${interfaceUser.getName()}`);  // Alice
+console.info(`${interfaceUser.getInfo()}`);  // 'ID: 1, Created: ...'
+console.info(`${interfaceUser.getName()}`);  // 'Alice'
 interfaceUser.activate();
 interfaceUser.deactivate();
 ```
@@ -1286,13 +813,7 @@ An interface used as a function parameter and return value type constrains the s
 <!-- @[interface_function_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
 ``` TypeScript
-interface TypesUser {
-  id: number;
-  name: string;
-  email: string;
-}
-
-interface CreateUserRequest {
+interface UserRequest {
   name: string;
   email: string;
 }
@@ -1304,39 +825,23 @@ interface ApiResponse<T> {
 }
 
 // Use the interface as a parameter type.
-function createUser(request: CreateUserRequest): TypesUser {
-  return {
-    id: Math.floor(Math.random() * 1000),
-    name: request.name,
-    email: request.email
-  };
+function validateRequest(request: UserRequest): boolean {
+  return request.name.length > 0 && request.email.includes('@');
 }
 
 // Use the interface as a return value type.
-function getUser(id: number): ApiResponse<TypesUser> {
+function getUserName(id: number): ApiResponse<string> {
   if (id > 0) {
-    return {
-      success: true,
-      data: {
-        id: id,
-        name: 'Alice',
-        email: 'alice@example.com'
-      }
-    };
-  } else {
-    return {
-      success: false,
-      error: 'Invalid user ID'
-    };
+    return { success: true, data: 'Alice' };
   }
+  return { success: false, error: 'Invalid user ID' };
 }
 
-let newUser: TypesUser = createUser({ name: 'Bob', email: 'bob@example.com' });
-console.info(`${newUser}`);
+console.info(`${validateRequest({ name: 'Alice', email: 'alice@example.com' })}`); // true
 
-let response: ApiResponse<TypesUser> = getUser(1);
+let response: ApiResponse<string> = getUserName(1);
 if (response.success && response.data !== undefined) {
-    console.info(`${response.data.name}`);
+  console.info(`${response.data}`); // 'Alice'
 }
 ```
 
@@ -1397,9 +902,9 @@ let dog = new PolyDog('Buddy');
 let cat = new Cat('Whiskers');
 let cow = new Cow('Daisy');
 
-makeAnimalSpeak(dog); // Buddy barks: Woof! Woof!
-makeAnimalSpeak(cat); // Whiskers meows: Meow!
-makeAnimalSpeak(cow); // Daisy moos: Moo!
+makeAnimalSpeak(dog); // 'Buddy barks: Woof! Woof!'
+makeAnimalSpeak(cat); // 'Whiskers meows: Meow!'
+makeAnimalSpeak(cow); // 'Daisy moos: Moo!'
 
 // Use an array of interface types.
 let animals: PolyAnimal[] = [dog, cat, cow];
@@ -1411,7 +916,7 @@ animals.forEach(animal => {
 
 ### Converting an Interface Type to a Concrete Type
 
-A variable of an interface type can be converted back to a subtype using an `as` assertion after the concrete type is determined with `instanceof`, so that members specific to the implementing class can be accessed.
+For a variable of an interface type, use `instanceof` to determine its concrete type, then use an `as` assertion to convert it back to a subtype and access members specific to the implementing class.
 
 <!-- @[interface_type_casting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -1425,311 +930,43 @@ class CastingCar implements CastingVehicle {
   public brand: string;
   public model: string;
   public doors: number;
-  
+
   constructor(brand: string, model: string, doors: number) {
     this.brand = brand;
     this.model = model;
     this.doors = doors;
   }
-  
+
   public drive(): void {
     console.info(`Driving ${this.brand} ${this.model}`);
   }
 }
 
-class Motorcycle implements CastingVehicle {
-  public brand: string;
-  public model: string;
-  public type: string;
-  
-  constructor(brand: string, model: string, type: string) {
-    this.brand = brand;
-    this.model = model;
-    this.type = type;
-  }
-  
-  public ride(): void {
-    console.info(`Riding ${this.brand} ${this.model} (${this.type})`);
-  }
-}
-
 // Convert an interface type to a concrete type (type check required).
 function processVehicle(vehicle: CastingVehicle): void {
-  console.info(`${vehicle.brand} ${vehicle.model}`);
-  
-  // Use instanceof to check the type.
   if (vehicle instanceof CastingCar) {
-    let car = vehicle as CastingCar;
+    let car: CastingCar = vehicle as CastingCar;
     console.info(`Doors: ${car.doors}`);
     car.drive();
-  } else if (vehicle instanceof Motorcycle) {
-    let motorcycle = vehicle as Motorcycle;
-    console.info(`Type: ${motorcycle.type}`);
-    motorcycle.ride();
   }
 }
 
-let car: CastingCar = new CastingCar('Toyota', 'Camry', 4);
-let motorcycle: Motorcycle = new Motorcycle('Harley-Davidson', 'Street 750', 'Cruiser');
+let car: CastingVehicle = new CastingCar('Toyota', 'Camry', 4);
 
 processVehicle(car);
-processVehicle(motorcycle);
+// Doors: 4
+// Driving Toyota Camry
 ```
-
-## Excess Property Checks
-
-When an object literal is assigned to an interface type, ArkTS checks whether it contains properties that are not defined in the interface, which helps detect spelling errors.
-
-<!-- @[excess_property_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
-
-``` TypeScript
-interface SquareConfig {
-  color?: string;
-  width?: number;
-}
-
-interface EpSquareResult {
-  color: string;
-  area: number;
-}
-
-function createSquare(config: SquareConfig): EpSquareResult {
-  return {
-    color: config.color || 'red',
-    area: config.width ? config.width * config.width : 20
-  };
-}
-
-// Correct
-let epSquare1 = createSquare({ color: 'blue', width: 100 });
-```
-
-Passing `{ colour: 'red', width: 100 }` (with the misspelled `colour`) triggers a compilation error.
-
-**TypeScript comparison**
-
-<!-- @[ts_excess_property_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
-
-``` TypeScript
-// TypeScript comparison that demonstrates the compilation error of excess property checking.
-interface TsSquareConfig {
-  color?: string;
-  width?: number;
-}
-
-function tsCreateSquare(config: TsSquareConfig): { color: string; area: number } {
-  return {
-    color: config.color || 'red',
-    area: config.width ? config.width * config.width : 20
-  };
-}
-
-let tsEpSquare2 = tsCreateSquare({ colour: 'red', width: 100 });
-// Compilation error: 'colour' does not exist in type 'TsSquareConfig'
-```
-
-Common ways to bypass excess property checking include type assertion, adding an index signature, or assigning to an intermediate variable first. Most excess property errors are actual bugs and should be fixed first.
-
-## Interface Extension
-
-An interface inherits from other interfaces through `extends` to reuse and combine type definitions.
-
-### Interface Extension Based on interface Extension
-
-Use the `extends` keyword to let one interface inherit the members of another interface.
-
-<!-- @[ts_interface_declaration_merging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
-
-``` TypeScript
-// Original interface
-interface MergingWindow {
-  title: string;
-}
-
-// Extended interface (adds a new property)
-interface MergingWindow {
-  size: { width: number; height: number };
-}
-
-// Extended again
-interface MergingWindow {
-  isOpen: boolean;
-  open(): void;
-  close(): void;
-}
-
-let myWindow: MergingWindow = {
-  title: 'My MergingWindow',
-  size: { width: 800, height: 600 },
-  isOpen: false,
-  open: () => console.info(`Opening window`),
-  close: () => console.info(`Closing window`)
-};
-
-console.info(`${myWindow.title}`);
-console.info(`${myWindow.size.width}`);
-myWindow.open();
-```
-
-### Adding Default Method Implementations to Interfaces
-
-Provide default implementations for interface methods through abstract classes or the decorator pattern.
-
-<!-- @[interface_default_implementation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
-
-``` TypeScript
-interface ImplementationLogger {
-  log(message: string): void;
-  error(message: string): void;
-  warn(message: string): void;
-}
-
-// A helper class that provides a default implementation.
-class DefaultLogger implements ImplementationLogger {
-  public log(message: string): void {
-    console.info(`[LOG] ${message}`);
-  }
-  
-  public error(message: string): void {
-    console.error(`[ERROR] ${message}`);
-  }
-  
-  public warn(message: string): void {
-    console.info(`[WARN] ${message}`);
-  }
-}
-
-// A custom logger class can inherit the default implementation.
-class CustomLogger extends DefaultLogger implements ImplementationLogger {
-  private prefix: string;
-  
-  constructor(prefix: string) {
-    super();
-    this.prefix = prefix;
-  }
-  
-  // Override the default method.
-  public log(message: string): void {
-    console.info(`${this.prefix} [LOG] ${message}`);
-  }
-  
-  // Other methods use the default implementation.
-}
-
-let customLogger = new CustomLogger('[MyApp]');
-customLogger.log('Application started'); // [MyApp] [LOG] Application started
-customLogger.error('Something went wrong'); // [ERROR] Something went wrong
-```
-
-### When to Use Interface Extension
-
-Interface extension is used to combine types on demand, avoiding the definition of a single large interface.
-
-<!-- @[ts_extending_third_party_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
-
-``` TypeScript
-// Assume this is an interface defined by a third-party library.
-interface PartyThirdPartyConfig {
-  apiUrl: string;
-  apiKey: string;
-}
-
-// Extend the third-party interface with custom properties.
-interface PartyThirdPartyConfig {
-  customTimeout?: number;
-  customRetryCount?: number;
-}
-
-let config: PartyThirdPartyConfig = {
-  apiUrl: 'EXAMPLE_API_URL',
-  apiKey: 'secret-key',
-  customTimeout: 5000,
-  customRetryCount: 3
-};
-
-console.info(`${config.customTimeout}`); // 5000
-```
-
-Declaration merging can also be performed across modules, where different modules can add members to the same interface separately.
-
-<!-- @[ts_module_interface_merging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
-
-``` TypeScript
-// Interface defined by the base module.
-interface MergingBaseEntity {
-  id: number;
-}
-
-// Interface extended by the user module.
-interface MergingBaseEntity {
-  userId?: number;
-  userName?: string;
-}
-
-// Interface extended by the product module.
-interface MergingBaseEntity {
-  productId?: number;
-  productName?: string;
-}
-
-// An entity can contain properties from different modules.
-let entity: MergingBaseEntity = {
-  id: 100,
-  userId: 1,
-  userName: 'Alice',
-  productId: 50,
-  productName: 'Laptop'
-};
-
-console.info(`${entity.userName}`);
-console.info(`${entity.productName}`);
-```
-
-## Differences Between type and interface
-
-Both `type` and `interface` can describe object types, but they differ in extensibility and declaration merging. ArkTS does not support interface declaration merging (`arkts-no-decl-merging`) or intersection types (`arkts-no-intersection-types`); use interface `extends` instead.
-
-**TypeScript comparison**
-
-<!-- @[ts_type_vs_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
-
-``` TypeScript
-// type can describe union types and tuples
-type TvID = number | string;
-type TvPair = [string, number];
-
-// interface supports declaration merging (not supported in ArkTS, arkts-no-decl-merging)
-interface TvWindow {
-  title: string;
-}
-interface TvWindow {
-  ts: string;
-}
-
-// interface supports extension.
-interface TvAnimal {
-  name: string;
-}
-interface TvDog extends TvAnimal {
-  breed: string;
-}
-
-// type is extended with an intersection type (not supported in ArkTS, arkts-no-intersection-types).
-type TvAnimal2 = { name: string };
-type TvDog2 = TvAnimal2 & { breed: string };
-```
-
-Recommendation: Prefer `interface` to describe object structures, and use `type` when you need union types, tuples, or primitive type aliases.
 
 ## Notes on implements
 
 The `implements` clause checks whether a class satisfies an interface, but it has several important limitations.
 
-**`implements` does not change the class type** — it only performs the check and does not propagate the interface's type information into the class body.
+**`implements` does not change the class type.** It only performs checks and does not pass interface type information into the class body. Member types in the class are not automatically inferred from the interface and must be explicitly annotated.
 
-**`implements` does not create optional properties** — implementing an interface that contains optional properties does not create those properties on the instance.
+**`implements` does not create optional properties.** Optional interface properties can be omitted. If the implementing class does not declare a property, it does not exist on instances, and accessing it through an instance causes a compilation error. If the property is needed, declare it explicitly in the class.
 
-**`implements` checks only the instance side** — static members are not subject to the `implements` check.
+**`implements` checks only the instance side.** It only checks whether instance members satisfy the interface. Static members (`static`) are not checked, and interfaces cannot declare static members.
 
 <!-- @[implements_cautions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -1739,7 +976,8 @@ interface ImplCheckable {
 }
 
 class ImplNameChecker implements ImplCheckable {
-  // Parameter types are not inferred from the interface automatically; they must be annotated explicitly.
+  // implements does not pass interface type information into the class body.
+  // Explicitly annotate parameter types rather than relying on inference from the interface.
   check(s: string): boolean {
     return s.toLowerCase() === 'ok';
   }
@@ -1752,32 +990,34 @@ interface ImplConfigA {
 
 class ImplC implements ImplConfigA {
   public x: number = 0;
-  // y does not have to be implemented, but the y property does not exist on the instance.
+  // y is optional and can be omitted. If omitted, instances do not have a y property.
 }
 
 let implC: ImplC = new ImplC();
-console.info(`${implC.x.toString()}`);  // 0
+console.info(`${implC.x.toString()}`); // 0
+
+// console.info(`${implC.y}`); // Compilation error: property y does not exist on ImplC.
 ```
 
-`implC.y` does not exist on the instance, and accessing it triggers a compilation error.
-
-**TypeScript comparison**
-
-<!-- @[ts_implements_optional_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
+<!-- @[implements_static_members](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
 ``` TypeScript
-// TypeScript comparison, demonstrating that implements does not create optional properties.
-interface TsImplConfigA {
-  x: number;
-  y?: number;
+interface ImplLoggable {
+  log(message: string): void;
 }
 
-class TsImplC implements TsImplConfigA {
-  public x: number = 0;
+class ImplStaticCounter implements ImplLoggable {
+  // Static members are not checked by implements.
+  private static count: number = 0;
+
+  log(message: string): void {
+    ImplStaticCounter.count++;
+    console.info(`[${ImplStaticCounter.count}] ${message}`);
+  }
 }
 
-let tsImplC: TsImplC = new TsImplC();
-tsImplC.y = 10;  // Compilation error: Property 'y' does not exist on type 'TsImplC'
+let staticCounter = new ImplStaticCounter();
+staticCounter.log('hello'); // '[1] hello'
 ```
 
 ## Comparison Between Abstract Classes and Interfaces
@@ -1826,12 +1066,12 @@ class AcBird extends AcAnimal implements AcCanFly, AcCanSwim {
 }
 
 let acBird: AcBird = new AcBird('Sparrow');
-acBird.makeSound(); // Sparrow chirps
-acBird.fly();       // Sparrow flies
-acBird.swim();      // Sparrow swims
+acBird.makeSound(); // 'Sparrow chirps'
+acBird.fly();       // 'Sparrow flies'
+acBird.swim();      // 'Sparrow swims'
 ```
 
-- An interface cannot contain static code blocks or static methods, whereas an abstract class can contain static code blocks and static methods.
+- An interface cannot contain static blocks or static methods, whereas an abstract class can contain at most one static block and can contain static methods.
 
 <!-- @[abstract_vs_interface_static](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
@@ -1844,8 +1084,6 @@ abstract class AviAbstractClass {
 
 - An abstract class can have method implementations, but an interface has no method implementations and is completely abstract.
 
-An abstract class can have method implementations, while an interface cannot.
-
 <!-- @[abstract_vs_interface_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
 ``` TypeScript
@@ -1856,8 +1094,6 @@ abstract class AimAbstractClass {
 
 - An abstract class can have a constructor, while an interface cannot.
 
-An abstract class can have a constructor, while an interface cannot.
-
 <!-- @[abstract_vs_interface_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
 
 ``` TypeScript
@@ -1865,102 +1101,3 @@ abstract class AvicAbstractClass {
   constructor() {}
 }
 ```
-
-## Intersection Type
-
-TypeScript supports intersection types (`&`), which combine multiple types into one so that the new type contains all members. ArkTS does not use intersection types; instead, it recommends using interface multiple inheritance (`extends`) as a replacement.
-
-### Interface Extension vs. Intersection Type
-
-In TypeScript, both interface extension and intersection types can combine multiple types, but they behave differently:
-
-- **Interface extension (`extends`)**: A compilation error is reported when properties with the same name are incompatible.
-- **Intersection type (`&`)**: When properties with the same name are incompatible, they are merged into `never`.
-
-<!-- @[ts_intersection_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
-
-``` TypeScript
-// TypeScript intersection type syntax, not supported in ArkTS.
-interface TsColorful {
-  color: string;
-}
-
-interface TsCircle {
-  radius: number;
-}
-
-type TsColorfulCircle = TsColorful & TsCircle;
-
-let tsCc: TsColorfulCircle = { color: 'red', radius: 10 };
-console.info(`${tsCc.color}, ${tsCc.radius}`); // red, 10
-```
-
-ArkTS alternative: interface multiple inheritance.
-
-<!-- @[interface_extends_multiple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
-
-``` TypeScript
-interface IfColorful {
-  color: string;
-}
-
-interface IfCircle {
-  radius: number;
-}
-
-interface IfColorfulCircle extends IfColorful, IfCircle {
-}
-
-let ifCc: IfColorfulCircle = { color: 'red', radius: 10 };
-console.info(`${ifCc.color}, ${ifCc.radius}`); // red, 10
-```
-
-> **NOTE**
->
-> In ArkTS, prefer interface multiple inheritance over intersection types. When you need to combine multiple interface constraints, declare a new interface that inherits from multiple interfaces.
-
-## Declaration Merging
-
-TypeScript supports merging declarations with the same name, combining multiple independent declarations into a single definition. ArkTS supports merging namespaces with classes and enums, but does not support interface declaration merging or merging namespaces with functions.
-
-### Interface Merging
-
-**TypeScript comparison**
-
-<!-- @[ts_declaration_merging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/Interfaces.ts) -->
-
-``` TypeScript
-// TypeScript syntax. ArkTS does not support interface declaration merging.
-interface TsWindow {
-  title: string;
-}
-
-interface TsWindow {
-  count: number;
-}
-
-// After merging, TsWindow has both title and count.
-let tsWin: TsWindow = { title: 'Main', count: 3 };
-console.info(`${tsWin.title}, ${tsWin.count}`); // Main, 3
-```
-
-ArkTS alternative: add members directly to the original interface definition, or use interface inheritance to extend it.
-
-<!-- @[interface_extends_base](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/Interfaces.ets) -->
-
-``` TypeScript
-interface IfBaseWindow {
-  title: string;
-}
-
-interface IfExtendedWindow extends IfBaseWindow {
-  count: number;
-}
-
-let ifWin: IfExtendedWindow = { title: 'Main', count: 3 };
-console.info(`${ifWin.title}, ${ifWin.count}`); // Main, 3
-```
-
-### Namespace Merging
-
-ArkTS supports merging namespaces with classes and enums to extend static members. Merging namespaces with functions is not supported.

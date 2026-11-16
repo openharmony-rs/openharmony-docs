@@ -17,7 +17,7 @@ An app model is the abstraction of capabilities required by an app. It provides 
 
 ### Process Model
 
-The process model of an MDM app inherits from the [process model](../application-models/process-model-stage.md#process-model) of a regular app. Building on the regular app model, an MDM app includes an additional independent **EnterpriseAdmin** process. When the **EnterpriseAdminExtensionAbility** component of the MDM app is activated, the **EnterpriseAdmin** process is created. As the background process of the device administrator app, the **EnterpriseAdmin** process receives callbacks for events such as MDM app activation and deactivation. Its lifecycle is independent of the main process and is managed by the system. The way the **EnterpriseAdmin** process lifecycle is [managed](#enterpriseadminextensionability-capability-differences-after-activation) varies based on how the component is activated.
+The process model of an MDM app inherits from the [process model](../application-models/process-model-overview.md) of a regular app. Building on the regular app model, an MDM app includes an additional independent **EnterpriseAdmin** process. When the **EnterpriseAdminExtensionAbility** component of the MDM app is activated, the **EnterpriseAdmin** process is created. As the background process of the device administrator app, the **EnterpriseAdmin** process receives callbacks for events such as MDM app activation and deactivation. Its lifecycle is independent of the main process and is managed by the system. The way the **EnterpriseAdmin** process lifecycle is [managed](#enterpriseadminextensionability-capability-differences-after-activation) varies based on how the component is activated.
 
 **Figure 1** MDM app process model
 
@@ -73,7 +73,7 @@ The **EnterpriseAdminExtensionAbility** component of an MDM app can take effect 
 
 ### API Permission Verification Mechanism
 
-MDM management APIs verify access permissions through [ACL authorization](../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism), and also verify the activation status and activation type of the Admin component. An MDM app must meet all three conditions when calling an MDM management API. Otherwise, the API returns error code [9200001](../reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md#9200001-deviceadmin-not-enabled), [201](../reference/errorcode-universal.md#201-permission-denied), or [9200002](../reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md#9200002-permission-denied).
+MDM management APIs verify access permissions through [ACL authorization](../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism), and also verify the activation status and activation type of the Admin component. An MDM app must meet all three conditions when calling an MDM management API. Otherwise, the API returns error code [9200001](../reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md#9200001-deviceadmin-not-enabled), [201](../reference/errorcode-universal.md#201-api-permission-verification-failed), or [9200002](../reference/apis-mdm-kit/errorcode-enterpriseDeviceManager.md#9200002-permission-denied).
 
 **Figure 6** EDM verification logic
 

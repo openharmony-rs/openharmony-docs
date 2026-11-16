@@ -5,12 +5,15 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=116417cbc874a92ebde45c6df3802d742dab8a24 translatedAt=2026-11-06T12:11:10.410Z pushedAt=2026-11-09T12:40:57.191Z nl=1 -->
 
 Basic Services Kit provides basic capabilities for application developers, from pasteboard read/write, file upload/download, file compression, file printing, inter-process/inter-thread communication, to device and application account management.
 
 ## When to Use
 
-Basic Services Kit is typically used in the following scenarios:
+Basic Services Kit provides developers with a variety of basic capabilities to meet development requirements in different scenarios.
+
+Typical usage scenarios:
 
 - Pasteboard read/write
   - Intra-device copy and paste: For example, copy a piece of text in application A and paste it to another application.
@@ -30,10 +33,10 @@ Depending on different use cases, this kit provides the following capabilities:
 
 - Data file processing
   - [Pasteboard](../reference/apis-basic-services-kit/js-apis-pasteboard.md): provides the copy and paste support. You can use the provided APIs to operate pasteboard content of the plain text, HTML, URI, pixel map, and other types.
-  - [Compression](../reference/apis-basic-services-kit/js-apis-zlib.md): provides APIs for file compression and decompression.
+  - [@ohos.zlib (Zip)](../reference/apis-basic-services-kit/js-apis-zlib.md): provides APIs for file compression and decompression.
   - [Print](../reference/apis-basic-services-kit/js-apis-print.md): provides APIs for basic print operations, for example, transferring files for printing and setting printing parameters.
   - [Upload and download](../reference/apis-basic-services-kit/js-apis-request.md): provides basic upload, download, and background transmission agent capabilities.
-  - [Word selection](../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md): provides APIs for listening for word selection events and managing word selection panels.
+  - [@ohos.selectionInput.selectionManager (Text selection management)](../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md): provides APIs for listening to text selection information and managing the text selection window.
 
 - Inter-process/Inter-thread communication
   - [Common event](../reference/apis-basic-services-kit/js-apis-commonEventManager.md): provides inter-process communication capabilities, including the capabilities to publish, subscribe to, and unsubscribe from common events. For details about the development guide, see [Introduction to Common Events](common-event/common-event-overview.md).
@@ -42,16 +45,16 @@ Depending on different use cases, this kit provides the following capabilities:
 - Device management
   - [Device information](../reference/apis-basic-services-kit/js-apis-device-info.md): provides APIs for querying product information, such as the device type, device brand, product series, and product version.
   - [Data item settings](../reference/apis-basic-services-kit/js-apis-settings.md): provides APIs for setting data items, such as airplane mode and explore by touch.
-  - [Battery information](../reference/apis-basic-services-kit/js-apis-battery-info.md): provides APIs for querying the battery information.
+  - [@ohos.batteryInfo (Battery information)](../reference/apis-basic-services-kit/js-apis-battery-info.md): provides APIs for querying battery information.
   - [Power management](../reference/apis-basic-services-kit/js-apis-power.md): provides system power management capabilities, such as querying the screen status.
-  - [Running lock](../reference/apis-basic-services-kit/js-apis-runninglock.md): provides APIs for creating, querying, holding, and releasing running locks.
+  - [@ohos.runningLock (Running lock)](../reference/apis-basic-services-kit/js-apis-runninglock.md): provides APIs for creating, querying, holding, and releasing running locks.
   - [Thermal management](../reference/apis-basic-services-kit/js-apis-thermal.md): provides thermal management capabilities, such as thermal level query.
   - [USB management](../reference/apis-basic-services-kit/js-apis-usbManager.md): provides USB device management capabilities, including USB device list query, bulk data transfer, control transfer, and permission control. For details about the development guide, see [USB Service Development Overview](usb/usbManager/usbHost-overview.md).
 
-- Others
-  - [Application account management](../reference/apis-basic-services-kit/js-apis-appAccount.md): provides application account management and data management capabilities. For details, see [Managing Application Accounts](account/manage-application-account.md).
+- Others:
+  - [Application account management](../reference/apis-basic-services-kit/js-apis-appAccount.md): provides application account lifecycle management and data management capabilities. For details, see [Managing Application Accounts](account/manage-application-account.md).
   - [Public callback information](../reference/apis-basic-services-kit/js-apis-base.md): defines the public callback types of ArkTS APIs, including the common and error callbacks.
-  - [Time and time zone](../reference/apis-basic-services-kit/js-apis-date-time.md): provides APIs for obtaining the system time and time zone.
+  - [@ohos.systemDateTime (System time and time zone)](../reference/apis-basic-services-kit/js-apis-date-time.md): provides APIs for obtaining the system time and system time zone.
 
 ## Relationship with Other Kits
 
@@ -60,3 +63,5 @@ Depending on different use cases, this kit provides the following capabilities:
 - [Ability Kit](../application-models/abilitykit-overview.md): Common events in this kit are required for inter-process communication in Ability Kit.
 
 - [Core File Kit](../file-management/core-file-kit-intro.md): Core File Kit provides file access and management capabilities. You can use Core File Kit for application file access, file sharing, and data backup and restore, and use this kit to implement file compression, file upload and download, and file printing.
+
+<!--RP4--><!--RP4End-->

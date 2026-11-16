@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=f30b86838b2e64fd829c8209051eb8bfc3268712 translatedAt=2026-11-03T06:30:08.158Z pushedAt=2026-11-03T12:08:25.638Z nl=1 -->
 
 ## Overview
 
@@ -15,10 +16,7 @@ Provides APIs for constructing, using, and destroying a parameter set.
 
 **Library**: libhuks_ndk.z.so
 
-**System capability:**
-
-- API version 20+: SystemCapability.Security.Huks.Core
-- API version 9-19: SystemCapability.Security.Huks
+**System capability:** SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -153,7 +151,7 @@ Copies a parameter set (deep copy).
 | Name| Description|
 | -- | -- |
 | [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *fromParamSet | Pointer to the parameter set to copy.|
-| uint32_t fromParamSetSize | Size of the memory occupied by the copied parameter set.|
+| uint32_t fromParamSetSize | Size of the memory occupied by the parameter set to be copied, in bytes. |
 | [struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) **paramSet | Double pointer to the new parameter set generated.|
 
 **Returns**
@@ -254,7 +252,7 @@ Checks whether a parameter set is of the valid size.
 | Name| Description|
 | -- | -- |
 | [const struct OH_Huks_ParamSet](capi-hukstypeapi-oh-huks-paramset.md) *paramSet | Pointer to the parameter set to check.|
-| uint32_t size | Memory size occupied by the parameter set.|
+| uint32_t size | Memory size occupied by the parameter set, in bytes. |
 
 **Returns**
 
@@ -304,3 +302,5 @@ Frees a key alias set.
 | Name| Description|
 | -- | -- |
 | [struct OH_Huks_KeyAliasSet](capi-hukstypeapi-oh-huks-keyaliasset.md) *keyAliasSet | Pointer to the key alias set to be destroyed.|
+
+

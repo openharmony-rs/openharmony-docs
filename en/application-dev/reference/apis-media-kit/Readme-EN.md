@@ -5,7 +5,7 @@
 <!--Designer: @HmQQQ; @stupig001-->
 <!--Tester: @xchaosioda; @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=3a82aaa292db02bd8ef5ce66d3801eb8d940f084 translatedAt=2026-09-16T04:33:04.871Z pushedAt=2026-09-20T10:19:47.015Z -->
+<!-- md-trans-meta sourceCommit=698cf01903f4278cd4a8d0c7bda3422598f67093 translatedAt=2026-11-09T06:32:06.274Z pushedAt=2026-11-09T08:47:41.287Z nl=1 -->
 
 - ArkTS APIs<!--media-arkts-->
   - @ohos.multimedia.media (Media Service)<!--js-apis-media-->
@@ -112,6 +112,7 @@
     - [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)
     - [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)
     - [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)
+    - [OH_LowPowerAVSink_Capability](capi-avsinkbase-oh-lowpoweravsinkcapability.md)
     - [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)
     - [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md)
     - [VideoProcessing_ColorSpaceInfo](capi-videoprocessing-videoprocessing-colorspaceinfo.md)
@@ -131,4 +132,3 @@
     - [OH_AVPlayerVideoOutput](capi-avplayer-oh-avplayervideooutput.md)
 - Error Codes<!--media-arkts-errcode-->
   - [Media Error Codes](errorcode-media.md)
-<!--no_check-->

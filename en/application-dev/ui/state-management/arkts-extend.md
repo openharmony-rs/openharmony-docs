@@ -5,17 +5,21 @@
 <!--Designer: @BlYynNe-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ed949516539584a147ef0ba761440b9d93794a55 translatedAt=2026-09-21T10:56:23.318Z pushedAt=2026-09-23T07:47:00.623Z -->
+<!-- md-trans-meta sourceCommit=c43f545993abb1b7c978ab69ae099e2e7ecdd06c translatedAt=2026-11-03T06:31:37.469Z pushedAt=2026-11-03T07:53:55.247Z nl=1 -->
 
 In the preceding example, you can use [\@Styles](arkts-style.md) to reuse styles. Building on \@Styles, ArkUI provides [\@Extend](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-extend.md#extend) for extending component styles.
 
-> **NOTE**
+It also supports declaring the effective system version range of the extended style through the version condition parameter (VersionCondition). For details, see [Version Condition Parameter (VersionCondition)](#version-condition-parameter-versioncondition).
+
+> **Note:**
 >
-> The APIs of this module are supported since API version 9.
+> Supported since API version 9.
 >
-> This decorator can be used in ArkTS widgets since API version 9.
+> Since API version 9, this decorator is supported in ArkTS cards.
 >
-> This decorator can be used in atomic services since API version 11.
+> Since API version 11, this decorator is supported in atomic services.
+>
+> Since API version 26.1.0, this decorator supports passing an optional version condition parameter (VersionCondition) as the second parameter.
 
 ## How to Use
 
@@ -25,6 +29,7 @@ In the preceding example, you can use [\@Styles](arkts-style.md) to reuse styles
 
 ```ts
 @Extend(UIComponentName) function functionName() { ... }
+@Extend(UIComponentName, VersionCondition) function functionName() { ... }
 ```
 
 
@@ -32,7 +37,7 @@ In the preceding example, you can use [\@Styles](arkts-style.md) to reuse styles
 
 - Unlike \@Styles, \@Extend can encapsulate private attributes, private events, and globally defined methods of specific components.
   <!-- @[Extend_Global_Function_Extension_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/GlobalFunctionExtension.ets) -->
-
+  
   ``` TypeScript
   // @Extend(Text) supports the private attribute fontColor of the Text component.
   @Extend(Text)
@@ -65,7 +70,7 @@ In the preceding example, you can use [\@Styles](arkts-style.md) to reuse styles
 
 - Different from \@Styles decorated methods, the \@Extend decorated methods support passing parameters. The calling complies with the TS method calling convention.
   <!-- @[Extend_private_property_fancy_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendParameterUsage.ets) -->
-
+  
   ``` TypeScript
   // xxx.ets
   @Extend(Text)
@@ -90,7 +95,7 @@ In the preceding example, you can use [\@Styles](arkts-style.md) to reuse styles
 
 - Parameters passed into \@Extend decorated methods can be functions serving as event handlers.
   <!-- @[Extend_Function_handle_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendFunctionHandle.ets) --> 
-
+  
   ``` TypeScript
   // Methods decorated with @Extend support function parameters.
   @Extend(Text)
@@ -121,7 +126,7 @@ In the preceding example, you can use [\@Styles](arkts-style.md) to reuse styles
 
 - Parameters passed into \@Extend decorated methods can also be [state variables](arkts-state-management-overview.md). Changes to these state variables cause the UI to re-render.
   <!-- @[Extend_Refresh_rendering_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUIStateVariable.ets) --> 
-
+  
   ``` TypeScript
   // Use a state variable as the @Extend parameter so that state changes drive the Text style refresh.
   @Extend(Text)
@@ -147,8 +152,26 @@ In the preceding example, you can use [\@Styles](arkts-style.md) to reuse styles
     }
   }
   ```
-
+  
   ![](figures/arkts-extend-1.gif)
+
+### Version Condition Parameter (VersionCondition)
+
+\@Extend The decorator supports passing an optional version condition parameter [VersionCondition](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-styles.md#versioncondition) as the second parameter, which is used to declare the effective system version range of the extended style. When a version condition is carried, the property statements of the extended style take effect only when the device system version falls within the declared range.
+
+``` TypeScript
+// This extended style takes effect only when the API version is greater than or equal to 26.0.0.
+@Extend(Text, { minApiVersion: '26.0.0' })
+function fancy() {
+  .fontColor(Color.Red)
+}
+```
+
+The parameter description, value forms, and value range of the version condition are consistent with \@Styles. For details, see [Version Condition Parameter (VersionCondition)](arkts-style.md#version-condition-parameter-versioncondition).
+
+> **Note:**
+>
+> When an extended style carrying a version condition is invoked on a system version outside the effective range, the style properties do not take effect, but the function parameters are still passed normally.
 
 ## Constraints
 
@@ -159,9 +182,9 @@ In the preceding example, you can use [\@Styles](arkts-style.md) to reuse styles
   > @Extend can be used only in the current file and cannot be exported.
   >
   > To implement the export feature, you are advised to use [AttributeModifier](../arkts-user-defined-extension-attributeModifier.md).
-
+  
   **Incorrect Usage**
-
+  
   ```ts
   @Entry
   @Component
@@ -170,7 +193,7 @@ In the preceding example, you can use [\@Styles](arkts-style.md) to reuse styles
     @Extend(Text) function fancy (fontSize: number) {
       .fontSize(fontSize)
     }
-
+  
     build() {
       Row({ space: 10 }) {
         Text('Fancy')
@@ -179,17 +202,17 @@ In the preceding example, you can use [\@Styles](arkts-style.md) to reuse styles
     }
   }
   ```
-
+  
   **Correct Usage**
   <!-- @[Extend_Positive_Example_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendPositiveExample.ets) --> 
-
+  
   ``` TypeScript
   // Correct approach
   @Extend(Text)
   function fancy(fontSize: number) {
     .fontSize(fontSize)
   }
-
+  
   @Entry
   @Component
   struct FancyUse {
@@ -204,7 +227,7 @@ In the preceding example, you can use [\@Styles](arkts-style.md) to reuse styles
 
 - Functions decorated with @Extend can be used only in the current file and cannot be exported or called in other files.
 
-**Incorrect Usage**
+  **Incorrect Usage**
 
   ``` TypeScript
     // Incorrect usage: Do not use an @Extend function defined in another file (for example, pageOne) in pageTwo.
@@ -359,3 +382,54 @@ struct FancyUse {
   }
 }
 ```
+
+When an extended style needs to take effect only within a specific system version range (for example, a new style is enabled only for higher system versions, or differentiated adaptation is required for lower system versions), the effective range can be declared through the version condition parameter, eliminating the need to write version checks manually at each call site.
+
+After being invoked in a component, the style takes effect normally when the device system version falls within the effective range, and produces no effect when it falls outside the range:
+<!-- @[Extend_Version_Condition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendVersionCondition.ets) -->
+
+``` TypeScript
+const lowVersionExtendText: string = 'Lower version performance';
+const hightVersionExtendText: string = 'Higher version performance';
+
+// Low-version adaptation style: takes effect only when the system version is greater than or equal to API version 12 and less than API version 26.0.0.
+@Extend(Text, { minApiVersion: 12, maxApiVersion: '26.0.0' })
+function lowVersionText(color: Color) {
+  .fontColor(color)
+  .fontSize(16)
+}
+
+// High-version style: takes effect only when the system version is greater than or equal to API version 26.0.0.
+@Extend(Text, { minApiVersion: '26.0.0' })
+function highVersionText(color: Color) {
+  .fontColor(color)
+  .fontSize(20)
+  .fontWeight(700)
+}
+
+@Entry
+@Component
+struct VersionConditionUseDemo {
+  build() {
+    Column({ space: 30 }) {
+      Text(lowVersionExtendText)
+        .lowVersionText(Color.Gray)
+      Text(hightVersionExtendText)
+        .highVersionText(Color.Blue)
+    }
+    .width('90%')
+    .height(80)
+    .margin(20)
+    .borderWidth(1)
+  }
+}
+```
+
+**On devices with a system version earlier than API version 26.0.0, the behavior is as follows:**
+
+![](figures/arkts-extend-versionCondition-low.png)
+
+**On devices with a system version equal to or later than API version 26.0.0, the behavior is as follows:**
+
+![](figures/arkts-extend-versionCondition-high.png)
+<!--no_check-->

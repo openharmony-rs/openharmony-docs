@@ -6,12 +6,13 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=b3d483b49d1071ea35ea7373cd3db3058b2f8c7a translatedAt=2026-11-03T04:09:55.269Z pushedAt=2026-11-03T10:41:27.377Z nl=1 -->
 
 The **data** module provides basic mobile data management functions. With the APIs provided by this module, you can obtain the default slot of the SIM card used for mobile data, obtain the cellular data flow type and connection status, and check whether cellular data and roaming are enabled.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version. 
 
 ## Modules to Import
 
@@ -104,7 +105,9 @@ getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 
 Obtains the data flow type of the cellular network (corresponding to the uplink and downlink arrows next to the signal bar). This API uses an asynchronous callback to return the result.
 
-**Required permission**: ohos.permission.GET_NETWORK_INFO
+**Required permissions**:
+- Before API version 22: N/A
+- API version 22+: ohos.permission.GET_NETWORK_INFO
 
 **System capability**: SystemCapability.Telephony.CellularData
 
@@ -120,7 +123,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
+| 201      | Permission denied.<br>Applicable versions: 22+                           |
 
 **Example**
 
@@ -159,7 +162,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
+| 201      | Permission denied.<br>Applicable versions: 22+                          |
 
 **Example**
 
@@ -180,7 +183,9 @@ getCellularDataState(callback: AsyncCallback\<DataConnectState\>): void
 
 Obtains the cellular data connection status. This API uses an asynchronous callback to return the result.
 
-**Required permission**: ohos.permission.GET_NETWORK_INFO
+**Required permissions**:
+- Before API version 22: N/A
+- API version 22+: ohos.permission.GET_NETWORK_INFO
 
 **System capability**: SystemCapability.Telephony.CellularData
 
@@ -196,7 +201,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
+| 201      | Permission denied.<br>Applicable versions: 22+                          |
 
 **Example**
 
@@ -219,7 +224,9 @@ getCellularDataState(): Promise\<DataConnectState\>
 
 Obtains the cellular data connection status. This API uses a promise to return the result.
 
-**Required permission**: ohos.permission.GET_NETWORK_INFO
+**Required permissions**:
+- Before API version 22: N/A
+- API version 22+: ohos.permission.GET_NETWORK_INFO
 
 **System capability**: SystemCapability.Telephony.CellularData
 
@@ -235,7 +242,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
+| 201      | Permission denied. <br>Applicable versions: 22+                          |
 
 **Example**
 
@@ -277,7 +284,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                               |
+| 8300999  | Unknown error.                               |
 
 **Example**
 
@@ -319,7 +326,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                           |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                               |
+| 8300999  | Unknown error.                              |
 
 **Example**
 
@@ -359,7 +366,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.                           |
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                          |
+| 8300999  | Unknown error code.                          |
 
 **Example**
 
@@ -404,7 +411,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                               |
+| 8300999  | Unknown error.                               |
 
 **Example**
 
@@ -454,7 +461,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Internal error.                               |
+| 8300999  | Unknown error.                               |
 
 **Example**
 
@@ -498,11 +505,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied.                                           |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 8300001  | Invalid parameter value.                                     |
 | 8300002  | Operation failed. Cannot connect to service.                 |
 | 8300003  | System internal error.                                       |
-| 8300999  | Internal error.                                          |
+| 8300999  | Unknown error code.                                          |
 
 **Example**
 
@@ -584,7 +591,7 @@ queryApnIds(apnInfo: ApnInfo): Promise\<Array\<number\>\>
 
 Obtains the APN ID corresponding to the specified **ApnInfo**. This API returns the result asynchronously.
 
-**Required permissions**: ohos.permission.MANAGE_APN_SETTING (Restricted permission used only to connect to the mobile data private network for office tasks. For details, see [Restricted Permissions](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting).)
+**Required permissions**: ohos.permission.MANAGE_APN_SETTING (This permission is a restricted open permission. You can request this permission only when you need to connect to a mobile data private network for work. For details about the permission, see [Permission Definition](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting))
 
 **System capability**: SystemCapability.Telephony.CellularData
 
@@ -638,9 +645,9 @@ Sets the APN corresponding to the specified **apnId** as the preferred APN. This
 
 > **NOTE**
 >
-> If the input APN ID is invalid, the default preferred APN configured by the carrier is used.
+> If the passed **apnId** is invalid, the system switches back to the preferred APN configured by the carrier by default.
 
-**Required permissions**: ohos.permission.MANAGE_APN_SETTING (Restricted permission used only to connect to the mobile data private network for office tasks. For details, see [Restricted Permissions](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting).)
+**Required permissions**: ohos.permission.MANAGE_APN_SETTING (This permission is a restricted open permission. You can apply for this permission only when you need to connect to a mobile data private network for work. For details about the permission, see [Permission Definition](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting))
 
 **System capability**: SystemCapability.Telephony.CellularData
 
@@ -715,9 +722,59 @@ data.getActiveApnName().then((apn: string) => {
 });
 ```
 
+## data.showSystemApnSettings
+
+showSystemApnSettings(context: Context): Promise\<void>
+
+Opens the APN configuration page corresponding to the current default mobile data SIM card. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+>- This API only supports viewing and selecting the general APNs that have been added. It does not support creating or modifying APNs.
+>
+>- If no SIM card is inserted or the device does not support APN configuration, the configuration page cannot be opened.
+
+**Since:** 26.0.0
+
+**System capability:** SystemCapability.Telephony.CellularData
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name | Type   | Mandatory | Description           |
+| ------ | ------ | ---- | -------------- |
+| context    | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes   | Application context of the Stage model (only **UIAbilityContext** and **ExtensionContext** are supported). |
+
+**Return value**
+
+| Type                                                    | Description                          |
+| ------------------------------------------------------- | ----------------------------- |
+| Promise\<void>  |Promise that returns no value.|
+
+**Example**
+
+> **NOTE** 
+>
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents the **UIAbility** instance that inherits from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in the UI, see [Obtaining UIAbility Context Information](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+
+```ts
+import { data } from '@kit.TelephonyKit';
+import { common } from '@kit.AbilityKit';
+
+let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+data.showSystemApnSettings(context).then(() => {
+  console.info("showSystemApnSettings success");
+}).catch(() => {
+  console.error("showSystemApnSettings failed");
+});
+```
+
 ## DataFlowType
 
-Defines the cellular data flow type.
+Defines the cellular data flow type. 
 
 **System capability**: SystemCapability.Telephony.CellularData
 
@@ -731,7 +788,7 @@ Defines the cellular data flow type.
 
 ## DataConnectState
 
-Describes the connection status of a cellular data link.
+Describes the connection status of a cellular data link. 
 
 **System capability**: SystemCapability.Telephony.CellularData
 
@@ -753,8 +810,8 @@ Defines the APN information.
 |------------|----------|---------|------------|-------------|
 | apnName   | string     | No     | No        | APN name.   |
 | apn       | string     | No     | No        | APN.       |
-| mcc       | string     | No     | No        | Mobile country code (MCC) of the SIM card.|
-| mnc       | string     | No     | No        | Mobile network code (MNC) of the SIM card.|
+| mcc       | string     | No      | No         | MCC of the SIM card. |
+| mnc       | string     | No      | No         | MNC of the SIM card. |
 | user      | string     | No     | Yes        | User name.    |
 | type      | string     | No     | Yes        | APN type.   |
 | proxy     | string     | No     | Yes        | Proxy address.  |

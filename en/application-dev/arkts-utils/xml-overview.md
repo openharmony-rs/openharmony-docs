@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS / Ark Programming Language"]
+description: "Introduces the basic concepts of XML (Extensible Markup Language): a document structure composed of elements, attributes, and content, supporting features such as XML Schema and DTD structure validation, namespaces, and entity references, and outlines the basic class library capabilities for XML generation, parsing, and conversion."
+keywords: [XML overview, markup language, element, attribute, namespace, DTD, XML generation, XML parsing, XML conversion]
+doctype: guide
+status: active
+---
+
 # XML Overview
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=f8431cb42cf0d545a37a384860003cd8449b0b43 translatedAt=2026-11-06T10:54:53.120Z pushedAt=2026-11-09T09:10:11.797Z nl=1 -->
 
 
 Extensible Markup Language (XML) is a markup language used to describe data, providing a universal method for data transmission and storage. Unlike predefined languages, XML offers greater flexibility, making it suitable for a wide range of applications.

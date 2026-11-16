@@ -1,7 +1,7 @@
 ---
 kits: ["ArkTS Kit"]
-description: "The ES module-based import/export system in ArkTS, including static imports, type imports, dynamic imports, module paths, and module organization, with restrictions such as the lack of CommonJS support."
-keywords: ["ArkTS", "module system", "import", "export", "static imports", "dynamic imports", "type imports", "module paths", "ES modules"]
+description: "ArkTS ES module-based import/export syntax, covering static imports, dynamic imports, lazy loading, module organization, top-level statements, and .d.ets declaration files."
+keywords: [ArkTS, module system, import, export, static import, dynamic import, declaration files, ES modules]
 doctype: guide
 status: active
 ---
@@ -9,13 +9,13 @@ status: active
 # Module System
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @jokerxd-liu-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=17ae88719a2d37a0c07e3b6e33ddb120ebd3dbc5 translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8923bda514baa1452b967ea964ea779c7417bd8e translatedAt=2026-11-12T12:34:02.429Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
-The module system is used to split code into files with clear boundaries that are reusable and maintainable. ArkTS uses the `import` and `export` syntax of ES modules, and does not support the `require` and namespace of CommonJS.
+The module system divides code into reusable, maintainable files with clear boundaries. This topic describes module basics, export and import syntax, dynamic imports and lazy loading, module paths and organization, top-level statement execution, and `.d.ets` declaration files.
 
 ## Module Basics
 
@@ -23,7 +23,7 @@ A module is the basic unit for organizing code, and it enables reuse through imp
 
 ### Module Definition
 
-A file that contains top-level `import` or `export` is treated as a module. Variables, functions, classes, and interfaces in a module are visible only within the current file by default. Only declarations exported through `export` can be imported by other modules.
+In ArkTS, each file is a module. Variables, functions, classes, and interfaces are visible only within the current file by default. Only declarations exported through `export` can be imported by other modules.
 
 <!-- @[module_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/User.ets) -->
 
@@ -53,35 +53,6 @@ export class UserService {
   }
 }
 ```
-
-### Importing Modules
-
-Use the `import { name } from 'path'` syntax to import bindings exported by other modules and use them in the current file.
-
-<!-- @[module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleImport.ets) -->
-
-``` TypeScript
-import { User, UserService, createUser } from '../common/User';
-
-let user: User = createUser(1, 'Alice');
-let service: UserService = new UserService();
-
-service.add(user);
-let users: User[] = service.getAll();
-let firstUser: User | undefined = users[0];
-console.info(`${firstUser ? firstUser.name : ''}`);
-```
-
-### Empty Export Marker Module
-
-In TypeScript, a file without any top-level import or export is usually treated as a script. To explicitly mark a file as a module, you can use an empty export:
-
-<!-- @[empty_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
-
-``` TypeScript
-export {}
-```
-ArkTS files are usually organized by project modules, but it is still recommended to express module boundaries through clear imports and exports.
 
 ## export
 
@@ -164,7 +135,7 @@ export { InternalUserService as RenamedUserService };
 
 ### Default Export
 
-A default export uses `export default` to export the primary functionality, and it can be imported under any name.
+A default export uses `export default` to export the module's main functionality, which can be imported under any name.
 
 <!-- @[default_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Logger.ets) -->
 
@@ -207,6 +178,8 @@ Define a service class in another source file to provide business methods.
 <!-- @[submodule_export_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Service.ets) -->
 
 ``` TypeScript
+import { User, Product } from './Types';
+
 export class UserService {
   findById(id: number): User | null {
     if (id <= 0) {
@@ -229,7 +202,7 @@ export { User } from '../common/Types';
 export { UserService } from '../common/Service';
 ```
 
-Consumers only need to import from the barrel file, without caring about the source file of each member.
+Consumers can import from the barrel file without knowing each member's source file. Importing from a barrel file parses and executes modules along the entire dependency chain. For performance-sensitive scenarios, see [Optimizing Performance with import Path Expansion](../arkts-utils/arkts-module-side-effects.md#optimizing-performance-with-import-path-expansion).
 
 <!-- @[barrel_file_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/BarrelFileImport.ets) -->
 
@@ -317,7 +290,7 @@ console.info(`${title}`);
 
 ### Namespace Import
 
-A namespace import places all named exports of a module onto a single object. It is not a TypeScript `namespace` declaration; it is merely ES module import syntax.
+Use `import * as name from 'path'` to collect all named exports of a target module into one object and access them through `name.memberName`.
 
 <!-- @[export_multiple_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Math.ets) -->
 
@@ -332,7 +305,7 @@ export function multiply(left: number, right: number): number {
 }
 ```
 
-You can use a namespace import to collect all named exports of a module onto a single object.
+The importing module accesses all members through a shared object prefix.
 
 <!-- @[namespace_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/NamespaceImport.ets) -->
 
@@ -344,9 +317,22 @@ let product: number = MathUtil.multiply(3, 4);
 console.info(`${sum}, ${product}`);
 ```
 
+Namespace imports suit utility modules with many exports when a source prefix is desired at call sites. For everyday use, prefer named imports to import members as needed and make dependencies clearer.
+
 ### Side-Effect Import
 
-A side-effect import executes the target module but does not import any bindings. Use it with caution to avoid hiding initialization logic.
+An `import 'path'` statement without bindings only loads and executes the target module without importing any exports. It suits modules that initialize or register themselves when loaded.
+
+<!-- @[side_effect_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Config.ets) -->
+
+``` TypeScript
+// Config.ets: top-level code executes when the module loads.
+console.info('Config initialized');
+
+export const APP_LABEL: string = 'DemoApp';
+```
+
+The following statement uses no exports from `Config`; it only ensures that its top-level code executes before the current file:
 
 <!-- @[side_effect_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/SideEffectImport.ets) -->
 
@@ -354,39 +340,13 @@ A side-effect import executes the target module but does not import any bindings
 import '../common/Config';
 ```
 
-## Type Imports and Type Exports
+For side effects of module loading and optimization methods, see [Side Effects and Optimization of Module Loading](../arkts-utils/arkts-module-side-effects.md).
 
-TypeScript supports `import type` and `export type` to mark type-only imports and exports. In ArkTS, use a regular `import` to import type declarations.
-
-### TypeScript Type-Specific Import
-
-TypeScript supports `import type` and `export type` to mark imports and exports that are used only in type positions.
-
-<!-- @[ts_type_import_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
-
-``` TypeScript
-// TypeScript supports import type and export type. ArkTS uses them based on toolchain support.
-import type { User } from '../common/User';
-export type { User };
-```
-
-### Importing with the import Statement in ArkTS
-
-ArkTS uses the regular `import` to bring in type declarations, and does not use the dedicated `import type` syntax. Types and values are imported uniformly through `import`.
-
-<!-- @[type_import_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeImportUsage.ets) -->
-
-``` TypeScript
-import { User } from '../common/User';
-
-function printUser(user: User): void {
-  console.info(`${user.name}`);
-}
-```
+<!--RP1--><!--RP1End-->
 
 ## Dynamic Import
 
-Use `import()` to load modules on demand at runtime. It returns a Promise and is often used with async/await to implement lazy loading.
+Use `import()` to load modules on demand at runtime, for example, for conditional loading or deferred initialization.
 
 ### Basic Syntax
 
@@ -413,7 +373,7 @@ export function getFeatureLabel(): string {
 
 ### Constraints
 
-The module path of a dynamic import should remain statically analyzable. When packaging, subpackaging, cross-package loading, or runtime permissions are involved, follow the HarmonyOS project and runtime constraints.
+Dynamic import paths must remain statically analyzable. For packaging, package splitting, cross-package loading, or runtime permissions, follow HarmonyOS project and runtime constraints. Dynamic `import` also supports on-demand loading of HSP, HAR, and ohpm packages. For scenarios and complete usage, see [Dynamic Import](../arkts-utils/arkts-dynamic-import.md).
 
 <!-- @[conditional_dynamic_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
 
@@ -433,9 +393,33 @@ async function loadByName(name: string): Promise<string> {
 }
 ```
 
+## Lazy Module Loading
+
+Adding `lazy` to an `import` statement defers execution of the target module until an imported variable is first used, shortening application cold start. During cold start, dependencies are parsed but module source code is not executed. Accessing the variable synchronously triggers module execution. This feature is supported since API version 12.
+
+<!-- @[lazy_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
+
+``` TypeScript
+// main.ts
+import lazy { a } from './mod1';  // Do not execute mod1.ts top-level code during cold start.
+
+export function loadOnDemand(): string {
+  return a;  // Load and execute mod1.ts only when a is first used.
+}
+```
+
+<!-- @[lazy_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/mod1.ts) -->
+
+``` TypeScript
+// mod1.ts
+export let a = 'mod1 executed';
+```
+
+Unlike dynamic imports, lazy loading retains static import syntax at the beginning of the source file and executes synchronously when triggered. For the complete syntax, constraints, and error examples, see [Lazy Import](../arkts-utils/arkts-lazy-import.md).
+
 ## Module Path
 
-A module path specifies the location of the source file for imports and exports. ArkTS supports two forms: relative paths (starting with `./` or `../`) and ohpm package names. The `.ts` suffix can be omitted from relative paths.
+Module paths specify source file locations for imports and exports. ArkTS supports relative paths (starting with `./` or `../`) and ohpm package names. Relative paths can omit file extensions. To import a module from an ohpm package, use its package name directly, for example, `import { describe } from '@ohos/hypium'`.
 
 ### Relative Path
 
@@ -447,19 +431,6 @@ A relative path is suitable for expressing dependencies near the current module.
 import { User } from '../common/User';
 import { AppConfig } from '../config/appConfig';
 import { UserRepository } from '../common/Repository';
-```
-
-### Path Alias
-
-TypeScript supports path aliases through configurations such as `baseUrl` and `paths`. The degree of support in an ArkTS project depends on the project configuration and build tools. In public tutorials, prefer standard relative paths or platform-recommended paths.
-
-**TypeScript Comparison**
-
-<!-- @[ts_path_alias_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
-
-``` TypeScript
-// TypeScript/project configuration comparison
-import { describe } from '@ohos/hypium';
 ```
 
 ## Module Organization
@@ -545,7 +516,7 @@ export function canRead(identity: UserIdentity): boolean {
 
 ## Top-Level Statements
 
-Top-level statements are statements written at the outermost level of a module, not wrapped by any function, class, or block scope. These statements include variable declarations, function declarations, and expressions.
+Top-level statements are code written at the outermost module level, outside functions, classes, or block scopes. They execute from top to bottom when the module first loads and are commonly used for module-level initialization. Imported modules' top-level statements always execute before the importing module's statements.
 
 <!-- @[top_level_statements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
 
@@ -563,211 +534,25 @@ console.info('Module loaded');
 logConfig();
 ```
 
-Top-level statements are executed from top to bottom when the module is loaded, making them suitable for module-level initialization logic.
+In this example, `console.info('Module loaded')` and `logConfig()` execute immediately when the module loads. `logConfig()` can read `appConfig` and `MAX_RETRIES`, which are declared before it. Keep top-level statements lightweight to avoid slowing module loading with time-consuming initialization. For complete execution rules (loading order, single-execution semantics, cross-thread behavior, and more) and the loading process, see [Overview of Modular Operation](../arkts-utils/module-principle.md). For side effects and optimization, see [Side Effects and Optimization of Module Loading](../arkts-utils/arkts-module-side-effects.md).
 
-## TypeScript Module Syntax Boundaries
+## Declaration Files
 
-TypeScript's CommonJS syntax is not supported in ArkTS. Use ES modules as the alternative.
+A declaration file describes a module's external capabilities as a whole. It contains only type and interface declarations (such as `interface` and function signatures), without implementations, for compiler type checking. ArkTS uses `.d.ets` declaration files, similar to TypeScript's `.d.ts` files. Common uses include type declarations exposed by shared packages and type declarations for objects exported by NAPI native modules. During module type resolution, if same-name files with different extensions exist in a directory, `.d.ets` takes priority over `.d.ts` by default.
 
-### TypeScript namespace Comparison
+Use `declare` in a declaration file for entities implemented elsewhere. It tells the compiler that the implementation file or native library provides the entity, while the current file describes only its type. For example, `declare const` declares a constant defined by another module or native library, `declare function` declares a function implemented elsewhere, and `export declare` both declares and exports an entity:
 
-The `namespace` in TypeScript is an early way of organizing code. Both modern TypeScript and ArkTS should prefer ES modules.
-
-**TypeScript Comparison**
-
-<!-- @[ts_avoid_namespace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
+<!-- @[declaration_file_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Declaration.d.ets) -->
 
 ``` TypeScript
-// TypeScript comparison syntax; not used in regular ArkTS business code.
-namespace Validation {
-  export function isName(value: string): boolean {
-    return value.length > 0;
-  }
-}
-```
+// common/Declaration.d.ets: declaration files contain declarations only, not implementations.
+declare const APP_VERSION: string;
 
-### Declare Module Comparison
+declare function logConfig(): void;
 
-The `declare module` commonly used in `.d.ts` files describes external module types and is not ordinary ArkTS business code.
-
-**TypeScript Comparison**
-
-<!-- @[ts_declaration_comparison](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleDeclaration.ts) -->
-
-``` TypeScript
-// TypeScript declaration file comparison
-declare module 'external-library' {
-  export function run(): void;
-}
-```
-
-## ArkTS Constraints
-
-ArkTS does not support `require` and `namespace`; use the ES module `import`/`export` instead.
-
-### Not Using require
-
-ArkTS does not support CommonJS `require`; use ES module `import` instead.
-
-**TypeScript Comparison**
-
-<!-- @[ts_require_syntax](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
-
-``` TypeScript
-// TypeScript supports CommonJS require syntax, while ArkTS uses ES module import.
-const Service = require('../common/Service');
-Service.createProduct('Widget');
-```
-
-In ArkTS, use ES module `import` to achieve the same import.
-
-<!-- @[use_esm_not_commonjs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
-
-``` TypeScript
-// Use ES module import instead of CommonJS require.
-import { createProduct } from '../common/Service';
-```
-
-### Do Not Use namespace to Organize Business Code
-
-namespace is used for type declarations, and business code should be organized using modules.
-
-<!-- @[use_module_not_namespace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/UseModuleNotNamespace.ets) -->
-
-``` TypeScript
-export class UserService {}
-```
-
-### No Dependency on the Global Script Scope
-
-Modules establish dependencies through `import` and `export`, without implicitly attaching variables to the global scope.
-
-<!-- @[export_constant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/common/Config.ets) -->
-
-``` TypeScript
-// Config.ets
-export const APP_NAME: string = 'DemoApp';
-export const version: string = '1.0';
-```
-
-After obtaining the constant, the importing party can use it in its own module.
-
-<!-- @[import_constant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ImportConstant.ets) -->
-
-``` TypeScript
-import { APP_NAME } from '../common/Config';
-
-console.info(`${APP_NAME}`);
-```
-
-## export = and import =
-
-TypeScript supports the `export =` syntax to export the entire module as a single object, used together with `import = require()` for CommonJS interoperability. **ArkTS does not support this syntax**; use the ES module `export default` and `import` as an alternative.
-
-**TypeScript Comparison**
-
-<!-- @[ts_export_equals_import_equals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
-
-``` TypeScript
-// TypeScript/CommonJS comparison syntax, not supported by ArkTS
-class TsCalculator {
-  add(a: number, b: number): number {
-    return a + b;
-  }
+declare class ConfigReader {
+  read(key: string): string | undefined;
 }
 
-export = TsCalculator;
-// Importer (another file):
-// import Calculator = require('calculator');
-// let calc = new Calculator();
-// console.info(calc.add(1, 2)); // 3
+export declare function getConfig(name: string): string;
 ```
-
-ArkTS alternative:
-
-<!-- @[export_import_default_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
-
-``` TypeScript
-export default class EidcCalculator {
-  add(a: number, b: number): number {
-    return a + b;
-  }
-}
-
-let eidcCalc: EidcCalculator = new EidcCalculator();
-console.info(`${eidcCalc.add(1, 2)}`); // 3
-```
-
-## Triple-Slash Directives
-
-TypeScript supports triple-slash directives (`/// <reference ... />`) to declare dependencies between files in `.d.ts` files. **ArkTS does not support triple-slash directives**, and dependencies between modules are established through `import`/`export`.
-
-**TypeScript Comparison**
-
-<!-- @[ts_triple_slash_directives](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
-
-``` TypeScript
-// TypeScript declaration file syntax; not supported in ArkTS.
-/// <reference path="myModule.d.ts" />
-/// <reference types="node" />
-/// <reference lib="es2015" />
-
-// The directive above declares dependencies between files in a .d.ts file.
-// In ArkTS, module dependencies are established through import/export.
-```
-
-In ArkTS, all module dependencies are explicitly declared through the ES module `import` statement. The compiler automatically resolves the dependencies, eliminating the need to manually reference declaration files.
-
-## isolatedModules
-
-The `isolatedModules` option in TypeScript ensures that each file can be compiled independently, preventing cross-file type inference dependencies. In this mode, `import type` is used for type-only imports, and `const enum` requires special handling. The ArkTS compiler inherently guarantees that each file can be compiled independently. Type imports use the ordinary `import`, and the `isolatedModules` configuration is not involved.
-
-> **NOTE**
->
-> In ArkTS, all import statements can import both values and types. The compiler automatically handles type erasure, so you do not need to distinguish between type imports and value imports.
-
-## Namespace in Detail
-
-The TypeScript `namespace` is an early code organization mechanism that supports nesting, aliases, and multi-file collaboration. ArkTS does not use namespaces to organize business code; it uses ES modules as the alternative. The following compares the TypeScript namespace features.
-
-### Namespace Alias
-
-TypeScript supports `import name = Say.Hello` to create an alias for a namespace member, simplifying deeply nested references. In ArkTS, use the renamed import of ES modules as an alternative.
-
-**TypeScript Comparison**
-
-<!-- @[ts_namespace_alias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/ModuleSystem.ts) -->
-
-``` TypeScript
-// TypeScript comparison syntax, not supported in ArkTS.
-namespace App {
-  export namespace Config {
-    export const version: string = '1.0';
-  }
-}
-
-import ver = App.Config.version;
-console.info(`${ver}`); // 1.0
-```
-
-ArkTS alternative:
-
-<!-- @[rename_import_alternative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/ModuleSystem.ets) -->
-
-``` TypeScript
-import { version as riaVer } from '../common/Config';
-
-console.info(`${riaVer}`); // 1.0
-```
-
-### Multi-File Collaboration
-
-TypeScript namespaces can be split and merged across files through `/// <reference path="..." />`. In ArkTS, cross-file code sharing uses the ES module `import`/`export`; each file is an independent module, and dependencies are established through imports and exports.
-
-### Namespace Pitfalls
-
-TypeScript namespaces have the following pitfalls, which ArkTS naturally avoids by using ES modules:
-
-- Do not use namespaces to organize code (use modules as the alternative) — ArkTS enforces the use of modules.
-- Do not mix namespaces with modules — ArkTS supports only modules.
-- Compatibility issues between `isolatedModules` and namespaces — ArkTS does not involve this configuration.

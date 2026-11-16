@@ -73,7 +73,7 @@ struct Index {
       })
       // 调用onTouchIntercept修改该组件的HitTestMode属性
       .onTouchIntercept((event: TouchEvent) => {
-        console.info('OnTouchIntercept + ' + JSON.stringify(event));
+        console.info('onTouchIntercept + ' + JSON.stringify(event));
         // 使用touches时需要先校验是否为空
         if (event && event.touches) {
           let touches = event.touches;

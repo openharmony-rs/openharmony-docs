@@ -1,12 +1,11 @@
 # ArkWeb_WebMessageAPI
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-03T09:55:35.605Z pushedAt=2026-08-06T12:04:05.812Z -->
+<!-- md-trans-meta sourceCommit=31d045953794e03aa2b9b22d12ee8034b9ab7518 translatedAt=2026-11-06T11:50:25.114Z pushedAt=2026-11-09T11:46:20.421Z nl=1 -->
 
 ```c
 typedef struct {...} ArkWeb_WebMessageAPI
@@ -31,6 +30,7 @@ Web message APIs must be called on the UI thread by calling the OH_ArkWeb_GetNat
 | Name| Description|
 | -- | -- |
 | size_t size | Size of the struct.|
+
 
 ### Member Functions
 
@@ -114,7 +114,7 @@ Obtains the message type. Used to distinguish different types of communication m
 
 | Type | Description |
 |----|-------|
-| [ArkWeb_WebMessageType](capi-arkweb-type-h.md#arkweb_webmessagetype)   | Enumerated value of the message type returned, such as ARKWEB_WEB_MESSAGE_TYPE_STRING or ARKWEB_WEB_MESSAGE_TYPE_ARRAY_BUFFER.   |
+| [ArkWeb_WebMessageType](capi-arkweb-type-h.md#arkweb_webmessagetype)   | Returns the enumerated value of the message type.   |
 
 ### setData()
 
@@ -133,6 +133,7 @@ Sets data. Used to set the specific content of the message, supporting the trans
 | [ArkWeb_WebMessagePtr](capi-web-arkweb-webmessage8h.md) webMessage | Pointer to the message struct.|
 |  void* data                                                              | Data pointer. The caller is responsible for memory management. The function does not release this memory internally, and data ownership is not transferred.         |
 |  size_t dataLength                                                              | Data length.        |
+
 
 ### getData()
 

@@ -5,16 +5,16 @@
 <!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=82cd7d8df08f9f009907ab6dc8749110ae837884 translatedAt=2026-09-11T09:32:08.085Z pushedAt=2026-09-14T01:52:44.842Z -->
+<!-- md-trans-meta sourceCommit=bd0f7f0d2b5cbb7da282700783b226eef5361df4 translatedAt=2026-11-03T04:21:29.903Z pushedAt=2026-11-03T12:08:25.478Z nl=1 -->
 
 The **InputMethodExtensionContext** module is the context of **InputMethodExtensionAbility**. It inherits from **ExtensionContext** and provides the capabilities and APIs (system APIs) of **InputMethodExtensionAbility**.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with the superscript to display their earliest API version.
->
+> 
 > The APIs of this module can be used only in the stage model.
->
+> 
 > This page contains only the system APIs of this module. For details about other public APIs, see [@ohos.InputMethodExtensionContext (InputMethodExtensionContext)](js-apis-inputmethod-extension-context.md).
 
 ## Modules to Import
@@ -154,8 +154,8 @@ For details about the following error codes, refer to [Input Method Framework Er
 
 | ID | Error Message |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -235,8 +235,8 @@ For details about the following error codes, refer to [Input Method Framework Er
 
 | ID | Error Message |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
@@ -400,8 +400,8 @@ For details about the following error codes, refer to [Input Method Framework Er
 
 | ID | Error Message                                                |
 | -------- | ------------------------------------------------------- |
-| 201      | The application does not have permission to call the interface. |
-| 202      | not system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist.                   |
 | 16000002 | Incorrect ability type.<br>Applicable Version: 10+                                 |

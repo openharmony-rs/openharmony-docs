@@ -5370,9 +5370,9 @@ export default class EntryAbility extends UIAbility {
       let deviceIds: string[] = [];
       if (devManager != null) {
         let devices = devManager.getAvailableDeviceListSync();
-        for (let i = 0; i < devices.length; i++) {
-          deviceIds[i] = devices[i].networkId as string;
-        }
+        devices.forEach((device, i) => {
+          deviceIds[i] = device.networkId as string;
+        });
       }
       try {
         if (kvStore != null) {
@@ -5456,9 +5456,9 @@ export default class EntryAbility extends UIAbility {
       let deviceIds: string[] = [];
       if (devManager != null) {
         let devices = devManager.getAvailableDeviceListSync();
-        for (let i = 0; i < devices.length; i++) {
-          deviceIds[i] = devices[i].networkId as string;
-        }
+        devices.forEach((device, i) => {
+          deviceIds[i] = device.networkId as string;
+        });
       }
       try {
         if (kvStore != null) {

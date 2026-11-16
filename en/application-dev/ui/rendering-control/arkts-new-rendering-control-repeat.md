@@ -387,9 +387,9 @@ When the red text component is clicked, the third data item undergoes a content 
 
 **Node Reuse Inspection**
 
-You can verify node reuse using the DevEco Testing tool. After launching the tool, select the utility menu.
+You can verify node reuse using the [DevEco Testing](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/deveco-testing) tool. After launching the tool, select the utility menu.
 
- 
+<!--Del-->   <!--DelEnd-->
 
 Choose **UIViewer** from the utility options. This tool captures device snapshots, component tree structures, and node attributes. In the component tree on the right, select the **Repeat** subnode. The node attributes displayed in the lower right corner include the node ID. You can determine whether a component has been reused or newly created by checking whether the node ID remains the same.
 
@@ -1781,5 +1781,3 @@ In this example, parameters passed to @Builder include the following: **makeBind
 ### expandSafeArea Not Working in Earlier Versions
 
 In versions earlier than API version 18, if a **Repeat** child component has the **expandSafeArea** attribute declared, the child component cannot expand to full screen. Since API version 18, child components with the declared **expandSafeArea** attribute can expand to full screen.
-
-<!--no_check-->

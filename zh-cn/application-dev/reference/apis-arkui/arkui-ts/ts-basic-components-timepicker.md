@@ -723,6 +723,7 @@ struct TimePickerExample {
       TimePicker({
         selected: this.selectedTime,
         format: TimePickerFormat.HOUR_MINUTE_SECOND,
+        // 设置了start或end且为非默认值的场景下，API版本26.1.0之前loop不生效，从API版本26.1.0开始，loop对非边界列生效，对边界列不生效。
         start: new Date('2022-07-22T08:30:00')
       })
         .dateTimeOptions({ hour: "numeric", minute: "2-digit", second: "2-digit" })
@@ -736,7 +737,8 @@ struct TimePickerExample {
   }
 }
 ```
-![timePicker](figures/TimePickerDemo5.png)
+
+![timePicker](figures/TimePickerDemo5.gif)
 
 ### 示例6（设置时间选择组件的结束时间）
 
@@ -754,6 +756,7 @@ struct TimePickerExample {
       TimePicker({
         selected: this.selectedTime,
         format: TimePickerFormat.HOUR_MINUTE_SECOND,
+        // 设置了start或end且为非默认值的场景下，API版本26.1.0之前loop不生效，从API版本26.1.0开始，loop对非边界列生效，对边界列不生效。
         end: new Date('2022-07-22T15:20:00'),
       })
         .dateTimeOptions({ hour: "numeric", minute: "2-digit", second: "2-digit" })
@@ -768,7 +771,7 @@ struct TimePickerExample {
 }
 ```
 
-![timePicker](figures/TimePickerDemo6.png)
+![timePicker](figures/TimePickerDemo6.gif)
 
 ### 示例7（设置上午/下午跟随时间联动）
 

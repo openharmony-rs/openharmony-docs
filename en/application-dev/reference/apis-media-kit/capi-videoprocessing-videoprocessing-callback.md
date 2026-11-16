@@ -1,10 +1,11 @@
 # VideoProcessing_Callback
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @liziliang-->
+<!--Designer: @dev_ZUT-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=562a7078212c9b28d8dc43b038a6724f5b49ce15 translatedAt=2026-11-09T06:31:44.061Z pushedAt=2026-11-09T08:46:39.806Z nl=1 -->
 
 ```c
 typedef struct VideoProcessing_Callback VideoProcessing_Callback
@@ -21,3 +22,4 @@ You should define a null pointer for **VideoProcessing_Callback** and use [OH_Vi
 **Related module**: [VideoProcessing](capi-videoprocessing.md)
 
 **Header file**: [video_processing_types.h](capi-video-processing-types-h.md)
+

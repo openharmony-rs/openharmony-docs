@@ -5,9 +5,9 @@
 <!--Designer: @dutie123-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c43314d48e5bb6db0c940e002f5fb3a101c7f656 translatedAt=2026-09-02T12:11:12.991Z -->
+<!-- md-trans-meta sourceCommit=33898b66eb6c0bf66810bb0d90faa36b55a4ad07 translatedAt=2026-11-03T03:48:44.668Z pushedAt=2026-11-13T01:06:00.136Z nl=1 -->
 
-Sets the toolbar for a component. The toolbar is a universal attribute of components. It can create a custom toolbar composed of ToolBarItem in the corresponding column of the title bar at the top of the window. It is applicable to scenarios where custom operation items (such as buttons, sliders, and search bars) need to be added to the title bar area.
+Sets the toolbar for a component. toolbar is a universal attribute of components. It can create a custom toolbar composed of **ToolBarItem** in the corresponding column position of the title bar at the top of the window. It is applicable to scenarios where custom operation items (such as buttons, sliders, and search boxes) need to be added to the title bar area.
 
 >  **NOTE**
 >
@@ -29,11 +29,11 @@ Creates a toolbar composed of [ToolBarItem](ts-basic-components-toolbaritem.md) 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                       | Mandatory| Description                                           |
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------- |
-| value  | [CustomBuilder](ts-types.md#custombuilder8) | required   | Configures a custom toolbar of the CustomBuilder type for the current component. The CustomBuilder must consist of [ToolBarItem](ts-basic-components-toolbaritem.md) for the toolbar to take effect. |
+| value  | [CustomBuilder](ts-types.md#custombuilder8) | Yes   | Configures a custom toolbar of the CustomBuilder type for the current component. The CustomBuilder must consist of [ToolBarItem](ts-basic-components-toolbaritem.md) for the toolbar to take effect. |
 
 **Return value**
 
@@ -41,24 +41,25 @@ Creates a toolbar composed of [ToolBarItem](ts-basic-components-toolbaritem.md) 
 | -------- | -------- |
 | T | Current component.|
 
-> **NOTE**
-> 1. The toolbar supports only the fixed title bar, not the floating title bar. (The floating title bar is involved only in three-key navigation mode, in which three virtual navigation keys, namely Back, Home, and Recents, are displayed at the bottom of the device.)
+>  **NOTE**
 >
-> 2. The toolbar supports custom component layout and can be placed in a specific column position (left or right). Note that when the total width of the elements exceeds the available space, layout truncation or focus frame occlusion may occur, making some operation items invisible or causing interaction conflicts. In this case, the elements are not automatically collapsed. You are advised to control the number of elements based on the available column width to prevent the total element width from exceeding the available space.
+>  1. toolbar supports only the fixed title bar, not the floating title bar. (The floating title bar is involved only in three-key navigation mode, which is a navigation mode where the device displays three virtual navigation keys, namely Back, Home, and Recents, at the bottom.)
 >
-> 3. The toolbar currently supports only single-line layout, not multi-line layout. Therefore, avoid placing multi-line layout elements in a toolbar.
+>  2. toolbar supports custom component layout and can be placed at a specific column position (left or right). However, note that when the total width of the elements exceeds the available space, layout truncation or focus frame occlusion may occur, making some operation items invisible or causing interaction conflicts. In this case, the elements are not automatically shrunk. You are advised to control the number of elements based on the available column width to prevent the total element width from exceeding the available space.
 >
-> 4. The toolbar can be used only when [NavigationMode](ts-basic-components-navigation.md#navigationmode9) is set to **Split**.
+>  3. toolbar currently supports only single-line layout, not multi-line layout. Therefore, avoid placing multi-line layout elements in a toolbar.
 >
-> 5. The title bar height adjusts within a limited range based on the [ToolBarItem](ts-basic-components-toolbaritem.md) component in the toolbar:
->    * By default, there is a 4 vp margin between the [ToolBarItem](ts-basic-components-toolbaritem.md) component and the title bar.
->    * When the maximum height of the [ToolBarItem](ts-basic-components-toolbaritem.md) component is less than or equal to 48 vp, the title bar height adjusts to 56 vp. This setting applies to common components such as the title bar, toolbar, and search bar.
->    * When the maximum height of the [ToolBarItem](ts-basic-components-toolbaritem.md) component is between 48 vp and 56 vp, the title bar height adjusts to 64 vp. This setting applies to toolbars that display both icons and text.
->    * When the maximum height of the [ToolBarItem](ts-basic-components-toolbaritem.md) component exceeds 56 vp, the title bar height adjusts to 72 vp. If the maximum height of the [ToolBarItem](ts-basic-components-toolbaritem.md) component exceeds 64 vp, the title bar height remains 72 vp, and the excess area is clipped.
+>  4. toolbar can be used only when [NavigationMode](ts-basic-components-navigation.md#navigationmode) is set to Split.
+>
+>  5. The title bar height floats within a limited range based on the [ToolBarItem](ts-basic-components-toolbaritem.md) components in the toolbar:
+>     * By default, there is a 4vp margin between the [ToolBarItem](ts-basic-components-toolbaritem.md) component and the title bar.
+>     * When the maximum height of the [ToolBarItem](ts-basic-components-toolbaritem.md) component is less than or equal to 48vp, the title bar height adjusts to 56vp. This setting applies to common components such as the title bar, toolbar, and search box.
+>     * When the maximum height of the [ToolBarItem](ts-basic-components-toolbaritem.md) component is between 48vp and 56vp, the title bar height adjusts to 64vp. This setting applies to toolbars that display icons and text simultaneously.
+>     * When the maximum height of the [ToolBarItem](ts-basic-components-toolbaritem.md) component exceeds 56vp, the title bar height adjusts to 72vp. If the maximum height of the [ToolBarItem](ts-basic-components-toolbaritem.md) component exceeds 64vp, the title bar height remains 72vp, and the excess area is clipped.
 
 ## Example
 
-In this example, the toolbar universal attribute is bound to the [Button](ts-basic-components-button.md) component under [Navigation](ts-basic-components-navigation.md) to add a toolbar item containing two [Button](ts-basic-components-button.md) components at the beginning of the NavBar column of the title bar. The toolbar universal attribute is bound to the [Text](ts-basic-components-text.md) component under [NavDestination](ts-basic-components-navdestination.md) to add a toolbar item containing a slider component and a search bar component at the end of the NavDestination column of the title bar.
+In this example, the toolbar universal attribute is bound to the [Button](ts-basic-components-button.md) component under [Navigation](ts-basic-components-navigation.md) to add a toolbar item containing two [Button](ts-basic-components-button.md) components at the beginning of the NavBar column of the title bar. The toolbar universal attribute is bound to the [Text](ts-basic-components-text.md) component under [NavDestination](ts-basic-components-navdestination.md) to add two toolbar items at the end of the NavDestination column of the title bar, one containing a slider component and the other containing a search box component.
 
 ```ts
 // xxx.ets
@@ -66,7 +67,7 @@ In this example, the toolbar universal attribute is bound to the [Button](ts-bas
 @Component
 struct ToolbarExample {
   normalIcon: Resource = $r('app.media.startIcon')
-  selectedIcon: Resource = $r("app.media.startIcon")
+  selectedIcon: Resource = $r('app.media.startIcon')
   @State arr: number[] = [1, 2, 3]
   @State current: number = 1
   @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack()
@@ -167,3 +168,4 @@ struct ToolbarExample {
 }
 ```
 ![toolbar.png](figures/toolbar.png)
+<!--no_check-->

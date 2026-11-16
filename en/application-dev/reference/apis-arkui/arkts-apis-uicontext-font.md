@@ -1,12 +1,11 @@
 # Class (Font)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=89682c631d1be2b78acdb9477c9eda01133e0baf translatedAt=2026-08-05T03:07:56.644Z pushedAt=2026-08-05T06:42:12.048Z -->
+<!-- md-trans-meta sourceCommit=d522686e9af45ce3e6a73e24892114a450ee98ce translatedAt=2026-11-02T12:43:06.380Z pushedAt=2026-11-05T07:56:47.750Z nl=1 -->
 
 The Font class manages custom font and system font information, supporting functions such as registering custom fonts, obtaining the system font list, and querying detailed font information. It is applicable to scenarios where custom fonts need to be used in an app or system font resources need to be queried.
 
@@ -16,9 +15,9 @@ The Font class manages custom font and system font information, supporting funct
 >
 > - The initial APIs of this class are supported since API version 10.
 >
-> - For the following APIs, you must first use [getFont()](./arkts-apis-uicontext-uicontext.md#getfont) in **UIContext** to obtain a **Font** object, and then call the APIs using the obtained object.
+> - In the following API examples, you must first use [getFont()](./arkts-apis-uicontext-uicontext.md#getfont) in **UIContext** to obtain a **Font** instance, and then call the APIs using the obtained instance.
 >
-> - You are advised to use the [loadFontSync](../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) API of the font engine to register custom fonts.
+> - You are advised to use [@ohos.graphics.text (Text)](../apis-arkgraphics2d/js-apis-graphics-text.md).
 
 ## registerFont
 
@@ -26,9 +25,9 @@ registerFont(options: font.FontOptions): void
 
 Registers a custom font with the font manager.
 
-You are advised to use the [loadFontSync](../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) API of the font engine to register the custom font.
+You are advised to use the [loadFontSync()](../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) API of the font engine to register the custom font.
 
-This API is asynchronous. Font registration is an asynchronous process and does not support concurrent calls. Since registration is completed asynchronously, it is recommended to call this API in advance during the page initialization phase (such as aboutToAppear) to ensure that the font is registered before use.
+This API is asynchronous. Font registration is an asynchronous process and does not support concurrent calls. Since registration is completed asynchronously, it is recommended to call this API in advance during the page initialization phase (such as **aboutToAppear**) to ensure that the font is registered before use.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -45,7 +44,6 @@ This API is asynchronous. Font registration is an asynchronous process and does 
 **Example**
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 import { Font } from '@kit.ArkUI';
@@ -74,7 +72,6 @@ struct Index {
   }
 }
 ```
-
 ## getSystemFontList
 
 getSystemFontList(): Array\<string> 
@@ -83,7 +80,7 @@ Obtains the list of supported fonts.
 
 This API only takes effect on PCs/2-in-1 devices and returns an empty array on other devices.
 
-You are advised to use the [getSystemFontFullNamesByType](../apis-arkgraphics2d/js-apis-graphics-text.md#textgetsystemfontfullnamesbytype14) API to obtain the latest system-supported font list data.
+You are advised to use the [getSystemFontFullNamesByType()](../apis-arkgraphics2d/js-apis-graphics-text.md#textgetsystemfontfullnamesbytype14) API to obtain the latest system-supported font list data.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -97,10 +94,10 @@ You are advised to use the [getSystemFontFullNamesByType](../apis-arkgraphics2d/
 | -------------- | --------- |
 | Array\<string> | List of system-supported font names. The returned names can be used with the **getFontByName** method to query detailed information about the corresponding fonts. |
 
-**Example**
+
+**Example** 
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 import { Font } from '@kit.ArkUI';
@@ -132,28 +129,29 @@ getFontByName(fontName: string): font.FontInfo
 
 Obtains information about a system font based on the font name.
 
+You are advised to use the [getFontDescriptorByFullName()](../apis-arkgraphics2d/js-apis-graphics-text.md#textgetfontdescriptorbyfullname14) API to obtain the font information of the specified font type.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type    | Mandatory  | Description     |
 | -------- | ------ | ---- | ------- |
 | fontName | string | Yes | System font name, which can be obtained through the [getSystemFontList()](#getsystemfontlist) method. |
 
-**Return value**
+**Return value** 
 
 | Type                                     | Description          |
 | ----------------------------------------- | -------------- |
 | [font.FontInfo](js-apis-font.md#fontinfo10) | Detailed information about the font.<br>If the font cannot be found, **undefined** is returned. |
 
-**Example**
+**Example** 
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 import { Font, font } from '@kit.ArkUI';

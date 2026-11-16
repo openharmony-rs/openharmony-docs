@@ -96,6 +96,7 @@ Protocol/Service Multiplexer，即协议/服务多路复用器。作为[L2CAP](#
 Radio Frequency Communication，即射频通信协议。用于模拟传统的RS232串行通信（一种常见的有线数据传输标准），为上层应用提供一种简单可靠的数据传输方式，支持多个同时连接的通道。
 ### RSSI
 Received Signal Strength Indicator，即接收信号强度指示。通过一个相对值量化无线通信中接收端的信号强度，单位是dBm。可用于评估设备间距离和信号质量。
+## S
 ### SCO
 Synchronous Connection-Oriented，即同步面向连接链路。蓝牙协议栈中面向连接的同步数据链路，主要用于传输对时间敏感的音频数据，如语音通话等场景。
 ### SDP

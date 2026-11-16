@@ -5,7 +5,7 @@
 <!--Designer: @dzichou-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=e2fe1cbbd7c46a501650bcdaabcac02edf6b0694 translatedAt=2026-09-21T02:11:12.772Z pushedAt=2026-09-21T12:32:49.295Z -->
+<!-- md-trans-meta sourceCommit=d4f09144a4616021c14ccc32ff5169be66ccf32b translatedAt=2026-11-12T04:42:08.315Z pushedAt=2026-11-12T08:25:49.057Z nl=1 -->
 
 When using the adaptive page content layout mode of the **Web** component size, [layoutMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#layoutmode11)([WebLayoutMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#weblayoutmode11).FIT_CONTENT), the size of the **Web** component can adapt to the page content.
 
@@ -37,7 +37,7 @@ As shown in Figure 3, the height of the **Web** component automatically adapts t
 ## Specifications and Constraints
 
 1. You are advised to set the [rendering mode](web-render-mode.md) to [synchronous](web-render-mode.md#synchronous-rendering-mode) to avoid exceptions (white screen and layout errors) caused by the excessive component size.
-2. You are advised to disable [overScrollMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#overscrollmode11). When the overscroll mode is enabled and a user scrolls to the edge of a web page, the **Web** component bounces back with an elastic animation, which conflicts with the rebound of the **Scroll** component and affects the experience.
+2. You are advised to set [overScrollMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#overscrollmode11) (over-scroll mode) to disabled. When over-scroll mode is enabled and you slide to the edge of the Web page, the Web component bounces back with an elastic animation, which conflicts with the bounce-back of the Scroll component and affects the user experience.
 3. When [keyboardAvoidMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#keyboardavoidmode12) is set to `RESIZE_CONTENT`, this avoidance mode does not take effect.
 4. Page gesture zooming is not supported.
 5. Using the **height** attribute of the **Web** component to change the component height is not supported.

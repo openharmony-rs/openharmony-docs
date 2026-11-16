@@ -57,13 +57,13 @@ ComposeListItemV2({ contentItemV2?: ContentItemV2, operateItemV2?: OperateItemV2
 
 列表左侧显示的图标、图标大小以及中间元素文字内容。
 
+**装饰器类型:** \@ObservedV2
+
 ### 属性
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**装饰器类型:** \@ObservedV2
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -156,13 +156,13 @@ ContentItemV2构造函数的参数选项。
 
 列表项右侧显示的元素类型。
 
+**装饰器类型:** \@ObservedV2
+
 ### 属性
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**装饰器类型:** \@ObservedV2
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -237,13 +237,13 @@ OperateItemV2构造函数的参数选项。
 
 列表项右侧图标元素的类型。
 
+**装饰器类型:** \@ObservedV2
+
 ### 属性
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**装饰器类型:** \@ObservedV2
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -310,13 +310,13 @@ OperateIconV2构造函数的参数选项。
 
 列表项右侧按钮元素的类型。
 
+**装饰器类型:** \@ObservedV2
+
 ### 属性
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**装饰器类型:** \@ObservedV2
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -379,13 +379,13 @@ OperateButtonV2构造函数的参数选项。
 
 列表项右侧元素为Switch、CheckBox、Radio的类型。当列表项右侧元素需要使用Switch、CheckBox、Radio时，可通过该类型配置对应属性。
 
+**装饰器类型:** \@ObservedV2
+
 ### 属性
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-
-**装饰器类型:** \@ObservedV2
 
 **系统能力:** SystemCapability.ArkUI.ArkUI.Full
 

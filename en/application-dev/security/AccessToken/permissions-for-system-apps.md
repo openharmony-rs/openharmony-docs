@@ -3374,7 +3374,7 @@ Allows an application to obtain information about local accounts.
 
 ## ohos.permission.GET_TELEPHONY_STATE
 
-Allows an application to read telephony information. 
+Allows an application to read telephony information.
 
 **Permission level**: system_basic
 
@@ -6762,7 +6762,7 @@ Allows a system application to inject playback audio into the capture stream.
 
 ## ohos.permission.kernel.ALLOW_APP_CODE_DECRYPT
 
-Allows a system application or system service to call kernel APIs for code decryption. 
+Allows a system application or system service to call kernel APIs for code decryption.
 
 With this permission, the application can access kernel APIs across processes to request decryption of encrypted code. This helps prevent unauthorized access and further safeguards application code assets.
 
@@ -7463,17 +7463,17 @@ With this permission, the application can call the API to obtain the local accou
 **Valid since**: 24
 
  ## ohos.permission.ENABLE_AGENT_PERMISSION_MGR
- 
+
  Allows a system application to enable agent-related permission management features.
- 
+
  **Permission level**: system_basic
- 
+
  **Authorization mode**: system_grant
- 
+
  **Certificate-based authorization**: true
- 
+
  **Supported devices**: phones | PCs/2-in-1 devices | tablets
- 
+
  **Valid since**: 26.0.0
 
 ## ohos.permission.GET_AGENT_CARD
@@ -7677,20 +7677,6 @@ Allows a system application to send commands to collect logs.
 ## ohos.permission.vehicle.READ_HARDWARE_CONFIG
 
 Allows an application to read vehicle hardware information.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Certificate-based authorization**: true
-
-**Supported devices**: cars
-
-**Since**: 26.0.1
-
-## ohos.permission.vehicle.WRITE_HARDWARE_CONFIG
-
-Allows an application to write vehicle hardware information.
 
 **Permission level**: system_basic
 
@@ -8085,7 +8071,7 @@ Allows an application to trigger the Always On Display (AOD) mode or exit it, an
 **Valid since**: 26.0.0
 
 ## ohos.permission.MANAGE_SKILL_PRIVILEGE
-     
+
 Allows an application to use skills.
 
 With this permission, the application can:
@@ -8120,7 +8106,7 @@ Allows a system application to query the status of visual-related accessibility 
 
 ## ohos.permission.cli.READ_ACCESSIBILITY_CONFIG_HEARING
 
-Allows a system application to query the status of hearing-related accessibility functions via CLI commands. 
+Allows a system application to query the status of hearing-related accessibility functions via CLI commands.
 
 **Permission level**: system_basic
 
@@ -8669,17 +8655,17 @@ Allows a system application to send HUAP messages.
 **Valid since**: 26.0.0
 
 ## ohos.permission.ENTERPRISE_SPACE_FILE_TRANSFER_DATA_ACCESS
- 	 
+
 Allows a system application to access the file cache path of the file transfer service.
- 	 
+
 **Permission level**: system_basic
- 	 
+
 **Authorization mode**: system_grant
- 	 
+
 **Certificate-based authorization**: true
- 	 
+
 **Supported devices**: PCs/2-in-1 devices
- 	 
+
 **Valid since**: 26.0.0
 
 ## ohos.permission.CONTROL_IMAGEVIDEO_ANALYSIS
@@ -8697,7 +8683,7 @@ Allows an application to trigger smart analysis for assets.
 **Valid since**: 26.0.1
 
 ## ohos.permission.CREATE_SIGN_CONTENT_TRUST
- 	 
+
 Allows an application to create a content trust signature.
 
 **Permission level**: system_basic
@@ -8833,20 +8819,20 @@ Allows an application to access the vehicle camera.
 
 **Supported devices**: cars
 
-**Valid since**: 26.0.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.MANAGE_CLONE_BUNDLE_PREFERENCES
- 	 
+
 Allows an application to manage clone preferences.
- 	 
+
 **Permission level**: system_basic
- 	 
+
 **Authorization mode**: system_grant
- 	 
+
 **Certificate-based authorization**: true
- 	 
+
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
- 	 
+
 **Valid since**: 26.0.0
 
 ## ohos.permission.GET_ENTERPRISE_UNLOCK_CONFIGS
@@ -8876,6 +8862,20 @@ Allows an application to configure the capability of unlocking devices via enter
 **Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 26.0.1
+
+## ohos.permission.MOUNT_BUNDLE_INFO
+
+Allows an application to mount the specified file directory to the sandbox directory of the SceneBoard application.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars| lite wearables
+
+**Since**: 26.0.1
 
 ## ohos.permission.ACCESS_ASSOCIATE_ASSISTANT
 
@@ -8968,6 +8968,20 @@ With this permission, the application can add file event records, search for fil
 **Supported devices**: Phone | PC/2in1 | Tablet
 
 **Since**: 26.0.0
+
+## ohos.permission.CAMERA_DRIVER_MONITOR
+
+Allows an application to access the driver monitoring camera.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
 
 ## ohos.permission.ACCESS_MEDIALIB_SANDBOX
 
@@ -9156,7 +9170,7 @@ Allows a system application to connect to near-field devices and send/receive da
 ## ohos.permission.SET_WORK_SCHEDULER_PROPERTY
 
 Allows a system application to modify the delayed task parameters of specified applications.
-    
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
@@ -9224,7 +9238,7 @@ Allows a system application to access shared albums and files within the albums.
 **Valid since**: 26.0.1
 
 ## ohos.permission.MANAGE_LOH
- 	 
+
 Allows an application to invoke virtualization capabilities of the Linux subsystem.
 
 **Permission level**: system_basic
@@ -9266,7 +9280,7 @@ Allows an application to pass Linux commands with root privileges to a container
 **Valid since**: 26.0.1
 
 ## ohos.permission.MANAGE_VM
- 	 
+
 Allows an application to call basic virtual machine capabilities.
 
 With this permission, the application can call basic virtual machine capabilities, such as installing, deleting, starting, and pausing virtual machines.
@@ -9282,7 +9296,7 @@ With this permission, the application can call basic virtual machine capabilitie
 **Valid since**: 26.0.1
 
 ## ohos.permission.MANAGE_VM_EXTENDED
- 	 
+
 Allows an application to call enhanced virtual machine capabilities.
 
 With this permission, the application can call enhanced virtual machine capabilities, such as importing and exporting virtual machine disk images and obtaining the host serial number (SN).
@@ -9340,31 +9354,31 @@ Allows an application to install freely distributable applications.
 **Valid since**: 26.0.1
 
 ## ohos.permission.SKIP_ENTERPRISE_RESIGN_VERIFY
- 
+
 Allows an application to skip enterprise re-signing certificate verification.
- 
+
 **Permission level**: system_basic
- 
+
 **Authorization mode**: system_grant
- 
+
 **Certificate-based authorization**: true
- 
+
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
- 
+
 **Since**: 26.0.1
 
 ## ohos.permission.REGISTER_AGENT_HOOK
- 
+
 Allows a system application to register an agent hook.
- 
+
 **Permission level**: system_basic
- 
+
 **Authorization mode**: system_grant
- 
+
 **Certificate-based authorization**: true
- 
+
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
- 
+
 **Since**: 26.0.1
 
 ## ohos.permission.vehicle.DEVICE_INFO_WRITE
@@ -9804,3 +9818,73 @@ Allows an application to bind to the automotive ambient light engine service (Aa
 **Supported devices**: cars
 
 **Since**: 26.0.1
+
+## ohos.permission.vehicle.HIMA_COOPERATE
+
+Allows an application to call the device-cloud synergy API to query and download resources and configuration files.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.vehicle.HIMA_DEVICE_AUTH
+
+Allows an application to call the genuine device authentication API to perform device authenticity verification.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.PROMPT_INJECT_DETECTION
+
+Allows an application to detect indirect prompt injection attacks.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.0.1
+
+## ohos.permission.MOUNT_SANDBOX_SETTINGSDATA
+
+Allows an application to mount the specified file directory to the sandbox directory of the SettingsData application.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | wearables | TVs | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 26.0.1
+
+## ohos.permission.MANAGE_CURSOR_STYLE
+
+Allows an application to manage mouse cursor styles.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
+**Since**: 26.1.0

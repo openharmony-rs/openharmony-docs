@@ -5,6 +5,7 @@
 <!--Designer: @liu-binjun-->
 <!--Tester: @gcw_MslijYkf-->
 <!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=56b2c15d187acc864bf14dd89f9c4aae5d899ee7 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z nl=1 -->
 
 
 ## When to Use
@@ -52,18 +53,43 @@ You can call location-related APIs to listen for device location changes.
    #include "LocationKit/oh_location_type.h"
    #include "hilog/log.h"
    #include <stdlib.h>
+   #include <string>
    ```
 
-5. Call **isLocationEnabled** to check whether the location switch is enabled. 
+5. Check whether the location switch is enabled before calling the API to obtain device location information.
 
    The return result is a Boolean value. The value **true** indicates that the location switch is enabled, and the value **false** indicates the opposite.
 
    ```c
+    std::string GetErrorMsgFromErrorCode(int errorCode)
+    {
+        switch(errorCode) {
+           case LOCATION_PERMISSION_DENIED:
+              return "Permission verification failed. The application does not have the permission required to call the API.";
+           case LOCATION_INVALID_PARAM:
+              return "Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.";
+           case LOCATION_NOT_SUPPORTED:
+              return "Capability not supported. Failed to call this API due to limited device capabilities.";
+           case LOCATION_SERVICE_UNAVAILABLE:
+              return "The location service is unavailable.";
+           case LOCATION_SWITCH_OFF:
+              return "The location switch is off.";
+           default:
+              return "Unknown error. error code: " + std::to_string(errorCode);
+        }
+    }
+
     static napi_value OhLocationIsEnabled(napi_env env, napi_callback_info info)
     {
         bool isEnabled = false;
         int resultCode = OH_Location_IsLocatingEnabled(&isEnabled);
         napi_value result = NULL;
+        if (resultCode != LOCATION_SUCCESS) {
+           std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
+           napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
+           napi_get_undefined(env, &result);
+           return result;
+        }
         napi_get_boolean(env, isEnabled, &result);
         return result;
     }
@@ -93,6 +119,7 @@ You can call location-related APIs to listen for device location changes.
        Location_BasicInfo baseInfo = OH_LocationInfo_GetBasicInfo(location);
        char additionalInfo[1024] = "";
        Location_ResultCode result = OH_LocationInfo_GetAdditionalInfo(location, additionalInfo, sizeof(additionalInfo));
+       // Compare the returned userData with mydata to identify callbacks for this location request.
        if (mydata == userData) {
            OH_LOG_INFO(LOG_APP, "userData is mydata");
        }
@@ -103,32 +130,53 @@ You can call location-related APIs to listen for device location changes.
    static napi_value OhLocationStartLocating(napi_env env, napi_callback_info info)
    {
        if (g_requestConfig == NULL) {
-           g_requestConfig = OH_Location_CreateRequestConfig();
+          g_requestConfig = OH_Location_CreateRequestConfig();
        }
        OH_LocationRequestConfig_SetUseScene(g_requestConfig, LOCATION_USE_SCENE_NAVIGATION);
        OH_LocationRequestConfig_SetInterval(g_requestConfig, 1);
-       mydata = (void *)malloc(sizeof("mydata")); // Custom data, which is transparently returned through callback.
-       OH_LocationRequestConfig_SetCallback(g_requestConfig, reportLocation, mydata);
-       OH_Location_StartLocating(g_requestConfig);
-       int32_t ret = 0;
+       // mydata can be any user-defined type. It is returned to reportLocation to identify this request's callback.
+       mydata = (void *)malloc(sizeof("mydata"));
        napi_value result = NULL;
-       napi_create_int32(env, ret, &result);
+       if (mydata == NULL) {
+          int errCode = LOCATION_INVALID_PARAM;
+          std::string errorMsg = GetErrorMsgFromErrorCode(errCode);
+          napi_throw_error(env, std::to_string(errCode).c_str(), errorMsg.c_str());
+          napi_get_undefined(env, &result);
+          return result;
+       }
+
+       OH_LocationRequestConfig_SetCallback(g_requestConfig, reportLocation, mydata);
+       int resultCode = OH_Location_StartLocating(g_requestConfig);
+       if (resultCode != LOCATION_SUCCESS) {
+           std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
+           napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
+           napi_get_undefined(env, &result);
+           return result;
+       }
+       napi_create_int32(env, resultCode, &result);
        return result;
    }
 
    // Unsubscribe from location information. The value of g_requestConfig must be the same as the object passed during subscription.
    static napi_value OhLocationStopLocating(napi_env env, napi_callback_info info)
    {
-       OH_Location_StopLocating(g_requestConfig);
+       int32_t resultCode = OH_Location_StopLocating(g_requestConfig);
        if (g_requestConfig != NULL) {
            OH_Location_DestroyRequestConfig(g_requestConfig);
            g_requestConfig = NULL;
        }
-       free(mydata);
-       mydata = NULL;
-       int32_t ret = 0;
+       if (mydata != NULL) {
+           free(mydata);
+           mydata = NULL;
+       }
        napi_value result = NULL;
-       napi_create_int32(env, ret, &result);
+       if (resultCode != LOCATION_SUCCESS) {
+           std::string errorMsg = GetErrorMsgFromErrorCode(resultCode);
+           napi_throw_error(env, std::to_string(resultCode).c_str(), errorMsg.c_str());
+           napi_get_undefined(env, &result);
+           return result;
+       }
+       napi_create_int32(env, resultCode, &result);
        return result;
    }
 

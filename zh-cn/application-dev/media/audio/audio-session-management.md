@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导ArkTS开发者通过AudioSessionManager管理音频会话，在短视频、直播、游戏、VoIP等场景下自定义焦点策略并监听会话状态。"
+keywords: [音频会话, 自定义焦点策略, 会话策略, 会话激活, 焦点开发, AudioSession, ConcurrencyMode]
+doctype: guide
+status: active
+---
 # 音频会话管理(ArkTS)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->

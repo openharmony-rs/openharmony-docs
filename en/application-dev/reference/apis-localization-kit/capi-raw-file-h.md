@@ -6,6 +6,7 @@
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @ningningW-->
+<!-- md-trans-meta sourceCommit=5da355f28bd2dd99e027698522e2cc4f68d4723b translatedAt=2026-11-09T06:19:16.306Z pushedAt=2026-11-09T06:57:46.304Z nl=1 -->
 
 ## Overview
 
@@ -225,7 +226,7 @@ Obtains the rawfile descriptor information. After obtaining the file descriptor 
 | Name| Description|
 | -- | -- |
 | [const RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through [OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile).|
-| descriptor | Output parameter. Reference to the [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) object, which is used to return the file descriptor information. After use, you must call [OH_ResourceManager_ReleaseRawFileDescriptor](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptor) to release the file descriptor, preventing file descriptor leakage.|
+| descriptor | Output parameter. Reference to the [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) object, used to return the file descriptor information. After use, [OH_ResourceManager_ReleaseRawFileDescriptor](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptor) must be called to release the file descriptor and prevent file descriptor leaks. |
 
 **Returns**
 
@@ -250,7 +251,7 @@ Obtains the rawfile descriptor information. After obtaining the file descriptor 
 | Name| Description|
 | -- | -- |
 | [const RawFile](capi-rawfile-rawfile.md) *rawFile | Input parameter. Pointer to a `RawFile` object, which is obtained through [OH_ResourceManager_OpenRawFile](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile).|
-| [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) *descriptor | Output parameter. Pointer to the `RawFileDescriptor` object, which is used to return the file descriptor information. After use, you must call [OH_ResourceManager_ReleaseRawFileDescriptorData](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptordata) to release the file descriptor, preventing file descriptor leakage.|
+| [RawFileDescriptor](capi-rawfile-rawfiledescriptor.md) *descriptor | Output parameter. Pointer to the RawFileDescriptor object, used to return the file descriptor information. After use, call [OH_ResourceManager_ReleaseRawFileDescriptorData](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptordata) to release the file descriptor to prevent file descriptor leaks. |
 
 **Returns**
 
@@ -474,7 +475,7 @@ Obtains the rawfile descriptor information. After obtaining the file descriptor 
 | Name| Description|
 | -- | -- |
 | [const RawFile64](capi-rawfile-rawfile64.md) *rawFile | Input parameter. Pointer to a `RawFile64` object, which is obtained through [OH_ResourceManager_OpenRawFile64](capi-raw-file-manager-h.md#oh_resourcemanager_openrawfile64).|
-| [RawFileDescriptor64](capi-rawfile-rawfiledescriptor64.md) *descriptor | Output parameter. Pointer to the `RawFileDescriptor64` object, which is used to return the file descriptor information. After use, you must call [OH_ResourceManager_ReleaseRawFileDescriptor64](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptor64) to release the file descriptor, preventing file descriptor leakage.|
+| [RawFileDescriptor64](capi-rawfile-rawfiledescriptor64.md) *descriptor | Output parameter. Pointer to the RawFileDescriptor64 object, used to return the file descriptor information. After use, call [OH_ResourceManager_ReleaseRawFileDescriptor64](capi-raw-file-h.md#oh_resourcemanager_releaserawfiledescriptor64) to release the file descriptor to prevent file descriptor leaks. |
 
 **Returns**
 
@@ -505,3 +506,5 @@ Releases rawfile file descriptor resources. After successful release, `fd` in `d
 | Type| Description|
 | -- | -- |
 | bool | Release result. If the operation is successful, `true` is returned. If the operation fails, `false` is returned. The possible cause is that `descriptor` is `NULL` or the file descriptor has been released.|
+
+

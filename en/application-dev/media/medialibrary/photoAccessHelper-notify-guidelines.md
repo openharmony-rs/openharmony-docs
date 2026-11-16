@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=8f2471939506c82021fa1a09734fc0f071d67e4e translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 The photoAccessHelper module provides APIs to listen for changes of specified media assets.
 
@@ -38,7 +39,7 @@ The following example describes how to register a listener for an image and then
 2. Register a listener for the media asset.
 3. Delete the media asset.
 
-<!-- @[register_listener_to_photo_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerlistenertophotoassetability/RegisterListenerToPhotoAssetAbility.ets) -->
+<!-- @[register_listener_to_photo_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerlistenertophotoassetability/RegisterListenerToPhotoAssetAbility.ets) --> 
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -53,9 +54,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     fetchColumns: [],
     predicates: predicates
   };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
-      await phAccessHelper.getAssets(fetchOptions);
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
     let onCallback = (changeData: photoAccessHelper.ChangeData) => {
@@ -63,11 +64,14 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     }
     phAccessHelper.registerChange(photoAsset.uri, false, onCallback);
     await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
-    fetchResult.close();
     // ...
   } catch (err) {
     console.error('onCallback failed with err: ' + err);
     // ...
+  } finally {
+    if (fetchResult !== null) {
+      fetchResult.close();
+    }
   }
 }
 ```
@@ -90,7 +94,7 @@ The following example describes how to register a listener for a user album and 
 3. Rename the user album.
 
 
-<!-- @[register_listener_to_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerlistenertoalbumability/RegisterListenerToAlbumAbility.ets) -->
+<!-- @[register_listener_to_album](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerlistenertoalbumability/RegisterListenerToAlbumAbility.ets) --> 
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -107,12 +111,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     predicates: predicates
   };
 
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> | null = null;
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> = 
-      await phAccessHelper.getAlbums(
-        photoAccessHelper.AlbumType.USER, 
-        photoAccessHelper.AlbumSubtype.USER_GENERIC, 
-        fetchOptions);
+    fetchResult = await phAccessHelper.getAlbums(
+      photoAccessHelper.AlbumType.USER,
+      photoAccessHelper.AlbumSubtype.USER_GENERIC,
+      fetchOptions);
         
     let album: photoAccessHelper.Album = await fetchResult.getFirstObject();
     console.info('getAlbums successfully, albumUri: ' + album.albumUri);
@@ -123,11 +127,14 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     phAccessHelper.registerChange(album.albumUri, false, onCallback);
     album.albumName = 'newAlbumName' + Date.now();
     await album.commitModify();
-    fetchResult.close();
     // ...
   } catch (err) {
     console.error('onCallback failed with err: ' + err);
     // ...
+  } finally {
+    if (fetchResult !== null) {
+      fetchResult.close();
+    }
   }
 }
 ```
@@ -155,7 +162,7 @@ The following example describes how to register a listener for all media assets 
 2. [Obtain a media asset](photoAccessHelper-resource-guidelines.md#obtaining-media-assets).
 3. Delete the media asset.
 
-<!-- @[register_for_monitoring_all_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerformonitoringallassetsability/RegisterForMonitoringAllAssetsAbility.ets) -->
+<!-- @[register_for_monitoring_all_assets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/registerformonitoringallassetsability/RegisterForMonitoringAllAssetsAbility.ets) --> 
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -173,17 +180,20 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     fetchColumns: [],
     predicates: predicates
   };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> =
-      await phAccessHelper.getAssets(fetchOptions);
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
     await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
-    fetchResult.close();
     // ...
   } catch (err) {
     console.error('onCallback failed with err: ' + err);
     // ...
+  } finally {
+    if (fetchResult !== null) {
+      fetchResult.close();
+    }
   }
 }
 ```
@@ -205,7 +215,7 @@ The following example describes how to unregister the listening for an image and
 2. Unregister listening for the URI of the media asset obtained.
 3. Delete the media asset.
 
-<!-- @[cancel_listening_uri](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/cancellisteninguriability/CancelListeningURIAbility.ets) -->
+<!-- @[cancel_listening_uri](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MediaResourceChangeNotificationsSample/entry/src/main/ets/cancellisteninguriability/CancelListeningURIAbility.ets) --> 
 
 ``` TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -220,9 +230,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     fetchColumns: [],
     predicates: predicates
   };
+  let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> | null = null;
   try {
-    let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = 
-      await phAccessHelper.getAssets(fetchOptions);
+    fetchResult = await phAccessHelper.getAssets(fetchOptions);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
     console.info('getAssets photoAsset.uri : ' + photoAsset.uri);
     let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
@@ -235,11 +245,14 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
     phAccessHelper.registerChange(photoAsset.uri, false, onCallback2);
     phAccessHelper.unRegisterChange(photoAsset.uri, onCallback1);
     await photoAccessHelper.MediaAssetChangeRequest.deleteAssets(context, [photoAsset]);
-    fetchResult.close();
     // ...
   } catch (err) {
     console.error('onCallback failed with err: ' + err);
     // ...
+  } finally {
+    if (fetchResult !== null) {
+      fetchResult.close();
+    }
   }
 }
 ```

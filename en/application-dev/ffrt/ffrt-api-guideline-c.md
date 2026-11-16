@@ -6,7 +6,7 @@
 <!--Designer: @zhanglu161-->
 <!--Tester: @lotsof-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=d15494bdeec2546d4ff02bd3050be81ef56e89a6 translatedAt=2026-08-24T11:36:00.106Z pushedAt=2026-08-25T06:30:58.434Z -->
+<!-- md-trans-meta sourceCommit=77af1e889b86b7617c9478c0ac2f672446edd1b0 translatedAt=2026-11-03T08:12:16.817Z pushedAt=2026-11-03T08:12:16.817Z -->
 
 ## Task Management
 
@@ -1930,7 +1930,7 @@ int main()
 
     ffrt::submit([&]() {
         ffrt_usleep(2);
-        if(ffrt_rwlock_trywrlock(&rwlock)){
+        if(ffrt_rwlock_trywrlock(&rwlock) == ffrt_success){
             x++;
             ffrt_rwlock_unlock(&rwlock);
         }
@@ -1938,7 +1938,7 @@ int main()
 
     ffrt::submit([&]() {
         ffrt_usleep(2);
-        if(ffrt_rwlock_tryrdlock(&rwlock)){
+        if(ffrt_rwlock_tryrdlock(&rwlock) == ffrt_success){
             ffrt_rwlock_unlock(&rwlock);
         }
     },{},{});
