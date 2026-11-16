@@ -2,11 +2,11 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: SelectionInput-->
-<!--Owner: @no86-->
-<!--Designer: @mmwwbb-->
+<!--Owner: @zl_startup-->
+<!--Designer: @zl_startup-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=ca6c65f8737127ab246f15bde19a1474d8a76b90 translatedAt=2026-07-28T07:31:47.717Z pushedAt=2026-07-30T12:29:34.186Z -->
+<!-- md-trans-meta sourceCommit=b7fd791217eb31a347f5d13714b33196dd35ae59 translatedAt=2026-11-16T04:30:51.202Z pushedAt=2026-11-16T06:31:14.067Z nl=1 -->
 
 ## S
 

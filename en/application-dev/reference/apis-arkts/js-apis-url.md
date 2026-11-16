@@ -1,12 +1,21 @@
 # @ohos.url (URL String Parsing)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=cc65f1e485e5ab5e24278341b450bcc89c474b75 translatedAt=2026-11-16T05:57:35.628Z pushedAt=2026-11-16T06:31:14.282Z nl=1 -->
 
-The url module provides APIs for parsing URL strings and constructing [URL](#url) instances to process URL strings.
+URL is a uniform resource locator. This module provides common utility functions for parsing URL strings, constructing URL objects, and parsing and operating URL query parameters.<br>
+
+The module mainly contains the following core classes:<br>
+
+- [URL](#url): Used for parsing and constructing a complete URL. <br>
+
+- [URLParams](#urlparams9): Used for manipulating URL query parameters. <br>
+
+- [URLSearchParams](#urlsearchparamsdeprecated): Deprecated since API version 9. It is recommended to use [URLParams](#urlparams9) instead. <br>
 
 > **NOTE**
 >
@@ -19,13 +28,13 @@ import { url } from '@kit.ArkTS';
 ```
 ## URLParams<sup>9+</sup>
 
-A utility class for parsing, constructing, and manipulating URL parameters. It provides a unified API to process parameters (such as query parameters and path parameters).
+URLParams is a utility class for parsing, constructing, and manipulating URL parameters. This class provides a unified interface for handling URL query parameters.
 
 ### constructor<sup>9+</sup>
 
 constructor(init?: string[][] | Record&lt;string, string&gt; | string | URLParams)
 
-A constructor used to create a **URLParams** instance.
+The constructor of URLParams is used to create a URL parameter object, and is applicable to scenarios where URL query parameters need to be parsed, constructed, or manipulated.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -35,15 +44,7 @@ A constructor used to create a **URLParams** instance.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| init | string[][] \| Record&lt;string, string&gt; \| string \| URLParams | No| Input parameter objects, which include the following:<br>- **string[][]**: two-dimensional string array.<br>- **Record&lt;string, string&gt;**: list of objects.<br>- **string**: string.<br>- **URLParams**: object.<br>The default value is **null**.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed. |
+ | init | string[][] \| Record&lt;string, string&gt; \| string \| URLParams | No | Input parameter object.<br>- string[][]: two-dimensional string array.<br>- Record&lt;string, string&gt;: object list.<br>- string: URL query parameter string.<br>- URLParams: URLParams instance object.<br>- Default value: null. |
 
 **Example**
 
@@ -51,15 +52,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // Construct a URLParams object in string[][] mode.
 let objectParams = new url.URLParams([ ['user1', 'abc1'], ['query2', 'first2'], ['query3', 'second3'] ]);
 // Construct a URLParams object in Record<string, string> mode.
-let objectParams1 = new url.URLParams({"fod" : '1' , "bard" : '2'});
+let objectParams1 = new url.URLParams({'fod' : '1' , 'bard' : '2'});
 // Construct a URLParams object in string mode.
 let objectParams2 = new url.URLParams('?fod=1&bard=2');
 // Construct a URLParams object using the search property of the url object.
 let urlObject = url.URL.parseURL('https://developer.mozilla.org/?fod=1&bard=2');
 let objectParams3 = new url.URLParams(urlObject.search);
 // Construct a URLParams object using the params property of the url object.
-let urlObject1 = url.URL.parseURL('https://developer.mozilla.org/?fod=1&bard=2');
-let objectParams4 = urlObject1.params;
+let secondUrlObj = url.URL.parseURL('https://developer.mozilla.org/?fod=1&bard=2');
+let objectParams4 = secondUrlObj.params;
 ```
 
 
@@ -67,7 +68,7 @@ let objectParams4 = urlObject1.params;
 
 append(name: string, value: string): void
 
-Appends a key-value pair into the query string.
+Inserts a new key-value pair into the query string. Unlike the [set](#set9) method, append does not replace the value corresponding to an existing key name. Instead, it appends a new key-value pair, allowing multiple values to exist under the same key name. To replace an existing key value, use the set method.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -80,19 +81,14 @@ Appends a key-value pair into the query string.
 | name | string | Yes| Key of the key-value pair to append.|
 | value | string | Yes| Value of the key-value pair to append.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **Example**
 
 ```ts
+// Parse the URL string.
 let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
+// Construct a URLParams object.
 let paramsObject = new url.URLParams(urlObject.search.slice(1));
+// Append a key-value pair.
 paramsObject.append('fod', '3');
 ```
 
@@ -101,7 +97,7 @@ paramsObject.append('fod', '3');
 
 delete(name: string): void
 
-Deletes key-value pairs of the specified key.
+Deletes all key-value pairs with the specified name. If the specified name does not exist, no operation is performed.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -111,21 +107,16 @@ Deletes key-value pairs of the specified key.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| name | string | Yes| Key of the key-value pairs to delete.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| name | string | Yes | Key name to delete. |
 
 **Example**
 
 ```ts
+// Parse the URL string.
 let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
+// Construct a URLParams object.
 let paramsObject = new url.URLParams(urlObject.search.slice(1));
+// Delete the key-value pair with the specified name.
 paramsObject.delete('fod');
 ```
 
@@ -134,7 +125,7 @@ paramsObject.delete('fod');
 
 getAll(name: string): string[]
 
-Obtains all the values based on the specified key.
+Gets the set of all values corresponding to the specified name. If a key-value pair name that does not exist is searched for, the return value is an empty array.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -144,7 +135,7 @@ Obtains all the values based on the specified key.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| name | string | Yes| Target key.|
+| name | string | Yes | Specified key name. |
 
 **Return value**
 
@@ -152,21 +143,15 @@ Obtains all the values based on the specified key.
 | -------- | -------- |
 | string[] | All the values obtained.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **Example**
 
 ```ts
+// Parse the URL and construct a URLParams object.
 let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
 let params = new url.URLParams(urlObject.search.slice(1));
-params.append('fod', '3'); // Add a second value for the fod parameter.
-console.info(params.getAll('fod').toString()) // Output ["1","3"].
+params.append('fod', '3'); // Append the second fod parameter value.
+// Get all values of the specified name fod.
+console.info(params.getAll('fod').toString()); // Output ["1","3"]
 ```
 
 
@@ -174,7 +159,7 @@ console.info(params.getAll('fod').toString()) // Output ["1","3"].
 
 entries(): IterableIterator<[string, string]>
 
-Obtains an ES6 iterator. Each item of the iterator is an array, and the first and second fields of each array are the key and value respectively.
+Returns an iterator, where each item of the iterator is an Array. The first item of the Array is name, and the second item of the Array is value. This method behaves the same as [Symbol.iterator], both returning an iterator of key-value pairs.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -184,15 +169,18 @@ Obtains an ES6 iterator. Each item of the iterator is an array, and the first an
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;[string, string]&gt; | ES6 iterator.|
+| IterableIterator&lt;[string, string]&gt; | Returns an iterator, where each item is a [string, string] array containing name and value. |
 
 **Example**
 
 ```ts
-let paramsObject = new url.URLParams("keyName1=valueName1&keyName2=valueName2");
+// Construct a URLParams object.
+let paramsObject = new url.URLParams('keyName1=valueName1&keyName2=valueName2');
+// Get the entries iterator.
 let pair = paramsObject.entries();
+// Iterate over key-value pairs.
 for (let item of pair) {
-    console.info(item[0] + '=' + item[1]);
+  console.info(item[0] + '=' + item[1]);
 }
 // keyName1=valueName1
 // keyName2=valueName2
@@ -203,7 +191,7 @@ for (let item of pair) {
 
 forEach(callbackFn: (value: string, key: string, searchParams: URLParams) => void, thisArg?: Object): void
 
-Traverses the key-value pairs in the **URLSearchParams** instance by using a callback.
+Traverses the key-value pairs on the URLParams instance object in insertion order through a callback function.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -213,29 +201,23 @@ Traverses the key-value pairs in the **URLSearchParams** instance by using a cal
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callbackFn | function | Yes| Callback invoked to traverse the key-value pairs in the **URLSearchParams** instance.|
+| callbackFn | function | Yes | Callback function executed when traversing key-value pairs, called once for each key-value pair. |
 | thisArg | Object | No| Value of **this** to use when **callbackFn** is invoked. The default value is this object.|
 
 **Table 1** callbackFn parameter description
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | string | Yes| Value that is currently traversed.|
+| value | string | Yes | Value of the current traversal. |
 | key | string | Yes| Key that is currently traversed.|
 | searchParams | [URLParams](#urlparams9) | Yes| Instance that invokes the **forEach** method.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```ts
+// Parse the URL.
 const myURLObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
+// Traverse the URLParams key-value pairs through a callback function.
 myURLObject.params.forEach((value, name, searchParams) => {
     console.info(name, value, myURLObject.params === searchParams);
 });
@@ -260,7 +242,7 @@ Obtains the value of the first key-value pair based on the specified key.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| name | string | Yes| Key specified to obtain the value.|
+| name | string | Yes | Specifies the key name. |
 
 **Return value**
 
@@ -268,21 +250,13 @@ Obtains the value of the first key-value pair based on the specified key.
 | -------- | -------- |
 | string \| null | The first value is returned. If no value is found, **null** is returned.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **Example**
 
 ```ts
 let paramsObject = new url.URLParams('name=Jonathan&age=18');
-let name = paramsObject.get("name"); // is the string "Jonathan"
-let age = paramsObject.get("age"); // is the string "18"
-let getObj = paramsObject.get("abc"); // undefined
+let name = paramsObject.get('name'); // is the string "Jonathan"
+let age = paramsObject.get('age'); // is the string "18"
+let absentValue = paramsObject.get('abc'); // undefined
 ```
 
 
@@ -308,19 +282,14 @@ Checks whether a key has a value.
 | -------- | -------- |
 | boolean | Check result. The value **true** is returned if the value exists; otherwise, **false** is returned.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **Example**
 
 ```ts
+// Parse the URL string.
 let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
+// Construct a URLParams object.
 let paramsObject = new url.URLParams(urlObject.search.slice(1));
+// Determine whether the key name "bard" exists.
 let result = paramsObject.has('bard');
 ```
 
@@ -329,9 +298,9 @@ let result = paramsObject.has('bard');
 
 set(name: string, value: string): void
 
-Sets the value for a key.
+Sets the value associated with name in the URLParams object to value.
 
-If key-value pairs matching the specified key exist, the value of the first key-value pair will be set to the specified value and other key-value pairs will be deleted. Otherwise, the key-value pair will be appended to the query string.
+If a key-value pair with the name name exists, set the value of the first key-value pair to value and delete all other values. If the key name does not exist, append the key-value pair to the query string.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -341,16 +310,8 @@ If key-value pairs matching the specified key exist, the value of the first key-
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| name | string | Yes| Key of the value to set.|
+| name | string | Yes | Key name of the parameter to be set. |
 | value | string | Yes| Value to set.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message|
-| -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -365,7 +326,7 @@ paramsObject.set('baz', '3'); // Add a third parameter.
 
 sort(): void
 
-Sorts all key-value pairs in this object based on the Unicode code points of the keys.  This method uses a stable sorting algorithm. (The relative order between key-value pairs with equal keys is retained.)
+Sorts all key-value pairs contained in this object, applicable to URL normalization scenarios (such as URL signing, cache key generation, and other scenarios that require consistent parameter order). The sort order is based on the Unicode code points of the keys. This method uses a stable sorting algorithm (preserving the relative order of key-value pairs with equal keys).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -384,7 +345,7 @@ console.info(paramsObject.toString()); // Display the sorted query string // Out
 
 keys(): IterableIterator&lt;string&gt;
 
-Obtains an ES6 iterator that contains the keys of all the key-value pairs.
+Returns an iterator containing the name of all key-value pairs.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -394,13 +355,16 @@ Obtains an ES6 iterator that contains the keys of all the key-value pairs.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;string&gt; | An ES6 iterator that contains the keys of all the key-value pairs.|
+| IterableIterator&lt;string&gt; | Returns an iterator containing the name of all key-value pairs. |
 
 **Example**
 
 ```ts
+// Construct a URLParams object.
 let paramsObject = new url.URLParams("key1=value1&key2=value2");
+// Get the iterator of all key names.
 let keys = paramsObject.keys();
+// Iterate and output the key names.
 for (let key of keys) {
   console.info(key);
 }
@@ -413,7 +377,7 @@ for (let key of keys) {
 
 values(): IterableIterator&lt;string&gt;
 
-Obtains an ES6 iterator that contains the values of all the key-value pairs.
+Returns an iterator containing the value of all key-value pairs.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -423,13 +387,16 @@ Obtains an ES6 iterator that contains the values of all the key-value pairs.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;string&gt; | An ES6 iterator that contains the values of all the key-value pairs.|
+| IterableIterator&lt;string&gt; | Returns an iterator containing the value of all key-value pairs. |
 
 **Example**
 
 ```ts
+// Construct a URLParams object.
 let paramsObject = new url.URLParams("key1=value1&key2=value2");
+// Get the iterator of all values.
 let values = paramsObject.values();
+// Traverse and output the values.
 for (let value of values) {
   console.info(value);
 }
@@ -442,7 +409,7 @@ for (let value of values) {
 
 [Symbol.iterator]\(): IterableIterator&lt;[string, string]&gt;
 
-Obtains an ES6 iterator. Each item of the iterator is an array, and the first and second fields of each array are the key and value respectively.
+Returns an iterator, where each item of the iterator is an Array. The first item of the Array is name, and the second item of the Array is value.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -452,13 +419,16 @@ Obtains an ES6 iterator. Each item of the iterator is an array, and the first an
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;[string, string]&gt; | ES6 iterator.|
+| IterableIterator&lt;[string, string]&gt; | Returns an iterator, where each item is a [string, string] array containing name and value. |
 
 **Example**
 
 ```ts
+// Construct a URLParams object.
 const paramsObject = new url.URLParams('fod=bay&edg=bap');
+// Get the Symbol.iterator iterator.
 let iter = paramsObject[Symbol.iterator]();
+// Iterate over key-value pairs.
 for (let pair of iter) {
   console.info(pair[0] + ', ' + pair[1]);
 }
@@ -486,15 +456,19 @@ Obtains search parameters that are serialized as a string and, if necessary, per
 **Example**
 
 ```ts
+// Parse the URL string.
 let urlObject = url.URL.parseURL('https://developer.exampleUrl/?fod=1&bard=2');
+// Construct a URLParams object.
 let params = new url.URLParams(urlObject.search.slice(1));
+// Append parameters.
 params.append('fod', '3');
+// Serialize the parameters as a string.
 console.info(params.toString()); // Output 'fod=1&bard=2&fod=3'
 ```
 
 ## URL
 
-Provides APIs for parsing, constructing, standardizing, and encoding URL strings.
+Used for parsing, constructing, normalizing, and encoding the corresponding URL string.
 
 ### Properties
 
@@ -509,58 +483,56 @@ Provides APIs for parsing, constructing, standardizing, and encoding URL strings
 | origin | string | Yes| No| Read-only string that contains the Unicode serialization of the origin of the represented URL. **Atomic service API**: This API can be used in atomic services since API version 11.|
 | password | string | No| No| Password in a URL. **Atomic service API**: This API can be used in atomic services since API version 11.|
 | pathname | string | No| No| Path in a URL. **Atomic service API**: This API can be used in atomic services since API version 11.|
-| port | string | No| No| Port in a URL. **Atomic service API**: This API can be used in atomic services since API version 11.|
+| port | string | No | No | Get and set the port part of the URL. When port is the default port of the current protocol, port will be parsed as an empty string. **Atomic Service API**: Since API version 11, this interface supports use in atomic services. |
 | protocol | string | No| No| Protocol in a URL. **Atomic service API**: This API can be used in atomic services since API version 11.|
 | search | string | No| No| Serialized query string in a URL. **Atomic service API**: This API can be used in atomic services since API version 11.|
-| searchParams<sup>(deprecated)</sup> | [URLSearchParams](#urlsearchparamsdeprecated) | Yes| No| **URLSearchParams** object allowing access to the query parameters in a URL.<br>- **NOTE**: This property is supported since API version 7 and is deprecated since API version 9. You are advised to use params<sup>9+</sup> instead.|
-| params<sup>9+</sup> | [URLParams](#urlparams9) | Yes| No| **URLParams** object allowing access to the query parameters in a URL. **Atomic service API**: This API can be used in atomic services since API version 11.|
+| searchParams<sup>(deprecated)</sup> | [URLSearchParams](#urlsearchparamsdeprecated) | Yes | No | Obtains the URLSearchParams object, used to access URL query parameters.<br>- **Note:** This attribute is supported since API version 7 and deprecated since API version 9. It is recommended to use params<sup>9+</sup> instead. |
+| params<sup>9+</sup> | [URLParams](#urlparams9) | Yes | No | Obtains the URLParams object, used to access URL query parameters. **Atomic Service API**: Since API version 11, this interface supports use in atomic services. |
 | username | string | No| No| Username in a URL. **Atomic service API**: This API can be used in atomic services since API version 11.|
 
 > **NOTE**
 >
-> When parsing a URL string, if the port specified in the input is the default port for the current protocol, it will be parsed as an empty string. The default ports are as follows.
+> When parsing a URL string, if the port in the input is the default port of the current protocol, the port is parsed as an empty string. The default ports are:
 >
-> | Protocol | Default Port |
-> | -------- | -------- |
-> | http: | 80 |
-> | https: | 443 |
-> | ftp: | 21 |
-> | gopher: | 70 |
-> | ws: | 80 |
-> | wss: | 443 |
+> - http:  80
+> - https:  443
+> - ftp:  21
+> - gopher:  70
+> - ws:  80
+> - wss:  443
 
 **Example**
 
 ```ts
-let that = url.URL.parseURL('http://username:password@host:8080/directory/file?foo=1&bar=2#fragment');
-console.info("hash " + that.hash); // hash #fragment
-console.info("host " + that.host); // host host:8080
-console.info("hostname " + that.hostname); // hostname host
-console.info("href " + that.href); // href http://username:password@host:8080/directory/file?foo=1&bar=2#fragment
-console.info("origin " + that.origin); // origin http://host:8080
-console.info("password " + that.password); // password password
-console.info("pathname " + that.pathname); // pathname /directory/file
-console.info("port " + that.port); // port 8080
-console.info("protocol " + that.protocol); // protocol http:
-console.info("search " + that.search); // search ?foo=1&bar=2
-console.info("username " + that.username); // username username
-// The return value of that.params is a URLParams object.
-console.info("params: foo " + that.params.get("foo")); // params: foo 1
+let parsedUrl = url.URL.parseURL('http://username:password@host:8080/directory/file?foo=1&bar=2#fragment');
+console.info("hash " + parsedUrl.hash); // hash #fragment
+console.info("host " + parsedUrl.host); // host host:8080
+console.info("hostname " + parsedUrl.hostname); // hostname host
+console.info("href " + parsedUrl.href); // href http://username:password@host:8080/directory/file?foo=1&bar=2#fragment
+console.info("origin " + parsedUrl.origin); // origin http://host:8080
+console.info("password " + parsedUrl.password); // password password
+console.info("pathname " + parsedUrl.pathname); // pathname /directory/file
+console.info("port " + parsedUrl.port); // port 8080
+console.info("protocol " + parsedUrl.protocol); // protocol http:
+console.info("search " + parsedUrl.search); // search ?foo=1&bar=2
+console.info("username " + parsedUrl.username); // username username
+// The return value of parsedUrl.params is a URLParams object.
+console.info("params: foo " + parsedUrl.params.get("foo")); // params: foo 1
 
 let urlObj = url.URL.parseURL('http://testhost:80/directory/file?foo=1');
 console.info("port " + urlObj.port); // port 
-console.info("toString " + urlObj.port); // toString http://testhost/directory/file?foo=1
+console.info("toString " + urlObj.toString()); // toString http://testhost/directory/file?foo=1
 ```
 
 ### constructor<sup>(deprecated)</sup>
 
+constructor(url: string, base?: string | URL)
+
+Constructor of URL. It has the same functionality as the [parseURL](#parseurl9) method, but parseURL is a static factory method. You are advised to use parseURL to create a URL object.
+
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. You are advised to use [parseURL<sup>9+</sup>](#parseurl9) instead.
-
-constructor(url: string, base?: string | URL)
-
-Creates a URL.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -568,31 +540,31 @@ Creates a URL.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| url | string | Yes| A string representing an absolute or a relative URL.<br>In the case of a relative URL, you must specify **base** to parse the final URL.<br>In the case of an absolute URL, the passed **base** will be ignored.|
-| base | string \| URL | No| Either a string or an object. The default value is **undefined**.<br>- **string**: string.<br>- **URL**: URL object.|
+| url | string | Yes | A string representing an absolute URL or a relative URL. It must be in a valid URL format. <br>If url is a relative URL, base must be specified to resolve the final URL. <br>If url is an absolute URL, the given base will not take effect. |
+| base | string \| URL |  No  | Input parameter string or object. The default value is undefined.<br>- string: a string representing the base URL. It must be a valid URL format when url is a relative URL.<br>- URL: a parsed URL object, used as the base address for parsing a relative URL.|
 
 **Example**
 
 ```ts
-let mm = 'https://username:password@host:8080';
-let a = new url.URL("/", mm); // Output 'https://username:password@host:8080/';
-let b = new url.URL(mm); // Output 'https://username:password@host:8080/';
-new url.URL('path/path1', b); // Output 'https://username:password@host:8080/path/path1';
-let c = new url.URL('/path/path1', b);  // Output 'https://username:password@host:8080/path/path1'; 
-new url.URL('/path/path1', c); // Output 'https://username:password@host:8080/path/path1';
-new url.URL('/path/path1', a); // Output 'https://username:password@host:8080/path/path1';
+let baseUrl = 'https://username:password@host:8080';
+let rootPathUrl = new url.URL("/", baseUrl); // Output 'https://username:password@host:8080/';
+let absoluteUrl = new url.URL(baseUrl); // Output 'https://username:password@host:8080/';
+new url.URL('path/path1', absoluteUrl); // Output 'https://username:password@host:8080/path/path1';
+let relativePathUrl = new url.URL('/path/path1', absoluteUrl);  // Output 'https://username:password@host:8080/path/path1'; 
+new url.URL('/path/path1', relativePathUrl); // Output 'https://username:password@host:8080/path/path1';
+new url.URL('/path/path1', rootPathUrl); // Output 'https://username:password@host:8080/path/path1';
 new url.URL('/path/path1', "https://www.exampleUrl/fr-FR/toot"); // Output https://www.exampleUrl/path/path1
 new url.URL('/path/path1', ''); // Raises a TypeError exception as '' is not a valid URL
 new url.URL('/path/path1'); // Raises a TypeError exception as '/path/path1' is not a valid URL
 new url.URL('https://www.example.com', ); // Output https://www.example.com/
-new url.URL('https://www.example.com', b); // Output https://www.example.com/
+new url.URL('https://www.example.com', absoluteUrl); // Output https://www.example.com/
 ```
 
 ### constructor<sup>9+</sup>
 
 constructor()
 
-A no-argument constructor used to create a URL. It returns a **URL** object after **parseURL** is called. It is not used independently.
+Parameterless constructor of URL. It is not recommended to call it directly. Use the [parseURL](#parseurl9) method to create a URL object.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -602,7 +574,7 @@ A no-argument constructor used to create a URL. It returns a **URL** object afte
 
 static parseURL(url: string, base?: string | URL): URL
 
-Parses a URL.
+Parses a URL string and returns the parsed URL object. The object contains URL components such as the protocol, host, port, path, and query parameters.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -612,14 +584,14 @@ Parses a URL.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| url | string | Yes| A string representing an absolute or a relative URL.<br>In the case of a relative URL, you must specify **base** to parse the final URL.<br>In the case of an absolute URL, the passed **base** will be ignored.|
-| base | string \| URL | No| Either a string or an object. The default value is **undefined**.<br>- **string**: string. If the first parameter is a relative URL, the parameter must comply with the URL standard.<br>- **URL**: URL object.<br>- This parameter is used when **url** is a relative URL.|
+| url | string | Yes | A string representing an absolute URL or a relative URL. <br>If url is a relative URL, base must be specified to resolve the final URL. <br>If url is an absolute URL, the given base will not take effect. |
+| base | string \| URL | No | Input parameter string or object. The default value is undefined.<br>- string: String. When the first parameter is a relative URL, this parameter needs to comply with the URL standard.<br>- URL: URL object.<br>- Used when url is a relative URL. This parameter will not take effect when url is an absolute URL. |
 
 **Return value**
 
 | Type| Description                                             |
 | ---- | ------------------------------------------------- |
-| [URL](#url)  | **URL** object created.|
+| [URL](#url)  | Returns the parsed URL object, containing the components of the URL (such as protocol, host, and path attributes). |
 
 > **NOTE**
 >
@@ -627,23 +599,22 @@ Parses a URL.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200002 | Invalid url string. |
 
 **Example**
 
 ```ts
-let mm = 'https://username:password@host:8080/test/test1/test3';
-let urlObject = url.URL.parseURL(mm);
+let baseUrl = 'https://username:password@host:8080/test/test1/test3';
+let urlObject = url.URL.parseURL(baseUrl);
 let result = urlObject.toString(); // Output 'https://username:password@host:8080/test/test1/test3'
 // If url is a relative path, the path in the base parameter is test/test1, and the path of the parsed URL is /test/path2/path3.
-let url1 = url.URL.parseURL('path2/path3', 'https://www.example.com/test/test1'); // Output 'https://www.example.com/test/path2/path3'
+let relativePathUrl = url.URL.parseURL('path2/path3', 'https://www.example.com/test/test1'); // Output 'https://www.example.com/test/path2/path3'
 // If url is a root directory, the path in the base parameter is /test/test1/test3, and the path of the parsed URL is /path1/path2.
-let url2 = url.URL.parseURL('/path1/path2', urlObject); // Output 'https://username:password@host:8080/path1/path2'
+let rootPathUrl = url.URL.parseURL('/path1/path2', urlObject); // Output 'https://username:password@host:8080/path1/path2'
 url.URL.parseURL('/path/path1', "https://www.exampleUrl/fr-FR/toot"); // Output 'https://www.exampleUrl/path/path1'
 url.URL.parseURL('/path/path1', ''); // Raises a TypeError exception as '' is not a valid URL
 url.URL.parseURL('/path/path1'); // Raises a TypeError exception as '/path/path1' is not a valid URL
@@ -655,7 +626,7 @@ url.URL.parseURL('https://www.example.com', urlObject); // Output 'https://www.e
 
 toString(): string
 
-Converts the parsed URL into a string.
+Converts the parsed URL to a string. The return value is the same as the value of the href attribute of the URL.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -665,7 +636,7 @@ Converts the parsed URL into a string.
 
 | Type| Description|
 | -------- | -------- |
-| string | Target string.|
+| string | Serialized string of the parsed URL. |
 
 **Example**
 
@@ -688,17 +659,23 @@ Converts the parsed URL into a JSON string.
 
 | Type| Description|
 | -------- | -------- |
-| string | JSON string.|
+| string | JSON serialized string of the URL object. |
 
 **Example**
 ```ts
+// Parse the URL string.
 const urlObject = url.URL.parseURL('https://username:password@host:8080/directory/file?query=pppppp#qwer=da');
+// Convert the URL to a string.
 let result = urlObject.toJSON();
 ```
 
 ## URLSearchParams<sup>(deprecated)</sup>
 
-Defines APIs for handling URL query strings. This class is deprecated since API version 9. You are advised to use [URLParams](#urlparams9) instead.
+The URLSearchParams interface defines some utility methods for processing URL query strings.
+
+> **NOTE**
+>
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [URLParams](#urlparams9) instead.
 
 ### constructor<sup>(deprecated)</sup>
 
@@ -716,7 +693,7 @@ A constructor used to create a **URLSearchParams** instance.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| init | string[][] \| Record&lt;string, string&gt; \| string \| URLSearchParams | No| Input parameter objects, which include the following:<br>- **string[][]**: two-dimensional string array.<br>- **Record&lt;string, string&gt;**: list of objects.<br>- **string**: string.<br>- **URLSearchParams**: object.<br>The default value is **undefined**.|
+| init | string[][] \| Record&lt;string, string&gt; \| string \| URLSearchParams | No | Input parameter object.<br>- string[][]: two-dimensional string array, each inner array contains two elements, which are the key name and key value respectively.<br>- Record&lt;string, string&gt;: object list.<br>- string: String, which must follow the URL query parameter format, such as 'key=value&key2=value2'.<br>- URLSearchParams: Object.<br>- Default value: undefined. |
 
 **Example**
 
@@ -785,7 +762,7 @@ paramsObject.delete('fod');
 
 getAll(name: string): string[]
 
-Obtains all the key-value pairs based on the specified key.
+Obtains the set of all values corresponding to the specified name.
 
 > **NOTE**
 >
@@ -803,7 +780,7 @@ Obtains all the key-value pairs based on the specified key.
 
 | Type| Description|
 | -------- | -------- |
-| string[] | All key-value pairs matching the specified key.|
+| string[] | All the values obtained. |
 
 **Example**
 
@@ -818,7 +795,7 @@ console.info(params.getAll('fod').toString()) // Output ["1","3"].
 
 entries(): IterableIterator<[string, string]>
 
-Obtains an ES6 iterator. Each item of the iterator is an array, and the first and second fields of each array are the key and value respectively.
+Returns an iterator, where each item of the iterator is an Array. The first item of the Array is name, and the second item of the Array is value.
 
 > **NOTE**
 >
@@ -830,7 +807,7 @@ Obtains an ES6 iterator. Each item of the iterator is an array, and the first an
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;[string, string]&gt; | ES6 iterator.|
+| IterableIterator&lt;[string, string]&gt; | Returns an iterator, where each item is a [string, string] array containing name and value. |
 
 **Example**
 
@@ -890,7 +867,7 @@ Obtains the value of the first key-value pair based on the specified key.
 
 > **NOTE**
 >
-> If the key-value pair does not exist, **undefined** is returned.<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [URLParams.get<sup>9+</sup>](#get9) instead.
+> If a nonexistent key-value pair name is searched for, the return value is undefined. This API is supported since API version 7 and deprecated since API version 9. You are advised to use [URLParams.get<sup>9+</sup>](#get9) instead.
 
 
 **System capability**: SystemCapability.Utils.Lang
@@ -939,7 +916,7 @@ Checks whether a key has a value.
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Check result. The value **true** is returned if the key has a value; otherwise, **false** is returned.|
+| boolean | Check result. The value **true** is returned if the value exists; otherwise, **false** is returned. |
 
 **Example**
 
@@ -982,7 +959,7 @@ paramsObject.set('baz', '3'); // Add a third parameter.
 
 sort(): void
 
-Sorts all key-value pairs contained in this object based on the Unicode code points of the keys and returns undefined.  This method uses a stable sorting algorithm, that is, the relative order between key-value pairs with equal keys is retained.
+Sorts all key-value pairs contained in this object. The sort order is based on the Unicode code points of the keys. This method uses a stable sorting algorithm (that is, the relative order between key-value pairs with equal keys will be preserved).
 
 > **NOTE**
 >
@@ -1003,7 +980,7 @@ console.info(searchParamsObject.toString()); // Display the sorted query string 
 
 keys(): IterableIterator&lt;string&gt;
 
-Obtains an ES6 iterator that contains the keys of all the key-value pairs.
+Returns an iterator of the names of all key-value pairs.
 
 > **NOTE**
 >
@@ -1015,7 +992,7 @@ Obtains an ES6 iterator that contains the keys of all the key-value pairs.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;string&gt; | ES6 iterator that contains the keys of all the key-value pairs.|
+| IterableIterator&lt;string&gt; | Returns an iterator of the names of all key-value pairs. |
 
 **Example**
 
@@ -1034,7 +1011,7 @@ for (let key of keys) {
 
 values(): IterableIterator&lt;string&gt;
 
-Obtains an ES6 iterator that contains the values of all the key-value pairs.
+Returns an iterator of the values of all key-value pairs.
 
 > **NOTE**
 >
@@ -1046,7 +1023,7 @@ Obtains an ES6 iterator that contains the values of all the key-value pairs.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;string&gt; | ES6 iterator that contains the values of all the key-value pairs.|
+| IterableIterator&lt;string&gt; | Returns an iterator of the values of all key-value pairs. |
 
 **Example**
 
@@ -1065,7 +1042,7 @@ for (let value of values) {
 
 [Symbol.iterator]\(): IterableIterator&lt;[string, string]&gt;
 
-Obtains an ES6 iterator. Each item of the iterator is an array, and the first and second fields of each array are the key and value respectively.
+Returns an iterator, where each item of the iterator is an Array. The first item of the Array is name, and the second item of the Array is value.
 
 > **NOTE**
 >
@@ -1077,7 +1054,7 @@ Obtains an ES6 iterator. Each item of the iterator is an array, and the first an
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;[string, string]&gt; | ES6 iterator.|
+| IterableIterator&lt;[string, string]&gt; | Returns an iterator, where each item is a [string, string] array containing name and value. |
 
 **Example**
 

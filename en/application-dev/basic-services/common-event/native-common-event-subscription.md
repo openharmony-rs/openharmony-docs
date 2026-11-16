@@ -1,11 +1,11 @@
 # Subscribing to Common Events in C
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-11-16T04:26:24.645Z pushedAt=2026-11-16T06:31:14.042Z nl=1 -->
 
 ## When to Use
 
@@ -13,7 +13,7 @@ A subscriber created using [OH_CommonEvent_CreateSubscriber](../../reference/api
 
 ## Available APIs
 
-For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md).
+For detailed API descriptions, see [oh_commonevent.h](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md).
 
 | API                              | Description                                                            |
 | ------------------------------------ | ---------------------------------------------------------------- |
@@ -34,8 +34,6 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
    
    ``` C
    #include <cstdint>
-   #include <cstdio>
-   #include <cwchar>
    #include <cstring>
    #include "hilog/log.h"
    #include "BasicServicesKit/oh_commonevent.h"
@@ -132,11 +130,11 @@ For details about the APIs, see [oh_commonevent.h](../../reference/apis-basic-se
    
        // Note: In addition to int, the following data types of additional information of a common event can be obtained by calling the corresponding HarmonyOS APIs:
        // - Basic types: Boolean (OH_CommonEvent_GetBoolFromParameters), long (OH_CommonEvent_GetLongFromParameters),
-       // double (OH_CommonEvent_GetDoubleFromParameters), and char (OH_CommonEvent_GetCharFromParameters)
+       // double (OH_CommonEvent_GetDoubleFromParameters), char (OH_CommonEvent_GetCharFromParameters)
        // -
        // Array types: int array (OH_CommonEvent_GetIntArrayFromParameters), long array (OH_CommonEvent_GetLongArrayFromParameters),
        // double array (OH_CommonEvent_GetDoubleArrayFromParameters), char array (OH_CommonEvent_GetCharArrayFromParameters),
-       // and Boolean array (OH_CommonEvent_GetBoolArrayFromParameters)
+       // bool array (OH_CommonEvent_GetBoolArrayFromParameters)
        // Check whether the key exists using OH_CommonEvent_HasKeyInParameters for all types to avoid operation failures.
    }
    ```

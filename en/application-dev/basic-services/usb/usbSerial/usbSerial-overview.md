@@ -6,7 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=265662c3f1bebcccc82375e5952ee48da32366a3 translatedAt=2026-10-28T12:17:00.500Z pushedAt=2026-10-28T12:46:30.490Z nl=1 -->
+<!-- md-trans-meta sourceCommit=30818b8aadf01f4952fa7bcc510cb75a6b154fcd translatedAt=2026-11-16T04:34:09.957Z pushedAt=2026-11-16T06:31:14.096Z nl=1 -->
 
 ## Overview
 
@@ -57,7 +57,7 @@ The USB serial port service consists of two phases:
 
 - Development tool and configuration:
 
-  As a development tool, DevEco Studio is a prerequisite for developing the USB serial communication service. You can use DevEco Studio to perform development, debugging, and packaging. [Download and install](https://developer.huawei.com/consumer/en/download/) DevEco Studio and verify basic operations to ensure that it can function properly. For details, see [Creating and Running a Project](https://developer.huawei.com/consumer/en/doc/doccenter-deveco-studio/ide-create-new-project) in [DevEco Studio User Guide](https://developer.huawei.com/consumer/en/doc/doccenter-deveco-studio/ide-tools-overview).
+  As a development tool, DevEco Studio is one of the prerequisites for USB serial port communication service development. Developers can use DevEco Studio to perform development, debugging, and packaging. [Download and install](https://developer.huawei.com/consumer/en/download/) DevEco Studio and verify basic operations to ensure that it can function properly. For details, see [Creating a Project](https://developer.huawei.com/consumer/en/doc/doccenter-deveco-studio/ide-create-new-project) in [DevEco Studio User Guide](https://developer.huawei.com/consumer/en/doc/doccenter-deveco-studio/ide-tools-overview).
 
 - SDK version configuration:
 

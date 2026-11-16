@@ -1,10 +1,12 @@
 # Class (Array)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=a9fc2488607fcc42bb5986c0a0089b8eda0278e0 translatedAt=2026-11-16T04:38:25.113Z pushedAt=2026-11-16T06:31:14.126Z nl=2 -->
+
 A linear data structure that is implemented on arrays and can be passed between ArkTS concurrent instances.
 
 Pass-by-reference is recommended for better transfer performance.
@@ -50,7 +52,7 @@ A constructor used to create an empty ArkTS array.
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                           |
 | -------- | --------------------------------------------------- |
@@ -77,15 +79,14 @@ A constructor used to create an ArkTS array with the given elements.
 | Name| Type| Mandatory| Description                           |
 | ------ | ---- | ---- | ------------------------------- |
 | first  | T    | Yes  | First element to be included in the ArkTS array.|
-| left   | T[]  | No  | Remaining elements to be included in the ArkTS array.  |
+| left   | T[]  | No   | Initializes the remaining elements of the ArkTS Array. The default value is an empty array. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                           |
 | -------- | --------------------------------------------------- |
-| 401      | Parameter error.                                    |
 | 10200012 | The Array's constructor cannot be directly invoked. |
 
 **Example**
@@ -107,21 +108,20 @@ A constructor used to create an ArkTS array with the given elements.
 
 | Name| Type| Mandatory| Description                           |
 | ------ | ---- | ---- | ------------------------------- |
-| items  | T[]  | No  | Elements to be included in the ArkTS array.      |
+| items  | T[]  | No   | Elements used to initialize the ArkTS Array. The default value is an empty array.       |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                           |
 | -------- | --------------------------------------------------- |
-| 401      | Parameter error.                                    |
 | 10200012 | The Array's constructor cannot be directly invoked. |
 
 **Example**
 
 ```ts
-let arrayPara  = [1,2,3];
+let arrayPara = [1,2,3];
 let array = new collections.Array<number>(...arrayPara);
 ```
 
@@ -139,7 +139,7 @@ Creates an ArkTS array of a fixed length, with each element set to a given initi
 
 | Name   | Type         | Mandatory| Description                           |
 | --------- | ------------- | ---- | ------------------------------- |
-| arrayLength | number | Yes  | Length of the ArkTS array.|
+| arrayLength | number | Yes | Used to construct the length of the ArkTS Array. The value should be a non-negative integer, otherwise an exception is thrown. |
 | initialValue | T | Yes  | Initial value of each element in the ArkTS array.|
 
 **Return value**
@@ -150,11 +150,11 @@ Creates an ArkTS array of a fixed length, with each element set to a given initi
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                   |
+| 10200011 | The create method cannot be bound. <br/> Applicable version: 12-17 |
 
 **Example**
 
@@ -186,24 +186,24 @@ Creates an ArkTS array from an array-like object.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
+| 10200011 | The from method cannot be bound. <br/> applicable version: 12-17 |
 
 **Example**
 
 ```ts
 // Positive example:
-let array: Array<string> = ['str1', 'str2', 'str3']; // Native Array<T>, where T is the sendable data type.
+let array: Array<string> = ['str1', 'str2', 'str3']; // Native Array<T>, where T is a Sendable data type.
 let sendableArray = collections.Array.from<string>(array); // Returns Sendable Array<T>.
 ```
 
 <!--code_no_check-->
 ```ts
 // Negative example:
-let array: Array<Array<string>> = [['str1', 'str2', 'str3'], ['str4', 'str5', 'str6'], ['str7', 'str8', 'str9']]; // Native Array<T>, where T is a non-sendable data type.
+let array: Array<Array<string>> = [['str1', 'str2', 'str3'], ['str4', 'str5', 'str6'], ['str7', 'str8', 'str9']]; // Native Array<T>, T is a non-Sendable Data type.
 let sendableArray = collections.Array.from<Array<string>>(array); // Prints the following exception information: Parameter error.Only accept sendable value
 ```
 
@@ -231,29 +231,28 @@ Creates an ArkTS array from an iterable object.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 10200011 | The from method cannot be bound. <br/> applicable version: 12-17 |
 
 **Example**
 
 ```ts
-// Positive example:
 const mapper = new Map([
   ['1', 'a'],
   ['2', 'b'],
 ]);
 let newArray: collections.Array<string> = collections.Array.from(mapper.values());
-console.info(newArray.toString()); // Expected output: a,b
+console.info(newArray.toString()); // Expected output: a, b
 ```
 
 ## from<sup>18+</sup>
 
 static from\<T>(arrayLike: ArrayLike\<T> | Iterable\<T>, mapFn: ArrayFromMapFn\<T, T>): Array\<T>
 
-Creates an ArkTS array from an array-like object, and uses a custom function to process each array element.
+Creates a new ArkTS Array from an object that implements the ArrayLike interface or the Iterable interface, and processes each array element using a custom function.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -272,14 +271,6 @@ Creates an ArkTS array from an array-like object, and uses a custom function to 
 | --------- | ----------------------- |
 | Array\<T> | Newly created ArkTS array.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                        |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **Example**
 
 ```ts
@@ -292,7 +283,7 @@ console.info(newArray.toString()); // Expected output: 1, 3, 5
 
 static from\<U, T>(arrayLike: ArrayLike\<U> | Iterable\<U>, mapFn: ArrayFromMapFn\<U, T>): Array\<T>
 
-Creates an ArkTS array from an array-like object, and uses a custom function to process each array element. The type of the elements in the array-like object can be different from that of the array elements.
+Creates a new ArkTS Array from an object that implements the ArrayLike interface or the Iterable interface, and processes each array element using a custom function. The element type of the interface object can be different from the element type of the array.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -311,18 +302,10 @@ Creates an ArkTS array from an array-like object, and uses a custom function to 
 | --------- | ----------------------- |
 | Array\<T> | Newly created ArkTS array.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                        |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **Example**
 
 ```ts
-let array : Array<number> = [1, 2, 3]; // Native Array<T>
+let array: Array<number> = [1, 2, 3]; // Native Array<T>
 let newArray = collections.Array.from<number, string>(array, (value, index) => value + "." + index); // Return a new Array<T>.
 console.info(newArray.toString()); // Expected output: 1.0, 2.1, 3.2
 ```
@@ -349,20 +332,12 @@ Check whether the input parameter is an ArkTS array.
 | --------- | ----------------------- |
 | boolean | Check result. The value **true** is returned if the input parameter is an ArkTS array; otherwise, **false** is returned.|
 
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                        |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
-
 **Example**
 
 ```ts
 let arr: collections.Array<string> = new collections.Array('a', 'b', 'c', 'd');
 let result: boolean = collections.Array.isArray(arr);
-console.info(result + ''); // Expected output: true
+console.info(String(result)); // Expected output: true
 ```
 
 ## of<sup>18+</sup>
@@ -379,21 +354,13 @@ Creates an ArkTS array with a variable number of parameters.
 
 | Name   | Type         | Mandatory| Description                           |
 | --------- | ------------- | ---- | ------------------------------- |
-| items | T[] | No  | Array of elements used to create the array. The number of elements can be zero, one, or more.|
+| items | T[] | No   | Collection of elements used to create the array. The number of parameters can be 0, 1, or more. The default value is an empty array. |
 
 **Return value**
 
 | Type     | Description                   |
 | --------- | ----------------------- |
 | Array\<T> | Newly created ArkTS array.|
-
-**Error codes**
-
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
-
-| ID| Error Message                        |
-| -------- | -------------------------------- |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
@@ -415,9 +382,9 @@ Copies elements within a given range from this ArkTS array to another position i
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| target | number | Yes| Start index of the range. If a negative number is passed in, it refers to the index of `target + array.length`.|
-| start | number | Yes| Start index of the range. If a negative number is passed in, it refers to the index of **start + array.length**.|
-| end | number | No| End index of the range. If a negative number is passed in, it refers to the index of `end + array.length`. The default value is the length of the ArkTS array.|
+| target | number | Yes | Index of the target start position. If `target < 0`, it starts from the `target + array.length` position. The value should be an integer; when a floating point number is input, it is rounded down. |
+| start | number | Yes | Index of the source start position. If `start < 0`, it starts from the `start + array.length` position. The value should be an integer; when a floating point number is input, it is rounded down. The element at the start position index is included in the copy. |
+| end | number | No | Index of the source end position. If `end < 0`, it ends at the `end + array.length` position. The default value is the length of the ArkTS Array. The value should be an integer; when a floating point number is input, it is rounded down. The element at the end position index is not included in the copy. |
 
 **Return value**
 
@@ -427,11 +394,10 @@ Copies elements within a given range from this ArkTS array to another position i
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------ |
-| 401 | Parameter error: Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200011 | The copyWithin method cannot be bound.           |
 | 10200201 | Concurrent modification error.               |
 
@@ -458,7 +424,7 @@ Obtains the index of the last occurrence of the specified value in this ArkTS ar
 | Name          | Type    | Mandatory | Description                                                                               |
 | ------------- | ------ | --- | --------------------------------------------------------------------------------- |
 | searchElement | T | Yes  | Value to search for.                                                                           |
-| fromIndex     | number | No  | Index from which the search starts. The default value is **0**. If the index is greater than or equal to the length of the ArkTS array, **-1** is returned. If a negative number is passed in, it refers to the index of **fromIndex + array.length**.|
+| fromIndex     | number | No   | Starting index of the search. The default value is the length of the ArkTS Array minus 1 (that is, starting from the end). If the index is greater than or equal to the length of the ArkTS Array, -1 is returned. If fromIndex < 0, the search starts from the position fromIndex + array.length. |
 
 **Return value**
 
@@ -468,7 +434,7 @@ Obtains the index of the last occurrence of the specified value in this ArkTS ar
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID   | Error Message                                   |
 | -------- | --------------------------------------- |
@@ -479,10 +445,10 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let array: collections.Array<number> = collections.Array.from([3, 5, 9]);
-console.info(array.lastIndexOf(3) + ''); // Expected output: 0
-console.info(array.lastIndexOf(7) + ''); // Expected output: -1
-console.info(array.lastIndexOf(9, 2) + ''); // Expected output: 2
-console.info(array.lastIndexOf(9, -2) + ''); // Expected output: -1
+console.info(String(array.lastIndexOf(3))); // Expected output: 0
+console.info(String(array.lastIndexOf(7))); // Expected output: -1
+console.info(String(array.lastIndexOf(9, 2))); // Expected output: 2
+console.info(String(array.lastIndexOf(9, -2))); // Expected output: -1
 ```
 
 ## some<sup>18+</sup>
@@ -508,7 +474,7 @@ Checks whether this ArkTS array contains an element that meets certain condition
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                           |
 | -------- | ---------------------------------- |
@@ -519,7 +485,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 
 ```ts
 let newArray: collections.Array<number> = collections.Array.from([-10, 20, -30, 40, -50]);
-console.info(newArray.some((element: number) => element < 0) + ''); // Expected output: true
+console.info(String(newArray.some((element: number) => element < 0))); // Expected output: true
 ```
 
 ## reduceRight<sup>18+</sup>
@@ -546,11 +512,10 @@ Goes through each element in this ArkTS array from right to left, uses a callbac
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID   | Error Message                                   |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.          |
 
@@ -559,7 +524,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 let array = new collections.Array<number>(1, 2, 3, 4, 5);
 let reducedValue = array.reduceRight((accumulator, value) => accumulator + value); // Accumulated result of all elements.
-console.info(reducedValue + ''); // Expected output: 15
+console.info(String(reducedValue)); // Expected output: 15
 ```
 
 ## reduceRight<sup>18+</sup>
@@ -587,11 +552,10 @@ This API is similar to the [reduceRight](#reduceright18) API, but it takes an in
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID   | Error Message                                   |
 | -------- | --------------------------------------- |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 10200011 | The reduceRight method cannot be bound. |
 | 10200201 | Concurrent modification error.          |
 
@@ -601,7 +565,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // An accumulator with the initial value 0 is used. The accumulator is used to calculate the sum of all elements in the array and return the sum.
 let array = new collections.Array<number>(1, 2, 3, 4, 5);
 let reducedValue = array.reduceRight<number>((accumulator: number, value: number) => accumulator + value, 0); // Accumulated result of all elements. The initial value is 0.
-console.info(reducedValue + ''); // Expected output: 15
+console.info(String(reducedValue)); // Expected output: 15
 ```
 
 ## pop
@@ -622,7 +586,7 @@ Removes the last element from this ArkTS array and returns that element. If the 
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                       |
 | -------- | ------------------------------- |
@@ -650,7 +614,7 @@ Adds elements to the end of this ArkTS array and returns the new length of the a
 
 | Name| Type| Mandatory| Description                              |
 | ------ | ---- | ---- | ---------------------------------- |
-| items  | T[]  | No  | Elements to add.|
+| items  | T[]  | No   | Elements to add to the end of the Array. The default value is an empty array. |
 
 **Return value**
 
@@ -660,11 +624,10 @@ Adds elements to the end of this ArkTS array and returns the new length of the a
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The push method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -699,11 +662,10 @@ Concatenates all elements in this ArkTS array into a string, with a given separa
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The join method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -732,7 +694,7 @@ Removes the first element from this ArkTS array and returns that element. If the
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                         |
 | -------- | --------------------------------- |
@@ -764,7 +726,7 @@ Reverses elements in this ArkTS array and returns a reference to the same array.
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID   | Error Message                               |
 | -------- | ----------------------------------- |
@@ -793,7 +755,7 @@ Adds elements to the beginning of this ArkTS array and returns the new length of
 
 | Name| Type| Mandatory| Description                    |
 | ------ | ---- | ---- | ------------------------ |
-| items  | T[]  | No  | Elements to add.|
+| items  | T[]  | No   | Elements to insert at the beginning of the Array. The default value is an empty array. |
 
 **Return value**
 
@@ -803,11 +765,10 @@ Adds elements to the beginning of this ArkTS array and returns the new length of
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The unshift method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -848,7 +809,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 ```ts
 let array = new collections.Array<number>(1, 2, 3, 4, 5);
 let stringArray = array.toString();
-console.info(stringArray); // Expected output: 1,2,3,4,5
+console.info(stringArray); // Expected output: 1, 2, 3, 4, 5
 ```
 
 ## slice
@@ -875,11 +836,10 @@ Selects a range of elements in this ArkTS array to create an array.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                         |
 | -------- | --------------------------------- |
-| 401      | Parameter error.                  |
 | 10200011 | The slice method cannot be bound. |
 | 10200201 | Concurrent modification error.    |
 
@@ -914,11 +874,10 @@ Sorts elements in this ArkTS array and returns a new array.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The sort method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -945,7 +904,7 @@ Returns the index of the first occurrence of a value in this ArkTS Array. If the
 | Name       | Type  | Mandatory| Description                       |
 | ------------- | ------ | ---- | --------------------------- |
 | searchElement | T      | Yes  | Value to search for.               |
-| fromIndex     | number | No  | Index from which the search starts. The value begins at 0. The default value is **0**.|
+| fromIndex     | number | No   | Index to start searching from, starting from 0, with a default value of 0. If the index is greater than or equal to the length of the ArkTS Array, -1 is returned. If fromIndex < 0, the search starts from the position fromIndex + array.length. |
 
 **Return value**
 
@@ -955,11 +914,10 @@ Returns the index of the first occurrence of a value in this ArkTS Array. If the
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The indexOf method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -988,11 +946,10 @@ Calls a callback function for each element in this ArkTS Array.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401      | Parameter error.                    |
 | 10200011 | The forEach method cannot be bound. |
 | 10200201 | Concurrent modification error.      |
 
@@ -1029,11 +986,10 @@ Calls a callback function for each element in this ArkTS Array and returns a new
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                       |
 | -------- | ------------------------------- |
-| 401      | Parameter error.                |
 | 10200011 | The map method cannot be bound. |
 | 10200201 | Concurrent modification error.  |
 
@@ -1045,7 +1001,7 @@ let array = new collections.Array<string>('a', 'b', 'c');
 let mappedArray = array.map((value, index, array) => {
   return value.toUpperCase(); // Convert each string element to uppercase.
 });
-console.info("" + mappedArray); // Output: A, B, C
+console.info(String(mappedArray)); // Output: A, B, C
 ```
 
 ## filter
@@ -1072,11 +1028,10 @@ Returns a new array containing all elements that pass a test provided by a callb
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                          |
 | -------- | ---------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The filter method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1111,11 +1066,10 @@ Calls a callback function for each element in this ArkTS array, uses the previou
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                          |
 | -------- | ---------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The reduce method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1151,11 +1105,10 @@ Similar to the previous API, this API takes an initial value as the second param
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                          |
 | -------- | ---------------------------------- |
-| 401      | Parameter error.                   |
 | 10200011 | The reduce method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1192,11 +1145,10 @@ Returns the element at a given index in this ArkTS array.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                      |
 | -------- | ------------------------------ |
-| 401      | Parameter error.               |
 | 10200011 | The at method cannot be bound. |
 | 10200201 | Concurrent modification error. |
 
@@ -1225,7 +1177,7 @@ Returns an iterator object that contains the key-value pair of each element in t
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                           |
 | -------- | ----------------------------------- |
@@ -1258,7 +1210,7 @@ Returns an iterator object that contains the index of each element in this ArkTS
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1271,7 +1223,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 let array = new collections.Array<number>(1, 2, 3, 4, 5);
 let iterator = array.keys();
 for (const key of iterator) {
-  console.info("" + key); // 0, 1, 2, 3, and 4 are returned in sequence.
+  console.info(String(key)); // Output 0,1,2,3,4 in sequence
 }
 ```
 
@@ -1293,7 +1245,7 @@ Returns an iterator object that contains the value of each element in this ArkTS
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                          |
 | -------- | ---------------------------------- |
@@ -1306,7 +1258,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 let array = new collections.Array<number>(1, 2, 3, 4, 5);
 let iterator = array.values();
 for(const value of iterator) {
-  console.info("" + value); // 1, 2, 3, 4, and 5 are returned in sequence.
+  console.info(String(value)); // Output 1,2,3,4,5 in sequence.
 }
 ```
 
@@ -1334,11 +1286,10 @@ Returns the value of the first element that passes a test provided by a callback
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The find method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1364,7 +1315,7 @@ Checks whether this ArkTS array contains an element and returns a Boolean value.
 | Name       | Type  | Mandatory| Description                       |
 | ------------- | ------ | ---- | --------------------------- |
 | searchElement | T      | Yes  | Element to search for.             |
-| fromIndex     | number | No  | Index from which the search starts. The default value is **0**.|
+| fromIndex     | number | No   | Index to start the search from. The default value is 0. If the index is greater than or equal to the length of the ArkTS Array, false is returned. If fromIndex < 0, the search starts from the position fromIndex + array.length. |
 
 **Return value**
 
@@ -1374,11 +1325,10 @@ Checks whether this ArkTS array contains an element and returns a Boolean value.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                            |
 | -------- | ------------------------------------ |
-| 401      | Parameter error.                     |
 | 10200011 | The includes method cannot be bound. |
 | 10200201 | Concurrent modification error.       |
 
@@ -1413,11 +1363,10 @@ Returns the index of the first element that passes a test provided by a callback
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                             |
 | -------- | ------------------------------------- |
-| 401      | Parameter error.                      |
 | 10200011 | The findIndex method cannot be bound. |
 | 10200201 | Concurrent modification error.        |
 
@@ -1443,8 +1392,8 @@ Fills elements in the specified range of this ArkTS array with a given value.
 | Name| Type  | Mandatory| Description                                                  |
 | ------ | ------ | ---- | ------------------------------------------------------ |
 | value  | T      | Yes  | Value to fill in.                                          |
-| start  | number | No  | Start index of the range. The default value is **0**.                           |
-| end    | number | No  | End index of the range (exclusive). If no value is passed in, it refers to the last element of the array.|
+| start  | number | No   | Index to start filling. The default value is 0. If start < 0, max(start + len, 0) is used. If start > the array length or start > end, no filling is performed. The element at the position index of start is included during filling. |
+| end    | number | No   | Index to end filling (excluding this element). If end < 0, max(end + len, 0) is used. If omitted or end > the array length, filling continues to the last element of the Array. If start > end, no filling is performed. The element at the position index of end is not included during filling. |
 
 **Return value**
 
@@ -1454,11 +1403,10 @@ Fills elements in the specified range of this ArkTS array with a given value.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The fill method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1483,15 +1431,14 @@ Shrinks this ArkTS array to a given length.
 
 | Name| Type  | Mandatory| Description                                                  |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| arrayLength  | number  | Yes  | New length of the array. If a value greater than or equal to the current array length is passed in, the array does not change.|
+| arrayLength  | number  | Yes   | New length of the Array. The value should be a non-negative integer, otherwise an exception is thrown. If arrayLength >= array.length, the Array remains unchanged. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The shrinkTo method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1519,16 +1466,15 @@ Extends this array to a given length by adding elements with the specified initi
 
 | Name| Type  | Mandatory| Description                                                  |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| arrayLength  | number  | Yes  | New length of the array. If a value less than or equal to the current array length is passed in, the array does not change.|
+| arrayLength  | number  | Yes   | New length of the Array. The value should be a non-negative integer, otherwise throws an exception. If arrayLength <= array.length, the Array remains unchanged. |
 | initialValue  | T  | Yes  | Initial value of the elements to be added.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
-| 401      | Parameter error.                 |
 | 10200011 | The extendTo method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1556,7 +1502,7 @@ Concatenates this ArkTS array with one or more arrays.
 
 | Name| Type| Mandatory| Description                              |
 | ------ | ---- | ---- | ---------------------------------- |
-| items  | ConcatArray\<T>[]  | No  | Concatenates this ArkTS array with one or more arrays.|
+| items  | ConcatArray\<T>[]  | No   | Concatenates two or more arrays. If omitted, returns a shallow copy of the original array. |
 
 **Return value**
 
@@ -1566,11 +1512,10 @@ Concatenates this ArkTS array with one or more arrays.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                        |
 | ------- | -------- |
-| 401 |  Parameter error. Not a valid array. |
 | 10200011 | The concat method cannot be bound. |
 | 10200201 | Concurrent modification error.   |
 
@@ -1598,7 +1543,7 @@ Removes elements from a specified position (start) and all elements after the sp
 
 | Name| Type | Mandatory| Description                                                               |
 | ----- | ------ | -- | ------------------------------------------------------------------- |
-| start | number | Yes| Start index of the range. If `-array.length =< start < 0`, the removal starts from `start + array.length`. If `start < -array.length`, the removal starts from **0**.|
+| start | number | Yes | Start index. If `-array.length <= start < 0`, start from `start + array.length`; if `start < -array.length`, start from 0. |
 
 **Return value**
 
@@ -1608,11 +1553,10 @@ Removes elements from a specified position (start) and all elements after the sp
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                           |
 | -------- | ---------------------------------- |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200011 | The splice method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1646,7 +1590,7 @@ Checks whether all elements in this ArkTS array meet a given condition.
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
@@ -1708,7 +1652,7 @@ Removes elements from a specified position in an array, and inserts new elements
 
 | Name      | Type  | Mandatory| Description                                                               |
 | ----------- | ------ | --  | ------------------------------------------------------------------- |
-| start       | number | Yes | Start index of the range. If `-array.length =< start < 0`, the removal starts from `start + array.length`. If `start < -array.length`, the removal starts from **0**.|
+| start       | number | Yes  | Start index. If `-array.length <= start < 0`, start from `start + array.length`; if `start < -array.length`, start from 0. |
 | deleteCount | number | Yes | Number of elements to remove. If `deleteCount <= 0`, no element is removed.|
 | items       | T[]    | No | New elements to insert from the `start` position. If no value is passed in, only the elements in the array are removed.       |
 
@@ -1720,11 +1664,10 @@ Removes elements from a specified position in an array, and inserts new elements
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                           |
 | -------- | ---------------------------------- |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200011 | The splice method cannot be bound. |
 | 10200201 | Concurrent modification error.     |
 
@@ -1740,6 +1683,236 @@ let removeArray = array.splice(2, 2); // The array is changed to [1, 2, 5], and 
 // Example 2:
 let array = new collections.Array<number>(1, 2, 3, 4, 5);
 let removeArray = array.splice(2, 2, 6, 7, 8); // The array is changed to [1, 2, 6, 7, 8, 5], and [3, 4] is returned.
+```
+
+## containsAll
+
+containsAll(elements: Array\<T>): boolean
+
+Checks whether all elements in the specified ArkTS Array are contained in this ArkTS Array.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name | Type | Mandatory | Description                            |
+| ------ | ---- | ---- | ------------------------------- |
+| elements  | Array\<T>  | Yes   | ArkTS Array to check. |
+
+**Return value**
+
+| Type   | Description               |
+| ------ | ------------------ |
+| boolean | Returns true if all elements in the specified ArkTS Array are contained in this ArkTS Array; otherwise returns false. When elements is an empty collection, returns true. |
+
+**Error codes**
+
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
+
+| ID | Error Message                            |
+| -------- | ---------------------------------- |
+| 10200011 | The containsAll method cannot be bound. |
+| 10200201 | Concurrent modification exception      |
+
+**Example**
+
+```ts
+let arr = new collections.Array<number>(1, 2, 3);
+let sElements = new collections.Array<number>(1, 2, 3, 4);
+console.info("arr.containsAll(sElements) = " + arr.containsAll(sElements)); // false
+
+arr.push(4);
+console.info("arr.containsAll(sElements) = " + arr.containsAll(sElements)); // true
+```
+
+## containsAll
+
+containsAll(elements: readonly T[]): boolean
+
+Checks whether all elements in the specified JavaScript native container Array are contained in this ArkTS Array.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name | Type | Mandatory | Description                            |
+| ------ | ---- | ---- | ------------------------------- |
+| elements  | readonly T[]  | Yes   | JavaScript native container Array to check. |
+
+**Return value**
+
+| Type   | Description               |
+| ------ | ------------------ |
+| boolean | Returns true if all elements in the specified JavaScript native container Array are contained in this ArkTS Array; otherwise returns false. When elements is an empty collection, returns true. |
+
+**Error codes**
+
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
+
+| ID | Error Message                            |
+| -------- | ---------------------------------- |
+| 10200011 | The containsAll method cannot be bound. |
+| 10200201 | Concurrent modification exception      |
+
+**Example**
+
+```ts
+let arr = new collections.Array<number>(1, 2, 3);
+let nElements: Array<number> = [1, 2, 3, 4];
+console.info("arr.containsAll(nElements) = " + arr.containsAll(nElements)); // false
+
+arr.push(4);
+console.info("arr.containsAll(nElements) = " + arr.containsAll(nElements)); // true
+```
+
+## retainAll
+
+retainAll(elements: Array\<T>): boolean
+
+Retains only the elements that exist in both this ArkTS Array and the specified ArkTS Array.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name | Type | Mandatory | Description                            |
+| ------ | ---- | ---- | ------------------------------- |
+| elements  | Array\<T>  | Yes   | ArkTS Array of elements allowed to be retained. If the collection is empty, the current ArkTS Array is cleared. |
+
+**Return value**
+
+| Type   | Description               |
+| ------ | ------------------ |
+| boolean | Returns true if any element is removed from the ArkTS Array; returns false if the ArkTS Array is not modified. |
+
+**Error codes**
+
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
+
+| ID | Error Message                            |
+| -------- | ---------------------------------- |
+| 10200011 | The retainAll method cannot be bound. |
+| 10200201 | Concurrent modification exception      |
+
+**Example**
+
+```ts
+let arr: collections.Array<string> = new collections.Array<string>('a', 'b', 'c');
+
+let c1: collections.Array<string> = new collections.Array<string>('a', 'b', 'c');
+console.info("arr.retainAll(c1) = " + arr.retainAll(c1)); // false, no element removed
+console.info("arr = " + arr.toString()); // a, b, c
+
+let c2: collections.Array<string> = new collections.Array<string>('a', 'd', 'e', 'f');
+console.info("arr.retainAll(c2) = " + arr.retainAll(c2)); // true, removed b and c
+console.info("arr = " + arr.toString()); // a
+```
+
+## retainAll
+
+retainAll(elements: readonly T[]): boolean
+
+Retains only the elements in this ArkTS Array that also exist in the specified JavaScript native container Array.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name | Type | Mandatory | Description                            |
+| ------ | ---- | ---- | ------------------------------- |
+| elements  | readonly T[]  | Yes   | JavaScript native container Array of elements allowed to be retained. If the collection is empty, the current ArkTS Array is cleared. |
+
+**Return value**
+
+| Type   | Description               |
+| ------ | ------------------ |
+| boolean | Returns true if any element is removed from the ArkTS Array; returns false if the ArkTS Array is not modified. |
+
+**Error codes**
+
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
+
+| ID | Error Message                            |
+| -------- | ---------------------------------- |
+| 10200011 | The retainAll method cannot be bound. |
+| 10200201 | Concurrent modification exception      |
+
+**Example**
+
+```ts
+let arr: collections.Array<string> = new collections.Array<string>('a', 'b', 'c');
+
+let nElements: Array<string> = ['a', 'd', 'e', 'f'];
+console.info("arr.retainAll(nElements) = " + arr.retainAll(nElements)); // true, removed b and c
+console.info("arr = " + arr.toString()); // a
+```
+
+## retainAll
+
+retainAll(predicate: [ArrayElementPredicateFn](arkts-apis-arkts-collections-Types.md#arrayelementpredicatefn)\<T>): boolean
+
+Retains only the elements in this ArkTS Array for which the specified predicate function returns true.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.Utils.Lang
+
+**Parameters**
+
+| Name | Type | Mandatory | Description                            |
+| ------ | ---- | ---- | ------------------------------- |
+| predicate  | [ArrayElementPredicateFn](arkts-apis-arkts-collections-Types.md#arrayelementpredicatefn)\<T>  | Yes   | Predicate function. Returning true means retaining the current element, and returning false means removing the current element. |
+
+**Return value**
+
+| Type   | Description               |
+| ------ | ------------------ |
+| boolean | Returns true if any element is removed from the ArkTS Array; returns false if the ArkTS Array is not modified. |
+
+**Error codes**
+
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
+
+| ID | Error Message                            |
+| -------- | ---------------------------------- |
+| 10200011 | The retainAll method cannot be bound. |
+| 10200201 | Concurrent modification exception      |
+
+**Example**
+
+```ts
+let predicateArr: collections.Array<string> = new collections.Array<string>("foo", "bar", "bar");
+let changed = predicateArr.retainAll((e: string) => { return e === "bar" });
+console.info("changed = " + changed); // true
+console.info("predicateArr = " + predicateArr.toString()); // bar,bar
 ```
 
 ## [Symbol.iterator]
@@ -1764,7 +1937,7 @@ Returns an iterator, each item of which is a JavaScript object.
 
 **Error codes**
 
-For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                   |
 | -------- | ------------------------------------------- |
@@ -1773,7 +1946,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-let array= new collections.Array<number>(1, 2, 3, 4);
+let array = new collections.Array<number>(1, 2, 3, 4);
 
 for (let item of array) {
   console.info(`value : ${item}`);
@@ -1794,7 +1967,7 @@ Returns the element at a given index in this array.
 
 | Name   | Type  | Mandatory| Description                                                           |
 | ----- | ------ | ---- | ------------------------------------------------------------------ |
-| index | number | Yes  | Index of the element. The index starts from zero. If the passed-in index is less than 0 or greater than or equal to the value of **length**, an error is thrown.|
+| index | number | Yes | Zero-based index of the required code element. If index < 0 or index >= length, an error is thrown. |
 
 **Return value**
 
@@ -1804,16 +1977,15 @@ Returns the element at a given index in this array.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                            |
 | ------- | ------------------------------------ |
-| 401 |        Parameter error.                  |
 | 10200001 | The value of index is out of range. |
 
 **Example**
 
 ```ts
 let array = new collections.Array<number>(1, 2, 4);
-console.info("Element at index 1: ", array[1]);
+console.info(`Element at index 1: ${array[1]}`);
 ```

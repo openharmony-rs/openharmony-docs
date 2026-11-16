@@ -6,7 +6,7 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=7e5db48730568c9986e2cf46dd9a5b999addfe40 translatedAt=2026-10-28T12:15:46.665Z pushedAt=2026-10-28T12:35:26.553Z nl=1 -->
+<!-- md-trans-meta sourceCommit=5261df4b47383bdb992142e2136d46b4a69ac8be translatedAt=2026-11-16T04:29:42.714Z pushedAt=2026-11-16T06:31:14.063Z nl=1 -->
 
 ## When to Use
 
@@ -75,17 +75,14 @@ Use the **RunningLockType.BACKGROUND_USER_IDLE** running lock. The following is 
 
    ``` TypeScript
    // Import the runningLock and commonEventManager modules.
-   import { runningLock } from '@kit.BasicServicesKit';
-   import { commonEventManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { runningLock, commonEventManager, BusinessError} from '@kit.BasicServicesKit';
    ```
 
 3. Develop the common event utility class and running lock utility class.
 
    ``` TypeScript
    // CommonEventHelper.ets
-   import { commonEventManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { commonEventManager, BusinessError} from '@kit.BasicServicesKit';
 
    type SubscriberInfo = commonEventManager.CommonEventSubscribeInfo;
    type Subscriber = commonEventManager.CommonEventSubscriber;

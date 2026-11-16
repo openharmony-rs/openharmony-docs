@@ -2,11 +2,11 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
-<!--Tester: @guoshengbang-->
+<!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=02b3587e911190b13ac6bc78e61c77d58159e033 translatedAt=2026-09-03T06:59:18.170Z pushedAt=2026-09-03T07:16:46.126Z -->
+<!-- md-trans-meta sourceCommit=cfbd32eaf8f6889081f1f689234b5a5bcadff8c8 translatedAt=2026-11-16T04:30:24.085Z pushedAt=2026-11-16T06:31:14.065Z nl=1 -->
 
 ## Overview
 **PrintExtensionAbility** is supported since API version 14. It extends the system printing functionality, allowing software to simulate printer behavior and implement printing interaction with upper-layer applications. With this extension ability, you can implement custom printing logic in special scenarios and flexibly develop differentiated functionalities under a unified framework, improving the adaptability and maintainability of solutions.
@@ -29,12 +29,16 @@
     Under the **ets** directory (./entry/src/main/ets) corresponding to the entry Module of the project, create a directory and an ArkTS file. For example, create a directory named **PrintExtensionAbility**, and in the **PrintExtensionAbility** directory, create an ArkTS file named **MyPrintExtension.ets** to implement the Print Extension Ability APIs.
 
 2. Open the **MyPrintExtension.ets** file and import the following module.
-    ```ts
+    <!-- @[print_extension_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/PrintExtensionAbilityGuide/entry/src/main/ets/PrintExtensionAbility/MyPrintExtension.ets) -->
+
+    ``` TypeScript
     import { PrintExtensionAbility } from '@kit.BasicServicesKit';
     ```
 
 3. Implement the APIs provided by **PrintExtensionAbility**.
-    ```ts
+    <!-- @[print_extension_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/PrintExtensionAbilityGuide/entry/src/main/ets/PrintExtensionAbility/MyPrintExtension.ets) -->
+
+    ``` TypeScript
     import { PrintExtensionAbility } from '@kit.BasicServicesKit';
     import { Want } from '@kit.AbilityKit';
     // Create a Print Extension Ability class that inherits PrintExtensionAbility and implements the print extension features.
