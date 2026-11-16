@@ -13,11 +13,11 @@ status: active
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 10开始支持低时延音频播放。
+从API版本10开始支持低时延音频播放。
 
 低时延音频播放是一种通过软硬芯协同设计实现的音频渲染方案。其核心机制是通过减少buffer大小、优化读写数据架构，使该模式下音频播放具有更低的时延。
 
-从API版本26.1.0开始，在低时延模式的基础上新增超低时延模式。该模式相比低时延模式，可以进一步降低播放时延，但是对应用处理时长和系统资源要求更高，可能会增加卡顿率，所以建议仅在下文描述的场景使用。该模式需在开发者网站申请ACL权限（ACL，Access Control List，访问控制列表）ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM。
+从API版本26.1.0开始，在低时延模式的基础上新增超低时延模式。该模式相比低时延模式，可以进一步降低播放时延，但是对应用处理时长和系统资源要求更高，可能会增加卡顿率，所以建议仅在下文描述的场景使用。该模式需在开发者网站申请ACL权限ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM。
 
 ## 使用场景
 
@@ -29,7 +29,7 @@ status: active
 ### 使用超低时延流的场景
 
 - 如果使用低时延模式后，时延指标依然无法满足用户体验要求，并且与目标时延差距在10ms左右时，可以考虑使用超低时延模式，如K歌实时耳返场景（需要注意该模式的性能要求和功耗影响高于低时延模式，从而可能带来音频卡顿风险和功耗的升高，建议开发者做好完备的评估和验证后再使用）。
-- 该模式仅推荐在连续音频播放场景使用，不要使用在短音频的场景，否则可能会带来不好的用户体验。
+- 该模式仅推荐在连续音频播放场景使用。请勿在短音频的场景使用，避免影响用户体验。
 
 ## 约束与限制
 
@@ -45,7 +45,7 @@ status: active
 
 ### 低时延模式限制
 
-在以下场景中，即使设置了低时延模式，系统仍会使用普通模式。
+在以下场景中，即使设置了低时延模式，系统仍会使用普通模式：
 - 当前设备不支持低时延模式。
 - 当前流格式不支持低时延模式。
 - 系统低时延资源已被全部占用。
@@ -76,7 +76,7 @@ OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
 OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 ```
 
-从API version 20开始，支持时延状态查询接口。
+从API版本20开始，支持时延状态查询接口。
 - 可通过[OH_AudioRenderer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus)来获取音频播放流是否正在低时延状态下工作。
 - 在部分特殊场景（如：存在更高优先级流、当前连接设备不支持等）下，开发者可以通过调用[OH_AudioRenderer_OnFastStatusChange()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_onfaststatuschange)来获取低时延状态改变事件。
 
@@ -116,7 +116,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 4. 监听状态变化。
 
-    在创建音频流之前，可通过注册`OH_AudioRenderer_OnFastStatusChange`回调，在运行态发生变化时及时感知状态变化。
+    在创建音频流之前，可通过注册`OH_AudioRenderer_OnFastStatusChange`回调，用来在音频流运行期间，及时感知到模式发生变化。
     <!-- @[Render_SetRendererUltraFastStatusChangeCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 
     ``` C++
@@ -148,7 +148,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 低时延和超低时延模式下，应用提供数据的频次比普通播放模式高，如果传送数据不及时可能导致杂音等问题。开发者应避免在数据回调线程中做耗时操作，确保数据回调线程可以及时返回。
 
 ### 数据回调线程
-播放的音频数据需要通过回调接口写入。开发者要实现回调接口，使用[OH_AudioStreamBuilder_SetRendererWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererwritedatacallback)设置写入音频数据的回调函数，在设置音频回调函数时，回调函数[OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback)（从API version 12开始支持）用于写入音频数据。
+播放的音频数据需要通过回调接口写入。开发者要实现回调接口，使用[OH_AudioStreamBuilder_SetRendererWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererwritedatacallback)设置写入音频数据的回调函数，在设置音频回调函数时，回调函数[OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback)（从API版本12开始支持）用于写入音频数据。
 
 开发音频播放功能的示例代码请参考：[推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)。
 
