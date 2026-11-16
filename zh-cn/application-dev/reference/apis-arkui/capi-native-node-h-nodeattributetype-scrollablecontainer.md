@@ -1908,7 +1908,7 @@ NODE_WATER_FLOW_SCROLL_TO_INDEX = 1010009
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 要滑动到的目标元素在当前容器中的索引值。 |
+| .value[0].i32 | 要滑动到的目标元素在当前容器中的索引值。传入-1时，指滑动到当前容器的最后一个元素。 |
 | .value[1]?.i32 | 设置滑动到列表项在列表中的索引值时是否有动效，1表示有动效，0表示没有动效。默认值：0。 |
 | .value[2]?.i32 | 指定滑动到的元素与当前容器的对齐方式，参数类型[ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment)。默认值为：[ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment)。 |
 | .value[3]?.f32 | 滑动到目标元素后的额外偏移量，默认值：0，单位：vp。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。该参数从API version 23开始支持。 |
