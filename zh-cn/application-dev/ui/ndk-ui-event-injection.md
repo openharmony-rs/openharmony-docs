@@ -1,17 +1,9 @@
----
-kits: ["ArkUI"]
-description: "介绍如何使用NDK接口向指定UI实例异步注入非精确目标的交互命令,适用于应用内智能体与UI自动化场景。"
-keywords: [UI事件注入, NDK, 命令注入, 智能体, UI自动化, C API]
-doctype: guide
-status: active
----
-
 # UI事件注入(C/C++)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @lushi871202-->
-<!--Tester: @sally__-->
+<!--Owner: @zhou-chaobo-->
+<!--Designer: @piggyguy-->
+<!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
 UI事件注入接口为应用内智能体(In-App Agent)与UI自动化场景提供UI控制能力:应用可通过C API向指定UI实例异步注入非精确目标的交互命令(点击、滚动、内容切换、返回、按键)。命令以JSON描述,表达"在何处执行何种高层意图",不针对特定组件,由系统依据执行模式决定具体执行方式;命令执行结果通过完成回调异步返回。
