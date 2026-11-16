@@ -376,10 +376,11 @@ barOverlap(value: boolean)
 
 barOverlap(value: BarOverlapMode \| boolean)
 
-设置TabBar与TabContent的重叠模式。未通过该接口设置时，默认为BarOverlapMode.STANDARD。
+设置TabBar与TabContent的重叠模式。
 
 > **说明：**
-> 当设置为**BarOverlapMode.SAFE_AREA_PADDING**模式时，TabContent上已设置的[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)和[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性会被组件设置的值覆盖。当切换为其他模式时，之前用户设置的[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)和[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性值将会还原。
+>
+> 当设置为**BarOverlapMode.SAFE_AREA_PADDING**模式时，TabContent上已设置的[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)和[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性会被组件设置的值覆盖。当切换为其他模式时，先前设置的[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)和[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性值将会还原。
 
 **起始版本：** 26.1.0
 
@@ -393,7 +394,7 @@ barOverlap(value: BarOverlapMode \| boolean)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | [BarOverlapMode](#baroverlapmode) \| boolean | 是   | TabBar与TabContent的重叠模式。boolean入参保持兼容，true映射为BarOverlapMode.STACK，false映射为BarOverlapMode.STANDARD。<br />默认值：false |
+| value  | [BarOverlapMode](#baroverlapmode) \| boolean | 是   | TabBar与TabContent的重叠模式。取值为true对应BarOverlapMode.STACK，false对应BarOverlapMode.STANDARD。<br />默认值：false |
 
 ### barBackgroundColor<sup>10+</sup>
 
@@ -1363,9 +1364,9 @@ TabBar与TabContent的重叠模式枚举。
 
 | 名称 | 值 | 说明 |
 | ------ | ---- | ---------- |
-| STANDARD | 0 | TabBar不与TabContent重叠，TabContent高度等于Tabs高度减去TabBar高度。等价于barOverlap(false)。 |
+| STANDARD | 0 | TabBar不与TabContent重叠，TabContent高度等于Tabs高度减去TabBar高度。等价于[barOverlap](#baroverlap)(false)。 |
 | STACK | 1 | TabBar叠加在TabContent之上，TabContent占满全部空间。等价于barOverlap(true)。 |
-| SAFE_AREA_PADDING | 2 | TabBar区域成为TabContent的安全区内边距（safeAreaPadding），TabContent可延伸到TabBar区域，同时TabBar背后变模糊。 |
+| SAFE_AREA_PADDING | 2 | TabBar区域成为TabContent的安全区内边距（[safeAreaPadding](ts-universal-attributes-size.md#safeareapadding14)），TabContent可延伸到TabBar区域，同时TabBar背后变模糊。 |
 
 ## CommonModifier<sup>15+</sup>
 
