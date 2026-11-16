@@ -6,7 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=937aa556d9f58747c9a612a2370c25cbc5101587 translatedAt=2026-08-19T07:16:58.108Z pushedAt=2026-08-20T10:45:03.062Z -->
+<!-- md-trans-meta sourceCommit=1d53fe51ce90f1fa1bb6fd934f127793e0536146 translatedAt=2026-11-03T02:15:14.341Z pushedAt=2026-11-13T01:05:59.970Z nl=1 -->
 
 The common scrollable component APIs currently support only the [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md) components. They provide common attributes such as scrollbar style, edge effect, nested scrolling, friction coefficient control, and content clipping, as well as event callbacks such as scroll start, scroll stop, and reaching the boundary. You can use these APIs to uniformly manage the behavior of various scrollable components, which are applicable to scenarios such as list display, grid layout, waterfall flow arrangement, and page scrolling.
 
@@ -28,7 +28,7 @@ Sets the scrollbar state.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                     | Mandatory| Description                                  |
 | -------- | ----------------------------------------- | ---- | -------------------------------------- |
@@ -52,7 +52,7 @@ Sets the scrollbar color.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
@@ -76,7 +76,7 @@ Sets the scrollbar color. Compared with [scrollBarColor<sup>11+</sup>](#scrollba
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
@@ -100,7 +100,7 @@ Sets the width of the scrollbar. Percentage values are not supported. After the 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                      | Mandatory| Description                                     |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
@@ -128,7 +128,7 @@ If this API is not used, the scrollbar width is 4 vp.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -184,7 +184,7 @@ Sets the effect used when the scroll boundary is reached.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name               | Type                                             | Mandatory| Description                                                        |
 | --------------------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -209,7 +209,7 @@ Sets the nested scrolling mode in the forward and backward directions to impleme
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                 | Mandatory| Description          |
 | ------ | ----------------------------------------------------- | ---- | -------------- |
@@ -233,7 +233,7 @@ Sets whether to support scroll gestures.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                               |
 | ------ | ------- | ---- | ----------------------------------- |
@@ -249,7 +249,7 @@ Sets whether to support scroll gestures.
 
 friction(value: number | Resource): T
 
-Sets the friction coefficient. It takes effect when the scroll area is swiped manually, and affects only the inertial scrolling process. It indirectly affects the linkage effect between nested scrollable components during inertial scrolling (for example, the chain animation [chainAnimation](ts-container-list.md#chainanimation) of the List component). It applies to scenarios where the deceleration speed of inertial scrolling needs to be adjusted. If the value is set to less than or equal to 0, the default value is used.
+Sets the friction coefficient. It takes effect when the scroll area is swiped manually, and affects only the inertial scrolling process. It indirectly affects the linkage effect between nested scrollable components during inertial scrolling (for example, the chain animation [chainAnimation](ts-container-list.md#chainanimation) of the **List** component). It applies to scenarios where the deceleration speed of inertial scrolling needs to be adjusted. If the value is set to less than or equal to 0, the default value is used.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -257,7 +257,7 @@ Sets the friction coefficient. It takes effect when the scroll area is swiped ma
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                | Mandatory| Description                                                     |
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
@@ -291,7 +291,7 @@ Sets the maximum initial speed for inertial animation after a fling gesture.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -309,15 +309,15 @@ fadingEdge(enabled: Optional&lt;boolean&gt;, options?: FadingEdgeOptions): T
 
 Sets whether to enable the edge fading effect and the length of the fading edge.
 
-> **NOTE**
+> **NOTE** 
+> 
+> **fadingEdge** is implemented by setting the [overlay](ts-universal-attributes-overlay.md#overlay) attribute and the [blendMode](ts-universal-attributes-image-effect.md#blendmode11) attribute (with the parameter values **BlendMode.SRC_OVER** and **BlendApplyType.OFFSCREEN**). When **fadingEdge** takes effect, it overrides the **.overlay()** attribute and the **.blendMode()** attribute of the original component, causing the APIs that require screen capture of the current component and its child components to fail to capture the correct image. The APIs that require screen capture include: [blur](ts-universal-attributes-image-effect.md#blur), [linearGradientBlur](ts-universal-attributes-image-effect.md#lineargradientblur12), [brightness](ts-universal-attributes-image-effect.md#brightness), [visualEffect](ts-universal-attributes-filter-effect.md#visualeffect), [grayscale](ts-universal-attributes-image-effect.md#grayscale), [saturate](ts-universal-attributes-image-effect.md#saturate), [contrast](ts-universal-attributes-image-effect.md#contrast), [invert](ts-universal-attributes-image-effect.md#invert), [sepia](ts-universal-attributes-image-effect.md#sepia), [hueRotate](ts-universal-attributes-image-effect.md#huerotate), [colorBlend](ts-universal-attributes-image-effect.md#colorblend), [lightUpEffect](ts-universal-attributes-image-effect.md#lightupeffect12), [pixelStretchEffect](ts-universal-attributes-image-effect.md#pixelstretcheffect12), [blendMode](ts-universal-attributes-image-effect.md#blendmode11), and [backgroundBrightness](ts-universal-attributes-background.md#backgroundbrightness12).
 >
-> **fadingEdge** is implemented by setting the [overlay](ts-universal-attributes-overlay.md#overlay) attribute and the [blendMode](ts-universal-attributes-image-effect.md#blendmode11) attribute (with the parameter values **BlendMode.SRC_OVER** and **BlendApplyType.OFFSCREEN**). When **fadingEdge** takes effect, it overrides the **.overlay()** and **.blendMode()** attributes of the original component, and causes the APIs that require screen capture of the current component and its child components to fail to capture the correct image. The APIs that require screen capture include [blur](ts-universal-attributes-image-effect.md#blur), [linearGradientBlur](ts-universal-attributes-image-effect.md#lineargradientblur12), [brightness](ts-universal-attributes-image-effect.md#brightness), [visualEffect](ts-universal-attributes-filter-effect.md#visualeffect), [grayscale](ts-universal-attributes-image-effect.md#grayscale), [saturate](ts-universal-attributes-image-effect.md#saturate), [contrast](ts-universal-attributes-image-effect.md#contrast), [invert](ts-universal-attributes-image-effect.md#invert), [sepia](ts-universal-attributes-image-effect.md#sepia), [hueRotate](ts-universal-attributes-image-effect.md#huerotate), [colorBlend](ts-universal-attributes-image-effect.md#colorblend), [lightUpEffect](ts-universal-attributes-image-effect.md#lightupeffect12), [pixelStretchEffect](ts-universal-attributes-image-effect.md#pixelstretcheffect12), [blendMode](ts-universal-attributes-image-effect.md#blendmode11), and [backgroundBrightness](ts-universal-attributes-background.md#backgroundbrightness12).
+> When **fadingEdge** takes effect, it is recommended not to set attributes related to [background](ts-universal-attributes-background.md#background10) on the component on which the **fadingEdge** attribute is set, as this affects the display effect of the fading.
 >
-> When **fadingEdge** takes effect, it is recommended not to set the [background](ts-universal-attributes-background.md#background10) related attributes on the component on which the **fadingEdge** attribute is set, because doing so affects the fading display effect.
+> When **fadingEdge** takes effect, it is recommended not to set attributes related to [systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial) on the component on which the **fadingEdge** attribute is set or on its child components, as this affects the display effect of the system material and causes the material effect to be inconsistent with the expected effect.
 >
-> When **fadingEdge** takes effect, it is recommended not to set the [systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial) related attributes on the component on which the **fadingEdge** attribute is set or on its child components, because doing so affects the display effect of the system material and causes the material effect to be inconsistent with the expected effect.
->
-> When **fadingEdge** takes effect, the component on which the **fadingEdge** attribute is set is clipped to the boundary. Setting the [clip](ts-universal-attributes-sharp-clipping.md#clip12) attribute to **false** on this component does not take effect.
+> When **fadingEdge** takes effect, the component on which the **fadingEdge** attribute is set is clipped to its boundary. It is recommended not to set the [clip](ts-universal-attributes-sharp-clipping.md#clip12) attribute to **false**, or set the **show** parameter of the [cachedCount](ts-container-list.md#cachedcount14) attribute to **true**.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -325,7 +325,7 @@ Sets whether to enable the edge fading effect and the length of the fading edge.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                             | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -352,7 +352,7 @@ Since API version 26.0.0, child components within the content-layer clipping are
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name | Type                                             | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -378,7 +378,7 @@ When a status bar touch event is received, the scrollable component on the curre
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                          |
 | ------ | ------- | ---- | ---------------------------------------------- |
@@ -402,7 +402,7 @@ Sets the margin of the scrollbar. The margin is calculated based on the distance
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
@@ -430,7 +430,7 @@ When the automatic margin adjustment feature is enabled, the scrolling direction
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
@@ -456,7 +456,7 @@ A component must have focus to receive [crown events](ts-universal-events-crown.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name     | Type                                                        | Mandatory| Description                                                        |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -482,7 +482,7 @@ If the combined value of contentStartOffset and contentEndOffset exceeds the scr
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                           |
 | ------ | ------ | ---- | ----------------------------------------------- |
@@ -508,7 +508,7 @@ If the combined value of contentStartOffset and contentEndOffset exceeds the scr
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                         |
 | ------ | ------ | ---- | --------------------------------------------- |
@@ -520,11 +520,12 @@ If the combined value of contentStartOffset and contentEndOffset exceeds the scr
 | --- | -------------- |
 | T | Current scrollable component.|
 
+
 ### enableScrollWithMouse
 
 enableScrollWithMouse(enabled: boolean | undefined): T
 
-Sets whether to support scrolling by dragging with the left mouse button pressed. If this API is not called, scrolling by dragging with the left mouse button pressed is not supported by default.
+Sets whether to support dragging to scroll when the left mouse button is pressed.
 
 **Since**: 26.0.0
 
@@ -534,11 +535,38 @@ Sets whether to support scrolling by dragging with the left mouse button pressed
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                                         |
 | ------ | ------ | ---- | --------------------------------------------- |
-| enabled  | boolean \| undefined | Yes  | Whether to support scrolling by dragging with the left mouse button pressed.<br>**true**: yes.<br>**false**: no.<br>**undefined**: no.|
+| enabled  | boolean \| undefined | Yes   | Whether to support drag scrolling by pressing and holding the left mouse button.<br/>**true**: supports drag scrolling by pressing and holding the left mouse button.<br/>**false**: does not support drag scrolling by pressing and holding the left mouse button.<br/>**undefined**: when set to **undefined** for the first time, the default value is used. When set to **undefined** again, the previous setting remains unchanged.<br/>Default value: **false** before API version 26.1.0. Since API version 26.1.0, the value is **true** when the scrollable component scrolls horizontally, and **false** otherwise. |
+
+**Return value**
+
+| Type | Description |
+| --- | --- |
+| T | Current scroll component. |
+
+### enableScrollWithKeyboard
+
+enableScrollWithKeyboard(enabled: boolean | undefined): T
+
+Sets whether the scrollable component supports scrolling via keyboard arrow keys. When enabled, the scrollable component responds to keyboard arrow key scrolling when it has focus and the focus state is not activated. If this API is not called, scrolling via keyboard arrow keys is supported by default.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type   | Mandatory | Description                                          |
+| ------ | ------ | ---- | --------------------------------------------- |
+| enabled  | boolean \| undefined | Yes   | Whether scrolling via keyboard arrow keys is supported.<br/>**true**: scrolling via keyboard arrow keys is supported.<br/>**false**: scrolling via keyboard arrow keys is not supported.<br/>**undefined**: scrolling via keyboard arrow keys is supported. |
 
 **Return value**
 
@@ -562,7 +590,7 @@ This event is triggered once when the component is initialized and once when the
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
@@ -588,7 +616,7 @@ Triggered once when the scrollable component is initialized and is already at th
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
@@ -618,7 +646,7 @@ Trigger conditions:
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
@@ -648,7 +676,7 @@ Trigger conditions:
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
@@ -794,7 +822,7 @@ Triggered when the scrollable component is released. It is not triggered for scr
 
 | Name | Type                                                       | Mandatory| Description                        |
 | ------- | ----------------------------------------------------------- | ---- | ---------------------------- |
-| handler | [OnWillStopDraggingCallback](#onwillstopdraggingcallback20) | Yes  | Callback invoked when the scrollable component is released.|
+| handler | [OnWillStopDraggingCallback](#onwillstopdraggingcallback20) | Yes | Callback invoked when the scroll component is released. |
 
 **Return value**
 
@@ -1011,7 +1039,7 @@ Triggered when the scrollable component is about to scroll.
 | scrollState | [ScrollState](ts-container-list.md#scrollstate)| Yes| Current scroll state.|
 | scrollSource | [ScrollSource](ts-appendix-enums.md#scrollsource12) | Yes| Source of the current scrolling operation.|
 
-**Return value**
+**Return value** 
 
 | Type                         | Description                                 |
 | ----------------------------- | ------------------------------------ |
@@ -1055,7 +1083,7 @@ Called when a list or grid element starts to be dragged.
 | event     | [ItemDragInfo](#itemdraginfo) | Yes   | Information about the drag point.         |
 | itemIndex | number                                                    | Yes  | Index of the dragged element.|
 
-**Return value**
+**Return value** 
 
 | Type                         | Description                                 |
 | ----------------------------- | ------------------------------------ |
@@ -1133,6 +1161,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
 
+
 ### childDefaultSize<sup>12+</sup>
 
 set childDefaultSize(value: number)
@@ -1167,7 +1196,7 @@ Obtains the default size of the child component along the main axis.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Return value**
+**Return value** 
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -1193,6 +1222,7 @@ Performs batch operations to add, delete, or modify the size information of chil
 | deleteCount | number | No   | Number of size information entries to be deleted starting from the **start** position.<br>**NOTE**<br>1.  The value must be a finite non-negative number; otherwise, it will be treated as **0**.<br>2. Non-integer values are truncated to the nearest integer.<br>3. The result of (start + deleteCount - 1) can exceed the maximum index, which will delete all size information of child components starting from the **start** position.<br>Default value: **+∞**<br>Value range: [0, +∞)|
 | childrenSize | Array\<number > | No   | Size information of all child components to be inserted, starting from the **start** position.<br>Unit for each value in the array: vp<br>**NOTE**<br>1. If the values in the array are finite non-negative number, they are considered specified sizes and will not change with the default size.<br>2. If the values in the array are not finite non-negative number, they will be treated as the default size and will change with the default size.<br>The default value is an empty array.<br>Value range: [0, +∞)|
 
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../../errorcode-universal.md).
@@ -1200,6 +1230,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
+
 
 > **NOTE**
 >
@@ -1236,9 +1267,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
 
 ## UIScrollableCommonEvent<sup>19+</sup>
-
 Configures scroll event callbacks.
-
 ### setOnReachStart<sup>19+</sup>
 
 setOnReachStart(callback: Callback\<void> | undefined): void
@@ -1279,6 +1308,7 @@ If the input parameter is **undefined**, the event callback is reset.
 | ------ | ------ | ---- | -------------------------- |
 | callback  | [Callback](./ts-types.md#callback12)\<void> &nbsp;\|&nbsp;undefined | Yes  | Callback for the **onReachEnd** event.|
 
+
 ### setOnScrollStart<sup>19+</sup>
 
 setOnScrollStart(callback: Callback\<void> | undefined): void
@@ -1298,6 +1328,7 @@ If the input parameter is **undefined**, the event callback is reset.
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
 | callback  | [Callback](./ts-types.md#callback12)\<void> &nbsp;\|&nbsp; undefined | Yes  | Callback for the **onScrollStart** event.|
+
 
 ### setOnScrollStop<sup>19+</sup>
 
@@ -1339,6 +1370,7 @@ If the input parameter is **undefined**, the event callback is reset.
 | ------ | ------ | ---- | -------------------------- |
 | callback  | [OnScrollFrameBeginCallback](./ts-container-scroll.md#onscrollframebegincallback18)&nbsp;\|&nbsp;undefined | Yes  | Callback for the **onScrollFrameBegin** event.|
 
+
 ## OnWillStopDraggingCallback<sup>20+</sup>
 
 type OnWillStopDraggingCallback = (velocity: number) => void
@@ -1357,7 +1389,7 @@ Defines the callback invoked when the scrollable component is released.
 
 | Name  | Type  | Mandatory| Description                                                        |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| velocity | number | Yes  | Scroll velocity. Positive for scrolling upward, negative for scrolling downward.<br>Unit: vp/s.|
+| velocity | number | Yes   | Release velocity of the swipe. The value is positive when the content of the scroll component scrolls upward, and negative when it scrolls downward.<br/>Unit: vp/s. |
 
 ## OnDidStopDraggingCallback<sup>21+</sup>
 
@@ -1405,16 +1437,84 @@ Defines the callback type invoked when the indexes of the child components displ
 | start  | number | Yes   | Index of the start position of the visible area.<br/>Value range: [0, total number of child nodes - 1]. The value **-1** is returned when there is no child node or all child nodes are outside the visible area. |
 | end    | number | Yes   | Index of the end position of the visible area.<br/>Value range: [0, total number of child nodes - 1]. The value **-1** is returned when there is no child node or all child nodes are outside the visible area. |
 
+## ScrollSnapOffsetProvider
+
+Customizes the distance and snap position of snap scrolling. This API applies to the **scrollSnapStrategy** attribute of the [Grid](ts-container-grid.md) and [WaterFlow](ts-container-waterflow.md) components. After implementing the API, you can pass the object to **scrollSnapStrategy** to use it. For a complete example, see [Example 24: Customizing Scroll Snap Position](ts-container-grid.md#example-24-customizing-scroll-snap-position).
+
+Custom snap scrolling consists of two phases: first, fling scrolling by the specified distance, and then scrolling to the target snap position through a snap animation. The two callbacks are invoked at the start of the two phases, respectively:
+
+- [calculateApproachOffset](#calculateapproachoffset): invoked once when fling scrolling starts.
+- [calculateSnapOffset](#calculatesnapoffset): invoked once when the fling phase ends and before the snap animation starts.
+
+Note the following when using it:
+
+- The unit of the offset is vp, and the unit of the velocity is vp/s.
+- Both callbacks are invoked synchronously on the UI thread and should be used only for calculation, not for modifying the component layout or application state.
+- The callbacks do not provide the position and size of items; developers need to record or calculate this information themselves.
+
+**Since:** 26.1.0
+
+### calculateApproachOffset
+
+calculateApproachOffset(velocity: number, decayOffset: number): number
+
+Calculates the scroll distance in the inertial phase. It is invoked once when inertial scrolling starts.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ---- | ----------------------------- | ---- | -------------------- |
+| velocity | number | Yes | Velocity at the start of inertial scrolling. A positive value indicates scrolling toward the end of the content. Reverse layout and RTL direction are handled uniformly by the component.<br/>Unit: vp/s |
+| decayOffset | number | Yes | Predicted coasting distance based on the default inertial scrolling.<br/>Unit: vp<br/>Value range: [0, +∞) |
+
+**Return value**
+
+| Type | Description |
+| ------- | ---------- |
+| number | Scroll distance in the inertial phase. It cannot be **NaN** or **Infinity**, and it can exceed **decayOffset**. If a negative number, **NaN**, or **Infinity** is returned, or if the callback throws an exception, the phase scrolls by the default inertial coasting distance, and then the limit animation phase proceeds normally.<br/>Unit: vp<br/>Value range: [0, +∞) |
+
+### calculateSnapOffset
+
+calculateSnapOffset(velocity: number): number
+
+Calculates the final snap position. It is invoked once after the inertial phase ends and before the snap animation starts.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name   | Type                            | Mandatory   | Description                   |
+| ---- | ----------------------------- | ---- | -------------------- |
+| velocity | number | Yes    | Velocity at the start of inertial scrolling. It is positive when scrolling toward the end of the content. The reverse layout and RTL direction are handled uniformly by the component.<br/>Unit: vp/s |
+
+**Return value**
+
+| Type    | Description       |
+| ------- | ---------- |
+| number  | Scroll offset of the final snap position relative to the start of the content. It must be a finite value. Along the logical main axis, the offset is positive toward the end of the content and negative in the opposite direction, with **0** indicating the start of the content. The actual scroll direction is determined by the target position and the current scroll position: when the target offset is greater than the current offset, the component scrolls toward the end of the content; when it is smaller, the component scrolls toward the start of the content; when they are equal, no scrolling occurs. When the target position exceeds the scrollable range, it is clamped to the boundary of the scrollable range. If the callback returns **NaN** or **Infinity**, or throws an exception, the component stops at the current scroll position.<br/>Unit: vp<br/>Value range: the scroll offset corresponding to the scrollable range of the component. |
+
 ## Example
 
 ### Example 1: Implementing Gesture-based Scrolling
-
 This example sets the [enableScrollInteraction](#enablescrollinteraction11) attribute to scroll a vertical list with gestures and call back the index when the currently displayed interface changes.
 
 For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 import { ListDataSource } from './ListDataSource';
@@ -1479,13 +1579,11 @@ struct ListExample {
 ![list1](figures/list1.gif)
 
 ### Example 2: Setting Edge Fading
-
 This example sets the [fadingEdge](#fadingedge14) attribute to enable the edge fading effect for the [List](ts-container-list.md) component and set the edge fading length.
 
 For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 import { LengthMetrics } from '@kit.ArkUI';
@@ -1525,8 +1623,7 @@ struct ListExample {
 
 ![fadingEdge_list](figures/fadingEdge_list.gif)
 
-### Example 3: Setting the Clipping Region
-
+### Example 3: Setting the Clipping Area
 This example sets the [clipContent](#clipcontent14) attribute to change the clipping area of the component's content layer.
 
 ```ts
@@ -1587,13 +1684,11 @@ struct ScrollExample {
 ![clipContent_scroll](figures/clipContent_scroll.gif)
 
 ### Example 4: Setting the Scrollbar Margin
-
 This example demonstrates how to use the [scrollBarMargin](#scrollbarmargin20) attribute to adjust the scrollbar margins of a scrollable component, available since API version 20.
 
 For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
 
 <!--code_no_check-->
-
 ```ts
 // xxx.ets
 import { ListDataSource } from './ListDataSource';
@@ -1644,4 +1739,86 @@ struct ListExample {
 ```
 
 ![scrollBarMargin_list](figures/scrollBarMargin_list.gif)
-<!--no_check-->
+
+### Example 5: Setting Drag Scrolling with the Left Mouse Button Pressed
+
+This example implements the effect of drag scrolling with the left mouse button pressed by setting the [enableScrollWithMouse](#enablescrollwithmouse) attribute (newly added since API version 26.0.0). The initial value of the attribute is set to **undefined**, indicating that the default effect is used.
+
+For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
+
+<!--code_no_check-->
+```ts
+// xxx.ets
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct Index {
+  private verticalData: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  private horizontalData: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  @State verticalMouseScroll: boolean | undefined = undefined;
+  @State horizontalMouseScroll: boolean | undefined = undefined;
+
+  build() {
+    Column({ space: 12 }) {
+      Button(`enableScrollWithMouse(vertical): ${this.verticalMouseScroll}`)
+        .onClick(() => {
+          this.verticalMouseScroll = !this.verticalMouseScroll;
+        }).margin({ top: 40 })
+
+      List({ space: 10 }) {
+        LazyForEach(this.verticalData, (item: number) => {
+          ListItem() {
+            Text(item.toString())
+              .width('100%')
+              .height(80)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .listDirection(Axis.Vertical)
+      .enableScrollWithMouse(this.verticalMouseScroll)
+      .height(190)
+      .width('90%')
+
+      Button(`enableScrollWithMouse(horizontal): ${this.horizontalMouseScroll}`)
+        .onClick(() => {
+          this.horizontalMouseScroll = !this.horizontalMouseScroll;
+        }).margin({ top: 40 })
+
+      List({ space: 10 }) {
+        LazyForEach(this.horizontalData, (item: number) => {
+          ListItem() {
+            Text(item.toString())
+              .width(160)
+              .height(80)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .listDirection(Axis.Horizontal)
+      .enableScrollWithMouse(this.horizontalMouseScroll)
+      .height(100)
+      .width('90%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 12, bottom: 12 })
+  }
+}
+```
+
+Before API version 26.1.0, the default value of the **enableScrollWithMouse** attribute was **false**, as shown in the following figure:
+
+![enableScrollWithMouse_before](figures/enableScrollWithMouse_before.gif)
+
+Since API version 26.1.0, when a scrollable component scrolls horizontally, the default value of the **enableScrollWithMouse** attribute is **true**; otherwise, it is false, as shown in the following figure:
+
+![enableScrollWithMouse_after](figures/enableScrollWithMouse_after.gif)

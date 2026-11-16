@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=77f0ac919735ea8b52870b0c3cfc4e073acc3031 translatedAt=2026-09-02T12:34:42.668Z -->
+<!-- md-trans-meta sourceCommit=98a1069e7cebe26db505e0281918e36485c64510 translatedAt=2026-11-03T04:00:26.355Z pushedAt=2026-11-13T01:06:00.180Z nl=1 -->
 
 A styled string is an object that associates text styles with text content. Styles specify text ranges through **start** and **length**, and multiple styles can be applied to the same range in a stacked manner. A styled string is an object used to create rich text. It supports setting various style types such as font style, decoration line, shadow, line height, and paragraph style, and also supports inserting images and custom drawing content. It can be bound to a **Text** component through [setStyledString](./ts-basic-components-text.md#setstyledstring12) in [TextController](./ts-basic-components-text.md#textcontroller11), or bound to a [RichEditor](./ts-basic-components-richeditor.md) component through [setStyledString](./ts-basic-components-richeditor.md#setstyledstring12) in [RichEditorStyledStringController](./ts-basic-components-richeditor.md#richeditorstyledstringcontroller12). It is suitable for scenarios that require flexible text style settings, such as rich text editing, chat message display, and document annotation. It supports dynamic modification of style content, style stacking, and conflict handling.
 
@@ -165,7 +165,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 
 static fromHtml(html: string): Promise\<StyledString>
 
-Converts an HTML-formatted string into a styled string. HTML tags are mapped to the corresponding styled string styles (for example, bold tags are mapped to **TextStyle**, and decoration tags are mapped to **DecorationStyle**). The HTML tags currently supported for conversion are: \<p>, \<span>, \<img>, \<br>, \<strong>, \<b>, \<a>, \<i>, \<em>, \<s>, \<u>, \<del>, \<sup>, \<sub>, \<cite>, \<dfn>, \<small>, \<h1>, \<h2>, \<h3>, \<h4>, \<h5>, \<h6>, \<ol>, \<ul>, \<li>. The style attribute in tags can be converted into the corresponding styled string styles.
+Converts an HTML string into a styled string. HTML tags are mapped to the corresponding styled string styles (for example, bold tags are mapped to **TextStyle**, and decoration tags are mapped to **DecorationStyle**). For details about the supported HTML tags, see the following table. Different tags are supported starting from different API versions.
 
 For details about how to use this API, see [Example 12: Implementing Conversion Using fromHtml and toHtml](#example-12-implementing-conversion-using-fromhtml-and-tohtml) and [Example 18: Conversion Using fromHtml](#example-18-conversion-using-fromhtml).
 
@@ -572,8 +572,8 @@ Defines the style for a styled string.
 
 | Name | Type                             | Read-Only| Optional| Description  |
 | ------- | --------------------------------- | ---- | ---- |--------------------------------- |
-| start | number | No | Yes | Start position for setting the style of the styled string.<br>If the value of **start** is less than 0 or exceeds the string length, it is processed as 0. |
-| length | number | No | Yes | Length for setting the style of the styled string.<br>If the value of **length** is less than 0 or exceeds the difference between the string length and **start**, it is processed as the difference between the string length and **start**. |
+| start | number | No | Yes | Start position for setting the style of the styled string.<br>Default value: **0**<br>If the value of **start** is less than 0 or exceeds the string length, it is processed as 0. |
+| length | number | No | Yes | Length of the style of the styled string.<br>Default value: the difference between the string length and **start**.<br>If the value of **length** is less than 0 or exceeds the difference between the string length and **start**, it is processed as the difference between the string length and **start**. |
 | styledKey | [StyledStringKey](#styledstringkey)| No  | No| Style key.|
 | styledValue | [StyledStringValue](#styledstringvalue) | No | No | Style object used to set the style of the styled string. |
 
@@ -659,11 +659,11 @@ A constructor used to create a text style.
 | ----------- | ----------------------------------- | ---- | ---- |---------------------------- |
 | fontColor   | [ResourceColor](ts-types.md#resourcecolor)                       | No   | Yes | Font color.<br>The default value is the theme color.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | fontFamily  | [ResourceStr](ts-types.md#resourcestr)                           | No   | Yes | Text font.<br>The default value is the theme font.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| fontSize    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | No   | Yes | Font size.<br>The default font size is 16fp.<br>If the unit value of LengthMetrics is PERCENT, the current setting does not take effect and is processed as **16fp**.<br>Unit: [fp](ts-pixel-units.md#basic-pixel-units) <br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| fontSize    | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | No   | Yes | Font size.<br>The default font size is 16fp.<br>When the unit attribute of the **LengthMetrics** object is **LengthUnit.PERCENT**, this setting does not take effect and is treated as 16fp.<br>Unit: [fp](ts-pixel-units.md#basic-pixel-units)<br>**Atomic service API:** Since API version 12, this API is supported in atomic services. |
 | fontWeight  | number\| [FontWeight](ts-appendix-enums.md#fontweight) \| string | No   | Yes | Font weight.<br>For the number type, the value ranges from 100 to 900 at an interval of 100. The default value is 400. A larger value indicates a heavier font. For the string type, only the string form of the number type value is supported, for example, "400", as well as "bold", "bolder", "lighter", "regular", and "medium", which correspond to the respective enum values in **FontWeight**. An excessively large value may be truncated in different fonts. If the value passed in is out of the value range or does not meet the interval requirement, the default value is used.<br>Default value: **FontWeight.Normal**<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | fontStyle   | [FontStyle](ts-appendix-enums.md#fontstyle)                      | No   | Yes | Font style.<br>Default value: **FontStyle.Normal**<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | fontConfigs<sup>24+</sup> | [FontConfigs](ts-text-common.md#fontconfigs24)                      | No   | Yes | Font configuration. The default value inherits [FontConfigs](ts-text-common.md#fontconfigs24).<br>**Atomic service API:** This API can be used in atomic services since API version 24.<br>**Model restriction:** This API can be used only in the stage model. |
-| strokeWidth<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | No   | Yes | Text stroke width. If the unit value of **LengthMetrics** is **PERCENT**, the current setting does not take effect and is processed as 0.<br>If the value is less than 0, the text is solid; if the value is greater than 0, the text is hollow.<br>The default value is **0**.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
+| strokeWidth<sup>20+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)    | No   | Yes | Text stroke width. When the unit attribute of the **LengthMetrics** object is **LengthUnit.PERCENT**, this setting does not take effect and is treated as 0.<br>When the value is less than 0, the text is rendered as solid; when the value is greater than 0, the text is rendered as hollow.<br>The default value is 0, in vp.<br>**Atomic service API:** Since API version 20, this API is supported in atomic services. |
 | strokeColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)                       | No   | Yes | Text stroke color.<br>The default value is the font color. If an abnormal value is set, the font color is used.<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
 | superscript<sup>20+</sup> | [SuperscriptStyle](ts-text-common.md#superscriptstyle20)     | No   | Yes | Text superscript and subscript.<br>Default value: **SuperscriptStyle.NORMAL**<br>**Atomic service API:** This API can be used in atomic services since API version 20. |
 | fontVariations | Array&lt;[FontVariation](../../apis-arkgraphics2d/js-apis-graphics-text.md#fontvariation)&gt; | No | Yes | Attribute of the variable font.<br>Default value: **undefined**, indicating that the attribute of the variable font is not set.<br>The **fontVariations** attribute has a higher priority than **fontWeight**.<br>**Since:** 26.0.0 <br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
@@ -813,7 +813,7 @@ A constructor used to create a text baseline offset style.
 
 | Name | Type                             | Mandatory| Description  |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| value | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes | Setting item for the text baseline offset. If the unit value of **LengthMetrics** is **PERCENT**, this setting does not take effect. |
+| value | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes | Setting item for the text baseline offset. This setting does not take effect when the unit attribute of the **LengthMetrics** object is **LengthUnit.PERCENT**. |
 
 ## LetterSpacingStyle
 
@@ -845,7 +845,7 @@ A constructor used to create a text letter spacing style.
 
 | Name | Type                             | Mandatory| Description  |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| value | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes | Text character spacing setting. If the unit value of **LengthMetrics** is **PERCENT**, this setting does not take effect. |
+| value | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes | Setting item for the text character spacing. This setting does not take effect when the unit attribute of the **LengthMetrics** object is **LengthUnit.PERCENT**. |
 
 ## LineHeightStyle
 
@@ -876,7 +876,7 @@ A constructor used to create a text line height style.
 
 | Name  | Type                              | Mandatory | Description   |
 | ------- | --------------------------------- | ---- | --------------------------------- |
-| lineHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes   | Text line height setting. If the unit value of **LengthMetrics** is **PERCENT**, the current setting does not take effect. When the **value** of **LengthMetrics** is greater than 0, the text line height setting takes effect; otherwise, the text line height adapts to the font size. |
+| lineHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | Yes | Text line height setting. When the unit attribute of the LengthMetrics object is **LengthUnit.PERCENT**, the current setting does not take effect. When the value of **LengthMetrics** is greater than 0, the text line height setting takes effect; otherwise, the text line height adapts to the font size. |
 
 ### constructor
 
@@ -1001,6 +1001,8 @@ Describes the image attachment.
 | layoutStyle  | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle) |  Yes |  Yes | Image layout of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  Yes |  Yes | Image color filter of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 | supportSvg2<sup>22+</sup>  | boolean |  Yes |  Yes | Whether to enable [enhanced SVG tag parsing capabilities](ts-image-svg2-capabilities.md).<br>**true**: Enable enhanced SVG tag parsing. **false**: Use original SVG tag parsing.<br>Default value: **false**<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  Yes  |  Yes  | Obtains the resizable image options when the image of the styled string is stretched.<br>**Since:** 26.0.1<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.1. |
+| imageTag  | string |  Yes  |  Yes  | Obtains the image tag of the styled string.<br>**Since:** 26.1.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.1.0. |
 
 ### constructor
 
@@ -1076,6 +1078,8 @@ Defines the type for image color filter settings.
 | objectFit | [ImageFit](ts-appendix-enums.md#imagefit) | No    | Yes | Sets the scaling type of the image. The current enum type does not support **ImageFit.MATRIX**. For details about the enums, see **ImageFit**.<br>**Atomic service API:** This API can be used in atomic services since API version 12.<br>Default value: **ImageFit.Cover** |
 | layoutStyle | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle) | No    | Yes | Image layout. If this parameter is not passed, the default layout is used (the margin, padding, and corner radius are all 0).<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  No   | Yes | Color filter effect of the image in the styled string. If this parameter is not passed, no color filter is applied and the image is displayed in its original color.<br>**Atomic service API:** This API can be used in atomic services since API version 15. |
+| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  No  | Yes | Resizable image options when setting the image stretch of the styled string. No stretch is performed when not passed.<br>**Since:** 26.0.1<br>**Atomic service API:** This API supports use in atomic services since API version 26.0.1. |
+| imageTag  | string |  No  | Yes | Image text label for setting the styled string. No text label is set when not passed.<br>**Since:** 26.1.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API supports use in atomic services since API version 26.1.0. |
 
 ## ImageAttachmentLayoutStyle
 
@@ -1105,6 +1109,8 @@ Defines the settings for images of the ResourceStr type.
 | colorFilter  | [ColorFilterType](#colorfiltertype15) |  No  | Yes | Color filter effect of the image in the styled string. If this parameter is not passed, no color filter is applied and the image is displayed in its original color.<br>**Atomic service API:** This API can be used in atomic services since API version 15. |
 | syncLoad  | boolean |  No  | Yes | Whether to load the image synchronously. By default, the image is loaded asynchronously. During synchronous loading, the UI thread is blocked and no placeholder image is displayed.<br>**true**: synchronous loading; **false**: asynchronous loading.<br>Default value: **false**<br>**Atomic service API:** This API can be used in atomic services since API version 15. |
 | supportSvg2<sup>22+</sup>  | boolean |  No |  Yes | Whether to enable [enhanced SVG tag parsing capabilities](ts-image-svg2-capabilities.md).<br>**true**: Enable enhanced SVG tag parsing. **false**: Use original SVG tag parsing.<br>Default value: **false**<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| resizable  | [ResizableOptions](ts-basic-components-image.md#resizableoptions11) |  No  |  Yes  | Resizable image options when stretching the image of the styled string. When not passed, no stretching is performed.<br>**Since:** 26.0.1<br>**Atomic service API:** Since API version 26.0.1, this API supports use in atomic services. |
+| imageTag  | string |  No  |  Yes  | Sets the image text label of the styled string. When not passed, no text label is set.<br>**Since:** 26.1.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** Since API version 26.1.0, this API supports use in atomic services. |
 
 ## CustomSpan
 
@@ -1427,7 +1433,7 @@ A constructor used to create a URL object.
 | ------- | --------------------------------- | ---- | --------------------------------- |
 | url | string | Yes | Hyperlink URL setting. Must be a valid URL address. |
 
-## Example
+## Examples
 
 ### Example 1: Processing Styled Strings
 
@@ -1916,7 +1922,7 @@ struct StyledStringSetImageDemo {
     console.info('aboutToAppear initial imagePixelMap');
     // Replace $r('app.media.startIcon') with the image resource file you use.
     this.imagePixelMap =
-      await this.getPixmapFromMedia($r('app.media.startIcon')); 
+      await this.getPixmapFromMedia($r('app.media.startIcon'));
   }
 
   private async getPixmapFromMedia(resource: Resource) {
@@ -1954,7 +1960,7 @@ struct StyledStringSetImageDemo {
             if (this.imagePixelMap !== undefined) {
               this.mutableStr = new MutableStyledString(new ImageAttachment({
                 // Replace $r('app.media.sky') with the image resource file you use.
-                resourceValue: $r('app.media.sky'), 
+                resourceValue: $r('app.media.sky'),
                 size: { width: 50, height: 50 },
                 layoutStyle: { borderRadius: LengthMetrics.vp(10) },
                 verticalAlign: ImageSpanAlignment.BASELINE,
@@ -3183,7 +3189,7 @@ struct StyledStringFontConfigsDemo {
 ### Example 18: Conversion Using fromHtml
 
 This example converts the \<cite>, \<dfn>, \<small>, \<h1>, \<h2>, \<h3>, \<h4>, \<h5>, \<h6>, \<ol>, \<ul>, and \<li> tags in HTML into a styled string through the [fromHtml](#fromhtml) API.
-
+ 
 Since API version 26.0.0, **fromHtml** additionally supports the \<cite>, \<dfn>, \<small>, \<h1>, \<h2>, \<h3>, \<h4>, \<h5>, \<h6>, \<ol>, \<ul>, and \<li> tags.
 
 ```ts
@@ -3217,7 +3223,7 @@ struct html_convert_demo {
 ### Example 19: Setting the Properties of a Variable Font
 
 This example sets the properties of a variable font through the **fontVariations** property of [TextStyle](#textstyle).
-
+ 
 Since API version 26.0.0, the **fontVariations** property is added to [TextStyle](#textstyle).
 
 ```ts
@@ -3491,3 +3497,155 @@ struct TailIndentsExample {
 ```
 
 <!--Del--> <!--DelEnd-->
+
+
+### Example 22: Setting Image Stretch
+
+This example sets the **resizable** attribute in [ImageAttachment](#imageattachmentinterface) and uses the **slice** and **lattice** options to stretch the image.
+
+Since API version 26.0.1, the **ImageAttachment** API has added the **resizable** attribute.
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct StyledStringResizablePage {
+  controller: TextController = new TextController();
+  private xDivs: Array<number> = [1, 2, 200];
+  private yDivs: Array<number> = [1, 2, 200];
+  private fXCount: number = 3;
+  private fYCount: number = 3;
+  private drawingLattice: DrawingLattice =
+    drawing.Lattice.createImageLattice(this.xDivs, this.yDivs, this.fXCount, this.fYCount);
+
+  build() {
+    Column({ space: 20 }) {
+      Text('StyledString resizable Demo')
+        .fontSize(25)
+        .fontWeight(FontWeight.Bold)
+
+      Text(undefined, { controller: this.controller })
+        .width('90%')
+        .margin({ top: 10 })
+        .fontSize(25)
+        .onAppear(() => {
+          let sliceStyledString: MutableStyledString = new MutableStyledString(new ImageAttachment({
+            resourceValue: $r('app.media.landscape'),
+            size: { width: 200, height: 200 },
+            resizable: {
+              slice: {
+                left: '200px',
+                top: '200px',
+                right: '20px',
+                bottom: '20px'
+              }
+            }
+          }));
+          let latticeStyledString: MutableStyledString = new MutableStyledString(new ImageAttachment({
+            resourceValue: $r('app.media.landscape'),
+            size: { width: 200, height: 200 },
+            resizable: {
+              lattice: this.drawingLattice
+            }
+          }));
+          let mutableStyledString: MutableStyledString = new MutableStyledString(new ImageAttachment({
+            resourceValue: $r('app.media.landscape'),
+            size: { width: 200, height: 200 },
+          }));
+          mutableStyledString.insertString(0, "Original image\n")
+          mutableStyledString.insertString(mutableStyledString.length, "\nAfter setting slice\n")
+          mutableStyledString.appendStyledString(sliceStyledString);
+          mutableStyledString.insertString(mutableStyledString.length, "\nAfter setting lattice\n")
+          mutableStyledString.appendStyledString(latticeStyledString);
+          this.controller.setStyledString(mutableStyledString);
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .padding(20)
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+
+```
+
+<!--Del--> <!--DelEnd-->
+
+### Example 23: Obtaining the Image Tag
+
+This example uses the **imageTag** attribute of [ImageAttachment](#imageattachment) to set an image tag for an emoji image, and uses [getStyles](#getstyles) to obtain the image style in the styled string. It then reads the image tag from the image style and replaces the image with plain text content in the form of a "tag".
+
+Since API version 26.1.0, the **imageTag** attribute is added to [ImageAttachment](#imageattachment), [ImageAttachmentInterface](#imageattachmentinterface), and [ResourceImageAttachmentOptions](#resourceimageattachmentoptions15).
+
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct StyledStringImageTagDemo {
+  @State tagResult: string = 'Tap the button to obtain the image text tag';
+  plainText: string = 'Image tag setting';
+  mutableStr: MutableStyledString = new MutableStyledString(this.plainText);
+  controller: TextController = new TextController();
+
+  aboutToAppear(): void {
+    // $r('app.media.startIcon') is a unified placeholder resource and can be replaced with the emoji image resource required by the developer.
+    this.mutableStr.appendStyledString(new MutableStyledString(new ImageAttachment({
+      resourceValue: $r('app.media.startIcon'),
+      imageTag: '[Smile]',
+      size: { width: 30, height: 30 },
+      layoutStyle: { margin: LengthMetrics.vp(10) }
+    })));
+    this.mutableStr.appendStyledString(new MutableStyledString(new ImageAttachment({
+      resourceValue: $r('app.media.startIcon'),
+      imageTag: '[Cry]',
+      size: { width: 30, height: 30 },
+      layoutStyle: { margin: LengthMetrics.vp(10) }
+    })));
+    this.mutableStr.appendStyledString(new MutableStyledString(new ImageAttachment({
+      resourceValue: $r('app.media.startIcon'),
+      imageTag: '[Facepalm]',
+      size: { width: 30, height: 30 },
+      layoutStyle: { margin: LengthMetrics.vp(10) }
+    })));
+    this.controller.setStyledString(this.mutableStr);
+  }
+
+  build() {
+    Column() {
+      // Display the plain text content after the image is replaced with a text tag.
+      Text(this.tagResult)
+        .fontSize(18)
+        .fontWeight(FontWeight.Bold)
+        .padding(10)
+      // Display the plain text plus three emoji images.
+      Text(undefined, { controller: this.controller })
+        .fontSize(18)
+        .margin(10)
+
+      Button('getImageTag')
+        .margin(10)
+        .onClick(() => {
+          // Obtain the image text tag.
+          let imageStyles = this.mutableStr.getStyles(0, this.mutableStr.length, StyledStringKey.IMAGE);
+          let tags = '';
+          for (let i = 0; i < imageStyles.length; i++) {
+            let attachment = imageStyles[i].styledValue as ImageAttachment;
+            if (attachment.imageTag !== undefined) {
+              tags += attachment.imageTag;
+            }
+          }
+          this.tagResult = this.plainText + tags;
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('70%')
+  }
+}
+```
+
+<!--Del--> <!--DelEnd-->
+

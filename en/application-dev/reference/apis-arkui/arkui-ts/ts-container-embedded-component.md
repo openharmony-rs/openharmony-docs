@@ -1,12 +1,11 @@
 # EmbeddedComponent
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=09eef3e0299192143afd37f4d1adb4b82c5dc737 translatedAt=2026-08-21T02:23:05.908Z pushedAt=2026-08-21T07:31:05.351Z -->
+<!-- md-trans-meta sourceCommit=33898b66eb6c0bf66810bb0d90faa36b55a4ad07 translatedAt=2026-11-03T01:58:51.713Z pushedAt=2026-11-13T01:05:59.934Z nl=1 -->
 
 **EmbeddedComponent** is used to embed, in the current page, the UI provided by an [EmbeddedUIExtensionAbility](../../apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md) within the same app or from another app that meets cross-application permission conditions. The **EmbeddedUIExtensionAbility** runs in an independent process, handling page layout and rendering.
 
@@ -18,7 +17,7 @@ It is usually used in modular development scenarios where process isolation is r
 >
 >- The APIs in this module can only be used in the stage model.
 >
->- Before API version 26.0.0, when the **EmbeddedComponent** gained focus, the focus was directly delivered to the first focusable child node in the launched **EmbeddedUIExtensionAbility** process. 
+>- Before API version 26.0.0, when the **EmbeddedComponent** gained focus, the focus was directly delivered to the first focusable child node in the launched **EmbeddedUIExtensionAbility** process.
 >  Since API version 26.0.0, if focus moves to the **EmbeddedUIExtensionAbility** from outside, the focus is normally delivered to the first focusable child node.
 >  If focus is transferred to the **EmbeddedUIExtensionAbility** due to a hierarchical page switch, the same rules as for UIAbility apply. When the **EmbeddedUIExtensionAbility** and **UIAbility** launch a hierarchical page that has no [defaultFocus](ts-universal-attributes-focus.md#defaultfocus9) set and does not [actively request focus](../../../ui/arkts-common-events-focus-event.md#active-focus-acquisitionloss), the focus stays on the root container and is not delivered to child nodes.
 
@@ -27,9 +26,7 @@ It is usually used in modular development scenarios where process isolation is r
 The **EmbeddedComponent** is supported only on devices configured with multi-process permissions. Developers can use the **canIUse** API or check system settings to determine whether the current device supports multi-process permissions.
 
 **EmbeddedComponent** can only be used in a **UIAbility**, and by default, the launched **EmbeddedUIExtensionAbility** must belong to the same app as the **UIAbility**. Since API version 26.0.0, cross-application launching of the **EmbeddedUIExtensionAbility** by the **EmbeddedComponent** is allowed when all of the following conditions are met:
-
 - The app to which the **EmbeddedComponent** belongs has applied for the **ohos.permission.SUPPORT_CROSS_APP_EMBED_FOR_OA** permission (this permission can only be applied for by enterprise normal apps).
-
 - The [appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appidentifier) of the app is in the allowlist of apps supported by the **EmbeddedUIExtensionAbility** (that is, the **appIdentifierAllowList** attribute of the [extensionAbilities tag](../../../quick-start/module-configuration-file.md#extensionabilities)).
 
 ## Child Components
@@ -118,7 +115,7 @@ Triggered when the launched EmbeddedUIExtensionAbility exits normally by calling
 
 onError(callback: import('../api/@ohos.base').ErrorCallback)
 
-Called when an error occurs during the running of the started EmbeddedUIExtensionAbility. Through the **code**, **name**, and **message** in the callback parameters, error information can be obtained and handled. For details about the error codes, see [UIExtension Error Codes](../errorcode-uiextension.md).
+This callback is triggered when the launched **EmbeddedUIExtensionAbility** encounters an exception during running, or when an abnormal situation occurs, such as a failure to launch the **EmbeddedUIExtensionAbility**, a failure to notify the provider to switch to the background or destroy the **EmbeddedUIExtensionAbility**, or nested use of **EmbeddedComponent** in the **EmbeddedUIExtensionAbility**. You can obtain the error information through the **code**, **name**, and **message** in the callback parameters and handle it. For details about the service error codes, see [UIExtension Error Codes](../errorcode-uiextension.md).
 
 > **NOTE**
 >
@@ -184,7 +181,7 @@ Used to pass optional construction parameters when creating an **EmbeddedCompone
 | placeholder                        | [ComponentContent](../js-apis-arkui-ComponentContent.md)     | No   | Yes   | Placeholder to display before the **EmbeddedComponent** establishes a connection with the **EmbeddedUIExtensionAbility**.<br>Default value: **null**, indicating no placeholder is displayed. |
 | areaChangePlaceholder              | Record\<string, [ComponentContent](../js-apis-arkui-ComponentContent.md)> | No   | Yes   | Sets the size-change placeholder, which is displayed when the size of the **EmbeddedComponent** changes and the content rendering of the **EmbeddedUIExtensionAbility** is not complete. The key is the size-change scenario type (for example, **"FOLD_TO_EXPAND"** indicates the fold-to-expand scenario), and the value is the placeholder component for the corresponding scenario. The currently supported key includes: **FOLD_TO_EXPAND**. If an unsupported key is passed in, the placeholder does not take effect. Default value: **null**, indicating that no size-change placeholder is set. |
 | dpiFollowStrategy                  | [EmbeddedDpiFollowStrategy](#embeddeddpifollowstrategy)    | No   | Yes   | DPI to follow the host or the **EmbeddedUIExtensionAbility**.<br>Default value: **FOLLOW_UI_EXTENSION_ABILITY_DPI**, indicating that the DPI follows the **EmbeddedUIExtensionAbility**. |
-| windowModeFollowStrategy | [EmbeddedWindowModeFollowStrategy](#embeddedwindowmodefollowstrategy) | No   | Yes   | Window mode to follow the host or the **EmbeddedUIExtensionAbility**.<br>Default value: **FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE**, indicating that the window mode follows the **EmbeddedUIExtensionAbility**.<br>**Since:** 26.0.0 |
+| windowModeFollowStrategy | [EmbeddedWindowModeFollowStrategy](#embeddedwindowmodefollowstrategy) | No   | Yes   | Window mode, enabling it to follow the host or **EmbeddedUIExtensionAbility**.<br> Default value: **FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE**, which indicates that the window mode follows **EmbeddedUIExtensionAbility**. |
 
 ## EmbeddedDpiFollowStrategy
 
@@ -230,7 +227,7 @@ Provides the result returned by the started **EmbeddedUIExtensionAbility**.
 
 | Name| Type                     | Read-Only| Optional| Description                                                |
 | ---- | -------------------------| ---- | ---- | ---------------------------------------------------- |
-| code | number | No | No | Result code returned when the pulled **EmbeddedUIExtensionAbility** exits, determined by the data passed in when `terminateSelfWithResult` or `terminateSelf` is called. If the exit is through `terminateSelf`, the default value of code is **0**. |
+| code | number                                                     | No | No | Result code returned when the launched **EmbeddedUIExtensionAbility** exits. If it exits through `terminateSelfWithResult`, **code** is determined by the **resultCode** passed in when calling; if it exits through `terminateSelf`, **code** takes the default value **0**. |
 | want | import('../api/@ohos.app.ability.[Want](../../apis-ability-kit/js-apis-app-ability-want.md)').default | No | Yes | Data returned when the pulled **EmbeddedUIExtensionAbility** exits. If the exit is through `terminateSelf`, the value is **undefined**. |
 
 ## Example: Loading an EmbeddedComponent Component
@@ -271,8 +268,7 @@ Since API version 26.0.0, the [onDrawReady](#ondrawready) API is added.
       abilityName: 'ExampleEmbeddedAbility',
     };
     @State dpiFollowStrategy: EmbeddedDpiFollowStrategy = EmbeddedDpiFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_DPI;
-    @State windowStrategy: EmbeddedWindowModeFollowStrategy =
-    EmbeddedWindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE;
+    @State windowStrategy: EmbeddedWindowModeFollowStrategy = EmbeddedWindowModeFollowStrategy.FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE;
     private initPlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(LoadingBuilder), new Params());
     private areaChangePlaceholder = new ComponentContent(this.getUIContext(), wrapBuilder(AreaChangePlaceholderBuilder), new Params());
 
@@ -386,7 +382,6 @@ Since API version 26.0.0, the [onDrawReady](#ondrawready) API is added.
   ```
 
 - Add the configuration for **ExampleEmbeddedAbility** under the **extensionAbilities** tag in the **module.json5** file. The type is set to **embeddedUI**, as shown below:
-
   ```json
   {
     "name": "ExampleEmbeddedAbility",
@@ -394,7 +389,6 @@ Since API version 26.0.0, the [onDrawReady](#ondrawready) API is added.
     "type": "embeddedUI"
   }
   ```
-
 - The file directory structure is as follows:
 
   ```shell
@@ -404,12 +398,12 @@ Since API version 26.0.0, the [onDrawReady](#ondrawready) API is added.
       │   ├── extensionAbility
       │   │   └── ExampleEmbeddedAbility.ets
       │   └── pages
-      |       ├── extension.ets
-      │       └── Index.ets  
+      │       ├── extension.ets
+      │       └── Index.ets
       ├── resources
-      |   └── base
-      |       └── profile
-      |           └── main_pages.json
+      │   └── base
+      │       └── profile
+      │           └── main_pages.json
       └── module.json5
   ```
 

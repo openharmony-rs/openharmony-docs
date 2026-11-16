@@ -5,7 +5,7 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=7da4542de05d8ad5daa6136bb16c8a4cf8247461 translatedAt=2026-11-03T03:10:27.073Z pushedAt=2026-11-03T03:23:53.456Z nl=1 -->
+<!-- md-trans-meta sourceCommit=939254bc3f45b3b1a8e176556c718e336d265976 translatedAt=2026-11-12T04:45:31.203Z pushedAt=2026-11-12T08:29:33.989Z nl=1 -->
 
 Web page loading failures can be caused by various factors. This topic lists troubleshooting methods for common issues to help you quickly locate the cause.
 
@@ -157,9 +157,9 @@ Cross-origin errors and Service Worker request failures generally report ERR_FAI
 
     **Method 2 (resolving local resource cross-origin issues):**
 
-    Use [setPathAllowingUniversalAccess](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setpathallowinguniversalaccess12) to set a path list. When resources in the list are accessed through the file protocol, cross-origin access to local files is allowed. In addition, once the path list is set, the file protocol can access only the resources in the list (in this case, the behavior of [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) is overridden by this API).
+    Use [setPathAllowingUniversalAccess()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setpathallowinguniversalaccess12) to set a path list. When resources in the list are accessed using the file protocol, cross-origin access to local files is allowed. In addition, once the path list is set, the file protocol is limited to accessing only the resources in the list (in this case, the behavior of [fileAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#fileaccess) is overridden by the behavior of this API).
     
-    Removing the cross-origin access restriction on directories through setPathAllowingUniversalAccess is a high-risk operation. Based on the principle of least privilege, the paths opened for el1 and el2 are fixed, and the paths in the path list must conform to one of the following path formats:
+    Using setPathAllowingUniversalAccess() to lift cross-origin access restrictions on directories is a high-risk operation. Based on the principle of least privilege, the paths opened for el1 and el2 are fixed, and each path in the path list must conform to one of the following path formats:
 
     1. The app file directory is obtained through [Context.filesDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#properties). Examples of its subdirectories are as follows:
 
@@ -243,10 +243,10 @@ Cross-origin errors and Service Worker request failures generally report ERR_FAI
                   const element = document.getElementById('text');
                   element.textContent = "load " + file + " success";
                 } else {
-                    // If the path list is not set on the ETS side, a CORS cross-origin check error is triggered here.
-                    const element = document.getElementById('text');
-                    element.textContent = "load " + file + " failed";
-                  }
+                  // If the ETS side does not set a path list, a CORS cross-origin check error is triggered here.
+                  const element = document.getElementById('text');
+                  element.textContent = "load " + file + " failed";
+                }
               }
             }
             xmlHttpReq.open("GET", file);
@@ -326,4 +326,4 @@ If a web page fails to load, use DevTools to switch the User-Agent to Android or
 
 ## Troubleshooting Common Cookie Issues
 * If the SameSite attribute of a cookie is not explicitly specified, its default value is Lax. In this case, the cookie is sent only when the user performs top-level navigation (for example, entering a URL in the address bar or clicking a link) to the origin site, and is not transmitted in cross-site requests (for example, when the user is redirected through a third-party link). To allow cross-site requests to carry the cookie, set SameSite to None. You must also set the Secure attribute to ensure that the cookie is transmitted only over an encrypted HTTPS connection, preventing it from being stolen or tampered with over plaintext HTTP connections.
-* Check whether [putAcceptThirdPartyCookieEnabled](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#putacceptthirdpartycookieenabled) is enabled. If it is not enabled, set [putAcceptThirdPartyCookieEnabled](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#putacceptthirdpartycookieenabled) to true so that the webCookieManager instance can send and receive third-party cookies. Cookies are periodically saved to the disk every 30 seconds. If you exit the app within 30 seconds after setting a cookie, the cookie may be lost because it is not flushed to the disk in time. In this case, you can call [saveCookieAsync](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#savecookieasync) to force the cookies to be flushed to the disk. (PC/2in1 and tablet devices do not persist session cookies; even if saveCookieAsync is called, session cookies are not written to the disk.)
+* Check whether [putAcceptThirdPartyCookieEnabled()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#putacceptthirdpartycookieenabled) is enabled. If it is not enabled, set [putAcceptThirdPartyCookieEnabled()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#putacceptthirdpartycookieenabled) to true so that the webCookieManager instance can send and receive third-party cookies. Cookies are periodically saved to the disk every 30 seconds. If the application exits within 30 seconds after a cookie is set, the cookie may be lost because it is not flushed to the disk in time. In this case, call the [saveCookieAsync()](../reference/apis-arkweb/arkts-apis-webview-WebCookieManager.md#savecookieasync) API to force the cookies to be flushed to the disk. (PC/2in1 and tablet devices do not persist session cookies; even if saveCookieAsync() is called, session cookies are not flushed to the disk.)

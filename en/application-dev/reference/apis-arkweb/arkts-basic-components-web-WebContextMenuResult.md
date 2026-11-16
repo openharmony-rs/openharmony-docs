@@ -1,12 +1,11 @@
 # Class (WebContextMenuResult)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=eb5077b0e0ddac08df4dbb76ee1a57a53454c9c0 translatedAt=2026-08-07T04:42:10.549Z pushedAt=2026-08-07T08:12:40.391Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-06T11:28:03.986Z pushedAt=2026-11-13T09:07:25.359Z nl=1 -->
 
 WebContextMenuResult is a class in the ArkWeb component used to handle context menu events (triggered by long-pressing a page element or right-clicking). It provides developers with a set of menu operation execution capabilities, including text editing operations (copy, paste, cut, select all, undo, redo, paste and match style), image operations (copy image, save image), menu control (close menu), and password auto-fill.
 
@@ -16,9 +15,9 @@ For details about the sample code, see [onContextMenuShow<sup>9+</sup>](./arkts-
 
 > **NOTE**
 >
-> - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The initial APIs of this class are supported since API version 9.
+> - This class is supported since API version 9.
 >
 > - The sample effect is subject to the actual device.
 
@@ -37,11 +36,8 @@ closeContextMenu(): void
 Closes this context menu. This API must be called when no operations in **WebContextMenuResult** are performed.
 
 **Calling notes**
-
 - After calling other methods of WebContextMenuResult (such as copy, paste, and cut) to complete an operation, this method should be called to close the menu.
-
 - If no other menu operations need to be performed, this method should also be called in a timely manner to close the menu.
-
 - Failure to call this method may result in menu resources not being properly released.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -115,9 +111,7 @@ undo(): void
 Performs the undo operation, which undoes the last editing operation.
 
 **Coordination**
-
 - Used together with the redo() method. After undo() is called, redo() can be used to re-execute the revoked operation.
-
 - If the user has not performed an undo operation, the redo() method cannot be used.
 
 > **NOTE**
@@ -133,9 +127,7 @@ redo(): void
 Performs the redo operation, which re-executes the revoked operation.
 
 **Coordination**
-
 - Used together with the undo() method. After undo() is called, redo() can be used to re-execute the revoked operation.
-
 - If the user has not performed an undo operation, the redo() method cannot be used.
 
 > **NOTE**
@@ -183,4 +175,39 @@ Saves the image related to this context menu. Calling this method triggers the d
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Web.Webview.Core
-<!--no_check-->
+
+## copyLinkToTextMenu
+
+copyLinkToTextMenu(): void
+
+Copies the Text Fragment link pointing to the currently highlighted text to the system clipboard. The copied URL contains the **#:~:text=** fragment that complies with the W3C Text Fragments specification. The clipboard content is the same as the URL returned by [getTextFragmentGeneratedLink](./arkts-basic-components-web-WebContextMenuParam.md#gettextfragmentgeneratedlink).
+
+It is recommended to use this API in the [onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9) event callback. Before calling this API, it is recommended to call [shouldOfferLinkToText](./arkts-basic-components-web-WebContextMenuParam.md#shouldofferlinktotext) to check whether the currently selected text supports link generation. If the selected text does not support link generation, this method does not write content to the clipboard.
+
+> **NOTE**
+>
+> After the operation is complete, [closeContextMenu](#closecontextmenu9) should be called to close the menu. Failure to do so may result in menu resources not being properly released.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+## removeFragments
+
+removeFragments(): void
+
+Removes all Text Fragment highlights on the current web page and restores the original text style.
+
+It is recommended to use this API in the [onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9) event callback. Before calling this API, it is recommended to call [isOverTextFragment](./arkts-basic-components-web-WebContextMenuParam.md#isovertextfragment) to check whether a highlight exists. If no highlight exists, this method does nothing.
+
+> **NOTE**
+>
+> After the operation is complete, [closeContextMenu](#closecontextmenu9) should be called to close the menu. Failure to do so may result in menu resources not being properly released.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Web.Webview.Core

@@ -1,11 +1,11 @@
 # Event Monopolization
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=828befee530895124aaf1637c9402999a598c883 translatedAt=2026-09-02T11:55:47.795Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:25:17.723Z pushedAt=2026-11-13T01:06:00.108Z nl=1 -->
 
 Sets whether a component monopolizes events, including built-in events and custom click, touch, and gesture events defined by developers.<br>
 Within a window, if an event on a component with monopolization control responds first, only the events set on this component are allowed to respond in this interaction, and events on other components in the same window do not respond. This capability applies to scenarios where a component needs to respond first and then prevent other components in the same window from responding, reducing interaction conflicts caused by simultaneous responses of multiple components.

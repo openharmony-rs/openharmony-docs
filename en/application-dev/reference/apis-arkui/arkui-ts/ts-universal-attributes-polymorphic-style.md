@@ -1,10 +1,11 @@
 # Polymorphic Style
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:27:23.890Z pushedAt=2026-11-13T01:06:00.116Z nl=1 -->
 
 The polymorphic style is used to set the style of a component in different states. It is applicable to scenarios where the component style needs to be dynamically switched based on various interaction states, helping developers manage the component state style in a unified manner.
 

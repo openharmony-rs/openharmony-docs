@@ -6,7 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=608175d8fd85ddfce5e6f9d9b165b9d12862adb2 translatedAt=2026-08-21T02:25:28.399Z pushedAt=2026-08-21T08:47:17.869Z -->
+<!-- md-trans-meta sourceCommit=db32d4b39846271cb4d9b597951fc6d9af23f82e translatedAt=2026-11-03T02:07:04.372Z pushedAt=2026-11-13T01:05:59.955Z nl=1 -->
 
 A list contains a series of list items of the same width. It is suitable for presenting similar data types continuously in multiple rows, such as images and text. In long list scenarios, list items can be created on demand with lazy loading to reduce the performance overhead caused by creating a large number of child components at once.
 
@@ -74,3 +74,4 @@ Defines a collection of chain animation effect attributes, used to set the maxim
 | edgeEffect   | [ChainEdgeEffect](#chainedgeeffect10) | No    | Yes | Edge effect of the chained linkage animation effect, which controls how the spacing changes after the list scrolls to the edge. **DEFAULT** presents directional stretching and rebound feedback, and **STRETCH** presents synchronous stretching feedback of all list items.<br/>Default value: **ChainEdgeEffect.DEFAULT** |
 | stiffness    | number                                   | No    | Yes | Stiffness of the chained linkage animation effect, which controls the rebound speed and animation hardness.<br/>Value range: (0, +∞). The larger the value, the faster the rebound speed and the harder the animation; the smaller the value, the softer the animation. If the value is set to a value less than or equal to 0, the current value remains unchanged; if it has never been set, the default value is used.<br/>Default value: **228** |
 | damping      | number                                   | No    | Yes | Damping of the chained linkage animation effect, which controls the oscillation decay speed.<br/>Value range: (0, +∞). The larger the value, the faster the animation decays and the fewer the oscillations; the smaller the value, the more likely the animation is to oscillate. If the value is set to a value less than or equal to 0, the current value remains unchanged; if it has never been set, the default value is used.<br/>Default value: **30** |
+

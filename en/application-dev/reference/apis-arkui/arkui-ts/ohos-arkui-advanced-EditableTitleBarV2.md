@@ -1,12 +1,11 @@
 # EditableTitleBarV2
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangrunsen-->
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=ca610c3b31eac2a84ffac21a107ce522b473feb1 translatedAt=2026-08-28T01:34:11.285Z pushedAt=2026-08-28T09:09:19.439Z -->
+<!-- md-trans-meta sourceCommit=b82cf13d76cafcd9f6a6ebcdbb3b0bf6f438477a translatedAt=2026-11-03T01:28:18.044Z pushedAt=2026-11-13T01:05:59.857Z nl=1 -->
 
 The editable title bar is suitable for multi-select or content editing screens. Generally, a cancel icon is placed on the left and a save button on the right. It supports left icon configuration, title configuration, avatar display, menu item customization, save button control, and style customization, helping developers quickly build a unified editable title bar.
 
@@ -37,9 +36,9 @@ EditableTitleBarV2({leftIcon?: EditableLeftIconV2, title: ResourceStr | Editable
 Defines an editable title bar, which is suitable for multi-select or content editing screens. Generally, a cancel icon is placed on the left and a save button on the right. It supports left icon configuration, title configuration, avatar display, menu item customization, save button control, and style customization, helping developers quickly build a unified editable title bar.
 
 > **NOTE**
->
+> 
 > - The input parameter object cannot be **undefined**, that is, **EditableTitleBarV2(undefined)** is not allowed.
->
+> 
 > - If multiple operable areas of the title bar are set as the default focus, the first one in display order among those areas will be the default focus.
 
 **Since:** 26.0.0
@@ -63,6 +62,7 @@ Defines an editable title bar, which is suitable for multi-select or content edi
 | saveButton | [EditableSaveButtonV2](#editablesavebuttonv2) | No | \@Param | Save button configuration. Pass this parameter when you need to control the visibility of the save button on the right side of the title bar, set its default focus, or configure the callback triggered upon saving. If not passed, the default value is used and the save button is displayed. If **menuItems** is also configured, a maximum of 2 menu items can be configured.<br/>Default value: **undefined**, indicating that the save button is displayed. |
 | options | [EditableTitleBarStyleV2](#editabletitlebarstylev2) | Yes | \@Param | Title bar style and layout configuration. Pass this parameter when you need to customize the title bar background, safe area, margins, and other styles. If not passed, the default value is used and the default title bar style is applied.<br/>Default value: **new EditableTitleBarStyleV2()**. |
 
+
 ## OnActionCallback
 
 type OnActionCallback = () => void
@@ -78,6 +78,7 @@ Defines the callback for the tap event.
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **Device behavior differences:** The actual device types supported by this API (phone, PC/2-in-1 device, tablet, and TV) are fewer than those supported by its system capability (phone, PC/2-in-1 device, tablet, TV, and wearable). Due to hardware capability restrictions, calling this API on wearables results in a runtime exception indicating that the API is undefined.
+
 
 ## EditableLeftIconTypeV2
 
@@ -134,6 +135,7 @@ Defines the left icon configuration class, which is decorated with **@ObservedV2
 
 **Device behavior differences:** The actual device types supported by this API (phone, PC/2-in-1 device, tablet, and TV) are fewer than those supported by its system capability (phone, PC/2-in-1 device, tablet, TV, and wearable). Due to hardware capability restrictions, calling this API on wearables results in a runtime exception indicating that the API is undefined.
 
+
 | Name | Type | Read-Only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
 | iconType | [EditableLeftIconTypeV2](#editablelefticontypev2) | No | No | Type of the left icon, which determines the style and default tap behavior of the left icon. When the type is Back, route return is performed by default on tap. When the type is Cancel, there is no default operation on tap, and a custom callback must be configured through the **onAction** attribute.<br/>Default value: **EditableLeftIconTypeV2.Back**.<br/>**Decorator:** @Trace |
@@ -162,6 +164,7 @@ A constructor used to create an **EditableLeftIconV2** instance.
 | ------ | ---- | ---- | ---- |
 | options | [EditableLeftIconV2Options](#editablelefticonv2options) | No | Options for the left icon configuration.<br/>Default value: **undefined**. If this parameter is not passed, the default configuration is used. |
 
+
 ## EditableTitleV2Options
 
 Defines the title configuration options.
@@ -178,7 +181,7 @@ Defines the title configuration options.
 
 | Name | Type | Read-Only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| mainTitle | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Primary title content.<br/>Default value: **''**, which means the title content is empty. |
+| mainTitle | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Title content.<br/>Default value: **''**, which means the title content is empty. |
 | subTitle | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Subtitle content. Pass this parameter when supplementary information needs to be displayed below the title.<br/>Default value: **undefined**, which means no subtitle is displayed. |
 
 ## EditableTitleV2
@@ -223,6 +226,7 @@ A constructor used to create an **EditableTitleV2** instance.
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ---- | ---- |
 | options | [EditableTitleV2Options](#editabletitlev2options) | No | Title configuration options.<br/>Default value: undefined. If this parameter is not passed, the default value of each attribute is used. |
+
 
 ## EditableTitleBarMenuItemV2Options
 
@@ -336,6 +340,7 @@ Defines the type alias of the left avatar item configuration options.
 
 **Device behavior differences:** The actual device types supported by this API (phone, PC/2-in-1 device, tablet, and TV) are fewer than those supported by its system capability (phone, PC/2-in-1 device, tablet, TV, and wearable). Due to hardware capability restrictions, calling this API on wearables results in a runtime exception indicating that the API is undefined.
 
+
 | Type | Description |
 | -------- | -------- |
 | [EditableTitleBarMenuItemV2Options](#editabletitlebarmenuitemv2options) | Configuration option type for a single menu item of the left avatar. Accessibility attributes are not supported. |
@@ -424,7 +429,7 @@ Defines the title bar style configuration options.
 | backgroundBlurStyle | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No | Yes | Background blur style of the title bar. Pass this parameter when a background blur effect is needed for the title bar. If it is not passed, no blur effect is applied.<br/>Default value: **BlurStyle.NONE**, indicating no blur effect. |
 | safeAreaTypes | Array&lt;[SafeAreaType](ts-universal-attributes-expand-safe-area.md#safeareatype)&gt; | No | Yes | Types of the expanded safe area. Pass this parameter when the title bar needs to be extended to a specific safe area. If it is not passed, the title bar is extended only to the system safe area.<br/>Default value: **[SafeAreaType.SYSTEM]** |
 | safeAreaEdges | Array&lt;[SafeAreaEdge](ts-universal-attributes-expand-safe-area.md#safeareaedge)&gt; | No | Yes | Edges of the expanded safe area. Pass this parameter when the safe area expansion direction needs to be customized. If it is not passed, the safe area is expanded upward by default.<br/>Default value: **[SafeAreaEdge.TOP]** |
-| contentMargin | [LocalizedMargin](ts-types.md#localizedmargin12) | No | Yes | Outer margin of the title bar. Negative values are not supported (they do not take effect).<br/>Default value:<br/>**{<br/>start: LengthMetrics.resource(\$r('sys.float.margin_left')),<br/>end: LengthMetrics.resource(\$r('sys.float.margin_right'))<br/>}**. |
+| contentMargin | [LocalizedMargin](ts-types.md#localizedmargin12) | No | Yes | Margin of the title bar. Negative values are not supported (they do not take effect).<br/>Default value:<br/>**{<br/>start: LengthMetrics.resource(\$r('sys.float.margin_left')),<br/>end: LengthMetrics.resource(\$r('sys.float.margin_right'))<br/>}**. |
 
 ## EditableTitleBarStyleV2
 
@@ -448,7 +453,7 @@ Defines the title bar style configuration class, which is decorated with **@Obse
 | backgroundBlurStyle | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No | Yes | Background blur style of the title bar.<br/>Default value: **BlurStyle.NONE**, indicating no blur effect.<br/>**Decorator:** @Trace  |
 | safeAreaTypes | Array&lt;[SafeAreaType](ts-universal-attributes-expand-safe-area.md#safeareatype)&gt; | No | Yes | Types of the expanded safe area.<br/>Default value: **[SafeAreaType.SYSTEM]**.<br/>**Decorator:** @Trace  |
 | safeAreaEdges | Array&lt;[SafeAreaEdge](ts-universal-attributes-expand-safe-area.md#safeareaedge)&gt; | No | Yes | Edges of the expanded safe area.<br/>Default value: **[SafeAreaEdge.TOP]**.<br/>**Decorator:** @Trace  |
-| contentMargin | [LocalizedMargin](ts-types.md#localizedmargin12) | No | Yes | Outer margin of the title bar. Negative values are not supported. If a negative value is set, it does not take effect.<br/>Default value:<br/>**{<br/>start: LengthMetrics.resource(\$r('sys.float.margin_left')),<br/>end: LengthMetrics.resource(\$r('sys.float.margin_right'))<br/>}**.<br/>**Decorator:** @Trace |
+| contentMargin | [LocalizedMargin](ts-types.md#localizedmargin12) | No | Yes | Margin of the title bar. Negative values are not supported. If a negative value is set, it does not take effect.<br/>Default value:<br/>**{<br/>start: LengthMetrics.resource(\$r('sys.float.margin_left')),<br/>end: LengthMetrics.resource(\$r('sys.float.margin_right'))<br/>}**.<br/>**Decorator:** @Trace |
 
 ### constructor
 
@@ -485,8 +490,8 @@ This example uses the **EditableTitleBarV2** API to display the left icon, main 
 **EditableTitleBarV2** is supported since API version 26.0.0.
 
 ```ts
-import { Prompt } from '@kit.ArkUI';
 import {
+  Prompt,
   EditableLeftIconTypeV2,
   EditableTitleBarV2,
   EditableLeftIconV2,
@@ -549,7 +554,6 @@ struct EditableTitleBarV2Demo01 {
   }
 }
 ```
-
 <!--Del--> <!--DelEnd-->
 
 ### Example 2: Title Bar with Avatar and Blur Background
@@ -559,8 +563,9 @@ This example uses the EditableTitleBarV2 interfaces such as leftIcon, title, and
 **EditableTitleBarV2** is supported since API version 26.0.0.
 
 ```ts
-import { LengthMetrics, Prompt } from '@kit.ArkUI';
 import {
+  LengthMetrics,
+  Prompt,
   EditableLeftIconTypeV2,
   EditableTitleBarV2,
   EditableLeftIconV2,
@@ -697,7 +702,6 @@ struct EditableTitleBarV2Demo02 {
   }
 }
 ```
-
 <!--Del--> <!--DelEnd-->
 
 ### Example 3: Custom Button Announcement on the Right
@@ -707,8 +711,8 @@ This example uses the right-side custom button attributes such as **accessibilit
 The **EditableTitleBarV2** API is supported since API version 26.0.0.
 
 ```ts
-import { Prompt } from '@kit.ArkUI';
 import {
+  Prompt,
   EditableLeftIconTypeV2,
   EditableTitleBarV2,
   EditableLeftIconV2,
@@ -778,7 +782,6 @@ struct EditableTitleBarV2Demo03 {
   }
 }
 ```
-
 <!--Del--> <!--DelEnd-->
 
 ### Example 4: Setting the Left Icon as the Default Focus
@@ -788,8 +791,7 @@ In the focus state, this example uses the **defaultFocus** attribute of [Editabl
 The **EditableTitleBarV2** API is supported since API version 26.0.0.
 
 ```ts
-import { Prompt } from '@kit.ArkUI';
-import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, EditableSaveButtonV2 } from '@kit.ArkUI';
+import { Prompt, EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, EditableSaveButtonV2 } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -815,7 +817,6 @@ struct EditableTitleBarV2Demo04 {
   }
 }
 ```
-
 <!--Del--> <!--DelEnd-->
 
 ### Example 5: Setting the Right Custom Icon as the Default Focus
@@ -825,8 +826,8 @@ In the focus state, this example uses the right icon attribute **defaultFocus** 
 The **EditableTitleBarV2** API is supported since API version 26.0.0.
 
 ```ts
-import { Prompt } from '@kit.ArkUI';
 import {
+  Prompt,
   EditableLeftIconTypeV2,
   EditableTitleBarV2,
   EditableLeftIconV2,
@@ -875,7 +876,6 @@ struct EditableTitleBarV2Demo05 {
   }
 }
 ```
-
 <!--Del--> <!--DelEnd-->
 
 ### Example 6: Setting a Symbol Icon
@@ -885,8 +885,9 @@ This example implements the custom symbol icon feature of the editable title bar
 The **EditableTitleBarV2** API is supported since API version 26.0.0.
 
 ```ts
-import { Prompt, SymbolGlyphModifier } from '@kit.ArkUI';
 import {
+  Prompt,
+  SymbolGlyphModifier,
   EditableLeftIconTypeV2,
   EditableTitleBarV2,
   EditableLeftIconV2,
@@ -930,8 +931,8 @@ struct EditableTitleBarV2Demo06 {
             iconType: EditableLeftIconTypeV2.Back
           }),
           title: new EditableTitleV2({
-            mainTitle: 'Title.',
-            subTitle: 'Subtitle.',
+            mainTitle: 'Title',
+            subTitle: 'Subtitle',
           }),
           // Set the clickable avatar.
           imageItem: new EditableTitleBarMenuItemV2({
@@ -964,5 +965,5 @@ struct EditableTitleBarV2Demo06 {
   }
 }
 ```
-
 <!--Del--> <!--DelEnd-->
+

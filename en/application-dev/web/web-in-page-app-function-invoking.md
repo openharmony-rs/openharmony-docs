@@ -5,13 +5,13 @@
 <!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=f4da4da42ee537564eb25e2438e9fae560533c5a translatedAt=2026-11-03T03:08:35.015Z pushedAt=2026-11-03T03:22:54.953Z nl=1 -->
+<!-- md-trans-meta sourceCommit=5668366a159f16539a2265dedf4ff5dbc382d638 translatedAt=2026-11-12T04:43:25.276Z pushedAt=2026-11-12T08:26:45.461Z nl=1 -->
 
 You can use the Web component to register application-side code with the frontend page. After registration, the frontend page can call methods on the application side by using the registered object name.
 
 ## Establishing an Interaction Channel Between the Application Side and the HTML5 Page
 
-Two methods are available for registering the application code:<br>Call [javaScriptProxy()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy) during **Web** component initialization. Call [registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy) after **Web** component initialization. The two methods must be used together with the [deleteJavaScriptRegister](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#deletejavascriptregister) API to prevent memory leaks.
+Two methods are available for registering the application code:<br>Call [javaScriptProxy()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy) during **Web** component initialization. Call [registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy) after **Web** component initialization. The two methods must be used together with the [deleteJavaScriptRegister()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#deletejavascriptregister) API to prevent memory leaks.
 
 The following example registers the **test()** function with the frontend page. This way, the **test()** function can be triggered and run on the frontend page.
 

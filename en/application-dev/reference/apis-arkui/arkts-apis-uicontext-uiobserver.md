@@ -1063,7 +1063,7 @@ See the example for [on('navDestinationSwitch')](#onnavdestinationswitch12-1).
 
 on(type: 'willClick', callback: GestureEventListenerCallback): void
 
-Listens for click event instruction dispatch. The registered callback function is triggered before the event is triggered. The callback type is [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12). The screen reader touch exploration mode is supported since API version 20.
+Listens for click event instruction dispatch. The registered callback function is triggered before the event is triggered. The callback type is [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback). The screen reader touch exploration mode is supported since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1074,7 +1074,7 @@ Listens for click event instruction dispatch. The registered callback function i
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'willClick'** indicates the dispatch of click event instructions. The registered callback is triggered when the click event is about to occur.|
-| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | Yes | Callback used to return the result. It provides [GestureEvent](arkui-ts/ts-gesture-common.md#gestureevent) and the target component's [FrameNode](js-apis-arkui-frameNode.md) information. |
+| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback) | Yes | Callback used to return the result. It provides [GestureEvent](arkui-ts/ts-gesture-common.md#gestureevent) and the target component's [FrameNode](js-apis-arkui-frameNode.md) information. |
 
 **Example**
 
@@ -1179,7 +1179,7 @@ Unregisters the click event command dispatch listener previously registered usin
 | Name  | Type                                                        | Mandatory| Description                                                 |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
 | type     | string                                                       | Yes  | Event type. The value **'willClick'** indicates click event instruction dispatch.|
-| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | No   | Listener to unregistered. If no parameter is provided, all click event instruction dispatch listeners are unregistered.                                |
+| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback) | No   | Listener to unregistered. If no parameter is provided, all click event instruction dispatch listeners are unregistered.                                |
 
 **Example**
 
@@ -1189,7 +1189,7 @@ See the example for [on('willClick')](#onwillclick12).
 
 on(type: 'didClick', callback: GestureEventListenerCallback): void
 
-Listens for click event instruction dispatch. The registered callback function is triggered after the event is triggered. The callback type is [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12). The screen reader touch exploration mode is supported since API version 20.
+Listens for click event instruction dispatch. The registered callback function is triggered after the event is triggered. The callback type is [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback). The screen reader touch exploration mode is supported since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1200,7 +1200,7 @@ Listens for click event instruction dispatch. The registered callback function i
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'didClick'** indicates click event instruction dispatch. The registered callback is triggered after the click event occurs.|
-| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | Yes | Callback used to return the result. It provides [GestureEvent](arkui-ts/ts-gesture-common.md#gestureevent) and the target component's [FrameNode](js-apis-arkui-frameNode.md) information. |
+| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback) | Yes | Callback used to return the result. It provides [GestureEvent](arkui-ts/ts-gesture-common.md#gestureevent) and the target component's [FrameNode](js-apis-arkui-frameNode.md) information. |
 
 **Example**
 
@@ -1221,7 +1221,7 @@ Unregisters the click event command dispatch listener previously registered usin
 | Name  | Type                                                        | Mandatory| Description                                                |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
 | type     | string                                                       | Yes  | Event type. The value **'didClick'** indicates click event instruction dispatch.|
-| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback12) | No   | Target listener to unregister. If no parameter is provided, all click event instruction dispatch listeners are unregistered.                              |
+| callback | [GestureEventListenerCallback](arkts-apis-uicontext-t.md#gestureeventlistenercallback) | No   | Target listener to unregister. If no parameter is provided, all click event instruction dispatch listeners are unregistered.                              |
 
 **Example**
 
@@ -1231,7 +1231,7 @@ See the example for [on('willClick')](#onwillclick12).
 
 on(type: 'willClick', callback: ClickEventListenerCallback): void
 
-Listens for click event instruction dispatch. The registered callback function is triggered before the event is triggered. The callback type is [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12). The screen reader touch exploration mode is supported since API version 20.
+Listens for click event instruction dispatch. The registered callback function is triggered before the event is triggered. The callback type is [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback). The screen reader touch exploration mode is supported since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1242,7 +1242,7 @@ Listens for click event instruction dispatch. The registered callback function i
 | Name  | Type                                                       | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                      | Yes  | Event type. The value **'willClick'** indicates the dispatch of click event instructions. The registered callback is triggered when the click event is about to occur.|
-| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | Yes | Callback used to return the result. It provides [ClickEvent](arkui-ts/ts-universal-events-click.md#clickevent) and the target component's [FrameNode](js-apis-arkui-frameNode.md) information. |
+| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback) | Yes | Callback used to return the result. It provides [ClickEvent](arkui-ts/ts-universal-events-click.md#clickevent) and the target component's [FrameNode](js-apis-arkui-frameNode.md) information. |
 
 **Example**
 
@@ -1263,7 +1263,7 @@ Unregisters the click event command dispatch listener previously registered usin
 | Name  | Type                                                       | Mandatory| Description                                                 |
 | -------- | ----------------------------------------------------------- | ---- | ----------------------------------------------------- |
 | type     | string                                                      | Yes  | Event type. The value **'willClick'** indicates click event instruction dispatch.|
-| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | No   | Target listener to unregister. If no parameter is provided, all click event instruction dispatch listeners are unregistered.                                |
+| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback) | No   | Target listener to unregister. If no parameter is provided, all click event instruction dispatch listeners are unregistered.                                |
 
 **Example**
 
@@ -1273,7 +1273,7 @@ See the example for [on('willClick')](#onwillclick12).
 
 on(type: 'didClick', callback: ClickEventListenerCallback): void
 
-Listens for click event instruction dispatch. The registered callback function is triggered after the event is triggered. The callback type is [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12). The screen reader touch exploration mode is supported since API version 20.
+Listens for click event instruction dispatch. The registered callback function is triggered after the event is triggered. The callback type is [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback). The screen reader touch exploration mode is supported since API version 20.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1284,7 +1284,7 @@ Listens for click event instruction dispatch. The registered callback function i
 | Name  | Type                                                       | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                      | Yes  | Event type. The value **'didClick'** indicates click event instruction dispatch. The registered callback is triggered after the click event occurs.|
-| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | Yes | Callback used to return the result. It provides [ClickEvent](arkui-ts/ts-universal-events-click.md#clickevent) and the target component's [FrameNode](js-apis-arkui-frameNode.md) information. |
+| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback) | Yes | Callback used to return the result. It provides [ClickEvent](arkui-ts/ts-universal-events-click.md#clickevent) and the target component's [FrameNode](js-apis-arkui-frameNode.md) information. |
 
 **Example**
 
@@ -1305,7 +1305,7 @@ Unregisters the click event command dispatch listener previously registered usin
 | Name  | Type                                                       | Mandatory| Description                                                |
 | -------- | ----------------------------------------------------------- | ---- | ---------------------------------------------------- |
 | type     | string                                                      | Yes  | Event type. The value **'didClick'** indicates click event instruction dispatch.|
-| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback12) | No | Target listener to unregister. If no parameter is provided, all click event instruction dispatch listeners are unregistered. |
+| callback | [ClickEventListenerCallback](arkts-apis-uicontext-t.md#clickeventlistenercallback) | No | Target listener to unregister. If no parameter is provided, all click event instruction dispatch listeners are unregistered. |
 
 **Example**
 

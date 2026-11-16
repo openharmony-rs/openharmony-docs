@@ -240,6 +240,7 @@
       - [悬浮态效果](arkui-ts/ts-universal-attributes-hover-effect.md)
       - [点击音效](arkui-ts/ts-universal-attributes-click-sound.md)
       - [智慧手势响应](arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md)
+      - [Agent输入管控](arkui-ts/ts-universal-attributes-agent-control-mode.md)
       - 触摸交互控制<!--touch-interactions-->
         - [触摸热区设置](arkui-ts/ts-universal-attributes-touch-target.md)
         - [触摸测试控制](arkui-ts/ts-universal-attributes-hit-test-behavior.md)
@@ -690,6 +691,7 @@
     - [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
   - 头文件<!--arkui-headerfile-->
     - [common_attributes.h](capi-common-attributes-h.md)
+    - [common_type.h](capi-common-type-h.md)
     - [drag_and_drop.h](capi-drag-and-drop-h.md)
     - [drawable_descriptor.h](capi-drawable-descriptor-h.md)
     - [image.h](capi-image-h.md)
@@ -871,7 +873,6 @@
     - [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md)
     - [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)
     - [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)
-    - [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md)
     - [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md)
     - [ArkUI_NativeDialog*](capi-arkui-nativemodule-arkui-nativedialog8h.md)
     - [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)

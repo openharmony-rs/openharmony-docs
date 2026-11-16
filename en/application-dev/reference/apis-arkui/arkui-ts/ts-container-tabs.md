@@ -1,12 +1,11 @@
 # Tabs
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @Hu_ZeQi-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=5a4264c9dc0635cb9b4fb88fb3431f8701ad9d40 translatedAt=2026-08-21T02:28:32.886Z pushedAt=2026-08-22T02:55:03.994Z -->
+<!-- md-trans-meta sourceCommit=ea402c4d2092c6d093ac682a99ec98c863f94cdd translatedAt=2026-11-03T02:22:37.004Z pushedAt=2026-11-13T01:05:59.987Z nl=1 -->
 
 A container component that switches between content views via tabs, with each tab corresponding to a content view. It is suitable for scenarios that require quick switching between different content views, such as the bottom navigation bar of an app, top tab switching, and sidebar navigation. Using the **Tabs** component simplifies the implementation of multi-view navigation and improves user switching efficiency.
 
@@ -15,6 +14,7 @@ A container component that switches between content views via tabs, with each ta
 >  - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
 >  - Since API version 11, this component supports the safe area avoidance feature. The default value of its [expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea) attribute is expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM]). Developers can override this attribute to change the default behavior. For versions earlier than API version 11, the **expandSafeArea** attribute must be used to manually implement safe area avoidance.
+
 
 ## Child Components
 
@@ -27,6 +27,7 @@ Only the child component [TabContent](ts-container-tabcontent.md) and the render
 >  A displayed **Tabs** child component **TabContent** is not destroyed when it is subsequently hidden. If page lazy loading and release are required, see [Example 13](#example-13-implementing-lazy-loading-and-resource-release-of-pages).
 >
 >  When [height](ts-universal-attributes-size.md#height) of **Tabs** is set to auto, the height adapts to the child component height. When [width](ts-universal-attributes-size.md#width) is set to auto, the width adapts to the child component width.
+
 
 ## APIs
 
@@ -53,13 +54,12 @@ Provides parameters for configuring the **Tabs** component, including tab positi
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 15%; 15%; 8%; 8%; 54%-->
-
-| Name         | Type                              | Read Only | Optional   | Description                                     |
+| Name         | Type                              | Read-Only | Optional   | Description                                     |
 | ----------- | --------------------------------- | ---- | --------- | ------------------------------- |
 | barPosition<sup>7+</sup> | [BarPosition](#barposition)| No | Yes    | Position of **Tabs**. The specific position of the tab is affected by the **vertical** attribute: when **vertical** is **true**, **Start** is on the left and **End** is on the right; when **vertical** is **false**, **Start** is at the top and **End** is at the bottom.<br/>Default value: **BarPosition.Start**.<br/>**Atomic service API:** This API can be used in atomic services since API version 11.   |
-| index<sup>7+</sup>       | number                            | No | Yes   | Index of the currently displayed tab.<br/>Default value: **0**<br/>**NOTE**<br/>When set to a value less than 0, the default value is used.<br/>The value range is [0, number of child nodes of **TabContent** - 1].<br/>When **index** is directly modified to switch pages, the switching animation does not take effect. When [changeIndex](#changeindex) of **TabsController** is used, the switching animation takes effect by default. You can set [animationDuration](#animationduration) to **0** to disable the animation.<br />Since API version 10, this parameter supports two-way binding with [$](../../../ui/state-management/arkts-two-way-sync.md) variables.<br/>When **Tabs** is rebuilt, system resources are switched (such as system font switching or system light/dark mode switching), or component attributes change, the page corresponding to index is jumped to. If you do not want to jump in the preceding cases, use two-way binding.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| index<sup>7+</sup>       | number                            | No | Yes   | Index of the currently displayed tab.<br/>Default value: **0**<br/>**NOTE**<br/>When set to a value less than 0, the default value is used.<br/>The value range is [0, number of child nodes of **TabContent** - 1].<br/>When **index** is directly modified to switch pages, the switching animation does not take effect. When [changeIndex](#changeindex) of **TabsController** is used, the switching animation takes effect by default. You can set [animationDuration](#animationduration) to **0** to disable the animation.<br />Since API version 10, this parameter supports two-way binding with [$](../../../ui/state-management/arkts-two-way-sync.md) variables.<br/>When **Tabs** is rebuilt, system resources are switched (such as system font switching or system light/dark mode switching), or component attributes change, the page corresponding to index is displayed. If you do not want to jump in the preceding cases, use two-way binding.<br/>**Atomic service API:** This API can be used in atomic services since API version 11. |
 | controller<sup>7+</sup>  | [TabsController](#tabscontroller) | No | Yes    | **Tabs** controller.<br/>**Atomic service API:** This API can be used in atomic services since API version 11.         |
-| barModifier  | [CommonModifier](#commonmodifier15) | No | Yes    | Used to set the [universal attributes](ts-component-general-attributes.md) of tab bar, used to uniformly manage the style, layout, and other universal attributes of tab bar through **CommonModifier**. Pass this parameter when you need to dynamically modify the universal attributes of **TabBar** or implement state management of attributes. When it is not passed, tab bar uses the default style and layout without additional universal attribute settings.<br/>**NOTE**<br/>When dynamically set to undefined, the current state remains unchanged and the universal attributes are not reset. <br/>When switching from one **CommonModifier** to another, duplicate attributes are overwritten, and non-duplicate attributes take effect at the same time without resetting the universal attributes of the previous **CommonModifier**.<br/>The [barWidth](#barwidth), [barHeight](#barheight), [barBackgroundColor](#barbackgroundcolor10), [barBackgroundBlurStyle](#barbackgroundblurstyle18), and [barBackgroundEffect](#barbackgroundeffect18) attributes of **Tabs** override the [width](ts-universal-attributes-size.md#width), [height](ts-universal-attributes-size.md#height), [backgroundColor](ts-universal-attributes-background.md#backgroundcolor18), [backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle18), and [backgroundEffect](ts-universal-attributes-background.md#backgroundeffect18) attributes of CommonModifier.<br/>The [align](ts-universal-attributes-location.md#align) attribute takes effect only in [BarMode.Scrollable](#barmode10-1) mode, and when **Tabs** is horizontal, it takes effect only when [nonScrollableLayoutStyle](#scrollablebarmodeoptions10) is not set or is set to an abnormal value.<br/>The [tabBar](ts-container-tabcontent.md#tabbar18) attribute of the [TabContent](ts-container-tabcontent.md) component does not support the drag function when it is in the bottom tab style.<br/>**Atomic service API:** This API can be used in atomic services since API version 15.|
+| barModifier  | [CommonModifier](#commonmodifier15) | No | Yes    | [General attributes](ts-component-general-attributes.md) of the **TabBar**, used to uniformly manage the universal attributes such as style and layout of the **TabBar** through **CommonModifier**. Pass this parameter when the universal attributes of the **TabBar** need to be dynamically modified or state management of the attributes needs to be implemented. When it is not passed, the **TabBar** uses the default style and layout without additional common attribute settings.<br/>**Note:** <br/>When dynamically set to **undefined**, the current state remains unchanged and the universal attributes are not reset. <br/>When switching from one **CommonModifier** to another, duplicate attributes are overwritten, and non-duplicate attributes take effect at the same time without resetting the universal attributes of the previous **CommonModifier**.<br/>The [barWidth](#barwidth), [barHeight](#barheight), [barBackgroundColor](#barbackgroundcolor10), [barBackgroundBlurStyle](#barbackgroundblurstyle18), and [barBackgroundEffect](#barbackgroundeffect18) attributes of **Tabs** override the [width](ts-universal-attributes-size.md#width), [height](ts-universal-attributes-size.md#height), [backgroundColor](ts-universal-attributes-background.md#backgroundcolor18), [backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle18), and [backgroundEffect](ts-universal-attributes-background.md#backgroundeffect18) attributes of **CommonModifier**.<br/>Since API version 26.0.1, the [sidebarWidth](#sidebarwidth), [sidebarBackgroundColor](#sidebarbackgroundcolor), and [sidebarBackgroundBlurStyle](#sidebarbackgroundblurstyle) attributes of **Tabs** override the [width](ts-universal-attributes-size.md#width), [backgroundColor](ts-universal-attributes-background.md#backgroundcolor18), and [backgroundBlurStyle](ts-universal-attributes-background.md#backgroundblurstyle18) attributes of **CommonModifier**.<br/>The [align](ts-universal-attributes-location.md#align) attribute takes effect only in the [BarMode.Scrollable](#barmode10-1) mode, and when **Tabs** is horizontal, it takes effect only when [nonScrollableLayoutStyle](#scrollablebarmodeoptions10) is not set or is set to an abnormal value.<br/>When the [tabBar](ts-container-tabcontent.md#tabbar18) attribute of the [TabContent](ts-container-tabcontent.md) component is in the bottom tab style, the drag function is not supported.<br/>**Atomic service API:** Since API version 15, this API supports use in atomic services.|
 
 ## BarPosition
 
@@ -73,6 +73,25 @@ Enumerates the positions of the **Tabs** component.
 | ----- | ----- | ------------------------------------------------------------ |
 | Start | 0 | When **vertical** is set to **true**, the tab is on the left of the container; when **vertical** is set to **false**, the tab is at the top of the container. |
 | End   | 1 | When **vertical** is set to **true**, the tab is on the right of the container; when **vertical** is set to **false**, the tab is at the bottom of the container. |
+
+## TabBarStyle
+
+Enumerates the display styles of the tab bar.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name  | Value | Description                                                         |
+| ----- | ----- | ------------------------------------------------------------ |
+| BOTTOM | 0 | Bottom tab bar style. The tab bar position can be adjusted through the **vertical** and **barPosition** attributes of **Tabs**. |
+| SIDEBAR | 1 | Side tab bar style. The tab bar is displayed as a sidebar. |
+| SIDEBAR_ADAPTABLE | 2 | Adaptive side tab bar style. The tab bar can switch between the bottom tab bar style and the sidebar style based on the size of the **Tabs** container. |
+| TOP | 3 | Top floating tab bar style. The tab bar is always displayed in a floating form at the top. When this style is used, the **barPosition** setting does not take effect.<br/>**Since:** 26.1.0 |
 
 ## Attributes
 
@@ -91,7 +110,6 @@ Sets whether the **Tabs** is vertical. A horizontal **Tabs** (default) is suitab
 **Parameters** 
 
 <!--Table: 10%; 10%; 10%; 70%-->
-
 | Name | Type    | Mandatory | Description                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | value  | boolean | Yes   | Whether the **Tabs** is vertical.<br/>Default value: **false**, indicating a horizontal **Tabs**; **true** indicates a vertical **Tabs**.<br/>When **height** of a horizontal **Tabs** is set to **auto**, the component height of the **Tabs** adapts to the height of its child components, that is, the height of [tabBar](ts-container-tabcontent.md#tabbar) + the width of the **divider** + the height of **TabContent** + the top and bottom **padding** values of the **Tabs** component + the top and bottom border widths of the **Tabs** component.<br/>When **width** of a vertical **Tabs** is set to **auto**, the component width of the **Tabs** adapts to the width of its child components, that is, the width of **tabBar** + the width of the **divider** + the width of **TabContent** + the left and right **padding** values + the left and right **border** widths.<br/>Keep the sizes of child components on each page as consistent as possible to avoid the page switching animation jumping when swiping pages. |
@@ -170,7 +188,7 @@ Sets the tab bar layout mode to **BarMode.Scrollable**.
 
 barWidth(value: Length)
 
-Sets the width of the tab bar. If the set value is less than 0 or greater than the width of the **Tabs** component, the default value is used.
+Sets the width value of the tab bar. If the value is set to less than 0 or greater than the width of **Tabs**, the default value is used. This API can also set the width of the side tab bar of **Tabs**. For details, see [sidebarWidth](#sidebarwidth).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -179,7 +197,6 @@ Sets the width of the tab bar. If the set value is less than 0 or greater than t
 **Parameters** 
 
 <!--Table: 10%; 10%; 10%; 70%-->
-
 | Name | Type                                      | Mandatory | Description                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [Length](ts-types.md#length)<sup>8+</sup> | Yes   | Width of the tab bar.<br/>Default value:<br/>If [SubTabBarStyle](ts-container-tabcontent.md#subtabbarstyle9) and [BottomTabBarStyle](ts-container-tabcontent.md#bottomtabbarstyle9) are not set for the tab bar and the **vertical** attribute is **false**, the default value is the width of the **Tabs**.<br/>If **SubTabBarStyle** and **BottomTabBarStyle** are not set for the tab bar and the **vertical** attribute is **true**, the default value is 56 vp.<br/>If **SubTabBarStyle** is set and the **vertical** attribute is **false**, the default value is the width of the **Tabs**.<br/>If **SubTabBarStyle** is set and the **vertical** attribute is **true**, the default value is 56 vp.<br/>If **BottomTabBarStyle** is set and the **vertical** attribute is **true**, the default value is 96 vp.<br/>If **BottomTabBarStyle** is set and the **vertical** attribute is **false**, the default value is the width of the **Tabs**. |
@@ -199,7 +216,6 @@ In versions earlier than API version 14, if **barHeight** is set to a fixed valu
 **Parameters** 
 
 <!--Table: 10%; 10%; 10%; 70%-->
-
 | Name  | Type                                      | Mandatory | Description                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | [Length](ts-types.md#length)<sup>8+</sup> | Yes   | Height value of the tab bar.<br/>Default value:<br/>When the style is not set or a custom style is set through **CustomBuilder** and the **vertical** attribute is **false**, the default value is 56vp.<br/>When the style is not set or a custom style is set through **CustomBuilder** and the **vertical** attribute is **true**, the default value is the height of the **Tabs**.<br/>When the [SubTabBarStyle](ts-container-tabcontent.md#subtabbarstyle9) style is set and the **vertical** attribute is **false**, the default value is 56vp.<br/>When the **SubTabBarStyle** style is set and the **vertical** attribute is **true**, the default value is the height of the **Tabs**.<br/>When the [BottomTabBarStyle](ts-container-tabcontent.md#bottomtabbarstyle9) style is set and the **vertical** attribute is **true**, the default value is the height of the **Tabs**.<br/>When the BottomTabBarStyle style is set and the **vertical** attribute is **false**, the default value is 56vp. Starting from API version 12, the default value changes to 48vp. |
@@ -219,7 +235,6 @@ Sets the height value of the tab bar. For horizontal **Tabs**, you can set heigh
 **Parameters** 
 
 <!--Table: 20%; 10%; 10%; 60%-->
-
 | Name             | Type                         | Mandatory | Description                                                  |
 | ---------------- | ---------------------------- | --------- | ------------------------------------------------------------ |
 | height           | [Length](ts-types.md#length) | Yes       | Height value of the tab bar.<br/>Default value:<br/>If no style is set or a custom style is set through **CustomBuilder** and **vertical** is **false**, the default value is 56vp.<br/>If no style is set or a custom style is set through **CustomBuilder** and **vertical** is **true**, the default value is the height of **Tabs**.<br/>If the [SubTabBarStyle](ts-container-tabcontent.md#subtabbarstyle9) style is set and **vertical** is **false**, the default value is 56vp.<br/>If the **SubTabBarStyle** style is set and **vertical** is **true**, the default value is the height of **Tabs**.<br/>If the [BottomTabBarStyle](ts-container-tabcontent.md#bottomtabbarstyle9) style is set and **vertical** is **true**, the default value is the height of **Tabs**.<br/>If the BottomTabBarStyle style is set and **vertical** is **false**, the default value is 48vp. |
@@ -240,7 +255,6 @@ Sets the animation curve for page turning of the **Tabs**. For common curves, se
 **Parameters** 
 
 <!--Table: 10%; 20%; 10%; 60%-->
-
 | Name | Type                                                         | Mandatory | Description                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------- |
 | curve  | [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9) | Yes   | Animation curve for page turning of the **Tabs**.<br/>Default value:<br/>When a **TabContent** is swiped to turn pages, the default value is **interpolatingSpring(-1, 1, 228, 30)**.<br/>When a tab bar tab is tapped or the **changeIndex** API of **TabsController** is called to turn pages, the default value is **cubicBezierCurve(0.2, 0.0, 0.1, 1.0)**.<br/>When a custom animation curve is set, the set animation curve is used for both swiping to turn pages and tapping a tab or calling **changeIndex** to turn pages. |
@@ -262,7 +276,6 @@ For curves not controlled by animationDuration, see the [Interpolation calculati
 **Parameters** 
 
 <!--Table: 10%; 10%; 10%; 70%-->
-
 | Name | Type | Mandatory | Description |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | value | number | Yes | Animation duration for page switching of **Tabs**.<br/>Default value:<br/>Since API version 10, when this attribute is not set or is set to null, the default value is 0, that is, no animation is applied to page switching of **Tabs**. When it is set to a value less than 0 or undefined, the default value is 300.<br/>Since API version 11, when this attribute is not set or is set to an abnormal value, and tab bar is set to the BottomTabBarStyle style, the default value is 0. When tab bar is set to another style, the default value is 300.<br/>Unit: ms<br/>Value range: [0, +∞) |
@@ -286,7 +299,6 @@ Sets the animation form for switching **TabContent** when a tab bar tab is tappe
 **Parameters**
 
 <!--Table: 10%; 25%; 10%; 55%-->
-
 | Name | Type   | Mandatory | Description                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[AnimationMode](#animationmode12)\> | Yes   | Animation form for switching **TabContent** when a tab bar tab is tapped or the **changeIndex** API of **TabsController** is called.<br/>Default value: **AnimationMode.CONTENT_FIRST**, which means that when a tab bar tab is tapped or the **changeIndex** API of **TabsController** is called to switch TabContent, the content of the target page is loaded first, and then the switching animation starts.|
@@ -311,7 +323,7 @@ Sets the tab position of **Tabs**.
 
 divider(value: DividerStyle | null)
 
-Sets the style of the divider that separates the tab bar from the **TabContent**. If a visual separation is required between the tab bar and the **TabContent**, a divider can be added through this attribute.
+Sets the style of the divider between the tab bar and the tab content. If a visual separation is required between the tab bar and the tab content, a divider can be added through **divider**. This API can also set the divider style of the side tab bar of **Tabs**. For details, see [sidebarDivider](#sidebardivider).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -365,7 +377,7 @@ Sets whether the tab bar is blurred behind and overlaid on the **TabContent**. T
 
 barBackgroundColor(value: ResourceColor)
 
-Sets the background color of the tab bar.
+Sets the background color of the tab bar. This API can also set the background color of the side tab bar of **Tabs**. For details, see [sidebarBackgroundColor](#sidebarbackgroundcolor).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -383,7 +395,7 @@ Sets the background color of the tab bar.
 
 barBackgroundBlurStyle(value: BlurStyle)
 
-Sets the background blur material of the tab bar. This is applicable to scenarios where a blur background effect needs to be added to the tab bar.
+Sets the background blur material of the tab bar. This is applicable to scenarios where a blur background effect needs to be added to the tab bar. This API can also set the background blur style of the side tab bar of **Tabs**. For details, see [sidebarBackgroundBlurStyle](#sidebarbackgroundblurstyle).
 
 > **NOTE**
 >
@@ -405,7 +417,7 @@ Sets the background blur material of the tab bar. This is applicable to scenario
 
 barBackgroundBlurStyle(style: BlurStyle, options: BackgroundBlurStyleOptions)
 
-Sets the background blur capability of the tab bar, encapsulating different blur radii, mask colors, mask opacity, saturation, and brightness through enum values.
+Sets the background blur capability of the tab bar. Encapsulates different blur radii, mask colors, mask opacities, saturation, and brightness through enum values. This API can also set the background blur style of the side tab bar of **Tabs**. For details, see [sidebarBackgroundBlurStyle](#sidebarbackgroundblurstyle).
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -557,6 +569,503 @@ Sets the floating style of the tab bar.
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | style   | Optional<[FloatingTabBarStyle](#floatingtabbarstyle)>           | Yes   | Floating style configuration of the tab bar.<br/>When set to **undefined**, the floating style is canceled and the default style is restored.   |
 
+### topBarFloatingStyle
+
+topBarFloatingStyle(style: Optional\<TopFloatingTabBarStyle\>)
+
+Sets the top floating style of the tab bar. This takes effect only when [barStyle](#barstyle) is set to TabBarStyle.TOP.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type                                                        | Mandatory | Description                                                         |
+| ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| style   | Optional<[TopFloatingTabBarStyle](#topfloatingtabbarstyle)>           | Yes   | Configuration of the top floating style of the tab bar.<br/>When set to **undefined**, the top floating style is canceled and the default style is restored. For details about the default style, see the description of each attribute in [TopFloatingTabBarStyle](#topfloatingtabbarstyle).   |
+
+### barStyle
+
+barStyle(style: Optional\<TabBarStyle\>)
+
+Sets the display style of the tab bar. If this API is not used, the display style of the tab bar defaults to **TabBarStyle.BOTTOM**.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | --------- | ---- | ------------ |
+| style   | Optional<[TabBarStyle](#tabbarstyle)> | Yes | Display style of the tab bar.<br/>If **undefined** is set, the default display style is restored. |
+
+### sidebarPosition
+
+sidebarPosition(position: Optional\<BarPosition\>)
+
+Sets the position of the side tab bar. If this API is not called, the position of the side tab bar defaults to **BarPosition.Start**.
+
+> **NOTE**
+>
+> The position of the side tab bar is not affected by the [vertical](#vertical) and [barPosition](#barposition9) attributes. **BarPosition.Start** indicates that the side tab bar is located at the start side of the **Tabs** container, that is, on the left in LTR direction and on the right in RTL direction. **BarPosition.End** indicates that the side tab bar is located at the end side of the Tabs container, that is, on the right in LTR direction and on the left in RTL direction.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | --------- |
+| position   | Optional<[BarPosition](#barposition)> | Yes | Display position of the side tab bar.<br/>When set to **undefined**, the default display position is restored. |
+
+### sidebarHeader
+
+sidebarHeader(header: Optional\<ComponentContent>)
+
+Sets the header content of the side tab bar. If this API is not called, the side tab bar does not display the custom header area.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | --------- |
+| header   | Optional\<[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)> | Yes | Header content of the side tab bar.<br/>If this parameter is set to **undefined**, the side tab bar does not display the custom header area. |
+
+### sidebarFooter
+
+sidebarFooter(footer: Optional\<ComponentContent>)
+
+Sets the footer content of the side tab bar. This area scrolls with the tab list. If this API is not used, the side tab bar does not display the custom footer area.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | --------- |
+| footer   | Optional\<[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)> | Yes | Footer content of the side tab bar. This area scrolls with the tab list.<br/>If **undefined** is set, the side tab bar does not display the custom footer area. |
+
+### sidebarBottomBar
+
+sidebarBottomBar(bottomBar: Optional\<ComponentContent>)
+
+Sets the fixed bottom content of the side tab bar. If this API is not called, the side tab bar does not display the custom fixed bottom area.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | --------- |
+| bottomBar   | Optional\<[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)> | Yes | Fixed bottom content of the side tab bar.<br/>When set to **undefined**, the side tab bar does not display the custom fixed bottom area. |
+
+### sidebarSearchable
+
+sidebarSearchable(searchOptions?: TabsSidebarSearchableOptions)
+
+Sets the search options of the side tab bar.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | ------------- |
+| searchOptions | [TabsSidebarSearchableOptions](#tabssidebarsearchableoptions) | No | Search options of the side tab bar. If this parameter is not set, the search box is not displayed. |
+
+### barDisplayModeBreakpoint
+
+barDisplayModeBreakpoint(style: Optional\<TabsBreakpointType\<TabBarDisplayMode>>)
+
+Sets the display mode of the tab bar under different **Tabs** container breakpoints. This API takes effect only when the **barStyle** attribute is set to **TabBarStyle.SIDEBAR_ADAPTABLE**. If this API is not called, the default display mode is as follows: { sm: TabBarDisplayMode.BOTTOM_TABBAR, md: TabBarDisplayMode.BOTTOM_TABBAR, lg: TabBarDisplayMode.SIDEBAR }.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | --------- | ---- | ------- |
+| style | Optional<[TabsBreakpointType](#tabsbreakpointtypet)<[TabBarDisplayMode](#tabbardisplaymode)>> | Yes | Display mode of the tab bar under different **Tabs** container breakpoints.<br/>If **undefined** is set, the default display mode is restored. |
+
+### sidebarSelectedIconColor
+
+sidebarSelectedIconColor(value: Optional\<ResourceColor\>)
+
+Sets the selected color of the tab icon in the **Tabs** side tab bar.
+
+> **NOTE**
+>
+> When the tab style is [BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9), the **selectedColor** of [TabBarIconStyle](./ts-container-tabcontent.md#tabbariconstyle12) in its [iconStyle](./ts-container-tabcontent.md#iconstyle12) attribute takes precedence over **sidebarSelectedIconColor**.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[ResourceColor](ts-types.md#resourcecolor)> | Yes | Selected color of the tab icon in the **Tabs** side tab bar. Only applicable to Symbol and SVG images.<br/>When set to **undefined**, the system default color is restored. |
+
+### sidebarSelectedTextColor
+
+sidebarSelectedTextColor(value: Optional\<ResourceColor\>)
+
+Sets the selected color of the tab text in the side tab bar of Tabs.
+
+> **NOTE**
+>
+> When the tab style is [SubTabBarStyle](./ts-container-tabcontent.md#subtabbarstyle9) or [BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9) (the two are mutually exclusive when used as the [tabBar](./ts-container-tabcontent.md#tabbar18) parameter), the **selectedColor** of [LabelStyle](./ts-container-tabcontent.md#labelstyle10) in its [labelStyle](./ts-container-tabcontent.md#labelstyle10) attribute takes precedence over **sidebarSelectedTextColor**.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[ResourceColor](ts-types.md#resourcecolor)> | Yes | Selected color of the tab text in the side tab bar of Tabs.<br/>When set to **undefined**, the system default color is restored. |
+
+### sidebarUnselectedIconColor
+
+sidebarUnselectedIconColor(value: Optional\<ResourceColor\>)
+
+Sets the unselected color of the tab icon in the side tab bar of **Tabs**.
+
+> **NOTE**
+>
+> When the tab style is [BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9), the **unselectedColor** of [TabBarIconStyle](./ts-container-tabcontent.md#tabbariconstyle12) in its [iconStyle](./ts-container-tabcontent.md#iconstyle12) attribute takes precedence over **sidebarUnselectedIconColor**.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[ResourceColor](ts-types.md#resourcecolor)> | Yes | Unselected color of the tab icon in the side tab bar of Tabs. This applies only to Symbol and SVG images.<br/>When set to **undefined**, the system default color is restored. |
+
+### sidebarUnselectedTextColor
+
+sidebarUnselectedTextColor(value: Optional\<ResourceColor\>)
+
+Sets the unselected color of the tab text in the side tab bar of **Tabs**.
+
+> **NOTE**
+>
+> When the tab style is [SubTabBarStyle](./ts-container-tabcontent.md#subtabbarstyle9) or [BottomTabBarStyle](./ts-container-tabcontent.md#bottomtabbarstyle9) (the two are mutually exclusive when used as the [tabBar](./ts-container-tabcontent.md#tabbar18) parameter), the **unselectedColor** of [LabelStyle](./ts-container-tabcontent.md#labelstyle10) in its [labelStyle](./ts-container-tabcontent.md#labelstyle10) attribute takes precedence over **sidebarUnselectedTextColor**.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[ResourceColor](ts-types.md#resourcecolor)> | Yes | Unselected color of the tab text in the side tab bar of **Tabs**.<br/>When set to **undefined**, the system default color is restored. |
+
+### sidebarSelectedBoardColor
+
+sidebarSelectedBoardColor(value: Optional\<ResourceColor\>)
+
+Sets the board color of the tab in the side tab bar of **Tabs**.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[ResourceColor](ts-types.md#resourcecolor)> | Yes | Board color of the tab in the side tab bar of **Tabs**.<br/>When **undefined** is set, the system default color is restored. |
+
+### sidebarWidth
+
+sidebarWidth(value: Optional\<Length\>)
+
+Sets the width of the side tab bar of **Tabs**.
+
+> **NOTE**
+>
+> - If an invalid value or **undefined** is set for **sidebarWidth**, the default width of 240 vp is used.
+> - Priority rule: the **sidebarWidth** attribute > the [barWidth](#barwidth) attribute > the width attribute of [barModifier](#tabsoptions15).
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[Length](ts-types.md#length)> | Yes | Width of the side tab bar of **Tabs**. |
+
+### minSidebarWidth
+
+minSidebarWidth(value: Optional\<Length\>)
+
+Sets the minimum width of the **Tabs** side tab bar in the divider dragging scenario. If this API is not used, the minimum width is not limited and defaults to 0. For details about the divider dragging specifications, see the [sidebarDivider](#sidebardivider) attribute description.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[Length](ts-types.md#length)> | Yes | Minimum width of the **Tabs** side tab bar.<br/>If **undefined** or an invalid value is set, the minimum width is not limited and defaults to 0. |
+
+### maxSidebarWidth
+
+maxSidebarWidth(value: Optional\<Length\>)
+
+Sets the maximum width of the Tabs side tab bar in the divider drag scenario. If this API is not used, the maximum width is not limited, in which case the width can reach the width of the Tabs container. For details about the divider drag specifications, see the [sidebarDivider](#sidebardivider) attribute description.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[Length](ts-types.md#length)> | Yes | Maximum width of the Tabs side tab bar.<br/>If **undefined** or an invalid value is set, the maximum width is not limited, in which case the width can reach the width of the Tabs container. |
+
+### minContentWidth
+
+minContentWidth(value: Optional\<Length\>)
+
+Sets the minimum width of the content area in the divider dragging scenario when Tabs is displayed in side tab bar mode. If this API is not used to set the attribute, the minimum width is not limited and defaults to 0. For details about the divider dragging specifications, see the description of [sidebarDivider](#sidebardivider).
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[Length](ts-types.md#length)> | Yes | Minimum width of the content area when **Tabs** is displayed in side tab bar mode.<br/>If **undefined** or an invalid value is set, the minimum width is not limited and defaults to **0**. |
+
+### sidebarBackgroundColor
+
+sidebarBackgroundColor(value: Optional\<ResourceColor\>)
+
+Sets the background color of the Tabs side tab bar.
+
+> **NOTE**
+>
+> - When **sidebarBackgroundColor** is set to **undefined**, the default background color of the side tab bar is restored.
+> - Priority rule: the **sidebarBackgroundColor** attribute > the [barBackgroundColor](#barbackgroundcolor10) attribute > the **backgroundColor** attribute of [barModifier](#tabsoptions15).
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[ResourceColor](ts-types.md#resourcecolor)> | Yes | Background color of the Tabs side tab bar. |
+
+### sidebarBackgroundBlurStyle
+
+sidebarBackgroundBlurStyle(value: Optional\<BlurStyle\>)
+
+Sets the background blur style of the Tabs side tab bar.
+
+> **NOTE**
+>
+> - When the **sidebarBackgroundBlurStyle** API is not used or **sidebarBackgroundBlurStyle** is set to **undefined**, there is no blur effect, which is equivalent to setting **BlurStyle.NONE**.
+> - Priority rule: the **sidebarBackgroundBlurStyle** attribute > the [barBackgroundBlurStyle](#barbackgroundblurstyle11) attribute > the **backgroundBlurStyle** attribute of [barModifier](#tabsoptions15).
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | Yes | Background blur style of the Tabs side tab bar. |
+
+### sidebarDivider
+
+sidebarDivider(value: Optional\<DividerStyle\>)
+
+Sets the style of the divider between the side tab bar and the content area of **Tabs**.
+
+> **NOTE**
+>
+> - The **sidebarDivider** attribute takes precedence over the [divider](#divider10) attribute of **Tabs**.
+> - When the side tab bar does not display a divider, dragging is not supported.
+> - When none of the [minSidebarWidth](#minsidebarwidth), [maxSidebarWidth](#maxsidebarwidth), and [minContentWidth](#mincontentwidth) attributes is set, dragging is not supported.
+> - When **minSidebarWidth** >= **maxSidebarWidth**, this is an abnormal scenario, and the divider cannot be dragged.
+> - When the [barStyle](#barstyle) attribute is set to **TabBarStyle.SIDEBAR_ADAPTABLE** and **minSidebarWidth** + **minContentWidth** > the width of the **Tabs** container, the width constraint cannot be satisfied, and the tab bar is displayed in the **TabBarDisplayMode.BOTTOM_TABBA**R style.
+
+In scenarios where dragging is supported, the dragging range of the divider is shown in the following table. The maximum value must be further reduced by **dividerWidth** (the **strokeWidth** of [DividerStyle](#dividerstyle10), that is, the divider line width).
+
+| Condition (Valid Value Setting) | Minimum Dragging Value of the Divider (Distance Between the Divider and the Start Boundary of the Container) |
+| ---- | ----------- |
+| The minSidebarWidth attribute is set | minSidebarWidth |
+| The minSidebarWidth attribute is not set | 0 |
+
+| Condition (Valid Value Setting) | Maximum Dragging Value of the Divider (Distance Between the Divider and the Start Boundary of the Container) |
+| ---- | ----------- |
+| Both the maxSidebarWidth and minContentWidth attributes are set | The smaller value of (Tabs container width - minContentWidth) and maxSidebarWidth |
+| Only the maxSidebarWidth attribute is set | The smaller value of maxSidebarWidth and the Tabs container width |
+| Only the minContentWidth attribute is set | Tabs container width - minContentWidth |
+| Neither the maxSidebarWidth nor the minContentWidth attribute is set | Tabs container width |
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | ---------- |
+| value | Optional<[DividerStyle](#dividerstyle10)> | Yes | Style of the divider between the side tab bar and the content area of **Tabs**.<br/>When set to **undefined**, the divider is not displayed. |
+
+### sidebarDisplayStyle
+
+sidebarDisplayStyle(style: Optional\<TabsSidebarDisplayStyle\>)
+
+Sets the sidebar display mode of Tabs. If this API is not called, the display mode defaults to **TabsSidebarDisplayStyle.EMBED**.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ---- | ---- | ---- |
+| style | Optional<[TabsSidebarDisplayStyle](#tabssidebardisplaystyle)> | Yes | Sidebar display mode.<br/>When set to **undefined**, the default display mode is restored. |
+
+### showSidebarControlButton
+
+showSidebarControlButton(value: Optional\<boolean>)
+
+Sets whether to display the button that controls the expansion or collapse of the side tab bar. Clicking this button expands or collapses the side tab bar. If this API is not called, the button is not displayed by default.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | -------- | ---- | --------- |
+| value   | Optional\<boolean> | Yes | Whether the side tab bar displays the control button.<br/>The value **true** means to display the button, and **false** means not to display the button.<br/>If **undefined** is set, the default value **false** is used. |
+
 ## DividerStyle<sup>10+</sup>
 
 Defines a divider style object.
@@ -641,6 +1150,7 @@ Defines the width of the tab bar under different **Tabs** widths.
 | mediumBarWidth | [Length](ts-types.md#length) | No | Yes   | Width of the tab bar when the **Tabs** width is between 440 vp and 600 vp, or when the width is between 600 vp and 840 vp and the height-to-width ratio is less than 0.8. |
 | largeBarWidth | [Length](ts-types.md#length) | No | Yes    | Width of the tab bar when the **Tabs** width is greater than 840 vp, or when the width is between 600 vp and 840 vp and the height-to-width ratio is greater than 0.8. |
 
+
 ## UIMaterial
 
 type UIMaterial = import('../api/@ohos.arkui.uiMaterial').uiMaterial
@@ -667,19 +1177,109 @@ Defines the floating style of the tab bar.
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name          | Type                                     | Read-Only | Optional   | Description                                       |
+| ----------- | ---------------------------------------- | ---- | ---- | ------------------------------------ |
+| barWidth | [FloatingTabBarWidth](#floatingtabbarwidth)             | No | Yes    | Width of the **TabBar** at different Tabs widths. For the default width calculation rule, see [FloatingTabBarWidth](#floatingtabbarwidth).<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
+| barSideMargin      | [Length](ts-types.md#length) | No | Yes   | Left and right margins in the default width calculation rule of the **TabBar**.<br/>Value range: [0, +∞)<br/>When the Tabs width is less than 600 vp, the default value is 16 vp. When the Tabs width is between 600 vp and 840 vp, the default value is 24 vp. When the Tabs width is greater than 840 vp, the default value is 32 vp.<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
+| barBottomMargin   | [Length](ts-types.md#length)           | No | Yes    | Distance from the **TabBar** to the bottom of the Tabs.<br/>Value range: [0, +∞)<br/>Default value: 28 vp.<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
+| maskColor   | [ResourceColor](ts-types.md#resourcecolor)           | No | Yes    | Color of the mask. The mask display area is rendered with a opacity gradient based on the mask color, with the opacity decreasing from bottom to top. In light mode, the default value is **#CCF1F3F5**, which appears white. In dark mode, the default value is #99000000, which appears black.<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
+| maskHeight   | [Length](ts-types.md#length)           | No | Yes    | Height of the mask. By default, the upper edge of the mask display is 16 vp higher than the upper edge of the TabBar.<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
+| adaptToHandedness   | boolean           | No | Yes    | Whether to follow the left-right layout of the operating hand.<br/>The value **true** means to follow the left-right layout of the operating hand, and **false** means not to follow it.<br/>Default value: **false**<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
+| systemMaterial | [UIMaterial](#uimaterial).[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) | No | Yes | Immersive material style of the **TabBar** board. The immersive light effect of the bottom **TabBar** takes effect only when the Tabs is in horizontal layout and **barPosition** is **BarPosition.End**.<br/>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
+| maxWidth | [Length](ts-types.md#length) | No | Yes | Maximum width of the TabBar.<br/>Unit: vp<br/>Value range: [0, +∞)<br/>**Since:** 26.1.0<br/>**Atomic service API:** This API can be used in atomic services since API version 26.1.0. |
+| offset | [Position](ts-types.md#position) \| [Edges](ts-types.md#edges12) \| [LocalizedEdges](ts-types.md#localizededges12) | No | Yes | Offset of the **TabBar**.<br/>Unit: vp<br/>Default value: **{ x: 0, y: 0 }**.<br/>Value range of x and y: (-∞, +∞)<br/>**Since:** 26.1.0<br/>**Atomic service API:** This API can be used in atomic services since API version 26.1.0. |
+
+## TopFloatingTabBarStyle
+
+Defines the configuration options for the top floating style of the tab bar.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name          | Type                                     | Read Only | Optional   | Description                                       |
+| Name          | Type                                     | Read-Only | Optional   | Description                                       |
 | ----------- | ---------------------------------------- | ---- | ---- | ------------------------------------ |
-| barWidth | [FloatingTabBarWidth](#floatingtabbarwidth)             | No | Yes    | Width of the tab bar at different **Tabs** widths. For the default width calculation rule, see [FloatingTabBarWidth](#floatingtabbarwidth). |
-| barSideMargin      | [Length](ts-types.md#length) | No | Yes   | Left and right margins in the default width calculation rule of the tab bar.<br/>Value range: [0, +∞)<br/>When the **Tabs** width is less than 600 vp, the default value is 16 vp. When the **Tabs** width is between 600 vp and 840 vp, the default value is 24 vp. When the **Tabs** width is greater than 840 vp, the default value is 32 vp. |
-| barBottomMargin   | [Length](ts-types.md#length)           | No | Yes    | Distance from the tab bar to the bottom of the **Tabs**.<br/>Value range: [0, +∞)<br/>Default value: 28 vp. |
-| maskColor   | [ResourceColor](ts-types.md#resourcecolor)           | No | Yes    | Color of the mask. The mask display area is rendered with a transparency gradient based on the mask color, with the opacity decreasing from bottom to top. In light mode, the default value is **#CCF1F3F5**, displayed as white. In dark mode, the default value is **#99000000**, displayed as black. |
-| maskHeight   | [Length](ts-types.md#length)           | No | Yes    | Height of the mask. The upper edge of the mask display is 16 vp higher than the upper edge of the tab bar by default. |
-| adaptToHandedness   | boolean           | No | Yes    | Whether to follow the left-right layout of the operating hand.<br/>The value **true** means to follow the left-right layout of the operating hand; the value **false** means not to follow the left-right layout of the operating hand.<br/>Default value: **false** |
-| systemMaterial | [UIMaterial](#uimaterial).[ImmersiveMaterial](../arkts-apis-uimaterial.md#immersivematerial) | No | Yes | Immersive material style of the tab bar backplate. |
+| barWidth | [Length](ts-types.md#length) | No | Yes | Width of the **TabBar**.<br/>Unit: vp<br/>Value range: [0, +∞)<br/>If not set, the width is calculated based on the content size, and the maximum value is controlled by **barSideMargin**. |
+| barSideMargin | [Length](ts-types.md#length) | No | Yes | Left and right margins of the **TabBar**.<br/>Unit: vp<br/>Value range: [0, +∞)<br/>When the Tabs width is less than 600 vp, the default value is 16 vp. When the Tabs width is between 600 vp and 840 vp, the default value is 24 vp. When the Tabs width is greater than 840 vp, the default value is 32 vp.<br/>Calculation rule for the maximum value of **barWidth**: when the Tabs width is greater than 840 vp, the maximum value of **barWidth** is (component width - **barSideMargin** × 2 - 176) / 12 × 10 + 144; when the Tabs width is less than 840 vp, the maximum value of **barWidth** is (component width - **barSideMargin** × 2). |
+| barTopMargin | [Length](ts-types.md#length) | No | Yes | Distance from the **TabBar** to the top of the Tabs.<br/>Unit: vp<br/>Value range: [0, +∞)<br/>Default value: 32 vp. |
+| maskColor | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Color of the mask. In light mode, the default value is **#CCF1F3F5** (white). In dark mode, the default value is **#99000000** (black). |
+| maskHeight | [Length](ts-types.md#length) | No | Yes | Height of the mask.<br/>Unit: vp<br/>Value range: [0, +∞)<br/>If not set, the mask is not displayed. |
+| maxWidth | [Length](ts-types.md#length) | No | Yes | Maximum width of the **TabBar**.<br/>Unit: vp<br/>Value range: [0, +∞)<br/>If not set, the maximum width of the **TabBar** is calculated based on **barSideMargin**. |
+| offset | [Position](ts-types.md#position) \| [Edges](ts-types.md#edges12) \| [LocalizedEdges](ts-types.md#localizededges12) | No | Yes | Offset of the **TabBar**.<br/>Unit: vp<br/>Default value: **{ x: 0, y: 0 }**.<br/>Value range of x and y: (-∞, +∞) |
+
+## TabsSidebarSearchFilterCallback
+
+type TabsSidebarSearchFilterCallback = (tabIndex: number, text: string) => boolean
+
+Searches filter function of the search box in the Tabs side tab bar.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ------ | ---- | ---------------- |
+| tabIndex | number | Yes | Index of the tab to be determined whether to filter.<br/>Value range: [0, total number of tabs - 1]. The tabs include those hidden by search filtering and those hidden through the [tabBarVisibility](./ts-container-tabcontent.md#tabbarvisibility) attribute. |
+| text | string | Yes | Current search text. |
+
+**Return value**
+
+| Type | Description |
+| ------ | ---- |
+| boolean | Whether the corresponding tab matches the search condition. The value **true** indicates a match, in which case the tab is displayed; the value **false** indicates no match, in which case the tab is not displayed. |
+
+## TabsSidebarSearchableOptions
+
+Searches options for the side tab bar of Tabs.
+
+> **NOTE**
+>
+> Default tab search rule: searches for the content in the search input box in the text information corresponding to the tab (case-insensitive). If found, the tab is considered to match the search condition and is displayed; otherwise, the tab is considered not to match and is not displayed.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name  | Type   | Read-Only | Optional   | Description    |
+| ---- | ----- | ---- | ------ | -------- |
+| searchText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Initial input text in the search text box. |
+| placeholder | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Placeholder text displayed when the search input box is empty. |
+| searchCallback | (text: string) => void | No | Yes | Callback invoked when the search text changes.<br/>Parameters:<br/>**text**: current search text. |
+| searchFilter | [TabsSidebarSearchFilterCallback](#tabssidebarsearchfiltercallback) | No | Yes | Filter function used to determine whether a tab matches the search condition. If not set, the default search rule is used.|
+
+## TabsBreakpointType\<T>
+
+Defines the values under different Tabs container breakpoints.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name | Type | Read-Only | Optional | Description |
+| ---- | --------- | ---- | ------ | ------- |
+| sm | T | No | Yes | Value under the small-size Tabs container. The small size means that the Tabs width falls within the range [0, 600vp). |
+| md | T | No | Yes | Value under the medium-size Tabs container. The medium size means that the Tabs width falls within the range [600vp, 840vp). |
+| lg | T | No | Yes | Value under the large-size Tabs container. The large size means that the Tabs width falls within the range [840vp, +∞). |
 
 ## BarMode
 
@@ -721,7 +1321,6 @@ Enumerates the tab layout modes when the tab bar is not scrolled in [Scrollable]
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 30%; 10%; 60%-->
-
 | Name         | Value | Description                                     |
 | ---------- | -- | ---------------------------------------- |
 | ALWAYS_CENTER | 0 | When the tab content exceeds the tab bar width, the tab bar is scrollable.<br/>When the tab content does not exceed the tab bar width, the tab bar is not scrollable and the tabs are compactly centered.|
@@ -774,6 +1373,41 @@ Enumerates the nested scrolling modes of the **Tabs** component and its parent c
 | SELF_ONLY       | 0  | The **Tabs** component scrolls by itself without interacting with the parent component. This mode applies to scenarios where the **Tabs** component has complete scrolling functionality and requires independent control of the scrolling behavior. |
 | SELF_FIRST | 1  | The **Tabs** component scrolls first, and the parent component scrolls after the **Tabs** component reaches its edge. After the parent component reaches its edge, if the parent component has an edge effect, the parent component triggers the edge effect; otherwise, the **Tabs** component triggers the edge effect. This mode applies to nested scrolling scenarios where the **Tabs** component serves as the primary scrolling area and needs to interact with the parent component after reaching its edge. |
 
+## TabBarDisplayMode
+
+Enumerates the actual display modes of the tab bar under different breakpoints of the Tabs container. This enum is used by the [barDisplayModeBreakpoint](#bardisplaymodebreakpoint) API to specify the display mode under different breakpoints.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name  | Value | Description  |
+| ------ | -- | ------  |
+| BOTTOM_TABBAR | 0 | Bottom tab bar display mode. The actual display position of the tab bar can be adjusted through the [vertical](#vertical) and [barPosition](#barposition9) attributes. |
+| SIDEBAR | 1 | Side tab bar display mode. The actual display position of the tab bar can be adjusted through the [sidebarPosition](#sidebarposition) attribute. |
+| TOP_TABBAR | 2 | Top floating tab bar display mode. The tab bar is displayed at the top in a floating form.<br/>**Since:** 26.1.0 |
+
+## TabsSidebarDisplayStyle
+
+Enumerates the sidebar display modes.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+| Name | Value | Description |
+| ---- | -- | ---- |
+| EMBED | 0 | Embedded mode. The sidebar is embedded in the container and displayed side by side with the content area. When the sidebar is displayed, the width of the content area is reduced accordingly, and the sidebar and the content area together occupy the full width of the container. This mode applies to scenarios where the sidebar and the content area need to be displayed simultaneously. |
+| DISPLACE | 1 | Displace mode. The width of the content area remains unchanged. When the sidebar is displayed, part of the content area is pushed out of the container. This mode applies to scenarios where the width of the content area needs to remain unchanged. |
+
 ## Events
 
 In addition to the [universal events](ts-component-general-events.md), the following events are supported.
@@ -788,7 +1422,7 @@ This event is triggered when any of the following conditions is met:
 
 1. Triggered after the component sliding animation ends when the page is switched by swiping.
 
-2. Triggered after the tab is switched by calling [changeIndex](#changeindex) through the [controller](#tabscontroller).
+2. Triggered after the tab is switched by calling [changeIndex](#tabscontroller) through the [changeIndex](#changeindex).
 
 3. Triggered after the tab is switched when the **index** attribute value constructed by the [state variable](../../../ui/state-management/arkts-state.md) is dynamically changed.
 
@@ -893,19 +1527,12 @@ Customizes the page switching animation of **Tabs**. This is applicable when you
 Instructions:
 
 1. When a custom switching animation is used, the default switching animation of the **Tabs** component is disabled, and the page cannot be swiped along with the finger.
-
 2. When this attribute is set to **undefined**, the custom switching animation is not used, and the default switching animation of the component is used instead.
-
 3. The custom switching animation does not support interruption.
-
 4. Currently, the custom switching animation can be triggered only in two scenarios: tapping a tab and calling the **TabsController.changeIndex()** API.
-
 5. When the custom switching animation is used, all events supported by the **Tabs** component are available except **onGestureSwipe**.
-
 6. The triggering timing of the [onChange](#onchange) and [onAnimationEnd](#onanimationend11) events requires special explanation: if a second custom animation is triggered while the first custom animation is still in progress, the **onChange** and **onAnimationEnd** events of the first custom animation are triggered when the second custom animation starts.
-
 7. When the custom animation is used, the layout mode of the pages participating in the animation is changed to [Stack](ts-container-stack.md) layout. If the developer does not proactively set the [zIndex](ts-universal-attributes-z-order.md#zindex) attribute of the related pages, all pages have the same **zIndex** value, and the rendering hierarchy of the pages is determined by their order in the component tree (that is, the order of the page index values). Therefore, the developer needs to proactively modify the **zIndex** attribute of the pages to control the rendering hierarchy.
-
 8. This attribute cannot be called within [attributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 >**NOTE**
@@ -924,6 +1551,7 @@ Instructions:
 | ------ | ------ | ---- | -------------------- |
 | delegate  | [TabsCustomContentTransitionCallback](#tabscustomcontenttransitioncallback18) | Yes   | Callback invoked when the custom **Tabs** page switching animation starts. |
 
+
 ### onContentWillChange<sup>12+</sup>
 
 onContentWillChange(handler: OnTabsContentWillChangeCallback)
@@ -932,9 +1560,9 @@ Customizes the capability of intercepting **Tabs** page switching. This callback
 
 This event is triggered when any of the following conditions is met:
 
-1. A new page is switched to by swiping the **TabContent**.
+1. Triggered when a new page is switched to by swiping the **TabContent**.
 
-2. Triggered when a new page is switched to through the **TabsController**.[changeIndex](#changeindex) API.
+2. Triggered when a new page is switched to through the TabsController.[changeIndex](#changeindex) API.
 
 3. Triggered when a new page is switched to by dynamically changing the **index** attribute value.
 
@@ -1041,6 +1669,26 @@ During page swiping, the [OnTabsContentDidScrollCallback](#ontabscontentdidscrol
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ---- | ---- |
 | handler | [OnTabsContentDidScrollCallback](#ontabscontentdidscrollcallback23) \| undefined | Yes | Callback triggered when **Tabs** is swiped. The value **undefined** unbinds the original callback. |
+
+### onBarDisplayModeChange
+
+onBarDisplayModeChange(callback: Optional\<Callback\<TabBarDisplayMode>>)
+
+Triggered when the tab bar display mode changes. This API uses an asynchronous callback to return the result.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ---- | ---- | ---- |
+| callback | Optional\<[Callback](./ts-types.md#callback12)\<[TabBarDisplayMode](#tabbardisplaymode)>> | Yes | Callback invoked when the display mode of Tabs changes. |
 
 ## OnTabsAnimationStartCallback<sup>18+</sup>
 
@@ -1222,7 +1870,7 @@ type OnTabsContentDidScrollCallback = (selectedIndex: number, index: number, pos
 
 Triggered when the **Tabs** is swiped.
 
->**NOTE**
+>**NOTE** 
 >
 >- For example, when the index of the currently selected tab is 0, during a transition animation from page 0 to page 1, the callback is triggered for all pages within the viewport on every frame. When pages 0 and 1 are both in the viewport, the callback is triggered twice per frame. The first callback has **selectedIndex** as **0**, **index** as **0**, **position** as the ratio of how much page 0 has moved relative to its position before the animation started on the current frame, and **mainAxisLength** as the length of page 0 on the main axis. The second callback has **selectedIndex** as **0**, **index** as **1**, **position** as the ratio of how much page 1 has moved relative to page 0 before the animation started on the current frame, and **mainAxisLength** as the length of page 1 on the main axis.
 >
@@ -1290,10 +1938,10 @@ Controls the preloading of specified child nodes in **Tabs**. After this API is 
 > **NOTE**
 >
 > - The **preloadItems** API of **Tabs** must be called after **Tabs** is created. For the first preloading, it is recommended to control it in the [onAppear](./ts-universal-events-show-hide.md#onappear) lifecycle of **Tabs**.
->
+> 
 > - If the **TabsController** object is not bound to any **Tabs** component, calling this API directly throws a JS exception. Therefore, when using this API, it is recommended to catch the exception through try-catch.
 >
-> - When using **preloadItems** to preload tab pages, if you need to customize the content displayed on the tab bar, it is recommended to use **ComponentContent**. For a usage example, see [Example 10](./ts-container-tabcontent.md#example-10-preloading-child-nodes-using-componentcontent).
+> - When using **preloadItems** to preload tab pages, if you need to customize the content displayed on the tab bar, it is recommended to use **ComponentContent**. For a usage example, see [Example 10](./ts-container-tabcontent.md#).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1348,7 +1996,7 @@ Sets the translation distance of the tab bar. This API is applicable to scenario
 
 setTabBarOpacity(opacity: number): void
 
-Sets the opacity of the tab bar. This API is suitable for scenarios where the tab bar display transparency needs to be adjusted, such as the fade-in and fade-out effect of the tab bar and reducing the visual interference of the tab bar to highlight content.
+Sets the opacity of the tab bar. This API is suitable for scenarios where the tab bar display opacity needs to be adjusted, such as the fade-in and fade-out effect of the tab bar and reducing the visual interference of the tab bar to highlight content.
 
 > **NOTE**
 >
@@ -1366,6 +2014,26 @@ Sets the opacity of the tab bar. This API is suitable for scenarios where the ta
 | Name   | Type   | Mandatory   | Description                                     |
 | ----- | ------ | ---- | ---------------------------------------- |
 | opacity | number | Yes | Opacity of the tab bar. The value **1.0** indicates fully opaque, and the value 0.0 indicates fully transparent. The value range is [0.0, 1.0]. If the set value is less than 0.0, it is processed as 0.0. If the set value is greater than 1.0, it is processed as 1.0.<br> Default value: **1.0**. |
+
+### getBarDisplayMode
+
+getBarDisplayMode(): TabBarDisplayMode
+
+Obtains the display mode of the current **Tabs** component.
+
+**Since:** 26.0.1
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Return value** 
+
+| Type | Description |
+| ---- | ----- |
+| [TabBarDisplayMode](#tabbardisplaymode) | Display mode of the current **Tabs** component. |
 
 ## Examples
 
@@ -1442,7 +2110,6 @@ struct TabsExample {
   }
 }
 ```
-
 ![tabs1](figures/tabs_barMode.gif)
 
 ### Example 2: Setting the Layout Style for a Scrollable TabBar
@@ -2531,9 +3198,11 @@ class MyDataSource implements IDataSource {
     return this.list[index];
   }
 
+  // Implement this API to implement the IDataSource API.
   registerDataChangeListener(listener: DataChangeListener): void {
   }
 
+  // Implement this API to implement the IDataSource API.
   unregisterDataChangeListener() {
   }
 }
@@ -2964,7 +3633,6 @@ struct TabsExample {
   }
 }
 ```
-
 ![tabs17](figures/tabs_tarbar.gif)
 
 ### Example 18: Releasing the Tabs Child Components
@@ -3092,7 +3760,6 @@ struct TabsExample {
   }
 }
 ```
-
 ![tabs19](figures/tabBar_background.png)
 
 ### Example 20: Setting the Edge Sliding Effect
@@ -3149,7 +3816,6 @@ struct TabsExample {
   }
 }
 ```
-
 ![tabs20](figures/tabs_edges_slide.gif)
 
 ### Example 21: Setting the Tab Switching Animation Curve
@@ -3241,7 +3907,6 @@ struct TabsExample {
   }
 }
 ```
-
 ![tabs_curve](figures/tabs_curve.gif)
 
 ### Example 22: Listening for Swipe Events on the Tabs Page
@@ -3410,14 +4075,15 @@ struct TabsExample {
   }
 }
 ```
-
 <!--Del--> <!--DelEnd-->
 
 ### Example 24 Setting the TabBar Floating Style
 
-This example shows how to set the floating style and immersive material of the back panel for the tab bar through the [barFloatingStyle](#barfloatingstyle) API.
+This example shows how to set the floating style and immersive board material of the tab bar through the [barFloatingStyle](#barfloatingstyle) API, and how to set the maximum width and offset of the tab bar through the **maxWidth** and **offset** attributes.
 
-Since API version 26.0.0, the **barFloatingStyle** API is added.
+The illustration for this example shows the strong effect on a high-computing-power device. The immersive light effect of the component is adaptively adjusted based on the device computing power and the immersive light effect set by the user in the system, so you do not need to perform additional adaptation.
+
+Since API version 26.0.0, the **barFloatingStyle** API is added. Since API version 26.1.0, the **maxWidth** and **offset** attributes are added to [FloatingTabBarStyle](#floatingtabbarstyle).
 
 ```ts
 // xxx.ets
@@ -3463,4 +4129,482 @@ struct TabsFloatingStyleExample {
 }
 ```
 
+The figure in this example shows the strong effect on a high-computing-power device:
+
 ![tabs_floating_style](figures/tabsFloatingBar.gif)
+
+### Example 25: Setting the Side Tab Bar Style
+
+This example shows how to set the display style of the tab bar through the [barStyle](#barstyle) API, including the fixed bottom tab bar style, fixed side tab bar style, and adaptive side tab bar style. It sets the display position of the side tab bar through the [sidebarPosition](#sidebarposition) API, sets custom content in the header of the side tab bar through the [sidebarHeader](#sidebarheader) API, sets custom content that scrolls with the tab list at the end of the tab list of the side tab bar through the [sidebarFooter](#sidebarfooter) API, and sets custom content at the fixed bottom of the side tab bar through the [sidebarBottomBar](#sidebarbottombar) API. It enables the search function of the side tab bar through the [sidebarSearchable](#sidebarsearchable) API, registers a listener for display mode switching through the [onBarDisplayModeChange](#onbardisplaymodechange) API, and sets whether to display the button for controlling expansion or collapse in the header of the side tab bar through the [showSidebarControlButton](#showsidebarcontrolbutton) API.
+
+Since API version 26.0.1, the **barStyle**, **sidebarPosition**, **sidebarHeader**, **sidebarSearchable**, and **onBarDisplayModeChange** APIs are added. Since API version 26.1.0, the **sidebarFooter**, **sidebarBottomBar**, and **showSidebarControlButton** APIs are added.
+
+```ts
+// xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+
+@Builder
+function TestHeaderBuilder() {
+  Stack({alignContent: Alignment.Center}) {
+    Stack({alignContent: Alignment.Center}) {
+    }
+    .width(64)
+    .height(32)
+    .backgroundColor('#ff2787d9')
+  }
+  .width('100%')
+  .height(64)
+  .border({width: 1, color: '#ffd9d9d9'})
+}
+
+@Builder
+function TestFooterBuilder() {
+  Stack({alignContent: Alignment.Center}) {
+    Stack({alignContent: Alignment.Center}) {
+    }
+    .width(64)
+    .height(16)
+    .backgroundColor('#ff2787d9')
+  }
+  .width('100%')
+  .height(24)
+  .border({width: 1, color: '#ffd9d9d9'})
+}
+
+@Builder
+function TestBottomBarBuilder() {
+  Stack({alignContent: Alignment.Center}) {
+    Stack({alignContent: Alignment.Center}) {
+    }
+    .width(64)
+    .height(32)
+    .backgroundColor('#ff2787d9')
+  }
+  .width('100%')
+  .height(64)
+  .border({width: 1, color: '#ffd9d9d9'})
+}
+
+@Entry
+@Component
+struct TabsSidebarExample {
+  @State myBarStyle: TabBarStyle = TabBarStyle.BOTTOM;
+  @State tabsWidth: number = 550;
+  @State searchText: string = '';
+  @State currentIndex: number = 0;
+
+  build() {
+    Column() {
+      Column() {
+        Row() {
+          Text('barStyle: ').fontSize(25)
+          Button('BOTTOM').onClick(() => {
+            this.myBarStyle = TabBarStyle.BOTTOM;
+          }).margin({right: 10}).fontSize(15).backgroundColor('#ff2787d9')
+          Button('SIDEBAR').onClick(() => {
+            this.myBarStyle = TabBarStyle.SIDEBAR;
+          }).margin({right: 10}).fontSize(15).backgroundColor('#ff2787d9')
+          Button('SIDEBAR_ADAPTABLE').onClick(() => {
+            this.myBarStyle = TabBarStyle.SIDEBAR_ADAPTABLE;
+          }).fontSize(15).backgroundColor('#ff2787d9')
+        }.width('100%')
+        .justifyContent(FlexAlign.Center)
+        Row() {
+          Text('Tabs width: ').fontSize(25)
+          Button('550').onClick(() => {
+            this.tabsWidth = 550;
+          }).margin({right: 20}).backgroundColor('#ff2787d9')
+          Button('700').onClick(() => {
+            this.tabsWidth = 700;
+          }).margin({right: 20}).backgroundColor('#ff2787d9')
+          Button('850').onClick(() => {
+            this.tabsWidth = 850;
+          }).backgroundColor('#ff2787d9')
+        }.width('100%').margin({top: 5})
+        .justifyContent(FlexAlign.Center)
+      }.width('100%')
+      .height('18%')
+      Tabs() {
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text('TabContent1').fontSize(25)
+          }.width('100%').height('100%')
+        }.tabBar({icon: $r('app.media.startIcon'), text: 'tab1'})
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text('TabContent2').fontSize(25)
+          }.width('100%').height('100%')
+        }.tabBar({icon: $r('app.media.startIcon'), text: 'tab2'})
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text('TabContent3').fontSize(25)
+          }.width('100%').height('100%')
+        }
+        .tabBar({icon: $r('app.media.startIcon'), text: 'tab3'})
+      }
+      .height('65%')
+      .width(this.tabsWidth)
+      .vertical(false)
+      .barPosition(BarPosition.End)
+      .barBackgroundColor('#fff7f7f7')
+      .border({width: 1, color: '#ffd9d9d9'})
+      // Set the Tabs display style.
+      .barStyle(this.myBarStyle)
+      // Set the side tab bar to display on the start side.
+      .sidebarPosition(BarPosition.Start)
+      // Set the header content of the side tab bar.
+      .sidebarHeader(new ComponentContent(this.getUIContext(), wrapBuilder(TestHeaderBuilder)))
+      // Set the tail content of the tab list in the side tab bar.
+      .sidebarFooter(new ComponentContent(this.getUIContext(), wrapBuilder(TestFooterBuilder)))
+      // Set the fixed bottom content of the side tab bar.
+      .sidebarBottomBar(new ComponentContent(this.getUIContext(), wrapBuilder(TestBottomBarBuilder)))
+      // Set the search options of the side tab bar.
+      .sidebarSearchable({
+        placeholder: 'Search tabs',
+        searchCallback: (text: string) => {
+          this.searchText = text;
+          console.info(`search text: ${text}`);
+        }
+      })
+      // Listen for the display mode switch event through the onBarDisplayModeChange API.
+      .onBarDisplayModeChange((mode: TabBarDisplayMode) => {
+        console.info(`testTag TabBarDisplayMode change to ${mode}`)
+      })
+      .showSidebarControlButton(true)
+    }
+    .width('100%')
+    .height(700)
+  }
+}
+```
+
+![tabsTabBarStyle](figures/tabsTabBarStyle.gif)
+
+### Example 26: Setting the Sidebar Display Mode
+
+This example shows how to set the sidebar display mode of Tabs through the [sidebarDisplayStyle](#sidebardisplaystyle) API, switching between the embedded mode (**EMBED**) and the displace mode (**DISPLACE**).
+
+Since API version 26.0.1, the **sidebarDisplayStyle** API is added.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TabsSideBarDemo {
+  @State isDisplace: boolean = false;
+
+  build() {
+    Column() {
+      // Switch sidebarDisplayStyle.
+      Row({ space: 12 }) {
+        Text('EMBED')
+          .fontSize(14)
+          .fontColor('#FFFFFF')
+          .backgroundColor(!this.isDisplace ? '#409EFF' : '#C0C4CC')
+          .padding({ top: 6, bottom: 6, left: 16, right: 16 })
+          .borderRadius(20)
+          .onClick(() => {
+            this.isDisplace = false;
+          })
+
+        Text('DISPLACE')
+          .fontSize(14)
+          .fontColor('#FFFFFF')
+          .backgroundColor(this.isDisplace ? '#67C23A' : '#C0C4CC')
+          .padding({ top: 6, bottom: 6, left: 16, right: 16 })
+          .borderRadius(20)
+          .onClick(() => {
+            this.isDisplace = true;
+          })
+      }
+      .padding({ top: 8, bottom: 8 })
+
+      Tabs() {
+        TabContent() {
+          Column() {
+            Text('Home content')
+              .fontSize(24)
+              .fontColor('#409EFF')
+          }
+          .width('100%')
+          .height('100%')
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor('#EBF5FF')
+        }
+        .tabBar('Home')
+      }
+      .barStyle(TabBarStyle.SIDEBAR)
+      .sidebarDisplayStyle(this.isDisplace ? TabsSidebarDisplayStyle.DISPLACE : TabsSidebarDisplayStyle.EMBED)
+      .scrollable(true)
+      .animationDuration(300)
+      .width('100%')
+      .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+<!--Del--> <!--DelEnd-->
+
+### Example 27: Setting the Display Effect of Side Tab Bar Content
+
+This example shows how to control the display effect of side tab bar content through the following APIs.
+1. Set the width of the side tab bar through the [sidebarWidth](#sidebarwidth) API.
+2. Set the background color of the side tab bar through the [sidebarBackgroundColor](#sidebarbackgroundcolor) API.
+3. Set the background blur style of the side tab bar through the [sidebarBackgroundBlurStyle](#sidebarbackgroundblurstyle) API.
+4. Set the icon color of the selected tab in the side tab bar through the [sidebarSelectedIconColor](#sidebarselectediconcolor) API.
+5. Set the text color of the selected tab in the side tab bar through the [sidebarSelectedTextColor](#sidebarselectedtextcolor) API.
+6. Set the icon color of the unselected tab in the side tab bar through the [sidebarUnselectedIconColor](#sidebarunselectediconcolor) API.
+7. Set the text color of the unselected tab in the side tab bar through the [sidebarUnselectedTextColor](#sidebarunselectedtextcolor) API.
+8. Set the board color of the selected tab in the side tab bar through the [sidebarSelectedBoardColor](#sidebarselectedboardcolor) API.
+
+Since API version 26.0.1, the **sidebarWidth**, **sidebarBackgroundColor**, **sidebarBackgroundBlurStyle**, **sidebarSelectedTextColor**, **sidebarSelectedIconColor**, **sidebarUnselectedTextColor**, **sidebarUnselectedIconColor**, and **sidebarSelectedBoardColor** APIs are added.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TabsSidebarContentStyleExample {
+  private testArr: Array<number> = new Array();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 6; i++) {
+      this.testArr.push(i);
+    }
+  }
+
+  build() {
+    Tabs() {
+      ForEach(this.testArr, (data: number) => {
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text(`TabContent${data}`)
+          }
+          .width('100%')
+          .height('100%')
+        }
+        // Replace $r('app.media.arrow') with the actual resource.
+        .tabBar({icon: $r('app.media.arrow'), text: `TabContent${data}`})
+      }, (data: number) => data.toString())
+    }
+    .height('400')
+    .width('400')
+    .backgroundColor('#fffffbf0')
+    // Set Tabs to the side tab bar style.
+    .barStyle(TabBarStyle.SIDEBAR)
+    // Set the width of the side tab bar.
+    .sidebarWidth('190')
+    // Set the background color of the side tab bar.
+    .sidebarBackgroundColor('#80f6fcf5')
+    // Set the background blur style of the side tab bar.
+    .sidebarBackgroundBlurStyle(BlurStyle.Thin)
+    // Set the icon color of the selected tab in the side tab bar.
+    .sidebarSelectedIconColor('#ffa10a21')
+    // Set the text color of the selected tab in the side tab bar.
+    .sidebarSelectedTextColor('#ffa10a21')
+    // Set the icon color of the unselected tab in the side tab bar.
+    .sidebarUnselectedIconColor('#ffffc000')
+    // Set the text color of the unselected tab in the side tab bar.
+    .sidebarUnselectedTextColor('#ffffc000')
+    // Set the board color of the selected tab in the side tab bar.
+    .sidebarSelectedBoardColor('#ffe3fff9')
+  }
+}
+```
+
+![tabsSidebarStyle](figures/tabsSidebarStyle.gif)
+
+### Example 28: Setting the Divider in Side Tab Bar Mode to Support Dragging
+
+This example shows how to use the following APIs to enable the divider in side tab bar mode to support dragging and specify the dragging range.
+1. Use [sidebarDivider](#sidebardivider) to set the divider style of the side tab bar.
+2. Use [minSidebarWidth](#minsidebarwidth) to set the minimum width of the side tab bar.
+3. Use [maxSidebarWidth](#maxsidebarwidth) to set the maximum width of the side tab bar.
+4. Use [minContentWidth](#mincontentwidth) to set the minimum width of the content area.
+
+Since API version 26.0.1, the **sidebarDivider**, **minSidebarWidth**, **maxSidebarWidth**, and **minContentWidth** APIs are added.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TabsSidebarDraggableExample {
+  private testArr: Array<number> = new Array();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 3; i++) {
+      this.testArr.push(i);
+    }
+  }
+
+  build() {
+    Tabs() {
+      ForEach(this.testArr, (data: number) => {
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text(`TabContent${data}`)
+          }
+          .width('100%')
+          .height('100%')
+        }
+        // Replace $r('app.media.arrow') with the actual resource.
+        .tabBar({icon: $r('app.media.arrow'), text: `TabContent${data}`})
+      }, (data: number) => data.toString())
+    }
+    .height('400')
+    .width('800')
+    .backgroundColor('#fffffbf0')
+    // Set Tabs to the side tab bar style.
+    .barStyle(TabBarStyle.SIDEBAR)
+    // Set the divider style of the side tab bar.
+    .sidebarDivider({
+      strokeWidth: 1,
+      color: '#ff707070',
+      startMargin: 5,
+      endMargin: 5
+    })
+    // Set the minimum width of the side tab bar.
+    .minSidebarWidth('190')
+    // Set the maximum width of the side tab bar.
+    .maxSidebarWidth('40%')
+    // Set the minimum width of the content area.
+    .minContentWidth('360')
+  }
+}
+```
+
+![tabsSidebarDraggable](figures/tabsSidebarDraggable.gif)
+
+### Example 29: Customizing Display Mode Breakpoint
+
+This example demonstrates how to implement a custom display mode breakpoint through the [barDisplayModeBreakpoint](#bardisplaymodebreakpoint) API.
+
+Since API version 26.0.1, the **barDisplayModeBreakpoint** API is added.
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TabsSidebarBreakpointExample {
+  private testArr: Array<number> = new Array();
+  @State tabsWidth: number = 590;
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 6; i++) {
+      this.testArr.push(i);
+    }
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Text('Tabs width: ').fontSize(25)
+        Button('590').onClick(() => {
+          this.tabsWidth = 590;
+        }).fontSize(15).backgroundColor('#ff2787d9')
+        Button('650').onClick(() => {
+          this.tabsWidth = 650;
+        }).fontSize(15).backgroundColor('#ff2787d9')
+        Button('850').onClick(() => {
+          this.tabsWidth = 850;
+        }).fontSize(15).backgroundColor('#ff2787d9')
+      }
+      .width(400)
+      .height(100)
+      .justifyContent(FlexAlign.SpaceAround)
+      Tabs() {
+        ForEach(this.testArr, (data: number) => {
+          TabContent() {
+            Stack({alignContent: Alignment.Center}) {
+              Text(`TabContent${data}`)
+            }
+            .width('100%')
+            .height('100%')
+          }
+          // Replace $r('app.media.arrow') with the actual resource.
+          .tabBar({icon: $r('app.media.arrow'), text: `TabContent${data}`})
+        }, (data: number) => data.toString())
+      }
+      .height('400')
+      .width(this.tabsWidth)
+      .border({width: 1, color: '#ffd9d9d9'})
+      .backgroundColor("#fffffbf0")
+      // Set Tabs to the adaptive style.
+      .barStyle(TabBarStyle.SIDEBAR_ADAPTABLE)
+      // Set the custom display breakpoint.
+      .barDisplayModeBreakpoint({
+        // Display in TabBarDisplayMode.BOTTOM_TABBAR mode when the width is in the range [0, 600vp).
+        sm: TabBarDisplayMode.BOTTOM_TABBAR,
+        // Display in TabBarDisplayMode.BOTTOM_TABBAR mode when the width is in the range [600vp, 840vp).
+        md: TabBarDisplayMode.BOTTOM_TABBAR,
+        // Display in TabBarDisplayMode.SIDEBAR mode when the width is in the range [840vp, +∞).
+        lg: TabBarDisplayMode.SIDEBAR
+      })
+    }
+    .width('100%')
+    .height('100%')
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+
+![tabsSidebarBreakpoint](figures/tabsSidebarBreakpoint.gif)
+
+### Example 30: Setting TabBar Top Floating Style
+
+This example shows how to set the **TabBar** to the top floating tab bar style **(TabBarStyle.TOP)** through the [barStyle](#barstyle) API, and set the top floating style of the **TabBar** through the [topBarFloatingStyle](#topbarfloatingstyle) API, including the following attributes: tab bar width, left and right margins, top margin, mask color, mask height, maximum width, and offset.
+
+Since API version 26.1.0, the **topBarFloatingStyle** API and the [TabBarStyle](#tabbarstyle).TOP enum value are added.
+
+```ts
+@Entry
+@Component
+struct TabsTopFloatingStyleExample {
+  @State barWidth: number = 320;
+  @State barTopMargin: number = 16;
+  @State useOffset: boolean = false;
+
+  build() {
+    Column() {
+      Tabs() {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor("#E5E5E5")
+        }.tabBar('Gray')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Green)
+        }.tabBar('Green')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Orange)
+        }.tabBar('Orange')
+
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Pink)
+        }.tabBar('Pink')
+      }
+      // Set TabBar to the top floating tab bar style.
+      .barStyle(TabBarStyle.TOP)
+      // Set the top floating style of TabBar.
+      .topBarFloatingStyle({
+        barWidth: this.barWidth,
+        barSideMargin: 24,
+        barTopMargin: this.barTopMargin,
+        maskColor: '#80F1F3F5',
+        maskHeight: 80,
+        maxWidth: 360,
+        offset: this.useOffset ? { x: 0, y: 10 } : undefined
+      })
+      .barOverlap(true)
+      .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![tabsTopFloatingStyle](figures/tabsTopBar.PNG)
+<!--no_check-->

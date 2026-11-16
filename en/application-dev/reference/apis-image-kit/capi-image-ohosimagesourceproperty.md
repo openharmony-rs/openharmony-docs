@@ -1,12 +1,11 @@
 # OhosImageSourceProperty
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9329f19aa2995f079ff9cf109a20aad0033a91a3 translatedAt=2026-08-03T04:04:03.156Z pushedAt=2026-08-04T02:53:21.312Z -->
+<!-- md-trans-meta sourceCommit=a71c0a82e5ac85b488b13af278b7bfd23da513e9 translatedAt=2026-11-06T02:03:45.295Z pushedAt=2026-11-12T06:14:48.758Z nl=1 -->
 
 ```c
 struct OhosImageSourceProperty {...}
@@ -28,5 +27,8 @@ The struct describes the property string (in key-value format) of an image sourc
 
 | Name| Description|
 | -- | -- |
-| char* value = nullptr | Pointer to the starting address of the property string.|
-| size_t size = 0 | Size of the property string.|
+| char* value = nullptr | Header address of the property key-value string of an image source. This setting is only applicable to the C++ compilation environment. |
+| size_t size = 0 | Size of the property key-value string of an image source. This setting is only applicable to the C++ compilation environment. |
+| char* value | Header address of the property key-value string of an image source. This setting is only applicable to the C compilation environment. |
+| size_t size | Size of the property key-value string of an image source. This setting is only applicable to the C compilation environment. |
+

@@ -1,11 +1,11 @@
 # Focus Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=fde44dfb2c14026abfac39f6721d4d161fcad545 translatedAt=2026-09-02T12:32:01.984Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:56:49.643Z pushedAt=2026-11-13T01:06:00.170Z nl=1 -->
 
 A focus event is triggered when the page focus moves between components. It can be used to process related logic within the component.
 
@@ -86,6 +86,7 @@ struct FocusEventExample {
         .width(260)
         .height(70)
         .fontColor(Color.Black)
+        .focusOnTouch(true)
         .onFocus(() => {
           this.oneButtonColor = '#FFFFFF';
         })
@@ -97,6 +98,7 @@ struct FocusEventExample {
         .width(260)
         .height(70)
         .fontColor(Color.Black)
+        .focusOnTouch(true)
         .onFocus(() => {
           this.twoButtonColor = '#FFFFFF';
         })
@@ -108,6 +110,7 @@ struct FocusEventExample {
         .width(260)
         .height(70)
         .fontColor(Color.Black)
+        .focusOnTouch(true)
         .onFocus(() => {
           this.threeButtonColor = '#FFFFFF';
         })

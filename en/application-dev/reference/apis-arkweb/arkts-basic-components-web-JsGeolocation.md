@@ -1,12 +1,11 @@
 # Class (JsGeolocation)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zhang-yinglie-->
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=fb8a23f8059c1122b20bab74c5aca3cfcd08dbd6 translatedAt=2026-08-07T04:51:37.545Z pushedAt=2026-08-07T08:12:25.548Z -->
+<!-- md-trans-meta sourceCommit=8d7403adf09bf343974d6e2d17a0f01ca2f785fe translatedAt=2026-11-06T11:22:07.654Z pushedAt=2026-11-13T08:53:04.912Z nl=1 -->
 
 JsGeolocation is the authorization response object provided to the app when the Web component receives a web page geolocation permission request. When a web page requests device location information through JavaScript geolocation APIs (such as navigator.geolocation), the app needs to decide whether to authorize the request. Through the invoke method, JsGeolocation allows the app to grant or deny the geolocation permission for web pages of a specified origin, and optionally save the permission decision to the system to avoid repeated authorization prompts when the same origin requests again.
 
@@ -14,9 +13,9 @@ JsGeolocation is applicable to scenarios where web pages in the Web component ac
 
 > **NOTE**
 >
-> - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The initial APIs of this class are supported since API version 8.
+> - This class is supported since API version 8.
 >
 > - The sample effect is subject to the actual device.
 
@@ -43,4 +42,3 @@ Sets the geolocation permission status of a web page. This method must be called
 | origin | string | Yes | Web origin that initiates the location permission request, used to identify the source of a geolocation request from a specific website.<br>The origin format must comply with the format defined in RFC 6454. |
 | allow  | boolean | Yes  | Geolocation permission status.<br>The value **true** means to enable the geolocation permission, and **false** means the opposite.                            |
 | retain | boolean | Yes | Whether to allow the location permission state to be saved to the system. The location permissions saved to the system can be managed through the [GeolocationPermissions](./arkts-apis-webview-GeolocationPermissions.md) API.<br>The value **true** indicates that the location permission state is saved to the system, and **false** indicates that it is not saved to the system. |
-<!--no_check-->

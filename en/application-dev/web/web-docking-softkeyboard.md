@@ -5,7 +5,7 @@
 <!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=cf13e99b686693e9833f1cb8acbb2f357196bb95 translatedAt=2026-11-03T03:05:59.621Z pushedAt=2026-11-03T03:21:19.897Z nl=1 -->
+<!-- md-trans-meta sourceCommit=90b5bd1fbe791c793793e4d4ab58362356e25839 translatedAt=2026-11-12T04:41:32.616Z pushedAt=2026-11-12T08:24:07.940Z nl=1 -->
 
 By docking the **Web** component to the soft keyboard, you can manage the display and interaction of the soft keyboard in your application, and can also customize its features to suit your specific needs. The main scenarios are as follows:
 
@@ -101,6 +101,8 @@ To improve user experience, you can call the [showTextInput()](../reference/apis
 // Index.ets
 import { webview } from '@kit.ArkWeb';
 import { inputMethod } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
@@ -114,6 +116,8 @@ struct WebComponent {
             setTimeout(() => {
               inputMethod.getController().showTextInput();
             }, 10);
+          }).catch((error: BusinessError) => {
+            hilog.error(0x0000, 'testTag', 'Failed to run JavaScript. Cause: %{public}s', JSON.stringify(error));
           });
         });
     }
@@ -310,8 +314,8 @@ struct WebComponent {
     ])
 
     /**
-      * Custom keyboard component Builder
-      */
+     * custom keyboard component Builder
+     */
     @Builder
     customKeyboardBuilder() {
     // Implement the custom keyboard component here, and connect to WebKeyboardController to implement input, deletion, closing, and other operations.

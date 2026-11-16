@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Provides bytecode obfuscation options and trustlist configuration recommendations for HAP, HAR, and HSP package types based on their purposes and build process differences, helping developers correctly enable obfuscation in multi-package projects and ensure normal functionality."
+keywords: [obfuscation, bytecode obfuscation, obfuscation recommendations, HAP, HAR, HSP, package type, trustlist, toplevel obfuscation]
+doctype: guide
+status: active
+---
+
 # Package-specific Bytecode Obfuscation Recommendations
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @oatuwwutao-->
-<!--Designer: @hufeng20-->
+<!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=17ae88719a2d37a0c07e3b6e33ddb120ebd3dbc5 translatedAt=2026-11-06T10:27:16.989Z pushedAt=2026-11-11T09:26:49.587Z nl=1 -->
 
 Different package types serve various purposes and have distinct build processes. This requires you to consider different aspects when applying obfuscation. This topic provides tailored recommendations for three types of packages: [HAP](../quick-start/hap-package.md), [HAR](../quick-start/har-package.md), and [HSP](../quick-start/in-app-hsp.md), aiming to help you effectively implement obfuscation.
 
@@ -57,7 +66,7 @@ Once the application functions correctly, you can enable additional features lik
 
 1. Familiarize yourself with the [three types of obfuscation configuration files](bytecode-obfuscation-guide.md#obfuscation-configuration-files) and the [obfuscation rule merging strategies](bytecode-obfuscation.md#obfuscation-rule-merging-strategies). Understand the precautions provided in [HAP Package Obfuscation Recommendations](#hap-package-obfuscation-recommendations) to ensure that your HAR functions correctly when it is used by HAP packages.
 
-2. HAR packages can affect the obfuscation process of the main module that uses them. No matter whether obfuscation is enabled for your HAR, configure **consumer-rules.txt** to ensure that your HAR package functions correctly when the main module enables any obfuscation.
+2. Because a HAR package affects the obfuscation process of the main module that uses it, **regardless of whether the HAR package itself has obfuscation enabled, you should configure [consumer-rules.txt](bytecode-obfuscation-guide.md#obfuscation-configuration-files) to ensure that the internal functionality of the HAR package remains normal when the main module enables any obfuscation**.
 
 3. Due to the transitivity of consumer configurations, avoid enabling obfuscation directly in your HAR. Instead, use **-keep-global-name** and **-keep-property-name** to add specific names to a trustlist and minimize impact on dependent modules.
 
@@ -73,16 +82,16 @@ As unreleased static packages, local source code HAR packages are compiled and o
     * In **obfuscation-rules.txt**, configure the exported interface names and related property names of your HAR, as well as any names that should not be obfuscated during the build.
     * In **consumer-rules.txt**, configure the names of interfaces and properties that should not be re-obfuscated.
 
-3. Verify the functionality of the HAR package. Note that during the compilation of the current module, one round of obfuscation is triggered for your HAR. When the published HAR package is used by a dependent module, if the dependent module enables obfuscation, the code of the released HAR package will be re-obfuscated. Therefore, you should fully verify whether the HAR functions correctly when it is used by a dependent module with obfuscation enabled.
+3. Verify the functionality of the HAR package. Note that obfuscation is performed once when building the HAR of this module. When the released HAR package is depended on, if the consumer enables obfuscation, the released code of this HAR package will be obfuscated a second time along with the consumer. Therefore, you need to fully verify that the HAR package functions normally when the consumer enables obfuscation.
 
 4. Release the HAR package.
 
-> **NOTE**
+> **Note:**
 >
-> When your HAR is used by other modules, pay attention to the following points:
+> When depended on by other modules, note the following two points:
 >
-> * During obfuscation of dependent modules (such as HAP), ArkGuard collects exported names and properties from your released HAR package into a trustlist.
-> * During obfuscation of dependent modules (such as HAP), ArkGuard collects the trustlist from the **obfuscation.txt** file of your released HAR package but does not recursively collect from its dependencies (four-party libraries). This is because the trustlist of the four-party libraries has been collected during the construction of the third-party libraries. Therefore, if a released HAR package depends on other HAR packages, the versions of these other HAR packages should be fixed and should not be configured to automatically match the latest version. Otherwise, when the fourth-party libraries are upgraded and the trustlist is changed, it will not take effect in the HAP, leading to stability issues.
+> * When the consumer (such as a HAP) enables obfuscation, ArkGuard collects the exported names and related property names of this released HAR package into the non-obfuscation list.
+> * When the consumer (such as a HAP) enables obfuscation, ArkGuard collects the trustlist in the obfuscation.txt file of this released HAR package, but does not continue to collect the trustlist in the obfuscation.txt files of the HAR packages (third-party libraries) that this HAR package depends on (this is because the lists of third-party libraries were already collected when the third-party libraries were built). Therefore, **if a released HAR package depends on other HAR packages, you should lock their version numbers and avoid using a dynamic version dependency mechanism.** Otherwise, when a third-party library is upgraded, if its trustlist changes, the changes will not take effect in the HAP, which may cause stability issues.
 
 ### Released Bytecode HAR Package
 
@@ -108,6 +117,6 @@ The obfuscation adaptation process for bytecode HAR packages is similar to that 
 2. Follow the [HAP Package Obfuscation Recommendations](#hap-package-obfuscation-recommendations) to ensure the obfuscation effects within the module.
 3. Ensure that the interfaces that your integrated HSP package provides can be called correctly by dependent modules, especially when obfuscation is enabled.
 
-> **NOTE**
+> **Note**
 >
-> The **obfuscation.txt** file for integrated HSP packages is generated based on the current module's **consumer-rules.txt**, excluding the **consumer-rules.txt** or **obfuscation.txt** file of dependent modules.
+> The rules from which an HSP generates obfuscation.txt come only from the consumer-rules.txt file of the current module, and do not include the consumer-rules.txt files or obfuscation.txt files of dependent modules.

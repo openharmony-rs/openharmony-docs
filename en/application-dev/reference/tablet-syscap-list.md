@@ -6,15 +6,16 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=f381c6fbac762b96c7273470072a31b793dd105b translatedAt=2026-11-06T12:28:07.688Z pushedAt=2026-11-13T12:03:43.751Z nl=1 -->
 
 SystemCapability (SysCap) is a standalone feature in the operating system.
 
-Before using an API for development, you are advised to familiarize yourself with [SysCap](syscap.md), and then consult the following tables to see whether the SysCap set required for the API is supported by the target device type.
+Before using an API for development, developers are advised to read the [SystemCapability Usage Guide](syscap.md) to learn the definition and usage instructions of SysCap. Then, refer to the tables below to determine whether a specific capability set is supported on a device, thereby improving development efficiency.
 
 > **NOTE**
 >
-> This list outlines the minimum system capabilities supported by the current version of tablets. You can refer to the **tablet.json** file in the SDK for details.
-> When developing applications for the current version of tablets using the APIs corresponding to the system capabilities listed, you can call these APIs directly without needing to perform a **canIUse()** check beforehand.
+> This list enumerates the minimum system capability sets supported by the Tablet device type in the current version. Developers can query them through the tablet.json file in the SDK.
+> When developing applications for the current version of Tablet using the APIs corresponding to the system capability sets in this list, developers can call them directly without performing a canIUse() isolation check beforehand.
 
 - SystemCapability.ArkUI.ArkUI.Full
 - SystemCapability.ArkUI.ArkUI.Napi
@@ -61,6 +62,7 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.MultimodalInput.Input.InputSimulator
 - SystemCapability.MultimodalInput.Input.Pointer
 - SystemCapability.MultimodalInput.Input.ShortKey
+- SystemCapability.MultimodalInput.Input.InfraredEmitter
 - SystemCapability.PowerManager.DisplayPowerManager
 - SystemCapability.PowerManager.ThermalManager
 - SystemCapability.PowerManager.PowerManager.Core
@@ -102,8 +104,6 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.Multimedia.Image.ImagePacker
 - SystemCapability.Multimedia.Image.ImageReceiver
 - SystemCapability.Multimedia.ImageEffect.Core
-- SystemCapability.Multimedia.MediaLibrary.Core
-- SystemCapability.Multimedia.MediaLibrary.DistributedCore
 - SystemCapability.Multimedia.SystemSound.Core
 - SystemCapability.Global.I18n
 - SystemCapability.Global.ResourceManager
@@ -185,7 +185,6 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.Ability.AbilityRuntime.FAModel
 - SystemCapability.Ability.AbilityRuntime.AbilityCore
 - SystemCapability.Ability.AbilityRuntime.Mission
-- SystemCapability.Ability.AbilityTools.AbilityAssistant
 - SystemCapability.Ability.Form
 - SystemCapability.Ability.DistributedAbilityManager
 - SystemCapability.Applications.CalendarData
@@ -215,6 +214,7 @@ Before using an API for development, you are advised to familiarize yourself wit
 - SystemCapability.BundleManager.BundleFramework.Launcher
 - SystemCapability.BundleManager.BundleFramework.AppControl
 - SystemCapability.Ability.AbilityRuntime.QuickFix
+- SystemCapability.Ability.AgentRuntime.Core
 - SystemCapability.Graphic.Graphic2D.ColorManager.Core
 - SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 - SystemCapability.Request.FileTransferAgent
