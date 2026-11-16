@@ -64,6 +64,28 @@
 
 <!-- @[SmsService_SendSMS](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Telephony_Kit/SmsService/SmsService_SendSMS/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+// 示例代码
+import { sms } from '@kit.TelephonyKit';
+import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
+// ...
+          let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
+              console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
+          }
+          let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
+              console.log(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
+          }
+          let slotId: number = 0;
+          let content: string = '短信内容';
+          let destinationHost: string = '+861xxxxxxxxxx';
+          let serviceCenter: string = '+861xxxxxxxxxx';
+          let destinationPort: number = 1000;
+          let options: sms.SendMessageOptions = {slotId, content, destinationHost, serviceCenter, destinationPort, sendCallback, deliveryCallback};
+          sms.sendShortMessage(options, (err: BusinessError) => {
+              console.error(`callback: err->${JSON.stringify(err)}`);
+          });
+```
+
 <!--DelEnd-->
 
 ## 应用内跳转到短信编辑界面
