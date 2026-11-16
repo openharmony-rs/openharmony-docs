@@ -208,7 +208,6 @@ import { JSON } from '@kit.ArkTS';
     console.error('ParsingContainingBigInts error:', err);
     // ...
   }
-  // [End containing_bigInt]
 ```
 
 ### 序列化BigInt对象场景
