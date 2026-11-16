@@ -18,7 +18,7 @@
 
 **错误信息**
 
-针对搭载<!--RP1-->OpenHarmony 7.0<!--RP1End-->的设备，错误信息为：
+针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->以下版本的设备，错误信息为：
 Inner error.
 
 针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息为：
@@ -26,7 +26,7 @@ Inner error. Possible causes: 1. The number of bind args is incorrect; 2. Invali
 
 **错误描述**
 
-内部错误。针对搭载OpenHarmony 7.1及以上版本的设备，错误信息中会携带具体错误原因，便于定位问题根因。
+内部错误。针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息中会携带具体错误原因，便于定位问题根因。
 
 **可能原因**
 
@@ -225,15 +225,15 @@ The target instance is already closed.
 
 **错误信息**
 
-针对搭载<!--RP1-->OpenHarmony 7.0<!--RP1End-->的设备，错误信息为：
+针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->以下版本的设备，错误信息为：
 The database does not respond.
 
 针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息为：
-The database does not respond. database busy, dbName: {dbName}
+The database does not respond. database busy, dbName: {dbName}.
 
 **错误描述**
 
-数据库没有响应。针对搭载OpenHarmony 7.1及以上版本的设备，错误信息中会携带故障数据库名（不含绝对路径），便于定位是哪个数据库无响应。
+数据库没有响应。针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息中会携带故障数据库名（不含绝对路径），便于定位是哪个数据库无响应。
 
 **可能原因**
 
@@ -588,7 +588,7 @@ SQLite：TEXT或BLOB超出大小限制。
 
 **错误信息**
 
-针对搭载<!--RP1-->OpenHarmony 7.0<!--RP1End-->的设备，错误信息为：
+针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->以下版本的设备，错误信息为：
 SQLite: Abort due to constraint violation.
 
 针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息为：
@@ -596,7 +596,7 @@ SQLite: Abort due to constraint violation. UNIQUE constraint failed: {tableName}
 
 **错误描述**
 
-SQLite：由于违反约束而中止。针对搭载OpenHarmony 7.1及以上版本的设备，错误信息中会携带约束冲突详情（表名、列名）和数据库名，便于定位冲突发生的具体位置。
+SQLite：由于违反约束而中止。针对搭载<!--RP1-->OpenHarmony 7.1<!--RP1End-->及以上版本的设备，错误信息中会携带约束冲突详情（表名、列名）和数据库名，便于定位冲突发生的具体位置。
 
 **可能原因**
 
