@@ -1,11 +1,11 @@
-# @ohos.convertxml (XML-to-JavaScript Conversion)
+# @ohos.convertxml (XML to JavaScript Conversion)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=fa87684a3d68d73092de76cbd3803fc3d90b97e4 translatedAt=2026-11-16T05:25:46.623Z pushedAt=2026-11-16T06:31:14.187Z nl=1 -->
+<!-- md-trans-meta sourceCommit=fa87684a3d68d73092de76cbd3803fc3d90b97e4 translatedAt=2026-11-16T05:25:46.623Z pushedAt=2026-11-16T07:36:35.170Z nl=1 -->
 
 This module provides the parsing capability to convert XML text into JavaScript objects, applicable to scenarios such as XML configuration file parsing, XML-format network data processing, data migration, and format conversion. During conversion, the various components of XML (declarations, instructions, elements, attributes, text, CDATA, comments, Doctype, and so on) are mapped to properties of a JavaScript object according to the key names configured in ConvertOptions, forming a hierarchically nested object structure. This simplifies the XML data processing flow and supports flexible output structures through custom key name mapping via ConvertOptions.
 

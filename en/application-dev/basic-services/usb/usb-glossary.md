@@ -1,4 +1,4 @@
-# USB Service Glossary
+# USB Service Development Glossary
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->
@@ -6,7 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=ed1caafb45357aa980ce242d8f0e108215e96f57 translatedAt=2026-11-16T04:35:16.489Z pushedAt=2026-11-16T06:31:14.100Z nl=1 -->
+<!-- md-trans-meta sourceCommit=ed1caafb45357aa980ce242d8f0e108215e96f57 translatedAt=2026-11-16T04:35:16.489Z pushedAt=2026-11-16T07:31:58.852Z nl=1 -->
 
 ## B
 

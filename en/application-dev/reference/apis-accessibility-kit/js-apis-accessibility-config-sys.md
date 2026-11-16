@@ -1,4 +1,4 @@
-# @ohos.accessibility.config (SystemAPI)
+# @ohos.accessibility.config (System Accessibility Configuration) (System API)
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
@@ -6,7 +6,7 @@
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=f7b438be9d26f5e9388ac23732c6596155e5d6c9 translatedAt=2026-11-16T03:50:59.076Z pushedAt=2026-11-16T06:31:13.982Z nl=1 -->
+<!-- md-trans-meta sourceCommit=f7b438be9d26f5e9388ac23732c6596155e5d6c9 translatedAt=2026-11-16T03:50:59.076Z pushedAt=2026-11-16T07:33:15.594Z nl=1 -->
 
 The **accessibility.config** module provides APIs for configuring system accessibility features, including accessibility extension, high-contrast text, mouse buttons, and captions.
 

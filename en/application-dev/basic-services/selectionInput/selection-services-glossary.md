@@ -1,4 +1,4 @@
-# Selection Service Terminology
+# Text Selection Service Glossary
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: SelectionInput-->
@@ -6,7 +6,7 @@
 <!--Designer: @zl_startup-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=b7fd791217eb31a347f5d13714b33196dd35ae59 translatedAt=2026-11-16T04:30:51.202Z pushedAt=2026-11-16T06:31:14.067Z nl=1 -->
+<!-- md-trans-meta sourceCommit=b7fd791217eb31a347f5d13714b33196dd35ae59 translatedAt=2026-11-16T04:30:51.202Z pushedAt=2026-11-16T07:30:21.280Z nl=1 -->
 
 ## S
 

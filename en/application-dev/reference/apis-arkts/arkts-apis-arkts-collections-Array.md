@@ -1873,7 +1873,7 @@ console.info("arr = " + arr.toString()); // a
 
 ## retainAll
 
-retainAll(predicate: [ArrayElementPredicateFn](arkts-apis-arkts-collections-Types.md#arrayelementpredicatefn)\<T>): boolean
+retainAll(predicate: [ArrayElementPredicateFn](arkts-apis-arkts-collections-Types.md)\<T>): boolean
 
 Retains only the elements in this ArkTS Array for which the specified predicate function returns true.
 
@@ -1889,7 +1889,7 @@ Retains only the elements in this ArkTS Array for which the specified predicate 
 
 | Name | Type | Mandatory | Description                            |
 | ------ | ---- | ---- | ------------------------------- |
-| predicate  | [ArrayElementPredicateFn](arkts-apis-arkts-collections-Types.md#arrayelementpredicatefn)\<T>  | Yes   | Predicate function. Returning true means retaining the current element, and returning false means removing the current element. |
+| predicate  | [ArrayElementPredicateFn](arkts-apis-arkts-collections-Types.md)\<T>  | Yes   | Predicate function. Returning true means retaining the current element, and returning false means removing the current element. |
 
 **Return value**
 
