@@ -302,7 +302,7 @@ Failed to crop the image.
 **处理步骤**
 
 请检查图片数据或修改正确的裁剪参数。
-尤其是当解码接口同时传入desiredSize参数和desiredRegion参数时，需要同时设置cropAndScaleStrategy参数，指定缩放与裁剪的先后顺序，推荐设置成CROP_FIRST。
+尤其是当解码接口同时传入desiredSize参数和desiredRegion参数时，需要同时设置cropAndScaleStrategy参数，具体情况根据缩放与裁剪的先后顺序，按需设置。
 详见[cropAndScaleStrategy](arkts-apis-image-e.md#CropAndScaleStrategy18)参数介绍。
 
 ## 62980110 图片源数据错误
