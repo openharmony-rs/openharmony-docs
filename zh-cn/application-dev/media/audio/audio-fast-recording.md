@@ -22,7 +22,7 @@
 ### 使用超低时延流的场景
 
 - 如果使用低时延模式后，时延指标依然无法满足用户体验要求，并且与目标时延差距在10ms左右时，可以考虑使用超低时延模式，如K歌实时耳返场景（需要注意该模式的性能要求和功耗影响高于低时延模式，从而可能带来音频卡顿风险和功耗的升高，建议开发者做好完备的评估和验证后再使用）。
-- 该模式仅推荐在连续音频录制场景使用，不要使用在短音频的场景，否则可能会带来不好的用户体验。
+- 该模式仅推荐在连续音频录制场景使用。请勿在短音频的场景使用，避免影响用户体验。
 
 ## 约束与限制
 
@@ -40,7 +40,7 @@
 
 ### 低时延模式限制
 
-在以下场景中，即使设置了低时延模式，系统仍会使用普通模式。
+在以下场景中，即使设置了低时延模式，系统仍会使用普通模式：
 - 当前设备不支持低时延模式。
 - 当前流格式不支持低时延模式。
 - 系统低时延资源已被全部占用。
@@ -71,7 +71,7 @@ OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
 OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 ```
 
-从API version 20开始，支持低时延相关查询接口。
+从API版本20开始，支持低时延相关查询接口。
 - 开发者通过调用[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)来获取音频录制流是否正在低时延状态下工作。
 - 在部分特殊场景（如：存在更高优先级流、当前连接设备不支持等）下，开发者可以通过调用[OH_AudioCapturer_OnFastStatusChange()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_onfaststatuschange)来获取低时延状态改变事件。
 
@@ -112,7 +112,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 
 4. 查询状态及监听。
 
-    可通过注册`OH_AudioCapturer_OnFastStatusChange`回调，在运行态发生变化时及时感知状态变化。
+    在创建音频流之前，可通过注册`OH_AudioCapturer_OnFastStatusChange`回调，用来在音频流运行期间，及时感知到模式发生变化。
     <!-- @[SetCapturerFastStatusChangeCallback_UltraFast](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
     ``` C++
