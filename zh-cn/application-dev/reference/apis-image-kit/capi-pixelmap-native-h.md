@@ -121,7 +121,7 @@
 | [Image_ErrorCode OH_PixelmapNative_SetMetadata(OH_PixelmapNative *pixelmap, OH_Pixelmap_HdrMetadataKey key, OH_Pixelmap_HdrMetadataValue *value)](#oh_pixelmapnative_setmetadata) | 设置Pixelmap的HDR元数据。 |
 | [Image_ErrorCode OH_PixelmapNative_SetColorSpaceNative(OH_PixelmapNative *pixelmap, OH_NativeColorSpaceManager *colorSpaceNative)](#oh_pixelmapnative_setcolorspacenative) | 设置Pixelmap的NativeColorSpaceManager对象，用于管理Pixelmap的色彩空间信息。 |
 | [Image_ErrorCode OH_PixelmapNative_GetColorSpaceNative(OH_PixelmapNative *pixelmap, OH_NativeColorSpaceManager **colorSpaceNative)](#oh_pixelmapnative_getcolorspacenative) | 获取Pixelmap的NativeColorSpaceManager对象，用于查询Pixelmap当前配置的色彩空间信息。 |
-| [Image_ErrorCode OH_PixelmapNative_SetMemoryName(OH_PixelmapNative *pixelmap, char *name, size_t *size)](#oh_pixelmapnative_setmemoryname) | 设置Pixelmap的内存标识符，便于在内存调试或问题定位时识别该内存。<br>仅支持DMA和SHARE_MEMORY内存类型的PixelMap设置内存标识符。 |
+| [Image_ErrorCode OH_PixelmapNative_SetMemoryName(OH_PixelmapNative *pixelmap, char *name, size_t *size)](#oh_pixelmapnative_setmemoryname) | 设置Pixelmap的内存标识符，便于在内存调试或问题定位时识别该内存。<br>仅支持DMA和SHARE_MEMORY内存类型的Pixelmap设置内存标识符。 |
 | [Image_ErrorCode OH_PixelmapNative_GetByteCount(OH_PixelmapNative *pixelmap, uint32_t *byteCount)](#oh_pixelmapnative_getbytecount) | 获取Pixelmap中所有像素所占用的总字节数，不包含内存对齐填充字节。 |
 | [Image_ErrorCode OH_PixelmapNative_GetAllocationByteCount(OH_PixelmapNative *pixelmap, uint32_t *allocationByteCount)](#oh_pixelmapnative_getallocationbytecount) | 获取Pixelmap实际分配的用于存储像素数据的内存字节数，包含内存对齐填充字节。与[OH_PixelmapNative_GetByteCount](#oh_pixelmapnative_getbytecount)（不包含内存填充）不同，本接口返回的是系统为Pixelmap分配的真实内存大小。 |
 | [Image_ErrorCode OH_PixelmapNative_AccessPixels(OH_PixelmapNative *pixelmap, void **addr)](#oh_pixelmapnative_accesspixels) | 获取Pixelmap像素数据的内存地址，并锁定这块内存。<br> 当该内存被锁定时，任何修改或释放该Pixelmap的像素数据的操作均会失败或无效。<br> 使用完毕后，必须调用[OH_PixelmapNative_UnaccessPixels](capi-pixelmap-native-h.md#oh_pixelmapnative_unaccesspixels)释放内存锁，两者需配对使用。 |
@@ -984,7 +984,7 @@ Image_ErrorCode OH_PixelmapNative_ReadPixels(OH_PixelmapNative *pixelmap, uint8_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被操作的OH_PixelmapNative指针。 |
-| uint8_t *destination | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与PixelMap相同，不包含内存对齐填充字节。 |
+| uint8_t *destination | 目标缓冲区，获取的像素数据会被拷贝至该缓冲区。缓冲区内像素的格式与Pixelmap相同，不包含内存对齐填充字节。 |
 | size_t *bufferSize | 缓冲区大小。单位：字节（Byte）。可通过[OH_PixelmapNative_GetByteCount](#oh_pixelmapnative_getbytecount)接口获取。RGBA格式的缓冲区大小等于width \* height \* 4，NV21与NV12格式的缓冲区大小等于width \* height + ((width+1)/2) \* ((height+1)/2) \* 2。 |
 
 **返回：**
@@ -1031,8 +1031,8 @@ Image_ErrorCode OH_PixelmapNative_WritePixelsWithPixelFormat(OH_PixelmapNative *
 
 > **说明：**
 >
-> - 本接口仅支持被以下像素格式的PixelMap调用：PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565、PIXEL_FORMAT_RGBA_F16、PIXEL_FORMAT_RGBA_1010102。
-> - 如需写入与当前PixelMap像素格式相同的源数据（包括[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式），请使用[OH_PixelmapNative_WritePixels](#oh_pixelmapnative_writepixels)。
+> - 本接口仅支持被以下像素格式的Pixelmap调用：PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565、PIXEL_FORMAT_RGBA_F16、PIXEL_FORMAT_RGBA_1010102。
+> - 如需写入与当前Pixelmap像素格式相同的源数据（包括[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式），请使用[OH_PixelmapNative_WritePixels](#oh_pixelmapnative_writepixels)。
 > - 如需写入具有自定义行跨距或偏移量的源数据，请使用[OH_PixelmapNative_WritePixelsToAreaWithPixelFormat](#oh_pixelmapnative_writepixelstoareawithpixelformat)。
 
 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
@@ -1047,10 +1047,10 @@ Pixelmap宽度 × Pixelmap高度 × 每像素字节数
 
 | 参数项 | 描述 |
 | -- | -- |
-| [入参][出参] [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 待修改像素数据的Pixelmap指针，不能为空指针。 |
-| [入参] const uint8_t *source | 源像素数据缓冲区指针，不能为空指针，该缓冲区内的像素数据会被拷贝至Pixelmap。缓冲区内的像素数据必须至少包含整个PixelMap的像素数据，且不包含内存对齐填充字节。 |
-| [入参] uint32_t bufferSize | 缓冲区大小。单位：字节（Byte）。所需的最小缓冲区大小请参考上方说明中的计算公式。 |
-| [入参] [PIXEL_FORMAT](#pixel_format) sourcePixelFormat | 源数据的像素格式。支持的值为PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565和PIXEL_FORMAT_RGBA_F16。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | [入参][出参] 待修改像素数据的Pixelmap指针，不能为空指针。 |
+| const uint8_t *source | [入参] 源像素数据缓冲区指针，不能为空指针，该缓冲区内的像素数据会被拷贝至Pixelmap。缓冲区内的像素数据必须至少包含整个Pixelmap的像素数据，且不包含内存对齐填充字节。 |
+| uint32_t bufferSize | [入参] 缓冲区大小。单位：字节（Byte）。所需的最小缓冲区大小请参考上方说明中的计算公式。 |
+| [PIXEL_FORMAT](#pixel_format) sourcePixelFormat | [入参] 源数据的像素格式。支持的值为PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565和PIXEL_FORMAT_RGBA_F16。 |
 
 **返回：**
 
@@ -1077,11 +1077,11 @@ Image_ErrorCode OH_PixelmapNative_ReadPixelsFromArea(OH_PixelmapNative *pixelmap
 
 | 符号 | 含义 | 对应字段 |
 | --- | --- | --- |
-| offset | 缓冲区内首像素的字节偏移量。 | area->offset |
+| offset | 缓冲区内第一个像素的字节偏移量。 | area->offset |
 | stride | 内存中每行像素（含行末填充字节）所占的字节数。 | area->stride |
 | width | 读取区域的宽度，单位为像素（px）。 | area->region.size.width |
 | height | 读取区域的高度，单位为像素（px）。 | area->region.size.height |
-| 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。 | — |
+| 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。 | - |
 
 **起始版本：** 22
 
@@ -1090,7 +1090,7 @@ Image_ErrorCode OH_PixelmapNative_ReadPixelsFromArea(OH_PixelmapNative *pixelmap
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被读取的Pixelmap。 |
-| [Image_PositionArea](capi-image-nativemodule-image-positionarea.md) *area | 读取数据的Pixelmap指定区域，该区域的像素数据会被读取并拷贝至area->pixels。如果PixelMap的像素格式为YUV格式，则获取的像素数据格式与Pixelmap相同，否则会被转换为BGRA_8888格式。 |
+| [Image_PositionArea](capi-image-nativemodule-image-positionarea.md) *area | 读取数据的Pixelmap指定区域，该区域的像素数据会被读取并拷贝至area->pixels。如果Pixelmap的像素格式为YUV格式，则获取的像素数据格式与Pixelmap相同，否则会被转换为BGRA_8888格式。 |
 
 **返回：**
 
@@ -1117,11 +1117,11 @@ Image_ErrorCode OH_PixelmapNative_WritePixelsToArea(OH_PixelmapNative *pixelmap,
 
 | 符号 | 含义 | 对应字段 |
 | --- | --- | --- |
-| offset | 缓冲区内首像素的字节偏移量。 | area->offset |
+| offset | 缓冲区内第一个像素的字节偏移量。 | area->offset |
 | stride | 内存中每行像素（含行末填充字节）所占的字节数。 | area->stride |
 | width | 写入区域的宽度，单位为像素（px）。 | area->region.size.width |
 | height | 写入区域的高度，单位为像素（px）。 | area->region.size.height |
-| 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。 | — |
+| 每像素字节数 | 各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)。 | - |
 
 **起始版本：** 22
 
@@ -1130,7 +1130,7 @@ Image_ErrorCode OH_PixelmapNative_WritePixelsToArea(OH_PixelmapNative *pixelmap,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 被写入的Pixelmap。 |
-| [Image_PositionArea](capi-image-nativemodule-image-positionarea.md) *area | 写入数据的Pixelmap指定区域，area->pixels中的像素数据会被写入Pixelmap的该区域。如果PixelMap的像素格式为YUV格式，则area->pixels中的像素数据格式需与PixelMap相同，否则需要为BGRA_8888格式。 |
+| [Image_PositionArea](capi-image-nativemodule-image-positionarea.md) *area | 写入数据的Pixelmap指定区域，area->pixels中的像素数据会被写入Pixelmap的该区域。如果Pixelmap的像素格式为YUV格式，则area->pixels中的像素数据格式需与Pixelmap相同，否则需要为BGRA_8888格式。 |
 
 **返回：**
 
@@ -1150,8 +1150,8 @@ Image_ErrorCode OH_PixelmapNative_WritePixelsToAreaWithPixelFormat(OH_PixelmapNa
 
 > **说明：**
 >
-> - 本接口仅支持被以下像素格式的PixelMap调用：PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565、PIXEL_FORMAT_RGBA_F16、PIXEL_FORMAT_RGBA_1010102。
-> - 如需向[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式的PixelMap中写入相同格式的像素数据，请使用[OH_PixelmapNative_WritePixelsToArea](#oh_pixelmapnative_writepixelstoarea)。
+> - 本接口仅支持被以下像素格式的Pixelmap调用：PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565、PIXEL_FORMAT_RGBA_F16、PIXEL_FORMAT_RGBA_1010102。
+> - 如需向[YUV](../../media/image/image-glossary.md#yuv-pixel-formatyuv像素格式)格式的Pixelmap中写入相同格式的像素数据，请使用[OH_PixelmapNative_WritePixelsToArea](#oh_pixelmapnative_writepixelstoarea)。
 
 所需的最小缓冲区大小，单位为字节（Byte），计算公式如下：
 
@@ -1161,11 +1161,11 @@ offset + (height - 1) × stride + width × 每像素字节数（其中stride ≥
 
 | 符号 | 含义 | 对应字段 |
 | --- | --- | --- |
-| offset | 缓冲区内首像素的字节偏移量。 | area->offset |
+| offset | 缓冲区内第一个像素的字节偏移量。 | area->offset |
 | stride | 内存中每行像素（含行末填充字节）所占的字节数。 | area->stride |
 | width | 写入区域的宽度，单位为像素（px）。 | area->region.size.width |
 | height | 写入区域的高度，单位为像素（px）。 | area->region.size.height |
-| 每像素字节数 | 取决于sourcePixelFormat，各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | — |
+| 每像素字节数 | 取决于sourcePixelFormat，各格式的每像素占用字节数见[PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | - |
 
 **起始版本：** 26.1.0
 
@@ -1173,9 +1173,9 @@ offset + (height - 1) × stride + width × 每像素字节数（其中stride ≥
 
 | 参数项 | 描述 |
 | -- | -- |
-| [入参][出参] [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | 待修改像素数据的Pixelmap指针，不能为空指针。 |
-| [入参] const [Image_PositionArea](capi-image-nativemodule-image-positionarea.md) *area | 写入的区域数据。<br>数据将从area->pixels拷贝至area->region指定的区域。 |
-| [入参] [PIXEL_FORMAT](#pixel_format) sourcePixelFormat | 源数据的像素格式。支持的值为PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565和PIXEL_FORMAT_RGBA_F16。 |
+| [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | [入参][出参] 待修改像素数据的Pixelmap指针，不能为空指针。 |
+| const [Image_PositionArea](capi-image-nativemodule-image-positionarea.md) *area | [入参] 写入的区域数据。<br>数据将从area->pixels拷贝至area->region指定的区域。 |
+| [PIXEL_FORMAT](#pixel_format) sourcePixelFormat | [入参] 源数据的像素格式。支持的值为PIXEL_FORMAT_BGRA_8888、PIXEL_FORMAT_RGBA_8888、PIXEL_FORMAT_RGB_888、PIXEL_FORMAT_RGB_565和PIXEL_FORMAT_RGBA_F16。 |
 
 **返回：**
 
@@ -2120,7 +2120,7 @@ Image_ErrorCode OH_PixelmapNative_SetMemoryName(OH_PixelmapNative *pixelmap, cha
 
 **描述**
 
-设置Pixelmap的内存标识符，便于在内存调试或问题定位时识别该内存。<br>仅支持DMA和SHARE_MEMORY内存类型的PixelMap设置内存标识符。
+设置Pixelmap的内存标识符，便于在内存调试或问题定位时识别该内存。<br>仅支持DMA和SHARE_MEMORY内存类型的Pixelmap设置内存标识符。
 
 **起始版本：** 13
 

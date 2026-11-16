@@ -26,9 +26,9 @@ typedef struct Image_PositionArea {...} Image_PositionArea
 
 | 名称 | 描述 |
 | -- | -- |
-| uint8_t *pixels | 读取或写入的图像像素数据。在非YUV类型像素的情况下仅支持BGRA_8888格式的数据。 |
+| uint8_t *pixels | 读取或写入的图像像素数据。 |
 | size_t pixelsSize | 图像像素数据的长度（单位：字节）。 |
-| uint32_t offset | pixels缓冲区内首像素的字节偏移量，即区域像素数据在缓冲区中的起始位置。单位为字节（Byte）。<br>读写区域数据时，从pixels[offset]处开始读取或写入。 |
+| uint32_t offset | pixels缓冲区内第一个像素的字节偏移量，即区域像素数据在缓冲区中的起始位置。单位为字节（Byte）。<br>读写区域数据时，从pixels[offset]处开始读取或写入。 |
 | uint32_t stride | 区域的跨距，即区域中每行像素（含行末填充字节）所占的空间。单位为字节（Byte）。 |
 | [Image_Region](capi-image-nativemodule-image-region.md) region | 读取或写入的区域。<br>指定区域的宽度加X坐标不能大于原图的宽度。<br>指定区域的高度加Y坐标不能大于原图的高度。 |
 

@@ -290,7 +290,7 @@ readPixelsToArea(area: PositionArea): Promise\<void\>
 
 | 符号 | 含义 | 对应字段 |
 | --- | --- | --- |
-| `offset` | 缓冲区内首像素的字节偏移量。 | `PositionArea.offset` |
+| `offset` | 缓冲区内第一个像素的字节偏移量。 | `PositionArea.offset` |
 | `stride` | 内存中每行像素（含行末填充字节）所占的字节数。 | `PositionArea.stride` |
 | `width` | 读取区域的宽度，单位为像素（px）。 | `PositionArea.region.size.width` |
 | `height` | 读取区域的高度，单位为像素（px）。 | `PositionArea.region.size.height` |
@@ -395,7 +395,7 @@ readPixelsToAreaSync(area: PositionArea): void
 
 | 符号 | 含义 | 对应字段 |
 | --- | --- | --- |
-| `offset` | 缓冲区内首像素的字节偏移量。 | `PositionArea.offset` |
+| `offset` | 缓冲区内第一个像素的字节偏移量。 | `PositionArea.offset` |
 | `stride` | 内存中每行像素（含行末填充字节）所占的字节数。 | `PositionArea.stride` |
 | `width` | 读取区域的宽度，单位为像素（px）。 | `PositionArea.region.size.width` |
 | `height` | 读取区域的高度，单位为像素（px）。 | `PositionArea.region.size.height` |
@@ -498,7 +498,7 @@ readPixels(area: PositionArea): Promise\<void>
 
 | 符号 | 含义 | 对应字段 |
 | --- | --- | --- |
-| `offset` | 缓冲区内首像素的字节偏移量。 | `PositionArea.offset` |
+| `offset` | 缓冲区内第一个像素的字节偏移量。 | `PositionArea.offset` |
 | `stride` | 内存中每行像素（含行末填充字节）所占的字节数。 | `PositionArea.stride` |
 | `width` | 读取区域的宽度，单位为像素（px）。 | `PositionArea.region.size.width` |
 | `height` | 读取区域的高度，单位为像素（px）。 | `PositionArea.region.size.height` |
@@ -577,7 +577,7 @@ readPixels(area: PositionArea, callback: AsyncCallback\<void>): void
 
 | 符号 | 含义 | 对应字段 |
 | --- | --- | --- |
-| `offset` | 缓冲区内首像素的字节偏移量。 | `PositionArea.offset` |
+| `offset` | 缓冲区内第一个像素的字节偏移量。 | `PositionArea.offset` |
 | `stride` | 内存中每行像素（含行末填充字节）所占的字节数。 | `PositionArea.stride` |
 | `width` | 读取区域的宽度，单位为像素（px）。 | `PositionArea.region.size.width` |
 | `height` | 读取区域的高度，单位为像素（px）。 | `PositionArea.region.size.height` |
@@ -655,7 +655,7 @@ readPixelsSync(area: PositionArea): void
 
 | 符号 | 含义 | 对应字段 |
 | --- | --- | --- |
-| `offset` | 缓冲区内首像素的字节偏移量。 | `PositionArea.offset` |
+| `offset` | 缓冲区内第一个像素的字节偏移量。 | `PositionArea.offset` |
 | `stride` | 内存中每行像素（含行末填充字节）所占的字节数。 | `PositionArea.stride` |
 | `width` | 读取区域的宽度，单位为像素（px）。 | `PositionArea.region.size.width` |
 | `height` | 读取区域的高度，单位为像素（px）。 | `PositionArea.region.size.height` |
@@ -721,7 +721,7 @@ writePixelsFromArea(area: PositionArea): Promise\<void\>
 
 | 符号 | 含义 | 对应字段 |
 | --- | --- | --- |
-| `offset` | 缓冲区内首像素的字节偏移量。 | `PositionArea.offset` |
+| `offset` | 缓冲区内第一个像素的字节偏移量。 | `PositionArea.offset` |
 | `stride` | 内存中每行像素（含行末填充字节）所占的字节数。 | `PositionArea.stride` |
 | `width` | 写入区域的宽度，单位为像素（px）。 | `PositionArea.region.size.width` |
 | `height` | 写入区域的高度，单位为像素（px）。 | `PositionArea.region.size.height` |
@@ -845,7 +845,7 @@ writePixelsFromAreaSync(area: PositionArea): void
 
 | 符号 | 含义 | 对应字段 |
 | --- | --- | --- |
-| `offset` | 缓冲区内首像素的字节偏移量。 | `PositionArea.offset` |
+| `offset` | 缓冲区内第一个像素的字节偏移量。 | `PositionArea.offset` |
 | `stride` | 内存中每行像素（含行末填充字节）所占的字节数。 | `PositionArea.stride` |
 | `width` | 写入区域的宽度，单位为像素（px）。 | `PositionArea.region.size.width` |
 | `height` | 写入区域的高度，单位为像素（px）。 | `PositionArea.region.size.height` |
@@ -963,7 +963,7 @@ writePixelsFromArea(area: PositionArea, sourcePixelFormat: PixelMapFormat): Prom
 
 | 符号 | 含义 | 对应字段 |
 | --- | --- | --- |
-| `offset` | 缓冲区内首像素的字节偏移量。 | `PositionArea.offset` |
+| `offset` | 缓冲区内第一个像素的字节偏移量。 | `PositionArea.offset` |
 | `stride` | 内存中每行像素（含行末填充字节）所占的字节数。 | `PositionArea.stride` |
 | `width` | 写入区域的宽度，单位为像素（px）。 | `PositionArea.region.size.width` |
 | `height` | 写入区域的高度，单位为像素（px）。 | `PositionArea.region.size.height` |
@@ -1056,7 +1056,7 @@ writePixelsFromAreaSync(area: PositionArea, sourcePixelFormat: PixelMapFormat): 
 
 | 符号 | 含义 | 对应字段 |
 | --- | --- | --- |
-| `offset` | 缓冲区内首像素的字节偏移量。 | `PositionArea.offset` |
+| `offset` | 缓冲区内第一个像素的字节偏移量。 | `PositionArea.offset` |
 | `stride` | 内存中每行像素（含行末填充字节）所占的字节数。 | `PositionArea.stride` |
 | `width` | 写入区域的宽度，单位为像素（px）。 | `PositionArea.region.size.width` |
 | `height` | 写入区域的高度，单位为像素（px）。 | `PositionArea.region.size.height` |
@@ -1143,7 +1143,7 @@ writePixels(area: PositionArea): Promise\<void>
 
 | 符号 | 含义 | 对应字段 |
 | --- | --- | --- |
-| `offset` | 缓冲区内首像素的字节偏移量。 | `PositionArea.offset` |
+| `offset` | 缓冲区内第一个像素的字节偏移量。 | `PositionArea.offset` |
 | `stride` | 内存中每行像素（含行末填充字节）所占的字节数。 | `PositionArea.stride` |
 | `width` | 写入区域的宽度，单位为像素（px）。 | `PositionArea.region.size.width` |
 | `height` | 写入区域的高度，单位为像素（px）。 | `PositionArea.region.size.height` |
@@ -1228,7 +1228,7 @@ writePixels(area: PositionArea, callback: AsyncCallback\<void>): void
 
 | 符号 | 含义 | 对应字段 |
 | --- | --- | --- |
-| `offset` | 缓冲区内首像素的字节偏移量。 | `PositionArea.offset` |
+| `offset` | 缓冲区内第一个像素的字节偏移量。 | `PositionArea.offset` |
 | `stride` | 内存中每行像素（含行末填充字节）所占的字节数。 | `PositionArea.stride` |
 | `width` | 写入区域的宽度，单位为像素（px）。 | `PositionArea.region.size.width` |
 | `height` | 写入区域的高度，单位为像素（px）。 | `PositionArea.region.size.height` |
@@ -1312,7 +1312,7 @@ writePixelsSync(area: PositionArea): void
 
 | 符号 | 含义 | 对应字段 |
 | --- | --- | --- |
-| `offset` | 缓冲区内首像素的字节偏移量。 | `PositionArea.offset` |
+| `offset` | 缓冲区内第一个像素的字节偏移量。 | `PositionArea.offset` |
 | `stride` | 内存中每行像素（含行末填充字节）所占的字节数。 | `PositionArea.stride` |
 | `width` | 写入区域的宽度，单位为像素（px）。 | `PositionArea.region.size.width` |
 | `height` | 写入区域的高度，单位为像素（px）。 | `PositionArea.region.size.height` |
