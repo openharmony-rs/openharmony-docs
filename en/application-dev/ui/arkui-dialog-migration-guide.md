@@ -5,11 +5,11 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b4f03e0e8751411c017f2614be312e3d156cab68 translatedAt=2026-11-12T04:32:52.651Z pushedAt=2026-11-13T09:02:08.683Z nl=1 -->
+<!-- md-trans-meta sourceCommit=d465fc803a20f7fbc421724e5a688811e04797e4 translatedAt=2026-10-29T08:56:44.287Z pushedAt=2026-10-30T02:52:09.638Z nl=1 -->
 
 ## Overview
 
-This document helps developers understand the capability differences between the new [@ohos.arkui.dialog (Popup)](../reference/apis-arkui/js-apis-dialog.md) interface and the old interfaces ([CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller), [showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog), [showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet), [showDialog](../reference/apis-arkui/arkts-apis-uicontext-qpromptaction.md#showdialog), [showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu), [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12), [openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18), and [presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)), and provides migration mappings from the old interfaces to the new interface by dialog category.
+This document helps developers understand the capability differences between the new [@ohos.arkui.dialog (Popup)](../reference/apis-arkui/js-apis-dialog.md) interface and the old interfaces ([CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller), [showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog), [showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet), [showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog), [showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu), [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12), [openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18), and [presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)), and provides migration mappings from the old interfaces to the new interface by dialog category.
 
 Starting from API version 26.0.1, [@ohos.arkui.dialog (dialog box)](../reference/apis-arkui/js-apis-dialog.md) is added to provide unified Dialog type declaration capabilities.
 
@@ -22,11 +22,11 @@ On the basis of fully supporting the capabilities of the old interfaces, [@ohos.
 | [DialogTextStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogtextstyleoptions) | Defines text style attributes in a Dialog, which can be used as the text style of the message content. |
 | [DialogButton](../reference/apis-arkui/js-apis-dialog.md#dialogbutton) | Button configuration for fixed-style dialogs. |
 | [DialogSheet](../reference/apis-arkui/js-apis-dialog.md#dialogsheet) | Popup list configuration item, used for ActionSheet-style dialogs. |
-| [DialogBaseOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) | Basic options shared by all dialogs, defining common attributes such as the background, border, alignment, mask, and keyboard avoidance of a dialog. Both DialogStyleOptions and DialogCustomOptions inherit from this interface. |
-| [DialogMessage](../reference/apis-arkui/js-apis-dialog.md#dialogmessage) | Message content and text style of a dialog, inheriting from DialogTextStyleOptions. |
-| [DialogStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions) | Options for fixed-style dialogs, inheriting from DialogBaseOptions. |
-| [DialogCustomOptions](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions) | Options for custom-style dialogs, inheriting from DialogBaseOptions. |
-| [DialogBaseController](../reference/apis-arkui/js-apis-dialog.md#dialogbasecontroller) | Class used to control a dialog, which can be bound to the dialog through the controller attribute in DialogBaseOptions. |
+| [DialogBaseOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) | Basic options shared by all dialogs, defining common attributes such as the background, border, alignment, mask, and keyboard avoidance of a dialog. Both `DialogStyleOptions` and `DialogCustomOptions` inherit from this interface. |
+| [DialogMessage](../reference/apis-arkui/js-apis-dialog.md#dialogmessage) | Message content and text style of a dialog, inheriting from `DialogTextStyleOptions`. |
+| [DialogStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions) | Options for fixed-style dialogs, inheriting from `DialogBaseOptions`. |
+| [DialogCustomOptions](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions) | Options for custom-style dialogs, inheriting from `DialogBaseOptions`. |
+| [DialogBaseController](../reference/apis-arkui/js-apis-dialog.md#dialogbasecontroller) | Class used to control a dialog, which can be bound to the dialog through the controller attribute in `DialogBaseOptions`. |
 | [DialogResult](../reference/apis-arkui/js-apis-dialog.md#dialogresult) | Response result of a dialog. |
 | [DialogDismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal) | Provides the information and interface for closing a dialog. |
 | [DialogBaseAlignment](../reference/apis-arkui/js-apis-dialog.md#dialogbasealignment) | Alignment of a dialog. |
@@ -46,35 +46,35 @@ The old and new APIs differ in two dimensions: attributes and usage.
 
   | Attribute | Old API ([CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)) | New API ([DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)) |
   |------|------|------|
-  | Programming model | The @CustomDialog decorator declares a custom component + [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller) instantiates and controls | [UIContext.getDialogPresenter()](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getdialogpresenter) obtains the Presenter, and [present(content, options)](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present-1) pops up |
-  | Content construction | The @CustomDialog decorator wraps @Component | [CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) / [CustomBuilderWithId](../reference/apis-arkui/arkts-apis-uicontext-t.md#custombuilderwithid18) / [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)\<Object\> as the first parameter of [present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present-1) |
-  | Style control | [customStyle](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [customStyle](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions) |
-  | Open | [controller.open()](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#open) | [presenter.present(content, options)](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present-1) |
-  | Disabled | [controller.close()](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#close) | [close](../reference/apis-arkui/js-apis-dialog.md#close) or [dismiss(target)](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#dismiss) |
-  | State query | [controller.getState()](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#getstate20) | [DialogBaseController.getState()](../reference/apis-arkui/js-apis-dialog.md#getstate) |
-  | Alignment | [alignment](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [alignment](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Offset | [offset](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [offset](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Auto-cancel | [autoCancel](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [autoCancel](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Mask color | [maskColor](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [maskColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Mask area | [maskRect](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [maskRect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Modal | [isModal](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [isModal](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Subwindow | [showInSubWindow](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [showInSubWindow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Focus | [focusable](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) (configurable, default true) | [focusable](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) (configurable, default true) |
-  | Open animation callback | [onWillAppear](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) / [onDidAppear](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) / [onWillDisappear](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) / [onDidDisappear](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [onWillAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onWillDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Cancel callback | [cancel](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) + [onWillDismiss](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [onWillDismiss](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Background blur | [backgroundBlurStyle](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) + [backgroundBlurStyleOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) + [backgroundEffect](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [backgroundBlurStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundBlurStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundEffect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Border | [cornerRadius](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) / [borderWidth](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) / [borderColor](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) / [borderStyle](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [borderRadius](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderWidth](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) (the legacy version [cornerRadius](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) corresponds to the new version [borderRadius](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions)) |
-  | Shadow | [shadow](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [shadow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [ShadowOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions-object-description) \| [ShadowStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10-enumeration-description) |
-  | Content area animation | [openAnimation](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) + [closeAnimation](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [dialogTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10) |
-  | Mask animation | None | [maskTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10) |
-  | Keyboard Avoidance | [keyboardAvoidMode](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) + [keyboardAvoidDistance](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [keyboardAvoidMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [keyboardAvoidDistance](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Floating mode | [enableHoverMode](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) + [hoverModeArea](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [enableHoverMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [hoverModeArea](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Hierarchical mode | [levelMode](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) + [levelUniqueId](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) + [immersiveMode](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) + [levelOrder](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [levelMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelUniqueId](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [immersiveMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelOrder](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | System material | [systemMaterial](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions-object-description) | [systemMaterial](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) |<!--Del-->
-  | System API attributes | [distortionMode](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box-sys.md#customdialogcontrolleroptions), [edgeLightMode](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box-sys.md#customdialogcontrolleroptions) | [distortionMode](../reference/apis-arkui/js-apis-dialog-sys.md#dialogbaseoptions), [edgeLightMode](../reference/apis-arkui/js-apis-dialog-sys.md#dialogbaseoptions) |
+  | Programming model | Declare a custom component with the `@CustomDialog` decorator + instantiate and control it with `CustomDialogController` | Obtain the Presenter with `UIContext.getDialogPresenter()`, and present it with `present(content, options)` |
+  | Content construction | The `@CustomDialog` decorator wraps `@Component` | `CustomBuilder` / `CustomBuilderWithId` / `ComponentContent<Object>` as the first parameter of `present` |
+  | Style control | `customStyle: boolean` (CustomDialogControllerOptions) | `DialogCustomOptions.customStyle: boolean` |
+  | Open | `controller.open()` | `presenter.present(content, options): Promise<DialogResult>` |
+  | Close | `controller.close()` | `DialogBaseController.close()` or `presenter.dismiss(target)` |
+  | State query | `controller.getState(): PromptActionCommonState` | `DialogBaseController.getState(): DialogState` |
+  | Alignment | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
+  | Offset | `offset: { dx, dy }` | `offset: Offset` |
+  | Auto-cancel | `autoCancel: boolean` | `autoCancel: boolean` |
+  | Mask color | `maskColor: ResourceColor` | `maskColor: ResourceColor` |
+  | Mask area | `maskRect: Rectangle` | `maskRect: Rectangle` |
+  | Modal | `isModal: boolean` | `isModal: boolean` |
+  | Subwindow | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+  | Focus | `focusable: boolean` (configurable, default true) | `focusable: boolean` (configurable, default true) |
+  | Open animation callback | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+  | Cancel callback | `cancel: () => void` + `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
+  | Background blur | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+  | Border | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` (`cornerRadius` corresponds to `borderRadius`) |
+  | Shadow | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
+  | Content area animation | `openAnimation` + `closeAnimation` (`AnimateParam`) | `dialogTransition: TransitionEffect` |
+  | Mask animation | None | `maskTransition: TransitionEffect` |
+  | Keyboard Avoidance | `keyboardAvoidMode` + `keyboardAvoidDistance` | `keyboardAvoidMode` + `keyboardAvoidDistance` |
+  | Floating mode | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
+  | Hierarchical mode | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+  | System material | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |<!--Del-->
+  | System API attributes | `distortionMode`, `edgeLightMode` | `distortionMode`, `edgeLightMode` |
   <!--DelEnd-->
   
-> ⚠️ [翻译失败]此段需用户自行翻译
+  **Before migration example (old interface):** Use the `open()` and `close()` methods of [CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller) to open and close a custom dialog.
   
   <!-- @[custom_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogBeforeMigrate.ets) -->
   
@@ -114,11 +114,11 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-   ![Before migration example](figures/CustomDialogBeforeMigrate.png)
+   <!--Del-->   <!--DelEnd-->
   
-> ⚠️ [翻译失败]此段需用户自行翻译
+  **After migration example (new API):** Use the `present()` and `dismiss()` methods of [DialogPresenter](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md) to open and close a custom dialog, and obtain the return result through a Promise.
   
-  <!-- @[custom_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogAfterMigrate.ets) --> 
+  <!-- @[custom_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogAfterMigrate.ets) -->
   
   ``` TypeScript
   import { DialogPresenter, DialogBaseAlignment, DialogResult, ComponentContent } from '@kit.ArkUI';
@@ -180,6 +180,13 @@ The old and new APIs differ in two dimensions: attributes and usage.
               .fontWeight(FontWeight.Bold)
               .margin({ bottom: 20 })
   
+            Button('Old API: @CustomDialog + CustomDialogController')
+              .width('90%')
+              .margin({ bottom: 10 })
+              .onClick(() => {
+                this.showOldCustomDialog();
+              })
+  
             Button('New API: DialogPresenter.present (Custom Dialog)')
               .width('90%')
               .margin({ bottom: 10 })
@@ -199,6 +206,10 @@ The old and new APIs differ in two dimensions: attributes and usage.
       }
     }
   
+    private showOldCustomDialog(): void {
+      this.result = 'For the old interface example, see the DialogProject project.';
+    }
+  
     private showNewCustomDialog(): void {
       dialogPresenter?.present(contentNode, {
         alignment: DialogBaseAlignment.CENTER,
@@ -213,11 +224,40 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![after migration example figure](figures/CustomDialogAfterMigrate.png)
+  <!--Del-->   <!--DelEnd-->
 
 - AlertDialog (alert dialog box)
 
-  > ⚠️ [翻译失败]此段需用户自行翻译
+  | Attribute | Old interface ([UIContext.showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)) | New interface ([DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)) |
+  |------|------|------|
+  | Programming model | `AlertDialog.show(options)` imperative call | `presenter.present(options): Promise<DialogResult>` |
+  | Title | `title: ResourceStr` | `title: ResourceStr` |
+  | Subtitle | `subtitle: ResourceStr` | `subtitle: ResourceStr` |
+  | Message content | `message: ResourceStr` | `message: DialogMessage` (content + wordBreak) |
+  | Text style | `textStyle: TextStyle` | `message.wordBreak: WordBreak` (set through DialogMessage) |
+  | Button | `confirm` (single) / `primaryButton` + `secondaryButton` (two) / `buttons: Array<AlertDialogButtonOptions>` (multiple) | `buttons: Array<DialogButton>` (including value/fontColor/backgroundColor/enabled/primary/style/action) |
+  | Button arrangement | `buttonDirection: DialogButtonDirection` | `buttonDirection: DialogButtonOrientation` |
+  | Action menu | None | `sheets: Array<DialogSheet>` (action-sheet style) |
+  | Grid count | `gridCount: number` | `gridCount: number` |
+  | Confirm callback | `confirm` / `primaryButton.action` / `secondaryButton.action` / `buttons[].action` | `DialogButton.action` (through the Promise result) |
+  | Cancel callback | `cancel: VoidCallback` + `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
+  | Alignment | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
+  | Offset | `offset: Offset` | `offset: Offset` |
+  | Auto-cancel | `autoCancel: boolean` | `autoCancel: boolean` |
+  | Mask area | `maskRect: Rectangle` | `maskRect: Rectangle` |
+  | Modal | `isModal: boolean` | `isModal: boolean` |
+  | Subwindow | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+  | Background color | `backgroundColor` | `backgroundColor` |
+  | Background blur | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+  | Border | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` (`cornerRadius` renamed to `borderRadius`) |
+  | Shadow | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
+  | Size | `width` / `height` | `width` / `height` |
+  | Transition animation | `transition: TransitionEffect` | `dialogTransition: TransitionEffect` |
+  | Mask animation | None | `maskTransition: TransitionEffect` |
+  | Open animation callback | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+  | Floating mode | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
+  | Hierarchical mode | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+  | System material | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
 
   **Before migration example (old interface):** Use [showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog) to display an alert dialog box, including a title, message, and buttons.
 
@@ -270,11 +310,11 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![before migration example figure](figures/AlertDialogBeforeMigrate.png)
+  <!--Del-->   <!--DelEnd-->
   
-> ⚠️ [翻译失败]此段需用户自行翻译
+  **After migration example (new interface):** Use [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) to present an alert dialog, and obtain the button click result through a Promise.
   
-  <!-- @[alert_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/AlertDialogAfterMigrate.ets) -->  
+  <!-- @[alert_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/AlertDialogAfterMigrate.ets) -->
   
   ``` TypeScript
   import { DialogBaseAlignment, DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
@@ -284,7 +324,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   @Component
   export struct AlertDialogAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-    @State result: ResourceStr = '';
+    @State result: string = '';
   
     build() {
       NavDestination() {
@@ -299,7 +339,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = $r('app.string.OldInterfaceAlertDialogOnClick');
+                this.result = 'For the old interface example, see ts-methods-alert-dialog-box.md';
               })
   
             Button('New API: DialogPresenter.present (Fixed-Style Dialog)')
@@ -351,11 +391,39 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![After migration example](figures/AlertDialogAfterMigrate.png)
+  <!--Del-->   <!--DelEnd-->
 
 - ActionSheet (action sheet)
 
-  > ⚠️ [翻译失败]此段需用户自行翻译
+  | Attribute | Old API ([UIContext.showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)) | New API ([DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)) |
+  |------|------|------|
+  | Programming model | `ActionSheet.show(options)` imperative call | `presenter.present(options): Promise<DialogResult>` |
+  | Title | `title: string \| Resource` | `title: ResourceStr` |
+  | Subtitle | `subtitle: ResourceStr` | `subtitle: ResourceStr` |
+  | Message content | `message: string \| Resource` | `message: DialogMessage` (content + wordBreak) |
+  | Button | `confirm: ActionSheetButtonOptions` (single confirm button) | `buttons: Array<DialogButton>` |
+  | Button arrangement | None | `buttonDirection: DialogButtonOrientation` |
+  | Action menu | `sheets: Array<SheetInfo>` (title/icon/action) | `sheets: Array<DialogSheet>` (title/icon/action) |
+  | Grid count | None | `gridCount: number` |
+  | Confirm callback | `confirm.action: VoidCallback` | `DialogButton.action` |
+  | Cancel callback | `cancel: VoidCallback` + `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
+  | Alignment | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
+  | Offset | `offset: ActionSheetOffset` (with dx/dy) | `offset: Offset` (with dx/dy) |
+  | Auto-cancel | `autoCancel: boolean` | `autoCancel: boolean` |
+  | Mask area | `maskRect: Rectangle` | `maskRect: Rectangle` |
+  | Modal | `isModal: boolean` | `isModal: boolean` |
+  | Subwindow | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+  | Background color | `backgroundColor` | `backgroundColor` |
+  | Background blur | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+  | Border | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` (`cornerRadius` renamed to `borderRadius`) |
+  | Shadow | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
+  | Size | `width` / `height` | `width` / `height` |
+  | Transition animation | `transition: TransitionEffect` | `dialogTransition: TransitionEffect` |
+  | Mask animation | None | `maskTransition: TransitionEffect` |
+  | Open animation callback | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+  | Floating mode | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
+  | Hierarchical mode | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+  | System material | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
 
   **Before migration example (old interface):** Use [showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet) to display an action sheet that includes a title and menu items.
   
@@ -408,11 +476,11 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![Before migration example](figures/ActionSheetBeforeMigrate.png)
+  <!--Del-->   <!--DelEnd-->
   
-> ⚠️ [翻译失败]此段需用户自行翻译
+  **After migration example (new interface):** Use [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) to present an action sheet, and obtain the selection result through a Promise.
   
-  <!-- @[action_sheet_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionSheetAfterMigrate.ets) -->  
+  <!-- @[action_sheet_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionSheetAfterMigrate.ets) -->
   
   ``` TypeScript
   import { DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
@@ -422,7 +490,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   @Component
   export struct ActionSheetAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-    @State result: ResourceStr = '';
+    @State result: string = '';
   
     build() {
       NavDestination() {
@@ -437,7 +505,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = $r('app.string.OldInterfaceActionSheetOnClick');
+                this.result = 'For the old interface example, see ts-methods-action-sheet.md';
               })
   
             Button('New API: DialogPresenter.present (action sheet)')
@@ -481,11 +549,40 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![After migration example](figures/ActionSheetAfterMigrate.png)
+  <!--Del-->   <!--DelEnd-->
 
 - promptAction.showDialog (dialog box)
 
-  > ⚠️ [翻译失败]此段需用户自行翻译
+  | Attribute | Old interface ([promptAction.showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)) | New interface ([DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)) |
+  |------|------|------|
+  | Programming model | `promptAction.showDialog(options): Promise<ShowDialogSuccessResponse>` | `presenter.present(options): Promise<DialogResult>` |
+  | Title | `title: string \| Resource` | `title: ResourceStr` |
+  | Subtitle | None | `subtitle: ResourceStr` |
+  | Message content | `message: string \| Resource` | `message: DialogMessage` (content + wordBreak) |
+  | Button | `buttons: Array<Button>` (text + color + primary only) | `buttons: Array<DialogButton>` (including value/fontColor/backgroundColor/enabled/primary/style/action) |
+  | Button arrangement | None | `buttonDirection: DialogButtonOrientation` |
+  | Action menu | None | `sheets: Array<DialogSheet>` |
+  | Grid count | None | `gridCount: number` |
+  | Confirm callback | Obtains the button index through `ShowDialogSuccessResponse.index` | `DialogButton.action` + Promise result |
+  | Cancel callback | None | `onWillDismiss: Callback<DialogDismissal>` |
+  | Alignment | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
+  | Offset | `offset: Offset` | `offset: Offset` |
+  | Auto-cancel | None | `autoCancel: boolean` |
+  | Mask color | None | `maskColor: ResourceColor` |
+  | Mask area | `maskRect: Rectangle` | `maskRect: Rectangle` |
+  | Modal | `isModal: boolean` | `isModal: boolean` |
+  | Subwindow | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+  | Background color | `backgroundColor` | `backgroundColor` |
+  | Background blur | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+  | Border | None | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` |
+  | Shadow | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
+  | Size | None | `width` / `height` |
+  | Transition animation | None | `dialogTransition: TransitionEffect` |
+  | Mask animation | None | `maskTransition: TransitionEffect` |
+  | Open animation callback | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+  | Floating mode | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
+  | Hierarchical mode | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+  | System material | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
 
   **Before migration example (old interface):** Use [showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog) to display a dialog that includes a title, message, and buttons.
   
@@ -536,11 +633,11 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![Before migration example](figures/ShowDialogBeforeMigrate.png)
+ <!--Del-->   <!--DelEnd-->
   
-> ⚠️ [翻译失败]此段需用户自行翻译
+  **After migration example (new interface):** Use [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) to display a dialog and obtain the button click result through a Promise.
   
-  <!-- @[show_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ShowDialogAfterMigrate.ets) -->  
+  <!-- @[show_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ShowDialogAfterMigrate.ets) -->
   
   ``` TypeScript
   import { DialogPresenter, DialogResult } from '@kit.ArkUI';
@@ -550,7 +647,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   @Component
   export struct ShowDialogAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-    @State result: ResourceStr = '';
+    @State result: string = '';
   
     build() {
       NavDestination() {
@@ -565,7 +662,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = $r('app.string.OldInterfaceShowDialogOnClick');
+                this.result = 'For the old interface example, see js-apis-promptAction.md';
               })
   
             Button('New API: DialogPresenter.present (dialog box)')
@@ -604,11 +701,40 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![After migration example](figures/ShowDialogAfterMigrate.png)
+  <!--Del-->   <!--DelEnd-->
 
 - promptAction.showActionMenu (action menu)
 
-  > ⚠️ [翻译失败]此段需用户自行翻译
+  | Attribute | Old interface ([promptAction.showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)) | New interface ([DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)) |
+  |------|------|------|
+  | Programming model | `promptAction.showActionMenu(options): Promise<ActionMenuSuccessResponse>` | `presenter.present(options): Promise<DialogResult>` |
+  | Title | `title: string \| Resource` | `title: ResourceStr` |
+  | Subtitle | None | `subtitle: ResourceStr` |
+  | Message content | None | `message: DialogMessage` |
+  | Button | `buttons: [Button, ...]` (supports 1 to 6 buttons, with the structure of only text + color + primary) | `buttons: Array<DialogButton>` (no quantity limit, with the structure containing value/fontColor/backgroundColor/enabled/primary/style/action) |
+  | Button arrangement | None | `buttonDirection: DialogButtonOrientation` |
+  | Action menu | None | `sheets: Array<DialogSheet>` |
+  | Grid count | None | `gridCount: number` |
+  | Confirm callback | Obtain the button index through `ActionMenuSuccessResponse.index` | `DialogButton.action` + Promise result |
+  | Cancel callback | None | `onWillDismiss: Callback<DialogDismissal>` |
+  | Alignment | None | `alignment: DialogBaseAlignment` |
+  | Offset | None | `offset: Offset` |
+  | Auto-cancel | None | `autoCancel: boolean` |
+  | Mask color | None | `maskColor: ResourceColor` |
+  | Mask area | None | `maskRect: Rectangle` |
+  | Modal | `isModal: boolean` | `isModal: boolean` |
+  | Subwindow | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+  | Background color | None | `backgroundColor` |
+  | Background blur | None | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+  | Border | None | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` |
+  | Shadow | None | `shadow: ShadowOptions \| ShadowStyle` |
+  | Size | None | `width` / `height` |
+  | Transition animation | None | `dialogTransition: TransitionEffect` |
+  | Mask animation | None | `maskTransition: TransitionEffect` |
+  | Open animation callback | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+  | Floating mode | None | `enableHoverMode` + `hoverModeArea` |
+  | Hierarchical mode | `levelMode` + `levelUniqueId` + `immersiveMode` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+  | System material | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
 
   **Before migration example (old interface):** Use [showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu) to display an action menu, including a title and menu items.
   
@@ -659,11 +785,11 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![before migration example](figures/ActionMenuBeforeMigrate.png)
+  <!--Del-->   <!--DelEnd-->
   
-> ⚠️ [翻译失败]此段需用户自行翻译
+  **After migration example (new interface):** Use [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) to present an action menu, and obtain the selection result through a Promise.
   
-  <!-- @[action_menu_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionMenuAfterMigrate.ets) -->  
+  <!-- @[action_menu_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionMenuAfterMigrate.ets) -->
   
   ``` TypeScript
   import { DialogPresenter, DialogResult } from '@kit.ArkUI';
@@ -673,7 +799,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   @Component
   export struct ActionMenuAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-    @State result: ResourceStr = '';
+    @State result: string = '';
   
     build() {
       NavDestination() {
@@ -688,7 +814,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = $r('app.string.OldInterfacePromptActionShowActionMenuOnClick');
+                this.result = 'For the old interface example, see js-apis-promptAction.md';
               })
   
             Button('New API: DialogPresenter.present (action menu)')
@@ -727,38 +853,38 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![After migration example](figures/ActionMenuAfterMigrate.png)
+  <!--Del-->   <!--DelEnd-->
 
 - promptAction.presentCustomDialog (custom dialog)
 
   | Attribute | Old interface ([promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)) | New interface ([DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)) |
   |------|------|------|
-  | Programming model | [promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18) | [presenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) |
-  | Content construction | [CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) / [CustomBuilderWithId](../reference/apis-arkui/arkts-apis-uicontext-t.md#custombuilderwithid18) | [CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) / [CustomBuilderWithId](../reference/apis-arkui/arkts-apis-uicontext-t.md#custombuilderwithid18) / [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)\<Object\> |
-  | Controller | promptAction.[DialogController](../reference/apis-arkui/js-apis-promptAction.md#dialogcontroller18) | [DialogBaseController](../reference/apis-arkui/js-apis-dialog.md#dialogbasecontroller) |
-  | Option type | [DialogOptions](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) (inherits [BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)) | [DialogCustomOptions](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions) (inherits [DialogBaseOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions)) |
-  | Style control | No `customStyle` attribute (content style is fully determined by the builder) | [customStyle](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions): boolean |
-  | Alignment | [alignment](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [DialogAlignment](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#dialogalignment-enumeration-description) | [alignment](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [DialogBaseAlignment](../reference/apis-arkui/js-apis-dialog.md#dialogbasealignment) |
-  | Offset | [offset](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [Offset](../reference/apis-arkui/arkui-ts/ts-types.md#offset) | [offset](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Offset](../reference/apis-arkui/arkui-ts/ts-types.md#offset) |
-  | Auto-cancel | [autoCancel](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): boolean | [autoCancel](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
-  | Mask color | [maskColor](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [ResourceColor](../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor) | [maskColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [ResourceColor](../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor) |
-  | Mask area | [maskRect](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [Rectangle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#rectangle8-type-description) | [maskRect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Rectangle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#rectangle8-type-description) |
-  | Modal | [isModal](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): boolean | [isModal](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
-  | Subwindow | [showInSubWindow](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): boolean | [showInSubWindow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
-  | Background color | [backgroundColor](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) | [backgroundColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Background blur | [backgroundBlurStyle](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) + [backgroundBlurStyleOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [backgroundEffect](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [backgroundBlurStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundBlurStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundEffect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Border | [cornerRadius](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) / [borderWidth](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) / [borderColor](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) / [borderStyle](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) | [borderRadius](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderWidth](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) (the legacy version [cornerRadius](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) corresponds to the new version [borderRadius](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions)) |
-  | Shadow | [shadow](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) | [shadow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [ShadowOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions-object-description) \| [ShadowStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10-enumeration-description) |
-  | Size | [width](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) / [height](../reference/apis-arkui/js-apis-promptAction.md#dialogoptions18) | [width](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [height](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Transition animation | [transition](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10) / [dialogTransition](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [dialogTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10) |
-  | Mask animation | [maskTransition](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10) | [maskTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10) |
-  | Focus | [focusable](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): boolean | [focusable](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
-  | Open animation callback | [onWillAppear](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) / [onDidAppear](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) / [onWillDisappear](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) / [onDidDisappear](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [onWillAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onWillDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Cancel callback | [onWillDismiss](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [Callback](../reference/apis-arkui/arkui-ts/ts-types.md#callback12)\<[DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12)\> | [onWillDismiss](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Callback](../reference/apis-arkui/arkui-ts/ts-types.md#callback12)\<[DialogDismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal)\> |
-  | Keyboard Avoidance | [keyboardAvoidMode](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [keyboardAvoidDistance](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [keyboardAvoidMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [keyboardAvoidDistance](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Floating mode | [enableHoverMode](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [hoverModeArea](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [enableHoverMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [hoverModeArea](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Hierarchical mode | [levelMode](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [levelUniqueId](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [immersiveMode](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [levelMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelUniqueId](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [immersiveMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelOrder](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | System material | [systemMaterial](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | [systemMaterial](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) |
+  | Programming model | `promptAction.presentCustomDialog(builder, controller?, options?): Promise<number>` | `presenter.present(content, options?: DialogCustomOptions): Promise<DialogResult>` |
+  | Content construction | `CustomBuilder` / `CustomBuilderWithId` | `CustomBuilder` / `CustomBuilderWithId` / `ComponentContent<Object>` |
+  | Controller | `promptAction.DialogController` | `DialogBaseController` |
+  | Option type | `DialogOptions` (inherits from `BaseDialogOptions`) | `DialogCustomOptions` (inherits from `DialogBaseOptions`) |
+  | Style control | No `customStyle` attribute (content style is fully determined by the builder) | `customStyle: boolean` |
+  | Alignment | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
+  | Offset | `offset: Offset` | `offset: Offset` |
+  | Auto-cancel | `autoCancel: boolean` | `autoCancel: boolean` |
+  | Mask color | `maskColor: ResourceColor` | `maskColor: ResourceColor` |
+  | Mask area | `maskRect: Rectangle` | `maskRect: Rectangle` |
+  | Modal | `isModal: boolean` | `isModal: boolean` |
+  | Subwindow | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+  | Background color | `backgroundColor` (`DialogOptions`) | `backgroundColor` |
+  | Background blur | `backgroundBlurStyle` (`DialogOptions`) + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+  | Border | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` (`DialogOptions`) | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` (`cornerRadius` renamed to `borderRadius`) |
+  | Shadow | `shadow` (`DialogOptions`) | `shadow: ShadowOptions \| ShadowStyle` |
+  | Size | `width` / `height` (`DialogOptions`) | `width` / `height` |
+  | Transition animation | `transition: TransitionEffect` / `dialogTransition` | `dialogTransition: TransitionEffect` |
+  | Mask animation | `maskTransition: TransitionEffect` | `maskTransition: TransitionEffect` |
+  | Focus | `focusable: boolean` | `focusable: boolean` |
+  | Open animation callback | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+  | Cancel callback | `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
+  | Keyboard Avoidance | `keyboardAvoidMode` + `keyboardAvoidDistance`  | `keyboardAvoidMode` + `keyboardAvoidDistance` |
+  | Floating mode | `enableHoverMode`  + `hoverModeArea`  | `enableHoverMode` + `hoverModeArea` |
+  | Hierarchical mode | `levelMode`  + `levelUniqueId`  + `immersiveMode`  + `levelOrder`  | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+  | System material | `systemMaterial: SystemUiMaterial`  | `systemMaterial: SystemUiMaterial` |
 
   **Before migration example (old interface):** Use [presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18) to present a custom dialog.
   
@@ -819,11 +945,11 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![Before migration example](figures/PresentCustomDialogBeforeMigrate.png)
+  <!--Del-->   <!--DelEnd-->
   
-> ⚠️ [翻译失败]此段需用户自行翻译
+  **After migration example (new interface):** Use [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) to present a custom dialog and obtain the return result through a Promise.
   
-  <!-- @[present_custom_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/PresentCustomDialogAfterMigrate.ets) -->  
+  <!-- @[present_custom_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/PresentCustomDialogAfterMigrate.ets) -->
   
   ``` TypeScript
   import { DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';
@@ -834,7 +960,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   export struct PresentCustomDialogAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
     private controller: DialogBaseController = new DialogBaseController();
-    @State result: ResourceStr = '';
+    @State result: string = '';
   
     build() {
       NavDestination() {
@@ -849,7 +975,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = $r('app.string.OldInterfacePresentCustomDialogOnClick');
+                this.result = 'For the old interface example, see arkts-apis-uicontext-promptaction.md';
               })
   
             Button('New interface: DialogPresenter.present (custom dialog)')
@@ -900,38 +1026,38 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![After migration example](figures/PresentCustomDialogAfterMigrate.png)
+  <!--Del-->   <!--DelEnd-->
 
 - promptAction.openCustomDialogWithController (custom dialog with a controller)
 
   | Attribute | Old API ([promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)) | New API ([DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present)) |
   |------|------|------|
-  | Programming model | [promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18) | [presenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) |
-  | Content construction | [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)\<Object\> | [CustomBuilder](../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8) / [CustomBuilderWithId](../reference/apis-arkui/arkts-apis-uicontext-t.md#custombuilderwithid18) / [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)\<Object\> |
-  | Controller | [promptAction.DialogController](../reference/apis-arkui/js-apis-promptAction.md#dialogcontroller18) | [DialogBaseController](../reference/apis-arkui/js-apis-dialog.md#dialogbasecontroller) |
-  | Option type | [BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [DialogCustomOptions](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions) (inherits [DialogBaseOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions)) |
-  | Style control | No customStyle attribute (the content style is fully determined by ComponentContent) | [customStyle](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions): boolean |
-  | Alignment | [alignment](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [DialogAlignment](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#dialogalignment-enumeration-description) | [alignment](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [DialogBaseAlignment](../reference/apis-arkui/js-apis-dialog.md#dialogbasealignment) |
-  | Offset | [offset](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [Offset](../reference/apis-arkui/arkui-ts/ts-types.md#offset) | [offset](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Offset](../reference/apis-arkui/arkui-ts/ts-types.md#offset) |
-  | Auto-cancel | [autoCancel](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): boolean | [autoCancel](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
-  | Mask color | [maskColor](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [ResourceColor](../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor) | [maskColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [ResourceColor](../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor) |
-  | Mask area | [maskRect](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [Rectangle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#rectangle8-type-description) | [maskRect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Rectangle](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#rectangle8-type-description) |
-  | Modal | [isModal](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): boolean | [isModal](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
-  | Subwindow | [showInSubWindow](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): boolean | [showInSubWindow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
-  | Background color | None ([BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) does not contain backgroundColor) | [backgroundColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Background blur | [backgroundBlurStyleOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [backgroundEffect](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [backgroundBlurStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundBlurStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [backgroundEffect](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Border | None ([BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) does not contain border attributes) | [borderRadius](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderWidth](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderColor](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [borderStyle](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | shadow | None ([BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) does not contain shadow) | [shadow](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [ShadowOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions-object-description) \| [ShadowStyle](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10-enumeration-description) |
-  | Size | None ([BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) does not contain width / height) | [width](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [height](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Transition animation | [transition](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10) / [dialogTransition](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [dialogTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10) |
-  | Mask animation | [maskTransition](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10) | [maskTransition](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [TransitionEffect](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md#transitioneffect10) |
-  | Focus | [focusable](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): boolean | [focusable](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): boolean |
-  | Open animation callback | [onWillAppear](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) / [onDidAppear](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) / [onWillDisappear](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) / [onDidDisappear](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [onWillAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidAppear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onWillDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) / [onDidDisappear](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Cancel callback | [onWillDismiss](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [Callback](../reference/apis-arkui/arkui-ts/ts-types.md#callback12)\<[DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12)\> | [onWillDismiss](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [Callback](../reference/apis-arkui/arkui-ts/ts-types.md#callback12)\<[DialogDismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal)\> |
-  | Keyboard Avoidance | [keyboardAvoidMode](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [keyboardAvoidDistance](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [keyboardAvoidMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [keyboardAvoidDistance](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Floating mode | [enableHoverMode](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [hoverModeArea](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [enableHoverMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [hoverModeArea](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | Hierarchical mode | [levelMode](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [levelUniqueId](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [immersiveMode](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) + [levelOrder](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11) | [levelMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelUniqueId](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [immersiveMode](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) + [levelOrder](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-  | System material | [systemMaterial](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | [systemMaterial](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions): [SystemUiMaterial](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) |
+  | Programming Model | `promptAction.openCustomDialogWithController(content, controller, options?): Promise<void>` | `presenter.present(content, options?: DialogCustomOptions): Promise<DialogResult>` |
+  | Content construction | `ComponentContent<Object>` | `CustomBuilder` / `CustomBuilderWithId` / `ComponentContent<Object>` |
+  | Controller | `promptAction.DialogController`  | `DialogBaseController` |
+  | Option type | `BaseDialogOptions` | `DialogCustomOptions` (inherits from `DialogBaseOptions`) |
+  | Style control | No `customStyle` attribute (the content style is fully determined by ComponentContent) | `customStyle: boolean` |
+  | Alignment | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
+  | Offset | `offset: Offset` | `offset: Offset` |
+  | Auto-cancel | `autoCancel: boolean`  | `autoCancel: boolean` |
+  | Mask color | `maskColor: ResourceColor`  | `maskColor: ResourceColor` |
+  | Mask area | `maskRect: Rectangle` | `maskRect: Rectangle` |
+  | Modal | `isModal: boolean` | `isModal: boolean` |
+  | Subwindow | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+  | Background color | None (`BaseDialogOptions` does not contain `backgroundColor`) | `backgroundColor` |
+  | Background blur | `backgroundBlurStyleOptions`  + `backgroundEffect`  | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+  | Border | None (`BaseDialogOptions` does not contain border attributes) | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` |
+  | Shadow | None (`BaseDialogOptions` does not contain `shadow`) | `shadow: ShadowOptions \| ShadowStyle` |
+  | Size | None (`BaseDialogOptions` does not contain `width` / `height`) | `width` / `height` |
+  | Transition animation | `transition: TransitionEffect`  / `dialogTransition`  | `dialogTransition: TransitionEffect` |
+  | Mask animation | `maskTransition: TransitionEffect`  | `maskTransition: TransitionEffect` |
+  | Focus | `focusable: boolean`  | `focusable: boolean` |
+  | Open animation callback | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear`  | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+  | Cancel callback | `onWillDismiss: Callback<DismissDialogAction>`  | `onWillDismiss: Callback<DialogDismissal>` |
+  | Keyboard Avoidance | `keyboardAvoidMode`  + `keyboardAvoidDistance`  | `keyboardAvoidMode` + `keyboardAvoidDistance` |
+  | Floating mode | `enableHoverMode`  + `hoverModeArea`  | `enableHoverMode` + `hoverModeArea` |
+  | Hierarchical mode | `levelMode`  + `levelUniqueId`  + `immersiveMode`  + `levelOrder`  | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+  | System material | `systemMaterial: SystemUiMaterial`  | `systemMaterial: SystemUiMaterial` |
 
   **Before migration example (old interface):** Use [openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18) to present a custom dialog with a controller.
   
@@ -1001,11 +1127,11 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![Before migration example](figures/OpenCustomDialogWithControllerBeforeMigrate.png)
+  <!--Del-->   <!--DelEnd-->
   
-> ⚠️ [翻译失败]此段需用户自行翻译
+  **After migration example (new interface):** Use [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) to present a custom dialog with a controller, and obtain the return result through a Promise.
   
-  <!-- @[open_custom_dialog_with_controller_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/OpenCustomDialogWithControllerAfterMigrate.ets) -->  
+  <!-- @[open_custom_dialog_with_controller_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/OpenCustomDialogWithControllerAfterMigrate.ets) -->
   
   ``` TypeScript
   import { DialogBaseAlignment, DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';
@@ -1016,7 +1142,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   export struct OpenCustomDialogWithControllerAfterMigrate {
     private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
     private controller: DialogBaseController = new DialogBaseController();
-    @State result: ResourceStr = '';
+    @State result: string = '';
   
     build() {
       NavDestination() {
@@ -1031,7 +1157,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
               .width('90%')
               .margin({ bottom: 10 })
               .onClick(() => {
-                this.result = $r('app.string.OldInterfaceOpenCustomDialogWithControllerOnClick');
+                this.result = 'For the old interface example, see arkts-apis-uicontext-promptaction.md';
               })
   
             Button('New API: DialogPresenter.present (custom dialog)')
@@ -1083,11 +1209,11 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![After migration example figure](figures/OpenCustomDialogWithControllerAfterMigrate.png)
+ <!--Del-->   <!--DelEnd-->
 
 - Advanced animation parameter differences
 
-> ⚠️ [翻译失败]此段需用户自行翻译
+  The old interface uses `customStyle: boolean` to control whether a custom style is used, and `openAnimation` / `closeAnimation` (`AnimateParam`) to control the open and close animations. The new interface uses `dialogTransition: TransitionEffect` to control the content area animation, and `maskTransition: TransitionEffect` to control the mask animation. The parameter types of the two differ, and **no equivalent mapping exists**. During migration, rewrite the animation parameters according to the new interface's `TransitionEffect`.
 
 ### Usage Differences
 
@@ -1098,7 +1224,7 @@ The old and new interfaces differ in the following two usage scenarios:
 
 The following uses a custom dialog as an example to compare the implementation of the old and new interfaces.
 
-> ⚠️ [翻译失败]此段需用户自行翻译
+Old interface example: Use `promptAction.openCustomDialog` to display a custom dialog. When you need to update the dialog style (for example, when the color mode changes), you must call `closeCustomDialog` to close it and then reopen it, and system material is not supported.
 
 <!-- @[custom_dialog_old_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogOldInterface.ets) -->
 
@@ -1205,7 +1331,7 @@ export struct CustomDialogOldInterface {
 
 ![Old interface example](figures/CustomDialogOldInterface.gif)
 
-> ⚠️ [翻译失败]此段需用户自行翻译
+New interface example: Use `DialogPresenter.present` to display a custom dialog and set the system material, and use `DialogPresenter.update` to dynamically modify the dialog offset after it is displayed, without closing and reopening it.
 
 <!-- @[custom_dialog_new_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogNewInterface.ets) -->
 
@@ -1313,7 +1439,7 @@ export struct CustomDialogNewInterface {
 
 ### Migrating the Global Custom Popup
 
-> ⚠️ [翻译失败]此段需用户自行翻译
+This example migrates the global custom dialog from the old interface to the new interface, encapsulates the `DialogPresenterClassNew` utility class to centrally manage the opening, closing, and updating of the dialog, and calls this utility class in the page to implement the dialog display and dynamic update (modifying the alignment and offset).
 
 **Before migration example (old interface):**
 
@@ -1394,7 +1520,7 @@ export class DialogPresenterClassNew {
 }
 ```
 
-> ⚠️ [翻译失败]此段需用户自行翻译
+The code above encapsulates the `DialogPresenterClassNew` utility class, which provides the open (`openDialog`), close (`closeDialog`), and update (`updateDialog`) methods for the dialog. The page example below calls this utility class to demonstrate the effect of dynamically updating the alignment, offset, and content after the dialog is displayed.
 
 <!-- @[open_dialog_and_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/OpenDialogAndUpdate.ets) -->
 
@@ -1478,7 +1604,7 @@ export struct OpenDialogAndUpdate {
 
 ### Page-Level Popup Migration
 
-> ⚠️ [翻译失败]此段需用户自行翻译
+This example migrates the page-level dialog from the old interface to the new interface, providing implementations for two scenarios: the Router routing mode and the Navigation mode. The page-level dialog follows the lifecycle of the page where it resides, and route navigation can be performed within the dialog.
 
 **Before migration example (old interface):**
 
@@ -1549,7 +1675,7 @@ export struct OpenDialogAndUpdate {
   }
   ```
   
-> ⚠️ [翻译失败]此段需用户自行翻译
+  The following `Next.ets` is the target page to which the route jumps when the "Next" button in the dialog box is clicked. Click the "Back" button to return to the previous page.
   
   <!-- @[next](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/customdialog/pageleveldialogbox/Next.ets) -->
   
@@ -1678,3 +1804,5 @@ export struct OpenDialogAndUpdate {
   ```
   
   ![Page-level dialog 2](figures/NavigationPageLevelDialogBasePresenter.gif)
+
+  <!--no_check-->

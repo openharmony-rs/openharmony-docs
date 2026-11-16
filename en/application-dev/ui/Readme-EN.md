@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 <!-- md-trans-meta sourceCommit=6c65faa460f958c51d1f086bcaae53d7bd52a454 translatedAt=2026-11-16T01:29:03.340Z pushedAt=2026-11-16T01:58:11.610Z nl=2 -->
 
-- [Introduction to ArkUI](arkui-overview.md)
+- [About This Kit](arkui-overview.md)
 - UI Development (ArkTS-based Declarative Development Paradigm)<!--arkts-ui-development-->
   - [UI Development (ArkTS-based Declarative Development Paradigm) Overview](arkts-ui-development-overview.md)
   - Basic Syntax of UI Paradigms<!--arkts-ui-paradigm-basic-syntax-->
@@ -25,8 +25,8 @@
         - [\@ReusableV2 Decorator: Reusing V2 Components](state-management/arkts-new-reusableV2.md) 
         - [Global Reuse: Centralized Component Recycling and Reuse](state-management/arkts-global-reuse-pool.md)<!--RP7--><!--RP7End-->
       - Custom Component Freezing<!--arkts-component-freeze-->
-        - [V1 Custom Component Freezing](state-management/arkts-custom-components-freeze.md)
-        - [Custom Component Freezing V2](state-management/arkts-custom-components-freezeV2.md)<!--RP8--><!--RP8End-->
+        - [Freezing a Custom Component (V1)](state-management/arkts-custom-components-freeze.md)
+        - [Freezing a Custom Component (V2)](state-management/arkts-custom-components-freezeV2.md)<!--RP8--><!--RP8End-->
     - Component Extension<!--arkts-extend-components-->
       - [Component Extension Overview](state-management/arkts-extend-components-overview.md)
       - [\@Builder Decorator: Custom Builder Function](state-management/arkts-builder.md)
@@ -43,8 +43,8 @@
     - [State Management Overview](state-management/arkts-state-management-overview.md)
     - [State Management Principles](state-management/arkts-state-management-introduce.md)
     - [Differences Between State Management V1 and V2 Update Mechanisms](state-management/arkts-v1-v2-update-difference.md)
-    - [MVVM V1](state-management/arkts-mvvm.md)
-    - [MVVM V2](state-management/arkts-mvvm-v2.md)
+    - [MVVM (V1)](state-management/arkts-mvvm.md)
+    - [MVVM (V2)](state-management/arkts-mvvm-v2.md)
     - State Management V1<!--arkts-state-management-v1-->
       - Component State Management<!--arkts-v1-component-state-management-->
         - [\@State Decorator: State Owned by Component](state-management/arkts-state.md)
@@ -76,7 +76,7 @@
         - [\@Type Decorator: Marking the Types of the Class Property](state-management/arkts-new-type.md)
       - Application State Management<!--arkts-v2-manage-application-state-->
         - [AppStorageV2: Storing Application-wide UI State](state-management/arkts-new-appstoragev2.md)
-        - [PersistenceV2: Persisting Application State](state-management/arkts-new-persistencev2.md)
+        - [PersistenceV2: Persisting UI States](state-management/arkts-new-persistencev2.md)
     - Auxiliary APIs<!--arkts-state-management-uiutils-->
       - [getTarget API: Obtaining Original Objects](state-management/arkts-new-getTarget.md)
       - [makeObserved API: Changing Unobservable Data to Observable Data](state-management/arkts-new-makeObserved.md)
@@ -124,7 +124,7 @@
       - [Page Routing](./arkts-navigation-jump.md)
       - [Transition Animation](./arkts-navigation-animation.md)
       - [Cross-Package Routing](./arkts-navigation-cross-package.md)
-      - [Split-Column Layout](./arkts-navigation-split-mode.md)
+      - [Split-View Layout](./arkts-navigation-split-mode.md)
     - [Page Routing (@ohos.router) (Not Recommended)](arkts-routing.md)
     - [Transition from Router to Navigation](arkts-router-to-navigation.md)
   - Component Layouts<!--arkts-layout-development-->
@@ -198,7 +198,7 @@
      - [Managing Overlays (OverlayManager)](arkts-create-overlaymanager.md)<!--RP9--><!--RP9End-->
      - [Popup Handedness Adaptation](arkts-ui-handedness.md)
    - Immersive light effect<!--arkts-immersive-light-sense-->
-    - [IImmersive Lighting Overview](arkts-immersive-light-sense-overview.md)
+    - [Immersive Lighting Overview](arkts-immersive-light-sense-overview.md)
     - Immersive light effect development guide<!--arkts-immersive-light-sense-development-->
       - [Enabling Immersive Lighting](arkts-immersive-light-sense-enable.md)
       - [Adapting Components to Immersive Lighting](arkts-immersive-light-sense-component-adaptation.md)
@@ -262,7 +262,7 @@
       - [Custom Node Overview](arkts-user-defined-node.md)
       - [Custom Placeholder Nodes](arkts-user-defined-place-holder.md)
       - [Custom Component Node (FrameNode)](arkts-user-defined-arktsNode-frameNode.md)
-      - [Custom RenderNode (RenderNode)](arkts-user-defined-arktsNode-renderNode.md)
+      - [Custom Render Node (RenderNode)](arkts-user-defined-arktsNode-renderNode.md)
       - [Custom Declarative Node (BuilderNode)](arkts-user-defined-arktsNode-builderNode.md)
       - [Setting Custom Node Cross-Language Attributes](arkts-user-defined-arktsNode-crossLanguage.md)<!--RP3--><!--RP3End-->
     - Custom Drawing<!--arkts-draw-->
@@ -316,7 +316,7 @@
     - [Using the Swiper Component](ndk-swiper.md)
     - [Using the ArcSwiper Component](ndk-arc-swiper.md)
   - [Building Form Components](ndk-build-form-components.md)
-  - [Building Dialog Boxes](ndk-build-pop-up-window.md)
+  - [Building a Dialog Box](ndk-build-pop-up-window.md)
   - Using Animation<!--arkts-use-animation-ndk-->
     - [Using Animations](ndk-use-animation.md)
     - [Animation Development](ndk-use-animation-scene.md)
@@ -330,11 +330,11 @@
   - Using Customization Capabilities<!--arkts-build-custom-ndk-->
     - [Building Custom Components](ndk-build-custom-components.md)
     - [Implementing Custom Drawing](arkts-user-defined-draw.md)
-  - [Integrating Accessibility Through XComponent](ndk-accessibility-xcomponent.md)
+  - [Accessing Accessibility Through Self-Drawing](ndk-accessibility-xcomponent.md)
   - [Launching EmbeddedUIExtensionAbility with EmbeddedComponent](ndk-embedded-component.md)
-  - [Querying and Operating Custom Nodes](ndk-node-query-operate.md)
-  - [Ensuring Multi-Instance Functionality in the NDK](ndk-scope-task.md)
-  - [Parallelizing UI Page Building Using Multi-threaded NDK APIs](ndk-build-on-multi-thread.md)
+  - [Querying and Operating NDK Nodes](ndk-node-query-operate.md)
+  - [NDK Multi-Instance Scenario Development](ndk-scope-task.md)
+  - [Creating Components in Multiple Threads with NDK](ndk-build-on-multi-thread.md)
   - [Building a Rendering Node](ndk-embed-render-components.md)
 - UI Development (JavaScript-compatible Web-like Development Paradigm)<!--ui-js-dev-->
   - [UI Development (JavaScript-compatible Web-like Development Paradigm) Overview](ui-js-overview.md)

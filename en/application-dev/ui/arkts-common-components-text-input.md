@@ -537,7 +537,7 @@ TextInput({ text: $r('app.string.Service_MenuItems_Text') })
 
 
 
-<!--Del-->![TextInput-menu-subwindow](figures/TextInput-menu-subwindow.gif)<!--DelEnd-->
+<!--Del--> <!--DelEnd-->
 
 ## Setting Input Box Avoidance
 

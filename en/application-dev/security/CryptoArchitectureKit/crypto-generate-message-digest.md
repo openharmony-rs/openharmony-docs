@@ -1,4 +1,4 @@
-# Generating an MD Using SHA-256 (ArkTS)
+# Generating an MD Using SHA256 (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

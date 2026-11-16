@@ -111,7 +111,7 @@ Tabs({ barPosition: BarPosition.End }) {
 }
 ```
 
-You can customize the appearance of the bottom navigation bar by setting the [BottomTabBarStyle](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9) attribute of **TabContent**. For details, see [Example 8: Using Symbol Icons for Bottom Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#example-8-using-symbol-icons-for-bottom-tabs).
+You can customize the appearance of the bottom navigation bar by setting the [BottomTabBarStyle](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#bottomtabbarstyle9) attribute of **TabContent**. For details, see [Example 8: Using Symbol Icons for Bottom Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#example-8-set-bottom-tab-to-use-symbol-icon).
 
 
 ## Top Navigation
