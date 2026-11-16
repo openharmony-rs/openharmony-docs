@@ -3928,7 +3928,7 @@ addOptimizationBatteryExclusionApps(appIdentifiers: Array\<string>, accountId: n
 
 | 参数名         | 类型                | 必填 | 说明                                                         |
 | -------------- | ------------------- | ---- | ------------------------------------------------------------ |
-| appIdentifiers | Array&lt;string&gt; | 是   | 应用[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)的数组，可以通过接口[bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)获取bundleInfo.signatureInfo.appIdentifier。|
+| appIdentifiers | Array&lt;string&gt; | 是   | 应用[唯一标识符](../apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo)的数组，可以通过接口[bundleManager.getBundleInfo](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfo14-2)获取bundleInfo.signatureInfo.appIdentifier。应用必须为已安装应用，否则会返回9201015错误码。|
 | accountId      | number              | 是   | 用户账号ID。<br>取值范围：大于等于0。<br>accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
 
 **错误码**：
@@ -3940,7 +3940,10 @@ addOptimizationBatteryExclusionApps(appIdentifiers: Array\<string>, accountId: n
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200012  | Parameter verification failed. |
+| 9200006  | The specified account ID is invalid. |
+| 9200016  | Service timeout. |
+| 9200019  | The policy list has exceeded the limit. |
+| 9201015  | The application is not installed. |
 
 **示例：**
 
@@ -3994,7 +3997,9 @@ removeOptimizationBatteryExclusionApps(appIdentifiers: Array\<string>, accountId
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200012  | Parameter verification failed. |
+| 9200006  | The specified account ID is invalid. |
+| 9200016  | Service timeout. |
+| 9200019  | The policy list has exceeded the limit. |
 
 **示例：**
 
@@ -4049,7 +4054,8 @@ getOptimizationBatteryExclusionApps(accountId: number, queryPolicy?: common.Quer
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200012  | Parameter verification failed. |
+| 9200006  | The specified account ID is invalid. |
+| 9200016  | Service timeout. |
 
 **示例：**
 
