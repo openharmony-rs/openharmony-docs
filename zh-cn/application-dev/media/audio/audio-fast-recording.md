@@ -48,7 +48,7 @@
 
 ### 超低时延模式限制
 
-超低时延模式与上述低时延模式存在类似限制，超出限制时系统会回落到低时延模式或普通模式。此外，超低时延模式创建录制实例时，系统会校验权限和设备能力：若应用未申请`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`权限，接口返回错误码201（AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED）；若当前硬件不支持超低时延能力，接口返回错误码6800104（AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY）。以上两种情况均不会创建录制实例。开发者可通过[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)查询实际工作状态：返回AUDIOSTREAM_FASTSTATUS_ULTRA_FAST表示正处于超低时延模式，返回AUDIOSTREAM_FASTSTATUS_FAST或AUDIOSTREAM_FASTSTATUS_NORMAL表示发生了回落。
+超低时延模式与上述低时延模式存在类似限制，超出限制时系统会回落到低时延模式或普通模式。此外，超低时延模式创建录制实例时，系统会校验权限和设备能力：若应用未申请`ohos.permission.USE_ULTRA_FAST_AUDIO_STREAM`权限，接口返回错误码201（AUDIOSTREAM_RESULT_ERROR_PERMISSION_DENIED）；若当前硬件不支持超低时延能力，接口返回错误码6800104（AUDIOSTREAM_ERROR_UNSUPPORTED_ABILITY）。以上两种情况均不会创建录制实例。
 
 ## 开发步骤
 
