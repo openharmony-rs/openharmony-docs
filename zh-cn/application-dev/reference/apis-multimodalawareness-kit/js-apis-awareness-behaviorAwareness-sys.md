@@ -286,8 +286,8 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 | kind | 'time' | 否 | 否 | 判别字段，固定为 'time'。 |
 | timePoint | string | 否 | 否 | 时间点（HH:mm格式，如"08:30"）。 |
 | recurrence | [RecurrenceType](#recurrencetype) | 否 | 否 | 重复周期。 |
-| dayOfWeek | number | 否 | 是 | 星期几（适用于每周重复）。取值应为[1,7]内的整数。默认值：默认值为0。 |
-| dayOfMonth | number | 否 | 是 | 月中的第几天（适用于每月重复）。取值范围：1~31。单位为：天。取值应为[1,31]内的整数。默认值：默认值为0。 |
+| dayOfWeek | number | 否 | 是 | 星期几（适用于每周重复）。取值范围：[1,7]。取值应为[1,7]内的整数。默认值：空。 |
+| dayOfMonth | number | 否 | 是 | 月中的第几天（适用于每月重复）。取值范围：[1,31]。取值应为[1,31]内的整数。默认值：空。 |
 
 ## Coordinates
 
@@ -303,8 +303,8 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| latitude | number | 否 | 否 | 纬度。单位为：度。取值范围：[-90,90]。 |
-| longitude | number | 否 | 否 | 经度。单位为：度。取值范围：[-180,180]。 |
+| latitude | number | 否 | 否 | 纬度。单位：degree。取值范围：[-90,90]。 |
+| longitude | number | 否 | 否 | 经度。单位：degree。取值范围：[-180,180]。 |
 
 ## LocationAttributes
 
@@ -321,9 +321,9 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | kind | 'location' | 否 | 否 | 判别字段，固定为 'location'。 |
-| locationType | [LocationType](#locationtype) | 否 | 是 | 位置类型（预定义位置，可选）。 |
-| locationName | string | 否 | 是 | 位置名称。 |
-| coordinates | [Coordinates](#coordinates) | 否 | 否 | 经纬度坐标。纬度取值范围：-90~90；经度取值范围：-180~180。 |
+| locationType | [LocationType](#locationtype) | 否 | 是 | 位置类型（预定义位置，可选）。默认值：空。 |
+| locationName | string | 否 | 是 | 位置名称。默认值：空。 |
+| coordinates | [Coordinates](#coordinates) | 否 | 否 | 经纬度坐标。纬度取值范围：[-90,90]；经度取值范围：[-180,180]。 |
 
 ## SystemEventAttributes
 
@@ -340,15 +340,15 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | kind | 'systemEvent' | 否 | 否 | 判别字段，固定为 'systemEvent'。 |
-| packageName | string | 否 | 是 | 应用包名（应用类事件）。 |
-| appName | string | 否 | 是 | 应用名称。 |
-| appId | string | 否 | 是 | 应用ID（应用类事件）。 |
-| durationThreshold | number | 否 | 是 | 单次使用时长阈值。单位为：分钟。取值限定为整数。默认值：默认值为0。 |
-| dailyDurationThreshold | number | 否 | 是 | 日使用时长阈值（应用时长事件）。单位为：分钟。取值应为[0,1440]内的整数。默认值：默认值为0。 |
-| batteryThreshold | number | 否 | 是 | 电池阈值。单位为：百分比。取值应为[0,100]内的整数。默认值：默认值为0。 |
-| level | number | 否 | 是 | 电池百分比。单位为：百分比。取值应为[0,100]内的整数。默认值：默认值为0。 |
-| bluetoothDeviceType | [BluetoothDeviceType](#bluetoothdevicetype) | 否 | 是 | 蓝牙设备类型（蓝牙类事件）。默认值：默认值为0。 |
-| bluetoothDeviceName | string | 否 | 是 | 蓝牙设备名称。 |
+| packageName | string | 否 | 是 | 应用包名（应用类事件）。默认值：空。 |
+| appName | string | 否 | 是 | 应用名称。默认值：空。 |
+| appId | string | 否 | 是 | 应用ID（应用类事件）。默认值：空。 |
+| durationThreshold | number | 否 | 是 | 单次使用时长阈值。单位：min。取值限定为整数。默认值：空。 |
+| dailyDurationThreshold | number | 否 | 是 | 日使用时长阈值（应用时长事件）。单位：min。取值应为[0,1440]内的整数。默认值：空。 |
+| batteryThreshold | number | 否 | 是 | 电池阈值。单位：%。取值应为[0,100]内的整数。默认值：空。 |
+| level | number | 否 | 是 | 电池百分比。单位：%。取值应为[0,100]内的整数。默认值：空。 |
+| bluetoothDeviceType | [BluetoothDeviceType](#bluetoothdevicetype) | 否 | 是 | 蓝牙设备类型（蓝牙类事件）。默认值：空。 |
+| bluetoothDeviceName | string | 否 | 是 | 蓝牙设备名称。默认值：空。 |
 
 ## SystemActionAttributes
 
@@ -366,11 +366,11 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 | ---- | ---- | ---- | ---- | ---- |
 | kind | 'systemAction' | 否 | 否 | 判别字段，固定为 'systemAction'。 |
 | operation | [Operation](#operation) | 否 | 否 | 操作目标（开/关/切换）。 |
-| packageName | string | 否 | 是 | 应用包名。 |
-| appName | string | 否 | 是 | 应用名称。 |
-| adjustment | [AdjustmentDirection](#adjustmentdirection) | 否 | 是 | 调节方向（brightness/volume增量调节时用）。 |
-| value | number | 否 | 是 | 绝对值表示亮度或音量的固定值。单位为：占比。取值应为[0,100]内的整数。默认值：默认值为0。 |
-| soundMode | [SoundMode](#soundmode) | 否 | 是 | 声音模式。 |
+| packageName | string | 否 | 是 | 应用包名。默认值：空。 |
+| appName | string | 否 | 是 | 应用名称。默认值：空。 |
+| adjustment | [AdjustmentDirection](#adjustmentdirection) | 否 | 是 | 调节方向（brightness/volume增量调节时用）。默认值：空。 |
+| value | number | 否 | 是 | 绝对值表示亮度或音量的固定值。单位：%。取值应为[0,100]内的整数。默认值：空。 |
+| soundMode | [SoundMode](#soundmode) | 否 | 是 | 声音模式。默认值：空。 |
 
 ## EventData
 
@@ -389,9 +389,9 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 | eventId | string | 否 | 否 | 事件标识。 |
 | eventType | [EventType](#eventtype) | 否 | 否 | 事件类型。 |
 | name | string | 否 | 否 | 事件名称。 |
-| timestamp | number | 否 | 否 | 发生时间戳。单位为：毫秒。 |
-| params | Record\<string, string \| number \| boolean\> | 否 | 是 | 附加参数。默认值：不带附加参数。 |
-| attributes | [TimeAttributes](#timeattributes) \| [LocationAttributes](#locationattributes) \| [SystemEventAttributes](#systemeventattributes) | 否 | 是 | 场景属性。 |
+| timestamp | number | 否 | 否 | 发生时间戳。单位：ms。 |
+| params | Record\<string, string \| number \| boolean\> | 否 | 是 | 附加参数。默认值：空。 |
+| attributes | [TimeAttributes](#timeattributes) \| [LocationAttributes](#locationattributes) \| [SystemEventAttributes](#systemeventattributes) | 否 | 是 | 场景属性。默认值：空。 |
 
 ## ActionData
 
@@ -407,11 +407,11 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| actionId | string | 否 | 否 | 动作ID（特定前缀格式）。 |
+| actionId | string | 否 | 否 | 动作ID。取值为[onPerception](#behaviorawarenessonperception)回调入参中[PerceptionEvent](#perceptionevent)的perceptionEventId，调用[submitFeedback](#behaviorawarenesssubmitfeedback)时需传入该值。前缀为habitAwareness_。 |
 | actionType | [ActionType](#actiontype) | 否 | 否 | 动作类型。 |
 | name | string | 否 | 否 | 动作名称。 |
-| params | Record\<string, string \| number \| boolean\> | 否 | 是 | 附加参数。默认值：不带附加参数。 |
-| attributes | [SystemActionAttributes](#systemactionattributes) | 否 | 是 | 场景属性。 |
+| params | Record\<string, string \| number \| boolean\> | 否 | 是 | 附加参数。默认值：空。 |
+| attributes | [SystemActionAttributes](#systemactionattributes) | 否 | 是 | 场景属性。默认值：空。 |
 
 ## BehaviorAwarenessPayload
 
@@ -447,8 +447,8 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 | ---- | ---- | ---- | ---- | ---- |
 | perceptionEventId | string | 否 | 否 | 感知事件唯一标识。 |
 | domain | [PerceptionDomain](#perceptiondomain) | 否 | 否 | 感知领域类型。 |
-| confidence | number | 否 | 否 | 置信度，0表示无置信度，100表示置信度完全置信。单位为：百分比。取值应为[0,100]内的整数。 |
-| generateTime | number | 否 | 否 | 生成时间戳。单位为：毫秒。 |
+| confidence | number | 否 | 否 | 置信度，0表示无置信度，100表示置信度完全置信。单位：%。取值应为[0,100]内的整数。 |
+| generateTime | number | 否 | 否 | 生成时间戳。单位：ms。 |
 | payload | [BehaviorAwarenessPayload](#behaviorawarenesspayload) | 否 | 否 | 领域特定数据。 |
 
 ## SubscribeInfo
@@ -466,7 +466,7 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | domain | [PerceptionDomain](#perceptiondomain) | 否 | 否 | 感知领域类型（必填）。 |
-| patternTypes | [PatternType](#patterntype)[] | 否 | 是 | 子类型过滤（可选，不填则订阅该领域下所有模式）。默认值：不设置过滤，订阅该领域下所有子类型。 |
+| patternTypes | [PatternType](#patterntype)[] | 否 | 是 | 子类型过滤（可选，不填则订阅该领域下所有模式）。默认值：空。 |
 
 ## FeedbackData
 
@@ -484,7 +484,7 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 | ---- | ---- | ---- | ---- | ---- |
 | perceptionEventId | string | 否 | 否 | 感知事件ID。 |
 | feedbackType | [FeedbackType](#feedbacktype) | 否 | 否 | 反馈类型。 |
-| feedbackTime | number | 否 | 否 | 反馈时间戳。单位为：毫秒。 |
+| feedbackTime | number | 否 | 否 | 反馈时间戳。单位：ms。 |
 
 ## behaviorAwareness.onPerception
 
