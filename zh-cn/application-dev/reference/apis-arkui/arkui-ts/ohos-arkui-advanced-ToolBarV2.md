@@ -980,25 +980,6 @@ style(styleConfigs: ToolbarV2StyleConfigs): AdvancedToolBarV2Modifier
 | -------------------------------------------------------- | ------------------------------------------ |
 | [AdvancedToolBarV2Modifier](#advancedtoolbarv2modifier) | 返回该modifier对象，可用于链式调用其他方法。 |
 
-## BarBackgroundVisibility
-
-工具栏背景可见性枚举。
-
-**起始版本：** 26.1.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
-
-| 名称     | 值 | 说明                                   |
-| -------- | - | -------------------------------------- |
-| VISIBLE  | 0 | 正常显示工具栏背景（默认）。     |
-| HIDDEN   | 1 | 隐藏工具栏背景。                 |
-
 ## ToolbarV2PaddingOptions
 
 工具栏沿主轴方向的内边距配置。
@@ -1121,7 +1102,6 @@ ToolbarV2ItemGroupStyle的构造函数。
 | 名称                  | 类型                                                            | 只读 | 可选 | 说明                                                                                                                                                                                                                  |
 | :-------------------- | :-------------------------------------------------------------- | :--- | :--- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | padding               | [ToolbarV2PaddingOptions](#toolbarv2paddingoptions)             | 否   | 是   | 工具栏内边距。各边可独立设置。<br />默认值：undefined。<br />值为undefined时，不设置工具栏内边距。                                                                                                                                                                 |
-| backgroundVisibility  | [BarBackgroundVisibility](#barbackgroundvisibility)             | 否   | 是   | 工具栏背景是否可见。<br />默认值：BarBackgroundVisibility.VISIBLE。                                                                                                                                                    |
 | backgroundColor       | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 工具栏背景色。<br />默认值：$r('sys.color.comp_background_primary')。                                                                                                                                                  |
 | backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)   | 否   | 是   | 工具栏背景模糊样式。                                                                                                                                                                                                  |
 | groupSpace            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组之间的间距。<br />默认值：12vp，取值范围[8vp, 20vp]，超出范围时钳制到边界值。                                                                                                                                       |
@@ -1163,7 +1143,6 @@ ToolbarV2ItemGroupStyle的构造函数。
 | 名称                  | 类型                                                            | 只读 | 可选 | 说明                                                                                                                                                                                                                  |
 | :-------------------- | :-------------------------------------------------------------- | :--- | :--- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | padding               | [ToolbarV2PaddingOptions](#toolbarv2paddingoptions)             | 否   | 是   | 工具栏内边距。各边可独立设置。<br />默认值：undefined。<br />值为undefined时，不设置工具栏内边距。<br />装饰器类型：@Trace                                                                                                                                        |
-| backgroundVisibility  | [BarBackgroundVisibility](#barbackgroundvisibility)             | 否   | 是   | 工具栏背景是否可见。<br />默认值：BarBackgroundVisibility.VISIBLE。<br />装饰器类型：@Trace                                                                                                                            |
 | backgroundColor       | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)     | 否   | 是   | 工具栏背景色。<br />默认值：$r('sys.color.comp_background_primary')。<br />装饰器类型：@Trace                                                                                                                          |
 | backgroundBlurStyle   | [BlurStyle](ts-universal-attributes-background.md#blurstyle9)   | 否   | 是   | 工具栏背景模糊样式。<br />默认值：undefined。<br />值为undefined时，不设置背景模糊样式。<br />装饰器类型：@Trace                                                                                                                                                  |
 | groupSpace            | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 分组之间的间距。<br />默认值：12vp，取值范围[8vp, 20vp]，超出范围时钳制到边界值。<br />装饰器类型：@Trace                                                                                                               |
