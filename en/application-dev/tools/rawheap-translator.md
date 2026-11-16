@@ -1,16 +1,15 @@
 # rawheap-translator
-
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @wanghuan2022-->
 <!--Designer: @wanghuan2022-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=6c248426771c373b5fc9ba4ebb7efbb47b9f2d9a translatedAt=2026-08-13T03:18:21.467Z pushedAt=2026-08-13T06:39:38.682Z -->
+<!-- md-trans-meta sourceCommit=eac6be0c5307654c94c5614cc884a64c4ee8b5d6 translatedAt=2026-11-16T09:20:46.698Z pushedAt=2026-11-16T10:55:07.707Z nl=1 -->
 
 ## When to Use
 
-To help you locate issues, the app automatically performs HeapDump when ArkTS Out of Memory (OOM) occurs. This operation saves all object information on the current VM heap to a binary file with the .rawheap extension. In addition, you can call [hidebug.dumpJsRawHeapData](https://developer.huawei.com/consumer/en/doc/harmonyos-references/js-apis-hidebug#hidebugdumpjsrawheapdata18) to obtain the rawheap file of the current thread, or use the command [hidumper --mem-jsheap pid [-T tid] --raw](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/hidumper#querying-vm-heap-memory) to proactively obtain the rawheap file of a specified process or JS thread. You can use the rawheap_translator tool to parse the .rawheap file and generate a .heapsnapshot file. This file can be imported and viewed through [Heap Snapshot offline import](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388) in DevEco Studio or the memory tool in Chrome DevTools.
+To help you locate issues, the app automatically performs HeapDump when ArkTS Out of Memory (OOM) occurs. This operation saves all object information on the current VM heap in a binary file with the .rawheap extension. In addition, you can call [hidebug.dumpJsRawHeapData](https://developer.huawei.com/consumer/en/doc/harmonyos-references/js-apis-hidebug#hidebugdumpjsrawheapdata18) to obtain the rawheap file of the current thread, or use the command [hidumper --mem-jsheap pid [-T tid] --raw](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/hidumper#querying-vm-heap-memory) to proactively obtain the rawheap file of a specified process or JS thread. You can use the rawheap_translator tool to parse the .rawheap file and generate a .heapsnapshot file. This file can be imported and viewed through [Heap Snapshot offline import](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388) in DevEco Studio or the memory tool in Chrome DevTools.
 
 ## Operation Guide
 
@@ -29,19 +28,12 @@ The methods of configuring environment variables vary depending on the system. T
 - On Windows 10:
 
   1. Right-click **This PC** and choose **Properties**.
-
   2. Click **Advanced system settings**.
-
   3. Click **Environment Variables** on the **Advanced** tab page.
-
   4. Double-click the **Path** variable in the **System variables** area.
-
   5. In the displayed window, click **New**.
-
   6. Enter the path of rawheap_translator stored locally in the new text box.
-
   7. Click **OK** to close all the displayed windows.
-
   8. Restart the terminal.
 
 - On macOS 15:
@@ -71,11 +63,9 @@ The methods of configuring environment variables vary depending on the system. T
 ## How to Use
 
 ### Parsing Command
-
 ```bash
 rawheap_translator [rawheap_file] [heapsnapshot_file]
 ```
-
 ### Parameters
 
 | Parameter| Mandatory| Description|
@@ -87,32 +77,26 @@ rawheap_translator [rawheap_file] [heapsnapshot_file]
 
 ### Examples
 
+
 On Windows
 
 Open the cmd window, go to the .rawheap file path, and run the parsing command to generate the .heapsnapshot file in the current path.
-
 ```bash
 > rawheap_translator.exe memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap myapplication-7979-7979.heapsnapshot
 ```
-
 On Linux
 
 Go to the path of the .rawheap file, and run the parsing command to generate the .heapsnapshot file in the current path.
-
 ```bash
 > rawheap_translator memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap myapplication-7979-7979.heapsnapshot
 ```
-
 On macOS
 
 Open the device, go to the .rawheap file path, and run the parsing command to generate the .heapsnapshot file in the current path.
-
 ```bash
 > rawheap_translator memleak-js-com.example.myapplication-7979-7979-20241215191332.rawheap myapplication-7979-7979.heapsnapshot
 ```
-
 Output example
-
 ```bash
 [INFO ] ParseVersion            current metadata version is 1.0.0
 [INFO ] ParseTypeEnums          total JSType count 214
@@ -138,7 +122,6 @@ The rawheap-file size and generation time are strongly and positively correlated
 Starting from API version 20, the VM supports two HeapDump specifications. For details about switching between them, see [setJsRawHeapTrimLevel](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugsetjsrawheaptrimlevel20), which sets the trim level for dumping the raw heap snapshot of the VM in the current process.
 
 Starting from API version 22, TRIM_LEVEL_1 mode adds the capability to parse object property names. As a result, the generated rawheap file is larger than before, and the specific increase depends on the number of object property names and the string size.
-
 | Specifications| Features|
 | :--- | :--- |
 | TRIM_LEVEL_1 | The dump speed is fast, and the generated rawheap file is large.<br>Before API version 20, the VM uses **TRIM_LEVEL_1** by default.|
@@ -155,13 +138,11 @@ To understand the performance and traffic overhead caused by reporting the .rawh
 | TRIM_LEVEL_1 | 576 | 563 | 3.63 | 15 |
 | TRIM_LEVEL_2 | 576 | 294 | 4.53 | 15 |
 
+
 ## FAQs
-
 ### What should I do if the tool version does not match?
-
 **Symptom**<br>
 During parsing, the message "The rawheap file's version 2.0.0 is not matched the current rawheap translator, please use the newest version of the translator!" is displayed.
-
 ```bash
 [INFO ] ParseVersion            current metadata version is 1.0.0
 [INFO ] ParseTypeEnums          total JSType count 214
@@ -173,17 +154,14 @@ During parsing, the message "The rawheap file's version 2.0.0 is not matched the
 [INFO ] ReadVersion             current rawheap version is 2.0.0
 [ERROR] ParseRawheap            The rawheap file's version 2.0.0 is not matched the current rawheap translator, please use the newest version of the translator!
 ```
-
 **Possible Causes**<br>
 The current tool version is earlier than the .rawheap file version.<br>
 **Solution**<br>
 Upgrade the tool version to 2.0.0.
 
 ### What should I do if the file cannot be opened?
-
 **Symptom**<br>
-The message "open file failed!" is displayed during parsing.
-
+The message `open file failed` is displayed during parsing.
 ```bash
 [INFO ] ParseVersion            current metadata version is 1.0.0
 [INFO ] ParseTypeEnums          total JSType count 214
@@ -200,17 +178,14 @@ The message "open file failed!" is displayed during parsing.
 [INFO ] Translate               success
 [ERROR] Initialize              open file failed
 ```
-
 **Possible Causes**<br>
 You do not have the write permission on the specified file generation path.<br>
 **Solution**<br>
 Change the path to a path on which you have the write permission.
 
 ### File Parsing Failure
-
 **Problem Symptom**<br>
 Tool parsing completes, but the conversion fails and no heapsnapshot file is generated.
-
 ```bash
 [INFO ] ParseVersion            current metadata version is 1.0.0
 [INFO ] ParseTypeEnums          total JSType count 214
@@ -225,7 +200,6 @@ Tool parsing completes, but the conversion fails and no heapsnapshot file is gen
 [INFO ] ReadStringTable         string table count 11208
 [INFO ] ReadObjTable            section objects count 96432
 ```
-
 **Cause**<br>
 The parsing tool version is too old.<br>
 **Solution**<br>

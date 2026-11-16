@@ -4,22 +4,22 @@
 <!--Owner: @huanleima-->
 <!--Designer: @liuzuming-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c8bac8c763f0ad2ea3bd60dab61b9ad50c9d01cc translatedAt=2026-10-10T03:56:38.250Z pushedAt=2026-10-10T07:26:05.778Z -->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=7e149378086723215746dc593ef294bdbf7c4bce translatedAt=2026-11-16T09:14:53.982Z pushedAt=2026-11-16T10:51:14.160Z nl=1 -->
 
 Enterprise Device Manager (edm) provides debugging and testing capabilities for device management applications. For example, it can be used to enable or disable extended enterprise device management capabilities.
 
 ## Environment Setup
 
-Before using this tool, you must obtain the <!--Del-->[<!--DelEnd-->hdc tool<!--Del-->](../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)<!--DelEnd--> and run the **hdc shell** command.
+Before using this tool, you must obtain the <!--Del-->[hdc](../../device-dev/subsystems/subsys-toolchain-hdc-guide.md) tool<!--DelEnd--> and run the **hdc shell** command.
 
 ## Commands
 
 | Command         | Description                                                        |
 | ------------- | ------------------------------------------------------------ |
 | help          | Displays the commands supported by the edm tool.                       |
-| enable-admin  | Enables the extended enterprise device management capabilities of a component. The target component must be an [EnterpriseAdminExtensionAbility](../mdm/mdm-kit-admin.md).|
-| disable-admin | Disables the extended enterprise device management capabilities of a component.            |
+| enable-admin  | Activation command, used to activate the enterprise device management extension capability. The target component must be an [EnterpriseAdminExtensionAbility](../mdm/mdm-kit-admin.md). |
+| disable-admin | Deactivation command, used to deactivate the enterprise device management extension capability.            |
 
 ## help
 

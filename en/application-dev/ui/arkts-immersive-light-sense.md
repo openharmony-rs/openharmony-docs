@@ -144,7 +144,7 @@ struct MaterialInfoPage {
 
         // The Select component enables immersive system material by default.
         Select([{ value: 'Option 1' }, { value: 'Option 2' }])
-          .value('选择')
+          .value('Select')
           .margin({ bottom: 10 })
 
         // Disable Select and the immersive system material for Select.
@@ -1076,4 +1076,3 @@ Comparison before and after enabling color inversion:
 
 <!--RP1--><!--RP1End-->
 
-<!--no_check-->

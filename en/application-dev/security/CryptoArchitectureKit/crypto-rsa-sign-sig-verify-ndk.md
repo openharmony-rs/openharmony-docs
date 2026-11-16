@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ccb2328b60eb675989566b23a830be06b8bbccad translatedAt=2026-11-10T01:10:47.645Z pushedAt=2026-11-10T02:43:58.346Z nl=1 -->
+<!-- md-trans-meta sourceCommit=4352e7aaa95fee75f2db154ca5cd69e16f5c30f3 translatedAt=2026-11-16T09:11:32.677Z pushedAt=2026-11-16T10:25:34.098Z nl=1 -->
 
 For the corresponding algorithm specifications, see [RSA Signature Signing and Verification Algorithm Specifications](crypto-sign-sig-verify-overview.md#rsa).
 
@@ -115,7 +115,7 @@ bool DoTestRsaSignature()
 
    There is no limit on the length of a single `update`. You can determine how to call `update` based on the amount of data. If the amount of data is small, you can directly call `OH_CryptoVerify_Final` to pass in all the data at once.
 
-   - When the data to be verified is short, you can directly call [OH_CryptoVerify_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_final) after initialization is complete.
+   - When the data to be signed is short, you can directly call [OH_CryptoVerify_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_final) after initialization is complete.
    - When the amount of data is large, you can call `update` multiple times, that is, [segmented verification](crypto-rsa-sign-sig-verify-ndk.md#segmented-signature-signing-and-verification-using-an-rsa-key-pair-pkcs1-mode).
 
 4. Call [OH_CryptoVerify_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_final), and perform verification on the data.
