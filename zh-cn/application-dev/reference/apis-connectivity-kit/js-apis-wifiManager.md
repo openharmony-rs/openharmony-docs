@@ -27,6 +27,8 @@ isWifiActive(): boolean
 
 查询Wi-Fi开关是否已激活。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -69,6 +71,8 @@ enableWifi(): void
 
 启动Wi-Fi。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 (ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用)
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -106,6 +110,8 @@ disableWifi(): void
 
 关闭Wi-Fi。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 (ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用)
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -142,6 +148,8 @@ disableWifi(): void
 scan(): void
 
 启动Wi-Fi扫描，使用前先开启Wi-Fi。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[wifiManager.startScan](#wifimanagerstartscan21)替代。
@@ -182,6 +190,8 @@ startScan(): void
 - 在后台运行时，三十分钟内最多可扫描一次。
 - 通过[on('wifiScanStateChange')](#wifimanageronwifiscanstatechange)订阅扫描状态变更事件，监听扫描完成通知。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -220,6 +230,8 @@ getScanResults(): Promise&lt;Array&lt;WifiScanInfo&gt;&gt;
 
 - 返回一个Promise对象，解析后得到一个包含多个WifiScanInfo对象的数组，每个对象表示一个Wi-Fi网络的扫描信息。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[wifiManager.getScanInfoList](#wifimanagergetscaninfolist10)替代。
 
@@ -250,6 +262,8 @@ getScanResults(callback: AsyncCallback&lt;Array&lt;WifiScanInfo&gt;&gt;): void
 获取扫描结果，使用callback异步回调。
 
 - 通过回调函数返回一个包含多个WifiScanInfo对象的数组，每个对象表示一个Wi-Fi网络的扫描信息。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[wifiManager.getScanInfoList](#wifimanagergetscaninfolist10)替代。
@@ -323,7 +337,10 @@ getScanResultsSync(): &nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo)&gt;
 
 获取扫描结果，使用同步方式返回一个包含多个WifiScanInfo对象的数组，每个对象表示一个Wi-Fi网络的扫描信息。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
+>
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[wifiManager.getScanInfoList](#wifimanagergetscaninfolist10)替代。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 (ohos.permission.GET_WIFI_PEERS_MAC 或 (ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION))
@@ -380,6 +397,8 @@ getScanResultsSync(): &nbsp;Array&lt;[WifiScanInfo](#wifiscaninfo)&gt;
 getScanInfoList(): Array&lt;WifiScanInfo&gt;
 
 获取包含当前时间点前30s内的缓存扫描结果。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -779,6 +798,8 @@ ArkTS-Sta: addCandidateConfig(config: WifiDeviceConfig): Promise&lt;int&gt;
 - 通过传入[WifiDeviceConfig](#wifideviceconfig)对象，配置Wi-Fi网络的详细信息，如SSID、密码、安全类型等。
 - 返回一个Promise对象，解析后得到一个数字，表示配置的ID(用于区分、管理不同Wi-Fi配置，其他相关API操作，错误处理调试等)。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -843,6 +864,8 @@ ArkTS-Sta: addCandidateConfig(config: WifiDeviceConfig, callback: AsyncCallback&
 - 将指定的Wi-Fi设备配置添加为候选网络，添加后的网络在没有连接记录的情况下无法触发自动回连，可以通过[connectToCandidateConfig](#wifimanagerconnecttocandidateconfig)或[connectToCandidateConfigWithUserAction](#wifimanagerconnecttocandidateconfigwithuseraction20)方法实现候选网络连接，页面确认连接成功后，可实现自动回连。
 - 候选网络属于应用维度添加的网络配置，和系统网络配置是相互隔离的，在系统Wi-Fi页面不可见。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -899,6 +922,8 @@ ArkTS-Sta: removeCandidateConfig(networkId: int): Promise&lt;void&gt;
 
 - 从系统中删除指定网络ID的Wi-Fi候选配置，清理不再需要的Wi-Fi候选配置，释放系统资源。
 - 只能移除通过[addCandidateConfig](#wifimanageraddcandidateconfig)添加的候选配置，移除后该候选网络将不再被系统自动连接。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -962,6 +987,8 @@ ArkTS-Sta: removeCandidateConfig(networkId: int, callback: AsyncCallback&lt;void
 - 从系统中删除指定网络ID的Wi-Fi候选配置，清理不再需要的Wi-Fi候选配置，释放系统资源。
 - 只能移除通过[addCandidateConfig](#wifimanageraddcandidateconfig)添加的候选配置，移除后该候选网络将不再被系统自动连接。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -1016,6 +1043,8 @@ ArkTS-Sta: removeDevice(id: int): void
 - 通过网络配置ID删除已保存的Wi-Fi网络配置信息。
 - 移除后对应的网络配置将不再可用，设备也不会再自动连接该网络。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 (ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用)
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -1063,6 +1092,8 @@ getCandidateConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 - 候选网络是指曾经连接过或者手动添加的网络配置。
 - 该接口返回系统中所有已保存但当前未连接的Wi-Fi网络配置。
 - 用于展示可连接的网络列表或进行网络管理操作。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：**
 
@@ -1122,6 +1153,8 @@ ArkTS-Sta: connectToCandidateConfig(networkId: int): void
 
 应用使用该接口连接到自己添加的候选网络。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -1168,6 +1201,8 @@ ArkTS-Sta: connectToCandidateConfig(networkId: int): void
 connectToCandidateConfig(settings: ConnectSettings): Promise&lt;void&gt;
 
 应用使用该接口连接到自己添加的候选网络，支持设置自定义参数。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
@@ -1237,6 +1272,8 @@ ArkTS-Sta: connectToCandidateConfigWithUserAction(networkId: int): Promise&lt;vo
 - 用户确认是连接过程中的必要步骤，未获得用户信任确认前，连接操作不会执行。
 - 建议在发起连接前先通过startScan接口触发一次Wi-Fi扫描，通过[wifiManager.on('wifiScanStateChange')](#wifimanageronwifiscanstatechange)方法监听到扫描结果刷新后再连接，以提高连接成功率。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 > **说明：**
 > 调用[wifiManager.connectToCandidateConfig](#wifimanagerconnecttocandidateconfig)连接候选网络时，不会返回用户响应结果。
 
@@ -1302,6 +1339,8 @@ ArkTS-Sta: addDeviceConfig(config: WifiDeviceConfig): Promise&lt;int&gt;
 
 类似地，还可以通过[addCandidateConfig](#wifimanageraddcandidateconfig)配合[connectToCandidateConfig](#wifimanagerconnecttocandidateconfig)接口，设置[ConnectSettings](#connectsettings)中addNetworkToSystem为true，实现添加候选网络到系统网络的功能。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -1364,6 +1403,8 @@ addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback&lt;int&gt;): v
 
 可以通过[addCandidateConfig](#wifimanageraddcandidateconfig)配合[connectToCandidateConfig](#wifimanagerconnecttocandidateconfig)接口，设置[ConnectSettings](#connectsettings)中addNetworkToSystem为true，实现添加候选网络到系统网络的功能。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.SET_WIFI_CONFIG
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -1416,6 +1457,8 @@ getDeviceConfigs(): &nbsp;Array&lt;WifiDeviceConfig&gt;
 
 获取网络配置。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.GET_WIFI_CONFIG
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -1462,6 +1505,8 @@ ArkTS-Sta: connectToNetwork(networkId: int): void
 
 应用使用该接口连接到热点。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或 ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -1507,8 +1552,9 @@ ArkTS-Dyn: getSignalLevel(rssi: number, band: number): number
 
 ArkTS-Sta: getSignalLevel(rssi: int, band: int): int
 
-
 查询Wi-Fi信号强度。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1563,6 +1609,8 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 
 获取Wi-Fi连接信息。使用Promise异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 > **说明：**
@@ -1599,6 +1647,8 @@ getLinkedInfo(): Promise&lt;WifiLinkedInfo&gt;
 getLinkedInfo(callback: AsyncCallback&lt;WifiLinkedInfo&gt;): void
 
 获取Wi-Fi连接信息。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1647,6 +1697,8 @@ wifiManager.getLinkedInfo().then((data: wifiManager.WifiLinkedInfo) => {
 getLinkedInfoSync(): WifiLinkedInfo
 
 获取Wi-Fi连接信息，使用同步方式返回结果。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 。 
 
@@ -1710,7 +1762,7 @@ getLinkedInfoSync(): WifiLinkedInfo
 | isRestricted | boolean | 否 | 否 | Wi-Fi接入点是否限制数据量，true: 限制，false:不限制。 **ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | macType | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址。 **ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | macAddress | string | 否 | 否 | 设备的MAC地址。 **ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
-| ipAddress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | Wi-Fi连接的IP地址。<br>1.IP地址在WiFi连接信息和"设置 > 关于本机 > 状态信息"中可以查看。<br>2.ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4)。**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
+| ipAddress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | Wi-Fi连接的IP地址。<br>1.IP地址在WiFi连接信息和"设置 > 关于本机 > 状态信息"中可以查看。<br>2.ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/doccenter-dev-faq/connectivity-kit-faq-0003)。**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | connState | [ConnState](#connstate) | 否 | 否 | Wi-Fi连接状态。 **ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | channelWidth<sup>10+</sup> | [WifiChannelWidth](#wifichannelwidth) | 否 | 否 | 当前连接热点的信道带宽。 **ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
 | wifiStandard<sup>10+</sup> | [WifiStandard](#wifistandard10) | 否 | 否 | 当前路由器支持的最高Wi-Fi标准。 **ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23|
@@ -1765,6 +1817,8 @@ isConnected(): boolean
 
 查询Wi-Fi是否已连接。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -1810,6 +1864,8 @@ disconnect(): void
 
 断开Wi-Fi连接。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 (ohos.permission.MANAGE_WIFI_CONNECTION 仅系统应用可用 或
    ohos.permission.MANAGE_ENTERPRISE_WIFI_CONNECTION 仅企业应用可用)
 
@@ -1849,6 +1905,8 @@ ArkTS-Dyn: isFeatureSupported(featureId: number): boolean
 ArkTS-Sta: isFeatureSupported(featureId: long): boolean
 
 判断设备是否支持相关Wi-Fi特性。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -1916,6 +1974,8 @@ getDeviceMacAddress(): string[]
 
 获取设备的MAC地址。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_LOCAL_MAC 和 ohos.permission.GET_WIFI_INFO
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
@@ -1958,12 +2018,13 @@ API8-15 ohos.permission.GET_WIFI_LOCAL_MAC权限仅向系统应用开放，从AP
 
 ```
 
-
 ## wifiManager.getIpInfo
 
 getIpInfo(): IpInfo
 
 获取IPV4信息。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2005,6 +2066,8 @@ getIpInfo(): IpInfo
 
 IPV4信息。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **ArkTS-Dyn起始版本：** 9
@@ -2013,7 +2076,7 @@ IPV4信息。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ipAddress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | IP地址。(ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-connectivity-4))。|
+| ipAddress | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | IP地址。(ipAddress值为number类型，需要转换为IP常用格式，具体请参考[IP格式转换](https://developer.huawei.com/consumer/cn/doc/doccenter-dev-faq/connectivity-kit-faq-0003))。|
 | gateway | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 网关。 |
 | netmask | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 掩码。 |
 | primaryDns | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 主DNS服务器IP地址。 |
@@ -2027,6 +2090,8 @@ IPV4信息。
 getIpv6Info(): Ipv6Info
 
 获取IPV6信息。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2087,6 +2152,8 @@ getCountryCode(): string
 
 获取国家码信息。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
@@ -2124,13 +2191,13 @@ getCountryCode(): string
 ```
 
 
-
-
 ## wifiManager.isBandTypeSupported<sup>10+</sup>
 
 isBandTypeSupported(bandType: WifiBandType): boolean
 
 判断当前频段是否支持。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO。
 
@@ -2182,6 +2249,8 @@ isMeteredHotspot(): boolean
 
 查询设备当前连接的wifi是否是手机热点。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
@@ -2227,6 +2296,8 @@ isHotspotActive(): boolean
 
 热点是否已开启。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Core
@@ -2270,6 +2341,8 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 
 获取P2P连接信息。使用Promise异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 获取 groupOwnerAddr 还需申请ohos.permission.GET_WIFI_LOCAL_MAC权限（API8-15仅面向系统应用开放。从API 16开始，在PC/2in1设备上面向普通应用开放，在其余设备上仍仅面向系统应用开放），无该权限时，groupOwnerAddr 返回全零地址。
@@ -2302,6 +2375,8 @@ getP2pLinkedInfo(): Promise&lt;WifiP2pLinkedInfo&gt;
 getP2pLinkedInfo(callback: AsyncCallback&lt;WifiP2pLinkedInfo&gt;): void
 
 获取P2P连接信息。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2386,6 +2461,8 @@ getCurrentGroup(): Promise&lt;WifiP2pGroupInfo&gt;
 
 获取P2P当前组信息。使用Promise异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：**
 
 API 10起：ohos.permission.GET_WIFI_INFO
@@ -2417,6 +2494,8 @@ API 10起：ohos.permission.GET_WIFI_INFO
 getCurrentGroup(callback: AsyncCallback&lt;WifiP2pGroupInfo&gt;): void
 
 获取P2P当前组信息。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：**
 
@@ -2467,6 +2546,8 @@ getP2pPeerDevices(): Promise&lt;WifiP2pDevice[]&gt;
 
 获取P2P对端设备列表信息。使用Promise异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：**
 
 API 10起：ohos.permission.GET_WIFI_INFO
@@ -2498,6 +2579,8 @@ API 10起：ohos.permission.GET_WIFI_INFO
 getP2pPeerDevices(callback: AsyncCallback&lt;WifiP2pDevice[]&gt;): void
 
 获取P2P对端设备列表信息。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：**
 
@@ -2584,6 +2667,8 @@ getP2pLocalDevice(): Promise&lt;WifiP2pDevice&gt;
 
 获取P2P本端设备信息，使用Promise异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** 
 
 API 11起：ohos.permission.GET_WIFI_INFO
@@ -2615,6 +2700,8 @@ API 11起：ohos.permission.GET_WIFI_INFO
 getP2pLocalDevice(callback: AsyncCallback&lt;WifiP2pDevice&gt;): void
 
 获取P2P本端设备信息，使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：**
 
@@ -2663,6 +2750,8 @@ API 11起：ohos.permission.GET_WIFI_INFO
 createGroup(config: WifiP2PConfig): void
 
 创建群组。创建群组后，可调用[removeGroup](#wifimanagerremovegroup)移除已创建的群组。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -2749,6 +2838,8 @@ removeGroup(): void
 
 移除群组。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -2788,6 +2879,8 @@ p2pConnect(config: WifiP2PConfig): void
 当WifiP2PConfig中deviceAddressType为0（真实MAC地址）时，若设备MAC地址通过[wifiManager.on('p2pPeerDeviceChange')](#wifimanageronp2ppeerdevicechange)获取，需具备ohos.permission.GET_WIFI_PEERS_MAC权限。
  
 从API版本26.0.0开始，支持通过WifiP2PConfig传入passphrase和groupName进行密钥连接，此时需将deviceAddress参数设置为"00:00:00:00:00:00"。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：**
 
@@ -2890,6 +2983,8 @@ p2pCancelConnect(): void
 
 在P2P连接过程中，取消P2P连接。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO 
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -2925,6 +3020,8 @@ p2pCancelConnect(): void
 startDiscoverDevices(): void
 
 开始发现设备。调用此方法后，可调用[stopDiscoverDevices](#wifimanagerstopdiscoverdevices)停止发现设备以释放资源。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：**
 
@@ -2964,6 +3061,8 @@ stopDiscoverDevices(): void
 
 停止发现设备。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
@@ -2999,6 +3098,8 @@ stopDiscoverDevices(): void
 getMultiLinkedInfo(): &nbsp;Array&lt;WifiLinkedInfo&gt;
 
 获取MLO(Multi-Link Operation，多链路操作)Wi-Fi连接信息。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3067,6 +3168,8 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 
 注册Wi-Fi状态改变事件，在业务退出时，要调用off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -3109,6 +3212,8 @@ on(type: 'wifiStateChange', callback: Callback&lt;number&gt;): void
 off(type: 'wifiStateChange', callback?: Callback&lt;number&gt;): void
 
 取消注册Wi-Fi状态改变事件。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3221,6 +3326,8 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 
 注册Wi-Fi连接状态改变事件，在业务退出时，要调用off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -3261,6 +3368,8 @@ on(type: 'wifiConnectionChange', callback: Callback&lt;number&gt;): void
 off(type: 'wifiConnectionChange', callback?: Callback&lt;number&gt;): void
 
 取消注册Wi-Fi连接状态改变事件。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3373,6 +3482,8 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 
 注册扫描状态改变事件，在业务退出时，要调用off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -3413,6 +3524,8 @@ on(type: 'wifiScanStateChange', callback: Callback&lt;number&gt;): void
 off(type: 'wifiScanStateChange', callback?: Callback&lt;number&gt;): void
 
 取消注册扫描状态改变事件。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3534,6 +3647,8 @@ on(type: 'wifiRssiChange', callback: Callback&lt;number&gt;): void
 
 注册Wi-Fi接收信号强度(RSSI)变化事件，在业务退出时，要调用off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -3595,6 +3710,8 @@ onWifiRssiChange(callback: Callback&lt;int&gt;): void
 off(type: 'wifiRssiChange', callback?: Callback&lt;number&gt;): void
 
 取消注册Wi-Fi接收信号强度(RSSI)变化事件。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3672,6 +3789,8 @@ offWifiRssiChange(callback?: Callback&lt;int&gt;): void
 on(type: 'hotspotStateChange', callback: Callback&lt;number&gt;): void
 
 注册热点状态改变事件，在业务退出时，要调用off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -3753,6 +3872,8 @@ off(type: 'hotspotStateChange', callback?: Callback&lt;number&gt;): void
 
 取消注册热点状态改变事件。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -3830,6 +3951,8 @@ on(type: 'p2pStateChange', callback: Callback&lt;number&gt;): void
 
 注册P2P开关状态改变事件，在业务退出时，要调用off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -3902,6 +4025,8 @@ off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;): void
 
 取消注册P2P开关状态改变事件。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -3948,6 +4073,8 @@ off(type: 'p2pStateChange', callback?: Callback&lt;number&gt;): void
 on(type: 'p2pConnectionChange', callback: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
 注册P2P连接状态改变事件，在业务退出时，要调用off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;)接口去掉之前的注册回调。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -4010,6 +4137,8 @@ onP2pConnectionChange(callback: Callback&lt;WifiP2pLinkedInfo&gt;): void
 off(type: 'p2pConnectionChange', callback?: Callback&lt;WifiP2pLinkedInfo&gt;): void
 
 取消注册P2P连接状态改变事件。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -4118,6 +4247,8 @@ on(type: 'p2pDeviceChange', callback: Callback&lt;WifiP2pDevice&gt;): void
 
 注册P2P设备状态改变事件，在业务退出时，要调用off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** API 10起：ohos.permission.GET_WIFI_INFO
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -4179,6 +4310,8 @@ onP2pDeviceChange(callback: Callback&lt;WifiP2pDevice&gt;): void
 off(type: 'p2pDeviceChange', callback?: Callback&lt;WifiP2pDevice&gt;): void
 
 取消注册P2P设备状态改变事件。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -4252,6 +4385,8 @@ on(type: 'p2pPeerDeviceChange', callback: Callback&lt;WifiP2pDevice[]&gt;): void
 
 注册P2P对端设备状态改变事件，在业务退出时，要调用off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：**
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -4315,6 +4450,8 @@ onP2pPeerDeviceChange(callback: Callback&lt;WifiP2pDevice[]&gt;): void
 off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): void
 
 取消注册P2P对端设备状态改变事件。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
@@ -4388,6 +4525,8 @@ on(type: 'p2pPersistentGroupChange', callback: Callback&lt;void&gt;): void
 
 注册P2P永久组状态改变事件，在业务退出时，要调用off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -4449,6 +4588,8 @@ onP2pPersistentGroupChange(callback: Callback&lt;void&gt;): void
 off(type: 'p2pPersistentGroupChange', callback?: Callback&lt;void&gt;): void
 
 取消注册P2P永久组状态改变事件。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -4527,6 +4668,8 @@ on(type: 'p2pDiscoveryChange', callback: Callback&lt;number&gt;): void
 
 注册发现设备状态改变事件，在业务退出时，要调用off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;)接口去掉之前的注册回调。使用callback异步回调。
 
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
+
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -4596,6 +4739,8 @@ onP2pDiscoveryChange(callback: Callback&lt;int&gt;): void
 off(type: 'p2pDiscoveryChange', callback?: Callback&lt;number&gt;): void
 
 取消注册发现设备状态改变事件。使用callback异步回调。
+
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -4738,8 +4883,10 @@ addDnsSdLocalP2pService(instanceName: string, serviceType: string, txtRecord: Ma
 
 添加并注册一个DNS-SD（DNS Service Discovery，基于DNS的服务发现）本地P2P服务描述，供对端进行服务发现。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
+**ArkTS-Dyn起始版本：** 26.1.0
+ 
 **ArkTS-Sta起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
@@ -4787,8 +4934,10 @@ addUpnpLocalP2pService(uuid: string, device: string, services: Array&lt;string&g
 
 添加并注册一个UPnP（Universal Plug and Play，通用即插即用）本地P2P服务描述，供对端进行服务发现。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
+**ArkTS-Dyn起始版本：** 26.1.0
+ 
 **ArkTS-Sta起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
@@ -4837,8 +4986,10 @@ removeLocalP2pService(srvInfo: WifiP2pServiceInfo): void
 
 移除通过[addDnsSdLocalP2pService](#wifimanageradddnssdlocalp2pservice)或[addUpnpLocalP2pService](#wifimanageraddupnplocalp2pservice)添加的已注册本地服务。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
+**ArkTS-Dyn起始版本：** 26.1.0
+ 
 **ArkTS-Sta起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
@@ -4886,8 +5037,10 @@ getLocalP2pServices(): Promise&lt;Array&lt;WifiP2pServiceInfo&gt;&gt;
 
 查询本地P2P服务，使用Promise异步回调。
 
-**ArkTS-Dyn起始版本：** 26.1.0
+调用此接口前，您可以调用[wifiManager.isWlanSupported](#wifimanageriswlansupported)查询设备是否支持Wi-Fi。
 
+**ArkTS-Dyn起始版本：** 26.1.0
+ 
 **ArkTS-Sta起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
