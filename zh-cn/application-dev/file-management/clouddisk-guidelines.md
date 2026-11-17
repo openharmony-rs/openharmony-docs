@@ -1348,10 +1348,8 @@ static napi_value Execute(napi_env env, napi_callback_info info)
 **应用侧防滥用实践**
 
 - 创建占位符时按云侧文件实际大小设置logicalSize，云侧大小未知时先查询元数据获得实际大小后再创建，避免为未知大小的文件创建占位符。
-- 云侧文件大小变化时，先通过OH_CloudDisk_GetPlaceholderState()确认目标文件为占位符文件（返回state为非占位符时无法更新），再调用OH_CloudDisk_UpdatePlaceholder()按云侧最新元数据重置占位符：本地已水合数据会被清空，占位符回到未水合状态，后续打开文件时重新水合获取云侧最新内容。
+- 云侧文件大小变化时，先通过OH_CloudDisk_GetPlaceholderState()确认目标文件为占位符文件（返回state为非占位符时无法更新），再调用OH_CloudDisk_UpdatePlaceholder()按云侧最新元数据重置占位符：本地已水合数据会被清空，占位符回到未水合状态，后续打开文件时重新水合获取云侧最新内容。若更新时存在水合任务，会返回OH_CLOUD_DISK_HYDRATE_IN_PROGRESS，可取消水合后重试。完整示例参见[CloudDisk示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/README_zh.md)。
 - 不要以st_size判断文件实际数据量：未水合占位符的st_size等于预设值但本地无数据，应以应用自身记录的云侧文件大小为准。
-
-以云侧文件大小变化为例：云侧文件被编辑后大小发生变化，应用从云侧查询到最新大小与时间戳，先调用OH_CloudDisk_GetPlaceholderState()确认目标文件为占位符文件（state为OH_CLOUD_DISK_PLACEHOLDER_STATE_NONE时表示非占位符，无法更新），再调用OH_CloudDisk_UpdatePlaceholder()将本地占位符重置为云侧最新大小（若此时有水合任务进行中，更新会被拒绝并返回OH_CLOUD_DISK_HYDRATE_IN_PROGRESS，可等待水合完成后重试，或调用OH_CloudDisk_HydratePlaceholder()接口并将type参数置为OH_CLOUD_DISK_CALLBACK_TYPE_CANCEL_FETCH_DATA取消水合任务后再更新），本地旧数据被清空，占位符回到未水合状态，后续打开文件时重新水合。完整示例参见[CloudDisk示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/README_zh.md)（更新占位符元数据模块，云侧大小变化修正占位符：查询状态确认目标为占位符文件后，按云侧最新元数据重置占位符）。
 
 **取消水合**
 
