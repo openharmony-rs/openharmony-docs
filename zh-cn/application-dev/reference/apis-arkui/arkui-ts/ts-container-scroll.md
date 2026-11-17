@@ -994,7 +994,7 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 
 从API版本26.1.0开始，List组件、Grid组件和[SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)布局模式的WaterFlow组件支持通过options.fastScroll设置[快速滚动模式](#fastscrollmode)。当smooth为true且fastScroll设置为FastScrollMode.SKIP_MEASURE或FastScrollMode.SKIP_CREATE_AND_MEASURE时，长距离滚动动画可跳过部分滚动路径，并按所选模式减少这段路径上的子组件创建或测量开销。该选项不改变value、align和extraOffset的含义；smooth为false时不生效。ArcList以及ALWAYS_TOP_DOWN布局模式的WaterFlow组件不支持此优化，仍按原有方式滚动。
 
-Grid组件使用FastScrollMode.SKIP_CREATE_AND_MEASURE时，如果目标项及中间项的跨行或跨列信息尚未确定（例如只能在创建GridItem后才能取得），需要通过[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)提前提供完整、准确的跨度信息，包括影响目标位置的所有跨行跨列项（不仅是目标项），否则不保证滚动到目标位置，且不会自动降级为其他模式。使用FastScrollMode.SKIP_MEASURE时，Grid可按需创建中间GridItem以确认跨行或跨列信息。
+从API版本26.1.0开始，Grid组件使用[FastScrollMode](#fastscrollmode).SKIP_CREATE_AND_MEASURE时，如果目标项及中间项的跨行或跨列信息尚未确定（例如只能在创建GridItem后才能取得），需要通过[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)提前提供完整、准确的跨度信息，包括影响目标位置的所有跨行跨列项（不仅是目标项），否则不保证滚动到目标位置，且不会自动降级为其他模式。使用[FastScrollMode](#fastscrollmode).SKIP_MEASURE时，Grid可按需创建中间GridItem以确认跨行或跨列信息。
 
 
 >  **说明：**

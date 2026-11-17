@@ -2360,6 +2360,8 @@ struct Index {
 
 该示例通过[scrollToIndex](ts-container-scroll.md#scrolltoindex)接口，实现了Grid组件滚动到指定位置。长距离滚动时，可通过scrollToIndex的options.fastScroll设置[快速滚动模式](ts-container-scroll.md#fastscrollmode)，减少中间GridItem的创建或测量开销；使用SKIP_CREATE_AND_MEASURE时，需按[GridLayoutOptions](#gridlayoutoptions10对象说明)的要求提供完整、准确的跨行跨列信息。
 
+从API版本26.1.0开始，ScrollToIndexOptions新增fastScroll属性。
+
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
 <!--code_no_check-->
