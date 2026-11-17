@@ -56,11 +56,7 @@ on(type: 'netStatsChange', callback: Callback\<NetStatsChangeInfo\>): void
 ```js
 import { statistics } from '@kit.NetworkKit';
 
-class IFace {
-  iface: string = ""
-  uid?: number = 0
-}
-statistics.on('netStatsChange', (data: IFace) => {
+statistics.on('netStatsChange', (data: statistics.NetStatsChangeInfo) => {
   console.info('on netStatsChange' + JSON.stringify(data));
 });
 ```
@@ -101,11 +97,7 @@ off(type: 'netStatsChange', callback?: Callback\<NetStatsChangeInfo>): void
 ```js
 import { statistics } from '@kit.NetworkKit';
 
-class IFace {
-  iface: string = ""
-  uid?: number = 0
-}
-let callback: (data: IFace) => void = (data: IFace) => {
+let callback: (data: statistics.NetStatsChangeInfo) => void = (data: statistics.NetStatsChangeInfo) => {
     console.info("on netStatsChange, iFace:" + data.iface + " uid: " + data.uid);
 }
 statistics.on('netStatsChange', callback);
@@ -153,31 +145,22 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback\<NetStatsIn
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
 
-let iFaceInfo: statistics.IfaceInfo | null = null;
-if (iFaceInfo) {
-  statistics.getTrafficStatsByIface(iFaceInfo as statistics.IfaceInfo, (error: BusinessError, statsInfo: statistics.NetStatsInfo) => {
-    if (error) {
-      console.error(JSON.stringify(error));
-      return;
-    };
-    console.info(
-      "getTrafficStatsByIface bytes of received = " +
-      JSON.stringify(statsInfo.rxBytes)
-    );
-    console.info(
-      "getTrafficStatsByIface bytes of sent = " +
-      JSON.stringify(statsInfo.txBytes)
-    );
-    console.info(
-      "getTrafficStatsByIface packets of received = " +
-      JSON.stringify(statsInfo.rxPackets)
-    );
-    console.info(
-      "getTrafficStatsByIface packets of sent = " +
-      JSON.stringify(statsInfo.txPackets)
-    );
-  });
-}
+let iFaceInfo: statistics.IfaceInfo = {
+  iface: 'wlan0',
+  startTime: Math.floor(Date.now() / 1000) - 86400,
+  endTime: Math.floor(Date.now() / 1000),
+};
+
+statistics.getTrafficStatsByIface(iFaceInfo, (error: BusinessError, statsInfo: statistics.NetStatsInfo) => {
+  if (error) {
+    console.error(JSON.stringify(error));
+    return;
+  }
+  console.info("getTrafficStatsByIface bytes of received = " + JSON.stringify(statsInfo.rxBytes));
+  console.info("getTrafficStatsByIface bytes of sent = " + JSON.stringify(statsInfo.txBytes));
+  console.info("getTrafficStatsByIface packets of received = " + JSON.stringify(statsInfo.rxPackets));
+  console.info("getTrafficStatsByIface packets of sent = " + JSON.stringify(statsInfo.txPackets));
+});
 ```
 
 ## statistics.getTrafficStatsByIface
@@ -221,29 +204,23 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise\<NetStatsInfo>
 **示例：**
 
 ```js
+import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
 
-let iFaceInfo: statistics.IfaceInfo | null = null;
-if (iFaceInfo) {
-  statistics.getTrafficStatsByIface(iFaceInfo as statistics.IfaceInfo).then((statsInfo: statistics.NetStatsInfo) => {
-    console.info(
-      "getTrafficStatsByIface bytes of received = " +
-      JSON.stringify(statsInfo.rxBytes)
-    );
-    console.info(
-      "getTrafficStatsByIface bytes of sent = " +
-      JSON.stringify(statsInfo.txBytes)
-    );
-    console.info(
-      "getTrafficStatsByIface packets of received = " +
-      JSON.stringify(statsInfo.rxPackets)
-    );
-    console.info(
-      "getTrafficStatsByIface packets of sent = " +
-      JSON.stringify(statsInfo.txPackets)
-    );
-  });
-}
+let iFaceInfo: statistics.IfaceInfo = {
+  iface: 'wlan0',
+  startTime: Math.floor(Date.now() / 1000) - 86400,
+  endTime: Math.floor(Date.now() / 1000),
+};
+
+statistics.getTrafficStatsByIface(iFaceInfo).then((statsInfo: statistics.NetStatsInfo) => {
+  console.info("getTrafficStatsByIface bytes of received = " + JSON.stringify(statsInfo.rxBytes));
+  console.info("getTrafficStatsByIface bytes of sent = " + JSON.stringify(statsInfo.txBytes));
+  console.info("getTrafficStatsByIface packets of received = " + JSON.stringify(statsInfo.rxPackets));
+  console.info("getTrafficStatsByIface packets of sent = " + JSON.stringify(statsInfo.txPackets));
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## statistics.getTrafficStatsByUid
@@ -288,9 +265,9 @@ import { statistics } from '@kit.NetworkKit';
 let uidInfo: statistics.UidInfo = {
   uid: 20010037,
   ifaceInfo: {
-    iface: '',
-    startTime: 1,
-    endTime: 3,
+    iface: 'wlan0',
+    startTime: Math.floor(Date.now() / 1000) - 86400,
+    endTime: Math.floor(Date.now() / 1000),
   }
 }
 
@@ -300,7 +277,7 @@ statistics.getTrafficStatsByUid(
     if (error) {
       console.error(JSON.stringify(error));
       return;
-    };
+    }
     console.info(
       "getTrafficStatsByUid bytes of received = " +
       JSON.stringify(statsInfo.rxBytes)
@@ -362,14 +339,15 @@ getTrafficStatsByUid(uidInfo: UidInfo): Promise\<NetStatsInfo>
 **示例：**
 
 ```js
+import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
 
 let uidInfo: statistics.UidInfo = {
   uid: 20010037,
   ifaceInfo: {
-    iface: '',
-    startTime: 1,
-    endTime: 3,
+    iface: 'wlan0',
+    startTime: Math.floor(Date.now() / 1000) - 86400,
+    endTime: Math.floor(Date.now() / 1000),
   }
 }
 
@@ -378,7 +356,9 @@ statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInf
   console.info("getTrafficStatsByUid bytes of sent = " + JSON.stringify(statsInfo.txBytes));
   console.info("getTrafficStatsByUid packets of received = " + JSON.stringify(statsInfo.rxPackets));
   console.info("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
-})
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## statistics.getTrafficStatsByNetwork<sup>12+</sup>
@@ -422,11 +402,12 @@ getTrafficStatsByNetwork(networkInfo: NetworkInfo): Promise\<UidNetStatsInfo>
 **示例：**
 
 ```js
+import { BusinessError } from '@kit.BasicServicesKit';
 import { connection, statistics } from '@kit.NetworkKit';
 
 let networkInfo: statistics.NetworkInfo = {
   type: connection.NetBearType.BEARER_CELLULAR,
-  startTime: Math.floor(Date.now() / 1000) - 86400 * 7, 
+  startTime: Math.floor(Date.now() / 1000) - 86400 * 7,
   endTime: Math.floor(Date.now() / 1000) + 5,
   simId: 1,
 }
@@ -436,7 +417,9 @@ statistics.getTrafficStatsByNetwork(networkInfo).then((statsInfo: statistics.Uid
   rank.forEach((value: object, key: string) => {
     console.info("getTrafficStatsByNetwork key=" + key + ", value=" + JSON.stringify(value));
   })
-})
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## statistics.getTrafficStatsByUidNetwork<sup>12+</sup>
@@ -481,12 +464,13 @@ getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Promise\<Net
 **示例：**
 
 ```js
+import { BusinessError } from '@kit.BasicServicesKit';
 import { connection, statistics } from '@kit.NetworkKit';
 
 let uid: number = 20020147;
 let networkInfo: statistics.NetworkInfo = {
   type: connection.NetBearType.BEARER_CELLULAR,
-  startTime: Math.floor(Date.now() / 1000) - 86400 * 7, 
+  startTime: Math.floor(Date.now() / 1000) - 86400 * 7,
   endTime: Math.floor(Date.now() / 1000) + 5,
   simId: 1,
 }
@@ -495,7 +479,9 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
   for (let i = 0; i < statsInfoSequence.length; i++) {
     console.info("getTrafficStatsByUidNetwork item:" + JSON.stringify(statsInfoSequence[i]));
   }
-})
+}).catch((error: BusinessError) => {
+  console.error(JSON.stringify(error));
+});
 ```
 
 ## statistics.setCalibrationTraffic
@@ -505,8 +491,6 @@ setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: numbe
 设置流量校准数据。在做流量校准时，可通过本接口设置相关流量数据，接口会将simId对应的剩余流量（remainTraffic）与套餐总流量（totalTraffic）写入系统流量统计数据库并用于后续流量统计与校准计算，校准结果对后续查询接口返回的数据生效。使用Promise异步回调。
 
 **起始版本：** 26.0.0
-
-**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -549,7 +533,7 @@ setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: numbe
 import { BusinessError } from '@kit.BasicServicesKit';
 import { statistics } from '@kit.NetworkKit';
 
-let simId:number = 1;
+let simId: number = 1;
 let remainData:number = 600*1024*1024;   // 当前剩余流量为600MB。
 let totalData:number = 1024*1024*1024;   // 套餐总流量为1GB。
 statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
