@@ -141,6 +141,7 @@
 | [void OH_ArkUI_XComponentSurfaceConfig_Dispose(ArkUI_XComponentSurfaceConfig* config)](#oh_arkui_xcomponentsurfaceconfig_dispose) | 销毁[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)对象。 |
 | [void OH_ArkUI_XComponentSurfaceConfig_SetIsOpaque(ArkUI_XComponentSurfaceConfig* config, bool isOpaque)](#oh_arkui_xcomponentsurfaceconfig_setisopaque) | 设置XComponent组件持有的Surface在渲染时是否被视为不透明，无论该Surface是否存在半透明像素。 |
 | [int32_t OH_ArkUI_SurfaceHolder_SetSurfaceConfig(OH_ArkUI_SurfaceHolder* surfaceHolder, ArkUI_XComponentSurfaceConfig *config)](#oh_arkui_surfaceholder_setsurfaceconfig) | 为[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例设置Surface选项。 |
+| [int32_t OH_ArkUI_XComponent_EnableSurfaceVisibilityLifecycle(OH_NativeXComponent* component, bool isVisibilityLifecycle)](#oh_arkui_xcomponent_enablesurfacevisibilitylifecycle) | 为XComponent启用surface可见性生命周期。<br>默认情况下，XComponent持有的Surface生命周期回调跟随组件的挂载与卸载触发。启用后，Surface生命周期回调跟随组件的可见性变化触发：组件不可见时触发onSurfaceDestroyed回调，组件重新可见时触发onSurfaceCreated回调，可在组件不显示时释放Surface资源，降低内存占用。仅支持UI线程调用。 |
 
 ### 变量
 
@@ -2285,3 +2286,32 @@ int32_t OH_ArkUI_SurfaceHolder_SetSurfaceConfig(OH_ArkUI_SurfaceHolder* surfaceH
 | 类型 | 说明 |
 | -- | -- |
 | int32_t | 返回执行结果。<br>返回 [ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回 [ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
+
+### OH_ArkUI_XComponent_EnableSurfaceVisibilityLifecycle()
+
+```c
+int32_t OH_ArkUI_XComponent_EnableSurfaceVisibilityLifecycle(OH_NativeXComponent* component, bool isVisibilityLifecycle)
+```
+
+**描述：**
+
+
+为XComponent启用surface可见性生命周期。
+
+默认情况下，XComponent持有的Surface生命周期回调跟随组件的挂载与卸载触发。启用后，Surface生命周期回调跟随组件的可见性变化触发：组件不可见时触发onSurfaceDestroyed回调，组件重新可见时触发onSurfaceCreated回调，可在组件不显示时释放Surface资源，降低内存占用。仅支持UI线程调用。
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | [入参] 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
+| bool isVisibilityLifecycle | [入参] 表示是否启用surface可见性生命周期。true表示启用，Surface生命周期回调跟随组件可见性变化；false表示关闭，Surface生命周期回调跟随组件挂载与卸载，默认值为false。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 返回执行结果。<br>返回[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 执行成功。<br>返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) - 传入参数异常。 |
