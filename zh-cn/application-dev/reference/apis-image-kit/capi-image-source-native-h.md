@@ -903,7 +903,7 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromUri(char *uri, size_t uriSize, OH
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>IMAGE_BAD_PARAMETER：URL是空指针。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>IMAGE_BAD_PARAMETER：uri是空指针。 |
 
 ### OH_ImageSourceNative_CreateFromFd()
 
