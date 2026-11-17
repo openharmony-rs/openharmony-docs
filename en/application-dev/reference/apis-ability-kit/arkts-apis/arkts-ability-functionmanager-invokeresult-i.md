@@ -1,0 +1,91 @@
+# InvokeResult
+
+```TypeScript
+interface InvokeResult
+```
+
+Encapsulates the success or failure status of function invocation.
+
+**Since:** 26.1.0
+
+<!--Device-functionManager-interface InvokeResult--><!--Device-functionManager-interface InvokeResult-End-->
+
+**System capability:** SystemCapability.Ability.AgentRuntime.Core
+
+## Modules to Import
+
+```TypeScript
+import { functionManager, FunctionHook, InvokeFunctionParam, FunctionResultWrap } from '@kit.AbilityKit';
+```
+
+## data
+
+```TypeScript
+data?: any
+```
+
+The returned data on success. The type can be any JSON value. Only present when [success](#success) is true.
+
+**Type:** any
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InvokeResult-data?: any--><!--Device-InvokeResult-data?: any-End-->
+
+**System capability:** SystemCapability.Ability.AgentRuntime.Core
+
+## errorCode
+
+```TypeScript
+errorCode?: number
+```
+
+The error code on failure (numeric). Only present when [success](#success) is false.
+
+**Type:** number
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InvokeResult-errorCode?: number--><!--Device-InvokeResult-errorCode?: number-End-->
+
+**System capability:** SystemCapability.Ability.AgentRuntime.Core
+
+## errorMsg
+
+```TypeScript
+errorMsg?: string
+```
+
+The error description on failure. Only present when [success](#success) is false.
+
+**Type:** string
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InvokeResult-errorMsg?: string--><!--Device-InvokeResult-errorMsg?: string-End-->
+
+**System capability:** SystemCapability.Ability.AgentRuntime.Core
+
+## success
+
+```TypeScript
+success: boolean
+```
+
+Indicates whether the invocation was successful (at business logic level). true: Invocation succeeded, [data](#data) contains the returned data. false: Invocation failed, [errorCode](#errorcode) and [errorMsg](#errormsg) contain error information.
+
+**Type:** boolean
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-InvokeResult-success: boolean--><!--Device-InvokeResult-success: boolean-End-->
+
+**System capability:** SystemCapability.Ability.AgentRuntime.Core

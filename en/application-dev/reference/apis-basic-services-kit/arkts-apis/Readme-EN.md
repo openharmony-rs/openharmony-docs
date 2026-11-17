@@ -394,6 +394,8 @@
   <!--Del-->
   - [refreshActivity(system api)](arkts-basicservices-power-refreshactivity-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [registerHibernateCallback(system api)](arkts-basicservices-power-registerhibernatecallback-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [registerShutdownCallback(system api)](arkts-basicservices-power-registershutdowncallback-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [setPowerConfig(system api)](arkts-basicservices-power-setpowerconfig-f-sys.md)<!--DelEnd-->
@@ -408,11 +410,15 @@
   <!--Del-->
   - [suspend(system api)](arkts-basicservices-power-suspend-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [unregisterHibernateCallback(system api)](arkts-basicservices-power-unregisterhibernatecallback-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [unregisterShutdownCallback(system api)](arkts-basicservices-power-unregistershutdowncallback-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [wakeup(system api)](arkts-basicservices-power-wakeup-f-sys.md)<!--DelEnd-->
   - [isScreenOn](arkts-basicservices-power-isscreenon-f.md)
   - [rebootDevice](arkts-basicservices-power-rebootdevice-f.md)
+  <!--Del-->
+  - [HibernateCallback(system api)](arkts-basicservices-power-hibernatecallback-i-sys.md)<!--DelEnd-->
   - [DevicePowerMode](arkts-basicservices-power-devicepowermode-e.md)
   - [DevicePowerSubMode](arkts-basicservices-power-devicepowersubmode-e.md)
   <!--Del-->

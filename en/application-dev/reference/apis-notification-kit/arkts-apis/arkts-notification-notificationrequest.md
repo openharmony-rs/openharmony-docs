@@ -22,7 +22,7 @@
 | [NotificationFilter](arkts-notification-notificationrequest-notificationfilter-i-sys.md) | Describes the filter criteria for querying live view notifications. |
 | [NotificationRequest](arkts-notification-notificationrequest-i-sys.md) | Defines the data structure of a [notification request](../../../notification/notification-glossary.md#notification-request), which is used to describe all information of a notification, including [notification content](../../../notification/notification-glossary.md#notification-content), identifier, display style, interaction behavior, and so on. |
 | [Trigger](arkts-notification-notificationrequest-trigger-i-sys.md) | Defines the details for triggering a geofence. |
-| [UnifiedGroupInfo](arkts-notification-notificationrequest-unifiedgroupinfo-i-sys.md) | Describes the information fields of notification [smart aggregation](../../../notification/notification-glossary.md#notification-smart-aggregation). |
+| [UnifiedGroupInfo](arkts-notification-notificationrequest-unifiedgroupinfo-i-sys.md) | Describes the information fields of notification smart aggregation. |
 <!--DelEnd-->
 
 <!--Del-->

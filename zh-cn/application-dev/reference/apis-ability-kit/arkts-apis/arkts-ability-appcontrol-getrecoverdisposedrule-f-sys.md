@@ -40,4 +40,4 @@ function getRecoverDisposedRule(): RecoverDisposedRule
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied. A non-system application is not allowed to call a system API. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700101](../errorcode-bundle.md#17700101-包管理服务异常) | Bundle manager service exception. |
-| 18400001 | The caller has not configured disposal rules. |
+| [18400001](../errorcode-bundle.md#18400001-调用方未配置处置规则) | The caller has not configured disposal rules. |

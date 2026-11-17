@@ -1,12 +1,12 @@
 # ArkTS API<!--arkts-corefilekit-->
 
-- [@ohos.application.BackupExtensionAbility](arkts-corefile-application-backupextensionability.md)
+- [@ohos.application.BackupExtensionAbility（备份恢复拓展能力）](arkts-corefile-application-backupextensionability.md)
   - [BackupExtensionAbility](arkts-corefile-application-backupextensionability-backupextensionability-c.md)
   <!--Del-->
   - [BackupExtensionAbility（系统接口）](arkts-corefile-application-backupextensionability-backupextensionability-c-sys.md)<!--DelEnd-->
   - [BundleVersion](arkts-corefile-application-backupextensionability-bundleversion-i.md)
 <!--Del-->
-- [@ohos.file.backup](arkts-corefile-file-backup.md)<!--DelEnd-->
+- [@ohos.file.backup（备份恢复能力）](arkts-corefile-file-backup.md)<!--DelEnd-->
   <!--Del-->
   - [fileSystemServiceRequest（系统接口）](arkts-corefile-backup-filesystemservicerequest-f-sys.md)<!--DelEnd-->
   <!--Del-->
@@ -51,7 +51,7 @@
   - [OnBackupSizeReport（系统接口）](arkts-corefile-backup-onbackupsizereport-t-sys.md)<!--DelEnd-->
   <!--Del-->
   - [OnFileReadyBatch（系统接口）](arkts-corefile-backup-onfilereadybatch-t-sys.md)<!--DelEnd-->
-- [@ohos.file.BackupExtensionContext](arkts-corefile-file-backupextensioncontext.md)
+- [@ohos.file.BackupExtensionContext（备份恢复拓展上下文）](arkts-corefile-file-backupextensioncontext.md)
   - [BackupExtensionContext](arkts-corefile-file-backupextensioncontext-backupextensioncontext-c.md)
 <!--Del-->
 - [@ohos.file.cloudDiskManager（云盘管理）](arkts-corefile-file-clouddiskmanager.md)<!--DelEnd-->
@@ -421,7 +421,7 @@
   - [Volume（系统接口）](arkts-corefile-volumemanager-volume-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [DiskType（系统接口）](arkts-corefile-volumemanager-disktype-e-sys.md)<!--DelEnd-->
-- [@ohos.fileshare](arkts-corefile-fileshare.md)
+- [@ohos.fileshare（文件分享）](arkts-corefile-fileshare.md)
   - [activatePermission](arkts-corefile-fileshare-activatepermission-f.md)
   <!--Del-->
   - [checkPathPermission（系统接口）](arkts-corefile-fileshare-checkpathpermission-f-sys.md)<!--DelEnd-->

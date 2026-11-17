@@ -14,7 +14,7 @@ function discoverServices(): void
 
 Starts P2P service discovery. The pending requests' TLV queries are used, falling back to all service types if the pending list is empty. Use [addDnsSdServiceRequest](arkts-connectivity-wifimanager-adddnssdservicerequest-f.md) or [addUpnpServiceRequest](arkts-connectivity-wifimanager-addupnpservicerequest-f.md) to add a service request before starting discovery.
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Required permissions:** ohos.permission.GET_WIFI_PEERS_MAC
 

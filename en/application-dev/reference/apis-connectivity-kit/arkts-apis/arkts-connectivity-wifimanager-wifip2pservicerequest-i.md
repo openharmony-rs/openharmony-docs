@@ -6,7 +6,7 @@ interface WifiP2pServiceRequest
 
 Represents the P2P service discovery request (TLV query).
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 <!--Device-wifiManager-interface WifiP2pServiceRequest--><!--Device-wifiManager-interface WifiP2pServiceRequest-End-->
 
@@ -28,7 +28,7 @@ Service protocol type.
 
 **Type:** [P2pServiceProtocolType](arkts-connectivity-wifimanager-p2pserviceprotocoltype-e.md)
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -46,7 +46,7 @@ Query bytes. The maximum length is 256.
 
 **Type:** Uint8Array
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

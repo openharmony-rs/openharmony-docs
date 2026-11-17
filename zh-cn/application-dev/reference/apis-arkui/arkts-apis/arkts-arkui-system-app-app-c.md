@@ -165,7 +165,7 @@ export default {
 static setImageCacheCount(value: number): void
 ```
 
-Set image cache capacity of decoded image count. if not set, the application will not cache any decoded image.
+设置内存中缓存解码后图片的数量上限，提升再次加载同源图片的加载速度。如果不设置则默认为0，不进行缓存。
 
 **起始版本：** 7
 
@@ -181,7 +181,7 @@ Set image cache capacity of decoded image count. if not set, the application wil
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | capacity of decoded image count. |
+| value | number | 是 | 内存中解码后图片的缓存数量。 |
 
 **示例**
 
@@ -262,7 +262,7 @@ export default class OnC {
 static setImageRawDataCacheSize(value: number): void
 ```
 
-Set image cache capacity of raw image data size in bytes before decode. if not set, the application will not cache any raw image data.
+设置内存中缓存解码前图片数据的大小上限，单位为字节，提升再次加载同源图片的加载速度。如果不设置则默认为0，不进行缓存。
 
 **起始版本：** 7
 
@@ -278,7 +278,7 @@ Set image cache capacity of raw image data size in bytes before decode. if not s
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number | 是 | capacity of raw image data size in bytes. |
+| value | number | 是 | 内存中解码前图片数据的缓存大小，单位为字节。 |
 
 **示例**
 
@@ -414,7 +414,7 @@ export default {
 static requestFullWindow(options?: RequestFullWindowOptions): void
 ```
 
-Requests the application to run in full window. In some scenarios, such as semi-modal FA, the FA runs in non-full window. In this case, you can call this API. This API is invalid for an application already in full-window mode.
+请求应用以全窗口运行，FA在某些场景下（如半模态FA）会以非全窗口运行，调用该接口会从非全窗口切换为全窗口运行，如果已经以全窗口运行则该接口调用无效。从API version 7开始，推荐使用@ohos.window (窗口)。
 
 **起始版本：** 3
 
@@ -430,7 +430,7 @@ Requests the application to run in full window. In some scenarios, such as semi-
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| options | [RequestFullWindowOptions](arkts-arkui-system-app-requestfullwindowoptions-i.md) | 否 | Transition time from non-full window to full window, in milliseconds. By default, the value is in direct proportion to the distance between the non-full window and the full window. |
+| options | [RequestFullWindowOptions](arkts-arkui-system-app-requestfullwindowoptions-i.md) | 否 | 请求全窗口时，设定非全窗口到全窗口的过渡时间，单位为毫秒，默认时间与非全窗口到全窗口的距离成正比。 |
 
 **示例**
 

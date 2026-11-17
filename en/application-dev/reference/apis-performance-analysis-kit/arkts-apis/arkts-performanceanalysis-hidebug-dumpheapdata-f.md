@@ -14,6 +14,11 @@ function dumpHeapData(filename: string): void
 
 Dumps the VM heap data and generates the **filename.heapsnapshot** file.
 
+> **NOTE:** 
+> 
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use
+> [hidebug.dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md) instead.
+
 **Since:** 8
 
 **Deprecated since:** 9

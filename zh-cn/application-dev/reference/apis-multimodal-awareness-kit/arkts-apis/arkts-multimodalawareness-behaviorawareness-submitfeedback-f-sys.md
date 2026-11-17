@@ -12,7 +12,7 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 export function submitFeedback(feedback: FeedbackData): Promise<void>
 ```
 
-提交用户反馈。业务侧将用户反馈发送给 MSDP。
+提交用户反馈。业务侧将用户对感知事件的反馈传递给MSDP。
 
 **起始版本：** 26.1.0
 
@@ -34,12 +34,12 @@ export function submitFeedback(feedback: FeedbackData): Promise<void>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;void&gt; | 无返回值的 Promise。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application uses the system API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: <br>1. The hardware does not support the capability. <br>2. The chip does not support the capability. <br>3. A dependent service feature is not supported. |
 | [32500001](../errorcode-deviceStatus.md#32500001-服务异常) | Service exception. |

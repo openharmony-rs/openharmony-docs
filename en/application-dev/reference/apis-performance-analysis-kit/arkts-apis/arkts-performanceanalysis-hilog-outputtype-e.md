@@ -4,7 +4,7 @@
 enum OutputType
 ```
 
-Enumerates output type of hilog.
+Enum values for hilog output types. DEFAULT and CONSOLE_ONLY are suitable for console-only output scenarios, PRIVATE_SANDBOX_ONLY is suitable for privacy log storage, SHARE_SANDBOX_ONLY is suitable for scenarios requiring cloud log collection, PRIVATE_SANDBOX_WITH_CONSOLE and SHARE_SANDBOX_WITH_CONSOLE are suitable for scenarios requiring both console output and sandbox storage.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,7 @@ Enumerates output type of hilog.
 CONSOLE_ONLY = 0
 ```
 
-CONSOLE_ONLY Hilog is output to the console only, equivalent to DEFAULT.
+hilog outputs to console only, equivalent to DEFAULT.
 
 **Since:** 26.0.0
 
@@ -36,7 +36,7 @@ CONSOLE_ONLY Hilog is output to the console only, equivalent to DEFAULT.
 DEFAULT = 0
 ```
 
-DEFAULT Default output type, equivalent to CONSOLE_ONLY.
+Default output type. hilog outputs to console only, equivalent to CONSOLE_ONLY.
 
 **Since:** 26.0.0
 
@@ -54,7 +54,7 @@ DEFAULT Default output type, equivalent to CONSOLE_ONLY.
 PRIVATE_SANDBOX_ONLY = 1
 ```
 
-PRIVATE_SANDBOX_ONLY Hilog is output to files in its own private sandbox.
+hilog logs are persisted to the application private sandbox. This path is only accessible by the application itself.
 
 **Since:** 26.0.0
 
@@ -72,7 +72,7 @@ PRIVATE_SANDBOX_ONLY Hilog is output to files in its own private sandbox.
 PRIVATE_SANDBOX_WITH_CONSOLE = 3
 ```
 
-PRIVATE_SANDBOX_WITH_CONSOLE Enable both CONSOLE_ONLY and PRIVATE_SANDBOX_ONLY at the same time.
+Simultaneously enables CONSOLE_ONLY and PRIVATE_SANDBOX_ONLY.
 
 **Since:** 26.0.0
 
@@ -90,7 +90,7 @@ PRIVATE_SANDBOX_WITH_CONSOLE Enable both CONSOLE_ONLY and PRIVATE_SANDBOX_ONLY a
 SHARE_SANDBOX_ONLY = 2
 ```
 
-SHARE_SANDBOX_ONLY Hilog is output to files in its own sandbox, accessible to itself and the hiview service.
+hilog logs are persisted to the application shared sandbox. This path is accessible by both the application and the system.
 
 **Since:** 26.0.0
 
@@ -108,7 +108,7 @@ SHARE_SANDBOX_ONLY Hilog is output to files in its own sandbox, accessible to it
 SHARE_SANDBOX_WITH_CONSOLE = 4
 ```
 
-SHARE_SANDBOX_WITH_CONSOLE Enable both CONSOLE_ONLY and SHARE_SANGBOX_ONLY at the same time.
+Simultaneously enables CONSOLE_ONLY and SHARE_SANDBOX_ONLY.
 
 **Since:** 26.0.0
 

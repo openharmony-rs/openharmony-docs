@@ -42,7 +42,7 @@ Certificate data. The size cannot exceed 8 KB. <br>When certificateType is set t
 certScope: CertificateScope
 ```
 
-Usage scope of the certificate to install. **CURRENT_USER** and **NOT_SPECIFIED** are currently supported.
+Application scope of the certificate to be installed. Currently, **CURRENT_USER** and **NOT_SPECIFIED** are supported.
 
 **Type:** [CertificateScope](arkts-devicecertificate-certificatemanagerdialog-certificatescope-e.md)
 
@@ -78,7 +78,7 @@ Type of the certificate to install. **CA_CERT**, **CREDENTIAL_USER**, and **CRED
 keystorePwd?: string
 ```
 
-Password of the keystore file. This parameter is valid only when certType is set to CREDENTIAL_USER or CREDENTIAL_SYSTEM. If keystorePwd is specified, the user does not need to enter the password in the dialog box. The maximum length is 128.
+Password of the keystore file. This parameter is valid only when certType is set to CREDENTIAL_USER or CREDENTIAL_SYSTEM. If keystorePwd is specified, you do not need to enter the password in the dialog box. The maximum length is 32 bytes.
 
 **Type:** string
 

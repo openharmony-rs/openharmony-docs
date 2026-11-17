@@ -132,3 +132,81 @@ try {
   console.error(`Failed to set Wi-Fi P2P disabled. Code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+
+## setDisallowedPolicy
+
+```TypeScript
+function setDisallowedPolicy(feature: FeatureForDevice, disallow: boolean): void
+```
+
+Enable or disable the feature of a specified device. After the feature is disabled, the feature cannot be used.
+
+**Since:** 26.1.0
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-restrictions-function setDisallowedPolicy(feature: FeatureForDevice, disallow: boolean): void--><!--Device-restrictions-function setDisallowedPolicy(feature: FeatureForDevice, disallow: boolean): void-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| feature | [FeatureForDevice](arkts-mdm-restrictions-featurefordevice-e.md) | Yes | Specifies the device characteristics to disable or allow. <br> **Note: *           * The application applies for the permission ohos.permission.PERSONAL_MANAGE_RESTRICTIONS and activates it as the [BDA](../../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod device administrator) through the [startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md). You can use this interface to set the following features: the status of the features marked with "√" in the BYOD column in [FeatureForDevice](arkts-mdm-restrictions-featurefordevice-e.md). |
+| disallow | boolean | Yes | The value true indicates that the function is forbidden, and the value false indicates that the function is allowed. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: <br>1. The hardware does not support the capability. <br>2. The chip does not support the capability. <br>3. A dependent service feature is not supported. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-deviceadmin-not-enabled) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
+| [9200010](../errorcode-enterpriseDeviceManager.md#9200010-policy-conflict) | A conflict policy has been configured. |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-parameter-verification-failed) | Parameter verification failed. |
+| [9200013](../errorcode-enterpriseDeviceManager.md#9200013-control-not-immediately-effective) | The enterprise management policy has been successfully set, but the function has not taken effect in real time. |
+| [9200016](../errorcode-enterpriseDeviceManager.md#9200016-service-timeout) | Service timeout. |
+
+**Examples**
+
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // Replace parameters with actual values.
+  restrictions.setDisallowedPolicy(wantTemp, 'printer', true);
+  console.info('Succeeded in setting printer disabled');
+} catch (err) {
+  console.error(`Failed to set printer disabled. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  restrictions.setDisallowedPolicy(wantTemp, restrictions.FeatureForDevice.WIFI_P2P, true);
+  console.info('Succeeded in setting Wi-Fi P2P disabled');
+} catch (err) {
+  console.error(`Failed to set Wi-Fi P2P disabled. Code is ${err.code}, message is ${err.message}`);
+}
+```

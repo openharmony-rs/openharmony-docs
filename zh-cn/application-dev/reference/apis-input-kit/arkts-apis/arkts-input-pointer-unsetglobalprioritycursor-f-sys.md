@@ -40,4 +40,4 @@ function unsetGlobalPriorityCursor(): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [3800001](../errorcode-infraredemitter.md#3800001-多模输入服务内部错误) | Input service exception. Possible causes: 1. Memory allocation failure.         2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later. |
-| 26500002 | The global high-priority cursor was not set by the caller and cannot be cleared. |
+| [26500002](../errorcode-pointer.md#26500002-无法清除非调用者设置的全局高优先级光标) | The global high-priority cursor was not set by the caller and cannot be cleared. |

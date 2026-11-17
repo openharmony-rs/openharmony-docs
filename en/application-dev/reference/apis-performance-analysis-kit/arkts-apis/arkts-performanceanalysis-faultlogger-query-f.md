@@ -36,7 +36,7 @@ Obtains the fault information about the current application. This API uses an as
 | Error Code ID | Error Message |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: The specified SystemCapability name was not found. |
-| [10600001](../errorcode-faultlogger.md#10600001-service-faulty-or-not-started) | The service is not started or is faulty |
+| [10600001](../errorcode-faultlogger.md#10600001-service-faulty-or-not-started) | The service is not started or is faulty. |
 
 **Examples**
 
@@ -106,7 +106,7 @@ Obtains the fault information about the current application. This API uses a pro
 | Error Code ID | Error Message |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: The specified SystemCapability name was not found. |
-| [10600001](../errorcode-faultlogger.md#10600001-service-faulty-or-not-started) | The service is not started or is faulty |
+| [10600001](../errorcode-faultlogger.md#10600001-service-faulty-or-not-started) | The service is not started or is faulty. |
 
 **Examples**
 

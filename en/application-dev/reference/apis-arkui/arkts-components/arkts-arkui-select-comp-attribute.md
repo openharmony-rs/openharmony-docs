@@ -312,7 +312,7 @@ Sets the font color of the drop-down button. Compared with [fontColor](#fontcolo
 keyboardAvoidMode(mode: Optional<MenuKeyboardAvoidMode>)
 ```
 
-Sets whether the drop-down menu avoids the soft keyboard. If this API is not used, the drop-down menu avoids the soft keyboard by default.
+Sets whether the drop-down menu avoids the soft keyboard. If this API is not used, the drop-down menu does not avoid the soft keyboard by default.
 
 **Since:** 23
 

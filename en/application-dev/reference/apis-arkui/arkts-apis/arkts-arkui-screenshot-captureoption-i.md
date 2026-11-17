@@ -53,3 +53,27 @@ ID of the [display](arkts-arkui-display-displaystate-e.md) to capture. The defau
 <!--Device-CaptureOption-displayId?: long--><!--Device-CaptureOption-displayId?: long-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
+
+## pixelFormat
+
+```TypeScript
+pixelFormat?: image.PixelMapFormat
+```
+
+Pixel format of the captured image. Only [RGBA_8888](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmapformat-e.md) and [BGRA_8888](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmapformat-e.md) are supported. If this parameter is not specified, the default value **image.PixelMapFormat.RGBA_8888** is used.
+
+[
+
+**Type:** [image.PixelMapFormat](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmapformat-e.md)
+
+**Default:** ](https://gitcode.com/default) image.PixelMapFormat.RGBA_8888
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-CaptureOption-pixelFormat?: image.PixelMapFormat--><!--Device-CaptureOption-pixelFormat?: image.PixelMapFormat-End-->
+
+**System capability:** SystemCapability.WindowManager.WindowManager.Core

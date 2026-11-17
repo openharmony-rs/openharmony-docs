@@ -15,7 +15,7 @@ declare enum FontWeight
 ## Bold
 
 ```TypeScript
-Bold = 4
+Bold
 ```
 
 700字重，字体较粗。
@@ -26,14 +26,14 @@ Bold = 4
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-FontWeight-Bold = 4--><!--Device-FontWeight-Bold = 4-End-->
+<!--Device-FontWeight-Bold--><!--Device-FontWeight-Bold-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Bolder
 
 ```TypeScript
-Bolder = 5
+Bolder
 ```
 
 900字重，字体非常粗。
@@ -44,14 +44,14 @@ Bolder = 5
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-FontWeight-Bolder = 5--><!--Device-FontWeight-Bolder = 5-End-->
+<!--Device-FontWeight-Bolder--><!--Device-FontWeight-Bolder-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Lighter
 
 ```TypeScript
-Lighter = 0
+Lighter
 ```
 
 100字重，字体较细。
@@ -62,14 +62,14 @@ Lighter = 0
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-FontWeight-Lighter = 0--><!--Device-FontWeight-Lighter = 0-End-->
+<!--Device-FontWeight-Lighter--><!--Device-FontWeight-Lighter-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Medium
 
 ```TypeScript
-Medium = 3
+Medium
 ```
 
 500字重，字体粗细适中。
@@ -80,14 +80,14 @@ Medium = 3
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-FontWeight-Medium = 3--><!--Device-FontWeight-Medium = 3-End-->
+<!--Device-FontWeight-Medium--><!--Device-FontWeight-Medium-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Normal
 
 ```TypeScript
-Normal = 1
+Normal
 ```
 
 400字重，字体粗细正常。
@@ -98,14 +98,14 @@ Normal = 1
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-FontWeight-Normal = 1--><!--Device-FontWeight-Normal = 1-End-->
+<!--Device-FontWeight-Normal--><!--Device-FontWeight-Normal-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Regular
 
 ```TypeScript
-Regular = 2
+Regular
 ```
 
 400字重，字体粗细正常，与Normal效果相同。
@@ -116,6 +116,6 @@ Regular = 2
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-FontWeight-Regular = 2--><!--Device-FontWeight-Regular = 2-End-->
+<!--Device-FontWeight-Regular--><!--Device-FontWeight-Regular-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

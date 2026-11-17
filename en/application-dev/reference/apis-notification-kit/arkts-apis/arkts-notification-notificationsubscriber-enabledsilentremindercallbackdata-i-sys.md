@@ -4,7 +4,7 @@
 export interface EnabledSilentReminderCallbackData
 ```
 
-Returns the changes of the [silent reminder](../../../notification/notification-glossary.md#silent-reminder) switch state of application notifications.
+Returns the changes of the silent reminder switch state of application notifications.
 
 **Since:** 24
 

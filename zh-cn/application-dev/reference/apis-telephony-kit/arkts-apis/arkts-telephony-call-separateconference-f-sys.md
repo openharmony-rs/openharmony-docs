@@ -41,7 +41,7 @@ function separateConference(callId: number, callback: AsyncCallback<void>): void
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| 8300008 | Conference call is not active. |
+| [8300008](../errorcode-telephony.md#8300008-电话会议未激活) | Conference call is not active. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
 <!--Del-->
@@ -102,7 +102,7 @@ function separateConference(callId: number): Promise<void>
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| 8300008 | Conference call is not active. |
+| [8300008](../errorcode-telephony.md#8300008-电话会议未激活) | Conference call is not active. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
 <!--Del-->

@@ -22,6 +22,8 @@ AV_METRICS_EVENT_AUDIO_ABNORMAL = 7
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-AVMetricsEventType-AV_METRICS_EVENT_AUDIO_ABNORMAL = 7--><!--Device-AVMetricsEventType-AV_METRICS_EVENT_AUDIO_ABNORMAL = 7-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
@@ -35,6 +37,8 @@ AV_METRICS_EVENT_CONTENT_CHANGED = 5
 表示播放内容切换的事件。
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AVMetricsEventType-AV_METRICS_EVENT_CONTENT_CHANGED = 5--><!--Device-AVMetricsEventType-AV_METRICS_EVENT_CONTENT_CHANGED = 5-End-->
 
@@ -50,6 +54,8 @@ AV_METRICS_EVENT_CONTENT_DISCONTINUITY = 6
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-AVMetricsEventType-AV_METRICS_EVENT_CONTENT_DISCONTINUITY = 6--><!--Device-AVMetricsEventType-AV_METRICS_EVENT_CONTENT_DISCONTINUITY = 6-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
@@ -63,6 +69,8 @@ AV_METRICS_EVENT_LIP_ASYNC = 2
 表示音画不同步的指标事件。
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AVMetricsEventType-AV_METRICS_EVENT_LIP_ASYNC = 2--><!--Device-AVMetricsEventType-AV_METRICS_EVENT_LIP_ASYNC = 2-End-->
 
@@ -78,6 +86,8 @@ AV_METRICS_EVENT_LOADING_ERROR = 4
 
 **起始版本：** 26.0.0
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 <!--Device-AVMetricsEventType-AV_METRICS_EVENT_LOADING_ERROR = 4--><!--Device-AVMetricsEventType-AV_METRICS_EVENT_LOADING_ERROR = 4-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
@@ -91,6 +101,8 @@ AV_METRICS_EVENT_LOADINGRATE_CHANGE = 3
 表示加载速率变化超过10%的事件。
 
 **起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AVMetricsEventType-AV_METRICS_EVENT_LOADINGRATE_CHANGE = 3--><!--Device-AVMetricsEventType-AV_METRICS_EVENT_LOADINGRATE_CHANGE = 3-End-->
 

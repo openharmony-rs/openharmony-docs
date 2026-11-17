@@ -1010,6 +1010,39 @@ async function demo() {
 }
 ```
 
+## isReachable
+
+```TypeScript
+isReachable(): Promise<boolean>
+```
+
+检查此组件是否可触达。若组件中心点被层叠顺序更高的其他组件遮挡，或组件不可见、面积为零、不响应触摸测试，则该组件不可触达。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-Component-isReachable(): Promise<boolean>--><!--Device-Component-isReachable(): Promise<boolean>-End-->
+
+**系统能力：** SystemCapability.Test.UiTest
+
+**测试接口：** 此接口仅在自动化测试脚本中使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise对象，返回组件是否可触达。true：可触达。false：被遮挡、不可见、面积为零或不响应触摸测试。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [17000002](../errorcode-uitest.md#17000002-接口不支持并发调用) | The API does not support concurrent calls. |
+| [17000004](../errorcode-uitest.md#17000004-目标控件窗口不可见或已销毁) | The window or component is invisible or destroyed. |
+
 ## isScrollable
 
 ```TypeScript

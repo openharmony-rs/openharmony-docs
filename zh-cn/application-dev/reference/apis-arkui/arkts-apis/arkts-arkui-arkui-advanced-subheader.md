@@ -12,9 +12,9 @@ import { OperationOption, OperationType, SelectOptions, SubHeader, SymbolOptions
 
 | 名称 | 说明 |
 | --- | --- |
-| [OperationOption](arkts-arkui-arkui-advanced-subheader-operationoption-c.md) | Declare type OperationOption |
-| [SelectOptions](arkts-arkui-arkui-advanced-subheader-selectoptions-c.md) | Declare type SelectOption |
-| [SymbolOptions](arkts-arkui-arkui-advanced-subheader-symboloptions-c.md) | Declare type SymbolOptions |
+| [OperationOption](arkts-arkui-arkui-advanced-subheader-operationoption-c.md) | 声明OperationOption类型。 |
+| [SelectOptions](arkts-arkui-arkui-advanced-subheader-selectoptions-c.md) | 声明SelectOption类型。 |
+| [SymbolOptions](arkts-arkui-arkui-advanced-subheader-symboloptions-c.md) | 声明SymbolOptions类型。 |
 
 ### 结构体
 

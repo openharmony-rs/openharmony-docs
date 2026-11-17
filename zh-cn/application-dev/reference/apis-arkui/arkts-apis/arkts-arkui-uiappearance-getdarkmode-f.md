@@ -14,15 +14,10 @@ function getDarkMode(): DarkMode
 
 获取系统当前的深浅色模式配置。适用于需要根据系统外观模式动态适配应用UI主题的场景，例如应用内实现深色/浅色主题风格自动切换。
 
-<!--Del-->
-
+<!--Del-->  
 > **说明：** 
-
-> 该接口在API version 19及之前版本中为系统接口。开发者使用该接口时需要申请
-> [ohos.permission.UPDATE_CONFIGURATION](../../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration)
-> 权限。
-
-<!--DelEnd-->
+> 
+> 该接口在API version 19及之前版本中为系统接口。开发者使用该接口时需要申请[ohos.permission.UPDATE_CONFIGURATION](../../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration)权限。 <!--DelEnd-->
 
 **起始版本：** 20
 

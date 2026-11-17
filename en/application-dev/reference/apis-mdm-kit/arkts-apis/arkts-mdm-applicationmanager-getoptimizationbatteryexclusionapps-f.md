@@ -35,7 +35,7 @@ Obtains the battery optimization exclusion list.
 
 | Type | Description |
 | --- | --- |
-| Array&lt;string&gt; | Returns the bundle names of the applications in the exclusion list. |
+| Array&lt;string&gt; | Returns the unique identifiers of the applications in the exclusion list. |
 
 **Error codes:**
 
@@ -44,4 +44,5 @@ Obtains the battery optimization exclusion list.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-deviceadmin-not-enabled) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
-| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-parameter-verification-failed) | Parameter verification failed. |
+| [9200006](../errorcode-enterpriseDeviceManager.md#9200006-invalid-user-id) | The specified account ID is invalid. |
+| [9200016](../errorcode-enterpriseDeviceManager.md#9200016-service-timeout) | Service timeout. |

@@ -18,7 +18,7 @@ import { Colors, CustomColors, Theme, ThemeControl, CustomTheme, CustomDarkColor
 
 | 名称 | 说明 |
 | --- | --- |
-| [Colors](arkts-arkui-arkui-theme-colors-i.md) | 主题颜色资源。 |
+| [Colors](arkts-arkui-arkui-theme-colors-i.md) | 主题颜色资源。<!--RP1--><!--RP1End--> |
 | [CustomTheme](arkts-arkui-arkui-theme-customtheme-i.md) | 自定义主题风格对象。 |
 | [Theme](arkts-arkui-arkui-theme-theme-i.md) | 当前生效的主题风格对象，可从[onWillApplyTheme](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#onwillapplytheme)中获取。 |
 

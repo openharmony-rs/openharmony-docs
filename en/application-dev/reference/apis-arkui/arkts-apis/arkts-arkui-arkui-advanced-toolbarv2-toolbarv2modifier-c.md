@@ -4,7 +4,7 @@
 export declare class ToolBarV2Modifier
 ```
 
-Provides methods for setting the toolbar height (**height**), background color (**backgroundColor**), left and right padding (**padding**, which takes effect only when the number of items is fewer than five), and whether to display the pressed state effect (**stateEffect**).
+ToolBarV2Modifier提供设置工具栏高度(height)、背景色(backgroundColor)、左右内边距（padding，仅在子项数量小于5个时生效）、是否显示按压态（stateEffect）的方法。
 
 **Since:** 18
 
@@ -15,7 +15,7 @@ Provides methods for setting the toolbar height (**height**), background color (
 ## Modules to Import
 
 ```TypeScript
-import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolbarV2Item, AdvancedToolbarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolbarV2ItemGroupStyle, ToolbarV2ItemGroupStyleOptions, ToolbarV2ItemPlacement, ToolbarV2OverflowMenuStyle, ToolbarV2PaddingOptions, ToolbarV2StyleConfigs, ToolbarV2StyleOptions, ToolbarV2TitleConfigs, ToolbarV2TitleOptions, ToolbarV2TitleStyle, ToolbarV2TitleStyleOptions } from '@kit.ArkUI';
+import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolBarV2Item, AdvancedToolBarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolBarV2ItemGroupStyle, ToolBarV2ItemGroupStyleOptions, ToolBarV2ItemPlacement, ToolBarV2OverflowMenuStyle, ToolBarV2PaddingOptions, ToolBarV2StyleConfigs, ToolBarV2StyleOptions, ToolBarV2TitleConfigs, ToolBarV2TitleOptions, ToolBarV2TitleStyle, ToolBarV2TitleStyleOptions, ToolBarV2MaterialStyle } from '@kit.ArkUI';
 ```
 
 ## backgroundColor
@@ -24,7 +24,7 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 backgroundColor(backgroundColor: ColorMetrics): ToolBarV2Modifier
 ```
 
-Sets the background color of the toolbar. This method can be called for custom drawing.
+设置工具栏背景色的接口，调用该方法可自定义绘制。
 
 **Since:** 18
 
@@ -46,7 +46,7 @@ Sets the background color of the toolbar. This method can be called for custom d
 
 | Type | Description |
 | --- | --- |
-| [ToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2modifier-c.md) | **ToolBarV2Modifier** object after setting the background color, which can be used for chained calls to further customize the toolbar style. |
+| [ToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2modifier-c.md) | 设置背景色后的ToolBarV2Modifier对象，可用于链式调用其他方法进一步自定义工具栏样式。 |
 
 ## height
 
@@ -54,7 +54,7 @@ Sets the background color of the toolbar. This method can be called for custom d
 height(height: LengthMetrics): ToolBarV2Modifier
 ```
 
-Sets the height of the toolbar. This method can be called for custom drawing. This height does not include the divider height.
+设置工具栏高度的接口，调用该方法可自定义绘制，此高度不包含分割线高度。
 
 **Since:** 18
 
@@ -76,7 +76,7 @@ Sets the height of the toolbar. This method can be called for custom drawing. Th
 
 | Type | Description |
 | --- | --- |
-| [ToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2modifier-c.md) | **ToolBarV2Modifier** object after setting the height, which can be used for chained calls to other methods to further customize the toolbar style. |
+| [ToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2modifier-c.md) | 设置高度后的ToolBarV2Modifier对象，可用于链式调用其他方法进一步自定义工具栏样式。 |
 
 ## padding
 
@@ -84,7 +84,7 @@ Sets the height of the toolbar. This method can be called for custom drawing. Th
 padding(padding: LengthMetrics): ToolBarV2Modifier
 ```
 
-Sets the left and right padding of the toolbar. This method can be called for custom drawing.
+设置工具栏左右内边距的接口，调用该方法可自定义绘制。
 
 **Since:** 18
 
@@ -106,7 +106,7 @@ Sets the left and right padding of the toolbar. This method can be called for cu
 
 | Type | Description |
 | --- | --- |
-| [ToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2modifier-c.md) | **ToolBarV2Modifier** object with the padding set, which can be used for chained calls to further customize the toolbar style. |
+| [ToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2modifier-c.md) | 设置内边距后的ToolBarV2Modifier对象，可用于链式调用其他方法进一步自定义工具栏样式。 |
 
 ## stateEffect
 
@@ -114,7 +114,7 @@ Sets the left and right padding of the toolbar. This method can be called for cu
 stateEffect(stateEffect: boolean): ToolBarV2Modifier
 ```
 
-Sets whether to display the pressed state effect.
+设置是否显示按压态效果的接口。
 
 **Since:** 18
 
@@ -136,4 +136,4 @@ Sets whether to display the pressed state effect.
 
 | Type | Description |
 | --- | --- |
-| [ToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2modifier-c.md) | **ToolBarV2Modifier** object with the pressed state effect set, which can be used for chained calls to other methods to further customize the toolbar style. |
+| [ToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2modifier-c.md) | 设置按压态效果后的ToolBarV2Modifier对象，可用于链式调用其他方法进一步自定义工具栏样式。 |

@@ -18,7 +18,7 @@ Marquee的动态帧率场景的类型枚举
 ANIMATION = 1
 ```
 
-Scene type is ANIMATION.
+动画过渡场景。
 
 **起始版本：** 14
 

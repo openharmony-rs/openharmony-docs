@@ -12,7 +12,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 function setOutputType(type: OutputType): OutputType
 ```
 
-Sets the output type of hilog.
+Sets the hilog output type.
 
 **Since:** 26.0.0
 
@@ -28,13 +28,13 @@ Sets the output type of hilog.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [OutputType](arkts-performanceanalysis-hilog-outputtype-e.md) | Yes | output type of hilog. |
+| type | [OutputType](arkts-performanceanalysis-hilog-outputtype-e.md) | Yes | The log output type of hilog, used to set the output target of hilog logs (such as console or sandbox). |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [OutputType](arkts-performanceanalysis-hilog-outputtype-e.md) | previous output type of hilog. |
+| [OutputType](arkts-performanceanalysis-hilog-outputtype-e.md) | Returns the previously set output type. |
 
 **Examples**
 

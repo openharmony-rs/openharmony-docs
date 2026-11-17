@@ -38,7 +38,7 @@ Original
 Template
 ```
 
-Render the image as a template image, ignoring the color information of the image.
+黑白渲染模式。
 
 **起始版本：** 7
 

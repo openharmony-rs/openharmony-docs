@@ -4,15 +4,13 @@ A Function is a business logic unit defined in an application package. It can re
 
 This module provides the capability to manage and invoke Functions, including querying available Function information and invoking a specified Function to execute business logic.
 
-**Since:** 26.0.0
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-unnamed-declare namespace functionManager--><!--Device-unnamed-declare namespace functionManager-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
-
-**System API:** This is a system API.
 
 ## Modules to Import
 
@@ -21,6 +19,13 @@ import { functionManager, FunctionHook, InvokeFunctionParam, FunctionResultWrap 
 ```
 
 ## Summary
+
+### Functions
+
+| Name | Description |
+| --- | --- |
+| [invokePublicFunction](arkts-ability-functionmanager-invokepublicfunction-f.md#invokepublicfunction-1) | Invoke a public function by functionNamespace and functionName. Third-party applications can invoke public functions through this API after being granted the required permission via ACL. |
+| [queryPublicFunctions](arkts-ability-functionmanager-querypublicfunctions-f.md#querypublicfunctions-1) | Query public functions. Third-party applications can query public functions through this API after being granted the required permission via ACL. |
 
 <!--Del-->
 ### Functions(System API)
@@ -33,11 +38,9 @@ import { functionManager, FunctionHook, InvokeFunctionParam, FunctionResultWrap 
 | [unregisterFunctionHook](arkts-ability-functionmanager-unregisterfunctionhook-f-sys.md#unregisterfunctionhook-1) | Unregister the previously registered function hook. The hook object must be the same as the one passed to registerFunctionHook. If no hook is registered, the call will fail with an error. |
 <!--DelEnd-->
 
-<!--Del-->
-### Interfaces(System API)
+### Interfaces
 
 | Name | Description |
 | --- | --- |
-| [InvokeOptions](arkts-ability-functionmanager-invokeoptions-i-sys.md) | Optional parameters for Function invocation. Contains the application context information for the Function invocation. |
-| [InvokeResult](arkts-ability-functionmanager-invokeresult-i-sys.md) | Encapsulates the success or failure status of function invocation. |
-<!--DelEnd-->
+| [InvokeOptions](arkts-ability-functionmanager-invokeoptions-i.md) | Optional parameters for Function invocation. Contains the application context information for the Function invocation. |
+| [InvokeResult](arkts-ability-functionmanager-invokeresult-i.md) | Encapsulates the success or failure status of function invocation. |

@@ -3161,6 +3161,36 @@ struct Index {
 </html>
 ```
 
+## getLastPostMessageUrl
+
+```TypeScript
+getLastPostMessageUrl(): string
+```
+
+获取上次向应用程序发送postMessage的帧的URL。
+
+此接口返回通过接收到的最近一次postMessage的发送者的帧的URL。[onMessageEvent](arkts-arkweb-webview-webmessageport-i.md#onmessageevent)或[onMessageEventExt](arkts-arkweb-webview-webmessageport-i.md#onmessageeventext).如果没有收到postMessage，则返回空字符串。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WebviewController-getLastPostMessageUrl(): string--><!--Device-WebviewController-getLastPostMessageUrl(): string-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| string | 上次发送postMessage的帧的URL。如果没有收到postMessage,返回空字符串。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [17100001](../errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联) | Init error. The WebviewController must be associated with a Web component. Ensure that the WebviewController is associated with a Web component before calling this method. |
+
 ## getMediaPlaybackState
 
 ```TypeScript

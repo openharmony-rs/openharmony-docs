@@ -1,8 +1,10 @@
 # @ohos.multimodalAwareness.onScreen(Onscreen awareness)
 
-This module provides the onscreen awareness capability.
+This module provides the capability of apperceiving on-screen content, including obtaining page content, links, screenshots, and other information, identifying application scenarios such as reading and short video, providing entity information such as article titles and body text, as well as interaction information such as clicks and scrolling.
 
-> **NOTE:** &gt;
+> **NOTE:** 
+> 
+> 1.This module provides the capability of apperceiving on-screen content, including obtaining page content, links, screenshots, and other information, identifying application scenarios such as reading and short video, providing entity information such as article titles and body text, as well as interaction information such as clicks and scrolling.
 
 **Since:** 20
 
@@ -44,7 +46,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 | [ContentOptions](arkts-multimodalawareness-onscreen-contentoptions-i-sys.md) | Defines the options for obtaining the onscreen content. |
 | [ControlEvent](arkts-multimodalawareness-onscreen-controlevent-i-sys.md) | Defines a control event. |
 | [EntityInfo](arkts-multimodalawareness-onscreen-entityinfo-i-sys.md) | Provides entity information perceived, including content, links, images, and other types of entities. |
-| [OnscreenAwarenessCap](arkts-multimodalawareness-onscreen-onscreenawarenesscap-i-sys.md) | Defines onscreen awareness capabilities (including but not limited to awareness in a reading scenario and OCR). |
+| [OnscreenAwarenessCap](arkts-multimodalawareness-onscreen-onscreenawarenesscap-i-sys.md) | On-screen awareness capabilities (including but not limited to reading scenario awareness, OCR recognition, and other functions). |
 | [OnscreenAwarenessInfo](arkts-multimodalawareness-onscreen-onscreenawarenessinfo-i-sys.md) | Returns the list of onscreen awareness information. |
 | [OnscreenAwarenessOptions](arkts-multimodalawareness-onscreen-onscreenawarenessoptions-i-sys.md) | Defines the list of onscreen awareness parameters, which is used to obtain onscreen information in specific scenarios. For example, a window ID is provided to collect application UI content and links. |
 | [PageContent](arkts-multimodalawareness-onscreen-pagecontent-i-sys.md) | Defines the onscreen content. |

@@ -1,4 +1,4 @@
-# @ohos.fileshare
+# @ohos.fileshare(文件分享)
 
 提供文件分享能力。
 

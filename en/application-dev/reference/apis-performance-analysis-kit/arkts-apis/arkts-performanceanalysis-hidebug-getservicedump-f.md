@@ -16,7 +16,7 @@ Obtains system service information.
 
 **Since:** 9
 
-**Required permissions:** ohos.permission.DUMP
+**Required permissions:** ohos.permission.DUMP (available only for system applications).
 
 <!--Device-hidebug-function getServiceDump(serviceid : int, fd : int, args : Array<string>) : void--><!--Device-hidebug-function getServiceDump(serviceid : int, fd : int, args : Array<string>) : void-End-->
 

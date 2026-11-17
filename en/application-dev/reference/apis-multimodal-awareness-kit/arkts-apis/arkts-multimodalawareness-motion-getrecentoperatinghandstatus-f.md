@@ -12,7 +12,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 function getRecentOperatingHandStatus(): OperatingHandStatus
 ```
 
-Obtains the latest operating hand status.
+Obtains the latest operating hand status. This method directly returns the latest operating hand status and can be called without subscribing to events.
 
 **Since:** 15
 

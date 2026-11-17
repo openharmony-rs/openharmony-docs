@@ -63,6 +63,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | [getAllPublicCertificates](arkts-devicecertificate-certificatemanager-getallpubliccertificates-f-sys.md#getallpubliccertificates-1) | 获取所有用户的公共凭据，仅证书管理应用调用。使用Promise异步回调。 |
 | [getAllSystemAppCertificates](arkts-devicecertificate-certificatemanager-getallsystemappcertificates-f-sys.md#getallsystemappcertificates-1) | 表示获取所有系统凭据列表。使用Promise异步回调。 |
 | [getAuthorizedAppList](arkts-devicecertificate-certificatemanager-getauthorizedapplist-f-sys.md#getauthorizedapplist-1) | 获取用户公共凭据的授权应用列表，仅证书管理应用调用。使用Promise异步回调。 |
+| [getCertManagerConfig](arkts-devicecertificate-certificatemanager-getcertmanagerconfig-f-sys.md#getcertmanagerconfig-1) | 查询证书管理系统配置信息。 |
 | [getSystemAppCertificate](arkts-devicecertificate-certificatemanager-getsystemappcertificate-f-sys.md#getsystemappcertificate-1) | 获取系统应用的凭据详情，仅证书管理应用调用。使用Promise异步回调。 |
 | [getSystemTrustedCertificate](arkts-devicecertificate-certificatemanager-getsystemtrustedcertificate-f-sys.md#getsystemtrustedcertificate-1) | 获取系统信任的CA证书详情，仅证书管理应用调用。使用Promise异步回调。 |
 | [getSystemTrustedCertificateList](arkts-devicecertificate-certificatemanager-getsystemtrustedcertificatelist-f-sys.md#getsystemtrustedcertificatelist-1) | 获取系统信任的CA证书列表。该接口仅由证书管理应用调用。该接口使用Promise返回结果。 |
@@ -91,6 +92,14 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | [Credential](arkts-devicecertificate-certificatemanager-credential-i.md) | 表示凭据详细信息。 |
 | [CredentialAbstract](arkts-devicecertificate-certificatemanager-credentialabstract-i.md) | 表示凭据的简要信息。 |
 | [UkeyInfo](arkts-devicecertificate-certificatemanager-ukeyinfo-i.md) | 提供USB Key证书凭据属性信息。 |
+
+<!--Del-->
+### 接口（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [ConfigItem](arkts-devicecertificate-certificatemanager-configitem-i-sys.md) | 表示证书管理配置项。 |
+<!--DelEnd-->
 
 ### 枚举
 

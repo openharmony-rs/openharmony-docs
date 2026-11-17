@@ -67,7 +67,7 @@ levelOrder?: LevelOrder
 levelUniqueId?: number
 ```
 
-The uniqueId of any node in the router or navigation page.
+路由器或导航页面中任何节点的唯一ID。
 
 **类型：** number
 

@@ -12,6 +12,60 @@ Enumerates the input method function keys.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## BACKSPACE
+
+```TypeScript
+BACKSPACE = 30
+```
+
+Backspace key on the keyboard.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-FunctionKey-BACKSPACE = 30--><!--Device-FunctionKey-BACKSPACE = 30-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## CAPS_LOCK
+
+```TypeScript
+CAPS_LOCK = 18
+```
+
+CapsLock key on the keyboard.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-FunctionKey-CAPS_LOCK = 18--><!--Device-FunctionKey-CAPS_LOCK = 18-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## DELETE
+
+```TypeScript
+DELETE = 24
+```
+
+Delete key on the keyboard.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-FunctionKey-DELETE = 24--><!--Device-FunctionKey-DELETE = 24-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## DPAD_DOWN
 
 ```TypeScript
@@ -81,6 +135,42 @@ Up arrow key on the keyboard.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-FunctionKey-DPAD_UP--><!--Device-FunctionKey-DPAD_UP-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## END
+
+```TypeScript
+END = 26
+```
+
+End key on the keyboard.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-FunctionKey-END = 26--><!--Device-FunctionKey-END = 26-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## ENTER
+
+```TypeScript
+ENTER = 29
+```
+
+Enter key on the keyboard.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-FunctionKey-ENTER = 29--><!--Device-FunctionKey-ENTER = 29-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -315,6 +405,132 @@ F9 key on the keyboard.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FunctionKey-F9--><!--Device-FunctionKey-F9-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## HOME
+
+```TypeScript
+HOME = 25
+```
+
+Home key on the keyboard.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-FunctionKey-HOME = 25--><!--Device-FunctionKey-HOME = 25-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## INSERT
+
+```TypeScript
+INSERT = 23
+```
+
+Insert key on the keyboard.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-FunctionKey-INSERT = 23--><!--Device-FunctionKey-INSERT = 23-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## NUM_LOCK
+
+```TypeScript
+NUM_LOCK = 22
+```
+
+NumLock key on the keyboard.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-FunctionKey-NUM_LOCK = 22--><!--Device-FunctionKey-NUM_LOCK = 22-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## PAGE_DOWN
+
+```TypeScript
+PAGE_DOWN = 28
+```
+
+Page Down key on the keyboard.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-FunctionKey-PAGE_DOWN = 28--><!--Device-FunctionKey-PAGE_DOWN = 28-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## PAGE_UP
+
+```TypeScript
+PAGE_UP = 27
+```
+
+Page Up key on the keyboard.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-FunctionKey-PAGE_UP = 27--><!--Device-FunctionKey-PAGE_UP = 27-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## PAUSE_BREAK
+
+```TypeScript
+PAUSE_BREAK = 21
+```
+
+Pause/Break key on the keyboard.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-FunctionKey-PAUSE_BREAK = 21--><!--Device-FunctionKey-PAUSE_BREAK = 21-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## SCROLL_LOCK
+
+```TypeScript
+SCROLL_LOCK = 20
+```
+
+ScrollLock key on the keyboard.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-FunctionKey-SCROLL_LOCK = 20--><!--Device-FunctionKey-SCROLL_LOCK = 20-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

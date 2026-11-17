@@ -65,6 +65,7 @@ import { uiMaterial } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
+| [ImmersiveOptions](arkts-arkui-uimaterial-immersiveoptions-i-sys.md) | 沉浸式材质参数。 |
 | [MaterialOptions](arkts-arkui-uimaterial-materialoptions-i-sys.md) | 系统材质选项。 |
 <!--DelEnd-->
 
@@ -83,6 +84,7 @@ import { uiMaterial } from '@kit.ArkUI';
 | 名称 | 说明 |
 | --- | --- |
 | [ImmersiveStyle](arkts-arkui-uimaterial-immersivestyle-e-sys.md) | 沉浸式材质样式枚举。不同的材质样式对应不同的材质参数，主要包括材质的模糊程度、高光效果等。开发者可根据UI场景需要选择合适的材质样式：悬浮按钮和轻量提示建议使用`ULTRA_THIN`或`THIN`样式，常规内容区域和卡片建议使用`REGULAR`样式，需要强调层次感或遮挡背景的场景建议使用`THICK`或`ULTRA_THICK`样式。 |
+| [MaterialColorBlendMode](arkts-arkui-uimaterial-materialcolorblendmode-e-sys.md) | 材质颜色混合模式。 |
 | [MaterialType](arkts-arkui-uimaterial-materialtype-e-sys.md) | 系统材质类型枚举。 |
 <!--DelEnd-->
 

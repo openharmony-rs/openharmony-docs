@@ -12,7 +12,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 function onRotateChange(callback: Callback<RotateEvent>): void
 ```
 
-Subscribe to rotate sensor event.
+Subscribes to rotation sensor events. This event is triggered and the callback is invoked when the device rotates and causes an orientation change. It is used when implementing functions such as adaptive screen orientation. This API must be used in pair with offRotateChange. After use, call offRotateChange to unsubscribe and release system resources.
 
 **Since:** 26.0.0
 

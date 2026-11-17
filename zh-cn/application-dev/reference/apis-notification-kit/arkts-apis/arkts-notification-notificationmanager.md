@@ -94,9 +94,9 @@ import { notificationManager } from '@kit.NotificationKit';
 | [addSlots](arkts-notification-notificationmanager-addslots-f-sys.md#addslots-1) | 创建多个[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)。使用callback异步回调。 |
 | [addSlots](arkts-notification-notificationmanager-addslots-f-sys.md#addslots-2) | 创建多个[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。 |
 | [cancel](arkts-notification-notificationmanager-cancel-f-sys.md#cancel-4) | 代理取消当前用户其他应用的通知。使用Promise异步回调。 |
-| [cancelAsBundle](arkts-notification-notificationmanager-cancelasbundle-f-sys.md#cancelasbundle-1) | 取消[代理通知](../../../notification/notification-glossary.md#notification-proxy代理通知)。使用callback异步回调。 |
-| [cancelAsBundle](arkts-notification-notificationmanager-cancelasbundle-f-sys.md#cancelasbundle-2) | 取消[代理通知](../../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。 |
-| [cancelAsBundle](arkts-notification-notificationmanager-cancelasbundle-f-sys.md#cancelasbundle-3) | 取消[代理通知](../../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。 |
+| [cancelAsBundle](arkts-notification-notificationmanager-cancelasbundle-f-sys.md#cancelasbundle-1) | 取消代理通知。使用callback异步回调。 |
+| [cancelAsBundle](arkts-notification-notificationmanager-cancelasbundle-f-sys.md#cancelasbundle-2) | 取消代理通知。使用Promise异步回调。 |
+| [cancelAsBundle](arkts-notification-notificationmanager-cancelasbundle-f-sys.md#cancelasbundle-3) | 取消代理通知。使用Promise异步回调。 |
 | [disableNotificationFeature](arkts-notification-notificationmanager-disablenotificationfeature-f-sys.md#disablenotificationfeature-1) | 将应用包名添加到通知发布权限管控名单，以阻止应用发布通知。支持启用或关闭该功能。 |
 | [disableNotificationFeature](arkts-notification-notificationmanager-disablenotificationfeature-f-sys.md#disablenotificationfeature-2) | 将应用包名添加到通知发布权限管控名单，以阻止应用发布通知。使用Promise异步回调。 |
 | [displayBadge](arkts-notification-notificationmanager-displaybadge-f-sys.md#displaybadge-1) | 设定指定应用的角标使能状态。使用callback异步回调。 |
@@ -144,8 +144,8 @@ import { notificationManager } from '@kit.NotificationKit';
 | [isNotificationSlotEnabledByBundles](arkts-notification-notificationmanager-isnotificationslotenabledbybundles-f-sys.md#isnotificationslotenabledbybundles-1) | 批量获取多个应用的指定渠道类型的使能状态。使用Promise异步回调。所有应用共享同一个渠道类型。未创建渠道的应用不会出现在返回结果中。 |
 | [isPriorityEnabled](arkts-notification-notificationmanager-ispriorityenabled-f-sys.md#ispriorityenabled-1) | 获取通知优先级总开关状态。 |
 | [isPriorityEnabledByBundle](arkts-notification-notificationmanager-ispriorityenabledbybundle-f-sys.md#ispriorityenabledbybundle-1) | 获取应用通知优先级开关状态。 |
-| [isPriorityIntelligentEnabled](arkts-notification-notificationmanager-ispriorityintelligentenabled-f-sys.md#ispriorityintelligentenabled-1) | 获取[优先通知](../../../notification/notification-glossary.md#priority-notification优先通知)智能服务使能状态。使用Promise异步回调。 |
-| [isSilentReminderEnabled](arkts-notification-notificationmanager-issilentreminderenabled-f-sys.md#issilentreminderenabled-1) | 查询[静默提醒](../../../notification/notification-glossary.md#silent-reminder静默提醒)的开关状态。使用Promise进行异步回调。 |
+| [isPriorityIntelligentEnabled](arkts-notification-notificationmanager-ispriorityintelligentenabled-f-sys.md#ispriorityintelligentenabled-1) | 获取优先通知智能服务使能状态。使用Promise异步回调。 |
+| [isSilentReminderEnabled](arkts-notification-notificationmanager-issilentreminderenabled-f-sys.md#issilentreminderenabled-1) | 查询静默提醒的开关状态。使用Promise进行异步回调。 |
 | [isSmartReminderEnabled](arkts-notification-notificationmanager-issmartreminderenabled-f-sys.md#issmartreminderenabled-1) | 获取设备是否与其他设备协同智能提醒。使用Promise异步回调。 |
 | [isSupportDoNotDisturbMode](arkts-notification-notificationmanager-issupportdonotdisturbmode-f-sys.md#issupportdonotdisturbmode-1) | 查询是否支持免打扰功能。使用callback异步回调。 |
 | [isSupportDoNotDisturbMode](arkts-notification-notificationmanager-issupportdonotdisturbmode-f-sys.md#issupportdonotdisturbmode-2) | 查询是否支持免打扰功能。使用Promise异步回调。 |
@@ -156,9 +156,9 @@ import { notificationManager } from '@kit.NotificationKit';
 | [onBadgeNumberQuery](arkts-notification-notificationmanager-onbadgenumberquery-f-sys.md#onbadgenumberquery-1) | 注册应用角标数量查询回调。 |
 | [publish](arkts-notification-notificationmanager-publish-f-sys.md#publish-3) | 发布通知给指定的用户。使用callback异步回调。 |
 | [publish](arkts-notification-notificationmanager-publish-f-sys.md#publish-4) | 发布通知给指定的用户。使用Promise异步回调。 |
-| [publishAsBundle](arkts-notification-notificationmanager-publishasbundle-f-sys.md#publishasbundle-1) | 发布[代理通知](../../../notification/notification-glossary.md#notification-proxy代理通知)。使用callback异步回调。 |
-| [publishAsBundle](arkts-notification-notificationmanager-publishasbundle-f-sys.md#publishasbundle-2) | 发布[代理通知](../../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。 |
-| [publishAsBundle](arkts-notification-notificationmanager-publishasbundle-f-sys.md#publishasbundle-3) | 发布[代理通知](../../../notification/notification-glossary.md#notification-proxy代理通知)。使用Promise异步回调。 |
+| [publishAsBundle](arkts-notification-notificationmanager-publishasbundle-f-sys.md#publishasbundle-1) | 发布代理通知。使用callback异步回调。 |
+| [publishAsBundle](arkts-notification-notificationmanager-publishasbundle-f-sys.md#publishasbundle-2) | 发布代理通知。使用Promise异步回调。 |
+| [publishAsBundle](arkts-notification-notificationmanager-publishasbundle-f-sys.md#publishasbundle-3) | 发布代理通知。使用Promise异步回调。 |
 | [removeDoNotDisturbProfile](arkts-notification-notificationmanager-removedonotdisturbprofile-f-sys.md#removedonotdisturbprofile-1) | 删除勿扰模式配置。使用Promise异步回调。 |
 | [removeDoNotDisturbProfile](arkts-notification-notificationmanager-removedonotdisturbprofile-f-sys.md#removedonotdisturbprofile-2) | 删除指定用户的勿扰模式配置。使用Promise异步回调。 |
 | [removeGroupByBundle](arkts-notification-notificationmanager-removegroupbybundle-f-sys.md#removegroupbybundle-1) | 删除指定应用的指定组下的通知。使用callback异步回调。 |
@@ -185,17 +185,17 @@ import { notificationManager } from '@kit.NotificationKit';
 | [setPriorityEnabled](arkts-notification-notificationmanager-setpriorityenabled-f-sys.md#setpriorityenabled-1) | 设置通知优先级总开关。 |
 | [setPriorityEnabledByBundle](arkts-notification-notificationmanager-setpriorityenabledbybundle-f-sys.md#setpriorityenabledbybundle-1) | 设置应用通知优先级开关。 |
 | [setPriorityEnabledByBundles](arkts-notification-notificationmanager-setpriorityenabledbybundles-f-sys.md#setpriorityenabledbybundles-1) | 批量设置应用通知优先级开关状态。使用Promise异步回调。 |
-| [setPriorityIntelligentEnabled](arkts-notification-notificationmanager-setpriorityintelligentenabled-f-sys.md#setpriorityintelligentenabled-1) | 设置[优先通知](../../../notification/notification-glossary.md#priority-notification优先通知)智能服务使能状态。使用Promise异步回调。 |
+| [setPriorityIntelligentEnabled](arkts-notification-notificationmanager-setpriorityintelligentenabled-f-sys.md#setpriorityintelligentenabled-1) | 设置优先通知智能服务使能状态。使用Promise异步回调。 |
 | [setPriorityStrategyByBundles](arkts-notification-notificationmanager-setprioritystrategybybundles-f-sys.md#setprioritystrategybybundles-1) | 批量设置应用通知优先策略。使用Promise异步回调。 |
 | [setReminderInfoByBundles](arkts-notification-notificationmanager-setreminderinfobybundles-f-sys.md#setreminderinfobybundles-1) | 批量设置指定应用提醒信息。使用Promise异步回调。 |
 | [setRingtoneInfoByBundle](arkts-notification-notificationmanager-setringtoneinfobybundle-f-sys.md#setringtoneinfobybundle-1) | 设置应用[自定义铃声](../../../notification/notification-glossary.md#customized-ringtone自定义铃声)信息。使用Promise异步回调。 |
-| [setSilentReminderEnabled](arkts-notification-notificationmanager-setsilentreminderenabled-f-sys.md#setsilentreminderenabled-1) | 设置[静默提醒](../../../notification/notification-glossary.md#silent-reminder静默提醒)的开关状态。使用Promise进行异步回调。 |
+| [setSilentReminderEnabled](arkts-notification-notificationmanager-setsilentreminderenabled-f-sys.md#setsilentreminderenabled-1) | 设置静默提醒的开关状态。使用Promise进行异步回调。 |
 | [setSlotByBundle](arkts-notification-notificationmanager-setslotbybundle-f-sys.md#setslotbybundle-1) | 设置指定应用的[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)。使用callback异步回调。 |
 | [setSlotByBundle](arkts-notification-notificationmanager-setslotbybundle-f-sys.md#setslotbybundle-2) | 设置指定应用的[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)。使用Promise异步回调。 |
 | [setSlotFlagsByBundle](arkts-notification-notificationmanager-setslotflagsbybundle-f-sys.md#setslotflagsbybundle-1) | 设定指定应用的[通知提醒方式](../../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)开关。使用Promise异步回调。 |
 | [setSmartReminderEnabled](arkts-notification-notificationmanager-setsmartreminderenabled-f-sys.md#setsmartreminderenabled-1) | 设置设备是否与其他设备协同智能提醒。使用Promise异步回调。 |
 | [setTargetDeviceStatus](arkts-notification-notificationmanager-settargetdevicestatus-f-sys.md#settargetdevicestatus-1) | 设置设备配对成功后的状态。当发布通知时，会根据各个设备的状态来确定当前设备的[通知提醒方式](../../../notification/notification-glossary.md#notification-reminder-mode通知提醒方式)。 |
-| [snoozeNotification](arkts-notification-notificationmanager-snoozenotification-f-sys.md#snoozenotification-1) | 设置通知[稍后提醒](../../../notification/notification-glossary.md#notification-snooze稍后提醒)。该通知在指定时间后再次提醒，每次设置只会提醒一次，提醒方式与该通知相同。 |
+| [snoozeNotification](arkts-notification-notificationmanager-snoozenotification-f-sys.md#snoozenotification-1) | 设置通知稍后提醒。该通知在指定时间后再次提醒，每次设置只会提醒一次，提醒方式与该通知相同。 |
 | [subscribeSystemLiveView](arkts-notification-notificationmanager-subscribesystemliveview-f-sys.md#subscribesystemliveview-1) | 订阅[系统实况窗](../../../notification/notification-glossary.md#system-live-view系统实况窗)。使用Promise异步回调。 |
 | [triggerSystemLiveView](arkts-notification-notificationmanager-triggersystemliveview-f-sys.md#triggersystemliveview-1) | 触发[系统实况窗](../../../notification/notification-glossary.md#system-live-view系统实况窗)。使用Promise异步回调。 |
 | [getDeviceRemindType](arkts-notification-notificationmanager-getdeviceremindtype-f-sys.md#getdeviceremindtype-1) | 获取通知的提醒方式。使用callback异步回调。 |
@@ -228,8 +228,8 @@ import { notificationManager } from '@kit.NotificationKit';
 | [DistributedBundleEnableInfo](arkts-notification-notificationmanager-distributedbundleenableinfo-i-sys.md) | 描述多设备协同的包信息。 |
 | [DoNotDisturbDate](arkts-notification-notificationmanager-donotdisturbdate-i-sys.md) | 免打扰时间选项。 |
 | [DoNotDisturbProfile](arkts-notification-notificationmanager-donotdisturbprofile-i-sys.md) | 勿扰模式的配置信息。 |
-| [NotificationCheckInfo](arkts-notification-notificationmanager-notificationcheckinfo-i-sys.md) | [通知校验](../../../notification/notification-glossary.md#notification-check通知校验)参数。 |
-| [NotificationCheckResult](arkts-notification-notificationmanager-notificationcheckresult-i-sys.md) | [通知校验](../../../notification/notification-glossary.md#notification-check通知校验)结果。 |
+| [NotificationCheckInfo](arkts-notification-notificationmanager-notificationcheckinfo-i-sys.md) | 通知校验参数。 |
+| [NotificationCheckResult](arkts-notification-notificationmanager-notificationcheckresult-i-sys.md) | 通知校验结果。 |
 | [NotificationReminderInfo](arkts-notification-notificationmanager-notificationreminderinfo-i-sys.md) | 描述指定应用提醒方式信息。 |
 | [RingtoneInfo](arkts-notification-notificationmanager-ringtoneinfo-i-sys.md) | 描述[自定义铃声](../../../notification/notification-glossary.md#customized-ringtone自定义铃声)信息。 |
 | [SystemLiveViewSubscriber](arkts-notification-notificationmanager-systemliveviewsubscriber-i-sys.md) | [系统实况窗](../../../notification/notification-glossary.md#system-live-view系统实况窗)订阅者。 |
@@ -278,7 +278,7 @@ import { notificationManager } from '@kit.NotificationKit';
 | [NotificationSorting](arkts-notification-notificationmanager-notificationsorting-t-sys.md) | 提供有关活动通知的排序信息。 |
 | [Trigger](arkts-notification-notificationmanager-trigger-t-sys.md) | 触发条件的具体信息。 |
 | [TriggerType](arkts-notification-notificationmanager-triggertype-t-sys.md) | 触发条件的事件类型的枚举。 |
-| [UnifiedGroupInfo](arkts-notification-notificationmanager-unifiedgroupinfo-t-sys.md) | 描述通知[智能聚合](../../../notification/notification-glossary.md#notification-smart-aggregation智能聚合)信息字段。 |
+| [UnifiedGroupInfo](arkts-notification-notificationmanager-unifiedgroupinfo-t-sys.md) | 描述通知智能聚合信息字段。 |
 <!--DelEnd-->
 
 ### 枚举

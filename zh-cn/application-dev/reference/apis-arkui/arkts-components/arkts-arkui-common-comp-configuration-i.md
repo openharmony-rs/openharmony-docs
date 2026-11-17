@@ -4,7 +4,7 @@
 declare interface Configuration
 ```
 
-Defines the data type of the interface restriction.
+数据类型。用于设置颜色模式和字体缩放倍数。
 
 **起始版本：** 11
 
@@ -18,7 +18,7 @@ Defines the data type of the interface restriction.
 readonly colorMode: string
 ```
 
-Set colorMode.
+颜色模式。
 
 **类型：** string
 
@@ -38,7 +38,7 @@ Set colorMode.
 readonly fontScale: number
 ```
 
-Set fontScale.
+字体缩放。
 
 **类型：** number
 

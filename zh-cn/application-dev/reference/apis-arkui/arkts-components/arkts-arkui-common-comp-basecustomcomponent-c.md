@@ -133,7 +133,7 @@ The dialog controller of the custom component.
 getUIContext(): UIContext
 ```
 
-Get current UIContext
+获取UIContext对象。
 
 **起始版本：** 11
 
@@ -149,7 +149,7 @@ Get current UIContext
 
 | 类型 | 说明 |
 | --- | --- |
-| [UIContext](arkts-arkui-common-comp-uicontext-t.md) | The UIContext that the custom component belongs to. |
+| [UIContext](arkts-arkui-common-comp-uicontext-t.md) | 返回UIContext实例对象。在异步调用的回调方法中使用该接口，或者该接口的起始调用不在当前页面时，可能导致接口调用发生在自定义组件销毁之后，返回 undefined。 |
 
 ## getUniqueId
 
@@ -157,7 +157,7 @@ Get current UIContext
 getUniqueId(): number
 ```
 
-Get uniqueId of the custom component.
+获取当前组件的UniqueId。UniqueId由系统为每个组件分配，可保证在当前应用中唯一。若在组件对应的节点未创建或已销毁时获取，返回无效UniqueId：-1。
 
 **起始版本：** 12
 
@@ -173,7 +173,7 @@ Get uniqueId of the custom component.
 
 | 类型 | 说明 |
 | --- | --- |
-| number | The uniqueId of the custom component. |
+| number | 返回当前Component的UniqueId。 |
 
 ## onBackPress
 

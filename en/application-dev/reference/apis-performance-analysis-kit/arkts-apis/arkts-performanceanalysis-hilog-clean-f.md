@@ -12,7 +12,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 function clean(): void
 ```
 
-Delete all hilog logs in the sandbox.
+Deletes all hilog logs in the sandbox.
 
 **Since:** 26.0.0
 

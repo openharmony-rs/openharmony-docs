@@ -23,7 +23,7 @@ When creating a database, you should consider whether to configure the [encrypt]
 | Non-encryption| Encryption | The RDB store is opened in encrypted mode. |  
 | Encryption| Non-encryption | The RDB store is opened in non-encrypted mode. |
 
-Currently, **getRdbStore()** does not support multi-thread concurrent operations.
+Currently, **getRdbStore()** supports multi-thread concurrent operations.
 
 **Since:** 9
 
@@ -133,7 +133,7 @@ When creating a database, you should consider whether to configure the [encrypt]
 | Non-encryption| Encryption | The RDB store is opened in encrypted mode. |  
 | Encryption| Non-encryption | The RDB store is opened in non-encrypted mode. |
 
-Currently, **getRdbStore()** does not support multi-thread concurrent operations.
+Currently, **getRdbStore()** supports multi-thread concurrent operations.
 
 **Since:** 9
 

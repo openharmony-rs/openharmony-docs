@@ -12,7 +12,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 function offHoverHandChange(callback?: Callback<HoverHandAction>): void
 ```
 
-Unsubscribe to hover hand event.
+Unsubscribes from the hover hand event. When the application no longer needs to monitor the hover hand event, it should call this API to cancel the subscription to release system resources.
 
 **Since:** 26.0.0
 

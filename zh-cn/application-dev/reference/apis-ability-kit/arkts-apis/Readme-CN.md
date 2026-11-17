@@ -684,6 +684,34 @@
   <!--Del-->
   - [getKioskStatus（系统接口）](arkts-ability-kioskmanager-getkioskstatus-f-sys.md)<!--DelEnd-->
   - [KioskStatus](arkts-ability-kioskmanager-kioskstatus-t.md)
+- [@ohos.app.ability.launchServiceManager](arkts-ability-app-ability-launchservicemanager.md)
+  - [connectService](arkts-ability-launchservicemanager-connectservice-f.md)
+  - [disconnectService](arkts-ability-launchservicemanager-disconnectservice-f.md)
+  <!--Del-->
+  - [getAllRegisteredInformation（系统接口）](arkts-ability-launchservicemanager-getallregisteredinformation-f-sys.md)<!--DelEnd-->
+  - [getInformation](arkts-ability-launchservicemanager-getinformation-f.md)
+  <!--Del-->
+  - [offLaunchServiceObserver（系统接口）](arkts-ability-launchservicemanager-offlaunchserviceobserver-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onLaunchServiceObserver（系统接口）](arkts-ability-launchservicemanager-onlaunchserviceobserver-f-sys.md)<!--DelEnd-->
+  - [register](arkts-ability-launchservicemanager-register-f.md)
+  <!--Del-->
+  - [setLaunchServicesEnabled（系统接口）](arkts-ability-launchservicemanager-setlaunchservicesenabled-f-sys.md)<!--DelEnd-->
+  - [start](arkts-ability-launchservicemanager-start-f.md)
+  - [stop](arkts-ability-launchservicemanager-stop-f.md)
+  - [unregister](arkts-ability-launchservicemanager-unregister-f.md)
+  - [LaunchServiceConnectCallback](arkts-ability-launchservicemanager-launchserviceconnectcallback-t.md)
+  - [LaunchServiceDescriptor](arkts-ability-launchservicemanager-launchservicedescriptor-t.md)
+  - [LaunchServiceInformation](arkts-ability-launchservicemanager-launchserviceinformation-t.md)
+  <!--Del-->
+  - [LaunchServiceObserver（系统接口）](arkts-ability-launchservicemanager-launchserviceobserver-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [LaunchServiceProcessStateData（系统接口）](arkts-ability-launchservicemanager-launchserviceprocessstatedata-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [LaunchServiceStateData（系统接口）](arkts-ability-launchservicemanager-launchservicestatedata-t-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [LaunchServiceProcessState（系统接口）](arkts-ability-launchservicemanager-launchserviceprocessstate-e-sys.md)<!--DelEnd-->
+  - [LaunchServiceState](arkts-ability-launchservicemanager-launchservicestate-e.md)
 <!--Del-->
 - [@ohos.app.ability.missionManager（missionManager）](arkts-ability-app-ability-missionmanager.md)<!--DelEnd-->
   <!--Del-->
@@ -854,12 +882,12 @@
   - [updateAgentCard（系统接口）](arkts-ability-agentmanager-updateagentcard-f-sys.md)<!--DelEnd-->
 - [@ohos.app.agent.AgentUIExtensionAbility（带界面的智能体扩展组件）](arkts-ability-app-agent-agentuiextensionability.md)
   - [AgentUIExtensionAbility](arkts-ability-app-agent-agentuiextensionability-agentuiextensionability-c.md)
-- [@ohos.app.agent.taskManager](arkts-ability-app-agent-taskmanager.md)
+<!--Del-->
+- [@ohos.app.agent.taskManager](arkts-ability-app-agent-taskmanager.md)<!--DelEnd-->
   <!--Del-->
   - [finishTask（系统接口）](arkts-ability-taskmanager-finishtask-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [startTask（系统接口）](arkts-ability-taskmanager-starttask-f-sys.md)<!--DelEnd-->
-  - [TaskPriority](arkts-ability-taskmanager-taskpriority-e.md)
 - [@ohos.app.appstartup.StartupConfig（启动框架配置信息）](arkts-ability-app-appstartup-startupconfig.md)
   - [StartupConfig](arkts-ability-app-appstartup-startupconfig-startupconfig-i.md)
 - [@ohos.app.appstartup.StartupConfigEntry（启动框架配置）](arkts-ability-app-appstartup-startupconfigentry.md)
@@ -907,20 +935,19 @@
   - [ExecOptions（系统接口）](arkts-ability-climanager-execoptions-i-sys.md)<!--DelEnd-->
   - [ExecResult](arkts-ability-climanager-execresult-i.md)
   - [SessionStatus](arkts-ability-climanager-sessionstatus-e.md)
-<!--Del-->
-- [@ohos.app.function.functionManager（Function管理）](arkts-ability-app-function-functionmanager.md)<!--DelEnd-->
+- [@ohos.app.function.functionManager（Function管理）](arkts-ability-app-function-functionmanager.md)
   <!--Del-->
   - [invokeFunction（系统接口）](arkts-ability-functionmanager-invokefunction-f-sys.md)<!--DelEnd-->
+  - [invokePublicFunction](arkts-ability-functionmanager-invokepublicfunction-f.md)
   <!--Del-->
   - [queryFunctions（系统接口）](arkts-ability-functionmanager-queryfunctions-f-sys.md)<!--DelEnd-->
+  - [queryPublicFunctions](arkts-ability-functionmanager-querypublicfunctions-f.md)
   <!--Del-->
   - [registerFunctionHook（系统接口）](arkts-ability-functionmanager-registerfunctionhook-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [unregisterFunctionHook（系统接口）](arkts-ability-functionmanager-unregisterfunctionhook-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [InvokeOptions（系统接口）](arkts-ability-functionmanager-invokeoptions-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [InvokeResult（系统接口）](arkts-ability-functionmanager-invokeresult-i-sys.md)<!--DelEnd-->
+  - [InvokeOptions](arkts-ability-functionmanager-invokeoptions-i.md)
+  - [InvokeResult](arkts-ability-functionmanager-invokeresult-i.md)
 <!--Del-->
 - [@ohos.application.uriPermissionManager（URI权限管理）](arkts-ability-application-uripermissionmanager.md)<!--DelEnd-->
   <!--Del-->
@@ -1867,15 +1894,31 @@
     - [FunctionResultWrap（系统接口）](arkts-ability-functionhook-functionresultwrap-i-sys.md)<!--DelEnd-->
     <!--Del-->
     - [InvokeFunctionParam（系统接口）](arkts-ability-functionhook-invokefunctionparam-i-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [FunctionInfo（Function信息）](arkts-ability-functioninfo.md)<!--DelEnd-->
-    <!--Del-->
-    - [FunctionInfo（系统接口）](arkts-ability-functioninfo-i-sys.md)<!--DelEnd-->
+  - [FunctionInfo（Function信息）](arkts-ability-functioninfo.md)
+    - [FunctionInfo](arkts-ability-functioninfo-i.md)
   - [InteropAbilityMonitor](arkts-ability-interopabilitymonitor.md)
     - [InteropAbilityMonitor](arkts-ability-interopabilitymonitor-i.md)
     - [AbilityCallbackFn](arkts-ability-abilitycallbackfn-t.md)
   - [KioskStatus（Kiosk状态信息）](arkts-ability-kioskstatus.md)
     - [KioskStatus](arkts-ability-kioskstatus-i.md)
+  - [LaunchServiceConnectCallback](arkts-ability-launchserviceconnectcallback.md)
+    - [LaunchServiceConnectCallback](arkts-ability-launchserviceconnectcallback-i.md)
+  - [LaunchServiceDescriptor](arkts-ability-launchservicedescriptor.md)
+    - [LaunchServiceDescriptor](arkts-ability-launchservicedescriptor-i.md)
+  - [LaunchServiceInformation](arkts-ability-launchserviceinformation.md)
+    - [LaunchServiceInformation](arkts-ability-launchserviceinformation-i.md)
+  <!--Del-->
+  - [LaunchServiceObserver](arkts-ability-launchserviceobserver.md)<!--DelEnd-->
+    <!--Del-->
+    - [LaunchServiceObserver（系统接口）](arkts-ability-launchserviceobserver-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [LaunchServiceProcessStateData](arkts-ability-launchserviceprocessstatedata.md)<!--DelEnd-->
+    <!--Del-->
+    - [LaunchServiceProcessStateData（系统接口）](arkts-ability-launchserviceprocessstatedata-i-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [LaunchServiceStateData](arkts-ability-launchservicestatedata.md)<!--DelEnd-->
+    <!--Del-->
+    - [LaunchServiceStateData（系统接口）](arkts-ability-launchservicestatedata-i-sys.md)<!--DelEnd-->
   - [LoopObserver](arkts-ability-loopobserver.md)
     - [LoopObserver](arkts-ability-loopobserver-i.md)
   <!--Del-->
@@ -1943,8 +1986,7 @@
   - [ToolEventCallback（CLI工具事件回调）](arkts-ability-tooleventcallback.md)
     - [ToolEventCallback](arkts-ability-tooleventcallback-i.md)
     - [OnEventFn](arkts-ability-oneventfn-t.md)
-  <!--Del-->
-  - [ToolInfo（CLI工具信息）](arkts-ability-toolinfo.md)<!--DelEnd-->
+  - [ToolInfo（CLI工具信息）](arkts-ability-toolinfo.md)
     <!--Del-->
     - [SubCommandInfo（系统接口）](arkts-ability-toolinfo-subcommandinfo-i-sys.md)<!--DelEnd-->
     <!--Del-->

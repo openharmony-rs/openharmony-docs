@@ -14,7 +14,7 @@ function setAppResourceLimit(type: string, value: number, enableDebugLog: boolea
 
 Sets the number of FDs, number of threads, JS memory, or native memory limit of the application.
 
-This API is used to construct a memory leak. For details, see Subscribing to Resource Leak Events (ArkTS) and Subscribing to Resource Leak Events (C/C++).
+This API is used to construct a memory leak. For details, see [Subscribing to Resource Leak Events (ArkTS)](../../../dfx/hiappevent-watcher-resourceleak-events-arkts.md) and [Subscribing to Resource Leak Events (C/C++)](../../../dfx/hiappevent-watcher-resourceleak-events-ndk.md).
 
 > **NOTE:** 
 > 
@@ -41,7 +41,7 @@ This API is used to construct a memory leak. For details, see Subscribing to Res
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes: <br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
-| [11400104](../errorcode-hiviewdfx-hidebug-cpuusage.md#11400104-abnormal-cpu-usage) | Set limit failed due to remote exception |
+| [11400104](../errorcode-hiviewdfx-hidebug-cpuusage.md#11400104-abnormal-cpu-usage) | Set limit failed due to remote exception. |
 
 **Examples**
 

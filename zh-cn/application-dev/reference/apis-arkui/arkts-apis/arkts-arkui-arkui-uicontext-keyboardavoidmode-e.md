@@ -18,7 +18,7 @@ export const enum KeyboardAvoidMode
 NONE = 4
 ```
 
-None Type, the layout is not adjusted to avoid the keyboard.
+不避让键盘。
 
 **起始版本：** 14
 
@@ -36,7 +36,7 @@ None Type, the layout is not adjusted to avoid the keyboard.
 OFFSET = 0
 ```
 
-Offset Type, the layout moves up.
+上抬模式。
 
 **起始版本：** 11
 
@@ -54,7 +54,7 @@ Offset Type, the layout moves up.
 OFFSET_WITH_CARET = 2
 ```
 
-Offset Type, the layout moves up, and this adjustment also occurs if the caret position in the text box changes.
+上抬模式，输入框光标位置发生变化时也会触发避让。
 
 **起始版本：** 14
 
@@ -72,7 +72,7 @@ Offset Type, the layout moves up, and this adjustment also occurs if the caret p
 RESIZE = 1
 ```
 
-Resize Type, the layout is resized.
+压缩模式。
 
 **起始版本：** 11
 
@@ -90,7 +90,7 @@ Resize Type, the layout is resized.
 RESIZE_WITH_CARET = 3
 ```
 
-Resize Type, the layout moves up, and this adjustment also occurs if the caret position in the text box changes.
+压缩模式，输入框光标位置发生变化时也会触发避让。
 
 **起始版本：** 14
 

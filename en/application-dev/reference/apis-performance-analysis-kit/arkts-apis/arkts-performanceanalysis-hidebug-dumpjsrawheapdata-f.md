@@ -12,7 +12,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 function dumpJsRawHeapData(needGC?: boolean): Promise<string>
 ```
 
-Dumps the original heap snapshot of the VM for the current thread and generates a .rawheap file. This API uses a promise to return the result. The file can be converted into a heapsnapshot file using rawheap-translator for parsing.
+Dumps the original heap snapshot of the VM for the current thread and generates a .rawheap file. This API uses a promise to return the result. The file can be converted into a heapsnapshot file using [rawheap-translator](../../../tools/rawheap-translator.md) for parsing.
 
 > **NOTE:** 
 > 
@@ -40,7 +40,7 @@ Dumps the original heap snapshot of the VM for the current thread and generates 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;string&gt; | Path of the generated snapshot file. (Application Sandbox) |
+| Promise&lt;string&gt; | Path of the generated snapshot file. ([Application Sandbox](../../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path)) |
 
 **Error codes:**
 
@@ -74,7 +74,7 @@ hidebug.dumpJsRawHeapData().then((filePath: string) => {
 function dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise<string>
 ```
 
-Dumps the original heap snapshot of the VM for the current thread and clears the **nodeId** cache. The generated file is in the rawheap format. This API uses a promise to return the result. The file can be converted into a heapsnapshot file using rawheap-translator for parsing.
+Dumps the original heap snapshot of the VM for the current thread and clears the **nodeId** cache. The generated file is in the rawheap format. This API uses a promise to return the result. The file can be converted into a heapsnapshot file using [rawheap-translator](../../../tools/rawheap-translator.md) for parsing.
 
 > **NOTE:** 
 > 
@@ -105,7 +105,7 @@ Dumps the original heap snapshot of the VM for the current thread and clears the
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;string&gt; | Path of the generated snapshot file. (Application Sandbox) |
+| Promise&lt;string&gt; | Path of the generated snapshot file. ([Application Sandbox](../../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path)) |
 
 **Error codes:**
 
@@ -140,7 +140,7 @@ hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
 function dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Promise<Array<string>>
 ```
 
-Dumps the original heap snapshot of the VM for the current thread or the process to which the current thread belongs, clears the nodeId cache, and generates a .rawheap file. This API uses a promise to return the result. The file can be converted into a heapsnapshot file using rawheap-translator for parsing.
+Dumps the original heap snapshot of the VM for the current thread or the process to which the current thread belongs, clears the nodeId cache, and generates a .rawheap file. This API uses a promise to return the result. The file can be converted into a heapsnapshot file using [rawheap-translator](../../../tools/rawheap-translator.md) for parsing.
 
 > **NOTE:** 
 > 
@@ -172,7 +172,7 @@ Dumps the original heap snapshot of the VM for the current thread or the process
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;string&gt;&gt; | Array of paths of the generated snapshot files. (Application Sandbox) |
+| Promise&lt;Array&lt;string&gt;&gt; | Array of paths of the generated snapshot files. ([Application Sandbox](../../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path)) |
 
 **Error codes:**
 

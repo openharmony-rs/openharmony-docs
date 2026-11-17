@@ -290,7 +290,7 @@ Condition object. This parameter is left empty by default.
 unifiedGroupInfo?: UnifiedGroupInfo
 ```
 
-Information field of message [smart aggregation](../../../notification/notification-glossary.md#notification-smart-aggregation). This parameter is left empty by default.
+Information field of message smart aggregation. This parameter is left empty by default.
 
 **Type:** [UnifiedGroupInfo](arkts-notification-notificationrequest-unifiedgroupinfo-i-sys.md)
 

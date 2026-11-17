@@ -14,7 +14,7 @@ function offP2pServiceDiscovery(callback?: Callback<P2pServiceDiscoveryInfo>): v
 
 Unsubscribes from generic service response events.
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 

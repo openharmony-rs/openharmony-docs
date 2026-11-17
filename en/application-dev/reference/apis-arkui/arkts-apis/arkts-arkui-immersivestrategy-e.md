@@ -168,6 +168,24 @@ Expands the clip content of the Scroll component to the safe area.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## TABS_EXPAND_SAFE_AREA
+
+```TypeScript
+TABS_EXPAND_SAFE_AREA = 9
+```
+
+Expands the TabBar of Tabs as safe areas for the content region.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-ImmersiveStrategy-TABS_EXPAND_SAFE_AREA = 9--><!--Device-ImmersiveStrategy-TABS_EXPAND_SAFE_AREA = 9-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## WATER_FLOW_EXPAND_SAFE_AREA
 
 ```TypeScript

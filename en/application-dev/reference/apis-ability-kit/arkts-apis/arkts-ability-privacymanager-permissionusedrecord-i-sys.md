@@ -203,3 +203,43 @@ Default value: Query the last 10 failed or rejected records.
 **System capability:** SystemCapability.Security.AccessToken
 
 **System API:** This is a system API.
+
+## targetBundleName
+
+```TypeScript
+targetBundleName?: string
+```
+
+Bundle name of the target application. Only valid when permissionName is ohos.permission.AUTOMATION_CONTROL, indicating the bundle name of the target application being controlled in an automation control scenario. An empty string indicates a normal permission record (non-automation control). <br>Default value: "".
+
+**Type:** string
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PermissionUsedRecord-targetBundleName?: string--><!--Device-PermissionUsedRecord-targetBundleName?: string-End-->
+
+**System capability:** SystemCapability.Security.AccessToken
+
+**System API:** This is a system API.
+
+## targetTokenId
+
+```TypeScript
+targetTokenId?: number
+```
+
+Identity identifier of the target application. Only valid when permissionName is ohos.permission.AUTOMATION_CONTROL, indicating the target application being controlled in an automation control scenario. A value of 0 indicates a normal permission record (non-automation control). The value should be an integer. <br>Default value: 0.
+
+**Type:** number
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PermissionUsedRecord-targetTokenId?: int--><!--Device-PermissionUsedRecord-targetTokenId?: int-End-->
+
+**System capability:** SystemCapability.Security.AccessToken
+
+**System API:** This is a system API.

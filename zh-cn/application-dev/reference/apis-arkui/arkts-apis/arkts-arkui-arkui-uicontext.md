@@ -1,4 +1,4 @@
-# @ohos.arkui.UIContext
+# @ohos.arkui.UIContext(UIContext实例)
 
 ## 导入模块
 
@@ -108,7 +108,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 | [GestureListenerType](arkts-arkui-arkui-uicontext-gesturelistenertype-e.md) | 此枚举类型用于指定需要监控的手势类型。 |
 | [KeyboardAvoidMode](arkts-arkui-arkui-uicontext-keyboardavoidmode-e.md) | 配置键盘弹出时页面的避让模式。 |
 | [MarqueeDynamicSyncSceneType](arkts-arkui-arkui-uicontext-marqueedynamicsyncscenetype-e.md) | Marquee的动态帧率场景的类型枚举 |
-| [NodeRenderState](arkts-arkui-arkui-uicontext-noderenderstate-e.md) | An enumeration type that identifies the current node's rendering state. The UI components used in the application are automatically managed by the system and controlled for participation in graphical rendering by either mounting them onto the render tree or removing them from it. Only nodes that participate in graphical rendering have the potential to be displayed. However, participating in rendering does not equal to the node's visibility, as there may be many occlusion scenarios in the actual implementation of the application. Nevertheless, if a node does not participate in rendering, it will definitely not be visible. |
+| [NodeRenderState](arkts-arkui-arkui-uicontext-noderenderstate-e.md) | 节点的渲染状态。 |
 | [NodeSensitiveInputEventType](arkts-arkui-arkui-uicontext-nodesensitiveinputeventtype-e.md) | 定义可通过节点敏感输入监听器上报的输入事件类型。事件对象由[NodeSensitiveInputInfo](arkts-arkui-arkui-uicontext-nodesensitiveinputinfo-i.md)中与该类型匹配的成员字段承载；例如，取值为**TOUCH**时，事件对象由**touchEvent**承载。 |
 | [ResolveStrategy](arkts-arkui-arkui-uicontext-resolvestrategy-e.md) | UIContext对象的解析策略。 |
 | [SwiperDynamicSyncSceneType](arkts-arkui-arkui-uicontext-swiperdynamicsyncscenetype-e.md) | 枚举值，表示动态帧率场景的类型。 |

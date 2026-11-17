@@ -96,6 +96,8 @@
   <!--Del-->
   - [getAuthorizedAppList(system api)](arkts-devicecertificate-certificatemanager-getauthorizedapplist-f-sys.md)<!--DelEnd-->
   - [getCertificateStorePath](arkts-devicecertificate-certificatemanager-getcertificatestorepath-f.md)
+  <!--Del-->
+  - [getCertManagerConfig(system api)](arkts-devicecertificate-certificatemanager-getcertmanagerconfig-f-sys.md)<!--DelEnd-->
   - [getPrivateCertificate](arkts-devicecertificate-certificatemanager-getprivatecertificate-f.md)
   - [getPrivateCertificates](arkts-devicecertificate-certificatemanager-getprivatecertificates-f.md)
   - [getPublicCertificate](arkts-devicecertificate-certificatemanager-getpubliccertificate-f.md)
@@ -142,6 +144,8 @@
   - [CMHandle](arkts-devicecertificate-certificatemanager-cmhandle-i.md)
   - [CMResult](arkts-devicecertificate-certificatemanager-cmresult-i.md)
   - [CMSignatureSpec](arkts-devicecertificate-certificatemanager-cmsignaturespec-i.md)
+  <!--Del-->
+  - [ConfigItem(system api)](arkts-devicecertificate-certificatemanager-configitem-i-sys.md)<!--DelEnd-->
   - [Credential](arkts-devicecertificate-certificatemanager-credential-i.md)
   - [CredentialAbstract](arkts-devicecertificate-certificatemanager-credentialabstract-i.md)
   - [UkeyInfo](arkts-devicecertificate-certificatemanager-ukeyinfo-i.md)

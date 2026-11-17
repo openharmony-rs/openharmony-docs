@@ -4,7 +4,7 @@
 export interface NotificationCheckInfo
 ```
 
-Defines the [notification check](../../../notification/notification-glossary.md#notification-check) parameters.
+Defines the notification check parameters.
 
 **Since:** 10
 

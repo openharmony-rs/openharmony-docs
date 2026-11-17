@@ -98,6 +98,8 @@
   - [AudioStreamInfo](arkts-audio-audio-audiostreaminfo-i.md)
   - [AudioStreamManager](arkts-audio-audio-audiostreammanager-i.md)
   <!--Del-->
+  - [AudioStreamManager(system api)](arkts-audio-audio-audiostreammanager-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [AudioSuiteDownloadManager(system api)](arkts-audio-audio-audiosuitedownloadmanager-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [AudioSuiteFeatureStatusInfo(system api)](arkts-audio-audio-audiosuitefeaturestatusinfo-i-sys.md)<!--DelEnd-->

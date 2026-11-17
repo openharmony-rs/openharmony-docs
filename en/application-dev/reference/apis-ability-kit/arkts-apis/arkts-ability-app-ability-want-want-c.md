@@ -203,7 +203,7 @@ the Boolean type.
 In cross-device scenarios, the following fields do not take effect and cannot be used for identity or permission verification: **ohos.aafwk.param.callerPid**, **ohos.aafwk.param.callerToken**, and **ohos.aafwk.param.callerUid**.
 
 2. Certain keys are defined by the system, and their values need to be manually assigned. For details about the
-keys and their values, see wantConstant.Params.
+keys and their values, see [wantConstant.Params](arkts-ability-wantconstant-params-e.md)<!--Del--> and [wantConstant.Params (system applications only)](arkts-ability-wantconstant-params-e.md)<!--DelEnd-->.
 3. In addition to the foregoing cases, applications may further agree on the key-value pairs to transfer.
 
 **NOTE:** 

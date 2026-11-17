@@ -26,7 +26,7 @@ import { GridObjectSortComponentType, GridObjectSortComponentItem, GridObjectSor
 build(): void
 ```
 
-Build function of GridObjectSortComponent.
+GridObjectSortComponent的构建函数。
 
 **起始版本：** 11
 

@@ -236,7 +236,7 @@ CHARGE_START = 'chargeStart'
 DAILY_TIME = 'dailyTime'
 ```
 
-每日时间点。
+每天的时间点。
 
 **起始版本：** 26.1.0
 
@@ -254,7 +254,7 @@ DAILY_TIME = 'dailyTime'
 LOCATION = 'location'
 ```
 
-位置信息，包含位置以及进出围栏状态。
+位置信息，包括位置、围栏进出状态。
 
 **起始版本：** 26.1.0
 
@@ -272,7 +272,7 @@ LOCATION = 'location'
 MONTHLY_TIME = 'monthlyTime'
 ```
 
-每月时间点。
+每月的时间点。
 
 **起始版本：** 26.1.0
 
@@ -290,7 +290,7 @@ MONTHLY_TIME = 'monthlyTime'
 PHONE_RING = 'phoneRing'
 ```
 
-本机来电响铃。
+本机来电。
 
 **起始版本：** 26.1.0
 
@@ -308,7 +308,7 @@ PHONE_RING = 'phoneRing'
 WEEKLY_TIME = 'weeklyTime'
 ```
 
-每周时间点。
+每周的时间点。
 
 **起始版本：** 26.1.0
 
@@ -326,7 +326,7 @@ WEEKLY_TIME = 'weeklyTime'
 WORKDAY_TIME = 'workdayTime'
 ```
 
-法定工作日时间点。
+法定工作日的时间点。
 
 **起始版本：** 26.1.0
 

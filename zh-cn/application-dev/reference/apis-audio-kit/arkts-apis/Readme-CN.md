@@ -98,6 +98,8 @@
   - [AudioStreamInfo](arkts-audio-audio-audiostreaminfo-i.md)
   - [AudioStreamManager](arkts-audio-audio-audiostreammanager-i.md)
   <!--Del-->
+  - [AudioStreamManager（系统接口）](arkts-audio-audio-audiostreammanager-i-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [AudioSuiteDownloadManager（系统接口）](arkts-audio-audio-audiosuitedownloadmanager-i-sys.md)<!--DelEnd-->
   <!--Del-->
   - [AudioSuiteFeatureStatusInfo（系统接口）](arkts-audio-audio-audiosuitefeaturestatusinfo-i-sys.md)<!--DelEnd-->

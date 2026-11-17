@@ -4,7 +4,7 @@
 export declare class SymbolOptions
 ```
 
-Declare type SymbolOptions
+声明SymbolOptions类型。
 
 **起始版本：** 12
 

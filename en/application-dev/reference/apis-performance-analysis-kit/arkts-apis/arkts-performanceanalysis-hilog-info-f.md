@@ -12,7 +12,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 function info(domain: number, tag: string, format: string, ...args: any[]): void
 ```
 
-Prints INFO logs.
+Prints an INFO-level log.
 
 **Since:** 7
 
@@ -26,10 +26,10 @@ Prints INFO logs.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| domain | number | Yes | Service domain of logs. The value ranges from **0x0** to **0xFFFF**. If the value exceeds the range, logs cannot be printed.<br>You can define the value as required. |
-| tag | string | Yes | Log tag in the string format. You are advised to use this parameter to identify a particular service behavior or the class holding the ongoing method. A tag can contain a maximum of 31 bytes. If a tag exceeds this limit, it will be truncated. Chinese characters are not recommended because garbled characters or alignment problems may occur. |
-| format | string | Yes | Format string used to output logs in a specified format. It can contain several elements, where the parameter type and privacy identifier are mandatory.<br>Parameters labeled **{public}** are public data and are displayed in plaintext; parameters labeled **{private}** (default value) are private data and are filtered by **<private>**. |
-| args | any[] | Yes | Variable-length parameter list corresponding to the format string. The number and type of parameters must map to the identifier in the format string. |
+| domain | number | Yes | Domain identifier for the log, ranging from 0x0 to 0xFFFF. Logs outside this range cannot be printed.<br>It is recommended that developers define and divide domains as needed within the application. |
+| tag | string | Yes | Specifies the log tag, which can be any string. It is recommended to identify the calling class or business behavior. The recommended tag length should not exceed 31 bytes. Chinese characters are not recommended as they may cause garbled text or alignment issues. |
+| format | string | Yes | Format string for formatted log output. The format string can contain multiple parameters, each requiring a parameter type and privacy flag.<br>Privacy flags are divided into {public} and {private}, defaulting to {private}. Content marked with {public} is output in plaintext, while content marked with {private} is displayed as <private>. The privacy flag mechanism helps developers protect privacy-sensitive data. |
+| args | any[] | Yes | Variable-length parameter list corresponding to the format string. The number and types of parameters must match the placeholders in the format string one-to-one. When the format string does not contain placeholders, this parameter can be omitted, and only the format string itself is output. |
 
 **Examples**
 

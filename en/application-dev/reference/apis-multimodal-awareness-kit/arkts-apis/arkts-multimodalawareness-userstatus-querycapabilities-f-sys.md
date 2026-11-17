@@ -12,7 +12,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 function queryCapabilities(capabilities: UserStatusAtomicCap[]): UserStatusAtomicCap[]
 ```
 
-Queries device-supported atomic capabilities.
+Queries the atomic capabilities supported by the device. This method determines whether the specified atomic capabilities are supported through the underlying interface and returns the list of capabilities actually supported by the device.
 
 **Since:** 26.0.0
 

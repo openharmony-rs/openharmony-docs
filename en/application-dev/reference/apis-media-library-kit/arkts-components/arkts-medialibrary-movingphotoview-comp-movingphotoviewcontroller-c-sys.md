@@ -15,7 +15,7 @@ Defines the MovingPhotoView controller.
 ## Modules to Import
 
 ```TypeScript
-import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute, PixelMapFormat, DynamicRangeMode } from '@kit.MediaLibraryKit';
+import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute, PixelMapFormat, DynamicRangeMode, DisplayMode } from '@kit.MediaLibraryKit';
 ```
 
 ## enableAutoPlay
@@ -172,6 +172,37 @@ Restart to play the video with current options.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
 
+## setDisplayMode
+
+```TypeScript
+setDisplayMode(mode: DisplayMode, callback: MovingPhotoViewEventCallback): void
+```
+
+Set display mode, and trigger callback completion.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MovingPhotoViewController-setDisplayMode(mode: DisplayMode, callback: MovingPhotoViewEventCallback): void--><!--Device-MovingPhotoViewController-setDisplayMode(mode: DisplayMode, callback: MovingPhotoViewEventCallback): void-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| mode | [DisplayMode](arkts-medialibrary-movingphotoview-comp-displaymode-e-sys.md) | Yes | Display mode |
+| callback | [MovingPhotoViewEventCallback](arkts-medialibrary-movingphotoview-comp-movingphotovieweventcallback-t.md) | Yes | Set display mode completion callback |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+
 ## setPlaybackPeriod
 
 ```TypeScript
@@ -202,3 +233,33 @@ Set moving photo playback period
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
+
+## startPlayback
+
+```TypeScript
+startPlayback(mode: DisplayMode): void
+```
+
+Start play moving photo.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MovingPhotoViewController-startPlayback(mode: DisplayMode): void--><!--Device-MovingPhotoViewController-startPlayback(mode: DisplayMode): void-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| mode | [DisplayMode](arkts-medialibrary-movingphotoview-comp-displaymode-e-sys.md) | Yes | Display mode |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |

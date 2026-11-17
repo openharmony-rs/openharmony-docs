@@ -12,7 +12,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 function setOutputTypeByDomainID(type: OutputType, domainIDs: Array<number>, isExclude: boolean): OutputType
 ```
 
-Sets the output type for hilog for the domainID list.
+Sets the hilog output type and configures the domain ID list for output. You can choose to output only the domain IDs in the list, or exclude the domain IDs in the list from output.
 
 **Since:** 26.0.0
 
@@ -28,15 +28,15 @@ Sets the output type for hilog for the domainID list.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | [OutputType](arkts-performanceanalysis-hilog-outputtype-e.md) | Yes | output type for hilog. |
-| domainIDs | Array&lt;number&gt; | Yes | domainID list, if isExclude is true, the output type for the domainID list is set to DEFAULT, and the output type for the remaining domainIDs is set to the currently specified output type; if isExclude is false, the output type for the domainID list is set to the currently specified output type, and the output type for the remaining domainIDs is set to DEFAULT |
-| isExclude | boolean | Yes | determine whether the domainIDs take effect for the currently specified output type. |
+| type | [OutputType](arkts-performanceanalysis-hilog-outputtype-e.md) | Yes | The output type of hilog. |
+| domainIDs | Array&lt;number&gt; | Yes | Domain ID list. Each domain ID ranges from 0x0000 to 0xFFFF. Only effective for application domains. |
+| isExclude | boolean | Yes | Determines whether the domainIDs are excluded from the output type. <br>true means the domain IDs in the list are excluded from output; false means only the domain IDs in the list are output. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [OutputType](arkts-performanceanalysis-hilog-outputtype-e.md) | previous value of output type. |
+| [OutputType](arkts-performanceanalysis-hilog-outputtype-e.md) | Returns the previously set output type. |
 
 **Examples**
 

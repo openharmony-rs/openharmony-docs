@@ -8,7 +8,7 @@ enum Tokenizer
 
 在使用不同的分词器时，使用的建表语句会有所区别。
 
-示例代码中this.context定义见Stage模型的应用[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md)。
+示例代码中this.context定义见Stage模型的应用[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。
 
 使用ICU_TOKENIZER分词器时，创建表的示例：
 

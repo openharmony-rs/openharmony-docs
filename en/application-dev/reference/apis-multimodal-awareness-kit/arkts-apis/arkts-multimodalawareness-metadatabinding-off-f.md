@@ -12,7 +12,7 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 function off(type: 'operationSubmitMetadata', bundleName: string, callback?: Callback<number>): void
 ```
 
-Unsubscribes from system events that are used to obtain the encoded metadata. The respective callback will be unregistered.
+Unsubscribes from the event of the system obtaining encoded content. The on('operationSubmitMetadata') method must be called first to subscribe to the event. Calling this API without a subscription has no effect. After unsubscribing, the application will no longer receive encoded content transfer events.
 
 **Since:** 18
 
@@ -27,8 +27,8 @@ Unsubscribes from system events that are used to obtain the encoded metadata. Th
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'operationSubmitMetadata' | Yes | Event type. This parameter has a fixed value of **operationSubmitMetadata**, indicating the system application's attempt to obtain the encoded metadata. |
-| bundleName | string | Yes | Application bundle name. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | Callback used to return the encoded metadata. |
+| bundleName | string | Yes | Application bundle name, which identifies the bundle name of the registered application. It must be the same as the bundle name passed in during subscription. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | No | Callback function used to return the event code. The callback function to be unsubscribed must be the same as the one passed in during subscription. It is recommended that you save the callback function reference during subscription and use the same reference when unsubscribing. If this parameter is not specified, all callback functions currently listening for this event are unsubscribed. |
 
 **Error codes:**
 

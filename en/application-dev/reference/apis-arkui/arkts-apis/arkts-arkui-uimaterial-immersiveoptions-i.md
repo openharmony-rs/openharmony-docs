@@ -104,6 +104,26 @@ Default value: **false**
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## colorMode
+
+```TypeScript
+colorMode?: ThemeColorMode
+```
+
+Material color mode. Note: Fix the material's light/dark mode, overriding WithTheme and independent of the system theme. This affects only the material effect, leaving child components and other properties unchanged. Default value: **ThemeColorMode.SYSTEM**.
+
+**Type:** [ThemeColorMode](../arkts-components/arkts-arkui-common-comp-themecolormode-e.md)
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-ImmersiveOptions-colorMode?: ThemeColorMode--><!--Device-ImmersiveOptions-colorMode?: ThemeColorMode-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## interactive
 
 ```TypeScript

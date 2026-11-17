@@ -15,7 +15,7 @@ declare enum TextHeightAdaptivePolicy
 ## LAYOUT_CONSTRAINT_FIRST
 
 ```TypeScript
-LAYOUT_CONSTRAINT_FIRST = 2
+LAYOUT_CONSTRAINT_FIRST
 ```
 
 设置文本高度自适应方式为以布局约束（高度）优先。
@@ -26,14 +26,14 @@ LAYOUT_CONSTRAINT_FIRST = 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-TextHeightAdaptivePolicy-LAYOUT_CONSTRAINT_FIRST = 2--><!--Device-TextHeightAdaptivePolicy-LAYOUT_CONSTRAINT_FIRST = 2-End-->
+<!--Device-TextHeightAdaptivePolicy-LAYOUT_CONSTRAINT_FIRST--><!--Device-TextHeightAdaptivePolicy-LAYOUT_CONSTRAINT_FIRST-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## MAX_LINES_FIRST
 
 ```TypeScript
-MAX_LINES_FIRST = 0
+MAX_LINES_FIRST
 ```
 
 设置文本高度自适应方式为以[maxLines](../arkts-components/arkts-arkui-textarea-comp-attribute.md#maxlines-1)优先。
@@ -44,14 +44,14 @@ MAX_LINES_FIRST = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-TextHeightAdaptivePolicy-MAX_LINES_FIRST = 0--><!--Device-TextHeightAdaptivePolicy-MAX_LINES_FIRST = 0-End-->
+<!--Device-TextHeightAdaptivePolicy-MAX_LINES_FIRST--><!--Device-TextHeightAdaptivePolicy-MAX_LINES_FIRST-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## MIN_FONT_SIZE_FIRST
 
 ```TypeScript
-MIN_FONT_SIZE_FIRST = 1
+MIN_FONT_SIZE_FIRST
 ```
 
 设置文本高度自适应方式为以缩小字体优先。
@@ -62,6 +62,6 @@ MIN_FONT_SIZE_FIRST = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-TextHeightAdaptivePolicy-MIN_FONT_SIZE_FIRST = 1--><!--Device-TextHeightAdaptivePolicy-MIN_FONT_SIZE_FIRST = 1-End-->
+<!--Device-TextHeightAdaptivePolicy-MIN_FONT_SIZE_FIRST--><!--Device-TextHeightAdaptivePolicy-MIN_FONT_SIZE_FIRST-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

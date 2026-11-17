@@ -12,7 +12,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 function offHoverHandChange(callback?: Callback<HoverHandAction>): void
 ```
 
-取消订阅悬停手势事件。
+取消订阅悬浮手事件。当应用不再需要监听悬浮手事件时使用，应调用此接口取消订阅以释放系统资源。
 
 **起始版本：** 26.0.0
 

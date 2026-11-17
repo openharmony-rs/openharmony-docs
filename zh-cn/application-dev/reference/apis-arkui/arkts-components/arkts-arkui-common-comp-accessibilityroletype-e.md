@@ -1138,7 +1138,7 @@ NAV_DESTINATION = 56
 NAV_ROUTER = 57
 ```
 
-navrouter component type
+导航组件。
 
 **起始版本：** 18
 
@@ -1278,7 +1278,7 @@ OFFSCREEN_CANVAS_RENDERING_CONTEXT2D = 63
 OPTION = 64
 ```
 
-option component type
+具体项目。
 
 **起始版本：** 18
 
@@ -1318,7 +1318,7 @@ PANEL = 65
 PAPER_PAGE = 66
 ```
 
-paper page component type
+页面。
 
 **起始版本：** 18
 
@@ -1518,7 +1518,7 @@ POPUP = 75
 PROGRESS = 76
 ```
 
-progress component type
+进度条组件。
 
 **起始版本：** 18
 
@@ -1958,7 +1958,7 @@ SIDEBAR_CONTAINER = 95
 SLIDER = 96
 ```
 
-slider component type
+滑动条组件。
 
 **起始版本：** 18
 
@@ -2258,7 +2258,7 @@ TEXT_CLOCK = 109
 TEXT_ENTRY = 110
 ```
 
-text entry component type
+文本输入。
 
 **起始版本：** 18
 
@@ -2398,7 +2398,7 @@ TITLE_BAR = 117
 TOGGLER = 118
 ```
 
-toggler component type
+状态组件。
 
 **起始版本：** 18
 

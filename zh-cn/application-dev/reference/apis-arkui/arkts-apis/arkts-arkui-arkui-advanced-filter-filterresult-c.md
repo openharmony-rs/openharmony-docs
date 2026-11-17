@@ -4,7 +4,7 @@
 export declare class FilterResult
 ```
 
-This parameter specifies the selection result of a filtering dimension. The index starts from 0.
+该参数用于指定某个过滤维度的选择结果。索引从0开始。
 
 **起始版本：** 10
 

@@ -1,38 +1,41 @@
-# AdvancedToolbarV2Item
+# AdvancedToolBarV2Item
 
 ```TypeScript
-export declare class AdvancedToolbarV2Item extends ToolBarV2Item
+export declare class AdvancedToolBarV2Item extends ToolBarV2Item
 ```
 
-Defines the advanced toolbar item.
+定义高级工具栏项。
 
-Extends [ToolBarV2Item](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2item-c.md) with advanced layout capabilities such as custom builder, title configuration, placement, display priority, activated background color, item size, separator, text visibility, overflow menu, and item grouping.
+扩展[ToolBarV2Item](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2item-c.md)以高级布局功能，例如自定义生成器、标题配置、位置、显示优先级、激活的背景色、项目大小、分隔符、文本可见性、溢出菜单和项目分组。
 
-Items with the same non-empty `groupID` form a group. Group-level configuration (placement, spacing, container style) is read from the first item in the array that carries that `groupID`.
+> **说明：** 
+> 具有相同非空groupID的项组成一个组，组级
+> 配置（位置、间距、容器样式）从
+> 数组中包含groupID的第一项。
 
-**Inheritance/Implementation:** AdvancedToolbarV2Item extends [ToolBarV2Item](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2item-c.md)
+**Inheritance/Implementation:** AdvancedToolBarV2Item extends [ToolBarV2Item](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2item-c.md)
 
 **Since:** 26.1.0
 
 **Decorator:** @ObservedV2
 
-<!--Device-unnamed-export declare class AdvancedToolbarV2Item extends ToolBarV2Item--><!--Device-unnamed-export declare class AdvancedToolbarV2Item extends ToolBarV2Item-End-->
+<!--Device-unnamed-export declare class AdvancedToolBarV2Item extends ToolBarV2Item--><!--Device-unnamed-export declare class AdvancedToolBarV2Item extends ToolBarV2Item-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
 
 ```TypeScript
-import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolbarV2Item, AdvancedToolbarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolbarV2ItemGroupStyle, ToolbarV2ItemGroupStyleOptions, ToolbarV2ItemPlacement, ToolbarV2OverflowMenuStyle, ToolbarV2PaddingOptions, ToolbarV2StyleConfigs, ToolbarV2StyleOptions, ToolbarV2TitleConfigs, ToolbarV2TitleOptions, ToolbarV2TitleStyle, ToolbarV2TitleStyleOptions } from '@kit.ArkUI';
+import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolBarV2Item, AdvancedToolBarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolBarV2ItemGroupStyle, ToolBarV2ItemGroupStyleOptions, ToolBarV2ItemPlacement, ToolBarV2OverflowMenuStyle, ToolBarV2PaddingOptions, ToolBarV2StyleConfigs, ToolBarV2StyleOptions, ToolBarV2TitleConfigs, ToolBarV2TitleOptions, ToolBarV2TitleStyle, ToolBarV2TitleStyleOptions, ToolBarV2MaterialStyle } from '@kit.ArkUI';
 ```
 
 ## constructor
 
 ```TypeScript
-constructor(options?: AdvancedToolbarV2ItemOptions)
+constructor(params: AdvancedToolBarV2ItemParams)
 ```
 
-The constructor used to create a AdvancedToolbarV2Item object.
+用于创建AdvancedToolBarV2Item对象的构造函数。
 
 **Since:** 26.1.0
 
@@ -40,7 +43,7 @@ The constructor used to create a AdvancedToolbarV2Item object.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-AdvancedToolbarV2Item-constructor(options?: AdvancedToolbarV2ItemOptions)--><!--Device-AdvancedToolbarV2Item-constructor(options?: AdvancedToolbarV2ItemOptions)-End-->
+<!--Device-AdvancedToolBarV2Item-constructor(params: AdvancedToolBarV2ItemParams)--><!--Device-AdvancedToolBarV2Item-constructor(params: AdvancedToolBarV2ItemParams)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,7 +51,7 @@ The constructor used to create a AdvancedToolbarV2Item object.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [AdvancedToolbarV2ItemOptions](arkts-arkui-arkui-advanced-toolbarv2-advancedtoolbarv2itemoptions-i.md) | No | item info. |
+| params | [AdvancedToolBarV2ItemParams](arkts-arkui-arkui-advanced-toolbarv2-advancedtoolbarv2itemparams-i.md) | Yes | 构造参数信息。 |
 
 ## activatedBackgroundColor
 
@@ -56,7 +59,7 @@ The constructor used to create a AdvancedToolbarV2Item object.
 activatedBackgroundColor?: ColorMetrics
 ```
 
-Item background color in `ACTIVATE` status (activated background color). Only applies to icon-only items; icon+text items cannot set a background color. Defaults to transparent when not specified. Recommend using `$r('sys.color.comp_background_emphasize')` (HarmonyOS blue). Default value: Color.Transparent.
+处于ACTIVATE状态的项目背景色（激活的背景色）。仅适用于仅有图标的项目，图标+文本项目不能设置背景颜色。默认值：undefined。未设置时无颜色。建议使用$r（'sys.color.comp_background_emphasize'）（鸿蒙蓝色）。
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -68,7 +71,7 @@ Item background color in `ACTIVATE` status (activated background color). Only ap
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-AdvancedToolbarV2Item-activatedBackgroundColor?: ColorMetrics--><!--Device-AdvancedToolbarV2Item-activatedBackgroundColor?: ColorMetrics-End-->
+<!--Device-AdvancedToolBarV2Item-activatedBackgroundColor?: ColorMetrics--><!--Device-AdvancedToolBarV2Item-activatedBackgroundColor?: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,7 +81,7 @@ Item background color in `ACTIVATE` status (activated background color). Only ap
 builder?: CustomBuilder
 ```
 
-Custom content builder for the toolbar item. When set, content and icon are ignored. Default value: undefined.
+工具栏项的自定义内容生成器。默认值：undefined。设置时，内容和图标将被忽略。
 
 **Type:** [CustomBuilder](../arkts-components/arkts-arkui-common-comp-custombuilder-t.md)
 
@@ -90,7 +93,7 @@ Custom content builder for the toolbar item. When set, content and icon are igno
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-AdvancedToolbarV2Item-builder?: CustomBuilder--><!--Device-AdvancedToolbarV2Item-builder?: CustomBuilder-End-->
+<!--Device-AdvancedToolBarV2Item-builder?: CustomBuilder--><!--Device-AdvancedToolBarV2Item-builder?: CustomBuilder-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,7 +103,7 @@ Custom content builder for the toolbar item. When set, content and icon are igno
 displayPriority?: number
 ```
 
-Display priority of the toolbar item in the layout container. Higher values indicate higher display priority. Value range: [0,10]. Default value: 1.
+布局容器中工具栏项的显示优先级。值越高，显示优先级越高。默认值：1。取值范围：[0, 10]。
 
 **Type:** number
 
@@ -112,7 +115,7 @@ Display priority of the toolbar item in the layout container. Higher values indi
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-AdvancedToolbarV2Item-displayPriority?: number--><!--Device-AdvancedToolbarV2Item-displayPriority?: number-End-->
+<!--Device-AdvancedToolBarV2Item-displayPriority?: number--><!--Device-AdvancedToolBarV2Item-displayPriority?: number-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,7 +125,7 @@ Display priority of the toolbar item in the layout container. Higher values indi
 groupID?: string
 ```
 
-Group identifier. Items sharing the same non-empty `groupID` are rendered as a visual group. Group-level configuration is read from the first item in the array that carries this `groupID`. Default value: undefined.
+组标识。相同非空groupID的项作为一个视觉群体。同一groupID的第一个项决定组的位置。默认值：undefined。
 
 **Type:** string
 
@@ -134,19 +137,19 @@ Group identifier. Items sharing the same non-empty `groupID` are rendered as a v
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-AdvancedToolbarV2Item-groupID?: string--><!--Device-AdvancedToolbarV2Item-groupID?: string-End-->
+<!--Device-AdvancedToolBarV2Item-groupID?: string--><!--Device-AdvancedToolBarV2Item-groupID?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## groupStyle
 
 ```TypeScript
-groupStyle?: ToolbarV2ItemGroupStyle
+groupStyle?: ToolBarV2ItemGroupStyle
 ```
 
-Style configuration for the group that this item belongs to. Only the value on the first item (in array order) carrying a given `groupID` takes effect; values on subsequent items with the same `groupID` are ignored. Default value: undefined.
+此项目所属组的样式配置。相同groupID下第一个设置了groupStyle的样式配置生效；具有相同groupID的后续项上的值将被忽略。默认值：undefined。
 
-**Type:** [ToolbarV2ItemGroupStyle](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemgroupstyle-c.md)
+**Type:** [ToolBarV2ItemGroupStyle](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemgroupstyle-c.md)
 
 **Since:** 26.1.0
 
@@ -156,7 +159,7 @@ Style configuration for the group that this item belongs to. Only the value on t
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-AdvancedToolbarV2Item-groupStyle?: ToolbarV2ItemGroupStyle--><!--Device-AdvancedToolbarV2Item-groupStyle?: ToolbarV2ItemGroupStyle-End-->
+<!--Device-AdvancedToolBarV2Item-groupStyle?: ToolBarV2ItemGroupStyle--><!--Device-AdvancedToolBarV2Item-groupStyle?: ToolBarV2ItemGroupStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -166,7 +169,7 @@ Style configuration for the group that this item belongs to. Only the value on t
 id?: string
 ```
 
-Unique identifier for the toolbar item.
+工具栏项的唯一标识符。
 
 **Type:** string
 
@@ -178,7 +181,7 @@ Unique identifier for the toolbar item.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-AdvancedToolbarV2Item-id?: string--><!--Device-AdvancedToolbarV2Item-id?: string-End-->
+<!--Device-AdvancedToolBarV2Item-id?: string--><!--Device-AdvancedToolBarV2Item-id?: string-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,7 +191,7 @@ Unique identifier for the toolbar item.
 isShowOverflowMenu?: boolean
 ```
 
-Whether to display the overflowMenu of the toolbar in this item. Default value: false.
+此项中是否显示为工具栏的溢出菜单。默认值：undefined。不设置时默认为false。
 
 **Type:** boolean
 
@@ -200,7 +203,7 @@ Whether to display the overflowMenu of the toolbar in this item. Default value: 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-AdvancedToolbarV2Item-isShowOverflowMenu?: boolean--><!--Device-AdvancedToolbarV2Item-isShowOverflowMenu?: boolean-End-->
+<!--Device-AdvancedToolBarV2Item-isShowOverflowMenu?: boolean--><!--Device-AdvancedToolBarV2Item-isShowOverflowMenu?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -210,7 +213,7 @@ Whether to display the overflowMenu of the toolbar in this item. Default value: 
 isShowSeparator?: boolean
 ```
 
-Whether to show a separator after this item. When true, a separator is rendered after this item (not after the last item in the toolbar). Default value: false.
+是否在该项后显示分隔符。如果为true，则在该项之后呈现分隔符（而不是在工具栏中的最后一项之后）。默认值：undefined。不设置时，默认为false，不显示分隔符。
 
 **Type:** boolean
 
@@ -222,7 +225,7 @@ Whether to show a separator after this item. When true, a separator is rendered 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-AdvancedToolbarV2Item-isShowSeparator?: boolean--><!--Device-AdvancedToolbarV2Item-isShowSeparator?: boolean-End-->
+<!--Device-AdvancedToolBarV2Item-isShowSeparator?: boolean--><!--Device-AdvancedToolBarV2Item-isShowSeparator?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -232,7 +235,7 @@ Whether to show a separator after this item. When true, a separator is rendered 
 isShowText?: boolean
 ```
 
-Whether to display the text content of the toolbar item. When set to false, the text specified by `content` is not rendered in the toolbar, but `content` is still used for overflow menu identification. This is useful when an icon-only item still needs text identification in the overflow menu. Default value: true.
+是否显示工具栏项的文本内容。当设置为false时，由content指定的文本不会在工具栏中呈现。针对项中仅需图标显示的场景使用。默认值：undefined。
 
 **Type:** boolean
 
@@ -244,7 +247,7 @@ Whether to display the text content of the toolbar item. When set to false, the 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-AdvancedToolbarV2Item-isShowText?: boolean--><!--Device-AdvancedToolbarV2Item-isShowText?: boolean-End-->
+<!--Device-AdvancedToolBarV2Item-isShowText?: boolean--><!--Device-AdvancedToolBarV2Item-isShowText?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -254,7 +257,7 @@ Whether to display the text content of the toolbar item. When set to false, the 
 itemSize?: Size
 ```
 
-Item size (width × height) for the toolbar item. Default value: mainAxis 56vp x crossAxis 48vp. When horizontal: 56vp(width) x 48vp(height). When vertical: 48vp(width) x 56vp(height).
+工具栏项的项大小（宽×高）。
 
 **Type:** Size
 
@@ -266,19 +269,19 @@ Item size (width × height) for the toolbar item. Default value: mainAxis 56vp x
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-AdvancedToolbarV2Item-itemSize?: Size--><!--Device-AdvancedToolbarV2Item-itemSize?: Size-End-->
+<!--Device-AdvancedToolBarV2Item-itemSize?: Size--><!--Device-AdvancedToolBarV2Item-itemSize?: Size-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## placement
 
 ```TypeScript
-placement?: ToolbarV2ItemPlacement
+placement?: ToolBarV2ItemPlacement
 ```
 
-Placement position of the toolbar item. Default value: ToolbarV2ItemPlacement.MAIN.
+工具栏项的放置位置。默认值：ToolBarV2ItemPlacement.MAIN。
 
-**Type:** [ToolbarV2ItemPlacement](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemplacement-e.md)
+**Type:** [ToolBarV2ItemPlacement](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemplacement-e.md)
 
 **Since:** 26.1.0
 
@@ -288,19 +291,19 @@ Placement position of the toolbar item. Default value: ToolbarV2ItemPlacement.MA
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-AdvancedToolbarV2Item-placement?: ToolbarV2ItemPlacement--><!--Device-AdvancedToolbarV2Item-placement?: ToolbarV2ItemPlacement-End-->
+<!--Device-AdvancedToolBarV2Item-placement?: ToolBarV2ItemPlacement--><!--Device-AdvancedToolBarV2Item-placement?: ToolBarV2ItemPlacement-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## titleConfigs
 
 ```TypeScript
-titleConfigs?: ToolbarV2TitleConfigs
+titleConfigs?: ToolBarV2TitleConfigs
 ```
 
-Define advanced toolbarV2 title settings. When not provided, no title is rendered.
+定义高级工具栏V2标题设置。如果不提供，则不显示标题。
 
-**Type:** [ToolbarV2TitleConfigs](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2titleconfigs-c.md)
+**Type:** [ToolBarV2TitleConfigs](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2titleconfigs-c.md)
 
 **Since:** 26.1.0
 
@@ -310,6 +313,6 @@ Define advanced toolbarV2 title settings. When not provided, no title is rendere
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-AdvancedToolbarV2Item-titleConfigs?: ToolbarV2TitleConfigs--><!--Device-AdvancedToolbarV2Item-titleConfigs?: ToolbarV2TitleConfigs-End-->
+<!--Device-AdvancedToolBarV2Item-titleConfigs?: ToolBarV2TitleConfigs--><!--Device-AdvancedToolBarV2Item-titleConfigs?: ToolBarV2TitleConfigs-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

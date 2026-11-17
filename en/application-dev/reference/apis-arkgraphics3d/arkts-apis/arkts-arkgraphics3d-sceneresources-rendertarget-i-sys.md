@@ -44,4 +44,4 @@ get a pixel map object from RenderTarget
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 25601006 | - Possible Cause: -- try to get a PixelMap from a destroyed RenderTarget |
+| [25601006](../errorcode-graphics3d.md#25601006-using-an-expired-resource) | - Possible Cause: -- try to get a PixelMap from a destroyed RenderTarget |

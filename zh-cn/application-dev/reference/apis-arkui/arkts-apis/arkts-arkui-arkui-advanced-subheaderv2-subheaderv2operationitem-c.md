@@ -26,7 +26,7 @@ import { SubHeaderV2IconType, SubHeaderV2Title, SubHeaderV2Select, SubHeaderV2, 
 action?: SubHeaderV2OperationItemAction
 ```
 
-callback function when operate the text or icon.
+操作文本或图标时的回调函数。
 
 **起始版本：** 18
 
@@ -70,7 +70,7 @@ constructor(options: SubHeaderV2OperationItemOptions)
 accessibilityDescription?: ResourceStr
 ```
 
-The accessibilityDescription of this text or icon.
+该文本或图标的无障碍描述。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -92,11 +92,11 @@ The accessibilityDescription of this text or icon.
 accessibilityLevel?: string
 ```
 
-The accessibilityLevel of this text or icon.
+该文本或图标的无障碍重要性级别。
 
 **类型：** string
 
-**默认值：** "auto".The options are as follows:<br>"auto":The value is converted to "yes" or "no" based on the component."yes": the current component is selectable for the accessibility service."no": The current component is not selectable for the accessibility service."no-hide-descendants":The current component and all its child components are not selectable<br> for the accessibility service.
+**默认值：** "auto"。取值如下：<br>"auto"：该值根据组件转换为"yes"或"no"。"yes"：当前组件可被无障碍辅助服务所识别。"no"：当前组件不可被无障碍辅助服务所识别。"no-hide-descendants"：当前组件及其所有子组件不可被<br>无障碍辅助服务所识别。
 
 **起始版本：** 18
 
@@ -116,7 +116,7 @@ The accessibilityLevel of this text or icon.
 accessibilityText?: ResourceStr
 ```
 
-The accessibilityText of this text or icon.
+该文本或图标的无障碍文本。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -138,7 +138,7 @@ The accessibilityText of this text or icon.
 content: SubHeaderV2OperationItemType
 ```
 
-The content of text or the address of icon.
+文本内容或图标地址。
 
 **类型：** [SubHeaderV2OperationItemType](arkts-arkui-subheaderv2operationitemtype-t.md)
 
@@ -160,7 +160,7 @@ The content of text or the address of icon.
 defaultFocus?: boolean
 ```
 
-Sets the default focus state of the text or icon.
+设置文本或图标的默认焦点状态。
 
 **类型：** boolean
 

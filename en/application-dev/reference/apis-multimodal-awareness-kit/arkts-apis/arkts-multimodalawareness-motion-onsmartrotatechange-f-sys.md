@@ -12,7 +12,9 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 function onSmartRotateChange(callback: Callback<SmartRotateEvent>): void
 ```
 
-Subscribe to smart rotate sensor event.
+Subscribes to smart rotation sensor events. This event is triggered and the callback is invoked when the physical orientation of the device changes or the smart algorithm adjusts the logical orientation. It is used when implementing scenarios such as smart screen rotation. This API must be used in pair with offSmartRotateChange. After use, call offSmartRotateChange to unsubscribe and release system resources.
+
+Compared with onRotateChange, onSmartRotateChange not only returns the physical orientation detected by the gravity sensor, but also provides the logical orientation adjusted by the smart algorithm.
 
 **Since:** 26.0.0
 

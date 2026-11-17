@@ -25,6 +25,7 @@ import { jsLeakWatcher } from '@kit.PerformanceAnalysisKit';
 | [enable](arkts-performanceanalysis-jsleakwatcher-enable-f.md#enable-1) | 使能ArkTS对象泄漏检测，默认关闭。开启后会收集泄漏信息，可能增加性能开销。 |
 | [enableLeakWatcher](arkts-performanceanalysis-jsleakwatcher-enableleakwatcher-f.md#enableleakwatcher-1) | 使能ArkTS对象泄漏检测。 |
 | [enableLeakWatcher](arkts-performanceanalysis-jsleakwatcher-enableleakwatcher-f.md#enableleakwatcher-2) | 使能ArkTS对象泄漏检测。 |
+| [markLifecycleEnded](arkts-performanceanalysis-jsleakwatcher-marklifecycleended-f.md#marklifecycleended-1) | 将对象标记为生命周期已结束的对象。如果开发者确定某个对象不再需要使用或引用，开发者在释放该对象之前使用此接口进行标记。当OOM故障发生时，如果导出的堆快照文件中某个对象的属性包含__ohosDfxJsLeakMarker属性，则说明该对象未被如期释放。 |
 | [watch](arkts-performanceanalysis-jsleakwatcher-watch-f.md#watch-1) | 注册待检测泄漏的对象。 |
 
 ### 接口

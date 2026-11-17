@@ -28,7 +28,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 directionAngle?: number[]
 ```
 
-Angle between user gesture and screen directions. The value ranges from 0 to 90, in degrees.
+Angle between the user's gesture and the screen direction. The array contains the angle values of the gesture in multiple dimensions. The value range of each elementis [0, 90]. Unit: deg.
 
 **Type:** number[]
 
@@ -68,7 +68,7 @@ Gesture speed, in frames per second (fps).
 handPosition?: number[]
 ```
 
-Hand position relative to screen. The normalized coordinate system ranges from 0 to 640.
+Coordinate position of the hand relative to the screen. The array length is 8, representing the x and y coordinates of the four vertices (top, bottom, left, and right). The value range in the normalized coordinate system is [0, 640].
 
 **Type:** number[]
 
@@ -88,7 +88,7 @@ Hand position relative to screen. The normalized coordinate system ranges from 0
 handType?: number
 ```
 
-User static gesture type. The value ranges from 0 to 3. 0: Palm, 1: Fist, 2: Scissors, 3: Finger heart.
+User's static gesture type. Value range: [0, 3]. 0: palm, 1: fist, 2: scissors, 3: heart.
 
 **Type:** number
 
@@ -108,7 +108,7 @@ User static gesture type. The value ranges from 0 to 3. 0: Palm, 1: Fist, 2: Sci
 isHandExist?: boolean
 ```
 
-Whether user hand exists.
+Whether the user's hand exists. Value range: [true, false].
 
 **Type:** boolean
 
@@ -128,7 +128,7 @@ Whether user hand exists.
 motionGesture?: number
 ```
 
-User dynamic gesture type. The value ranges from 0 to 3. 0: Up, 1: Down, 2: Screen capture, 3: Release.
+User's dynamic gesture type. Value range: [0, 3]. 0: flip up, 1: flip down, 2: grab screen, 3: release.
 
 **Type:** number
 

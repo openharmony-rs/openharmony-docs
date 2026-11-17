@@ -18,7 +18,7 @@ Swiper在主轴上的尺寸大小模式枚举。
 STRETCH
 ```
 
-Carousel map extension.
+Swiper滑动一页的宽度为Swiper组件自身的宽度。
 
 **起始版本：** 10
 

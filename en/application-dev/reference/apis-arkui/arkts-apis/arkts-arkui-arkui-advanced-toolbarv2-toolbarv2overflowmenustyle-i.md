@@ -1,21 +1,21 @@
-# ToolbarV2OverflowMenuStyle
+# ToolBarV2OverflowMenuStyle
 
 ```TypeScript
-export interface ToolbarV2OverflowMenuStyle
+export interface ToolBarV2OverflowMenuStyle
 ```
 
-Style configuration for the overflow menu popup.
+溢出菜单弹出窗口的样式配置。
 
 **Since:** 26.1.0
 
-<!--Device-unnamed-export interface ToolbarV2OverflowMenuStyle--><!--Device-unnamed-export interface ToolbarV2OverflowMenuStyle-End-->
+<!--Device-unnamed-export interface ToolBarV2OverflowMenuStyle--><!--Device-unnamed-export interface ToolBarV2OverflowMenuStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
 
 ```TypeScript
-import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolbarV2Item, AdvancedToolbarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolbarV2ItemGroupStyle, ToolbarV2ItemGroupStyleOptions, ToolbarV2ItemPlacement, ToolbarV2OverflowMenuStyle, ToolbarV2PaddingOptions, ToolbarV2StyleConfigs, ToolbarV2StyleOptions, ToolbarV2TitleConfigs, ToolbarV2TitleOptions, ToolbarV2TitleStyle, ToolbarV2TitleStyleOptions } from '@kit.ArkUI';
+import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolBarV2Item, AdvancedToolBarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolBarV2ItemGroupStyle, ToolBarV2ItemGroupStyleOptions, ToolBarV2ItemPlacement, ToolBarV2OverflowMenuStyle, ToolBarV2PaddingOptions, ToolBarV2StyleConfigs, ToolBarV2StyleOptions, ToolBarV2TitleConfigs, ToolBarV2TitleOptions, ToolBarV2TitleStyle, ToolBarV2TitleStyleOptions, ToolBarV2MaterialStyle } from '@kit.ArkUI';
 ```
 
 ## font
@@ -24,7 +24,7 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 font?: Font
 ```
 
-Font configuration for overflow menu items. Default value: undefined.
+溢出菜单项的字体配置。
 
 **Type:** Font
 
@@ -34,7 +34,7 @@ Font configuration for overflow menu items. Default value: undefined.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2OverflowMenuStyle-font?: Font--><!--Device-ToolbarV2OverflowMenuStyle-font?: Font-End-->
+<!--Device-ToolBarV2OverflowMenuStyle-font?: Font--><!--Device-ToolBarV2OverflowMenuStyle-font?: Font-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,7 +44,7 @@ Font configuration for overflow menu items. Default value: undefined.
 fontColor?: ColorMetrics
 ```
 
-Font color of overflow menu items. Default value: undefined.
+溢出菜单项的字体颜色。
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -54,7 +54,7 @@ Font color of overflow menu items. Default value: undefined.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2OverflowMenuStyle-fontColor?: ColorMetrics--><!--Device-ToolbarV2OverflowMenuStyle-fontColor?: ColorMetrics-End-->
+<!--Device-ToolBarV2OverflowMenuStyle-fontColor?: ColorMetrics--><!--Device-ToolBarV2OverflowMenuStyle-fontColor?: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -64,7 +64,7 @@ Font color of overflow menu items. Default value: undefined.
 menuItemDivider?: DividerStyleOptions
 ```
 
-Divider style between individual overflow menu items. Default value: undefined.
+单个溢出菜单项之间的分隔线样式。
 
 **Type:** [DividerStyleOptions](arkts-arkui-dividerstyleoptions-i.md)
 
@@ -74,7 +74,7 @@ Divider style between individual overflow menu items. Default value: undefined.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2OverflowMenuStyle-menuItemDivider?: DividerStyleOptions--><!--Device-ToolbarV2OverflowMenuStyle-menuItemDivider?: DividerStyleOptions-End-->
+<!--Device-ToolBarV2OverflowMenuStyle-menuItemDivider?: DividerStyleOptions--><!--Device-ToolBarV2OverflowMenuStyle-menuItemDivider?: DividerStyleOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,7 +84,7 @@ Divider style between individual overflow menu items. Default value: undefined.
 menuItemGroupDivider?: DividerStyleOptions
 ```
 
-Divider style between overflow menu item groups. Default value: undefined.
+溢出菜单项组之间的分隔线样式。
 
 **Type:** [DividerStyleOptions](arkts-arkui-dividerstyleoptions-i.md)
 
@@ -94,7 +94,7 @@ Divider style between overflow menu item groups. Default value: undefined.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2OverflowMenuStyle-menuItemGroupDivider?: DividerStyleOptions--><!--Device-ToolbarV2OverflowMenuStyle-menuItemGroupDivider?: DividerStyleOptions-End-->
+<!--Device-ToolBarV2OverflowMenuStyle-menuItemGroupDivider?: DividerStyleOptions--><!--Device-ToolBarV2OverflowMenuStyle-menuItemGroupDivider?: DividerStyleOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +104,7 @@ Divider style between overflow menu item groups. Default value: undefined.
 radius?: Dimension | BorderRadiuses
 ```
 
-Overflow menu corner radius. Default value: undefined.
+溢出菜单圆角半径。
 
 **Type:** [Dimension](arkts-arkui-dimension-t.md) &#124; [BorderRadiuses](arkts-arkui-borderradiuses-t.md)
 
@@ -114,6 +114,6 @@ Overflow menu corner radius. Default value: undefined.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2OverflowMenuStyle-radius?: Dimension | BorderRadiuses--><!--Device-ToolbarV2OverflowMenuStyle-radius?: Dimension | BorderRadiuses-End-->
+<!--Device-ToolBarV2OverflowMenuStyle-radius?: Dimension | BorderRadiuses--><!--Device-ToolBarV2OverflowMenuStyle-radius?: Dimension | BorderRadiuses-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

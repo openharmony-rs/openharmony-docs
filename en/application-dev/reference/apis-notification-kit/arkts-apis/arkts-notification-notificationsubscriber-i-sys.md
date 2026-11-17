@@ -515,7 +515,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback
 ```
 
-Returns the enabled state change of the application notification [silent reminder](../../../notification/notification-glossary.md#silent-reminder).
+Returns the enabled state change of the application notification silent reminder.
 
 **Since:** 24
 

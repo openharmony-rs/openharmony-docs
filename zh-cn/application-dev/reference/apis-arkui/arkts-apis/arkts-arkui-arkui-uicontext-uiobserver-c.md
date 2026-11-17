@@ -239,6 +239,8 @@ struct Index {
 off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback?: Callback<observer.NavDestinationInfo>): void
 ```
 
+取消通过Navigation的id监听NavDestination组件的状态变化。
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -253,9 +255,9 @@ off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callba
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'navDestinationUpdate' | 是 | The type of event to remove the listener for. Must be 'navDestinationUpdate'. |
-| options | { navigationId: ResourceStr } | 是 | The options object. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type and navigation ID will be removed. |
+| type | 'navDestinationUpdate' | 是 | 监听事件，固定为'navDestinationUpdate'，即NavDestination组件的状态变化。 |
+| options | { navigationId: ResourceStr } | 是 | 指定监听的Navigation的id。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 否 | 需要取消的监听回调。不指定具体的回调函数时，取消options指定的Navigation上所有NavDestination组件状态变化的监听回调。 |
 
 **示例**
 
@@ -267,7 +269,7 @@ off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callba
 off(type: 'navDestinationUpdate', callback?: Callback<observer.NavDestinationInfo>): void
 ```
 
-Removes a callback function that was previously registered with `on()`.
+取消监听NavDestination组件的状态变化。
 
 **起始版本：** 12
 
@@ -283,8 +285,8 @@ Removes a callback function that was previously registered with `on()`.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'navDestinationUpdate' | 是 | The type of event to remove the listener for. Must be 'navDestinationUpdate'. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
+| type | 'navDestinationUpdate' | 是 | 监听事件，固定为'navDestinationUpdate'，即NavDestination组件的状态变化。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 否 | 需要取消的监听回调，不传参数时，取消所有NavDestination组件状态变化的监听回调。 |
 
 **示例**
 
@@ -296,7 +298,7 @@ Removes a callback function that was previously registered with `on()`.
 off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback?: Callback<observer.NavDestinationInfo>): void
 ```
 
-Removes a callback function that was previously registered with `on()`.
+取消通过Navigation的uniqueId监听NavDestination组件的状态变化。
 
 **起始版本：** 20
 
@@ -312,9 +314,9 @@ Removes a callback function that was previously registered with `on()`.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'navDestinationUpdateByUniqueId' | 是 | The type of event to remove the listener for. Must be 'navDestinationUpdateByUniqueId'. |
-| navigationUniqueId | number | 是 | The uniqueId of the navigation. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
+| type | 'navDestinationUpdateByUniqueId' | 是 | 监听事件，固定为'navDestinationUpdateByUniqueId'，即NavDestination组件的状态变化。 |
+| navigationUniqueId | number | 是 | 指定监听的Navigation的uniqueId，可以通过queryNavigationInfo获取。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 否 | 需要取消的监听回调，不传参数时，取消该Navigation上所有的监听回调。 |
 
 **示例**
 
@@ -326,7 +328,7 @@ Removes a callback function that was previously registered with `on()`.
 off(type: 'scrollEvent', options: observer.ObserverOptions, callback?: Callback<observer.ScrollEventInfo>): void
 ```
 
-Removes a callback function that was previously registered with `on()`.
+取消监听指定id的滚动组件滚动事件的开始和结束。
 
 **起始版本：** 12
 
@@ -342,9 +344,9 @@ Removes a callback function that was previously registered with `on()`.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'scrollEvent' | 是 | The type of event to remove the listener for. Must be 'scrollEvent'. |
-| options | [observer.ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | The options object. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.ScrollEventInfo](arkts-arkui-uiobserver-scrolleventinfo-i.md)&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type and scroll ID will be removed. |
+| type | 'scrollEvent' | 是 | 监听事件，固定为'scrollEvent'，即滚动事件的开始和结束。 |
+| options | [observer.ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | Observer选项，包含指定监听的滚动组件的id。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.ScrollEventInfo](arkts-arkui-uiobserver-scrolleventinfo-i.md)&gt; | 否 | 需要取消的滚动事件监听回调。当只需要取消 options 指定滚动组件上的指定回调时传入该参数；不传参数时，取消 options 指定滚动组件上的所有滚动事件监听回调。 |
 
 **示例**
 
@@ -356,7 +358,7 @@ Removes a callback function that was previously registered with `on()`.
 off(type: 'scrollEvent', callback?: Callback<observer.ScrollEventInfo>): void
 ```
 
-Removes a callback function that was previously registered with `on()`.
+取消监听所有滚动组件滚动事件的开始和结束。
 
 **起始版本：** 12
 
@@ -372,8 +374,8 @@ Removes a callback function that was previously registered with `on()`.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'scrollEvent' | 是 | The type of event to remove the listener for. Must be 'scrollEvent'. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.ScrollEventInfo](arkts-arkui-uiobserver-scrolleventinfo-i.md)&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
+| type | 'scrollEvent' | 是 | 监听事件，固定为'scrollEvent'，即滚动事件的开始和结束。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.ScrollEventInfo](arkts-arkui-uiobserver-scrolleventinfo-i.md)&gt; | 否 | 需要取消的滚动事件监听回调。当只需要取消指定回调时传入该参数；不传参数时，取消所有滚动事件的监听回调。 |
 
 **示例**
 
@@ -385,7 +387,7 @@ Removes a callback function that was previously registered with `on()`.
 off(type: 'routerPageUpdate', callback?: Callback<observer.RouterPageInfo>): void
 ```
 
-Removes a callback function that was previously registered with `on()`.
+取消监听router中page页面的状态变化。
 
 **起始版本：** 11
 
@@ -401,8 +403,8 @@ Removes a callback function that was previously registered with `on()`.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'routerPageUpdate' | 是 | The type of event to remove the listener for. Must be 'routerPageUpdate'. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.RouterPageInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
+| type | 'routerPageUpdate' | 是 | 监听事件，固定为'routerPageUpdate'，即router中page页面的状态变化。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.RouterPageInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 否 | 需要被注销的回调函数。不传参数时，取消所有router中page页面状态变化的监听回调。 |
 
 **示例**
 
@@ -504,7 +506,7 @@ off(
   ): void
 ```
 
-Removes a callback function that was previously registered with `on()`.
+取消监听Navigation的页面切换事件。
 
 **起始版本：** 12
 
@@ -520,8 +522,8 @@ Removes a callback function that was previously registered with `on()`.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'navDestinationSwitch' | 是 | The type of event to remove the listener for. Must be 'navDestinationSwitch'. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationSwitchInfo](arkts-arkui-uiobserver-navdestinationswitchinfo-i.md)&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
+| type | 'navDestinationSwitch' | 是 | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationSwitchInfo](arkts-arkui-uiobserver-navdestinationswitchinfo-i.md)&gt; | 否 | 需要被注销的回调函数。不传参数时，取消所有Navigation页面切换事件的监听回调。 |
 
 **示例**
 
@@ -537,7 +539,7 @@ off(
   ): void
 ```
 
-Removes a callback function that was previously registered with `on()`.
+取消通过监听选项监听Navigation的页面切换事件。
 
 **起始版本：** 12
 
@@ -553,9 +555,9 @@ Removes a callback function that was previously registered with `on()`.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'navDestinationSwitch' | 是 | The type of event to remove the listener for. Must be 'navDestinationSwitch'. |
-| observerOptions | [observer.NavDestinationSwitchObserverOptions](arkts-arkui-uiobserver-navdestinationswitchobserveroptions-i.md) | 是 | Options. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationSwitchInfo](arkts-arkui-uiobserver-navdestinationswitchinfo-i.md)&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
+| type | 'navDestinationSwitch' | 是 | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
+| observerOptions | [observer.NavDestinationSwitchObserverOptions](arkts-arkui-uiobserver-navdestinationswitchobserveroptions-i.md) | 是 | 页面切换监听选项，用于指定需要取消监听的Navigation组件，例如通过navigationId指定Navigation组件的id。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationSwitchInfo](arkts-arkui-uiobserver-navdestinationswitchinfo-i.md)&gt; | 否 | 需要被注销的回调函数。不传参数时，取消该Navigation上所有的监听回调。 |
 
 **示例**
 
@@ -799,7 +801,7 @@ off(type: 'afterPanEnd', callback?: PanListenerCallback): void
 off(type: 'tabContentUpdate', options: observer.ObserverOptions, callback?: Callback<observer.TabContentInfo>): void
 ```
 
-Removes a callback function that was previously registered with `on()`.
+取消监听指定Tabs组件id的TabContent页面切换事件。
 
 **起始版本：** 12
 
@@ -815,9 +817,9 @@ Removes a callback function that was previously registered with `on()`.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'tabContentUpdate' | 是 | The type of event to remove the listener for. Must be 'tabContentUpdate'. |
-| options | [observer.ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | The options object. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.TabContentInfo](arkts-arkui-uiobserver-tabcontentinfo-i.md)&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type and Tabs ID will be removed. |
+| type | 'tabContentUpdate' | 是 | 监听事件，固定为'tabContentUpdate'，即TabContent页面的切换事件。 |
+| options | [observer.ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | 指定监听的Tabs组件的id。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.TabContentInfo](arkts-arkui-uiobserver-tabcontentinfo-i.md)&gt; | 否 | 需要被注销的回调函数。不传参数时，取消options指定的Tabs组件上的所有TabContent页面切换事件监听回调。 |
 
 **示例**
 
@@ -829,7 +831,7 @@ Removes a callback function that was previously registered with `on()`.
 off(type: 'tabContentUpdate', callback?: Callback<observer.TabContentInfo>): void
 ```
 
-Removes a callback function that was previously registered with `on()`.
+取消监听TabContent页面的切换事件。
 
 **起始版本：** 12
 
@@ -845,8 +847,8 @@ Removes a callback function that was previously registered with `on()`.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'tabContentUpdate' | 是 | The type of event to remove the listener for. Must be 'tabContentUpdate'. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.TabContentInfo](arkts-arkui-uiobserver-tabcontentinfo-i.md)&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type and Tabs ID will be removed. |
+| type | 'tabContentUpdate' | 是 | 监听事件，固定为'tabContentUpdate'，即TabContent页面的切换事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.TabContentInfo](arkts-arkui-uiobserver-tabcontentinfo-i.md)&gt; | 否 | 需要被注销的回调函数。不传参数时，取消所有TabContent页面切换事件的监听回调。 |
 
 **示例**
 
@@ -976,7 +978,7 @@ off(type: 'nodeRenderState', nodeIdentity: NodeIdentity, callback?: NodeRenderSt
 off(type: 'textChange', callback?: Callback<observer.TextChangeEventInfo>): void
 ```
 
-Removes a callback function that was previously registered with `on()`.
+取消输入框文本变化的全局监听。
 
 **起始版本：** 22
 
@@ -992,8 +994,8 @@ Removes a callback function that was previously registered with `on()`.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'textChange' | 是 | The type of event to remove the listener for. Must be 'textChange'. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.TextChangeEventInfo](arkts-arkui-uiobserver-textchangeeventinfo-i.md)&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
+| type | 'textChange' | 是 | 监听事件，固定为'textChange'，表示文本输入的变化。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.TextChangeEventInfo](arkts-arkui-uiobserver-textchangeeventinfo-i.md)&gt; | 否 | 需要被注销的回调函数。不传参数时，取消输入框文本变化的所有全局监听。 |
 
 **示例**
 
@@ -1005,7 +1007,7 @@ Removes a callback function that was previously registered with `on()`.
 off(type: 'textChange', identity: observer.ObserverOptions, callback?: Callback<observer.TextChangeEventInfo>): void
 ```
 
-Removes a callback function that was previously registered with `on()`.
+取消指定ID对应输入框文本变化的局部监听。
 
 **起始版本：** 22
 
@@ -1021,9 +1023,9 @@ Removes a callback function that was previously registered with `on()`.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'textChange' | 是 | The type of event to remove the listener for. Must be 'textChange'. |
-| identity | [observer.ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | Identity options. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.TextChangeEventInfo](arkts-arkui-uiobserver-textchangeeventinfo-i.md)&gt; | 否 | The callback function to remove. If not provided, all callbacks for the given event type will be removed. |
+| type | 'textChange' | 是 | 监听事件，固定为'textChange'，表示文本输入的变化。 |
+| identity | [observer.ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | 指定监听的文本输入组件的id。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.TextChangeEventInfo](arkts-arkui-uiobserver-textchangeeventinfo-i.md)&gt; | 否 | 需要被注销的回调函数。不传参数时，取消指定ID输入框文本变化的所有局部监听。 |
 
 **示例**
 
@@ -1202,6 +1204,8 @@ offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback<Swi
 on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback: Callback<observer.NavDestinationInfo>): void
 ```
 
+通过Navigation的id监听NavDestination组件的状态变化。
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1216,9 +1220,9 @@ on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callbac
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'navDestinationUpdate' | 是 | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates the state change event <br>of the **NavDestination** component. |
-| options | { navigationId: ResourceStr } | 是 | ID of the target **NavDestination** component. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 是 | Callback used to return the current <br>state of the **NavDestination** component. |
+| type | 'navDestinationUpdate' | 是 | 监听事件，固定为'navDestinationUpdate'，即NavDestination组件的状态变化。 |
+| options | { navigationId: ResourceStr } | 是 | 指定监听的Navigation的id。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 是 | 回调函数。返回当前的NavDestination组件状态。 |
 
 **示例**
 
@@ -1282,7 +1286,7 @@ struct Index {
 on(type: 'navDestinationUpdate', callback: Callback<observer.NavDestinationInfo>): void
 ```
 
-Subscribes to status changes of this **NavDestination** component.
+监听NavDestination组件的状态变化。
 
 **起始版本：** 12
 
@@ -1298,8 +1302,8 @@ Subscribes to status changes of this **NavDestination** component.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'navDestinationUpdate' | 是 | Event type. The value is fixed at **'navDestinationUpdate'**, <br>which indicates the state change event of the **NavDestination** component. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 是 | Callback used to return the current state of <br>the **NavDestination** component. |
+| type | 'navDestinationUpdate' | 是 | 监听事件，固定为'navDestinationUpdate'，即NavDestination组件的状态变化。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 是 | 回调函数。返回当前的NavDestination组件状态。 |
 
 **示例**
 
@@ -1362,7 +1366,7 @@ struct Index {
 on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback: Callback<observer.NavDestinationInfo>): void
 ```
 
-Registers a callback function to be called when the navigation destination is updated.
+通过Navigation的uniqueId监听NavDestination组件的状态变化，uniqueId可通过queryNavigationInfo获取。
 
 **起始版本：** 20
 
@@ -1378,9 +1382,9 @@ Registers a callback function to be called when the navigation destination is up
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'navDestinationUpdateByUniqueId' | 是 | The type of event to listen for. Must be 'navDestinationUpdateByUniqueId'. |
-| navigationUniqueId | number | 是 | The uniqueId of the navigation. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 是 | The callback function to be called when the navigation destination is updated. |
+| type | 'navDestinationUpdateByUniqueId' | 是 | 监听事件，固定为'navDestinationUpdateByUniqueId'，即NavDestination组件的状态变化。 |
+| navigationUniqueId | number | 是 | 指定监听的Navigation的uniqueId，可以通过queryNavigationInfo获取。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 是 | 回调函数。返回当前的NavDestination组件状态。 |
 
 **示例**
 
@@ -1457,7 +1461,7 @@ struct Index {
 on(type: 'scrollEvent', options: observer.ObserverOptions, callback: Callback<observer.ScrollEventInfo>): void
 ```
 
-Registers a callback function to be called when the scroll event start or stop.
+监听指定id的滚动组件滚动事件的开始和结束。
 
 **起始版本：** 12
 
@@ -1473,9 +1477,9 @@ Registers a callback function to be called when the scroll event start or stop.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'scrollEvent' | 是 | The type of event to listen for. Must be 'scrollEvent'. |
-| options | [observer.ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | The options object. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.ScrollEventInfo](arkts-arkui-uiobserver-scrolleventinfo-i.md)&gt; | 是 | The callback function to be called when the scroll event start or stop. |
+| type | 'scrollEvent' | 是 | 监听事件，固定为'scrollEvent'，即滚动事件的开始和结束。 |
+| options | [observer.ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | Observer选项，包含指定监听的滚动组件的id。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.ScrollEventInfo](arkts-arkui-uiobserver-scrolleventinfo-i.md)&gt; | 是 | 回调函数。返回滚动事件的信息。 |
 
 **示例**
 
@@ -1487,7 +1491,7 @@ Registers a callback function to be called when the scroll event start or stop.
 on(type: 'scrollEvent', callback: Callback<observer.ScrollEventInfo>): void
 ```
 
-Registers a callback function to be called when the scroll event start or stop.
+监听所有滚动组件滚动事件的开始和结束。
 
 **起始版本：** 12
 
@@ -1503,8 +1507,8 @@ Registers a callback function to be called when the scroll event start or stop.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'scrollEvent' | 是 | The type of event to listen for. Must be 'scrollEvent'. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.ScrollEventInfo](arkts-arkui-uiobserver-scrolleventinfo-i.md)&gt; | 是 | The callback function to be called when the scroll event start or stop. |
+| type | 'scrollEvent' | 是 | 监听事件，固定为'scrollEvent'，即滚动事件的开始和结束。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.ScrollEventInfo](arkts-arkui-uiobserver-scrolleventinfo-i.md)&gt; | 是 | 回调函数。返回滚动事件的信息。 |
 
 **示例**
 
@@ -1587,7 +1591,7 @@ struct Index {
 on(type: 'routerPageUpdate', callback: Callback<observer.RouterPageInfo>): void
 ```
 
-Unsubscribes to state changes of the page in the router.
+监听router中page页面的状态变化。
 
 **起始版本：** 12
 
@@ -1603,8 +1607,8 @@ Unsubscribes to state changes of the page in the router.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'routerPageUpdate' | 是 | Event type. <br>The value is fixed at 'routerPageUpdate', which indicates the state change event of the page in the router. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.RouterPageInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 是 | Callback to be unregistered. |
+| type | 'routerPageUpdate' | 是 | 监听事件，固定为'routerPageUpdate'，即router中page页面的状态变化。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.RouterPageInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md)&gt; | 是 | 回调函数。携带RouterPageInfo，返回当前的page页面状态。 |
 
 **示例**
 
@@ -1849,7 +1853,7 @@ on(
   ): void
 ```
 
-Registers a callback function to be called when the navigation switched to a new navDestination.
+监听Navigation的页面切换事件。
 
 **起始版本：** 12
 
@@ -1865,8 +1869,8 @@ Registers a callback function to be called when the navigation switched to a new
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'navDestinationSwitch' | 是 | The type of event to listen for. Must be 'navDestinationSwitch'. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationSwitchInfo](arkts-arkui-uiobserver-navdestinationswitchinfo-i.md)&gt; | 是 | The callback function to be called when the navigation switched to a new navDestination. |
+| type | 'navDestinationSwitch' | 是 | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationSwitchInfo](arkts-arkui-uiobserver-navdestinationswitchinfo-i.md)&gt; | 是 | 回调函数。携带NavDestinationSwitchInfo，返回页面切换事件的信息。 |
 
 **示例**
 
@@ -1940,7 +1944,7 @@ on(
   ): void
 ```
 
-Registers a callback function to be called when the navigation switched to a new navDestination.
+通过监听选项监听Navigation的页面切换事件。
 
 **起始版本：** 12
 
@@ -1956,9 +1960,9 @@ Registers a callback function to be called when the navigation switched to a new
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'navDestinationSwitch' | 是 | The type of event to listen for. Must be 'navDestinationSwitch'. |
-| observerOptions | [observer.NavDestinationSwitchObserverOptions](arkts-arkui-uiobserver-navdestinationswitchobserveroptions-i.md) | 是 | Options. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationSwitchInfo](arkts-arkui-uiobserver-navdestinationswitchinfo-i.md)&gt; | 是 | The callback function to be called when the navigation switched to a new navDestination. |
+| type | 'navDestinationSwitch' | 是 | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
+| observerOptions | [observer.NavDestinationSwitchObserverOptions](arkts-arkui-uiobserver-navdestinationswitchobserveroptions-i.md) | 是 | 页面切换监听选项，用于指定需要监听的Navigation组件，例如通过navigationId指定Navigation组件的id。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.NavDestinationSwitchInfo](arkts-arkui-uiobserver-navdestinationswitchinfo-i.md)&gt; | 是 | 回调函数。携带NavDestinationSwitchInfo，返回页面切换事件的信息。 |
 
 **示例**
 
@@ -2452,7 +2456,7 @@ on(type: 'afterPanEnd', callback: PanListenerCallback): void
 on(type: 'tabContentUpdate', options: observer.ObserverOptions, callback: Callback<observer.TabContentInfo>): void
 ```
 
-Registers a callback function to be called when the tabContent is showed or hidden.
+监听指定Tabs组件id的TabContent页面切换事件。相比on('tabChange')，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **起始版本：** 12
 
@@ -2468,9 +2472,9 @@ Registers a callback function to be called when the tabContent is showed or hidd
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'tabContentUpdate' | 是 | The type of event to listen for. Must be 'tabContentUpdate'. |
-| options | [observer.ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | The options object. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.TabContentInfo](arkts-arkui-uiobserver-tabcontentinfo-i.md)&gt; | 是 | The callback function to be called when the tabContent show or hide. |
+| type | 'tabContentUpdate' | 是 | 监听事件，固定为'tabContentUpdate'，即TabContent页面的切换事件。 |
+| options | [observer.ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | 指定监听的Tabs组件的id。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.TabContentInfo](arkts-arkui-uiobserver-tabcontentinfo-i.md)&gt; | 是 | 回调函数。携带TabContentInfo，返回TabContent页面切换事件的信息。 |
 
 **示例**
 
@@ -2536,7 +2540,7 @@ struct TabsExample {
 on(type: 'tabContentUpdate', callback: Callback<observer.TabContentInfo>): void
 ```
 
-Registers a callback function to be called when the tabContent is showed or hidden.
+监听TabContent页面的切换事件。相比on('tabChange')，本接口不支持监听Tabs组件初始化时，显示首个页签的事件。
 
 **起始版本：** 12
 
@@ -2552,8 +2556,8 @@ Registers a callback function to be called when the tabContent is showed or hidd
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'tabContentUpdate' | 是 | The type of event to listen for. Must be 'tabContentUpdate'. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.TabContentInfo](arkts-arkui-uiobserver-tabcontentinfo-i.md)&gt; | 是 | The callback function to be called when the tabContent is showed or hidden. |
+| type | 'tabContentUpdate' | 是 | 监听事件，固定为'tabContentUpdate'，即TabContent页面的切换事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.TabContentInfo](arkts-arkui-uiobserver-tabcontentinfo-i.md)&gt; | 是 | 回调函数。携带TabContentInfo，返回TabContent页面切换事件的信息。 |
 
 **示例**
 
@@ -3057,7 +3061,7 @@ struct Index {
 on(type: 'textChange', callback: Callback<observer.TextChangeEventInfo>): void
 ```
 
-Registers a callback function to be called when text field's content is changed.
+全局监听输入框文本变化。
 
 **起始版本：** 22
 
@@ -3073,8 +3077,8 @@ Registers a callback function to be called when text field's content is changed.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'textChange' | 是 | The type of event to listen for. Must be 'textChange'. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.TextChangeEventInfo](arkts-arkui-uiobserver-textchangeeventinfo-i.md)&gt; | 是 | The callback function to be called when text field's content is changed. |
+| type | 'textChange' | 是 | 监听事件，固定为'textChange'，表示文本输入的变化。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.TextChangeEventInfo](arkts-arkui-uiobserver-textchangeeventinfo-i.md)&gt; | 是 | 回调函数，返回文本变化的信息。 |
 
 **示例**
 
@@ -3170,7 +3174,7 @@ struct TextUiObserver {
 on(type: 'textChange', identity: observer.ObserverOptions, callback: Callback<observer.TextChangeEventInfo>): void
 ```
 
-Registers a callback function to be called when text field's content is changed.
+指定id的输入框文本变化的局部监听。
 
 **起始版本：** 22
 
@@ -3186,9 +3190,9 @@ Registers a callback function to be called when text field's content is changed.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'textChange' | 是 | The type of event to listen for. Must be 'textChange'. |
-| identity | [observer.ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | Identity options. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.TextChangeEventInfo](arkts-arkui-uiobserver-textchangeeventinfo-i.md)&gt; | 是 | The callback function to be called when the text field's content is changed. |
+| type | 'textChange' | 是 | 监听事件，固定为'textChange'，表示文本输入的变化。 |
+| identity | [observer.ObserverOptions](arkts-arkui-uiobserver-observeroptions-i.md) | 是 | 指定监听的文本输入组件的id。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[observer.TextChangeEventInfo](arkts-arkui-uiobserver-textchangeeventinfo-i.md)&gt; | 是 | 回调函数，返回文本变化的信息。 |
 
 **示例**
 

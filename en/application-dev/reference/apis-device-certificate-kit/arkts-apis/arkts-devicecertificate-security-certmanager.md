@@ -63,6 +63,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | [getAllPublicCertificates](arkts-devicecertificate-certificatemanager-getallpubliccertificates-f-sys.md#getallpubliccertificates-1) | Obtains the public credentials of all users. This API is called only by the certificate management application. This API uses a promise to return the result. |
 | [getAllSystemAppCertificates](arkts-devicecertificate-certificatemanager-getallsystemappcertificates-f-sys.md#getallsystemappcertificates-1) | Obtains all system credentials. This API uses a promise to return the result. |
 | [getAuthorizedAppList](arkts-devicecertificate-certificatemanager-getauthorizedapplist-f-sys.md#getauthorizedapplist-1) | Obtains the list of authorized applications of a user's public credential. This API is called only by the certificate management application. This API uses a promise to return the result. |
+| [getCertManagerConfig](arkts-devicecertificate-certificatemanager-getcertmanagerconfig-f-sys.md#getcertmanagerconfig-1) | Queries the certificate management system configuration information. |
 | [getSystemAppCertificate](arkts-devicecertificate-certificatemanager-getsystemappcertificate-f-sys.md#getsystemappcertificate-1) | Obtains the credential details of the system application. This API is called only by the certificate management application. This API uses a promise to return the result. |
 | [getSystemTrustedCertificate](arkts-devicecertificate-certificatemanager-getsystemtrustedcertificate-f-sys.md#getsystemtrustedcertificate-1) | Obtains details about a CA certificate trusted by the system. This API is called only by the certificate management application. This API uses a promise to return the result. |
 | [getSystemTrustedCertificateList](arkts-devicecertificate-certificatemanager-getsystemtrustedcertificatelist-f-sys.md#getsystemtrustedcertificatelist-1) | Obtains the list of CA certificates trusted by the system. This API is called only by the certificate management application. This API uses a promise to return the result. |
@@ -91,6 +92,14 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | [Credential](arkts-devicecertificate-certificatemanager-credential-i.md) | Represents detailed information about a credential. |
 | [CredentialAbstract](arkts-devicecertificate-certificatemanager-credentialabstract-i.md) | Represents brief information about a credential. |
 | [UkeyInfo](arkts-devicecertificate-certificatemanager-ukeyinfo-i.md) | Provides USB Key certificate credential attribute information. |
+
+<!--Del-->
+### Interfaces(System API)
+
+| Name | Description |
+| --- | --- |
+| [ConfigItem](arkts-devicecertificate-certificatemanager-configitem-i-sys.md) | Represents a certificate management configuration item. |
+<!--DelEnd-->
 
 ### Enums
 

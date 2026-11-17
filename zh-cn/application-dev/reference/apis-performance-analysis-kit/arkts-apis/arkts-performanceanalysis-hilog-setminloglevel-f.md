@@ -12,7 +12,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 function setMinLogLevel(level: LogLevel): void
 ```
 
-设置应用日志打印的最低日志级别，用于拦截低级别日志打印。
+设置应用日志打印的最低日志级别，用于拦截低级别日志打印。在需要优化应用性能或减少低价值日志干扰时使用，避免冗余日志。
 
 > **注意：**
 > 

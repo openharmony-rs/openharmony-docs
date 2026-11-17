@@ -22,7 +22,7 @@ declare interface ButtonIconOptions
 hidden: string | PixelMap | Resource
 ```
 
-Defines whether an icon is hidden.
+设置侧边栏隐藏时控制按钮的图标。
 
 **类型：** string &#124; [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 
@@ -40,7 +40,7 @@ Defines whether an icon is hidden.
 shown: string | PixelMap | Resource
 ```
 
-Defines whether an icon is shown.
+设置侧边栏显示时控制按钮的图标。
 
 **类型：** string &#124; [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 
@@ -58,7 +58,7 @@ Defines whether an icon is shown.
 switching?: string | PixelMap | Resource
 ```
 
-Defines whether an icon is switching.
+设置侧边栏显示和隐藏状态切换时控制按钮的图标。
 
 **类型：** string &#124; [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 

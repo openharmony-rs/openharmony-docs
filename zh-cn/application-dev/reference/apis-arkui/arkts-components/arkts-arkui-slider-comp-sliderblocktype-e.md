@@ -24,7 +24,7 @@ Slider组件滑块形状枚举。
 DEFAULT = 0
 ```
 
-Round slider.
+圆形滑块。
 
 **起始版本：** 10
 
@@ -42,7 +42,7 @@ Round slider.
 IMAGE = 1
 ```
 
-Slider with an image background.
+带图片背景的滑块。
 
 **起始版本：** 10
 
@@ -60,7 +60,7 @@ Slider with an image background.
 SHAPE = 2
 ```
 
-Slider in a custom shape.
+自定义形状的滑块。
 
 **起始版本：** 10
 

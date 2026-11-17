@@ -13,7 +13,7 @@ import { TabTitleBar, TabTitleBarMenuItem, TabTitleBarTabItem } from '@kit.ArkUI
 | 名称 | 说明 |
 | --- | --- |
 | [TabTitleBarMenuItem](arkts-arkui-arkui-advanced-tabtitlebar-tabtitlebarmenuitem-c.md) |  |
-| [TabTitleBarTabItem](arkts-arkui-arkui-advanced-tabtitlebar-tabtitlebartabitem-c.md) | Declaration of the tab item. |
+| [TabTitleBarTabItem](arkts-arkui-arkui-advanced-tabtitlebar-tabtitlebartabitem-c.md) | 声明页签项。 |
 
 ### 结构体
 

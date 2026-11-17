@@ -4,7 +4,7 @@
 declare type Context = import('../api/application/Context').default
 ```
 
-Get context.
+返回当前组件所在Ability的Context，Context的具体类型为当前Ability关联的Context对象。例如：在UIAbility窗口中的页面调用该接口，返回类型为UIAbilityContext。在ExtensionAbility窗口中的页面调用该接口，返回类型为ExtensionContext。
 
 **类型：** import('../api/application/Context').default
 

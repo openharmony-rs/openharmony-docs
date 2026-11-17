@@ -1024,6 +1024,8 @@ setShowOnLockScreen(show: boolean, callback: AsyncCallback<void>): void
 
 设置每当显示锁屏时是否在锁屏顶部显示此功能，使该功能保持激活状态。使用callback异步回调。
 
+从API version 7开始支持，从API version 9开始废弃，<!--Del-->建议使用[setShowOnLockScreen](../../apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i-sys.md#setshowonlockscreen)替代，<!--DelEnd-->替代接口仅面向系统应用开放。
+
 **起始版本：** 7
 
 **废弃版本：** 9
@@ -1048,6 +1050,8 @@ setShowOnLockScreen(show: boolean): Promise<void>
 ```
 
 设置每当显示锁屏时是否在锁屏顶部显示此功能，使该功能保持激活状态。使用Promise异步回调。
+
+从API version 7开始支持，从API version 9开始废弃，<!--Del-->建议使用[setShowOnLockScreen](../../apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i-sys.md#setshowonlockscreen)替代，<!--DelEnd-->替代接口仅面向系统应用开放。
 
 **起始版本：** 7
 

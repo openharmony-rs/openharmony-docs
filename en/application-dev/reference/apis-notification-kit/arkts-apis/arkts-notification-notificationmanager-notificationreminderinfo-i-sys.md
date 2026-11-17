@@ -69,7 +69,7 @@ Flag bits of the [notification reminder mode](../../../notification/notification
 silentReminderEnabled: boolean
 ```
 
-Whether the [silent reminder](../../../notification/notification-glossary.md#silent-reminder) switch is enabled (**true**: enabled, **false**: disabled).
+Whether the silent reminder switch is enabled (**true**: enabled, **false**: disabled).
 
 **Type:** boolean
 

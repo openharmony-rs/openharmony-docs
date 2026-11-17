@@ -17,7 +17,7 @@ Sets the trimming level of the original heap snapshot stored by the current proc
 > **NOTE:** 
 > 
 > The default trimming level is **TRIM_LEVEL_1**. If **TRIM_LEVEL_2** is set, you need to use
-> rawheap-translator since API version 20 to convert the .rawheap file to
+> [rawheap-translator](../../../tools/rawheap-translator.md) since API version 20 to convert the .rawheap file to
 > the .heapsnapshot file. Otherwise, the conversion may fail.
 > 
 > This API affects the result of [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md).

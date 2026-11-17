@@ -26,8 +26,8 @@ If **startAppTraceCapture ()** is called without a properly specified **limitSiz
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [11400104](../errorcode-hiviewdfx-hidebug-cpuusage.md#11400104-abnormal-cpu-usage) | The status of the trace is abnormal |
-| [11400105](../errorcode-hiviewdfx-hidebug-trace.md#11400105-trace-capture-disabled) | No capture trace running |
+| [11400104](../errorcode-hiviewdfx-hidebug-cpuusage.md#11400104-abnormal-cpu-usage) | The status of the trace is abnormal. |
+| [11400105](../errorcode-hiviewdfx-hidebug-trace.md#11400105-trace-capture-disabled) | No capture trace running. |
 
 **Examples**
 

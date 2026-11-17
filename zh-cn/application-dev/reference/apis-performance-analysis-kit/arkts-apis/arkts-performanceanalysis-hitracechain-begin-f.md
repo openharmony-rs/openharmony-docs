@@ -16,6 +16,8 @@ function begin(name: string, flags?: number): HiTraceId
 
 当前线程TLS（Thread Local Storage，线程本地存储）中不存在有效的HiTraceId时，生成有效的HiTraceId并设置到当前线程TLS中，返回该HiTraceId。当前线程TLS中已存在有效的HiTraceId时，不会开始新的跟踪，返回各属性值均为0的无效HiTraceId。
 
+该接口需与结束跟踪接口[end()](arkts-performanceanalysis-hitracechain-end-f.md)配套使用。
+
 **起始版本：** 8
 
 <!--Device-hiTraceChain-function begin(name: string, flags?: int): HiTraceId--><!--Device-hiTraceChain-function begin(name: string, flags?: int): HiTraceId-End-->

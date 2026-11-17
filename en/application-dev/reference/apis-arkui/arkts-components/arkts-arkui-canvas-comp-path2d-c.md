@@ -175,7 +175,7 @@ Constructs a Path2D object using a path string that complies with the SVG path d
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| d | string | Yes | Path string that complies with the SVG path description specification. For the format, see SVG Path Syntax. Abnormal values are treated as invalid values. |
+| d | string | Yes | Path string that complies with the SVG path description specification. For the format, see [SVG Path Syntax](arkts-arkui-path-comp.md). Abnormal values are treated as invalid values. |
 
 ## constructor
 
@@ -201,5 +201,5 @@ Constructs a Path2D object using a path string that complies with the SVG path s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| description | string | Yes | Path string that conforms to the SVG path description specification. For details about the format, see SVG Path Syntax. Abnormal values are handled as invalid values. |
+| description | string | Yes | Path string that conforms to the SVG path description specification. For details about the format, see [SVG Path Syntax](arkts-arkui-path-comp.md). Abnormal values are handled as invalid values. |
 | unit | LengthMetricsUnit | Yes | Unit mode for configuring the **Path2D** object. After configuration, it cannot be dynamically changed. The configuration method is the same as that of [CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md).<br> Invalid values **NaN** and **Infinity** are handled as the default value.<br> Default value: **DEFAULT** |

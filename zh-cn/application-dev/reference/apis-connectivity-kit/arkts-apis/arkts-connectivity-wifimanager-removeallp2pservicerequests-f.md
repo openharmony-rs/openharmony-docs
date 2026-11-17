@@ -14,7 +14,7 @@ function removeAllP2pServiceRequests(): void
 
 移除所有待处理的服务发现请求。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 

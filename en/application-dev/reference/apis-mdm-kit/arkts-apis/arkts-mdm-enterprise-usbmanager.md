@@ -39,16 +39,20 @@ import { usbManager } from '@kit.MDMKit';
 | [getDisallowedUsbDevices](arkts-mdm-usbmanager-getdisallowedusbdevices-f.md#getdisallowedusbdevices-1) | Obtains the disallowed USB device types. |
 | [getDisallowedUsbDevices](arkts-mdm-usbmanager-getdisallowedusbdevices-f.md#getdisallowedusbdevices-2) | Obtains the disallowed USB device types. |
 | [getExternalStorageDeviceInfos](arkts-mdm-usbmanager-getexternalstoragedeviceinfos-f.md#getexternalstoragedeviceinfos-1) | Obtain the volume information of the current device. |
+| [getUsbDeviceInfos](arkts-mdm-usbmanager-getusbdeviceinfos-f.md#getusbdeviceinfos-1) | Obtains the information about all currently connected USB devices. |
 | [getUsbSerialNumber](arkts-mdm-usbmanager-getusbserialnumber-f.md#getusbserialnumber-1) | Queries the serial number of the usb device. |
 | [getUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-getusbstoragedeviceaccesspolicy-f.md#getusbstoragedeviceaccesspolicy-1) | Obtains the access policy of the USB storage device. |
 | [getUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-getusbstoragedeviceaccesspolicy-f.md#getusbstoragedeviceaccesspolicy-2) | Obtains the USB storage device (baseClass = 0x08) access policy. |
 | [isExternalStorageInterceptEnable](arkts-mdm-usbmanager-isexternalstorageinterceptenable-f.md#isexternalstorageinterceptenable-1) | Query the enabling status of external storage device mounting. |
+| [isUsbInterceptEnable](arkts-mdm-usbmanager-isusbinterceptenable-f.md#isusbinterceptenable-1) | Checks whether the USB interception is enabled. |
 | [removeAllowedOpticalDiscDriveBurnUsbDevices](arkts-mdm-usbmanager-removeallowedopticaldiscdriveburnusbdevices-f.md#removeallowedopticaldiscdriveburnusbdevices-1) | Remove the list of USB devices that support CD/DVD burning.This API uses a promise to return the result. |
 | [removeAllowedUsbDevices](arkts-mdm-usbmanager-removeallowedusbdevices-f.md#removeallowedusbdevices-1) | Removes allowed USB devices. |
 | [removeDisallowedPermissiveUsbDevices](arkts-mdm-usbmanager-removedisallowedpermissiveusbdevices-f.md#removedisallowedpermissiveusbdevices-1) | Removes the USB device types that have been disallowed via [addDisallowedPermissiveUsbDevices](arkts-mdm-usbmanager-adddisallowedpermissiveusbdevices-f.md). The removed USB device types can be used normally. |
 | [removeDisallowedUsbDevices](arkts-mdm-usbmanager-removedisallowedusbdevices-f.md#removedisallowedusbdevices-1) | Removes the disallowed USB device types. |
 | [setExternalStorageDeviceMountPolicy](arkts-mdm-usbmanager-setexternalstoragedevicemountpolicy-f.md#setexternalstoragedevicemountpolicy-1) | Set the mounting policy for external storage devices. |
 | [setExternalStorageInterceptEnable](arkts-mdm-usbmanager-setexternalstorageinterceptenable-f.md#setexternalstorageinterceptenable-1) | Set the enabling status of external storage device mounting. |
+| [setUsbDeviceStates](arkts-mdm-usbmanager-setusbdevicestates-f.md#setusbdevicestates-1) | Sets the state of USB devices. |
+| [setUsbInterceptEnable](arkts-mdm-usbmanager-setusbinterceptenable-f.md#setusbinterceptenable-1) | Sets whether to enable the USB interception. |
 | [setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md#setusbstoragedeviceaccesspolicy-1) | Sets the USB storage device (baseClass = 0x08) access policy. |
 
 <!--Del-->

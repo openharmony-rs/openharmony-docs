@@ -14,7 +14,7 @@ function discoverServices(): void
 
 启动P2P服务发现。使用待处理请求的TLV查询进行发现，如果待处理列表为空，则回退为发现所有服务类型。启动发现前，请先通过[addDnsSdServiceRequest](arkts-connectivity-wifimanager-adddnssdservicerequest-f.md)或[addUpnpServiceRequest](arkts-connectivity-wifimanager-addupnpservicerequest-f.md)添加服务请求。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.GET_WIFI_PEERS_MAC
 

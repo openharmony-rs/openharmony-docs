@@ -55,8 +55,7 @@ Polygon(options?: PolygonOptions)
 
 <!--Device-PolygonInterface-new (options?: PolygonOptions): PolygonAttribute--><!--Device-PolygonInterface-new (options?: PolygonOptions): PolygonAttribute-End-->
 
-**系统能力：** 
-- API版本9+：SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数:**
 

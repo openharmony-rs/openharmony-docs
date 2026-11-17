@@ -14,6 +14,8 @@ function addCheckRule(rule: bigint) : void
 
 Adds one or more check rules. HiChecker detects unexpected operations or gives feedback based on the added rules. You can use **grep HiChecker** to check for the application running information in the hilog.
 
+If the rule level of the passed-in rule is thread level, the rule takes effect only in the current thread.
+
 **Since:** 9
 
 <!--Device-hichecker-function addCheckRule(rule: bigint) : void--><!--Device-hichecker-function addCheckRule(rule: bigint) : void-End-->
@@ -24,7 +26,7 @@ Adds one or more check rules. HiChecker detects unexpected operations or gives f
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| rule | bigint | Yes | Rule to be added. |
+| rule | bigint | Yes | Rule to add. Multiple rules can be combined using the OR operation. Available values include:<br>**RULE_CAUTION_PRINT_LOG** (log recording), **RULE_CAUTION_TRIGGER_CRASH** (application exit), and **RULE_THREAD_CHECK_SLOW_PROCESS** (detect time-consuming function calls). For details, see the constants. |
 
 **Error codes:**
 

@@ -26,7 +26,7 @@ Decodes the information carried in the image. This API uses a promise to return 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| encodedImage | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | Yes | Image with metadata encoded. |
+| encodedImage | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | Yes | Image carrying information, which must be an encoded image processed by the encodeImage API. |
 
 **Return value:**
 

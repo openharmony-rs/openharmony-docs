@@ -1,4 +1,4 @@
-# @ohos.fileshare
+# @ohos.fileshare(File share)
 
 Provides fileshare APIS
 

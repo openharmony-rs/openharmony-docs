@@ -24,7 +24,7 @@ import { DrawableDescriptor, LayeredDrawableDescriptor, PixelMapDrawableDescript
 constructor()
 ```
 
-Creates a new DrawableDescriptor.
+创建一个新的DrawableDescriptor实例。
 
 **起始版本：** 10
 

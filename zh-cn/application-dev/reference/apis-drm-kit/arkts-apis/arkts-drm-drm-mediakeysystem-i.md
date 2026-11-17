@@ -111,7 +111,7 @@ let mediaKeySession: drm.MediaKeySession = mediaKeySystem.createMediaKeySession(
 createMediaKeySession(): MediaKeySession
 ```
 
-创建DRM解决方案默认内容保护级别的MediaKeySession实例。
+创建默认内容保护级别的MediaKeySession实例。
 
 **起始版本：** 11
 

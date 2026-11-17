@@ -69,7 +69,7 @@ reminderFlags: number
 silentReminderEnabled: boolean
 ```
 
-表示[静默提醒](../../../notification/notification-glossary.md#silent-reminder静默提醒)开关使能状态（true：使能，false：禁止）。
+表示静默提醒开关使能状态（true：使能，false：禁止）。
 
 **类型：** boolean
 

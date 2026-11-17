@@ -1,34 +1,34 @@
-# ToolbarV2TitleConfigs
+# ToolBarV2TitleConfigs
 
 ```TypeScript
-export declare class ToolbarV2TitleConfigs
+export declare class ToolBarV2TitleConfigs
 ```
 
-Title configuration. When not provided, no title is rendered.
+标题配置。如果不提供，则不会渲染标题。
 
-The title participates in layout at the same level as toolbar items. The title reuses `ToolbarV2ItemPlacement` (`LEADING` / `MAIN` / `TRAILING`) to determine the rendering area, and is arranged in the same area as items with the same placement.
+标题参与布局，与工具栏项处于同一级别。标题重用ToolBarV2ItemPlacement来确定渲染区域，并与具有相同位置的项目排列在同一区域。
 
 **Since:** 26.1.0
 
 **Decorator:** @ObservedV2
 
-<!--Device-unnamed-export declare class ToolbarV2TitleConfigs--><!--Device-unnamed-export declare class ToolbarV2TitleConfigs-End-->
+<!--Device-unnamed-export declare class ToolBarV2TitleConfigs--><!--Device-unnamed-export declare class ToolBarV2TitleConfigs-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
 
 ```TypeScript
-import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolbarV2Item, AdvancedToolbarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolbarV2ItemGroupStyle, ToolbarV2ItemGroupStyleOptions, ToolbarV2ItemPlacement, ToolbarV2OverflowMenuStyle, ToolbarV2PaddingOptions, ToolbarV2StyleConfigs, ToolbarV2StyleOptions, ToolbarV2TitleConfigs, ToolbarV2TitleOptions, ToolbarV2TitleStyle, ToolbarV2TitleStyleOptions } from '@kit.ArkUI';
+import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolBarV2Item, AdvancedToolBarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolBarV2ItemGroupStyle, ToolBarV2ItemGroupStyleOptions, ToolBarV2ItemPlacement, ToolBarV2OverflowMenuStyle, ToolBarV2PaddingOptions, ToolBarV2StyleConfigs, ToolBarV2StyleOptions, ToolBarV2TitleConfigs, ToolBarV2TitleOptions, ToolBarV2TitleStyle, ToolBarV2TitleStyleOptions, ToolBarV2MaterialStyle } from '@kit.ArkUI';
 ```
 
 ## constructor
 
 ```TypeScript
-constructor(options?: ToolbarV2TitleOptions)
+constructor(options?: ToolBarV2TitleOptions)
 ```
 
-Constructs a ToolbarV2TitleConfigs instance.
+构造ToolBarV2TitleConfigs实例。
 
 **Since:** 26.1.0
 
@@ -36,7 +36,7 @@ Constructs a ToolbarV2TitleConfigs instance.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2TitleConfigs-constructor(options?: ToolbarV2TitleOptions)--><!--Device-ToolbarV2TitleConfigs-constructor(options?: ToolbarV2TitleOptions)-End-->
+<!--Device-ToolBarV2TitleConfigs-constructor(options?: ToolBarV2TitleOptions)--><!--Device-ToolBarV2TitleConfigs-constructor(options?: ToolBarV2TitleOptions)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,7 +44,7 @@ Constructs a ToolbarV2TitleConfigs instance.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ToolbarV2TitleOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2titleoptions-i.md) | No | Constructor options. |
+| options | [ToolBarV2TitleOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2titleoptions-i.md) | No | 构造函数选项。 |
 
 ## content
 
@@ -52,7 +52,7 @@ Constructs a ToolbarV2TitleConfigs instance.
 content: ResourceStr
 ```
 
-Title text content. Required when constructing ToolbarV2TitleConfigs.
+标题文本内容。在构造ToolBarV2TitleConfigs时需要。默认值：undefined。不设置时，无内容。
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -64,19 +64,19 @@ Title text content. Required when constructing ToolbarV2TitleConfigs.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2TitleConfigs-content: ResourceStr--><!--Device-ToolbarV2TitleConfigs-content: ResourceStr-End-->
+<!--Device-ToolBarV2TitleConfigs-content: ResourceStr--><!--Device-ToolBarV2TitleConfigs-content: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## placement
 
 ```TypeScript
-placement?: ToolbarV2ItemPlacement
+placement?: ToolBarV2ItemPlacement
 ```
 
-Placement position of the title within the toolbar. Reuses `ToolbarV2ItemPlacement` — the title is arranged in the same area as items with the same placement. Default value: ToolbarV2ItemPlacement.LEADING.
+标题位置。默认值：ToolBarV2ItemPlacement.LEADING。
 
-**Type:** [ToolbarV2ItemPlacement](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemplacement-e.md)
+**Type:** [ToolBarV2ItemPlacement](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemplacement-e.md)
 
 **Since:** 26.1.0
 
@@ -86,19 +86,19 @@ Placement position of the title within the toolbar. Reuses `ToolbarV2ItemPlaceme
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2TitleConfigs-placement?: ToolbarV2ItemPlacement--><!--Device-ToolbarV2TitleConfigs-placement?: ToolbarV2ItemPlacement-End-->
+<!--Device-ToolBarV2TitleConfigs-placement?: ToolBarV2ItemPlacement--><!--Device-ToolBarV2TitleConfigs-placement?: ToolBarV2ItemPlacement-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## style
 
 ```TypeScript
-style?: ToolbarV2TitleStyle
+style?: ToolBarV2TitleStyle
 ```
 
-Title text style.
+标题文字样式。
 
-**Type:** [ToolbarV2TitleStyle](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2titlestyle-c.md)
+**Type:** [ToolBarV2TitleStyle](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2titlestyle-c.md)
 
 **Since:** 26.1.0
 
@@ -108,7 +108,49 @@ Title text style.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2TitleConfigs-style?: ToolbarV2TitleStyle--><!--Device-ToolbarV2TitleConfigs-style?: ToolbarV2TitleStyle-End-->
+<!--Device-ToolBarV2TitleConfigs-style?: ToolBarV2TitleStyle--><!--Device-ToolBarV2TitleConfigs-style?: ToolBarV2TitleStyle-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## subTitleContent
+
+```TypeScript
+subTitleContent?: ResourceStr
+```
+
+副标题文本内容。默认值：undefined。不设置时，无内容。
+
+**Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-ToolBarV2TitleConfigs-subTitleContent?: ResourceStr--><!--Device-ToolBarV2TitleConfigs-subTitleContent?: ResourceStr-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## subTitleStyle
+
+```TypeScript
+subTitleStyle?: ToolBarV2TitleStyle
+```
+
+副标题文字样式。
+
+**Type:** [ToolBarV2TitleStyle](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2titlestyle-c.md)
+
+**Since:** 26.1.0
+
+**Decorator:** @Trace
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-ToolBarV2TitleConfigs-subTitleStyle?: ToolBarV2TitleStyle--><!--Device-ToolBarV2TitleConfigs-subTitleStyle?: ToolBarV2TitleStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,7 +160,7 @@ Title text style.
 visible?: boolean
 ```
 
-Whether the title is visible. Default value: true.
+标题是否可见。默认值: true。true表示标题可见，false表示标题不可见。
 
 **Type:** boolean
 
@@ -130,6 +172,6 @@ Whether the title is visible. Default value: true.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2TitleConfigs-visible?: boolean--><!--Device-ToolbarV2TitleConfigs-visible?: boolean-End-->
+<!--Device-ToolBarV2TitleConfigs-visible?: boolean--><!--Device-ToolBarV2TitleConfigs-visible?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

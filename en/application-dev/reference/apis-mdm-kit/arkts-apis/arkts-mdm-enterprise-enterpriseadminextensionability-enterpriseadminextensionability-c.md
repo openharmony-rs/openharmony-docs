@@ -178,6 +178,35 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 }
 ```
 
+## onAccountSwitched
+
+```TypeScript
+onAccountSwitched(fromAccountId: number, toAccountId: number): void
+```
+
+Callback for account switched events. Called when the current user account is switched from one account to another. This callback differs from the existing onAccountSwitched(accountId: number) by providing both source and target account IDs for more detailed account transition tracking.
+
+You should register the **MANAGED_EVENT_ACCOUNT_SWITCHED** event through the [adminManager.subscribeManagedEventSync](arkts-mdm-adminmanager-subscribemanagedeventsync-f.md) API.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnterpriseAdminExtensionAbility-onAccountSwitched(fromAccountId: number, toAccountId: number): void--><!--Device-EnterpriseAdminExtensionAbility-onAccountSwitched(fromAccountId: number, toAccountId: number): void-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| fromAccountId | number | Yes | ID of the account that was switched from. |
+| toAccountId | number | Yes | ID of the account that was switched to. |
+
+**Examples**
+
+See [onAccountSwitched](#onaccountswitched)
+
 ## onAdminDisabled
 
 ```TypeScript
@@ -1076,8 +1105,8 @@ Callback for the password authentication failure event. This callback is trigger
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| cumulativeFailedCount | number | Yes | Cumulative number of failed password attempts. |
-| accountId | number | Yes | ID of the user whose password authentication failed. |
+| cumulativeFailedCount | number | Yes | Total number of failed password attempts. |
+| accountId | number | Yes | ID of the account whose password authentication failed. |
 
 ## onSmsReceived
 
@@ -1254,6 +1283,28 @@ Callback for unmounting external storage devices. When an external storage devic
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | deviceInfo | [common.ExternalStorageDeviceInfo](arkts-mdm-common-externalstoragedeviceinfo-i.md) | Yes | Device information of the external storage device that needs to be unmounted. |
+
+## onUsbDeviceAdded
+
+```TypeScript
+onUsbDeviceAdded(usbDeviceInfo: common.UsbDeviceInfo): void
+```
+
+Callback for USB device added events. Called when a USB device is added to the device. This callback is triggered when a USB device is plugged in and the system has recognized it.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnterpriseAdminExtensionAbility-onUsbDeviceAdded(usbDeviceInfo: common.UsbDeviceInfo): void--><!--Device-EnterpriseAdminExtensionAbility-onUsbDeviceAdded(usbDeviceInfo: common.UsbDeviceInfo): void-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| usbDeviceInfo | [common.UsbDeviceInfo](arkts-mdm-common-usbdeviceinfo-i.md) | Yes | USB device information, including bus number, device address, serial number, vendor ID, product ID, and other device attributes. |
 
 ## context
 

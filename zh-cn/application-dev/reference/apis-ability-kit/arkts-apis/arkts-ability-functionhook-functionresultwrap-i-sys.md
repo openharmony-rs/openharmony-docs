@@ -20,7 +20,7 @@ onAfterInvokeFunction的结果参数。
 dmSessionId?: string
 ```
 
-表示对话管理（DM）会话标识，从[InvokeOptions](arkts-ability-functionmanager-invokeoptions-i-sys.md)回传。仅当调用方传入该标识时存在。取值由字母、数字、'_'和'-'组成，最大长度为256。
+表示对话管理（DM）会话标识，从[InvokeOptions](arkts-ability-functionmanager-invokeoptions-i.md)回传。仅当调用方传入该标识时存在。取值由字母、数字、'_'和'-'组成，最大长度为256。
 
 **类型：** string
 
@@ -60,7 +60,7 @@ result: InvokeResult
 toolCallId?: string
 ```
 
-表示Function调用的唯一标识，从[InvokeOptions](arkts-ability-functionmanager-invokeoptions-i-sys.md)回传。仅当调用方传入该标识时存在。取值由字母、数字、'_'和'-'组成，最大长度为256。
+表示Function调用的唯一标识，从[InvokeOptions](arkts-ability-functionmanager-invokeoptions-i.md)回传。仅当调用方传入该标识时存在。取值由字母、数字、'_'和'-'组成，最大长度为256。
 
 **类型：** string
 

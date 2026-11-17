@@ -12,14 +12,13 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 function setMinLogLevel(level: LogLevel): void
 ```
 
-Sets the minimum log level.
+Sets the minimum log level for application log printing to filter out lower-level logs. Used when optimizing application performance or reducing interference from low-value logs to avoid redundant logs.
 
-> **NOTE:** 
+> **Note:** 
 > 
-> If the set log level is lower than the
-> [global log level](../../../dfx/hilog.md#displaying-and-setting-log-levels), the setting does not take effect.
+> If the set log level is lower than the [global log level](../../../dfx/hilog.md#viewing-and-setting-log-levels), the setting does not take effect.
 > 
-> This function does not take effect for debug applications.
+> This function does not take effect in debug-version applications.
 
 **Since:** 15
 

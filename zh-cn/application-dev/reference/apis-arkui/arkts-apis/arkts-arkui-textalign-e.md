@@ -15,7 +15,7 @@ declare enum TextAlign
 ## Center
 
 ```TypeScript
-Center = 0
+Center
 ```
 
 水平居中对齐。
@@ -26,14 +26,14 @@ Center = 0
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextAlign-Center = 0--><!--Device-TextAlign-Center = 0-End-->
+<!--Device-TextAlign-Center--><!--Device-TextAlign-Center-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## End
 
 ```TypeScript
-End = 2
+End
 ```
 
 水平对齐尾部。
@@ -44,14 +44,14 @@ End = 2
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextAlign-End = 2--><!--Device-TextAlign-End = 2-End-->
+<!--Device-TextAlign-End--><!--Device-TextAlign-End-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## JUSTIFY
 
 ```TypeScript
-JUSTIFY = 3
+JUSTIFY
 ```
 
 双端对齐。
@@ -64,7 +64,7 @@ JUSTIFY = 3
 
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextAlign-JUSTIFY = 3--><!--Device-TextAlign-JUSTIFY = 3-End-->
+<!--Device-TextAlign-JUSTIFY--><!--Device-TextAlign-JUSTIFY-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -111,7 +111,7 @@ RIGHT = 5
 ## Start
 
 ```TypeScript
-Start = 1
+Start
 ```
 
 水平对齐首部。
@@ -122,6 +122,6 @@ Start = 1
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextAlign-Start = 1--><!--Device-TextAlign-Start = 1-End-->
+<!--Device-TextAlign-Start--><!--Device-TextAlign-Start-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

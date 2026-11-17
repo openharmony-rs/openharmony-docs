@@ -14,7 +14,7 @@ function getP2pServiceRequest(): Promise<Array<WifiP2pServiceRequest>>
 
 Queries the pending P2P service discovery requests. This API uses a promise to return the result.
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO_INTERNAL
 

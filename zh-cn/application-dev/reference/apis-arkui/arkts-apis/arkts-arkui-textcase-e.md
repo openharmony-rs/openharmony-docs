@@ -15,7 +15,7 @@ declare enum TextCase
 ## LowerCase
 
 ```TypeScript
-LowerCase = 1
+LowerCase
 ```
 
 文本采用全小写。
@@ -26,14 +26,14 @@ LowerCase = 1
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextCase-LowerCase = 1--><!--Device-TextCase-LowerCase = 1-End-->
+<!--Device-TextCase-LowerCase--><!--Device-TextCase-LowerCase-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Normal
 
 ```TypeScript
-Normal = 0
+Normal
 ```
 
 保持文本原有大小写。
@@ -44,14 +44,14 @@ Normal = 0
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextCase-Normal = 0--><!--Device-TextCase-Normal = 0-End-->
+<!--Device-TextCase-Normal--><!--Device-TextCase-Normal-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## UpperCase
 
 ```TypeScript
-UpperCase = 2
+UpperCase
 ```
 
 文本采用全大写。
@@ -62,6 +62,6 @@ UpperCase = 2
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextCase-UpperCase = 2--><!--Device-TextCase-UpperCase = 2-End-->
+<!--Device-TextCase-UpperCase--><!--Device-TextCase-UpperCase-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

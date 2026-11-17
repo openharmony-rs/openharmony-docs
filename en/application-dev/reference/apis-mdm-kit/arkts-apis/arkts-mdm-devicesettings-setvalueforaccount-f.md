@@ -65,3 +65,49 @@ try {
   console.error(`Failed to set device name. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+
+## setValueForAccount
+
+```TypeScript
+function setValueForAccount(item: SettingsItem, accountId: number, value: string): void
+```
+
+Sets the device policy for a specified user without passing in the administrator **Want**.
+
+The caller must have been enabled as an enterprise administrator in advance, for example, by calling [enableAdmin](arkts-mdm-adminmanager-enableadmin-f-sys.md). This API uses the caller's own administrator information automatically. Only the policy items that support cross-account settings (**SCREEN_OFF_DC**, **SCREEN_OFF_AC**, **POWER_POLICY_DC**, and **POWER_POLICY_AC**) can be set through this overload.
+
+**Since:** 26.1.0
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-deviceSettings-function setValueForAccount(item: SettingsItem, accountId: number, value: string): void--><!--Device-deviceSettings-function setValueForAccount(item: SettingsItem, accountId: number, value: string): void-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| item | [SettingsItem](arkts-mdm-devicesettings-settingsitem-e.md) | Yes | Type of the policy to set. Only **SCREEN_OFF_DC**, **SCREEN_OFF_AC**, **POWER_POLICY_DC**, and **POWER_POLICY_AC** are supported. |
+| accountId | number | Yes | User ID, which must be greater than or equal to 100. <br>If **accountId** is less than 100, error code 9200006 is returned. |
+| value | string | Yes | device settings policy. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: <br>1. The hardware does not support the capability. <br>2. The chip does not support the capability. <br>3. A dependent service feature is not supported. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-deviceadmin-not-enabled) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
+| [9200006](../errorcode-enterpriseDeviceManager.md#9200006-invalid-user-id) | The specified account ID is invalid. |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-parameter-verification-failed) | Parameter verification failed. |
+| [9200016](../errorcode-enterpriseDeviceManager.md#9200016-service-timeout) | Service timeout. |
+| 9200020 | Cross-user configuration is not supported. |
+
+**Examples**
+
+See [setValueForAccount](#setvalueforaccount)

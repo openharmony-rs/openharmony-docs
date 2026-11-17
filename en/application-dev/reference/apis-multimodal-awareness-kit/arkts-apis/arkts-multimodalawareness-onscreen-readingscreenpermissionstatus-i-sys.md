@@ -26,7 +26,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 readingCode?: number
 ```
 
-If the screen information cannot be read, the corresponding status code will be returned.
+If the screen cannot be read, the corresponding status code is returned. For details, see CollectStrategy.
 
 **Type:** number
 

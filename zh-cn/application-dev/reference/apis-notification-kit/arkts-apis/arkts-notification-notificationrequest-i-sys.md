@@ -291,7 +291,7 @@ trigger?:Trigger
 unifiedGroupInfo?: UnifiedGroupInfo
 ```
 
-消息[智能聚合](../../../notification/notification-glossary.md#notification-smart-aggregation智能聚合)信息字段。默认为空。
+消息智能聚合信息字段。默认为空。
 
 **类型：** [UnifiedGroupInfo](arkts-notification-notificationrequest-unifiedgroupinfo-i-sys.md)
 

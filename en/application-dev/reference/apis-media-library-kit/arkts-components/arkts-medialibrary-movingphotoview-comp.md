@@ -49,6 +49,7 @@ Set the options.
 
 | Name | Description |
 | --- | --- |
+| [DisplayMode](arkts-medialibrary-movingphotoview-comp-displaymode-e-sys.md) | Enums for display mode. |
 | [DynamicRangeMode](arkts-medialibrary-movingphotoview-comp-dynamicrangemode-e-sys.md) | Dynamic range mode of moving photo. |
 | [PixelMapFormat](arkts-medialibrary-movingphotoview-comp-pixelmapformat-e-sys.md) | Enumerates pixel map formats. |
 <!--DelEnd-->

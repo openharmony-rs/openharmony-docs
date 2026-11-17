@@ -33,7 +33,7 @@ When the function is enabled, the application can recommend content based on the
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'userAgeGroupDetected' | Yes | Event type. The value **userAgeGroupDetected** indicates the event of enabling age group detection. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[UserClassification](arkts-multimodalawareness-userstatus-userclassification-i.md)&gt; | Yes | Callback used to return the detection result. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[UserClassification](arkts-multimodalawareness-userstatus-userclassification-i.md)&gt; | Yes | Callback used to return the detection result. The callback to be unsubscribed must be the same as the one passed in during subscription. If not specified, all callbacks currently listening for this event will be unsubscribed. |
 
 **Error codes:**
 

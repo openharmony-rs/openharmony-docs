@@ -3459,8 +3459,6 @@ Obtain distributed table name of specified remote device according to local tabl
 
 **Since:** 9
 
-**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
-
 <!--Device-RdbStore-obtainDistributedTableName(device: string, table: string, callback: AsyncCallback<string>): void--><!--Device-RdbStore-obtainDistributedTableName(device: string, table: string, callback: AsyncCallback<string>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -3525,8 +3523,6 @@ obtainDistributedTableName(device: string, table: string): Promise<string>
 Obtain distributed table name of specified remote device according to local table name. When query remote device database, distributed table name is needed.
 
 **Since:** 9
-
-**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
 <!--Device-RdbStore-obtainDistributedTableName(device: string, table: string): Promise<string>--><!--Device-RdbStore-obtainDistributedTableName(device: string, table: string): Promise<string>-End-->
 
@@ -3677,7 +3673,6 @@ Remove specified observer of specified type from the database.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
 
@@ -3929,7 +3924,6 @@ Subscribes to data changes of this RDB store. The registered callback will be ca
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
 
@@ -5791,8 +5785,6 @@ Set table to be distributed table.
 
 **Since:** 9
 
-**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
-
 <!--Device-RdbStore-setDistributedTables(tables: Array<string>, callback: AsyncCallback<void>): void--><!--Device-RdbStore-setDistributedTables(tables: Array<string>, callback: AsyncCallback<void>): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -5836,8 +5828,6 @@ setDistributedTables(tables: Array<string>): Promise<void>
 Set table to be distributed table.
 
 **Since:** 9
-
-**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
 <!--Device-RdbStore-setDistributedTables(tables: Array<string>): Promise<void>--><!--Device-RdbStore-setDistributedTables(tables: Array<string>): Promise<void>-End-->
 
@@ -5887,8 +5877,6 @@ setDistributedTables(tables: Array<string>, type: DistributedType, callback: Asy
 Set table to be distributed table.
 
 **Since:** 10
-
-**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
 <!--Device-RdbStore-setDistributedTables(tables: Array<string>, type: DistributedType, callback: AsyncCallback<void>): void--><!--Device-RdbStore-setDistributedTables(tables: Array<string>, type: DistributedType, callback: AsyncCallback<void>): void-End-->
 
@@ -5941,8 +5929,6 @@ Set table to be distributed table.
 
 **Since:** 10
 
-**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
-
 <!--Device-RdbStore-setDistributedTables(      tables: Array<string>,      type: DistributedType,      config: DistributedConfig,      callback: AsyncCallback<void>    ): void--><!--Device-RdbStore-setDistributedTables(      tables: Array<string>,      type: DistributedType,      config: DistributedConfig,      callback: AsyncCallback<void>    ): void-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -5991,8 +5977,6 @@ setDistributedTables(tables: Array<string>, type?: DistributedType, config?: Dis
 Set table to be a distributed table.
 
 **Since:** 10
-
-**Required permissions:** ohos.permission.DISTRIBUTED_DATASYNC
 
 <!--Device-RdbStore-setDistributedTables(tables: Array<string>, type?: DistributedType, config?: DistributedConfig): Promise<void>--><!--Device-RdbStore-setDistributedTables(tables: Array<string>, type?: DistributedType, config?: DistributedConfig): Promise<void>-End-->
 

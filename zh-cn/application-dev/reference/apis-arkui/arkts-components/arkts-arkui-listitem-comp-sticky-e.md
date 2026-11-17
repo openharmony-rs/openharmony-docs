@@ -40,7 +40,7 @@ None
 Normal
 ```
 
-Normal mode
+当前item吸顶。
 
 **起始版本：** 7
 
@@ -58,7 +58,7 @@ Normal mode
 Opacity
 ```
 
-Set opacity.
+当前item吸顶显示透明度变化效果。
 
 **起始版本：** 7
 

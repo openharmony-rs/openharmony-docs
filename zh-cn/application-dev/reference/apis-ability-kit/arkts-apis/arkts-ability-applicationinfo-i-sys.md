@@ -49,3 +49,23 @@ readonly flags?: number
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
+
+## keepDataOnUninstall
+
+```TypeScript
+readonly keepDataOnUninstall?: boolean
+```
+
+标识应用卸载时是否保留数据。true表示保留，false表示不保留，默认值为false。
+
+**类型：** boolean
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ApplicationInfo-readonly keepDataOnUninstall?: boolean--><!--Device-ApplicationInfo-readonly keepDataOnUninstall?: boolean-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**系统接口：** 此接口为系统接口。

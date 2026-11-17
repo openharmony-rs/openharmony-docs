@@ -3323,7 +3323,7 @@ struct UIContextCompare {
 isEasySplit(): boolean
 ```
 
-Checks whether the current UI instance is in easy split mode.
+<!--RP1-->Obtains the split view state in compatibility mode of the current UI instance.<!--RP1End-->
 
 **Since:** 24
 
@@ -3339,7 +3339,7 @@ Checks whether the current UI instance is in easy split mode.
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns true if the current UI instance is in easy split mode; returns false otherwise. |
+| boolean | <!--RP2-->Split view state in compatibility mode of the current UI instance. The value **true** indicates that the split view mode is active, and the value **false** indicates that the split view mode is inactive.<!--RP2End--> |
 
 **Examples**
 

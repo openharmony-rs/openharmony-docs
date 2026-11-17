@@ -27,7 +27,7 @@ export function promoteCurrentToCandidateMasterProcess(insertToHead: boolean): P
 > 
 > 当前进程只有运行了isolationProcess字段设为true的组件，或曾经成为过主控进程，开发者才可将其设置为备选主控进程。
 > 
-> 
+> <!--Del-->
 > 当前仅支持sys/commonUI类型的UIExtensionAbility组件在[module.json5配置文件](../../../quick-start/module-configuration-file.md)中配
 > 置isolationProcess字段为true。
 

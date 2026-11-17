@@ -80,7 +80,7 @@ readonly request: NotificationRequest
 readonly sortingMap?: NotificationSortingMap
 ```
 
-[Notification sorting](../../../notification/notification-glossary.md#notification-sorting) information.
+Notification sorting information.
 
 **Type:** [NotificationSortingMap](arkts-notification-notificationsortingmap-i-sys.md)
 

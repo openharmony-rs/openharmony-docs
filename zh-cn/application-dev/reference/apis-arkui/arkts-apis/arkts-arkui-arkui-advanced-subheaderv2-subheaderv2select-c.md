@@ -50,7 +50,7 @@ select内容以及事件构造函数。
 onSelect?: SubHeaderV2SelectOnSelect
 ```
 
-Sets the onSelect of the SubHeaderV2SelectOptions.
+设置SubHeaderV2SelectOptions的onSelect。
 
 **起始版本：** 18
 
@@ -124,7 +124,7 @@ id?: string
 options: SelectOption[]
 ```
 
-Sets the options of the SubHeaderV2SelectOptions.
+设置SubHeaderV2SelectOptions的选项。
 
 **类型：** [SelectOption](../arkts-components/arkts-arkui-select-comp-selectoption-i.md)[]
 
@@ -162,7 +162,7 @@ selectedContent?: ResourceStr
 selectedIndex?: number
 ```
 
-Sets the selected index of the SubHeaderV2SelectOptions.
+设置SubHeaderV2SelectOptions的选中索引。
 
 **类型：** number
 

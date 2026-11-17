@@ -4,7 +4,7 @@
 export interface PerceptionEvent<T = BehaviorAwarenessPayload>
 ```
 
-感知事件数据。MSDP 融合感知聚类后生成的事件，推送给业务侧。
+感知事件数据。MSDP融合感知聚类后生成的事件，推送给业务侧。
 
 **起始版本：** 26.1.0
 
@@ -26,7 +26,7 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 confidence: number
 ```
 
-置信度。值 0 表示无置信度，值 100 表示完全确定。单位：百分比。取值需为 [0,100] 范围内的整数。
+置信度，0表示无置信度，100表示置信度完全置信。单位为：百分比。取值应为[0,100]内的整数。
 
 **类型：** number
 
@@ -66,7 +66,7 @@ domain: PerceptionDomain
 generateTime: number
 ```
 
-生成时间戳。单位：毫秒。
+生成时间戳。单位为：毫秒。
 
 **类型：** number
 

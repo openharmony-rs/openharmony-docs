@@ -28,7 +28,7 @@ Obtains the states of all main windows.
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[MainWindowStates](arkts-mdm-applicationmanager-mainwindowstates-i.md)&gt; | Return the main window states. |
+| Array&lt;[MainWindowStates](arkts-mdm-applicationmanager-mainwindowstates-i.md)&gt; | Returns the main window states. |
 
 **Error codes:**
 

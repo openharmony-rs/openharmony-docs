@@ -4,7 +4,7 @@
 export declare type ToolBarV2ItemIconType = ToolBarV2ItemImage | ToolBarV2SymbolGlyph
 ```
 
-Defines the icon type of ToolBarV2 item.
+定义ToolBarV2项的图标类型。
 
 **起始版本：** 18
 

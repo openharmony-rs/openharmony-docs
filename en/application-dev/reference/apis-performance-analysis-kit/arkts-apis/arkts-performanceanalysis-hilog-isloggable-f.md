@@ -12,7 +12,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 function isLoggable(domain: number, tag: string, level: LogLevel): boolean
 ```
 
-Checks whether logs are printable based on the specified service domain, log tag, and log level.
+Called before printing a log to check whether a log with the specified domain identifier, tag, and level can be printed.
 
 **Since:** 7
 
@@ -26,15 +26,15 @@ Checks whether logs are printable based on the specified service domain, log tag
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| domain | number | Yes | Service domain of logs. The value ranges from **0x0** to **0xFFFF**. If the value exceeds the range, logs cannot be printed.<br>You can define the value as required. |
-| tag | string | Yes | Log tag in the string format. You are advised to use this parameter to identify a particular service behavior or the class holding the ongoing method. A tag can contain a maximum of 31 bytes. If a tag exceeds this limit, it will be truncated. Chinese characters are not recommended because garbled characters or alignment problems may occur. |
+| domain | number | Yes | Domain identifier for the log, ranging from 0x0 to 0xFFFF. Logs outside this range cannot be printed.<br>It is recommended that developers define and divide domains as needed within the application. |
+| tag | string | Yes | Specifies the log tag, which can be any string. It is recommended to identify the calling class or business behavior. The recommended tag length should not exceed 31 bytes. Chinese characters are not recommended as they may cause garbled text or alignment issues. |
 | level | [LogLevel](arkts-performanceanalysis-hilog-loglevel-e.md) | Yes | Log level. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| boolean | Returns **true** logs are printable based on the specified service domain, log tag, and log level; returns **false** otherwise. |
+| boolean | Returns true if the log with the specified domain identifier, tag, and level can be printed; otherwise false. |
 
 **Examples**
 

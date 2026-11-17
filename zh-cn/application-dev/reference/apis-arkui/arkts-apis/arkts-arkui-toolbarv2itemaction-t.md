@@ -4,7 +4,7 @@
 export type ToolBarV2ItemAction = (index: number) => void
 ```
 
-Defines the action callback of ToolBarV2Item.
+定义ToolBarV2Item的点击事件回调。
 
 **起始版本：** 18
 

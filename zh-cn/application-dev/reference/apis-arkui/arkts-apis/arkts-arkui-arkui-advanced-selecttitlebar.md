@@ -12,7 +12,7 @@ import { SelectTitleBar, SelectTitleBarMenuItem } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [SelectTitleBarMenuItem](arkts-arkui-arkui-advanced-selecttitlebar-selecttitlebarmenuitem-c.md) | Declaration of the menu item on the right side. |
+| [SelectTitleBarMenuItem](arkts-arkui-arkui-advanced-selecttitlebar-selecttitlebarmenuitem-c.md) | 声明右侧菜单项。 |
 
 ### 结构体
 

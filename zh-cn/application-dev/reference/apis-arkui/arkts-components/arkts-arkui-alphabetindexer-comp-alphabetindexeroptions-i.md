@@ -22,7 +22,7 @@ interface AlphabetIndexerOptions
 arrayValue: Array<string>
 ```
 
-Alphabetical index string array.
+字符串数组，每个字符串代表一个索引项。
 
 **类型：** Array&lt;string&gt;
 
@@ -40,7 +40,7 @@ Alphabetical index string array.
 selected: number
 ```
 
-ID of the selected item.
+选中项的索引值。
 
 **类型：** number
 

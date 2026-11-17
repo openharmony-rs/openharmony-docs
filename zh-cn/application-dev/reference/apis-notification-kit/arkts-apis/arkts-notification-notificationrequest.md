@@ -22,7 +22,7 @@
 | [NotificationFilter](arkts-notification-notificationrequest-notificationfilter-i-sys.md) | 描述查询实况通知时的筛选条件。 |
 | [NotificationRequest](arkts-notification-notificationrequest-i-sys.md) | 定义了[通知请求](../../../notification/notification-glossary.md#notification-request通知请求)的数据结构，用于描述一条通知的全部信息，包括[通知内容](../../../notification/notification-glossary.md#notification-content通知内容)、标识、展示样式、交互行为等。 |
 | [Trigger](arkts-notification-notificationrequest-trigger-i-sys.md) | 触发条件的具体信息。 |
-| [UnifiedGroupInfo](arkts-notification-notificationrequest-unifiedgroupinfo-i-sys.md) | 描述通知[智能聚合](../../../notification/notification-glossary.md#notification-smart-aggregation智能聚合)信息字段。 |
+| [UnifiedGroupInfo](arkts-notification-notificationrequest-unifiedgroupinfo-i-sys.md) | 描述通知智能聚合信息字段。 |
 <!--DelEnd-->
 
 <!--Del-->

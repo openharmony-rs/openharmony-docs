@@ -24,7 +24,7 @@ declare enum SliderInteraction
 SLIDE_AND_CLICK = 0
 ```
 
-Users can drag the slider or touch the track to move the slider. The slider moves as soon as the mouse or finger is pressed.
+用户可以拖动滑块或触摸滑动条来移动滑块。鼠标或手指按下时，滑块即开始移动。
 
 **起始版本：** 12
 
@@ -42,7 +42,7 @@ Users can drag the slider or touch the track to move the slider. The slider move
 SLIDE_AND_CLICK_UP = 2
 ```
 
-Users can drag the slider or touch the track to move the slider. The slider moves when the mouse is released or finger is lifted, if the release/lift position coincides with the screen press position.
+用户可以拖动滑块或触摸滑动条来移动滑块。当鼠标释放或手指抬起时，若释放/抬起位置与屏幕按下位置重合，滑块才会移动。
 
 **起始版本：** 12
 
@@ -60,7 +60,7 @@ Users can drag the slider or touch the track to move the slider. The slider move
 SLIDE_ONLY = 1
 ```
 
-Users are not allowed to move the slider by touching the slider.
+不允许用户通过触摸滑块来移动滑块。
 
 **起始版本：** 12
 

@@ -76,7 +76,7 @@ readonly request: NotificationRequest
 readonly sortingMap?: NotificationSortingMap
 ```
 
-[通知排序](../../../notification/notification-glossary.md#notification-sorting通知排序)信息。
+通知排序信息。
 
 **类型：** [NotificationSortingMap](arkts-notification-notificationsortingmap-i-sys.md)
 

@@ -1,4 +1,4 @@
-# @ohos.file.BackupExtensionContext
+# @ohos.file.BackupExtensionContext(备份恢复拓展上下文)
 
 ## 导入模块
 

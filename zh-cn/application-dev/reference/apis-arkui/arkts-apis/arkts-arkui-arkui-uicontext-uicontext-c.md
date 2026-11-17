@@ -136,7 +136,7 @@ animateTo(value: AnimateParam, event: () => void): void
 > 
 > - 在组件出现和消失时，可以通过[组件内转场](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)添加动画效果。
 > 
-> - 组件内转场不支持的属性，可以参考[显式动画](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)中的[示例2](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，使用animateTo实现动画执行结束后组件消失的效果。
+> - 组件内转场不支持的属性，可以参考[显式动画](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)中的[示例2](../../../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#示例2动画执行结束后组件消失)，使用animateTo实现动画执行结束后组件消失的效果。
 > 
 > - 某些场景下，在[状态管理V2](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)中使用animateTo动画，会产生异常效果，具体可参考：[在状态管理V2中使用animateTo动画效果异常](../../../ui/state-management/arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。
 > 
@@ -333,7 +333,7 @@ struct AnimateToImmediatelyExample {
 bindTabsToNestedScrollable(tabsController: TabsController, parentScroller: Scroller, childScroller: Scroller): void
 ```
 
-Bind tabs to nested scrollable container components to automatically hide tab bar.
+将页签绑定到嵌套可滚动容器组件，自动隐藏页签栏。
 
 **起始版本：** 13
 
@@ -363,7 +363,7 @@ Bind tabs to nested scrollable container components to automatically hide tab ba
 bindTabsToScrollable(tabsController: TabsController, scroller: Scroller): void
 ```
 
-Bind tabs to scrollable container component to automatically hide tab bar.
+将页签绑定到可滚动容器组件，自动隐藏页签栏。
 
 **起始版本：** 13
 
@@ -1054,7 +1054,7 @@ struct Index {
 enableSwipeBack(enabled: Optional<boolean>): void
 ```
 
-whether to enable or disable swipe to back event.
+设置是否支持应用内横向滑动返回上一级。
 
 **起始版本：** 18
 
@@ -1068,7 +1068,7 @@ whether to enable or disable swipe to back event.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| enabled | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | enable or disable swipe to back event. |
+| enabled | [Optional](../arkts-components/arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | 是 | 是否支持应用内横向滑动返回，默认值为true。<br>当值为true时，支持应用内横向滑动返回。<br>当值为false时，不支持应用内横向滑动返回。 |
 
 **示例**
 
@@ -1466,7 +1466,7 @@ Get object context menu controller.
 getCursorController(): CursorController
 ```
 
-Get object cursor controller.
+获取CursorController对象，可通过该对象控制光标。
 
 **起始版本：** 12
 
@@ -1482,7 +1482,7 @@ Get object cursor controller.
 
 | 类型 | 说明 |
 | --- | --- |
-| [CursorController](arkts-arkui-arkui-uicontext-cursorcontroller-c.md) | object cursor controller. |
+| [CursorController](arkts-arkui-arkui-uicontext-cursorcontroller-c.md) | 获取CursorController对象。 |
 
 **示例**
 
@@ -1550,7 +1550,7 @@ Get DragController.
 getFilteredInspectorTree(filters?: Array<string>): string
 ```
 
-get the filtered attributes of the component tree.
+获取组件树及组件属性。此接口耗时较长，仅适用于测试场景。
 
 **起始版本：** 12
 
@@ -1566,13 +1566,13 @@ get the filtered attributes of the component tree.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| filters | Array&lt;string&gt; | 否 | List of component attributes used for filtering. Currently, only the following filter fields are supported: <br>**"id"**: unique ID of the component. <br>**"src"**: source of the resource. <br>**"content"**: information or data contained in the element, component, or object. <br>**"editable"**: whether the component is editable. <br>**"scrollable"**: whether the component is scrollable. <br>**"selectable"**: whether the component is selectable. <br>**"focusable"**: whether the component is focusable. <br>**"focused"**: whether the component is currently focused. <br>If **filters** includes one or more fields, unspecified fields will be filtered out from the results. <br>If **filters** is not provided or is an empty array, none of the aforementioned fields <br>will be filtered out. <br>The following filter field is supported since API version 20: <br>**"isLayoutInspector"**: whether the component tree contains custom components. <br>If **filters** is omitted or <br>does not contain **"isLayoutInspector"**, the returned component tree <br>will not include custom component details. <br>Other filter fields are used only in testing scenarios. |
+| filters | Array&lt;string&gt; | 否 | 需要获取的组件属性的过滤列表。目前仅支持过滤字段：<br>"id"：组件唯一标识。<br>"src"：资源来源。<br>"content"：元素、组件或对象所包含的信息或数据。<br>"editable"：是否可编辑。<br>"scrollable"：是否可滚动。<br>"selectable"：是否可选择。<br>"focusable"：是否可聚焦。<br>"focused"：是否已聚焦。<br>如果在filters参数中包含以上一个或者多个字段，则未包含的字段会在组件属性查询结果中被过滤掉。如果用户未传入filters参数或者filters参数为空数组，则以上字段全部不会在组件属性查询结果中被过滤掉。<br>从API version 20开始，支持该过滤字段：<br>"isLayoutInspector"：返回组件树是否包含自定义组件。如果用户未传入filters参数或者filters数组不包含isLayoutInspector，返回的组件树将缺少自定义组件的信息。<br>从API版本26.1.0开始，支持该过滤字段：<br>"isWebEnable"：返回的组件树是否包含Web组件所加载网页的组件树。如果用户未传入filters参数或者filters数组不包含isWebEnable，返回的组件树将缺少Web组件所加载网页的组件树信息。<br>其余字段仅供测试场景使用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | JSON string of the component tree and component attributes. For details about each field in the component, see the return value description of [getInspectorInfo](arkts-arkui-framenode-c.md#getinspectorinfo). |
+| string | 获取组件树及组件属性的JSON字符串。组件中每个字段的含义请参考[getInspectorInfo](arkts-arkui-framenode-c.md#getinspectorinfo)的返回值说明。 |
 
 **错误码：**
 
@@ -1652,7 +1652,7 @@ InsTree ----| type: Button, ID: 18
 getFilteredInspectorTreeById(id: string, depth: number, filters?: Array<string>): string
 ```
 
-get the filtered attributes of the component tree with the specified id and depth
+获取指定的组件及其子组件的属性。此接口耗时较长，仅适用于测试场景。
 
 **起始版本：** 12
 
@@ -1668,15 +1668,15 @@ get the filtered attributes of the component tree with the specified id and dept
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | string | 是 | [ID](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id) of the target component. |
-| depth | number | 是 | Number of layers of child components. If the value is **0**, the attributes of the specified component and all its child components are obtained. If the value is **1**, only the attributes of <br>the specified component are obtained. If the value is **2**, the attributes of <br>the specified component and its <br>level-1 child components are obtained. The rest can be deduced by analogy. |
-| filters | Array&lt;string&gt; | 否 | List of component attributes used for filtering. Currently, only the following filter fields are supported: <br>**"id"**: unique ID of the component. <br>**"src"**: source of the resource. <br>**"content"**: information or data contained in the element, component, or object. <br>**"editable"**: whether the component is editable. <br>**"scrollable"**: whether the component is scrollable. <br>**"selectable"**: whether the component is selectable. <br>**"focusable"**: whether the component is focusable. <br>**"focused"**: whether the component is currently focused. <br>If **filters** includes one or more fields, unspecified fields will be filtered out from the results. <br>If **filters** is not provided or is an empty array, none of the aforementioned fields <br>will be filtered out. <br>Other filter fields are used only in testing scenarios. |
+| id | string | 是 | 指定的[组件标识](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id)id。 |
+| depth | number | 是 | 获取子组件的层数。当取值0时，获取指定的组件及其所有的子孙组件的属性。当取值1时，仅获取指定的组件的属性。当取值2时，指定的组件及其1层子组件的属性。以此类推。 |
+| filters | Array&lt;string&gt; | 否 | 需要获取的组件属性的过滤列表。目前仅支持过滤字段：<br>"id"：组件唯一标识。<br>"src"：资源来源。<br>"content"：元素、组件或对象所包含的信息或数据。<br>"editable"：是否可编辑。<br>"scrollable"：是否可滚动。<br>"selectable"：是否可选择。<br>"focusable"：是否可聚焦。<br>"focused"：是否已聚焦。<br>如果在filters参数中包含以上一个或者多个字段，则未包含的字段会在组件属性查询结果中被过滤掉。如果用户未传入filters参数或者filters参数为空数组，则以上字段全部不会在组件属性查询结果中被过滤掉。<br>从API版本26.1.0开始，支持该过滤字段：<br>"isWebEnable"：返回的组件树是否包含Web组件所加载网页的组件树。如果用户未传入filters参数或者filters数组不包含isWebEnable，返回的组件树将缺少Web组件所加载网页的组件树信息。<br>其余字段仅供测试场景使用。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| string | JSON string of the attributes of the specified component and its child components. For details about each field in the component, see the return value <br>description of [getInspectorInfo](arkts-arkui-framenode-c.md#getinspectorinfo). |
+| string | 获取指定的组件及其子组件的属性的JSON字符串。组件中每个字段的含义请参考[getInspectorInfo](arkts-arkui-framenode-c.md#getinspectorinfo)的返回值说明。 |
 
 **错误码：**
 
@@ -2158,7 +2158,7 @@ getMagnifier(): Magnifier
 getMaxFontScale(): number
 ```
 
-Get the max font scale.
+获取当前UI上下文最大字体倍率。
 
 **起始版本：** 13
 
@@ -2174,7 +2174,7 @@ Get the max font scale.
 
 | 类型 | 说明 |
 | --- | --- |
-| number | The max font scale. |
+| number | 当前UI上下文最大字体倍率。 |
 
 **示例**
 
@@ -2228,7 +2228,7 @@ getMeasureUtils(): MeasureUtils
 getMediaQuery(): MediaQuery
 ```
 
-get object mediaQuery.
+获取MediaQuery对象。
 
 **起始版本：** 10
 
@@ -2244,7 +2244,7 @@ get object mediaQuery.
 
 | 类型 | 说明 |
 | --- | --- |
-| [MediaQuery](arkts-arkui-arkui-uicontext-mediaquery-c.md) | object MediaQuery. |
+| [MediaQuery](arkts-arkui-arkui-uicontext-mediaquery-c.md) | MediaQuery实例对象。 |
 
 **示例**
 
@@ -2256,7 +2256,9 @@ get object mediaQuery.
 getNavigationInfoByUniqueId(id: number): observer.NavigationInfo | undefined
 ```
 
-Get navigation information of the frameNode with uniqueId.
+通过组件的uniqueId获取该节点对应的Navigation页面信息。
+1. 当uniqueId对应的节点在Navigation节点中，返回其对应的Navigation信息；
+2. 当uniqueId对应的节点无对应的Navigation信息时，返回undefined。
 
 **起始版本：** 12
 
@@ -2272,13 +2274,13 @@ Get navigation information of the frameNode with uniqueId.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| id | number | 是 | The uniqueId of the target FrameNode. |
+| id | number | 是 | 节点对应的UniqueId。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [observer.NavigationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md) &#124; undefined | The navigation information of the frameNode with the target uniqueId, or undefined if the frameNode is not existed or does not have navigation information. |
+| [observer.NavigationInfo](../../apis-arkui/arkts-apis/arkts-arkui-arkui-observer.md) &#124; undefined | 返回节点对应的Navigation信息。 |
 
 **示例**
 
@@ -2649,7 +2651,7 @@ get object PromptAction.
 getRouter(): Router
 ```
 
-Obtains a Router object.
+获取Router对象。
 
 **起始版本：** 10
 
@@ -2665,7 +2667,7 @@ Obtains a Router object.
 
 | 类型 | 说明 |
 | --- | --- |
-| [Router](arkts-arkui-arkui-uicontext-router-c.md) | Router object. |
+| [Router](arkts-arkui-arkui-uicontext-router-c.md) | 返回Router实例对象。 |
 
 **示例**
 
@@ -3215,7 +3217,7 @@ struct UIContextCompare {
 isEasySplit(): boolean
 ```
 
-检查当前UI实例是否处于分栏模式。
+<!--RP1-->获取当前UI实例的兼容模式分栏状态。<!--RP1End-->
 
 **起始版本：** 24
 
@@ -3231,7 +3233,7 @@ isEasySplit(): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 返回当前UI实例是否处于分栏模式。true表示处于分栏模式，false表示未处于分栏模式。 |
+| boolean | <!--RP2-->返回当前UI实例的兼容模式分栏状态。true表示处于分栏模式，false表示未处于分栏模式。<!--RP2End--> |
 
 **示例**
 
@@ -3263,7 +3265,7 @@ struct Index {
 isFollowingSystemFontScale(): boolean
 ```
 
-Checks whether current font scale follows the system.
+获取当前UI上下文是否跟随系统字体倍率。
 
 **起始版本：** 13
 
@@ -3279,7 +3281,7 @@ Checks whether current font scale follows the system.
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | Returns true if current font scale follows the system; returns false otherwise. |
+| boolean | 当前UI上下文是否跟随系统字体倍率。true表示UI上下文跟随系统倍率，false表示UI上下文不跟随系统倍率。 |
 
 **示例**
 
@@ -5054,7 +5056,7 @@ struct TimePickerDialogExample {
 unbindTabsFromNestedScrollable(tabsController: TabsController, parentScroller: Scroller, childScroller: Scroller): void
 ```
 
-Unbind tabs from nested scrollable container components.
+将页签从嵌套可滚动容器组件解绑。
 
 **起始版本：** 13
 
@@ -5084,7 +5086,7 @@ Unbind tabs from nested scrollable container components.
 unbindTabsFromScrollable(tabsController: TabsController, scroller: Scroller): void
 ```
 
-Unbind tabs from scrollable container component.
+将页签从可滚动容器组件解绑。
 
 **起始版本：** 13
 

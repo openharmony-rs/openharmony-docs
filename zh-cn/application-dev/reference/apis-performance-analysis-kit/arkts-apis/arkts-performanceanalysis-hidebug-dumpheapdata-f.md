@@ -12,17 +12,17 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 function dumpHeapData(filename: string): void
 ```
 
+虚拟机堆数据转储，生成`filename.heapsnapshot`文件。
 
 > **说明：** 
 > 
-> 从API version 8支持，从API version 9开始废弃，
-> 虚拟机堆数据转储，生成`filename.heapsnapshot`文件。
+> 从API version 8支持，从API version 9开始废弃，建议使用[hidebug.dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [dumpJsHeapData](arkts-performanceanalysis-hidebug-dumpjsheapdata-f.md)
+**替代接口：** [dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md)
 
 <!--Device-hidebug-function dumpHeapData(filename: string): void--><!--Device-hidebug-function dumpHeapData(filename: string): void-End-->
 

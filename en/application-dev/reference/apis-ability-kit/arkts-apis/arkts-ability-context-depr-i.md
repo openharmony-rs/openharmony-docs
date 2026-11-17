@@ -1024,6 +1024,8 @@ setShowOnLockScreen(show: boolean, callback: AsyncCallback<void>): void
 
 Sets whether to show this ability on top of the lock screen whenever the lock screen is displayed, keeping the ability in the ACTIVE state. The interface can only take effect in API8 and below versions.
 
+Supported since API version 7, deprecated since API version 9. <!--Del-->Recommended to use [setShowOnLockScreen](../../apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i-sys.md#setshowonlockscreen) instead.<!--DelEnd--> The substitute API is available only for system applications.
+
 **Since:** 7
 
 **Deprecated since:** 9
@@ -1048,6 +1050,8 @@ setShowOnLockScreen(show: boolean): Promise<void>
 ```
 
 Sets whether to show this ability on top of the lock screen whenever the lock screen is displayed, keeping the ability in the ACTIVE state. The interface can only take effect in API8 and below versions.
+
+Supported since API version 7, deprecated since API version 9. <!--Del-->Recommended to use [setShowOnLockScreen](../../apis-arkui/arkts-apis/arkts-arkui-window-windowstage-i-sys.md#setshowonlockscreen) instead.<!--DelEnd--> The substitute API is available only for system applications.
 
 **Since:** 7
 

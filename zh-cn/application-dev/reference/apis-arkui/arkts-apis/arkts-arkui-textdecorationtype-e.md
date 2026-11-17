@@ -15,7 +15,7 @@ declare enum TextDecorationType
 ## LineThrough
 
 ```TypeScript
-LineThrough = 3
+LineThrough
 ```
 
 穿过文本的修饰线。
@@ -26,14 +26,14 @@ LineThrough = 3
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextDecorationType-LineThrough = 3--><!--Device-TextDecorationType-LineThrough = 3-End-->
+<!--Device-TextDecorationType-LineThrough--><!--Device-TextDecorationType-LineThrough-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
 
 ```TypeScript
-None = 0
+None
 ```
 
 不使用文本装饰线。
@@ -44,14 +44,14 @@ None = 0
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextDecorationType-None = 0--><!--Device-TextDecorationType-None = 0-End-->
+<!--Device-TextDecorationType-None--><!--Device-TextDecorationType-None-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Overline
 
 ```TypeScript
-Overline = 2
+Overline
 ```
 
 文字上划线修饰。
@@ -62,14 +62,14 @@ Overline = 2
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextDecorationType-Overline = 2--><!--Device-TextDecorationType-Overline = 2-End-->
+<!--Device-TextDecorationType-Overline--><!--Device-TextDecorationType-Overline-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Underline
 
 ```TypeScript
-Underline = 1
+Underline
 ```
 
 文字下划线修饰。
@@ -80,6 +80,6 @@ Underline = 1
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextDecorationType-Underline = 1--><!--Device-TextDecorationType-Underline = 1-End-->
+<!--Device-TextDecorationType-Underline--><!--Device-TextDecorationType-Underline-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

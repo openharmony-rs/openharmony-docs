@@ -1,32 +1,32 @@
-# ToolbarV2TitleStyle
+# ToolBarV2TitleStyle
 
 ```TypeScript
-export declare class ToolbarV2TitleStyle
+export declare class ToolBarV2TitleStyle
 ```
 
-Title text style configuration.
+标题文本样式配置。
 
 **Since:** 26.1.0
 
 **Decorator:** @ObservedV2
 
-<!--Device-unnamed-export declare class ToolbarV2TitleStyle--><!--Device-unnamed-export declare class ToolbarV2TitleStyle-End-->
+<!--Device-unnamed-export declare class ToolBarV2TitleStyle--><!--Device-unnamed-export declare class ToolBarV2TitleStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
 
 ```TypeScript
-import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolbarV2Item, AdvancedToolbarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolbarV2ItemGroupStyle, ToolbarV2ItemGroupStyleOptions, ToolbarV2ItemPlacement, ToolbarV2OverflowMenuStyle, ToolbarV2PaddingOptions, ToolbarV2StyleConfigs, ToolbarV2StyleOptions, ToolbarV2TitleConfigs, ToolbarV2TitleOptions, ToolbarV2TitleStyle, ToolbarV2TitleStyleOptions } from '@kit.ArkUI';
+import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolBarV2Item, AdvancedToolBarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolBarV2ItemGroupStyle, ToolBarV2ItemGroupStyleOptions, ToolBarV2ItemPlacement, ToolBarV2OverflowMenuStyle, ToolBarV2PaddingOptions, ToolBarV2StyleConfigs, ToolBarV2StyleOptions, ToolBarV2TitleConfigs, ToolBarV2TitleOptions, ToolBarV2TitleStyle, ToolBarV2TitleStyleOptions, ToolBarV2MaterialStyle } from '@kit.ArkUI';
 ```
 
 ## constructor
 
 ```TypeScript
-constructor(options?: ToolbarV2TitleStyleOptions)
+constructor(options?: ToolBarV2TitleStyleOptions)
 ```
 
-Constructs a ToolbarV2TitleStyle instance.
+构造ToolBarV2TitleStyle实例。
 
 **Since:** 26.1.0
 
@@ -34,7 +34,7 @@ Constructs a ToolbarV2TitleStyle instance.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2TitleStyle-constructor(options?: ToolbarV2TitleStyleOptions)--><!--Device-ToolbarV2TitleStyle-constructor(options?: ToolbarV2TitleStyleOptions)-End-->
+<!--Device-ToolBarV2TitleStyle-constructor(options?: ToolBarV2TitleStyleOptions)--><!--Device-ToolBarV2TitleStyle-constructor(options?: ToolBarV2TitleStyleOptions)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +42,7 @@ Constructs a ToolbarV2TitleStyle instance.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ToolbarV2TitleStyleOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2titlestyleoptions-i.md) | No | Constructor options. |
+| options | [ToolBarV2TitleStyleOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2titlestyleoptions-i.md) | No | 构造函数选项。 |
 
 ## fontColor
 
@@ -50,7 +50,7 @@ Constructs a ToolbarV2TitleStyle instance.
 fontColor?: ColorMetrics
 ```
 
-Title text color. Default value: $r('sys.color.font_primary').
+标题文本颜色。默认值：undefined。值为undefined或不设置时，标题文本的默认颜色为$r('sys.color.font_primary')，副标题文本的默认颜色为$r('sys.color.font_secondary')。
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -62,7 +62,7 @@ Title text color. Default value: $r('sys.color.font_primary').
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2TitleStyle-fontColor?: ColorMetrics--><!--Device-ToolbarV2TitleStyle-fontColor?: ColorMetrics-End-->
+<!--Device-ToolBarV2TitleStyle-fontColor?: ColorMetrics--><!--Device-ToolBarV2TitleStyle-fontColor?: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,7 +72,7 @@ Title text color. Default value: $r('sys.color.font_primary').
 fontSize?: LengthMetrics
 ```
 
-Font size of the title text. Default value: 20fp.
+标题文本的字体大小。默认值为：undefined。值为undefined或不设置时，标题文本的默认颜色字体大小为20fp，副标题文本的默认颜色字体大小为14fp。
 
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
@@ -84,7 +84,7 @@ Font size of the title text. Default value: 20fp.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2TitleStyle-fontSize?: LengthMetrics--><!--Device-ToolbarV2TitleStyle-fontSize?: LengthMetrics-End-->
+<!--Device-ToolBarV2TitleStyle-fontSize?: LengthMetrics--><!--Device-ToolBarV2TitleStyle-fontSize?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,7 +94,7 @@ Font size of the title text. Default value: 20fp.
 fontWeight?: FontWeight
 ```
 
-Font weight of the title text. Default value: FontWeight.Bold.
+标题文本字重。默认值：undefined。值为undefined或不设置时，标题文本的默认颜色字重为FontWeight.Bold，副标题文本的默认颜色字重为FontWeight.Regular。
 
 **Type:** [FontWeight](arkts-arkui-fontweight-e.md)
 
@@ -106,7 +106,7 @@ Font weight of the title text. Default value: FontWeight.Bold.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2TitleStyle-fontWeight?: FontWeight--><!--Device-ToolbarV2TitleStyle-fontWeight?: FontWeight-End-->
+<!--Device-ToolBarV2TitleStyle-fontWeight?: FontWeight--><!--Device-ToolBarV2TitleStyle-fontWeight?: FontWeight-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,7 +116,7 @@ Font weight of the title text. Default value: FontWeight.Bold.
 minLength?: LengthMetrics
 ```
 
-Minimum width of the title. Default value: 48vp.
+标题最小长度。默认值：undefined。值为undefined或不设置时默认为48vp。
 
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
@@ -128,6 +128,6 @@ Minimum width of the title. Default value: 48vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2TitleStyle-minLength?: LengthMetrics--><!--Device-ToolbarV2TitleStyle-minLength?: LengthMetrics-End-->
+<!--Device-ToolBarV2TitleStyle-minLength?: LengthMetrics--><!--Device-ToolBarV2TitleStyle-minLength?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

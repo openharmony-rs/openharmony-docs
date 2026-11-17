@@ -31,7 +31,7 @@ master process. If no available process exists, it creates an empty process as t
 > A process can be set as a candidate master process only if it is currently running a component with
 > **isolationProcess** set to **true** or has previously as the main process.
 > 
-> 
+> <!--Del-->
 > The **isolationProcess** field can be set to **true** in the
 > [module.json5](../../../quick-start/module-configuration-file.md) file, but only for the UIExtensionAbility of
 > the sys/commonUI type.

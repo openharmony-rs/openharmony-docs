@@ -4,7 +4,7 @@
 declare interface AccessibilityHoverEvent extends BaseEvent
 ```
 
-The accessibility hover action triggers this method invocation.
+无障碍悬浮事件对象，用于获取触发无障碍悬浮事件时的详细信息，包括无障碍悬浮动作类型（type）、手指相对于组件/窗口/屏幕的坐标（x、y、windowX、windowY、displayX、displayY、globalDisplayX、globalDisplayY）等属性。
 
 **继承/实现关系：** AccessibilityHoverEvent extends [BaseEvent](arkts-arkui-common-comp-baseevent-i.md)
 
@@ -20,7 +20,7 @@ The accessibility hover action triggers this method invocation.
 displayX: number
 ```
 
-X coordinate of the accessibility hover point relative to the left edge of the device screen.
+手指位置相对于应用屏幕左上角的x轴坐标。单位：vp取值范围：[0, +∞)
 
 **类型：** number
 
@@ -40,7 +40,7 @@ X coordinate of the accessibility hover point relative to the left edge of the d
 displayY: number
 ```
 
-Y coordinate of the accessibility hover point relative to the upper edge of the device screen.
+手指位置相对于应用屏幕左上角的y轴坐标。单位：vp取值范围：[0, +∞)
 
 **类型：** number
 
@@ -100,7 +100,7 @@ globalDisplayY?: number
 type: AccessibilityHoverType
 ```
 
-Type of the accessibility hover event.
+无障碍悬浮动作类型，包括HOVER_ENTER（手指按下时触发）、HOVER_MOVE（触摸移动时触发）、HOVER_EXIT（手指抬起时触发）和HOVER_CANCEL（打断取消当前触发的事件）。
 
 **类型：** [AccessibilityHoverType](../arkts-apis/arkts-arkui-accessibilityhovertype-e.md)
 
@@ -120,7 +120,7 @@ Type of the accessibility hover event.
 windowX: number
 ```
 
-X coordinate of the accessibility hover point relative to the left edge of the current window.
+手指位置相对于应用窗口左上角的x轴坐标。单位：vp取值范围：[0, +∞)
 
 **类型：** number
 
@@ -140,7 +140,7 @@ X coordinate of the accessibility hover point relative to the left edge of the c
 windowY: number
 ```
 
-Y coordinate of the accessibility hover point relative to the upper edge of the current window.
+手指位置相对于应用窗口左上角的y轴坐标。单位：vp取值范围：[0, +∞)
 
 **类型：** number
 
@@ -160,7 +160,7 @@ Y coordinate of the accessibility hover point relative to the upper edge of the 
 x: number
 ```
 
-X coordinate of the accessibility hover point relative to the left edge of the event hit element.
+手指位置相对于当前组件左上角的x轴坐标。单位：vp取值范围：[0, +∞)
 
 **类型：** number
 
@@ -180,7 +180,7 @@ X coordinate of the accessibility hover point relative to the left edge of the e
 y: number
 ```
 
-Y coordinate of the accessibility hover point relative to the upper edge of the event hit element.
+手指位置相对于当前组件左上角的y轴坐标。单位：vp取值范围：[0, +∞)
 
 **类型：** number
 

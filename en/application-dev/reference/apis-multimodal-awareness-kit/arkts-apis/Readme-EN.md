@@ -93,7 +93,7 @@
   - [DeviceRotationRadian(system api)](arkts-multimodalawareness-devicestatus-devicerotationradian-i-sys.md)<!--DelEnd-->
   - [DropDetectionStatus](arkts-multimodalawareness-devicestatus-dropdetectionstatus-e.md)
   - [SteadyStandingStatus](arkts-multimodalawareness-devicestatus-steadystandingstatus-e.md)
-- [@ohos.multimodalAwareness.metadataBinding(Metadata binding–specific)](arkts-multimodalawareness-multimodalawareness-metadatabinding.md)
+- [@ohos.multimodalAwareness.metadataBinding(Metadata Binding)](arkts-multimodalawareness-multimodalawareness-metadatabinding.md)
   <!--Del-->
   - [decodeImage(system api)](arkts-multimodalawareness-metadatabinding-decodeimage-f-sys.md)<!--DelEnd-->
   <!--Del-->

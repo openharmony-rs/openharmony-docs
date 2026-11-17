@@ -6,7 +6,7 @@ interface P2pDnsSdInfo
 
 Represents the DNS-SD service response information received from a peer device.
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 <!--Device-wifiManager-interface P2pDnsSdInfo--><!--Device-wifiManager-interface P2pDnsSdInfo-End-->
 
@@ -28,7 +28,7 @@ The peer device that responded with the service.
 
 **Type:** [WifiP2pDevice](arkts-connectivity-wifimanager-wifip2pdevice-i.md)
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -46,7 +46,7 @@ Instance name of the discovered Bonjour service.
 
 **Type:** string
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -64,7 +64,7 @@ Registration type of the discovered Bonjour service. The value prefix is the sam
 
 **Type:** string
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -14,7 +14,7 @@ function addUpnpServiceRequest(searchTarget?: string): void
 
 添加UPnP服务发现请求，用于匹配指定的搜索目标。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 

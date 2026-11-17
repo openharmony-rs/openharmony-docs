@@ -4,7 +4,7 @@
 export interface EnabledSilentReminderCallbackData
 ```
 
-应用通知[静默提醒](../../../notification/notification-glossary.md#silent-reminder静默提醒)开关状态变化的回调数据。
+应用通知静默提醒开关状态变化的回调数据。
 
 **起始版本：** 24
 

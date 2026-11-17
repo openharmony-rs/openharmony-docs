@@ -12,7 +12,7 @@ import { deviceStatus } from '@kit.MultimodalAwarenessKit';
 function off(type: 'steadyStandingDetect', callback?: Callback<SteadyStandingStatus>): void
 ```
 
-Unsubscribes from steady standing state events.
+Unsubscribes from the device steady standing state (stand mode) event. It is used in scenarios where the application exits a page or no longer needs to listen for stand mode changes. Related resources are released after the call.
 
 **Since:** 18
 
@@ -25,7 +25,7 @@ Unsubscribes from steady standing state events.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'steadyStandingDetect' | Yes | Event type. This field has a fixed value of **steadyStandingDetect**. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SteadyStandingStatus](arkts-multimodalawareness-devicestatus-steadystandingstatus-e.md)&gt; | No | Callback used to return the steady standing state of the device. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[SteadyStandingStatus](arkts-multimodalawareness-devicestatus-steadystandingstatus-e.md)&gt; | No | Callback to unregister. It must be the same as the callback passed during subscription. If this parameter is not specified, all callbacks currently listening for this event are unsubscribed. |
 
 **Error codes:**
 

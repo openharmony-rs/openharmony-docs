@@ -4,7 +4,7 @@
 export type ToolBarV2ItemAction = (index: number) => void
 ```
 
-Defines the callback for the click event of a toolbar item.
+工具栏子项点击事件回调类型。
 
 **Since:** 18
 
@@ -20,4 +20,4 @@ Defines the callback for the click event of a toolbar item.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the toolbar item that triggers the click event. |
+| index | number | Yes | 触发点击事件的工具栏子项索引。 |

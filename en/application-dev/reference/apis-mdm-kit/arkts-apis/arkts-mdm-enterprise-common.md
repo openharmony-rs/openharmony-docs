@@ -37,6 +37,10 @@ import { common } from '@kit.MDMKit';
 | [InstallationResult](arkts-mdm-common-installationresult-i.md) | An object that holds the application installation result. |
 | [PolicyChangedEvent](arkts-mdm-common-policychangedevent-i.md) | Defines the policy change event. |
 | [SmsReceiveInfo](arkts-mdm-common-smsreceiveinfo-i.md) | SMS received information. |
+| [USBConfigurationInfo](arkts-mdm-common-usbconfigurationinfo-i.md) | Indicates the USB configuration information. |
+| [USBDeviceConfigInfo](arkts-mdm-common-usbdeviceconfiginfo-i.md) | Indicates the USB device configuration information. |
+| [UsbDeviceInfo](arkts-mdm-common-usbdeviceinfo-i.md) | Indicates the USB device information. |
+| [USBInterfaceInfo](arkts-mdm-common-usbinterfaceinfo-i.md) | Indicates the USB interface information. |
 
 ### Types
 

@@ -8,7 +8,7 @@ AbilityDelegator模块可以通过[AbilityMonitor](arkts-ability-abilitymonitor-
 
 > **说明：** 
 > 
-> 本模块接口仅可在[单元测试框架](../../../application-test/unittest-guidelines.md)中使用。
+> 本模块接口仅可在[单元测试框架](https://developer.huawei.com/consumer/cn/doc/doccenter-testing/unittest-guidelines)中使用。
 
 **起始版本：** 9
 

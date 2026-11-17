@@ -18,7 +18,7 @@ enum AudioLatencyType
 LATENCY_TYPE_ALL = 0
 ```
 
-输入以获取所有音频处理单元（包括软件和硬件）的延迟。
+计算包含软件和硬件在内的整体音频处理链路时延。
 
 **起始版本：** 23
 
@@ -34,7 +34,7 @@ LATENCY_TYPE_ALL = 0
 LATENCY_TYPE_HARDWARE = 2
 ```
 
-输入以获取硬件部分的延迟，包括HAL、驱动程序和硬件中的音频效果。
+计算硬件侧时延，包含HAL、驱动和硬件。
 
 **起始版本：** 23
 
@@ -50,7 +50,7 @@ LATENCY_TYPE_HARDWARE = 2
 LATENCY_TYPE_SOFTWARE = 1
 ```
 
-输入以获取软件部分的延迟，包括软件中的音频效果。
+计算软件侧时延，包含软件音效。
 
 **起始版本：** 23
 

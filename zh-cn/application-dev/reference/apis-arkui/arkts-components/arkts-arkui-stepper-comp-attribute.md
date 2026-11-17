@@ -24,7 +24,7 @@ declare class StepperAttribute extends CommonMethod<StepperAttribute>
 onChange(callback: (prevIndex: number, index: number) => void)
 ```
 
-Callback when the change label is clicked.
+点击切换标签时的回调。
 
 **起始版本：** 8
 
@@ -42,7 +42,7 @@ Callback when the change label is clicked.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (prevIndex: number, index: number) =&gt; void | 是 | Callback triggered when the page is switched.<br>prevIndex: Index of the step page before the switching.<br>Value range: [0, +∞).<br>index: Index of the step page after the switching, that is, index of the previous or next page. <br>Value range: [0, +∞). |
+| callback | (prevIndex: number, index: number) =&gt; void | 是 | 页面切换时触发的回调。<br>prevIndex: 切换前的步骤页索引值。<br>取值范围：[0, +∞)。<br>index: 切换后的步骤页（前一页或者下一页）索引值。<br>取值范围：[0, +∞)。 |
 
 ## onFinish
 
@@ -50,7 +50,7 @@ Callback when the change label is clicked.
 onFinish(callback: () => void)
 ```
 
-Callback when the finish label is clicked.
+点击完成标签时的回调。
 
 **起始版本：** 8
 
@@ -68,7 +68,7 @@ Callback when the finish label is clicked.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | () =&gt; void | 是 | Invoked when the **nextLabel** of the last **StepperItem** in the **Stepper** is clicked and the **ItemState** attribute is set to **Normal**. |
+| callback | () =&gt; void | 是 | 当**Stepper**中最后一个**StepperItem**的**nextLabel**被点击，并且**ItemState**属性为**Normal**时调用。 |
 
 ## onNext
 
@@ -76,7 +76,7 @@ Callback when the finish label is clicked.
 onNext(callback: (index: number, pendingIndex: number) => void)
 ```
 
-Callback when the next label is clicked.
+点击下一步标签时的回调。
 
 **起始版本：** 8
 
@@ -94,7 +94,7 @@ Callback when the next label is clicked.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (index: number, pendingIndex: number) =&gt; void | 是 | Callback triggered when the page is switched.<br>index: Index of the current step page.<br>pendingIndex: Index of the next step page. |
+| callback | (index: number, pendingIndex: number) =&gt; void | 是 | 页面切换时触发的回调。<br>index: 当前步骤页索引值。<br>pendingIndex: 下一步骤页索引值。 |
 
 ## onPrevious
 
@@ -102,7 +102,7 @@ Callback when the next label is clicked.
 onPrevious(callback: (index: number, pendingIndex: number) => void)
 ```
 
-Callback when the previous label is clicked.
+点击上一步标签时的回调。
 
 **起始版本：** 8
 
@@ -120,7 +120,7 @@ Callback when the previous label is clicked.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | (index: number, pendingIndex: number) =&gt; void | 是 | Callback triggered when the page is switched.<br>index: Index of the current step page.<br>pendingIndex: Index of the next step page. |
+| callback | (index: number, pendingIndex: number) =&gt; void | 是 | 页面切换时触发的回调。<br>index: 当前步骤页索引值。<br>pendingIndex: 上一步骤页索引值。 |
 
 ## onSkip
 
@@ -128,7 +128,7 @@ Callback when the previous label is clicked.
 onSkip(callback: () => void)
 ```
 
-Callback when the skip label is clicked.
+点击跳过标签时的回调。
 
 **起始版本：** 8
 
@@ -146,4 +146,4 @@ Callback when the skip label is clicked.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | () =&gt; void | 是 | Invoked when the current **StepperItem** is **ItemState.Skip** and the **nextLabel** is clicked. |
+| callback | () =&gt; void | 是 | 当前显示的**StepperItem**状态为**ItemState.Skip**时，**nextLabel**被点击时调用。 |

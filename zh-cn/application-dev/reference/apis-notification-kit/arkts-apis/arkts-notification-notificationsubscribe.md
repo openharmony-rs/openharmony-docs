@@ -71,8 +71,8 @@ import { notificationSubscribe } from '@kit.NotificationKit';
 | [EnabledNotificationCallbackData](arkts-notification-notificationsubscribe-enablednotificationcallbackdata-t-sys.md) | 应用角标使能状态变化的回调数据。 |
 | [EnabledPriorityNotificationByBundleCallbackData](arkts-notification-notificationsubscribe-enabledprioritynotificationbybundlecallbackdata-t-sys.md) | 应用通知优先级开关状态变化的回调数据。 |
 | [EnabledPriorityNotificationCallbackData](arkts-notification-notificationsubscribe-enabledprioritynotificationcallbackdata-t-sys.md) | 通知优先级总开关状态变化的回调数据。 |
-| [EnabledSilentReminderCallbackData](arkts-notification-notificationsubscribe-enabledsilentremindercallbackdata-t-sys.md) | 应用通知[静默提醒](../../../notification/notification-glossary.md#silent-reminder静默提醒)开关状态变化的回调数据。 |
-| [EnabledSilentReminderChangedCallback](arkts-notification-notificationsubscribe-enabledsilentreminderchangedcallback-t-sys.md) | 注册应用通知[静默提醒](../../../notification/notification-glossary.md#silent-reminder静默提醒)使能状态变化的回调函数类型。 |
+| [EnabledSilentReminderCallbackData](arkts-notification-notificationsubscribe-enabledsilentremindercallbackdata-t-sys.md) | 应用通知静默提醒开关状态变化的回调数据。 |
+| [EnabledSilentReminderChangedCallback](arkts-notification-notificationsubscribe-enabledsilentreminderchangedcallback-t-sys.md) | 注册应用通知静默提醒使能状态变化的回调函数类型。 |
 | [NotificationClassification](arkts-notification-notificationsubscribe-notificationclassification-t-sys.md) | 通知分类信息。 |
 | [NotificationSubscribeInfo](arkts-notification-notificationsubscribe-notificationsubscribeinfo-t-sys.md) | 通知订阅者的信息。 |
 | [NotificationSubscriber](arkts-notification-notificationsubscribe-notificationsubscriber-t-sys.md) | 提供订阅者接收到新通知、取消通知等的回调方法。 |

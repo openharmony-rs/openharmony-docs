@@ -16,7 +16,7 @@ Obtains the trace information of the current process, including the application 
 
 A maximum of three .sys files returned by trace collection can be stored in the directory. If the number of .sys files is greater than or equal to three, error code 11400120 is reported when the API is called again.
 
-This API cannot be used in the input method applications.
+This API cannot be used in the [input method applications](../../../inputmethod/ime-kit-intro.md).
 
 **Since:** 24
 

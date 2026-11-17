@@ -15,6 +15,16 @@ function apperceive(capability: OnscreenAwarenessCap,
 
 主动触发屏幕内容感知，获取屏幕内容进行快照分析。
 
+apperceive接口支持的groupId能力列表，如下：
+
+|groupId能力列表|对应子项能力|功能说明|  
+| ---- | ------ | ------|  
+|SmartEdge|Article|获取阅读场景的感知信息。|  
+|SmartEdge|ShortVideo|获取短视频场景的感知信息。|  
+|SmartEdge|Todo|获取待办场景的感知信息。|  
+|SmartEdge|Activity|获取基础服务的感知信息。|  
+|CeliaMemory|Article|获取阅读场景的感知信息。|
+
 **起始版本：** 23
 
 **需要权限：** 

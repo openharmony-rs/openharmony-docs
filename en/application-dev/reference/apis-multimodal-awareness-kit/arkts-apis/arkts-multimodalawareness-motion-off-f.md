@@ -12,7 +12,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 function off(type: 'operatingHandChanged', callback?: Callback<OperatingHandStatus>): void
 ```
 
-Unsubscribes from operating hand change events.
+Unsubscribes from operating hand awareness events. If off() is called without first calling on(), this method throws an exception. Related method: on('operatingHandChanged'): subscribes to operating hand awareness events.
 
 **Since:** 15
 
@@ -61,7 +61,7 @@ try {
 function off(type: 'holdingHandChanged', callback?: Callback<HoldingHandStatus>): void
 ```
 
-Disables listening for holding hand status changes.
+Unsubscribes from the holding hand status change awareness event. If off() is called without first calling on(), this method throws an exception. Related method: on('holdingHandChanged'): subscribes to the holding hand status change awareness event.
 
 **Since:** 20
 

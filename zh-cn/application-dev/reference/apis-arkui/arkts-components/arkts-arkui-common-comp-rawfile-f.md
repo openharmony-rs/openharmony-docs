@@ -6,7 +6,7 @@
 declare function $rawfile(value: string): Resource
 ```
 
-global $rawfile function
+$rawfile全局函数，用于创建Resource类型对象。
 
 **起始版本：** 11
 

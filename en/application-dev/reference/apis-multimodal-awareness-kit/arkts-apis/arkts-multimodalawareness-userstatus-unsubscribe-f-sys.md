@@ -12,7 +12,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 function unsubscribe(featureId: UserStatusFeature, callback?: Callback<UserStatusData>): number
 ```
 
-Unsubscribes from user status monitoring.
+Unsubscribes from user status monitoring. This method is used in pair with subscribe() to cancel the subscription callback and release resources. It must be called after subscribe(). Unsubscribing from a featureId that is not subscribed returns a failure. It is recommended to call unsubscribe() when the application exits or no longer needs monitoring.
 
 **Since:** 26.0.0
 
@@ -29,7 +29,7 @@ Unsubscribes from user status monitoring.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | featureId | [UserStatusFeature](arkts-multimodalawareness-userstatus-userstatusfeature-e-sys.md) | Yes | Indicates the feature to be unsubscribed from. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md)&gt; | No | Callback used to return user status data. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md)&gt; | No | Callback for the notification event. If null, undefined, or null is passed, all notification events subscribed to by featureId are unsubscribed. |
 
 **Return value:**
 

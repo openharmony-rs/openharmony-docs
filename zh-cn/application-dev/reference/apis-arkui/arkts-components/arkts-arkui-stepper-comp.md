@@ -16,7 +16,7 @@
 Stepper(value?: { index?: number })
 ```
 
-Called when the stepper component is used.
+使用步骤导航器组件时调用。
 
 **起始版本：** 8
 

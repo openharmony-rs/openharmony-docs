@@ -9,16 +9,16 @@ import { taskManager } from '@kit.AbilityKit';
 ## startTask
 
 ```TypeScript
-function startTask(taskId: string, priority?: TaskPriority): Promise<void>
+function startTask(taskId: string): Promise<void>
 ```
 
-以指定任务 ID 启动任务。任务立即激活，系统按指定优先级对归因到该任务的进程进行管控。任务持续存活，直至调用 finishTask 或系统自动结束（如任务超时、创建者进程退出）。若指定任务 ID 的任务已存在，该 promise 被拒绝。
+以指定任务ID启动任务。任务立即激活，归因到该任务的进程由系统统一调度。任务持续存活，直至调用finishTask或系统自动结束（如任务超时、创建者进程退出）。若指定任务ID的任务已存在，该promise被拒绝。
 
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-taskManager-function startTask(taskId: string, priority?: TaskPriority): Promise<void>--><!--Device-taskManager-function startTask(taskId: string, priority?: TaskPriority): Promise<void>-End-->
+<!--Device-taskManager-function startTask(taskId: string): Promise<void>--><!--Device-taskManager-function startTask(taskId: string): Promise<void>-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -28,12 +28,17 @@ function startTask(taskId: string, priority?: TaskPriority): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| taskId | string | 是 | 任务 ID，作为任务执行期间所拉起进程的归因主键。长度范围为 1~256 个字符。 |
-| priority | [TaskPriority](arkts-ability-taskmanager-taskpriority-e.md) | 否 | 任务优先级。默认值为**MEDIUM**。 |
+| taskId | string | 是 | 任务ID，作为任务执行期间所拉起进程的归因主键。长度范围为 1~256 个字符。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [16000301](../errorcode-ability.md#16000301-任务已存在) | Task already exists. |

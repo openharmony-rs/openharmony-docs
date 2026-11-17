@@ -69,13 +69,15 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 | [setProcDumpInSharedOOM](arkts-performanceanalysis-hidebug-setprocdumpinsharedoom-f.md#setprocdumpinsharedoom-1) | 将转储的堆快照由线程级改为进程级。 |
 | [startAppTraceCapture](arkts-performanceanalysis-hidebug-startapptracecapture-f.md#startapptracecapture-1) | 该接口补充了hitrace功能，开发者可通过该接口完成指定范围的trace自动化采集。由于该接口中trace采集过程中消耗的性能与需要采集的范围成正相关，建议开发者在使用该接口前，通过hitrace命令抓取应用的trace日志，从中筛选出所需trace采集的关键范围，以提高该接口性能。 |
 | [startJsCpuProfiling](arkts-performanceanalysis-hidebug-startjscpuprofiling-f.md#startjscpuprofiling-1) | 启动虚拟机Profiling方法跟踪，`startJsCpuProfiling(filename: string)`方法的调用需要与`stopJsCpuProfiling()`方法的调用一一对应，先开启后关闭，请避免重复开启或重复关闭的调用方式，否则会接口调用异常。 |
+| [startProfiler](arkts-performanceanalysis-hidebug-startprofiler-f.md#startprofiler-1) | 启动Profiler采集数据。启动后，当持续时间达到指定或默认的最大值，或结果文件超过限制时，系统会自动停止采集数据，并通过回调函数通知应用程序。 |
 | [stopAppTraceCapture](arkts-performanceanalysis-hidebug-stopapptracecapture-f.md#stopapptracecapture-1) | 停止应用trace采集。调用前，需先调用'[startAppTraceCapture()](arkts-performanceanalysis-hidebug-startapptracecapture-f.md)'方法开始采集。关闭前未开启或重复关闭会导致接口异常。 |
 | [stopJsCpuProfiling](arkts-performanceanalysis-hidebug-stopjscpuprofiling-f.md#stopjscpuprofiling-1) | 停止虚拟机Profiling方法跟踪，`stopJsCpuProfiling()`方法的调用需要与`startJsCpuProfiling(filename: string)`方法的调用一一对应，先开启后关闭，请避免重复开启或重复关闭的调用方式，否则会接口调用异常。 |
-| [dumpHeapData](arkts-performanceanalysis-hidebug-dumpheapdata-f.md#dumpheapdata-1) |  |
+| [stopProfiler](arkts-performanceanalysis-hidebug-stopprofiler-f.md#stopprofiler-1) | 停止已经启动的Profiler。 |
+| [dumpHeapData](arkts-performanceanalysis-hidebug-dumpheapdata-f.md#dumpheapdata-1) | 虚拟机堆数据转储，生成`filename.heapsnapshot`文件。 |
 | [dumpJsHeapData](arkts-performanceanalysis-hidebug-dumpjsheapdata-f.md#dumpjsheapdata-1) | 虚拟机堆数据转储。 |
 | [dumpJsHeapData](arkts-performanceanalysis-hidebug-dumpjsheapdata-f.md#dumpjsheapdata-2) | 虚拟机堆数据转储，支持清除nodeId缓存。 |
-| [startProfiling](arkts-performanceanalysis-hidebug-startprofiling-f.md#startprofiling-1) |  |
-| [stopProfiling](arkts-performanceanalysis-hidebug-stopprofiling-f.md#stopprofiling-1) |  |
+| [startProfiling](arkts-performanceanalysis-hidebug-startprofiling-f.md#startprofiling-1) | 启动虚拟机Profiling方法跟踪，`startProfiling(filename: string)`方法的调用需要与`stopProfiling()`方法的调用一一对应，先开启后关闭，请避免重复开启或重复关闭的调用方式，否则会接口调用异常。 |
+| [stopProfiling](arkts-performanceanalysis-hidebug-stopprofiling-f.md#stopprofiling-1) | 停止虚拟机Profiling方法跟踪，`stopProfiling()`方法的调用需要与`startProfiling(filename: string)`方法的调用一一对应，先开启后关闭，请避免重复开启或重复关闭的调用方式，否则会接口调用异常。 |
 
 ### 接口
 
@@ -85,6 +87,8 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 | [GwpAsanOptions](arkts-performanceanalysis-hidebug-gwpasanoptions-i.md) | GWP-ASan配置项。可用于配置是否使能、采样频率，以及最大分配的插槽数。 |
 | [MemoryLimit](arkts-performanceanalysis-hidebug-memorylimit-i.md) | 应用进程内存限制。 |
 | [NativeMemInfo](arkts-performanceanalysis-hidebug-nativememinfo-i.md) | 描述应用进程的内存信息。 |
+| [ProfilerConfig](arkts-performanceanalysis-hidebug-profilerconfig-i.md) | Profiler配置。 |
+| [ProfilerResult](arkts-performanceanalysis-hidebug-profilerresult-i.md) | Profiler结果。 |
 | [RequestTraceConfig](arkts-performanceanalysis-hidebug-requesttraceconfig-i.md) | 提供trace采集的参数选项。 |
 | [RssInfo](arkts-performanceanalysis-hidebug-rssinfo-i.md) | 描述应用进程的物理内存信息。 |
 | [SystemMemInfo](arkts-performanceanalysis-hidebug-systemmeminfo-i.md) | 描述系统内存信息，包括总内存、空闲内存和可用内存。 |
@@ -96,10 +100,12 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 | 名称 | 说明 |
 | --- | --- |
 | [GcStats](arkts-performanceanalysis-hidebug-gcstats-t.md) | 描述用于存储GC统计信息的键值对。该类型不支持多线程操作，如果应用中存在多线程同时访问，需加锁保护。包含以下键值信息：<br>"ark.gc.gc-count"：当前线程的GC次数。<br>"ark.gc.gc-time"：当前线程触发的GC总耗时，以ms为单位。<br>"ark.gc.gc-bytes-allocated"：当前线程Ark虚拟机已分配的内存大小，以B为单位。<br>"ark.gc.gc-bytes-freed"：当前线程GC成功回收的内存，以B为单位。<br>"ark.gc.fullgc-longtime-count"：当前线程超长fullGC次数。 |
+| [ProfilerCallback](arkts-performanceanalysis-hidebug-profilercallback-t.md) | Profiler回调函数类型。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
 | [JsRawHeapTrimLevel](arkts-performanceanalysis-hidebug-jsrawheaptrimlevel-e.md) | 转储堆快照的裁剪级别的枚举。 |
+| [ProfilerResourceType](arkts-performanceanalysis-hidebug-profilerresourcetype-e.md) | 枚举Profiler资源类型。 |
 | [TraceFlag](arkts-performanceanalysis-hidebug-traceflag-e.md) | 描述采集trace线程的类型，包括主线程和所有线程。 |

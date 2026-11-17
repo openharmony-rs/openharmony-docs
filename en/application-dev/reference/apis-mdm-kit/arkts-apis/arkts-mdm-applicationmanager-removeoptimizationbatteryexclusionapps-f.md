@@ -28,7 +28,7 @@ Removes applications from the battery optimization exclusion list. This API uses
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appIdentifiers | Array&lt;string&gt; | Yes | Bundle names of the applications to be removed. |
+| appIdentifiers | Array&lt;string&gt; | Yes | Unique identifiers of the applications to be removed. |
 | accountId | number | Yes | User account ID. <br>The value must be greater than or equal to 0. |
 
 **Error codes:**
@@ -38,4 +38,6 @@ Removes applications from the battery optimization exclusion list. This API uses
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-deviceadmin-not-enabled) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
-| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-parameter-verification-failed) | Parameter verification failed. |
+| [9200006](../errorcode-enterpriseDeviceManager.md#9200006-invalid-user-id) | The specified account ID is invalid. |
+| [9200016](../errorcode-enterpriseDeviceManager.md#9200016-service-timeout) | Service timeout. |
+| [9200019](../errorcode-enterpriseDeviceManager.md#9200019-policy-list-exceeds-the-limit) | The policy list has exceeded the limit. |

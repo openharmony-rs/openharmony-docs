@@ -26,7 +26,7 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 feedbackTime: number
 ```
 
-反馈时间戳。单位：毫秒。
+反馈时间戳。单位为：毫秒。
 
 **类型：** number
 

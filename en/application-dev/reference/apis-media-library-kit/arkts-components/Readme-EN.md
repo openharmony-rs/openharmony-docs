@@ -10,6 +10,8 @@
   - [MovingPhotoViewOptions(system api)](arkts-medialibrary-movingphotoview-comp-movingphotoviewoptions-i-sys.md)<!--DelEnd-->
   - [MovingPhotoViewEventCallback](arkts-medialibrary-movingphotoview-comp-movingphotovieweventcallback-t.md)
   <!--Del-->
+  - [DisplayMode(system api)](arkts-medialibrary-movingphotoview-comp-displaymode-e-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [DynamicRangeMode(system api)](arkts-medialibrary-movingphotoview-comp-dynamicrangemode-e-sys.md)<!--DelEnd-->
   <!--Del-->
   - [PixelMapFormat(system api)](arkts-medialibrary-movingphotoview-comp-pixelmapformat-e-sys.md)<!--DelEnd-->

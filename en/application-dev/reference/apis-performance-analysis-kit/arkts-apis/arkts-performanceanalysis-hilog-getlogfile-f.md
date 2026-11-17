@@ -12,7 +12,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 function getLogFile(latestSeconds: number): Array<string>
 ```
 
-Returns the list of hilog log file paths in the sandbox for the specified recent time period.
+Returns hilog sandbox log files that have been modified within the specified number of seconds.
 
 **Since:** 26.0.0
 
@@ -28,13 +28,13 @@ Returns the list of hilog log file paths in the sandbox for the specified recent
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| latestSeconds | number | Yes | the specified time period from a given number of seconds in the past to the present. |
+| latestSeconds | number | Yes | The time interval from now, in seconds. <br>If the value is less than 0, it is invalid and the return value is empty. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Array&lt;string&gt; | list of hilog log file paths in the sandbox for the specified rencent time period, with newer files appearing first in the list. |
+| Array&lt;string&gt; | List of sandbox files that have been written within the specified time period. |
 
 **Examples**
 

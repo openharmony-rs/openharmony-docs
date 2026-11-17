@@ -48,6 +48,7 @@ import { applicationManager } from '@kit.MDMKit';
 | [getAllowedNotificationBundles](arkts-mdm-applicationmanager-getallowednotificationbundles-f.md#getallowednotificationbundles-1) | Obtains the list of applications that are allowed to send notifications. |
 | [getAllowedRunningBundles](arkts-mdm-applicationmanager-getallowedrunningbundles-f.md#getallowedrunningbundles-1) | Obtains the list of applications allowed to run by a specified user. |
 | [getAllowedRunningBundles](arkts-mdm-applicationmanager-getallowedrunningbundles-f.md#getallowedrunningbundles-2) | Obtains the application running trustlist of a specified user. |
+| [getApplicationIconData](arkts-mdm-applicationmanager-getapplicationicondata-f.md#getapplicationicondata-1) | Obtains the icon data of an application. |
 | [getApplicationWindowStates](arkts-mdm-applicationmanager-getapplicationwindowstates-f.md#getapplicationwindowstates-1) | Queries the window state information list of the specified application. It can retrieve information such as whether the application is in the bottom dock and whether the application window is currently displayed in the foreground. |
 | [getAutoStartApps](arkts-mdm-applicationmanager-getautostartapps-f.md#getautostartapps-1) | Checks the auto-start applications for the current user. |
 | [getAutoStartApps](arkts-mdm-applicationmanager-getautostartapps-f.md#getautostartapps-2) | Checks the auto-start applications for the current user. |

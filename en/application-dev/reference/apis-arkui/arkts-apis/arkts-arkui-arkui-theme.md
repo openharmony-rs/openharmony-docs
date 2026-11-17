@@ -1,4 +1,4 @@
-# @ohos.arkui.theme
+# @ohos.arkui.theme(Theme)
 
 ## Modules to Import
 
@@ -18,7 +18,7 @@ import { Colors, CustomColors, Theme, ThemeControl, CustomTheme, CustomDarkColor
 
 | Name | Description |
 | --- | --- |
-| [Colors](arkts-arkui-arkui-theme-colors-i.md) | Defines the color resources of a theme. |
+| [Colors](arkts-arkui-arkui-theme-colors-i.md) | Defines the color resources of a theme. <!--RP1--><!--RP1End--> |
 | [CustomTheme](arkts-arkui-arkui-theme-customtheme-i.md) | Defines a custom theme object. |
 | [Theme](arkts-arkui-arkui-theme-theme-i.md) | Defines the **Theme** object in use, which can be obtained through [onWillApplyTheme](../arkts-components/arkts-arkui-common-comp-basecustomcomponent-c.md#onwillapplytheme). |
 

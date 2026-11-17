@@ -74,7 +74,7 @@ id?: string
 primaryTitle?: ResourceStr
 ```
 
-The first line text of content area.
+内容区首行文本。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -96,7 +96,7 @@ The first line text of content area.
 primaryTitleModifier?: TextModifier
 ```
 
-Text modifier for primary title.
+主标题文本修饰符。
 
 **类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
@@ -118,7 +118,7 @@ Text modifier for primary title.
 secondaryTitle?: ResourceStr
 ```
 
-The secondary line text of content area.
+内容区次行文本。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -140,7 +140,7 @@ The secondary line text of content area.
 secondaryTitleModifier?: TextModifier
 ```
 
-Text modifier for secondary title.
+副标题文本修饰符。
 
 **类型：** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 

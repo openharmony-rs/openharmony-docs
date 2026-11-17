@@ -12,7 +12,7 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 function notifyMetadataBindingEvent(bundleName: string): Promise<string>
 ```
 
-Transfers metadata to the application or service that calls the encoding API. This API uses a promise to return the result.
+Pushes the metadata to be embedded to the application or service that calls the encoding API. The system pushes the information to the application with the specified bundle name and returns the applink information of the current page for subsequent encoding. This API uses a promise to return the result asynchronously.
 
 **Since:** 18
 
@@ -26,7 +26,7 @@ Transfers metadata to the application or service that calls the encoding API. Th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleName | string | Yes | Bundle name used to obtain the application link. |
+| bundleName | string | Yes | Application bundle name, which must be the bundle name of an installed application. |
 
 **Return value:**
 

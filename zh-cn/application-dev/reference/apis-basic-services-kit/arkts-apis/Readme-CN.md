@@ -329,6 +329,8 @@
   <!--Del-->
   - [refreshActivity（系统接口）](arkts-basicservices-power-refreshactivity-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [registerHibernateCallback（系统接口）](arkts-basicservices-power-registerhibernatecallback-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [registerShutdownCallback（系统接口）](arkts-basicservices-power-registershutdowncallback-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [setPowerConfig（系统接口）](arkts-basicservices-power-setpowerconfig-f-sys.md)<!--DelEnd-->
@@ -343,11 +345,15 @@
   <!--Del-->
   - [suspend（系统接口）](arkts-basicservices-power-suspend-f-sys.md)<!--DelEnd-->
   <!--Del-->
+  - [unregisterHibernateCallback（系统接口）](arkts-basicservices-power-unregisterhibernatecallback-f-sys.md)<!--DelEnd-->
+  <!--Del-->
   - [unregisterShutdownCallback（系统接口）](arkts-basicservices-power-unregistershutdowncallback-f-sys.md)<!--DelEnd-->
   <!--Del-->
   - [wakeup（系统接口）](arkts-basicservices-power-wakeup-f-sys.md)<!--DelEnd-->
   - [isScreenOn](arkts-basicservices-power-isscreenon-f.md)
   - [rebootDevice](arkts-basicservices-power-rebootdevice-f.md)
+  <!--Del-->
+  - [HibernateCallback（系统接口）](arkts-basicservices-power-hibernatecallback-i-sys.md)<!--DelEnd-->
   - [DevicePowerMode](arkts-basicservices-power-devicepowermode-e.md)
   - [DevicePowerSubMode](arkts-basicservices-power-devicepowersubmode-e.md)
   <!--Del-->

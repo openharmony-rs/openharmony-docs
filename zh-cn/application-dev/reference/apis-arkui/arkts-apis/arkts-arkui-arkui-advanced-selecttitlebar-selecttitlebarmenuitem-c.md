@@ -4,7 +4,7 @@
 export declare class SelectTitleBarMenuItem
 ```
 
-Declaration of the menu item on the right side.
+声明右侧菜单项。
 
 **起始版本：** 10
 

@@ -42,7 +42,7 @@ cert: Uint8Array
 certScope: CertificateScope
 ```
 
-待安装证书的使用范围。**当前用户**和**NOT_Specific**目前支持。
+待安装证书的使用范围。目前支持**当前用户**和**NOT_Specific**。
 
 **类型：** [CertificateScope](arkts-devicecertificate-certificatemanagerdialog-certificatescope-e.md)
 
@@ -78,7 +78,7 @@ certType: CertificateType
 keystorePwd?: string
 ```
 
-密钥库文件的密码。该参数仅当certType取值为CREDENTIAL_USER或CREDENTIAL_SYSTEM时有效，如果指定了keystorePwd参数，则对话框中无需用户输入密码。最大长度为128。
+密钥库文件的密码。该参数仅当certType取值为CREDENTIAL_USER或CREDENTIAL_SYSTEM时有效，如果指定了keystorePwd参数，则对话框中无需用户输入密码。最大长度为32字节。
 
 **类型：** string
 

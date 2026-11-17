@@ -15,6 +15,14 @@ function interact(capability: OnscreenAwarenessCap,
 
 主动触发屏幕行为交互，实现对界面行为的识别与行为反馈。例如：当capList能力列表为JumpContext时，点击后通过反馈信息精准跳转至指定段落并实现文字高亮。当capList能力列表为InjectEvent时，点击后执行相应的点击事件。
 
+interact接口支持的capList能力列表，如下：
+
+|capList能力列表|功能说明|  
+| ---- | ------ |  
+|JumpContext|高亮跳转到指定上下文。|  
+|InjectEvent|注入事件。当capList能力列表为InjectEvent时，options字段为必填项，且其内容必须符合InjectEvent选项的规范（详见示例）。若options不符合规范，注入操作将失败，并返回错误码34000001。<br> **起始版本：** 26.0.0|  
+|SmartAutoFill|页面输入框内容智能填充。当capList能力列表为SmartAutoFill时，options必须包含autoFillItems数组（详见示例），否则填充操作将失败，并返回错误码34000001。<br> **起始版本：** 26.0.0|
+
 **起始版本：** 23
 
 **需要权限：** 
