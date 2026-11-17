@@ -619,7 +619,7 @@ struct AlertDialogExample {
 
 ![image-alert-style](figures/image-alert-style.gif)
 
-### 示例6（弹窗生命周期）
+### 示例5（弹窗生命周期）
 
 该示例展示了弹窗生命周期的相关接口的使用方法。
 
@@ -675,7 +675,7 @@ struct AlertDialogLifecycleExample {
 
 ![image-alert-lifecycle](figures/image-alert-lifecycle.gif)
 
-### 示例7（自定义背景模糊效果参数）
+### 示例6（自定义背景模糊效果参数）
 
 该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的backgroundBlurStyleOptions属性，实现了自定义背景模糊效果。
 
@@ -726,7 +726,7 @@ struct AlertDialogExample {
 
 ![image-alert-backgroundBlurStyleOptions](figures/image-alert-backgroundBlurStyleOptions.png)
 
-### 示例8（自定义背景效果参数）
+### 示例7（自定义背景效果参数）
 
 该示例通过配置[AlertDialogParam](#alertdialogparam对象说明)中的backgroundEffect属性，实现自定义背景效果。
 
@@ -778,7 +778,7 @@ struct AlertDialogExample {
 
 ![image-alert-backgroundEffect](figures/image-alert-backgroundEffect.png)
 
-### 示例9（设置弹窗的沉浸光感效果）
+### 示例8（设置弹窗的沉浸光感效果）
 
 该示例通过[AlertDialogParam](#alertdialogparam对象说明)中的systemMaterial属性设置组件的系统材质，实现沉浸光感效果。设置系统材质后，AlertDialog弹出过程中会有非线性形变和边缘流光。
 
@@ -834,7 +834,7 @@ struct AlertDialogExample {
 
 ![设置系统材质后](figures/alertdialogwithmaterial.gif)
 
-### 示例10（设置弹窗适配握持习惯）
+### 示例9（设置弹窗适配握持习惯）
 
 该示例通过[AlertDialogParam](#alertdialogparam对象说明)中的adaptToHandedness属性设置弹窗适配握持习惯，使弹窗跟随触发它的组件的位置偏移。
 

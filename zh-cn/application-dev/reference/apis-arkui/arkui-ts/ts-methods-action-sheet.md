@@ -477,7 +477,7 @@ struct ActionSheetExample {
 
 ![zh-cn_image_action_style](figures/image-action-style.gif)
 
-### 示例6（弹窗生命周期）
+### 示例5（弹窗生命周期）
 
 该示例为弹窗配置生命周期回调。
 
@@ -555,7 +555,7 @@ struct Example1 {
 
 ![image-action-lifecycle](figures/image-action-lifecycle.gif)
 
-### 示例7（自定义背景模糊效果参数）
+### 示例6（自定义背景模糊效果参数）
 
 该示例通过配置[backgroundBlurStyleOptions](#actionsheetoptions对象说明)，实现自定义背景模糊效果。
 
@@ -615,7 +615,7 @@ struct ActionSheetExample {
 
 ![image-action-backgroundBlurStyleOptions](figures/image-action-backgroundBlurStyleOptions.png)
 
-### 示例8（自定义背景效果参数）
+### 示例7（自定义背景效果参数）
 
 该示例通过配置[backgroundEffect](#actionsheetoptions对象说明)，实现自定义背景效果。
 
@@ -675,7 +675,7 @@ struct ActionSheetExample {
 ```
 ![image-action-backgroundEffect](figures/image-action-backgroundEffect.png)
 
-### 示例9（设置弹窗的沉浸光感效果）
+### 示例8（设置弹窗的沉浸光感效果）
 
 该示例通过[ActionSheetOptions](#actionsheetoptions对象说明)中的systemMaterial属性设置组件的系统材质，实现沉浸光感效果。设置系统材质后，ActionSheet弹出过程中会有非线性形变和边缘流光。
 
@@ -741,7 +741,7 @@ struct ActionSheetExample {
 
 ![设置系统材质后](figures/actionsheetwithmaterial.gif)
 
-### 示例10（设置弹窗适配握持习惯）
+### 示例9（设置弹窗适配握持习惯）
 
 该示例通过[ActionSheetOptions](#actionsheetoptions对象说明)中的adaptToHandedness属性设置弹窗适配握持习惯，使弹窗跟随触发它的组件的位置偏移。
 

@@ -110,7 +110,7 @@ adaptToHandedness属性支持的组件范围如下。
 
 指向性跟手通过将adaptToHandedness属性设置为HandednessFollowMode.FOLLOW_ANCHOR，弹窗弹出时向触发它的组件（最近交互的组件）一侧偏移。
 
-以下示例与AlertDialog组件中[设置弹窗适配握持习惯](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#示例10设置弹窗适配握持习惯)的示例保持一致，点击按钮弹出AlertDialog，弹窗向触发它的组件一侧偏移。
+以下示例与AlertDialog组件中[设置弹窗适配握持习惯](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#示例9设置弹窗适配握持习惯)的示例保持一致，点击按钮弹出AlertDialog，弹窗向触发它的组件一侧偏移。
 
 <!-- @[follow_anchor_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIHandedness/entry/src/main/ets/pages/followanchor/FollowAnchorAlertDialog.ets) -->
 
