@@ -8,7 +8,7 @@
 
 ## 概述
 
-IPC（Inter-Process Communication，进程间通信）头文件，提供IPC Kit的C API接口声明，方便开发者引用。开发者可通过此头文件使用进程间通信能力。
+提供进程间通信能力，支持跨进程数据传输、方法调用等功能，帮助开发者快速构建稳定可靠的通信机制。开发者引用本头文件（ipc_kit.h）即可使用相关 API 进行开发。典型使用场景包括：多进程协作、服务间通信、跨进程数据共享等。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 
@@ -18,4 +18,4 @@ IPC（Inter-Process Communication，进程间通信）头文件，提供IPC Kit�
 
 | 名称 | 描述 |
 | ---- | ---- |
-| [ipc_kit.h](capi-ipc-kit-h.md) | IPC Kit主头文件，包含IPC能力的核心接口定义，引用此文件可使用IPC Kit全部功能。 |
+| [ipc_kit.h](capi-ipc-kit-h.md) | 提供进程间通信能力，支持跨进程数据传输、方法调用等功能，帮助开发者快速构建稳定可靠的通信机制。开发者引用本头文件（ipc_kit.h）即可使用相关 API 进行开发。典型使用场景包括：多进程协作、服务间通信、跨进程数据共享等。 |

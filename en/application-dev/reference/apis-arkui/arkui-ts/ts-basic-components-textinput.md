@@ -3813,7 +3813,7 @@ struct PunctuationDemo {
   }
 }
 ```
-![textInputPunctuation](figures/textInputPunctuation.gif)
+
 
 ### Example 27: Setting Adaptive Spacing
 
@@ -4128,7 +4128,7 @@ struct ShaderColorStyle {
   }
 }
 ```
-![TextInputShaderStyle](figures/textInputShaderStyle.png)
+
 
 ### Example 34: Setting an AI Menu for Text Selection
 

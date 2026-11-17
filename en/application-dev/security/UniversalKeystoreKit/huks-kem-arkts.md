@@ -12,7 +12,7 @@ Starting from API version 26.0.0, post-quantum encapsulation and decapsulation a
 
 ## Available APIs
 
-You can refer to the API reference for details of the key encapsulation APIs: [huks.encapsulate](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksencapsulate) and [huks.decapsulate](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksdecapsulate).
+You can refer to the API reference for details of the key encapsulation APIs: [huks.encapsulate](../../reference/apis-universal-keystore-kit/js-apis-huks.md) and [huks.decapsulate](../../reference/apis-universal-keystore-kit/js-apis-huks.md).
 
 ### Encapsulation API Parameters
 

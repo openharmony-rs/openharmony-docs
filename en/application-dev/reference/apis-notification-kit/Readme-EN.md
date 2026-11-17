@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:35:34.266Z pushedAt=2026-10-08T10:04:19.053Z -->
+<!-- md-trans-meta sourceCommit=41c190e8dc8f15d3ce2f78bfa04e558b48657de4 translatedAt=2026-11-13T02:27:56.944Z pushedAt=2026-11-13T09:44:30.433Z nl=1 -->
 
 - ArkTS APIs<!--notification-arkts-->
   - [@ohos.notificationManager (NotificationManager)](js-apis-notificationManager.md)
@@ -52,3 +52,5 @@
       - [notification.h](capi-notification-h.md)
 - Error Codes<!--notification-arkts-errcode-->
   - [Notification Error Codes](errorcode-notification.md)
+<!--RP1-->
+<!--RP1End-->

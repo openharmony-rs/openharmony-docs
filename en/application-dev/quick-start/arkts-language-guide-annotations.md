@@ -9,19 +9,25 @@ status: active
 # Annotations
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao; @cy917474985-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @jokerxd-liu; @cy917474985-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
-<!-- md-trans-meta sourceCommit=17ae88719a2d37a0c07e3b6e33ddb120ebd3dbc5 translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
+<!-- md-trans-meta sourceCommit=8923bda514baa1452b967ea964ea779c7417bd8e translatedAt=2026-11-12T12:34:02.219Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
-Annotation is a language feature of ArkTS that changes the semantics of app declarations by adding metadata. This chapter describes the declaration, usage, import and export, and source-state annotations.
+Annotation is a language feature of ArkTS that attaches structured metadata to declarations such as classes and methods. This chapter describes the declaration, usage, import and export, and source-state annotations.
 
 ## Basic Concepts of Annotations
 
 ### Definition and Purpose of Annotations
 
-Annotations are declared with `@interface` and used with the `@` prefix to add metadata to declarations such as classes and methods. Annotations are not a TypeScript feature and can only be used in `.ets` and `.d.ets` files.
+Annotations are declared with `@interface` and used with the `@` prefix to add metadata to declarations such as classes and methods.
+
+Metadata describes code but is not part of program logic. Annotations do not change the runtime behavior of the annotated code; their value lies in allowing compilers and toolchains to read and process metadata. Information such as authors and versions written in comments cannot be recognized programmatically. Annotations attach this information to declarations in a structured form and are compiled along with the code. Typical scenarios include:
+
+- Description and governance: attach information such as authors, versions, and reviewers to classes and methods (as with `ClassAuthor` in the following example). This information can be retained in compilation output and .d.ets declaration files for cross-team collaboration.
+- Tool-based identification and processing: tools can identify and process groups of declarations by their annotations. For example, annotations can mark methods for interception through aspect-oriented programming (AOP) instrumentation to provide centralized logging, performance monitoring, and permission checks without modifying the business code.
+- Lifecycle control: source-state annotations are a special form of annotation that exists only during compilation and does not affect compilation output. Since API version 24, you can use the `Retention` API provided by ArkTS to construct custom source-state annotations. For details, see [Source-State Annotation](#source-state-annotation).
 
 ### Declaring and Using Annotations
 
@@ -43,11 +49,11 @@ class MyClass {
 ```
 
 - Declare an annotation with `@interface`.
-- The `ClassAuthor` annotation adds metadata to a class declaration.
+- The `ClassAuthor` annotation attaches author metadata to a class declaration.
 - An annotation must be placed before the declaration.
 - An annotation can contain parameters as shown in the preceding example.
 
-To use an annotation, its name must be prefixed with the symbol `@` (for example, @MyAnno).
+To use an annotation, its name must be prefixed with the symbol `@` (for example, `@MyAnno`).
 
 ``` TypeScript
 ClassAuthor({authorName: "Bob"}) // Compilation error: annotations must be prefixed with '@'
@@ -87,9 +93,9 @@ The definition of a user-defined annotation is similar to that of an `interface`
 
 Annotation fields are limited to the following types:
 
-* number
-* boolean
-* string
+* `number`
+* `boolean`
+* `string`
 * enum
 * arrays of the preceding types
 
@@ -107,7 +113,7 @@ The default value of an annotation field must be specified using a constant expr
 * An array composed of the constants above
 
 > **NOTE**
->
+> 
 > A compilation error occurs if the value of an enum cannot be determined at compile time.
 
 ``` TypeScript
@@ -314,13 +320,13 @@ class C {
 }
 ```
 
-- Renaming an annotation in an import is not allowed.
+- Annotations cannot be renamed in `import` statements.
 
 ``` TypeScript
 import { MyAnno as Anno } from './a'; // Compilation error: renaming an annotation in an import is not allowed.
 ```
 
-No other forms of import/export are allowed for annotations; otherwise, a compilation error occurs.
+Any other form of `import`/`export` for annotations is not allowed and causes a compilation error.
 
 - Because annotations are not types, importing and exporting them with the `type` symbol is not allowed.
 
@@ -507,7 +513,7 @@ class C {
 }
 ```
 
-In the final compilation output, class C has no annotation.
+In the final compilation output, `class` C has no annotation.
 
 ## Duplicate Annotations and Inheritance
 

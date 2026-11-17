@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=3393a745e64d6ee2b3f80d65fb3f920593e0cfc7 translatedAt=2026-10-30T04:04:50.179Z pushedAt=2026-10-30T07:39:34.175Z nl=1 -->
+<!-- md-trans-meta sourceCommit=f125faebecb74e0ac91596bf752ffa6043e4b775 translatedAt=2026-11-13T12:37:09.260Z pushedAt=2026-11-16T02:06:53.459Z nl=1 -->
 
 For the corresponding algorithm specifications, see [Symmetric Key Encryption and Decryption Algorithm Specifications: SM4](crypto-encryption-decryption.md#sm4).
 
@@ -44,7 +44,7 @@ For the corresponding algorithm specifications, see [Symmetric Key Encryption an
 
 4. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the decrypted data.
 
-If SM4 (CBC mode) decryption fails and returns error code 17630001, see [Failed to Call doFinal During Decryption Using SM4-ECB/CBC](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#failed-to-call-dofinal-during-decryption-using-sm4-ecbcbc).
+If SM4 (ECB mode) decryption fails with error code 17630001, see [Failed to Call doFinal During Decryption Using SM4-ECB/CBC](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#failed-to-call-dofinal-during-decryption-using-sm4-ecbcbc).
 
 - Asynchronous method example:
 

@@ -6,23 +6,24 @@
 <!--Designer: @lingminghw-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=9669a80d498bc98642276c6107dddd7ec457325a translatedAt=2026-11-06T12:28:58.855Z pushedAt=2026-11-13T12:04:36.036Z nl=1 -->
 
 SystemCapability (SysCap) is a standalone feature in the operating system.
 
-Before using an API for development, you are advised to familiarize yourself with [SysCap](syscap.md), and then consult the following tables to see whether the SysCap set required for the API is supported by the target device type.
+Before developing with an API, developers are advised to read the [SystemCapability Usage Guide](syscap.md) to understand the definition and usage guidance of SysCap. Then, refer to the tables below to determine whether a specific capability set is supported on a device, thereby improving development efficiency.
 
-> **NOTE**
+> **NOTE:**
 >
-> This list outlines the minimum system capabilities supported by the current version of wearables. You can refer to the **wearable.json** file in the SDK for details.
-> When developing applications for the current version of wearables using the APIs corresponding to the system capabilities listed, you can call these APIs directly without needing to perform a **canIUse()** check beforehand.
+> This list enumerates the minimum system capability set supported by the Wearable device type in the current version. Developers can query it through the wearable.json file in the SDK.
+> When developing Wearable applications for the current version using the APIs corresponding to the system capability sets in this list, developers can call them directly without performing canIUse() isolation checks beforehand.
 
 - SystemCapability.Ability.AbilityBase
 - SystemCapability.Ability.AbilityRuntime.AbilityCore
 - SystemCapability.Ability.AbilityRuntime.Core
 - SystemCapability.Ability.AbilityRuntime.FAModel
 - SystemCapability.Ability.AbilityRuntime.Mission
-- SystemCapability.Ability.AbilityTools.AbilityAssistant
 - SystemCapability.Ability.AppStartup
+- SystemCapability.Ability.AgentRuntime.Core
 - SystemCapability.Security.AccessToken
 - SystemCapability.BarrierFree.Accessibility.Core
 - SystemCapability.BarrierFree.Accessibility.Hearing

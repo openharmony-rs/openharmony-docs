@@ -18,7 +18,7 @@ typedef struct {...} ArkUI_ContextCallback
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
+**所在头文件：** [common_type.h](capi-common-type-h.md)
 
 ## 汇总
 

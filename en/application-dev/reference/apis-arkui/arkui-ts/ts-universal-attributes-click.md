@@ -1,12 +1,12 @@
 # Click Control
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 <!--deprecated_code_no_check-->
-<!-- md-trans-meta sourceCommit=a982f9d9be2aa48466f66955fc58f87c03f60f05 translatedAt=2026-09-01T12:18:16.720Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:16:13.623Z pushedAt=2026-11-13T01:06:00.077Z nl=1 -->
 
 Sets whether the component can respond to finger interaction events such as click and touch events based on interaction requirements, meeting the control requirements for component interaction responses in different scenarios.
 

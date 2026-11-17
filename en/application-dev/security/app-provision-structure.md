@@ -1,5 +1,12 @@
-#  HarmonyAppProvision Configuration File
-<!-- md-trans-meta sourceCommit=8aa79cb65a7095bb971dc0b556db7006504fdaf2 translatedAt=2026-10-31T02:56:52.957Z pushedAt=2026-10-31T06:11:15.374Z nl=2 -->
+# HarmonyAppProvision Configuration File
+
+<!--Kit: Common-->
+<!--Subsystem: Security-->
+<!--Owner: @scuteehuangjun-->
+<!--Designer: @scuteehuangjun; @liuchibin-->
+<!--Tester: @wwrongs-->
+<!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=10227dcf87bb004afff1dfa6cc337d0de0b50b63 translatedAt=2026-11-16T07:12:30.127Z pushedAt=2026-11-16T07:15:13.167Z nl=1 -->
 
 The **HarmonyAppProvision** configuration file (also called profile) is a file where you declare permission and signature information for your application.
 

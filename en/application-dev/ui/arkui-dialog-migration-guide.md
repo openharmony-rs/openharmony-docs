@@ -9,7 +9,7 @@
 
 ## Overview
 
-This document helps developers understand the capability differences between the new [@ohos.arkui.dialog (Popup)](../reference/apis-arkui/js-apis-dialog.md) interface and the old interfaces ([CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller), [showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog), [showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet), [showDialog](../reference/apis-arkui/arkts-apis-uicontext-qpromptaction.md#showdialog), [showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu), [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12), [openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18), and [presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)), and provides migration mappings from the old interfaces to the new interface by dialog category.
+This document helps developers understand the capability differences between the new [@ohos.arkui.dialog (Popup)](../reference/apis-arkui/js-apis-dialog.md) interface and the old interfaces ([CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller), [showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog), [showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet), [showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog), [showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu), [openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12), [openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18), and [presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)), and provides migration mappings from the old interfaces to the new interface by dialog category.
 
 Starting from API version 26.0.1, [@ohos.arkui.dialog (dialog box)](../reference/apis-arkui/js-apis-dialog.md) is added to provide unified Dialog type declaration capabilities.
 
@@ -114,7 +114,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-   ![Before migration example](figures/CustomDialogBeforeMigrate.png)
+   <!--Del-->   <!--DelEnd-->
   
   **After migration example (new API):** Use the `present()` and `dismiss()` methods of [DialogPresenter](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md) to open and close a custom dialog, and obtain the return result through a Promise.
   
@@ -224,7 +224,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![after migration example figure](figures/CustomDialogAfterMigrate.png)
+  <!--Del-->   <!--DelEnd-->
 
 - AlertDialog (alert dialog box)
 
@@ -310,7 +310,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![before migration example figure](figures/AlertDialogBeforeMigrate.png)
+  <!--Del-->   <!--DelEnd-->
   
   **After migration example (new interface):** Use [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) to present an alert dialog, and obtain the button click result through a Promise.
   
@@ -391,7 +391,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![After migration example](figures/AlertDialogAfterMigrate.png)
+  <!--Del-->   <!--DelEnd-->
 
 - ActionSheet (action sheet)
 
@@ -476,7 +476,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![Before migration example](figures/ActionSheetBeforeMigrate.png)
+  <!--Del-->   <!--DelEnd-->
   
   **After migration example (new interface):** Use [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) to present an action sheet, and obtain the selection result through a Promise.
   
@@ -549,7 +549,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![After migration example](figures/ActionSheetAfterMigrate.png)
+  <!--Del-->   <!--DelEnd-->
 
 - promptAction.showDialog (dialog box)
 
@@ -633,7 +633,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![Before migration example](figures/ShowDialogBeforeMigrate.png)
+ <!--Del-->   <!--DelEnd-->
   
   **After migration example (new interface):** Use [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) to display a dialog and obtain the button click result through a Promise.
   
@@ -701,7 +701,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![After migration example](figures/ShowDialogAfterMigrate.png)
+  <!--Del-->   <!--DelEnd-->
 
 - promptAction.showActionMenu (action menu)
 
@@ -785,7 +785,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![before migration example](figures/ActionMenuBeforeMigrate.png)
+  <!--Del-->   <!--DelEnd-->
   
   **After migration example (new interface):** Use [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) to present an action menu, and obtain the selection result through a Promise.
   
@@ -853,7 +853,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![After migration example](figures/ActionMenuAfterMigrate.png)
+  <!--Del-->   <!--DelEnd-->
 
 - promptAction.presentCustomDialog (custom dialog)
 
@@ -945,7 +945,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![Before migration example](figures/PresentCustomDialogBeforeMigrate.png)
+  <!--Del-->   <!--DelEnd-->
   
   **After migration example (new interface):** Use [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) to present a custom dialog and obtain the return result through a Promise.
   
@@ -1026,7 +1026,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![After migration example](figures/PresentCustomDialogAfterMigrate.png)
+  <!--Del-->   <!--DelEnd-->
 
 - promptAction.openCustomDialogWithController (custom dialog with a controller)
 
@@ -1127,7 +1127,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![Before migration example](figures/OpenCustomDialogWithControllerBeforeMigrate.png)
+  <!--Del-->   <!--DelEnd-->
   
   **After migration example (new interface):** Use [DialogPresenter.present](../reference/apis-arkui/arkts-apis-uicontext-dialogpresenter.md#present) to present a custom dialog with a controller, and obtain the return result through a Promise.
   
@@ -1209,7 +1209,7 @@ The old and new APIs differ in two dimensions: attributes and usage.
   }
   ```
   
-  ![After migration example figure](figures/OpenCustomDialogWithControllerAfterMigrate.png)
+ <!--Del-->   <!--DelEnd-->
 
 - Advanced animation parameter differences
 

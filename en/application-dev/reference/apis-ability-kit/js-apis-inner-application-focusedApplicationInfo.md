@@ -7,7 +7,7 @@
 <!--Adviser: @HelloCrease-->
 <!-- md-trans-meta sourceCommit=d00cc090ab1e70fffee77bd26a6ec11e2edf8cae translatedAt=2026-11-03T13:27:57.758Z pushedAt=2026-11-04T06:24:14.906Z nl=1 -->
 
-Defines the focused application information. After registering the focused application change listener using [onFocusedApplicationChanged](js-apis-app-ability-appManager.md#appmanageronfocusedapplicationchanged), when the focused application changes, the system reports the focused application information to the developer through the [onFocusedApplicationChanged](js-apis-inner-application-focusedApplicationObserver.md#focusedapplicationobserveronfocusedapplicationchanged) callback of [FocusedApplicationObserver](js-apis-inner-application-focusedApplicationObserver.md).
+Defines the focused application information. After registering the focused application change listener using [onFocusedApplicationChanged](js-apis-app-ability-appManager.md), when the focused application changes, the system reports the focused application information to the developer through the [onFocusedApplicationChanged](js-apis-inner-application-focusedApplicationObserver.md#focusedapplicationobserveronfocusedapplicationchanged) callback of [FocusedApplicationObserver](js-apis-inner-application-focusedApplicationObserver.md).
 
 ## Modules to Import
 

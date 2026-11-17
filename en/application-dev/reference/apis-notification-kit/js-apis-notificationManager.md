@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=d92fd96c7713dc18450281df98f1c9ed5f77b2c9 translatedAt=2026-10-08T02:29:53.617Z pushedAt=2026-10-08T10:04:03.447Z -->
+<!-- md-trans-meta sourceCommit=734000d7541e45073c1418b7d3adb90d2d5defac translatedAt=2026-11-13T02:25:52.229Z pushedAt=2026-11-13T09:44:30.427Z nl=1 -->
 
 This module provides notification management capabilities. Applications can use this module to implement the complete lifecycle management of notifications, including publishing, updating, and canceling notifications; creating and querying [notification slots](../../notification/notification-glossary.md#notification-slot); querying and requesting the authorization status of the notification capability; setting app badges; and querying existing notifications in the [notification center](../../notification/notification-glossary.md#notification-center).
 
@@ -958,8 +958,6 @@ A badge is a numeric identifier displayed in the upper right corner of an applic
 
 **System capability**: SystemCapability.Notification.Notification
 
-**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
-
 **Parameters**
 
 | Name     | Type  | Mandatory| Description      |
@@ -1007,8 +1005,6 @@ Sets the notification badge number. This API uses an asynchronous callback to re
 A badge is a numeric identifier displayed in the upper right corner of an application's home-screen icon, used to prompt the user about the number of unprocessed notifications. After setting, the home-screen icon will display the corresponding badge number. This is suitable for scenarios where the number of pending messages needs to be prompted on the home-screen icon, such as the number of unread messages and to-do items.
 
 **System capability**: SystemCapability.Notification.Notification
-
-**Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Parameters**
 
@@ -1697,7 +1693,7 @@ Checks whether the device supports [cross-device collaboration](../../notificati
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 26.0.0. <!--Del-->You are advised to use [isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20) with the **deviceType** parameter instead.<!--DelEnd-->
+> This API is supported since API version 9 and deprecated since API version 26.0.0<!--Del-->. You are advised to use [isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20) with the **deviceType** parameter instead<!--DelEnd-->.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1743,7 +1739,7 @@ Checks whether the device supports [cross-device collaboration](../../notificati
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 26.0.0. <!--Del-->You are advised to use [isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20) with the **deviceType** parameter instead.<!--DelEnd-->
+> This API is supported since API version 9 and deprecated since API version 26.0.0<!--Del-->. You are advised to use [isDistributedEnabled](js-apis-notificationManager-sys.md#notificationmanagerisdistributedenabled20) with the **deviceType** parameter instead<!--DelEnd-->.
 
 **System capability**: SystemCapability.Notification.Notification
 

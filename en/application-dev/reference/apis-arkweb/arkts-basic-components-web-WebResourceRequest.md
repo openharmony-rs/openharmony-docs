@@ -1,20 +1,19 @@
 # Class (WebResourceRequest)
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-07T04:49:58.980Z pushedAt=2026-08-07T08:12:48.399Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:32:50.628Z pushedAt=2026-11-13T09:09:01.210Z nl=1 -->
 
 WebResourceRequest is a class in the Web component that represents a network resource request, providing detailed metadata about the requested resource. This object is used in event callbacks such as `onErrorReceive`, `onHttpErrorReceive`, and request interception to help developers diagnose network errors, monitor request status, and implement resource interception control. By using this class, the app can improve error handling, enhance request controllability, and optimize user experience. For sample code, see [onErrorReceive event](./arkts-basic-components-web-events.md#onerrorreceive).
 
 > **NOTE**
 >
-> - The initial APIs of this component are supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - The initial APIs of this class are supported since API version 8.
+> - This class is supported since API version 8.
 >
 > - The sample effect is subject to the actual device.
 

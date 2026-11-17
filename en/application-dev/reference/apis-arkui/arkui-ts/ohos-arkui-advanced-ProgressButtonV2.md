@@ -1,10 +1,11 @@
 # ProgressButtonV2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
-<!--Designer: @YanSanzo-->
+<!--Owner: @zhangwentao96-->
+<!--Designer: @song-song-song-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=42500bbbc602d56c8fbfa6bd5fe37a6d7cf3a324 translatedAt=2026-11-03T01:32:45.447Z pushedAt=2026-11-13T01:05:59.872Z nl=1 -->
 
 
 The **ProgressButtonV2** component is a text-based download button with a progress indicator that shows the download progress.
@@ -14,22 +15,22 @@ This component is implemented based on [state management V2](../../../ui/state-m
 
 > **NOTE**
 >
-> - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 18. Newly added content in later versions will be marked with a superscript to indicate the version in which it was introduced.
 >
-> - This component can be used only in the stage model.
+> - The APIs of this module can be used only in the stage model.
 >
-> - If the **ProgressButtonV2** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **ProgressButtonV2** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **ProgressButtonV2** component.
+> - If [universal attributes](ts-component-general-attributes.md) or [universal events](ts-component-general-events.md) are set for **ProgressButtonV2**, the compilation toolchain additionally generates a node named **\_\_Common\_\_** and mounts the universal attributes or universal events on **\_\_Common\_\_** instead of applying them directly to **ProgressButtonV2** itself. This may cause the universal attributes or universal events set by developers to not take effect or to behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events for **ProgressButtonV2**.
 
 
 ## Modules to Import
 
 ``` ts
-import { ColorMetrics, LengthMetrics, ProgressButtonV2,  ProgressButtonV2Color } from '@kit.ArkUI';
+import { ColorMetrics, LengthMetrics, ProgressButtonV2, ProgressButtonV2Color } from '@kit.ArkUI';
 ```
 
 ## ProgressButtonV2
 
-ProgressButtonV2({progress: number, content: ResourceStr, progressButtonWidth?: LengthMetrics, onClicked: ClickCallback, isEnabled: boolean, colorOptions?: ProgressButtonColorOptions, progressButtonRadius?: LengthMetrics})
+ProgressButtonV2({progress: number, content: ResourceStr, progressButtonWidth?: LengthMetrics, onClicked: ClickCallback, isEnabled: boolean, colorOptions?: ProgressButtonV2Color, progressButtonRadius?: LengthMetrics})
 
 Creates a text-based download button with a progress indicator that shows the download progress.
 
@@ -37,22 +38,21 @@ Creates a text-based download button with a progress indicator that shows the do
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 | Name                               | Type                                                           | Mandatory| Decorator                 | Description                                                                        |
 |-----------------------------------|---------------------------------------------------------------|----|------------------------|----------------------------------------------------------------------------|
-| progress                          | number                                                        | Yes | \@Require <br>\@Param | Current download progress.<br>The value ranges from 0 to 100. Values less than 0 are adjusted to **0**, and values greater than 100 are capped at **100**.<br>Default value: **0**      |
+| progress                          | number                                                        | Yes | \@Require <br>\@Param | Current download progress.<br>The value range is [0, 100]. Values less than 0 are adjusted to **0**, and values greater than 100 are capped at **100**.<br>Default value: **0**      |
 | content                           | [ResourceStr](ts-types.md#resourcestr)                        | Yes | \@Require <br>\@Param | Button text.                                                                  |
 | progressButtonWidth               | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | \@Param <br>\@Once  | Width of the button.<br>Default value: **44vp**                                                     |
 | onClicked                         | [ClickCallback](#clickcallback)                               | Yes | \@Param                | Callback invoked when the button is clicked.                                                                |
 | isEnabled                         | boolean                                                       | Yes | \@Param                | Whether the button can be clicked.<br> **true**: yes<br> **false**: no      |
 | colorOptions                      | [ProgressButtonV2Color](#progressbuttonv2color)               | No | \@Param                | Color options for the button.                                                     |
-| progressButtonRadius<sup>18+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No | \@Param                | Corner radius of the button. It cannot be set in percentage.<br>Value range: [0, height/2]<br>Default value: height/2<br>If an invalid value is set, the default value is used.|
-
-## Attributes
-The [universal attributes](ts-component-general-attributes.md) are not supported.
+| progressButtonRadius | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | No  | \@Param                | Corner radius of the download button (percentage setting is not supported).<br/>Value range: [0, height/2]<br/>Default value: height/2<br/>If an invalid value is set, the default value is used. |
 
 ## ClickCallback
 
@@ -75,6 +75,8 @@ Defines the color options for the download button.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
@@ -95,6 +97,8 @@ A constructor used to create a **ProgressButtonV2Color** object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
 
 **Parameters**
@@ -109,6 +113,8 @@ Provides options for customizing the color of the download button.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
@@ -119,9 +125,6 @@ Provides options for customizing the color of the download button.
 | borderColor     | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)| No| Yes| Border color of the button.<br>Default value: **#330A59F7**                                         |
 | textColor       | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)| No| Yes| Text color of the button.<br>Default value: system default value **#CE000000**                                  |
 | backgroundColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)| No| Yes| Background color of the button.<br>Default value: **\$r('sys.color.ohos_id_color_foreground_contrary')**|
-
-## Events
-The [universal events](ts-component-general-events.md) are not supported.
 
 ## Example
 
@@ -177,4 +180,4 @@ struct Index {
 ```
 
 
-![img.png](./figures/img.png)
+<!--Del--> <!--DelEnd-->

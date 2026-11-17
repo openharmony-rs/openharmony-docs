@@ -6,11 +6,11 @@
 <!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b6f38d021a31abc28b1dd271b68098ebc074e7ab translatedAt=2026-08-04T12:12:12.793Z pushedAt=2026-08-07T07:56:36.986Z -->
+<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-03T02:06:10.434Z pushedAt=2026-11-13T01:05:59.953Z nl=1 -->
 
 This component is used to implement a grid layout that supports lazy loading. It is suitable for scenarios where a large number of grid items need to be rendered on demand in a scroll container, reducing the initial frame rendering time and memory overhead.
 
-In versions earlier than API version 26.0.0, the parent component of the **LazyVGridLayout** component supports the [WaterFlow](ts-container-waterflow.md) and [FlowItem](ts-container-flowitem.md) components. You can also encapsulate the parent component using a custom component or [NodeContainer](ts-basic-components-nodecontainer.md) component and use it in **WaterFlow** or **FlowItem**.
+Before API version 26.0.0, its parent component supported the [WaterFlow](ts-container-waterflow.md) and [FlowItem](ts-container-flowitem.md) components, and supports wrapping them with a [custom component](../../../ui/state-management/arkts-create-custom-components.md) or the [NodeContainer](ts-basic-components-nodecontainer.md) component before applying them in **WaterFlow** or **FlowItem**.
 
 Since API version 26.0.0, the parent component of this component also supports [List](ts-container-list.md), [Scroll](ts-container-scroll.md), or [LazyColumnLayout](ts-container-lazycolumnlayout.md). Additionally, custom components or [NodeContainer](ts-basic-components-nodecontainer.md) components can be encapsulated and then used in **List**, **Scroll**, or **LazyColumnLayout**.
 
@@ -64,6 +64,8 @@ For example, **'1fr&nbsp;1fr&nbsp;2fr'** means that the parent component is divi
 **repeat**, **auto-fit**, **auto-fill**, and **auto-stretch** are keywords. **track-size** indicates the column width, in units of px, vp, %, or any valid numeric value. The default unit is vp. **track-size** must include at least one valid column width.<br/>
 The **auto-fit** and **auto-stretch** modes support only one valid column width value for **track-size**, and **track-size** in **auto-stretch** mode supports only px, vp, and valid numeric values, not %. The **auto-fill** mode supports one or more valid column widths, for example, **columnsTemplate('repeat(auto-fill, 20)')** and **columnsTemplate('repeat(auto-fill, 20 80px)')**.
 
+In a non-repeat template string, each item supports only the following three formats: 'number+fr', 'number+px', and 'number+%'. vp is not supported (for example, **columnsTemplate('100vp 100vp')**). To automatically calculate the number of columns based on a fixed vp size, use **repeat(auto-fill, track-size)**.
+
 For usage effects, see [Example 3](#example-3-setting-adaptive-column-count).
 
 If this attribute is set to **'0fr'**, the column width is 0, and child components are not displayed. If this attribute is set to an invalid value, the child components are displayed in a fixed column.
@@ -74,11 +76,45 @@ If this attribute is set to **'0fr'**, the column width is 0, and child componen
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                              |
 | ------ | ------ | ---- | ---------------------------------- |
 | value  | string | Yes   | Number of columns, fixed column width, or minimum column width value of the current grid layout. |
+
+### columnsTemplate
+
+columnsTemplate(template: string | ItemFillPolicy)
+
+Sets the number of columns, fixed column width, or minimum column width of the grid. If this attribute is not set, one column will be used.
+
+When the template is of the string type, refer to [columnsTemplate(value: string)](#columnstemplate) for the usage.
+
+When the template is of the **ItemFillPolicy** type, the number of columns is determined based on the [breakpoint type](../../../ui/arkts-layout-development-grid-layout.md#breakpoints) corresponding to the content area width of the **LazyVGridLayout** component.
+
+Content area width used for breakpoint determination: content area width = component width − left and right padding − width of the left and right borders that occupy the layout.
+
+For example, when the **fillType** attribute of **ItemFillPolicy** is set to **PresetFillType.BREAKPOINT_DEFAULT**, two columns are displayed when the content area width falls within the **sm** and smaller breakpoint ranges, three columns are displayed within the **md** breakpoint range, and five columns are displayed within the **lg** and larger breakpoint ranges, with each column being 1fr.
+
+For the usage effect, refer to [Example 4](#example-4-setting-the-number-of-columns-based-on-breakpoints).
+
+> **NOTE**
+>
+> The string type and the **ItemFillPolicy** type set the same attribute. When the attribute is set multiple times, the last setting takes effect.
+
+**Since:** 26.1.0
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type                                                 | Mandatory | Description                                                      |
+| ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
+| template  | string&nbsp;\|&nbsp;[ItemFillPolicy](ts-types.md#itemfillpolicy22) | Yes   | Number of columns, fixed column width, or minimum column width of the current grid layout. When template is of the string type, it indicates the number of columns, fixed column width, or minimum column width. When template is of the **ItemFillPolicy** type, the number of columns is automatically determined based on the breakpoint type corresponding to the content area width of the **LazyVGridLayout** component. |
 
 ### columnsGap
 
@@ -92,7 +128,7 @@ Sets the gap between columns. The default value is **0vp**. If a value less than
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                        |
 | ------ | ---------------------------- | ---- | ---------------------------- |
@@ -116,7 +152,7 @@ Sets the gap between rows. The default value is **0vp**. If a value less than 0 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                        |
 | ------ | ---------------------------- | ---- | ---------------------------- |
@@ -275,7 +311,6 @@ This example uses [WaterFlow](ts-container-waterflow.md) and **LazyVGridLayout**
 The **onVisibleIndexesChange** event is added since API version 26.0.0.
 
 <!--code_no_check-->
-
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
 // MyDataSource is a custom data source class that implements the IDataSource interface required by LazyForEach.
@@ -341,7 +376,6 @@ struct LazyVGridLayoutSample1 {
 ```
 
 <!--code_no_check-->
-
 ```ts
 // MyDataSource.ets
 export class BasicDataSource<T> implements IDataSource {
@@ -441,7 +475,6 @@ This example nests **LazyVGridLayout** inside [WaterFlow](ts-container-waterflow
 Since API version 26.0.0, the **header**, **footer**, and **sticky** attributes are newly supported.
 
 <!--code_no_check-->
-
 ```ts
 import { LengthMetrics } from '@kit.ArkUI';
 // MyDataSource is a custom data source class that implements the IDataSource interface required by LazyForEach.
@@ -513,7 +546,6 @@ struct LazyVGridLayoutStickyDemo {
   }
 }
 ```
-
 ![](figures/scroll_lazyvgridlayout_header_footer.gif)
 
 ### Example 3: Setting Adaptive Column Count
@@ -523,7 +555,6 @@ This example implements adaptive column count for the **LazyVGridLayout** compon
 Since API version 19, the [columnsTemplate](#columnstemplate) API is newly supported.
 
 <!--code_no_check-->
-
 ```ts
 import { LazyColumnLayout, LazyColumnLayoutAttribute, LengthMetrics } from '@kit.ArkUI';
 // MyDataSource is a custom data source class that implements the IDataSource interface required by LazyForEach.
@@ -651,4 +682,93 @@ struct LazyVGridLayoutColumnsTemplateDemo {
 ```
 
 ![](figures/scroll-lazyvgridlayout-columntemplate.gif)
-<!--no_check-->
+
+### Example 4: Setting the Number of Columns Based on Breakpoints
+
+This example sets **ItemFillPolicy** through [columnsTemplate](#columnstemplate-1) and sets **fillType** to **PresetFillType.BREAKPOINT_SM1MD2LG3**, so that **LazyVGridLayout** automatically determines the number of columns based on the breakpoint type corresponding to the content area width.
+
+When the content area width of **LazyVGridLayout** falls within the sm or smaller breakpoint interval, one column is displayed; when it falls within the md breakpoint interval, two columns are displayed; and when it falls within the lg or larger breakpoint interval, three columns are displayed.
+
+Since API version 26.1.0, **columnsTemplate** can be set to the **ItemFillPolicy** type.
+
+<!--code_no_check-->
+```ts
+import { LazyColumnLayout, LazyColumnLayoutAttribute, LengthMetrics } from '@kit.ArkUI';
+// MyDataSource is a custom data source class that implements the IDataSource API required by LazyForEach.
+import { MyDataSource } from './MyDataSource';
+
+@Entry
+@Component
+struct LazyVGridLayoutItemFillPolicyDemo {
+  private sm1md2lg3Data: MyDataSource<number> = new MyDataSource<number>();
+
+  aboutToAppear(): void {
+    // Initialize the LazyForEach data.
+    for (let i = 0; i < 12; i++) {
+      this.sm1md2lg3Data.pushData(i);
+    }
+  }
+
+  // Build the header to display the current breakpoint-based column count strategy.
+  @Builder
+  HeaderBuilder() {
+    Column() {
+      Text('ItemFillPolicy: BREAKPOINT_SM1MD2LG3')
+        .fontSize(16)
+        .fontWeight(FontWeight.Medium)
+        .fontColor('#182230')
+    }
+    .alignItems(HorizontalAlign.Start)
+    .width('100%')
+    .padding({ bottom: 8 })
+  }
+
+  @Builder
+  GridItemBuilder(item: number, backgroundColor: string) {
+    Text(item.toString())
+      .height(56)
+      .width('100%')
+      .borderRadius(6)
+      .backgroundColor(backgroundColor)
+      .fontColor('#182230')
+      .textAlign(TextAlign.Center)
+  }
+
+  build() {
+    Column() {
+      Scroll() {
+        LazyColumnLayout() {
+          LazyVGridLayout() {
+            LazyForEach(this.sm1md2lg3Data, (item: number) => {
+              this.GridItemBuilder(item, '#FFE6A8')
+            })
+          }
+          // Automatically adjust the number of columns based on the breakpoint corresponding to the content area width of LazyVGridLayout.
+          // Display one column for sm and below, two columns for md, and three columns for lg and above.
+          .columnsTemplate({ fillType: PresetFillType.BREAKPOINT_SM1MD2LG3 })
+          // Set both the row spacing and column spacing to 8vp.
+          .rowsGap(LengthMetrics.vp(8))
+          .columnsGap(LengthMetrics.vp(8))
+          .header(this.HeaderBuilder)
+          .padding(8)
+          .backgroundColor('#F7F9FC')
+          .border({ width: 1, color: '#D0D5DD' })
+          .borderRadius(8)
+        }
+        .space(LengthMetrics.vp(16))
+        .width('100%')
+      }
+      .width('100%')
+      .scrollable(ScrollDirection.Vertical)
+      .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+    .padding({ top: 48, left: 12, right: 12, bottom: 12 })
+  }
+}
+```
+
+The following figure shows the effect of changing from a single column in portrait orientation to two columns in landscape orientation.
+
+![](figures/lazyvgridlayout_item_fill_policy.gif)

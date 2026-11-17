@@ -1,14 +1,13 @@
 # ImageBitmap
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=0ac6eaf21c519d27b118617e6aaa0ba03069a649 translatedAt=2026-07-30T02:34:02.288Z pushedAt=2026-08-01T06:42:55.881Z -->
+<!-- md-trans-meta sourceCommit=1aabe5cefa2e796ccc5dff047ed5cae026961d7d translatedAt=2026-11-03T01:52:10.123Z pushedAt=2026-11-13T01:05:59.914Z nl=1 -->
 
-An **ImageBitmap** object stores pixel data rendered on a canvas. Since API version 11, when an application creates a [worker thread](../../../arkts-utils/worker-introduction.md), it can use **postMessage** to transfer the **ImageBitmap** instance to the worker thread for drawing, and use **onmessage** to receive the drawing results sent by the worker thread for display. 
+An **ImageBitmap** object stores pixel data rendered on a canvas. Since API version 11, when an application creates a [worker thread](../../../arkts-utils/worker-introduction.md), it can use **postMessage** to transfer the **ImageBitmap** instance to the worker thread for drawing, and use **onmessage** to receive the drawing results sent by the worker thread for display.
 
 > **NOTE**
 >
@@ -35,7 +34,6 @@ Creates an **ImageBitmap** object using an image data source.
 **Parameters**
 
 <!--Table: 10%; 10%; 10%; 70%-->
-
 | Name | Type  | Mandatory | Description                                   |
 | ---- | ------ | ---- | ---------------------------------------- |
 | src | string | Yes | Image data source. Supports local images.<br>1. The string format is used to load local images, for example, `ImageBitmap("common/images/example.jpg")`. For modules of the "entry" and "feature" types, the starting point of the image loading path is the ets folder of the current module. For modules of the "har" and "shared" types, the starting point of the image loading path is the ets folder of the currently built "entry" or "feature" type module.<br>For modules of the "har" and "shared" types, it is recommended to use the [ImageSource](../../../media/image/image-decoding.md) image decoding method to decode resource images into a unified PixelMap for loading.<br>2. Supported local image types: bmp, jpg, png, svg, and webp.<br>**NOTE**<br>- In ArkTS widgets, strings with network-related path prefixes such as `http://`, the `datashare://` path prefix, and the `file://data/storage` path prefix are not supported. |
@@ -49,6 +47,7 @@ Creates an **ImageBitmap** object using a **PixelMap** object.
 > **NOTE**
 >
 > Call the **close()** method to release resources after use to avoid image resource leaks.
+
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -241,6 +240,7 @@ struct Demo {
 
   ![imageBitmap2](figures/imageBitmap2.png)
 
+
 ### Example 3: Supporting Concurrent Thread Drawing
 
 This example demonstrates how to implement concurrent thread drawing by creating a Worker thread.
@@ -254,7 +254,7 @@ import { worker } from '@kit.ArkTS';
 
 @Entry
 @Component
-struct imageBitmapExamplePage {
+struct ImageBitmapExamplePage {
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
   private myWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
@@ -282,7 +282,6 @@ struct imageBitmapExamplePage {
   }
 }
 ```
-
 In the worker thread, the application uses **onmessage** to receive the **ImageBitmap** object sent by the main thread through **postMessage** and proceeds with rendering.
 
 ```ts

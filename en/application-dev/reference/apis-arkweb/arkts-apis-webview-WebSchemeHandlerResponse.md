@@ -401,7 +401,7 @@ For details about the sample code, see [constructor](#constructor12).
 
 setCustomErrorCode(customErrorCode: number): void
 
-Sets a custom error code for the current Response. For details, see [WebResourceError.getCustomErrorCode](arkts-basic-components-web-WebResourceError.md#getcustomerrorcode).
+Sets a custom error code for the current Response. For details, see [WebResourceError.getCustomErrorCode](arkts-basic-components-web-WebResourceError.md).
 
 **Since:** 26.0.1
 

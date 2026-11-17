@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS / Ark Programming Language"]
+description: "Introduces the feature comparison and usage of non-linear containers such as HashMap, HashSet, TreeMap, TreeSet, LightWeightMap, LightWeightSet, and PlainArray, covering the differences among hash, tree, and lightweight structures to help developers choose the appropriate key-value container."
+keywords: [non-linear container, HashMap, HashSet, TreeMap, TreeSet, LightWeightMap, LightWeightSet, PlainArray, key-value container]
+doctype: guide
+status: active
+---
+
 # Nonlinear Containers
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @Malzahar-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=f8431cb42cf0d545a37a384860003cd8449b0b43 translatedAt=2026-11-06T10:41:19.506Z pushedAt=2026-11-12T08:46:00.912Z nl=1 -->
 
 
 Nonlinear containers, underpinned by hash tables or red-black trees, implement a data structure that enables quick lookup operations. There are several types of nonlinear containers: HashMap, HashSet, TreeMap, TreeSet, LightWeightMap, LightWeightSet, and PlainArray. The types of **key** and **value** in nonlinear containers comply with the ECMA standard.
@@ -45,7 +54,6 @@ Common APIs for adding, removing, modifying, and accessing elements in HashMap a
 | Accessing elements| forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?: Object) | Iterates over all elements in the map.|
 | Accessing elements| \[Symbol.iterator]():IterableIterator&lt;[K,V]&gt; | Creates an iterator for data access.|
 | Modifying elements| replace(key: K, newValue: V) | Modifies the value corresponding to the specified key.|
-| Modifying elements| forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?: Object) | Modifies all elements in the map through iteration.|
 | Removing elements| remove(key: K) | Removes the KV pair matching the specified key from the map.|
 | Removing elements| clear() | Clears the entire map.|
 
@@ -68,7 +76,6 @@ Common APIs for adding, removing, modifying, and accessing elements in HashSet a
 | Accessing elements| entries() | Returns an iterator object containing array-like KV pairs, where both keys and values are the same.|
 | Accessing elements| forEach(callbackFn: (value?: T, key?: T, set?: HashSet\<T>) => void, thisArg?: Object) | Iterates over all elements in the set.|
 | Accessing elements| \[Symbol.iterator]():IterableIterator&lt;T&gt; | Creates an iterator for data access.|
-| Modifying elements| forEach(callbackFn: (value?: T, key?: T, set?: HashSet\<T>) => void, thisArg?: Object) | Operates on elements in the set through traversal, which may include but is not limited to modifying elements.|
 | Removing elements| remove(value: T) | Removes a specified element.|
 | Removing elements| clear() | Clears the entire set.|
 
@@ -96,7 +103,6 @@ Common APIs for adding, removing, modifying, and accessing elements in TreeMap a
 | Accessing elements| forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?: Object) | Iterates over all elements in the map.|
 | Accessing elements| \[Symbol.iterator]():IterableIterator&lt;[K,V]&gt; | Creates an iterator for data access.|
 | Modifying elements| replace(key: K, newValue: V) | Modifies the value corresponding to the specified key.|
-| Modifying elements| forEach(callbackFn: (value?: V, key?: K, map?: TreeMap<K, V>) => void, thisArg?: Object) | Operates on elements in the map through traversal, which may include but is not limited to modifying elements.|
 | Removing elements| remove(key: K) | Removes the KV pair matching the specified key from the map.|
 | Removing elements| clear() | Clears the entire map.|
 
@@ -118,12 +124,11 @@ Common APIs for adding, removing, modifying, and accessing elements in TreeSet a
 | --------- | ------- | ------- |
 | Adding elements| add(value: T) | Adds a value.|
 | Accessing elements| values() | Returns an iterator that contains all the values in the set.|
-| Accessing elements| entries() | Returns an iterator object containing array-like KV pairs, where both keys and values are the same.|
+| Access an element | entries() | Return an iterator object that contains an array of values, all of which are value. |
 | Accessing elements| getFirstValue() | Obtains the first value in the set.|
 | Accessing elements| getLastValue() | Obtains the last value in the set.|
 | Accessing elements| forEach(callbackFn: (value?: T, key?: T, set?: TreeSet\<T>) => void, thisArg?: Object) | Iterates over all elements in the set.|
 | Accessing elements| \[Symbol.iterator]():IterableIterator&lt;T&gt; | Creates an iterator for data access.|
-| Modifying elements| forEach(callbackFn: (value?: T, key?: T, set?: TreeSet\<T>) => void, thisArg?: Object) | Operates on elements in the set through traversal, which may include but is not limited to modifying elements.|
 | Removing elements| remove(value: T) | Removes a specified element.|
 | Removing elements| clear() | Clears the entire set.|
 
@@ -153,7 +158,6 @@ Common APIs for adding, removing, modifying, and accessing elements in LightWeig
 | Accessing elements| forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, thisArg?: Object) | Iterates over all elements in the map.|
 | Accessing elements| \[Symbol.iterator]():IterableIterator&lt;[K,V]&gt; | Creates an iterator for data access.|
 | Modifying elements| setValueAt(index: number, newValue: V) | Modifies the value at the specified index.|
-| Modifying elements| forEach(callbackFn: (value?: V, key?: K, map?: LightWeightMap<K, V>) => void, thisArg?: Object) | Operates on elements in the map through traversal, which may include but is not limited to modifying elements.|
 | Removing elements| remove(key: K) | Removes the KV pair matching the specified key from the map.|
 | Removing elements| removeAt(index: number) | Removes the KV pair at the specified index from the map.|
 | Removing elements| clear() | Clears the entire map.|
@@ -166,11 +170,11 @@ Defined by generics, LightWeightSet uses a more lightweight structure. The defau
 
 LightWeightSet identifies unique values based on the hash table structure at the underlying layer, with a conflict resolution strategy of linear probing and a lookup strategy based on binary search.
 
-LightWeightSet and [HashSet](../reference/apis-arkts/js-apis-hashset.md) are both used to store unique values, but LightWeightSet occupies less memory.
+Both LightWeightSet and [HashSet](../reference/apis-arkts/js-apis-hashset.md) are used to store a collection of values, but LightWeightSet occupies less memory.
 
 You are advised to use LightWeightSet when you need a collection that contains unique elements or need to deduplicate a collection with limited memory.
 
-Common APIs for adding, removing, modifying, and accessing elements in LightWeightSet are as follows.  
+Common APIs for adding, removing, modifying, and accessing elements in LightWeightSet are as follows.
 
 | Operation| API| Description|
 | --------- | ------- | ------- |
@@ -178,11 +182,10 @@ Common APIs for adding, removing, modifying, and accessing elements in LightWeig
 | Accessing elements| getIndexOf(key: T) | Obtains the index corresponding to the specified key.|
 | Accessing elements| getValueAt(index: number) | Obtains the value at the specified index.|
 | Accessing elements| values() | Returns an iterator that contains all the values in the set.|
-| Accessing elements| entries() | Returns an iterator object containing array-like KV pairs, where both keys and values are the same.|
+| Access an element | entries() | Return an iterator object that contains an array of values, all of which are value. |
 | Accessing elements| forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet\<T>) => void, thisArg?: Object) | Iterates over all elements in the set.|
 | Accessing elements| \[Symbol.iterator]():IterableIterator&lt;T&gt; | Creates an iterator for data access.|
-| Modifying elements| forEach(callbackFn: (value?: T, key?: T, set?: LightWeightSet\<T>) => void, thisArg?: Object) | Operates on elements in the set through traversal, which may include but is not limited to modifying elements.|
-| Removing elements| remove(key: K) | Removes a specified element.|
+| Delete an element | remove(key: T) | Delete the specified element. |
 | Removing elements| removeAt(index: number) | Removes the value at the specified index from the set.|
 | Removing elements| clear() | Clears the entire set.|
 
@@ -196,7 +199,7 @@ PlainArray and [LightWeightMap](../reference/apis-arkts/js-apis-lightweightmap.m
 
 You are advised to use PlainArray when you need to store KV pairs whose keys are of the number type.
 
-Common APIs for adding, deleting, modifying, and accessing elements in PlainArray are as follows  
+Common APIs for adding, deleting, modifying, and accessing elements in PlainArray are as follows
 
 | Operation| API| Description|
 | --------- | ------- | ------- |
@@ -209,7 +212,6 @@ Common APIs for adding, deleting, modifying, and accessing elements in PlainArra
 | Accessing elements| forEach(callbackFn: (value: T, index?: number, PlainArray?: PlainArray\<T>) => void, thisArg?: Object) | Iterates over all elements in the PlainArray.|
 | Accessing elements| \[Symbol.iterator]():IterableIterator&lt;[number, T]&gt; | Creates an iterator for data access.|
 | Modifying elements| setValueAt(index:number, value: T) | Modifies the value at the specified index.|
-| Modifying elements| forEach(callbackFn: (value: T, index?: number, PlainArray?: PlainArray\<T>) => void, thisArg?: Object) | Operates on elements in the PlainArray through traversal, which may include but is not limited to modifying elements.|
 | Removing elements| remove(key: number) | Removes the KV pair matching the specified key.|
 | Removing elements| removeAt(index: number) | Removes the KV pair at the specified index.|
 | Removing elements| removeRangeFrom(index: number, size: number) | Removes elements within the specified range in the PlainArray.|
@@ -219,13 +221,13 @@ Common APIs for adding, deleting, modifying, and accessing elements in PlainArra
 
 Here are usage examples for common nonlinear containers, including HashMap, TreeMap, LightWeightMap, and PlainArray, covering importing modules, adding elements, accessing elements, and modifying elements. The example code is as follows:
 
-<!-- @[nonlinear_container](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/ArkTsContainerLibrary/NonlinearContainers/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[nonlinear_container](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/ArkTsContainerLibrary/NonlinearContainers/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // Import the HashMap, TreeMap, LightWeightMap, and PlainArray modules.
 import { HashMap, TreeMap, LightWeightMap, PlainArray } from '@kit.ArkTS';
 
-// ...
+  // ...
   let hashMap1: HashMap<string, number> = new HashMap();
   hashMap1.set('a', 123); // Add an element with key 'a' and value 123.
   let hashMap2: HashMap<number, number> = new HashMap();
@@ -258,4 +260,4 @@ import { HashMap, TreeMap, LightWeightMap, PlainArray } from '@kit.ArkTS';
   console.info(`result: ${plainArray.get(1)}`); // Obtain the value of the element with key 1. Output: result: sdd
   // ...
   console.info(`result: ${plainArray.getKeyAt(1)}`); // Obtain the key of the element at index 1. Output: result: 2
-```
+  ```

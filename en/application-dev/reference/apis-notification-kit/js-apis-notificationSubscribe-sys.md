@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=ce919b09dc218b03af61a5d7e1fe5707dcea8ddd translatedAt=2026-10-28T11:24:06.829Z pushedAt=2026-10-28T12:15:40.120Z nl=1 -->
+<!-- md-trans-meta sourceCommit=734000d7541e45073c1418b7d3adb90d2d5defac translatedAt=2026-11-13T02:26:09.344Z pushedAt=2026-11-13T09:44:30.430Z nl=1 -->
 
 This module provides [notification subscription](../../notification/notification-glossary.md#notification-subscription), unsubscription, notification removal, and other capabilities. Generally, only system applications have the permissions for these operations.
 
@@ -397,7 +397,7 @@ Unsubscribes from a notification. This API uses an asynchronous callback to retu
 
 **System capability**: SystemCapability.Notification.Notification
 
-**Required permissions**: For API versions 9 to 19, the ohos.permission.NOTIFICATION_CONTROLLER permission is required.
+**Permission required**: For API version 9-19, ohos.permission.NOTIFICATION_CONTROLLER must be requested.
 
 **System API**: This is a system API.
 
@@ -450,7 +450,7 @@ Unsubscribes from a notification. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
-**Required permissions**: For API versions 9 to 19, the ohos.permission.NOTIFICATION_CONTROLLER permission is required.
+**Permission required**: For API version 9-19, ohos.permission.NOTIFICATION_CONTROLLER must be requested.
 
 **System API**: This is a system API.
 

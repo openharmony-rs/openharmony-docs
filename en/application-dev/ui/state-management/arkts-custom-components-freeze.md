@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=85829ecc69be975331761318a4754507166212af translatedAt=2026-10-28T03:54:09.669Z pushedAt=2026-10-28T07:21:32.587Z nl=1 -->
+<!-- md-trans-meta sourceCommit=db1e51202af2a2cbb8d9287465a5abeef675b112 translatedAt=2026-11-12T03:27:46.203Z pushedAt=2026-11-12T09:01:35.012Z nl=1 -->
 
 Freezing a custom component is designed to optimize the performance of complex UI pages, especially for scenarios where multiple page stacks, long lists, or grid layouts are involved. When a state variable is bound to multiple UI components, the change of the state variable may trigger a large number of component updates. As a result, the page freezes and the response is delayed. To improve the refresh performance of such heavy-load UIs, you are advised to use the custom component freezing function.
 
@@ -675,7 +675,7 @@ In the preceding example:
 
 **Mixed Use of LazyForEach, Component Reuse, and Component Freezing**
 
-In the scrolling scenario of a long list with a large amount of data, you can use **LazyForEach** to create components as required. In addition, you can reuse components to reduce the overhead caused by component creation and destruction during scrolling. However, if you set [reuseId](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid) based on the reuse type or set **cacheCount** to a large value to ensure the sliding performance, the reuse pool or LazyForEach may cache a large number of nodes. In this case, if you trigger the re-render of all subnodes in **List**, the number of re-renders is too large. In this case, you can freeze the component.
+In the scrolling scenario of a long list with a large amount of data, you can use **LazyForEach** to create components as required. In addition, you can reuse components to reduce the overhead caused by component creation and destruction during scrolling. However, if you set [reuseId](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid) based on the reuse type or set **cacheCount** to a large value to ensure the scrolling performance, the reuse pool or LazyForEach may cache a large number of nodes. In this case, if you trigger the re-render of all subnodes in **List**, the number of re-renders is too large. In this case, you can freeze the component.
 <!-- @[arkts_custom_components_freeze7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/ComponentReuse1.ets) -->
 
 ``` TypeScript
@@ -1562,7 +1562,7 @@ When **change** is clicked, the value of **message** is changed. The onMessageUp
 
 In the following example, the child component `ChildComponent` has component freeze enabled and is marked for component reuse. When the state variable `flag` bound to the `if` component is changed to `false`, the child component `ChildComponent` is detached from the tree and enters the reuse pool. Since the child component has component freeze enabled, it is also frozen upon entering the reuse pool. Within the reuse pool, if the state variable `count` is modified, the component, being in the `inactive` state, will neither refresh nor trigger the `Watch` callback.
 
-When the state variable `flag` bound to the `if` component is changed to `true`, the child component `ChildComponent` exits the reuse pool and is marked as `active`, but the `Watch` callback bound to the state variable `count` is not triggered. This is because the reuse logic executes earlier than the unfreeze logic. When the child component is reused, it refreshes [dirty nodes](./arkts-state-management-introduce.md#triggering-updates) (including [system components bound to variables](./arkts-state-management-introduce.md#collecting-dependencies) that need delayed refresh during the freeze period) and clears the dirty node list. After the child component is reused, it is marked as `active` again. At this point, the child component executes the unfreeze logic. Since the dirty node list was cleared during reuse, it determines that no variables changed during the freeze period, and therefore the `Watch` callback is not triggered.
+When the state variable `flag` bound to the `if` component is changed to `true`, the child component `ChildComponent` is removed from the reuse pool and marked as `active`, but the `Watch` callback bound to the state variable `count` is not triggered. This is because the component reuse logic runs before the component unfreezing logic. During reuse, the child component's dirty nodes [trigger updates](./arkts-state-management-introduce.md#triggering-updates) (including [system components bound to variables](./arkts-state-management-introduce.md#collecting-dependencies) that need delayed refresh during freezing), and the dirty node list is cleared. After the child component is reused and marked as `active` again, it executes the unfreezing logic. Since the dirty node list was cleared during reuse, it determines that no variable changed during freezing and does not trigger the `Watch` callback.
 
 <!-- @[Freeze_and_Reuse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomComponentsFreeze/entry/src/main/ets/View/FreezeReuse.ets) --> 
 

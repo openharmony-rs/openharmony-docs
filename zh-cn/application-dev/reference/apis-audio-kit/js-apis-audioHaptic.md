@@ -265,8 +265,6 @@ setAudioLatencyMode(id:number, latencyMode: AudioLatencyMode): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let id = 0; // 需要通过registerSource或registerSourceFromFd方法获取。
 
 let latencyMode: audioHaptic.AudioLatencyMode = audioHaptic.AudioLatencyMode.AUDIO_LATENCY_MODE_FAST;
@@ -302,7 +300,6 @@ setStreamUsage(id: number, usage: audio.StreamUsage): void
 
 ```ts
 import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let id = 0; // 需要通过registerSource或registerSourceFromFd方法获取。
 

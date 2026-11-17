@@ -11689,6 +11689,95 @@ isAutoReloadEnabled(): boolean
 
 完整示例代码参考[enableAutoReload](#enableautoreload)。
 
+## setNavigationThrottle
+
+setNavigationThrottle(throttle: NavigationThrottle): void
+
+设置NavigationThrottle，在四个导航阶段拦截Web组件的导航请求，由应用决策放行、取消或挂起。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| throttle | [NavigationThrottle](./arkts-apis-webview-NavigationThrottle.md) | 是 | 导航拦截器实例。传入undefined或null时清除当前设置的NavigationThrottle，清除后导航行为与未注册时一致。 |
+
+> **说明：**
+>
+> - 每个WebviewController至多一个生效的NavigationThrottle，重复调用本接口会替换旧实例，被替换的实例不再收到回调。
+>
+> - 本接口不影响[onOverrideUrlLoading](./arkts-basic-components-web-events.md#onoverrideurlloading12)。两者同时设置时，先回调onOverrideUrlLoading，其返回true（应用接管）时本次导航不再触发NavigationThrottle回调。
+>
+> - 需在WebviewController关联Web组件后调用，否则抛出错误码17100001。
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class MyThrottle implements webview.NavigationThrottle {
+  willStartRequest(info: webview.NavigationInfo,
+    callback: webview.DeferThrottleCallback): webview.NavigationThrottleAction {
+    // 拦截未授权外链，其余放行。
+    if (!info.url.startsWith('https://www.example.com')) {
+      return webview.NavigationThrottleAction.CANCEL;
+    }
+    return webview.NavigationThrottleAction.PROCEED;
+  }
+
+  willRedirectRequest(info: webview.NavigationInfo,
+    callback: webview.DeferThrottleCallback): webview.NavigationThrottleAction {
+    return webview.NavigationThrottleAction.PROCEED;
+  }
+
+  willProcessResponse(info: webview.NavigationInfo,
+    callback: webview.DeferThrottleCallback): webview.NavigationThrottleAction {
+    return webview.NavigationThrottleAction.PROCEED;
+  }
+
+  willFailRequest(info: webview.NavigationInfo,
+    callback: webview.DeferThrottleCallback): webview.NavigationThrottleAction {
+    return webview.NavigationThrottleAction.PROCEED;
+  }
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('setNavigationThrottle')
+        .onClick(() => {
+          try {
+            this.controller.setNavigationThrottle(new MyThrottle());
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## setNavigationEntryUserData
 
 setNavigationEntryUserData(key: string, value: string): void

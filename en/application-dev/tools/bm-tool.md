@@ -1288,7 +1288,7 @@ The installation fails due to SysCap inconsistency.
 
 **Possible Causes**
 
-The [SysCap](./../reference/syscap.md#syscap-usage) configured in multiple HAP/HSP files is inconsistent.
+The [SysCap](./../reference/syscap.md#purpose-of-syscap) configured in multiple HAP/HSP files is inconsistent.
 
 **Solution**
 
@@ -1389,8 +1389,8 @@ When you start debugging or run an application, the error message "error: instal
 
 **Possible Causes**
 
-1. The signature of the application already installed on the device is inconsistent with that of the newly installed application, or the signatures of multiple packages (HAP and HSP) differ. If at least one of the following is the same between the two applications, their signatures are considered consistent: the signing [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual#section1245916381106) or the app-identifier in the application [Profile signature file](../security/app-provision-structure.md)<!--RP7--><!--RP7End-->. If **Keep Application Data** is selected in **Edit Configurations** in DevEco Studio (that is, the application is overwritten without being uninstalled) and the application is re-signed, this error occurs.
-2. If an application is uninstalled but its data is retained, the consistency of its signature information must be verified when an application with the same bundle name is installed later. If neither the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual#section1245916381106) nor the app-identifier in the application [Profile signature file](../security/app-provision-structure.md)<!--RP7--><!--RP7End--> in the signature information of the two applications is consistent, this error occurs.
+1. The signature of the application already installed on the device is inconsistent with that of the newly installed application, or the signatures of multiple packages (HAP and HSP) differ. If at least one of the following is the same between the two applications, their signatures are considered consistent: the signing [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual#section1245916381106) or <!--RP7-->the app-identifier in the application [Profile signature file](../security/app-provision-structure.md)<!--RP7End-->. If **Keep Application Data** is selected in **Edit Configurations** in DevEco Studio (that is, the application is overwritten without being uninstalled) and the application is re-signed, this error occurs.
+2. If an application is uninstalled but its data is retained, the consistency of its signature information must be verified when an application with the same bundle name is installed later. If neither the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual#section1245916381106) nor <!--RP7-->the app-identifier in the application [Profile signature file](../security/app-provision-structure.md)<!--RP7End--> in the signature information of the two applications is consistent, this error occurs.
 
 
 **Solution**
@@ -2798,7 +2798,7 @@ Although the pre-installed bundle has been uninstalled, the system still install
 
 Method 1: Re-sign the bundle.
 
-By re-signing, ensure that at least one of the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual#section1245916381106) in the application signature information and the app-identifier in the application [Profile signature file](../security/app-provision-structure.md)<!--RP7--><!--RP7End--> is consistent with the preinstalled application.
+By re-signing, ensure that at least one of the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing-manual#section1245916381106) in the application signature information and <!--RP7-->the app-identifier in the application [Profile signature file](../security/app-provision-structure.md)<!--RP7End--> is consistent with the preinstalled application.
 
 <!--RP11--><!--RP11End-->
 
@@ -3120,7 +3120,7 @@ error: install parse syscap error.
 
 **Symptom**
 
-Failed to obtain the [SysCap](./../reference/syscap.md#syscap-usage) information from the installation package during the installation.
+Failed to obtain the [SysCap](./../reference/syscap.md#purpose-of-syscap) information from the installation package during the installation.
 
 **Possible Causes**
 

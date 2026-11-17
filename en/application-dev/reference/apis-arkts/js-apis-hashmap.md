@@ -1,20 +1,21 @@
 # @ohos.util.HashMap (Nonlinear Container HashMap)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=c9f96a3944dd1fa44bcc30516bce1791ecb87cc1 translatedAt=2026-11-06T09:19:10.209Z pushedAt=2026-11-13T03:46:17.064Z nl=1 -->
 
-HashMap is implemented using an array, linked lists, and red-black trees as its core, supporting efficient querying, insertion and deletion operations. It stores data as key-value pairs where duplicate keys are not allowed - each key can only map to a single value.
+HashMap is implemented based on arrays, linked lists, and red-black trees, supporting efficient query, insertion, and deletion. HashMap stores content based on key-value pair mapping. Duplicate keys are not allowed, and one key can correspond to only one value.
 
-HashMap is faster in accessing data than [TreeMap](js-apis-treemap.md), because the former accesses the keys based on the hash codes, whereas the latter stores and accesses the keys in sorted order.
+Compared with [TreeMap](js-apis-treemap.md), HashMap accesses data based on the hashCode of keys, which is faster but does not guarantee the ordering of keys. TreeMap, in contrast, stores and accesses data in an ordered manner, with lower query efficiency.
 
-[HashSet](js-apis-hashset.md) is implemented based on HashMap. The input parameter of HashMap consists of **key** and **value**. In HashSet, only the **value** object is processed.
+[HashSet](js-apis-hashset.md) is implemented based on HashMap. The input parameters of HashMap consist of two values: key and value. In HashSet, only the value object is stored and managed.
 
-**Recommended use case**: Use HashMap when you need to quickly access, remove, and insert key-value pairs.
+**Recommended use cases:** When fast access, deletion, and insertion of key-value pair data are required, HashMap is recommended. Typical application scenarios include data caching, key-value lookup tables, and configuration parameter management.
 
-This topic uses the following to identify the use of generics:<br>
+The document uses generics, including the following generic parameters:<br>
 - K: Key<br>
 - V: Value
 
@@ -48,7 +49,7 @@ import { HashMap } from '@kit.ArkTS';
 
 constructor()
 
-A constructor used to create a **HashMap** instance.
+Creates a HashMap instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -96,9 +97,9 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-const hashMap = new HashMap<string, number>();
+let hashMap = new HashMap<string, number>();
 let result = hashMap.isEmpty();
-console.info("result = ", result) // result = true
+console.info("result:", result);  // result: true
 ```
 
 
@@ -116,13 +117,13 @@ Checks whether this HashMap has the specified key.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| key | K | Yes| Target key.|
+| key | K | Yes | Specifies the key to query, used to determine whether the HashMap contains the key. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Check result. The value **true** is returned if the specified key is contained; otherwise, **false** is returned.|
+| boolean | Returns true if the specified key is contained; returns false if the specified key is not contained. |
 
 **Error codes**
 
@@ -135,7 +136,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-const hashMap = new HashMap<string, number>();
+let hashMap = new HashMap<string, number>();
 hashMap.set("squirrel", 123);
 let result = hashMap.hasKey("squirrel");
 console.info("result:", result);  // result: true
@@ -156,13 +157,13 @@ Checks whether this HashMap has the specified value.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | V | Yes| Target value.|
+| value | V | Yes | Specifies the value to query, used to determine whether the HashMap contains this value. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Check result. The value **true** is returned if the specified value is contained; otherwise, **false** is returned.|
+| boolean | Returns true if the specified value is contained; returns false otherwise. |
 
 **Error codes**
 
@@ -175,7 +176,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-const hashMap = new HashMap<string, number>();
+let hashMap = new HashMap<string, number>();
 hashMap.set("squirrel", 123);
 let result = hashMap.hasValue(123);
 console.info("result:", result);  // result: true
@@ -196,13 +197,13 @@ Obtains the value of the specified key in this HashMap. If nothing is obtained, 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| key | K | Yes| Target key.|
+| key | K | Yes | Specifies the key whose corresponding value is to be obtained. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| V | Value obtained.|
+| V | Returns the value mapped by key; returns undefined when the key does not exist. |
 
 **Error codes**
 
@@ -215,7 +216,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
-const hashMap = new HashMap<string, number>();
+let hashMap = new HashMap<string, number>();
 hashMap.set("squirrel", 123);
 hashMap.set("sparrow", 356);
 let result = hashMap.get("sparrow");
@@ -227,7 +228,7 @@ console.info("result:", result);  // result: 356
 
 setAll(map: HashMap<K, V>): void
 
-Adds all elements in a **HashMap** instance to this HashMap.
+Sets all elements in the specified HashMap to the current HashMap. If the current HashMap already contains the same key, the corresponding value will be overwritten.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -237,21 +238,20 @@ Adds all elements in a **HashMap** instance to this HashMap.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| map | HashMap<K, V> | Yes| **HashMap** instance whose elements are to be added to the current HashMap.|
+| map | HashMap<K, V> | Yes | Source HashMap object whose all elements need to be added to the current HashMap. If map and the current HashMap have duplicate keys, the value in map will replace the value of the corresponding key in the current HashMap. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The setAll method cannot be bound. |
 
 **Example**
 
 ```ts
-const hashMap = new HashMap<string, number>();
+let hashMap = new HashMap<string, number>();
 hashMap.set("squirrel", 123);
 hashMap.set("sparrow", 356);
 let newHashMap = new HashMap<string, number>();
@@ -266,7 +266,7 @@ console.info("result:", result);  // result: true
 
 set(key: K, value: V): Object
 
-Adds or updates an element in this HashMap.
+Adds or updates a key-value pair in the HashMap. If the key does not exist, a new key-value pair is added; if the key already exists, its corresponding value is updated.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -276,29 +276,28 @@ Adds or updates an element in this HashMap.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| key | K | Yes| Key of the target element.|
-| value | V | Yes| Value of the target element.|
+| key | K | Yes | Key name to add or update. If the key already exists, the corresponding value will be replaced. |
+| value | V | Yes | Value to add or update. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Object | HashMap that contains the new element.|
+| Object | Returns the current HashMap instance containing the elements after addition or update. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. |
 | 10200011 | The set method cannot be bound. |
 
 **Example**
 
 ```ts
 let hashMap = new HashMap<string, number>();
-hashMap.set("squirrel", 123)
+hashMap.set("squirrel", 123);
 console.info("result:", hashMap.get("squirrel"));  // result: 123
 ```
 
@@ -307,7 +306,7 @@ console.info("result:", hashMap.get("squirrel"));  // result: 123
 
 remove(key: K): V
 
-Removes an element with the specified key from this HashMap.
+Deletes the element corresponding to the specified key and returns the value of that element. If the key does not exist, undefined is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -317,13 +316,13 @@ Removes an element with the specified key from this HashMap.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| key | K | Yes| Key of the target element.|
+| key | K | Yes | Specifies the key of the element to be removed, used to locate and remove the key-value pair corresponding to this key in the HashMap. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| V | Value of the element.|
+| V | Returns the value of the deleted element; returns undefined when key does not exist. |
 
 **Error codes**
 
@@ -378,7 +377,11 @@ console.info("result:", result);  // result: true
 
 keys(): IterableIterator&lt;K&gt;
 
-Returns an iterator that contains all the keys in this HashMap.
+Returns a new iterator object that contains all the keys in this HashMap.
+
+> **Note:**
+>
+> It is not recommended to use the set and remove methods during keys iteration, because it may cause abnormal state during the iteration process. It is recommended to use a for loop to perform safe insertion and deletion operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -388,7 +391,7 @@ Returns an iterator that contains all the keys in this HashMap.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;K&gt; | Iterator obtained.|
+| IterableIterator&lt;K&gt; | Returns an iterator containing all keys in this HashMap. |
 
 **Error codes**
 
@@ -417,7 +420,11 @@ for (let key of keys) {
 
 values(): IterableIterator&lt;V&gt;
 
-Returns an iterator that contains all the values in this HashMap.
+Returns a new iterator object that contains all the values corresponding to the keys in this HashMap.
+
+> **Note:**
+>
+> It is not recommended to use the set and remove methods during values iteration, because it may cause abnormal state during the iteration process. It is recommended to use a for loop to perform safe insertion and deletion operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -427,7 +434,7 @@ Returns an iterator that contains all the values in this HashMap.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;V&gt; | Iterator obtained.|
+| IterableIterator&lt;V&gt; | Returns an iterator containing all values in this HashMap. |
 
 **Error codes**
 
@@ -445,7 +452,7 @@ hashMap.set("squirrel", 123);
 hashMap.set("sparrow", 356);
 let values = hashMap.values();
 for (let value of values) {
-  console.info("value:", value)
+  console.info("value:", value);
 }
 // value: 123
 // value: 356
@@ -456,7 +463,7 @@ for (let value of values) {
 
 replace(key: K, newValue: V): boolean
 
-Replaces the value of a specified key.
+Replaces the value corresponding to the specified key. The replacement is performed and true is returned only when the specified key already exists. If the key does not exist, the HashMap is not modified and false is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -466,8 +473,8 @@ Replaces the value of a specified key.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| key | K | Yes| Key of the target element.|
-| newValue | V | Yes| New value of the element.|
+| key | K | Yes | Specifies the element to be replaced based on the key. The replacement takes effect only when the key already exists. |
+| newValue | V | Yes | New value that replaces the value corresponding to the specified key. The newValue replaces the original value only when the specified key already exists; if the key does not exist, this value is not set. |
 
 **Return value**
 
@@ -499,6 +506,10 @@ forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?:
 
 Uses a callback to traverse each element.
 
+> **Note:**
+>
+> It is not recommended to use the set and remove methods during forEach traversal, because it may cause abnormal state during the iteration process. If you need to insert or delete elements during traversal, it is recommended to use a for loop to perform safe insertion and deletion operations.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Utils.Lang
@@ -507,23 +518,22 @@ Uses a callback to traverse each element.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callbackFn | function | Yes| Callback invoked to traverse the elements in the HashMap.|
-| thisArg | Object | No| Value of **this** to use when **callbackFn** is invoked. The default value is this instance.|
+| callbackFn | function | Yes | Callback function, invoked when traversing each element, used to perform custom operations on the element. |
+| thisArg | Object | No | Used as the this value when callbackFn is invoked. When you need to access properties or methods of other objects in the callback function, you can pass a custom thisArg. If not passed, the default value is the current instance object. |
 
 callbackFn parameters
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | V | No| Value of the element that is currently traversed.|
 | key | K | No| Key of the element that is currently traversed.|
-| map | HashMap<K, V> | No| Instance that calls the **forEach** API. The default value is this instance.|
+| map | HashMap<K, V> | No | The current HashMap instance object on which the forEach method is called. The default value is the current instance object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **Example**
@@ -540,13 +550,13 @@ hashMap.forEach((value: number, key: string) => {
 ```
 
 ```ts
-// You are not advised to use the set or remove APIs in forEach because they may cause unpredictable risks such as infinite loops. You can use the for loop when inserting or deleting data.
+// Not recommended to use set and remove in forEach, because it may cause abnormal state during the iteration process. Recommended to use a for loop to perform safe insertion and deletion.
 let hashMap = new HashMap<string, number>();
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   hashMap.set("sparrow" + i, 123);
 }
 
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   hashMap.remove("sparrow" + i);
 }
 ```
@@ -555,7 +565,11 @@ for(let i = 0; i < 10; i++) {
 
 entries(): IterableIterator&lt;[K, V]&gt;
 
-Returns an iterator that contains all the elements in this HashMap.
+Returns a new iterator object that contains the key-value pairs in this HashMap.
+
+> **Note:**
+>
+> It is not recommended to use the set and remove methods during entries iteration, because it may cause abnormal state during the iteration process. If you need to insert or delete elements during traversal, it is recommended to use a for loop to perform safe insertion and deletion operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -565,7 +579,7 @@ Returns an iterator that contains all the elements in this HashMap.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;[K, V]&gt; | Iterator obtained.|
+| IterableIterator&lt;[K, V]&gt; | Returns an iterator containing all key-value pairs in this HashMap. |
 
 **Error codes**
 
@@ -583,20 +597,20 @@ hashMap.set("squirrel", 123);
 hashMap.set("sparrow", 356);
 let iter = hashMap.entries();
 let temp: IteratorResult<Object[]> = iter.next();
-while(!temp.done) {
+while (!temp.done) {
   console.info("key:" + temp.value[0]);
   console.info("value:" + temp.value[1]);
   temp = iter.next();
 }
 ```
 ```ts
-// You are not advised to use the set or remove APIs in entries because they may cause unpredictable risks such as infinite loops. You can use the for loop when inserting or deleting data.
+// Not recommended to use set and remove in entries, because it may cause abnormal state during the iteration process. Recommended to use a for loop to perform safe insertion and deletion operations.
 let hashMap = new HashMap<string, number>();
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   hashMap.set("sparrow" + i, 123);
 }
 
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   hashMap.remove("sparrow" + i);
 }
 ```
@@ -604,7 +618,11 @@ for(let i = 0; i < 10; i++) {
 
 [Symbol.iterator]\(): IterableIterator&lt;[K, V]&gt;
 
-Returns an iterator, each item of which is a JavaScript object.
+Returns an iterator, each item of which is an array [K, V] containing a key and a value.
+
+> **Note:**
+>
+> It is not recommended to use the set and remove methods during Symbol.iterator iteration, because it may cause abnormal state during the iteration process. If you need to insert or delete elements during traversal, it is recommended to use a for loop to perform safe insertion and deletion operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -614,7 +632,7 @@ Returns an iterator, each item of which is a JavaScript object.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;[K, V]&gt; | Iterator obtained.|
+| IterableIterator&lt;[K, V]&gt; | Returns an iterator containing all key-value pairs in this HashMap. |
 
 **Error codes**
 
@@ -643,7 +661,7 @@ for (let item of hashMap) {
 // Method 2:
 let iter = hashMap[Symbol.iterator]();
 let temp: IteratorResult<Object[]> = iter.next();
-while(!temp.done) {
+while (!temp.done) {
   console.info("key:", temp.value[0]);
   console.info("value:", temp.value[1]);
   temp = iter.next();
@@ -655,13 +673,13 @@ while(!temp.done) {
 ```
 
 ```ts
-// You are not advised to use the set or remove APIs in Symbol.iterator because they may cause unpredictable risks such as infinite loops. You can use the for loop when inserting or deleting data.
+// Not recommended to use set and remove methods in Symbol.iterator, because it may cause abnormal state during the iteration process. Recommended to use a for loop to perform safe insertion and deletion operations.
 let hashMap = new HashMap<string, number>();
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   hashMap.set("sparrow" + i, 123);
 }
 
-for(let i = 0; i < 10; i++) {
+for (let i = 0; i < 10; i++) {
   hashMap.remove("sparrow" + i);
 }
 ```

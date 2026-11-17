@@ -36,57 +36,71 @@ status: active
 
 1. 引入头文件，创建worker线程，并注册回调。
 
-   ```ts
+   <!-- @[includeHeaderFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import { ErrorEvent, MessageEvents, worker } from '@kit.ArkTS'
    import { SendableObject } from '../util/SendableObject';
    import { common, sendableContextManager } from '@kit.AbilityKit';
    ```
 
-   ```ts
-   // 创建Worker对象。
-   private workerInstance?: worker.ThreadWorker;
-   @State currentProgress: number = 0;
+   <!-- @[workerCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/pages/Index.ets) -->
    
-   this.workerInstance = new worker.ThreadWorker('entry/ets/workers/task.ets');
-
-   // 注册onmessage回调，当宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息时被调用，在宿主线程执行。
-   this.workerInstance.onmessage = (e: MessageEvents) => {
-      let data: string | number = e.data;
-      if (typeof data === 'string') { // complete事件。
-        console.info('workerInstance onmessage is: ', data);
-        if (data === 'complete') {
-          console.info('complete: ', data);
-          this.workerInstance?.terminate();
-        }
-      } else if (typeof data === 'number') {
-        this.currentProgress = data; // 当前进度。
-      }
-    }
-
-   // 注册onErrors回调，可以捕获Worker线程的onmessage回调、timer回调以及文件执行等流程产生的全局异常，在宿主线程执行。
-   this.workerInstance.onerror = (err: ErrorEvent) => {
-       console.error("workerInstance onerror message is: " + err.message);
-   }
-
-   // 注册onmessageerror回调，当Worker对象接收到一条无法被序列化的消息时被调用，在宿主线程执行。
-   this.workerInstance.onmessageerror = () => {
-       console.error('workerInstance onmessageerror');
-   }
-
-   // 注册onexit回调，当Worker销毁时被调用，在宿主线程执行。
-   this.workerInstance.onexit = (e: number) => {
-       // 当Worker正常退出时code为0，异常退出时code为1。
-       console.info("workerInstance onexit code is: ", e);
-   }
+   ``` TypeScript
+   // ...
+     private workerInstance?: worker.ThreadWorker;
+     // ...
+     @State currentProgress: number = 0;
+     // ...
+       this.workerInstance = new worker.ThreadWorker('entry/ets/workers/task.ets');
+   
+   
+       // 注册onmessage回调，当宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息时被调用，
+       // 在宿主线程执行。
+       this.workerInstance.onmessage = (e: MessageEvents) => {
+         let data: string | number = e.data;
+         if (typeof data === 'string') {
+           console.info('workerInstance onmessage is: ', data);
+           if (data === 'complete') {
+             console.info('complete: ', data);
+             this.workerInstance?.terminate();
+           }
+         } else if (typeof data === 'number') {
+           this.currentProgress = data;
+         }
+       }
+   
+   
+       // 注册onErrors回调，可以捕获Worker线程的onmessage回调、timer回调以及文件执行等流程产生的全局异常，
+       // 在宿主线程执行。
+       this.workerInstance.onerror = (err: ErrorEvent) => {
+         console.error('workerInstance onerror message is: ' + err.message);
+       }
+   
+   
+       // 注册onmessageerror回调，当Worker对象接收到一条无法被序列化的消息时被调用，在宿主线程执行。
+       this.workerInstance.onmessageerror = () => {
+         console.error('workerInstance onmessageerror');
+       }
+   
+   
+       // 注册onexit回调，当Worker销毁时被调用，在宿主线程执行。
+       this.workerInstance.onexit = (e: number) => {
+         // 当Worker正常退出时code为0，异常退出时code为1。
+         console.info('workerInstance onexit code is: ', e);
+       }
    ```
 
 2. 创建参数对象，向worker线程发送参数对象。
 
    如下是参数对象模型：
 
-   ```ts
+   <!-- @[CreateParameterObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/util/SendableObject.ets) -->
+   
+   ``` TypeScript
    import { sendableContextManager } from '@kit.AbilityKit';
-
+   
+   
    // 发送的参数必须加上@Sendable标注。
    @Sendable
    export class SendableObject {
@@ -94,15 +108,17 @@ status: active
        this.sendableContext = sendableContext;
        this.data = data;
      }
-
+   
+   
      private sendableContext: sendableContextManager.SendableContext;
      private data: string;
-
-
+   
+   
      public getSendableContext() {
        return this.sendableContext;
      }
-
+   
+   
      public getData() {
        return this.data;
      }
@@ -111,24 +127,29 @@ status: active
 
    如下是发送参数的逻辑：
 
-   ```ts
+   <!-- @[logicSendingParameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    private context: Context | undefined;
-   // 向Worker线程发送消息。
-   this.context = this.getUIContext().getHostContext(); // 获取当前组件所在Ability的Context。
-   if (this.context != undefined) {
-     const sendableContext: sendableContextManager.SendableContext = sendableContextManager.convertFromContext(
-       this.context);
-     const sendableObject: SendableObject = new SendableObject(sendableContext, 'some information');
-     this.workerInstance.postMessageWithSharedSendable(sendableObject);
-   }
+   // ...
+     // 向Worker线程发送消息。
+     this.context = this.getUIContext().getHostContext();
+     if (this.context != undefined) {
+       const sendableContext: sendableContextManager.SendableContext =sendableContextManager.convertFromContext(
+         this.context);
+       const sendableObject: SendableObject = new SendableObject(sendableContext, 'some information');
+       this.workerInstance.postMessageWithSharedSendable(sendableObject);
+     }
    ```
 
 3. worker线程接收参数，并且执行转码的逻辑。
 
    worker线程接收参数：
 
-   ```ts
-   //worker线程接收参数。
+   <!-- @[ExecuteTranscodingLogic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/workers/task.ets) -->
+   
+   ``` TypeScript
+   // worker线程接收参数。
    const sendableObject: SendableObject = event.data;
    const sendableContext: sendableContextManager.SendableContext =
      sendableObject.getSendableContext() as sendableContextManager.SendableContext;
@@ -142,11 +163,14 @@ status: active
 
    执行转码逻辑：
 
-   ```ts
+   <!-- @[performingTranscoding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/workers/task.ets) -->
+   
+   ``` TypeScript
    async function doSome(context: common.Context) {
      console.info(`doSome in`);
      try {
        let transcoder = await media.createAVTranscoder();
+       
        // 转码完成回调函数。
        transcoder.on('complete', async () => {
          console.info(`transcode complete`);
@@ -157,8 +181,10 @@ status: active
          if (transcoder.fdSrc != undefined) {
            fs.closeSync(transcoder.fdSrc.fd);
          }
+         // 向主线程发送转码结束的消息。
          workerPort.postMessage('complete');
        })
+   
        // 转码错误回调函数。
        transcoder.on('error', async (err: BusinessError) => {
          await transcoder?.release();
@@ -174,7 +200,7 @@ status: active
          console.info(`AVTranscoder progressUpdate = ${progress}`);
          workerPort.postMessage(progress);
        })
-
+   
        try {
          // 获取输入文件fd，H264_AAC.mp4为rawfile目录下的预置资源，需要开发者根据实际情况进行替换。
          let fileDescriptor = await context.resourceManager.getRawFd('H264_AAC.mp4');
@@ -182,20 +208,19 @@ status: active
        } catch (error) {
          console.error('Failed to get the file descriptor, please check the resource and path.');
        }
-       // 设置输出文件路径，context.filesDir为应用的沙箱路径。
-       let fdPath = context.filesDir + "/" + "VID_" + Date.parse(new Date().toString()) + ".mp4";
-       let file = fileIo.openSync(fdPath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+       let fdPath = context.filesDir + '/' + 'VID_' + Date.parse(new Date().toString()) + '.mp4';
+       let file = fs.openSync(fdPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
        let fd = file.fd;
        console.info(`file fd ${fd}`);
        transcoder.fdDst = file.fd;
-
+   
        let config: media.AVTranscoderConfig = {
          fileFormat: media.ContainerFormatType.CFT_MPEG_4, // 封装格式。
          audioCodec: media.CodecMimeType.AUDIO_AAC, // 音频编码格式。
          videoCodec: media.CodecMimeType.VIDEO_AVC, // 视频编码格式。
          videoBitrate: 200000, // 视频比特率。
        }
-       await transcoder?.prepare(config); 
+       await transcoder?.prepare(config);
        await transcoder?.start();
      } catch (e) {
        console.error(`transcode error: code = ` + e.code.toString() + `, message = ${JSON.stringify(e.message)}`);
@@ -205,20 +230,31 @@ status: active
 
 4. 监听转码的complete回调，在转码结束的时候向主线程发送消息。
 
-   ```ts
+   <!-- @[transcoderCompleteCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/workers/task.ets) -->
+   
+   ``` TypeScript
    // 转码完成回调函数。
    transcoder.on('complete', async () => {
      console.info(`transcode complete`);
-     fileIo.closeSync(transcoder.fdDst); // 关闭fdDst。
      await transcoder?.release()
+     if (transcoder.fdDst != undefined) {
+       fs.closeSync(transcoder.fdDst);
+     }
+     if (transcoder.fdSrc != undefined) {
+       fs.closeSync(transcoder.fdSrc.fd);
+     }
+     // 向主线程发送转码结束的消息。
      workerPort.postMessage('complete');
    })
    ```
 
 5. 主线程接收到worker线程转码结束的信息，销毁worker线程。
 
-   ```ts
-   // 注册onmessage回调，当宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息时被调用，在宿主线程执行。
+   <!-- @[DestroyWorkerThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 注册onmessage回调，当宿主线程接收到来自其创建的Worker通过workerPort.postMessage接口发送的消息时被调用，
+   // 在宿主线程执行。
    this.workerInstance.onmessage = (e: MessageEvents) => {
      let data: string | number = e.data;
      if (typeof data === 'string') {

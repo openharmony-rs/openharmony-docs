@@ -512,7 +512,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 });
 ```
 
-### discriminatePictureLightDegree()
+### discriminatePictureLightDegree
 
 discriminatePictureLightDegree(): PictureLightDegree
 
