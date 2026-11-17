@@ -968,7 +968,7 @@ packing(source: PixelMap, option: PackingOption, callback: AsyncCallback\<ArrayB
 >
 > - 从API version 8开始支持，从API version 13开始废弃，建议使用[packToData](#packtodata13)代替。
 >
-> - 接口如果返回"PixelMap mismatch"，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
+> - 接口如果返回“PixelMap mismatch”，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1016,7 +1016,7 @@ packing(source: PixelMap, option: PackingOption): Promise\<ArrayBuffer>
 >
 > - 从API version 8开始支持，从API version 13开始废弃，建议使用[packToData](#packtodata13)代替。
 >
-> - 接口如果返回"PixelMap mismatch"，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
+> - 接口如果返回“PixelMap mismatch”，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
