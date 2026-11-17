@@ -155,11 +155,15 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
      onFormEvent(formId: string, message: string): void {
        // 若卡片支持触发事件，则需要重写该方法并实现对事件的触发
        hilog.info(DOMAIN_NUMBER, TAG, 'onFormEvent');
-       // 获取message事件中传递的detail参数
-       let msg: Record<string, string> = JSON.parse(message);
-       if (msg.detail === 'message detail') {
-         // 执行业务逻辑，由用户自行实现
-         hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
+       try {
+         // 获取message事件中传递的detail参数
+         let msg: Record<string, string> = JSON.parse(message);
+         if (msg.detail === 'message detail') {
+           // 执行业务逻辑，由用户自行实现
+           hilog.info(DOMAIN_NUMBER, TAG, 'message info:' + msg.detail);
+         }
+       } catch (err) {
+         hilog.error(DOMAIN_NUMBER, TAG, `onFormEvent catch error, code: ${err.code}, message: ${err.message}`);
        }
      }
    
