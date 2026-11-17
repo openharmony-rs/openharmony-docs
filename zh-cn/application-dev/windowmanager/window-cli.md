@@ -273,12 +273,12 @@ ohos-window screenshot [options]
 | 参数名 | 说明 |
 |------|------|
 | `--help` | 查看帮助信息，可选，指定本参数时会忽略其他参数。|
-| `--windowId <id>` | 指定待截图窗口的ID，可选，默认是屏幕截图，只有指定本选项时才是窗口截图，不可与`--displayId`/`--rect`/`--excludeWindowIds`同时使用，不支持对后台窗口和隐私窗口截图。|
-| `--displayId <id>` | 指定待截图的屏幕ID，可选，默认为0，不可与`--windowId`同时使用。|
+| `--windowId <id>` | 指定待截图窗口的ID，可选，默认是屏幕截图。当传入值小于0，或指定的窗口不存在，或者是后台窗口、隐私窗口时，均返回ERR_INVALID_INPUT错误。只有指定本选项时才是窗口截图，不可与`--displayId`/`--rect`/`--excludeWindowIds`同时使用。|
+| `--displayId <id>` | 指定待截图的屏幕ID，可选，默认值为0。当传入值小于0，或指定的屏幕不存在时，均返回ERR_INVALID_INPUT错误。不可与`--windowId`同时使用。|
 | `--outputPath <path>` | 指定截图保存目录的路径，可选，默认保存在`/data/storage/el2/base/temp`目录下，参考[应用沙箱目录](../file-management/app-sandbox-directory.md#应用沙箱目录)。|
-| `--rect <x,y,width,height>` | 指定屏幕截取矩形区域，可选，其中x和y表示矩形的左上角坐标，width和height表示矩形的宽和高，不可与`--excludeWindowIds`|`--windowId`同时使用。|
-| `--excludeWindowIds <id1,id2,...>` | 指定屏幕截图时需要排除的窗口的ID，可选，多个ID以英文逗号分隔，不可与`--rect`|`--windowId`同时使用。|
-| `--format <jpeg\|png>` | 指定截图的图片格式，可选，支持jpeg和png，默认jpeg。|
+| `--rect <x,y,width,height>` | 指定屏幕截取矩形区域，可选，其中x和y表示矩形的左上角相对屏幕左上角顶点的坐标，width和height表示矩形的宽和高，单位均为px；当矩形超出屏幕范围时，会返回ERR_INVALID_INPUT错误。不可与`--excludeWindowIds`/`--windowId`同时使用。|
+| `--excludeWindowIds <id1,id2,...>` | 指定屏幕截图时需要排除的窗口的ID，可选，多个ID以英文逗号分隔。当传入值中有小于0或不存在的窗口时，均返回ERR_INVALID_INPUT错误。不可与`--rect`/`--windowId`同时使用。|
+| `--format <jpeg\|png>` | 指定截图的图片格式，可选，支持jpeg和png格式，默认jpeg格式。|
 
 ### 错误码
 
