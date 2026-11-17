@@ -5,7 +5,7 @@
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=d50b12ea2427bf351b9978d2fd85e22b3846d31f translatedAt=2026-11-05T10:54:45.398Z pushedAt=2026-11-06T01:56:31.637Z nl=1 -->
+<!-- md-trans-meta sourceCommit=1c0d32565a07d6161c64b340be482cf76a1a393d translatedAt=2026-11-16T09:29:22.189Z pushedAt=2026-11-16T11:06:59.655Z nl=1 -->
 
 ## F
 
@@ -17,7 +17,7 @@ Floating windows are divided into multi-window floating windows, global floating
 
   They are typically used to temporarily handle another task while a full-screen task is running or for short-term parallel use of multiple tasks, such as replying to messages while browsing the web.
 
-  For details, see [Introduction to Multi-Window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro) and [Multi-Window](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-window-practice).
+  Related reference: [Multi-Window Introduction](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro).
 
 - A global floating window is a special type of app auxiliary window that can remain displayed on the foreground even after the app's main window and corresponding UIAbility are moved to the background.
 

@@ -5,7 +5,7 @@
 <!--Designer: @s10021109-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=4d4c58ec461e3e07b3e5682a39329e8060373a85 translatedAt=2026-10-12T09:08:29.786Z pushedAt=2026-10-12T10:14:31.169Z -->
+<!-- md-trans-meta sourceCommit=9c2901abc93efc370a5cc38916acd25fe3587a40 translatedAt=2026-11-16T08:09:26.616Z pushedAt=2026-11-16T09:06:35.246Z nl=1 -->
 
 [\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv) can be used to obtain custom environment variables. Developers can set custom environment variables via the [.customEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md#customenv) API of the [WithEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md) component, and read the variable value corresponding to the same [CustomEnvKey\<S\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys) in child components through the [\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv) decorator. This mechanism implements data transparent transmission within the component tree, enabling parent-child components to interact based on environment variables while keeping the code decoupled.
 
@@ -62,13 +62,13 @@ Both \@CustomEnv and [\@Env](./arkts-env-system-property.md) are related to envi
 const custom = CustomEnvKey.create<string>();
 // Incorrect usage. A compilation error occurs.
 class CustomEnvKey {
-  @CustomEnv(custom) customVarName: string = 'hello world'; 
+  @CustomEnv(custom) customVarName: string = 'hello world';
 }
 // Correct usage
 @Entry
 @Component
 struct Index {
-  @CustomEnv(custom) customVarName: string = 'hello world'; 
+  @CustomEnv(custom) customVarName: string = 'hello world';
 
   build() {
     Column() {
@@ -99,7 +99,7 @@ struct Index {
 
 - Variables decorated by \@CustomEnv are read-only attributes. Developers are not allowed to perform assignment operations; otherwise, a compilation error occurs.
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 
 const custom = CustomEnvKey.create<string>();
 
@@ -177,7 +177,7 @@ struct Child {
 
   build() {
     Column() {
-      Text(`Child: ${this.customMessage}`);
+      Text(`Child: ${this.customMessage}`)
     }
   }
 }
@@ -295,7 +295,7 @@ struct DefaultChild {
   build() {
     Column() {
       // At this point, the content in Text is displayed as: Child: default content. 
-      Text(`Child: ${this.customMessage}`);
+      Text(`Child: ${this.customMessage}`)
     }
   }
 }
@@ -342,7 +342,7 @@ struct NearChild {
 
   build() {
     Column() {
-      Text(`Child: ${this.customMessage}`);
+      Text(`Child: ${this.customMessage}`)
     }
   }
 }
@@ -358,7 +358,7 @@ When clicking the update button causes the value of a variable decorated with @L
 
 <!-- @[CustomEnvUpdateValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvValUpdatePage.ets) -->
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 
 const customMsge = CustomEnvKey.create<string>();
 
@@ -389,7 +389,7 @@ struct UpdateChild {
 
   build() {
     Column() {
-      Text(`Child: ${this.customMessage}`);
+      Text(`Child: ${this.customMessage}`)
     }
   }
 }
@@ -405,7 +405,7 @@ In \@Component, you can use [\@Watch](state-management/arkts-watch.md) to listen
 
 <!-- @[CustomEnvSupportWatch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvSupportWatchPage.ets) -->
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const customWatch: CustomEnvKey<number> = CustomEnvKey.create<number>();
@@ -437,13 +437,13 @@ struct WatchChild {
 
   // Watch callback
   onParentValChanged() {
-    hilog.info(0x0000, 'testTag','@Watch message update');
+    hilog.info(0x0000, 'testTag', '@Watch message update');
   }
 
   build() {
     Column() {
       Text('parentVal is: ' + this.parentVal)
-        .fontSize(22);
+        .fontSize(22)
     }
     .height('100%')
     .width('100%')
@@ -465,8 +465,9 @@ When the internal properties of a variable decorated by `@CustomEnv` change, the
 (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvSupportDeepWatchPage.ets) -->
 ```ts
 import { WithEnv } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const customDeepWatch = CustomEnvKey.create<number[][]>()
+const customDeepWatch = CustomEnvKey.create<number[][]>();
 
 @Entry
 @Component
@@ -475,8 +476,8 @@ struct BuildIn_Watch {
 
   build() {
     Column() {
-      Button('ss').onClick(() => {
-        this.message[0][0]++
+      Button('change message').onClick(() => {
+        this.message[0][0]++;
       })
       WithEnv() {
         Child()
@@ -489,15 +490,15 @@ struct BuildIn_Watch {
 
 @Component
 struct Child {
-  @Watch('update') @CustomEnv(customDeepWatch) msg: number[][] = [[3, 4]]
+  @CustomEnv(customDeepWatch) @Watch('update') msg: number[][] = [[3, 4]];
 
   update() {
-    console.info(`TabContent message callback func ${this.msg}`)
+    hilog.info(0x0000, 'testTag', `DeepWatch message callback func ${this.msg}`);
   }
 
   build() {
     Column() {
-      Text(this.msg[0][0] + '')
+      Text(`message: ${this.msg[0][0]}`)
     }
   }
 }
@@ -505,7 +506,7 @@ struct Child {
 
 In the preceding example:
 
-Tap 'ss' to change the value of message, which will trigger the callback decorated by \@Watch and output the corresponding log.
+Click 'change message' to change the value of message, which will trigger the \@Watch decorator's callback and output the corresponding log.
 
 The following figure shows the running effect.
 
@@ -515,7 +516,7 @@ In \@ComponentV2, \@Monitor can be used to listen for changes to \@CustomEnv dec
 
 <!-- @[CustomEnvSupportMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvSupportMonitorPage.ets) -->
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const customMon = CustomEnvKey.create<number>();
@@ -579,7 +580,7 @@ Note: During the first render, the Tab only creates the currently displayed TabC
 
 <!-- @[CustomEnvSupportFreezed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvSupportComponentFreezePage.ets) -->
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const custom = CustomEnvKey.create<number>();
@@ -890,7 +891,7 @@ The running effect figure is as follows.
 
 ### V1/V2 Mixed Use of \@CustomEnv
 
-\@CustomEnv can be used in \@Component and \@ComponentV2, and it follows the [basic rules for V1/V2 mixing](./state-management/arkts-v1-v2-mixusage.md). When a variable decorated by \@CustomEnv is passed to V1, it follows the rule that V1 state variable decorators cannot be used with classes decorated by [\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md). When a variable decorated by \@CustomEnv is passed to V2, it follows the rule that only [\@Param](./state-management/arkts-new-param.md) in V2 can receive external variables.
+\@CustomEnv can be used in \@Component and \@ComponentV2, and it follows the [basic rules for V1/V2 mixing](./state-management/arkts-v1-v2-mixusage.md). When a variable decorated by \@CustomEnv is passed to V1, it follows the rule that V1 state variable decorators cannot receive classes decorated by [\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md). When a variable decorated by \@CustomEnv is passed to V2, it follows the rule that only [\@Param](./state-management/arkts-new-param.md) in V2 can receive external variables.
 
 
 
@@ -900,18 +901,18 @@ The running effect figure is as follows.
 (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvObservedV2MixV2ToV1Page.ets) -->
 ```ts
 @ObservedV2
-class CustomDefaultvalue {
+class CustomDefaultValue {
   @Trace public defaultVal: string = 'hello';
 }
 
 const customOne = CustomEnvKey.create<string>();
-const customTwo = CustomEnvKey.create<CustomDefaultvalue>();
+const customTwo = CustomEnvKey.create<CustomDefaultValue>();
 
 @Entry
 @ComponentV2
 struct PageTwo {
   @CustomEnv(customOne) defaultMessage: string = 'parent Value';
-  @CustomEnv(customTwo) defaultMessage1: CustomDefaultvalue = new CustomDefaultvalue();
+  @CustomEnv(customTwo) defaultMessage1: CustomDefaultValue = new CustomDefaultValue();
 
   build() {
     Column() {
@@ -927,7 +928,7 @@ struct PageTwo {
 @Component
 struct PageTwoChild {
   @Require @Prop message: string;
-  // @Prop customMessage: CustomValue; //  Incorrect usage, the type decorated by a V1 state variable decorator cannot be a class decorated by ObservedV2.
+  // @Prop customMessage: CustomDefaultValue; //  Incorrect usage. The type decorated by a V1 state variable decorator cannot be an ObservedV2-decorated class.
 
   build() {
     Column() {
@@ -1041,3 +1042,5 @@ struct ComponentPageChild {
 The running effect is shown in the figure below.
 
 ![image](./figures/custom-env-15.gif)
+
+<!--no_check-->

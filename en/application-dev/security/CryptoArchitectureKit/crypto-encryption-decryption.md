@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=93fabc8c17767c2f12d40761db89b34b086858e3 translatedAt=2026-10-09T01:45:07.733Z pushedAt=2026-10-10T02:17:16.876Z -->
+<!-- md-trans-meta sourceCommit=4352e7aaa95fee75f2db154ca5cd69e16f5c30f3 translatedAt=2026-11-16T09:11:50.739Z pushedAt=2026-11-16T09:59:57.655Z nl=1 -->
 
 In data storage or transmission scenarios, encryption and decryption operations can be used to ensure data confidentiality and prevent sensitive data leakage.
 
@@ -28,7 +28,7 @@ For each algorithm, the supported encryption modes are introduced in the specifi
 
 The algorithm library currently provides seven commonly used encryption modes for [AES](crypto-key-generation-conversion.md#aes) encryption and decryption: ECB, CBC, OFB, CFB, CTR, GCM, and CCM. Different encryption modes apply to different encryption and decryption parameters. For details, see [ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec).
 
-Because AES is a block cipher algorithm, its block length is 16 bytes. In actual applications, the last block of plaintext may be less than 16 bytes. In this case, data can be padded using different [padding modes](#padding-mode).
+Because AES is a block cipher algorithm, its block length is 16 bytes. In actual applications, the last block of plaintext may be less than 16 bytes. In this case, data can be padded using different [Padding Mode](#padding-mode).
 
 Because padding to the block size is required, both PKCS5 and PKCS7 in the actual algorithm library use the block size as the padding length. That is, AES encryption pads to 16 bytes.
 
@@ -40,10 +40,10 @@ Because padding to the block size is required, both PKCS5 and PKCS7 in the actua
 Currently, AES encryption and decryption can be performed using a string parameter. The specific "string parameter" is formed by concatenating the "symmetric key type (encryption/decryption algorithm + key length)", "block mode", and "padding mode" with the symbol "|", and is used to specify the algorithm specification when creating a symmetric encryption/decryption instance.
 
 - As shown in the table, only one item can be selected from each value range (that is, the content in []) to complete the string concatenation.
-
+  
   Examples:
   - When the block mode is ECB, the key length is 128 bits, and the padding mode is PKCS7, the string parameter is "AES128|ECB|PKCS7".
-
+  
   - When the block mode is CFB, the key length is 256 bits, and the padding mode is NoPadding, the string parameter is "AES256|CFB|NoPadding".
 
   | Block Mode | Key Length (bit) | Padding Mode | API Version | 
@@ -58,7 +58,7 @@ Currently, AES encryption and decryption can be performed using a string paramet
   | XTS | [128\|256] | [NoPadding] | 26.0.0+ | 
 
 - Starting from API version 10, symmetric encryption/decryption specifications without a key length are supported. When the encryption/decryption parameter is input as a key type, omitting the length is supported, and the encryption/decryption operation depends on the actual key length of the input key.
-
+  
   For example, when the block mode is CFB, no key length is specified, and the padding mode is NoPadding, the string parameter is "AES|CFB|NoPadding".
 
 ### DES
@@ -74,10 +74,10 @@ The algorithm library currently provides four common encryption modes for DES en
 Currently, DES encryption and decryption can be completed using a string parameter. The specific "string parameter" is formed by concatenating the "symmetric key type (encryption/decryption algorithm + key length)", "block mode", and "padding mode" with the symbol "|", and is used to specify the algorithm specification when creating a symmetric encryption/decryption instance.
 
 - As shown in the table, only one item can be selected from each value range (that is, the content in []) to complete the string concatenation.
-
+  
   Examples:
   - When the block mode is ECB, the key length is 64 bits, and the padding mode is PKCS7, the string parameter is "DES64|ECB|PKCS7".
-
+  
   - When the block mode is OFB, the key length is 64 bits, and the padding mode is NoPadding, the string parameter is "DES64|OFB|NoPadding".
 
   | Block Mode | Key Length (bit) | Padding Mode | API Version | 
@@ -97,7 +97,7 @@ The encryption and decryption process of the [3DES](crypto-key-generation-conver
 
 The algorithm library currently provides four commonly used encryption modes for 3DES encryption and decryption: ECB, CBC, OFB, and CFB. Different encryption modes apply to different encryption and decryption parameters. For details, see [ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec).
 
-Because DES is a block cipher algorithm with a block length of 8 bytes, in practical applications the last block of plaintext may be fewer than 8 bytes. In this case, data padding can be performed through different [padding modes](#padding-mode).
+Because DES is a block cipher algorithm with a block length of 8 bytes, in practical applications the last block of plaintext may be fewer than 8 bytes. In this case, data padding can be performed through different [Padding Mode](#padding-mode).
 
 Because padding to the block size is required, both PKCS5 and PKCS7 in the actual algorithm library use the block size as the padding length, that is, 3DES encryption pads to 8 bytes.
 
@@ -108,10 +108,10 @@ Because padding to the block size is required, both PKCS5 and PKCS7 in the actua
 Currently, 3DES encryption and decryption can be completed using a string parameter. The specific "string parameter" is formed by concatenating the "symmetric key type (encryption/decryption algorithm + key length)", the "block mode", and the "padding mode" with the symbol "|", and is used to specify the algorithm specification when creating a symmetric encryption/decryption instance.
 
 - As shown in the table, only one item can be selected from each value range (that is, the content in []) to complete the string concatenation.
-
+  
   For example:
   - When the block mode is ECB, the key length is 192 bits, and the padding mode is PKCS7, the string parameter is "3DES192|ECB|PKCS7".
-
+  
   - When the block mode is OFB, the key length is 192 bits, and the padding mode is NoPadding, the string parameter is "3DES192|OFB|NoPadding".
 
   | Block Mode | Key Length (bit) | Padding Mode | API Version | 
@@ -129,7 +129,7 @@ Currently, 3DES encryption and decryption can be completed using a string parame
 
 The algorithm library currently provides seven commonly used encryption modes for [SM4](crypto-key-generation-conversion.md#sm4) encryption and decryption: ECB, CBC, CTR, OFB, CFB, CFB128, and GCM. Different encryption modes apply to different encryption and decryption parameters. For details, see [ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec).
 
-Because SM4 is a block cipher algorithm with a block length of 16 bytes, in actual applications the last block of plaintext may be shorter than 16 bytes. In this case, data can be padded using different [padding modes](#padding-mode).
+Because SM4 is a block cipher algorithm with a block length of 16 bytes, in actual applications the last block of plaintext may be shorter than 16 bytes. In this case, data can be padded using different [Padding Mode](#padding-mode).
 
 Because padding to the block size is required, both PKCS5 and PKCS7 in the actual algorithm library use the block size as the padding length; that is, SM4 encryption pads to 16 bytes.
 
@@ -140,10 +140,10 @@ Because padding to the block size is required, both PKCS5 and PKCS7 in the actua
 Currently, SM4 encryption and decryption can be performed using a string parameter. The specific "string parameter" is formed by concatenating the "symmetric key type (encryption/decryption algorithm + key length)", the "block mode", and the "padding mode" with the symbol "|", and is used to specify the algorithm specification when creating a symmetric encryption/decryption instance.
 
 - As shown in the table, only one item can be selected from each value range (that is, the content in []) to complete the string concatenation. The SM4 algorithm and the key length are concatenated with the symbol "_".
-
+  
   Examples:
   - When the block mode is ECB, the key length is 128 bits, and the padding mode is PKCS7, the string parameter is "SM4_128|ECB|PKCS7".
-
+  
   - When the block mode is CFB, the key length is 128 bits, and the padding mode is NoPadding, the string parameter is "SM4_128|CFB|NoPadding".
 
   - When the block mode is GCM, the key length is 128 bits, and the padding mode is NoPadding, the string parameter is "SM4_128|GCM|NoPadding".
@@ -255,8 +255,6 @@ Currently, Blowfish encryption and decryption can be performed using a string pa
 
 Starting from API version 26.0.0, the block cipher algorithm [CAST](crypto-key-generation-conversion.md#cast) is supported, with a block length of 8 bytes and a key length ranging from 40 to 128 bits, which must be a multiple of 8.
 
-[CAST](crypto-key-generation-conversion.md#cast) is a block cipher algorithm with a block length of 8 bytes and a key length ranging from 40 to 128 bits, which must be a multiple of 8.
-
 The algorithm library currently provides the following common block modes for CAST encryption and decryption: ECB, CBC, OFB, and CFB. Different encryption modes apply to different encryption and decryption parameters. For details, see [ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec).
 
 > **Note:**
@@ -266,7 +264,7 @@ The algorithm library currently provides the following common block modes for CA
 Currently, CAST encryption and decryption can be completed using a string parameter, where the string parameter is CAST:
 
 The CBC, OFB, and CFB modes require an IV, which is 8 bytes in length, corresponding to [IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec).
-
+ 
 | Block Mode | String Parameter | Padding Mode | API Version | 
 | -------- | -------- | -------- | -------- |
 | ECB | CAST | [NoPadding\|PKCS5\|PKCS7] | 26.0.0+ | 
@@ -289,11 +287,11 @@ The algorithm library currently provides three commonly used modes for RSA encry
 - NoPadding: no padding is applied. The input data must be as long as the RSA key byte length, and the output data length is the same as the RSA key byte length.
 
 - PKCS1: the RSAES-PKCS1-V1_5 mode defined in RFC3447, corresponding to RSA_PKCS1_PADDING in OpenSSL.
-
+  
   During RSA computation, the source data D is converted into an Encryption block (EB). During encryption, the maximum input data length <= RSA key byte length - 11, and the output data length is the same as the RSA key byte length.
 
 - PKCS1_OAEP: the RSAES-OAEP mode defined in RFC3447, corresponding to RSA_PKCS1_OAEP_PADDING in OpenSSL.
-
+  
   This mode requires setting two digests (md and mgf1_md). During encryption, the input data length must be less than RSA key byte length - 2 * md digest byte length - 2, and the output data length is the same as the RSA key byte length.
 
   In this mode, you can set the pSource byte stream to define the encoding input for OAEP padding and obtain the related parameters of PKCS1_OAEP.
@@ -477,7 +475,7 @@ Currently, the maximum length supported for a single pass is INT_MAX (the maximu
 
 **Development example:** [Encryption and Decryption Using an AES Symmetric Key (GCM Mode)](crypto-aes-sym-encrypt-decrypt.md#using-an-aes-symmetric-key-gcm-mode-for-encryption-and-decryption)
 
-**Development example:** [Encryption and Decryption Using an SM4 Symmetric Key (GCM Mode)](crypto-sm4-sym-encrypt-decrypt.md#encrypting-and-decrypting-with-an-sm4-symmetric-key-gcm-mode)
+**Development example:** [Encryption and Decryption Using an SM4 Symmetric Key (GCM Mode)](crypto-sm4-sym-encrypt-decrypt.md#encrypting-and-decrypting-in-segments-with-an-sm4-symmetric-key-gcm-mode)
 
 ### Asymmetric Encryption and Decryption
 

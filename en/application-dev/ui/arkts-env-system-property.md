@@ -5,7 +5,7 @@
 <!--Designer: @s10021109-->
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=8a61b7ff8a75e64bd92b05d5ad8500696a7e344d translatedAt=2026-10-12T09:11:06.329Z pushedAt=2026-10-12T10:23:54.309Z -->
+<!-- md-trans-meta sourceCommit=9c2901abc93efc370a5cc38916acd25fe3587a40 translatedAt=2026-11-16T08:09:20.700Z pushedAt=2026-11-16T09:06:35.248Z nl=1 -->
 
 In multi-device development scenarios, you can use the [@Env](../reference/apis-arkui/arkui-ts/ts-env-system-property.md) decorator to listen for changes in system environment variables and determine the corresponding scenario based on these variables, thereby reducing adaptation logic and repetitive development across different devices.
 
@@ -29,10 +29,10 @@ Reads the corresponding environment variable information based on the input para
   - [ReadonlyEnvKey.WINDOW_IS_FOCUSED](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#attributes-1): used to obtain whether the window where the current custom component is located is focused. This parameter is supported since API version 26.0.0.
   - [ReadonlyEnvKey.WINDOW_IS_HIGHLIGHTED](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#attributes-1): used to obtain whether the window where the current custom component is located is highlighted. This parameter is supported since API version 26.0.0.
   - [WritableEnvKey.FONT_SCALE](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#writableenvkey): used to provide a local font scale for descendant components. This parameter is supported since API version 26.0.0.
-  - [WritableEnvKey.DIRECTION](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#writableenvkey): used to obtain the layout direction of the screen where the window is located. This parameter is supported since API version 26.0.0.
+  - [WritableEnvKey.DIRECTION](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#writableenvkey): used to provide the layout direction for descendant components. This parameter is supported since API version 26.0.0.
   - When a system environment variable changes, the @Env-decorated variable is notified to update, and the component associated with @Env is triggered to refresh, thereby implementing synchronous update of the UI content. When the @Env parameters are WritableEnvKey.FONT_SCALE and WritableEnvKey.DIRECTION, the parent component can pass values to @Env in child components via the [.env](../reference/apis-arkui/arkui-ts/ts-container-with-env.md#env) method in [WithEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md).
   - Variables decorated by @Env cannot be initialized by developers.
-    - When the type decorated by @Env is a complex type, @Env returns an instance of an observable environment variable class (decorated by [@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md), with its properties decorated by [@Trace](./state-management/arkts-new-observedV2-and-trace.md)). To listen for changes in environment variables, you can use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md). For a specific example, see [Using \@Env in \@ComponentV2](#using-env-in-componentv2).
+    - When the type decorated by \@Env is a complex type, \@Env returns an instance of an observable environment variable class (decorated by [\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md), with its properties decorated by [\@Trace](./state-management/arkts-new-observedV2-and-trace.md)). To listen for changes in environment variables, you can use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md). For a specific example, see [Using \@Env in \@ComponentV2](#using-env-in-componentv2).
     - When the type decorated by @Env is a simple type, you can use [@Watch](state-management/arkts-watch.md) in @Component and @Monitor in @ComponentV2 to listen for changes. For a specific example, see [@Watch and @Monitor Listening to @Env-Decorated Variables](#watch-and-monitor-listening-to-env-decorated-variables).
 
 ## Supported Parameters
@@ -878,3 +878,5 @@ struct Child {
 The following figure shows the runtime behavior.
 
 ![image](./figures/env-m.png)
+
+<!--no_check-->

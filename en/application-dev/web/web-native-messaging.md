@@ -5,7 +5,7 @@
 <!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=4f945590f61307c03472767556879a597fa3ab93 translatedAt=2026-11-05T10:42:40.038Z pushedAt=2026-11-06T00:41:34.990Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0dd54b3a6ace053491c9874412e7c7c9a9fa8174 translatedAt=2026-11-16T09:22:50.581Z pushedAt=2026-11-16T11:06:45.744Z nl=1 -->
 
 ## Overview
 

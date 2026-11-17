@@ -5,14 +5,14 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9c92183287fa23162e04874223c3b068eb1f8a4d translatedAt=2026-11-05T11:28:04.179Z pushedAt=2026-11-09T10:02:18.779Z nl=2 -->
+<!-- md-trans-meta sourceCommit=c6092ba0f3ceec3ead788bec15c9b487520b359b translatedAt=2026-11-16T08:05:17.411Z pushedAt=2026-11-16T09:06:35.220Z nl=2 -->
 
 ## Overview
 Component snapshot is the capability to generate a pixel map ([PixelMap](../reference/apis-image-kit/arkts-apis-image-PixelMap.md)) from the rendering result of a component node tree within an application. It supports two approaches:<br>Taking a snapshot of a component that is already attached to the UI tree<br>Taking a snapshot of an offline component implemented using **Builder** or **ComponentContent**.
 
 > **NOTE**
 >
-> Component snapshot relies on UI context and must be called in an environment with a clear context. Therefore, preferably use the [ComponentSnapshot](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md) object returned by the **getComponentSnapshot** API of **UIContext**. Avoid using the **componentSnapshot** API imported directly from @kit.ArkUI.
+> Component screenshot depends on the UI context and must be called in an environment with a clear context. Therefore, preferentially use the APIs of the [ComponentSnapshot](../reference/apis-arkui/arkts-apis-uicontext-componentsnapshot.md) object returned by the [getComponentSnapshot()](../reference/apis-arkui//arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) API of UIContext. Directly using the `componentSnapshot` API imported from `@kit.ArkUI` is not recommended.
 
 
 ### Taking a Snapshot of a Component Attached to the UI Tree

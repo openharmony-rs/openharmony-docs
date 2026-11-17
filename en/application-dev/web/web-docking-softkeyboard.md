@@ -5,7 +5,7 @@
 <!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=4f945590f61307c03472767556879a597fa3ab93 translatedAt=2026-11-05T10:39:43.917Z pushedAt=2026-11-05T11:30:50.829Z nl=1 -->
+<!-- md-trans-meta sourceCommit=71c7793eb3e46dc4828807c3ac70a798c224f88a translatedAt=2026-11-16T09:21:49.163Z pushedAt=2026-11-16T11:06:41.370Z nl=1 -->
 
 By docking the **Web** component to the soft keyboard, you can manage the display and interaction of the soft keyboard in your application, and can also customize its features to suit your specific needs. The main scenarios are as follows:
 
@@ -101,6 +101,8 @@ To improve user experience, you can call the [showTextInput()](../reference/apis
 // Index.ets
 import { webview } from '@kit.ArkWeb';
 import { inputMethod } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
 @Component
@@ -114,6 +116,8 @@ struct WebComponent {
             setTimeout(() => {
               inputMethod.getController().showTextInput();
             }, 10);
+          }).catch((error: BusinessError) => {
+            hilog.error(0x0000, 'testTag', 'Failed to run JavaScript. Cause: %{public}s', JSON.stringify(error));
           });
         });
     }
@@ -192,7 +196,7 @@ On a mobile device, you can set the avoidance mode for the soft keyboard on the 
 
    **Figure 1** Soft keyboard in the default avoidance mode
 
-  <!--Del-->   <!--DelEnd-->
+   <!--Del-->   <!--DelEnd-->
 
    **Figure 2** Soft keyboard re-arranged with ArkUI
 

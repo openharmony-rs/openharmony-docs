@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=e80025ed82ed281bac11c255d720292d542f564f translatedAt=2026-08-31T02:35:39.901Z pushedAt=2026-08-31T09:22:56.959Z -->
+<!-- md-trans-meta sourceCommit=4352e7aaa95fee75f2db154ca5cd69e16f5c30f3 translatedAt=2026-11-16T09:13:04.721Z pushedAt=2026-11-16T10:25:45.638Z nl=1 -->
 
 For the corresponding algorithm specifications, see [Signing and Signature Verification Algorithm Specifications: RSA](crypto-sign-sig-verify-overview.md#rsa).
 
@@ -15,7 +15,7 @@ For the corresponding algorithm specifications, see [Signing and Signature Verif
 **Signing**
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to generate an asymmetric key object (KeyPair) with the RSA algorithm, a key length of 1024 bits, and two prime numbers. The KeyPair includes a public key (PubKey) and a private key (PriKey).
-
+   
    To learn how to generate an RSA asymmetric key pair, refer to the following example together with [Asymmetric Key Generation and Conversion Specifications: RSA](crypto-key-generation-conversion.md#rsa) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). Note that the reference documents may differ from the current example in input parameters, so read them carefully to distinguish the differences.
 
 2. Call [cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign) and specify the string parameter `'RSA1024|PKCS1|SHA256'` to create a Sign instance with the asymmetric key type RSA1024, the padding mode PKCS1, and the digest algorithm SHA256 for signing.
@@ -23,7 +23,7 @@ For the corresponding algorithm specifications, see [Signing and Signature Verif
 3. Call [Sign.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-3) to initialize the Sign instance with the private key (PriKey).
 
 4. Call [Sign.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-3) to pass in the data to be signed.
-
+   
    There is no limit on the length of a single update. You can decide how to call update based on the amount of data.
 
    - When the data to be signed is short, you can call sign directly after init is complete.
@@ -41,7 +41,7 @@ For the corresponding algorithm specifications, see [Signing and Signature Verif
 
    Currently, there is no limit on the length of a single update call. You can determine how to call update based on the data volume.
 
-   - When the data to be signed is short, you can call verify directly after init is complete.
+   - When the data to be verified is short, you can call `verify` directly after `init` completes.
    - When the data volume is large, you can call update multiple times, that is, [segment signature verification](crypto-rsa-sign-sig-verify.md#signing-and-signature-verification-with-an-rsa-key-pair-pkcs1-mode-in-segments).
 
 4. Call [Verify.verify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#verify-1) to verify the data.
@@ -49,7 +49,7 @@ For the corresponding algorithm specifications, see [Signing and Signature Verif
 - Asynchronous method example:
 
   <!-- @[pkcs1_verify_rsa_keypair_sign_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pkcs1_signature_validator/rsa_pkcs1_signature_validator_asynchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -94,7 +94,7 @@ For the corresponding algorithm specifications, see [Signing and Signature Verif
 - Synchronous method example:
 
   <!-- @[pkcs1_verify_rsa_keypair_sign_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pkcs1_signature_validator/rsa_pkcs1_signature_validator_synchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -169,7 +169,7 @@ Starting from API version 26.0.0, signing and signature verification support the
 - Asynchronous method example:
 
   <!-- @[rsa_pkcs1_onlysign_onlyverify_signature_validator_asynchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/onlysign_onlyverify_signature_validator/rsa_pkcs1_onlysign_onlyverify_signature_validator_asynchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -215,7 +215,7 @@ Starting from API version 26.0.0, signing and signature verification support the
 - Synchronous method example:
 
   <!-- @[rsa_pkcs1_onlysign_onlyverify_signature_validator_synchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/onlysign_onlyverify_signature_validator/rsa_pkcs1_onlysign_onlyverify_signature_validator_synchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -263,7 +263,7 @@ Starting from API version 26.0.0, signing and signature verification support the
 **Signing**
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to generate an asymmetric key object (KeyPair) with the RSA algorithm, a key length of 1024 bits, and two prime numbers. The KeyPair includes a public key (PubKey) and a private key (PriKey).
-
+   
    To generate an RSA asymmetric key pair, refer to the following example and understand it together with [Asymmetric Key Generation and Conversion Specifications: RSA](crypto-key-generation-conversion.md#rsa) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). The referenced documents may differ from the current example in input parameters, so pay attention to the differences when reading them.
 
 2. Call [cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign) and specify the string parameter 'RSA1024|PKCS1|NoHash|OnlySign' to create a Sign instance with the asymmetric key type RSA1024, the padding mode PKCS1, and the signing mode OnlySign, for performing sign-only operations.
@@ -283,7 +283,7 @@ Starting from API version 26.0.0, signing and signature verification support the
 - Asynchronous method example:
 
   <!-- @[pkcs1_recover_rsa_keypair_sign_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pkcs1_signature_restoration/rsa_pkcs1_signature_restoration_asynchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -324,7 +324,7 @@ Starting from API version 26.0.0, signing and signature verification support the
 - Synchronous method example:
 
   <!-- @[pkcs1_recover_rsa_keypair_sign_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pkcs1_signature_restoration/rsa_pkcs1_signature_restoration_synchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -367,7 +367,7 @@ Starting from API version 26.0.0, signing and signature verification support the
 **Signing**
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to generate an asymmetric key object (KeyPair) with the RSA algorithm, a key length of 1024 bits, and two prime numbers. The KeyPair includes a public key (PubKey) and a private key (PriKey).
-
+   
    For details about how to generate an RSA asymmetric key pair, refer to the following example, together with [Asymmetric Key Generation and Conversion Specifications: RSA](crypto-key-generation-conversion.md#rsa) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). Note that the input parameters in the reference documents may differ from those in this example.
 
 2. Call [cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign) and specify the string parameter 'RSA1024|PKCS1|SHA256' to create a Sign instance with the asymmetric key type RSA1024, the padding mode PKCS1, and the digest algorithm SHA256 for signing.
@@ -391,7 +391,7 @@ Starting from API version 26.0.0, signing and signature verification support the
 - Asynchronous method example:
 
   <!-- @[pkcs1_seg_verify_rsa_keypair_sign_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pkcs1_segment_signature/rsa_pkcs1_segment_signature_asynchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -456,7 +456,7 @@ Starting from API version 26.0.0, signing and signature verification support the
 - Synchronous method example:
 
   <!-- @[pkcs1_seg_verify_rsa_keypair_sign_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pkcs1_segment_signature/rsa_pkcs1_segment_signature_synchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -553,7 +553,7 @@ Starting from API version 26.0.0, signing and signature verification support the
 - Asynchronous method example:
 
   <!-- @[pss_verify_rsa_keypair_sign_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pss_signature_verification/rsa_pss_signature_verification_asynchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -648,7 +648,7 @@ Starting from API version 26.0.0, signing and signature verification support the
 - Synchronous method example:
 
   <!-- @[pss_verify_rsa_keypair_sign_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pss_signature_verification/rsa_pss_signature_verification_synchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -773,7 +773,7 @@ Starting from API version 26.0.0, signing and signature verification support the
 - Asynchronous method example:
 
   <!-- @[rsa_pss_onlysign_onlyverify_signature_verification_asynchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/onlysign_onlyverify_signature_validator/rsa_pss_onlysign_onlyverify_signature_verification_asynchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -819,7 +819,7 @@ Starting from API version 26.0.0, signing and signature verification support the
 - Synchronous method example:
 
   <!-- @[rsa_pss_onlysign_onlyverify_signature_verification_synchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/onlysign_onlyverify_signature_validator/rsa_pss_onlysign_onlyverify_signature_verification_synchronous.ets) -->
-
+  
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';

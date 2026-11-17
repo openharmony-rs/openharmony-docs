@@ -6,7 +6,7 @@
 <!--Designer: @yyuehao-->
 <!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-11-05T10:54:19.911Z pushedAt=2026-11-06T01:45:16.249Z nl=1 -->
+<!-- md-trans-meta sourceCommit=1c0d32565a07d6161c64b340be482cf76a1a393d translatedAt=2026-11-16T09:28:34.705Z pushedAt=2026-11-16T11:06:55.078Z nl=1 -->
 
 ## When to Use
 
@@ -190,7 +190,7 @@ In the [freeform window](freeform-window-overview.md#freeform-window) state and 
 
   > **NOTE**
   > 
-  > For more information about multi-window floating windows, see [Introduction to Multi-Window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro) and [Best Practices for Multi-Window](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-multi-window-practice).
+  > For more information about the floating window, see [Introduction to Multi-Window](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/multi-window-intro).
 
 ### SPLIT_SCREEN
 
