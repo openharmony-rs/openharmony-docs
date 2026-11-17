@@ -891,85 +891,71 @@ struct AnimatorTest {
 
 <!--code_no_check-->
 <!--deprecated_code_no_check-->
-```ts
-import { Animator as animator, AnimatorResult, AnimatorOptions } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
+```js
+import animator from '@ohos.animator';
 
-let DataTmp: Record<string, Animator> = {
-  'divWidth': 200,
-  'divHeight': 200,
-  'animator': animator
-}
-
-class Tmp {
-  data: animator = DataTmp
-  onInit: Function = () => {
-  }
-  show: Function = () => {
-  }
+let DataTmp = {
+    'divWidth': 200,
+    'divHeight': 200
 }
 
 class AnimatorState {
-  divWidth: number = 0
-  divHeight: number = 0
-  animator: AnimatorResult | null = null
+    constructor() {
+        this.divWidth = 0;
+        this.divHeight = 0;
+        this.animator = null;
+    }
 }
 
-(Fn: (v: Tmp) => void) => {
-  Fn({
+export default {
     data: DataTmp,
+    animatorState: null,
     onInit() {
-      let options: AnimatorOptions = {
-        duration: 1500,
-        easing: "friction",
-        delay: 0,
-        fill: "forwards",
-        direction: "normal",
-        iterations: 2,
-        begin: 200.0,
-        end: 400.0
-      };
-      let animatorState: AnimatorState = {
-        divWidth: 200,
-        divHeight: 200,
-        animator: null
-      }
-      animatorState.animator = animator.create(options);
+        let options = {
+            duration: 1500,
+            easing: "friction",
+            delay: 0,
+            fill: "forwards",
+            direction: "normal",
+            iterations: 2,
+            begin: 200.0,
+            end: 400.0
+        };
+        this.animatorState = new AnimatorState();
+        this.animatorState.animator = animator.create(options);
     },
     show() {
-      let resetOptions: AnimatorOptions = {
-        duration: 1500,
-        easing: "friction",
-        delay: 0,
-        fill: "forwards",
-        direction: "normal",
-        iterations: 2,
-        begin: 0,
-        end: 400.0,
-      };
-      let animatorState: AnimatorState = {
-        divWidth: 200,
-        divHeight: 200,
-        animator: null
-      }
-      try {
-        animatorState.animator = animator.create(resetOptions);
-        animatorState.animator.reset(resetOptions);
-      } catch (error) {
-        let message = (error as BusinessError).message
-        let code = (error as BusinessError).code
-        console.error(`Animator reset failed. Code: ${code}, message: ${message}`);
-      }
-      let _this = animatorState;
-      if (animatorState.animator) {
-        animatorState.animator.onFrame = (value: number) => {
-          _this.divWidth = value;
-          _this.divHeight = value;
+        let resetOptions = {
+            duration: 1500,
+            easing: "friction",
+            delay: 0,
+            fill: "forwards",
+            direction: "normal",
+            iterations: 2,
+            begin: 0,
+            end: 400.0,
         };
-        animatorState.animator.play();
-      }
+        if (!this.animatorState) {
+            this.animatorState = new AnimatorState();
+        }
+        let animatorState = this.animatorState;
+        try {
+            animatorState.animator = animator.create(resetOptions);
+            animatorState.animator.reset(resetOptions);
+        } catch (error) {
+            let message = error.message;
+            let code = error.code;
+            console.error(`Animator reset failed. Code: ${code}, message: ${message}`);
+        }
+        let _this = this;
+        if (animatorState.animator) {
+            animatorState.animator.onframe = (value) => {
+                _this.divWidth = value;
+                _this.divHeight = value;
+            };
+            animatorState.animator.play();
+        }
     }
-  })
 }
 ```
 
