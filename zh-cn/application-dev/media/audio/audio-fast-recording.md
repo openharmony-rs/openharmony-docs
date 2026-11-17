@@ -29,7 +29,7 @@
 ### 设备使用约束
 
 - 使用低时延模式，需要通过[OH_AudioStreamManager_IsFastRecordingSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isfastrecordingsupported)查询当前流类型对应的输入设备是否支持。
-- 使用超低时延模式，需要通过[OH_AudioStreamManager_IsUltraFastRecordingSupported()](../../reference/apis-audio-kit/capi-native-audio-stream-manager-h.md#oh_audiostreammanager_isultrafastrecordingsupported)查询当前流类型对应的输入设备是否支持。
+- 使用超低时延模式，需要通过`OH_AudioStreamManager_IsUltraFastRecordingSupported()`查询当前流类型对应的输入设备是否支持。
 
 ### 多业务并发限制
 
