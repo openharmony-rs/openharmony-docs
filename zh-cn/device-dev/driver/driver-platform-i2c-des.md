@@ -206,7 +206,7 @@ static void TpSocIoCfg(void)
     OSAL_WRITEL(I2C_REG_CFG, IO_DEVICE_ADDR(I2C3_CLK_REG_ADDR));
 }
 
-/* 对TP的复位管脚进行初始化， 拉高维持20ms，再拉低维持50ms，最后再拉高维持20ms， 完成复位动作 */
+/* 对TP的复位管脚进行初始化， 拉高维持20ms，再拉低维持50ms，最后再拉高维持20ms，完成复位动作 */
 static int32_t TestCaseGpioInit(struct TpI2cDevice *tpDevice)
 {
     int32_t ret;
