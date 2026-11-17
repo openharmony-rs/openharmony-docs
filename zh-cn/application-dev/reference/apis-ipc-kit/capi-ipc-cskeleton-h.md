@@ -223,7 +223,7 @@ int OH_IPCSkeleton_SetMaxWorkThreadNum(const int maxThreadNum)
 
   | 参数项 | 描述 |
   | ------ | ---- |
-  | const int maxThreadNum   | 最大工作线程数，单位：个，范围:[1, 32]。系统默认最大工作线程数为16。 |
+  | const int maxThreadNum   | 最大工作线程数，单位：个，范围：[1, 32]。系统默认最大工作线程数为16。 |
 
 **返回：**
 
