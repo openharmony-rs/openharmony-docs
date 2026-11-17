@@ -19,7 +19,7 @@ Since API version 26.0.1, the ArkUI development framework provides a performance
 
 - [Custom drawing](#custom-drawing-and-animation): For implementation details, see [OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_setcontentmodifierondraw) and its associated APIs. You can also use ContentModifier bound APIs (for example, [OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_setfloatpropertyvalue)) to dynamically modify the content to be drawn.
 
-- [Using Dvsync to Optimize Render Node Performance](#using-dvsync-to-optimize-render-node-performance): See [OH_ArkUI_NodeUtils_SetUiDvsyncSwitch](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_setuidvsyncswitch) to enable the Dvsync switch and improve the scrolling smoothness of render nodes in fling scenarios. For details about the principles, functions, and usage restrictions of Dvsync, see the following sections.
+- [Using Dvsync to Optimize Render Node Performance](#using-dvsync-to-optimize-render-node-performance): See [OH_ArkUI_NodeUtils_SetUiDvsyncSwitch](../reference/apis-arkui/capi-native-node-h.md) to enable the Dvsync switch and improve the scrolling smoothness of render nodes in fling scenarios. For details about the principles, functions, and usage restrictions of Dvsync, see the following sections.
 
 
 ## Mounting Nodes and Setting Basic Attributes
@@ -659,11 +659,11 @@ For a complete example, refer to [native_render_node_sample](https://gitcode.com
 
 ## Using Dvsync to Optimize Render Node Performance
 
-Starting from API version 26.0.1, when developing a scrollable custom component, you can enable the Dvsync switch through [OH_ArkUI_NodeUtils_SetUiDvsyncSwitch](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_setuidvsyncswitch) to interpolate frames for the fling scenario of a render node, thereby improving the scrolling smoothness of fling.
+Starting from API version 26.0.1, when developing a scrollable custom component, you can enable the Dvsync switch through [OH_ArkUI_NodeUtils_SetUiDvsyncSwitch](../reference/apis-arkui/capi-native-node-h.md) to interpolate frames for the fling scenario of a render node, thereby improving the scrolling smoothness of fling.
 
-Dvsync is short for Decoupled Vsync, which is a frame timing management strategy decoupled from hardware Vsync. You can enable Dvsync through [OH_ArkUI_NodeUtils_SetUiDvsyncSwitch](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_setuidvsyncswitch). After Dvsync is enabled, the system responds to Vsync requests more promptly and executes rendering tasks more frequently, which helps reduce frame drops and improve animation smoothness.
+Dvsync is short for Decoupled Vsync, which is a frame timing management strategy decoupled from hardware Vsync. You can enable Dvsync through [OH_ArkUI_NodeUtils_SetUiDvsyncSwitch](../reference/apis-arkui/capi-native-node-h.md). After Dvsync is enabled, the system responds to Vsync requests more promptly and executes rendering tasks more frequently, which helps reduce frame drops and improve animation smoothness.
 
-Currently, Dvsync is used only in the fling scenario of render nodes. If you enable the Dvsync switch through [OH_ArkUI_NodeUtils_SetUiDvsyncSwitch](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_setuidvsyncswitch) in other scenarios, Dvsync does not take effect. Do not enable Dvsync in scenarios other than render node fling. Before using Dvsync, make sure that the current application and window meet the following conditions. If any of the following conditions is not met during use, Dvsync is automatically disabled, and you need to call the API again to enable Dvsync.
+Currently, Dvsync is used only in the fling scenario of render nodes. If you enable the Dvsync switch through [OH_ArkUI_NodeUtils_SetUiDvsyncSwitch](../reference/apis-arkui/capi-native-node-h.md) in other scenarios, Dvsync does not take effect. Do not enable Dvsync in scenarios other than render node fling. Before using Dvsync, make sure that the current application and window meet the following conditions. If any of the following conditions is not met during use, Dvsync is automatically disabled, and you need to call the API again to enable Dvsync.
 
 | Check Item | Rule |
 | --- | --- |
