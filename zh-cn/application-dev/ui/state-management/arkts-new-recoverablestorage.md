@@ -1,4 +1,4 @@
-# RecoverableStorage: 资源管控终止恢复
+# RecoverableStorage: 可恢复存储UI状态
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
@@ -6,11 +6,11 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了增强状态管理框架在应用被系统资源管控终止或异常退出场景下的数据恢复能力，开发者可以使用RecoverableStorage自动保存与恢复状态变量。
+为了增强状态管理框架在应用被资源管控终止或异常退出场景下的数据恢复能力，开发者可以使用RecoverableStorage自动保存与恢复状态变量。
 
 RecoverableStorage是应用程序中的可选单例对象。此对象的作用是：当应用被系统以资源管控方式终止（如低内存）或因JS_ERROR、APP_FREEZE异常退出时，自动保存所声明的状态变量的当前值；应用被系统重新拉起后，自动恢复这些值，实现UI无感恢复。
 
-与[PersistenceV2](./arkts-new-persistencev2.md)的持久化模型不同，RecoverableStorage采用**快照模型**：仅在系统存盘时机（应用退后台时预备存档/异常发生时点存档）一次性提取当前值，而非每次变量变更即写入磁盘。这意味着静止UI零开销，恢复数据为临时数据（用户上滑删除即清除），适合保存页面草稿、滚动位置等轻量UI状态。
+与[PersistenceV2](./arkts-new-persistencev2.md)的持久化模型不同，RecoverableStorage采用**快照模型**：仅在系统存盘时机（应用退后台时预备存档/异常发生时点存档）一次性提取当前值，而非每次变量变更即写入磁盘。界面无变化时不产生任何磁盘写入，恢复数据为临时数据（用户上滑删除即清除），适合保存页面草稿、滚动位置等轻量UI状态。
 
 在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[RecoverableStorage-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#recoverablestorage)。
 
@@ -20,7 +20,7 @@ RecoverableStorage是应用程序中的可选单例对象。此对象的作用�
 
 ## 概述
 
-RecoverableStorage是应用启动时创建的单例，提供资源管控终止/异常退出场景下状态变量的声明、保存与恢复能力。开发者通过[connect](../../reference/apis-arkui/js-apis-stateManagement.md#recoverablestorage)声明变量后，系统在存盘时机自动提取当前值；应用被系统恢复重启（系统携带恢复参数自动拉起，区别于用户手动打开）后，再次执行connect即可读回保存的值。
+RecoverableStorage是应用启动时创建的单例，提供资源管控终止/异常退出场景下状态变量的声明、保存与恢复能力。开发者通过[connect](../../reference/apis-arkui/js-apis-stateManagement.md#connect-1)声明变量后，系统在存盘时机自动提取当前值；应用被系统恢复重启（系统携带恢复参数自动拉起，区别于用户手动打开）后，再次执行connect即可读回保存的值。
 
 与PersistenceV2的差异如下：
 
@@ -31,18 +31,11 @@ RecoverableStorage是应用启动时创建的单例，提供资源管控终止/�
 | 数据生命周期 | 临时（上滑删除/重启后清除） | 持久（写入磁盘） |
 | 适用场景 | 页面草稿、滚动位置等轻量UI状态 | 用户设置、历史记录等持久数据 |
 
-RecoverableStorage同时适用于[状态管理V1](arkts-application-state-management-overview.md)与[状态管理V2](arkts-application-state-management-overview.md)，支持保存普通对象、[\@Observed](arkts-observed-and-objectlink.md)装饰的对象、[\@ObservedV2](arkts-new-observedV2-and-trace.md)装饰的对象、嵌套对象、容器（Array/Map/Set）等。
+## 使能恢复能力
 
-## 使用场景
+### 资源管控终止恢复的使能
 
-典型使用流程：声明可恢复变量 → 应用退后台或异常退出时系统自动保存 → 应用被重新拉起后自动恢复。
-
-### 应用被资源管控终止后的恢复
-
-**使能配置**：RecoverableStorage依赖系统恢复链路，两种恢复场景的使能配置分别说明如下。
-
-
-在UIAbility的onCreate中调用[setRestoreEnabled](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setrestoreenabled)(true)开启恢复门控，并调用[restoreWindowStage](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#restorewindowstage)提前就绪contentStorage：
+在UIAbility的onCreate中调用[setRestoreEnabled](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setrestoreenabled)(true)开启应用的恢复能力，并调用[restoreWindowStage](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#restorewindowstage)初始化页面内容存储：
 
 ```ts
 // EntryAbility.ets
@@ -51,8 +44,10 @@ import { window } from '@kit.ArkUI';
 
 export default class EntryAbility extends UIAbility {
   onCreate(): void {
-    this.context.setRestoreEnabled(true);       // 开启恢复能力（未开启时终止后不恢复）
-    this.context.restoreWindowStage(new LocalStorage()); // 初始化页面内容存储（异常退出后的恢复依赖它就绪）
+    // 开启应用的恢复能力，未开启时应用被终止后不会恢复
+    this.context.setRestoreEnabled(true);
+    // 初始化页面内容存储，异常退出后的恢复依赖此调用
+    this.context.restoreWindowStage(new LocalStorage());
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -61,36 +56,11 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-公共配置即可，无需调用[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)：保持系统默认恢复模式，应用退后台时自动存档，资源管控终止后经最近任务重新打开即恢复。
+完成上述配置后，应用退后台时自动存档；被资源管控终止后，从最近任务重新打开即恢复。
 
-应用被系统资源管控终止后，系统自动重新拉起，`connect`读回退后台时保存的值。
+### 异常退出恢复的使能
 
-```ts
-@Entry
-@Component
-struct DraftPage {
-  // 连接可恢复变量并注册错误回调；恢复失败时回退默认值并经回调上报
-  @State draft: Draft = RecoverableStorage.connect({
-    component: this,                       // 传入当前组件实例
-    type: Draft,
-    defaultCreator: (): Draft => new Draft(''),
-    notifyOnError: (e) => console.error(`${e.reason}: ${e.keys.join(',')}`)  // 错误回调
-  });
-
-  build() {
-    Column() {
-      TextInput({ text: this.draft.text })
-        .onChange((v: string) => { this.draft.text = v; })
-    }
-  }
-}
-```
-
-用户在TextInput输入文字 → 按Home退后台（触发存档）→ 应用被资源管控终止 → 系统重新拉起 → TextInput文字复原。
-
-### 应用异常退出后的恢复
-
-**使能配置**：除上述公共配置外，还须在公共配置基础上，还须在AbilityStage的onCreate中调用[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)：
+除上述公共配置外，还须在AbilityStage的onCreate中调用[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)：
 
 ```ts
 // MyAbilityStage.ets（module.json5中srcEntry指向该文件）
@@ -109,125 +79,218 @@ export default class MyAbilityStage extends AbilityStage {
 
 >**注意：**
 >
->`enableAppRecovery`必须在**AbilityStage.onCreate**（app级入口）调用，且未注册errorManager错误观察器；否则异常退出场景不保存、不自动重启。
+>[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)必须在AbilityStage的onCreate（应用级入口）调用，且未注册errorManager错误观察器；否则异常退出场景不保存、不自动重启。
 
 ## 使用限制
 
-1. 仅支持对象类型（`T extends object`），不支持基本类型。传入number、string、boolean等基本类型会抛出[BusinessError(140124)](../../reference/apis-arkui/errorcode-stateManagement.md#140124)。类的**成员属性**支持基本类型与联合类型（如`string | null`、`number | undefined`），`null`/`undefined`属性值可正常保存与恢复。
+1. 仅支持对象类型（`T extends object`），不支持基本类型。传入number、string、boolean等基本类型会抛出[BusinessError(140124)](../../reference/apis-arkui/errorcode-stateManagement.md#140124)。类的成员属性支持基本类型与联合类型（如`string | null`、`number | undefined`），`null`/`undefined`属性值可正常保存与恢复。
 
-2. 单实例可保存的序列化数据上限为150KB，推荐数据总量不超过100KB。超出上限的数据不会被保存，并通过notifyOnError告知开发者，不会导致应用崩溃。
+2. 单实例可保存的序列化数据上限为150KB，推荐数据总量不超过100KB。超出上限的数据不会被保存，并通过[notifyOnError](../../reference/apis-arkui/js-apis-stateManagement.md#recoverableconnectoptionst-s)告知开发者，不会导致应用崩溃。
 
 3. 须在自定义组件内调用，[component](../../reference/apis-arkui/js-apis-stateManagement.md#recoverableconnectoptionst-s)参数传`this`（组件实例）。运行时校验的是component有效性（能否提供实例ID），持有有效组件实例时在组件外调用亦可连接成功。
 
-4. 多实例（multiton ability各窗口）各自独立分区，同一key在不同窗口互不干扰。
+4. [多实例](../../application-models/uiability-launch-type.md)（multiton启动模式的各窗口）各自独立分区，同一key在不同窗口互不干扰。
 
-5. 不支持PixelMap、NativePointer、ArrayList等非内置类型。
+5. 不支持[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等非内置类型。
 
-6. 对象之间相互引用（循环引用）时，仅当环上每个嵌套类字段在声明时初始化（如`peer: Node = new Node()`）或使用\@Type标注类型后才能恢复；初始化为`null`且未标注\@Type的字段无法确定类型，该变量恢复时回退为默认值，并通过notifyOnError上报。
+6. 对象之间相互引用（循环引用）时，仅当环上每个嵌套类字段在声明时初始化（如`peer: Node = new Node()`）或使用[\@Type](./arkts-new-observedV2-and-trace.md)标注类型后才能恢复；初始化为`null`且未标注\@Type的字段无法确定类型，该变量恢复时回退为默认值，并通过notifyOnError上报。
 
-## 支持的类型
+7. 典型用法为修改所连接对象的属性。对状态变量整体重新赋值（如`this.draft = new Draft()`）会使已保存的引用失效，此后的修改不被跟踪。
 
-### V1形态（@State + 普通类）
+## 使用场景
 
-嵌套成员在声明时创建实例，恢复时数据直接填充到这些已创建的实例中，实例的类信息不丢失（instanceof判断仍成立）。
+### 保存普通对象与\@Observed装饰的对象
+
+普通类与[\@Observed](./arkts-observed-and-objectlink.md)装饰的类均可作为可恢复状态变量的类型。嵌套成员在声明时创建实例，恢复时数据直接填充到这些已创建的实例中，实例的类信息不丢失（instanceof判断仍成立）。
 
 ```ts
+import { RecoverableStorage } from '@kit.ArkUI';
+
+// 普通类
 class Draft {
   text: string = '';
-  level: number = 0;
-  constructor(text: string = '', level: number = 0) { this.text = text; this.level = level; }
+
+  constructor(text: string = '') {
+    this.text = text;
+  }
 }
 
 @Entry
 @Component
 struct MyPage {
-  // 连接可恢复状态变量：component传this，恢复时读回保存值或走默认构造
+  // 连接可恢复状态变量
   @State draft: Draft = RecoverableStorage.connect({
-    component: this,
+    component: this,   // 传入当前组件实例
     type: Draft,
     defaultCreator: (): Draft => new Draft()
   });
+
+  build() {
+    Column() {
+      TextInput({ text: this.draft.text })
+        .onChange((v: string) => {
+          this.draft.text = v;
+        })
+    }
+  }
 }
 ```
 
-### V2形态（@Local + @ObservedV2 + @Type）
-
-嵌套\@Type成员的类须\@ObservedV2装饰，嵌套重建由\@Type元数据驱动。
+\@Observed装饰的类的使用方式相同：
 
 ```ts
+import { RecoverableStorage } from '@kit.ArkUI';
+
+// \@Observed装饰的类
+@Observed
+class Cart {
+  count: number = 0;
+}
+
+@Entry
+@Component
+struct CartPage {
+  // 连接@Observed装饰的对象
+  @State cart: Cart = RecoverableStorage.connect({
+    component: this,   // 传入当前组件实例
+    type: Cart,
+    defaultCreator: (): Cart => new Cart()
+  });
+
+  build() {
+    Column() {
+      Text(`count: ${this.cart.count}`)
+        .onClick(() => {
+          this.cart.count += 1;
+        })
+    }
+  }
+}
+```
+
+### 保存\@ObservedV2装饰的对象
+
+[\@ObservedV2](./arkts-new-observedV2-and-trace.md)装饰的类配合[\@Trace](./arkts-new-observedV2-and-trace.md#trace)与[\@Type](./arkts-new-observedV2-and-trace.md#type)使用，嵌套对象由\@Type元数据驱动重建。
+
+```ts
+import { RecoverableStorage } from '@kit.ArkUI';
+
+// \@ObservedV2装饰的类，嵌套成员使用\@Type标注
 @ObservedV2
 class Envelope {
   @Trace title: string = '';
   @Type(Attachment) attach: Attachment = new Attachment();
 }
 
+@ObservedV2
+class Attachment {
+  @Trace name: string = '';
+}
+
 @Entry
 @ComponentV2
 struct MyPage {
-  // V2形态：@ObservedV2类 + @Type元数据驱动嵌套重建
+  // 连接可恢复状态变量
   @Local env: Envelope = RecoverableStorage.connect({
-    component: this,
+    component: this,   // 传入当前组件实例
     type: Envelope,
     defaultCreator: (): Envelope => new Envelope()
   });
+
+  build() {
+    Column() {
+      TextInput({ text: this.env.title })
+        .onChange((v: string) => {
+          this.env.title = v;
+        })
+    }
+  }
 }
 ```
 
-### 容器形态（Array/Map/Set顶层connect + defaultSubCreator）
+### 保存容器类数据
 
-`type`传Array/Map/Set时，`defaultSubCreator`作为容器元素factory，使元素恢复为类实例。
+容器类（Array/Map/Set）须同时传入[defaultSubCreator](../../reference/apis-arkui/js-apis-stateManagement.md#recoverableconnectoptionst-s)，作为容器元素构造器，使元素恢复为类实例。
 
 ```ts
+import { RecoverableStorage } from '@kit.ArkUI';
+
+// 容器元素类型
+class CartItem {
+  name: string = '';
+
+  constructor(name: string = '') {
+    this.name = name;
+  }
+}
+
 @Entry
 @Component
 struct CartPage {
-  // 容器形态：type传Array，defaultSubCreator使元素恢复为类实例
+  // 连接容器类可恢复变量，defaultSubCreator使元素恢复为CartItem实例
   @State cart: CartItem[] = RecoverableStorage.connect({
-    component: this,
+    component: this,   // 传入当前组件实例
     type: Array,
     defaultCreator: (): CartItem[] => [],
     defaultSubCreator: (): CartItem => new CartItem()
   });
+
+  build() {
+    Column() {
+      ForEach(this.cart, (item: CartItem) => {
+        Text(item.name)
+      }, (item: CartItem) => item.name)
+    }
+  }
 }
 ```
 
-### \@Computed属性
-
-保存与恢复对开发者透明：恢复后读取只读属性得到与保存时一致的值，不报错不回调、无需额外处理。getter-only值由依赖重算，\@Computed随依赖变更按既有计算规则更新。
-
-应用因JS_ERROR或APP_FREEZE退出后，系统自动重启并恢复异常发生时刻的值。前提是AbilityStage已调用`enableAppRecovery`且未注册errorObserver。
-
 ### 多实例隔离
 
-每个窗口实例（multiton ability各窗口）有独立分区。一个实例的connect仅返回本实例已注册变量的保存值或默认构造值，绝不返回其他实例的值。
+每个窗口实例（[multiton启动模式](../../application-models/uiability-launch-type.md)的各窗口）有独立分区。一个实例的connect仅返回本实例已注册变量的保存值或默认构造值，不会返回其他实例的值。
 
 ### 通过notifyOnError获取错误信息
 
-保存或恢复失败时（如数据超出150KB上限），失败的数据不会被保存，经回调上报受影响的key及原因。
+保存或恢复失败时（如数据超出150KB上限），失败的数据不会被保存，经回调上报原因、受影响的key与附加信息。
 
 ```ts
-// 注册错误回调：数据超上限等保存失败时，上报受影响的key及原因
-@State big: BigDraft = RecoverableStorage.connect({
-  component: this,                        // 传入当前组件实例
-  type: BigDraft,
-  defaultCreator: (): BigDraft => new BigDraft(),
-  notifyOnError: (e: RecoverableStorageError) => {
-    // e.reason: 'serialization'（超限或字段不可序列化）
-    // e.keys: 受影响的key列表
-    // e.message: 错误附加信息
-    console.error(`over-budget: ${e.reason} keys=${e.keys.join(',')}`);
+import { RecoverableStorage, RecoverableStorageError } from '@kit.ArkUI';
+
+// 含大字符串属性的类型
+class BigDraft {
+  data: string = '';
+}
+
+@Entry
+@Component
+struct BigPage {
+  // 连接可恢复状态变量并注册错误回调
+  @State big: BigDraft = RecoverableStorage.connect({
+    component: this,   // 传入当前组件实例
+    type: BigDraft,
+    key: 'bigDraft',
+    defaultCreator: (): BigDraft => new BigDraft(),
+    notifyOnError: (e: RecoverableStorageError) => {
+      // 保存或恢复失败时上报原因、受影响的key与附加信息
+      console.error(`reason: ${e.reason}, keys: ${e.keys.join(',')}, message: ${e.message}`);
+    }
+  });
+
+  aboutToAppear(): void {
+    // 构造超过单实例150KB上限的数据
+    this.big.data = 'a'.repeat(200 * 1024);
   }
-});
+
+  build() {
+    Column() {
+      Text(`data length: ${this.big.data.length}`)
+    }
+  }
+}
 ```
 
-## 使用建议
+应用退后台触发保存时，超出上限的数据不会被保存，回调输出如下（真实格式）：
 
-1. **典型用法为修改所连接对象的属性**，而非整体重新赋值。对V1 \@State变量整体重新赋值（`this.draft = new Draft()`）会导致已存引用失效，不被跟踪。
-
-2. **嵌套重建**：V2走[\@Type](arkts-new-observedV2-and-trace.md#type)元数据，V1走字段初始化器实例化，均不需要defaultSubCreator。defaultSubCreator仅对容器（Array/Map/Set）顶层生效。
-
-3. **冷启动语义**：用户手动启动应用（点图标）始终为冷启动，connect返回默认值，不读取恢复数据。仅系统携带恢复重启参数拉起的启动会执行恢复。
-
-4. **上滑删除清除数据**：用户从最近任务上滑删除应用后，系统删除该应用的恢复数据，之后任何打开都不恢复。
-
-5. **多实例建议**：同一key在不同窗口各自独立。如果需要跨实例共享数据，建议使用AppStorageV2或PersistenceV2。
+```text
+reason: serialization, keys: bigDraft, message: serialize budget (153600 bytes) exceeded, 1 key(s) evicted
+```
