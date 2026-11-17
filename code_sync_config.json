@@ -69054,9 +69054,9 @@
 						"start_line":267
 					},
 					{
-						"end_line":364,
+						"end_line":370,
 						"name":"AudioDecoder::Release",
-						"start_line":352
+						"start_line":356
 					}
 				]
 			},
@@ -69181,14 +69181,14 @@
 						"start_line":271
 					},
 					{
-						"end_line":258,
+						"end_line":261,
 						"name":"AudioEncoder::Stop",
 						"start_line":249
 					},
 					{
-						"end_line":272,
+						"end_line":277,
 						"name":"AudioEncoder::Release",
-						"start_line":260
+						"start_line":263
 					}
 				]
 			},
@@ -69346,7 +69346,7 @@
 						"start_line":173
 					},
 					{
-						"end_line":223,
+						"end_line":227,
 						"name":"AudioDecoder::GetOutputBuffer",
 						"start_line":193
 					},
@@ -69366,9 +69366,9 @@
 						"start_line":267
 					},
 					{
-						"end_line":364,
+						"end_line":370,
 						"name":"AudioDecoder::Release",
-						"start_line":352
+						"start_line":356
 					}
 				]
 			},
@@ -69386,7 +69386,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/player/output/audio/AudioOutputPump.cpp",
 				"functions":[
 					{
-						"end_line":169,
+						"end_line":174,
 						"name":"AudioOutputPump::ProcessSyncOutput",
 						"start_line":143
 					}
@@ -69454,14 +69454,14 @@
 						"start_line":271
 					},
 					{
-						"end_line":258,
+						"end_line":261,
 						"name":"AudioEncoder::Stop",
 						"start_line":249
 					},
 					{
-						"end_line":272,
+						"end_line":277,
 						"name":"AudioEncoder::Release",
-						"start_line":260
+						"start_line":263
 					}
 				]
 			},
