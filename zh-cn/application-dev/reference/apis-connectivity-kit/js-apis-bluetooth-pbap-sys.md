@@ -143,7 +143,7 @@ setShareType(deviceId: string, type: ShareType): Promise&lt;void&gt;
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -244,7 +244,7 @@ getShareType(deviceId: string): Promise&lt;ShareType&gt;
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;[ShareType](#sharetype)&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
+| Promise&lt;[ShareType](#sharetype)&gt; | Promise对象，返回电话簿信息的共享类型。 |
 
 **错误码**：
 
@@ -348,7 +348,7 @@ setPhoneBookAccessAuthorization(deviceId: string, authorization: AccessAuthoriza
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -449,7 +449,7 @@ getPhoneBookAccessAuthorization(deviceId: string): Promise&lt;AccessAuthorizatio
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | 以Promise的形式返回结果。如果成功，err为undefined，否则为错误对象。 |
+| Promise&lt;[AccessAuthorization](js-apis-bluetooth-constant-sys.md#accessauthorization11)&gt; | Promise对象，返回电话簿信息的访问权限。 |
 
 **错误码**：
 

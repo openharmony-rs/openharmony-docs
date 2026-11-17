@@ -434,62 +434,6 @@ try {
 ```
 
 
-## connection.disconnectAllowedProfiles<sup>11+</sup>
-
-disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
-
-断开远端设备所有连接的profiles。使用Promise异步回调。
-
-**系统接口**：此接口为系统接口。
-
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
-
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**参数：**
-
-| 参数名      | 类型     | 必填   | 说明                                  |
-| -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示断开的远端设备地址，例如："11:22:33:44:55:66"。 |
-
-**返回值：**
-
-| 类型                                              | 说明                |
-| ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | 以Promise形式返回断开profiles的结果，返回true为成功，false为失败。 |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------- |
-|201     | Permission denied.                       |
-|202     | Non-system applications are not allowed to use system APIs. <br>适用版本：11-24                      |
-|401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：11-24                       |
-|801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.                |
-|2900001 | Service stopped.                         |
-|2900003 | Bluetooth disabled.                 |
-|2900099 | Operation failed.                        |
-
-**示例：**
-
-```js
-import { BusinessError } from '@kit.BasicServicesKit';
-try {
-    connection.disconnectAllowedProfiles('11:22:33:44:55:66').then(() => {
-        console.info('disconnectAllowedProfiles');
-    }, (err: BusinessError) => {
-        console.error('disconnectAllowedProfiles:errCode' + err.code + ', errMessage: ' + err.message);
-    });
-} catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-}
-```
-
-
 ## connection.getRemoteProductId<sup>11+</sup>
 
 getRemoteProductId(deviceId: string): string
@@ -523,6 +467,7 @@ getRemoteProductId(deviceId: string): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
+|201 | Permission denied.<br>适用版本：11-15 |
 |202 | Non-system applications are not allowed to use system APIs. |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
@@ -565,7 +510,7 @@ setRemoteDeviceType(deviceId: string, type: DeviceType): Promise&lt;void&gt;
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | 以Promise形式返回设置蓝牙远端设备类型的结果，设置失败时返回错误码信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -608,17 +553,17 @@ getRemoteDeviceType(deviceId: string): Promise&lt;DeviceType&gt;
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**参数：**
+**参数**：
 
 | 参数名    | 类型      | 必填   | 说明                               |
 | ------ | ------- | ---- | -------------------------------- |
 | deviceId | string  | 是    | 表示远端设备MAC地址，例如："11:22:33:44:55:66"。 |
 
-**返回值：**
+**返回值**：
 
 | 类型                  | 说明         |
 | ------------------- | ------------- |
-| Promise&lt;[DeviceType](#devicetype12)&gt; | 以Promise形式返回获取蓝牙远端设备类型的结果，返回值为设备类型。 |
+| Promise&lt;[DeviceType](#devicetype12)&gt; | Promise对象，返回设备类型。 |
 
 **错误码**：
 
@@ -733,7 +678,7 @@ updateCloudBluetoothDevice(trustedPairedDevices: TrustedPairedDevices): Promise&
 
 | 类型                  | 说明         |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | 以Promise形式返回设置云设备的结果。设置失败时返回错误码信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -941,7 +886,7 @@ setCarKeyDfxData(deviceId: string, action: CarKeyActionType): void
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string  | 是    | 表示远端设备MAC地址，例如："11:22:33:44:55:66"。 |
 | action | [CarKeyActionType](#carkeyactiontype)  | 是    | 表示车钥匙执行的操作，例如开卡、删卡。 |
-
+           
 **错误码**：
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
@@ -949,7 +894,7 @@ setCarKeyDfxData(deviceId: string, action: CarKeyActionType): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
 |202 | Non-system applications are not allowed to use system APIs. |
-|801 | Capability not supported.          |
+|801 | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.          |
 |2900003 | Bluetooth disabled.                 |
 |2900099 | Operation failed.                        |
 
@@ -1233,7 +1178,7 @@ try {
 | -------- | ------ | ---- | ---- | ----------- |
 | sn  | string | 否    | 否    | 表示设备的序列号。   |
 | deviceType  | string | 否    | 否    | 表示设备类型。   |
-| modelId  | string | 否    | 否    | 表示左侧耳机的充电状态。   |
+| modelId  | string | 否    | 否    | 表示设备识别码。   |
 | manufactory  | string | 否    | 否    | 表示制造商信息。   |
 | productId  | string | 否    | 否    | 表示设备产品信息。   |
 | hiLinkVersion  | string | 否    | 否    | 表示hilink版本信息。   |
