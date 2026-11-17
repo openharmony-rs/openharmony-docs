@@ -1855,6 +1855,22 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
  
 **起始版本**：26.0.1
 
+## ohos.permission.START_HISHELL_TERMINAL
+
+允许应用启动HiShell命令行终端。
+
+获取该权限后，应用可启动HiShell命令行终端，新建终端页签或新建终端窗口实例。
+
+<!--RP123--><!--RP123End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.1.0
+
 ## ohos.permission.CONTROL_COMPONENT
 
 允许应用管理指定组件是否支持被模拟操控。

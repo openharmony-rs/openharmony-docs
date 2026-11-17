@@ -1856,6 +1856,22 @@ Allows an application to obtain the device hardware information.
  
 **Since**: 26.0.1
 
+## ohos.permission.START_HISHELL_TERMINAL
+
+Allows an application to start the HiShell command-line terminal.
+
+After obtaining this permission, an application can start the HiShell command-line terminal to create new terminal tabs or new terminal window instances. 
+
+<!--RP123--><!--RP123End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Since**: 26.1.0
+
 ## ohos.permission.CONTROL_COMPONENT
 
 Allows an application to manage whether specified components can be controlled via simulated control.
