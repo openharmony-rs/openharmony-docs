@@ -208,7 +208,7 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 | Form Kit| [@ohos.application.formInfo (formInfo)](../apis-form-kit/js-apis-application-formInfo.md)  |
 | Form Kit| [@ohos.application.formProvider (formProvider)](../apis-form-kit/js-apis-application-formProvider.md)  |
 | IME Kit| [@ohos.inputMethod (Input Method Framework)](../apis-ime-kit/js-apis-inputmethod.md) |
-|<!--DelRow-->Input Kit| [@ohos.multimodalInput.inputMonitor (Input Monitor) (System API)](reference/apis-input-kit/js-apis-inputmonitor-sys.md) |
+|<!--DelRow-->Input Kit| [@ohos.multimodalInput.inputMonitor (Input Monitor) (System API)](../apis-input-kit/js-apis-inputmonitor-sys.md) |
 |<!--DelRow-->Media Kit| [@ohos.multimedia.media (Media) (System API)](../apis-media-kit/js-apis-media-sys.md)  |
 | MultimediaKit | @ohos.multimedia.mediaLibrary (Media Library Management)|
 |<!--DelRow-->Media Library Kit| [@ohos.file.photoAccessHelper (Album Management) (System API)](../apis-media-library-kit/js-apis-photoAccessHelper-sys.md) |

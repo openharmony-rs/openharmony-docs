@@ -600,7 +600,7 @@ pause(): Promise\<void>
 
 Pauses recording. This API uses a promise to return the result.
 
-This API must be called after [start](#start9-1). After this API is successfully called, the AVRecorder enters the paused state. You can then call resume](#resume9-1) to resume recording.
+This API must be called after [start](#start9-1). After this API is successfully called, the AVRecorder enters the paused state. You can then call [resume](#resume9-1) to resume recording.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
