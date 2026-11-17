@@ -582,7 +582,7 @@ ArkTS-Dyn: enableScrollWithKeyboard(enabled: boolean | undefined): T
 
 ArkTS-Sta: enableScrollWithKeyboard(enabled: boolean | undefined): this
 
-设置滚动组件是否支持键盘方向键滚动。开启后，滚动组件在获焦且未激活焦点态时会响应键盘方向键滚动。未通过该接口设置时，默认支持键盘方向键滚动。
+设置滚动组件是否支持键盘方向键滚动。开启后，滚动组件在获焦且未激活焦点态时会响应键盘方向键滚动。未通过该接口设置时，默认不支持键盘方向键滚动。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -598,7 +598,7 @@ ArkTS-Sta: enableScrollWithKeyboard(enabled: boolean | undefined): this
 
 | 参数名 | 类型   | 必填 | 说明    |
 | ------ | ------ | ---- | ------ |
-| enabled  | boolean&nbsp; \| undefined | 是   | 是否支持键盘方向键滚动。<br/>true：支持键盘方向键滚动。<br/>false：不支持键盘方向键滚动。<br/>undefined：支持键盘方向键滚动。 |
+| enabled  | boolean&nbsp; \| undefined | 是   | 是否支持键盘方向键滚动。<br/>true：支持键盘方向键滚动。<br/>false：不支持键盘方向键滚动。<br/>undefined：不支持键盘方向键滚动。 |
 
 **返回值：**
 
