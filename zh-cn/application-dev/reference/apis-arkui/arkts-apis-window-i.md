@@ -152,7 +152,7 @@
 >
 > 避让区边衬的计算不包含[TYPE_KEYBOARD](arkts-apis-window-e.md#avoidareatype7)类型的避让区域。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

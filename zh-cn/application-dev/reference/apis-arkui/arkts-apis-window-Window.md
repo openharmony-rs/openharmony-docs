@@ -1469,7 +1469,7 @@ getAvoidAreaInsets(): AvoidAreaInsets
 
 获取当前窗口的避让区边衬，即窗口内容在各方向可能被系统UI遮挡的区域大小。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3632,7 +3632,7 @@ onAvoidAreaInsetsChange(callback: Callback&lt;void&gt;): void
 > - 可以在回调中调用[getAvoidAreaInsets()](#getavoidareainsets)获取窗口最新的避让区边衬，或使用[getWindowAvoidArea()](#getwindowavoidarea9)获取指定类型的避让区域。
 > - [TYPE_KEYBOARD](arkts-apis-window-e.md#avoidareatype7)类型的避让区域变化不会触发该回调。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3675,7 +3675,7 @@ offAvoidAreaInsetsChange(callback?: Callback&lt;void&gt;): void
 
 取消订阅窗口避让区边衬的变化事件。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
