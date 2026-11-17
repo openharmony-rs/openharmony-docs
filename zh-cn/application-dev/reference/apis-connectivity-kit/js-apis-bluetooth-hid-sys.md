@@ -41,7 +41,7 @@ connect(deviceId: string): void
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **错误码**：
 
@@ -64,7 +64,7 @@ connect(deviceId: string): void
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let hidHostProfile = hid.createHidHostProfile();
-    hidHostProfile.connect('XX:XX:XX:XX:XX:XX');
+    hidHostProfile.connect('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -87,7 +87,7 @@ disconnect(deviceId: string): void
 
 | 参数名    | 类型     | 必填   | 说明      |
 | ------ | ------ | ---- | ------- |
-| deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **错误码**：
 
@@ -110,7 +110,7 @@ disconnect(deviceId: string): void
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
     let hidHostProfile = hid.createHidHostProfile();
-    hidHostProfile.disconnect('XX:XX:XX:XX:XX:XX');
+    hidHostProfile.disconnect('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
