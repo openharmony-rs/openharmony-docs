@@ -62,6 +62,10 @@ try {
 
 ## OppServerProfile
 
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+ 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 Profile类，使用opp方法之前需要创建该类的实例进行操作，通过[createOppServerProfile()](#createoppserverprofile)方法构造此实例。
 
 ### sendFile
@@ -287,6 +291,8 @@ off(type: 'transferStateChange', callback?: Callback&lt;OppTransferInformation&g
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | 是    | 事件回调类型，支持的事件为'transferStateChange'，调用off('transferStateChange')后，停止接收文件传输进度和状态变化事件。 |
+| callback | Callback&lt;[OppTransferInformation](#opptransferinformation)&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[on('transferStateChange')](#ontransferstatechange)中的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。                  |
+
 
 **错误码**：
 
@@ -396,6 +402,7 @@ off(type: 'receiveIncomingFile', callback?: Callback&lt;OppTransferInformation&g
 | 参数名      | 类型                                       | 必填   | 说明                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | 是    | 事件回调类型，支持的事件为'receiveIncomingFile'，调用off('receiveIncomingFile')后，停止接收文件传输通知的事件。 |
+| callback | Callback&lt;[OppTransferInformation](#opptransferinformation)&gt; | 否    | 指定取消订阅的回调函数通知。<br>若传参，则需与[on('receiveIncomingFile')](#onreceiveincomingfile)中的回调函数一致；若无传参，则取消订阅该type对应的所有回调函数通知。                  |
 
 **错误码**：
 
@@ -672,5 +679,5 @@ try {
 | ERROR_NOT_ACCEPTABLE   | 3    | 表示对端设备拒绝接收该文件。 |
 | ERROR_CANCELED    | 4    | 表示对端设备取消正在传输的该文件。      |
 | ERROR_CONNECTION_FAILED | 5    | 表示对端设备失去连接。     |
-| ERROR_TRANSFER   | 6    | 表示传输过程中发生错误。 |
+| ERROR_TRANSFER_FAILED   | 6    | 表示传输过程中发生错误。 |
 | ERROR_UNKNOWN    | 7    | 表示发生未知错误。      |

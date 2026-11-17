@@ -2108,6 +2108,8 @@ disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 | 错误码ID| 错误信息|
 | -------- | ---------------------------- |
 |201     | Permission denied.                       |
+|202     | Non-system applications are not allowed to use system APIs.<br>适用版本：11-24                      |
+|401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：11-24                      |
 |801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.               |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
