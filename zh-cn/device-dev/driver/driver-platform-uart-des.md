@@ -399,7 +399,7 @@ uint8_t rbuff[5] = {0};
 ret = UartRead(handle, rbuff, 5);    // 从UART设备读取指定长度的数据
 if (ret < 0) {
     HDF_LOGE("UartRead: failed, ret %d\n", ret);
-	return ret;
+    return ret;
 }
 ```
 
