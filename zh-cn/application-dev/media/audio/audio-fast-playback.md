@@ -173,57 +173,55 @@ status: active
 
 ### 数据处理
 
-1.确保数据及时提供。
+1. 确保数据及时提供。
 
     低时延和超低时延模式下，系统向应用请求数据的频率比普通播放模式高，如果传送数据不及时可能导致杂音等问题。开发者应避免在数据回调线程中做耗时操作，确保数据回调线程可以及时返回。
 
-2.数据回调接口实现。
+2. 数据回调接口实现。
 
     播放的音频数据需要通过回调接口写入。开发者要实现回调接口，使用[OH_AudioStreamBuilder_SetRendererWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererwritedatacallback)设置写入音频数据的回调函数，在设置音频回调函数时，回调函数[OH_AudioRenderer_OnWriteDataCallback](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiorenderer_onwritedatacallback)（从API版本12开始支持）用于写入音频数据。
 
-开发音频播放功能的示例代码请参考：[推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)。
+    开发音频播放功能的示例代码请参考：[推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)。设置数据回调函数示例：
 
-设置数据回调函数示例：
+    <!-- @[Render_SetRendererWriteDataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->  
 
-<!-- @[Render_SetRendererWriteDataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->  
-
-``` C++
-// 自定义写入数据函数。
-static OH_AudioData_Callback_Result MyOnWriteData_New(
-    OH_AudioRenderer* renderer,
-    void* userData,
-    void* audioData,
-    int32_t audioDataSize)
-{
-    // 将待播放的数据，按audioDataSize长度写入audioData。
-    // 如果开发者不希望播放某段audioData，返回AUDIO_DATA_CALLBACK_RESULT_INVALID即可。
-    size_t readCount = fread(audioData, audioDataSize, 1, g_fp);
-    if (readCount == 0) {
-        return AUDIO_DATA_CALLBACK_RESULT_INVALID;
+    ``` C++
+    // 自定义写入数据函数。
+    static OH_AudioData_Callback_Result MyOnWriteData_New(
+        OH_AudioRenderer* renderer,
+        void* userData,
+        void* audioData,
+        int32_t audioDataSize)
+    {
+        // 将待播放的数据，按audioDataSize长度写入audioData。
+        // 如果开发者不希望播放某段audioData，返回AUDIO_DATA_CALLBACK_RESULT_INVALID即可。
+        size_t readCount = fread(audioData, audioDataSize, 1, g_fp);
+        if (readCount == 0) {
+            return AUDIO_DATA_CALLBACK_RESULT_INVALID;
+        }
+        if (feof(g_fp)) {
+            fseek(g_fp, 0, SEEK_SET);
+        }
+        return AUDIO_DATA_CALLBACK_RESULT_VALID;
     }
-    if (feof(g_fp)) {
-        fseek(g_fp, 0, SEEK_SET);
-    }
-    return AUDIO_DATA_CALLBACK_RESULT_VALID;
-}
-// ...
-    // 配置写入音频数据回调函数。
-    OH_AudioRenderer_OnWriteDataCallback writeDataCb = MyOnWriteData_New;
-    OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder, writeDataCb, nullptr);
-```
+    // ...
+        // 配置写入音频数据回调函数。
+        OH_AudioRenderer_OnWriteDataCallback writeDataCb = MyOnWriteData_New;
+        OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder, writeDataCb, nullptr);
+    ```
 
-- 为避免音频卡顿，禁止在回调函数OH_AudioRenderer_OnWriteDataCallback中执行耗时操作。
-- 为保证OH_AudioRenderer_OnWriteDataCallback与流状态控制逻辑独立正常运行，禁止在OH_AudioRenderer_OnWriteDataCallback回调函数中调用音频流控制接口。
+    - 为避免音频卡顿，禁止在回调函数OH_AudioRenderer_OnWriteDataCallback中执行耗时操作。
+    - 为保证OH_AudioRenderer_OnWriteDataCallback与流状态控制逻辑独立正常运行，禁止在OH_AudioRenderer_OnWriteDataCallback回调函数中调用音频流控制接口。
 
-    | 音频流控制接口                                                    | 说明         |
-    | ------------------------------------------------------------ | ------------ |
-    | OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer) | 开始播放。     |
-    | OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer) | 暂停播放。     |
-    | OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer) | 停止播放。     |
-    | OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer) | 释放缓存数据。 |
-    | OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer) | 释放播放实例。 |
+        | 音频流控制接口                                                    | 说明         |
+        | ------------------------------------------------------------ | ------------ |
+        | OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer) | 开始播放。     |
+        | OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer) | 暂停播放。     |
+        | OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer) | 停止播放。     |
+        | OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer) | 释放缓存数据。 |
+        | OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer) | 释放播放实例。 |
 
-    > **注意：**
-    >
-    > 音频流控制接口执行存在耗时（例如OH_AudioRenderer_Stop接口需要播完缓存，单次执行普遍超过50ms），应避免在主线程中直接调用，以免造成界面显示卡顿。
+        > **注意：**
+        >
+        > 音频流控制接口执行存在耗时（例如OH_AudioRenderer_Stop接口需要播完缓存，单次执行普遍超过50ms），应避免在主线程中直接调用，以免造成界面显示卡顿。
 
