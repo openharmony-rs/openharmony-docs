@@ -98,19 +98,23 @@
       handleFormRouterEvent(want: Want, source: string): void {
         hilog.info(DOMAIN_NUMBER, TAG, `handleFormRouterEvent ${source}, Want: ${want.parameters?.params as string}`);
         if (want.parameters && want.parameters[formInfo.FormParam.IDENTITY_KEY] !== undefined) {
-          let curFormId = want.parameters[formInfo.FormParam.IDENTITY_KEY].toString();
-          // want.parameters.params 对应 postCardAction() 中 params 内容
-          let message: string = (JSON.parse(want.parameters?.params as string))?.routerDetail;
-          hilog.info(DOMAIN_NUMBER, TAG, `UpdateForm formId: ${curFormId}, message: ${message}`);
-          let formData: Record<string, string> = {
-            'routerDetail': message + ' ' + source + ' UIAbility', // 和卡片布局中对应
-          };
-          let formMsg = formBindingData.createFormBindingData(formData);
-          formProvider.updateForm(curFormId, formMsg).then(() => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'updateForm success.');
-          }).catch((error: BusinessError) => {
-            hilog.error(DOMAIN_NUMBER, TAG, `updateForm failed, error code: ${error.code}, error message: ${error.message}`);
-          });
+          try {
+            let curFormId = want.parameters[formInfo.FormParam.IDENTITY_KEY].toString();
+            // want.parameters.params 对应 postCardAction() 中 params 内容
+            let message: string = (JSON.parse(want.parameters?.params as string))?.routerDetail;
+            hilog.info(DOMAIN_NUMBER, TAG, `UpdateForm formId: ${curFormId}, message: ${message}`);
+            let formData: Record<string, string> = {
+              'routerDetail': message + ' ' + source + ' UIAbility', // 和卡片布局中对应
+            };
+            let formMsg = formBindingData.createFormBindingData(formData);
+            formProvider.updateForm(curFormId, formMsg).then(() => {
+              hilog.info(DOMAIN_NUMBER, TAG, 'updateForm success.');
+            }).catch((err: BusinessError) => {
+              hilog.error(DOMAIN_NUMBER, TAG, `updateForm failed, error code: ${err.code}, error message: ${err.message}`);
+            });
+          } catch (err) {
+            hilog.error(DOMAIN_NUMBER, TAG, `handleFormRouterEvent catch error, code: ${err.code}, message: ${err.message}`);
+          }
         }
       }
     
