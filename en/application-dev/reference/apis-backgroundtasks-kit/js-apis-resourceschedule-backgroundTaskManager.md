@@ -6,13 +6,14 @@
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=024caec7fad677e2dd0da703ca632c95f71d3579 translatedAt=2026-08-11T01:59:07.476Z pushedAt=2026-08-11T06:14:20.715Z -->
+<!-- md-trans-meta sourceCommit=949f37bf1342cc760258f019708839e9ca22e641 translatedAt=2026-11-17T07:32:49.215Z pushedAt=2026-11-17T08:06:25.544Z nl=1 -->
 
 The **backgroundTaskManager** module provides APIs to request background tasks. You can use the APIs to request transient tasks, continuous tasks, or efficiency resources to prevent the application process from being terminated or suspended when your application is switched to the background. For details, see [Continuous Task](../../task-management/continuous-task.md) and [Transient Task](../../task-management/transient-task.md).
 
 >  **NOTE**
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+
 
 ## Modules to Import
 
@@ -72,7 +73,7 @@ try {
   // Callback function, which is triggered when the transient task is about to time out. The application can carry out data clear and annotation, and cancel the task in the callback.
   // The callback is independent of the service of the application. After the request for the transient task is successful, the application normally executes its own service logic.
     console.info("Request suspension delay will time out.");
-  })
+  });
   let id = delayInfo.requestId;
   let time = delayInfo.actualDelayTime;
   console.info("The requestId is: " + id);
@@ -81,6 +82,7 @@ try {
   console.error(`requestSuspendDelay failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
+
 
 ## backgroundTaskManager.getRemainingDelayTime
 
@@ -111,6 +113,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 9900001 | Caller information verification failed for a transient task. |
 | 9900002 | Transient task verification failed. |
 
+
 **Example**
 
 ```ts
@@ -120,13 +123,14 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 // Request ID of the transient task, which is used to query the remaining time.
 let id = 1;
 backgroundTaskManager.getRemainingDelayTime(id, (error: BusinessError, res: number) => {
-  if(error) {
+  if (error) {
     console.error(`callback => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
   } else {
     console.info('callback => Operation getRemainingDelayTime succeeded. Data: ' + JSON.stringify(res));
   }
 })
 ```
+
 
 ## backgroundTaskManager.getRemainingDelayTime
 
@@ -175,6 +179,7 @@ backgroundTaskManager.getRemainingDelayTime(id).then((res: number) => {
   console.error(`promise => Operation getRemainingDelayTime failed. code is ${error.code} message is ${error.message}`);
 })
 ```
+
 
 ## backgroundTaskManager.cancelSuspendDelay
 
@@ -263,7 +268,7 @@ try {
 
 startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback&lt;void&gt;): void
 
-Requests a continuous task of a specific type. This API uses an asynchronous callback to return the result. After a continuous task is successfully requested, there will be a notification message without prompt tone. A UIAbility (ServiceAbility in the FA model) can request only one continuous task at a time through this API. You can request multiple continuous tasks by calling [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) added in API version 21.
+Requests a continuous task of a specific type. This API uses an asynchronous callback to return the result. After a continuous task is successfully requested, there will be a notification message without prompt tone. A UIAbility (ServiceAbility in the FA model) can request only one continuous task at a time through this API. You can request multiple continuous tasks by calling [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) added in API version 21.<br>Since API version 26.0.1, if the continuous task requested using this API contains the data transfer type, you can call [updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress) to update the continuous task notifications. You can choose whether to display a progress ring in the notification and whether to play the ringtone when the progress reaches 100%.
 
 **Required permissions**: ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -354,7 +359,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;
 
-Requests a continuous task of a specific type. This API uses a promise to return the result. After a continuous task is successfully requested, there will be a notification message without prompt tone. A UIAbility (ServiceAbility in the FA model) can request only one continuous task at a time through this API. You can request multiple continuous tasks by calling [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) added in API version 21.
+Requests continuous tasks of multiple types. This API uses a promise to return the result. After a continuous task is successfully requested, there will be a notification message without prompt tone. A UIAbility (ServiceAbility in the FA model) can request only one continuous task at a time through this API. You can request multiple continuous tasks by calling [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) added in API version 21.<br>Since API version 26.0.1, if the continuous task requested using this API contains the data transfer type, you can call [updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress) to update the continuous task notifications. You can choose whether to display a progress ring in the notification and whether to play the ringtone when the progress reaches 100%.
 
 **Required permissions**: ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -446,7 +451,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent): Promise&lt;ContinuousTaskNotification&gt;
 
-Requests continuous tasks of multiple types. This API uses a promise to return the result. After a continuous task is successfully requested, there will be a notification message without prompt tone. A UIAbility (ServiceAbility in the FA model) can request only one continuous task at a time through this API. You can request multiple continuous tasks by calling [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) added in API version 21.
+Requests a continuous task of a specific type. This API uses a promise to return the result. After a continuous task is successfully requested, there will be a notification message without prompt tone. A UIAbility (ServiceAbility in the FA model) can request only one continuous task at a time through this API. You can request multiple continuous tasks by calling [startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21) added in API version 21.<br>Since API version 26.0.1, if the continuous task requested using this API contains the data transfer type, you can call [updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress) to update the continuous task notifications. You can choose whether to display a progress ring in the notification and whether to play the ringtone when the progress reaches 100%.
 
 **Required permissions**: ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -520,6 +525,7 @@ export default class EntryAbility extends UIAbility {
       wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
         try {
           // The application needs to update the progress only for continuous tasks of the dataTransfer type.
+          // Since API version 26.0.1, the updateDataTransferProgress API can be used to update a continuous task notification that contains a data transmission type. It is optional whether the notification has a progress ring and whether to ring when the progress ring reaches 100.
           let list: Array<string> = ["dataTransfer"];
           // In atomic services, let list: Array<string> = ["audioPlayback"];
           backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
@@ -541,7 +547,7 @@ export default class EntryAbility extends UIAbility {
   // The application needs to update the progress only for continuous tasks of the dataTransfer type.
   updateProcess(process: number) {
     // Define the notification type. The notification type of the progress update must be live view.
-    let downLoadTemplate: notificationManager.NotificationTemplate = {
+    let downloadTemplate: notificationManager.NotificationTemplate = {
       name: 'downloadTemplate', // Currently, only downloadTemplate is supported. Retain the value.
       data: {
         title: 'File download: music.mp4', // Mandatory.
@@ -561,17 +567,17 @@ export default class EntryAbility extends UIAbility {
       },
       id: this.id, // The value must be the ID returned for a continuous-task request. Otherwise, the application fails to update the notification.
       notificationSlotType: notificationManager.SlotType.LIVE_VIEW, // Live view type. Retain the value.
-      template: downLoadTemplate // Name of the template to be set for the application.
+      template: downloadTemplate // Name of the template to be set by the application.
     };
 
     try {
       notificationManager.publish(request).then(() => {
         console.info("publish success, id= " + this.id);
-      }).catch((err: BusinessError) => {
-        console.error(`publish fail: ${JSON.stringify(err)}`);
+      }).catch((error: BusinessError) => {
+        console.error(`publish fail. code is ${error.code} message is ${error.message}`);
       });
-    } catch (err) {
-      console.error(`publish fail: ${JSON.stringify(err)}`);
+    } catch (error) {
+      console.error(`publish fail. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
   }
 };
@@ -581,7 +587,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;
 
-Requests a continuous task. This API allows a UIAbility (ServiceAbility in the FA model) to request multiple continuous tasks and uses a promise to return the result. When using this API to request a continuous task, its notification can be combined with that of an existing continuous task. For details, see [ContinuousTaskRequest](#continuoustaskrequest21).<br>A maximum of 10 continuous tasks can be created simultaneously. Upon successful creation of a continuous task, a notification will be sent without a prompt tone.<br>If a continuous task requested via this API includes multiple task types (including data transmission tasks), two notifications will appear in the notification panel: one for the data transmission task and the other for the remaining tasks. Removing either notification will cancel the continuous task and remove the other notification. The continuous task notification ID returned by the API is the ID of the data transmission type, which is used to update the data transmission progress.
+Applies for a continuous task. A UIAbility (ServiceAbility in the FA model) can request multiple continuous tasks through this API, which uses a promise to return the result. When requesting a continuous task through this API, you can merge the notification with an existing continuous task. For details, see [ContinuousTaskRequest](#continuoustaskrequest21).<br>A maximum of 10 continuous tasks can exist at the same time. After a continuous task is successfully requested, a notification is displayed in the notification panel without a prompt tone.<br>If a continuous task requested through this API contains multiple types at the same time and includes the data transfer type, two continuous task notifications are sent in the notification panel: one for the data transfer type and the other as a merged notification of the other types. When either notification is removed, the continuous task is canceled, and the other notification is removed synchronously. The continuous task notification ID returned by the API is the ID of the data transfer type, which is mainly used for updating the data transfer progress.<br>Starting from API version 26.0.1, when a continuous task requested through this API includes the data transfer type, you can use [updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress) to update the continuous task notification, and choose whether the notification has a progress ring and whether a tone is played when the progress reaches 100.
 
 **Required permissions**: ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -594,7 +600,7 @@ Requests a continuous task. This API allows a UIAbility (ServiceAbility in the F
 | Name      | Type                                | Mandatory  | Description                                      |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
-| request   | [ContinuousTaskRequest](#continuoustaskrequest21) | Yes   | Request information of a continuous task, including the main type and subtype.|
+| request   | [ContinuousTaskRequest](#continuoustaskrequest21) | Yes    | Continuous task request information, including the main type and subtype of the continuous task.<br> **Note:** The [ProgressInfo](#progressinfo) attribute does not take effect in this API. If you need this attribute to implement the notification update function, use [startContinuousTask()](#backgroundtaskmanagerstartcontinuoustask) instead. |
 
 **Return value**
 
@@ -614,6 +620,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 9800005 | Continuous task verification failed. |
 | 9800006 | Notification verification failed for a continuous task. |
 | 9800007 | Continuous task storage failed. |
+| 9800008 | The requested continuous task is not supported on this device type.<br>Applicable version: 26.0.1+ |
 
 **Example**
 
@@ -669,6 +676,125 @@ export default class EntryAbility extends UIAbility {
           });
         } catch (error) {
           console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+        }
+      });
+    } catch (error) {
+      console.error(`Operation getWantAgent failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
+## backgroundTaskManager.startContinuousTask
+ 
+startContinuousTask(context: Context, request: ContinuousTaskRequest): Promise&lt;number&gt;
+ 
+Requests a continuous task. A UIAbility can request multiple continuous tasks through this API. This API uses a promise to return the result.
+ 
+When requesting a continuous task through this API, you can merge its notification with that of an existing continuous task. For details, see [ContinuousTaskRequest](#continuoustaskrequest21).
+ 
+A maximum of 10 continuous tasks can exist at the same time. After a continuous task is requested successfully, a notification is displayed in the notification panel without a prompt tone.
+ 
+If a continuous task requested through this API contains multiple types at the same time and includes the data transfer type, two continuous task notifications are sent in the notification panel: one for the data transfer type and the other as a merged notification for the other types. When either notification is removed, the continuous task is canceled, and the other notification is removed synchronously.
+ 
+When requesting a continuous task through this API, a continuous task that includes the data transfer type can directly send a progress template notification. You can choose whether the notification has a progress ring and whether a tone is played when the progress reaches 100. For details, see [ProgressInfo](#progressinfo). You can also update the continuous task notification through the [updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress) API.<!--RP1--><!--RP1End-->
+ 
+**Since:** 26.0.1
+ 
+**Model restriction:** This API can be used only in the stage model.
+ 
+**Required permissions**: ohos.permission.KEEP_BACKGROUND_RUNNING
+ 
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
+ 
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+ 
+**Parameters**
+ 
+| Name       | Type                                 | Mandatory   | Description                                       |
+| --------- | ---------------------------------- | ---- | ---------------------------------------- |
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes    | Context of the app running. <br> **Note:** In the stage model, only a UIAbility can request a continuous task.|
+| request   | [ContinuousTaskRequest](#continuoustaskrequest21) | Yes    | Request information of the continuous task, including the main type, subtype, and so on.|
+ 
+**Return value**
+ 
+| Type             | Description               |
+| -------------- | ---------------- |
+| Promise\<number> | Promise object, which returns the ID of the continuous task. |
+ 
+**Error codes**
+ 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
+ 
+| ID  | Error Message             |
+| ---- | --------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 9800001 | Memory operation failed. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+| 9800006 | Notification verification failed for a continuous task. |
+| 9800007 | Continuous task storage failed. |
+| 9800008 | The requested continuous task is not supported on this device type. |
+ 
+**Example**
+ 
+```js
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility, wantAgent, WantAgent } from '@kit.AbilityKit';
+// In atomic services, delete the WantAgent import.
+ 
+export default class EntryAbility extends UIAbility {
+  continuousTaskId: number | undefined = -1;
+  onCreate() {
+    let wantAgentInfo: wantAgent.WantAgentInfo = {
+      // Replace with the actual bundleName and abilityName of the application to be started.
+      wants: [
+        {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility'
+        }
+      ],
+      // Set the action type after the notification is tapped.
+      actionType: wantAgent.OperationType.START_ABILITY,
+      // Request code customized by the developer, used to identify the action to execute.
+      requestCode: 0,
+      // Set the action execution attribute after the notification is tapped.
+      wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+    };
+ 
+    let progress: backgroundTaskManager.ProgressInfo = {
+      title: 'notification title', // required
+      fileName: 'notification content', // required
+      progressValue: 20, // application update progress value, custom
+      isMute: false, // whether to mute when the notification progress reaches 100, custom
+    };
+ 
+    try {
+      // Obtain the WantAgent object through the getWantAgent method of the wantAgent module.
+      // In atomic services, use wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => { to replace the following line of code.
+      wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
+        try {
+          // To combine notifications, the main type and subtype must be the same, combinedTaskNotification must be true, and continuousTaskId must exist and be valid.
+          // Request a continuous task whose main type is MODE_DATA_TRANSFER.
+          let modeList: Array<number> = [backgroundTaskManager.BackgroundTaskMode.MODE_DATA_TRANSFER];
+          let subModeList: Array<number> = [backgroundTaskManager.BackgroundTaskSubmode.SUBMODE_LIVE_VIEW_NOTIFICATION];
+          // Create a continuous task request object.
+          let continuousTaskRequest = new backgroundTaskManager.ContinuousTaskRequest();
+          continuousTaskRequest.backgroundTaskModes =  modeList;
+          continuousTaskRequest.backgroundTaskSubmodes = subModeList;
+          continuousTaskRequest.wantAgent = wantAgentObj;
+          continuousTaskRequest.combinedTaskNotification = false;
+          continuousTaskRequest.continuousTaskId = this.continuousTaskId;
+          continuousTaskRequest.progressInfo = progress;
+          backgroundTaskManager.startContinuousTask(this.context, continuousTaskRequest).then((res: number) => {
+            console.info(`Operation startContinuousTask succeeded. continuousTaskId is ${res}`);
+            this.continuousTaskId = res ?? -1;
+          }).catch((error: BusinessError) => {
+            console.error(`Operation startContinuousTask failed. code is ${error.code} message is ${error.message}`);
+          });
+        } catch (error) {
+          console.error(`Operation startContinuousTask failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
         }
       });
     } catch (error) {
@@ -801,7 +927,7 @@ export default class EntryAbility extends UIAbility {
 
 stopBackgroundRunning(context: Context, continuousTaskId: number): Promise&lt;void&gt;
 
-Cancels a continuous task with the specified ID. This API uses a promise to return the result. You can also call the [stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning) API to cancel all continuous tasks in the current UIAbility.
+Cancels a continuous task with the specified ID. This API uses a promise to return the result. You can also call the [stopBackgroundRunning](#backgroundtaskmanagerstopbackgroundrunning) API to cancel all continuous tasks in the current UIAbility. This API is applicable when the application functions are complete and the application is about to exit.
 
 This API is applicable when the application functions are complete and the application is about to exit.
 
@@ -931,11 +1057,8 @@ updateBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promi
 Updates a continuous task. This API uses a promise to return the result. After the update is successful, only a notification message is displayed, and no prompt tone is played. This API is applicable to scenarios where continuous tasks need to be adjusted to match new services, such as when an application switches from audio/video playback to recording.
 
 The following restrictions apply when updating a continuous task:
-
 1. This API can only update continuous tasks requested via [startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;](#backgroundtaskmanagerstartbackgroundrunning21).
-
 2. If the main type and subtype of the background tasks are the same, only the wants information (such as **abilityName**) in **ContinuousTaskRequest.wantAgent** can be updated. If the types are different, the update fails.
-
 3. If the continuous task to be updated or the specified update type contains the data transmission type, a failure message is returned.
 
 **Required permissions**: ohos.permission.KEEP_BACKGROUND_RUNNING
@@ -949,7 +1072,7 @@ The following restrictions apply when updating a continuous task:
 | Name      | Type                                | Mandatory  | Description                                      |
 | --------- | ---------------------------------- | ---- | ---------------------------------------- |
 | context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md)                            | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
-| request   | [ContinuousTaskRequest](#continuoustaskrequest21) | Yes   | Continuous task request information, including the ID of the continuous task to be updated.|
+| request   | [ContinuousTaskRequest](#continuoustaskrequest21) | Yes    | Continuous task request information, including the ID of the continuous task to be updated.<br> **Note:** Using the [ProgressInfo](#progressinfo) property in this API reports an error, with error code [9800006](errorcode-backgroundTaskMgr.md#9800006-notification-verification-failure-for-a-continuous-task). If you need this property to implement the notification update feature, use [startContinuousTask()](#backgroundtaskmanagerstartcontinuoustask) instead.  |
 
 **Return value**
 
@@ -969,6 +1092,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 9800005 | Continuous task verification failed. |
 | 9800006 | Notification verification failed for a continuous task. |
 | 9800007 | Continuous task storage failed. |
+| 9800008 | The requested continuous task is not supported on this device type.<br>Applicable version: 26.0.1+ |
 
 **Example**
 
@@ -1022,6 +1146,108 @@ export default class EntryAbility extends UIAbility {
           });
         } catch (error) {
           console.error(`Operation updateBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+        }
+      });
+    } catch (error) {
+      console.error(`Operation getWantAgent failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+    }
+  }
+};
+```
+
+## backgroundTaskManager.updateDataTransferProgress
+ 
+updateDataTransferProgress(context: Context, progressInfo: DataTransferProgress): void
+ 
+Updates continuous task notifications. Only continuous task notifications that contain the data transfer type can be updated.
+ 
+**Since:** 26.0.1
+ 
+**Model restriction:** This API can be used only in the stage model.
+ 
+**Required permissions**: ohos.permission.KEEP_BACKGROUND_RUNNING
+ 
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+ 
+**Parameters**
+ 
+| Name       | Type                                 | Mandatory   | Description                                       |
+| --------- | ---------------------------------- | ---- | ---------------------------------------- |
+| context   | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes    | Application context.<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model.|
+| progressInfo   | [DataTransferProgress](#datatransferprogress) | Yes    | Progress information of a continuous task notification.|
+ 
+**Error codes**
+ 
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
+ 
+| ID   | Error Message |
+| --------- | ------- |
+| 201 | Permission denied. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+| 9800006 | Notification verification failed for a continuous task. |
+| 9800007 | Continuous task storage failed. |
+ 
+**Example**
+ 
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { UIAbility } from '@kit.AbilityKit';
+import { wantAgent, WantAgent } from '@kit.AbilityKit';
+ 
+export default class EntryAbility extends UIAbility {
+  continuousTaskId: number = -1; // Save the continuous task ID.
+  onCreate() {
+    let wantAgentInfo: wantAgent.WantAgentInfo = {
+      // List of actions to be executed after clicking the notification.
+      wants: [
+        {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'EntryAbility'
+        }
+      ],
+      // Action type after clicking the notification.
+      actionType: wantAgent.OperationType.START_ABILITY,
+      // A private value customized by the user.
+      requestCode: 0,
+      // Action execution attribute after clicking the notification.
+      wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+    };
+    let progress: backgroundTaskManager.ProgressInfo = {
+      title: 'notification title', // required
+      fileName: 'notification content', // required
+      progressValue: 20, // application update progress value, custom
+      isMute: false, // whether to mute when the notification progress reaches 100, custom
+    };
+ 
+    try {
+      // Obtain the WantAgent object through the getWantAgent method of the wantAgent module.
+      wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
+        try {
+          // Request a continuous task of the data transmission type.
+          let list: Array<string> = ['dataTransfer'];
+          backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
+            console.info('Operation startBackgroundRunning succeeded');
+            // For a data transmission continuous task, the application can use the continuousTaskId returned in res to update the notification, for example, by sending a template notification with a progress bar.
+            this.continuousTaskId = res.continuousTaskId ?? -1;
+            try {
+              let progressInfo: backgroundTaskManager.DataTransferProgress = {
+                continuousTaskId: this.continuousTaskId,
+                wantAgent: wantAgentObj,
+                progressInfo: progress,
+              }
+              // Update the notification.
+              backgroundTaskManager.updateDataTransferProgress(this.context, progressInfo);
+              console.info('Operation updateDataTransferProgress succeeded');
+            } catch(error) {
+              console.error(`Operation updateDataTransferProgress failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+            }
+          }).catch((error: BusinessError) => {
+            console.error(`Operation startBackgroundRunning failed. code is ${error.code} message is ${error.message}`);
+          });
+        } catch (error) {
+          console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
         }
       });
     } catch (error) {
@@ -1192,7 +1418,6 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
-
 ## backgroundTaskManager.off('continuousTaskCancel')<sup>15+</sup>
 
 off(type: 'continuousTaskCancel', callback?: Callback&lt;ContinuousTaskCancelInfo&gt;): void
@@ -1241,7 +1466,6 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
-
 ## backgroundTaskManager.on('continuousTaskSuspend')<sup>20+</sup>
 
 on(type: 'continuousTaskSuspend', callback: Callback&lt;ContinuousTaskSuspendInfo&gt;): void
@@ -1270,6 +1494,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
+
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1291,7 +1516,6 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
-
 ## backgroundTaskManager.off('continuousTaskSuspend')<sup>20+</sup>
 
 off(type: 'continuousTaskSuspend', callback?: Callback&lt;ContinuousTaskSuspendInfo&gt;): void
@@ -1341,7 +1565,6 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
-
 ## backgroundTaskManager.on('continuousTaskActive')<sup>20+</sup>
 
 on(type: 'continuousTaskActive', callback: Callback&lt;ContinuousTaskActiveInfo&gt;): void
@@ -1389,7 +1612,6 @@ export default class EntryAbility extends UIAbility {
   }
 };
 ```
-
 ## backgroundTaskManager.off('continuousTaskActive')<sup>20+</sup>
 
 off(type: 'continuousTaskActive', callback?: Callback&lt;ContinuousTaskActiveInfo&gt;): void
@@ -1467,7 +1689,6 @@ Defines the type of a continuous task.
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 <!--Table: 30%; 10%; 60%-->
-
 | Name                    | Value | Description                   |
 | ----------------------- | ---- | --------------------- |
 | DATA_TRANSFER           | 1    | Data transfer.<br>Use scenario: upload and download in non-hosting mode, for example, uploading or downloading data in the background of a browser.<br>Note: During data transfer, the application needs to update the progress. If the progress is not updated for more than 10 minutes, the continuous task of the **DATA_TRANSFER** type will be canceled.<br>The notification type of the progress update must be live view. For details, see the example in [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12).      |
@@ -1489,8 +1710,8 @@ Describes the information about a continuous-task notification.
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | slotType       | [notificationManager.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | No   | No   | Slot type of a continuous-task notification.<br>Note: After a continuous task is successfully requested or updated, no prompt tone is played.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | contentType | [notificationManager.ContentType](../apis-notification-kit/js-apis-notificationManager.md#contenttype) | No   | No   | Content type of a continuous-task notification.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| notificationId | number | No   | No   | ID of the continuous-task notification.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| continuousTaskId<sup>15+</sup> | number | No   | Yes   | ID of a continuous task.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| notificationId | number | No    | No    | ID of the continuous task notification.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| continuousTaskId<sup>15+</sup> | number | No    | Yes    | ID of a continuous task.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## ContinuousTaskCancelInfo<sup>15+</sup>
 
@@ -1511,7 +1732,6 @@ Describes the reason for canceling a continuous task.
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 <!--Table: 40%; 10%; 50%-->
-
 | Name                    | Value | Description                   |
 | ----------------------- | ---- | --------------------- |
 | USER_CANCEL             | 1    | The task is canceled by the user.                 |
@@ -1549,6 +1769,8 @@ Describes the detailed reason for canceling a continuous task.
 | SYSTEM_CANCEL_DATA_TRANSFER_NOT_UPDATE    | 12   | A continuous task of the **DATA_TRANSFER** type is requested, but the progress is not updated for a long time (the first update takes more than 10 minutes). |
 | SYSTEM_CANCEL_VOIP_NOT_RUNNING            | 13   | A continuous task of the **VOIP** type is requested, but no audio stream or recording stream is in progress. |
 | SYSTEM_CANCEL_USER_UNAUTHORIZED           | 14   | A continuous task of the special scenario type is requested, but the user is not authorized. |
+| SYSTEM_CANCEL_NOT_USE_NEARLINK           | 15   | A continuous task of the **NEARLINK** type was requested, but no NearLink-related service is in use.<br>**Since:** 26.0.1  |
+| SYSTEM_CANCEL_NOT_USE_USB                 | 16   | A continuous task of the USB type was requested, but no USB device is detected.<br>**Since:** 26.0.1  |
 
 ## BackgroundSubMode<sup>16+</sup>
 
@@ -1621,7 +1843,8 @@ Describes the reason why a continuous task is suspended.
 | SYSTEM_SUSPEND_AUDIO_PLAYBACK_MUTE         | 16   | A continuous task of the **AUDIO_PLAYBACK** type is requested, but the device is muted for a period of time.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 | SYSTEM_SUSPEND_NEARLINK_NOT_USED         | 17   | A continuous task of the **NEARLINK** type is requested, but there is no NearLink connection for a period of time.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 | SYSTEM_SUSPEND_NEARLINK_DATA_NOT_EXIST           | 18   | A continuous task of the **NEARLINK** type is requested, but there is no NearLink data flow for a period of time.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
-| SYSTEM_SUSPEND_USER_UNAUTHORIZED           | 19   | A continuous task of the special type is requested, but the user is not authorized.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SYSTEM_SUSPEND_USER_UNAUTHORIZED           | 19   | A continuous task of a special scenario type was requested, but the user has not authorized it.<br>**Since:** 26.0.0<br>**Model constraints:** This API can only be used in the stage model. |
+| SYSTEM_SUSPEND_USB_NOT_USED                | 20   | A continuous task of the USB type was requested, but no USB device is in use.<br>**Since:** 26.0.1<br>**Model restriction:** This API can be used only in the stage model. |
 
 ## ContinuousTaskActiveInfo<sup>20+</sup>
 
@@ -1640,7 +1863,6 @@ Describes the continuous task information.
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 <!--Table: 25%; 15%; 8%; 8%; 44%-->
-
 | Name         | Type      | Read-Only  | Optional  | Description                   |
 |-------------|----------| ---- | ---- |-----------------------|
 | abilityName | string   | No   | No   | UIAbility name.         |
@@ -1649,9 +1871,9 @@ Describes the continuous task information.
 | isFromWebView | boolean  | No   | No   | Whether to request a continuous task in WebView mode, that is, whether to request a continuous task through the system proxy application. The value **true** indicates that the Webview mode is used, and the value **false** indicates that the Webview mode is not used.|
 | backgroundModes | string[] | No   | No   | [Type of a continuous task](#backgroundmode).              |
 | backgroundSubModes | string[] | No   | No   | [Subtype of a continuous task](#backgroundsubmode16).             |
-| notificationId | number   | No   | No   | Notification ID.               |
+| notificationId | number   | No    | No    | Notification ID.                |
 | continuousTaskId | number   | No   | No   | Continuous task ID.             |
-| abilityId | number   | No   | No   | UIAbility ID.        |
+| abilityId | number   | No    | No    | UIAbility ID.         |
 | wantAgentBundleName | string   | No   | No   |  Bundle name configured in [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md). **WantAgent** is a notification parameter used to specify the target page when a continuous task notification is tapped.       |
 | wantAgentAbilityName | string   | No   | No   |  Ability name configured in [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md). **WantAgent** is a notification parameter used to specify the target page when a continuous task notification is tapped.|
 | suspendState | boolean   | No   | No   | Whether the requested continuous task is suspended. The value **true** indicates that the task is suspended, and the value **false** indicates that the task is activated.|
@@ -1661,19 +1883,12 @@ Describes the continuous task information.
 ## ContinuousTaskRequest<sup>21+</sup>
 
 Specifies details of the continuous task being requested or updated. It is typically used as input for the [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning21) and [updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21) APIs. Note that:
-
 1. When requesting a continuous task via [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning21), notifications will be combined if the main type and subtype of the continuous task to be requested are the same as those of the existing continuous task in the current application, and the **combinedTaskNotification** value is **true** for both tasks. Otherwise, notifications will not be combined.
-
 2. Notifications will not be combined if the continuous task has no notification. For details about whether notifications are sent for the continuous task, see [BackgroundTaskMode](#backgroundtaskmode21).
-
 3. Notifications cannot be combined if the continuous task includes data transmission.
-
 4. Notifications that have been combined cannot be canceled. If notifications have been combined, they cannot be updated to uncombined.
-
 5. After notifications are combined, tapping the notification will redirect to the UIAbility corresponding to the first requested continuous task. If the update API is called, the redirection will target the UIAbility corresponding to the last updated continuous task.
-
 6. When the [updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21) API is called to update a continuous task, the input **continuousTaskId** must exist. Otherwise, the update fails.
-
 7. Continuous tasks of the [MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21) type are supported since API version 22. This task type must be used independently and notifications cannot be combined. Specifically, when you request or update a continuous task, it must be of the **MODE_SPECIAL_SCENARIO_PROCESSING** type. Otherwise, an error is returned.
 
 ### Properties
@@ -1681,7 +1896,6 @@ Specifies details of the continuous task being requested or updated. It is typic
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 <!--Table: 25%; 25%; 8%; 8%; 44%-->
-
 | Name            | Type    | Read-Only  | Optional  | Description                                      |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | No   | No   | Main type of a continuous task.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>Note: The main type must match the subtype.    |
@@ -1689,6 +1903,7 @@ Specifies details of the continuous task being requested or updated. It is typic
 | wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | No   | No   | Notification parameters, which are used to specify the target page that is redirected to when a continuous task notification is clicked.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 | combinedTaskNotification | boolean   | No   | Yes   | Whether to combine notifications. The value **true** means to combine notifications, and the value **false** (default) means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>Note: This property does not take effect in [updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21) API. If notifications need to be combined for an existing task, request the task again and set the value to **true**.|
 | continuousTaskId | number   | No   | Yes   | Continuous task ID. The default value is **-1**.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>Note: If **combinedTaskNotification** is set to true, this property is mandatory and the corresponding ID must exist.<br>Additionally, this property is mandatory (with the corresponding ID required) when used as an input parameter for the [updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21) API.<br>You can call the [getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1) API to view information about all continuous tasks.  |
+| progressInfo | [ProgressInfo](#progressinfo)   | No    | Yes    | Continuous task notification progress information.<br/>**Since:** 26.0.1<br/> **Model constraints:** This API can only be used in the Stage model.<br/>**Note:** This attribute takes effect only when a continuous task is requested through the [startContinuousTask()](#backgroundtaskmanagerstartcontinuoustask) API and the continuous task type includes the data transmission type [MODE_DATA_TRANSFER](#backgroundtaskmode21).<br/>If this attribute is used in the [updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21) API, an error is reported with the error code [9800006](errorcode-backgroundTaskMgr.md#9800006-notification-verification-failure-for-a-continuous-task).<!--RP1--><!--RP1End--> |
 
 ### isModeSupported<sup>21+</sup>
 
@@ -1718,7 +1933,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 9800005 | Continuous task verification failed. |
 
 **Example**
-
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1735,7 +1949,7 @@ export default class EntryAbility extends UIAbility {
       isModeSupported = continuousTaskRequest.isModeSupported();
       console.info(`Operation isModeSupported succeeded. isModeSupported is ${isModeSupported}`);
     } catch (error) {
-      console.error(`Operation startBackgroundRunning failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+      console.error(`Operation isModeSupported failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
   }
 };
@@ -1759,7 +1973,7 @@ Requests user authorization to run tasks continuously in the background. This AP
 
 | Name     | Type                                                 | Mandatory  | Description          |
 | -------- |-----------------------------------------------------| ---- |--------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes    | Context of application running.<br>For the definition of the application Context of the Stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). <br> **Note:** In the Stage model, only UIAbility can request; in the FA model, only ServiceAbility can request. |
 | callback | Callback&lt;[UserAuthResult](#userauthresult22)&gt; | Yes   | Callback used to return the user authorization result.|
 
 **Error codes**
@@ -1773,7 +1987,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 9800005 | Continuous task verification failed. |
 
 **Example**
-
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1821,7 +2034,7 @@ Requests user authorization to run tasks continuously in the background. This AP
 
 | Name     | Type                                                 | Mandatory  | Description          |
 | -------- |-----------------------------------------------------| ---- |--------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes    | Context of application running.<br>For the definition of the application Context in the Stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). <br> **Note:** In the Stage model, only UIAbility can request this API; in the FA model, only ServiceAbility can request this API. |
 | callback | Callback&lt;[UserAuthResult](#userauthresult22)&gt; | Yes   | Callback used to return the user authorization result.|
 
 **Error codes**
@@ -1835,7 +2048,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 9800005 | Continuous task verification failed. |
 
 **Example**
-
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { UIAbility } from '@kit.AbilityKit';
@@ -1887,7 +2099,7 @@ Checks whether the user has authorized tasks to run continuously in the backgrou
 
 | Name     | Type                                                 | Mandatory  | Description          |
 | -------- |-----------------------------------------------------| ---- |--------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes    | Context of application running.<br>For the Context definition of the application of the Stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md). <br> **Note:** In the Stage model, only UIAbility can request; in the FA model, only ServiceAbility can request.|
 
 **Return value**
 
@@ -1906,7 +2118,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 9800005 | Continuous task verification failed. |
 
 **Example**
-
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1949,7 +2160,7 @@ Checks whether the user has authorized tasks to run continuously in the backgrou
 
 | Name     | Type                                                 | Mandatory  | Description          |
 | -------- |-----------------------------------------------------| ---- |--------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes   | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).<br> Note: Continuous tasks can be requested only by the UIAbility in the stage model and the ServiceAbility in the FA model.|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes    | Context of application running.<br>For the application Context of the Stage model, see the definition in [Context](../apis-ability-kit/js-apis-inner-application-context.md). <br> **Note:** In the Stage model, only UIAbility can request; in the FA model, only ServiceAbility can request.|
 
 **Return value**
 
@@ -1968,7 +2179,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 9800005 | Continuous task verification failed. |
 
 **Example**
-
 ```js
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1998,7 +2208,6 @@ Main type of a continuous task. It is usually used together with the subtype [Ba
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 <!--Table: 40%; 10%; 50%-->
-
 | Name                    | Value | Description                   |
 | ------------------------ | ---- | --------------------- |
 | MODE_DATA_TRANSFER              | 1         | Data transfer.<br>Use scenario: upload and download in non-hosting mode, for example, uploading or downloading data in the background of a browser.<br>**NOTE**<br>1. During data transfer, the application needs to update the progress. If the progress is not updated for more than 10 minutes, the continuous task of the **DATA_TRANSFER** type will be canceled.<br>2. The notification type of the progress update must be live view. For details, see the example in [startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12).                |
@@ -2012,6 +2221,7 @@ Main type of a continuous task. It is usually used together with the subtype [Ba
 | MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>    | 12         | Multimedia services.<br>Use scenarios: audio/video playback, recording, and audio/video calls. The scenario must match that of the subtype. You can select this task type or the corresponding main type for preceding scenarios. For example, you can request a continuous task of the **MODE_AUDIO_PLAYBACK** or **MODE_AV_PLAYBACK_AND_RECORD** type for audio/video playback.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.            |
 | MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | Special scenarios (available only for smartphones, tablets, PCs/2-in-1 devices).<br/>Use scenarios: An application exports media files in the background, uses a third-party component to cast content in the background, or has an indoor workout scenario in the background. The scenario must match that of the subtype.<br/>**NOTE**<br/>1. If an app needs to run in the background for a long time, it can request user authorization through the [requestAuthFromUser](#requestauthfromuser22) API and check the authorization result via [checkSpecialScenarioAuth](#checkspecialscenarioauth22).<br/>2. Since API version 24, this capability is available only to apps that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_special_scenario). For API version 23 and earlier, this capability is available only to apps that have obtained the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system). Apps that have obtained this permission are not affected for API version 24 and later.<br/>3. This task type must be used independently and notifications cannot be combined. Specifically, when you request or update a continuous task, it must be of the **MODE_SPECIAL_SCENARIO_PROCESSING** type. Otherwise, an error is returned. |
 | MODE_NEARLINK | 14 | NearLink service.<br>Use scenario: An application transitions into the background during the process of file transfer using NearLink.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| MODE_USB_CONNECTION | 16 | USB service (available only to phones, tablets, PCs/2-in-1 devices, and TVs).<br>Use scenarios: An app transitions into the background during audio playback through a USB device.<br>**Since:** 26.0.1<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## BackgroundTaskSubmode<sup>21+</sup>
 
@@ -2020,7 +2230,6 @@ Defines the subtype of a continuous task. It is usually used together with the m
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 <!--Table: 40%; 10%; 50%-->
-
 | Name                    | Value | Description                   |
 | ----------------------- | ---- | --------------------- |
 | SUBMODE_CAR_KEY_NORMAL_NOTIFICATION     | 1    | **CAR_KEY** type. It is of the normal text notification type.      |
@@ -2050,6 +2259,7 @@ Mapping table of main types and subtypes of continuous tasks
 | MODE_AV_PLAYBACK_AND_RECORD  | SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<br>SUBMODE_AVSESSION_AUDIO_PLAYBACK<br>SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<br>SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<br>SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION  |
 | MODE_SPECIAL_SCENARIO_PROCESSING  | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION <br>SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION  <br>SUBMODE_WORK_OUT_NORMAL_NOTIFICATION |
 | MODE_NEARLINK                   | SUBMODE_NORMAL_NOTIFICATION         |
+| MODE_USB_CONNECTION             | SUBMODE_NORMAL_NOTIFICATION         |
 
 ## UserAuthResult<sup>22+</sup>
 
@@ -2058,7 +2268,6 @@ Represents the user authorization result.
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 <!--Table: 30%; 10%; 60%-->
-
 | Name          | Value| Description    |
 | ------------ |---|--------|
 | NOT_SUPPORTED | 0 | The authorization is not supported. For example, if the main type of the requested continuous task is not **MODE_SPECIAL_SCENARIO_PROCESSING**, continuous task running in the background is not supported.|
@@ -2066,3 +2275,36 @@ Represents the user authorization result.
 | DENIED  | 2 | The authorization is denied.   |
 | GRANTED_ONCE | 3 | The authorization is granted this time.<br>Note: The authorization record will be cleared when the application exits. |
 | GRANTED_ALWAYS | 4 | The authorization is granted always.<br>**NOTE**<br>When the following common events are received, the related authorization records will be cleared:<br>[COMMON_EVENT_PACKAGE_ADDED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_added), [COMMON_EVENT_PACKAGE_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_removed), [COMMON_EVENT_BUNDLE_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_bundle_removed), [COMMON_EVENT_PACKAGE_FULLY_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_fully_removed), [COMMON_EVENT_PACKAGE_CHANGED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_changed). |
+
+## ProgressInfo
+ 
+Describes the notification progress information.
+ 
+**Since:** 26.0.1
+ 
+**Model restriction:** This API can be used only in the stage model.
+ 
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+ 
+| Name             | Type                              | Read-Only   | Optional   | Description               |
+| --------------- | --------------------------------- | ---- | ---- | ---------------- |
+| title           | string                            | No    | No    | Notification title. |
+| fileName        | string                            | No    | No    | Notification content. |
+| progressValue   | number                            | No    | Yes    | Notification progress. The value range is [0, 100].<br>Note: If this field exists, the notification has a progress ring, and the notification type is live view notification. If this field does not exist or its value is **100**, the notification does not have a progress ring, and the notification type is common notification. |
+| isMute          | boolean                           | No    | Yes    | Whether to mute the notification when the progress reaches 100. **true** indicates that the notification is muted, and **false** indicates that the notification is not muted (ringtone + vibration). The default value is **false**.<br>Note: This parameter is valid only when **progressValue** is set to **100**.|
+ 
+## DataTransferProgress
+ 
+Progress information of a continuous task notification.
+ 
+**Since:** 26.0.1
+ 
+**Model restriction:** This API can be used only in the stage model.
+ 
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+ 
+| Name             | Type                                | Read-Only   | Optional   | Description               |
+| ---------------- | --------------------------------- | ---- | ---- | ---------------- |
+| continuousTaskId | number             | No    | No    | Continuous task ID. The value must be an existing ID.          |
+| wantAgent        | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | No    | Yes    | Notification parameters, which are used to specify the target page that is redirected to when a continuous task notification is clicked. The default value is the **wantAgent** passed when a continuous task is requested. |
+| progressInfo     | [ProgressInfo](#progressinfo)  | No    | No    | Describes the notification progress information. |
