@@ -2086,6 +2086,24 @@ const arrShortcutInfo: Array<shortcutManager.ShortcutInfo> = [
 
 请检查shortcutInfo列表中，是否有不同的bundleName和appIndex组合。
 
+## 18100002 更新的快捷方式不存在
+
+**错误信息**
+
+The specified shortcut to be updated is not found.
+
+**错误描述**
+
+调用[shortcutManager.updateDesktopShortcutInfo](../apis-ability-kit/js-apis-shortcutManager-sys.md#shortcutmanagerupdatedesktopshortcutinfo)接口更新快捷方式时，指定的快捷方式不存在。
+
+**可能原因**
+
+传入的shortcutInfo在设备上不存在。
+
+**处理步骤**
+
+检查传入的shortcutInfo是否正确。
+
 ## 18400001 调用方未配置处置规则
 **错误信息**
 

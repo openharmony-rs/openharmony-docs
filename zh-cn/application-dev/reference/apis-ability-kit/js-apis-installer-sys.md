@@ -208,12 +208,14 @@ install(hapFilePaths: Array\<string>, installParam: InstallParam, callback: Asyn
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
+**需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE) or ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
 - 从API version 9开始，安装普通应用需要申请ohos.permission.INSTALL_BUNDLE权限。
 - 从API version 10开始，安装企业内部应用需要申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
 - 从API version 10开始，安装普通企业应用需要申请ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
 - 从API version 10开始，安装企业MDM应用需要申请ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
+- 从API version 13开始，安装内部测试应用需要申请ohos.permission.INSTALL_INTERNALTESTING_BUNDLE权限。
 - 从API version 23开始，降级安装应用需要同时申请ohos.permission.INSTALL_BUNDLE和ohos.permission.INSTALL_ALLOW_DOWNGRADE权限。仅支持签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用降级安装，可以参考[InstallParam](#installparam)中parameters描述。
+- 从API版本26.0.1开始，安装开发者ID应用需要申请ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -235,7 +237,7 @@ install(hapFilePaths: Array\<string>, installParam: InstallParam, callback: Asyn
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE' or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE' or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE').   |
+| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE' or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE' or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE') or 'ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE'.   |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3000.   |
 | 17700004 | The specified user ID is not found.                          |
@@ -337,12 +339,14 @@ install(hapFilePaths: Array\<string>, callback: AsyncCallback\<void>): void
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
+**需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE) or ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
 - 从API version 9开始，安装普通应用需要申请ohos.permission.INSTALL_BUNDLE权限。
 - 从API version 10开始，安装企业内部应用需要申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
 - 从API version 10开始，安装普通企业应用需要申请ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
 - 从API version 10开始，安装企业MDM应用需要申请ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
+- 从API version 13开始，安装内部测试应用需要申请ohos.permission.INSTALL_INTERNALTESTING_BUNDLE权限。
 - 从API version 23开始，降级安装应用需要同时申请ohos.permission.INSTALL_BUNDLE和ohos.permission.INSTALL_ALLOW_DOWNGRADE权限。仅支持签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用降级安装，可以参考[InstallParam](#installparam)中parameters描述。
+- 从API版本26.0.1开始，安装开发者ID应用需要申请ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -363,7 +367,7 @@ install(hapFilePaths: Array\<string>, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE' or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE' or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE').   |
+| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE' or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE' or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE') or 'ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE'.   |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 17700010 | Failed to install the HAP because the HAP fails to be parsed. |
@@ -455,12 +459,14 @@ install(hapFilePaths: Array\<string\>, installParam?: InstallParam): Promise\<vo
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE)
+**需要权限：** ohos.permission.INSTALL_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE or ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE or ohos.permission.INSTALL_INTERNALTESTING_BUNDLE or (ohos.permission.INSTALL_BUNDLE and ohos.permission.INSTALL_ALLOW_DOWNGRADE) or ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE
 - 从API version 9开始，安装普通应用需要申请ohos.permission.INSTALL_BUNDLE权限。
 - 从API version 10开始，安装企业内部应用需要申请ohos.permission.INSTALL_ENTERPRISE_BUNDLE权限。
 - 从API version 10开始，安装普通企业应用需要申请ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE或ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
 - 从API version 10开始，安装企业MDM应用需要申请ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE权限。
+- 从API version 13开始，安装内部测试应用需要申请ohos.permission.INSTALL_INTERNALTESTING_BUNDLE权限。
 - 从API version 23开始，降级安装应用需要同时申请ohos.permission.INSTALL_BUNDLE和ohos.permission.INSTALL_ALLOW_DOWNGRADE权限。仅支持签名证书分发类型为app_gallery或者签名证书类型为debug的三方应用降级安装，可以参考[InstallParam](#installparam)中parameters描述。
+- 从API版本26.0.1开始，安装开发者ID应用需要申请ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -487,7 +493,7 @@ install(hapFilePaths: Array\<string\>, installParam?: InstallParam): Promise\<vo
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE' or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE' or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE').   |
+| 201 | Calling interface without permission 'ohos.permission.INSTALL_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE' or 'ohos.permission.INSTALL_ENTERPRISE_NORMAL_BUNDLE' or 'ohos.permission.INSTALL_INTERNALTESTING_BUNDLE' or ('ohos.permission.INSTALL_BUNDLE' and 'ohos.permission.INSTALL_ALLOW_DOWNGRADE') or 'ohos.permission.INSTALL_DEVELOPER_ID_BUNDLE'.   |
 | 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3000.   |
 | 17700004 | The specified user ID is not found.                          |
