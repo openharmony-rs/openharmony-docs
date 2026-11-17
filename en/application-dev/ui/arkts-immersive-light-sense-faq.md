@@ -5,7 +5,7 @@
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=218b1a6f02f9e47e32daf87fcc74c389c1461599 translatedAt=2026-10-28T11:43:05.972Z pushedAt=2026-10-29T08:35:58.572Z nl=1 -->
+<!-- md-trans-meta sourceCommit=b8a8d97e81f8d279b97ff0aa447c8ba623279500 translatedAt=2026-11-12T03:39:28.911Z pushedAt=2026-11-13T06:04:46.220Z nl=1 -->
 
 This document provides common issues and solutions encountered during the development of immersive lighting. For a complete introduction and development guide to immersive lighting, see [Immersive Lighting Overview](arkts-immersive-light-sense-overview.md).
 
@@ -233,6 +233,48 @@ This is a normal optical behavior of immersive system materials. The immersive l
 - Use thicker material styles (such as REGULAR, THICK, or ULTRA_THICK) to reduce material transparency and thereby minimize the refraction effect.
 - Add a [materialColor](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions) overlay to the material layer to reduce the visibility of refraction by blending in a semi‑transparent color.
 
+**Code Example**
+
+```ts
+// Obvious refraction scenario: thin material has high transparency, and the border presents the color of the surrounding background.
+Column() {
+  Text('ULTRA_THIN')
+}
+.width(328)
+.height(56)
+.borderRadius(28)
+.backgroundColor(Color.Transparent)
+.systemMaterial(new uiMaterial.ImmersiveMaterial({
+  style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+}))
+
+// Recommended writing style 1: use a thicker material style to reduce material transparency and reduce the refraction effect.
+Column() {
+  Text('THICK')
+}
+.width(328)
+.height(56)
+.borderRadius(28)
+.backgroundColor(Color.Transparent)
+.systemMaterial(new uiMaterial.ImmersiveMaterial({
+  style: uiMaterial.ImmersiveStyle.THICK,
+}))
+
+// Recommended writing style 2: overlay a layer of semi-transparent color through materialColor to reduce the visibility of refraction.
+// Note that the color needs to have transparency; a pure opaque color will occlude the material effect.
+Column() {
+  Text('materialColor')
+}
+.width(328)
+.height(56)
+.borderRadius(28)
+.backgroundColor(Color.Transparent)
+.systemMaterial(new uiMaterial.ImmersiveMaterial({
+  style: uiMaterial.ImmersiveStyle.ULTRA_THIN,
+  materialColor: '#80FFFFFF', // White with 50% transparency.
+}))
+```
+
 ## Material Effect Disappears After an Opaque Color Is Passed to materialColor
 
 **Symptom**
@@ -294,13 +336,46 @@ For automatic color inversion to take effect, the following conditions must be m
 - The device computing power tier must be high or medium. On low computing power devices, automatic color inversion does not produce a visual difference.
 - The material style must be THIN or ULTRA_THIN. It does not take effect under REGULAR, THICK, or ULTRA_THICK styles.
 - The system's immersive lighting intensity configuration affects the inversion trigger threshold. The thinner the immersive system material and the stronger the system's immersive lighting setting, the more likely automatic color inversion is triggered.
-- Automatic color inversion takes effect only for color values set through resource interfaces, including the [fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontcolor) attribute of the [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) component, the [fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#fontcolor) attribute of the [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) component, the [fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#fontcolor) attribute of the [SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md) component, the [fillColor](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#fillcolor) attribute of the [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md) component, and the color attributes of components such as TextInput, TextArea, Chip, ChipGroup, SegmentButton, and Swiper. For the complete list of attributes that take effect, see the [colorInvert](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions) parameter description. Hardcoded color values in the code (such as `Color.White` and `'#FFFFFFFF'`) do not trigger automatic color inversion.
+- Ensure that the material style is THIN or ULTRA_THIN.
 
 **Solution**
 
 1. Ensure that the material style is THIN or ULTRA_THIN.
-2. Ensure that the text color is set via resource interfaces (such as `$r('app.color.xxx')`), rather than hard‑coded color values.
-3. Increase the system's immersive light configuration and observe the effect.
+2. Confirm that the text color uses the special system resource (such as `$r('sys.color.font_primary')`) described in the [colorInvert](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions) parameter description, rather than a hardcoded color value or an application custom resource (such as `$r('app.color.xxx')`).
+3. Increase the system's immersive lighting configuration and observe the effect.
+
+**Code Example**
+
+```ts
+// Incorrect writing style: automatic inversion does not take effect under the REGULAR style, and hardcoded color values will not trigger automatic inversion.
+Column() {
+  Text('automatic inversion')
+    .fontColor(Color.White) // Hard-coded color, does not participate in automatic inversion.
+}
+.width(328)
+.height(56)
+.borderRadius(28)
+.backgroundColor(Color.Transparent)
+.systemMaterial(new uiMaterial.ImmersiveMaterial({
+  style: uiMaterial.ImmersiveStyle.REGULAR, // Automatic inversion takes effect only in the THIN or ULTRA_THIN style.
+  colorInvert: true,
+}))
+
+// Recommended writing style: the material style is THIN, and the text color is set via the resource API.
+Column() {
+  Text('automatic inversion')
+    // The text color needs to use a system color resource that supports automatic inversion; custom resources and hard-coded colors do not take effect.
+    .fontColor($r('sys.color.font_primary'))
+}
+.width(328)
+.height(56)
+.borderRadius(28)
+.backgroundColor(Color.Transparent)
+.systemMaterial(new uiMaterial.ImmersiveMaterial({
+  style: uiMaterial.ImmersiveStyle.THIN,
+  colorInvert: true,
+}))
+```
 
 ## Shadow Effect Does Not Behave as Expected When Both shadow Attribute and Immersive System Material Are Set
 

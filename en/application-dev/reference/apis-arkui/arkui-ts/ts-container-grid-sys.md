@@ -6,7 +6,7 @@
 <!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=f1bbf293e58e8daa3733902ea6b2a7d76e6bbdaa translatedAt=2026-08-04T12:29:10.019Z pushedAt=2026-08-06T03:53:39.932Z -->
+<!-- md-trans-meta sourceCommit=f2aece774200f2c2522757664189fe26f550e5d8 translatedAt=2026-11-03T02:00:01.681Z pushedAt=2026-11-13T01:05:59.938Z nl=1 -->
 
 A grid container consists of cells divided by rows and columns. Various layouts are implemented by specifying the cells where items are placed.
 
@@ -15,6 +15,7 @@ A grid container consists of cells divided by rows and columns. Various layouts 
 > - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > - This topic describes only system APIs provided by the module. For details about its public APIs, see [Grid](ts-container-grid.md).
+
 
 ## GridLayoutOptions<sup>10+</sup>
 
@@ -39,7 +40,7 @@ Records the position of the start line in the grid.
 
 **System API**: This is a system API.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 | Name| Type| Read-only| Optional| Description|
 |------|------|------|------|------|
@@ -58,7 +59,7 @@ Calculates the start line position of the current page based on the total offset
 
 **System API**: This is a system API.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -82,7 +83,7 @@ Calculates the start line on the page when the grid is scrolled to the specified
 
 **System API**: This is a system API.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -99,11 +100,9 @@ Calculates the start line on the page when the grid is scrolled to the specified
 ## Examples
 
 ### Example 1: Basic Usage
-
 This example shows how to use **onGetStartIndexByOffset** and **onGetStartIndexByIndex** in [GridLayoutOptions](#gridlayoutoptions10) to quickly locate the grid scrolling position.
 
 **GridLayoutOptions** supports **onGetStartIndexByOffset** and **onGetStartIndexByIndex** since API version 23.
-
 ```ts
 @Entry
 @Component
@@ -201,7 +200,7 @@ struct Index {
         console.info('XXX' + 'Grid onScrollBarUpdate,index : ' + index.toString() + ',offset' + offset.toString());
         return {
           totalOffset: (index / this.crossCount) * (this.itemHeight) * 2 - offset,
-          totalLength: this.itemHeight * 2 * this.childrenCount / this.crossCount
+          totalLength: this.itemHeight * 2 * Math.ceil(this.childrenCount / this.crossCount)
         };
       }) // The calculation of totalOffset and totalLength depends on the data volume, column count, and irregular node rules in the current example. Adjust them accordingly when modifying the data source.
     }.width('100%').margin({ top: 5 })
@@ -247,5 +246,4 @@ export class GridDataSource implements IDataSource {
   }
 }
 ```
-
 ![gridCustomScroll](figures/gridCustomScroll.gif)

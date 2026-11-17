@@ -1,21 +1,22 @@
 # SwipeRefresher
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @fengluochenai-->
-<!--Designer: @YanSanzo-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=ac775a54069be1728a015bce61b1790fc26fe1c8 translatedAt=2026-11-03T01:38:30.421Z pushedAt=2026-11-13T01:05:59.881Z nl=1 -->
 
 
 The swipe refresher is a component used to obtain and load content, typically with a pull-down gesture.
 
 > **NOTE**
 >
-> - This component and its child components are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component and its child components are supported since API version 10. Newly added content in later versions is marked with a superscript to indicate their earliest version.
 >
-> - This component can be used only in the stage model.
+> - The APIs of this module can be used only in the stage model.
 >
-> - If the **SwipeRefresher** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **SwipeRefresher** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SwipeRefresher** component.
+> - If [universal attributes](ts-component-general-attributes.md) or [universal events](ts-component-general-events.md) are set for **SwipeRefresher**, the compilation toolchain additionally generates a node named **\_\_Common\_\_** and mounts the universal attributes or universal events on **\_\_Common\_\_** instead of directly applying them to **SwipeRefresher** itself. As a result, the universal attributes or universal events set by developers may not take effect or may not behave as expected. Therefore, it is not recommended to set universal attributes and universal events for **SwipeRefresher**.
 
 
 ## Modules to Import
@@ -24,16 +25,15 @@ The swipe refresher is a component used to obtain and load content, typically wi
 import { SwipeRefresher } from '@kit.ArkUI';
 ```
 
-
 ## Child Components
 
 Not supported
 
 ## SwipeRefresher
 
-SwipeRefresher ({content?: ResourceStr, isLoading: boolean})
+SwipeRefresher({content?: ResourceStr, isLoading: boolean})
 
-Implements the pull-down refresh feature. When a user pulls down the page, it triggers a content loading operation, fetching new content from the data source and dynamically displaying it on the page.
+Implements the pull-down refresh function. When a user pulls down the page, it triggers a content loading operation, fetching new content from the data source and dynamically displaying it on the page.
 
 **Decorator**: @Component
 
@@ -46,10 +46,7 @@ Implements the pull-down refresh feature. When a user pulls down the page, it tr
 | Name| Type| Mandatory| Decorator| Description                                                                |
 | -------- | -------- | -------- | -------- |--------------------------------------------------------------------|
 | content | [ResourceStr](ts-types.md#resourcestr) | No| @Prop | Text displayed when the content is loaded.<br>The default value is an empty string.<br>**NOTE**<br>If the text length exceeds the column width, it will be truncated. The Resource type is supported since API version 20.  |
-| isLoading | boolean | Yes| \@Prop | Whether content is being loaded.<br> **true**: yes<br>**false**: no|
-
-## Events
-The [universal events](ts-component-general-events.md) are not supported.
+| isLoading | boolean | Yes | \@Prop | Whether the component is currently loading.<br> true: loading.<br> false: not loading. |
 
 ## Example
 This example demonstrates how setting the **content** parameter to empty or non-empty strings and toggling the **isLoading** parameter between **true** and **false** affects the loading effect.
@@ -78,4 +75,4 @@ struct Index {
 }
 ```
 
-
+![Snipaste_2023-07-24_11-35-40](figures/Snipaste_2023-07-24_11-35-40.gif)

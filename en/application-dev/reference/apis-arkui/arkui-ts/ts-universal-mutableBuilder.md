@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=54bae6a72e3edeb71428e78cb459c6bf3924d628 translatedAt=2026-09-02T12:33:46.505Z -->
+<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-11-03T03:57:36.386Z pushedAt=2026-11-13T01:06:00.174Z nl=1 -->
 
 Use `mutableBuilder` to wrap a global [`@Builder`](./ts-universal-builder-dynamic.md#builder) function, so as to dynamically switch the content of the global `@Builder` function at runtime based on different conditions (for example, switching between different UI building logic based on the state). For details about the development guide, see [mutableBuilder: Implementing Dynamic Update of Global @Builder](../../../ui/state-management/arkts-mutableBuilder.md).
 
@@ -39,7 +39,7 @@ The `builder` attribute method of the [MutableBuilder](#mutablebuilder-1) object
 
 | Type                     | Description                                                        |
 | ------------------------- | ------------------------------------------------------------ |
-| [MutableBuilder&lt;Args&gt;](#mutablebuilder-1) | An instance of `MutableBuilder&lt;Args&gt;`, used to encapsulate a global `@Builder` function and support dynamically switching the build logic at runtime. This instance holds a reference to the global `@Builder` function. You can call the encapsulated build function through its `builder` attribute, or dynamically switch the build logic by reassigning a new instance returned by the `mutableBuilder` function. Its `builder` attribute method can only be used inside a custom component. |
+| [MutableBuilder&lt;Args&gt;](#mutablebuilder-1) | An instance of `MutableBuilder&lt;Args&gt;` that encapsulates a global `@Builder` function and supports dynamically switching the build logic at runtime. The instance holds a reference to the global `@Builder` function. You can call the encapsulated build function through its `builder` attribute, or dynamically switch the build logic by reassigning a new instance returned by the `mutableBuilder` function. Its `builder` attribute method can be called only inside the `build` function of a custom component or a function decorated by `@Builder`. |
 
 **Example**
 
@@ -123,4 +123,3 @@ function myBuilder(value: string, size: number) {
 
 let builderVar: MutableBuilder<[string, number]> = mutableBuilder(myBuilder); // Declare the type of builderVar as MutableBuilder<[string, number]>.
 ```
-<!--no_check-->

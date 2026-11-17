@@ -58,7 +58,7 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy, callback: 
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示配对的远端设备地址，例如："11:22:33:44:55:66"。 |
 | strategy | [ConnectionStrategy](#connectionstrategy)   | 是    |Profile的连接策略。 |
 | callback | AsyncCallback&lt;void&gt;  | 是    | 回调函数。当设置成功，err为undefined，否则为错误对象。 |
 
@@ -84,7 +84,7 @@ import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 import { a2dp } from '@kit.ConnectivityKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.setConnectionStrategy('XX:XX:XX:XX:XX:XX', 0, (err: BusinessError) => {
+    a2dpSrc.setConnectionStrategy('11:22:33:44:55:66', 0, (err: BusinessError) => {
         console.error('setConnectionStrategy, err: ' + JSON.stringify(err));
     });
 } catch (err) {
@@ -110,7 +110,7 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy): Promise&l
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示配对的远端设备地址，例如："11:22:33:44:55:66"。 |
 | strategy | [ConnectionStrategy](#connectionstrategy)   | 是    |Profile的连接策略。 |
 
 **返回值**：
@@ -141,7 +141,7 @@ import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 import { a2dp } from '@kit.ConnectivityKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.setConnectionStrategy('XX:XX:XX:XX:XX:XX', 1).then(() => {
+    a2dpSrc.setConnectionStrategy('11:22:33:44:55:66', 1).then(() => {
         console.info('setConnectionStrategy');
     }, (err: BusinessError) => {
         console.error('setConnectionStrategy errCode: ' + err.code + ', errMessage: ' + err.message);
@@ -169,7 +169,7 @@ getConnectionStrategy(deviceId: string, callback: AsyncCallback&lt;ConnectionStr
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示配对的远端设备地址，例如："11:22:33:44:55:66"。 |
 | callback | AsyncCallback&lt;[ConnectionStrategy](#connectionstrategy)&gt; | 是    | 回调函数。当获取策略成功，err为undefined，data为获取到的连接策略，否则为错误对象。 |
 
 **错误码**：
@@ -194,7 +194,7 @@ import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 import { a2dp } from '@kit.ConnectivityKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.getConnectionStrategy('XX:XX:XX:XX:XX:XX', (err: BusinessError, data: baseProfile.ConnectionStrategy) => {
+    a2dpSrc.getConnectionStrategy('11:22:33:44:55:66', (err: BusinessError, data: baseProfile.ConnectionStrategy) => {
         console.info('getConnectionStrategy, err: ' + JSON.stringify(err) + ', data: ' + JSON.stringify(data));
     });
 } catch (err) {
@@ -220,7 +220,7 @@ getConnectionStrategy(deviceId: string): Promise&lt;ConnectionStrategy&gt;
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示配对的远端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值**：
 
@@ -250,7 +250,7 @@ import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 import { a2dp } from '@kit.ConnectivityKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
-    a2dpSrc.getConnectionStrategy('XX:XX:XX:XX:XX:XX').then((data: baseProfile.ConnectionStrategy) => {
+    a2dpSrc.getConnectionStrategy('11:22:33:44:55:66').then((data: baseProfile.ConnectionStrategy) => {
         console.info('getConnectionStrategy');
     }, (err: BusinessError) => {
         console.error('getConnectionStrategy errCode: ' + err.code + ', errMessage: ' + err.message);

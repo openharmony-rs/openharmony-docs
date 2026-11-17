@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=023ee412a70b9a86b7573cb27618090c6d5d5134 translatedAt=2026-11-03T08:18:20.742Z pushedAt=2026-11-03T08:28:14.511Z nl=1 -->
+<!-- md-trans-meta sourceCommit=0343ad56d42e26eda6bc28a12b6d16a9b839072e translatedAt=2026-11-12T03:34:00.330Z pushedAt=2026-11-13T01:09:23.911Z nl=1 -->
 
 
 Text is a component used to display content in the user view, such as the text of an article. This component supports binding custom text selection menus, allowing users to choose different functions as needed. In addition, you can extend custom menus to enrich available options and further improve the user experience. Span is used to display inline text.  
@@ -1197,7 +1197,7 @@ Starting from API version 20, you can use [disableSystemServiceMenuItems](../ref
       }
       // Handle the custom menu item. Return true to keep the menu open after clicking the custom menu item.
       if (menuItemId.equals(TextMenuItemId.of(CustomAndBlockMenus.PREPARE_MENU_ITEM_ID))) {
-        let msg = 'Intercept id: prepare1 start:' + textRange.start + '; end:+' + textRange.end;
+        let msg = 'intercept id: prepare1 start:' + textRange.start + '; end:' + textRange.end;
         this.blockCallbackText = msg;
         return true;
       }
@@ -1458,7 +1458,7 @@ Place multiple Text components inside a SelectionContainer, and set the copyable
   }
   ```
 
- <!--Del-->   <!--DelEnd-->
+  <!--Del-->   <!--DelEnd-->
 
 ### Configuring Cross-Node Text Concatenation
 
@@ -1547,7 +1547,7 @@ When cross-node selection involves multiple Text components, the text copied to 
   }
   ```
 
- <!--Del-->   <!--DelEnd-->
+  <!--Del-->   <!--DelEnd-->
 
 ### Binding a Custom Selection Menu
 
@@ -1647,7 +1647,7 @@ When the system default menu cannot meet business requirements, you can bind a f
   }
   ```
 
-<!--Del-->   <!--DelEnd-->
+  <!--Del-->   <!--DelEnd-->
 
 ### Extending System Menu Options
 
@@ -1768,7 +1768,7 @@ To add custom options while retaining the system menu items, you can use [editMe
   }
   ```
 
- <!--Del-->   <!--DelEnd-->
+  <!--Del-->   <!--DelEnd-->
 
 ### Closing the Menu and Clearing the Selection Through the Controller
 
@@ -1839,7 +1839,7 @@ In scenarios such as page navigation and pop-up window overlay, you need to proa
   }
   ```
 
- <!--Del-->   <!--DelEnd-->
+  <!--Del-->   <!--DelEnd-->
 
 ## Implementing a Trending Searches List
 

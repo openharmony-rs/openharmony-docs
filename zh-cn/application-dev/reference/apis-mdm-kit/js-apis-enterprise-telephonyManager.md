@@ -1196,9 +1196,9 @@ telephonyManager.getSmsMessages(queryConfig).then((result) => {
  
 | 名称              | 类型    | 只读 | 可选 | 说明                                                      |
 | ----------------- | ------- | ---- | ---- | --------------------------------------------------------- |
-| createTime        | number  | 是   | 否   | 通话记录创建时间（时间戳，单位：秒）。来电时为开始振铃时刻，去电时为拨出时刻。 |
-| startTime         | number  | 是   | 否   | 通话接通时间（时间戳，单位：秒）。通话未接通时为0。          |
-| endTime           | number  | 是   | 否   | 通话结束时间（时间戳，单位：秒）。通话未接通时为挂断时间。    |
-| isIncoming        | boolean | 是   | 否   | 通话方向：**true** 表示来电（呼入），**false** 表示去电（呼出）。   |
-| slotId            | number  | 是   | 否   | 卡槽ID。0表示卡槽1，1表示卡槽2。                      |
-| telephoneNumber   | string  | 是   | 否   | 对方电话号码。                                            |
+| createTime        | number  | 否   | 否   | 通话记录创建时间（时间戳，单位：秒）。来电时为开始振铃时刻，去电时为拨出时刻。 |
+| startTime         | number  | 否   | 否   | 通话接通时间（时间戳，单位：秒）。通话未接通时为0。          |
+| endTime           | number  | 否   | 否   | 通话结束时间（时间戳，单位：秒）。通话未接通时为挂断时间。    |
+| isIncoming        | boolean | 否   | 否   | 通话方向：**true** 表示来电（呼入），**false** 表示去电（呼出）。   |
+| slotId            | number  | 否   | 否   | 卡槽ID。0表示卡槽1，1表示卡槽2。                      |
+| telephoneNumber   | string  | 否   | 否   | 对方电话号码。                                            |

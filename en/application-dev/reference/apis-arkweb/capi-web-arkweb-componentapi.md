@@ -1,12 +1,11 @@
 # ArkWeb_ComponentAPI
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-03T09:48:28.212Z pushedAt=2026-08-06T07:46:02.837Z -->
+<!-- md-trans-meta sourceCommit=a40d54eb841d3251f24cd251233d70758a16c2e7 translatedAt=2026-11-06T11:39:26.888Z pushedAt=2026-11-13T11:15:36.545Z nl=1 -->
 
 ```c
 typedef struct {...} ArkWeb_ComponentAPI
@@ -29,6 +28,7 @@ ArkWeb_ComponentAPI is an API struct provided by ArkWeb on the native side for l
 | Name| Description|
 | -- | -- |
 | size_t size | Size of the struct.|
+
 
 ### Member Functions
 
@@ -112,3 +112,4 @@ Triggered when this **Web** component is destroyed.
 | const char* webTag | Name of the **Web** component.|
 | ArkWeb_OnComponentCallback callback | Callback of **onDestroy**.|
 | void* userData | Pointer to the user-defined data. |
+

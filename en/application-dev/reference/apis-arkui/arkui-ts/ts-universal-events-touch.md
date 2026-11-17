@@ -1,11 +1,11 @@
 # Touch Event
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=73fddc27783dc0ff1d6785611faaba1b54608c80 translatedAt=2026-09-02T12:31:21.765Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:57:03.974Z pushedAt=2026-11-13T01:06:00.172Z nl=1 -->
 
 A touch event is triggered when a finger, stylus, or left mouse button is pressed against, swipes on, or is lifted from a component. It can be used to obtain information such as the touch type, touch point position, touch point changes, and historical points. It applies to interaction scenarios such as tapping, swiping, and multi-touch, helping the app respond to user touch behavior.
 
@@ -13,7 +13,7 @@ A touch event is triggered when a finger, stylus, or left mouse button is presse
 >
 > - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - For details about event distribution, see [Event Interaction Pipeline](../../../ui/arkts-interaction-basic-principles.md#event-interaction-pipeline). For details about the gesture event processing process, see [Multi-level Gesture Events](../../../ui/arkts-gesture-events-multi-level-gesture.md).
+> - For details about event distribution, see [Event Interaction Pipeline](../../../ui/arkts-interaction-basic-principles.md#event-interaction-process). For details about the gesture event processing process, see [Multi-level Gesture Events](../../../ui/arkts-gesture-events-multi-level-gesture.md).
 >
 > - To bind a gesture event, see [Gesture Binding](ts-gesture-settings.md).
 
@@ -90,7 +90,7 @@ Obtains all historical points of the current frame. The touch event frequency pe
 | Name   | Type                             | Read-Only| Optional         | Description                                 |
 | ------- | ----------------------------------|-----| -------------- | ------------------------------------- |
 | type    | [TouchType](ts-appendix-enums.md#touchtype) | No | No | Type of the touch event.<br>**Atomic service API:** This API can be used in atomic services since API version 11.                      |
-| id      | number                                      | No | No | Unique identifier of the finger.<br>**Atomic service API:** This API can be used in atomic services since API version 11.                      |
+| id      | number                                      | No | No | Unique identifier of the touch point.<br>**Atomic service API:** This API can be used in atomic services since API version 11.                      |
 | x       | number                                      | No | No | X coordinate of the touch point in the [component coordinates](../../../ui/arkui-glossary.md#component-coordinate-system) relative to the event response component.<br>Unit: vp<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
 | y       | number                                      | No | No | Y coordinate of the touch point in the [component coordinates](../../../ui/arkui-glossary.md#component-coordinate-system) relative to the event response component.<br>Unit: vp<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
 | windowX<sup>10+</sup>  | number                       | No | No | X coordinate of the touch point in the coordinate system of the current application window.<br>Unit: vp<br>**Atomic service API:** This API can be used in atomic services since API version 11.<br>**Model restriction:** This API can be used only in the stage model.   |
@@ -111,7 +111,7 @@ Obtains all historical points of the current frame. The touch event frequency pe
 
 getCurrentLocalPosition?(): Coordinate2D
 
-Obtains the coordinates of the touch position relative to the upper left corner of the current component's real-time position.
+Obtains the coordinate of the touch position relative to the top-left corner of the current component's real-time position. Returns null when the event cannot provide a valid real-time component coordinate. Perform a null check before use.
 
 **Since**: 26.0.0
 
@@ -266,4 +266,3 @@ struct GetCurrentLocalPositionExample {
 ```
 
 <!--Del--> <!--DelEnd-->
-<!--no_check-->

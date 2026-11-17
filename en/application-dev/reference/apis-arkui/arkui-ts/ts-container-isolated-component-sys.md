@@ -1,12 +1,11 @@
 # IsolatedComponent (System API)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e2e8608c64e606248f00eb66f3b2d4805fae44da translatedAt=2026-08-21T02:24:23.263Z pushedAt=2026-08-21T08:34:50.234Z -->
+<!-- md-trans-meta sourceCommit=f7759f2de2c7e80ce9af21b23ed944c517949c82 translatedAt=2026-11-03T02:03:46.586Z pushedAt=2026-11-13T01:05:59.944Z nl=1 -->
 
 **IsolatedComponent** is designed to support the embedding and display of UIs provided by independent .abc files (Ark bytecode) within the current page, with the displayed content running in a restricted Worker thread.
 
@@ -44,7 +43,7 @@ This component is primarily designed for modular development scenarios that requ
 
 1. Displaying an independent .abc file through the **IsolatedComponent** component in the host process means that the .abc file content is fully accessible to the host, granting the host the control over the content of the independent .abc file. Therefore, this component is prohibited in security-sensitive scenarios.
 
-2. Running independent .abc files in a restricted Worker thread offers a level of security, as the .abc file content does not interfere with the main thread.
+2. Running independent .abc files in a restricted Worker thread can ensure relative safety, as the .abc file content does not interfere with the main thread.
 
 ## Child Components
 
@@ -54,7 +53,7 @@ Not supported
 
 IsolatedComponent(options: IsolatedOptions)
 
-Creates an **IsolatedComponent** component to display the .abc file executed in a restricted Worker thread.
+Creates an **IsolatedComponent** component to display the UI provided by the .abc file running in a restricted Worker thread.
 
 > **NOTE**
 >
@@ -84,7 +83,6 @@ Used to pass construction parameters during **IsolatedComponent** construction.
 | worker | [RestrictedWorker](../../apis-arkts/js-apis-worker-sys.md#restrictedworker11) | No | No | Restricted worker that runs the .abc file. Note that layout rendering and event delivery between the main thread and the restricted worker thread are asynchronous. |
 
 ## Attributes
-
 Only the [width](ts-universal-attributes-size.md#width), [height](ts-universal-attributes-size.md#height), and [backgroundColor](ts-universal-attributes-background.md#backgroundcolor) universal attributes are supported.
 
 ## Events
@@ -114,17 +112,12 @@ Invoked when an error occurs during the running of the .abc file loaded by **Iso
 ## Example: Loading an IsolatedComponent
 
 This example demonstrates the basic usage of the **IsolatedComponent** component. The sample application's **bundleName** is **"com.example.isolateddemo"**, and the component uses the .abc file and an extension page from the same application as the embedded content. The specific testing steps after building the application project are as follows:
-
 1. Compile and build the HAP file in DevEco Studio and install it on the device.
-
 2. Upload the generated **modules.abc** and **modules.hap** files to the app sandbox path **/data/app/el2/100/base/com.example.isolateddemo/haps/entry/files** using DevEco Studio or the [hdc tool](../../../dfx/hdc.md).
-
 3. Open the app page and tap the **verifyAbc** button to verify the .abc file, which logs "VerifyAbc successfully."
-
 4. After tapping the **showIsolatedComponent** button, the page displays the **IsolatedComponent** with the content "Hello World".
 
 - The content of the restricted worker script **ets/workers/OhCardWorker.ets** is as follows:
-
   ```ts
   // OhCardWorker.ets
   import { worker, ThreadWorkerGlobalScope, MessageEvents, ErrorEvent } from '@kit.ArkTS';
@@ -140,7 +133,6 @@ This example demonstrates the basic usage of the **IsolatedComponent** component
   ```
 
 - The content of the home page file **ets/pages/Index.ets** loaded by the **EntryAbility** (**UIAbility**) in the sample app is as follows:
-
   ```ts
   import { worker } from '@kit.ArkTS';
   import { bundleManager, common } from '@kit.AbilityKit';
@@ -225,8 +217,7 @@ This example demonstrates the basic usage of the **IsolatedComponent** component
   }
   ```
 
-- The entry page file **ets/pages/extension.ets**, which runs in a restricted Worker thread, needs to be configured in the **resources/base/profile/main_pages.json** file with the following content:
-
+- The entry page file **ets/pages/extension.ets**, which runs in a restricted Worker thread (the page path needs to be configured in the `resources/base/profile/main_pages.json` file), has the following content:
   ```ts
   @Entry
   @Component
@@ -251,7 +242,6 @@ This example demonstrates the basic usage of the **IsolatedComponent** component
   ```
 
 - Add the **requestPermissions** tag to the **module.json5** configuration file to allow the execution of dynamically delivered Ark bytecode in restricted mode.
-
   ```json
   "requestPermissions": [
     {

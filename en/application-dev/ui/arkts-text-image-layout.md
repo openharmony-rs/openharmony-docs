@@ -1,12 +1,11 @@
 # Text and Image Layout
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9a5da59cdf4f4c3dc0f87035f85ddf06f80ecfc4 translatedAt=2026-08-04T06:40:16.214Z pushedAt=2026-08-04T08:31:49.329Z -->
+<!-- md-trans-meta sourceCommit=c992fb38f3da4a9d7a76815f26827a4feff9c150 translatedAt=2026-11-12T03:54:19.299Z pushedAt=2026-11-13T07:14:08.101Z nl=1 -->
 
 Text and image layout combines images with text, allowing text to flow around images. This layout approach presents information intuitively, enhances visual impact, and creates diverse page display effects.
 
@@ -37,6 +36,7 @@ Text() {
     .fontSize(16)
 }.textVerticalAlign(TextVerticalAlign.CENTER)
 ```
+
 
 ![span_imagespan_composition](figures/span_imagespan_composition.png)
 
@@ -72,8 +72,8 @@ struct styled_string_demo {
 
   private async getPixmapFromMedia(resource: Resource) {
     try {
-      let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
-      let imageSource = image.createImageSource(unit8Array?.buffer?.slice(0, unit8Array?.buffer?.byteLength));
+      let uint8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
+      let imageSource = image.createImageSource(uint8Array?.buffer?.slice(0, uint8Array?.buffer?.byteLength));
       let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
         desiredPixelFormat: image.PixelMapFormat.RGBA_8888
       });

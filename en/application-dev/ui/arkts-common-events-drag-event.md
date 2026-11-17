@@ -5,7 +5,7 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e3d32a880304cbe5ac09746569f1a26dcacca8bf translatedAt=2026-11-03T07:53:05.928Z pushedAt=2026-11-03T07:58:40.031Z nl=1 -->
+<!-- md-trans-meta sourceCommit=f9f7e259f8391542a729acd80ec3248cba6f38f3 translatedAt=2026-11-12T03:36:09.429Z pushedAt=2026-11-13T01:12:18.932Z nl=1 -->
 
 Unified drag and drop refers to a data transfer interaction triggered by a mouse device or gesture. Users can drag data from one component (the drag source) and drop it into another (the drop target) to initiate a response. In this interaction, the drag source provides the data, while the drop target receives and processes it, thereby enabling users to easily move, copy, or delete data.
 
@@ -1337,7 +1337,7 @@ You can customize spring loading detection parameters to dynamically determine w
        // Check the current state.
        if (context.state == DragSpringLoadingState.BEGIN) {
          // Check whether the data type dragged by the user can be handled.
-         boolean isICanHandle = false;
+         let isICanHandle: boolean = false;
          let dataSummary = context?.dragInfos?.dataSummary;
          if (dataSummary != undefined) {
            for (const [type, size] of dataSummary) {

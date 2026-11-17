@@ -546,7 +546,7 @@ Nesting \@Reusable decorators is not recommended, as it increases memory usage, 
 
 ## Proactively Clearing the Reuse Pool
 
-Starting from API version 26.1.0, when developers need to proactively release components in the reuse pool, they can obtain the [CustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#customcomponentcontext) of the current component through [UIUtils.getCustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#getcustomcomponentcontext), call the [getDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#getdefaultreusepool) method of CustomComponentContext to obtain the default reuse pool [IDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#idefaultreusepool), and then call the [clearCache](../../reference/apis-arkui/js-apis-stateManagement.md#clearcache) method of IDefaultReusePool.
+Starting from API version 26.1.0, when developers need to proactively release components in the reuse pool, they can obtain the [CustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#customcomponentcontext) of the current component through [UIUtils.getCustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#getcustomcomponentcontext), call the [getDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md) method of CustomComponentContext to obtain the default reuse pool [IDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md), and then call the [clearCache](../../reference/apis-arkui/js-apis-stateManagement.md) method of IDefaultReusePool.
 
 > **NOTE**
 >

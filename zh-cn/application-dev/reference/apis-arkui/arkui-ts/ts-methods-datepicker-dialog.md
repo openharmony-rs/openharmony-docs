@@ -133,6 +133,7 @@ struct DatePickerDialogExample {
         .margin(20)
         .onClick(() => {
           this.getUIContext().showDatePickerDialog({
+            // 设置了start或end且为非默认值的场景下，API版本26.1.0之前canLoop不生效，从API版本26.1.0开始，canLoop对非边界列生效，对边界列不生效。
             start: new Date('2000-01-01'),
             end: new Date('2100-12-31'),
             selected: this.selectedDate,

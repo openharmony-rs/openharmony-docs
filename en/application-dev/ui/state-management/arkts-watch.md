@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-09-21T11:54:15.154Z pushedAt=2026-09-23T09:58:30.770Z -->
+<!-- md-trans-meta sourceCommit=2348ec05ef98b768ce1767324aeb24767349c321 translatedAt=2026-11-12T03:33:57.146Z pushedAt=2026-11-13T01:08:49.877Z nl=1 -->
 
 
 [@Watch](../../reference/apis-arkui/arkui-ts/ts-state-management-watch.md#watch) is used to listen for changes to state variables. If a developer needs to monitor whether the value of a state variable has changed, they can use @Watch to set a callback function for the state variable.
@@ -55,9 +55,9 @@ Before reading this topic, you are advised to read [\@State](./arkts-state.md) t
 
 ## Constraints
 
-- Pay attention to the risk of infinite loops. Loops can be caused by the \@Watch callback directly or indirectly mutating the same variable. To avoid loops, do not mutate the \@Watch decorated state variable inside the callback handler.
+- Pay attention to the risk of infinite loops. Loops can be caused by the <!--__BS_0__--> callback directly or indirectly mutating the same state variable. To avoid loops, do not mutate the <!--__BS_1__--> decorated state variable inside the callback method.
 
-- Pay attention to performance. The attribute value update function delays component re-render (see the preceding behavior description). The callback should only perform quick computations.
+- Pay attention to performance. The attribute value update function delays component re-render (see the preceding behavior manifestation). Therefore, the callback function should only perform quick computations.
 
 - Calling async/await from a \@Watch function is not recommended, because \@Watch is designed for quick computations; asynchronous behavior may cause performance issues with re-rendering speed.
 
@@ -91,7 +91,7 @@ change() {
 }
 ```
 
-- Common variables cannot be decorated by \@Watch. Otherwise, an error will be reported during compilation.
+- Regular variables cannot be decorated by \@Watch. Otherwise, an error will be reported during compilation.
 
 ```ts
 // Incorrect usage

@@ -7,7 +7,7 @@
 <!--Adviser: @HelloCrease-->
 <!-- md-trans-meta sourceCommit=d00cc090ab1e70fffee77bd26a6ec11e2edf8cae translatedAt=2026-11-03T13:28:43.037Z pushedAt=2026-11-04T06:24:30.786Z nl=1 -->
 
-The focused application observer can be passed as an input parameter to the [onFocusedApplicationChanged](js-apis-app-ability-appManager.md#appmanageronfocusedapplicationchanged) method to listen for changes in the focused application.
+The focused application observer can be passed as an input parameter to the [onFocusedApplicationChanged](js-apis-app-ability-appManager.md) method to listen for changes in the focused application.
 
 ## Modules to Import
 

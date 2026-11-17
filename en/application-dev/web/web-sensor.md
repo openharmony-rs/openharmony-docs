@@ -5,7 +5,7 @@
 <!--Designer: @handyohos-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=48a290dbe7191671ca4cb42baae81431605e369d translatedAt=2026-11-03T03:13:02.307Z pushedAt=2026-11-03T03:25:24.644Z nl=1 -->
+<!-- md-trans-meta sourceCommit=c825e6a7cc75a67ea652eb38bec0a2c70e07052c translatedAt=2026-11-12T04:46:57.422Z pushedAt=2026-11-12T08:43:33.042Z nl=1 -->
 
 ## Overview
 
@@ -116,8 +116,6 @@ When the **Web** component is connected to a motion or orientation sensor, confi
    ```
 
 2. In the frontend page code, use JavaScript to call the W3C standards-compliant API related to the sensor.
-
-   <!-- @[the_type_of_resource_for_which_permission_is_requested_html](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/resources/rawfile/index.html) --> 
    
    ``` HTML
    <!DOCTYPE HTML>
@@ -128,7 +126,7 @@ When the **Web** component is connected to a motion or orientation sensor, confi
        <meta name="msapplication-tap-highlight" content="no" />
        <meta name="HandheldFriendly" content="true" />
        <meta name="MobileOptimized" content="320" />
-       <title>Motion and direction sensor</title>
+       <title>Motion and orientation sensor</title>
        <style>
            body {
                font-family: Arial, sans-serif;
@@ -139,7 +137,7 @@ When the **Web** component is connected to a motion or orientation sensor, confi
            function getAccelerometer() {
                let acc = new Accelerometer({frequency: 60});
                acc.addEventListener('activate', () => console.info('Ready to measure.'));
-               acc.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+               acc.addEventListener('error', error => console.error('Error type: ' + error.type + ', error: ' + error.error ));
                acc.addEventListener('reading', () => {
                    console.info(`Accelerometer ${acc.timestamp}, ${acc.x}, ${acc.y}, ${acc.z}.`);
                });
@@ -150,7 +148,7 @@ When the **Web** component is connected to a motion or orientation sensor, confi
            function getGyroscope() {
                let gyr = new Gyroscope({frequency: 60});
                gyr.addEventListener('activate', () => console.info('Ready to measure.'));
-               gyr.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+               gyr.addEventListener('error', error => console.error('Error type: ' + error.type + ', error: ' + error.error ));
                gyr.addEventListener('reading', () => {
                    console.info(`Gyroscope ${gyr.timestamp}, ${gyr.x}, ${gyr.y}, ${gyr.z}.`);
                });
@@ -161,7 +159,7 @@ When the **Web** component is connected to a motion or orientation sensor, confi
            function getAbsoluteOrientationSensor() {
                let aos = new AbsoluteOrientationSensor({frequency: 60});
                aos.addEventListener('activate', () => console.info('Ready to measure.'));
-               aos.addEventListener('error', error => console.info('Error type: ' + error.type + ', error: ' + error.error ));
+               aos.addEventListener('error', error => console.error('Error type: ' + error.type + ', error: ' + error.error ));
                aos.addEventListener('reading', () => {
                    console.info(`AbsoluteOrientationSensor data: ${aos.timestamp}, ${aos.quaternion}`);
                });

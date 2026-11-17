@@ -1,12 +1,11 @@
 # OH_DecodingOptions
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=79213852c1a278fd2c8d18b1a077b8eb603c4cd5 translatedAt=2026-08-03T03:59:37.685Z pushedAt=2026-08-04T04:21:02.096Z -->
+<!-- md-trans-meta sourceCommit=996875bf85134237912cdd83c150611d5a966edf translatedAt=2026-11-06T02:02:18.247Z pushedAt=2026-11-12T06:00:52.271Z nl=1 -->
 
 ```c
 typedef struct OH_DecodingOptions OH_DecodingOptions
@@ -32,7 +31,7 @@ The table below describes the content and operation mode of the OH_DecodingOptio
 | -------- | -------- | -------- | -------- | -------- | -------- |
 | int32_t | pixelFormat | Pixel format. | RGBA_8888 | [OH_DecodingOptions_GetPixelFormat](capi-image-source-native-h.md#oh_decodingoptions_getpixelformat) | [OH_DecodingOptions_SetPixelFormat](capi-image-source-native-h.md#oh_decodingoptions_setpixelformat) |
 | uint32_t | index | Index of the image to decode. | 0 | [OH_DecodingOptions_GetIndex](capi-image-source-native-h.md#oh_decodingoptions_getindex) | [OH_DecodingOptions_SetIndex](capi-image-source-native-h.md#oh_decodingoptions_setindex) |
-| float | rotate | Rotation angle. | Unit: deg. Default value: 0 | [OH_DecodingOptions_GetRotate](capi-image-source-native-h.md#oh_decodingoptions_getrotate) | [OH_DecodingOptions_SetRotate](capi-image-source-native-h.md#oh_decodingoptions_setrotate) |
+| float | rotate | Rotation angle. | The unit is degree (deg), and the default value is **0**. | [OH_DecodingOptions_GetRotate](capi-image-source-native-h.md#oh_decodingoptions_getrotate) | [OH_DecodingOptions_SetRotate](capi-image-source-native-h.md#oh_decodingoptions_setrotate) |
 | Image_Size | desiredSize | Desired output size. | Defaults to the original image size. | [OH_DecodingOptions_GetDesiredSize](capi-image-source-native-h.md#oh_decodingoptions_getdesiredsize) | [OH_DecodingOptions_SetDesiredSize](capi-image-source-native-h.md#oh_decodingoptions_setdesiredsize) |
 | Image_Region | desiredRegion | Region to decode. | Defaults to the region of the full image size. | [OH_DecodingOptions_GetDesiredRegion](capi-image-source-native-h.md#oh_decodingoptions_getdesiredregion) | [OH_DecodingOptions_SetDesiredRegion](capi-image-source-native-h.md#oh_decodingoptions_setdesiredregion) |
 | int32_t | desiredDynamicRange | Desired dynamic range. | SDR |[OH_DecodingOptions_GetDesiredDynamicRange](capi-image-source-native-h.md#oh_decodingoptions_getdesireddynamicrange) | [OH_DecodingOptions_SetDesiredDynamicRange](capi-image-source-native-h.md#oh_decodingoptions_setdesireddynamicrange) |

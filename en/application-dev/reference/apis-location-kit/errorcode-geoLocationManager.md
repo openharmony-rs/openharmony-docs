@@ -127,7 +127,7 @@ The input parameter is set incorrectly. Use a supported sports type.
 
 **Solution**
 
-Refer to the input parameter description of [getPostProcessingTrack](./js-apis-geoLocationManager.md#geolocationmanagergetpostprocessingtrack) and use a supported sports type.<br>
+Refer to the input parameter description of [getPostProcessingTrack](./js-apis-geoLocationManager.md) and use a supported sports type.<br>
 
 ### Error Cause 5. Positioning failed due to other reasons.
 

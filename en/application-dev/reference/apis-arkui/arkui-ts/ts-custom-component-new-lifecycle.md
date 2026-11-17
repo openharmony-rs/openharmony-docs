@@ -1,12 +1,11 @@
 # Lifecycle of a Custom Component (Recommended)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xin11112-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=924f6df4b9051b04b0f13dec8e04905b92655514 translatedAt=2026-08-24T06:53:10.284Z pushedAt=2026-08-25T07:34:42.016Z -->
+<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-11-03T02:40:06.222Z pushedAt=2026-11-13T01:05:59.993Z nl=1 -->
 
 The lifecycle callbacks of a custom component are used to notify developers of the lifecycle of the custom component. These callbacks are private and are invoked by the development framework at specific times during runtime. They cannot be manually called from an app. This lifecycle mechanism covers the initialization, appearance, building, recycling and reuse, activation and deactivation, and destruction phases of a custom component. You can perform operations such as state modification, data event reporting, and listener registration in the callbacks of the corresponding phases. In addition, you can use **CustomComponentLifecycle** to monitor and observe the lifecycle state, which is suitable for scenarios that require fine-grained management of the component lifecycle, such as component reuse and recycling, state event reporting, and activation control.
 
@@ -70,7 +69,7 @@ For details, see [Lifecycle Example](#lifecycle-example).
 
 ComponentDisappear: MethodDecorator
 
-The function decorated by **@ComponentDisappear** is executed before a custom component is destroyed, that is, it is triggered when the component transitions to the **CustomComponentLifecycleState.DISAPPEARED** state. It is not recommended to change state variables in this function. In particular, modifying **\@Link** variables may cause unstable app behavior.
+The function decorated by **\@ComponentDisappear** is executed before a custom component is destroyed, that is, it is triggered when the component transitions to the **CustomComponentLifecycleState.DISAPPEARED** state. It is not recommended to change state variables in this function. In particular, modifying **\@Link** variables may cause unstable app behavior.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -185,7 +184,6 @@ The **getCurrentState** function is used to obtain the current lifecycle state o
 | [CustomComponentLifecycleState](#customcomponentlifecyclestate) | Current lifecycle status of a custom component.|
 
 **Example**
-
 ```ts
 import { UIUtils, ComponentBuilt } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -322,7 +320,6 @@ After a component is recycled, the recycling operations such as resource release
 **Model restriction**: This API can be used only in the stage model.
 
 **Example**
-
 ```ts
 import { ComponentInit, ComponentDisappear, UIUtils, CustomComponentLifecycleObserver, CustomComponentLifecycle } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -431,7 +428,6 @@ Current lifecycle status of a custom component.
 | DISAPPEARED | 4 | Disappeared. |
 
 **Example**
-
 ```ts
 import { CustomComponentLifecycleState, ComponentBuilt } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -506,7 +502,7 @@ struct Child {
   @State label: string = 'HelloWorld';
   @ComponentInit
   myInit() {
-    // After the custom component is created, the myInit method is triggered.
+    // Trigger the myInit method when the custom component initialization is about to complete.
     hilog.info(0x0000, 'testTag', 'Child myInit');
   }
   @ComponentAppear

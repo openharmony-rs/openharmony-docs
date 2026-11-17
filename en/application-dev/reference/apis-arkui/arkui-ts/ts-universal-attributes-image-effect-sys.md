@@ -5,7 +5,7 @@
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=e10e7def4863f4f964c4d0cb425b7650081cb83e translatedAt=2026-09-01T12:42:02.685Z -->
+<!-- md-trans-meta sourceCommit=7763818ea425aefeaa5c0be2018b488e9f3256b2 translatedAt=2026-11-03T03:23:39.877Z pushedAt=2026-11-13T01:06:00.107Z nl=1 -->
 
 This module provides APIs for setting the blur, shadow, and spherical effects of components, and applying image effects to pictures.
 
@@ -29,7 +29,7 @@ Blends the content of the current component (including the content of its child 
 
 **System API**: This is a system API.
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                           | Mandatory| Description                                                        |
 | ------ | ------------------------------- | ---- | ------------------------------------------------------------ |
@@ -46,19 +46,17 @@ Blends the content of the current component (including the content of its child 
 
 Sets how to apply the specified blend mode to the content of a view.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 11.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name          | Value  | Description                                                            |
 | ---------------| ------ | ---------------------------------------------------------------- |
-| OFFSCREEN_WITH_BACKGROUND<sup>23+</sup> | 2 |When creating an offscreen canvas, first copies a canvas with a background as the initial base color (the canvas of the BlendApplyType.OFFSCREEN type is initially transparent), then draws the content of this component and its child components onto the offscreen canvas, and finally blends the whole. In other functional features, it is consistent with BlendApplyType.OFFSCREEN. <br> **System API:** This API is a system API. |
+| OFFSCREEN_WITH_BACKGROUND<sup>23+</sup> | 2 |When creating an offscreen canvas, first copies a canvas with a background as the initial background color (a canvas of the **BlendApplyType.OFFSCREEN** type is initially transparent), then draws the content of this component and its child components onto the offscreen canvas, and finally blends the whole. In other functional features, it is consistent with **BlendApplyType.OFFSCREEN**. <br> **System API:** This is a system API.<br>**Widget capability:** Since API version 23, this API is supported in ArkTS widgets.|
 
 ## excludeFromRenderGroup<sup>22+</sup>
 
 excludeFromRenderGroup(exclude: boolean \| undefined): T
 
-Sets whether the current component and its child components are removed from the render group of the ancestor component. If this attribute is used alone, no effect is achieved. It must be used with the [renderGroup](./ts-universal-attributes-image-effect.md#rendergroup18) attribute of the ancestor component. 
+Sets whether the current component and its child components are removed from the render group of the ancestor component. If this attribute is used alone, no effect is achieved. It must be used with the [renderGroup](./ts-universal-attributes-image-effect.md#rendergroup18) attribute of the ancestor component.
 
 Removing the current component and its children from the render group does not affect the offscreen canvas of the ancestor component, and the cache of the render group is still valid. In this way, the render group cache can be reused. If the display area of the current component occupies only a part of the display area of the render group drawing content, and the display effect of the current component and its children is frequently updated, setting **excludeFromRenderGroup** helps optimize the drawing performance.
 
@@ -74,11 +72,11 @@ If this attribute is not set, the current component and its children are not rem
 
 **System API**: This is a system API.
 
-**Parameters**
+**Parameters** 
 
 | Name | Type              | Mandatory| Description                                                        |
 | ------- | ------------------ | ---- | ------------------------------------------------------------ |
-| exclude | boolean \| undefined | Required | Whether to exclude the current component and its child components from the render group of the ancestor component.<br>The value true means that the current component and its child components are excluded from the render group of the ancestor component and do not belong to the render group of the ancestor component; the value false means that the current component and its child components belong to the render group of the ancestor component.<br>When the value of exclude is undefined, it is processed as false.<br>**Note:**<br>It must be used together with the renderGroup attribute set on the ancestor component to create a render group; it has no effect when used alone. |
+| exclude | boolean \| undefined | Yes | Whether to exclude the current component and its child components from the render group of the ancestor component.<br>The value true means that the current component and its child components are excluded from the render group of the ancestor component and do not belong to the render group of the ancestor component; the value false means that the current component and its child components belong to the render group of the ancestor component.<br>When the value of exclude is undefined, it is processed as false.<br>**Note:**<br>It must be used together with the renderGroup attribute set on the ancestor component to create a render group; it has no effect when used alone. |
 
 **Return value**
 
@@ -87,16 +85,18 @@ If this attribute is not set, the current component and its children are not rem
 | T | Current component, used for chained calls. |
 
 ## edgeLight
-
+   
 edgeLight(params: EdgeLightParams | undefined): T
 
 Adds an edge glow effect to a component. The edge glow effect creates a glowing effect along the edges of the component, starting from a specified position and extending along the edges. This effect enhances the visual appeal of the component and highlights important components.
 
 > **NOTE**
 >
-> - Setting edgeLight alone does not produce an edge glow effect. You need to use [animateTo](../arkts-apis-uicontext-uicontext.md#animateto) to change the position parameter to achieve the glow effect. For details, see [Example 4: Setting Component Edge Light Effect](#example-4-setting-component-edge-light-effect).
+> - Setting **edgeLight** alone does not produce an edge glow effect. You need to use [animateTo](../arkts-apis-uicontext-uicontext.md#animateto) to change the position parameter to achieve the glow effect. For details, see [Example 4: Setting Component Edge Light Effect](#example-4-setting-component-edge-light-effect).
 >
-> - When the position parameter changes diagonally (for example, from TOP_LEFT to BOTTOM_RIGHT), the edge glow runs at a 45° angle.
+> - The glow effect is drawn only along the original edge of the component. If the component is clipped (for example, by a clip shape), the glow is not presented along the clipped edge.
+>
+> - It is recommended that the **position** parameter be set in a centrally symmetric direction (for example, from **TOP_LEFT** to **BOTTOM_RIGHT**, or from **LEFT** to **RIGHT**), so that the edge glow runs along the edge of the component. For an example, see [Example 4: Setting Component Edge Light Effect](#example-4-setting-component-edge-light-effect).
 
 **Since**: 26.0.0
 
@@ -133,10 +133,36 @@ Defines the parameters of the edge glow effect.
 | Name     | Type                                                       | Read-only | Optional | Description                                                    |
 | -------- | --------------------------------------------------------- | ---- | ---- |------------------------------------------------------- |
 | position | [EdgeLightPosition](./ts-appendix-enums-sys.md#edgelightposition)          | No   | No   | Position of the edge glow.                                           |
-| length   | [Length](ts-types.md#length)                              | No   | No   | Projection length of the edge glow along the flow direction (percentage is not supported; if a percentage is passed, it does not take effect).<br>Value range: [0, +∞)<br>Unit: vp<br>**Note:**<br>When length is 0, there is no edge glow projection effect.<br>When a value less than 0 is set, it is treated as 0. |
-| intensity | number                                                   | No   | Yes   | Glow intensity of the edge glow effect.<br>Value range: [0, 1]<br>Default value: 1<br>**Note:**<br>When the value is 0, the glow effect is completely invisible.<br>When the value is 1, the glow effect reaches the maximum brightness.<br>When a value greater than 1 is set, it is treated as 1.<br>When a value less than 0 is set, it is treated as 0. |
-| color    | [ResourceColor](ts-types.md#resourcecolor)                | No   | Yes   | Color of the edge glow.<br>Default value: #FFFFFF, displayed as white. |
-| thickness | [Length](ts-types.md#length)                             | No   | Yes   | Thickness of the edge glow line (percentage is not supported; if a percentage is passed, it does not take effect).<br>Value range: [0, +∞)<br>Unit: vp<br>Default value: 0<br>**Note:**<br>When thickness is 0, the edge glow line is invisible.<br>When a value less than 0 is set, it is treated as 0. |
+| length   | [Length](ts-types.md#length)                              | No   | No   | Length by which the edge glow extends along the flow direction.<br>This parameter does not support percentages. If a percentage is passed, it does not take effect.<br>Value range: [0, +∞)<br>Unit: vp<br>**Note:**<br>When **length** is **0**, there is no edge glow effect.<br>If a value less than 0 is set, it is processed as 0. |
+| intensity | number                                                   | No   | Yes   | Glow intensity of the edge glow effect.<br>Value range: [0, 1]<br>Default value: **1**<br>**Note:**<br>When the value is **0**, the glow effect is completely invisible.<br>When the value is **1**, the glow effect reaches the maximum brightness.<br>When a value greater than 1 is set, it is treated as 1.<br>When a value less than 0 is set, it is treated as 0. |
+| color    | [ResourceColor](ts-types.md#resourcecolor)                | No   | Yes   | Color of the edge glow.<br>Default value: **#FFFFFF**, displayed as white. |
+| thickness | [Length](ts-types.md#length)                             | No   | Yes   | Halo width of the edge glow (percentages are not supported. If a percentage is passed, it does not take effect).<br>Value range: [0, +∞)<br>Unit: vp<br>Default value: 0<br>**Note:**<br>When **thickness** is set to a value less than or equal to 0, it does not affect the visibility of the edge glow line, but only affects the halo effect.<br>If a value less than 0 is set, it is processed as 0. |
+
+## markLayeredRender
+   
+markLayeredRender(value: boolean | undefined): T
+
+Marks whether a node is drawn as an independent layer. Based on this layered mark, offscreen caching is enabled and the cache is reused in subsequent frames. When the cache needs to be refreshed, partial refresh is performed based on the dirty region, thereby reducing the load. If this API is not called, the node is not marked as an independent layer for drawing.
+
+**Since:** 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name  | Type               | Mandatory | Description                                                         |
+| ------- | ------------------ | ---- | ------------------------------------------------------------ |
+| value | boolean \| undefined | Yes   | Whether to mark the node as an independent layer for drawing.<br>**true** indicates that the node is marked as an independent layer for drawing; **false** indicates that the node is not marked as an independent layer for drawing.<br>When the **value** is **undefined**, it is processed as **false**.<br>**Note:**<br>Layered rendering should not be set in the following scenarios:<br>1. The [opacity](./ts-universal-attributes-opacity.md#opacity18) of the current node is less than 1. <br>2. Any child node of the current node has the system material [systemMaterial](./ts-universal-attributes-image-effect.md#systemmaterial) or background blur ([backgroundBlurStyle](./ts-universal-attributes-background.md#backgroundblurstyle18), [backgroundEffect](./ts-universal-attributes-background.md#backgroundeffect19), [backdropBlur](./ts-universal-attributes-background.md#backdropblur18), [foregroundBlurStyle](./ts-universal-attributes-foreground-blur-style.md#foregroundblurstyle19), [foregroundEffect](./ts-universal-attributes-foreground-effect.md#foregroundeffect), [blur](./ts-universal-attributes-image-effect.md#blur19)) set. <br>3. Any child node of the current node is a self-drawn layer, such as [XComponent](./ts-basic-components-xcomponent.md), [Canvas](./ts-components-canvas-canvas.md), [Video](./ts-media-components-video.md), or [Web](../../apis-arkweb/arkts-basic-components-web.md). <br>4. The subtree of the current node is frequently updated over a large area during animations. <br>5. The current node has already used the node group [renderGroup](./ts-universal-attributes-image-effect.md#rendergroup18). |
+
+**Return value**
+
+| Type | Description                     |
+| ---- | ------------------------ |
+| T    | Current component, used for chained calls. |
 
 ## Examples
 ### Example 1: Setting the Brightness Effect
@@ -331,29 +357,45 @@ Since API version 26.0.0, the edgeLight method is added.
 ```ts
 // xxx.ets
 import { curves } from '@kit.ArkUI';
+
 @Entry
 @Component
 struct Index {
-  @State animate: boolean = false;
-  @State edgeLightPosition: EdgeLightPosition = EdgeLightPosition.TOP_LEFT;
+  // Symmetric-direction glow effect: start point - end point (TOP_LEFT↔BOTTOM_RIGHT, TOP_RIGHT↔BOTTOM_LEFT, TOP↔BOTTOM, LEFT↔RIGHT)
+  private fromNames: string[] = ['TOP_LEFT', 'TOP_RIGHT', 'TOP', 'LEFT'];
+  private toNames: string[] = ['BOTTOM_RIGHT', 'BOTTOM_LEFT', 'BOTTOM', 'RIGHT'];
+  private fromPositions: EdgeLightPosition[] = [EdgeLightPosition.TOP_LEFT, EdgeLightPosition.TOP_RIGHT,
+    EdgeLightPosition.TOP, EdgeLightPosition.LEFT];
+  private toPositions: EdgeLightPosition[] = [EdgeLightPosition.BOTTOM_RIGHT, EdgeLightPosition.BOTTOM_LEFT,
+    EdgeLightPosition.BOTTOM, EdgeLightPosition.RIGHT];
+  @State current: EdgeLightPosition = EdgeLightPosition.TOP_LEFT;
+  @State hopIndex: number = 0;
+  @State label: string = 'TOP_LEFT - BOTTOM_RIGHT';
+
   build() {
     Column() {
-      Column()
+      Button(this.label)
         .height(300)
         .width(300)
         .backgroundColor(Color.Gray)
         .borderRadius(20)
         .edgeLight({
-          position: this.edgeLightPosition,
+          position: this.current,
           length: 90,
           intensity: 1,
           color: Color.White,
           thickness: 2
         })
         .onClick(() => {
-          this.getUIContext()?.animateTo({ curve: curves.springMotion(), duration: 3000}, () => {
-            this.animate = !this.animate;
-            this.edgeLightPosition = this.animate ? EdgeLightPosition.BOTTOM_RIGHT : EdgeLightPosition.TOP_LEFT;
+          // Each tap moves the glow effect from the start point to the end point along a set of symmetric directions, and updates the button text.
+          const index: number = this.hopIndex % this.fromNames.length;
+          const nextIndex: number = (index + 1) % this.fromNames.length;
+          // First position the glow effect at the start point of this set of symmetric directions, then animate it to the end point.
+          this.current = this.fromPositions[index];
+          this.getUIContext()?.animateTo({ curve: curves.springMotion(1), duration: 3000 }, () => {
+            this.current = this.toPositions[index];
+            this.label = `${this.fromNames[index]} - ${this.toNames[index]}`;
+            this.hopIndex = nextIndex;
           })
         })
     }
