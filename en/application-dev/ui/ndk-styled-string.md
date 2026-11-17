@@ -1,4 +1,4 @@
-# Using Attributed Strings
+# Using Styled Strings
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->

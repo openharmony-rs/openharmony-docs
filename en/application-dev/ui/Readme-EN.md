@@ -225,7 +225,7 @@
       - [Combined Gestures](arkts-gesture-events-combined-gestures.md)
       - [Multi-level Gesture Events](arkts-gesture-events-multi-level-gesture.md)
       - [Gesture Conflict Handling](arkts-gesture-events-gesture-judge.md)
-    - [Implementing Unified Drag and Drop](arkts-common-events-drag-event.md)
+    - [Implementing Unified Drag-and-Drop](arkts-common-events-drag-event.md)
     - [Implementing Focus Support](arkts-common-events-focus-event.md)
   - Using Animation<!--arkts-use-animation-->
     - [Animation Overview](arkts-animation.md)
