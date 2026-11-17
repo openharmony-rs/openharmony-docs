@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-使用[AVMetadataExtractor](media-kit-intro.md#avmetadataextractor)可以实现从原始媒体资源中获取元数据。本指南将以获取一个媒体资源的元数据作为示例，向开发者讲解AVMetadataExtractor元数据相关功能。
+使用[AVMetadataExtractor](media-kit-intro.md#avmetadataextractor)可以实现从本地或网络媒体资源中获取元数据，如编码格式、分辨率、音频专辑封面和视频缩略图等。本指南将以获取一个媒体资源的元数据作为示例，向开发者讲解AVMetadataExtractor元数据相关功能。
 
 获取音视频资源的元数据的全流程包含：创建AVMetadataExtractor、设置资源、获取元数据、获取音频资源的专辑封面或获取视频缩略图、释放资源。
 
