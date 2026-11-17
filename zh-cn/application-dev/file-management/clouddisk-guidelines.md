@@ -1351,6 +1351,43 @@ static napi_value Execute(napi_env env, napi_callback_info info)
 - 云侧文件大小变化时，先通过OH_CloudDisk_GetPlaceholderState()确认目标文件为占位符文件（返回state为非占位符时无法更新），再调用OH_CloudDisk_UpdatePlaceholder()按云侧最新元数据重置占位符（本地已水合数据会被清空，占位符回到未水合状态；若存在水合任务会返回OH_CLOUD_DISK_HYDRATE_IN_PROGRESS，可取消水合后重试）。完整示例参见[CloudDisk示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/README_zh.md)。
 - 不要以st_size判断文件实际数据量：未水合占位符的st_size等于预设值但本地无数据，应以应用自身记录的云侧文件大小为准。
 
+云侧文件大小变化后重置占位符的示例代码如下（源自CloudDisk示例更新占位符元数据模块）：
+
+<!-- @[update_on_cloud_size_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+Button($r('app.string.update_on_cloud_size_change_btn'))
+  .id('updateOnCloudSizeChangeBtn')
+  .onClick(() => {
+    // 步骤1：查询占位符水合状态，确认目标文件为占位符文件
+    // （非占位符文件无法更新占位符元数据）
+    let stateRet: PlaceholderStateResult = cloudDisk.getPlaceholderState(
+      this.updatePlaceholderSyncPath, this.updatePlaceholderFilePath);
+    if (stateRet.code !== 0) {
+      this.promptAction.showDialog({ title: $r('app.string.update_failed'), message: this.resStr($r('app.string.error_code_label')) + stateRet.code.toString() + '\n' + this.resStr($r('app.string.reason_label')) + this.getErrorCodeMsg(stateRet.code), buttons: [{ text: $r('app.string.confirm'), color: '#000000' }] });
+      return;
+    }
+    if (stateRet.state === 0) {
+      this.promptAction.showDialog({ title: $r('app.string.update_failed'), message: $r('app.string.not_placeholder'), buttons: [{ text: $r('app.string.confirm'), color: '#000000' }] });
+      return;
+    }
+    // 步骤2：按云侧最新元数据（大小、时间戳从云侧元数据查询获得，此处由入参模拟）
+    // 更新占位符：本地已水合数据会被清空，占位符回到未水合状态
+    let ret: number = cloudDisk.updatePlaceholder(
+      this.updatePlaceholderSyncPath, this.updatePlaceholderFilePath,
+      parseInt(this.updateOnCloudSizeChangeAtimeMs) || 0,
+      parseInt(this.updateOnCloudSizeChangeMtimeMs) || 0,
+      parseInt(this.updateOnCloudSizeChangeSize) || 0
+    );
+    if (ret === 0) {
+      // 展示重置前占位符状态：未水合（本地无数据，仅更新元数据）/部分水合或完全水合（本地数据已清空，回到未水合）
+      this.promptAction.showDialog({ title: $r('app.string.update_success'), message: this.getPlaceholderStateMsg(stateRet.state), buttons: [{ text: $r('app.string.confirm'), color: '#000000' }] });
+    } else {
+      this.promptAction.showDialog({ title: $r('app.string.update_failed'), message: this.resStr($r('app.string.error_code_label')) + ret.toString() + '\n' + this.resStr($r('app.string.reason_label')) + this.getErrorCodeMsg(ret), buttons: [{ text: $r('app.string.confirm'), color: '#000000' }] });
+    }
+  })
+```
+
 **取消水合**
 
 用户在文件管理器打开占位符文件、或应用主动需要将占位符文件变为可访问的普通文件时，可调用OH_CloudDisk_HydratePlaceholder()接口触发水合；不再需要下载时可取消水合。
