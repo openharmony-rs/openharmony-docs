@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "列举隐式Want中常用的action和entities及其含义，并说明相关能力因泛化使用不再推荐，建议改用指定类型方式拉起应用。"
+keywords: [action, entities, 隐式Want, ACTION_HOME, ACTION_VIEW_DATA, ENTITY_BROWSABLE, 应用拉起]
+doctype: guide
+status: not_recommended
+---
 # 常见action与entities（不推荐使用）
 
 <!--Kit: Ability Kit-->

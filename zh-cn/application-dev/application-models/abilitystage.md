@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "说明AbilityStage作为Module级组件管理器的作用，以及创建文件、配置srcEntry和监听系统环境变量的开发方法。"
+keywords: [AbilityStage, 组件管理器, Module初始化, 生命周期回调, srcEntry, 环境变量监听]
+doctype: guide
+status: active
+---
 # AbilityStage组件管理器
 
 <!--Kit: Ability Kit-->

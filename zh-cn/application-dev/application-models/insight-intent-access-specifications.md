@@ -1,3 +1,10 @@
+---
+kits: ["Ability Kit / 程序框架服务"]
+description: "汇总影音、娱乐、导航、生活、新闻、阅读、购物等垂域的标准意图接入规范，给出意图名称、参数和返回值定义。"
+keywords: [标准意图, 意图接入规范, 意图参数, MediaDomain, NavigationDomain, 垂域意图, 返回值定义]
+doctype: guide
+status: active
+---
 # 附录：标准意图接入规范
 
 <!--Kit: Ability Kit-->
