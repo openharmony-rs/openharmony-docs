@@ -12,7 +12,7 @@ typedef struct OH_Camera_C2PASignatureConfig OH_Camera_C2PASignatureConfig
 
 ## 概述
 
-C2PA签名配置。
+C2PA（Coalition for Content Provenance and Authenticity）签名配置。
 
 **起始版本：** 26.0.1
 
