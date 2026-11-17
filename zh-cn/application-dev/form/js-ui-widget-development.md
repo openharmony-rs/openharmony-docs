@@ -74,7 +74,7 @@ Stage卡片开发，即基于[Stage模型](../application-models/stage-model-dev
 
 2. 在JsCardFormAbility.ets中，实现FormExtension生命周期接口。
 
-   <!-- @[JSForm_JsCardFormAbility_FormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+   <!-- @[JSForm_JsCardFormAbility_FormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
    
    ``` TypeScript
    // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -668,7 +668,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
 - 在FormExtensionAbility中接收message事件并获取参数，代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
 
-    <!-- @[JSForm_JsCardFormAbility_onFormEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
+    <!-- @[JSForm_JsCardFormAbility_onFormEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
