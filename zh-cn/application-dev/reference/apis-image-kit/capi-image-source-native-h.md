@@ -1173,7 +1173,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmapList(OH_ImageSourceNative *so
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>IMAGE_BAD_PARAMETER：source为空，或者options为空，或者resVecPixMap为空。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>IMAGE_BAD_PARAMETER：source、options或resVecPixMap为空。 |
 
 ### OH_ImageSourceNative_CreatePicture()
 
