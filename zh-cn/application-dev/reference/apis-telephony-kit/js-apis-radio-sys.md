@@ -457,7 +457,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 radio.getUniqueDeviceId((err: BusinessError, data: string) => {
     if (err) {
-        console.error(`getUniqueDeviceId failed, callback: err->${JSON.stringify(err)}}`);
+        console.error(`getUniqueDeviceId failed, callback: err->${JSON.stringify(err)}`);
         return;
     }
     console.info(`getUniqueDeviceId success, callback: data->${JSON.stringify(data)}`);
@@ -1083,7 +1083,7 @@ radio.getNetworkSearchInformation(0).then((data: radio.NetworkSearchResult) => {
 
 getNrOptionMode\(callback: AsyncCallback\<NrOptionMode\>\): void
 
-获取Nr选项模式。使用callback异步回调。
+获取NR选项模式。使用callback异步回调。
 
 > **说明：**
 >
@@ -1131,7 +1131,7 @@ radio.getNrOptionMode((err: BusinessError, data: radio.NrOptionMode) => {
 
 getNrOptionMode\(slotId: number, callback: AsyncCallback\<NrOptionMode\>\): void
 
-获取Nr选项模式 。使用callback异步回调。
+获取NR选项模式 。使用callback异步回调。
 
 > **说明：**
 >
@@ -1181,7 +1181,7 @@ radio.getNrOptionMode(slotId, (err: BusinessError, data: radio.NrOptionMode) => 
 
 getNrOptionMode\(slotId?: number\): Promise\<NrOptionMode\>
 
-获取Nr选项模式 。使用Promise异步回调。
+获取NR选项模式 。使用Promise异步回调。
 
 > **说明：**
 >
@@ -2129,7 +2129,7 @@ radio.setNROptionMode(slotId, mode).then(() => {
 
 getNROptionMode\(slotId: number, callback: AsyncCallback\<NROptionMode\>\): void
 
-获取Nr选项模式 。使用callback异步回调。
+获取NR选项模式 。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
