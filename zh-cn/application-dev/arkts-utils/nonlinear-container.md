@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍HashMap、HashSet、TreeMap、TreeSet、LightWeightMap、LightWeightSet、PlainArray等非线性容器的特征对比与使用方法，涵盖哈希、树与轻量结构的差异，帮助开发者选择合适的键值型容器。"
 keywords: [非线性容器, HashMap, HashSet, TreeMap, TreeSet, LightWeightMap, LightWeightSet, PlainArray, 键值型容器]
 doctype: guide
