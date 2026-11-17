@@ -14,12 +14,12 @@
 
 ## 使用场景
 
-### 使用低时延流的场景
+### 使用低时延模式的场景
 
 - K歌、直播等对时延要求较高的场景，建议使用低时延模式。
 - 普通录音、录像、录屏等没有实时要求的场景，不建议使用低时延模式或超低时延模式。
 
-### 使用超低时延流的场景
+### 使用超低时延模式的场景
 
 - 如果使用低时延模式后，时延指标依然无法满足用户体验要求，并且与目标时延差距在10ms左右时，可以考虑使用超低时延模式，如K歌实时耳返场景（需要注意该模式的性能要求和功耗影响高于低时延模式，从而可能带来音频卡顿风险和功耗的升高，建议开发者做好完备的评估和验证后再使用）。
 - 该模式仅推荐在连续音频录制场景使用。请勿在短音频的场景使用，避免影响用户体验。
@@ -91,7 +91,7 @@
     OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(builder, MyOnFastStatusChange, nullptr);
     ```
 
-4. 查询低时延流实际运行状态。
+4. 查询低时延模式实际运行状态。
 
     音频流创建并启动后，可通过[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)来获取音频录制流是否正在低时延状态下工作。其返回值为OH_AudioStream_FastStatus枚举：AUDIOSTREAM_FASTSTATUS_NORMAL表示运行在普通模式，AUDIOSTREAM_FASTSTATUS_FAST表示运行在低时延模式，AUDIOSTREAM_FASTSTATUS_ULTRA_FAST表示运行在超低时延模式（从API版本26.1.0起，该接口可返回该值）。
     <!-- @[GetFastStatus_UltraFast](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
@@ -144,7 +144,7 @@
     OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(builder, MyOnUltraFastStatusChange, nullptr);
     ```
 
-5. 查询超低时延流实际运行状态。
+5. 查询超低时延模式实际运行状态。
 
     音频流创建并启动后，通过 `OH_AudioCapturer_GetFastStatus`查询实际运行状态。
     <!-- @[GetFastStatus_UltraFast](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
