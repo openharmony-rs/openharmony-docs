@@ -4013,17 +4013,20 @@ onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
-
+ 
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
+    controller_2: webview.WebviewController = new webview.WebviewController();
     private result: WebContextMenuResult | undefined = undefined;
     private param: WebContextMenuParam | undefined = undefined;
     @State offsetX: number = 0;
     @State offsetY: number = 0;
     @State showMenu: boolean = false;
-
+    @State showNewMenu: boolean = false;
+    @State url: string = 'https://www.baidu.com';
+ 
     @Builder
     // 构建自定义菜单及触发功能接口
     MenuBuilder() {
@@ -4041,7 +4044,7 @@ onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
             console.info("getTextFragmentGeneratedLink=" + this.param?.getTextFragmentGeneratedLink());
             this.showMenu = false;
           })
-
+ 
           MenuItem({
             content: 'removeLink',
           })
@@ -4057,8 +4060,54 @@ onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
       .height(450)
     }
 
+    @Builder
+    // 构建自定义菜单及触发功能接口
+    MenuNewBuilder() {
+    // 以垂直列表形式显示的菜单。
+        Menu() {
+          // 展示菜单Menu中具体的item菜单项。
+          MenuItem({
+            content: 'TBD',
+          })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.showNewMenu = false;
+          })
+
+          MenuItem({
+            content: 'copyLink',
+          })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.copyLinkToTextMenu();
+            console.info("new isOverTextFragment=" + this.param?.isOverTextFragment());
+            console.info("new getTextFragmentGeneratedLink=" + this.param?.getTextFragmentGeneratedLink());
+            this.showNewMenu = false;
+          })
+ 
+          MenuItem({
+            content: 'removeLink',
+          })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+              this.result?.removeFragments();
+              console.info("new shouldOfferLinkToText=" + this.param?.shouldOfferLinkToText());
+              this.showNewMenu = false;
+            })
+      }
+      .width(150)
+      .height(450)
+    }
+
     build() {
       Column() {
+        TextArea().onChange((val:string)=>{
+          this.url = val;
+          console.info("onChange url = " + this.url);
+        }).height("5%")
         Web({ src: 'https://www.baidu.com', controller: this.controller })
         // 触发自定义弹窗
           .onContextMenuShow((event) => {
@@ -4068,7 +4117,7 @@ onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
             }
             this.showMenu = true;
             this.offsetX = 0;
-            this.offsetY = Math.max(px2vp(event?.param.y() ?? 0) - 0, 0);
+            this.offsetY = Math.max(px2vp(event?.param.y() ?? 0), 0);
             return true;
           })
           .onContextMenuUpdate((menuItemId, options) => {
@@ -4078,7 +4127,7 @@ onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
           })
           .bindPopup(this.showMenu,
             {
-              builder: this.MenuBuilder(),
+              builder: this.MenuBuilder,
               enableArrow: false,
               placement: Placement.LeftTop,
               mask: false,
@@ -4090,6 +4139,49 @@ onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
               }
             })
           .height("70%")
+
+        Button("在下面的web loadUrl")
+          .onClick(() => {
+              try {
+                // 点击按钮时，通过loadUrl，跳转到url
+                console.info("loadUrl url = " + this.url);
+                this.controller_2.loadUrl(this.url);
+              } catch (error) {
+                console.error(`ErrorCode: ${error}`);
+              }
+            }).height("5%")
+        Web({ src: this.url, controller: this.controller_2 })
+        // 触发自定义弹窗
+          .onContextMenuShow((event) => {
+            if (event) {
+              this.result = event.result
+              this.param = event.param;
+            }
+
+            this.showNewMenu = true;
+            this.offsetX = 0;
+            this.offsetY = Math.max(px2vp(event?.param.y() ?? 0), 0);
+            return true;
+          })
+          .bindPopup(this.showNewMenu,
+            {
+              builder: this.MenuNewBuilder,
+              enableArrow: false,
+              placement: Placement.LeftTop,
+              mask: false,
+              onStateChange: (e) => {
+                if (!e.isVisible) {
+                  this.showNewMenu = false;
+                  this.result!.closeContextMenu();
+                }
+              }
+            })
+          .onContextMenuUpdate((menuItemId, options) => {
+            if (menuItemId === WebContextMenuItemId.MENU_COPY_LINK) {
+              console.info("new onContextMenuUpdate enable = " + options?.enable);
+            }
+          })
+          .height("40%")
       }
     }
   }
@@ -4114,10 +4206,16 @@ ArkTS-Sta示例：
     private param: WebContextMenuParam | undefined = undefined;
     @State offsetX: number = 0;
     @State offsetY: number = 0;
-    @State showMenu: Boolean = false;
+    @State showMenu: boolean = false;
     @State url:string = '';
     @State url_2:string = '';
     uiContext: UIContext = this.getUIContext();
+
+    private result_2: WebContextMenuResult | undefined = undefined;
+    private param_2: WebContextMenuParam | undefined = undefined;
+    @State offsetX_2: number = 0;
+    @State offsetY_2: number = 0;
+    @State showMenu_2: boolean = false;
 
     @Builder
     // 构建自定义菜单及触发功能接口
@@ -4155,6 +4253,47 @@ ArkTS-Sta示例：
             this.result?.removeFragments();
             console.info("shouldOfferLinkToText=" + this.param?.shouldOfferLinkToText());
             this.showMenu = false;
+          })
+      }
+      .width(150)
+      .height(450)
+    }
+
+    @Builder
+    // 构建自定义菜单及触发功能接口
+    MenuNewBuilder() {
+      // 以垂直列表形式显示的菜单。
+      Menu() {
+        // 展示菜单Menu中具体的item菜单项。
+        MenuItem({
+          content: 'TBD',
+        })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.showMenu_2 = false;
+          })
+        MenuItem({
+          content: 'copyLink',
+        })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result_2?.copyLinkToTextMenu();
+            console.info("new isOverTextFragment=" + this.param_2?.isOverTextFragment());
+            console.info("new getTextFragmentGeneratedLink=" + this.param_2?.getTextFragmentGeneratedLink());
+            this.showMenu_2 = false;
+          })
+
+        MenuItem({
+          content: 'removeLink',
+        })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result_2?.removeFragments();
+            console.info("new shouldOfferLinkToText=" + this.param_2?.shouldOfferLinkToText());
+            this.showMenu_2 = false;
           })
       }
       .width(150)
@@ -4202,18 +4341,62 @@ ArkTS-Sta示例：
         Button('在下面的web loadUrl')
           .onClick(() => {
             try {
-              // 点击按钮时，通过loadUrl，跳转
+              // 点击按钮时，通过loadUrl，跳转url
               this.url_2 = this.url;
               this.controller_2.loadUrl(this.url_2);
             } catch (error) {
               console.error(`ErrorCode: ${error}`);
             }
           }).height("5%")
-        Web({ src: 'https://www.baidu.com', controller: this.controller_2 })
+        Web({ src: $rawfile('index.html'), controller: this.controller_2 })
+          // 触发自定义弹窗
+          .onContextMenuShow((event) => {
+            if (event) {
+              this.result_2 = event.result;
+              this.param_2 = event.param;
+            }
+            this.showMenu_2 = true;
+            this.offsetX_2 = 0;
+            this.offsetY_2 = Math.max(Number(this.uiContext!.px2vp(event?.param.y() ?? 0) - 0.0), Number(0.0));
+            return true;
+          })
+          .onContextMenuUpdate((menuItemId:WebContextMenuItemId, options?:WebContextMenuOptions) => {
+            if (menuItemId === WebContextMenuItemId.MENU_COPY_LINK) {
+              console.info("onContextMenuUpdate enable = " + options?.enable);
+            }
+          })
+          .bindPopup(this.showMenu_2,
+            {
+              builder: this.MenuNewBuilder,
+              enableArrow: false,
+              placement: Placement.LeftTop,
+              offset: { x: this.offsetX_2, y: this.offsetY_2 },
+              mask: false,
+              onStateChange: (e: PopupStateChangeParam) => {
+                if (!e.isVisible) {
+                  this.showMenu_2 = false;
+                  this.result_2!.closeContextMenu();
+                }
+              }
+            } as CustomPopupOptions)
           .height("40%")
       }
     }
   }
+  ```
+
+  加载的html文件
+  ```html
+  <!-- index.html -->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>示例页面</title>
+  </head>
+  <body>
+      示例文本
+  </body>
+  </html>
   ```
 
 ## onScroll<sup>9+</sup>
@@ -8796,7 +8979,7 @@ ArkTS-Sta示例：
   }
   ```
 
-> **示例说明：**
+> **说明：**
 >
 > 示例中使用的`iframe_error.html`文件与[setErrorPageEnabled](./arkts-apis-webview-WebviewController.md#seterrorpageenabled)示例中相同，需放置在应用资源的`resources/rawfile/`目录下。
 
