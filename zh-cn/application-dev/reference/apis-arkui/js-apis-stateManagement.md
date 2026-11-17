@@ -2807,7 +2807,7 @@ static&nbsp;connect\<T&nbsp;extends&nbsp;object,&nbsp;S&nbsp;extends&nbsp;object
 >
 >1. 仅支持对象类型，不支持基本类型。连接number、string、boolean等基本类型会抛出[BusinessError(140124)](./errorcode-stateManagement.md#140124)。
 >
->2. 同一实例的同一key以相同类型重复连接时，返回已有引用；类型不匹配时抛出BusinessError(140124)。
+>2. 同一实例的同一key以相同类型重复连接时，返回已有引用；类型不匹配时抛出[BusinessError(140124)](./errorcode-stateManagement.md#140124)。
 >
 >3. 恢复重启时恢复值优先于默认值；恢复失败时返回通过[defaultCreator](#recoverableconnectoptionst-s)构造的默认值，并经[notifyOnError](#recoverableconnectoptionst-s)上报错误。
 >
@@ -2875,7 +2875,7 @@ struct DraftPage {
 
 static&nbsp;keys(component:&nbsp;BaseCustomComponent):&nbsp;Array\<string\>
 
-获取当前实例（以**component**的窗口级实例ID标识）注册的所有可恢复状态变量的key。
+获取当前实例（以[component](#recoverableconnectoptionst-s)的窗口级实例ID，即每个窗口实例的唯一标识）注册的所有可恢复状态变量的key。
 
 >**说明：**
 >
@@ -2936,7 +2936,7 @@ struct MyPage {
 
 static&nbsp;remove\<T\>(component:&nbsp;BaseCustomComponent,&nbsp;keyOrType:&nbsp;string&nbsp;|&nbsp;TypeConstructorWithArgs\<T\>):&nbsp;void
 
-注销当前实例（以**component**的窗口级实例ID标识）指定key的可恢复状态变量。注销后该变量不再保存与恢复，再次连接该key时返回默认值。
+注销当前实例（以[component](#recoverableconnectoptionst-s)的窗口级实例ID标识）指定key的可恢复状态变量。注销后该变量不再保存与恢复，再次通过[connect](#recoverablestorage)连接该key时返回默认值。
 
 >**说明：**
 >
@@ -3006,9 +3006,9 @@ struct MyPage {
 |--------|------| ---- | ---------------------- |
 | component | [BaseCustomComponent](../../ui/state-management/arkts-create-custom-components.md) | 是 | 自定义组件实例，在自定义组件中使用时，直接传入**this**。 |
 | type | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | 是 | 可恢复状态变量的类型。仅支持对象类型。 |
-| key | string | 否 | 可恢复状态变量的key。不指定时使用类型名作为key。 |
+| key | string | 否 | 可恢复状态变量的key。<br>不指定时使用类型名作为key。 |
 | defaultCreator | [StorageDefaultCreator\<T\>](#storagedefaultcreatort) | 是 | 默认值构造器。首次连接时使用，恢复失败时作为回退。 |
-| defaultSubCreator | [StorageDefaultCreator\<S\>](#storagedefaultcreatort) | 否 | 集合嵌套\@Type成员的构造器，恢复时用于重建嵌套对象。仅对容器类型（Array/Map/Set）顶层生效。 |
+| defaultSubCreator | [StorageDefaultCreator\<S\>](#storagedefaultcreatort) | 否 | 集合嵌套\@Type成员的构造器，恢复时用于重建嵌套对象。<br>仅对容器类型（Array/Map/Set）顶层生效。 |
 | notifyOnError | [NotifyOnErrorCallback](#notifyonerrorcallback) | 否 | 序列化/反序列化错误回调。不指定时错误在内部处理，不会导致应用崩溃。 |
 
 ## RecoverableStorageError
@@ -3025,7 +3025,7 @@ struct MyPage {
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------| ---- | ---------------------- |
-| reason | 'serialization' \| 'deserialization' | 是 | 错误原因。'serialization'表示序列化失败（如超出序列化上限或字段不可序列化），'deserialization'表示反序列化失败（如数据损坏、类型不匹配）。connect入口错误（类型不支持、参数非法）以BusinessError(140124)直接抛出，不经本回调上报。推荐用户数据总量：每实例≤100KB（150KB序列化预算，与系统数据共享）。 |
+| reason | 'serialization' \| 'deserialization' | 是 | 错误原因。'serialization'表示序列化失败（如超出序列化上限或字段不可序列化），'deserialization'表示反序列化失败（如数据损坏、类型不匹配）。connect入口错误（类型不支持、参数非法）以[BusinessError(140124)](./errorcode-stateManagement.md#140124)直接抛出，不经本回调上报。推荐用户数据总量：每实例≤100KB。<br>（150KB序列化预算，与系统数据共享） |
 | keys | Array\<string\> | 是 | 受错误影响的key列表。 |
 | message | string | 是 | 错误的附加信息。 |
 

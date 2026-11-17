@@ -96,15 +96,15 @@ export default class MyAbilityStage extends AbilityStage {
 
 ## 使用限制
 
-1. 仅支持**对象类型**（`T extends object`），不支持基本类型。连接number、string、boolean等基本类型会抛出[BusinessError(140124)](../../reference/apis-arkui/errorcode-stateManagement.md#140124)。类的**成员属性**支持基本类型与联合类型（如`string | null`、`number | undefined`），`null`/`undefined`属性值可正常保存与恢复。
+1. 仅支持对象类型（`T extends object`），不支持基本类型。连接number、string、boolean等基本类型会抛出[BusinessError(140124)](../../reference/apis-arkui/errorcode-stateManagement.md#140124)。类的**成员属性**支持基本类型与联合类型（如`string | null`、`number | undefined`），`null`/`undefined`属性值可正常保存与恢复。
 
-2. 单实例序列化预算为**150KB**，推荐用户数据总量≤100KB。超限项会被剔除出快照并经notifyOnError上报，不会导致应用崩溃。
+2. 单实例序列化预算为150KB，推荐用户数据总量≤100KB。超限项会被剔除出快照并经notifyOnError上报，不会导致应用崩溃。
 
-3. 须在**自定义组件内**调用，`component`参数传`this`。运行时校验的是component有效性（能否提供getInstanceId），持有有效组件实例时在struct外调用亦可连接成功。
+3. 须在自定义组件内调用，[component](../../reference/apis-arkui/js-apis-stateManagement.md#recoverableconnectoptionst-s)参数传`this`（组件实例）。运行时校验的是component有效性（能否提供实例ID），持有有效组件实例时在组件外调用亦可连接成功。
 
 4. 多实例（multiton ability各窗口）各自独立分区，同一key在不同窗口互不干扰。
 
-5. 不支持非built-in类型，如PixelMap、NativePointer、ArrayList等Native类型。
+5. 不支持PixelMap、NativePointer、ArrayList等非内置类型。
 
 6. 对象图包含**循环引用**时，环上的嵌套类字段须能提供类型信息：V2类使用\@Type装饰，或在字段初始化器中实例化（如`peer: Node = new Node()`）。初始化为`null`且未标注\@Type的嵌套类字段，恢复时无法确定其类型，该变量将回退为默认构造值，并通过notifyOnError上报（reason为'deserialization'）。
 
@@ -188,11 +188,12 @@ struct CartPage {
 @Entry
 @Component
 struct DraftPage {
+  // 连接可恢复变量并注册错误回调；恢复失败时回退默认值并经回调上报
   @State draft: Draft = RecoverableStorage.connect({
-    component: this,
+    component: this,                       // 传入当前组件实例
     type: Draft,
     defaultCreator: (): Draft => new Draft(''),
-    notifyOnError: (e) => console.error(`${e.reason}: ${e.keys.join(',')}`)
+    notifyOnError: (e) => console.error(`${e.reason}: ${e.keys.join(',')}`)  // 错误回调
   });
 
   build() {
@@ -219,8 +220,9 @@ struct DraftPage {
 序列化/反序列化失败时（如超出150KB预算），超限项被剔除出快照，经回调上报受影响的key及原因。
 
 ```ts
+// 注册错误回调：超限项被剔除出快照时上报受影响的key及原因
 @State big: BigDraft = RecoverableStorage.connect({
-  component: this,
+  component: this,                        // 传入当前组件实例
   type: BigDraft,
   defaultCreator: (): BigDraft => new BigDraft(),
   notifyOnError: (e: RecoverableStorageError) => {
@@ -236,7 +238,7 @@ struct DraftPage {
 
 1. **典型用法为修改所连接对象的属性**，而非整体重新赋值。对V1 \@State变量整体重新赋值（`this.draft = new Draft()`）会导致已存引用失效，不被跟踪。
 
-2. **嵌套重建**：V2走\@Type元数据，V1走实例树模板（字段初始化器实例化），均不需要defaultSubCreator。defaultSubCreator仅对容器root（Array/Map/Set）生效。
+2. **嵌套重建**：V2走[\@Type](arkts-new-observedV2-and-trace.md#type)元数据，V1走字段初始化器实例化，均不需要defaultSubCreator。defaultSubCreator仅对容器（Array/Map/Set）顶层生效。
 
 3. **冷启动语义**：用户手动启动应用（点图标）始终为冷启动，connect返回默认值，不读取恢复数据。仅系统携带恢复重启参数拉起的启动会执行恢复。
 
