@@ -3623,14 +3623,16 @@ try {
 
 onAvoidAreaInsetsChange(callback: Callback&lt;void&gt;): void
 
-订阅当前窗口避让区边衬的变化。
+订阅窗口避让区边衬的变化。
 
-当窗口避让区域发生变化时，会触发回调。在同一次变化中，如果多个避让区发生变化，相关避让区信息更新后，只会触发一次回调。
+当窗口的避让区发生变化时，会触发回调。
+
+在同一次变化，如果多个避让区发生变化，相关的避让区信息更新后，只会触发一次回调。
 
 > **说明：**
 >
-> - 可以在回调中使用[getAvoidAreaInsets()](#getavoidareainsets)获取窗口最新的避让区边衬，或使用[getWindowAvoidArea()](#getwindowavoidarea9)获取指定类型的避让区域。
-> - [TYPE_KEYBOARD](arkts-apis-window-e.md#avoidareatype7)类型的避让区域变化不会触发该回调。
+> - 可以在回调中调用[getAvoidAreaInsets()](#getavoidareainsets)来获取窗口最新的避让区边衬，或使用[getWindowAvoidArea()](#getwindowavoidarea9)获取指定类型的避让区。
+> - [TYPE_KEYBOARD](arkts-apis-window-e.md#avoidareatype7)类型的避让区变化不会触发回调。
 
 **起始版本：** 26.1.0
 
