@@ -597,3 +597,21 @@ WebviewController与Web组件的绑定状态。
 | ------------------------------- | - | ---------- |
 | UNATTACHED | 0 | 未绑定状态。 |
 | ATTACHED   | 1 | 已绑定状态。 |
+
+## NavigationThrottleAction
+
+[NavigationThrottle](./arkts-apis-webview-NavigationThrottle.md)回调可执行的动作枚举。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称 | 值 | 说明 |
+| ------------------------------- | - | ---------- |
+| PROCEED | 0 | 允许导航继续。当回调未实现或返回无效值时，默认使用该动作。 |
+| CANCEL  | 1 | 取消导航。需要拦截导航时使用该动作。 |
+| DEFER   | 2 | 挂起决策。导航暂停，直到在[DeferThrottleCallback](./arkts-apis-webview-DeferThrottleCallback.md)上调用proceed()或cancel()。 |

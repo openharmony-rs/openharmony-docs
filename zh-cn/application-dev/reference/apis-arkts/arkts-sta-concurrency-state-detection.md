@@ -40,16 +40,16 @@
 
 ```ts
 function printStateInfo(info: CoroutineDumpInfo): void {
-    console.info('WorkerName: ' + info.workerName)
+    console.info('Worker: ' + info.workerName)
     console.info('IsMain: ' + info.isMain)
-    console.info('Task: ' + info.coroutineName)
+    console.info('Coroutine: ' + info.coroutineName)
     console.info('Status: ' + info.status)
     console.info('Type: ' + info.type)
     console.info('WaitReason: ' + info.waitReason)
     console.info('LockMode: ' + info.lockMode)
     console.info('Readers: ' + info.readerCount)
     console.info('Writers: ' + info.writerCount)
-    console.info('CallStack:')
+    console.info('Panda call stack: ')
     console.info(info.callStack)
 }
 ```

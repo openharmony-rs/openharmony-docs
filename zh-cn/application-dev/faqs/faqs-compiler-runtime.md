@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "汇总语言编译运行时的常见问题解答：涵盖JSON解析对象调用实例方法崩溃、NAPI pending exception处理、HSP多包场景cppcrash、Array数组长度上限、模块间循环依赖未初始化及编译异常日志缺失等问题的原因分析与解决方法。"
+keywords: [编译运行时FAQ, JSON解析崩溃, pending exception, napi_call_function, cppcrash, resolveBufferCallback, 数组长度上限, 循环依赖, 编译异常, HSP]
+doctype: faq
+status: active
+---
+
 # 语言编译运行时常见问题
 
 <!--Kit: ArkTS-->

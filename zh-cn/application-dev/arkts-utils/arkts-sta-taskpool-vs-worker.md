@@ -6,15 +6,15 @@
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)和[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)都为ArkTS-Sta应用提供多线程并发能力，用于将耗时计算、后台数据处理等逻辑放到非当前线程执行，避免阻塞当前线程。
+[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)和[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker-managed.md)都为ArkTS-Sta应用提供多线程并发能力，用于将耗时计算、后台数据处理等逻辑放到非当前线程执行，避免阻塞当前线程。
 
 TaskPool偏向任务维度，开发者提交函数、Task或TaskGroup后，由运行时选择合适的工作线程执行，线程生命周期由TaskPool管理。EAWorker偏向线程维度，开发者创建独占线程，显式启动、提交任务并释放线程资源。
 
 > **说明：**
 >
 > - 本文仅适用于ArkTS-Sta。
-> - ArkTS-Sta不再使用ArkTS-Dyn中的Worker API。需要独占线程时，使用[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)。
-> - TaskPool接口说明请参见[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)，EAWorker接口说明请参见[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)。
+> - ArkTS-Sta不再使用ArkTS-Dyn中的Worker API。需要独占线程时，使用[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker-managed.md)。
+> - TaskPool接口说明请参见[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)，EAWorker接口说明请参见[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker-managed.md)。
 
 ## 实现特点对比
 
@@ -25,7 +25,7 @@ TaskPool偏向任务维度，开发者提交函数、Task或TaskGroup后，由�
 | 并发模型 | 任务池模型。开发者提交任务，由运行时调度到TaskPool工作线程执行。 | 独占线程模型。开发者创建EAWorker实例，该实例绑定一个独占工作线程。 |
 | 内存模型 | ArkTS-Sta共享内存模型，对象可跨线程共享。 | ArkTS-Sta共享内存模型，对象可跨线程共享。创建支持interop的EAWorker时，会为ArkTS-Dyn互操作创建对应运行环境。 |
 | 参数传递 | 直接向任务函数传参，无需使用结构化克隆或TransferList。 | 通过run、postTask、postToMain或消息机制提交任务和参数。静态对象默认共享，使用interop能力时会涉及ArkTS-Dyn互操作处理。 |
-| 方法调用 | 直接将普通函数传给taskpool.execute，或封装为taskpool.Task后执行。ArkTS-Sta不需要@Concurrent装饰器。 | 创建EAWorker实例并调用start后，通过run或postTask向该EAWorker提交任务，也可通过[MessageHandler](../reference/apis-arkts/message_handler.md)和[Message](../reference/apis-arkts/message.md)进行消息通信。 |
+| 方法调用 | 直接将普通函数传给taskpool.execute，或封装为taskpool.Task后执行。ArkTS-Sta不需要@Concurrent装饰器。 | 创建EAWorker实例并调用start后，通过run或postTask向该EAWorker提交任务，也可通过[MessageHandler](../reference/apis-arkts/message-handler.md)和[Message](../reference/apis-arkts/message.md)进行消息通信。 |
 | 返回值 | taskpool.execute、executeDelayed、TaskGroup、SequenceRunner、AsyncRunner等接口通过Promise异步返回执行结果。 | run返回异步任务结果，postTask只提交无返回任务；需要跨线程返回复杂交互结果时，可结合消息机制或异步结果处理。 |
 | 生命周期 | TaskPool自行管理工作线程生命周期，开发者无需创建和释放线程。 | 开发者需要显式调用start启动EAWorker，使用完毕后调用join或quit释放线程资源。 |
 | 线程复用 | 支持。TaskPool内部复用工作线程。 | 支持。同一个EAWorker实例启动后，可复用其独占线程执行多个任务。 |

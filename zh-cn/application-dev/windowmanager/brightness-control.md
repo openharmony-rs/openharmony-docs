@@ -29,7 +29,7 @@
 
 - **屏幕亮度**：指设备屏幕的全局显示亮度，作用范围覆盖整个屏幕，会影响系统界面以及所有应用窗口的显示效果。  
 
-  屏幕亮度可通过**控制中心**或者**设置 &gt; 显示和亮度**进行调整。目前没有直接设置系统屏幕亮度的接口，但当[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)传入-1时，窗口亮度恢复为系统屏幕亮度。
+  屏幕亮度可通过**控制中心**或者**设置 &gt; 显示和亮度**进行调整。目前没有直接设置系统屏幕亮度的接口，但当[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)传入-1.0时，窗口亮度恢复为系统屏幕亮度。
 
 ## 控制屏幕常亮
 

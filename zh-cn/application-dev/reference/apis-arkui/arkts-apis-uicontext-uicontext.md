@@ -14,18 +14,33 @@ UIContext实例对象。
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 本模块接口仅可在Stage模型下使用。
->
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
 > - 以下API需要通过对应的UIContext实例调用。获取UIContext分为三种方式，第一种是使用ohos.window中的[getUIContext()](arkts-apis-window-Window.md#getuicontext10)方法获取UIContext实例，第二种是通过自定义组件内置方法[getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext)获取UIContext实例，第三种是通过UIContext类的静态方法如[getCallingScopeUIContext](#getcallingscopeuicontext22)获取UIContext实例。本文中UIContext对象以uiContext表示。
 
 **示例：**
 
-以下示例展示了三种获取UIContext实例的方法。
+以下示例展示了三种获取UIContext实例的方法，三种方法获取到的UIContext没有差异。三种方法分布在两个文件中，因此由两个互相独立的示例脚本承载：示例脚本一须完整拷贝到UIAbility文件EntryAbility.ets中，示例脚本二须完整拷贝到页面文件index.ets中，请勿将两个脚本拷贝到同一个文件。
+
+**示例脚本一（EntryAbility.ets）：**
 
 ```ts
-// 三种方法获取到的UIContext没有差异
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    // 第一种：通过ohos.window中的getUIContext()方法获取UIContext实例
+    windowStage.getMainWindowSync().getUIContext();
+    // 其他运行逻辑
+  }
+}
+```
+
+**示例脚本二（index.ets）：**
+
+```ts
 // index.ets
 import { UIContext } from '@kit.ArkUI';
 
@@ -34,11 +49,11 @@ import { UIContext } from '@kit.ArkUI';
 struct Index {
   build() {
     Column() {
-      Button("Button")
-          .onClick(()=>{
-            // 通过自定义组件内置方法获取
-            this.getUIContext()
-            // 通过UIContext类的静态方法获取
+      Button('Button')
+          .onClick(() => {
+            // 第二种：通过自定义组件内置方法getUIContext()获取UIContext实例
+            this.getUIContext();
+            // 第三种：通过UIContext类的静态方法（如getCallingScopeUIContext）获取UIContext实例
             let uiContext = UIContext.getCallingScopeUIContext();
             // 其他运行逻辑
           })
@@ -46,20 +61,6 @@ struct Index {
   }
 }
 
-// EntryAbility.ets
-import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { window } from '@kit.ArkUI';
-
-const DOMAIN = 0x0000;
-
-export default class EntryAbility extends UIAbility {
-  onWindowStageCreate(windowStage: window.WindowStage): void {
-    // 通过ohos.window获取
-    windowStage.getMainWindowSync().getUIContext()
-    // 其他运行逻辑
-  }
-}
 ```
 
 ## constructor<sup>22+</sup>
@@ -75,6 +76,8 @@ constructor()
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -164,6 +167,8 @@ static getCallingScopeUIContext(): UIContext | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 22
 
 **ArkTS-Sta起始版本：** 24
@@ -214,6 +219,8 @@ static getLastFocusedUIContext(): UIContext | undefined
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -266,6 +273,8 @@ static getLastForegroundUIContext(): UIContext | undefined
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 22
 
 **ArkTS-Sta起始版本：** 24
@@ -316,6 +325,8 @@ static getAllUIContexts(): UIContext[]
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -380,6 +391,8 @@ static resolveUIContext(): ResolvedUIContext
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 22
 
 **ArkTS-Sta起始版本：** 23
@@ -421,6 +434,8 @@ isAvailable(): boolean
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -502,6 +517,8 @@ getFont(): Font
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -525,6 +542,8 @@ getComponentUtils(): ComponentUtils
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -550,6 +569,8 @@ getUIInspector(): UIInspector
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -573,6 +594,8 @@ getUIObserver(): UIObserver
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -632,6 +655,32 @@ struct Index {
 }
 ```
 
+## getPlaceholderRegister
+
+getPlaceholderRegister(): PlaceholderRegister
+
+获取[PlaceholderRegister](./arkts-apis-placeholderregister.md#placeholderregister)对象，可通过该对象注册、注销和查询滚动占位模板，供[List](./arkui-ts/ts-container-list.md)、[WaterFlow](./arkui-ts/ts-container-waterflow.md)的[scrollPlaceholder](./arkui-ts/ts-container-list.md#scrollplaceholder)属性使用。每个UI实例持有独立的注册表。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [PlaceholderRegister](./arkts-apis-placeholderregister.md#placeholderregister) | 当前UI实例的滚动占位注册表。 |
+
+**示例：**
+
+参考[示例1（注册滚动占位模板并设置滚动占位）](./arkts-apis-placeholderregister.md#示例1注册滚动占位模板并设置滚动占位)。
+
 ## getId<sup>22+</sup>
 
 ArkTS-Dyn: getId(): number
@@ -643,6 +692,8 @@ ArkTS-Sta: getId(): int
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -707,6 +758,8 @@ getRouter(): Router
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -731,6 +784,8 @@ getPromptAction(): PromptAction
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -745,6 +800,32 @@ getPromptAction(): PromptAction
 
 完整示例请参考[PromptAction](arkts-apis-uicontext-promptaction.md)中的示例。
 
+## getDialogPresenter
+
+getDialogPresenter(): DialogPresenter
+
+获取DialogPresenter对象，可通过该对象管理弹出框的展示、更新与关闭。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**返回值：**
+
+| 类型                            | 说明                  |
+| ----------------------------- | ------------------- |
+| [DialogPresenter](arkts-apis-uicontext-dialogpresenter.md) | 返回DialogPresenter实例对象，可用于管理和展示Dialog。 |
+
+**示例：**
+
+完整示例请参考[DialogPresenter](arkts-apis-uicontext-dialogpresenter.md)中的示例。
+
 ## getOverlayManager<sup>12+</sup>
 
 getOverlayManager(): OverlayManager
@@ -754,6 +835,8 @@ getOverlayManager(): OverlayManager
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -778,6 +861,8 @@ setOverlayManagerOptions(options: OverlayManagerOptions): boolean
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -808,6 +893,8 @@ getOverlayManagerOptions(): OverlayManagerOptions
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -1147,6 +1234,8 @@ getFrameNodeById(id: string): FrameNode | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -1180,6 +1269,8 @@ getAttachedFrameNodeById(id: string): FrameNode | null
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -1247,6 +1338,8 @@ ArkTS-Sta: getFrameNodeByUniqueId(id: int): FrameNode | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -1300,6 +1393,8 @@ ArkTS-Sta: getPageInfoByUniqueId(id: int): PageInfo
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -1378,6 +1473,8 @@ ArkTS-Sta: getNavigationInfoByUniqueId(id: int): observer.NavigationInfo | undef
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -1411,6 +1508,8 @@ showAlertDialog(options: AlertDialogParamWithConfirm | AlertDialogParamWithButto
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1470,6 +1569,8 @@ showActionSheet(value: ActionSheetOptions): void
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1549,6 +1650,8 @@ showDatePickerDialog(options: DatePickerDialogOptions): void
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -1630,6 +1733,8 @@ showTimePickerDialog(options: TimePickerDialogOptions): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **ArkTS-Dyn起始版本：** 10
@@ -1700,6 +1805,8 @@ showTextPickerDialog(options: TextPickerDialogOptions): void
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
@@ -1932,6 +2039,8 @@ showTextPickerDialog(style: TextPickerDialogOptions\|TextPickerDialogOptionsExt)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **ArkTS-Dyn起始版本：** 20
@@ -2088,6 +2197,8 @@ runScopedTask(callback: () => void): void
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
@@ -2229,6 +2340,8 @@ getAtomicServiceBar(): Nullable\<AtomicServiceBar>
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
@@ -2271,6 +2384,8 @@ getDragController(): DragController
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -2379,6 +2494,8 @@ getFocusController(): FocusController
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -2403,6 +2520,8 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -2412,7 +2531,7 @@ getFilteredInspectorTree(filters?: Array\<string\>): string
 <!--Table: 10%; 20%; 10%; 60%-->
 | 参数名  | 类型            | 必填 | 说明                                                         |
 | ------- | --------------- | ---- | ------------------------------------------------------------ |
-| filters | Array\<string\> | 否   | 需要获取的组件属性的过滤列表。目前仅支持过滤字段：<br/>"id"：组件唯一标识。<br/>"src"：资源来源。 <br/>"content"：元素、组件或对象所包含的信息或数据。<br/>"editable"：是否可编辑。<br/>"scrollable"：是否可滚动。<br/>"selectable"：是否可选择。<br/>"focusable"：是否可聚焦。<br/>"focused"：是否已聚焦。<br/>如果在filters参数中包含以上一个或者多个字段，则未包含的字段会在组件属性查询结果中被过滤掉。如果用户未传入filters参数或者filters参数为空数组，则以上字段全部不会在组件属性查询结果中被过滤掉。<br/>从API version 20开始，支持该过滤字段：<br/>"isLayoutInspector"：返回组件树是否包含[自定义组件](../../ui/state-management/arkts-create-custom-components.md)。如果用户未传入filters参数或者filters数组不包含isLayoutInspector，返回的组件树将缺少自定义组件的信息。<br/>其余字段仅供测试场景使用。 |
+| filters | Array\<string\> | 否   | 需要获取的组件属性的过滤列表。目前仅支持过滤字段：<br/>"id"：组件唯一标识。<br/>"src"：资源来源。 <br/>"content"：元素、组件或对象所包含的信息或数据。<br/>"editable"：是否可编辑。<br/>"scrollable"：是否可滚动。<br/>"selectable"：是否可选择。<br/>"focusable"：是否可聚焦。<br/>"focused"：是否已聚焦。<br/>如果在filters参数中包含以上一个或者多个字段，则未包含的字段会在组件属性查询结果中被过滤掉。如果用户未传入filters参数或者filters参数为空数组，则以上字段全部不会在组件属性查询结果中被过滤掉。<br/>从API version 20开始，支持该过滤字段：<br/>"isLayoutInspector"：返回组件树是否包含[自定义组件](../../ui/state-management/arkts-create-custom-components.md)。如果用户未传入filters参数或者filters数组不包含isLayoutInspector，返回的组件树将缺少自定义组件的信息。<br/>从API版本26.1.0开始，支持该过滤字段：<br/>"isWebEnable"：返回的组件树是否包含Web组件所加载网页的组件树。如果用户未传入filters参数或者filters数组不包含isWebEnable，返回的组件树将缺少Web组件所加载网页的组件树信息。<br/>其余字段仅供测试场景使用。 |
 
 **返回值：** 
 
@@ -2511,6 +2630,8 @@ ArkTS-Sta: getFilteredInspectorTreeById(id: string, depth: int, filters?: Array\
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -2521,7 +2642,7 @@ ArkTS-Sta: getFilteredInspectorTreeById(id: string, depth: int, filters?: Array\
 | ------- | --------------- | ---- | ------------------------------------------------------------ |
 | id      | string          | 是   | 指定的[组件标识](arkui-ts/ts-universal-attributes-component-id.md)id。 |
 | depth   | ArkTS-Dyn: number <br>ArkTS-Sta: int         | 是   | 获取子组件的层数。当取值0时，获取指定的组件及其所有的子孙组件的属性。当取值1时，仅获取指定的组件的属性。当取值2时，指定的组件及其1层子组件的属性。以此类推。 |
-| filters | Array\<string\> | 否   | 需要获取的组件属性的过滤列表。目前仅支持过滤字段：<br/>"id"：组件唯一标识。<br/>"src"：资源来源。 <br/>"content"：元素、组件或对象所包含的信息或数据。<br/>"editable"：是否可编辑。<br/>"scrollable"：是否可滚动。<br/>"selectable"：是否可选择。<br/>"focusable"：是否可聚焦。<br/>"focused"：是否已聚焦。<br/>如果在filters参数中包含以上一个或者多个字段，则未包含的字段会在组件属性查询结果中被过滤掉。如果用户未传入filters参数或者filters参数为空数组，则以上字段全部不会在组件属性查询结果中被过滤掉。<br/>其余字段仅供测试场景使用。 |
+| filters | Array\<string\> | 否   | 需要获取的组件属性的过滤列表。目前仅支持过滤字段：<br/>"id"：组件唯一标识。<br/>"src"：资源来源。 <br/>"content"：元素、组件或对象所包含的信息或数据。<br/>"editable"：是否可编辑。<br/>"scrollable"：是否可滚动。<br/>"selectable"：是否可选择。<br/>"focusable"：是否可聚焦。<br/>"focused"：是否已聚焦。<br/>如果在filters参数中包含以上一个或者多个字段，则未包含的字段会在组件属性查询结果中被过滤掉。如果用户未传入filters参数或者filters参数为空数组，则以上字段全部不会在组件属性查询结果中被过滤掉。<br/>从API版本26.1.0开始，支持该过滤字段：<br/>"isWebEnable"：返回的组件树是否包含Web组件所加载网页的组件树。如果用户未传入filters参数或者filters数组不包含isWebEnable，返回的组件树将缺少Web组件所加载网页的组件树信息。<br/>其余字段仅供测试场景使用。 |
 
 **返回值：** 
 
@@ -2597,6 +2718,8 @@ getCursorController(): CursorController
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -2620,6 +2743,8 @@ getContextMenuController(): ContextMenuController
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -2667,6 +2792,8 @@ getMeasureUtils(): MeasureUtils
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -2692,6 +2819,8 @@ getComponentSnapshot(): ComponentSnapshot
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -2728,6 +2857,8 @@ ArkTS-Sta: vp2px(value : double) : double
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -2794,6 +2925,8 @@ ArkTS-Sta: px2vp(value : double) : double
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -2857,6 +2990,8 @@ ArkTS-Sta: fp2px(value : double) : double
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -2922,6 +3057,8 @@ ArkTS-Sta: px2fp(value : double) : double
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -2981,6 +3118,8 @@ ArkTS-Sta: lpx2px(value : double) : double
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -3042,6 +3181,8 @@ ArkTS-Sta: px2lpx(value : double) : double
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -3093,6 +3234,8 @@ getWindowName(): string | undefined
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -3151,6 +3294,8 @@ ArkTS-Sta: getWindowId(): int | undefined
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
@@ -3199,6 +3344,8 @@ getWindowWidthBreakpoint(): WidthBreakpoint
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 13
 
@@ -3252,6 +3399,8 @@ getWindowHeightBreakpoint(): HeightBreakpoint
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 13
 
@@ -3321,8 +3470,34 @@ isWindowInfoInitialized(): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private uiContext: UIContext = this.getUIContext();
+
+  build() {
+    Column() {
+      Button('Check window information')
+        .onClick(() => {
+          const initialized = this.uiContext.isWindowInfoInitialized();
+          console.info(`Window information initialized: ${initialized}`);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, Column, Button, UIContext } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -3352,6 +3527,8 @@ postFrameCallback(frameCallback: FrameCallback): void
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -3407,6 +3584,8 @@ ArkTS-Sta: postDelayedFrameCallback(frameCallback: FrameCallback, delayTime: lon
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -3459,6 +3638,8 @@ requireDynamicSyncScene(id: string): Array&lt;DynamicSyncScene&gt;
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -4033,6 +4214,8 @@ bindTabsToScrollable(tabsController: TabsController, scroller: Scroller): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 13
 
 **ArkTS-Sta起始版本：** 23
@@ -4153,6 +4336,8 @@ unbindTabsFromScrollable(tabsController: TabsController, scroller: Scroller): vo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 13
 
 **ArkTS-Sta起始版本：** 23
@@ -4177,6 +4362,8 @@ bindTabsToNestedScrollable(tabsController: TabsController, parentScroller: Scrol
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 13
 
@@ -4203,6 +4390,8 @@ unbindTabsFromNestedScrollable(tabsController: TabsController, parentScroller: S
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 13开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 13
 
@@ -4271,6 +4460,8 @@ getTextMenuController(): TextMenuController
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 16
 
 **ArkTS-Sta起始版本：** 23
@@ -4298,6 +4489,8 @@ static createUIContextWithoutWindow(context: common.UIAbilityContext | common.Ex
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 17 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 17
 
@@ -4353,6 +4546,8 @@ static destroyUIContextWithoutWindow(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 17
 
 **ArkTS-Sta起始版本：** 23
@@ -4385,6 +4580,8 @@ setUIStates(callback: VoidCallback): void
 在debug模式下，若检测到未通过setUIStates在非UI线程更新状态变量，系统将输出错误日志（需要使用try-catch捕获异常）。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -4446,6 +4643,8 @@ ArkTS-Sta: dispatchKeyEvent(node: int | string, event: KeyEvent): boolean
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -4599,6 +4798,8 @@ static setResourceManagerCacheMaxCountForHSP(count: number): void
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 21
@@ -4660,6 +4861,8 @@ setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize并不灵�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
@@ -4710,6 +4913,8 @@ setImageRawDataCacheSize方法需要在@Entry标记的页面，[onPageShow](../a
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 23
 
 **ArkTS-Sta起始版本：** 23
@@ -4755,6 +4960,8 @@ getMagnifier(): Magnifier
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 22
 
@@ -5214,6 +5421,8 @@ getPageRootNode(): FrameNode | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
 **ArkTS-Dyn起始版本：** 24
 
 **ArkTS-Sta起始版本：** 24
@@ -5427,6 +5636,8 @@ onTextChange(callback: Callback<observer.TextChangeEventInfo>): void
 注册当文本框的文本内容发生变化时触发的回调函数。使用callback异步回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -5732,7 +5943,9 @@ export default class EntryAbility extends UIAbility {
     });
   }
 }
+```
 
+```ts
 // Index.ets
 @Entry
 @Component
@@ -5779,3 +5992,113 @@ struct Index {
 ```
 
 ![ImmersiveStrategy](./figures/ImmersiveStrategy.jpeg)
+
+## setTransPageEnabled
+
+setTransPageEnabled(enabled: boolean): void
+
+<!--RP3-->启用或禁用强制分栏的transPages配置。禁用后，transPages中配置的过渡页面将参与右推左的转场行为，不再固定在右侧。未通过该接口设置时，默认值为true。<!--RP3End-->
+
+> **说明：**
+>
+> - <!--RP4-->该接口仅在购物模式下生效，导航模式（使用pagePairs机制）下调用无副作用。<!--RP4End-->
+> - 该接口在下一次路由转场时生效，不会触发当前页面的重新布局或动效。
+> - 应用未配置强制分栏时调用该接口不产生任何效果，也不影响应用稳定性。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名  | 类型 | 必填 | 说明 |
+| ------- | ---- | ---- | ---- |
+| enabled | boolean | 是   | 是否启用transPages配置。true表示启用transPages行为（默认值），false表示禁用，禁用后过渡页面将参与右推左的转场行为。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct Index {
+  @State transPageEnabled: boolean = true;
+
+  build() {
+    Column() {
+      Text(`${this.transPageEnabled ? 'transPages enabled' : 'transPages disabled'}`)
+        .fontSize(20)
+        .margin(10)
+      Button('Disable TransPage')
+        .onClick(() => {
+          this.getUIContext()?.setTransPageEnabled(false);
+          this.transPageEnabled = this.getUIContext()?.isTransPageEnabled();
+        })
+        .margin(10)
+      Button('Enable TransPage')
+        .onClick(() => {
+          this.getUIContext()?.setTransPageEnabled(true);
+          this.transPageEnabled = this.getUIContext()?.isTransPageEnabled();
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## isTransPageEnabled
+
+isTransPageEnabled(): boolean
+
+<!--RP5-->查询强制分栏的transPages配置当前是否启用。<!--RP5End-->
+
+> **说明：**
+>
+> - 未调用[setTransPageEnabled](#settranspageenabled)时返回true，表示transPages配置默认生效。
+> - 应用未配置强制分栏时返回true（与默认行为一致）。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**返回值：**
+
+| 类型    | 说明                                       |
+| ------- | ------------------------------------------ |
+| boolean | 返回当前UI实例强制分栏的transPages配置是否启用，transPages配置启用时返回true，禁用时返回false。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct Index {
+  @State transPageEnabled: boolean = true;
+
+  build() {
+    Column() {
+      Text(`${this.transPageEnabled ? 'transPages enabled' : 'transPages disabled'}`)
+        .fontSize(20)
+        .margin(10)
+      Button('Check TransPageEnabled')
+        .onClick(() => {
+          this.transPageEnabled = this.getUIContext()?.isTransPageEnabled();
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```

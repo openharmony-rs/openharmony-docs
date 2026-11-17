@@ -43,7 +43,7 @@
              }
              subWindowClass = data;
              if (!subWindowClass) {
-               console.error('sub_windowClass is null');
+               console.error('subWindowClass is null');
                return;
              }
              console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
@@ -70,7 +70,7 @@
            promise.then((data: window.Window | undefined) => {
              independentWindowClass = data;
              if (!independentWindowClass) {
-               console.error('independent_sub_windowClass is null');
+               console.error('independentSubWindowClass is null');
                return;
              }
              console.info(`Succeeded in creating the subwindow. Data: ${JSON.stringify(data)}`);
@@ -103,7 +103,7 @@
      }
      console.info('Succeeded in moving the window.');
      if (!independentWindowClass) {
-       console.error('independent_windowClass is null');
+       console.error('independentWindowClass is null');
        return;
      }
      independentWindowClass.resize(1000, 500, (err) => {
@@ -133,7 +133,7 @@
      }
      console.info('Succeeded in loading the content.');
      if (!independentWindowClass) {
-       console.error('independent_windowClass is null');
+       console.error('independentWindowClass is null');
        return;
      }
      // 显示子窗口。
@@ -156,7 +156,7 @@
    <!-- @[destroy_independent_subWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AuxiliaryWindowSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
-   // 4.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroy对其进行销毁。
+   // 4.销毁子窗口。当不再需要子窗口时，可根据具体实现逻辑，使用destroyWindow对其进行销毁。
    independentWindowClass.destroyWindow((err) => {
      if (err?.code) {
        console.error(`Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);

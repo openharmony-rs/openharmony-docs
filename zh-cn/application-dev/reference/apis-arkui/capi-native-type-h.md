@@ -128,7 +128,7 @@
 | [ArkUI_ScrollNestedMode](#arkui_scrollnestedmode)                   | ArkUI_ScrollNestedMode          | 定义嵌套滚动选项。                         |
 | [ArkUI_ScrollEdge](#arkui_scrolledge)                               | ArkUI_ScrollEdge                | 定义滚动到的边缘位置。                       |
 | [ArkUI_ScrollAlignment](#arkui_scrollalignment)                     | ArkUI_ScrollAlignment           | 滚动到具体item时的对齐方式。                  |
-| [OH_ArkUI_FastScrollMode](#oh_arkui_fastscrollmode) | OH_ArkUI_FastScrollMode | 定义滚动到指定索引时使用的快速滚动模式，用于设置[NODE_LIST_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_scroll_to_index)的.value[4]?.i32参数。仅当.value[1]?.i32为1（开启动效）时生效。 |
+| [OH_ArkUI_FastScrollMode](#oh_arkui_fastscrollmode) | OH_ArkUI_FastScrollMode | 定义滚动到指定索引时使用的快速滚动模式，用于设置[NODE_LIST_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_scroll_to_index)或[NODE_WATER_FLOW_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_water_flow_scroll_to_index)的.value[4]?.i32参数。仅当.value[1]?.i32为1（开启动效）时生效，WaterFlow还需使用[ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-native-type-h.md#arkui_waterflowlayoutmode)布局模式。 |
 | [ArkUI_ScrollState](#arkui_scrollstate)                             | ArkUI_ScrollState               | 定义当前滚动状态。                         |
 | [ArkUI_SliderBlockStyle](#arkui_sliderblockstyle)                   | ArkUI_SliderBlockStyle          | 定义滑块形状。                           |
 | [ArkUI_SliderDirection](#arkui_sliderdirection)                     | ArkUI_SliderDirection           | 定义滑动条滑动方向。                        |
@@ -669,6 +669,10 @@
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t* color)](#oh_arkui_texteditortextstyle_gettextbackgroundcolor) | - | 获取文本样式中的文本背景颜色。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundRadius(OH_ArkUI_TextEditorTextStyle* style, float topLeft, float topRight, float bottomLeft, float bottomRight)](#oh_arkui_texteditortextstyle_settextbackgroundradius) | - | 设置文本样式中文本背景的圆角半径。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundRadius(OH_ArkUI_TextEditorTextStyle* style, float* topLeft, float* topRight, float* bottomLeft, float* bottomRight)](#oh_arkui_texteditortextstyle_gettextbackgroundradius) | - | 获取文本样式中文本背景的圆角半径。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundBorderWidth(OH_ArkUI_TextEditorTextStyle* style, float borderWidth)](#oh_arkui_texteditortextstyle_settextbackgroundborderwidth) | - | 设置文本样式中文本背景的边框宽度。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundBorderWidth(OH_ArkUI_TextEditorTextStyle* style, float* borderWidth)](#oh_arkui_texteditortextstyle_gettextbackgroundborderwidth) | - | 获取文本样式中文本背景的边框宽度。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundBorderColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t borderColor)](#oh_arkui_texteditortextstyle_settextbackgroundbordercolor) | - | 设置文本样式中文本背景的边框颜色。 |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundBorderColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t* borderColor)](#oh_arkui_texteditortextstyle_gettextbackgroundbordercolor) | - | 获取文本样式中文本背景的边框颜色。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetTypingStyle(OH_ArkUI_TextEditorStyledStringController* controller, OH_ArkUI_TextEditorTextStyle* style)](#oh_arkui_texteditorstyledstringcontroller_settypingstyle) | - | 通过属性字符串控制器设置预设输入样式。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetTypingStyle(OH_ArkUI_TextEditorStyledStringController* controller, OH_ArkUI_TextEditorTextStyle* style)](#oh_arkui_texteditorstyledstringcontroller_gettypingstyle) | - | 通过属性字符串控制器获取预设输入样式。 |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetSpanType(OH_ArkUI_TextEditorSelectionMenuOptions* options, OH_ArkUI_TextEditorSpanType textEditorSpanType)](#oh_arkui_texteditorselectionmenuoptions_setspantype) | - | 设置文本编辑器中文本选择菜单的span的类型。 |
@@ -1318,14 +1322,14 @@ enum OH_ArkUI_FastScrollMode
 
 **描述：**
 
-定义滚动到指定索引时使用的快速滚动模式，用于设置[NODE_LIST_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_scroll_to_index)的.value[4]?.i32参数。仅当.value[1]?.i32为1（开启动效）时生效。
+定义滚动到指定索引时使用的快速滚动模式，用于设置[NODE_LIST_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_list_scroll_to_index)或[NODE_WATER_FLOW_SCROLL_TO_INDEX](capi-native-node-h-nodeattributetype-scrollablecontainer.md#node_water_flow_scroll_to_index)的.value[4]?.i32参数。仅当.value[1]?.i32为1（开启动效）时生效，WaterFlow还需使用[ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-native-type-h.md#arkui_waterflowlayoutmode)布局模式。
 
 > **说明：**
 >
-> - 当滚动距离较大且触发跳跃时，通常先从起始位置连续滚动约2屏，再跳到距离最终停靠位置约2屏的位置，继续滚动至最终位置。一屏指List可视区域在滚动方向上的长度。
+> - 当滚动距离较大且触发跳跃时，通常先从起始位置连续滚动约2屏，再跳到距离最终停靠位置约2屏的位置，继续滚动至最终位置。一屏指滚动组件可视区域在滚动方向上的长度。
 > - 跳过创建或测量只针对上述被跳过的滚动路径；前后两段连续滚动中需要显示的子组件仍会按需创建和测量。实际创建和测量的范围还受对齐方式、额外偏移量和子组件大小等因素影响，并非固定为4屏。
 > - 快速滚动不保证遍历并显示滚动路径上的每一个子组件。
-> - 向NODE_LIST_SCROLL_TO_INDEX传入本枚举未定义的值时，按OH_ARKUI_FAST_SCROLL_MODE_NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。
+> - 向NODE_LIST_SCROLL_TO_INDEX或NODE_WATER_FLOW_SCROLL_TO_INDEX传入本枚举未定义的值时，按OH_ARKUI_FAST_SCROLL_MODE_NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。
 
 **起始版本：** 26.1.0
 
@@ -1333,7 +1337,7 @@ enum OH_ArkUI_FastScrollMode
 | -- | -- |
 | OH_ARKUI_FAST_SCROLL_MODE_NONE = 0 | 不启用快速滚动优化，与不设置快速滚动模式参数时的行为相同。开启动效时，会在动效开始前创建并测量滚动路径上的所有子组件。 |
 | OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE = 1 | 跳过中间子组件的测量，仍可创建中间子组件以确认类型和目标所在行。适用于多列List中同时存在ListItem和ListItemGroup的场景：ListItem占一行中的一列，ListItemGroup占满一整行，需要根据子组件类型确定目标所在行。 |
-| OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE = 2 | 跳过中间子组件的创建和测量，进一步减少开销。<br/>**说明：**<br/>不适用于多列List中同时存在ListItem和ListItemGroup的场景。在该场景下使用此模式会导致List布局和滚动异常，应改用OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE。 |
+| OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE = 2 | 跳过中间子组件的创建和测量，进一步减少开销。<br/>**说明：**<br/>不适用于多列List中同时存在ListItem和ListItemGroup的场景。在该场景下使用此模式会导致List布局和滚动异常，应改用OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE。<br/>WaterFlow组件建议使用此模式。[ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-native-type-h.md#arkui_waterflowlayoutmode)布局模式下，WaterFlow定位目标FlowItem不依赖中间子组件，OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE仍会创建沿途中间子组件，带来多余的创建开销。 |
 
 ### ArkUI_ScrollState
 
@@ -2385,6 +2389,8 @@ enum ArkUI_ErrorCode
 | ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 |  当前渲染节点从[FrameNode](js-apis-arkui-frameNode.md)中获取。错误码的详细介绍请参见[106406 当前渲染节点从FrameNode中获取](../apis-arkui/errorcode-node-render.md#106406-当前渲染节点从framenode中获取)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 |  当前渲染节点从[FrameNode](js-apis-arkui-frameNode.md)中获取且该[FrameNode](js-apis-arkui-frameNode.md)已被取消接纳为附属节点或销毁。错误码的详细介绍请参见[106407 当前渲染节点从FrameNode中获取且该FrameNode已被取消接纳为附属节点或销毁](../apis-arkui/errorcode-node-render.md#106407-当前渲染节点从framenode中获取且该framenode已被取消接纳为附属节点或销毁)。<br>**起始版本：** 22 |
 | ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 |  当前节点不处于被接纳状态。错误码的详细介绍请参见[106408 当前节点不处于被接纳状态](../apis-arkui/errorcode-node-render.md#106408-当前节点不处于被接纳状态)。<br>**起始版本：** 22 |
+| ARKUI_ERROR_CODE_COMMAND_UNFINISHED = 106409 |  上一次请求尚未完成。<br>**起始版本：** 26.1.0 |
+| ARKUI_ERROR_CODE_NODE_NOT_FOUND = 106410 |  未找到节点ID对应的ArkUI节点。<br>**起始版本：** 26.1.0 |
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 |  当前节点无法获得焦点。错误码的详细介绍请参见[150001 节点无法获得焦点](../apis-arkui/errorcode-focus.md#150001-节点无法获得焦点)。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 |  当前节点对应的祖先节点中存在无法获焦节点。错误码的详细介绍请参见[150002 祖先节点无法获得焦点](../apis-arkui/errorcode-focus.md#150002-祖先节点无法获得焦点)。<br>**起始版本：** 15 |
 | ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT = 150003 |  当前节点不存在。错误码的详细介绍请参见[150003 节点不存在](../apis-arkui/errorcode-focus.md#150003-节点不存在)。<br>**起始版本：** 15 |
@@ -12658,6 +12664,106 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundRadius(OH_ArkUI_Te
 | float* bottomRight | 文本背景右下角的圆角半径。单位为vp。 |
 
 **返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_SetTextBackgroundBorderWidth()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundBorderWidth(OH_ArkUI_TextEditorTextStyle* style, float borderWidth)
+```
+
+**描述**
+
+设置文本样式中文本背景的边框宽度。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | [入参] 指向TextEditor组件文本样式的指针。 |
+| float borderWidth | [入参] 文本背景边框宽度。单位为vp。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_GetTextBackgroundBorderWidth()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundBorderWidth(OH_ArkUI_TextEditorTextStyle* style, float* borderWidth)
+```
+
+**描述**
+
+获取文本样式中文本背景的边框宽度。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | [入参] 指向TextEditor组件文本样式的指针。 |
+| float* borderWidth | [出参] 指向文本背景边框宽度的指针。单位为vp。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_SetTextBackgroundBorderColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundBorderColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t borderColor)
+```
+
+**描述**
+
+设置文本样式中文本背景的边框颜色。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | [入参] 指向TextEditor组件文本样式的指针。 |
+| uint32_t borderColor | [入参] 文本背景边框颜色，0xARGB格式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。<br>         若操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode)。<br>         若参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode)。 |
+
+### OH_ArkUI_TextEditorTextStyle_GetTextBackgroundBorderColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundBorderColor(OH_ArkUI_TextEditorTextStyle* style, uint32_t* borderColor)
+```
+
+**描述**
+
+获取文本样式中文本背景的边框颜色。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | [入参] 指向TextEditor组件文本样式的指针。 |
+| uint32_t* borderColor | [出参] 指向文本背景边框颜色的指针，0xARGB格式。 |
+
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

@@ -64,7 +64,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function enableAutoDeviceSwitch(session: camera.PhotoSession, isEnable: boolean): void {
   try {
-    session.enableAutoDeviceSwitch(isEnable);
+    if (session.isAutoDeviceSwitchSupported()) {
+      session.enableAutoDeviceSwitch(isEnable);
+    }
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The enableAutoDeviceSwitch call failed, error code: ${err.code}, error message: ${err.message}`);

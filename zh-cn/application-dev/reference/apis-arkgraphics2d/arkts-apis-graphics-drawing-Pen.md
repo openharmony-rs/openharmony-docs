@@ -219,7 +219,7 @@ ArkTS-Sta: getColorFilter(): ColorFilter | undefined
 
 | 类型                        | 说明               |
 | --------------------------- | ------------------ |
-| ArkTS-Dyn: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| undefined | 返回画笔当前设置的颜色滤波器，可用于查询当前画笔的颜色过滤效果。获取失败时返回undefined。 |
+| ArkTS-Dyn: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| undefined | 返回画笔当前设置的颜色滤波器，可用于查询当前画笔的颜色过滤效果。当前画笔未设置颜色滤波器时返回undefined。 |
 
 **示例：**
 

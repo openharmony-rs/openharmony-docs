@@ -56,9 +56,9 @@ getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt;
 
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801          | Capability not supported. |
-| 31300000     | Inner error. |
+| 401          | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 31300000     | Inner error.  |
 
 **示例：**
 
@@ -172,8 +172,8 @@ getImageEmbeddingModel(config: ModelConfig): Promise&lt;ImageEmbedding&gt;
 
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801          | Capability not supported. |
+| 401          | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **示例：**
@@ -255,8 +255,8 @@ splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt;
 
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801          | Capability not supported. |
+| 401          | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **示例：**
@@ -436,7 +436,7 @@ loadModel(): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 801          | Capability not supported. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **示例：**
@@ -495,7 +495,7 @@ releaseModel(): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 801          | Capability not supported. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **示例：**
@@ -564,8 +564,7 @@ ArkTS-Sta: getEmbedding(text: string): Promise&lt;Array&lt;double&gt;&gt;
 
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801          | Capability not supported. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **示例：**
@@ -645,8 +644,7 @@ ArkTS-Sta: getEmbedding(batchTexts: Array&lt;string&gt;): Promise&lt;Array&lt;Ar
 
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801          | Capability not supported. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **示例：**
@@ -729,7 +727,7 @@ loadModel(): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 801          | Capability not supported. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **示例：**
@@ -788,7 +786,7 @@ releaseModel(): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 801          | Capability not supported. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **示例：**
@@ -857,8 +855,7 @@ ArkTS-Sta: getEmbedding(image: Image): Promise&lt;Array&lt;double&gt;&gt;
 
 | **错误码ID** | **错误信息**                                                                                                                                    |
 | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 801          | Capability not supported. |
+| 801          | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 31300000     | Inner error. |
 
 **示例：**

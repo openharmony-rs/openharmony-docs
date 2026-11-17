@@ -399,6 +399,15 @@ type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperatio
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+| 类型 | 说明 |
+| ----- | ------------------------- |
+| [DataAddOperation](#dataaddoperation12) | 添加数据操作。 |
+| [DataDeleteOperation](#datadeleteoperation12) | 删除数据操作。 |
+| [DataChangeOperation](#datachangeoperation12) | 改变数据操作。 |
+| [DataMoveOperation](#datamoveoperation12) | 移动数据操作。 |
+| [DataExchangeOperation](#dataexchangeoperation12) | 交换数据操作。 |
+| [DataReloadOperation](#datareloadoperation12) | 重载所有数据操作，并配置是否允许在更新过程中复用旧的子组件。 |
+
 ### DataAddOperation<sup>12+</sup>
 
 添加数据操作。

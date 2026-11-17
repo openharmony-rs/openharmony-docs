@@ -200,11 +200,11 @@ export default class EntryAbility extends UIAbility {
       ctx: this.context
     };
     try {
-      window.createWindow(config).then((value:window.Window) => {
+      window.createWindow(config).then((value: window.Window) => {
         console.info('Succeeded in creating the window. Data: ' + JSON.stringify(value));
         windowClass = value;
         windowClass.resize(500, 1000);
-      }).catch((err:BusinessError) => {
+      }).catch((err: BusinessError) => {
         console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
       });
     } catch (exception) {

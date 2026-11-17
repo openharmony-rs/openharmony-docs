@@ -21,7 +21,7 @@ SharedArrayBuffer内部包含一块Native内存，其JS对象壳被分配在虚�
 
 ## 使用示例
 
-使用TaskPool传递Int32Array对象，实现如下：
+以TaskPool传递Int32Array为例，演示SharedArrayBuffer的共享内存载体作用，实现如下：
 
 <!-- @[example_pass_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/CommunicationObjects/entry/src/main/ets/managers/SharedArrayBufferObject.ets) -->
 

@@ -31,10 +31,9 @@ API详细介绍请参见[ohos.file.securityLabel](../reference/apis-core-file-ki
 
 
 ```ts
-import { securityLabel } from '@kit.CoreFileKit';
+import { fileIo, securityLabel } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
-import { fileIo } from '@kit.CoreFileKit';
 
 ```
 <!--@[set_security_label](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->    

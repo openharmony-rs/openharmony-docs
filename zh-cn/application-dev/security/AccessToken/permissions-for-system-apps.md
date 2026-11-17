@@ -7712,20 +7712,6 @@
 
 **起始版本**：26.0.1
 
-## ohos.permission.vehicle.WRITE_HARDWARE_CONFIG
-
-允许应用写入车辆硬件信息。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**是否支持证书授权**：true
-
-**支持设备**：Car
-
-**起始版本**：26.0.1
-
 ## ohos.permission.vehicle.READ_CAR_CDC_CONFIG
 
 允许应用读取车辆与车机配置。
@@ -9219,3 +9205,21 @@
 **支持设备**：PC/2in1
  
 **起始版本**：26.0.1
+
+## ohos.permission.ALLOW_DIRECT_BOOT
+
+允许应用在设备冷启动或重启后，用户首次解锁前启动。
+
+> **说明：**
+>
+> 申请此权限的应用，在用户首次解锁前不要访问 EL2 及以上级别的存储路径。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.1.0

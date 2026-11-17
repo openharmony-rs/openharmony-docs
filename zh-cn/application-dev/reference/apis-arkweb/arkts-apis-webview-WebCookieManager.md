@@ -1317,17 +1317,17 @@ static saveCookieSync(): void
 
 将当前可通过fetchCookie获取到的所有需要持久化的cookies同步保存到磁盘中。
 
-**系统能力：** SystemCapability.Web.Webview.Core
-
-**ArkTS-Dyn起始版本：** 15
-
-**ArkTS-Sta起始版本：** 23
-
 > **说明：**
 >
 > - saveCookieSync用于强制将需要持久化的cookies写入磁盘。PC/2in1和Tablet设备不会持久化session cookies，即使调用saveCookieSync，也不会将session cookies写入磁盘。
 >
 > - saveCookieSync将阻塞调用者直到操作完成，期间可能会执行I/O操作。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -2458,7 +2458,7 @@ static setLazyInitializeWebEngine(lazy: boolean): void
 > 
 > - 该接口仅适用于调用后会初始化CookieManager的接口，比如本类WebCookieManager的其他接口。调用本接口设置为true后，再调用适用的接口，会在初始化CookieManager时跳过初始化ArkWeb内核，后续需自行初始化ArkWeb内核。
 >
-> - 从API版本26.0.1开始，调用本接口设置为true后，WebCookieManager的接口支持在异步线程使用。
+> - 从API版本26.0.1开始，调用本接口设置为true后，WebCookieManager的接口支持在非UI线程使用。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

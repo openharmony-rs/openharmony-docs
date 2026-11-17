@@ -160,7 +160,7 @@ struct Index {
 
 ### 运行并校验结果
 
-运行前请检查设备连接并配置好[Signature](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-signing-V5)信息。直接点击右上角运行按钮，应用启动后设备进入“Hello OpenMP”界面，点击“Hello OpenMP”标签，打开DevEco Studio下方“Log”查看页面，即可看到并行打印的“Hello OpenMP！”消息。
+运行前请检查设备连接并配置好[Signature](https://developer.huawei.com/consumer/cn/doc/doccenter-deveco-studio/ide-signing-auto?docScope=all)信息。直接点击右上角运行按钮，应用启动后设备进入“Hello OpenMP”界面，点击“Hello OpenMP”标签，打开DevEco Studio下方“Log”查看页面，即可看到并行打印的“Hello OpenMP！”消息。
 
 ![image1](./figures/omp-result.png)
 

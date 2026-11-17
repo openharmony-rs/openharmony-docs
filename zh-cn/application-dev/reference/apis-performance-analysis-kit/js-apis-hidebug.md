@@ -674,7 +674,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let appThreadCpuUsage: hidebug.ThreadCpuUsage[] = hidebug.getAppThreadCpuUsage();
 for (let i = 0; i < appThreadCpuUsage.length; i++) {
-  console.info(`threadId=${appThreadCpuUsage[i].threadId}, cpuUsage=${appThreadCpuUsage[i].cpuUsage}`);
+  console.info(`threadId=${appThreadCpuUsage[i].threadId}, cpuUsage=${appThreadCpuUsage[i].cpuUsage}, threadName=${appThreadCpuUsage[i].threadName}`);
 }
 ```
 
@@ -2140,6 +2140,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 let rssInfo: hidebug.RssInfo = hidebug.getRssInfo();
 console.info(`rss: ${rssInfo.rss}, swapRss: ${rssInfo.swapRss}`);
 ```
+
 ## hidebug.getAppRunningUniqueId
 
 getAppRunningUniqueId(): string
@@ -2165,6 +2166,43 @@ getAppRunningUniqueId(): string
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 
-let apprunningId = hidebug.getAppRunningUniqueId();
-console.info(`apprunningId: ${apprunningId}`);
+let appRunningId = hidebug.getAppRunningUniqueId();
+console.info(`appRunningId: ${appRunningId}`);
+```
+
+## hidebug.getAppSharedHeapObjectUsedSize
+
+getAppSharedHeapObjectUsedSize(): bigint
+
+获取虚拟机中共享堆对象所占用的内存大小。
+
+**ArkTS-Dyn起始版本**：26.1.0
+
+**ArkTS-Sta起始版本**：26.1.0
+
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**返回值**：
+
+| 类型  | 说明                      |
+| ------ | -------------------------- |
+| bigint | 虚拟机中共享堆对象所占用的内存大小，单位为KB。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[HiDebug SharedHeapObjectUsedSize错误码](errorcode-hiviewdfx-hidebug-sharedheapobjectusedsize.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------------------------------------------------- |
+| 11400104 | VM instance exception.                                           |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+let sharedHeap = hidebug.getAppSharedHeapObjectUsedSize();
+console.info(`sharedHeap: ${sharedHeap}`);
 ```

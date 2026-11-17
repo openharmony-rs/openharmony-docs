@@ -27,7 +27,7 @@
 | -------- | -------- |
 | attachBrush(brush: Brush): void | 用于设置画刷给画布，画布将会使用设置的画刷样式和颜色去填充绘制的图形形状。 |
 | setColor(alpha: number, red: number, green: number, blue: number): void | 用于设置画刷的颜色属性，颜色属性描述了画刷填充图形时使用的颜色。 |
-| setAntiAlias(aa: boolean) : void | 用于设置画刷的抗锯齿属性，设置为true则画刷在绘制图形时会对图形的边缘像素进行半透明的模糊处理，以使图形边缘更加平滑。 |
+| setAntiAlias(aa: boolean): void | 用于设置画刷的抗锯齿属性，设置为true则画刷在绘制图形时会对图形的边缘像素进行半透明的模糊处理，以使图形边缘更加平滑。 |
 | detachBrush(): void | 用于去除画布中的画刷，执行后画布将不使用此前设置的画刷，恢复到默认填充效果。 |
 
 

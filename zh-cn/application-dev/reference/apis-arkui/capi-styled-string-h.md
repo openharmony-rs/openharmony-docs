@@ -235,6 +235,10 @@
 | [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetColor(const OH_ArkUI_BackgroundColorStyle* style, uint32_t* color)](#oh_arkui_backgroundcolorstyle_getcolor) | 获取背景颜色样式的背景色。 |
 | [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetRadius(OH_ArkUI_BackgroundColorStyle* style, float topLeft, float topRight, float bottomLeft, float bottomRight)](#oh_arkui_backgroundcolorstyle_setradius) | 设置背景颜色样式的背景圆角。 |
 | [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetRadius(const OH_ArkUI_BackgroundColorStyle* style, float* topLeft, float* topRight, float* bottomLeft, float* bottomRight)](#oh_arkui_backgroundcolorstyle_getradius) | 获取背景颜色样式的背景圆角。 |
+| [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetBorderWidth(OH_ArkUI_BackgroundColorStyle* style, float borderWidth)](#oh_arkui_backgroundcolorstyle_setborderwidth) | 设置背景颜色样式的边框宽度。 |
+| [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetBorderWidth(const OH_ArkUI_BackgroundColorStyle* style, float* borderWidth)](#oh_arkui_backgroundcolorstyle_getborderwidth) | 获取背景颜色样式的边框宽度。 |
+| [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetBorderColor(OH_ArkUI_BackgroundColorStyle* style, uint32_t borderColor)](#oh_arkui_backgroundcolorstyle_setbordercolor) | 设置背景颜色样式的边框颜色。 |
+| [ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetBorderColor(const OH_ArkUI_BackgroundColorStyle* style, uint32_t* borderColor)](#oh_arkui_backgroundcolorstyle_getbordercolor) | 获取背景颜色样式的边框颜色。 |
 | [OH_ArkUI_UrlStyle* OH_ArkUI_UrlStyle_Create()](#oh_arkui_urlstyle_create) | 创建[OH_ArkUI_UrlStyle](capi-arkui-nativemodule-oh-arkui-urlstyle.md)对象。 |
 | [void OH_ArkUI_UrlStyle_Destroy(OH_ArkUI_UrlStyle* style)](#oh_arkui_urlstyle_destroy) | 释放[OH_ArkUI_UrlStyle](capi-arkui-nativemodule-oh-arkui-urlstyle.md)对象占用的内存。 |
 | [ArkUI_ErrorCode OH_ArkUI_UrlStyle_SetUrl(OH_ArkUI_UrlStyle* style, const char* url)](#oh_arkui_urlstyle_seturl) | 设置超链接样式的超链接内容。 |
@@ -4743,6 +4747,122 @@ ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetRadius(const OH_ArkUI_Backgroun
 | float* bottomRight | 右下角圆角半径，单位为vp。 |
 
 **返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_BackgroundColorStyle_SetBorderWidth()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetBorderWidth(OH_ArkUI_BackgroundColorStyle* style, float borderWidth)
+```
+
+**描述**
+
+设置背景颜色样式的边框宽度。
+
+> **说明：**
+>
+> 所有入参指针需由调用方分配、管理和释放。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)* style | [入参] 指向[OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)对象的指针。 |
+| float borderWidth | [入参] 边框宽度，单位为vp。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_BackgroundColorStyle_GetBorderWidth()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetBorderWidth(const OH_ArkUI_BackgroundColorStyle* style, float* borderWidth)
+```
+
+**描述**
+
+获取背景颜色样式的边框宽度。
+
+> **说明：**
+>
+> 所有入参指针需由调用方分配、管理和释放。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)* style | [入参] 指向[OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)对象的指针。 |
+| float* borderWidth | [出参] 指向边框宽度的指针，单位为vp。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_BackgroundColorStyle_SetBorderColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_SetBorderColor(OH_ArkUI_BackgroundColorStyle* style, uint32_t borderColor)
+```
+
+**描述**
+
+设置背景颜色样式的边框颜色。
+
+> **说明：**
+>
+> 所有入参指针需由调用方分配、管理和释放。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)* style | [入参] 指向[OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)对象的指针。 |
+| uint32_t borderColor | [入参] 边框颜色，0xARGB格式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | 返回结果码。 <br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 操作成功。 <br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_BackgroundColorStyle_GetBorderColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_BackgroundColorStyle_GetBorderColor(const OH_ArkUI_BackgroundColorStyle* style, uint32_t* borderColor)
+```
+
+**描述**
+
+获取背景颜色样式的边框颜色。
+
+> **说明：**
+>
+> 所有入参指针需由调用方分配、管理和释放。
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)* style | [入参] 指向[OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md)对象的指针。 |
+| uint32_t* borderColor | [出参] 指向边框颜色的指针，0xARGB格式。 |
+
+**返回值：**
 
 | 类型 | 说明 |
 | -- | -- |

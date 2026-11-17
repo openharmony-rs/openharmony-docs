@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍音频快照能力，通过获取播放、录音、耳返、会话、编创等模块的运行状态快照，帮助开发者定位无声、音量异常、焦点丢失等问题。"
+keywords: [音频快照, 音频调试, 音频运行状态, 播放无声, 焦点丢失]
+doctype: faq
+status: active
+---
 # 使用音频快照获取问题定位信息
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -414,7 +421,6 @@ audioCapturer {
 | 流状态信息 | uplinkStreamState、downlinkStreamState | 上行采集流和下行播放流状态 |
 
 > 详细字段信息见下方输出示例。
-
 > **说明：**
 >
 > 调用该方法前，需要先创建AudioLoopback实例。耳返的创建及使用方式可参考[实现低时延耳返](audio-ear-monitor-loopback.md)。耳返处于可用状态（AVAILABLE_IDLE或AVAILABLE_RUNNING）时，可查询到完整的快照信息。
@@ -523,7 +529,6 @@ audioLoopback {
 | 关联流信息 | streamInfos（streamId、focusState、streamType） | 会话关联的音频流列表 |
 
 > 详细字段信息见下方输出示例。
-
 > **说明：**
 >
 > 调用该方法前，需要先创建并激活音频会话。音频会话的创建及使用方式可参考[使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)或[音频会话管理(ArkTS)](audio-session-management.md)。
@@ -566,7 +571,7 @@ OH_AudioSessionManager *audioSessionManager;
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 // ...
   // 设置音频并发模式。
   let strategy: audio.AudioSessionStrategy = {
@@ -583,36 +588,40 @@ import { fileIo as fs } from '@kit.CoreFileKit';
 
   // fd 文件描述符，实际使用时请根据具体情况获取
   let filePath = context.filesDir + '/audio_session_info.txt';
-  let fd = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.WRITE_ONLY | fs.OpenMode.TRUNC).fd;
+  let fd = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.WRITE_ONLY | fileIo.OpenMode.TRUNC).fd;
   // 输出到文件。
   audioDebuggingManager.printSessionInfo(audioSessionManager, fd);
-  fs.closeSync(fd);
+  fileIo.closeSync(fd);
 ```
 
 **ArkTS-Sta示例：**
 
-<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioSessionSampleJS-Sta/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioSessionSampleJS-Sta/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
-// audioSessionManager为已创建并激活的audio.AudioSessionManager实例。
-// 设置音频并发模式。
-let strategy: audio.AudioSessionStrategy = {
-  concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
-};
-// 激活音频会话。
-await audioSessionManager.activateAudioSession(strategy);
+import { audio } from '@kit.AudioKit';
+// ...
+import { fileIo, ReadOptions } from '@kit.CoreFileKit';
+// ...
+  // 设置音频并发模式。
+  let strategy: audio.AudioSessionStrategy = {
+    concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+  };
+  // 激活音频会话。
+  await audioSessionManager.activateAudioSession(strategy);
 
-// 创建音频调试管理器。
-let audioDebuggingManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
+  // 创建音频调试管理器。
+  let audioDebuggingManager: audio.AudioDebuggingManager = audioManager.getDebuggingManager();
 
-// 输出到hilog日志。
-audioDebuggingManager.printSessionInfo(audioSessionManager, -1);
+  // 输出到hilog日志。
+  audioDebuggingManager.printSessionInfo(audioSessionManager, -1);
 
-// 输出到文件。
-let filePath = this.context.filesDir + '/audio_session_info.txt';
-let fd = fileio.openSync(filePath, fileio.OpenMode.CREATE | fileio.OpenMode.WRITE_ONLY | fileio.OpenMode.TRUNC).fd;
-audioDebuggingManager.printSessionInfo(audioSessionManager, fd);
-fileio.closeSync(fd);
+  // fd 文件描述符，实际使用时请根据具体情况获取
+  let filePath = context.filesDir + '/audio_session_info.txt';
+  let fd = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.WRITE_ONLY | fileIo.OpenMode.TRUNC).fd;
+  // 输出到文件。
+  audioDebuggingManager.printSessionInfo(audioSessionManager, fd);
+  fileIo.closeSync(fd);
 ```
 
 **输出示例：**

@@ -70,7 +70,6 @@
    import { relationalStore } from '@kit.ArkData'; // 导入模块
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-   import { UIContext } from '@kit.ArkUI';
    import { common } from '@kit.AbilityKit';
    const DOMAIN = 0x0000;
    
@@ -103,8 +102,7 @@
        'CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER, SALARY REAL, CODES BLOB, ADDRESS TEXT)';
      if (store === undefined) {
        try {
-         const context = new UIContext().getHostContext() as common.UIAbilityContext;
-         store = await relationalStore.getRdbStore(context, STORE_CONFIG);
+         store = await relationalStore.getRdbStore(context!, STORE_CONFIG);
        } catch (e) {
          const err = e as BusinessError;
          hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to get RdbStore. Code:${err.code}, message:${err.message}`);
@@ -343,9 +341,9 @@
 
    > **说明：**
    >
-   > - 应用创建的数据库与其上下文（Context）有关，即使使用同样的数据库名称，但不同的应用上下文，会产生多个数据库，例如每个UIAbility都有各自的上下文。
+   > - 应用创建的数据库与其上下文（[Context](../reference/apis-ability-kit/js-apis-inner-application-context.md)）有关，即使使用同样的数据库名称，但不同的应用上下文，会产生多个数据库，例如每个UIAbility都有各自的上下文。
    > 
-   > - 当应用首次获取数据库（调用getRdbStore）后，在应用沙箱内会产生对应的数据库文件。使用数据库的过程中，在与数据库文件相同的目录下可能会产生以-wal和-shm结尾的临时文件。此时若开发者希望移动数据库文件到其它地方使用查看，则需要同时移动这些临时文件，当应用被卸载完成后，其在设备上产生的数据库文件及临时文件也会被移除。
+   > - 当应用首次获取数据库（调用[getRdbStore()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)接口）后，在应用沙箱内会产生对应的数据库文件。使用数据库的过程中，在与数据库文件相同的目录下可能会产生以-wal和-shm结尾的临时文件。此时若开发者希望移动数据库文件到其它地方使用查看，则需要同时移动这些临时文件，当应用被卸载完成后，其在设备上产生的数据库文件及临时文件也会被移除。
    > 
    > - 错误码的详细介绍请参见[通用错误码](../reference/errorcode-universal.md)和[关系型数据库错误码](../reference/apis-arkdata/errorcode-data-rdb.md)。
 
@@ -852,8 +850,7 @@
    
    ``` TypeScript
    // 删除数据库
-   const context = new UIContext().getHostContext() as common.UIAbilityContext;
-   relationalStore.deleteRdbStore(context, 'RdbTest.db', (err: BusinessError) => {
+   relationalStore.deleteRdbStore(context!, 'RdbTest.db', (err: BusinessError) => {
      if (err) {
        hilog.error(DOMAIN, 'rdbDataPersistence', `Failed to delete RdbStore. Code:${err.code}, message:${err.message}`);
        return;

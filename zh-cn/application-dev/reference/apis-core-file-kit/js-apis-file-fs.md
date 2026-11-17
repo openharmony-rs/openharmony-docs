@@ -8011,6 +8011,8 @@ let copyOption: fileIo.CopyOptions = {
 | mtimeNs<sup>15+</sup> | bigint | 是 | 是 | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的纳秒数。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
 | ctimeNs<sup>15+</sup> | bigint | 是 | 是 | 最近改变文件状态的时间，表示距1970年1月1日0时0分0秒的纳秒数。<br>**ArkTS-Dyn起始版本：** 15<br>**ArkTS-Sta起始版本：** 23 |
 | location<sup>11+</sup> | [LocationType](#locationtype11) | 是 | 否 | 文件的位置，表示该文件是本地文件或者云端文件。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| blocks | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是 | 是 | 分配给文件的块数，以512字节为单位。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
 
 > **说明：**
 >

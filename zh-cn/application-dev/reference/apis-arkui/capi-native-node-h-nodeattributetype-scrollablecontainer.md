@@ -1817,8 +1817,14 @@ NODE_WATER_FLOW_FOOTER = 1010008
 NODE_WATER_FLOW_SCROLL_TO_INDEX = 1010009
 ```
 
-滑动到指定index。开启smooth动效时，会对经过的所有item进行加载和布局计算，当大量加载item时会导致性能问题。<br><br>
+滑动到指定index。开启平滑滚动动效且未启用快速滚动优化时，会对经过的所有item进行加载和布局计算，当大量加载item时会导致性能问题。从API版本26.1.0开始，可通过.value[4]?.i32设置快速滚动模式，减少中间子组件的创建或测量开销。<br>
 作为属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+> **说明：**
+>
+> - 快速滚动模式仅在[ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-native-type-h.md#arkui_waterflowlayoutmode)布局模式下生效，其他布局模式仍按原有方式滚动。
+> - 快速滚动模式不改变目标索引和对齐方式的含义；未开启动效时，仍按原有方式跳转。
+> - 快速滚动模式生效时，.value[3]?.f32按节点的默认长度单位（默认为vp）换算；未生效时，与API版本26.1.0之前的处理方式相同。同一取值在两种情况下的实际偏移量可能不同，切换快速滚动模式时需注意。
 
 **起始版本：** 12
 
@@ -1831,6 +1837,7 @@ NODE_WATER_FLOW_SCROLL_TO_INDEX = 1010009
 | .value[1]?.i32 | 设置滑动到列表项在列表中的索引值时是否有动效，1表示有动效，0表示没有动效。默认值：0。 |
 | .value[2]?.i32 | 指定滑动到的元素与当前容器的对齐方式，参数类型[ArkUI_ScrollAlignment](capi-native-type-h.md#arkui_scrollalignment)。默认值为：[ARKUI_SCROLL_ALIGNMENT_START](capi-native-type-h.md#arkui_scrollalignment)。 |
 | .value[3]?.f32 | 滑动到目标元素后的额外偏移量，默认值：0，单位：vp。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。该参数从API version 23开始支持。 |
+| .value[4]?.i32 | 快速滚动模式，参数类型为[OH_ArkUI_FastScrollMode](capi-native-type-h.md#oh_arkui_fastscrollmode)。仅当.value[1]?.i32为1（开启动效）且布局模式为[ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-native-type-h.md#arkui_waterflowlayoutmode)时生效。<br/>设置为OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE时，跳过中间子组件的测量；设置为OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE时，跳过中间子组件的创建和测量。<br/>默认值：OH_ARKUI_FAST_SCROLL_MODE_NONE，与不设置此参数时的行为相同。<br/>取值范围：0、1、2。超出此范围时，按OH_ARKUI_FAST_SCROLL_MODE_NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。<br/>**起始版本：** 26.1.0 |
 
 ## NODE_WATER_FLOW_ITEM_CONSTRAINT_SIZE
 

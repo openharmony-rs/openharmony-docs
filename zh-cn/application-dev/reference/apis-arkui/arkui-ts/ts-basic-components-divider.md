@@ -116,7 +116,7 @@ ArkTS-Sta: strokeWidth(value: double | string | undefined)
 
 | 参数名 | 类型                       | 必填 | 说明                                                         |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string \| undefined | 是   | 分割线宽度。<br/>默认值：1px  <br />非法值：按默认值处理。 <br/>单位：vp<br/>取值为undefined时，按默认值处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string \| undefined | 是   | 分割线宽度。<br/>默认值：1px  <br />非法值：按默认值处理。 <br/>默认单位：vp<br/>取值为undefined时，按默认值处理。 |
 
 ### lineCap
 

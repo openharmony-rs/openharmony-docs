@@ -422,6 +422,24 @@ The number of accounts of the specified type has reached the upper limit.
 
 请删除多余的账号后再重试。
 
+## 12300024 系统账号ID已存在
+
+**错误信息**
+
+The specified OS account ID already exists.
+
+**错误描述**
+
+指定的系统账号ID已存在。
+
+**可能原因**
+
+指定的系统账号ID已存在。
+
+**处理步骤**
+
+更换其他ID，或删除已存在的相同ID的系统账号后重试。
+
 <!--DelEnd-->
 
 ## 12300101 凭据不正确
@@ -774,6 +792,24 @@ The credentials are no longer valid.
 **处理步骤**
 
 伴随设备认证场景，删除伴随设备后，重新绑定伴随设备。
+
+## 12300121 凭据近期已被使用
+
+**错误信息**
+
+The credential has been used recently and cannot be reused.
+
+**错误描述**
+
+该凭据近期已被使用，无法再次使用。
+
+**可能原因**
+
+该凭据近期已被使用。
+
+**处理步骤**
+
+使用近期未使用过的凭据，重新更新凭据。
 
 ## 12300201 域插件已注册
 

@@ -957,7 +957,7 @@ try {
 
 addAllowedOpticalDiscDriveBurnUsbDevices(usbDevices: Array\<UsbDevice>): Promise\<void>
 
-添加外置USB光驱刻录设备可用名单，单次最多添加10000条可用名单数据。添加时不影响正在进行光驱刻录的设备。策略热生效，无需重新插拔光驱设备即可对光驱刻录进行管控。可用名单添加完成后，仅允许可用名单中的设备类型进行刻录。当光驱刻录设备可用名单为空时，不对光驱刻录进行管控。使用Promise异步回调。
+添加外置USB光驱刻录设备可用名单，单次最多添加10000条可用名单数据。<!--RP1--><!--RP1End-->添加时不影响正在进行光驱刻录的设备。策略热生效，无需重新插拔光驱设备即可对光驱刻录进行管控。可用名单添加完成后，仅允许可用名单中的设备类型进行刻录。当光驱刻录设备可用名单为空时，不对光驱刻录进行管控。使用Promise异步回调。
 
 **起始版本：** 26.0.1
 
@@ -1127,7 +1127,7 @@ usbManager.getAllowedOpticalDiscDriveBurnUsbDevices(common.QueryPolicy.SELF).the
 
 setExternalStorageInterceptEnable(enable: boolean): void
 
-设置外置存储设备挂载拦截的启用状态。设置拦截使能成功后，不会影响已经挂载的外置存储设备；新插入的外置存储设备将不再自动挂载，需调用[usbManager.setExternalStorageDeviceMountPolicy](#usbmanagersetexternalstoragedevicemountpolicy)接口对其进行挂载。取消拦截使能后，未挂载的外置存储设备需重新插拔才能挂载成功。拦截的外置存储设备仅支持[common.DiskType](./js-apis-enterprise-common.md#disktype)对应类型。
+设置外置存储设备挂载拦截的启用状态。<!--RP1--><!--RP1End-->设置拦截使能成功后，不会影响已经挂载的外置存储设备；新插入的外置存储设备将不再自动挂载，需调用[usbManager.setExternalStorageDeviceMountPolicy](#usbmanagersetexternalstoragedevicemountpolicy)接口对其进行挂载。取消拦截使能后，未挂载的外置存储设备需重新插拔才能挂载成功。拦截的外置存储设备仅支持[common.DiskType](./js-apis-enterprise-common.md#disktype)对应类型。
 
 > **说明：**
 >

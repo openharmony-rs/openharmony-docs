@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 从API version 7 开始支持，从API version 9 开始废弃。建议使用[@ohos.commonEventManager](js-apis-commonEventManager.md)替代。
+> 从API version 7开始支持，从API version 9开始废弃。建议使用[@ohos.commonEventManager](js-apis-commonEventManager.md)替代。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[CommonEvent](./js-apis-commonEvent.md)。
 

@@ -33,7 +33,7 @@
 
 1. 导入相关依赖。
 
-    <!-- @[calendarData_entryAbilityImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @[calendarData_entryAbilityImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) --> 
     
     ``` TypeScript
     import { abilityAccessCtrl, AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit';
@@ -47,7 +47,7 @@
 
 3. 根据上下文获取日历管理器对象calendarMgr，用于对日历账户进行相关管理操作。推荐在`EntryAbility.ets`文件中进行操作。
 
-    <!-- @[calendarData_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) -->
+    <!-- @[calendarData_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) --> 
     
     ``` TypeScript
     const DOMAIN = 0x0000;
@@ -137,7 +137,16 @@
     });
     ```
 
-5. 日历账户创建之后，日历账户颜色默认为黑色，不指定日历账户颜色可能导致部分版本/设备深色模式下显示效果不佳。开发者需要调用setConfig()接口设置日历配置信息，包括是否打开日历账户下的日程提醒能力、设置日历账户颜色。
+5. 日历账户创建之后，存在默认颜色，不指定日历账户颜色可能导致部分版本/设备深色模式下显示效果不佳。开发者需要调用setConfig()接口设置日历配置信息，包括是否打开日历账户下的日程提醒能力、设置日历账户颜色。
+
+   > **说明：**
+   >
+   > 针对搭载OpenHarmony 5.1.0以下版本的设备，默认颜色为黑色。
+   >
+   > 针对搭载OpenHarmony 5.1.0至<!--RP1-->OpenHarmony 7.0<!--RP1End-->（不含）版本的设备，默认颜色为红色。
+   >
+   > 针对搭载<!--RP1-->OpenHarmony 7.0<!--RP1End-->及以上版本的设备，默认颜色值为0xFF0A59F7。
+
 
     <!-- @[calendarData_setConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
     

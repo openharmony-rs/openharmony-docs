@@ -1,3 +1,10 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "汇总AVTranscoder视频转码过程中的常见问题，包括音频编码格式自动变更原因及转码失败后的处理建议，适用于转码功能排障场景。"
+keywords: [AVTranscoder, 转码, 常见问题, 音频编码格式, AAC, 转码失败, 错误处理, 格式支持]
+doctype: faq
+status: active
+---
 # 转码常见问题
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->

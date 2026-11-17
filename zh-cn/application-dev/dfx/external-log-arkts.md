@@ -22,10 +22,12 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
 1. 新建一个ArkTS应用工程，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入所需的依赖模块：
 
-   <!-- @[AppEvent_Crash_Click_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+   <!-- @[External_Log_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
+   
    ``` TypeScript
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
+   // ...
+   import { fileIo } from '@kit.CoreFileKit';
    ```
 
 2. 仅ArkTS-Sta涉及，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets” 文件，自定义日志管理者。
@@ -40,7 +42,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
      deleteFiles (files: string[]): void {
        for (const file of files) {
          try {
-           fs.unlinkSync(file);
+           fileIo.unlinkSync(file);
            hilog.info(0x0000, 'testTag', `[MyLogManager] 已删除: ${file}`);
          } catch (e) {
            hilog.info(0x0000, 'testTag', `[MyLogManager] 删除失败: ${file}, error: ${e}`);
@@ -88,7 +90,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
        // 获取最早生成的3个日志文件，并删除
        files = container.getFirstGeneratedLogFiles(3);
        hilog.info(0x0000, 'testTag', `[MyLogManager] 最早的3个日志: ${Array.from(files)}`);
-       deleteFiles(Array.from(files));
+       this.deleteFiles(Array.from(files));
      }
    }
    ```
@@ -103,7 +105,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
    let deleteFiles: (files: string[]) => void = (files: string[]): void => {
      for (const file of files) {
        try {
-         fs.unlinkSync(file);
+         fileIo.unlinkSync(file);
          hilog.info(0x0000, 'testTag', `[MyLogManager] 已删除: ${file}`);
        } catch (e) {
          hilog.info(0x0000, 'testTag', `[MyLogManager] 删除失败: ${file}, error: ${e}`);

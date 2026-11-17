@@ -8,7 +8,7 @@
 
 [taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)为ArkTS-Sta应用提供多线程任务执行能力。开发者可以将函数或任务对象提交到TaskPool内部任务队列，由运行时调度到工作线程执行，并通过Promise获取执行结果。TaskPool负责管理工作线程生命周期，开发者无需自行创建、复用或销毁线程。
 
-TaskPool适用于CPU密集型计算、可并行拆分的业务逻辑、后台数据处理等场景。对于需要固定线程、独立事件循环或长期驻留的场景，可结合[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)使用。
+TaskPool适用于CPU密集型计算、可并行拆分的业务逻辑、后台数据处理等场景。对于需要固定线程、独立事件循环或长期驻留的场景，可结合[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker-managed.md)使用。
 
 > **说明：**
 >
@@ -29,7 +29,7 @@ TaskPool内部维护不同优先级的任务队列，支持USER_INTERACTION、DE
 - ArkTS-Sta函数和对象支持共享，不需要使用@Concurrent装饰任务函数，也不需要使用@Sendable装饰跨线程共享对象。
 - ArkTS-Sta内存默认共享，不需要通过setTransferList或setCloneList设置ArrayBuffer的跨线程传递方式。
 - TaskPool任务在工作线程中执行。任务函数访问共享对象时，开发者需要自行保证并发读写安全，可使用异步锁、并发容器或原子操作。
-- TaskPool不支持指定任务运行在哪个工作线程。需要独占线程或固定事件循环时，建议使用[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker_managed.md)。
+- TaskPool不支持指定任务运行在哪个工作线程。需要独占线程或固定事件循环时，建议使用[EAWorker（独占线程任务执行器）(ArkTS)](../reference/apis-arkts/eaworker-managed.md)。
 - 不建议在任务函数中执行无限期阻塞操作。长时间阻塞会占用工作线程，影响其他任务调度。
 - 普通Task、TaskGroup、延时任务、周期任务、串行队列任务和异步队列任务存在不同的执行限制，具体请参见[taskpool (启动任务池)](../reference/apis-arkts/arkts-sta-taskpool.md)。
 - LongTask在ArkTS-Sta中由运行时调度执行，任务结束后资源自动回收。[terminateTask](../reference/apis-arkts/arkts-sta-taskpool.md#taskpoolterminatetask)为空实现，仅保留兼容性，通常不需要调用。

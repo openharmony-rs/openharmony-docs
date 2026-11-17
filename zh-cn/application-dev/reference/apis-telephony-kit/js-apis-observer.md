@@ -1530,7 +1530,7 @@ VoIP呼叫状态信息。
 |  appName  | string |  否  |  否  | VoIP应用程序名称。 |
 | contactName | string  |  否  |  否  | VoIP呼叫的联系人姓名。 |
 | callType | [VoIPCallType](#voipcalltype)  |  否  |  否  | VoIP呼叫类型。 |
-| VoIPCallState | [VoIPCallState](#voipcallstate)  |  否  |  否  | VoIP呼叫状态。 |
+| callState | [VoIPCallState](#voipcallstate)  |  否  |  否  | VoIP呼叫状态。 |
 | isVoiceAnswerSupported | boolean  |  否  |  否  | VoIP应用是否支持将当前呼叫作为语音呼叫接听。<br>- true：支持当前呼叫作为语音呼叫接听。<br>- false：不支持当前呼叫作为语音呼叫接听。 |
 
 ## VoIPCallType
@@ -2370,14 +2370,14 @@ SIM卡类型和状态。
 
 ## CallStateInfo<sup>11+</sup>
 
-通话状态相关信息。
+运营商通话状态及号码。
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
 
 |     名称            |                 类型                    | 只读 | 可选 | 说明     |
 | ------------------- | -------------------------------------- | ---- | ---- | -------- |
-| state               | [CallState](js-apis-call.md#callstate) | 否   | 否   | 通话状态。 |
-| number              | string                                 | 否   | 否   | 电话号码。受系统权限管控，仅面向系统应用开放，三方应用无法获取。 |
+| state               | [CallState](js-apis-call.md#callstate) | 否   | 否   | 运营商通话状态。 |
+| number              | string                                 | 否   | 否   | 运营商通话电话号码。受系统权限管控，仅面向系统应用开放，三方应用无法获取。 |
 
 
 ## CCallStateInfo<sup>23+</sup>
@@ -2388,7 +2388,7 @@ SIM卡类型和状态。
 
 |     名称            |                 类型                    | 只读 | 可选 | 说明     |
 | ------------------- | -------------------------------------- | ---- | ---- | -------- |
-| state               | [CCallState](js-apis-call.md#ccallstate23) | 否   | 否   | 通话状态。 |
+| state               | [CCallState](js-apis-call.md#ccallstate23) | 否   | 否   | 通话类型。 |
 | teleNumber              | string                                 | 否   | 否   | 电话号码。 |
 
 
