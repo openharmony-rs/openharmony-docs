@@ -127,6 +127,10 @@ status: active
 
     在创建音频流之前，可通过注册`OH_AudioRenderer_OnFastStatusChange`回调，用来在音频流运行期间，及时感知到模式发生变化。
     <!-- @[Render_SetRendererUltraFastStatusChangeCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+    
+    ``` C++
+    OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback(g_ultraBuilder, MyOnUltraFastStatusChange, nullptr);
+    ```
 
 5. 查询超低时延模式实际运行状态。
 
