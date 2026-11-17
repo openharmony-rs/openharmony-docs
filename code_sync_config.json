@@ -38528,9 +38528,9 @@
 						"start_line":149
 					},
 					{
-						"end_line":268,
+						"end_line":293,
 						"name":"Set_AudioCallbackFunction",
-						"start_line":74
+						"start_line":99
 					},
 					{
 						"end_line":181,
