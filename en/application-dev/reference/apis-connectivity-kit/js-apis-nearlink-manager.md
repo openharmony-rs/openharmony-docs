@@ -5,13 +5,13 @@
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=97feebb4982ea37e78b849d777e545884e1693de translatedAt=2026-11-17T01:11:43.227Z pushedAt=2026-11-17T01:34:01.738Z nl=1 -->
 
 
 This module provides basic NearLink management capabilities, including checking whether NearLink is supported, obtaining local device information, managing the NearLink status, and subscribing to status change events.
 
 
 **Since:** 26.0.0
-
 
 ## Importing Modules
 
@@ -26,13 +26,17 @@ getState(): NearlinkState
 
 Queries the NearLink status.
 
+Before calling this API, you can call [isNearLinkSupported](#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**Return value**
+**Return value** 
 
 | Type| Description|
 | -------- | -------- |
@@ -44,10 +48,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
-**Example**
+**Example** 
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -70,15 +74,17 @@ Checks whether the current device supports NearLink.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**Return value**
+**Return value** 
 
 | Type| Description|
 | -------- | -------- |
 | boolean | Checks whether the current device supports NearLink. The value **true** indicates that the device supports NearLink, and **false** indicates the opposite.|
 
-**Example**
+**Example** 
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -96,21 +102,63 @@ try {
 ```
 
 
+## manager.isFrameType4Supported
+
+isFrameType4Supported(): boolean
+
+Checks whether the device supports type 4 radio frame (extended coverage frame).
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
+**System capability:** SystemCapability.Communication.NearLink.Base
+
+**Return value** 
+
+| Type | Description |
+| -------- | -------- |
+| boolean | Whether the device supports type 4 radio frame. The value **true** indicates that the device supports type 4 radio frame, and **false** indicates the opposite. |
+
+**Example** 
+```typescript
+import { manager } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isSupported: boolean = manager.isFrameType4Supported();
+  if (isSupported) {
+    console.info('Frame type 4 is supported on this device.');
+  } else {
+    console.info('Frame type 4 is not supported on this device.');
+  }
+} catch (err) {
+  console.error('Error occurred: ' + (err as BusinessError).code + ', ' + (err as BusinessError).message);
+}
+```
+
+
 ## manager.getLocalName
 
 getLocalName(): string
 
 Queries the NearLink name on the local device.
 
+Before calling this API, you can call [isNearLinkSupported](#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
 
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**Return value**
+**Return value** 
 
 | Type| Description|
 | -------- | -------- |
@@ -122,12 +170,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
-**Example**
+**Example** 
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -147,15 +195,19 @@ getPairedDevices(): string[]
 
 Obtains the devices paired with the current device.
 
+Before calling this API, you can call [isNearLinkSupported](#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
 
 **Required permissions:** ohos.permission.ACCESS_NEARLINK
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**Return value**
+**Return value** 
 
 | Type| Description|
 | -------- | -------- |
@@ -167,12 +219,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
-**Example**
+**Example** 
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -196,13 +248,17 @@ onStateChange(callback: Callback&lt;NearlinkState&gt;): void
 
 Subscribes to the NearLink status change event. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [isNearLinkSupported](#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**Parameters**
+**Parameters** 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
@@ -214,10 +270,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
-**Example**
+**Example** 
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
 import { BusinessError, Callback } from '@kit.BasicServicesKit';
@@ -247,13 +303,17 @@ offStateChange(callback?: Callback&lt;NearlinkState&gt;): void
 
 Unsubscribes from the NearLink status change event. This API uses an asynchronous callback to return the result.
 
+Before calling this API, you can call [isNearLinkSupported](#managerisnearlinksupported) to check whether the device supports NearLink.
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-**Parameters**
+**Parameters** 
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
@@ -265,10 +325,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
-**Example**
+**Example** 
 ```typescript
 import { manager } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -287,6 +347,8 @@ Enumerated the NearLink statuses.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
