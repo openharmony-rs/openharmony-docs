@@ -62,6 +62,21 @@ status: active
 1. 判断当前设备和当前音频场景是否支持低时延。
 
     <!-- @[Render_IsFastPlaybackSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->  
+    
+    ``` C++
+    // 构造与待创建播放流一致的音频流参数。
+    const int samplingRate48K = 48000;
+    OH_AudioStreamInfo streamInfo;
+    streamInfo.samplingRate = samplingRate48K;
+    streamInfo.channelLayout = CH_LAYOUT_STEREO;
+    streamInfo.encodingType = AUDIOSTREAM_ENCODING_TYPE_RAW;
+    streamInfo.sampleFormat = AUDIOSTREAM_SAMPLE_S16LE;
+     
+    // 查询当前设备是否支持超低时延播放。
+    bool supported = false;
+    supported = OH_AudioStreamManager_IsFastPlaybackSupported(
+        audioStreamManager, &streamInfo, AUDIOSTREAM_USAGE_MUSIC);
+    ```
 
 2. 设置低时延模式。
 
