@@ -1,7 +1,7 @@
 # SwipeGesture
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -23,7 +23,7 @@ SwipeGesture(value?: { fingers?: number; direction?: SwipeDirection; speed?: num
 
 继承自[GestureInterface\<T>](ts-gesture-common.md#gestureinterfacet11)，设置快滑手势事件。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,7 +37,7 @@ SwipeGesture(value?: { fingers?: number; direction?: SwipeDirection; speed?: num
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | { fingers?: number; direction?: SwipeDirection; speed?: number } | 否 | 设置快滑事件参数。 <br> - fingers：触发快滑的最少手指数。<br/>默认值：1 <br/>取值范围：[1, 10]<br> - direction：触发快滑手势的滑动方向。<br/>默认值：SwipeDirection.All <br> - speed：识别快滑的最小速度。<br/>默认值：100VP/s <br/>取值范围：(0, +∞) <br/>**说明：** <br/>当滑动速度的值小于等于0时，会被转化为默认值。 |
+| value | { fingers?: number; direction?: SwipeDirection; speed?: number } | 否 | 设置快滑事件参数。 <br> - fingers：触发快滑的最少手指数。<br>默认值：1 <br>取值范围：[1, 10]<br>当设置的值超出取值范围时，按默认值处理。<br> - direction：触发快滑手势的滑动方向。<br>默认值：SwipeDirection.All <br> - speed：识别快滑的最小速度。<br>默认值：100vp/s <br>取值范围：(0, +∞) <br>**说明：** <br>当滑动速度的值小于等于0时，会被转化为默认值。 |
 
 ### SwipeGesture<sup>15+</sup>
 
@@ -45,7 +45,9 @@ SwipeGesture(options?: SwipeGestureHandlerOptions)
 
 设置快滑手势事件。与[SwipeGesture](#swipegesture-1)相比，options参数新增了isFingerCountLimited，表示是否检查触摸屏幕的手指数量。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -57,13 +59,13 @@ SwipeGesture(options?: SwipeGestureHandlerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [SwipeGestureHandlerOptions](./ts-gesturehandler.md#swipegesturehandleroptions) | 否 | 快滑事件处理器配置参数。 |
+| options | [SwipeGestureHandlerOptions](./ts-gesturehandler.md#swipegesturehandleroptions) | 否 | 快滑事件处理器配置参数。当需要自定义触发快滑的最少手指数、滑动方向、最小识别速度或是否检查触摸屏幕的手指数量时传入；不传入时使用快滑手势处理器默认配置。 |
 
 ## SwipeDirection枚举说明
 
 定义滑动手势的触发方向。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,7 +85,7 @@ SwipeGesture(options?: SwipeGestureHandlerOptions)
 
 >  **说明：**
 >
->  在[GestureEvent](ts-gesture-common.md#gestureevent对象说明)的fingerList元素中，手指索引编号与位置相对应，即fingerList[index]的id为index。对于先按下但未参与当前手势触发的手指，fingerList中对应的位置为空。建议开发者优先使用fingerInfos。
+>  在[GestureEvent](ts-gesture-common.md#gestureevent对象说明)的fingerList元素中，手指索引编号与位置相对应，即fingerList[index]的id为index。对于先按下但未参与当前手势触发的手指，fingerList中对应的位置为undefined。建议开发者优先使用fingerInfos。
 
 ### onAction
 
@@ -91,9 +93,9 @@ ArkTS-Dyn: onAction(event: (event: GestureEvent) => void)
 
 ArkTS-Sta: onAction(event: Callback\<GestureEvent>)
 
-Swipe手势识别成功时触发回调。
+快滑手势识别成功时触发回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,27 +124,27 @@ struct SwipeGestureExample {
   build() {
     Column() {
       Column() {
-        Text("SwipeGesture speed\n" + this.speed)
-        Text("SwipeGesture angle\n" + this.rotateAngle)
+        Text('SwipeGesture speed\n' + this.speed)
+        Text('SwipeGesture angle\n' + this.rotateAngle)
       }
       .border({ width: 3 })
       .width(300)
       .height(200)
       .margin(100)
       .rotate({ angle: this.rotateAngle })
-      // 单指竖直方向快滑时触发该事件
+      // 手指数量达到配置值且沿竖直方向快滑时触发该事件
       .gesture(
       SwipeGesture({ direction: SwipeDirection.Vertical })
         .onAction((event: GestureEvent) => {
           if (event) {
-            this.speed = event.speed
-            this.rotateAngle = event.angle
+            this.speed = event.speed;
+            this.rotateAngle = event.angle;
           }
         })
       )
-    }.width('100%')
+    }.width('100%');
   }
 }
 ```
 
- ![zh-cn_image_0000001231374559.png](figures/zh-cn_image_0000001231374559.png) 
+ ![swipeGesture](figures/swipeGesture.png)

@@ -1,4 +1,4 @@
-# AbilityFirstFrameStateObserver (系统接口)
+# AbilityFirstFrameStateObserver (首帧绘制状态监听器)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
@@ -10,8 +10,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 本模块接口为系统接口。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块接口为系统接口。
 
 ## 导入模块
 
@@ -31,6 +32,10 @@ Ability首帧绘制完成时触发的回调函数。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -39,10 +44,13 @@ Ability首帧绘制完成时触发的回调函数。
 
 **示例**：
 
+ArkTS-Dyn示例：
+
 ```ts
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 创建Ability首帧绘制状态监听对象
 let observer: appManager.AbilityFirstFrameStateObserver = {
   onAbilityFirstFrameDrawn(data: appManager.AbilityFirstFrameStateData) {
     console.info(`onAbilityFirstFrameDrawn success, abilityFirstFrameStateData: ${data}.`);
@@ -50,7 +58,31 @@ let observer: appManager.AbilityFirstFrameStateObserver = {
 };
 
 try {
+  // 注册Ability首帧绘制完成事件监听
   appManager.on('abilityFirstFrameState', observer);
+} catch (e) {
+  let code = (e as BusinessError).code;
+  let msg = (e as BusinessError).message;
+  console.error(`appmanager.on failed, err code: ${code}, err msg: ${msg}.`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class MyObserver implements appManager.AbilityFirstFrameStateObserver {
+  onAbilityFirstFrameDrawn(data: appManager.AbilityFirstFrameStateData) {
+    console.info(`onAbilityFirstFrameDrawn success, abilityFirstFrameStateData: ${data}.`);
+  }
+}
+
+try {
+  let observer = new MyObserver();
+  appManager.onAbilityFirstFrameStateChange(observer);
 } catch (e) {
   let code = (e as BusinessError).code;
   let msg = (e as BusinessError).message;

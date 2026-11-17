@@ -34,7 +34,7 @@ transferCompatibleBuilder\<T extends Function\>(@Builder builder: T): ESValue
 
 |类型   |说明       |
 |-----------|--------------|
-|ESValue  |可互操作的自定义构建函数。 |
+|[ESValue](../../../quick-start/arkts-interop-overview.md#esvalue)  |可互操作的自定义构建函数。 |
 
 
 ## CompatibleUpdatableBuilder
@@ -80,4 +80,4 @@ transferCompatibleUpdatableBuilder\<T extends Object\>(builder: CompatibleUpdata
 
 |类型   |说明       |
 |-----------|--------------|
-|ESValue  |可互操作的自定义构建函数。 |
+|[ESValue](../../../quick-start/arkts-interop-overview.md#esvalue)  |可互操作的自定义构建函数。 |

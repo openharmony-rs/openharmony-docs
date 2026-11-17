@@ -561,7 +561,7 @@ struct Index {
 }
 ```
 
-![en-us\_image\_toolbar\_example01](figures/en-us_image_toolbar_example01.png)
+![en-us\_image\_toolbar\_example01](figures/image-toolbar-example01.png)
 
 ### Example 2: Customizing the Toolbar Style
 
@@ -693,7 +693,7 @@ struct Index {
 }
 ```
 
-![en-us\_image\_toolbar\_example02](figures/en-us_image_toolbar_example02.png)
+![en-us\_image\_toolbar\_example02](figures/image-toolbar-example02.png)
 
 ### Example 3: Implementing Screen Reader Announcement
 
@@ -819,4 +819,4 @@ struct Index {
 }
 ```
 
-![en-us\_image\_toolbar\_example01](figures/en-us_image_toolbar_example01.png)
+![en-us\_image\_toolbar\_example01](figures/image-toolbar-example01.png)

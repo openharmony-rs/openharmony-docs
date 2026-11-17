@@ -3,11 +3,11 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-由一个或多个具有相同字体的字符组成的字块。
+TextBlob是由一个或多个具有相同字型的字符组成的字块。支持通过文本、字符串、RunBuffer等多种方式创建字形集合，适用于需要批量渲染文本或获取文字边界框的场景。
 
 > **说明：**
 >
@@ -31,7 +31,7 @@ ArkTS-Dyn: static makeFromPosText(text: string, len: number, points: common2D.Po
 
 ArkTS-Sta: static makeFromPosText(text: string, len: int, points: common2D.Point[], font: Font): TextBlob | undefined
 
-使用文本创建TextBlob对象，TextBlob对象中每个字形的坐标由points中对应的坐标信息决定。
+使用文本创建TextBlob对象，其中每个字形的坐标由points中对应的坐标信息决定。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -52,7 +52,7 @@ ArkTS-Sta: static makeFromPosText(text: string, len: int, points: common2D.Point
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| ArkTS-Dyn: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md)<br/>ArkTS-Sta: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) \| undefined | TextBlob对象。创建失败时返回undefined。 |
+| ArkTS-Dyn: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md)<br/>ArkTS-Sta: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) \| undefined | 由文本和坐标信息创建的TextBlob对象，用于后续绘制字形。创建失败时返回undefined。 |
 
 
 **错误码：**
@@ -61,14 +61,14 @@ ArkTS-Sta: static makeFromPosText(text: string, len: int, points: common2D.Point
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
 ArkTS-Dyn示例：
 ```ts
-import { RenderNode } from '@kit.ArkUI';
-import { drawing,common2D} from '@kit.ArkGraphics2D';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing, common2D } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
@@ -81,8 +81,8 @@ class DrawingRenderNode extends RenderNode {
     for (let i = 0; i !== length; ++i) {
       points.push({ x: i * 35, y: i * 35 });
     }
-    let textblob : drawing.TextBlob =drawing.TextBlob.makeFromPosText(text, points.length, points, font);
-    canvas.drawTextBlob(textblob, 100, 100);
+    let textBlob : drawing.TextBlob = drawing.TextBlob.makeFromPosText(text, points.length, points, font);
+    canvas.drawTextBlob(textBlob, 100, 100);
   }
 }
 ```
@@ -112,13 +112,75 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+## makeFromPosTextWithFallback
+
+static makeFromPosTextWithFallback(text: string, len: number, points: common2D.Point[], font: Font): Array\<TextBlob>
+
+使用文本创建一组TextBlob对象，支持字体回退。若当前字型的字体不支持文本中的某些字符（无对应字形）时，会自动从系统字体中查找能支持该字符的回退字体，并使用回退字体的字形索引；若未找到回退字体，则仍使用当前字型字体的notdef占位字形。每段使用相同字体（当前字体或回退字体）的连续字形片段会创建一个对应的TextBlob对象。每个字形的坐标由points中对应的坐标信息决定。
+
+**ArkTS模式：** 此接口仅支持ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| text | string | 是 | 绘制字形的文本内容。 |
+| len | number | 是 | 字形个数，由[countText](arkts-apis-graphics-drawing-Font.md#counttext12)获取，该参数为整数。传入浮点数，按照向下取整处理。 |
+| points | [common2D.Point](js-apis-graphics-common2D.md#point12)[] | 是 | 点数组，用于指定每个字形的坐标，长度必须为len。 |
+| font | [Font](arkts-apis-graphics-drawing-Font.md) | 是 | 字型对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Array\<[TextBlob](arkts-apis-graphics-drawing-TextBlob.md)> | 返回由文本和坐标信息创建的TextBlob对象数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing, common2D } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let text : string = 'makeFromPosText';
+    let font : drawing.Font = new drawing.Font();
+    font.setSize(100);
+    let length = font.countText(text);
+    let points : common2D.Point[] = [];
+    for (let i = 0; i !== length; ++i) {
+      points.push({ x: i * 35, y: i * 35 });
+    }
+    let textBlobs : Array<drawing.TextBlob> = drawing.TextBlob.makeFromPosTextWithFallback(text, points.length, points, font);
+    for (let blob of textBlobs) {
+      canvas.drawTextBlob(blob, 100, 100);
+    }
+  }
+}
+```
+
 ## uniqueID<sup>12+</sup>
 
 ArkTS-Dyn: uniqueID(): number
 
 ArkTS-Sta: uniqueID(): long
 
-获取该TextBlob对象的唯一的非零标识符。
+获取该TextBlob对象的唯一非零标识符。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -137,19 +199,19 @@ ArkTS-Sta: uniqueID(): long
 ArkTS-Dyn:
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let text : string = 'TextBlobUniqueId';
 let font : drawing.Font = new drawing.Font();
 font.setSize(100);
-let textBlob = drawing.TextBlob.makeFromString(text, font, 0);
+let textBlob = drawing.TextBlob.makeFromString(text, font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
 let id = textBlob.uniqueID();
-console.info("uniqueID---------------" +id);
+console.info('uniqueID---------------' + id);
 ```
 
 ArkTS-Sta示例：
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let text: string = 'TextBlobUniqueId';
 let font: drawing.Font = new drawing.Font();
@@ -167,7 +229,7 @@ ArkTS-Dyn: static makeFromString(text: string, font: Font, encoding?: TextEncodi
 
 ArkTS-Sta: static makeFromString(text: string, font: Font, encoding?: TextEncoding): TextBlob | undefined
 
-将string类型的值转化成TextBlob对象。
+根据指定的编码类型和字型，使用string类型的值创建TextBlob对象。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -187,7 +249,7 @@ ArkTS-Sta: static makeFromString(text: string, font: Font, encoding?: TextEncodi
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
-| ArkTS-Dyn: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md)<br/>ArkTS-Sta: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) \| undefined | TextBlob对象。创建失败时返回undefined。 |
+| ArkTS-Dyn: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md)<br/>ArkTS-Sta: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) \| undefined | TextBlob对象，用于后续绘制字形。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -195,20 +257,20 @@ ArkTS-Sta: static makeFromString(text: string, font: Font, encoding?: TextEncodi
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
 ArkTS-Dyn示例：
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
     const brush = new drawing.Brush();
-    brush.setColor({alpha: 255, red: 255, green: 0, blue: 0});
+    brush.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
     const font = new drawing.Font();
     font.setSize(20);
     const textBlob = drawing.TextBlob.makeFromString("drawing", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
@@ -242,6 +304,64 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+## makeFromStringWithFallback
+
+static makeFromStringWithFallback(text: string, font: Font): Array\<TextBlob>
+
+使用字符串创建一组TextBlob对象，支持字体回退。若当前字型的字体不支持文本中的某些字符（无对应字形）时，会自动从系统字体中查找能支持该字符的回退字体，并使用回退字体的字形索引；若未找到回退字体，则仍使用当前字型字体的notdef占位字形。每段使用相同字体（当前字体或回退字体）的连续字形片段会创建一个对应的TextBlob对象。
+
+**ArkTS模式：** 此接口仅支持ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| text | string | 是 | 绘制字形的文本内容。 |
+| font | [Font](arkts-apis-graphics-drawing-Font.md) | 是 | 字型对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Array\<[TextBlob](arkts-apis-graphics-drawing-TextBlob.md)> | 返回创建的TextBlob对象数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const brush = new drawing.Brush();
+    brush.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    const font = new drawing.Font();
+    font.setSize(20);
+    const textBlobs = drawing.TextBlob.makeFromStringWithFallback("drawing", font);
+    canvas.attachBrush(brush);
+    for (let blob of textBlobs) {
+      canvas.drawTextBlob(blob, 20, 20);
+    }
+    canvas.detachBrush();
+  }
+}
+```
+
 ## makeFromRunBuffer
 
 ArkTS-Dyn: static makeFromRunBuffer(pos: Array\<TextBlobRunBuffer>, font: Font, bounds?: common2D.Rect): TextBlob
@@ -260,15 +380,15 @@ ArkTS-Sta: static makeFromRunBuffer(pos: Array\<TextBlobRunBuffer>, font: Font, 
 
 | 参数名 | 类型                                               | 必填 | 说明                           |
 | ------ | -------------------------------------------------- | ---- | ------------------------------ |
-| pos    | Array\<[TextBlobRunBuffer](arkts-apis-graphics-drawing-i.md#textblobrunbuffer)>    | 是   | TextBlobRunBuffer数组。        |
+| pos    | Array\<[TextBlobRunBuffer](arkts-apis-graphics-drawing-i.md#textblobrunbuffer)>    | 是   | TextBlobRunBuffer数组，每个元素包含字形ID及位置坐标信息。        |
 | font   | [Font](arkts-apis-graphics-drawing-Font.md)                                      | 是   | 字型对象。   |
-| bounds | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 否   | ArkTS-Dyn: 可选，当bounds传入undefined时，该方法将抛错误码。不传该参数时，则无边界框。<br/>ArkTS-Sta: 可选，当不传该参数，或者bounds传入undefined时，则无边界框。 |
+| bounds | [common2D.Rect](js-apis-graphics-common2D.md#rect) | 否   | 文字边界框的矩形区域。ArkTS-Dyn: 当bounds传入undefined时，该方法将抛错误码。不传该参数时，则不预设边界框。<br/>ArkTS-Sta: 当不传该参数，或者bounds传入undefined时，则不预设边界框。 |
 
 **返回值：**
 
 | 类型                  | 说明           |
 | --------------------- | -------------- |
-| ArkTS-Dyn: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md)<br/>ArkTS-Sta: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) \| undefined | TextBlob对象。创建失败时返回undefined。 |
+| ArkTS-Dyn: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md)<br/>ArkTS-Sta: [TextBlob](arkts-apis-graphics-drawing-TextBlob.md) \| undefined | 基于RunBuffer创建的TextBlob对象，用于后续绘制字形。创建失败时返回undefined。 |
 
 **错误码：**
 
@@ -276,13 +396,13 @@ ArkTS-Sta: static makeFromRunBuffer(pos: Array\<TextBlobRunBuffer>, font: Font, 
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
 ArkTS-Dyn示例：
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
@@ -295,7 +415,7 @@ class DrawingRenderNode extends RenderNode {
       { glyph: 227, positionX: 14.9, positionY: 0 },
       { glyph: 283, positionX: 25.84, positionY: 0 },
       { glyph: 283, positionX: 30.62, positionY: 0 },
-      { glyph: 299, positionX: 35.4, positionY: 0}
+      { glyph: 299, positionX: 35.4, positionY: 0 }
     ];
     const textBlob = drawing.TextBlob.makeFromRunBuffer(runBuffer, font, null);
     const brush = new drawing.Brush();
@@ -360,7 +480,7 @@ ArkTS-Sta: bounds(): common2D.Rect | undefined
 
 | 类型                                               | 说明                   |
 | -------------------------------------------------- | ---------------------- |
-| ArkTS-Dyn: [common2D.Rect](js-apis-graphics-common2D.md#rect)<br/>ArkTS-Sta: [common2D.Rect](js-apis-graphics-common2D.md#rect) \| undefined | 文字边界框的矩形区域。创建失败时返回undefined。 |
+| ArkTS-Dyn: [common2D.Rect](js-apis-graphics-common2D.md#rect)<br/>ArkTS-Sta: [common2D.Rect](js-apis-graphics-common2D.md#rect) \| undefined | 文字边界框的矩形区域。获取失败时返回undefined。 |
 
 **示例：**
 

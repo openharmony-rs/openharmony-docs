@@ -28,7 +28,7 @@ The specified user does not exist.
 
 **处理步骤**
 
-检查系统是否创建该用户ID。
+检查系统是否创建该用户userid。
 
 ## 29400001 防火墙规则数量超过最大值
 
@@ -42,9 +42,9 @@ The number of firewall rules exceeds the maximum.
 
 **可能原因**
 
-1.单个用户userid的防火墙规则rule的数量超过1000条；
+1. 单个用户userid的防火墙规则rule的数量超过1000条；
 
-2.所有用户userid的防火墙规则rule的数量超过2000条。
+2. 所有用户userid的防火墙规则rule的数量超过2000条。
 
 **处理步骤**
 
@@ -98,13 +98,13 @@ domain类型的防火墙规则中，域名规则数量超过最大值。
 
 **可能原因**
 
-1.添加/更新的一条domain规则里的域名参数NetFirewallDomainParams的个数大于100个。
+1. 添加/更新的一条域名规则里的域名参数NetFirewallDomainParams的个数大于100个。
 
-2.单个用户userid的所有domain规则里的域名参数NetFirewallDomainParams的个数大于1000个。
+2. 单个用户userid的所有域名规则里的域名参数NetFirewallDomainParams的个数大于1000个。
 
 **处理步骤**
 
-检查添加的一条domain规则里的域名参数NetFirewallDomainParams的个数是否大于100个。
+检查添加的一条域名规则里的域名参数NetFirewallDomainParams的个数是否大于100个，同时检查当前用户所有域名规则的域名参数NetFirewallDomainParams总个数是否大于1000个。
 
 ## 29400005 模糊域名规则数量超过最大值
 
@@ -159,3 +159,25 @@ DNS规则重复。
 **处理步骤**
 
 检查增加/更新的DNS规则是否已存在。
+
+## 2100001 非法参数值
+
+**错误信息**
+
+Invalid parameter value.
+
+**错误描述**
+
+非法参数值。
+
+**可能原因**
+
+1. 参数无效：用户ID无效；规则ID无效；IP地址参数无效；端口参数无效；协议参数无效；域名参数无效；应用UID参数无效。
+
+2. 分页查询参数无效：查询规则列表参数无效。
+
+**处理步骤**
+
+1. 检查输入参数的取值范围是否正确。
+
+2. 检查输入参数的类型是否规范，例如IP地址、端口、域名是否规范。

@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 Map是一种用于存储键值对的数据结构。本模块提供高效的数据存储与访问能力，包括键值对的增删改查、遍历操作等。当需要建立唯一键与对应值的映射关系时，可使用本模块接口实现快速数据检索。
 
@@ -12,13 +12,21 @@ Map是一种用于存储键值对的数据结构。本模块提供高效的数�
 >
 > - 本模块仅适用于ArkTS-Sta。
 >
-> - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 24开始支持。
 
 ## ReadonlyMap\<K, V>
 
 ReadonlyMap是一个接口，它定义了一个只读的键值对集合所需要包含的接口，描述了如何读取一个Map结构的数据，但不包含任何会修改该数据的方法。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 ### 属性
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称 | 类型 | 只读 | 可选 | 说明                         |
 | ---- | ---- | ---- | ---- | ---------------------------- |
@@ -29,6 +37,10 @@ ReadonlyMap是一个接口，它定义了一个只读的键值对集合所需要
 get(key: K): V | undefined
 
 获取key对应的value值，不存在返回undefined。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -58,6 +70,10 @@ has(key: K): boolean
 
 判断是否存在对应的key。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明           |
@@ -68,7 +84,7 @@ has(key: K): boolean
 
 | 类型    | 说明                                         |
 | ------- | -------------------------------------------- |
-| boolean | 包含指定元素。返回true表示包含，返回false表示不包含。 |
+| boolean | 判断是否包含指定元素。`true`表示包含，`false`表示不包含。 |
 
 **示例：**
 
@@ -82,6 +98,10 @@ console.info(map.has("a")); // true
 forEach(callbackfn: (value: V, key: K, map: ReadonlyMap\<K, V>) => void)
 
 在遍历过程中对每个元素调用一次回调函数，遍历顺序为元素插入顺序，使用callbackfn异步回调。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -106,6 +126,10 @@ keys(): IterableIterator\<K>
 
 返回新迭代器对象，包含此映射中所有的键。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **返回值：**
 
 | 类型             | 说明                                                                           |
@@ -126,6 +150,10 @@ console.info(iter.next().value); // b
 values(): IterableIterator\<V>
 
 返回新迭代器对象，包含此映射中所有键对应的值。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -148,6 +176,10 @@ entries(): IterableIterator\<[K, V]>
 
 返回包含此映射中包含的键值对的新迭代器对象。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **返回值：**
 
 | 类型                     | 说明                                                                               |
@@ -163,24 +195,13 @@ console.info(iter.next().value); // a,1
 console.info(iter.next().value); // b,2
 ```
 
-
 ## MapIterator\<K, V, R>
 
-Map的迭代器实现类，用于按顺序遍历元素。
+Map的迭代器接口，用于按顺序遍历元素。实例由`keys`、`values`和`entries`等接口返回。
 
-### constructor
+**系统能力：** SystemCapability.Utils.Lang
 
-constructor(data: FixedArray\<Any>, mapper: (k: K, v: V) => R)
-
-MapIterator\<K, V, R>的构造函数。
-
-**参数：**
-
-| 参数名 | 类型              | 必填 | 说明       |
-| ------ | ----------------- | ---- | ---------- |
-| data   | FixedArray\<Any> | 是   | 插入数据。 |
-| mapper | (k: K, v: V) => R | 是   | 转换函数。 |
-
+**ArkTS-Sta起始版本：** 26.0.0
 
 ### next
 
@@ -188,11 +209,23 @@ next(): IteratorResult\<R>
 
 返回下一个迭代器对象。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **返回值：**
 
 | 类型           | 说明             |
 | -------------- | ---------------- |
 | IteratorResult | 下一个迭代结果。 |
+
+**示例：**
+
+```ts
+const map = new Map<string, int>([["a", 1]]);
+const iter = map.keys();
+console.info(iter.next().value);
+```
 
 ### $_iterator
 
@@ -200,18 +233,35 @@ $_iterator(): IterableIterator\<R>
 
 返回一个迭代器，迭代器的每一项都是一个对象，并返回该对象。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **返回值：**
 
 | 类型             | 说明             |
 | ---------------- | ---------------- |
 | IterableIterator | 返回自身迭代器。 |
 
+**示例：**
+
+```ts
+const map = new Map<string, int>([["a", 1]]);
+const iter = map.keys();
+for (const key of iter) {
+  console.info(key);
+}
+```
 
 ## Map\<K, V>
 
 可读可写的Map实现，继承ReadonlyMap接口，支持插入、删除和清空。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 ### 属性
+
+**系统能力：** SystemCapability.Utils.Lang
 
 | 名称 | 类型 | 只读 | 可选 | 说明                         |
 | ---- | ---- | ---- | ---- | ---------------------------- |
@@ -222,6 +272,8 @@ $_iterator(): IterableIterator\<R>
 constructor(entries?: Iterable\<[K, V]> | readonly ((readonly [K, V]) | null | undefined)[] | null)
 
 Map的构造函数。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -246,6 +298,8 @@ console.info(map1.get("a")); // 1
 constructor(map: Map\<K, V>)
 
 从另一个Map拷贝内容，构造一个新的Map。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -273,11 +327,13 @@ constructor(entries: Array\<[K, V]>)
 
 使用键值对数组构造Map。
 
+**系统能力：** SystemCapability.Utils.Lang
+
 **参数：**
 
 | 参数名  | 类型          | 必填 | 说明         |
 | ------- | ------------- | ---- | ------------ |
-| entries | Array/<[K, V]> | 是   | 键值对数组。 |
+| entries | Array\<[K, V]> | 是   | 键值对数组。 |
 
 **返回值：**
 
@@ -295,35 +351,11 @@ console.info(map.get("a")); // 1
 
 ### constructor
 
-constructor(values: FixedArray\<[K, V]>)
-
-使用固定长度的键值对数组初始化Map。
-
-**参数：**
-
-| 参数名 | 类型               | 必填 | 说明           |
-| ------ | ------------------ | ---- | -------------- |
-| values | FixedArray\<[K, V]> | 是   | 固定长度数组。 |
-
-**返回值：**
-
-| 类型        | 说明              |
-| ----------- | ----------------- |
-| Map\<K, V> | 新建的Map实例。 |
-
-**示例：**
-
-```ts
-const fixedArr: FixedArray<[string, int]> = [["a", 1], ["b", 2]];
-const map = new Map<string, int>(fixedArr);
-console.info(map.get("a")); // 1
-```
-
-### constructor
-
 constructor(bucketsCount: int)
 
 通过指定桶数量构造空Map。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -340,7 +372,7 @@ constructor(bucketsCount: int)
 **示例：**
 
 ```ts
-const map = new Map<string, number>(32); // 初始桶数为32
+const map = new Map<string, double>(32); // 初始桶数为32
 map.set("a", 100);
 console.info(map.get("a")); // 100
 ```
@@ -350,6 +382,10 @@ console.info(map.get("a")); // 100
 set(key: K, val: V): this
 
 向Map中添加或更新一组数据。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -377,6 +413,10 @@ get(key: K): V | undefined
 
 获取指定key对应的value，不存在返回undefined。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明           |
@@ -387,7 +427,7 @@ get(key: K): V | undefined
 
 | 类型 | 说明                   |
 | ---- | ---------------------- |
-| V    | 返回key映射的value值。 |
+| V \| undefined | 返回key映射的value值，若不存在则为undefined。 |
 
 **示例：**
 
@@ -395,14 +435,18 @@ get(key: K): V | undefined
 const map = new Map<string, int>();
 map.set("a", 1);
 console.info(map.get("a")); // 1
+console.info(map.get("b")); // undefined
 ```
-
 
 ### get
 
 get(key: K, def: V): V
 
 获取指定key映射的value值，不存在返回默认值def。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -432,6 +476,10 @@ has(key: K): boolean
 
 判断此Map中是否包含指定key。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明           |
@@ -442,7 +490,7 @@ has(key: K): boolean
 
 | 类型    | 说明                                 |
 | ------- | ------------------------------------ |
-| boolean | 包含指定元素。返回true表示包含，返回false表示不包含。 |
+| boolean | 判断是否包含指定元素。`true`表示包含，`false`表示不包含。 |
 
 **示例：**
 
@@ -459,6 +507,10 @@ delete(key: K): boolean
 
 删除指定key所对应元素。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明           |
@@ -469,7 +521,7 @@ delete(key: K): boolean
 
 | 类型    | 说明                            |
 | ------- | ------------------------------- |
-| boolean | 删除成功返回true，否则false。 |
+| boolean | 判断是否删除成功。`true`表示删除成功，`false`表示删除失败。 |
 
 **示例：**
 
@@ -484,7 +536,11 @@ console.info(map.get("a")); // undefined
 
 clear()
 
-清除HashMap中的所有元素，并将size置为0。
+清除Map中的所有元素，并将size置为0。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **示例：**
 
@@ -503,6 +559,10 @@ console.info(map.size); // 0
 keys(): IterableIterator\<K>
 
 返回新迭代器对象，包含此映射中所有的键。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -527,6 +587,10 @@ values(): IterableIterator\<V>
 
 返回新迭代器对象，包含此映射中所有键对应的值。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **返回值：**
 
 | 类型                  | 说明                                                                           |
@@ -550,6 +614,10 @@ entries(): IterableIterator\<[K, V]>
 
 返回包含此映射中包含的键值对的新迭代器对象。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **返回值：**
 
 | 类型                     | 说明                                                                               |
@@ -567,12 +635,15 @@ console.info(iter.next().value); // a,1
 console.info(iter.next().value); // b,2
 ```
 
-
 ### forEach
 
 forEach(callbackfn: (value: V, key: K, map: Map\<K, V>) => void)
 
 在遍历过程中对每个元素调用一次回调函数。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -599,6 +670,10 @@ toString(): string
 
 将Map的元素按插入顺序转换成字符串返回。
 
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **返回值：**
 
 | 类型   | 说明                        |
@@ -618,12 +693,15 @@ console.info(map.toString()); // a,1,b,2
 
 继承自Map\<K, V>，限制了key类型，仅支持数字类型、字符串类型、基于整数的枚举、基于长整型的枚举、基于字符串的枚举。
 
+**系统能力：** SystemCapability.Utils.Lang
 
 ### $_get
 
 $_get(key: K): V | undefined
 
 获取指定key对应的value，不存在返回undefined。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -637,7 +715,6 @@ $_get(key: K): V | undefined
 | ------------- | -------------------------------- |
 | V\| undefined | 返回值，若不存在则为undefined。 |
 
-
 **示例：**
 
 ```ts
@@ -650,7 +727,9 @@ console.info(record.$_get("a")); // 1
 
 $_set(key: K, value: V)
 
-向HashMap中添加或更新一组数据。
+向Record中添加或更新一组数据。
+
+**系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
@@ -658,7 +737,6 @@ $_set(key: K, value: V)
 | ------ | ---- | ---- | -------------- |
 | key    | K    | 是   | 要设置的key。 |
 | value  | V    | 是   | 要设置的值。   |
-
 
 **示例：**
 

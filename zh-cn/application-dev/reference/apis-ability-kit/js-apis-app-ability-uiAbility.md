@@ -11,9 +11,11 @@ UIAbility是包含UI界面的应用组件，继承自[Ability](js-apis-app-abili
 
 > **说明：**
 >
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块接口仅可在Stage模型下使用。
+> - 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 各类Ability的继承关系详见[继承关系说明](./js-apis-app-ability-ability.md#ability的继承关系说明)。
 
@@ -55,13 +57,18 @@ import { UIAbility } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| context | [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md) | 否 | 否 | UIAbility的上下文。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| launchWant | [Want](js-apis-app-ability-want.md) | 否 | 否 | UIAbility[冷启动](../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)时接收到的Want参数，取值为[onCreate](#oncreate)接收到的Want参数。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| lastRequestWant | [Want](js-apis-app-ability-want.md) | 否 | 否 | 最近一次拉起UIAbility请求的Want参数。<br>- 首次拉起UIAbility时，取值为[onCreate](#oncreate)接收到的Want参数。<br>- 重复拉起UIAbility时，取值为[onNewWant](#onnewwant)最近一次接收到的Want参数。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
-| callee | [Callee](#callee) | 否 | 否 | 系统为UIAbility创建的后台通信对象，Callee UIAbility（被调用方）可以通过Callee对象接收Caller对象发送的数据。 |
-| specifiedId<sup>23+</sup> | string | 否 | 是 | 仅当UIAbility启动模式为[specified](../../application-models/uiability-launch-type.md#specified启动模式)时存在，取值为开发者自定义的UIAbility标识。 |
+| context | [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md) | 否 | 否 | UIAbility的上下文。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| launchWant | [Want](js-apis-app-ability-want.md) | 否 | 否 | UIAbility[冷启动](../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)时接收到的Want参数，取值为[onCreate](#oncreate)接收到的Want参数。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| lastRequestWant | [Want](js-apis-app-ability-want.md) | 否 | 否 | 最近一次拉起UIAbility请求的Want参数。<br>- 首次拉起UIAbility时，取值为[onCreate](#oncreate)接收到的Want参数。<br>- 重复拉起UIAbility时，取值为[onNewWant](#onnewwant)最近一次接收到的Want参数。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| callee | [Callee](#callee) | 否 | 否 | 系统为UIAbility创建的后台通信对象，Callee UIAbility（被调用方）可以通过Callee对象接收Caller对象发送的数据。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| specifiedId<sup>23+</sup> | string | 否 | 是 | 仅当UIAbility启动模式为[specified](../../application-models/uiability-launch-type.md#specified启动模式)时存在，取值为开发者自定义的UIAbility标识。<br>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| isDestroyed | boolean | 否 | 否 | 用于判断UIAbility是否已被销毁。默认值为false，表示UIAbility未销毁，当[onDestroy](#ondestroy)回调执行后，该属性会被设置为true，表示UIAbility已销毁。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 
 
 ### onCreate
@@ -72,9 +79,13 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void
 
 同步接口，不支持异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -106,15 +117,19 @@ onWindowStageCreate(windowStage: window.WindowStage): void
 
 当[WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md)实例创建完成后，系统会触发该回调。开发者可以在该回调中通过WindowStage加载页面。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | WindowStage实例对象。 |
+| windowStage | [window.WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) | 是 | WindowStage实例对象。开发者可通过该对象调用loadContent()加载应用页面，或注册窗口事件监听器，管理窗口的生命周期和交互。 |
 
 **示例：**
 
@@ -127,7 +142,7 @@ export default class MyUIAbility extends UIAbility {
   // 主窗口已创建，为该UIAbility设置主页面
   onWindowStageCreate(windowStage: window.WindowStage): void {
     windowStage.loadContent('pages/Index', (err, data) => {
-      if (err.code) {
+      if (err?.code) {
         hilog.error(0x0000, 'testTag', `Failed to load the content. Cause: ${JSON.stringify(err)}`);
         return;
       }
@@ -137,16 +152,21 @@ export default class MyUIAbility extends UIAbility {
 }
 ```
 
-
 ### onWindowStageWillDestroy<sup>12+</sup>
 
 onWindowStageWillDestroy(windowStage: window.WindowStage): void
 
 当WindowStage即将销毁时，系统触发该回调。开发者可以在该生命周期中取消windowStage事件的监听。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+仅当UIAbility正常退出时会触发该回调，异常退出场景（例如低内存终止进程）不会触发该回调。
+
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -168,7 +188,6 @@ export default class MyUIAbility extends UIAbility {
 }
 ```
 
-
 ### onWindowStageDestroy
 
 onWindowStageDestroy(): void
@@ -177,9 +196,13 @@ onWindowStageDestroy(): void
 
 仅当UIAbility正常退出时会触发该回调，异常退出场景（例如低内存终止进程）不会触发该回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -207,9 +230,13 @@ onWindowStageRestore(windowStage: window.WindowStage): void
 > 在应用迁移启动时，无论是[冷启动](../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)还是[热启动](../../application-models/uiability-intra-device-interaction.md#目标uiability热启动)，都会在执行完[onCreate()](#oncreate)/[onNewWant()](#onnewwant)后，触发onWindowStageRestore()生命周期函数，不执行onWindowStageCreate()生命周期函数。
 
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -231,7 +258,6 @@ export default class MyUIAbility extends UIAbility {
 }
 ```
 
-
 ### onDestroy
 
 onDestroy(): void | Promise&lt;void&gt;
@@ -245,9 +271,13 @@ onDestroy(): void | Promise&lt;void&gt;
 > - 在执行完onDestroy生命周期回调后，应用可能会退出，从而导致其中的异步函数（比如异步写入数据库）未能正确执行。在此情况下，推荐使用Promise异步回调。
 > - 该回调仅在UIAbility正常退出时触发，当UIAbility异常退出（例如低内存终止进程）时，该回调将不被触发。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **返回值：**
 
@@ -276,7 +306,7 @@ onDestroy(): void | Promise&lt;void&gt;
   ```ts
   import { UIAbility } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-
+  
   export default class MyUIAbility extends UIAbility {
     async onDestroy() {
       hilog.info(0x0000, 'testTag', `onDestroy`);
@@ -285,6 +315,64 @@ onDestroy(): void | Promise&lt;void&gt;
   }
   ```
 
+### onDestroy<sup>23+</sup>
+
+ onDestroy(): Promise\<void> | undefined
+
+当UIAbility被销毁（例如使用[terminateSelf](js-apis-inner-application-uiAbilityContext.md#terminateself)接口停止UIAbility）时，系统触发该回调。开发者可以在该生命周期中执行资源清理、数据保存等相关操作。使用同步回调或Promise异步回调。
+
+在执行完onDestroy生命周期回调后，应用可能会退出，从而可能导致onDestroy中的异步函数未能正确执行，比如异步写入数据库。推荐使用Promise异步回调，避免因应用退出导致onDestroy中的异步函数（比如异步写入数据库）未能正确执行。
+
+仅当UIAbility正常退出时会触发该回调，异常退出场景（例如低内存查杀）不会触发该回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型                             | 说明                                     |
+| -------------------------------- | ---------------------------------------- |
+| Promise&lt;void&gt; \| undefined | 以Promise形式返回或返回未定义。 |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+- 同步回调示例如下：
+
+  ```ts
+  'use static'
+  import { UIAbility } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  export default class MyUIAbility extends UIAbility {
+    onDestroy(): Promise<void> {
+      hilog.info(0x0000, 'testTag', `onDestroy`);
+      // 调用同步函数...
+    }
+  }
+  ```
+  
+
+ArkTS-Sta示例：
+
+- Promise异步回调示例如下：
+
+  ```ts
+  'use static'
+  import { UIAbility } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  export default class MyUIAbility extends UIAbility {
+    async onDestroy() {
+      hilog.info(0x0000, 'testTag', `onDestroy`);
+      // 调用异步函数...
+    }
+  }
+  ```
 
 ### onWillForeground<sup>20+</sup>
 
@@ -294,9 +382,13 @@ UIAbility生命周期回调，应用转到前台前触发，在[onForeground](#o
 
 同步接口，不支持异步回调。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -323,7 +415,8 @@ export default class EntryAbility extends UIAbility {
     };
     hiAppEvent.write(eventInfo).then(() => {
       hilog.info(0x0000, 'testTag', `HiAppEvent success to write event`);
-    }).catch((err: BusinessError) => {
+    }).catch((error: Error) => {
+      let err = error as BusinessError;
       hilog.error(0x0000, 'testTag', `HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
     });
   }
@@ -345,13 +438,13 @@ export default class EntryAbility extends UIAbility {
     };
     hiAppEvent.write(eventInfo).then(() => {
       hilog.info(0x0000, 'testTag', `HiAppEvent success to write event`);
-    }).catch((err: BusinessError) => {
+    }).catch((error: Error) => {
+      let err = error as BusinessError;
       hilog.error(0x0000, 'testTag', `HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
     });
   }
 }
 ```
-
 
 ### onForeground
 
@@ -361,9 +454,13 @@ onForeground(): void
 
 同步接口，不支持异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -388,9 +485,13 @@ UIAbility生命周期回调，应用转到前台后触发，在[onForeground](#o
 
 同步接口，不支持异步回调。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -405,9 +506,13 @@ UIAbility生命周期回调，当应用从前台转到后台前触发，在[onBa
 
 同步接口，不支持异步回调。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -422,14 +527,15 @@ export default class MyUIAbility extends UIAbility {
       "int_data": 100,
       "str_data": "strValue",
     };
-    // 打点应用故障信息
+    // 写入打点应用故障信息
     hiAppEvent.write({
       domain: "test_domain",
       name: "test_event",
       eventType: hiAppEvent.EventType.FAULT,
       params: eventParams,
-    }, (err: BusinessError) => {
-      if (err) {
+    }, (error) => {
+      if (error) {
+        let err = error as BusinessError;
         hilog.error(0x0000, 'testTag', `hiAppEvent code: ${err.code}, message: ${err.message}`);
         return;
       }
@@ -439,7 +545,6 @@ export default class MyUIAbility extends UIAbility {
 }
 ```
 
-
 ### onBackground
 
 onBackground(): void
@@ -448,9 +553,13 @@ onBackground(): void
 
 同步接口，不支持异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -475,9 +584,13 @@ UIAbility生命周期回调，当应用从前台转到后台后触发，在[onBa
 
 同步接口，不支持异步回调。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -488,12 +601,12 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { audio } from '@kit.AudioKit';
 
 export default class MyUIAbility extends UIAbility {
-  static audioRenderer: audio.AudioRenderer;
+  static audioRenderer: audio.AudioRenderer | null = null;
 
   // ...
   onForeground(): void {
     let audioStreamInfo: audio.AudioStreamInfo = {
-      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率，单位：Hz。
       channels: audio.AudioChannel.CHANNEL_2, // 通道。
       sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
       encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
@@ -513,16 +626,24 @@ export default class MyUIAbility extends UIAbility {
     audio.createAudioRenderer(audioRendererOptions).then((data) => {
       MyUIAbility.audioRenderer = data;
       hilog.info(0x0000, 'testTag', `AudioRenderer Created : Success : Stream Type: SUCCESS.`);
-    }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `AudioRenderer Created : F : ${JSON.stringify(err)}.`);
+    }).catch((error: Error) => {
+      let err = error as BusinessError;
+      hilog.error(0x0000, 'testTag', `AudioRenderer Created : F : code: ${err.code} message: ${err.message}.`);
     });
   }
 
-  onDidBackground() {
+  onDidBackground(): void {
     // 转到后台后，释放audioRenderer资源
-    MyUIAbility.audioRenderer.release((err: BusinessError) => {
-      if (err) {
-        hilog.error(0x0000, 'testTag', `AudioRenderer release failed, error: ${JSON.stringify(err)}.`);
+    const renderer = MyUIAbility.audioRenderer;
+    if (renderer === null) {
+      hilog.warn(0x0000, 'testTag', 'AudioRenderer is null, cannot release');
+      return;
+    }
+    renderer.release((error: BusinessError | null) => {
+      if (error) {
+        // let err=error as BusinessError;
+        hilog.error(0x0000, 'testTag',
+          `AudioRenderer release failed, error: code: ${error.code} message: ${error.message}.`);
       } else {
         hilog.info(0x0000, 'testTag', `AudioRenderer released.`);
       }
@@ -535,27 +656,31 @@ export default class MyUIAbility extends UIAbility {
 
 onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueResult | Promise&lt;AbilityConstant.OnContinueResult&gt;
 
-当UIAbility准备跨端迁移时触发，可以保存待迁移的业务数据。
+当UIAbility准备跨端迁移时触发，可以保存待迁移的业务数据。支持同步返回和使用Promise异步调用。
 
 > **说明：**
 >
-> 对于API version 18（不含18） 之前版本仅支持同步调用，从API version 18及后续版本可支持异步调用。
+> 对于API version 18之前的版本，仅支持同步调用；API version 18及后续版本，支持Promise异步调用。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wantParam | Record&lt;string,&nbsp;Object&gt; | 是 | 开发者通过该参数保存待迁移的数据。 |
+| wantParam | Record&lt;string,&nbsp;Object&gt; | 是 | 开发者通过该参数保存待迁移的数据。为保证迁移性能和成功率，建议保存的数据大小控制在合理范围内，避免传递过大的数据对象。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [AbilityConstant.OnContinueResult](js-apis-app-ability-abilityConstant.md#oncontinueresult)&nbsp;\|&nbsp;Promise&lt;[AbilityConstant.OnContinueResult](js-apis-app-ability-abilityConstant.md#oncontinueresult)&gt;  | 表示是否同意迁移的结果：<br>- AGREE：表示同意。<br>- REJECT：表示拒绝，如应用在onContinue中异常可以返回REJECT。<br>- MISMATCH：表示版本不匹配，接续源端应用可以在onContinue中获取到迁移对端应用的版本号，进行协商后，如果版本不匹配导致无法迁移，可以返回该结果。<br> 该回调与onWindowStageRestore成对出现。在接续场景下，源端的UIAbility触发onContinue保存自定义数据，在目标端UIAbility触发onWindowStageRestore恢复自定义数据。 |
+| [AbilityConstant.OnContinueResult](js-apis-app-ability-abilityConstant.md#oncontinueresult)&nbsp;\|&nbsp;Promise&lt;[AbilityConstant.OnContinueResult](js-apis-app-ability-abilityConstant.md#oncontinueresult)&gt;  | 表示是否同意迁移的结果：<br>- AGREE：表示同意。<br>- REJECT：表示拒绝，如应用在onContinue中异常可以返回REJECT。<br>- MISMATCH：表示版本不匹配。接续源端应用可以在onContinue中获取到迁移对端应用的版本号，经检查确认版本不匹配后返回该结果。<br> 该回调与onWindowStageRestore成对出现。在接续场景下，源端的UIAbility触发onContinue保存自定义数据，在目标端UIAbility触发onWindowStageRestore恢复自定义数据。 |
 
 **示例：**
 
@@ -565,9 +690,9 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
   import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
   export default class MyUIAbility extends UIAbility {
-    onContinue(wantParams: Record<string, Object>) {
+    onContinue(wantParam: Record<string, Object>) {
       console.info('onContinue');
-      wantParams['myData'] = 'my1234567';
+      wantParam['myData'] = 'my1234567'; // 保存待迁移的业务数据
       return AbilityConstant.OnContinueResult.AGREE;
     }
   }
@@ -577,7 +702,7 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
 
   ```ts
   import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
-
+  
   export default class MyUIAbility extends UIAbility {
     async setWant(wantParams: Record<string, Object>) {
       console.info('setWant start');
@@ -586,9 +711,10 @@ onContinue(wantParam: Record&lt;string, Object&gt;): AbilityConstant.OnContinueR
       }
       console.info('setWant end');
     }
-
+  
     async onContinue(wantParams: Record<string, Object>) {
       console.info('onContinue');
+      // 异步保存待迁移数据
       return this.setWant(wantParams).then(() => {
         return AbilityConstant.OnContinueResult.AGREE;
       });
@@ -605,9 +731,13 @@ onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void
 
 同步接口，不支持异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -635,9 +765,13 @@ onDump(params: Array\<string>): Array\<string>
 
 应用调测场景下，通过命令行dump UIAbility数据时，系统会触发该回调。开发者可以在该回调中返回UIAbility要转储的非敏感信息。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -675,9 +809,13 @@ onSaveState(reason: AbilityConstant.StateType, wantParam: Record&lt;string, Obje
 >
 > 从API version 20开始，当[onSaveStateAsync](#onsavestateasync20)实现时，本回调函数将不执行。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -700,6 +838,51 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 export default class MyUIAbility extends UIAbility {
   onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>) {
     console.info('onSaveState');
+    wantParam['myData'] = 'my1234567'; // 保存UIAbility的状态数据，用于故障恢复
+    return AbilityConstant.OnSaveResult.RECOVERY_AGREE;
+  }
+}
+```
+
+### onSaveState<sup>23+</sup>
+
+onSaveState(reason: AbilityConstant.StateType, wantParam: Record&lt;string, RecordData&gt;): AbilityConstant.OnSaveResult
+
+该API配合[appRecovery](js-apis-app-ability-appRecovery.md)使用。当应用出现故障时，如果已启用自动保存状态，框架将调用onSaveState来保存UIAbility的状态。
+
+如果应用已使能故障恢复功能（即[enableAppRecovery](js-apis-app-ability-appRecovery.md#apprecoveryenableapprecovery)接口中saveOccasion参数配置为SAVE_WHEN_ERROR），当应用出现故障时，将触发该回调来保存UIAbility的数据。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                                                         | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| reason    | [AbilityConstant.StateType](js-apis-app-ability-abilityConstant.md#statetype) | 是   | 触发应用保存状态的原因，当前仅支持APP_RECOVERY（即应用故障恢复场景）。 |
+| wantParam | Record&lt;string,&nbsp;RecordData&gt;                        | 是   | 用户自定义的应用状态数据，应用再启动时被保存在onCreate中的Want.parameters中。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [AbilityConstant.OnSaveResult](js-apis-app-ability-abilityConstant.md#onsaveresult) | 返回一个数据保存策略的对象（如全部拒绝、全部允许、只允许故障恢复场景等）。 |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
+import { RecordData } from '@kit.BasicServicesKit';
+
+export default class MyUIAbility extends UIAbility {
+  onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, RecordData>) {
+    console.info('onSaveState');
     wantParam['myData'] = 'my1234567';
     return AbilityConstant.OnSaveResult.RECOVERY_AGREE;
   }
@@ -712,9 +895,13 @@ onSaveStateAsync(stateType: AbilityConstant.StateType, wantParam: Record&lt;stri
 
 该接口需要与[appRecovery](js-apis-app-ability-appRecovery.md)配合使用。如果应用已使能故障恢复功能（即[enableAppRecovery](js-apis-app-ability-appRecovery.md#apprecoveryenableapprecovery)接口中的saveOccasion参数设置为SAVE_WHEN_ERROR），当应用出现故障时，将触发该回调来保存UIAbility的数据。使用Promise异步回调。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -735,8 +922,52 @@ onSaveStateAsync(stateType: AbilityConstant.StateType, wantParam: Record&lt;stri
 import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
 class MyUIAbility extends UIAbility {
-  async onSaveStateAsync(reason: AbilityConstant.StateType,
+  async onSaveStateAsync(stateType: AbilityConstant.StateType,
     wantParam: Record<string, Object>): Promise<AbilityConstant.OnSaveResult> {
+    await new Promise<string>((res, rej) => {
+      setTimeout(res, 1000); // 延时1秒后执行
+    });
+    return AbilityConstant.OnSaveResult.RECOVERY_AGREE;
+  }
+}
+```
+
+### onSaveStateAsync<sup>23+</sup>
+
+onSaveStateAsync(stateType: AbilityConstant.StateType, wantParam: Record\<string, RecordData>): Promise\<AbilityConstant.OnSaveResult>
+
+如果应用已使能故障恢复功能（即[enableAppRecovery](js-apis-app-ability-appRecovery.md#apprecoveryenableapprecovery)接口中的saveOccasion参数设置为SAVE_WHEN_ERROR），当应用出现故障时，将触发该回调来保存UIAbility的数据。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                                                         | 必填 | 说明                                                         |
+| --------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| stateType | [AbilityConstant.StateType](js-apis-app-ability-abilityConstant.md#statetype) | 是   | 触发应用保存状态的原因，当前仅支持`APP_RECOVERY`（即应用故障恢复场景）。 |
+| wantParam | Record&lt;string,&nbsp;RecordData&gt;                        | 是   | 用户自定义的应用状态数据，应用再启动时被保存在Want.parameters中。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Promise\<[AbilityConstant.OnSaveResult](js-apis-app-ability-abilityConstant.md#onsaveresult)> | Promise对象。返回一个数据保存策略的对象（如全部拒绝、全部允许、只允许故障恢复场景等）。 |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
+import { RecordData } from '@kit.BasicServicesKit';
+
+class MyUIAbility extends UIAbility {
+  async onSaveStateAsync(reason: AbilityConstant.StateType, wantParam: Record<string, RecordData>) : Promise<AbilityConstant.OnSaveResult> {
     await new Promise<string>((res, rej) => {
       setTimeout(res, 1000); // 延时1秒后执行
     });
@@ -751,9 +982,13 @@ onShare(wantParam: Record&lt;string, Object&gt;): void
 
 当跨端分享原子化服务时，系统触发该回调。开发者可以在该回调中设置待分享原子化服务的标题、摘要和URL等数据。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -774,6 +1009,41 @@ export default class MyUIAbility extends UIAbility {
 }
 ```
 
+### onShare<sup>23+</sup>
+
+onShare(wantParam: Record&lt;string, RecordData&gt;): void
+
+当跨端分享原子化服务时，系统触发该回调。开发者可以在该回调中设置待分享原子化服务的标题、摘要和URL等数据。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                                  | 必填 | 说明           |
+| --------- | ------------------------------------- | ---- | -------------- |
+| wantParam | Record&lt;string,&nbsp;RecordData&gt; | 是   | 待分享的数据。 |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility } from '@kit.AbilityKit';
+import { RecordData } from '@kit.BasicServicesKit';
+
+export default class MyUIAbility extends UIAbility {
+  onShare(wantParams: Record<string, RecordData>) {
+    console.info('onShare');
+    wantParams['ohos.extra.param.key.shareUrl'] = 'example.com';
+  }
+}
+```
+
 ### onPrepareToTerminate<sup>10+</sup>
 
 onPrepareToTerminate(): boolean
@@ -788,11 +1058,15 @@ onPrepareToTerminate(): boolean
 
 **需要权限**：ohos.permission.PREPARE_APP_TERMINATE
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-**设备行为差异**：该接口仅在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+**设备行为差异**：该接口仅在PC/2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -803,7 +1077,7 @@ onPrepareToTerminate(): boolean
 **示例：**
 
 ```ts
-import { UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility, Want, common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
@@ -811,22 +1085,23 @@ export default class EntryAbility extends UIAbility {
     // 开发者定义预关闭动作
     // 例如拉起另一个ability，根据ability处理结果执行异步关闭
     let want: Want = {
-      bundleName: "com.example.myapplication",
-      moduleName: "entry",
-      abilityName: "SecondAbility"
+      bundleName: 'com.example.myapplication',
+      moduleName: 'entry',
+      abilityName: 'SecondAbility'
     }
     this.context.startAbilityForResult(want)
-      .then((result) => {
+      .then((result: common.AbilityResult) => {
         // 获取ability处理结果，当返回结果的resultCode为0关闭当前UIAbility
         console.info('startAbilityForResult success, resultCode is ' + result.resultCode);
-        if (result.resultCode === 0) {
-          this.context.terminateSelf();
+        if (result && result.resultCode === 0) {
+          this.context.terminateSelf(); // 关闭当前UIAbility
         }
-      }).catch((err: BusinessError) => {
+      }).catch((error: Error) => {
       // 异常处理
-      console.error('startAbilityForResult failed, err:' + JSON.stringify(err));
+      let err = error as BusinessError;
+      console.error(`startAbilityForResult failed, err: ${err.code} , ${err.message}`);
       this.context.terminateSelf();
-    })
+    });
 
     return true; // 已定义预关闭操作后，返回true表示UIAbility取消关闭
   }
@@ -851,13 +1126,17 @@ onPrepareToTerminateAsync(): Promise\<boolean>
 
 **需要权限**：ohos.permission.PREPARE_APP_TERMINATE
 
-**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **设备行为差异**：
-- 从API version 15开始，该接口仅在2in1设备中可正常执行回调，在其他设备上不执行回调。
-- 从API version 19开始，该接口在2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 15开始，该接口仅在PC/2in1设备中可正常执行回调，在其他设备上不执行回调。
+- 从API version 19开始，该接口在PC/2in1和Tablet设备中可正常执行回调，在其他设备上不执行回调。
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -889,9 +1168,13 @@ UIAbility生命周期回调，当UIAbility侧滑返回时触发，根据返回�
 - 当targetSdkVersion<12时，默认返回值为false，会销毁UIAbility。
 - 当targetSdkVersion>=12时，默认返回值为true，会将UIAbility移动到后台不销毁。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -923,8 +1206,11 @@ UIAbility生命周期回调，在多设备协同场景下，协同方应用在�
 > - 通过[startAbility](./js-apis-inner-application-uiAbilityContext.md#startability)等方法拉起协同方应用时，需要在Want对象中设置协同标记[Flags](js-apis-app-ability-wantConstant.md#flags)为FLAG_ABILITY_ON_COLLABORATE。
 > - [冷启动](../../application-models/uiability-intra-device-interaction.md#目标uiability冷启动)时，该回调在[onForeground](#onforeground)前或[onBackground](#onbackground)后调用；[热启动](../../application-models/uiability-intra-device-interaction.md#目标uiability热启动)时，该回调在[onNewWant](#onnewwant)前调用。
 
-
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -950,6 +1236,52 @@ export default class MyAbility extends UIAbility {
 }
 ```
 
+### onCollaborate<sup>23+</sup>
+
+onCollaborate(wantParam: Record&lt;string, RecordData&gt;): AbilityConstant.CollaborateResult
+
+UIAbility生命周期回调，在多设备协同场景下，协同方应用在被拉起的过程中返回是否接受协同。
+
+> **说明：**
+
+> - 该生命周期回调不支持specified启动模式。
+> - 通过startAbility()等方法拉起协同方应用时，需要在Want对象中设置协同标记[Flags](js-apis-ability-wantConstant.md#flags)为FLAG_ABILITY_ON_COLLABORATE。
+> - 冷启动时，该回调在[onForeground](#onforeground)前或[onBackground](#onbackground)后调用；热启动时，该回调在[onNewWant](#onnewwant)前调用。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                                  | 必填 | 说明                                                         |
+| --------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
+| wantParam | Record&lt;string,&nbsp;RecordData&gt; | 是   | want相关参数，仅支持key值取"ohos.extra.param.key.supportCollaborateIndex"。通过该key值可以可以获取到调用方传输的数据并进行相应的处理。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                       |
+| ------------------------------------------------------------ | -------------------------- |
+| [AbilityConstant.CollaborateResult](js-apis-app-ability-abilityConstant.md#collaborateresult18) | 协同方是否接受协同的结果。 |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
+import { RecordData } from '@kit.BasicServicesKit';
+
+export default class MyAbility extends UIAbility {
+  onCollaborate(wantParam: Record<string, RecordData>) {
+    return AbilityConstant.CollaborateResult.ACCEPT;
+  }
+}
+```
+
 ## Caller
 
 调用方Caller UIAbility通过[startAbilityByCall](js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口拉起目标Callee UIAbility，目标UIAbility启动成功后，返回一个Caller对象给调用方进行通信。
@@ -961,6 +1293,10 @@ call(method: string, data: rpc.Parcelable): Promise&lt;void&gt;
 Caller UIAbility向Callee UIAbility发送双方约定好的序列化的数据。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -988,13 +1324,15 @@ Caller UIAbility向Callee UIAbility发送双方约定好的序列化的数据。
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility, Caller } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-class MyMessageAble implements rpc.Parcelable { // 自定义的Parcelable数据结构
+class MyMessageable implements rpc.Parcelable { // 自定义的Parcelable数据结构
   name: string;
   str: string;
   num: number = 1;
@@ -1030,6 +1368,7 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       let caller: Caller = obj;
       let msg = new MyMessageAble('msg', 'world'); // 参考Parcelable数据定义
+      // 向Callee发送消息
       caller.call(method, msg)
         .then(() => {
           console.info('Caller call() called');
@@ -1044,6 +1383,65 @@ export default class MainUIAbility extends UIAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility, Caller } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import rpc from '@ohos.rpc';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class MyMessageAble implements rpc.Parcelable { // 自定义的Parcelable数据结构
+  name: string;
+  str: string;
+  num: int = 1;
+
+  constructor(name: string, str: string) {
+    this.name = name;
+    this.str = str;
+  }
+
+  marshalling(messageSequence: rpc.MessageSequence) {
+    messageSequence.writeInt(this.num);
+    messageSequence.writeString(this.str);
+    console.info(`MyMessageAble marshalling num[${this.num}] str[${this.str}]`);
+    return true;
+  }
+
+  unmarshalling(messageSequence: rpc.MessageSequence) {
+    this.num = messageSequence.readInt();
+    this.str = messageSequence.readString();
+    console.info(`MyMessageAble unmarshalling num[${this.num}] str[${this.str}]`);
+    return true;
+  }
+}
+
+let method = 'call_Function'; // 约定的通知消息字符串
+let caller: Caller;
+
+export default class MainUIAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    this.context.startAbilityByCall({
+      bundleName: 'com.example.myservice',
+      abilityName: 'MainUIAbility',
+      deviceId: ''
+    }).then((obj) => {
+      caller = obj;
+      let msg = new MyMessageAble('msg', 'world'); // 参考Parcelable数据定义
+      caller.call(method, msg)
+        .then(() => {
+          console.info('Caller call() called');
+        })
+        .catch((callErr: BusinessError<void>): void => {
+          console.error(`Caller.call catch error, error.code: ${callErr.code}, error.message: ${callErr.message}`);
+        });
+    }).catch((err: BusinessError<void>): void => {
+      console.error(`Caller GetCaller error, error.code: ${err.code}, error.message: ${err.message}`);
+    });
+  }
+}
+```
 
 ### callWithResult
 
@@ -1052,6 +1450,10 @@ callWithResult(method: string, data: rpc.Parcelable): Promise&lt;rpc.MessageSequ
 Caller UIAbility向Callee UIAbility发送消息，Callee UIAbility处理完成后返回结果。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1079,6 +1481,8 @@ Caller UIAbility向Callee UIAbility发送消息，Callee UIAbility处理完成�
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility, Caller } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
@@ -1086,9 +1490,72 @@ import { rpc } from '@kit.IPCKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class MyMessageAble implements rpc.Parcelable {
-  name: string
-  str: string
-  num: number = 1
+  name: string;
+  str: string;
+  num: number = 1;
+
+  constructor(name: string, str: string) {
+    this.name = name;
+    this.str = str;
+  }
+
+  marshalling(messageSequence: rpc.MessageSequence) {
+    messageSequence.writeInt(this.num);
+    messageSequence.writeString(this.str);
+    console.info(`MyMessageAble marshalling num[${this.num}] str[${this.str}]`);
+    return true;
+  }
+
+  unmarshalling(messageSequence: rpc.MessageSequence) {
+    this.num = messageSequence.readInt();
+    this.str = messageSequence.readString();
+    console.info(`MyMessageAble unmarshalling num[${this.num}] str[${this.str}]`);
+    return true;
+  }
+}
+
+let method = 'call_Function';
+let caller: Caller;
+
+export default class MainUIAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    this.context.startAbilityByCall({
+      bundleName: 'com.example.myservice',
+      abilityName: 'MainUIAbility',
+      deviceId: ''
+    }).then((obj) => {
+      caller = obj;
+      let msg = new MyMessageable('msg', 'world');
+      // 向Callee发送消息并获取返回结果
+      caller.callWithResult(method, msg)
+        .then((data) => {
+          console.info('Caller callWithResult() called');
+          let retMsg = new MyMessageable('msg', 'world');
+          data.readParcelable(retMsg); // 读取Callee返回的Parcelable数据
+        })
+        .catch((callErr: BusinessError) => {
+          console.error(`Caller.callWithResult catch error, error.code: ${callErr.code}, error.message: ${callErr.message}`);
+        });
+    }).catch((err: BusinessError) => {
+      console.error(`Caller GetCaller error, error.code: ${err.code}, error.message: ${err.message}`);
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility, Caller } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import rpc from '@ohos.rpc';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class MyMessageAble implements rpc.Parcelable {
+  name: string;
+  str: string;
+  num: int = 1;
 
   constructor(name: string, str: string) {
     this.name = name;
@@ -1122,22 +1589,22 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       caller = obj;
       let msg = new MyMessageAble('msg', 'world');
+      // 向Callee发送消息并获取返回结果
       caller.callWithResult(method, msg)
         .then((data) => {
           console.info('Caller callWithResult() called');
           let retMsg = new MyMessageAble('msg', 'world');
-          data.readParcelable(retMsg);
+          data.readParcelable(retMsg); // 读取Callee返回的Parcelable数据
         })
-        .catch((callErr: BusinessError) => {
+        .catch((callErr: BusinessError<void>): void => {
           console.error(`Caller.callWithResult catch error, error.code: ${callErr.code}, error.message: ${callErr.message}`);
         });
-    }).catch((err: BusinessError) => {
+    }).catch((err: BusinessError<void>): void => {
       console.error(`Caller GetCaller error, error.code: ${err.code}, error.message: ${err.message}`);
     });
   }
 }
 ```
-
 
 ### release
 
@@ -1146,6 +1613,10 @@ release(): void
 Caller主动释放与Callee UIAbility的连接。调用该接口后，Caller不能再使用call或callWithResult向Callee方发送消息。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -1174,11 +1645,12 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       caller = obj;
       try {
+        // 释放Caller与Callee的连接
         caller.release();
       } catch (releaseErr) {
-        console.error(`Caller.release catch error, error.code: ${releaseErr.code}, error.message: ${releaseErr.message}`);
+        console.error(`Caller.release catch error, error: ${releaseErr}`);
       }
-    }).catch((err: BusinessError) => {
+    }).catch((err: BusinessError<void>): void => {
       console.error(`Caller GetCaller error, error.code: ${err.code}, error.message: ${err.message}`);
     });
   }
@@ -1192,6 +1664,10 @@ onRelease(callback: OnReleaseCallback): void
 Caller UIAbility可使用该接口注册与Callee UIAbility连接断开通知的监听。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1224,13 +1700,14 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       let caller: Caller = obj;
       try {
+        // 注册与Callee UIAbility连接断开监听
         caller.onRelease((str) => {
           console.info(`Caller OnRelease CallBack is called ${str}`);
         });
       } catch (error) {
-        console.error(`Caller.onRelease catch error, error.code: ${error.code}, error.message: ${error.message}`);
+        console.error(`Caller.onRelease catch error, error: ${error}`);
       }
-    }).catch((err: BusinessError) => {
+    }).catch((err: BusinessError<void>): void => {
       console.error(`Caller GetCaller error, error.code: ${err.code}, error.message: ${err.message}`);
     });
   }
@@ -1244,6 +1721,10 @@ onRemoteStateChange(callback: OnRemoteStateChangeCallback): void
 注册协同场景下跨设备组件状态变化监听通知。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1277,14 +1758,17 @@ export default class MainAbility extends UIAbility {
     }).then((obj) => {
       let caller: Caller = obj;
       try {
+        // 注册协同场景下跨设备组件状态变化监听
         caller.onRemoteStateChange((str) => {
           console.info('Remote state changed ' + str);
         });
       } catch (error) {
-        console.error(`Caller.onRemoteStateChange catch error, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}`);
+        let code = (error as BusinessError).code;
+        let msg = (error as BusinessError).message; 
+        console.error(`Caller.onRemoteStateChange catch error, error.code: ${code}, error.message: ${msg}.`);
       }
-    }).catch((err: BusinessError) => {
-      console.error(`Caller GetCaller error, error.code: ${JSON.stringify(err.code)}, error.message: ${JSON.stringify(err.message)}`);
+    }).catch((err: BusinessError<void>): void => {
+      console.error(`Caller GetCaller error, error.code: ${err.code}, error.message: ${err.message}`);
     });
   }
 }
@@ -1297,6 +1781,10 @@ on(type: 'release', callback: OnReleaseCallback): void
 Caller UIAbility可使用该接口注册与Callee UIAbility连接断开通知的监听。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 9
 
 **参数：**
 
@@ -1331,6 +1819,7 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       let caller: Caller = obj;
       try {
+        // 注册release事件监听
         caller.on('release', (str) => {
           console.info(`Caller OnRelease CallBack is called ${str}`);
         });
@@ -1351,6 +1840,10 @@ off(type: 'release', callback: OnReleaseCallback): void
 取消注册Callee UIAbility断开通知的监听，与[on('release')](#onrelease-1)是反向操作，当前暂未支持。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1383,15 +1876,72 @@ export default class MainUIAbility extends UIAbility {
     }).then((obj) => {
       let caller: Caller = obj;
       try {
+        // 定义断开连接的回调函数
         let onReleaseCallBack: OnReleaseCallback = (str) => {
           console.info(`Caller OnRelease CallBack is called ${str}`);
         };
-        caller.on('release', onReleaseCallBack);
-        caller.off('release', onReleaseCallBack);
+        caller.on('release', onReleaseCallBack); // 注册断开连接的监听
+        caller.off('release', onReleaseCallBack); // 取消注册断开连接的监听
       } catch (error) {
         console.error(`Caller.on or Caller.off catch error, error.code: ${error.code}, error.message: ${error.message}`);
       }
     }).catch((err: BusinessError) => {
+      console.error(`Caller GetCaller error, error.code: ${err.code}, error.message: ${err.message}`);
+    });
+  }
+}
+```
+
+### offRelease<sup>23+</sup>
+
+offRelease(callback: OnReleaseCallback): void
+
+取消注册Callee UIAbility断开的通知，与[Caller.onRelease](#onrelease)是反向操作。使用callback异步回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                    | 必填 | 说明                                   |
+| -------- | --------------------------------------- | ---- | -------------------------------------- |
+| callback | [OnReleaseCallback](#onreleasecallback) | 是   | 回调函数，返回off回调结果。            |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility, Caller, OnReleaseCallback } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let caller: Caller;
+
+export default class MainUIAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    this.context.startAbilityByCall({
+      bundleName: 'com.example.myservice',
+      abilityName: 'MainUIAbility',
+      deviceId: ''
+    }).then((obj) => {
+      caller = obj;
+      try {
+        let onReleaseCallBack: OnReleaseCallback = (str) => {
+          console.info(`Caller OnRelease CallBack is called ${str}`);
+        };
+        caller.onRelease(onReleaseCallBack);
+        caller.offRelease(onReleaseCallBack);
+      } catch (e) {
+        const error = e as BusinessError;
+        console.error(`Caller.on or Caller.off catch error, error.code: ${error.code}, error.message: ${error.message}`);
+      }
+    }).catch((e) => {
+      const err = e as BusinessError;
       console.error(`Caller GetCaller error, error.code: ${err.code}, error.message: ${err.message}`);
     });
   }
@@ -1405,6 +1955,10 @@ off(type: 'release'): void
 取消注册Callee UIAbility断开通知的监听，与[Caller.on('release')](#onrelease-1)是反向操作，当前暂未支持。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1442,11 +1996,61 @@ export default class MainUIAbility extends UIAbility {
           console.info(`Caller OnRelease CallBack is called ${str}`);
         };
         caller.on('release', onReleaseCallBack);
-        caller.off('release');
+        caller.off('release'); // 取消注册所有断开连接的监听
       } catch (error) {
         console.error(`Caller.on or Caller.off catch error, error.code: ${error.code}, error.message: ${error.message}`);
       }
     }).catch((err: BusinessError) => {
+      console.error(`Caller GetCaller error, error.code: ${err.code}, error.message: ${err.message}`);
+    });
+  }
+}
+```
+
+### offRelease<sup>23+</sup>
+
+offRelease(): void
+
+取消注册Callee UIAbility断开的通知，与[Caller.onRelease](#onrelease)是反向操作。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility, Caller, OnReleaseCallback } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let caller: Caller;
+
+export default class MainUIAbility extends UIAbility {
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    this.context.startAbilityByCall({
+      bundleName: 'com.example.myservice',
+      abilityName: 'MainUIAbility',
+      deviceId: ''
+    }).then((obj) => {
+      caller = obj;
+      try {
+        let onReleaseCallBack: OnReleaseCallback = (str) => {
+          console.info(`Caller OnRelease CallBack is called ${str}`);
+        };
+        caller.onRelease(onReleaseCallBack);
+        caller.offRelease();
+      } catch (e) {
+        const error = e as BusinessError;
+        console.error(`Caller.on or Caller.off catch error, error.code: ${error.code}, error.message: ${error.message}`);
+      }
+    }).catch((e) => {
+      const err = e as BusinessError;
       console.error(`Caller GetCaller error, error.code: ${err.code}, error.message: ${err.message}`);
     });
   }
@@ -1465,12 +2069,16 @@ on(method: string, callback: CalleeCallback): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | method | string | 是 | 由Caller和Callee双方约定好的方法名，Callee方通过该字段区分消息类型。 |
-| callback | [CalleeCallback](#calleecallback) | 是 | 一个[rpc.MessageSequence](../apis-ipc-kit/js-apis-rpc.md#messagesequence9)类型入参的js通知同步回调函数,&nbsp;回调函数至少要返回一个空的[rpc.Parcelable](../apis-ipc-kit/js-apis-rpc.md#parcelable9)数据对象,&nbsp;其他视为函数执行错误。 |
+| callback | [CalleeCallback](#calleecallback) | 是 | 一个[rpc.MessageSequence](../apis-ipc-kit/js-apis-rpc.md#messagesequence9)类型入参的js通知同步回调函数，&nbsp;回调函数至少要返回一个空的[rpc.Parcelable](../apis-ipc-kit/js-apis-rpc.md#parcelable9)数据对象，&nbsp;其他视为函数执行错误。 |
 
 **错误码：**
 
@@ -1484,14 +2092,72 @@ on(method: string, callback: CalleeCallback): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 
 class MyMessageAble implements rpc.Parcelable {
-  name: string
-  str: string
-  num: number = 1
+  name: string;
+  str: string;
+  num: number = 1;
+
+  constructor(name: string, str: string) {
+    this.name = name;
+    this.str = str;
+  }
+
+  marshalling(messageSequence: rpc.MessageSequence) {
+    messageSequence.writeInt(this.num);
+    messageSequence.writeString(this.str);
+    console.info(`MyMessageAble marshalling num[${this.num}] str[${this.str}]`);
+    return true;
+  }
+
+  unmarshalling(messageSequence: rpc.MessageSequence) {
+    this.num = messageSequence.readInt();
+    this.str = messageSequence.readString();
+    console.info(`MyMessageAble unmarshalling num[${this.num}] str[${this.str}]`);
+    return true;
+  }
+}
+
+let method = 'call_Function';
+
+// 定义Callee端的消息处理回调函数
+function funcCallBack(pdata: rpc.MessageSequence) {
+  let msg = new MyMessageAble('test', '');
+  pdata.readParcelable(msg);
+  // 返回处理结果给Caller
+  return new MyMessageAble('test1', 'Callee test');
+}
+
+export default class MainUIAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.info('Callee onCreate is called');
+    try {
+      // 注册消息监听，当Caller发送指定方法名时会触发回调
+      this.callee.on(method, funcCallBack);
+    } catch (error) {
+      console.error(`Callee.on catch error, error.code: ${error.code}, error.message: ${error.message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+import rpc from '@ohos.rpc';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class MyMessageAble implements rpc.Parcelable {
+  name: string;
+  str: string;
+  num: int = 1;
 
   constructor(name: string, str: string) {
     this.name = name;
@@ -1516,6 +2182,7 @@ class MyMessageAble implements rpc.Parcelable {
 let method = 'call_Function';
 
 function funcCallBack(pdata: rpc.MessageSequence) {
+  console.info(`Callee funcCallBack is called ${pdata}`);
   let msg = new MyMessageAble('test', '');
   pdata.readParcelable(msg);
   return new MyMessageAble('test1', 'Callee test');
@@ -1527,7 +2194,9 @@ export default class MainUIAbility extends UIAbility {
     try {
       this.callee.on(method, funcCallBack);
     } catch (error) {
-      console.error(`Callee.on catch error, error.code: ${error.code}, error.message: ${error.message}`);
+      let code = (error as BusinessError).code;
+      let message = (error as BusinessError).message;
+      console.error(`Callee.on catch error, error.code: ${code}, error.message: ${message}`);
     }
   }
 }
@@ -1540,6 +2209,10 @@ off(method: string): void
 解除通用组件服务端注册消息通知callback。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1561,6 +2234,7 @@ off(method: string): void
 
 ```ts
 import { UIAbility, AbilityConstant, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let method = 'call_Function';
 
@@ -1569,7 +2243,8 @@ export default class MainUIAbility extends UIAbility {
     console.info('Callee onCreate is called');
     try {
       this.callee.off(method);
-    } catch (error) {
+    } catch (err) {
+      let error = err as BusinessError;
       console.error(`Callee.off catch error, error.code: ${error.code}, error.message: ${error.message}`);
     }
   }
@@ -1580,11 +2255,15 @@ export default class MainUIAbility extends UIAbility {
 
 ### (msg: string)
 
-(msg: string): void
+type OnReleaseCallback = (msg: string) => void
 
 注册通用组件服务端Stub（桩）断开监听通知的回调函数类型。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1596,27 +2275,35 @@ export default class MainUIAbility extends UIAbility {
 
 ### (msg: string)<sup>10+</sup>
 
-(msg: string): void
+type OnRemoteStateChangeCallback = (msg: string) => void
 
 注册协同场景下跨设备组件状态变化监听通知的回调函数类型。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | ----- | --- | -------- |
-| msg | string | 是 | 用于传递释放消息。 |
+| msg | string | 是 | 用于传递组件状态变化消息。 |
 
 ## CalleeCallback
 
 ### (indata: rpc.MessageSequence)
 
-(indata: rpc.MessageSequence): rpc.Parcelable
+type CalleeCallback = (indata: rpc.MessageSequence) => rpc.Parcelable
 
 通用组件服务端注册消息通知的回调函数类型。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

@@ -194,14 +194,14 @@ struct Index {
     try {
       curFoldStatus = display.getFoldStatus();
     } catch (error) {
-      console.info(`${TAG} getFoldStatus call failed, error: ${error.code}`);
+      console.error(`${TAG} getFoldStatus call failed, error: ${error.code}`);
     }
     return curFoldStatus;
   }
 
   registerFoldStatusChanged(err: BusinessError, foldStatusInfo: camera.FoldStatusInfo) {
     if (err !== undefined && err.code !== 0) {
-      console.info(`${TAG} registerFoldStatusChanged call failed, error: ${err.code}`);
+      console.error(`${TAG} registerFoldStatusChanged call failed, error: ${err.code}`);
       return;
     }
     console.info(TAG + 'foldStatusChanged foldStatus: ' + foldStatusInfo.foldStatus);
@@ -535,3 +535,11 @@ struct Index {
   }
 }
 ```
+
+## 常见问题
+
+### 折叠状态改变时，如何处理相机画面可能出现的拉伸变形问题
+
+折叠状态发生变化导致镜头切换后，可能出现图像分辨率与XComponent的宽高比不匹配的情况。应用可通过[Window.on('windowSizeChange')](../../reference/apis-arkui/arkts-apis-window-Window.md#onwindowsizechange7)监听窗口的变化，根据屏幕旋转角度（[Display](../../reference/apis-arkui/js-apis-display.md#display).rotation）与相机镜头角度（[CameraDevice](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameradevice).cameraOrientation）之间的关系来确定布局的宽高比，以确保XComponent的宽高比能跟随窗口实时调整。
+
+<!--RP1--><!--RP1End-->

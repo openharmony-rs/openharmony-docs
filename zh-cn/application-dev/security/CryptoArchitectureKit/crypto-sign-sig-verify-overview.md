@@ -1,4 +1,4 @@
-# 签名验签介绍及算法规格
+# 签名验签
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -13,7 +13,7 @@
 
  > **说明：** 
  > 
- > 当前使用C/C++的方式从API version 12开始支持验签，从API version 20开始支持签名。
+ > 当前使用C/C++的方式从API版本12开始支持验签，从API版本20开始支持签名。
 
 ## RSA
 
@@ -124,11 +124,11 @@
 
 | PSS参数 | 枚举值 | 获取 | 设置 | 
 | -------- | -------- | -------- | -------- |
-| md | PSS_MD_NAME_STR | √ | - | 
-| mgf | PSS_MGF_NAME_STR | √ | - | 
-| mgf1_md | PSS_MGF1_MD_STR | √ | - | 
+| md | PSS_MD_NAME_STR | √ | － | 
+| mgf | PSS_MGF_NAME_STR | √ | － | 
+| mgf1_md | PSS_MGF1_MD_STR | √ | － | 
 | saltLen | PSS_SALT_LEN_NUM | √ | √ | 
-| trailer_field | PSS_TRAILER_FIELD_NUM | √ | - | 
+| trailer_field | PSS_TRAILER_FIELD_NUM | √ | － | 
 
 ### PKCS1模式下的OnlySign/OnlyVerify
 
@@ -186,7 +186,7 @@ PSS模式的OnlySign/OnlyVerify规格与PSS签名验签规格一致，仅在字�
 
 如表所示，各取值范围（即[]中的内容）中，只能选取一项完成字符串拼接。举例说明，当需要非对称密钥类型为RSA2048、填充模式为PKCS1、摘要算法为SHA256、验签模式为Recover的密钥时，其字符串参数为"RSA2048|PKCS1|SHA256|Recover"。
 
-| 非对称密钥类型 | 填充模式 | 摘要算法 | 签名模式 | API版本 | 
+| 非对称密钥类型 | 填充模式 | 摘要算法 | 验签模式 | API版本 | 
 | -------- | -------- | -------- | -------- | -------- | 
 | RSA512 | PKCS1 | [NoHash\|MD5\|SHA1\|SHA224\|SHA256] | Recover | 12+ | 
 | RSA768 | PKCS1 | [NoHash\|MD5\|SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | Recover | 12+ | 
@@ -202,13 +202,13 @@ PSS模式的OnlySign/OnlyVerify规格与PSS签名验签规格一致，仅在字�
 
 ## ECDSA
 
-ECDSA（Elliptic Curve Digital Signature Algorithm，椭圆曲线数字签名算法）是基于椭圆曲线密码（ECC）的数字签名算法（DSA）。相比DLP（Discrete Logarithm Problem，普通的离散对数问题）和IFP（Integer Factorization Problem，大数分解问题），椭圆曲线密码的单位比特强度要高于其他公钥体制。
+ECDSA（Elliptic Curve Digital Signature Algorithm，椭圆曲线数字签名算法）是基于椭圆曲线密码（ECC）的数字签名算法（DSA）。相比DLP（Discrete Logarithm Problem，离散对数问题）和IFP（Integer Factorization Problem，大数分解问题），椭圆曲线密码的单位比特强度要高于其他公钥体制。
 
 算法库框架提供了多种椭圆曲线及摘要算法组合的ECDSA签名验签能力，同时支持OnlySign和OnlyVerify模式。
 
 以字符串参数完成ECDSA签名验签，具体的“字符串参数”由“非对称密钥类型”和“摘要”使用符号“|”拼接而成，用于在创建非对称签名验签实例时，指定非对称签名验签算法规格。
 
-如表所示，各取值范围（即[]中的内容）中，只能选取一项完成字符串拼接。举例说明，当需要非对称密钥类型为ECC224、摘要算法为SHA256的密钥时，其字符串参数为"ECC224|SHA256"，onlySign和OnlyVerify模式下的签名验签，其字符串参数为"ECC224|SHA256|OnlySign"和"ECC224|SHA256|OnlyVerify"。
+如表所示，各取值范围（即[]中的内容）中，只能选取一项完成字符串拼接。举例说明，当需要非对称密钥类型为ECC224、摘要算法为SHA256的密钥时，其字符串参数为"ECC224|SHA256"，OnlySign和OnlyVerify模式下的签名验签，其字符串参数为"ECC224|SHA256|OnlySign"和"ECC224|SHA256|OnlyVerify"。
 
 > **说明：**
 >
@@ -218,7 +218,7 @@ ECDSA（Elliptic Curve Digital Signature Algorithm，椭圆曲线数字签名算
 
 | 非对称密钥类型 | 摘要 | 签名/验签模式 | API版本 | 
 | -------- | -------- | -------- | -------- |
-| ECC192 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign/OnlyVerify | 26.0.0 | 
+| ECC192 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign/OnlyVerify | 26.0.0+ | 
 | ECC224 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign/OnlyVerify | 9+ | 
 | ECC256 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign/OnlyVerify | 9+ | 
 | ECC384 | [SHA1\|SHA224\|SHA256\|SHA384\|SHA512] | OnlySign/OnlyVerify | 9+ | 
@@ -287,3 +287,15 @@ Ed25519是基于椭圆曲线的签名验签算法。
 | 非对称密钥类型 | 字符串参数 | API版本 | 
 | -------- | -------- | -------- |
 | Ed25519 | Ed25519 | 11+ | 
+
+## ML-DSA
+
+从API版本26.0.0开始，支持ML-DSA（Module-Lattice-Based Digital Signature Algorithm）算法，该算法是一种基于模块格的数字签名后量子密码算法。
+
+以字符串参数创建ML-DSA签名验签实例。
+
+| 非对称密钥类型 | 字符串参数 | API版本 |
+| -------- | -------- | -------- |
+| ML-DSA-44 | ML-DSA | 26.0.0+ |
+| ML-DSA-65 | ML-DSA | 26.0.0+ |
+| ML-DSA-87 | ML-DSA | 26.0.0+ |

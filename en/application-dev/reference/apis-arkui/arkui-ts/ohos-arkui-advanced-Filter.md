@@ -159,4 +159,4 @@ struct Index {
 }
 ```
 
-![en-us_image_0000001665809293](figures/en-us_image_0000001665809293.png)
+![category](figures/category.png)

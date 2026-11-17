@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @BIYynNe-->
 
-如果每个组件的样式都需要单独设置，在开发过程中会出现大量代码在进行重复样式设置，虽然可以复制粘贴，但为了代码简洁性和后续方便维护，我们推出了可以提炼公共样式进行复用的装饰器\@Styles。
+如果每个组件的样式都需要单独设置，开发过程中会产生大量重复的样式设置代码。虽然可以复制粘贴，但为了保持代码简洁、便于后续维护，ArkUI提供了可以提炼公共样式进行复用的装饰器[\@Styles](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-styles.md#styles)。
 
 \@Styles装饰器可以将多条样式设置提炼成一个方法，直接在组件声明的位置调用。通过\@Styles装饰器可以快速定义并复用自定义样式。
 
@@ -22,20 +22,20 @@
 
 - 当前\@Styles仅支持[通用属性](../../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)和[通用事件](../../reference/apis-arkui/arkui-ts/ts-component-general-events.md)。
 
-- \@Styles可以定义在组件内或全局，在全局定义时需在方法名前面添加function关键字，组件内定义时则不需要添加function关键字。请参考用例[组件内styles和全局styles的用法](#组件内styles和全局styles的用法)。
+- \@Styles可以定义在组件内或全局，在全局定义时需在方法名前面添加function关键字，组件内定义时则不需要添加function关键字。请参考用例[组件内\@Styles和全局\@Styles的用法](#组件内styles和全局styles的用法)。
 
-- 组件内\@Styles的优先级高于全局\@Styles。框架优先找当前组件内的\@Styles，如果找不到，则会全局查找。
+- 组件内\@Styles的优先级高于全局\@Styles。框架会优先查找当前组件内的\@Styles，如果未找到，则会在全局范围内查找。
 
 > **说明：**
 >
-> 只能在当前文件内使用@Styles，不支持export。
+> 只能在当前文件内使用\@Styles，不支持export。
 >
 > 若需要实现样式导出，推荐使用[AttributeModifier](../../ui/arkts-user-defined-extension-attributeModifier.md)。
 
 
-定义在组件内的\@Styles可以通过this访问组件的常量和状态变量，并可以在\@Styles里通过事件来改变状态变量的值，示例如下：
+定义在组件内的\@Styles可以通过this访问组件的常量和状态变量，并可以在\@Styles中通过事件改变状态变量的值，示例如下：
 
-<!-- @[inner_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator2.ets) -->
+<!-- @[inner_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator2.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -54,6 +54,7 @@ struct FancyUse {
 
   build() {
     Column() {
+      // 通过fancy给Button提供样式设置
       Button('change height')
         .fancy()
     }
@@ -77,17 +78,17 @@ struct FancyUse {
 
 ```
 
-<!-- @[style_not_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator2.ets) -->
+<!-- @[style_not_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentExtension/entry/src/main/ets/pages/StylesDecorator/StylesDecorator2.ets) --> 
 
 ``` TypeScript
 // 正确写法
   @Styles
-  function globalFancy () {
+  function globalFancy() {
     .width(100)
   }
 ```
 
-- 不支持在\@Styles方法内使用逻辑组件，逻辑组件内的属性不生效。
+- 不支持在\@Styles方法内使用条件渲染语句，条件渲染语句内的属性不生效。
 
 ``` TypeScript
   // 错误写法

@@ -2,7 +2,7 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,7 +12,8 @@
 
 > **说明：**
 >
-> 应用在使用前应先调用[isEnhancedRoutingSupported](#isenhancedroutingsupported)，确认系统是否支持音频设备增强管理功能。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 应用在使用前应先调用[isEnhancedRoutingSupported](#isenhancedroutingsupported)，确认系统是否支持音频设备增强管理功能。
 
 **起始版本：** 26.0.0
 
@@ -21,6 +22,45 @@
 ```ts
 import { audio } from '@kit.AudioKit';
 ```
+
+## SoundCardType
+
+声卡类型枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称 | 值 | 说明 |
+| :--- | :--- | :--- |
+| ONBOARD | 0 | 板载声卡。 |
+| USB | 1 | USB声卡。 |
+
+## SoundCardInfo
+
+描述声卡信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| :--- | :--- | :--- | :--- | :--- |
+| name | string | 是 | 否 | 声卡名称。最大长度为256字节。 |
+| vendor | string | 是 | 否 | 声卡厂商。最大长度为128字节。 |
+| model | string | 是 | 否 | 声卡型号。最大长度为128字节。 |
+| busAddress | string | 是 | 否 | 声卡总线地址。最大长度为256字节。 |
+| driver | string | 是 | 否 | 声卡驱动信息。最大长度为128字节。 |
+| cardId | string | 是 | 是 | 声卡ID。默认使用板载声卡的声卡ID。最大长度为128字节。 |
+| cardType | [SoundCardType](#soundcardtype) | 是 | 是 | 声卡类型。默认为板载声卡类型。 |
 
 ## isEnhancedRoutingSupported()
 
@@ -34,11 +74,13 @@ isEnhancedRoutingSupported(): boolean
 > - 应用在调用增强路由相关接口前，先调用本接口确认系统是否支持。即使是同一类型设备，不同机型也会因硬件限制而支持情况不同。
 > - 当系统不支持增强路由能力时，调用相关接口不会生效，并会为应用或音频流选择默认的输入输出设备。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.DeviceEnhance
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -51,7 +93,7 @@ isEnhancedRoutingSupported(): boolean
 ```ts
 import { audio } from '@kit.AudioKit';
 
-let isSupported: boolean = audioDeviceEnhanceManager.isEnhancedRoutingSupported();
+let isSupported = audioDeviceEnhanceManager.isEnhancedRoutingSupported();
 console.info(`Succeeded in querying whether enhanced routing is supported. Result: ${isSupported}.`);
 ```
 
@@ -68,11 +110,13 @@ selectOutputDevice(outputDevice: AudioDeviceDescriptor): Promise&lt;void&gt;
 > - 当应用退出或所选设备离线时，此选择将失效。应用重启或设备重新上线后，需要重新设置才会生效。
 > - 当系统不支持此功能时，会为应用选择默认输出设备。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.DeviceEnhance
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -101,6 +145,8 @@ selectOutputDevice(outputDevice: AudioDeviceDescriptor): Promise&lt;void&gt;
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+let audioManager = audio.getAudioManager();
+let audioSessionManager = audioManager.getSessionManager();
 let outputDevice = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES)[0];
 audioDeviceEnhanceManager.selectOutputDevice(outputDevice).then(() => {
   console.info('Succeeded in selecting output device.');
@@ -122,11 +168,13 @@ selectInputDevice(inputDevice: AudioDeviceDescriptor): Promise&lt;void&gt;
 > - 当应用退出或所选设备离线时，此选择将失效。应用重启或设备重新上线后，需要重新设置才会生效。
 > - 当系统不支持此功能时，会为应用选择默认输入设备。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.DeviceEnhance
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -155,7 +203,9 @@ selectInputDevice(inputDevice: AudioDeviceDescriptor): Promise&lt;void&gt;
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let inputDevice = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES)[0];
+let audioManager = audio.getAudioManager();
+let audioSessionManager = audioManager.getSessionManager();
+let inputDevice: audio.AudioDeviceDescriptor = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES)[0];
 audioDeviceEnhanceManager.selectInputDevice(inputDevice).then(() => {
   console.info('Succeeded in selecting input device.');
 }).catch((err: BusinessError) => {
@@ -176,11 +226,13 @@ selectOutputDeviceForAudioRenderer(renderer: AudioRenderer, outputDevice: AudioD
 > - 当应用退出或所选设备离线时，此选择将失效。应用重启或设备重新上线后，需要重新设置才会生效。
 > - 当系统不支持此功能时，会为该音频播放流选择默认输出设备。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.DeviceEnhance
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -207,12 +259,93 @@ selectOutputDeviceForAudioRenderer(renderer: AudioRenderer, outputDevice: AudioD
 **示例：**
 
 ```ts
+import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioDeviceEnhanceManager.selectOutputDeviceForAudioRenderer(audioRenderer, outputDevice).then(() => {
-  console.info('Succeeded in selecting output device for audio renderer.');
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+  channels: audio.AudioChannel.CHANNEL_2, // 通道。
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+};
+
+let audioRendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
+  rendererFlags: 0 // 音频渲染器标志。
+};
+
+let audioRendererOptions: audio.AudioRendererOptions = {
+  streamInfo: audioStreamInfo,
+  rendererInfo: audioRendererInfo
+};
+
+let audioManager = audio.getAudioManager();
+let audioSessionManager = audioManager.getSessionManager();
+let outputDevice: audio.AudioDeviceDescriptor = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES)[0];
+
+audio.createAudioRenderer(audioRendererOptions).then((data) => {
+  console.info('AudioFrameworkRenderLog: AudioRenderer Created : SUCCESS');
+  let audioRenderer = data;
+  audioDeviceEnhanceManager.selectOutputDeviceForAudioRenderer(audioRenderer, outputDevice).then(() => {
+    console.info('Succeeded in selecting output device for audio renderer.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to select output device for audio renderer. Code: ${err.code}, message: ${err.message}`);
+  });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to select output device for audio renderer. Code: ${err.code}, message: ${err.message}`);
+  console.error(`AudioFrameworkRenderLog: AudioRenderer Created : ERROR : ${err}`);
+});
+```
+
+## getSoundCardInfoList()
+
+getSoundCardInfoList(): Promise\<Array\<SoundCardInfo\>\>
+
+获取声卡信息列表，包括板载声卡和USB声卡。使用Promise异步回调。
+
+> **说明：**
+>
+> - 应用需要获取设备上所有的声卡信息，包括板载声卡和USB声卡，用于资产管理与监控等场景。
+> - 此接口仅支持PC/2in1设备。非PC/2in1设备调用该接口，将返回错误码801。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_AUDIO_ADAPTER_INFO
+
+**系统能力：** SystemCapability.Multimedia.Audio.DeviceEnhance
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| ------------------- | ------------------------------ |
+| Promise\<Array\<[SoundCardInfo](#soundcardinfo)\>\> | Promise对象，返回声卡信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | The current device model does not support this function. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let audioManager = audio.getAudioManager();
+let deviceEnhanceManager = audioManager.getDeviceEnhanceManager();
+
+deviceEnhanceManager.getSoundCardInfoList().then((soundCardInfoList: Array<audio.SoundCardInfo>) => {
+  console.info(`Successfully obtained sound card info list: ${JSON.stringify(soundCardInfoList, null, 2)}`);
+})
+.catch((err: BusinessError) => {
+  console.error(`Failed to get sound card info list. Code: ${err.code}, Message: ${err.message}`);
 });
 ```
 
@@ -229,11 +362,13 @@ selectInputDeviceForAudioCapturer(capturer: AudioCapturer, inputDevice: AudioDev
 > - 当应用退出或所选设备离线时，此选择将失效。应用重启或设备重新上线后，需要重新设置才会生效。
 > - 当系统不支持此功能时，会为该音频录制流选择默认输入设备。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.DeviceEnhance
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -260,11 +395,39 @@ selectInputDeviceForAudioCapturer(capturer: AudioCapturer, inputDevice: AudioDev
 **示例：**
 
 ```ts
+import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioDeviceEnhanceManager.selectInputDeviceForAudioCapturer(audioCapturer, inputDevice).then(() => {
-  console.info('Succeeded in selecting input device for audio capturer.');
+let audioStreamInfo: audio.AudioStreamInfo = {
+  samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000, // 采样率。
+  channels: audio.AudioChannel.CHANNEL_2, // 通道。
+  sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE, // 采样格式。
+  encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW // 编码格式。
+};
+
+let audioCapturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_MIC, // 音源类型：Mic音频源。根据业务场景配置，参考SourceType。
+  capturerFlags: 0 // 音频采集器标志。
+};
+
+let audioCapturerOptions: audio.AudioCapturerOptions = {
+  streamInfo: audioStreamInfo,
+  capturerInfo: audioCapturerInfo
+};
+
+let audioManager = audio.getAudioManager();
+let audioSessionManager = audioManager.getSessionManager();
+let inputDevice: audio.AudioDeviceDescriptor = audioSessionManager.getAvailableDevices(audio.DeviceUsage.MEDIA_INPUT_DEVICES)[0];
+
+audio.createAudioCapturer(audioCapturerOptions).then((data) => {
+  console.info('AudioCapturer Created : SUCCESS');
+  let audioCapturer = data;
+  audioDeviceEnhanceManager.selectInputDeviceForAudioCapturer(audioCapturer, inputDevice).then(() => {
+    console.info('Succeeded in selecting input device for audio capturer.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to select input device for audio capturer. Code: ${err.code}, message: ${err.message}`);
+  });
 }).catch((err: BusinessError) => {
-  console.error(`Failed to select input device for audio capturer. Code: ${err.code}, message: ${err.message}`);
+  console.error(`AudioCapturer Created : ERROR : ${err}`);
 });
 ```

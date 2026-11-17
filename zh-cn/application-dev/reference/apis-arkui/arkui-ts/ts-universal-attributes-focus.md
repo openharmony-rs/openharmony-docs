@@ -1,7 +1,7 @@
 # 焦点控制
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -28,7 +28,7 @@ ArkTS-Sta: focusable(value: boolean | undefined): this
 
 设置当前组件是否可以获焦。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,7 +60,7 @@ ArkTS-Sta: tabIndex(index: int | undefined): this
 >
 >  - tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用[nextFocus](#nextfocus18)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -91,9 +91,9 @@ ArkTS-Sta: defaultFocus(value: boolean | undefined): this
 
 >  **说明：**
 >
->  可以设置默认焦点的页面指的是支持页面路由或是弹窗类的容器组件，例如Page、NaviDestination、NavBar、PopUp、Dialog等。
+>  可以设置默认焦点的页面指的是支持页面路由或是弹窗类的容器组件，例如Page、NavDestination、NavBar、PopUp、Dialog等。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,7 +122,7 @@ ArkTS-Sta: groupDefaultFocus(value: boolean | undefined): this
 
 设置当前组件是否为当前组件所在容器获焦时的默认焦点。当组件未设置groupDefaultFocus时，组件默认不为当前组件所在容器获焦时的默认焦点。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -151,7 +151,7 @@ ArkTS-Sta: focusOnTouch(value: boolean | undefined): this
 
 设置当前组件是否支持点击获焦能力。当组件未设置focusOnTouch时，组件默认不支持点击获焦能力。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -179,7 +179,9 @@ ArkTS-Sta: focusBox(style: FocusBoxStyle | undefined): this
 
 设置当前组件系统焦点框样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -203,7 +205,7 @@ ArkTS-Sta: focusBox(style: FocusBoxStyle | undefined): this
 
 焦点控制模块。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -215,11 +217,11 @@ ArkTS-Sta: focusBox(style: FocusBoxStyle | undefined): this
 
 requestFocus(value: string): boolean
 
-方法语句中可使用的全局接口，调用此接口可以主动让焦点在下一帧渲染时转移至参数指定的组件上。
+全局接口，使焦点在下一帧渲染时转移至参数指定的组件上。
 
 如果需要指定组件立刻获焦，推荐使用FocusController中的焦点同步转移接口[requestFocus](../arkts-apis-uicontext-focuscontroller.md#requestfocus12)。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -247,7 +249,9 @@ requestFocus(value: string): boolean
 
 设置当前组件系统焦点框样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -269,7 +273,9 @@ ArkTS-Sta: focusScopePriority(scopeId: string | undefined, priority?: FocusPrior
 
 设置当前组件在指定容器内获焦的优先级。需要配合[focusScopeId](#focusscopeid12)一起使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -294,7 +300,7 @@ ArkTS-Sta: focusScopePriority(scopeId: string | undefined, priority?: FocusPrior
 
 设置组件焦点的优先级。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -310,9 +316,9 @@ ArkTS-Sta: focusScopePriority(scopeId: string | undefined, priority?: FocusPrior
 
 ### KeyProcessingMode<sup>15+</sup>
 
-设置按键事件处理的优先级。
+设置按键事件处理的模式。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -331,7 +337,9 @@ focusScopeId(id: string, isGroup?: boolean): T
 
 设置当前容器组件的id标识，以及是否为焦点组。
 
-**原子化服务API：**  从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：**  从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -360,9 +368,11 @@ ArkTS-Dyn: focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean): 
 
 ArkTS-Sta: focusScopeId(id: string | undefined, isGroup?: boolean, arrowStepOut?: boolean): this
 
-设置当前容器组件的id标识，以及是否为焦点组。新增参数arrowStepOut，用于设置能否使用方向键走焦出当前焦点组。
+设置当前容器组件的id标识，以及是否为焦点组。通过新增参数arrowStepOut设置能否使用方向键走焦出当前焦点组。
 
-**原子化服务API：**  从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：**  从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -390,9 +400,11 @@ ArkTS-Dyn: tabStop(isTabStop: boolean): T
 
 ArkTS-Sta: tabStop(isTabStop: boolean | undefined): this
 
-设置当前容器组件的tabStop，可决定焦点在走焦时是否会停留在当前容器。
+设置当前容器组件的tabStop，可决定焦点在走焦时是否会停留在当前容器。未设置时，tabStop默认为false，走焦时焦点不会因tabStop停留在当前容器。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -427,7 +439,9 @@ ArkTS-Sta: nextFocus(nextStep: FocusMovement | undefined): this
 
 设置组件的自定义焦点走焦逻辑。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -449,9 +463,9 @@ ArkTS-Sta: nextFocus(nextStep: FocusMovement | undefined): this
 
 ## FocusMovement<sup>18+</sup>对象说明
 
-设置对应的按键对应的走焦目的组件，缺省则遵循默认走焦规则。
+设置按键对应的走焦目的组件，缺省则遵循默认走焦规则。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -479,6 +493,7 @@ ArkTS-Sta: nextFocus(nextStep: FocusMovement | undefined): this
 该示例通过配置[defaultFocus](#defaultfocus9)可以使绑定的组件成为[层级页面](../../../ui/arkts-common-events-focus-event.md#基础概念)创建后首次获焦的焦点，配置[groupDefaultFocus](#groupdefaultfocus9)可以使绑定的组件成为tabIndex容器创建后首次获焦的焦点，配置[focusOnTouch](#focusontouch9)可以使绑定的组件点击后立即获焦。
 
 ```ts
+import { AttributeModifier, ButtonAttribute } from '@kit.ArkUI';
 // focusTest.ets
 @Entry
 @Component
@@ -618,11 +633,11 @@ struct FocusableExample {
 
 ![groupDefaultFocus1](figures/groupDefaultFocus1.png)
 
-第二次按TAB键，焦点切换到tabIndex(2)的容器上，且自动走到其内部的groupDefaultFocus绑定的组件上：
+第二次按TAB键，焦点切换到tabIndex(2)的容器上，且自动走焦到其内部的groupDefaultFocus绑定的组件上：
 
 ![groupDefaultFocus2](figures/groupDefaultFocus2.png)
 
-第三次按TAB键，焦点切换到tabIndex(3)的容器上，且自动走焦到内部配置了DefaultFocus的组件上：
+第三次按TAB键，焦点切换到tabIndex(3)的容器上，且自动走焦到内部首个可获焦组件上：
 
 ![groupDefaultFocus3](figures/groupDefaultFocus3.png)
 
@@ -958,7 +973,7 @@ struct TabStop {
           }
         }
         .width('80%')
-        .height('120')
+        .height(120)
         .borderColor(Color.Black)
         .margin({ top: 10 })
         .tabStop(true)
@@ -999,7 +1014,7 @@ struct TabStop {
 
 从API version 18开始，该示例通过配置[nextFocus](#nextfocus18)实现自定义走焦规则。
 
-如果不配置[nextFocus](#nextfocus18)，默认的点击tab的走焦顺序为：M->A->B->C；配置了[nextFocus](#nextfocus18)以后，走焦顺序变更为：M->D->F->B。
+如果不配置[nextFocus](#nextfocus18)，默认的点击tab的走焦顺序为：M->A->B->C；配置了[nextFocus](#nextfocus18)以后，Tab键前几次的走焦顺序变更为：M->D->F->B。
 
 ```ts
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {

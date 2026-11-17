@@ -62,7 +62,7 @@ class IFace {
   uid?: number = 0
 }
 statistics.on('netStatsChange', (data: IFace) => {
-  console.info('on netStatsChange' + JSON.stringify(data));
+  console.error('on netStatsChange' + JSON.stringify(data));
 });
 ```
 
@@ -82,8 +82,8 @@ off(type: 'netStatsChange', callback?: Callback\<NetStatsChangeInfo>): void
 
 | 参数名   | 类型                                        | 必填 | 说明                                                               |
 | -------- | ------------------------------------------- | ---- | ----------------------------------------------------------------- |
-| type     | string                                      | 是   | 注销订阅事件，固定为'netStatsChange'。                             |
-| callback | Callback\<[NetStatsChangeInfo](#netstatschangeinfo11)\> | 否   | 当流量有改变时触发回调函数。 |
+| type     | string                                      | 是   | 取消订阅事件，固定为'netStatsChange'。                             |
+| callback | Callback\<[NetStatsChangeInfo](#netstatschangeinfo11)\> | 否   | 取消订阅的回调，先通过on('netStatsChange')注册。 |
 
 **错误码：**
 
@@ -119,7 +119,7 @@ statistics.off('netStatsChange');
 
 getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback\<NetStatsInfo>): void
 
-获取指定网卡历史流量信息，使用 callback 异步回调。
+获取指定网卡历史流量信息，使用callback异步回调。系统根据ifaceInfo中指定的网卡名和时间范围，从流量统计数据库中读取该网卡在对应时间段内的收发字节数与包数，通过回调返回；若网卡名无效或该时间段内无统计数据，则返回全零的统计信息。
 
 **系统接口**：此接口为系统接口。
 
@@ -132,7 +132,7 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback\<NetStatsIn
 | 参数名    | 类型                                            | 必填 | 说明                                                                                    |
 | --------- | ----------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
 | ifaceInfo | [IfaceInfo](#ifaceinfo)                       | 是   | 指定查询的网卡信息，参见[IfaceInfo](#ifaceinfo)。                                     |
-| callback  | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | 是   | 回调函数。成功时 statsInfo 返回包含网卡历史流量信息，error 为 undefined，否则为错误对象。 |
+| callback  | AsyncCallback\<[NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22)> | 是   | 回调函数。成功时 statsInfo 返回包含网卡历史流量信息，error 为 undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -157,7 +157,10 @@ import { statistics } from '@kit.NetworkKit';
 let iFaceInfo: statistics.IfaceInfo | null = null;
 if (iFaceInfo) {
   statistics.getTrafficStatsByIface(iFaceInfo as statistics.IfaceInfo, (error: BusinessError, statsInfo: statistics.NetStatsInfo) => {
-    console.error(JSON.stringify(error));
+    if (error) {
+      console.error(JSON.stringify(error));
+      return;
+    };
     console.info(
       "getTrafficStatsByIface bytes of received = " +
       JSON.stringify(statsInfo.rxBytes)
@@ -182,7 +185,7 @@ if (iFaceInfo) {
 
 getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise\<NetStatsInfo>
 
-获取指定网卡历史流量信息，使用 Promise 异步回调。
+获取指定网卡历史流量信息，使用Promise异步回调。系统根据ifaceInfo中指定的网卡名和时间范围，从流量统计数据库中读取该网卡在对应时间段内的收发字节数与包数并以Promise形式返回；若网卡名无效或该时间段内无统计数据，则返回全零的统计信息。
 
 **系统接口**：此接口为系统接口。
 
@@ -197,7 +200,7 @@ getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise\<NetStatsInfo>
 **返回值：**
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<[NetStatsInfo](#netstatsinfo)> | 以 Promise 形式返回获取结果,返回网卡历史流量信息。 |
+| Promise\<[NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22)> | 以 Promise 形式返回获取结果，返回网卡历史流量信息。 |
 
 **错误码：**
 
@@ -245,7 +248,7 @@ if (iFaceInfo) {
 
 getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback\<NetStatsInfo>): void
 
-获取指定应用历史流量信息，使用 callback 异步回调。
+获取指定应用历史流量信息，使用callback异步回调。系统根据uidInfo中指定的应用uid及网卡、时间范围，从流量统计数据库中读取该应用在对应时间段内的收发字节数与包数，通过回调返回；若该应用在指定时间段内无流量记录，则返回全零的统计信息。
 
 **系统接口**：此接口为系统接口。
 
@@ -258,7 +261,7 @@ getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback\<NetStatsInfo>): 
 | 参数名   | 类型                                            | 必填 | 说明                                                                                    |
 | -------- | ----------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
 | uidInfo  | [UidInfo](#uidinfo)                           | 是   | 指定查询的应用信息，参见[UidInfo](#uidinfo)。                                         |
-| callback | AsyncCallback\<[NetStatsInfo](#netstatsinfo)> | 是   | 回调函数。成功时 statsInfo 返回包含应用历史流量信息，error 为 undefined，否则为错误对象。 |
+| callback | AsyncCallback\<[NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22)> | 是   | 回调函数。成功时 statsInfo 返回包含应用历史流量信息，error 为 undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -292,7 +295,10 @@ let uidInfo: statistics.UidInfo = {
 statistics.getTrafficStatsByUid(
   uidInfo,
   (error: BusinessError, statsInfo: statistics.NetStatsInfo) => {
-    console.error(JSON.stringify(error));
+    if (error) {
+      console.error(JSON.stringify(error));
+      return;
+    };
     console.info(
       "getTrafficStatsByUid bytes of received = " +
       JSON.stringify(statsInfo.rxBytes)
@@ -317,7 +323,7 @@ statistics.getTrafficStatsByUid(
 
 getTrafficStatsByUid(uidInfo: UidInfo): Promise\<NetStatsInfo>
 
-获取指定应用历史流量信息，使用 Promise 异步回调。
+获取指定应用历史流量信息，使用Promise异步回调。系统根据uidInfo中指定的应用uid及网卡、时间范围，从流量统计数据库中读取该应用在对应时间段内的收发字节数与包数并以Promise形式返回；若该应用在指定时间段内无流量记录，则返回全零的统计信息。
 
 **系统接口**：此接口为系统接口。
 
@@ -335,7 +341,7 @@ getTrafficStatsByUid(uidInfo: UidInfo): Promise\<NetStatsInfo>
 
 | 类型                                      | 说明                                               |
 | ----------------------------------------- | -------------------------------------------------- |
-| Promise\<[NetStatsInfo](#netstatsinfo)> | 以 Promise 形式返回获取结果,返回应用历史流量信息。 |
+| Promise\<[NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22)> | 以 Promise 形式返回获取结果，返回应用历史流量信息。 |
 
 **错误码：**
 
@@ -377,7 +383,7 @@ statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInf
 
 getTrafficStatsByNetwork(networkInfo: NetworkInfo): Promise\<UidNetStatsInfo>
 
-获取指定时间段内所有应用在指定网络中的流量使用详情，使用 Promise 异步回调。
+获取指定时间段内所有应用在指定网络中的流量使用详情，使用Promise异步回调。系统根据networkInfo中的网络类型、时间范围及simId，从流量统计数据库中聚合该网络下各应用（按uid维度）的历史流量数据并以Promise形式返回UidNetStatsInfo；其中simId仅在网络类型为蜂窝网络（BEARER_CELLULAR）时生效。
 
 **系统接口**：此接口为系统接口。
 
@@ -435,7 +441,7 @@ statistics.getTrafficStatsByNetwork(networkInfo).then((statsInfo: statistics.Uid
 
 getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Promise\<NetStatsInfoSequence>
 
-获取指定时间段内，应用在指定网络中的流量使用详情，使用 Promise 异步回调。
+获取指定时间段内，应用在指定网络中的流量使用详情，使用Promise异步回调。系统根据uid及networkInfo中的网络类型、时间范围、simId，从流量统计数据库中读取该应用在指定网络下的历史流量数据，按时间段返回NetStatsInfoSequence序列并以Promise形式返回；其中simId仅在网络类型为蜂窝网络（BEARER_CELLULAR）时生效。
 
 **系统接口**：此接口为系统接口。
 
@@ -484,19 +490,23 @@ let networkInfo: statistics.NetworkInfo = {
 }
 
 statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence: statistics.NetStatsInfoSequence) => {
-  for (let i = 0; i < statsInfoSequence.length; i--) {
+  for (let i = 0; i < statsInfoSequence.length; i++) {
     console.info("getTrafficStatsByUidNetwork item:" + JSON.stringify(statsInfoSequence[i]));
   }
 })
 ```
 
-## statistics.setCalibrationTraffic<sup>26+</sup>
+## statistics.setCalibrationTraffic
 
 setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: number): Promise\<void>;
 
-设置流量校准数据。在做流量校准时，可通过本接口设置相关流量数据。使用Promise异步回调。
+设置流量校准数据。在做流量校准时，可通过本接口设置相关流量数据，接口会将simId对应的剩余流量（remainTraffic）与套餐总流量（totalTraffic）写入系统流量统计数据库并用于后续流量统计与校准计算，校准结果对后续查询接口返回的数据生效。使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **系统接口**：此接口为系统接口。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **需要权限**：ohos.permission.GET_NETWORK_STATS
 
@@ -524,8 +534,7 @@ setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: numbe
 | --------- | -------------------------------------------- |
 | 201       | Permission denied.                           |
 | 202       | Non-system applications use system APIs.     |
-| 401       | Parameter error.                             |
-| 801       | Capability not supportedr.                             |
+| 801       | Capability not supported.                             |
 | 2100001   | Invalid parameter value, such as simId error.                     |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error, such as nullptr.                       |
@@ -533,7 +542,8 @@ setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: numbe
 **示例**
 
 ```js
-import { connection, statistics } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { statistics } from '@kit.NetworkKit';
 
 let simId:number = 1;
 let remainData:number = 600*1024*1024;   // 当前剩余流量为600MB。
@@ -569,27 +579,12 @@ statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
 
 | 名称      | 类型                                  | 只读 |可选| 说明                        |
 | --------- | ------------------------------------- | ---- |---| -------------------------- |
-| ifaceInfo | IfaceInfo\<[IfaceInfo](#ifaceinfo)> | 否   |否 |需查询的网卡和时间参数信息。 |
+| ifaceInfo | [IfaceInfo](#ifaceinfo) | 否   |否 |需查询的网卡和时间参数信息。 |
 | uid       | number                                | 否   |否 |需查询的应用 uid。          |
-
-## NetStatsInfo
-
-获取的历史流量信息。
-
-**系统接口**：此接口为系统接口。
-
-**系统能力**：SystemCapability.Communication.NetManager.Core
-
-| 名称      | 类型   | 只读 |可选| 说明                      |
-| --------- | ------ | ---- |---| ------------------------ |
-| rxBytes   | number | 否   |否 |流量下行数据(单位:字节)。 |
-| txBytes   | number | 否   |否 |流量上行数据(单位:字节)。 |
-| rxPackets | number | 否   |否 |流量下行包个数。          |
-| txPackets | number | 否   |否 |流量上行包个数。          |
 
 ## NetStatsChangeInfo<sup>11+</sup>
 
-监听和管理网络接口的状态和使用情况。
+流量变化事件上报的网卡名称及应用UID等信息。
 
 **系统接口**：此接口为系统接口。
 
@@ -625,7 +620,7 @@ statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
 
 | 名称        | 类型                                            | 只读 |可选| 说明           |
 |-----------|-----------------------------------------------|----|---|--------------|
-| undefined | [uid:number]: [NetStatsInfo](#netstatsinfo) | 否  |否 |所有应用的历史流量信息。 |
+| [uid: number] | [NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22) | 否  |否 |所有应用的历史流量信息。 |
 
 ## NetStatsInfoSequence<sup>12+</sup>
 
@@ -639,4 +634,4 @@ statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
 |-----------|---------------------------------|----|---|--------------|
 | startTime | number                          | 否  |否 |开始时间戳(单位:秒)。 |
 | endTime   | number                          | 否  |否 |结束时间戳(单位:秒)。 |
-| info      | [NetStatsInfo](#netstatsinfo) | 否  |否 |获取的应用历史流量信息。 |
+| info      | [NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22) | 否  |否 |获取的应用历史流量信息。 |

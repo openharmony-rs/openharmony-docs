@@ -1,22 +1,27 @@
 # Interfaces (其他)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin; @liyi0903; @mayaolll-->
-<!--Designer: @piggyguy; @liyi0903; @jiangdayuan-->
+<!--Owner: @zhou-chaobo; @liyi0903; @huangxiaolinabc-->
+<!--Designer: @piggyguy; @liyi0903; @fangzhiyuan1-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+
+本文汇总ArkUI UIContext相关的其他接口，用于描述组件目标节点、页面信息、OverlayManager初始化参数、手势触发信息及Swiper内容区信息等。
 
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## TargetInfo<sup>18+</sup>
 
 指定组件绑定的目标节点。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -33,7 +38,7 @@
 
 Router和NavDestination等页面信息，若无对应的Router或NavDestination页面信息，则对应属性为undefined。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,8 +48,8 @@ Router和NavDestination等页面信息，若无对应的Router或NavDestination�
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- |-------- | -------- |
-| routerPageInfo | observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo) | 否 |是 | Router信息。 |
-| navDestinationInfo | observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo) | 否 |是| NavDestination信息。 |
+| routerPageInfo | observer.[RouterPageInfo](js-apis-arkui-observer.md#routerpageinfo) | 否 |是 | Router页面信息，包含当前Router页面的路由状态和页面信息。当页面为Router页面时，可通过此属性获取对应的Router页面信息；若当前页面不是Router页面，则该属性为undefined。若无对应的Router页面信息，则该属性为undefined。 |
+| navDestinationInfo | observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo) | 否 |是| NavDestination页面信息，包含当前NavDestination页面的导航状态和页面信息。当页面为NavDestination页面时，可通过此属性获取对应的NavDestination页面信息；若当前页面不是NavDestination页面，则该属性为undefined。若无对应的NavDestination页面信息，则该属性为undefined。 |
 
 ## OverlayManagerOptions<sup>15+</sup>
 
@@ -54,14 +59,15 @@ Router和NavDestination等页面信息，若无对应的Router或NavDestination�
 
 | 名称             | 类型                | 只读 | 可选   | 说明                     |
 | --------------- | ---------------------- | ------------ | --------------------- | --------------------- |
-| renderRootOverlay   | boolean | 否 | 是 | 是否渲染overlay根节点，true表示渲染overlay根节点，false表示不渲染overlay根节点，默认值为true。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23|
-| enableBackPressedEvent<sup>19+</sup>   | boolean | 否 | 是 | 是否支持通过侧滑手势关闭OverlayManager下的ComponentContent，true表示可以通过侧滑关闭，false表示不可以通过侧滑关闭，默认值为false。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23 |
+| renderRootOverlay   | boolean | 否 | 是 | 是否渲染overlay根节点，true表示渲染overlay根节点，false表示不渲染overlay根节点，默认值为true。通过将该参数设置为false，可以解决[OverlayManager](arkts-apis-uicontext-overlaymanager.md)显示在[PhotoPickerComponent](../apis-media-library-kit/ohos-file-PhotoPickerComponent.md)上层时，PhotoPickerComponent无法选中照片的问题。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23|
+| enableBackPressedEvent<sup>19+</sup>   | boolean | 否 | 是 | 是否支持通过侧滑手势关闭OverlayManager下的ComponentContent，true表示可以通过侧滑关闭，false表示不可以通过侧滑关闭，默认值为false。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23 |
+| onBackPress   | [OnOverlayBackPressCallback](arkts-apis-uicontext-t.md#onoverlaybackpresscallback) | 否 | 是 | 拦截Overlay侧滑返回事件的回调。<br/>**说明：**<br/>1. 注册该回调且**enableBackPressedEvent**设置为true时，侧滑返回事件不会自动关闭Overlay，而是调用该回调决定事件是否向下层组件传递。<br/>2. 返回true表示拦截该事件（事件被消费，不会向下层传递）；返回false表示不拦截，事件将向下层组件透传。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本 26.0.0开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0|
 
 ## GestureTriggerInfo<sup>20+</sup>
 
 特定手势回调函数触发时的信息。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,9 +84,9 @@ Router和NavDestination等页面信息，若无对应的Router或NavDestination�
 
 ## GestureObserverConfigs<sup>20+</sup>
 
-该参数用于指定需要监听的手势回调阶段（传入空数组将无效），仅当手势触发指定阶段时才会发送通知。
+该参数用于指定需要监听的手势回调阶段（传入空数组时不监听任何手势回调阶段），仅当手势触发指定阶段时才会发送通知。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -90,13 +96,13 @@ Router和NavDestination等页面信息，若无对应的Router或NavDestination�
 
 | 名称   | 类型   | 只读  |  可选       |说明       |
 | ------ | ---- | ---------- |---------- |---------- |
-|  actionPhases | Array\<[GestureActionPhase](arkts-apis-uicontext-e.md#gestureactionphase20)\>    |否  |  否       |手势事件对象。 |
+| actionPhases | Array\<[GestureActionPhase](arkts-apis-uicontext-e.md#gestureactionphase20)\> | 否 | 否 | 需要监听的手势回调阶段。传入空数组时不监听任何手势回调阶段，仅当手势触发指定阶段时才会发送通知。 |
 
 ## SwiperContentInfo<sup>22+</sup>
 
-Swiper组件的内容区信息。
+Swiper组件的内容区信息，包含Swiper组件标识、唯一标识符及当前显示状态的子组件信息，用于获取Swiper运行时的内容区状态。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -106,15 +112,15 @@ Swiper组件的内容区信息。
 
 | 名称      | 类型 | 只读  | 可选 | 说明                    |
 | --------- | ---- | ----- | ---- | ----------------------- |
-| id        | string  | 否 | 否 | Swiper组件的id。 |
+| id        | string  | 否 | 否 | Swiper组件通过通用属性id设置的标识符，由开发者指定。 |
 | uniqueId  | ArkTS-Dyn: number <br>ArkTS-Sta: int  | 否 | 否 | Swiper组件的唯一标识符。 |
 | swiperItemInfos   | Array\<[SwiperItemInfo](#swiperiteminfo22)\> | 否 | 否 | 当前处于显示状态的Swiper子组件的信息。 |
 
 ## SwiperItemInfo<sup>22+</sup>
 
-Swiper子组件的信息。
+Swiper子组件的信息，包含子组件的唯一标识符和索引，可通过SwiperContentInfo获取。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -125,4 +131,24 @@ Swiper子组件的信息。
 | 名称      | 类型 | 只读  | 可选 | 说明                    |
 | --------- | ---- | ----- | ---- | -----------------------|
 | uniqueId  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否 | 否 | Swiper子组件的唯一标识符。   |
-| index     | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否 | 否 | Swiper子组件在Swiper中的索引。 |
+| index     | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否 | 否 | Swiper子组件在Swiper中的索引，取值从0开始，最大值为Swiper子组件数量-1。 |
+
+## NodeSensitiveInputInfo
+
+定义输入事件分发到[onNodeSensitiveInput](arkts-apis-uicontext-uiobserver.md#onnodesensitiveinput)接口中nodeIdentity指定节点时上报的信息。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| isAgent | boolean | 否 | 否 | 事件是否为Agent生成的事件。true表示该事件由系统Agent生成，或由具有ohos.permission.CONTROL_COMPONENT权限的应用注入；false表示用户生成的输入事件或其他注入事件。 |
+| type | [NodeSensitiveInputEventType](arkts-apis-uicontext-e.md#nodesensitiveinputeventtype) | 否 | 否 | 上报的输入事件类型。 |
+| touchEvent | [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明) | 否 | 是 | 触摸事件，仅当type为NodeSensitiveInputEventType.TOUCH时该字段生效；type为其他值时，该字段不生效，默认为undefined。 |
+| mouseEvent | [MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明) | 否 | 是 | 鼠标事件，仅当type为NodeSensitiveInputEventType.MOUSE时该字段生效；type为其他值时，该字段不生效，默认为undefined。 |
+| keyEvent | [KeyEvent](arkui-ts/ts-universal-events-key.md#keyevent对象说明) | 否 | 是 | 按键事件，仅当type为NodeSensitiveInputEventType.KEY时该字段生效；type为其他值时，该字段不生效，默认为undefined。 |

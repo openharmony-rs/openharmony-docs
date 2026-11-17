@@ -11,6 +11,8 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -27,25 +29,33 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 | 名称                                  |    值   |   说明                         |
 | ------------------------------------- | -------- | ---------------------------- |
-| INVALID_PARAMS                        | 401      | 非法入参。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                 |
-| NOT_SUPPORT                           | 801      | 操作不支持。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                 |
-| ERR_OUT_OF_MEMORY                     | 17620001 | 内存操作失败。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                   |
-| ERR_RUNTIME_ERROR                     | 17620002 | 表示在ArkTS和C之间转换参数失败。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
-| ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>            | 17620003 | 表示参数检查失败。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
-| ERR_INVALID_CALL          | 17620004 | 表示无效的函数调用。<br>**起始版本：** 26.0.0<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**模型约束：** 此接口仅可在Stage模型下使用。          |
-| ERR_CRYPTO_OPERATION                  | 17630001 | 调用三方算法库API出错。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。     |
+| INVALID_PARAMS                        | 401      | 非法入参。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23    <br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。               |
+| NOT_SUPPORT                           | 801      | 操作不支持。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23    <br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。             |
+| ERR_OUT_OF_MEMORY                     | 17620001 | 内存操作失败。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23   <br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。                  |
+| ERR_RUNTIME_ERROR                     | 17620002 | 获取Native对象失败或参数转换失败。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23     <br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。        |
+| ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>            | 17620003 | 表示参数检查失败。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20  <br>**ArkTS-Sta起始版本：** 23    <br>**模型约束：** 此接口仅可在Stage模型下使用。         |
+| ERR_INVALID_CALL          | 17620004 | 表示无效的函数调用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0  <br>**ArkTS-Sta起始版本：** 26.0.0           |
+| ERR_CRYPTO_OPERATION                  | 17630001 | 密码操作错误。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br>**ArkTS-Dyn起始版本：** 9  <br>**ArkTS-Sta起始版本：** 23   <br> **模型约束：** <br>API版本12+：此接口可在Stage模型和FA模型下使用。<br>API版本9-11：此接口仅可在Stage模型下使用。   |
 
 ## DataBlob
 
 二进制数据的封装接口，核心字段data为Uint8Array类型。
 
- **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+ **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+ **模型约束：**
+ - API版本12+：此接口可在Stage模型和FA模型下使用。
+ - API版本9-11：此接口仅可在Stage模型下使用。
 
  **系统能力：** SystemCapability.Security.CryptoFramework
 
+ **ArkTS-Dyn起始版本：** 9
+
+ **ArkTS-Sta起始版本：** 23
+ 
 | 名称 | 类型       | 只读 | 可选 | 说明   |
 | ---- | ---------- | ---- | ---- | ------ |
-| data | Uint8Array | 否   | 否   | 数据。 |
+| data | Uint8Array | 否   | 否   | 数据。|
 
 > **说明：**
 >
@@ -59,17 +69,21 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 > **说明：**
 >
-> iv（Initialization Vector，初始化向量）是用于对称加密模式（如 CBC/CTR/OFB/CFB/GCM/CCM/Poly1305）中引入随机性或唯一性的字节序列，保证相同明文在相同密钥下产生不同密文。
+> iv（Initialization Vector，初始化向量）是用于对称加密模式（如 CBC/CTR/OFB/CFB/GCM/CCM/ChaCha20-Poly1305）中引入随机性或唯一性的字节序列，保证相同明文在相同密钥下产生不同密文。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| algName | string | 否   | 否   | 指明对称加解密参数的算法模式。可选值如下：<br/> - "IvParamsSpec"：适用于CBC\|CTR\|OFB\|CFB模式。<br/> - "GcmParamsSpec"：适用于GCM模式。<br/> - "CcmParamsSpec"：适用于CCM模式。 |
+| algName | string | 否   | 否   | 指明对称加解密参数的算法模式。可选值如下：<br/> - "IvParamsSpec"：适用于CBC\|CTR\|OFB\|CFB模式。<br/> - "GcmParamsSpec"：适用于GCM模式。<br/> - "CcmParamsSpec"：适用于CCM模式。<br/>- "AeadParamsSpec"：适用于AES-GCM，AES-CCM，SM4-GCM和ChaCha20-Poly1305算法。 |
 
 > **说明：**
 >
@@ -81,15 +95,19 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 适用于CBC、CTR、OFB、CFB这些需要iv作为参数的加解密模式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型                  | 只读 | 可选 | 说明                                                         |
 | ---- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| iv   | [DataBlob](#datablob) | 否   | 否  | 指明加解密参数iv。常见取值如下：<br/>- AES的CBC\|CTR\|OFB\|CFB模式：iv长度为16字节。<br/>- 3DES的CBC\|OFB\|CFB模式：iv长度为8字节。<br/>- SM4<sup>10+</sup>的CBC\|CTR\|OFB\|CFB模式：iv长度为16字节。 |
+| iv   | [DataBlob](#datablob) | 否   | 否  | 加解密参数iv。常见长度如下：<br/>- AES的CBC\|CTR\|OFB\|CFB模式：iv长度为16字节。<br/>- 3DES的CBC\|OFB\|CFB模式：iv长度为8字节。<br/>- SM4<sup>10+</sup>的CBC\|CTR\|OFB\|CFB模式：iv长度为16字节。 |
 
 > **说明：**
 >
@@ -97,39 +115,46 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 ## GcmParamsSpec
 
-加解密参数[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
+加解密参数[ParamsSpec](#paramsspec)的子类，封装使用GCM AEAD模式进行加密或解密的参数，需要IV、AAD和认证标签。它是[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
 
 适用于GCM模式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| iv      | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数iv，长度为1~16字节，常用为12字节。                             |
-| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad，长度为0~INT_MAX字节，常用为16字节。                             |
+| iv      | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数iv，长度为1~128字节，常用为12字节。                             |
+| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad，长度为0~INT_MAX字节。                             |
 | authTag | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数authTag，长度为16字节。<br/>采用GCM模式加密时，需从[doFinal()](#dofinal)或[doFinalSync()](#dofinalsync12)输出的[DataBlob](#datablob)中提取末尾16字节，作为[init()](#init-1)或[initSync()](#initsync12)方法中GcmParamsSpec的authTag。 |
 
 > **说明：**
 >
 > 1. 传入[init()](#init-1)方法前需要指定其algName属性（来源于父类[ParamsSpec](#paramsspec)）。
-> 2. 对于1~16字节长度的iv，加解密算法库无额外限制，但结果取决于底层openssl的支持情况。
-> 3. 当aad参数不需要使用或aad长度为0时，可以将aad的data属性设置为一个空的Uint8Array，来构造GcmParamsSpec，写法为aad: { data: new Uint8Array() }。
+> 2. 当aad参数不需要使用或aad长度为0时，可以将aad的data属性设置为一个空的Uint8Array，来构造GcmParamsSpec，写法为aad: { data: new Uint8Array() }。
 
 ## CcmParamsSpec
 
-加解密参数[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
+加解密参数[ParamsSpec](#paramsspec)的子类，封装使用CCM AEAD模式进行加密或解密的参数，需要IV、AAD和认证标签。它是[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
 
 适用于CCM模式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -143,18 +168,22 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 ## Poly1305ParamsSpec<sup>22+</sup>
 
-加解密参数[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
+加解密参数[ParamsSpec](#paramsspec)的子类，封装使用ChaCha20-Poly1305 AEAD模式进行加密或解密的参数，需要nonce、AAD和认证标签。它是[ParamsSpec](#paramsspec)的子类，用于在对称加解密时作为[init()](#init-1)方法的参数。
 
-适用于[ChaCha20算法](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#chacha20)Poly1305模式。
+适用于[ChaCha20算法](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#chacha20)Poly1305模式。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| iv      | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数iv，长度为12字节。                              |
-| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad，长度为任意字节。                             |
+| iv      | [DataBlob](#datablob) | 否   | 否   | nonce（通过iv字段传入），长度为12字节。                              |
+| aad     | [DataBlob](#datablob) | 否   | 否   | 指明加解密参数aad。                             |
 | authTag | [DataBlob](#datablob) | 否   | 否   | 指定加解密参数authTag，长度为16字节。 |
 
 > **说明：**
@@ -165,42 +194,48 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 ## AeadParamsSpec
 
-用于AEAD（带关联数据的认证加密）对称加解密的[init()](#init-1)方法参数，继承自[ParamsSpec](#paramsspec)。
+用于AEAD（带附加数据的认证加密）对称加解密的[init()](#init-1)方法参数，继承自[ParamsSpec](#paramsspec)。
 
-适用于[AES算法](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#aes)的CCM/GCM分组模式、SM4算法的GCM模式和ChaCha20算法的Poly1305模式。
+适用于[AES算法](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#aes)的CCM/GCM分组模式、SM4算法的GCM模式和ChaCha20算法的Poly1305模式。
 
 > **说明：**
 >
 > 在使用AeadParamsSpec加密时：
 > - 若加密时指定了tagLen，解密时必须传入相同长度。
-> - 当前使用AeadParamsSpec参数，CCM模式下update(#update)与doFinal(#dofinal)只能调用其中一个进行加密或者解密。且每个方法只能调用一次。
+> - 当前使用AeadParamsSpec参数，CCM模式下[update](#update)与[doFinal](#dofinal)只能调用其中一个进行加密或者解密。且每个方法只能调用一次。
 > - 对于AES算法的GCM模式与SM4算法的GCM模式，tagLen仅支持4、8、12、13、14、15、16，若不填则默认为16。
 > - 对于AES算法的CCM模式，tagLen仅支持4、6、8、10、12、14、16，若不填则默认为12。
 > - 对于ChaCha20算法的Poly1305模式，tagLen仅支持16。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称    | 类型                  | 只读 | 可选 | 说明                                                         |
 | ------- | --------------------- | ---- | ---- | ------------------------------------------------------------ |
-| nonce      | Uint8Array | 否   | 否   | 指明加解密参数nonce。对于AES算法的CCM模式长度为7-13字节；对于AES算法的GCM模式、SM4算法的GCM模式和ChaCha20算法的Poly1305模式长度为1-128字节。       |
-| authenticatedData     | Uint8Array | 否   | 是   | 指明加解密参数aad，长度为任意字节。                             |
-| tagLen | number | 否   | 是   | 指定加解密参数authTag长度，单位为字节。对于AES算法的CCM模式，tagLen仅支持4、6、8、10、12、14、16，若不填则默认为12；对于AES算法的GCM模式与SM4算法的GCM模式，tagLen仅支持4、8、12、13、14、15、16，若不填则默认为16；对于ChaCha20算法的Poly1305模式，tagLen仅支持16。 |
+| nonce      | Uint8Array | 否   | 否   | 指明加解密参数nonce。<br>**说明：** <br>对于AES-CCM，nonce长度的取值范围为7~13字节。<br>对于AES-GCM，nonce长度范围为1~128字节，推荐使用12字节。 <br>对于SM4-GCM，nonce长度范围为1~128字节，推荐使用12字节。 <br>对于ChaCha20-Poly1305，nonce长度必须为12字节。     |
+| authenticatedData     | Uint8Array | 否   | 是   | 指定可选的附加认证数据。                             |
+| tagLen | ArkTS-Dyn: number <br>ArkTS-Sta: int | 否   | 是   | 认证标签长度，单位为字节。<br>加密时，标签将被添加到密文末尾。<br>解密时，标签应位于密文末尾。<br>取值应为整数。<br>**说明：** <br>对于AES-CCM，默认值为12。支持的取值为4、6、8、10、12、14和16。<br>对于AES-GCM，默认值为16。支持的取值为4、8、12、13、14、15和16。<br>对于SM4-GCM，默认值为16。支持的取值为4、8、12、13、14、15和16。<br>对于ChaCha20-Poly1305，默认值为16。支持的取值为16。 |
 
 ## CryptoMode
 
-表示加解密操作的枚举。
+枚举加密和解密的密码操作模式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 值   | 说明               |
 | ------------ | ---- | ------------------ |
@@ -211,74 +246,82 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 表示密钥参数的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
-
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 | 名称         | 值   | 说明             |
 | ------------ | ---- | ---------------- |
-| DSA_P_BN | 101 | DSA算法的素模数p。 |
-| DSA_Q_BN | 102 | DSA算法中密钥参数q（p-1的素因子）。 |
-| DSA_G_BN | 103 | DSA算法的参数g。 |
-| DSA_SK_BN | 104 | DSA算法的私钥sk。 |
-| DSA_PK_BN | 105 | DSA算法的公钥pk。 |
-| ECC_FP_P_BN | 201 | ECC算法中表示椭圆曲线Fp域的素数p。 |
-| ECC_A_BN | 202 | ECC算法中椭圆曲线的第一个系数a。 |
-| ECC_B_BN | 203 | ECC算法中椭圆曲线的第二个系数b。 |
-| ECC_G_X_BN | 204 | ECC算法中基点g的x坐标。 |
-| ECC_G_Y_BN | 205 | ECC算法中基点g的y坐标。 |
-| ECC_N_BN | 206 | ECC算法中基点g的阶n。 |
-| ECC_H_NUM | 207 | ECC算法中的余因子h。 |
-| ECC_SK_BN | 208 | ECC算法中的私钥sk。 |
-| ECC_PK_X_BN | 209 | ECC算法中，公钥pk（椭圆曲线上的一个点）的x坐标。 |
-| ECC_PK_Y_BN | 210 | ECC算法中，公钥pk（椭圆曲线上的一个点）的y坐标。 |
-| ECC_FIELD_TYPE_STR | 211 | ECC算法中，椭圆曲线的域类型（当前只支持Fp域）。 |
-| ECC_FIELD_SIZE_NUM | 212 | ECC算法中域的大小，单位为bits（注：对于Fp域，域的大小为素数p的bits长度）。 |
-| ECC_CURVE_NAME_STR | 213 | ECC算法中的SECG(Standards for Efficient Cryptography Group)曲线名称。 |
-| RSA_N_BN | 301 | RSA算法中的模数n。 |
-| RSA_SK_BN | 302 | RSA算法中的私钥sk（即私钥指数d）。 |
-| RSA_PK_BN | 303 | RSA算法中的公钥pk（即公钥指数e）。 |
-| DH_P_BN<sup>11+</sup> | 401 | DH算法中的素数p。 |
-| DH_G_BN<sup>11+</sup> | 402 | DH算法中的参数g。 |
-| DH_L_NUM<sup>11+</sup> | 403 | DH算法中私钥长度，单位为bits。 |
-| DH_SK_BN<sup>11+</sup> | 404 | DH算法中的私钥sk。 |
-| DH_PK_BN<sup>11+</sup> | 405 | DH算法中的公钥pk。 |
-| ED25519_SK_BN<sup>11+</sup> | 501 | Ed25519算法中的私钥sk。 |
-| ED25519_PK_BN<sup>11+</sup> | 502 | Ed25519算法中的公钥pk。 |
-| X25519_SK_BN<sup>11+</sup> | 601 | X25519算法中的私钥sk。 |
-| X25519_PK_BN<sup>11+</sup> | 602 | X25519算法中的公钥pk。 |
+| DSA_P_BN | 101 | DSA算法的素模数p。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework |
+| DSA_Q_BN | 102 | DSA算法中密钥参数q（p-1的素因子）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework |
+| DSA_G_BN | 103 | DSA算法的参数g。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23  <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| DSA_SK_BN | 104 | DSA算法的私钥sk。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| DSA_PK_BN | 105 | DSA算法的公钥pk。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_FP_P_BN | 201 | ECC算法中表示椭圆曲线Fp域的素数p。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_A_BN | 202 | ECC算法中椭圆曲线的第一个系数a。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_B_BN | 203 | ECC算法中椭圆曲线的第二个系数b。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_G_X_BN | 204 | ECC算法中基点g的x坐标。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_G_Y_BN | 205 | ECC算法中基点g的y坐标。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_N_BN | 206 | ECC算法中基点g的阶n。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_H_NUM | 207 | ECC算法中的余因子h。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_SK_BN | 208 | ECC算法中的私钥sk。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_PK_X_BN | 209 | ECC算法中，公钥pk（椭圆曲线上的一个点）的x坐标。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_PK_Y_BN | 210 | ECC算法中，公钥pk（椭圆曲线上的一个点）的y坐标。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_FIELD_TYPE_STR | 211 | ECC算法中，椭圆曲线的域类型（当前只支持Fp域）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_FIELD_SIZE_NUM | 212 | ECC算法中域的大小，单位为bits（注：对于Fp域，域的大小为素数p的bits长度）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| ECC_CURVE_NAME_STR | 213 | ECC算法中的SECG(Standards for Efficient Cryptography Group)曲线名称。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| RSA_N_BN | 301 | RSA算法中的模数n。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| RSA_SK_BN | 302 | RSA算法中的私钥sk（即私钥指数d）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| RSA_PK_BN | 303 | RSA算法中的公钥pk（即公钥指数e）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| DH_P_BN<sup>11+</sup> | 401 | DH算法中的素数p。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
+| DH_G_BN<sup>11+</sup> | 402 | DH算法中的参数g。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
+| DH_L_NUM<sup>11+</sup> | 403 | DH算法中私钥长度，单位为bits。 <br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
+| DH_SK_BN<sup>11+</sup> | 404 | DH算法中的私钥sk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
+| DH_PK_BN<sup>11+</sup> | 405 | DH算法中的公钥pk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
+| ED25519_SK_BN<sup>11+</sup> | 501 | Ed25519算法中的私钥sk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
+| ED25519_PK_BN<sup>11+</sup> | 502 | Ed25519算法中的公钥pk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
+| X25519_SK_BN<sup>11+</sup> | 601 | X25519算法中的私钥sk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
+| X25519_PK_BN<sup>11+</sup> | 602 | X25519算法中的公钥pk。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey <br>API版本11：SystemCapability.Security.CryptoFramework|
 
 ## AsyKeyDataItem
 
 表示非对称密钥数据项类型的枚举。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
 
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 | 名称         | 值   | 说明             |
 | ------------ | ---- | ---------------- |
-| EC_PRIVATE_K | 6 | 表示椭圆曲线（EC）私钥的 K。 |
-| EC_PRIVATE_04_X_Y_K | 7 | 表示椭圆曲线（EC）私钥的 04\|\|X\|\|Y\|\|K。 |
-| EC_PUBLIC_X_Y | 8 | 表示椭圆曲线（EC）公钥的 X\|\|Y。 |
-| EC_PUBLIC_04_X_Y | 9 | 表示椭圆曲线（EC）公钥的 04\|\|X\|\|Y 。 |
-| EC_PUBLIC_COMPRESS_X | 10 | 表示椭圆曲线（EC）公钥的 02\|\|X 或 03\|\|X。 |
+| ML_DSA_PRIVATE_SEED | 0 | 表示ML-DSA（Module-Lattice-Based Digital Signature Algorithm）私钥的种子。 |
+| ML_DSA_PRIVATE_RAW | 1 | 表示ML-DSA私钥的原始私钥数据。 |
+| ML_DSA_PUBLIC_RAW | 2 | 表示ML-DSA公钥的原始公钥数据。 |
+| ML_KEM_PRIVATE_SEED | 3 | 表示ML-KEM（Module-Lattice-Based Key-Encapsulation Mechanism）私钥的种子。 |
+| ML_KEM_PRIVATE_RAW | 4 | 表示ML-KEM私钥的原始私钥数据。 |
+| ML_KEM_PUBLIC_RAW | 5 | 表示ML-KEM公钥的原始公钥数据。 |
+| EC_PRIVATE_K | 6 | 表示椭圆曲线（EC）上的私钥标量k。 |
+| EC_PRIVATE_04_X_Y_K | 7 | 表示椭圆曲线（EC）密钥的复合编码04\|\|X\|\|Y\|\|K，其中04\|\|X\|\|Y为非压缩公钥点，K为私钥标量。|
+| EC_PUBLIC_X_Y | 8 | 表示椭圆曲线（EC）公钥的 X\|\|Y格式编码数据。 |
+| EC_PUBLIC_04_X_Y | 9 | 表示椭圆曲线（EC）公钥的 04\|\|X\|\|Y格式编码数据。|
+| EC_PUBLIC_COMPRESS_X | 10 | 表示椭圆曲线（EC）公钥的 02\|\|X 或 03\|\|X格式编码数据。|
 
 ## AsyKeySpecType<sup>10+</sup>
 
 表示密钥参数类型的枚举。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 值   | 说明             |
 | ------------ | ---- | ---------------- |
@@ -291,52 +334,49 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 表示加解密参数的枚举。这些参数支持通过[setCipherSpec](#setcipherspec10)接口设置，通过[getCipherSpec](#getcipherspec10)接口获取。
 
-当前只支持RSA算法和SM2算法，从API version 11开始，增加对SM2_MD_NAME_STR参数的支持，详细规格请参考[加解密规格](../../security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md)。
+当前只支持RSA算法和SM2算法，详细规格请参考[加解密规格](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
-
-API version 10-11 系统能力为 SystemCapability.Security.CryptoFramework；从 API version 12 开始为SystemCapability.Security.CryptoFramework.Cipher
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 | 名称         | 值   | 说明             |
 | ------------ | ---- | ---------------- |
-| OAEP_MD_NAME_STR | 100 | 表示RSA算法中，使用PKCS1_OAEP模式时，消息摘要功能的算法名。 |
-| OAEP_MGF_NAME_STR | 101 | 表示RSA算法中，使用PKCS1_OAEP模式时，掩码生成算法（目前仅支持MGF1）。 |
-| OAEP_MGF1_MD_STR | 102 | 表示RSA算法中，使用PKCS1_OAEP模式时，MGF1掩码生成功能的消息摘要算法。 |
-| OAEP_MGF1_PSRC_UINT8ARR | 103 | 表示RSA算法中，使用PKCS1_OAEP模式时，pSource的字节流。 |
-| SM2_MD_NAME_STR<sup>11+</sup> | 104 | 表示SM2算法中，使用的摘要算法名。 |
+| OAEP_MD_NAME_STR | 100 | 表示RSA算法中，使用PKCS1_OAEP模式时，消息摘要功能的算法名。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Cipher <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| OAEP_MGF_NAME_STR | 101 | 表示RSA算法中，使用PKCS1_OAEP模式时，掩码生成算法（目前仅支持MGF1）。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Cipher <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| OAEP_MGF1_MD_STR | 102 | 表示RSA算法中，使用PKCS1_OAEP模式时，MGF1掩码生成功能的消息摘要算法。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Cipher <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| OAEP_MGF1_PSRC_UINT8ARR | 103 | 表示RSA算法中，使用PKCS1_OAEP模式时，pSource的字节流。<br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Cipher <br>API版本10-11：SystemCapability.Security.CryptoFramework|
+| SM2_MD_NAME_STR<sup>11+</sup> | 104 | 表示SM2算法中，使用的摘要算法名。<br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23 <br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Cipher <br>API版本11：SystemCapability.Security.CryptoFramework|
 
 ## SignSpecItem<sup>10+</sup>
 
 表示签名验签参数的枚举。这些参数支持通过[setSignSpec](#setsignspec10)、[setVerifySpec](#setverifyspec10)接口设置，通过[getSignSpec](#getsignspec10)、[getVerifySpec](#getverifyspec10)接口获取。
 
-当前只支持RSA算法和SM2算法，从API version 11开始，增加对SM2_USER_ID_UINT8ARR参数的支持，详细规格请参考[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
-
-API version 10-11 系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为 SystemCapability.Security.CryptoFramework.Signature。
+当前只支持RSA算法和SM2算法，从API版本26.0.0开始，支持ML-DSA算法。详细规格请参考[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。
 
 | 名称         | 值   | 说明             |
 | ------------ | ---- | ---------------- |
-| PSS_MD_NAME_STR | 100 | 表示RSA算法中，使用PSS模式时，消息摘要功能的算法名。 |
-| PSS_MGF_NAME_STR | 101 | 表示RSA算法中，使用PSS模式时，掩码生成算法（目前仅支持MGF1）。 |
-| PSS_MGF1_MD_STR | 102 | 表示RSA算法中，使用PSS模式时，MGF1掩码生成功能的消息摘要参数。 |
-| PSS_SALT_LEN_NUM | 103 | 表示RSA算法中，使用PSS模式时，盐值的长度，长度以字节为单位。 |
-| PSS_TRAILER_FIELD_NUM | 104 | 表示RSA算法中，使用PSS模式时，用于编码操作的整数。 |
-| SM2_USER_ID_UINT8ARR<sup>11+</sup> | 105 | 表示SM2算法中，用户身份标识字段。 |
+| PSS_MD_NAME_STR | 100 | 表示RSA算法中，使用PSS模式时，消息摘要功能的算法名。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**ArkTS-Dyn起始版本：** 10 <br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| PSS_MGF_NAME_STR | 101 | 表示RSA算法中，使用PSS模式时，掩码生成算法（目前仅支持MGF1）。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| PSS_MGF1_MD_STR | 102 | 表示RSA算法中，使用PSS模式时，MGF1掩码生成功能的消息摘要算法。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| PSS_SALT_LEN_NUM | 103 | 表示RSA算法中，使用PSS模式时，盐值的长度，长度以字节为单位。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| PSS_TRAILER_FIELD_NUM | 104 | 表示RSA算法中，使用PSS模式时，用于编码操作的整数。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本10-11：SystemCapability.Security.CryptoFramework <br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| SM2_USER_ID_UINT8ARR<sup>11+</sup> | 105 | 表示SM2算法中，用户身份标识字段。<br>**系统能力：** <br>API版本12+：SystemCapability.Security.CryptoFramework.Signature <br>API版本11：SystemCapability.Security.CryptoFramework <br>**ArkTS-Dyn起始版本：** 11 <br>**ArkTS-Sta起始版本：** 23<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ML_DSA_DETERMINISTIC_BOOL | 106 |表示ML-DSA签名和验证过程中是否使用确定性签名。不设置时默认值为false。<br>**系统能力：** <br>SystemCapability.Security.CryptoFramework.Signature <br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| ML_DSA_MU_BOOL | 107 | 表示ML-DSA签名和验证过程中的mu参数值。不设置时默认值为false，设置为true时，待签名数据需是64字节的哈希。<br>**系统能力：** <br>SystemCapability.Security.CryptoFramework.Signature <br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| ML_DSA_CONTEXT_UINT8ARR | 108 | 表示ML-DSA签名和验证过程中的上下文数据。最大长度为255字节，用于标识签名验签场景，该参数在设置ML_DSA_MU_BOOL为true时无效，不设置时默认值为空字符串。<br>**系统能力：** <br>SystemCapability.Security.CryptoFramework.Signature <br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0<br> **模型约束**：此接口仅可在Stage模型下使用。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 ## AsyKeySpec<sup>10+</sup>
 
 指定非对称密钥参数的基本接口，用于创建密钥生成器。在指定非对称密钥参数时需要构造其子类对象，并将子类对象传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。构造子类对象时，除了RSA密钥采用小端写法外，其他bigint类型的密钥参数均采用大端写法，并使用正数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version10-11系统能力为SystemCapability.Security.CryptoFramework；从API version12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -349,11 +389,15 @@ API version10-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version10-11系统能力为SystemCapability.Security.CryptoFramework；从API version12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -367,11 +411,15 @@ API version10-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version10-11系统能力为SystemCapability.Security.CryptoFramework；从API version12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -384,11 +432,15 @@ API version10-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -400,11 +452,15 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 指定椭圆曲线的域类型。当前只支持Fp域。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -414,11 +470,15 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 指定椭圆曲线的素数域。是[ECField](#ecfield10)的子类。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework。从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -428,11 +488,15 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework。从A
 
 指定椭圆曲线上的一个点。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -445,11 +509,15 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -458,7 +526,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 | b | bigint | 否   | 否   | 指定椭圆曲线的第二个系数b。 |
 | g | [Point](#point10) | 否   | 否   | 指定基点g。 |
 | n | bigint | 否   | 否   | 指定基点g的阶数n。 |
-| h | number | 否   | 否   | 指定余因子h。 |
+| h | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 指定余因子h。 |
 
 ## ECCPriKeySpec<sup>10+</sup>
 
@@ -466,11 +534,15 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -483,11 +555,15 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -500,11 +576,15 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -518,11 +598,15 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -534,11 +618,15 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -551,11 +639,15 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -569,11 +661,15 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                      |
 | ---- | ------ | ---- | ---- | ------------------------- |
@@ -585,11 +681,15 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                      |
 | ---- | ------ | ---- | ---- | ------------------------- |
@@ -601,11 +701,15 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                      |
 | ---- | ------ | ---- | ---- | ------------------------- |
@@ -618,11 +722,15 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                     |
 | ---- | ------ | ---- | ---- | ------------------------ |
@@ -634,11 +742,15 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                     |
 | ---- | ------ | ---- | ---- | ------------------------ |
@@ -650,11 +762,15 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                     |
 | ---- | ------ | ---- | ---- | ------------------------ |
@@ -663,21 +779,25 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 ## DHCommonParamsSpec<sup>11+</sup>
 
-密钥参数[AsyKeySpec](#asykeyspec10)的子类，用于指定DH算法中公私钥包含的参数。
+密钥参数[AsyKeySpec](#asykeyspec10)的子类，用于指定DH算法中公私钥包含的公共参数。
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                |
 | ---- | ------ | ---- | ---- | ----------------------------------- |
 | p    | bigint | 否   | 否   | 指定DH算法中大素数p。               |
 | g    | bigint | 否   | 否   | 指定DH算法中参数g。                 |
-| l    | number | 否   | 否   | 指定DH算法中私钥的长度，单位为bits。 |
+| l    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 指定DH算法中私钥的长度，单位为bits。 |
 
 ## DHPriKeySpec<sup>11+</sup>
 
@@ -685,11 +805,15 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型               | 只读 | 可选 | 说明                                 |
 | ------ | ------------------ | ---- | ---- | ------------------------------------ |
@@ -702,11 +826,15 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型               | 只读 | 可选 | 说明                                 |
 | ------ | ------------------ | ---- | ---- | ------------------------------------ |
@@ -719,11 +847,15 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 在使用密钥参数生成密钥时，将其传入[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法创建密钥生成器。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型               | 只读 | 可选 | 说明                                 |
 | ------ | ------------------ | ---- | ---- | ------------------------------------ |
@@ -735,11 +867,15 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 密钥派生函数参数，使用密钥派生函数进行密钥派生时，需要构建其子类对象并作为输入。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Kdf
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Kdf
+- API版本11：SystemCapability.Security.CryptoFramework
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Kdf。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -749,37 +885,45 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 密钥派生函数参数[KdfSpec](#kdfspec11)的子类，作为PBKDF2密钥派生函数进行密钥派生时的输入。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Kdf
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Kdf
+- API版本11：SystemCapability.Security.CryptoFramework
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Kdf。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | password | string \| Uint8Array | 否   | 否   | 用户输入的原始密码。|
 | salt | Uint8Array | 否   | 否   | 盐值。 |
-| iterations | number | 否   | 否   | 迭代次数，需要为正整数。 |
-| keySize | number | 否   | 否   | 派生得到的密钥字节长度，单位为bytes。 |
+| iterations | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 迭代次数，需要为正整数。 |
+| keySize | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 派生得到的密钥字节长度，需要为正整数，单位为bytes。 |
 
 > **说明：**
 >
->  password 是原始密码。如果使用 string 类型，需直接传入用于密钥派生的数据，而不是 HexString 或 base64 等字符串类型，并确保该字符串为 UTF-8 编码，否则派生结果会有差异。
+> password是原始密码。如果使用string类型，需直接传入用于密钥派生的数据，而不是HexString或Base64等字符串类型，并确保该字符串为UTF-8编码，否则派生结果会有差异。
 
 ## HKDFSpec<sup>12+</sup>
 
 密钥派生函数参数[KdfSpec](#kdfspec11)的子类，作为HKDF密钥派生函数进行密钥派生时的输入。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Kdf
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | key | string \| Uint8Array | 否   | 否   | 密钥材料。|
 | salt | Uint8Array | 否   | 否   | 盐值。 |
-| info | Uint8Array | 否   | 否   | 拓展信息。 |
-| keySize | number | 否   | 否   | 派生得到的密钥字节长度，单位为bytes。 |
+| info | Uint8Array | 否   | 否   | 扩展信息。 |
+| keySize | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 派生得到的密钥字节长度，需要为正整数，单位为bytes。 |
 
 > **说明：**
 >
@@ -793,37 +937,45 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 密钥派生函数参数[KdfSpec](#kdfspec11)的子类，作为SCRYPT密钥派生函数进行密钥派生时的输入。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Kdf
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | passphrase | string \| Uint8Array | 否   | 否   | 用户输入的原始密码。|
 | salt | Uint8Array | 否   | 否   | 盐值。 |
-| n | number | 否   | 否   | 迭代次数，需要为正整数。 |
-| p | number | 否   | 否   | 并行化参数，需要为正整数。 |
-| r | number | 否   | 否   | 块大小参数，需要为正整数。 |
-| maxMemory | number | 否   | 否   | 最大内存限制参数，需要为正整数，单位为bytes。 |
-| keySize | number | 否   | 否   | 派生得到的密钥字节长度，需要为正整数，单位为bytes。 |
+| n | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | CPU/内存开销参数，需要为正整数。 |
+| r | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 块大小参数，需要为正整数。 |
+| p | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 并行化参数，需要为正整数。 |
+| maxMemory | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 否   | 最大内存限制参数，需要为正整数，单位为bytes。 |
+| keySize | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 派生得到的密钥字节长度，需要为正整数，单位为bytes。 |
 
 > **说明：**
 >
-> passphrase指的是原始密码，如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、base64等字符串类型，同时需要确保该字符串为utf-8编码，否则派生结果会有差异。
+> passphrase指的是原始密码，如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、Base64等字符串类型，同时需要确保该字符串为UTF-8编码，否则派生结果会有差异。
 
 ## X963KdfSpec<sup>22+</sup>
 
 密钥派生函数参数[KdfSpec](#kdfspec11)的子类，作为X963KDF密钥派生函数进行密钥派生时的输入。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Kdf
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------ |
 | key | string \| Uint8Array | 否   | 否   | 密钥材料。|
-| info | Uint8Array | 否   | 否   | 附加信息。 |
-| keySize | number | 否   | 否   | 派生得到的密钥字节长度，需要为正整数，单位为bytes。 |
+| info | Uint8Array | 否   | 否   | 共享信息。|
+| keySize | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否   | 派生得到的密钥字节长度，需要为正整数，单位为bytes。 |
 
 > **说明：**
 >
@@ -833,9 +985,13 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 SM2密文参数，使用SM2密文格式转换函数进行格式转换时，需要用到此对象。可以通过指定此参数，生成符合国密标准的ASN.1格式的SM2密文，反之，也可以从ASN.1格式的SM2密文中获取具体参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -855,14 +1011,18 @@ SM2密文参数，使用SM2密文格式转换函数进行格式转换时，需�
 ## KeyEncodingConfig<sup>18+</sup>
 RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数，生成指定算法、密码的编码后的私钥字符串。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | password | string | 否   | 否   | 密码。|
-| cipherName | string | 否   | 否   | 算法名。 |
+| cipherName | string | 否   | 否   | 用于编码私钥的对称密码算法。 |
 
 > **说明：**
 >
@@ -871,26 +1031,34 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 > - cipherName是必选参数，指定编码用到的算法。当前仅支持AES-128-CBC、AES-192-CBC、AES-256-CBC、DES-EDE3-CBC。
 
 ## MacSpec<sup>18+</sup>
-消息认证码参数，计算HMAC、CMAC消息认证码时，需要构建子类对象并作为输入参数。
+消息认证码参数，计算HMAC或CMAC时，需要构建子类对象并作为输入参数。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| algName | string | 否   | 否   | 消息验证码算法名。|
+| algName | string | 否   | 否   | 消息认证码算法名。|
 
 > **说明：**
 >
-> algName是必选参数，表示消息验证码算法。
+> algName是必选参数，表示消息认证码算法。
 
 ## HmacSpec<sup>18+</sup>
-密钥派生函数参数[MacSpec](#macspec18)的子类，作为HMAC消息验证码计算的输入。
+消息认证码参数[MacSpec](#macspec18)的子类，作为HMAC计算的输入。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -901,15 +1069,19 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 > mdName是必选参数，表示HMAC摘要算法。
 
 ## CmacSpec<sup>18+</sup>
-密钥派生函数参数[MacSpec](#macspec18)的子类，作为CMAC消息验证码计算的输入。
+消息认证码参数[MacSpec](#macspec18)的子类，作为CMAC计算的输入。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| cipherName | string | 否   | 否   | 对称加密算法名。 |
+| cipherName | string | 否   | 否   | CMAC使用的对称密码算法名。 |
 
 > **说明：**
 >
@@ -917,15 +1089,19 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 
 ## EccSignatureSpec<sup>20+</sup>
 
-包含（r、s）的sm2签名数据的结构体。
+包含（r、s）的ECC/SM2签名数据的对象。
 
 > **说明：**
 >
 > r和s的长度各为256位。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
@@ -938,13 +1114,21 @@ RSA私钥编码参数，使用获取私钥字符串时，可以添加此参数�
 
 密钥通过子类密钥生成器来生成，详见子类描述。具体子类有：[SymKey](#symkey)、[PubKey](#pubkey)、[PriKey](#prikey)。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                         |
 | ------- | ------ | ---- | ---- | ---------------------------- |
@@ -955,17 +1139,21 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 getEncoded(): DataBlob
 
-同步方法，获取密钥数据的字节流。密钥可以是对称密钥、公钥或私钥。公钥格式需符合ASN.1语法、X.509规范和DER编码；私钥格式需符合ASN.1语法、PKCS#8规范和DER编码。
+同步方法，获取密钥数据的字节流。密钥可以是对称密钥、公钥或私钥。公钥格式需符合ASN.1语法、X.509规范和DER编码；私钥格式需符合ASN.1语法、PKCS #8规范和DER编码。
 
 > **说明：**
 >
 > RSA算法使用密钥参数生成私钥时，私钥对象支持getEncoded。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -975,67 +1163,84 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 801 | this operation is not supported. |
-| 17620001 | memory operation failed. |
-| 17630001 | crypto operation error. |
+| 801 | This operation is not supported. |
+| 17620001 | Memory operation failed. |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateAesKey() {
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-  let symKey = await symKeyGenerator.generateSymKey();
-  let encodedKey = symKey.getEncoded();
-  console.info('key hex: ' + encodedKey.data);
+  try {
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+    let symKey = await symKeyGenerator.generateSymKey();
+    let encodedKey = symKey.getEncoded();
+    console.info('key hex: ' + encodedKey.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateAesKey failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
 ### getKeySize
 
-getKeySize(): number
+ArkTS-Dyn: getKeySize(): number
 
-以同步方式获取密钥的比特长度。密钥可以是对称密钥、公钥或私钥。
+ArkTS-Sta: getKeySize(): int
 
-**起始版本：** 26.0.0
+获取密钥大小，单位为bits。密钥可以是对称密钥、公钥或私钥。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
 | 类型                  | 说明              |
 | --------------------- | ------------------------ |
-| number | 获取密钥的比特长度。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 密钥大小，单位为bits。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | ---------------------- |
-| 17620001 | memory operation failed. |
-| 17620002 | failed to convert parameters between arkts and c. |
-| 17630001 | crypto operation error. |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed. |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateAesKey() {
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-  let symKey = await symKeyGenerator.generateSymKey();
-  let symKeyLen = symKey.getKeySize();
-  console.info('keysize is: ' + symKeyLen);
+  try {
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+    let symKey = await symKeyGenerator.generateSymKey();
+    let symKeyLen = symKey.getKeySize();
+    console.info('keysize is: ' + symKeyLen);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateAesKey failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1045,51 +1250,75 @@ async function testGenerateAesKey() {
 
 对称密钥通过对称密钥生成器[SymKeyGenerator](#symkeygenerator)来生成。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ### clearMem
 
 clearMem(): void
 
-同步方法，将系统底层内存中的密钥内容清零。建议在不再使用对称密钥实例时调用此函数，避免密钥数据在内存中存留过久。
+同步方法，将系统底层内存中的密钥数据清零。建议在不再使用对称密钥实例时调用此函数，避免密钥数据在内存中存留过久。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.SymKey。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateAesKeyFun() {
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-  let key = await symKeyGenerator.generateSymKey();
-  let encodedKey = key.getEncoded();
-  console.info('key blob: '+ encodedKey.data);
-  key.clearMem();
-  encodedKey = key.getEncoded();
-  console.info('key blob：' + encodedKey.data);
+  try {
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
+    let key = await symKeyGenerator.generateSymKey();
+    let encodedKey = key.getEncoded();
+    console.info('key blob: '+ encodedKey.data);
+    key.clearMem();
+    encodedKey = key.getEncoded();
+    console.info('key blob: ' + encodedKey.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateAesKeyFun failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
 ## PubKey
 
-公钥，是[Key](#key)的子类，在非对称加解密、验签、密钥协商时需要将其对象作为输入使用。
+公钥，是[Key](#key)的子类，在非对称加密、验签、密钥协商时需要将其对象作为输入使用。
 
 公钥可以通过非对称密钥生成器[AsyKeyGenerator](#asykeygenerator)、[AsyKeyGeneratorBySpec](#asykeygeneratorbyspec10)来生成。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ### getAsyKeySpec<sup>10+</sup>
 
-getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | number
+ArkTS-Dyn: getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | number
+
+ArkTS-Sta: getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | int
 
 同步方法，获取密钥参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1101,23 +1330,26 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| bigint \| string \| number | 用于查看密钥参数的具体内容。 |
+| ArkTS-Dyn: bigint \| string \| number<br>ArkTS-Sta: bigint \| string \| int | 用于查看密钥参数的具体内容。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported.          |
-| 17620001 | memory operation failed. |
-| 17630001 | crypto operation error. |
-| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. <br>适用版本：12+         |
+| 17620001 | Memory operation failed. |
+| 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数。
 function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
@@ -1142,13 +1374,62 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
   return eccCommonSpec;
 }
 
-async function testgetAsyKeySpec() {
-  let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
-  let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
-  let keyPair = await generatorBySpec.generateKeyPair();
-  let key = keyPair.pubKey;
-  let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
-  console.info('ecc item --- p: ' + p.toString(16));
+async function testGetAsyKeySpec() {
+  try {
+    let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
+    let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
+    let keyPair = await generatorBySpec.generateKeyPair();
+    let pubKey = keyPair.pubKey;
+    let eccPrimeP = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+    console.info('ecc item --- p: ' + eccPrimeP.toString(16));
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetAsyKeySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数。
+function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
+  let fieldFp: cryptoFramework.ECFieldFp = {
+    fieldType: 'Fp',
+    p: BigInt('26959946667150639794667015087019630673557916260026308143510066298881')
+  }
+  let G: cryptoFramework.Point = {
+    x: BigInt('19277929113566293071110308034699488026831934219452440156649784352033'),
+    y: BigInt('19926808758034470970197974370888749184205991990603949537637343198772')
+  }
+  let eccCommonSpec: cryptoFramework.ECCCommonParamsSpec = {
+    algName: 'ECC',
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    field: fieldFp,
+    a: BigInt('26959946667150639794667015087019630673557916260026308143510066298878'),
+    b: BigInt('18958286285566608000408668544493926415504680968679321075787234672564'),
+    g: G,
+    n: BigInt('26959946667150639794667015087019625940457807714424391721682722368061'),
+    h: 1
+  }
+  return eccCommonSpec;
+}
+
+async function testGetAsyKeySpec() {
+  try {
+    let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
+    let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
+    let keyPair = await generatorBySpec.generateKeyPair();
+    let key = keyPair.pubKey;
+    let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+    console.info('ecc item --- p: ' + p.toString());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getAsyKeySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1156,24 +1437,28 @@ async function testgetAsyKeySpec() {
 
 getEncodedDer(format: string): DataBlob
 
-支持根据指定的密钥格式（如规范、压缩状态等），获取符合ASN.1语法和DER编码的公钥数据。目前仅支持ECC压缩和非压缩格式的公钥数据。
+支持根据指定的密钥格式（如规范、压缩状态等），获取符合ASN.1语法和DER编码的公钥数据。
 
 > **说明：**
 >
 > 本接口和[Key.getEncoded()](#getencoded)的区别是：
 >
 > 1. 本接口可根据入参决定数据的输出格式。
-> 2. [Key.getEncoded()](#getencoded)接口，不支持指定密钥格式，生成的数据格式与原始数据格式保持一致。（原始数据格式，指通过[convertKey](#convertkey-3)接口生成密钥对象时的数据格式）。
+> 2. [Key.getEncoded()](#getencoded)接口，不支持指定获取密钥数据的格式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | 是   | 用于指定当前密钥格式。<br>在API版本12-24，取值仅支持"X509\|COMPRESSED"和"X509\|UNCOMPRESSED"。<br>从API版本26.0.0开始，RSA公钥格式取值支持"PKCS1"和"X509"。 |
+| format  | string | 是   | 用于指定当前密钥格式。支持EC密钥，format取值支持"X509\|COMPRESSED"和"X509\|UNCOMPRESSED"。<br>从API版本26.0.0开始，支持RSA密钥，format取值支持"PKCS1"和"X509"。<br>从API版本26.0.0开始，支持ML-DSA和ML-KEM密钥，format取值支持"X509"。 |
 
 **返回值：**
 
@@ -1182,28 +1467,35 @@ getEncodedDer(format: string): DataBlob
 | [DataBlob](#datablob) | 返回满足ASN.1语法和DER编码的指定密钥格式的公钥数据。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed. |
-| 17630001 | crypto operation error. |
-| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed. |
+| 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGetEncodedDer() {
-  let pkData = new Uint8Array([48, 90, 48, 20, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 9, 43, 36, 3, 3, 2, 8, 1, 1, 7, 3, 66, 0, 4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242, 206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
-  let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
-  let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await generator.convertKey(pubKeyBlob, null);
-  let key = keyPair.pubKey;
-  let returnBlob = key.getEncodedDer('X509|UNCOMPRESSED');
-  console.info('returnBlob data：' + returnBlob.data);
+  try {
+    let pkData = new Uint8Array([48, 90, 48, 20, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 9, 43, 36, 3, 3, 2, 8, 1, 1, 7, 3, 66, 0, 4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195, 157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242, 206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
+    let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
+    let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await generator.convertKey(pubKeyBlob, null);
+    let key = keyPair.pubKey;
+    let returnBlob = key.getEncodedDer('X509|UNCOMPRESSED');
+    console.info('returnBlob data: ' + returnBlob.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetEncodedDer failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1211,38 +1503,44 @@ async function testGetEncodedDer() {
 
 getEncodedPem(format: string): string
 
-同步方法，获取密钥数据的字符串。密钥可以是RSA公钥或私钥。公钥需符合X.509、PKCS#1规范，并采用PEM编码。
+获取PEM编码的密钥数据。此API以同步方式返回结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | 是   | 指定的获取密钥字符串的编码格式。其中，公钥可为'PKCS1' 或'X509'格式。|
+| format  | string | 是   | 指定的获取密钥字符串的编码格式。支持RSA密钥，format取值支持"X509"或"PKCS1"。<br>从API版本26.0.0起，支持EC、ML-DSA和ML-KEM密钥，format取值支持"X509"。|
 
 **返回值：**
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| string | 用于获取指定密钥格式的具体内容。 |
+| string | PEM编码的公钥数据。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed. |
-| 17630001 | crypto operation error. |
-| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
+| 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed. |
+| 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let publicPkcs1Str1024: string =
   '-----BEGIN RSA PUBLIC KEY-----\n'
@@ -1251,28 +1549,35 @@ let publicPkcs1Str1024: string =
     + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
     + '-----END RSA PUBLIC KEY-----\n';
 
-function TestPubKeyPkcs1ToX509BySync1024() {
+function testPubKeyPkcs1ToX509BySync1024() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  let keyPair = rsaGenerator.convertPemKeySync(publicPkcs1Str1024, null);
-  let pubPemKey = keyPair.pubKey;
-  let pubString = pubPemKey.getEncodedPem('X509');
-  console.info('[sync]TestPubKeyPkcs1ToX509BySync1024 pubString output = ' + pubString);
+  try {
+    let keyPair = rsaGenerator.convertPemKeySync(publicPkcs1Str1024, null);
+    let pubPemKey = keyPair.pubKey;
+    let pubString = pubPemKey.getEncodedPem('X509');
+    console.info('[sync]testPubKeyPkcs1ToX509BySync1024 pubString output = ' + pubString);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testPubKeyPkcs1ToX509BySync1024 failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
 ### getKeyData
 
-getKeyData(itemType: AsyKeyDataItem): Promise&lt;Uint8Array&gt;
+getKeyData(itemType: AsyKeyDataItem): Promise\<Uint8Array>
 
 指定密钥数据项类型，获取对应类型的公钥数据。使用Promise异步回调。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1288,26 +1593,110 @@ getKeyData(itemType: AsyKeyDataItem): Promise&lt;Uint8Array&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 17620001 | memory operation failed. |
-| 17620002 | failed to convert parameters between arkts and c. |
-| 17620003 | parameter check failed. |
-| 17630001 | crypto operation error. |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed. |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17620003 | Parameter check failed. |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function eccGetKeyDataTest() {
-  let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await eccGenerator.generateKeyPair();
-  let returnBlob = await keyPair.pubKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
-  console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+  try {
+    let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await eccGenerator.generateKeyPair();
+    let returnBlob = await keyPair.pubKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
+    console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccGetKeyDataTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
+```
+
+JS示例：
+
+在Lite Wearable侧非对称密钥只支持ECC256算法。
+
+下述样例以非对称算法为ECC256为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="GetKeyDataTest">ECC256公钥获取数据异步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function getKeyDataTest() {
+  try {
+    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+    let keyGenPromise = asyKeyGenerator.generateKeyPair();
+    keyGenPromise.then(function (keyPair) {
+      let pubKey = keyPair.pubKey;
+      pubKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_04_X_Y).then(function (returnBlob) {
+        console.info('EC_PUBLIC_04_X_Y data: ' + returnBlob);
+      }).catch(function (error) {
+        console.error('getKeyData failed. Code: ' + error.code + " : " + error.message);
+      })
+    }).catch(function (error) {
+      console.error('generateKeyPair failed. Code: ' + error.code + " : " + error.message);
+    })
+  } catch (error) {
+    console.error(`getKeyDataTest failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    GetKeyDataTest() {
+        getKeyDataTest();
+    }
+};
 ```
 
 ### getKeyDataSync
@@ -1316,13 +1705,15 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 同步方法，指定密钥数据项类型，获取对应类型的公钥数据。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1338,50 +1729,134 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 17620001 | memory operation failed. |
-| 17620002 | failed to convert parameters between arkts and c. |
-| 17620003 | parameter check failed. |
-| 17630001 | crypto operation error. |
+| 17620001 | Memory operation failed. |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17620003 | Parameter check failed. |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function eccGetKeyDataTest() {
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = eccGenerator.generateKeyPairSync();
-  let returnBlob = keyPair.pubKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
-  console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+  try {
+    let keyPair = eccGenerator.generateKeyPairSync();
+    let returnBlob = keyPair.pubKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_X_Y);
+    console.info('EC_PUBLIC_X_Y data: ' + returnBlob);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccGetKeyDataTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
+```
+
+JS示例：
+
+在Lite Wearable侧非对称密钥只支持ECC256算法。
+
+下述样例以非对称算法为ECC256为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="GetKeyDataSyncTest">ECC256公钥获取数据同步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function getKeyDataSyncTest() {
+  try {
+    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+    let keyPair = asyKeyGenerator.generateKeyPairSync();
+    let returnBlob = keyPair.pubKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_04_X_Y);
+    console.info('EC_PUBLIC_04_X_Y data: ' + returnBlob);
+  } catch (error) {
+    console.error(`getKeyDataSyncTest failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    GetKeyDataSyncTest() {
+        getKeyDataSyncTest();
+    }
+};
 ```
 
 ## PriKey
 
-私钥，是[Key](#key)的子类，在非对称加解密、签名、密钥协商时需要将其作为输入使用。
+私钥，是[Key](#key)的子类，在非对称解密、签名、密钥协商时需要将其作为输入使用。
 
 私钥可以通过非对称密钥生成器[AsyKeyGenerator](#asykeygenerator)、[AsyKeyGeneratorBySpec](#asykeygeneratorbyspec10)来生成。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 ### clearMem
 
 clearMem(): void
 
-同步方法，清零系统底层内存中的密钥内容。
+同步方法，清零系统底层内存中的密钥数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testClearMem() {
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
@@ -1390,23 +1865,31 @@ async function testClearMem() {
   keyGenPromise.then(keyPair => {
     let priKey = keyPair.priKey;
     let returnBlob = priKey.getEncodedDer('PKCS8');
-    console.info('returnBlob data：' + returnBlob.data);
+    console.info('returnBlob data: ' + returnBlob.data);
     priKey.clearMem(); // 对于非对称私钥，clearMem()释放内部密钥结构。执行clearMem后，不支持getEncoded()。
+  }).catch((error: BusinessError) => {
+    console.error(`generateKeyPair failed, ${error.code}, ${error.message}`);
   });
 }
 ```
 
 ### getAsyKeySpec<sup>10+</sup>
 
-getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | number
+ArkTS-Dyn: getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | number
+
+ArkTS-Sta: getAsyKeySpec(itemType: AsyKeySpecItem): bigint | string | int
 
 同步方法，获取密钥参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1418,23 +1901,26 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| bigint \| string \| number | 用于查看密钥参数的具体内容。 |
+| ArkTS-Dyn: bigint \| string \| number<br>ArkTS-Sta: bigint \| string \| int | 用于查看密钥参数的具体内容。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported.          |
-| 17620001 | memory operation failed. |
-| 17630001 | crypto operation error. |
-| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported.          |
+| 17620001 | Memory operation failed. |
+| 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数。
 function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
   let fieldFp: cryptoFramework.ECFieldFp = {
@@ -1458,61 +1944,112 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
   return eccCommonSpec;
 }
 
-async function testgetAsyKeySpec() {
-  let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
-  let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
-  let keyPair = await generatorBySpec.generateKeyPair();
-  let key = keyPair.priKey;
-  let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
-  console.info('ecc item --- p: ' + p.toString(16));
+async function testGetAsyKeySpec() {
+  try {
+    let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
+    let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
+    let keyPair = await generatorBySpec.generateKeyPair();
+    let priKey = keyPair.priKey;
+    let eccPrimeP = priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+    console.info('ecc item --- p: ' + eccPrimeP.toString(16));
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetAsyKeySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数。
+function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
+  let fieldFp: cryptoFramework.ECFieldFp = {
+    fieldType: 'Fp',
+    p: BigInt('26959946667150639794667015087019630673557916260026308143510066298881')
+  }
+  let G: cryptoFramework.Point = {
+    x: BigInt('19277929113566293071110308034699488026831934219452440156649784352033'),
+    y: BigInt('19926808758034470970197974370888749184205991990603949537637343198772')
+  }
+  let eccCommonSpec: cryptoFramework.ECCCommonParamsSpec = {
+    algName: 'ECC',
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    field: fieldFp,
+    a: BigInt('26959946667150639794667015087019630673557916260026308143510066298878'),
+    b: BigInt('18958286285566608000408668544493926415504680968679321075787234672564'),
+    g: G,
+    n: BigInt('26959946667150639794667015087019625940457807714424391721682722368061'),
+    h: 1
+  }
+  return eccCommonSpec;
+}
+
+async function testGetAsyKeySpec() {
+  try {
+    let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象。
+    let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器。
+    let keyPair = await generatorBySpec.generateKeyPair();
+    let key = keyPair.priKey;
+    let p = key.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+    console.info('ecc item --- p: ' + p.toString());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getAsyKeySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
 ### getEncodedDer<sup>12+</sup>
 
 getEncodedDer(format: string): DataBlob
 
 支持根据指定的密钥格式（如采用哪个规范），获取满足ASN.1语法、DER编码的私钥数据。
 
-在API版本12-24，仅支持获取PKCS8格式的ECC私钥数据。
-
-从API版本26.0.0开始，增加支持获取PKCS1和PKCS8格式的RSA私钥数据。
-
 > **说明：**
 >
 > 本接口和[Key.getEncoded()](#getencoded)的区别是：<br/>
-> 1. 本接口可根据入参决定数据的输出格式，当前支持获取PKCS8格式的ECC私钥数据。
+> 1. 本接口可根据入参决定数据的输出格式。
 > 2. [Key.getEncoded()](#getencoded)接口，不支持指定密钥格式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | 是   | 用于指定当前密钥格式。<br>在API版本12-24，取值仅支持"PKCS8"。<br>从API版本26.0.0开始，RSA私钥格式支持"PKCS1"和"PKCS8"。 |
+| format  | string | 是   | 用于指定当前密钥格式。支持EC密钥，format取值支持"PKCS8"。<br>从API版本26.0.0开始，支持RSA密钥，format取值支持"PKCS1"和"PKCS8"。<br>从API版本26.0.0开始，支持ML-DSA和ML-KEM密钥，format取值支持"PKCS8"。 |
 
 **返回值：**
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| [DataBlob](#datablob) | 返回满足ASN.1语法和DER编码的指定密钥格式的ECC私钥数据。 |
+| [DataBlob](#datablob) | DER编码的私钥数据。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed. |
-| 17630001 | crypto operation error. |
-| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed. |
+| 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGetEncodedDer() {
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
@@ -1521,7 +2058,9 @@ async function testGetEncodedDer() {
   keyGenPromise.then(keyPair => {
     let priKey = keyPair.priKey;
     let returnBlob = priKey.getEncodedDer('PKCS8');
-    console.info('returnBlob data：' + returnBlob.data);
+    console.info('returnBlob data: ' + returnBlob.data);
+  }).catch((error: BusinessError) => {
+    console.error(`generateKeyPair failed, ${error.code}, ${error.message}`);
   });
 }
 ```
@@ -1530,39 +2069,45 @@ async function testGetEncodedDer() {
 
 getEncodedPem(format: string): string
 
-同步方法，获取密钥数据的字符串。密钥可以是RSA公钥或私钥。私钥格式需符合PKCS#8、PKCS#1规范，并采用PEM编码。
+获取PEM编码的私钥数据。此API以同步方式返回结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
-| format  | string | 是   | 指定的获取密钥字符串的编码格式。其中，私钥可为'PKCS1' 或'PKCS8'格式。从API版本26.0.0起，ECC算法的私钥可为'EC'格式。|
+| format  | string | 是   | 指定的获取密钥字符串的编码格式。支持RSA密钥，format取值支持"PKCS8"或"PKCS1"。<br>从API版本26.0.0起，支持EC密钥，format取值支持"PKCS8"或"EC"。<br>从API版本26.0.0起，支持ML-DSA和ML-KEM密钥，format取值支持"PKCS8"。|
 
 **返回值：**
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| string | 用于获取指定密钥格式的具体内容。 |
+| string | PEM编码的私钥数据。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed. |
-| 17630001 | crypto operation error. |
-| 17620003 | parameter check failed. <br>适用版本：26.0.0+ |
+| 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed. |
+| 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1Str1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n'
@@ -1581,12 +2126,17 @@ let priKeyPkcs1Str1024: string =
     + 'akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n'
     + '-----END RSA PRIVATE KEY-----\n';
 
-function TestPriKeyPkcs1ToPkcs8BySync1024() {
+function testPriKeyPkcs1ToPkcs8BySync1024() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
-  let priPemKey = keyPair.priKey;
-  let priString = priPemKey.getEncodedPem('PKCS8');
-  console.info('[sync]TestPriKeyPkcs1ToPkcs8BySync1024 priString output = ' + priString);
+  try {
+    let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
+    let priPemKey = keyPair.priKey;
+    let priString = priPemKey.getEncodedPem('PKCS8');
+    console.info('[sync]testPriKeyPkcs1ToPkcs8BySync1024 priString output = ' + priString);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testPriKeyPkcs1ToPkcs8BySync1024 failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1594,40 +2144,45 @@ function TestPriKeyPkcs1ToPkcs8BySync1024() {
 
 getEncodedPem(format: string, config: KeyEncodingConfig): string
 
-同步方法，获取密钥数据的字符串。支持RSA公钥和私钥。私钥格式满足PKCS#8规范、PKCS#1规范和PEM编码方式。
+获取PEM编码的加密的私钥数据。此API以同步方式返回结果。目前仅支持RSA密钥。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
 | format  | string | 是   | 指定的获取密钥字符串的编码格式。其中，私钥可为'PKCS1' 或'PKCS8'格式。|
-| config | [KeyEncodingConfig](#keyencodingconfig18) | 是 | 指定编码的算法跟口令，对私钥进行编码操作。 |
+| config | [KeyEncodingConfig](#keyencodingconfig18) | 是 | 用于加密私钥的参数。 |
 
 **返回值：**
 
 | 类型                        | 说明                              |
 | --------------------------- | --------------------------------- |
-| string | 用于获取指定密钥格式的具体内容。如果填了config参数，则获取编码后的内容。 |
+| string | PEM编码的加密的私钥数据。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported.          |
-| 17620001 | memory operation failed. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported.          |
+| 17620001 | Memory operation failed. |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1Str1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n'
@@ -1646,16 +2201,21 @@ let priKeyPkcs1Str1024: string =
     + 'akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n'
     + '-----END RSA PRIVATE KEY-----\n';
 
-function TestPriKeyPkcs1Encoded() {
+function testPriKeyPkcs1Encoded() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
-  let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
-  let options: cryptoFramework.KeyEncodingConfig = {
-    password: '123456',
-    cipherName: 'AES-128-CBC'
+  try {
+    let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
+    let options: cryptoFramework.KeyEncodingConfig = {
+      password: '123456',
+      cipherName: 'AES-128-CBC'
+    }
+    let priPemKey = keyPair.priKey;
+    let priString = priPemKey.getEncodedPem('PKCS1', options);
+    console.info('[sync]testPriKeyPkcs1Encoded priString output = ' + priString);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testPriKeyPkcs1Encoded failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
-  let priPemKey = keyPair.priKey;
-  let priString = priPemKey.getEncodedPem('PKCS1', options);
-  console.info('[sync]TestPriKeyPkcs1Encoded priString output = ' + priString);
 }
 ```
 
@@ -1665,9 +2225,13 @@ getPubKey(): Promise\<PubKey>
 
 从私钥对象中获取公钥对象。使用Promise异步回调。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1677,19 +2241,21 @@ getPubKey(): Promise\<PubKey>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 17620001 | memory operation failed. |
-| 17620002 | failed to convert parameters between arkts and c. |
-| 17630001 | crypto operation error. |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed. |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function compareUint8Array(a: Uint8Array, b: Uint8Array): boolean {
   let buf1 = buffer.from(a);
@@ -1749,7 +2315,8 @@ async function generateAsyKey() {
     console.info('pk1 bin data ' + pkBlob.data);
     let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
     console.info('result = ' + ret);
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
   }
 }
@@ -1761,9 +2328,13 @@ getPubKeySync(): PubKey
 
 以同步方式，从私钥对象中获取公钥对象。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1773,19 +2344,21 @@ getPubKeySync(): PubKey
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 17620001 | memory operation failed. |
-| 17620002 | failed to convert parameters between arkts and c. |
-| 17630001 | crypto operation error. |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed. |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function compareUint8Array(a: Uint8Array, b: Uint8Array): boolean {
   let buf1 = buffer.from(a);
@@ -1845,7 +2418,8 @@ function generateAsyKey() {
     console.info('pk1 bin data' + pkBlob.data);
     let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
     console.info('result = ' + ret);
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
   }
 }
@@ -1853,17 +2427,19 @@ function generateAsyKey() {
 
 ### getKeyData
 
-getKeyData(itemType: AsyKeyDataItem): Promise&lt;Uint8Array&gt;
+getKeyData(itemType: AsyKeyDataItem): Promise\<Uint8Array>
 
-指定密钥数据项类型，获取对应类型的公钥数据。使用Promise异步回调。
-
-**起始版本：** 26.0.0
+指定密钥数据项类型，获取对应类型的私钥数据。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1879,25 +2455,32 @@ getKeyData(itemType: AsyKeyDataItem): Promise&lt;Uint8Array&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 17620001 | memory operation failed. |
-| 17620002 | failed to convert parameters between arkts and c. |
-| 17620003 | parameter check failed. |
-| 17630001 | crypto operation error. |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed. |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17620003 | Parameter check failed. |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function eccGetKeyDataTest() {
-  let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await eccGenerator.generateKeyPair();
-  let returnBlob = await keyPair.priKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
-  console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
+  try {
+    let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await eccGenerator.generateKeyPair();
+    let returnBlob = await keyPair.priKey.getKeyData(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
+    console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccGetKeyDataTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1907,13 +2490,15 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 同步方法，指定密钥数据项类型，获取对应类型的私钥数据。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1929,25 +2514,32 @@ getKeyDataSync(itemType: AsyKeyDataItem): Uint8Array
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 17620001 | memory operation failed. |
-| 17620002 | failed to convert parameters between arkts and c. |
-| 17620003 | parameter check failed. |
-| 17630001 | crypto operation error. |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed. |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17620003 | Parameter check failed. |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function eccGetKeyDataTest() {
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = eccGenerator.generateKeyPairSync();
-  let returnBlob = keyPair.priKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
-  console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
+  try {
+    let keyPair = eccGenerator.generateKeyPairSync();
+    let returnBlob = keyPair.priKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PRIVATE_04_X_Y_K);
+    console.info('EC_PRIVATE_04_X_Y_K data: ' + returnBlob);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`eccGetKeyDataTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -1957,6 +2549,10 @@ function eccGetKeyDataTest() {
 
 可以通过非对称密钥生成器[AsyKeyGenerator](#asykeygenerator)、[AsyKeyGeneratorBySpec](#asykeygeneratorbyspec10)来生成。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 > **说明：**
 >
 > KeyPair对象中的pubKey对象和priKey对象是KeyPair对象的成员。当KeyPair对象超出作用域时，其内部的pubKey对象和priKey对象将被析构。
@@ -1965,11 +2561,15 @@ function eccGetKeyDataTest() {
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明           |
 | ------- | ------ | ---- | ---- | ------------ |
@@ -1980,58 +2580,74 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 createSymKeyGenerator(algName: string): SymKeyGenerator
 
-通过指定算法名称获取相应的对称密钥生成器实例。
+创建对应算法的对称密钥生成器实例。
 
-支持的规格详见[对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md)。
+支持的规格详见[对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.SymKey。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | 是   | 待生成对称密钥生成器的算法名称。<br/>具体取值详见[对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md)一节中的“字符串参数”。 |
+| algName | string | 是   | 待生成对称密钥生成器的算法名称。<br/>具体取值详见[对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md)一节中的“字符串参数”。 |
 
 **返回值：**
 
 | 类型                                | 说明                       |
 | ----------------------------------- | -------------------------- |
-| [SymKeyGenerator](#symkeygenerator) | 返回对称密钥生成器的对象。 |
+| [SymKeyGenerator](#symkeygenerator) | 返回对称密钥生成器实例。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+try {
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createSymKeyGenerator failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## SymKeyGenerator
 
-对称密钥生成器。
+对称密钥生成器接口，定义生成对称密钥的方法。调用前，需通过[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)方法创建一个SymKeyGenerator实例。
 
-在使用该类的方法前，先使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)构建SymKeyGenerator实例。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.SymKey。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                           |
 | ------- | ------ | ---- | ---- | ------------------------------ |
@@ -2043,19 +2659,21 @@ generateSymKey(callback: AsyncCallback\<SymKey>): void
 
 获取对称密钥生成器随机生成的密钥。使用callback异步回调。
 
-必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
-
-目前支持使用OpenSSL的RAND_priv_bytes()作为底层能力生成随机密钥。
+目前使用OpenSSL的RAND_priv_bytes()作为底层能力生成随机密钥。
 
 > **说明：**
 >
 > 对于HMAC算法的对称密钥，如果在创建对称密钥生成器时指定了具体哈希算法（如"HMAC|SHA256"），则会随机生成与哈希长度一致的二进制密钥数据（如256位的密钥数据）。如果未指定具体哈希算法，如仅指定"HMAC"，则不支持随机生成对称密钥数据，可通过[convertKey](#convertkey)方式生成对称密钥数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.SymKey。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2065,22 +2683,49 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 17620001 | memory operation failed. |
-| 17620004 | invalid function call. <br>适用版本：26.0.0+ |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+ |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
   symKeyGenerator.generateSymKey((err, symKey) => {
-    console.info('Generate symKey result: success, algName：' + symKey.algName);
+    if (err) {
+      console.error(`generateSymKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
+    console.info('generateSymKey result: success, algName: ' + symKey.algName);
   });
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function testGenerateSymKey() {
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+  symKeyGenerator.generateSymKey((err: BusinessError | null, symKey: cryptoFramework.SymKey | undefined) => {
+    if (err) {
+      console.error(`generateSymKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
+    if (symKey != undefined) {
+      console.info('Generate symKey success, algName：' + symKey.algName);
+    }
+  });
+}
 ```
 
 ### generateSymKey
@@ -2089,15 +2734,17 @@ generateSymKey(): Promise\<SymKey>
 
 获取该对称密钥生成器随机生成的密钥。使用Promise异步回调。
 
-必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
+目前使用OpenSSL的RAND_priv_bytes()作为底层能力生成随机密钥。
 
-目前支持使用OpenSSL的RAND_priv_bytes()作为底层能力生成随机密钥。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
+**ArkTS-Dyn起始版本：** 9
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.SymKey。
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2107,14 +2754,17 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 17620001 | memory operation failed. |
-| 17620004 | invalid function call. <br>适用版本：26.0.0+ |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+ |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -2129,23 +2779,45 @@ let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
     });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function testGenerateSymKey() {
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+  try {
+    let symKey = await symKeyGenerator.generateSymKey();
+    if (symKey != undefined) {
+      console.info('Generate symKey success, algName: ' + symKey.algName);
+    }
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`Generate symKey failed, ${e.code}, ${e.message}`);
+  }
+}
+```
+
 ### generateSymKeySync<sup>12+</sup>
 
 generateSymKeySync(): SymKey
 
 同步获取对称密钥生成器随机生成的密钥。
 
-必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
-
-目前支持使用OpenSSL的RAND_priv_bytes()作为底层能力生成随机密钥。
+目前使用OpenSSL的RAND_priv_bytes()作为底层能力生成随机密钥。
 
 > **说明：**
 >
 > 对于HMAC算法的对称密钥，如果已经在创建对称密钥生成器时指定了具体哈希算法（如指定"HMAC|SHA256"），则会随机生成与哈希长度一致的二进制密钥数据（如指定"HMAC|SHA256"会随机生成256位的密钥数据）。<br/>如果在创建对称密钥生成器时没有指定具体哈希算法，如仅指定"HMAC"，则不支持随机生成对称密钥数据，可通过[convertKeySync](#convertkeysync12)方式生成对称密钥数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2155,25 +2827,32 @@ generateSymKeySync(): SymKey
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 17620001 | memory operation failed. |
-| 17620004 | invalid function call. <br>适用版本：26.0.0+ |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed. |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+ |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGenerateSymKeySync() {
   // 创建SymKeyGenerator实例。
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES256');
-  // 使用密钥生成器随机生成对称密钥。
-  let key = symKeyGenerator.generateSymKeySync();
-  let encodedKey = key.getEncoded();
-  console.info('key hex:' + encodedKey.data);
+  try {
+    // 使用密钥生成器随机生成对称密钥。
+    let key = symKeyGenerator.generateSymKeySync();
+    let encodedKey = key.getEncoded();
+    console.info('key hex:' + encodedKey.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateSymKeySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -2181,19 +2860,21 @@ function testGenerateSymKeySync() {
 
 convertKey(key: DataBlob, callback: AsyncCallback\<SymKey>): void
 
-根据指定数据生成对称密钥。使用callback异步回调。
-
-必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
+将指定数据转换为对称密钥。使用callback异步回调。
 
 > **说明：**
 >
 > 对于HMAC算法的对称密钥，如果已经在创建对称密钥生成器时指定了具体哈希算法（如指定"HMAC|SHA256"），则需要传入与哈希长度一致的二进制密钥数据（如传入SHA256对应256位的密钥数据）。<br/>如果在创建对称密钥生成器时没有指定具体哈希算法，如仅指定"HMAC"，则支持传入长度在[1,4096]范围内（单位为bytes）的任意二进制密钥数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.SymKey。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2203,15 +2884,17 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | callback | AsyncCallback\<[SymKey](#symkey)> | 是   | 回调函数。当生成对称密钥成功，err为undefined，data为获取到的SymKey；否则为错误对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | --------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.                                       |
-| 17620003 | parameter check failed. <br>适用版本：26.0.0+                                |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.                                       |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+                                |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -2229,7 +2912,41 @@ function testConvertKey() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
   let keyMaterialBlob = genKeyMaterialBlob();
   symKeyGenerator.convertKey(keyMaterialBlob, (err, symKey) => {
+    if (err) {
+      console.error(`convertKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     console.info('Convert symKey result: success, algName: ' + symKey.algName);
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function genKeyMaterialBlob(): cryptoFramework.DataBlob {
+  let arr = [
+    0xba, 0x3d, 0xc2, 0x71, 0x21, 0x1e, 0x30, 0x56,
+    0xad, 0x47, 0xfc, 0x5a, 0x46, 0x39, 0xee, 0x7c,
+    0xba, 0x3b, 0xc2, 0x71, 0xab, 0xa0, 0x30, 0x72]; // keyLen = 192 (24 bytes)
+  let keyMaterial = new Uint8Array(arr);
+  return { data: keyMaterial };
+}
+
+function testConvertKey() {
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+  let keyMaterialBlob = genKeyMaterialBlob();
+  symKeyGenerator.convertKey(keyMaterialBlob, (err: BusinessError | null, symKey: cryptoFramework.SymKey | undefined) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
+    if (symKey != undefined) {
+      console.info('Convert symKey success, algName: ' + symKey.algName);
+    }
   });
 }
 ```
@@ -2238,15 +2955,17 @@ function testConvertKey() {
 
 convertKey(key: DataBlob): Promise\<SymKey>
 
-根据指定数据生成对称密钥。使用Promise异步回调。
+将指定数据转换为对称密钥。使用Promise异步回调。
 
-在使用本函数前，需先通过[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.SymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
+**ArkTS-Dyn起始版本：** 9
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.SymKey。
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2262,15 +2981,18 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | --------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.                                |
-| 17620003 | parameter check failed. <br>适用版本：26.0.0+                                |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.                                |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+                                |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -2290,10 +3012,38 @@ function testConvertKey() {
   let keyMaterialBlob = genKeyMaterialBlob();
   symKeyGenerator.convertKey(keyMaterialBlob)
     .then(symKey => {
-      console.info('Convert symKey result: success, algName：' + symKey.algName);
+      console.info('Convert symKey result: success, algName: ' + symKey.algName);
     }).catch((error: BusinessError) => {
       console.error(`Convert symKey failed, ${error.code}, ${error.message}`);
     });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function genKeyMaterialBlob(): cryptoFramework.DataBlob {
+  let arr = [
+    0xba, 0x3d, 0xc2, 0x71, 0x21, 0x1e, 0x30, 0x56,
+    0xad, 0x47, 0xfc, 0x5a, 0x46, 0x39, 0xee, 0x7c,
+    0xba, 0x3b, 0xc2, 0x71, 0xab, 0xa0, 0x30, 0x72]; // keyLen = 192 (24 bytes)
+  let keyMaterial = new Uint8Array(arr);
+  return { data: keyMaterial };
+}
+
+async function testConvertKey() {
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('3DES192');
+  let keyMaterialBlob = genKeyMaterialBlob();
+  try {
+    let symKey = await symKeyGenerator.convertKey(keyMaterialBlob);
+    console.info('Convert symKey success, algName：' + symKey.algName);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`Convert symKey failed, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -2301,17 +3051,19 @@ function testConvertKey() {
 
 convertKeySync(key: DataBlob): SymKey
 
-根据指定数据生成对称密钥。
-
-必须在使用[createSymKeyGenerator](#cryptoframeworkcreatesymkeygenerator)创建对称密钥生成器后，才能使用本函数。
+将指定数据转换为对称密钥。
 
 > **说明：**
 >
 > 对于HMAC算法的对称密钥，如果在创建对称密钥生成器时指定了具体哈希算法（如"HMAC|SHA256"），则需要传入与哈希长度一致的二进制密钥数据（如SHA256对应的256位密钥数据）。如果在创建对称密钥生成器时未指定具体哈希算法，如仅指定"HMAC"，则支持传入长度在1到4096字节范围内的任意二进制密钥数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.SymKey
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2327,19 +3079,20 @@ convertKeySync(key: DataBlob): SymKey
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                               |
 | -------- | --------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.                                       |
-| 17620003 | parameter check failed. <br>适用版本：26.0.0+                                     |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.                                       |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+                                     |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testConvertKeySync() {
   // 对称密钥长度为64字节，512比特。
@@ -2348,9 +3101,14 @@ function testConvertKeySync() {
     data : new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
   }
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
-  let key = symKeyGenerator.convertKeySync(keyBlob);
-  let encodedKey = key.getEncoded();
-  console.info('key encoded data：' + encodedKey.data);
+  try {
+    let key = symKeyGenerator.convertKeySync(keyBlob);
+    let encodedKey = key.getEncoded();
+    console.info('key encoded data: ' + encodedKey.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testConvertKeySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -2358,21 +3116,25 @@ function testConvertKeySync() {
 
 createAsyKeyGenerator(algName: string): AsyKeyGenerator
 
-通过指定算法名称的字符串，获取相应的非对称密钥生成器实例。
+创建对应算法的非对称密钥生成器实例。
 
-支持的规格详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md)。
+支持的规格详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                             |
 | ------- | ------ | ---- | -------------------------------- |
-| algName | string | 是   | 非对称密钥生成支持的算法名。详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md)中的字符串参数。 |
+| algName | string | 是   | 非对称密钥生成支持的算法名。详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md)中的字符串参数。 |
 
 **返回值：**
 
@@ -2382,33 +3144,47 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 17620001 | memory operation failed. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 17620001 | Memory operation failed. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+try {
+  let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createAsyKeyGenerator failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## AsyKeyGenerator
 
-非对称密钥生成器。在使用该类的方法前，需要先使用[createAsyKeyGenerator](#cryptoframeworkcreateasykeygenerator)方法构建一个AsyKeyGenerator实例。
+非对称密钥生成器接口，定义生成非对称密钥的方法。调用前，需通过[createAsyKeyGenerator](#cryptoframeworkcreateasykeygenerator)方法创建一个AsyKeyGenerator实例。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                             |
 | ------- | ------ | ---- | ---- | -------------------------------- |
@@ -2420,11 +3196,15 @@ generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
 获取非对称密钥生成器随机生成的密钥。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2434,21 +3214,24 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>Incorrect parameter types;|
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error.          |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>Incorrect parameter types;|
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error.          |
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
-asyKeyGenerator.generateKeyPair((err, keyPair) => {
+asyKeyGenerator.generateKeyPair((err: BusinessError | null, keyPair: cryptoFramework.KeyPair | undefined) => {
   if (err) {
     console.error(`generateKeyPair failed, errCode: ${err.code}, errMsg: ${err.message}`);
     return;
@@ -2457,17 +3240,92 @@ asyKeyGenerator.generateKeyPair((err, keyPair) => {
 })
 ```
 
+JS示例：
+
+在Lite Wearable侧非对称密钥只支持ECC256算法。
+
+下述样例以非对称算法为ECC256为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="GenerateKeyPairTest">ECC256非对称密钥生成异步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function generateKeyPairTest() {
+  try {
+    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+    asyKeyGenerator.generateKeyPair(function (err, keyPair) {
+      if (err) {
+        console.error('generateKeyPair failed. Code: ' + err.code + " : " + err.message);
+        return;
+      }
+      console.info('generateKeyPair result: success.');
+    })
+  } catch (error) {
+    console.error(`generateKeyPairTest failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    GenerateKeyPairTest() {
+        generateKeyPairTest();
+    }
+};
+```
+
 ### generateKeyPair
 
 generateKeyPair(): Promise\<KeyPair>
 
 获取非对称密钥生成器随机生成的密钥。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2477,15 +3335,18 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error.          |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error.          |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -2500,15 +3361,37 @@ keyGenPromise.then(keyPair => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+async function TestGenerateKeyPair() {
+  let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+  try {
+    let keyGenPromise = await asyKeyGenerator.generateKeyPair();
+    console.info('generateKeyPair result: success.');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateKeyPair failed, ${e.code}, ${e.message}`);
+  }
+}
+```
+
 ### generateKeyPairSync<sup>12+</sup>
 
 generateKeyPairSync(): KeyPair
 
 同步获取非对称密钥生成器随机生成的密钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2518,18 +3401,21 @@ generateKeyPairSync(): KeyPair
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.          |
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error.          |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.          |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error.          |
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
 try {
@@ -2539,45 +3425,159 @@ try {
   } else {
     console.error('[Sync]: get key pair result: fail.');
   }
-} catch (e) {
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
   console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
+JS示例：
+
+在Lite Wearable侧非对称密钥只支持ECC256算法。
+
+下述样例以非对称算法为ECC256为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="GenerateKeyPairSyncTest">ECC256非对称密钥生成同步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function generateKeyPairSyncTest() {
+  try {
+    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+    let keyPairData = asyKeyGenerator.generateKeyPairSync();
+    if (keyPairData != null) {
+      console.info('[Sync]: key pair result: success.');
+    } else {
+      console.error('[Sync]: get key pair result: fail.');
+    }
+  } catch (error) {
+    console.error(`generateKeyPairSyncTest failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    GenerateKeyPairSyncTest() {
+        generateKeyPairSyncTest();
+    }
+};
+```
+
 ### convertKey
+
+convertKey(pubKey: DataBlob, priKey: DataBlob, callback: AsyncCallback\<KeyPair\>): void
+
+转换密钥数据为非对称密钥对对象。使用callback异步回调。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明                                                         |
+| ------ | ------------------------- | ---- | ------------------------------------------------------------ |
+| pubKey | [DataBlob](#datablob)     | 是   | 公钥数据。                                           |
+| priKey | [DataBlob](#datablob)     | 是   | 私钥数据。                                           |
+| callback | AsyncCallback\<[KeyPair](#keypair)\> | 是   | 回调函数。转换成功时，err为undefined，data为转换后的密钥对；否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                                 |
+| -------- | --------------------------------------------------------- |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error.          |
+
+### convertKey<sup>10+</sup>
 
 convertKey(pubKey: DataBlob | null, priKey: DataBlob | null, callback: AsyncCallback\<KeyPair\>): void
 
 解析密钥数据，生成非对称密钥对象。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型       | 必填 | 说明                           |
 | -------- | ----------- | ---- | ------------------------------ |
-| pubKey   | [DataBlob](#datablob) \| null<sup>10+</sup>    | 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
-| priKey   | [DataBlob](#datablob) \| null<sup>10+</sup>   | 是   | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
+| pubKey   | [DataBlob](#datablob) \| null   | 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
+| priKey   | [DataBlob](#datablob) \| null  | 是   | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。        |
 | callback | AsyncCallback\<[KeyPair](#keypair)> | 是   | 回调函数。当获取非对称密钥成功，err为undefined，data为获取到的KeyPair；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error.          |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let pubKeyArray =
   new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
@@ -2590,7 +3590,7 @@ let priKeyArray =
 let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyArray }; // 公钥二进制数据。
 let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyArray }; // 私钥二进制数据。
 let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
-asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
+asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob, (err: BusinessError | null, keyPair: cryptoFramework.KeyPair | undefined) => {
   if (err) {
     console.error(`convertKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
     return;
@@ -2599,24 +3599,142 @@ asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
 });
 ```
 
+JS示例：
+
+在Lite Wearable侧非对称密钥只支持ECC256算法；convertKey只支持公钥数据转换，不支持私钥数据转换。
+
+下述样例以非对称算法为ECC256，仅转换公钥数据为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="ConvertKeyTest">ECC256公钥转换异步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function convertKeyTest() {
+  try {
+    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+    let keyPair = asyKeyGenerator.generateKeyPairSync();
+    let pubKeyBlob = keyPair.pubKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_04_X_Y);
+    asyKeyGenerator.convertKey(pubKeyBlob, null, function (err, keyPair) {
+      if (err) {
+        console.error('convertKey failed. Code: ' + err.code + " : " + err.message);
+        return;
+      }
+      console.info('convertKey result: success.');
+    })
+  } catch (error) {
+    console.error(`convertKeyTest failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    ConvertKeyTest() {
+        convertKeyTest();
+    }
+};
+```
+
 ### convertKey
+
+convertKey(pubKey: DataBlob, priKey: DataBlob): Promise\<KeyPair\>
+
+转换密钥数据为非对称密钥对对象。使用Promise异步回调。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明                                                         |
+| ------ | ------------------------- | ---- | ------------------------------------------------------------ |
+| pubKey | [DataBlob](#datablob)     | 是   | 公钥数据。                                           |
+| priKey | [DataBlob](#datablob)     | 是   | 私钥数据。                                           |
+
+**返回值：**
+
+| 类型                            | 说明                                             |
+| ------------------------------- | ------------------------------------------------ |
+| Promise\<[KeyPair](#keypair)\> | Promise对象，返回获取到的非对称密钥对。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                          |
+| -------- | ------------------------------------------------- |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.                                     |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error.          |
+
+### convertKey<sup>10+</sup>
 
 convertKey(pubKey: DataBlob | null, priKey: DataBlob | null): Promise\<KeyPair>
 
 解析密钥数据，生成非对称密钥对象。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
-| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| pubKey | [DataBlob](#datablob) \| null | 是   | 指定的公钥材料。如果公钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| priKey | [DataBlob](#datablob) \| null | 是   | 指定的私钥材料。如果私钥不需要转换，请传入null。API 10之前只支持DataBlob， API 10之后增加支持null。 |
 
 **返回值：**
 
@@ -2626,15 +3744,19 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error.          |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -2659,22 +3781,54 @@ keyGenPromise.then(keyPair => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+async function TestConvertKey() {
+  let pubKeyArray =
+    new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
+      83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26,
+      105, 211, 55, 130, 45, 236, 143, 55, 16, 248, 75, 167, 160, 167, 106, 2, 152, 243, 44, 68, 66, 0, 167, 99, 92,
+      235, 215, 159, 239, 28, 106, 124, 171, 34, 145, 124, 174, 57, 92]);
+  let priKeyArray =
+    new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171,
+      57, 10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
+  let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyArray }; // 公钥二进制数据。
+  let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyArray }; // 私钥二进制数据。
+  let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+  try {
+    let keyPair = await asyKeyGenerator.convertKey(pubKeyBlob, priKeyBlob);
+    console.info('convertKey result: success.');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`convertKey failed, errCode: ${e.code}, ${e.message}`);
+  }
+}
+```
+
 ### convertKeySync<sup>12+</sup>
 
 convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 
 解析密钥数据，生成非对称密钥对象。使用同步方法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型    | 必填 | 说明             |
 | ------ | -------- | ---- | ---------------- |
-| pubKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定公钥材料。如果公钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
-| priKey | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 指定私钥材料。如果私钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
+| pubKey | [DataBlob](#datablob) \| null | 是   | 指定公钥材料。如果公钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
+| priKey | [DataBlob](#datablob) \| null | 是   | 指定私钥材料。如果私钥无需转换，请传入null。API 10前仅支持DataBlob，API 10起支持传入null。 |
 
 **返回值：**
 
@@ -2684,18 +3838,22 @@ convertKeySync(pubKey: DataBlob | null, priKey: DataBlob | null): KeyPair
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error.          |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let pubKeyArray =
   new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
@@ -2715,9 +3873,82 @@ try {
   } else {
     console.error('[Sync]: convert key pair result: fail.');
   }
-} catch (e) {
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
   console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
+```
+
+JS示例：
+
+在Lite Wearable侧非对称密钥只支持ECC256算法；convertKey只支持公钥数据转换，不支持私钥数据转换。
+
+下述样例以非对称算法为ECC256，仅转换公钥数据为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="ConvertKeySyncTest">ECC256公钥转换同步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function convertKeySyncTest() {
+  try {
+    let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
+    let keyPair = asyKeyGenerator.generateKeyPairSync();
+    let pubKeyBlob = keyPair.pubKey.getKeyDataSync(cryptoFramework.AsyKeyDataItem.EC_PUBLIC_04_X_Y);
+    let keyPairData = asyKeyGenerator.convertKeySync(pubKeyBlob, null);
+    if (keyPairData != null) {
+      console.info('[Sync]: key pair result: success.');
+    } else {
+      console.error('[Sync]: convert key pair result: fail.');
+    }
+  } catch (error) {
+    console.error(`convertKeySyncTest failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    ConvertKeySyncTest() {
+        convertKeySyncTest();
+    }
+};
 ```
 
 ### convertPemKey<sup>12+</sup>
@@ -2727,13 +3958,17 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 解析密钥数据，生成非对称密钥对象。使用Promise异步回调。
 
 > **说明：**
-> 1. 当调用convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，公钥应满足ASN.1语法、X.509规范、PEM编码格式，私钥应满足ASN.1语法、PKCS#8规范、PEM编码格式。
+> 1. 当调用convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，公钥应满足ASN.1语法、X.509规范、PEM编码格式，私钥应满足ASN.1语法、PKCS #8规范、PEM编码格式。
 > 2. convertPemKey方法中，公钥和私钥字符串数据为非必选项，可单独传入公钥或私钥的数据，生成对应只包含公钥或私钥的KeyPair对象。
 > 3. convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，不会校验生成的密钥对象的规格与创建非对称密钥生成器时指定的密钥规格是否一致。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2750,15 +3985,19 @@ convertPemKey(pubKey: string | null, priKey: string | null): Promise\<KeyPair>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error.          |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -2787,7 +4026,7 @@ let publicPkcs1Str1024: string =
     + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
     + '-----END RSA PUBLIC KEY-----\n';
 
-async function TestConvertPemKeyByPromise() {
+async function testConvertPemKeyByPromise() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   asyKeyGenerator.convertPemKey(publicPkcs1Str1024, priKeyPkcs1Str1024)
     .then(keyPair => {
@@ -2798,6 +4037,46 @@ async function TestConvertPemKeyByPromise() {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+let priKeyPkcs1Str1024: string  =
+  '-----BEGIN RSA PRIVATE KEY-----\n'
+    + 'MIICXQIBAAKBgQCwIN3mr21+N96ToxnVnaS+xyK9cNRAHiHGgrbjHw6RAj3V+l+W\n'
+    + 'Y68IhIe3DudVlzE9oMjeOQwkMkq//HCxNlIlFR6O6pa0mrXSwPRE7YKG97CeKk2g\n'
+    + 'YOS8YEh8toAvm7xKbiLkXuuMlxrjP2j/mb5iI/UASFSPZiQ/IyxDr0AQaQIDAQAB\n'
+    + 'AoGAEvBFzBNa+7J4PXnRQlYEK/tvsd0bBZX33ceacMubHl6WVZbphltLq+fMTBPP\n'
+    + 'LjXmtpC+aJ7Lvmyl+wTi/TsxE9vxW5JnbuRT48rnZ/Xwq0eozDeEeIBRrpsr7Rvr\n'
+    + '7ctrgzr4m4yMHq9aDgpxj8IR7oHkfwnmWr0wM3FuiVlj650CQQDineeNZ1hUTkj4\n'
+    + 'D3O+iCi3mxEVEeJrpqrmSFolRMb+iozrIRKuJlgcOs+Gqi2fHfOTTL7LkpYe8SVg\n'
+    + 'e3JxUdVLAkEAxvcZXk+byMFoetrnlcMR13VHUpoVeoV9qkv6CAWLlbMdgf7uKmgp\n'
+    + 'a1Yp3QPDNQQqkPvrqtfR19JWZ4uy1qREmwJALTU3BjyBoH/liqb6fh4HkWk75Som\n'
+    + 'MzeSjFIOubSYxhq5tgZpBZjcpvUMhV7Zrw54kwASZ+YcUJvmyvKViAm9NQJBAKF7\n'
+    + 'DyXSKrem8Ws0m1ybM7HQx5As6l3EVhePDmDQT1eyRbKp+xaD74nkJpnwYdB3jyyY\n'
+    + 'qc7A1tj5J5NmeEFolR0CQQCn76Xp8HCjGgLHw9vg7YyIL28y/XyfFyaZAzzK+Yia\n'
+    + 'akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n'
+    + '-----END RSA PRIVATE KEY-----\n';
+let publicPkcs1Str1024: string  =
+  '-----BEGIN RSA PUBLIC KEY-----\n'
+    + 'MIGJAoGBALAg3eavbX433pOjGdWdpL7HIr1w1EAeIcaCtuMfDpECPdX6X5ZjrwiE\n'
+    + 'h7cO51WXMT2gyN45DCQySr/8cLE2UiUVHo7qlrSatdLA9ETtgob3sJ4qTaBg5Lxg\n'
+    + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
+    + '-----END RSA PUBLIC KEY-----\n';
+async function testConvertPemKeyByPromise() {
+  let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  try {
+    let keyPair = await asyKeyGenerator.convertPemKey(publicPkcs1Str1024, priKeyPkcs1Str1024);
+    console.info('convertPemKey result: success.');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`convertPemKey failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
 ### convertPemKey<sup>18+</sup>
 
 convertPemKey(pubKey: string | null, priKey: string | null, password: string): Promise\<KeyPair>
@@ -2805,14 +4084,18 @@ convertPemKey(pubKey: string | null, priKey: string | null, password: string): P
 解析密钥数据，生成非对称密钥对象。支持加密的私钥，同步传入私钥口令解密私钥。使用Promise异步回调。
 
 > **说明：**
-> 1. 当调用convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，公钥应满足ASN.1语法、X.509规范、PEM编码格式，私钥应满足ASN.1语法、PKCS#8规范、PEM编码格式。
+> 1. 当调用convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，公钥应满足ASN.1语法、X.509规范、PEM编码格式，私钥应满足ASN.1语法、PKCS #8规范、PEM编码格式。
 > 2. convertPemKey方法中，公钥和私钥字符串数据为非必选项，可单独传入公钥或私钥的数据，生成对应只包含公钥或私钥的KeyPair对象。
 > 3. convertPemKey方法将外来字符串数据转换为算法库非对称密钥对象时，不会校验生成的密钥对象的规格与创建非对称密钥生成器时指定的密钥规格是否一致。
 > 4. password为口令，传入后可以解密加密后的私钥。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2830,15 +4113,18 @@ convertPemKey(pubKey: string | null, priKey: string | null, password: string): P
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error.          |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error.          |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -2863,7 +4149,7 @@ let priKeyPkcs1EncodingStr: string =
     + 'OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n'
     + '-----END RSA PRIVATE KEY-----\n'
 
-async function TestConvertPemKeyByPromise() {
+async function testConvertPemKeyByPromise() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   asyKeyGenerator.convertPemKey(null, priKeyPkcs1EncodingStr, '123456')
     .then(keyPair => {
@@ -2871,6 +4157,43 @@ async function TestConvertPemKeyByPromise() {
     }).catch((error: BusinessError) => {
     console.error(`convertPemKey failed: errCode: ${error.code}, errMsg: ${error.message}`);
   });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+let priKeyPkcs1EncodingStr : string =
+  '-----BEGIN RSA PRIVATE KEY-----\n'
+    +'Proc-Type: 4,ENCRYPTED\n'
+    +'DEK-Info: AES-128-CBC,815A066131BF05CF87CE610A59CC69AE\n\n'
+    +'7Jd0vmOmYGFZ2yRY8fqRl3+6rQlFtNcMILvcb5KWHDSrxA0ULmJE7CW0DSRikHoA\n'
+    +'t0KgafhYXeQXh0dRy9lvVRAFSLHCLJVjchx90V7ZSivBFEq7+iTozVp4AlbgYsJP\n'
+    +'vx/1sfZD2WAcyMJ7IDmJyft7xnpVSXsyWGTT4f3eaHJIh1dqjwrso7ucAW0FK6rp\n'
+    +'/TONyOoXNfXtRbVtxNyCWBxt4HCSclDZFvS9y8fz9ZwmCUV7jei/YdzyQI2wnE13\n'
+    +'W8cKlpzRFL6BWi8XPrUtAw5MWeHBAPUgPWMfcmiaeyi5BJFhQCrHLi+Gj4EEJvp7\n'
+    +'mP5cbnQAx6+paV5z9m71SKrI/WSc4ixsYYdVmlL/qwAK9YliFfoPl030YJWW6rFf\n'
+    +'T7J9BUlHGUJ0RB2lURNNLakM+UZRkeE9TByzCzgTxuQtyv5Lwsh2mAk3ia5x0kUO\n'
+    +'LHg3Eoabhdh+YZA5hHaxnpF7VjspB78E0F9Btq+A41rSJ6zDOdToHey4MJ2nxdey\n'
+    +'Z3bi81TZ6Fp4IuROrvZ2B/Xl3uNKR7n+AHRKnaAO87ywzyltvjwSh2y3xhJueiRs\n'
+    +'BiYkyL3/fnocD3pexTdN6h3JgQGgO5GV8zw/NrxA85mw8o9im0HreuFObmNj36T9\n'
+    +'k5N+R/QIXW83cIQOLaWK1ThYcluytf0tDRiMoKqULiaA6HvDMigExLxuhCtnoF8I\n'
+    +'iOLN1cPdEVQjzwDHLqXP2DbWW1z9iRepLZlEm1hLRLEmOrTGKezYupVv306SSa6J\n'
+    +'OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n'
+    +'-----END RSA PRIVATE KEY-----\n'
+
+async function testConvertPemKeyByPromise() {
+  let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  try {
+    let keyPair = await asyKeyGenerator.convertPemKey(null, priKeyPkcs1EncodingStr, '123456');
+    console.info('convertPemKey result: success.');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`convertPemKey failed, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -2883,9 +4206,13 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 > **说明：**
 > convertPemKeySync接口与convertPemKey接口注意事项相同，见[convertPemKey](#convertpemkey12)接口说明。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2902,18 +4229,21 @@ convertPemKeySync(pubKey: string | null, priKey: string | null): KeyPair
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error.          |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error.          |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1Str1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n'
@@ -2938,7 +4268,7 @@ let publicPkcs1Str1024: string =
     + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
     + '-----END RSA PUBLIC KEY-----\n';
 
-function TestConvertPemKeyBySync() {
+function testConvertPemKeyBySync() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   try {
     let keyPairData = asyKeyGenerator.convertPemKeySync(publicPkcs1Str1024, priKeyPkcs1Str1024);
@@ -2947,7 +4277,8 @@ function TestConvertPemKeyBySync() {
     } else {
       console.error('[Sync]: convert pem key pair result: fail.');
     }
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`Sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
@@ -2957,14 +4288,18 @@ function TestConvertPemKeyBySync() {
 
 convertPemKeySync(pubKey: string | null, priKey: string | null, password: string): KeyPair
 
-解析密钥数据，生成非对称密钥对象。支持加密的私钥，同步传入私钥口令解密私钥。使用同步方法。
+解析密钥数据，生成非对称密钥对象。支持加密的私钥，同步传入私钥口令解密私钥。
 
 > **说明：**
 > convertPemKeySync接口与convertPemKey接口注意事项相同，见[convertPemKey](#convertpemkey18)接口说明。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2982,18 +4317,20 @@ convertPemKeySync(pubKey: string | null, priKey: string | null, password: string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error.          |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error.          |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let priKeyPkcs1EncodingStr: string =
   '-----BEGIN RSA PRIVATE KEY-----\n'
@@ -3014,7 +4351,7 @@ let priKeyPkcs1EncodingStr: string =
     + 'OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n'
     + '-----END RSA PRIVATE KEY-----\n'
 
-function TestConvertPemKeyBySync() {
+function testConvertPemKeyBySync() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   try {
     let keyPairData = asyKeyGenerator.convertPemKeySync(null, priKeyPkcs1EncodingStr, '123456');
@@ -3023,7 +4360,8 @@ function TestConvertPemKeyBySync() {
     } else {
       console.error('[Sync]: convert pem key pair result: fail.');
     }
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`Sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
@@ -3033,40 +4371,45 @@ function TestConvertPemKeyBySync() {
 
 createAsyKeyGeneratorBySpec(asyKeySpec: AsyKeySpec): AsyKeyGeneratorBySpec
 
-指定密钥参数，获取非对称密钥生成器实例。
+创建指定密钥规格的非对称密钥生成器实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                             |
 | ------- | ------ | ---- | -------------------------------- |
-| asyKeySpec | [AsyKeySpec](#asykeyspec10) | 是   | 密钥参数。非对称密钥生成器根据指定的这些参数生成公/私钥。<br>支持的规格详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md)。|
+| asyKeySpec | [AsyKeySpec](#asykeyspec10) | 是   | 密钥参数。非对称密钥生成器根据指定的这些参数生成公/私钥。<br>支持的规格详见[非对称密钥生成和转换规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md)。|
 
 **返回值：**
 
 | 类型                                            | 说明                       |
 | ----------------------------------------------- | -------------------------- |
-| [AsyKeyGeneratorBySpec](#asykeygeneratorbyspec10) | 返回非对称密钥生成器实例。 |
+| [AsyKeyGeneratorBySpec](#asykeygeneratorbyspec10) | 返回AsyKeyGeneratorBySpec实例。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 17620001 | memory operation failed. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 17620001 | Memory operation failed. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
@@ -3094,20 +4437,33 @@ function genDsa1024KeyPairSpecBigE() {
 }
 
 let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
-let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+try {
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createAsyKeyGeneratorBySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## AsyKeyGeneratorBySpec<sup>10+</sup>
 
-非对称密钥生成器。在使用该类的方法前，需要先使用[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法构建一个AsyKeyGeneratorBySpec实例。
+指定密钥规格的非对称密钥生成器接口，定义根据指定密钥规格生成非对称密钥的方法。调用前，需通过[createAsyKeyGeneratorBySpec()](#cryptoframeworkcreateasykeygeneratorbyspec10)方法构建一个AsyKeyGeneratorBySpec实例。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                       |
 | ------- | ------ | ---- | ---- | -------------------------- |
@@ -3121,11 +4477,15 @@ generateKeyPair(callback: AsyncCallback\<KeyPair>): void
 
 当使用[COMMON_PARAMS_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到随机生成的密钥对；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到各项数据与密钥参数一致的密钥对。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3135,18 +4495,19 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>Incorrect parameter types;         |
-| 17620001 | memory operation failed.           |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>Incorrect parameter types;         |
+| 17620001 | Memory operation failed.           |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
@@ -3176,7 +4537,7 @@ function genDsa1024KeyPairSpecBigE() {
 function testGenerateKeyPair() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
-  asyKeyGeneratorBySpec.generateKeyPair((err, keyPair) => {
+  asyKeyGeneratorBySpec.generateKeyPair((err: BusinessError | null, keyPair: cryptoFramework.KeyPair | undefined) => {
     if (err) {
       console.error(`generateKeyPair failed, errCode: ${err.code}, errMsg: ${err.message}`);
       return;
@@ -3194,11 +4555,15 @@ generateKeyPair(): Promise\<KeyPair>
 
 当使用[COMMON_PARAMS_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到随机生成的密钥对；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到各项数据与密钥参数一致的密钥对。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3208,15 +4573,17 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.        |
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.        |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -3259,6 +4626,51 @@ function testGenerateKeyPair() {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+// 配置DSA1024公钥和私钥中包含的公共参数。
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("166484678330980230918288017058118750588936475825075636160948086324584506253050733641653846374072496744751373749513800668308592471875927510262190610484075661191955336781308738545148462904698011665231210784009585531833742255763058353244797364068379260289632671394123437886363152901206340520347078776281501407017"),
+    q: BigInt("22136567887935188521122291396237495404238014904987508308073618539643"),
+    g: BigInt("31431106800686660210719504187936474649951169233459600933271043344986900452096905678402332127191280905097978014715716847063988554957190923585487931844988906222454145404829468544959657389200810483171610136624344260441375546451841847753251202124107818741854127006757173424804029343596388967724568105310582438077"),
+  }
+  return dsaCommonSpec;
+}
+
+// 设置DSA1024密钥对中包含的全参数。
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("17151574244286446262852711552260633032889574813459849237631670562777"),
+    pk: BigInt("122481462760261281537933930327074654922520342706632667362863059195007078325664832084167283707829801130185756952585086523755112278127045105337478944738740971392867045662092290058737805402824260644308348496645265005145482163276902936269594425436610316947077436440924891874036982298199295240775886921373610618219"),
+  }
+  return dsaKeyPairSpec;
+}
+
+async function testGenerateKeyPair()
+{
+  let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
+  let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+  try {
+    let keyPair = await asyKeyGeneratorBySpec.generateKeyPair();
+    console.info('generateKeyPair result: success.');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateKeyPair failed, ${e.code}, ${e.message}`);
+  }
+}
+```
+
 ### generateKeyPairSync<sup>12+</sup>
 
 generateKeyPairSync(): KeyPair
@@ -3267,9 +4679,13 @@ generateKeyPairSync(): KeyPair
 
 当使用[COMMON_PARAMS_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到随机生成的密钥对；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到各项数据与密钥参数一致的密钥对。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3279,13 +4695,13 @@ generateKeyPairSync(): KeyPair
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
@@ -3343,11 +4759,15 @@ generatePriKey(callback: AsyncCallback\<PriKey>): void
 
 使用[PRIVATE_KEY_SPEC](#asykeyspectype10)类型密钥参数创建密钥生成器，生成指定私钥。使用[KEY_PAIR_SPEC](#asykeyspectype10)类型密钥参数创建密钥生成器，从生成的密钥对中获取指定私钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3357,18 +4777,19 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>Mandatory parameters are left unspecified;         |
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>Mandatory parameters are left unspecified;         |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
@@ -3398,9 +4819,9 @@ function genDsa1024KeyPairSpecBigE() {
 function testGeneratePriKey() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
-  asyKeyGeneratorBySpec.generatePriKey((err, prikey) => {
+  asyKeyGeneratorBySpec.generatePriKey((err: BusinessError | null, prikey: cryptoFramework.PriKey | undefined) => {
     if (err) {
-      console.error(`generateKeyPair failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      console.error(`generatePriKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
       return;
     }
     console.info('generatePriKey result: success.');
@@ -3412,15 +4833,19 @@ function testGeneratePriKey() {
 
 generatePriKey(): Promise\<PriKey>
 
-获取该非对称密钥生成器生成的密钥。使用Promise异步回调。
+获取该非对称密钥生成器生成的私钥。使用Promise异步回调。
 
 当使用[PRIVATE_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的私钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的私钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3430,15 +4855,17 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -3481,17 +4908,65 @@ function testGeneratePriKey() {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+// 配置DSA1024公钥和私钥中包含的公共参数。
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("166484678330980230918288017058118750588936475825075636160948086324584506253050733641653846374072496744751373749513800668308592471875927510262190610484075661191955336781308738545148462904698011665231210784009585531833742255763058353244797364068379260289632671394123437886363152901206340520347078776281501407017"),
+    q: BigInt("22136567887935188521122291396237495404238014904987508308073618539643"),
+    g: BigInt("31431106800686660210719504187936474649951169233459600933271043344986900452096905678402332127191280905097978014715716847063988554957190923585487931844988906222454145404829468544959657389200810483171610136624344260441375546451841847753251202124107818741854127006757173424804029343596388967724568105310582438077"),
+  }
+  return dsaCommonSpec;
+}
+
+// 设置DSA1024密钥对中包含的全参数。
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("17151574244286446262852711552260633032889574813459849237631670562777"),
+    pk: BigInt("122481462760261281537933930327074654922520342706632667362863059195007078325664832084167283707829801130185756952585086523755112278127045105337478944738740971392867045662092290058737805402824260644308348496645265005145482163276902936269594425436610316947077436440924891874036982298199295240775886921373610618219"),
+  }
+  return dsaKeyPairSpec;
+}
+
+async function testGeneratePriKey() {
+  try {
+    let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
+    let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+    let keyGenPromise = await asyKeyGeneratorBySpec.generatePriKey();
+    console.info('generatePriKey result: success.');
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generatePriKey failed, ${e.code}, ${e.message}`);
+  }
+}
+```
+
 ### generatePriKeySync<sup>12+</sup>
 
 generatePriKeySync(): PriKey
 
-同步获取该非对称密钥生成器生成的密钥。
+使用该非对称密钥生成器生成私钥。该接口以同步方式返回结果。
 
 当使用[PRIVATE_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的私钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的私钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3501,18 +4976,19 @@ generatePriKeySync(): PriKey
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.        |
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.        |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
@@ -3549,7 +5025,8 @@ function testGeneratePriKeySync() {
     } else {
       console.error('[Sync]: get pri key result: fail.');
     }
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
@@ -3563,11 +5040,15 @@ generatePubKey(callback: AsyncCallback\<PubKey>): void
 
 当使用[PUBLIC_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的公钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的公钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version10-11系统能力为SystemCapability.Security.CryptoFramework；从API version12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3577,18 +5058,19 @@ API version10-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes:<br> Incorrect parameter types;        |
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes:<br> Incorrect parameter types;        |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
@@ -3618,7 +5100,7 @@ function genDsa1024KeyPairSpecBigE() {
 function testGeneratePubKey() {
   let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
   let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
-  asyKeyGeneratorBySpec.generatePubKey((err, pubKey) => {
+  asyKeyGeneratorBySpec.generatePubKey((err: BusinessError | null, pubKey: cryptoFramework.PubKey | undefined) => {
     if (err) {
       console.error(`generatePubKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
       return;
@@ -3632,15 +5114,19 @@ function testGeneratePubKey() {
 
 generatePubKey(): Promise\<PubKey>
 
-获取该非对称密钥生成器生成的密钥。使用Promise异步回调。
+获取该非对称密钥生成器生成的公钥。使用Promise异步回调。
 
 当使用[PUBLIC_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的公钥；当使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以从生成的密钥对中获取指定的公钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3650,15 +5136,17 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -3701,17 +5189,66 @@ function testGeneratePubKey() {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+// 配置DSA1024公钥和私钥中包含的公共参数。
+function genDsa1024CommonSpecBigE() {
+  let dsaCommonSpec: cryptoFramework.DSACommonParamsSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.COMMON_PARAMS_SPEC,
+    p: BigInt("166484678330980230918288017058118750588936475825075636160948086324584506253050733641653846374072496744751373749513800668308592471875927510262190610484075661191955336781308738545148462904698011665231210784009585531833742255763058353244797364068379260289632671394123437886363152901206340520347078776281501407017"),
+    q: BigInt("22136567887935188521122291396237495404238014904987508308073618539643"),
+    g: BigInt("31431106800686660210719504187936474649951169233459600933271043344986900452096905678402332127191280905097978014715716847063988554957190923585487931844988906222454145404829468544959657389200810483171610136624344260441375546451841847753251202124107818741854127006757173424804029343596388967724568105310582438077"),
+  }
+  return dsaCommonSpec;
+}
+
+// 设置DSA1024密钥对中包含的全参数。
+function genDsa1024KeyPairSpecBigE() {
+  let dsaCommonSpec = genDsa1024CommonSpecBigE();
+  let dsaKeyPairSpec: cryptoFramework.DSAKeyPairSpec = {
+    algName: "DSA",
+    specType: cryptoFramework.AsyKeySpecType.KEY_PAIR_SPEC,
+    params: dsaCommonSpec,
+    sk: BigInt("17151574244286446262852711552260633032889574813459849237631670562777"),
+    pk: BigInt("122481462760261281537933930327074654922520342706632667362863059195007078325664832084167283707829801130185756952585086523755112278127045105337478944738740971392867045662092290058737805402824260644308348496645265005145482163276902936269594425436610316947077436440924891874036982298199295240775886921373610618219"),
+  }
+  return dsaKeyPairSpec;
+}
+
+async function testGeneratePubKey()
+{
+  try {
+    let asyKeyPairSpec = genDsa1024KeyPairSpecBigE(); // JS输入必须是大端格式的正数。
+    let asyKeyGeneratorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(asyKeyPairSpec);
+    let keyGenPromise = await asyKeyGeneratorBySpec.generatePubKey();
+    console.info('generatePubKey result: success.');
+  } catch(err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generatePubKey failed, ${e.code}, ${e.message}`);
+  }
+}
+```
+
 ### generatePubKeySync<sup>12+</sup>
 
 generatePubKeySync(): PubKey
 
-同步获取该非对称密钥生成器生成的密钥。
+同步获取该非对称密钥生成器生成的公钥。
 
 当使用[PUBLIC_KEY_SPEC](#asykeyspectype10)类型的密钥参数来创建密钥生成器时，可以得到指定的公钥；使用[KEY_PAIR_SPEC](#asykeyspectype10)类型的密钥参数时，可以从生成的密钥对中获取指定的公钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -3721,18 +5258,19 @@ generatePubKeySync(): PubKey
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.        |
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.        |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 配置DSA1024公钥和私钥中包含的公共参数。
 function genDsa1024CommonSpecBigE() {
@@ -3769,7 +5307,8 @@ function testGeneratePubKeySync() {
     } else {
       console.error('[Sync]: get pub key result: fail.');
     }
-  } catch (e) {
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
     console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
   }
 }
@@ -3777,19 +5316,23 @@ function testGeneratePubKeySync() {
 
 ## ECCKeyUtil<sup>11+</sup>
 
-用于根据椭圆曲线名称为非对称密钥对生成公共参数。
+提供ECC密钥参数生成和基于指定椭圆曲线的点转换工具。
 
 ### genECCCommonParamsSpec<sup>11+</sup>
 
 static genECCCommonParamsSpec(curveName: string): ECCCommonParamsSpec
 
-根据椭圆曲线相应的NID（Name Identifier）字符串名称生成相应的非对称公共密钥参数。详见[ECC密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#ecc)和[SM2密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#sm2)。
+根据椭圆曲线相应的NID（Name Identifier）字符串名称生成相应的非对称公共密钥参数。详见[ECC密钥生成规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#ecc)和[SM2密钥生成规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#sm2)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3805,13 +5348,13 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801      | this operation is not supported. |
-| 17620001 | memory operation failed.                    |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801      | This operation is not supported. |
+| 17620001 | Memory operation failed.                    |
 
 **示例：**
 
@@ -3837,11 +5380,15 @@ static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 >
 > 根据RFC5480规范中第2.2节的描述：<br/>
 > 1. 非压缩的点数据，表示为：前缀0x04\|x坐标\|y坐标；
-> 2. 压缩的点数据，对于Fp素数域上的点（当前暂不支持F2m域），表示为：前缀0x03\|x坐标 (坐标y是奇数时)，前缀0x02\|x坐标 (坐标y是偶数时)。
+> 2. 压缩的点数据，对于Fp素数域上的点（当前暂不支持F2m域），表示为：前缀0x03\|x坐标（坐标y是奇数时），前缀0x02\|x坐标（坐标y是偶数时）。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3858,26 +5405,33 @@ static convertPoint(curveName: string, encodedPoint: Uint8Array): Point
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed. |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 // 随机生成的非压缩点数据。
 let pkData =
   new Uint8Array([4, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195,
     157, 111, 40, 217, 215, 148, 120, 224, 205, 82, 83, 92, 185, 21, 211, 184, 5, 19, 114, 33, 86, 85, 228, 123, 242,
     206, 200, 98, 178, 184, 130, 35, 232, 45, 5, 202, 189, 11, 46, 163, 156, 152]);
-let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
-console.info('returnPoint: ' + returnPoint.x.toString(16));
+try {
+  let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
+  console.info('returnPoint: ' + returnPoint.x.toString(16));
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`convertPoint failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ### getEncodedPoint<sup>12+</sup>
@@ -3886,9 +5440,13 @@ static getEncodedPoint(curveName: string, point: Point, format: string): Uint8Ar
 
 根据椭圆曲线的曲线名，即相应的NID（Name Identifier），按照指定的点数据格式，将Point对象转换为点数据。当前支持压缩/非压缩格式的点数据。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3906,33 +5464,69 @@ static getEncodedPoint(curveName: string, point: Point, format: string): Uint8Ar
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed. |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function doTest() {
-  let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
-  let keyPair = await generator.generateKeyPair();
-  let eccPkX = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
-  let eccPkY = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_Y_BN);
-  console.info('ECC_PK_X_BN 16：' + eccPkX.toString(16));
-  console.info('ECC_PK_Y_BN 16：' + eccPkY.toString(16));
-  // 将eccPkX.toString(16)结果放入x，eccPkY.toString(16)结果放入y。
-  let returnPoint: cryptoFramework.Point = {
-    x: BigInt('0x' + eccPkX.toString(16)),
-    y: BigInt('0x' + eccPkY.toString(16))
-  };
-  let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'UNCOMPRESSED');
-  console.info('returnData: ' + returnData);
+  try {
+    let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await generator.generateKeyPair();
+    let eccPkX = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
+    let eccPkY = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_Y_BN);
+    console.info('ECC_PK_X_BN 16: ' + eccPkX.toString(16));
+    console.info('ECC_PK_Y_BN 16: ' + eccPkY.toString(16));
+    // 将eccPkX.toString(16)结果放入x，eccPkY.toString(16)结果放入y。
+    let returnPoint: cryptoFramework.Point = {
+      x: BigInt('0x' + eccPkX.toString(16)),
+      y: BigInt('0x' + eccPkY.toString(16))
+    };
+    let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'UNCOMPRESSED');
+    console.info('returnData: ' + returnData);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`doTest failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function doTest() {
+  try {
+    let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
+    let keyPair = await generator.generateKeyPair();
+    let eccPkX = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
+    let eccPkY = keyPair.pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_Y_BN);
+    console.info('ECC_PK_X_BN ：' + eccPkX.toString());
+    console.info('ECC_PK_Y_BN ：' + eccPkY.toString());
+    let returnPoint: cryptoFramework.Point = {
+      x: BigInt('' + eccPkX.toString()),
+      y: BigInt('' + eccPkY.toString())
+    };
+    let returnData = cryptoFramework.ECCKeyUtil.getEncodedPoint('NID_brainpoolP256r1', returnPoint, 'UNCOMPRESSED');
+    console.info('returnData: ' + returnData);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getEncodedPoint failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -3940,24 +5534,34 @@ async function doTest() {
 
 根据素数P的长度和私钥长度（bit位数）生成DH公共密钥参数。
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 ### genDHCommonParamsSpec<sup>11+</sup>
 
-static genDHCommonParamsSpec(pLen: number, skLen?: number): DHCommonParamsSpec
+ArkTS-Dyn: static genDHCommonParamsSpec(pLen: number, skLen?: number): DHCommonParamsSpec
 
-根据素数P的长度和私钥长度（bit位数）生成DH公共密钥参数。详见[DH密钥生成规格](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#dh)。
+ArkTS-Sta: static genDHCommonParamsSpec(pLen: int, skLen?: int): DHCommonParamsSpec
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+根据素数P的长度和私钥长度（bit位数）生成DH公共密钥参数。详见[DH密钥生成规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#dh)。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Key.AsymKey
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Key.AsymKey。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Key.AsymKey
+- API版本11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                             |
 | ------ | ------ | ---- | ------------------------------------------------ |
-| pLen   | number | 是   | 用于指定DH公共密钥参数中素数P的长度，单位为bits。 |
-| skLen  | number | 否   | 用于指定生成DH私钥的最大长度，单位为bits，默认值为0。<br>当参数值设置为0时，生成DH私钥的最大长度为：<br>ffdhe2048：255 bits。<br>ffdhe3072：275 bits。<br>ffdhe4096：325 bits。<br>ffdhe6144：375 bits。<br>ffdhe8192：400 bits。|
+| pLen   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用于指定DH公共密钥参数中素数P的长度，单位为bits。 |
+| skLen  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 用于指定生成DH私钥的最大长度，单位为bits，默认值为0。<br>当参数值设置为0时，生成DH私钥的最大长度为：<br>ffdhe2048：255 bits。<br>ffdhe3072：275 bits。<br>ffdhe4096：325 bits。<br>ffdhe6144：375 bits。<br>ffdhe8192：400 bits。|
 
 **返回值：**
 
@@ -3967,14 +5571,14 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801      | this operation is not supported. |
-| 17620001 | memory operation failed.                    |
-| 17630001 | crypto operation error.          |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801      | This operation is not supported. |
+| 17620001 | Memory operation failed.                    |
+| 17630001 | Crypto operation error.          |
 
 **示例：**
 
@@ -3994,15 +5598,23 @@ try {
 
 用于SM2密码学运算的工具类。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ### genCipherTextBySpec<sup>12+</sup>
 
 static genCipherTextBySpec(spec: SM2CipherTextSpec, mode?: string): DataBlob
 
 根据指定的SM2密文参数，生成符合国密标准的ASN.1格式SM2密文。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4019,13 +5631,14 @@ static genCipherTextBySpec(spec: SM2CipherTextSpec, mode?: string): DataBlob
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.                    |
-| 17630001 | crypto operation error.          |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.                    |
+| 17630001 | Crypto operation error.          |
 
 **示例：**
 
@@ -4055,9 +5668,13 @@ static getCipherTextSpec(cipherText: DataBlob, mode?: string): SM2CipherTextSpec
 
 从符合国密标准的ASN.1格式的SM2密文中，获取具体的SM2密文参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4074,13 +5691,16 @@ static getCipherTextSpec(cipherText: DataBlob, mode?: string): SM2CipherTextSpec
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.                    |
-| 17630001 | crypto operation error.          |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.                    |
+| 17630001 | Crypto operation error.          |
+
+**示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -4106,41 +5726,44 @@ try {
 
 createCipher(transformation: string): Cipher
 
-通过指定算法名称，获取相应的[Cipher](#cipher)实例。
+创建加解密实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名         | 类型   | 必填 | 说明                                                         |
 | -------------- | ------ | ---- | ------------------------------------------------------------ |
-| transformation | string | 是   | 待生成Cipher的算法名称（含密钥长度）、加密模式以及填充方法的组合。<br>支持的规格详见[对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md)和[非对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md)。 |
+| transformation | string | 是   | 待生成Cipher的算法名称（含密钥长度）、加密模式以及填充方法的组合。<br>支持的规格详见[对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md)和[非对称密钥加解密算法规格](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md)。 |
 
 > **说明：**
 >
-> 1. 目前对称加解密中，PKCS5和PKCS7的实现相同，其padding长度和分组长度保持一致。在3DES中均按8字节填充，在AES中均按16字节填充。另有NoPadding表示不填充。
+> 目前对称加解密中，PKCS #5和PKCS #7的实现相同，其padding长度和分组长度保持一致。在3DES中均按8字节填充，在AES中均按16字节填充。另有NoPadding表示不填充。
 > <br/>开发者需要自行了解密码学不同分组模式的差异，以便选择合适的参数规格。例如选择ECB和CBC模式时，建议启用填充，否则必须确保明文长度是分组大小的整数倍；选择其他模式时，可以不启用填充，此时密文长度和明文长度一致（即可能不是分组大小的整数倍）。
-> 2. 使用RSA或SM2进行非对称加解密时，必须创建两个Cipher对象，分别进行加密和解密操作，不能对同一个Cipher对象进行加解密。对称加解密没有此要求，只要算法规格一致，可以对同一个Cipher对象进行加解密操作。
 
 **返回值：**
 
 | 类型              | 说明                     |
 | ----------------- | ------------------------ |
-| [Cipher](#cipher) | 返回加解密生成器的对象。 |
+| [Cipher](#cipher) | 返回对应算法的Cipher实例。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 17620001 | memory operation failed.          |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 17620001 | Memory operation failed.          |
 
 **示例：**
 
@@ -4151,7 +5774,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let cipherAlgName = '3DES192|ECB|PKCS7';
 try {
   let cipher = cryptoFramework.createCipher(cipherAlgName);
-  console.info('cipher algName：' + cipher.algName);
+  console.info('cipher algName: ' + cipher.algName);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
@@ -4160,22 +5783,30 @@ try {
 
 ## Cipher
 
-提供加解密的算法操作功能，按序调用本类中的[init()](#init-1)、[update()](#update)、[doFinal()](#dofinal)方法，可以实现对称加密/对称解密/非对称加密/非对称解密。
+加解密接口，定义对称加解密和非对称加解密方法。调用前，需通过[createCipher(transformation: string): Cipher](#cryptoframeworkcreatecipher)方法创建一个Cipher实例。按序调用Cipher实例中的[init()](#init-1)、[update()](#update)、[doFinal()](#dofinal)方法，可以实现对称加密/对称解密/非对称加密/非对称解密。
 
-完整的加解密流程示例可参考[开发指南](../../security/CryptoArchitectureKit/crypto-encryption-decryption-overview.md)。
+完整的加解密流程示例可参考[开发指南](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md)。
 
 一次完整的加/解密流程在对称加密和非对称加密中略有不同：
 
 - 对称加解密：init为必选，update为可选（且允许多次update加/解密大数据），doFinal为必选；doFinal结束后可以重新init开始新一轮加/解密流程。
 - RSA、SM2非对称加解密：init为必选，不支持update操作，doFinal为必选（允许连续多次doFinal加/解密大数据）；RSA不支持重复init，切换加解密模式或填充方式时，需要重新创建Cipher对象。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                         |
 | ------- | ------ | ---- | ---- | ---------------------------- |
@@ -4183,17 +5814,21 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 ### init
 
-init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCallback\<void>): void
+init(opMode: CryptoMode, key: Key, params: ParamsSpec, callback: AsyncCallback\<void>): void
 
-初始化加解密的[cipher](#cipher)对象，使用callback异步回调获取结果。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
+初始化加解密的[cipher](#cipher)对象。使用callback异步回调。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
 
 必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -4201,34 +5836,77 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | opMode   | [CryptoMode](#cryptomode) | 是   | 加密或者解密模式。                                           |
 | key      | [Key](#key)               | 是   | 指定加密或解密的密钥。                                       |
-| params   | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前只支持ParamsSpec， API 10之后增加支持null。 |
+| params   | [ParamsSpec](#paramsspec) | 是   | 指定加密或解密的参数，例如IV。                               |
 | callback | AsyncCallback\<void>      | 是   | 回调函数。当加解密初始化成功，err为undefined，否则为错误对象。     |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                                 |
 | -------- | --------------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.                                            |
-| 17620002 | failed to convert parameters between arkts and c.                                          |
-| 17620003 | parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
-| 17630001 | crypto operation error.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.                                            |
+| 17620002 | Failed to obtain the native object or convert parameters.                                          |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
+| 17630001 | Crypto operation error.|
+
+### init<sup>10+</sup>
+
+init(opMode: CryptoMode, key: Key, params: ParamsSpec | null, callback: AsyncCallback\<void>): void
+
+初始化加解密的[cipher](#cipher)对象，使用callback异步回调获取结果。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
+
+必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本10-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型                      | 必填 | 说明                                                         |
+| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
+| opMode   | [CryptoMode](#cryptomode) | 是   | 要执行的操作（加密或解密）。                                           |
+| key      | [Key](#key)               | 是   | 用于加密或解密的密钥。                                       |
+| params   | [ParamsSpec](#paramsspec) \| null | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前只支持ParamsSpec，API 10之后增加支持null。 |
+| callback | AsyncCallback\<void>      | 是   | 回调函数。当加解密初始化成功，err为undefined，否则为错误对象。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                                 |
+| -------- | --------------------------------------------------------- |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.                                            |
+| 17620002 | Failed to obtain the native object or convert parameters.                                          |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
+| 17630001 | Crypto operation error.|
 
 ### init
 
-init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise\<void>
+init(opMode: CryptoMode, key: Key, params: ParamsSpec): Promise\<void>
 
 初始化加解密的cipher对象。使用Promise异步回调。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
 
 必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -4236,7 +5914,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 | ------ | ------------------------- | ---- | ------------------------------------------------------------ |
 | opMode | [CryptoMode](#cryptomode) | 是   | 加密或者解密模式。                                           |
 | key    | [Key](#key)               | 是   | 指定加密或解密的密钥。                                       |
-| params | [ParamsSpec](#paramsspec) \| null<sup>10+</sup> | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前仅支持ParamsSpec，从API 10开始增加对null的支持。 |
+| params | [ParamsSpec](#paramsspec) | 是   | 指定加密或解密的参数，例如IV。                               |
 
 **返回值：**
 
@@ -4246,27 +5924,76 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                          |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.                                     |
-| 17620002 | failed to convert parameters between arkts and c.                                    |
-| 17620003 | parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
-| 17630001 | crypto operation error.|
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.                                     |
+| 17620002 | Failed to obtain the native object or convert parameters.                                    |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
+| 17630001 | Crypto operation error.|
+
+### init<sup>10+</sup>
+
+init(opMode: CryptoMode, key: Key, params: ParamsSpec | null): Promise\<void>
+
+初始化加解密的cipher对象。使用Promise异步回调。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
+
+必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本10-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明                                                         |
+| ------ | ------------------------- | ---- | ------------------------------------------------------------ |
+| opMode | [CryptoMode](#cryptomode) | 是   | 要执行的操作（加密或解密）。                                           |
+| key    | [Key](#key)               | 是   | 用于加密或解密的密钥。                                       |
+| params | [ParamsSpec](#paramsspec) \| null | 是   | 指定加密或解密的参数，对于ECB等没有参数的算法模式，请传入null。API 10之前只支持ParamsSpec，API 10之后增加支持null。 |
+
+**返回值：**
+
+| 类型           | 说明                                   |
+| -------------- | -------------------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                          |
+| -------- | ------------------------------------------------- |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.                                     |
+| 17620002 | Failed to obtain the native object or convert parameters.                                    |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
+| 17630001 | Crypto operation error.|
 
 ### initSync<sup>12+</sup>
 
 initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 
-初始化加解密的[cipher](#cipher)对象，通过注册回调函数获取结果。initSync、updateSync、doFinalSync为三段式接口，需要成组使用。其中initSync和doFinalSync必选，updateSync可选。
+初始化加解密的[cipher](#cipher)对象，此API以同步方式返回结果。initSync、updateSync、doFinalSync为三段式接口，需要成组使用。其中initSync和doFinalSync必选，updateSync可选。
 
 必须在使用[createCipher](#cryptoframeworkcreatecipher)创建[Cipher](#cipher)实例后，才能使用本函数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4278,19 +6005,21 @@ initSync(opMode: CryptoMode, key: Key, params: ParamsSpec | null): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.           |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17620003 | parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length.|
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.           |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid opMode value;<br>2. Invalid iv length;<br>3. Invalid key length. <br>适用版本：22+|
+| 17630001 | Crypto operation error. |
 
 ### update
 
-update(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
+ArkTS-Dyn: update(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
+
+ArkTS-Sta: update(data: DataBlob, callback: AsyncCallback\<DataBlob | null>): void
 
 分段更新加密或者解密数据操作。使用callback异步回调。
 
@@ -4312,38 +6041,44 @@ update(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
 >
 >    算法库未对单次或累计的update数据量设置限制。对于大数据量的对称加解密操作，建议分多次调用update方法传入数据。
 >
->    AES使用多次update操作的示例代码详见[使用AES对称密钥分段加解密](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)。
+>    AES使用多次update操作的示例代码详见[使用aes对称密钥gcm模式分段加解密](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式分段加解密)。
 > 3. RSA、SM2非对称加解密不支持update操作。
 > 4. 对于CCM模式的对称加解密算法，加密时只能调用1次update接口加密数据并调用doFinal接口获取tag，或直接调用doFinal接口加密数据并获取tag，解密时只能调用1次update接口或调用1次doFinal接口解密数据并验证tag。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型                                  | 必填 | 说明                                                         |
 | -------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
 | data     | [DataBlob](#datablob)                 | 是   | 需要进行加密或解密的数据。data不能为null。           |
-| callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数。更新加/解密数据成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback\<[DataBlob](#datablob)><br>ArkTS-Sta: AsyncCallback\<[DataBlob](#datablob)> \| null | 是   | 回调函数。更新加/解密数据成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.                               |
-| 17620002 | failed to convert parameters between arkts and c.                            |
-| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
-| 17630001 | crypto operation error.                     |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.                               |
+| 17620002 | Failed to obtain the native object or convert parameters.                            |
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
+| 17630001 | Crypto operation error.                     |
 
 ### update
 
-update(data: DataBlob): Promise\<DataBlob>
+ArkTS-Dyn: update(data: DataBlob): Promise\<DataBlob>
+
+ArkTS-Sta: update(data: DataBlob): Promise\<DataBlob | null>
 
 分段更新加密或者解密数据操作。使用Promise异步回调。
 
@@ -4355,15 +6090,19 @@ update(data: DataBlob): Promise\<DataBlob>
 > <br/>（例如对于ECB和CBC模式，不论update传入的数据是否为分组长度的整数倍，都会以分组作为基本单位进行加/解密，并输出本次update新产生的加/解密分组结果。<br/>可以理解为，update只要凑满一个新的分组就会有输出，如果没有凑满则此次update输出为null，把当前还没被加/解密的数据留着，等下一次update/doFinal传入数据的时候，拼接起来继续凑分组。<br/>最后doFinal的时候，会把剩下的还没加/解密的数据，根据[createCipher](#cryptoframeworkcreatecipher)时设置的padding模式进行填充，补齐到分组的整数倍长度，再输出剩余加解密结果。<br/>而对于可以将分组密码转化为流模式实现的模式，还可能出现密文长度和明文长度相同的情况等。）
 > 2. 根据数据量，可以不调用update（即init完成后直接调用doFinal）或多次调用update。<br/>
 >    算法库目前没有对update（单次或累计）的数据量设置大小限制，建议对于大数据量的对称加解密，可以采用多次update的方式传入数据。<br/>
->    AES使用多次update操作的示例代码详见[使用AES对称密钥分段加解密](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md)。
+>    AES使用多次update操作的示例代码详见[使用aes对称密钥gcm模式分段加解密](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式分段加解密)。
 > 3. RSA、SM2非对称加解密不支持update操作。
 > 4. 对于CCM模式的对称加解密算法，加密时只能调用1次update接口加密数据并调用doFinal接口获取tag，或直接调用doFinal接口加密数据并获取tag，解密时只能调用1次update接口或调用1次doFinal接口解密数据并验证tag。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4375,33 +6114,40 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 类型                            | 说明                                             |
 | ------------------------------- | ------------------------------------------------ |
-| Promise\<[DataBlob](#datablob)> | Promise对象，返回此次更新的加/解密结果DataBlob。 |
+| ArkTS-Dyn: Promise\<[DataBlob](#datablob)><br>ArkTS-Sta: Promise\<[DataBlob](#datablob)> \| null | Promise对象，返回此次更新的加/解密结果DataBlob。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.                                |
-| 17620002 | failed to convert parameters between arkts and c.                               |
-| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
-| 17630001 | crypto operation error.                      |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.                                |
+| 17620002 | Failed to obtain the native object or convert parameters.                               |
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
+| 17630001 | Crypto operation error.                      |
 
 ### updateSync<sup>12+</sup>
 
-updateSync(data: DataBlob): DataBlob
+ArkTS-Dyn: updateSync(data: DataBlob): DataBlob
 
-分段更新加密或者解密数据操作，通过注册回调函数获取加/解密数据。
+ArkTS-Sta: updateSync(data: DataBlob): DataBlob | null
+
+分段更新加密或者解密数据操作。
 
 必须在对[Cipher](#cipher)实例使用[initSync()](#initsync12)初始化后，才能使用本函数。
 
 其他注意事项同上异步接口说明。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4413,23 +6159,60 @@ updateSync(data: DataBlob): DataBlob
 
 | 类型                            | 说明                                             |
 | ------------------------------- | ------------------------------------------------ |
-| [DataBlob](#datablob) | 返回此次更新的加/解密结果DataBlob。 |
+| ArkTS-Dyn: [DataBlob](#datablob)<br>ArkTS-Sta: [DataBlob](#datablob) \| null | 返回此次更新的加/解密结果DataBlob。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.           |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.           |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
+| 17630001 | Crypto operation error. |
 
 ### doFinal
 
-doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
+doFinal(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
+
+完成加解密操作，对输入数据进行加密或解密，然后反馈输出数据。加解密操作完成后，数据无法更新。使用callback异步回调。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**参数：**
+
+| 参数名     | 类型                                  | 必填 | 说明                                                         |
+| -------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
+| data     | [DataBlob](#datablob)                 | 是   | 加密或解密的数据。不可传入{data: Uint8Array(空) }。       |
+| callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数。最终加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.           |
+| 17620002 | Failed to obtain the native object or convert parameters.          |
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
+| 17630001 | Crypto operation error. |
+
+### doFinal<sup>10+</sup>
+
+ArkTS-Dyn: doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
+
+ArkTS-Sta: doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob | null>): void
 
 （1）在对称加解密中doFinal用于处理剩余数据和本次传入的数据，并最终结束加密或解密操作，使用callback异步回调函数获取加密或解密后的数据。如果数据量较小，可以在 `doFinal` 中一次性传入数据，而不使用update；如果在本次加解密流程中已经使用[update](#update)传入过数据，可以在doFinal的data参数处传入null。根据对称加解密的模式不同，doFinal的输出有以下区别：
 
@@ -4446,44 +6229,57 @@ doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 >  3. doFinal的结果可能为null，因此使用.data字段访问doFinal结果的具体数据前，请记得先判断结果是否为null，避免产生异常。<br/>
 >    对于加密，CFB、OFB和CTR模式，如果doFinal传null, 则返回结果为null。<br/>
 >    对于解密，GCM、CCM、CFB、OFB和CTR模式，如果doFinal传null，则返回结果为null；对于解密，其他模式，如果明文是加密块大小的整倍数，调用update传入所有密文，调用doFinal传null, 则返回结果为null。<br/>
->  4. 非对称加解密时多次doFinal操作的示例代码详见[使用RSA非对称密钥分段加解密](../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md)，SM2和RSA的操作类似。
+>  4. 非对称加解密时多次doFinal操作的示例代码详见[使用RSA非对称密钥分段加解密](../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt.md#使用rsa非对称密钥分段加解密)，SM2和RSA的操作类似。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型                                  | 必填 | 说明                                                         |
 | -------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| data     | [DataBlob](#datablob) \| null<sup>10+</sup>                 | 是   | 加密或解密的数据。在对称加解密中可为null，但不可传入{data: Uint8Array(空) }。API 10前仅支持DataBlob，API 10后增加null支持。       |
-| callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数。最终加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
+| data     | [DataBlob](#datablob) \| null                 | 是   | 加密或解密的数据。在对称加解密中可为null，但不可传入{data: Uint8Array(空) }。API 10前仅支持DataBlob，API 10后增加null支持。       |
+| callback | ArkTS-Dyn: AsyncCallback\<[DataBlob](#datablob)><br>ArkTS-Sta: AsyncCallback\<[DataBlob](#datablob)> \| null | 是   | 回调函数。最终加/解密成功时，err为undefined，data为加/解密结果DataBlob；否则为错误对象。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.           |
-| 17620002 | failed to convert parameters between arkts and c.          |
-| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.           |
+| 17620002 | Failed to obtain the native object or convert parameters.          |
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
-更多加解密流程的完整示例请参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
+更多加解密流程的完整示例请参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式加解密)。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function generateRandom(len: number) {
+function generateRandom(len: number): cryptoFramework.DataBlob {
   let rand = cryptoFramework.createRandom();
-  let generateRandSync = rand.generateRandomSync(len);
-  return generateRandSync;
+  try {
+    return rand.generateRandomSync(len);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateRandomSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    let dataBlob: cryptoFramework.DataBlob = { data: new Uint8Array(len) };
+    return dataBlob;
+  }
 }
 
 function genGcmParamsSpec() {
@@ -4510,13 +6306,29 @@ function cipherByCallback() {
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
   symKeyGenerator.generateSymKey((err, symKey) => {
+    if (err) {
+      console.error(`generateSymKey failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams, (err) => {
+      if (err) {
+        console.error(`init failed, errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       let message = 'This is a test';
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       cipher.update(plainText, (err, encryptUpdate) => {
+        if (err) {
+          console.error(`update failed, errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
         cipher.doFinal(null, (err, tag) => {
+          if (err) {
+            console.error(`doFinal failed, errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
           gcmParams.authTag = tag;
-          console.info('encryptUpdate plainText：' + encryptUpdate.data);
+          console.info('encryptUpdate plainText: ' + encryptUpdate.data);
         });
       });
     });
@@ -4524,9 +6336,241 @@ function cipherByCallback() {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function generateRandom(len: int) {
+  let rand = cryptoFramework.createRandom();
+  let generateRandSync = rand.generateRandomSync(len);
+  return generateRandSync;
+}
+
+function genGcmParamsSpec() {
+  let ivBlob = generateRandom(12);
+  let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+  let dataAad = new Uint8Array(arr);
+  let aadBlob: cryptoFramework.DataBlob = { data: dataAad };
+  arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  let dataTag = new Uint8Array(arr);
+  let tagBlob: cryptoFramework.DataBlob = {
+    data: dataTag
+  };
+  let gcmParamsSpec: cryptoFramework.GcmParamsSpec = {
+    iv: ivBlob,
+    aad: aadBlob,
+    authTag: tagBlob,
+    algName: "GcmParamsSpec"
+  };
+  return gcmParamsSpec;
+}
+
+function cipherByCallback() {
+  let gcmParams = genGcmParamsSpec();
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+  let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+  symKeyGenerator.generateSymKey((err: BusinessError | null, symKey: cryptoFramework.SymKey | undefined) => {
+    if (err) {
+      console.error(`generateSymKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
+    if (symKey != undefined) {
+      cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams, (err: BusinessError | null) => {
+        if (err) {
+          console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
+        let message = "This is a test";
+        let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+        cipher.update(plainText, (err: BusinessError | null, encryptUpdate: cryptoFramework.DataBlob | null | undefined) => {
+          if (err) {
+            console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
+          if (encryptUpdate != undefined) {
+            cipher.doFinal(null, (err: BusinessError | null, tag: cryptoFramework.DataBlob | null | undefined) => {
+              if (err) {
+                console.error(`doFinal failed: errCode: ${err.code}, errMsg: ${err.message}`);
+                return;
+              }
+              if (tag != undefined) {
+                gcmParams.authTag = tag;
+              }
+              console.info('encryptUpdate plainText：' + encryptUpdate.data);
+            });
+          }
+        });
+      });
+    }
+  });
+}
+```
+JS示例：
+
+在Lite Wearable侧对称密钥只支持AES128算法；加解密只支持AES128|GCM或AES128|CBC算法。
+
+下述样例以对称算法为AES128，分组模式为GCM为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="Aes128Test">Aes128加解密异步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+ 
+let plainText = "This is a test";
+ 
+function genGcmAeadParamsSpec(ivData, aadData, tagLen) {
+    return {
+        nonce: ivData,
+        authenticatedData: aadData || new Uint8Array(0),
+        algName: 'AeadParamsSpec',
+        tagLen: tagLen === undefined ? 16 : tagLen
+    };
+}
+ 
+function aes128Test() {
+  try {
+      let aesKeyData = new Uint8Array([0x53, 0xD9, 0xE7, 0x4C, 0x1C, 0x71, 0x17, 0xDB, 0xFA, 0x47, 0xD1, 0xD2, 0xCD, 0x61, 0x20, 0x9F]);
+      let symKey = cryptoFramework.createSymKeyGenerator('AES128').convertKeySync({data: aesKeyData});
+      let iv = cryptoFramework.createRandom().generateRandomSync(12);
+      let aeadParams = genGcmAeadParamsSpec(iv, new Uint8Array(0), 16);
+      
+      let cipher = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+      cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, aeadParams, function (err) {
+          if (err) {
+              console.error('Encrypt init failed. Code: ' + err.code + " : " + err.message);
+              return;
+          }
+          let inData = StringToUint8Array(plainText);
+          cipher.doFinal({ data: inData }, function (err, encryptOutput) {
+              if (err) {
+                  console.error('Encrypt doFinal failed. Code: ' + err.code + " : " + err.message);
+                  return;
+              }
+              console.info('Encrypt successfully. cipherText: ' + encryptOutput.data);
+              let dec = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+              dec.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, aeadParams, function (err) {
+                  if (err) {
+                      console.error('Decrypt init failed. Code: ' + err.code + " : " + err.message);
+                      return;
+                  }
+                  dec.doFinal({ data: encryptOutput.data }, function (err, decryptOutput) {
+                      if (err) {
+                          console.error('Decrypt doFinal failed. Code: ' + err.code + " : " + err.message);
+                      } else {
+                          console.info('Decrypt successfully: ' + decryptOutput.data);
+                      }
+                  })
+              })
+          })
+      })
+    } catch (error) {
+        console.error(`aes128Test failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    Aes128Test() {
+        aes128Test();
+    }
+};
+```
+
 ### doFinal
 
-doFinal(data: DataBlob | null): Promise\<DataBlob>
+doFinal(data: DataBlob): Promise\<DataBlob>
+
+完成加解密操作，对输入数据进行加密或解密，然后反馈输出数据。加解密操作完成后，数据无法更新。使用Promise异步回调。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**参数：**
+
+| 参数名 | 类型                  | 必填 | 说明                 |
+| ---- | --------------------- | ---- | -------------------- |
+| data | [DataBlob](#datablob) | 是   | 加密或者解密的数据。不可传入{data: Uint8Array(空) }。 |
+
+**返回值：**
+
+| 类型                            | 说明                                             |
+| ------------------------------- | ------------------------------------------------ |
+| Promise\<[DataBlob](#datablob)> | Promise对象，返回剩余数据的加/解密结果DataBlob。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                     |
+| -------- | -------------------------------------------- |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.                                |
+| 17620002 | Failed to obtain the native object or convert parameters.                               |
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
+| 17630001 | Crypto operation error.                      |
+
+
+### doFinal<sup>10+</sup>
+
+ArkTS-Dyn: doFinal(data: DataBlob | null): Promise\<DataBlob>
+
+ArkTS-Sta: doFinal(data: DataBlob | null): Promise\<DataBlob | null>
 
 （1）在对称加解密中，doFinal加/解密（分组模式产生的）剩余数据和本次传入的数据，最后结束加密或者解密数据操作，使用Promise异步回调获取加密或者解密数据。<br/>如果数据量较小，可以在doFinal中一次性传入数据，而不使用update；如果在本次加解密流程中，已经使用update传入过数据，可以在doFinal的data参数处传入null。<br/>根据对称加解密的模式不同，doFinal的输出有如下区别：
 
@@ -4546,49 +6590,63 @@ doFinal(data: DataBlob | null): Promise\<DataBlob>
 >     对于加密，CFB、OFB 和 CTR 模式，如果doFinal传入null，则返回结果为null。
 >
 >     对于解密，GCM、CCM、CFB、OFB和CTR模式，如果doFinal传null，则返回结果为null；对于其他模式，如果明文是加密块大小的整倍数，调用update传入所有密文，调用doFinal传null, 则返回结果为null。
->  4. 非对称加解密时多次doFinal操作的示例代码详见[使用RSA非对称密钥分段加解密](../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md)，SM2和RSA的操作类似。
+>  4. 非对称加解密时多次doFinal操作的示例代码详见[使用RSA非对称密钥分段加解密](../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt.md#使用rsa非对称密钥分段加解密)，SM2和RSA的操作类似。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型                  | 必填 | 说明                 |
 | ---- | --------------------- | ---- | -------------------- |
-| data | [DataBlob](#datablob) \| null<sup>10+</sup> | 是   | 加密或者解密的数据。data参数允许为null，但不允许传入{data: Uint8Array(空) }。API 10之前只支持DataBlob，API 10之后增加支持null。 |
+| data | [DataBlob](#datablob) \| null | 是   | 加密或者解密的数据。data参数允许为null，但不允许传入{data: Uint8Array(空) }。API 10之前只支持DataBlob，API 10之后增加支持null。 |
 
 **返回值：**
 
 | 类型                            | 说明                                             |
 | ------------------------------- | ------------------------------------------------ |
-| Promise\<[DataBlob](#datablob)> | Promise对象，返回剩余数据的加/解密结果DataBlob。 |
+| ArkTS-Dyn: Promise\<[DataBlob](#datablob)><br>ArkTS-Sta: Promise\<[DataBlob](#datablob)> \| null | Promise对象，返回剩余数据的加/解密结果DataBlob。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.                                |
-| 17620002 | failed to convert parameters between arkts and c.                               |
-| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
-| 17630001 | crypto operation error.                      |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.                                |
+| 17620002 | Failed to obtain the native object or convert parameters.                               |
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
+| 17630001 | Crypto operation error.                      |
 
 **示例：**
 
-此外，更多加解密流程的完整示例可参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
+此外，更多加解密流程的完整示例可参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式加解密)。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function generateRandom(len: number) {
+function generateRandom(len: number): cryptoFramework.DataBlob {
   let rand = cryptoFramework.createRandom();
-  let generateRandSync = rand.generateRandomSync(len);
-  return generateRandSync;
+  try {
+    return rand.generateRandomSync(len);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateRandomSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    let dataBlob: cryptoFramework.DataBlob = { data: new Uint8Array(len) };
+    return dataBlob;
+  }
 }
 
 function genGcmParamsSpec() {
@@ -4611,24 +6669,84 @@ function genGcmParamsSpec() {
 }
 
 async function cipherByPromise() {
-  let gcmParams = genGcmParamsSpec();
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
-  let symKey = await symKeyGenerator.generateSymKey();
-  await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
-  let message = 'This is a test';
-  let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-  let encryptUpdate = await cipher.update(plainText);
-  gcmParams.authTag = await cipher.doFinal(null);
-  console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  try {
+    let gcmParams = genGcmParamsSpec();
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+    let symKey = await symKeyGenerator.generateSymKey();
+    await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
+    let message = 'This is a test';
+    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+    let encryptUpdate = await cipher.update(plainText);
+    gcmParams.authTag = await cipher.doFinal(null);
+    console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`cipherByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function generateRandom(len: int) {
+  let rand = cryptoFramework.createRandom();
+  let generateRandSync = rand.generateRandomSync(len);
+  return generateRandSync;
+}
+
+function genGcmParamsSpec() {
+  let ivBlob = generateRandom(12);
+  let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+  let dataAad = new Uint8Array(arr);
+  let aadBlob: cryptoFramework.DataBlob = { data: dataAad };
+  arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  let dataTag = new Uint8Array(arr);
+  let tagBlob: cryptoFramework.DataBlob = {
+    data: dataTag
+  };
+  let gcmParamsSpec: cryptoFramework.GcmParamsSpec = {
+    iv: ivBlob,
+    aad: aadBlob,
+    authTag: tagBlob,
+    algName: "GcmParamsSpec"
+  };
+  return gcmParamsSpec;
+}
+
+async function cipherByPromise() {
+  try {
+    let gcmParams = genGcmParamsSpec();
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+    let symKey = await symKeyGenerator.generateSymKey();
+    await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
+    let message = "This is a test";
+    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+    let encryptUpdate = await cipher.update(plainText);
+    await cipher.doFinal(null);
+    if(encryptUpdate != undefined) {
+      console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+    }
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`cipherByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
 ### doFinalSync<sup>12+</sup>
 
-doFinalSync(data: DataBlob | null): DataBlob
+ArkTS-Dyn: doFinalSync(data: DataBlob | null): DataBlob
 
-（1）在对称加解密中，doFinalSync用于处理剩余数据和本次传入的数据，并结束加密或解密操作，通过注册回调函数获取加密或解密结果。
+ArkTS-Sta: doFinalSync(data: DataBlob | null): DataBlob | null
+
+（1）在对称加解密中，doFinalSync用于处理剩余数据和本次传入的数据，最后结束加密或者解密数据操作，使用同步方式获取加密或者解密数据。
 
 如果数据量较小，可以在doFinalSync中一次性传入数据，而不使用updateSync。如果在本次加解密流程中已经使用[updateSync](#updatesync12)传入过数据，可以在doFinalSync的data参数处传入null。
 
@@ -4643,9 +6761,13 @@ doFinalSync(data: DataBlob | null): DataBlob
 
 其他注意事项同接口[doFinal()](#dofinal)说明。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4657,31 +6779,40 @@ doFinalSync(data: DataBlob | null): DataBlob
 
 | 类型                            | 说明                                             |
 | ------------------------------- | ------------------------------------------------ |
-| [DataBlob](#datablob) | 返回剩余数据的加/解密结果DataBlob。 |
+| ArkTS-Dyn: [DataBlob](#datablob)<br>ArkTS-Sta: [DataBlob](#datablob) \| null | 返回剩余数据的加/解密结果DataBlob。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.           |
-| 17620002 | failed to convert parameters between arkts and c.          |
-| 17620003 | parameter check failed. Possible causes: <br>1. The data is too long.|
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.           |
+| 17620002 | Failed to obtain the native object or convert parameters.          |
+| 17620003 | Parameter check failed. Possible causes: <br>1. The data is too long. <br>适用版本：22+|
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
-此外，更多加解密流程的完整示例可参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md)。
+此外，更多加解密流程的完整示例可参考[加解密开发指导](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式加解密)。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function generateRandom(len: number) {
+function generateRandom(len: number): cryptoFramework.DataBlob {
   let rand = cryptoFramework.createRandom();
-  let generateRandSync = rand.generateRandomSync(len);
-  return generateRandSync;
+  try {
+    return rand.generateRandomSync(len);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateRandomSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    let dataBlob: cryptoFramework.DataBlob = { data: new Uint8Array(len) };
+    return dataBlob;
+  }
 }
 
 function genGcmParamsSpec() {
@@ -4704,17 +6835,168 @@ function genGcmParamsSpec() {
 }
 
 async function cipherBySync() {
-  let gcmParams = genGcmParamsSpec();
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
-  let symKey = await symKeyGenerator.generateSymKey();
-  await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
-  let message = 'This is a test';
-  let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
-  let encryptUpdate = cipher.updateSync(plainText);
-  gcmParams.authTag = cipher.doFinalSync(null);
-  console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  try {
+    let gcmParams = genGcmParamsSpec();
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+    let symKey = await symKeyGenerator.generateSymKey();
+    await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
+    let message = 'This is a test';
+    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+    let encryptUpdate = cipher.updateSync(plainText);
+    gcmParams.authTag = cipher.doFinalSync(null);
+    console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`cipherBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function generateRandom(len: int) {
+  let rand = cryptoFramework.createRandom();
+  let generateRandSync = rand.generateRandomSync(len);
+  return generateRandSync;
+}
+
+function genGcmParamsSpec() {
+  let ivBlob = generateRandom(12);
+  let arr = [1, 2, 3, 4, 5, 6, 7, 8];
+  let dataAad = new Uint8Array(arr);
+  let aadBlob: cryptoFramework.DataBlob = { data: dataAad };
+  arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  let dataTag = new Uint8Array(arr);
+  let tagBlob: cryptoFramework.DataBlob = {
+    data: dataTag
+  };
+  let gcmParamsSpec: cryptoFramework.GcmParamsSpec = {
+    iv: ivBlob,
+    aad: aadBlob,
+    authTag: tagBlob,
+    algName: "GcmParamsSpec"
+  };
+  return gcmParamsSpec;
+}
+
+async function cipherBySync() {
+  try {
+    let gcmParams = genGcmParamsSpec();
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let cipher = cryptoFramework.createCipher('AES128|GCM|PKCS7');
+    let symKey = await symKeyGenerator.generateSymKey();
+    await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, gcmParams);
+    let message = "This is a test";
+    let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+    let encryptUpdate = cipher.updateSync(plainText);
+    cipher.doFinalSync(null);
+    if (encryptUpdate != undefined) {
+      console.info('encryptUpdate plainText: ' + encryptUpdate.data);
+    }
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`cipherBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+JS示例：
+
+在Lite Wearable侧对称密钥只支持AES128算法；加解密只支持AES128|GCM或AES128|CBC算法。
+
+下述样例以对称算法为AES128，分组模式为GCM为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="Aes128TestSync">Aes128加解密同步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+ 
+function genGcmAeadParamsSpec(ivData, aadData, tagLen) {
+    return {
+        nonce: ivData,
+        authenticatedData: aadData || new Uint8Array(0),
+        algName: 'AeadParamsSpec',
+        tagLen: tagLen === undefined ? 16 : tagLen
+    };
+}
+ 
+function aes128TestSync() {
+  try {
+      let aesKeyData = new Uint8Array([0x53, 0xD9, 0xE7, 0x4C, 0x1C, 0x71, 0x17, 0xDB, 0xFA, 0x47, 0xD1, 0xD2, 0xCD, 0x61, 0x20, 0x9F]);
+      let symKey = cryptoFramework.createSymKeyGenerator('AES128').convertKeySync({data: aesKeyData});
+      let iv = cryptoFramework.createRandom().generateRandomSync(12);
+      let aeadParams = genGcmAeadParamsSpec(iv, new Uint8Array(0), 16);
+      let cipher = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+      let inData = StringToUint8Array("This is a test");
+      cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, aeadParams);
+      let encryptOutput = cipher.doFinalSync({ data: inData });
+      console.info('Encrypt successfully. cipherText: ' + encryptOutput.data);
+
+      let dec = cryptoFramework.createCipher('AES128|GCM|NoPadding');
+      dec.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, aeadParams);
+      let decryptOutput = dec.doFinalSync({ data: encryptOutput.data });
+      console.info('Decrypt successfully: ' + decryptOutput.data);
+  } catch (error) {
+      console.error(`aes128TestSync failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    Aes128TestSync() {
+        aes128TestSync();
+    }
+};
 ```
 
 ### setCipherSpec<sup>10+</sup>
@@ -4723,11 +7005,15 @@ setCipherSpec(itemType: CipherSpecItem, itemValue: Uint8Array): void
 
 设置加解密参数。常用的加解密参数直接通过[createCipher](#cryptoframeworkcreatecipher) 来指定，剩余参数通过本接口指定。当前只支持RSA算法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4738,25 +7024,31 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported.          |
-| 17620001 | memory operation failed.          |
-| 17620003 | parameter check failed. Possible causes: <br>1. Unsupported itemType.|
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported.          |
+| 17620001 | Memory operation failed.          |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Unsupported itemType. <br>适用版本：22+|
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function testsetCipherSpec() {
+function testSetCipherSpec() {
   let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
   let pSource = new Uint8Array([1, 2, 3, 4]);
-  cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+  try {
+    cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetCipherSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -4766,11 +7058,15 @@ getCipherSpec(itemType: CipherSpecItem): string | Uint8Array
 
 获取加解密参数。当前只支持RSA算法和SM2算法，从API version 11开始，支持SM2算法获取加解密参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Cipher
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Cipher。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4786,25 +7082,31 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported.          |
-| 17620001 | memory operation failed.          |
-| 17620003 | parameter check failed. Possible causes: <br>1. Unsupported itemType.|
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported.          |
+| 17620001 | Memory operation failed.          |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Unsupported itemType. <br>适用版本：22+|
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGetCipherSpec() {
   let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
-  let mdName = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
-  console.info('getCipherSpec: mdName =' + mdName);
+  try {
+    let mdName = cipher.getCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MD_NAME_STR);
+    console.info('getCipherSpec: mdName =' + mdName);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetCipherSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -4812,56 +7114,62 @@ function testGetCipherSpec() {
 
 createSign(algName: string): Sign
 
-生成Sign实例。
+创建签名实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | 是   | 指定签名算法：RSA、ECC、DSA、SM2<sup>10+</sup>或Ed25519<sup>11+</sup>。使用RSA PKCS1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。签名时，通过设置OnlySign参数可传入数据摘要仅作签名。<br>支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。 |
+| algName | string | 是   | 指定签名算法：RSA、ECC、DSA、SM2<sup>10+</sup>、Ed25519<sup>11+</sup>和ML-DSA<sup>26.0.0+</sup>。使用RSA PKCS #1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。签名时，通过设置OnlySign参数可传入数据摘要仅作签名。<br>支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。 |
 
 **返回值**：
 
 | 类型 | 说明                               |
 | ---- | ---------------------------------- |
-| [Sign](#sign) | 返回由输入算法指定生成的Sign对象。 |
+| [Sign](#sign) | 返回对应算法的Sign实例。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported.          |
-| 17620001 | memory operation failed.          |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported.          |
+| 17620001 | Memory operation failed.          |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let signer1 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
-
-let signer2 = cryptoFramework.createSign('RSA1024|PSS|SHA256|MGF1_SHA256');
-
-let signer3 = cryptoFramework.createSign('ECC224|SHA256');
-
-let signer4 = cryptoFramework.createSign('DSA2048|SHA256');
-
-let signer5 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256|OnlySign');
+try {
+  let signer1 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
+  let signer2 = cryptoFramework.createSign('RSA1024|PSS|SHA256|MGF1_SHA256');
+  let signer3 = cryptoFramework.createSign('ECC224|SHA256');
+  let signer4 = cryptoFramework.createSign('DSA2048|SHA256');
+  let signer5 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256|OnlySign');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createSign failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## Sign
 
-Sign类，使用Sign方法之前需要创建该类的实例进行操作，通过[createSign(algName: string): Sign](#cryptoframeworkcreatesign)方法构造此实例。按序调用本类中的init、update、sign方法完成签名操作。签名操作的示例代码详见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+签名接口，定义基于私钥对数据进行签名的方法。调用前，需通过[createSign(algName: string): Sign](#cryptoframeworkcreatesign)方法构造此实例。按序调用本类中的init、update、sign方法完成签名操作。签名操作的示例代码详见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
 
-Sign类不支持重复初始化，当业务方需要使用新密钥签名时，需要重新创建新Sign对象并调用init初始化。
+Sign实例不支持重复初始化，当业务方需要使用新密钥签名时，需要重新创建新Sign实例并调用init初始化。
 
 业务方使用时，调用createSign接口确定签名的模式，调用init接口设置密钥。
 
@@ -4873,13 +7181,21 @@ Sign类不支持重复初始化，当业务方需要使用新密钥签名时，�
 
 使用DSA算法签名时，如果摘要算法设置为NoHash，则不支持update操作，调用update接口将返回错误码ERR_CRYPTO_OPERATION。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                         |
 | ------- | ------ | ---- | ---- | ---------------------------- |
@@ -4889,15 +7205,19 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 init(priKey: PriKey, callback: AsyncCallback\<void>): void
 
-使用私钥初始化Sign对象。使用callback异步回调。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
+使用私钥初始化Sign实例。使用callback异步回调。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
 
-Sign类不支持重复初始化。
+Sign实例不支持重复初始化。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4908,28 +7228,33 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
 
 ### init
 
 init(priKey: PriKey): Promise\<void>
 
-使用私钥初始化Sign对象。使用Promise异步回调。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
+使用私钥初始化Sign实例。使用Promise异步回调。init、update、sign为三段式接口，需要成组使用。其中init和sign必选，update可选。
 
-Sign类不支持重复初始化。
+Sign实例不支持重复初始化。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4945,14 +7270,15 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
 
 ### initSync<sup>12+</sup>
 
@@ -4960,11 +7286,15 @@ initSync(priKey: PriKey): void
 
 使用私钥初始化Sign对象，通过同步方式获取结果。initSync、updateSync、signSync为三段式接口，需要成组使用。其中initSync和signSync必选，updateSync可选。
 
-Sign类不支持重复调用initSync。
+Sign实例不支持重复调用initSync。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -4974,14 +7304,15 @@ Sign类不支持重复调用initSync。
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
 
 ### update
 
@@ -4995,15 +7326,19 @@ update(data: DataBlob, callback: AsyncCallback\<void>): void
 >
 > 根据数据量，可以不调用update（即[init](#init-2)完成后直接调用[sign](#sign-1)）或多次调用update。<br/>
 > 算法库目前没有对update（单次或累计）的数据量设置大小限制，建议对于大数据量的签名操作，采用多次update的方式传入数据，避免一次性申请过大内存。<br/>
-> 签名使用多次update操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，其余算法操作类似。<br/>
+> 签名使用多次update操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#使用rsa密钥对pkcs1模式分段签名验签)，其余算法操作类似。<br/>
 > OnlySign模式下，不支持update操作，需要直接使用sign传入数据。<br/>
 > 当使用DSA算法进行签名，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5014,15 +7349,15 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.          |
-| 17620004 | invalid function call. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.          |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error. |
 
 ### update
 
@@ -5030,21 +7365,25 @@ update(data: DataBlob): Promise\<void>
 
 追加待签名数据，使用Promise异步回调方式完成更新。
 
-在使用本函数前，必须先使用[Sign](#sign)方法对[init()](#init-3)实例进行初始化。
+在使用本函数前，必须先使用[init()](#init-3)方法对[Sign](#sign)实例进行初始化。
 
 > **说明：**
 >
 > 根据数据量，可以不调用update（即[init](#init-3)完成后直接调用[sign](#sign-2)）或多次调用update。<br/>
 > 算法库不对单次或累计的update数据量设置大小限制。建议在处理大数据量的签名操作时，采用多次update方式传入数据，以避免一次性申请过多内存。
-> 签名使用多次update操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，其余算法操作类似。<br/>
+> 签名使用多次update操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#使用rsa密钥对pkcs1模式分段签名验签)，其余算法操作类似。<br/>
 > OnlySign模式下，不支持update操作，需要直接使用sign传入数据。<br/>
 > 当使用DSA算法进行签名，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5060,15 +7399,15 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17620004 | invalid function call. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error. |
 
 ### updateSync<sup>12+</sup>
 
@@ -5082,13 +7421,17 @@ updateSync(data: DataBlob): void
 >
 > 根据数据量，可以不调用updateSync（即[initSync](#initsync12-1)完成后直接调用[signSync](#signsync12)）或多次调用updateSync。<br/>
 > 算法库目前没有对updateSync（单次或累计）的数据量设置大小限制，建议对于大数据量的签名操作，采用多次updateSync的方式传入数据，避免一次性申请过大内存。<br/>
-> 签名使用多次updateSync操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，其余算法操作类似。<br/>
+> 签名使用多次updateSync操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#使用rsa密钥对pkcs1模式分段签名验签)，其余算法操作类似。<br/>
 > OnlySign模式下，不支持updateSync操作，需要直接使用signSync传入数据。<br/>
 > 当使用DSA算法进行签名，并设置了摘要算法为NoHash时，则不支持updateSync操作，updateSync接口会返回错误码ERR_CRYPTO_OPERATION。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5098,63 +7441,107 @@ updateSync(data: DataBlob): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17620004 | invalid function call. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error. |
 
 ### sign
+
+sign(data: DataBlob, callback: AsyncCallback\<DataBlob>): void
+
+对数据进行签名，返回签名结果。使用callback异步回调。Sign类不支持重复调用sign。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**参数：**
+
+| 参数名     | 类型                      | 必填 | 说明                                                         |
+| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
+| data     | [DataBlob](#datablob)     | 是   | 待签名的数据。                                               |
+| callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数。签名成功时，err为undefined，data为签名结果；否则为错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息                                                 |
+| -------- | --------------------------------------------------------- |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error. |
+
+### sign<sup>10+</sup>
 
 sign(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 
 对数据进行签名。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
 API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明       |
 | -------- | -------------------- | ---- | ---------- |
-| data     | [DataBlob](#datablob) \| null<sup>10+</sup>              | 是   | 传入的消息。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| data     | [DataBlob](#datablob) \| null              | 是   | 传入的消息。API 10之前只支持DataBlob， API 10之后增加支持null。 |
 | callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数，用于获取签名结果DataBlob数据。当签名成功，err为undefined，data为获取到的签名结果；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error. |
 
 ### sign
 
-sign(data: DataBlob | null): Promise\<DataBlob>
+sign(data: DataBlob): Promise\<DataBlob>
 
 对数据进行签名。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
 | 参数名 | 类型     | 必填 | 说明       |
 | ------ | -------- | ---- | ---------- |
-| data   | [DataBlob](#datablob) \| null<sup>10+</sup>  | 是   | 传入的消息。 |
+| data   | [DataBlob](#datablob) | 是   | 传入的消息。 |
 
 **返回值：**
 
@@ -5164,14 +7551,55 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.                                     |
+| 17620002 | Failed to obtain the native object or convert parameters.                                    |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error. |
+
+### sign<sup>10+</sup>
+
+sign(data: DataBlob | null): Promise\<DataBlob>
+
+对数据进行签名。使用Promise异步回调。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明       |
+| ------ | -------- | ---- | ---------- |
+| data   | [DataBlob](#datablob) \| null  | 是   | 传入的消息。 |
+
+**返回值：**
+
+| 类型           | 说明          |
+| -------------- | ------------- |
+| Promise\<[DataBlob](#datablob)> | Promise对象，返回签名结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 ### signSync<sup>12+</sup>
 
@@ -5179,9 +7607,13 @@ signSync(data: DataBlob | null): DataBlob
 
 对数据进行签名，通过同步方式返回签名结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5197,18 +7629,21 @@ signSync(data: DataBlob | null): DataBlob
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
-此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -5259,9 +7694,25 @@ function signByCallback() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
   rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     signer.init(keyPair.priKey, err => {
+      if (err) {
+        console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       signer.update(inputUpdate, err => {
+        if (err) {
+          console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
         signer.sign(inputVerify, (err, signData) => {
+          if (err) {
+            console.error(`sign failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
           console.info('sign output = ' + signData.data);
         });
       });
@@ -5270,13 +7721,97 @@ function signByCallback() {
 }
 ```
 
-**示例：**
-
-此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+ArkTS-Sta示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function signByCallback() {
+  let inputUpdate: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
+  let inputVerify: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+  let pkData =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216,
+      58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123,
+      20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69,
+      94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88,
+      135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146,
+      244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData =
+    new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48,
+      130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166,
+      209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31,
+      172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31,
+      214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176,
+      57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50,
+      189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10,
+      88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5,
+      176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224,
+      40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48,
+      18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23,
+      5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0,
+      255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200,
+      32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198,
+      202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224,
+      170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133,
+      151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71,
+      113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144,
+      57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30,
+      62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2,
+      65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222,
+      66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191,
+      239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246,
+      243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
+      232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
+      207, 254, 61, 71, 184, 167, 184]);
+  let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
+  let priKeyBlob: cryptoFramework.DataBlob = { data: skData };
+  let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
+  rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err: BusinessError | null, keyPair: cryptoFramework.KeyPair | undefined) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
+    if (keyPair != undefined) {
+      signer.init(keyPair.priKey, (err: BusinessError | null) => {
+        if (err) {
+          console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
+        signer.update(inputUpdate, (err: BusinessError | null) => {
+          if (err) {
+            console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
+          signer.sign(inputVerify, (err: BusinessError | null, signData: cryptoFramework.DataBlob | undefined) => {
+            if (err) {
+              console.error(`sign failed: errCode: ${err.code}, errMsg: ${err.message}`);
+              return;
+            }
+            if (signData != undefined) {
+              console.info('sign output is ' + signData.data);
+            }
+          });
+        });
+      });
+    }
+  });
+}
+```
+
+**示例：**
+
+此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -5323,26 +7858,32 @@ async function signByPromise() {
       243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
       232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
       207, 254, 61, 71, 184, 167, 184]);
-  let keyPair = await genKeyPairByData(pkData, skData);
-  let inputUpdate: cryptoFramework.DataBlob =
-    { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
-  let inputSign: cryptoFramework.DataBlob =
-    { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
-  let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
-  await signer.init(keyPair.priKey);
-  await signer.update(inputUpdate);
-  let signData = await signer.sign(inputSign);
-  console.info('signData result: ' + signData.data);
+  try {
+    let keyPair = await genKeyPairByData(pkData, skData);
+    let inputUpdate: cryptoFramework.DataBlob =
+      { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+    let inputSign: cryptoFramework.DataBlob =
+      { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
+    let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
+    await signer.init(keyPair.priKey);
+    await signer.update(inputUpdate);
+    let signData = await signer.sign(inputSign);
+    console.info('signData result: ' + signData.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`signByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
 **示例：**
 
-此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -5395,10 +7936,15 @@ function signBySync() {
   let inputSign: cryptoFramework.DataBlob =
     { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
   let signer = cryptoFramework.createSign('RSA1024|PKCS1|SHA256');
-  signer.initSync(keyPair.priKey);
-  signer.updateSync(inputUpdate);
-  let signData = signer.signSync(inputSign);
-  console.info('signData result: ' + signData.data);
+  try {
+    signer.initSync(keyPair.priKey);
+    signer.updateSync(inputUpdate);
+    let signData = signer.signSync(inputSign);
+    console.info('signData result: ' + signData.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`signBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -5406,33 +7952,96 @@ function signBySync() {
 
 setSignSpec(itemType: SignSpecItem, itemValue: number): void
 
-setSignSpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
+设置签名参数。常用签名参数可通过[createSign](#cryptoframeworkcreatesign)指定，其他参数则通过本接口设置。
 
-设置签名参数。常用签名参数可通过 [createSign](#cryptoframeworkcreatesign) 指定，其他参数则通过本接口设置。
+当前仅支持RSA算法、SM2算法，从API version 11开始，支持SM2算法设置签名参数。
 
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
 
-只支持RSA算法、SM2算法，从API version11开始，支持SM2算法设置签名参数。
+**相关接口**：该接口对应的ArkTS-Sta接口是[setSignSpec](#setsignspec11)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明       |
 | -------- | -------------------- | ---- | ---------- |
 | itemType     | [SignSpecItem](#signspecitem10)              | 是   | 用于指定需要设置的签名参数。 |
-| itemValue | number \| Uint8Array<sup>11+</sup> | 是   | 用于指定签名参数的具体值。 |
+| itemValue | number | 是   | 用于指定签名参数的具体值。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported.          |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error. |
+| 17620002 | Failed to obtain the native object or convert parameters. <br>适用版本：26.0.0+|
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function testSetSignSpec() {
+  let signer = cryptoFramework.createSign("RSA|PSS|SHA256|MGF1_SHA256");
+  let setN = 20;
+  try {
+    signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`setSignSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+### setSignSpec<sup>11+</sup>
+
+ArkTS-Dyn: setSignSpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
+
+ArkTS-Sta: setSignSpec(itemType: SignSpecItem, itemValue: int \| Uint8Array): void
+
+设置签名参数。常用签名参数可通过[createSign](#cryptoframeworkcreatesign)指定，其他参数则通过本接口设置。
+
+
+只支持RSA算法、SM2算法，从API version11开始，支持SM2算法设置签名参数。从API版本26.0.0开始，支持ML-DSA算法设置签名的上下文字符串
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明       |
+| -------- | -------------------- | ---- | ---------- |
+| itemType     | [SignSpecItem](#signspecitem10)              | 是   | 用于指定需要设置的签名参数。 |
+| itemValue | ArkTS-Dyn: number \| Uint8Array<br>ArkTS-Sta: int \| Uint8Array | 是   | 用于指定签名参数的具体值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed.          |
 | 17630001 | crypto operation error. |
@@ -5441,25 +8050,139 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetSignSpec() {
-  let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
+  let signer = cryptoFramework.createSign("RSA|PSS|SHA256|MGF1_SHA256");
   let setN = 20;
-  signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  try {
+    signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetSignSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+### setSignSpec
+
+setSignSpec(itemType: SignSpecItem, itemValue: number \| Uint8Array \| boolean): void
+
+设置签名参数。签名算法字符串参数在[createSign](#cryptoframeworkcreatesign)时指定；ML-DSA特有的参数（如是否确定性签名、是否使用外部μ哈希模式和上下文字符串）通过本接口设置。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明       |
+| -------- | -------------------- | ---- | ---------- |
+| itemType     | [SignSpecItem](#signspecitem10)              | 是   | 用于指定需要设置的签名参数。 |
+| itemValue | number \| Uint8Array \| boolean | 是   | 用于指定签名参数的具体值，具体参数含义请参见[SignSpecItem](#signspecitem10)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 801 | This operation is not supported. |
+| 17620001 | Memory operation failed. |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17620003 | Parameter check failed. |
+| 17620004 | Invalid function call. |
+| 17630001 | Crypto operation error. |
+
+**示例：**
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function testSetSignSpec() {
+  let signer = cryptoFramework.createSign('ML-DSA');
+  try {
+    signer.setSignSpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetSignSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+### setSignSpec
+
+setSignSpec(itemType: SignSpecItem, itemValue: boolean): void
+
+设置签名参数。签名算法字符串参数在[createSign](#cryptoframeworkcreatesign)时指定；ML-DSA特有的参数（如是否确定性签名和是否使用外部μ哈希模式）通过本接口设置。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明       |
+| -------- | -------------------- | ---- | ---------- |
+| itemType     | [SignSpecItem](#signspecitem10)              | 是   | 用于指定需要设置的签名参数。 |
+| itemValue | boolean | 是   | 用于指定签名参数的具体值，具体参数含义请参见[SignSpecItem](#signspecitem10)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 17620002 | failed to convert parameters between arkts and c. |
+| 17620003 | parameter check failed. |
+| 17620004 | invalid function call. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function testSetSignSpec() {
+  let signer = cryptoFramework.createSign('ML-DSA');
+  try {
+    signer.setSignSpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`setSignSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
 ### getSignSpec<sup>10+</sup>
 
-getSignSpec(itemType: SignSpecItem): string | number
+ArkTS-Dyn: getSignSpec(itemType: SignSpecItem): string | number
+
+ArkTS-Sta: getSignSpec(itemType: SignSpecItem): string | int
 
 获取签名参数。当前仅支持RSA算法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5471,29 +8194,36 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 | 类型           | 说明        |
 | -------------- | ----------- |
-| string \| number | 获取的签名参数的具体值。 |
+| ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 获取的签名参数的具体值。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported.          |
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported.          |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGetSignSpec() {
   let signer = cryptoFramework.createSign('RSA|PSS|SHA256|MGF1_SHA256');
   let setN = 32;
-  signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-  signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  try {
+    signer.setSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+    signer.getSignSpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGetSignSpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -5501,69 +8231,85 @@ function testGetSignSpec() {
 
 createVerify(algName: string): Verify
 
-生成Verify实例。
+创建验签实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | 是   | 指定签名算法：RSA、ECC、DSA、SM2<sup>10+</sup>或Ed25519<sup>11+</sup>。使用RSA PKCS1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。使用RSA算法验签时，设置Recover参数可支持验签恢复。<br>支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。 |
+| algName | string | 是   | 指定验签算法：RSA、ECC、DSA、SM2<sup>10+</sup>、Ed25519<sup>11+</sup>和ML-DSA<sup>26.0.0+</sup>。使用RSA PKCS #1模式时需设置摘要；使用RSA PSS模式时需设置摘要和掩码摘要。使用RSA算法验签时，设置Recover参数可支持验签恢复。<br>支持的规格详见[签名验签规格](../../security/CryptoArchitectureKit/crypto-sign-sig-verify-overview.md)。 |
 
 **返回值**：
 
 | 类型   | 说明                                 |
 | ------ | ------------------------------------ |
-| Verify | 返回由输入算法指定生成的Verify对象。 |
+| [Verify](#verify) | 返回对应算法的Verify实例。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported.          |
-| 17620001 | memory operation failed.          |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported.          |
+| 17620001 | Memory operation failed.          |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let verifier1 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
-
-let verifier2 = cryptoFramework.createVerify('RSA1024|PSS|SHA256|MGF1_SHA256');
-
-let verifier3 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
+try {
+  let verifier1 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
+  let verifier2 = cryptoFramework.createVerify('RSA1024|PSS|SHA256|MGF1_SHA256');
+  let verifier3 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createVerify failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## Verify
 
-Verify类，使用Verify方法之前需要创建该类的实例进行操作，通过[createVerify(algName: string): Verify](#cryptoframeworkcreateverify)方法构造此实例。按序调用本类中的init、update、verify方法完成签名操作。验签操作的示例代码详见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+验签接口，定义基于公钥对签名数据进行验签的方法。调用前，需通过[createVerify(algName: string): Verify](#cryptoframeworkcreateverify)方法构造此实例。按序调用本类中的init、update、verify方法完成签名操作。验签操作的示例代码详见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
 
-Verify类不支持重复初始化，当业务方需要使用新密钥验签时，需要重新创建新Verify对象并调用init初始化。
+Verify实例不支持重复初始化，当业务方需要使用新密钥验签时，需要重新创建新Verify实例并调用init初始化。
 
 业务方使用时，在createVerify时确定验签的模式，调用init接口设置密钥。
 
-当被签名的消息较短时，可在init初始化后，（无需update）直接调用verify接口传入被签名的消息和签名(signatureData)进行验签。
+当被签名的消息较短时，可在init初始化后，（无需update）直接调用verify接口传入被签名的消息和签名（signatureData）进行验签。
 
-当被签名的消息较长时，可通过update接口分段传入被签名的消息，最后调用verify接口对消息全文进行验签。verify接口的data入参在API 10之前只支持DataBlob， API 10之后增加支持null。业务方可在循环中调用update接口，循环结束后调用verify传入签名(signatureData)进行验签。
+当被签名的消息较长时，可通过update接口分段传入被签名的消息，最后调用verify接口对消息全文进行验签。verify接口的data入参在API 10之前只支持DataBlob， API 10之后增加支持null。业务方可在循环中调用update接口，循环结束后调用verify传入签名（signatureData）进行验签。
 
 当使用DSA算法进行验签，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                         |
 | ------- | ------ | ---- | ---- | ---------------------------- |
@@ -5573,13 +8319,17 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 init(pubKey: PubKey, callback: AsyncCallback\<void>): void
 
-传入公钥初始化Verify对象。使用callback异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
+传入公钥初始化Verify实例。使用callback异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5590,26 +8340,31 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error. |
 
 ### init
 
 init(pubKey: PubKey): Promise\<void>
 
-传入公钥初始化Verify对象。使用Promise异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
+传入公钥初始化Verify实例。使用Promise异步回调。init、update、verify为三段式接口，需要成组使用。其中init和verify必选，update可选。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5625,14 +8380,15 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
 
 ### initSync<sup>12+</sup>
 
@@ -5640,9 +8396,13 @@ initSync(pubKey: PubKey): void
 
 传入公钥初始化Verify对象，通过同步方式获取结果。initSync、updateSync、verifySync为三段式接口，需要成组使用。其中initSync和verifySync必选，updateSync可选。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5652,14 +8412,15 @@ initSync(pubKey: PubKey): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Incorrect key type. <br>适用版本：26.0.0+|
 
 ### update
 
@@ -5673,15 +8434,19 @@ update(data: DataBlob, callback: AsyncCallback\<void>): void
 >
 > 根据数据量，可以不调用update（即[init](#init-4)完成后直接调用[verify](#verify-1)）或多次调用update。<br/>
 > 算法库目前没有对update（单次或累计）的数据量设置大小限制，建议对于大数据量的验签操作，采用多次update的方式传入数据，避免一次性申请过大内存。<br/>
-> 验签使用多次update操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，其余算法操作类似。<br/>
+> 验签使用多次update操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#使用rsa密钥对pkcs1模式分段签名验签)，其余算法操作类似。<br/>
 > OnlyVerify模式下，不支持update操作，直接使用verify传入数据即可。<br/>
 > 当使用DSA算法进行验签，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5692,15 +8457,15 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17620004 | invalid function call. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error. |
 
 ### update
 
@@ -5714,15 +8479,19 @@ update(data: DataBlob): Promise\<void>
 >
 > 根据数据量，可以不调用update（即[init](#init-5)完成后直接调用[verify](#verify-2)）或多次调用update。<br/>
 > 算法库目前没有对update（单次或累计）的数据量设置大小限制，建议对于大数据量的验签操作，采用多次update的方式传入数据，避免一次性申请过大内存。<br/>
-> 验签使用多次update操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，其余算法操作类似。<br/>
+> 验签使用多次update操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#使用rsa密钥对pkcs1模式分段签名验签)，其余算法操作类似。<br/>
 > OnlyVerify模式下，不支持update操作，直接使用verify传入数据即可。<br/>
 > 当使用DSA算法进行验签，并设置了摘要算法为NoHash时，则不支持update操作，update接口会返回错误码ERR_CRYPTO_OPERATION。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5738,15 +8507,15 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17620004 | invalid function call. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error. |
 
 ### updateSync<sup>12+</sup>
 
@@ -5760,13 +8529,17 @@ updateSync(data: DataBlob): void
 >
 > 根据数据量，可以不调用updateSync（即[initSync](#initsync12-2)完成后直接调用[verifySync](#verifysync12)）或多次调用updateSync。<br/>
 > 算法库目前没有对updateSync（单次或累计）的数据量设置大小限制，建议对于大数据量的验签操作，采用多次updateSync的方式传入数据，避免一次性申请过大内存。<br/>
-> 验签使用多次updateSync操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md)，其余算法操作类似。<br/>
-> OnlyVerify模式下，不支持update操作，需要直接使用verifySync传入数据。<br/>
+> 验签使用多次updateSync操作的示例代码详见[使用RSA密钥对分段签名验签](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#使用rsa密钥对pkcs1模式分段签名验签)，其余算法操作类似。<br/>
+> OnlyVerify模式下，不支持updateSync操作，需要直接使用verifySync传入数据。<br/>
 > 当使用DSA算法进行验签，并设置了摘要算法为NoHash时，则不支持updateSync操作，updateSync接口会返回错误码ERR_CRYPTO_OPERATION。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5776,64 +8549,109 @@ updateSync(data: DataBlob): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17620004 | invalid function call. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error. |
 
 ### verify
 
-verify(data: DataBlob | null, signatureData: DataBlob, callback: AsyncCallback\<boolean>): void
+verify(data: DataBlob, signatureData: DataBlob, callback: AsyncCallback\<boolean>): void
 
 对数据进行验签。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
 | 参数名        | 类型                 | 必填 | 说明       |
 | ------------- | -------------------- | ---- | ---------- |
-| data          | [DataBlob](#datablob) \| null<sup>10+</sup>             | 是   | 传入的消息。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| data          | [DataBlob](#datablob)             | 是   | 传入的消息。 |
 | signatureData | [DataBlob](#datablob)              | 是   | 签名数据。  |
 | callback      | AsyncCallback\<boolean> | 是   | 回调函数，用于获取以boolean值表示的验签结果。返回true表示验签通过；返回false表示验签不通过。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error. |
 
-### verify
+### verify<sup>10+</sup>
 
-verify(data: DataBlob | null, signatureData: DataBlob): Promise\<boolean>
+verify(data: DataBlob | null, signatureData: DataBlob, callback: AsyncCallback\<boolean>): void
 
-对数据进行验签。使用Promise异步回调。
+对数据进行验签。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
 
 API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名        | 类型                 | 必填 | 说明       |
+| ------------- | -------------------- | ---- | ---------- |
+| data          | [DataBlob](#datablob) \| null             | 是   | 传入的消息。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| signatureData | [DataBlob](#datablob)              | 是   | 签名数据。  |
+| callback      | AsyncCallback\<boolean> | 是   | 回调函数，用于获取以boolean值表示的验签结果。返回true表示验签通过；返回false表示验签不通过。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error. |
+
+### verify
+
+verify(data: DataBlob, signatureData: DataBlob): Promise\<boolean>
+
+对数据进行验签。使用Promise异步回调。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
 **参数：**
 
 | 参数名        | 类型     | 必填 | 说明       |
 | ------------- | -------- | ---- | ---------- |
-| data          | [DataBlob](#datablob) \| null<sup>10+</sup>  | 是   | 传入的消息。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| data          | [DataBlob](#datablob) | 是   | 传入的消息。 |
 | signatureData | [DataBlob](#datablob)  | 是   | 签名数据。  |
 
 **返回值：**
@@ -5844,14 +8662,56 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.                                     |
+| 17620002 | Failed to obtain the native object or convert parameters.                                    |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error. |
+
+### verify<sup>10+</sup>
+
+verify(data: DataBlob | null, signatureData: DataBlob): Promise\<boolean>
+
+对数据进行验签。使用Promise异步回调。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名        | 类型     | 必填 | 说明       |
+| ------------- | -------- | ---- | ---------- |
+| data          | [DataBlob](#datablob) \| null  | 是   | 传入的消息。API 10之前只支持DataBlob， API 10之后增加支持null。 |
+| signatureData | [DataBlob](#datablob)  | 是   | 签名数据。  |
+
+**返回值：**
+
+| 类型              | 说明                           |
+| ----------------- | ------------------------------ |
+| Promise\<boolean> | Promise对象，表示验签结果。返回true表示验签成功，返回false表示验签失败。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 ### verifySync<sup>12+</sup>
 
@@ -5859,9 +8719,13 @@ verifySync(data: DataBlob | null, signatureData: DataBlob): boolean
 
 对数据进行验签，通过同步方式返回验签结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -5878,18 +8742,21 @@ verifySync(data: DataBlob | null, signatureData: DataBlob): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
-此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -5950,9 +8817,25 @@ function verifyByCallback() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
   rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err, keyPair) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     verifier.init(keyPair.pubKey, err => {
+      if (err) {
+        console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       verifier.update(inputUpdate, err => {
+        if (err) {
+          console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
         verifier.verify(inputVerify, signMessageBlob, (err, res) => {
+          if (err) {
+            console.error(`verify failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
           console.info('verify result = ' + res);
         });
       });
@@ -5961,13 +8844,105 @@ function verifyByCallback() {
 }
 ```
 
-**示例：**
-
-更多示例请参见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+ArkTS-Sta示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function verifyByCallback() {
+  let inputUpdate: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
+  let inputVerify: cryptoFramework.DataBlob =
+    { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
+  // 根据密钥数据生成的密钥和输入的验签数据，这部分代码Verify与Sign中保持一致，保证验签通过。
+  let pkData =
+    new Uint8Array([48, 129, 159, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 3, 129, 141, 0, 48, 129, 137,
+      2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166, 209, 250, 142, 74, 216,
+      58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31, 172, 151, 252, 185, 123,
+      20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31, 214, 93, 115, 247, 69,
+      94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176, 57, 125, 235, 51, 88,
+      135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50, 189, 88, 254, 255, 146,
+      244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1]);
+  let skData =
+    new Uint8Array([48, 130, 2, 120, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 98, 48,
+      130, 2, 94, 2, 1, 0, 2, 129, 129, 0, 214, 179, 23, 198, 183, 139, 148, 8, 173, 74, 56, 160, 15, 248, 244, 166,
+      209, 250, 142, 74, 216, 58, 117, 215, 178, 247, 254, 39, 180, 227, 85, 201, 59, 133, 209, 221, 26, 9, 116, 31,
+      172, 151, 252, 185, 123, 20, 25, 7, 92, 129, 5, 196, 239, 214, 126, 254, 154, 188, 239, 144, 161, 171, 65, 42, 31,
+      214, 93, 115, 247, 69, 94, 143, 54, 51, 25, 49, 146, 204, 205, 165, 20, 120, 35, 184, 190, 65, 106, 12, 214, 176,
+      57, 125, 235, 51, 88, 135, 76, 73, 109, 112, 147, 138, 198, 252, 5, 20, 245, 51, 7, 32, 108, 89, 125, 204, 50,
+      189, 88, 254, 255, 146, 244, 244, 149, 79, 54, 216, 45, 89, 2, 3, 1, 0, 1, 2, 129, 129, 0, 152, 111, 145, 203, 10,
+      88, 116, 163, 112, 126, 9, 20, 68, 34, 235, 121, 98, 14, 182, 102, 151, 125, 114, 91, 210, 122, 215, 29, 212, 5,
+      176, 203, 238, 146, 5, 190, 41, 21, 91, 56, 125, 239, 111, 133, 53, 200, 192, 56, 132, 202, 42, 145, 120, 3, 224,
+      40, 223, 46, 148, 29, 41, 92, 17, 40, 12, 72, 165, 69, 192, 211, 142, 233, 81, 202, 177, 235, 156, 27, 179, 48,
+      18, 85, 154, 101, 193, 45, 218, 91, 24, 143, 196, 248, 16, 83, 177, 198, 136, 77, 111, 134, 60, 219, 95, 246, 23,
+      5, 45, 14, 83, 29, 137, 248, 159, 28, 132, 142, 205, 99, 226, 213, 84, 232, 57, 130, 156, 81, 191, 237, 2, 65, 0,
+      255, 158, 212, 13, 43, 132, 244, 135, 148, 161, 232, 219, 20, 81, 196, 102, 103, 44, 110, 71, 100, 62, 73, 200,
+      32, 138, 114, 209, 171, 150, 179, 92, 198, 5, 190, 218, 79, 227, 227, 37, 32, 57, 159, 252, 107, 211, 139, 198,
+      202, 248, 137, 143, 186, 205, 106, 81, 85, 207, 134, 148, 110, 204, 243, 27, 2, 65, 0, 215, 4, 181, 121, 57, 224,
+      170, 168, 183, 159, 152, 8, 74, 233, 80, 244, 146, 81, 48, 159, 194, 199, 36, 187, 6, 181, 182, 223, 115, 133,
+      151, 171, 78, 219, 90, 161, 248, 69, 6, 207, 173, 3, 81, 161, 2, 60, 238, 204, 177, 12, 138, 17, 220, 179, 71,
+      113, 200, 248, 159, 153, 252, 150, 180, 155, 2, 65, 0, 190, 202, 185, 211, 170, 171, 238, 40, 84, 84, 21, 13, 144,
+      57, 7, 178, 183, 71, 126, 120, 98, 229, 235, 4, 40, 229, 173, 149, 185, 209, 29, 199, 29, 54, 164, 161, 38, 8, 30,
+      62, 83, 179, 47, 42, 165, 0, 156, 207, 160, 39, 169, 229, 81, 180, 136, 170, 116, 182, 20, 233, 45, 90, 100, 9, 2,
+      65, 0, 152, 255, 47, 198, 15, 201, 238, 133, 89, 11, 133, 153, 184, 252, 37, 239, 177, 65, 118, 80, 231, 190, 222,
+      66, 250, 118, 72, 166, 221, 67, 156, 245, 119, 138, 28, 6, 142, 107, 71, 122, 116, 200, 156, 199, 237, 152, 191,
+      239, 4, 184, 64, 114, 143, 81, 62, 48, 23, 233, 217, 95, 47, 221, 104, 171, 2, 64, 30, 219, 1, 230, 241, 70, 246,
+      243, 121, 174, 67, 66, 11, 99, 202, 17, 52, 234, 78, 29, 3, 57, 51, 123, 149, 86, 64, 192, 73, 199, 108, 101, 55,
+      232, 41, 114, 153, 237, 253, 52, 205, 148, 45, 86, 186, 241, 182, 183, 42, 77, 252, 195, 29, 158, 173, 3, 182,
+      207, 254, 61, 71, 184, 167, 184]);
+  let pubKeyBlob: cryptoFramework.DataBlob = { data: pkData };
+  let priKeyBlob: cryptoFramework.DataBlob = { data: skData };
+  // 该数据取自Sign中的signData.data。
+  let signMessageBlob: cryptoFramework.DataBlob = {
+    data: new Uint8Array([9, 68, 164, 161, 230, 155, 255, 153, 10, 12, 14, 22, 146, 115, 209, 167, 223, 133, 89, 173,
+      50, 249, 176, 104, 10, 251, 219, 104, 117, 196, 105, 65, 249, 139, 119, 41, 15, 171, 191, 11, 177, 177, 1, 119,
+      130, 142, 87, 183, 32, 220, 226, 28, 38, 73, 222, 172, 153, 26, 87, 58, 188, 42, 150, 67, 94, 214, 147, 64, 202,
+      87, 155, 125, 254, 112, 95, 176, 255, 207, 106, 43, 228, 153, 131, 240, 120, 88, 253, 179, 207, 207, 110, 223,
+      173, 15, 113, 11, 183, 122, 237, 205, 206, 123, 246, 33, 167, 169, 251, 237, 199, 26, 220, 152, 190, 117, 131, 74,
+      232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
+  }
+  let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
+  let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
+  rsaGenerator.convertKey(pubKeyBlob, priKeyBlob, (err: BusinessError | null, keyPair: cryptoFramework.KeyPair | undefined) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
+    if (keyPair != undefined) {
+      verifier.init(keyPair.pubKey, (err: BusinessError | null) => {
+        if (err) {
+          console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
+        verifier.update(inputUpdate, (err: BusinessError | null) => {
+          if (err) {
+            console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
+          verifier.verify(inputVerify, signMessageBlob, (err: BusinessError | null, res) => {
+            if (err) {
+              console.error(`verify failed: errCode: ${err.code}, errMsg: ${err.message}`);
+              return;
+            }
+            console.info('verify result = ' + res);
+          });
+        });
+      });
+    }
+  });
+}
+```
+
+**示例：**
+
+更多示例请参见[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -6030,20 +9005,26 @@ async function verifyByPromise() {
       232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
   };
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
-  await verifier.init(keyPair.pubKey);
-  await verifier.update(inputUpdate);
-  let res = await verifier.verify(inputVerify, signMessageBlob);
-  console.info('verify result: ' + res);
+  try {
+    await verifier.init(keyPair.pubKey);
+    await verifier.update(inputUpdate);
+    let res = await verifier.verify(inputVerify, signMessageBlob);
+    console.info('verify result: ' + res);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifyByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
 **示例：**
 
-此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md)。
+此外，更多签名验签的完整示例可参考[签名验签开发指导](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md)。
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function genKeyPairByData(pubKeyData: Uint8Array, priKeyData: Uint8Array) {
   let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyData };
@@ -6106,10 +9087,15 @@ function verifyBySync() {
       232, 50, 39, 172, 232, 178, 112, 73, 251, 235, 131, 209])
   };
   let verifier = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256');
-  verifier.initSync(keyPair.pubKey);
-  verifier.updateSync(inputUpdate);
-  let res = verifier.verifySync(inputVerify, signMessageBlob);
-  console.info('verify result: ' + res);
+  try {
+    verifier.initSync(keyPair.pubKey);
+    verifier.updateSync(inputUpdate);
+    let res = verifier.verifySync(inputVerify, signMessageBlob);
+    console.info('verify result: ' + res);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`verifyBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -6123,9 +9109,13 @@ recover(signatureData: DataBlob): Promise\<DataBlob | null>
 >
 > - 目前仅RSA支持。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6141,15 +9131,15 @@ recover(signatureData: DataBlob): Promise\<DataBlob | null>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17620004 | invalid function call. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
@@ -6239,9 +9229,13 @@ recoverSync(signatureData: DataBlob): DataBlob | null
 >
 > - 目前仅RSA支持。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6257,48 +9251,113 @@ recoverSync(signatureData: DataBlob): DataBlob | null
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17620004 | invalid function call. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
+| 17630001 | Crypto operation error. |
 
 ### setVerifySpec<sup>10+</sup>
 
 setVerifySpec(itemType: SignSpecItem, itemValue: number): void
 
-setVerifySpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
-
-设置验签参数。常用的签名参数直接通过[createVerify](#cryptoframeworkcreateverify) 来指定，剩余参数通过本接口指定。
+设置验签参数。常用的验签参数可以直接通过[createVerify](#cryptoframeworkcreateverify)来指定，剩余参数可以通过本接口指定。
 
 支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置验签参数。
 
 验签的参数应当与签名的参数保持一致。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**相关接口**：该接口对应的ArkTS-Sta接口是[setVerifySpec](#setverifyspec11)。
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本10-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明       |
 | -------- | -------------------- | ---- | ---------- |
 | itemType     | [SignSpecItem](#signspecitem10)              | 是   | 用于指定需要设置的验签参数。 |
-| itemValue | number \| Uint8Array<sup>11+</sup> | 是   | 用于指定验签参数的具体值。 |
+| itemValue | number | 是   | 用于指定验签参数的具体值。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported.          |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error. |
+| 17620002 | Failed to obtain the native object or convert parameters. <br>适用版本：26.0.0+ |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+|
+| 17620004 | Invalid function call. <br>适用版本：26.0.0+|
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function testSetVerifySpec() {
+  let verifier = cryptoFramework.createVerify("RSA2048|PSS|SHA256|MGF1_SHA256");
+  let setN = 20;
+  try {
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`setVerifySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+### setVerifySpec<sup>11+</sup>
+
+ArkTS-Dyn: setVerifySpec(itemType: SignSpecItem, itemValue: number \| Uint8Array): void
+
+ArkTS-Sta: setVerifySpec(itemType: SignSpecItem, itemValue: int \| Uint8Array): void
+
+设置验签参数。常用的签名参数可以直接通过[createVerify](#cryptoframeworkcreateverify)来指定，剩余参数可以通过本接口指定。
+
+支持RSA算法和SM2算法，从API version 11开始，支持SM2算法设置验签参数。从API版本26.0.0开始，支持ML-DSA算法设置验签的上下文字符串
+
+验签的参数应当与签名的参数保持一致。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明       |
+| -------- | -------------------- | ---- | ---------- |
+| itemType     | [SignSpecItem](#signspecitem10)              | 是   | 用于指定需要设置的验签参数。 |
+| itemValue | ArkTS-Dyn: number \| Uint8Array<br>ArkTS-Sta: int \| Uint8Array | 是   | 用于指定验签参数的具体值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 801 | this operation is not supported.          |
 | 17620001 | memory operation failed.          |
 | 17630001 | crypto operation error. |
@@ -6307,27 +9366,146 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testSetVerifySpec() {
-  let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
+  let verifier = cryptoFramework.createVerify("RSA2048|PSS|SHA256|MGF1_SHA256");
   let setN = 20;
-  verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  try {
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testSetVerifySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+### setVerifySpec
+
+setVerifySpec(itemType: SignSpecItem, itemValue: number \| Uint8Array \| boolean): void
+
+设置验签参数。验签算法字符串参数在[createVerify](#cryptoframeworkcreateverify)时指定；ML-DSA特有的参数（如是否使用外部μ哈希模式和上下文字符串）通过本接口设置。
+
+验签的参数应当与签名的参数保持一致。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明       |
+| -------- | -------------------- | ---- | ---------- |
+| itemType     | [SignSpecItem](#signspecitem10)              | 是   | 用于指定需要设置的验签参数。 |
+| itemValue | number \| Uint8Array \| boolean | 是   | 用于指定验签参数的具体值，具体参数含义请参见[SignSpecItem](#signspecitem10)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 801 | This operation is not supported. |
+| 17620001 | Memory operation failed. |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17620003 | Parameter check failed. |
+| 17620004 | Invalid function call. |
+| 17630001 | Crypto operation error. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function testSetVerifySpec() {
+  let verifier = cryptoFramework.createVerify('ML-DSA');
+  try {
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`setVerifySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+### setVerifySpec
+
+setVerifySpec(itemType: SignSpecItem, itemValue: boolean): void
+
+设置验签参数。验签算法字符串参数在[createVerify](#cryptoframeworkcreateverify)时指定；ML-DSA特有的参数（如是否使用外部μ哈希模式）通过本接口设置。
+
+验签的参数应当与签名的参数保持一致。
+
+**ArkTS模式**： 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                 | 必填 | 说明       |
+| -------- | -------------------- | ---- | ---------- |
+| itemType     | [SignSpecItem](#signspecitem10)              | 是   | 用于指定需要设置的验签参数。 |
+| itemValue | boolean | 是   | 用于指定验签参数的具体值，具体参数含义请参见[SignSpecItem](#signspecitem10)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 17620002 | failed to convert parameters between arkts and c. |
+| 17620003 | parameter check failed. |
+| 17620004 | invalid function call. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function testSetVerifySpec() {
+  let verifier = cryptoFramework.createVerify('ML-DSA');
+  try {
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.ML_DSA_DETERMINISTIC_BOOL, true);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`setVerifySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
 ### getVerifySpec<sup>10+</sup>
 
-getVerifySpec(itemType: SignSpecItem): string | number
+ArkTS-Dyn: getVerifySpec(itemType: SignSpecItem): string | number
+
+ArkTS-Sta: getVerifySpec(itemType: SignSpecItem): string | int
 
 获取验签参数。当前只支持RSA算法。
 
 验签的参数应当与签名的参数保持一致。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Signature
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Signature
+- API版本10-11：SystemCapability.Security.CryptoFramework
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Signature。
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6339,28 +9517,35 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 | 类型           | 说明        |
 | -------------- | ----------- |
-| string \| number | 获取的验签参数的具体值。 |
+| ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 获取的验签参数的具体值。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported.          |
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported.          |
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error. |
+| 17620003 | Parameter check failed. <br>适用版本：26.0.0+ |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function testGetVerifySpec() {
   let verifier = cryptoFramework.createVerify('RSA2048|PSS|SHA256|MGF1_SHA256');
   let setN = 20;
-  verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
-  verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  try {
+    verifier.setVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM, setN);
+    verifier.getVerifySpec(cryptoFramework.SignSpecItem.PSS_SALT_LEN_NUM);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getVerifySpec failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -6368,59 +9553,77 @@ function testGetVerifySpec() {
 
 createKeyAgreement(algName: string): KeyAgreement
 
-生成KeyAgreement实例。
+创建密钥协商实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.KeyAgreement
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.KeyAgreement
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.KeyAgreement。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | 是   | 指定密钥协商算法：目前仅支持ECC，从API version 11开始，增加支持X25519和DH。<br>支持的规格详见[密钥协商规格](../../security/CryptoArchitectureKit/crypto-key-agreement-overview.md)。 |
+| algName | string | 是   | 指定密钥协商算法：目前仅支持ECDH，从API version 11开始，增加支持X25519和DH。<br>支持的规格详见[密钥协商规格](../../security/CryptoArchitectureKit/crypto-key-agreement-overview.md)。 |
 
 **返回值**：
 
 | 类型         | 说明                                       |
 | ------------ | ------------------------------------------ |
-| KeyAgreement | 返回由输入算法指定生成的KeyAgreement对象。 |
+| KeyAgreement | 返回对应算法的KeyAgreement实例。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported.          |
-| 17620001 | memory operation failed.          |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported.          |
+| 17620001 | Memory operation failed.          |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+try {
+  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createKeyAgreement failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## KeyAgreement
 
-KeyAgreement类，使用密钥协商方法之前需要创建该类的实例进行操作，通过[createKeyAgreement(algName: string): KeyAgreement](#cryptoframeworkcreatekeyagreement)方法构造此实例。
+密钥协商接口，定义基于非对称密钥对生成共享密钥的方法。调用前，需通过[createKeyAgreement(algName: string): KeyAgreement](#cryptoframeworkcreatekeyagreement)方法构造此实例。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.KeyAgreement
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.KeyAgreement
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.KeyAgreement。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                         |
 | ------- | ------ | ---- | ---- | ---------------------------- |
-| algName | string | 是   | 否   | 密钥协商指定的算法名称。 |
+| algName | string | 是   | 否   | 密钥协商的算法名称。 |
 
 ### generateSecret
 
@@ -6428,11 +9631,15 @@ generateSecret(priKey: PriKey, pubKey: PubKey, callback: AsyncCallback\<DataBlob
 
 基于传入的私钥与公钥进行密钥协商。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.KeyAgreement
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.KeyAgreement
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.KeyAgreement。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6444,14 +9651,14 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17630001 | Crypto operation error. |
 
 ### generateSecret
 
@@ -6459,11 +9666,15 @@ generateSecret(priKey: PriKey, pubKey: PubKey): Promise\<DataBlob>
 
 基于传入的私钥与公钥进行密钥协商。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.KeyAgreement
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.KeyAgreement
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.KeyAgreement。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6480,14 +9691,15 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.          |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.          |
+| 17630001 | Crypto operation error. |
 
 ### generateSecretSync<sup>12+</sup>
 
@@ -6495,9 +9707,13 @@ generateSecretSync(priKey: PriKey, pubKey: PubKey): DataBlob
 
 基于传入的私钥与公钥进行密钥协商，通过同步返回共享密钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.KeyAgreement
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6513,35 +9729,43 @@ generateSecretSync(priKey: PriKey, pubKey: PubKey): DataBlob
 |[DataBlob](#datablob) | 共享密钥。 |
 
 **错误码：**
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17630001 | Crypto operation error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateSecret() {
   let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
-  let globalKeyPair = await eccGen.generateKeyPair();
-  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-  keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey, (err, secret) => {
-    if (err) {
-      console.error(`keyAgreement failed, errCode: ${err.code}, errMsg: ${err.message}`);
-      return;
-    }
-    console.info('keyAgreement output = ' + secret.data);
-  });
+  try {
+    let globalKeyPair = await eccGen.generateKeyPair();
+    let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+    keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey, (err, secret) => {
+      if (err) {
+        console.error(`keyAgreement failed, errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
+      console.info('keyAgreement output = ' + secret.data);
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateSecret failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
-**示例：**
+ArkTS-Sta示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -6551,12 +9775,60 @@ async function testGenerateSecret() {
   let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
   let globalKeyPair = await eccGen.generateKeyPair();
   let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-  let keyAgreementPromise = keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey);
-  keyAgreementPromise.then(secret => {
-    console.info('keyAgreement output = ' + secret.data);
-  }).catch((error: BusinessError) => {
-    console.error(`keyAgreement failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey, (err: BusinessError | null, secret: cryptoFramework.DataBlob | undefined) => {
+    if (err) {
+      console.error("keyAgreement error.");
+    }
+    if (secret != undefined) {
+      console.info('keyAgreement output is ' + secret.data);
+    }
   });
+}
+```
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function testGenerateSecret() {
+  let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
+  try {
+    let globalKeyPair = await eccGen.generateKeyPair();
+    let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+    let keyAgreementPromise = keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey);
+    keyAgreementPromise.then(secret => {
+      console.info('keyAgreement output = ' + secret.data);
+    }).catch((error: BusinessError) => {
+      console.error(`keyAgreement failed: errCode: ${error.code}, errMsg: ${error.message}`);
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateSecret failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+async function testGenerateSecret() {
+  try {
+    let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
+    let globalKeyPair = await eccGen.generateKeyPair();
+    let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+    let keyAgreementPromise = await keyAgreement.generateSecret(globalKeyPair.priKey, globalKeyPair.pubKey);
+    console.info('keyAgreement output is ' + keyAgreementPromise.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`keyAgreement error, ${e.code}, ${e.message}`);
+  }
 }
 ```
 
@@ -6564,13 +9836,19 @@ async function testGenerateSecret() {
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function testGenerateSecretSync() {
   let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
-  let globalKeyPair = await eccGen.generateKeyPair();
-  let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-  let secret = keyAgreement.generateSecretSync(globalKeyPair.priKey, globalKeyPair.pubKey);
-  console.info('[Sync]keyAgreement output = ' + secret.data);
+  try {
+    let globalKeyPair = await eccGen.generateKeyPair();
+    let keyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+    let secret = keyAgreement.generateSecretSync(globalKeyPair.priKey, globalKeyPair.pubKey);
+    console.info('[Sync]keyAgreement output = ' + secret.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`testGenerateSecretSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -6578,15 +9856,23 @@ async function testGenerateSecretSync() {
 
 createMd(algName: string): Md
 
-生成Md实例，用于进行消息摘要的计算与操作。
+创建消息摘要实例。
 
 支持的规格详见[MD消息摘要算法规格](../../security/CryptoArchitectureKit/crypto-generate-message-digest-overview.md#支持的算法与规格)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+**模型约束：**
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本9-11：此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.MessageDigest。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.MessageDigest
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6598,16 +9884,16 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 类型 | 说明                                    |
 | ---- | --------------------------------------- |
-| Md   | 返回由输入算法指定生成的[Md](#md)对象。 |
+| [Md](#md)  | 返回对应算法的Md实例。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.       |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.       |
 
 **示例：**
 
@@ -6625,15 +9911,25 @@ try {
 
 ## Md
 
-Md类，调用Md方法进行消息摘要（Message Digest）计算。调用前，需要通过[createMd](#cryptoframeworkcreatemd)构造Md实例。
+消息摘要接口，定义计算消息摘要的方法。调用前，需通过[createMd](#cryptoframeworkcreatemd)方法创建一个Md实例。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.MessageDigest。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.MessageDigest
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                   |
 | ------- | ------ | ---- | ---- | ---------------------- |
@@ -6649,13 +9945,19 @@ update(input: DataBlob, callback: AsyncCallback\<void>): void
 >
 > Md算法多次调用update更新的代码示例详见开发指导[分段摘要算法](../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#分段摘要算法)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+**模型约束：**
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本9-11：此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.MessageDigest。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.MessageDigest
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-**设备行为差异：** 该接口仅在Phone、PC/2in1、Tablet、TV、Wearable设备中可正常调用，在Lite Wearable设备中返回undefined。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6666,13 +9968,13 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001| memory operation failed. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001| Memory operation failed. |
+| 17630001 | Crypto operation error. |
 
 ### update
 
@@ -6684,13 +9986,19 @@ update(input: DataBlob): Promise\<void>
 >
 > Md算法多次调用update更新的代码示例详见开发指导[分段摘要算法](../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#分段摘要算法)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.MessageDigest。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.MessageDigest
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **设备行为差异：** 该接口仅在Phone、PC/2in1、Tablet、TV、Wearable设备中可正常调用，在Lite Wearable设备中返回undefined。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6706,13 +10014,13 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001| memory operation failed. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001| Memory operation failed. |
+| 17630001 | Crypto operation error. |
 
 ### updateSync<sup>12+</sup>
 
@@ -6724,9 +10032,15 @@ updateSync(input: DataBlob): void
 >
 > Md算法多次调用updateSync更新的代码示例详见开发指导[分段摘要算法](../../security/CryptoArchitectureKit/crypto-generate-message-digest.md#分段摘要算法)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6736,13 +10050,13 @@ updateSync(input: DataBlob): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
-| 17620001| memory operation failed. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
+| 17620001| Memory operation failed. |
+| 17630001 | Crypto operation error. |
 
 ### digest
 
@@ -6750,13 +10064,19 @@ digest(callback: AsyncCallback\<DataBlob>): void
 
 返回Md的计算结果。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+**模型约束：**
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本9-11：此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.MessageDigest。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.MessageDigest
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-**设备行为差异：** 该接口仅在Phone、PC/2in1、Tablet、TV、Wearable设备中可正常调用，在Lite Wearable设备中返回undefined。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -6766,15 +10086,18 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 17620001 | memory operation failed.           |
-| 17630001 | crypto operation error. |
+| 17620001 | Memory operation failed.           |
+| 17620004 | Invalid function call. XOF(Extendable-Output Function) digest algorithms, such as SHAKE128 and SHAKE256, do not support this API. <br>适用版本：26.1.0+         |
+| 17630001 | Crypto operation error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -6783,8 +10106,44 @@ import { buffer } from '@kit.ArkTS';
 function mdByCallback() {
   let md = cryptoFramework.createMd('SHA256');
   md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) }, (err) => {
+    if (err) {
+      console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     md.digest((err, digestOutput) => {
+      if (err) {
+        console.error(`digest failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       console.info('[Callback]: MD result: ' + digestOutput.data);
+      console.info('[Callback]: MD len: ' + md.getMdLength());
+    });
+  });
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function mdByCallback() {
+  let md = cryptoFramework.createMd('SHA256');
+  md.update({ data: new Uint8Array(buffer.from("mdTestMessage", 'utf-8').buffer) }, (err: BusinessError | null) => {
+    if (err) {
+      console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
+    md.digest((err: BusinessError | null, digestOutput: cryptoFramework.DataBlob | undefined) => {
+      if (err) {
+        console.error(`digest failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
+      if (digestOutput != undefined) {
+        console.info('[Callback]: MD result: ' + digestOutput.data);
+      }
       console.info('[Callback]: MD len: ' + md.getMdLength());
     });
   });
@@ -6797,13 +10156,19 @@ digest(): Promise\<DataBlob>
 
 返回Md的计算结果。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.MessageDigest。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.MessageDigest
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **设备行为差异：** 该接口仅在Phone、PC/2in1、Tablet、TV、Wearable设备中可正常调用，在Lite Wearable设备中返回undefined。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6813,12 +10178,13 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 17620001 | memory operation failed.           |
-| 17630001 | crypto operation error. |
+| 17620001 | Memory operation failed.           |
+| 17620004 | Invalid function call. XOF digest algorithms, such as SHAKE128 and SHAKE256, do not support this API. <br>适用版本：26.1.0+ |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
@@ -6827,13 +10193,19 @@ ArkTS示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function mdByPromise() {
-  let md = cryptoFramework.createMd('SHA256');
-  await md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
-  let mdOutput = await md.digest();
-  console.info('[Promise]: MD result: ' + mdOutput.data);
-  console.info('[Promise]: MD len: ' + md.getMdLength());
+  try {
+    let md = cryptoFramework.createMd('SHA256');
+    await md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+    let mdOutput = await md.digest();
+    console.info('[Promise]: MD result: ' + mdOutput.data);
+    console.info('[Promise]: MD len: ' + md.getMdLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`mdByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -6892,21 +10264,21 @@ let plainText = "123456";
 function mdTest() {
     let inData = StringToUint8Array(plainText);
     let md = cryptoFramework.createMd('SHA256');
-    console.info("createMd " + typeof md);
+    console.info('createMd ' + typeof md);
 
     md.update({data: inData}, function (finishErr) {
         if (finishErr) {
-            console.error("Digest update failed. Code:" + finishErr.code + " : " + finishErr.message);
+            console.error('Digest update failed. Code: ' + finishErr.code + " : " + finishErr.message);
         } else {
-            console.info("Digest update successfully.");
+            console.info('Digest update successfully.');
         }
     })
 
     md.digest(function (finishErr, digestOutput){
         if (finishErr) {
-            console.error("Digest failed. Code:" + finishErr.code + " : " + finishErr.message);
+            console.error('Digest failed. Code: ' + finishErr.code + " : " + finishErr.message);
         } else {
-            console.info("Digest successfully:" + digestOutput);
+            console.info('Digest successfully:' + digestOutput);
         }
     })
 }
@@ -6927,9 +10299,15 @@ digestSync(): DataBlob
 
 通过同步方式返回Md的计算结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -6939,14 +10317,15 @@ digestSync(): DataBlob
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
-| 17620001 | memory operation failed. |
-| 17620002 | failed to convert parameters between arkts and c. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.         |
+| 17620001 | Memory operation failed. |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17620004 | Invalid function call. XOF digest algorithms, such as SHAKE128 and SHAKE256, do not support this API. <br>适用版本：26.1.0+ |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
@@ -6955,13 +10334,19 @@ ArkTS示例：
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-async function mdBySync() {
+function mdBySync() {
   let md = cryptoFramework.createMd('SHA256');
-  md.updateSync({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
-  let mdOutput = md.digestSync();
-  console.info('[Sync]: MD result: ' + mdOutput.data);
-  console.info('[Sync]: MD len: ' + md.getMdLength());
+  try {
+    md.updateSync({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+    let mdOutput = md.digestSync();
+    console.info('[Sync]: MD result: ' + mdOutput.data);
+    console.info('[Sync]: MD len: ' + md.getMdLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`digestSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7018,12 +10403,16 @@ function StringToUint8Array(str) {
 function mdTestSync() {
     let mdAlgName = 'SHA256';
     let message = 'mdTestMessage';
-    let md = cryptoFramework.createMd(mdAlgName);
-    md.updateSync({ data: StringToUint8Array(message) });
-    let mdResult = md.digestSync();
-    console.info('Digest successfully. result:' + mdResult.data);
-    let mdLen = md.getMdLength();
-    console.info("Digest successfully. md len: " + mdLen);
+    try {
+        let md = cryptoFramework.createMd(mdAlgName);
+        md.updateSync({ data: StringToUint8Array(message) });
+        let mdResult = md.digestSync();
+        console.info('Digest successfully. result:' + mdResult.data);
+        let mdLen = md.getMdLength();
+        console.info('Digest successfully. md len: ' + mdLen);
+    } catch (error) {
+        console.error(`mdTestSync failed. Code: ${error.code}, message: ${error.message}`);
+    }
 }
 
 export default {
@@ -7036,40 +10425,186 @@ export default {
 };
 ```
 
-### getMdLength
+### squeeze
 
-getMdLength(): number
+ArkTS-Dyn: squeeze(len: number): Promise\<DataBlob>
 
-获取Md消息摘要的字节长度。
+ArkTS-Sta: squeeze(len: int): Promise\<DataBlob>
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+对于SHAKE128和SHAKE256算法，生成指定长度的消息摘要。使用Promise异步回调。
+
+> **说明：**
+>
+> 当前Md实例中，此接口与[squeezeSync](#squeezesync)仅支持单次调用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.MessageDigest。
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| len | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定摘要输出长度（字节）。取值限定为整数。SHAKE128范围[32, 65536]，SHAKE256范围[64, 65536]。 |
 
 **返回值：**
 
-| 类型   | 说明                       |
-| ------ | -------------------------- |
-| number | 返回md计算结果的字节长度。 |
+| 类型               | 说明        |
+| ------------------ | ----------- |
+| Promise\<[DataBlob](#datablob)> | Promise对象，返回指定长度的摘要计算结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 17630001 | crypto operation error. |
+| 17620001 | Memory operation failed. |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid len value.|
+| 17620004 | Invalid function call. The fixed-length digest algorithm, such as SHA256, does not support this API. |
 
 **示例：**
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function squeezeByPromise() {
+  try {
+    let md = cryptoFramework.createMd('SHAKE128');
+    await md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+    let mdOutput = await md.squeeze(64);
+    console.info('[Promise]: squeeze result length: ' + mdOutput.data.length);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`squeeze failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+### squeezeSync
+
+ArkTS-Dyn: squeezeSync(len: number): DataBlob
+
+ArkTS-Sta: squeezeSync(len: int): DataBlob
+
+对于SHAKE128和SHAKE256算法，通过同步方式生成指定长度的消息摘要。
+
+> **说明：**
+>
+> 当前Md实例中，此接口与[squeeze](#squeeze)仅支持单次调用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| len | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定摘要输出长度（字节）。取值限定为整数。SHAKE128范围[32, 65536]，SHAKE256范围[64, 65536]。 |
+
+**返回值：**
+
+| 类型               | 说明        |
+| ------------------ | ----------- |
+| [DataBlob](#datablob) | 表示生成的指定长度的Md计算结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 17620001 | Memory operation failed. |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid len value.|
+| 17620004 | Invalid function call. The fixed-length digest algorithm, such as SHA256, does not support this API. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function squeezeSync() {
+  let md = cryptoFramework.createMd('SHAKE128');
+  try {
+    md.updateSync({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+    let mdOutput = md.squeezeSync(64);
+    console.info('[Sync]: squeeze result length: ' + mdOutput.data.length);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`squeezeSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+### getMdLength
+
+ArkTS-Dyn: getMdLength() : number
+
+ArkTS-Sta: getMdLength() : int
+
+获取Md消息摘要的字节长度。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：**
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本9-11：此接口仅可在Stage模型下使用。
+
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.MessageDigest
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型   | 说明                       |
+| ------ | -------------------------- |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回md计算结果的字节长度。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 17630001 | Crypto operation error. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function getLength() {
   let md = cryptoFramework.createMd('SHA256');
-  console.info('[Promise]: MD len: ' + md.getMdLength());
+  try {
+    console.info('[Promise]: MD len: ' + md.getMdLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getMdLength failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7077,15 +10612,19 @@ function getLength() {
 
 createMac(algName: string): Mac
 
-生成Mac实例，用于消息认证码的计算与操作。
+创建消息认证码实例。
 
 支持的规格详见[HMAC消息认证码算法规格](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Mac。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7097,16 +10636,17 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 类型 | 说明                                      |
 | ---- | ----------------------------------------- |
-| Mac  | 返回由输入算法指定生成的[Mac](#mac)对象。 |
+| [Mac](#mac) | 返回对应算法的Mac实例。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.       |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.       |
 
 **示例：**
 
@@ -7127,36 +10667,40 @@ try {
 
 createMac(macSpec: MacSpec): Mac
 
-生成Mac实例，用于进行消息认证码的计算与操作。
+创建消息认证码实例。
 
 支持的规格详见[MAC消息认证码算法规格](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                                                         |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| macSpec | [MacSpec](#macspec18) | 是   | 根据消息验证码的不同算法，指定入参结构体，支持算法请参考[MAC消息认证码算法规格](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。 |
+| macSpec | [MacSpec](#macspec18) | 是   | 根据消息认证码的不同算法，指定入参参数，支持算法请参考[MAC消息认证码算法规格](../../security/CryptoArchitectureKit/crypto-compute-mac-overview.md)。 |
 
 **返回值**：
 
 | 类型 | 说明                                      |
 | ---- | ----------------------------------------- |
-| Mac  | 返回由指定入参结构体生成的[Mac](#mac)对象。 |
+| [Mac](#mac)  | 返回对应算法的Mac实例。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ------------------ |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.       |
-| 17620002 | failed to convert parameters between arkts and c.      |
-| 17630001 | crypto operation error.       |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.       |
+| 17620002 | Failed to obtain the native object or convert parameters.      |
+| 17630001 | Crypto operation error.       |
 
 **示例：**
 
@@ -7173,21 +10717,29 @@ try {
   let mac = cryptoFramework.createMac(spec);
 } catch (error) {
   let e: BusinessError = error as BusinessError;
-  console.error(`sync failed: errCode: ${error.code}, errMsg: ${error.message}`);
+  console.error(`sync failed: errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
 
 ## Mac
 
-Mac类，调用Mac方法进行消息认证码（Message Authentication Code）计算。调用前，需要通过[createMac](#cryptoframeworkcreatemac)构造Mac实例。
+消息认证码接口，定义基于对称密钥计算消息认证码的方法。调用前，需通过[createMac](#cryptoframeworkcreatemac)方法创建一个Mac实例。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Mac。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                   |
 | ------- | ------ | ---- | ---- | ---------------------- |
@@ -7201,13 +10753,17 @@ init(key: SymKey, callback: AsyncCallback\<void>): void
 
   > **说明：**
   >
-  > 建议通过[HMAC密钥生成规格](../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md#hmac)创建对称密钥生成器，调用[generateSymKey](#generatesymkey)随机生成对称密钥或调用[convertKey](#convertkey)传入与密钥规格长度一致的二进制密钥数据生成密钥。<br/>当指定“HMAC”生成对称密钥生成器时，仅支持调用[convertKey](#convertkey)传入长度在[1,4096]范围内（单位为bytes）的任意二进制密钥数据生成密钥。
+  > 建议通过[HMAC密钥生成规格](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#hmac)创建对称密钥生成器，调用[generateSymKey](#generatesymkey)随机生成对称密钥或调用[convertKey](#convertkey)传入与密钥规格长度一致的二进制密钥数据生成密钥。<br/>当指定“HMAC”生成对称密钥生成器时，仅支持调用[convertKey](#convertkey)传入长度在[1,4096]范围内（单位为bytes）的任意二进制密钥数据生成密钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11 系统能力为SystemCapability.Security.CryptoFramework；从API version 12 开始为SystemCapability.Security.CryptoFramework.Mac。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7218,13 +10774,13 @@ API version 9-11 系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001| memory operation failed. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001| Memory operation failed. |
+| 17630001 | Crypto operation error. |
 
 ### init
 
@@ -7232,11 +10788,15 @@ init(key: SymKey): Promise\<void>
 
 使用对称密钥初始化Mac计算。使用Promise异步回调。init、update、doFinal为三段式接口，需要成组使用。其中init和doFinal必选，update可选。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11 系统能力为SystemCapability.Security.CryptoFramework；从API version 12 开始为SystemCapability.Security.CryptoFramework.Mac。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7252,13 +10812,14 @@ API version 9-11 系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001| memory operation failed. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001| Memory operation failed. |
+| 17630001 | Crypto operation error. |
 
 ### initSync<sup>12+</sup>
 
@@ -7266,9 +10827,13 @@ initSync(key: SymKey): void
 
 使用对称密钥初始化Mac计算，通过同步方式获取结果。initSync、updateSync、doFinalSync为三段式接口，需要成组使用。其中initSync和doFinalSync必选，updateSync可选。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7278,13 +10843,13 @@ initSync(key: SymKey): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.     |
-| 17620001| memory operation failed. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.     |
+| 17620001| Memory operation failed. |
+| 17630001 | Crypto operation error. |
 
 ### update
 
@@ -7296,11 +10861,15 @@ update(input: DataBlob, callback: AsyncCallback\<void>): void
 >
 > HMAC算法多次调用update更新的代码示例详见[消息认证码计算](../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Mac。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7311,13 +10880,13 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001| memory operation failed. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001| Memory operation failed. |
+| 17630001 | Crypto operation error. |
 
 ### update
 
@@ -7329,11 +10898,15 @@ update(input: DataBlob): Promise\<void>
 >
 > HMAC算法多次调用update更新的代码示例详见[消息认证码计算](../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Mac。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7349,13 +10922,14 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001| memory operation failed. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001| Memory operation failed. |
+| 17630001 | Crypto operation error. |
 
 ### updateSync<sup>12+</sup>
 
@@ -7367,9 +10941,13 @@ updateSync(input: DataBlob): void
 >
 > HMAC算法多次调用updateSync更新的代码示例详见[消息认证码计算](../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -7380,44 +10958,50 @@ updateSync(input: DataBlob): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
-| 17620001| memory operation failed. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.      |
+| 17620001| Memory operation failed. |
+| 17630001 | Crypto operation error. |
 
 ### doFinal
 
 doFinal(callback: AsyncCallback\<DataBlob>): void
 
-返回Mac的计算结果。使用callback异步回调。
+完成MAC计算并获取MAC计算结果。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Mac。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明     |
 | -------- | ------------------------ | ---- | -------- |
-| callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数，用于获取Mac的计算结果。当Mac计算成功，err为undefined，data为获取到的Mac计算结果；否则为错误对象。 |
+| callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数，用于获取Mac的计算结果。当MAC计算成功，err为undefined，data为获取到的Mac计算结果；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 17620001 | memory operation failed.           |
-| 17630001 | crypto operation error. |
+| 17620001 | Memory operation failed.           |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 此外，更多HMAC的完整示例可参考开发指导中[消息认证码计算](../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -7428,9 +11012,25 @@ function hmacByCallback() {
   let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
   symKeyGenerator.convertKey(keyBlob, (err, symKey) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
     mac.init(symKey, (err) => {
+      if (err) {
+        console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+        return;
+      }
       mac.update({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) }, (err) => {
+        if (err) {
+          console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
         mac.doFinal((err, output) => {
+          if (err) {
+            console.error(`doFinal failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
           console.info('[Callback]: HMAC result: ' + output.data);
           console.info('[Callback]: MAC len: ' + mac.getMacLength());
         });
@@ -7440,32 +11040,185 @@ function hmacByCallback() {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function hmacByCallback() {
+  let mac = cryptoFramework.createMac('SHA256');
+  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("12345678abcdefgh", 'utf-8').buffer) };
+  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+  symKeyGenerator.convertKey(keyBlob, (err: BusinessError | null, symKey: cryptoFramework.SymKey | undefined) => {
+    if (err) {
+      console.error(`convertKey failed: errCode: ${err.code}, errMsg: ${err.message}`);
+      return;
+    }
+    if (symKey != undefined) {
+      mac.init(symKey, (err: BusinessError | null) => {
+        if (err) {
+          console.error(`init failed: errCode: ${err.code}, errMsg: ${err.message}`);
+          return;
+        }
+        mac.update({ data: new Uint8Array(buffer.from("hmacTestMessage", 'utf-8').buffer) }, (err: BusinessError | null) => {
+          if (err) {
+            console.error(`update failed: errCode: ${err.code}, errMsg: ${err.message}`);
+            return;
+          }
+          mac.doFinal((err: BusinessError | null, output: cryptoFramework.DataBlob | undefined) => {
+            if (err) {
+              console.error(`doFinal failed: errCode: ${err.code}, errMsg: ${err.message}`);
+              return;
+            }
+            if (output != undefined) {
+              console.info('[Callback]: HMAC result: ' + output.data);
+            }
+            console.info('[Callback]: MAC len: ' + mac.getMacLength());
+          });
+        });
+      });
+    }
+  });
+}
+```
+JS示例：
+
+在Lite Wearable侧HMAC消息认证码支持的摘要算法只有SHA256。
+
+下述样例以摘要算法为SHA256，对称算法为HMAC为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="HmacTest">Hmac异步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+ 
+let plainText = "hmacTestMessage";
+ 
+function hmacTest() {
+  try {
+      let hmacSpec = { algName: 'HMAC', mdName: 'SHA256' };
+      let keyData = StringToUint8Array("12345678abcdefgh");
+      let mac = cryptoFramework.createMac(hmacSpec);
+      console.info('createMac ' + typeof mac);
+  
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
+      symKeyGenerator.convertKey({ data: keyData }, function (err, symKey) {
+          if (err) {
+              console.error('convertKey failed. Code: ' + err.code + " : " + err.message);
+              return;
+          }
+          mac.init(symKey, function (err) {
+              if (err) {
+                  console.error('Mac init failed. Code: ' + err.code + " : " + err.message);
+                  return;
+              }
+              mac.update({ data: StringToUint8Array(plainText) }, function (err) {
+                  if (err) {
+                      console.error('Mac update failed. Code: ' + err.code + " : " + err.message);
+                      return;
+                  }
+                  mac.doFinal(function (err, output) {
+                      if (err) {
+                          console.error('Mac doFinal failed. Code: ' + err.code + " : " + err.message);
+                      } else {
+                          console.info('Mac doFinal successfully: ' + output.data);
+                          console.info('Mac len: ' + mac.getMacLength());
+                      }
+                  })
+              })
+          })
+      })
+    } catch (error) {
+        console.error(`hmacTest failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    HmacTest() {
+        hmacTest();
+    }
+};
+```
+
 ### doFinal
 
 doFinal(): Promise\<DataBlob>
 
-返回Mac的计算结果。使用Promise异步回调。
+完成MAC计算并获取MAC计算结果。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Mac。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型               | 说明        |
 | ------------------ | ----------- |
-| Promise\<[DataBlob](#datablob)> | Promise对象，返回Mac的计算结果。 |
+| Promise\<[DataBlob](#datablob)> | Promise对象，返回MAC计算结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 17620001 | memory operation failed.           |
-| 17630001 | crypto operation error. |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.           |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
@@ -7474,17 +11227,23 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 async function hmacByPromise() {
-  let mac = cryptoFramework.createMac('SHA256');
-  let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
-  let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let symKey = await symKeyGenerator.convertKey(keyBlob);
-  await mac.init(symKey);
-  await mac.update({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
-  let macOutput = await mac.doFinal();
-  console.info('[Promise]: HMAC result: ' + macOutput.data);
-  console.info('[Promise]: MAC len: ' + mac.getMacLength());
+  try {
+    let mac = cryptoFramework.createMac('SHA256');
+    let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let symKey = await symKeyGenerator.convertKey(keyBlob);
+    await mac.init(symKey);
+    await mac.update({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
+    let macOutput = await mac.doFinal();
+    console.info('[Promise]: HMAC result: ' + macOutput.data);
+    console.info('[Promise]: MAC len: ' + mac.getMacLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`hmacByPromise failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
@@ -7492,77 +11251,179 @@ async function hmacByPromise() {
 
 doFinalSync(): DataBlob
 
-通过同步方式返回Mac的计算结果。
+通过同步方式完成MAC计算并获取MAC计算结果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Mac
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型               | 说明        |
 | ------------------ | ----------- |
-| [DataBlob](#datablob) | 返回Mac的计算结果。 |
+| [DataBlob](#datablob) | 返回MAC计算结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.          |
-| 17620001 | memory operation failed.           |
-| 17620002 | failed to convert parameters between arkts and c. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.          |
+| 17620001 | Memory operation failed.           |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 此外，更多HMAC的完整示例可参考开发指导[消息认证码计算](../../security/CryptoArchitectureKit/crypto-compute-hmac.md#分段hmac)。
 
+ArkTS示例：
+
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { buffer } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 function hmacBySync() {
   let mac = cryptoFramework.createMac('SHA256');
   let keyBlob: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer) };
   let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
-  let symKey = symKeyGenerator.convertKeySync(keyBlob);
-  mac.initSync(symKey);
-  mac.updateSync({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
-  let macOutput = mac.doFinalSync();
-  console.info('[Sync]: HMAC result: ' + macOutput.data);
-  console.info('[Sync]: MAC len: ' + mac.getMacLength());
+  try {
+    let symKey = symKeyGenerator.convertKeySync(keyBlob);
+    mac.initSync(symKey);
+    mac.updateSync({ data: new Uint8Array(buffer.from('hmacTestMessage', 'utf-8').buffer) });
+    let macOutput = mac.doFinalSync();
+    console.info('[Sync]: HMAC result: ' + macOutput.data);
+    console.info('[Sync]: MAC len: ' + mac.getMacLength());
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`hmacBySync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
+```
+
+JS示例：
+
+在Lite Wearable侧HMAC消息认证码支持的摘要算法只有SHA256。
+
+下述样例以摘要算法为SHA256，对称算法为HMAC为例。
+
+```xml
+<div class="container">
+    <text class="TestTitle">Crypto测试</text>
+    <input class="btn" @click="HmacTestSync">Hmac同步测试</input>
+</div>
+```
+ 
+```css
+.container {
+  width: 100%;
+  height: 2000px;
+  align-items: center;
+  background-color: #fffefcfc;
+  flex-direction: column;
+  display: flex;
+}
+ 
+.TestTitle {
+  width: 300px;
+  height: 80px;
+  text-align: center;
+  background-color: white;
+  color: #fff61515;
+  font-size: 15fp;
+}
+ 
+.btn {
+  width: 90%;
+  height: 80px;
+  text-align: center;
+  background-color: #fff17f04;
+  margin-top: 3px;
+  color: white;
+  font-size: 20fp;
+}
+```
+ 
+```js
+import cryptoFramework from '@ohos.security.cryptoFramework';
+ 
+function StringToUint8Array(str) {
+    let arr = [];
+    for (let i = 0, j = str.length; i < j; ++i) {
+        arr.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(arr);
+}
+ 
+function hmacTestSync() {
+  try {
+      let hmacSpec = { algName: 'HMAC', mdName: 'SHA256' };
+      let keyData = StringToUint8Array("12345678abcdefgh");
+      let message = "hmacTestMessage";
+      let mac = cryptoFramework.createMac(hmacSpec);
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
+      let symKey = symKeyGenerator.convertKeySync({ data: keyData });
+      mac.initSync(symKey);
+      mac.updateSync({ data: StringToUint8Array(message) });
+      let macOutput = mac.doFinalSync();
+      console.info('Mac doFinal successfully: ' + macOutput.data);
+  } catch (error) {
+      console.error(`GenerateRandom random number failed. Code: ${error.code}, message: ${error.message}`);
+  }
+}
+ 
+export default {
+    data: {
+        result: ''
+    },
+    HmacTestSync() {
+        hmacTestSync();
+    }
+};
 ```
 
 ### getMacLength
 
-getMacLength(): number
+ArkTS-Dyn: getMacLength(): number
+
+ArkTS-Sta: getMacLength(): int
 
 获取Mac消息认证码的长度（字节数）。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Mac
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Mac
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Mac。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型   | 说明                        |
 | ------ | --------------------------- |
-| number | 返回Mac计算结果的字节长度。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回Mac计算结果的字节长度。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 17630001 | crypto operation error. |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17630001 | Crypto operation error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -7599,31 +11460,68 @@ function testGetMacLength() {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function testGetMacLength() {
+  try {
+    let mac = cryptoFramework.createMac('SHA256');
+    console.info('Mac algName is: ' + mac.algName);
+    let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
+    let keyBlob: cryptoFramework.DataBlob = { data: keyData };
+    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+
+    let promiseConvertKey = await symKeyGenerator.convertKey(keyBlob);
+    let promiseMacInit = await mac.init(promiseConvertKey);
+    let blob: cryptoFramework.DataBlob = { data : new Uint8Array([83])};
+    let promiseMacUpdate = await mac.update(blob);
+    let macOutput = await mac.doFinal();
+    console.info('[Promise]: HMAC result: ' + macOutput.data);
+    let macLen = mac.getMacLength();
+    console.info('MAC len: ' + macLen);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`doFinal failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
 ## cryptoFramework.createRandom
 
 createRandom(): Random
 
-生成Random实例，用于进行随机数的计算与设置种子。
+创建随机数实例。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+**模型约束：**
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本9-11：此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Rand。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
 | 类型   | 说明                                            |
 | ------ | ----------------------------------------------- |
-| [Random](#random) | 返回由输入算法指定生成的[Random](#random)对象。<br>支持的规格详见框架概述[随机数算法规格](../../security/CryptoArchitectureKit/crypto-generate-random-number.md#支持的算法与规格)。 |
+| [Random](#random) | 返回Random实例。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息     |
 | -------- | ------------ |
-| 17620001 | memory operation failed. |
+| 17620001 | Memory operation failed. |
 
 **示例：**
 
@@ -7641,15 +11539,25 @@ try {
 
 ## Random
 
-Random类，调用Random方法生成随机数。调用前，需要通过[createRandom](#cryptoframeworkcreaterandom)构造Random实例。
+随机数接口，定义随机数生成的方法。调用前，需通过[createRandom](#cryptoframeworkcreaterandom)创建一个Random实例。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Rand。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本10-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                 |
 | ------- | ------ | ---- | ---- | -------------------- |
@@ -7657,36 +11565,46 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 ### generateRandom
 
-generateRandom(len: number, callback: AsyncCallback\<DataBlob>): void
+ArkTS-Dyn: generateRandom(len: number, callback: AsyncCallback\<DataBlob>): void
+
+ArkTS-Sta: generateRandom(len: int, callback: AsyncCallback\<DataBlob>): void
 
 生成指定长度的随机数。使用callback异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+**模型约束：**
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本9-11：此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Rand。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
-**设备行为差异：** 该接口仅在Phone、PC/2in1、Tablet、TV、Wearable设备中可正常调用，在Lite Wearable设备中返回undefined。
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- | -------------------- |
-| len      | number                   | 是   | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
+| len      | ArkTS-Dyn: number<br>ArkTS-Sta: int                   | 是   | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
 | callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数，用于获取生成的随机数。当生成随机数成功，err为undefined，data为获取到的随机数；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17630001 | Crypto operation error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -7701,25 +11619,53 @@ rand.generateRandom(12, (err, randData) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function TestCreateRandom() {
+  let rand = cryptoFramework.createRandom();
+  rand.generateRandom(12, (err: BusinessError | null, randData: cryptoFramework.DataBlob | undefined) => {
+    if (err) {
+      console.error("[Callback] err: " + err.code);
+    } else {
+      if (randData != undefined) {
+        console.info('[Callback]: generate random result: ' + randData.data);
+      }
+    }
+  });
+}
+```
+
 ### generateRandom
 
-generateRandom(len: number): Promise\<DataBlob>
+ArkTS-Dyn: generateRandom(len: number): Promise\<DataBlob>
+
+ArkTS-Sta: generateRandom(len: int): Promise\<DataBlob>
 
 生成指定长度的随机数。使用promise异步回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Rand。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本9-11：SystemCapability.Security.CryptoFramework
 
 **设备行为差异：** 该接口仅在Phone、PC/2in1、Tablet、TV、Wearable设备中可正常调用，在Lite Wearable设备中返回undefined。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| len    | number | 是   | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
+| len    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
 
 **返回值：**
 
@@ -7729,17 +11675,19 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.           |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.           |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 ArkTS示例：
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -7752,6 +11700,24 @@ promiseGenerateRand.then(randData => {
 }).catch((error: BusinessError) => {
   console.error(`[Promise] failed: errCode: ${error.code}, errMsg: ${error.message}`);
 });
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+async function TestGenerateRandom() {
+  try {
+    let rand = cryptoFramework.createRandom();
+    let promiseGenerateRand = await rand.generateRandom(12);
+    console.info('[Promise]: rand result: ' + promiseGenerateRand.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`TestGenerateRandom error, ${e.code}, ${e.message}`);
+  }
+}
 ```
 
 JS示例：
@@ -7801,11 +11767,11 @@ function randTest() {
     let seed = new Uint8Array([1, 2, 3]);
     rand.setSeed({ data : seed });
 
-    rand.generateRandom(12, function (finishErr, randData){
+    rand.generateRandom(12, function (finishErr, randData) {
         if (finishErr) {
-            console.error("GenerateRandom failed. Code:" + finishErr.code + " : " + finishErr.message);
+            console.error('GenerateRandom failed. Code:' + finishErr.code + ' : ' + finishErr.message);
         } else {
-            console.info("GenerateRandom successfully:" + randData);
+            console.info('GenerateRandom successfully: ' + randData);
         }
     })
 }
@@ -7822,21 +11788,31 @@ export default {
 
 ### generateRandomSync<sup>10+</sup>
 
-generateRandomSync(len: number): DataBlob
+ArkTS-Dyn: generateRandomSync(len: number): DataBlob
+
+ArkTS-Sta: generateRandomSync(len: int): DataBlob
 
 同步生成指定长度的随机数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+**模型约束：**
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本10-11：此接口仅可在Stage模型下使用。
 
-API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Rand。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本10-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| len    | number | 是   | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
+| len    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
 
 **返回值：**
 
@@ -7846,13 +11822,13 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.           |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.           |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
@@ -7924,9 +11900,9 @@ function randTestSync() {
     try {
         let randData = rand.generateRandomSync(randLen);
         if (randData != null) {
-            console.info("GenerateRandom successfully: " + randData.data);
+            console.info('GenerateRandom successfully: ' + randData.data);
         } else {
-            console.error("GenerateRandom failed!");
+            console.error('GenerateRandom failed!');
         }
     } catch (error) {
         console.error(`GenerateRandom random number failed. Code: ${error.code}, message: ${error.message}`);
@@ -7947,24 +11923,32 @@ export default {
 
 enableHardwareEntropy(): void
 
-开启硬件熵源。
+开启硬件熵源。将从TEE中获取安全随机数作为该随机数实例的熵源。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Rand
 
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ----------------- |
-| 801 | this operation is not supported.          |
-| 17620001 | memory operation failed.      |
-| 17620002 | failed to convert parameters between arkts and c. |
-| 17630001 | crypto operation error. |
+| 801 | This operation is not supported.          |
+| 17620001 | Memory operation failed.      |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17630001 | Crypto operation error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -7987,17 +11971,53 @@ rand.generateRandom(12, (err, randData) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function doTestEnableHardwareEntropy()
+{
+  let rand = cryptoFramework.createRandom();
+  rand.enableHardwareEntropy();
+  rand.generateRandom(12, (err: BusinessError | null, randData: cryptoFramework.DataBlob | undefined) => {
+    if (err) {
+      console.error(`[Callback] generate random failed, errCode: ${err.code}, errMsg: ${err.message}`);
+    } else {
+      if (randData != undefined) {
+        console.info('[Callback]: generate random result: ' + randData.data);
+        try {
+          rand.setSeed(randData);
+        } catch (error) {
+          let e: BusinessError = error as BusinessError;
+          console.error(`sync error, ${e.code}, ${e.message}`);
+        }
+      }
+    }
+  });
+}
+```
+
 ### setSeed
 
 setSeed(seed: DataBlob): void
 
 设置指定的种子。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Rand
+**模型约束：**
+- API版本12+：此接口可在Stage模型和FA模型下使用。
+- API版本9-11：此接口仅可在Stage模型下使用。
 
-API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Rand。
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Rand
+- API版本9-11：SystemCapability.Security.CryptoFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8007,13 +12027,15 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ----------------- |
-| 17620001 | memory operation failed.      |
+| 17620001 | Memory operation failed.      |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -8035,59 +12057,103 @@ rand.generateRandom(12, (err, randData) => {
 });
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@ohos.base';
+
+function TestGenerateRandom() {
+  let rand = cryptoFramework.createRandom();
+  rand.generateRandom(12, (err: BusinessError | null, randData: cryptoFramework.DataBlob | undefined) => {
+    if (err) {
+      console.error("[Callback] err: " + err.code);
+    } else {
+      if (randData != undefined) {
+        console.info('[Callback]: generate random result: ' + randData.data);
+        try {
+          rand.setSeed(randData);
+        } catch (error) {
+          let e: BusinessError = error as BusinessError;
+          console.error(`setSeed error, ${e.code}, ${e.message}`);
+        }
+      }
+    }
+  });
+}
+```
+
 ## cryptoFramework.createKdf<sup>11+</sup>
 
 createKdf(algName: string): Kdf
 
-密钥派生函数（key derivation function）实例生成。
+创建密钥派生函数实例。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Kdf
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Kdf
+- API版本11：SystemCapability.Security.CryptoFramework
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Kdf。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名  | 类型   | 必填 | 说明                              |
 | ------- | ------ | ---- | --------------------------------- |
-| algName | string | 是   | 指定密钥派生算法（包含HMAC配套的散列函数）：目前支持PBKDF2、HKDF算法、SCRYPT算法，如"PBKDF2\|SHA256", "HKDF\|SHA256", "SCRYPT"。<br>支持的规格详见[密钥派生函数规格](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md)。|
+| algName | string | 是   | 指定密钥派生算法（包含HMAC配套的散列函数）：目前支持PBKDF2、HKDF算法、SCRYPT算法，如"PBKDF2\|SHA256"、 "HKDF\|SHA256"、 "SCRYPT"和"X963KDF\|SHA256"等。<br>支持的规格详见[密钥派生函数规格](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md)。|
 
 **返回值**：
 
 | 类型         | 说明                                       |
 | ------------ | ------------------------------------------ |
-| [Kdf](#kdf11) | 返回由输入算法指定生成的Kdf对象。 |
+| [Kdf](#kdf11) | 返回对应算法的Kdf实例。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported.          |
-| 17620001 | memory operation failed.          |
+| 401 | [Sync] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported.          |
+| 17620001 | Memory operation failed.          |
 
 **示例：**
 - PBKDF2算法
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+try {
+  let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+} catch (err) {
+  let e: BusinessError = err as BusinessError;
+  console.error(`createKdf failed: errCode: ${e.code}, errMsg: ${e.message}`);
+}
 ```
 
 ## Kdf<sup>11+</sup>
 
-密钥派生函数（key derivation function）类，使用密钥派生方法之前需要创建该类的实例进行操作，通过createKdf(algName: string): Kdf方法构造此实例。
+密钥派生函数（KDF）接口，定义基于密钥派生参数派生密钥的方法。调用前，需通过[createKdf](#cryptoframeworkcreatekdf11)方法构造此实例。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 ### 属性
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Kdf
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Kdf
+- API版本11：SystemCapability.Security.CryptoFramework
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Kdf。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                         |
 | ------- | ------ | ---- | ---- | ---------------------------- |
@@ -8099,11 +12165,15 @@ generateSecret(params: KdfSpec, callback: AsyncCallback\<DataBlob>): void
 
 基于传入的密钥派生参数进行密钥派生。使用callback异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Kdf
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Kdf
+- API版本11：SystemCapability.Security.CryptoFramework
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Kdf。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8114,16 +12184,18 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. <br>适用版本：22+|
+| 17630001 | Crypto operation error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 - PBKDF2算法
   ```ts
@@ -8167,17 +12239,75 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
   });
   ```
 
+ArkTS-Sta示例：
+
+- PBKDF2算法
+  ```ts
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@ohos.base';
+
+  function TestGenerateSecret() {
+    let spec: cryptoFramework.PBKDF2Spec = {
+      algName: 'PBKDF2',
+      password: '123456',
+      salt: new Uint8Array(16),
+      iterations: 10000,
+      keySize: 32
+    };
+    let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+    kdf.generateSecret(spec, (err: BusinessError | null, secret: cryptoFramework.DataBlob | undefined) => {
+      if (err) {
+        console.error("generateSecret error.");
+        return;
+      }
+      if (secret != undefined) {
+        console.info('generateSecret output is ' + secret.data);
+      }
+    });
+  }
+  ```
+
+- HKDF算法
+  ```ts
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@ohos.base';
+
+  function TestGenerateSecret() {
+    let spec: cryptoFramework.HKDFSpec = {
+      algName: 'HKDF',
+      key: '123456',
+      salt: new Uint8Array(16),
+      info: new Uint8Array(16),
+      keySize: 32
+    };
+    let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
+    kdf.generateSecret(spec, (err: BusinessError | null, secret: cryptoFramework.DataBlob | undefined) => {
+      if (err) {
+        console.error("generateSecret error.");
+        return;
+      }
+      if (secret != undefined) {
+        console.info('generateSecret output is ' + secret.data);
+      }
+    });
+  }
+  ```
+
 ### generateSecret<sup>11+</sup>
 
 generateSecret(params: KdfSpec): Promise\<DataBlob>
 
 基于传入的密钥派生参数进行密钥派生。使用Promise异步回调。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力：** SystemCapability.Security.CryptoFramework.Kdf
+**系统能力：**
+- API版本12+：SystemCapability.Security.CryptoFramework.Kdf
+- API版本11：SystemCapability.Security.CryptoFramework
 
-API version 11系统能力为SystemCapability.Security.CryptoFramework；从API version 12开始为SystemCapability.Security.CryptoFramework.Kdf。
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8193,16 +12323,18 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 17620001 | memory operation failed.          |
-| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync/Async] Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 17620001 | Memory operation failed.          |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. <br>适用版本：22+|
+| 17630001 | Crypto operation error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 - PBKDF2算法
   ```ts
@@ -8246,15 +12378,69 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
   });
   ```
 
+ArkTS-Sta示例：
+
+- PBKDF2算法
+  ```ts
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@ohos.base';
+
+  async function TestGenerateSecret() {
+    let spec: cryptoFramework.PBKDF2Spec = {
+      algName: 'PBKDF2',
+      password: '123456',
+      salt: new Uint8Array(16),
+      iterations: 10000,
+      keySize: 32
+    };
+    try {
+      let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
+      let kdfPromise = await kdf.generateSecret(spec);
+      console.info('generateSecret output = ' + kdfPromise.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error("TestGenerateSecret failed, " + e.message);
+    }
+  }
+  ```
+
+- HKDF算法
+  ```ts
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@ohos.base';
+
+  async function TestGenerateSecret() {
+    let spec: cryptoFramework.HKDFSpec = {
+      algName: 'HKDF',
+      key: '123456',
+      salt: new Uint8Array(16),
+      info: new Uint8Array(16),
+      keySize: 32
+    };
+    try {
+      let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
+      let kdfPromise = await kdf.generateSecret(spec);
+      console.info('generateSecret output = ' + kdfPromise.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error("TestGenerateSecret failed, " + e.message);
+    }
+  }
+  ```
+
 ### generateSecretSync<sup>12+</sup>
 
 generateSecretSync(params: KdfSpec): DataBlob
 
 基于传入的密钥派生参数进行密钥派生，通过同步方式返回派生得到的密钥。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Kdf
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8270,21 +12456,22 @@ generateSecretSync(params: KdfSpec): DataBlob
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.  |
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c. |
-| 17620003 | parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. |
-| 17630001 | crypto operation error. |
+| 401 | [Sync] Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.  |
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. Invalid key length in the params;<br>2. Invalid info length in the params;<br>3. Invalid keySize in the params. <br>适用版本：22+|
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
 - PBKDF2算法
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   let spec: cryptoFramework.PBKDF2Spec = {
     algName: 'PBKDF2',
@@ -8294,13 +12481,19 @@ generateSecretSync(params: KdfSpec): DataBlob
     keySize: 32
   };
   let kdf = cryptoFramework.createKdf('PBKDF2|SHA256');
-  let secret = kdf.generateSecretSync(spec);
-  console.info('[Sync]key derivation output = ' + secret.data);
+  try {
+    let secret = kdf.generateSecretSync(spec);
+    console.info('[Sync]key derivation output = ' + secret.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateSecretSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
   ```
 
 - HKDF算法
   ```ts
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   let spec: cryptoFramework.HKDFSpec = {
     algName: 'HKDF',
@@ -8310,46 +12503,59 @@ generateSecretSync(params: KdfSpec): DataBlob
     keySize: 32
   };
   let kdf = cryptoFramework.createKdf('HKDF|SHA256|EXTRACT_AND_EXPAND');
-  let secret = kdf.generateSecretSync(spec);
-  console.info('[Sync]key derivation output = ' + secret.data);
+  try {
+    let secret = kdf.generateSecretSync(spec);
+    console.info('[Sync]key derivation output = ' + secret.data);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateSecretSync failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
   ```
 
 ## SignatureUtils<sup>20+</sup>
 
-用于SM2数据转换的工具类。
+用于ECC/SM2签名数据转换的工具类。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 ### genEccSignatureSpec<sup>20+</sup>
 
 static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec
 
-从ASN1 DER格式的sm2签名数据获取r和s。
+从ASN.1 DER编码的ECC/SM2签名数据获取r和s。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| data   | Uint8Array        | 是   | ASN1 DER格式的签名数据。 |
+| data   | Uint8Array        | 是   | ASN.1 DER编码的签名数据。 |
 
 **返回值：**
 
 | 类型               | 说明     |
 | ------------------ | -------- |
-| [EccSignatureSpec](#eccsignaturespec20) | 包含r和s的数据结构体。 |
+| [EccSignatureSpec](#eccsignaturespec20) | 包含r和s的数据对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c. |
-| 17620003 | parameter check failed. Possible causes: <br>1. The length of the data parameter is 0 or too large. |
-| 17630001 | crypto operation error. |
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. The length of the data parameter is 0 or too large. |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
@@ -8372,39 +12578,42 @@ static genEccSignatureSpec(data: Uint8Array): EccSignatureSpec
   }
   ```
 
-
 ### genEccSignature<sup>20+</sup>
 
-static genEccSignature(spec: EccSignatureSpec): Uint8Array;
+static genEccSignature(spec: EccSignatureSpec): Uint8Array
 
-将（r、s）的sm2签名数据转换为ASN1 DER格式。
+将（r、s）的ECC/SM2签名数据转换为ASN.1 DER编码。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Signature
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| spec   | [EccSignatureSpec](#eccsignaturespec20)        | 是   | （r、s）的sm2签名数据。 |
+| spec   | [EccSignatureSpec](#eccsignaturespec20)        | 是   | （r、s）的ECC/SM2签名数据。 |
 
 **返回值：**
 
 | 类型               | 说明     |
 | ------------------ | -------- |
-| Uint8Array | ASN1 DER格式的签名数据。 |
+| Uint8Array | ASN.1 DER编码的签名数据。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ---------------------- |
-| 17620001 | memory operation failed.          |
-| 17620002 | failed to convert parameters between arkts and c. |
-| 17620003 | parameter check failed. Possible causes: <br>1. The r or s value of the spec parameter is 0 or too large. |
-| 17630001 | crypto operation error. |
+| 17620001 | Memory operation failed.          |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17620003 | Parameter check failed. Possible causes: <br>1. The r or s value of the spec parameter is 0 or too large. |
+| 17630001 | Crypto operation error. |
 
 **示例：**
 
@@ -8433,13 +12642,15 @@ static genEccSignature(spec: EccSignatureSpec): Uint8Array;
 
 表示密钥封装（Kem）算法名称的枚举。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称          | 值   | 说明                        |
 | ------------- | ---- | --------------------------- |
@@ -8451,13 +12662,15 @@ static genEccSignature(spec: EccSignatureSpec): Uint8Array;
 
 表示密钥封装的结果。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称         | 类型       | 只读 | 可选 | 说明                     |
 | ------------ | ---------- | ---- | ---- | ------------------------ |
@@ -8468,15 +12681,17 @@ static genEccSignature(spec: EccSignatureSpec): Uint8Array;
 
 createKem(algNameId: KemAlgNameId): Kem
 
-生成Kem实例，用于密钥封装和解封装操作。
-
-**起始版本：** 26.0.0
+创建一个用于密钥封装和解封装操作的Kem实例。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -8488,18 +12703,19 @@ createKem(algNameId: KemAlgNameId): Kem
 
 | 类型        | 说明                          |
 | ----------- | ----------------------------- |
-| [Kem](#kem) | 返回根据输入算法生成的Kem对象。 |
+| [Kem](#kem) | 返回对应算法的Kem实例。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                                  |
 | -------- | --------------------------------------------------------- |
-| 17620001 | memory operation failed.                                  |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17620003 | parameter check failed.                                   |
-| 17630001 | crypto operation error.                                   |
+| 801 | Capability not supported. <br>适用版本：26.1.0+ |
+| 17620001 | Memory operation failed.                                  |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed.                                   |
+| 17630001 | Crypto operation error.                                   |
 
 **示例：**
 
@@ -8520,13 +12736,15 @@ function createKem() {
 
 ## Kem
 
-Kem类，使用密钥封装方法之前需要创建该类的实例进行操作，通过[createKem](#cryptoframeworkcreatekem)方法构造此实例。
-
-**起始版本：** 26.0.0
+密钥封装机制（KEM）接口，定义基于密钥封装机制进行密钥封装和解封装的方法。调用前，需通过[createKem(algNameId: KemAlgNameId): Kem](#cryptoframeworkcreatekem)方法创建一个Kem实例。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 ### encapsulate
 
@@ -8534,13 +12752,15 @@ encapsulate(pubKey: PubKey, ikme: Uint8Array | null): Promise\<KemEncapResult>
 
 基于传入的公钥进行密钥封装。使用Promise异步回调。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -8557,14 +12777,14 @@ encapsulate(pubKey: PubKey, ikme: Uint8Array | null): Promise\<KemEncapResult>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                                  |
 | -------- | --------------------------------------------------------- |
-| 17620001 | memory operation failed.                                  |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17620003 | parameter check failed.                                   |
-| 17630001 | crypto operation error.                                   |
+| 17620001 | Memory operation failed.                                  |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed.                                   |
+| 17630001 | Crypto operation error.                                   |
 
 **示例：**
 
@@ -8598,13 +12818,15 @@ encapsulateSync(pubKey: PubKey, ikme: Uint8Array | null): KemEncapResult
 >
 > 建议优先使用异步接口[encapsulate](#encapsulate)，同步接口可能因系统繁忙、负载高等原因耗时较长而阻塞主线程，建议在子线程中调用同步接口以避免阻塞主线程。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -8621,14 +12843,14 @@ encapsulateSync(pubKey: PubKey, ikme: Uint8Array | null): KemEncapResult
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                                  |
 | -------- | --------------------------------------------------------- |
-| 17620001 | memory operation failed.                                  |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17620003 | parameter check failed.                                   |
-| 17630001 | crypto operation error.                                   |
+| 17620001 | Memory operation failed.                                  |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed.                                   |
+| 17630001 | Crypto operation error.                                   |
 
 **示例：**
 
@@ -8658,13 +12880,15 @@ decapsulate(priKey: PriKey, wrappedKey: Uint8Array): Promise\<Uint8Array>
 
 基于传入的私钥和封装密钥进行密钥解封装。使用Promise异步回调。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -8681,14 +12905,14 @@ decapsulate(priKey: PriKey, wrappedKey: Uint8Array): Promise\<Uint8Array>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                                  |
 | -------- | --------------------------------------------------------- |
-| 17620001 | memory operation failed.                                  |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17620003 | parameter check failed.                                   |
-| 17630001 | crypto operation error.                                   |
+| 17620001 | Memory operation failed.                                  |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed.                                   |
+| 17630001 | Crypto operation error.                                   |
 
 **示例：**
 
@@ -8722,13 +12946,15 @@ decapsulateSync(priKey: PriKey, wrappedKey: Uint8Array): Uint8Array
 >
 > 建议优先使用异步接口[decapsulate](#decapsulate)，同步接口可能因系统繁忙、负载高等原因耗时较长而阻塞主线程，建议在子线程中调用同步接口以避免阻塞主线程。
 
-**起始版本：** 26.0.0
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Security.CryptoFramework.Cipher
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -8745,14 +12971,14 @@ decapsulateSync(priKey: PriKey, wrappedKey: Uint8Array): Uint8Array
 
 **错误码：**
 
-以下错误码的详细介绍请参见[crypto framework错误码](errorcode-crypto-framework.md)。
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
 
 | 错误码ID | 错误信息                                                  |
 | -------- | --------------------------------------------------------- |
-| 17620001 | memory operation failed.                                  |
-| 17620002 | failed to convert parameters between arkts and c.         |
-| 17620003 | parameter check failed.                                   |
-| 17630001 | crypto operation error.                                   |
+| 17620001 | Memory operation failed.                                  |
+| 17620002 | Failed to obtain the native object or convert parameters.         |
+| 17620003 | Parameter check failed.                                   |
+| 17630001 | Crypto operation error.                                   |
 
 **示例：**
 

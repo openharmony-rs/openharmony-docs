@@ -1,8 +1,8 @@
 # CanvasRenderingContext2D
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -19,8 +19,10 @@ CanvasRenderingContext2D对象与Canvas组件绑定后，可在Canvas组件上�
 > * [beginPath](#beginpath)、[moveTo](#moveto)、[lineTo](#lineto)、[closePath](#closepath)、[bezierCurveTo](#beziercurveto)、[quadraticCurveTo](#quadraticcurveto)、[arc](#arc)、[arcTo](#arcto)、[ellipse](#ellipse)、[rect](#rect)和[roundRect](#roundrect20)接口只能对CanvasRenderingContext2D中的路径生效，无法对[OffscreenCanvasRenderingContext2D](./ts-offscreencanvasrenderingcontext2d.md)和[Path2D](./ts-components-canvas-path2d.md)对象中设置的路径生效。
 >
 > * Canvas组件的宽或高超过8000px时使用CPU渲染，会导致性能明显下降，此时推荐使用[自定义渲染节点 (RenderNode)](../../../ui/arkts-user-defined-arktsNode-renderNode.md)。
+>
+> * 图形变换接口([rotate](#rotate)、[scale](#scale)、[transform](#transform)、[setTransform](#settransform)、[translate](#translate))与[getPixelMap](#getpixelmap)/[getImageData](#getimagedata)/[toDataURL](#todataurl)接口在不同帧执行时，后者创建出来的内容没有图形变换效果。
 
-## 构造函数
+## 接口
 
 ### constructor
 
@@ -49,6 +51,8 @@ constructor(settings?: RenderingContextSettings, unit?: LengthMetricsUnit)
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -147,7 +151,7 @@ struct FillStyleExample {
 }
 ```
 
-![zh-cn_image_0000001238712411](figures/zh-cn_image_0000001238712411.png)
+![fillStyle2](figures/fillStyle2.png)
 
 
 ### lineWidth
@@ -189,7 +193,7 @@ struct LineWidthExample {
 }
 ```
 
-![zh-cn_image_0000001194192432](figures/zh-cn_image_0000001194192432.png)
+![lineWidth](figures/lineWidth.png)
 
 
 ### strokeStyle
@@ -234,7 +238,7 @@ struct StrokeStyleExample {
 ```
 
 
-![zh-cn_image_0000001194352432](figures/zh-cn_image_0000001194352432.png)
+![strokeStyle](figures/strokeStyle.png)
 
 
 ### lineCap
@@ -280,7 +284,7 @@ struct LineCapExample {
 }
 ```
 
-![zh-cn_image_0000001238952373](figures/zh-cn_image_0000001238952373.png)
+![lineCap2](figures/lineCap2.png)
 
 
 ### lineJoin
@@ -328,7 +332,7 @@ struct LineJoinExample {
 }
 ```
 
-![zh-cn_image_0000001194032454](figures/zh-cn_image_0000001194032454.png)
+![lineJoin](figures/lineJoin.png)
 
 
 ### miterLimit
@@ -375,7 +379,7 @@ struct MiterLimit {
 }
 ```
 
-![zh-cn_image_0000001239032409](figures/zh-cn_image_0000001239032409.png)
+![miterLimit2](figures/miterLimit2.png)
 
 
 ### font
@@ -484,12 +488,12 @@ struct CanvasExample {
 }
 ```
 
-![zh-cn_image_0000001238832385](figures/zh-cn_image_0000001238832385.png)
+![textAlign](figures/textAlign.png)
 
 
 ### textBaseline
 
-设置文本绘制中的水平对齐方式，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
+设置文本绘制中的基线类型，此属性为只写属性，可通过赋值语句设置其值，但无法通过读取操作获取其当前值，若尝试读取将返回undefined。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -585,7 +589,7 @@ struct GlobalAlpha {
 }
 ```
 
-![zh-cn_image_0000001194192434](figures/zh-cn_image_0000001194192434.png)
+![globalAlpha](figures/globalAlpha.png)
 
 
 ### lineDashOffset
@@ -830,7 +834,7 @@ struct GlobalCompositeOperation {
 }
 ```
 
-![zh-cn_image_0000001238952375](figures/zh-cn_image_0000001238952375.png)
+![globalCompositeOperation2](figures/globalCompositeOperation2.png)
 
 
 ### shadowBlur
@@ -874,7 +878,7 @@ struct ShadowBlur {
 }
 ```
 
-![zh-cn_image_0000001194032456](figures/zh-cn_image_0000001194032456.png)
+![shadowBlur](figures/shadowBlur.png)
 
 
 ### shadowColor
@@ -918,7 +922,7 @@ struct ShadowColor {
 }
 ```
 
-![zh-cn_image_0000001239032411](figures/zh-cn_image_0000001239032411.png)
+![shadowColor](figures/shadowColor.png)
 
 
 ### shadowOffsetX
@@ -963,7 +967,7 @@ struct ShadowOffsetX {
 }
 ```
 
-![zh-cn_image_0000001193872490](figures/zh-cn_image_0000001193872490.png)
+![shadowOffsetX](figures/shadowOffsetX.png)
 
 
 ### shadowOffsetY
@@ -1008,7 +1012,7 @@ struct ShadowOffsetY {
 }
 ```
 
-![zh-cn_image_0000001238832387](figures/zh-cn_image_0000001238832387.png)
+![shadowOffsetY](figures/shadowOffsetY.png)
 
 
 ### imageSmoothingEnabled
@@ -1027,7 +1031,7 @@ struct ShadowOffsetY {
 
 > **说明：**
 >
-> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)相关介绍。
 
 ```ts
 // xxx.ets
@@ -1056,7 +1060,7 @@ struct ImageSmoothingEnabled {
 }
 ```
 
-![zh-cn_image_0000001238712415](figures/zh-cn_image_0000001238712415.png)
+![imageSmoothingEnabled2](figures/imageSmoothingEnabled2.png)
 
 
 ### height
@@ -1098,7 +1102,7 @@ struct HeightExample {
 }
 ```
 
-![zh-cn_image_canvas_height](figures/zh-cn_image_canvas_height.png)
+![zh-cn_image_canvas_height](figures/image-canvas-height.png)
 
 
 ### width
@@ -1140,7 +1144,7 @@ struct WidthExample {
 }
 ```
 
-![zh-cn_image_canvas_width](figures/zh-cn_image_canvas_width.png)
+![zh-cn_image_canvas_width](figures/image-canvas-width.png)
 
 
 ### canvas<sup>13+</sup>
@@ -1195,7 +1199,7 @@ struct CanvasExample {
 }
 ```
 
-![zh-cn_image_canvas](figures/zh-cn_image_canvas.png)
+![zh-cn_image_canvas](figures/image-canvas.png)
 
 
 ### imageSmoothingQuality
@@ -1214,7 +1218,7 @@ imageSmoothingEnabled为true时，用于设置图像平滑度，此属性为只�
 
 > **说明：**
 >
-> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)相关介绍。
 
 ```ts
 // xxx.ets
@@ -1312,7 +1316,7 @@ struct DirectionDemo {
 
 > **说明：**
 >
-> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)相关介绍。
 
 ```ts
 // xxx.ets
@@ -1381,6 +1385,8 @@ struct FilterDemo {
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 <!--Table: 25%; 10%; 10%; 55%-->
@@ -1394,7 +1400,7 @@ struct FilterDemo {
 
   @Entry
   @Component
-  struct letterSpacingDemo {
+  struct LetterSpacingDemo {
     private settings: RenderingContextSettings = new RenderingContextSettings(true)
     private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
 
@@ -1588,7 +1594,7 @@ strokeRect(x: number, y: number, w: number, h: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194352436](figures/zh-cn_image_0000001194352436.png)
+  ![strokeRect](figures/strokeRect.png)
 
 
 ### clearRect
@@ -1641,7 +1647,7 @@ clearRect(x: number, y: number, w: number, h: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238952377](figures/zh-cn_image_0000001238952377.png)
+  ![clearRect](figures/clearRect.png)
 
 
 ### fillText
@@ -1693,7 +1699,7 @@ fillText(text: string, x: number, y: number, maxWidth?: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194032458](figures/zh-cn_image_0000001194032458.png)
+  ![fillText](figures/fillText.png)
 
 
 ### strokeText
@@ -1846,7 +1852,7 @@ stroke(): void
   }
   ```
 
-  ![zh-cn_image_0000001238832389](figures/zh-cn_image_0000001238832389.png)
+  ![stroke](figures/stroke.png)
 
 ### stroke
 
@@ -1898,7 +1904,7 @@ stroke(path: Path2D): void
   }
   ```
 
-  ![zh-cn_image_0000001238832389](figures/zh-cn_image_0000001238832390.png)
+  ![stroke2](figures/stroke2.png)
 
 ### beginPath
 
@@ -1946,7 +1952,7 @@ beginPath(): void
   }
   ```
 
-  ![zh-cn_image_0000001238712417](figures/zh-cn_image_0000001238712417.png)
+  ![beginPath](figures/beginPath.png)
 
 
 ### moveTo
@@ -2003,7 +2009,7 @@ moveTo(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194192438](figures/zh-cn_image_0000001194192438.png)
+  ![moveTo2](figures/moveTo2.png)
 
 
 ### lineTo
@@ -2054,7 +2060,7 @@ lineTo(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194352438](figures/zh-cn_image_0000001194352438.png)
+  ![lineTo](figures/lineTo.png)
 
 
 ### closePath
@@ -2100,7 +2106,7 @@ closePath(): void
   }
   ```
 
-  ![zh-cn_image_0000001238952379](figures/zh-cn_image_0000001238952379.png)
+  ![closePath3](figures/closePath3.png)
 
 
 ### createPattern
@@ -2132,7 +2138,7 @@ createPattern(image: ImageBitmap, repetition: string | null): CanvasPattern | nu
 
 > **说明：**
 >
-> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)相关介绍。
 
   ```ts
   // xxx.ets
@@ -2164,7 +2170,7 @@ createPattern(image: ImageBitmap, repetition: string | null): CanvasPattern | nu
   }
   ```
 
-  ![zh-cn_image_0000001194032460](figures/zh-cn_image_0000001194032460.png)
+  ![createPattern](figures/createPattern.png)
 
 
 ### bezierCurveTo
@@ -2241,7 +2247,7 @@ struct BezierCurveTo {
 }
 ```
 
-![zh-cn_image_0000001239032415](figures/zh-cn_image_0000001239032415.png)
+![bezierCurveTo2](figures/bezierCurveTo2.png)
 
 
 ### quadraticCurveTo
@@ -2368,7 +2374,7 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
   }
   ```
 
-  ![zh-cn_image_0000001238832391](figures/zh-cn_image_0000001238832391.jpeg)
+  ![arc](figures/arc.jpeg)
 
 
 ### arcTo
@@ -2447,7 +2453,7 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
   }
   ```
 
-  ![zh-cn_image_0000001238712419](figures/zh-cn_image_0000001238712419.png)
+  ![arcTo3](figures/arcTo3.png)
 
   > 此示例中，arcTo()创建的圆弧为黑色，圆弧的两条切线为灰色。控制点为红色，起始点为绿色。
   >
@@ -2510,7 +2516,7 @@ ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number
   }
   ```
 
-  ![zh-cn_image_0000001194192440](figures/zh-cn_image_0000001194192440.jpeg)
+  ![ellipse](figures/ellipse.jpeg)
 
 
 ### rect
@@ -2561,7 +2567,7 @@ rect(x: number, y: number, w: number, h: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194352440](figures/zh-cn_image_0000001194352440.jpeg)
+  ![rect](figures/rect.jpeg)
 
 ### roundRect<sup>20+</sup>
 
@@ -2572,6 +2578,8 @@ roundRect(x: number, y: number, w: number, h: number, radii?: number | Array\<nu
 **卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2589,9 +2597,9 @@ roundRect(x: number, y: number, w: number, h: number, radii?: number | Array\<nu
 
 以下错误码的详细介绍请参见[Canvas组件错误码](../errorcode-canvas.md)。
 
-| 错误码ID | 错误信息 | 可能原因 |
-| -------- | -------- | -------- |
-| 103701   | Parameter error.| 1. The param radii is a list that has zero or more than four elements; 2. The param radii contains negative value. |
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 103701   | Parameter error. Possible causes:<br> 1. The param radii is a list that has zero or more than four elements.<br> 2. The param radii contains negative value.|
 
 **示例：**
 
@@ -2704,7 +2712,7 @@ fill(fillRule?: CanvasFillRule): void
   }
   ```
 
-  ![zh-cn_image_0000001238952381](figures/zh-cn_image_0000001238952381.png)
+  ![fill2](figures/fill2.png)
 
 ### fill
 
@@ -2762,7 +2770,7 @@ struct Fill {
 }
 ```
 
- ![zh-cn_image_000000127777774](figures/zh-cn_image_000000127777774.jpg)
+ ![zh-cn_image_000000127777774](figures/Yellow-trapezoid-01.jpg)
 
 ### clip
 
@@ -2812,7 +2820,7 @@ clip(fillRule?: CanvasFillRule): void
   }
   ```
 
-  ![zh-cn_image_0000001194032462](figures/zh-cn_image_0000001194032462.png)
+  ![clip](figures/clip.png)
 
 ### clip
 
@@ -2870,7 +2878,7 @@ clip(path: Path2D, fillRule?: CanvasFillRule): void
   }
   ```
 
-  ![zh-cn_image_000000127777779](figures/zh-cn_image_000000127777779.jpg)
+  ![zh-cn_image_000000127777779](figures/Yellow-trapezoid.jpg)
 
 
 ### reset<sup>12+</sup>
@@ -2878,6 +2886,10 @@ clip(path: Path2D, fillRule?: CanvasFillRule): void
 reset(): void
 
 将CanvasRenderingContext2D重置为其默认状态，清除后台缓冲区、绘制状态栈、绘制路径和样式。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2910,7 +2922,7 @@ reset(): void
   }
   ```
 
-  ![zh-cn_image_0000001239032460](figures/zh-cn_image_0000001239032460.png)
+  ![reset](figures/reset.png)
 
 
 ### saveLayer<sup>12+</sup>
@@ -2918,6 +2930,10 @@ reset(): void
 saveLayer(): void
 
 创建一个图层。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2958,13 +2974,17 @@ saveLayer(): void
   }
 
   ```
-   ![zh-cn_image_CanvasSavelayer](figures/zh-cn_image_CanvasSavelayer.png)
+   ![zh-cn_image_CanvasSavelayer](figures/image-CanvasSavelayer.png)
 
 ### restoreLayer<sup>12+</sup>
 
 restoreLayer(): void
 
 恢复图像变换和裁剪状态至saveLayer前的状态，并将图层绘制在canvas上。restoreLayer示例代码同saveLayer。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3011,7 +3031,7 @@ resetTransform(): void
   }
   ```
 
-  ![zh-cn_image_0000001239032417](figures/zh-cn_image_ResetTransform.png)
+  ![zh-cn_image_0000001239032417](figures/image-ResetTransform.png)
 
 ### rotate
 
@@ -3058,7 +3078,7 @@ rotate(angle: number): void
   }
   ```
 
-  ![zh-cn_image_0000001239032417](figures/zh-cn_image_0000001239032417.png)
+  ![rotate3](figures/rotate3.png)
 
 
 ### scale
@@ -3109,14 +3129,14 @@ scale(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001193872498](figures/zh-cn_image_0000001193872498.png)
+  ![scale](figures/scale.png)
 
 
 ### transform
 
 transform(a: number, b: number, c: number, d: number, e: number, f: number): void
 
-transform方法对应一个变换矩阵，想对一个图形进行变化的时候，只要设置此变换矩阵相应的参数，对图形的各个定点的坐标分别乘以这个矩阵，就能得到新的定点的坐标。矩阵变换效果可叠加。
+transform方法对应一个变换矩阵，想对一个图形进行变换的时候，只要设置此变换矩阵相应的参数，对图形的各个顶点的坐标分别乘以这个矩阵，就能得到新的顶点的坐标。矩阵变换效果可叠加。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -3247,7 +3267,7 @@ setTransform方法使用的参数和transform()方法相同，但setTransform()�
   }
   ```
 
-  ![zh-cn_image_0000001238712421](figures/zh-cn_image_0000001238712421.png)
+  ![setTransform2](figures/setTransform2.png)
 
 ### setTransform
 
@@ -3308,7 +3328,7 @@ setTransform(transform?: Matrix2D): void
   }
   ```
 
-  ![zh-cn_image_0000001238712422.jpeg](figures/zh-cn_image_0000001238712422.jpeg)
+  ![setTransform2](figures/setTransform2.jpeg)
 
 ### getTransform
 
@@ -3370,7 +3390,7 @@ getTransform(): Matrix2D
   }
   ```
 
-  ![zh-cn_image_0000001219982726.png](figures/zh-cn_image_0000001219982726.png)
+  ![getTransform](figures/getTransform.png)
 
 ### translate
 
@@ -3419,7 +3439,7 @@ translate(x: number, y: number): void
   }
   ```
 
-  ![zh-cn_image_0000001194192446](figures/zh-cn_image_0000001194192446.png)
+  ![translate](figures/translate.png)
 
 
 ### drawImage
@@ -3446,7 +3466,7 @@ drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number): void
 
 > **说明：**
 >
-> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)相关介绍。
 
   ```ts
   // xxx.ets
@@ -3502,7 +3522,7 @@ drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh:
 
 > **说明：**
 >
-> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)相关介绍。
 
   ```ts
   // xxx.ets
@@ -3562,7 +3582,7 @@ drawImage(image: ImageBitmap | PixelMap, sx: number, sy: number, sw: number, sh:
 
 > **说明：**
 >
-> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)相关介绍。
 
   ```ts
   // xxx.ets
@@ -3674,7 +3694,7 @@ getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
 >
 > - DevEco Studio的预览器不支持显示使用setPixelMap绘制的内容。
 >
-> - 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
+> - 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)相关介绍。
 
   ```ts
   // xxx.ets
@@ -3704,7 +3724,7 @@ getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
   }
   ```
 
-  ![zh-cn_image_000000127777782](figures/zh-cn_image_000000127777782.png)
+  ![zh-cn_image_000000127777782](figures/Yellow-with-sky.png)
 
 ### setPixelMap
 
@@ -3754,7 +3774,7 @@ getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
 
 > **说明：**
 >
-> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)相关介绍。
 
   ```ts
   // xxx.ets
@@ -3784,7 +3804,7 @@ getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
   }
   ```
 
-  ![zh-cn_image_000000127777780](figures/zh-cn_image_000000127777780.png)
+  ![zh-cn_image_000000127777780](figures/Yellow-lemon.png)
 
 
 ### putImageData
@@ -3950,7 +3970,7 @@ setLineDash(segments: number[]): void
   }
   ```
 
-  ![zh-cn_image_000000127777771](figures/zh-cn_image_000000127777771.png)
+  ![setLineDash](figures/setLineDash.png)
 
 
 ### getLineDash
@@ -4007,7 +4027,7 @@ getLineDash(): number[]
     }
   }
   ```
-![zh-cn_image_000000127777778](figures/zh-cn_image_000000127777778.png) 
+![zh-cn_image_000000127777778](figures/Yellow-with-sky-01.png) 
 
 
 ### transferFromImageBitmap
@@ -4120,7 +4140,7 @@ toDataURL(type?: string, quality?: any): string
     }
   }
   ```
-  ![zh-cn_image_0000001238952387](figures/zh-cn_image_0000001194192441.png)  
+  ![toDataURL](figures/toDataURL.png)  
 
 
 ### restore
@@ -4170,7 +4190,7 @@ restore(): void
     }
   }
   ```
-  ![zh-cn_image_000000127777781](figures/zh-cn_image_000000127777781.png)
+  ![zh-cn_image_000000127777781](figures/Yellow-with-green-and-black.png)
 
 
 ### save
@@ -4214,7 +4234,7 @@ save(): void
     }
   }
   ```
-  ![zh-cn_image_000000127777781](figures/zh-cn_image_000000127777781.png)
+  ![zh-cn_image_000000127777781](figures/Yellow-with-green-and-black.png)
 
 
 ### createLinearGradient
@@ -4275,7 +4295,7 @@ createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGrad
   }
   ```
 
-  ![zh-cn_image_0000001194032516](figures/zh-cn_image_0000001194032516.png)
+  ![createLinearGradient](figures/createLinearGradient.png)
 
 
 ### createRadialGradient
@@ -4338,7 +4358,7 @@ createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number,
   }
   ```
 
-  ![zh-cn_image_0000001238952407](figures/zh-cn_image_0000001238952407.png)
+  ![createRadialGradient](figures/createRadialGradient.png)
 
 ### createConicGradient<sup>10+</sup>
 
@@ -4347,6 +4367,8 @@ createConicGradient(startAngle: number, x: number, y: number): CanvasGradient
 创建一个圆锥渐变色。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4395,15 +4417,17 @@ struct CanvasExample {
 }
 ```
 
-![zh-cn_image_0000001239032419](figures/zh-cn_image_0000001239032420.png)
+![createConicGradient](figures/createConicGradient.png)
 
 ### on('onAttach')<sup>13+</sup>
 
-on(type: 'onAttach', callback: () => void): void
+on(type: 'onAttach', callback: Callback\<void>): void
 
 订阅CanvasRenderingContext2D与Canvas组件发生绑定的场景。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4411,8 +4435,16 @@ on(type: 'onAttach', callback: () => void): void
 
 | 参数名 | 类型      | 必填 | 说明                                                                   |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| type   | string | 是   | 订阅CanvasRenderingContext2D与Canvas组件发生绑定的回调。<br>异常值undefined或null按无效值处理。 |
-| callback   | () => void | 是   | 订阅CanvasRenderingContext2D与Canvas组件发生绑定后触发的回调。<br>异常值undefined或null按无效值处理。|
+| type   | string | 是   | 订阅CanvasRenderingContext2D与Canvas组件发生绑定的事件类型，固定为'onAttach'。<br>异常值undefined或null按无效值处理。 |
+| callback   | [Callback](ts-types.md#callback12)\<void> | 是   | 订阅CanvasRenderingContext2D与Canvas组件发生绑定后触发的回调。<br>异常值undefined或null按无效值处理。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                      |
+| -------- | -------------------------------------------- |
+| 401 | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.|
 
 > **说明：**
 >
@@ -4420,67 +4452,97 @@ on(type: 'onAttach', callback: () => void): void
 > 当CanvasRenderingContext2D对象和Canvas组件发生绑定时，会触发'onAttach'回调，表示可以获取到[canvas](#canvas13)。</br>
 > 避免在'onAttach'中执行绘制方法，应保证Canvas组件已经'[onReady](ts-components-canvas-canvas.md#onready)'再进行绘制。</br>
 > 触发'onAttach'回调的一般场景：</br>
-> 1、Canvas组件创建时绑定CanvasRenderingContext2D对象;</br>
-> 2、CanvasRenderingContext2D对象新绑定一个Canvas组件时。</br>
+> 1. Canvas组件创建时绑定CanvasRenderingContext2D对象；</br>
+> 2. CanvasRenderingContext2D对象新绑定一个Canvas组件时。</br>
   
 
 ### on('onDetach')<sup>13+</sup>
 
-on(type: 'onDetach', callback: () => void): void
+on(type: 'onDetach', callback: Callback\<void>): void
 
 订阅CanvasRenderingContext2D与Canvas组件解除绑定的场景。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型      | 必填 | 说明                                                                   |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| type   | string | 是   | 订阅CanvasRenderingContext2D与Canvas组件解除绑定的回调。<br>异常值undefined或null按无效值处理。 |
-| callback   | () => void | 是   | 订阅CanvasRenderingContext2D与Canvas组件解除绑定后触发的回调。<br>异常值undefined或null按无效值处理。 |
+| type   | string | 是   | 订阅CanvasRenderingContext2D与Canvas组件解除绑定的事件类型，固定为'onDetach'。<br>异常值undefined或null按无效值处理。 |
+| callback   | [Callback](ts-types.md#callback12)\<void> | 是   | 订阅CanvasRenderingContext2D与Canvas组件解除绑定后触发的回调。<br>异常值undefined或null按无效值处理。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                      |
+| -------- | -------------------------------------------- |
+| 401 | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.|
 
 > **说明：**
 >
 > 当CanvasRenderingContext2D对象和Canvas组件解除绑定时，会触发'onDetach'回调，表示应停止绘制行为。</br>
 > 触发'onDetach'回调的一般场景：</br>
-> 1、Canvas组件销毁时解除绑定CanvasRenderingContext2D对象;</br>
-> 2、CanvasRenderingContext2D对象新绑定一个Canvas组件，会先解除已有的绑定。</br>
+> 1. Canvas组件销毁时解除绑定CanvasRenderingContext2D对象；</br>
+> 2. CanvasRenderingContext2D对象新绑定一个Canvas组件，会先解除已有的绑定。</br>
 
 ### off('onAttach')<sup>13+</sup>
 
-off(type: 'onAttach', callback?: () => void): void
+off(type: 'onAttach', callback?: Callback\<void>): void
 
 取消订阅CanvasRenderingContext2D与Canvas组件发生绑定的场景。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型      | 必填 | 说明                                                                   |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| type   | string | 是   | 取消订阅CanvasRenderingContext2D与Canvas组件发生绑定的回调。<br>异常值undefined或null按无效值处理。 |
-| callback   | () => void | 否   | 为空表示取消所有订阅CanvasRenderingContext2D与Canvas组件发生绑定后触发的回调。<br>非空则取消订阅发生绑定对应的回调。<br>异常值undefined或null按无效值处理。 |
+| type   | string | 是   | 取消订阅CanvasRenderingContext2D与Canvas组件发生绑定的事件类型，固定为'onAttach'。<br>异常值undefined或null按无效值处理。 |
+| callback   | [Callback](ts-types.md#callback12)\<void> | 否   | 为空表示取消所有订阅CanvasRenderingContext2D与Canvas组件发生绑定后触发的回调。<br>非空则取消订阅发生绑定对应的回调。<br>异常值undefined或null按无效值处理。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                      |
+| -------- | -------------------------------------------- |
+| 401 | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.|
 
 ### off('onDetach')<sup>13+</sup>
 
-off(type: 'onDetach', callback?: () => void): void
+off(type: 'onDetach', callback?: Callback\<void>): void
 
 取消订阅CanvasRenderingContext2D与Canvas组件解除绑定的场景。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：**
 
 | 参数名 | 类型      | 必填 | 说明                                                                   |
 | ------ | --------- | ---- | ---------------------------------------------------------------------- |
-| type   | string | 是   | 取消订阅CanvasRenderingContext2D与Canvas组件解除绑定的回调。<br>异常值undefined或null按无效值处理。 |
-| callback   | () => void | 否   | 为空代表取消所有订阅CanvasRenderingContext2D与Canvas组件解除绑定后触发的回调。<br>非空代表取消订阅解除绑定对应的回调。<br>异常值undefined或null按无效值处理。 |
+| type   | string | 是   | 取消订阅CanvasRenderingContext2D与Canvas组件解除绑定的事件类型，固定为'onDetach'。<br>异常值undefined或null按无效值处理。 |
+| callback   | [Callback](ts-types.md#callback12)\<void> | 否   | 为空代表取消所有订阅CanvasRenderingContext2D与Canvas组件解除绑定后触发的回调。<br>非空代表取消订阅解除绑定对应的回调。<br>异常值undefined或null按无效值处理。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                      |
+| -------- | -------------------------------------------- |
+| 401 | Input parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.|
 
 **示例：**
 
@@ -4627,6 +4689,8 @@ stopImageAnalyzer(): void
 > 该特性依赖设备能力。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4859,7 +4923,7 @@ struct Index {
 }
 ```
 
-![](figures/zh-cn_image_canvas_fill_rule_example.png)
+![](figures/image-canvas-fill-rule-example.png)
 
 ## CanvasLineCap类型说明
 
@@ -4967,8 +5031,8 @@ type ImageSmoothingQuality = "high" | "low" | "medium"
 <!--Table: 25%; 10%; 10%; 10%; 45%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---------- | -------------- | ------ | ---------------- | ------------------------ |
-| width                    | number | 是 | 否 | 只读属性，文本方块的宽度。 |
-| height                   | number | 是 | 否 | 只读属性，文本方块的高度。 |
+| width                    | number | 是 | 否 | 只读属性，文本方块的宽度。<br>单位：vp<br>当CanvasRenderingContext2D对象的单位模式设置为LengthMetricsUnit.PX时，单位为px。 |
+| height                   | number | 是 | 否 | 只读属性，文本方块的高度。<br>单位：vp<br>当CanvasRenderingContext2D对象的单位模式设置为LengthMetricsUnit.PX时，单位为px。 |
 | actualBoundingBoxAscent  | number | 是 | 否 | 只读属性，从[CanvasRenderingContext2D.textBaseline](#canvastextbaseline类型说明)属性标明的水平线到渲染文本的矩形边界顶部的距离。 |
 | actualBoundingBoxDescent | number | 是 | 否 | 只读属性，从[CanvasRenderingContext2D.textBaseline](#canvastextbaseline类型说明)属性标明的水平线到渲染文本的矩形边界底部的距离。 |
 | actualBoundingBoxLeft    | number | 是 | 否 | 只读属性，平行于基线，从[CanvasRenderingContext2D.textAlign](#canvastextalign类型说明)属性确定的对齐点到文本矩形边界左侧的距离。 |

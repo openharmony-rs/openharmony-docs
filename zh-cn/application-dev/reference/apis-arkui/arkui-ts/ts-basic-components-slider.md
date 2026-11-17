@@ -26,9 +26,9 @@ ArkTS-Dyn: Slider(options?: SliderOptions)
 
 ArkTS-Sta: Slider(options?: SliderOptions, content_?: CustomBuilder)
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,15 +47,15 @@ ArkTS-Sta: Slider(options?: SliderOptions, content_?: CustomBuilder)
 
 滑动条的信息。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| value | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined \| Bindable\<double\> | 否 | 是 | 当前进度值。取值为undefined时，按默认值处理。<br/>默认值：与属性min的取值一致。<br />从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>取值范围： [min, max]<br/>小于min时取min，大于max时取max。<br/>$$运算符为系统组件提供TS变量的引用，使得TS变量和slider组件的value值保持同步。详细使用示例请参考[示例7（设置滑动条的双向绑定）](#示例7设置滑动条的双向绑定)。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
+| value | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined \| Bindable\<double\> | 否 | 是 | 当前进度值。取值为undefined时，按默认值处理。<br/>默认值：与属性min的取值一致。<br />从API version 10开始，该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>取值范围： [min, max]<br/>小于min时取min，大于max时取max。<br/>$$运算符为系统组件提供TS变量的引用，使得TS变量和Slider组件的value值保持同步。详细使用示例请参考[示例7（设置滑动条的双向绑定）](#示例7设置滑动条的双向绑定)。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 | min | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 是 | 设置最小值。<br/>默认值：0 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 | max | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 是 | 设置最大值。<br/>默认值：100<br/>**说明：** <br/>min >= max异常情况，min取默认值0，max取默认值100。<br/>value不在[min, max]范围之内，取min或者max，靠近min取min，靠近max取max。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 | step | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 是 | 设置Slider滑动步长。<br/>默认值：1<br/>取值范围：[0.01, max - min]<br/>**说明：** <br/>若设置的step值小于0或大于max值，则按默认值显示。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
@@ -69,11 +69,11 @@ ArkTS-Sta: Slider(options?: SliderOptions, content_?: CustomBuilder)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 说明 |
-| -------- | -------- |
-| OutSet | 滑块在滑轨上。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| InSet | 滑块在滑轨内。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| NONE<sup>12+</sup> | 无滑块 <br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| 名称 | 值 | 说明 |
+| -------- | ----- | -------- |
+| OutSet | 0 | 滑块在滑轨上。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| InSet | 1 | 滑块在滑轨内。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| NONE<sup>12+</sup> | 2 | 无滑块 <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 >  **说明：**
 >
@@ -99,9 +99,9 @@ ArkTS-Sta: blockColor(value: ResourceColor | LinearGradient | undefined)
 
 当滑块形状设置为SliderBlockType.SHAPE时，blockColor可设置自定义形状的填充颜色。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -129,9 +129,11 @@ blockColor(value: ResourceColor | LinearGradient)
 
 当滑块形状设置为SliderBlockType.SHAPE时，blockColor可设置自定义形状的填充颜色。
 
-**卡片能力：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -151,9 +153,9 @@ ArkTS-Sta: trackColor(value: ResourceColor | LinearGradient | undefined)
 
 从API version 12开始支持利用LinearGradient设置滑轨的渐变色。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -171,9 +173,9 @@ ArkTS-Sta: trackColor(value: ResourceColor | LinearGradient | undefined)
 
 trackColorMetrics(color: ColorMetricsLinearGradient | undefined)
 
-设置滑轨轨道的线性渐变背景颜色。
+设置滑轨的线性渐变背景颜色。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -187,7 +189,7 @@ trackColorMetrics(color: ColorMetricsLinearGradient | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| color  | ArkTS-Dyn: [ColorMetricsLinearGradient](#colormetricslineargradient23)<br/>ArkTS-Sta: [ColorMetricsLinearGradient](#colormetricslineargradient23) \| undefined | 是   | 滑轨轨道的线性渐变背景颜色。<br/>设置渐变色时，如果color的值为undefined，渐变色设置无效，轨道背景颜色默认取值为：`$r('sys.color.ohos_id_color_component_normal')`。 |
+| color  | ArkTS-Dyn: [ColorMetricsLinearGradient](#colormetricslineargradient23)<br/>ArkTS-Sta: [ColorMetricsLinearGradient](#colormetricslineargradient23) \| undefined | 是   | 滑轨的线性渐变背景颜色。<br/>设置渐变色时，如果color的值为undefined，渐变色设置无效，滑轨背景颜色默认取值为：`$r('sys.color.ohos_id_color_component_normal')`。 |
 
 ### selectedColor
 
@@ -195,9 +197,9 @@ selectedColor(value: ResourceColor)
 
 设置滑轨的已滑动部分颜色。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -221,9 +223,11 @@ selectedColor(selectedColor: ResourceColor | LinearGradient)
 
 从API version 18开始支持利用LinearGradient设置滑轨的已滑动部分的渐变色。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -247,7 +251,7 @@ selectedColor(selectedColor: ResourceColor | LinearGradient | undefined)
 
 从API version 18开始支持利用LinearGradient设置滑轨的已滑动部分的渐变色。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -271,9 +275,9 @@ ArkTS-Sta: showSteps(value: boolean | undefined)
 
 设置当前是否显示步长刻度值。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -301,9 +305,9 @@ ArkTS-Sta: showTips(value: boolean | undefined, content?: ResourceStr | undefine
 
 tip的绘制区域为Slider自身节点的overlay。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -334,9 +338,9 @@ trackThickness或[blockSize](#blocksize10)的大小超过Slider组件的宽度�
 
 当[SliderStyle](#sliderstyle枚举说明)设置为OutSet时，尽管trackThickness的大小没超过Slider组件的宽度或高度，但是[blockSize](#blocksize10)超过了，取默认值。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -364,7 +368,9 @@ ArkTS-Sta: blockBorderColor(value: ResourceColor | undefined)
 
 当滑块形状设置为SliderBlockType.SHAPE时，blockBorderColor可设置自定义形状中线的颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -392,7 +398,9 @@ ArkTS-Sta: blockBorderWidth(value: Length | undefined)
 
 当滑块形状设置为SliderBlockType.SHAPE时，blockBorderWidth可设置自定义形状中线的粗细。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -414,7 +422,9 @@ ArkTS-Sta: stepColor(value: ResourceColor | undefined)
 
 设置刻度颜色。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -434,9 +444,11 @@ ArkTS-Dyn: trackBorderRadius(value: Length)
 
 ArkTS-Sta: trackBorderRadius(value: Length | undefined)
 
-设置底板圆角半径。
+设置滑轨圆角半径。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -448,7 +460,7 @@ ArkTS-Sta: trackBorderRadius(value: Length | undefined)
 
 | 参数名 | 类型                         | 必填 | 说明                             |
 | ------ | ---------------------------- | ---- | -------------------------------- |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 底板圆角半径。取值为undefined时，按默认值处理。<br/>默认值：<br/>style值为SliderStyle.OutSet时默认值为'2vp'。<br/>style值为SliderStyle.InSet时默认值为'10vp'。<br/>**说明：** <br/>设定值小于0时取默认值。 |
+| value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 滑轨圆角半径。取值为undefined时，按默认值处理。<br/>默认值：<br/>style值为SliderStyle.OutSet时默认值为'2vp'。<br/>style值为SliderStyle.InSet时默认值为'10vp'。<br/>**说明：** <br/>设定值小于0时取默认值。 |
 
 ### selectedBorderRadius<sup>12+</sup>
 
@@ -458,7 +470,9 @@ ArkTS-Sta: selectedBorderRadius(value: Dimension | undefined)
 
 设置已滑动部分（高亮）圆角半径。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -470,7 +484,7 @@ ArkTS-Sta: selectedBorderRadius(value: Dimension | undefined)
 
 | 参数名 | 类型                         | 必填 | 说明                             |
 | ------ | ---------------------------- | ---- | -------------------------------- |
-| value  | ArkTS-Dyn: [Dimension](ts-types.md#dimension10)<br/>ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined| 是   | 已选择部分的圆角半径。取值为undefined时，按默认值处理。<br/>默认值：当style值为SliderStyle.InSet或SliderStyle.OutSet时，跟随底板圆角；当style值为SliderStyle.NONE时，为0。<br/>**说明：** <br/>不支持Percentage类型。设定值小于0时取默认值。 |
+| value  | ArkTS-Dyn: [Dimension](ts-types.md#dimension10)<br/>ArkTS-Sta: [Dimension](ts-types.md#dimension10) \| undefined| 是   | 已滑动部分的圆角半径。取值为undefined时，按默认值处理。<br/>默认值：当style值为SliderStyle.InSet或SliderStyle.OutSet时，跟随底板圆角；当style值为SliderStyle.NONE时，为0。<br/>**说明：** <br/>不支持Percentage类型。设定值小于0时取默认值。 |
 
 ### blockSize<sup>10+</sup>
 
@@ -486,7 +500,9 @@ ArkTS-Sta: blockSize(value: SizeOptions | undefined)
 
 当滑块形状设置为SliderBlockType.SHAPE时，用于设置自定义形状的大小，自定义形状也会采用ObjectFit.Cover策略进行缩放。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -498,7 +514,7 @@ ArkTS-Sta: blockSize(value: SizeOptions | undefined)
 
 | 参数名 | 类型                                   | 必填 | 说明                                                         |
 | ------ | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [SizeOptions](ts-types.md#sizeoptions)<br/>ArkTS-Sta: [SizeOptions](ts-types.md#sizeoptions) \| undefined | 是   | 滑块大小。取值为undefined时，按默认值处理。<br/>默认值：当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).OutSet时为{width: 18, height: 18}，当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).InSet时为{width: 12, height: 12}，当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).NONE时为，此字段不生效。<br/>当设置的blockSize的宽高值不相等时，取较小值的尺寸，当设置的宽高值中有一个或两个都小于等于0的时候，取默认值。 |
+| value  | ArkTS-Dyn: [SizeOptions](ts-types.md#sizeoptions)<br/>ArkTS-Sta: [SizeOptions](ts-types.md#sizeoptions) \| undefined | 是   | 滑块大小。取值为undefined时，按默认值处理。<br/>默认值：当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).OutSet时为{width: 18, height: 18}，当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).InSet时为{width: 12, height: 12}，当参数style的值设置为[SliderStyle](#sliderstyle枚举说明).NONE时，此字段不生效。<br/>当设置的blockSize的宽高值不相等时，取较小值的尺寸，当设置的宽高值中有一个或两个都小于等于0的时候，取默认值。 |
 
 ### blockStyle<sup>10+</sup>
 
@@ -508,7 +524,9 @@ ArkTS-Sta: blockStyle(value: SliderBlockStyle | undefined)
 
 设置滑块形状参数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -530,7 +548,9 @@ ArkTS-Sta: stepSize(value: Length | undefined)
 
 设置刻度大小（直径）。当值为0时，刻度点不显示，当值小于0时，取默认值。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -552,7 +572,9 @@ ArkTS-Sta: sliderInteractionMode(value: SliderInteraction | undefined)
 
 设置用户与滑动条组件交互方式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -574,7 +596,9 @@ ArkTS-Sta: minResponsiveDistance(value: double | undefined)
 
 设置滑动响应的最小距离。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -596,7 +620,9 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<SliderConfiguration> | und
 
 定制Slider内容区的方法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -623,7 +649,9 @@ ArkTS-Sta: slideRange(value: SlideRange | undefined)
 
 设置有效滑动区间。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -655,7 +683,9 @@ ArkTS-Sta: enableHapticFeedback(enabled: boolean | undefined)
  ]
 ```
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -681,7 +711,9 @@ ArkTS-Sta: digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined)
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -703,7 +735,9 @@ ArkTS-Sta: prefix\<T extends Object>(content: ComponentContent\<T> | undefined, 
 
 设置滑动条的前缀。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -715,8 +749,8 @@ ArkTS-Sta: prefix\<T extends Object>(content: ComponentContent\<T> | undefined, 
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| content | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: [ComponentContent\<T>](../js-apis-arkui-ComponentContent.md) \| undefined | 是   | 自定义组件内容，用于定义滑块前缀的可视化内容，该内容会显示在滑块的起始位置。取值为undefined时，则不使用前缀。 |
-| options | ArkTS-Dyn: [SliderPrefixOptions](#sliderprefixoptions20)<br/>ArkTS-Sta: [SliderPrefixOptions](#sliderprefixoptions20) \| undefined | 否   | 滑块前缀的配置选项，用于设置与无障碍功能相关的属性。取值为undefined时，则不使用前缀。 <br/>默认值：null |
+| content | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: [ComponentContent\<T>](../js-apis-arkui-ComponentContent.md) \| undefined | 是   | 自定义组件内容，用于定义滑动条前缀的可视化内容，该内容会显示在滑动条的起始位置。取值为undefined时，则不使用前缀。 |
+| options | ArkTS-Dyn: [SliderPrefixOptions](#sliderprefixoptions20)<br/>ArkTS-Sta: [SliderPrefixOptions](#sliderprefixoptions20) \| undefined | 否   | 滑动条前缀的配置选项，用于设置与无障碍功能相关的属性。取值为undefined时，则不使用前缀。 <br/>默认值：null |
 
 ### suffix<sup>20+</sup>
 
@@ -726,7 +760,9 @@ ArkTS-Sta: suffix\<T extends Object>(content: ComponentContent\<T> | undefined, 
 
 设置滑动条的后缀。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -738,8 +774,8 @@ ArkTS-Sta: suffix\<T extends Object>(content: ComponentContent\<T> | undefined, 
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| content | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: [ComponentContent\<T>](../js-apis-arkui-ComponentContent.md) \| undefined    | 是   | 自定义组件内容，用于定义滑块后缀的可视化内容，该内容会显示在滑块的结束位置。取值为undefined时，则不使用后缀。 |
-| options | ArkTS-Dyn: [SliderSuffixOptions](#slidersuffixoptions20)<br/>ArkTS-Sta: [SliderSuffixOptions](#slidersuffixoptions20) \| undefined | 否   | 滑块后缀的配置选项，用于设置与无障碍功能相关的属性。取值为undefined时，则不使用后缀。 <br/>默认值：null |
+| content | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md)<br/>ArkTS-Sta: [ComponentContent\<T>](../js-apis-arkui-ComponentContent.md) \| undefined    | 是   | 自定义组件内容，用于定义滑动条后缀的可视化内容，该内容会显示在滑动条的结束位置。取值为undefined时，则不使用后缀。 |
+| options | ArkTS-Dyn: [SliderSuffixOptions](#slidersuffixoptions20)<br/>ArkTS-Sta: [SliderSuffixOptions](#slidersuffixoptions20) \| undefined | 否   | 滑动条后缀的配置选项，用于设置与无障碍功能相关的属性。取值为undefined时，则不使用后缀。 <br/>默认值：null |
 
 ### showSteps<sup>20+</sup>
 
@@ -753,9 +789,11 @@ ArkTS-Sta: showSteps(value: boolean | undefined, options?: SliderShowStepOptions
 
 当显示步长时，设置的刻度点无障碍文本信息生效。
 
-**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -836,9 +874,9 @@ attributeModifier(modifier: AttributeModifier\<SliderAttribute> | AttributeModif
 
 ## ColorMetricsLinearGradient<sup>23+</sup>
 
-滑轨轨道的线性渐变背景颜色。
+滑轨的线性渐变背景颜色。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -854,7 +892,7 @@ constructor(colorStops: ColorMetricsStop[])
 
 ColorMetricsLinearGradient的构造函数。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -868,9 +906,9 @@ ColorMetricsLinearGradient的构造函数。
 
 ## ColorMetricsStop<sup>23+</sup>
 
-线性渐变颜色断点类型，用于描述渐进色颜色断点。
+线性渐变颜色断点类型，用于描述渐变色颜色断点。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -889,7 +927,9 @@ ColorMetricsLinearGradient的构造函数。
 
 Slider前后缀组件无障碍信息参数。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -908,7 +948,9 @@ Slider前后缀组件无障碍信息参数。
 
 Slider前缀组件无障碍信息参数。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -922,7 +964,9 @@ Slider前缀组件无障碍信息参数。
 
 Slider后缀组件无障碍信息参数。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -936,7 +980,9 @@ Slider后缀组件无障碍信息参数。
 
 Slider刻度点的无障碍文本信息。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -954,7 +1000,9 @@ Slider刻度点的无障碍文本信息。
 
 Slider刻度点的无障碍文本信息映射集。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -972,7 +1020,9 @@ Slider刻度点的无障碍文本信息映射集。
 
 Slider组件滑块形状参数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -990,7 +1040,9 @@ Slider组件滑块形状参数。
 
 Slider组件滑块形状枚举。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1008,7 +1060,9 @@ Slider组件滑块形状枚举。
 
 用户与滑动条组件交互方式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1024,9 +1078,11 @@ Slider组件滑块形状枚举。
 
 ## SlideRange<sup>12+</sup>对象说明
 
-定义SlideRange中使用的回调类型。
+设置有效滑动区间的参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1063,9 +1119,9 @@ Begin和End状态当手势点击时都会触发，Moving和Click状态当value�
 
 当连贯动作为拖动动作时，不触发Click状态。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1083,9 +1139,9 @@ Begin和End状态当手势点击时都会触发，Moving和Click状态当value�
 
 滑块的状态值。包括按下、拖动、离开以及点击滑动条使滑块位置时。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1100,7 +1156,9 @@ Begin和End状态当手势点击时都会触发，Moving和Click状态当value�
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt12对象说明)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1124,7 +1182,9 @@ ArkTS-Sta: type SliderTriggerChangeCallback = (value: double, mode: SliderChange
 
 定义SliderConfiguration中使用的回调类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

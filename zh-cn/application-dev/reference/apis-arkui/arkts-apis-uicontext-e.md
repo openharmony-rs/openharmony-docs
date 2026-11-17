@@ -9,7 +9,9 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## KeyboardAvoidMode<sup>11+</sup>
 
@@ -50,6 +52,8 @@
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **ArkTS-Dyn起始版本：** 14
 
 **ArkTS-Sta起始版本：** 23
@@ -60,7 +64,7 @@
 
 ## NodeRenderState<sup>20+</sup>
 
-组件的渲染状态。
+节点的渲染状态。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -68,7 +72,7 @@
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称 | 值 |说明 |
 | -------- | ------- | -------- |
@@ -85,7 +89,7 @@
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称   | 值   | 说明       |
 | ------ | ---- | ---------- |
@@ -102,20 +106,22 @@
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称   | 值   | 说明       |
 | ------ | ---- | ---------- |
 | TAP | 0 | 点击手势。 |
 | LONG_PRESS | 1 | 长按手势。 |
-| PAN  | 2 | 平移手势。 |
+| PAN | 2 | 平移手势。 |
 | PINCH | 3 | 捏合手势。 |
-| SWIPE | 4| 滑动手势。 |
-| ROTATION| 5 | 旋转手势。 |
+| SWIPE | 4 | 滑动手势。 |
+| ROTATION | 5 | 旋转手势。 |
 
 ## ResolveStrategy<sup>22+</sup>
 
 UIContext对象的解析策略。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -129,9 +135,9 @@ UIContext对象的解析策略。
 | ------ | ---- | ---------- |
 | CALLING_SCOPE | 0 | 获取调用作用域的UIContext。 |
 | LAST_FOCUS | 1 | 获取最近切换到获焦状态的UIContext。 |
-| MAX_INSTANCE_ID  | 2 | 获取实例ID最大的UIContext。 |
+| MAX_INSTANCE_ID | 2 | 获取实例ID最大的UIContext。 |
 | UNIQUE | 3 | 获取唯一UI实例的UIContext。 |
-| LAST_FOREGROUND | 4| 获取最近切换到前台状态的UIContext。 |
+| LAST_FOREGROUND | 4 | 获取最近切换到前台状态的UIContext。 |
 | UNDEFINED | 5 | 获取未定义调用作用域的UIContext。 |
 
 ## CustomKeyboardContinueFeature<sup>23+</sup>
@@ -146,7 +152,7 @@ UIContext对象的解析策略。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本：** 23
 
@@ -175,3 +181,21 @@ UIContext对象的解析策略。
 | ------ | ---- | ---------- |
 | KEEP_SELECTED_TEXT_ON_EXTERNAL_TOUCH | 0 | 触摸到文本组件外部时，保留文本选中和手柄。 |
 | CLEAR_SELECTED_TEXT_ON_EXTERNAL_TOUCH | 1 | 触摸到文本组件外部时，清除文本选中和手柄。 |
+
+## NodeSensitiveInputEventType
+
+定义可通过节点敏感输入监听器上报的输入事件类型。事件对象由[NodeSensitiveInputInfo](arkts-apis-uicontext-i.md#nodesensitiveinputinfo)中与该类型匹配的成员字段承载。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| TOUCH | 0 | 上报的事件为触摸事件，事件对象由[NodeSensitiveInputInfo](arkts-apis-uicontext-i.md#nodesensitiveinputinfo)的touchEvent字段承载。 |
+| MOUSE | 1 | 上报的事件为鼠标事件，事件对象由[NodeSensitiveInputInfo](arkts-apis-uicontext-i.md#nodesensitiveinputinfo)的mouseEvent字段承载。 |
+| KEY | 2 | 上报的事件为按键事件，事件对象由[NodeSensitiveInputInfo](arkts-apis-uicontext-i.md#nodesensitiveinputinfo)的keyEvent字段承载。 |

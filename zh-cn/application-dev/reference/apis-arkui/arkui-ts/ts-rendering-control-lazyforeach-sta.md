@@ -1,8 +1,16 @@
 # LazyForEach (ArkTS-Sta)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @maorh-->
+<!--Designer: @keerecles-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
-> **说明**
+> **说明：**
 >
 > - 本模块仅适用于ArkTS-Sta。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
@@ -33,11 +41,31 @@ LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程
 | dataSource    | [IDataSource](#idatasource)                       | 是   | LazyForEach数据源，需要开发者实现相关接口。                  |
 | itemGenerator | (item: T, index: int)&nbsp;=&gt;&nbsp;void   | 是   | 子组件生成函数，为数组中的每一个数据项创建一个子组件。<br/>**说明：**<br/>- item是当前数据项，index是数据项索引值。<br/>- itemGenerator的函数体必须使用大括号{...}。<br />- itemGenerator每次迭代只能并且必须生成一个子组件。<br />- itemGenerator中可以使用if语句，但是必须保证if语句每个分支都会创建一个相同类型的子组件。 |
 | keyGenerator  | (item: T, index: int)&nbsp;=&gt;&nbsp;string | 否   | 键值生成函数，用于给数据源中的每一个数据项生成唯一且固定的键值。修改数据源中的一个数据项若不影响其生成的键值，则对应组件不会被更新，否则此处组件就会被重建更新。`keyGenerator`参数是可选的，但是，为了使开发框架能够更好地识别数组更改并正确更新组件，建议提供。<br/>**说明：**<br/>- item是当前数据项，index是数据项索引值。<br/>- 数据源中的每一个数据项生成的键值不能重复。<br/>- `keyGenerator`缺省时，使用默认的键值生成函数，即`(item: T, index: int) => { return viewId + '-' + index.toString(); }`，生成键值仅受索引值index影响。 |
+| options  | [LazyForEachOptions](#lazyforeachoptions)   | 否   | 开发者配置项，用于配置内存优化策略，以及绑定控制器。   |
 
-> **说明：** 
+> **说明：**
 >
 > 应避免在`keyGenerator`和`itemGenerator`函数中执行耗时操作，以减少应用滑动时卡顿丢帧问题，最佳实践请参考[主线程耗时操作优化-循环渲染](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-time-optimization-of-the-main-thread#section4551193714439)。
 > 避免使用JSON.stringify函数。在复杂的业务场景中，使用JSON.stringify会对item对象进行序列化，该过程会消耗大量时间与计算资源，从而降低页面性能，最佳实践请参考[懒加载优化性能-键值生成规则](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-lazyforeach-optimization#section68711519072)。
+
+## 属性
+
+### debugLine<sup>24+</sup>
+
+debugLine(sourceLine: string, moduleName?: string)
+
+设置组件源码重定向信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| sourceLine | string | 是 | 源码行号。 |
+| moduleName | string | 否 | 组件所属模块名。 |
 
 ## IDataSource
 
@@ -196,7 +224,7 @@ onDataChange(index: int): void
 
 ### onDatasetChange
 
-onDatasetChange(dataOperations: DataOperation[]): void
+onDatasetChange(dataOperations: Array\<DataOperation\>): void
 
 批量数据处理后，调用onDatasetChange接口，通知组件按照dataOperations刷新。
 
@@ -212,7 +240,7 @@ onDatasetChange(dataOperations: DataOperation[]): void
 
 | 参数名         | 类型                | 必填 | 说明               |
 | -------------- | ------------------- | ---- | ------------------ |
-| dataOperations | [DataOperation](#dataoperation)[] | 是   | 一次处理数据的操作。 |
+| dataOperations | Array\<[DataOperation](#dataoperation)\> | 是   | 一次处理数据的操作。 |
 
 ## DataOperation
 
@@ -481,4 +509,271 @@ class MyDataSource extends BasicDataSource {
 }
 
 // ...
+```
+
+## LazyForEachOptions
+
+LazyForEach的开发者配置项，用于配置内存优化策略，以及绑定控制器。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型                       | 只读 | 可选 | 说明            |
+| ------ | --------------- | ---- | ---- | ------- |
+| memoryOptimizationStrategy   | [LazyForEachMemOptStrategy](#lazyforeachmemoptstrategy) | 否 | 是   | LazyForEach的内存优化策略。该参数在创建LazyForEach时设定，不支持动态修改。<br>默认值：DEFAULT |
+| controller   | [LazyForEachController](#lazyforeachcontroller) | 否 | 是   | 绑定到LazyForEach组件上的控制器。绑定后，需要清理缓存时可调用[clearCache](#clearcache)清理LazyForEach组件预加载的子组件。该控制器仅在创建LazyForEach时绑定，不支持动态修改。<br>默认值：undefined，即不绑定控制器。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## LazyForEachMemOptStrategy
+
+LazyForEach内存优化策略枚举。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| DEFAULT | 0 | 无内存优化策略。 |
+| ENABLE_AUTO_CACHE_OPTIMIZATION | 1 | 自动内存优化策略，当LazyForEach子节点内存占用较高时，建议使用此策略以降低内存使用量。<br>当应用退后台时、LazyForEach所在组件不可见时（[visibility](./ts-universal-attributes-visibility.md#visibility)属性设置为Visible以外的值，或组件面积为0，不考虑遮挡）、整机低内存时（[MemoryLevel](../../apis-ability-kit/js-apis-app-ability-abilityConstant.md#memorylevel)达到MEMORY_LEVEL_LOW或MEMORY_LEVEL_CRITICAL），释放LazyForEach预加载区域的所有子节点。<br>当应用恢复前台、LazyForEach组件恢复显示时，列表滑动时恢复预加载区域的节点。 |
+
+**示例：**
+
+```ts
+import { Entry, Component, Column, Text, List, ListItem, LazyForEach, LazyForEachMemOptStrategy, IDataSource, DataChangeListener, Button, ClickEvent } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+class BasicDataSource implements IDataSource<string> { // IDataSource强制要求声明<T>类型
+  private listeners: Array<DataChangeListener> = [];
+  private originDataArray: Array<string> = [];
+
+  public totalCount(): int {
+    return this.originDataArray.length;
+  }
+
+  public getData(index: int): string {
+    return this.originDataArray[index];
+  }
+
+  notifyDataChange(index: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    })
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+}
+
+class TestDataSource extends BasicDataSource {
+  private dataArray: Array<string> = [];
+
+  public totalCount(): int {
+    return this.dataArray.length;
+  }
+
+  public getData(index: int): string {
+    return this.dataArray[index];
+  }
+
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+  }
+
+  public changeData(index: int, data: string): void {
+    this.dataArray[index] = data;
+    this.notifyDataChange(index);
+  }
+}
+
+@Entry
+@Component
+struct LazyForEachPage {
+  @State data: TestDataSource = new TestDataSource();
+
+  aboutToAppear() {
+    for (let i = 0; i < 5000; i++) {
+      this.data.pushData(`lazy ${i}`);
+    }
+  }
+
+  build() {
+    Column() {
+      List() {
+        LazyForEach(this.data, (item: string, index: int) => {
+          ListItem() {
+            Text(item)
+          }
+        }, (item: string, index: int) => `__${item}`,
+        {memoryOptimizationStrategy: LazyForEachMemOptStrategy.ENABLE_AUTO_CACHE_OPTIMIZATION}) // 配置LazyForEach的内存优化策略，将自动优化内存
+      }.height('50%')
+    }
+  }
+}
+```
+
+## LazyForEachController
+
+LazyForEach组件的控制器。通过[LazyForEachOptions](#lazyforeachoptions)中的controller字段将控制器绑定到LazyForEach组件上，需要清理缓存时调用[clearCache](#clearcache)清理LazyForEach组件预加载的子组件。
+
+> **说明：**
+>
+> 1. controller仅在LazyForEach创建时绑定，不支持动态修改。
+> 2. 一个控制器只能控制一个LazyForEach组件。若将控制器绑定到另一个LazyForEach，则之前的绑定自动失效，控制器仅控制最后绑定的组件。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### constructor
+
+constructor()
+
+LazyForEachController的构造函数。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### clearCache
+
+clearCache(): void
+
+清理该控制器绑定的LazyForEach组件预加载的子组件。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**示例：**
+
+以下示例中，通过[LazyForEachOptions](#lazyforeachoptions)的controller属性绑定了[LazyForEachController](#lazyforeachcontroller)，点击Clear按钮时主动清理LazyForEach预加载的子组件。
+
+从API版本26.1.0开始，LazyForEachOptions新增controller属性。
+
+```ts
+import { Entry, Component, Column, Text, List, ListItem, LazyForEach, LazyForEachController, IDataSource, DataChangeListener, Button, ClickEvent } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+class BasicDataSource implements IDataSource<string> {
+  private listeners: Array<DataChangeListener> = [];
+  private originDataArray: Array<string> = [];
+
+  public totalCount(): int {
+    return this.originDataArray.length;
+  }
+
+  public getData(index: int): string {
+    return this.originDataArray[index];
+  }
+
+  notifyDataChange(index: int): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    })
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      this.listeners.push(listener);
+    }
+  }
+
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      this.listeners.splice(pos, 1);
+    }
+  }
+}
+
+class TestDataSource extends BasicDataSource {
+  private dataArray: Array<string> = [];
+
+  public totalCount(): int {
+    return this.dataArray.length;
+  }
+
+  public getData(index: int): string {
+    return this.dataArray[index];
+  }
+
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+  }
+}
+
+@Component
+struct ChildComponent {
+  @State label: string = '';
+  aboutToAppear() {
+    console.info(`ChildComponent [${this.label}] aboutToAppear`);
+  }
+  aboutToDisappear() {
+    console.info(`ChildComponent [${this.label}] aboutToDisappear`);
+  }
+  aboutToRecycle() {
+    console.info(`ChildComponent [${this.label}] aboutToRecycle`);
+  }
+  aboutToReuse() {
+    console.info(`ChildComponent [${this.label}] aboutToReuse`);
+  }
+ 
+  build() {
+    Text(`ChildComponent: ${this.label}`)
+  }
+}
+
+@Entry
+@Component
+struct ClearCacheDemo {
+  @State data: TestDataSource = new TestDataSource();
+  // 创建LazyForEachController对象
+  private controller: LazyForEachController = new LazyForEachController();
+
+  aboutToAppear() {
+    for (let i = 0; i < 100; i++) {
+      this.data.pushData(`item ${i}`);
+    }
+  }
+
+  build() {
+    Column() {
+      List() {
+        LazyForEach(this.data, (item: string, index: int) => {
+          ListItem() {
+            ChildComponent({ label: item })
+          }
+        }, (item: string, index: int) => item,
+        { controller: this.controller }) // 通过LazyForEachOptions的controller字段绑定控制器
+      }.height('80%')
+
+      Button('Clear')
+        .onClick((e: ClickEvent) => {
+          // 主动清理LazyForEach预加载的子组件
+          this.controller.clearCache();
+        })
+    }
+  }
+}
 ```

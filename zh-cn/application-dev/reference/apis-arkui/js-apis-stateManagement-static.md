@@ -230,13 +230,13 @@ static connect\<T extends object\>(ttype: Class, defaultCreator?: StorageDefault
 > **说明：**
 >
 >
-> 1、ttype使用Class.from\<classname\>()方法获得。
+> 1. ttype使用Class.from\<classname\>()方法获得。
 >
-> 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
+> 2. 确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
 >
-> 3、PersistenceV2中存储的key为ttype的name，例如，如果传入Info类的实例，此处存储的key即为Info。
+> 3. PersistenceV2中存储的key为ttype的name，例如，如果传入Info类的实例，此处存储的key即为Info。
 >
-> 4、当不传入connectOptions或设置connectOptions.enableAutoSave为true时（connectOptions.enableAutoSave默认值为true），此时修改@ObservedV2装饰的class的实例，会自动存储修改。否则，需要调用save接口手动存储。
+> 4. 当不传入connectOptions或设置connectOptions.enableAutoSave为true时（connectOptions.enableAutoSave默认值为true），此时修改@ObservedV2装饰的class的实例，会自动存储修改。否则，需要调用save接口手动存储。
 
 **示例：**
 
@@ -292,13 +292,13 @@ static connect\<T extends object\>(ttype: Class, key: string, defaultCreator?: S
 
 > **说明：**
 >
-> 1、ttype使用Class.from\<classname\>()方法获得。
+> 1. ttype使用Class.from\<classname\>()方法获得。
 >
-> 2、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
+> 2. 确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
 >
-> 3、key建议使用有意义的值，长度不超过255，使用非法字符或空字符的行为是未定义的。
+> 3. key建议使用有意义的值，长度不超过255，使用非法字符或空字符的行为是未定义的。
 >
-> 4、当不传入connectOptions或设置connectOptions.enableAutoSave为true时（connectOptions.enableAutoSave默认值为true），此时修改@ObservedV2装饰的class的实例，会自动存储修改。否则，需要调用save接口手动存储。
+> 4. 当不传入connectOptions或设置connectOptions.enableAutoSave为true时（connectOptions.enableAutoSave默认值为true），此时修改@ObservedV2装饰的class的实例，会自动存储修改。否则，需要调用save接口手动存储。
 
 **示例：**
 
@@ -354,21 +354,21 @@ static globalConnect\<T extends object\>(connectOptions: ConnectOptions\<T\>): T
 > **说明：**
 >
 >
-> 1、确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
+> 1. 确保数据已经存储在PersistenceV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
 >
-> 2、同一个key，globalConnect不同类型的数据会导致应用异常，应用需要确保类型匹配。
+> 2. 同一个key，globalConnect不同类型的数据会导致应用异常，应用需要确保类型匹配。
 >
-> 3、key建议使用有意义的值，可由字母、数字、下划线组成，长度不超过255，使用非法字符或空字符的行为是未定义的。
+> 3. key建议使用有意义的值，可由字母、数字、下划线组成，长度不超过255，使用非法字符或空字符的行为是未定义的。
 >
-> 4、关联[\@Observed](../../ui/state-management-static/arkts-static-observed-and-objectlink.md)对象时，因为该类型的name属性未定义，需要指定key或者自定义name属性。
+> 4. 关联[\@Observed](../../ui/state-management-static/arkts-static-observed-and-objectlink.md)对象时，因为该类型的name属性未定义，需要指定key或者自定义name属性。
 >
-> 4、数据的存储路径为应用级别，不同module使用相同的key和相同的加密分区进行globalConnect，存储的数据副本应用仅有一份。
+> 5. 数据的存储路径为应用级别，不同module使用相同的key和相同的加密分区进行globalConnect，存储的数据副本应用仅有一份。
 >
-> 5、globalConnect使用同一个key但设置了不同的加密级别，数据为第一个使用globalConnect的加密级别，并且PersistenceV2中的数据也会存入最先使用key的加密级别。
+> 6. globalConnect使用同一个key但设置了不同的加密级别，数据为第一个使用globalConnect的加密级别，并且PersistenceV2中的数据也会存入最先使用key的加密级别。
 >
-> 6、connect和globalConnect不建议混用，因为数据副本路径不同，如果混用，则key必须不一致，否则会运行时报错。
+> 7. connect和globalConnect不建议混用，因为数据副本路径不同，如果混用，则key必须不一致，否则会运行时报错。
 >
-> 7、EL5加密要想生效，需要开发者在module.json中配置字段ohos.permission.PROTECT_SCREEN_LOCK_DATA，使用说明见[声明权限](../../security/AccessToken/declare-permissions.md)。
+> 8. EL5加密要想生效，需要开发者在module.json中配置字段ohos.permission.PROTECT_SCREEN_LOCK_DATA，使用说明见[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 **示例：**
 仅供开发者了解globalConnect用法，完整使用需开发者自己写出@Entry组件。
@@ -611,6 +611,33 @@ struct Index {
 }
 ```
 
+## StorageDefaultSubCreators
+
+type StorageDefaultSubCreators = Map\<Class, StorageDefaultCreator\<object\>\>
+
+保存对象类型及其默认构造器的Map。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+'use static'
+
+import { StorageDefaultSubCreators, ObservedV2, Trace } from '@kit.ArkUI';
+@ObservedV2
+class Info {
+  @Trace age: int = 25;
+  @Trace name: string = 'Tom';
+}
+const creators: StorageDefaultSubCreators = new StorageDefaultSubCreators([
+  [ Class.from<Info>(), () => new Info() ]
+]);
+```
 
 ## ConnectOptions
 
@@ -631,6 +658,7 @@ globalConnect参数类型。
 | toJson         | [ToJSONType\<T\>](./arkui-ts/ts-state-management-Static.md#tojsontypet)      | 否 | 是   | 转换存储对象到JSON格式对象的函数。                      |
 | fromJson       | [FromJSONType\<T\>](./arkui-ts/ts-state-management-Static.md#fromjsontypet)  | 否 | 是   | 转换JSON格式对象到存储对象的函数。 |
 | enableAutoSave       | boolean   | 否   | 是   | 是否自动持久化存储数据，默认值为true。 |
+| defaultSubCreators | [StorageDefaultSubCreators](#storagedefaultsubcreators) | 否 | 是 | 保存对象类型及其默认构造器的Map。用于恢复内层对象数据。默认值为undefined。 |
 
 ## BaseConnectOptions
 
@@ -1712,13 +1740,164 @@ function CustomButton(mutableParam1: MutableBinding<number>, mutableParam2: Muta
 
 ## CustomComponentContext
 
-自定义组件的上下文信息。
+自定义组件的上下文信息。通过[UIUtils.getCustomComponentContext](#getcustomcomponentcontext)获取实例，开发者请勿自行实现或重写该接口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
+
+## getReusePool
+
+getReusePool(): IReusePool | undefined
+
+返回该自定义组件拥有的全局复用池。如果组件或其上层组件没有通过`reusePool`和`poolAccepts`配置复用池，则返回`undefined`。配置全局复用池方式请参考[全局复用开发指南](../../../application-dev/ui/state-management/arkts-global-reuse-pool.md)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型                                   |  说明                          |
+| -------------------------------------- | ------------------------------------------------ |
+| [IReusePool](#ireusepool) \| undefined | 当前组件配置全局复用池时，返回复用池信息，否则返回`undefined`。 |
+
+**示例：**
+
+```ts
+'use static'
+import { UIUtils, ReusableV2, ComponentV2, Text, Entry, Column, Button, ReusePoolOwnership } from '@kit.ArkUI';
+
+// 使用@ReusableV2装饰器标记可复用子组件
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  build() {
+    Text('ReusableChild')
+  }
+}
+
+// 配置全局复用池为每个实例独占，并接受ReusableChild类型的可复用组件
+@Entry
+@ComponentV2({ reusePool: ReusePoolOwnership.PER_INSTANCE, poolAccepts: ['ReusableChild'] })
+struct PoolOwner {
+  checkPool() {
+    const context = UIUtils.getCustomComponentContext(this);
+    // 从上下文中获取自定义组件复用池
+    const pool = context.getReusePool();
+    if (pool) {
+      console.info('Global reuse pool configured.');
+    } else {
+      console.info('No global reuse pool configured.');
+    }
+  }
+
+  build() {
+    Column() {
+      ReusableChild()
+      Button('Check Pool')
+        .onClick(() => {
+          // 点击按钮时调用检查复用池的方法
+          this.checkPool();
+        })
+    }
+  }
+}
+```
+
+## getDefaultReusePool
+
+getDefaultReusePool() : IDefaultReusePool | undefined
+
+返回该自定义组件拥有的默认复用池。与[getReusePool](#getreusepool)返回的全局复用池不同，默认复用池用于缓存该组件回收的直接子组件，无需开发者配置。当组件存在默认复用池时返回默认复用池，否则返回`undefined`。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [IDefaultReusePool](#idefaultreusepool) \| undefined | 当前组件存在默认复用池时，返回默认复用池，否则返回`undefined`。 |
+
+**示例：**
+
+以下示例中，点击Recycle child按钮可将自定义组件回收进默认复用池，点击Clear按钮可释放默认复用池中的组件。
+
+```ts
+'use static'
+import { UIUtils, ReusableV2, ComponentV2, Param, Local, Entry, Column, Text, Button } from '@kit.ArkUI';
+
+// 使用@ReusableV2装饰器标记可复用子组件
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  @Param label: string = '';
+  aboutToAppear() {
+    console.info(`ReusableChild [${this.label}] aboutToAppear`);
+  }
+  aboutToDisappear() {
+    console.info(`ReusableChild [${this.label}] aboutToDisappear`);
+  }
+  aboutToRecycle() {
+    console.info(`ReusableChild [${this.label}] aboutToRecycle`);
+  }
+  aboutToReuse() {
+    console.info(`ReusableChild [${this.label}] aboutToReuse`);
+  }
+
+  build() {
+    Text(`ReusableChild: ${this.label}`)
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local showChild: boolean = true;
+
+  clearDefaultPool() {
+    // 获取当前组件的默认复用池
+    const pool = UIUtils.getCustomComponentContext(this).getDefaultReusePool();
+    if (!pool) {
+      console.info('No default reuse pool available.');
+      return;
+    }
+    // 清理默认复用池中的全部组件
+    pool.clearCache();
+    // 也可以仅清理reuseId为'A'的组件
+    // pool.clearCache('A');
+  }
+
+  build() {
+    Column() {
+      if (this.showChild) {
+        ReusableChild({ label: 'A' })
+          .reuse({ reuseId: () => 'A' })
+      }
+      Button('Recycle child')
+        .onClick(() => {
+          // 切换if分支，触发子组件回收
+          this.showChild = false;
+        })
+      Button('Clear')
+        .onClick(() => {
+          // 主动清理复用池
+          this.clearDefaultPool();
+        })
+    }
+  }
+}
+```
 
 ## ObservedArray\<T\>
 
@@ -2138,4 +2317,433 @@ import { ObservedDate } from '@kit.ArkUI';
 
 let date2 = new ObservedDate('2021-08-08');
 let date3 = new ObservedDate(new Date('2021-08-08'));
+```
+
+## IReusePool
+
+`IReusePool` 接口提供自定义组件上的全局复用池的相关功能。通过[CustomComponentContext.getReusePool](#getreusepool)获取实例，开发者请勿自行实现或重写该接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+## getReusableInfo
+
+getReusableInfo(constructor: Class, reuseId?: string): IReusableInfo[] | IReusableInfo | undefined
+
+检索此复用池中给定可复用组件类型的回收实例信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名        | 类型                                 | 必填 |  说明            |
+| ------------ | ------------------------------------ | ---- | --------------------------------------------------------------------------------------------------------------------------- |
+| constructor  | Class    | 是   | 要查询的可复用自定义组件的类型。|
+| reuseId      | string   | 否   | 可选的reuseId用于过滤结果。如果指定，则仅返回此特定reuseId复用池的信息。默认值是undefined，返回所有reuseId复用池信息。   |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [IReusableInfo](#ireusableinfo)[] \| [IReusableInfo](#ireusableinfo) \| undefined | 如果此复用池未配置为接受给定的组件类型，则返回`undefined`。<br>如果将`reuseId`指定为参数，则返回单个`IReusableInfo`（即使计数为0且maxCount为默认值）。<br>如果未指定`reuseId`参数且复用组件在创建时未使用reuseId，则返回单个`IReusableInfo`。<br>如果未指定`reuseId`参数但复用组件在创建时使用了reuseId，则返回一个`Array<IReusableInfo>`，为每个具有正计数或非默认maxCount的reuseId提供单独的条目，外加一个`reuseId: undefined`的条目。 |
+
+**示例：**
+
+```ts
+'use static'
+import { UIUtils, IReusableInfo, ReusableV2, ComponentV2, Text,
+         Entry, Local, Column, Button } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  aboutToRecycle() {
+    console.info('ReusableChild aboutToRecycle');
+  }
+  aboutToReuse() {
+    console.info('ReusableChild aboutToReuse');
+  }
+
+  build() {
+    Text('ReusableChild')
+  }
+}
+
+@Entry
+@ComponentV2({ reusePool: ReusePoolOwnership.PER_INSTANCE, poolAccepts: ['ReusableChild'] })
+struct PoolOwner {
+  @Local showChild: boolean = true;
+
+  inspectPool() {
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
+    if (!pool) {
+      return;
+    }
+
+    // 查询池接受的组件类型。
+    const info = pool.getReusableInfo(Class.from<ReusableChild>());
+    if (info === undefined) {
+      console.info('No reuse pool that accepts ReusableChild');
+    } else if (Array.isArray(info)) {
+      // 使用了多个 reuseId 桶。
+      (info as IReusableInfo[]).forEach((item: IReusableInfo, i: int) => {
+        console.info(`[${i}] reuseId=${item.reuseId}, count=${item.count}, maxCount=${item.maxCount}`);
+      });
+    } else {
+      // 单个条目（未使用 reuseId，或查询了特定的 reuseId）。
+      console.info(`count=${(info as IReusableInfo).count}, maxCount=${(info as IReusableInfo).maxCount}`);
+    }
+
+    // 查询特定的 reuseId — 始终返回单个 IReusableInfo。
+    const bucketInfo = pool.getReusableInfo(Class.from<ReusableChild>(), 'A') as IReusableInfo;
+    console.info(`reuseId 'A': count=${bucketInfo.count}, maxCount=${bucketInfo.maxCount}`);
+  }
+
+  build() {
+    Column() {
+      Button('切换子组件')
+        .onClick(() => {
+          this.showChild = !this.showChild;
+        })
+      Button('检查池')
+        .onClick(() => this.inspectPool())
+      if (this.showChild) {
+        ReusableChild()
+          .reuse({ reuseId: () => 'A' })
+      }
+    }
+  }
+}
+```
+
+### preRender
+
+preRender(builder: WrappedBuilder\<CustomBuilder\>, times: int): Promise\<void\>
+
+调用空闲任务以预创建可复用组件并在首次使用前将其放入复用池。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名  | 类型                 | 必填 |  说明                            |
+| ------- | -------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------- |
+| builder | [WrappedBuilder](../../ui/state-management/arkts-wrapBuilder.md)\<[CustomBuilderT](./arkui-ts/ts-types.md#custombuildertt23) | 是  | 包含要执行`times`次的@Builder函数的 `WrappedBuilder`。每次执行应创建一个或多个[@Reusable](../../ui/state-management/arkts-create-custom-components.md#reusable)/[@ReusableV2](../../ui/state-management/arkts-create-custom-components.md#reusablev2)组件。 |
+| times   | int               | 是   | 执行@Builder函数的次数。                                                                                                          |
+
+**返回值：**
+
+| 类型 | 说明  |
+| --------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Promise\<void\> | 当空闲任务成功完成时解析的Promise。Promise对象无返回结果。|
+
+> **说明：**
+>
+> 1. `preRender`仅将池配置为接受的组件放入池中。预渲染池不接受的组件会立即创建并销毁。
+>
+> 2. 预渲染期间不会从池中复用组件；池仅接受新创建的实例。
+>
+> 3. @Builder函数执行完整的深度渲染，包括嵌套的子组件。
+
+**示例：**
+
+```ts
+'use static'
+import { UIUtils, ReusableV2, ComponentV2, Param, Require, Local, Column, Text, Entry,
+         ReusePoolOwnership, WrappedBuilder, Builder, IReusableInfo, ColumnOptions, Button } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableComponent {
+  @Param param: number = 8;
+
+  aboutToAppear() {
+    console.info('ReusableComponent aboutToAppear');
+  }
+  aboutToReuse() {
+    console.info('ReusableComponent aboutToReuse');
+  }
+
+  build() {
+    Column() {
+      Text(`ReusableComponent ${this.param}`)
+    }
+  }
+}
+
+@Builder 
+function preRenderBuilder() {
+  ReusableComponent()
+}
+
+@Entry
+@ComponentV2({ reusePool: ReusePoolOwnership.SHARED, poolAccepts: ['ReusableComponent'] })
+struct Index {
+  @Local onUIFullyLoaded: boolean = false;
+
+  aboutToAppear() {
+    // 获取池并调度预渲染。
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
+    pool!.preRender(new WrappedBuilder<@Builder () => void>(preRenderBuilder), 1)
+      .then(() => {
+        console.info('ReusableComponent preRender completes');
+      });
+  }
+
+  checkPool() {
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
+    const reusableInfo: IReusableInfo = pool!.getReusableInfo(Class.from<ReusableComponent>()) as IReusableInfo;
+    console.info(`ReusableComponent reuse pool count=${reusableInfo.count}`);
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button('Switch')
+        .onClick(() => {
+          this.onUIFullyLoaded = !this.onUIFullyLoaded;
+        })
+        .width(100)
+      Button('Check pool')
+        .onClick(() => {
+          this.checkPool();
+        })
+        .width(100)
+      CompA({ showFullUI: this.onUIFullyLoaded })
+    }
+    .width('100%')
+  }
+}
+
+@ComponentV2
+struct CompA {
+  @Require @Param showFullUI: boolean;
+
+  build() {
+    if (this.showFullUI) {
+      ReusableComponent()
+    }
+  }
+}
+```
+
+## IDefaultReusePool
+
+`IDefaultReusePool`接口提供自定义组件上的默认复用池的相关功能，包括清理复用池中的组件。通过[CustomComponentContext.getDefaultReusePool](#getdefaultreusepool)获取实例，开发者请勿自行实现或重写该接口。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### clearCache
+
+clearCache(reuseId?: string): void
+
+清理复用池中的组件。指定`reuseId`时，仅清理该`reuseId`对应的可复用自定义组件；未指定时，清理复用池中的全部组件。
+
+> **说明：**
+>
+> 1. 已从复用池中取出、正参与复用的组件不受影响。
+> 2. 传入不存在或空字符串的`reuseId`时，本次调用不产生效果。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | -------- |
+| reuseId | string | 否   | 需要清理的复用池中可复用自定义组件的复用标识ID。<br>默认值：undefined，即清理复用池中的全部组件。 |
+
+**示例：**
+
+以下示例中，点击Recycle A按钮或Recycle B按钮可将自定义组件回收进默认复用池，点击Clear All按钮可释放默认复用池中的所有组件，点击Clear A按钮可释放默认复用池中reuseId为A的组件。
+
+```ts
+'use static'
+import { UIUtils, ReusableV2, ComponentV2, Param, Local, Entry, Column, Text, Button } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  @Param label: string = '';
+  aboutToAppear() {
+    console.info(`ReusableChild [${this.label}] aboutToAppear`);
+  }
+  aboutToDisappear() {
+    console.info(`ReusableChild [${this.label}] aboutToDisappear`);
+  }
+  aboutToRecycle() {
+    console.info(`ReusableChild [${this.label}] aboutToRecycle`);
+  }
+  aboutToReuse() {
+    console.info(`ReusableChild [${this.label}] aboutToReuse`);
+  }
+
+  build() {
+    Text(`ReusableChild: ${this.label}`)
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local showA: boolean = true;
+  @Local showB: boolean = true;
+
+  build() {
+    Column() {
+      if (this.showA) {
+        ReusableChild({ label: 'A' })
+          .reuse({ reuseId: () => 'A' })
+      }
+      if (this.showB) {
+        ReusableChild({ label: 'B' })
+          .reuse({ reuseId: () => 'B' })
+      }
+      Button('Recycle A')
+        .onClick(() => {
+          // 切换if分支，触发子组件回收
+          this.showA = false;
+        })
+      Button('Recycle B')
+        .onClick(() => {
+          // 切换if分支，触发子组件回收
+          this.showB = false;
+        })
+      Button('Clear All')
+        .onClick(() => {
+          // 清理默认复用池中的全部组件
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache();
+        })
+      Button('Clear A')
+        .onClick(() => {
+          // 仅清理reuseId为'A'的组件
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool()?.clearCache('A');
+        })
+    }
+  }
+}
+```
+
+## IReusableInfo
+
+`IReusableInfo`接口提供有关复用池管理的可复用组件的当前数量和数量上限的信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+### 属性
+
+| 名称     | 类型   | 只读 | 可选 |  说明                               |
+| -------- | ------ | ---- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| count    | int | 是   | 否   | 池中当前回收的组件数。如果设置了`reuseId`，则`count`指的是具有此特定reuseId的组件数。                                   |
+| maxCount | int | 否   | 否   | 池中允许的最大回收组件数。如果设置了`reuseId`，则`maxCount`指的是具有此特定reuseId的组件数。将此设置为小于当前`count`的值会导致框架异步清除多余组件。在延迟期间，`count`可能暂时超过`maxCount`。默认值：100，最大值：200。 |
+| reuseId  | string | 是   | 是   | 回收组件时指定的reuseId。如果组件没有使用reuseId回收，则此属性为`undefined`。                                 |
+
+**示例：**
+
+```ts
+'use static'
+import { UIUtils, IReusableInfo, ReusableV2, ComponentV2, Param, Text,
+         Entry, Local, Column, Button } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct TestChild {
+  @Param label: string = '';
+  aboutToAppear() {
+    console.info(`TestChild [${this.label}] aboutToAppear`);
+  }
+  aboutToReuse() {
+    console.info(`TestChild [${this.label}] aboutToReuse`);
+  }
+  aboutToRecycle() {
+    console.info(`TestChild [${this.label}] aboutToRecycle`);
+  }
+  aboutToDisappear() {
+    console.info(`TestChild [${this.label}] aboutToDisappear`);
+  }
+
+  build() {
+    Text(`子组件: ${this.label}`)
+  }
+}
+
+@Entry
+@ComponentV2({ reusePool: ReusePoolOwnership.PER_INSTANCE, poolAccepts: ['TestChild'] })
+struct PoolOwner {
+  @Local showA: boolean = true;
+  @Local showB: boolean = true;
+
+  controlPool() {
+    const pool = UIUtils.getCustomComponentContext(this).getReusePool();
+    if (!pool) {
+      return;
+    }
+
+    // 查询所有回收的 TestChild 实例。
+    const info = pool.getReusableInfo(Class.from<TestChild>());
+    if (info && !Array.isArray(info)) {
+      console.info(`TestChild: count=${(info as IReusableInfo).count}, maxCount=${(info as IReusableInfo).maxCount}`);
+      // 将缓存限制为 5 个组件。
+      (info as IReusableInfo).maxCount = 5;
+    }
+
+    // 通过将 maxCount 设置为 0 来清除特定的 reuseId 桶。
+    const bucketB = pool.getReusableInfo(Class.from<TestChild>(), 'B') as IReusableInfo;
+    if (bucketB) {
+      bucketB.maxCount = 0; // 仅驱逐 'B' reuseId 桶。
+    }
+  }
+
+  build() {
+    Column() {
+      Button('切换A')
+        .onClick(() => {
+          this.showA = !this.showA;
+        })
+      Button('切换B')
+        .onClick(() => {
+          this.showB = !this.showB;
+        })
+      Button('控制池')
+        .onClick(() => this.controlPool())
+      if (this.showA) {
+        TestChild({ label: 'A' })
+          .reuse({ reuseId: () => 'A' })
+      }
+      if (this.showB) {
+        TestChild({ label: 'B' })
+          .reuse({ reuseId: () => 'B' })
+      }
+    }
+  }
+}
 ```

@@ -30,7 +30,7 @@ import { distributedKVStore } from '@kit.ArkData';
 
 ## SingleKVStore
 
-SingleKVStore数据库实例，提供增加数据、删除数据和订阅数据变更、订阅数据同步完成的方法。
+SingleKVStore数据库实例，提供增加数据、删除数据、订阅数据变更和订阅数据同步完成的方法。
 
 在调用SingleKVStore的方法前，需要先通过[getKVStore](js-apis-distributedKVStore.md#getkvstore)构建一个SingleKVStore实例。
 
@@ -38,7 +38,7 @@ SingleKVStore数据库实例，提供增加数据、删除数据和订阅数据�
 
 putBatch(value: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-将值写入SingleKVStore数据库，使用callback异步回调。
+批量写入键值对数据，每个ValuesBucket对象包含key和value字段，使用callback异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -55,7 +55,7 @@ putBatch(value: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;void&gt;):
 | 参数名   | 类型                                                     | 必填 | 说明               |
 | -------- | ------------------------------------------------------------ | ---- | ------------------ |
 | value    | Array&lt;[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket)&gt; | 是   | 表示要插入的数据。 |
-| callback | AsyncCallback&lt;void&gt;                                     | 是   | 回调函数。         |
+| callback | AsyncCallback&lt;void&gt;                                     | 是   | 回调函数。成功时err为undefined，失败时err为错误对象。         |
 
 **错误码：**
 
@@ -63,8 +63,8 @@ putBatch(value: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;void&gt;):
 
 | **错误码ID** | **错误信息**                             |
 | ------------ | ---------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
+| 202          | Permission verification failed. A non-system application calls a system API. |
 | 15100003     | Database corrupted.                      |
 | 15100005     | Database or result set already closed.   |
 
@@ -72,7 +72,7 @@ putBatch(value: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;void&gt;):
 
 | **错误码ID** | **错误信息**                                 |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit. <br> 适用版本：10+ |
 
 **示例：**
 
@@ -81,20 +81,20 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { ValuesBucket } from '@kit.ArkData';
 
 try {
-  let bucket1: ValuesBucket = {key:"name", value: "LiSi"};
-  let bucket2: ValuesBucket = {key:"age", value: 20};
-  let bucket3: ValuesBucket = {key:"deposits", value: 12.34};
+  let bucket1: ValuesBucket = {key: 'name', value: 'LiSi'};
+  let bucket2: ValuesBucket = {key: 'age', value: 20};
+  let bucket3: ValuesBucket = {key: 'deposits', value: 12.34};
   let people: Array<ValuesBucket> = new Array(bucket1, bucket2, bucket3);
   kvStore.putBatch(people, (err: BusinessError) => {
-    if (err != undefined) {
-      console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting batch');
-  })
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to do putBatch error.code is ${error.code},message is ${error.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to do putBatch error. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -102,7 +102,7 @@ try {
 
 putBatch(value: Array&lt;ValuesBucket&gt;): Promise&lt;void&gt;
 
-将valuesbucket类型的值写入SingleKVStore数据库，使用Promise异步回调。
+批量写入键值对数据，每个ValuesBucket对象包含key和value字段，使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -132,8 +132,8 @@ putBatch(value: Array&lt;ValuesBucket&gt;): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                             |
 | ------------ | ---------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
+| 202          | Permission verification failed. A non-system application calls a system API. |
 | 15100003     | Database corrupted.                      |
 | 15100005     | Database or result set already closed.   |
 
@@ -141,7 +141,7 @@ putBatch(value: Array&lt;ValuesBucket&gt;): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                 |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit. <br> 适用版本：10+ |
 
 **示例：**
 
@@ -150,18 +150,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { ValuesBucket } from '@kit.ArkData';
 
 try {
-  let bucket1: ValuesBucket = {key:"name", value: "LiSi"};
-  let bucket2: ValuesBucket = {key:"age", value: 20};
-  let bucket3: ValuesBucket = {key:"deposits", value: 12.34};
+  let bucket1: ValuesBucket = {key: 'name', value: 'LiSi'};
+  let bucket2: ValuesBucket = {key: 'age', value: 20};
+  let bucket3: ValuesBucket = {key: 'deposits', value: 12.34};
   let people: Array<ValuesBucket> = new Array(bucket1, bucket2, bucket3);
   kvStore.putBatch(people).then(() => {
-    console.info(`Succeeded in putting patch`);
-  }).catch((err: BusinessError): void  => {
-    console.error(`Failed to do putBatch error.code is ${err.code},message is ${err.message}`);
+    console.info(`Succeeded in putting batch`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to do putBatch error. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to do putBatch error.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to do putBatch error. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -194,7 +194,7 @@ putValuesBuckets(value: Array&lt;ValuesBucket&gt;, callback: AsyncCallback&lt;vo
 
 | **错误码ID** | **错误信息**                             |
 | ------------ | ---------------------------------------- |
-| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 202          | Permission verification failed. A non-system application calls a system API. |
 | 15100003     | Database corrupted.                      |
 | 15100005     | Database or result set already closed.   |
 
@@ -211,20 +211,20 @@ import { BusinessError } from "@ohos.base"
 import { ValuesBucket } from '@kit.ArkData';
 
 try {
-  let bucket1: ValuesBucket = {"key":"name", "value": "LiSi"};
-  let bucket2: ValuesBucket = {"key":"age", "value": Number(20)};
-  let bucket3: ValuesBucket = {"key":"deposits", "value": 12.34};
+  let bucket1: ValuesBucket = {key: 'name', value: 'LiSi'};
+  let bucket2: ValuesBucket = {key: 'age', value: 20};
+  let bucket3: ValuesBucket = {key: 'deposits', value: 12.34};
   let people: Array<ValuesBucket> = [bucket1, bucket2, bucket3];
   kvStore!.putValuesBuckets(people, (err: BusinessError | null) => {
-    if (err != undefined) {
-      console.error(`Failed to put batch.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to put batch. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in putting batch');
-  })
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to do putValuesBuckets error.code is ${error.code},message is ${error.message}`);
+  });
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to do putValuesBuckets error. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -262,7 +262,7 @@ putValuesBuckets(value: Array&lt;ValuesBucket&gt;): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                             |
 | ------------ | ---------------------------------------- |
-| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 202          | Permission verification failed. A non-system application calls a system API. |
 | 15100003     | Database corrupted.                      |
 | 15100005     | Database or result set already closed.   |
 
@@ -279,18 +279,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { ValuesBucket } from '@kit.ArkData';
 
 try {
-  let bucket1: ValuesBucket = {"key":"name", "value": "LiSi"};
-  let bucket2: ValuesBucket = {"key":"age", "value": Number(20)};
-  let bucket3: ValuesBucket = {"key":"deposits", "value": 12.34};
+  let bucket1: ValuesBucket = {key: 'name', value: 'LiSi'};
+  let bucket2: ValuesBucket = {key: 'age', value: 20};
+  let bucket3: ValuesBucket = {key: 'deposits', value: 12.34};
   let people: Array<ValuesBucket> = [bucket1, bucket2, bucket3];
   kvStore!.putValuesBuckets(people).then(() => {
     console.info(`Succeeded in putting patch`);
   }).catch((err: BusinessError) :void => {
-    console.error(`Failed to do putValuesBuckets error.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to do putValuesBuckets error. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`Failed to do putValuesBuckets error.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to do putValuesBuckets error. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -314,25 +314,25 @@ delete(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallb
 
 | 参数名     | 类型                                                     | 必填 | 说明                                            |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，当此参数为null时，应定义处理逻辑。 |
-| callback   | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。                                      |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，不允许为null。 |
+| callback   | AsyncCallback&lt;void&gt;                                    | 是   | 回调函数。成功时err为undefined，失败时err为错误对象。                                      |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100003     | Database corrupted.                    |
-| 15100005    | Database or result set already closed. |
+| **错误码ID** | **错误信息**                                                                                                       |
+| ----------- |----------------------------------------------------------------------------------------------------------------|
+| 401         | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 202         | Permission verification failed. A non-system application calls a system API. |
+| 15100003    | Database corrupted.                                                                                            |
+| 15100005    | Database or result set already closed.                                                                         |
 
 以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                 |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit. <br> 适用版本：10+ |
 
 **示例：**
 
@@ -344,27 +344,27 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let predicates = new dataSharePredicates.DataSharePredicates();
-  let arr = ["name"];
+  let arr = ['name'];
   predicates.inKeys(arr);
-  kvStore.put("name", "bob", (err:BusinessError) => {
-    if (err != undefined) {
-      console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+  kvStore.put('name', 'bob', (err: BusinessError) => {
+    if (err) {
+      console.error(`Failed to put. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info("Succeeded in putting");
+    console.info('Succeeded in putting');
     if (kvStore != null) {
-      kvStore.delete(predicates, (err:BusinessError) => {
-        if (err == undefined) {
-          console.info('Succeeded in deleting');
+      kvStore.delete(predicates, (err: BusinessError) => {
+        if (err) {
+          console.error(`Failed to delete. Code: ${err.code}, message: ${err.message}`);
         } else {
-          console.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
+          console.info('Succeeded in deleting');
         }
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -377,27 +377,27 @@ import { BusinessError } from "@ohos.base"
 
 try {
   let predicates = new dataSharePredicates.DataSharePredicates();
-  let arr = ["name"];
+  let arr = ['name'];
   predicates.inKeys(arr);
-  kvStore!.put("name", "bob", (err:BusinessError | null) => {
-    if (err != undefined) {
-      console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+  kvStore!.put('name', 'bob', (err: BusinessError | null) => {
+    if (err) {
+      console.error(`Failed to put. Code: ${err.code}, message: ${err.message}`);
       return;
     }
-    console.info("Succeeded in putting");
+    console.info('Succeeded in putting');
     if (kvStore != null) {
-      kvStore!.delete(predicates, (err:BusinessError | null) => {
-        if (err == undefined) {
-          console.info('Succeeded in deleting');
+      kvStore!.delete(predicates, (err: BusinessError | null) => {
+        if (err) {
+          console.error(`Failed to delete. Code: ${err.code}, message: ${err.message}`);
         } else {
-          console.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
+          console.info('Succeeded in deleting');
         }
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -421,7 +421,7 @@ delete(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;void&gt;
 
 | 参数名     | 类型                                                     | 必填 | 说明                                            |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，当此参数为null时，应定义处理逻辑。 |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，不允许为null。 |
 
 **返回值：**
 
@@ -433,18 +433,18 @@ delete(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;void&gt;
 
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                             |
-| ------------ | ---------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100003     | Database corrupted.                      |
-| 15100005     | Database or result set already closed.   |
+| **错误码ID** | **错误信息**                                                                                                       |
+| ------------ |----------------------------------------------------------------------------------------------------------------|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 202          | Permission verification failed. A non-system application calls a system API. |
+| 15100003     | Database corrupted.                                                                                            |
+| 15100005     | Database or result set already closed.                                                                         |
 
 以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | **错误码ID** | **错误信息**                                 |
 | ------------ | -------------------------------------------- |
-| 14800047     | The WAL file size exceeds the default limit. |
+| 14800047     | The WAL file size exceeds the default limit. <br> 适用版本：10+ |
 
 **示例：**
 
@@ -456,23 +456,23 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let predicates = new dataSharePredicates.DataSharePredicates();
-  let arr = ["name"];
+  let arr = ['name'];
   predicates.inKeys(arr);
-  kvStore.put("name", "bob").then(() => {
+  kvStore.put('name', 'bob').then(() => {
     console.info(`Succeeded in putting data`);
     if (kvStore != null) {
       kvStore.delete(predicates).then(() => {
         console.info('Succeeded in deleting');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to delete. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to put. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -485,23 +485,23 @@ import { BusinessError } from "@ohos.base"
 
 try {
   let predicates = new dataSharePredicates.DataSharePredicates();
-  let arr = ["name"];
+  let arr = ['name'];
   predicates.inKeys(arr);
-  kvStore!.put("name", "bob").then(() => {
+  kvStore!.put('name', 'bob').then(() => {
     console.info(`Succeeded in putting data`);
     if (kvStore != null) {
       kvStore!.delete(predicates).then(() => {
         console.info('Succeeded in deleting');
       }).catch((err: BusinessError) :void=> {
-        console.error(`Failed to delete.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to delete. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err) => {
-    console.error(`Failed to put.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to put. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -509,7 +509,7 @@ try {
 
 getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;KVStoreResultSet&gt;): void
 
-获取与指定Predicate对象匹配的KVStoreResultSet对象，使用callback异步回调。
+获取与指定Predicates对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，需要及时调用[closeResultSet](js-apis-distributedKVStore.md#closeresultset)方法关闭结果集以释放资源。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -523,21 +523,21 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 
 **参数：**
 
-| 参数名     | 类型                                                     | 必填 | 说明                                                         |
-| ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，当此参数为null时，应定义处理逻辑。              |
+| 参数名     | 类型                                                     | 必填 | 说明                                                        |
+| ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，不允许为null。              |
 | callback   | AsyncCallback&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt;   | 是   | 回调函数，获取与指定Predicates对象匹配的KVStoreResultSet对象。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max  limits.                      |
-| 15100003     | Database corrupted.                    |
+| **错误码ID** | **错误信息**                                                                                                       |
+| ------------ |----------------------------------------------------------------------------------------------------------------|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 202          | Permission verification failed, application which is not a system application uses system API.                 |
+| 15100001     | Over max limits. <br> 适用版本：10+ |
+| 15100003     | Database corrupted.                                                                                            |
 | 15100005     | Database or result set already closed. |
 
 **示例：**
@@ -551,27 +551,27 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet(predicates, async (err: BusinessError, result: distributedKVStore.KVStoreResultSet) => {
-    if (err != undefined) {
-      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting result set');
     resultSet = result;
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet, (err: BusinessError) => {
-        if (err != undefined) {
-          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in closing result set');
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred. Code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -585,10 +585,10 @@ import { BusinessError } from "@ohos.base"
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore!.getResultSet(predicates, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined) => {
-    if (err != undefined) {
-      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting result set');
@@ -597,17 +597,17 @@ try {
     }
     if (kvStore != null) {
       kvStore!.closeResultSet(resultSet, (err: BusinessError | null) => {
-        if (err != undefined) {
-          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in closing result set');
       });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred. Code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -615,7 +615,7 @@ try {
 
 getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KVStoreResultSet&gt;
 
-获取与指定Predicate对象匹配的KVStoreResultSet对象，使用Promise异步回调。
+获取与指定Predicates对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，需要及时调用[closeResultSet](js-apis-distributedKVStore.md#closeresultset)方法关闭结果集以释放资源。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -629,26 +629,26 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 
 **参数：**
 
-| 参数名     | 类型                                                     | 必填 | 说明                                            |
-| ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，当此参数为null时，应定义处理逻辑。 |
+| 参数名     | 类型                                                     | 必填 | 说明                                           |
+| ---------- | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，不允许为null。 |
 
 **返回值：**
 
 | 类型                                                 | 说明                      |
 | ---------------------------------------------------- | ------------------------- |
-| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | Promise对象。返回KVStoreResultSet对象。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max  limits.                      |
-| 15100003     | Database corrupted.                    |
+| **错误码ID** | **错误信息**                                                                                                       |
+| ------------ |----------------------------------------------------------------------------------------------------------------|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 202          | Permission verification failed, application which is not a system application uses system API.                 |
+| 15100001     | Over max limits. <br> 适用版本：10+ |
+| 15100003     | Database corrupted.                                                                                            |
 | 15100005     | Database or result set already closed. |
 
 **示例：**
@@ -662,7 +662,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet(predicates).then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting result set');
     resultSet = result;
@@ -670,16 +670,16 @@ try {
       kvStore.closeResultSet(resultSet).then(() => {
         console.info('Succeeded in closing result set');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
   });
 
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -693,7 +693,7 @@ import { BusinessError } from "@ohos.base"
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore!.getResultSet(predicates).then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting result set');
     resultSet = result;
@@ -701,16 +701,16 @@ try {
       kvStore.closeResultSet(resultSet).then(() => {
         console.info('Succeeded in closing result set');
       }).catch((err: BusinessError):void => {
-        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) :void=> {
-    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
   });
 
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -728,7 +728,7 @@ try {
 
 getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;KVStoreResultSet&gt;): void
 
-获取与本设备指定Predicate对象匹配的KVStoreResultSet对象，使用callback异步回调。
+获取与本设备指定Predicates对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，需要及时调用[closeResultSet](js-apis-distributedKVStore.md#closeresultset)方法关闭结果集以释放资源。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -744,19 +744,19 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates, callback: Asyn
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，当此参数为null时，应定义处理逻辑。              |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，不允许为null。              |
 | callback   | AsyncCallback&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt;   | 是   | 回调函数，获取与指定Predicates对象匹配的KVStoreResultSet对象。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max  limits.                      |
-| 15100003     | Database corrupted.                    |
+| **错误码ID** | **错误信息**                                                                                                       |
+| ------------ |----------------------------------------------------------------------------------------------------------------|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 202          | Permission verification failed, application which is not a system application uses system API.                 |
+| 15100001     | Over max limits. <br> 适用版本：10+ |
+| 15100003     | Database corrupted.                                                                                            |
 | 15100005     | Database or result set already closed. |
 
 **示例：**
@@ -770,27 +770,27 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet(predicates, async (err: BusinessError, result: distributedKVStore.KVStoreResultSet) => {
-    if (err != undefined) {
-      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting result set');
     resultSet = result;
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet, (err: BusinessError) => {
-        if (err != undefined) {
-          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in closing result set');
-      })
+      });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -804,10 +804,10 @@ import { BusinessError } from "@ohos.base"
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore!.getResultSet(predicates, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined) => {
-    if (err != undefined) {
-      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting result set');
@@ -816,17 +816,17 @@ try {
     }
     if (kvStore != null) {
       kvStore!.closeResultSet(resultSet, (err: BusinessError | null) => {
-        if (err != undefined) {
-          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in closing result set');
-      })
+      });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -834,7 +834,7 @@ try {
 
 getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KVStoreResultSet&gt;
 
-获取与本设备指定Predicate对象匹配的KVStoreResultSet对象，使用Promise异步回调。
+获取与本设备指定Predicates对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，需要及时调用[closeResultSet](js-apis-distributedKVStore.md#closeresultset)方法关闭结果集以释放资源。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -850,23 +850,23 @@ getResultSet(predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KV
 
 | 参数名     | 类型                                                         | 必填 | 说明                                            |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，当此参数为null时，应定义处理逻辑。 |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，不允许为null。 |
 
 **返回值：**
 
 | 类型                                                 | 说明                      |
 | ---------------------------------------------------- | ------------------------- |
-| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | Promise对象。返回KVStoreResultSet对象。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
+| **错误码ID** | **错误信息**                                                                                                       |
+| ------------ |----------------------------------------------------------------------------------------------------------------|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
 | 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max  limits.                      |
+| 15100001     | Over max limits. <br> 适用版本：10+ |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -881,7 +881,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet(predicates).then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting result set');
     resultSet = result;
@@ -889,15 +889,15 @@ try {
       kvStore.closeResultSet(resultSet).then(() => {
         console.info('Succeeded in closing result set');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -911,7 +911,7 @@ import { BusinessError } from "@ohos.base"
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet(predicates).then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting result set');
     resultSet = result;
@@ -919,15 +919,15 @@ try {
       kvStore.closeResultSet(resultSet).then(() => {
         console.info('Succeeded in closing result set');
       }).catch((err: BusinessError) :void=> {
-        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) :void=> {
-    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -935,7 +935,7 @@ try {
 
 getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicates, callback: AsyncCallback&lt;KVStoreResultSet&gt;): void
 
-获取与指定Predicate对象匹配的KVStoreResultSet对象，使用callback异步回调。
+获取指定设备上与指定Predicates对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，需要及时调用[closeResultSet](js-apis-distributedKVStore.md#closeresultset)方法关闭结果集以释放资源。
 > **说明：**
 >
 > 其中deviceId通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
@@ -955,19 +955,19 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 | 参数名     | 类型                                                     | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| deviceId  | string                                                       | 是   | 标识要查询其数据的设备。                                     |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，当此参数为null时，应定义处理逻辑。              |
+| deviceId  | string                                                       | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。                                     |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，不允许为null。              |
 | callback   | AsyncCallback&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt;   | 是   | 回调函数，获取与指定Predicates对象匹配的KVStoreResultSet对象。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max  limits.                      |
+| **错误码ID** | **错误信息**                                                                                                      |
+| ------------ |---------------------------------------------------------------------------------------------------------------|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 202          | Permission verification failed, application which is not a system application uses system API.                |
+| 15100001     | Over max limits. <br> 适用版本：10+ |
 | 15100003     | Database corrupted.                    |
 | 15100005     | Database or result set already closed. |
 
@@ -982,27 +982,27 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet('localDeviceId', predicates, async (err: BusinessError, result: distributedKVStore.KVStoreResultSet) => {
-    if (err != undefined) {
-      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting result set');
     resultSet = result;
     if (kvStore != null) {
       kvStore.closeResultSet(resultSet, (err: BusinessError) => {
-        if (err != undefined) {
-          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in closing result set');
-      })
+      });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1016,10 +1016,10 @@ import { BusinessError } from "@ohos.base"
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore!.getResultSet('localDeviceId', predicates, (err: BusinessError | null, result: distributedKVStore.KVStoreResultSet | undefined) => {
-    if (err != undefined) {
-      console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    if (err) {
+      console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
       return;
     }
     console.info('Succeeded in getting result set');
@@ -1028,17 +1028,17 @@ try {
     }
     if (kvStore != null) {
       kvStore!.closeResultSet(resultSet, (err: BusinessError | null) => {
-        if (err != undefined) {
-          console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        if (err) {
+          console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
           return;
         }
         console.info('Succeeded in closing result set');
-      })
+      });
     }
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1046,7 +1046,7 @@ try {
 
 getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicates): Promise&lt;KVStoreResultSet&gt;
 
-获取与指定Predicate对象匹配的KVStoreResultSet对象，使用Promise异步回调。
+获取指定设备上与指定Predicates对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，需要及时调用[closeResultSet](js-apis-distributedKVStore.md#closeresultset)方法关闭结果集以释放资源。
 > **说明：**
 >
 > 其中deviceId通过调用[deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)方法得到。
@@ -1066,25 +1066,25 @@ getResultSet(deviceId: string, predicates: dataSharePredicates.DataSharePredicat
 
 | 参数名     | 类型                                                     | 必填 | 说明                                            |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------- |
-| deviceId  | string                                                       | 是   | 标识要查询其数据的设备。                                     |
-| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，当此参数为null时，应定义处理逻辑。 |
+| deviceId  | string                                                       | 是   | 设备的networkId，标识要查询其数据的设备，不能为空。                                     |
+| predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | 是   | 指示筛选条件，不允许为null。 |
 
 **返回值：**
 
 | 类型                                                 | 说明                      |
 | ---------------------------------------------------- | ------------------------- |
-| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;[KVStoreResultSet](js-apis-distributedKVStore.md#kvstoreresultset)&gt; | Promise对象。返回KVStoreResultSet对象。 |
 
 **错误码：**
 
 以下错误码的详细介绍请参见[分布式键值数据库错误码](errorcode-distributedKVStore.md)和[通用错误码](../errorcode-universal.md)。
 
-| **错误码ID** | **错误信息**                           |
-| ------------ | -------------------------------------- |
-| 401          | Parameter error.Possible causes:1.Mandatory parameters are left unspecified; 2.Incorrect parameters types.|
-| 202          | Permission verification failed, application which is not a system application uses system API.|
-| 15100001     | Over max  limits.                      |
-| 15100003     | Database corrupted.                    |
+| **错误码ID** | **错误信息**                                                                                                       |
+| ------------ |----------------------------------------------------------------------------------------------------------------|
+| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 202          | Permission verification failed, application which is not a system application uses system API.                 |
+| 15100001     | Over max limits. <br> 适用版本：10+ |
+| 15100003     | Database corrupted.                                                                                            |
 | 15100005     | Database or result set already closed. |
 
 **示例：**
@@ -1098,7 +1098,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore.getResultSet('localDeviceId', predicates).then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting result set');
     resultSet = result;
@@ -1106,15 +1106,15 @@ try {
       kvStore.closeResultSet(resultSet).then(() => {
         console.info('Succeeded in closing result set');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1128,7 +1128,7 @@ import { BusinessError } from "@ohos.base"
 try {
   let resultSet: distributedKVStore.KVStoreResultSet;
   let predicates = new dataSharePredicates.DataSharePredicates();
-  predicates.prefixKey("batch_test_string_key");
+  predicates.prefixKey('batch_test_string_key');
   kvStore!.getResultSet('localDeviceId', predicates).then((result: distributedKVStore.KVStoreResultSet) => {
     console.info('Succeeded in getting result set');
     resultSet = result;
@@ -1136,14 +1136,14 @@ try {
       kvStore!.closeResultSet(resultSet).then(() => {
         console.info('Succeeded in closing result set');
       }).catch((err: BusinessError):void => {
-        console.error(`Failed to close resultset.code is ${err.code},message is ${err.message}`);
+        console.error(`Failed to close resultset. Code: ${err.code}, message: ${err.message}`);
       });
     }
   }).catch((err: BusinessError):void => {
-    console.error(`Failed to get resultset.code is ${err.code},message is ${err.message}`);
+    console.error(`Failed to get resultset. Code: ${err.code}, message: ${err.message}`);
   });
-} catch (e) {
-  let error = e as BusinessError;
-  console.error(`An unexpected error occurred.code is ${error.code},message is ${error.message}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```

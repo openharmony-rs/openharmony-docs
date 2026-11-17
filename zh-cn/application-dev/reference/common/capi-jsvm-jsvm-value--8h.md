@@ -1,10 +1,10 @@
 # JSVM_Value__*
-<!--Kit: Common Basic Capability-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ```c
 typedef struct JSVM_Value__* JSVM_Value
@@ -13,6 +13,8 @@ typedef struct JSVM_Value__* JSVM_Value
 ## 概述
 
 表示JavaScript值。
+
+**系统能力：** SystemCapability.ArkCompiler.JSVM
 
 **起始版本：** 11
 

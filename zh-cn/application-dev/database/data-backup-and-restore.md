@@ -302,7 +302,10 @@ ArkTS-Dyn示例：
 
 ``` TypeScript
 /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
-const context = new UIContext().getHostContext() as common.UIAbilityContext;
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
 let store: relationalStore.RdbStore | undefined = undefined;
 const STORE_CONFIG: relationalStore.StoreConfig = {
   name: 'RdbTest.db',
@@ -425,7 +428,10 @@ ArkTS-Dyn示例：
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
 /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
-const context = new UIContext().getHostContext() as common.UIAbilityContext;
+const context = uiContext.getHostContext();
+if (context === undefined) {
+  return;
+}
 try {
   const STORE_CONFIG: relationalStore.StoreConfig = {
     name: 'RdbTest.db',
@@ -508,7 +514,7 @@ try {
             if (err.code === 14800011) {
               // 执行下文的步骤，即关闭结果集之后进行数据的恢复
             }
-            hilog.info(DOMAIN, 'BackupAndRestore', JSON.stringify(err));
+            hilog.error(DOMAIN, 'BackupAndRestore', JSON.stringify(err));
           }
         })
     }
@@ -562,7 +568,7 @@ try {
         resultSet.close();
       } catch (e) {
         if (e.code !== 14800014) {
-          hilog.info(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
+          hilog.error(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
         }
       }
     }
@@ -591,12 +597,15 @@ try {
 3. 调用restore接口恢复数据。
 
     ArkTS-Dyn示例：
-    <!-- @[invokeTheRestoreInterfaceToRestoreData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
+    <!-- @[invokeTheRestoreInterfaceToRestoreData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->  
     
     ``` TypeScript
     let store: relationalStore.RdbStore | undefined = undefined;
     /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
-    const context = new UIContext().getHostContext() as common.UIAbilityContext;
+    const context = uiContext.getHostContext();
+    if (context === undefined) {
+      return;
+    }
     let STORE_CONFIG: relationalStore.StoreConfig = {
       name: 'RdbTest.db',
       securityLevel: relationalStore.SecurityLevel.S3,
@@ -610,13 +619,13 @@ try {
       let backupFilePath = context.databaseDir + '/rdb/Backup.db';
       const backupExist: boolean = await fileIo.access(backupFilePath);
       if (!backupExist) {
-        hilog.info(DOMAIN, 'BackupAndRestore', 'Backup is not exist.');
+        hilog.info(DOMAIN, 'BackupAndRestore', 'Backup does not exist.');
         // todo 开库建表
         // todo 自行生成数据
         return;
       }
     } catch (e) {
-      hilog.info(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
+      hilog.error(DOMAIN, 'BackupAndRestore', `Code:${e.code}, message:${e.message}`);
     }
     
     try {

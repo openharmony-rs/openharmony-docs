@@ -95,7 +95,7 @@ Create a square and rotate it by 90 degrees to form a rhombus. Cover the lower p
 }
 ```
 
-![en-us_image_0000001220634677](figures/en-us_image_0000001220634677.png)
+![Designing-Static-Animation](figures/Designing-Static-Animation.png)
 
 
 ## Designing Translation Animation
@@ -174,7 +174,7 @@ Decrease the y-coordinate over a time frame to make the ball bounce back. Gradua
 }
 ```
 
-![en-us_image_0000001174756438](figures/en-us_image_0000001174756438.gif)
+![Translation-Animation](figures/Translation-Animation.gif)
 
 
 ## Designing Rotation Animation
@@ -307,7 +307,7 @@ Set the rotation center around an element in different **transform-origin** posi
 }
 ```
 
-![en-us_image_0000001220316305](figures/en-us_image_0000001220316305.gif)
+![Designing-Rotation-Animation](figures/Designing-Rotation-Animation.gif)
 
 > **NOTE**
 >
@@ -420,7 +420,7 @@ text{
 }
 ```
 
-![en-us_image_0000001220396251](figures/en-us_image_0000001220396251.gif)
+![Designing-Scaling-Animation](figures/Designing-Scaling-Animation.gif)
 
 > **NOTE**
 >
@@ -469,7 +469,7 @@ The **matrix** attribute defines a transformation matrix with six input paramete
 }
 ```
 
-![en-us_image_0000001174756580](figures/en-us_image_0000001174756580.gif)
+![Setting-matrix](figures/Setting-matrix.gif)
 
 
 ## Integrating transform Attributes
@@ -579,7 +579,7 @@ You can set multiple **transform** attributes at the same time to apply differen
 }
 ```
 
-![en-us_image_0000001220554911](figures/en-us_image_0000001220554911.gif)
+![Integrating-transform-Attributes](figures/Integrating-transform-Attributes.gif)
 
 > **NOTE**
 >

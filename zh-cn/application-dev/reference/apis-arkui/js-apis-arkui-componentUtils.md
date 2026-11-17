@@ -1,7 +1,7 @@
 # @ohos.arkui.componentUtils (componentUtils)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -14,6 +14,8 @@
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](./arkts-apis-uicontext-uicontext.md)说明。 
 
 ## 导入模块
@@ -25,15 +27,17 @@ import { componentUtils } from '@kit.ArkUI';
 
 getRectangleById(id: string): ComponentInfo
 
-根据组件ID获取组件实例对象，通过组件实例对象将获取的坐标位置和大小同步返回给开发者。
+根据组件ID获取组件的大小、位置及变换信息，并将结果同步返回给开发者。
 
 > **说明：**
 >
 > - 从API version 10开始支持，从API version 18开始废弃，建议使用[getRectangleById](arkts-apis-uicontext-componentutils.md#getrectanglebyid)替代。getRectangleById需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils)方法获取[ComponentUtils](arkts-apis-uicontext-componentutils.md)对象，然后通过该对象进行调用。
 >
 > - 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](arkts-apis-uicontext-uicontext.md#getcomponentutils)方法获取当前UI上下文关联的[ComponentUtils](arkts-apis-uicontext-componentutils.md)对象。在目标组件布局完成后，通过该接口能够获取组件坐标和尺寸信息。建议在[布局回调](./js-apis-arkui-inspector.md)中使用该接口。如果组件动态创建但未挂载组件树，则无法通过该接口获取正常的组件信息。因为组件在未挂载组件树的情况下，一般未经过UI框架正常的测量与布局，此时请确保组件正常挂载组件树后再尝试获取组件信息。
+>
+> - 该接口返回的组件位置为布局位置，某些属性计算不支持，如位置设置类[offset](./arkui-ts/ts-universal-attributes-location.md#offset)、[markAnchor](./arkui-ts/ts-universal-attributes-location.md#markanchor)、[Edges](./arkui-ts/ts-types.md#edges12)和[LocalizedEdges](./arkui-ts/ts-types.md#localizededges12)类型的[position](./arkui-ts/ts-universal-attributes-location.md#position)，以及图形变换类[rotate](./arkui-ts/ts-universal-attributes-transformation.md#rotate)、[translate](./arkui-ts/ts-universal-attributes-transformation.md#translate)、[scale](./arkui-ts/ts-universal-attributes-transformation.md#scale)、[transform](./arkui-ts/ts-universal-attributes-transformation.md#transform)。可使用替代接口[getPositionToWindowWithTransform](./js-apis-arkui-frameNode.md#getpositiontowindowwithtransform12)，获取组件相对于窗口且带有绘制属性的位置偏移。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,7 +76,7 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 组件大小、位置、平移缩放旋转及仿射矩阵属性信息。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -83,17 +87,17 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 | 名称           | 类型             | 只读    | 可选           | 说明                         |
 | ---------------|------------| --------------- | -----------------------------| -----------------------------|
 | size           | [Size](#size) | 否       | 否     | 组件大小。                    |
-| localOffset    | [Offset](#offset) | 否       | 否    | 组件相对于父组件信息。         |
-| windowOffset   | [Offset](#offset) | 否       | 否    | 组件相对于窗口信息。           |
-| screenOffset   | [Offset](#offset) | 否       | 否    | 组件相对于屏幕信息。           |
+| localOffset    | [Offset](#offset) | 否       | 否    | 组件相对于父组件的偏移量。         |
+| windowOffset   | [Offset](#offset) | 否       | 否    | 组件相对于窗口的偏移量。           |
+| screenOffset   | [Offset](#offset) | 否       | 否    | 组件相对于屏幕的偏移量。           |
 | translate      | [TranslateResult](#translateresult)| 否       | 否     | 组件平移信息。                |
 | scale          | [ScaleResult](#scaleresult) | 否       | 否     | 组件缩放信息。                |
 | rotate         | [RotateResult](#rotateresult) | 否       | 否     | 组件旋转信息。                |
-| transform      | [Matrix4Result](#matrix4result) | 否       | 否     | 仿射矩阵信息，根据入参创建的四阶矩阵对象。  |
+| transform      | [Matrix4Result](#matrix4result) | 否       | 否     | 仿射矩阵信息，为长度为16的number数组。  |
 
 ### Size 
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,7 +112,7 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 ### Offset
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -123,7 +127,7 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 ### TranslateResult
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,7 +143,7 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 ### ScaleResult
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -157,7 +161,7 @@ let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById(
 
 ### RotateResult
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -180,7 +184,7 @@ ArkTS-Dyn: type Matrix4Result = [number,number,number,number,number,number,numbe
 
 ArkTS-Sta: type Matrix4Result = [double,double,double,double,double,double,double,double,double,double,double,double,double,double,double,double]
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -225,11 +229,11 @@ import { matrix4, componentUtils } from '@kit.ArkUI';
 @Entry
 @Component
 struct Utils {
-  @State x: number = 120;
-  @State y: number = 10;
-  @State z: number = 100;
+  @State translateX: number = 120;
+  @State translateY: number = 10;
+  @State translateZ: number = 100;
   @State value: string = '';
-  private matrix1 = matrix4.identity().translate({ x: this.x, y: this.y, z: this.z });
+  private matrix1 = matrix4.identity().translate({ x: this.translateX, y: this.translateY, z: this.translateZ });
 
   build() {
     Column() {
@@ -248,7 +252,7 @@ struct Utils {
         })
         .width(300)
         .height(100)
-        .key("image_01")
+        .id("image_01")
       Button('getRectangleById')
         .onClick(() => {
           this.value = JSON.stringify(this.getUIContext()

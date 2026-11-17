@@ -6,7 +6,7 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
-本模块主要由系统定时器功能组成。开发者可以使用定时功能实现定时服务，如闹钟等。
+本模块主要由系统定时器功能组成，提供定时器的创建、启动、停止和销毁能力，支持创建系统启动时间定时器、唤醒定时器、精准定时器和IDLE模式定时器等多种类型。此外，还支持按名称启用或禁用那些可在设备关机后启动的定时器。开发者可以使用定时功能实现定时服务，如闹钟等。定时器的典型使用流程为：先通过createTimer创建定时器，再通过startTimer启动定时器，可根据需要通过stopTimer停止定时器，最后通过destroyTimer销毁定时器以释放资源。
 
 > **说明：**
 >
@@ -38,7 +38,7 @@ import { systemTimer } from '@kit.BasicServicesKit';
 | TIMER_TYPE_EXACT    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 4    | 精准定时器（系统时间修改的情况下，可能会出现最多1s的前后偏移误差）。|
 | TIMER_TYPE_IDLE     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 8    | IDLE模式定时器（仅支持系统服务配置，不支持应用配置）。|
 
- ## TimerOptions
+## TimerOptions
 
 创建系统定时器的初始化选项。
 
@@ -50,13 +50,13 @@ import { systemTimer } from '@kit.BasicServicesKit';
 
 | 名称       |                     类型               |     只读       |     可选    |                        说明                             |
 |------------| ------------------------------------- | -------------- | -----------| --------------------------------------------------------|
-| type | ArkTS-Dyn: number<br>ArkTS-Sta: int         |  否 | 否  | 定时器类型，可以使用 '\|' 多选。<br>取值为1，表示为系统启动时间定时器（定时器启动时间不能晚于当前设置的系统时间）；<br>取值为2，表示为唤醒定时器；<br>取值为4，表示为精准定时器（APP被冻结时，定时器也会被冻结，并且定时器受统一心跳管控，因此即使是精准定时器也不能确保在指定时间点触发）；<br>取值为8，表示为IDLE模式定时器（仅支持系统服务配置，不支持应用配置）。 |
+| type | ArkTS-Dyn: number<br>ArkTS-Sta: int         |  否 | 否  | 定时器类型，可以使用 '\|' 多选。<br>取值为1，表示为系统启动时间定时器（定时器启动时间不能晚于当前设置的系统时间）；<br>取值为2，表示为唤醒定时器（如果未配置为唤醒定时器，则系统处于休眠状态下不会触发，直到退出休眠状态）；<br>取值为4，表示为精准定时器（APP被冻结时，定时器也会被冻结，并且定时器受统一心跳管控，因此即使是精准定时器也不能确保在指定时间点触发；系统时间修改的情况下，可能会出现最多1s的前后偏移误差）；<br>取值为8，表示为IDLE模式定时器（仅支持系统服务配置，不支持应用配置）。 |
 | repeat | boolean                                   |  否 | 否  | 是否为循环定时器。true表示循环定时器，false表示单次定时器。  |
-| autoRestore<sup>15+</sup> | boolean                |  否 | 是  | 是否在设备重启后恢复。<br>true为重启后恢复，false为重启后不恢复。<br>仅支持非`TIMER_TYPE_REALTIME`类型且配置了wantAgent的定时器配置为true。<br>默认值为false。<br>ArkTS-Dyn起始版本: 15<br>ArkTS-Sta起始版本: 23 |
-| name<sup>15+</sup> | string                        |  否 | 是  | 定时器名称，长度不超过64字节。<br>同一个UID中不可以同时存在两个同名定时器。如果创建了一个和之前已创建的定时器名字相同的定时器，先创建的定时器会被销毁。<br>默认值为空字符串。<br>ArkTS-Dyn起始版本: 15<br>ArkTS-Sta起始版本: 23 |
-| interval  | ArkTS-Dyn: number<br>ArkTS-Sta: long   |  否 | 是  | 定时器时间间隔，单位：毫秒。<br>如果是循环定时器，interval值最小为1s，最大为365天，建议interval值不小于5000毫秒；<br>单次定时器interval值为0。<br>默认值为0。 |
+| autoRestore<sup>15+</sup> | boolean                |  否 | 是  | 是否在设备重启后恢复。<br>true为重启后恢复，false为重启后不恢复。<br>仅支持非`TIMER_TYPE_REALTIME`类型且配置了wantAgent的定时器配置为true，不满足该条件时该参数不生效。<br>默认值为false。<br>ArkTS-Dyn起始版本: 15<br>ArkTS-Sta起始版本: 23 |
+| name<sup>15+</sup> | string                        |  否 | 是  | 定时器名称，长度不超过64字节，超出长度限制时创建定时器失败并返回错误。<br>同一个UID中不可以同时存在两个同名定时器。如果创建了一个和之前已创建的定时器名字相同的定时器，先创建的定时器会被销毁。<br>默认值为空字符串。<br>ArkTS-Dyn起始版本: 15<br>ArkTS-Sta起始版本: 23 |
+| interval  | ArkTS-Dyn: number<br>ArkTS-Sta: long   |  否 | 是  | 定时器时间间隔，单位：毫秒。<br>如果是循环定时器，interval值最小为1s，最大为365天，建议interval值不小于5000毫秒，超出该范围时定时器创建失败并返回错误；<br>单次定时器interval值为0。<br>默认值为0。 |
 | wantAgent | WantAgent                              |  否 | 是  | 设置通知的WantAgent，定时器到期后通知（支持拉起应用MainAbility，不支持拉起ServiceAbility）。<br>默认值为空。 |
-| callback  | function                                   |  否 | 是  | 用户需要执行的回调函数。<br>默认值为空。 |
+| callback  | function                                   |  否 | 是  | 用户需要执行的回调函数，在定时器触发时被调用。当需要在定时器触发时执行自定义逻辑时传入此参数；不传入时默认为空，定时器触发后不执行用户自定义逻辑。 |
 
 
 ## systemTimer.createTimer
@@ -69,7 +69,7 @@ ArkTS-Sta: createTimer(options: TimerOptions, callback: AsyncCallback&lt;long&gt
 
 > **注意：**
 > 
-> 需与[systemTimer.destroyTimer](#systemtimerdestroytimer)结合使用，否则会造成内存泄漏
+> 需与[systemTimer.destroyTimer](#systemtimerdestroytimer)结合使用，否则会造成内存泄漏。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -91,7 +91,7 @@ ArkTS-Sta: createTimer(options: TimerOptions, callback: AsyncCallback&lt;long&gt
 | 错误码ID | 错误信息                                                                                                                                         |
 |-------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                                                 |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -104,16 +104,16 @@ let options: systemTimer.TimerOptions = {
   repeat: false
 };
 try {
-  systemTimer.createTimer(options, (error: BusinessError, timerId: Number) => {
+  systemTimer.createTimer(options, (error: BusinessError, timerId: number) => {
     if (error) {
-      console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -149,7 +149,7 @@ ArkTS-Sta: createTimer(options: TimerOptions): Promise&lt;long&gt;
 
 > **注意：**
 > 
-> 需与[systemTimer.destroyTimer](#systemtimerdestroytimer)结合使用，否则会造成内存泄漏
+> 需与[systemTimer.destroyTimer](#systemtimerdestroytimer)结合使用，否则会造成内存泄漏。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -176,7 +176,7 @@ ArkTS-Sta: createTimer(options: TimerOptions): Promise&lt;long&gt;
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -189,14 +189,14 @@ let options: systemTimer.TimerOptions = {
   repeat:false
 };
 try {
-  systemTimer.createTimer(options).then((timerId: Number) => {
+  systemTimer.createTimer(options).then((timerId: number) => {
     console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -228,6 +228,10 @@ ArkTS-Sta: startTimer(timer: long, triggerTime: long, callback: AsyncCallback&lt
 
 开启定时器，使用callback异步回调。
 
+> **注意：**
+>
+> 需与[systemTimer.stopTimer](#systemtimerstoptimer)配合使用，停止已开启的定时器。典型调用顺序：createTimer → startTimer → stopTimer → destroyTimer。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **ArkTS-Dyn起始版本:** 7
@@ -239,8 +243,8 @@ ArkTS-Sta: startTimer(timer: long, triggerTime: long, callback: AsyncCallback&lt
 | 参数名      | 类型                   | 必填 | 说明                                                                                                                                                                                                                                                           |
 | ----------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | timer       | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 定时器的ID。                                                                                                                                                                                                                                                      |
-| triggerTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 定时器的触发时间，单位：毫秒。<br/>若定时器类型包含了TIMER_TYPE_REALTIME，该triggerTime应为系统启动时间，建议通过[systemDateTime.getUptime()](js-apis-date-time.md#systemdatetimegetuptime10)获取；<br/>若定时器类型不包含TIMER_TYPE_REALTIME，该triggerTime应为墙上时间，建议通过[systemDateTime.getTime()](js-apis-date-time.md#systemdatetimegettime10)获取。 |
-| callback    | AsyncCallback&lt;void> | 是   | 回调函数。                                                                                                                                                                                                                                                        |
+| triggerTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 定时器的触发时间，单位：毫秒。<br/>若定时器类型包含了TIMER_TYPE_REALTIME，该triggerTime应为系统启动时间，建议通过[systemDateTime.getUptime()](js-apis-date-time.md#systemdatetimegetuptime10)获取，否则定时器无法在预期时间触发；<br/>若定时器类型不包含TIMER_TYPE_REALTIME，该triggerTime应为墙上时间，建议通过[systemDateTime.getTime()](js-apis-date-time.md#systemdatetimegettime10)获取，否则定时器无法在预期时间触发。 |
+| callback    | AsyncCallback&lt;void> | 是   | 回调函数，用于接收定时器启动结果。回调参数为err（错误对象，启动成功时为undefined）。                                                                                                                                                                                                                                                        |
 
 **错误码：**
 
@@ -249,7 +253,7 @@ ArkTS-Sta: startTimer(timer: long, triggerTime: long, callback: AsyncCallback&lt
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -260,7 +264,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let options: systemTimer.TimerOptions = {
   type: systemTimer.TIMER_TYPE_REALTIME,
   repeat:false
-}
+};
 let triggerTime: number = new Date().getTime();
 triggerTime += 3000;
 
@@ -268,18 +272,18 @@ try {
   systemTimer.createTimer(options).then((timerId: number) => {
     systemTimer.startTimer(timerId, triggerTime, (error: BusinessError) => {
       if (error) {
-        console.error(`Failed to start timer. message: ${error.message}, code: ${error.code}`);
+        console.error(`Failed to start timer. Code: ${error.code}, message: ${error.message}`);
         return;
       }
       console.info(`Succeeded in starting timer.`);
     });
     console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to start timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -321,6 +325,10 @@ ArkTS-Sta: startTimer(timer: long, triggerTime: long): Promise&lt;void&gt;
 
 开启定时器，使用Promise进行异步回调。
 
+> **注意：**
+>
+> 需与[systemTimer.stopTimer](#systemtimerstoptimer)配合使用，停止已开启的定时器。典型调用顺序：createTimer → startTimer → stopTimer → destroyTimer。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **ArkTS-Dyn起始版本:** 7
@@ -332,13 +340,13 @@ ArkTS-Sta: startTimer(timer: long, triggerTime: long): Promise&lt;void&gt;
 | 参数名      | 类型   | 必填 | 说明                                                                                                                                                                                                                                                           |
 | ----------- | ------ | ---- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | timer       | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 定时器的ID。                                                                                                                                                                                                                                                      |
-| triggerTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 定时器的触发时间，单位：毫秒。<br/>若定时器类型包含了TIMER_TYPE_REALTIME，该triggerTime应为系统启动时间，建议通过[systemDateTime.getUptime()](js-apis-date-time.md#systemdatetimegetuptime10)获取；<br/>若定时器类型不包含TIMER_TYPE_REALTIME，该triggerTime应为墙上时间，建议通过[systemDateTime.getTime()](js-apis-date-time.md#systemdatetimegettime10)获取。 |
+| triggerTime | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 定时器的触发时间，单位：毫秒。<br/>若定时器类型包含了TIMER_TYPE_REALTIME，该triggerTime应为系统启动时间，建议通过[systemDateTime.getUptime()](js-apis-date-time.md#systemdatetimegetuptime10)获取，否则定时器无法在预期时间触发；<br/>若定时器类型不包含TIMER_TYPE_REALTIME，该triggerTime应为墙上时间，建议通过[systemDateTime.getTime()](js-apis-date-time.md#systemdatetimegettime10)获取，否则定时器无法在预期时间触发。 |
 
 **返回值：**
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | 无返回结果的Promise对象。resolve表示定时器开启成功，reject表示开启失败。 |
 
 **错误码：**
 
@@ -347,7 +355,7 @@ ArkTS-Sta: startTimer(timer: long, triggerTime: long): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -358,7 +366,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let options: systemTimer.TimerOptions = {
   type: systemTimer.TIMER_TYPE_REALTIME,
   repeat:false
-}
+};
 let triggerTime: number = new Date().getTime();
 triggerTime += 3000;
 
@@ -367,15 +375,15 @@ try {
     systemTimer.startTimer(timerId, triggerTime).then(() => {
       console.info(`Succeeded in starting timer.`);
     }).catch((error: BusinessError) => {
-      console.error(`Failed to start timer. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to start timer. Code: ${error.code}, message: ${error.message}`);
     });
     console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -413,7 +421,7 @@ ArkTS-Dyn: stopTimer(timer: number, callback: AsyncCallback&lt;void&gt;): void
 
 ArkTS-Sta: stopTimer(timer: long, callback: AsyncCallback&lt;void&gt;): void
 
-该方法停止定时器，并使用callback进行异步回调。
+该方法停止定时器，使用callback进行异步回调。需与[systemTimer.startTimer](#systemtimerstarttimer)配合使用，用于停止已开启的定时器。停止定时器后可调用[systemTimer.destroyTimer](#systemtimerdestroytimer)销毁定时器释放资源。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -426,7 +434,7 @@ ArkTS-Sta: stopTimer(timer: long, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                   | 必填 | 说明         |
 | -------- | ---------------------- | ---- | ------------ |
 | timer    | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 定时器的ID。 |
-| callback | AsyncCallback&lt;void>               | 是   | 回调函数。   |
+| callback | AsyncCallback&lt;void>               | 是   | 回调函数，用于接收定时器停止结果。回调参数为err（错误对象，停止成功时为undefined）。   |
 
 **错误码：**
 
@@ -435,7 +443,7 @@ ArkTS-Sta: stopTimer(timer: long, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -446,7 +454,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let options: systemTimer.TimerOptions = {
   type: systemTimer.TIMER_TYPE_REALTIME,
   repeat:false
-}
+};
 let triggerTime: number = new Date().getTime();
 triggerTime += 3000;
 
@@ -455,18 +463,18 @@ try {
     systemTimer.startTimer(timerId, triggerTime);
     systemTimer.stopTimer(timerId, (error: BusinessError) => {
       if (error) {
-        console.error(`Failed to stop timer. message: ${error.message}, code: ${error.code}`);
+        console.error(`Failed to stop timer. Code: ${error.code}, message: ${error.message}`);
         return;
       }
-    console.info(`Succeeded in stopping timer.`);
+      console.info(`Succeeded in stopping timer.`);
     });
     console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to create timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to stop timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 ArkTS-Sta示例：
@@ -506,7 +514,7 @@ ArkTS-Dyn: stopTimer(timer: number): Promise&lt;void&gt;
 
 ArkTS-Sta: stopTimer(timer: long): Promise&lt;void&gt;
 
-此方法用于停止定时器，并使用Promise异步回调。
+此方法用于停止定时器，使用Promise异步回调。需与[systemTimer.startTimer](#systemtimerstarttimer)配合使用，用于停止已开启的定时器。停止定时器后可调用[systemTimer.destroyTimer](#systemtimerdestroytimer)销毁定时器释放资源。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -524,7 +532,7 @@ ArkTS-Sta: stopTimer(timer: long): Promise&lt;void&gt;
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | 无返回结果的Promise对象。resolve表示定时器停止成功，reject表示停止失败。 |
 
 **错误码：**
 
@@ -533,7 +541,7 @@ ArkTS-Sta: stopTimer(timer: long): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -544,7 +552,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let options: systemTimer.TimerOptions = {
   type: systemTimer.TIMER_TYPE_REALTIME,
   repeat:false
-}
+};
 let triggerTime: number = new Date().getTime();
 triggerTime += 3000;
 
@@ -554,15 +562,15 @@ try {
     systemTimer.stopTimer(timerId).then(() => {
       console.info(`Succeeded in stopping timer.`);
     }).catch((error: BusinessError) => {
-      console.error(`Failed to stop timer. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to stop timer. Code: ${error.code}, message: ${error.message}`);
     });
     console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to operate timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to stop timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -603,6 +611,10 @@ ArkTS-Sta: destroyTimer(timer: long, callback: AsyncCallback&lt;void&gt;): void
 
 销毁定时器，使用callback异步回调。
 
+> **注意：**
+>
+> 需与[systemTimer.createTimer](#systemtimercreatetimer)配合使用，用于销毁通过createTimer创建的定时器，避免内存泄漏。建议先调用[systemTimer.stopTimer](#systemtimerstoptimer)停止定时器后再销毁。
+
 **系统能力：** SystemCapability.MiscServices.Time
 
 **ArkTS-Dyn起始版本:** 7
@@ -614,7 +626,7 @@ ArkTS-Sta: destroyTimer(timer: long, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                   | 必填 | 说明         |
 | -------- | ---------------------- | ---- | ------------ |
 | timer    | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 定时器的ID。 |
-| callback | AsyncCallback&lt;void>               | 是   | 回调函数。   |
+| callback | AsyncCallback&lt;void>               | 是   | 回调函数，用于接收定时器销毁结果。回调参数为err（错误对象，销毁成功时为undefined）。   |
 
 **错误码：**
 
@@ -623,7 +635,7 @@ ArkTS-Sta: destroyTimer(timer: long, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -634,7 +646,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let options: systemTimer.TimerOptions = {
   type: systemTimer.TIMER_TYPE_REALTIME,
   repeat:false
-}
+};
 let triggerTime: number = new Date().getTime();
 triggerTime += 3000;
 
@@ -644,18 +656,18 @@ try {
     systemTimer.stopTimer(timerId);
     systemTimer.destroyTimer(timerId, (error: BusinessError) => {
       if (error) {
-        console.error(`Failed to destroy timer. message: ${error.message}, code: ${error.code}`);
+        console.error(`Failed to destroy timer. Code: ${error.code}, message: ${error.message}`);
         return;
       }
-    console.info(`Succeeded in destroying timer.`);
+      console.info(`Succeeded in destroying timer.`);
     });
     console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to operate timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to destroy timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -697,7 +709,7 @@ ArkTS-Dyn: destroyTimer(timer: number): Promise&lt;void&gt;
 
 ArkTS-Sta: destroyTimer(timer: long): Promise&lt;void&gt;
 
-销毁定时器，使用Promise进行异步回调。
+销毁定时器，使用Promise进行异步回调。需与[systemTimer.createTimer](#systemtimercreatetimer)配合使用，用于销毁通过createTimer创建的定时器，避免内存泄漏。建议先调用[systemTimer.stopTimer](#systemtimerstoptimer)停止定时器后再销毁。
 
 **系统能力：** SystemCapability.MiscServices.Time
 
@@ -715,7 +727,7 @@ ArkTS-Sta: destroyTimer(timer: long): Promise&lt;void&gt;
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise\<void> | 无返回结果的Promise对象。 |
+| Promise\<void> | 无返回结果的Promise对象。resolve表示定时器销毁成功，reject表示销毁失败。 |
 
 **错误码：**
 
@@ -724,7 +736,7 @@ ArkTS-Sta: destroyTimer(timer: long): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -735,7 +747,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let options: systemTimer.TimerOptions = {
   type: systemTimer.TIMER_TYPE_REALTIME,
   repeat:false
-}
+};
 let triggerTime: number = new Date().getTime();
 triggerTime += 3000;
 
@@ -746,15 +758,15 @@ try {
     systemTimer.destroyTimer(timerId).then(() => {
       console.info(`Succeeded in destroying timer.`);
     }).catch((error: BusinessError) => {
-      console.error(`Failed to destroy timer. message: ${error.message}, code: ${error.code}`);
+      console.error(`Failed to destroy timer. Code: ${error.code}, message: ${error.message}`);
     });
     console.info(`Succeeded in creating timer. timerId: ${timerId}`);
   }).catch((error: BusinessError) => {
-    console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+    console.error(`Failed to operate timer. Code: ${error.code}, message: ${error.message}`);
   });
-} catch(e) {
-  let error = e as BusinessError;
-  console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to destroy timer. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -787,3 +799,76 @@ try {
   console.error(`Failed to create timer. message: ${error.message}, code: ${error.code}`);
 }
 ```
+
+## systemTimer.setPowerOnTimerEnabled
+
+setPowerOnTimerEnabled(options?: PowerOnTimerEnabledOptions): Promise&lt;void&gt;
+
+启用或禁用与**options**中条件匹配的"可在关机后启动设备的定时器"。当启用状态设为**false**时，匹配的定时器不再在设备关机启动时触发，但定时器本身不被删除；当设为**true**时，匹配的定时器恢复在设备关机启动时触发，仅满足开机定时器条件的定时器被恢复。`options`缺省或`timerName`缺省时，操作应用于所有"可在关机后启动设备的定时器"；`options.enable`缺省时默认**true**（启用）。调用后立即重新计算RTC开机闹钟。
+
+> **说明：**
+> 本接口设置的状态仅在当前设备运行期间有效，设备重启后需重新设置。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.MiscServices.Time
+
+**参数：**
+
+| 名称    | 类型                                                       | 只读 | 可选 | 说明                |
+| ------- | ---------------------------------------------------------- | ---- | ---- | ------------------- |
+| options | [PowerOnTimerEnabledOptions](#powerontimerenabledoptions)  | 否   | 是   | 选项，包含匹配条件和启用状态。缺省时启用所有"可在关机后启动设备的定时器"。 |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                                                                        |
+|-------|-------------------------------------------------------------------------------------------------------------|
+| 202   | Permission verification failed. A non-system application calls a system API.                                |
+| 401   | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**示例：**
+
+
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let options: systemTimer.PowerOnTimerEnabledOptions = {
+  timerName: 'alarm_timer',
+  enable: false
+};
+systemTimer.setPowerOnTimerEnabled(options).then(() => {
+  console.info('Succeeded in setting power-on timer enabled.');
+}).catch((error: BusinessError) => {
+  console.error('Failed to set power-on timer enabled. Code: ' + error.code + ', message: ' + error.message);
+});
+```
+
+## PowerOnTimerEnabledOptions
+
+[systemTimer.setPowerOnTimerEnabled](#systemtimersetpowerontimerenabled) 的参数选项。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.MiscServices.Time
+
+| 名称      | 类型    | 只读 | 可选 | 说明                                       |
+| --------- | ------- | ---- | ---- | ------------------------------------------ |
+| timerName | string  | 否   | 是   | 定时器名称，非空字符串，长度不超过64字节。缺省时操作应用于所有power-on定时器；存在但为空或超过64字节时返回401。 |
+| enable    | boolean | 否   | 是   | true表示将该定时器加回power-on定时器列表，false表示将其从power-on定时器列表移除。缺省时默认true。 |

@@ -30,7 +30,7 @@ You can display a custom dialog box by creating a dialog controller or by creati
 
 - Creating a Dialog Controller
 
-  [ArkUI_NativeDialogHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog8h.md) represents a pointer to the dialog controller, which you can create by calling the [create](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md#create) API of [ArkUI_NativeDialogAPI_x](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md).
+  [ArkUI_NativeDialogHandle](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialog8h.md) represents a pointer to the dialog controller, which you can create by calling the [create](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md#create) API of [ArkUI_NativeDialogAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md).
 
   This API returns data of the **ArkUI_NativeDialogHandle** type.
   <!-- @[dialog_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
@@ -311,7 +311,7 @@ You can create an interactive page to open or close a dialog box.
      }
      ```
 
-![en-us_image_0000001902966196](figures/en-us_image_0000001902966196.gif)
+![en-us_image_0000001902966196](figures/Interacting-Dialog-Box.gif)
 
 
 ## Managing the Dialog Box Lifecycle

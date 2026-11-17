@@ -1,10 +1,13 @@
 # Types
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+
+本文件介绍ArkUI UIContext相关类型，包括自定义组件构建、UIObserver事件监听回调、节点标识、光标样式和上下文等类型。
 
 > **说明：**
 >
@@ -20,7 +23,9 @@ ArkTS-Sta: type CustomBuilderWithId = (id: int)&nbsp;=&gt;&nbsp;void
 
 组件属性、方法参数可使用CustomBuilderWithId类型来自定义UI描述，并且可以指定组件ID生成用户自定义组件。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -34,13 +39,13 @@ ArkTS-Sta: type CustomBuilderWithId = (id: int)&nbsp;=&gt;&nbsp;void
 | -------- | -------- | -------- | -------- |
 | id | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是 | 组件ID。 |
 
-## ClickEventListenerCallback<sup>12+</sup>
+## ClickEventListenerCallback
 
 type ClickEventListenerCallback = (event: ClickEvent, node?: FrameNode) => void
 
 ClickEvent事件监听函数类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -55,15 +60,17 @@ ClickEvent事件监听函数类型。
 | 参数名  | 类型   | 必填 | 说明                          |
 | ------- | ------ | ---- | --------------------------- |
 | event | [ClickEvent](../apis-arkui/arkui-ts/ts-universal-events-click.md#clickevent) | 是 | 触发事件监听的点击事件的相关信息。 |
-| node | [FrameNode](js-apis-arkui-frameNode.md) | 否 | 触发事件监听的点击事件所绑定的组件。 |
+| node | [FrameNode](js-apis-arkui-frameNode.md) | 否 | 触发事件监听的点击事件所绑定的组件。当没有返回组件时，node值为null。 |
 
 ## PanListenerCallback<sup>19+</sup>
 
 type PanListenerCallback = (event: GestureEvent, current: GestureRecognizer, node?: FrameNode) => void
 
-Pan手势事件监听函数类型。
+Pan手势事件监听函数类型，可用于需要监听组件拖拽、平移等Pan手势交互的场景。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -77,15 +84,17 @@ Pan手势事件监听函数类型。
 | ------- | ----------------- | ---- | --------------------------------- |
 | event   | [GestureEvent](../apis-arkui/arkui-ts/ts-gesture-common.md#gestureevent对象说明)      | 是   | 触发事件监听的手势事件的相关信息。   |
 | current | [GestureRecognizer](arkui-ts/ts-gesture-common.md#gesturerecognizer12) | 是   | 触发事件监听的手势识别器的相关信息。  |
-| node    | [FrameNode](js-apis-arkui-frameNode.md)         | 否   | 触发事件监听的手势事件所绑定的组件。 |
+| node | [FrameNode](js-apis-arkui-frameNode.md) | 否 | 触发事件监听的手势事件所绑定的组件。当没有返回组件时，node值为null。 |
 
-## GestureEventListenerCallback<sup>12+</sup>
+## GestureEventListenerCallback
 
 type GestureEventListenerCallback = (event: GestureEvent, node?: FrameNode) => void
 
 定义了用于在UIObserver中监听手势的回调类型。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,7 +117,9 @@ ArkTS-Sta: type NodeIdentity = string | int
 
 组件标识。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -127,7 +138,9 @@ type NodeRenderStateChangeCallback = (state: NodeRenderState, node?: FrameNode) 
 
 定义了用于在UIObserver中监控某个特定节点渲染状态的回调类型。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -139,8 +152,8 @@ type NodeRenderStateChangeCallback = (state: NodeRenderState, node?: FrameNode) 
 
 | 参数名  | 类型              | 必填 | 说明                                |
 | ------- | ----------------- | ---- | --------------------------------- |
-| state   | [NodeRenderState](arkts-apis-uicontext-e.md#noderenderstate20)     | 是   | 触发事件监听的手势事件的相关信息。   |
-| node    | [FrameNode](js-apis-arkui-frameNode.md)         | 否   | 触发事件监听的手势事件所绑定的组件，如果组件被释放将返回null。 |
+| state | [NodeRenderState](arkts-apis-uicontext-e.md#noderenderstate20) | 是 | 节点当前的渲染状态，用于表示被监控节点是否处于可渲染状态。 |
+| node | [FrameNode](js-apis-arkui-frameNode.md) | 否 | 触发渲染状态变化监听的组件。当需要获取发生渲染状态变化的组件节点信息时，可通过该参数获取；如果组件被释放将返回null。 |
 
 ## GestureListenerCallback<sup>20+</sup>
 
@@ -148,7 +161,9 @@ type GestureListenerCallback = (info: GestureTriggerInfo) => void
 
 定义了用于在UIObserver中监控特定手势触发信息的回调类型。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -162,13 +177,13 @@ type GestureListenerCallback = (info: GestureTriggerInfo) => void
 | ------- | ----------------- | ---- | --------------------------------- |
 | info   | [GestureTriggerInfo](arkts-apis-uicontext-i.md#gesturetriggerinfo20)     | 是   |  交互触发的手势详情。 |
 
-## PointerStyle<sup>12+</sup>
+## PointerStyle
 
 type PointerStyle = pointer.PointerStyle
 
 光标样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Pointer
 
@@ -180,13 +195,13 @@ type PointerStyle = pointer.PointerStyle
 | -- | -- |
 |[pointer.PointerStyle](../apis-input-kit/js-apis-pointer.md#pointerstyle) |光标样式。|
 
-## Context<sup>12+</sup>
+## Context
 
 type Context = common.Context
 
-当前组件所在Ability的上下文。
+当前组件所在Ability（应用组件）的上下文。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -199,3 +214,46 @@ type Context = common.Context
 | 类型 |说明   |
 | ------ | ------------------- |
 | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context) |Context的具体类型为当前Ability关联的Context对象。|
+
+## OnOverlayBackPressCallback
+
+type OnOverlayBackPressCallback = () => boolean
+
+定义拦截Overlay侧滑返回事件的回调类型。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本 26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 是否拦截返回事件。<br/>返回true表示拦截返回事件，事件不会向下层组件传递；返回false表示不拦截，事件将向下层组件透传。 |
+
+## NodeSensitiveInputCallback
+
+type NodeSensitiveInputCallback = (info: NodeSensitiveInputInfo, node?: FrameNode) => void
+
+定义监听指定节点输入事件的回调类型，用于[onNodeSensitiveInput](arkts-apis-uicontext-uiobserver.md#onnodesensitiveinput)和[offNodeSensitiveInput](arkts-apis-uicontext-uiobserver.md#offnodesensitiveinput)接口。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| info | [NodeSensitiveInputInfo](arkts-apis-uicontext-i.md#nodesensitiveinputinfo) | 是 | 分发到节点的输入事件信息。 |
+| node | [FrameNode](js-apis-arkui-frameNode.md#framenode-1) | 否 | 接收输入事件的组件；若组件已释放，则返回null。不设置该参数时，默认值为undefined，表示无需指定接收输入事件的组件。 |

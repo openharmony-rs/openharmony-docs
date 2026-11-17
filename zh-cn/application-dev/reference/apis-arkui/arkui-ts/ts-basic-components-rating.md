@@ -26,9 +26,9 @@
 
 Rating(options?: RatingOptions)
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -50,9 +50,9 @@ stars(value: number)
 
 设置评分总数。设置为小于等于0的值时，按默认值显示。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -74,9 +74,11 @@ stars(starCount: Optional\<number>)
 
 设置评分总数。设置为小于等于0的值时，按默认值显示。与[stars](#stars)相比，starCount参数新增了对undefined类型的支持。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,11 +118,11 @@ stars(value: int | undefined)
 
 stepSize(value: number)
 
-设置操作评级的步长。设置为小于0.1的值时，按默认值显示。
+设置操作评级的步长。设置为小于0.1的值时，按默认值显示。设置的评分值会规整到stepSize的整数倍（四舍五入到最近的整数倍）。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,11 +142,13 @@ stepSize(value: number)
 
 stepSize(size: Optional\<number>)
 
-设置操作评级的步长。设置为小于0.1的值时，按默认值显示。与[stepSize](#stepsize)相比，size参数新增了对undefined类型的支持。
+设置操作评级的步长。设置为小于0.1的值时，按默认值显示。设置的评分值会规整到stepSize的整数倍（四舍五入到最近的整数倍）。与[stepSize](#stepsize)相比，size参数新增了对undefined类型的支持。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -162,7 +166,7 @@ stepSize(size: Optional\<number>)
 
 stepSize(value: double | undefined)
 
-设置操作评级的步长。设置为小于0.1的值时，按默认值显示。与[stepSize](#stepsize)相比，value参数新增了对undefined类型的支持。
+设置操作评级的步长。设置为小于0.1的值时，按默认值显示。设置的评分值会规整到stepSize的整数倍（四舍五入到最近的整数倍）。与[stepSize](#stepsize)相比，value参数新增了对undefined类型的支持。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -186,9 +190,9 @@ starStyle(options: StarStyleOptions)
 
 默认图片加载方式为异步，暂不支持同步加载。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -218,9 +222,11 @@ ArkTS-Sta: starStyle(options: StarStyleOptions | undefined)
 
 与[starStyle](#starstyle)相比，options参数新增了对undefined类型的支持。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -248,7 +254,9 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<RatingConfiguration> | und
 
 定制Rating内容区的方法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -270,7 +278,9 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<RatingConfiguration> | und
 
 定制Rating内容区的方法。与[contentModifier](#contentmodifier12)相比，modifier参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -310,9 +320,9 @@ onChange(callback: (value: number) => void)
 
 当评分条的评星变化时触发该回调。使用callback异步回调。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -328,7 +338,7 @@ callback回调参数说明：
 
 | 参数名   | 类型     | 必填 | 说明                         |
 | -------- | -------- | ---- | ---------------------------- |
-| value | number | 是   | 评分条的评分。 |
+| value | number | 是   | 评分条的评分。取值会规整到[stepSize](#stepsize)的整数倍。 |
 
 ### onChange<sup>18+</sup>
 
@@ -336,9 +346,11 @@ onChange(callback: Optional\<OnRatingChangeCallback>)
 
 当评分条的评星变化时触发该回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。使用callback异步回调。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -359,6 +371,8 @@ onChange(callback: Optional\<OnRatingChangeCallback>)
 onChange(callback: OnRatingChangeCallback | undefined)
 
 当评分条的评星变化时会触发该回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。使用callback异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -384,7 +398,7 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 操作评分条的评星变化时触发该回调。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -396,13 +410,13 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| rating | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 评分条的评分。 |
+| rating | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是   | 评分条的评分。取值会规整到[stepSize](#stepsize)的整数倍。 |
 
 ## 键盘走焦规格
 | 按键         | 功能描述                        |
 |------------|-----------------------------|
 | Tab        | 组件间切换焦点。                    |
-| 左右方向键   | 评分预览增加/减少（步长为step），不改变实际分值。 |
+| 左右方向键   | 评分预览增加/减少（步长为stepSize），不改变实际分值。 |
 | Home       | 移动到第一个星星， 不改变实际分值。          |
 | End        | 移动到最后一个星星， 不改变实际分值。         |
 | Space/Enter | 根据当前评分提交评分结果。               |
@@ -411,7 +425,9 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt12对象说明)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -421,10 +437,10 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 | 名称  | 类型    |    只读    |    可选      |  说明              |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
-| rating    | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否 | 否 | 设置并接收评分值。<br/>默认值：0<br/>取值范围： [0, stars]<br/>小于0取0，大于[stars](#stars)取最大值stars。<br />该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该参数支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。 |
+| rating    | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否 | 否 | 设置并接收评分值。<br/>默认值：0<br/>取值范围： [0, stars]<br/>小于0取0，大于[stars](#stars)取最大值stars。<br/>设置的评分值会规整到[stepSize](#stepsize)的整数倍（四舍五入到最近的整数倍），实际显示值与[onChange](#onchange)回调值均为规整后的值。该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)与[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。 |
 | indicator | boolean | 否 | 否 | 评分条是否作为指示器使用。当值为true时，表示作为指示器；当值为false时，表示不作为指示器。<br/>默认值：false |
 | stars | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 |评分条的星级总数。<br/>默认值：5 |
-| stepSize | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 |评分条的评分步长。<br/>默认值：0.5 |
+| stepSize | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否 | 否 |评分条的评分步长。<br/>默认值：0.5<br/>设置的评分值会规整到stepSize的整数倍（四舍五入到最近的整数倍）。 |
 | triggerChange | ArkTS-Dyn: Callback\<number> <br> ArkTS-Sta: Callback\<double> | 否 | 否 |触发评分数量变化。 |
 
 ## RatingOptions<sup>18+</sup>对象说明
@@ -435,9 +451,11 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 >
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -447,8 +465,8 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 | 名称                   | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
-| rating<sup>7+</sup>    | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined \| Bindable\<double>  | 否   | 否   | 设置并接收评分值。取值为undefined时，按默认值处理。<br/>默认值：0<br/>取值范围： [0, stars]<br/>小于0取0，大于[stars](#stars)取最大值stars。<br />该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
-| indicator<sup>7+</sup> | boolean | 否   | 是   | 设置评分组件作为指示器使用，值为true时，不可改变评分，值为false时，可进行评分。<br/>默认值：false<br/>**说明：** <br/>indicator=true时，默认组件高度height=12.0vp，组件width=height * stars。 <br/>indicator=false时，默认组件高度height=28.0vp，组件width=height * stars。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
+| rating<sup>7+</sup>    | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined \| Bindable\<double>  | 否   | 否   | 设置并接收评分值。取值为undefined时，按默认值处理。<br/>默认值：0<br/>取值范围： [0, stars]<br/>小于0取0，大于[stars](#stars)取最大值stars。<br/>设置的评分值会规整到[stepSize](#stepsize)的整数倍（四舍五入到最近的整数倍），实际显示值与[onChange](#onchange)回调值均为规整后的值。该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
+| indicator<sup>7+</sup> | boolean | 否   | 是   | 设置评分组件作为指示器使用，值为true时，不可改变评分，值为false时，可进行评分。<br/>默认值：false<br/>**说明：** <br/>indicator=true时，默认组件高度height=12.0vp，组件width=height * stars。 <br/>indicator=false时，默认组件高度height=28.0vp，组件width=height * stars。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 
 ## StarStyleOptions<sup>18+</sup>对象说明
 
@@ -458,9 +476,11 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 >
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -470,9 +490,9 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 | 名称                       | 类型   | 只读 | 可选 | 说明                                                         |
 | -------------------------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| backgroundUri<sup>7+</sup> | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined | 否  | 否  | 未选中的星级的图片链接，可由用户自定义或使用系统默认图片。取值为undefined时，则使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 23|
-| foregroundUri<sup>7+</sup> | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined | 否  | 否  | 选中的星级的图片路径，可由用户自定义或使用系统默认图片。取值为undefined时，则使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 23|
-| secondaryUri<sup>7+</sup>  | [ResourceStr](ts-types.md#resourcestr) | 否   | 是  | 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 23|
+| backgroundUri<sup>7+</sup> | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined | 否  | 否  | 未选中的星级的图片路径，可由用户自定义或使用系统默认图片。取值为undefined时，则使用系统默认图片。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 23|
+| foregroundUri<sup>7+</sup> | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined | 否  | 否  | 选中的星级的图片路径，可由用户自定义或使用系统默认图片。取值为undefined时，则使用系统默认图片。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 23|
+| secondaryUri<sup>7+</sup>  | [ResourceStr](ts-types.md#resourcestr) | 否   | 是  | 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例3（通过Resource资源设置评分的样式）](#示例3通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 23|
 
 > **说明：**
 >
@@ -483,6 +503,8 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 ### 示例1（设置默认评分样式）
 
 以下示例展示了如何创建默认星型评分样式。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -508,6 +530,75 @@ struct RatingExample {
       }.width(360).height(113).backgroundColor('#FFFFFF').margin({ top: 68 })
 
       Row() {
+        // 'common/testImage.jpg'需要替换为开发者所需的图像资源文件。
+        Image('common/testImage.jpg')
+          .width(40)
+          .height(40)
+          .borderRadius(20)
+          .margin({ left: 24 })
+        Column() {
+          Text('Yue')
+            .fontSize(16)
+            .fontColor('#182431')
+            .fontWeight(500)
+          Row() {
+            Rating({ rating: 3.5, indicator: false }).margin({ top: 1, right: 8 })
+            Text('2021/06/02')
+              .fontSize(10)
+              .fontColor('#182431')
+          }
+        }.margin({ left: 12 }).alignItems(HorizontalAlign.Start)
+
+        Text('1st Floor')
+          .fontSize(10)
+          .fontColor('#182431')
+          .position({ x: 295, y: 8 })
+      }.width(360).height(56).backgroundColor('#FFFFFF').margin({ top: 64 })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Text,
+  Color,
+  Rating,
+  Row,
+  Image,
+  HorizontalAlign,
+  State
+} from '@kit.ArkUI';
+
+// xxx.ets
+@Entry
+@Component
+struct RatingExample {
+  @State rating: number = 3.5;
+
+  build() {
+    Column() {
+      Column() {
+        Rating({ rating: this.rating, indicator: false })
+          .stars(5)
+          .stepSize(0.5)
+          .margin({ top: 24 })
+          .onChange((value: number) => {
+            this.rating = value;
+          })
+        Text('current score is ' + this.rating)
+          .fontSize(16)
+          .fontColor('rgba(24,36,49,0.60)')
+          .margin({ top: 16 })
+      }.width(360).height(113).backgroundColor('#FFFFFF').margin({ top: 68 })
+
+      Row() {
+        // 'common/testImage.jpg'需要替换为开发者所需的图像资源文件。
         Image('common/testImage.jpg')
           .width(40)
           .height(40)
@@ -540,6 +631,8 @@ struct RatingExample {
 
 ### 示例2（自定义评分条）
 以下示例实现了自定义评分条的功能，其中每个圆圈表示0.5分。当ratingIndicator为true时，评分条作为指示器使用，不可改变评分；当为false时，可进行评分。ratingStars用于设置评分总数，ratingStepsize用于设置评分步长。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -740,6 +833,229 @@ struct ratingExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Text,
+  Color,
+  Rating,
+  Row,
+  RatingConfiguration,
+  ContentModifier,
+  WrappedBuilder,
+  wrapBuilder,
+  Circle,
+  ClickEvent,
+  Button,
+  Visibility,
+  FlexAlign,
+  State
+} from '@kit.ArkUI';
+
+// xxx.ets
+type BuilderRating = @Builder(config: RatingConfiguration) => void
+
+class MyRatingStyle implements ContentModifier<RatingConfiguration> {
+  name: string = '';
+  style: number = 0;
+
+  constructor(value1: string, value2: number) {
+    this.name = value1;
+    this.style = value2;
+  }
+
+  applyContent(): WrappedBuilder<BuilderRating> {
+    return wrapBuilder(buildRating);
+  }
+}
+
+@Builder
+function buildRating(config: RatingConfiguration) {
+  Column() {
+    Row() {
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 0.4 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            if (config.stepSize === 0.5) {
+              config.triggerChange(0.5);
+              return
+            }
+            if (config.stepSize === 1.0) {
+              config.triggerChange(1);
+              return
+            }
+          }
+        }).visibility(config.stars >= 1 ? Visibility.Visible : Visibility.Hidden)
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 0.9 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            config.triggerChange(1);
+          }
+        }).visibility(config.stars >= 1 ? Visibility.Visible : Visibility.Hidden)
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 1.4 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            if (config.stepSize === 0.5) {
+              config.triggerChange(1.5);
+              return
+            }
+            if (config.stepSize === 1.0) {
+              config.triggerChange(2);
+              return
+            }
+          }
+        }).visibility(config.stars >= 2 ? Visibility.Visible : Visibility.Hidden).margin({ left: 10 })
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 1.9 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            config.triggerChange(2);
+          }
+        }).visibility(config.stars >= 2 ? Visibility.Visible : Visibility.Hidden)
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 2.4 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            if (config.stepSize === 0.5) {
+              config.triggerChange(2.5);
+              return
+            }
+            if (config.stepSize === 1.0) {
+              config.triggerChange(3);
+              return
+            }
+          }
+        }).visibility(config.stars >= 3 ? Visibility.Visible : Visibility.Hidden).margin({ left: 10 })
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 2.9 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            config.triggerChange(3);
+          }
+        }).visibility(config.stars >= 3 ? Visibility.Visible : Visibility.Hidden)
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 3.4 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            if (config.stepSize === 0.5) {
+              config.triggerChange(3.5);
+              return
+            }
+            if (config.stepSize === 1.0) {
+              config.triggerChange(4);
+              return
+            }
+          }
+        }).visibility(config.stars >= 4 ? Visibility.Visible : Visibility.Hidden).margin({ left: 10 })
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 3.9 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            config.triggerChange(4);
+          }
+        }).visibility(config.stars >= 4 ? Visibility.Visible : Visibility.Hidden)
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 4.4 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            if (config.stepSize === 0.5) {
+              config.triggerChange(4.5);
+              return
+            }
+            if (config.stepSize === 1.0) {
+              config.triggerChange(5);
+              return
+            }
+          }
+        }).visibility(config.stars >= 5 ? Visibility.Visible : Visibility.Hidden).margin({ left: 10 })
+      Circle({ width: 25, height: 25 })
+        .fill(config.rating >= 4.9 ? Color.Black : Color.Red)
+        .onClick((event: ClickEvent) => {
+          if (!config.indicator) {
+            config.triggerChange(5);
+          }
+        }).visibility(config.stars >= 5 ? Visibility.Visible : Visibility.Hidden)
+    }
+
+    Text('分值：' + config.rating)
+  }
+}
+
+@Entry
+@Component
+struct ratingExample {
+  @State rating: number = 0;
+  @State ratingIndicator: boolean = true;
+  @State ratingStars: Int = 0;
+  @State ratingStepSize: number = 0.5;
+  @State ratingEnabled: boolean = true;
+
+  build() {
+    Row() {
+      Column() {
+        Rating({
+          rating: 0,
+          indicator: this.ratingIndicator
+        })
+          .stepSize(this.ratingStepSize)
+          .stars(this.ratingStars)
+          .backgroundColor(Color.Transparent)
+          .width('100%')
+          .height(50)
+          .onChange((value: number) => {
+            console.info('Rating change is' + value);
+            this.rating = value;
+          })
+          .contentModifier(new MyRatingStyle('hello', 3))
+        Button(this.ratingIndicator ? 'ratingIndicator : true' : 'ratingIndicator : false')
+          .onClick((event) => {
+            if (this.ratingIndicator) {
+              this.ratingIndicator = false;
+            } else {
+              this.ratingIndicator = true;
+            }
+          }).margin({ top: 5 })
+
+        Button(this.ratingStars < 5 ? 'ratingStars + 1, ratingStars =' + this.ratingStars : 'ratingStars最大值为5')
+          .onClick((event) => {
+            if (this.ratingStars < 5) {
+              this.ratingStars += 1;
+            }
+          }).margin({ top: 5 })
+
+        Button(this.ratingStars > 0 ? 'ratingStars - 1, ratingStars =' + this.ratingStars :
+          'ratingStars小于等于0时默认等于5')
+          .onClick((event) => {
+            if (this.ratingStars > 0) {
+              this.ratingStars -= 1;
+            }
+          }).margin({ top: 5 })
+
+        Button(this.ratingStepSize == 0.5 ? 'ratingStepSize : 0.5' : 'ratingStepSize : 1')
+          .onClick((event) => {
+            if (this.ratingStepSize == 0.5) {
+              this.ratingStepSize = 1;
+            } else {
+              this.ratingStepSize = 0.5;
+            }
+          }).margin({ top: 5 })
+      }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
+    }
+    .height('100%')
+  }
+}
+```
+
 ![rating2](figures/rating2.gif)
 
 ### 示例3（通过Resource资源设置评分的样式）
@@ -797,6 +1113,7 @@ struct RatingExample {
         .stars(5)
         .stepSize(0.5)
         .starStyle({
+          // $r('app.media.xxx')需要替换为开发者所需的图像资源文件。
           backgroundUri: $r('app.media.imag1'),
           foregroundUri: $r('app.media.imag2'),
           secondaryUri: $r('app.media.imag3')
@@ -822,7 +1139,7 @@ struct RatingExample {
 
 > **说明**
 >
-> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)中相关介绍。
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2开始，新建工程或者模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOptions > resOptions > copyCodeResource > enable设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)中相关介绍。
 
 ArkTS-Dyn示例：
 

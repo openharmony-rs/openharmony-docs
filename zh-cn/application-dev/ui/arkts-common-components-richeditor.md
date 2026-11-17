@@ -6,11 +6,11 @@
 <!--Tester: @mateng_Holtens-->
 <!--Adviser: @Brilliantry_Rui-->
 
-RichEditor是支持图文混排和文本交互式编辑的组件，通常用于响应用户对图文混合内容的输入操作，例如可以输入图文的评论区。具体用法参考[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)组件的API文档。
+RichEditor是支持图文混排和文本交互式编辑的组件，通常用于响应用户对图文混排内容的输入操作，例如可以输入图文的评论区。具体用法参考[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)组件的API文档。
 
 对于仅需图文展示而不需要编辑的场景，建议使用[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件。
 
-对于需要大量展示Html格式内容的场景，建议使用[RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md)组件。
+对于需要大量展示HTML格式内容的场景，建议使用[RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md)组件。
 
 ## 组件构成
 
@@ -29,20 +29,22 @@ RichEditor是支持图文混排和文本交互式编辑的组件，通常用于�
 
 ## 创建RichEditor组件
 
-开发者可以[创建基于属性字符串进行内容管理的RichEditor组件](#创建基于属性字符串进行内容管理的richeditor组件)或[创建基于Span进行内容管理的RichEditor组件](#创建基于span进行内容管理的richeditor组件)。
+开发者可以创建基于属性字符串的RichEditor组件或基于Span的RichEditor组件。
 
-### 创建基于属性字符串进行内容管理的RichEditor组件
+### 基于属性字符串的RichEditor组件
 
 使用RichEditor(options: [RichEditorStyledStringOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorstyledstringoptions12))接口可以创建基于属性字符串（[StyledString/MutableStyledString](arkts-styled-string.md)）进行内容管理的RichEditor组件。这种构建方式开发者可以通过在应用侧持有属性字符串对象来管理数据，通过修改属性字符串对象的内容、样式，再传递给组件，即可实现对富文本组件内容的更新。
 
 相比于使用controller提供的接口进行内容样式更新，使用起来更加灵活便捷。同时属性字符串对象可以设置到各类支持属性字符串的文本组件中，可以快速实现内容的迁移。
 
-<!-- @[richEditor_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) --> 
 
 ``` TypeScript
 @Entry
 @Component
-export struct CreateRichEditor {
+struct CreateRichEditor {
   // ...
   fontStyle: TextStyle = new TextStyle({
     fontColor: Color.Pink
@@ -83,19 +85,72 @@ export struct CreateRichEditor {
   }
 }
 ```
+ArkTS-Sta示例：
+
+<!-- @[richEditor_create](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) -->
+
+``` TypeScript
+import { Entry, Text, Column, ColumnOptions, Component, $r, RichEditorController, NavDestination, TextStyle, TextStyleInterface, MutableStyledString, StyleOptions, StyledStringKey, Color, RichEditorStyledStringController, RichEditor, RichEditorOptions, RichEditorStyledStringOptions, HorizontalAlign } from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct CreateRichEditor {
+  // ...
+  fontStyle: TextStyle = new TextStyle({
+    fontColor: Color.Pink
+  })
+  // 定义字体样式对象
+  mutableStyledString: MutableStyledString =
+    // 请将$r('app.string.CreateRichEditor_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"创建使用属性字符串构建的RichEditor组件。"
+    new MutableStyledString(this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.CreateRichEditor_Text_1').id) as string,
+      [{
+        start: 0,
+        length: 5,
+        styledKey: StyledStringKey.FONT,
+        styledValue: this.fontStyle
+      } as StyleOptions])
+
+  controller: RichEditorStyledStringController = new RichEditorStyledStringController();
+  options: RichEditorStyledStringOptions = { controller: this.controller };
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 12 } as ColumnOptions) {
+        Column({ space: 3 } as ColumnOptions) {
+          // ...
+          RichEditor(this.options)
+            .onReady(() => {
+              this.controller.setStyledString(this.mutableStyledString);
+            })
+        }
+        // ...
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // 请将$r('app.string.Create_RichEditor_Component_title')替换为实际资源文件，在本示例中该资源文件的value值为"创建RichEditor组件"
+    .title($r('app.string.Create_RichEditor_Component_title'))
+  }
+}
+```
 
 ![alt text](figures/richeditor_image_stylestringoptions.gif)
 
-### 创建基于Span进行内容管理的RichEditor组件
+### 基于Span的RichEditor组件
 
-使用RichEditor(value: [RichEditorOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditoroptions))接口可以创建基于Span进行内容管理的RichEditor组件，通常用于复杂内容场景，开发者通过RichEditorController提供的接口实现内容、样式的管理。
+使用RichEditor(value: [RichEditorOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditoroptions))接口可以创建基于Span进行内容管理的RichEditor组件，通常用于复杂内容场景，开发者通过[RichEditorController](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorcontroller)提供的接口实现内容、样式的管理。
 
-<!-- @[richEditor_create_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_create_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) --> 
 
 ``` TypeScript
 @Entry
 @Component
-export struct CreateRichEditor {
+struct CreateRichEditor {
   controllerNoStyledString: RichEditorController = new RichEditorController();
   optionsNoStyledString: RichEditorOptions = { controller: this.controllerNoStyledString };
   // ...
@@ -104,6 +159,54 @@ export struct CreateRichEditor {
       Column({ space: 12 }) {
         // ...
         Column({ space: 3 }) {
+          // ...
+          RichEditor(this.optionsNoStyledString)
+            .onReady(() => {
+              this.controllerNoStyledString.addTextSpan(
+                /**
+                 * 请将$r('app.string.CreateRichEditor_Text_2')替换为实际资源文件，
+                 * 在本示例中该资源文件的value值为"创建不使用属性字符串构建的RichEditor组件。"
+                 */
+                $r('app.string.CreateRichEditor_Text_2'), {
+                style: {
+                  fontColor: Color.Black,
+                  fontSize: 15
+                }
+              })
+            })
+        }
+        // ...
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // 请将$r('app.string.Create_RichEditor_Component_title')替换为实际资源文件，在本示例中该资源文件的value值为"创建RichEditor组件"
+    .title($r('app.string.Create_RichEditor_Component_title'))
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_create](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) -->
+
+``` TypeScript
+import { Entry, Text, Column, ColumnOptions, Component, $r, RichEditorController, NavDestination, TextStyle, TextStyleInterface, MutableStyledString, StyleOptions, StyledStringKey, Color, RichEditorStyledStringController, RichEditor, RichEditorOptions, RichEditorStyledStringOptions, HorizontalAlign } from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct CreateRichEditor {
+  controllerNoStyledString: RichEditorController = new RichEditorController();
+  optionsNoStyledString: RichEditorOptions = { controller: this.controllerNoStyledString };
+  // ...
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 12 } as ColumnOptions) {
+        // ...
+        Column({ space: 3 } as ColumnOptions) {
           // ...
           RichEditor(this.optionsNoStyledString)
             .onReady(() => {
@@ -147,43 +250,93 @@ export struct CreateRichEditor {
 
 如果组件是获焦状态并且光标在闪烁，那么通过addTextSpan添加文本内容后，光标位置会更新，在新添加文本内容的右侧闪烁。
 
-<!-- @[richEditor_addText](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddTextContent.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_addText](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddTextContent.ets) --> 
 
 ``` TypeScript
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+build() {
+  // ...
+    Column({ space: 3 }) {
+      RichEditor(this.options)
+        .onReady(() => {
+          // 请将$r('app.string.AddTextContent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮在此处添加text。"
+          this.controller.addTextSpan($r('app.string.AddTextContent_Text_1'), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
+          })
+        })
+        .border({ width: 1, color: Color.Gray })
+        .constraintSize({
+          maxHeight: 100
+        })
+        .width(300)
+        .margin(10)
+      Row() {
+        // 请将$r('app.string.AddTextContent_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"addTextSpan"
+        Button($r('app.string.AddTextContent_Button_1'), {
+          buttonStyle: ButtonStyleMode.NORMAL
+        })
+        .height(30)
+        .fontSize(13)
+        .onClick(() => {
+          // 请将$r('app.string.AddTextContent_Text_2')替换为实际资源文件，在本示例中该资源文件的value值为"新添加一段文字。"
+          this.controller.addTextSpan($r('app.string.AddTextContent_Text_2'))
+        })
+      }.justifyContent(FlexAlign.Center).width('100%')
+    }
+  // ...
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_addText](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/AddTextContent.ets) -->
+
+``` TypeScript
+import { Entry, Button, ButtonStyleMode, Row, Column, ColumnOptions, Component, FlexAlign, $r, RichEditorController, NavDestination, Color, RichEditor, RichEditorOptions, HorizontalAlign } from '@kit.ArkUI';
+
 @Entry
 @Component
 export struct AddTextContent {
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller };
 
-  build() {
+  build(): void {
     // ...
-            RichEditor(this.options)
-              .onReady(() => {
-                // 请将$r('app.string.AddTextContent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮在此处添加text。"
-                this.controller.addTextSpan(resource.resourceToString($r('app.string.AddTextContent_Text_1')), {
-                  style: {
-                    fontColor: Color.Black,
-                    fontSize: 15
-                  }
-                })
-              })
-              .border({ width: 1, color: Color.Gray })
-              .constraintSize({
-                maxHeight: 100
-              })
-              .width(300)
-              .margin(10)
-            // 请将$r('app.string.AddTextContent_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"addTextSpan"
-            Button($r('app.string.AddTextContent_Button_1'), {
-              buttonStyle: ButtonStyleMode.NORMAL
+      Column({ space: 3 } as ColumnOptions) {
+        RichEditor(this.options)
+          .onReady(() => {
+            // 请将$r('app.string.AddTextContent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮在此处添加text。"
+            this.controller.addTextSpan($r('app.string.AddTextContent_Text_1'), {
+              style: {
+                fontColor: Color.Black,
+                fontSize: 15
+              }
             })
-              .height(30)
-              .fontSize(13)
-              .onClick(() => {
-                // 请将$r('app.string.AddTextContent_Text_2')替换为实际资源文件，在本示例中该资源文件的value值为"新添加一段文字。"
-                this.controller.addTextSpan(resource.resourceToString($r('app.string.AddTextContent_Text_2')))
-              })
+          })
+          .border({ width: 1, color: Color.Gray })
+          .constraintSize({
+            maxHeight: 100
+          })
+          .width(300)
+          .margin(10)
+        Row() {
+          // 请将$r('app.string.AddTextContent_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"addTextSpan"
+          Button($r('app.string.AddTextContent_Button_1'), {
+            buttonStyle: ButtonStyleMode.NORMAL
+          })
+            .height(30)
+            .fontSize(13)
+            .onClick(() => {
+              // 请将$r('app.string.AddTextContent_Text_2')替换为实际资源文件，在本示例中该资源文件的value值为"新添加一段文字。"
+              this.controller.addTextSpan($r('app.string.AddTextContent_Text_2'))
+            })
             // ...
   }
 }
@@ -199,24 +352,78 @@ export struct AddTextContent {
 
 如果组件是获焦状态并且光标在闪烁，那么通过addImageSpan添加图片内容后，光标位置会更新，在新添加图片内容的右侧闪烁。
 
-<!-- @[richEditor_addImage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddImageContent.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_addImage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddImageContent.ets) --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
 options: RichEditorOptions = { controller: this.controller };
-// ...
-         RichEditor(this.options)
-            .onReady(() => {
-              // 请将$r('app.string.AddImageContent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮在此处添加image。"
-              this.controller.addTextSpan(resource.resourceToString($r('app.string.AddImageContent_Text_1')), {
-                style: {
-                  fontColor: Color.Black,
-                  fontSize: 15
-                }
-              })
+build() {
+  // ...
+    Column({ space: 12 }) {
+      RichEditor(this.options)
+        .onReady(() => {
+          // 请将$r('app.string.AddImageContent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮在此处添加image。"
+          this.controller.addTextSpan($r('app.string.AddImageContent_Text_1'), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
+          })
+        })
+        .width(300)
+        .height(100)
+      Row() {
+        // 请将$r('app.string.AddImageContent_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"addImageSpan"
+        Button($r('app.string.AddImageContent_Button_1'), {
+          buttonStyle: ButtonStyleMode.NORMAL
+        })
+          .height(30)
+          .fontSize(13)
+          .onClick(() => {
+            // 请将$r('app.media.xxx')替换为实际资源文件
+            this.controller.addImageSpan($r('app.media.startIcon'), {
+              imageStyle: {
+                size: ['57px', '57px']
+              }
             })
-            .width(300)
-            .height(100)
+          })
+      }.justifyContent(FlexAlign.Center).width('100%')
+    }
+  // ...
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_addImage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/AddImageContent.ets) -->
+
+``` TypeScript
+import { Entry, Button, ButtonStyleMode, Row, Column, ColumnOptions, Component, FlexAlign, $r, RichEditorController, NavDestination, Color, RichEditor, RichEditorOptions, HorizontalAlign } from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct AddImageContent {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 12 } as ColumnOptions) {
+        RichEditor(this.options)
+          .onReady(() => {
+            // 请将$r('app.string.AddImageContent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮在此处添加image。"
+            this.controller.addTextSpan($r('app.string.AddImageContent_Text_1'), {
+              style: {
+                fontColor: Color.Black,
+                fontSize: 15
+              }
+            })
+          })
+          .width(300)
+          .height(100)
+        Row() {
           // 请将$r('app.string.AddImageContent_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"addImageSpan"
           Button($r('app.string.AddImageContent_Button_1'), {
             buttonStyle: ButtonStyleMode.NORMAL
@@ -231,6 +438,7 @@ options: RichEditorOptions = { controller: this.controller };
                 }
               })
             })
+            // ...
 ```
 
 ![alt text](figures/richeditor_image_add_image.gif)
@@ -242,6 +450,8 @@ options: RichEditorOptions = { controller: this.controller };
 此接口可用于自定义复杂组件的嵌入，例如在组件内加入自定义图表。
 
 该接口内可通过[RichEditorBuilderSpanOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorbuilderspanoptions11)设置在组件中添加builder的位置，省略或者为异常值时，则添加builder到所有内容的最后位置。
+
+ArkTS-Dyn示例：
 
 <!-- @[richEditor_addBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddBuilderDecoratorContent.ets) -->
 
@@ -303,34 +513,149 @@ build() {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[richEditor_addBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/AddBuilderDecoratorContent.ets) -->
+
+``` TypeScript
+import { Entry, Text, Image, Button, ButtonStyleMode, Row, Column, ColumnOptions, Component, FontWeight, FlexAlign, $r, RichEditorController, NavDestination, Color, RichEditor, RichEditorOptions, HorizontalAlign, Builder } from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct AddBuilderDecoratorContent {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  @Builder
+  TextBuilder(): void {
+    Row() {
+      Image($r('app.media.startIcon')).width(50).height(50).margin(16)
+      Column() {
+        // 请将$r('app.string.AddBuilderDecoratorContent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"文本文档.txt"        
+        Text($r('app.string.AddBuilderDecoratorContent_Text_1')).fontWeight(FontWeight.Bold).fontSize(16)
+        // 请将$r('app.string.AddBuilderDecoratorContent_Text_2')替换为实际资源文件，在本示例中该资源文件的value值为"123.45KB"
+        Text($r('app.string.AddBuilderDecoratorContent_Text_2')).fontColor('#8a8a8a').fontSize(12)
+      }.alignItems(HorizontalAlign.Start)
+    }.backgroundColor('#f4f4f4')
+    .borderRadius('20')
+    .width(220)
+  }
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 12 } as ColumnOptions) {
+        RichEditor(this.options)
+          .onReady(() => {
+            this.controller.addTextSpan(
+              /* 
+               * 请将$r('app.string.AddBuilderDecoratorContent_Text_3')替换为实际资源文件，
+               * 在本示例中该资源文件的value值为"点击按钮在此处添加builderspan。" 
+               */
+              $r('app.string.AddBuilderDecoratorContent_Text_3'), {
+              style: {
+                fontColor: Color.Black,
+                fontSize: 15
+              }
+            })
+          })
+        Row() {
+          /* 
+           * 请将$r('app.string.AddBuilderDecoratorContent_Button_1')替换为实际资源文件，
+           * 在本示例中该资源文件的value值为"addBuilderSpan" 
+           */
+          Button($r('app.string.AddBuilderDecoratorContent_Button_1'), {
+            buttonStyle: ButtonStyleMode.NORMAL
+          })
+            .height(30)
+            .fontSize(13)
+            .onClick(() => {
+              this.controller.addBuilderSpan(this.TextBuilder)
+            })
+        }.justifyContent(FlexAlign.Center).width('100%')
+        // ...
+```
+
 ![alt text](figures/richeditor_image_add_builder_span2.0.gif)
 
 ### 添加SymbolSpan内容
 
-可通过[addSymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#addsymbolspan11)添加Symbol内容。此接口可用于特殊符号的添加，例如在编辑学术论文时，此接口可用于添加各种数学符号。
+可通过[addSymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#addsymbolspan11)添加Symbol内容。此接口可用于Symbol矢量图标的添加，例如在文本中插入图标、标志等可视化符号元素。
 
 添加Symbol内容时，如果组件是获焦状态并且光标在闪烁，那么添加Symbol后，光标将移动到新插入Symbol的右侧。
 
 Symbol内容暂不支持手势、复制、拖拽处理。
 
-<!-- @[richEditor_addSymbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddSymbolSpanContent.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_addSymbol](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddSymbolSpanContent.ets) --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
 options: RichEditorOptions = { controller: this.controller };
-// ...
-          RichEditor(this.options)
-            .onReady(() => {
-              // 请将$r('app.string.AddSymbolSpanContent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮在此处添加symbol。"
-              this.controller.addTextSpan(resource.resourceToString($r('app.string.AddSymbolSpanContent_Text_1')), {
-                style: {
-                  fontColor: Color.Black,
-                  fontSize: 15
-                }
-              })
+
+build() {
+  // ...
+    Column({ space: 12 }) {
+      RichEditor(this.options)
+        .onReady(() => {
+          // 请将$r('app.string.AddSymbolSpanContent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮在此处添加symbol"
+          this.controller.addTextSpan($r('app.string.AddSymbolSpanContent_Text_1'), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
+          })
+        })
+        .width(300)
+        .height(100)
+      Row() {
+        // 请将$r('app.string.AddSymbolSpanContent_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"addSymbolSpan"
+        Button($r('app.string.AddSymbolSpanContent_Button_1'), {
+          buttonStyle: ButtonStyleMode.NORMAL
+        })
+          .height(30)
+          .fontSize(13)
+          .onClick(() => {
+            // 请将$r('sys.symbol.basketball_fill')替换为开发者所需的资源文件
+            this.controller.addSymbolSpan($r('sys.symbol.basketball_fill'), {
+              style: {
+                fontSize: 30
+              }
             })
-            .width(300)
-            .height(100)
+          })
+      }.justifyContent(FlexAlign.Center).width('100%')
+    }
+  // ...
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_addSymbol](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/AddSymbolSpanContent.ets) -->
+
+``` TypeScript
+import { Entry, Button, ButtonStyleMode, Row, Column, ColumnOptions, Component, FlexAlign, $r, RichEditorController, NavDestination, Color, RichEditor, RichEditorOptions, HorizontalAlign } from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct AddSymbolSpanContent {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+// ...
+      Column({ space: 12 } as ColumnOptions) {
+        RichEditor(this.options)
+          .onReady(() => {
+            // 请将$r('app.string.AddSymbolSpanContent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮在此处添加symbol"
+            this.controller.addTextSpan($r('app.string.AddSymbolSpanContent_Text_1'), {
+              style: {
+                fontColor: Color.Black,
+                fontSize: 15
+              }
+            })
+          })
+          .width(300)
+          .height(100)
+        Row() {
           // 请将$r('app.string.AddSymbolSpanContent_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"addSymbolSpan"
           Button($r('app.string.AddSymbolSpanContent_Button_1'), {
             buttonStyle: ButtonStyleMode.NORMAL
@@ -359,37 +684,104 @@ options: RichEditorOptions = { controller: this.controller };
 
 此接口适用于已有的内容样式获取与检查，例如在模板应用场景下，可利用此接口获取文本样式。此外，它还适用于内容解析与处理，例如在文本分析应用中，此接口能够获取特定范围内的文本信息。
 
-<!-- @[richEditor_getSpans](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/GetGraphicInfoInComponent.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_getSpans](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/GetGraphicInfoInComponent.ets) --> 
 
 ``` TypeScript
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-infoShowController: RichEditorController = new RichEditorController();
-infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
-// 创建两个富文本组件
-// ...
-          RichEditor(this.options)
-            .onReady(() => {
-              this.controller.addTextSpan(
-                // 请将$r('app.string.GetGraphicInfoInComponent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮获取此处span信息。"
-                resource.resourceToString($r('app.string.GetGraphicInfoInComponent_Text_1')), {
-                style: {
-                  fontColor: Color.Black,
-                  fontSize: 15
-                }
-              })
+@Entry
+@Component
+struct GetGraphicInfoInComponent {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  infoShowController: RichEditorController = new RichEditorController();
+  infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+  // 创建两个富文本组件
+  build() {
+    // ...
+      Column({ space: 3 }) {
+        RichEditor(this.options)
+          .onReady(() => {
+            this.controller.addTextSpan(
+              // 请将$r('app.string.GetGraphicInfoInComponent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮获取此处span信息。"
+              $r('app.string.GetGraphicInfoInComponent_Text_1'), {
+              style: {
+                fontColor: Color.Black,
+                fontSize: 15
+              }
             })
-            .width(300)
-            .height(50)
-          // 请将$r('app.string.GetGraphicInfoInComponent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮获取此处span信息。"
-          Text($r('app.string.GetGraphicInfoInComponent_Text_1')).fontSize(10).fontColor(Color.Gray).width(300);
-          RichEditor(this.infoShowOptions)
-            .width(300)
-            .height(50)
+          })
+          .width(300)
+          .height(50)
+        // 请将$r('app.string.GetGraphicInfoInComponent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮获取此处span信息。"
+        Text($r('app.string.GetGraphicInfoInComponent_Text_1')).fontSize(10).fontColor(Color.Gray).width(300);
+        RichEditor(this.infoShowOptions)
+          .width(300)
+          .height(50)
+        Row() {
           // 请将$r('app.string.GetGraphicInfoInComponent_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"getSpans"
           Button($r('app.string.GetGraphicInfoInComponent_Button_1'), {
             buttonStyle: ButtonStyleMode.NORMAL
+          })
+            .height(30)
+            .fontSize(13)
+            .onClick(() => {
+              this.infoShowController.addTextSpan(JSON.stringify(this.controller.getSpans()), {
+                style: {
+                  fontColor: Color.Gray,
+                  fontSize: 10
+                }
+              })
             })
+        }.justifyContent(FlexAlign.Center).width('100%')
+      }
+      // ...
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_getSpans](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/GetGraphicInfoInComponent.ets) -->
+
+``` TypeScript
+import { Entry, Text, Button, ButtonStyleMode, Row, Column, ColumnOptions, Component, FlexAlign, $r, RichEditorController, NavDestination, Color, RichEditor, RichEditorOptions, HorizontalAlign } from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct GetGraphicInfoInComponent {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  infoShowController: RichEditorController = new RichEditorController();
+  infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+
+  // 创建两个富文本组件
+  build(): void {
+    NavDestination() {
+      Column({ space: 3 } as ColumnOptions) {
+        RichEditor(this.options)
+          .onReady(() => {
+            this.controller.addTextSpan(
+              // 请将$r('app.string.GetGraphicInfoInComponent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮获取此处span信息。"
+              $r('app.string.GetGraphicInfoInComponent_Text_1'), {
+              style: {
+                fontColor: Color.Black,
+                fontSize: 15
+              }
+            })
+          })
+          .width(300)
+          .height(50)
+        // 请将$r('app.string.GetGraphicInfoInComponent_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮获取此处span信息。"
+        Text($r('app.string.GetGraphicInfoInComponent_Text_1')).fontSize(10).fontColor(Color.Gray).width(300);
+        RichEditor(this.infoShowOptions)
+          .width(300)
+          .height(50)
+        Row() {
+          // 请将$r('app.string.GetGraphicInfoInComponent_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"getSpans"
+          Button($r('app.string.GetGraphicInfoInComponent_Button_1'), {
+            buttonStyle: ButtonStyleMode.NORMAL
+          })
             .height(30)
             .fontSize(13)
             .onClick(() => {
@@ -410,9 +802,46 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
 
 例如，在用户登录界面采用提示文本，有助于用户区分用户名与密码的输入框。又如，在文本编辑框中，使用提示文本明确输入要求，如“限输入100字以内”，以此指导用户正确操作。
 
-<!-- @[richEditor_placeholder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_placeholder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) --> 
 
 ``` TypeScript
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+build() {
+  Column() {
+    // ...
+    RichEditor(this.options)
+      // 请将$r('app.string.SetAttributes_Text_6')替换为实际资源文件，在本示例中该资源文件的value值为"此处为提示文本..."
+      .placeholder(resource.resourceToString($r('app.string.SetAttributes_Text_6')), {
+        fontColor: Color.Gray,
+        font: {
+          size: 15,
+          weight: FontWeight.Normal,
+          family: 'HarmonyOS Sans',
+          style: FontStyle.Normal
+        }
+      })
+      .width(300)
+      .height(50)
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_placeholder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+
+``` TypeScript
+import { Entry, Component, $r, RichEditorController, Color, RichEditor, RichEditorOptions, FontWeight, FontStyle } from '@kit.ArkUI';
+// ...
 controller: RichEditorController = new RichEditorController();
 options: RichEditorOptions = { controller: this.controller };
 // ...
@@ -429,17 +858,46 @@ options: RichEditorOptions = { controller: this.controller };
         })
         .width(300)
         .height(50)
+
 ```
 
 ![alt text](figures/richeditor_image_placeholder.gif)
 
 ### 设置最大长度
 
-通过[maxLength](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#maxlength18)可以设置富文本的最大可输入字符数。
+从API version 18开始，支持通过[maxLength](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#maxlength18)属性设置富文本的最大可输入字符数。
 
-<!-- @[richEditor_maxLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_maxLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) --> 
 
 ``` TypeScript
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+build() {
+  Column() {
+    // ...
+    RichEditor(this.options)
+      // 请将$r('app.string.SetAttributes_Text_8')替换为实际资源文件，在本示例中该资源文件的value值为"组件设置了最大字符数：7"
+      .placeholder(resource.resourceToString($r('app.string.SetAttributes_Text_8')))
+      .maxLength(7)
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_maxLength](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+
+``` TypeScript
+import { Entry, Component, $r, RichEditorController, RichEditor, RichEditorOptions } from '@kit.ArkUI';
+// ...
 controller: RichEditorController = new RichEditorController();
 options: RichEditorOptions = { controller: this.controller };
 // ...
@@ -450,6 +908,571 @@ options: RichEditorOptions = { controller: this.controller };
 ```
 
 ![max Length](figures/RichEditor_maxLength.gif)
+
+## 设置文本样式
+
+组件支持对文本内容设置复杂的样式。
+
+### 设置预设文本样式
+
+通过[setTypingStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#settypingstyle11)可以设置用户预设的文本样式。
+
+此接口可用于个性化的写作体验，例如可以使用此接口让输入的不同层级标题自动应用相应格式（如一级、二级标题）。
+
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_setTypingStyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetUserPresetTextStyles.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct SetUserPresetTextStyles {
+
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  build() {
+    // ...
+      Column({ space: 12 }) {
+        RichEditor(this.options)
+          .onReady(() => {
+            // 请将$r('app.string.SetUserPresetTextStyles_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮，改变预设文本样式。"
+            this.controller.addTextSpan($r('app.string.SetUserPresetTextStyles_Text_1'),
+              {
+                style: {
+                  fontColor: Color.Black,
+                  fontSize: 15
+                }
+              })
+          })
+          .width(300)
+          .height(60)
+        Row() {
+          // 请将$r('app.string.SetUserPresetTextStyles_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"setTypingStyle"
+          Button($r('app.string.SetUserPresetTextStyles_Button_1'), {
+            buttonStyle: ButtonStyleMode.NORMAL
+          })
+            .height(30)
+            .fontSize(13)
+            .onClick(() => {
+              this.controller.setTypingStyle({
+                fontWeight: 'medium',
+                fontColor: Color.Pink,
+                fontSize: 15,
+                fontStyle: FontStyle.Italic,
+                decoration: {
+                  type: TextDecorationType.Underline,
+                  color: Color.Gray
+                }
+              })
+            })
+        }.justifyContent(FlexAlign.Center).width('100%')
+      }
+      // ...
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_setTypingStyle](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/SetUserPresetTextStyles.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+export struct SetUserPresetTextStyles {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  build(): void {
+    // ...
+      Column({ space: 12 } as ColumnOptions) {
+        RichEditor(this.options)
+          .onReady(() => {
+            // 请将$r('app.string.SetUserPresetTextStyles_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮，改变预设文本样式。"
+            this.controller.addTextSpan($r('app.string.SetUserPresetTextStyles_Text_1'),
+              {
+                style: {
+                  fontColor: Color.Black,
+                  fontSize: 15
+                } as RichEditorTextStyle
+              } as RichEditorTextSpanOptions)
+          })
+          .width(300)
+          .height(60)
+        Row() {
+          // 请将$r('app.string.SetUserPresetTextStyles_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"setTypingStyle"
+          Button($r('app.string.SetUserPresetTextStyles_Button_1'), {
+            buttonStyle: ButtonStyleMode.NORMAL
+          } as ButtonOptions)
+            .height(30)
+            .fontSize(13)
+            .onClick(() => {
+              this.controller.setTypingStyle({
+                fontWeight: 'medium',
+                fontColor: Color.Pink,
+                fontSize: 15,
+                fontStyle: FontStyle.Italic,
+                decoration: {
+                  type: TextDecorationType.Underline,
+                  color: Color.Gray
+                } as DecorationStyleInterface
+              } as RichEditorTextStyle)
+            })
+        }.justifyContent(FlexAlign.Center).width('100%')
+      }
+      // ...
+  }
+}
+```
+
+![alt text](figures/richeditor_image_setTypingStyle.gif)
+
+### 设置装饰线
+
+通过[decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md#decoration)设置富文本组件中文本装饰线的样式、颜色和粗细。
+
+设置文本装饰线可突出关键信息、区分文本状态、增强视觉层次。例如，为重要标题或关键词添加装饰线，帮助用户快速获取信息。
+
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_decoration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+
+``` TypeScript
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+build() {
+  Column() {
+    // ...
+    RichEditor(this.options)
+      .onReady(() => {
+        // 请将$r('app.string.Demo_oneText')替换为实际资源文件，在本示例中该资源文件的value值为"一段预置的文本"
+        this.controller.addTextSpan($r('app.string.Demo_oneText'), {
+          style: {
+            fontSize: 25,
+            decoration: {
+              type: TextDecorationType.LineThrough,
+              color: Color.Blue,
+              // 设置装饰线粗细比例为6
+              thicknessScale: 6
+            }
+          }
+        })
+      })
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_decoration](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+
+``` TypeScript
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+build() {
+  Column() {
+    // ...
+    RichEditor(this.options)
+      .onReady(() => {
+        // 请将$r('app.string.Demo_oneText')替换为实际资源文件，在本示例中该资源文件的value值为"一段预置的文本"
+        this.controller.addTextSpan($r('app.string.Demo_oneText'), {
+          style: {
+            fontSize: 25,
+            decoration: {
+              type: TextDecorationType.LineThrough,
+              color: Color.Blue,
+            } as DecorationStyleInterface
+          } as RichEditorTextStyle
+        })
+      })
+    // ...
+  }
+  .alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
+```
+
+![RichEditor_decoration](figures/RichEditor_decoration.jpg)
+
+从API version 20开始，支持通过[DecorationOptions](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#decorationoptions20)中的enableMultiType设置多装饰线，比如同时设置下划线和中划线。
+
+此接口适用于复杂业务场景，满足文本装饰的多样化需求。在文档协作过程中，多人编辑时，可以通过使用不同的装饰线组合来区分文本状态，从而提高协作效率。
+
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_decorationOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+
+``` TypeScript
+RichEditor({ controller: this.styledStringController });
+// 请将$r('app.string.Demo_SetStyledStringButton')替换为实际资源文件，在本示例中该资源文件的value值为"多装饰线文本"
+Button($r('app.string.Demo_SetStyledStringButton'))
+  .fontSize(20)
+  .onClick(() => {
+    let mutString: MutableStyledString = new MutableStyledString(
+      // 请将$r('app.string.Demo_styledString')替换为实际资源文件，在本示例中该资源文件的value值为"需设置富文本多装饰线"
+      resource.resourceToString($r('app.string.Demo_styledString')), [
+      {
+        start: 0,
+        length: 9,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(25) })
+      },
+      {
+        start: 0,
+        length: 5,
+        styledKey: StyledStringKey.DECORATION,
+        styledValue: new DecorationStyle(
+          {
+            type: TextDecorationType.Underline,
+          },
+          {
+            // 开启多装饰线
+            enableMultiType: true
+          })
+      },
+      {
+        start: 2,
+        length: 4,
+        styledKey: StyledStringKey.DECORATION,
+        styledValue: new DecorationStyle(
+          {
+            type: TextDecorationType.LineThrough,
+          },
+          {
+            // 开启多装饰线
+            enableMultiType: true
+          })
+      }
+    ])
+    this.styledStringController.setStyledString(mutString);
+  })
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_decorationOptions](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+
+``` TypeScript
+RichEditor({ controller: this.styledStringController });
+// 请将$r('app.string.Demo_SetStyledStringButton')替换为实际资源文件，在本示例中该资源文件的value值为"多装饰线文本"
+Button($r('app.string.Demo_SetStyledStringButton'))
+  .fontSize(20)
+  .onClick(() => {
+    let mutString: MutableStyledString = new MutableStyledString(
+      // 请将$r('app.string.Demo_styledString')替换为实际资源文件，在本示例中该资源文件的value值为"需设置富文本多装饰线"
+      resource.resourceToString($r('app.string.Demo_styledString')), [
+      {
+        start: 0,
+        length: 9,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(25) })
+      } as StyleOptions,
+      {
+        start: 0,
+        length: 5,
+        styledKey: StyledStringKey.DECORATION,
+        styledValue: new DecorationStyle(
+          {
+            type: TextDecorationType.Underline,
+          } as DecorationStyleInterface)
+      } as StyleOptions,
+      {
+        start: 2,
+        length: 4,
+        styledKey: StyledStringKey.DECORATION,
+        styledValue: new DecorationStyle(
+          {
+            type: TextDecorationType.LineThrough,
+          } as DecorationStyleInterface)
+      } as StyleOptions
+    ]);
+    this.styledStringController.setStyledString(mutString);
+  })
+```
+
+![RichEditor_decoration_multi_type](figures/RichEditor_decoration_multi_type.jpg)
+
+### 设置垂直居中
+
+从API version 20开始，支持通过[textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textverticalalign20)属性设置文本段落在垂直方向的对齐方式。
+
+此接口优化多元素排版，使组件内容与图片、图标等在垂直方向对齐时，整体布局更协调。
+
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_textVerticalAlign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+
+``` TypeScript
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+build() {
+  Column() {
+    // ...
+    RichEditor(this.options)
+      .onReady(() => {
+        // 请将$r('app.media.startIcon')替换为实际资源文件
+        this.controller.addImageSpan($r('app.media.startIcon'), {
+          imageStyle: {
+            size: [100, 100]
+          }
+        })
+        // 请将$r('app.string.Demo_verticalAlignString')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段富文本，展示了文本垂直居中的效果。"
+        this.controller.addTextSpan($r('app.string.Demo_verticalAlignString'), {
+          style: {
+            fontColor: Color.Pink,
+            fontSize: '32'
+          },
+          paragraphStyle: {
+            textAlign: TextAlign.Start,
+            textVerticalAlign: TextVerticalAlign.CENTER,
+            leadingMargin: 16
+          }
+        })
+      })
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_textVerticalAlign](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+
+``` TypeScript
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+build() {
+  Column() {
+    // ...
+    RichEditor(this.options)
+      .onReady(() => {
+        // 请将$r('app.media.startIcon')替换为实际资源文件
+        this.controller.addImageSpan($r('app.media.startIcon'), {
+          imageStyle: {
+            size: [100, 100]
+          }
+        })
+        // 请将$r('app.string.Demo_verticalAlignString')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段富文本，展示了文本垂直居中的效果。"
+        this.controller.addTextSpan($r('app.string.Demo_verticalAlignString'), {
+          style: {
+            fontColor: Color.Pink,
+            fontSize: '32'
+          },
+          paragraphStyle: {
+            textAlign: TextAlign.Start,
+            textVerticalAlign: TextVerticalAlign.CENTER,
+            leadingMargin: 16
+          } as RichEditorParagraphStyle
+        })
+      })
+    // ...
+  }
+  .alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
+```
+
+![RichEditor_text_vertical_align](figures/RichEditor_text_vertical_align.jpg)
+
+### 设置中西文自动间距
+
+从API version 20开始，支持通过[enableAutoSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#enableautospacing20)属性设置是否开启中文与西文的自动间距。
+
+此接口优化文本排版，提升组件内文本的可读性。设置自动间距后，中西文间产生适当空隙，便于区分不同语种，减少视觉干扰。
+
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_enableAutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) --> 
+
+``` TypeScript
+@Component
+struct EnableAutoSpacing {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  @State enableAutoSpace: boolean = false;
+
+  build() {
+    Column() {
+      // ...
+      Column({ space: 3 }) {
+        RichEditor(this.options)
+          .onReady(() => {
+            // 请将$r('app.string.Demo_autoSpacingString')替换为实际资源文件，在本示例中该资源文件的value值为"中西文Auto Spacing自动间距"
+            this.controller.addTextSpan($r('app.string.Demo_autoSpacingString'),
+              {
+                style:
+                {
+                  fontColor: Color.Orange,
+                  fontSize: 20
+                }
+              })
+          })
+          .enableAutoSpacing(this.enableAutoSpace)
+        // 请将$r('app.string.Demo_autoSpacingButton')替换为实际资源文件，在本示例中该资源文件的value值为"开启中西文自动间距"
+        Button($r('app.string.Demo_autoSpacingButton'))
+          .fontSize(20)
+          .onClick(() => {
+            this.enableAutoSpace = true;
+          })
+      }
+      // ...
+    }.alignItems(HorizontalAlign.Start)
+    .backgroundColor('#fff')
+    .borderRadius(12)
+    .padding(12)
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_enableAutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+
+``` TypeScript
+@Component
+struct EnableAutoSpacing {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  @State
+  enableAutoSpace: boolean = false;
+
+  build() {
+    Column() {
+      // ...
+      Column({ space: 3 } as ColumnOptions) {
+        RichEditor(this.options)
+          .onReady(() => {
+            // 请将$r('app.string.Demo_autoSpacingString')替换为实际资源文件，在本示例中该资源文件的value值为"中西文Auto Spacing自动间距"
+            this.controller.addTextSpan($r('app.string.Demo_autoSpacingString'),
+              {
+                style:
+                {
+                  fontColor: Color.Orange,
+                  fontSize: 20
+                }
+              })
+          })
+          .enableAutoSpacing(this.enableAutoSpace)
+        // 请将$r('app.string.Demo_autoSpacingButton')替换为实际资源文件，在本示例中该资源文件的value值为"开启中西文自动间距"
+        Button($r('app.string.Demo_autoSpacingButton'))
+          .fontSize(20)
+          .onClick(() => {
+            this.enableAutoSpace = true;
+          })
+      }
+
+      // ...
+    }
+    .alignItems(HorizontalAlign.Start)
+    .backgroundColor('#fff')
+    .borderRadius(12)
+    .padding(12)
+    .width('100%')
+  }
+}
+```
+
+![RichEditor_enable_auto_spacing](figures/RichEditor_enable_auto_spacinge.gif)
+
+### 设置最大行数
+
+从API version 18开始，支持通过[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#maxlines18)属性设置富文本组件内可显示文本的最大行数。
+
+此接口控制组件内文本的显示范围，防止文本过长影响页面布局，确保不同设备和场景下的文本显示效果一致，提升界面兼容性和美观度。
+
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_maxLines](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+
+``` TypeScript
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+build() {
+  Column() {
+    // ...
+    /*
+     * 请将$r('app.string.SetAttributes_Text_7')替换为实际资源文件，在本示例中该资源文件的
+     * value值为"组件设置了最大行数\n超出内容将会以滚动显示\n超出1行\n超出2行\n超出3行\n超出4行"
+     */
+    RichEditor(this.options)
+      .onReady(() => {
+        this.controller.addTextSpan(resource.resourceToString($r('app.string.SetAttributes_Text_7')),
+          {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
+          })
+      })
+      .maxLines(2)
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_maxLines](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+
+``` TypeScript
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+build() {
+  Column() {
+    // ...
+    /*
+     * 请将$r('app.string.SetAttributes_Text_7')替换为实际资源文件，在本示例中该资源文件的
+     * value值为"组件设置了最大行数\n超出内容将会以滚动显示\n超出1行\n超出2行\n超出3行\n超出4行"
+     */
+    RichEditor(this.options)
+      .onReady(() => {
+        this.controller.addTextSpan(resource.resourceToString($r('app.string.SetAttributes_Text_7')),
+          {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
+          })
+      })
+      .maxLines(2)
+    // ...
+  }
+  .alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
+```
+
+![max lines](figures/RichEditor_maxLines.gif)
 
 ## 事件回调
 
@@ -463,12 +1486,79 @@ options: RichEditorOptions = { controller: this.controller };
 
 使用[RichEditorStyledStringOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorstyledstringoptions12)构建的RichEditor组件不支持上述两种回调。
 
+ArkTS-Dyn示例：
+
 <!-- @[richEditor_eventChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
 options: RichEditorOptions = { controller: this.controller };
 
+infoShowController: RichEditorController = new RichEditorController();
+infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+
+build() {
+  Column() {
+    // ...
+    Column({ space: 3 }) {
+      RichEditor(this.options)
+        .onReady(() => {
+          // 请将$r('app.string.AddEvent_Text_5')替换为实际资源文件，在本示例中该资源文件的value值为"组件内图文变化前，触发回调。\n图文变化后，触发回调。"
+          this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_5')), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
+          })
+        })
+        .onWillChange((value: RichEditorChangeValue) => {
+          // 请将$r('app.string.AddEvent_Text_6')替换为实际资源文件，在本示例中该资源文件的value值为"组件内图文变化前，触发回调：\"
+          this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_6')) +
+          JSON.stringify(value), {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
+          })
+          return true;
+        })
+        .onDidChange((rangeBefore: TextRange, rangeAfter: TextRange) => {
+          // 请将$r('app.string.AddEvent_Text_7')替换为实际资源文件，在本示例中该资源文件的value值为"\n图文变化后，触发回调：\n rangeBefore"
+          this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_7')) +
+          JSON.stringify(rangeBefore) + '\nrangeAfter: ' + JSON.stringify(rangeAfter), {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
+          })
+        })
+        .width(300)
+        .height(50);
+      // 请将$r('app.string.AddEvent_Text_4')替换为实际资源文件，在本示例中该资源文件的value值为"查看回调内容："
+      Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300);
+      RichEditor(this.infoShowOptions)
+        .width(300)
+        .height(70);
+    }
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_eventChange](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) --> 
+
+``` TypeScript
+import { Entry, Text, Column, ColumnOptions, Component, $r, RichEditorController, NavDestination, Color, RichEditor, RichEditorRange, RichEditorInsertValue, PasteEvent, TextRange, RichEditorChangeValue, RichEditorOptions, HorizontalAlign, Scroll, Scroller, RichEditorTextSpanOptions, RichEditorSelection } from '@kit.ArkUI';
+// ...
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+// ...
 infoShowController: RichEditorController = new RichEditorController();
 infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
 // ...
@@ -496,7 +1586,7 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
           .onDidChange((rangeBefore: TextRange, rangeAfter: TextRange) => {
             // 请将$r('app.string.AddEvent_Text_7')替换为实际资源文件，在本示例中该资源文件的value值为"\n图文变化后，触发回调：\n rangeBefore"
             this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_7')) +
-            JSON.stringify(rangeBefore) + '\nrangeAfter: ' + JSON.stringify(rangeBefore), {
+            JSON.stringify(rangeBefore) + '\nrangeAfter: ' + JSON.stringify(rangeAfter), {
               style: {
                 fontColor: Color.Gray,
                 fontSize: 10
@@ -510,6 +1600,7 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
         RichEditor(this.infoShowOptions)
           .width(300)
           .height(70);
+
 ```
 
 ![alt text](figures/richeditor_image_ondid.gif)
@@ -524,12 +1615,78 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
 
 使用[RichEditorStyledStringOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#richeditorstyledstringoptions12)构建的组件不支持上述两种回调功能。
 
-<!-- @[richEditor_eventInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_eventInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
 options: RichEditorOptions = { controller: this.controller };
 
+infoShowController: RichEditorController = new RichEditorController();
+infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+
+build() {
+  Column() {
+    // ...
+    Column({ space: 3 }) {
+      // 请将$r('app.string.xxx')替换为开发者所需的资源文件
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_8')), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
+          })
+        })
+        .aboutToIMEInput((value: RichEditorInsertValue) => {
+          this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_9')) +
+          JSON.stringify(value), {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
+          })
+          return true;
+        })
+        .onDidIMEInput((value: TextRange) => {
+          this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_10')) +
+          JSON.stringify(value), {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
+          })
+        })
+        .width(300)
+        .height(50)
+      Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300)
+      RichEditor(this.infoShowOptions)
+        .width(300)
+        .height(70)
+
+    }
+    // ...
+  }
+  .alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_eventInput](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
+
+``` TypeScript
+import { Entry, Text, Column, ColumnOptions, Component, $r, RichEditorController, NavDestination, Color, RichEditor, RichEditorRange, RichEditorInsertValue, PasteEvent, TextRange, RichEditorChangeValue, RichEditorOptions, HorizontalAlign, Scroll, Scroller, RichEditorTextSpanOptions, RichEditorSelection } from '@kit.ArkUI';
+// ...
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+// ...
 infoShowController: RichEditorController = new RichEditorController();
 infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
 // ...
@@ -580,7 +1737,9 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
 
 由于组件默认的粘贴行为仅限于纯文本，无法处理图片粘贴，开发者可利用此方法实现图文并茂的粘贴功能，从而替代组件原有的粘贴行为。
 
-<!-- @[richEditor_eventPaste](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_eventPaste](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) --> 
 
 ``` TypeScript
 import { pasteboard } from '@kit.BasicServicesKit';
@@ -628,38 +1787,138 @@ struct on_cut_copy_paste {
 
   build() {
     Column() {
-      ComponentCard({
-        // 请将$r('app.string.Add_Event_title_5')替换为实际资源文件，在本示例中该资源文件的value值为"添加完成粘贴前可触发的回调"
-        title: $r('app.string.Add_Event_title_5'),
-        // 请将$r('app.string.Add_Event_title_5_desc')替换为实际资源文件，在本示例中该资源文件的value值为"通过onPaste回调，来添加粘贴前要处理的流程"
-        description: $r('app.string.Add_Event_title_5_desc')
-      }) {
-        Column({ space: 3 }) {
-          RichEditor(this.options)
-            .onReady(() => {
-              // 请将$r('app.string.AddEvent_Text_11')替换为实际资源文件，在本示例中该资源文件的value值为"对此处文本进行复制粘贴操作可触发对应回调。"
-              this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_11')),
-                { style: { fontColor: Color.Black, fontSize: 15 } })
-            })
-            .onPaste((event) => {
-              // 请将$r('app.string.AddEvent_Text_12')替换为实际资源文件，在本示例中该资源文件的value值为"触发onPaste回调\n"
-              this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_12')),
-                { style: { fontColor: Color.Gray, fontSize: 10 } })
-              if (event != undefined && event.preventDefault) {
-                event.preventDefault();
-              }
-              this.PopDataFromPasteboard()
-            })
-            .width(300)
-            .height(50);
-          // 请将$r('app.string.AddEvent_Text_4')替换为实际资源文件，在本示例中该资源文件的value值为"查看回调内容："
-          Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300);
-          RichEditor(this.infoShowOptions)
-            .width(300)
-            .height(70);
-        }.width('100%').alignItems(HorizontalAlign.Start);
-      }
+      // ...
+      Column({ space: 3 }) {
+        RichEditor(this.options)
+          .onReady(() => {
+            // 请将$r('app.string.AddEvent_Text_11')替换为实际资源文件，在本示例中该资源文件的value值为"对此处文本进行复制粘贴操作可触发对应回调。"
+            this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_11')),
+              { style: { fontColor: Color.Black, fontSize: 15 } })
+          })
+          .onPaste((event) => {
+            // 请将$r('app.string.AddEvent_Text_12')替换为实际资源文件，在本示例中该资源文件的value值为"触发onPaste回调\n"
+            this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_12')),
+              { style: { fontColor: Color.Gray, fontSize: 10 } })
+            if (event != undefined && event.preventDefault) {
+              event.preventDefault();
+            }
+            this.PopDataFromPasteboard()
+          })
+          .width(300)
+          .height(50);
+        // 请将$r('app.string.AddEvent_Text_4')替换为实际资源文件，在本示例中该资源文件的value值为"查看回调内容："
+        Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300);
+        RichEditor(this.infoShowOptions)
+          .width(300)
+          .height(70);
+      }.width('100%').alignItems(HorizontalAlign.Start);
+      // ...
+    }.alignItems(HorizontalAlign.Start)
+    .backgroundColor('#fff')
+    .borderRadius(12)
+    .padding(12)
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_eventPaste](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
+
+``` TypeScript
+import { Entry, Text, Column, ColumnOptions, Component, $r, RichEditorController, NavDestination, Color, RichEditor, RichEditorRange, RichEditorInsertValue, PasteEvent, TextRange, RichEditorChangeValue, RichEditorOptions, HorizontalAlign, Scroll, Scroller, RichEditorTextSpanOptions, RichEditorSelection } from '@kit.ArkUI';
+import pasteboard from '@ohos.pasteboard';
+// ...
+@Component
+struct on_cut_copy_paste {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  infoShowController: RichEditorController = new RichEditorController();
+  infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+
+  PopDataFromPasteboard() {
+    let selection: RichEditorSelection | undefined = this.controller.getSelection();
+    if (!selection) {
+      return;
     }
+    let start: int = selection.selection[0];
+    let end: int = selection.selection[1];
+    if (start == end) {
+      start = this.controller.getCaretOffset() ?? 0;
+      end = this.controller.getCaretOffset() ?? 0;
+    }
+    let moveOffset: int = 0;
+    let sysBoard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
+    sysBoard.getData().then((pasteData: pasteboard.PasteData) => {
+      if (!pasteData) {
+        return;
+      }
+      if (start != end) {
+        this.controller.deleteSpans({ start: start, end: end } as RichEditorRange);
+      }
+      let count: int = pasteData.getRecordCount();
+      for (let i = 0; i < count; i++) {
+        const element: pasteboard.PasteDataRecord = pasteData.getRecord(i);
+        if (element && element.plainText && element.mimeType === pasteboard.MIMETYPE_TEXT_PLAIN) {
+          this.controller.addTextSpan(element.plainText,
+            {
+              style: { fontSize: 26, fontColor: Color.Red },
+              offset: start + moveOffset
+            } as RichEditorTextSpanOptions
+          )
+          moveOffset += element.plainText.length;
+        }
+      }
+      this.controller.setCaretOffset(start + moveOffset);
+    });
+  }
+
+  build(): void {
+    Column() {
+      // 请将$r('app.string.Add_Event_title_5')替换为实际资源文件，在本示例中该资源文件的value值为"添加完成粘贴前可触发的回调"
+      Text($r('app.string.Add_Event_title_5'))
+        .fontSize(14)
+        .fontColor('#666')
+      Column({ space: 3 } as ColumnOptions) {
+        RichEditor(this.options)
+          .onReady(() => {
+            // 请将$r('app.string.AddEvent_Text_11')替换为实际资源文件，在本示例中该资源文件的value值为"对此处文本进行复制粘贴操作可触发对应回调。"
+            this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_11')),
+              { style: { fontColor: Color.Black, fontSize: 15 } })
+          })
+          .onPaste((event?: PasteEvent) => {
+            // 请将$r('app.string.AddEvent_Text_12')替换为实际资源文件，在本示例中该资源文件的value值为"触发onPaste回调\n"
+            this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_12')),
+              { style: { fontColor: Color.Gray, fontSize: 10 } })
+            if (event != undefined && event.preventDefault) {
+              event.preventDefault();
+            }
+            this.PopDataFromPasteboard()
+          })
+          .width(300)
+          .height(50);
+        // 请将$r('app.string.AddEvent_Text_4')替换为实际资源文件，在本示例中该资源文件的value值为"查看回调内容："
+        Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300);
+        RichEditor(this.infoShowOptions)
+          .width(300)
+          .height(70);
+      }.width('100%').alignItems(HorizontalAlign.Start);
+
+      // 请将$r('app.string.Add_Event_title_5_desc')替换为实际资源文件，在本示例中该资源文件的value值为"通过onPaste回调，来添加粘贴前要处理的流程"
+      Text($r('app.string.Add_Event_title_5_desc'))
+        .backgroundColor('#eee')
+        .borderRadius(4)
+        .padding(4)
+        .fontSize(12)
+        .fontColor('#999')
+        .width('100%')
+    }
+    .alignItems(HorizontalAlign.Start)
+    .backgroundColor('#fff')
+    .borderRadius(12)
+    .padding(12)
+    .width('100%')
   }
 }
 ```
@@ -672,12 +1931,66 @@ struct on_cut_copy_paste {
 
 由于组件默认的剪切行为仅限于纯文本，无法处理图片剪切，开发者可利用此方法实现图文并茂的剪切功能，从而替代组件原有的剪切行为。
 
-<!-- @[richEditor_eventCut](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_eventCut](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
 options: RichEditorOptions = { controller: this.controller };
 
+infoShowController: RichEditorController = new RichEditorController();
+infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+
+build() {
+  Column() {
+    // ...
+    Column({ space: 3 }) {
+      RichEditor(this.options)
+        .onReady(() => {
+          // 请将$r('app.string.AddEvent_Text_13')替换为实际资源文件，在本示例中该资源文件的value值为"对此处文本进行复制粘贴操作可触发对应回调。"
+          this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_13')), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
+          })
+        })
+        .onCut(() => {
+          // 请将$r('app.string.AddEvent_Text_14')替换为实际资源文件，在本示例中该资源文件的value值为"触发onCut回调\n"
+          this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_14')), {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
+          })
+        })
+        .width(300)
+        .height(70)
+      RichEditor(this.infoShowOptions)
+        .width(300)
+        .height(70)
+    }
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_eventCut](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
+
+``` TypeScript
+import { Entry, Text, Column, ColumnOptions, Component, $r, RichEditorController, NavDestination, Color, RichEditor, RichEditorRange, RichEditorInsertValue, PasteEvent, TextRange, RichEditorChangeValue, RichEditorOptions, HorizontalAlign, Scroll, Scroller, RichEditorTextSpanOptions, RichEditorSelection } from '@kit.ArkUI';
+import pasteboard from '@ohos.pasteboard';
+// ...
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+// ...
 infoShowController: RichEditorController = new RichEditorController();
 infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
 // ...
@@ -715,12 +2028,66 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
 
 组件默认的复制行为仅限于纯文本，无法处理图片。开发者可利用此方法实现图文并茂的复制功能，替代组件的默认行为。
 
-<!-- @[richEditor_eventCopy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_eventCopy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
 options: RichEditorOptions = { controller: this.controller };
 
+infoShowController: RichEditorController = new RichEditorController();
+infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+
+build() {
+  Column() {
+    // ...
+    Column({ space: 3 }) {
+      RichEditor(this.options)
+        .onReady(() => {
+          // 请将$r('app.string.AddEvent_Text_15')替换为实际资源文件，在本示例中该资源文件的value值为"对此处文本进行复制粘贴操作可触发对应回调。"
+          this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_15')), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
+          })
+        })
+        .onCopy(() => {
+          // 请将$r('app.string.AddEvent_Text_16')替换为实际资源文件，在本示例中该资源文件的value值为"触发onCopy回调\n"
+          this.infoShowController.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_16')), {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
+          })
+        })
+        .width(300)
+        .height(50)
+      RichEditor(this.infoShowOptions)
+        .width(300)
+        .height(70)
+    }
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_eventCopy](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
+
+``` TypeScript
+import { Entry, Text, Column, ColumnOptions, Component, $r, RichEditorController, NavDestination, Color, RichEditor, RichEditorRange, RichEditorInsertValue, PasteEvent, TextRange, RichEditorChangeValue, RichEditorOptions, HorizontalAlign, Scroll, Scroller, RichEditorTextSpanOptions, RichEditorSelection } from '@kit.ArkUI';
+import pasteboard from '@ohos.pasteboard';
+// ...
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+// ...
 infoShowController: RichEditorController = new RichEditorController();
 infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
 // ...
@@ -764,9 +2131,46 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
 
 设置不同颜色的光标和手柄可以提高视觉辨识度，特别是在包含多个输入区域的复杂界面中，独特的光标颜色能帮助快速定位当前操作的输入区域。这一特性也可以提升用户体验，使光标颜色与应用页面整体的风格相协调。
 
-<!-- @[richEditor_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) --> 
 
 ``` TypeScript
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+
+build() {
+  Column() {
+    // ...
+    RichEditor(this.options)
+      .onReady(() => {
+        // 请将$r('app.string.SetAttributes_Text_5')替换为实际资源文件，在本示例中该资源文件的value值为"组件设置了光标手柄颜色。"
+        this.controller.addTextSpan(resource.resourceToString($r('app.string.SetAttributes_Text_5')), {
+          style: {
+            fontColor: Color.Black,
+            fontSize: 15
+          }
+        })
+      })
+      .caretColor(Color.Orange)
+      .width(300)
+      .height(300)
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_color](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+
+``` TypeScript
+import { Entry, Component, $r, RichEditorController, RichEditor, RichEditorOptions } from '@kit.ArkUI';
+// ...
 controller: RichEditorController = new RichEditorController();
 options: RichEditorOptions = { controller: this.controller };
 // ...
@@ -793,12 +2197,63 @@ options: RichEditorOptions = { controller: this.controller };
 
 该回调可用于实时监听组件内容选中区域变化，例如实现实时更新工具栏状态（显示字体、段落格式等）、统计选中内容长度或生成选中内容摘要。实时响应选中状态，动态联动交互元素，提升富文本编辑的操作反馈体验和功能的灵活性。
 
-<!-- @[richEditor_eventSelectChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_eventSelectChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
 options: RichEditorOptions = { controller: this.controller };
 
+infoShowController: RichEditorController = new RichEditorController();
+infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
+
+build() {
+  Column() {
+    // ...
+    Column({ space: 3 }) {
+      // 请将$r('app.string.xxx')替换为实际资源文件
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan(resource.resourceToString($r('app.string.AddEvent_Text_2')), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
+          })
+        })
+        .onSelectionChange((value: RichEditorRange) => {
+          this.infoShowController.addTextSpan('\n' + resource.resourceToString($r('app.string.AddEvent_Text_3')) +
+          value.start + ',' + value.end + ')', {
+            style: {
+              fontColor: Color.Gray,
+              fontSize: 10
+            }
+          })
+        })
+        .width(300)
+        .height(50)
+      Text(resource.resourceToString($r('app.string.AddEvent_Text_4'))).fontSize(10).fontColor(Color.Gray).width(300)
+      RichEditor(this.infoShowOptions)
+        .width(300)
+        .height(70)
+    }
+    // ...
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_eventSelectChange](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/AddEvent.ets) -->
+
+``` TypeScript
+import { Entry, Text, Column, ColumnOptions, Component, $r, RichEditorController, NavDestination, Color, RichEditor, RichEditorRange, RichEditorInsertValue, PasteEvent, TextRange, RichEditorChangeValue, RichEditorOptions, HorizontalAlign, Scroll, Scroller, RichEditorTextSpanOptions, RichEditorSelection } from '@kit.ArkUI';
+import pasteboard from '@ohos.pasteboard';
+// ...
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+// ...
 infoShowController: RichEditorController = new RichEditorController();
 infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
 // ...
@@ -839,24 +2294,74 @@ infoShowOptions: RichEditorOptions = { controller: this.infoShowController };
 
 当组件内未获焦出现光标时，调用该接口不产生选中效果。
 
-<!-- @[richEditor_selection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/BackplaneHighlighting.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_selection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/BackplaneHighlighting.ets) --> 
 
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
 options: RichEditorOptions = { controller: this.controller };
-// ...
-          RichEditor(this.options)
-            .onReady(() => {
-              // 请将$r('app.string.BackplaneHighlighting_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮在此处选中0-2位置的文本。"
-              this.controller.addTextSpan(resource.resourceToString($r('app.string.BackplaneHighlighting_Text_1')), {
-                style: {
-                  fontColor: Color.Black,
-                  fontSize: 15
-                }
-              })
-            })
-            .width(300)
-            .height(60)
+
+build() {
+  // ...
+    Column({ space: 12 }) {
+      RichEditor(this.options)
+        .onReady(() => {
+          // 请将$r('app.string.BackplaneHighlighting_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮在此处选中0-2位置的文本。"
+          this.controller.addTextSpan($r('app.string.BackplaneHighlighting_Text_1'), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
+          })
+        })
+        .width(300)
+        .height(60)
+      Row() {
+        // 请将$r('app.string.BackplaneHighlighting_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"setSelection(0,2)"
+        Button($r('app.string.BackplaneHighlighting_Button_1'), {
+          buttonStyle: ButtonStyleMode.NORMAL
+        })
+          .height(30)
+          .fontSize(13)
+          .onClick(() => {
+            this.controller.setSelection(0, 2)
+          })
+      }.justifyContent(FlexAlign.Center).width('100%')
+    }
+  // ...
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_selection](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/BackplaneHighlighting.ets) -->
+
+``` TypeScript
+import { Entry, Button, ButtonStyleMode, Row, Column, ColumnOptions, Component, FlexAlign, $r, RichEditorController, NavDestination, Color, RichEditor, RichEditorOptions, HorizontalAlign, RichEditorTextStyle, RichEditorTextSpanOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+export struct BackplaneHighlighting {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  build(): void {
+    NavDestination() {
+      Column({ space: 12 } as ColumnOptions) {
+        RichEditor(this.options)
+          .onReady(() => {
+            // 请将$r('app.string.BackplaneHighlighting_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮在此处选中0-2位置的文本。"
+            this.controller.addTextSpan($r('app.string.BackplaneHighlighting_Text_1'), {
+              style: {
+                fontColor: Color.Black,
+                fontSize: 15
+              } as RichEditorTextStyle
+            } as RichEditorTextSpanOptions)
+          })
+          .width(300)
+          .height(60)
+        Row() {
           // 请将$r('app.string.BackplaneHighlighting_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"setSelection(0,2)"
           Button($r('app.string.BackplaneHighlighting_Button_1'), {
             buttonStyle: ButtonStyleMode.NORMAL
@@ -864,7 +2369,7 @@ options: RichEditorOptions = { controller: this.controller };
             .height(30)
             .fontSize(13)
             .onClick(() => {
-              this.controller.setSelection(0, 2)
+              this.controller.setSelection(0, 2);
             })
 ```
 
@@ -877,6 +2382,8 @@ options: RichEditorOptions = { controller: this.controller };
 ### 管理选中菜单项
 
 当富文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调，可在该回调中进行菜单数据设置。
+
+ArkTS-Dyn示例：
 
 <!-- @[richEditor_prepareMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
@@ -968,6 +2475,116 @@ struct PrepareMenu {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[richEditor_prepareMenu](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+
+``` TypeScript
+import { Entry, Text, Button, Column, ColumnOptions, Component, $r, RichEditorController, NavDestination, TextStyle, MutableStyledString, StyleOptions, StyledStringKey, Color, RichEditorStyledStringController, RichEditor, RichEditorOptions, HorizontalAlign, LengthMetrics, Resource, ShadowStyle, Menu, MenuItemGroup, MenuItem, PlaceholderStyle, RichEditorSpanType, Font, FontWeight, FontStyle, ResponseType, DecorationStyle, DecorationStyleInterface, TextDecorationType, RichEditorTextStyle, TextMenuItem, EditMenuOptions, RichEditorRange, TextRange, OnCreateMenuCallback, OnMenuItemClickCallback, OnPrepareMenuCallback, TextMenuItemId, Scroller, Scroll, RichEditorParagraphStyle, TextAlign, TextVerticalAlign } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+// ...
+@Component
+struct PrepareMenu {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+  @State endIndex: int | undefined = 0;
+  onCreateMenu: OnCreateMenuCallback = (menuItems: Array<TextMenuItem>) => {
+    const idsToFilter = [
+      TextMenuItemId.TRANSLATE,
+      TextMenuItemId.SHARE,
+      TextMenuItemId.SEARCH,
+      TextMenuItemId.AI_WRITER
+    ]
+    const items = menuItems.filter(item => !idsToFilter.some(id => id.equals(item.id)));
+    // 请将$r('app.media.xxx')替换为实际资源文件
+    let item1: TextMenuItem = {
+      content: 'create1',
+      icon: $r('app.media.startIcon'),
+      id: TextMenuItemId.of('create1'),
+    }
+    let item2: TextMenuItem = {
+      content: 'create2',
+      id: TextMenuItemId.of('create2'),
+      icon: $r('app.media.startIcon'),
+    }
+    items.push(item1);
+    items.unshift(item2);
+    return items;
+  }
+  onMenuItemClick: OnMenuItemClickCallback = (menuItem: TextMenuItem, textRange: TextRange) => {
+    if (menuItem.id.equals(TextMenuItemId.of('create2'))) {
+      return true;
+    }
+    if (menuItem.id.equals(TextMenuItemId.of('prepare1'))) {
+      return true;
+    }
+    if (menuItem.id.equals(TextMenuItemId.COPY)) {
+      return true;
+    }
+    if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
+      return false;
+    }
+    return false;
+  }
+  onPrepareMenu: OnPrepareMenuCallback = (menuItems: Array<TextMenuItem>) => {
+    // 请将$r('app.media.xxx')替换为实际资源文件
+    let item1: TextMenuItem = {
+      content: 'prepare1_' + this.endIndex,
+      icon: $r('app.media.startIcon'),
+      id: TextMenuItemId.of('prepare1'),
+    };
+    menuItems.unshift(item1);
+    return menuItems;
+  }
+  @State editMenuOptions: EditMenuOptions | undefined = undefined;
+
+  aboutToAppear(): void {
+    this.editMenuOptions = {
+      onCreateMenu: this.onCreateMenu,
+      onMenuItemClick: this.onMenuItemClick,
+      onPrepareMenu: this.onPrepareMenu
+    };
+  }
+
+  build() {
+    Column() {
+      // 请将$r('app.string.Set_Attributes_title_13')替换为实际资源文件，在本示例中该资源文件的value值为"管理选中菜单项"
+      Text($r('app.string.Set_Attributes_title_13'))
+        .fontSize(14)
+        .fontColor('#666')
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan('RichEditor editMenuOptions');
+        })
+        .editMenuOptions(this.editMenuOptions)
+        .onSelectionChange((range: RichEditorRange) => {
+          this.endIndex = range.end;
+        })
+        .height(50)
+        .margin({ top: 100 })
+        .borderWidth(1)
+        .borderColor(Color.Red)
+      /*
+       * 请将$r('app.string.Set_Attributes_title_13_desc')替换为实际资源文件，在本示例中该资源文件的
+       * value值为"当富文本选择区域变化后显示菜单之前触发onPrepareMenu回调，可在该回调中进行菜单数据设置"
+       */
+      Text($r('app.string.Set_Attributes_title_13_desc'))
+        .backgroundColor('#eee')
+        .borderRadius(4)
+        .padding(4)
+        .fontSize(12)
+        .fontColor('#999')
+        .width('100%')
+    }
+    .alignItems(HorizontalAlign.Start)
+    .backgroundColor('#fff')
+    .borderRadius(12)
+    .padding(12)
+    .width('100%')
+  }
+}
+```
+
 ![alt text](figures/richeditor_on_prepare_menu.gif)
 
 ### 屏蔽系统服务类菜单项
@@ -976,11 +2593,65 @@ struct PrepareMenu {
 
 此接口保护内容安全，适用于限制文本操作的场景，例如展示保密内容或禁止复制的版权文本。屏蔽系统服务菜单项，防止用户通过系统服务菜单复制、分享文本，降低内容泄露风险。
 
+ArkTS-Dyn示例：
 
-<!-- @[richEditor_disableSystemMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/DisableSystemServiceMenu.ets) -->
+<!-- @[richEditor_disableSystemMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/DisableSystemServiceMenu.ets) --> 
 
 ``` TypeScript
 import { TextMenuController } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct DisableSystemServiceMenu {
+  controller: RichEditorController = new RichEditorController();
+  options: RichEditorOptions = { controller: this.controller };
+
+  aboutToAppear(): void {
+    // 禁用所有系统服务菜单
+    TextMenuController.disableSystemServiceMenuItems(true);
+  }
+
+  aboutToDisappear(): void {
+    // 页面消失恢复系统服务菜单
+    TextMenuController.disableSystemServiceMenuItems(false);
+  }
+
+  build() {
+    // ...
+      Column({ space: 12 }) {
+        RichEditor(this.options).onReady(() => {
+          // 请将$r('app.string.Demo_richEditor')替换为实际资源文件，在本示例中该资源文件的value值为"这是一个RichEditor"
+          this.controller.addTextSpan($r('app.string.Demo_richEditor'),
+            {
+              style:
+              {
+                fontSize: 30
+              }
+            })
+        })
+          .height(60)
+          .editMenuOptions({
+            onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+              // menuItems不包含被屏蔽的系统菜单项
+              return menuItems;
+            },
+            onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+              return false;
+            }
+          })
+      }
+    // ...
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_disableSystemMenu](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/DisableSystemServiceMenu.ets) -->
+
+``` TypeScript
+import { Entry, Column, ColumnOptions, Component, $r, RichEditorController, NavDestination, RichEditor, RichEditorOptions, HorizontalAlign, OnCreateMenuCallback, TextMenuItem, OnMenuItemClickCallback, TextRange } from '@kit.ArkUI';
+import { TextMenuController } from '@ohos.arkui.UIContext';
 
 @Entry
 @Component
@@ -998,49 +2669,48 @@ export struct DisableSystemServiceMenu {
     TextMenuController.disableSystemServiceMenuItems(false);
   }
 
-  build() {
+  build(): void {
     // ...
-          RichEditor(this.options).onReady(() => {
-            // 请将$r('app.string.Demo_richEditor')替换为实际资源文件，在本示例中该资源文件的value值为"这是一个RichEditor"
-            this.controller.addTextSpan($r('app.string.Demo_richEditor'),
+      Column({ space: 12 } as ColumnOptions) {
+        RichEditor(this.options).onReady(() => {
+          // 请将$r('app.string.Demo_richEditor')替换为实际资源文件，在本示例中该资源文件的value值为"这是一个RichEditor"
+          this.controller.addTextSpan($r('app.string.Demo_richEditor'),
+            {
+              style:
               {
-                style:
-                {
-                  fontSize: 30
-                }
-              })
-          })
-            .height(60)
-            .editMenuOptions({
-              onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-                // menuItems不包含被屏蔽的系统菜单项
-                return menuItems;
-              },
-              onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
-                return false;
+                fontSize: 30
               }
             })
-          // ...
-  }
-}
+        })
+          .height(60)
+          .editMenuOptions({
+            onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+              // menuItems不包含被屏蔽的系统菜单项
+              return menuItems;
+            } as OnCreateMenuCallback,
+            onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+              return false;
+            } as OnMenuItemClickCallback
+          })
+      }
+      // ...
+
 ```
 
 ![RichEditor_disable_system_service_menuItems](figures/RichEditor_disable_system_service_menuItems.gif)
 
 通过[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)可以屏蔽富文本选择菜单内指定的系统服务菜单项。
 
-此接口可精确屏蔽指定的系统服务菜单项，保留应用所需的系统菜单功能，使菜单更贴合实际交互设计。
+此接口可精确屏蔽指定的系统服务菜单项，保留应用所需的系统菜单功能，使菜单更贴合实际交互设计。此接口仅适用于ArkTS-Dyn。
 
-  
-<!-- @[richEditor_disableMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/DisableMenuItem.ets) -->
+<!-- @[richEditor_disableMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/DisableMenuItem.ets) --> 
 
 ``` TypeScript
 import { TextMenuController } from '@kit.ArkUI';
 
-
 @Entry
 @Component
-export struct DisableMenuItem {
+struct DisableMenuItem {
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller };
 
@@ -1056,26 +2726,28 @@ export struct DisableMenuItem {
 
   build() {
     // ...
-          RichEditor(this.options)
-            .onReady(() => {
-              // 请将$r('app.string.Demo_richEditor')替换为实际资源文件，在本示例中该资源文件的value值为"这是一个RichEditor"
-              this.controller.addTextSpan($r('app.string.Demo_richEditor'), {
-                style: {
-                  fontSize: 30
-                }
-              })
-            })
-            .height(60)
-            .editMenuOptions({
-              onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-                // menuItems不包含搜索和翻译
-                return menuItems;
-              },
-              onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
-                return false;
+      Column({ space: 12 }) {
+        RichEditor(this.options)
+          .onReady(() => {
+            // 请将$r('app.string.Demo_richEditor')替换为实际资源文件，在本示例中该资源文件的value值为"这是一个RichEditor"
+            this.controller.addTextSpan($r('app.string.Demo_richEditor'), {
+              style: {
+                fontSize: 30
               }
             })
-          // ...
+          })
+          .height(60)
+          .editMenuOptions({
+            onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+              // menuItems不包含搜索和翻译
+              return menuItems;
+            },
+            onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+              return false;
+            }
+          })
+      }
+    // ...
   }
 }
 ```
@@ -1088,11 +2760,91 @@ export struct DisableMenuItem {
 
 组件原本具有默认的文本选择菜单，包含复制、剪切和全选的功能。用户可使用该属性设定自定义菜单，例如翻译英文、加粗字体等丰富的菜单功能。
 
-当自定义菜单超长时，建议内部嵌套Scroll组件使用，避免键盘被遮挡。
+当自定义菜单超长时，建议内部嵌套Scroll组件使用，避免菜单被键盘遮挡。
 
-<!-- @[richEditor_bindSelectionMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[richEditor_bindSelectionMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) --> 
 
 ``` TypeScript
+controller: RichEditorController = new RichEditorController();
+options: RichEditorOptions = { controller: this.controller };
+sliderShow: boolean = false;
+private theme: SelectionMenuTheme = defaultTheme;
+
+build() {
+  Column() {
+    // ...
+    RichEditor(this.options)
+      .onReady(() => {
+        // 请将$r('app.string.SetAttributes_Text_4')替换为实际资源文件，在本示例中该资源文件的value值为"组件设置了自定义菜单，长按可触发。"
+        this.controller.addTextSpan(resource.resourceToString($r('app.string.SetAttributes_Text_4')), {
+          style: {
+            fontColor: Color.Black,
+            fontSize: 18
+          }
+        })
+      })
+      .bindSelectionMenu(RichEditorSpanType.TEXT, this.SystemMenu, ResponseType.LongPress, {
+        onDisappear: () => {
+          this.sliderShow = false
+        }
+      })
+      // 绑定自定义菜单
+      .width(300)
+      .height(300)
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
+
+@Builder
+SystemMenu() {
+  Column() {
+    Menu() {
+      if (this.controller) {
+        MenuItemGroup() {
+          MenuItem({
+            startIcon: this.theme.cutIcon,
+            // 请将$r('app.string.SetAttributes_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"剪切"
+            content: resource.resourceToString($r('app.string.SetAttributes_Text_1')),
+            labelInfo: 'Ctrl+X'
+          })
+          MenuItem({
+            startIcon: this.theme.copyIcon,
+            // 请将$r('app.string.SetAttributes_Text_2')替换为实际资源文件，在本示例中该资源文件的value值为"复制"
+            content: resource.resourceToString($r('app.string.SetAttributes_Text_2')),
+            labelInfo: 'Ctrl+C'
+          })
+          MenuItem({
+            startIcon: this.theme.pasteIcon,
+            // 请将$r('app.string.SetAttributes_Text_3')替换为实际资源文件，在本示例中该资源文件的value值为"粘贴"
+            content: resource.resourceToString($r('app.string.SetAttributes_Text_3')),
+            labelInfo: 'Ctrl+V'
+          })
+        }
+      }
+    }
+    .radius(this.theme.containerBorderRadius)
+    .clip(true)
+    .backgroundColor(Color.White)
+    .width(this.theme.defaultMenuWidth)
+  }
+  .width(this.theme.defaultMenuWidth)
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[richEditor_bindSelectionMenu](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
+
+``` TypeScript
+import { Entry, Text, Button, Column, ColumnOptions, Component, $r, RichEditorController, NavDestination, TextStyle, MutableStyledString, StyleOptions, StyledStringKey, Color, RichEditorStyledStringController, RichEditor, RichEditorOptions, HorizontalAlign, LengthMetrics, Resource, ShadowStyle, Menu, MenuItemGroup, MenuItem, PlaceholderStyle, RichEditorSpanType, Font, FontWeight, FontStyle, ResponseType, DecorationStyle, DecorationStyleInterface, TextDecorationType, RichEditorTextStyle, TextMenuItem, EditMenuOptions, RichEditorRange, TextRange, OnCreateMenuCallback, OnMenuItemClickCallback, OnPrepareMenuCallback, TextMenuItemId, Scroller, Scroll, RichEditorParagraphStyle, TextAlign, TextVerticalAlign } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+// ...
 controller: RichEditorController = new RichEditorController();
 options: RichEditorOptions = { controller: this.controller };
 sliderShow: boolean = false;
@@ -1165,252 +2917,5 @@ SystemMenu() {
 ```
 
 ![alt text](figures/richeditor_image_bindselectionmenu.gif)
-
-## 布局配置
-
-组件支持通过接口配置布局规则，开发者可以根据业务场景定制合适的布局规则。
-
-### 设置最大行数
-
-通过[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#maxlines18)可以设置富文本组件内可显示文本的最大行数。
-
-此接口控制组件内文本的显示范围，防止文本过长影响页面布局，确保不同设备和场景下的文本显示效果一致，提升界面兼容性和美观度。
-
-<!-- @[richEditor_maxLines](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
-
-``` TypeScript
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-
-build() {
-  Column() {
-    // ...
-    /*
-     * 请将$r('app.string.SetAttributes_Text_7')替换为实际资源文件，在本示例中该资源文件的
-     * value值为"组件设置了最大行数\n超出内容将会以滚动显示\n超出1行\n超出2行\n超出3行\n超出4行"
-     */
-    RichEditor(this.options)
-      .onReady(() => {
-        this.controller.addTextSpan(resource.resourceToString($r('app.string.SetAttributes_Text_7')),
-          {
-            style: {
-              fontColor: Color.Black,
-              fontSize: 15
-            }
-          })
-      })
-      .maxLines(2)
-    // ...
-  }.alignItems(HorizontalAlign.Start)
-  .backgroundColor('#fff')
-  .borderRadius(12)
-  .padding(12)
-  .width('100%')
-}
-```
-
-![max lines](figures/RichEditor_maxLines.gif)
-
-## 样式设置
-
-组件支持对内容设置复杂的样式。
-
-### 设置用户预设的文本样式
-
-通过[setTypingStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#settypingstyle11)可以设置用户预设的文本样式。
-
-此接口可用于个性化的写作体验，例如可以使用此接口让输入的不同层级标题自动应用相应格式（如一级、二级标题）。
-
-<!-- @[richEditor_setTypingStyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetUserPresetTextStyles.ets) -->
-
-``` TypeScript
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-// ...
-          RichEditor(this.options)
-            .onReady(() => {
-              // 请将$r('app.string.SetUserPresetTextStyles_Text_1')替换为实际资源文件，在本示例中该资源文件的value值为"点击按钮，改变预设文本样式。"
-              this.controller.addTextSpan(resource.resourceToString($r('app.string.SetUserPresetTextStyles_Text_1')),
-                {
-                  style: {
-                    fontColor: Color.Black,
-                    fontSize: 15
-                  }
-                })
-            })
-            .width(300)
-            .height(60)
-          // 请将$r('app.string.SetUserPresetTextStyles_Button_1')替换为实际资源文件，在本示例中该资源文件的value值为"setTypingStyle"
-          Button($r('app.string.SetUserPresetTextStyles_Button_1'), {
-            buttonStyle: ButtonStyleMode.NORMAL
-          })
-            .height(30)
-            .fontSize(13)
-            .onClick(() => {
-              this.controller.setTypingStyle({
-                fontWeight: 'medium',
-                fontColor: Color.Pink,
-                fontSize: 15,
-                fontStyle: FontStyle.Italic,
-                decoration: {
-                  type: TextDecorationType.Underline,
-                  color: Color.Gray
-                }
-              })
-            })
-```
-
-![alt text](figures/richeditor_image_setTypingStyle.gif)
-
-### 设置装饰线
-
-通过[decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md#decoration)设置富文本组件中文本装饰线的样式、颜色和粗细。
-
-设置文本装饰线可突出关键信息、区分文本状态、增强视觉层次。例如，为重要标题或关键词添加装饰线，帮助用户快速获取信息。
-
-<!-- @[richEditor_decoration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
-
-``` TypeScript
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-// ...
-      RichEditor(this.options)
-        .onReady(() => {
-          // 请将$r('app.string.Demo_oneText')替换为实际资源文件，在本示例中该资源文件的value值为"一段预置的文本"
-          this.controller.addTextSpan($r('app.string.Demo_oneText'), {
-            style: {
-              fontSize: 25,
-              decoration: {
-                type: TextDecorationType.LineThrough,
-                color: Color.Blue,
-                // 设置装饰线粗细比例为6
-                thicknessScale: 6
-              }
-            }
-          })
-        })
-```
-
-![RichEditor_decoration](figures/RichEditor_decoration.jpg)
-
-通过[DecorationOptions](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#decorationoptions20)中的enableMultiType设置多装饰线，比如同时设置下划线和中划线。
-
-此接口适用于复杂业务场景，满足文本装饰的多样化需求。在文档协作过程中，多人编辑时，可以通过使用不同的装饰线组合来区分文本状态，从而提高协作效率。
-
-<!-- @[richEditor_decorationOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
-
-``` TypeScript
-RichEditor({ controller: this.styledStringController });
-// 请将$r('app.string.Demo_SetStyledStringButton')替换为实际资源文件，在本示例中该资源文件的value值为"多装饰线文本"
-Button($r('app.string.Demo_SetStyledStringButton'))
-  .fontSize(20)
-  .onClick(() => {
-    let mutString: MutableStyledString = new MutableStyledString(
-      // 请将$r('app.string.Demo_styledString')替换为实际资源文件，在本示例中该资源文件的value值为"需设置富文本多装饰线"
-      resource.resourceToString($r('app.string.Demo_styledString')), [
-      {
-        start: 0,
-        length: 9,
-        styledKey: StyledStringKey.FONT,
-        styledValue: new TextStyle({ fontSize: LengthMetrics.vp(25) })
-      },
-      {
-        start: 0,
-        length: 5,
-        styledKey: StyledStringKey.DECORATION,
-        styledValue: new DecorationStyle(
-          {
-            type: TextDecorationType.Underline,
-          },
-          {
-            // 开启多装饰线
-            enableMultiType: true
-          })
-      },
-      {
-        start: 2,
-        length: 4,
-        styledKey: StyledStringKey.DECORATION,
-        styledValue: new DecorationStyle(
-          {
-            type: TextDecorationType.LineThrough,
-          },
-          {
-            // 开启多装饰线
-            enableMultiType: true
-          })
-      }
-    ])
-    this.styledStringController.setStyledString(mutString);
-  })
-```
-
-![RichEditor_decoration_multi_type](figures/RichEditor_decoration_multi_type.jpg)
-
-### 设置垂直居中
-
-通过[textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textverticalalign20)设置文本段落在垂直方向的对齐方式。
-
-此接口优化多元素排版，使组件内容与图片、图标等在垂直方向对齐时，整体布局更协调。
-
-<!-- @[richEditor_textVerticalAlign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
-
-``` TypeScript
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-// ...
-      RichEditor(this.options)
-        .onReady(() => {
-          // 请将$r('app.media.startIcon')替换为实际资源文件
-          this.controller.addImageSpan($r('app.media.startIcon'), {
-            imageStyle: {
-              size: [100, 100]
-            }
-          })
-          // 请将$r('app.string.Demo_verticalAlignString')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段富文本，展示了文本垂直居中的效果。"
-          this.controller.addTextSpan($r('app.string.Demo_verticalAlignString'), {
-            style: {
-              fontColor: Color.Pink,
-              fontSize: '32'
-            },
-            paragraphStyle: {
-              textAlign: TextAlign.Start,
-              textVerticalAlign: TextVerticalAlign.CENTER,
-              leadingMargin: 16
-            }
-          })
-        })
-```
-
-![RichEditor_text_vertical_align](figures/RichEditor_text_vertical_align.jpg)
-
-### 设置中西文自动间距
-
-通过[enableAutoSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#enableautospacing20)设置是否开启中文与西文的自动间距。
-
-此接口优化文本排版，提升组件内文本的可读性。设置自动间距后，中文与西文间产生适当空隙，便于区分不同语种，减少视觉干扰。
-
-<!-- @[richEditor_enableAutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
-
-``` TypeScript
-controller: RichEditorController = new RichEditorController();
-options: RichEditorOptions = { controller: this.controller };
-// ...
-        RichEditor(this.options)
-          .onReady(() => {
-            // 请将$r('app.string.Demo_autoSpacingString')替换为实际资源文件，在本示例中该资源文件的value值为"中西文Auto Spacing自动间距"
-            this.controller.addTextSpan($r('app.string.Demo_autoSpacingString'),
-              {
-                style:
-                {
-                  fontColor: Color.Orange,
-                  fontSize: 20
-                }
-              })
-          })
-          .enableAutoSpacing(this.enableAutoSpace)
-```
-
-![RichEditor_enable_auto_spacing](figures/RichEditor_enable_auto_spacinge.gif)
 
 <!--RP1--><!--RP1End-->

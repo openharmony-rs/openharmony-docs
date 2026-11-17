@@ -256,6 +256,6 @@ Key considerations for implementing the entry page:
 
 1. Start the application on the device that supports **EmbeddedUIExtensionAbility**.
 
-   ![en-us_image_0000001502261065](figures/en-us_image_0000001502261065.jpg)
+   ![en-us_image_0000001502261065](figures/Scenario-Example.jpg)
 
 2. Clicking the **terminateSelfWithResult** button hides the provider content and displays **onTerminated** information on the host page.

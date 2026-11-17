@@ -1,4 +1,4 @@
-# toybox
+# toybox工具
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
 <!--Owner: @yan-mingzhen-->
@@ -248,7 +248,7 @@ toybox的执行方式有两种：
 | expand    | 根据输入参数将制表符展开为空格。<br/>usage: expand [-t TABLIST] [FILE...] |
 | fallocate | 让文件系统给文件预留空间。<br/>usage: fallocate [-o OFFSET] -l SIZE FILE |
 | file      | 检查给定的文件并描述其内容类型。<br/>usage: file [-bhLs] [FILE...] |
-| find      | 在目录中搜索匹配的文件。<br/>usage: find [-HL] [DIR...] [<options>] |
+| find      | 在目录中搜索匹配的文件。<br/>usage: find [-HL] [DIR...] [&lt;options&gt;] |
 | flock     | 管理文件锁（advisory lock）。<br/>usage: flock [-sxun] fd |
 | fmt       | 将输入重新格式化为给定行长的换行，保留现有的缩进级别，写入标准输出设备。<br/>usage: fmt [-w WIDTH] [FILE...] |
 | gunzip    | 解压文件。如果没有文件，则从标准输入设备解压到标准输出设备。成功后，输入文件将被删除并替换为新的没有.gz后缀的文件。<br/>usage: gunzip [-cfkt] [FILE...] |
@@ -287,7 +287,7 @@ toybox的执行方式有两种：
 | seq       | 从头到尾按递增计数。省略参数默认值为1。使用两个参数作为第一个和最后一个。参数可以是负数或浮点数。<br/>usage: seq [-w \| -f fmt\_str] [-s sep\_str] [first] [increment] last |
 | setfattr  | 写入POSIX扩展属性。<br/>usage: setfattr [-h] [-x \| -n NAME] [-v VALUE] FILE... |
 | sha1sum/sha256sum | 计算sha系列哈希值。<br/>usage: ???sum [-bcs] [FILE]... |
-| shred     | 安全的删除文件（用随机数据覆盖文件内容）。<br/>usage: shred [-fuxz] [-n COUNT] [-o OFFSET] [-s SIZE] FILE... |
+| shred     | 安全地删除文件（用随机数据覆盖文件内容）。<br/>usage: shred [-fuxz] [-n COUNT] [-o OFFSET] [-s SIZE] FILE... |
 | sort      | 对从输入文件（或标准输入设备）到标准输出设备的所有文本行进行排序。<br/>usage: sort [-Mbcdfginrsuz] [FILE...] [-k#[,#[x]] [-t X]] [-o FILE] |
 | split     | 将输入（或标准输入设备）数据复制到一系列输出（或“x”）文件，使用按字母顺序递增的后缀（aa,ab,ac...az,ba,bb...）。<br/>usage: split [-a SUFFIX\_LEN] [-b BYTES] [-l LINES] [-n PARTS] [INPUT [OUTPUT]] |
 | stat      | 显示文件或文件系统的状态。<br/>usage: stat [-tfL] [-c FORMAT] FILE... |

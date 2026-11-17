@@ -23,7 +23,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 
 Enumerates the purposes of using the key.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
@@ -34,7 +34,7 @@ Enumerates the purposes of using the key.
 
 Enumerates the digest algorithms that can be used for signing and signature verification.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
@@ -51,7 +51,7 @@ Enumerates the digest algorithms that can be used for signing and signature veri
 
 Enumerates the padding modes that can be used for signing and signature verification.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
@@ -63,7 +63,7 @@ Enumerates the padding modes that can be used for signing and signature verifica
 
 Represents a set of parameters used for signing or signature verification, including the key usage purpose, padding mode, and digest algorithm.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -76,7 +76,7 @@ Represents a set of parameters used for signing or signature verification, inclu
 
 Represents detailed information about a certificate.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -95,7 +95,7 @@ Represents detailed information about a certificate.
 
 Represents brief information about a certificate.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -108,7 +108,7 @@ Represents brief information about a certificate.
 
 Represents detailed information about a credential.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -124,7 +124,7 @@ Represents detailed information about a credential.
 
 Represents brief information about a credential.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -136,7 +136,7 @@ Represents brief information about a credential.
 
 Represents the result returned.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -154,7 +154,7 @@ Represents the result returned.
 
 Represents the handle to a signing or signature verification operation.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -164,7 +164,7 @@ Represents the handle to a signing or signature verification operation.
 
 Represents the certificate data in binary format.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Since**: 26.0.0
 
@@ -178,7 +178,7 @@ Represents the certificate data in binary format.
 
 Enumerates the error codes used in the certificate management APIs.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
@@ -198,7 +198,7 @@ Enumerates the error codes used in the certificate management APIs.
 
 Enumerates the certificate types.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
@@ -209,7 +209,7 @@ Enumerates the certificate types.
 
 Enumerates the certificate scopes.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
@@ -220,7 +220,7 @@ Enumerates the certificate scopes.
 
 Enumerates the certificate algorithms.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name           | Value| Description                      |
 |---------------| ------ |--------------------------|
@@ -231,7 +231,7 @@ Enumerates the certificate algorithms.
 
 Represents the storage information about a certificate, including the certificate type and location.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name       | Type                               | Read-Only| Optional| Description                                         |
 |-----------|-----------------------------------| ---- | ------------------------------------------------------------ |---------------------------------------------|
@@ -243,7 +243,7 @@ Represents the storage information about a certificate, including the certificat
 
 Enumerates the credential storage levels.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name        | Value  | Description                                      |
 | ------------ | ---- | ------------------------------------------ |
@@ -255,7 +255,7 @@ Enumerates the credential storage levels.
 
 Enumerates the usage of a credential.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name   | Value  | Description |
 | --------| ---- | -------- |
@@ -268,7 +268,7 @@ Enumerates the usage of a credential.
 
 Provides USB credential attributes.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 | Name          | Type | Read-Only| Optional| Description |
 | -------------- | ---- | ---- | ---- | ---- |
@@ -278,7 +278,7 @@ Provides USB credential attributes.
 
 Represents the certificate file format.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Since**: 26.0.0
 
@@ -295,7 +295,7 @@ Installs a private credential. This API uses an asynchronous callback to return 
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -349,7 +349,7 @@ Installs a private credential. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -408,7 +408,7 @@ Installs a private credential and specifies its storage level. This API uses a p
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -470,7 +470,7 @@ Obtains detailed information about a private credential. This API uses an asynch
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -521,7 +521,7 @@ Obtains detailed information about a private credential. This API uses a promise
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -576,7 +576,7 @@ Uninstalls a private credential. This API uses an asynchronous callback to retur
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -622,7 +622,7 @@ Uninstalls a private credential. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -672,7 +672,7 @@ Installs a user CA certificate. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT or ohos.permission.ACCESS_USER_TRUSTED_CERT
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Since**: 26.0.0
 
@@ -736,7 +736,7 @@ Installs a user CA certificate.
 
 **Required permissions**: ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del--> or ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -794,7 +794,7 @@ Uninstalls a user CA certificate.
 
 **Required permissions**: ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del--> or ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -834,7 +834,7 @@ Initializes the signing or signature verification operation using the specified 
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -887,7 +887,7 @@ Initializes the signing or signature verification operation using the specified 
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -944,7 +944,7 @@ Updates the data for the signing or signature verification operation. This API u
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -996,7 +996,7 @@ Updates the data for the signing or signature verification operation. This API u
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1052,7 +1052,7 @@ Finishes the signing operation. This API uses an asynchronous callback to return
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1105,7 +1105,7 @@ Finishes the signature verification operation. This API uses an asynchronous cal
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1157,7 +1157,7 @@ Finishes the signing or signature verification operation. This API uses a promis
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1227,7 +1227,7 @@ Aborts the signing or signature verification operation. This API uses an asynchr
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1275,7 +1275,7 @@ Aborts the signing or signature verification operation. This API uses a promise 
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1327,7 +1327,7 @@ Obtains detailed information about a public credential. This API uses a promise 
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1383,7 +1383,7 @@ Checks whether this application is authorized by the specified user credential. 
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1436,7 +1436,7 @@ Obtains all user trusted root CA certificates of the device. This API uses a pro
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Return value**
 
@@ -1484,7 +1484,7 @@ Obtains the user root CA certificates based on the certificate scope. This API u
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1542,7 +1542,7 @@ Obtains the detailed information about a user root CA certificate. This API uses
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1596,7 +1596,7 @@ Obtains the credentials for installing the application. This API uses a promise 
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Return value**
 
@@ -1641,7 +1641,7 @@ getCertificateStorePath(property: CertStoreProperty): string;
 
 Obtains the certificate storage path.
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Parameters**
 
@@ -1712,7 +1712,7 @@ Obtains the details of a USB credential. This API uses a promise to return the r
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Device behavior differences**: This API can be properly called on PCs. If it is called on other device types, error code 801 is returned.
 
@@ -1771,7 +1771,7 @@ Obtains the list of USB credential certificates. This API uses a promise to retu
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
-**System capability**: System SystemCapability.Security.CertificateManager
+**System capability**: SystemCapability.Security.CertificateManager
 
 **Since**: 26.0.0
 

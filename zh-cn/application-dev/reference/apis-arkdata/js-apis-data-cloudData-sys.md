@@ -224,10 +224,10 @@ static enableCloud(accountId: string, switches: Record<string, boolean>, callbac
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -283,10 +283,10 @@ static enableCloud(accountId: string, switches: Record<string, boolean>): Promis
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -334,10 +334,10 @@ static disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): voi
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -391,10 +391,10 @@ static disableCloud(accountId: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -443,10 +443,10 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -503,10 +503,10 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -564,9 +564,9 @@ static changeAppCloudSwitch(accountId: string, bundleName: string, status: boole
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
-| 801      | Capability not supported.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -626,10 +626,10 @@ static notifyDataChange(accountId: string, bundleName: string, callback: AsyncCa
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -685,10 +685,10 @@ static notifyDataChange(accountId: string,bundleName: string): Promise&lt;void&g
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -736,10 +736,10 @@ try {
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, which is usually returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -794,10 +794,10 @@ ArkTS-Sta: static notifyDataChange(extInfo: ExtraData, userId: int, callback: As
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, which is usually returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -885,10 +885,10 @@ ArkTS-Sta: notifyDataChange(extInfo: ExtraData, userId?: int): Promise&lt;void&g
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, which is usually returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -970,10 +970,10 @@ static queryStatistics(accountId: string, bundleName: string, storeId?: string):
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -1025,10 +1025,10 @@ static queryLastSyncInfo(accountId: string, bundleName: string, storeId?: string
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -1050,9 +1050,9 @@ try {
 }
 ```
 
-### queryLastSyncInfo
+### batchQueryLastSyncInfo
 
-static queryLastSyncInfo(accountId: string, bundleInfos: Array&lt;BundleInfo&gt;): Promise&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt;
+static batchQueryLastSyncInfo(accountId: string, bundleInfos: Array&lt;BundleInfo&gt;): Promise&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt;
 
 批量查询上一次端云同步的信息，使用Promise异步回调。
 
@@ -1085,9 +1085,9 @@ static queryLastSyncInfo(accountId: string, bundleInfos: Array&lt;BundleInfo&gt;
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
-| 801      | Capability not supported because the device does not support the device-cloud capability.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 14800001 | Invalid arguments. Possible causes: 1. the accountId is empty; 2. the bundleName is null; 3. the number of bundleInfos exceeds the upper limit or the number is 0.|
 
 **示例：**
@@ -1102,7 +1102,7 @@ const bundleInfos: Array<cloudData.BundleInfo> = [
 ];
 
 try {
-  cloudData.Config.queryLastSyncInfo(accountId, bundleInfos).then((result) => {
+  cloudData.Config.batchQueryLastSyncInfo(accountId, bundleInfos).then((result) => {
     console.info(`Succeeded in querying last sync info. Result is ${JSON.stringify(result)}`);
   }).catch((err) => {
     console.error(`Failed to query last sync info. Error code is ${err.code}, message is ${err.message}`);
@@ -1142,9 +1142,9 @@ static onSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress: Callbac
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
-| 801      | Capability not supported because the device does not support the device-cloud capability.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 14800001 | Invalid arguments. Possible causes: 1. bundleName is null; 2. the number of bundleInfos exceeds the upper limit or the number is 0.|
 
 **示例：**
@@ -1196,9 +1196,9 @@ static offSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress?: Callb
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
-| 801      | Capability not supported because the device does not support the device-cloud capability.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 14800001 | Invalid arguments. Possible causes: 1. bundleName is null; 2. the number of bundleInfos exceeds the upper limit or the number is 0.|
 
 **示例：**
@@ -1273,10 +1273,10 @@ static setGlobalCloudStrategy(strategy: StrategyType, param?: Array&lt;commonTyp
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -1325,10 +1325,10 @@ static cloudSync(bundleName: string, storeId: string, mode: relationalStore.Sync
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
-| 801      | Capability not supported.|
-| 14800001 | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 14800001 | Invalid arguments. Possible causes: 1. Empty conditions; 2. Missing GROUP BY clause. |
 
 **示例：**
 
@@ -1337,7 +1337,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { relationalStore } from '@kit.ArkData';
 
 try{
-  cloudData.Config.cloudSync("bundleName", "storeId", relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, (progress)=>{
+  cloudData.Config.cloudSync("bundleName", "storeId", relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, (progress) => {
     console.info('Succeeded in getting progress details.');
   }).then(() => {
       console.info('Succeeded in syncing cloud data.');
@@ -1378,10 +1378,10 @@ static clear(accountId: string, appActions: Record<string, ClearAction>,  callba
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -1441,10 +1441,10 @@ static clear(accountId: string, appActions: Record<string, ClearAction>): Promis
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -1505,9 +1505,9 @@ static clear(accountId: string, appActions: Record<string, ClearAction>, config?
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
-| 202      | Permission verification failed, application which is not a system application uses system API.|
-| 801      | Capability not supported.|
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -1544,9 +1544,9 @@ try {
   console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 ```
 
-### cloudSync
+### cloudSyncEx
 
-static cloudSync(bundleInfo: BundleInfo, config: relationalStore.CloudSyncConfig, progress: Callback&lt;relationalStore.ProgressDetails&gt;): Promise&lt;void&gt;
+static cloudSyncEx(bundleInfo: BundleInfo, config: relationalStore.CloudSyncConfig, progress: Callback&lt;relationalStore.ProgressDetails&gt;): Promise&lt;void&gt;
 
 对指定应用的数据按照云同步配置信息进行端云同步，当[CloudSyncConfig](js-apis-data-relationalStore-sys.md#cloudsyncconfig)中的downloadOnly为true时，端云同步仅把云侧数据下行到本地，使用Promise异步回调。
 
@@ -1582,10 +1582,10 @@ static cloudSync(bundleInfo: BundleInfo, config: relationalStore.CloudSyncConfig
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| 202      | Permission verification failed, application is not a system application. |
-| 801      | Capability not supported because the device does not support the device-cloud capability. |
-| 14800001 | Invalid arguments. Possible causes: Empty conditions. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 14800001 | Invalid arguments. Possible causes: 1. Empty conditions. |
 
 **示例：**
 
@@ -1606,7 +1606,7 @@ let config: relationalStore.CloudSyncConfig = {
 };
 
 try {
-  cloudData.Config.cloudSync(bundleInfo, config, (progressDetails: relationalStore.ProgressDetails) => {
+  cloudData.Config.cloudSyncEx(bundleInfo, config, (progressDetails: relationalStore.ProgressDetails) => {
     console.info(`Cloud sync progress: ${progressDetails.schedule}, code: ${progressDetails.code}`);
   }).then(() => {
     console.info('Succeeded in cloud sync');
@@ -1655,9 +1655,9 @@ static stopCloudSync(bundleInfos: Array&lt;BundleInfo&gt;): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| 202      | Permission verification failed, application which is not a system application uses system API. |
-| 801      | Capability not supported because the device does not support the device-cloud capability. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 14800001 | Invalid arguments. Possible causes: 1. bundlename is null; 2. the number of bundleInfos exceeds the upper limit or the number is 0. |
 
 **示例：**
@@ -1829,9 +1829,9 @@ allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -1857,6 +1857,10 @@ let sharingResource: string;
 let predicates = new relationalStore.RdbPredicates('test_table');
 predicates.equalTo('data', 'data_test');
 cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, ['uuid', 'data']).then((resultSet) => {
+  if (resultSet === undefined || resultSet === null) {
+    console.error(`resultSet is null`);
+    return;
+  }
   if (!resultSet.goToFirstRow()) {
     console.error(`row error`);
     return;
@@ -1898,9 +1902,9 @@ allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -1925,9 +1929,13 @@ participants.push({
 let sharingResource: string;
 let predicates = new relationalStore.RdbPredicates('test_table');
 predicates.equalTo('data', 'data_test');
-cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, ['uuid', 'data'], (err: BusinessError|null, resultSet) => {
+cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, ['uuid', 'data'], (err: BusinessError|null, resultSet: relationalStore.ResultSet) => {
   if (err) {
     console.error(`alloc resource and share failed, code is ${err.code},message is ${err.message}`);
+    return;
+  }
+  if (resultSet === undefined || resultSet === null) {
+    console.error(`resultSet is null`);
     return;
   }
   if (!resultSet.goToFirstRow()) {
@@ -1968,9 +1976,9 @@ allocResourceAndShare(storeId: string, predicates: relationalStore.RdbPredicates
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -1995,9 +2003,13 @@ participants.push({
 let sharingResource: string;
 let predicates = new relationalStore.RdbPredicates('test_table');
 predicates.equalTo('data', 'data_test');
-cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, (err: BusinessError|null, resultSet) => {
+cloudData.sharing.allocResourceAndShare('storeName', predicates, participants, (err: BusinessError|null, resultSet: relationalStore.ResultSet) => {
   if (err) {
     console.error(`alloc resource and share failed, code is ${err.code},message is ${err.message}`);
+    return;
+  }
+  if (resultSet === undefined || resultSet === null) {
+    console.error(`resultSet is null`);
     return;
   }
   if (!resultSet.goToFirstRow()) {
@@ -2042,9 +2054,9 @@ share(sharingResource: string, participants: Array&lt;Participant&gt;): Promise&
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -2099,9 +2111,9 @@ share(sharingResource: string, participants: Array&lt;Participant&gt;, callback:
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -2163,9 +2175,9 @@ unshare(sharingResource: string, participants: Array&lt;Participant&gt;): Promis
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -2220,9 +2232,9 @@ unshare(sharingResource: string, participants: Array&lt;Participant&gt;, callbac
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -2283,9 +2295,9 @@ exit(sharingResource: string): Promise&lt;Result&lt;void&gt;&gt;
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -2325,9 +2337,9 @@ exit(sharingResource: string, callback: AsyncCallback&lt;Result&lt;void&gt;&gt;)
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -2375,9 +2387,9 @@ changePrivilege(sharingResource: string, participants: Array&lt;Participant&gt;)
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -2433,9 +2445,9 @@ changePrivilege(sharingResource: string, participants: Array&lt;Participant&gt;,
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -2497,9 +2509,9 @@ queryParticipants(sharingResource: string): Promise&lt;Result&lt;Array&lt;Partic
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -2539,9 +2551,9 @@ queryParticipants(sharingResource: string, callback: AsyncCallback&lt;Result&lt;
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -2588,9 +2600,9 @@ queryParticipantsByInvitation(invitationCode: string): Promise&lt;Result&lt;Arra
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -2630,9 +2642,9 @@ queryParticipantsByInvitation(invitationCode: string, callback: AsyncCallback&lt
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -2680,9 +2692,9 @@ confirmInvitation(invitationCode: string, state: State): Promise&lt;Result&lt;st
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -2725,9 +2737,9 @@ confirmInvitation(invitationCode: string, state: State, callback: AsyncCallback&
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -2777,9 +2789,9 @@ changeConfirmation(sharingResource: string, state: State): Promise&lt;Result&lt;
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 
@@ -2820,9 +2832,9 @@ changeConfirmation(sharingResource: string, state: State, callback: AsyncCallbac
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
-| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例：**
 

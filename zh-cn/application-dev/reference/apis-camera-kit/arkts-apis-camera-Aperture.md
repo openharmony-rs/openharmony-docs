@@ -27,7 +27,7 @@ getPhysicalAperture(): number
 
 获取当前物理光圈值。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -73,7 +73,7 @@ setPhysicalAperture(aperture: number): void
 例如，"zoomRange":[1, 4]支持可设置物理光圈列表为2.6，需要通过[setZoomRatio](arkts-apis-camera-Zoom.md#setzoomratio11)设置焦段在[1, 4]之间，才可成功设置物理光圈值2.6。
 
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -99,7 +99,20 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function setPhysicalAperture(photoSession: camera.PhotoSession, aperture: number): void {
   try {
-    photoSession.setPhysicalAperture(aperture);
+    let apertures: Array<camera.PhysicalAperture> = photoSession.getSupportedPhysicalApertures();
+    let index = apertures.findIndex((apertureValue: camera.PhysicalAperture) =>
+      apertureValue.apertures.includes(aperture));
+    if (index < 0) {
+      console.error(`invalid aperture`);
+      return;
+    }
+    let curZoomValue = photoSession.getZoomRatio();
+    if (curZoomValue >= apertures[index].zoomRange.min && curZoomValue <= apertures[index].zoomRange.max) {
+      photoSession.setPhysicalAperture(aperture);
+    } else {
+      console.error(`current aperture: ${aperture} invalid in zoomRatio: ${curZoomValue}.`);
+      return;
+    }
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;

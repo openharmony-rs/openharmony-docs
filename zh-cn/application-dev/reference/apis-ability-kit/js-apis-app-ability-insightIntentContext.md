@@ -7,13 +7,15 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供意图执行上下文，是[意图执行基类](./js-apis-app-ability-insightIntentExecutor.md)和[@InsightIntentEntry的意图执行基类](./js-apis-app-ability-InsightIntentEntryExecutor.md)的属性，为意图执行提供基础能力，例如启动本应用内的[UIAbility组件](./js-apis-app-ability-uiAbility.md)。
+本模块提供意图执行上下文，是[意图执行基类](./js-apis-app-ability-insightIntentExecutor.md)和[@InsightIntentEntry的意图执行基类](./js-apis-app-ability-InsightIntentEntryExecutor.md)的属性，为意图执行提供基础能力，例如启动本应用内的[@ohos.app.ability.UIAbility (带界面的应用组件)](./js-apis-app-ability-uiAbility.md)。
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块接口仅可在Stage模型下使用。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -23,15 +25,18 @@ import { InsightIntentContext } from '@kit.AbilityKit';
 
 ## 属性
 
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| instanceId<sup>23+</sup> | number | 否 | 否 | 意图实例唯一ID。用于通过[insightIntentProvider.sendExecuteResult接口](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendexecuteresult)和[insightIntentProvider.sendIntentResult接口](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendintentresult)返回指定意图的执行结果。|
+| instanceId<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 意图实例唯一ID。用于通过[insightIntentProvider.sendExecuteResult](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendexecuteresult)和[insightIntentProvider.sendIntentResult](./js-apis-app-ability-insightIntentProvider.md#insightintentprovidersendintentresult)返回指定意图的执行结果。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| insightIntentExecutionInfo | [insightIntent.InsightIntentExecutionInfo](./js-apis-app-ability-insightIntent.md#insightintentexecutioninfo) | 是 | 是 | 表示意图执行信息。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
   ```ts
   import { InsightIntentExecutor, insightIntent, insightIntentProvider } from '@kit.AbilityKit';
@@ -57,6 +62,46 @@ import { InsightIntentContext } from '@kit.AbilityKit';
             console.info('testTag setExecuteResult success');
           })
           .catch((error: BusinessError) => {
+            console.error(`Failed to setExecuteResult. Code: ${error.code}, message: ${error.message}`);
+          });
+      } catch (e) {
+        let code = (e as BusinessError).code;
+        let msg = (e as BusinessError).message;
+        console.error(`testTag setExecuteResult fail2, error code: ${code}, error msg: ${msg}`);
+      }
+      return result;
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  'use static'
+  import { InsightIntentExecutor, insightIntent, insightIntentProvider } from '@kit.AbilityKit';
+  import { window } from '@kit.ArkUI';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+  
+  export default class InsightIntentExecutorUI extends InsightIntentExecutor {
+    onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
+      pageLoader: window.WindowStage): insightIntent.ExecuteResult {
+      hilog.info(0x0000, 'testTag', 'onExecuteInUIAbilityForegroundMode %{public}s', name);
+      let result: insightIntent.ExecuteResult;
+      result = {
+        code: 0,
+        result: {
+          'message': 'Unsupported insight intent.',
+        } as Record<string, RecordData>,
+      };
+      try {
+        // 通过意图实例唯一ID返回意图执行结果
+        insightIntentProvider.sendExecuteResult(this.context.instanceId, result)
+          .then(() => {
+            console.info('testTag setExecuteResult success');
+          })
+          .catch((err: Error) => {
+            let error = err as BusinessError;
             console.error(`testTag setExecuteResult fail1, error code: ${JSON.stringify(error)}`);
           });
       } catch (e) {
@@ -77,9 +122,13 @@ startAbility(want: Want, callback: AsyncCallback\<void\>): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -112,10 +161,13 @@ startAbility(want: Want, callback: AsyncCallback\<void\>): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { InsightIntentExecutor, insightIntent, Want } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   export default class IntentExecutorImpl extends InsightIntentExecutor {
     onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
@@ -135,7 +187,8 @@ startAbility(want: Want, callback: AsyncCallback\<void\>): void
           }
         })
       } catch (error) {
-        hilog.error(0x0000, 'testTag', 'Start ability error caught %{public}s', JSON.stringify(error));
+        const err: BusinessError = error as BusinessError;
+        console.error(`Failed to start ability. Code: ${err.code}, message: ${err.message}`);
       }
 
       let result: insightIntent.ExecuteResult = {
@@ -143,6 +196,47 @@ startAbility(want: Want, callback: AsyncCallback\<void\>): void
         result: {
           message: 'Execute insight intent succeed.',
         }
+      };
+      return result;
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  'use static'
+  import { InsightIntentExecutor, insightIntent, Want } from '@kit.AbilityKit';
+  import { window } from '@kit.ArkUI';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { RecordData } from '@kit.BasicServicesKit';
+  
+  export default class IntentExecutorImpl extends InsightIntentExecutor {
+    onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
+      pageLoader: window.WindowStage): insightIntent.ExecuteResult {
+      let want: Want = {
+        bundleName: 'com.ohos.intentexecutedemo',
+        moduleName: 'entry',
+        abilityName: 'AnotherAbility',
+      };
+  
+      try {
+        this.context.startAbility(want, (error) => {
+          if (error) {
+            hilog.error(0x0000, 'testTag', 'Start ability failed with %{public}s', JSON.stringify(error));
+          } else {
+            hilog.info(0x0000, 'testTag', '%{public}s', 'Start ability succeed');
+          }
+        })
+      } catch (error) {
+        hilog.error(0x0000, 'testTag', 'Start ability error caught %{public}s', JSON.stringify(error));
+      }
+  
+      let result: insightIntent.ExecuteResult = {
+        code: 0,
+        result: {
+          'message': 'Execute insight intent succeed.',
+        } as Record<string, RecordData>
       };
       return result;
     }
@@ -157,9 +251,13 @@ startAbility(want: Want): Promise\<void\>
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -197,10 +295,13 @@ startAbility(want: Want): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { InsightIntentExecutor, insightIntent, Want } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   export default class IntentExecutorImpl extends InsightIntentExecutor {
     async onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
@@ -215,7 +316,8 @@ startAbility(want: Want): Promise\<void\>
         await this.context.startAbility(want);
         hilog.info(0x0000, 'testTag', '%{public}s', 'Start ability finished');
       } catch (error) {
-        hilog.error(0x0000, 'testTag', 'Start ability error caught %{public}s', JSON.stringify(error));
+        const err: BusinessError = error as BusinessError;
+        console.error(`Failed to start ability. Code: ${err.code}, message: ${err.message}`);
       }
 
       let result: insightIntent.ExecuteResult = {
@@ -229,6 +331,41 @@ startAbility(want: Want): Promise\<void\>
   }
   ```
 
+ArkTS-Sta示例：
+
+  ```ts
+  'use static'
+  import { InsightIntentExecutor, insightIntent, Want } from '@kit.AbilityKit';
+  import { window } from '@kit.ArkUI';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { RecordData } from '@kit.BasicServicesKit';
+  
+  export default class IntentExecutorImpl extends InsightIntentExecutor {
+    async onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
+      pageLoader: window.WindowStage): Promise<insightIntent.ExecuteResult> {
+      let want: Want = {
+        bundleName: 'com.ohos.intentexecutedemo',
+        moduleName: 'entry',
+        abilityName: 'AnotherAbility',
+      };
+  
+      try {
+        await this.context.startAbility(want);
+        hilog.info(0x0000, 'testTag', '%{public}s', 'Start ability finished');
+      } catch (error) {
+        hilog.error(0x0000, 'testTag', 'Start ability error caught %{public}s', JSON.stringify(error));
+      }
+  
+      let result: insightIntent.ExecuteResult = {
+        code: 0,
+        result: {
+          'message': 'Execute insight intent succeed.',
+        } as Record<string, RecordData>
+      };
+      return result;
+    }
+  }
+  ```
 ## InsightIntentContext.setReturnModeForUIAbilityForeground<sup>23+</sup>
 
 setReturnModeForUIAbilityForeground(returnMode: insightIntent.ReturnMode): void
@@ -237,9 +374,15 @@ setReturnModeForUIAbilityForeground(returnMode: insightIntent.ReturnMode): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -257,10 +400,13 @@ setReturnModeForUIAbilityForeground(returnMode: insightIntent.ReturnMode): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   export default class InsightIntentExecutorUI extends InsightIntentExecutor {
     onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
@@ -277,6 +423,50 @@ setReturnModeForUIAbilityForeground(returnMode: insightIntent.ReturnMode): void
       try {
         this.context.setReturnModeForUIAbilityForeground(insightIntent.ReturnMode.FUNCTION);
       } catch (error) {
+        const err: BusinessError = error as BusinessError;
+        console.error(`Failed to setReturnModeForUIAbilityForeground. Code: ${err.code}, message: ${err.message}`);
+      }
+
+      let localStorageData: Record<string, number> = {
+        'insightId': this.context.instanceId,
+      };
+      let storage: LocalStorage = new LocalStorage(localStorageData);
+      pageLoader.loadContent('pages/UIAbilityIndex', storage, (err, data) => {
+        if (err.code) {
+          hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        } else {
+          hilog.info(0x0000, 'testTag', '%{public}s', 'Succeeded in loading the content');
+        }
+      });
+      return result;
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  'use static'
+  import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
+  import { window, LocalStorage } from '@kit.ArkUI';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+  
+  export default class InsightIntentExecutorUI extends InsightIntentExecutor {
+    onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
+      pageLoader: window.WindowStage): insightIntent.ExecuteResult {
+      hilog.info(0x0000, 'testTag', 'onExecuteInUIAbilityForegroundMode %{public}s', name);
+      let result: insightIntent.ExecuteResult;
+      result = {
+        code: 0,
+        result: {
+          'message': 'Unsupported insight intent.',
+        } as Record<string, RecordData>,
+      };
+
+      try {
+        this.context.setReturnModeForUIAbilityForeground(insightIntent.ReturnMode.FUNCTION);
+      } catch (error) {
         let code = (error as BusinessError).code;
         let msg = (error as BusinessError).message;
         console.error(`testTag setReturnModeForUIAbilityForeground fail, error code: ${code}, err msg: ${msg}.`);
@@ -286,7 +476,8 @@ setReturnModeForUIAbilityForeground(returnMode: insightIntent.ReturnMode): void
         'insightId': this.context.instanceId,
       };
       let storage: LocalStorage = new LocalStorage(localStorageData);
-      pageLoader.loadContent('pages/UIAbilityIndex', storage, (err, data) => {
+      pageLoader.loadContent('pages/UIAbilityIndex', storage, (error, data): void => {
+        let err = error as BusinessError;
         if (err.code) {
           hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
         } else {
@@ -306,9 +497,13 @@ setReturnModeForUIExtensionAbility(returnMode: insightIntent.ReturnMode): void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -326,9 +521,12 @@ setReturnModeForUIExtensionAbility(returnMode: insightIntent.ReturnMode): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
   ```ts
   import { InsightIntentExecutor, insightIntent, UIExtensionContentSession } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   export default class InsightIntentExecutorUI extends InsightIntentExecutor {
     onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>,
@@ -349,6 +547,50 @@ setReturnModeForUIExtensionAbility(returnMode: insightIntent.ReturnMode): void
         console.error(`testTag setReturnModeForUIExtensionAbility fail, error code: ${code}, error msg: ${msg}.`);
       }
 
+      try {
+        let localStorageData: Record<string, number> = {
+          'insightId': this.context.instanceId,
+        };
+        let storage: LocalStorage = new LocalStorage(localStorageData);
+        storage.setOrCreate('session', pageLoader);
+        pageLoader.loadContent('pages/UIExtensionPage', storage);
+      } catch (err) {
+        const error: BusinessError = err as BusinessError;
+        console.error(`Failed to loadContent. Code: ${error.code}, message: ${error.message}`);
+      }
+      return result;
+    }
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  'use static'
+  import { InsightIntentExecutor, insightIntent, UIExtensionContentSession } from '@kit.AbilityKit';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+  import { LocalStorage } from '@kit.ArkUI';
+  
+  export default class InsightIntentExecutorUI extends InsightIntentExecutor {
+    onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>,
+      pageLoader: UIExtensionContentSession): insightIntent.ExecuteResult {
+      hilog.info(0x0000, 'testTag', 'onExecuteInUIExtensionAbility %{public}s', name);
+      let result: insightIntent.ExecuteResult;
+      result = {
+        code: 0,
+        result: {
+          'message': 'Unsupported insight intent.',
+        } as Record<string, RecordData>,
+      };
+      try {
+        this.context.setReturnModeForUIExtensionAbility(insightIntent.ReturnMode.FUNCTION)
+      } catch (error) {
+        let code = (error as BusinessError).code;
+        let msg = (error as BusinessError).message;
+        console.error(`testTag setReturnModeForUIExtensionAbility fail, error code: ${code}, error msg: ${msg}.`);
+      }
+  
       try {
         let localStorageData: Record<string, number> = {
           'insightId': this.context.instanceId,

@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍动态import机制及其技术适用场景，说明通过动态import实现条件延迟加载、部分反射功能以及加载HSP/HAR/ohpm包/Native库的方法，并阐述HAR模块间变量动态import实现依赖解耦。"
+keywords: [动态import, 动态加载, 条件延迟加载, 反射, HAR模块, 模块解耦, HSP模块]
+doctype: guide
+status: active
+---
+
 # 动态加载
 
 <!--Kit: ArkTS-->
@@ -5,12 +13,12 @@
 <!--Owner: @jokerxd-liu; @zmw1-->
 <!--Designer: @huyunhui1; @zmw1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 动态import支持条件延迟加载，支持部分反射功能，可以提升页面的加载速度；动态import支持加载HSP模块/HAR模块/ohpm包/Native库等，并且HAR模块之间可通过变量动态import来访问彼此导出的内容，可避免编译期强依赖，实现模块解耦。
 
 ## 技术适用场景介绍
-应用开发的有些场景中，如果希望根据条件导入模块或者按需导入模块，可以使用动态import代替[静态import](../quick-start/introduction-to-arkts.md#导入)。下面是可能会需要动态import的场景：
+应用开发的有些场景中，如果希望根据条件导入模块或者按需导入模块，可以使用动态import代替[静态import](../quick-start/arkts-language-guide-module-system.md#静态导入)。下面是可能会需要动态import的场景：
 
 * 当静态import的模块明显降低了代码的加载速度且很少被使用，或者并不需要马上使用它。
 * 当静态import的模块明显占用了大量的系统内存且很少被使用。
@@ -39,9 +47,9 @@ export class Calc {
   }
 }
 
-export function addHarlibrary(a: number, b: number): number {
+export function addHarLibrary(a: number, b: number): number {
   let c = a + b;
-  console.info('DynamicImport I am harlibrary in addHarlibrary, %d + %d = %d', a, b, c);
+  console.info('DynamicImport I am harlibrary in addHarLibrary, %d + %d = %d', a, b, c);
   return c;
 }
 ```
@@ -50,7 +58,7 @@ export function addHarlibrary(a: number, b: number): number {
 
 ``` TypeScript
 // harlibrary's Index.ets
-export { Calc, addHarlibrary } from './src/main/ets/utils/Calc'
+export { Calc, addHarLibrary } from './src/main/ets/utils/Calc'
 ```
 
 <!-- @[dynamic_call_add_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/oh-package.json5) -->
@@ -59,6 +67,7 @@ export { Calc, addHarlibrary } from './src/main/ets/utils/Calc'
 // HAP's oh-package.json5
 "dependencies": {
   "harlibrary": "file:../harlibrary",
+  // ...
 }
 ```
 
@@ -70,18 +79,20 @@ import('harlibrary').then((ns: ESObject) => {
   ns.Calc.staticAdd(8, 9); // 调用静态成员函数staticAdd()
   let calc: ESObject = new ns.Calc(); // 实例化类Calc
   calc.instanceAdd(10, 11); // 调用成员函数instanceAdd()
-  ns.addHarlibrary(6, 7); // 调用全局方法addHarlibrary()
+  ns.addHarLibrary(6, 7); // 调用全局方法addHarLibrary()
 
   // 使用类、成员函数和方法的字符串名字进行反射调用
   let className = 'Calc';
   let methodName = 'instanceAdd';
   let staticMethod = 'staticAdd';
-  let functionName = 'addHarlibrary';
+  let functionName = 'addHarLibrary';
   ns[className][staticMethod](12, 13); // 调用静态成员函数staticAdd()
   let calc1: ESObject = new ns[className](); // 实例化类Calc
   calc1[methodName](14, 15); // 调用成员函数instanceAdd()
-  ns[functionName](16, 17); // 调用全局方法addHarlibrary()
-})
+  ns[functionName](16, 17); // 调用全局方法addHarLibrary()
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import harlibrary. Code: ${error.code}, message: ${error.message}`);
+});
 ```
 
 ## 动态import实现方案介绍
@@ -106,9 +117,9 @@ import('harlibrary').then((ns: ESObject) => {
 
 >**说明：**
 > 
-> 1.当前所有import中使用的模块名都是依赖方oh-package.json5文件中dependencies项的别名。</br>
-> 2.本地模块在依赖方的dependencies中配置的别名建议与moduleName以及packageName三者一致。moduleName指的是被依赖的HSP/HAR的module.json5中配置的名字，packageName指的是被依赖的HSP/HAR的oh-package.json5中配置的名字。</br>
-> 3.import一个模块名，实际的行为是import该模块的入口文件，一般为Index.ets/ts。
+> 1. 当前所有import中使用的模块名都是依赖方oh-package.json5文件中dependencies项的别名。</br>
+> 2. 本地模块在依赖方的dependencies中配置的别名建议与moduleName以及packageName三者一致。moduleName指的是被依赖的HSP/HAR的module.json5中配置的名字，packageName指的是被依赖的HSP/HAR的oh-package.json5中配置的名字。</br>
+> 3. import一个模块名，实际的行为是import该模块的入口文件，一般为Index.ets/ts。
 
 ## 动态import实现中的关键点
 
@@ -135,8 +146,10 @@ export function add(a: number, b: number): number {
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
 import('myhar').then((ns: ESObject) => {
-  console.info(ns.add(3, 5));
-})
+  console.info('DynamicImport ns.add(3, 5) = %d', ns.add(3, 5));
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import myhar. Code: ${error.code}, message: ${error.message}`);
+});
 ```
 
 <!-- @[await_for_dynamic_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/ets/pages/Index.ets) -->
@@ -154,7 +167,9 @@ async function asyncDynamicImport() {
 ``` JSON5
 // HAP's oh-package.json5
 "dependencies": {
-  "myhar": "file:../myHar"
+  // ...
+  "myhar": "file:../myHar",
+  // ...
 }
 ```
 
@@ -175,7 +190,9 @@ export function add(a: number, b: number): number {
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
 import('myhar/Index').then((ns: ESObject) => {
-  console.info(ns.add(3, 5));
+  console.info('DynamicImport ns.add(3, 5) = %d', ns.add(3, 5));
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import myhar/Index. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -184,7 +201,9 @@ import('myhar/Index').then((ns: ESObject) => {
 ``` JSON5
 // HAP's oh-package.json5
 "dependencies": {
-  "myhar": "file:../myHar"
+  // ...
+  "myhar": "file:../myHar",
+  // ...
 }
 ```
 
@@ -205,7 +224,9 @@ export function add(a: number, b: number): number {
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
 import('myhsp').then((ns: ESObject) => {
-  console.info(ns.add(3, 5));
+  console.info('DynamicImport ns.add(3, 5) = %d', ns.add(3, 5));
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import myhsp. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -214,7 +235,9 @@ import('myhsp').then((ns: ESObject) => {
 ``` JSON5
 // HAP's oh-package.json5
 "dependencies": {
-  "myhsp": "file:../myHsp"
+  // ...
+  "myhsp": "file:../myHsp",
+  // ...
 }
 ```
 
@@ -235,7 +258,9 @@ export function add(a: number, b: number): number {
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
 import('myhsp/Index').then((ns: ESObject) => {
-  console.info(ns.add(3, 5));
+  console.info('DynamicImport ns.add(3, 5) = %d', ns.add(3, 5));
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import myhsp/Index. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -244,7 +269,9 @@ import('myhsp/Index').then((ns: ESObject) => {
 ``` JSON5
 // HAP's oh-package.json5
 "dependencies": {
-  "myhsp": "file:../myHsp"
+  // ...
+  "myhsp": "file:../myHsp",
+  // ...
 }
 ```
 
@@ -255,6 +282,8 @@ import('myhsp/Index').then((ns: ESObject) => {
 // HAP's src/main/ets/pages/Index.ets
 import('@ohos/crypto-js').then((ns: ESObject) => {
   console.info('DynamicImport @ohos/crypto-js: ' + ns.CryptoJS.src);
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import @ohos/crypto-js. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -263,7 +292,9 @@ import('@ohos/crypto-js').then((ns: ESObject) => {
 ``` JSON5
 // HAP's oh-package.json5
 "dependencies": {
-  "@ohos/crypto-js": "2.0.3-rc.0"
+  // ...
+  "@ohos/crypto-js": "2.0.3-rc.0",
+  // ...
 }
 ```
 
@@ -274,6 +305,8 @@ import('@ohos/crypto-js').then((ns: ESObject) => {
 // HAP's src/main/ets/pages/Index.ets
 import('@ohos/hypium').then((ns: ESObject) => {
   console.info('DynamicImport @ohos/hypium: ', ns.TestType.FUNCTION.toString());
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import @ohos/hypium. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -282,7 +315,9 @@ import('@ohos/hypium').then((ns: ESObject) => {
 ``` JSON5
 // HAP's oh-package.json5
 "dependencies": {
-  "@ohos/hypium": "1.0.19"
+  // ...
+  "@ohos/hypium": "1.0.19",
+  // ...
 }
 ```
 
@@ -303,8 +338,10 @@ export function add(a: number, b: number): number {
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
 import('../Calc').then((ns: ESObject) => {
-  console.info(ns.add(3, 5));
-})
+  console.info('DynamicImport ns.add(3, 5) = %d', ns.add(3, 5));
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import ../Calc. Code: ${error.code}, message: ${error.message}`);
+});
 ```
 
 - **HAP常量动态import自己的Native库**
@@ -312,7 +349,7 @@ import('../Calc').then((ns: ESObject) => {
 <!-- @[hap_const_dynamic_import_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/cpp/types/libentry/index.d.ts) -->
 
 ``` TypeScript
-// libnativeapi.so's index.d.ts
+// libentry.so's index.d.ts
 export const add: (a: number, b: number) => number;
 ```
 
@@ -321,7 +358,9 @@ export const add: (a: number, b: number) => number;
 ``` TypeScript
 // HAP's src/main/ets/pages/Index.ets
 import('libentry.so').then((ns: ESObject) => {
-  console.info('DynamicImport libnativeapi.so: ' + ns.default.add(2, 3));
+  console.info('DynamicImport libentry.so: ' + ns.default.add(2, 3));
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import libentry.so. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -330,7 +369,9 @@ import('libentry.so').then((ns: ESObject) => {
 ``` JSON5
 // HAP's oh-package.json5
 "dependencies": {
-  "libentry.so": "file:./src/main/cpp/types/libentry"
+  // ...
+  "libentry.so": "file:./src/main/cpp/types/libentry",
+  // ...
 }
 ```
 
@@ -342,16 +383,27 @@ import('libentry.so').then((ns: ESObject) => {
 // HAP's src/main/ets/pages/Index.ets
 import('@system.app').then((ns: ESObject) => {
   ns.default.getInfo();
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import @system.app. Code: ${error.code}, message: ${error.message}`);
 });
+// ...
 import('@ohos.curves').then((ns: ESObject) => {
   ns.default.springMotion(0.555, 0.75, 0.001).interpolate(1);
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import @ohos.curves. Code: ${error.code}, message: ${error.message}`);
 });
+// ...
 import('@ohos.matrix4').then((ns: ESObject) => {
   ns.default.identity().transformPoint([1, 2])[0];
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import @ohos.matrix4. Code: ${error.code}, message: ${error.message}`);
 });
+// ...
 import('@ohos.hilog').then((ns: ESObject) => {
   ns.default.info(0x0000, 'testTag', '%{public}s', 'DynamicImport @ohos.hilog.');
-  hilog.info(0x000, 'testTag', '%{public}s', ns.default.LogLevel.DEBUG);
+  hilog.info(0x000, 'testTag', '%{public}d', ns.default.LogLevel.DEBUG);
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import @ohos.hilog. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -372,13 +424,18 @@ DevEco Studio中模块间的依赖关系通过oh-package.json5中的dependencies
 // 变量动态import其他模块myHar
 let harName = 'myhar';
 import(harName).then((ns: ESObject) => {
-  console.info(ns.add(3, 5));
+  console.info('DynamicImport ns.add(3, 5) = %d', ns.add(3, 5));
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import ${harName}. Code: ${error.code}, message: ${error.message}`);
 });
+// ...
 
 // 变量动态import本模块自己的单文件
 let filePath = '../utils/Calc';
 import(filePath).then((ns: ESObject) => {
-  console.info(ns.add(3, 5));
+  console.info('DynamicImport ns.add(3, 5) = %d', ns.add(3, 5));
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import ${filePath}. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -420,7 +477,9 @@ export function add(a: number, b: number): number {
 // HAP's src/main/ets/pages/Index.ets
 let harPackageName = 'myhar';
 import(harPackageName).then((ns: ESObject) => {
-  console.info(ns.add(3, 5));
+  console.info('DynamicImport ns.add(3, 5) = %d', ns.add(3, 5));
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import ${harPackageName}. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -429,7 +488,9 @@ import(harPackageName).then((ns: ESObject) => {
 ``` JSON5
 // HAP's oh-package.json5
 "dependencies": {
-  "myhar": "file:../myHar"
+  // ...
+  "myhar": "file:../myHar",
+  // ...
 }
 ```
 
@@ -441,11 +502,15 @@ import(harPackageName).then((ns: ESObject) => {
   "arkOptions": {
     "runtimeOnly": {
       "packages": [
-        "myhar",  // 仅用于使用变量动态import其他模块名场景，静态import或常量动态import无需配置。
-      ]
+        "myhar",
+        // 仅用于使用变量动态import其他模块名场景，静态import或常量动态import无需配置。
+        // ...
+      ],
+      // ...
     }
-  }
-}
+  },
+  // ...
+},
 ```
 
 - **HAP变量动态import HSP模块名**
@@ -467,7 +532,9 @@ export function add(a: number, b: number): number {
 // HAP's src/main/ets/pages/Index.ets
 let hspPackageName = 'myhsp';
 import(hspPackageName).then((ns: ESObject) => {
-  console.info(ns.add(3, 5));
+  console.info('DynamicImport ns.add(3, 5) = %d', ns.add(3, 5));
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import ${hspPackageName}. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -476,7 +543,9 @@ import(hspPackageName).then((ns: ESObject) => {
 ``` JSON5
 // HAP's oh-package.json5
 "dependencies": {
-  "myhsp": "file:../myHsp"
+  // ...
+  "myhsp": "file:../myHsp",
+  // ...
 }
 ```
 
@@ -488,11 +557,16 @@ import(hspPackageName).then((ns: ESObject) => {
   "arkOptions": {
     "runtimeOnly": {
       "packages": [
-        "myhsp",  // 仅用于使用变量动态import其他模块名场景，静态import或常量动态import无需配置。
-      ]
+        // ...
+        "myhsp",
+        // 仅用于使用变量动态import其他模块名场景，静态import或常量动态import无需配置。
+        // ...
+      ],
+      // ...
     }
-  }
-}
+  },
+  // ...
+},
 ```
 
 - **HAP变量动态import远程HAR模块名**
@@ -504,6 +578,8 @@ import(hspPackageName).then((ns: ESObject) => {
 let remoteHarPackageName = '@ohos/crypto-js';
 import(remoteHarPackageName).then((ns: ESObject) => {
   console.info('DynamicImport @ohos/crypto-js: ' + ns.CryptoJS.src);
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import ${remoteHarPackageName}. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -512,7 +588,9 @@ import(remoteHarPackageName).then((ns: ESObject) => {
 ``` JSON5
 // HAP's oh-package.json5
 "dependencies": {
-  "@ohos/crypto-js": "2.0.3-rc.0"
+  // ...
+  "@ohos/crypto-js": "2.0.3-rc.0",
+  // ...
 }
 ```
 
@@ -524,11 +602,15 @@ import(remoteHarPackageName).then((ns: ESObject) => {
   "arkOptions": {
     "runtimeOnly": {
       "packages": [
+        // ...
         "@ohos/crypto-js",
-      ]
+        // ...
+      ],
+      // ...
     }
-  }
-}
+  },
+  // ...
+},
 ```
 
 - **HAP变量动态import ohpm包**
@@ -540,6 +622,8 @@ import(remoteHarPackageName).then((ns: ESObject) => {
 let ohpmPackageName = '@ohos/hypium';
 import(ohpmPackageName).then((ns: ESObject) => {
   console.info('DynamicImport @ohos/hypium: ', ns.TestType.FUNCTION.toString());
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import ${ohpmPackageName}. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -548,7 +632,9 @@ import(ohpmPackageName).then((ns: ESObject) => {
 ``` JSON5
 // HAP's oh-package.json5
 "dependencies": {
-  "@ohos/hypium": "1.0.19"
+  // ...
+  "@ohos/hypium": "1.0.19",
+  // ...
 }
 ```
 
@@ -560,11 +646,15 @@ import(ohpmPackageName).then((ns: ESObject) => {
   "arkOptions": {
     "runtimeOnly": {
       "packages": [
+        // ...
         "@ohos/hypium",
-      ]
+        // ...
+      ],
+      // ...
     }
-  }
-}
+  },
+  // ...
+},
 ```
 
 - **HAP变量动态import自己的单文件**
@@ -586,7 +676,9 @@ export function add(a: number, b: number): number {
 // HAP's src/main/ets/pages/Index.ets
 let calcFilePath = '../Calc';
 import(calcFilePath).then((ns: ESObject) => {
-  console.info(ns.add(3, 5));
+  console.info('DynamicImport ns.add(3, 5) = %d', ns.add(3, 5));
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import ${calcFilePath}. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -597,12 +689,15 @@ import(calcFilePath).then((ns: ESObject) => {
 "buildOption": {
   "arkOptions": {
     "runtimeOnly": {
+      // ...
       "sources": [
-        "./src/main/ets/Calc.ets"  // 仅用于使用变量动态import模块自己单文件场景，静态import或常量动态import无需配置。
+        // ...
+        "./src/main/ets/Calc.ets"
       ]
     }
-  }
-}
+  },
+  // ...
+},
 ```
 
 - **HAP变量动态import自己的Native库**
@@ -610,7 +705,7 @@ import(calcFilePath).then((ns: ESObject) => {
 <!-- @[hap_const_dynamic_import_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/entry/src/main/cpp/types/libentry/index.d.ts) -->
 
 ``` TypeScript
-// libnativeapi.so's index.d.ts
+// libentry.so's index.d.ts
 export const add: (a: number, b: number) => number;
 ```
 
@@ -620,7 +715,9 @@ export const add: (a: number, b: number) => number;
 // HAP's src/main/ets/pages/Index.ets
 let soName = 'libentry.so';
 import(soName).then((ns: ESObject) => {
-  console.info('DynamicImport libnativeapi.so: ' + ns.default.add(2, 3));
+  console.info('DynamicImport libentry.so: ' + ns.default.add(2, 3));
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import ${soName}. Code: ${error.code}, message: ${error.message}`);
 });
 ```
 
@@ -629,7 +726,9 @@ import(soName).then((ns: ESObject) => {
 ``` JSON5
 // HAP's oh-package.json5
 "dependencies": {
-  "libentry.so": "file:./src/main/cpp/types/libentry"
+  // ...
+  "libentry.so": "file:./src/main/cpp/types/libentry",
+  // ...
 }
 ```
 
@@ -641,11 +740,15 @@ import(soName).then((ns: ESObject) => {
   "arkOptions": {
     "runtimeOnly": {
       "packages": [
+        // ...
         "libentry.so",
-      ]
+        // ...
+      ],
+      // ...
     }
-  }
-}
+  },
+  // ...
+},
 ```
 
 - **HAP变量动态import加载API**
@@ -657,19 +760,30 @@ import(soName).then((ns: ESObject) => {
 let packageName = '@system.app';
 import(packageName).then((ns: ESObject) => {
   ns.default.getInfo();
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import ${packageName}. Code: ${error.code}, message: ${error.message}`);
 });
+// ...
 let packageName = '@ohos.curves';
 import(packageName).then((ns: ESObject) => {
   ns.default.springMotion(0.555, 0.75, 0.001).interpolate(1);
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import ${packageName}. Code: ${error.code}, message: ${error.message}`);
 });
+// ...
 let packageName = '@ohos.matrix4';
 import(packageName).then((ns: ESObject) => {
   ns.default.identity().transformPoint([1, 2])[0];
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import ${packageName}. Code: ${error.code}, message: ${error.message}`);
 });
+// ...
 let packageName = '@ohos.hilog';
 import(packageName).then((ns: ESObject) => {
   ns.default.info(0x0000, 'testTag', '%{public}s', 'DynamicImport @ohos.hilog.');
-})
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import ${packageName}. Code: ${error.code}, message: ${error.message}`);
+});
 ```
 通过变量动态import加载API时无需配置runtimeOnly。
 
@@ -705,7 +819,9 @@ HAR之间的依赖关系转移至HAP/HSP后：
 let harName = 'har1'
 import(harName).then((ns: ESObject) => {
   console.info('[DynamicImport] hap -> har1, 0 + 1 = ' + ns.ClassHar1.add(0, 1));
-})
+}).catch((error: BusinessError) => {
+  console.error(`DynamicImport failed to import ${harName}. Code: ${error.code}, message: ${error.message}`);
+});
 ```
 
 <!-- @[har1_class_calc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/har1/src/main/ets/utils/Calc.ets) -->
@@ -724,7 +840,9 @@ export class ClassHar1 {
       import(harName).then((ns: ESObject) => {
         ClassHar1.isImportedHar2 = true;
         console.info('[DynamicImport] har1 -> har2, 1 + 2 = ' + ns.ClassHar2.add(1, 2));
-      })
+      }).catch((error: BusinessError) => {
+        console.error(`DynamicImport failed to import ${harName}. Code: ${error.code}, message: ${error.message}`);
+      });
     }
 
     return c;
@@ -756,7 +874,9 @@ export class ClassHar2 {
       import(harName).then((ns: ESObject) => {
         ClassHar2.isImportedHar1 = true;
         console.info('[DynamicImport] har2 -> har1, 2 + 1 = ' + ns.ClassHar1.add(2, 1));
-      })
+      }).catch((error: BusinessError) => {
+        console.error(`DynamicImport failed to import ${harName}. Code: ${error.code}, message: ${error.message}`);
+      });
     }
 
     if (!ClassHar2.isImportedHar3) {
@@ -764,7 +884,9 @@ export class ClassHar2 {
       import(harName).then((ns: ESObject) => {
         ClassHar2.isImportedHar3 = true;
         console.info('[DynamicImport] har2 -> har3, 2 + 3 = ' + ns.ClassHar3.add(2, 3));
-      })
+      }).catch((error: BusinessError) => {
+        console.error(`DynamicImport failed to import ${harName}. Code: ${error.code}, message: ${error.message}`);
+      });
     }
 
     return c;
@@ -795,7 +917,9 @@ export class ClassHar3 {
       import(harName).then((ns: ESObject) => {
         ClassHar3.isImportedHar1 = true;
         console.info('[DynamicImport] har3 -> har1, 3 + 1 = ' + ns.ClassHar1.add(3, 1));
-      })
+      }).catch((error: BusinessError) => {
+        console.error(`DynamicImport failed to import ${harName}. Code: ${error.code}, message: ${error.message}`);
+      });
     }
 
     return c;
@@ -812,7 +936,7 @@ export { ClassHar3 } from './src/main/ets/utils/Calc';
 
 若未对HAR之间的**dependencies**和**runtimeOnly**配置进行依赖解耦，ohpm无法解决循环依赖，依赖安装失败。
 
-``` JSON5
+```text
 // HAP's oh-package.json5
 "dependencies": {
   "har1": "file:../har1"
@@ -906,13 +1030,16 @@ The name of an indirect dependency cannot be the same as the module name.
   "arkOptions": {
     "runtimeOnly": {
       "packages": [
+        // ...
         "har1",
         "har2",
         "har3"
-      ]
+      ],
+      // ...
     }
-  }
-}
+  },
+  // ...
+},
 ```
 
 <!-- @[har1_decoupled_dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/DynamicImport/har1/oh-package.json5) -->

@@ -97,7 +97,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
    ```
     **2 x 4 widget**
 
-    ![en-us_image_0000001231610863](figures/en-us_image_0000001231610863.png)
+    ![en-us_image_0000001231610863](figures/Flex-example.png)
 
 2. Flex wrap style
   
@@ -147,4 +147,4 @@ The [universal events](js-service-widget-common-events.md) are supported.
    ```
    **4 x 4 widget**
 
-   ![en-us_image_0000001186131150](figures/en-us_image_0000001186131150.png)
+   ![en-us_image_0000001186131150](figures/Flex-Wrap-example.png)

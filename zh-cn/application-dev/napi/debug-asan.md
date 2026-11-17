@@ -1,6 +1,14 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍DevEco Studio集成的ASan（Address-Sanitizer）地址越界检测能力，为C/C++代码提供内存安全检测，并通过FaultLog展示错误堆栈详情及导致错误的代码行，适用于Native代码内存错误排查场景。"
+keywords: [ASan, Address-Sanitizer, 内存错误检测, 地址越界, FaultLog, DevEco Studio, C/C++, 堆栈详情]
+doctype: guide
+status: active
+---
+
 # C/C++内存错误检测
 
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @eric96-->
 <!--Designer: @liuyingying19huawei-->

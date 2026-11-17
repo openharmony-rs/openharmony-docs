@@ -42,9 +42,10 @@
   >
   > 在使用定时刷新时，需要在form_config.json配置文件中设置`updateEnabled`字段为`true`，以启用周期性刷新功能。
 
-- 下次刷新：表示指定卡片的下一次刷新时间。可以通过调用[setFormNextRefreshTime](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidersetformnextrefreshtime)接口来实现。最短刷新时间为5分钟。例如，可以在接口调用后的5分钟内刷新卡片内容。
+- 下次刷新：表示指定卡片的下一次刷新时间。可以通过调用[setFormNextRefreshTime](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidersetformnextrefreshtime)接口来实现。最短刷新时间为5分钟。例如，可以设置卡片在调用接口5分钟后刷新。
 
-  <!-- @[set_form_next_refreshtime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts) -->
+   ArkTS-Dyn示例：
+  <!-- @[set_form_next_refreshtime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts) --> 
   
   ``` TypeScript
   // entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts
@@ -76,7 +77,7 @@
               `Failed to setFormNextRefreshTime. Code: ${err.code}, message: ${err.message}`);
             return;
           } else {
-            hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in setFormNextRefreshTiming.');
+            hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in setFormNextRefreshTime.');
           }
         });
       } catch (err) {
@@ -94,12 +95,135 @@
   }
   ```
 
-在触发定时、下次刷新后，系统会调用FormExtensionAbility的[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，在回调中，可以使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)进行提供方刷新卡片。`onUpdateForm`生命周期回调的使用请参见[卡片生命周期管理](./arkts-ui-widget-lifecycle.md)。
+   ArkTS-Sta示例：
+  <!-- @[set_form_next_refreshtimeSta](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Form/FormSta/FormPassiveRefreshSta/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
+  
+  ``` TypeScript
+  // entry/src/main/ets/EntryFormAbility/EntryFormAbility.ets
+  
+  import formBindingData from '@ohos.app.form.formBindingData';
+  import FormExtensionAbility from '@ohos.app.form.FormExtensionAbility';
+  import formInfo from '@ohos.app.form.formInfo';
+  import formProvider from '@ohos.app.form.formProvider';
+  import Want from '@ohos.app.ability.Want';
+  import { Configuration } from '@ohos.app.ability.Configuration';
+  import { BusinessError } from '@ohos.base';
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  const TAG: string = 'EntryFormAbility';
+  const FIVE_MINUTE: int = 5;
+  const DOMAIN_NUMBER: int = 0xFF00;
+  
+  function onAcquireFormStateCallback(want: Want): formInfo.FormState {
+    hilog.info(DOMAIN_NUMBER, TAG, 'OnAcquireFormState register success');
+    return formInfo.FormState.READY;
+  }
+  
+  function onAcquireFormDataCallback(formId: string): Record<string, Object> {
+    hilog.info(DOMAIN_NUMBER, TAG, 'onAcquireFormDataCallback success');
+    let param: Record<string, Object> = {};
+    param = {
+      'title': 'onAcquireFormData'
+    };
+    return param;
+  }
+  
+  function onShareFormCallback(formId: string): Record<string, Object> {
+    hilog.info(DOMAIN_NUMBER, TAG, 'onShareFormCallback success');
+    let param: Record<string, Object> = {};
+    param = {
+      'title': 'onShareForm'
+    };
+    return param;
+  }
+  
+  export default class EntryFormAbility extends FormExtensionAbility {
+    constructor() {
+      hilog.info(DOMAIN_NUMBER, TAG, 'constructor register call');
+      try {
+        this.onStop = () => {
+          hilog.info(DOMAIN_NUMBER, TAG, 'OnStop callback success');
+        }
+        hilog.info(DOMAIN_NUMBER, TAG, 'OnStop register success');
+      } catch (err) {
+        hilog.error(DOMAIN_NUMBER, TAG, `OnStop catch error code: ${err?.code}, message: ${err?.message}`);
+      }
+  
+      this.onAcquireFormState = onAcquireFormStateCallback;
+      this.onAcquireFormData = onAcquireFormDataCallback;
+      this.onShareForm = onShareFormCallback;
+    }
+  
+    onAddForm(want: Want): formBindingData.FormBindingData {
+      // 卡片使用方创建卡片时触发，返回卡片数据绑定类
+      hilog.info(DOMAIN_NUMBER, TAG, `onAddForm`);
+      let wants = want?.parameters;
+      let formId = '';
+      if (wants) {
+        formId = wants['ohos.extra.param.key.form_identity'] as string;
+      }
+      let param: Record<string, string> = {};
+      param = {
+        'title1': '武汉2*2'
+      };
+      let data: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+      hilog.info(DOMAIN_NUMBER, TAG, `onAddForm testing FormBindingData`);
+      return data;
+    }
+  
+    onCastToNormalForm(formId: string): void {
+      hilog.info(DOMAIN_NUMBER, TAG, 'onCastToNormalForm testing');
+    }
+  
+    // ...
+  
+    onChangeFormVisibility(newStatus: Record<string, int>): void {
+      hilog.info(DOMAIN_NUMBER, TAG, 'onChangeFormVisibility');
+    }
+  
+    onFormEvent(formId: string, message: string): void {
+      // 当卡片提供方的postCardAction接口的message事件被触发时调用
+      hilog.info(DOMAIN_NUMBER, TAG, `FormAbility onFormEvent, formId = ${formId}, message: ${message}`);
+      try {
+        // 设置过5分钟后更新卡片内容
+        formProvider.setFormNextRefreshTime(formId, FIVE_MINUTE, (err: BusinessError | null) => {
+          if (err && err.code != 0) {
+            hilog.error(DOMAIN_NUMBER, TAG, `setFormNextRefreshTime. Code: ${err?.code}, message: ${err?.message}`);
+            return;
+          } else {
+            hilog.info(DOMAIN_NUMBER, TAG, `setFormNextRefreshTime success`);
+          }
+        });
+      } catch (error) {
+        hilog.error(DOMAIN_NUMBER, TAG, `setFormNextRefreshTime fail. Code: ${error?.code}, message: ${error?.message}`);
+      }
+    }
+  
+    onRemoveForm(formId: string): void {
+      hilog.info(DOMAIN_NUMBER, TAG, 'onRemoveForm testing');
+    }
+  
+    onConfigurationUpdate(newConfig: Configuration): void {
+      hilog.info(DOMAIN_NUMBER, TAG, 'onConfigurationUpdate testing');
+    }
+  
+    onFormLocationChanged(formId: string, newFormLocation: formInfo.FormLocation): void {
+      hilog.info(DOMAIN_NUMBER, TAG, 'onFormLocationChanged testing');
+    }
+  
+    onAcquireFormStateFn(want: Want): formInfo.FormState {
+      // 卡片使用方查询卡片状态时触发该回调，默认返回初始状态。
+      return formInfo.FormState.READY;
+    }
+  }
+  ```
+
+在触发定时、下次刷新后，系统会调用FormExtensionAbility的[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，在回调中，可以使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片内容。`onUpdateForm`生命周期回调的使用请参见[卡片生命周期管理](./arkts-ui-widget-lifecycle.md)。
 
 **约束限制：**
 
 1. 定时刷新有配额限制，每张卡片每天最多通过定时方式触发刷新50次，定时刷新次数可以通过修改[卡片配置项updateDuration字段](arkts-ui-widget-configuration.md#配置文件字段说明)、或调用[setFormNextRefreshTime](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidersetformnextrefreshtime)接口两种方式进行设置，当达到50次配额后，无法通过定时方式再次触发刷新，刷新次数会在每天的0点重置。
-2. 当前定时刷新使用同一个计时器进行计时，因此卡片定时刷新的第一次刷新会有最多30分钟的偏差。比如第一张卡片A（每隔半小时刷新一次）在3点20分添加成功，定时器启动并每隔半小时触发一次事件，第二张卡片B(每隔半小时刷新一次)在3点40分添加成功，在3点50分定时器事件触发时，卡片A触发定时刷新，卡片B会在下次事件（4点20分）中才会触发。
+2. 当前定时刷新使用同一个计时器进行计时，因此卡片定时刷新的第一次刷新会有最多30分钟的偏差。比如第一张卡片A（每隔半小时刷新一次）在3点20分添加成功，定时器启动并每隔半小时触发一次事件，第二张卡片B（每隔半小时刷新一次）在3点40分添加成功，在3点50分定时器事件触发时，卡片A触发定时刷新，卡片B会在下次事件（4点20分）中才会触发。
 3. 定时刷新在卡片可见情况下才会触发，在卡片不可见时仅会记录刷新动作和刷新数据，待可见时统一刷新布局。
 4. <!--Del-->三方应用<!--DelEnd-->在API版本26.0.0之前，使能卡片代理刷新时，定时刷新和下次刷新不生效。从API版本26.0.0开始，卡片代理刷新、定时刷新和下次刷新可以同时生效。<!--Del-->系统应用使能卡片代理刷新时，定时刷新和下次刷新不生效<!--DelEnd-->
 
@@ -162,7 +286,7 @@
   }
   ```
 
-在触发定点刷新后，系统会调用FormExtensionAbility的[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，在回调中，可以使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)进行提供方刷新卡片。`onUpdateForm`生命周期回调的使用请参见[卡片生命周期管理](./arkts-ui-widget-lifecycle.md)。
+在触发定点刷新后，系统会调用FormExtensionAbility的[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)生命周期回调，在回调中，可以使用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片内容。`onUpdateForm`生命周期回调的使用请参见[卡片生命周期管理](./arkts-ui-widget-lifecycle.md)。
 
 > **说明：**
 > 1. 当同时配置了定时刷新`updateDuration`和定点刷新`scheduledUpdateTime`时，定时刷新的优先级更高且定点刷新不会执行。如果想要配置定点刷新，则需要将`updateDuration`配置为0。
@@ -183,6 +307,7 @@
 >
 > 2. 为减少卡片在频繁开关网络场景进程启动次数，无网判定需要网络连续断开十分钟后，才会认为无网，下次联网后触发网络刷新。
 
+  配置示例如下：
 
   ```json
   {
@@ -211,3 +336,40 @@
     ]
   }
   ```
+
+<!--Del-->
+- 账号变更刷新：从API版本26.1.0开始仅系统应用支持在账号变更的场景下调用[onUpdateForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonupdateform)的生命周期回调函数自动刷新卡片内容。可以在[form_config.json](arkts-ui-widget-configuration.md)配置文件的 `metadata` 配置 `{"name": "enableAccountSwitchRefresh", "value": "true"}`。
+
+  配置示例如下：
+
+  ```json
+  {
+    "forms": [
+      {
+        "name": "UpdateDuration",
+        "description": "$string:widget_updateduration_desc",
+        "src": "./ets/updateduration/pages/UpdateDurationCard.ets",
+        "uiSyntax": "arkts",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": true
+        },
+        "isDefault": true,
+        "updateEnabled": true,
+        "scheduledUpdateTime": "10:30",
+        "updateDuration": 2,
+        "defaultDimension": "2*2",
+        "supportDimensions": [
+          "2*2"
+        ],
+        "metadata": [
+          {
+            "name": "enableAccountSwitchRefresh",
+            "value": "true"
+          }
+        ]
+      }
+    ]
+  }
+  ```
+<!--DelEnd-->

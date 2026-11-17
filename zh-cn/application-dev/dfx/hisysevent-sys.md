@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @lyj_love_code-->
+<!--Owner: @buzhenwang-->
 <!--Designer: @tangyyan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -15,7 +15,7 @@ hisysevent是系统的预置工具，主要用来帮助开发者订阅实时系�
 
 - 确保设备已正常连接，并执行hdc shell。
 
-- 在终端使用执行"hisysevent"命令完成相关能力的调用。
+- 在终端执行"hisysevent"命令完成相关能力的调用。
 
 ## 订阅实时系统事件
 

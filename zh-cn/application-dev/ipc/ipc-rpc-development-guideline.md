@@ -16,7 +16,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
 >
 > - 在进行IPC&RPC跨进程通信前需要通过Ability Kit获取服务端的代理对象。
 >
-> - 不支持三方应用实现跨进程通信，三方应用仅可通过[connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)连接系统提供的ServiceExtensionAbility，通过返回的代理对[ServiceExtensionAbility](../application-models/extensionability-overview.md)进行通信从而达到三方应用和系统服务通信的目的。
+> - 不支持三方应用实现跨进程通信，三方应用仅可通过[connectServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)连接系统提供的ServiceExtensionAbility，通过返回的代理对象[ServiceExtensionAbility](../application-models/extensionability-overview.md)进行通信从而达到三方应用和系统服务通信的目的。
 >
 > - 从API version 20开始，在2in1设备上，开发者可使用AppServiceExtensionAbility组件，为应用提供后台服务能力。三方应用可[connectAppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20)连接AppServiceExtensionAbility，通过返回的代理对象和[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)进行通信从而达到三方和三方应用通信的目的。详细开发步骤参考[AppServiceExtensionAbility](../application-models/app-service-extension-ability.md#连接一个后台服务)。
 >

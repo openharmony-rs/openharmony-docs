@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @rr_cn-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -13,10 +13,6 @@
 
 使用errorManager接口监听异常和错误后，应用不会退出，建议在回调函数执行完后，增加同步退出操作，如果只是为了获取错误日志，建议使用[HiAppEvent订阅事件](hiappevent-intro.md)。
 
-> **说明：**
->
-> 从API版本26.0.0开始，如果已经通过errorManager接口监听了可捕获异常，则HiAppEvent将无法订阅[JsError崩溃](hiappevent-watcher-crash-events.md#jserror崩溃类型检测原理)问题。
-
 ## 接口说明
 
 应用错误管理接口由[@ohos.app.ability.errorManager (错误管理模块)](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md)提供，使用接口能力前需注册错误观测器，开发者可以通过import引入，详见[开发示例](#开发示例)。
@@ -25,19 +21,24 @@
 
 | 接口名称 | 说明 |
 | -------- | -------- |
-| on(type: "error", observer: ErrorObserver): number | 注册错误监听接口，当系统监测到应用异常时会回调该监听。该接口为同步接口，返回值为注册的监听对象对应的序号。 |
-| off(type: "error", observerId: number, callback: AsyncCallback&lt;void>): void | 以callback的形式解除注册监听，传入的number为之前注册监听时返回的序号。 |
-| off(type: "error", observerId: number): Promise&lt;void> | 以Promise的形式解除注册监听，传入的number为之前注册监听时返回的序号。 |
-| on(type: 'globalErrorOccurred', observer: GlobalObserver): void | 注册进程错误监听接口，当系统监测到应用异常时会回调该监听，该接口为同步接口，即一次注册，全局监听。（**推荐使用**）<br/>说明：从API version 18开始，支持该接口。 |
-| off(type: 'globalErrorOccurred', observer?: GlobalObserver): void | 以callback的形式解除注册监听。（**推荐使用**）<br/>说明：从API version 18开始，支持该接口。 |
-| on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void | 注册进程错误监听接口，当系统监测到应用promise异常时会回调该监听，该接口为同步接口，即一次注册，全局监听。（**推荐使用**）<br/>说明：从API version 18开始，支持该接口。 |
-| off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void | 以callback的形式解除注册监听。（**推荐使用**）<br/>说明：从API version 18开始，支持该接口。 |
-| on(type: 'loopObserver', timeout: number, observer: LoopObserver): void | 注册主线程消息处理耗时监听器，当系统监测到应用主线程事件处理超时时会回调该监听。<br/>只能在主线程调用，多次注册后，后一次的注册会覆盖前一次的。 |
-| off(type: 'loopObserver', observer?: LoopObserver): void | 以LoopObserver的形式解除应用主线程消息处理耗时监听。 |
-| on(type: 'freeze', observer: FreezeObserver): void | 注册应用主线程freeze监听。只能在主线程调用，重复注册后，后一次的注册会覆盖前一次的。 |
-| off(type: 'freeze', observer?: FreezeObserver): void | 以FreezeObserver的形式解除应用主线程消息处理耗时监听。<br/>说明：从API version 18开始，支持该接口。 |
-| setDefaultErrorHandler(defaultHandler?: ErrorHandler): ErrorHandler | 仅允许在主线程调用，发生JS_CRASH异常时，支持链式回调，返回值为上一次注册的处理器。 <br/>说明：从API version 21开始，支持该接口。 |
-| setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver; | 仅允许在主线程调用，发生应用资源超基线时，支持链式回调，返回值为上一次注册的资源占用观察者。 <br/>说明：从API version 24开始，支持该接口。 |
+| on(type: "error", observer: ErrorObserver): number | 注册错误监听接口，当系统监测到应用异常时会回调该监听。该接口为同步接口，返回值为注册的监听对象对应的序号。<br/>**说明**：仅ArkTS-Dyn支持该接口。|
+| off(type: "error", observerId: number, callback: AsyncCallback&lt;void>): void | 以callback的形式解除注册监听，传入的number为之前注册监听时返回的序号。<br/>**说明**：仅ArkTS-Dyn支持该接口。|
+| off(type: "error", observerId: number): Promise&lt;void> | 以Promise的形式解除注册监听，传入的number为之前注册监听时返回的序号。<br/>**说明**：仅ArkTS-Dyn支持该接口。|
+| on(type: 'globalErrorOccurred', observer: GlobalObserver): void | 注册进程错误监听接口，当系统监测到应用异常时会回调该监听，该接口为同步接口，即一次注册，全局监听。<br/>**说明**：从API version 18开始，支持该接口。 |
+| off(type: 'globalErrorOccurred', observer?: GlobalObserver): void | 以callback的形式解除注册监听。<br/>**说明**：<br/>- 从API version 18开始，支持该接口。<br/>- 注销监听器时可以监听进程中所有线程的异常，建议在进程回收时调用off接口，否则可能造成应用崩溃。 |
+| on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void | 注册进程错误监听接口，当系统监测到应用promise异常时会回调该监听，该接口为同步接口，即一次注册，全局监听。<br/>**说明**：从API version 18开始，支持该接口。 |
+| off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void | 以callback的形式解除注册监听。<br/>**说明**：<br/>- 从API version 18开始，支持该接口。<br/>- 注销监听器时可以监听进程中所有线程的异常，建议在进程回收时调用off接口，否则可能造成应用崩溃。 |
+| on(type: 'loopObserver', timeout: number, observer: LoopObserver): void | 注册主线程消息处理耗时监听器，当系统监测到应用主线程事件处理超时时会回调该监听。<br/>只能在主线程调用，多次注册后，后一次的注册会覆盖前一次的。<br/>**说明**：仅ArkTS-Dyn支持该接口。|
+| off(type: 'loopObserver', observer?: LoopObserver): void | 以LoopObserver的形式解除应用主线程消息处理耗时监听。<br/>**说明**：仅ArkTS-Dyn支持该接口。|
+| on(type: 'freeze', observer: FreezeObserver): void | 注册应用主线程freeze监听。只能在主线程调用，重复注册后，后一次的注册会覆盖前一次的。<br/>**说明**：仅ArkTS-Dyn支持该接口。|
+| off(type: 'freeze', observer?: FreezeObserver): void | 以FreezeObserver的形式解除应用主线程消息处理耗时监听。<br/>**说明**：从API version 18开始，仅ArkTS-Dyn支持该接口。 |
+| setDefaultErrorHandler(defaultHandler?: ErrorHandler): ErrorHandler | 仅允许在主线程调用，发生JS_CRASH异常时，支持链式回调，返回值为上一次注册的处理器。 <br/>**说明**：<br/>- 从API version 21开始，ArkTS-Dyn支持该接口。<br/>- 从API version 24开始，ArkTS-Sta支持该接口。 |
+| setDefaultResourceUsageObserver(defaultObserver?: ResourceUsageObserver): ResourceUsageObserver; | 仅允许在主线程调用，发生应用资源超基线时，支持链式回调，返回值为上一次注册的资源占用观察者。<br/>**说明**：从API version 24开始，ArkTS-Dyn、ArkTS-Sta均支持该接口。 |
+| setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObserver | 仅允许在主线程调用，发生APP_FREEZE异常时，支持链式回调，返回值为上一次注册的处理器。<br/>**说明**：从API版本26.0.0开始，ArkTS-Dyn、ArkTS-Sta均支持该接口。 |
+| onUnhandledRejection(observer: UnhandledRejectionObserver): void | 注册进程错误监听接口，当系统监测到应用promise异常时会回调该监听，该接口为同步接口，即一次注册，全局监听。<br/>**说明**：从API version 24开始，仅ArkTS-Sta支持该接口。 |
+| offUnhandledRejection(observer?: UnhandledRejectionObserver): void | 解除进程错误监听接口，以callback的形式解除注册监听。<br/>**说明**：从API version 24开始，仅ArkTS-Sta支持该接口。 |
+| onFreeze(observer: FreezeObserver): void | 注册应用主线程freeze监听。只能在主线程调用，重复注册后，后一次的注册会覆盖前一次的。<br/>**说明**：从API version 24开始，仅ArkTS-Sta支持该接口。 |
+| offFreeze(observer?: FreezeObserver): void | 以FreezeObserver的形式解除应用主线程消息处理耗时监听。<br/>**说明**：从API version 24开始，仅ArkTS-Sta支持该接口。 |
 
 当采用callback作为异步回调时，可以在callback中进行下一步处理。
 
@@ -48,7 +49,7 @@
 | 接口名称 | 说明 |
 | -------- | -------- |
 | onUnhandledException(errMsg: string): void | 系统回调接口，应用注册后，当应用产生未捕获的异常时的回调。 |
-| onException?(errObject: Error): void | 系统回调接口，应用注册后，当应用产生异常上报js层时的回调。 |
+| onException?(errObject: Error): void | 系统回调接口，应用注册后，当应用产生异常上报JS层时的回调。 |
 
 **应用主线程监听(LoopObserver)接口功能介绍**：
 
@@ -72,34 +73,44 @@
 
 ### 单线程监听场景
 
+**ArkTS-Dyn示例：**
+
  引入头文件。
-<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
+ 自定义hilog打印的domain值。
+<!-- @[domain_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+const DOMAIN = 0x0000;
+```
+
  新增监听回调函数。
-<!-- @[error_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[error_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    console.error('testErrorManage','onUnhandledException, errorMsg: ', errorMsg);
+    hilog.error(DOMAIN, 'testErrorManage', 'onUnhandledException, errorMsg: %{public}s', errorMsg);
   },
   onException(errorObj) {
-    console.error('testErrorManage','onException, name: ', errorObj.name);
-    console.error('testErrorManage','onException, message: ', errorObj.message);
+    hilog.error(DOMAIN, 'testErrorManage', 'onException, name: %{public}s', errorObj.name);
+    hilog.error(DOMAIN, 'testErrorManage', 'onException, message: %{public}s', errorObj.message);
     if (typeof(errorObj.stack) === 'string') {
-      console.error('testErrorManage','onException, stack: ', errorObj.stack);
+      hilog.error(DOMAIN, 'testErrorManage', 'onException, stack: %{public}s', errorObj.stack);
     }
   }
 };
 ```
 
  新增触发按钮。
-<!-- @[onclick_error_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[onclick_error_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 Button('单线程监听场景').onClick(()=>{
@@ -109,39 +120,48 @@ Button('单线程监听场景').onClick(()=>{
   } catch (paramError) {
     let code = (paramError as BusinessError).code;
     let message = (paramError as BusinessError).message;
-    console.error('testErrorManage',`error: ${code}, ${message}`);
+    hilog.error(DOMAIN, 'testErrorManage', 'error: %{public}s, %{public}s', `${code}`, `${message}`);
   }
   // 构造场景故障
   throw new Error('test errorObserver msg');
 }).position({x:50, y:50});
 ```
 
-
 ### 进程监听异常场景
 
+**ArkTS-Dyn示例：**
+
  引入头文件。
-<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
+ 自定义hilog打印的domain值。
+<!-- @[domain_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+const DOMAIN = 0x0000;
+```
+
  新增监听回调函数。
-<!-- @[error_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[error_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 function errorFunc(observer: errorManager.GlobalError) {
-  console.error('testErrorManage','result name :' + observer.name);
-  console.error('testErrorManage','result message :' + observer.message);
-  console.error('testErrorManage','result stack :' + observer.stack);
-  console.error('testErrorManage','result instanceName :' + observer.instanceName);
-  console.error('testErrorManage','result instanceType :' + observer.instanceType);
+  hilog.error(DOMAIN, 'testErrorManage', 'result name :%{public}s', observer.name);
+  hilog.error(DOMAIN, 'testErrorManage', 'result message :%{public}s', observer.message);
+  hilog.error(DOMAIN, 'testErrorManage', 'result stack :%{public}s', observer.stack);
+  hilog.error(DOMAIN, 'testErrorManage', 'result instanceName :%{public}s', observer.instanceName);
+  hilog.error(DOMAIN, 'testErrorManage', 'result instanceType :%{public}s', observer.instanceType);
 };
 ```
 
  新增触发按钮。
-<!-- @[onclick_error_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[onclick_error_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 Button('进程监听异常场景').onClick(()=>{
@@ -150,7 +170,7 @@ Button('进程监听异常场景').onClick(()=>{
   } catch (paramError) {
     let code = (paramError as BusinessError).code;
     let message = (paramError as BusinessError).message;
-    console.error('testErrorManage',`error: ${code}, ${message}`);
+    hilog.error(DOMAIN, 'testErrorManage', 'error: %{public}s, %{public}s', `${code}`, `${message}`);
   }
   // 构造场景故障
   throw new Error('test errorFunc msg');
@@ -159,24 +179,34 @@ Button('进程监听异常场景').onClick(()=>{
 
 ### 进程监听promise异常场景
 
+**ArkTS-Dyn示例：**
+
  引入头文件。
-<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
+ 自定义hilog打印的domain值。
+<!-- @[domain_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+const DOMAIN = 0x0000;
+```
+
  新增监听回调函数。
-<!-- @[promise_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[promise_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 function promiseFunc(observer: errorManager.GlobalError) {
-  console.error('testErrorManage','result name :' + observer.name);
-  console.error('testErrorManage','result message :' + observer.message);
-  console.error('testErrorManage','result stack :' + observer.stack);
-  console.error('testErrorManage','result instanceName :' + observer.instanceName);
-  console.error('testErrorManage','result instanceType :' + observer.instanceType);
+  hilog.error(DOMAIN, 'testErrorManage', 'result name :%{public}s', observer.name);
+  hilog.error(DOMAIN, 'testErrorManage', 'result message :%{public}s', observer.message);
+  hilog.error(DOMAIN, 'testErrorManage', 'result stack :%{public}s', observer.stack);
+  hilog.error(DOMAIN, 'testErrorManage', 'result instanceName :%{public}s', observer.instanceName);
+  hilog.error(DOMAIN, 'testErrorManage', 'result instanceType :%{public}s', observer.instanceType);
 };
 
 async function promiseFuncOne() {
@@ -185,7 +215,7 @@ async function promiseFuncOne() {
 ```
 
  新增触发按钮。
-<!-- @[onclick_promise_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[onclick_promise_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 Button('进程监听promise异常场景').onClick(()=>{
@@ -194,7 +224,7 @@ Button('进程监听promise异常场景').onClick(()=>{
   } catch (paramError) {
     let code = (paramError as BusinessError).code;
     let message = (paramError as BusinessError).message;
-    console.error('testErrorManage',`error: ${code}, ${message}`);
+    hilog.error(DOMAIN, 'testErrorManage', 'error: %{public}s, %{public}s', `${code}`, `${message}`);
   }
   // 构造场景故障
   new Promise<string>(() => {
@@ -207,25 +237,35 @@ Button('进程监听promise异常场景').onClick(()=>{
 
 ### 主线程监听freeze
 
+**ArkTS-Dyn示例：**
+
  引入头文件。
-<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
+ 自定义hilog打印的domain值。
+<!-- @[domain_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+const DOMAIN = 0x0000;
+```
+
  新增监听回调函数。
-<!-- @[freeze_call_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[freeze_call_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 function freezeCallback() {
-  console.error('testErrorManage','freezecallback');
+  hilog.error(DOMAIN, 'testErrorManage', '%{public}s', 'freezecallback');
 };
 ```
 
  新增触发按钮。
-<!-- @[onclick_freeze_call_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[onclick_freeze_call_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 Button('主线程监听freeze').onClick(()=>{
@@ -234,7 +274,7 @@ Button('主线程监听freeze').onClick(()=>{
   } catch (paramError) {
     let code = (paramError as BusinessError).code;
     let message = (paramError as BusinessError).message;
-    console.error('testErrorManage',`error: ${code}, ${message}`);
+    hilog.error(DOMAIN, 'testErrorManage', 'error: %{public}s, %{public}s', `${code}`, `${message}`);
   }
   // 构造场景故障
   let date = Date.now();
@@ -243,29 +283,73 @@ Button('主线程监听freeze').onClick(()=>{
 }).position({x:50, y:300});
 ```
 
+**ArkTS-Sta示例：**
+
+```ts
+import { Entry, Component, Column, Button, ClickEvent } from "@ohos.arkui.component";
+import errorManager from '@ohos.app.ability.errorManager';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+function freezeCallback() {
+  hilog.error(DOMAIN, 'testErrorManage', 'testErrorManage onFreeze callback');
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('主线程监听freeze').onClick(()=>{
+        try {
+          errorManager.onFreeze(freezeCallback);
+        } catch (error) {
+          hilog.error(DOMAIN, 'testErrorManage', 'onFreeze error: ', error);
+        }
+        // 构造场景故障
+        let date = Date.now();
+        while (Date.now() - date < 15000) {
+        };
+      }).position({x:50, y:300});
+    }
+  }
+}
+```
+
 ### 主线程监听消息处理耗时
 
+**ArkTS-Dyn示例：**
+
  引入头文件。
-<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
+ 自定义hilog打印的domain值。
+<!-- @[domain_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+const DOMAIN = 0x0000;
+```
+
  新增监听回调函数。
-<!-- @[loop_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[loop_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 let loopObserver: errorManager.LoopObserver = {
   onLoopTimeOut(timeout: number) {
-    console.error('testErrorManage','Duration timeout: ' + timeout);
+    hilog.error(DOMAIN, 'testErrorManage', 'Duration timeout: %{public}s', `${timeout}`);
   }
 };
 ```
 
  新增触发按钮。
-<!-- @[onclick_loop_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[onclick_loop_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 Button('主线程监听消息处理耗时').onClick(()=>{
@@ -274,7 +358,7 @@ Button('主线程监听消息处理耗时').onClick(()=>{
   } catch (paramError) {
     let code = (paramError as BusinessError).code;
     let message = (paramError as BusinessError).message;
-    console.error('testErrorManage',`error: ${code}, ${message}`);
+    hilog.error(DOMAIN, 'testErrorManage', 'error: %{public}s, %{public}s', `${code}`, `${message}`);
   }
   // 构造场景故障
   let date = Date.now();
@@ -285,16 +369,26 @@ Button('主线程监听消息处理耗时').onClick(()=>{
 
 ### 进程promise监听注册被拒绝
 
+**ArkTS-Dyn示例：**
+
  引入头文件。
-<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
+ 自定义hilog打印的domain值。
+<!-- @[domain_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+const DOMAIN = 0x0000;
+```
+
  新增监听回调函数。
-<!-- @[unhandled_rejection_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[unhandled_rejection_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 let promise1 = new Promise<void>(() => {}).then(() => {
@@ -303,12 +397,12 @@ let promise1 = new Promise<void>(() => {}).then(() => {
 
 let unhandledrejectionObserver: errorManager.UnhandledRejectionObserver = (reason: Error, promise: Promise<void>) => {
   if (promise === promise1) {
-    console.error('testErrorManage','promise1 is rejected');
+    hilog.error(DOMAIN, 'testErrorManage', '%{public}s', 'promise1 is rejected');
   }
-  console.error('testErrorManage','reason.name: ', reason.name);
-  console.error('testErrorManage','reason.message: ', reason.message);
+    hilog.error(DOMAIN, 'testErrorManage', 'reason.name: %{public}s', reason.name);
+    hilog.error(DOMAIN, 'testErrorManage', 'reason.message: %{public}s', reason.message);
   if (reason.stack) {
-    console.error('testErrorManage','reason.stack: ', reason.stack);
+    hilog.error(DOMAIN, 'testErrorManage', 'reason.stack: %{public}s', reason.stack);
   }
 };
 
@@ -318,7 +412,7 @@ async function promiseFuncTwo() {
 ```
 
  新增触发按钮。
-<!-- @[onclick_unhandled_rejection_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
+<!-- @[onclick_unhandled_rejection_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->    
 
 ``` TypeScript
 Button('进程promise监听注册被拒绝').onClick(()=>{
@@ -327,7 +421,7 @@ Button('进程promise监听注册被拒绝').onClick(()=>{
   } catch (paramError) {
     let code = (paramError as BusinessError).code;
     let message = (paramError as BusinessError).message;
-    console.error('testErrorManage',`error: ${code}, ${message}`);
+    hilog.error(DOMAIN, 'testErrorManage', 'error: %{public}s, %{public}s', `${code}`, `${message}`);
   }
   // 构造场景故障
   new Promise<string>(() => {
@@ -338,20 +432,66 @@ Button('进程promise监听注册被拒绝').onClick(()=>{
 }).position({x:50, y:250});
 ```
 
+**ArkTS-Sta示例：**
+
+```ts
+import { Entry, Component, Column, Button, ClickEvent } from "@ohos.arkui.component";
+import errorManager from '@ohos.app.ability.errorManager';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let unhandledrejectionObserver: errorManager.UnhandledRejectionObserver = (reason: Error | Any, promise: Promise<Any>) => {
+  const msg = (reason instanceof Error) ? reason.message : String(reason);
+  console.error('UnhandledRejectionObserver message: ', msg);
+};
+
+async function promiseFuncOne() {
+  throw new Error('process promise unhandled rejection exception');
+};
+
+const DOMAIN = 0x0000;
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('进程promise监听注册被拒绝').onClick(() => {
+        try {
+          errorManager.onUnhandledRejection(unhandledrejectionObserver);
+        } catch (error) {
+          hilog.error(DOMAIN, 'testErrorManage', 'onUnhandledRejection error: ', error);
+        }
+        // 构造场景故障
+        new Promise<string>(() => {
+          promiseFuncOne();
+        }).then(() => {
+          throw new Error('test promiseFuncOne msg');
+        });
+      }).position({ x: 50, y: 250 });
+    }
+  }
+}
+```
+
 ### 错误处理器责任链模式场景
 
+**ArkTS-Dyn示例：**
+
  定义第一个错误处理器及注册方法，无前置处理器时退出进程。
-<!-- @[first_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstErrorHandler.ets) -->  
+<!-- @[first_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstErrorHandler.ets) -->   
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { process } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
+
+const DOMAIN = 0x0000;
 
 let firstHandler: errorManager.ErrorHandler;
 const firstErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
     // 自定义的第一个errorHandler实现逻辑
-    console.info('[FirstHandler] First uncaught exception handler invoked.');
+    hilog.info(DOMAIN, 'testErrorManage', '%{public}s', '[FirstHandler] First uncaught exception handler invoked.');
     if (firstHandler) {
         firstHandler(reason);
     } else {
@@ -367,23 +507,27 @@ export function setFirstErrorHandler() {
     } catch (paramError) {
         let code = (paramError as BusinessError).code;
         let message = (paramError as BusinessError).message;
-        console.error('setFirstErrorHandler',`error: ${code}, ${message}`);
+        hilog.error(DOMAIN, 'testErrorManage', 'error: %{public}s, %{public}s', `${code}`, `${message}`);
     }
-    console.info('Registered First Error Handler');
+    hilog.info(DOMAIN, 'testErrorManage', '%{public}s', 'Registered First Error Handler');
 }
 ```
 
  定义第二个错误处理器及注册方法，形成链式调用。
-<!-- @[second_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondErrorHandler.ets) --> 
+<!-- @[second_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondErrorHandler.ets) -->   
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 import { process } from '@kit.ArkTS';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const DOMAIN = 0x0000;
 
 let secondHandler: errorManager.ErrorHandler;
 const secondErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
     // 自定义的第二个errorHandler实现逻辑
-    console.info('[SecondHandler] Second uncaught exception handler invoked.');
+    hilog.info(DOMAIN, 'testErrorManage', '%{public}s', '[SecondHandler] Second uncaught exception handler invoked.');
     if (secondHandler) {
         secondHandler(reason);
     } else {
@@ -393,8 +537,14 @@ const secondErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
 };
 
 export function setSecondErrorHandler() {
-    secondHandler = errorManager.setDefaultErrorHandler(secondErrorHandler); 
-    console.info('Registered Second Error Handler');
+    try {
+        secondHandler = errorManager.setDefaultErrorHandler(secondErrorHandler);
+    } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        hilog.error(DOMAIN, 'testErrorManage', 'error: %{public}s, %{public}s', `${code}`, `${message}`);
+    }
+    hilog.info(DOMAIN, 'testErrorManage', '%{public}s', 'Registered Second Error Handler');
 }
 ```
 
@@ -424,4 +574,249 @@ function testErrorHandlers() {
 Button('错误处理器责任链模式场景').onClick(()=>{
   testErrorHandlers();
 }).position({x:50, y:350});
+```
+
+**ArkTS-Sta示例：**
+
+```ts
+import { Entry, Component, Column, Button, ClickEvent } from "@ohos.arkui.component";
+import errorManager from '@ohos.app.ability.errorManager';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+let firstHandler: errorManager.ErrorHandler;
+const firstErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
+  hilog.info(DOMAIN, 'testErrorManage', '%{public}s', '[FirstHandler] First uncaught exception handler invoked.');
+};
+
+export function setFirstErrorHandler() {
+    try {
+      firstHandler = errorManager.setDefaultErrorHandler(firstErrorHandler);
+      hilog.info(DOMAIN, 'testErrorManage', '%{public}s', 'Registered First Error Handler success.');
+    } catch (error) {
+      hilog.error(DOMAIN, 'testErrorManage', '%{public}s', 'setFirstErrorHandler ', error);
+    }
+}
+
+let secondHandler: errorManager.ErrorHandler;
+const secondErrorHandler: errorManager.ErrorHandler = (reason: Error) => {
+    // 自定义的第二个errorHandler实现逻辑
+    hilog.info(DOMAIN, 'testErrorManage', '%{public}s', '[SecondHandler] Second uncaught exception handler invoked.');
+    if (secondHandler) {
+        secondHandler(reason);
+    } else {
+        // 建议增加判空操作，如果为空采用同步退出方式
+        hilog.info(DOMAIN, 'testErrorManage', '%{public}s', '[SecondHandler] handler is null.');
+    }
+};
+
+export function setSecondErrorHandler() {
+    try {
+      secondHandler = errorManager.setDefaultErrorHandler(secondErrorHandler);
+    } catch (error) {
+      hilog.error(DOMAIN, 'testErrorManage', '%{public}s', 'setSecondErrorHandler', error);
+    }
+    hilog.info(DOMAIN, 'testErrorManage', '%{public}s', 'Registered Second Error Handler');
+}
+
+function testErrorHandlers() {
+  setFirstErrorHandler();
+  setSecondErrorHandler();
+  throw new Error('Test uncaught exception!');
+}
+
+@Entry
+@Component
+struct Index {
+
+  build() {
+      Column() {
+        Button('错误处理器责任链模式场景').onClick(()=>{
+          testErrorHandlers();
+        }).position({x:50, y:350});
+    }
+  }
+}
+```
+
+### freeze处理器责任链模式场景
+
+**ArkTS-Dyn示例：**
+
+ 定义第一个freeze处理器及注册方法，无前置处理器时退出进程。
+<!-- @[first_freeze_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstFreezeHandler.ets) -->   
+
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const DOMAIN = 0x0000;
+
+let firstHandler: errorManager.FreezeObserver = () => {};
+const firstFreezeHandler: errorManager.FreezeObserver = () => {
+    // 自定义的第一个FreezeHandler实现逻辑
+    hilog.info(DOMAIN, 'testErrorManage', '%{public}s', '[FirstHandler] First freeze handler invoked.');
+    if (firstHandler) {
+        firstHandler();
+    } else {
+        hilog.info(DOMAIN, 'testErrorManage', '%{public}s', '[FirstHandler] First freeze handler end.');
+    }
+};
+
+export function setFirstFreezeHandler() {
+    try {
+        firstHandler = errorManager.setDefaultFreezeObserver(firstFreezeHandler);
+    } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        hilog.error(DOMAIN, 'testErrorManage', 'error: %{public}s, %{public}s', `${code}`, `${message}`);
+    }
+    hilog.info(DOMAIN, 'testErrorManage', '%{public}s', 'Registered First freeze Handler.');
+}
+```
+
+ 定义第二个freeze处理器及注册方法，形成链式调用。
+<!-- @[second_freeze_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondFreezeHandler.ets) -->   
+
+``` TypeScript
+import { errorManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const DOMAIN = 0x0000;
+
+let secondHandler: errorManager.FreezeObserver = () => {};
+const secondFreezeHandler: errorManager.FreezeObserver = () => {
+    // 自定义的第二个SecondHandler实现逻辑
+    hilog.info(DOMAIN, 'testErrorManage', '%{public}s', '[SecondHandler] Second freeze handler invoked.');
+    if (secondHandler) {
+        secondHandler();
+    } else {
+        hilog.info(DOMAIN, 'testErrorManage', '%{public}s', '[SecondHandler] Second freeze handler end.');
+    }
+};
+
+export function setSecondFreezeHandler() {
+    try {
+        secondHandler = errorManager.setDefaultFreezeObserver(secondFreezeHandler);
+    } catch (paramError) {
+        let code = (paramError as BusinessError).code;
+        let message = (paramError as BusinessError).message;
+        hilog.error(DOMAIN, 'testErrorManage', 'error: %{public}s, %{public}s', `${code}`, `${message}`);
+    }
+    hilog.info(DOMAIN, 'testErrorManage', '%{public}s', 'Registered Second freeze Handler.');
+}
+```
+
+ 引入头文件。
+<!-- @[freeze_handler_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+import { setFirstFreezeHandler } from './FirstFreezeHandler';
+import { setSecondFreezeHandler } from './SecondFreezeHandler';
+```
+
+ 新增构造场景故障函数。
+<!-- @[test_timeout_handlers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function waitTime() {
+  // 构造场景故障
+  let date = Date.now();
+  while (Date.now() - date < 15000) {
+  };
+}
+```
+
+ 新增freeze处理器责任链模式构造函数。
+<!-- @[test_freeze_handlers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+function testFreezeHandlers() {
+  setFirstFreezeHandler();
+  setSecondFreezeHandler();
+  waitTime();
+}
+```
+
+ 主组件通过按钮触发测试，注册两个处理器并调用构造场景故障函数验证处理链。
+<!-- @[onclick_freeze_Handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->  
+
+``` TypeScript
+Button('freeze处理器责任链模式场景').onClick(()=>{
+  testFreezeHandlers();
+}).position({x:50, y:400});
+```
+
+**ArkTS-Sta示例：**
+
+```ts
+import { Entry, Component, Column, Button, ClickEvent } from "@ohos.arkui.component";
+import errorManager from '@ohos.app.ability.errorManager';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+let firstHandler: errorManager.FreezeObserver = () => {};
+const firstFreezeHandler: errorManager.FreezeObserver = () => {
+    // 自定义的第一个FreezeHandler实现逻辑
+    hilog.info(DOMAIN, 'testErrorManage', '%{public}s', '[FirstHandler] First freeze handler invoked.');
+};
+
+export function setFirstFreezeHandler() {
+    try {
+      firstHandler = errorManager.setDefaultFreezeObserver(firstFreezeHandler);
+      hilog.info(DOMAIN, 'testErrorManage', '%{public}s', 'Registered First freeze Handler success.');
+    } catch (error) {
+      hilog.error(DOMAIN, 'testErrorManage', '%{public}s', 'setFirstFreezeHandler ', error);
+    }
+}
+
+let secondHandler: errorManager.FreezeObserver = () => {};
+const secondFreezeHandler: errorManager.FreezeObserver = () => {
+    // 自定义的第二个SecondHandler实现逻辑
+    hilog.info(DOMAIN, 'testErrorManage', '%{public}s', '[SecondHandler] Second freeze handler invoked.');
+    if (secondHandler) {
+      secondHandler();
+    } else {
+      hilog.info(DOMAIN, 'testErrorManage', '%{public}s', '[SecondHandler] Second freeze handler end.');
+    }
+};
+
+export function setSecondFreezeHandler() {
+    try {
+        secondHandler = errorManager.setDefaultFreezeObserver(secondFreezeHandler);
+    } catch (error) {
+        hilog.error(DOMAIN, 'testErrorManage', '%{public}s', 'setSecondFreezeHandler ', error);
+    }
+    hilog.info(DOMAIN, 'testErrorManage', '%{public}s', 'Registered Second freeze Handler.');
+}
+
+function waitTime() {
+  // 构造场景故障
+  let date = Date.now();
+  while (Date.now() - date < 15000) {
+  };
+}
+
+function testFreezeHandlers() {
+  setFirstFreezeHandler();
+  setSecondFreezeHandler();
+  waitTime();
+}
+
+@Entry
+@Component
+struct Index {
+
+  build() {
+      Column() {
+      Button('freeze处理器责任链模式场景').onClick(()=>{
+        testFreezeHandlers();
+      }).position({x:50, y:400});
+    }
+  }
+}
 ```

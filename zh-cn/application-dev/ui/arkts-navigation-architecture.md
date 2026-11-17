@@ -1,8 +1,8 @@
 # Navigation基础架构介绍
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -57,7 +57,7 @@ Navigation是路由导航的根视图容器，通常作为页面（@Entry修饰�
 
 Navigation组件本身可不作为显示容器，只用于承载路由的相关功能，如绑定导航控制器对象、路由切换、分栏显示、自定义转场动画控制等。
 
-Navigation组件主要包含导航栏（NavBar）和子页（NavDestination），子页通过栈结构管理，存在NavPathStack中。导航栏又称Navbar，作为Navigation的子组件，直接挂载到Navigation上，可以通过[hideNavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#hidenavbar9)属性进行隐藏（单栏应用推荐隐藏导航页），导航栏不存在页面栈中。
+Navigation组件主要包含导航栏（NavBar）和子页（NavDestination），子页通过栈结构管理，存在NavPathStack中。导航栏又称NavBar，作为Navigation的子组件，直接挂载到Navigation上，可以通过[hideNavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#hidenavbar9)属性进行隐藏（单栏应用推荐隐藏导航页），导航栏不存在页面栈中。
 
 子页面是一个以NavDestination为根节点的子树，通过[@Builder](./state-management/arkts-builder.md)构造出来，再通过NavPathStack提供的栈操作方法挂载到Navigation上显示，详见[Navigation子页面](./arkts-navigation-navdestination.md)。
 
@@ -65,17 +65,19 @@ Navigation组件主要包含导航栏（NavBar）和子页（NavDestination）�
 
 Navigation子页面的根容器，每个子页面都需要包裹在一个NavDestination中，通过NavPathStack提供的栈操作方法（push、pop等）将子页面挂载到Navigation上显示或删除。
 
-NavDestination作为页面根容器，除了支持普通组件的通用属性外，还支持页面相关的属性，如：[页面的生命周期](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#事件)，页面[工具栏](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#toolbarconfiguration13)、[标题栏](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#title)与[菜单栏](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#menus12)，[自定义页面转场动画](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#customtransition15)，页面级窗口属性控制（横竖屏、系统状态栏、系统导航条）等能力。
+NavDestination作为页面根容器，除了支持普通组件的通用属性外，还支持页面相关的属性，如：页面的生命周期[事件](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#事件)，页面工具栏[toolbarConfiguration](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#toolbarconfiguration13)、标题栏[title](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#title)与菜单栏[menus](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#menus12)，自定义页面转场动画[customTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#customtransition15)，页面级窗口属性控制（横竖屏、系统状态栏、系统导航条）等能力。
 
 ## NavBar（导航栏）
 
-Navigation中直接加载的孩子节点称为导航栏（NavBar），单栏显示时它是整个导航的首页，分栏显示时它是固定的导航栏。分栏显示时默认显示在左边，也可以通过[navBarPosition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarposition9)属性控制。
+Navigation中直接加载的子节点称为导航栏（NavBar），单栏显示时它是整个导航的首页，分栏显示时它是固定的导航栏。分栏显示时默认显示在左边，也可以通过[navBarPosition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarposition9)属性控制。
 
-开发者可以通过[hideNavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#hidenavbar9)控制导航栏的显隐，也可以通过[navBarWidth](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarwidth9)属性控制双栏显示下的Navbar宽度，NavBar本身不属于页面栈中的页面，不具备页面的生命周期等，不能通过NavPathStack的方法控制。 开发者可以通过[onNavBarStateChange](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#onnavbarstatechange9)去感知导航栏的显隐，通过[mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9)属性控制单双栏切换，也可以通过[onNavigationModeChange](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#onnavigationmodechange11)去感知单双栏的切换。
+开发者可以通过[hideNavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#hidenavbar9)控制导航栏的显隐，也可以通过[navBarWidth](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarwidth9)属性控制双栏显示下的NavBar宽度，NavBar本身不属于页面栈中的页面，不具备页面的生命周期等，不能通过NavPathStack的方法控制。 开发者可以通过[onNavBarStateChange](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#onnavbarstatechange9)去感知导航栏的显隐，通过[mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9)属性控制单双栏切换，也可以通过[onNavigationModeChange](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#onnavigationmodechange11)去感知单双栏的切换。
 
 NavBar的内容区可以通过两种方式指定：
 
  - 方式一：直接指定Navigation的子节点。
+
+  ArkTS-Dyn示例：
 
   <!-- @[NavigationDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/NavigationExample.ets) -->
   
@@ -86,6 +88,141 @@ NavBar的内容区可以通过两种方式指定：
     @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
     private listArray: Array<string> = ['WLAN', 'Bluetooth', 'Personal Hotspot', 'Connect & Share'];
     context = this.getUIContext().getHostContext();
+    build() {
+      Column() {
+        Navigation(this.navPathStack) {
+          // 请将$r('app.string.enterKeyWordsToSearch')替换为实际资源文件，在本示例中该资源文件的value值为"输入关键字搜索"
+          TextInput({ placeholder: $r('app.string.enterKeyWordsToSearch') })
+            .width('90%')
+            .height(40)
+            .margin({ bottom: 10 })
+  
+          // 通过List定义导航的一级界面
+          List({ space: 12, initialIndex: 0 }) {
+            ForEach(this.listArray, (item: string) => {
+              ListItem() {
+                Row() {
+                  Row() {
+                    Text(`${item.slice(0, 1)}`)
+                      .fontColor(Color.White)
+                      .fontSize(14)
+                      .fontWeight(FontWeight.Bold)
+                  }
+                  .width(30)
+                  .height(30)
+                  .backgroundColor('#a8a8a8')
+                  .margin({ right: 20 })
+                  .borderRadius(20)
+                  .justifyContent(FlexAlign.Center)
+  
+                  Column() {
+                    Text(item)
+                      .fontSize(16)
+                      .margin({ bottom: 5 })
+                  }
+                  .alignItems(HorizontalAlign.Start)
+  
+                  Blank()
+  
+                  Row()
+                    .width(12)
+                    .height(12)
+                    .margin({ right: 15 })
+                    .border({
+                      width: { top: 2, right: 2 },
+                      color: 0xcccccc
+                    })
+                    .rotate({ angle: 45 })
+                }
+                .borderRadius(15)
+                .shadow({ radius: 100, color: '#ededed' })
+                .width('90%')
+                .alignItems(VerticalAlign.Center)
+                .padding({ left: 15, top: 15, bottom: 15 })
+                .backgroundColor(Color.White)
+              }
+              .width('100%')
+              .onClick(() => {
+                // $r('app.string.detailsPageParameters')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“详情页面参数”
+                this.navPathStack.pushPathByName(`${item}`,
+                  // 将name指定的NavDestination页面信息入栈，传递的参数为param
+                  this.context!.resourceManager.getStringSync($r('app.string.detailsPageParameters').id));
+              })
+            }, (item: string): string => item)
+          }
+          .listDirection(Axis.Vertical)
+          .edgeEffect(EdgeEffect.Spring)
+          .sticky(StickyStyle.Header)
+          .chainAnimation(false)
+          .width('100%')
+        }
+        .width('100%')
+        .mode(NavigationMode.Auto)
+        // $r('app.string.settings')需要替换为开发者所需的字符串资源文件，资源文件中的value值为“设置”
+        .title($r('app.string.settings')) // 设置标题文字
+      }
+      .size({ width: '100%', height: '100%' })
+      .backgroundColor(0xf4f4f5)
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[NavigationDemo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/template1/NavigationExample.ets) -->
+  
+  ``` TypeScript
+  
+  import {
+    Color,
+    Component,
+    Column,
+    NavPathStack,
+    Button,
+    NavPathInfo,
+    NavDestinationContext,
+    NavigationOperation,
+    ButtonType,
+    GestureEvent,
+    PanGesture,
+    NavDestination,
+    ColumnOptions,
+    Stack,
+    Text,
+    NavDestinationMode,
+    LaunchMode,
+    Context,
+    Navigation,
+    TextInput,
+    List,
+    ForEach,
+    ListItem,
+    TextAlign,
+    $r,
+    Entry,
+    NavigationMode,
+    NavigationMenuItem,
+    Row,
+    FontWeight,
+    HorizontalAlign,
+    Blank,
+    FlexAlign,
+    VerticalAlign,
+    Axis,
+    EdgeEffect,
+    StickyStyle,
+    State,
+    AppStorage,
+    Provide,
+    Consume,
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct NavigationDemo {
+    @Provide navPathStack: NavPathStack = new NavPathStack();
+    private listArray: Array<string> = ['WLAN', 'Bluetooth', 'Personal Hotspot', 'Connect & Share'];
+    context: Context | undefined = this.getUIContext().getHostContext();
     build() {
       Column() {
         Navigation(this.navPathStack) {
@@ -165,7 +302,7 @@ NavBar的内容区可以通过两种方式指定：
   }
   ```
 
- - 方式二：从API version 20开始，使用[主页类型NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigation20)将某个NavDestination直接指定为导航栏内容，此方法需要配置路由表，配置方式请参考[路由表](./arkts-navigation-cross-package.md#路由表能力对比)。
+ - 方式二：从API version 20开始，使用[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigation20)将某个NavDestination直接指定为导航栏内容，此方法需要配置路由表，配置方式请参考[路由表](./arkts-navigation-cross-package.md#路由表能力对比)。
 
 ## NavPathStack（导航控制器）
 
@@ -202,8 +339,9 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
   ArkTS-Sta示例：
 
-  ```ts
-  import { Navigation, NavigationTitleMode } from '@kit.ArkUI';
+  <!-- @[NavigationTitleModeMini](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/template1/TitleModeMini.ets) -->
+  
+  ``` TypeScript
   Navigation() {
     // ...
   }
@@ -231,8 +369,9 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
   ArkTS-Sta示例：
 
-  ```ts
-  import { Navigation, NavigationTitleMode } from '@kit.ArkUI';
+  <!-- @[NavigationTitleModeFUll](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/template1/TitleModeFull.ets) -->
+  
+  ``` TypeScript
   Navigation() {
     // ...
   }
@@ -266,18 +405,19 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
    ArkTS-Sta示例：
 
-   ```ts
-   import { Navigation, NavigationMenuItem } from '@kit.ArkUI';
-
+   <!-- @[NavigationMenuThreeImage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/template1/MenusThreeImage.ets) -->
+   
+   ``` TypeScript
    let menuItem: NavigationMenuItem  = {
      'value': 'func',
      'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
      'action': () => {}
    };
-   Navigation() {
-     // ...
-   }
-   .menus([menuItem, menuItem, menuItem])
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
+         }
+         .menus([menuItem, menuItem, menuItem])
    ```
 
 
@@ -302,18 +442,19 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
    ArkTS-Sta示例：
 
-   ```ts
-   import {Navigation, NavigationMenuItem } from '@kit.ArkUI';
-
+   <!-- @[NavigationMenuThreeResource](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/template1/MenusThreeResource.ets) -->
+   
+   ``` TypeScript
    let menuItem: NavigationMenuItem  = {
      'value': 'func',
      'icon': 'resources/base/media/ic_public_add.svg',
      'action': () => {}
    };
-   Navigation() {
-     // ...
-   }
-   .menus([menuItem, menuItem, menuItem])
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
+         }
+         .menus([menuItem, menuItem, menuItem])
    ```
 
 **图7** 设置了4个图标的菜单栏 
@@ -342,19 +483,21 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
    ArkTS-Sta示例：
 
-   ```ts
-   import { Navigation, NavigationMenuItem } from '@kit.ArkUI';
-
+   <!-- @[NavigationMenuFour](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/template1/MenusFour.ets) -->
+   
+   ``` TypeScript
+   
    let menuItem: NavigationMenuItem  = {
      'value': 'func',
      'icon': 'ets/pages/navigation/template1/image/ic_public_add.svg',
      'action': () => {}
    };
-
-   Navigation() {
-     // ...
-   }
-   .menus([menuItem, menuItem, menuItem, menuItem])
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
+         }
+         // 竖屏最多支持显示3个图标，多余的图标会被放入自动生成的更多图标
+         .menus([menuItem, menuItem, menuItem, menuItem])
    ```
 
 ## 工具栏
@@ -385,16 +528,18 @@ NavPathStack也支持开发者继承并复写相关路由操作方法。NavPathS
 
    ArkTS-Sta示例：
 
-   ```ts
-   import { Navigation, ToolbarItem } from '@kit.ArkUI';
-
+   <!-- @[ToolBar](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/NavigationSampleStatic/entry/src/main/ets/pages/navigation/template1/ToolBar.ets) -->
+   
+   ``` TypeScript
    let toolTmp: ToolbarItem = {
      'value': 'func',
      'icon': 'ets/pages/navigation/template1/image/ic_public_highlights.svg',
      'action': () => {}
    };
-   Navigation() {
-     // ...
-   }
-   .toolbarConfiguration(toolBar)
+   let tooBar: ToolbarItem[] = [toolTmp,toolTmp,toolTmp];
+   // ...
+         Navigation(this.navPathStack) {
+           // ...
+         }
+         .toolbarConfiguration(tooBar)
    ```

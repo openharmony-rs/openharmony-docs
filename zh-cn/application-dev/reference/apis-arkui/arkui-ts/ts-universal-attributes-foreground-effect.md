@@ -1,8 +1,8 @@
 # 前景属性设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,21 +12,23 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## foregroundEffect
 
 foregroundEffect(options: ForegroundEffectOptions): T
 
-设置组件的前景属性。
+设置组件的前景效果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[foregroundEffect<sup>23+</sup>](#foregroundeffect23)。
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[foregroundEffect](#foregroundeffect)。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -34,7 +36,7 @@ foregroundEffect(options: ForegroundEffectOptions): T
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                 |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| options | [ForegroundEffectOptions](#foregroundeffectoptions12) | 是   | 设置组件前景属性包括：模糊半径。 |
+| options | [ForegroundEffectOptions](#foregroundeffectoptions) | 是   | 设置组件前景效果，包括：模糊半径。效果仅在组件范围内生效，与backgroundEffect、blur等接口连用时超出组件范围的效果无法生效。 |
 
 **返回值：**
 
@@ -42,9 +44,9 @@ foregroundEffect(options: ForegroundEffectOptions): T
 | ------ | ------------------------ |
 | T | 返回当前组件。 |
 
-## foregroundEffect<sup>23+</sup>
+## ForegroundEffectOptions
 
-foregroundEffect(options: ForegroundEffectOptions | undefined): this
+foregroundEffect(options: ForegroundEffectOptions | undefined)
 
 设置组件的前景属性。
 
@@ -62,17 +64,11 @@ foregroundEffect(options: ForegroundEffectOptions | undefined): this
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
 | options | [ForegroundEffectOptions](#foregroundeffectoptions12) \| undefined | 是   | 设置组件前景属性包括：模糊半径。当options的值为undefined时，模糊不生效。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## ForegroundEffectOptions<sup>12+</sup>
 
 前景效果参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

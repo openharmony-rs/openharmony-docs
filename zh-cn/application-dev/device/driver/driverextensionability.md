@@ -14,9 +14,9 @@
 
  - DriverExtensionAbility
 
-    [DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md)是Driver类型的ExtensionAbility组件，提供驱动相关扩展框架能力。对于部分设备，支持插入外接的硬件模块来扩展设备能力， 此时可以以应用方式安装该硬件模块的驱动程序。[DriverExtensionAbility](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md)可以通过[@ohos.driver.deviceManager (外设管理)](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md)提供的接口被应用绑定，并根据应用的请求信息在后台处理相关事务。
+    [DriverExtensionAbility (驱动扩展能力)](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md)是Driver类型的ExtensionAbility组件，提供驱动相关扩展框架能力。对于部分设备，支持插入外接的硬件模块来扩展设备能力， 此时可以以应用方式安装该硬件模块的驱动程序。[DriverExtensionAbility (驱动扩展能力)](../../reference/apis-driverdevelopment-kit/js-apis-app-ability-driverExtensionAbility.md)可以通过[@ohos.driver.deviceManager (外设管理)](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md)提供的接口被应用绑定，并根据应用的请求信息在后台处理相关事务。
     
-    每个类型的ExtensionAbility都有自己的Context，DriverExtensionAbility通过[DriverExtensionContext](../../reference/apis-driverdevelopment-kit/js-apis-inner-application-driverExtensionContext.md)提供相关能力。
+    每个类型的ExtensionAbility都有自己的Context，DriverExtensionAbility通过[DriverExtensionContext (定义驱动扩展的上下文](../../reference/apis-driverdevelopment-kit/js-apis-inner-application-driverExtensionContext.md)提供相关能力。
 
 ## 环境搭建
 
@@ -53,13 +53,17 @@
      // 接收应用传递过来的消息处理，以及将处理的结果返回给客户端。
      onRemoteMessageRequest(code: number, data: rpc.MessageSequence, reply: rpc.MessageSequence,
        option: rpc.MessageOption) {
-       if (code === REQUEST_CODE) {
-         // 接收应用传递过来的数据。
-         // 应用使用多次调用data.writeString()写入多个数据时，驱动可以通过多次调用data.readString()方法接收对应的数据。
-         let optFir: string = data.readString();
-         // 驱动将数据的处理结果返回给应用。
-         // 示例中为接收了"Hello"，并将"Hello World"返回给应用。
-         reply.writeString(optFir + ` World`);
+       try {
+         if (code === REQUEST_CODE) {
+           // 接收应用传递过来的数据。
+           // 应用使用多次调用data.writeString()写入多个数据时，驱动可以通过多次调用data.readString()方法接收对应的数据。
+           let optFir: string = data.readString();
+           // 驱动将数据的处理结果返回给应用。
+           // 示例中为接收了"Hello"，并将"Hello World"返回给应用。
+           reply.writeString(optFir + ` World`);
+         }
+       } catch (err) {
+          console.info('testTag', `onRemoteMessageRequest error code is: ${err.code} with info: ${err.message}`);
        }
        return true;
      }
@@ -113,6 +117,9 @@
        "requestPermissions": [
          {
            "name": "ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER" // 此处为扩展外设相关权限，必须配置。
+         },
+         {
+          "name": "ohos.permission.ACCESS_DDK_DRIVERS"
          }
        ],
        "deliveryWithInstall": true,

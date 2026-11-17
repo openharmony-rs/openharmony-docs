@@ -6,12 +6,13 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-音频路由管理。
+AudioRoutingManager是音频系统中的设备路由管理模块。本模块提供音频设备路由管理能力，包括音频设备列表获取、设备连接状态变化监听、优先级设备获取等。当开发者需要在媒体录制、媒体播放等场景下进行音频设备路由选择时，使用本模块接口完成相关操作。
 
 在使用AudioRoutingManager的接口之前，需先通过[getRoutingManager](arkts-apis-audio-AudioManager.md#getroutingmanager9)获取AudioRoutingManager实例。
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 9开始支持。
 
@@ -29,12 +30,16 @@ getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback&lt;AudioDeviceDescrip
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明                 |
 | ---------- | ------------------------------------------------------------ | ---- | -------------------- |
 | deviceFlag | [DeviceFlag](arkts-apis-audio-e.md#deviceflag)                                    | 是   | 音频设备类型。     |
-| callback   | AsyncCallback&lt;[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)&gt; | 是   | 回调函数。当获取音频设备列表成功，err为undefined，data为获取到的音频设备列表；否则为错误对象。 |
+| callback   | AsyncCallback&lt;[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)&gt; | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频设备列表成功，err为undefined，data为获取到的音频设备列表；否则为错误对象。<br>ArkTS-Sta：当获取音频设备列表成功，err为null，data为获取到的音频设备列表；否则为错误对象。 |
 
 **示例：**
 
@@ -43,10 +48,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err: BusinessError, audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
   if (err) {
-    console.error(`Failed to get devices. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in getting devices, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+    console.error(`Failed to obtain the device list. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info(`Succeeded in obtaining the device list, deviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 });
 ```
 
@@ -58,6 +63,10 @@ getDevices(deviceFlag: DeviceFlag): Promise&lt;AudioDeviceDescriptors&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                      | 必填 | 说明             |
@@ -68,7 +77,7 @@ getDevices(deviceFlag: DeviceFlag): Promise&lt;AudioDeviceDescriptors&gt;
 
 | 类型                                                         | 说明                      |
 | ------------------------------------------------------------ | ------------------------- |
-| Promise&lt;[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)&gt; | Promise对象，返回设备列表。 |
+| Promise&lt;[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)&gt; | Promise对象，返回音频设备列表。 |
 
 **示例：**
 
@@ -76,9 +85,9 @@ getDevices(deviceFlag: DeviceFlag): Promise&lt;AudioDeviceDescriptors&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
-  console.info(`Succeeded in getting devices, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Succeeded in obtaining the device list, deviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get devices. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to obtain the device list. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -90,6 +99,10 @@ getDevicesSync(deviceFlag: DeviceFlag): AudioDeviceDescriptors
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                      | 必填 | 说明             |
@@ -100,7 +113,7 @@ getDevicesSync(deviceFlag: DeviceFlag): AudioDeviceDescriptors
 
 | 类型                                                         | 说明                      |
 | ------------------------------------------------------------ | ------------------------- |
-| [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) | 返回设备列表。 |
+| [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) | 返回音频设备列表。 |
 
 **错误码：**
 
@@ -118,10 +131,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let audioDeviceDescriptors = audioRoutingManager.getDevicesSync(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
-  console.info(`Succeeded in getting devices, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Succeeded in obtaining the device list, deviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get devices. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the device list. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -133,6 +146,10 @@ isMicBlockDetectionSupported(): Promise&lt;boolean&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                   | 说明                                                         |
@@ -142,8 +159,12 @@ isMicBlockDetectionSupported(): Promise&lt;boolean&gt;
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioRoutingManager.isMicBlockDetectionSupported().then((value: boolean) => {
-  console.info(`Query whether microphone block detection is supported on current device result is ${value}.`);
+  console.info(`Succeeded in querying whether microphone block detection is supported, isSupported: ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query whether microphone block detection is supported. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -155,7 +176,13 @@ on(type: 'micBlockStatusChanged', callback: Callback<DeviceBlockStatusInfo\>): v
 
 使用此功能前，请使用[isMicBlockDetectionSupported](#ismicblockdetectionsupported13)查询设备是否支持检测。应用在使用麦克风录音时，若麦克风堵塞状态发生变化，将触发该事件。目前此检测功能仅支持麦克风位于本地设备上。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMicBlockStatusChanged](#onmicblockstatuschanged23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
@@ -176,14 +203,66 @@ on(type: 'micBlockStatusChanged', callback: Callback<DeviceBlockStatusInfo\>): v
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 // 在使用此功能之前，应先查询当前设备是否支持检测。
 audioRoutingManager.isMicBlockDetectionSupported().then((value: boolean) => {
-  console.info(`Query whether microphone block detection is supported on current device result is ${value}.`);
+  console.info(`Succeeded in querying whether microphone block detection is supported, isSupported: ${value}.`);
   if (value) {
-    audioRoutingManager.on('micBlockStatusChanged', (micBlockStatusChanged: audio.DeviceBlockStatusInfo) => {
-      console.info(`block status : ${micBlockStatusChanged.blockStatus} `);
+    audioRoutingManager.on('micBlockStatusChanged', (deviceBlockStatusInfo: audio.DeviceBlockStatusInfo) => {
+      console.info(`MicBlockStatus changed, deviceBlockStatusInfo: ${JSON.stringify(deviceBlockStatusInfo)}.`);
     });
   }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query whether microphone block detection is supported. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## onMicBlockStatusChanged<sup>23+</sup>
+
+onMicBlockStatusChanged(callback: Callback&lt;DeviceBlockStatusInfo&gt;): void
+
+监听麦克风堵塞状态变化事件。使用callback异步回调。
+
+使用此功能前，请使用[isMicBlockDetectionSupported](#ismicblockdetectionsupported13)查询设备是否支持检测。应用在使用麦克风录音时，若麦克风堵塞状态发生变化，将触发该事件。目前此检测功能仅支持麦克风位于本地设备上。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('micBlockStatusChanged')](#onmicblockstatuschanged13)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                       |
+| :------- | :--------------------------------------------------- | :--- | :----------------------------------------- |
+| callback | Callback<[DeviceBlockStatusInfo](arkts-apis-audio-i.md#deviceblockstatusinfo13)\> | 是   | 回调函数，返回麦克风被堵塞状态和设备信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 在使用此功能之前，应先查询当前设备是否支持检测。
+audioRoutingManager.isMicBlockDetectionSupported().then((value: boolean) => {
+  console.info(`Succeeded in querying whether microphone block detection is supported, isSupported: ${value}.`);
+  if (value) {
+    audioRoutingManager.onMicBlockStatusChanged((deviceBlockStatusInfo: audio.DeviceBlockStatusInfo) => {
+      console.info(`MicBlockStatus changed, deviceBlockStatusInfo: ${JSON.stringify(deviceBlockStatusInfo)}.`);
+    });
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query whether microphone block detection is supported. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -191,16 +270,22 @@ audioRoutingManager.isMicBlockDetectionSupported().then((value: boolean) => {
 
 off(type: 'micBlockStatusChanged', callback?: Callback<DeviceBlockStatusInfo\>): void
 
-取消监听麦克风堵塞状态变化事件。使用callback异步回调。
+取消监听麦克风堵塞状态变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offMicBlockStatusChanged](#offmicblockstatuschanged23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 13
 
 **参数：**
 
 | 参数名   | 类型                                                | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| type     | string                                              | 是   | 事件回调类型，支持的事件为'micBlockStatusChanged'，当取消监听音频麦克风是否被堵塞变化事件时，触发该事件。 |
-| callback | Callback<[DeviceBlockStatusInfo](arkts-apis-audio-i.md#deviceblockstatusinfo13)\> | 否   | 回调函数，返回麦克风被堵塞状态和设备信息。|
+| type     | string                                              | 是   | 事件回调类型，支持的事件为'micBlockStatusChanged'。 |
+| callback | Callback<[DeviceBlockStatusInfo](arkts-apis-audio-i.md#deviceblockstatusinfo13)\> | 否   | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('micBlockStatusChanged')](#onmicblockstatuschanged13)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。|
 
 **错误码：**
 
@@ -218,13 +303,57 @@ off(type: 'micBlockStatusChanged', callback?: Callback<DeviceBlockStatusInfo\>):
 audioRoutingManager.off('micBlockStatusChanged');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
-let micBlockStatusCallback = (micBlockStatusChanged: audio.DeviceBlockStatusInfo) => {
-  console.info(`block status : ${micBlockStatusChanged.blockStatus} `);
+let micBlockStatusCallback = (deviceBlockStatusInfo: audio.DeviceBlockStatusInfo) => {
+  console.info(`MicBlockStatus changed, deviceBlockStatusInfo: ${JSON.stringify(deviceBlockStatusInfo)}.`);
 };
 
 audioRoutingManager.on('micBlockStatusChanged', micBlockStatusCallback);
 
 audioRoutingManager.off('micBlockStatusChanged', micBlockStatusCallback);
+```
+
+## offMicBlockStatusChanged<sup>23+</sup>
+
+offMicBlockStatusChanged(callback?: Callback&lt;DeviceBlockStatusInfo&gt;): void
+
+取消监听麦克风堵塞状态变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('micBlockStatusChanged')](#offmicblockstatuschanged13)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                | 必填 | 说明                                       |
+| -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
+| callback | Callback<[DeviceBlockStatusInfo](arkts-apis-audio-i.md#deviceblockstatusinfo13)\> | 否   | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[onmicBlockStatusChanged](#onmicblockstatuschanged23)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioRoutingManager.offMicBlockStatusChanged();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let micBlockStatusCallback = (deviceBlockStatusInfo: audio.DeviceBlockStatusInfo) => {
+  console.info(`MicBlockStatus changed, deviceBlockStatusInfo: ${JSON.stringify(deviceBlockStatusInfo)}.`);
+};
+
+audioRoutingManager.onMicBlockStatusChanged(micBlockStatusCallback);
+
+audioRoutingManager.offMicBlockStatusChanged(micBlockStatusCallback);
 ```
 
 ## on('deviceChange')<sup>9+</sup>
@@ -233,7 +362,13 @@ on(type: 'deviceChange', deviceFlag: DeviceFlag, callback: Callback<DeviceChange
 
 监听音频设备连接状态变化事件（当音频设备连接状态发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onDeviceChange](#ondevicechange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -255,11 +390,45 @@ on(type: 'deviceChange', deviceFlag: DeviceFlag, callback: Callback<DeviceChange
 **示例：**
 
 ```ts
-audioRoutingManager.on('deviceChange', audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (deviceChanged: audio.DeviceChangeAction) => {
-  console.info('device change type : ' + deviceChanged.type);
-  console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+audioRoutingManager.on('deviceChange', audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (deviceChangeAction: audio.DeviceChangeAction) => {
+  console.info(`Device changed, deviceChangeAction: ${JSON.stringify(deviceChangeAction)}.`);
+});
+```
+
+## onDeviceChange<sup>23+</sup>
+
+onDeviceChange(deviceFlag: DeviceFlag, callback: Callback&lt;DeviceChangeAction&gt;): void
+
+监听音频设备连接状态变化事件（当音频设备连接状态发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('deviceChange')](#ondevicechange9)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                      |
+| :------- | :--------------------------------------------------- | :--- |:------------------------|
+| deviceFlag | [DeviceFlag](arkts-apis-audio-e.md#deviceflag)                                    | 是   | 音频设备类型。              |
+| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)\> | 是   | 回调函数，返回设备更新详情。          |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioRoutingManager.onDeviceChange(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (deviceChangeAction: audio.DeviceChangeAction) => {
+  console.info(`Device changed, deviceChangeAction: ${JSON.stringify(deviceChangeAction)}.`);
 });
 ```
 
@@ -267,16 +436,22 @@ audioRoutingManager.on('deviceChange', audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (de
 
 off(type: 'deviceChange', callback?: Callback<DeviceChangeAction\>): void
 
-取消监听音频设备连接状态变化事件。使用callback异步回调。
+取消监听音频设备连接状态变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offDeviceChange](#offdevicechange23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
 | 参数名   | 类型                                                | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| type     | string                                              | 是   | 事件回调类型，支持的事件为'deviceChange'，当取消监听音频设备连接变化事件时，触发该事件。 |
-| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)> | 否   | 回调函数，返回设备更新详情。 |
+| type     | string                                              | 是   | 事件回调类型，支持的事件为'deviceChange'。 |
+| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)> | 否   | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('deviceChange')](#ondevicechange9)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **错误码：**
 
@@ -294,16 +469,57 @@ off(type: 'deviceChange', callback?: Callback<DeviceChangeAction\>): void
 audioRoutingManager.off('deviceChange');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
-let deviceChangeCallback = (deviceChanged: audio.DeviceChangeAction) => {
-  console.info('device change type : ' + deviceChanged.type);
-  console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+let deviceChangeCallback = (deviceChangeAction: audio.DeviceChangeAction) => {
+  console.info(`Device changed, deviceChangeAction: ${JSON.stringify(deviceChangeAction)}.`);
 };
 
 audioRoutingManager.on('deviceChange', audio.DeviceFlag.OUTPUT_DEVICES_FLAG, deviceChangeCallback);
 
 audioRoutingManager.off('deviceChange', deviceChangeCallback);
+```
+
+## offDeviceChange<sup>23+</sup>
+
+offDeviceChange(callback?: Callback&lt;DeviceChangeAction&gt;): void
+
+取消监听音频设备连接状态变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('deviceChange')](#offdevicechange9)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                | 必填 | 说明                                       |
+| -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
+| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)> | 否   | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[ondeviceChange](#ondevicechange23)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioRoutingManager.offDeviceChange();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let deviceChangeCallback = (deviceChangeAction: audio.DeviceChangeAction) => {
+  console.info(`Device changed, deviceChangeAction: ${JSON.stringify(deviceChangeAction)}.`);
+};
+
+audioRoutingManager.onDeviceChange(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, deviceChangeCallback);
+
+audioRoutingManager.offDeviceChange(deviceChangeCallback);
 ```
 
 ## setCommunicationDevice<sup>9+</sup>
@@ -318,13 +534,17 @@ setCommunicationDevice(deviceType: CommunicationDeviceType, active: boolean, cal
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                  | 必填 | 说明                      |
 | ---------- | ------------------------------------- | ---- |-------------------------|
 | deviceType | [CommunicationDeviceType](arkts-apis-audio-e.md#communicationdevicetype9) | 是   | 音频设备类型。                 |
 | active     | boolean                               | 是   | 是否设置设备为激活状态。true表示激活，false表示未激活。 |
-| callback   | AsyncCallback&lt;void&gt;             | 是   | 回调函数。当设置通信设备激活状态成功，err为undefined，否则为错误对象。 |
+| callback   | AsyncCallback&lt;void&gt;             | 是   | 回调函数。<br>ArkTS-Dyn：当设置通信设备激活状态成功，err为undefined；否则为错误对象。<br>ArkTS-Sta：当设置通信设备激活状态成功，err为null；否则为错误对象。 |
 
 **示例：**
 
@@ -333,10 +553,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRoutingManager.setCommunicationDevice(audio.CommunicationDeviceType.SPEAKER, true, (err: BusinessError) => {
   if (err) {
-    console.error(`Failed to set the active status of the device. ${err}`);
+    console.error(`Failed to set the active status of the communication device. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Callback invoked to indicate that the device is set to the active status.');
+  console.info('Succeeded in setting the active status of the communication device.');
 });
 ```
 
@@ -348,6 +568,10 @@ getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                      | 必填 | 说明             |
@@ -358,7 +582,7 @@ getAvailableDevices(deviceUsage: DeviceUsage): AudioDeviceDescriptors
 
 | 类型                                                         | 说明                      |
 | ------------------------------------------------------------ | ------------------------- |
-| [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) | 返回设备列表。 |
+| [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) | 返回音频可选设备列表。 |
 
 **错误码：**
 
@@ -376,10 +600,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data: audio.AudioDeviceDescriptors = audioRoutingManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES);
-  console.info('Succeeded in doing getAvailableDevices.');
+  console.info(`Succeeded in obtaining available devices, audioDeviceDescriptors: ${JSON.stringify(data)}.`);
 } catch (err) {
   let error = err as BusinessError;
-   console.error(`Failed to getAvailableDevices. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain available devices. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -389,7 +613,13 @@ on(type: 'availableDeviceChange', deviceUsage: DeviceUsage, callback: Callback<D
 
 监听音频可选设备连接状态变化事件（当音频可选设备连接状态发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAvailableDeviceChange](#onavailabledevicechange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -411,11 +641,45 @@ on(type: 'availableDeviceChange', deviceUsage: DeviceUsage, callback: Callback<D
 **示例：**
 
 ```ts
-audioRoutingManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_OUTPUT_DEVICES, (deviceChanged: audio.DeviceChangeAction) => {
-  console.info('device change type : ' + deviceChanged.type);
-  console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+audioRoutingManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_OUTPUT_DEVICES, (deviceChangeAction: audio.DeviceChangeAction) => {
+  console.info(`Available device changed, deviceChangeAction: ${JSON.stringify(deviceChangeAction)}.`);
+});
+```
+
+## onAvailableDeviceChange<sup>23+</sup>
+
+onAvailableDeviceChange(deviceUsage: DeviceUsage, callback: Callback&lt;DeviceChangeAction&gt;): void
+
+监听音频可选设备连接状态变化事件（当音频可选设备连接状态发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('availableDeviceChange')](#onavailabledevicechange12)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                       |
+| :------- | :--------------------------------------------------- | :--- | :----------------------------------------- |
+| deviceUsage | [DeviceUsage](arkts-apis-audio-e.md#deviceusage12)                       | 是   | 音频设备类型（根据用途分类）。     |
+| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)\> | 是   | 回调函数，返回设备更新详情。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioRoutingManager.onAvailableDeviceChange(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES, (deviceChangeAction: audio.DeviceChangeAction) => {
+  console.info(`Available device changed, deviceChangeAction: ${JSON.stringify(deviceChangeAction)}.`);
 });
 ```
 
@@ -423,16 +687,22 @@ audioRoutingManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_OUTPUT_D
 
 off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction\>): void
 
-取消监听音频可选设备连接状态变化事件。使用callback异步回调。
+取消监听音频可选设备连接状态变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAvailableDeviceChange](#offavailabledevicechange23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
 | 参数名   | 类型                                                | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| type     | string                                              | 是   | 事件回调类型，支持的事件为'availableDeviceChange'，当取消监听音频可选设备连接变化事件时，触发该事件。 |
-| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)> | 否   | 回调函数，返回可选设备更新详情。 |
+| type     | string                                              | 是   | 事件回调类型，支持的事件为'availableDeviceChange'。 |
+| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)> | 否   | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('availableDeviceChange')](#onavailabledevicechange12)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **错误码：**
 
@@ -450,16 +720,57 @@ off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction\>): vo
 audioRoutingManager.off('availableDeviceChange');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
-let availableDeviceChangeCallback = (deviceChanged: audio.DeviceChangeAction) => {
-  console.info('device change type : ' + deviceChanged.type);
-  console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+let availableDeviceChangeCallback = (deviceChangeAction: audio.DeviceChangeAction) => {
+  console.info(`Available device changed, deviceChangeAction: ${JSON.stringify(deviceChangeAction)}.`);
 };
 
 audioRoutingManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_OUTPUT_DEVICES, availableDeviceChangeCallback);
 
 audioRoutingManager.off('availableDeviceChange', availableDeviceChangeCallback);
+```
+
+## offAvailableDeviceChange<sup>23+</sup>
+
+offAvailableDeviceChange(callback?: Callback&lt;DeviceChangeAction&gt;): void
+
+取消监听音频可选设备连接状态变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('availableDeviceChange')](#offavailabledevicechange12)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                | 必填 | 说明                                       |
+| -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
+| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)> | 否   | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[onavailableDeviceChange](#onavailabledevicechange23)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioRoutingManager.offAvailableDeviceChange();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let availableDeviceChangeCallback = (deviceChangeAction: audio.DeviceChangeAction) => {
+  console.info(`Available device changed, deviceChangeAction: ${JSON.stringify(deviceChangeAction)}.`);
+};
+
+audioRoutingManager.onAvailableDeviceChange(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES, availableDeviceChangeCallback);
+
+audioRoutingManager.offAvailableDeviceChange(availableDeviceChangeCallback);
 ```
 
 ## setCommunicationDevice<sup>9+</sup>
@@ -474,6 +785,10 @@ setCommunicationDevice(deviceType: CommunicationDeviceType, active: boolean): Pr
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                                   | 必填 | 说明               |
@@ -485,13 +800,17 @@ setCommunicationDevice(deviceType: CommunicationDeviceType, active: boolean): Pr
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioRoutingManager.setCommunicationDevice(audio.CommunicationDeviceType.SPEAKER, true).then(() => {
-  console.info('Promise returned to indicate that the device is set to the active status.');
+  console.info('Succeeded in setting the active status of the communication device.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set the active status of the communication device. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -503,12 +822,16 @@ isCommunicationDeviceActive(deviceType: CommunicationDeviceType, callback: Async
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                                  | 必填 | 说明                     |
 | ---------- | ---------------------------------------------------- | ---- | ------------------------ |
-| deviceType | [CommunicationDeviceType](arkts-apis-audio-e.md#communicationdevicetype9) | 是   | 活跃音频设备类型。       |
-| callback   | AsyncCallback&lt;boolean&gt;                         | 是   | 回调函数。当获取指定通信设备的激活状态成功，err为undefined，data为true表示激活，false表示未激活；否则为错误对象。 |
+| deviceType | [CommunicationDeviceType](arkts-apis-audio-e.md#communicationdevicetype9) | 是   | 通信设备类型。       |
+| callback   | AsyncCallback&lt;boolean&gt;                         | 是   | 回调函数。<br>ArkTS-Dyn：当获取指定通信设备的激活状态成功，err为undefined，data为true表示激活，false表示未激活；否则为错误对象。<br>ArkTS-Sta：当获取指定通信设备的激活状态成功，err为null，data为true表示激活，false表示未激活；否则为错误对象。 |
 
 **示例：**
 
@@ -517,10 +840,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRoutingManager.isCommunicationDeviceActive(audio.CommunicationDeviceType.SPEAKER, (err: BusinessError, value: boolean) => {
   if (err) {
-    console.error(`Failed to obtain the active status of the device. ${err}`);
+    console.error(`Failed to check whether the communication device is active. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Callback invoked to indicate that the active status of the device is obtained.');
+  console.info(`Succeeded in checking whether the communication device is active, isActive: ${value}.`);
 });
 ```
 
@@ -531,6 +854,10 @@ isCommunicationDeviceActive(deviceType: CommunicationDeviceType): Promise&lt;boo
 获取指定通信设备的激活状态。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -547,8 +874,12 @@ isCommunicationDeviceActive(deviceType: CommunicationDeviceType): Promise&lt;boo
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioRoutingManager.isCommunicationDeviceActive(audio.CommunicationDeviceType.SPEAKER).then((value: boolean) => {
-  console.info(`Promise returned to indicate that the active status of the device is obtained ${value}.`);
+  console.info(`Succeeded in checking whether the communication device is active, isActive: ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to check whether the communication device is active. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -559,6 +890,10 @@ isCommunicationDeviceActiveSync(deviceType: CommunicationDeviceType): boolean
 获取指定通信设备的激活状态。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Communication
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -588,10 +923,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let value: boolean = audioRoutingManager.isCommunicationDeviceActiveSync(audio.CommunicationDeviceType.SPEAKER);
-  console.info(`Indicate that the active status of the device is obtained ${value}.`);
+  console.info(`Succeeded in checking whether the communication device is active, isActive: ${value}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to obtain the active status of the device ${error}.`);
+  console.error(`Failed to check whether the communication device is active. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -603,12 +938,16 @@ getPreferOutputDeviceForRendererInfo(rendererInfo: AudioRendererInfo, callback: 
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名                       | 类型                                                         | 必填 | 说明                      |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | rendererInfo                | [AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8)                     | 是   | 音频渲染器信息。             |
-| callback                    | AsyncCallback&lt;[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)&gt;  | 是   | 回调函数。当获取优先级最高的输出设备成功，err为undefined，data为获取到的优先级最高的输出设备信息；否则为错误对象。 |
+| callback                    | AsyncCallback&lt;[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)&gt;  | 是   | 回调函数。<br>ArkTS-Dyn：当获取优先级最高的输出设备成功，err为undefined，data为获取到的优先级最高的输出设备信息；否则为错误对象。<br>ArkTS-Sta：当获取优先级最高的输出设备成功，err为null，data为获取到的优先级最高的输出设备信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -631,10 +970,10 @@ let rendererInfo: audio.AudioRendererInfo = {
 
 audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo, (err: BusinessError, audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
   if (err) {
-    console.error(`Failed to get prefer output device for renderer info. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in getting prefer output device for renderer info, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+    console.error(`Failed to obtain the preferred output device for renderer info. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info(`Succeeded in obtaining the preferred output device for renderer info, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 });
 ```
 
@@ -644,6 +983,10 @@ getPreferOutputDeviceForRendererInfo(rendererInfo: AudioRendererInfo): Promise&l
 根据音频信息，返回优先级最高的输出设备。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -678,10 +1021,10 @@ let rendererInfo: audio.AudioRendererInfo = {
 };
 
 audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
-  console.info(`Succeeded in getting prefer output device for renderer info, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Succeeded in obtaining the preferred output device for renderer info, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get prefer output device for renderer info. Code: ${err.code}, message: ${err.message}`);
-})
+  console.error(`Failed to obtain the preferred output device for renderer info. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## getPreferredOutputDeviceForRendererInfoSync<sup>10+</sup>
@@ -690,6 +1033,10 @@ getPreferredOutputDeviceForRendererInfoSync(rendererInfo: AudioRendererInfo): Au
 根据音频信息，返回优先级最高的输出设备。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -724,10 +1071,10 @@ let rendererInfo: audio.AudioRendererInfo = {
 
 try {
   let audioDeviceDescriptors = audioRoutingManager.getPreferredOutputDeviceForRendererInfoSync(rendererInfo);
-  console.info(`Succeeded in getting prefer output device for renderer info, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Succeeded in obtaining the preferred output device for renderer info, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get prefer output device for renderer info. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the preferred output device for renderer info. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -737,7 +1084,13 @@ on(type: 'preferOutputDeviceChangeForRendererInfo', rendererInfo: AudioRendererI
 
 监听最高优先级输出设备变化事件（当最高优先级输出设备发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPreferOutputDeviceChangeForRendererInfo](#onpreferoutputdevicechangeforrendererinfo23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -765,7 +1118,49 @@ let rendererInfo: audio.AudioRendererInfo = {
 };
 
 audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', rendererInfo, (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
-  console.info(`Succeeded in using on function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Preferred output device changed, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+});
+```
+
+## onPreferOutputDeviceChangeForRendererInfo<sup>23+</sup>
+
+onPreferOutputDeviceChangeForRendererInfo(rendererInfo: AudioRendererInfo, callback: Callback&lt;AudioDeviceDescriptors&gt;): void
+
+监听最高优先级输出设备变化事件（当最高优先级输出设备发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('preferOutputDeviceChangeForRendererInfo')](#onpreferoutputdevicechangeforrendererinfo10)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                                      |
+| :------- | :--------------------------------------------------- | :--- |:--------------------------------------------------------|
+| rendererInfo  | [AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8)        | 是   | 音频渲染器信息。                                                |
+| callback | Callback<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)\> | 是   | 回调函数，返回优先级最高的输出设备信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+let rendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 0
+};
+
+audioRoutingManager.onPreferOutputDeviceChangeForRendererInfo(rendererInfo, (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+  console.info(`Preferred output device changed, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 });
 ```
 
@@ -773,16 +1168,22 @@ audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', rendererInfo, 
 
 off(type: 'preferOutputDeviceChangeForRendererInfo', callback?: Callback<AudioDeviceDescriptors\>): void
 
-取消监听最高优先级输出音频设备变化事件。使用callback异步回调。
+取消监听最高优先级输出音频设备变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPreferOutputDeviceChangeForRendererInfo](#offpreferoutputdevicechangeforrendererinfo23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                                                | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| type     | string | 是   | 事件回调类型，支持的事件为'preferOutputDeviceChangeForRendererInfo'，当取消监听最高优先级输出音频设备变化事件时，触发该事件。 |
-| callback | Callback<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | 否   | 回调函数，返回优先级最高的输出设备信息。 |
+| type     | string | 是   | 事件回调类型，支持的事件为'preferOutputDeviceChangeForRendererInfo'。 |
+| callback | Callback<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | 否   | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('preferOutputDeviceChangeForRendererInfo')](#onpreferoutputdevicechangeforrendererinfo10)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **错误码：**
 
@@ -799,7 +1200,7 @@ off(type: 'preferOutputDeviceChangeForRendererInfo', callback?: Callback<AudioDe
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 // 当订阅了多个该事件的监听时，可通过 audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo'); 取消该事件的所有监听。
 let preferOutputDeviceChangeForRendererInfoCallback = (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
-  console.info(`Succeeded in using on or off function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Preferred output device changed, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 };
 let rendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // 音频流使用类型：音乐。根据业务场景配置，参考StreamUsage。
@@ -811,6 +1212,52 @@ audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', rendererInfo, 
 audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo', preferOutputDeviceChangeForRendererInfoCallback);
 ```
 
+## offPreferOutputDeviceChangeForRendererInfo<sup>23+</sup>
+
+offPreferOutputDeviceChangeForRendererInfo(callback?: Callback&lt;AudioDeviceDescriptors&gt;): void
+
+取消监听最高优先级输出音频设备变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('preferOutputDeviceChangeForRendererInfo')](#offpreferoutputdevicechangeforrendererinfo10)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                | 必填 | 说明                                       |
+| -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
+| callback | Callback<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | 否   | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[onpreferOutputDeviceChangeForRendererInfo](#onpreferoutputdevicechangeforrendererinfo23)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+// 当订阅了多个该事件的监听时，可通过 audioRoutingManager.offPreferOutputDeviceChangeForRendererInfo(); 取消该事件的所有监听。
+let preferOutputDeviceChangeForRendererInfoCallback = (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+  console.info(`Preferred output device changed, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+};
+let rendererInfo: audio.AudioRendererInfo = {
+  usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+  rendererFlags: 0
+};
+
+audioRoutingManager.onPreferOutputDeviceChangeForRendererInfo(rendererInfo, preferOutputDeviceChangeForRendererInfoCallback);
+
+audioRoutingManager.offPreferOutputDeviceChangeForRendererInfo(preferOutputDeviceChangeForRendererInfoCallback);
+```
+
 ## getPreferredInputDeviceForCapturerInfo<sup>10+</sup>
 
 getPreferredInputDeviceForCapturerInfo(capturerInfo: AudioCapturerInfo, callback: AsyncCallback&lt;AudioDeviceDescriptors&gt;): void
@@ -819,12 +1266,16 @@ getPreferredInputDeviceForCapturerInfo(capturerInfo: AudioCapturerInfo, callback
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名                       | 类型                                                         | 必填 | 说明                      |
 | --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
 | capturerInfo                | [AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)                     | 是   | 音频采集器信息。             |
-| callback                    | AsyncCallback&lt;[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)&gt;  | 是   | 回调函数。当获取优先级最高的输入设备成功，err为undefined，data为获取到的优先级最高的输入设备信息；否则为错误对象。 |
+| callback                    | AsyncCallback&lt;[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)&gt;  | 是   | 回调函数。<br>ArkTS-Dyn：当获取优先级最高的输入设备成功，err为undefined，data为获取到的优先级最高的输入设备信息；否则为错误对象。<br>ArkTS-Sta：当获取优先级最高的输入设备成功，err为null，data为获取到的优先级最高的输入设备信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -847,10 +1298,10 @@ let capturerInfo: audio.AudioCapturerInfo = {
 
 audioRoutingManager.getPreferredInputDeviceForCapturerInfo(capturerInfo, (err: BusinessError, audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
   if (err) {
-    console.error(`Failed to get preferred input device for capturer info. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in getting preferred input device for capturer info, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+    console.error(`Failed to obtain the preferred input device for capturer info. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info(`Succeeded in obtaining the preferred input device for capturer info, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 });
 ```
 
@@ -861,6 +1312,10 @@ getPreferredInputDeviceForCapturerInfo(capturerInfo: AudioCapturerInfo): Promise
 根据音频信息，返回优先级最高的输入设备。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -895,9 +1350,9 @@ let capturerInfo: audio.AudioCapturerInfo = {
 };
 
 audioRoutingManager.getPreferredInputDeviceForCapturerInfo(capturerInfo).then((audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
-  console.info(`Succeeded in getting preferred input device for capturer info, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Succeeded in obtaining the preferred input device for capturer info, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get preferred input device for capturer info. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to obtain the preferred input device for capturer info. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -908,6 +1363,10 @@ getPreferredInputDeviceForCapturerInfoSync(capturerInfo: AudioCapturerInfo): Aud
 根据音频信息，返回优先级最高的输入设备。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -942,10 +1401,10 @@ let capturerInfo: audio.AudioCapturerInfo = {
 
 try {
   let audioDeviceDescriptors = audioRoutingManager.getPreferredInputDeviceForCapturerInfoSync(capturerInfo);
-  console.info(`Succeeded in getting preferred input device for capturer info, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Succeeded in obtaining the preferred input device for capturer info, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get preferred input device for capturer info. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the preferred input device for capturer info. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -955,7 +1414,13 @@ on(type: 'preferredInputDeviceChangeForCapturerInfo', capturerInfo: AudioCapture
 
 监听最高优先级输入设备变化事件（当最高优先级输入设备发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPreferredInputDeviceChangeForCapturerInfo](#onpreferredinputdevicechangeforcapturerinfo23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -983,7 +1448,49 @@ let capturerInfo: audio.AudioCapturerInfo = {
 };
 
 audioRoutingManager.on('preferredInputDeviceChangeForCapturerInfo', capturerInfo, (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
-  console.info(`Succeeded in using on function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Preferred input device changed, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+});
+```
+
+## onPreferredInputDeviceChangeForCapturerInfo<sup>23+</sup>
+
+onPreferredInputDeviceChangeForCapturerInfo(capturerInfo: AudioCapturerInfo, callback: Callback&lt;AudioDeviceDescriptors&gt;): void
+
+监听最高优先级输入设备变化事件（当最高优先级输入设备发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('preferredInputDeviceChangeForCapturerInfo')](#onpreferredinputdevicechangeforcapturerinfo10)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                       |
+| :------- | :--------------------------------------------------- | :--- | :----------------------------------------- |
+| capturerInfo  | [AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)        | 是   | 音频采集器信息。              |
+| callback | Callback<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)\> | 是   | 回调函数，返回优先级最高的输入设备信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+let capturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_MIC,
+  capturerFlags: 0
+};
+
+audioRoutingManager.onPreferredInputDeviceChangeForCapturerInfo(capturerInfo, (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+  console.info(`Preferred input device changed, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 });
 ```
 
@@ -991,16 +1498,22 @@ audioRoutingManager.on('preferredInputDeviceChangeForCapturerInfo', capturerInfo
 
 off(type: 'preferredInputDeviceChangeForCapturerInfo', callback?: Callback<AudioDeviceDescriptors\>): void
 
-取消监听最高优先级输入音频设备变化事件。使用callback异步回调。
+取消监听最高优先级输入音频设备变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPreferredInputDeviceChangeForCapturerInfo](#offpreferredinputdevicechangeforcapturerinfo23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
 | 参数名   | 类型                                                | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| type     | string | 是   | 事件回调类型，支持的事件为'preferredInputDeviceChangeForCapturerInfo'，当取消监听最高优先级输入音频设备变化事件时，触发该事件。 |
-| callback | Callback<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | 否   | 回调函数，返回优先级最高的输入设备信息。 |
+| type     | string | 是   | 事件回调类型，支持的事件为'preferredInputDeviceChangeForCapturerInfo'。 |
+| callback | Callback<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | 否   | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('preferredInputDeviceChangeForCapturerInfo')](#onpreferredinputdevicechangeforcapturerinfo10)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **错误码：**
 
@@ -1017,7 +1530,7 @@ off(type: 'preferredInputDeviceChangeForCapturerInfo', callback?: Callback<Audio
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 // 当订阅了多个该事件的监听时，可通过 audioRoutingManager.off('preferredInputDeviceChangeForCapturerInfo'); 取消该事件的所有监听。
 let preferredInputDeviceChangeForCapturerInfoCallback = (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
-  console.info(`Succeeded in using on or off function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Preferred input device changed, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 };
 let capturerInfo: audio.AudioCapturerInfo = {
   source: audio.SourceType.SOURCE_TYPE_MIC, // 音源类型：Mic音频源。根据业务场景配置，参考SourceType。
@@ -1027,4 +1540,92 @@ let capturerInfo: audio.AudioCapturerInfo = {
 audioRoutingManager.on('preferredInputDeviceChangeForCapturerInfo', capturerInfo, preferredInputDeviceChangeForCapturerInfoCallback);
 
 audioRoutingManager.off('preferredInputDeviceChangeForCapturerInfo', preferredInputDeviceChangeForCapturerInfoCallback);
+```
+
+## offPreferredInputDeviceChangeForCapturerInfo<sup>23+</sup>
+
+offPreferredInputDeviceChangeForCapturerInfo(callback?: Callback&lt;AudioDeviceDescriptors&gt;): void
+
+取消监听最高优先级输入音频设备变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('preferredInputDeviceChangeForCapturerInfo')](#offpreferredinputdevicechangeforcapturerinfo10)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                | 必填 | 说明                                       |
+| -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
+| callback | Callback<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | 否   | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[onpreferredInputDeviceChangeForCapturerInfo](#onpreferredinputdevicechangeforcapturerinfo23)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+// 当订阅了多个该事件的监听时，可通过 audioRoutingManager.offPreferredInputDeviceChangeForCapturerInfo(); 取消该事件的所有监听。
+let preferredInputDeviceChangeForCapturerInfoCallback = (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+  console.info(`Preferred input device changed, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+};
+let capturerInfo: audio.AudioCapturerInfo = {
+  source: audio.SourceType.SOURCE_TYPE_MIC,
+  capturerFlags: 0
+};
+
+audioRoutingManager.onPreferredInputDeviceChangeForCapturerInfo(capturerInfo, preferredInputDeviceChangeForCapturerInfoCallback);
+
+audioRoutingManager.offPreferredInputDeviceChangeForCapturerInfo(preferredInputDeviceChangeForCapturerInfoCallback);
+```
+
+## declareDeviceTypesCompatibility
+
+declareDeviceTypesCompatibility(deviceTypes: DeviceTypeArray): void
+
+声明应用需要兼容的设备类型。
+
+> **说明：**
+>
+> 对于API version 20及以上版本新增的设备类型，应用调用获取设备的相关接口时（例如[getAvailableDevices](arkts-apis-audio-AudioSessionManager.md#getavailabledevices21)），默认返回的设备类型为匿名类型。如需获取具体设备类型，需先调用该方法进行设备类型兼容声明。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名                       | 类型                                                         | 必填 | 说明                      |
+| --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
+| deviceTypes | [DeviceTypeArray](arkts-apis-audio-t.md#devicetypearray) | 是   | [DeviceType](arkts-apis-audio-e.md#devicetype)数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed, the param deviceTypes contains value that is invalid enum or is not device type introduced in API 20 onwards. |
+
+**示例：**
+
+```ts
+let deviceTypes = [
+  audio.DeviceType.NEARLINK
+];
+
+audioRoutingManager.declareDeviceTypesCompatibility(deviceTypes);
 ```

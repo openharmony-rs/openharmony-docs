@@ -11,11 +11,13 @@ ApplicationContext模块继承自[Context](js-apis-inner-application-context.md)
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[ApplicationContext](js-apis-inner-application-applicationContext.md)。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块接口仅可在Stage模型下使用。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[ApplicationContext](js-apis-inner-application-applicationContext.md)。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -33,15 +35,19 @@ preloadUIExtensionAbility(want: Want): Promise\<void\>
 
 预加载指定UIExtensionAbility实例。使用Promise异步回调。
 
-被预加载的UIExtensionAbility实例会执行到UIExtensionAbility的OnCreate生命周期，然后等待被当前应用正式加载。
+被预加载的UIExtensionAbility实例会执行到UIExtensionAbility的onCreate生命周期，然后等待被当前应用正式加载。
 
-支持多次预加载UIExtensionAbility实例，每次正式加载时，会使一个预加载的UIExtensionAbility实例从OnCreate继续完成UIExtensionAbility的生命周期。
+支持多次预加载UIExtensionAbility实例，每次正式加载时，会使一个预加载的UIExtensionAbility实例从onCreate继续完成UIExtensionAbility的生命周期。
 
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -61,16 +67,18 @@ preloadUIExtensionAbility(want: Want): Promise\<void\>
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201     | The application does not have permission to call the interface. |
-| 202     | The application is not system-app, can not use system-api. |
+| 201     | Permission verification failed. The application does not have the permission required to call the API. |
+| 202     | Permission verification failed. A non-system application calls a system API. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
-| 16200011 | The context does not exist. |
+| 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { UIAbility, Want } from '@kit.AbilityKit';
@@ -78,6 +86,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate() {
+    // 构造预加载UIExtensionAbility的want参数
     let want: Want = {
       bundleName: 'com.ohos.uiextensionprovider',
       abilityName: 'UIExtensionProvider',
@@ -88,21 +97,64 @@ export default class EntryAbility extends UIAbility {
       }
     };
     try {
+      // 获取ApplicationContext实例
       let applicationContext = this.context.getApplicationContext();
+      // 预加载UIExtensionAbility
       applicationContext.preloadUIExtensionAbility(want)
         .then(() => {
-          // 执行正常业务
+          // 预加载成功处理
           console.info('preloadUIExtensionAbility succeed');
         })
         .catch((err: BusinessError) => {
-          // 处理业务逻辑错误
+          // 预加载失败处理
           console.error('preloadUIExtensionAbility failed');
         });
     } catch (err) {
       // 处理入参错误异常
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      console.error(`preloadUIExtensionAbility failed. code: ${code}, msg: ${message}`);
+      console.error(`preloadUIExtensionAbility failed. code: ${code}, message: ${message}`);
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { UIAbility, Want } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    let want: Want = {
+      bundleName: 'com.ohos.uiextensionprovider',
+      abilityName: 'UIExtensionProvider',
+      moduleName: 'entry',
+      parameters: {
+        // 与UIExtensionAbility在module.json5中"type"字段配置一致
+        'ability.want.params.uiExtensionType': 'sys/commonUI'
+      } as Record<string, RecordData>
+    };
+    try {
+      let applicationContext = this.context.getApplicationContext();
+      applicationContext.preloadUIExtensionAbility(want)
+        .then(() => {
+          // 执行正常业务
+          console.info('preloadUIExtensionAbility succeed');
+        })
+        .catch((err) => {
+          // 处理业务逻辑错误
+          let code = (err as BusinessError).code;
+          let message = (err as BusinessError).message;
+          console.error(`preloadUIExtensionAbility failed 1. code: ${code}, message: ${message}`);
+        });
+    } catch (err) {
+      // 处理入参错误异常
+      let code = (err as BusinessError).code;
+      let message = (err as BusinessError).message;
+      console.error(`preloadUIExtensionAbility failed 2. code: ${code}, message: ${message}`);
     }
   }
 }

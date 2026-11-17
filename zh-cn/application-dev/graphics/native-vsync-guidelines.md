@@ -1,7 +1,15 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍如何获取系统VSync信号"
+keywords: [VSync, NativeVsync, 系统VSync信号, VSync线程, VSync回调函数]
+doctype: guide
+status: active
+---
+
 # NativeVSync开发指导 (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @BruceXu; @alexci-->
+<!--Owner: @opasser; @zlGiteelz-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
@@ -13,12 +21,13 @@ NativeVSync模块用于获取系统VSync信号，提供OH_NativeVSync实例的�
 
 | 接口名 | 描述 | 
 | -------- | -------- |
-| OH_NativeVSync_Create (const char \*name, unsigned int length) | 创建一个OH_NativeVSync实例，每次调用都会产生一个新的实例并创建一个vsync线程接收处理回调。本接口需要与OH_NativeVSync_Destroy接口配合使用，否则会存在内存泄露。 |
-| OH_NativeVSync_Destroy (OH_NativeVSync \*nativeVsync) | 销毁OH_NativeVSync实例。 | 
-| OH_NativeVSync_FrameCallback (long long timestamp, void \*data) | 回调函数的形式，timestamp表示时间戳，data为回调函数入参。回调的处理在vsync初始化时创建的线程内。 | 
-| OH_NativeVSync_RequestFrame (OH_NativeVSync \*nativeVsync, OH_NativeVSync_FrameCallback callback, void \*data) | 请求下一次VSync信号，当信号到来时，调用回调函数callback。 | 
+| OH_NativeVSync_Create(const char\* name, unsigned int length) | 创建一个OH_NativeVSync实例，每次调用都会产生一个新的实例并创建一个vsync线程接收处理回调。本接口需要与OH_NativeVSync_Destroy接口配合使用，否则会存在内存泄漏。 |
+| OH_NativeVSync_Destroy(OH_NativeVSync\* nativeVsync) | 销毁OH_NativeVSync实例。 | 
+| OH_NativeVSync_FrameCallback(long long timestamp, void \*data) | 回调函数的形式，timestamp表示时间戳，data为回调函数入参。回调的处理在vsync初始化时创建的线程内。 | 
+| OH_NativeVSync_RequestFrame(OH_NativeVSync\* nativeVsync, OH_NativeVSync_FrameCallback callback, void\* data) | 请求下一次VSync信号，当信号到来时，调用回调函数callback。 | 
+| OH_NativeVSync_GetPeriod(OH_NativeVSync\* nativeVsync, long long\* period) | 获取当前Vsync信号周期。 | 
 
-详细的接口说明请参考[native_vsync](../reference/apis-arkgraphics2d/capi-nativevsync.md)。
+详细的接口说明请参考[NativeVsync](../reference/apis-arkgraphics2d/capi-nativevsync.md)。
 
 ## 开发步骤
 

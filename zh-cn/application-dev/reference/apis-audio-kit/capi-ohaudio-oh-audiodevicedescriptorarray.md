@@ -12,7 +12,7 @@ typedef struct OH_AudioDeviceDescriptorArray {...} OH_AudioDeviceDescriptorArray
 
 ## 概述
 
-声明音频设备描述符数组。
+声明音频设备描述符数组的结构体。
 
 **起始版本：** 12
 
@@ -26,7 +26,7 @@ typedef struct OH_AudioDeviceDescriptorArray {...} OH_AudioDeviceDescriptorArray
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t size | 音频设备描述符数组大小。 |
+| uint32_t size | 音频设备描述符数组元素个数。 |
 | [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md)** descriptors | 音频设备描述符数组。 |
 
 

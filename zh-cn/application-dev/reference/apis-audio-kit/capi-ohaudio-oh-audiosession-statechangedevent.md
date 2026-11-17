@@ -1,7 +1,7 @@
 # OH_AudioSession_StateChangedEvent
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @funny_sunix-->
+<!--Owner: @LauJianghu-->
 <!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
@@ -25,6 +25,6 @@ typedef struct OH_AudioSession_StateChangedEvent {...} OH_AudioSession_StateChan
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) stateChangeHint | 音频会话停用的具体原因。 |
+| [OH_AudioSession_StateChangeHint](capi-native-audio-session-manager-h.md#oh_audiosession_statechangehint) stateChangeHint | 音频会话状态变更提示，用于表示状态变化的类型，如静音、取消静音、暂停、恢复等。 |
 
 

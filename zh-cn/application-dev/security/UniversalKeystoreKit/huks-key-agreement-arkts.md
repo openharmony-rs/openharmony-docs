@@ -41,7 +41,9 @@
 | 未指定TAG具体值 | HUKS_STORAGE_KEY_EXPORT_ALLOWED | 密钥返回给调用方管理 |
 | 未指定TAG具体值 | 未指定TAG具体值 | 密钥返回给调用方管理 |
 
-注：协商时指定的TAG值，不可与生成时指定的TAG值冲突。表格中仅列举有效的指定方式。
+> **注意：**
+>
+> 协商时指定的TAG值，不可与生成时指定的TAG值冲突。表格中仅列举有效的指定方式。
 
 **删除密钥**
 
@@ -264,7 +266,7 @@ async function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
 }
 
 async function testAgree() {
-  /* 1.确定密钥别名并集成要参数集。A设备：srcKeyAliasFirst；B设备：srcKeyAliasSecond */
+  /* 1.确定密钥别名，并集成密钥参数集。A设备：srcKeyAliasFirst；B设备：srcKeyAliasSecond */
   /* 2.设备A生成密钥 */
   await generateKeyItem(srcKeyAliasFirst, huksOptions);
   /* 3.设备B生成密钥 */
@@ -800,7 +802,7 @@ async function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
 }
 
 async function testAgree() {
-  /* 1.确定密钥别名并集成要参数集。A设备：srcKeyAliasFirst；B设备：srcKeyAliasSecond */
+  /* 1.确定密钥别名并集成密钥参数集。A设备：srcKeyAliasFirst；B设备：srcKeyAliasSecond */
   /* 2.设备A生成密钥 */
   await generateKeyItem(srcKeyAliasFirst, genHuksOptions);
   /* 3.设备B生成密钥 */

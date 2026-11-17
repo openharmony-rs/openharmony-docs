@@ -16,6 +16,8 @@ systemConfiguration模块提供系统环境变化监听回调能力，包括系�
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 24 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -30,9 +32,13 @@ UpdatedCallback是监听系统环境变化的回调函数，开发者可通过[A
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -54,32 +60,32 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onForeground() {
-    let CallBack: systemConfiguration.UpdatedCallback = {
-      onColorModeUpdated(colorMode: ConfigurationConstant.ColorMode) {
+    let callback: systemConfiguration.UpdatedCallback = {
+      onColorModeUpdated: (colorMode: ConfigurationConstant.ColorMode) => {
         console.info(`system configuration updated colormode:` + colorMode);
       },
-      onFontSizeScaleUpdated(fontSizeScale: number) {
+      onFontSizeScaleUpdated: (fontSizeScale: number) => {
         console.info(`system configuration updated fontSizeScale:` + fontSizeScale);
       },
-      onFontWeightScaleUpdated(fontWeightScale: number) {
+      onFontWeightScaleUpdated: (fontWeightScale: number) => {
         console.info(`system configuration updated fontWeightScale:` + fontWeightScale);
       },
-      onLanguageUpdated(language: string) {
+      onLanguageUpdated: (language: string) => {
         console.info(`system configuration updated language:` + language);
       },
-      onFontIdUpdated(fontId: string) {
+      onFontIdUpdated: (fontId: string) => {
         console.info(`system configuration updated fontId:` + fontId);
       },
-      onMCCUpdated(mcc: string) {
+      onMCCUpdated: (mcc: string) => {
         console.info(`system configuration updated mcc:` + mcc);
       },
-      onMNCUpdated(mnc: string) {
+      onMNCUpdated: (mnc: string) => {
         console.info(`system configuration updated mnc:` + mnc);
       },
-      onHasPointerDeviceUpdated(hasPointerDevice: boolean) {
+      onHasPointerDeviceUpdated: (hasPointerDevice: boolean) => {
         console.info(`system configuration updated hasPointerDevice:` + hasPointerDevice);
       },
-      onLocaleUpdated(locale: string) {
+      onLocaleUpdated: (locale: string) => {
         console.info(`system configuration updated locale:` + locale);
       }
     }
@@ -87,7 +93,7 @@ export default class EntryAbility extends UIAbility {
     let applicationContext = this.context.getApplicationContext();
     try {
       // 2.通过applicationContext注册监听
-      applicationContext.onSystemConfigurationUpdated(CallBack);
+      applicationContext.onSystemConfigurationUpdated(callback);
     } catch (paramError) {
       console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
     }
@@ -103,9 +109,13 @@ type OnColorModeUpdatedFn = (colorMode: ConfigurationConstant.ColorMode) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -121,9 +131,13 @@ type OnFontSizeScaleUpdatedFn = (fontSizeScale: number) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -140,9 +154,13 @@ type OnFontWeightScaleUpdatedFn = (fontWeightScale: number) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -158,9 +176,13 @@ type OnLanguageUpdatedFn = (language: string) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -176,9 +198,13 @@ type OnFontIdUpdatedFn = (fontId: string) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -194,9 +220,13 @@ type OnMCCUpdatedFn = (mcc: string) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -212,9 +242,13 @@ type OnMNCUpdatedFn = (mnc: string) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -230,15 +264,19 @@ type OnHasPointerDeviceUpdatedFn = (hasPointerDevice: boolean) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | hasPointerDevice | boolean | 是 | 指针设备是否已连接，如键鼠、触控板等。true表示设备已连接，false表示设备未连接。|
+  | hasPointerDevice | boolean | 是 | 指针设备是否已连接，如键盘、鼠标、触控板等。true表示设备已连接，false表示设备未连接。|
 
 ## OnLocaleUpdatedFn
 
@@ -248,9 +286,13 @@ type OnLocaleUpdatedFn = (locale: string) => void
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 

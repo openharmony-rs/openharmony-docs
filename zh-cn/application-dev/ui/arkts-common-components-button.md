@@ -23,6 +23,8 @@ Button通过调用接口来创建，接口调用有以下两种形式：
 
   其中，label用来设置按钮文字，type用于设置Button类型，stateEffect属性设置Button是否开启点击效果。
 
+  ArkTS-Dyn示例：
+
   <!-- @[create_button_by_label2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/CreateButton.ets) -->
   
   ``` TypeScript
@@ -33,7 +35,19 @@ Button通过调用接口来创建，接口调用有以下两种形式：
     .height(40)
   ```
 
-  ![zh-cn_image_0000001562820757](figures/zh-cn_image_0000001562820757.png)
+  ArkTS-Sta示例：
+
+  <!-- @[create_button_by_label2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/button/CreateButton.ets) -->
+  
+  ``` TypeScript
+  Button('Ok', { type: ButtonType.Normal, stateEffect: true } as ButtonOptions)
+    .borderRadius(8)
+    .backgroundColor(0x317aff)
+    .width(90)
+    .height(40)
+  ```
+
+  ![button-code](figures/button-code.png)
 
 
 - 通过[ButtonOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttonoptions对象说明)创建包含子组件的按钮。以ButtonOptions中的type和stateEffect为例。
@@ -43,6 +57,8 @@ Button通过调用接口来创建，接口调用有以下两种形式：
   ```
 
   只支持包含一个子组件，子组件可以是基础组件或者容器组件。
+
+  ArkTS-Dyn示例：
 
   <!-- @[create_button_by_button_options2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/CreateButton.ets) -->
   
@@ -56,7 +72,21 @@ Button通过调用接口来创建，接口调用有以下两种形式：
   }.borderRadius(8).backgroundColor(0x317aff).width(90).height(40)
   ```
 
-  ![zh-cn_image_0000001511421216](figures/zh-cn_image_0000001511421216.png)
+  ArkTS-Sta示例：
+
+  <!-- @[create_button_by_button_options2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/button/CreateButton.ets) -->
+  
+  ``` TypeScript
+  Button({ type: ButtonType.Normal, stateEffect: true } as ButtonOptions) {
+    Row() {
+      // 请将$r('app.media.loading')替换为实际资源文件
+      Image($r('app.media.loading')).width(20).height(40).margin({ left: 12 })
+      Text('loading').fontSize(12).fontColor(0xffffff).margin({ left: 5, right: 12 })
+    }.alignItems(VerticalAlign.Center)
+  }.borderRadius(8).backgroundColor(0x317aff).width(90).height(40)
+  ```
+
+  ![button-create](figures/button-create.png)
 
 
 ## 设置按钮类型
@@ -68,6 +98,8 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
 
   此类型按钮的圆角自动设置为高度的一半，不支持通过[borderRadius](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius)属性重新设置圆角。
 
+  ArkTS-Dyn示例：
+
   <!-- @[create_capsule_button2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
   
   ``` TypeScript
@@ -77,12 +109,25 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .height(40)
   ```
 
-  ![zh-cn_image_0000001511421208](figures/zh-cn_image_0000001511421208.png)
+  ArkTS-Sta示例：
+
+  <!-- @[create_capsule_button2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
+  
+  ``` TypeScript
+  Button('Disable', { type: ButtonType.Capsule, stateEffect: false } as ButtonOptions)
+    .backgroundColor(0x317aff)
+    .width(90)
+    .height(40)
+  ```
+
+  ![button-set-type](figures/button-set-type.png)
 
 
 - 圆形按钮。
 
   此类型按钮为圆形，不支持通过[borderRadius](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius)属性重新设置圆角。
+
+  ArkTS-Dyn示例：
 
   <!-- @[create_circle_button2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
   
@@ -93,11 +138,24 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .height(90)
   ```
 
-  ![zh-cn_image_0000001511740428](figures/zh-cn_image_0000001511740428.png)
+  ArkTS-Sta示例：
+
+  <!-- @[create_circle_button2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
+  
+  ``` TypeScript
+  Button('Circle', { type: ButtonType.Circle, stateEffect: false } as ButtonOptions)
+    .backgroundColor(0x317aff)
+    .width(90)
+    .height(90)
+  ```
+
+  ![button-type](figures/button-type.png)
 
 - 普通按钮。
 
   此类型的按钮默认圆角为0，支持通过[borderRadius](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius)属性重新设置圆角。
+
+  ArkTS-Dyn示例：
 
   <!-- @[create_normal_button2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
   
@@ -109,11 +167,25 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .height(40)
   ```
 
-  ![zh-cn_image_0000001563060641](figures/zh-cn_image_0000001563060641.png)
+  ArkTS-Sta示例：
+
+  <!-- @[create_normal_button2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
+  
+  ``` TypeScript
+  Button('Ok', { type: ButtonType.Normal, stateEffect: true } as ButtonOptions)
+    .borderRadius(8)
+    .backgroundColor(0x317aff)
+    .width(90)
+    .height(40)
+  ```
+
+  ![button-submit](figures/button-submit.png)
 
 - 圆角矩形按钮。
 
   当[controlSize](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#controlsize11)为NORMAL时，默认圆角大小为20vp，[controlSize](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#controlsize11)为SMALL时，圆角大小为14vp，支持通过[borderRadius](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius)属性重新设置圆角。
+
+  ArkTS-Dyn示例：
 
   <!-- @[create_rounded_rectangle_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
   
@@ -124,13 +196,26 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .height(40)
   ```
 
-  ![zh-cn_image_0000001563060641](figures/zh-cn_image_0000001511421208.png)
+  ArkTS-Sta示例：
+
+  <!-- @[create_rounded_rectangle_button](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/button/SetButtonType.ets) -->
+  
+  ``` TypeScript
+  Button('Disable', { type: ButtonType.ROUNDED_RECTANGLE, stateEffect: true } as ButtonOptions)
+    .backgroundColor(0x317aff)
+    .width(90)
+    .height(40)
+  ```
+
+  ![button-set-type](figures/button-set-type.png)
 
 ## 自定义样式
 
 - 设置边框弧度。
 
   使用通用属性来自定义按钮样式。例如通过[borderRadius](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderradius)属性设置按钮的边框弧度。
+
+  ArkTS-Dyn示例：
 
   <!-- @[custom_button_border_radius2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCustomStyle.ets) -->
   
@@ -140,12 +225,24 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .height(40)
   ```
 
-  ![zh-cn_image_0000001511900392](figures/zh-cn_image_0000001511900392.png)
+  ArkTS-Sta示例：
+
+  <!-- @[custom_button_border_radius2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/button/ButtonCustomStyle.ets) -->
+  
+  ``` TypeScript
+  Button('circle border', { type: ButtonType.Normal } as ButtonOptions)
+    .borderRadius(20)
+    .height(40)
+  ```
+
+  ![button-style](figures/button-style.png)
 
 
 - 设置文本样式。
 
   通过添加文本样式设置按钮文本的展示样式。
+
+  ArkTS-Dyn示例：
 
   <!-- @[custom_font_style2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCustomStyle.ets) -->
   
@@ -156,12 +253,25 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
     .fontWeight(800)
   ```
 
-  ![zh-cn_image_0000001511580828](figures/zh-cn_image_0000001511580828.png)
+  ArkTS-Sta示例：
+
+  <!-- @[custom_font_style2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/button/ButtonCustomStyle.ets) -->
+  
+  ``` TypeScript
+  Button('font style', { type: ButtonType.Normal } as ButtonOptions)
+    .fontSize(20)
+    .fontColor(Color.Pink)
+    .fontWeight(800)
+  ```
+
+  ![button-capsule](figures/button-capsule.png)
 
 
 - 设置背景颜色。
 
   添加[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)属性设置按钮的背景颜色。
+
+  ArkTS-Dyn示例：
 
   <!-- @[custom_background_color2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCustomStyle.ets) -->
   
@@ -169,32 +279,67 @@ Button有四种可选类型，分别为胶囊类型（Capsule）、圆形按钮�
   Button('background color').backgroundColor(0xF55A42)
   ```
 
-  ![zh-cn_image_0000001562940477](figures/zh-cn_image_0000001562940477.png)
+  ArkTS-Sta示例：
+
+  <!-- @[custom_background_color2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/button/ButtonCustomStyle.ets) -->
+  
+  ``` TypeScript
+  Button('background color').backgroundColor(0xF55A42)
+  ```
+
+  ![button-bgcolor](figures/button-bgcolor.png)
 
 
 - 创建功能型按钮。
 
   创建删除操作的按钮。
+  
+  ArkTS-Dyn示例：
+
   <!-- @[custom_create_function_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCustomStyle.ets) -->
   
   ``` TypeScript
   Button({ type: ButtonType.Circle, stateEffect: true }) {
+    // 请将$r('app.media.ic_public_delete_filled')替换为实际资源文件
+    Image($r('app.media.ic_public_delete_filled')).width(30).height(30)
+  }.width(55).height(55).margin({ 'left': 20 }).backgroundColor(0xF55A42)
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[custom_create_function_button](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/button/ButtonCustomStyle.ets) -->
+  
+  ``` TypeScript
+  Button({ type: ButtonType.Circle, stateEffect: true } as ButtonOptions) {
     // 请将$r('app.media.ic_public_delete_filled3')替换为实际资源文件
     Image($r('app.media.ic_public_delete_filled')).width(30).height(30)
   }.width(55).height(55).margin({ 'left': 20 }).backgroundColor(0xF55A42)
   ```
 
-  ![zh-cn_image_0000001511740436](figures/zh-cn_image_0000001511740436.png)
+  ![button-round](figures/button-round.png)
 
 
 ## 添加事件
 
 Button组件通常用于触发某些操作，可以绑定[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)事件来响应点击操作后的自定义行为。
 
+ArkTS-Dyn示例：
+
 <!-- @[button_case2_add_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseLogin.ets) -->
 
 ``` TypeScript
 Button('Ok', { type: ButtonType.Normal, stateEffect: true })
+  .onClick(()=>{
+    hilog.info(DOMAIN, 'testTag', 'Button onClick');
+  }).margin(10)
+```
+
+ArkTS-Sta示例：
+
+<!-- @[button_case2_add_event](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseLogin.ets) -->
+
+``` TypeScript
+Button('Ok', { type: ButtonType.Normal, stateEffect: true } as ButtonOptions)
   .onClick(()=>{
     hilog.info(DOMAIN, 'testTag', 'Button onClick');
   }).margin(10)
@@ -207,9 +352,13 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
 
   可以用按钮启动任何用户界面元素，按钮会根据用户的操作触发相应的事件。例如，在[List](arkts-layout-development-create-list.md)容器里通过点击按钮进行页面跳转。
 
-  <!-- @[button_case_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseTouch.ets) -->
+  ArkTS-Dyn示例：
+
+  <!-- @[button_case_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseTouch.ets) --> 
   
   ``` TypeScript
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
   const DOMAIN = 0x0000;
   // xxx.ets
   @Entry
@@ -321,6 +470,153 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
       }.title('pageThree')
       .onBackPressed(() => {
         const popDestinationInfo = this.pathStack.pop(); // 弹出路由栈栈顶元素
+        // 请将$r('app.string.return_value')替换为实际资源文件，在本示例中该资源文件的value值为"返回值"
+        hilog.info(DOMAIN, 'testTag', 'pop' + $r('app.string.return_value') + JSON.stringify(popDestinationInfo));
+        return true;
+      })
+      .onReady((context: NavDestinationContext) => {
+        this.pathStack = context.pathStack;
+      })
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[button_case_1](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseTouch.ets) -->
+  
+  ``` TypeScript
+  import {
+    Entry,
+    Component,
+    Builder,
+    Button,
+    List,
+    ListOptions,
+    ListItem,
+    Navigation,
+    NavPathStack,
+    NavPathInfo,
+    NavDestination,
+    NavDestinationContext,
+    Column,
+    Text,
+    Axis,
+    NavigationMode,
+    $r
+  } from '@kit.ArkUI'
+  
+  const DOMAIN: int = 0x0000;
+  // xxx.ets
+  @Entry
+  @Component
+  export struct ButtonCaseTouch {
+    pathStack: NavPathStack = new NavPathStack();
+  
+    @Builder
+    PageMap(name: string): void {
+      if (name === 'first_page') {
+        pageOneTmp();
+      } else if (name === 'second_page') {
+        pageTwoTmp();
+      } else if (name === 'third_page') {
+        pageThreeTmp();
+      }
+    }
+  
+    build(): void {
+      NavDestination() {
+        Navigation(this.pathStack) {
+          List({ space: 4 } as ListOptions) {
+            ListItem() {
+              Button('First').onClick(() => {
+                this.pathStack.pushPath(new NavPathInfo('first_page', undefined));
+              })
+                .width('100%')
+            }
+  
+            ListItem() {
+              Button('Second').onClick(() => {
+                this.pathStack.pushPath(new NavPathInfo('second_page', undefined));
+              })
+                .width('100%')
+            }
+  
+            ListItem() {
+              Button('Third').onClick(() => {
+                this.pathStack.pushPath(new NavPathInfo('third_page', undefined));
+              })
+                .width('100%')
+            }
+          }
+          .listDirection(Axis.Vertical)
+          .backgroundColor(0xDCDCDC).padding(20)
+        }
+        .mode(NavigationMode.Stack)
+        .navDestination(this.PageMap)
+      }
+    }
+  }
+  
+  // pageOne
+  @Component
+  export struct pageOneTmp {
+    pathStack: NavPathStack = new NavPathStack();
+  
+    build(): void {
+      NavDestination() {
+        Column() {
+          Text('first_page')
+        }.width('100%').height('100%')
+      }.title('pageOne')
+      .onBackPressed(() => {
+        const popDestinationInfo = this.pathStack.pop(); // 弹出路由栈栈顶元素
+        // 请将$r('app.string.return_value')替换为实际资源文件，在本示例中该资源文件的value值为"返回值"
+        hilog.info(DOMAIN, 'testTag', 'pop' + $r('app.string.return_value') + JSON.stringify(popDestinationInfo));
+        return true;
+      })
+      .onReady((context: NavDestinationContext) => {
+        this.pathStack = context.pathStack;
+      })
+    }
+  }
+  
+  // pageTwo
+  @Component
+  export struct pageTwoTmp {
+    pathStack: NavPathStack = new NavPathStack();
+  
+    build(): void {
+      NavDestination() {
+        Column() {
+          Text('second_page')
+        }.width('100%').height('100%')
+      }.title('pageTwo')
+      .onBackPressed(() => {
+        const popDestinationInfo = this.pathStack.pop(); // 弹出路由栈栈顶元素
+        // 请将$r('app.string.return_value')替换为实际资源文件，在本示例中该资源文件的value值为"返回值"
+        hilog.info(DOMAIN, 'testTag', 'pop' + $r('app.string.return_value') + JSON.stringify(popDestinationInfo));
+        return true;
+      })
+      .onReady((context: NavDestinationContext) => {
+        this.pathStack = context.pathStack;
+      })
+    }
+  }
+  
+  // pageThree
+  @Component
+  export struct pageThreeTmp {
+    pathStack: NavPathStack = new NavPathStack();
+  
+    build(): void {
+      NavDestination() {
+        Column() {
+          Text('third_page')
+        }.width('100%').height('100%')
+      }.title('pageThree')
+      .onBackPressed(() => {
+        const popDestinationInfo = this.pathStack.pop(); // 弹出路由栈栈顶元素
         /// 请将$r('app.string.return_value')替换为实际资源文件，在本示例中该资源文件的value值为"返回值"
         hilog.info(DOMAIN, 'testTag', 'pop' + $r('app.string.return_value') + JSON.stringify(popDestinationInfo));
         return true;
@@ -332,12 +628,15 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
   }
   ```
 
-  ![zh-cn_image_0000001562700393](figures/zh-cn_image_0000001562940814.gif)
+  ![button-full-example](figures/button-full-example.gif)
 
 
 - 用于提交表单。
 
   在用户登录/注册页面，使用按钮进行登录或注册操作。
+
+  ArkTS-Dyn示例：
+
   <!-- @[button_case_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseLogin.ets) -->
   
   ``` TypeScript
@@ -362,11 +661,53 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
   }
   ```
 
-  ![zh-cn_image_0000001562940473](figures/zh-cn_image_0000001562940473.png)
+  ArkTS-Sta示例：
+
+  <!-- @[button_case_2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/button/ButtonCaseLogin.ets) -->
+  
+  ``` TypeScript
+  import {
+    Entry,
+    Component,
+    Button,
+    ButtonType,
+    ButtonOptions,
+    Column,
+    ColumnOptions,
+    NavDestination,
+    TextInput,
+    InputType,
+    $r
+  } from '@kit.ArkUI'
+  
+  // xxx.ets
+  const DOMAIN: int = 0x0000;
+  @Entry
+  @Component
+  export struct ButtonCaseLogin {
+    build(): void {
+      NavDestination() {
+        Column() {
+          TextInput({ placeholder: 'input your username' }).margin({ top: 20 })
+          TextInput({ placeholder: 'input your password' }).type(InputType.Password).margin({ top: 20 })
+          Button('Register').width(300).margin({ top: 20 })
+            .onClick(() => {
+              // 需要执行的操作
+            })
+          // ...
+        }.padding(20)
+      }
+    }
+  }
+  ```
+
+  ![button-example](figures/button-example.png)
 
 - 悬浮按钮。
 
   在可以滑动的界面，滑动时按钮始终保持悬浮状态。
+
+  ArkTS-Dyn示例：
 
   <!-- @[hover_button_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/HoverButtonExample.ets) -->
   
@@ -396,8 +737,71 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
           Button() {
             // 请将$r('app.media.ic_public_add')替换为实际资源文件
             Image($r('app.media.ic_public_add'))
-             .width(50)
-             .height(50)
+              .width(50)
+              .height(50)
+          }
+          .width(60)
+          .height(60)
+          .position({ x: '80%', y: 600 })
+          .shadow({ radius: 10 })
+          .onClick(() => {
+            // 需要执行的操作
+          })
+        }
+        .width('100%')
+        .height('100%')
+        .backgroundColor(0xDCDCDC)
+        .padding({ top: 5 })
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+
+  <!-- @[hover_button_example](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ChooseComponent/entry/src/main/ets/pages/button/HoverButtonExample.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import {
+    Entry,
+    Component,
+    Button,
+    List,
+    ListOptions,
+    ForEach,
+    Stack,
+    Text,
+    Image,
+    NavDestination,
+    TextAlign,
+    $r
+  } from '@kit.ArkUI'
+  
+  @Entry
+  @Component
+  export struct HoverButtonExample {
+    private arr: Array<number> = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    build(): void {
+      NavDestination() {
+        Stack() {
+          List({ space: 20, initialIndex: 0 } as ListOptions) {
+            ForEach(this.arr, (item: number) => {
+              Text('' + item)
+                .width('100%')
+                .height(100)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .borderRadius(10)
+                .backgroundColor(0xFFFFFF)
+            }, (item: number) => item.toString())
+          }.width('90%')
+  
+          Button() {
+            // 请将$r('app.media.ic_public_add')替换为实际资源文件
+            Image($r('app.media.ic_public_add'))
+              .width(50)
+              .height(50)
           }
           .width(60)
           .height(60)

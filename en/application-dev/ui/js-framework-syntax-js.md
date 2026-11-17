@@ -223,7 +223,7 @@ The ECMAScript 6.0 syntax is supported.
    };
    ```
 
-![en-us_image_0000001118642007](figures/en-us_image_0000001118642007.gif)
+![en-us_image_0000001118642007](figures/Obtaining-DOM-Element.gif)
 
 ## Obtaining the ViewModel
 
@@ -249,7 +249,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001118642008](figures/en-us_image_0000001118642008.png)
+![en-us_image_0000001118642008](figures/Obtaining-ViewModel.png)
 
 Customize the parent component.
 
@@ -307,4 +307,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001118642009](figures/en-us_image_0000001118642009.gif)
+![en-us_image_0000001118642009](figures/Obtaining-ViewModel.gif)

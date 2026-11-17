@@ -10,9 +10,11 @@ appManager模块提供App管理的能力，包括查询当前是否处于稳定�
 
 > **说明：**
 >
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.appManager (appManager)](js-apis-app-ability-appManager.md)。
+> - 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.app.ability.appManager (应用管理)](js-apis-app-ability-appManager.md)。
 
 ## 导入模块
 
@@ -30,6 +32,10 @@ import { appManager } from '@kit.AbilityKit';
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 值  | 说明                         |
 | ----------- | --- | --------------------------- |
 | PRESS_DOWN  | 0 | 按下应用图标时进行应用进程预加载。 |
@@ -40,7 +46,11 @@ import { appManager } from '@kit.AbilityKit';
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 值  | 说明 |
 | -------- | ---------- | -------- |
@@ -54,7 +64,11 @@ import { appManager } from '@kit.AbilityKit';
 
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 值  | 说明 |
 | -------- | ---------- | -------- |
@@ -71,15 +85,17 @@ import { appManager } from '@kit.AbilityKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------------------------- | ------ | ---- | ---- | --------- |
-| bundleName   | string | 否 | 否  | Bundle名称。 |
-| type       | [KeepAliveAppType](#keepaliveapptype14) | 否 | 否 | 表示被保活应用的应用类型。   |
-| setter       | [KeepAliveSetter](#keepalivesetter14) | 否 | 否 | 表示应用保活设置者类型。   |
-| setterUserId<sup>20+</sup>   | number | 否 | 是  | 应用保活设置者的用户ID。 |
-| allowUserToCancel<sup>20+</sup>   | boolean | 否 | 是  | 表示是否允许用户取消保活。true表示允许，false表示不允许。 |
+| bundleName   | string | 否 | 否  | Bundle名称。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| type       | [KeepAliveAppType](#keepaliveapptype14) | 否 | 否 | 表示被保活应用的应用类型。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| setter       | [KeepAliveSetter](#keepalivesetter14) | 否 | 否 | 表示应用保活设置方类型。<br>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
+| setterUserId<sup>20+</sup>   | number | 否 | 是  | 应用保活设置方的用户ID。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br>**ArkTS-Dyn起始版本：** 20 |
+| allowUserToCancel<sup>20+</sup>   | boolean | 否 | 是  | 表示是否允许用户取消保活。true表示允许，false表示不允许。<br>**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 20 |
 
 ## appManager.isSharedBundleRunning<sup>10+</sup>
 
-isSharedBundleRunning(bundleName: string, versionCode: number): Promise\<boolean>
+ArkTS-Dyn: isSharedBundleRunning(bundleName: string, versionCode: number): Promise\<boolean>
+
+ArkTS-Sta: isSharedBundleRunning(bundleName: string, versionCode: long): Promise\<boolean>
 
 检查共享库是否正在使用。使用Promise异步回调。
 
@@ -89,18 +105,22 @@ isSharedBundleRunning(bundleName: string, versionCode: number): Promise\<boolean
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | bundleName    | string   | 是    | 表示要查询的共享库包名。 |
-| versionCode   | number   | 是    | 表示要查询的共享库版本号。      |
+| versionCode   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是    | 表示要查询的共享库版本号。      |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<boolean> | Promise对象。返回true表示共享库正在使用，返回false表示共享库不在使用。 |
+| Promise\<boolean> | Promise对象。返回true表示共享库正在使用，返回false表示共享库不在使用中。 |
 
 **错误码**：
 
@@ -108,8 +128,8 @@ isSharedBundleRunning(bundleName: string, versionCode: number): Promise\<boolean
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -119,19 +139,22 @@ isSharedBundleRunning(bundleName: string, versionCode: number): Promise\<boolean
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const bundleName = "this is a bundleName";
+const bundleName = 'this is a bundleName';
 const versionCode = 1;
 
 appManager.isSharedBundleRunning(bundleName, versionCode).then((data) => {
-  console.info(`The shared bundle running is: ${JSON.stringify(data)}`);
-}).catch((error: BusinessError) => {
-  console.error(`error: ${JSON.stringify(error)}`);
-});
+  console.info(`The shared bundle running is: ${data}`);
+}).catch((e: Error) => {
+  let error = e as BusinessError;
+  console.error(`error: ${error.message}`);
+})
 ```
 
 ## appManager.isSharedBundleRunning<sup>10+</sup>
 
-isSharedBundleRunning(bundleName: string, versionCode: number, callback: AsyncCallback\<boolean>): void
+ArkTS-Dyn: isSharedBundleRunning(bundleName: string, versionCode: number, callback: AsyncCallback\<boolean>): void
+
+ArkTS-Sta: isSharedBundleRunning(bundleName: string, versionCode: long, callback: AsyncCallback\<boolean>): void
 
 检查共享库是否正在使用。使用callback异步回调。
 
@@ -141,13 +164,17 @@ isSharedBundleRunning(bundleName: string, versionCode: number, callback: AsyncCa
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
 | bundleName    | string   | 是    | 表示要查询的共享库包名。 |
-| versionCode   | number   | 是    | 表示要查询的共享库版本号。      |
-| callback    | AsyncCallback\<boolean>> | 是    | 回调函数。返回true表示共享库正在使用，返回false表示共享库不在使用。 |
+| versionCode   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是    | 表示要查询的共享库版本号。      |
+| callback    | AsyncCallback\<boolean> | 是    | 回调函数。返回true表示共享库正在使用，返回false表示共享库不在使用中。 |
 
 **错误码**：
 
@@ -155,8 +182,8 @@ isSharedBundleRunning(bundleName: string, versionCode: number, callback: AsyncCa
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -165,7 +192,7 @@ isSharedBundleRunning(bundleName: string, versionCode: number, callback: AsyncCa
 ```ts
 import { appManager } from '@kit.AbilityKit';
 
-const bundleName = "this is a bundleName";
+const bundleName = 'this is a bundleName';
 const versionCode = 1;
 
 appManager.isSharedBundleRunning(bundleName, versionCode, (err, data) => {
@@ -174,14 +201,14 @@ appManager.isSharedBundleRunning(bundleName, versionCode, (err, data) => {
   } else {
     console.info(`The shared bundle running is: ${JSON.stringify(data)}`);
   }
-});
+})
 ```
 
 ## appManager.on('appForegroundState')<sup>11+</sup>
 
 on(type: 'appForegroundState', observer: AppForegroundStateObserver): void
 
-注册应用启动和退出的监听器，可用于系统应用监听所有应用的启动和退出。
+注册应用启动、前后台和退出的监听器，可用于系统应用监听所有应用的启动、前后台和退出。
 
 **系统接口**：此接口为系统接口。
 
@@ -189,12 +216,16 @@ on(type: 'appForegroundState', observer: AppForegroundStateObserver): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 调用接口类型，固定填'appForegroundState'字符串。 |
-| observer | [AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | 是 | 应用状态监听器，用于监听应用的启动和退出。 |
+| observer | [AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | 是 | 应用状态监听器，用于监听应用的启动、前后台和退出。 |
 
 **错误码**：
 
@@ -202,8 +233,8 @@ on(type: 'appForegroundState', observer: AppForegroundStateObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -228,6 +259,63 @@ try {
 }
 ```
 
+## appManager.onAppForegroundStateChange<sup>23+</sup>
+
+onAppForegroundStateChange(observer: AppForegroundStateObserver): void
+
+注册应用启动和退出的观测器，可用于系统应用观测所有应用的启动和退出。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                       |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
+| observer | [AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | 是   | 应用状态观测器，用于观测应用的启动和退出。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 16000050 | Internal error.         |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class AppForegroundStateObserverCustom implements appManager.AppForegroundStateObserver {
+  onAppStateChanged(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStateChanged: ${JSON.stringify(appStateData)}`);
+  }
+}
+
+try {
+  let observer = new AppForegroundStateObserverCustom();
+  appManager.onAppForegroundStateChange(observer);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
+
 ## appManager.on('abilityFirstFrameState')<sup>12+</sup>
 
 on(type: 'abilityFirstFrameState', observer: AbilityFirstFrameStateObserver, bundleName?: string): void
@@ -240,12 +328,16 @@ on(type: 'abilityFirstFrameState', observer: AbilityFirstFrameStateObserver, bun
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名     | 类型                                                         | 必填 | 说明                                                         |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type       | string                                                       | 是   | 调用接口类型，固定填'abilityFirstFrameState'字符串。         |
-| observer   | [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md) | 是   | 表示待注册的Ability首帧绘制完成事件观察者对象。              |
+| observer | [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md) | 是 | 表示待注册的Ability首帧绘制完成事件观察者对象。 |
 | bundleName | string                                                       | 否   | 表示待监听的Ability的应用bundleName，不填表示注册监听所有应用ability首帧绘制完成事件。 |
 
 **错误码**：
@@ -254,8 +346,8 @@ on(type: 'abilityFirstFrameState', observer: AbilityFirstFrameStateObserver, bun
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -267,7 +359,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityFirstFrameStateObserverForAll: appManager.AbilityFirstFrameStateObserver = {
   onAbilityFirstFrameDrawn(abilityStateData: appManager.AbilityFirstFrameStateData) {
-    console.info("abilityFirstFrame: ", JSON.stringify(abilityStateData));
+    console.info(`abilityFirstFrame: ${JSON.stringify(abilityStateData)}`);
   }
 };
 
@@ -280,11 +372,11 @@ try {
 }
 ```
 
-## appManager.off('appForegroundState')<sup>11+</sup>
+## appManager.onAbilityFirstFrameStateChange<sup>23+</sup>
 
-off(type: 'appForegroundState', observer?: AppForegroundStateObserver): void
+onAbilityFirstFrameStateChange(observer: AbilityFirstFrameStateObserver, bundleName?: string): void
 
-注销应用启动和退出的监听器。
+注册监听Ability首帧绘制完成事件观察者对象，可用于系统应用监听Ability首帧绘制事件。
 
 **系统接口**：此接口为系统接口。
 
@@ -292,12 +384,74 @@ off(type: 'appForegroundState', observer?: AppForegroundStateObserver): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型                                                         | 必填 | 说明                                                         |
+| ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| observer | [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md) | 是 | 表示待注册的Ability首帧绘制完成事件观察者对象。 |
+| bundleName | string                                                       | 否   | 表示待监听的Ability的应用bundleName，不填表示注册监听所有应用ability首帧绘制完成事件。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 16000050 | Internal error.         |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class AbilityFirstFrameStateObserverCustom implements appManager.AbilityFirstFrameStateObserver {
+  onAbilityFirstFrameDrawn(abilityStateData: appManager.AbilityFirstFrameStateData) {
+    console.info(`abilityFirstFrame:  ${JSON.stringify(abilityStateData)}`);
+  }
+}
+
+try {
+  let observer = new AbilityFirstFrameStateObserverCustom();
+  appManager.onAbilityFirstFrameStateChange(observer);
+} catch (e) {
+  let code = (e as BusinessError).code;
+  let message = (e as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
+
+## appManager.off('appForegroundState')<sup>11+</sup>
+
+off(type: 'appForegroundState', observer?: AppForegroundStateObserver): void
+
+注销应用启动、前后台和退出的监听器。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 调用接口类型，固定填'appForegroundState'字符串。|
-| observer | [AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | 否 | 取消注册的应用启动和退出监听器。|
+| observer | [AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | 否 | 取消注册的应用启动、前后台和退出监听器，不填表示取消所有监听对象。|
 
 **错误码**：
 
@@ -305,8 +459,8 @@ off(type: 'appForegroundState', observer?: AppForegroundStateObserver): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -316,7 +470,7 @@ off(type: 'appForegroundState', observer?: AppForegroundStateObserver): void
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let observer_: appManager.AppForegroundStateObserver | undefined;
+let savedObserver: appManager.AppForegroundStateObserver | undefined;
 // 1.注册应用启动和退出的监听器
 let observer: appManager.AppForegroundStateObserver = {
   onAppStateChanged(appStateData: appManager.AppStateData) {
@@ -327,6 +481,75 @@ let observer: appManager.AppForegroundStateObserver = {
 try {
   appManager.on('appForegroundState', observer);
   // 保存observer对象，用于注销
+  savedObserver = observer;
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+
+// 2.注销监听器
+try {
+  appManager.off('appForegroundState',  savedObserver);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
+
+## appManager.offAppForegroundStateChange<sup>23+</sup>
+
+offAppForegroundStateChange(observer?: AppForegroundStateObserver): void
+
+取消注册应用启动和退出的观测器。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                             |
+| -------- | ------------------------------------------------------------ | ---- | -------------------------------- |
+| observer | [AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | 否   | 取消注册的应用启动和退出观测器。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 16000050 | Internal error.         |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class AppForegroundStateObserverCustom implements appManager.AppForegroundStateObserver {
+  onAppStateChanged(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStateChanged: ${JSON.stringify(appStateData)}`);
+  }
+}
+
+let observer_: appManager.AppForegroundStateObserver | undefined;
+try {
+  let observer = new AppForegroundStateObserverCustom();
+  appManager.onAppForegroundStateChange(observer);
+  // 保存observer对象，用于注销
   observer_ = observer;
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -336,7 +559,7 @@ try {
 
 // 2.注销监听器
 try {
-  appManager.off('appForegroundState',  observer_);
+  appManager.offAppForegroundStateChange(observer_);
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
   let message = (paramError as BusinessError).message;
@@ -356,12 +579,16 @@ off(type: 'abilityFirstFrameState', observer?: AbilityFirstFrameStateObserver): 
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 调用接口类型，固定填'abilityFirstFrameState'字符串。         |
-| observer | [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md) | 否   | 表示待取消的Ability首帧绘制完成事件观察者对象，不填表示取消所有监听对象。 |
+| observer | [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md) | 否 | 表示待取消的Ability首帧绘制完成事件观察者对象，不填表示取消所有监听对象。 |
 
 **错误码**：
 
@@ -369,8 +596,8 @@ off(type: 'abilityFirstFrameState', observer?: AbilityFirstFrameStateObserver): 
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -382,7 +609,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let abilityFirstFrameStateObserverForAll: appManager.AbilityFirstFrameStateObserver = {
   onAbilityFirstFrameDrawn(abilityStateData: appManager.AbilityFirstFrameStateData) {
-    console.info("abilityFirstFrame: ", JSON.stringify(abilityStateData));
+    console.info(`abilityFirstFrame: , ${JSON.stringify(abilityStateData)}`);
   }
 };
 
@@ -435,9 +662,166 @@ on(type: 'applicationState', observer: ApplicationStateObserver, filter: AppStat
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module.|
+
+**示例：**
+
+```ts
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let applicationStateObserver: appManager.ApplicationStateObserver = {
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
+  },
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData) {
+    console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+  },
+  onProcessCreated(processData: appManager.ProcessData) {
+    console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
+  },
+  onProcessDied(processData: appManager.ProcessData) {
+    console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
+  },
+  onProcessStateChanged(processData: appManager.ProcessData) {
+    console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
+  },
+  onAppStarted(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
+  },
+  onAppStopped(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
+  }
+};
+
+/* 本例中使用该过滤器监听应用的以下回调函数：
+ * 1、通过Ability状态变化的回调函数onAbilityStateChanged，来监听处于创建中状态的Ability。
+ * 2、通过进程创建时执行的回调函数onProcessCreated，来监听处于创建完成状态的进程。
+ */
+let appStateFilter: appManager.AppStateFilter = {
+    bundleTypes: appManager.FilterBundleType.APP,
+    appStateTypes: appManager.FilterAppStateType.CREATE | appManager.FilterAppStateType.FOREGROUND,
+    processStateTypes: appManager.FilterProcessStateType.CREATE,
+    abilityStateTypes: appManager.FilterAbilityStateType.CREATE,
+    callbacks: appManager.FilterCallback.ON_ABILITY_STATE_CHANGED | appManager.FilterCallback.ON_PROCESS_CREATED
+};
+
+try {
+  const observerId = appManager.on('applicationState', applicationStateObserver, appStateFilter);
+  console.info(`[appManager] observerCode: ${observerId}`);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
+
+## appManager.offAbilityFirstFrameStateChange<sup>23+</sup>
+
+offAbilityFirstFrameStateChange(observer?: AbilityFirstFrameStateObserver): void
+
+取消注册监听Ability首帧绘制完成事件观察者对象。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| observer | [AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateObserver-sys.md) | 否 | 表示待取消的Ability首帧绘制完成事件观察者对象，不填表示取消所有监听对象。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                |
+| -------- | ----------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 16000050 | Internal error.         |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class AbilityFirstFrameStateObserverCustom implements appManager.AbilityFirstFrameStateObserver {
+  onAbilityFirstFrameDrawn(abilityStateData: appManager.AbilityFirstFrameStateData) {
+    console.info(`abilityFirstFrame: , ${JSON.stringify(abilityStateData)}`);
+  }
+}
+
+let observer = new AbilityFirstFrameStateObserverCustom();
+try {
+  appManager.onAbilityFirstFrameStateChange(observer);
+} catch (e) {
+  let code = (e as BusinessError).code;
+  let message = (e as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+
+try {
+  appManager.offAbilityFirstFrameStateChange(observer);
+} catch (e) {
+  let code = (e as BusinessError).code;
+  let message = (e as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
+
+## appManager.on('applicationState')<sup>21+</sup>
+
+on(type: 'applicationState', observer: ApplicationStateObserver, filter: AppStateFilter): number
+
+注册应用程序的状态监听器，并通过设置过滤条件来筛选所需监听的应用生命周期变化事件。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 21
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                           |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
+| type     | string                                                       | 是   | 调用接口类型，固定填'applicationState'字符串。 |
+| observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | 是   | 应用状态监听器，用于监听应用的生命周期变化。   |
+| filter   | [AppStateFilter](#appstatefilter21)                          | 是   | 应用生命周期变化事件的过滤器。                 |
+
+**返回值：**
+
+| 类型 | 说明                                                         |
+| ---- | ------------------------------------------------------------ |
+| number  | 已注册监听器ID，可用于[off](js-apis-app-ability-appManager.md#appmanageroffapplicationstate14)接口注销监听器。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 16000050 | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
 
 **示例：**
 
@@ -503,6 +887,10 @@ getForegroundApplications(callback: AsyncCallback\<Array\<AppStateData>>): void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -515,8 +903,8 @@ getForegroundApplications(callback: AsyncCallback\<Array\<AppStateData>>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -526,7 +914,8 @@ getForegroundApplications(callback: AsyncCallback\<Array\<AppStateData>>): void
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function getForegroundApplicationsCallback(err: BusinessError, data: Array<appManager.AppStateData>) {
+function getForegroundApplicationsCallback(err: BusinessError | null,
+  data: Array<appManager.AppStateData> | undefined) {
   if (err) {
     console.error(`getForegroundApplicationsCallback fail, err: ${JSON.stringify(err)}`);
   } else {
@@ -555,6 +944,10 @@ getForegroundApplications(): Promise\<Array\<AppStateData>>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型 | 说明 |
@@ -567,8 +960,8 @@ getForegroundApplications(): Promise\<Array\<AppStateData>>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -586,26 +979,35 @@ appManager.getForegroundApplications().then((data) => {
 
 ## appManager.killProcessWithAccount
 
-killProcessWithAccount(bundleName: string, accountId: number): Promise\<void\>
+ArkTS-Dyn: killProcessWithAccount(bundleName: string, accountId: number): Promise\<void\>
 
-终止account进程。使用Promise异步回调。
+ArkTS-Sta: killProcessWithAccount(bundleName: string, accountId: int): Promise\<void\>
+
+终止指定系统账号下的应用进程。使用Promise异步回调。
 
 > **说明：**
 >
 > 当accountId为当前用户时，不需要校验ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。
 
-**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**需要权限**：
+
+- API版本9-13：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API版本14+：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.KILL_APP_PROCESSES或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | Bundle名称。 |
-| accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)。 |
+| accountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 系统账号的账号ID，详情参考[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)。 |
 
 **返回值：**
 
@@ -619,8 +1021,8 @@ killProcessWithAccount(bundleName: string, accountId: number): Promise\<void\>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -636,8 +1038,9 @@ let accountId = 0;
 try {
   appManager.killProcessWithAccount(bundleName, accountId).then(() => {
     console.info('killProcessWithAccount success');
-  }).catch((err: BusinessError) => {
-    console.error(`killProcessWithAccount fail, err: ${JSON.stringify(err)}`);
+  }).catch((e: Error) => {
+    let err = e as BusinessError;
+    console.error(`killProcessWithAccount fail, err: ${err.code}, ${err.message}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -648,28 +1051,34 @@ try {
 
 ## appManager.killProcessWithAccount<sup>14+</sup>
 
-killProcessWithAccount(bundleName: string, accountId: number, clearPageStack: boolean, appIndex?: number): Promise\<void\>
+ArkTS-Dyn: killProcessWithAccount(bundleName: string, accountId: number, clearPageStack: boolean, appIndex?: number): Promise\<void\>
 
-终止account进程。使用Promise异步回调。
+ArkTS-Sta: killProcessWithAccount(bundleName: string, accountId: int, clearPageStack: boolean, appIndex?: int): Promise\<void\>
+
+终止指定系统账号下的应用进程。使用Promise异步回调。
 
 > **说明：**
 >
 > 当accountId为当前用户时，不需要校验ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。
 
-**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.KILL_APP_PROCESSES或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | Bundle名称。 |
-| accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)。 |
+| accountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 系统账号的账号ID，详情参考[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)。 |
 | clearPageStack | boolean | 是 | 表示是否清除页面堆栈。true表示清除，false表示不清除。 |
-| appIndex | number | 否 | 应用分身ID。 |
+| appIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 应用分身ID。 |
 
 **返回值：**
 
@@ -683,8 +1092,8 @@ killProcessWithAccount(bundleName: string, accountId: number, clearPageStack: bo
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | If the input parameter is not valid parameter. |
 | 16000050 | Internal error. |
 
@@ -702,8 +1111,9 @@ let appIndex = 1;
 try {
   appManager.killProcessWithAccount(bundleName, accountId, isClearPageStack, appIndex).then(() => {
     console.info('killProcessWithAccount success');
-  }).catch((err: BusinessError) => {
-    console.error(`killProcessWithAccount fail, err: ${JSON.stringify(err)}`);
+  }).catch((e: Error) => {
+    let err = e as BusinessError;
+    console.error(`killProcessWithAccount fail, err: ${err.code}, ${err.message}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -714,27 +1124,36 @@ try {
 
 ## appManager.killProcessWithAccount
 
-killProcessWithAccount(bundleName: string, accountId: number, callback: AsyncCallback\<void\>): void
+ArkTS-Dyn: killProcessWithAccount(bundleName: string, accountId: number, callback: AsyncCallback\<void\>): void
 
-终止account进程。使用callback异步回调。
+ArkTS-Sta: killProcessWithAccount(bundleName: string, accountId: int, callback: AsyncCallback\<void\>): void
+
+终止指定系统账号下的应用进程。使用callback异步回调。
 
 > **说明：**
 >
 > 当accountId为当前用户时，不需要校验ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。
 
-**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+**需要权限**：
+
+- API版本9-13：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API版本14+：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.KILL_APP_PROCESSES或ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS和ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | bundleName | string | 是 | 应用Bundle名称。 |
-  | accountId | number | 是 | 系统账号的账号ID，详情参考[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)。 |
-  | callback | AsyncCallback\<void\> | 是 | 以回调方式返回接口运行结果，可进行错误处理或其他自定义处理。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| bundleName | string | 是 | 应用Bundle名称。 |
+| accountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 系统账号的账号ID，详情参考[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)。 |
+| callback | AsyncCallback\<void\> | 是 | 以回调方式返回接口运行结果，可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -742,8 +1161,8 @@ killProcessWithAccount(bundleName: string, accountId: number, callback: AsyncCal
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -756,7 +1175,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let bundleName = 'bundleName';
 let accountId = 0;
 
-function killProcessWithAccountCallback(err: BusinessError) {
+function killProcessWithAccountCallback(err: BusinessError | null) {
   if (err) {
     console.error(`killProcessWithAccountCallback fail, err: ${JSON.stringify(err)}`);
   } else {
@@ -767,17 +1186,103 @@ function killProcessWithAccountCallback(err: BusinessError) {
 appManager.killProcessWithAccount(bundleName, accountId, killProcessWithAccountCallback);
 ```
 
-## appManager.killProcessesByBundleName
+## appManager.killProcessWithAccountSafely
 
-killProcessesByBundleName(bundleName: string, callback: AsyncCallback\<void>)
+ArkTS-Dyn: killProcessWithAccountSafely(bundleName: string, accountId: number, clearPageStack: boolean, appIndex?: number): Promise\<void\>
 
-通过Bundle名称终止进程。使用callback异步回调。
+ArkTS-Sta: killProcessWithAccountSafely(bundleName: string, accountId: int, clearPageStack: boolean, appIndex?: int): Promise\<void\>
 
-**需要权限**：ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+根据Bundle名称、系统账号ID和应用分身ID终止应用进程。若目标应用已被MDM设置为禁止停止，且防禁用状态查询成功，则进程不会被终止，接口返回错误码16000210；若状态查询失败，则继续执行查杀。使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+> **说明：**
+>
+> 当accountId为当前用户时，不需要校验ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。
+
+**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS 和 ohos.permission.KILL_APP_PROCESSES 或 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS 和 ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| bundleName | string | 是 | Bundle名称。 |
+| accountId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 系统账号的账号ID，详情参考[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)。 |
+| clearPageStack | boolean | 是 | 表示是否清除页面堆栈。true表示清除，false表示不清除。 |
+| appIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 应用分身ID，默认值为0。默认值下，系统会尝试根据Bundle Manager返回的双开应用信息确定实际处理的应用实例；获取失败时按appIndex为0继续处理。需要终止指定分身应用的进程时，可传入对应的应用分身ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 16000050 | Connect to system server failed. |
+| 16000210 | The target process is protected by an MDM application and cannot be terminated. |
+
+**示例：**
+
+```ts
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundleName = 'com.example.myapplication';
+let accountId = 100;
+let isClearPageStack = false;
+let appIndex = 0;
+
+try {
+  appManager.killProcessWithAccountSafely(bundleName, accountId, isClearPageStack, appIndex).then(() => {
+    console.info('killProcessWithAccountSafely success');
+  }).catch((e: Error) => {
+    let err = e as BusinessError;
+    console.error(`killProcessWithAccountSafely fail, err: ${err.code}, ${err.message}`);
+  });
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
+
+## appManager.killProcessesByBundleName
+
+killProcessesByBundleName(bundleName: string, callback: AsyncCallback\<void>): void
+
+通过Bundle名称终止主应用的进程。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口不支持终止应用分身的进程。
+
+**需要权限**：
+
+- API版本9-13：ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API版本14+：ohos.permission.KILL_APP_PROCESSES或ohos.permission.CLEAN_BACKGROUND_PROCESSES
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -792,8 +1297,8 @@ killProcessesByBundleName(bundleName: string, callback: AsyncCallback\<void>)
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -805,7 +1310,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'bundleName';
 
-function killProcessesByBundleNameCallback(err: BusinessError) {
+function killProcessesByBundleNameCallback(err: BusinessError | null) {
   if (err) {
     console.error(`killProcessesByBundleNameCallback fail, err: ${JSON.stringify(err)}`);
   } else {
@@ -826,13 +1331,24 @@ try {
 
 killProcessesByBundleName(bundleName: string): Promise\<void>
 
-通过Bundle名称终止进程。使用Promise异步回调。
+通过Bundle名称终止主应用的进程。使用Promise异步回调。
 
-**需要权限**：ohos.permission.KILL_APP_PROCESSES or ohos.permission.CLEAN_BACKGROUND_PROCESSES
+> **说明：**
+>
+> 该接口不支持终止应用分身的进程。
+
+**需要权限**：
+
+- API版本9-13：ohos.permission.CLEAN_BACKGROUND_PROCESSES
+- API版本14+：ohos.permission.KILL_APP_PROCESSES或ohos.permission.CLEAN_BACKGROUND_PROCESSES
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -852,8 +1368,8 @@ killProcessesByBundleName(bundleName: string): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -868,8 +1384,9 @@ let bundleName = 'bundleName';
 try {
   appManager.killProcessesByBundleName(bundleName).then((data) => {
     console.info('killProcessesByBundleName success.');
-  }).catch((err: BusinessError) => {
-    console.error(`killProcessesByBundleName fail, err: ${JSON.stringify(err)}`);
+  }).catch((e: Error) => {
+    let err=e as BusinessError;
+    console.error(`killProcessesByBundleName fail, err: ${err.code }, ${err.message }`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -890,6 +1407,10 @@ clearUpApplicationData(bundleName: string, callback: AsyncCallback\<void>): void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -903,8 +1424,8 @@ clearUpApplicationData(bundleName: string, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -916,7 +1437,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'bundleName';
 
-function clearUpApplicationDataCallback(err: BusinessError) {
+function clearUpApplicationDataCallback(err: BusinessError | null) {
   if (err) {
     console.error(`clearUpApplicationDataCallback fail, err: ${JSON.stringify(err)}`);
   } else {
@@ -945,6 +1466,10 @@ clearUpApplicationData(bundleName: string): Promise\<void>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -955,7 +1480,7 @@ clearUpApplicationData(bundleName: string): Promise\<void>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void> | 以Promise方式返回接口运行结果，可进行错误处理或其他自定义处理。 |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码**：
 
@@ -963,8 +1488,8 @@ clearUpApplicationData(bundleName: string): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -979,8 +1504,9 @@ let bundleName = 'bundleName';
 try {
   appManager.clearUpApplicationData(bundleName).then((data) => {
     console.info('clearUpApplicationData success.');
-  }).catch((err: BusinessError) => {
-    console.error(`clearUpApplicationData fail, err: ${JSON.stringify(err)}`);
+  }).catch((e: Error) => {
+    let err = e as BusinessError;
+    console.error(`clearUpApplicationData fail, err: ${err.code}, ${err.message}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -991,7 +1517,9 @@ try {
 
 ## appManager.getProcessMemoryByPid<sup>10+</sup>
 
-getProcessMemoryByPid(pid: number, callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getProcessMemoryByPid(pid: number, callback: AsyncCallback\<number>): void
+
+ArkTS-Sta: getProcessMemoryByPid(pid: int, callback: AsyncCallback\<int>): void
 
 通过pid查询对应进程占用的内存大小。使用callback异步回调。
 
@@ -999,12 +1527,16 @@ getProcessMemoryByPid(pid: number, callback: AsyncCallback\<number>): void
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pid | number | 是 | 表示进程id，详情参考[getRunningProcessInfoByBundleName](#appmanagergetrunningprocessinfobybundlename10)。 |
-| callback | AsyncCallback\<number> | 是 | 以回调方式返回接口运行结果及进程占用的内存大小（单位KB），可进行错误处理或其他自定义处理。 |
+| pid | ArkTS-Dyn: number<br>ArktS-Sta: int | 是 | 表示进程id，详情参考[getRunningProcessInfoByBundleName](#appmanagergetrunningprocessinfobybundlename10)。 |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<int> | 是 | 以回调方式返回接口运行结果及进程占用的内存大小（单位KB），可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -1012,11 +1544,13 @@ getProcessMemoryByPid(pid: number, callback: AsyncCallback\<number>): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { appManager } from '@kit.AbilityKit';
@@ -1040,9 +1574,37 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let pid: int = 0;
+
+function getProcessMemoryByPidCallback(err: BusinessError | null, data: int | undefined) {
+  if (err) {
+    console.error(`getProcessMemoryByPidCallback fail, err: ${JSON.stringify(err)}`);
+  } else {
+    console.info('getProcessMemoryByPidCallback success.');
+  }
+}
+
+try {
+  appManager.getProcessMemoryByPid(pid, getProcessMemoryByPidCallback);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
+
 ## appManager.getProcessMemoryByPid<sup>10+</sup>
 
-getProcessMemoryByPid(pid: number): Promise\<number>
+ArkTS-Dyn: getProcessMemoryByPid(pid: number): Promise\<number>
+
+ArkTS-Sta: getProcessMemoryByPid(pid: int): Promise\<int>
 
 通过pid查询对应进程占用的内存大小。使用Promise异步回调。
 
@@ -1050,17 +1612,21 @@ getProcessMemoryByPid(pid: number): Promise\<number>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pid | number | 是 | 表示进程id，详情参考[getRunningProcessInfoByBundleName](#appmanagergetrunningprocessinfobybundlename10)。  |
+| pid | ArkTS-Dyn: number<br/>ArktS-Sta: int | 是 | 表示进程id，详情参考[getRunningProcessInfoByBundleName](#appmanagergetrunningprocessinfobybundlename10)。  |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<number> | 以Promise方式返回接口运行结果及进程占用的内存大小（单位KB），可进行错误处理或其他自定义处理。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<int> | 以Promise方式返回接口运行结果及进程占用的内存大小（单位KB），可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -1068,7 +1634,7 @@ getProcessMemoryByPid(pid: number): Promise\<number>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1083,8 +1649,9 @@ let pid = 0;
 try {
   appManager.getProcessMemoryByPid(pid).then((data) => {
     console.info('getProcessMemoryByPid success.');
-  }).catch((err: BusinessError) => {
-    console.error(`getProcessMemoryByPid fail, err: ${JSON.stringify(err)}`);
+  }).catch((e: Error) => {
+    let err = e as BusinessError;
+    console.error(`getProcessMemoryByPid fail, err: ${err.code},  ${err.message}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -1097,11 +1664,15 @@ try {
 
 getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCallback\<Array\<ProcessInformation>>): void
 
-通过bundleName获取有关运行进程的信息。使用callback异步回调。
+根据bundleName获取当前用户下主应用及分身应用的运行进程信息。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1116,7 +1687,7 @@ getRunningProcessInfoByBundleName(bundleName: string, callback: AsyncCallback\<A
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1127,7 +1698,9 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = "bundleName";
-function getRunningProcessInfoByBundleNameCallback(err: BusinessError, data: Array<appManager.ProcessInformation>) {
+
+function getRunningProcessInfoByBundleNameCallback(err: BusinessError | null,
+  data: Array<appManager.ProcessInformation> | undefined) {
   if (err) {
     console.error(`getRunningProcessInfoByBundleNameCallback fail, err: ${JSON.stringify(err)}`);
   } else {
@@ -1148,11 +1721,15 @@ try {
 
 getRunningProcessInfoByBundleName(bundleName: string): Promise\<Array\<ProcessInformation>>
 
-通过bundleName获取有关运行进程的信息。使用Promise异步回调。
+根据bundleName获取当前用户下主应用及分身应用的运行进程信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1172,7 +1749,7 @@ getRunningProcessInfoByBundleName(bundleName: string): Promise\<Array\<ProcessIn
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1182,13 +1759,14 @@ getRunningProcessInfoByBundleName(bundleName: string): Promise\<Array\<ProcessIn
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "bundleName";
+let bundleName = 'bundleName';
 
 try {
   appManager.getRunningProcessInfoByBundleName(bundleName).then((data) => {
     console.info('getRunningProcessInfoByBundleName success.');
-  }).catch((err: BusinessError) => {
-    console.error(`getRunningProcessInfoByBundleName fail, err: ${JSON.stringify(err)}`);
+  }).catch((e: Error) => {
+    let err = e as BusinessError;
+    console.error(`getRunningProcessInfoByBundleName fail, err: ${err.code} ${err.message}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -1199,20 +1777,26 @@ try {
 
 ## appManager.getRunningProcessInfoByBundleName<sup>10+</sup>
 
-getRunningProcessInfoByBundleName(bundleName: string, userId: number, callback: AsyncCallback\<Array\<ProcessInformation>>): void
+ArkTS-Dyn: getRunningProcessInfoByBundleName(bundleName: string, userId: number, callback: AsyncCallback\<Array\<ProcessInformation>>): void
 
-通过bundleName和userId获取有关运行进程的信息。使用callback异步回调。
+ArkTS-Sta: getRunningProcessInfoByBundleName(bundleName: string, userId: int, callback: AsyncCallback\<Array\<ProcessInformation>>): void
+
+通过bundleName和userId获取对应主应用和分身应用的运行进程信息。使用callback异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 表示Bundle名称。 |
-| userId | number | 是 | 表示用户Id。 |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示用户Id。 |
 | callback | AsyncCallback\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>> | 是 | 以回调方式返回接口运行结果及有关运行进程的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码**：
@@ -1221,7 +1805,7 @@ getRunningProcessInfoByBundleName(bundleName: string, userId: number, callback: 
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1233,7 +1817,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = "bundleName";
 let userId = 0;
-function getRunningProcessInfoByBundleNameCallback(err: BusinessError, data: Array<appManager.ProcessInformation>) {
+function getRunningProcessInfoByBundleNameCallback(err: BusinessError | null, data: Array<appManager.ProcessInformation>|undefined) {
   if (err) {
     console.error(`getRunningProcessInfoByBundleNameCallback fail, err: ${JSON.stringify(err)}`);
   } else {
@@ -1252,20 +1836,26 @@ try {
 
 ## appManager.getRunningProcessInfoByBundleName<sup>10+</sup>
 
-getRunningProcessInfoByBundleName(bundleName: string, userId: number): Promise\<Array\<ProcessInformation>>
+ArkTS-Dyn: getRunningProcessInfoByBundleName(bundleName: string, userId: number): Promise\<Array\<ProcessInformation>>
 
-通过bundleName和userId获取有关运行进程的信息。使用Promise异步回调。
+ArkTS-Sta: getRunningProcessInfoByBundleName(bundleName: string, userId: int): Promise\<Array\<ProcessInformation>>
+
+通过bundleName和userId获取对应主应用和分身应用的运行进程信息。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 表示Bundle名称。 |
-| userId | number | 是 | 表示用户Id。 |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示用户Id。 |
 
 **返回值：**
 
@@ -1279,7 +1869,7 @@ getRunningProcessInfoByBundleName(bundleName: string, userId: number): Promise\<
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1289,14 +1879,15 @@ getRunningProcessInfoByBundleName(bundleName: string, userId: number): Promise\<
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "bundleName";
+let bundleName = 'bundleName';
 let userId = 0;
 
 try {
   appManager.getRunningProcessInfoByBundleName(bundleName, userId).then((data) => {
     console.info('getRunningProcessInfoByBundleName success.');
-  }).catch((err: BusinessError) => {
-    console.error(`getRunningProcessInfoByBundleName fail, err: ${JSON.stringify(err)}`);
+  }).catch((e: Error) => {
+    let err = e as BusinessError;
+    console.error(`getRunningProcessInfoByBundleName fail, err: ${err.code} ${err.message}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -1309,13 +1900,21 @@ try {
 
 isApplicationRunning(bundleName: string): Promise\<boolean>
 
-查询所有用户下指定包名的应用是否正在运行。使用Promise异步回调。
+查询所有用户下指定包名的主应用是否正在运行。使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口不支持查询应用分身是否在运行。
 
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.GET_RUNNING_INFO
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1335,8 +1934,8 @@ isApplicationRunning(bundleName: string): Promise\<boolean>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1349,9 +1948,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let bundleName = "com.example.myapplication";
 
 appManager.isApplicationRunning(bundleName).then((data) => {
-  console.info(`The application running is: ${JSON.stringify(data)}`);
-}).catch((error: BusinessError) => {
-  console.error(`error: ${JSON.stringify(error)}`);
+  console.info(`The application running is: ${data}`);
+}).catch((e: Error) => {
+  let error = e as BusinessError;
+  console.error(`error: ${error.code} ${error.message}`);
 });
 ```
 
@@ -1359,13 +1959,21 @@ appManager.isApplicationRunning(bundleName).then((data) => {
 
 isApplicationRunning(bundleName: string, callback: AsyncCallback\<boolean>): void
 
-查询所有用户下指定包名的应用是否正在运行。使用callback异步回调。
+查询所有用户下指定包名的主应用是否正在运行。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口不支持查询应用分身是否在运行。
 
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.GET_RUNNING_INFO
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1380,8 +1988,8 @@ isApplicationRunning(bundleName: string, callback: AsyncCallback\<boolean>): voi
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -1391,7 +1999,7 @@ isApplicationRunning(bundleName: string, callback: AsyncCallback\<boolean>): voi
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bundleName = "com.example.myapplication";
+let bundleName = 'com.example.myapplication';
 
 try {
   appManager.isApplicationRunning(bundleName, (err, data) => {
@@ -1410,11 +2018,15 @@ try {
 
 ## ApplicationState
 
-应用状态，该类型为枚举，可配合[AbilityStateData](js-apis-inner-application-abilityStateData.md)返回相应的应用状态。
+应用状态，该类型为枚举，可配合[AbilityStateData (Ability状态数据)](js-apis-inner-application-abilityStateData.md)返回相应的应用状态。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 值  | 说明                               |
 | -------------------- | --- | --------------------------------- |
@@ -1429,13 +2041,17 @@ try {
 
 getRunningProcessInformationByBundleType(bundleType: bundleManager.BundleType): Promise\<Array\<ProcessInformation>>
 
-根据包类型获取当前运行进程的有关信息。使用Promise异步回调。
+根据包类型获取当前运行进程的有关信息，可用于运行进程的分类管理或资源监控等。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.GET_RUNNING_INFO
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -1454,11 +2070,10 @@ getRunningProcessInformationByBundleType(bundleType: bundleManager.BundleType): 
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
-
 
 **示例：**
 
@@ -1469,9 +2084,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   appManager.getRunningProcessInformationByBundleType(bundleManager.BundleType.ATOMIC_SERVICE)
     .then((data) => {
-      console.info(`The running process information is: ${JSON.stringify(data)}`);
-    }).catch((error: BusinessError) => {
-    console.error(`error: ${JSON.stringify(error)}`);
+      console.info(`The running process information is: ${data}`);
+    }).catch((e: Error) => {
+    let error = e as BusinessError;
+    console.error(`error: ${error.code}, ${error.message}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -1482,9 +2098,15 @@ try {
 
 ## appManager.preloadApplication<sup>12+</sup>
 
-preloadApplication(bundleName: string, userId: number, mode: PreloadMode, appIndex?: number): Promise\<void>
+ArkTS-Dyn: preloadApplication(bundleName: string, userId: number, mode: PreloadMode, appIndex?: number): Promise\<void>
+
+ArkTS-Sta: preloadApplication(bundleName: string, userId: int, mode: PreloadMode, appIndex?: int): Promise\<void>
 
 预加载应用进程。接口返回成功并不代表预加载成功，具体结果以目标应用进程是否创建成功为准。使用Promise异步回调。
+
+> **说明：**
+>
+> 在API版本26.1.0之前，该接口不支持预加载分身应用，参数appIndex只能传0，传入其他值将返回错误码16000050。从API版本26.1.0开始，该接口支持预加载分身应用，若传入无效的appIndex，将统一返回错误码16000050。
 
 **需要权限**：ohos.permission.PRELOAD_APPLICATION
 
@@ -1494,14 +2116,18 @@ preloadApplication(bundleName: string, userId: number, mode: PreloadMode, appInd
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 预加载的应用包名。 |
-| userId | number | 是 | 预加载的用户Id。 |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 预加载的用户Id。 |
 | mode | [PreloadMode](#appmanagerpreloadmode12) | 是 | 预加载模式。 |
-| appIndex | number | 否 | 预加载应用分身的appIndex。 |
+| appIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 预加载应用分身的appIndex。 |
 
 **返回值：**
 
@@ -1515,9 +2141,9 @@ preloadApplication(bundleName: string, userId: number, mode: PreloadMode, appInd
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 | 16300005 | The target bundle does not exist. |
 
@@ -1529,7 +2155,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
-  let bundleName = "ohos.samples.etsclock";
+  let bundleName = 'ohos.samples.etsclock';
   let userId = 100;
   let mode = appManager.PreloadMode.PRESS_DOWN;
   let appIndex = 0;
@@ -1537,11 +2163,13 @@ try {
     .then(() => {
       hilog.info(0x0000, 'testTag', `preloadApplication success`);
     })
-    .catch((err: BusinessError) => {
+    .catch((e: Error) => {
+      let err = e as BusinessError;
       hilog.error(0x0000, 'testTag', `preloadApplication error, code: ${err.code}, msg:${err.message}`);
     })
 } catch (err) {
-  hilog.error(0x0000, 'testTag', `preloadApplication error, code: ${(err as BusinessError).code}, msg:${(err as BusinessError).message}`);
+  hilog.error(0x0000, 'testTag',
+    `preloadApplication error, code: ${(err as BusinessError).code}, msg:${(err as BusinessError).message}`);
 }
 ```
 
@@ -1549,7 +2177,7 @@ try {
 
 getRunningMultiAppInfo(bundleName: string): Promise\<RunningMultiAppInfo>
 
-根据应用包名获取系统中运行态的应用多开（即在一个设备上运行多个相同的应用）的相关信息。使用Promise异步回调。
+根据应用包名获取系统中运行态的应用多开（即在一个设备上运行多个相同的应用）的相关信息，可用于多实例管理或资源分配等。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_RUNNING_INFO
 
@@ -1558,6 +2186,10 @@ getRunningMultiAppInfo(bundleName: string): Promise\<RunningMultiAppInfo>
 **系统接口**：此接口为系统接口。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1577,9 +2209,9 @@ getRunningMultiAppInfo(bundleName: string): Promise\<RunningMultiAppInfo>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000072 | App clone or multi-instance is not supported. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
 
@@ -1593,18 +2225,22 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let bundleName = "ohos.samples.etsclock";
   appManager.getRunningMultiAppInfo(bundleName).then((info: appManager.RunningMultiAppInfo) => {
-      hilog.info(0x0000, 'testTag', `getRunningMultiAppInfo success`);
-    }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
-    })
-} catch (err) {
+    hilog.info(0x0000, 'testTag', `getRunningMultiAppInfo success`);
+  }).catch((e: Error) => {
+    let err = e as BusinessError;
+    hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
+  })
+} catch (e) {
+  let err = e as BusinessError;
   hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
 }
 ```
 
 ## appManager.terminateMission<sup>13+</sup>
 
-terminateMission(missionId: number): Promise\<void>
+ArkTS-Dyn: terminateMission(missionId: number): Promise\<void>
+
+ArkTS-Sta: terminateMission(missionId: int): Promise\<void>
 
 关闭指定的任务。使用Promise异步回调。
 
@@ -1614,11 +2250,15 @@ terminateMission(missionId: number): Promise\<void>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| missionId | number | 是 | 任务ID，可通过[getMissionInfos](js-apis-app-ability-missionManager-sys.md#missionmanagergetmissioninfos)获取。 |
+| missionId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 任务ID，可通过[getMissionInfos](js-apis-app-ability-missionManager-sys.md#missionmanagergetmissioninfos)获取。 |
 
 **返回值：**
 
@@ -1632,12 +2272,15 @@ terminateMission(missionId: number): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1656,8 +2299,42 @@ struct Index {
           appManager.terminateMission(missionId).then(()=>{
               console.info('terminateMission success.');
             }).catch((err: BusinessError)=>{
-              console.error('terminateMission failed. err: ' + JSON.stringify(err));
+              console.error(`terminateMission failed. err: ${err.code}, ${err.message}`);
             })
+        } catch (paramError) {
+          let code = (paramError as BusinessError).code;
+          let message = (paramError as BusinessError).message;
+          console.error(`[appManager] error: ${code}, ${message}`);
+        }
+      })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { Entry, Text, Component, Button, ButtonType, State } from '@kit.ArkUI';
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Button('start link', { type: ButtonType.Capsule, stateEffect: true })
+      .width('87%')
+      .height('5%')
+      .onClick(() => {
+        let missionId: int = 0;
+        try {
+          appManager.terminateMission(missionId).then(() => {
+            console.info('terminateMission success.');
+          }).catch((e) => {
+            let err = e as BusinessError;
+            console.error(`terminateMission failed. err: ${err.code}, ${err.message}`);
+          })
         } catch (paramError) {
           let code = (paramError as BusinessError).code;
           let message = (paramError as BusinessError).message;
@@ -1670,9 +2347,11 @@ struct Index {
 
 ## appManager.getSupportedProcessCachePids<sup>14+</sup>
 
-getSupportedProcessCachePids(bundleName : string): Promise\<Array\<number>>
+ArkTS-Dyn: getSupportedProcessCachePids(bundleName: string): Promise\<Array\<number>>
 
-查询当前应用中支持缓存后快速启动的进程PID。使用Promise异步回调。
+ArkTS-Sta: getSupportedProcessCachePids(bundleName: string): Promise\<Array\<int>>
+
+查询当前应用中支持缓存后快速启动的进程PID，可用于进程管理。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1686,6 +2365,10 @@ getSupportedProcessCachePids(bundleName : string): Promise\<Array\<number>>
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1696,7 +2379,7 @@ getSupportedProcessCachePids(bundleName : string): Promise\<Array\<number>>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<Array\<number>> | Promise对象。返回一个数组，包含当前应用中支持缓存后快速启动的所有进程PID。 |
+| ArkTS-Dyn: Promise\<Array\<number>><br>ArkTS-Sta: Promise\<Array\<int>> | Promise对象。返回一个数组，包含当前应用中支持缓存后快速启动的所有进程PID。 |
 
 **错误码**：
 
@@ -1704,13 +2387,15 @@ getSupportedProcessCachePids(bundleName : string): Promise\<Array\<number>>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801 | Capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { appManager } from '@kit.AbilityKit';
@@ -1718,7 +2403,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let bundleName = "ohos.samples.processcache";
+  let bundleName = 'ohos.samples.processcache';
   appManager.getSupportedProcessCachePids(bundleName).then((pids: Array<number>) => {
       hilog.info(0x0000, 'testTag', `pids: ${JSON.stringify(pids)}`);
     }).catch((err: BusinessError) => {
@@ -1729,9 +2414,33 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { appManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let bundleName = "ohos.samples.processcache";
+  appManager.getSupportedProcessCachePids(bundleName).then((pids: Array<int>) => {
+    hilog.info(0x0000, 'testTag', `pids: ${JSON.stringify(pids)}`);
+  }).catch((e) => {
+    let err = e as BusinessError;
+    hilog.error(0x0000, 'testTag', `get pids error, code: ${err.code}, msg:${err.message}`);
+  })
+} catch (e) {
+  let err = e as BusinessError;
+  hilog.error(0x0000, 'testTag', `get pids error, code: ${err.code}, msg:${err.message}`);
+}
+```
+
 ## appManager.clearUpAppData<sup>13+</sup>
 
-clearUpAppData(bundleName: string, appCloneIndex?: number): Promise\<void>
+ArkTS-Dyn: clearUpAppData(bundleName: string, appCloneIndex?: number): Promise\<void>
+
+ArkTS-Sta: clearUpAppData(bundleName: string, appCloneIndex?: int): Promise\<void>
 
 根据Bundle名称和应用分身索引，清除指定应用的数据。使用Promise异步回调。
 
@@ -1741,12 +2450,16 @@ clearUpAppData(bundleName: string, appCloneIndex?: number): Promise\<void>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 表示Bundle名称。 |
-| appCloneIndex | number | 否 | 表示应用分身索引。 |
+| appCloneIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 表示应用分身索引。当需要清除指定分身应用的数据时传入此参数，不传入时默认清除主应用数据（appCloneIndex为0）。 |
 
 **返回值：**
 
@@ -1760,8 +2473,8 @@ clearUpAppData(bundleName: string, appCloneIndex?: number): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 | 16000073 | The app clone index is invalid. |
@@ -1773,13 +2486,14 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName: string = 'com.ohos.demo';
-let appCloneIndex: number = 0;
+let appCloneIndex = 0;
 
 try {
   appManager.clearUpAppData(bundleName, appCloneIndex).then(() => {
     console.info(`clearUpAppData success.`);
-  }).catch((err: BusinessError) => {
-    console.error(`clearUpAppData fail, err: ${JSON.stringify(err)}`);
+  }).catch((e: Error) => {
+    let err = e as BusinessError;
+    console.error(`clearUpAppData fail, err: ${err.code}, ${err.message}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -1790,30 +2504,37 @@ try {
 
 ## appManager.setKeepAliveForBundle<sup>14+</sup>
 
-setKeepAliveForBundle(bundleName: string, userId: number, enable: boolean): Promise\<void>
+ArkTS-Dyn: setKeepAliveForBundle(bundleName: string, userId: number, enable: boolean): Promise\<void>
+
+ArkTS-Sta: setKeepAliveForBundle(bundleName: string, userId: int, enable: boolean): Promise\<void>
 
 为指定用户下的应用设置或取消保活。使用Promise异步回调。
 
 > **说明：**
 >
 >- 应用如果需要支持保活，其[module.json5配置文件](../../quick-start/module-configuration-file.md)中的mainElement必须是UIAbility。只有当mainElement启动后，系统才会执行应用保活操作。
->- 在2in1设备上，被保活的应用需要在启动后5秒内添加至状态栏。否则，系统将取消该应用的保活设置，并杀死保活重启的进程。
+>- 在PC/2in1设备上，被保活的应用需要在启动后5秒内添加至状态栏。否则，系统将取消该应用的保活设置，并杀死保活重启的进程。
 >- 当被保活的应用进程退出时，系统将尝试重启该进程，连续3次重启失败后将不再继续重启。
+>- 该接口不支持设置或取消分身应用（指定用户和包名）的保活状态。
 
 **需要权限**：ohos.permission.MANAGE_APP_KEEP_ALIVE
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：从API version 18开始，该接口仅在2in1和Wearable设备上生效。对于API version 18之前版本，该接口仅在2in1设备上生效。其他情况下调用该接口将返回错误码801。
+**设备行为差异**：从API version 18开始，该接口仅在PC/2in1和Wearable设备上生效。对于API version 18之前版本，该接口仅在PC/2in1设备上生效。其他情况下调用该接口将返回错误码801。
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName    | string   | 是    | 表示要设置保活的应用包名。 |
-| userId    | number   | 是    | 表示要设置保活应用所属的用户ID。 |
+| userId    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是    | 表示要查询保活应用所属的用户ID。当需要查询特定用户下的保活应用时传入此参数，不传入时默认查询当前用户下的保活应用。 |
 | enable    | boolean   | 是    | 表示对应用保活或者取消保活。true表示对应用保活，false表示对应用取消保活。 |
 
 **返回值：**
@@ -1828,10 +2549,10 @@ setKeepAliveForBundle(bundleName: string, userId: number, enable: boolean): Prom
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801 | Capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16000050 | Internal error. |
 | 16300005 | The target bundle does not exist. |
 | 16300008 | The target bundle has no MainAbility. |
@@ -1845,12 +2566,13 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let bundleName = "ohos.samples.keepaliveapp";
+  let bundleName = 'ohos.samples.keepaliveapp';
   let userId = 100;
   appManager.setKeepAliveForBundle(bundleName, userId, true).then(() => {
     console.info(`setKeepAliveForBundle success`);
-  }).catch((err: BusinessError) => {
-    console.error(`setKeepAliveForBundle fail, err: ${JSON.stringify(err)}`);
+  }).catch((e: Error) => {
+    let err = e as BusinessError;
+    console.error(`setKeepAliveForBundle fail, err: ${err.code}, ${err.message}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -1861,9 +2583,11 @@ try {
 
 ## appManager.getKeepAliveBundles<sup>14+</sup>
 
-getKeepAliveBundles(type: KeepAliveAppType, userId?: number): Promise\<Array\<KeepAliveBundleInfo>>
+ArkTS-Dyn: getKeepAliveBundles(type: KeepAliveAppType, userId?: number): Promise\<Array\<KeepAliveBundleInfo>>
 
-获取指定用户下指定类型的保活应用信息。该应用信息由[KeepAliveBundleInfo](#keepalivebundleinfo14)定义。使用Promise异步回调。
+ArkTS-Sta: getKeepAliveBundles(type: KeepAliveAppType, userId?: int): Promise\<Array\<KeepAliveBundleInfo>>
+
+获取指定用户下指定类型的保活应用信息，可用于保活应用管理或资源监控等。该应用信息由[KeepAliveBundleInfo](#keepalivebundleinfo14)定义。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_APP_KEEP_ALIVE
 
@@ -1873,12 +2597,16 @@ getKeepAliveBundles(type: KeepAliveAppType, userId?: number): Promise\<Array\<Ke
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type    | [KeepAliveAppType](#keepaliveapptype14)   | 是    | 表示要查询的保活应用类型。 |
-| userId    | number   | 否    | 表示要设置保活应用所属的用户ID。 |
+| userId    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 表示要查询保活应用所属的用户ID。当需要查询特定用户下的保活应用时传入此参数，不传入时默认查询当前用户下的保活应用。 |
 
 **返回值：**
 
@@ -1892,10 +2620,10 @@ getKeepAliveBundles(type: KeepAliveAppType, userId?: number): Promise\<Array\<Ke
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801 | Capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -1908,9 +2636,11 @@ let userId = 100;
 let type: appManager.KeepAliveAppType = appManager.KeepAliveAppType.THIRD_PARTY;
 try {
   appManager.getKeepAliveBundles(type, userId).then((data) => {
-    console.info(`getKeepAliveBundles success, data: ${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`getKeepAliveBundles fail, err: ${JSON.stringify(err)}`);
+    console.info(`getKeepAliveBundles success, data: ${data}`);
+  }).catch((paramError: Error) => {
+    let code = (paramError as BusinessError).code;
+    let message = (paramError as BusinessError).message;
+    console.error(`getKeepAliveBundles fail, err: ${code}, ${message}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -1922,7 +2652,9 @@ try {
 
 ## appManager.killProcessesInBatch<sup>14+</sup>
 
-killProcessesInBatch(pids: Array\<number>): Promise\<void>
+ArkTS-Dyn: killProcessesInBatch(pids: Array\<number>): Promise\<void>
+
+ArkTS-Sta: killProcessesInBatch(pids: Array\<int>): Promise\<void>
 
 批量终止进程。使用Promise异步回调。
 
@@ -1934,11 +2666,15 @@ killProcessesInBatch(pids: Array\<number>): Promise\<void>
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pids    | Array\<number>   | 是    | 要终止的进程ID。 |
+| pids    | ArkTS-Dyn: Array\<number><br>ArkTS-Sta: Array\<int> | 是    | 要终止的进程ID。 |
 
 **返回值：**
 
@@ -1952,13 +2688,15 @@ killProcessesInBatch(pids: Array\<number>): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 801 | Capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16000050 | Internal error. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { appManager } from '@kit.AbilityKit';
@@ -1969,7 +2707,30 @@ try {
   appManager.killProcessesInBatch(pids).then(() => {
     console.info(`killProcessesInBatch success`);
   }).catch((err: BusinessError) => {
-    console.error(`killProcessesInBatch fail, err: ${JSON.stringify(err)}`);
+    console.error(`killProcessesInBatch fail, err: ${err.code}, ${err.message}`);
+  });
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] killProcessesInBatch error: ${code}, ${message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let pids: Array<int> = [100, 101, 102];
+  appManager.killProcessesInBatch(pids).then(() => {
+    console.info(`killProcessesInBatch success`);
+  }).catch((paramError) => {
+    let code = (paramError as BusinessError).code;
+    let message = (paramError as BusinessError).message;
+    console.error(`killProcessesInBatch fail, err: ${code}, ${message}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -1995,6 +2756,10 @@ setKeepAliveForAppServiceExtension(bundleName: string, enabled: boolean): Promis
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2014,9 +2779,9 @@ setKeepAliveForAppServiceExtension(bundleName: string, enabled: boolean): Promis
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
-| 801 | Capability not supported. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16000050 | Internal error. |
 | 16000081 | Failed to obtain the target application information. |
 | 16000202 | Invalid main element type. |
@@ -2033,8 +2798,10 @@ try {
   let bundleName = "ohos.samples.keepaliveapp";
   appManager.setKeepAliveForAppServiceExtension(bundleName, true).then(() => {
     console.info(`setKeepAliveForAppServiceExtension success`);
-  }).catch((err: BusinessError) => {
-    console.error(`setKeepAliveForAppServiceExtension fail, err: ${JSON.stringify(err)}`);
+  }).catch((paramError: Error) => {
+    let code = (paramError as BusinessError).code;
+    let message = (paramError as BusinessError).message;
+    console.error(`setKeepAliveForAppServiceExtension fail, err: ${code}, ${message}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -2047,8 +2814,7 @@ try {
 
 getKeepAliveAppServiceExtensions(): Promise\<Array\<KeepAliveBundleInfo>>
 
-获取所有保活的AppServiceExtensionAbility应用信息，此信息由[KeepAliveBundleInfo](#keepalivebundleinfo14)定义。使用Promise异步回调。
-
+获取所有保活的AppServiceExtensionAbility应用信息，此信息由[KeepAliveBundleInfo](#keepalivebundleinfo14)定义，可用于服务管理或资源监控。使用Promise异步回调。
 
 **需要权限**：ohos.permission.MANAGE_APP_KEEP_ALIVE
 
@@ -2057,6 +2823,10 @@ getKeepAliveAppServiceExtensions(): Promise\<Array\<KeepAliveBundleInfo>>
 **设备行为差异**：该接口在PC/2in1中可正常调用，在其他设备类型中返回801错误码。
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -2070,9 +2840,9 @@ getKeepAliveAppServiceExtensions(): Promise\<Array\<KeepAliveBundleInfo>>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
-| 801 | Capability not supported. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -2083,9 +2853,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   appManager.getKeepAliveAppServiceExtensions().then((data) => {
-    console.info(`getKeepAliveAppServiceExtensions success, data: ${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`getKeepAliveAppServiceExtensions fail, err: ${JSON.stringify(err)}`);
+    console.info(`getKeepAliveAppServiceExtensions success, data: ${data}`);
+  }).catch((paramError: Error) => {
+    let code = (paramError as BusinessError).code;
+    let message = (paramError as BusinessError).message;
+    console.error(`getKeepAliveAppServiceExtensions fail, err: ${code}, ${message}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -2096,17 +2868,53 @@ try {
 
 ## AppForegroundStateObserver<sup>11+</sup>
 
-type AppForegroundStateObserver = _AppForegroundStateObserver
+type AppForegroundStateObserver = _AppForegroundStateObserver.default
 
-应用启动和退出的状态监听。
+应用启动、前后台和退出的状态监听。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
+
 | 类型 | 说明 |
 | --- | --- |
-| [_AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | 应用启动和退出的状态监听。 |
+| [AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md).default | 应用启动、前后台和退出的状态监听。 |
+
+## AppForegroundStateObserver<sup>23+</sup>
+
+type AppForegroundStateObserver = _AppForegroundStateObserver
+
+应用启动、前后台和退出的状态监听。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                                                         | 说明                       |
+| ------------------------------------------------------------ | -------------------------- |
+| [_AppForegroundStateObserver](js-apis-inner-application-appForegroundStateObserver-sys.md) | 应用启动、前后台和退出的状态监听。 |
 
 ## AbilityFirstFrameStateObserver<sup>12+</sup>
+
+type AbilityFirstFrameStateObserver = _AbilityFirstFrameStateObserver.default
+
+UIAbility首帧绘制完成事件监听对象。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
+| 类型 | 说明 |
+| --- | --- |
+| [AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md).default | UIAbility首帧绘制完成事件监听对象。 |
+
+## AbilityFirstFrameStateObserver<sup>23+</sup>
 
 type AbilityFirstFrameStateObserver = _AbilityFirstFrameStateObserver
 
@@ -2114,11 +2922,31 @@ UIAbility首帧绘制完成事件监听对象。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-| 类型 | 说明 |
-| --- | --- |
-| [_AbilityFirstFrameStateObserver](js-apis-inner-application-abilityFirstFrameStateData-sys.md) | UIAbility首帧绘制完成事件监听对象。 |
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| [AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md) | UIAbility首帧绘制完成事件监听对象。 |
 
 ## AbilityFirstFrameStateData<sup>12+</sup>
+
+type AbilityFirstFrameStateData = _AbilityFirstFrameStateData.default
+
+UIAbility首帧绘制完成回调上报数据结构。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
+
+| 类型 | 说明 |
+| --- | --- |
+| [AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md).default | UIAbility首帧绘制完成回调上报数据结构。 |
+
+## AbilityFirstFrameStateData<sup>23+</sup>
 
 type AbilityFirstFrameStateData = _AbilityFirstFrameStateData
 
@@ -2126,8 +2954,12 @@ UIAbility首帧绘制完成回调上报数据结构。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-| 类型 | 说明 |
-| --- | --- |
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                                                         | 说明                                    |
+| ------------------------------------------------------------ | --------------------------------------- |
 | [_AbilityFirstFrameStateData](js-apis-inner-application-abilityFirstFrameStateData-sys.md) | UIAbility首帧绘制完成回调上报数据结构。 |
 
 ## RunningMultiAppInfo<sup>12+</sup>
@@ -2138,22 +2970,30 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型 | 说明 |
 | --- | --- |
 | [_RunningMultiAppInfo](js-apis-inner-application-runningMultiAppInfo-sys.md) | 应用多开在运行态的结构信息。 |
 
 ## FilterBundleType<sup>21+</sup>
 
-表示要监听的的应用类型，该类型为枚举。可配合[AppStateFilter](#appstatefilter21)过滤想要监听的应用类型。
+表示要监听的应用类型，该类型为枚举。可配合[AppStateFilter](#appstatefilter21)过滤想要监听的应用类型。
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-| 名称        | 值  | 说明 |
-| -------- | ---------- | -------- |
-| APP | 1 | 应用。 |
-| ATOMIC_SERVICE | 2 | 原子化服务。|
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 21
+
+| 名称           | 值   | 说明         |
+| -------------- | ---- | ------------ |
+| APP            | 1 << 0    | 应用。       |
+| ATOMIC_SERVICE | 1 << 1    | 原子化服务。 |
 
 ## FilterAppStateType<sup>21+</sup>
 
@@ -2163,12 +3003,16 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-| 名称        | 值  | 说明 |
-| -------- | ---------- | -------- |
-| CREATE | 1 | 应用正在初始化，对应[AppStateData](js-apis-inner-application-appStateData.md#属性)中state取值为0的状态。 |
-| FOREGROUND | 2 | 应用位于前台，对应[AppStateData](js-apis-inner-application-appStateData.md#属性)中state取值为2的状态。|
-| BACKGROUND | 4 | 应用位于后台，对应[AppStateData](js-apis-inner-application-appStateData.md#属性)中state取值为4的状态。|
-| DESTROY | 8 | 应用已退出，对应[AppStateData](js-apis-inner-application-appStateData.md#属性)中state取值为5的状态。|
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 21
+
+| 名称       | 值   | 说明                                                         |
+| ---------- | ---- | ------------------------------------------------------------ |
+| CREATE     | 1 << 0    | 应用正在初始化，对应[AppStateData](js-apis-inner-application-appStateData.md)中state取值为0的状态。 |
+| FOREGROUND | 1 << 1    | 应用位于前台，对应[AppStateData](js-apis-inner-application-appStateData.md)中state取值为2的状态。 |
+| BACKGROUND | 1 << 2    | 应用位于后台，对应[AppStateData](js-apis-inner-application-appStateData.md)中state取值为4的状态。 |
+| DESTROY    | 1 << 3    | 应用已退出，对应[AppStateData](js-apis-inner-application-appStateData.md)中state取值为5的状态。 |
 
 ## FilterProcessStateType<sup>21+</sup>
 
@@ -2178,12 +3022,16 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-| 名称        | 值  | 说明 |
-| -------- | ---------- | -------- |
-| CREATE | 1 | 进程刚创建完成，对应[ProcessData](js-apis-inner-application-processData.md#属性)中state取值为0的状态。 |
-| FOREGROUND | 2 | 进程处于前台，对应[ProcessData](js-apis-inner-application-processData.md#属性)中state取值为2的状态。|
-| BACKGROUND | 4 | 进程处于后台，对应[ProcessData](js-apis-inner-application-processData.md#属性)中state取值为4的状态。|
-| DESTROY | 8 | 进程已终止，对应[ProcessData](js-apis-inner-application-processData.md#属性)中state取值为5的状态。|
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 21
+
+| 名称       | 值   | 说明                                                         |
+| ---------- | ---- | ------------------------------------------------------------ |
+| CREATE     | 1 << 0    | 进程刚创建完成，对应[ProcessData](js-apis-inner-application-processData.md)中state取值为0的状态。 |
+| FOREGROUND | 1 << 1    | 进程处于前台，对应[ProcessData](js-apis-inner-application-processData.md)中state取值为2的状态。 |
+| BACKGROUND | 1 << 2    | 进程处于后台，对应[ProcessData](js-apis-inner-application-processData.md)中state取值为4的状态。 |
+| DESTROY    | 1 << 3    | 进程已终止，对应[ProcessData](js-apis-inner-application-processData.md)中state取值为5的状态。 |
 
 ## FilterAbilityStateType<sup>21+</sup>
 
@@ -2193,12 +3041,16 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-| 名称        | 值  | 说明 |
-| -------- | ---------- | -------- |
-| CREATE | 1 | Ability正在创建中，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_CREATE。 |
-| FOREGROUND | 2 | Ability处于前台，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_FOREGROUND。|
-| BACKGROUND | 4 | Ability处于后台，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_BACKGROUND。|
-| DESTROY | 8 | Ability已经销毁，对应[Ability状态](js-apis-inner-application-abilityStateData.md#ability状态)中的ABILITY_STATE_TERMINATED。|
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 21
+
+| 名称       | 值   | 说明                                                         |
+| ---------- | ---- | ------------------------------------------------------------ |
+| CREATE | 1 << 0 | Ability正在创建中，对应[UIAbility状态](js-apis-inner-application-abilityStateData.md#uiability状态)、[ExtensionAbility状态](js-apis-inner-application-abilityStateData.md#extensionability状态)以及[UIExtensionAbility状态](js-apis-inner-application-abilityStateData.md#uiextensionability状态)中state取值为0的状态。 |
+| FOREGROUND | 1 << 1 | Ability处于前台，对应[UIAbility状态](js-apis-inner-application-abilityStateData.md#uiability状态)和[UIExtensionAbility状态](js-apis-inner-application-abilityStateData.md#uiextensionability状态)中state取值为2的状态。|
+| BACKGROUND | 1 << 2 | Ability处于后台，对应[UIAbility状态](js-apis-inner-application-abilityStateData.md#uiability状态)和[UIExtensionAbility状态](js-apis-inner-application-abilityStateData.md#uiextensionability状态)中state取值为4的状态。|
+| DESTROY | 1 << 3 | Ability已经销毁，对应[UIAbility状态](js-apis-inner-application-abilityStateData.md#uiability状态)、[ExtensionAbility状态](js-apis-inner-application-abilityStateData.md#extensionability状态)以及[UIExtensionAbility状态](js-apis-inner-application-abilityStateData.md#uiextensionability状态)中state取值为5的状态和[ExtensionAbility状态](js-apis-inner-application-abilityStateData.md#extensionability状态)中state取值为4的状态。|
 
 ## FilterCallback<sup>21+</sup>
 
@@ -2208,15 +3060,19 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-| 名称        | 值  | 说明 |
-| -------- | ---------- | -------- |
-| ON_FOREGROUND_APPLICATION_CHANGED | 1 | 该枚举对应应用前后台状态发生变化时执行的回调函数[ApplicationStateObserver.onForegroundApplicationChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronforegroundapplicationchanged)。|
-| ON_ABILITY_STATE_CHANGED | 2 | 该枚举对应Ability状态发生变化时执行的回调函数[ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged)。|
-| ON_PROCESS_CREATED | 4 | 该枚举对应进程创建时执行的回调函数[ApplicationStateObserver.onProcessCreated](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocesscreated)。|
-| ON_PROCESS_DIED | 8 | 该枚举对应进程销毁时执行的回调函数[ApplicationStateObserver.onProcessDied](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessdied)。|
-| ON_PROCESS_STATE_CHANGED | 16 | 该枚举对应进程状态更新时执行的回调函数[ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged)。|
-| ON_APP_STARTED | 32 | 该枚举对应应用第一个进程创建时执行的回调函数[ApplicationStateObserver.onAppStarted](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstarted)。|
-| ON_APP_STOPPED | 64 | 该枚举对应应用最后一个进程销毁时执行的回调函数[ApplicationStateObserver.onAppStopped](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstopped)。|
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 21
+
+| 名称                              | 值   | 说明                                                         |
+| --------------------------------- | ---- | ------------------------------------------------------------ |
+| ON_FOREGROUND_APPLICATION_CHANGED | 1 << 0    | 该枚举对应应用前后台状态发生变化时执行的回调函数[ApplicationStateObserver.onForegroundApplicationChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronforegroundapplicationchanged)。 |
+| ON_ABILITY_STATE_CHANGED          | 1 << 1    | 该枚举对应Ability状态发生变化时执行的回调函数[ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged)。 |
+| ON_PROCESS_CREATED                | 1 << 2    | 该枚举对应进程创建时执行的回调函数[ApplicationStateObserver.onProcessCreated](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocesscreated)。 |
+| ON_PROCESS_DIED                   | 1 << 3    | 该枚举对应进程销毁时执行的回调函数[ApplicationStateObserver.onProcessDied](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessdied)。 |
+| ON_PROCESS_STATE_CHANGED          | 1 << 4   | 该枚举对应进程状态更新时执行的回调函数[ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged)。 |
+| ON_APP_STARTED                    | 1 << 5   | 该枚举对应应用第一个进程创建时执行的回调函数[ApplicationStateObserver.onAppStarted](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstarted)。 |
+| ON_APP_STOPPED                    | 1 << 6   | 该枚举对应应用最后一个进程销毁时执行的回调函数[ApplicationStateObserver.onAppStopped](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronappstopped)。 |
 
 ## AppStateFilter<sup>21+</sup>
 
@@ -2226,10 +3082,14 @@ type RunningMultiAppInfo = _RunningMultiAppInfo
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 21
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------------------------- | ------ | ---- | ---- | --------- |
-| bundleTypes  | [FilterBundleType](#filterbundletype21) | 否 | 是  | 表示要监听的应用类型。取值范围是：<br> - 0：表示不监听任何类型的应用。<br> - [FilterBundleType](#filterbundletype21)中枚举的按位或运算组合：例如 "appManager.FilterBundleType.APP \| appManager.FilterBundleType.ATOMIC_SERVICE" ，表示同时监听应用和原子化服务的生命周期变化事件。<br> - 如果该项不设置，则默认监听所有的应用类型。|
-| appStateTypes | [FilterAppStateType](#filterappstatetype21) | 否 | 是 | 表示要监听的应用状态。 取值范围是：<br> - 0：表示不监听任何应用状态。<br> - [FilterAppStateType](#filterappstatetype21)中枚举的按位或运算组合：例如 "appManager.FilterAppStateType.CREATE \| appManager.FilterAppStateType.FOREGROUND" ，表示同时监听应用的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的应用状态。|
-| processStateTypes | [FilterProcessStateType](#filterprocessstatetype21) | 否 | 是 | 表示要监听的进程状态。取值范围是：<br> - 0：表示不监听任何进程状态。<br> - [FilterProcessStateType](#filterprocessstatetype21)中枚举的按位或运算组合：例如 "appManager.FilterProcessStateType.CREATE \| appManager.FilterProcessStateType.FOREGROUND" ，表示同时监听进程的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的进程状态。|
-| abilityStateTypes | [FilterAbilityStateType](#filterabilitystatetype21) | 否 | 是  | 表示要监听的Ability状态。取值范围是：<br> - 0：表示不监听任何Ability状态。<br> - [FilterAbilityStateType](#filterabilitystatetype21)中枚举的按位或运算组合：例如 "appManager.FilterAbilityStateType.CREATE \| appManager.FilterAbilityStateType.FOREGROUND" ，表示同时监听Ability的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的Ability状态。|
-| callbacks | [FilterCallback](#filtercallback21) | 否 | 是  | 表示要监听的回调函数。取值范围是：<br> - 0：表示不监听任何回调函数。<br> - [FilterCallback](#filtercallback21)中枚举的按位或运算组合：例如 "appManager.FilterCallback.ON_ABILITY_STATE_CHANGED \| appManager.FilterCallback.ON_PROCESS_STATE_CHANGED" ，表示同时监听[ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged)和[ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged)。 <br> - 如果该项不设置，则默认监听[FilterCallback](#filtercallback21)中对应的所有回调函数。|
+| bundleTypes  | number | 否 | 是  | 表示要监听的应用类型。取值范围是：<br> - 0：表示不监听任何类型的应用。<br> - [FilterBundleType](#filterbundletype21)中枚举的按位或运算组合：例如 "appManager.FilterBundleType.APP \| appManager.FilterBundleType.ATOMIC_SERVICE" ，表示同时监听普通应用和原子化服务的生命周期变化事件。<br> - 如果该项不设置，则默认监听所有的应用类型。|
+| appStateTypes | number | 否 | 是 | 表示要监听的应用状态。 取值范围是：<br> - 0：表示不监听任何应用状态。<br> - [FilterAppStateType](#filterappstatetype21)中枚举的按位或运算组合：例如 "appManager.FilterAppStateType.CREATE \| appManager.FilterAppStateType.FOREGROUND" ，表示同时监听应用的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的应用状态。|
+| processStateTypes | number | 否 | 是 | 表示要监听的进程状态。取值范围是：<br> - 0：表示不监听任何进程状态。<br> - [FilterProcessStateType](#filterprocessstatetype21)中枚举的按位或运算组合：例如 "appManager.FilterProcessStateType.CREATE \| appManager.FilterProcessStateType.FOREGROUND" ，表示同时监听进程的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的进程状态。|
+| abilityStateTypes | number | 否 | 是  | 表示要监听的Ability状态。取值范围是：<br> - 0：表示不监听任何Ability状态。<br> - [FilterAbilityStateType](#filterabilitystatetype21)中枚举的按位或运算组合：例如 "appManager.FilterAbilityStateType.CREATE \| appManager.FilterAbilityStateType.FOREGROUND" ，表示同时监听Ability的创建状态和前台状态。<br> - 如果该项不设置，则默认监听所有的Ability状态。|
+| callbacks | number | 否 | 是  | 表示要监听的回调函数。取值范围是：<br> - 0：表示不监听任何回调函数。<br> - [FilterCallback](#filtercallback21)中枚举的按位或运算组合：例如 "appManager.FilterCallback.ON_ABILITY_STATE_CHANGED \| appManager.FilterCallback.ON_PROCESS_STATE_CHANGED" ，表示同时监听[ApplicationStateObserver.onAbilityStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronabilitystatechanged)和[ApplicationStateObserver.onProcessStateChanged](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocessstatechanged)。 <br> - 如果该项不设置，则默认监听[FilterCallback](#filtercallback21)中对应的所有回调函数。|

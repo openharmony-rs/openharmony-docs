@@ -718,6 +718,7 @@ ArkTS-Sta: getUidRxBytes(uid: int, callback: AsyncCallback\<long>): void
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>  适用版本：26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -784,6 +785,7 @@ ArkTS-Sta: getUidRxBytes(uid: int): Promise\<long>
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>  适用版本：26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -842,6 +844,7 @@ ArkTS-Sta: getUidTxBytes(uid: int, callback: AsyncCallback\<long>): void
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>  适用版本：26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -908,6 +911,7 @@ ArkTS-Sta: getUidTxBytes(uid: int): Promise\<long>
 
 | 错误码ID | 错误信息                                     |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>  适用版本：26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -952,7 +956,7 @@ ArkTS-Sta: getSockfdRxBytes(sockfd: int, callback: AsyncCallback\<long\>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| sockfd   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file description)。                     |
+| sockfd   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file descriptor)。                     |
 | callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。当成功获取socket的下行流量时，error为undefined，stats 为获取到的该socket的实时下行流量(单位:字节)；否则为错误对象。 |
 
 **错误码：**
@@ -1010,7 +1014,7 @@ ArkTS-Sta: getSockfdRxBytes(sockfd: int): Promise\<long\>
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| sockfd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file description)。 |
+| sockfd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file descriptor)。 |
 
 **返回值：**
 
@@ -1076,7 +1080,7 @@ ArkTS-Sta: getSockfdTxBytes(sockfd: int, callback: AsyncCallback\<long\>): void
 
 | 参数名   | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| sockfd   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file description)。                     |
+| sockfd   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file descriptor)。                     |
 | callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。当成功获取socket的上行流量时，error为undefined，stats 为获取到的该socket的实时上行流量(单位:字节)；否则为错误对象。 |
 
 **错误码：**
@@ -1134,7 +1138,7 @@ ArkTS-Sta: getSockfdTxBytes(sockfd: int): Promise\<long\>
 
 | 参数名 | 类型   | 必填 | 说明                                     |
 | ------ | ------ | ---- | ---------------------------------------- |
-| sockfd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file description)。 |
+| sockfd | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定查询的socket的fd(file descriptor)。 |
 
 **返回值：**
 
@@ -1197,7 +1201,7 @@ getSelfTrafficStats(networkInfo: NetworkInfo): Promise\<NetStatsInfo\>
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -1269,7 +1273,7 @@ type NetBearType = connection.NetBearType
 
 **ArkTS-Sta起始版本：** 23
 
-| 参数名   | 类型                   | 只读 |可选 | 说明                                                         |
+| 名称   | 类型                   | 只读 |可选 | 说明                                                         |
 | -------- | ---------------------- | ---- | -------------------|----------------------------------------- |
 | type      | [NetBearType](#netbeartype12) | 否  |否 |网络类型。<br>**注意：** 当type为蜂窝网络时，需指定simId字段。       |
 | startTime | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  |否 | 开始时间戳(单位：秒)。 |
@@ -1287,7 +1291,7 @@ type NetBearType = connection.NetBearType
 
 **ArkTS-Sta起始版本：** 23
 
-| 参数名   | 类型                   | 只读 |可选 | 说明                                                         |
+| 名称   | 类型                   | 只读 |可选 | 说明                                                         |
 | -------- | ---------------------- | ---- | --------|---------------------------------------------------- |
 | rxBytes   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 否 |流量下行数据(单位：字节)。 |
 | txBytes   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否  | 否 |流量上行数据(单位：字节)。 |

@@ -15,7 +15,7 @@ The **List** component is ideal for single-column or multi-column layouts where 
 
 In scenarios like live comment feeds or instant messaging, where new data is appended to the bottom, the list should automatically scroll upward to reveal newly added items. This behavior can be enabled by [configuring the **List** component to stack from the end](../reference/apis-arkui/arkui-ts/ts-container-list.md#stackfromend19).
 
-![](figures/en-us_image_0000001511580940.png)
+![list](figures/list.png)
 
 ## Grid
 
@@ -23,7 +23,7 @@ A grid layout organizes items into rows and columns, allowing flexible positioni
 
 To support items that span multiple rows or columns, configure the grid using [GridLayoutOptions](../reference/apis-arkui/arkui-ts/ts-container-grid.md#gridlayoutoptions10).
 
-![](figures/en-us_image_0000001562700473.png)
+![grid2](figures/grid2.png)
 
 ## Waterfall Flow
 

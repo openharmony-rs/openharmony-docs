@@ -11,7 +11,7 @@
 
 在软件开发流程中，识别并减少冗余操作至关重要。为优化性能，开发者需在开发阶段适度增加日志以辅助调试，而在生产环境中则需避免冗余日志和Trace追踪输出。还需要审查并删除无实际功能的空回调函数，确保回调有明确的目的。通过精简日志、合理规划Trace追踪和严谨处理回调函数，能够有效降低冗余，提升代码质量与运行性能，从而提高软件产品的用户体验。接下来，将进一步探讨关注点及优化方法。
 
-## 避免在系统高频回调用进行冗余和耗时操作
+## 避免在系统高频回调中进行冗余和耗时操作
 
 高频回调接口通常是指在应用程序运行过程中会被频繁触发的事件或回调函数，如滚动事件、触摸事件、鼠标事件、拖拽事件以及手势移动过程更新事件等。这类接口的核心特征在于极高的触发频率和对性能的严苛要求。在软件开发阶段，针对这类高频回调接口的性能优化不可忽视。其中，有效的优化策略是在接口内部避免执行冗余的日志记录、Trace追踪以及耗时操作。系统中常见的高频接口包括但不限于以下几种：
 
@@ -33,7 +33,7 @@
 
 - `onDidScroll`：滚动组件滑动时触发，返回当前帧滑动的偏移量和当前滑动状态。（滚动组件中如Scroll、List等）
 
-- `onActionUpdate`：手势移动过程更新事件会在手势移动过程中回调。（在基础手势中如PinchGesture、PinchGesture、RotationGesture等）
+- `onActionUpdate`：手势移动过程更新事件会在手势移动过程中回调。（在基础手势中如PinchGesture、TapGesture、RotationGesture等）
 
 **反例：**
 
@@ -114,7 +114,7 @@ struct PositiveOfOnDidScroll {
 
 ### 在release版本中删除Trace
 
-在release版本中，通常应当限制或移除Trace追踪功能，Trace务于开发和调试阶段，用于记录和追踪程序执行过程中的详细信息。在release版本中保留Trace可能会引入不必要的性能开销，比如占用额外的CPU资源、内存以及存储空间，尤其是当Trace信息频繁产生时，可能会影响应用程序的性能和响应速度。
+在release版本中，通常应当限制或移除Trace追踪功能，Trace服务于开发和调试阶段，用于记录和追踪程序执行过程中的详细信息。在release版本中保留Trace可能会引入不必要的性能开销，比如占用额外的CPU资源、内存以及存储空间，尤其是当Trace信息频繁产生时，可能会影响应用程序的性能和响应速度。
 
 **反例：**
 
@@ -176,6 +176,9 @@ struct NegativeOfDebug {
   @State string2: string = 'b';
 
   aboutToAppear() {
+    // 实际调用debug方法前会先将参数拼接为msg，再调用debug方法
+    // const msg = this.string1 + this.string2;
+    // hilog.debug(msg);
     hilog.debug(1003, 'Debug', (this.string1 + this.string2));
     // 业务代码
     // ...
@@ -185,9 +188,6 @@ struct NegativeOfDebug {
   }
 }
 
-// 实际调用debug方法前会先将参数拼接为msg，再调用debug方法
-const msg = this.string1 + this.string2;
-hilog.debug(msg);
 ```
 
 **正例**：
@@ -212,12 +212,12 @@ struct PositiveOfDebug {
 }
 ```
 
-通过上述案例可以看出，在release模式下，即使debug日志并未实际打印出来，其内部的构造逻辑依旧会被执行，这无疑会造成一定的性能开销。当涉及@state状态变量时，由于这类变量间的双向数据绑定特性，会加剧资源消耗。因此，在开发过程中，开发者应当留意并尽量避免编写这类在非调试状态下并无实际作用的冗余日志逻辑。为了在release模式下优化性能，应积极采取措施减少或移除这类不必要日志构造和打印操作。以下是对debug函数底层实现的一种简化版伪代码描述：
+通过上述案例可以看出，在release模式下，即使debug日志并未实际打印出来，其内部的构造逻辑依旧会被执行，这无疑会造成一定的性能开销。当涉及@State状态变量时，由于这类变量间的双向数据绑定特性，会加剧资源消耗。因此，在开发过程中，开发者应当留意并尽量避免编写这类在非调试状态下并无实际作用的冗余日志逻辑。为了在release模式下优化性能，应积极采取措施减少或移除这类不必要日志构造和打印操作。以下是对debug函数底层实现的一种简化版伪代码描述：
 
 ```typescript
 // debug函数底层实现
 void debug(string& msg){ // msg为string1与string2的拼接结果
-    if(isDebug){ // isDebug判读是否为debug模式
+    if(isDebug){ // isDebug判断是否为debug模式
       print(msg) // 打印结果
     }
 }

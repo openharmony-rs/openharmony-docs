@@ -1,4 +1,12 @@
-# B帧视频编码
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍B帧编码特性，B帧（双向预测编码）通过同时参考前后帧信息降低时域冗余、提升压缩效率，适用于录像、编辑导出、转码及非低时延直播场景，需注意会增加端到端时延。"
+keywords: [B帧编码, 双向预测, 最大B帧数, 码控模式]
+doctype: guide
+status: active
+---
+
+# 高压缩率B帧编码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
@@ -27,9 +35,9 @@ B帧编码预测过程同时利用前后帧的信息，可以显著降低信号�
 ## 约束和限制
 
 - **支持的平台**：该能力与平台能力有关，可以通过[OH_AVCapability_IsFeatureSupported](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported)接口查询系统支持情况。
- - **支持的API版本**：API version 20及以后。
+- **支持的API版本**：API version 20及以后。
 - **支持的编码器**：该能力与编码器能力有关，可以通过[OH_AVCodec_GetCapabilityByCategory](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapabilitybycategory)接口查询支持情况。
-- **支持的码控模式**：VBR、CBR、CQ、SQR，从API版本26.0.0开始，新增支持CBR_HIGH_QUALITY。
+- **支持的码控模式**：VBR、CBR、SQR、CQ，从API版本26.0.0开始，新增支持CBR_HIGH_QUALITY。
 - 不支持与时域可分层视频编码共同使能。
 - 不支持与长期参考帧共同使能。
 
@@ -46,7 +54,7 @@ B帧编码预测过程同时利用前后帧的信息，可以显著降低信号�
 
 ## 开发指导
 
-基础编码功能请参考[视频编码](video-encoding.md)开发指南，下面仅针对B帧编码做具体说明。
+基础编码功能请参考[异步模式视频编码](video-encoding.md)开发指南，下面仅针对B帧编码做具体说明。
 
 1. 在初始阶段创建编码实例时，校验当前视频编码器是否支持B帧编码特性。
 

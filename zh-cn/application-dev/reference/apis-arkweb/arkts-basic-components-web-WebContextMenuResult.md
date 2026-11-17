@@ -1,12 +1,16 @@
 # Class (WebContextMenuResult)
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-实现长按页面元素或鼠标右键弹出来的菜单所执行的响应事件。示例代码参考[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)。
+WebContextMenuResult是ArkWeb组件中用于处理上下文菜单（长按页面元素或鼠标右键弹出菜单）事件的类。它为开发者提供了一系列菜单操作的执行能力，包括文本编辑操作（复制、粘贴、剪切、全选、撤销、重做、粘贴并匹配样式）、图片操作（复制图片、保存图片）、菜单控制（关闭菜单）以及密码自动填充功能。
+
+开发者通常在需要自定义Web组件上下文菜单行为时使用WebContextMenuResult。通过`onContextMenuShow`事件回调获取WebContextMenuResult实例，结合WebContextMenuParam提供的菜单上下文信息，判断用户操作场景并调用相应的响应方法，从而实现自定义菜单交互逻辑。若开发者不执行任何菜单响应操作，则必须调用`closeContextMenu`方法关闭菜单。
+
+示例代码参考[onContextMenuShow<sup>9+</sup>](./arkts-basic-components-web-events.md#oncontextmenushow9)。
 
 支持使用[@ohos.transfer](../apis-arkts/js-apis-transfer.md)系统对象转换工具进行动静态类型转换。
 
@@ -14,9 +18,9 @@
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 本Class首批接口从API version 9开始支持。
+> - 本Class从API version 9开始支持。
 >
 > - 示例效果请以真机运行为准。
 
@@ -38,6 +42,11 @@ closeContextMenu(): void
 
 不执行WebContextMenuResult其他接口操作时，需要调用此接口关闭菜单。
 
+**调用说明：**
+- 调用WebContextMenuResult的其他方法（如copy、paste、cut等）完成操作后，应调用此方法关闭菜单。
+- 如果不再需要执行其他菜单操作，也应及时调用此方法关闭菜单。
+- 未调用此方法可能导致菜单资源未正确释放。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 9
@@ -48,7 +57,11 @@ closeContextMenu(): void
 
 copyImage(): void
 
-当WebContextMenuParam包含图片内容时，用于复制该图片，从API version 24开始支持对canvas图片进行复制。
+当WebContextMenuParam包含图片内容时，用于复制该图片到剪贴板，从API version 24开始支持对canvas图片进行复制。若需保存图片到本地文件，应使用saveImage()方法。
+
+> **说明：**
+>
+> 完成操作后，应调用[closeContextMenu](#closecontextmenu9)关闭菜单，未调用可能导致菜单资源未正确释放。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -62,6 +75,10 @@ copy(): void
 
 执行复制文本操作。
 
+> **说明：**
+>
+> 完成操作后，应调用[closeContextMenu](#closecontextmenu9)关闭菜单，未调用可能导致菜单资源未正确释放。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 9
@@ -72,9 +89,11 @@ copy(): void
 
 paste(): void
 
-执行粘贴操作。
+执行粘贴操作，保留原始格式。若需粘贴纯文本并匹配目标格式，应使用pasteAndMatchStyle()方法。
 
 > **说明：**
+>
+> 完成操作后，应调用[closeContextMenu](#closecontextmenu9)关闭菜单，未调用可能导致菜单资源未正确释放。
 >
 > 需要配置权限：[ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard)。
 
@@ -90,6 +109,10 @@ cut(): void
 
 执行剪切操作。
 
+> **说明：**
+>
+> 完成操作后，应调用[closeContextMenu](#closecontextmenu9)关闭菜单，未调用可能导致菜单资源未正确释放。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 9
@@ -102,6 +125,10 @@ selectAll(): void
 
 执行全选操作。
 
+> **说明：**
+>
+> 完成操作后，应调用[closeContextMenu](#closecontextmenu9)关闭菜单，未调用可能导致菜单资源未正确释放。
+
 **系统能力：** SystemCapability.Web.Webview.Core
 
 **ArkTS-Dyn起始版本：** 9
@@ -112,7 +139,15 @@ selectAll(): void
 
 undo(): void
 
-执行撤销操作。
+执行撤销操作，撤销上一次的编辑操作。
+
+**配合关系：**
+- 与redo()方法配合使用，调用undo()后，可以通过redo()重新执行被撤销的操作。
+- 如果用户未执行过撤销操作，则无法使用redo()方法。
+
+> **说明：**
+>
+> 完成操作后，应调用[closeContextMenu](#closecontextmenu9)关闭菜单，未调用可能导致菜单资源未正确释放。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -124,7 +159,15 @@ undo(): void
 
 redo(): void
 
-执行重做操作，即取消用户上一次的撤销操作。
+执行重做操作，重新执行被撤销的操作。
+
+**配合关系：**
+- 与undo()方法配合使用，调用undo()后，可以通过redo()重新执行被撤销的操作。
+- 如果用户未执行过撤销操作，则无法使用redo()方法。
+
+> **说明：**
+>
+> 完成操作后，应调用[closeContextMenu](#closecontextmenu9)关闭菜单，未调用可能导致菜单资源未正确释放。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -140,6 +183,8 @@ pasteAndMatchStyle(): void
 
 > **说明：**
 >
+> 完成操作后，应调用[closeContextMenu](#closecontextmenu9)关闭菜单，未调用可能导致菜单资源未正确释放。
+>
 > 需要配置权限：[ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
@@ -153,6 +198,10 @@ pasteAndMatchStyle(): void
 requestPasswordAutoFill(): void
 
 请求密码保险箱中的用户名或密码数据自动填充到当前获得焦点的输入框中。
+
+> **说明：**
+>
+> 完成操作后，应调用[closeContextMenu](#closecontextmenu9)关闭菜单，未调用可能导致菜单资源未正确释放。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -291,6 +340,46 @@ ArkTS-Sta中使用ArkTS-Dyn的WebContextMenuResult对象。
 saveImage(): void
 
 保存上下文菜单相关的图片，调用后将触发下载流程。
+
+> **说明：**
+>
+> 完成操作后，应调用[closeContextMenu](#closecontextmenu9)关闭菜单，未调用可能导致菜单资源未正确释放。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## copyLinkToTextMenu
+
+copyLinkToTextMenu(): void
+
+将指向当前高亮文本的Text Fragment链接复制到系统剪贴板。复制的URL包含符合W3C Text Fragments规范的**#:~:text=**片段。剪贴板内容与[getTextFragmentGeneratedLink](./arkts-basic-components-web-WebContextMenuParam.md#gettextfragmentgeneratedlink)返回的URL相同。
+
+建议在[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)事件回调中使用此接口。调用此接口前，建议先调用[shouldOfferLinkToText](./arkts-basic-components-web-WebContextMenuParam.md#shouldofferlinktotext)检查当前选中文本是否支持链接生成。若选中文本不支持链接生成，此方法不会向剪贴板写入内容。
+
+> **说明：**
+>
+> 完成操作后，应调用[closeContextMenu](#closecontextmenu9)关闭菜单，未调用可能导致菜单资源未正确释放。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## removeFragments
+
+removeFragments(): void
+
+移除当前网页上所有Text Fragment高亮，恢复原始文本样式。
+
+建议在[onContextMenuShow](./arkts-basic-components-web-events.md#oncontextmenushow9)事件回调中使用此接口。调用此接口前，建议先调用[isOverTextFragment](./arkts-basic-components-web-WebContextMenuParam.md#isovertextfragment)检查是否存在高亮。若不存在高亮，此方法不做任何操作。
+
+> **说明：**
+>
+> 完成操作后，应调用[closeContextMenu](#closecontextmenu9)关闭菜单，未调用可能导致菜单资源未正确释放。
+
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

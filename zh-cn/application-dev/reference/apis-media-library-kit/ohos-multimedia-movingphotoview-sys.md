@@ -54,7 +54,26 @@
 | ---------------------- | ------ | ----------------- |
 | HIGH                | 0      | 允许图像内容使用不受限制的扩展范围，显示HDR效果，建议使用的解码格式YCBCR_P010。|
 | CONSTRAINT         | 1      | 允许图像内容使用一些扩展范围。|
-| STANDARD            | 2      | 允许图像内容动态单位限制在标准范围内，显示SDR效果，需要使用的解码格式UNKNOWN或者RGBA_8888。|
+| STANDARD            | 2      | 允许图像内容动态范围限制在标准范围内，显示SDR效果，需要使用的解码格式UNKNOWN或者RGBA_8888。|
+
+## DisplayMode
+
+表示动态照片组件显示模式的枚举。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+ 
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称                   |   值   | 说明              |
+| ---------------------- | ------ | ----------------- |
+| IMAGE_AND_VIDEO        | 0      | 显示封面帧。                 |
+| VIDEO_ONLY             | 1      | 隐藏封面帧，显示视频起播帧。 |
 
 ## MovingPhotoViewAttribute
 
@@ -73,7 +92,7 @@ setPlaybackStrategy(strategy: media.PlaybackStrategy): MovingPhotoViewAttribute
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **参数：**
- 	 
+  
 | 参数名 | 类型                                                                          | 必填 | 说明                             |
 | ------ | ----------------------------------------------------------------------------- | ---- | -------------------------------- |
 | strategy  | [media.PlaybackStrategy](../../../application-dev/reference/apis-media-kit/arkts-apis-media-i.md#playbackstrategy12) | 是   | 设置动态照片边播边处理策略。 |
@@ -278,14 +297,12 @@ enableAutoPlay(enabled: boolean)
 | 202 | Non-system applications are not allowed to use system APIs. |
 
 ### notifyMovingPhotoTransition<sup>23+</sup>
- 	 
+  
 notifyMovingPhotoTransition(): void
 
 通知组件执行封面图的过渡动效。
 
 **系统接口：** 此接口为系统接口。
-
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -296,3 +313,61 @@ notifyMovingPhotoTransition(): void
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 202 | Non-system applications are not allowed to use system APIs. |
+
+### setDisplayMode
+  
+setDisplayMode(mode: DisplayMode, callback: MovingPhotoViewEventCallback): void
+
+设置动态照片组件的显示模式，并在完成时触发回调。
+
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+ 
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 参数名  | 类型    | 必填 | 说明                         |
+| ------- | ------- | ---- | ---------------------------- |
+| mode| [DisplayMode](#displaymode) | 是   | 动态照片组件的显示模式。|
+| callback| [MovingPhotoViewEventCallback](../apis-media-library-kit/ohos-multimedia-movingphotoview.md#movingphotovieweventcallback)| 是   |  设置显示模式完成时的回调。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+### startPlayback
+  
+startPlayback(mode: DisplayMode): void
+
+根据组件的显示模式播放动态照片。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+ 
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 参数名  | 类型    | 必填 | 说明                         |
+| ------- | ------- | ---- | ---------------------------- |
+| mode| [DisplayMode](#displaymode) | 是   | 动态照片组件的显示模式。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |

@@ -1,3 +1,11 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "查询录制流和设备信息，监听采集状态变化，结合电平与录制可用性接口判断麦克风占用情况。"
+keywords: [录制状态查询, 录制状态监听, 麦克风占用检测, 录制可用性判断, 录音输入设备电平, 录制设备信息, 蓝牙录音设备信息]
+doctype: guide
+status: active
+---
+
 # 查询和监听其他应用录制状态
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -8,14 +16,15 @@
 
 对于录制音频类的应用，开发者需要关注该应用的音频流的状态以做出相应的操作，比如监听到状态为结束时，及时提示用户录制已结束。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS)。
 
 ## 读取或监听应用内音频流状态变化
 
-参考[使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)或[audio.createAudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiocapturer8)，先完成AudioCapturer的创建，再通过以下两种方法查看音频流状态的变化。
+参考[使用AudioCapturer开发音频录制功能(ArkTS)](using-audiocapturer-for-recording.md)或[audio.createAudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiocapturer8)，先完成AudioCapturer的创建，再通过以下两种方法查看音频流状态的变化。
 
 - 方法1：直接查看AudioCapturer的[属性](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#属性)state：
 
+  ArkTS-Dyn示例：
   <!-- @[view_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
 
   ``` TypeScript
@@ -23,10 +32,19 @@
   console.info(`Current state is: ${audioCapturerState }`)
   ```
 
+  ArkTS-Sta示例：
+  <!-- @[view_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->
+  
+  ``` TypeScript
+  let audioCapturerState: audio.AudioState = capturer.state;
+  console.info(`Current state is: ${audioCapturerState}`)
+  ```
+
 - 方法2：注册stateChange监听AudioCapturer的状态变化：
 
+  ArkTS-Dyn示例：
   <!-- @[listen_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
-  
+
   ``` TypeScript
   audioCapturer.on('stateChange', (capturerState: audio.AudioState) => {
     console.info(`State change to: ${capturerState}`)
@@ -34,15 +52,40 @@
   });
   ```
 
-获取state后可对照[AudioState](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostate8)来进行相应的操作，比如显示录制结束的提示等。
+  ArkTS-Sta示例：
+  <!-- @[listen_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->
+  
+  ``` TypeScript
+  capturer.onStateChange((capturerState: audio.AudioState) => {
+    console.info(`State change to: ${capturerState}`)
+    // ...
+  });
+  ```
+
+获取state后可根据[AudioState](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostate8)来进行相应的操作，比如显示录制结束的提示等。
 
 ## 读取或监听所有录制流的变化
 
-如果部分应用需要查询获取所有音频流的变化信息，可以通过AudioStreamManager读取或监听所有音频流的变化。
+如果部分应用需要查询所有音频流的变化信息，可以通过AudioStreamManager读取或监听所有音频流的变化。
+
+### 判断麦克风是否被占用
+
+录音、语音识别、实时语音通话、短语音消息、直播连麦等业务在启动音频采集前，通常需要先判断麦克风是否被占用。若麦克风已被其他录制流占用，新录音流可能无法正常启动；或者在启动成功后，也可能在运行过程中受系统音频焦点或录音并发策略影响而被中断、进入静音录制状态，进而导致录音文件不完整、语音识别结果缺失等问题。
+
+可根据业务场景，任选其中一种方法进行判断：
+
+- 查询当前采集器和输入设备电平：如果需要主动查询当前是否有输入设备正在采集声音，可联合使用[getCurrentAudioCapturerInfoArray](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#getcurrentaudiocapturerinfoarray9)和[getMaxAmplitudeForInputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#getmaxamplitudeforinputdevice12)。先调用`getCurrentAudioCapturerInfoArray`获取当前音频采集器信息，再遍历每个采集器使用的输入设备并调用`getMaxAmplitudeForInputDevice`获取音频流最大电平值，取值范围为[0, 1]。当最大电平值大于0时，说明该设备采集到声音，设备正在录音，可判断麦克风正在被占用。
+- 判断指定录制请求是否可启动：如果需要在启动录音前判断指定音源类型的录制请求是否可以启动，可调用[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20)，传入业务要使用的[AudioCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocapturerinfo8)。如果返回`true`，表明可以使用麦克风进行录制；如果返回`false`，表明麦克风可能已被占用。示例代码可参考[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20)。
+
+> **说明：**
+>
+> - `isRecordingAvailable`用于判断指定录制请求是否可以启动，不返回当前录制流详情。
+> - `getMaxAmplitudeForInputDevice`需配合`getCurrentAudioCapturerInfoArray`使用，先获取音频采集器使用的输入设备信息，再查询对应设备的最大电平值。
+> - `getCurrentAudioCapturerInfoArray`返回的信息可能包含系统内部录制流。开发者可结合`capturerInfo.source`和业务场景，判断录制流是否属于当前业务需要识别的麦克风占用场景。
 
 <!--Del-->
 > **说明：**
-> 
+>
 > 对于标记为系统接口（system api）的音频流变化信息需要系统级别应用才可查看，若应用不是系统应用，将无法获取准确信息。
 <!--DelEnd-->
 
@@ -58,20 +101,36 @@
 
 1. 创建AudioStreamManager实例。
 
+   ArkTS-Dyn示例：
    <!-- @[get_StreamManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->
 
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
+
+   let audioManager = audio.getAudioManager();
+   let audioStreamManager = audioManager.getStreamManager();
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[get_StreamManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioStreamManager.ets) -->
+   
+   ``` TypeScript
+   import { audio } from '@kit.AudioKit'; // 导入audio模块。
+   import { Callback } from '@kit.BasicServicesKit';
+   import {
+     Entry, Component, State, Scroll, Column, Text, Color, FlexAlign, HorizontalAlign, ClickEvent
+   } from '@kit.ArkUI';
    
    let audioManager = audio.getAudioManager();
    let audioStreamManager = audioManager.getStreamManager();
    ```
 
-2. 使用[on('audioCapturerChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiocapturerchange9)监听音频录制流更改事件。 如果音频流监听应用需要在音频录制流状态变化、设备变化时获取通知，可以订阅该事件。
+2. 使用[on('audioCapturerChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiocapturerchange9)监听音频录制流变化事件。如果应用需要在音频录制流状态变化、设备变化时获取通知，可以订阅该事件。
 
+   ArkTS-Dyn示例：
    <!-- @[audioStreamManager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->
-   
+
    ``` TypeScript
    audioStreamManager.on('audioCapturerChange', (audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) =>  {
      // ...
@@ -80,9 +139,9 @@
        console.info(`StreamId for ${i} is: ${audioCapturerChangeInfoArray[i].streamId}`);
        console.info(`Source for ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.source}`);
        console.info(`Flag  ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.capturerFlags}`);
-   
+
        // ...
-   
+
        let devDescriptor: audio.AudioDeviceDescriptors = audioCapturerChangeInfoArray[i].deviceDescriptors;
        for (let j = 0; j < audioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
          console.info(`Id: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].id}`);
@@ -99,8 +158,46 @@
    });
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[audioStreamManager_on](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioStreamManager.ets) -->
+   
+   ``` TypeScript
+   // ...
+   audioCapturerChangeInfoArray.forEach((capturerChangeInfo: Readonly<audio.AudioCapturerChangeInfo>, i: int): void => {
+     console.info(`## CapChange on is called for element ${i} ##`);
+     console.info(`StreamId for ${i} is: ${capturerChangeInfo.streamId}`);
+     console.info(`Source for ${i} is: ${capturerChangeInfo.capturerInfo.source}`);
+     console.info(`Flag  ${i} is: ${capturerChangeInfo.capturerInfo.capturerFlags}`);
+   
+     // ...
+   
+     capturerChangeInfo.deviceDescriptors.forEach((descriptor: Readonly<audio.AudioDeviceDescriptor>, j: int): void => {
+       let sampleRate = descriptor.sampleRates.find((value: int, index: int, array: Array<int>): boolean => {
+         return index === 0;
+       });
+       let channelCount = descriptor.channelCounts.find((value: int, index: int, array: Array<int>): boolean => {
+         return index === 0;
+       });
+       console.info(`Id: ${i} : ${descriptor.id}`);
+       console.info(`Type: ${i} : ${descriptor.deviceType}`);
+       console.info(`Role: ${i} : ${descriptor.deviceRole}`);
+       console.info(`Name: ${i} : ${descriptor.name}`);
+       console.info(`Address: ${i} : ${descriptor.address}`);
+       console.info(`SampleRates: ${i} : ${sampleRate}`);
+       console.info(`ChannelCounts ${i} : ${channelCount}`);
+       console.info(`ChannelMask: ${i} : ${descriptor.channelMasks}`);
+     });
+   });
+   
+   let callback = globalCallbackUpdate;
+   if (callback !== undefined) {
+     // ...
+   }
+   ```
+
 3. （可选）使用[off('audioCapturerChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#offaudiocapturerchange9)取消监听音频录制流变化。
 
+   ArkTS-Dyn示例：
    <!-- @[cancel_ListenAudioStreamManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->
 
    ``` TypeScript
@@ -108,14 +205,23 @@
    console.info('CapturerChange Off is called');
    ```
 
+   ArkTS-Sta示例：
+   <!-- @[cancel_ListenAudioStreamManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioStreamManager.ets) -->
+   
+   ``` TypeScript
+   audioStreamManager.offAudioCapturerChange(audioCapturerChangeCallback);
+   console.info('CapturerChange Off is called');
+   ```
+
 4. （可选）使用[getCurrentAudioCapturerInfoArray](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#getcurrentaudiocapturerinfoarray9)获取当前音频录制流的信息。该接口可获取音频录制流唯一ID、音频采集器信息以及音频录制设备信息。
 
    > **说明：**
-   > 
+   >
    > 对所有音频流状态进行监听的应用需要[声明权限](../../security/AccessToken/declare-permissions.md)ohos.permission.USE_BLUETOOTH，否则无法获得实际的设备名称和设备地址信息，查询到的设备名称和设备地址（蓝牙设备的相关属性）将为空字符串。
    > 从API version 20开始，通常在音频录制启动前调用[isRecordingAvailable](../../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#isrecordingavailable20)，判断当前传入的音频采集器信息中音源类型的录制是否可以启动成功。
 
-   <!-- @[get_CurrentAudioCapturerInfoArray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->
+   ArkTS-Dyn示例：
+   <!-- @[get_CurrentAudioCapturerInfoArray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->  
    
    ``` TypeScript
    async function getCurrentAudioCapturerInfoArray(updateCallback?:
@@ -125,16 +231,14 @@
      await audioStreamManager.getCurrentAudioCapturerInfoArray()
        .then((audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) => {
          console.info('getCurrentAudioCapturerInfoArray Get Promise Called');
-         let detailInfo = 'getCurrentAudioCapturerInfoArray Get Promise Called\n';
+         // ...
          if (audioCapturerChangeInfoArray != null) {
            for (let i = 0; i < audioCapturerChangeInfoArray.length; i++) {
              console.info(`StreamId for ${i} is: ${audioCapturerChangeInfoArray[i].streamId}`);
              console.info(`Source for ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.source}`);
              console.info(`Flag  ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.capturerFlags}`);
    
-             detailInfo += `StreamId for ${i} is: ${audioCapturerChangeInfoArray[i].streamId}\n`;
-             detailInfo += `Source for ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.source}\n`;
-             detailInfo += `Flag ${i} is: ${audioCapturerChangeInfoArray[i].capturerInfo.capturerFlags}\n`;
+             // ...
    
              for (let j = 0; j < audioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                console.info(`Id: ${i} : ${audioCapturerChangeInfoArray[i].deviceDescriptors[j].id}`);
@@ -149,17 +253,60 @@
              }
            }
          }
-         if (updateCallback) {
-           updateCallback(detailInfo, false);
-         }
+         // ...
        }).catch((err: BusinessError) => {
          console.error(`Invoke getCurrentAudioCapturerInfoArray failed, code is ${err.code}, message is ${err.message}`);
-         const errorMsg = `Invoke getCurrentAudioCapturerInfoArray failed, code is ${err.code}, message is ${err.message}`;
-         if (updateCallback) {
-           updateCallback(errorMsg, true);
-         }
+         // ...
        });
-     // 获取后取消监听
-     cancelListenAudioStreamManager();
+     // ...
+   }
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[get_CurrentAudioCapturerInfoArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioStreamManager.ets) -->
+   
+   ``` TypeScript
+   async function getCurrentAudioCapturerInfoArray(updateCallback?:
+     (msg: string, isError: boolean) => void): Promise<void>{
+     // ...
+   
+     try {
+       let audioCapturerChangeInfoArray = await audioStreamManager.getCurrentAudioCapturerInfoArray();
+       console.info('getCurrentAudioCapturerInfoArray Get Promise Called');
+       // ...
+       audioCapturerChangeInfoArray.forEach((capturerChangeInfo: Readonly<audio.AudioCapturerChangeInfo>, i: int): void => {
+         console.info(`StreamId for ${i} is: ${capturerChangeInfo.streamId}`);
+         console.info(`Source for ${i} is: ${capturerChangeInfo.capturerInfo.source}`);
+         console.info(`Flag  ${i} is: ${capturerChangeInfo.capturerInfo.capturerFlags}`);
+   
+         // ...
+   
+         capturerChangeInfo.deviceDescriptors.forEach((descriptor: Readonly<audio.AudioDeviceDescriptor>, j: int): void => {
+           let sampleRate = descriptor.sampleRates.find((value: int, index: int, array: Array<int>): boolean => {
+             return index === 0;
+           });
+           let channelCount = descriptor.channelCounts.find((value: int, index: int, array: Array<int>): boolean => {
+             return index === 0;
+           });
+           console.info(`Id: ${i} : ${descriptor.id}`);
+           console.info(`Type: ${i} : ${descriptor.deviceType}`);
+           console.info(`Role: ${i} : ${descriptor.deviceRole}`);
+           console.info(`Name: ${i} : ${descriptor.name}`);
+           console.info(`Address: ${i} : ${descriptor.address}`);
+           console.info(`SampleRates: ${i} : ${sampleRate}`);
+           console.info(`ChannelCounts ${i} : ${channelCount}`);
+           console.info(`ChannelMask: ${i} : ${descriptor.channelMasks}`);
+         });
+       });
+       if (updateCallback) {
+         // ...
+       }
+     } catch (err) {
+       let error = err as Error;
+       console.error(`Invoke getCurrentAudioCapturerInfoArray failed, message is ${error.message}`);
+       // ...
+     }
+   
+     // ...
    }
    ```

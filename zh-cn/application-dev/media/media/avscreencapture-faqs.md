@@ -1,3 +1,11 @@
+---
+kits: ["Media Kit / 媒体服务"]
+description: "汇总AVScreenCapture录屏过程中常见问题及处理建议，包括实例数量超限报错、通话中无法启动录屏等问题及解决方案。"
+keywords: [AVScreenCapture, 通话保持录屏, 状态回调]
+doctype: faq
+status: active
+---
+
 # 录屏常见问题
 
 <!--Kit: Media Kit-->
@@ -5,23 +13,91 @@
 <!--Owner: @chenkun613227-->
 <!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zzs911-->
 
 ## 录屏启动报错AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT
 
-实例数量超出规格限制，当前规格为每种数据格式最多两个实例。建议释放多余实例后再使用新实例。
+### 问题现象
 
-可能原因：录屏过程中，点击“不允许”、在通知栏停止录屏和通话打断录屏后，未释放资源。
+录屏设置参数或启动失败。
 
-解决方法：在录屏过程中因为状态改变导致的录屏停止，需要在[OH_AVScreenCapture_SetStateCallback()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback)（状态回调）中，对录屏资源进行异步释放。
+### 可能原因
 
-录屏会话限制策略：
+1. 实例数量超出当前规格限制，即每种数据格式最多两个实例。
 
-1. 客户端应用数量上限4个，比如会议屏幕共享、会议投屏、后台听歌识曲、系统录屏同时存在。
+2. 未设置通话中保持录屏策略，无法启动录屏。
 
-2. 单应用单模式（存为文件或存为码流）可创建实例上限2个，典型场景：在线上会议共享屏幕时，需要同步录制会议内容。
+3. 录屏超过规格限制时，无法启动录屏。
 
-## 通话中无法启动录屏报错AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT
+### 解决措施
 
-从API version 20开始，如需在通话中开启录屏，可使用[OH_AVScreenCapture_StrategyForKeepCaptureDuringCall()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall)设置“蜂窝通话时保持录屏”状态。
+1. 在录屏过程中因为状态改变导致的录屏停止，需要在[OH_AVScreenCapture_SetStateCallback()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setstatecallback)（状态回调）中，对录屏资源进行异步释放。
 
+   录屏会话限制策略：
+
+   - 客户端应用数量上限4个，比如会议屏幕共享、会议投屏、后台听歌识曲、系统录屏同时存在。
+
+   - 单应用单模式（存为文件或存为码流）可创建实例上限2个。典型场景：在线上会议共享屏幕时，需要同步录制会议内容。
+
+2. 从API版本20开始，如需在通话中保持录屏，可使用[OH_AVScreenCapture_StrategyForKeepCaptureDuringCall()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforkeepcaptureduringcall)设置“蜂窝通话时保持录屏”策略。
+
+3. 录屏写文件模式启动时会对视频编码参数进行规格校验。视频码率（videoBitrate）的取值范围为[1, 30000000]，单位为比特每秒（bit/s），如果超出此限制将导致启动失败，请重新检查并调整录屏配置参数。
+
+## 录屏时，会存在录制视频画面帧率过低的现象
+
+### 问题现象
+
+录屏启动成功且回调未报错，但录制的视频画面帧率明显偏低。
+
+OH_ORIGINAL_STREAM模式下，应用侧通过OH_AVScreenCapture_OnBufferAvailable()获取到的视频帧率较少，单位时间内收到的帧率远低于配置的目标帧率，表现为画面长时间静止期间几乎收不到新帧。
+
+OH_CAPTURE_FILE模式下生成的mp4文件可播放，但视频轨帧率远低于预期值。例如配置30fps，实际仅5~10fps。
+
+### 可能原因
+
+1. **画面静止时系统停止产生新帧（设计行为）**：视频数据的产生与录制屏幕的实际刷新内容强相关。录屏底层基于虚拟屏镜像机制，仅在屏幕内容发生变化时才合成并产出新帧；当画面完全静止（无动画、无交互、无重绘区域）时，图像侧不会触发合成，虚拟屏对应的生产者不会生成新的数据，OnBufferAvailable自然不回调。这是系统为节省功耗设计的按需渲染行为，并非录屏模块缺陷。一旦画面恢复变化（例如用户滑动、动画播放），帧产出会恢复正常。
+
+2. **目标窗口进入后台或被遮挡**：OH_CAPTURE_SPECIFIED_WINDOW模式下被录制的指定应用切到后台后，该窗口不再合成画面到虚拟屏，期间无新帧产出；如果只是短暂切后台再回前台，则表现为帧率阶段性骤降。
+
+## 系统隐私和应用窗口隐私的区别
+
+录屏服务的隐私保护分为**系统隐私**和**窗口隐私**两类，二者的不同体现在来源、生效方式和处理手段上。
+
+### 系统隐私
+
+**来源**：系统隐私由系统侧强制执行，应用无法绕过，主要保护系统级敏感内容（如系统弹窗、键盘、系统受保护页面、短信、通知栏）。
+
+**生效方式**：系统隐私可在**开始录屏时通过授权弹窗的勾选框**设置是否跳过录制受保护内容。录屏会跳过录制受保护内容，画面中对应区域内容隐藏。
+
+**处理手段**：用户取消勾选即可录制到对应内容。录屏进行中也可通过通知栏实况通知调整隐私开关。
+
+- 勾选“屏幕隐私保护”后，录屏会跳过录制受保护内容，画面中对应区域内容缺失。
+- 取消勾选即可录制到对应内容。
+- 录屏进行中也可通过通知栏实况通知调整隐私开关。
+
+### 窗口隐私
+
+**来源**：窗口隐私是**应用自己设置的隐私窗口**，由应用通过窗口属性声明该窗口为隐私窗口。
+
+**生效方式**：录屏遇到此类窗口时无法录制到对应窗口内容，系统会对该窗口区域或屏幕做**涂黑处理**。
+
+**处理手段**：在画面上出现/消失隐私窗口时，通过OH_AVScreenCapture_OnStateChange()回调通知应用。涂黑范围也可以通过OH_AVScreenCapture_StrategyForPrivacyMaskMode()接口配置。
+
+- 出现隐私窗口时回调SCREEN_CAPTURE_STATE_ENTER_PRIVATE_SCENE，消失时回调SCREEN_CAPTURE_STATE_EXIT_PRIVATE_SCENE，应用据此感知当前画面是否包含隐私窗口。
+- 涂黑范围可通过OH_AVScreenCapture_StrategyForPrivacyMaskMode()接口配置：
+  - 值为`0`：出现隐私窗口时，**整屏输出全黑**。
+  - 值为`1`：出现隐私窗口时，**仅对隐私窗口区域涂黑**，其余区域正常录制。
+
+## 录屏应用进入后台5秒左右被关闭
+
+### 问题现象
+
+用户未主动点击停止按钮，当发起录屏的应用切到后台约5秒后，应用在后台被停止，录屏被自动停止。
+
+### 可能原因
+
+**录屏未申请长时任务**：录屏类应用需通过申请长时任务保证应用可以在后台运行，若应用未申请或申请后被撤销，系统按普通后台应用处理，5秒后进入挂起/回收流程。
+
+### 解决措施
+
+可以申请长时任务解决，申请方式请参见[长时任务(ArkTS)](../../task-management/continuous-task.md)。

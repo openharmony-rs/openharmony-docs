@@ -1,4 +1,10 @@
-# V1自定义组件冻结场景
+# 自定义组件冻结（V1）（ArkTS-Sta）
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @zany_pink-->
+<!--Designer: @jiyujia926-->
+<!--Tester: @TerryTsao-->
+<!--Adviser: @zhang_yixin13-->
 
 当@Component装饰的自定义组件处于冻结状态时，状态变量将不响应更新，即@Watch不会调用，状态变量关联的节点不会刷新。
 
@@ -31,9 +37,9 @@ V1自定义组件冻结支持场景为：
 
 页面1：
 
-```ts
-'use static'
+<!-- @[FreezePageRouter](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezePageRouter.ets) --> 
 
+``` TypeScript
 import { Button, Column, Component, Entry, StorageLink, Text, Watch } from '@kit.ArkUI';
 
 @Entry
@@ -52,26 +58,34 @@ struct Page1 {
 
   build() {
     Column() {
-      Text(`From first Page ${this.getValue()}`).fontSize(50)
-      Button('first page storageLink + 1').fontSize(30)
+      Text(`From first Page ${this.getValue()}`)
+        .fontSize(20)
+        .margin(10)
+      Button('first page storageLink + 1') // 修改状态变量storageLink
+        .width(300)
+        .margin(10)
+        .fontSize(15)
         .onClick(() => {
           this.storageLink += 1;
         })
-      Button('go to next page').fontSize(30)
+      Button('go to next page') // 跳转到页面2
+        .width(300)
+        .margin(10)
+        .fontSize(15)
         .onClick(() => {
-          this.getUIContext().getRouter().pushUrl({ url: 'pages/Page2' });
+          this.getUIContext().getRouter().pushUrl({ url: 'pages/FreezePage2' });
         })
     }
+    .width('100%')
   }
 }
-
 ```
 
 页面2：
 
-```ts
-'use static'
+<!-- @[FreezePage2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezePage2.ets) --> 
 
+``` TypeScript
 import { Button, Column, Component, Entry, StorageLink, Text, Watch } from '@kit.ArkUI';
 
 @Entry
@@ -91,30 +105,40 @@ struct Page2 {
   build() {
     Column() {
 
-      Text(`second Page ${this.getValue()}`).fontSize(50)
-      Button('back')
+      Text(`second Page ${this.getValue()}`)
+        .fontSize(20)
+        .margin(10)
+      Button('back') // 返回页面1
+        .width(300)
+        .margin(10)
         .onClick(() => {
           this.getUIContext().getRouter().back();
         })
 
-      Button('second page storageLink2 + 2').fontSize(30)
+      Button('second page storageLink2 + 2') // 修改状态变量storageLink2
+        .width(300)
+        .margin(10)
+        .fontSize(15)
         .onClick(() => {
           this.storageLink2 += 2;
         })
     }
+    .width('100%')
   }
 }
 ```
 
+![custom-component-lifecycle-demo1](../figures/arkts-static-freeze-0.gif)
+
 在上面的示例中：
 
-1.在页面1中点击`first page storageLink + 1`，storageLink状态变量改变，[@Watch](../state-management/arkts-watch.md)注册的方法first会被调用。
+1. 在页面1中点击`first page storageLink + 1`，storageLink状态变量改变，[@Watch](../state-management/arkts-watch.md)注册的方法first会被调用。
 
-2.在页面1中点击`go to next page`，跳转到页面2，页面1隐藏，状态由active变为inactive。
+2. 在页面1中点击`go to next page`，跳转到页面2，页面1隐藏，状态由active变为inactive。
 
-3.在页面2中点击`this.storageLink2 += 2`，只会回调页面2中@Watch注册的方法second，因为页面1的状态变量此时已被冻结。
+3. 在页面2中点击`this.storageLink2 += 2`，只会回调页面2中@Watch注册的方法second，因为页面1的状态变量此时已被冻结。
 
-4.在页面2中点击`back`，页面2被销毁，页面1的状态由inactive变为active，重新刷新在inactive时被冻结的状态变量，页面1中@Watch注册的方法first被再次调用。
+4. 在页面2中点击`back`，页面2被销毁，页面1的状态由inactive变为active，重新刷新在inactive时被冻结的状态变量，页面1中@Watch注册的方法first被再次调用。
 
 
 ## TabContent
@@ -127,9 +151,9 @@ struct Page2 {
 
 ![freezeWithTab](../state-management/figures/freezewithTabs.png)
 
-```ts
-'use static'
+<!-- @[FreezeTabContent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeTabContent.ets) --> 
 
+``` TypeScript
 import { Button, Column, Component, Entry, FontWeight, ForEach, Link, Row, State, TabContent, Tabs, TabsController, Text, Watch } from '@kit.ArkUI';
 
 @Entry
@@ -145,9 +169,12 @@ struct TabContentTest {
   build() {
     Row() {
       Column() {
-        Button('change message').onClick(() => {
-          this.message++;
-        })
+        Button('change message') // 修改状态变量message
+          .width(300)
+          .margin(10)
+          .onClick(() => {
+            this.message++;
+          })
 
         Tabs() {
           ForEach(this.data, (item: number) => {
@@ -178,27 +205,30 @@ struct FreezeChild {
 
   build() {
     Text('message' + `${this.getValue()}, index: ${this.index}`)
-      .fontSize(50)
+      .fontSize(20)
+      .margin(10)
       .fontWeight(FontWeight.Bold)
   }
 }
 ```
 
+![custom-component-lifecycle-demo2](../figures/arkts-static-freeze-1.gif)
+
 在上面的示例中：
 
-1.点击`change message`更改message的值，当前正在显示的TabContent组件中的@Watch注册的方法onMessageUpdated被触发。
+1. 点击`change message`更改message的值，当前正在显示的TabContent组件中的@Watch注册的方法onMessageUpdated被触发。
 
-2.点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的@Watch注册的方法onMessageUpdated被触发。 
+2. 点击`tab1`切换到另外的TabContent，该TabContent的状态由inactive变为active，对应的@Watch注册的方法onMessageUpdated被触发。
 
-3.再次点击`change message`更改message的值，仅当前显示的TabContent子组件中的@Watch注册的方法onMessageUpdated被触发。
+3. 再次点击`change message`更改message的值，仅当前显示的TabContent子组件中的@Watch注册的方法onMessageUpdated被触发。
 
 ## LazyForEach
 
 对LazyForEach中缓存的自定义组件进行冻结，修改状态变量不会触发缓存组件的更新。
 
-```ts
-'use static'
+<!-- @[FreezeLazyForEach](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeLazyForEach.ets) --> 
 
+``` TypeScript
 import { Button, Color, Column, Component, DataChangeListener, Entry, FontWeight, ForEach, IDataSource, LazyForEach, Link, List, ListItem, Row, State, Text, TextAlign, Watch } from '@kit.ArkUI';
 
 class BasicDataSource<string> implements IDataSource<string> {
@@ -284,9 +314,12 @@ struct LazyForEachSample {
 
   build() {
     Column() {
-      Button('change message').onClick(() => {
-        this.message++;
-      })
+      Button('change message') // 修改状态变量message
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.message++;
+        })
 
       List() {
         LazyForEach<string>(this.data, (item: string, index: int): void => {
@@ -295,9 +328,12 @@ struct LazyForEachSample {
           }
         }, (item: string, index: int): string => item)
       }
-      .height('100%').width('90%')
-      .borderWidth(2).clip(true)
+      .height('100%')
+      .width('90%')
+      .borderWidth(2)
+      .clip(true)
     }
+    .width('100%')
   }
 }
 @Component
@@ -306,7 +342,7 @@ struct FreezeChild {
   index: string = '';
 
   aboutToAppear() {
-    console.info(`FreezeChild aboutToAppear index: ${this.index}`);
+    console.info(`FreezeChild aboutToAppear index: ${this.index}`); // FreezeChild在build前触发aboutToAppear
   }
 
   getValue(): number {
@@ -320,23 +356,26 @@ struct FreezeChild {
 
   build() {
     Text('message' + `${this.getValue()}, index: ${this.index}`)
+      .fontSize(20)
+      .margin(10)
       .width('90%')
       .height(160)
       .backgroundColor(0xAFEEEE)
       .textAlign(TextAlign.Center)
-      .fontSize(30)
       .fontWeight(FontWeight.Bold)
   }
 }
 ```
 
+![custom-component-lifecycle-demo3](../figures/arkts-static-freeze-2.gif)
+
 在上面的示例中：
 
-1.点击`change message`更改message的值，当前正在显示的[ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md)中的子组件@Watch注册的方法onMessageUpdated被触发。缓存节点中@Watch注册的方法不会被触发。
+1. 点击`change message`更改message的值，当前正在显示的[ListItem](../../reference/apis-arkui/arkui-ts/ts-container-listitem.md)中的子组件@Watch注册的方法onMessageUpdated被触发。缓存节点中@Watch注册的方法不会被触发。
 
-2.[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)区域外的ListItem滑动到List区域内，状态由inactive变为active，对应的@Watch注册的方法onMessageUpdated被触发。
+2. [List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)区域外的ListItem滑动到List区域内，状态由inactive变为active，对应的@Watch注册的方法onMessageUpdated被触发。
 
-3.再次点击`change message`更改message的值，仅有当前显示的ListItem中的子组件@Watch注册的方法onMessageUpdated被触发。
+3. 再次点击`change message`更改message的值，仅有当前显示的ListItem中的子组件@Watch注册的方法onMessageUpdated被触发。
 
 ## Navigation
 
@@ -344,9 +383,9 @@ struct FreezeChild {
 
 在下面例子中，NavigationContentMsgStack会被设置成非激活态，将不再响应状态变量的变化，也不会触发组件刷新。
 
-```ts
-'use static'
+<!-- @[FreezeNavigation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeNavigation.ets) --> 
 
+``` TypeScript
 import { Builder, Button, ButtonType, ClickEvent, Column, Component, Entry, FontWeight, Link, Margin, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, State, StorageLink, Text, Watch } from '@kit.ArkUI';
 
 @Entry
@@ -374,24 +413,27 @@ struct MyNavigationTestStack {
   build() {
     Column() {
       Button('change message')
+        .width(300)
+        .margin(10)
         .onClick((e: ClickEvent) => {
           this.message++;
         })
       Navigation(this.pageInfo) {
         Column() {
           Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
-            .width('80%')
-            .height(40)
+            .width(300)
             .margin(20)
             .onClick((e: ClickEvent) => {
               let info: NavPathInfo = new NavPathInfo("pageOne", undefined)
               this.pageInfo.pushPath(info); //将name指定的NavDestination页面信息入栈
             })
         }
+        .width('100%')
       }.title('NavIndex')
       .navDestination(this.PageMap)
       .mode(NavigationMode.Stack)
     }
+    .width('100%')
   }
 }
 
@@ -407,24 +449,25 @@ struct PageOneStack {
       Column() {
         NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
         Text('cur stack size:' + `${this.pageInfo.size()}`)
-          .fontSize(30)
+          .fontSize(20)
+          .margin(10)
           .fontWeight(FontWeight.Bold)
-        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
-          .width('80%')
-          .height(40)
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转到pageTwo页面
+          .width(300)
           .margin(20)
           .onClick((e: ClickEvent) => {
             let info: NavPathInfo = new NavPathInfo("pageTwo", undefined)
             this.pageInfo.pushPath(info); //将name指定的NavDestination页面信息入栈
           })
-        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
-          .width('80%')
-          .height(40)
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转回上一个页面
+          .width(300)
           .margin(20)
           .onClick((e: ClickEvent) => {
             this.pageInfo.pop();
           })
-      }.width('100%').height('100%')
+      }
+      .width('100%')
+      .height('100%')
     }.title('pageOne')
   }
 }
@@ -441,24 +484,25 @@ struct PageTwoStack {
       Column() {
         NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
         Text('cur stack size:' + `${this.pageInfo.size()}`)
-          .fontSize(30)
+          .fontSize(20)
+          .margin(10)
           .fontWeight(FontWeight.Bold)
-        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
-          .width('80%')
-          .height(40)
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转到pageThree页面
+          .width(300)
           .margin(20)
           .onClick((e: ClickEvent) => {
             let info: NavPathInfo = new NavPathInfo("pageThree", undefined)
             this.pageInfo.pushPath(info); //将name指定的NavDestination页面信息入栈
           })
-        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
-          .width('80%')
-          .height(40)
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转回上一个页面
+          .width(300)
           .margin(20)
           .onClick((e: ClickEvent) => {
             this.pageInfo.pop();
           })
-      }.width('100%').height('100%')
+      }
+      .width('100%')
+      .height('100%')
     }.title('pageTwo')
   }
 }
@@ -475,31 +519,32 @@ struct PageThreeStack {
       Column() {
         NavigationContentMsgStack({ message: this.message, index: this.index, logNumber: this.logNumber })
         Text('cur stack size:' + `${this.pageInfo.size()}`)
-          .fontSize(30)
+          .fontSize(20)
+          .margin(10)
           .fontWeight(FontWeight.Bold)
-        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
-          .width('80%')
-          .height(40)
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转到pageOne页面
+          .width(300)
           .margin(20)
           .onClick((e: ClickEvent) => {
             let info: NavPathInfo = new NavPathInfo("pageOne", undefined)
             this.pageInfo.pushPath(info); //将name指定的NavDestination页面信息入栈
           })
-        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
-          .width('80%')
-          .height(40)
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转回上一个页面
+          .width(300)
           .margin(20)
           .onClick((e: ClickEvent) => {
             this.pageInfo.pop();
           })
-      }.width('100%').height('100%')
+      }
+      .width('100%')
+      .height('100%')
     }.title('pageThree')
   }
 }
 
 @Component
 struct NavigationContentMsgStack {
-  @Link @Watch('info') message: number;
+  @Link @Watch('info') message: number; // message修改时，触发info方法
   @Link index: number;
   @Link logNumber: number;
 
@@ -517,38 +562,45 @@ struct NavigationContentMsgStack {
   build() {
     Column() {
       Button('msg:' + `${this.getValue()}`)
-        .fontSize(30)
+        .width(300)
+        .margin(10)
+        .fontSize(20)
         .fontWeight(FontWeight.Bold)
 
       Button('log number:' + `${this.logNumber}`)
-        .fontSize(30)
+        .width(300)
+        .margin(10)
+        .fontSize(20)
         .fontWeight(FontWeight.Bold)
     }
+    .width('100%')
   }
 }
 ```
 
+![custom-component-lifecycle-demo4](../figures/arkts-static-freeze-3.gif)
+
 在上面的示例中：
 
-1.点击`change message`更改message的值，当前正在显示的MyNavigationTestStack组件中的@Watch注册的方法info被触发。
+1. 点击`change message`更改message的值，当前正在显示的MyNavigationTestStack组件中的@Watch注册的方法info被触发。
 
-2.点击`Next Page`切换到PageOne，创建PageOneStack节点。
+2. 点击`Next Page`切换到PageOne，创建PageOneStack节点。
 
-3.再次点击`change message`更改message的值，仅PageOneStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
+3. 再次点击`change message`更改message的值，仅PageOneStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
 
-4.再次点击`Next Page`切换到PageTwo，创建PageTwoStack节点。
+4. 再次点击`Next Page`切换到PageTwo，创建PageTwoStack节点。
 
-5.再次点击`change message`更改message的值，仅PageTwoStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
+5. 再次点击`change message`更改message的值，仅PageTwoStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
 
-6.再次点击`Next Page`切换到PageThree，创建PageThreeStack节点。
+6. 再次点击`Next Page`切换到PageThree，创建PageThreeStack节点。
 
-7.再次点击`change message`更改message的值，仅PageThreeStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
+7. 再次点击`change message`更改message的值，仅PageThreeStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
 
-8.点击`Back Page`回到PageTwo，此时，仅PageTwoStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
+8. 点击`Back Page`回到PageTwo，此时，仅PageTwoStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
 
-9.再次点击`Back Page`回到PageOne，此时，仅PageOneStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
+9. 再次点击`Back Page`回到PageOne，此时，仅PageOneStack中的NavigationContentMsgStack子组件中@Watch注册的方法info被触发。
 
-10.再次点击`Back Page`回到初始页，此时，无任何触发。
+10. 再次点击`Back Page`回到初始页，此时，无任何触发。
 
 ## 组件复用
 
@@ -558,9 +610,9 @@ struct NavigationContentMsgStack {
 
 在数据很多的长列表滑动场景下，开发者会使用LazyForEach来按需创建组件，同时配合组件复用降低在滑动过程中因创建和销毁组件带来的开销。但是开发者如果根据其复用类型不同，设置了[reuseId](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid)，或者为了保证滑动性能设置了较大的cacheCount，这就可能使复用池或者LazyForEach缓存较多的节点。在这种情况下，如果开发者触发List下所有子节点的刷新，就会带来节点刷新数量过多的问题，这个时候，可以考虑搭配组件冻结使用。
 
-```ts
-'use static'
+<!-- @[FreezeReuse](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeReuse.ets) --> 
 
+``` TypeScript
 import { Button, ClickEvent, Color, Column, Component, DataChangeListener, Entry, ForEach, IDataSource, LazyForEach, Link, List, ListItem, Reusable, Row, State, Text, Watch } from '@kit.ArkUI';
 
 @Reusable
@@ -572,7 +624,7 @@ struct ChildComponent {
   descChange(propertyName: string) {
     console.info(`ChildComponent messageChange ${this.desc} this.index: ${this.index}`);
   }
-  
+
   getValue(): string {
     console.info(`Child getvalue,id: ${this.index}`);
     return this.desc;
@@ -585,9 +637,13 @@ struct ChildComponent {
     Column() {
       Text(`ChildComponent index: ${this.index} item: ${this.item}`)
         .fontSize(20)
+        .margin(10)
       Text(`desc: ${this.getValue()}`)
         .fontSize(20)
-    }.border({width: 2, color: Color.Pink})
+        .margin(10)
+    }
+      .border({width: 2, color: Color.Pink})
+      .width('100%')
   }
 }
 
@@ -605,18 +661,23 @@ struct Page {
 
   build() {
     Column() {
-      Button(`change desc`).onClick(() => {
-        this.desc += '!';
-      })
+      Button(`change desc`)
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.desc += '!';
+        })
       List({ space: 3 }) {
         LazyForEach(this.data, (item: string, index: int) => {
           ListItem() {
             ChildComponent({index: index, item: item, desc: this.desc})
           }
         }, (item: string) => item)
-      }.cachedCount(5)
+      }
+      .cachedCount(5) // 设置ListItem的缓存数量
     }
     .height('100%')
+    .width('100%')
   }
 }
 
@@ -695,11 +756,6 @@ class TestDataSource extends BasicDataSource<string> {
 3. 点击`change desc`，触发`Page`的成员变量`desc`的变化：
     - `desc`是[\@State](../../reference/apis-arkui/arkui-ts/ts-state-management-state-static.md)装饰的，其变化会通知给其子组件`ChildComponent`[\@Link](../../reference/apis-arkui/arkui-ts/ts-state-management-link-static.md)装饰的`desc`。
     - 非可视区域内的`ChildComponent`是inactive状态，且开启了组件冻结，所以这次变化只触发可视区域内的15个节点的`@Watch('descChange')`回调，并只刷新对应可视区域内的15个节点。LazyForEach和复用池中的节点并不会刷新，也不会触发\@Watch回调。
-    
-
-图示如下：
-
-![freeze](../state-management/figures/freezeResuable.png)
 
 ## 组件混用
 
@@ -707,9 +763,9 @@ class TestDataSource extends BasicDataSource<string> {
 
 **Navigation和TabContent的混用**
 
-```ts
-'use static'
+<!-- @[FreezeMixNavTab](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/V1ComponentFreeze/entry/src/main/ets/pages/FreezeMixNavTab.ets) --> 
 
+``` TypeScript
 import { BarMode, BarPosition, Builder, Button, ButtonType, ClickEvent, Color, Column, Component, Entry, Link, Margin, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, PropRef, Row, State, StorageLink, TabContent, Tabs, TabsController, Text, Watch } from '@kit.ArkUI';
 
 @Component
@@ -790,7 +846,9 @@ struct TabsComponent {
 
   build() {
     Column() {
-      Button(`Incr state ${this.getValue()}`)
+      Button(`Incr state ${this.getValue()}`) // 修改状态变量tabState
+        .width(300)
+        .margin(10)
         .fontSize(25)
         .onClick((e: ClickEvent) => {
           console.info('Button increment state value');
@@ -816,6 +874,7 @@ struct TabsComponent {
       .height(200)
       .backgroundColor(0xF5F5F5)
     }
+    .width('100%')
   }
 }
 
@@ -837,19 +896,20 @@ struct MyNavigationTestStack {
     Column() {
       Navigation(this.pageInfo) {
         Column() {
-          Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
-            .width('80%')
-            .height(40)
+          Button('Next Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转到pageOne页面
+            .width(300)
             .margin(20)
             .onClick((e: ClickEvent) => {
               let info: NavPathInfo = new NavPathInfo("pageOne", undefined)
               this.pageInfo.pushPath(info);
             })
         }
+        .width('100%')
       }.title('NavIndex')
       .navDestination(this.PageMap)
       .mode(NavigationMode.Stack)
     }
+    .width('100%')
   }
 }
 
@@ -862,15 +922,16 @@ struct PageOneStack {
       Column() {
         TabsComponent();
 
-        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule })
-          .width('80%')
-          .height(40)
+        Button('Next Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转到pageTwo页面
+          .width(300)
           .margin(20)
           .onClick((e: ClickEvent) => {
             let info: NavPathInfo = new NavPathInfo("pageTwo", undefined)
             this.pageInfo.pushPath(info);
           })
-      }.width('100%').height('100%')
+      }
+      .width('100%')
+      .height('100%')
     }.title('pageOne')
     .onBackPressed(() => {
       this.pageInfo.pop();
@@ -886,23 +947,26 @@ struct PageTwoStack {
   build() {
     NavDestination() {
       Column() {
-        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule })
-          .width('80%')
-          .height(40)
+        Button('Back Page', { stateEffect: true, type: ButtonType.Capsule }) // 跳转回上一个页面
+          .width(300)
           .margin(20)
           .onClick((e: ClickEvent) => {
             this.pageInfo.pop();
           })
-      }.width('100%').height('100%')
+      }
+      .width('100%')
+      .height('100%')
     }.title('pageTwo')
   }
 }
 ```
 
+![custom-component-lifecycle-demo5](../figures/arkts-static-freeze-4.gif)
+
 在上述示例代码中：
 
-1.点击`Next Page`，进入pageOne页面，页面中存在两个tab标签，点击这两个标签将其全部创建。回到Update标签，DelayUpdate标签未被选中，状态变量不会刷新。点击`Incr state`，日志中查询Appmonitor，Param和Child刷新。
+1. 点击`Next Page`，进入pageOne页面，页面中存在两个tab标签，点击这两个标签将其全部创建。回到Update标签，DelayUpdate标签未被选中，状态变量不会刷新。点击`Incr state`，日志中查询Appmonitor，Param和Child刷新。
 
-2.切换到DelayUpdate标签，点击`Incr state`，日志中查询Appmonitor，存在2个打印。DelayUpdate中状态变量不会刷新与Update标签中相关的状态变量。
+2. 切换到DelayUpdate标签，点击`Incr state`，日志中查询Appmonitor，存在2个打印。DelayUpdate中状态变量不会刷新与Update标签中相关的状态变量。
 
-3.点击`Next page`进入下一个页面并返回，标签默认在DelayUpdate，再次点击`Incr state`，日志中查询Appmonitor，存在2个打印，页面路由返回时，只会解冻对应标签的节点。
+3. 点击`Next page`进入下一个页面并返回，标签默认在DelayUpdate，再次点击`Incr state`，日志中查询Appmonitor，存在2个打印，页面路由返回时，只会解冻对应标签的节点。

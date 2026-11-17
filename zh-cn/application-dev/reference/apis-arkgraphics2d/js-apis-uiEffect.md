@@ -3,7 +3,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hanamaru-->
-<!--Designer: @gaoweihua-->
+<!--Designer: @chensiyi_CE-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
@@ -128,7 +128,7 @@ struct UIEffectFilterExample {
     }
 }
 ```
-![zh-ch_image_UIEffect_blur.png](figures/zh-ch_image_UIEffect_blur.png)
+![UIEffect-blur.png](figures/UIEffect-blur.png)
 
 ### hdrBrightnessRatio<sup>24+</sup>
 
@@ -182,3 +182,5 @@ filter.hdrBrightnessRatio(2.0)
 
 ## VisualEffect
 VisualEffect效果类，用于将相应的效果添加到指定的组件上。在调用VisualEffect的方法前，需要先通过[createEffect](#uieffectcreateeffect)创建一个VisualEffect实例。
+
+**系统能力：** SystemCapability.Graphics.Drawing

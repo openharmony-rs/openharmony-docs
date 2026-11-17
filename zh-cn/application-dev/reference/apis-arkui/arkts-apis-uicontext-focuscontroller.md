@@ -1,12 +1,12 @@
 # Class (FocusController)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供控制焦点的能力，如清除、移动和激活焦点等功能。
+提供控制焦点的能力，如清除、移动和激活焦点等功能，适用于需要管理页面或组件焦点状态、控制焦点流转的场景，可帮助开发者优化键盘等输入方式下的焦点交互体验。
 
 > **说明：**
 >
@@ -16,6 +16,8 @@
 >
 > - 本Class首批接口从API version 12开始支持。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 以下API需先使用UIContext中的[getFocusController()](arkts-apis-uicontext-uicontext.md#getfocuscontroller12)方法获取FocusController实例，再通过该实例调用对应方法。
 
 ## clearFocus<sup>12+</sup>
@@ -24,7 +26,7 @@ clearFocus(): void
 
 清除焦点，将焦点强制转移到页面根容器节点，焦点链路上其他节点失焦。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -40,8 +42,7 @@ clearFocus(): void
 @Entry
 @Component
 struct ClearFocusExample {
-  @State inputValue: string = '';
-  @State btColor: Color = Color.Blue;
+  @State buttonColor: Color = Color.Blue;
 
   build() {
     Column({ space: 20 }) {
@@ -57,13 +58,13 @@ struct ClearFocusExample {
           .height(70)
           .fontColor(Color.White)
           .focusOnTouch(true)
-          .backgroundColor(this.btColor)
+          .backgroundColor(this.buttonColor)
           .defaultFocus(true)
           .onFocus(() => {
-            this.btColor = Color.Red;
+            this.buttonColor = Color.Red;
           })
           .onBlur(() => {
-            this.btColor = Color.Blue;
+            this.buttonColor = Color.Blue;
           })
         Button('clearFocus')
           .width(200)
@@ -87,9 +88,9 @@ struct ClearFocusExample {
 
 requestFocus(key: string): void
 
-通过组件的id将焦点转移到组件树对应的实体节点，当前帧生效。
+通过组件的id将焦点转移到组件树对应的实体节点，当前帧生效，适用于需要在表单校验、页面初始化或键盘操作流程中主动将焦点定位到指定组件的场景。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,11 +137,11 @@ struct RequestExample {
           .onBlur(() => {
             this.btColor = Color.Blue;
           })
-          .id("testButton")
+          .id('testButton')
 
         Divider()
           .vertical(false)
-          .width("80%")
+          .width('80%')
           .backgroundColor(Color.Black)
           .height(10)
 
@@ -148,7 +149,7 @@ struct RequestExample {
           .width(200)
           .height(70)
           .onClick(() => {
-            this.getUIContext().getFocusController().requestFocus("testButton");
+            this.getUIContext().getFocusController().requestFocus('testButton');
           })
 
         Button('requestFocus fail')
@@ -156,9 +157,9 @@ struct RequestExample {
           .height(70)
           .onClick(() => {
             try {
-              this.getUIContext().getFocusController().requestFocus("eee");
+              this.getUIContext().getFocusController().requestFocus('eee');
             } catch (error) {
-              console.error(`requestFocus failed code is ${error.code} message is ${error.message}`);
+              console.error(`Failed to request focus. Code: ${error.code}, message: ${error.message}`);
             }
           })
       }
@@ -175,7 +176,7 @@ activate(isActive: boolean, autoInactive?: boolean): void
 
 设置当前界面的[焦点激活态](../../ui/arkts-common-events-focus-event.md)。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -187,13 +188,13 @@ activate(isActive: boolean, autoInactive?: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ------- | ------- |
-| isActive| boolean| 是 | 设置是否进入/退出焦点激活态。<br/>true表示设置进入焦点激活态，false表示设置退出焦点激活态。 |
-| autoInactive | boolean | 否 | 设置焦点激活态退出逻辑。<br/>为true时，会自动在触摸事件、鼠标事件触发时退出，为false时，仅受开发者API控制。<br/>默认值：true |
+| isActive| boolean| 是 | 设置是否进入/退出焦点激活态。<br>true表示设置进入焦点激活态，false表示设置退出焦点激活态。 |
+| autoInactive | boolean | 否 | 设置焦点激活态退出逻辑。<br>为true时，会自动在触摸事件、鼠标事件触发时退出，为false时，仅受开发者API控制。<br>默认值：true |
 
-**示例：** 
+**示例：**
 
 ```ts
-// 该示例表示在页面加载完成时进入焦点激活态，可按方向键在button间走焦
+// 该示例表示在组件即将出现时进入焦点激活态，可按方向键在button间走焦
 @Entry
 @Component
 struct ActivateExample {
@@ -231,11 +232,11 @@ struct ActivateExample {
 
 isActive(): boolean
 
-返回UI实例的焦点激活态。
+返回UI实例的焦点激活态。适用于需要根据当前焦点激活状态决定是否启用方向键走焦或更新焦点提示的场景。
 
 焦点激活态可参考[基础概念：焦点激活态](../../ui/arkts-common-events-focus-event.md#基础概念)。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -256,8 +257,7 @@ isActive(): boolean
 ```ts
 @Entry
 @Component
-struct ClearFocusExample {
-  @State inputValue: string = '';
+struct IsActiveExample {
   @State btColor: Color = Color.Blue;
 
   build() {
@@ -270,7 +270,7 @@ struct ClearFocusExample {
           .focusOnTouch(true)
           .backgroundColor(Color.Blue)
           .onClick(() => {
-            console.info("button1 onClick");
+            console.info('button1 onClick');
             this.getUIContext().getFocusController().activate(true);
             console.info(`focus status ${this.getUIContext().getFocusController().isActive()}`);
           })
@@ -282,7 +282,7 @@ struct ClearFocusExample {
           .backgroundColor(this.btColor)
           .defaultFocus(true)
           .onClick(() => {
-            console.info("button2 onClick");
+            console.info('button2 onClick');
             this.getUIContext().getFocusController().activate(false);
             console.info(`focus status ${this.getUIContext().getFocusController().isActive()}`);
           })
@@ -306,7 +306,7 @@ setAutoFocusTransfer(isAutoFocusTransfer: boolean): void
 
 设置页面切换时，新的页面是否需要主动获取焦点。
 
-**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -320,7 +320,7 @@ setAutoFocusTransfer(isAutoFocusTransfer: boolean): void
 | ------- | ------- | ------- | ------- |
 | isAutoFocusTransfer | boolean| 是 | 设置页面切换时，新的页面是否需要主动获取焦点，例如[Router](js-apis-router.md)、[Navigation](arkui-ts/ts-basic-components-navigation.md)、[Menu](arkui-ts/ts-basic-components-menu.md)、[Dialog](arkui-ts/ohos-arkui-advanced-Dialog.md)、[Popup](arkui-ts/ohos-arkui-advanced-Popup.md)等。true表示需要主动获取焦点，false表示不需要主动获取焦点。默认值为true。 |
 
-**示例：** 
+**示例：**
 
 ```ts
 @CustomDialog
@@ -376,9 +376,9 @@ struct CustomDialogUser {
 
 setKeyProcessingMode(mode: KeyProcessingMode): void
 
-设置按键事件处理的优先级。
+设置按键事件处理的模式，适用于父子组件都需要处理按键事件时，开发者需要控制按键事件优先分发策略的场景。
 
-**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -392,11 +392,11 @@ setKeyProcessingMode(mode: KeyProcessingMode): void
 | ------- | ------- | ------- | ------- |
 | mode | [KeyProcessingMode](./arkui-ts/ts-universal-attributes-focus.md#keyprocessingmode15)| 是 | 按键处理模式。 |
 
-**示例：** 
+**示例：**
 
 ```ts
 
-// 该示例演示了在页面加载完成后设置走焦类型的实现方式。
+// 该示例演示了在组件即将出现时设置走焦类型的实现方式。
 @Entry
 @Component
 struct Index {
@@ -408,11 +408,11 @@ struct Index {
     Row() {
       Row() {
         Button('Button1').id('Button1').onKeyEvent((event) => {
-          console.info("Button1");
+          console.info('Button1');
           return true;
         })
         Button('Button2').id('Button2').onKeyEvent((event) => {
-          console.info("Button2");
+          console.info('Button2');
           return true;
         })
       }

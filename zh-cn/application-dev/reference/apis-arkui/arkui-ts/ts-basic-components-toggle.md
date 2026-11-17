@@ -13,6 +13,11 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 从API版本26.0.0开始，Toggle组件支持新材质效果。Toggle组件使用通用新材质属性systemMaterial时，不同[ToggleType](#toggletype枚举说明)类型的效果不同：    
+>   - ToggleType.Checkbox：当前未适配系统材质效果，设置系统材质不会出现系统材质相关的动效和视觉效果。
+>   - ToggleType.Switch：传入材质参数时，使用组件内部预设的视觉参数，传入的材质参数仅作为开启新材质的开关标记，不影响实际视觉效果。主要影响Toggle的滑块大小、滑块样式、阴影等视觉属性。开启新材质后，滑块会出现默认白色的点光源效果；设置[switchPointColor](#switchpointcolor)后，点光源颜色跟随switchPointColor的设置。传入undefined时，新材质不生效，表现为原先的Toggle样式。
+>   - ToggleType.Button：设置系统材质的效果与[Button](ts-basic-components-button.md)组件设置系统材质的效果相同，主要影响背景颜色、边框、阴影等视觉属性。
 
 ## 子组件
 
@@ -22,9 +27,9 @@
 
 Toggle(options: ToggleOptions)
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,9 +47,11 @@ Toggle的信息。
 >
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,8 +61,8 @@ Toggle的信息。
 
 | 名称              | 类型                              | 只读 | 可选 | 说明                                                         |
 | ----------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| type<sup>8+</sup> | [ToggleType](#toggletype枚举说明) | 否   | 否   | 开关的样式。<br/>默认值：ToggleType.Switch<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
-| isOn<sup>8+</sup> | boolean                           | 否   | 是   | 开关是否打开。<br/>true：打开；false：关闭。<br/>默认值：false<br />该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| type<sup>8+</sup> | [ToggleType](#toggletype枚举说明) | 否   | 否   | 开关的样式。<br/>默认值：ToggleType.Switch<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| isOn<sup>8+</sup> | boolean                           | 否   | 是   | 开关是否打开。<br/>true：打开；false：关闭。<br/>默认值：false<br />该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
 
 ## ToggleType枚举说明
 
@@ -65,15 +72,15 @@ Toggle的样式。
 >
 > Toggle的样式继承对应组件样式的默认值，且不支持设置。例如，如果ToggleType为Button，则该组件样式继承[ButtonType](ts-basic-components-button.md#buttontype枚举说明)的默认值。由于Button.type从API version 18开始，默认类型从胶囊型变更为圆角矩形，胶囊型按钮不支持设置[borderRadius](ts-universal-attributes-border.md#borderradius)，此时使用Toggle组件设置borderRadius也不生效。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称     | 值   | 说明                                                         |
 | -------- | ---- | ------------------------------------------------------------ |
-| Checkbox | 0    | 提供单选框样式。<br>**说明：**<br/>API version 11开始，Checkbox默认样式由圆角方形变为圆形。<br/>[通用属性margin](ts-universal-attributes-size.md#margin)的默认值为：<br>{<br>&nbsp;top: '14px',<br>&nbsp;right: '14px',<br>&nbsp;bottom: '14px',<br>&nbsp;left: '14px'<br> }。<br/>默认尺寸为：<br>{width:'20vp', height:'20vp'}。 |
+| Checkbox | 0    | 提供勾选框样式。<br>**说明：**<br/>API version 11开始，Checkbox默认样式由圆角方形变为圆形。<br/>[通用属性margin](ts-universal-attributes-size.md#margin)的默认值为：<br>{<br>&nbsp;top: '14px',<br>&nbsp;right: '14px',<br>&nbsp;bottom: '14px',<br>&nbsp;left: '14px'<br> }。<br/>默认尺寸为：<br>{width:'20vp', height:'20vp'}。 |
 | Switch   | 1    | 提供开关样式。<br>**说明：**<br/>[通用属性margin](ts-universal-attributes-size.md#margin)默认值为：<br>{<br/>&nbsp;top: '6px',<br/>&nbsp;right: '14px',<br/>&nbsp;bottom: '6px',<br/>&nbsp;left: '14px'<br/> }。<br/>默认尺寸为：<br>{width:'36vp', height:'20vp'}。 |
 | Button   | 2    | 提供状态按钮样式。如子组件设置文本，文本内容将显示在按钮内。默认高度为28vp，宽度无默认值。 |
 
@@ -89,9 +96,9 @@ ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
 
 设置组件在打开状态下的背景颜色。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -113,9 +120,9 @@ ArkTS-Sta: switchPointColor(color: ResourceColor | undefined)
 
 设置Switch类型的圆形滑块颜色。仅当type为ToggleType.Switch生效。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -127,7 +134,7 @@ ArkTS-Sta: switchPointColor(color: ResourceColor | undefined)
 
 | 参数名 | 类型                                       | 必填 | 说明                       |
 | ------ | ------------------------------------------ | ---- | -------------------------- |
-| color  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | Switch类型的圆形滑块颜色。取值为undefined时，按默认值处理。<br/>默认值：$r('sys.color.ohos_id_color_foreground_contrary')<br/>**说明：**<br/>同时设置了[systemMaterial](#systemmaterial)新材质时，设置此属性后会出现点光源效果，点光源颜色跟随此属性的设置。 |
+| color  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | Switch类型的圆形滑块颜色。取值为undefined时，按默认值处理。<br/>默认值：$r('sys.color.ohos_id_color_foreground_contrary')<br/>**说明：**<br/>同时设置了systemMaterial新材质时，滑块会出现默认白色的点光源效果，设置此属性后点光源颜色跟随此属性的设置。 |
 
 ### switchStyle<sup>12+</sup>
 
@@ -137,7 +144,9 @@ ArkTS-Sta: switchStyle(value: SwitchStyle | undefined)
 
 设置Switch类型的样式。仅当type为ToggleType.Switch生效。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -159,7 +168,9 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<ToggleConfiguration\> | un
 
 定制Toggle内容区的方法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -173,40 +184,13 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<ToggleConfiguration\> | un
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
 | modifier  | ArkTS-Dyn: [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ToggleConfiguration](#toggleconfiguration12对象说明)\><br/>ArkTS-Sta: [ContentModifier](ts-universal-attributes-content-modifier.md#contentmodifiert)\<[ToggleConfiguration](#toggleconfiguration12对象说明)\> \| undefined | 是   | 在Toggle组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。取值为undefined时，则不使用contentModifier。 |
 
-### systemMaterial
-
-systemMaterial(material: SystemUiMaterial | undefined): T
-
-设置Toggle组件的系统材质。
-
-> **说明：**
->
-> 不同[ToggleType](#toggletype枚举说明)类型设置系统材质的效果不同：
-> - ToggleType.Checkbox：当前未适配系统材质效果，设置系统材质不会出现系统材质相关的动效和视觉效果。
-> - ToggleType.Switch：传入材质参数时，使用组件内部预设的视觉参数，传入的材质参数仅作为开启新材质的开关标记，不影响实际视觉效果。主要影响Toggle的滑块大小、滑块样式、阴影等视觉属性。设置[switchPointColor](#switchpointcolor)后会出现点光源效果，点光源颜色跟随switchPointColor的设置。传入undefined时，新材质不生效，表现为原先的Toggle样式。
-> - ToggleType.Button：设置系统材质的效果与[Button](ts-basic-components-button.md)组件设置系统材质的效果相同，主要影响背景颜色、边框、阴影等视觉属性。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名    | 类型            | 必填     | 说明  |
-| -------- | -------------------- | ---- | -------------------------------------------------------------------- |
-| material | [SystemUiMaterial](ts-universal-attributes-image-effect.md) &nbsp;\|&nbsp; undefined | 是   | Toggle组件的系统材质对象。设置为undefined时恢复为无材质的效果。各[ToggleType](#toggletype枚举说明)类型的具体行为见上方说明。|
-
 ## SwitchStyle<sup>12+</sup>对象说明
 
 Switch类型的样式。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -233,9 +217,9 @@ ArkTS-Sta: onChange(callback: ((isOn: boolean) => void) | undefined): this
 
 开关状态切换时触发该事件。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -253,7 +237,9 @@ ArkTS-Sta: onChange(callback: ((isOn: boolean) => void) | undefined): this
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt12对象说明)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -264,13 +250,15 @@ ArkTS-Sta: onChange(callback: ((isOn: boolean) => void) | undefined): this
 | 名称  | 类型    |    只读    |    可选    |  说明              |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | isOn   | boolean| 否  | 否 | 开关是否打开。<br/>true：开关打开；false：开关关闭。<br/>默认值：false <br/>**ArkTS-Sta起始版本：** 23 |
-| triggerChange |Callback\<boolean\>| 否 | 否 |触发switch选中状态变化。<br/>true：状态从关切换为开；false：状态从开切换为关。<br/>**ArkTS-Sta起始版本：** 23 |
+| triggerChange |Callback\<boolean\>| 否 | 否 |触发开关选中状态变化。<br/>true：状态从关切换为开；false：状态从开切换为关。<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 示例
 
 ### 示例1（设置开关的样式）
 
 该示例通过配置ToggleType设置Toggle的勾选框样式、状态按钮样式及开关样式。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -336,11 +324,99 @@ struct ToggleExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  ColumnOptions,
+  Flex,
+  FlexOptions,
+  FlexAlign,
+  ItemAlign,
+  Toggle,
+  ToggleOptions,
+  ToggleType
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Text('type: Switch').fontSize(12).fontColor(0xcccccc).width('90%')
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center } as FlexOptions) {
+        Toggle({ type: ToggleType.Switch, isOn: false } as ToggleOptions)
+          .selectedColor('#007DFF')
+          .switchPointColor('#FFFFFF')
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+
+        Toggle({ type: ToggleType.Switch, isOn: true } as ToggleOptions)
+          .selectedColor('#007DFF')
+          .switchPointColor('#FFFFFF')
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+      }
+
+      Text('type: Checkbox').fontSize(12).fontColor(0xcccccc).width('90%')
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center } as FlexOptions) {
+        Toggle({ type: ToggleType.Checkbox, isOn: false } as ToggleOptions)
+          .size({ width: 20, height: 20 })
+          .selectedColor('#007DFF')
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+
+        Toggle({ type: ToggleType.Checkbox, isOn: true } as ToggleOptions)
+          .size({ width: 20, height: 20 })
+          .selectedColor('#007DFF')
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+      }
+
+      Text('type: Button').fontSize(12).fontColor(0xcccccc).width('90%')
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center } as FlexOptions) {
+        Toggle({ type: ToggleType.Button, isOn: false } as ToggleOptions) {
+          Text('status button').fontColor('#182431').fontSize(12)
+        }.width(106)
+        .selectedColor('rgba(0,125,255,0.20)')
+        .onChange((isOn: boolean) => {
+          console.info('Component status:' + isOn);
+        })
+
+        Toggle({ type: ToggleType.Button, isOn: true } as ToggleOptions) {
+          Text('status button').fontColor('#182431').fontSize(12)
+        }.width(106)
+        .selectedColor('rgba(0,125,255,0.20)')
+        .onChange((isOn: boolean) => {
+          console.info('Component status:' + isOn);
+        })
+      }
+    }.width('100%').padding(24)
+  }
+}
+```
+
 ![toggle](figures/toggle.gif)
 
 ### 示例2（自定义开关类型的样式）
 
 该示例实现了自定义设置Toggle组件Switch样式，包括圆形滑块半径、关闭状态的背景颜色、圆形滑块颜色、滑轨的圆角。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -378,11 +454,76 @@ struct ToggleExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  ColumnOptions,
+  Flex,
+  FlexOptions,
+  FlexAlign,
+  ItemAlign,
+  Toggle,
+  ToggleOptions,
+  ToggleType,
+  SwitchStyle,
+  Color
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+
+// xxx.ets
+@Entry
+@Component
+struct ToggleExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Text('type: Switch').fontSize(12).fontColor(0xcccccc).width('90%')
+      Flex({ justifyContent: FlexAlign.SpaceEvenly, alignItems: ItemAlign.Center } as FlexOptions) {
+        Toggle({ type: ToggleType.Switch, isOn: false } as ToggleOptions)
+          .selectedColor('#007DFF')
+          .switchStyle({
+            pointRadius: 15,
+            trackBorderRadius: 10,
+            pointColor: '#D2B48C',
+            unselectedColor: Color.Pink
+          } as SwitchStyle)
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+
+        Toggle({ type: ToggleType.Switch, isOn: true } as ToggleOptions)
+          .selectedColor('#007DFF')
+          .switchStyle({
+            pointRadius: 15,
+            trackBorderRadius: 10,
+            pointColor: '#D2B48C',
+            unselectedColor: Color.Pink
+          } as SwitchStyle)
+          .onChange((isOn: boolean) => {
+            console.info('Component status:' + isOn);
+          })
+      }
+    }.width('100%').padding(24)
+  }
+}
+```
+
 ![toggle](figures/toggleSwitchStyle.gif)
 
 ### 示例3（自定义Toggle样式）
 
 该示例实现自定义Toggle样式，通过按钮切换圆形背景颜色：点击蓝圆按钮，背景变蓝色；点击黄圆按钮，背景变黄色。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -434,4 +575,200 @@ struct Index {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  ColumnOptions,
+  Flex,
+  FlexOptions,
+  FlexAlign,
+  ItemAlign,
+  Toggle,
+  ToggleOptions,
+  ToggleType,
+  SwitchStyle,
+  Color,
+  ToggleConfiguration,
+  ContentModifier,
+  WrappedBuilder,
+  wrapBuilder,
+  Circle,
+  Row,
+  CircleOptions,
+  Button
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+
+// xxx.ets
+type BuilderToggle = @Builder
+(config: ToggleConfiguration) => void
+
+class MySwitchStyle implements ContentModifier<ToggleConfiguration> {
+  selectedColor: Color = Color.White;
+  lamp: string = 'string';
+
+  constructor(selectedColor: Color, lamp: string) {
+    this.selectedColor = selectedColor;
+    this.lamp = lamp;
+  }
+
+  applyContent(): WrappedBuilder<BuilderToggle> {
+    return wrapBuilder(buildSwitch);
+  }
+}
+
+@Builder
+function buildSwitch(config: ToggleConfiguration) {
+  Column({ space: 50 } as ColumnOptions) {
+    Circle({ width: 150, height: 150 } as CircleOptions)
+      .fill(config.isOn ? (config.contentModifier as MySwitchStyle).selectedColor : Color.Blue)
+    Row() {
+      Button('蓝' + JSON.stringify((config.contentModifier as MySwitchStyle).lamp))
+        .onClick(() => {
+          config.triggerChange(false);
+        })
+      Button('黄' + JSON.stringify((config.contentModifier as MySwitchStyle).lamp))
+        .onClick(() => {
+          config.triggerChange(true);
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column({ space: 50 } as ColumnOptions) {
+      Toggle({ type: ToggleType.Switch })
+        .enabled(true)
+        .contentModifier(new MySwitchStyle(Color.Yellow, '灯'))
+        .onChange((isOn: boolean) => {
+          console.info('Switch Log:' + isOn);
+        })
+    }.height('100%').width('100%')
+  }
+}
+```
+
 ![toggle](figures/Toggle_builder.gif)
+
+### 示例4（Toggle新材质效果）
+
+该示例展示了Toggle组件Switch类型在开启系统材质前后的效果对比，包括不设置系统材质、设置undefined、开启系统材质以及开启系统材质并配合[switchPointColor](#switchpointcolor)设置点光源颜色的效果。示例使用通用属性[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)接口来实现系统材质效果。
+
+从API版本26.0.0开始，新增systemMaterial属性。
+
+> **说明：**
+>
+> 系统材质的实际显示效果与设备的算力档位相关，相同的代码在不同算力档位的设备上显示效果存在差异，低算力设备上会显示简化后的材质效果。算力档位由系统根据设备硬件能力自动划分和管理，应用无需感知，也无需进行额外设置，系统会根据当前设备的算力档位自动适配材质的显示效果。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct ToggleMaterialTest {
+  build() {
+    Column({ space: 10 }) {
+      // 不设置新材质接口，无新材质效果
+      Toggle({ type: ToggleType.Switch, isOn: true })
+
+      // systemMaterial设置undefined，恢复为无材质的效果
+      Toggle({ type: ToggleType.Switch, isOn: true })
+        .systemMaterial(undefined)
+
+      // 开启新材质效果（systemMaterial参数任意仅作为新材质开关，最终使用组件侧固定参数），默认白色点光源（颜色为switchPointColor默认值）
+      Toggle({ type: ToggleType.Switch, isOn: true })
+        .systemMaterial(new uiMaterial.Material())
+
+      // 开启新材质效果（systemMaterial参数任意仅作为新材质开关，最终使用组件侧固定参数），点光源颜色跟随switchPointColor设置
+      Toggle({ type: ToggleType.Switch, isOn: true })
+        .systemMaterial(new uiMaterial.Material())
+        .switchPointColor(Color.Red)
+    }
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  Button,
+  ClickEvent,
+  ColumnOptions,
+  Flex,
+  FlexOptions,
+  FlexAlign,
+  ItemAlign,
+  Toggle,
+  ToggleOptions,
+  ToggleType,
+  SwitchStyle,
+  Color,
+  ToggleConfiguration,
+  ContentModifier,
+  WrappedBuilder,
+  wrapBuilder,
+  Circle,
+  Row,
+  CircleOptions,
+  Button,
+  uiMaterial
+} from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import hilog from '@ohos.hilog'
+
+// xxx.ets
+@Entry
+@Component
+struct ToggleMaterialTest {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      // 不设置新材质接口，无新材质效果
+      Toggle({ type: ToggleType.Switch, isOn: true })
+
+      // systemMaterial设置undefined，恢复为无材质的效果
+      Toggle({ type: ToggleType.Switch, isOn: true })
+        .systemMaterial(undefined)
+
+      // 开启新材质效果（systemMaterial参数任意仅作为新材质开关，最终使用组件侧固定参数），默认白色点光源（颜色为switchPointColor默认值）
+      Toggle({ type: ToggleType.Switch, isOn: true })
+        .systemMaterial(new uiMaterial.Material())
+
+      // 开启新材质效果（systemMaterial参数任意仅作为新材质开关，最终使用组件侧固定参数），点光源颜色跟随switchPointColor设置
+      Toggle({ type: ToggleType.Switch, isOn: true })
+        .systemMaterial(new uiMaterial.Material())
+        .switchPointColor(Color.Red)
+    }
+    .width('100%')
+  }
+}
+```
+
+高算力设备场景示例图：
+
+![toggle](figures/toggle-material-high.gif)
+
+低算力设备场景示例图：
+
+![toggle](figures/toggle-material-low.gif)

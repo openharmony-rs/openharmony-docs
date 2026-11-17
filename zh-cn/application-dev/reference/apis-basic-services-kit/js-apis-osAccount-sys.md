@@ -4,7 +4,7 @@
 <!--Subsystem: Account-->
 <!--Owner: @steven-q-->
 <!--Designer: @JiDong-CS1-->
-<!--Tester: @zhaimengchao-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
 
 本模块提供管理系统账号的基础能力，包括系统账号的添加、删除、查询、设置、订阅、启动等功能。
@@ -62,15 +62,15 @@ ArkTS-Sta: activateOsAccount(localId: int, callback: AsyncCallback&lt;void&gt;):
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
-| 12300010 | Service busy. Possible causes: The target account is being operated. |
-| 12300016 | The number of logged in accounts reaches the upper limit. |
+| 12300009 | Account has been activated. <br>适用版本：7-11 |
+| 12300010 | Service busy. Possible causes: The target account is being operated. <br>适用版本：12+ |
+| 12300016 | The number of logged in accounts reaches the upper limit. <br>适用版本：12+ |
 
 **示例：**
 
@@ -146,7 +146,7 @@ ArkTS-Sta: activateOsAccount(localId: int): Promise&lt;void&gt;
 
 | 类型                | 说明                                  |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -154,15 +154,15 @@ ArkTS-Sta: activateOsAccount(localId: int): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
-| 12300010 | Service busy. Possible causes: The target account is being operated. |
-| 12300016 | The number of logged in accounts reaches the upper limit. |
+| 12300009 | Account has been activated. <br>适用版本：7-11 |
+| 12300010 | Service busy. Possible causes: The target account is being operated. <br>适用版本：12+|
+| 12300016 | The number of logged in accounts reaches the upper limit. <br>适用版本：12+|
 
 **示例：**
 
@@ -246,9 +246,9 @@ ArkTS-Sta: activateOsAccount(localId: int, displayId: long): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
@@ -329,7 +329,7 @@ ArkTS-Sta: deactivateOsAccount(localId: int): Promise&lt;void&gt;
 
 | 类型                | 说明                                  |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -337,9 +337,8 @@ ArkTS-Sta: deactivateOsAccount(localId: int): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
@@ -424,9 +423,8 @@ ArkTS-Sta: isOsAccountActivated(localId: int): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
@@ -496,7 +494,7 @@ ArkTS-Sta: isOsAccountConstraintEnabled(localId: int, constraint: string): Promi
 | 参数名     | 类型   | 必填 | 说明                                |
 | ---------- | ------ | ---- | ---------------------------------- |
 | localId    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。  |
-| constraint | string | 是   | 指定的[约束](js-apis-osAccount.md#系统账号约束列表)名称。 |
+| constraint | string | 是   | 指定的[约束](appendix-osAccount-constraints.md)名称。 |
 
 **返回值：**
 
@@ -510,9 +508,8 @@ ArkTS-Sta: isOsAccountConstraintEnabled(localId: int, constraint: string): Promi
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
@@ -567,7 +564,7 @@ ArkTS-Dyn: isOsAccountUnlocked(localId: number): Promise&lt;boolean&gt;
 
 ArkTS-Sta: isOsAccountUnlocked(localId: int): Promise&lt;boolean&gt;
 
-检查指定系统账号是否已验证。使用Promise异步回调。
+检查指定系统账号是否已解锁。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -583,13 +580,13 @@ ArkTS-Sta: isOsAccountUnlocked(localId: int): Promise&lt;boolean&gt;
 
 | 参数名  | 类型   | 必填 | 说明                                                              |
 | ------- | ------ | ---- | --------------------------------------------------------------- |
-| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。不填则检查当前系统账号是否已验证。 |
+| localId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 系统账号ID。用于指定要检查是否已解锁的系统账号。 |
 
 **返回值：**
 
 | 类型                   | 说明                                                               |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号已解锁；返回false表示当前账号未解锁。 |
 
 **错误码：**
 
@@ -597,9 +594,8 @@ ArkTS-Sta: isOsAccountUnlocked(localId: int): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
@@ -675,8 +671,8 @@ ArkTS-Sta: removeOsAccount(localId: int, callback: AsyncCallback&lt;void&gt;): v
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -766,7 +762,7 @@ ArkTS-Sta: removeOsAccount(localId: int): Promise&lt;void&gt;
 
 | 类型                | 说明                                  |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -774,8 +770,8 @@ ArkTS-Sta: removeOsAccount(localId: int): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
@@ -871,8 +867,8 @@ ArkTS-Sta: removeOsAccount(localId: int, options: RemoveOsAccountOptions): Promi
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or options.   |
@@ -963,8 +959,8 @@ ArkTS-Sta: setOsAccountConstraints(localId: int, constraints: Array&lt;string&gt
 | 参数名      | 类型                      | 必填 | 说明                                             |
 | ----------- | ------------------------- | ---- | ----------------------------------------------- |
 | localId     | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 系统账号ID。               |
-| constraints | Array&lt;string&gt;       | 是   | 待设置/删除的[约束](js-apis-osAccount.md#系统账号约束列表)列表。        |
-| enable      | boolean                   | 是   | 设置(true)/删除(false) 。                          |
+| constraints | Array&lt;string&gt;       | 是   | 待设置/删除的[约束](appendix-osAccount-constraints.md)列表。        |
+| enable      | boolean                   | 是   | 设置（true）/删除（false）。                          |
 | callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。如果设置成功，err为null，否则为错误对象。 |
 
 **错误码：**
@@ -973,11 +969,10 @@ ArkTS-Sta: setOsAccountConstraints(localId: int, constraints: Array&lt;string&gt
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
-| 12300002 | Invalid localId or constraints.    |
+| 12300002 | Invalid localId or constraints. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted Account. |
 
@@ -1052,14 +1047,14 @@ ArkTS-Sta: setOsAccountConstraints(localId: int, constraints: Array&lt;string&gt
 | 参数名      | 类型                | 必填 | 说明                                         |
 | ----------- | ------------------- | ---- | -------------------------------------------- |
 | localId     | ArkTS-Dyn: number<br>ArkTS-Sta: int              | 是   | 系统账号ID。           |
-| constraints | Array&lt;string&gt; | 是   | 待设置/删除的[约束](js-apis-osAccount.md#系统账号约束列表)列表。    |
-| enable      | boolean             | 是   | 设置(true)/删除(false)。                     |
+| constraints | Array&lt;string&gt; | 是   | 待设置/删除的[约束](appendix-osAccount-constraints.md)列表。    |
+| enable      | boolean             | 是   | 设置（true）/删除（false）。                     |
 
 **返回值：**
 
 | 类型                | 说明                                 |
-| :------------------ | :----------------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| ------------------ | ----------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1067,9 +1062,8 @@ ArkTS-Sta: setOsAccountConstraints(localId: int, constraints: Array&lt;string&gt
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or constraints.    |
 | 12300003 | Account not found. |
@@ -1139,7 +1133,7 @@ ArkTS-Sta: setOsAccountName(localId: int, localName: string, callback: AsyncCall
 **参数：**
 
 | 参数名    | 类型                      | 必填 | 说明                                             |
-| :-------- | ------------------------- | ---- | ----------------------------------------------- |
+| -------- | ------------------------- | ---- | ----------------------------------------------- |
 | localId   | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 系统账号ID。               |
 | localName | string                    | 是   | 账号名，最大长度为1024个字符。                          |
 | callback  | AsyncCallback&lt;void&gt; | 是   | 回调函数。如果设置成功，err为null，否则为错误对象。 |
@@ -1150,9 +1144,8 @@ ArkTS-Sta: setOsAccountName(localId: int, localName: string, callback: AsyncCall
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or localName. |
 | 12300003 | Account not found. |
@@ -1235,7 +1228,7 @@ ArkTS-Sta: setOsAccountName(localId: int, localName: string): Promise&lt;void&gt
 
 | 类型                | 说明                                  |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1243,9 +1236,8 @@ ArkTS-Sta: setOsAccountName(localId: int, localName: string): Promise&lt;void&gt
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or localName.    |
 | 12300003 | Account not found. |
@@ -1334,8 +1326,8 @@ ArkTS-Sta: setOsAccountType(localId: int, type: OsAccountType, options?: SetOsAc
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Not system application.                                      |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 202      | Permission verification failed. A non-system application calls a system API.                                      |
 | 204      | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally.                         |
 | 12300002 | Invalid type or options.                                     |
@@ -1418,8 +1410,7 @@ ArkTS-Sta: queryMaxOsAccountNumber(callback: AsyncCallback&lt;int&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1492,7 +1483,7 @@ ArkTS-Sta: queryMaxOsAccountNumber(): Promise&lt;int&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1562,7 +1553,7 @@ ArkTS-Sta: queryMaxLoggedInOsAccountNumber(): Promise&lt;int&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1632,7 +1623,7 @@ ArkTS-Sta: getEnabledOsAccountConstraints(localId: int): Promise&lt;Array&lt;str
 
 | 类型                               | 说明                                                       |
 | ---------------------------------- | ---------------------------------------------------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回指定系统账号已使能的全部[约束](js-apis-osAccount.md#系统账号约束列表)。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回指定系统账号已使能的全部[约束](appendix-osAccount-constraints.md)。 |
 
 **错误码：**
 
@@ -1640,9 +1631,8 @@ ArkTS-Sta: getEnabledOsAccountConstraints(localId: int): Promise&lt;Array&lt;str
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
@@ -1717,9 +1707,8 @@ queryAllCreatedOsAccounts(callback: AsyncCallback&lt;Array&lt;OsAccountInfo&gt;&
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1792,8 +1781,8 @@ queryAllCreatedOsAccounts(): Promise&lt;Array&lt;OsAccountInfo&gt;&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1854,7 +1843,7 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback&
 **参数：**
 
 | 参数名    | 类型                                                 | 必填 | 说明                                                                         |
-| :-------- | ---------------------------------------------------- | ---- | --------------------------------------------------------------------------- |
+| -------- | ---------------------------------------------------- | ---- | --------------------------------------------------------------------------- |
 | localName | string                                               | 是   | 创建的系统账号的名称。                                                        |
 | type      | [OsAccountType](js-apis-osAccount.md#osaccounttype)                      | 是   | 创建的系统账号的类型。                                                        |
 | callback  | AsyncCallback&lt;[OsAccountInfo](js-apis-osAccount.md#osaccountinfo)&gt; | 是   | 回调函数。如果创建成功，err为null，data为新创建的系统账号的信息；否则为错误对象。 |
@@ -1865,8 +1854,8 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback&
 
 | 错误码ID  | 错误信息                   |
 | -------- | ------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localName or type. |
@@ -1956,8 +1945,8 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 
 | 错误码ID  | 错误信息                   |
 | -------- | ------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localName, type or options. |
@@ -1967,6 +1956,7 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 | 12300007 | The number of accounts has reached the upper limit. |
 | 12300015 | The short name already exists. |
 | 12300023 | The number of accounts of the specified type has reached the upper limit. |
+| 12300024 | The specified OS account ID already exists. Suggested solutions: Use a different ID, or remove the existing OS account with the same ID and try again.<br>适用版本：26.1.0+ |
 
 **示例：**
 
@@ -2049,10 +2039,10 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, cal
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type or domainInfo. |
 | 12300004 | Account already exists. |
@@ -2145,10 +2135,10 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 204 | Access denied due to user access control policy. Possible causes: <br/>1. The operation is restricted by the OS-account constraint. <br/>2. The required privilege for the operation has not been granted. |
-| 801 | Capability not supported.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type, domainInfo or options. |
 | 12300004 | Account already exists. |
@@ -2157,6 +2147,7 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 | 12300007 | The number of accounts has reached the upper limit. |
 | 12300015 | The short name already exists. |
 | 12300023 | The number of accounts of the specified type has reached the upper limit. |
+| 12300024 | The specified OS account ID already exists. Suggested solutions: Use a different ID, or remove the existing OS account with the same ID and try again.<br>适用版本：26.1.0+ |
 
 **示例：**
 
@@ -2237,8 +2228,8 @@ queryOsAccount(): Promise&lt;OsAccountInfo&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -2311,9 +2302,8 @@ ArkTS-Sta: queryOsAccountById(localId: int, callback: AsyncCallback&lt;OsAccount
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -2400,9 +2390,8 @@ ArkTS-Sta: queryOsAccountById(localId: int): Promise&lt;OsAccountInfo&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId. |
 | 12300003 | Account not found. |
@@ -2481,9 +2470,8 @@ ArkTS-Sta: getOsAccountProfilePhoto(localId: int, callback: AsyncCallback&lt;str
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -2570,9 +2558,8 @@ ArkTS-Sta: getOsAccountProfilePhoto(localId: int): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -2652,9 +2639,8 @@ ArkTS-Sta: setOsAccountProfilePhoto(localId: int, photo: string, callback: Async
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or photo.    |
 | 12300003 | Account not found. |
@@ -2743,7 +2729,7 @@ ArkTS-Sta: setOsAccountProfilePhoto(localId: int, photo: string): Promise&lt;voi
 
 | 类型                | 说明                                 |
 | ------------------- | ------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2751,9 +2737,8 @@ ArkTS-Sta: setOsAccountProfilePhoto(localId: int, photo: string): Promise&lt;voi
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or photo.    |
 | 12300003 | Account not found. |
@@ -2842,9 +2827,8 @@ on(type: 'activate' | 'activating', name: string, callback: Callback&lt;number&g
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type or name. |
 
@@ -2900,9 +2884,8 @@ off(type: 'activate' | 'activating', name: string, callback?: Callback&lt;number
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type or name. |
 
@@ -2959,8 +2942,8 @@ on(type: 'switching', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -3017,8 +3000,8 @@ off(type: 'switching', callback?: Callback&lt;OsAccountSwitchEventData&gt;): voi
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -3070,8 +3053,8 @@ on(type: 'switched', callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -3128,8 +3111,8 @@ off(type: 'switched', callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid type. |
 
@@ -3164,7 +3147,7 @@ onConstraintChanged(constraints: string[], callback: Callback&lt;ConstraintChang
 
 | 参数名     | 类型                   | 必填 | 说明      |
 | --------  | ---------------------- | ---- | -------- |
-| constraints  | string[] | 是   | 表示待订阅的[约束](js-apis-osAccount.md#系统账号约束列表)列表。 |
+| constraints  | string[] | 是   | 表示待订阅的[约束](appendix-osAccount-constraints.md)列表。 |
 | callback | Callback&lt;[ConstraintChangeInfo ](#constraintchangeinfo23)&gt;  | 是   | 表示用于接收约束变更事件的回调函数。 |
 
 
@@ -3174,7 +3157,7 @@ onConstraintChanged(constraints: string[], callback: Callback&lt;ConstraintChang
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | One or more constraints are invalid. |
 
@@ -3223,7 +3206,7 @@ offConstraintChanged(callback?: Callback&lt;ConstraintChangeInfo&gt;): void
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -3259,7 +3242,7 @@ ArkTS-Dyn: getBundleIdForUid(uid: number, callback: AsyncCallback&lt;number&gt;)
 
 ArkTS-Sta: getBundleIdForUid(uid: int, callback: AsyncCallback&lt;int&gt;): void
 
-通过uid查询对应的bundleId，使用callback异步回调。
+通过uid查询对应的bundleId。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3282,8 +3265,7 @@ ArkTS-Sta: getBundleIdForUid(uid: int, callback: AsyncCallback&lt;int&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid uid. |
 
@@ -3295,6 +3277,7 @@ ArkTS-Dyn示例：
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // uid为进程uid，请通过应用信息获取
   let testUid: number = 1000000;
   try {
     accountManager.getBundleIdForUid(testUid, (err: BusinessError, bundleId: number) => {
@@ -3337,7 +3320,7 @@ ArkTS-Dyn: getBundleIdForUid(uid: number): Promise&lt;number&gt;
 
 ArkTS-Sta: getBundleIdForUid(uid: int): Promise&lt;int&gt;
 
-通过uid查询对应的bundleId，使用Promise异步回调。
+通过uid查询对应的bundleId。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3365,8 +3348,7 @@ ArkTS-Sta: getBundleIdForUid(uid: int): Promise&lt;int&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid uid. |
 
@@ -3445,8 +3427,7 @@ ArkTS-Sta: getBundleIdForUidSync(uid: int): int
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300002 | Invalid uid. |
 
 **示例：**
@@ -3514,8 +3495,8 @@ onActivate(name: string, callback: Callback&lt;int&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid name. |
 
@@ -3566,8 +3547,8 @@ onActivating(name: string, callback: Callback&lt;int&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid name. |
 
@@ -3618,8 +3599,8 @@ offActivate(name: string, callback?: Callback&lt;int&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid name. |
 
@@ -3671,8 +3652,8 @@ offActivating(name: string, callback?: Callback&lt;int&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid name. |
 
@@ -3723,8 +3704,8 @@ onSwitching(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -3774,8 +3755,8 @@ offSwitching(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -3822,8 +3803,8 @@ onSwitched(callback: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -3873,8 +3854,8 @@ offSwitched(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -3896,7 +3877,7 @@ offSwitched(callback?: Callback&lt;OsAccountSwitchEventData&gt;): void
 
 isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
-查询当前进程是否处于主用户，使用callback异步回调。
+查询当前进程是否处于主用户。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3912,7 +3893,7 @@ isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名   | 类型                          | 必填 | 说明                                                               |
 | -------- | ---------------------------- | ---- | ----------------------------------------------------------------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数，返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
 
 **错误码：**
 
@@ -3920,9 +3901,8 @@ isMainOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -3971,7 +3951,7 @@ ArkTS-Sta示例：
 
 isMainOsAccount(): Promise&lt;boolean&gt;
 
-查询当前进程是否处于主用户，使用Promise异步回调。
+查询当前进程是否处于主用户。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -3987,7 +3967,7 @@ isMainOsAccount(): Promise&lt;boolean&gt;
 
 | 类型                   | 说明                                                                  |
 | ---------------------- | --------------------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象，返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号为主账号，返回false表示当前账号非主账号。 |
 
 **错误码：**
 
@@ -3995,8 +3975,8 @@ isMainOsAccount(): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -4075,8 +4055,8 @@ ArkTS-Sta: getForegroundOsAccountLocalId(displayId: long): Promise&lt;int&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300017 | The foreground OS account is not found. |
 
@@ -4156,8 +4136,8 @@ ArkTS-Sta: getForegroundOsAccountDisplayId(localId: int): Promise&lt;long&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300017 | The foreground OS account is not found. |
 
@@ -4207,7 +4187,7 @@ ArkTS-Dyn: getOsAccountConstraintSourceTypes(localId: number, constraint: string
 
 ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string, callback: AsyncCallback&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;): void
 
-查询指定系统账号的指定约束来源信息，使用callback异步回调。
+查询指定系统账号的指定约束来源信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4224,8 +4204,8 @@ ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string, c
 | 参数名   | 类型                       | 必填 | 说明                                                         |
 | -------- | -------------------------- | ---- | ------------------------------------------------------------ |
 | localId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   |  要查询的系统账号ID。 |
-| constraint     | string | 是   |  要查询的[约束](js-apis-osAccount.md#系统账号约束列表)名称。 |
-| callback | AsyncCallback&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt;     | 是   | 回调函数。如果成功，err为null，data为指定系统账号的指定[约束](js-apis-osAccount.md#系统账号约束列表)来源信息；否则为错误对象。                      |
+| constraint     | string | 是   |  要查询的[约束](appendix-osAccount-constraints.md)名称。 |
+| callback | AsyncCallback&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt;     | 是   | 回调函数。如果成功，err为null，data为指定系统账号的指定[约束](appendix-osAccount-constraints.md)来源信息；否则为错误对象。                      |
 
 **错误码：**
 
@@ -4233,9 +4213,8 @@ ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string, c
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid name or constraint. |
 | 12300003 | Account not found. |
@@ -4290,7 +4269,7 @@ ArkTS-Dyn: getOsAccountConstraintSourceTypes(localId: number, constraint: string
 
 ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string): Promise&lt;Array&lt;ConstraintSourceTypeInfo&gt;&gt;
 
-查询指定系统账号的指定约束来源信息，使用Promise异步回调。
+查询指定系统账号的指定约束来源信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4307,13 +4286,13 @@ ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string): 
 | 参数名  | 类型   | 必填 | 说明         |
 | ------- | ------ | ---- | ------------ |
 | localId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   |  要查询的系统账号ID。 |
-| constraint     | string | 是   |  要查询的[约束](js-apis-osAccount.md#系统账号约束列表)名称。 |
+| constraint     | string | 是   |  要查询的[约束](appendix-osAccount-constraints.md)名称。 |
 
 **返回值：**
 
 | 类型                  | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ |
-| Promise&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt; | Promise对象，返回指定系统账号的指定[约束](js-apis-osAccount.md#系统账号约束列表)来源信息。 |
+| Promise&lt;Array&lt;[ConstraintSourceTypeInfo](#constraintsourcetypeinfo9)&gt;&gt; | Promise对象，返回指定系统账号的指定[约束](appendix-osAccount-constraints.md)来源信息。 |
 
 **错误码：**
 
@@ -4321,9 +4300,8 @@ ArkTS-Sta: getOsAccountConstraintSourceTypes(localId: int, constraint: string): 
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid name or constraint. |
 | 12300003 | Account not found. |
@@ -4375,7 +4353,7 @@ ArkTS-Dyn: getOsAccountType(localId: number): Promise&lt;OsAccountType&gt;
 
 ArkTS-Sta: getOsAccountType(localId: int): Promise&lt;OsAccountType&gt;
 
-查询指定系统账号的类型，使用Promise异步回调。
+查询指定系统账号的类型。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4405,9 +4383,8 @@ ArkTS-Sta: getOsAccountType(localId: int): Promise&lt;OsAccountType&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 
@@ -4474,7 +4451,7 @@ ArkTS-Sta: bindDomainAccount(localId: int, domainAccountInfo: DomainAccountInfo)
 
 | 参数名  | 类型   | 必填 | 说明         |
 | ------- | ------ | ---- | ------------ |
-| localId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   |  要查询的系统账号ID。 |
+| localId     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   |  系统账号ID。 |
 | domainAccountInfo | [DomainAccountInfo](#domainaccountinfo8) | 是   | 域账号信息。          |
 
 **返回值：**
@@ -4485,13 +4462,13 @@ ArkTS-Sta: bindDomainAccount(localId: int, domainAccountInfo: DomainAccountInfo)
 
 **错误码：**
 
-以下错误码的详细介绍请参见通用[通用错误码](../errorcode-universal.md)和[账号管理错误码](./errorcode-account.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[账号管理错误码](./errorcode-account.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domain account information. |
 | 12300003 | The OS account not found. |
@@ -4518,7 +4495,7 @@ ArkTS-Dyn示例：
     });
   } catch (e) {
     const err = e as BusinessError;
-    console.error(`bindDomainAccount error, errCode=${error.code}, errMsg=${error.message}`);
+    console.error(`bindDomainAccount error, errCode=${err.code}, errMsg=${err.message}`);
   }
   ```
 
@@ -4572,7 +4549,7 @@ getAuthorizationManager(): AuthorizationManager
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -4631,8 +4608,8 @@ acquireAuthorization(privilege: string, options?: AcquireAuthorizationOptions): 
 
 | 错误码ID | 错误信息 |
 | -------- | --- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid privilege or options. |
 
@@ -4686,7 +4663,7 @@ hasAuthorization(privilege: string): Promise&lt;boolean&gt;
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;boolean&gt; | Promise对象，返回true表示已获得指定特权的授权；返回false表示未获得指定特权的授权。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示已获得指定特权的授权；返回false表示未获得指定特权的授权。 |
 
 **错误码：**
 
@@ -4694,7 +4671,7 @@ hasAuthorization(privilege: string): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | --- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid privilege. |
 
@@ -4753,7 +4730,7 @@ releaseAuthorization(privilege: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | --- |
-| 202 | Not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid privilege. |
 
@@ -4795,9 +4772,9 @@ try {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --- | --- | --- | --- | --- |
 | challenge | Uint8Array | 否 | 是 | 随机挑战值，可用于防止重放攻击，长度不得超过32字节，默认为undefined。|
-| isReuseNeeded | boolean | 否 | 是 | 是否需要重复用先前的授权，默认为true。<br/>如果为true且存在有效的授权结果，则将复用该结果；否则，将执行新的授权。 |
-| isInteractionAllowed | boolean | 否 | 是 | 是否允许用户交互，默认为true 。<br/>如果为true，则允许在交互上下文中显示授权对话框；如果为false，则不允许显示授权对话框。<br>**注意**：此选项仅在调用者位于前台时生效。如果调用者在后台，则不允许用户交互。 |
-| interactionContext | Context | 否 | 是 | 用户交互上下文配置，默认为undefined。<br/>- 未指定上下文时，授权对话框以模态系统模式显示。<br/>- 指定[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)或[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)时，以模态应用模式显示。<br/> - 未提供有效上下文时，授权对话框无法显示。<br>**注意**：仅当isInteractionAllowed为true时生效。 |
+| isReuseNeeded | boolean | 否 | 是 | 是否需要复用先前的授权，默认为true。<br/>如果为true且存在有效的授权结果，则将复用该结果；否则，将执行新的授权。 |
+| isInteractionAllowed | boolean | 否 | 是 | 是否允许用户交互，默认为true。<br/>如果为true，则允许在交互上下文中显示授权对话框；如果为false，则不允许显示授权对话框。<br>**注意：** 此选项仅在调用者位于前台时生效。如果调用者在后台，则不允许用户交互。 |
+| interactionContext | Context | 否 | 是 | 用户交互上下文配置，默认为undefined。<br/>- 未指定上下文时，授权对话框以模态系统模式显示。<br/>- 指定[UIAbilityContext (UIAbility上下文)](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)或[UIExtensionContext](../apis-ability-kit/js-apis-inner-application-uiExtensionContext.md)时，以模态应用模式显示。<br/> - 未提供有效上下文时，授权对话框无法显示。<br>**注意：** 仅当isInteractionAllowed为true时生效。 |
 ## AuthorizationResultCode<sup>24+</sup>
 
 表示授权结果码的枚举。
@@ -4842,6 +4819,1041 @@ try {
 | validityPeriod | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 授权的有效期，默认值为300，单位为s。 |
 | token | Uint8Array | 否 | 是 | 授权令牌，默认为undefined。 |
 
+## osAccount.getOsAccountSubProfileManager
+
+getOsAccountSubProfileManager(): OsAccountSubProfileManager
+
+获取系统账号子身份管理器。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ----------- |
+| [OsAccountSubProfileManager](#osaccountsubprofilemanager) | 返回系统账号子身份管理器的实例对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息       |
+| -------- | ------------- |
+| 202 | Permission verification failed. A non-system application calls a system API.|
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+```
+
+ArkTS-Sta示例：
+```ts
+import osAccount from '@ohos.account.osAccount';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+```
+
+## OsAccountSubProfileManager
+
+系统账号子身份管理类，用于管理系统账号的子身份。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+### createOsAccountSubProfile
+
+ArkTS-Dyn: createOsAccountSubProfile(osAccountLocalId: number): Promise&lt;OsAccountSubProfile&gt;
+
+ArkTS-Sta: createOsAccountSubProfile(osAccountLocalId: int): Promise&lt;OsAccountSubProfile&gt;
+
+创建一个系统账号子身份资料。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                |
+| -------- | ------------------------- | ---- | -------------------------------------------------- |
+| osAccountLocalId  | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 目标系统账号的本地标识符。                  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ----------- |
+| Promise&lt;[OsAccountSubProfile](#osaccountsubprofile)&gt; | Promise对象，返回创建的子身份资料。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | ------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 12300001 | System service exception. |
+| 12300003 | The OS account not found. |
+| 12300008 | Restricted OS account. |
+| 12300010 | Service busy. Possible causes: The target OS account is being operated. |
+| 12300402 | The number of sub-profiles under the OS account has reached limit. |
+
+**示例：**
+
+为ID为100的系统账号创建子身份资料。
+
+ArkTS-Dyn示例：
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+try {
+  subProfileManager.createOsAccountSubProfile(osAccountLocalId).then((subProfile: osAccount.OsAccountSubProfile) => {
+    console.info('createOsAccountSubProfile successfully, subProfileId: ' + subProfile.id);
+  }).catch((err: BusinessError) => {
+    console.error(`createOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`createOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: int = 100;
+try {
+  subProfileManager.createOsAccountSubProfile(osAccountLocalId).then((subProfile: osAccount.OsAccountSubProfile) => {
+    console.info('createOsAccountSubProfile successfully, subProfileId: ' + subProfile.id);
+  }).catch((err: Error) => {
+    console.error(`createOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`createOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### deleteOsAccountSubProfile
+
+ArkTS-Dyn: deleteOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: deleteOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise&lt;void&gt;
+
+删除一个系统账号子身份资料。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                |
+| -------- | ------------------------- | ---- | -------------------------------------------------- |
+| osAccountLocalId  | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 目标系统账号的本地标识符。                  |
+| subProfileId  | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 子身份资料的标识符。                  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ----------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | ------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 12300001 | System service exception. |
+| 12300010 | Service busy. Possible causes: The OS account or sub-profile is being operated. |
+| 12300401 | Sub-profile not found. |
+| 12300403 | Restricted sub-profile cannot be deleted. |
+| 12300404 | The foreground sub-profile cannot be deleted. |
+
+**示例：**
+
+删除ID为100的系统账号下ID为100001的子身份资料。
+
+ArkTS-Dyn示例：
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+let subProfileId: number = 100001;
+try {
+  subProfileManager.deleteOsAccountSubProfile(osAccountLocalId, subProfileId).then(() => {
+    console.info('deleteOsAccountSubProfile successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`deleteOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`deleteOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: int = 100;
+let subProfileId: int = 100001;
+try {
+  subProfileManager.deleteOsAccountSubProfile(osAccountLocalId, subProfileId).then(() => {
+    console.info('deleteOsAccountSubProfile successfully');
+  }).catch((err: Error) => {
+    console.error(`deleteOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`deleteOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### switchOsAccountSubProfile
+
+ArkTS-Dyn: switchOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promise&lt;void&gt;
+
+ArkTS-Sta: switchOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise&lt;void&gt;
+
+切换至一个系统账号子身份资料。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                |
+| -------- | ------------------------- | ---- | -------------------------------------------------- |
+| osAccountLocalId  | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 系统账号的本地标识符。                  |
+| subProfileId  | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 子身份资料的标识符。                  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ----------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | ------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 12300001 | System service exception. |
+| 12300010 | Service busy. Possible causes: The OS account or sub-profile is being operated. |
+| 12300401 | Sub-profile not found. |
+| 12300403 | Restricted sub-profile cannot be switched to foreground. |
+| 12300405 | The foreground sub-profile bound with a logged-in distributed account cannot be directly switched to background. |
+
+**示例：**
+
+将ID为100的系统账号的当前子身份资料切换到ID为100001的子身份资料。
+
+ArkTS-Dyn示例：
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+let subProfileId: number = 100001;
+try {
+  subProfileManager.switchOsAccountSubProfile(osAccountLocalId, subProfileId).then(() => {
+    console.info('switchOsAccountSubProfile successfully');
+  }).catch((err: BusinessError) => {
+    console.error(`switchOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`switchOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: int = 100;
+let subProfileId: int = 100001;
+try {
+  subProfileManager.switchOsAccountSubProfile(osAccountLocalId, subProfileId).then(() => {
+    console.info('switchOsAccountSubProfile successfully');
+  }).catch((err: Error) => {
+    console.error(`switchOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`switchOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### onOsAccountSubProfileEvent
+
+onOsAccountSubProfileEvent(events: OsAccountSubProfileEvent[], callback: Callback&lt;OsAccountSubProfileEventData&gt;): void
+
+订阅系统账号子身份资料的事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                |
+| -------- | ------------------------- | ---- | -------------------------------------------------- |
+| events  | [OsAccountSubProfileEvent](#osaccountsubprofileevent)[]                    | 是   | 要订阅的事件数组。                  |
+| callback | Callback&lt;[OsAccountSubProfileEventData](#osaccountsubprofileeventdata)&gt; | 是   | 事件发生时调用的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | ------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 12300001 | System service exception. |
+| 12300002 | Invalid event. |
+
+**示例：**
+
+订阅系统账号子身份资料的创建事件。
+
+ArkTS-Dyn示例：
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let events: osAccount.OsAccountSubProfileEvent[] = [osAccount.OsAccountSubProfileEvent.CREATED];
+try {
+  subProfileManager.onOsAccountSubProfileEvent(events, (data: osAccount.OsAccountSubProfileEventData) => {
+    console.info('onOsAccountSubProfileEvent, event: ' + data.event + ', localId: ' + data.osAccountLocalId);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`onOsAccountSubProfileEvent failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let events: osAccount.OsAccountSubProfileEvent[] = [osAccount.OsAccountSubProfileEvent.CREATED];
+try {
+  subProfileManager.onOsAccountSubProfileEvent(events, (data: osAccount.OsAccountSubProfileEventData) => {
+    console.info('onOsAccountSubProfileEvent, event: ' + data.event + ', localId: ' + data.osAccountLocalId);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`onOsAccountSubProfileEvent failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### offOsAccountSubProfileEvent
+
+offOsAccountSubProfileEvent(callback?: Callback&lt;OsAccountSubProfileEventData&gt;): void
+
+取消订阅系统账号子身份资料的事件。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                |
+| -------- | ------------------------- | ---- | -------------------------------------------------- |
+| callback | Callback&lt;[OsAccountSubProfileEventData](#osaccountsubprofileeventdata)&gt; | 否   | 需要取消订阅的回调，默认为空，表示取消的所有回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | ------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 12300001 | System service exception. |
+
+**示例：**
+
+取消订阅系统账号子身份资料的事件。
+
+ArkTS-Dyn示例：
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+try {
+  subProfileManager.offOsAccountSubProfileEvent();
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`offOsAccountSubProfileEvent failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+try {
+  subProfileManager.offOsAccountSubProfileEvent();
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`offOsAccountSubProfileEvent failed, code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### getOsAccountForegroundSubProfileId
+
+ArkTS-Dyn: getOsAccountForegroundSubProfileId(): Promise&lt;number&gt;
+
+ArkTS-Sta: getOsAccountForegroundSubProfileId(): Promise&lt;int&gt;
+
+获取调用方所属系统账号的前台子身份的资料标识符。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ----------- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回系统账号的前台子身份资料标识符。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | ------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 12300001 | System service exception. |
+| 12300401 | Sub-profile not found. |
+
+**示例：**
+
+获取调用方所属系统账号的前台子身份的资料标识符。
+
+ArkTS-Dyn示例：
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+try {
+  subProfileManager.getOsAccountForegroundSubProfileId().then((subProfileId: number) => {
+    console.info('getOsAccountForegroundSubProfileId successfully, subProfileId: ' + subProfileId);
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountForegroundSubProfileId failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountForegroundSubProfileId exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+try {
+  subProfileManager.getOsAccountForegroundSubProfileId().then((subProfileId: int) => {
+    console.info('getOsAccountForegroundSubProfileId successfully, subProfileId: ' + subProfileId);
+  }).catch((err: Error) => {
+    console.error(`getOsAccountForegroundSubProfileId failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountForegroundSubProfileId exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### getOsAccountForegroundSubProfileId
+
+ArkTS-Dyn: getOsAccountForegroundSubProfileId(osAccountLocalId: number): Promise&lt;number&gt;
+
+ArkTS-Sta: getOsAccountForegroundSubProfileId(osAccountLocalId: int): Promise&lt;int&gt;
+
+获取指定系统账号的前台子身份资料标识符。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                |
+| -------- | ------------------------- | ---- | -------------------------------------------------- |
+| osAccountLocalId  | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 系统账号的本地标识符。                  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ----------- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回系统账号前台子身份资料的标识符。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | ------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 12300001 | System service exception. |
+| 12300003 | OS account not found. |
+| 12300401 | The foreground sub-profile not found. |
+
+**示例：**
+
+获取ID为100的系统账号的前台子身份资料标识符。
+
+ArkTS-Dyn示例：
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+try {
+  subProfileManager.getOsAccountForegroundSubProfileId(osAccountLocalId).then((subProfileId: number) => {
+    console.info('getOsAccountForegroundSubProfileId successfully, subProfileId: ' + subProfileId);
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountForegroundSubProfileId failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountForegroundSubProfileId exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: int = 100;
+try {
+  subProfileManager.getOsAccountForegroundSubProfileId(osAccountLocalId).then((subProfileId: int) => {
+    console.info('getOsAccountForegroundSubProfileId successfully, subProfileId: ' + subProfileId);
+  }).catch((err: Error) => {
+    console.error(`getOsAccountForegroundSubProfileId failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountForegroundSubProfileId exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### getOsAccountSubProfileIds
+
+ArkTS-Dyn: getOsAccountSubProfileIds(): Promise&lt;number[]&gt;
+
+ArkTS-Sta: getOsAccountSubProfileIds(): Promise&lt;int[]&gt;
+
+获取调用方所属系统账号的子身份资料标识符列表。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ----------- |
+| ArkTS-Dyn: Promise&lt;number[]&gt;<br>ArkTS-Sta: Promise&lt;int[]&gt; | Promise对象，返回子身份资料ID列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | ------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 12300001 | System service exception. |
+
+**示例：**
+
+获取调用方所属系统账号的子身份资料标识符列表。
+
+ArkTS-Dyn示例：
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+try {
+  subProfileManager.getOsAccountSubProfileIds().then((subProfileIds: number[]) => {
+    console.info('getOsAccountSubProfileIds successfully, subProfileIds: ' + JSON.stringify(subProfileIds));
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountSubProfileIds failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfileIds exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+try {
+  subProfileManager.getOsAccountSubProfileIds().then((subProfileIds: int[]) => {
+    console.info('getOsAccountSubProfileIds successfully, subProfileIds: ' + JSON.stringify(subProfileIds));
+  }).catch((err: Error) => {
+    console.error(`getOsAccountSubProfileIds failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfileIds exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### getOsAccountSubProfileIds
+
+ArkTS-Dyn: getOsAccountSubProfileIds(osAccountLocalId: number): Promise&lt;number[]&gt;
+
+ArkTS-Sta: getOsAccountSubProfileIds(osAccountLocalId: int): Promise&lt;int[]&gt;
+
+获取指定系统账号的子身份资料标识符列表。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                |
+| -------- | ------------------------- | ---- | -------------------------------------------------- |
+| osAccountLocalId  | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 系统账号的本地标识符。                  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ----------- |
+| ArkTS-Dyn: Promise&lt;number[]&gt;<br>ArkTS-Sta: Promise&lt;int[]&gt; | Promise对象，返回子身份资料ID列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | ------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 12300001 | System service exception. |
+| 12300003 | OS account not found. |
+
+**示例：**
+
+获取ID为100的系统账号的子身份资料标识符列表。
+
+ArkTS-Dyn示例：
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+try {
+  subProfileManager.getOsAccountSubProfileIds(osAccountLocalId).then((subProfileIds: number[]) => {
+    console.info('getOsAccountSubProfileIds successfully, subProfileIds: ' + JSON.stringify(subProfileIds));
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountSubProfileIds failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfileIds exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: int = 100;
+try {
+  subProfileManager.getOsAccountSubProfileIds(osAccountLocalId).then((subProfileIds: int[]) => {
+    console.info('getOsAccountSubProfileIds successfully, subProfileIds: ' + JSON.stringify(subProfileIds));
+  }).catch((err: Error) => {
+    console.error(`getOsAccountSubProfileIds failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfileIds exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### getOsAccountSubProfile
+
+ArkTS-Dyn: getOsAccountSubProfile(subProfileId: number): Promise&lt;OsAccountSubProfile&gt;
+
+ArkTS-Sta: getOsAccountSubProfile(subProfileId: int): Promise&lt;OsAccountSubProfile&gt;
+
+获取调用方所属系统账号的子身份资料对象信息。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                |
+| -------- | ------------------------- | ---- | -------------------------------------------------- |
+| subProfileId  | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 子身份资料的标识符。                  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ----------- |
+| Promise&lt;[OsAccountSubProfile](#osaccountsubprofile)&gt; | Promise对象，返回子身份资料对象信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | ------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 12300001 | System service exception. |
+| 12300401 | Sub-profile not found. |
+
+**示例：**
+
+获取ID为100001的子身份资料对象信息。
+
+ArkTS-Dyn示例：
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let subProfileId: number = 100001;
+try {
+  subProfileManager.getOsAccountSubProfile(subProfileId).then((subProfile: osAccount.OsAccountSubProfile) => {
+    console.info('getOsAccountSubProfile successfully, subProfile: ' + JSON.stringify(subProfile));
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let subProfileId: int = 100001;
+try {
+  subProfileManager.getOsAccountSubProfile(subProfileId).then((subProfile: osAccount.OsAccountSubProfile) => {
+    console.info('getOsAccountSubProfile successfully, subProfile: ' + JSON.stringify(subProfile));
+  }).catch((err: Error) => {
+    console.error(`getOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### getOsAccountSubProfile
+
+ArkTS-Dyn: getOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promise&lt;OsAccountSubProfile&gt;
+
+ArkTS-Sta: getOsAccountSubProfile(osAccountLocalId: int, subProfileId: int): Promise&lt;OsAccountSubProfile&gt;
+
+获取指定系统账号的子身份资料对象信息。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_LOCAL_ACCOUNTS 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                |
+| -------- | ------------------------- | ---- | -------------------------------------------------- |
+| osAccountLocalId  | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 系统账号的本地标识符。                  |
+| subProfileId  | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 子身份资料的标识符。                  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ----------- |
+| Promise&lt;[OsAccountSubProfile](#osaccountsubprofile)&gt; | Promise对象，返回子身份资料对象信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | ------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 12300001 | System service exception. |
+| 12300401 | Sub-profile not found. |
+
+**示例：**
+
+获取ID为100的系统账号下ID为100001的子身份资料对象信息。
+
+ArkTS-Dyn示例：
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: number = 100;
+let subProfileId: number = 100001;
+try {
+  subProfileManager.getOsAccountSubProfile(osAccountLocalId, subProfileId).then((subProfile: osAccount.OsAccountSubProfile) => {
+    console.info('getOsAccountSubProfile successfully, subProfile: ' + JSON.stringify(subProfile));
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let osAccountLocalId: int = 100;
+let subProfileId: int = 100001;
+try {
+  subProfileManager.getOsAccountSubProfile(osAccountLocalId, subProfileId).then((subProfile: osAccount.OsAccountSubProfile) => {
+    console.info('getOsAccountSubProfile successfully, subProfile: ' + JSON.stringify(subProfile));
+  }).catch((err: Error) => {
+    console.error(`getOsAccountSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+### getOsAccountLocalIdForSubProfile
+
+ArkTS-Dyn: getOsAccountLocalIdForSubProfile(subProfileId: number): Promise&lt;number&gt;
+
+ArkTS-Sta: getOsAccountLocalIdForSubProfile(subProfileId: int): Promise&lt;int&gt;
+
+获取子身份资料所属系统账号的本地标识符。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                                |
+| -------- | ------------------------- | ---- | -------------------------------------------------- |
+| subProfileId  | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是   | 子身份资料的标识符。                  |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ----- | ----------- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回子身份资料所属系统账号的本地ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息             |
+| -------- | ------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 12300001 | System service exception. |
+| 12300401 | Sub-profile not found. |
+
+**示例：**
+
+获取ID为100001的子身份所属的系统账号的本地标识符。
+
+ArkTS-Dyn示例：
+```ts
+import { osAccount } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let subProfileId: number = 100001;
+try {
+  subProfileManager.getOsAccountLocalIdForSubProfile(subProfileId).then((osAccountLocalId: number) => {
+    console.info('getOsAccountLocalIdForSubProfile successfully, osAccountLocalId: ' + osAccountLocalId);
+  }).catch((err: BusinessError) => {
+    console.error(`getOsAccountLocalIdForSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountLocalIdForSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import osAccount from '@ohos.account.osAccount';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subProfileManager: osAccount.OsAccountSubProfileManager = osAccount.getOsAccountSubProfileManager();
+let subProfileId: int = 100001;
+try {
+  subProfileManager.getOsAccountLocalIdForSubProfile(subProfileId).then((osAccountLocalId: int) => {
+    console.info('getOsAccountLocalIdForSubProfile successfully, osAccountLocalId: ' + osAccountLocalId);
+  }).catch((err: Error) => {
+    console.error(`getOsAccountLocalIdForSubProfile failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`getOsAccountLocalIdForSubProfile exception: code is ${err.code}, message is ${err.message}`);
+}
+```
+
 ## UserAuth<sup>8+</sup>
 
 用户认证类。
@@ -4868,7 +5880,7 @@ constructor()
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
   ```ts
@@ -4894,7 +5906,7 @@ ArkTS-Sta: getVersion(): int
 **返回值：**
 
 | 类型   | 说明         |
-| :----- | :----------- |
+| ----- | ----------- |
 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回版本信息。|
 
 **错误码：**
@@ -4903,7 +5915,7 @@ ArkTS-Sta: getVersion(): int
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -4964,9 +5976,8 @@ ArkTS-Sta: getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType or authTrustLevel. |
 | 12300117 | PIN is expired. |
@@ -4976,7 +5987,7 @@ ArkTS-Sta: getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel
 ArkTS-Dyn示例：
   ```ts
   import { osAccount } from '@kit.BasicServicesKit';
-  import { BusinessError } from '@kit.BasicServicesKit';                
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   let userAuth = new osAccount.UserAuth();
   let authType: osAccount.AuthType = osAccount.AuthType.PIN;
@@ -5036,8 +6047,8 @@ getProperty(request: GetPropertyRequest, callback: AsyncCallback&lt;ExecutorProp
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
@@ -5128,7 +6139,7 @@ getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;
 **返回值：**
 
 | 类型                                                              | 说明                                                 |
-| :---------------------------------------------------------------- | :-------------------------------------------------- |
+| ---------------------------------------------------------------- | -------------------------------------------------- |
 | Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise对象，返回执行器属性信息。 |
 
 **错误码：**
@@ -5137,8 +6148,8 @@ getProperty(request: GetPropertyRequest): Promise&lt;ExecutorProperty&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 | 12300003 | Account not found. |
@@ -5227,7 +6238,7 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyTy
 **返回值：**
 
 | 类型                                                              | 说明                                                 |
-| :---------------------------------------------------------------- | :-------------------------------------------------- |
+| ---------------------------------------------------------------- | -------------------------------------------------- |
 | Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise对象，返回执行器的属性信息。 |
 
 **错误码：**
@@ -5236,8 +6247,8 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array&lt;GetPropertyTy
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid keys. |
 | 12300020 | Device hardware abnormal. |
@@ -5352,9 +6363,8 @@ setProperty(request: SetPropertyRequest, callback: AsyncCallback&lt;void&gt;): v
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 
@@ -5435,8 +6445,8 @@ setProperty(request: SetPropertyRequest): Promise&lt;void&gt;
 **返回值：**
 
 | 类型                  | 说明                                                           |
-| :-------------------- | :------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| -------------------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -5444,9 +6454,8 @@ setProperty(request: SetPropertyRequest): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid request. |
 
@@ -5524,8 +6533,8 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;
 **返回值：**
 
 | 类型                  | 说明                                                           |
-| :-------------------- | :------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| -------------------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -5533,8 +6542,8 @@ prepareRemoteAuth(remoteNetworkId: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid remoteNetworkId. |
 | 12300090 | Cross-device capability not supported. |
@@ -5623,7 +6632,7 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 | 类型        | 说明               |
 | ---------- | ------------------ |
-| Uint8Array | 返回取消的上下文ID。 |
+| Uint8Array | 返回认证上下文ID，可用于取消认证操作。 |
 
 **错误码：**
 
@@ -5631,8 +6640,8 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 | 错误码ID | 错误信息          |
 | -------- | --------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType or authTrustLevel. |
 | 12300013 | Network exception. |
@@ -5738,8 +6747,8 @@ auth(challenge: Uint8Array, authType: AuthType, authTrustLevel: AuthTrustLevel, 
 
 | 错误码ID | 错误信息          |
 | -------- | --------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType, authTrustLevel or options. |
 | 12300003 | Account not found. |
@@ -5854,8 +6863,8 @@ ArkTS-Sta: authUser(userId: int, challenge: Uint8Array, authType: AuthType, auth
 
 | 错误码ID | 错误信息          |
 | -------- | --------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge, authType or authTrustLevel. |
 | 12300003 | Account not found. |
@@ -5946,7 +6955,7 @@ cancelAuth(contextID: Uint8Array): void
 
 | 参数名    | 类型       | 必填  | 说明                                        |
 | ----------| ---------- | ---- | ------------------------------------------ |
-| contextID | Uint8Array | 是   | 指示身份验证上下文ID，此ID动态生成没有具体值。 |
+| contextID | Uint8Array | 是   | 指示身份验证上下文ID，此ID由认证流程动态生成，用于标识认证操作。 |
 
 **错误码：**
 
@@ -5954,9 +6963,8 @@ cancelAuth(contextID: Uint8Array): void
 
 | 错误码ID | 错误信息            |
 | -------- | ------------------ |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid contextId. |
 
@@ -6032,7 +7040,7 @@ constructor()
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -6068,9 +7076,8 @@ registerInputer(inputer: IInputer): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid inputer. |
 | 12300103 | The credential inputer already exists. |
@@ -6118,8 +7125,8 @@ unregisterInputer(): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -6161,9 +7168,8 @@ static registerInputer(authType: AuthType, inputer: IInputer): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType or inputer. |
 | 12300103 | The credential inputer already exists. |
@@ -6218,9 +7224,8 @@ static unregisterInputer(authType: AuthType): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300002  | Invalid authType. |
 
 **示例：**
@@ -7494,10 +8499,9 @@ static registerPlugin(plugin: DomainPlugin): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300201 | The domain plugin has been registered. |
 
 **示例：**
@@ -7587,9 +8591,9 @@ static unregisterPlugin(): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 
 **示例：**
 
@@ -7646,10 +8650,9 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainAccountInfo or credential. |
 | 12300003 | Domain account does not exist. |
@@ -7738,9 +8741,9 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, options: Doma
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainAccountInfo or credential. |
 | 12300003 | Domain account does not exist. |
@@ -7843,9 +8846,8 @@ API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | No domain account is bound. |
 | 12300013 | Network exception. |
@@ -7918,7 +8920,7 @@ API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| localId   | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 指示绑定域账号的系统账号的本地标识。|
+| localId   | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 指示绑定域账号的系统账号ID。|
 | callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
 
 **错误码：**
@@ -7927,9 +8929,8 @@ API版本10：ohos.permission.ACCESS_USER_AUTH_INTERNAL
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId. |
 | 12300003 | No domain account is bound. |
@@ -8006,10 +9007,9 @@ hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback&lt;bool
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainAccountInfo. |
 | 12300013 | Network exception. |
@@ -8091,7 +9091,7 @@ hasAccount(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示指定的域账号已存在；返回false表示指定的域账号不存在。 |
 
 **错误码：**
@@ -8100,10 +9100,9 @@ hasAccount(domainAccountInfo: DomainAccountInfo): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainAccountInfo. |
 | 12300013 | Network exception. |
@@ -8187,9 +9186,8 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, call
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid token. |
 | 12300003 | Account not found. |
@@ -8272,8 +9270,8 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Pro
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| ------------------------ | ----------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -8281,9 +9279,8 @@ updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array): Pro
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid token. |
 | 12300003 | Account not found. |
@@ -8366,10 +9363,9 @@ getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallback&lt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300013 | Network exception. |
@@ -8453,7 +9449,7 @@ getAccountInfo(options: GetDomainAccountInfoOptions): Promise&lt;DomainAccountIn
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;DomainAccountInfo&gt; | Promise对象，返回指定的域账号信息。 |
 
 **错误码：**
@@ -8462,10 +9458,9 @@ getAccountInfo(options: GetDomainAccountInfoOptions): Promise&lt;DomainAccountIn
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300013 | Network exception. |
@@ -8523,26 +9518,26 @@ ArkTS-Sta示例：
 
 ### getAccessToken<sup>11+</sup>
 
-ArkTS-Dyn: getAccessToken(businessParams: Record<string, Object>, callback: AsyncCallback&lt;Uint8Array&gt;): void
+getAccessToken(businessParams: Record&lt;string, Object&gt;, callback: AsyncCallback&lt;Uint8Array&gt;): void
 
-ArkTS-Sta: getAccessToken(businessParams: Record<string, RecordData>, callback: AsyncCallback&lt;Uint8Array&gt;): void
-
-获取当前域账号的业务访问令牌，使用callback异步回调。
+获取当前域账号的业务访问令牌。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getAccessToken](#getaccesstoken23)。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| businessParams | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta:  Record&lt;string, RecordData&gt;  | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
-| callback | AsyncCallback&lt;Uint8Array&gt;  | 是   | 指示结果回调。如果获取成功，err返回null，否则为错误对象。|
+| businessParams | Record&lt;string, Object&gt;  | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
+| callback | AsyncCallback&lt;Uint8Array&gt;  | 是   | 回调函数。如果获取成功，err返回null，否则为错误对象。|
 
 **错误码：**
 
@@ -8550,8 +9545,8 @@ ArkTS-Sta: getAccessToken(businessParams: Record<string, RecordData>, callback: 
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid business parameters. |
 | 12300003 | Domain account not found. |
@@ -8563,7 +9558,6 @@ ArkTS-Sta: getAccessToken(businessParams: Record<string, RecordData>, callback: 
 
 **示例：**
 
-ArkTS-Dyn示例：
   ```ts
   import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -8587,7 +9581,48 @@ ArkTS-Dyn示例：
   }
   ```
 
-ArkTS-Sta示例：
+### getAccessToken<sup>23+</sup>
+
+getAccessToken(businessParams: Record&lt;string, RecordData&gt;, callback: AsyncCallback&lt;Uint8Array&gt;): void
+
+获取当前域账号的业务访问令牌。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getAccessToken](#getaccesstoken11)。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| businessParams | Record&lt;string, RecordData&gt;  | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
+| callback | AsyncCallback&lt;Uint8Array&gt;  | 是   | 回调函数。如果获取成功，err返回null，否则为错误对象。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                     |
+| -------- | --------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid business parameters. |
+| 12300003 | Domain account not found. |
+| 12300013 | Network exception. |
+| 12300014 | The domain account is not authenticated. |
+| 12300111 | The operation time out. |
+| 12300114 | The authentication service works abnormally. |
+| 12300211 | Server unreachable. |
+
+**示例：**
+
   ```ts
   import osAccount from '@ohos.account.osAccount';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -8614,30 +9649,30 @@ ArkTS-Sta示例：
 
 ### getAccessToken<sup>11+</sup>
 
-ArkTS-Dyn: getAccessToken(businessParams: Record<string, Object>): Promise&lt;Uint8Array&gt;
+getAccessToken(businessParams: Record&lt;string, Object&gt;): Promise&lt;Uint8Array&gt;
 
-ArkTS-Sta: getAccessToken(businessParams: Record&lt;string, RecordData&gt;): Promise&lt;Uint8Array&gt;
-
-查询当前域账号的业务访问令牌，使用promise异步回调。
+查询当前域账号的业务访问令牌。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[getAccessToken](#getaccesstoken23-1)。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 23
-
 **参数：**
 
 | 参数名      | 类型                                    | 必填 | 说明             |
 | ---------- | --------------------------------------- | ---- | --------------- |
-| businessParams | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta:  Record&lt;string, RecordData&gt; | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
+| businessParams | Record&lt;string, Object&gt; | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
 
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回业务访问令牌。 |
 
 **错误码：**
@@ -8646,8 +9681,8 @@ ArkTS-Sta: getAccessToken(businessParams: Record&lt;string, RecordData&gt;): Pro
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 202 | Not system application.|
-| 801 | Capability not supported.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid business parameters. |
 | 12300003 | Domain account not found. |
@@ -8659,7 +9694,6 @@ ArkTS-Sta: getAccessToken(businessParams: Record&lt;string, RecordData&gt;): Pro
 
 **示例：**
 
-ArkTS-Dyn示例：
   ```ts
   import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -8681,7 +9715,53 @@ ArkTS-Dyn示例：
   }
   ```
 
-ArkTS-Sta示例：
+### getAccessToken<sup>23+</sup>
+
+getAccessToken(businessParams: Record&lt;string, RecordData&gt;): Promise&lt;Uint8Array&gt;
+
+查询当前域账号的业务访问令牌。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[getAccessToken](#getaccesstoken11-1)。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| businessParams | Record&lt;string, RecordData&gt; | 是   | 指示业务参数，具体格式取决于域插件的实现要求。|
+
+**返回值：**
+
+| 类型                      | 说明                     |
+| ------------------------ | ----------------------- |
+| Promise&lt;Uint8Array&gt; | Promise对象，返回业务访问令牌。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                     |
+| -------- | --------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid business parameters. |
+| 12300003 | Domain account not found. |
+| 12300013 | Network exception. |
+| 12300014 | The domain account is not authenticated. |
+| 12300111 | The operation time out. |
+| 12300114 | The authentication service works abnormally. |
+| 12300211 | Server unreachable. |
+
+**示例：**
+
   ```ts
   import osAccount from '@ohos.account.osAccount';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -8730,7 +9810,7 @@ isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolea
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示指定的域账号已登录超期；返回false表示指定的域账号未登录超期。 |
 
 **错误码：**
@@ -8739,10 +9819,9 @@ isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise&lt;boolea
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Domain account not found. |
 
@@ -8813,7 +9892,7 @@ constructor()
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 202 | Not system application.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 
 **示例：**
 
@@ -8849,9 +9928,8 @@ openSession(callback: AsyncCallback&lt;Uint8Array&gt;): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -8923,7 +10001,7 @@ ArkTS-Sta: openSession(accountId?: int): Promise&lt;Uint8Array&gt;
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回挑战值。 |
 
 **错误码：**
@@ -8932,9 +10010,8 @@ ArkTS-Sta: openSession(accountId?: int): Promise&lt;Uint8Array&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted account. |
@@ -9009,8 +10086,8 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialInfo, i.e. authType or authSubType. |
 | 12300003 | Account not found. |
@@ -9130,9 +10207,8 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 
 | 错误码ID | 错误信息                     |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialInfo, i.e. authType or authSubType. |
 | 12300003 | Account not found. |
@@ -9142,6 +10218,7 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 | 12300109 | The authentication, enrollment, or update operation is canceled. |
 | 12300111 | The operation time out. |
 | 12300116 | Credential complexity verification failed. |
+| 12300121 | The credential has been used recently and cannot be reused.<br>适用版本：26.1.0+ |
 
 **示例：**
 
@@ -9275,9 +10352,8 @@ ArkTS-Sta: closeSession(accountId?: int): void
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Account not found. |
 | 12300008 | Restricted account. |
@@ -9318,9 +10394,8 @@ cancel(challenge: Uint8Array): void
 
 | 错误码ID | 错误信息            |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid challenge. |
 
@@ -9355,7 +10430,7 @@ ArkTS-Sta示例：
 
 delUser(token: Uint8Array, callback: IIdmCallback): void
 
-删除具有身份验证令牌的用户，使用callback异步回调。
+删除具有身份验证令牌的用户。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -9380,9 +10455,8 @@ delUser(token: Uint8Array, callback: IIdmCallback): void
 
 | 错误码ID | 错误信息        |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300101 | The token is invalid. |
 
@@ -9454,9 +10528,8 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid credentialId. |
 | 12300101 | The token is invalid. |
@@ -9530,8 +10603,8 @@ getAuthInfo(callback: AsyncCallback&lt;Array&lt;EnrolledCredInfo&gt;&gt;): void
 
 | 错误码ID | 错误信息               |
 | -------- | --------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300020 | Device hardware abnormal. |
 
@@ -9606,8 +10679,8 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback&lt;Array&lt;EnrolledCred
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
 | 12300020 | Device hardware abnormal. |
@@ -9681,7 +10754,7 @@ getAuthInfo(authType: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;
 **返回值：**
 
 | 类型                                         | 说明                                                                     |
-| :------------------------------------------- | :----------------------------------------------------------------------- |
+| ------------------------------------------- | ----------------------------------------------------------------------- |
 | Promise&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | Promise对象，返回当前用户指定类型的所有已注册凭据信息。|
 
 **错误码：**
@@ -9690,8 +10763,8 @@ getAuthInfo(authType: AuthType): Promise&lt;Array&lt;EnrolledCredInfo&gt;&gt;
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
 | 12300020 | Device hardware abnormal. |
@@ -9760,7 +10833,7 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise&lt;Array&lt;EnrolledCredInfo&
 **返回值：**
 
 | 类型                                         | 说明                                                                     |
-| :------------------------------------------- | :----------------------------------------------------------------------- |
+| ------------------------------------------- | ----------------------------------------------------------------------- |
 | Promise&lt;Array&lt;[EnrolledCredInfo](#enrolledcredinfo8)&gt;&gt; | Promise对象，返回当前用户指定类型的所有已注册凭据信息。|
 
 **错误码：**
@@ -9769,8 +10842,8 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise&lt;Array&lt;EnrolledCredInfo&
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid options. |
 | 12300003 | Account not found. |
@@ -9851,7 +10924,7 @@ ArkTS-Sta: getEnrolledId(authType: AuthType, accountId?: int): Promise&lt;Uint8A
 **返回值：**
 
 | 类型                       | 说明                                                                     |
-| :------------------------ | :----------------------------------------------------------------------- |
+| ------------------------ | ----------------------------------------------------------------------- |
 | Promise&lt;Uint8Array&gt; | Promise对象，返回已注册的凭据ID。|
 
 **错误码：**
@@ -9860,8 +10933,8 @@ ArkTS-Sta: getEnrolledId(authType: AuthType, accountId?: int): Promise&lt;Uint8A
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid authType. |
 | 12300003 | Account not found. |
@@ -9895,7 +10968,7 @@ ArkTS-Sta示例：
   ```ts
   import osAccount from '@ohos.account.osAccount';
   import { BusinessError } from '@kit.BasicServicesKit';
-  
+
   let userIDM = new osAccount.UserIdentityManager();
   let authType: osAccount.AuthType = osAccount.AuthType.PIN;
   let accountId = 100;
@@ -9941,8 +11014,8 @@ onCredentialChanged(credentialTypes: AuthType[], callback: Callback&lt;Credentia
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | One or more credential types are invalid. |
 | 12300106 | One or more credential types are not supported. |
@@ -10000,8 +11073,8 @@ offCredentialChanged(callback?: Callback&lt;CredentialChangeInfo&gt;): void
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 202 | Not system application.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -10072,8 +11145,7 @@ onSetData(authSubType: AuthSubType, data: Uint8Array): void
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 202 | Not system application.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 202 | Permission verification failed. A non-system application calls a system API.|
 | 12300002 | Invalid pinSubType. |
 
 **示例：**
@@ -10553,6 +11625,7 @@ ArkTS-Sta示例：
 | RECOVERY_KEY<sup>12+</sup> | 8 | 表示键恢复类型。 <br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | PRIVATE_PIN<sup>14+</sup> | 16 | 表示隐私PIN类型。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23 |
 | COMPANION_DEVICE<sup>23+</sup> | 64 | 表示伴随设备认证类型。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| CUSTOM | 128 | 自定义认证类型。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | DOMAIN<sup>9+</sup>  | 1024     | 表示域认证类型。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23|
 
 ## AuthSubType<sup>8+</sup>
@@ -10879,7 +11952,7 @@ ArkTS-Sta示例：
 
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| constraint | string | 否 | 否 | 发生变更的[约束](js-apis-osAccount.md#系统账号约束列表)。 |
+| constraint | string | 否 | 否 | 发生变更的[约束](appendix-osAccount-constraints.md)。 |
 | isEnabled | boolean | 否 | 否 | 发生变更的约束的使能状态。默认：false。<br>true表示目标约束已使能；false表示目标约束未使能。 |
 
 ## CreateOsAccountOptions<sup>12+</sup>
@@ -10897,6 +11970,7 @@ ArkTS-Sta示例：
 | disallowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用禁止名单，名单中的应用不可被安装在设备上，默认为空列表。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23|
 | allowedPreinstalledBundles<sup>19+</sup> | Array&lt;string&gt; | 否 | 是   | 表示预置应用允许名单，仅名单中的应用可以被安装在设备上，默认为std::nullopt。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23|
 | token<sup>24+</sup> | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token，默认为空。<br/>**ArkTS-Dyn起始版本：** 24<br/>**ArkTS-Sta起始版本：** 24 |
+| localId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否   | 是 | 表示要创建的系统账号ID。如果不指定该参数，系统将自动分配一个localId。取值限定为整数。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CreateOsAccountForDomainOptions<sup>12+</sup>
 
@@ -10999,6 +12073,7 @@ ArkTS-Sta示例：
 | accountId          | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是  | 系统账号标识，默认为undefined。 |
 | authIntent         | [AuthIntent](#authintent12) | 否 | 是  | 认证意图，默认为undefined。 |
 | remoteAuthOptions  | [RemoteAuthOptions](#remoteauthoptions12) | 否 | 是  | 远程认证选项，默认为undefined。 |
+| additionalInfo     | string | 否 | 是  | 身份认证的附加信息，默认为undefined。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。  |
 
 ## GetInputDataOptions<sup>12+</sup>
 
@@ -11071,3 +12146,66 @@ ArkTS-Sta示例：
 | 名称  | 类型       | 只读 | 可选 | 说明                         |
 | ----- | ---------- | ---- | ---- | ---------------------------- |
 | token | Uint8Array | 否   | 是   | 表示从认证管理接口获取的token。默认为空。 |
+
+## OsAccountSubProfileEvent
+
+枚举系统账号子身份资料的事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| CREATED | 0 | 表示子身份创建完成事件，当系统账号子身份资料创建完成时触发。 |
+| DELETED | 1 | 表示子身份删除完成事件，当系统账号子身份资料删除完成时触发。 |
+| SWITCHING | 2 | 表示子身份即将切换事件，当系统账号子身份资料切换开始时触发。 |
+| SWITCHED | 3 | 表示子身份切换完成事件，当系统账号子身份资料切换完成时触发。 |
+
+## OsAccountSubProfileEventData
+
+系统账号子身份资料事件数据。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| event | [OsAccountSubProfileEvent](#osaccountsubprofileevent) | 否 | 否 | 表示发生的事件。|
+| osAccountLocalId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示系统账号本地ID。 |
+| subProfileId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示系统账号子身份资料标识。 |
+| previousSubProfileId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 表示上一个系统账号子身份资料标识符。仅在SWITCHING和SWITCHED事件中有效。|
+
+## OsAccountSubProfile
+
+系统账号子身份资料的定义。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| id | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示系统账号子身份资料的标识符。|
+| osAccountLocalId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示子身份资料所属系统账号的本地标识符。 |
+| index | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示系统账号子身份资料的位置索引，范围为0~子身份资料个数减1。该索引在每个系统账号内唯一，由系统在创建子身份资料时自动分配。 |
+| distributedInfo | [distributedAccount.DistributedInfo](js-apis-distributed-account.md#distributedinfo) | 否 | 是 | 表示系统账号子身份资料绑定的分布式账号信息。|

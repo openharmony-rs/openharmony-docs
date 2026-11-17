@@ -307,7 +307,7 @@ createDiscoveryService(context: Context, serviceType: string): DiscoveryService
 
 | 类型                         | 说明                     |
 | ----------------------------- |---------------------------------|
-| DiscoveryService | 基于指定服务类型（serviceType）和Context的发现服务对象。 |
+| [DiscoveryService](#discoveryservice) | 基于指定服务类型（serviceType）和Context的发现服务对象。 |
 
 **错误码：**
 
@@ -354,7 +354,7 @@ resolveLocalService(context: Context, serviceInfo: LocalServiceInfo, callback: A
 |-------------|----------------------------------|-----------|-------------------------------------------------------------|
 | context     | Context                          | 是       | 应用的上下文。<br>FA模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-app-context.md)。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | 是        |   MDNS服务的信息。      |
-| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | 是        |   回调函数。成功移除error为undefined，data为解析的MDNS服务信息。      |
+| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | 是        |   回调函数。成功解析时error为undefined，data为解析的MDNS服务信息；否则为错误对象。      |
 
 **错误码：**
 
@@ -668,7 +668,7 @@ discoveryService.stopSearchingMDNS();
 
 ### off('discoveryStop')
 
-off(type: 'discoveryStop', callback?: Callback\<[DiscoveryEventInfo](#discoveryeventinfo11)\>): void
+off(type: 'discoveryStop', callback?: Callback\<DiscoveryEventInfo\>): void
 
 取消订阅停止监听MDNS服务的通知。
 
@@ -906,7 +906,7 @@ MDNS服务信息。
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | serviceType   | string                             |  否   | 否 | MDNS服务的类型。格式：_\<name>.<_tcp/_udp>，name长度小于63字符并且不能包含字符'.'。 |
 | serviceName | string                             |  否   | 否| MDNS服务的名字。                                                 |
-| port            | number           |  否   | 是 | MDNS服务的端口号。取值范围[0，65535]。                                  |
+| port            | number           |  否   | 是 | MDNS服务的端口号。取值范围[0, 65535]。                                  |
 | host           |  [NetAddress](js-apis-net-connection.md#netaddress) |  否   | 是 | MDNS服务设备的IP地址。采用设备的IP，添加服务和移除服务时候不生效。                      |
 | serviceAttribute     | Array\<[ServiceAttribute](#serviceattribute)> |  否   | 是 | MDNS服务属性信息。                                                |
 

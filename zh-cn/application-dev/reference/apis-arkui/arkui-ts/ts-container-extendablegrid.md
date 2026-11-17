@@ -1,4 +1,4 @@
-# ExtendableGrid（可扩展的Grid）
+# ExtendableGrid (可扩展的Grid)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zany_pink-->
@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-[Grid](./ts-container-grid.md)的扩展组件的基类。开发者可以自定义扩展组件继承ExtendableGrid，支持重写Grid中的[属性](./ts-container-grid.md#属性)和[通用属性](./ts-component-general-attributes.md)，同时支持自定义属性。在阅读本文档前，建议提前阅读[Grid](./ts-container-grid.md)。
+[Grid](./ts-container-grid.md)的扩展组件的基类。开发者可以自定义扩展组件继承ExtendableGrid，支持重写Grid中的[属性](./ts-container-grid.md#属性)和[通用属性](./ts-component-general-attributes.md)，同时支持自定义属性。在阅读本文档前，建议提前阅读[Grid](./ts-container-grid.md)。开发指南请参考[内置组件扩展](../../../ui/state-management-static/arkts-static-extendable-inner-component.md)。
 
 **起始版本：** 26.0.0
 

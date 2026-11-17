@@ -6,12 +6,13 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-空间音频管理。
+AudioSpatializationManager是音频系统中的空间音频管理模块。本模块提供空间音频渲染能力，包括开启或关闭当前设备的空间音频渲染、监听空间音频渲染开关状态变化等。当开发者需要使用空间音频技术增强音频体验时，使用本模块接口完成相关操作，适用于音视频播放、游戏等场景。
 
 在使用AudioSpatializationManager的接口之前，需先通过[getSpatializationManager](arkts-apis-audio-AudioManager.md#getspatializationmanager18)获取AudioSpatializationManager实例。
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 18开始支持。
 
@@ -29,6 +30,10 @@ isSpatializationEnabledForCurrentDevice(): boolean
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                   | 说明                                                         |
@@ -38,10 +43,9 @@ isSpatializationEnabledForCurrentDevice(): boolean
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit';
-
 let isSpatializationEnabledForCurrentDevice: boolean = audioSpatializationManager.isSpatializationEnabledForCurrentDevice();
-console.info(`AudioSpatializationManager isSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}`);
+
+console.info(`Succeeded in checking whether spatialization is enabled for the current device, isSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}.`);
 ```
 
 ## on('spatializationEnabledChangeForCurrentDevice')<sup>18+</sup>
@@ -50,14 +54,20 @@ on(type: 'spatializationEnabledChangeForCurrentDevice', callback: Callback<boole
 
 监听当前设备空间音频渲染开关状态变化事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onSpatializationEnabledChangeForCurrentDevice](#onspatializationenabledchangeforcurrentdevice23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
 | 参数名   | 类型                                                 | 必填 | 说明                                           |
 | :------- | :--------------------------------------------------- | :--- |:---------------------------------------------|
 | type     | string | 是   | 事件回调类型，支持的事件为'spatializationEnabledChangeForCurrentDevice'，当空间音频渲染开关状态变化时，触发该事件。 |
-| callback | Callback<boolean\> | 是   | 回调函数。返回true表示打开空间音频渲染状态；返回false表示关闭空间音频渲染状态。   |
+| callback | Callback<boolean\> | 是   | 回调函数。参数为true表示打开空间音频渲染状态；参数为false表示关闭空间音频渲染状态。   |
 
 **错误码：**
 
@@ -70,10 +80,44 @@ on(type: 'spatializationEnabledChangeForCurrentDevice', callback: Callback<boole
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit';
-
 audioSpatializationManager.on('spatializationEnabledChangeForCurrentDevice', (isSpatializationEnabledForCurrentDevice: boolean) => {
-  console.info(`isSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}`);
+  console.info(`Spatialization enabled for current device changed, isSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}.`);
+});
+```
+
+## onSpatializationEnabledChangeForCurrentDevice<sup>23+</sup>
+
+onSpatializationEnabledChangeForCurrentDevice(callback: Callback&lt;boolean&gt;): void
+
+监听当前设备空间音频渲染开关状态变化事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('spatializationEnabledChangeForCurrentDevice')](#onspatializationenabledchangeforcurrentdevice18)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                 | 必填 | 说明                                           |
+| :------- | :--------------------------------------------------- | :--- |:---------------------------------------------|
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。返回true表示打开空间音频渲染状态；返回false表示关闭空间音频渲染状态。   |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioSpatializationManager.onSpatializationEnabledChangeForCurrentDevice((isSpatializationEnabledForCurrentDevice: boolean) => {
+  console.info(`Spatialization enabled for current device changed, isSpatializationEnabledForCurrentDevice: ${isSpatializationEnabledForCurrentDevice}.`);
 });
 ```
 
@@ -81,16 +125,22 @@ audioSpatializationManager.on('spatializationEnabledChangeForCurrentDevice', (is
 
 off(type: 'spatializationEnabledChangeForCurrentDevice', callback?: Callback<boolean\>): void
 
-取消监听当前设备空间音频渲染开关状态变化事件。使用callback异步回调。
+取消监听当前设备空间音频渲染开关状态变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offSpatializationEnabledChangeForCurrentDevice](#offspatializationenabledchangeforcurrentdevice23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
 | 参数名   | 类型                                                | 必填 | 说明                                       |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| type     | string | 是   | 事件回调类型，支持的事件为'spatializationEnabledChangeForCurrentDevice'，当取消订阅当前设备空间音频渲染开关状态变化事件时，触发该事件。 |
-| callback | Callback<boolean\> | 否   | 回调函数。返回true表示打开空间音频渲染状态；返回false表示关闭空间音频渲染状态。   |
+| type     | string | 是   | 事件回调类型，支持的事件为'spatializationEnabledChangeForCurrentDevice'。 |
+| callback | Callback<boolean\> | 否   | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('spatializationEnabledChangeForCurrentDevice')](#onspatializationenabledchangeforcurrentdevice18)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **错误码：**
 
@@ -103,6 +153,59 @@ off(type: 'spatializationEnabledChangeForCurrentDevice', callback?: Callback<boo
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit';
+// 取消该事件的所有监听。
 audioSpatializationManager.off('spatializationEnabledChangeForCurrentDevice');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let spatializationEnabledChangeForCurrentDeviceCallback = (enabled: boolean) => {
+  console.info(`Spatialization enabled for current device changed, enabled: ${enabled}.`);
+};
+
+audioSpatializationManager.on('spatializationEnabledChangeForCurrentDevice', spatializationEnabledChangeForCurrentDeviceCallback);
+
+audioSpatializationManager.off('spatializationEnabledChangeForCurrentDevice', spatializationEnabledChangeForCurrentDeviceCallback);
+```
+
+## offSpatializationEnabledChangeForCurrentDevice<sup>23+</sup>
+
+offSpatializationEnabledChangeForCurrentDevice(callback?: Callback&lt;boolean&gt;): void
+
+取消监听当前设备空间音频渲染开关状态变化事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('spatializationEnabledChangeForCurrentDevice')](#offspatializationenabledchangeforcurrentdevice18)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                | 必填 | 说明                                       |
+| -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[onspatializationEnabledChangeForCurrentDevice](#onspatializationenabledchangeforcurrentdevice23)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。   |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioSpatializationManager.off('spatializationEnabledChangeForCurrentDevice');
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let spatializationEnabledChangeForCurrentDeviceCallback = (enabled: boolean) => {
+  console.info(`Spatialization enabled for current device changed, enabled: ${enabled}.`);
+};
+
+audioSpatializationManager.on('spatializationEnabledChangeForCurrentDevice', spatializationEnabledChangeForCurrentDeviceCallback);
+
+audioSpatializationManager.off('spatializationEnabledChangeForCurrentDevice', spatializationEnabledChangeForCurrentDeviceCallback);
 ```

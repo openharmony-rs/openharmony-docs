@@ -1,8 +1,8 @@
 # 生命周期
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -27,7 +27,7 @@
 | onInit | ()&nbsp;=&gt;&nbsp;void | 页面初始化 | 页面数据初始化完成时触发，只触发一次。 |
 | onReady | ()&nbsp;=&gt;&nbsp;void | 页面创建完成 | 页面创建完成时触发，只触发一次。 |
 | onShow | ()&nbsp;=&gt;&nbsp;void | 页面显示 | 页面显示时触发。 |
-| onHide | ()&nbsp;=&gt;&nbsp;void | 页面消失 | 页面消失时触发。 |
+| onHide | ()&nbsp;=&gt;&nbsp;void | 页面隐藏 | 页面隐藏时触发。 |
 | onDestroy | ()&nbsp;=&gt;&nbsp;void | 页面销毁 | 页面销毁时触发。 |
 | onBackPress | ()&nbsp;=&gt;&nbsp;boolean | 返回按钮动作 | 当用户点击返回按钮时触发。<br/>-&nbsp;返回true表示页面自己处理返回逻辑。<br/>-&nbsp;返回false表示使用默认的返回逻辑。<br/>-&nbsp;不返回值会作为false处理。 |
 | onActive()<sup>5+</sup> | ()&nbsp;=&gt;&nbsp;void | 页面激活 | 页面激活时触发。 |
@@ -38,13 +38,13 @@
 
  **图1** 生命周期函数调用顺序图示
 
-![zh-cn_image_0000001147417424](figures/zh-cn_image_0000001147417424.png)
+![zh-cn_image_0000001147417424](figures/Page-Lifecycle.png)
 
 ## 示例代码
 
 通过以下示例，详细说明生命周期函数的调用顺序。首先创建两个页面，分别为pageA和pageB，并在config.json中配置页面路由信息：
 
-```json
+```json5
 {
     // ...
     "pages": [

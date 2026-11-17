@@ -4,10 +4,10 @@
 <!--Subsystem: Account-->
 <!--Owner: @steven-q-->
 <!--Designer: @JiDong-CS1-->
-<!--Tester: @zhaimengchao-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
 
-本模块提供应用账号信息的添加、删除、修改和查询基础能力，并支持应用间鉴权和分布式数据同步功能。
+本模块提供应用账号信息的添加、删除、修改和查询基础能力。应用账号管理采用应用级账号隔离机制，每个应用的账号信息独立管理。
 
 > **说明：**
 >
@@ -71,16 +71,15 @@ createAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名      | 类型                    | 必填  | 说明               |
 | -------- | ------------------------- | ----- | -------------------- |
-| name     | string                    | 是    | 应用账号的名称。          |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。          |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当创建成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name. |
 | 12300004 | Account already exists. |
@@ -144,17 +143,16 @@ createAccount(name: string, options: CreateAccountOptions, callback: AsyncCallba
 
 | 参数名       | 类型                        | 必填   | 说明                                       |
 | --------- | ------------------------- | ---- | ---------------------------------------- |
-| name      | string                    | 是    | 应用账号的名称。                              |
+| name      | string                    | 是    | 应用账号的名称。最大长度为512个字符。                              |
 | options | [CreateAccountOptions](#createaccountoptions9) | 是    | 创建应用账号的选项，可提供自定义数据，但不建议包含敏感数据（如密码、Token等）。 |
 | callback  | AsyncCallback&lt;void&gt; | 是    | 回调函数。当创建成功时，err为null，否则为错误对象。             |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or options. |
 | 12300004 | Account already exists. |
@@ -225,22 +223,21 @@ createAccount(name: string, options?: CreateAccountOptions): Promise&lt;void&gt;
 
 | 参数名       | 类型     | 必填   | 说明                                       |
 | --------- | ------ | ---- | ---------------------------------------- |
-| name      | string | 是    | 应用账号的名称。                              |
+| name      | string | 是    | 应用账号的名称。最大长度为512个字符。                              |
 | options | [CreateAccountOptions](#createaccountoptions9) | 否    | 创建应用账号的选项，可提供自定义数据，但不建议包含敏感数据（如密码、Token等）。不填无影响，默认为空，表示创建的该账号无额外信息需要添加。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or options. |
 | 12300004 | Account already exists. |
@@ -296,7 +293,7 @@ ArkTS-Sta示例：
 
 createAccountImplicitly(owner: string, callback: AuthCallback): void
 
-根据指定的账号所有者隐式地创建应用账号。使用callback异步回调。
+根据指定的账号所有者，由认证器自动完成应用账号创建流程。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -308,16 +305,15 @@ createAccountImplicitly(owner: string, callback: AuthCallback): void
 
 | 参数名      | 类型                | 必填   | 说明                      |
 | -------- | --------------------- | ---- | ----------------------- |
-| owner    | string                | 是    | 应用账号所有者的包名。          |
+| owner    | string                | 是    | 应用账号所有者的包名。最大长度为1024个字符。          |
 | callback | [AuthCallback](#authcallback9) | 是    | 认证器回调对象，返回创建结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid owner. |
 | 12300007 | The number of accounts reaches the upper limit. |
@@ -435,17 +431,16 @@ createAccountImplicitly(owner: string, options: CreateAccountImplicitlyOptions, 
 
 | 参数名      | 类型                    | 必填   | 说明                      |
 | -------- | --------------------- | ---- | ----------------------- |
-| owner    | string                | 是    | 应用账号所有者的包名。          |
+| owner    | string                | 是    | 应用账号所有者的包名。最大长度为1024个字符。          |
 | options    | [CreateAccountImplicitlyOptions](#createaccountimplicitlyoptions9)   | 是    | 隐式创建账号的选项。          |
 | callback | [AuthCallback](#authcallback9) | 是    | 认证器回调对象，返回创建结果。         |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid owner or options. |
 | 12300007 | The number of accounts reaches the upper limit. |
@@ -572,16 +567,15 @@ removeAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名      | 类型                        | 必填   | 说明               |
 | -------- | ------------------------- | ---- | ---------------- |
-| name     | string                    | 是    | 应用账号的名称。      |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。      |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当删除成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name. |
 | 12300003 | Account not found. |
@@ -644,21 +638,20 @@ removeAccount(name: string): Promise&lt;void&gt;
 
 | 参数名  | 类型     | 必填   | 说明          |
 | ---- | ------ | ---- | ----------- |
-| name | string | 是    | 应用账号的名称。 |
+| name | string | 是    | 应用账号的名称。最大长度为512个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name. |
 | 12300003 | Account not found. |
@@ -706,7 +699,7 @@ ArkTS-Sta示例：
 
 setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-设置指定应用对特定账号的访问权限。使用callback异步回调。
+设置指定应用对特定账号的数据访问权限。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -718,22 +711,22 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean, callback: 
 
 | 参数名        | 类型                      | 必填   | 说明                                |
 | ------------ | ------------------------- | ---- | --------------------------------- |
-| name         | string                    | 是    | 应用账号的名称。                           |
-| bundleName   | string                    | 是    | 第三方应用的包名。                         |
+| name         | string                    | 是    | 应用账号的名称。最大长度为512个字符。                           |
+| bundleName   | string                    | 是    | 第三方应用的包名。最大长度为512个字符。                         |
 | isAccessible | boolean                   | 是    | 是否可访问。true表示允许访问，false表示禁止访问。 |
-| callback     | AsyncCallback&lt;void&gt; | 是    | 回调函数，如果设置成功，err为null，否则为错误对象。 |
+| callback     | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or bundleName. |
 | 12300003 | Account not found. |
-| 12400005 | The size of authorization list reaches the upper limit. |
+| 12400001 | Application not found. <br>适用版本：9 - 13 |
+| 12400005 | The size of authorization list reaches the upper limit. <br>适用版本：14+ |
 
 **示例：**
 
@@ -793,27 +786,27 @@ setAppAccess(name: string, bundleName: string, isAccessible: boolean): Promise&l
 
 | 参数名        | 类型     | 必填   | 说明        |
 | ---------- | ------ | ---- | --------- |
-| name       | string | 是    | 应用账号的名称。   |
-| bundleName | string | 是    | 第三方应用的包名。 |
+| name       | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| bundleName | string | 是    | 第三方应用的包名。最大长度为512个字符。 |
 | isAccessible | boolean | 是    | 是否可访问。true表示允许访问，false表示禁止访问。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or bundleName. |
 | 12300003 | Account not found. |
-| 12400005 | The size of authorization list reaches the upper limit. |
+| 12400001 | Application not found. <br>适用版本：9 - 13 |
+| 12400005 | The size of authorization list reaches the upper limit. <br>适用版本：14+ |
 
 **示例：**
 
@@ -870,17 +863,16 @@ checkAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;bool
 
 | 参数名        | 类型                        | 必填   | 说明                                |
 | ---------- | ------------------------- | ---- | --------------------------------- |
-| name       | string                    | 是    | 应用账号的名称。                           |
-| bundleName | string                    | 是    | 第三方应用的包名。                         |
+| name       | string                    | 是    | 应用账号的名称。最大长度为512个字符。                           |
+| bundleName | string                    | 是    | 第三方应用的包名。最大长度为512个字符。                         |
 | callback   | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。返回true表示指定应用可访问特定账号的数据；返回false表示不可访问。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or bundleName. |
 | 12300003 | Account not found. |
@@ -945,8 +937,8 @@ checkAppAccess(name: string, bundleName: string): Promise&lt;boolean&gt;
 
 | 参数名        | 类型     | 必填   | 说明        |
 | ---------- | ------ | ---- | --------- |
-| name       | string | 是    | 应用账号的名称。   |
-| bundleName | string | 是    | 第三方应用的包名。 |
+| name       | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| bundleName | string | 是    | 第三方应用的包名。最大长度为512个字符。 |
 
 **返回值：**
 
@@ -956,11 +948,10 @@ checkAppAccess(name: string, bundleName: string): Promise&lt;boolean&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or bundleName. |
 | 12300003 | Account not found. |
@@ -1022,7 +1013,7 @@ setDataSyncEnabled(name: string, isEnabled: boolean, callback: AsyncCallback&lt;
 
 | 参数名      | 类型                        | 必填   | 说明                        |
 | -------- | ------------------------- | ---- | ------------------------- |
-| name     | string                    | 是    | 应用账号的名称。                   |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。                   |
 | isEnabled | boolean                   | 是    | 是否开启数据同步。true表示开启数据同步，false表示关闭数据同步。       |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当开启或禁止成功时，err为null，否则为错误对象。 |
 
@@ -1032,8 +1023,7 @@ setDataSyncEnabled(name: string, isEnabled: boolean, callback: AsyncCallback&lt;
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 201 | Permission denied.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name. |
 | 12300003 | Account not found. |
@@ -1092,14 +1082,14 @@ setDataSyncEnabled(name: string, isEnabled: boolean): Promise&lt;void&gt;
 
 | 参数名      | 类型      | 必填   | 说明          |
 | -------- | ------- | ---- | ----------- |
-| name     | string  | 是    | 应用账号的名称。     |
+| name     | string  | 是    | 应用账号的名称。最大长度为512个字符。     |
 | isEnabled | boolean | 是    | 是否开启数据同步。true表示开启数据同步，false表示关闭数据同步。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1107,8 +1097,7 @@ setDataSyncEnabled(name: string, isEnabled: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 201 | Permission denied.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name. |
 | 12300003 | Account not found. |
@@ -1170,7 +1159,7 @@ checkDataSyncEnabled(name: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名      | 类型                           | 必填   | 说明                    |
 | -------- | ---------------------------- | ---- | --------------------- |
-| name     | string                       | 是    | 应用账号的名称。               |
+| name     | string                       | 是    | 应用账号的名称。最大长度为512个字符。               |
 | callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。返回true表示指定应用账号已开启数据同步功能；返回false表示未开启。 |
 
 **错误码：**
@@ -1179,8 +1168,7 @@ checkDataSyncEnabled(name: string, callback: AsyncCallback&lt;boolean&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 201 | Permission denied.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name. |
 | 12300003 | Account not found. |
@@ -1246,12 +1234,12 @@ checkDataSyncEnabled(name: string): Promise&lt;boolean&gt;
 
 | 参数名  | 类型     | 必填   | 说明      |
 | ---- | ------ | ---- | ------- |
-| name | string | 是    | 应用账号的名称。 |
+| name | string | 是    | 应用账号的名称。最大长度为512个字符。 |
 
 **返回值：**
 
 | 类型                     | 说明                    |
-| :--------------------- | :-------------------- |
+| --------------------- | -------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示指定应用账号已开启数据同步功能；返回false表示未开启。 |
 
 **错误码：**
@@ -1260,8 +1248,7 @@ checkDataSyncEnabled(name: string): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 201 | Permission denied.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name. |
 | 12300003 | Account not found. |
@@ -1321,18 +1308,17 @@ setCredential(name: string, credentialType: string, credential: string,callback:
 
 | 参数名            | 类型                        | 必填   | 说明            |
 | -------------- | ------------------------- | ---- | ------------- |
-| name           | string                    | 是    | 应用账号的名称。     |
-| credentialType | string                    | 是    | 凭据类型。     |
-| credential     | string                    | 是    | 凭据取值。       |
+| name           | string                    | 是    | 应用账号的名称。最大长度为512个字符。     |
+| credentialType | string                    | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。     |
+| credential     | string                    | 是    | 凭据取值。自定义的数据，最大长度为1024个字符。       |
 | callback       | AsyncCallback&lt;void&gt; | 是    | 回调函数。当凭据设置成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, credentialType or credential. |
 | 12300003 | Account not found. |
@@ -1395,23 +1381,22 @@ setCredential(name: string, credentialType: string, credential: string): Promise
 
 | 参数名            | 类型     | 必填   | 说明         |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | 是    | 应用账号的名称。   |
-| credentialType | string | 是    | 凭据类型。 |
-| credential     | string | 是    | 凭据取值。    |
+| name           | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| credentialType | string | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。 |
+| credential     | string | 是    | 凭据取值。自定义的数据，最大长度为1024个字符。    |
 
 **返回值：**
 
 | 类型                 | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, credentialType or credential. |
 | 12300003 | Account not found. |
@@ -1471,17 +1456,16 @@ getCredential(name: string, credentialType: string, callback: AsyncCallback&lt;s
 
 | 参数名            | 类型                          | 必填   | 说明             |
 | -------------- | --------------------------- | ---- | -------------- |
-| name           | string                      | 是    | 应用账号的名称。        |
-| credentialType | string                      | 是    | 凭据类型。 |
+| name           | string                      | 是    | 应用账号的名称。最大长度为512个字符。        |
+| credentialType | string                      | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。 |
 | callback       | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取凭据成功时，err为null，data为指定应用账号的凭据；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or credentialType. |
 | 12300003 | Account not found. |
@@ -1546,22 +1530,21 @@ getCredential(name: string, credentialType: string): Promise&lt;string&gt;
 
 | 参数名          | 类型     | 必填   | 说明         |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | 是    | 应用账号的名称。 |
-| credentialType | string | 是    | 凭据类型。 |
+| name           | string | 是    | 应用账号的名称。最大长度为512个字符。 |
+| credentialType | string | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                    | 说明                    |
-| :-------------------- | :-------------------- |
+| -------------------- | -------------------- |
 | Promise&lt;string&gt; | Promise对象，返回指定应用账号的凭据。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or credentialType. |
 | 12300003 | Account not found. |
@@ -1621,19 +1604,18 @@ setCustomData(name: string, key: string, value: string, callback: AsyncCallback&
 **参数：**
 
 | 参数名      | 类型                        | 必填   | 说明                |
-| -------- | ------------------------- | ---- | ----------------- |
-| name     | string                    | 是    | 应用账号的名称。 |
-| key      | string                    | 是    | 自定义数据的键名。 |
-| value    | string                    | 是    | 自定义数据的取值。 |
+| -------- | ------ | ---- | ----------------- |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。 |
+| key      | string | 是    | 自定义数据的键名。最大长度为1024个字符。 |
+| value    | string | 是    | 自定义数据的取值。不建议包含敏感数据。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置自定义数据成功时，err为null，否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, key or value. |
 | 12300003 | Account not found. |
@@ -1697,23 +1679,22 @@ setCustomData(name: string, key: string, value: string): Promise&lt;void&gt;
 
 | 参数名   | 类型 | 必填  | 说明              |
 | ----- | ------ | ---- | ----------------- |
-| name  | string | 是    | 应用账号的名称。   |
-| key   | string | 是    | 自定义数据的键名。 |
-| value | string | 是    | 自定义数据的取值。 |
+| name  | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| key   | string | 是    | 自定义数据的键名。最大长度为1024个字符。 |
+| value | string | 是    | 自定义数据的取值。最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, key or value. |
 | 12300003 | Account not found. |
@@ -1774,17 +1755,16 @@ getCustomData(name: string, key: string, callback: AsyncCallback&lt;string&gt;):
 
 | 参数名    | 类型                        | 必填  | 说明                     |
 | -------- | --------------------------- | ----- | ------------------------ |
-| name     | string                      | 是    | 应用账号的名称。           |
-| key      | string                      | 是    | 自定义数据的键名。         |
+| name     | string                      | 是    | 应用账号的名称。最大长度为512个字符。           |
+| key      | string                      | 是    | 自定义数据的键名。最大长度为1024个字符。         |
 | callback | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取成功时，err为null，data为自定义数据的取值；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or key. |
 | 12300003 | Account not found. |
@@ -1848,8 +1828,8 @@ getCustomData(name: string, key: string): Promise&lt;string&gt;
 
 | 参数名  | 类型     | 必填   | 说明        |
 | ---- | ------ | ---- | --------- |
-| name | string | 是    | 应用账号的名称。   |
-| key  | string | 是    | 自定义数据的键名。 |
+| name | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| key  | string | 是    | 自定义数据的键名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -1859,11 +1839,10 @@ getCustomData(name: string, key: string): Promise&lt;string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or key. |
 | 12300003 | Account not found. |
@@ -1924,8 +1903,8 @@ getCustomDataSync(name: string, key: string): string
 
 | 参数名  | 类型     | 必填   | 说明        |
 | ---- | ------ | ---- | --------- |
-| name | string | 是    | 应用账号的名称。   |
-| key  | string | 是    | 自定义数据的键名。 |
+| name | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| key  | string | 是    | 自定义数据的键名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -1935,11 +1914,10 @@ getCustomDataSync(name: string, key: string): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or key. |
 | 12300003 | Account not found. |
@@ -1979,11 +1957,10 @@ getAllAccounts(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 
 **示例：**
@@ -2110,18 +2087,18 @@ getAccountsByOwner(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccount
 
 | 参数名      | 类型                                       | 必填   | 说明        |
 | -------- | ---------------------------------------- | ---- | --------- |
-| owner    | string                                   | 是    | 应用账号所有者的包名。    |
+| owner    | string                                   | 是    | 应用账号所有者的包名。最大长度为1024个字符。    |
 | callback | AsyncCallback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | 是    | 回调函数。如果获取成功，err为null，data为获取到的应用账号列表；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid owner. |
+| 12400001 | Application not found. <br>适用版本：9 - 13 |
 
 **示例：**
 
@@ -2183,7 +2160,7 @@ getAccountsByOwner(owner: string): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
 | 参数名   | 类型     | 必填   | 说明     |
 | ----- | ------ | ---- | ------ |
-| owner | string | 是    | 应用账号所有者的包名。 |
+| owner | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -2193,13 +2170,13 @@ getAccountsByOwner(owner: string): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid owner. |
+| 12400001 | Application not found. <br>适用版本：9 - 13 |
 
 **示例：**
 
@@ -2260,19 +2237,19 @@ on(type: 'accountChange', owners: Array&lt;string&gt;, callback: Callback&lt;Arr
 
 | 参数名      | 类型                                       | 必填   | 说明                             |
 | -------- | ---------------------------------------- | ---- | ------------------------------ |
-| type     | 'accountChange'                          | 是    | 事件回调类型，支持的事件为'accountChange'，当目标应用更新账号信息时，触发该事件。 |
+| type     | 'accountChange'                          | 是    | 事件回调类型，支持的事件为'accountChange'，当账号所有者更新账号信息时，触发该事件。 |
 | owners   | Array&lt;string&gt;                      | 是    | 应用账号所有者的包名列表。                      |
 | callback | Callback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | 是    | 需要注册的回调函数，返回信息为发生变更的应用账号列表。           |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid type or owners. |
+| 12400001 | Application not found. <br>适用版本：9 - 13 |
 
 **示例：**
 
@@ -2314,7 +2291,7 @@ onAccountChange(owners: Array&lt;string&gt;, callback: Callback&lt;Array&lt;AppA
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
@@ -2361,11 +2338,10 @@ off(type: 'accountChange', callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | System service exception. |
 | 12300002 | Invalid type. |
 
@@ -2461,18 +2437,17 @@ auth(name: string, owner: string, authType: string, callback: AuthCallback): voi
 
 | 参数名      | 类型                    | 必填   | 说明              |
 | -------- | --------------------- | ---- | --------------- |
-| name     | string                | 是    | 应用账号的名称。     |
-| owner    | string                | 是    | 应用账号所有者的包名。  |
-| authType | string                | 是    | 鉴权类型。           |
+| name     | string                | 是    | 应用账号的名称。最大长度为512个字符。     |
+| owner    | string                | 是    | 应用账号所有者的包名。最大长度为1024个字符。  |
+| authType | string                | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。           |
 | callback | [AuthCallback](#authcallback9) | 是    | 回调对象，返回鉴权结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, owner or authType. |
 | 12300003 | Account not found. |
@@ -2594,19 +2569,18 @@ auth(name: string, owner: string, authType: string, options: Record<string, Obje
 
 | 参数名      | 类型                    | 必填   | 说明              |
 | -------- | --------------------- | ---- | --------------- |
-| name     | string                | 是    | 应用账号的名称。     |
-| owner    | string                | 是    | 应用账号所有者的包名。  |
-| authType | string                | 是    | 鉴权类型。           |
+| name     | string                | 是    | 应用账号的名称。最大长度为512个字符。     |
+| owner    | string                | 是    | 应用账号所有者的包名。最大长度为1024个字符。  |
+| authType | string                | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。           |
 | options  | Record<string, Object>  | 是    | 鉴权所需的可选项。       |
 | callback | [AuthCallback](#authcallback9) | 是    | 回调对象，返回鉴权结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, owner, authType or options. |
 | 12300003 | Account not found. |
@@ -2690,7 +2664,7 @@ auth(name: string, owner: string, authType: string, options: Record<string, Reco
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
@@ -2773,18 +2747,17 @@ getAuthToken(name: string, owner: string, authType: string, callback: AsyncCallb
 
 | 参数名      | 类型                          | 必填   | 说明          |
 | -------- | --------------------------- | ---- | ----------- |
-| name     | string                      | 是    | 应用账号的名称。    |
-| owner    | string                      | 是    | 应用账号所有者的包名。 |
-| authType | string                      | 是    | 鉴权类型。       |
+| name     | string                      | 是    | 应用账号的名称。最大长度为512个字符。    |
+| owner    | string                      | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
+| authType | string                      | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。       |
 | callback | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取成功时，err为null，data为授权令牌值；否则为错误对象。    |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, owner or authType. |
 | 12300003 | Account not found. |
@@ -2850,9 +2823,9 @@ getAuthToken(name: string, owner: string, authType: string): Promise&lt;string&g
 
 | 参数名      | 类型     | 必填   | 说明          |
 | -------- | ------ | ---- | ----------- |
-| name     | string | 是    | 应用账号的名称。    |
-| owner    | string | 是    | 应用账号所有者的包名。 |
-| authType | string | 是    | 鉴权类型。       |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。    |
+| owner    | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
+| authType | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。       |
 
 **返回值：**
 
@@ -2862,11 +2835,10 @@ getAuthToken(name: string, owner: string, authType: string): Promise&lt;string&g
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, owner or authType. |
 | 12300003 | Account not found. |
@@ -2927,18 +2899,17 @@ setAuthToken(name: string, authType: string, token: string, callback: AsyncCallb
 
 | 参数名      | 类型                        | 必填   | 说明       |
 | -------- | ------------------------- | ---- | -------- |
-| name     | string                    | 是    | 应用账号的名称。 |
-| authType | string                    | 是    | 鉴权类型。    |
-| token    | string                    | 是    | 授权令牌。 |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。 |
+| authType | string                    | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。    |
+| token    | string                    | 是    | 授权令牌。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功时，err为null；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, authType or token. |
 | 12300003 | Account not found. |
@@ -3002,23 +2973,22 @@ setAuthToken(name: string, authType: string, token: string): Promise&lt;void&gt;
 
 | 参数名      | 类型     | 必填   | 说明       |
 | -------- | ------ | ---- | -------- |
-| name     | string | 是    | 应用账号的名称。 |
-| authType | string | 是    | 鉴权类型。    |
-| token    | string | 是    | 授权令牌。 |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。 |
+| authType | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。    |
+| token    | string | 是    | 授权令牌。最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, authType or token. |
 | 12300003 | Account not found. |
@@ -3079,19 +3049,18 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string, ca
 
 | 参数名      | 类型                        | 必填   | 说明           |
 | -------- | ------------------------- | ---- | ------------ |
-| name     | string                    | 是    | 应用账号的名称。     |
-| owner    | string                    | 是    | 应用账号所有者的包名。  |
-| authType | string                    | 是    | 鉴权类型。        |
-| token    | string                    | 是    | 授权令牌。如果授权令牌不存在，则不执行任何操作。 |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。     |
+| owner    | string                    | 是    | 应用账号所有者的包名。最大长度为1024个字符。  |
+| authType | string                    | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。        |
+| token    | string                    | 是    | 授权令牌。如果授权令牌不存在，则不执行任何操作。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当删除成功时，err为null；否则为错误对象。     |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, owner, authType or token. |
 | 12300003 | Account not found. |
@@ -3157,24 +3126,23 @@ deleteAuthToken(name: string, owner: string, authType: string, token: string): P
 
 | 参数名      | 类型     | 必填   | 说明           |
 | -------- | ------ | ---- | ------------ |
-| name     | string | 是    | 应用账号的名称。     |
-| owner    | string | 是    | 应用账号所有者的包名。  |
-| authType | string | 是    | 鉴权类型。        |
-| token    | string | 是    | 授权令牌。如果授权令牌不存在，则不执行任何操作。 |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。     |
+| owner    | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。  |
+| authType | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。        |
+| token    | string | 是    | 授权令牌。如果授权令牌不存在，则不执行任何操作。最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, owner, authType or token. |
 | 12300003 | Account not found. |
@@ -3235,23 +3203,23 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 
 | 参数名        | 类型                        | 必填   | 说明                        |
 | ---------- | ------------------------- | ---- | ------------------------- |
-| name       | string                    | 是    | 应用账号的名称。                  |
-| authType   | string                    | 是    | 鉴权类型。                     |
-| bundleName | string                    | 是    | 被设置可见性的应用包名。              |
+| name       | string                    | 是    | 应用账号的名称。最大长度为512个字符。                  |
+| authType   | string                    | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。                     |
+| bundleName | string                    | 是    | 被设置可见性的应用包名。最大长度为512个字符。              |
 | isVisible  | boolean                   | 是    | 是否可见。true表示可见，false表示不可见。 |
 | callback   | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功时，err为null；否则为错误对象。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, authType or bundleName. |
 | 12300003 | Account not found. |
 | 12300107 | AuthType not found. |
+| 12400001 | Application not found. <br>适用版本：9 - 13 |
 | 12400005 | The size of authorization list reaches the upper limit. |
 
 **示例：**
@@ -3314,28 +3282,28 @@ setAuthTokenVisibility(name: string, authType: string, bundleName: string, isVis
 
 | 参数名      | 类型                        | 必填   | 说明                        |
 | ---------- | ------------------------- | ---- | ------------------------- |
-| name       | string                    | 是    | 应用账号的名称。                  |
-| authType   | string                    | 是    | 鉴权类型。                     |
-| bundleName | string                    | 是    | 被设置可见性的应用包名。              |
+| name       | string                    | 是    | 应用账号的名称。最大长度为512个字符。                  |
+| authType   | string                    | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。                     |
+| bundleName | string                    | 是    | 被设置可见性的应用包名。最大长度为512个字符。              |
 | isVisible  | boolean                   | 是    | 是否可见。true表示可见，false表示不可见。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, authType or bundleName. |
 | 12300003 | Account not found. |
 | 12300107 | AuthType not found. |
+| 12400001 | Application not found. <br>适用版本：9 - 13 |
 | 12400005 | The size of authorization list reaches the upper limit. |
 
 **示例：**
@@ -3395,18 +3363,17 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string, cal
 
 | 参数名        | 类型                           | 必填   | 说明          |
 | ---------- | ---------------------------- | ---- | ----------- |
-| name       | string                       | 是    | 应用账号的名称。    |
-| authType   | string                       | 是    | 鉴权类型。       |
-| bundleName | string                       | 是    | 检查可见性的应用包名。 |
+| name       | string                       | 是    | 应用账号的名称。最大长度为512个字符。    |
+| authType   | string                       | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。       |
+| bundleName | string                       | 是    | 检查可见性的应用包名。最大长度为512个字符。 |
 | callback   | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当检查成功时，err为null，data为true表示可见，data为false表示不可见；否则为错误对象。    |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, authType or bundleName. |
 | 12300003 | Account not found. |
@@ -3472,9 +3439,9 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Pr
 
 | 参数名        | 类型     | 必填   | 说明            |
 | ---------- | ------ | ---- | ------------- |
-| name       | string | 是    | 应用账号的名称。      |
-| authType   | string | 是    | 鉴权类型。         |
-| bundleName | string | 是    | 用于检查可见性的应用包名。 |
+| name       | string | 是    | 应用账号的名称。最大长度为512个字符。      |
+| authType   | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。         |
+| bundleName | string | 是    | 用于检查可见性的应用包名。最大长度为512个字符。 |
 
 **返回值：**
 
@@ -3484,11 +3451,10 @@ checkAuthTokenVisibility(name: string, authType: string, bundleName: string): Pr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, authType or bundleName. |
 | 12300003 | Account not found. |
@@ -3551,17 +3517,16 @@ getAllAuthTokens(name: string, owner: string, callback: AsyncCallback&lt;Array&l
 
 | 参数名      | 类型                                       | 必填   | 说明          |
 | -------- | ---------------------------------------- | ---- | ----------- |
-| name     | string                                   | 是    | 应用账号的名称。    |
-| owner    | string                                   | 是    | 应用账号所有者的包名。 |
+| name     | string                                   | 是    | 应用账号的名称。最大长度为512个字符。    |
+| owner    | string                                   | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;Array&lt;[AuthTokenInfo](#authtokeninfo9)&gt;&gt; | 是    | 回调函数。当获取成功时，err为null，data为授权令牌数组；否则为错误对象。    |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or owner. |
 | 12300003 | Account not found. |
@@ -3625,8 +3590,8 @@ getAllAuthTokens(name: string, owner: string): Promise&lt;Array&lt;AuthTokenInfo
 
 | 参数名   | 类型     | 必填   | 说明          |
 | ----- | ------ | ---- | ----------- |
-| name  | string | 是    | 应用账号的名称。    |
-| owner | string | 是    | 应用账号所有者的包名。 |
+| name  | string | 是    | 应用账号的名称。最大长度为512个字符。    |
+| owner | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -3636,11 +3601,10 @@ getAllAuthTokens(name: string, owner: string): Promise&lt;Array&lt;AuthTokenInfo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or owner. |
 | 12300003 | Account not found. |
@@ -3702,17 +3666,16 @@ getAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt;
 
 | 参数名      | 类型                                       | 必填   | 说明                      |
 | -------- | ---------------------------------------- | ---- | ----------------------- |
-| name     | string                                   | 是    | 应用账号的名称。                |
-| authType | string                                   | 是    | 鉴权类型。 |
+| name     | string                                   | 是    | 应用账号的名称。最大长度为512个字符。                |
+| authType | string                                   | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是    | 回调函数。当获取成功时，err为null，data为被授权的包名数组；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or authType. |
 | 12300003 | Account not found. |
@@ -3777,8 +3740,8 @@ getAuthList(name: string, authType: string): Promise&lt;Array&lt;string&gt;&gt;
 
 | 参数名      | 类型     | 必填   | 说明                      |
 | -------- | ------ | ---- | ------------------------------ |
-| name     | string | 是    | 应用账号的名称。                |
-| authType | string | 是    | 鉴权类型。 |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。                |
+| authType | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -3788,11 +3751,10 @@ getAuthList(name: string, authType: string): Promise&lt;Array&lt;string&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or authType. |
 | 12300003 | Account not found. |
@@ -3853,16 +3815,15 @@ getAuthCallback(sessionId: string, callback: AsyncCallback&lt;AuthCallback&gt;):
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | string                                   | 是    | 鉴权会话的标识。 |
+| sessionId | string                                   | 是    | 鉴权会话的标识。最大长度为1024个字符。 |
 | callback  | AsyncCallback&lt;[AuthCallback](#authcallback9)&gt; | 是    | 回调函数。当获取成功时，err为null，data为鉴权会话的认证器回调对象；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid sessionId. |
 | 12300108 | Session not found. |
@@ -3959,7 +3920,7 @@ getAuthCallback(sessionId: string): Promise&lt;AuthCallback&gt;
 
 | 参数名       | 类型     | 必填   | 说明       |
 | --------- | ------ | ---- | -------- |
-| sessionId | string | 是    | 鉴权会话的标识。 |
+| sessionId | string | 是    | 鉴权会话的标识。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -3969,11 +3930,10 @@ getAuthCallback(sessionId: string): Promise&lt;AuthCallback&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid sessionId. |
 | 12300108 | Session not found. |
@@ -4066,16 +4026,15 @@ queryAuthenticatorInfo(owner: string, callback: AsyncCallback&lt;AuthenticatorIn
 
 | 参数名      | 类型                                     | 必填   | 说明          |
 | -------- | -------------------------------------- | ---- | ----------- |
-| owner    | string                                 | 是    | 应用账号所有者的包名。 |
+| owner    | string                                 | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;[AuthenticatorInfo](#authenticatorinfo8)&gt; | 是    | 回调函数。当获取成功时，err为null，data为认证器信息对象；否则为错误对象。    |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid owner. |
 | 12300113 | Authenticator service not found. |
@@ -4140,7 +4099,7 @@ queryAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 | 参数名   | 类型     | 必填   | 说明          |
 | ----- | ------ | ---- | ----------- |
-| owner | string | 是    | 应用账号所有者的包名。 |
+| owner | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -4150,11 +4109,10 @@ queryAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid owner. |
 | 12300113 | Authenticator service not found. |
@@ -4216,18 +4174,17 @@ checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;, cal
 
 | 参数名         | 类型                       | 必填  | 说明             |
 | -------------- | ------------------------- | ----- | --------------- |
-| name           | string                    | 是    | 应用账号的名称。  |
-| owner          | string                    | 是    | 应用账号所有者的包名。|
+| name           | string                    | 是    | 应用账号的名称。最大长度为512个字符。  |
+| owner          | string                    | 是    | 应用账号所有者的包名。最大长度为1024个字符。|
 | labels         | Array&lt;string&gt;       | 是    | 标签数组。       |
 | callback       | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当检查成功时，err为null，data为true表示满足特定的标签集合，data为false表示不满足；否则为错误对象。  |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, owner or labels. |
 | 12300003 | Account not found. |
@@ -4297,8 +4254,8 @@ checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;): Pr
 
 | 参数名         | 类型                       | 必填  | 说明             |
 | -------------- | ------------------------- | ----- | --------------- |
-| name           | string                    | 是    | 应用账号的名称。  |
-| owner          | string                    | 是    | 应用账号所有者的包名。|
+| name           | string                    | 是    | 应用账号的名称。最大长度为512个字符。  |
+| owner          | string                    | 是    | 应用账号所有者的包名。最大长度为1024个字符。|
 | labels         | Array&lt;string&gt;       | 是    | 标签数组。       |
 
 **返回值：**
@@ -4309,11 +4266,10 @@ checkAccountLabels(name: string, owner: string, labels: Array&lt;string&gt;): Pr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, owner or labels. |
 | 12300003 | Account not found. |
@@ -4380,17 +4336,16 @@ deleteCredential(name: string, credentialType: string, callback: AsyncCallback&l
 
 | 参数名         | 类型                       | 必填  | 说明            |
 | -------------- | ------------------------- | ----- | -------------- |
-| name           | string                    | 是    | 应用账号的名称。 |
-| credentialType | string                    | 是    | 凭据类型。      |
+| name           | string                    | 是    | 应用账号的名称。最大长度为512个字符。 |
+| credentialType | string                    | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。      |
 | callback       | AsyncCallback&lt;void&gt; | 是    | 回调函数。当删除成功时，err为null；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or credentialType. |
 | 12300003 | Account not found. |
@@ -4454,22 +4409,21 @@ deleteCredential(name: string, credentialType: string): Promise&lt;void&gt;
 
 | 参数名         | 类型   | 必填   | 说明            |
 | -------------- | ------ | ----- | --------------- |
-| name           | string | 是    | 应用账号的名称。 |
-| credentialType | string | 是    | 凭据类型。       |
+| name           | string | 是    | 应用账号的名称。最大长度为512个字符。 |
+| credentialType | string | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。       |
 
 **返回值：**
 
 | 类型                | 说明                              |
 | ------------------- | -------------------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or credentialType. |
 | 12300003 | Account not found. |
@@ -4535,11 +4489,10 @@ selectAccountsByOptions(options: SelectAccountsOptions, callback: AsyncCallback&
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid options. |
 | 12300010 | Account service busy. |
@@ -4623,11 +4576,10 @@ selectAccountsByOptions(options: SelectAccountsOptions): Promise&lt;Array&lt;App
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid options. |
 | 12300010 | Account service busy. |
@@ -4682,7 +4634,7 @@ ArkTS-Sta示例：
 
 verifyCredential(name: string, owner: string, callback: AuthCallback): void
 
-验证指定账号的凭据。使用callback异步回调。
+验证指定账号的凭据有效性。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -4694,17 +4646,16 @@ verifyCredential(name: string, owner: string, callback: AuthCallback): void
 
 | 参数名    | 类型                  | 必填  | 说明                     |
 | -------- | --------------------- | ----- | ----------------------- |
-| name     | string                | 是    | 应用账号的名称。          |
-| owner    | string                | 是    | 应用账号所有者的包名。        |
+| name     | string                | 是    | 应用账号的名称。最大长度为512个字符。          |
+| owner    | string                | 是    | 应用账号所有者的包名。最大长度为1024个字符。        |
 | callback | [AuthCallback](#authcallback9) | 是    | 回调函数，返回验证结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name or owner. |
 | 12300003 | Account not found. |
@@ -4764,7 +4715,7 @@ ArkTS-Sta示例：
 
 verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, callback: AuthCallback): void
 
-验证用户凭据。使用callback异步回调。
+验证指定账号的凭据。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -4776,18 +4727,17 @@ verifyCredential(name: string, owner: string, options: VerifyCredentialOptions, 
 
 | 参数名    | 类型                    | 必填  | 说明                     |
 | -------- | ----------------------- | ----- | ----------------------- |
-| name     | string                  | 是    | 应用账号的名称。          |
-| owner    | string                  | 是    | 应用账号所有者的包名。        |
+| name     | string                  | 是    | 应用账号的名称。最大长度为512个字符。          |
+| owner    | string                  | 是    | 应用账号所有者的包名。最大长度为1024个字符。        |
 | options  | [VerifyCredentialOptions](#verifycredentialoptions9) | 是    | 验证凭据的选项。          |
 | callback | [AuthCallback](#authcallback9)   | 是    | 回调函数，返回验证结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息|
 | ------- | -------|
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid name, owner or options. |
 | 12300003 | Account not found. |
@@ -4868,16 +4818,15 @@ setAuthenticatorProperties(owner: string, callback: AuthCallback): void
 
 | 参数名    | 类型                  | 必填  | 说明                     |
 | -------- | --------------------- | ----- | ----------------------- |
-| owner    | string                | 是    | 认证器的所有者的包名。          |
+| owner    | string                | 是    | 认证器的所有者的包名。最大长度为1024个字符。 |
 | callback | [AuthCallback](#authcallback9) | 是    | 回调函数，返回设置属性的结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid owner. |
 | 12300010 | Account service busy. |
@@ -4936,7 +4885,7 @@ ArkTS-Sta示例：
 
 setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callback: AuthCallback): void
 
-设置认证器属性。使用callback异步回调。
+设置指定应用的认证器属性。使用callback异步回调。
 
 **系统能力：** SystemCapability.Account.AppAccount
 
@@ -4948,17 +4897,16 @@ setAuthenticatorProperties(owner: string, options: SetPropertiesOptions, callbac
 
 | 参数名    | 类型                  | 必填  | 说明                     |
 | -------- | --------------------- | ----- | ----------------------- |
-| owner    | string                | 是    | 认证器的所有者的包名。          |
+| owner    | string                | 是    | 认证器的所有者的包名。最大长度为1024个字符。  |
 | options  | [SetPropertiesOptions](#setpropertiesoptions9)  | 是    | 设置属性的选项。          |
 | callback | [AuthCallback](#authcallback9) | 是    | 认证器回调，返回设置属性的结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------- |
-| 401 |Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | System service exception. |
 | 12300002 | Invalid owner or options. |
 | 12300010 | Account service busy. |
@@ -5030,7 +4978,7 @@ addAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
->从API version 7开始支持，从API version 9开始废弃。建议使用[createAccount](#createaccount9)替代。
+>从API version 7开始支持，从API version 9开始废弃，建议使用[createAccount](#createaccount9)替代。
 
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -5043,7 +4991,7 @@ addAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名      | 类型                        | 必填   | 说明                   |
 | -------- | ------------------------- | ---- | -------------------- |
-| name     | string                    | 是    | 应用账号的名称。          |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。          |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当创建成功时，err为null，否则为错误对象。 |
 
 **示例：**
@@ -5064,7 +5012,7 @@ addAccount(name: string, extraInfo: string, callback: AsyncCallback&lt;void&gt;)
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[createAccount](#createaccount9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[createAccount](#createaccount9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5076,8 +5024,8 @@ addAccount(name: string, extraInfo: string, callback: AsyncCallback&lt;void&gt;)
 
 | 参数名       | 类型                        | 必填   | 说明                                       |
 | --------- | ------------------------- | ---- | ---------------------------------------- |
-| name      | string                    | 是    | 应用账号的名称。                              |
-| extraInfo | string                    | 是    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。 |
+| name      | string                    | 是    | 应用账号的名称。最大长度为512个字符。                              |
+| extraInfo | string                    | 是    | 额外信息（能转换string类型的其它信息），额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。最大长度为1024个字符。 |
 | callback  | AsyncCallback&lt;void&gt; | 是    | 回调函数。当创建成功时，err为null，否则为错误对象。             |
 
 **示例：**
@@ -5097,7 +5045,7 @@ addAccount(name: string, extraInfo?: string): Promise&lt;void&gt;
 根据账号名和额外信息添加应用账号。使用Promise异步回调。
 
 > **说明：**
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[createAccount](#createaccount9-2)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[createAccount](#createaccount9-2)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5109,14 +5057,14 @@ addAccount(name: string, extraInfo?: string): Promise&lt;void&gt;
 
 | 参数名       | 类型     | 必填   | 说明                                       |
 | --------- | ------ | ---- | ---------------------------------------- |
-| name      | string | 是    | 应用账号的名称。                            |
-| extraInfo | string | 否    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等），默认为空，表示创建的该账号无额外信息需要添加。 |
+| name      | string | 是    | 应用账号的名称。最大长度为512个字符。                            |
+| extraInfo | string | 否    | 额外信息（能转换string类型的其它信息），额外信息不能是应用账号的敏感信息（如应用账号密码、token等），默认为空，表示创建的该账号无额外信息需要添加。最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -5132,13 +5080,13 @@ addAccount(name: string, extraInfo?: string): Promise&lt;void&gt;
 
 ### addAccountImplicitly<sup>(deprecated)</sup>
 
-addAccountImplicitly(owner: string, authType: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+addAccountImplicitly(owner: string, authType: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 根据指定的账号所有者隐式地添加应用账号。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[createAccountImplicitly](#createaccountimplicitly9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[createAccountImplicitly](#createaccountimplicitly9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5150,8 +5098,8 @@ addAccountImplicitly(owner: string, authType: string, options: {[key: string]: a
 
 | 参数名      | 类型                    | 必填   | 说明                      |
 | -------- | --------------------- | ---- | ----------------------- |
-| owner    | string                | 是    | 应用账号所有者的包名。          |
-| authType | string                | 是    | 鉴权类型。鉴权类型为自定义。  |
+| owner    | string                | 是    | 应用账号所有者的包名。最大长度为1024个字符。          |
+| authType | string                | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。  |
 | options  | {[key: string]: any}  | 是    | 鉴权所需要的可选项。可选项可根据自己需要设置。 |
 | callback | [AuthenticatorCallback](#authenticatorcallbackdeprecated) | 是    | 认证器回调对象，返回添加结果。         |
 
@@ -5204,7 +5152,7 @@ deleteAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[removeAccount](#removeaccount9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[removeAccount](#removeaccount9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5216,7 +5164,7 @@ deleteAccount(name: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名      | 类型                        | 必填   | 说明               |
 | -------- | ------------------------- | ---- | ---------------- |
-| name     | string                    | 是    | 应用账号的名称。      |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。      |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当删除成功时，err为null，否则为错误对象。 |
 
 **示例：**
@@ -5237,7 +5185,7 @@ deleteAccount(name: string): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[removeAccount](#removeaccount9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[removeAccount](#removeaccount9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5249,13 +5197,13 @@ deleteAccount(name: string): Promise&lt;void&gt;
 
 | 参数名  | 类型     | 必填   | 说明          |
 | ---- | ------ | ---- | ----------- |
-| name | string | 是    | 应用账号的名称。 |
+| name | string | 是    | 应用账号的名称。最大长度为512个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -5273,11 +5221,11 @@ deleteAccount(name: string): Promise&lt;void&gt;
 
 disableAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;void&gt;): void
 
-禁止指定第三方应用账号名称对指定的第三方应用进行访问。使用callback异步回调。
+禁止指定第三方应用账号对指定包名称的第三方应用进行访问。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setAppAccess](#setappaccess9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setAppAccess](#setappaccess9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5289,9 +5237,9 @@ disableAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;vo
 
 | 参数名        | 类型                        | 必填   | 说明                                |
 | ---------- | ------------------------- | ---- | --------------------------------- |
-| name       | string                    | 是    | 应用账号的名称。                  |
-| bundleName | string                    | 是    | 第三方应用的包名。                         |
-| callback   | AsyncCallback&lt;void&gt; | 是    | 回调函数。当禁止指定第三方应用账号名称对指定包名称的第三方应用进行访问设置成功时，err为null，否则为错误对象。 |
+| name       | string                    | 是    | 应用账号的名称。最大长度为512个字符。                  |
+| bundleName | string                    | 是    | 第三方应用的包名。最大长度为512个字符。                         |
+| callback   | AsyncCallback&lt;void&gt; | 是    | 回调函数。当禁止指定第三方应用账号对指定包名称的第三方应用进行访问设置成功时，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -5311,7 +5259,7 @@ disableAppAccess(name: string, bundleName: string): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setAppAccess](#setappaccess9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setAppAccess](#setappaccess9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5323,14 +5271,14 @@ disableAppAccess(name: string, bundleName: string): Promise&lt;void&gt;
 
 | 参数名        | 类型     | 必填   | 说明               |
 | ---------- | ------ | ---- | ---------------- |
-| name       | string | 是    | 要禁用访问的第三方应用账号的名称。 |
-| bundleName | string | 是    | 第三方应用的包名。        |
+| name       | string | 是    | 要禁用访问的第三方应用账号的名称。最大长度为512个字符。 |
+| bundleName | string | 是    | 第三方应用的包名。最大长度为512个字符。        |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -5352,7 +5300,7 @@ enableAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;voi
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setAppAccess](#setappaccess9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setAppAccess](#setappaccess9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5364,8 +5312,8 @@ enableAppAccess(name: string, bundleName: string, callback: AsyncCallback&lt;voi
 
 | 参数名        | 类型                        | 必填   | 说明                                |
 | ---------- | ------------------------- | ---- | --------------------------------- |
-| name       | string                    | 是    | 应用账号的名称。                           |
-| bundleName | string                    | 是    | 第三方应用的包名。                         |
+| name       | string                    | 是    | 应用账号的名称。最大长度为512个字符。                           |
+| bundleName | string                    | 是    | 第三方应用的包名。最大长度为512个字符。                         |
 | callback   | AsyncCallback&lt;void&gt; | 是    | 回调函数。当允许指定第三方应用账号名称对指定包名称的第三方应用进行访问设置成功时，err为null，否则为错误对象。 |
 
 **示例：**
@@ -5390,7 +5338,7 @@ enableAppAccess(name: string, bundleName: string): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setAppAccess](#setappaccess9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setAppAccess](#setappaccess9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5402,14 +5350,14 @@ enableAppAccess(name: string, bundleName: string): Promise&lt;void&gt;
 
 | 参数名        | 类型     | 必填   | 说明        |
 | ---------- | ------ | ---- | --------- |
-| name       | string | 是    | 应用账号的名称。   |
-| bundleName | string | 是    | 第三方应用的包名。 |
+| name       | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| bundleName | string | 是    | 第三方应用的包名。最大长度为512个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -5431,7 +5379,7 @@ checkAppAccountSyncEnable(name: string, callback: AsyncCallback&lt;boolean&gt;):
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[checkDataSyncEnabled](#checkdatasyncenabled9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[checkDataSyncEnabled](#checkdatasyncenabled9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5445,7 +5393,7 @@ checkAppAccountSyncEnable(name: string, callback: AsyncCallback&lt;boolean&gt;):
 
 | 参数名      | 类型                           | 必填   | 说明                    |
 | -------- | ---------------------------- | ---- | --------------------- |
-| name     | string                       | 是    | 应用账号的名称。               |
+| name     | string                       | 是    | 应用账号的名称。最大长度为512个字符。               |
 | callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。返回true表示指定应用账号已开启数据同步功能；返回false表示未开启。 |
 
 **示例：**
@@ -5470,7 +5418,7 @@ checkAppAccountSyncEnable(name: string): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[checkDataSyncEnabled](#checkdatasyncenabled9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[checkDataSyncEnabled](#checkdatasyncenabled9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5484,7 +5432,7 @@ checkAppAccountSyncEnable(name: string): Promise&lt;boolean&gt;
 
 | 参数名  | 类型     | 必填   | 说明      |
 | ---- | ------ | ---- | ------- |
-| name | string | 是    | 应用账号的名称。 |
+| name | string | 是    | 应用账号的名称。最大长度为512个字符。 |
 
 **返回值：**
 
@@ -5524,10 +5472,10 @@ setAccountCredential(name: string, credentialType: string, credential: string,ca
 
 | 参数名            | 类型                        | 必填   | 说明            |
 | -------------- | ------------------------- | ---- | ------------- |
-| name           | string                    | 是    | 应用账号的名称。     |
-| credentialType | string                    | 是    | 凭据类型。     |
-| credential     | string                    | 是    | 凭据取值。      |
-| callback       | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置此应用程序账号的凭据成功时，err为null，否则为错误对象。 |
+| name           | string                    | 是    | 应用账号的名称。最大长度为512个字符。     |
+| credentialType | string                    | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。     |
+| credential     | string                    | 是    | 凭据取值。自定义的数据，最大长度为1024个字符。      |
+| callback       | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置指定应用账号的凭据成功时，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -5563,15 +5511,15 @@ setAccountCredential(name: string, credentialType: string, credential: string): 
 
 | 参数名            | 类型     | 必填   | 说明         |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | 是    | 应用账号的名称。   |
-| credentialType | string | 是    | 凭据类型。 |
-| credential     | string | 是    | 凭据取值。 |
+| name           | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| credentialType | string | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。 |
+| credential     | string | 是    | 凭据取值。自定义的数据，最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -5593,7 +5541,7 @@ setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback&lt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setCustomData](#setcustomdata9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setCustomData](#setcustomdata9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5605,8 +5553,8 @@ setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback&lt;
 
 | 参数名       | 类型                        | 必填   | 说明              |
 | --------- | ------------------------- | ---- | --------------- |
-| name      | string                    | 是    | 应用账号的名称。         |
-| extraInfo | string                    | 是    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。       |
+| name      | string                    | 是    | 应用账号的名称。最大长度为512个字符。         |
+| extraInfo | string                    | 是    | 额外信息（能转换string类型的其它信息），额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。最大长度为1024个字符。 |
 | callback  | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功时，err为null，否则为错误对象。 |
 
 **示例：**
@@ -5627,11 +5575,11 @@ setAccountExtraInfo(name: string, extraInfo: string, callback: AsyncCallback&lt;
 
 setAccountExtraInfo(name: string, extraInfo: string): Promise&lt;void&gt;
 
-设置此应用程序账号的额外信息。使用Promise异步回调。
+设置指定应用账号的额外信息。使用Promise异步回调。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setCustomData](#setcustomdata9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setCustomData](#setcustomdata9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5643,14 +5591,14 @@ setAccountExtraInfo(name: string, extraInfo: string): Promise&lt;void&gt;
 
 | 参数名       | 类型     | 必填   | 说明        |
 | --------- | ------ | ---- | --------- |
-| name      | string | 是    | 应用账号的名称。   |
-| extraInfo | string | 是    | 额外信息(能转换string类型的其它信息)，额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。 |
+| name      | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| extraInfo | string | 是    | 额外信息（能转换string类型的其它信息），额外信息不能是应用账号的敏感信息（如应用账号密码、token等）。最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -5672,7 +5620,7 @@ setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setDataSyncEnabled](#setdatasyncenabled9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setDataSyncEnabled](#setdatasyncenabled9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5686,7 +5634,7 @@ setAppAccountSyncEnable(name: string, isEnable: boolean, callback: AsyncCallback
 
 | 参数名      | 类型                        | 必填   | 说明                        |
 | -------- | ------------------------- | ---- | ------------------------- |
-| name     | string                    | 是    | 应用账号的名称。                  |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。                  |
 | isEnable | boolean                   | 是    | 是否开启数据同步。true表示开启数据同步，false表示关闭数据同步。   |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当开启或禁止成功时，err为null，否则为错误对象。 |
 
@@ -5712,7 +5660,7 @@ setAppAccountSyncEnable(name: string, isEnable: boolean): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setDataSyncEnabled](#setdatasyncenabled9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setDataSyncEnabled](#setdatasyncenabled9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5726,14 +5674,14 @@ setAppAccountSyncEnable(name: string, isEnable: boolean): Promise&lt;void&gt;
 
 | 参数名      | 类型      | 必填   | 说明          |
 | -------- | ------- | ---- | ----------- |
-| name     | string  | 是    | 应用账号的名称。     |
+| name     | string  | 是    | 应用账号的名称。最大长度为512个字符。     |
 | isEnable | boolean | 是    | 是否开启数据同步。true表示开启数据同步，false表示关闭数据同步。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -5755,7 +5703,7 @@ setAssociatedData(name: string, key: string, value: string, callback: AsyncCallb
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setCustomData](#setcustomdata9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setCustomData](#setcustomdata9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5767,9 +5715,9 @@ setAssociatedData(name: string, key: string, value: string, callback: AsyncCallb
 
 | 参数名      | 类型                        | 必填   | 说明                |
 | -------- | ------------------------- | ---- | ----------------- |
-| name     | string                    | 是    | 应用账号的名称。           |
-| key      | string                    | 是    | 关联数据的键名。 |
-| value    | string                    | 是    | 关联数据的取值。         |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。           |
+| key      | string                    | 是    | 关联数据的键名。最大长度为1024个字符。          |
+| value    | string                    | 是    | 关联数据的取值。最大长度为1024个字符。          |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置与此应用账号关联的数据成功时，err为null，否则为错误对象。 |
 
 **示例：**
@@ -5794,7 +5742,7 @@ setAssociatedData(name: string, key: string, value: string): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[setCustomData](#setcustomdata9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[setCustomData](#setcustomdata9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5806,15 +5754,15 @@ setAssociatedData(name: string, key: string, value: string): Promise&lt;void&gt;
 
 | 参数名   | 类型     | 必填   | 说明                |
 | ----- | ------ | ---- | ----------------- |
-| name  | string | 是    | 应用账号的名称。           |
-| key      | string | 是    | 关联数据的键名。 |
-| value    | string | 是    | 关联数据的取值。 |
+| name  | string | 是    | 应用账号的名称。最大长度为512个字符。           |
+| key      | string | 是    | 关联数据的键名。最大长度为1024个字符。 |
+| value    | string | 是    | 关联数据的取值。最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
-| :------------------ | :-------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| ------------------ | -------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -5836,7 +5784,7 @@ getAllAccessibleAccounts(callback: AsyncCallback&lt;Array&lt;AppAccountInfo&gt;&
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getAllAccounts](#getallaccounts9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAllAccounts](#getallaccounts9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5874,7 +5822,7 @@ getAllAccessibleAccounts(): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getAllAccounts](#getallaccounts9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAllAccounts](#getallaccounts9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5910,7 +5858,7 @@ getAllAccounts(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccountInfo
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getAccountsByOwner](#getaccountsbyowner9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAccountsByOwner](#getaccountsbyowner9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5924,8 +5872,8 @@ getAllAccounts(owner: string, callback: AsyncCallback&lt;Array&lt;AppAccountInfo
 
 | 参数名      | 类型                                       | 必填   | 说明        |
 | -------- | ---------------------------------------- | ---- | --------- |
-| owner    | string                                   | 是    | 应用账号所有者的包名。    |
-| callback | AsyncCallback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | 是    | 应用账号信息列表。 |
+| owner    | string                                   | 是    | 应用账号所有者的包名。最大长度为1024个字符。    |
+| callback | AsyncCallback&lt;Array&lt;[AppAccountInfo](#appaccountinfo)&gt;&gt; | 是    | 回调函数。当获取成功时，err为null，data为应用账号信息列表；否则为错误对象。 |
 
 **示例：**
 
@@ -5950,7 +5898,7 @@ getAllAccounts(owner: string): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getAccountsByOwner](#getaccountsbyowner9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getAccountsByOwner](#getaccountsbyowner9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -5964,7 +5912,7 @@ getAllAccounts(owner: string): Promise&lt;Array&lt;AppAccountInfo&gt;&gt;
 
 | 参数名   | 类型     | 必填   | 说明     |
 | ----- | ------ | ---- | ------ |
-| owner | string | 是    | 应用账号所有者的包名。 |
+| owner | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -5993,7 +5941,7 @@ getAccountCredential(name: string, credentialType: string, callback: AsyncCallba
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getCredential](#getcredential9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getCredential](#getcredential9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6005,8 +5953,8 @@ getAccountCredential(name: string, credentialType: string, callback: AsyncCallba
 
 | 参数名            | 类型                          | 必填   | 说明             |
 | -------------- | --------------------------- | ---- | -------------- |
-| name           | string                      | 是    | 应用账号的名称。        |
-| credentialType | string                      | 是    | 凭据类型。 |
+| name           | string                      | 是    | 应用账号的名称。最大长度为512个字符。        |
+| credentialType | string                      | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。 |
 | callback       | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取凭据成功时，err为null，data为指定应用账号的凭据；否则为错误对象。 |
 
 **示例：**
@@ -6031,7 +5979,7 @@ getAccountCredential(name: string, credentialType: string): Promise&lt;string&gt
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getCredential](#getcredential9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getCredential](#getcredential9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6043,13 +5991,13 @@ getAccountCredential(name: string, credentialType: string): Promise&lt;string&gt
 
 | 参数名            | 类型     | 必填   | 说明         |
 | -------------- | ------ | ---- | ---------- |
-| name           | string | 是    | 应用账号的名称。    |
-| credentialType | string | 是    | 凭据类型。 |
+| name           | string | 是    | 应用账号的名称。最大长度为512个字符。    |
+| credentialType | string | 是    | 凭据类型。自定义的类型，最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                    | 说明                    |
-| :-------------------- | :-------------------- |
+| -------------------- | -------------------- |
 | Promise&lt;string&gt; | Promise对象，返回指定应用账号的凭据。 |
 
 **示例：**
@@ -6072,7 +6020,7 @@ getAccountExtraInfo(name: string, callback: AsyncCallback&lt;string&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getCustomData](#getcustomdata9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getCustomData](#getcustomdata9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6084,7 +6032,7 @@ getAccountExtraInfo(name: string, callback: AsyncCallback&lt;string&gt;): void
 
 | 参数名      | 类型                          | 必填   | 说明              |
 | -------- | --------------------------- | ---- | --------------- |
-| name     | string                      | 是    | 应用账号的名称。         |
+| name     | string                      | 是    | 应用账号的名称。最大长度为512个字符。         |
 | callback | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取此应用账号的额外信息成功时，err为null，data返回此应用账号的额外信息对象；否则为错误对象。 |
 
 **示例：**
@@ -6109,7 +6057,7 @@ getAccountExtraInfo(name: string): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getCustomData](#getcustomdata9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getCustomData](#getcustomdata9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6121,13 +6069,13 @@ getAccountExtraInfo(name: string): Promise&lt;string&gt;
 
 | 参数名  | 类型     | 必填   | 说明      |
 | ---- | ------ | ---- | ------- |
-| name | string | 是    | 应用账号的名称。 |
+| name | string | 是    | 应用账号的名称。最大长度为512个字符。 |
 
 **返回值：**
 
 | 类型                    | 说明                    |
-| :-------------------- | :-------------------- |
-| Promise&lt;string&gt; | Promise对象，返回此应用程序账号的额外信息对象。 |
+| -------------------- | -------------------- |
+| Promise&lt;string&gt; | Promise对象，返回指定应用账号的额外信息。 |
 
 **示例：**
 
@@ -6149,7 +6097,7 @@ getAssociatedData(name: string, key: string, callback: AsyncCallback&lt;string&g
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getCustomData](#getcustomdata9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getCustomData](#getcustomdata9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6161,8 +6109,8 @@ getAssociatedData(name: string, key: string, callback: AsyncCallback&lt;string&g
 
 | 参数名      | 类型                          | 必填   | 说明                |
 | -------- | --------------------------- | ---- | ----------------- |
-| name     | string                      | 是    | 应用账号的名称。           |
-| key      | string                      | 是    | 关联数据的键名。         |
+| name     | string                      | 是    | 应用账号的名称。最大长度为512个字符。           |
+| key      | string                      | 是    | 关联数据的键名。最大长度为1024个字符。         |
 | callback | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取成功时，err为null，data为关联数据的取值；否则为错误对象。 |
 
 **示例：**
@@ -6183,11 +6131,11 @@ getAssociatedData(name: string, key: string, callback: AsyncCallback&lt;string&g
 
 getAssociatedData(name: string, key: string): Promise&lt;string&gt;
 
-获取与此应用程序账号关联的数据。使用Promise异步回调。
+获取指定应用账号的关联数据。使用Promise异步回调。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getCustomData](#getcustomdata9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getCustomData](#getcustomdata9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6199,13 +6147,13 @@ getAssociatedData(name: string, key: string): Promise&lt;string&gt;
 
 | 参数名  | 类型     | 必填   | 说明        |
 | ---- | ------ | ---- | --------- |
-| name | string | 是    | 应用账号的名称。   |
-| key  | string | 是    | 关联数据的键名。 |
+| name | string | 是    | 应用账号的名称。最大长度为512个字符。   |
+| key  | string | 是    | 关联数据的键名。最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                    | 说明                    |
-| :-------------------- | :-------------------- |
+| -------------------- | -------------------- |
 | Promise&lt;string&gt; | Promise对象，返回关联数据的取值。 |
 
 **示例：**
@@ -6228,7 +6176,7 @@ on(type: 'change', owners: Array&lt;string&gt;, callback: Callback&lt;Array&lt;A
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[on('accountChange')](#onaccountchange9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[on('accountChange')](#onaccountchange9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6268,7 +6216,7 @@ off(type: 'change', callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;): voi
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[off('accountChange')](#offaccountchange9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[off('accountChange')](#offaccountchange9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6308,13 +6256,13 @@ off(type: 'change', callback?: Callback&lt;Array&lt;AppAccountInfo&gt;&gt;): voi
 
 ### authenticate<sup>(deprecated)</sup>
 
-authenticate(name: string, owner: string, authType: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+authenticate(name: string, owner: string, authType: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 对应用账号进行鉴权以获取授权令牌。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[auth](#auth9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[auth](#auth9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6326,9 +6274,9 @@ authenticate(name: string, owner: string, authType: string, options: {[key: stri
 
 | 参数名      | 类型                    | 必填   | 说明              |
 | -------- | --------------------- | ---- | --------------- |
-| name     | string                | 是    | 应用账号的名称。     |
-| owner    | string                | 是    | 应用账号所有者的包名。  |
-| authType | string                | 是    | 鉴权类型。           |
+| name     | string                | 是    | 应用账号的名称。最大长度为512个字符。     |
+| owner    | string                | 是    | 应用账号所有者的包名。最大长度为1024个字符。  |
+| authType | string                | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。           |
 | options  | {[key: string]: any}  | 是    | 鉴权所需的可选项。       |
 | callback | [AuthenticatorCallback](#authenticatorcallbackdeprecated) | 是    | 回调对象，返回鉴权结果。 |
 
@@ -6381,7 +6329,7 @@ getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCall
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthToken](#getauthtoken9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAuthToken](#getauthtoken9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6393,9 +6341,9 @@ getOAuthToken(name: string, owner: string, authType: string, callback: AsyncCall
 
 | 参数名      | 类型                          | 必填   | 说明          |
 | -------- | --------------------------- | ---- | ----------- |
-| name     | string                      | 是    | 应用账号的名称。    |
-| owner    | string                      | 是    | 应用账号所有者的包名。 |
-| authType | string                      | 是    | 鉴权类型。       |
+| name     | string                      | 是    | 应用账号的名称。最大长度为512个字符。    |
+| owner    | string                      | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
+| authType | string                      | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。       |
 | callback | AsyncCallback&lt;string&gt; | 是    | 回调函数。当获取成功时，err为null，data为授权令牌值；否则为错误对象。   |
 
 **示例：**
@@ -6421,7 +6369,7 @@ getOAuthToken(name: string, owner: string, authType: string): Promise&lt;string&
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthToken](#getauthtoken9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAuthToken](#getauthtoken9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6433,9 +6381,9 @@ getOAuthToken(name: string, owner: string, authType: string): Promise&lt;string&
 
 | 参数名      | 类型     | 必填   | 说明          |
 | -------- | ------ | ---- | ----------- |
-| name     | string | 是    | 应用账号的名称。    |
-| owner    | string | 是    | 应用账号所有者的包名。 |
-| authType | string | 是    | 鉴权类型。       |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。    |
+| owner    | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
+| authType | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。       |
 
 **返回值：**
 
@@ -6463,7 +6411,7 @@ setOAuthToken(name: string, authType: string, token: string, callback: AsyncCall
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[setAuthToken](#setauthtoken9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[setAuthToken](#setauthtoken9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6475,9 +6423,9 @@ setOAuthToken(name: string, authType: string, token: string, callback: AsyncCall
 
 | 参数名      | 类型                        | 必填   | 说明       |
 | -------- | ------------------------- | ---- | -------- |
-| name     | string                    | 是    | 应用账号的名称。 |
-| authType | string                    | 是    | 鉴权类型。    |
-| token    | string                    | 是    | 授权令牌。 |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。 |
+| authType | string                    | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。    |
+| token    | string                    | 是    | 授权令牌。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功时，err为null；否则为错误对象。 |
 
 **示例：**
@@ -6502,7 +6450,7 @@ setOAuthToken(name: string, authType: string, token: string): Promise&lt;void&gt
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[setAuthToken](#setauthtoken9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[setAuthToken](#setauthtoken9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6514,15 +6462,15 @@ setOAuthToken(name: string, authType: string, token: string): Promise&lt;void&gt
 
 | 参数名      | 类型     | 必填   | 说明       |
 | -------- | ------ | ---- | -------- |
-| name     | string | 是    | 应用账号的名称。 |
-| authType | string | 是    | 鉴权类型。    |
-| token    | string | 是    | 授权令牌。 |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。 |
+| authType | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。    |
+| token    | string | 是    | 授权令牌。最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -6544,7 +6492,7 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string, c
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[deleteAuthToken](#deleteauthtoken9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[deleteAuthToken](#deleteauthtoken9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6556,10 +6504,10 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string, c
 
 | 参数名      | 类型                        | 必填   | 说明           |
 | -------- | ------------------------- | ---- | ------------ |
-| name     | string                    | 是    | 应用账号的名称。     |
-| owner    | string                    | 是    | 应用账号所有者的包名。  |
-| authType | string                    | 是    | 鉴权类型。        |
-| token    | string                    | 是    | 授权令牌。 |
+| name     | string                    | 是    | 应用账号的名称。最大长度为512个字符。     |
+| owner    | string                    | 是    | 应用账号所有者的包名。最大长度为1024个字符。  |
+| authType | string                    | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。        |
+| token    | string                    | 是    | 授权令牌。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当删除成功时，err为null；否则为错误对象。     |
 
 **示例：**
@@ -6585,7 +6533,7 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string): 
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[deleteAuthToken](#deleteauthtoken9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[deleteAuthToken](#deleteauthtoken9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6597,16 +6545,16 @@ deleteOAuthToken(name: string, owner: string, authType: string, token: string): 
 
 | 参数名      | 类型     | 必填   | 说明           |
 | -------- | ------ | ---- | ------------ |
-| name     | string | 是    | 应用账号的名称。     |
-| owner    | string | 是    | 应用账号所有者的包名。  |
-| authType | string | 是    | 鉴权类型。        |
-| token    | string | 是    | 授权令牌。 |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。     |
+| owner    | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。  |
+| authType | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。        |
+| token    | string | 是    | 授权令牌。最大长度为1024个字符。 |
 
 **返回值：**
 
 | 类型                  | 说明                    |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -6628,7 +6576,7 @@ setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVi
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[setAuthTokenVisibility](#setauthtokenvisibility9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[setAuthTokenVisibility](#setauthtokenvisibility9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6640,9 +6588,9 @@ setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVi
 
 | 参数名        | 类型                        | 必填   | 说明                        |
 | ---------- | ------------------------- | ---- | ------------------------- |
-| name       | string                    | 是    | 应用账号的名称。                  |
-| authType   | string                    | 是    | 鉴权类型。                     |
-| bundleName | string                    | 是    | 被设置可见性的应用包名。              |
+| name       | string                    | 是    | 应用账号的名称。最大长度为512个字符。                  |
+| authType   | string                    | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。                     |
+| bundleName | string                    | 是    | 被设置可见性的应用包名。最大长度为512个字符。              |
 | isVisible  | boolean                   | 是    | 是否可见。true表示可见，false表示不可见。 |
 | callback   | AsyncCallback&lt;void&gt; | 是    | 回调函数。当设置成功时，err为null；否则为错误对象。                  |
 
@@ -6669,7 +6617,7 @@ setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVi
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[setAuthTokenVisibility](#setauthtokenvisibility9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[setAuthTokenVisibility](#setauthtokenvisibility9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6681,16 +6629,16 @@ setOAuthTokenVisibility(name: string, authType: string, bundleName: string, isVi
 
 | 参数名        | 类型      | 必填   | 说明           |
 | ---------- | ------- | ---- | ------------ |
-| name       | string  | 是    | 应用账号的名称。     |
-| authType   | string  | 是    | 鉴权类型。        |
-| bundleName | string  | 是    | 被设置可见性的应用包名。 |
+| name       | string  | 是    | 应用账号的名称。最大长度为512个字符。     |
+| authType   | string  | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。        |
+| bundleName | string  | 是    | 被设置可见性的应用包名。最大长度为512个字符。 |
 | isVisible  | boolean | 是    | 是否可见。true表示可见，false表示不可见。        |
 
 **返回值：**
 
 | 类型                  | 说明                    |
 | ------------------- | --------------------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -6712,7 +6660,7 @@ checkOAuthTokenVisibility(name: string, authType: string, bundleName: string, ca
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[checkAuthTokenVisibility](#checkauthtokenvisibility9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[checkAuthTokenVisibility](#checkauthtokenvisibility9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6724,9 +6672,9 @@ checkOAuthTokenVisibility(name: string, authType: string, bundleName: string, ca
 
 | 参数名        | 类型                           | 必填   | 说明          |
 | ---------- | ---------------------------- | ---- | ----------- |
-| name       | string                       | 是    | 应用账号的名称。    |
-| authType   | string                       | 是    | 鉴权类型。       |
-| bundleName | string                       | 是    | 检查可见性的应用包名。 |
+| name       | string                       | 是    | 应用账号的名称。最大长度为512个字符。    |
+| authType   | string                       | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。       |
+| bundleName | string                       | 是    | 检查可见性的应用包名。最大长度为512个字符。 |
 | callback   | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当检查成功时，err为null，data为true表示可见，data为false表示不可见；否则为错误对象。    |
 
 **示例：**
@@ -6752,7 +6700,7 @@ checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): P
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[checkAuthTokenVisibility](#checkauthtokenvisibility9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[checkAuthTokenVisibility](#checkauthtokenvisibility9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6764,9 +6712,9 @@ checkOAuthTokenVisibility(name: string, authType: string, bundleName: string): P
 
 | 参数名        | 类型     | 必填   | 说明            |
 | ---------- | ------ | ---- | ------------- |
-| name       | string | 是    | 应用账号的名称。      |
-| authType   | string | 是    | 鉴权类型。         |
-| bundleName | string | 是    | 用于检查可见性的应用包名。 |
+| name       | string | 是    | 应用账号的名称。最大长度为512个字符。      |
+| authType   | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。         |
+| bundleName | string | 是    | 用于检查可见性的应用包名。最大长度为512个字符。 |
 
 **返回值：**
 
@@ -6795,7 +6743,7 @@ getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback&lt;Array&
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getAllAuthTokens](#getallauthtokens9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAllAuthTokens](#getallauthtokens9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6807,8 +6755,8 @@ getAllOAuthTokens(name: string, owner: string, callback: AsyncCallback&lt;Array&
 
 | 参数名      | 类型                                       | 必填   | 说明          |
 | -------- | ---------------------------------------- | ---- | ----------- |
-| name     | string                                   | 是    | 应用账号的名称。    |
-| owner    | string                                   | 是    | 应用账号所有者的包名。 |
+| name     | string                                   | 是    | 应用账号的名称。最大长度为512个字符。    |
+| owner    | string                                   | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;Array&lt;[OAuthTokenInfo](#oauthtokeninfodeprecated)&gt;&gt; | 是    | 回调函数。当获取成功时，err为null，data为授权令牌数组；否则为错误对象。    |
 
 **示例：**
@@ -6834,7 +6782,7 @@ getAllOAuthTokens(name: string, owner: string): Promise&lt;Array&lt;OAuthTokenIn
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getAllAuthTokens](#getallauthtokens9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAllAuthTokens](#getallauthtokens9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6846,8 +6794,8 @@ getAllOAuthTokens(name: string, owner: string): Promise&lt;Array&lt;OAuthTokenIn
 
 | 参数名   | 类型     | 必填   | 说明          |
 | ----- | ------ | ---- | ----------- |
-| name  | string | 是    | 应用账号的名称。    |
-| owner | string | 是    | 应用账号所有者的包名。 |
+| name  | string | 是    | 应用账号的名称。最大长度为512个字符。    |
+| owner | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -6876,7 +6824,7 @@ getOAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthList](#getauthlist9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAuthList](#getauthlist9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6888,8 +6836,8 @@ getOAuthList(name: string, authType: string, callback: AsyncCallback&lt;Array&lt
 
 | 参数名      | 类型                                       | 必填   | 说明                      |
 | -------- | ---------------------------------------- | ---- | ----------------------- |
-| name     | string                                   | 是    | 应用账号的名称。                |
-| authType | string                                   | 是    | 鉴权类型。 |
+| name     | string                                   | 是    | 应用账号的名称。最大长度为512个字符。                |
+| authType | string                                   | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是    | 回调函数。当获取成功时，err为null，data为被授权的包名数组；否则为错误对象。               |
 
 **示例：**
@@ -6914,7 +6862,7 @@ getOAuthList(name: string, authType: string): Promise&lt;Array&lt;string&gt;&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthList](#getauthlist9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAuthList](#getauthlist9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6926,8 +6874,8 @@ getOAuthList(name: string, authType: string): Promise&lt;Array&lt;string&gt;&gt;
 
 | 参数名      | 类型     | 必填   | 说明                      |
 | -------- | ------ | ---- | ----------------------- |
-| name     | string | 是    | 应用账号的名称。                |
-| authType | string | 是    | 鉴权类型。 |
+| name     | string | 是    | 应用账号的名称。最大长度为512个字符。                |
+| authType | string | 是    | 鉴权类型。自定义数据，最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -6955,7 +6903,7 @@ getAuthenticatorCallback(sessionId: string, callback: AsyncCallback&lt;Authentic
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthCallback](#getauthcallback9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAuthCallback](#getauthcallback9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -6967,7 +6915,7 @@ getAuthenticatorCallback(sessionId: string, callback: AsyncCallback&lt;Authentic
 
 | 参数名       | 类型                                       | 必填   | 说明       |
 | --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | string                                   | 是    | 鉴权会话的标识。 |
+| sessionId | string                                   | 是    | 鉴权会话的标识。最大长度为1024个字符。 |
 | callback  | AsyncCallback&lt;[AuthenticatorCallback](#authenticatorcallbackdeprecated)&gt; | 是    | 回调函数。当获取鉴权会话的认证器回调函数成功时，err为null，data为认证器回调函数；否则为错误对象。 |
 
 **示例：**
@@ -7004,7 +6952,7 @@ getAuthenticatorCallback(sessionId: string): Promise&lt;AuthenticatorCallback&gt
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getAuthCallback](#getauthcallback9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getAuthCallback](#getauthcallback9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7016,7 +6964,7 @@ getAuthenticatorCallback(sessionId: string): Promise&lt;AuthenticatorCallback&gt
 
 | 参数名       | 类型     | 必填   | 说明       |
 | --------- | ------ | ---- | -------- |
-| sessionId | string | 是    | 鉴权会话的标识。 |
+| sessionId | string | 是    | 鉴权会话的标识。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -7056,7 +7004,7 @@ getAuthenticatorInfo(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[queryAuthenticatorInfo](#queryauthenticatorinfo9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[queryAuthenticatorInfo](#queryauthenticatorinfo9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7068,7 +7016,7 @@ getAuthenticatorInfo(owner: string, callback: AsyncCallback&lt;AuthenticatorInfo
 
 | 参数名      | 类型                                     | 必填   | 说明          |
 | -------- | -------------------------------------- | ---- | ----------- |
-| owner    | string                                 | 是    | 应用账号所有者的包名。 |
+| owner    | string                                 | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 | callback | AsyncCallback&lt;[AuthenticatorInfo](#authenticatorinfo8)&gt; | 是    | 回调函数。当获取成功时，err为null，data为认证器信息对象；否则为错误对象。    |
 
 **示例：**
@@ -7094,7 +7042,7 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[queryAuthenticatorInfo](#queryauthenticatorinfo9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[queryAuthenticatorInfo](#queryauthenticatorinfo9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7106,7 +7054,7 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 | 参数名   | 类型     | 必填   | 说明          |
 | ----- | ------ | ---- | ----------- |
-| owner | string | 是    | 应用账号所有者的包名。 |
+| owner | string | 是    | 应用账号所有者的包名。最大长度为1024个字符。 |
 
 **返回值：**
 
@@ -7164,7 +7112,7 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[AuthTokenInfo](#authtokeninfo9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[AuthTokenInfo](#authtokeninfo9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7220,7 +7168,7 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 | 名称     | 类型     | 只读  | 可选   | 说明         |
 | ------- | ------ | ---- | ---- | ---------- |
-| customData   | Record<string, string> | 否 | 是    | 自定义数据，默认为空。 |
+| customData   | Record<string, string> | 否 | 是    | 自定义数据，默认为空。不建议包含敏感数据。 |
 
 ## CreateAccountImplicitlyOptions<sup>9+</sup>
 
@@ -7294,30 +7242,30 @@ getAuthenticatorInfo(owner: string): Promise&lt;AuthenticatorInfo&gt;
 
 | 名称                            | 值                    | 说明                   |
 | -------------------------------- | ---------------------- | ----------------------- |
-| ACTION_ADD_ACCOUNT_IMPLICITLY<sup>(deprecated)</sup>    | 'addAccountImplicitly' | 表示操作，隐式添加账号。<br>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用ACTION_CREATE_ACCOUNT_IMPLICITLY替代。 <br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。  <br/>**ArkTS-Dyn起始版本：** 8 |
-| ACTION_AUTHENTICATE<sup>(deprecated)</sup>              | 'authenticate'         | 表示操作，鉴权。<br>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用ACTION_AUTH替代。<br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 8 |
-| ACTION_CREATE_ACCOUNT_IMPLICITLY<sup>9+</sup>    | 'createAccountImplicitly' | 表示操作，隐式创建账号。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
-| ACTION_AUTH<sup>9+</sup>              | 'auth'         | 表示操作，鉴权。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23         |
-| ACTION_VERIFY_CREDENTIAL<sup>9+</sup>    | 'verifyCredential' | 表示操作，验证凭据。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
-| ACTION_SET_AUTHENTICATOR_PROPERTIES<sup>9+</sup> | 'setAuthenticatorProperties' | 表示操作，设置认证器属性。 <br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23     |
-| KEY_NAME                         | 'name'                 | 表示键名，应用账号的名称。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23  |
-| KEY_OWNER                        | 'owner'                | 表示键名，应用账号所有者的包名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23|
-| KEY_TOKEN                        | 'token'                | 表示键名，令牌。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23         |
-| KEY_ACTION                       | 'action'               | 表示键名，操作。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23        |
-| KEY_AUTH_TYPE                    | 'authType'             | 表示键名，鉴权类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
-| KEY_SESSION_ID                   | 'sessionId'            | 表示键名，会话标识。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
-| KEY_CALLER_PID                   | 'callerPid'            | 表示键名，调用方PID。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23    |
-| KEY_CALLER_UID                   | 'callerUid'            | 表示键名，调用方UID。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23    |
-| KEY_CALLER_BUNDLE_NAME           | 'callerBundleName'     | 表示键名，调用方包名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23    |
-| KEY_REQUIRED_LABELS<sup>9+</sup> | 'requiredLabels'       | 表示键名，必需的标签。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23    |
-| KEY_BOOLEAN_RESULT<sup>9+</sup>  | 'booleanResult'        | 表示键名，布尔返回值。 <br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23   |
+| ACTION_ADD_ACCOUNT_IMPLICITLY<sup>(deprecated)</sup>    | "addAccountImplicitly" | 表示操作，隐式添加账号。<br>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用ACTION_CREATE_ACCOUNT_IMPLICITLY替代。 <br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。  <br/>**ArkTS-Dyn起始版本：** 8 |
+| ACTION_AUTHENTICATE<sup>(deprecated)</sup>              | "authenticate"         | 表示操作，鉴权。<br>**说明：** 从API version 8开始支持，从API version 9开始废弃，建议使用ACTION_AUTH替代。<br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 8 |
+| ACTION_CREATE_ACCOUNT_IMPLICITLY<sup>9+</sup>    | "createAccountImplicitly" | 表示操作，隐式创建账号。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
+| ACTION_AUTH<sup>9+</sup>              | "auth"         | 表示操作，鉴权。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23         |
+| ACTION_VERIFY_CREDENTIAL<sup>9+</sup>    | "verifyCredential" | 表示操作，验证凭据。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
+| ACTION_SET_AUTHENTICATOR_PROPERTIES<sup>9+</sup> | "setAuthenticatorProperties" | 表示操作，设置认证器属性。 <br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23     |
+| KEY_NAME                         | "name"                 | 表示键名，应用账号的名称。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23  |
+| KEY_OWNER                        | "owner"                | 表示键名，应用账号所有者的包名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23|
+| KEY_TOKEN                        | "token"                | 表示键名，令牌。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23         |
+| KEY_ACTION                       | "action"               | 表示键名，操作。 <br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23        |
+| KEY_AUTH_TYPE                    | "authType"             | 表示键名，鉴权类型。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| KEY_SESSION_ID                   | "sessionId"            | 表示键名，会话标识。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| KEY_CALLER_PID                   | "callerPid"            | 表示键名，调用方PID。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23    |
+| KEY_CALLER_UID                   | "callerUid"            | 表示键名，调用方UID。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23    |
+| KEY_CALLER_BUNDLE_NAME           | "callerBundleName"     | 表示键名，调用方包名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23    |
+| KEY_REQUIRED_LABELS<sup>9+</sup> | "requiredLabels"       | 表示键名，必需的标签。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23    |
+| KEY_BOOLEAN_RESULT<sup>9+</sup>  | "booleanResult"        | 表示键名，布尔返回值。 <br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23   |
 
 ## ResultCode<sup>(deprecated)</sup>
 
 表示返回码的枚举。
 
 > **说明：**<br/>
-> 从API version 8开始支持，从API version 9开始废弃。相关信息建议查看[账号管理错误码](errorcode-account.md)替代。
+> 从API version 8开始支持，从API version 9开始废弃，相关信息建议查看[账号管理错误码](errorcode-account.md)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7560,17 +7508,17 @@ OAuth认证器回调接口。
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[AuthCallback](#authcallback9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[AuthCallback](#authcallback9)替代。
 
 ### onResult<sup>(deprecated)</sup>
 
-onResult: (code: number, result: {[key: string]: any;}) =&gt; void
+onResult: (code: number, result: { [key: string]: any }) =&gt; void
 
 通知请求结果。
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[onResult](#onresult9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[onResult](#onresult9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7612,7 +7560,7 @@ onRequestRedirected: (request: Want) =&gt; void
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[onRequestRedirected](#onrequestredirected9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[onRequestRedirected](#onrequestredirected9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7677,13 +7625,13 @@ createAccountImplicitly(options: CreateAccountImplicitlyOptions, callback: AuthC
 
 ### addAccountImplicitly<sup>(deprecated)</sup>
 
-addAccountImplicitly(authType: string, callerBundleName: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+addAccountImplicitly(authType: string, callerBundleName: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 根据指定的鉴权类型和可选项，隐式地添加应用账号。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 8开始支持, 从API version 9开始废弃。建议使用[createAccountImplicitly](#createaccountimplicitly9-2)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[createAccountImplicitly](#createaccountimplicitly9-2)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7695,7 +7643,7 @@ addAccountImplicitly(authType: string, callerBundleName: string, options: {[key:
 
 | 参数名              | 类型                    | 必填   | 说明              |
 | ---------------- | --------------------- | ---- | --------------- |
-| authType         | string                | 是    | 应用账号的鉴权类型。      |
+| authType         | string                | 是    | 应用账号的鉴权类型。自定义数据，最大长度为1024个字符。      |
 | callerBundleName | string                | 是    | 鉴权请求方的包名。       |
 | options          | {[key: string]: any}  | 是    | 鉴权所需要的可选项。      |
 | callback         | [AuthenticatorCallback](#authenticatorcallbackdeprecated) | 是    | 认证器回调，用于返回鉴权结果。 |
@@ -7718,8 +7666,8 @@ auth(name: string, authType: string, options: Record&lt;string, Object&gt;, call
 
 | 参数名              | 类型                    | 必填   | 说明              |
 | ---------------- | --------------------- | ---- | --------------- |
-| name             | string                | 是    | 应用账号的名称。        |
-| authType         | string                | 是    | 应用账号的鉴权类型。      |
+| name             | string                | 是    | 应用账号的名称。最大长度为512个字符。        |
+| authType         | string                | 是    | 应用账号的鉴权类型。自定义数据，最大长度为1024个字符。      |
 | options          | Record<string, Object> | 是    | 鉴权所需要的可选项。      |
 | callback         | [AuthCallback](#authcallback9) | 是    | 回调对象，用于返回鉴权结果。 |
 
@@ -7741,20 +7689,20 @@ auth(name: string, authType: string, options: Record&lt;string, RecordData&gt;, 
 
 | 参数名              | 类型                    | 必填   | 说明              |
 | ---------------- | --------------------- | ---- | --------------- |
-| name             | string                | 是    | 应用账号的名称。        |
-| authType         | string                | 是    | 应用账号的鉴权类型。      |
+| name             | string                | 是    | 应用账号的名称。最大长度为512个字符。        |
+| authType         | string                | 是    | 应用账号的鉴权类型。自定义数据，最大长度为1024个字符。      |
 | options          | Record&lt;string, RecordData&gt;| 是    | 鉴权所需要的可选项。      |
 | callback         | [AuthCallback](#authcallback9) | 是    | 回调对象，用于返回鉴权结果。 |
 
 ### authenticate<sup>(deprecated)</sup>
 
-authenticate(name: string, authType: string, callerBundleName: string, options: {[key: string]: any;}, callback: AuthenticatorCallback): void
+authenticate(name: string, authType: string, callerBundleName: string, options: { [key: string]: any }, callback: AuthenticatorCallback): void
 
 对应用账号进行鉴权，获取OAuth令牌。使用callback异步回调。
 
 > **说明：**
 >
-> 从API version 8开始支持, 从API version 9开始废弃。建议使用[auth](#auth9-2)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[auth](#auth9-2)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -7766,8 +7714,8 @@ authenticate(name: string, authType: string, callerBundleName: string, options: 
 
 | 参数名              | 类型                    | 必填   | 说明              |
 | ---------------- | --------------------- | ---- | --------------- |
-| name             | string                | 是    | 应用账号的名称。        |
-| authType         | string                | 是    | 应用账号的鉴权类型。      |
+| name             | string                | 是    | 应用账号的名称。最大长度为512个字符。        |
+| authType         | string                | 是    | 应用账号的鉴权类型。自定义数据，最大长度为1024个字符。      |
 | callerBundleName | string                | 是    | 鉴权请求方的包名。       |
 | options          | {[key: string]: any}  | 是    | 鉴权所需要的可选项。      |
 | callback         | [AuthenticatorCallback](#authenticatorcallbackdeprecated) | 是    | 认证器回调，用于返回鉴权结果。 |
@@ -7788,7 +7736,7 @@ verifyCredential(name: string, options: VerifyCredentialOptions, callback: AuthC
 
 | 参数名              | 类型                    | 必填   | 说明              |
 | ---------------- | --------------------- | ---- | --------------- |
-| name      | string                   | 是    | 应用账号的名称。              |
+| name      | string                   | 是    | 应用账号的名称。最大长度为512个字符。              |
 | options   | [VerifyCredentialOptions](#verifycredentialoptions9)  | 是    | 验证凭据的可选项。            |
 | callback  | [AuthCallback](#authcallback9)    | 是    | 认证器回调，用于返回验证结果。 |
 
@@ -7835,7 +7783,7 @@ checkAccountLabels(name: string, labels: Array&lt;string&gt;, callback: AuthCall
 
 | 参数名              | 类型                    | 必填   | 说明              |
 | ---------------- | --------------------- | ---- | --------------- |
-| name      | string                | 是    | 应用账号的名称。              |
+| name      | string                | 是    | 应用账号的名称。最大长度为512个字符。              |
 | labels    | Array&lt;string&gt;          | 是    | 标签数组。                   |
 | callback  | [AuthCallback](#authcallback9) | 是    | 认证器回调，用于返回检查结果。 |
 
@@ -7859,7 +7807,7 @@ checkAccountRemovable(name: string, callback: AuthCallback): void
 
 | 参数名              | 类型                    | 必填   | 说明              |
 | ---------------- | --------------------- | ---- | --------------- |
-| name      | string                | 是    | 应用账号的名称。              |
+| name      | string                | 是    | 应用账号的名称。最大长度为512个字符。              |
 | callback  | [AuthCallback](#authcallback9) | 是    | 认证器回调，用于返回判断结果。 |
 
 **示例：**
@@ -7896,6 +7844,30 @@ ArkTS-Dyn示例：
   import { Want } from '@kit.AbilityKit';
   
   class MyAuthenticator extends appAccount.Authenticator {
+    createAccountImplicitly(
+      options: appAccount.CreateAccountImplicitlyOptions, callback: appAccount.AuthCallback) {
+      let want: Want = {
+        bundleName: 'com.example.accountjsdemo',
+        abilityName: 'com.example.accountjsdemo.loginAbility',
+      };
+      callback.onRequestRedirected(want);
+    }
+
+    auth(name: string, authType: string,
+      options: Record<string, Object>, callback: appAccount.AuthCallback) {
+      let result: appAccount.AuthResult = {
+        account: {
+          name: name,
+          owner: 'com.example.accountjsdemo',
+        },
+        tokenInfo: {
+          token: 'xxxxxx',
+          authType: authType,
+        }
+      };
+      callback.onResult(0, result);
+    }
+
     verifyCredential(name: string,
       options: appAccount.VerifyCredentialOptions, callback: appAccount.AuthCallback) {
       let want: Want = {
@@ -7952,6 +7924,30 @@ ArkTS-Sta示例：
   }
 
   class MyAuthenticator extends appAccount.Authenticator {
+    createAccountImplicitly(
+      options: appAccount.CreateAccountImplicitlyOptions, callback: appAccount.AuthCallback) {
+      let want: Want = {
+        bundleName: 'com.example.accountjsdemo',
+        abilityName: 'com.example.accountjsdemo.loginAbility',
+      };
+      callback.onRequestRedirected(want);
+    }
+
+    auth(name: string, authType: string,
+      options: Record<string, RecordData>, callback: appAccount.AuthCallback) {
+      let result: appAccount.AuthResult = {
+        account: {
+          name: name,
+          owner: 'com.example.accountjsdemo',
+        },
+        tokenInfo: {
+          token: 'xxxxxx',
+          authType: authType,
+        }
+      };
+      callback.onResult(0, result);
+    }
+
     verifyCredential(name: string,
       options: appAccount.VerifyCredentialOptions, callback: appAccount.AuthCallback) {
       let dataName: Record<String, RecordData> = {"name": name };

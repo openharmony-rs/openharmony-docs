@@ -14,6 +14,8 @@
 >
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[Class (UIContext)](arkts-apis-uicontext-uicontext.md)。
@@ -36,6 +38,8 @@ ArkTS-Sta: setDynamicDimming(id: string, value: double): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**系统接口：** 此接口为系统接口。 
+
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
@@ -45,7 +49,7 @@ ArkTS-Sta: setDynamicDimming(id: string, value: double): void
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ------- | ------- |
 | id | string | 是 | 组件id。 |
-| value | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 组件压暗程度取值范围[0,1], 由0到1逐渐变亮。 |
+| value | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 组件压暗程度取值范围[0, 1]，由0到1逐渐变亮。 |
 
 **示例：**
 
@@ -68,7 +72,7 @@ struct Index {
   }
 }
 ```
-![api-switch-overview](../apis-arkui/figures/dynamicDinning.gif)
+![api-switch-overview](../apis-arkui/figures/dynamicDimming.gif)
 
 ### freezeUINode<sup>18+</sup>
 
@@ -76,9 +80,9 @@ freezeUINode(id: string, isFrozen: boolean): void
 
 通过id设置组件冻结状态，防止组件被标记为脏从而触发布局更新。
 
-**原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。 
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -200,9 +204,9 @@ ArkTS-Sta: freezeUINode(uniqueId: int, isFrozen: boolean): void
 
 通过uniqueId设置组件的冻结状态，防止组件被标记为脏从而触发布局更新。
 
-**原子化服务API:** 从API version 18 开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。 
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -338,7 +342,7 @@ struct Index {
 
 setKeyboardAppearanceConfig(uniqueId: number, config: KeyboardAppearanceConfig): void
 
-设置键盘样式，包括模糊效果和流光效果，仅在沉浸式模式下生效，沉浸式定义可参见[KeyboardAppearance枚举说明](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15枚举说明)。其中，流光效果依赖于模糊效果，若需启用流光效果，则需同时开启模糊效果，最终显示效果取决于输入法处理。
+设置键盘样式，包括模糊效果和流光效果，仅在沉浸式模式下生效，沉浸式定义可参见[KeyboardAppearance](../apis-arkui/arkui-ts/ts-text-common.md#keyboardappearance15枚举说明)。其中，流光效果依赖于模糊效果，若需启用流光效果，则需同时开启模糊效果，最终显示效果取决于输入法处理。
 
 **系统接口：** 此接口为系统接口。
 
@@ -456,13 +460,400 @@ getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
 
 **示例：**
 
-参考[offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange23)接口的示例。
+参考[offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange)接口的示例。
+
+### recycleInvisibleImageMemory<sup>23+</sup>
+
+recycleInvisibleImageMemory(enabled: boolean): void
+
+设置不可见Image组件的内存回收开关（[组件可见性](../../../application-dev/ui/arkts-manage-components-visibility.md)是指组件在屏幕上的显示状态）。开启后，当Image组件不参与渲染时，其内部持有的图像内存资源将在系统空闲时（如应用退后台）主动回收，以降低应用系统内存占用；当组件重新参与渲染时，将按需重新加载相关图像资源。
+
+该接口主要用于内存敏感场景下的优化，适用于图片数量较多、页面频繁切换前后台或组件可见性变化较为明显的场景。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。 
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明 |
+| -------- | ------- | ---- | ---- |
+| enabled  | boolean | 是   | 是否开启不可见Image组件的内存回收能力。<br/>true表示开启内存回收，Image组件在不可见时将主动释放图像内存资源；<br/>false表示关闭内存回收，Image组件在不可见时仍保留图像内存资源。<br/>默认值为false，传入`undefined`时将恢复为默认值。 |
+
+**示例：**
+
+```ts
+@Entry
+@Component
+struct ImageRecycleSample {
+  build() {
+    Column({ space: 12 }) {
+      Button('Enable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(true)
+        })
+
+      Button('Disable recycle invisible image memory')
+        .onClick(() => {
+          this.getUIContext().recycleInvisibleImageMemory(false)
+        })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+### createModalUIExtension
+
+ArkTS-Dyn: createModalUIExtension(want: Want, options?: ModalUIExtensionOptions, callback?: ModalUIExtensionCallback): number
+
+ArkTS-Sta: createModalUIExtension(want: Want, options?: ModalUIExtensionOptions, callback?: ModalUIExtensionCallback): int
+
+创建并显示模态UIExtension。使用callback异步回调。返回的sessionId可用于调用[closeModalUIExtension](#closemodaluiextension)关闭该模态UIExtension。
+
+通过该方法创建的模态UIExtension以模态弹层形式展示，其内容在被拉起的[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)对应进程中运行，宿主应用不参与其内部布局和渲染。
+
+若未指定[transition](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)转场效果，则模态UIExtension无动画展示。若指定了transition，则在模态显示和关闭时分别播放出现和消失转场动画。
+
+被拉起的Ability必须是带UI的Ability扩展，如何实现带UI的Ability扩展请参考[带界面的ExtensionAbility组件](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**参数：**
+
+| 参数名    | 类型                                                         | 必填 | 说明                                                       |
+| --------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
+| want      | [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | 是   | 要拉起的UIExtensionAbility对应的Want。                     |
+| options   | [ModalUIExtensionOptions](#modaluiextensionoptions)        | 否   | 模态UIExtension的创建选项，包括DPI跟随策略、窗口模式跟随策略和转场效果。 |
+| callback  | [ModalUIExtensionCallback](#modaluiextensioncallback)     | 否   | 模态UIExtension的生命周期回调集合。                         |
+
+**返回值：**
+
+| 类型   | 说明                                                         |
+| ------ | ------------------------------------------------------------ |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 模态UIExtension的sessionId。取值范围：[0, +∞)。值为0表示创建失败，值大于0表示创建成功。该sessionId可用于调用[closeModalUIExtension](#closemodaluiextension)关闭模态UIExtension。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { ComponentContent, UIContext } from '@kit.ArkUI';
+import { Want } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct ModalUIExtensionExample {
+  @State windowModeStrategy: WindowModeFollowStrategy = WindowModeFollowStrategy.FOLLOW_HOST_WINDOW_MODE;
+  @State dpiFollowStrategy: DpiFollowStrategy = DpiFollowStrategy.FOLLOW_HOST_DPI;
+  @State sessionId: number = 0;
+  private uiContext: UIContext = this.getUIContext();
+  build() {
+    Column() {
+      Button('Create Modal UIExtension')
+        .onClick(() => {
+          const want: Want = {
+            bundleName: 'com.example.modalprovider',
+            abilityName: 'ModalUIExtensionAbility',
+            parameters: {
+              'ability.want.params.uiExtensionType': 'sys/commonUI'
+            }
+          };
+          // 创建并显示模态UIExtension
+          this.sessionId = this.uiContext.createModalUIExtension(
+            want,
+            {
+              transition: TransitionEffect.SLIDE.animation({ duration: 5000, curve: Curve.LinearOutSlowIn }),
+              dpiFollowStrategy: this.dpiFollowStrategy,
+              windowModeFollowStrategy: this.windowModeStrategy
+            },
+            {
+              onRemoteReady: (proxy) => {
+                console.info('UIExtension onRemoteReady');
+              },
+              onReceive: () => {
+                console.info('UIExtension onReceive');
+              },
+              onError: (error) => {
+                console.info('UIExtension onReceive');
+              },
+              onTerminated: (info) => {
+                console.info('UIExtension onTerminated');
+                this.uiContext.closeModalUIExtension(this.sessionId);
+              },
+              onDrawReady: () => {
+                console.info('UIExtension onDrawReady');
+              },
+            });
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, Column, Component, Button, ClickEvent, WindowModeFollowStrategy, DpiFollowStrategy, Curve, TransitionEffect } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
+import { Want } from '@kit.AbilityKit';
+ 
+@Entry
+@Component
+struct ModalUIExtensionExample {
+  @State windowModeStrategy: WindowModeFollowStrategy = WindowModeFollowStrategy.FOLLOW_HOST_WINDOW_MODE;
+  @State dpiFollowStrategy: DpiFollowStrategy = DpiFollowStrategy.FOLLOW_HOST_DPI;
+  @State sessionId: int = 0;
+  private uiContext: UIContext = this.getUIContext();
+  build() {
+    Column(undefined) {
+      Button('Create Modal UIExtension')
+        .onClick(() => {
+          const want: Want = {
+            bundleName: 'com.example.modalprovider',
+            abilityName: 'ModalUIExtensionAbility',
+            parameters: {
+              'ability.want.params.uiExtensionType': 'sys/commonUI'
+            }
+          };
+          // 创建并显示模态UIExtension
+          this.sessionId = this.uiContext.createModalUIExtension(
+            want,
+            {
+              transition: TransitionEffect.SLIDE.animation({ duration: 5000, curve: Curve.LinearOutSlowIn }),
+              dpiFollowStrategy: this.dpiFollowStrategy,
+              windowModeFollowStrategy: this.windowModeStrategy
+            },
+            {
+              onRemoteReady: (proxy) => {
+                console.info('UIExtension onRemoteReady');
+              },
+              onReceive: () => {
+                console.info('UIExtension onReceive');
+              },
+              onError: (error) => {
+                console.info('UIExtension onError');
+              },
+              onTerminated: (info) => {
+                console.info('UIExtension onTerminated');
+              },
+              onDrawReady: () => {
+                console.info('UIExtension onDrawReady');
+              },
+            });
+        })
+    }
+  }
+}
+```
+
+### closeModalUIExtension
+
+ArkTS-Dyn: closeModalUIExtension(sessionId: number): void
+
+ArkTS-Sta: closeModalUIExtension(sessionId: int): void
+
+关闭模态UIExtension。
+
+若创建模态UIExtension时指定了[transition](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明)转场效果，则在关闭时先播放消失转场动画，动画结束后再关闭。无效的、已关闭的或正在关闭中的sessionId将被静默忽略。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                                                                 |
+| ---------- | ------ | ---- | -------------------------------------------------------------------- |
+| sessionId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 由[createModalUIExtension](#createmodaluiextension)返回的sessionId。取值范围：[0, +∞)。值为0表示创建失败，值大于0表示创建成功。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { ComponentContent, UIContext } from '@kit.ArkUI';
+import { Want } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct ModalUIExtensionExample {
+  @State windowModeStrategy: WindowModeFollowStrategy = WindowModeFollowStrategy.FOLLOW_HOST_WINDOW_MODE;
+  @State dpiFollowStrategy: DpiFollowStrategy = DpiFollowStrategy.FOLLOW_HOST_DPI;
+  @State sessionId: number = 0;
+  private uiContext: UIContext = this.getUIContext();
+  build() {
+    Column() {
+      Button('Create Modal UIExtension')
+        .onClick(() => {
+          const want: Want = {
+            bundleName: 'com.example.modalprovider',
+            abilityName: 'ModalUIExtensionAbility',
+            parameters: {
+              'ability.want.params.uiExtensionType': 'sys/commonUI'
+            }
+          };
+          this.sessionId = this.uiContext.createModalUIExtension(
+            want,
+            {
+              transition: TransitionEffect.SLIDE.animation({ duration: 5000, curve: Curve.LinearOutSlowIn }),
+              dpiFollowStrategy: this.dpiFollowStrategy,
+              windowModeFollowStrategy: this.windowModeStrategy
+            },
+            {
+              onRemoteReady: (proxy) => {
+                console.info('UIExtension onRemoteReady');
+              },
+              onReceive: () => {
+                console.info('UIExtension onReceive');
+              },
+              onError: (error) => {
+                console.info('UIExtension onReceive');
+              },
+              onTerminated: (info) => {
+                console.info('UIExtension onTerminated');
+                // 关闭模态UIExtension
+                this.uiContext.closeModalUIExtension(this.sessionId);
+              },
+              onDrawReady: () => {
+                console.info('UIExtension onDrawReady');
+              },
+            });
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, Column, Component, Button, ClickEvent, WindowModeFollowStrategy, DpiFollowStrategy, Curve, TransitionEffect } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { UIContext } from '@kit.ArkUI';
+import { Want } from '@kit.AbilityKit';
+ 
+@Entry
+@Component
+struct ModalUIExtensionExample {
+  @State windowModeStrategy: WindowModeFollowStrategy = WindowModeFollowStrategy.FOLLOW_HOST_WINDOW_MODE;
+  @State dpiFollowStrategy: DpiFollowStrategy = DpiFollowStrategy.FOLLOW_HOST_DPI;
+  @State sessionId: int = 0;
+  private uiContext: UIContext = this.getUIContext();
+  build() {
+    Column(undefined) {
+      Button('Create Modal UIExtension')
+        .onClick(() => {
+          const want: Want = {
+            bundleName: 'com.example.modalprovider',
+            abilityName: 'ModalUIExtensionAbility',
+            parameters: {
+              'ability.want.params.uiExtensionType': 'sys/commonUI'
+            }
+          };
+          this.sessionId = this.uiContext.createModalUIExtension(
+            want,
+            {
+              transition: TransitionEffect.SLIDE.animation({ duration: 5000, curve: Curve.LinearOutSlowIn }),
+              dpiFollowStrategy: this.dpiFollowStrategy,
+              windowModeFollowStrategy: this.windowModeStrategy
+            },
+            {
+              onRemoteReady: (proxy) => {
+                console.info('UIExtension onRemoteReady');
+              },
+              onReceive: () => {
+                console.info('UIExtension onReceive');
+              },
+              onError: (error) => {
+                console.info('UIExtension onError');
+              },
+              onTerminated: (info) => {
+                console.info('UIExtension onTerminated');
+                // 关闭模态UIExtension
+                this.uiContext.closeModalUIExtension(this.sessionId);
+              },
+              onDrawReady: () => {
+                console.info('UIExtension onDrawReady');
+              },
+            });
+        })
+    }
+  }
+}
+```
+
+## ModalUIExtensionOptions
+
+模态UIExtension的创建选项。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+| 名称                    | 类型                                                           | 只读 | 可选 | 说明                                                   |
+| ----------------------- | -------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------ |
+| dpiFollowStrategy       | [DpiFollowStrategy](arkui-ts/ts-container-ui-extension-component-sys.md#dpifollowstrategy12) | 否   | 是   | DPI跟随策略。</br>默认值：DpiFollowStrategy.FOLLOW_HOST_DPI |
+| windowModeFollowStrategy | [WindowModeFollowStrategy](arkui-ts/ts-container-ui-extension-component-sys.md#windowmodefollowstrategy18) | 否 | 是 | 窗口模式跟随策略。</br>默认值：WindowModeFollowStrategy.FOLLOW_HOST_WINDOW_MODE |
+| transition              | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是   | 模态UIExtension显示和关闭时播放的转场动画效果。</br>默认值：TransitionEffect.IDENTITY（无动画） |
+
+## ModalUIExtensionCallback
+
+模态UIExtension的生命周期回调集合。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+| 名称          | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| onRemoteReady | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)&lt;[UIExtensionProxy](arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)&gt; | 否 | 是 | UIExtensionAbility连接完成时的回调。回调参数为[UIExtensionProxy](arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)实例，可通过该实例向被拉起的Ability发送数据。 |
+| onReceive     | [ReceiveCallback](arkui-ts/ts-container-ui-extension-component-sys.md#receivecallback18) | 否   | 是   | 收到被拉起的Ability发送的数据时触发的回调。                  |
+| onError       | ArkTS-Dyn：[ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) <br/>ArkTS-Sta：[ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback)&lt;[BusinessError](../apis-basic-services-kit/js-apis-base.md#businesserror)&gt; | 否   | 是   | 被拉起的Ability扩展在运行过程中发生异常时触发的回调。可通过回调参数中的code、name和message获取错误信息，业务错误码详细介绍请参见[UIExtension错误码](errorcode-uiextension.md)。 |
+| onTerminated  | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)&lt;[TerminationInfo](arkui-ts/ts-container-ui-extension-component-sys.md#terminationinfo12)&gt; | 否 | 是 | 被拉起的UIExtensionAbility通过调用[terminateSelfWithResult](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult)或者[terminateSelf](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself)正常退出时触发的回调。 |
+| onDrawReady   | ArkTS-Dyn：[Callback](../apis-basic-services-kit/js-apis-base.md#callback)&lt;void&gt; <br/>ArkTS-Sta：[VoidCallback](arkui-ts/ts-types.md#voidcallback12)| 否   | 是   | 被拉起的UIExtensionAbility绘制第一帧时触发的回调。           |
 
 ## ComponentSnapshot<sup>12+</sup>
 
 以下API需先使用UIContext中的[getComponentSnapshot()](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。
 
-缩放、平移、旋转等图形变换属性只对被截图组件的子组件生效；对目标组件本身应用图形变换属性不生效，显示的是还是图形变换前的效果。
+缩放、平移、旋转等图形变换属性只对被截图组件的子组件生效；对目标组件本身应用图形变换属性不生效，显示的还是图形变换前的效果。
 
 ### getWithRange<sup>20+</sup>
 getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>;
@@ -473,9 +864,9 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, optio
 >
 > start对应的组件和end对应的组件必须为同一棵组件树上的组件，且start对应的组件需要为end对应的组件的祖先组件。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。 
 
 **参数：**
 
@@ -500,7 +891,7 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean, optio
 | ------ | ------- |
 | 202    | The caller is not a system application. |
 | 100001 | Invalid ID detected. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options.<br>适用版本：23+ |
 
 **示例：** 
 
@@ -576,48 +967,4 @@ struct SnapshotExample {
 }
 ```
 
-![zh-cn_image_getWithRange](figures/zh-cn_image_getWithRange.gif)
-
-### recycleInvisibleImageMemory<sup>23+</sup>
-
-recycleInvisibleImageMemory(enabled: boolean): void
-
-设置不可见Image组件的内存回收开关（[组件可见性](../../../application-dev/ui/arkts-manage-components-visibility.md)是指组件在屏幕上的显示状态）。开启后，当Image组件不参与渲染时，其内部持有的图像内存资源将在系统空闲时（如应用退后台）主动回收，以降低应用系统内存占用；当组件重新参与渲染时，将按需重新加载相关图像资源。
-
-该接口主要用于内存敏感场景下的优化，适用于图片数量较多、页面频繁切换前后台或组件可见性变化较为明显的场景。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统接口：** 此接口为系统接口。 
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数：**
-
-| 参数名   | 类型    | 必填 | 说明 |
-| -------- | ------- | ---- | ---- |
-| enabled  | boolean | 是   | 是否开启不可见Image组件的内存回收能力。<br/>true表示开启内存回收，Image组件在不可见时将主动释放图像内存资源；<br/>false表示关闭内存回收，Image组件在不可见时仍保留图像内存资源。<br/>默认值为false，传入`undefined`时将恢复为默认值。 |
-
-**示例：**
-
-```ts
-@Entry
-@Component
-struct ImageRecycleSample {
-  build() {
-    Column({ space: 12 }) {
-      Button('Enable recycle invisible image memory')
-        .onClick(() => {
-          this.getUIContext().recycleInvisibleImageMemory(true)
-        })
-
-      Button('Disable recycle invisible image memory')
-        .onClick(() => {
-          this.getUIContext().recycleInvisibleImageMemory(false)
-        })
-    }
-    .width('100%')
-    .padding(16)
-  }
-}
-```
+![zh-cn_image_getWithRange](figures/image-getWithRange.gif)

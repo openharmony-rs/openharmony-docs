@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -32,5 +32,7 @@
 - 通知订阅扩展能力<!--notification-subscriber-extension-->
   - [NotificationSubscriberExtensionAbility (开发概述)](notification-subscriber-extension-ability.md)
   - [通知订阅扩展能力开发步骤](notification-subscriber-extension-ability-development-steps.md)
+- [Notification Kit术语](notification-glossary.md)
 <!--RP1--><!--RP1End-->
 <!--RP2--><!--RP2End-->
+<!--RP3--><!--RP3End-->

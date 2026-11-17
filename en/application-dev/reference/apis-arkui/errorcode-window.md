@@ -226,11 +226,11 @@ The PiP window has been started or closed.
 **Solution**<br>
 Do not start or stop PiP repeatedly.<br>
 
-## 1300016 Parameter Verification Error
+## 1300016 Parameter Error
 
 **Error Message**
 
-Parameter validation error.
+Parameter error.
 
 **Description**
 

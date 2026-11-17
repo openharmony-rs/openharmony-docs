@@ -348,7 +348,7 @@ struct LineExample {
 }
 ```
 
-![en-us_image_0000001219982725](figures/en-us_image_0000001219982725.png)
+![line1](figures/line1.png)
 
 ### Example 2: Setting the Stroke Cap Style
 
@@ -397,7 +397,7 @@ struct LineExample1 {
 }
 ```
 
-![en-us_image1_0000001219982725](figures/en-us_image1_0000001219982725.png)
+![line2](figures/line2.png)
 
 ### Example 3: Setting the Stroke Dashes
 
@@ -458,7 +458,7 @@ struct LineExample {
 }
 ```
 
-![en-us_image2_0000001219982725](figures/en-us_image2_0000001219982725.PNG)
+![line3](figures/line3.PNG)
 
 ### Example 4: Drawing a Line with Different Parameter Types for Width and Height
 

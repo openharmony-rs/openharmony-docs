@@ -1,3 +1,11 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍如何使用DisplaySync为UI绘制申请独立帧率，并通过设置期望帧率范围和注册每帧回调实现UI内容的差异化刷新。"
+keywords: [DisplaySync, UI绘制帧率, 期望帧率, 每帧回调, 订阅函数]
+doctype: guide
+status: active
+---
+
 # 请求UI绘制帧率
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
@@ -190,7 +198,7 @@
 
    > **说明：**
    >
-   > 创建的DisplaySync实例在start使能后需要aboutToDisappear函数中进行stop操作并置空，避免内存泄漏问题。
+   > 创建的DisplaySync实例在start使能后需要在aboutToDisappear函数中进行stop操作并置空，避免内存泄漏问题。
 
    ArkTS-Dyn示例：
    <!-- @[display_sync_call_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySync/entry/src/main/ets/DisplaySync/CustomDrawDisplaySync.ets) -->
@@ -227,6 +235,13 @@
        }
      };
 
+     if (this.backDisplaySyncSlow) {
+       // 取消订阅函数
+       this.backDisplaySyncSlow?.offFrame(draw30);
+       this.backDisplaySyncSlow?.stop();
+       this.backDisplaySyncSlow = undefined;
+     }
+ 
      let draw60 = (intervalInfo: displaySync.IntervalInfo) => {
        if (this.isBigger_60) {
          this.drawSecondSize += 1;
@@ -241,13 +256,6 @@
        }
      };
 
-     if (this.backDisplaySyncSlow) {
-       // 取消订阅函数
-       this.backDisplaySyncSlow?.offFrame(draw30);
-       this.backDisplaySyncSlow?.stop();
-       this.backDisplaySyncSlow = undefined;
-     }
- 
      if (this.backDisplaySyncFast) {
        // 取消订阅函数
        this.backDisplaySyncFast?.offFrame(draw60);

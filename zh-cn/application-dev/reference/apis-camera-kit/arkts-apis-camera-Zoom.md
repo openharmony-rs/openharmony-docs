@@ -27,7 +27,7 @@ setZoomRatio(zoomRatio: number): void
 
 设置变焦比，变焦精度最高为小数点后两位，如果设置超过支持的精度范围，则只保留精度范围内数值。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -50,11 +50,12 @@ setZoomRatio(zoomRatio: number): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-function setZoomRatio(photoSession: camera.PhotoSession, zoomRatioRange: Array<number>): void {
-  if (zoomRatioRange === undefined || zoomRatioRange.length <= 0) {
+function setZoomRatio(photoSession: camera.PhotoSession, zoomRatio: number): void {
+  let zoomRatioRange = photoSession.getZoomRatioRange();
+  if (zoomRatio < zoomRatioRange[0] || zoomRatio > zoomRatioRange[1]) {
+    console.error(`invalid zoomRatio`);
     return;
   }
-  let zoomRatio = zoomRatioRange[0];
   try {
     photoSession.setZoomRatio(zoomRatio);
   } catch (error) {
@@ -71,7 +72,7 @@ getZoomRatio(): number
 
 获取当前的变焦比。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -88,7 +89,7 @@ getZoomRatio(): number
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
-| 7400201                |  Camera service fatal error.                           |
+| 7400201                |  Camera service fatal error.  <br>适用版本：12+         |
 
 **示例：**
 
@@ -115,7 +116,7 @@ setSmoothZoom(targetRatio: number, mode?: SmoothZoomMode): void
 
 触发平滑变焦。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -126,10 +127,32 @@ setSmoothZoom(targetRatio: number, mode?: SmoothZoomMode): void
 | targetRatio  | number         | 是   | 目标值。通过[getZoomRatioRange](arkts-apis-camera-ZoomQuery.md#getzoomratiorange11)获取支持的变焦范围，如果设置超过支持范围的值，则只保留精度范围内数值。      |
 | mode         | [SmoothZoomMode](arkts-apis-camera-e.md#smoothzoommode11) | 否   | 平滑变焦模式。默认为0。     |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400103                |  Session not config.<br>适用版本：11-17             |
+
 **示例：**
 
 ```ts
-function setSmoothZoom(sessionExtendsZoom: camera.Zoom, targetZoomRatio: number, mode: camera.SmoothZoomMode): void {
-  sessionExtendsZoom.setSmoothZoom(targetZoomRatio, mode);
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setSmoothZoom(sessionExtendsZoom: camera.Zoom, targetZoomRatio: number,
+  photoSession: camera.PhotoSession, mode: camera.SmoothZoomMode): void {
+  let zoomRatioRange = photoSession.getZoomRatioRange();
+  if (targetZoomRatio < zoomRatioRange[0] || targetZoomRatio > zoomRatioRange[1]) {
+    console.error(`invalid targetZoomRatio.`);
+    return;
+  }
+  try {
+    sessionExtendsZoom.setSmoothZoom(targetZoomRatio, mode);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The setSmoothZoom call failed. error code: ${err.code}`);
+  }
 }
 ```

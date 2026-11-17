@@ -115,7 +115,7 @@ The following table lists the APIs for setting the drawing effect using a pen. F
 | void OH_Drawing_PenSetAntiAlias (OH_Drawing_Pen\* , bool ) | Enables or disables anti-aliasing for a pen. Anti-aliasing makes the pixels around the shape edges semi-transparent.|
 | void OH_Drawing_PenSetCap (OH_Drawing_Pen\* , OH_Drawing_PenLineCapStyle) | Sets the line cap style for a pen.|
 | void OH_Drawing_PenSetJoin (OH_Drawing_Pen\* , OH_Drawing_PenLineJoinStyle) | Sets the line join style for a pen.|
-| void OH_Drawing_CanvasDetachPen (OH_Drawing_Canvas\*) | Removes the brush from the canvas. After the execution, the canvas does not outline the shape and restores to the default fill effect.|
+| void OH_Drawing_CanvasDetachPen (OH_Drawing_Canvas\*) | Removes the pen from the canvas. After the execution, the canvas does not outline the shape and restores to the default fill effect.|
 | void OH_Drawing_PenDestroy (OH_Drawing_Pen\*) | Destroys a pen object and reclaims the memory occupied by the object.|
 
 
@@ -203,9 +203,9 @@ The following table lists the APIs for setting the drawing effect using a pen. F
       The options of **OH_Drawing_PenLineJoinStyle** are as follows.
       | Line Join Style| Description| Effect|
       | -------- | -------- | -------- |
-      | LINE_MITER_JOIN | Miter join.| ![image_0000002194025261](figures/image_0000002194025261.png)|
-      | LINE_ROUND_JOIN | Round join.| ![image_0000002194110901](figures/image_0000002194110901.png)|
-      | LINE_BEVEL_JOIN | Beveled join.| ![image_0000002158744158](figures/image_0000002158744158.png)|
+      | LINE_MITER_JOIN | Miter join.| ![LINE-MITER-JOIN](figures/LINE-MITER-JOIN.png)|
+      | LINE_ROUND_JOIN | Round join.| ![LINE-ROUND-JOIN](figures/LINE-ROUND-JOIN.png)|
+      | LINE_BEVEL_JOIN | Beveled join.| ![LINE-BEVEL-JOIN](figures/LINE-BEVEL-JOIN.png)|
 
 4. Draw primitives as required. For details, see [Drawing Primitives](primitive-drawing-overview.md).
 

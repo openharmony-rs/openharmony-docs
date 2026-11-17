@@ -16,7 +16,7 @@ import { BuilderNode } from '@ohos.arkui.node';
 
 ## BuilderNode
 
-BuilderNode支持通过无状态的UI方法[@Builder（ArkTS-Sta）](../../ui/arkts-v1.2-user-defined-arktsNode-builderNode.md)生成组件树，并持有组件树的根节点。不支持将其定义为状态变量。BuilderNode中持有的FrameNode仅用于将该BuilderNode作为子节点挂载到其他FrameNode上。对BuilderNode持有的FrameNode进行属性设置与子节点操作可能会引发不可预期的行为，因此不建议通过BuilderNode的[getFrameNode](#getframenode)方法和[FrameNode](js-apis-arkui-frameNode.md)的[getRenderNode](js-apis-arkui-frameNode.md#getrendernode)方法获取RenderNode，并通过[RenderNode](js-apis-arkui-renderNode.md)的接口对其进行属性设置与子节点操作。
+BuilderNode支持通过无状态的UI方法[@Builder（ArkTS-Sta）](../../ui/arkts-static-user-defined-arktsNode-builderNode.md)生成组件树，并持有组件树的根节点。不支持将其定义为状态变量。BuilderNode中持有的FrameNode仅用于将该BuilderNode作为子节点挂载到其他FrameNode上。对BuilderNode持有的FrameNode进行属性设置与子节点操作可能会引发不可预期的行为，因此不建议通过BuilderNode的[getFrameNode](#getframenode)方法和[FrameNode](js-apis-arkui-frameNode.md)的[getRenderNode](js-apis-arkui-frameNode.md#getrendernode)方法获取RenderNode，并通过[RenderNode](js-apis-arkui-renderNode.md)的接口对其进行属性设置与子节点操作。
 
 > **说明：**
 >
@@ -53,7 +53,7 @@ constructor(uiContext: UIContext, options?: RenderOptions)
 
 build(builder: WrappedBuilder\<CustomBuilderT\<T>, arg: T): void
 
-依照传入的带参数的[CustomBuilderT\<T>](./arkui-ts/ts-types.md#custombuildertt23)创建组件树，并持有组件树的根节点。无状态的UI方法[@Builder（ArkTS-Sta）](../../ui/arkts-v1.2-user-defined-arktsNode-builderNode.md)最多拥有一个根节点。
+依照传入的带参数的[CustomBuilderT\<T>](./arkui-ts/ts-types.md#custombuildertt23)创建组件树，并持有组件树的根节点。无状态的UI方法[@Builder（ArkTS-Sta）](../../ui/arkts-static-user-defined-arktsNode-builderNode.md)最多拥有一个根节点。
 
 支持自定义组件。
 
@@ -73,7 +73,7 @@ build(builder: WrappedBuilder\<CustomBuilderT\<T>, arg: T): void
 
 | 参数名  | 类型                                                            | 必填 | 说明                                                                                   |
 | ------- | --------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-| builder | WrappedBuilder\<[CustomBuilderT\<T>](./arkui-ts/ts-types.md#custombuildertt23)> | 是   | 在构建节点树时所需的无状态UI方法[@Builder（ArkTS-Sta）](../../ui/arkts-v1.2-user-defined-arktsNode-builderNode.md)封装的WrappedBuilder对象。 |
+| builder | WrappedBuilder\<[CustomBuilderT\<T>](./arkui-ts/ts-types.md#custombuildertt23)> | 是   | 在构建节点树时所需的无状态UI方法[@Builder（ArkTS-Sta）](../../ui/arkts-static-user-defined-arktsNode-builderNode.md)封装的WrappedBuilder对象。 |
 | arg     |T                                                  |  是    | builder的入参。当前仅支持一个入参，且入参对象类型与@Builder定义的入参类型保持一致。                                          |
 
 ### build
@@ -86,7 +86,7 @@ build(builder: WrappedBuilder\<CustomBuilderT\<T>, arg: T , options: BuildOption
 
 > **说明：**
 >
-> - @Builder进行创建和更新的规格参考[@Builder](../../ui/arkts-v1.2-user-defined-arktsNode-builderNode.md)。
+> - @Builder进行创建和更新的规格参考[@Builder](../../ui/arkts-static-user-defined-arktsNode-builderNode.md)。
 >
 > - 最外层的@Builder只支持一个入参。
 
@@ -98,7 +98,7 @@ build(builder: WrappedBuilder\<CustomBuilderT\<T>, arg: T , options: BuildOption
 
 | 参数名  | 类型                                                            | 必填 | 说明                                                                                    |
 | ------- | --------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-| builder | WrappedBuilder\<[CustomBuilderT\<T>](./arkui-ts/ts-types.md#custombuildertt23)> | 是   | 用于构建对应节点树的无状态UI方法[@Builder（ArkTS-Sta）](../../ui/arkts-v1.2-user-defined-arktsNode-builderNode.md)封装的WrappedBuilder对象。   |
+| builder | WrappedBuilder\<[CustomBuilderT\<T>](./arkui-ts/ts-types.md#custombuildertt23)> | 是   | 用于构建对应节点树的无状态UI方法[@Builder（ArkTS-Sta）](../../ui/arkts-static-user-defined-arktsNode-builderNode.md)封装的WrappedBuilder对象。   |
 | arg     |T                                           | 是   | builder的入参。                                                            |
 | options | [BuildOptions](./js-apis-arkui-builderNode.md#buildoptions12)  | 是   | 该值无效，默认支持@Builder参数不一致，且行为与@Builder的行为保持一致。                                        |
 
@@ -124,7 +124,7 @@ build(builder: WrappedBuilder\<CustomBuilderT\<T>, arg: T , options: BuildOption
 
 | 参数名  | 类型                                                            | 必填 | 说明                                                                                    |
 | ------- | --------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------- |
-| builder | WrappedBuilder\<[CustomBuilder](./arkui-ts/ts-types.md#custombuildertt23)>  | 是   | 创建对应节点树的时候所需的无状态UI方法[@Builder（ArkTS-Sta）](../../ui/arkts-v1.2-user-defined-arktsNode-builderNode.md)封装的WrappedBuilder对象。   |
+| builder | WrappedBuilder\<[CustomBuilder](./arkui-ts/ts-types.md#custombuildertt23)>  | 是   | 创建对应节点树的时候所需的无状态UI方法[@Builder（ArkTS-Sta）](../../ui/arkts-static-user-defined-arktsNode-builderNode.md)封装的WrappedBuilder对象。   |
 
 **示例：**
 
@@ -196,7 +196,7 @@ dispose(): void
 
 updateConfiguration(): void
 
-传递[系统环境变化](../apis-ability-kit/js-apis-app-ability-configuration.md)事件，触发节点的全量更新。
+传递系统[环境变量](../apis-ability-kit/js-apis-app-ability-configuration.md)变化事件，触发节点的全量更新。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

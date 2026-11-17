@@ -147,7 +147,7 @@ NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE = 13004
 NODE_DATE_PICKER_TEXT_STYLE = 13005
 ```
 
-设置日期选择器组件的所有选项中除了最上、最下及选中项以外的文本颜色、字号、字体粗细，支持属性设置，属性重置和属性获取接口。<br>
+设置日期选择器组件的所有选项中除了边缘项及选中项以外的文本颜色、字号、字体粗细，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -229,13 +229,13 @@ NODE_DATE_PICKER_ENABLE_HAPTIC_FEEDBACK = 13008
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 是否开启触控反馈。默认值：true，true表示开启触控反馈，false则表示不开启触控反馈。 |
+| .value[0].i32 | 是否开启触控反馈。默认值：true，true表示开启触控反馈，false则表示不开启触控反馈。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 是否开启触控反馈。 |
+| .value[0].i32 | 是否开启触控反馈。 |
 
 ## NODE_DATE_PICKER_CAN_LOOP
 
@@ -243,7 +243,7 @@ NODE_DATE_PICKER_ENABLE_HAPTIC_FEEDBACK = 13008
 NODE_DATE_PICKER_CAN_LOOP = 13009
 ```
 
-Picker组件可循环滚动属性，支持属性设置，属性重置和属性获取接口。<br>
+日期选择器组件可循环滚动属性，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 20
@@ -339,7 +339,7 @@ NODE_TIME_PICKER_DISAPPEAR_TEXT_STYLE = 14002
 NODE_TIME_PICKER_TEXT_STYLE = 14003
 ```
 
-设置设置边缘项（以选中项为基准向上或向下的第二项）的文本样式，支持属性设置，属性重置和属性获取接口。<br>
+设置时间选择组件所有选项中除了边缘项及选中项以外的文本颜色、字号、字体粗细，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -411,7 +411,7 @@ NODE_TIME_PICKER_START = 14005
 NODE_TIME_PICKER_END = 14006
 ```
 
-设置时间选择器组件的结束日期，支持属性设置，属性重置和属性获取接口。<br>
+设置时间选择器组件的结束时间，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 18
@@ -648,7 +648,7 @@ Picker组件可循环滚动属性，支持属性设置，属性重置和属性�
 NODE_TEXT_PICKER_DEFAULT_PICKER_ITEM_HEIGHT = 15008
 ```
 
-Picker各选择项的高度属性，支持属性设置，属性重置和属性获取接口。<br>
+滑动选择文本内容的组件各选择项的高度属性，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 12
@@ -712,13 +712,13 @@ NODE_TEXT_PICKER_ENABLE_HAPTIC_FEEDBACK = 15010
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 是否开启触控反馈。默认值：true，true表示开启触控反馈，false则表示不开启触控反馈。 |
+| .value[0].i32 | 是否开启触控反馈。默认值：true，true表示开启触控反馈，false则表示不开启触控反馈。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].f32 | 是否开启触控反馈。 |
+| .value[0].i32 | 是否开启触控反馈。 |
 
 ## NODE_TEXT_PICKER_SELECTED_BACKGROUND_STYLE
 
@@ -737,7 +737,6 @@ NODE_TEXT_PICKER_SELECTED_BACKGROUND_STYLE = 15011
 | 参数项 | 描述 |
 | -- | -- |
 | .value[0].u32 | 背景颜色，采用 0xARGB 格式，例如，<b>0xFF1122FF</b>。 |
-| .value[1].f32 | 四个角的圆角半径，单位为VP。 |
 | .value[1].f32 | 左上角的圆角半径，单位为VP。 |
 | .value[2].f32 | 右上角的圆角半径，单位为VP。 |
 | .value[3].f32 | 左下角的圆角半径，单位为VP。 |
@@ -995,7 +994,7 @@ NODE_CALENDAR_PICKER_TEXT_STYLE = 16003
 | -- | -- |
 | .value[0]?.u32 | 入口区的文本颜色。 |
 | .value[1]?.f32 | 入口区的文本字号，单位为fp。 |
-| .value[2]?.i32 | 入口区的文本字体粗细，参数类型[ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight)。 |
+| .value[2]?.i32 | 入口区的文本字体粗细，参数类型[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)。 |
 
 **返回：**
 
@@ -1003,7 +1002,7 @@ NODE_CALENDAR_PICKER_TEXT_STYLE = 16003
 | -- | -- |
 | .value[0].u32 | 入口区的文本颜色。 |
 | .value[1].f32 | 入口区的文本字号，单位为fp。 |
-| .value[2].i32 | 入口区的文本字体粗细，参数类型[ArkUI_FontWeight](capi-native-type-h.md#arkui_fontweight)。 |
+| .value[2].i32 | 入口区的文本字体粗细，参数类型[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)。 |
 
 ## NODE_CALENDAR_PICKER_START
 
@@ -1100,3 +1099,27 @@ NODE_CALENDAR_PICKER_MARK_TODAY = 16007
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | 日历选择器在系统当前日期时，是否保持高亮显示。 |
+
+## NODE_CALENDAR_PICKER_FIRST_DAY_OF_WEEK
+
+```c
+NODE_CALENDAR_PICKER_FIRST_DAY_OF_WEEK = 16008
+```
+
+设置日历选择器每周的起始日，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 日历选择器每周的起始日。取值范围：[0, 7]。<br>0：跟随系统区域变化。1：周一。2：周二。3：周三。4：周四。5：周五。6：周六。7：周日。默认值：0（跟随系统区域变化）。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 日历选择器每周的起始日。 |

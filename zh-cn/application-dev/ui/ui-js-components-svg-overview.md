@@ -42,7 +42,7 @@ svg{
 }
 ```
 
-![zh-cn_image_0000001218280036](figures/zh-cn_image_0000001218280036.png)
+![svg-Component](figures/svg-Component.png)
 
 
 ## 设置属性
@@ -79,7 +79,7 @@ svg{
 }
 ```
 
-![zh-cn_image_0000001218599996](figures/zh-cn_image_0000001218599996.png)
+![Setting-Attributes](figures/Setting-Attributes.png)
 
 > **说明：**
 > - x和y设置的是当前svg的x轴和y轴坐标，如果当前svg为根节点，x轴和y轴属性无效。

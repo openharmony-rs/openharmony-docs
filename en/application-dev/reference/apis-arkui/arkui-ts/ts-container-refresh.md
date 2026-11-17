@@ -289,7 +289,7 @@ struct RefreshExample {
 }
 ```
 
-![en-us_image_refresh_default](figures/en-us_image_refresh_default.gif)
+![en-us_image_refresh_default](figures/image-refresh-default.gif)
 
 ### Example 2: Setting the Text Displayed in the Refreshing Area
 
@@ -349,7 +349,7 @@ struct RefreshExample {
 }
 ```
 
-![en-us_image_refresh_prompttext](figures/en-us_image_refresh_prompttext.gif)
+![en-us_image_refresh_prompttext](figures/image-refresh-prompttext.gif)
 
 ### Example 3: Customizing the Refreshing Area Content with builder
 
@@ -421,7 +421,7 @@ struct RefreshExample {
 }
 ```
 
-![en-us_image_refresh_builder](figures/en-us_image_refresh_builder.gif)
+![en-us_image_refresh_builder](figures/image-refresh-builder.gif)
 
 ### Example 4: Customizing the Refreshing Area Content with refreshingContent
 
@@ -514,7 +514,7 @@ struct RefreshExample {
   }
 }
 ```
-![en-us_image_refresh_refreshingcontent](figures/en-us_image_refresh_refreshingcontent.gif)
+![en-us_image_refresh_refreshingcontent](figures/image-refresh-refreshingcontent.gif)
 
 ### Example 5: Implementing the Maximum Pull-down Distance
 
@@ -600,7 +600,7 @@ struct RefreshExample {
 }
 ```
 
-![en-us_image_refresh_maxrefreshingheight](figures/en-us_image_refresh_maxrefreshingheight.gif)
+![en-us_image_refresh_maxrefreshingheight](figures/image-refresh-maxrefreshingheight.gif)
 
 ### Example 6: Implementing Pull-Down-to-Refresh and Pull-Up-to-Load-More
 

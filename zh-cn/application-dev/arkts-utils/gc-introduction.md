@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "GC机制：对象追踪、HPP分代混合回收、分代GC策略、堆结构、Smart GC特性及日志分析，助开发者排查稳定性问题。"
+keywords: [垃圾回收, GC, HPP GC, 分代回收, 引用计数, 对象追踪, Smart GC, 堆内存, GC日志]
+doctype: guide
+status: active
+---
+
 # GC垃圾回收
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @dwhuawei-->
-<!--Designer: @yingguofeng-->
+<!--Designer: @dwhuawei-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 GC（全称 Garbage Collection），即垃圾回收。在计算机领域，GC是指识别并释放内存中的不再使用的对象，以回收内存空间。目前广泛使用的编程语言实现的GC算法主要分为两大类：引用计数和对象追踪（即Tracing GC）。
 
@@ -18,7 +26,9 @@ GC（全称 Garbage Collection），即垃圾回收。在计算机领域，GC是
 
 - 优点：引用计数算法设计简单，而且会在对象成为垃圾时及时回收该部分内存，因此无需引入单独的暂停业务代码（Stop The World，STW）阶段。
 - 缺点：在对象操作时插入了计数环节，增加了内存分配和赋值的开销，影响性能。存在因循环引用而导致的内存泄漏问题。
-```ts
+<!-- @[reference_counting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSGC/entry/src/main/ets/ReferenceCounting.ts) -->
+
+``` TypeScript
 class Parent {
   constructor() {
     this.child = null;
@@ -128,21 +138,21 @@ HPP GC流程中引入了大量的并发和并行优化，以减少对应用性�
 - 触发机制：年轻代GC触发阈值在2MB-16MB，根据分配速度和存活率变化。
 - 功能描述：主要回收YoungSpace新分配的年轻代对象。
 - 场景：前台场景。
-- 日志关键词：`[ HPP YoungGC ]`
+- 日志关键词：`[ HPP YoungGC ]`。
 
 **Old GC**
 
 - 触发机制：老年代GC触发阈值在20MB到300MB之间变化。通常，第一次Old GC的阈值约为20MB，之后会根据对象存活率和内存占用情况进行调整。
 - 功能描述：对年轻代和部分老年代空间做整理压缩，其他空间做清理。触发频率比年轻代GC低很多，由于会做全量标记，因此GC时间会比年轻代GC长，单次耗时约5ms~10ms。
 - 场景：前台场景。
-- 日志关键词：`[ HPP OldGC ]`
+- 日志关键词：`[ HPP OldGC ]`。
 
 **Full GC**
 
 - 触发机制：不会由内存阈值触发。应用切换到后台场景之后，若预测可回收对象大小超过2MB，则会触发一次Full GC。DumpHeapSnapshot和AllocationTracker工具默认会触发Full GC。Native接口和ArkTS接口也可触发。
 - 功能描述：对年轻代和老年代做全量压缩，主要用于性能不敏感场景，最大限度回收内存。
 - 场景：后台场景。
-- 日志关键词：`[ CompressGC ]`
+- 日志关键词：`[ CompressGC ]`。
 
 此后，Smart GC或Idle GC会从上述三种GC中选择。
 
@@ -156,7 +166,7 @@ HPP GC流程中引入了大量的并发和并行优化，以减少对应用性�
 
 **Native绑定大小达到阈值触发GC**
 
-- 限制参数：`globalSpaceNativeLimit`
+- 限制参数：`globalSpaceNativeLimit`。
 - 策略描述：按条件进行全量标记和开启并发标记。
 
 **切换后台触发GC**
@@ -193,20 +203,20 @@ HPP GC流程中引入了大量的并发和并行优化，以减少对应用性�
 **第一次Old GC后阈值的调整**
 
 - 策略描述：根据最小增长步长以及平均存活率调整OldSpace阈值限制。
-- 日志关键词：`AdjustOldSpaceLimit`
+- 日志关键词：`AdjustOldSpaceLimit`。
 
 **第二次及以后的Old GC对OldSpace和GlobalSpace阈值调整，以及增长因子的调整**
 
 - 策略描述：根据当前GC统计数据的变化，重新计算并调整newOldSpaceLimit、newGlobalSpaceLimit、globalSpaceNativeLimit及增长因子。
-- 日志关键词：`RecomputeLimits`
+- 日志关键词：`RecomputeLimits`。
 
 **Partial Old GC的CSet 选择策略**
 
 - 策略描述：Partial GC执行时，优先选择存活对象数量少、回收代价小的Region进行回收。
 - 典型日志：
-    - `Select CSet failure: number is too few`
-    - `Max evacuation size is 6_MB. The CSet Region number`
-    - `Select CSet success: number is`
+    - `Select CSet failure: number is too few`。
+    - `Max evacuation size is 6_MB. The CSet Region number`。
+    - `Select CSet success: number is`。
 
 ## Heap
 
@@ -235,7 +245,7 @@ Heap包含两种类型：LocalHeap和SharedHeap。LocalHeap是应用进程中每
 
 根据系统分配堆空间总大小64MB-128MB/128MB-256MB/大于256MB的三个范围，以下参数系统会设置不同的大小。如果表格内范围仅有一个值，则表示该参数值不随堆空间总大小变化。手机设备堆空间总大小默认为大于256MB。
 
-开发者可以查阅[hidebug接口文档](../reference/apis-performance-analysis-kit/js-apis-hidebug.md)，使用相关接口查询内存信息。
+开发者可以查阅[@ohos.hidebug](../reference/apis-performance-analysis-kit/js-apis-hidebug.md)，使用相关接口查询内存信息。
 
 **堆大小相关参数**
 
@@ -359,8 +369,8 @@ Smart GC是一种智能GC抑制机制，在冷启动场景和性能敏感场景�
 
 **日志关键词**
 
-- 敏感场景：`SmartGC: set high sensitive status`
-- 冷启动场景：`SmartGC: app cold start just finished`
+- 敏感场景：`SmartGC: set high sensitive status`。
+- 冷启动场景：`SmartGC: app cold start just finished`。
 
 **交互流程**
 
@@ -449,7 +459,7 @@ C03F00/ArkCompiler: Heap average alive rate: 0.635325
 
 ### ArkTools.hintGC()
 
-- 调用方式：`ArkTools.hintGC()`
+- 调用方式：`ArkTools.hintGC()`。
 - 接口类型：ArkTS接口。
 - 调用后，VM会判断是否适合进行full GC。如果后台场景中内存预期存活率低于设定值，则触发full GC；若判断为敏感状态，则不触发。
 - 使用场景：开发者提示系统进行GC。
@@ -458,7 +468,9 @@ C03F00/ArkCompiler: Heap average alive rate: 0.635325
 
 **使用参考：**
 
-```ts
+<!-- @[arktools_hintGC](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSGC/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // 首先需要声明接口
 declare class ArkTools {
   static hintGC(): void;
@@ -475,8 +487,9 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
-        Button("触发HintGC").onClick((event: ClickEvent) => {
+        Button('触发HintGC').onClick((event: ClickEvent) => {
           ArkTools.hintGC(); // 方法内直接调用
+          this.message = 'Success';
         })
       }
       .width('100%')

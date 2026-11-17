@@ -46,7 +46,7 @@ struct ArkUIInspectorExample {
 
 ## 如何使用页面布局检查器
 
-以DevEco Studio 4.0.0.400版本为例，在DevEco Studio菜单栏上单击***\*View\**** > ***\*Tool Windows\**** >***\*ArkUI Inspector\****，或者在DevEco Studio底部工具栏单击![img](./figures/profiler_inspector_button.jpg)
+以DevEco Studio 4.0.0.400版本为例，在DevEco Studio菜单栏上单击 ***\*View\**** > ***\*Tool Windows\**** >***\*ArkUI Inspector\****，或者在DevEco Studio底部工具栏单击![img](./figures/profiler_inspector_button.jpg)
 
 打开ArkUI Inspector工具，如下图所示：
 

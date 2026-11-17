@@ -3,12 +3,12 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
 ## 简介
-本指南主要提供了基于人机接口设备协议（Human Interface Device Profile，[HID](../../connectivity/terminology.md#hid)）实现将设备模拟为蓝牙键盘、鼠标、游戏手柄等输入设备的开发指导。在HID设备通信模型中，依据设备角色的不同，可区分为[HID host](../../connectivity/terminology.md#hid-host)和[HID device](../../connectivity/terminology.md#hid-device)。本指南将重点阐述如何为应用提供HID设备能力，连接其他蓝牙HID主机（如电脑、平板、手机等）并进行数据交互的实现方法。
+本指南主要提供了基于人机接口设备协议（Human Interface Device Profile，[HID](terminology.md#hid)）实现将设备模拟为蓝牙键盘、鼠标、游戏手柄等输入设备的开发指导。在HID设备通信模型中，依据设备角色的不同，可区分为[HID host](terminology.md#hid-host)和[HID device](terminology.md#hid-device)。本指南将重点阐述如何为应用提供HID设备能力，连接其他蓝牙HID主机（如电脑、平板、手机等）并进行数据交互的实现方法。
 
 ## 实现原理
 HID设备作为输入能力的提供方，需要先为本机应用注册HID设备能力，并声明其功能类型（如键盘、鼠标等）及对应的HID报告描述符。
@@ -21,6 +21,10 @@ HID设备或HID主机均可主动断开连接。应用需要根据实际场景�
 
 ### 申请蓝牙权限
 需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，请参考[声明权限](../../security/AccessToken/declare-permissions.md)和[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+
+### 查询是否支持蓝牙
+
+调用[isBluetoothSupported](../../reference/apis-connectivity-kit/js-apis-bluetooth-access.md#accessisbluetoothsupported)接口查询该设备是否支持蓝牙，支持后再进行后续步骤；不支持时，请勿使用相关接口。
 
 ### 导入所需API模块
 导入baseProfile、hid和common模块。

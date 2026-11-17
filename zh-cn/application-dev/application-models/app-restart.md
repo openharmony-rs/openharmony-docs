@@ -20,7 +20,7 @@
 
 ### 不保留应用窗口的重启
 
-从API version 12开始，ApplicationContext提供了[restartApp](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12)接口，用于主动重启应用并拉起指定的UIAbility。重启过程中不保留当前应用窗口，相当于完全重新启动应用。重启过程中不会触发应用中Ability的onDestroy生命周期回调。
+从API version 12开始，ApplicationContext提供了[restartApp()](../reference/apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextrestartapp12)接口，用于主动重启应用并拉起指定的UIAbility。重启过程中不保留当前应用窗口，相当于完全重新启动应用。重启过程中不会触发应用中Ability的onDestroy生命周期回调。
 
 存在以下约束限制：
 - 仅支持主线程调用该接口。
@@ -28,7 +28,7 @@
 - 不支持3秒内重复调用重启接口。
 
 示例代码：
-<!-- @[restartapp_withoutWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/restartapp/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[restartapp_withoutWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/restartapp/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -51,14 +51,12 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
-          // 指定当前UIAbility
           let want: Want = {
-            bundleName: 'com.example.myapplication',
+            bundleName: 'com.example.restartapp',
             abilityName: 'EntryAbility'
           };
           if (this.context) {
             try {
-              // 触发want指定的UIAbility重启
               this.context.restartApp(want);
             } catch (err) {
               hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
@@ -76,7 +74,7 @@ struct Index {
 
 ### 保留应用窗口的重启
 
-从API version 22开始，UIAbilityContext提供了[restartApp](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#restartapp22)接口，用于重启当前UIAbility所在的进程，并拉起应用内的指定UIAbility。与ApplicationContext的restartApp不同，该接口可选择保留当前窗口或跳转到新窗口。重启过程中不触发进程中Ability的onDestroy生命周期回调。
+从API version 22开始，UIAbilityContext提供了[restartApp()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#restartapp22)接口，用于重启当前UIAbility所在的进程，并拉起应用内的指定UIAbility。与ApplicationContext的restartApp不同，该接口可选择保留当前窗口或跳转到新窗口。重启过程中不触发进程中Ability的onDestroy生命周期回调。
 
 存在以下约束限制：
 - 仅支持主线程调用该接口。
@@ -86,17 +84,17 @@ struct Index {
 示例代码：
 
 1. 指定当前UIAbility，重启后刷新当前窗口至初始状态。
-   <!-- @[restartapp_withOldWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/restartapp/entry/src/main/ets/pages/Index2.ets) -->
-
+   <!-- @[restartapp_withOldWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/restartapp/entry/src/main/ets/pages/Index2.ets) --> 
+   
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { common, Want } from '@kit.AbilityKit';
-
+   
    @Entry
    @Component
    struct Index {
      @State message: string = 'restartApp with window';
-
+   
      build() {
        RelativeContainer() {
          Button(this.message)
@@ -110,12 +108,11 @@ struct Index {
            .onClick(async () => {
              // 指定当前UIAbility，刷新当前窗口
              let want: Want = {
-               bundleName: 'com.example.myapplication',
+               bundleName: 'com.example.restartapp',
                abilityName: 'EntryAbility'
              };
              let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
              try {
-               // 触发want指定的UIAbility重启
                await context.restartApp(want);
                hilog.info(0x0000, 'testTag', 'restart success');
              } catch (err) {
@@ -130,17 +127,17 @@ struct Index {
    ```
 
 2. 指定应用内其他UIAbility，重启后跳转并打开新的Ability窗口。
-   <!-- @[restartapp_withNewWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/restartapp/entry/src/main/ets/pages/Index3.ets) -->
-
+   <!-- @[restartapp_withNewWindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/restartapp/entry/src/main/ets/pages/Index3.ets) --> 
+   
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { common, Want } from '@kit.AbilityKit';
-
+   
    @Entry
    @Component
    struct Index {
      @State message: string = 'restartApp to new page';
-
+   
      build() {
        RelativeContainer() {
          Button(this.message)
@@ -154,14 +151,13 @@ struct Index {
            .onClick(async () => {
              // 指定应用内其他UIAbility，跳转到新窗口
              let want: Want = {
-               bundleName: 'com.example.myapplication',
+               bundleName: 'com.example.restartapp',
                abilityName: 'SecondAbility'
              };
              let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
              try {
-               // 触发want指定的UIAbility重启
                await context.restartApp(want);
-               hilog.info(0x0000, 'testTag', 'restart to new page success');
+               hilog.info(0x0000, 'testTag', 'restart success');
              } catch (err) {
                hilog.error(0x0000, 'testTag', `restart failed: ${err.code}, ${err.message}`);
              }
@@ -175,7 +171,7 @@ struct Index {
 
 ## 原子化服务主动重启
 
-从API version 20开始，系统为原子化服务（Atomic Service）提供了专用的重启接口[restartSelfAtomicService](../reference/apis-ability-kit/js-apis-app-ability-abilityManager.md#abilitymanagerrestartselfatomicservice20)，用于触发原子化服务更新并重启当前原子化服务。重启过程中不会保留当前原子化服务窗口，也不会触发旧Ability的onDestroy生命周期回调。
+从API version 20开始，系统为原子化服务（Atomic Service）提供了专用的重启接口[restartSelfAtomicService()](../reference/apis-ability-kit/js-apis-app-ability-abilityManager.md#abilitymanagerrestartselfatomicservice20)，用于触发原子化服务更新并重启当前原子化服务。重启过程中不会保留当前原子化服务窗口，也不会触发旧Ability的onDestroy生命周期回调。
 
 存在以下约束限制：
 - 仅支持以独立窗口方式拉起原子化服务。

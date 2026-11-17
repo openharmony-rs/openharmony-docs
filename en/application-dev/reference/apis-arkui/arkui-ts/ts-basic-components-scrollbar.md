@@ -78,7 +78,7 @@ Sets the color of the scrollbar slider. This parameter is valid only when the sc
 
 | Name| Type                                                        | Mandatory| Description          |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| color  |  [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\> | Yes  | Scrollbar color.<br>Default value: **ColorMetrics.numeric(0x66182431)**  |
+| color  |  [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)\> | Yes  | Scrollbar color.<br>Default value: **ColorMetrics.numeric(0x66182431)**  |
 
 ## ScrollBarOptions
 
@@ -164,8 +164,7 @@ struct ScrollBarExample {
 }
 ```
 
-
-![en-us_image_0000001232775585](figures/en-us_image_0000001232775585.gif)
+![scrollBar1](figures/scrollBar1.gif)
 
 ## Example 2: Implementing a ScrollBar Component Without Child Components
 
@@ -213,7 +212,7 @@ struct ScrollBarExample {
 ```
 
 
-![en-us_image_scrollbar](figures/en-us_image_scrollbar.gif)
+![en-us_image_scrollbar](figures/image-scrollbar.gif)
 
 ## Example 3: Enabling Nested Scrolling
 

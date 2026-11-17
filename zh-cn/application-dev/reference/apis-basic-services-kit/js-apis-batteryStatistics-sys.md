@@ -197,7 +197,7 @@ ArkTS-Sta: getAppPowerPercent(uid: int): double
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: double | UID对应应用的耗电百分比，取值范围是[0.00，1.00]。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | UID对应应用的耗电百分比，取值范围是[0.00, 1.00]。 |
 
 **错误码：**
 
@@ -295,7 +295,7 @@ ArkTS-Sta: getHardwareUnitPowerPercent(type: ConsumptionType): double
 
 | 类型   | 说明                               |
 | ------ | ---------------------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: double | 电量消耗类型对应硬件的耗电百分比，取值范围是[0.00，1.00]。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 电量消耗类型对应硬件的耗电百分比，取值范围是[0.00, 1.00]。 |
 
 **错误码：**
 

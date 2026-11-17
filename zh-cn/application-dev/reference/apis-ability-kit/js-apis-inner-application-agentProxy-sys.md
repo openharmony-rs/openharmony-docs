@@ -14,6 +14,7 @@ AgentProxy用于从客户端向[AgentExtensionAbility](js-apis-app-agent-agentEx
 >  - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >  - 本模块接口均为系统接口。
 >  - 本模块接口仅可在Stage模型下使用。
+>  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >  - 本模块接口需要在主线程中使用，不支持在Worker、TaskPool等子线程中使用。
 
 ## 导入模块
@@ -27,13 +28,17 @@ import { common } from '@kit.AbilityKit';
 ### sendData
 sendData(data: string): void
 
-给AgentExtensionAbility服务端发送数据。
+客户端调用此接口向AgentExtensionAbility服务端发送数据。
 
-**原子化服务API**：从 API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从 API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
 
 **参数：**
 
@@ -65,8 +70,8 @@ struct AgentExtensionAbility {
     onData: (data: string) => {
       console.info(`${TAG} dataCallBack received data: ${data}.`);
     },
-    onAuth: (handShakeData: string): void => {
-      console.info(`onData, data: ${handShakeData}.`);
+    onAuth: (handshakeData: string): void => {
+      console.info(`onAuth, data: ${handshakeData}.`);
     },
     onDisconnect: () => {
       console.info(`${TAG} dataCallBack onDisconnect.`);
@@ -111,7 +116,7 @@ struct AgentExtensionAbility {
       // 连接AgentExtension
       agentManager.connectAgentExtensionAbility(startWant, agentId, this.dataCallBack)
         .then((proxy: common.AgentProxy) => {
-          console.info(TAG + `try to connectAgentExtensionAbility ${proxy}}`);
+          console.info(TAG + `try to connectAgentExtensionAbility ${proxy}`);
           this.comProxy = proxy;
           try {
             console.info(`${TAG} sendData.`);
@@ -140,13 +145,17 @@ struct AgentExtensionAbility {
 
 authorize(handshakeData: string): void
 
-向AgentExtensionAbility服务端发送安全认证请求。
+客户端调用此接口向AgentExtensionAbility服务端发送安全认证请求。
 
-**原子化服务API**：从 API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从 API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
 **系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
 
 **参数：**
 
@@ -178,8 +187,8 @@ struct AgentExtensionAbility {
     onData: (data: string) => {
       console.info(`${TAG} dataCallBack received data: ${data}.`);
     },
-    onAuth: (handShakeData: string): void => {
-      console.info(`onData, data: ${handShakeData}.`);
+    onAuth: (handshakeData: string): void => {
+      console.info(`onAuth, data: ${handshakeData}.`);
     },
     onDisconnect: () => {
       console.info(`${TAG} dataCallBack onDisconnect.`);
@@ -224,7 +233,7 @@ struct AgentExtensionAbility {
       // 连接AgentExtension
       agentManager.connectAgentExtensionAbility(startWant, agentId, this.dataCallBack)
         .then((proxy: common.AgentProxy) => {
-          console.info(TAG + `try to connectAgentExtensionAbility ${proxy}}`);
+          console.info(TAG + `try to connectAgentExtensionAbility ${proxy}`);
           this.comProxy = proxy;
           try {
             console.info(`${TAG} authorize.`);

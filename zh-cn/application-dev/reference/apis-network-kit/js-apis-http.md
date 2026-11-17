@@ -59,7 +59,7 @@ httpRequest.request(// 填写HTTP请求的URL地址，可以带参数也可以�
     readTimeout: 60000, // 可选，默认为60000ms。
     connectTimeout: 60000, // 可选，默认为60000ms。
     usingProtocol: http.HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定。
-    usingProxy: false, // 可选，默认不使用网络代理，自API 10开始支持该属性。
+    usingProxy: false, // 可选，默认使用系统代理，设置为false不使用代理，自API 10开始支持该属性。
     caPath: '/path/to/cacert.pem', // 可选，默认使用系统预设CA证书，自API 10开始支持该属性。
     caData: '-----BEGIN CERTIFICATE-----\n' +
         'MIIDaTCCAlGgAwIBAgIICN287lmB2cMwDQYJKoZIhvcNAQELBQAwgYoxCzAJBgNV\n' +
@@ -163,7 +163,7 @@ createHttp(): HttpRequest
 创建一个HTTP请求，里面包括发起请求、中断请求、订阅/取消订阅HTTP Response Header事件。当发起多个HTTP请求时，需为每个HTTP请求创建对应HttpRequest对象。每一个HttpRequest对象对应一个HTTP请求。
 
 > **说明：**
-> 当该请求使用完毕时，需调用destroy方法释放资源，否则会出现内存泄露问题。
+> 当该请求使用完毕时，需调用destroy方法释放资源，否则会出现内存泄漏问题。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -402,7 +402,7 @@ let options: http.HttpRequestOptions = {
     readTimeout: 60000, // 可选，默认为60000ms。
     connectTimeout: 60000, // 可选，默认为60000ms。
     usingProtocol: http.HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定。
-    usingProxy: false // 可选，默认不使用网络代理，自API 10开始支持该属性。
+    usingProxy: false // 可选，默认使用系统代理，设置为false不使用代理，自API 10开始支持该属性。
 };
 
 httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse) => {
@@ -444,7 +444,7 @@ let options: http.HttpRequestOptions = {
     readTimeout: 60000, // 可选，默认为60000ms。
     connectTimeout: 60000, // 可选，默认为60000ms。
     usingProtocol: http.HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定。
-    usingProxy: false // 可选，默认不使用网络代理，自API 10开始支持该属性。
+    usingProxy: false // 可选，默认使用系统代理，设置为false不使用代理，自API 10开始支持该属性。
 };
 
 httpRequest.request("EXAMPLE_URL", options, (err: BusinessError | null, data: http.HttpResponse) => {
@@ -789,7 +789,7 @@ let options: http.HttpRequestOptions = {
     readTimeout: 60000, // 可选，默认为60000ms。
     connectTimeout: 60000, // 可选，默认为60000ms。
     usingProtocol: http.HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定。
-    usingProxy: false // 可选，默认不使用网络代理，自API 10开始支持该属性。
+    usingProxy: false // 可选，默认使用系统代理，设置为false不使用代理，自API 10开始支持该属性。
 };
 httpRequest.requestInStream("EXAMPLE_URL", options, (err: BusinessError<void> , data: number) => {
   if (!err) {
@@ -819,7 +819,7 @@ let options: http.HttpRequestOptions = {
   readTimeout: 60000, // 可选，默认为60000ms。
   connectTimeout: 60000, // 可选，默认为60000ms。
   usingProtocol: http.HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定。
-  usingProxy: false // 可选，默认不使用网络代理，自API 10开始支持该属性。
+  usingProxy: false // 可选，默认使用系统代理，设置为false不使用代理，自API 10开始支持该属性。
 };
 httpRequest.requestInStream("EXAMPLE_URL", options, (err: BusinessError<void> | null, data: Int | undefined) => {
   if (err?.code != 0) {
@@ -996,7 +996,6 @@ HTTP错误码映射关系：2300000 + curl错误码。更多常用错误码可�
 
 | 错误码ID   | 错误信息                                                         |
 |---------|----------------------------------------------------------------|
-| 401     | Parameter error.                                               |
 | 201     | Permission denied.                                             |
 | 2300001 | Unsupported protocol.                                          |
 | 2300003 | Invalid URL format or missing URL.                             |
@@ -1056,7 +1055,7 @@ let options: http.HttpRequestOptions = {
     readTimeout: 60000, // 可选，默认为60000ms。
     connectTimeout: 60000, // 可选，默认为60000ms。
     usingProtocol: http.HttpProtocol.HTTP1_1, // 可选，协议类型默认值由系统自动指定。
-    usingProxy: false, // 可选，默认不使用网络代理，自API 10开始支持该属性。
+    usingProxy: false, // 可选，默认使用系统代理，设置为false不使用代理，自API 10开始支持该属性。
 };
 let url = "EXAMPLE_URL"; // 访问url
 try {
@@ -1893,27 +1892,27 @@ httpRequest.offDataSendProgress();
 | header                       | ArkTS-Dyn: Object<br />ArkTS-Sta: Record<string, string> | 否   | 是   | HTTP请求头字段。当请求方式为"POST" "PUT" "DELETE" 或者""时，默认{'content-Type': 'application/json'}， 否则默认{'content-Type': 'application/x-www-form-urlencoded'}。<br />如果head中包含number类型的字段，最大支持int64的整数。<br />header字段支持JSON格式如 [完整示例](js-apis-http.md#完整示例) 和Record<string, string>格式输入。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | readTimeout                  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 读取超时时间。单位为毫秒（ms），默认为60000ms。传入值需为uint32_t范围内的整数。<br />设置为0表示不会出现超时情况。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | connectTimeout               | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 连接超时时间。单位为毫秒（ms），默认为60000ms。传入值需为uint32_t范围内的整数。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| usingProtocol<sup>9+</sup>   | [HttpProtocol](#httpprotocol9)  | 否   | 是   | 使用协议。默认值由系统自动指定。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| usingProtocol<sup>9+</sup>   | [HttpProtocol](#httpprotocol9)  | 否   | 是   | 使用协议。默认值由系统自动指定。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 23|
 | usingProxy<sup>10+</sup>     | boolean \| [HttpProxy](js-apis-net-connection.md#httpproxy10)               | 否   | 是   | HTTP代理配置，该项不配置时默认使用系统代理。<br />- 当usingProxy为布尔类型true时，使用默认网络代理，为false时，不使用代理。<br />- 当usingProxy为HttpProxy类型时，使用指定网络代理。从API version 22开始，HttpProxy支持指定username和password字段。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | caPath<sup>10+</sup>     | string               | 否   | 是   | 如果设置了此参数且证书有效，系统将使用用户指定的CA证书和系统预设的CA证书；否则仅使用系统预设的CA证书。CA证书路径为沙箱映射路径（开发者可通过UIAbilityContext提供的能力获取应用沙箱路径）。目前仅支持后缀名为.pem的文本格式证书。<br> 系统预设CA证书位置：/etc/ssl/certs/cacert.pem。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 10<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| caData<sup>20+</sup>     | string               | 否  | 是  | 如果设置了此参数且证书有效，系统将使用用户指定的CA证书和系统预设的CA证书；否则仅使用系统预设的CA证书。如果同时设置了caPath和caData，caData将被系统忽略。目前仅支持传入.pem格式的证书内容，最大长度为8000字节。仅支持传入单证书，不支持证书链传入。<br />系统预设CA证书位置：/etc/ssl/certs/cacert.pem。证书路径为沙箱映射路径（开发者可通过UIAbilityContext提供的能力获取应用沙箱路径）。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 26.0.0    |
+| caData<sup>20+</sup>     | string               | 否  | 是  | 如果设置了此参数且证书有效，系统将使用用户指定的CA证书和系统预设的CA证书；否则仅使用系统预设的CA证书。如果同时设置了caPath和caData，caData将被系统忽略。目前仅支持传入.pem格式的证书内容，最大长度为8000字节。仅支持传入单证书，不支持证书链传入。<br />系统预设CA证书位置：/etc/ssl/certs/cacert.pem。证书路径为沙箱映射路径（开发者可通过UIAbilityContext提供的能力获取应用沙箱路径）。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 26.0.0    |
 | resumeFrom<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 是   | 用于设置下载起始位置，该参数只能用于GET方法，不能用于其他。HTTP标准（RFC 7233第3.1节）允许服务器忽略范围请求。<br />- 使用HTTP PUT时，不能使用该选项，因为该选项可能与其他选项冲突。<br />- 取值范围是：[1，4294967296（4GB）]，超出范围则不生效。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| resumeTo<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否 | 是   | 用于设置下载结束位置，该参数只能用于GET方法，不能用于其他。HTTP标准（RFC 7233第3.1节）允许服务器忽略范围请求。<br />- 使用HTTP PUT时，不能使用该选项，因为该选项可能与其他选项冲突。<br />- 取值范围是：[1，4294967296（4GB）]，超出范围则不生效。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| resumeTo<sup>11+</sup> | ArkTS-Dyn: number<br />ArkTS-Sta: long | 否 | 是   | 用于设置下载结束位置，该参数只能用于GET方法，不能用于其他。HTTP标准（RFC 7233第3.1节）允许服务器忽略范围请求。<br />- 使用HTTP PUT时，不能使用该选项，因为该选项可能与其他选项冲突。<br />- 取值范围是：[1，4294967296（4GB）]，超出范围则不生效。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | clientCert<sup>11+</sup> | [ClientCert](#clientcert11) | 否 | 是   | 支持传输客户端证书。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | dnsOverHttps<sup>11+</sup> | string | 否 | 是   | 设置使用HTTPS协议的服务器进行DNS解析。<br />- 参数必须根据以下格式进行URL编码："https:// host:port/path"。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| dnsServers<sup>11+</sup> | Array\<string\> | 否 | 是   | 设置指定的DNS服务器进行DNS解析。<br />- 最多可以设置3个DNS解析服务器。如果有3个以上，只取前3个。<br />- 服务器必须是IPV4或者IPV6地址。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| dnsServers<sup>11+</sup> | Array\<string\> | 否 | 是   | 设置指定的DNS服务器进行DNS解析。<br />- 最多可以设置3个DNS解析服务器。如果有3个以上，只取前3个。<br />- 服务器必须是IPV4或者IPV6地址。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 26.0.0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | maxLimit<sup>11+</sup>   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是   | 响应消息的最大字节限制。<br />默认值为5\*1024\*1024，以字节为单位。最大值为100\*1024\*1024，以字节为单位。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | multiFormDataList<sup>11+</sup> | Array<[MultiFormData](#multiformdata11)> | 否 | 是   | 当'content-Type'为'multipart/form-data'时，则上传该字段定义的数据字段表单列表。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| certificatePinning<sup>12+</sup> | [CertificatePinning](#certificatepinning12) \| CertificatePinning[] | 否 | 是   | 支持动态设置证书锁定配置，可以传入单个或多个证书PIN码。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| addressFamily<sup>15+</sup> | [AddressFamily](#addressfamily15) | 否 | 是   | 支持解析目标域名时限定地址类型。<br />**ArkTS-Dyn起始版本：** 15<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| remoteValidation<sup>18+</sup> | [RemoteValidation](#remotevalidation18)                             | 否 | 是   | 证书颁发机构（CA），用于验证远程服务器的身份。如果未设置此字段，系统CA将用于验证远程服务器的标识。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 18<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| tlsOptions<sup>18+</sup> | [TlsOptions](#tlsoptions18)                                         | 否 | 是   | TLS配置。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 18<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| serverAuthentication<sup>18+</sup> | [ServerAuthentication](#serverauthentication18)                     | 否 | 是   | 安全连接期间的服务器身份验证配置。默认不认证。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 18<br />**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| sslType<sup>20+</sup> | [SslType](#ssltype20) | 否 | 是 | 使用安全通信协议TLS（默认）或TLCP。如果使用TLCP，相关的选项（如caPath、clientCert和clientEncCert）必须赋有效值。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 26.0.0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| clientEncCert<sup>20+</sup> | [ClientCert](#clientcert11) | 否 | 是 | 支持应用程序传入客户端证书，使服务器能够进行验证客户端的加密身份。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 26.0.0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| customMethod<sup>23+</sup> | string | 否 | 是 | 支持自定义请求方法，例如实现WebDAV扩展协议，当与method同时配置时，customMethod优先级更高。<br />- 默认值为空字符串，最大长度128个字符，超出则不生效。<br />- 当customMethod符合WebDAV扩展协议请求方式，但服务器不支持时，本次请求的服务器响应码通常为405或501（实际结果与服务器具体行为有关）。<br />- 当customMethod不符合WebDAV扩展协议请求方式时，本次请求的服务器响应码通常为400或405（实际结果与服务器具体行为有关）。 <br />**ArkTS-Dyn起始版本：** 23<br />**ArkTS-Sta起始版本：** 26.0.0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| certificatePinning<sup>12+</sup> | [CertificatePinning](#certificatepinning12) \| CertificatePinning[] | 否 | 是   | 支持动态设置证书锁定配置，可以传入单个或多个证书PIN码。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 26.0.0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| addressFamily<sup>15+</sup> | [AddressFamily](#addressfamily15) | 否 | 是   | 支持解析目标域名时限定地址类型。<br />**ArkTS-Dyn起始版本：** 15<br />**ArkTS-Sta起始版本：** 26.0.0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| remoteValidation<sup>18+</sup> | [RemoteValidation](#remotevalidation18)                             | 否 | 是   | 证书颁发机构（CA），用于验证远程服务器的身份。如果未设置此字段，系统CA将用于验证远程服务器的标识。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 18<br />**ArkTS-Sta起始版本：** 26.0.0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| tlsOptions<sup>18+</sup> | [TlsOptions](#tlsoptions18)                                         | 否 | 是   | TLS配置。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 18<br />**ArkTS-Sta起始版本：** 26.0.0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| serverAuthentication<sup>18+</sup> | [ServerAuthentication](#serverauthentication18)                     | 否 | 是   | 安全连接期间的服务器身份验证配置。默认不认证。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 18<br />**ArkTS-Sta起始版本：** 26.0.0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| sslType<sup>20+</sup> | [SslType](#ssltype20) | 否 | 是 | 使用安全通信协议TLS（默认）或TLCP。如果使用TLCP，相关的选项（如caPath、clientCert和clientEncCert）必须赋有效值。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 26.0.0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| clientEncCert<sup>20+</sup> | [ClientCert](#clientcert11) | 否 | 是 | 支持应用程序传入客户端证书，使服务器能够进行验证客户端的加密身份。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 20<br />**ArkTS-Sta起始版本：** 26.0.0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| customMethod<sup>23+</sup> | string | 否 | 是 | 支持自定义请求方法，例如实现WebDAV扩展协议，当与method同时配置时，customMethod优先级更高。<br />- 默认值为空字符串，最大长度128个字符，超出则不生效。<br />- 当customMethod符合WebDAV扩展协议请求方式，但服务器不支持时，本次请求的服务器响应码通常为405或501（实际结果与服务器具体行为有关）。<br />- 当customMethod不符合WebDAV扩展协议请求方式时，本次请求的服务器响应码通常为400或405（实际结果与服务器具体行为有关）。<br />**ArkTS-Dyn起始版本：** 23<br />**ArkTS-Sta起始版本：** 26.0.0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | maxRedirects<sup>23+</sup> |  ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 支持针对HttpRequest指定最大跳转次数。<br />- 默认值为30次。<br />- 取值范围是：[0，2147483647]，设置0即为关闭重定向，当服务器的重定向次数超过设置的最大重定向次数时会返回错误码2300047。超出此范围该配置不生效，配置默认值30。<br />**ArkTS-Dyn起始版本：** 23<br />**ArkTS-Sta起始版本：** 26.0.0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| sniHostName<sup>23+</sup> | string | 否 | 是 | 支持客户端通过配置SNI（Server Name Indication，服务器名称指示）在TLS握手阶段向服务器声明目标域名，使服务器能够根据域名选择对应的SSL/TLS证书进行加密通信。<br />- 默认值为空字符串，sniHostName参数长度上限为255个字符。若超出长度限制或设置为空字符串，该设置将不会生效。 <br />**ArkTS-Dyn起始版本：** 23<br />**ArkTS-Sta起始版本：** 26.0.0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| sniHostName<sup>23+</sup> | string | 否 | 是 | 支持客户端通过配置SNI（Server Name Indication，服务器名称指示）在TLS握手阶段向服务器声明目标域名，使服务器能够根据域名选择对应的SSL/TLS证书进行加密通信。<br />- 默认值为空字符串，sniHostName参数长度上限为255个字符。若超出长度限制或设置为空字符串，该设置将不会生效。<br />**ArkTS-Dyn起始版本：** 23<br />**ArkTS-Sta起始版本：** 26.0.0                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | pathPreference<sup>23+</sup> |[PathPreference](#pathpreference23) | 否 | 是 |支持HTTP请求指定特定激活的网络。 <br />**ArkTS-Dyn起始版本：** 23<br />**ArkTS-Sta起始版本：** 26.0.0  |
 | reuseConnections | boolean | 否 | 是 | HTTP请求是否复用连接。默认值为true，表示复用已有的连接；设置为false时，每次请求将建立新的连接，不再复用已有连接。本字段可与inactivityMs字段搭配使用，自定义连接超时关闭时间。<br/>- 连接复用是指在完成一次HTTP请求后，底层的TCP连接不会被立即关闭，而是保持在连接池中，后续的HTTP请求如果目标地址相同，可以重用该连接，从而减少TCP握手和TLS握手的开销，提高性能。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 | inactivityMs | number | 否 | 是 | 连接池中的连接最大空闲时间，超过该时间后连接将被关闭。单位为毫秒（ms），默认配置值为118秒。系统内部比较时间时会先计算连接空闲时间的差值，然后向下取整到秒，再与配置的值进行比较。<br/>- 取值范围是(0, 2147483647]，传入小于等于0的数值时系统使用默认值118秒。当reuseConnections配置为false时，该参数不生效。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
@@ -1924,21 +1923,19 @@ httpRequest.offDataSendProgress();
 
 HTTP 请求方法。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Communication.NetStack
 
 | 名称    | 值      | 说明                |
-| ------ | ------- | :------------------ |
-| OPTIONS | "OPTIONS" | OPTIONS方法描述了目标资源的通信选项。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 23 |
-| GET     | "GET"     | GET方法请求指定资源的表示。使用GET的请求应该只检索数据，不应该包含请求内容。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 23|
-| HEAD    | "HEAD"    | HEAD方法请求与GET请求相同的响应，但没有响应主体。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 23 |
-| POST    | "POST"    | POST方法将实体提交给指定的资源，通常会导致服务器上的状态更改。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 23|
-| PUT     | "PUT"     | PUT方法将目标资源的所有当前表示替换为请求内容。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 23 |
-| DELETE  | "DELETE"  | DELETE方法用于删除指定的资源。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 23 |
-| TRACE   | "TRACE"   | TRACE方法沿到达目标资源的路径执行消息环回测试。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 23|
-| CONNECT | "CONNECT" | CONNECT方法建立到由目标资源标识的服务器的隧道。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 23 |
-| PATCH   | "PATCH"   | PATCH方法对资源进行部分修改。 <br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| :------ | ------- | :------------------ |
+| OPTIONS | "OPTIONS" | OPTIONS方法描述了目标资源的通信选项。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| GET     | "GET"     | GET方法请求指定资源的表示。使用GET的请求应该只检索数据，不应该包含请求内容。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| HEAD    | "HEAD"    | HEAD方法请求与GET请求相同的响应，但没有响应主体。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| POST    | "POST"    | POST方法将实体提交给指定的资源，通常会导致服务器上的状态更改。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| PUT     | "PUT"     | PUT方法将目标资源的所有当前表示替换为请求内容。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| DELETE  | "DELETE"  | DELETE方法用于删除指定的资源。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| TRACE   | "TRACE"   | TRACE方法沿到达目标资源的路径执行消息环回测试。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| CONNECT | "CONNECT" | CONNECT方法建立到由目标资源标识的服务器的隧道。<br/>**ArkTS-Dyn起始版本：** 6<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| PATCH   | "PATCH"   | PATCH方法对资源进行部分修改。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## ResponseCode
 
@@ -2132,7 +2129,7 @@ ArkTS-Sta: createHttpResponseCache(cacheSize?: int): HttpResponseCache
 
 **ArkTS-Dyn起始版本：**  9
 
-**ArkTS-Sta起始版本：**  23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2576,7 +2573,11 @@ QueryParamObject中允许使用的单个参数值类型。
 
 | 类型 | 说明 |
 | ---------------- | --------------------------- |
-| string \| number \| boolean \| null \| undefined | query参数单值类型。number和boolean会先转为字符串再参与编码；null和undefined会按仅key不带`=`值的形式序列化。 |
+| string | 字符串类型。 |
+| number | 数字类型，会先转为字符串再参与编码。 |
+| boolean | 布尔类型，会先转为字符串再参与编码。 |
+| null | 空值类型，会按仅key不带`=`值的形式序列化。 |
+| undefined | 未定义类型，会按仅key不带`=`值的形式序列化。 |
 
 ## QueryParamObject
 
@@ -2592,12 +2593,9 @@ type QueryParamObject = Record\<string, QueryParamValue \| QueryParamValue[]\>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-> **说明：**
->
-> (1) 每个属性名作为QueryParamObject参数的key，对应属性值可以是单个QueryParamValue，也可以是QueryParamValue数组。<br>
-> (2) 数组会展开为同名多参数，例如`{ tag: ['a', 'b'] }`会序列化为`tag=a&tag=b`。<br>
-> (3) key和value由系统自动进行URL编码，开发者应传入原始未编码内容。<br>
-> (4) 如需严格控制参数顺序或重复键顺序，建议直接使用queryParams的string形式。
+| 类型 | 说明 |
+| ---------------- | --------------------------- |
+| Record\<string, [QueryParamValue](#queryparamvalue) \| [QueryParamValue](#queryparamvalue)[]\> | 键值对象类型，用于构造URL查询参数。每个属性名作为URL参数的key，属性值作为参数值。<br>**说明：**<br>(1) 对象的每个属性名作为URL参数的key，属性值作为参数值。例如`{ scene: 'demo', page: 1 }`会序列化为`scene=demo&page=1`。<br>(2) 当属性值为数组时，会展开为同名多参数。例如`{ tag: ['a', 'b'] }`会序列化为`tag=a&tag=b`。<br>(3) key和value由系统自动进行URL编码，开发者应传入原始未编码内容。<br>(4) 如需严格控制参数顺序或重复键顺序，建议直接使用queryParams的string形式。 |
 
 ## AddressFamily<sup>15+</sup>
 
@@ -2708,7 +2706,7 @@ TLS配置。
 
 ## RemoteValidation<sup>18+</sup>
 
-type RemoteValidation = 'system' | 'skip'
+type RemoteValidation = 'system' | 'skip' | ValidationCallback
 
 验证远程服务器身份的方式。
 
@@ -2724,6 +2722,64 @@ type RemoteValidation = 'system' | 'skip'
 |-------------------------------|------------------------------------------------------------------------------------|
 | 'system'  | 表示使用系统CA验证远端服务器身份，值固定为'system'字符串，是未配置时的默认值。 |
 | 'skip'   | 表示跳过验证远端服务器身份流程，值固定为'skip'字符串。 |
+| [ValidationCallback](#validationcallback) | 表示使用自定义验证方式验证远端服务器身份。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## X509Cert
+
+type X509Cert = cert.X509Cert
+
+X509证书对象。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+|       类型       |            说明             |
+| ---------------- | --------------------------- |
+| [cert.X509Cert](../apis-device-certificate-kit/js-apis-cert.md#x509cert) | X509证书对象。     |
+
+## ValidationContext
+
+验证远端服务器身份时的证书上下文信息，作为[ValidationCallback](#validationcallback)的参数传入。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+| 名称   | 类型                                           | 只读 | 可选 |说明                    |
+| -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
+| pemCerts        | string[] | 否   | 否  | PEM格式的证书原始数据。   |
+| x509Certs | [X509Cert](#x509cert)[] | 否   | 否 | X509证书链。 |
+| host        | string | 否   | 否  | 本次请求的目标主机名。   |
+| ip | string | 否   | 否 | 本次请求实际连接的IP地址。 |
+
+## ValidationCallback
+
+type ValidationCallback = (context: ValidationContext) => boolean | Promise\<boolean\>
+
+自定义远端服务器身份验证回调函数。开发者可通过此回调实现自定义的证书验证逻辑，支持同步或异步返回验证结果。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                            |
+| ---------------- | -------------------  | ------ | --------------------------------------------- |
+| context | [ValidationContext](#validationcontext) | 是 | 证书验证上下文，包含证书链、主机名和IP地址等信息。             |
+
+**返回值：**
+
+| 类型 | 说明                                   |
+| ------ | -------------------------------------- |
+| boolean \| Promise\<boolean\> | 返回布尔值表示验证是否通过。true表示验证通过，false表示验证不通过。支持返回Promise对象，用于异步验证场景。   |
 
 ## AuthenticationType<sup>18+</sup>
 

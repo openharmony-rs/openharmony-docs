@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "提供全局配置项功能场景的开发指导：以Wi-Fi开关与用户登录状态共同判断下载条件为例，基于use shared共享模块、Sendable类与异步锁实现并发实例间一致的进程单例配置。"
+keywords: [全局配置, 共享模块, 进程单例, use shared, 异步锁, 数据一致性, 并发实例]
+doctype: guide
+status: active
+---
+
 # 全局配置项功能场景
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 对于需要使用进程单例的场景，例如不同并发实例间需要数据保持一致的全局配置项功能，可以采用[共享模块](arkts-sendable-module.md)来实现。
 
@@ -21,7 +29,7 @@
    
    @Sendable
    class Config {
-     public lock: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock;
+     public lock: ArkTSUtils.locks.AsyncLock = new ArkTSUtils.locks.AsyncLock();
      public isLogin: boolean = false;
      public loginUser?: string;
      public wifiOn: boolean = false;
@@ -33,7 +41,7 @@
        }, ArkTSUtils.locks.AsyncLockMode.EXCLUSIVE)
      }
    
-     async logout(user?: string) {
+     async logout() {
        return this.lock.lockAsync(() => {
          this.isLogin = false;
          this.loginUser = '';
@@ -70,7 +78,7 @@
 
 2. UI主线程及子线程访问全局配置项。
 
-   <!-- @[access_global_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/GlobalConfigurationGuide.ets) -->
+   <!-- @[access_global_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/GlobalConfigurationGuide.ets) --> 
    
    ``` TypeScript
    import { config } from './Config';
@@ -128,15 +136,15 @@
              })
              .onClick(async () => {
                if (!await config.getIsLogin() && this.input) {
-                 this.message = 'login: ' + this.input;
                  try {
-                   config.login(this.input);
+                   await config.login(this.input);
+                   this.message = 'login: ' + this.input;
                  } catch (e) {
                    console.error('login failed');
                  }
                }
              })
-             .backgroundColor(0xcccccc)
+             .backgroundColor('#cccccc')
            Text('logout')
              .fontSize(50)
              .fontWeight(FontWeight.Bold)
@@ -146,15 +154,15 @@
              })
              .onClick(async () => {
                if (await config.getIsLogin()) {
-                 this.message = 'not login';
                  try {
-                   config.logout();
+                   await config.logout();
+                   this.message = 'not login';
                  } catch (e) {
                    console.error('logout failed');
                  }
                }
              })
-             .backgroundColor(0xcccccc)
+             .backgroundColor('#cccccc')
            Text(this.wifiState)
              .fontSize(50)
              .fontWeight(FontWeight.Bold)

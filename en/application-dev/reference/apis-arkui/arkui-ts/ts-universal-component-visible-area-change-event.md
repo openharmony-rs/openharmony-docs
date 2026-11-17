@@ -354,7 +354,7 @@ struct ScrollExample {
   }
 }
 ```
-![en-us_visible_area_change.gif](figures/en-us_visible_area_change.gif)
+![visible-area-change.gif](figures/visible-area-change.gif)
 
 ### Example 3: Setting measureFromViewport When a Child Component Extend Beyond the Parent for Display
 
@@ -466,4 +466,4 @@ struct OnVisibleAreaChangeSample {
   }
 }
 ```
-![en-us_visible_area_change.gif](figures/en-us_visible_area_change3.jpg)
+![visible-area-change.gif](figures/visible-area-change3.jpg)

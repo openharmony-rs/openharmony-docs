@@ -39,14 +39,14 @@
 | y              | &lt;length&gt;\|&lt;percentage&gt; | 0     | 否    | 设置组件左上角y轴坐标。                              |
 | dx             | &lt;length&gt;\|&lt;percentage&gt; | 0     | 否    | 设置文本x轴偏移。                                 |
 | dy             | &lt;length&gt;\|&lt;percentage&gt; | 0     | 否    | 设置文本y轴偏移。                                 |
-| rotate         | number                             | 0     | 否    | 字体以左下角为圆心旋转角度，正数顺时针，负数逆时针。                |
+| rotate         | number                             | 0     | 否    | 文本以左下角为圆心旋转角度，正数顺时针，负数逆时针。                |
 | font-size      | &lt;length&gt;                     | 30px  | 否    | 设置文本的尺寸。                                 |
-| fill           | &lt;color&gt;                      | black | 否    | 字体填充颜色。                                   |
-| fill-opacity   | number                             | 1.0   | 否    | 字体填充透明度。                                  |
+| fill           | &lt;color&gt;                      | black | 否    | 文本填充颜色。                                   |
+| fill-opacity   | number                             | 1.0   | 否    | 文本填充透明度。                                  |
 | opacity        | number                             | 1     | 否    | 元素的透明度，取值范围为0到1，1表示为不透明，0表示为完全透明。支持属性动画。 |
-| stroke         | &lt;color&gt;                      | black | 否    | 绘制字体边框并指定颜色。                              |
-| stroke-width   | number                             | 1     | 否    | 字体边框宽度。<br/>默认单位：px                         |
-| stroke-opacity | number                             | 1.0   | 否    | 字体边框透明度。                                  |
+| stroke         | &lt;color&gt;                      | black | 否    | 绘制文本描边并指定颜色。                              |
+| stroke-width   | number                             | 1     | 否    | 文本描边宽度。<br/>默认单位：px                         |
+| stroke-opacity | number                             | 1.0   | 否    | 文本描边透明度。                                  |
 
 
 ## 示例
@@ -80,7 +80,7 @@
 </div>
 ```
 
-![zh-cn_image_0000001173324697](figures/zh-cn_image_0000001173324697.png)
+![text](figures/text.png)
 
 属性动画示例
 
@@ -109,7 +109,7 @@
 </div>
 ```
 
-![zh-cn_image_0000001173324699](figures/zh-cn_image_0000001173324699.gif)
+![text01](figures/text01.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -124,7 +124,7 @@
 </div>
 ```
 
-![zh-cn_image_0000001173164783](figures/zh-cn_image_0000001173164783.gif)
+![text](figures/text.gif)
 
 ```html
 <!-- xxx.hml -->
@@ -143,4 +143,4 @@
 </div>
 ```
 
-![zh-cn_image_0000001127125122](figures/zh-cn_image_0000001127125122.gif)
+![text-attribute-stroke](figures/text-attribute-stroke.gif)

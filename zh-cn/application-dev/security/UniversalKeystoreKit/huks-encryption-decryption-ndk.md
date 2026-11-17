@@ -220,7 +220,7 @@ napi_value TestAesCbc(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        char tmpInData[] = "AES_ECB_INDATA_1";
+        char tmpInData[] = "AES_CBC_INDATA_1";
         struct OH_Huks_Blob inData = {(uint32_t)strlen(tmpInData), (uint8_t *)tmpInData};
         uint8_t cipher[AES_COMMON_SIZE] = {0};
         struct OH_Huks_Blob cipherText = {AES_COMMON_SIZE, cipher};
@@ -318,7 +318,7 @@ static const uint32_t NONCE_SIZE = 12;
 static const uint32_t AAD_SIZE = 16;
 static const uint32_t AE_TAG_SIZE = 16;
 static char AEAD[AE_TAG_SIZE] = {0};
-static char AAD[AAD_SIZE] = "cdcdcdcdcdcdcdc"; // this is a test value, for real use it should be different every time
+static char AAD[AAD_SIZE] = "cdcdcdcdcdcdcdc"; // 此处仅为测试值，实际使用时每次都应不同
 static uint8_t NONCE[NONCE_SIZE] = {0};
 static OH_Crypto_ErrCode ret = genRandomNumber(NONCE_SIZE, NONCE);
 static struct OH_Huks_Param g_genEncDecParams[] = {
@@ -337,12 +337,12 @@ static struct OH_Huks_Param g_encryptParams[] = {
     {.tag = OH_HUKS_TAG_NONCE,
      .blob = {
          .size = NONCE_SIZE,
-         .data = (uint8_t *)NONCE // this is a test value, for real use the iv should be different every time
+         .data = (uint8_t *)NONCE // 此处仅为测试值，实际使用时每次都应不同
      }},
     {.tag = OH_HUKS_TAG_ASSOCIATED_DATA,
      .blob = {
          .size = AAD_SIZE,
-         .data = (uint8_t *)AAD // this is a test value, for real use the iv should be different every time
+         .data = (uint8_t *)AAD // 此处仅为测试值，实际使用时每次都应不同
      }}};
 
 static struct OH_Huks_Param g_decryptParams[] = {
@@ -354,17 +354,17 @@ static struct OH_Huks_Param g_decryptParams[] = {
     {.tag = OH_HUKS_TAG_NONCE,
      .blob = {
          .size = NONCE_SIZE,
-         .data = (uint8_t *)NONCE // this is a test value, for real use the iv should be different every time
+         .data = (uint8_t *)NONCE // 此处仅为测试值，实际使用时每次都应不同
      }},
     {.tag = OH_HUKS_TAG_ASSOCIATED_DATA,
      .blob = {
          .size = AAD_SIZE,
-         .data = (uint8_t *)AAD // this is a test value, for real use the iv should be different every time
+         .data = (uint8_t *)AAD // 此处仅为测试值，实际使用时每次都应不同
      }},
     {.tag = OH_HUKS_TAG_AE_TAG,
      .blob = {
          .size = AE_TAG_SIZE,
-         .data = (uint8_t *)AEAD // this is a test value, for real use the iv should be different every time
+         .data = (uint8_t *)AEAD // 此处仅为测试值，实际使用时每次都应不同
      }}};
 
 static const uint32_t AES_GCM_SIZE = 1024;
@@ -489,7 +489,7 @@ napi_value TestAesGcm(napi_env env, napi_callback_info info)
 
 static const uint32_t IV_SIZE = 16;
 static const uint32_t AEAD_TAG_LEN = 14;
-static char IV[IV_SIZE] = { 0 }; // this is a test value, for real use the iv should be different every time.
+static char IV[IV_SIZE] = { 0 }; // 这是一个测试值，真正使用时每次的IV都应该不同
 static char AEAD[AEAD_TAG_LEN] = { 0 };
 static char NONCE[OH_HUKS_AE_NONCE_LEN] = { 0 };
 static struct OH_Huks_Param g_genEncDecParams[] = {
@@ -530,7 +530,7 @@ static struct OH_Huks_Param g_encryptParams[] = {
         .tag = OH_HUKS_TAG_IV,
         .blob = {
             .size = IV_SIZE,
-            .data = (uint8_t *)IV // this is a test value, for real use the iv should be different every time.
+            .data = (uint8_t *)IV // 这是一个测试值，真正使用时每次的IV都应该不同
         }
     }, {
         .tag = OH_HUKS_TAG_NONCE,
@@ -563,7 +563,7 @@ static struct OH_Huks_Param g_decryptParams[] = {
         .tag = OH_HUKS_TAG_IV,
         .blob = {
             .size = IV_SIZE,
-            .data = (uint8_t *)IV // this is a test value, for real use the iv should be different every time. 
+            .data = (uint8_t *)IV // 这是一个测试值，真正使用时每次的IV都应该不同
         }
     }, {
         .tag = OH_HUKS_TAG_NONCE,
@@ -645,34 +645,34 @@ static napi_value EncDecKey(napi_env env, napi_callback_info info)
     do {
         /* 1. Generate Key */
         /*
-        * 模拟生成密钥场景
-        * 1.1. 确定密钥别名
-        */
+         * 模拟生成密钥场景
+         * 1.1. 确定密钥别名
+         */
         /*
-        * 1.2. 获取生成密钥算法参数配置
-        */
+         * 1.2. 获取生成密钥算法参数配置
+         */
         ohResult = InitParamSet(&genParamSet, g_genEncDecParams, sizeof(g_genEncDecParams) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
         /*
-        * 1.3. 调用generateKeyItem
-        */
+         * 1.3. 调用generateKeyItem
+         */
         ohResult = OH_Huks_GenerateKeyItem(&keyAlias, genParamSet, nullptr);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
         /* 2. Encrypt */
         /*
-        * 模拟加密场景
-        * 2.1. 获取密钥别名
-        */
+         * 模拟加密场景
+         * 2.1. 获取密钥别名
+         */
         /*
-        * 2.2. 获取待加密的数据
-        */
+         * 2.2. 获取待加密的数据
+         */
         /*
-        * 2.3. 获取加密算法参数配置
-        */
+         * 2.3. 获取加密算法参数配置
+         */
         ohResult = InitParamSet(&encryptParamSet, g_encryptParams, sizeof(g_encryptParams) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
@@ -683,11 +683,11 @@ static napi_value EncDecKey(napi_env env, napi_callback_info info)
         uint8_t cipher[AES_COMMON_SIZE] = {0};
         struct OH_Huks_Blob cipherText = {AES_COMMON_SIZE, cipher};
         /*
-        * 2.4. 调用initSession获取handle
-        */
+         * 2.4. 调用initSession获取handle
+         */
         /*
-        * 2.5. 调用finishSession获取加密后的密文
-        */
+         * 2.5. 调用finishSession获取加密后的密文
+         */
         ohResult = HksAesCipherTestEncrypt(&keyAlias, encryptParamSet, &inData, &cipherText);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
@@ -697,15 +697,15 @@ static napi_value EncDecKey(napi_env env, napi_callback_info info)
         cipherText.size -= AEAD_TAG_LEN;
         /* 3. Decrypt */
         /*
-        * 模拟解密场景
-        * 3.1. 获取密钥别名
-        */
+         * 模拟解密场景
+         * 3.1. 获取密钥别名
+         */
         /*
-        * 3.2. 获取待解密的密文
-        */
+         * 3.2. 获取待解密的密文
+         */
         /*
-        * 3.3. 获取解密算法参数配置
-        */
+         * 3.3. 获取解密算法参数配置
+         */
         ohResult = InitParamSet(&decryptParamSet, g_decryptParams, sizeof(g_decryptParams) / sizeof(OH_Huks_Param));
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
@@ -713,21 +713,21 @@ static napi_value EncDecKey(napi_env env, napi_callback_info info)
         uint8_t plain[AES_COMMON_SIZE] = {0};
         struct OH_Huks_Blob plainText = {AES_COMMON_SIZE, plain};
         /*
-        * 3.4. 调用initSession获取handle
-        */
+         * 3.4. 调用initSession获取handle
+         */
         /*
-        * 3.5. 调用finishSession获取解密后的数据
-        */
+         * 3.5. 调用finishSession获取解密后的数据
+         */
         ohResult = HksAesCipherTestDecrypt(&keyAlias, decryptParamSet, &cipherText, &plainText);
     } while (0);
     /* 4. Delete Key */
     /*
-    * 模拟删除密钥场景
-    * 4.1. 获取密钥别名
-    */
+     * 模拟删除密钥场景
+     * 4.1. 获取密钥别名
+     */
     /*
-    * 4.2. 调用deleteKeyItem删除密钥    
-    */
+     * 4.2. 调用deleteKeyItem删除密钥    
+     */
     (void)OH_Huks_DeleteKeyItem(&keyAlias, genParamSet);
         
     OH_Huks_FreeParamSet(&genParamSet);
@@ -855,7 +855,7 @@ napi_value TestRsaEcbPkcs(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        char tmpInData[] = "RSA_ECB_OAEP_IN";
+        char tmpInData[] = "RSA_ECB_PKCS1_V1_5_IN";
         struct OH_Huks_Blob inData = {(uint32_t)strlen(tmpInData), (uint8_t *)tmpInData};
         uint8_t cipher[RSA_COMMON_SIZE] = {0};
         struct OH_Huks_Blob cipherText = {RSA_COMMON_SIZE, cipher};
@@ -1165,7 +1165,7 @@ napi_value TestSm2(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        char tmpInData[] = "AES_ECB_INDATA_1";
+        char tmpInData[] = "SM2_INDATA_1";
         struct OH_Huks_Blob inData = {(uint32_t)strlen(tmpInData), (uint8_t *)tmpInData};
         uint8_t cipher[SM2_SIZE] = {0};
         struct OH_Huks_Blob cipherText = {SM2_SIZE, cipher};
@@ -1278,7 +1278,7 @@ static struct OH_Huks_Param g_encryptParams[] = {
     {.tag = OH_HUKS_TAG_IV,
      .blob = {
          .size = IV_SIZE,
-         .data = (uint8_t *)IV // this is a test value, for real use the iv should be different every time
+         .data = (uint8_t *)IV // 此处仅为测试值，实际使用时每次都应不同
      }}};
 
 static struct OH_Huks_Param g_decryptParams[] = {
@@ -1290,7 +1290,7 @@ static struct OH_Huks_Param g_decryptParams[] = {
     {.tag = OH_HUKS_TAG_IV,
      .blob = {
          .size = IV_SIZE,
-         .data = (uint8_t *)IV // this is a test value, for real use the iv should be different every time
+         .data = (uint8_t *)IV // 此处仅为测试值，实际使用时每次都应不同
      }}};
 
 static const uint32_t DES_CBC_SIZE = 1024;
@@ -1355,7 +1355,7 @@ napi_value TestDesCbc(napi_env env, napi_callback_info info)
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {
             break;
         }
-        char tmpInData[] = "AES_DES_INDATA_1";
+        char tmpInData[] = "DES_CBC_INDATA_1";
         struct OH_Huks_Blob inData = {(uint32_t)strlen(tmpInData), (uint8_t *)tmpInData};
         uint8_t cipher[DES_CBC_SIZE] = {0};
         struct OH_Huks_Blob cipherText = {DES_CBC_SIZE, cipher};

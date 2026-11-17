@@ -12,7 +12,7 @@ typedef struct ArkUI_RenderNodeClipOption ArkUI_RenderNodeClipOption
 
 ## 概述
 
-定义节点裁剪配置项。
+定义渲染节点裁剪配置项。
 
 **起始版本：** 20
 

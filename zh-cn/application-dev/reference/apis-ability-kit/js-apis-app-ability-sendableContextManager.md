@@ -11,6 +11,7 @@ sendableContextManager模块提供Context与[SendableContext](js-apis-inner-appl
 
 > **说明：**
 >
+> - 本模块仅支持ArkTS-Dyn。
 > - 本模块首批接口从API version 12 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口仅可在Stage模型下使用。
 
@@ -29,9 +30,9 @@ sendableContextManager模块提供Context与[SendableContext](js-apis-inner-appl
 
 ## 约束限制
 
-“Context转换为SendableContext”和“SendableContext转换为Context”两个环节中的Context类型必须保持一致。例如，主线程使用[convertFromContext](#sendablecontextmanagerconvertfromcontext)将[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)转换为SendableContext，子线程收到该SendableContext之后，需要通过[convertToUIAbilityContext](#sendablecontextmanagerconverttouiabilitycontext)将SendableContext转换为[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)。
+“Context转换为SendableContext”和“SendableContext转换为Context”两个环节中的Context类型必须保持一致。例如，主线程使用[convertFromContext](#sendablecontextmanagerconvertfromcontext)将[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)转换为SendableContext，子线程收到该SendableContext之后，需要通过[convertToUIAbilityContext](#sendablecontextmanagerconverttouiabilitycontext)将SendableContext转换为[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)。
 
-目前支持转换的Context包括[Context](js-apis-inner-application-context.md)、[ApplicationContext](js-apis-inner-application-applicationContext.md)、[AbilityStageContext](js-apis-inner-application-abilityStageContext.md)、[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)。
+目前支持转换的Context包括[Context](js-apis-inner-application-context.md)、[ApplicationContext](js-apis-inner-application-applicationContext.md)、[AbilityStageContext](js-apis-inner-application-abilityStageContext.md)、[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)。
 
 ## 导入模块
 
@@ -43,11 +44,15 @@ import { sendableContextManager } from '@kit.AbilityKit';
 
 type SendableContext = _SendableContext
 
-Sendable上下文，符合[Sendable协议](../../arkts-utils/arkts-sendable.md#sendable协议)，继承自[lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#langisendable)。
+Sendable上下文，符合[Sendable协议](../../arkts-utils/arkts-sendable.md#sendable协议)，继承自[lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#isendable)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
 
 | 类型 | 说明 |
 | --- | --- |
@@ -59,15 +64,19 @@ convertFromContext(context: common.Context): SendableContext
 
 将Context转换为SendableContext对象。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | ------- | ------- | ------- |
-| context | [common.Context](js-apis-inner-application-context.md) | 是 | Context对象。支持Context基类，[ApplicationContext](js-apis-inner-application-applicationContext.md)、[AbilityStageContext](js-apis-inner-application-abilityStageContext.md)和[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)子类。 |
+| context | [common.Context](js-apis-inner-application-context.md) | 是 | Context对象。支持Context基类，[ApplicationContext](js-apis-inner-application-applicationContext.md)、[AbilityStageContext](js-apis-inner-application-abilityStageContext.md)和[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)子类。 |
 
 **返回值：**
 
@@ -126,9 +135,13 @@ convertToContext(sendableContext: SendableContext): common.Context
 
 将SendableContext对象转换为Context。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -240,9 +253,13 @@ convertToApplicationContext(sendableContext: SendableContext): common.Applicatio
 
 将SendableContext对象转换为ApplicationContext。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -356,9 +373,13 @@ convertToAbilityStageContext(sendableContext: SendableContext): common.AbilitySt
 
 将SendableContext对象转换为AbilityStageContext。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -456,11 +477,11 @@ workerPort.onmessage = (e: MessageEvents) => {
 }
 
 workerPort.onmessageerror = (e: MessageEvents) => {
-  hilog.info(0x0000, 'testTag', '%{public}s', 'onmessageerror');
+  hilog.error(0x0000, 'testTag', '%{public}s', 'onmessageerror');
 }
 
 workerPort.onerror = (e: ErrorEvent) => {
-  hilog.info(0x0000, 'testTag', '%{public}s', 'onerror');
+  hilog.error(0x0000, 'testTag', '%{public}s', 'onerror');
 }
 ```
 
@@ -470,9 +491,13 @@ convertToUIAbilityContext(sendableContext: SendableContext): common.UIAbilityCon
 
 将SendableContext对象转换为UIAbilityContext。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -484,7 +509,7 @@ convertToUIAbilityContext(sendableContext: SendableContext): common.UIAbilityCon
 
 | 类型 | 说明 |
 | -------- | -------- |
-| common.UIAbilityContext | [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)对象。 |
+| common.UIAbilityContext | [UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)对象。 |
 
 **错误码**：
 
@@ -570,14 +595,14 @@ workerPort.onmessage = (e: MessageEvents) => {
 }
 
 workerPort.onmessageerror = (e: MessageEvents) => {
-  hilog.info(0x0000, 'testTag', '%{public}s', 'onmessageerror');
+  hilog.error(0x0000, 'testTag', '%{public}s', 'onmessageerror');
 }
 
 workerPort.onerror = (e: ErrorEvent) => {
-  hilog.info(0x0000, 'testTag', '%{public}s', 'onerror');
+  hilog.error(0x0000, 'testTag', '%{public}s', 'onerror');
 }
 ```
-## sendableContextManager.setEventHubMultithreadingEnabled<sup>20+<sup>
+## sendableContextManager.setEventHubMultithreadingEnabled<sup>20+</sup>
 
 setEventHubMultithreadingEnabled(context: common.Context, enabled: boolean): void
 
@@ -587,9 +612,13 @@ setEventHubMultithreadingEnabled(context: common.Context, enabled: boolean): voi
 >
 > - 当多个Context进行通信时，需要调用该接口设置每个Context都支持EventHub跨线程数据传递功能。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 

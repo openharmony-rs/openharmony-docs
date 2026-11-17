@@ -28,9 +28,9 @@ Radio(options: RadioOptions)
 
 创建单选框组件。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,18 +48,20 @@ Radio(options: RadioOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
-| value | string | 否 | 否 | 当前单选框的值。 <br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
-| group | string | 否 | 否 | 当前单选框的所属群组名称，相同group的Radio只能有一个被选中。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
-| indicatorType<sup>12+</sup> | [RadioIndicatorType](#radioindicatortype12枚举说明) | 否 | 是 | 配置单选框的选中样式。未设置时按照RadioIndicatorType.TICK进行显示。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
-| indicatorBuilder<sup>12+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | 否 | 是 | 配置单选框的选中样式为自定义组件。自定义组件与Radio组件为中心点对齐显示。indicatorBuilder设置为undefined时，按照RadioIndicatorType.TICK进行显示。<br/>**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
+| value | string | 否 | 否 | 当前单选框的值。 <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| group | string | 否 | 否 | 当前单选框的所属群组名称，相同group的Radio只能有一个被选中。group作用域为组件所在页面。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| indicatorType<sup>12+</sup> | [RadioIndicatorType](#radioindicatortype12枚举说明) | 否 | 是 | 配置单选框的选中样式。未设置时按照RadioIndicatorType.TICK进行显示。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
+| indicatorBuilder<sup>12+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | 否 | 是 | 配置单选框的选中样式为自定义组件。自定义组件与Radio组件为中心点对齐显示。indicatorBuilder设置为undefined时，按照RadioIndicatorType.TICK进行显示。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 12 <br/> **ArkTS-Sta起始版本：** 23 |
 
 ## RadioIndicatorType<sup>12+</sup>枚举说明
 
 单选框的样式。
 
-**卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -87,9 +89,9 @@ checked(value: boolean)
 
 从API version 18开始，该属性支持[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -113,6 +115,8 @@ checked(isChecked: boolean | undefined | Bindable\<boolean\>)
 
 该属性支持Bindable双向绑定变量。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -135,9 +139,9 @@ checked(isChecked: Optional\<boolean\>)
 
 该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)、[!!](../../../ui/state-management/arkts-new-binding.md#系统组件参数双向绑定)双向绑定变量。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -163,7 +167,9 @@ ArkTS-Sta: radioStyle(value?: RadioStyle | undefined)
 
 从API version 10开始，该接口支持在ArkTS组件中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -183,7 +189,9 @@ contentModifier(modifier: ContentModifier\<RadioConfiguration\>)
 
 定制Radio内容区的方法。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -205,7 +213,9 @@ contentModifier(modifier: Optional\<ContentModifier\<RadioConfiguration\>\>)
 
 定制Radio内容区的方法。与[contentModifier](#contentmodifier12)<sup>12+</sup>相比，modifier参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -227,7 +237,7 @@ contentModifier(modifier: ContentModifier\<RadioConfiguration\> | undefined)
 
 定制Radio内容区的方法。与[contentModifier](#contentmodifier12)<sup>12+</sup>相比，modifier参数新增了对undefined类型的支持。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -249,7 +259,7 @@ attributeModifier(modifier: AttributeModifier\<RadioAttribute\> | AttributeModif
 
 定制Radio属性区的方法。
 
-**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -273,9 +283,9 @@ onChange(callback: (isChecked: boolean) => void)
 
 单选框选中状态改变时触发的回调。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -297,9 +307,11 @@ onChange(callback: Optional\<OnRadioChangeCallback\>)
 
 单选框选中状态改变时触发的回调。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -341,7 +353,9 @@ type OnRadioChangeCallback = (isChecked: boolean) => void
 
 单选框选中状态改变时触发的回调函数类型定义。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -353,13 +367,15 @@ type OnRadioChangeCallback = (isChecked: boolean) => void
 
 | 参数名    | 类型    | 必填 | 说明                                                         |
 | --------- | ------- | ---- | ------------------------------------------------------------ |
-| isChecked | boolean | 是   | 单选框的状态。<br/>值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
+| isChecked | boolean | 是   | 单选框的选中状态。<br/>值为true时，表示从未选中变为选中。值为false时，表示从选中变为未选中。 |
 
 ## RadioStyle<sup>10+</sup>对象说明
 
-单选框的颜色。
+单选框的样式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -377,7 +393,9 @@ type OnRadioChangeCallback = (isChecked: boolean) => void
 
 开发者需要自定义class实现ContentModifier接口。继承自[CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt12对象说明)。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -395,6 +413,9 @@ type OnRadioChangeCallback = (isChecked: boolean) => void
 ## 示例
 ### 示例1 （设置底板颜色）
 该示例通过配置checkedBackgroundColor实现自定义单选框的底板颜色。
+
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -442,9 +463,78 @@ struct RadioExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Text,
+  Color,
+  Radio,
+  Row,
+  FlexAlign,
+  Flex,
+  FlexDirection,
+  ItemAlign,
+  State
+} from '@kit.ArkUI';
+
+// xxx.ets
+@Entry
+@Component
+struct RadioExample {
+  build() {
+    Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center } ) {
+      Column() {
+        Text('Radio1')
+        Radio({ value: 'Radio1', group: 'radioGroup' }).checked(true)
+          .radioStyle({
+            checkedBackgroundColor: Color.Pink
+          })
+          .height(50)
+          .width(50)
+          .onChange((isChecked: boolean) => {
+            console.info('Radio1 status is ' + isChecked);
+          })
+      }
+      Column() {
+        Text('Radio2')
+        Radio({ value: 'Radio2', group: 'radioGroup' }).checked(false)
+          .radioStyle({
+            checkedBackgroundColor: Color.Pink
+          })
+          .height(50)
+          .width(50)
+          .onChange((isChecked: boolean) => {
+            console.info('Radio2 status is ' + isChecked);
+          })
+      }
+      Column() {
+        Text('Radio3')
+        Radio({ value: 'Radio3', group: 'radioGroup' }).checked(false)
+          .radioStyle({
+            checkedBackgroundColor: Color.Pink
+          })
+          .height(50)
+          .width(50)
+          .onChange((isChecked: boolean) => {
+            console.info('Radio3 status is ' + isChecked);
+          })
+      }
+    }.padding({ top: 30 })
+  }
+}
+```
+
 ![radio](figures/radio.gif)
 ### 示例2 （设置选中样式）
 该示例通过配置indicatorType、indicatorBuilder实现自定义选中样式。
+
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -495,9 +585,83 @@ struct RadioExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Text,
+  Color,
+  Radio,
+  FlexAlign,
+  Flex,
+  FlexDirection,
+  ItemAlign,
+  Image,
+  $r,
+  RadioIndicatorType,
+  State
+} from '@kit.ArkUI';
+
+// xxx.ets
+@Entry
+@Component
+struct RadioExample {
+  @Builder
+  indicatorBuilder() {
+    // $r('app.media.star')需要替换为开发者所需的图像资源文件。
+    Image($r('app.media.star'))
+  }
+  build() {
+    Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      Column() {
+        Text('Radio1')
+        Radio({ value: 'Radio1', group: 'radioGroup',
+          indicatorType:RadioIndicatorType.TICK
+        }).checked(true)
+          .height(50)
+          .width(80)
+          .onChange((isChecked: boolean) => {
+            console.info('Radio1 status is ' + isChecked);
+          })
+      }
+      Column() {
+        Text('Radio2')
+        Radio({ value: 'Radio2', group: 'radioGroup',
+          indicatorType:RadioIndicatorType.DOT
+        }).checked(false)
+          .height(50)
+          .width(80)
+          .onChange((isChecked: boolean) => {
+            console.info('Radio2 status is ' + isChecked);
+          })
+      }
+      Column() {
+        Text('Radio3')
+        Radio({ value: 'Radio3', group: 'radioGroup',
+          indicatorType:RadioIndicatorType.CUSTOM,
+          indicatorBuilder:()=>{this.indicatorBuilder()}
+        }).checked(false)
+          .height(50)
+          .width(80)
+          .onChange((isChecked: boolean) => {
+            console.info('Radio3 status is ' + isChecked);
+          })
+      }
+    }.padding({ top: 30 })
+  }
+}
+```
+
 ![radio](figures/radio_2.gif)
 ### 示例3（设置自定义样式）
 该示例通过contentModifier实现自定义单选框样式。
+
+ArkTS-Dyn示例：
+
 ```ts
 class MyRadioStyle implements ContentModifier<RadioConfiguration> {
   type: number = 0;
@@ -557,4 +721,97 @@ struct refreshExample {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Entry,
+  Column,
+  Component,
+  Text,
+  Color,
+  Radio,
+  FlexAlign,
+  Flex,
+  FlexDirection,
+  ItemAlign,
+  Image,
+  $r,
+  RadioIndicatorType,
+  ContentModifier,
+  RadioConfiguration,
+  ResourceColor,
+  WrappedBuilder,
+  wrapBuilder,
+  Row,
+  Button,
+  ButtonType,
+  RowOptions,
+  ColumnOptions,
+  Circle,
+  State
+} from '@kit.ArkUI';
+
+type BuilderRadio = @Builder(config: RadioConfiguration) => void
+
+class MyRadioStyle implements ContentModifier<RadioConfiguration> {
+  type: ButtonType = ButtonType.Capsule;
+  selectedColor: ResourceColor = Color.Black;
+
+  constructor(type: ButtonType, colorType: ResourceColor) {
+    this.type = type;
+    this.selectedColor = colorType;
+  }
+
+  applyContent(): WrappedBuilder<BuilderRadio> {
+    return wrapBuilder(buildRadio);
+  }
+}
+
+@Builder
+function buildRadio(config: RadioConfiguration) {
+  Row({ space: 30 } as RowOptions) {
+    Circle({ width: 50, height: 50 })
+      .stroke(Color.Black)
+      .fill(config.checked ? (config.contentModifier as MyRadioStyle).selectedColor : Color.White)
+    Button(config.checked ? 'off' : 'on')
+      .width(100)
+      .type(config.checked ? (config.contentModifier as MyRadioStyle).type : ButtonType.Normal)
+      .backgroundColor('#2787D9')
+      .onClick(() => {
+        if (config.checked) {
+          config.triggerChange(false);
+        } else {
+          config.triggerChange(true);
+        }
+      })
+  }
+}
+
+@Entry
+@Component
+struct refreshExample {
+  build() {
+    Column({ space: 50 } as ColumnOptions) {
+      Row() {
+        Radio({ value: 'Radio1', group: 'radioGroup' })
+          .contentModifier(new MyRadioStyle(ButtonType.Circle, '#004AAF'))
+          .checked(false)
+          .width(300)
+          .height(100)
+      }
+
+      Row() {
+        Radio({ value: 'Radio2', group: 'radioGroup' })
+          .checked(true)
+          .width(300)
+          .height(60)
+          .contentModifier(new MyRadioStyle(ButtonType.Normal, '#004AAF'))
+      }
+    }
+  }
+}
+```
+
 ![](figures/radio_3.gif)

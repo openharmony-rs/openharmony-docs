@@ -219,6 +219,10 @@ packing(picture: Picture, options: PackingOption): Promise\<ArrayBuffer>
 
 将图像压缩或重新编码。使用Promise异步回调。
 
+> **说明：**
+>
+> 接口的编码对象为Picture，仅支持"image/jpeg"和"image/heic（或者image/heif）"格式。
+
 **系统能力：** SystemCapability.Multimedia.Image.ImagePacker
 
 **ArkTS-Dyn起始版本：** 13
@@ -1045,9 +1049,9 @@ async function PackToFile(context : Context) {
   let packer = image.createImagePacker();
   packer.packToFileFromPixelmapSequence(pixelMapList, file.fd, ops)
     .then(() => {
-      console.info('Succeeded in packToFileMultiFrames.');
+      console.info('Succeeded in packToFileFromPixelmapSequence.');
     }).catch((error: BusinessError) => {
-    console.error('Failed to packToFileMultiFrames.');
+    console.error('Failed to packToFileFromPixelmapSequence.');
   })
 }
 ```
@@ -1126,7 +1130,7 @@ import { fileIo } from '@kit.CoreFileKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
-const DOMAIN = 0X00000;
+const DOMAIN = 0X0000;
 const TAG: string = 'PackBinaryImageToTiffFile';
 
 async function PackBinaryImageToTiffFile(context: Context) {
@@ -1201,7 +1205,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { image } from '@kit.ImageKit';
 
-const DOMAIN = 0X00000;
+const DOMAIN = 0X0000;
 const TAG: string = 'PackBinaryImageToTiffData';
 
 async function PackBinaryImageToTiffData() {
@@ -1338,10 +1342,9 @@ packing(source: PixelMap, option: PackingOption, callback: AsyncCallback\<ArrayB
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 13开始废弃，建议使用[packToData](#packtodata13)代替。
-
-> **注意：**
-> 接口如果返回"PixelMap mismatch"，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
+> - 从API version 8开始支持，从API version 13开始废弃，建议使用[packToData](#packtodata13)代替。
+>
+> - 接口如果返回“PixelMap mismatch”，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1391,10 +1394,9 @@ packing(source: PixelMap, option: PackingOption): Promise\<ArrayBuffer>
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 13开始废弃，建议使用[packToData](#packtodata13)代替。
-
-> **注意：**
-> 接口如果返回"PixelMap mismatch"，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
+> - 从API version 8开始支持，从API version 13开始废弃，建议使用[packToData](#packtodata13)代替。
+>
+> - 接口如果返回“PixelMap mismatch”，表明参数异常，可能是PixelMap对象被提前释放了。需要调用方排查，在该方法调用结束后再释放PixelMap对象。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 

@@ -5,7 +5,7 @@
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件更新等与用户交互响应操作。开发者可以通过CustomDialogController类显示自定义弹出框。具体用法请参考[自定义弹出框](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)。
+CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件更新等与用户交互响应操作。开发者可以通过CustomDialogController类显示自定义弹出框。具体用法请参考[自定义弹窗](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)。
 
 > **说明：**
 > 
@@ -30,6 +30,8 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
 
 1. 使用\@CustomDialog装饰器装饰自定义弹出框，可在此装饰器内自定义弹出框内容。[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)需在[@Component](../ui/state-management/arkts-create-custom-components.md#component)内定义。
    
+   ArkTS-Dyn示例：
+
    <!-- @[create_custom_dialog_new_customDialog_controller_default](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
    
    ``` TypeScript
@@ -46,10 +48,32 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
      }
    }
    ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[create_custom_dialog_new_customDialog_controller_default](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
+   
+   ``` TypeScript
+   @CustomDialog
+   struct CustomDialogExample {
+     controller?: CustomDialogController;
+   
+     build(): void {
+       Column() {
+         // 请将$r('app.string.i_am_content')替换为实际资源文件，在本示例中该资源文件的value值为"我是内容"
+         Text($r('app.string.i_am_content'))
+           .fontSize(20)
+       }.height(60).justifyContent(FlexAlign.Center)
+     }
+   }
+   ```
    
 
 
 2. 创建构造器，与装饰器相互连接。
+
+   ArkTS-Dyn示例：
+
    <!-- @[create_custom_dialog_new_customDialog_controller_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
    
    ``` TypeScript
@@ -62,10 +86,27 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
    // ···
    }
    ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[create_custom_dialog_new_customDialog_controller_constructor](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   export struct CreateCustomDialogNew {
+     dialogController: CustomDialogController = new CustomDialogController({
+       builder: CustomDialogExample(),
+     })
+     // ...
+   }
+   ```
    
 
 3. 点击与[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)事件绑定的组件使弹出框弹出。
    
+   ArkTS-Dyn示例：
+
    <!-- @[create_custom_dialog_new_customDialog_controller_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
    
    ``` TypeScript
@@ -87,15 +128,42 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
      }
    }
    ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[create_custom_dialog_new_customDialog_controller_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/CreateCustomDialogNew.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   export struct CreateCustomDialogNew {
+     dialogController: CustomDialogController = new CustomDialogController({
+       builder: CustomDialogExample(),
+     })
+     build(): void {
+       NavDestination() {
+         Column() {
+           Button('click me')
+             .onClick(() => {
+               this.dialogController.open();
+             })
+         }.width('100%').margin({ top: 5 })
+       }
+     }
+   }
+   ```
    
    
-   ![zh-cn_image_0000001562700493](figures/zh-cn_image_0000001562700493.png)
+   ![custom-dialog-create](figures/custom-dialog-create.png)
 
 ## 弹出框的交互
 
 弹出框可用于数据交互，完成用户一系列响应操作。
 
 1. 在\@CustomDialog装饰器内添加按钮和数据函数。
+
+   ArkTS-Dyn示例：
+
    <!-- @[dialog_interaction_use_constructor_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogInteractionUseConstructor.ets) -->
    
    ``` TypeScript
@@ -131,10 +199,51 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
      }
    }
    ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[dialog_interaction_use_constructor_example](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/DialogInteractionUseConstructor.ets) -->
+   
+   ``` TypeScript
+   @CustomDialog
+   struct CustomDialogExample {
+     cancel: () => void = () => {
+     }
+     confirm: () => void = () => {
+     }
+     controller?: CustomDialogController;
+   
+     build(): void {
+       Column() {
+         // 请将$r('app.string.i_am_content')替换为实际资源文件，在本示例中该资源文件的value值为"我是内容"
+         Text($r('app.string.i_am_content')).fontSize(20).margin({ top: 10, bottom: 10 })
+         Flex({ justifyContent: FlexAlign.SpaceAround } as FlexOptions) {
+           Button('cancel')
+             .onClick(() => {
+               this.controller?.close();
+               if (this.cancel) {
+                 this.cancel();
+               }
+             }).backgroundColor(0xffffff).fontColor(Color.Black)
+           Button('confirm')
+             .onClick(() => {
+               this.controller?.close();
+               if (this.confirm) {
+                 this.confirm();
+               }
+             }).backgroundColor(0xffffff).fontColor(Color.Red)
+         }.margin({ bottom: 10 })
+       }
+     }
+   }
+   ```
    
    
    
 2. 页面内需要在构造器内进行接收，同时创建相应的函数操作。
+
+   ArkTS-Dyn示例：
+
    <!-- @[dialog_interaction_use_constructor_user](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogInteractionUseConstructor.ets) -->
    
    ``` TypeScript
@@ -169,15 +278,55 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
    }
    ```
 
-   ![zh-cn_image_0000001511421320](figures/zh-cn_image_0000001511421320.png)
+   ArkTS-Sta示例：
+
+   <!-- @[dialog_interaction_use_constructor_user](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/DialogInteractionUseConstructor.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   export struct DialogInteractionUseConstructor {
+     dialogController: CustomDialogController = new CustomDialogController({
+       builder: CustomDialogExample({
+         cancel: ()=> { this.onCancel() },
+         confirm: ()=> { this.onAccept() },
+       }),
+     });
+   
+     onCancel(): void {
+       hilog.info(DOMAIN, 'testTag', 'Callback when the first button is clicked');
+     }
+   
+     onAccept(): void {
+       hilog.info(DOMAIN, 'testTag', 'Callback when the second button is clicked');
+     }
+   
+     build(): void {
+       Column() {
+         NavDestination() {
+           Button('click me')
+             .onClick(() => {
+               this.dialogController.open();
+             })
+         }.width('100%').margin({ top: 5 })
+       }
+     }
+   }
+   ```
+
+   ![custom-dialog-interaction](figures/custom-dialog-interaction.png)
 
 
-3. 可通过弹出框中的按钮实现[路由跳转](../reference/apis-arkui/arkts-apis-uicontext-router.md)，同时获取跳转页面向当前页传入的参数。
+3. 可通过弹出框中的按钮实现[Class (Router)](../reference/apis-arkui/arkts-apis-uicontext-router.md)，同时获取跳转页面向当前页传入的参数。
+
+    ArkTS-Dyn示例：
+
     <!-- @[dialog_interaction_use_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogInteractionUseButton.ets) -->
     
     ``` TypeScript
     @CustomDialog
     struct CustomDialogExample {
+      // 数据监听仅支持@Link或@Consume，其他方式如@Prop、@ObjectLink不适用此场景
       @Link textValue: string;
       controller?: CustomDialogController;
       cancel: () => void = () => {
@@ -250,15 +399,15 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
       }
     
       onCancel() {
-        hilog.info(DOMAIN, 'testTag', 'testTag', 'Callback when the first button is clicked');
+        hilog.info(DOMAIN, 'testTag', 'Callback when the first button is clicked');
       }
     
       onAccept() {
-        hilog.info(DOMAIN, 'testTag', 'testTag', 'Callback when the second button is clicked');
+        hilog.info(DOMAIN, 'testTag', 'Callback when the second button is clicked');
       }
     
       exitApp() {
-        hilog.info(DOMAIN, 'testTag', 'testTag', 'Click the callback in the blank area');
+        hilog.info(DOMAIN, 'testTag', 'Click the callback in the blank area');
       }
     
       build() {
@@ -275,7 +424,114 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
       }
     }
     ```
+
+    ArkTS-Sta示例：
+
+    <!-- @[dialog_interaction_use_button](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/DialogInteractionUseButton.ets) -->
     
+    ``` TypeScript
+    @CustomDialog
+    struct CustomDialogExample {
+      @Link textValue: string;
+      controller?: CustomDialogController;
+      cancel: () => void = () => {
+      }
+      confirm: () => void = () => {
+      }
+    
+      build(): void {
+        Column({ space: 20 } as ColumnOptions) {
+          if (this.textValue !== '') {
+            // 请将$r('app.string.the_second_page_is')替换为实际资源文件，在本示例中该资源文件的value值为"第二个页面的内容为"
+            Text($r('app.string.the_second_page_is')+`：${this.textValue}`)
+              .fontSize(20)
+          } else {
+            // 请将$r('app.string.whether_to_get_the_second_page')替换为实际资源文件，在本示例中该资源文件的value值为"是否获取第二个页面的内容"
+            Text($r('app.string.whether_to_get_the_second_page'))
+              .fontSize(20)
+          }
+          Flex({ justifyContent: FlexAlign.SpaceAround } as FlexOptions) {
+            Button('cancel')
+              .onClick(() => {
+                if (this.controller !== undefined) {
+                  this.controller!.close();
+                  this.cancel();
+                }
+              }).backgroundColor(0xffffff).fontColor(Color.Black)
+            Button('confirm')
+              .onClick(() => {
+                if (this.controller !== undefined && this.textValue !== '') {
+                  this.controller!.close();
+                } else if (this.controller !== undefined) {
+                  this.getUIContext().getRouter().pushUrl({
+                    url: 'pages/Index2'
+                  });
+                  this.controller!.close();
+                }
+              }).backgroundColor(0xffffff).fontColor(Color.Red)
+          }.margin({ bottom: 10 })
+        }.borderRadius(10).padding({ top: 20 })
+      }
+    }
+    
+    @Entry
+    @Component
+    export struct DialogInteractionUseButton {
+      @State textValue: string = '';
+      dialogController: CustomDialogController | null = new CustomDialogController({
+        builder: CustomDialogExample({
+          cancel: () => {
+            this.onCancel()
+          },
+          confirm: () => {
+            this.onAccept()
+          },
+          textValue: this.textValue
+        })
+      });
+    
+      // 在自定义组件即将析构销毁时将dialogController置空
+      aboutToDisappear(): void {
+        this.dialogController = null; // 将dialogController置空
+      }
+    
+      onPageShow(): void {
+        const params = this.getUIContext().getRouter().getParams() as Record<string, string>; // 获取传递过来的参数对象
+        if (params) {
+          this.dialogController?.open();
+          this.textValue = params['info'] as string; // 获取info属性的值
+        }
+      }
+    
+      onCancel(): void {
+        hilog.info(DOMAIN, 'testTag', 'testTag', 'Callback when the first button is clicked');
+      }
+    
+      onAccept(): void {
+        hilog.info(DOMAIN, 'testTag', 'testTag', 'Callback when the second button is clicked');
+      }
+    
+      exitApp(): void {
+        hilog.info(DOMAIN, 'testTag', 'testTag', 'Click the callback in the blank area');
+      }
+    
+      build(): void {
+        Column() {
+          NavDestination() {
+            Button('click me')
+              .onClick(() => {
+                if (this.dialogController !== null) {
+                  this.dialogController!.open();
+                }
+              }).backgroundColor(0x317aff)
+          }.width('100%').margin({ top: 5 })
+        }
+      }
+    }
+    ```
+    
+
+    ArkTS-Dyn示例：
 
     <!-- @[index_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/IndexNew.ets) -->
     
@@ -304,6 +560,43 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
       }
     }
     ```
+
+    ArkTS-Sta示例：
+
+    <!-- @[index_new](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/IndexNew.ets) -->
+    
+    ``` TypeScript
+    import {
+      Entry,
+      Component,
+      Button,
+      Column,
+      NavDestination,
+      ButtonType,
+      Resource,
+      $r
+    } from '@kit.ArkUI';
+    import { State } from '@ohos.arkui.stateManagement';
+    
+    @Entry
+    @Component
+    struct IndexNew {
+      // 请将$r('app.string.click_and_return')替换为实际资源文件，在本示例中该资源文件的value值为"点击返回"
+      @State message: Resource = $r('app.string.click_and_return');
+    
+      build(): void {
+        NavDestination() {
+          Column() {
+            Button(this.message)
+              .type(ButtonType.Capsule)
+              .onClick((): void => {
+                this.getUIContext().getRouter().back();
+              })
+          }.width('100%').height('100%').margin({ top: 20 })
+        }
+      }
+    }
+    ```
     
    
    ![DialogRouter](figures/DialogRouter.gif)
@@ -311,6 +604,8 @@ CustomDialog是自定义弹出框，可用于广告、中奖、警告、软件�
 ## 弹出框的动画
 
 弹出框通过定义[CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)中的openAnimation属性控制出现动画的持续时间，速度等参数。
+
+ArkTS-Dyn示例：
 
 <!-- @[dialog_animation_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogAnimationNew.ets) -->
 
@@ -331,7 +626,6 @@ struct CustomDialogExample {
 @Entry
 @Component
 export struct DialogAnimationNew {
-  @State textValue: string = '';
   @State inputValue: string = 'click me';
   dialogController: CustomDialogController | null = new CustomDialogController({
     builder: CustomDialogExample(),
@@ -373,12 +667,78 @@ export struct DialogAnimationNew {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[dialog_animation_new](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/DialogAnimationNew.ets) -->
+
+``` TypeScript
+@CustomDialog
+struct CustomDialogExample {
+  controller?: CustomDialogController;
+
+  build(): void {
+    NavDestination() {
+      Column() {
+        Text('Whether to change a text?').fontSize(16).margin({ bottom: 10 })
+      }
+    }
+  }
+}
+
+@Entry
+@Component
+export struct DialogAnimationNew {
+  @State textValue: string = '';
+  @State inputValue: string = 'click me';
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample(),
+    openAnimation: {
+      duration: 1200,
+      curve: Curve.Friction,
+      delay: 500,
+      playMode: PlayMode.Alternate,
+      onFinish: (): void => {
+        hilog.info(DOMAIN, 'testTag', 'play end');
+      }
+    },
+    autoCancel: true,
+    alignment: DialogAlignment.Bottom,
+    offset: { dx: 0, dy: -20 },
+    gridCount: 4,
+    customStyle: false,
+    backgroundColor: Long.toInt(0xd9ffffff),
+    cornerRadius: 10,
+  });
+
+  // 在自定义组件即将析构销毁时将dialogController置空
+  aboutToDisappear(): void {
+    this.dialogController = null; // 将dialogController置空
+  }
+
+  build(): void {
+    NavDestination() {
+      Column() {
+        Button(this.inputValue)
+          .onClick(() => {
+            if (this.dialogController !== null) {
+              this.dialogController!.open();
+            }
+          }).backgroundColor(0x317aff)
+      }.width('100%').margin({ top: 5 })
+    }
+  }
+}
+```
+
 
 ![openAnimator](figures/openAnimator.gif)
 
 ## 弹出框的样式
 
 通过定义弹出框的宽度、高度、背景色、阴影等参数，控制其样式。
+
+ArkTS-Dyn示例：
+
 <!-- @[dialog_style_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogStyleNew.ets) -->
 
 ``` TypeScript
@@ -397,7 +757,6 @@ struct CustomDialogExample {
 @Entry
 @Component
 export struct DialogStyleNew {
-  @State textValue: string = '';
   @State inputValue: string = 'click me';
   dialogController: CustomDialogController | null = new CustomDialogController({
     builder: CustomDialogExample(),
@@ -441,12 +800,79 @@ export struct DialogStyleNew {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[dialog_style_new](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/DialogStyleNew.ets) -->
+
+``` TypeScript
+@CustomDialog
+struct CustomDialogExample {
+  controller?: CustomDialogController;
+
+  build(): void {
+    Column() {
+      // 请将$r('app.string.i_am_content')替换为实际资源文件，在本示例中该资源文件的value值为"我是内容"
+      Text($r('app.string.i_am_content')).fontSize(16).margin({ bottom: 10 })
+    }
+  }
+}
+
+@Entry
+@Component
+export struct DialogStyleNew {
+  @State textValue: string = '';
+  @State inputValue: string = 'click me';
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample(),
+    autoCancel: true,
+    alignment: DialogAlignment.Center,
+    offset: { dx: 0, dy: -20 },
+    gridCount: 4,
+    customStyle: false,
+    backgroundColor: Long.toInt(0xd9ffffff),
+    cornerRadius: 20,
+    width: '80%',
+    height: '100px',
+    borderWidth: 1,
+    borderStyle: BorderStyle.Dashed, //使用borderStyle属性，需要和borderWidth属性一起使用
+    borderColor: Color.Blue, //使用borderColor属性，需要和borderWidth属性一起使用
+    shadow: ({
+      radius: 20,
+      color: Color.Grey,
+      offsetX: 50,
+      offsetY: 0
+    }),
+  });
+
+  // 在自定义组件即将析构销毁时将dialogController置空
+  aboutToDisappear(): void {
+    this.dialogController = null; // 将dialogController置空
+  }
+
+  build(): void {
+    NavDestination() {
+      Column() {
+        Button(this.inputValue)
+          .onClick(() => {
+            if (this.dialogController !== null) {
+              this.dialogController!.open();
+            }
+          }).backgroundColor(0x317aff)
+      }.width('100%').margin({ top: 5 })
+    }
+  }
+}
+```
+
 
 ![custom_style](figures/custom_style.gif)
 
 ## 嵌套自定义弹出框
 
 通过第一个弹出框打开第二个弹出框时，最好将第二个弹出框定义在第一个弹出框的父组件处，通过父组件传给第一个弹出框的回调来打开第二个弹出框。
+
+ArkTS-Dyn示例：
+
 <!-- @[nest_dialog_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/NestDialogNew.ets) -->
 
 ``` TypeScript
@@ -555,6 +981,116 @@ export struct NestDialogNew {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[nest_dialog_new](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/NestDialogNew.ets) -->
+
+``` TypeScript
+@CustomDialog
+struct CustomDialogExampleTwo {
+  controllerTwo?: CustomDialogController;
+  @State message: string = 'I am the second dialog box.';
+  @State showIf: boolean = false;
+
+  build(): void {
+    Column() {
+      if (this.showIf) {
+        Text('Text')
+          .fontSize(30)
+          .height(100)
+      }
+      Text(this.message)
+        .fontSize(30)
+        .height(100)
+      Button('Create Text')
+        .onClick(() => {
+          this.showIf = true;
+        })
+      Button('Close Second Dialog Box')
+        .onClick(() => {
+          if (this.controllerTwo !== undefined) {
+            this.controllerTwo!.close();
+          }
+        })
+        .margin(20)
+    }
+  }
+}
+
+@CustomDialog
+struct CustomDialogExample {
+  openSecondBox?: () => void;
+  controller?: CustomDialogController;
+
+  build(): void {
+    Column() {
+      Button('Open Second Dialog Box and close this box')
+        .onClick(() => {
+          this.controller!.close();
+          this.openSecondBox!();
+        })
+        .margin(20)
+    }.borderRadius(10)
+  }
+}
+
+@Entry
+@Component
+export struct NestDialogNew {
+  @State inputValue: string = 'Click Me';
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample({
+      openSecondBox: () => {
+        if (this.dialogControllerTwo !== null) {
+          this.dialogControllerTwo!.open()
+        }
+      }
+    }),
+    cancel: this.exitApp,
+    autoCancel: true,
+    alignment: DialogAlignment.Bottom,
+    offset: { dx: 0, dy: -20 },
+    gridCount: 4,
+    customStyle: false
+  });
+  dialogControllerTwo: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExampleTwo(),
+    alignment: DialogAlignment.Bottom,
+    offset: { dx: 0, dy: -25 }
+  });
+
+  aboutToDisappear(): void {
+    this.dialogController = null;
+    this.dialogControllerTwo = null;
+  }
+
+  onCancel(): void {
+    hilog.info(DOMAIN, 'testTag', 'Callback when the first button is clicked');
+  }
+
+  onAccept(): void {
+    hilog.info(DOMAIN, 'testTag', 'Callback when the second button is clicked');
+  }
+
+  exitApp(): void {
+    hilog.info(DOMAIN, 'testTag', 'Click the callback in the blank area');
+  }
+
+  build(): void {
+    NavDestination() {
+      Column() {
+        Button(this.inputValue)
+          .onClick(() => {
+            if (this.dialogController !== null) {
+              this.dialogController!.open();
+            }
+          }).backgroundColor(0x317aff)
+      }.width('100%').margin({ top: 5 })
+    }
+  }
+}
+```
+
 
 ![nested_dialog](figures/nested_dialog.gif)
 
@@ -562,8 +1098,10 @@ export struct NestDialogNew {
 
 ## 实现弹出框的物理返回拦截
 
-执行点击遮障层关闭、侧滑（左滑或右滑）、三键Back、键盘ESC关闭等交互操作时，如果注册了[CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)中的onWillDismiss回调函数，弹出框不会立即关闭。在回调函数中，通过[DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12)中的reason属性获取阻拦关闭弹出框的操作类型，根据原因决定是否关闭弹出框。
+执行点击遮障层关闭、侧滑（左滑或右滑）、三键Back、键盘ESC关闭等交互操作时，如果注册了[CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)中的onWillDismiss()回调函数，弹出框不会立即关闭。在回调函数中，通过[DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12)中的reason属性获取阻拦关闭弹出框的操作类型，根据原因决定是否关闭弹出框。
  
+ArkTS-Dyn示例：
+
 <!-- @[dialog_with_physical_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogWithPhysicalBack.ets) -->
 
 ``` TypeScript
@@ -589,6 +1127,9 @@ struct CustomDialogExample {
             if (this.controller !== undefined) {
               this.controller.close();
             }
+            if (this.cancel) {
+              this.cancel();
+            }
           })
           .backgroundColor(0xffffff)
           .fontColor(Color.Black)
@@ -596,6 +1137,9 @@ struct CustomDialogExample {
           .onClick(() => {
             if (this.controller !== undefined) {
               this.controller.close();
+            }
+            if (this.confirm) {
+              this.confirm();
             }
           })
           .backgroundColor(0xffffff)
@@ -659,6 +1203,103 @@ export struct DialogWithPhysicalBack {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[dialog_with_physical_back](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/DialogWithPhysicalBack.ets) -->
+
+``` TypeScript
+@CustomDialog
+struct CustomDialogExample {
+  cancel: () => void = () => {
+  }
+  confirm: () => void = () => {
+  }
+  controller?: CustomDialogController;
+
+  build(): void {
+    Column() {
+      Text('Are you sure?')
+        .fontSize(20)
+        .margin({
+          top: 10,
+          bottom: 10
+        })
+      Row() {
+        Button('cancel')
+          .onClick(() => {
+            if (this.controller !== undefined) {
+              this.controller!.close();
+            }
+          })
+          .backgroundColor(0xffffff)
+          .fontColor(Color.Black)
+        Button('confirm')
+          .onClick(() => {
+            if (this.controller !== undefined) {
+              this.controller!.close();
+            }
+          })
+          .backgroundColor(0xffffff)
+          .fontColor(Color.Red)
+      }
+      .width('100%')
+      .justifyContent(FlexAlign.SpaceAround)
+      .margin({ bottom: 10 })
+    }
+  }
+}
+
+@Entry
+@Component
+export struct DialogWithPhysicalBack {
+  dialogController: CustomDialogController = new CustomDialogController({
+    builder: CustomDialogExample({
+      cancel: () => {
+        this.onCancel();
+      },
+      confirm: () => {
+        this.onAccept();
+      }
+    }),
+    onWillDismiss: (dismissDialogAction: DismissDialogAction): void => {
+      hilog.info(DOMAIN, 'testTag', 'dialog onWillDismiss reason: ' + dismissDialogAction.reason);
+      // 1、PRESS_BACK    点击三键back、侧滑（左滑/右滑）、键盘ESC。
+      // 2、TOUCH_OUTSIDE    点击遮障层时
+      // 3、CLOSE_BUTTON    点击关闭按钮
+      if (dismissDialogAction.reason === DismissReason.PRESS_BACK) {
+        // 处理业务逻辑后通过dismiss主动关闭对话框
+        dismissDialogAction.dismiss();
+      }
+      if (dismissDialogAction.reason === DismissReason.TOUCH_OUTSIDE) {
+        dismissDialogAction.dismiss();
+      }
+    },
+    alignment: DialogAlignment.Bottom,
+    offset: { dx: 0, dy: -20 }
+  })
+
+  onCancel(): void {
+    hilog.info(DOMAIN, 'testTag', 'Callback when the first button is clicked');
+  }
+
+  onAccept(): void {
+    hilog.info(DOMAIN, 'testTag', 'Callback when the second button is clicked');
+  }
+
+  build(): void {
+    NavDestination() {
+      Column() {
+        Button('click me')
+          .onClick(() => {
+            this.dialogController.open();
+          })
+      }
+      .width('100%')
+    }
+  }
+}
+```
+
 
 ![onWillDismiss_dialog](figures/onWillDismiss_dialog.gif)
 
@@ -668,6 +1309,8 @@ export struct DialogWithPhysicalBack {
 
 设置软键盘间距时，需要将keyboardAvoidMode值设为KeyboardAvoidMode.DEFAULT。
   
+ArkTS-Dyn示例：
+
 <!-- @[dialog_avoid_soft_key_board](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogAvoidSoftKeyboard.ets) -->
 
 ``` TypeScript
@@ -727,6 +1370,67 @@ export struct DialogAvoidSoftKeyboard {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[dialog_avoid_soft_key_board](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/DialogAvoidSoftKeyboard.ets) -->
+
+``` TypeScript
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@CustomDialog
+struct CustomDialogExample {
+  controller?: CustomDialogController;
+
+  build(): void {
+    Column() {
+      Column() {
+        Text('keyboardAvoidDistance: 0vp')
+          .fontSize(20)
+          .margin({ bottom: 36 })
+        TextInput({ placeholder: '' })
+      }.backgroundColor('#FFF0F0F0')
+    }
+  }
+}
+
+@Entry
+@Component
+export struct DialogAvoidSoftKeyboard {
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample({}),
+    autoCancel: true,
+    gridCount: 4,
+    showInSubWindow: true,
+    isModal: true,
+    customStyle: false,
+    cornerRadius: 30,
+    alignment: DialogAlignment.Bottom,
+    keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // 软键盘弹出时，弹出框自动避让
+    keyboardAvoidDistance: LengthMetrics.vp(0) // 软键盘弹出时与弹出框的距离为0vp
+  })
+
+  build(): void {
+    NavDestination() {
+      Row() {
+        Row({ space: 20 } as RowOptions) {
+          // 请将$r('app.string.open_windows')替换为实际资源文件，在本示例中该资源文件的value值为"打开弹窗"
+          Text($r('app.string.open_windows'))
+            .fontSize(30)
+            .onClick(() => {
+              if (this.dialogController !== null) {
+                this.dialogController!.open();
+              }
+            })
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }
+  }
+}
+```
+
 
  ![UIContextPromptAction](figures/UIContextPromptActionCustomDialog.gif)
 
@@ -734,9 +1438,11 @@ export struct DialogAvoidSoftKeyboard {
 
 在业务模块中，页面上可能会同时出现多个弹出框。为避免重复打开相同的弹出框，建议在显示弹出框前，先通过控制器检查其当前状态。如果弹出框已处于显示状态，则不应再次打开。
 
-从API version 20开始，新增了getState接口，用于获取弹出框的当前状态。具体的弹出框状态信息，请参见[CommonState](../reference/apis-arkui/js-apis-promptAction.md#commonstate20枚举说明)枚举的详细说明。
+从API version 20开始，新增了getState()接口，用于获取弹出框的当前状态。具体的弹出框状态信息，请参见[CommonState](../reference/apis-arkui/js-apis-promptAction.md#commonstate20)枚举的详细说明。
 
 以下示例通过[getDialogController](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getdialogcontroller18)和[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)两种方法，实现了获取弹出框当前状态的功能。
+
+ArkTS-Dyn示例：
 
 <!-- @[get_dialog_status](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/GetDialogStatus.ets) -->
 
@@ -762,8 +1468,8 @@ struct CustomDialogExample {
         .onClick(() => {
           hilog.info(DOMAIN, 'testTag', 'state:' + this.controller?.getState());
         }).margin(20)
-      // 请将$r('app.string.close_widows')替换为实际资源文件，在本示例中该资源文件的value值为"点我关闭弹窗"
-      Button($r('app.string.close_widows'))
+      // 请将$r('app.string.close_windows')替换为实际资源文件，在本示例中该资源文件的value值为"点我关闭弹窗"
+      Button($r('app.string.close_windows'))
         .onClick(() => {
           if (this.getDialogController() !== undefined) {
             this.getDialogController().close()
@@ -790,6 +1496,68 @@ export struct GetDialogStatus {
           .onClick(() => {
             if (this.dialogController !== null) {
               this.dialogController.open()
+            }
+          })
+      }.width('100%').margin({ top: 5 })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[get_dialog_status](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/customdialog/GetDialogStatus.ets) -->
+
+``` TypeScript
+// xxx.ets
+@CustomDialog
+struct CustomDialogExample {
+  controller?: CustomDialogController;
+
+  build(): void {
+    Column() {
+      // 请将$r('app.string.search_by_dialog')替换为实际资源文件，在本示例中该资源文件的value值为"点我查询弹窗状态:通过自定义组件自带controller"
+      Button($r('app.string.search_by_dialog'))
+        .onClick(() => {
+          if (this.getDialogController() !== undefined) {
+            hilog.info(DOMAIN, 'testTag', 'state:' + this.getDialogController()!.getState());
+          } else {
+            hilog.info(DOMAIN, 'testTag', 'state: no exist');
+          }
+        }).margin(20)
+      // 请将$r('app.string.search_by_dialog_controller')替换为实际资源文件，在本示例中该资源文件的value值为"点我查询弹窗状态:通过CustomDialogController"
+      Button($r('app.string.search_by_dialog_controller'))
+        .onClick(() => {
+          hilog.info(DOMAIN, 'testTag', 'state:' + this.controller?.getState());
+        }).margin(20)
+      // 请将$r('app.string.close_widows')替换为实际资源文件，在本示例中该资源文件的value值为"点我关闭弹窗"
+      Button($r('app.string.close_widows'))
+        .onClick(() => {
+          if (this.getDialogController() !== undefined) {
+            this.getDialogController()!.close()
+          }
+        }).margin(20)
+
+    }
+  }
+}
+
+@Entry
+@Component
+export struct GetDialogStatus {
+  dialogController: CustomDialogController | null = new CustomDialogController({
+    builder: CustomDialogExample({
+    }),
+    autoCancel: false
+  })
+
+  build(): void {
+    NavDestination() {
+      Column() {
+        Button('click me')
+          .onClick(() => {
+            if (this.dialogController !== null) {
+              this.dialogController!.open()
             }
           })
       }.width('100%').margin({ top: 5 })

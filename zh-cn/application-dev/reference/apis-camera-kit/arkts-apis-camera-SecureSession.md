@@ -10,6 +10,8 @@ SecureSession继承自[Session](arkts-apis-camera-Session.md)、[Flash](arkts-ap
 
 安全模式会话类，提供了对闪光灯、曝光、白平衡、对焦、变焦的操作。
 
+在创建安全模式会话前，需要通过[getSupportedSceneModes](./arkts-apis-camera-CameraManager.md#getsupportedscenemodes11)接口获取当前相机支持的模式来确定是否支持安全模式的会话。
+
 通过[createSession](arkts-apis-camera-CameraManager.md#createsession11)接口传入[SceneMode](arkts-apis-camera-e.md#scenemode11)为SECURE_PHOTO模式创建一个安全模式的会话。该模式开放给人脸识别、银行等有安全诉求的应用，需要结合<!--RP1-->安全TA<!--RP1End-->使用，支持同时输出普通预览流和安全流的业务场景。<!--RP2--><br>
 安全TA：可用于图片处理，它具备验证服务器下发数据的验签能力、图片签名、解析及组装tlv逻辑的能力，还具备密钥读取、创建及操作能力。<!--RP2End-->
 
@@ -31,7 +33,7 @@ addSecureOutput(previewOutput: PreviewOutput): void
 
 将其中一条[PreviewOutput](arkts-apis-camera-PreviewOutput.md)标记成安全输出。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -48,7 +50,8 @@ addSecureOutput(previewOutput: PreviewOutput): void
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400102                |  Operation not allowed.                                  |
+| 7400102                |  Operation not allowed.                                |
+| 7400103                |  Session not config.<br>适用版本：12-17                 |
 
 **示例：**
 
@@ -61,7 +64,7 @@ function addSecureOutput(session: camera.SecureSession, previewOutput: camera.Pr
   } catch (error) {
     // 失败返回错误码error.code并处理。
     let err = error as BusinessError;
-    console.error(`The addOutput call failed. error code: ${err.code}`);
+    console.error(`The addSecureOutput call failed. error code: ${err.code}`);
   }
 }
 ```
@@ -76,7 +79,7 @@ on(type: 'error', callback: ErrorCallback): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -107,7 +110,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 注销监听安全相机会话的错误事件，通过注册回调函数获取结果。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -136,7 +139,7 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 >
 > 当前注册监听接口，不支持在on监听的回调方法里，调用off注销回调。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -171,7 +174,7 @@ off(type: 'focusStateChange', callback?: AsyncCallback\<FocusState\>): void
 
 注销监听相机聚焦的状态变化。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

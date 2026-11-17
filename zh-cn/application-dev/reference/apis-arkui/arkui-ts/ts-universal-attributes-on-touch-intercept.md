@@ -1,7 +1,7 @@
 # 自定义事件拦截
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -13,6 +13,8 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 
 ## onTouchIntercept
@@ -27,7 +29,7 @@ ArkTS-Sta: onTouchIntercept(callback: Callback<TouchEvent, HitTestMode> | undefi
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -63,23 +65,23 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text("hello world")
+        Text('hello world')
           .backgroundColor(Color.Blue)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
-            console.info("Text click");
+            console.info('Text click');
           })
       }
       .width(400)
       .height(300)
       .backgroundColor(Color.Pink)
       .onClick(() => {
-        console.info("Column click");
+        console.info('Column click');
       })
       // 调用onTouchIntercept修改该组件的HitTestMode属性
       .onTouchIntercept((event: TouchEvent) => {
-        console.info("OnTouchIntercept + " + JSON.stringify(event));
+        console.info('OnTouchIntercept + ' + JSON.stringify(event));
         // 使用touches时需要先校验是否为空
         if (event && event.touches) {
           let touches = event.touches;
@@ -87,6 +89,7 @@ struct Index {
             console.info('onTouchIntercept touches:', JSON.stringify(touches[i]));
           }
         }
+        // 当满足自定义拦截条件时，返回HitTestMode.None使该组件不参与触摸测试
         if (this.isPolygon(event)) {
           return HitTestMode.None;
         }

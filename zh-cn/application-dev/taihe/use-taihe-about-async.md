@@ -4,17 +4,19 @@
 <!--Owner: @wanzixuan330-->
 <!--Designer: @Jemtaly; @tongdiaoZS; @m0_52007851; @zhangrunze13-->
 <!--Tester: @m30041553-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
-> 注意：本文档介绍的是使用`@async`和`@promise`注解来将C++侧的同步函数自动转换为ArkTS侧的异步函数的方式。对于需要在C++侧实现真正的异步逻辑（如跨线程、异步I/O等）的场景，请参考[使用Taihe进行底层异步相关开发](use-taihe-about-async-types.md)。
+> **注意：**
+>
+> 本文档介绍的是使用`@async`和`@promise`注解来将C++侧的同步函数自动转换为ArkTS侧的异步函数的方式。对于需要在C++侧实现真正的异步逻辑（如跨线程、异步I/O等）的场景，请参考[使用Taihe进行底层异步相关开发](use-taihe-about-async-types.md)。
 
 在Taihe中使用注解`@async`将声明的函数或方法转换为接收`AsyncCallback`的异步版本，使用注解`@promise`将声明的函数或方法转换为返回`Promise`的异步版本。
 
 ## 基本概念
 
-理解以下示例需要对[@rename](./use-taihe-about-overload.md)有基础的了解。
+理解以下示例需要对[@rename](./use-taihe-about-rename.md)有基础的了解。
 
 **Taihe声明代码**
 
@@ -29,8 +31,6 @@ function addSync(a: i32, b: i32): i32;
 ```
 
 使用`@async`和`@promise`注解后，会在生成的ets代码中增加函数的异步版本。注解可应用于全局函数和对象成员方法。
-
-注：`@rename`注解可参考[文档](./use-taihe-about-overload.md)
 
 **生成ets代码**
 ```typescript

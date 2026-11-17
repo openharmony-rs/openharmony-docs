@@ -2,7 +2,7 @@
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -12,7 +12,7 @@ typedef struct OH_Drawing_RecordCmd OH_Drawing_RecordCmd
 
 ## 概述
 
-定义录制指令类, 用于存储录制指令的集合。
+定义录制指令类，用于存储录制指令的集合。
 
 **起始版本：** 13
 

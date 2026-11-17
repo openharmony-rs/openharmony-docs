@@ -4,7 +4,7 @@
 <!--Owner: @wang_zhaoyong-->
 <!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 > **说明：**
 >
@@ -17,7 +17,7 @@
 ## 导入模块
 
 ```ts
-import { ArkTSUtils } from '@kit.ArkTS'
+import { ArkTSUtils } from '@kit.ArkTS';
 ```
 
 ## ArkTSUtils.isSendable
@@ -28,13 +28,15 @@ isSendable(value: Object | null | undefined): boolean
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.Utils.Lang
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | Object \| null \| undefined  | 是 | 待校验的对象。|
+| value | Object \| null \| undefined  | 是 | 待判断是否为Sendable数据类型的对象。|
 
 **返回值：**
 
@@ -57,5 +59,5 @@ if (ArkTSUtils.isSendable(sendableFunc)) {
 } else {
   console.info("sendableFunc is not Sendable");
 }
-// 期望输出: 'SendableFunc is Sendable'
+// 期望输出: 'sendableFunc is Sendable'
 ```

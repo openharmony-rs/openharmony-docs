@@ -14,7 +14,7 @@ API参考主要用于开发者查阅应用开发相关的各类API说明。为�
 API参考采用两种方式标记组件或接口开始支持的版本号：
 
 - 对于新增组件或接口，会在章节开头进行说明，如：本模块首批接口从API version 7开始支持。
-- 对于某个已有组件或接口的新增特性，会在对应特性后进行标注，如：“uid<sup>8+</sup>”表示从API Version 8开始支持属性uid。
+- 对于某个已有组件或接口的新增特性，会在对应特性后进行标注，如：“uid<sup>8+</sup>”表示从API version 8开始支持属性uid。
 
 <!--RP3--><!--RP3End-->
 
@@ -39,9 +39,9 @@ API参考采用两种方式标记组件或接口开始支持的版本号：
 
 ## 权限说明
 
-默认情况下，应用只能访问有限的系统资源。但某些情况下，应用为了扩展功能的诉求，需要访问额外的系统或其他应用的数据（包括用户个人数据）、功能。具体可参考[访问控制开发概述](../security/AccessToken/app-permission-mgmt-overview.md)。
+默认情况下，应用只能访问有限的系统资源。但某些情况下，应用为了扩展功能的诉求，需要访问额外的系统或其他应用的数据（包括用户个人数据）、功能。具体可参考[应用权限管控概述](../security/AccessToken/app-permission-mgmt-overview.md)。
 
-当调用接口访问这些资源时，需要申请对应的权限。申请方式可参考[访问控制开发指导](../security/AccessToken/determine-application-mode.md)。
+当调用接口访问这些资源时，需要[申请对应的权限](../security/AccessToken/determine-application-mode.md)。
 
 - 如果应用需要具备某个权限才能调用该接口，会在具体的接口描述中说明：**需要权限**：ohos.permission.xxxx
 - 如果应用不需要任何权限即可调用该接口，则不做特殊说明。
@@ -87,6 +87,15 @@ OpenHarmony中提供的接口，部分是仅供OEM厂商使用的system api，�
 - 参考[full-SDK替换指南](../faqs/full-sdk-switch-guide.md)将SDK替换为full-SDK。
 - 参考[HarmonyAppProvision配置文件的说明](../security/app-provision-structure.md)修改HarmonyAppProvision配置文件中的app-feature字段为hos_system_app（系统应用）。
 <!--DelEnd-->
+
+## 静态API标识说明
+
+ArkTS作为OpenHarmony原生应用开发的官方语言，在对TypeScript进行针对性扩展与增强的基础上，进一步引入ArkTS静态类型，以提升应用性能、增强代码健壮性、支持高效并发编程。
+
+针对ArkTS静态类型的支持情况，在API参考中增加了相关标识字段：
+
+- 对于API模块内所有API均可用于静态上下文的情况，会在该模块描述处说明：本模块同时支持ArkTS-Dyn、ArkTS-Sta，API不再重复说明。
+- 对于API模块内各API、参数等信息的静态上下文支持情况存在差异的，将分别在对应API、参数等信息的说明中提供ArkTS模式和ArkTS-Sta起始支持版本的相关描述。
 
 ## 废弃接口说明
 

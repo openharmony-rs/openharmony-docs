@@ -4,7 +4,7 @@
 <!--Owner: @chenkun613227-->
 <!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zzs911-->
 
 > **说明：**
 >
@@ -55,14 +55,14 @@
 
 | 名称           | 值                    | 说明                 |
 | -------------- | --------------------- | ------------------- |
-| MEDIA_TYPE_UNSUPPORTED<sup>20+</sup> | -1                     | 表示未支持的类型。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20 开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
-| MEDIA_TYPE_AUD | 0                     | 表示音频。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11 开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23           |
-| MEDIA_TYPE_VID | 1                     | 表示视频。  <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11 开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23          |
-| MEDIA_TYPE_SUBTITLE<sup>12+</sup> | 2    | 表示字幕。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
-| MEDIA_TYPE_ATTACHMENT<sup>20+</sup> | 3    | 表示附件信息（如嵌入的外部文件）。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20 开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
-| MEDIA_TYPE_DATA<sup>20+</sup> | 4    | 表示数据。 <br> **原子化服务AP（仅ArkTS-Dyn）I：** 从API version 20 开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
-| MEDIA_TYPE_TIMED_METADATA<sup>20+</sup> | 5    | 表示带时间戳的元数据。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20 开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
-| MEDIA_TYPE_AUXILIARY<sup>20+</sup> | 6    | 表示辅助（轨道）信息。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20 开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| MEDIA_TYPE_UNSUPPORTED<sup>20+</sup> | -1                     | 表示未支持的类型。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| MEDIA_TYPE_AUD | 0                     | 表示音频。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23           |
+| MEDIA_TYPE_VID | 1                     | 表示视频。  <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23          |
+| MEDIA_TYPE_SUBTITLE<sup>12+</sup> | 2    | 表示字幕。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
+| MEDIA_TYPE_ATTACHMENT<sup>20+</sup> | 3    | 表示附件信息（如嵌入的外部文件）。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| MEDIA_TYPE_DATA<sup>20+</sup> | 4    | 表示数据。 <br> **原子化服务AP（仅ArkTS-Dyn）I：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| MEDIA_TYPE_TIMED_METADATA<sup>20+</sup> | 5    | 表示带时间戳的元数据。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
+| MEDIA_TYPE_AUXILIARY<sup>20+</sup> | 6    | 表示辅助（轨道）信息。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 23 |
 
 ## CodecMimeType<sup>8+</sup>
 
@@ -72,19 +72,39 @@ Codec MIME类型枚举。
 
 | 名称         | 值                    | 说明                     |
 | ------------ | --------------------- | ------------------------ |
-| VIDEO_H263   | 'video/h263'          | 表示视频/h263类型。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23      |
-| VIDEO_AVC    | 'video/avc'           | 表示视频/avc类型。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23       |
-| VIDEO_MPEG2  | 'video/mpeg2'         | 表示视频/mpeg2类型。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23     |
-| VIDEO_MPEG4  | 'video/mp4v-es'         | 表示视频/mpeg4类型。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23     |
-| VIDEO_VP8    | 'video/x-vnd.on2.vp8' | 表示视频/vp8类型。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23       |
-| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | 表示视频/H265类型。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23|
-| AUDIO_AAC    | 'audio/mp4a-latm'     | 表示音频/mp4a-latm类型。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
-| AUDIO_VORBIS | 'audio/vorbis'        | 表示音频/vorbis类型。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23    |
-| AUDIO_FLAC   | 'audio/flac'          | 表示音频/flac类型。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23      |
-| AUDIO_MP3<sup>12+</sup>   | 'audio/mpeg'          | 表示音频/mpeg类型。<br>**ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23      |
-| AUDIO_G711MU<sup>12+</sup>   | 'audio/g711mu'     | 表示音频/G711-mulaw类型。<br>**ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
-| AUDIO_AMR_NB<sup>18+</sup>   | 'audio/3gpp'     | 表示音频/amr-nb类型。<br>**ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23 |
-| AUDIO_AMR_WB<sup>18+</sup>   | 'audio/amr-wb'     | 表示音频/amr-wb类型。<br>**ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23 |
+| VIDEO_H263   | 'video/h263'          | 表示视频/H.263类型。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23      |
+| VIDEO_AVC    | 'video/avc'           | 表示视频/H.264类型。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23       |
+| VIDEO_MPEG2  | 'video/mpeg2'         | 表示视频/MPEG-2类型。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23     |
+| VIDEO_MPEG4  | 'video/mp4v-es'         | 表示视频/MPEG-4类型。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23     |
+| VIDEO_VP8    | 'video/x-vnd.on2.vp8' | 表示视频/VP8类型。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23       |
+| VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | 表示视频/H.265类型。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23|
+| AUDIO_AAC    | 'audio/mp4a-latm'     | 表示音频/AAC类型。 <br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_VORBIS | 'audio/vorbis'        | 表示音频/Vorbis类型。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23    |
+| AUDIO_FLAC   | 'audio/flac'          | 表示音频/FLAC类型。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23      |
+| AUDIO_RAW    | 'audio/raw'           | 表示音频/RAW类型。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| AUDIO_MP3<sup>12+</sup>   | 'audio/mpeg'          | 表示音频/MPEG类型。<br>**ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23      |
+| AUDIO_G711MU<sup>12+</sup>   | 'audio/g711mu'     | 表示音频/G.711 μ-law类型。<br>**ArkTS-Dyn起始版本：** 12<br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_AMR_NB<sup>18+</sup>   | 'audio/3gpp'     | 表示音频/AMR-NB类型。<br>**ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_AMR_WB<sup>18+</sup>   | 'audio/amr-wb'     | 表示音频/AMR-WB类型。<br>**ArkTS-Dyn起始版本：** 18<br> **ArkTS-Sta起始版本：** 23 |
+
+## DestHDRMode
+ 
+表示转码目标文件的HDR（High Dynamic Range，高动态范围）格式枚举。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+ 
+**系统能力：** SystemCapability.Multimedia.Media.AVTranscoder
+ 
+| 名称            | 值                    | 说明                     |
+| --------------- | --------------------- | ------------------------ |
+| SDR             | 0                     | 表示转码为SDR（Standard Dynamic Range，标准动态范围）视频模式。      |
+| AUTO_HDR_VIVID  | 1                     | 表示HDR Vivid（菁彩HDR）自动转码模式。仅当源文件格式为HDR Vivid时，目标文件格式为HDR Vivid，其他情况下目标文件格式为SDR。 |
 
 ## AacProfile<sup>22+</sup>
 
@@ -131,7 +151,7 @@ Codec MIME类型枚举。
 | MD_KEY_MIME_TYPE<sup>23+</sup>  | 'mime_type'  | 表示轨道的mime_type类型，其对应键值类型为string。对于音视频轨道，该值与MD_KEY_CODEC_MIME相同。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
 | MD_KEY_REFERENCE_TRACK_IDS<sup>23+</sup>  | 'ref_track_ids'  | 表示此轨道与其他轨道的引用关系，其对应键值类型为string，以逗号分隔。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
 | MD_KEY_TRACK_REFERENCE_TYPE<sup>23+</sup>  | 'track_ref_type'  | 表示此轨道作为辅助轨的辅助类型，其对应键值类型为string。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
-
+| MD_KEY_TRACK_PLAYABLE  | 'is_playable'  | 表示此轨道是否可以正常播放，其对应键值类型为boolean。true表示可以正常播放，false表示不可以正常播放。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.1.0<br>**ArkTS-Sta起始版本：** 26.1.0|
 ## FetchResult<sup>23+</sup>
 
 表示批量获取缩略图操作结果的枚举。
@@ -174,21 +194,19 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**ArkTS-Dyn起始版本：** 23
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称                               | 值                                   | 说明                                       |
 | ---------------------------------- | ------------------------------------ | ------------------------------------------ |
-| PREPARE_DURATION                   | 'prepare_duration'                   | 表示准备时长，单位为毫秒（ms）。           |
-| RESOURCE_CONNECTION_DURATION       | 'resource_connection_duration'       | 表示资源建链时长，单位为毫秒（ms）。       |
-| FIRST_FRAME_DECAPSULATION_DURATION | 'first_frame_decapsulation_duration' | 表示第一帧的解封装时长，单位为毫秒（ms）。 |
-| TOTAL_PLAYING_TIME                 | 'total_playback_time'                | 表示总的播放时长，单位为毫秒（ms）。       |
-| DOWNLOAD_REQUESTS_COUNT            | 'loading_requests_count'             | 表示总的请求次数。<br> **模型约束：** 此接口仅可在Stage模型下使用。                         |
-| TOTAL_DOWNLOAD_TIME                | 'total_loading_time'                 | 表示总的加载时长，单位为毫秒（ms）。       |
-| TOTAL_DOWNLOAD_SIZE                | 'total_loading_bytes'                | 表示总的加载大小，单位为字节（Byte）。<br> **模型约束：** 此接口仅可在Stage模型下使用。             |
-| STALLING_COUNT                     | 'stalling_count'                     | 表示总的卡顿次数。                         |
-| TOTAL_STALLING_TIME                | 'total_stalling_time'                | 表示总的卡顿时长，单位为毫秒（ms）。       |
+| PREPARE_DURATION                   | 'prepare_duration'                   | 表示准备时长，单位为毫秒（ms）。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23           |
+| RESOURCE_CONNECTION_DURATION       | 'resource_connection_duration'       | 表示资源建链时长，单位为毫秒（ms）。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23       |
+| FIRST_FRAME_DECAPSULATION_DURATION | 'first_frame_decapsulation_duration' | 表示第一帧的解封装时长，单位为毫秒（ms）。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| TOTAL_PLAYING_TIME                 | 'total_playback_time'                | 表示总的播放时长，单位为毫秒（ms）。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23       |
+| DOWNLOAD_REQUESTS_COUNT            | 'loading_requests_count'             | 表示总的请求次数。<br> **模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23                         |
+| TOTAL_DOWNLOAD_TIME                | 'total_loading_time'                 | 表示总的加载时长，单位为毫秒（ms）。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23       |
+| TOTAL_DOWNLOAD_SIZE                | 'total_loading_bytes'                | 表示总的加载大小，单位为字节（Byte）。<br> **模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23             |
+| STALLING_COUNT                     | 'stalling_count'                     | 表示总的卡顿次数。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23                         |
+| TOTAL_STALLING_TIME                | 'total_stalling_time'                | 表示总的卡顿时长，单位为毫秒（ms）。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23       |
+| LIP_ASYNC_COUNT                    | 'lip_async_count'                    | 表示总的音画不同步的次数。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0       |
+| TOTAL_LIP_ASYNC_TIME               | 'total_lip_async_time'               | 表示总的音画不同步时长，单位为毫秒（ms）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0       |
 
 ## BufferingInfoType<sup>8+</sup>
 
@@ -314,7 +332,7 @@ Codec MIME类型枚举。
 | 名称                      | 值   | 说明                   |
 | ------------------------- | ---- | ---------------------- |
 | AUDIO_SOURCE_TYPE_DEFAULT | 0    | 默认的音频输入源类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| AUDIO_SOURCE_TYPE_MIC     | 1    | 表示MIC的音频输入源。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| AUDIO_SOURCE_TYPE_MIC     | 1    | 表示MIC的音频输入源。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
 | AUDIO_SOURCE_TYPE_VOICE_RECOGNITION<sup>12+</sup> | 2    | 表示语音识别场景的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 | AUDIO_SOURCE_TYPE_VOICE_COMMUNICATION<sup>12+</sup>     | 7    | 表示语音通话场景的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 | AUDIO_SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup> | 10    | 表示短语音消息的音频源。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
@@ -344,7 +362,7 @@ Codec MIME类型枚举。
 | 名称        | 值    | 说明                  |
 | ----------- | ----- | --------------------- |
 | CFT_MPEG_4  | 'mp4' | 视频的容器格式，MP4。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
-| CFT_MPEG_4A | 'm4a' | 音频的容器格式，M4A。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12 开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
+| CFT_MPEG_4A | 'm4a' | 音频的容器格式，M4A。<br> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
 | CFT_MP3<sup>12+</sup>  | 'mp3' | 音频的容器格式，MP3。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | CFT_WAV<sup>12+</sup>  | 'wav' | 音频的容器格式，WAV。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
 | CFT_AMR<sup>18+</sup>  | 'amr' | 音频的容器格式，AMR。<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23 |
@@ -363,7 +381,7 @@ Codec MIME类型枚举。
 | 名称                          | 值   | 说明                            |
 | ----------------------------- | ---- | ------------------------------- |
 | APP_CREATE  | 0    | 由应用自行在沙箱创建媒体文件。 |
-| AUTO_CREATE_CAMERA_SCENE  | 1    | 由系统创建媒体文件，当前仅在相机录制场景下生效，会忽略应用设置的url。 |
+| AUTO_CREATE_CAMERA_SCENE  | 1    | 由系统创建媒体文件，会忽略应用设置的url。 |
 
 ## HdrType<sup>12+</sup>
 
@@ -505,6 +523,27 @@ Codec MIME类型枚举。
 | WINDOW_ONLY | 0    | 仅显示窗口列表。 |
 | SCREEN_ONLY | 1    | 仅显示屏幕列表。 |
 | SCREEN_AND_WINDOW | 2    | 同时显示屏幕列表和窗口列表。 |
+| APP_ONLY | 3    | 仅显示应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| WINDOW_AND_APP | 4    | 同时显示窗口和应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SCREEN_AND_APP | 5    | 同时显示屏幕和应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| SCREEN_WINDOW_AND_APP | 6    | 同时显示屏幕、窗口和应用模式。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## AVScreenCaptureAutoPauseCaptureScene
+
+表示自动暂停屏幕录制场景的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称 | 值 | 说明 |
+| -------------------------- | ---- | -------------------------------------- |
+| SCENE_NONE | 0 | 未设置任何场景；在任何场景下都不会自动暂停屏幕录制。 |
+| SCENE_SCREEN_FOLD_STATE_CHANGE | 1 << 0 | 屏幕折叠状态发生变化的场景。 |
 
 ## AVMetricsEventType<sup>23+</sup>
 
@@ -519,6 +558,12 @@ Codec MIME类型枚举。
 | 名称                       | 值   | 说明                                   |
 | -------------------------- | ---- | -------------------------------------- |
 | AV_METRICS_EVENT_STALLING | 1    | 表示播放卡顿的指标事件。 |
+| AV_METRICS_EVENT_LIP_ASYNC | 2    | 表示音画不同步的指标事件。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| AV_METRICS_EVENT_LOADINGRATE_CHANGE | 3    |表示加载速率变化超过10%的事件。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| AV_METRICS_EVENT_LOADING_ERROR | 4    |表示加载数据请求错误的事件。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| AV_METRICS_EVENT_CONTENT_CHANGED | 5    |表示播放内容切换的事件。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| AV_METRICS_EVENT_CONTENT_DISCONTINUITY | 6    |表示播放内容不连续的事件。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| AV_METRICS_EVENT_AUDIO_ABNORMAL | 7    |表示音频状态变化的事件。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## PlaylistLoopMode
 
@@ -540,6 +585,48 @@ Codec MIME类型枚举。
 | PLAYLIST_LOOP_MODE_ONE | 2    | 单曲循环模式。 |
 | PLAYLIST_LOOP_MODE_SHUFFLE | 3    | 随机循环模式。 |
 | PLAYLIST_LOOP_MODE_NONE | 4    | 关闭循环模式。 |
+
+## PlaybackCommand
+
+表示可执行的播控指令枚举。用于应用在[prepare()](arkts-apis-media-AVPlayer.md#prepare9)完成后，查询该片源是否可以执行对应的播放控制操作。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称                       | 值   | 说明                                   |
+| -------------------------- | ---- | -------------------------------------- |
+| PLAYBACK_COMMAND_SEEK | 0    | 表示视频跳转操作。可通过[checkSupportPlaybackCommand](arkts-apis-media-AVPlayer.md#checksupportplaybackcommand)查询当前片源是否支持该操作。 |
+| PLAYBACK_COMMAND_RATE | 1    | 表示调整播放速率的操作。可通过[checkSupportPlaybackCommand](arkts-apis-media-AVPlayer.md#checksupportplaybackcommand)查询当前片源是否支持该操作。 |
+
+## SideBySideTransparentVideoLayoutMode
+
+表示并排（Side-by-Side）模式下透明视频布局模式的枚举。
+
+> **说明：**
+>
+> 用于指定透明视频的Alpha数据在图像中的位置，以便播放器正确合成透明视频。Alpha是描述像素不透明度的标量数据。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称                       | 值   | 说明                                   |
+| -------------------------- | ---- | -------------------------------------- |
+| SIDE_BY_SIDE_LAYOUT_HORIZONTAL | 0    | 表示透明视频为左右布局，左边数据为Alpha数据。 |
+| SIDE_BY_SIDE_LAYOUT_VERTICAL | 1    | 表示透明视频为上下布局，上边数据为Alpha数据。 |
+| SIDE_BY_SIDE_LAYOUT_HORIZONTAL_REVERSE | 2    | 表示透明视频为左右布局，右边数据为Alpha数据。 |
+| SIDE_BY_SIDE_LAYOUT_VERTICAL_REVERSE | 3    | 表示透明视频为上下布局，下边数据为Alpha数据。 |
 
 ## AudioEncoder<sup>(deprecated)</sup>
 
@@ -565,7 +652,7 @@ Codec MIME类型枚举。
 ## AudioOutputFormat<sup>(deprecated)</sup>
 
 > **说明：**
-> 从API version 6开始支持，从API version 8 开始废弃，建议使用[ContainerFormatType](#containerformattype8)替代。
+> 从API version 6开始支持，从API version 8开始废弃，建议使用[ContainerFormatType](#containerformattype8)替代。
 
 表示音频封装格式的枚举。
 

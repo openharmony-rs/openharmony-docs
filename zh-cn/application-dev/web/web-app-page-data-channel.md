@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -10,16 +10,16 @@
 前端页面和应用侧之间可以用[createWebMessagePorts()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#createwebmessageports)接口创建消息端口来实现两端的通信。
 
 
-在下面的示例中，应用侧页面中通过createWebMessagePorts方法创建两个消息端口，再把其中一个端口通过[postMessage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage)接口发送到前端页面，便可以在前端页面和应用侧之间互相发送消息。端口使用完毕后或Webview对象销毁前通过[close](../reference/apis-arkweb/arkts-apis-webview-WebMessagePort.md#close)接口关闭端口。
+在下面的示例中，应用侧页面中通过createWebMessagePorts()方法创建两个消息端口，再把其中一个端口通过[postMessage()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#postmessage)接口发送到前端页面，便可以在前端页面和应用侧之间互相发送消息。端口使用完毕后或Webview对象销毁前通过[close()](../reference/apis-arkweb/arkts-apis-webview-WebMessagePort.md#close)接口关闭端口。
 
 
 - 应用侧代码。
-
-  ```ts
-  // xxx.ets
+  <!-- @[create_a_message_port_to_implement_communication_between_the_two_ends](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry3/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   @Entry
   @Component
   struct WebComponent {
@@ -27,7 +27,7 @@
     ports: webview.WebMessagePort[] = [];
     @State sendFromEts: string = 'Send this message from ets to HTML';
     @State receivedFromHtml: string = 'Display received message send from HTML';
-
+  
     build() {
       Column() {
         // 展示接收到的来自HTML的内容
@@ -37,7 +37,7 @@
           .onChange((value: string) => {
             this.sendFromEts = value;
           })
-
+  
         // 该内容可以放在onPageEnd生命周期中调用。
         Button('postMessage')
           .onClick(() => {
@@ -69,10 +69,11 @@
                 console.error(`ports is null, Please initialize first`);
               }
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-
+  
         // 4、使用应用侧的端口给另一个已经发送到html的端口发送消息。
         Button('SendDataToHTML')
           .onClick(() => {
@@ -83,10 +84,11 @@
                 console.error(`ports is null, Please initialize first`);
               }
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-
+  
         // 5、关闭端口。  
         Button('closePort')
         .onClick(() => {
@@ -95,10 +97,11 @@
               this.ports[0].close();
               this.ports = [];
             } else {
-              console.error("ports is null, not need close");
+              console.error(`ports is null, not need close`);
             }
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
         Web({ src: $rawfile('index.html'), controller: this.controller })

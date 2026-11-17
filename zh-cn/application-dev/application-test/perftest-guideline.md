@@ -5,7 +5,7 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
 
 ## 简介
 
@@ -51,15 +51,27 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
 
     定义所需测试的性能指标列表`metrics`，类型为`Array<PerfMetric>`，其中<!--RP2-->[PerfMetric](../reference/apis-test-kit/js-apis-perftest.md#perfmetric)<!--RP2End-->为框架支持采集的性能指标枚举。
 
+    **ArkTS-Dyn示例：**
+
     <!-- @[metricsDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
     
     ``` TypeScript
     let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.CPU_USAGE]; // 定义待测指标
     ```
 
+    **ArkTS-Sta示例：**
+
+    <!-- @[metricsDefine_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/perfTestStatic/entry/src/main/src/test/CPUMetric.test.ets) -->
+    
+    ``` TypeScript
+    let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.CPU_USAGE];
+    ```
+
 2. 定义被测代码段和环境复位代码段
 
     被测代码段`actionCode`是一个类型为`Callback<Callback<boolean>>`的回调函数，框架在测试期间会自动调用此回调函数，并采集性能数据。执行结束时需调用入参`Callback<boolean>`函数通知框架执行完成，否则会导致代码段执行超时。例如测试`Utils.CalculateTest`方法性能时，通过调用`finish(true)`通知框架代码段执行完成。
+
+    **ArkTS-Dyn示例：**
 
     <!-- @[callbackDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
     
@@ -70,7 +82,20 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
     };
     ```
 
+    **ArkTS-Sta示例：**
+
+    <!-- @[callbackDefine_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/perfTestStatic/entry/src/main/src/test/CPUMetric.test.ets) -->
+    
+    ``` TypeScript
+    let actionCode: Callback<Callback<boolean>> = (finish: Callback<boolean>) => {
+      Utils.calculateTest();
+      finish(true);
+    };
+    ```
+
     此外，框架支持定义环境复位代码段`resetCode`，用于在单次测试后进行环境复位，类型和使用方法与`actionCode`相同。`resetCode`会在`actionCode`执行完成后执行，但执行期间不会采集应用性能数据。
+
+    **ArkTS-Dyn示例：**
 
     <!-- @[resetCodeDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
     
@@ -81,10 +106,23 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
     };
     ```
 
+    **ArkTS-Sta示例：**
+
+    <!-- @[resetCodeDefine_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/perfTestStatic/entry/src/main/src/test/CPUMetric.test.ets) -->
+    
+    ``` TypeScript
+    let resetCode: Callback<Callback<boolean>> = (finish: Callback<boolean>) => {
+      Utils.reset();
+      finish(true);
+    };
+    ```
+
 3. 构造测试策略对象
 
     除以上步骤定义的属性外，框架还支持定义其他测试策略，从而帮助开发者进行更加精确的自动化性能测试。所有测试策略通过<!--RP3-->[PerfTestStrategy](../reference/apis-test-kit/js-apis-perftest.md#perfteststrategy)<!--RP3End-->对象定义和保存，性能测试期间会依据此策略执行并采集数据。
     
+    **ArkTS-Dyn示例：**
+
     <!-- @[strategyDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
     
     ``` TypeScript
@@ -99,9 +137,26 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
     };
     ```
 
+    **ArkTS-Sta示例：**
+
+    <!-- @[strategyDefine_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/perfTestStatic/entry/src/main/src/test/CPUMetric.test.ets) -->
+    
+    ``` TypeScript
+    let perfTestStrategy: PerfTestStrategy = {
+      metrics: metrics,
+      actionCode: actionCode,
+      resetCode: resetCode,
+      bundleName: 'com.samples.test.perftest.static',
+      iterations: 10,
+      timeout: 20000
+    };
+    ```
+
 ### 创建测试任务和启动测试
 
   使用<!--RP4-->[PerfTest.create()](../reference/apis-test-kit/js-apis-perftest.md#create)<!--RP4End-->创建测试任务时，传入上文定义的`PerfTestStrategy`对象。然后调用<!--RP5-->[PerfTest.run()](../reference/apis-test-kit/js-apis-perftest.md#run)<!--RP5End-->异步接口启动测试。测试会自动迭代执行被测代码段并采集性能数据。使用await语法糖同步等待执行完成后再进行后续操作。
+
+**ArkTS-Dyn示例：**
 
 <!-- @[startTest_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
 
@@ -110,9 +165,20 @@ let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // 创建测试任�
 await perfTest.run(); // 执行测试，异步函数需使用await同步等待完成
 ```
 
+**ArkTS-Sta示例：**
+
+<!-- @[startTest_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/perfTestStatic/entry/src/main/src/test/CPUMetric.test.ets) -->
+
+``` TypeScript
+let perfTest: PerfTest = PerfTest.create(perfTestStrategy);
+await perfTest.run();
+```
+
 ### 获取测试结果
 
   性能测试运行完成后，调用<!--RP6-->[PerfTest.getMeasureResult()](../reference/apis-test-kit/js-apis-perftest.md#getmeasureresult)<!--RP6End-->获取各个指标的测试结果。结果存储在<!--RP7-->[PerfMeasureResult](../reference/apis-test-kit/js-apis-perftest.md#perfmeasureresult)<!--RP7End-->对象中。若测试未完成或指标未定义，则抛出错误码。
+
+**ArkTS-Dyn示例：**
 
 <!-- @[getResult_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
 
@@ -121,14 +187,33 @@ let res1: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.DURATION); //
 let res2: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.CPU_USAGE); // 获取CPU使用率指标的测试结果
 ```
 
+**ArkTS-Sta示例：**
+
+<!-- @[getResult_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/perfTestStatic/entry/src/main/src/test/CPUMetric.test.ets) -->
+
+``` TypeScript
+let res1: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.DURATION);
+let res2: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.CPU_USAGE);
+```
+
 ### 销毁创建的对象
 
   性能测试完成后，若无需继续使用`PerfTest`对象，可以调用<!--RP8-->[PerfTest.destroy()](../reference/apis-test-kit/js-apis-perftest.md#destroy)<!--RP8End-->销毁对象以释放内存。
+
+**ArkTS-Dyn示例：**
 
 <!-- @[exit_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
 
 ``` TypeScript
 perfTest.destroy(); // 销毁PerfTest对象
+```
+
+**ArkTS-Sta示例：**
+
+<!-- @[exit_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/perfTestStatic/entry/src/main/src/test/CPUMetric.test.ets) -->
+
+``` TypeScript
+perfTest.destroy();
 ```
 
 ## 完整示例
@@ -138,6 +223,8 @@ perfTest.destroy(); // 销毁PerfTest对象
 下面以测试应用内指定逻辑执行时的基础性能数据为例，应用内定义了一个名为'Utils.CalculateTest()'的方法，性能测试时执行此方法，并采集执行期间的耗时和应用CPU占用率。
 
 1. 在 main > ets > utils 文件夹下新增 Utils.ets 文件，在文件中编写自定义的函数。
+
+    **ArkTS-Dyn示例：**
 
     <!-- @[utils_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/main/ets/utils/Utils.ets) -->
     
@@ -158,7 +245,30 @@ perfTest.destroy(); // 销毁PerfTest对象
     }
     ```
 
+    **ArkTS-Sta示例：**
+
+    <!-- @[utils_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/perfTestStatic/entry/src/main/ets/utils/Utils.ets) -->
+    
+    ``` TypeScript
+    export class Utils {
+      static num: number = 0;
+      static maxNum: number = 10000;
+    
+      public static calculateTest(): void {
+        for (let index: number = 0; index < Utils.maxNum; index++) {
+          Utils.num++;
+        }
+      }
+    
+      public static reset(): void {
+        Utils.num = 0;
+      }
+    }
+    ```
+
 2. 在 ohosTest > ets > test 文件夹下 CPUMetric.test.ets 文件中编写具体测试代码。
+
+    **ArkTS-Dyn示例：**
 
     <!-- @[CPUMetric_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) -->
     
@@ -205,11 +315,60 @@ perfTest.destroy(); // 销毁PerfTest对象
     }
     ```
 
+    **ArkTS-Sta示例：**
+
+    <!-- @[CPUMetric_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/perfTestStatic/entry/src/main/src/test/CPUMetric.test.ets) -->
+    
+    ``` TypeScript
+    import { describe, expect, it, Level } from '../../../hypium/index';
+    import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+    import { PerfMeasureResult, PerfMetric, PerfTest, PerfTestStrategy } from '@ohos.test.PerfTest';
+    import { Callback } from '@ohos.base';
+    import { Utils } from '../../ets/utils/Utils.ets';
+    
+    export default function PerfTestTest(): void {
+      describe('PerfTestTest2', (): void => {
+        it('testExample1', 0, async (): Promise<void> => {
+          let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.CPU_USAGE];
+          let actionCode: Callback<Callback<boolean>> = (finish: Callback<boolean>) => {
+            Utils.calculateTest();
+            finish(true);
+          };
+          let resetCode: Callback<Callback<boolean>> = (finish: Callback<boolean>) => {
+            Utils.reset();
+            finish(true);
+          };
+          let perfTestStrategy: PerfTestStrategy = {
+            metrics: metrics,
+            actionCode: actionCode,
+            resetCode: resetCode,
+            bundleName: 'com.samples.test.perftest.static',
+            iterations: 10,
+            timeout: 20000
+          };
+          try {
+            let perfTest: PerfTest = PerfTest.create(perfTestStrategy);
+            await perfTest.run();
+            let res1: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.DURATION);
+            let res2: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.CPU_USAGE);
+            perfTest.destroy();
+            expect(res1.average).assertLessOrEqual(1000);
+            expect(res2.average).assertLessOrEqual(30);
+          } catch (error) {
+            expect(false).assertTrue();
+          }
+        })
+      })
+    }
+    ```
+
 ### 场景化性能数据采集示例
 
 下面以测试应用内列表滑动的帧率为例，实现如下功能：打开指定应用，使用UI测试框架接口查找类型为'Scroll'的可滚动组件，并进行滑动操作，采集期间的列表滑动帧率数据。
 
 1. 在 main > ets > pages 文件夹下编写 PageListPage.ets 页面代码，作为被测示例demo。
+
+    **ArkTS-Dyn示例：**
 
     <!-- @[scroll_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/main/ets/pages/PageListPage.ets) -->
     
@@ -248,7 +407,48 @@ perfTest.destroy(); // 销毁PerfTest对象
     }
     ```
 
+    **ArkTS-Sta示例：**
+
+    <!-- @[scroll_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/perfTestStatic/entry/src/main/ets/pages/PageListPage.ets) -->
+    
+    ``` TypeScript
+    @Entry
+    @Component
+    struct ListPage {
+      scroller: Scroller = new Scroller();
+      private arr: int[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    
+      build() {
+        Row() {
+          Column() {
+            Scroll(this.scroller) {
+              Column() {
+                ForEach(this.arr, (item: int) => {
+                  Text(item.toString())
+                    .width('90%')
+                    .height('40%')
+                    .fontSize(80)
+                    .textAlign(TextAlign.Center)
+                    .margin({ top: 10 })
+                }, (item: int) => item.toString())
+              }
+            }
+            .width('100%')
+            .height('100%')
+            .scrollable(ScrollDirection.Vertical)
+            .scrollBar(BarState.On)
+            .scrollBarColor(Color.Gray)
+          }
+          .width('100%')
+        }
+        .height('100%')
+      }
+    }
+    ```
+
 2. 在ohosTest > ets > test文件夹下 slideFps.test.ets 文件中编写具体测试代码。
+
+    **ArkTS-Dyn示例：**
 
     <!-- @[slideFps_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/SlideFps.test.ets) -->
     
@@ -294,7 +494,7 @@ perfTest.destroy(); // 销毁PerfTest对象
             await driver.delayMs(3000);
             finish(true);
           };
-          let resetCode = async (finish: Callback<boolean>) => { // 复位环境，将列表划至顶部
+          let resetCode = async (finish: Callback<boolean>) => { // 复位环境，将列表滑至顶部
             await scroll.scrollToTop(40000);
             await driver.delayMs(1000);
             finish(true);
@@ -322,6 +522,81 @@ perfTest.destroy(); // 销毁PerfTest对象
     }
     ```
 
+    **ArkTS-Sta示例：**
+
+    <!-- @[slideFps_sta_sample](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Test-Sta/perfTestStatic/entry/src/main/src/test/SlideFps.test.ets) -->
+    
+    ``` TypeScript
+    import { describe, beforeAll, expect, it, Level } from '../../../hypium/index';
+    import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+    import { Driver, ON } from '@ohos.UiTest';
+    import { PerfMeasureResult, PerfMetric, PerfTest, PerfTestStrategy } from '@ohos.test.PerfTest';
+    import { Callback } from '@ohos.base';
+    import Want from '@ohos.app.ability.Want';
+    import { TestHelper, startAbility, stopApplication } from './TestHelper.test';
+    
+    const delegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+    const bundleName: string = abilityDelegatorRegistry.getArguments().bundleName;
+    
+    export default function PerfTestTest(): void {
+      describe('PerfTestTest1', () => {
+        beforeAll(async () => {
+          await startAbility(bundleName, 'EntryAbility');
+          await TestHelper.msSleep(2000);
+        })
+        it('testExample2', Level.LEVEL3, async (): Promise<void> => {
+          let driver = Driver.create();
+          await TestHelper.pushUrl('pages/Index', 'Index');
+          await driver!.delayMs(2000);
+          let toPageListBtn = await driver.findComponent(ON.id('toPageList'));
+          if (toPageListBtn != null) {
+            await toPageListBtn.click();
+          }
+          await driver.delayMs(1000);
+          let scroll = await driver.findComponent(ON.type('Scroll'));
+          if (scroll == null) {
+            return;
+          }
+          await driver.delayMs(1000);
+          let center = await scroll.getBoundsCenter();
+          await driver.delayMs(1000);
+          let metrics: Array<PerfMetric> = [PerfMetric.LIST_SWIPE_FPS];
+          let actionCode = (finish: Callback<boolean>) => {
+            (async () => {
+              await driver.fling({ x: center.x, y: Math.floor(center.y * 3 / 2).toInt() },
+                { x: center.x, y: Math.floor(center.y / 2).toInt() }, 50, 20000);
+              await driver.delayMs(3000);
+              finish(true);
+            })().awaitSync()
+          };
+          let resetCode = (finish: Callback<boolean>) => {
+            (async () => {
+              await scroll!.scrollToTop(40000);
+              await driver.delayMs(1000);
+              finish(true);
+            })().awaitSync()
+          };
+          let perfTestStrategy: PerfTestStrategy = {
+            metrics: metrics,
+            actionCode: actionCode,
+            resetCode: resetCode,
+            iterations: 5,
+            timeout: 50000,
+          };
+          try {
+            let perfTest: PerfTest = PerfTest.create(perfTestStrategy);
+            await perfTest.run();
+            let res: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.LIST_SWIPE_FPS);
+            perfTest.destroy();
+            expect(res.average).assertLargerOrEqual(30);
+          } catch (error) {
+            console.error(`Failed to execute perftest. Cause:${JSON.stringify(error)}`);
+          }
+        })
+      })
+    }
+    ```
+
 <!--Del-->
-PerfTest详细工程示例可参考[白盒性能测试示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest)。
+PerfTest详细工程示例可参考[白盒性能测试示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Test/perftest)。
 <!--DelEnd-->

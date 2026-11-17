@@ -424,11 +424,13 @@ The configured icon and label information can be displayed in **Task Center** an
 
 Allows an application to start its UIAbility by using C APIs.
 
-Currently, this permission is available only to 2-in-1 device applications.
+This permission allows starting a UIAbility within the same application from the native layer, suitable for scenarios where C/C++ APIs are called to launch a UIAbility.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets | Phones
 
 **Valid since**: 15
 
@@ -686,3 +688,31 @@ With this permission, the application can query available types of pluggable emb
 **Supported devices**: PCs/2-in-1 devices | phones | tablets
 
 **Valid since**: 24
+
+## ohos.permission.QUERY_PUBLIC_CLI_TOOL
+
+Allows an application to query available CLI tools.
+
+With this permission, third-party agent applications can access the Claw function.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
+
+## ohos.permission.EXEC_PUBLIC_CLI_TOOL
+
+Allows an application to execute available CLI tools.
+
+With this permission, third-party agent applications can access the Claw function.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1

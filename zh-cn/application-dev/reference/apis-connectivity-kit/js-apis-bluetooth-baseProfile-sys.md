@@ -3,11 +3,11 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-baseProfile模块提供了基础的profile方法。
+baseProfile模块提供了蓝牙基础[Profile](../../connectivity/bluetooth/terminology.md#profile)的通用方法，包括连接策略的设置与获取等能力，供各蓝牙Profile模块（如[A2DP](../../connectivity/bluetooth/terminology.md#a2dp)、[HFP](../../connectivity/bluetooth/terminology.md#hfp)等）继承使用，帮助开发者管理蓝牙设备的连接策略。
 
 > **说明：**
 >
@@ -26,15 +26,17 @@ import { baseProfile } from '@kit.ConnectivityKit';
 
 枚举，表示Profile的连接策略。
 
-**系统接口：** 此接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 | 名称                             | 值      | 说明            |
 | -------------------------------- | ------ | --------------- |
-| CONNECTION_STRATEGY_UNSUPPORTED   | 0 | 当设备未配对时的默认连接策略。<br/>此接口为系统接口。 |
-| CONNECTION_STRATEGY_ALLOWED  | 1 |  设备允许接受或发起配对时的连接策略。<br/>此接口为系统接口。 |
-| CONNECTION_STRATEGY_FORBIDDEN  | 2 | 设备不允许接受或发起配对时的连接策略。<br/>此接口为系统接口。  |
+| CONNECTION_STRATEGY_UNSUPPORTED   | 0 | 当设备未配对时的默认连接策略。<br>此接口为系统接口。 |
+| CONNECTION_STRATEGY_ALLOWED  | 1 |  设备允许接受或发起配对时的连接策略。<br>此接口为系统接口。 |
+| CONNECTION_STRATEGY_FORBIDDEN  | 2 | 设备不允许接受或发起配对时的连接策略。<br>此接口为系统接口。  |
 
 
 
@@ -42,7 +44,7 @@ import { baseProfile } from '@kit.ConnectivityKit';
 
 setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy, callback: AsyncCallback&lt;void&gt;): void
 
-设置该设备Profile的连接策略。使用Callback异步回调。
+设置该设备Profile的连接策略。使用Callback异步回调。例如：在蓝牙设备管理中，需要限制或允许特定设备自动发起或接受配对连接时，可调用此接口设置相应的连接策略。
 
 **系统接口**：此接口为系统接口。
 
@@ -50,7 +52,9 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy, callback: 
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
@@ -73,7 +77,7 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy, callback: 
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
@@ -81,7 +85,7 @@ import { a2dp } from '@kit.ConnectivityKit';
 try {
     let a2dpSrc = a2dp.createA2dpSrcProfile();
     a2dpSrc.setConnectionStrategy('XX:XX:XX:XX:XX:XX', 0, (err: BusinessError) => {
-        console.info('setConnectionStrategy, err: ' + JSON.stringify(err));
+        console.error('setConnectionStrategy, err: ' + JSON.stringify(err));
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -92,7 +96,7 @@ try {
 
 setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy): Promise&lt;void&gt;
 
-设置该设备Profile的连接策略。使用Promise异步回调。
+设置该设备Profile的连接策略。使用Promise异步回调。例如：在蓝牙设备管理中，需要限制或允许特定设备自动发起或接受配对连接时，可调用此接口设置相应的连接策略。
 
 **系统接口**：此接口为系统接口。
 
@@ -100,18 +104,20 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy): Promise&l
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | strategy | [ConnectionStrategy](#connectionstrategy)   | 是    |Profile的连接策略。 |
 
-**返回值：**
+**返回值**：
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | 返回promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -128,7 +134,7 @@ setConnectionStrategy(deviceId: string, strategy: ConnectionStrategy): Promise&l
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
@@ -149,7 +155,7 @@ try {
 
 getConnectionStrategy(deviceId: string, callback: AsyncCallback&lt;ConnectionStrategy&gt;): void
 
-获取该Profile的连接策略。使用Callback异步回调。
+获取该Profile的连接策略。使用Callback异步回调。例如：在蓝牙设备管理中，需要查询当前设备的连接策略以展示策略状态或决定后续连接操作时调用。
 
 **系统接口**：此接口为系统接口。
 
@@ -157,12 +163,14 @@ getConnectionStrategy(deviceId: string, callback: AsyncCallback&lt;ConnectionStr
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| callback | AsyncCallback&lt;[ConnectionStrategy](#connectionstrategy)&gt; | 是    | 回调函数。当获取策略成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback&lt;[ConnectionStrategy](#connectionstrategy)&gt; | 是    | 回调函数。当获取策略成功，err为undefined，data为获取到的连接策略，否则为错误对象。 |
 
 **错误码**：
 
@@ -179,7 +187,7 @@ getConnectionStrategy(deviceId: string, callback: AsyncCallback&lt;ConnectionStr
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
@@ -198,7 +206,7 @@ try {
 
 getConnectionStrategy(deviceId: string): Promise&lt;ConnectionStrategy&gt;
 
-获取该Profile的连接策略。使用Promise异步回调。
+获取该Profile的连接策略。使用Promise异步回调。例如：在蓝牙设备管理中，需要查询当前设备的连接策略以展示策略状态或决定后续连接操作时调用。
 
 **系统接口**：此接口为系统接口。
 
@@ -206,17 +214,19 @@ getConnectionStrategy(deviceId: string): Promise&lt;ConnectionStrategy&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string | 是    | 表示配对的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
-**返回值：**
+**返回值**：
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
-|   Promise&lt;[ConnectionStrategy](js-apis-bluetooth-baseProfile-sys.md#connectionstrategy)&gt; | 返回promise对象。 |
+|   Promise&lt;[ConnectionStrategy](#connectionstrategy)&gt; | 返回Promise对象，包含获取到的连接策略。 |
 
 **错误码**：
 
@@ -233,7 +243,7 @@ getConnectionStrategy(deviceId: string): Promise&lt;ConnectionStrategy&gt;
 |2900004 | Profile not supported.                |
 |2900099 | Operation failed.                        |
 
-**示例：**
+**示例**：
 
 ```js
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';

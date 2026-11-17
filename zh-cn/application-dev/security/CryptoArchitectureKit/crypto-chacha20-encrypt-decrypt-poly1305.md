@@ -7,9 +7,9 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-从API22开始，算法库支持该算法。
+从API version 22开始，算法库支持该算法。
 
-对应的算法规格请查看[对称密钥加解密算法规格：ChaCha20](crypto-sym-encrypt-decrypt-spec.md#chacha20)。
+对应的算法规格请查看[对称密钥加解密算法规格：ChaCha20](crypto-encryption-decryption.md#chacha20)。
 
 ## 开发步骤
 
@@ -17,7 +17,7 @@
 
 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator)、[SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1)，生成密钥算法为ChaCha20的对称密钥（SymKey）。
    
-   如何生成ChaCha20对称密钥，开发者可参考下文示例，并结合[对称密钥生成和转换规格：ChaCha20](crypto-sym-key-generation-conversion-spec.md#chacha20)和[随机生成对称密钥](crypto-generate-sym-key-randomly.md)理解。参考文档与示例可能存在入参差异，请注意区分。
+   如何生成ChaCha20对称密钥，开发者可参考下文示例，并结合[对称密钥生成和转换规格：ChaCha20](crypto-key-generation-conversion.md#chacha20)和[随机生成对称密钥](crypto-generate-sym-key-randomly.md)理解。参考文档与示例可能存在入参差异，请注意区分。
 
 **加密**
 
@@ -29,7 +29,7 @@
 
 4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取加密后的数据。
 
-    > **说明**
+    > **说明：**
     >
     > 由于已使用update传入数据，此处data传入null。
     >
@@ -99,13 +99,13 @@
   async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('ChaCha20|Poly1305');
     await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, poly1305Params);
-    let decryptData = await decoder.update(cipherText);
+    let decryptUpdate = await decoder.update(cipherText);
     // poly1305模式解密doFinal时传入空，验证init时传入的tag数据，如果验证失败会抛出异常。
     let decryptData = await decoder.doFinal(null);
     if (decryptData === null) {
       console.info('poly1305 decrypt result: success, decryptData is null.');
     }
-    return decryptData;
+    return decryptUpdate;
   }
   async function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
@@ -186,13 +186,13 @@
   function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
     let decoder = cryptoFramework.createCipher('ChaCha20|Poly1305');
     decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, poly1305Params);
-    let decryptData = decoder.updateSync(cipherText);
+    let decryptUpdate = decoder.updateSync(cipherText);
     // poly1305模式解密doFinal时传入空，验证init时传入的tag数据，如果验证失败会抛出异常。
     let decryptData = decoder.doFinalSync(null);
     if (decryptData === null) {
       console.info('poly1305 decrypt result: success, decryptData is null.');
     }
-    return decryptData;
+    return decryptUpdate;
   }
   function genSymKeyByData(symKeyData: Uint8Array) {
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };

@@ -1,4 +1,4 @@
-# WorkSchedulerExtensionContext
+# WorkSchedulerExtensionContext (延迟任务调度回调上下文)
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
@@ -7,7 +7,7 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
 
-WorkSchedulerExtensionContext是WorkSchedulerExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
+WorkSchedulerExtensionContext是[WorkSchedulerExtensionAbility](./js-apis-WorkSchedulerExtensionAbility.md#workschedulerextensionability)的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
 WorkSchedulerExtensionContext可直接作为WorkSchedulerExtension的上下文环境，提供允许访问特定于WorkSchedulerExtensionAbility的资源的能力。
 
@@ -19,16 +19,22 @@ WorkSchedulerExtensionContext可直接作为WorkSchedulerExtension的上下文�
 >
 > - 本模块接口仅可在Stage模型下使用。
 
+## 导入模块
+ 
+```ts
+import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';  
+```
+
 ## 使用说明
 
-通过WorkSchedulerExtensionAbility子类实例来获取。
+通过WorkSchedulerExtensionAbility子类实例的context属性获取WorkSchedulerExtensionContext。
 
 ```ts
 import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
 
 class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
   onWorkStart(workInfo: workScheduler.WorkInfo) {
-    let WorkSchedulerExtensionContext = this.context; // 获取WorkSchedulerExtensionContext
+    let workSchedulerExtensionContext = this.context; // 获取WorkSchedulerExtensionContext
   }
 }
 ```

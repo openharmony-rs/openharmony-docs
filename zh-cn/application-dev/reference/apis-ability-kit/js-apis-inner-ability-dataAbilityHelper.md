@@ -9,7 +9,9 @@
 可以通过[acquireDataAbilityHelper](js-apis-ability-featureAbility.md#featureabilityacquiredataabilityhelper7)接口获取DataAbilityHelper对象。
 
 > **说明：**
-> 
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -35,6 +37,10 @@ openFile(uri: string, mode: string, callback: AsyncCallback\<number>): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -74,6 +80,10 @@ openFile(uri: string, mode: string): Promise\<number>
 
 **模型约束**：此接口仅可在FA模型下使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                     |
@@ -85,7 +95,7 @@ openFile(uri: string, mode: string): Promise\<number>
 
 | 类型             | 说明             |
 | ---------------- | ---------------- |
-| Promise\<number> | Promise对象，返回文件说明符。 |
+| Promise\<number> | Promise对象，返回文件描述符。 |
 
 **示例：**
 
@@ -112,6 +122,10 @@ on(type: 'dataChange', uri: string, callback: AsyncCallback\<void>): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -150,6 +164,10 @@ off(type: 'dataChange', uri: string, callback?: AsyncCallback\<void>): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -193,6 +211,10 @@ getType(uri: string, callback: AsyncCallback\<string>): void
 
 **模型约束**：此接口仅可在FA模型下使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名     | 类型                   | 必填 | 说明                                          |
@@ -228,6 +250,10 @@ getType(uri: string): Promise\<string>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -266,6 +292,10 @@ getFileTypes(uri: string, mimeTypeFilter: string, callback: AsyncCallback<Array\
 
 **模型约束**：此接口仅可在FA模型下使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名           | 类型                           | 必填 | 说明                               |
@@ -302,6 +332,10 @@ getFileTypes(uri: string, mimeTypeFilter: string): Promise\<Array\<string>>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -341,6 +375,10 @@ normalizeUri(uri: string, callback: AsyncCallback\<string>): void
 
 **模型约束**：此接口仅可在FA模型下使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名     | 类型                   | 必填 | 说明                                                         |
@@ -377,11 +415,15 @@ normalizeUri(uri: string): Promise\<string>
 
 **模型约束**：此接口仅可在FA模型下使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ---- | ------ | ---- | ----------------------- |
-| uri  | string | 是   | 表示要规范化的uri对象。 |
+| uri  | string | 是   | 表示要反规范化的uri对象。 |
 
 **返回值：**
 
@@ -413,6 +455,10 @@ denormalizeUri(uri: string, callback: AsyncCallback\<string>): void
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -449,6 +495,10 @@ denormalizeUri(uri: string): Promise\<string>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -487,6 +537,10 @@ notifyChange(uri: string, callback: AsyncCallback\<void>): void
 
 **模型约束**：此接口仅可在FA模型下使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名     | 类型                 | 必填 | 说明                     |
@@ -522,6 +576,10 @@ notifyChange(uri: string): Promise\<void>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -559,6 +617,10 @@ insert(uri: string, valuesBucket: [rdb.ValuesBucket](../apis-arkdata/js-apis-dat
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -604,6 +666,10 @@ insert(uri: string, valuesBucket: [rdb.ValuesBucket](../apis-arkdata/js-apis-dat
 
 **模型约束**：此接口仅可在FA模型下使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名         | 类型             | 必填 | 说明                                                   |
@@ -648,6 +714,11 @@ batchInsert(uri: string, valuesBuckets: Array\<rdb.ValuesBucket>, callback: Asyn
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名         | 类型                    | 必填 | 说明                             |
@@ -688,6 +759,10 @@ batchInsert(uri: string, valuesBuckets: Array<rdb.ValuesBucket>): Promise\<numbe
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -731,6 +806,10 @@ delete(uri: string, predicates: dataAbility.DataAbilityPredicates, callback: Asy
 
 **模型约束**：此接口仅可在FA模型下使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名         | 类型                              | 必填 | 说明                                             |
@@ -769,6 +848,10 @@ delete(uri: string, predicates?: dataAbility.DataAbilityPredicates): Promise\<nu
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -810,6 +893,10 @@ predicates筛选条件为空，自定义数据库删除数据记录的处理逻�
 
 **模型约束**：此接口仅可在FA模型下使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名         | 类型                              | 必填 | 说明                                             |
@@ -845,6 +932,10 @@ update(uri: string, valuesBucket: rdb.ValuesBucket, predicates: dataAbility.Data
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -892,6 +983,10 @@ update(uri: string, valuesBucket: rdb.ValuesBucket, predicates?: dataAbility.Dat
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -941,6 +1036,10 @@ predicates筛选条件为空，自定义更新数据库的处理逻辑。使用c
 
 **模型约束**：此接口仅可在FA模型下使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名         | 类型                              | 必填 | 说明                                             |
@@ -985,6 +1084,10 @@ query(uri: string, columns: Array\<string>, predicates: dataAbility.DataAbilityP
 
 **模型约束**：此接口仅可在FA模型下使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名       | 类型                              | 必填 | 说明                                             |
@@ -1026,6 +1129,10 @@ query(uri: string, callback: AsyncCallback\<ResultSet>): void
 
 **模型约束**：此接口仅可在FA模型下使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名       | 类型                              | 必填 | 说明                                             |
@@ -1061,6 +1168,10 @@ query(uri: string, columns: Array\<string>, callback: AsyncCallback\<ResultSet>)
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1100,6 +1211,10 @@ query(uri: string, predicates: dataAbility.DataAbilityPredicates, callback: Asyn
 
 **模型约束**：此接口仅可在FA模型下使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名       | 类型                              | 必填 | 说明                                             |
@@ -1138,6 +1253,10 @@ query(uri: string, columns?: Array\<string>, predicates?: dataAbility.DataAbilit
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1181,6 +1300,10 @@ call(uri: string, method: string, arg: string, extras: PacMap, callback: AsyncCa
 
 **模型约束**：此接口仅可在FA模型下使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名       | 类型                              | 必填 | 说明                                             |
@@ -1220,6 +1343,10 @@ call(uri: string, method: string, arg: string, extras: PacMap): Promise\<PacMap>
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1265,6 +1392,10 @@ executeBatch(uri: string, operations: Array\<DataAbilityOperation>, callback: As
 
 **模型约束**：此接口仅可在FA模型下使用。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名        | 类型                          | 必填 | 说明                                             |
@@ -1303,6 +1434,10 @@ executeBatch(uri: string, operations: Array\<DataAbilityOperation>): Promise\<Ar
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
 **模型约束**：此接口仅可在FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1344,6 +1479,25 @@ dataAbilityHelper.executeBatch('dataability:///com.example.jsapidemo.UserDataAbi
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
 
+**模型约束**：
+API版本11+：此接口可在Stage模型和FA模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ----- | ---- | ---- | ---- | ---- |
 | [key: string]  | number \| string \| boolean \| Array\<string \| number \| boolean> \| null  | 否 | 是 | 数据存储在键值对中。 |
+
+## PacMap<sup>23+</sup>
+
+type PacMap = Record\<string, int | double | string | boolean | Array<string | int | double | boolean> | null>
+
+用于存储数据的PacMap类型。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23

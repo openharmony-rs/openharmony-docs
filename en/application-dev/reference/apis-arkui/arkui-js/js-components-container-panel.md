@@ -170,4 +170,4 @@ export default {
 }
 ```
 
-![panel6](figures/panel6.gif)
+![panel](figures/panel.gif)

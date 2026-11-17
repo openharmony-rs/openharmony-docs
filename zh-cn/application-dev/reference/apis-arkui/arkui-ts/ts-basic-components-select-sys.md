@@ -14,7 +14,10 @@
 >
 > - 本文仅介绍当前模块的系统接口，其他公开接口参见[select](./ts-basic-components-select.md)。
 
-## menuSystemMaterial<sup>23+</sup>
+## 属性
+
+除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
+### menuSystemMaterial<sup>23+</sup>
 
 menuSystemMaterial(material:Optional\<SystemUiMaterial>)
 
@@ -32,12 +35,12 @@ menuSystemMaterial(material:Optional\<SystemUiMaterial>)
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| material | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SystemUiMaterial](./ts-universal-attributes-image-effect-sys.md#systemuimaterial23)> | 是 | 设置下拉菜单系统材质。材质设置为非法值、undefined时，按照不设置系统材质处理。 |
+| material | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[SystemUiMaterial](./ts-universal-attributes-image-effect.md#systemuimaterial)> | 是 | 设置下拉菜单系统材质。材质设置为非法值、undefined时，按照不设置系统材质处理。 |
 
 ## 示例
 ### 示例1（设置Select和下拉菜单系统材质）
 
-该示例通过调用[menuSystemMaterial](#menusystemmaterial23)接口实现下拉菜单系统材质效果，通过[systemMaterial](./ts-universal-attributes-image-effect-sys.md#systemmaterial23)接口实现select组件系统材质效果。
+该示例通过调用[menuSystemMaterial](#menusystemmaterial23)接口实现下拉菜单系统材质效果，通过[systemMaterial](./ts-universal-attributes-image-effect.md#systemmaterial)接口实现select组件系统材质效果。
 
 从API version 23开始，新增menuSystemMaterial接口和systemMaterial接口。
 

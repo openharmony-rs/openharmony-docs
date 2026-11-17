@@ -2,7 +2,7 @@
 
 <!--Kit: Device Certificate Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @chaceli-->
+<!--Owner: @liutianqi-->
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
@@ -30,13 +30,13 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 | 名称       | 值 |  说明      |
 | ---------- | ------ | --------- |
 | CM_ERROR_NOT_SYSTEM_APP   | 202      | 表示应用程序不是系统应用程序。 <br> **系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23 |
-| CM_ERROR_PASSWORD_IS_ERR   | 17500008      | 表示密码错误。 <br> **系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
+| CM_ERROR_PASSWORD_IS_ERR   | 17500008      | 表示密码错误。 <br> **系统接口：** 此接口为系统接口。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## certificateManager.getAllAppPrivateCertificates
 
 getAllAppPrivateCertificates(callback: AsyncCallback\<CMResult>): void
 
-表示获取所有私有凭据列表，使用Callback回调异步返回结果。
+表示获取所有私有凭据列表。使用Callback异步回调。
 
 **ArkTS-Dyn起始版本：** 11
 
@@ -62,8 +62,8 @@ getAllAppPrivateCertificates(callback: AsyncCallback\<CMResult>): void
 | -------- | ------------------------------------------------------------ |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 401      | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**：
 ```ts
@@ -119,7 +119,7 @@ getAllAppPrivateCertificates(): Promise\<CMResult>
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**：
 ```ts
@@ -175,7 +175,7 @@ getAllSystemAppCertificates(): Promise\<CMResult>
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 
 **示例**：
 ```ts
@@ -217,6 +217,8 @@ getSystemTrustedCertificate(certUri: string): Promise\<CMResult>
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **参数**：
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
@@ -237,7 +239,7 @@ getSystemTrustedCertificate(certUri: string): Promise\<CMResult>
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401 | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
@@ -279,6 +281,8 @@ getSystemTrustedCertificateList(): Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用
 
 **返回值**：
 
@@ -336,6 +340,8 @@ setCertificateStatus(certUri: string, certType: CertType, enabled: boolean) : Pr
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **参数**：
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
@@ -358,7 +364,7 @@ setCertificateStatus(certUri: string, certType: CertType, enabled: boolean) : Pr
 | -------- | ------------- |
 | 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong, the certType's value is invalid or not supported. |
+| 401 | [Sync] Parameter error. Possible causes: 1. The URI is null or the URI format is wrong; 2. The certType's value is invalid or not supported. |
 | 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002 | The certificate does not exist. |
 
@@ -396,6 +402,8 @@ uninstallAllUserTrustedCertificate() : Promise\<void>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用
 
 **返回值**：
 
@@ -446,6 +454,8 @@ installPublicCertificate(keystore: Uint8Array, keystorePwd: string) : Promise\<C
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **参数**：
 
 | 参数名      | 类型       | 必填 |说明                                            |
@@ -467,7 +477,7 @@ installPublicCertificate(keystore: Uint8Array, keystorePwd: string) : Promise\<C
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the keystore parameter is empty or exceeds the maximum length. |
+| 401                    | [Sync] Parameter error. Possible causes: The keystore parameter is empty or exceeds the maximum length. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500003               | Indicates that the certificate is in an invalid format. |
 | 17500004               | Indicates that the number of certificates reaches the maximum allowed. |
@@ -513,6 +523,8 @@ uninstallPublicCertificate(keyUri: string) : Promise\<void>
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **参数**：
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
@@ -533,7 +545,7 @@ uninstallPublicCertificate(keyUri: string) : Promise\<void>
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -571,6 +583,8 @@ getAllPublicCertificates() : Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用
 
 **返回值**：
 
@@ -629,6 +643,8 @@ grantPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<CMResult
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **参数**：
 
 | 参数名       | 类型       | 必填 |说明                                            |
@@ -650,7 +666,7 @@ grantPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<CMResult
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -691,6 +707,8 @@ getAuthorizedAppList(keyUri: string) : Promise\<CMResult>
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **参数**：
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
@@ -711,7 +729,7 @@ getAuthorizedAppList(keyUri: string) : Promise\<CMResult>
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -755,6 +773,8 @@ removeGrantedPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **参数**：
 
 | 参数名       | 类型       | 必填 |说明                                            |
@@ -776,7 +796,7 @@ removeGrantedPublicCertificate(keyUri: string, clientAppUid: number) : Promise\<
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -815,6 +835,8 @@ getAllAppPrivateCertificatesByUid(appUid: number) : Promise\<CMResult>
 **系统能力：** SystemCapability.Security.CertificateManager
 
 **系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用
 
 **参数**：
 
@@ -880,6 +902,8 @@ installSystemAppCertificate(keystore: Uint8Array, keystorePwd: string): Promise\
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **参数**：
 
 | 参数名      | 类型       | 必填 |说明                                            |
@@ -901,7 +925,7 @@ installSystemAppCertificate(keystore: Uint8Array, keystorePwd: string): Promise\
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: The keystore parameter is empty or exceeds the maximum length. |
+| 401                    | [Sync] Parameter error. Possible causes: The keystore parameter is empty or exceeds the maximum length. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500003               | Indicates that the certificate is in an invalid format. |
 | 17500004               | Indicates that the number of certificates reaches the maximum allowed. |
@@ -919,7 +943,8 @@ let keystore: Uint8Array = new Uint8Array([
 ]);
 let keystorePwd: string = "123456";
 try {
-  certificateManager.installSystemAppCertificate(keystore, keystorePwd).then((cmResult: certificateManager.CMResult) => {
+  certificateManager.installSystemAppCertificate(keystore, keystorePwd)
+    .then((cmResult: certificateManager.CMResult) => {
     let uri: string = (cmResult?.uri == undefined) ? '' : cmResult.uri;
     console.info('Succeeded in installing system app certificate.');
   }).catch((error: Error) => {
@@ -947,6 +972,8 @@ getSystemAppCertificate(keyUri: string) : Promise\<CMResult>
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **参数**：
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
@@ -967,7 +994,7 @@ getSystemAppCertificate(keyUri: string) : Promise\<CMResult>
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -1011,6 +1038,8 @@ uninstallSystemAppCertificate(keyUri: string) : Promise\<void>
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **参数**：
 
 | 参数名   | 类型                                              | 必填 | 说明                       |
@@ -1031,7 +1060,7 @@ uninstallSystemAppCertificate(keyUri: string) : Promise\<void>
 | ----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201                    | Permission verification failed. The application does not have the permission required to call the API. |
 | 202                    | Permission verification failed. A non-system application calls a system API. |
-| 401                    | Parameter verification failed. Possible causes: the URI is null or the URI format is wrong. |
+| 401                    | [Sync] Parameter error. Possible causes: The URI is null or the URI format is wrong. |
 | 17500001               | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
 | 17500002               | Indicates that the certificate does not exist. |
 
@@ -1070,6 +1099,8 @@ uninstallAllAppCertificate() : Promise\<void>
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用
+
 **返回值**：
 
 | 类型                            | 说明                                                         |
@@ -1101,5 +1132,81 @@ try {
   })
 } catch (error) {
   console.error(`Failed to uninstall all app certificates. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## ConfigItem
+
+表示证书管理配置项。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| name | string | 否 | 否 | 配置项名称。 |
+| value | string | 否 | 否 | 配置项值。 |
+
+## certificateManager.getCertManagerConfig
+
+getCertManagerConfig(configNames: Array\<string>) : Promise\<Array\<ConfigItem>>
+
+查询证书管理系统配置信息。使用Promise异步回调。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ACCESS_CERT_MANAGER
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| configNames | Array\<string> | 是 | 证书管理配置项名称。<br>最大长度为16且不能为空。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<Array\<[ConfigItem](#configitem)>> | 返回配置数据的Promise。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理错误码](errorcode-certManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 17500001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again. |
+| 17500011 | The input parameters validation failed. Possible causes: The length of configNames exceeds the limit, or the array is empty, or the array element value is invalid. |
+
+**示例：**
+
+```ts
+import { certificateManager } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let configNames: Array<string> = ['installGlobalUserCA_defaultConfig'];
+try {
+  certificateManager.getCertManagerConfig(configNames).then((configList) => {
+    console.info('Succeeded in getting cert manager config.');
+    console.info('Config name: ' + configList[0].name + ', value: ' + configList[0].value);
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`Failed to get cert manager config. Code: ${err.code}, message: ${err.message}`);
+  });
+} catch (error) {
+  console.error(`Failed to get cert manager config. Code: ${error.code}, message: ${error.message}`);
 }
 ```

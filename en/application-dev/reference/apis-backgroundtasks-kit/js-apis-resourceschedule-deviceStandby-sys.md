@@ -4,7 +4,7 @@
 <!--Owner: @geng_wd-->
 <!--Designer: @geng_wd-->
 <!--Tester: @wzzqishi-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 A device enters standby mode if it is unused for a long period of time or after the Power button is pressed. The standby mode prolongs the battery life without affecting the use of applications. The **deviceStandby** module provides APIs for you to check whether a device is in standby mode and request or cancel standby resource control for an application.
 

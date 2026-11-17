@@ -6,15 +6,13 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Image为图片组件，常用于在应用中显示图片。Image支持加载[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)、[ResourceStr](ts-types.md#resourcestr)和[DrawableDescriptor](#drawabledescriptor10)类型的数据源，支持png、jpg、jpeg、bmp、svg、webp、gif、heif和tiff类型的图片格式，不支持apng和svga格式。
+Image为图片组件，常用于在应用中显示图片。Image支持加载[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)、[ResourceStr](ts-types.md#resourcestr)和[DrawableDescriptor](#drawabledescriptor10)类型的数据源，支持svg格式，其他需要解码的图片格式请参考[ImageSource](../../apis-image-kit/arkts-apis-image-ImageSource.md#属性)的supportedFormats属性说明。
 
 > **说明：**
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
->
-> - 从API version 23开始，图片类型新增支持tiff格式。
 >
 > - 该组件从API版本26.0.0开始支持[WithTheme](./ts-container-with-theme.md)。
 >
@@ -23,6 +21,8 @@ Image为图片组件，常用于在应用中显示图片。Image支持加载[Pix
 > - 图片格式支持SVG图源，SVG标签文档请参考[SVG标签说明](./ts-basic-svg.md)。
 >
 > - 动图的播放依赖于Image节点的可见性变化，其默认行为是不播放的。当节点可见时，通过回调启动动画，当节点不可见时，停止动画。可见性状态的判断是通过[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)事件触发的，当可见阈值ratios大于0时，表明Image处于可见状态。
+>
+> - Image组件播放GIF动图时，帧时长取自GIF文件中各帧的delay time字段。当某帧的时长值小于等于0时，系统会将其修正为100ms；当某帧的时长值大于0时，系统直接使用该原始值，不做最小帧时长限制。
 >
 > - 如果图片加载过程中出现白色块，请参考[Image白块问题解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-image-white-lump-solution)。如果图片加载时间过长，请参考[预置图片资源加载优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-texture-compression-improve-performance#section91526132216)。
 
@@ -83,7 +83,7 @@ Image加载成功且组件不设置宽高时，其显示大小自适应父组件
 <!--Table: 10%; 20%; 10%; 60%-->
 | 参数名  | 类型                                     | 必填   | 说明                                     |
 | ---- | ---------------------------------------- | ---- | ---------------------------------------- |
-| src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10) | 是    | 图片的数据源，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br>1. PixelMap格式为像素图，常用于图片编辑的场景。<br>2. ResourceStr包含Resource和string格式。<br>string格式可用于加载网络图片和本地图片，常用于加载网络图片。使用相对路径引用本地图片时，建议参考[示例25（使用相对路径显示图片）](#示例25使用相对路径显示图片)，不支持跨包/跨模块调用该Image组件，建议使用Resource格式来管理需全局使用的图片资源。<br>从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resource目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable 设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)中相关介绍。<br>- 支持`Base64`字符串。<br>- 传入的字符串为https网络图片地址时，建议参考[示例2（下载与显示静态网络图片）](#示例2下载与显示静态网络图片)。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br>Resource格式可以跨包/跨模块访问资源文件，是访问本地图片的推荐方式，具体示例参考[访问跨HAP/HSP包资源](../../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)。<br/>3. 当传入资源id或name为普通图片时，生成DrawableDescriptor对象。传入[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)类型可播放PixelMap数组动画。<br>**说明：**<br/>- ArkTS卡片上支持gif图片格式动效，但仅在显示时播放一次。<br/>- ArkTS卡片上不支持http:/\/等网络相关路径前缀和file:/\/路径前缀的字符串。 |
+| src  | [PixelMap](ts-image-common.md#pixelmap)&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[DrawableDescriptor](#drawabledescriptor10) | 是    | 图片的数据源，支持本地图片和网络图片，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br>1. PixelMap格式为像素图，常用于图片编辑的场景。<br>2. ResourceStr包含Resource和string格式。<br>string格式可用于加载网络图片和本地图片，常用于加载网络图片。使用相对路径引用本地图片时，建议参考[示例25（使用相对路径显示图片）](#示例25使用相对路径显示图片)，不支持跨包/跨模块调用该Image组件，建议使用Resource格式来管理需全局使用的图片资源。<br>从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resource目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable 设置为true，详见[resOptions](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)中相关介绍。<br>- 支持`Base64`字符串。<br>- 传入的字符串为https网络图片地址时，建议参考[示例2（下载与显示静态网络图片）](#示例2下载与显示静态网络图片)。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br>Resource格式可以跨包/跨模块访问资源文件，是访问本地图片的推荐方式，具体示例参考[访问跨HAP/HSP包资源](../../../quick-start/resource-categories-and-access.md#访问跨haphsp包资源)。<br/>3. 当传入资源id或name为普通图片时，生成DrawableDescriptor对象。传入[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)类型可播放PixelMap数组动画。<br>**说明：**<br/>- ArkTS卡片上支持gif图片格式动效，但仅在显示时播放一次。<br/>- ArkTS卡片上不支持http:/\/等网络相关路径前缀和file:/\/路径前缀的字符串。 |
 
 ### Image<sup>23+</sup>
 
@@ -124,6 +124,8 @@ src新增[ImageContent](#imagecontent12)类型，可指定对应的图形内容�
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -145,6 +147,8 @@ Image(src: PixelMap | ResourceStr | DrawableDescriptor, imageAIOptions: ImageAIO
 Image新增[ImageAIOptions](ts-image-common.md#imageaioptions12)参数，为组件设置AI分析选项。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -287,7 +291,7 @@ alt(value:&nbsp;string&nbsp;|&nbsp;Resource &nbsp;|&nbsp;PixelMap)
 
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>12+</sup> | 是   | 设置图片加载过程中显示的占位图，支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型图片，不支持网络图片。<br>- 支持`Base64`字符串。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br/>默认值：null<br/>由有效值（可正常解析并加载的图片资源）切换为无效值（无法解析或加载的图片路径）时，组件保持显示此前成功加载的图片内容，不进行清除或重置操作。 |
+| value  | string&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)<sup>12+</sup> | 是   | 设置图片加载过程中显示的占位图，支持svg格式，其他需要解码的图片格式请参考[ImageSource](../../apis-image-kit/arkts-apis-image-ImageSource.md#属性)的supportedFormats属性说明，支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型图片，不支持网络图片。<br>- 支持`Base64`字符串。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。<br/>默认值：null<br/>由有效值（可正常解析并加载的图片资源）切换为无效值（无法解析或加载的图片路径）时，组件保持显示此前成功加载的图片内容，不进行清除或重置操作。 |
 
 ### alt<sup>22+</sup>
 
@@ -307,6 +311,8 @@ alt(src:&nbsp;ResourceStr&nbsp;|&nbsp;PixelMap &nbsp;|&nbsp;ImageAlt)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -319,7 +325,7 @@ alt(src:&nbsp;ResourceStr&nbsp;|&nbsp;PixelMap &nbsp;|&nbsp;ImageAlt)
 
 | 参数名 | 类型                                                     | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| src  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)\|&nbsp;[ImageAlt](#imagealt22) | 是   | 设置图片加载过程中和加载失败时的占位图，支持本地图片（png、jpg、bmp、svg、gif和heif类型），支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型图片，不支持网络图片。<br>- 支持`Base64`字符串。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。 |
+| src  | [ResourceStr](ts-types.md#resourcestr)&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)\|&nbsp;[ImageAlt](#imagealt22) | 是   | 设置图片加载过程中和加载失败时的占位图，支持svg格式，其他需要解码的图片格式请参考[ImageSource](../../apis-image-kit/arkts-apis-image-ImageSource.md#属性)的supportedFormats属性说明，支持[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型图片，不支持网络图片。<br>- 支持`Base64`字符串。<br>- 支持file://路径前缀的字符串，应用沙箱URI：file://\<bundleName>/\<sandboxPath>。应用沙箱路径URI构造可参考[constructor](../../apis-core-file-kit/js-apis-file-fileuri.md#constructor10)。沙箱路径需要使用[fileUri.getUriFromPath(path)](../../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)方法将路径转换为应用沙箱URI，然后传入显示。同时需要保证目录包路径下的文件有可读权限。 |
 
 ### alt<sup>23+</sup>
 
@@ -387,6 +393,8 @@ ArkTS-Sta: imageMatrix(matrix: ImageMatrix | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 15
@@ -408,6 +416,8 @@ ArkTS-Sta: objectRepeat(value: ImageRepeat | undefined)
 设置图片的重复样式，从中心点向两边重复，剩余空间不足放下一张图片时会截断。SVG类型图源不支持该属性。
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+
+设置合法的[resizable](#resizable11)时，该属性不生效。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -595,6 +605,8 @@ fillColor(color: ResourceColor|ColorContent)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
@@ -607,7 +619,7 @@ fillColor(color: ResourceColor|ColorContent)
 
 | 参数名 | 类型                                       | 必填 | 说明           |
 | ------ | ------------------------------------------ | ---- | -------------- |
-| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15) | 是   | 设置填充颜色。 <br/>**说明：**<br/> 默认不对组件进行填充。当传入异常值时，系统将使用默认的主题色：浅色模式下为黑色，深色模式下为白色。 <br/>从API version 21开始，当[supportSvg2](#supportsvg221)设置为true时，fillColor依赖SVG图源中fill属性的参数配置。当SVG图源中fill属性为'none'时，fillColor不生效。|
+| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15) | 是   | 设置填充颜色。 <br/>**说明：**<br/> 默认不对组件进行填充。当传入异常值时，系统将使用默认的主题色：浅色模式下为黑色，深色模式下为白色。 <br/>从API version 21开始，当[supportSvg2](#supportsvg221)设置为true时，fillColor依赖SVG图源中fill属性的参数配置。当SVG图源中fill属性为'none'时，fillColor不生效。当supportSvg2设置为false时，fillColor生效，替换SVG图片中所有可绘制元素的填充颜色。|
 
 ### fillColor<sup>20+</sup>
 
@@ -618,6 +630,8 @@ fillColor(color: ResourceColor|ColorContent|ColorMetrics)
 当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -631,7 +645,7 @@ fillColor(color: ResourceColor|ColorContent|ColorMetrics)
 
 | 参数名 | 类型                                       | 必填 | 说明           |
 | ------ | ------------------------------------------ | ---- | -------------- |
-| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15)\|[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 设置填充颜色。 <br/>**说明：**<br/> 默认不对组件进行填充。当传入异常值时，系统将使用默认的主题色：浅色模式下为黑色，深色模式下为白色。 <br/>从API version 21开始，当[supportSvg2](#supportsvg221)设置为true时，fillColor依赖SVG图源中fill属性的参数配置。当SVG图源中fill属性为'none'时，fillColor不生效。|
+| color  | [ResourceColor](ts-types.md#resourcecolor)\|[ColorContent](#colorcontent15)\|[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 设置填充颜色。 <br/>**说明：**<br/> 默认不对组件进行填充。当传入异常值时，系统将使用默认的主题色：浅色模式下为黑色，深色模式下为白色。 <br/>从API version 21开始，当[supportSvg2](#supportsvg221)设置为true时，fillColor依赖SVG图源中fill属性的参数配置。当SVG图源中fill属性为'none'时，fillColor不生效。当supportSvg2设置为false时，fillColor生效，替换SVG图片中所有可绘制元素的填充颜色。|
 
 ### fillColor<sup>23+</sup>
 
@@ -661,7 +675,7 @@ ArkTS-Dyn: autoResize(value: boolean)
 
 ArkTS-Sta: autoResize(value: boolean | undefined)
 
-设置图片解码过程中是否对图源自动缩放。降采样解码时图片的部分信息丢失，因此可能会导致图片质量的下降（如：出现锯齿），这时可以选择把autoResize设为false，按原图尺寸解码，提升显示效果，但会增加内存占用。
+设置图片解码过程中是否对图源自动缩放。降采样解码时图片的部分信息丢失，因此可能会导致图片质量的下降（如：出现锯齿），这时可以选择把autoResize设为false，按原图尺寸解码，提升显示效果，但会增加内存占用。当图片尺寸较大时，设置为false可能导致内存占用过高，引发进程闪退，具体原因参见[应用被查杀类问题分析方法](https://developer.huawei.com/consumer/cn/doc/doccenter-app-quality/bpta-stability-app-killed-way?docScope=all)中的ResourceLeak(GpuRsLeak)原因。
 
 原图尺寸和显示尺寸不匹配时，图片都会出现些许的失真、模糊。最佳清晰度配置建议：
 
@@ -685,7 +699,7 @@ ArkTS-Sta: autoResize(value: boolean | undefined)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 图片解码过程中是否对图源自动缩放。设置为true时，组件会根据显示区域的尺寸决定用于绘制的图源尺寸，有利于减少内存占用。如原图大小为800x1200，而显示区域大小为200x200，则图片会降采样解码到200x300的尺寸（实际计算过程中会依赖缩放和填充类型的配置，从而得到的计算结果会有差异），从而大幅度节省图片占用的内存。<br/> 设置undefined时，按默认值处理。<br/>默认值：false，false表示关闭图源自动缩放，true表示开启图源自动缩放。 |
+| value  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 图片解码过程中是否对图源自动缩放。设置为true时，组件会根据显示区域的尺寸决定用于绘制的图源尺寸，有利于减少内存占用。如原图大小为800x1200，而显示区域大小为200x200，则图片会降采样解码到200x300的尺寸（实际计算过程中会依赖缩放和填充类型的配置，从而得到的计算结果会有差异），从而大幅度节省图片占用的内存。<br/> 设置undefined时，按默认值处理。<br/>默认值：false。<br/>从API版本26.0.0开始，当图片解码后的宽×高像素乘积超过5000万时，默认值为true，即图片解码过程中开启降采样解码。<br/>从API版本26.0.1开始，当未显式设置该属性且原图的宽×高像素乘积超过5000万时，系统会自动开启降采样解码，在保持宽高比的前提下等比缩小，使解码后的像素总数不超过5000万。<br/>该判断仅与图片像素尺寸相关，与图片文件大小及图片格式无关。<br/>false表示关闭图源自动缩放，true表示开启图源自动缩放。 |
 
 ### syncLoad<sup>8+</sup>
 
@@ -693,9 +707,11 @@ ArkTS-Dyn: syncLoad(value: boolean)
 
 ArkTS-Sta: syncLoad(value: boolean | undefined)
 
-设置是否同步加载图片。建议加载尺寸较小的本地图片时将syncLoad设为true，因为耗时较短，在主线程上执行即可。
+设置是否同步加载图片。建议加载尺寸较小的本地图片时将syncLoad设为true，因为耗时较短，在主线程上执行即可。不建议对网络图片使用同步加载，应使用异步加载，或将网络下载与Image的显示剥离，避免阻塞UI线程导致AppFreeze。
 
 当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)时设置该属性不生效。
+
+[alt](#alt)占位图始终为异步加载，syncLoad对其不生效。
 
 如果加载图片时出现闪烁，设置syncLoad为true。详情请参见[并发优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-click-to-click-response-optimization#section715115119192)。
 
@@ -751,6 +767,10 @@ ArkTS-Sta: colorFilter(value: ColorFilter | DrawingColorFilter | undefined)
 
 设置该属性时，[renderMode](#rendermode)属性设置不生效。
 
+> **说明：**
+>
+> API version 11及之前，SVG类型图源不支持该属性。从API version 12开始，SVG类型的图源只有设置了stroke属性（无论是否有值）才会生效。
+
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -765,7 +785,7 @@ ArkTS-Sta: colorFilter(value: ColorFilter | DrawingColorFilter | undefined)
 
 | 参数名 | 类型                                    | 必填 | 说明                                                         |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter<sup>12+</sup>](#drawingcolorfilter12)<br/>ArkTS-Sta: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter<sup>12+</sup>](#drawingcolorfilter12) \| undefined | 是   | 1. 给图像设置颜色滤镜效果，入参为一个的4x5的RGBA转换矩阵。<br/>2. 从API version12开始支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>API version 11及之前，SVG类型图源不支持该属性。<br/>从API version 12开始，该接口中的DrawingColorfilter类型支持在原子化服务中使用。其中，SVG类型的图源只有设置了stroke属性（无论是否有值）才会生效。<br/>从API version 21开始，当[supportSvg2](#supportsvg221)属性设置为true时，colorFilter属性对整个SVG图源起作用。|
+| value  | ArkTS-Dyn: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter<sup>12+</sup>](#drawingcolorfilter12)<br/>ArkTS-Sta: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter<sup>12+</sup>](#drawingcolorfilter12) \| undefined | 是   | 1. 给图像设置颜色滤镜效果，入参为一个4x5的RGBA转换矩阵。<br/>2. 从API version12开始支持@ohos.graphics.drawing的ColorFilter类型作为入参。<br/>**说明：** <br/>API version 11及之前，SVG类型图源不支持该属性。<br/>从API version 12开始，该接口中的DrawingColorfilter类型支持在原子化服务中使用。其中，SVG类型的图源只有设置了stroke属性（无论是否有值）才会生效。<br/>从API version 21开始，当[supportSvg2](#supportsvg221)属性设置为true时，colorFilter属性对整个SVG图源起作用。|
 
 颜色滤镜通过一个4x5的矩阵来设置图像的颜色滤镜，矩阵第一行表示R（红色）的向量值，第二行表示G（绿色）的向量值，第三行表示B（蓝色）的向量值，第四行表示A（透明度）的向量值，4行分别代表不同的RGBA的向量值。<br/>当矩阵对角线值为1，其余值为0时，保持图片原有色彩。<br/> **计算规则：**<br/>如果输入的滤镜矩阵如下：<br/>![image-matrix-1](figures/image_matrix_1.png) <br/>像素点为[R, G, B, A]，色值的范围[0, 255]<br/>则过滤后的颜色为 [R’, G’, B’, A’]<br/>![image-matrix-2](figures/image_matrix_2.png)<br/>该属性的具体使用可以参考[示例9](#示例9为图像设置颜色滤镜效果)。
 
@@ -797,7 +817,7 @@ ArkTS-Sta: colorFilter(value: ColorFilter | DrawingColorFilter | ResourceColor |
 
 | 参数名 | 类型                                    | 必填 | 说明                                                         |
 | ------ | --------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) \| [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) \| [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 图像颜色的滤镜值。<br/>[ColorFilter](ts-types.md#colorfilter9)、[DrawingColorFilter](#drawingcolorfilter12)类型及SVG图源的相关说明，请参考[colorFilter](#colorfilter9)的接口说明。 [ResourceColor](ts-types.md#resourcecolor)类型的输入颜色值，默认按照[DrawingColorFilter](#drawingcolorfilter12).[createBlendModeColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md#createblendmodecolorfilter)的SRC_ATOP模式进行绘制。<br/>当传入undefined时，图片显示无滤镜效果。|
+| value  | ArkTS-Dyn: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) \| [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ColorFilter](ts-types.md#colorfilter9) \| [DrawingColorFilter](#drawingcolorfilter12) \| [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 图像颜色的滤镜值。<br/>[ColorFilter](ts-types.md#colorfilter9)、[DrawingColorFilter](#drawingcolorfilter12)类型及SVG图源的相关说明，请参考[colorFilter](#colorfilter9)的接口说明。[ResourceColor](ts-types.md#resourcecolor)类型的输入颜色值，默认按照[DrawingColorFilter](#drawingcolorfilter12).[createBlendModeColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md#createblendmodecolorfilter)的SRC_ATOP模式进行绘制（该模式表示滤镜颜色与目标图像叠加，滤镜覆盖在目标上方）。<br/>当传入undefined时，图片显示无滤镜效果。|
 
 ### draggable<sup>9+</sup>
 
@@ -806,6 +826,10 @@ ArkTS-Dyn: draggable(value: boolean)
 ArkTS-Sta: draggable(value: boolean | undefined)
 
 设置组件默认拖拽效果。
+
+> **说明：**
+>
+> 当Image组件的数据源为[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)类型且像素格式为RGBA_1010102时，若在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)回调中未写入有效的拖拽数据，系统将使用默认的PixelMap数据填充，此时拖拽数据传递至放置目标时目标端无法正确解析该像素格式的图片数据。建议在[onDragStart](ts-universal-events-drag-drop.md#ondragstart)回调中自行处理该格式的数据转换。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -847,6 +871,8 @@ ArkTS-Sta: enableAnalyzer(enable: boolean | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 11
@@ -871,13 +897,15 @@ ArkTS-Sta: resizable(value: ResizableOptions | undefined)
 
 当设置 top +bottom 大于原图的高或者 left + right 大于原图的宽时 [ResizableOptions](#resizableoptions11) 属性设置不生效。
 
-当组件的参数类型为[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)和SVG时设置该属性不生效。
+当组件的参数类型为动图、[AnimatedDrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#animateddrawabledescriptor12)和SVG时设置该属性不生效。
 
 >**说明：**
 >
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -903,6 +931,8 @@ ArkTS-Sta: privacySensitive(supported: boolean | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -923,9 +953,13 @@ ArkTS-Sta: dynamicRangeMode(value: DynamicRangeMode | undefined)
 
 设置期望展示的图像动态范围。SVG类型图源不支持该属性。
 
-**设备行为差异：** 该接口在手机、PC/2in1和Tablet设备中可正常生效，在其他设备类型中无效果。
+该属性与[hdrBrightness](#hdrbrightness19)属性同时设置时，该属性不生效。
+
+**设备行为差异：** 该接口在Phone、PC/2in1和Tablet设备中可正常生效，在其他设备类型中无效果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -949,9 +983,13 @@ ArkTS-Sta: orientation(orientation: ImageRotateOrientation | undefined)
 
 该属性对[alt](#alt)占位图不生效。
 
+设置合法的[resizable](#resizable11)时，该属性不生效。
+
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -979,6 +1017,8 @@ SVG类型图源不支持该属性。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 19
@@ -1005,6 +1045,8 @@ Image组件创建后，不支持动态修改该属性的值。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 21
@@ -1026,6 +1068,8 @@ ArkTS-Sta: contentTransition(transition: ContentTransitionEffect | undefined)
 图片内容发生变化时，触发过渡动效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1054,6 +1098,8 @@ ArkTS-Sta: antialiased(isAntialiased: boolean | undefined)
 > 和[resizable](#resizable11)一起使用时，该属性不生效。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1094,6 +1140,8 @@ attributeModifier(modifier: AttributeModifier\<ImageAttribute> | AttributeModifi
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1151,6 +1199,8 @@ attributeModifier(modifier: AttributeModifier\<ImageAttribute> | AttributeModifi
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1169,6 +1219,8 @@ attributeModifier(modifier: AttributeModifier\<ImageAttribute> | AttributeModifi
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 22
@@ -1185,6 +1237,8 @@ attributeModifier(modifier: AttributeModifier\<ImageAttribute> | AttributeModifi
 期望展示的图像动态范围。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1203,6 +1257,8 @@ attributeModifier(modifier: AttributeModifier\<ImageAttribute> | AttributeModifi
 期望的图像内容显示方向。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1230,6 +1286,8 @@ attributeModifier(modifier: AttributeModifier\<ImageAttribute> | AttributeModifi
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 18
@@ -1243,11 +1301,13 @@ attributeModifier(modifier: AttributeModifier\<ImageAttribute> | AttributeModifi
 
 ## DrawableDescriptor<sup>10+</sup>
 
-type DrawableDescriptor = DrawableDescriptor
+type DrawableDescriptor = import ('../api/@ohos.arkui.drawableDescriptor').DrawableDescriptor
 
 作为Image组件的入参对象。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1257,11 +1317,11 @@ type DrawableDescriptor = DrawableDescriptor
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)  | 返回一个DrawableDescriptor对象。 |
+| import ('../api/@ohos.arkui.drawableDescriptor').[DrawableDescriptor](../js-apis-arkui-drawableDescriptor.md#drawabledescriptor)  | 返回一个DrawableDescriptor对象。 |
 
 ## DrawingColorFilter<sup>12+</sup>
 
-ArkTS-Dyn: type DrawingColorFilter = ColorFilter
+ArkTS-Dyn: type DrawingColorFilter = import('../api/@ohos.graphics.drawing').default.ColorFilter
 
 ArkTS-Sta: type DrawingColorFilter = drawing.ColorFilter
 
@@ -1269,6 +1329,8 @@ ArkTS-Sta: type DrawingColorFilter = drawing.ColorFilter
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1277,11 +1339,11 @@ ArkTS-Sta: type DrawingColorFilter = drawing.ColorFilter
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| ArkTS-Dyn: [ColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: drawing.[ColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md) | 返回一个颜色滤波器。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.drawing').default.[ColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)<br/>ArkTS-Sta: drawing.[ColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md) | 返回一个颜色滤波器。 |
 
 ## DrawingLattice<sup>12+</sup>
 
-ArkTS-Dyn: type DrawingLattice = Lattice
+ArkTS-Dyn: type DrawingLattice = import('../api/@ohos.graphics.drawing').default.Lattice
 
 ArkTS-Sta: type DrawingLattice = drawing.Lattice
 
@@ -1289,6 +1351,8 @@ ArkTS-Sta: type DrawingLattice = drawing.Lattice
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -1297,7 +1361,7 @@ ArkTS-Sta: type DrawingLattice = drawing.Lattice
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| ArkTS-Dyn: [Lattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md)<br/>ArkTS-Sta: drawing.[Lattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md) | 返回一个矩阵网格对象。 |
+| ArkTS-Dyn: import('../api/@ohos.graphics.drawing').default.[Lattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md)<br/>ArkTS-Sta: drawing.[Lattice](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-Lattice.md) | 返回一个矩阵网格对象。 |
 
 ## ImageMatrix<sup>15+</sup>对象说明
 
@@ -1308,6 +1372,8 @@ ArkTS-Sta: type ImageMatrix = matrix4.Matrix4Transit
 当前的矩阵对象。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1325,6 +1391,8 @@ ArkTS-Sta: type ImageMatrix = matrix4.Matrix4Transit
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 15
@@ -1341,7 +1409,7 @@ ArkTS-Sta: type ImageMatrix = matrix4.Matrix4Transit
 
 ### onComplete
 
-ArkTS-Dyn: onComplete(callback: (event?: { width: number, height: number, componentWidth: number, componentHeight: number, loadingStatus: number,contentWidth: number, contentHeight: number, contentOffsetX: number, contentOffsetY: number }) =&gt; void)
+onComplete(callback: (event?: { width: number, height: number, componentWidth: number, componentHeight: number, loadingStatus: number, contentWidth: number, contentHeight: number, contentOffsetX: number, contentOffsetY: number }) =&gt; void)
 
 图片数据加载成功和解码成功时均触发该回调，使用callback异步回调，返回成功加载的图片尺寸。
 
@@ -1375,7 +1443,7 @@ ArkTS-Dyn: onComplete(callback: (event?: { width: number, height: number, compon
 
 ### onComplete<sup>23+</sup>
 
-ArkTS-Sta: onComplete(callback: ImageOnCompleteCallback | undefined)
+onComplete(callback: ImageOnCompleteCallback | undefined)
 
 图片数据加载成功和解码成功时均触发该回调，使用callback异步回调，返回成功加载的图片尺寸。
 
@@ -1483,19 +1551,21 @@ type ImageErrorCallback = (error: ImageError) => void
 | --------------- | ------ | ---- | ------------------------- | ------------------------- |
 | componentWidth  | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 否  | 组件的宽。<br/>单位：px<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 | componentHeight | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 否  | 组件的高。<br/>单位：px<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| message<sup>10+</sup>          | string | 否  | 否  | 报错信息。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
-| error<sup>20+</sup>          | ArkTS-Dyn: [BusinessError\<void>](../../apis-basic-services-kit/js-apis-base.md#businesserror)<br/>ArkTS-Sta: [BusinessError\<void>](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 否  | 是  | 图片加载异常返回的报错信息，其中code为错误码，message为错误信息。报错信息请参考以下错误信息的详细介绍。<br/>默认值：{ code : -1, message : "" }<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| downloadInfo<sup>23+</sup> | [RequestDownloadInfo](#requestdownloadinfo23) | 否 | 是 | 网络图片下载的详细信息，包含下载资源、网络、性能等信息。当图片来源为网络图片且下载失败时将携带此字段。<br/>默认值：null<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| message<sup>10+</sup>          | string | 否  | 否  | 报错信息。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| error<sup>20+</sup>          | ArkTS-Dyn: [BusinessError\<void>](../../apis-basic-services-kit/js-apis-base.md#businesserror)<br/>ArkTS-Sta: [BusinessError\<void>](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 否  | 是  | 图片加载异常返回的报错信息，其中code为错误码，message为错误信息。报错信息请参考以下错误信息的详细介绍。<br/>默认值：{ code : -1, message : "" }<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| downloadInfo<sup>23+</sup> | [RequestDownloadInfo](#requestdownloadinfo23) | 否 | 是 | 网络图片下载的详细信息，包含下载资源、网络、性能等信息。当图片来源为网络图片且下载失败时将携带此字段。<br/>默认值：null<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## BusinessError<sup>20+</sup>
 
-type BusinessError\<T = void> = BusinessError\<T>
+type BusinessError\<T = void> = import('../api/@ohos.base').BusinessError\<T>
 
 图片加载异常返回的错误信息。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -1505,35 +1575,35 @@ type BusinessError\<T = void> = BusinessError\<T>
 
 | 类型  | 说明   |
 | ---- | ------ |
-| [BusinessError\<T>](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 图片加载异常返回的错误信息。 |
+| import('../api/@ohos.base').[BusinessError\<T>](../../apis-basic-services-kit/js-apis-base.md#businesserror) | 图片加载异常返回的错误信息。 |
 
 以下是错误信息的详细介绍：ImageError的error属性为错误信息对象，其中code为错误码，message为错误信息。
 
-| 错误码ID  | 错误信息                       | 错误信息发生阶段 | 图片加载类型 |
-| --------  | ----------------------------   | --------- | ------- |
-| 101000    | unknown source type.           | 数据加载 | 未知类型 |
-| 102010    | sync http task of uri cancelled. | 数据加载 | 网络文件 |
-| 102011    | sync http task of uri failed.  | 数据加载 | 网络文件 |
-| 102012    | async http task of uri cancelled. | 数据加载 | 网络文件 |
-| 102013    | async http task of uri failed. | 数据加载 | 网络文件 |
-| 102030    | wrong code format.             | 数据加载 | base64字符串文件 |
-| 102031    | decode base64 image failed.    | 数据加载 | base64字符串文件 |
-| 102050    | path is too long.              | 数据加载 | 沙箱文件 |
-| 102051    | read data failed.              | 数据加载 | 沙箱文件 |
-| 102070    | get image data by name failed. | 数据加载 | 资源文件 |
-| 102071    | get image data by id failed.   | 数据加载 | 资源文件 |
-| 102072    | uri is invalid.                | 数据加载 | 资源文件 |
-| 102090    | uri is invalid.                | 数据加载 | 包内文件 |
-| 102091    | get asset failed.              | 数据加载 | 包内文件 |
-| 102110    | open file failed.              | 数据加载 | 媒体库文件 |
-| 102111    | get file stat failed.          | 数据加载 | 媒体库文件 |
-| 102112    | read file failed.              | 数据加载 | 媒体库文件 |
-| 102130    | decoded data is empty.         | 数据加载 | 媒体库缩略图文件 |
-| 102131    | load shared memory image data timeout. | 数据加载 | 共享内存文件 |
-| 103100    | make svg dom failed.           | 数据加载 | 矢量图文件 |
-| 103200    | image data size is invalid.    | 数据加载 | 位图文件 |
-| 111000    | image source create failed.    | 数据解码 | 位图文件 |
-| 111001    | pixelmap create failed.        | 数据解码 | 位图文件 |
+| 错误码ID  | 错误信息                       | 错误信息发生阶段 | 图片加载类型 | 可能原因 | 处理步骤 |
+| --------  | ----------------------------   | --------- | ------- | ------- | ------- |
+| 101000    | unknown source type.           | 数据加载 | 未知类型 | 传入的图片源类型无法识别，可能为URI格式错误或不支持的数据类型。 | 请检查Image组件的src参数，确保传入支持的类型（[PixelMap](ts-image-common.md#pixelmap)、[ResourceStr](ts-types.md#resourcestr)、[DrawableDescriptor](#drawabledescriptor10)或合法的URI字符串）。 |
+| 102010    | sync http task of uri cancelled. | 数据加载 | 网络文件 | 同步网络请求被取消，例如加载过程中组件被销毁或网络中断。 | 请确认网络可用，并避免在加载过程中频繁切换组件；建议改用异步加载。 |
+| 102011    | sync http task of uri failed.  | 数据加载 | 网络文件 | 同步加载网络图片失败，常见于网络异常、地址不可达或未申请ohos.permission.INTERNET权限。 | 请检查网络连接与图片地址，确认已申请ohos.permission.INTERNET权限；建议改用异步加载或预下载。 |
+| 102012    | async http task of uri cancelled. | 数据加载 | 网络文件 | 异步网络请求被取消，例如组件被销毁或加载任务被主动取消。 | 请确认网络稳定，必要时重试加载。 |
+| 102013    | async http task of uri failed. | 数据加载 | 网络文件 | 异步加载网络图片失败，常见于网络异常、地址不可达或未申请ohos.permission.INTERNET权限。 | 请检查网络连接与图片地址，确认已申请ohos.permission.INTERNET权限。 |
+| 102030    | wrong code format.             | 数据加载 | base64字符串文件 | 传入的Base64字符串格式不正确，缺少前缀或编码内容不合法。 | 请检查Base64字符串是否符合`data:image/subtype;base64,Base64EncodedData`格式。 |
+| 102031    | decode base64 image failed.    | 数据加载 | base64字符串文件 | Base64字符串解码失败，可能是数据损坏或编码内容并非有效图片。 | 请核对Base64编码数据是否完整、是否对应真实图片格式。 |
+| 102050    | path is too long.              | 数据加载 | 沙箱文件 | 应用沙箱文件路径长度超出限制。 | 请缩短文件路径，使用相对或更短的应用沙箱路径。 |
+| 102051    | read data failed.              | 数据加载 | 沙箱文件 | 沙箱文件读取失败，可能为文件不存在或没有可读权限。 | 请确认文件存在，并保证目录包路径下的文件有可读权限。 |
+| 102070    | get image data by name failed. | 数据加载 | 资源文件 | 通过资源名获取图片数据失败，可能为资源名不存在或未正确配置。 | 请确认资源名拼写正确，并已打包到resources目录。 |
+| 102071    | get image data by id failed.   | 数据加载 | 资源文件 | 通过资源ID获取图片数据失败，可能为资源ID不存在或模块未打包。 | 请确认资源ID正确，并确认对应模块/资源已正确打包。 |
+| 102072    | uri is invalid.                | 数据加载 | 资源文件 | 传入的资源URI无效或格式错误。 | 请检查资源URI格式，确保为合法的资源引用。 |
+| 102090    | uri is invalid.                | 数据加载 | 包内文件 | 传入的包内文件URI无效或格式错误。 | 请检查包内文件URI格式，确认文件存在于对应HAP/HSP包内。 |
+| 102091    | get asset failed.              | 数据加载 | 包内文件 | 获取包内资源失败，可能为资源缺失或包未正确安装。 | 请确认包内资源存在，并确认对应包已正确安装。 |
+| 102110    | open file failed.              | 数据加载 | 媒体库文件 | 打开媒体库文件失败，可能为文件不存在、被占用或缺少权限。 | 请确认文件存在，并确认已申请所需媒体库读取权限。 |
+| 102111    | get file stat failed.          | 数据加载 | 媒体库文件 | 获取媒体库文件[stat](../../apis-core-file-kit/js-apis-file-fs.md#fileiostat)信息（文件大小、修改时间、访问权限等元数据）失败，可能为文件不可访问或已损坏。 | 请确认文件可被正常访问，必要时重新选择文件。 |
+| 102112    | read file failed.              | 数据加载 | 媒体库文件 | 读取媒体库文件数据失败，可能为I/O异常或文件损坏。 | 请确认文件完整可读，必要时重新获取或拷贝文件。 |
+| 102130    | decoded data is empty.         | 数据加载 | 媒体库缩略图文件 | 解码后得到的图片数据为空，可能为缩略图不存在或生成失败。 | 请确认原文件可正常生成缩略图，必要时更换图源。 |
+| 102131    | load shared memory image data timeout. | 数据加载 | 共享内存文件 | 从共享内存加载图片数据超时，可能为数据未及时写入或消费方处理过慢。 | 请确认共享内存数据写入与读取节奏匹配，必要时增大超时或检查数据流。 |
+| 103100    | make svg dom failed.           | 数据加载 | 矢量图文件 | 构造SVG DOM失败，可能为SVG文件格式不合法或存在不支持的标签。 | 请检查SVG文件是否符合规范，参考[SVG标签说明](./ts-basic-svg.md)。 |
+| 103200    | image data size is invalid.    | 数据加载 | 位图文件 | 图片数据尺寸非法，可能为宽高为0或超过解码限制。 | 请确认图片尺寸在合法范围内，必要时调整图片分辨率。 |
+| 111000    | image source create failed.    | 数据解码 | 位图文件 | 创建图片源失败，可能为数据格式不支持或数据损坏。 | 请确认图片格式受支持（png、jpg、bmp、svg、gif、heif、webp、tiff等），并核实数据完整性。 |
+| 111001    | pixelmap create failed.        | 数据解码 | 位图文件 | 创建PixelMap失败，可能为内存不足或解码参数不合法。 | 请确认设备内存充足，并检查解码参数（如尺寸、格式）是否合法。 |
 
 ## ImageOnCompleteCallback<sup>23+</sup>
 
@@ -1579,7 +1649,7 @@ type ImageOnCompleteCallback = (loadEvent?: ImageCompleteEvent) => void;
 
 ## RequestDownloadInfo<sup>23+</sup>
 
-ArkTS-Dyn: type RequestDownloadInfo = DownloadInfo
+ArkTS-Dyn: type RequestDownloadInfo = import('../api/@ohos.request.cacheDownload').default.DownloadInfo
 
 ArkTS-Sta: type RequestDownloadInfo = cacheDownload.DownloadInfo
 
@@ -1589,6 +1659,8 @@ ArkTS-Sta: type RequestDownloadInfo = cacheDownload.DownloadInfo
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 23
@@ -1597,7 +1669,7 @@ ArkTS-Sta: type RequestDownloadInfo = cacheDownload.DownloadInfo
 
 | 类型  | 说明   |
 | ---- | ------ |
-| [DownloadInfo](../../apis-basic-services-kit/js-apis-request-cacheDownload.md#downloadinfo20) | 网络资源加载异常时返回的下载信息，包含资源信息、网络请求信息与性能统计信息。 |
+| ArkTS-Dyn: import('../api/@ohos.request.cacheDownload').default.[DownloadInfo](../../apis-basic-services-kit/js-apis-request-cacheDownload.md#downloadinfo20)<br/>ArkTS-Sta: cacheDownload.DownloadInfo | 网络资源加载异常时返回的下载信息，包含资源信息、网络请求信息与性能统计信息。 |
 
 ## 示例
 
@@ -1642,7 +1714,7 @@ struct ImageExample1 {
 }
 ```
 
-![zh-cn_image_0000001592882500](figures/zh-cn_image_0000001592882500.gif)
+![loadingImagesOfBasicTypes](figures/loadingImagesOfBasicTypes.gif)
 
 ### 示例2（下载与显示静态网络图片）
 
@@ -1687,7 +1759,8 @@ struct ImageExample2 {
           console.error('image createPixelMap success');
           this.pixelMapImg = pixelMap;
           imgSource.release();
-        }).catch(() => {
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to create pixel map. Code: ${err.code}, message: ${err.message}`);
           imgSource.release();
         })
       }
@@ -1707,7 +1780,7 @@ struct ImageExample2 {
 }
 ```
 
-![zh-cn_image_0000001607845173](figures/zh-cn_image_view2.png)
+![zh-cn_image_0000001607845173](figures/image-view2.png)
 
 ### 示例3（下载与显示网络gif图片）
 
@@ -1789,7 +1862,7 @@ struct ImageExample3 {
 }
 ```
 
-![zh-cn_image_0000001607845173](figures/zh-cn_image_0000001607845173.gif)
+![zh-cn_image_0000001607845173](figures/Dyn-sky.gif)
 
 ### 示例5（开启图像AI分析）
 
@@ -1841,7 +1914,7 @@ struct ImageExample4 {
 }
 ```
 
-![zh-cn_image_0000001607845173](figures/zh-cn_image_view4.gif)
+![zh-cn_image_0000001607845173](figures/image-view4.gif)
 <!--RP2End-->
 ### 示例6（通过slice拉伸图片）
 
@@ -1984,6 +2057,7 @@ struct ImageExample {
         Image(this.animated)
           .width('500px').height('500px')
           .onFinish(() => {
+            // 当Image组件的图片源为AnimatedDrawableDescriptor对象时，onFinish回调不会执行。
             console.info('finish');
           })
       }.height('50%')
@@ -2035,7 +2109,7 @@ struct ImageExample {
 }
 ```
 
-![zh-cn_image_0000001607845173](figures/zh-cn_image_view6.gif)
+![zh-cn_image_0000001607845173](figures/image-view6.gif)
 
 ### 示例9（为图像设置颜色滤镜效果）
 
@@ -2183,7 +2257,7 @@ struct ImageContentExample {
 }
 ```
 
-![imageContent](figures/zh-cn_image_view9.gif)
+![switchingBetweenDifferentTypes](figures/switchingBetweenDifferentTypes.gif)
 
 ### 示例12（配置隐私隐藏）
 
@@ -2208,7 +2282,7 @@ struct ImageExample {
 }
 ```
 
-![imageContent](figures/zh-cn_image_view10.gif)
+![securingSensitiveInformation](figures/securingSensitiveInformation.gif)
 
 ### 示例13（为图片设置扫光效果）
 
@@ -2376,7 +2450,6 @@ struct Test {
 @Entry
 @Component
 struct Index {
-  @State borderRadiusValue: number = 10;
   build() {
     Column() {
       // $r('app.media.sky')需要替换为开发者所需的图像资源文件。
@@ -2410,7 +2483,6 @@ struct Index {
 @Entry
 @Component
 struct Index {
-  @State borderRadiusValue: number = 10;
   build() {
     Column() {
       // $r('app.media.sky')需要替换为开发者所需的图像资源文件。
@@ -2437,7 +2509,6 @@ struct Index {
 @Entry
 @Component
 struct Index {
-  @State borderRadiusValue: number = 10;
   build() {
     Column() {
       // $r('app.media.sky')需要替换为开发者所需的图像资源文件。
@@ -2537,6 +2608,7 @@ struct Index {
         // 成功获取到图片信息，打印HDR状态
         console.info(TAG, 'imageInfo.isHdr:' + imageInfo.isHdr);
       }
+      imageSource.release();
     } else {
       console.error(TAG, 'Failed to obtain the image buffer.');
     }
@@ -2996,7 +3068,7 @@ struct ImageExample {
 ```
 ![sandBox](figures/trans.gif)
 
-### 示例28（使用alt属性实现设置加载失败中图片和加载失败时图片）
+### 示例28（使用alt属性实现设置加载过程中图片和加载失败时图片）
 
 该示例演示了在图片加载过程中和加载失败时，通过设置[alt](#alt22)属性实现图片加载过程中和图片加载失败时显示指定图片。
 
@@ -3050,7 +3122,7 @@ struct Index {
         .height(100)
         .width(100)
         .onError((e)=>{
-          console.info("DownLoadErrorInfo : " + JSON.stringify(e?.downloadInfo))
+          console.info("DownloadErrorInfo : " + JSON.stringify(e?.downloadInfo))
         })
     }
     .height('100%')
@@ -3104,4 +3176,4 @@ struct ImageExample {
 }
 ```
 
-![sandBox](figures/antialiased.PNG)
+![antialiased](figures/antialiased.PNG)

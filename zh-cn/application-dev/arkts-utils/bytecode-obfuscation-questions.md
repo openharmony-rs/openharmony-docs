@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "汇总ArkGuard字节码混淆的常见问题，包括与源码混淆的差异、功能异常排查思路以及编译报错、运行异常的处理方法，帮助开发者快速定位解决混淆问题。"
+keywords: [混淆, 字节码混淆, 常见问题, 混淆差异, 功能异常排查, 编译报错, 运行异常]
+doctype: faq
+status: active
+---
+
 # ArkGuard字节码混淆常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
 <!--Owner: @oatuwwutao-->
 <!--Designer: @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 字节码混淆与源码混淆差异
 
@@ -15,8 +23,8 @@
 
 ### 混淆选项差异
 
-1. 字节码混淆开关，默认关闭，在[开启混淆功能](bytecode-obfuscation-guide.md#开启混淆步骤)后，需要额外在模块目录下`obfuscation-rules.txt`文件中配置`-enable-bytecode-obfuscation` 、`-enable-bytecode-obfuscation-debugging`。
-2. 字节码混淆，不支持以下混淆项`-remove-comments`。
+1. 字节码混淆开关默认关闭。在[开启混淆功能](bytecode-obfuscation-guide.md#开启混淆步骤)后，需要在模块目录下的`obfuscation-rules.txt`文件中配置`-enable-bytecode-obfuscation`。如需保留调试信息，还需要配置`-enable-bytecode-obfuscation-debugging`。
+2. 字节码混淆，不支持以下混淆选项`-remove-comments`。
 
 ### 混淆后文件结构差异
 
@@ -24,7 +32,7 @@
 
 ![bytecode-compilation-code-build](figures/bytecode-compilation-code-build.png) ![bytecode-compilation-build](figures/bytecode-compilation-build.png)
 
-字节码混淆后，obfuscation目录中多了obf、origin文件夹和config.json文件，具体详见[混淆效果](bytecode-obfuscation-guide.md#查看混淆效果)。
+字节码混淆后，`obfuscation`目录下会新增`obf`、`origin`文件夹及`config.json`文件，详见[查看字节码混淆效果](bytecode-obfuscation-guide.md#查看字节码混淆效果)。
 
 **文件内容差异**
 
@@ -125,7 +133,7 @@ export struct MainPage {
 this.__messageStr = new ObservedPropertySimplePU('Hello World', this, "messageStr");
 ```
 
-在中间文件转换过程中，message以字面量形式进行了绑定；此时，存在messageStr这个属性被混淆了，但是这个方法的字符串参数没有混淆，导致UI失效。
+在中间文件转换过程中，messageStr以字面量形式进行了绑定；此时，存在messageStr这个属性被混淆了，但是这个方法的字符串参数没有混淆，导致UI失效的情况。
 
 **解决办法**：收集struct里所有成员，加入白名单，不参与混淆。目前由于字节码混淆不提供UI组件混淆能力，系统会自动识别添加到白名单，不需要开发者配置。
 
@@ -212,9 +220,9 @@ callargs2 0x2e, v2, v3
 
 ## 常规配置问题处理
 
-### 开启enable-bytecode-obfuscation-debugging，没有生成pa文件如何处理
+### 开启-enable-bytecode-obfuscation-debugging，没有生成pa文件如何处理
 
-首先确保Build Mode设置为release，查看根目录下的build-profile.json5中，设置 "compatibleSdkVersionStage": "beta3"，再检查每个module中obfuscation-rules.txt文件里，开启字节码。
+首先确保Build Mode设置为release，查看根目录下的build-profile.json5，设置 "compatibleSdkVersionStage": "beta3"，再检查每个module中obfuscation-rules.txt文件里，开启字节码混淆选项。
 
 ### 混淆如何查看混淆效果
 
@@ -224,7 +232,7 @@ callargs2 0x2e, v2, v3
 
 ![bytecode-build-product](figures/bytecode-build-product.png)
 
-- 名称映射表文件：nameCache.json，该文件记录了源码名称混淆的映射关系。
+- 名称映射表文件：nameCache.json，该文件记录了字节码名称混淆的映射关系。
 - 系统API白名单文件：systemApiCache.json，该文件记录了SDK中的接口与属性名称，与其重名的源码不会被混淆。
 
 
@@ -312,7 +320,7 @@ let jsonProp = jsonData.jsonObj.jsonProperty;
 
 ``` TypeScript
 // 混淆后
-import jsonData from "./test.json";
+import jsonData from "./ImportJson.json";
 
 let jsonProp = jsonData.i.j;
 ```
@@ -379,10 +387,10 @@ linkSource
 
 使用@Type和@Trace组合修饰的装饰器属性，可以正常混淆，但混淆后，功能异常。
 
-<!-- @[export_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/SampleChild.ets) -->    
+<!-- @[export_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/SampleChild.ets) -->     
 
 ``` TypeScript
-// Sample.ets
+// SampleChild.ets
 import { Type } from '@kit.ArkUI';
 
 @ObservedV2
@@ -414,7 +422,7 @@ export struct Page {
 
   build() {
     Column() {
-      Text(`Page1 add 1 to prop.p1: ${this.prop.f123.p123}`)
+      Text(`Page1 add 1 to prop.f123.p123: ${this.prop.f123.p123}`)
     }
   }
 }
@@ -444,10 +452,10 @@ p123
 ```txt
 -enable-property-obfuscation
 -keep
-./file1.ts
+./ExportInterface.ts
 ```
 
-并且在file2.ts中导入file1.ts的接口。此时，接口中有属性的类型为对象类型，该对象类型的属性在file1.ts中被保留，在file2.ts中被混淆，从而导致调用时引发功能异常。示例如下：
+并且在MainPage.ets中导入ExportInterface.ts的接口。此时，接口中有属性的类型为对象类型，该对象类型的属性在ExportInterface.ts中被保留，在MainPage.ets中被混淆，从而导致调用时引发功能异常。示例如下：
 
 <!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/ExportInterface.ts) -->
 
@@ -465,8 +473,8 @@ export interface MyInfo {
 <!-- @[import_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) -->   
 
 ``` TypeScript
-// ExportCompositeInterface.ts
-import { MyInfo } from './ExportCompositeInterface';
+// MainPage.ets
+import { MyInfo } from './ExportInterface';
   // ...
   const person: MyInfo = {
     age: 20,
@@ -477,9 +485,9 @@ import { MyInfo } from './ExportCompositeInterface';
 ```
 
 ``` TypeScript
-// 混淆后，file1.ts的代码被保留
-// file2.ts
-import { MyInfo } from './file1';
+// 混淆后，ExportInterface.ts的代码被保留
+// MainPage.ets
+import { MyInfo } from './ExportInterface';
 
 const person: MyInfo = {
     age: 20,
@@ -491,7 +499,7 @@ const person: MyInfo = {
 
 **问题原因**:
 
--keep选项保留file1.ts文件时，file1.ts中代码不会被混淆。对于导出属性（如address）所属类型内的属性，不会被自动收集在属性白名单中。因此，该类型内的属性在其他文件中被使用时，会被混淆。
+-keep选项保留ExportInterface.ts文件时，ExportInterface.ts中代码不会被混淆。对于导出属性（如address）所属类型内的属性，不会被自动收集在属性白名单中。因此，该类型内的属性在其他文件中被使用时，会被混淆。
 
 **解决方案**:
 
@@ -512,7 +520,7 @@ export interface MyInfo {
 
 **方案二**：使用-keep-property-name选项，将未直接导出的类型内的属性配置到属性白名单中。示例如下：
 
-```ts
+``` TypeScript
 -keep-property-name
 city1
 ```
@@ -526,7 +534,7 @@ city1
 |HAP/HSP|本地HAR|本地HAR与主模块一起编译，混淆后名称一致|
 |HAP/HSP|三方库|三方库中导出的名称及其属性会被收集到白名单，因此导入和导出时都不会被混淆|
 
-HSP需要将给其他模块用的方法配置到白名单中。因为主模块里也需要配置相同的白名单，所以推荐将HSP配置了白名单的混淆文件（假设名称为hsp-white-list.txt）添加到依赖它的模块的混淆配置项里，即下图files字段里。
+HSP需要将给其他模块用的方法配置到白名单中。因为主模块里也需要配置相同的白名单，所以推荐将HSP配置了白名单的混淆文件（假设名称为hsp-white-list.txt）添加到依赖它的模块的混淆配置项里，即下图`files`字段里。
 
 ![bytecode-buildoptionset](figures/bytecode-buildoptionset.png)
 
@@ -544,7 +552,7 @@ export function add(a: number, b: number): number {
 <!-- @[import_utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) --> 
 
 ``` TypeScript
-// main.ts
+// MainPage.ets
 async function loadAndUseAdd() {
     try {
         const mathUtils = await import('./ExportUtils');
@@ -559,15 +567,18 @@ loadAndUseAdd();
 
 ``` TypeScript
 // 混淆后
-// utils.ts
+// ExportUtils.ts
 export function c1(d1: number, e1: number): number {
     return d1 + e1;
 }
+```
 
-// main.ts
+``` TypeScript
+// 混淆后
+// MainPage.ets
 async function i() {
     try {
-        const a1 = await import("@normalized:N&&&entry/src/main/ets/pages/utils&");
+        const a1 = await import("@normalized:N&&&entry/src/main/ets/pages/ExportUtils&");
         const b1 = a1.add(2, 3);
     }
     catch (z) {
@@ -603,7 +614,7 @@ export namespace NS {
 <!-- @[import_ns](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/BytecodeObfuscationIssues/entry/src/main/ets/pages/MainPage.ets) --> 
 
 ``` TypeScript
-// import.ts
+// MainPage.ets
 import { NS } from './ExportNs';
   // ...
   NS.foo();
@@ -611,13 +622,16 @@ import { NS } from './ExportNs';
 
 ``` TypeScript
 // 混淆后
-// export.ts
+// ExportNs.ts
 export namespace i {
     export function j() {}
 }
+```
 
-// import.ts
-import { i } from './export';
+``` TypeScript
+// 混淆后
+// MainPage.ets
+import { i } from './ExportNs';
 
 i.foo();
 ```
@@ -641,7 +655,7 @@ declare global {
 }
 ```
 
-```ts
+``` TypeScript
 // 混淆后
 declare a2 {
     var b2 : string
@@ -660,19 +674,21 @@ declare a2 {
 
 **问题现象**：
 
-在开启-enable-toplevel-obfuscation属性混淆后，字节码混淆时，混淆正常，运行时报错，错误日志：
+在开启-enable-toplevel-obfuscation选项（顶层作用域名称混淆）后，字节码混淆时，混淆正常，运行时报错，错误日志：
 
 ```txt
 Error message: is not callable
 Stacktrace: Cannot get SourceMap info, dump raw stack: at anonymous (ads_service|@hw-ads/ohos-ads-model|1.0.1|src/main/ets/annotations/FieldType.ts:6:1。
 ```
 
-```js
+``` JSON5
 // oh-package.json5
 "dependencies": {
   "reflect-metadata": "0.2.1"
 }
-  
+```
+
+``` TypeScript
 // test.ts
 import 'reflect-metadata';
 
@@ -687,7 +703,7 @@ export function FieldType(...types: Function[]): PropertyDecorator {
 
 **问题分析**：
 
-在开启-enable-toplevel-obfuscation属性混淆后，Reflect文件中，函数名参与混淆，exporter函数中的字符串"defineMetadata"不参与混淆，导致外部使用Reflect.defineMetadata时，找不到对应函数。
+在开启-enable-toplevel-obfuscation选项（顶层作用域名称混淆）后，Reflect文件中，函数名参与混淆，exporter函数中的字符串"defineMetadata"不参与混淆，导致外部使用Reflect.defineMetadata时，找不到对应函数。
 
 **解决方案**：
 
@@ -763,3 +779,135 @@ AppAbility
 
 1. 将HAP与HSP共同依赖的本地源码HAR改造为字节码HAR，这样此HAR在被依赖时不会被二次混淆。
 2. 将HAP与HSP共同依赖的本地源码HAR以release模式构建打包，这样此HAR在被依赖时，其文件名与对外接口不会被混淆。
+
+## 字节码混淆常规问题处理（ArkTS-Sta）
+
+### 开启-enable-bytecode-obfuscation，没有生成相应的混淆文件如何处理
+
+**问题现象：**
+
+开启`-enable-bytecode-obfuscation`后，没有生成混淆文件。
+
+**解决方案：**
+
+1. 确保`Build Mode`设置为release。
+2. 查看module目录下的`build-profile.json5`文件中`ruleOptions`的`enable`是否设置为`true`。
+
+### 开启-enable-bytecode-obfuscation后，编译失败如何处理
+
+**问题现象：**
+
+开启`-enable-bytecode-obfuscation`后，编译失败。
+
+**解决方案：**
+
+1. 在`obfuscation-rules.txt`文件中开启`-enable-bytecode-obfuscation-debugging`，重新编译后，在模块的build/default/[...]/obfuscation目录下查找debug.txt文件，定位混淆错误信息。
+2. 若新增内容混淆失败，可先尝试使用保留（keep）规则进行保留。
+
+### 为什么interface中get/set方法可以精准keep，而class中get/set方法不可以
+
+**问题现象：**
+
+class中定义属性，同时定义get/set方法，混淆后，属性名被混淆成不同名称。
+
+**问题分析：**
+
+interface中定义的field与get/set方法同名。class中定义field时，语法限制必须将get/set重命名，混淆时无法关联二者，从而被混淆成不同名称。
+
+**解决方案：**
+
+使用通配符`*`进行全量保留。
+
+示例：
+
+```typescript
+// StaticDemo.ets
+class ClassTest{
+    public static age: number = 10;
+    _name: string = "test";
+    sex: number = 0;
+
+    set name(stringVar:string){
+        this._name = stringVar;
+    }
+    get name(){
+        return this._name;
+    }
+}
+```
+
+代码中`set name`或`get name`无法单独精准保留，需要使用`-keep class entry.src.main.ets.entryability.StaticDemo.ClassTest {*;}`进行全量保留。
+
+### class中static和instance变量重名，编译异常报错
+
+**问题现象：**
+
+class 中声明了同名的 static 变量和 instance 变量（如 static age 和 age），开启混淆后编译报错。
+
+**解决方案：**
+
+不支持class中static和instance变量重名的混淆，需要手动保留，或重命名变量。
+
+```typescript
+// StaticDemo.ets
+class ClassTest{
+    public static age: number = 10;
+    age: int = 5;
+}
+```
+keep命令：
+
+```txt
+-keep-class-members class entry.src.main.ets.entryability.StaticDemo.ClassTest { age; }
+```
+
+### 使用-keep保留继承的抽象类方法时，子类和父类的同名方法都会被保留，无法只保留一侧
+
+**问题现象：**
+
+对继承自抽象类的子类，使用`-keep`规则保留父类或子类中某个抽象方法时，发现父子类中该同名方法都被保留了，无法只保留一侧。
+
+**解决方案：**
+
+为保证父子类继承的属性或方法的多态一致性，保留（keep）时会同时保留父子类中相同的成员。示例：
+
+```typescript
+// StaticDemo.ets
+abstract class AbstractClass {
+    public abstract PUBLIC_ABSTRACT_METHOD(): void;
+    protected abstract PROTECTED_ABSTRACT_METHOD(): void;
+}
+
+class ExampleClass extends AbstractClass {
+    public override PUBLIC_ABSTRACT_METHOD(): void {}
+    protected override PROTECTED_ABSTRACT_METHOD(): void {}
+}
+```
+
+若添加以下任一规则：
+
+```txt
+-keep class entry.src.main.ets.entryability.StaticDemo.AbstractClass {PROTECTED_ABSTRACT_METHOD():void;}
+```
+
+或
+
+```txt
+-keep class entry.src.main.ets.entryability.StaticDemo.ExampleClass {PROTECTED_ABSTRACT_METHOD():void;}
+```
+
+`AbstractClass`和`ExampleClass`中的`PROTECTED_ABSTRACT_METHOD()`会被同时保留。
+
+### 混合工程/互操作（interop）相关的问题和解决方案
+
+对于包含ArkTS-Dyn与ArkTS-Sta组件的混合工程，请注意ArkTS-Dyn的字节码混淆和ArkTS-Sta的字节码混淆会独立执行各自的混淆流程。
+
+**问题现象：**
+
+混合工程中，ArkTS-Dyn与ArkTS-Sta组件交互处出现报错，或混淆后两侧组件名称不一致。
+
+**解决方案：**
+
+1. 若工程中存在通过interop机制进行ArkTS-Dyn和ArkTS-Sta交互的场景，开发者需手动将交互所涉及的关键类、方法或字段等添加到混淆白名单中，同时将涉及的文件路径添加到白名单中，以确保混淆后名称一致，避免因混淆导致交互失败。
+
+2. 若工程中存在ArkTS-Dyn组件引用ArkTS-Sta组件，开发者需要手动将ArkTS-Sta组件相关的文件路径和文件中的所有内容保留。

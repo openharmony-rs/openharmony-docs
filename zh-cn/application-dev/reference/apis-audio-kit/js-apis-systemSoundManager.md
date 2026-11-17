@@ -6,11 +6,12 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-系统声音管理提供管理系统声音的基础能力，包括对系统音效类型的定义、获取系统音效播放器等。
+本模块提供系统声音管理能力，包括系统音效类型的定义、系统音效播放器的获取等。当需要在应用内播放系统音效以统一使用系统预设音效、带来一致的用户体验时，使用本模块接口完成相关操作。
 
 > **说明：**
 >
-> 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -22,9 +23,13 @@ import { systemSoundManager } from '@kit.AudioKit';
 
 枚举，表示系统音效类型。
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ---- | ------ | ------- |
@@ -38,13 +43,22 @@ createSystemSoundPlayer(): Promise&lt;SystemSoundPlayer | null&gt;
 
 创建系统音效播放器对象。使用Promise异步回调。
 
+> **说明：**
+>
+> - 调用createSystemSoundPlayer()创建播放器后，必须在使用完毕后调用release()释放播放器资源。
+> - 详细的使用说明和方法关系请参见[SystemSoundPlayer (音效播放器)](js-apis-inner-multimedia-systemSoundPlayer.md)。
+
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
 | 类型                          | 说明         |
 | ----------------------------- | ------------ |
-| Promise&lt;[SystemSoundPlayer](js-apis-inner-multimedia-systemSoundPlayer.md#systemsoundplayer) \| null&gt; | 成功返回系统音效播放器对象，失败返回null。 |
+| Promise&lt;[SystemSoundPlayer](js-apis-inner-multimedia-systemSoundPlayer.md#systemsoundplayer) \| null&gt; | 成功返回系统音效播放器对象，用于播放拍照音效、视频录制音效等系统音效；失败返回null。 |
 
 **错误码：**
 
@@ -62,8 +76,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let systemSoundPlayer: systemSoundManager.SystemSoundPlayer | null = null;
 
 systemSoundManager.createSystemSoundPlayer().then((systemSoundPlayerInstance) => {
-  console.info('Succeeded in creating the system sound player.');
   systemSoundPlayer = systemSoundPlayerInstance;
+  console.info('Succeeded in creating the system sound player.');
 }).catch((err: BusinessError) => {
   console.error(`Failed to create the system sound player. Code: ${err.code}, message: ${err.message}`);
 });
@@ -73,9 +87,13 @@ systemSoundManager.createSystemSoundPlayer().then((systemSoundPlayerInstance) =>
 
 type SystemSoundPlayer = _SystemSoundPlayer
 
-系统音效播放器对象。
+系统音效播放器对象，用于播放拍照音效、视频录制音效等系统音效。
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型              | 说明        |
 |-----------------|-----------|

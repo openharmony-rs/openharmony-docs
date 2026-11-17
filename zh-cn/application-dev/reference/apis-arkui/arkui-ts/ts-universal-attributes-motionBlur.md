@@ -1,16 +1,18 @@
 # 运动模糊
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-设置组件由缩放大小或位移变化引起的运动过程中的动态模糊效果。需要与动画的[AnimateParam](ts-explicit-animation.md#animateparam对象说明)的onFinish参数配合使用。
+设置组件由缩放大小或位移变化引起的运动过程中的运动模糊效果。需要与动画的[AnimateParam](ts-explicit-animation.md#animateparam对象说明)的onFinish参数配合使用。
 
 >  **说明：**
 >
 >  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+>  - 本模块接口仅可在Stage模型下使用。
 >
 >  - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
@@ -18,7 +20,7 @@
 
 motionBlur(value: MotionBlurOptions): T
 
-在当前组件由缩放大小或位移变化引起的运动过程中，增加动态模糊效果。
+在当前组件由缩放大小或位移变化引起的运动过程中，增加运动模糊效果。
 
 > **说明：**
 >
@@ -34,7 +36,7 @@ motionBlur(value: MotionBlurOptions): T
 >
 > - 模糊半径建议设置1以内，否则会产生非预期效果。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,21 +62,21 @@ motionBlur(value: MotionBlurOptions): T
 
 motionBlur(motionBlur: Optional\<MotionBlurOptions>): T
 
-在当前组件由缩放大小或位移变化引起的运动过程中，增加动态模糊效果。与[motionBlur](#motionblur)相比，motionBlur参数新增了对undefined类型的支持。
+在当前组件由缩放大小或位移变化引起的运动过程中，增加运动模糊效果。与[motionBlur](#motionblur)相比，motionBlur参数新增了对undefined类型的支持。
 
-1、不建议在组件内转场、共享元素转场、组件内隐式元素转场、粒子动画场景下使用该属性，否则会产生非预期效果。
+1. 不建议在组件内转场、共享元素转场、组件内隐式元素转场、粒子动画场景下使用该属性，否则会产生非预期效果。
 
-2、该属性需要在开始状态将motionBlur的参数radius设置为0，否则冷启动时会有非预期效果。
+2. 该属性需要在开始状态将motionBlur的参数radius设置为0，否则冷启动时会有非预期效果。
 
-3、该属性需要与动画的AnimateParam的onFinish参数配合使用，需要在运动模糊动画结束后将motionBlur的参数radius置为0，否则会产生非预期效果。
+3. 该属性需要与动画的AnimateParam的onFinish参数配合使用，需要在运动模糊动画结束后将motionBlur的参数radius置为0，否则会产生非预期效果。
 
-4、在使用该属性过程中，不要在使用过程中频繁更改同一个组件的模糊半径，否则会产生非预期效果。比如示例中的动画，频繁点击会出现模糊效果偶尔失效的情况。
+4. 在使用该属性过程中，不要在使用过程中频繁更改同一个组件的模糊半径，否则会产生非预期效果。比如示例中的动画，频繁点击会出现模糊效果偶尔失效的情况。
 
-5、运动模糊锚点坐标需要与动画缩放的锚点保持一致，否则会产生非预期效果。
+5. 运动模糊锚点坐标需要与动画缩放的锚点保持一致，否则会产生非预期效果。
 
-6、模糊半径建议设置1以内，否则会产生非预期效果。
+6. 模糊半径建议设置1以内，否则会产生非预期效果。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,21 +100,21 @@ motionBlur(motionBlur: Optional\<MotionBlurOptions>): T
 
 ## motionBlur<sup>23+</sup>
 
-motionBlur(value: MotionBlurOptions | undefined): this
+motionBlur(value: MotionBlurOptions | undefined)
 
 在当前组件由缩放大小或位移变化引起的运动过程中，增加动态模糊效果。
 
-1、不建议在组件内转场、共享元素转场、组件内隐式元素转场、粒子动画场景下使用该属性，否则会产生非预期效果。
+1. 不建议在组件内转场、共享元素转场、组件内隐式元素转场、粒子动画场景下使用该属性，否则会产生非预期效果。
 
-2、该属性需要在开始状态将motionBlur的参数radius设置为0，否则冷启动时会有非预期效果。
+2. 该属性需要在开始状态将motionBlur的参数radius设置为0，否则冷启动时会有非预期效果。
 
-3、该属性需要与动画的AnimateParam的onFinish参数配合使用，需要在运动模糊动画结束后将motionBlur的参数radius置为0，否则会产生非预期效果。
+3. 该属性需要与动画的AnimateParam的onFinish参数配合使用，需要在运动模糊动画结束后将motionBlur的参数radius置为0，否则会产生非预期效果。
 
-4、在使用该属性过程中，不要在使用过程中频繁更改同一个组件的模糊半径，否则会产生非预期效果。比如示例中的动画，频繁点击会出现模糊效果偶尔失效的情况。
+4. 在使用该属性过程中，不要在使用过程中频繁更改同一个组件的模糊半径，否则会产生非预期效果。比如示例中的动画，频繁点击会出现模糊效果偶尔失效的情况。
 
-5、运动模糊锚点坐标需要与动画缩放的锚点保持一致，否则会产生非预期效果。
+5. 运动模糊锚点坐标需要与动画缩放的锚点保持一致，否则会产生非预期效果。
 
-6、模糊半径建议设置1以内，否则会产生非预期效果。
+6. 模糊半径建议设置1以内，否则会产生非预期效果。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,17 +130,11 @@ motionBlur(value: MotionBlurOptions | undefined): this
 | ---------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value | [MotionBlurOptions](#motionbluroptions对象说明) \| undefined | 是   | 定义运动模糊参数。<br/>当motionBlur的值为undefined时，维持之前取值。 |
 
-**返回值：**
-
-| 类型   | 说明                     |
-| ------ | ------------------------ |
-| this | 返回当前组件。 |
-
 ## MotionBlurOptions对象说明
 
 运动模糊选项。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -148,14 +144,14 @@ motionBlur(value: MotionBlurOptions | undefined): this
 
 | 名称          | 类型                                                        | 只读  | 可选  | 说明                                                         |
 | ------------- | ----------------------------------------------------------- | ----- | ----- | ------------------------------------------------------------ |
-| radius | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined   | 否    | 否    | 模糊半径，取值范围[0.0, ∞)，建议设置1.0以内。单位：px。 |
+| radius | ArkTS-Dyn: number <br> ArkTS-Sta: double \| undefined   | 否    | 否    | 模糊半径，取值范围[0.0, ∞)，建议设置1.0以内来实现较为美观的效果。单位：px。 |
 | anchor | ArkTS-Dyn: [MotionBlurAnchor](#motionbluranchor对象说明) <br> ArkTS-Sta: [MotionBlurAnchor](#motionbluranchor对象说明) \| undefined | 否    | 否    | 运动模糊锚点坐标。运动模糊锚点坐标设置时需要与动画缩放的锚点保持一致设置。 |
 
 ## MotionBlurAnchor对象说明
 
 运动模糊锚点坐标。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

@@ -1,8 +1,8 @@
 # 应用接入数据备份恢复
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie-->
-<!--Designer: @chenxi0605-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
@@ -14,7 +14,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 
 ## 接口说明
 
-备份恢复扩展能力关键接口如下表所示。API的接口使用指导请参见[BackupExtensionAbility API参考](../reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md#backupextensionability)和[BackupExtensionContext API参考](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md)。
+备份恢复扩展能力关键接口如下表所示。API的接口使用指导请参见[@ohos.application.BackupExtensionAbility (备份恢复扩展能力)](../reference/apis-core-file-kit/js-apis-application-backupExtensionAbility.md#backupextensionability)和[@ohos.file.BackupExtensionContext (备份恢复扩展能力)](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md)。
 
 | 接口名                                                       | 描述             |
 | ------------------------------------------------------------ | ---------------- |
@@ -35,7 +35,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 
 1. 在应用配置文件`module.json5`中注册`extensionAbilities`相关配置
 
-   新增`"extensionAbilities"`字段，其中注册类型`"type"`设置为`"backup"`，元数据信息["metadata"](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md)新增一个`"name"`为`"ohos.  extension. backup"`的条目。
+   新增`"extensionAbilities"`字段，其中注册类型`"type"`设置为`"backup"`，元数据信息["metadata"](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md)新增一个`"name"`为`"ohos.extension.backup"`的条目。
 
    BackupExtensionAbility配置文件示例：
 
@@ -80,7 +80,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
    }
    ```
 
-3. 开发者可以在`BackupExtension.ets`文件中自定义类继承的`BackupExtensionAbility`，通过重写其`onBackup/onBackupEx`和`onRestore/onRestoreEx`方法，使其达到在备份预加工应用数据或者在恢复阶段加工待恢复文件。
+3. 开发者可以在`BackupExtension.ets`文件中自定义类继承的`BackupExtensionAbility`，通过重写其`onBackup/onBackupEx`和`onRestore/onRestoreEx`方法，使其达到在备份阶段预加工应用数据或者在恢复阶段加工待恢复文件。
 
    如果没有特殊要求可以空实现，则备份恢复服务会按照统一的备份恢复数据规则进行备份恢复。
 
@@ -104,7 +104,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
     }
     ```
 
-   <!-- @[on_backup_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->    
+   <!-- @[on_backup_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->  
    
    ``` TypeScript
    import { BackupExtensionAbility } from '@kit.CoreFileKit';
@@ -152,7 +152,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 
    下面的示例展示了需要清理临时文件目录时`onRelease`的实现：
 
-   <!-- @[on_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->    
+   <!-- @[on_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->  
    
    ``` TypeScript
    import { BackupExtensionAbility } from '@kit.CoreFileKit';
@@ -163,13 +163,13 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
    
    const SCENARIO_BACKUP: number = 1;
    const SCENARIO_RESTORE: number = 2;
-   // 需要清理的临时目录
-   let filePath: string = '/data/storage/el2/base/.temp/';
    
    class BackupExt extends BackupExtensionAbility {
      // ...
      // onRelease
      async onRelease(scenario: number): Promise<void> {
+       // 清理应用在此目录下创建的备份或恢复临时文件。
+       let filePath: string = this.context.filesDir + '/.temp/';
        try {
          if (scenario == SCENARIO_BACKUP) {
            // 备份场景，应用自行实现处理，以清理备份产生的临时文件为例
@@ -208,7 +208,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 1. **有关fullBackupOnly字段的说明**
 
    - 当fullBackupOnly为false时，恢复数据会以 **/** 为根目录解压数据，同路径下的同名文件会被覆盖。
-   - 当fullBackupOnly为true时，恢复数据会以临时目录为根目录解压数据，开发者需要在OnRestore/OnRestoreEx内自行实现恢复数据的逻辑，进行最终的恢复。
+   - 当fullBackupOnly为true时，恢复数据会以临时目录为根目录解压数据，开发者需要在onRestore/onRestoreEx内自行实现恢复数据的逻辑，进行最终的恢复。
 
    开发者可根据自身的业务场景，选择对应的恢复数据方式。
 

@@ -9,8 +9,10 @@
 appManager模块提供应用管理的能力，包括查询当前系统是否处于稳定性测试场景、查询当前设备是否为RAM（Random Access Memory，随机存取存储器）受限设备、获取当前应用程序可以使用的最大内存值、获取有关运行进程的信息等。
 
 > **说明：**
-> 
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -22,9 +24,13 @@ import { appManager } from '@kit.AbilityKit';
 
 表示进程状态的枚举。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 值  | 说明                               |
 | -------------------- | --- | --------------------------------- |
@@ -44,15 +50,19 @@ isRunningInStabilityTest(callback: AsyncCallback&lt;boolean&gt;): void
 >
 > 稳定性测试场景指为验证应用在复杂、极端或长期运行条件下的可靠性而设计的特定测试环境。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 | 
-  | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当接口调用成功，err为undefined，data为当前系统是否处于稳定性测试场景的结果；否则为错误对象。可进行错误处理或其他自定义处理。<br>返回true表示系统处于稳定性测试场景；返回false表示系统不处于稳定性测试场景。  |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当接口调用成功，err为undefined，data为当前系统是否处于稳定性测试场景的结果；否则为错误对象。可进行错误处理或其他自定义处理。<br>返回true表示系统处于稳定性测试场景；返回false表示系统不处于稳定性测试场景。  |
 
 **错误码**：
 
@@ -70,7 +80,7 @@ import { appManager } from '@kit.AbilityKit';
 
 appManager.isRunningInStabilityTest((err, flag) => {
   if (err) {
-    console.error(`isRunningInStabilityTest fail, err: ${JSON.stringify(err)}`);
+    console.error(`isRunningInStabilityTest fail, code: ${err.code}, msg:${err.message}`);
   } else {
     console.info(`The result of isRunningInStabilityTest is: ${JSON.stringify(flag)}`);
   }
@@ -88,15 +98,19 @@ isRunningInStabilityTest(): Promise&lt;boolean&gt;
 >
 > 稳定性测试场景指为验证应用在复杂、极端或长期运行条件下的可靠性而设计的特定测试环境。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
-  | 类型 | 说明 | 
-  | -------- | -------- |
-  | Promise&lt;boolean&gt; | Promise对象。返回true表示系统处于稳定性测试场景；返回false表示系统不处于稳定性测试场景。 |
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示系统处于稳定性测试场景；返回false表示系统不处于稳定性测试场景。 |
 
 **错误码**：
 
@@ -113,9 +127,10 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 appManager.isRunningInStabilityTest().then((flag) => {
-  console.info(`The result of isRunningInStabilityTest is: ${JSON.stringify(flag)}`);
-}).catch((error: BusinessError) => {
-  console.error(`error: ${JSON.stringify(error)}`);
+  console.info(`The result of isRunningInStabilityTest is: ${flag}`);
+}).catch((err: Error) => {
+  let error=err as BusinessError;
+  console.error(`error: code: ${error.code} message: ${error.message}`);
 });
 ```
 
@@ -126,15 +141,19 @@ isRamConstrainedDevice(): Promise\<boolean>
 
 查询当前设备是否为RAM受限设备（内存资源严重受限的设备）。使用Promise异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
-  | 类型 | 说明 | 
-  | -------- | -------- |
-  | Promise&lt;boolean&gt; | Promise对象。返回true表示当前设备为RAM受限设备；返回false表示当前设备为非RAM受限设备。 |
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前设备为RAM受限设备；返回false表示当前设备为非RAM受限设备。 |
 
 **错误码**：
 
@@ -151,9 +170,10 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 appManager.isRamConstrainedDevice().then((data) => {
-  console.info(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
-}).catch((error: BusinessError) => {
-  console.error(`error: ${JSON.stringify(error)}`);
+  console.info(`The result of isRamConstrainedDevice is: ${data}`);
+}).catch((err: Error) => {
+  let error = err as BusinessError;
+  console.error(`error: ${error.code} ${error.message}`);
 });
 ```
 
@@ -163,15 +183,19 @@ isRamConstrainedDevice(callback: AsyncCallback\<boolean>): void
 
 查询当前设备是否为RAM受限设备（内存资源严重受限的设备）。使用callback异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 | 
-  | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当接口调用成功，err为undefined，data为当前设备是否为RAM受限设备的结果；否则为错误对象。可进行错误处理或其他自定义处理。<br>返回true表示当前设备为RAM受限设备；返回false表示当前设备为非RAM受限设备。  |
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 回调函数。当接口调用成功，err为undefined，data为当前设备是否为RAM受限设备的结果；否则为错误对象。可进行错误处理或其他自定义处理。<br>返回true表示当前设备为RAM受限设备；返回false表示当前设备为非RAM受限设备。  |
 
 **错误码**：
 
@@ -189,7 +213,7 @@ import { appManager } from '@kit.AbilityKit';
 
 appManager.isRamConstrainedDevice((err, data) => {
   if (err) {
-    console.error(`isRamConstrainedDevice fail, err: ${JSON.stringify(err)}`);
+    console.error(`isRamConstrainedDevice fail, code: ${err.code}, msg:${err.message}`);
   } else {
     console.info(`The result of isRamConstrainedDevice is: ${JSON.stringify(data)}`);
   }
@@ -198,19 +222,25 @@ appManager.isRamConstrainedDevice((err, data) => {
 
 ## appManager.getAppMemorySize
 
-getAppMemorySize(): Promise\<number>
+ArkTS-Dyn: getAppMemorySize(): Promise\<number>
+
+ArkTS-Sta: getAppMemorySize(): Promise\<int>
 
 获取当前应用程序可以使用的最大内存（RAM）值。使用Promise异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
-  | 类型 | 说明 | 
-  | -------- | -------- |
-  | Promise&lt;number&gt; | Promise对象，返回当前应用程序可以使用的最大内存（RAM）值，可根据此值进行错误处理或其他自定义处理，单位是M。|
+| 类型 | 说明 |
+| -------- | -------- |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;int\> | Promise对象，返回当前应用程序可以使用的最大内存（RAM）值，可根据此值进行错误处理或其他自定义处理，单位是MB。|
 
 **错误码**：
 
@@ -227,27 +257,34 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 appManager.getAppMemorySize().then((data) => {
-  console.info(`The size of app memory is: ${JSON.stringify(data)}`);
-}).catch((error: BusinessError) => {
-  console.error(`error: ${JSON.stringify(error)}`);
+  console.info(`The size of app memory is: ${data}`);
+}).catch((err: Error) => {
+  let error = err as BusinessError;
+  console.error(`code: ${error.code}, msg:${error.message}`);
 });
 ```
 
 ## appManager.getAppMemorySize
 
-getAppMemorySize(callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getAppMemorySize(callback: AsyncCallback\<number>): void
+
+ArkTS-Sta: getAppMemorySize(callback: AsyncCallback\<int>): void
 
 获取当前应用程序可以使用的最大内存（RAM）值。使用callback异步回调。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 | 
-  | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。当接口调用成功，err为undefined，data为当前应用程序可以使用的最大内存（RAM）值，单位是M；否则为错误对象。可根据此值进行错误处理或其他自定义处理。|
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: : AsyncCallback&lt;int\> | 是 | 回调函数。当接口调用成功，err为undefined，data为当前应用程序可以使用的最大内存（RAM）值，单位是MB；否则为错误对象。可根据此值进行错误处理或其他自定义处理。|
 
 **错误码**：
 
@@ -265,27 +302,30 @@ import { appManager } from '@kit.AbilityKit';
 
 appManager.getAppMemorySize((err, data) => {
   if (err) {
-    console.error(`getAppMemorySize fail, err: ${JSON.stringify(err)}`);
+    console.error(`getAppMemorySize fail, code: ${err.code}, msg:${err.message}`);
   } else {
     console.info(`The size of app memory is: ${JSON.stringify(data)}`);
   }
-});
+})
 ```
 
 ## appManager.getRunningProcessInformation
 
 getRunningProcessInformation(): Promise\<Array\<ProcessInformation>>
 
-获取当前应用运行进程的相关信息。使用Promise异步回调。
+从API版本11开始，默认仅返回调用方自身的进程信息；若拥有 ohos.permission.GET_RUNNING_INFO 权限（该权限仅系统应用可申请），则可查询全量应用的进程信息。使用Promise异步回调。
 
-> **说明：**
->
-> - 对于API version 11之前的版本，该接口需要申请权限ohos.permission.GET_RUNNING_INFO（该权限仅系统应用可申请）。
-> - 从API version 11开始，该接口仅用于获取调用方自身的进程信息，不再需要申请权限。
-
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**需要权限**：
+
+API版本9-10：ohos.permission.GET_RUNNING_INFO（该权限仅系统应用可申请）
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -310,7 +350,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 appManager.getRunningProcessInformation().then((data) => {
   console.info(`The running process information is: ${JSON.stringify(data)}`);
 }).catch((error: BusinessError) => {
-  console.error(`error: ${JSON.stringify(error)}`);
+  console.error(`code: ${error.code}, msg:${error.message}`);
 });
 ```
 
@@ -318,22 +358,25 @@ appManager.getRunningProcessInformation().then((data) => {
 
 getRunningProcessInformation(callback: AsyncCallback\<Array\<ProcessInformation>>): void
 
-获取当前应用运行进程的相关信息。使用callback异步回调。
+从API版本11开始，默认仅返回调用方自身的进程信息；若拥有 ohos.permission.GET_RUNNING_INFO 权限（该权限仅系统应用可申请），则可查询全量应用的进程信息。使用callback异步回调。
 
-> **说明：**
->
-> - 对于API version 11之前的版本，该接口需要申请权限ohos.permission.GET_RUNNING_INFO（该权限仅系统应用可申请）。
-> - 从API version 11开始，该接口仅用于获取调用方自身的进程信息，不再需要申请权限。
-
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**需要权限**：
+
+API版本9-10：ohos.permission.GET_RUNNING_INFO（该权限仅系统应用可申请）
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
-  | 参数名 | 类型 | 必填 | 说明 | 
-  | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>> | 是 | 回调函数。当接口调用成功，err为undefined，data为当前应用运行进程的信息；否则为错误对象。可进行错误处理或其他自定义处理。|
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | AsyncCallback\<Array\<[ProcessInformation](js-apis-inner-application-processInformation.md)>> | 是 | 回调函数。当接口调用成功，err为undefined，data为当前应用运行进程的信息；否则为错误对象。可进行错误处理或其他自定义处理。|
 
 **错误码**：
 
@@ -351,7 +394,7 @@ import { appManager } from '@kit.AbilityKit';
 
 appManager.getRunningProcessInformation((err, data) => {
   if (err) {
-    console.error(`getRunningProcessInformation fail, err: ${JSON.stringify(err)}`);
+    console.error(`getRunningProcessInformation fail, code: ${err.code}, msg:${err.message}`);
   } else {
     console.info(`The running process information is: ${JSON.stringify(data)}`);
   }
@@ -367,6 +410,10 @@ on(type: 'applicationState', observer: ApplicationStateObserver): number
 **需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 14
 
 **参数：**
 
@@ -387,7 +434,7 @@ on(type: 'applicationState', observer: ApplicationStateObserver): number
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -398,31 +445,120 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let applicationStateObserver: appManager.ApplicationStateObserver = {
-  onForegroundApplicationChanged(appStateData) {
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
   },
-  onAbilityStateChanged(abilityStateData) {
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData) {
     console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
-  onProcessCreated(processData) {
+  onProcessCreated(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
-  onProcessDied(processData) {
+  onProcessDied(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
-  onProcessStateChanged(processData) {
+  onProcessStateChanged(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
-  onAppStarted(appStateData) {
+  onAppStarted(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
-  onAppStopped(appStateData) {
+  onAppStopped(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };
 
 try {
   const observerId = appManager.on('applicationState', applicationStateObserver);
+  console.info(`[appManager] observerCode: ${observerId}`);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
+
+## appManager.onApplicationStateChange<sup>23+</sup>
+
+onApplicationStateChange(observer: ApplicationStateObserver): int
+
+注册全部应用程序的状态观测器。
+
+**需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                                           |
+| -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------- |
+| observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | 是   | 应用状态观测器，用于观测应用的生命周期变化。   |
+
+**返回值：**
+
+| 类型 | 说明                                                  |
+| ---- | ----------------------------------------------------- |
+| int  | 已注册观测器的数字代码，可用于off接口取消注册观测器。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 16000050 | Internal error.                                              |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class CustomApplicationStateObserver implements appManager.ApplicationStateObserver {
+  public appStateData?: appManager.AppStateData;
+  public abilityStateData?: appManager.AbilityStateData;
+  public processData?: appManager.ProcessData;
+
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData): void {
+    console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
+  }
+
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData): void {
+    console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+  }
+
+  onProcessCreated(processData: appManager.ProcessData): void {
+    console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
+  }
+
+  onProcessDied(processData: appManager.ProcessData): void {
+    console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
+  }
+
+  onProcessStateChanged(processData: appManager.ProcessData) {
+    console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
+  }
+
+  onAppStarted(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
+  }
+
+  onAppStopped(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
+  }
+}
+
+try {
+  let applicationStateObserver = new CustomApplicationStateObserver();
+  const observerId = appManager.onApplicationStateChange(applicationStateObserver);
   console.info(`[appManager] observerCode: ${observerId}`);
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -441,13 +577,17 @@ on(type: 'applicationState', observer: ApplicationStateObserver, bundleNameList:
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 14
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 调用接口类型，固定填'applicationState'字符串。 |
 | observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | 是 | 应用状态监听器，用于监听应用的生命周期变化。 |
-| bundleNameList | `Array<string>` | 是 | 表示需要注册监听的bundleName数组。最大值128。 |
+| bundleNameList | Array\<string> | 是 | 表示需要注册监听的bundleName数组。最大值128，超过这个数量将返回16000050错误码。 |
 
 **返回值：**
 
@@ -461,7 +601,7 @@ on(type: 'applicationState', observer: ApplicationStateObserver, bundleNameList:
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -472,25 +612,25 @@ import { appManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let applicationStateObserver: appManager.ApplicationStateObserver = {
-  onForegroundApplicationChanged(appStateData) {
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
   },
-  onAbilityStateChanged(abilityStateData) {
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData) {
     console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
-  onProcessCreated(processData) {
+  onProcessCreated(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
-  onProcessDied(processData) {
+  onProcessDied(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
-  onProcessStateChanged(processData) {
+  onProcessStateChanged(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
-  onAppStarted(appStateData) {
+  onAppStarted(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
-  onAppStopped(appStateData) {
+  onAppStopped(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };
@@ -499,6 +639,97 @@ let bundleNameList = ['bundleName1', 'bundleName2'];
 
 try {
   const observerId = appManager.on('applicationState', applicationStateObserver, bundleNameList);
+  console.info(`[appManager] observerCode: ${observerId}`);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
+
+## appManager.onApplicationStateChange<sup>23+</sup>
+
+ onApplicationStateChange(observer: ApplicationStateObserver, bundleNameList: Array\<string>): int
+
+注册指定应用程序的状态观测器。
+
+**需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名         | 类型                                                         | 必填 | 说明                                          |
+| -------------- | ------------------------------------------------------------ | ---- | --------------------------------------------- |
+| observer       | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | 是   | 应用状态观测器，用于观测应用的生命周期变化。  |
+| bundleNameList | Array\<string>                                               | 是   | 表示需要注册监听的bundleName数组。最大值128，超过这个数量将返回16000050错误码。 |
+
+**返回值：**
+
+| 类型 | 说明                                              |
+| ---- | ------------------------------------------------- |
+| int  | 已注册观测器的数字代码，可用于off接口注销观测器。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 16000050 | Internal error.                                              |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class CustomApplicationStateObserver implements appManager.ApplicationStateObserver {
+  public appStateData?: appManager.AppStateData;
+  public abilityStateData?: appManager.AbilityStateData;
+  public processData?: appManager.ProcessData;
+
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData): void {
+    console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
+  }
+
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData): void {
+    console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+  }
+
+  onProcessCreated(processData: appManager.ProcessData): void {
+    console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
+  }
+
+  onProcessDied(processData: appManager.ProcessData): void {
+    console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
+  }
+
+  onProcessStateChanged(processData: appManager.ProcessData) {
+    console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
+  }
+
+  onAppStarted(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
+  }
+
+  onAppStopped(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStopped:  ${JSON.stringify(appStateData)}`);
+  }
+}
+
+try {
+  let bundleNameList = ['bundleName1', 'bundleName2'];
+  let applicationStateObserver = new CustomApplicationStateObserver();
+  const observerId = appManager.onApplicationStateChange(applicationStateObserver, bundleNameList);
   console.info(`[appManager] observerCode: ${observerId}`);
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -516,6 +747,10 @@ off(type: 'applicationState', observerId: number): Promise\<void>
 **需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 14
 
 **参数：**
 
@@ -536,7 +771,7 @@ off(type: 'applicationState', observerId: number): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -550,25 +785,25 @@ let observerId = 0;
 
 // 1.注册应用状态监听器
 let applicationStateObserver: appManager.ApplicationStateObserver = {
-  onForegroundApplicationChanged(appStateData) {
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
   },
-  onAbilityStateChanged(abilityStateData) {
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData) {
     console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
-  onProcessCreated(processData) {
+  onProcessCreated(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
-  onProcessDied(processData) {
+  onProcessDied(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
-  onProcessStateChanged(processData) {
+  onProcessStateChanged(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
-  onAppStarted(appStateData) {
+  onAppStarted(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
-  onAppStopped(appStateData) {
+  onAppStopped(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };
@@ -587,7 +822,113 @@ try {
   appManager.off('applicationState', observerId).then((data) => {
     console.info(`unregisterApplicationStateObserver success, data: ${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
-    console.error(`unregisterApplicationStateObserver fail, err: ${JSON.stringify(err)}`);
+    console.error(`unregisterApplicationStateObserver fail, code: ${err.code}, msg:${err.message}`);
+  });
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
+
+## appManager.offApplicationStateChange<sup>23+</sup>
+
+offApplicationStateChange(observerId: int): Promise\<void>
+
+取消注册应用程序状态观测器。使用Promise异步回调。
+
+**需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                                           |
+| ---------- | ------ | ---- | ---------------------------------------------- |
+| observerId | int    | 是   | 表示观测器的编号代码。                         |
+
+**返回值：**
+
+| 类型           | 说明                                                         |
+| -------------- | ------------------------------------------------------------ |
+| Promise\<void> | 以Promise方式返回接口运行结果，可进行错误处理或其他自定义处理。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 16000050 | Internal error.                                              |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observerId = 0;
+
+// 1.注册应用状态监听器
+class CustomApplicationStateObserver implements appManager.ApplicationStateObserver {
+  public appStateData?: appManager.AppStateData;
+  public abilityStateData?: appManager.AbilityStateData;
+  public processData?: appManager.ProcessData;
+
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData): void {
+    console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
+  }
+
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData): void {
+    console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+  }
+
+  onProcessCreated(processData: appManager.ProcessData): void {
+    console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
+  }
+
+  onProcessDied(processData: appManager.ProcessData): void {
+    console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
+  }
+
+  onProcessStateChanged(processData: appManager.ProcessData) {
+    console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
+  }
+
+  onAppStarted(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
+  }
+
+  onAppStopped(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
+  }
+}
+
+let bundleNameList = ['bundleName1', 'bundleName2'];
+
+try {
+  let applicationStateObserver = new CustomApplicationStateObserver();
+  observerId = appManager.onApplicationStateChange(applicationStateObserver, bundleNameList);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+
+// 2.注销应用状态监听器
+try {
+  appManager.offApplicationStateChange(observerId).then(() => {
+    console.info(`unregisterApplicationStateObserver success`);
+  }).catch((err: Error) => {
+    console.error(`unregisterApplicationStateObserver fail, err: ${err.message}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -606,13 +947,17 @@ off(type: 'applicationState', observerId: number, callback: AsyncCallback\<void>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 15
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 调用接口类型，固定填'applicationState'字符串。 |
 | observerId | number | 是 | 注册的应用状态监听器ID，即[on('applicationState')](#appmanageronapplicationstate14)返回的监听器ID。 |
-| callback | AsyncCallback\<void> | 是 | 回调函数。当取消注册应用程序状态观测器成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是 | 回调函数。当注销应用状态监听器成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
 
@@ -620,7 +965,7 @@ off(type: 'applicationState', observerId: number, callback: AsyncCallback\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -634,25 +979,25 @@ let observerId = 0;
 
 // 1.注册应用状态监听器
 let applicationStateObserver: appManager.ApplicationStateObserver = {
-  onForegroundApplicationChanged(appStateData) {
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
   },
-  onAbilityStateChanged(abilityStateData) {
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData) {
     console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
   },
-  onProcessCreated(processData) {
+  onProcessCreated(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
   },
-  onProcessDied(processData) {
+  onProcessDied(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
   },
-  onProcessStateChanged(processData) {
+  onProcessStateChanged(processData: appManager.ProcessData) {
     console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
   },
-  onAppStarted(appStateData) {
+  onAppStarted(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
   },
-  onAppStopped(appStateData) {
+  onAppStopped(appStateData: appManager.AppStateData) {
     console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
   }
 };
@@ -684,9 +1029,116 @@ try {
 }
 ```
 
+## appManager.offApplicationStateChange<sup>23+</sup>
+
+offApplicationStateChange(observerId: int, callback: AsyncCallback\<void>): void
+
+取消注册应用程序状态观测器。使用callback异步回调。
+
+**需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型                 | 必填 | 说明                                                         |
+| ---------- | -------------------- | ---- | ------------------------------------------------------------ |
+| observerId | int                  | 是   | 表示观测器的编号代码。                                       |
+| callback   | AsyncCallback\<void> | 是   | 回调函数。当取消注册应用程序状态观测器成功，err为undefined，否则为错误对象。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 16000050 | Internal error.                                              |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { appManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observerId = 0;
+
+// 1.注册应用状态监听器
+class CustomApplicationStateObserver implements appManager.ApplicationStateObserver {
+  public appStateData?: appManager.AppStateData;
+  public abilityStateData?: appManager.AbilityStateData;
+  public processData?: appManager.ProcessData;
+
+  onForegroundApplicationChanged(appStateData: appManager.AppStateData): void {
+    console.info(`[appManager] onForegroundApplicationChanged: ${JSON.stringify(appStateData)}`);
+  }
+
+  onAbilityStateChanged(abilityStateData: appManager.AbilityStateData): void {
+    console.info(`[appManager] onAbilityStateChanged: ${JSON.stringify(abilityStateData)}`);
+  }
+
+  onProcessCreated(processData: appManager.ProcessData): void {
+    console.info(`[appManager] onProcessCreated: ${JSON.stringify(processData)}`);
+  }
+
+  onProcessDied(processData: appManager.ProcessData): void {
+    console.info(`[appManager] onProcessDied: ${JSON.stringify(processData)}`);
+  }
+
+  onProcessStateChanged(processData: appManager.ProcessData) {
+    console.info(`[appManager] onProcessStateChanged: ${JSON.stringify(processData)}`);
+  }
+
+  onAppStarted(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStarted: ${JSON.stringify(appStateData)}`);
+  }
+
+  onAppStopped(appStateData: appManager.AppStateData) {
+    console.info(`[appManager] onAppStopped: ${JSON.stringify(appStateData)}`);
+  }
+}
+
+let bundleNameList = ['bundleName1', 'bundleName2'];
+
+try {
+  let applicationStateObserver = new CustomApplicationStateObserver();
+  observerId = appManager.onApplicationStateChange(applicationStateObserver, bundleNameList);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+
+function offCallback(err: BusinessError<void> | null) {
+  if (err) {
+    console.error(`appmanager.off failed, code: ${err.code}, msg: ${err.message}`);
+  } else {
+    console.info(`appmanager.off success.`);
+  }
+}
+
+// 2.注销应用状态监听器
+try {
+  appManager.offApplicationStateChange(observerId, offCallback);
+} catch (paramError) {
+  let code = (paramError as BusinessError).code;
+  let message = (paramError as BusinessError).message;
+  console.error(`[appManager] error: ${code}, ${message}`);
+}
+```
+
 ## appManager.killProcessesByBundleName<sup>14+</sup>
 
-killProcessesByBundleName(bundleName: string, clearPageStack: boolean, appIndex?: number): Promise\<void>
+ArkTS-Dyn: killProcessesByBundleName(bundleName: string, clearPageStack: boolean, appIndex?: number): Promise\<void>
+
+ArkTS-Sta: killProcessesByBundleName(bundleName: string, clearPageStack: boolean, appIndex?: int): Promise\<void>
 
 终止指定应用包名的应用进程。使用Promise异步回调。
 
@@ -694,13 +1146,17 @@ killProcessesByBundleName(bundleName: string, clearPageStack: boolean, appIndex?
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 表示需要终止进程的应用包名。 |
 | clearPageStack | boolean | 是 | 表示是否清除页面堆栈。true表示清除，false表示不清除。 |
-| appIndex | number | 否 | 应用分身Id，默认值为0。取值为0时，表示终止主应用的所有进程。取值大于0时，表示终止指定分身应用的所有进程。 |
+| appIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 应用分身ID，不传该参数时默认值为0。取值范围：0~1000。取值为0时，表示终止主应用的所有进程。取值大于0时，表示终止指定分身应用的所有进程。 |
 
 **返回值：**
 
@@ -714,7 +1170,7 @@ killProcessesByBundleName(bundleName: string, clearPageStack: boolean, appIndex?
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401 | If the input parameter is not valid parameter. |
 | 16000050 | Internal error. |
 
@@ -731,8 +1187,10 @@ let appIndex = 1;
 try {
   appManager.killProcessesByBundleName(bundleName, isClearPageStack, appIndex).then((data) => {
     console.info('killProcessesByBundleName success.');
-  }).catch((err: BusinessError) => {
-    console.error(`killProcessesByBundleName fail, err: ${JSON.stringify(err)}`);
+  }).catch((error: Error) => {
+    let code = (error as BusinessError).code;
+    let message = (error as BusinessError).message;
+    console.error(`killProcessesByBundleName fail, code: ${code}, msg:${message}`);
   });
 } catch (paramError) {
   let code = (paramError as BusinessError).code;
@@ -743,7 +1201,9 @@ try {
 
 ## appManager.isAppRunning<sup>14+</sup>
 
-isAppRunning(bundleName: string, appCloneIndex?: number): Promise\<boolean>
+ArkTS-Dyn: isAppRunning(bundleName: string, appCloneIndex?: number): Promise\<boolean>
+
+ArkTS-Sta: isAppRunning(bundleName: string, appCloneIndex?: int): Promise\<boolean>
 
 判断所有用户下指定包名和分身应用索引的应用是否正在运行。使用Promise异步回调。
 
@@ -755,12 +1215,16 @@ isAppRunning(bundleName: string, appCloneIndex?: number): Promise\<boolean>
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | bundleName | string | 是 | 查询的应用包名。 |
-| appCloneIndex | number | 否 | 分身应用索引，默认值为0。取值范围：0~1000。取值为0时表示主应用；取值大于0时表示指定分身应用。|
+| appCloneIndex | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 分身应用索引，不传该参数时默认值为0。取值范围：0~1000。取值为0时表示判断主应用是否正在运行；取值大于0时表示判断指定分身应用是否正在运行。|
 
 **返回值：**
 
@@ -770,12 +1234,12 @@ isAppRunning(bundleName: string, appCloneIndex?: number): Promise\<boolean>
 
 **错误码**：
 
-  以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 | 16000073 | The app clone index is invalid. |
 
@@ -783,18 +1247,19 @@ isAppRunning(bundleName: string, appCloneIndex?: number): Promise\<boolean>
 
 ```ts
 import { appManager } from '@kit.AbilityKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let bundleName = "ohos.samples.etsclock";
+  let bundleName = 'ohos.samples.etsclock';
   appManager.isAppRunning(bundleName).then((data: boolean) => {
-      hilog.info(0x0000, 'testTag', `data: ${JSON.stringify(data)}`);
-    }).catch((err: BusinessError) => {
-      hilog.error(0x0000, 'testTag', `isAppRunning error, code: ${err.code}, msg:${err.message}`);
-    })
-} catch (err) {
-  hilog.error(0x0000, 'testTag', `isAppRunning error, code: ${err.code}, msg:${err.message}`);
+    console.info(`data: ${data}`);
+  }).catch((error: Error) => {
+    let err = error as BusinessError;
+    console.error(`isAppRunning error, code: ${err.code}, msg:${err.message}`);
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`isAppRunning error, code: ${err.code}, msg:${err.message}`);
 }
 ```
 
@@ -806,9 +1271,29 @@ Ability状态信息。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 该接口仅支持ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 14
+
 | 类型 | 说明 |
 | --- | --- |
-| [_AbilityStateData.default](js-apis-inner-application-abilityStateData.md) | Ability状态信息。 |
+| _[AbilityStateData](js-apis-inner-application-abilityStateData.md).default | Ability状态信息。 |
+
+## AbilityStateData<sup>23+</sup>
+
+type AbilityStateData = _AbilityStateData
+
+Ability状态信息。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 该接口仅支持ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                                                         | 说明              |
+| ------------------------------------------------------------ | ----------------- |
+| _[AbilityStateData](js-apis-inner-application-abilityStateData.md) | Ability状态信息。 |
 
 ## AppStateData<sup>14+</sup>
 
@@ -818,9 +1303,169 @@ type AppStateData = _AppStateData.default
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 该接口仅支持ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 14
+
 | 类型 | 说明 |
 | --- | --- |
-| [_AppStateData.default](js-apis-inner-application-appStateData.md) | 应用状态信息。 |
+| _[AppStateData](js-apis-inner-application-appStateData.md).default | 应用状态信息。 |
+
+## AppStateData<sup>23+</sup>
+
+type AppStateData = _AppStateData
+
+应用状态信息。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 该接口仅支持ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                                                       | 说明           |
+| ---------------------------------------------------------- | -------------- |
+| _[AppStateData](js-apis-inner-application-appStateData.md) | 应用状态信息。 |
+
+## appManager.onFocusedApplicationChanged
+
+onFocusedApplicationChanged(observer: FocusedApplicationObserver): number
+
+注册获焦应用变化监听器。当获焦应用发生变化时，触发监听器回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| observer | [FocusedApplicationObserver](js-apis-inner-application-focusedApplicationObserver.md) | 是 | 获焦应用监听器，用于监听获焦应用变化。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 已注册监听器ID，调用方可以通过[offFocusedApplicationChanged](#appmanagerofffocusedapplicationchanged)传入该监听器ID来注销监听器。|
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 16000050 | Internal error. |
+| 16000165 | The number of registered observers has reached the upper limit. |
+
+**示例：**
+
+```ts
+import { appManager, UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let focusedApplicationObserver: appManager.FocusedApplicationObserver = {
+  onFocusedApplicationChanged(info: appManager.FocusedApplicationInfo) {
+    console.info(`[appManager] onFocusedApplicationChanged: ${JSON.stringify(info)}`);
+  }
+};
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    console.info('MyAbility onCreate');
+    try {
+      const observerId = appManager.onFocusedApplicationChanged(focusedApplicationObserver);
+      console.info(`[appManager] observerId: ${observerId}`);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`[appManager] error: ${code}, ${message}`);
+    }
+    console.info('Register appProcessStateObserver');
+  }
+}
+```
+
+## appManager.offFocusedApplicationChanged
+
+offFocusedApplicationChanged(observerId: number): void
+
+注销获焦应用变化监听器。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.RUNNING_STATE_OBSERVER
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| observerId | number | 是 | 注册的获焦应用监听器ID，即[onFocusedApplicationChanged](#appmanageronfocusedapplicationchanged)返回的监听器ID。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[元能力子系统错误码](errorcode-ability.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 201 | Permission denied. |
+| 16000050 | Internal error. |
+| 16300004 | The observer does not exist. |
+
+**示例：**
+
+```ts
+import { appManager, UIAbility } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let observerId = 0;
+
+let focusedApplicationObserver: appManager.FocusedApplicationObserver = {
+  onFocusedApplicationChanged(info: appManager.FocusedApplicationInfo) {
+    console.info(`[appManager] onFocusedApplicationChanged: ${JSON.stringify(info)}`);
+  }
+};
+
+export default class EntryAbility extends UIAbility {
+  onCreate() {
+    console.info('MyAbility onCreate');
+    // 注册获焦应用监听器
+    try {
+      observerId = appManager.onFocusedApplicationChanged(focusedApplicationObserver);
+      console.info(`[appManager] observerId: ${observerId}`);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`[appManager] error: ${code}, ${message}`);
+    }
+  }
+
+  // 不再需要或应用退出时取消监听
+  onDestroy() {
+    // 注销获焦应用监听器
+    try {
+      appManager.offFocusedApplicationChanged(observerId);
+    } catch (paramError) {
+      let code = (paramError as BusinessError).code;
+      let message = (paramError as BusinessError).message;
+      console.error(`[appManager] error: ${code}, ${message}`);
+    }
+  }
+}
+```
 
 ## ApplicationStateObserver<sup>14+</sup>
 
@@ -830,9 +1475,29 @@ type ApplicationStateObserver = _ApplicationStateObserver.default
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 该接口仅支持ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 14
+
 | 类型 | 说明 |
 | --- | --- |
-| [_ApplicationStateObserver.default](js-apis-inner-application-applicationStateObserver.md) | 应用状态监听器。 |
+| _[ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md).default | 应用状态监听器。 |
+
+## ApplicationStateObserver<sup>23+</sup>
+
+type ApplicationStateObserver = _ApplicationStateObserver
+
+ApplicationStateObserver模块。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 该接口仅支持ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                                                         | 说明                           |
+| ------------------------------------------------------------ | ------------------------------ |
+| _[ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | ApplicationStateObserver模块。 |
 
 ## ProcessInformation
 
@@ -840,13 +1505,17 @@ type ProcessInformation = _ProcessInformation
 
 进程信息。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型 | 说明 |
 | --- | --- |
-| [_ProcessInformation](js-apis-inner-application-processInformation.md) | 进程信息。 |
+| _[ProcessInformation](js-apis-inner-application-processInformation.md) | 进程信息。 |
 
 ## ProcessData<sup>14+</sup>
 
@@ -856,6 +1525,26 @@ type ProcessData = _ProcessData.default
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS模式：** 该接口仅支持ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 14
+
 | 类型 | 说明 |
 | --- | --- |
-| [_ProcessData.default](js-apis-inner-application-processData.md) | 进程数据。 |
+| _[ProcessData](js-apis-inner-application-processData.md).default | 进程数据。 |
+
+## ProcessData<sup>23+</sup>
+
+type ProcessData = _ProcessData
+
+进程数据。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS模式：** 该接口仅支持ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型                                                     | 说明       |
+| -------------------------------------------------------- | ---------- |
+| _[ProcessData](js-apis-inner-application-processData.md) | 进程数据。 |

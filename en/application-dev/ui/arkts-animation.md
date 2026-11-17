@@ -12,7 +12,7 @@ The UI contains various components (such as time and wallpaper) that users inter
 
 In most cases, changing attribute values triggers corresponding UI updates. Animations introduce smooth transitions during these updates, preventing abrupt changes that cause visual discontinuity.
 
-![en-us_image_20230822](figures/en-us_image_20230822.gif)
+![en-us_image_20230822](figures/Animation-what.gif)
 
 Animations enable you to:
 

@@ -110,7 +110,7 @@ For details about the error codes, see [Log Library Error Codes](errorcode-logli
 | 201 | Permission denied.  |
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
-| 21300001 | Source file does not exists.  |
+| 21300001 | Source file does not exist.  |
 
 **Example**
 
@@ -162,7 +162,7 @@ For details about the error codes, see [Log Library Error Codes](errorcode-logli
 | 201 | Permission denied.  |
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
-| 21300001 | Source file does not exists.  |
+| 21300001 | Source file does not exist.  |
 
 **Example**
 
@@ -215,7 +215,7 @@ For details about the error codes, see [Log Library Error Codes](errorcode-logli
 | 201 | Permission denied.  |
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
-| 21300001 | Source file does not exists.  |
+| 21300001 | Source file does not exist.  |
 
 **Example**
 
@@ -267,7 +267,7 @@ For details about the error codes, see [Log Library Error Codes](errorcode-logli
 | 201 | Permission denied.  |
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
-| 21300001 | Source file does not exists.  |
+| 21300001 | Source file does not exist.  |
 
 **Example**
 
@@ -313,7 +313,7 @@ For details about the error codes, see [Log Library Error Codes](errorcode-logli
 | 201 | Permission denied.  |
 | 202 | Permission denied, non-system app called system api. |
 | 401 | Invalid argument. Possible causes:<br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types.<br>3. Parameter verification failed. |
-| 21300001 | Source file does not exists.  |
+| 21300001 | Source file does not exist.  |
 
 **Example**
 

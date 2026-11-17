@@ -3,7 +3,7 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 ## 如何判断某个应用是否为系统应用(API 9)
@@ -63,7 +63,7 @@ console.info(`bundleName: ${context.abilityInfo.bundleName}`)
 
 **参考链接**
 
-[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)、[AbilityInfo](../reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md)
+[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)、[AbilityInfo](../reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md)
 
 
 ## 如何获取App版本号，版本名，屏幕分辨率等信息(API 9)
@@ -197,5 +197,5 @@ private pid = process.pid;
 
 **参考链接**
 
-[supportWindowModes参考文档](../reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md#abilityinfo-1)
+[supportWindowModes](../reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md#abilityinfo-1)参考文档
 

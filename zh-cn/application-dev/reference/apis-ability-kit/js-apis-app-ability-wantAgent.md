@@ -13,7 +13,9 @@ WantAgent模块封装了[Want](./js-apis-app-ability-want.md)对象，允许应�
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -27,9 +29,13 @@ getWantAgent(info: WantAgentInfo, callback: AsyncCallback\<WantAgent\>): void
 
 创建WantAgent，使用callback异步回调。创建成功返回WantAgent对象，创建失败返回空值。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -49,6 +55,8 @@ getWantAgent(info: WantAgentInfo, callback: AsyncCallback\<WantAgent\>): void
 | 16000151   | Invalid wantAgent object.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { wantAgent, Want } from '@kit.AbilityKit';
@@ -86,18 +94,73 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err.code) {
-    console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
-  } else {
-    wantAgentData = data;
-  }
+      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+    } else {
+      wantAgentData = data;
+    }
 }
 
 try {
-  wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
+  // 调用getWantAgent接口创建WantAgent对象
+wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   console.error(`getWantAgent failed, error: ${JSON.stringify(err)}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { wantAgent, Want } from '@kit.AbilityKit';
+import type { WantAgent } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+// wantAgent对象
+let wantAgentData: WantAgent;
+// WantAgentInfo对象
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: 'deviceId',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility',
+      action: 'action1',
+      entities: ['entity1'],
+      type: 'MIMETYPE',
+      uri: 'key={true,true,false}',
+      parameters: {
+        'mykey0': 2222,
+        'mykey1': [1, 2, 3],
+        'mykey2': '[1, 2, 3]',
+        'mykey3': 'ssssssssssssssssssssssssss',
+        'mykey4': [false, true, false],
+        'mykey5': ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+        'mykey6': true,
+      } as Record<string, RecordData>
+    } as Want
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+};
+
+try {
+  wantAgent.getWantAgent(wantAgentInfo, (err, data) => {
+    if (err) {
+      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    if (!data) {
+      console.error('getWantAgent failed: data is undefined');
+      return;
+    }
+    wantAgentData = data;
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`getWantAgent failed! ${err.code} ${err.message}`);
 }
 ```
 
@@ -105,11 +168,15 @@ try {
 
 getWantAgent(info: WantAgentInfo): Promise\<WantAgent\>
 
-创建WantAgent。使用Promise异步回调。创建成功返回WantAgent对象，创建失败返回空值。
+创建WantAgent实例，用于后续触发指定操作。使用Promise异步回调。创建成功返回WantAgent对象，创建失败返回空值。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -134,6 +201,8 @@ getWantAgent(info: WantAgentInfo): Promise\<WantAgent\>
 | 16000151   | Invalid wantAgent object.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { wantAgent, Want } from '@kit.AbilityKit';
@@ -171,6 +240,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 
 try {
   wantAgent.getWantAgent(wantAgentInfo).then((data) => {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }).catch((err: BusinessError) => {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
@@ -180,7 +250,54 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
 
+```ts
+'use static'
+import { wantAgent, Want } from '@kit.AbilityKit';
+import type { WantAgent } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+// wantAgent对象
+let wantAgentData: WantAgent;
+// WantAgentInfo对象
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: 'deviceId',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility',
+      action: 'action1',
+      entities: ['entity1'],
+      type: 'MIMETYPE',
+      uri: 'key={true,true,false}',
+      parameters: {
+        'mykey0': 2222,
+        'mykey1': [1, 2, 3],
+        'mykey2': '[1, 2, 3]',
+        'mykey3': 'ssssssssssssssssssssssssss',
+        'mykey4': [false, true, false],
+        'mykey5': ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+        'mykey6': true,
+      } as Record<string, RecordData>
+    } as Want
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+};
+
+try {
+  wantAgent.getWantAgent(wantAgentInfo).then((data) => {
+    wantAgentData = data;
+  }).catch((error) => {
+    let err = error as BusinessError;
+    console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`getWantAgent failed! ${err.code} ${err.message}`);
+}
+```
 
 ## wantAgent.getBundleName
 
@@ -188,16 +305,20 @@ getBundleName(agent: WantAgent, callback: AsyncCallback\<string\>): void
 
 获取WantAgent实例所属应用的包名，使用callback异步回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型                    | 必填 | 说明                              |
 | -------- | ----------------------- | ---- | --------------------------------- |
 | agent    | WantAgent               | 是   | WantAgent对象。                     |
-| callback | AsyncCallback\<string\> | 是   | 回调函数。当获取包名成功，err为undefined，data为创建的WantAgent；否则err为错误对象。 |
+| callback | AsyncCallback\<string\> | 是   | 回调函数。当获取包名成功，err为undefined，data为获取的包名；否则err为错误对象。 |
 
 **错误码：**
 
@@ -210,6 +331,8 @@ getBundleName(agent: WantAgent, callback: AsyncCallback\<string\>): void
 | 16000151   | Invalid wantAgent object.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { wantAgent, Want } from '@kit.AbilityKit';
@@ -247,10 +370,11 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   // getBundleName回调
@@ -262,6 +386,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // 调用getBundleName接口获取WantAgent实例的包名
     wantAgent.getBundleName(wantAgentData, getBundleNameCallback);
   } catch (err) {
     console.error(`getBundleName failed! ${err.code} ${err.message}`);
@@ -269,8 +394,75 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
+  console.error(`getWantAgent failed! ${err.code} ${err.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { wantAgent, Want } from '@kit.AbilityKit';
+import type { WantAgent } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+// wantAgent对象
+let wantAgentData: WantAgent;
+// WantAgentInfo对象
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: 'deviceId',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility',
+      action: 'action1',
+      entities: ['entity1'],
+      type: 'MIMETYPE',
+      uri: 'key={true,true,false}',
+      parameters: {
+        'mykey0': 2222,
+        'mykey1': [1, 2, 3],
+        'mykey2': '[1, 2, 3]',
+        'mykey3': 'ssssssssssssssssssssssssss',
+        'mykey4': [false, true, false],
+        'mykey5': ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+        'mykey6': true,
+      } as Record<string, RecordData>
+    } as Want
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+};
+
+try {
+  wantAgent.getWantAgent(wantAgentInfo, (err, data) => {
+    if (err) {
+      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    if (!data) {
+      console.error('getWantAgent failed: data is undefined');
+      return;
+    }
+    wantAgentData = data;
+    try {
+      wantAgent.getBundleName(wantAgentData, (err, data) => {
+        if (err) {
+          console.error(`getBundleName failed! ${err.code} ${err.message}`);
+        } else {
+          console.info(`getBundleName ok! ${JSON.stringify(data)}`);
+        }
+      });
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`getBundleName failed! ${err.code} ${err.message}`);
+    }
+  });
+} catch (error) {
+  let err = error as BusinessError;
   console.error(`getWantAgent failed! ${err.code} ${err.message}`);
 }
 ```
@@ -281,9 +473,13 @@ getBundleName(agent: WantAgent): Promise\<string\>
 
 获取WantAgent实例所属应用的包名。使用Promise异步回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -308,6 +504,8 @@ getBundleName(agent: WantAgent): Promise\<string\>
 | 16000151   | Invalid wantAgent object.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { wantAgent, Want } from '@kit.AbilityKit';
@@ -345,16 +543,18 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   try {
-    wantAgent.getBundleName(wantAgentData).then((data)=>{
+    // 使用Promise方式获取WantAgent实例的包名
+    wantAgent.getBundleName(wantAgentData).then((data) => {
       console.info(`getBundleName ok! ${JSON.stringify(data)}`);
-    }).catch((err: BusinessError)=>{
+    }).catch((err: BusinessError) => {
       console.error(`getBundleName failed! ${err.code} ${err.message}`);
     });
   } catch(err){
@@ -362,28 +562,100 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   }
 }
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch(err) {
   console.error(`getWantAgent failed! ${err.code} ${err.message}`);
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { wantAgent, Want } from '@kit.AbilityKit';
+import type { WantAgent } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+// wantAgent对象
+let wantAgentData: WantAgent;
+// WantAgentInfo对象
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: 'deviceId',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility',
+      action: 'action1',
+      entities: ['entity1'],
+      type: 'MIMETYPE',
+      uri: 'key={true,true,false}',
+      parameters: {
+        'mykey0': 2222,
+        'mykey1': [1, 2, 3],
+        'mykey2': '[1, 2, 3]',
+        'mykey3': 'ssssssssssssssssssssssssss',
+        'mykey4': [false, true, false],
+        'mykey5': ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+        'mykey6': true,
+      } as Record<string, RecordData>
+    } as Want
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+};
+
+try {
+  wantAgent.getWantAgent(wantAgentInfo, (err, data) => {
+    if (err) {
+      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    if (!data) {
+      console.error('getWantAgent failed: data is undefined');
+      return;
+    }
+    wantAgentData = data;
+    try {
+      wantAgent.getBundleName(wantAgentData).then((data) => {
+        console.info(`getBundleName ok! ${JSON.stringify(data)}`);
+      }).catch((error) => {
+        let err = error as BusinessError;
+        console.error(`getBundleName failed! ${err.code} ${err.message}`);
+      });
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`getBundleName failed! ${err.code} ${err.message}`);
+    }
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`getWantAgent failed! ${err.code} ${err.message}`);
+}
+```
+
 ## wantAgent.getUid
 
-getUid(agent: WantAgent, callback: AsyncCallback\<number\>): void
+ArkTS-Dyn: getUid(agent: WantAgent, callback: AsyncCallback\<number\>): void
+
+ArkTS-Sta: getUid(agent: WantAgent, callback: AsyncCallback\<int\>): void
 
 获取WantAgent实例所属应用的UID，使用callback异步回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型                    | 必填 | 说明                                |
 | -------- | ----------------------- | ---- | ----------------------------------- |
 | agent    | WantAgent               | 是   | WantAgent对象。                       |
-| callback | AsyncCallback\<number\> | 是   | 获取WantAgent实例所属应用的UID的回调方法。 |
+| callback | ArkTS-Dyn: AsyncCallback\<number\><br>ArkTS-Sta: AsyncCallback\<int\> | 是   | 获取WantAgent实例所属应用的UID的回调方法。 |
 
 **错误码：**
 
@@ -396,6 +668,8 @@ getUid(agent: WantAgent, callback: AsyncCallback\<number\>): void
 | 16000151   | Invalid wantAgent object.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { wantAgent, Want } from '@kit.AbilityKit';
@@ -433,10 +707,11 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}.`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   // getUid回调
@@ -448,6 +723,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // 调用getUid接口获取WantAgent实例所属应用的UID
     wantAgent.getUid(wantAgentData, getUidCallback);
   } catch (err) {
     let code = (err as BusinessError).code;
@@ -457,6 +733,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;
@@ -465,15 +742,87 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { wantAgent, Want } from '@kit.AbilityKit';
+import type { WantAgent } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+// wantAgent对象
+let wantAgentData: WantAgent;
+// WantAgentInfo对象
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: 'deviceId',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility',
+      action: 'action1',
+      entities: ['entity1'],
+      type: 'MIMETYPE',
+      uri: 'key={true,true,false}',
+      parameters: {
+        'mykey0': 2222,
+        'mykey1': [1, 2, 3],
+        'mykey2': '[1, 2, 3]',
+        'mykey3': 'ssssssssssssssssssssssssss',
+        'mykey4': [false, true, false],
+        'mykey5': ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+        'mykey6': true,
+      } as Record<string, RecordData>
+    } as Want
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+};
+
+try {
+  wantAgent.getWantAgent(wantAgentInfo, (err, data) => {
+    if (err) {
+      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    if (!data) {
+      console.error('getWantAgent failed: data is undefined');
+      return;
+    }
+    wantAgentData = data;
+    try {
+      wantAgent.getUid(wantAgentData, (err, data) => {
+        if (err) {
+          console.error(`getUid failed, err code: ${err.code}, err msg: ${err.message}.`);
+        } else {
+          console.info(`getUid ok, data: ${JSON.stringify(data)}.`);
+        }
+      });
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`getUid failed, err code: ${err.code}, err msg: ${err.message}.`);
+    }
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`getWantAgent failed! ${err.code} ${err.message}`);
+}
+```
+
 ## wantAgent.getUid
 
-getUid(agent: WantAgent): Promise\<number\>
+ArkTS-Dyn: getUid(agent: WantAgent): Promise\<number\>
+
+ArkTS-Sta: getUid(agent: WantAgent): Promise\<int\>
 
 获取WantAgent实例所属应用的UID。使用Promise异步回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -483,9 +832,9 @@ getUid(agent: WantAgent): Promise\<number\>
 
 **返回值：**
 
-| 类型              | 说明                                              |
-| ----------------- | ------------------------------------------------- |
-| Promise\<number\> | Promise对象，返回获取WantAgent实例所属应用的UID。 |
+| 类型                                                      | 说明                                              |
+| --------------------------------------------------------- | ------------------------------------------------- |
+| ArkTS-Dyn: Promise\<number\><br>ArkTS-Sta: Promise\<int\> | Promise对象，返回获取WantAgent实例所属应用的UID。 |
 
 **错误码：**
 
@@ -498,6 +847,8 @@ getUid(agent: WantAgent): Promise\<number\>
 | 16000151   | Invalid wantAgent object.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { wantAgent, Want } from '@kit.AbilityKit';
@@ -535,13 +886,15 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, err code: ${err.code}, err msg: ${err.message}.`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   try {
+    // 使用Promise方式获取WantAgent实例所属应用的UID
     wantAgent.getUid(wantAgentData).then((data) => {
       console.info(`getUid ok, data: ${JSON.stringify(data)}.`);
     }).catch((err: BusinessError) => {
@@ -555,6 +908,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;
@@ -563,22 +917,91 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { wantAgent, Want } from '@kit.AbilityKit';
+import type { WantAgent } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+// wantAgent对象
+let wantAgentData: WantAgent;
+// WantAgentInfo对象
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: 'deviceId',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility',
+      action: 'action1',
+      entities: ['entity1'],
+      type: 'MIMETYPE',
+      uri: 'key={true,true,false}',
+      parameters: {
+        'mykey0': 2222,
+        'mykey1': [1, 2, 3],
+        'mykey2': '[1, 2, 3]',
+        'mykey3': 'ssssssssssssssssssssssssss',
+        'mykey4': [false, true, false],
+        'mykey5': ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+        'mykey6': true,
+      } as Record<string, RecordData>
+    } as Want
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+};
+
+try {
+  wantAgent.getWantAgent(wantAgentInfo, (err, data) => {
+    if (err) {
+      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    if (!data) {
+      console.error('getWantAgent failed: data is undefined');
+      return;
+    }
+    wantAgentData = data;
+    try {
+      wantAgent.getUid(wantAgentData).then((data) => {
+        console.info(`getUid ok, data: ${JSON.stringify(data)}.`);
+      }).catch((error) => {
+        let err = error as BusinessError;
+        console.error(`getUid failed, err code: ${err.code}, err msg: ${err.message}.`);
+      });
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`getBundleName failed! ${err.code} ${err.message}`);
+    }
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`getWantAgent failed! ${err.code} ${err.message}`);
+}
+```
+
 ## wantAgent.cancel
 
 cancel(agent: WantAgent, callback: AsyncCallback\<void\>): void
 
-取消WantAgent实例，使用callback异步回调。
+取消WantAgent实例，取消后该实例将无法被触发。使用callback异步回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名     | 类型                  | 必填 | 说明                        |
 | -------- | --------------------- | ---- | --------------------------- |
 | agent    | WantAgent             | 是   | WantAgent对象。               |
-| callback | AsyncCallback\<void\> | 是   | 回调函数，当取消WantAgent实例成功，err为undefined，否则err为错误对象。 |
+| callback | AsyncCallback\<void\> | 是   | 回调函数。当取消WantAgent实例成功，err为undefined，data为undefined；否则err为错误对象。 |
 
 **错误码：**
 
@@ -591,6 +1014,8 @@ cancel(agent: WantAgent, callback: AsyncCallback\<void\>): void
 | 16000151   | Invalid wantAgent object.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { wantAgent, Want } from '@kit.AbilityKit';
@@ -628,10 +1053,11 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, err code: ${err.code}, err msg: ${err.message}.`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   // cancel回调
@@ -643,6 +1069,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // 调用cancel接口取消WantAgent实例
     wantAgent.cancel(wantAgentData, cancelCallback);
   } catch (err) {
     let code = (err as BusinessError).code;
@@ -652,6 +1079,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;
@@ -660,15 +1088,85 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { wantAgent, Want } from '@kit.AbilityKit';
+import type { WantAgent } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+// wantAgent对象
+let wantAgentData: WantAgent;
+// WantAgentInfo对象
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: 'deviceId',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility',
+      action: 'action1',
+      entities: ['entity1'],
+      type: 'MIMETYPE',
+      uri: 'key={true,true,false}',
+      parameters: {
+        'mykey0': 2222,
+        'mykey1': [1, 2, 3],
+        'mykey2': '[1, 2, 3]',
+        'mykey3': 'ssssssssssssssssssssssssss',
+        'mykey4': [false, true, false],
+        'mykey5': ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+        'mykey6': true,
+      } as Record<string, RecordData>
+    } as Want
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+};
+
+try {
+  wantAgent.getWantAgent(wantAgentInfo, (err, data) => {
+    if (err) {
+      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    if (!data) {
+      console.error('getWantAgent failed: data is undefined');
+      return;
+    }
+    wantAgentData = data;
+    try {
+      wantAgent.cancel(wantAgentData, (err, data) => {
+        if (err) {
+          console.error(`cancel failed, err code: ${err.code}, err msg: ${err.message}.`);
+        } else {
+          console.info(`cancel success.`);
+        }
+      });
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`cancel failed, err code: ${err.code}, err msg: ${err.message}.`);
+    }
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`getWantAgent failed! ${err.code} ${err.message}`);
+}
+```
+
 ## wantAgent.cancel
 
 cancel(agent: WantAgent): Promise\<void\>
 
-取消WantAgent实例。使用Promise异步回调。
+取消WantAgent实例，取消后该实例将无法被触发。使用Promise异步回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -694,6 +1192,8 @@ cancel(agent: WantAgent): Promise\<void\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
@@ -730,13 +1230,15 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, err code: ${err.code}, err msg: ${err.message}.`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   try {
+    // 使用Promise方式取消WantAgent实例
     wantAgent.cancel(wantAgentData).then((data) => {
       console.info('cancel success.');
     }).catch((err: BusinessError) => {
@@ -750,11 +1252,77 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;
   let msg = (err as BusinessError).message;
   console.error(`getWantAgent failed, err code: ${code}, err msg: ${msg}.`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { wantAgent, Want } from '@kit.AbilityKit';
+import type { WantAgent } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+// wantAgent对象
+let wantAgentData: WantAgent;
+// WantAgentInfo对象
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: 'deviceId',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility',
+      action: 'action1',
+      entities: ['entity1'],
+      type: 'MIMETYPE',
+      uri: 'key={true,true,false}',
+      parameters: {
+        'mykey0': 2222,
+        'mykey1': [1, 2, 3],
+        'mykey2': '[1, 2, 3]',
+        'mykey3': 'ssssssssssssssssssssssssss',
+        'mykey4': [false, true, false],
+        'mykey5': ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+        'mykey6': true,
+      } as Record<string, RecordData>
+    } as Want
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+};
+
+try {
+  wantAgent.getWantAgent(wantAgentInfo, (err, data) => {
+    if (err) {
+      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    if (!data) {
+      console.error('getWantAgent failed: data is undefined');
+      return;
+    }
+    wantAgentData = data;
+    try {
+      wantAgent.cancel(wantAgentData).then((data) => {
+        console.info('cancel success.');
+      }).catch((error) => {
+        let err = error as BusinessError;
+        console.error(`cancel failed, err code: ${err.code}, err msg: ${err.message}.`);
+      });
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`cancel failed, err code: ${err.code}, err msg: ${err.message}.`);
+    }
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`getWantAgent failed! ${err.code} ${err.message}`);
 }
 ```
 
@@ -766,9 +1334,13 @@ trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: AsyncCallback\<Co
 
 这里所执行的操作类型，是在创建WantAgent实例时通过[WantAgentInfo](js-apis-inner-wantAgent-wantAgentInfo.md)参数中的actionType属性指定的。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -787,6 +1359,8 @@ trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: AsyncCallback\<Co
 | 401        | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { wantAgent, Want } from '@kit.AbilityKit';
@@ -828,10 +1402,11 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
-    console.info(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+    console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   // trigger回调
@@ -843,6 +1418,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // 调用trigger接口触发WantAgent实例执行指定操作
     wantAgent.trigger(wantAgentData, triggerInfo, triggerCallback);
   } catch (err) {
     let code = (err as BusinessError).code;
@@ -852,11 +1428,82 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;
   let msg = (err as BusinessError).message;
   console.error(`getWantAgent failed, code: ${code}, message: ${msg}.`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { wantAgent, Want } from '@kit.AbilityKit';
+import type { WantAgent } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+// wantAgent对象
+let wantAgentData: WantAgent;
+// triggerInfo
+let triggerInfo: wantAgent.TriggerInfo = {
+  code: 0 // 自定义结果码
+};
+// WantAgentInfo对象
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: 'deviceId',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility',
+      action: 'action1',
+      entities: ['entity1'],
+      type: 'MIMETYPE',
+      uri: 'key={true,true,false}',
+      parameters: {
+        'mykey0': 2222,
+        'mykey1': [1, 2, 3],
+        'mykey2': '[1, 2, 3]',
+        'mykey3': 'ssssssssssssssssssssssssss',
+        'mykey4': [false, true, false],
+        'mykey5': ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+        'mykey6': true,
+      } as Record<string, RecordData>
+    } as Want
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+};
+
+try {
+  wantAgent.getWantAgent(wantAgentInfo, (err, data) => {
+    if (err) {
+      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    if (!data) {
+      console.error('getWantAgent failed: data is undefined');
+      return;
+    }
+    wantAgentData = data;
+    try {
+      wantAgent.trigger(wantAgentData, triggerInfo, (err, data) => {
+        if (err) {
+          console.error(`trigger failed, code: ${err.code}, message: ${err.message}`);
+        } else {
+          console.info(`trigger success, data: ${JSON.stringify(data)}`);
+        }
+      });
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`trigger failed, code: ${err.code}, message: ${err.message}`);
+    }
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`getWantAgent failed! ${err.code} ${err.message}`);
 }
 ```
 
@@ -868,9 +1515,13 @@ equal(agent: WantAgent, otherAgent: WantAgent, callback: AsyncCallback\<boolean\
 
 当两个WantAgent实例由当前用户下的同一应用使用相同的[WantAgentInfo](js-apis-inner-wantAgent-wantAgentInfo.md)信息创建，并且实例未被[cancel](#wantagentcancel)取消，这两个实例相等。在通知（携带WantAgent实例）场景，通知更新时会比较2个通知中的WantAgent实例，不相等时会把旧通知的WantAgent实例删除。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -890,6 +1541,8 @@ equal(agent: WantAgent, otherAgent: WantAgent, callback: AsyncCallback\<boolean\
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
@@ -927,10 +1580,11 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgent1 = data;
     wantAgent2 = data;
   }
@@ -943,6 +1597,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // 调用equal接口判断两个WantAgent实例是否相等
     wantAgent.equal(wantAgent1, wantAgent2, equalCallback);
   } catch (err) {
     console.error(`equal failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
@@ -950,9 +1605,78 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   console.error(`getWantAgent failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { wantAgent, Want } from '@kit.AbilityKit';
+import type { WantAgent } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+// wantAgent对象
+let wantAgent1: WantAgent;
+let wantAgent2: WantAgent;
+// WantAgentInfo对象
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: 'deviceId',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility',
+      action: 'action1',
+      entities: ['entity1'],
+      type: 'MIMETYPE',
+      uri: 'key={true,true,false}',
+      parameters: {
+        'mykey0': 2222,
+        'mykey1': [1, 2, 3],
+        'mykey2': '[1, 2, 3]',
+        'mykey3': 'ssssssssssssssssssssssssss',
+        'mykey4': [false, true, false],
+        'mykey5': ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+        'mykey6': true,
+      } as Record<string, RecordData>
+    } as Want
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+};
+
+try {
+  wantAgent.getWantAgent(wantAgentInfo, (err, data) => {
+    if (err) {
+      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    if (!data) {
+      console.error('getWantAgent failed: data is undefined');
+      return;
+    }
+    wantAgent1 = data;
+    wantAgent2 = data;
+    try {
+      wantAgent.equal(wantAgent1, wantAgent2, (err, data) => {
+        if (err) {
+          console.error(`equal failed! ${err.code} ${err.message}`);
+        } else {
+          console.info(`equal ok! ${JSON.stringify(data)}`);
+        }
+      });
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`getBundleName failed! ${err.code} ${err.message}`);
+    }
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`getWantAgent failed! ${err.code} ${err.message}`);
 }
 ```
 
@@ -964,15 +1688,19 @@ equal(agent: WantAgent, otherAgent: WantAgent): Promise\<boolean\>
 
 当两个WantAgent实例由当前用户下的同一应用使用相同的[WantAgentInfo](js-apis-inner-wantAgent-wantAgentInfo.md)信息创建，并且实例未被[cancel](#wantagentcancel)取消，这两个实例相等。在通知（携带WantAgent实例）场景，通知更新时会比较2个通知中的WantAgent实例，不相等时会把旧通知的WantAgent实例删除。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名       | 类型      | 必填 | 说明          |
 | ---------- | --------- | ---- | ------------- |
-| agent      | WantAgent | 是   | WantAgent对象。 |
+| agent      | [WantAgent](#wantagent) | 是   | WantAgent对象。 |
 | otherAgent | WantAgent | 是   | WantAgent对象。 |
 
 **返回值：**
@@ -991,6 +1719,8 @@ equal(agent: WantAgent, otherAgent: WantAgent): Promise\<boolean\>
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
@@ -1028,47 +1758,123 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgent1 = data;
     wantAgent2 = data;
   }
   try {
+    // 使用Promise方式判断两个WantAgent实例是否相等
     wantAgent.equal(wantAgent1, wantAgent2).then((data) => {
       console.info(`equal ok! ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
-      console.error(`equal failed! ${err.code} ${err.message}`);
-    })
+    console.error(`equal failed! ${err.code} ${err.message}`);
+  });
   } catch (err) {
     console.error(`equal failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
   }
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   console.error(`getWantAgent failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { wantAgent, Want } from '@kit.AbilityKit';
+import type { WantAgent } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+// wantAgent对象
+let wantAgent1: WantAgent;
+let wantAgent2: WantAgent;
+// WantAgentInfo对象
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: 'deviceId',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility',
+      action: 'action1',
+      entities: ['entity1'],
+      type: 'MIMETYPE',
+      uri: 'key={true,true,false}',
+      parameters: {
+        'mykey0': 2222,
+        'mykey1': [1, 2, 3],
+        'mykey2': '[1, 2, 3]',
+        'mykey3': 'ssssssssssssssssssssssssss',
+        'mykey4': [false, true, false],
+        'mykey5': ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+        'mykey6': true,
+      } as Record<string, RecordData>
+    } as Want
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+};
+
+try {
+  wantAgent.getWantAgent(wantAgentInfo, (err, data) => {
+    if (err) {
+      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    if (!data) {
+      console.error('getWantAgent failed: data is undefined');
+      return;
+    }
+    wantAgent1 = data;
+    wantAgent2 = data;
+    try {
+      wantAgent.equal(wantAgent1, wantAgent2).then((data) => {
+        console.info(`equal ok! `);
+      }).catch((error) => {
+        let err = error as BusinessError;
+        console.error(`equal failed! ${err.code} ${err.message}`);
+      });
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`equal failed! ${err.code} ${err.message}`);
+    }
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`getWantAgent failed! ${err.code} ${err.message}`);
+}
+```
+
 ## wantAgent.getOperationType
 
-getOperationType(agent: WantAgent, callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getOperationType(agent: WantAgent, callback: AsyncCallback\<number\>): void
+
+ArkTS-Sta: getOperationType(agent: WantAgent, callback: AsyncCallback\<int\>): void
 
 获取一个WantAgent实例的[OperationType](#operationtype)信息，使用callback异步回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名       | 类型                     | 必填 | 说明                                    |
 | ---------- | ------------------------ | ---- | --------------------------------------- |
 | agent      | WantAgent                | 是   | WantAgent对象。                           |
-| callback   | AsyncCallback\<number> | 是   | 回调函数。当获取一个WantAgent的OperationType信息成功，err为undefined，data为OperationType；否则err为错误对象。 |
+| callback   | ArkTS-Dyn: AsyncCallback\<number\><br>ArkTS-Sta: AsyncCallback\<int> | 是   | 回调函数。当获取一个WantAgent的OperationType信息成功，err为undefined，data为OperationType；否则err为错误对象。 |
 
 **错误码：**
 
@@ -1082,6 +1888,8 @@ getOperationType(agent: WantAgent, callback: AsyncCallback\<number>): void
 | 16000151   | Invalid wantAgent object.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { wantAgent, Want } from '@kit.AbilityKit';
@@ -1119,10 +1927,11 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   // getOperationTypeCallback回调
@@ -1134,6 +1943,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // 调用getOperationType接口获取WantAgent实例的操作类型
     wantAgent.getOperationType(wantAgentData, getOperationTypeCallback);
   } catch (err) {
     console.error(`getOperationTypeCallback failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
@@ -1141,33 +1951,106 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   console.error(`getWantAgent failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { wantAgent, Want } from '@kit.AbilityKit';
+import type { WantAgent } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+// wantAgent对象
+let wantAgentData: WantAgent;
+// WantAgentInfo对象
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: 'deviceId',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility',
+      action: 'action1',
+      entities: ['entity1'],
+      type: 'MIMETYPE',
+      uri: 'key={true,true,false}',
+      parameters: {
+        'mykey0': 2222,
+        'mykey1': [1, 2, 3],
+        'mykey2': '[1, 2, 3]',
+        'mykey3': 'ssssssssssssssssssssssssss',
+        'mykey4': [false, true, false],
+        'mykey5': ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+        'mykey6': true,
+      } as Record<string, RecordData>
+    } as Want
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+};
+
+try {
+  wantAgent.getWantAgent(wantAgentInfo, (err, data) => {
+    if (err) {
+      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    if (!data) {
+      console.error('getWantAgent failed: data is undefined');
+      return;
+    }
+    wantAgentData = data;
+    try {
+      wantAgent.getOperationType(wantAgentData, (err, data) => {
+        if (err) {
+          console.error(`getOperationType failed! ${err.code} ${err.message}`);
+        } else {
+          console.info(`getOperationType ok! ${JSON.stringify(data)}`);
+        }
+      });
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`getOperationType failed! ${err.code} ${err.message}`);
+    }
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`getWantAgent failed! ${err.code} ${err.message}`);
+}
+```
+
 ## wantAgent.getOperationType
 
-getOperationType(agent: WantAgent): Promise\<number>
+ArkTS-Dyn: getOperationType(agent: WantAgent): Promise\<number>
+
+ArkTS-Sta: getOperationType(agent: WantAgent): Promise\<int>
 
 获取一个WantAgent实例的[OperationType](#operationtype)信息。使用Promise异步回调。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名       | 类型      | 必填 | 说明          |
 | ---------- | --------- | ---- | ------------- |
-| agent      | WantAgent | 是   | WantAgent对象。 |
+| agent      | [WantAgent](#wantagent) | 是   | WantAgent对象。 |
 
 **返回值：**
 
-| 类型                                                        | 说明                                                         |
-| ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<number> | Promise对象，返回OperationType的结果。 |
+| 类型                                                    | 说明                                       |
+| ------------------------------------------------------- | ------------------------------------------ |
+| ArkTS-Dyn: Promise\<number\><br>ArkTS-Sta: Promise\<int\> | Promise对象，返回OperationType的结果。 |
 
 **错误码：**
 
@@ -1181,6 +2064,8 @@ getOperationType(agent: WantAgent): Promise\<number>
 | 16000151   | Invalid wantAgent object.|
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { wantAgent, Want } from '@kit.AbilityKit';
@@ -1218,13 +2103,15 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // 创建WantAgent成功，保存返回的WantAgent对象
     wantAgentData = data;
   }
   try {
+    // 使用Promise方式获取WantAgent实例的操作类型
     wantAgent.getOperationType(wantAgentData).then((data) => {
       console.info(`getOperationType ok! ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
@@ -1236,9 +2123,75 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // 调用getWantAgent接口创建WantAgent对象
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   console.error(`getWantAgent failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { wantAgent, Want } from '@kit.AbilityKit';
+import type { WantAgent } from '@kit.AbilityKit';
+import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+
+// wantAgent对象
+let wantAgentData: WantAgent;
+// WantAgentInfo对象
+let wantAgentInfo: wantAgent.WantAgentInfo = {
+  wants: [
+    {
+      deviceId: 'deviceId',
+      bundleName: 'com.example.myapplication',
+      abilityName: 'EntryAbility',
+      action: 'action1',
+      entities: ['entity1'],
+      type: 'MIMETYPE',
+      uri: 'key={true,true,false}',
+      parameters: {
+        'mykey0': 2222,
+        'mykey1': [1, 2, 3],
+        'mykey2': '[1, 2, 3]',
+        'mykey3': 'ssssssssssssssssssssssssss',
+        'mykey4': [false, true, false],
+        'mykey5': ['qqqqq', 'wwwwww', 'aaaaaaaaaaaaaaaaa'],
+        'mykey6': true,
+      } as Record<string, RecordData>
+    } as Want
+  ],
+  actionType: wantAgent.OperationType.START_ABILITIES,
+  requestCode: 0,
+};
+
+try {
+  wantAgent.getWantAgent(wantAgentInfo, (err, data) => {
+    if (err) {
+      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+      return;
+    }
+    if (!data) {
+      console.error('getWantAgent failed: data is undefined');
+      return;
+    }
+    wantAgentData = data;
+    try {
+      wantAgent.getOperationType(wantAgentData).then((data) => {
+        console.info(`getOperationType ok! ${JSON.stringify(data)}`);
+      }).catch((error) => {
+        let err = error as BusinessError;
+        console.error(`getOperationType failed! ${err.code} ${err.message}`);
+      });
+    } catch (error) {
+      let err = error as BusinessError;
+      console.error(`getOperationType failed! ${err.code} ${err.message}`);
+    }
+  });
+} catch (error) {
+  let err = error as BusinessError;
+  console.error(`getWantAgent failed! ${err.code} ${err.message}`);
 }
 ```
 
@@ -1246,9 +2199,13 @@ try {
 
 表示WantAgent行为控制标志，用于配置WantAgent的创建和触发行为。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 值             | 说明                                                                      |
 | ------------------- | -------------- |-------------------------------------------------------------------------|
@@ -1263,15 +2220,17 @@ try {
 | REPLACE_ENTITIES    | 8 | 当前Want中的entities属性可被WantAgent.trigger()中Want的entities属性取代。当前版本暂不支持。     |
 | REPLACE_BUNDLE      | 9 | 当前Want中的bundleName属性可被WantAgent.trigger()中Want的bundleName属性取代。当前版本暂不支持。 |
 
-
-
 ## OperationType
 
 表示WantAgent支持的操作类型。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 值            | 说明                      |
 | ----------------- | ------------- | ------------------------- |
@@ -1287,17 +2246,21 @@ try {
 
 表示主动触发WantAgent返回的数据。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | info           | WantAgent                       | 否 | 否   | 触发的wantAgent。       |
 | want           | [Want](js-apis-app-ability-want.md)         | 否 | 否   | 触发wantAgent时实际使用的want信息。     |
-| finalCode      | number                          | 否 | 否   | 触发wantAgent的返回码。 |
+| finalCode      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否   | 触发wantAgent的返回码。 |
 | finalData      | string                          | 否 | 否   | 触发wantAgent的返回数据。返回"canceled"时表示触发失败，WantAgent实例已经被取消。  |
-| extraInfo      | Record\<string, Object>            | 否 |是   | 额外数据。               |
+| extraInfo      | ArkTS-Dyn: Record\<string, Object><br>ArkTS-Sta: Record\<string, RecordData> | 否 |是   | 额外数据。               |
 
 ## TriggerInfo
 
@@ -1305,9 +2268,13 @@ type TriggerInfo = _TriggerInfo
 
 TriggerInfo对象。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明 |
 | --- | --- |
@@ -1319,9 +2286,13 @@ type WantAgentInfo = _WantAgentInfo
 
 WantAgentInfo对象。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明 |
 | --- | --- |
@@ -1334,6 +2305,10 @@ type WantAgent = object
 WantAgent对象。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型 | 说明 |
 | --- | --- |

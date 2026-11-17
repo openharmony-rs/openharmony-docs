@@ -6,13 +6,15 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-ContextConstant提供Context相关的枚举，包含文件加密分区等级、UIAbility启动后的进程模式等。
+ContextConstant提供Context相关的枚举，包含文件加密分区等级、进程模式等。其中，文件加密分区等级用于保护应用数据安全，开发者可根据应用需求选择合适的加密等级；进程模式用于控制UIAbility的启动方式和进程行为。这些枚举帮助开发者实现更灵活的应用架构和更安全的数据管理。
 
 > **说明：**
-> 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块接口仅可在Stage模型下使用。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -22,32 +24,36 @@ import { contextConstant } from '@kit.AbilityKit';
 
 ## AreaMode
 
-文件加密分区等级，保证应用在不同场景下的数据安全。开发者可以根据应用的具体需求选择合适的加密等级，以保护用户的数据安全。
+文件加密分区等级，保证应用在不同场景下的数据安全。开发者可根据应用需求选择合适的加密等级。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称  | 值 | 说明                                                                                                                   |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
-| EL1 | 0 | 设备级加密区，设备开机后可访问的数据区。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。    |
-| EL2 | 1 | 用户级加密区，设备开机，首次输入密码后才能够访问的数据区。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。       |
-| EL3<sup>11+<sup> | 2 | 用户级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，可读写；解锁后，可读写。<br/>未打开文件：锁屏时，不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，可创建、可打开、可写不可读；解锁后，可创建、可打开、可读写。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| EL4<sup>11+<sup> | 3 | 用户级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，不可读写；解锁后，可读写。<br/>未打开文件：锁屏时，不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，不可创建；解锁后，可创建、可打开、可读写。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。  |
-| EL5<sup>12+<sup> | 4 | 应用级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，可读写；解锁后，可读写。<br/>未打开文件：锁屏时，调用[Access](js-apis-screenLockFileManager.md#screenlockfilemanageracquireaccess)接口获取保留密钥后，可打开、可读写，否则不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，可创建、可打开、可读写；解锁后，可创建、可打开、可读写。<br/>**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。 |
+| EL1 | 0 | 设备级加密区，设备开机后可访问的数据区。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| EL2 | 1 | 用户级加密区，设备开机，首次输入密码后才能够访问的数据区。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| EL3<sup>11+</sup> | 2 | 用户级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，可读写；解锁后，可读写。<br/>未打开文件：锁屏时，不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，可创建、可打开、可写不可读；解锁后，可创建、可打开、可读写。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| EL4<sup>11+</sup> | 3 | 用户级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，不可读写；解锁后，可读写。<br/>未打开文件：锁屏时，不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，不可创建；解锁后，可创建、可打开、可读写。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23  |
+| EL5<sup>12+</sup> | 4 | 应用级加密区，不同场景的文件权限如下：<br/>已打开文件：锁屏时，可读写；解锁后，可读写。<br/>未打开文件：锁屏时，调用[Access](js-apis-screenLockFileManager.md#screenlockfilemanageracquireaccess)接口获取保留密钥后，可打开、可读写，否则不可打开、不可读写；解锁后，可打开、可读写。<br/>创建新文件：锁屏时，可创建、可打开、可读写；解锁后，可创建、可打开、可读写。<br/>**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
 
 
 ## ProcessMode<sup>12+</sup>
 
-UIAbility启动后的进程模式。
+UIAbility启动后的进程模式，用于指定UIAbility在新进程中启动并绑定到指定对象（如父进程或状态栏图标）。
 
 ProcessMode作为[StartOptions](js-apis-app-ability-startOptions.md)的一个属性，仅在[UIAbilityContext.startAbility](js-apis-inner-application-uiAbilityContext.md#startability-1)中生效，用来指定目标UIAbility的进程模式。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该功能仅在2in1和Tablet设备上生效，在其他设备中返回801错误码。
+**设备行为差异**：该功能仅在PC/2in1和Tablet设备上生效，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 值 | 说明                                                                                                                   |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
-| NEW_PROCESS_ATTACH_TO_PARENT | 1 | 创建一个新进程，并在该进程上启动UIAbility。该进程会跟随父进程退出。<br>**约束：**<br>使用此模式时，要求目标UIAbility跟调用方是在同一个应用。                     |
+| NEW_PROCESS_ATTACH_TO_PARENT | 1 | 创建一个新进程，并在该进程上启动UIAbility。该进程会跟随父进程（调用方进程）退出，即当父进程退出时，此进程也会自动退出。<br>**约束：**<br>使用此模式时，要求目标UIAbility跟调用方是在同一个应用。                     |
 | NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM | 2 | 创建一个新进程，在该进程上启动UIAbility，并绑定该进程到状态栏图标上。<br>**约束：**<br>使用此模式时，要求目标UIAbility跟调用方是在同一个应用，并且应用要在状态栏中有图标。                  |
 | ATTACH_TO_STATUS_BAR_ITEM | 3 | 启动UIAbility，并绑定该UIAbility所在进程到状态栏图标上。<br>**约束：**<br>使用此模式时，要求目标UIAbility跟调用方是在同一个应用，并且应用要在状态栏中有图标。                  |
 
@@ -59,21 +65,23 @@ ProcessMode作为[StartOptions](js-apis-app-ability-startOptions.md)的一个属
 
   export default class EntryAbility extends UIAbility {
     onForeground() {
+      // 构造Want对象，指定目标UIAbility信息
       let want: Want = {
         deviceId: '',
         bundleName: 'com.example.myapplication',
         abilityName: 'MainAbility2'
       };
-      let options: StartOptions = {
-        processMode: contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM,
-        startupVisibility: contextConstant.StartupVisibility.STARTUP_HIDE
-      };
+    // 创建启动选项，设置进程模式和启动可见性
+    let options: StartOptions = {
+          processMode: contextConstant.ProcessMode.NEW_PROCESS_ATTACH_TO_STATUS_BAR_ITEM,
+          startupVisibility: contextConstant.StartupVisibility.STARTUP_HIDE
+        };
 
       try {
-        this.context.startAbility(want, options, (err: BusinessError) => {
-          if (err.code) {
+        this.context.startAbility(want, options, (err: BusinessError<void> | null) => {
+          if (err) {
             // 处理业务逻辑错误
-            console.error(`startAbility failed, code is ${err.code}, message is ${err.message}`);
+            console.error(`startAbility failed: ${JSON.stringify(err)}`);
             return;
           }
           // 执行正常业务
@@ -99,7 +107,11 @@ StartupVisibility作为[StartOptions](js-apis-app-ability-startOptions.md)的一
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**设备行为差异**：该功能仅在2in1和Tablet设备上生效，在其他设备中返回801错误码。
+**设备行为差异**：该功能仅在PC/2in1和Tablet设备上生效，在其他设备中返回801错误码。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 值 | 说明                                                                                                                   |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
@@ -114,15 +126,19 @@ StartupVisibility作为[StartOptions](js-apis-app-ability-startOptions.md)的一
 
 表示不触发[onNewWant](./js-apis-app-ability-uiAbility.md#onnewwant)生命周期回调场景的枚举，用于[setOnNewWantSkipScenarios](./js-apis-inner-application-uiAbilityContext.md#setonnewwantskipscenarios20)接口。
 
-**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 值 | 说明                                                                                                                   |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
 | SCENARIO_MOVE_MISSION_TO_FRONT | 0x00000001 | <!--RP1-->系统接口[missionManager.moveMissionToFront](./js-apis-app-ability-missionManager-sys.md#missionmanagermovemissiontofront-2)接口触发的UIAbility到前台场景。<!--RP1End-->        |
 | SCENARIO_SHOW_ABILITY | 0x00000002 | [showAbility](./js-apis-inner-application-uiAbilityContext.md#showability12)接口触发的UIAbility到前台场景。     |
-| SCENARIO_BACK_TO_CALLER_ABILITY_WITH_RESULT | 0x00000004 | [backToCallerAbilityWithResult](./js-apis-inner-application-uiAbilityContext.md#backtocallerabilitywithresult12)接口触发的UIAbility到前台场景。     |
+| SCENARIO_BACK_TO_CALLER_ABILITY_WITH_RESULT | 0x00000004 | [backToCallerAbilityWithResult](./js-apis-inner-application-uiAbilityContext.md#backtocallerabilitywithresultdeprecated)接口触发的UIAbility到前台场景。     |
 
 **示例：**
 
@@ -132,11 +148,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    // 设置不触发onNewWant的场景，组合多个场景标志位
     let scenarios: number = contextConstant.Scenarios.SCENARIO_MOVE_MISSION_TO_FRONT |
       contextConstant.Scenarios.SCENARIO_SHOW_ABILITY |
       contextConstant.Scenarios.SCENARIO_BACK_TO_CALLER_ABILITY_WITH_RESULT;
 
     try {
+      // 设置跳过onNewWant的场景
       this.context.setOnNewWantSkipScenarios(scenarios).then(() => {
         // 执行正常业务
         console.info('setOnNewWantSkipScenarios succeed');
@@ -158,19 +176,23 @@ export default class EntryAbility extends UIAbility {
 
 表示常见Context类型的枚举，用于[isContextOf](./js-apis-inner-application-context.md#iscontextof)接口。
 
-**起始版本**：26.0.0
-
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 | 名称  | 值 | 说明                                                                                                                   |
 |-----| -------- |----------------------------------------------------------------------------------------------------------------------|
-| APPLICATION_CONTEXT | 0 | [ApplicationContext](js-apis-inner-application-applicationContext.md)类型。     |
-| ABILITY_STAGE_CONTEXT | 1 | [AbilityStageContext](js-apis-inner-application-abilityStageContext.md)类型。     |
-| UIABILITY_CONTEXT | 2 | [UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)类型。     |
-| FORM_EXTENSION_CONTEXT | 3 | [FormExtensionContext](../apis-form-kit/js-apis-inner-application-formExtensionContext.md)类型。     |
-| APP_SERVICE_EXTENSION_CONTEXT | 4 | [AppServiceExtensionContext](js-apis-inner-application-appServiceExtensionContext.md)类型。     |
+| APPLICATION_CONTEXT | 0 | [ApplicationContext](js-apis-inner-application-applicationContext.md)类型，提供应用级别的资源和能力。  |
+| ABILITY_STAGE_CONTEXT | 1 | [AbilityStageContext](js-apis-inner-application-abilityStageContext.md)类型，提供模块级别的资源和能力。   |
+| UIABILITY_CONTEXT | 2 | [UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)类型，提供界面交互、组件启动等能力。     |
+| FORM_EXTENSION_CONTEXT | 3 | [FormExtensionContext](../apis-form-kit/js-apis-inner-application-formExtensionContext.md)类型，提供卡片服务能力。     |
+| APP_SERVICE_EXTENSION_CONTEXT | 4 | [AppServiceExtensionContext](js-apis-inner-application-appServiceExtensionContext.md)类型，提供后台服务能力。     |
 
 **示例：**
 
@@ -181,6 +203,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 export default class EntryAbility extends UIAbility {
   onCreate() {
     hilog.info(0x0000, 'testTag', `%{public}s`, 'Ability onCreate');
+    // 判断Context类型是否为UIAbilityContext
     let result = this.context.isContextOf(contextConstant.ContextType.UIABILITY_CONTEXT);
     hilog.info(0x0000, 'testTag', `match contextType result is:%{public}s`, JSON.stringify(result));
   }

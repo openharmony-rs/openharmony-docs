@@ -13,7 +13,7 @@
 
 1. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)、[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，生成非对称密钥算法为ECC、密钥长度为256位的密钥对（KeyPair）。
    
-   如何生成ECC非对称密钥，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：ECC](crypto-asym-key-generation-conversion-spec.md#ecc)和[随机生成非对称密钥对](crypto-generate-asym-key-pair-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
+   如何生成ECC非对称密钥，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：ECC](crypto-key-generation-conversion.md#ecc)和[随机生成非对称密钥对](crypto-generate-asym-key-pair-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
 2. 调用[cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign)，指定字符串参数'ECC256|SHA256'，创建非对称密钥类型为ECC256、摘要算法为SHA256的Sign实例，用于完成签名操作。
 
@@ -92,7 +92,7 @@
   let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
   let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
   
-  function signMessagePromise(priKey: cryptoFramework.PriKey) {
+  function signMessageSync(priKey: cryptoFramework.PriKey) {
     let signAlg = 'ECC256|SHA256';
     let signer = cryptoFramework.createSign(signAlg);
     signer.initSync(priKey);
@@ -101,7 +101,7 @@
     return signData;
   }
   
-  function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
+  function verifyMessageSync(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
     let verifyAlg = 'ECC256|SHA256';
     let verifier = cryptoFramework.createVerify(verifyAlg);
     verifier.initSync(pubKey);
@@ -115,8 +115,8 @@
     let keyGenAlg = 'ECC256';
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
     let keyPair = generator.generateKeyPairSync();
-    let signData = signMessagePromise(keyPair.priKey);
-    let verifyResult = verifyMessagePromise(signData, keyPair.pubKey);
+    let signData = signMessageSync(keyPair.priKey);
+    let verifyResult = verifyMessageSync(signData, keyPair.pubKey);
     if (verifyResult === true) {
       console.info('verify result: success.');
     } else {

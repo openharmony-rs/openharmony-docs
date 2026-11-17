@@ -41,7 +41,7 @@ getAllAgentCards(): Promise\<Array\<AgentCard>>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise<Array<[AgentCard](./js-apis-inner-application-AgentCard.md#agentcard-1)>> | Promise对象，返回设备上所有的AgentCard数组。 |
+| Promise<Array<[AgentCard](./js-apis-inner-application-AgentCard.md#agentcard)>> | Promise对象，返回设备上所有的AgentCard数组。 |
 
 **错误码：**
 
@@ -49,8 +49,8 @@ getAllAgentCards(): Promise\<Array\<AgentCard>>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 
 **示例：**
@@ -92,7 +92,7 @@ getAgentCardsByBundleName(bundleName: string): Promise\<Array\<AgentCard>>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise<Array<[AgentCard](./js-apis-inner-application-AgentCard.md#agentcard-1)>> | Promise对象，返回指定bundleName内的所有AgentCard数组。 |
+| Promise<Array<[AgentCard](./js-apis-inner-application-AgentCard.md#agentcard)>> | Promise对象，返回指定bundleName内的所有AgentCard数组。 |
 
 **错误码：**
 
@@ -100,8 +100,8 @@ getAgentCardsByBundleName(bundleName: string): Promise\<Array\<AgentCard>>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
 
@@ -147,7 +147,7 @@ getAgentCardByAgentId(bundleName: string, agentId: string): Promise\<AgentCard>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise<[AgentCard](./js-apis-inner-application-AgentCard.md#agentcard-1)> | Promise对象，返回指定的AgentCard。 |
+| Promise<[AgentCard](./js-apis-inner-application-AgentCard.md#agentcard)> | Promise对象，返回指定的AgentCard。 |
 
 **错误码：**
 
@@ -155,8 +155,8 @@ getAgentCardByAgentId(bundleName: string, agentId: string): Promise\<AgentCard>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
 | 35600001 | The specified agentId does not exist. |
@@ -168,6 +168,7 @@ import { agentManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundleName = 'com.example.myapplication';
+// 设置待查询的Agent标识
 let agentId = 'agent_001';
 
 agentManager.getAgentCardByAgentId(bundleName, agentId)
@@ -192,8 +193,10 @@ connectAgentExtensionAbility(want: Want, agentId: string, callback: AgentExtensi
 > - 同一个AgentExtensionAbility中，最多只能同时运行100个LOW_CODE类型的Agent，否则会报35600003错误码。
 >
 > - 同一个AgentExtensionAbility中，不允许重复连接同一个LOW_CODE类型的Agent。
+>
+> - 该接口不支持应用分身。
 
-**系统接口**：该接口为系统接口。
+**系统接口**：此接口为系统接口。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
 
@@ -221,8 +224,8 @@ connectAgentExtensionAbility(want: Want, agentId: string, callback: AgentExtensi
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
@@ -253,7 +256,7 @@ struct Index {
       console.info(`onData, data: ${data}.`);
     },
     onAuth: (handShakeData: string): void => {
-      console.info(`onData, data: ${handShakeData}.`);
+      console.info(`onAuth, data: ${handShakeData}.`);
     },
     onDisconnect: () => {
       console.info(`onDisconnect.`);
@@ -271,6 +274,7 @@ struct Index {
               bundleName: 'com.acts.agentextensionability',
               abilityName: 'AgentExtAbility',
             };
+            // 设置待连接的Agent标识
             let agentId: string = 'test';
             try {
               // 连接AgentExtensionAbility
@@ -329,8 +333,8 @@ notifyLowCodeAgentComplete(agentId: string): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 | 35600001 | The specified agentId does not exist. |
 
@@ -359,9 +363,15 @@ ArkTS-Sta: connectServiceExtensionAbility(context: AgentExtensionContext, want: 
 
 将AgentExtensionAbility连接到ServiceExtensionAbility。若目标ServiceExtensionAbility可见，可直接连接；若不可见，需申请`ohos.permission.START_INVISIBLE_ABILITY`权限；若目标ServiceExtensionAbility位于远程设备上，需申请`ohos.permission.DISTRIBUTED_DATASYNC`权限。
 
+> **说明：**
+>
+> 在ArkTS-Dyn中该接口不支持在多线程和子进程中调用。在多线程中调用将引发CppCrash；在子进程中调用将返回16000050错误码。
+>
+> 该接口不支持连接分身应用的ServiceExtensionAbility。
+
 **系统接口**：该接口为系统接口。
 
-**模型约束**： 此接口仅可在Stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Ability.AgentRuntime.Core
 
@@ -389,7 +399,7 @@ ArkTS-Sta: connectServiceExtensionAbility(context: AgentExtensionContext, want: 
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202      | Not system application. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
@@ -410,6 +420,7 @@ ArkTS-Dyn示例：
 
 ```ts
 import { common, Want, AgentExtensionAbility, agentManager, bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { JSON } from '@kit.ArkTS';
 import { rpc } from '@kit.IPCKit';
 
@@ -427,7 +438,7 @@ export default class DemoAgentForConnect extends AgentExtensionAbility {
           console.info(`${TAG} onDisconnect ${JSON.stringify(elementName)}`);
         },
         onFailed(code: number) {
-          console.info(`${TAG} onFailed... ${code}`);
+          console.error(`${TAG} onFailed... ${code}`);
         }
       };
       console.info(`${TAG} start connect`);
@@ -435,7 +446,9 @@ export default class DemoAgentForConnect extends AgentExtensionAbility {
       console.info(`${TAG} connect end, connectId=${connectId} `);
       return connectId;
     } catch (err) {
-      console.error(`${TAG} connectServiceExtensionAbility failed.`);
+      let code = (err as BusinessError).code;
+      let msg = (err as BusinessError).message;
+      console.error(`${TAG} connectServiceExtensionAbility failed. Code: ${code}, message: ${msg}`);
     }
     return -1;
   }
@@ -515,7 +528,7 @@ ArkTS-Dyn: disconnectServiceExtensionAbility(context: AgentExtensionContext, con
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202      | Not system application. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 
@@ -546,6 +559,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { AgentExtensionAbility, agentManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let TAG = 'DemoAgentForDisConnect';
 
@@ -557,7 +571,8 @@ export default class DemoAgentForDisConnect extends AgentExtensionAbility {
       agentManager.disconnectServiceExtensionAbility(this.context, connectId);
       console.info(`${TAG} disconnect end:${connectId}`);
     } catch (err) {
-      console.error(`${TAG} client disconnectServiceExtensionAbility failed.`);
+      const error = err as BusinessError;
+      console.error(`${TAG} disconnectServiceExtensionAbility failed. Code: ${error.code}, message: ${error.message}`);
     }
   }
 }
@@ -587,7 +602,7 @@ registerAgentCard(agentCard: AgentCard): Promise\<void>
 
 | 参数名    | 类型                                              | 必填 | 说明           |
 | --------- | ------------------------------------------------- | ---- | ------------ |
-| agentCard | [AgentCard](./js-apis-inner-application-AgentCard.md#agentcard-1) | 是   | 要注册的AgentCard信息。 |
+| agentCard | [AgentCard](./js-apis-inner-application-AgentCard.md#agentcard) | 是 | 要注册的AgentCard信息。 |
 
 **返回值：**
 
@@ -601,14 +616,15 @@ registerAgentCard(agentCard: AgentCard): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
-| 35600005 | The specified agent card version is invalid. |
-| 35600006 | The specified agent card has already been registered. Use updateAgentCard instead. |
+| 35600005 | The specified AgentCard version is invalid. |
+| 35600006 | The specified AgentCard has already been registered. Use updateAgentCard instead. |
+| 35600008 | The number of AgentCards in the bundle reaches the limit. |
 
 **示例：**
 
@@ -672,7 +688,7 @@ updateAgentCard(agentCard: AgentCard): Promise\<void>
 
 | 参数名    | 类型                                              | 必填 | 说明           |
 | --------- | ------------------------------------------------- | ---- | ------------ |
-| agentCard | [AgentCard](./js-apis-inner-application-AgentCard.md#agentcard-1) | 是   | 要更新的AgentCard信息。 |
+| agentCard | [AgentCard](./js-apis-inner-application-AgentCard.md#agentcard) | 是 | 要更新的AgentCard信息。 |
 
 **返回值：**
 
@@ -686,15 +702,15 @@ updateAgentCard(agentCard: AgentCard): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
 | 35600001 | The specified agentId does not exist. |
-| 35600004 | The specified agent card version is older than the current version. |
-| 35600005 | The specified agent card version is invalid. |
+| 35600004 | The specified AgentCard version is older than the current version. |
+| 35600005 | The specified AgentCard version is invalid. |
 
 **示例：**
 
@@ -769,8 +785,8 @@ deleteAgentCard(bundleName: string, agentId: string): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 | 35600001 | The specified agentId does not exist. |
 
@@ -824,14 +840,14 @@ disconnectAgentExtensionAbility(proxy: AgentProxy): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 
 **示例：**
 
 ```ts
-import { common, Want, agentManager } from '@kit.AbilityKit';
+import { common, agentManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
@@ -845,17 +861,17 @@ struct Index {
           .enabled(true)
           .onClick(() => {
             try {
-              // 连接AgentExtensionAbility
+              // 断开AgentExtensionAbility连接
               agentManager.disconnectAgentExtensionAbility(this.comProxy)
                 .then(() => {
                 })
                 .catch((err: BusinessError) => {
-                  console.error(`connectAgentExtensionAbility failed, error code: ${err.code}, error msg: ${err.message}.`);
+                  console.error(`disconnectAgentExtensionAbility failed, error code: ${err.code}, error msg: ${err.message}.`);
                 });
             } catch (err) {
               let code = (err as BusinessError).code;
               let msg = (err as BusinessError).message;
-              console.error(`connectAgentExtensionAbility failed, error code: ${code}, error msg: ${msg}.`);
+              console.error(`disconnectAgentExtensionAbility failed, error code: ${code}, error msg: ${msg}.`);
             }
           })
       }

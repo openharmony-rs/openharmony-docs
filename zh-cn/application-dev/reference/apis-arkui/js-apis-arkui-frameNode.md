@@ -6,7 +6,7 @@
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
-FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeController.md)可通过[BuilderNode](./js-apis-arkui-builderNode.md)持有的FrameNode将其挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，也可通过FrameNode获取[RenderNode](./js-apis-arkui-renderNode.md)，挂载到其他FrameNode上。最佳实践请参考[组件动态创建-组件动态添加、更新和删除](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-ui-dynamic-operations#section153921947151012)。
+FrameNode表示组件树的实体节点，支持节点树操作、自定义绘制与布局、位置查询、动画等能力。[NodeController](./js-apis-arkui-nodeController.md)可通过[BuilderNode](./js-apis-arkui-builderNode.md)持有的FrameNode将其挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，也可通过FrameNode获取[RenderNode](./js-apis-arkui-renderNode.md)，挂载到其他FrameNode上。适用于需要通过代码动态创建和管理组件节点树的场景，可实现声明式组件无法直接满足的灵活UI组合与自定义渲染需求。<!--RP2--><!--RP2End-->
 
 > **说明：**
 >
@@ -21,11 +21,13 @@ FrameNode表示组件树的实体节点。[NodeController](./js-apis-arkui-nodeC
 > - FrameNode对象不支持使用JSON序列化。
 >
 > - 在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的场景中调用[FrameNode](#framenode-1)对象的接口时，建议使用[UIContext](./arkts-apis-uicontext-uicontext.md)的[runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask)接口明确UI上下文，参考[执行绑定UI实例的闭包](../../ui/arkts-global-interface.md#执行绑定ui实例的闭包)示例。
+>
+> - FrameNode的接口中，仅[Optional](./arkui-ts/ts-universal-attributes-custom-property.md#optionalt)类型的必选参数支持传入null或undefined。
 
 ## 导入模块
 
 ```ts
-import { FrameNode, LayoutConstraint, ExpandMode, typeNode, NodeAdapter } from "@kit.ArkUI";
+import { FrameNode, LayoutConstraint, ExpandMode, ChildrenCountMode, typeNode, NodeAdapter } from '@kit.ArkUI';
 ```
 
 ## LayoutConstraint<sup>12+</sup>
@@ -99,9 +101,30 @@ FrameNode选项，可设置FrameNode是否支持多线程操作。
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| NOT_EXPAND | 0 | 表示不展开当前FrameNode的子节点。如果FrameNode包含[LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md)子节点，获取在主节点树上的子节点时，不展开当前FrameNode的子节点。子节点序列号按在主节点树上的子节点计算。 |
-| EXPAND | 1 | 表示展开当前FrameNode的子节点。如果FrameNode包含[LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md)子节点，获取所有子节点时，展开当前FrameNode的子节点。子节点序列号按所有子节点计算。 |
-| LAZY_EXPAND | 2 | 表示按需展开当前FrameNode的子节点。如果FrameNode包含[LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md)子节点，获取在主树上的子节点时，不展开当前FrameNode的子节点；获取不在主树上的子节点时，展开当前FrameNode的子节点。子节点序列号按所有子节点计算。 |
+| NOT_EXPAND | 0 | 表示不展开当前FrameNode的子节点。如果FrameNode包含[LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md)子节点，获取在主节点树上的子节点时，不展开当前FrameNode的子节点。子节点序列号按在主节点树上的子节点计算。<br/>使用场景：仅需获取主节点树上已展开子节点且不触发展开操作的场景。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。|
+| EXPAND | 1 | 表示展开当前FrameNode的子节点。如果FrameNode包含[LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md)子节点，获取所有子节点时，展开当前FrameNode的子节点。子节点序列号按所有子节点计算。<br/>使用场景：需要获取包含懒加载在内的所有子节点的场景。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| LAZY_EXPAND | 2 | 表示按需展开当前FrameNode的子节点。如果FrameNode包含[LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md)子节点，获取在主节点树上的子节点时，不展开当前FrameNode的子节点；获取不在主节点树上的子节点时，展开当前FrameNode的子节点。子节点序列号按所有子节点计算。<br/>使用场景：需要兼顾主节点树与非主节点树子节点按需获取的场景。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。 |
+| LAZY_NOT_EXPAND | 3 | 表示不展开当前FrameNode的子节点，如果FrameNode包含[LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md)子节点，对于已经展开的子节点，可以直接返回，获取未展开的子节点时，仅创建对应位置的节点，而不展开所有子节点。子节点序列号按所有子节点计算。<br/>使用场景：需要按位置精确获取子节点但不批量展开懒加载子节点的场景。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+
+## ChildrenCountMode
+
+子节点计数模式枚举。用于指定获取子节点数量时的计数方式。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| ALL_EXPAND | 0 | 计数展开模式。当遇到懒加载节点（如[LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md)）时，展开节点并返回所有子节点数量。<br/>是否展开懒加载节点：是 <br/> 使用场景：需要展开并返回所有子节点数量的场景。 |
+| ONLY_EXPANDED | 1 | 计数已展开模式。不展开懒加载节点，只返回当前已展开的子节点数量。未展开的懒加载节点不包含在计数中。<br/> 是否展开懒加载节点：否 <br/> 使用场景：仅查询已展开子节点数量的场景。 |
+| ALL_NOT_EXPAND | 2 | 计数所有模式。不展开懒加载节点，但返回包含所有潜在子节点的数量（包括已展开和未展开的懒加载节点）。此模式提供潜在子节点总数而不触发展开操作。<br/> 是否展开懒加载节点：否 <br/> 使用场景：需要获取所有子节点数量的场景，与ALL_EXPAND相比，该模式不会展开子节点。 |
 
 ## InteractionEventBindingInfo<sup>19+</sup>
 
@@ -121,9 +144,9 @@ FrameNode选项，可设置FrameNode是否支持多线程操作。
 | 名称   | 类型   | 只读 | 可选 | 说明                   |
 | ------ | ------ | ---- | ---- | ---------------------- |
 | baseEventRegistered  | boolean |  否   | 否   | 是否以声明方式绑定事件。<br/>true表示以声明方式绑定事件，false表示没有以声明方式绑定事件。 |
-| nodeEventRegistered  | boolean | 否   | 否   | 是否以自定义组件节点的方式绑定事件，请参考[基础事件示例](#基础事件示例)<br/>true表示以自定义组件节点的方式绑定事件，false表示没有以自定义组件节点的方式绑定事件。 |
+| nodeEventRegistered  | boolean | 否   | 否   | 是否以自定义组件节点的方式绑定事件，请参考[基础事件示例](#基础事件示例)。<br/>true表示以自定义组件节点的方式绑定事件，false表示没有以自定义组件节点的方式绑定事件。 |
 | nativeEventRegistered  | boolean | 否   | 否   | 是否以注册节点事件（[registerNodeEvent](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)）的方式绑定事件。<br/>true表示以注册节点事件的方式绑定事件，false表示没有以注册节点事件的方式绑定事件。|
-| builtInEventRegistered  | boolean | 否   | 否   | 组件是否绑定内置事件(组件内部定义的事件, 无需开发者手动绑定)。<br/>true表示组件绑定内置事件，false表示组件没有绑定内置事件。 |
+| builtInEventRegistered  | boolean | 否   | 否   | 组件是否绑定内置事件（组件内部定义的事件，无需开发者手动绑定）。<br/>true表示组件绑定内置事件，false表示组件没有绑定内置事件。 |
 
 ## UIState<sup>20+</sup>
 
@@ -146,6 +169,7 @@ FrameNode选项，可设置FrameNode是否支持多线程操作。
 | FOCUSED | 1 << 1 | 获焦状态。 |
 | DISABLED | 1 << 2 | 禁用状态。 |
 | SELECTED | 1 << 3 | 选中状态。<br/>仅特定的组件支持此状态：Checkbox、Radio、Toggle、List、Grid、MenuItem。 |
+| HOVERED | 1 << 4 | 悬浮状态。<br/>**起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## UIStatesChangeHandler<sup>20+</sup>
 
@@ -170,9 +194,23 @@ ArkTS-Sta: type UIStatesChangeHandler = (node: FrameNode, currentUIStates: int) 
 | 参数名   | 类型                      | 必填 | 说明                                                     |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
 | node    | [FrameNode](#framenode-1) | 是   | 触发UI状态变化的节点。                                            |
-| currentUIStates    | number         | 是   | 回调触发时当前的UI状态。<br>可以通过位与运算判断当前包含哪些[UIState](#uistate20)状态。<br>位与运算方法：if (currentState & UIState.PRESSED == UIState.PRESSED)。<br>一般的UIState状态检查可以直接判断：if (currentState == UIState.PRESSED)。                                            |
+| currentUIStates    | ArkTS-Dyn: number<br/>ArkTS-Sta: int         | 是   | 回调触发时当前的UI状态。<br>可以通过位与运算判断当前包含哪些[UIState](#uistate20)状态。<br>位与运算方法：if ((currentUIStates & UIState.PRESSED) == UIState.PRESSED)。<br>当仅需判断当前是否仅处于单个状态时，可以直接判断：if (currentUIStates == UIState.PRESSED)。注意，此方式仅在当前仅有一个状态激活时有效，若需判断多个状态中是否包含某个状态，请使用位与运算。                                            |
 
 ## FrameNode
+
+FrameNode表示组件树的实体节点，支持节点树操作、自定义绘制与布局、位置查询、动画等能力。[NodeController](./js-apis-arkui-nodeController.md)可通过[BuilderNode](./js-apis-arkui-builderNode.md)持有的FrameNode将其挂载到[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)上，也可通过FrameNode获取[RenderNode](./js-apis-arkui-renderNode.md)，挂载到其他FrameNode上。适用于需要通过代码动态创建和管理组件节点树的场景，可实现声明式组件无法直接满足的灵活UI组合与自定义渲染需求。<!--RP2--><!--RP2End-->
+
+> **说明：**
+>
+> - 当前不支持在预览器中使用FrameNode节点。
+>
+> - FrameNode节点暂不支持拖拽。
+>
+> - FrameNode对象不支持使用JSON序列化。
+>
+> - 在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的场景中调用[FrameNode](#framenode-1)对象的接口时，建议使用[UIContext](./arkts-apis-uicontext-uicontext.md)的[runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask)接口明确UI上下文，参考[执行绑定UI实例的闭包](../../ui/arkts-global-interface.md#执行绑定ui实例的闭包)示例。
+>
+> - FrameNode的接口中，仅[Optional](./arkui-ts/ts-universal-attributes-custom-property.md#optionalt)类型的必选参数支持传入null或undefined。
 
 ### constructor
 
@@ -353,7 +391,72 @@ isModifiable(): boolean
 
 | 类型    | 说明                                                                                                                                  |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| boolean | 判断当前节点是否可修改。<br/>true表示当前节点可修改，false表示当前节点不可修改。<br/>当节点为[自定义组件节点](../../ui/arkts-user-defined-node.md#自定义组件节点-framenode)中的系统组件代理节点或节点已经[dispose](#dispose12)时返回false。<br/>当返回false时，当前FrameNode不支持[appendChild](#appendchild12)、[insertChildAfter](#insertchildafter12)、[removeChild](#removechild12)、[clearChildren](#clearchildren12)、[createAnimation](#createanimation20)、[cancelAnimations](#cancelanimations20)的操作。 |
+| boolean | 判断当前节点是否可修改。<br/>true表示当前节点可修改，false表示当前节点不可修改。<br/>当节点为[自定义组件节点](../../ui/arkts-user-defined-node.md#自定义组件节点-framenode)中的系统组件代理节点或节点已经[dispose](#dispose12)时返回false。<br/>当返回false时，当前FrameNode不支持[appendChild](#appendchild12)、[insertChildAfter](#insertchildafter12)、[removeChild](#removechild12)、[clearChildren](#clearchildren12)、[createAnimation](#createanimation20)、[cancelAnimations](#cancelanimations20)、[moveTo](#moveto18)、[addComponentContent](#addcomponentcontent12)、[adoptChild](#adoptchild22)、[removeAdoptedChild](#removeadoptedchild22)的操作。 |
+
+**示例：**
+
+请参考[节点操作示例](#节点操作示例)。
+
+### dispatchInputEvent
+
+dispatchInputEvent(event: InputEventType, competitionStrategy?: CompetitionStrategy): boolean
+
+向当前FrameNode派发输入事件，并可指定竞争策略。支持[TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明)、[MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)和[AxisEvent](arkui-ts/ts-universal-events-axis.md#axisevent)。KeyEvent请使用[dispatchKeyEvent](#dispatchkeyevent)派发。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| event | [InputEventType](./js-apis-arkui-builderNode.md#inputeventtype20) | 是 | 需要派发的输入事件。|
+| competitionStrategy | [CompetitionStrategy](arkui-ts/ts-appendix-enums.md#competitionstrategy24) | 否 | 派发事件的手势竞争策略。CompetitionStrategy.DEFAULT表示非竞争模式（目标组件与当前组件的手势不竞争），适用于当前组件与目标组件各自独立处理手势、无需竞争同一事件的场景；CompetitionStrategy.COMPETITION表示竞争模式（目标组件与当前组件的手势参与竞争），适用于当前组件与目标组件需要竞争同一手势事件的场景。不传入时默认为CompetitionStrategy.DEFAULT（非竞争）。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 是否成功派发事件。返回true表示成功派发事件；返回false表示未成功派发。|
+
+**示例：**
+
+请参考[节点操作示例](#节点操作示例)。
+
+### dispatchKeyEvent
+
+dispatchKeyEvent(event: KeyEvent): boolean
+
+向当前FrameNode派发按键事件。[onKeyPreIme](./arkui-ts/ts-universal-events-key.md#onkeypreime12)不会触发该事件。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| event | [KeyEvent](./arkui-ts/ts-universal-events-key.md#keyevent对象说明) | 是 | 需要派发的按键事件。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 按键事件是否被消费。返回true表示按键事件被消费，不再继续传递；返回false表示未被消费，可继续传递。|
 
 **示例：**
 
@@ -380,7 +483,7 @@ appendChild(node: FrameNode): void
 
 | 参数名 | 类型                    | 必填 | 说明                  |
 | ------ | ----------------------- | ---- | --------------------- |
-| node   | [FrameNode](#framenode-1) | 是   | 需要添加的FrameNode。<br/> node节点不可以为声明式创建的节点，即不可修改的FrameNode。仅有从BuilderNode中获取的声明式节点可以作为子节点。若子节点不符合规格，则抛出异常信息。<br/> node节点不可以拥有父节点，否则抛出异常信息。|
+| node   | [FrameNode](#framenode-1) | 是   | 需要添加的FrameNode。<br/> node节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅[BuilderNode](./js-apis-arkui-builderNode.md)通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。<br/> node节点不可以拥有父节点，否则抛出异常信息。|
 
 **错误码：**
 
@@ -389,7 +492,7 @@ appendChild(node: FrameNode): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'node' is invalid: it cannot be adopted." <br>适用版本：22+ |
 
 **示例：**
 
@@ -399,7 +502,7 @@ appendChild(node: FrameNode): void
 
 insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 
-在FrameNode指定子节点之后添加新的子节点。当前FrameNode如果不可修改，抛出异常信息。
+在FrameNode指定子节点之后添加新的子节点。当前FrameNode如果不可修改，抛出异常信息。[typeNode](./js-apis-arkui-typeNode.md)在insertChildAfter时会校验子组件类型或个数，不满足时抛出异常信息，限制情况请查看[typeNode](./js-apis-arkui-typeNode.md)描述。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -415,7 +518,7 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 
 | 参数名  | 类型                                      | 必填 | 说明                                                                         |
 | ------- | ----------------------------------------- | ---- | ---------------------------------------------------------------------------- |
-| child   | [FrameNode](#framenode-1)                   | 是   | 需要添加的子节点。<br/>child节点不可以为声明式创建的节点，即不可修改的FrameNode。仅有从BuilderNode中获取的声明式节点可以作为子节点。若子节点不符合规格，则抛出异常信息。<br/> child节点不可以拥有父节点，否则抛出异常信息。                                                           |
+| child   | [FrameNode](#framenode-1)                   | 是   | 需要添加的子节点。<br/>child节点不可以为不可修改的FrameNode（例如通过getFrameNodeById等接口获取的声明式组件节点）。仅[BuilderNode](./js-apis-arkui-builderNode.md)通过getFrameNode接口获取的FrameNode可作为声明式子节点添加。若子节点不符合规格，则抛出异常信息。<br/> child节点不可以拥有父节点，否则抛出异常信息。                                                           |
 | sibling | [FrameNode](#framenode-1)&nbsp;\|&nbsp;null | 是   | 新节点将插入到该节点之后。若该参数设置为空，则新节点将插入到首个子节点之前。 |
 
 **错误码：**
@@ -425,7 +528,7 @@ insertChildAfter(child: FrameNode, sibling: FrameNode | null): void
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." |
+| 100025   | The parameter is invalid. Details about the invalid parameter and the reason are included in the error message. For example: "The parameter 'child' is invalid: it cannot be adopted." <br>适用版本：22+ |
 
 **示例：**
 
@@ -745,11 +848,264 @@ ArkTS-Sta: getChildrenCount(): int
 
 | 类型     | 说明                            |
 | -------- | ------------------------------- |
-| ArkTS-Dyn: number <br> ArkTS-Sta: int | 获取当前FrameNode的子节点数量。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 当前FrameNode的子节点数量。 |
 
 **示例：**
 
 请参考[节点操作示例](#节点操作示例)。
+
+### getChildrenCount
+
+getChildrenCount(countMode?: ChildrenCountMode): int;
+
+根据指定的计数模式获取当前FrameNode的子节点数量。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | ---- | -------- |
+| countMode | [ChildrenCountMode](#childrencountmode) | 否 | 子节点计数模式。默认值为ChildrenCountMode.ALL_EXPAND。 |
+
+**返回值：**
+| 类型     | 说明                            |
+| -------- | ------------------------------- |
+| int | 根据计数模式返回的当前FrameNode的子节点数量。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { NodeController, FrameNode, UIContext, BuilderNode, ChildrenCountMode, LengthUnit } from '@kit.ArkUI';
+
+const TEST_TAG: string = 'FrameNode '
+
+// BasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新
+class BasicDataSource implements IDataSource {
+  private listeners: DataChangeListener[] = [];
+  private originDataArray: string[] = [];
+
+  public totalCount(): number {
+    return 0;
+  }
+
+  public getData(index: number): string {
+    return this.originDataArray[index];
+  }
+
+  // 该方法为框架侧调用，为LazyForEach组件向其数据源处添加listener监听
+  registerDataChangeListener(listener: DataChangeListener): void {
+    if (this.listeners.indexOf(listener) < 0) {
+      console.info('add listener');
+      this.listeners.push(listener);
+    }
+  }
+
+  // 该方法为框架侧调用，为对应的LazyForEach组件在数据源处去除listener监听
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+    const pos = this.listeners.indexOf(listener);
+    if (pos >= 0) {
+      console.info('remove listener');
+      this.listeners.splice(pos, 1);
+    }
+  }
+
+  // 通知LazyForEach组件需要重载所有子组件
+  notifyDataReload(): void {
+    this.listeners.forEach(listener => {
+      listener.onDataReloaded();
+    })
+  }
+
+  // 通知LazyForEach组件需要在index对应索引处添加子组件
+  notifyDataAdd(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataAdd(index);
+    })
+  }
+
+  // 通知LazyForEach组件在index对应索引处数据有变化，需要重建该子组件
+  notifyDataChange(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataChange(index);
+    })
+  }
+
+  // 通知LazyForEach组件需要在index对应索引处删除该子组件
+  notifyDataDelete(index: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataDelete(index);
+    })
+  }
+
+  // 通知LazyForEach组件将from索引和to索引处的子组件进行交换
+  notifyDataMove(from: number, to: number): void {
+    this.listeners.forEach(listener => {
+      listener.onDataMove(from, to);
+    })
+  }
+
+  notifyDatasetChange(operations: DataOperation[]): void {
+    this.listeners.forEach(listener => {
+      listener.onDatasetChange(operations);
+    })
+  }
+}
+
+// 自定义数据管理类管理string数组
+class MyDataSource extends BasicDataSource {
+  private dataArray: string[] = []
+
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+
+  public getData(index: number): string {
+    return this.dataArray[index];
+  }
+
+  public addData(index: number, data: string): void {
+    this.dataArray.splice(index, 0, data);
+    this.notifyDataAdd(index);
+  }
+
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+}
+
+class Params {
+  data: MyDataSource | null = null;
+  scroller: Scroller | null = null;
+
+  constructor(data: MyDataSource, scroller: Scroller) {
+    this.data = data;
+    this.scroller = scroller;
+  }
+}
+
+@Builder
+function buildData(params: Params) {
+  List({ scroller: params.scroller }) {
+    LazyForEach(params.data, (item: string) => {
+      ListItem() {
+        Column() {
+          Text(item)
+            .fontSize(20)
+            .onAppear(() => {
+              console.info(`${TEST_TAG} node appear: ${item}`)
+            })
+            .backgroundColor(Color.Pink)
+            .margin({
+              top: 30,
+              bottom: 30,
+              left: 10,
+              right: 10
+            })
+        }
+      }
+      .id(item)
+    }, (item: string) => item)
+  }
+  .cachedCount(5)
+  .listDirection(Axis.Horizontal)
+}
+
+// 继承NodeController实现自定义UI控制器
+class MyNodeController extends NodeController {
+  private rootNode: FrameNode | null = null;
+  private uiContext: UIContext | null = null;
+  private data: MyDataSource = new MyDataSource();
+  private scroller: Scroller = new Scroller();
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    this.uiContext = uiContext;
+    for (let i = 0; i <= 20; i++) {
+      this.data.pushData(`N${i}`);
+    }
+    const params: Params = new Params(this.data, this.scroller);
+    const dataNode: BuilderNode<[Params]> = new BuilderNode(uiContext);
+    dataNode.build(wrapBuilder<[Params]>(buildData), params);
+    this.rootNode = dataNode.getFrameNode();
+    const scrollToIndexOptions: ScrollToIndexOptions = {
+      extraOffset: {
+        value: 20, unit: LengthUnit.VP
+      }
+    };
+    this.scroller.scrollToIndex(6, true, ScrollAlign.START, scrollToIndexOptions);
+    return this.rootNode;
+  }
+
+  getChildCountAllExpand() {
+    const childCount = this.rootNode?.getChildrenCount(ChildrenCountMode.ALL_EXPAND);
+    console.info(TEST_TAG + 'ALL_EXPAND, childCount=' + childCount);
+  }
+
+  getChildCountOnlyExpanded() {
+    const childCount = this.rootNode?.getChildrenCount(ChildrenCountMode.ONLY_EXPANDED);
+    console.info(TEST_TAG + 'ONLY_EXPANDED, childCount=' + childCount);
+  }
+  
+  getChildCountAllNotExpand() {
+    const childCount = this.rootNode?.getChildrenCount(ChildrenCountMode.ALL_NOT_EXPAND);
+    console.info(TEST_TAG + 'ALL_NOT_EXPAND, childCount=' + childCount);
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  private myNodeController: MyNodeController = new MyNodeController();
+  private scroller: Scroller = new Scroller();
+
+  build() {
+    Scroll(this.scroller) {
+      Column({ space: 8 }) {
+        Column() {
+          Text('This is a NodeContainer.')
+            .textAlign(TextAlign.Center)
+            .borderRadius(10)
+            .backgroundColor(0xFFFFFF)
+            .width('100%')
+            .fontSize(16)
+          NodeContainer(this.myNodeController)
+            .borderWidth(1)
+            .width(300)
+            .height(100)
+        }
+
+        Button('getChildCount(ALL_EXPAND)')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getChildCountAllExpand();
+          })
+        Button('getChildCount(ONLY_EXPANDED)')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getChildCountOnlyExpanded();
+          })
+        Button('getChildCount(ALL_NOT_EXPAND)')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.getChildCountAllNotExpand();
+          })
+      }
+      .width('100%')
+    }
+    .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
+  }
+}
+```
 
 ### moveTo<sup>18+</sup>
 
@@ -789,7 +1145,7 @@ ArkTS-Sta: moveTo(targetParent: FrameNode, index?: int): void
 | 错误码ID | 错误信息                          |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
-| 100027   | The current node has been adopted. |
+| 100027   | The current node has been adopted. <br>适用版本：22+ |
 
 **示例：**
 
@@ -824,7 +1180,7 @@ ArkTS-Sta: getPositionToWindow(): NodePosition
 ```ts
 import { NodeController, FrameNode, UIContext } from '@kit.ArkUI';
 
-const TEST_TAG: string = "FrameNode ";
+const TEST_TAG: string = 'FrameNode ';
 
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
@@ -852,13 +1208,12 @@ class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
   private scroller: Scroller = new Scroller();
-  @State index: number = 0;
 
   build() {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
         Column() {
-          Text("This is a NodeContainer.")
+          Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -870,13 +1225,13 @@ struct Index {
             .height(100)
         }
 
-        Button("getPositionToWindow")
+        Button('getPositionToWindow')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToWindow();
           })
       }
-      .width("100%")
+      .width('100%')
     }
     .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
   }
@@ -916,7 +1271,7 @@ ArkTS-Sta: getPositionToParent(): NodePosition
 ```ts
 import { NodeController, FrameNode, UIContext } from '@kit.ArkUI';
 
-const TEST_TAG: string = "FrameNode ";
+const TEST_TAG: string = 'FrameNode ';
 
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
@@ -945,13 +1300,12 @@ class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
   private scroller: Scroller = new Scroller();
-  @State index: number = 0;
 
   build() {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
         Column() {
-          Text("This is a NodeContainer.")
+          Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -963,13 +1317,13 @@ struct Index {
             .height(100)
         }
 
-        Button("getPositionToParent")
+        Button('getPositionToParent')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToParent();
           })
       }
-      .width("100%")
+      .width('100%')
     }
     .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
   }
@@ -1008,7 +1362,7 @@ ArkTS-Sta: getPositionToScreen(): NodePosition
 ```ts
 import { NodeController, FrameNode, UIContext } from '@kit.ArkUI';
 
-const TEST_TAG: string = "FrameNode ";
+const TEST_TAG: string = 'FrameNode ';
 
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
@@ -1037,13 +1391,12 @@ class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
   private scroller: Scroller = new Scroller();
-  @State index: number = 0;
 
   build() {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
         Column() {
-          Text("This is a NodeContainer.")
+          Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -1055,13 +1408,13 @@ struct Index {
             .height(100)
         }
 
-        Button("getPositionToScreen")
+        Button('getPositionToScreen')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToScreen();
           })
       }
-      .width("100%")
+      .width('100%')
     }
     .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
   }
@@ -1078,7 +1431,7 @@ ArkTS-Dyn: getGlobalPositionOnDisplay(): Position
 
 ArkTS-Sta: getGlobalPositionOnDisplay(): NodePosition
 
-获取FrameNode相对于全局屏幕的位置偏移，单位为VP。
+获取FrameNode相对于全局屏幕的位置偏移，单位为VP。与[getPositionToScreen](#getpositiontoscreen12)的坐标系参考不同，请根据实际场景选择使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1107,7 +1460,7 @@ ArkTS-Dyn: getPositionToParentWithTransform(): Position
 
 ArkTS-Sta: getPositionToParentWithTransform(): NodePosition
 
-获取FrameNode相对于父组件带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](./arkui-ts/ts-universal-attributes-transformation.md#transform), [translate](./arkui-ts/ts-universal-attributes-transformation.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于父组件带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](./arkui-ts/ts-universal-attributes-transformation.md#transform)、[translate](./arkui-ts/ts-universal-attributes-transformation.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1123,14 +1476,14 @@ ArkTS-Sta: getPositionToParentWithTransform(): NodePosition
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 节点相对于父组件的位置偏移，单位为VP。 当设置了其他（比如：transform, translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 节点相对于父组件的位置偏移，单位为VP。当设置了其他（比如：transform、translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
 
 **示例：**
 
 ```ts
 import { NodeController, FrameNode, UIContext } from '@kit.ArkUI';
 
-const TEST_TAG: string = "FrameNode ";
+const TEST_TAG: string = 'FrameNode ';
 
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
@@ -1159,13 +1512,12 @@ class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
   private scroller: Scroller = new Scroller();
-  @State index: number = 0;
 
   build() {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
         Column() {
-          Text("This is a NodeContainer.")
+          Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -1177,13 +1529,13 @@ struct Index {
             .height(100)
         }
 
-        Button("getPositionToParentWithTransform")
+        Button('getPositionToParentWithTransform')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToParentWithTransform();
           })
       }
-      .width("100%")
+      .width('100%')
     }
     .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
   }
@@ -1198,7 +1550,7 @@ ArkTS-Dyn: getPositionToWindowWithTransform(): Position
 
 ArkTS-Sta: getPositionToWindowWithTransform(): NodePosition
 
-获取FrameNode相对于窗口带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](./arkui-ts/ts-universal-attributes-transformation.md#transform), [translate](./arkui-ts/ts-universal-attributes-transformation.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于窗口带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](./arkui-ts/ts-universal-attributes-transformation.md#transform)、[translate](./arkui-ts/ts-universal-attributes-transformation.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1214,14 +1566,14 @@ ArkTS-Sta: getPositionToWindowWithTransform(): NodePosition
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 节点相对于窗口的位置偏移，单位为VP。 当设置了其他（比如：transform, translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 节点相对于窗口的位置偏移，单位为VP。当设置了其他（比如：transform、translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
 
 **示例：**
 
 ```ts
 import { NodeController, FrameNode, UIContext } from '@kit.ArkUI';
 
-const TEST_TAG: string = "FrameNode ";
+const TEST_TAG: string = 'FrameNode ';
 
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
@@ -1250,13 +1602,12 @@ class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
   private scroller: Scroller = new Scroller();
-  @State index: number = 0;
 
   build() {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
         Column() {
-          Text("This is a NodeContainer.")
+          Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -1267,13 +1618,13 @@ struct Index {
             .width(300)
             .height(100)
         }
-        Button("getPositionToWindowWithTransform")
+        Button('getPositionToWindowWithTransform')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToWindowWithTransform();
           })
       }
-      .width("100%")
+      .width('100%')
     }
     .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
   }
@@ -1288,7 +1639,7 @@ ArkTS-Dyn: getPositionToScreenWithTransform(): Position
 
 ArkTS-Sta: getPositionToScreenWithWithTransform(): NodePosition
 
-获取FrameNode相对于屏幕带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](./arkui-ts/ts-universal-attributes-transformation.md#transform), [translate](./arkui-ts/ts-universal-attributes-transformation.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
+获取FrameNode相对于屏幕带有绘制属性的位置偏移，单位为VP，绘制属性比如[transform](./arkui-ts/ts-universal-attributes-transformation.md#transform)、[translate](./arkui-ts/ts-universal-attributes-transformation.md#translate)等，返回的坐标是组件布局时左上角变换后的坐标。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1304,14 +1655,14 @@ ArkTS-Sta: getPositionToScreenWithWithTransform(): NodePosition
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 节点相对于屏幕的位置偏移，单位为VP。 当设置了其他（比如：transform, translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 节点相对于屏幕的位置偏移，单位为VP。当设置了其他（比如：transform、translate等）绘制属性，由于浮点数精度的影响，返回值会有微小偏差。 |
 
 **示例：**
 
 ```ts
 import { NodeController, FrameNode, UIContext } from '@kit.ArkUI';
 
-const TEST_TAG: string = "FrameNode ";
+const TEST_TAG: string = 'FrameNode ';
 
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
@@ -1340,13 +1691,12 @@ class MyNodeController extends NodeController {
 struct Index {
   private myNodeController: MyNodeController = new MyNodeController();
   private scroller: Scroller = new Scroller();
-  @State index: number = 0;
 
   build() {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
         Column() {
-          Text("This is a NodeContainer.")
+          Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -1358,13 +1708,13 @@ struct Index {
             .height(100)
         }
 
-        Button("getPositionToScreenWithTransform")
+        Button('getPositionToScreenWithTransform')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToScreenWithTransform();
           })
       }
-      .width("100%")
+      .width('100%')
     }
     .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
   }
@@ -1571,7 +1921,7 @@ ArkTS-Dyn: getUniqueId(): number
 
 ArkTS-Sta: getUniqueId(): int
 
-获取系统分配的唯一标识的节点UniqueID。
+获取系统分配的节点唯一标识（UniqueID）。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1587,7 +1937,7 @@ ArkTS-Sta: getUniqueId(): int
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| ArkTS-Dyn: number <br> ArkTS-Sta: int | 系统分配的唯一标识的节点UniqueID。 |
+| ArkTS-Dyn: number <br> ArkTS-Sta: int | 系统分配的节点唯一标识（UniqueID）。 |
 
 **示例：**
 
@@ -1681,7 +2031,7 @@ isVisible(): boolean
 
 isClipToFrame(): boolean
 
-获取节点是否是剪裁到组件区域。当调用[dispose](#dispose12)解除对实体FrameNode节点的引用关系之后，返回值为true。
+获取节点是否剪裁到组件区域。当调用[dispose](#dispose12)解除对实体FrameNode节点的引用关系之后，返回值为true。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1698,7 +2048,7 @@ isClipToFrame(): boolean
 
 | 类型                                                           | 说明                                                                  |
 | -------------------------------------------------------------- | --------------------------------------------------------------------- |
-| boolean | 节点是否是剪裁到组件区域。<br/>true表示节点剪裁到组件区域，false表示节点不是剪裁到组件区域。 |
+| boolean | 节点是否剪裁到组件区域。<br/>true表示节点剪裁到组件区域，false表示节点未剪裁到组件区域。 |
 
 **示例：**
 
@@ -1735,7 +2085,7 @@ isAttached(): boolean
 
 isDisposed(): boolean
 
-查询当前FrameNode对象是否已解除与后端实体节点的引用关系。前端节点均绑定有相应的后端实体节点，当节点调用dispose接口解除绑定后，再次调用接口可能会出现crash、返回默认值的情况。由于业务需求，可能存在节点在dispose后仍被调用接口的情况。为此，提供此接口以供开发者在操作节点前检查其有效性，避免潜在风险。
+查询当前FrameNode对象是否已解除与后端实体节点的引用关系。前端节点均绑定有相应的后端实体节点，当节点调用dispose接口解除绑定后，再次调用该节点的其他接口可能会出现crash、返回默认值的情况。由于业务需求，可能存在节点在dispose后仍被调用接口的情况。为此，提供此接口以供开发者在操作节点前检查其有效性，避免潜在风险。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -1893,7 +2243,7 @@ dispose(): void
 >
 > - FrameNode对象调用dispose后，由于不对应任何实体FrameNode节点，在调用部分查询接口([getMeasuredSize](#getmeasuredsize12)、[getLayoutPosition](#getlayoutposition12))的时候会导致应用出现jscrash。
 >
-> - 通过[getUniqueId](#getuniqueid12)可以判断当前FrameNode是否对应一个实体FrameNode节点。当UniqueId大于0时表示该对象对应一个实体FrameNode节点。
+> - 通过[getUniqueId](#getuniqueid12)可以判断当前FrameNode是否对应一个实体FrameNode节点。当UniqueID大于0时表示该对象对应一个实体FrameNode节点。
 
 **示例：**
 
@@ -1983,7 +2333,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_dispose](figures/zh-cn_image_dispose.gif)
+![zh-cn_image_dispose](figures/image-dispose.gif)
 
 ### commonAttribute<sup>12+</sup>
 
@@ -2053,6 +2403,8 @@ LazyForEach场景下，由于存在节点的销毁重建，对于重建的节点
 get gestureEvent(): UIGestureEvent
 
 获取FrameNode中持有的UIGestureEvent对象，用于设置组件绑定的手势事件。通过gestureEvent接口设置的手势不会覆盖通过声明式手势接口[（绑定手势事件）](./arkui-ts/ts-gesture-settings.md)绑定的手势，两者同时设置了手势时，优先回调声明式接口设置的手势事件。
+
+LazyForEach场景下，由于存在节点的销毁重建，对于重建的节点需要重新设置手势事件回调才能保证监听事件正常响应。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -2152,7 +2504,7 @@ FrameNode的自定义布局方法，该方法会重写默认布局方法，在Fr
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| position | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 是   | 组件进行布局时使用的位置信息。 |
+| position | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 是   | 组件进行布局时使用的位置信息。单位为PX。 |
 
 **示例：**
 
@@ -2162,7 +2514,7 @@ FrameNode的自定义布局方法，该方法会重写默认布局方法，在Fr
 
 setMeasuredSize(size: Size): void
 
-设置FrameNode的测量后的尺寸，默认单位PX。若设置的宽高为负数，自动取零。
+设置FrameNode的测量后的尺寸，默认单位PX。若设置的宽高为负数，自动取零。建议在[onMeasure](#onmeasure12)方法中调用，用于设置自定义测量的结果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2178,7 +2530,7 @@ setMeasuredSize(size: Size): void
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| size | [Size](./js-apis-arkui-graphics.md#size) | 是   | FrameNode的测量后的尺寸。 |
+| size | [Size](./js-apis-arkui-graphics.md#size) | 是   | FrameNode的测量后的尺寸，单位为PX。 |
 
 **示例：**
 
@@ -2190,7 +2542,7 @@ ArkTS-Dyn: setLayoutPosition(position: Position): void
 
 ArkTS-Sta: setLayoutPosition(position: NodePosition): void
 
-设置FrameNode的布局后的位置，默认单位PX。
+设置FrameNode的布局后的位置，默认单位PX。建议在[onLayout](#onlayout12)方法中调用，用于设置自定义布局的结果。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2206,7 +2558,7 @@ ArkTS-Sta: setLayoutPosition(position: NodePosition): void
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| position | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 是   | FrameNode的布局后的位置。 |
+| position | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 是   | FrameNode的布局后的位置，单位为PX。 |
 
 **示例：**
 
@@ -2260,7 +2612,7 @@ ArkTS-Sta: layout(position: NodePosition): void
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| position | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 是   | 组件进行布局时使用的位置信息。 |
+| position | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 是   | 组件进行布局时使用的位置信息。单位为PX。 |
 
 **示例：**
 
@@ -2270,7 +2622,7 @@ ArkTS-Sta: layout(position: NodePosition): void
 
 setNeedsLayout(): void
 
-该方法会将FrameNode标记为需要布局的状态，下一帧将会进行重新布局。
+该方法会将FrameNode标记为需要布局的状态，下一帧将会进行重新布局，触发[onMeasure](#onmeasure12)和[onLayout](#onlayout12)方法的调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2290,7 +2642,7 @@ setNeedsLayout(): void
 
 invalidate(): void
 
-该方法会触发FrameNode自绘制内容的重新渲染。
+该方法会触发FrameNode自绘制内容的重新渲染，即重新调用[onDraw](#ondraw12)方法进行自绘制。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2356,21 +2708,21 @@ class MyNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     let node = new FrameNode(uiContext)
     node.commonAttribute.width(300).height(300).backgroundColor(Color.Red)
-    let col = typeNode.createNode(uiContext, "Column")
+    let col = typeNode.createNode(uiContext, 'Column')
     col.initialize({ space: 10 })
     node.appendChild(col)
-    let row4 = typeNode.createNode(uiContext, "Row")
-    row4.attribute.width(200)
+    let row = typeNode.createNode(uiContext, 'Row')
+    row.attribute.width(200)
       .height(200)
       .borderWidth(1)
       .borderColor(Color.Black)
       .backgroundColor(Color.Green)
     // 创建组件内容
     let component = new ComponentContent<Object>(uiContext, wrapBuilder(buildText))
-    if (row4.isModifiable()) {
-      // 添加新创建的builderText至row4中
-      row4.addComponentContent(component)
-      col.appendChild(row4)
+    if (row.isModifiable()) {
+      // 添加新创建的builderText至row中
+      row.addComponentContent(component)
+      col.appendChild(row)
     }
     return node
   }
@@ -2647,7 +2999,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_disposeTree](figures/zh-cn_image_disposeTree.gif)
+![zh-cn_image_disposeTree](figures/image-disposeTree.gif)
 
 ### setCrossLanguageOptions<sup>15+</sup>
 
@@ -2657,7 +3009,7 @@ setCrossLanguageOptions(options: CrossLanguageOptions): void
 
 > **说明：**
 >
-> 当前仅支持[Scroll](./js-apis-arkui-typeNode.md#scroll), [Swiper](./js-apis-arkui-typeNode.md#swiper)，[List](./js-apis-arkui-typeNode.md#list)，[ListItem](./js-apis-arkui-typeNode.md#listitem)，[ListItemGroup](./js-apis-arkui-typeNode.md#listitemgroup)，[WaterFlow](./js-apis-arkui-typeNode.md#waterflow)，[FlowItem](./js-apis-arkui-typeNode.md#flowitem)，[Grid](./js-apis-arkui-typeNode.md#grid14)，[GridItem](./js-apis-arkui-typeNode.md#griditem14)，[TextInput](./js-apis-arkui-typeNode.md#textinput)，[TextArea](./js-apis-arkui-typeNode.md#textarea14)，[Column](./js-apis-arkui-typeNode.md#column)，[Row](./js-apis-arkui-typeNode.md#row)，[Stack](./js-apis-arkui-typeNode.md#stack)，[Flex](./js-apis-arkui-typeNode.md#flex)，[RelativeContainer](./js-apis-arkui-typeNode.md#relativecontainer)，[Progress](./js-apis-arkui-typeNode.md#progress)，[LoadingProgress](./js-apis-arkui-typeNode.md#loadingprogress)，[Image](./js-apis-arkui-typeNode.md#image)，[Button](./js-apis-arkui-typeNode.md#button)，[CheckBox](./js-apis-arkui-typeNode.md#checkbox18)，[Radio](./js-apis-arkui-typeNode.md#radio18)，[Slider](./js-apis-arkui-typeNode.md#slider18)，[Toggle](./js-apis-arkui-typeNode.md#toggle18)，[XComponent](./js-apis-arkui-typeNode.md#xcomponent)类型的[TypedFrameNode](#typedframenode12)设置跨ArkTS语言访问选项。
+> 当前仅支持[Scroll](./js-apis-arkui-typeNode.md#scroll)、[Swiper](./js-apis-arkui-typeNode.md#swiper)、[List](./js-apis-arkui-typeNode.md#list)、[ListItem](./js-apis-arkui-typeNode.md#listitem)、[ListItemGroup](./js-apis-arkui-typeNode.md#listitemgroup)、[WaterFlow](./js-apis-arkui-typeNode.md#waterflow)、[FlowItem](./js-apis-arkui-typeNode.md#flowitem)、[Grid](./js-apis-arkui-typeNode.md#grid14)、[GridItem](./js-apis-arkui-typeNode.md#griditem14)、[TextInput](./js-apis-arkui-typeNode.md#textinput)、[TextArea](./js-apis-arkui-typeNode.md#textarea14)、[Column](./js-apis-arkui-typeNode.md#column)、[Row](./js-apis-arkui-typeNode.md#row)、[Stack](./js-apis-arkui-typeNode.md#stack)、[Flex](./js-apis-arkui-typeNode.md#flex)、[RelativeContainer](./js-apis-arkui-typeNode.md#relativecontainer)、[Progress](./js-apis-arkui-typeNode.md#progress)、[LoadingProgress](./js-apis-arkui-typeNode.md#loadingprogress)、[Image](./js-apis-arkui-typeNode.md#image)、[Button](./js-apis-arkui-typeNode.md#button)、[Checkbox](./js-apis-arkui-typeNode.md#checkbox18)、[Radio](./js-apis-arkui-typeNode.md#radio18)、[Slider](./js-apis-arkui-typeNode.md#slider18)、[Toggle](./js-apis-arkui-typeNode.md#toggle18)、[XComponent](./js-apis-arkui-typeNode.md#xcomponent)类型的[TypedFrameNode](#typedframenode12)设置跨ArkTS语言访问选项。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -2733,13 +3085,13 @@ getInteractionEventBindingInfo(eventType: EventQueryType): InteractionEventBindi
 
 | 参数名 | 类型 | 必填 | 说明  |
 | ------------------ | ------------------ | ------------------- | ------------------- |
-| eventType | [EventQueryType](./arkui-ts/ts-appendix-enums.md#eventquerytype19) | 是  | 要查询的交互事件类型。 |
+| eventType | [EventQueryType](./arkui-ts/ts-appendix-enums.md#eventquerytype19) | 是  | 要查询的交互事件类型。例如EventQueryType.ON_CLICK表示查询点击事件的绑定信息，各枚举值的具体含义请参考[EventQueryType](./arkui-ts/ts-appendix-enums.md#eventquerytype19)。 |
 
 **返回值：**
 
 | 类型               | 说明               |
 | ------------------ | ------------------ |
-| [InteractionEventBindingInfo](#interactioneventbindinginfo19)&nbsp;\|&nbsp;undefined | 如果当前节点上绑定了任意交互事件，则返回一个InteractionEventBindingInfo对象，指示事件绑定详细信息，如果没有绑定任何交互事件则返回undefined。 |
+| [InteractionEventBindingInfo](#interactioneventbindinginfo19)&nbsp;\|&nbsp;undefined | 如果当前节点上绑定了所查询类型的交互事件，则返回一个InteractionEventBindingInfo对象，指示事件绑定详细信息，如果没有绑定所查询类型的交互事件则返回undefined。 |
 
 **示例：**
 
@@ -2749,7 +3101,7 @@ getInteractionEventBindingInfo(eventType: EventQueryType): InteractionEventBindi
 
 recycle(): void
 
-全局复用场景下，触发子组件回收，彻底释放FrameNode后端资源，以便于资源的重新复用，确保后端资源能够被有效回收并再次使用。
+全局复用场景下，触发子组件回收，彻底释放FrameNode后端资源，以便于通过[reuse](#reuse18)方法实现资源的重新复用，确保后端资源能够被有效回收并再次使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -2807,9 +3159,9 @@ ArkTS-Sta: addSupportedUIStates(uiStates: int, statesChangeHandler: UIStatesChan
 
 | 参数名   | 类型                      | 必填 | 说明                                                     |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| uiStates    | number | 是   | 需要处理目标节点的UI状态。<br>可以通过位或计算同时指定设置多个状态，如：targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED。                                       |
+| uiStates    | number | 是   | 需要处理目标节点的UI状态。<br>可以通过位或计算同时指定多个状态，如：targetUIStates = UIState.PRESSED &nbsp;\|&nbsp; UIState.FOCUSED。                                       |
 | statesChangeHandler | [UIStatesChangeHandler](#uistateschangehandler20) | 是   | 状态变化时的回调函数。                                           |
-| excludeInner  | boolean | 否   | 禁止内部默认状态样式处理的标志，默认值为false。<br> true表示禁止内部默认状态样式处理，false不禁止内部默认状态样式处理。 |
+| excludeInner  | boolean | 否   | 禁止内部默认状态样式处理的标志，默认值为false。内部默认状态样式处理指组件自身内置的状态样式响应（如Button按下时的默认视觉反馈）。<br> true表示禁止内部默认状态样式处理，false表示不禁止内部默认状态样式处理。 |
 
 **示例：**
 
@@ -2867,8 +3219,8 @@ ArkTS-Sta: createAnimation(property: AnimationPropertyType, startValue: double[]
 | 参数名  | 类型 | 必填 | 说明                                                     |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
 | property  | [AnimationPropertyType](./arkui-ts/ts-appendix-enums.md#animationpropertytype20) | 是   | 动画属性枚举。 |
-| startValue  | Optional\<number[]> | 是 | 动画属性的起始值。取值为undefined或数组，取值为数组时数组长度需要和属性枚举匹配。如果为undefined则表示不显式指定动画初值，节点上一次设置的属性终值为此次动画的起点值。如果取值为数组，<br/>- 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br/>- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。<br/>- 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]。<br/>当节点上从未设置过该属性时，需要显式指定startValue才能正常创建动画。当节点上已经设置过属性（如第二次及之后创建动画），则推荐不显式指定startValue或者显式指定startValue为上一次的终值，表示使用上一次的终值作为新的动画起点，避免起始值跳变。 |
-| endValue  | number[] | 是 | 动画属性的终止值。取值为数组，数组长度需要和属性枚举匹配。<br/>- 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br/>- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。<br/>- 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]。 |
+| startValue  | [Optional](./arkui-ts/ts-universal-attributes-custom-property.md#optionalt)\<number[]> | 是 | 动画属性的起始值。取值为undefined或数组，取值为数组时数组长度需要和属性枚举匹配。如果为undefined则表示不显式指定动画初值，节点上一次设置的属性终值为此次动画的起点值。如果取值为数组，<br/>- 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br/>- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。<br/>- 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]，超出范围的值会被钳位到[0, 1]，动画正常创建。<br/>当节点上从未设置过该属性时，需要显式指定startValue才能正常创建动画。当节点上已经设置过属性（如第二次及之后创建动画），则推荐不显式指定startValue或者显式指定startValue为上一次的终值，表示使用上一次的终值作为新的动画起点，避免起始值跳变。 |
+| endValue  | number[] | 是 | 动画属性的终止值。取值为数组，数组长度需要和属性枚举匹配。<br/>- 对于AnimationPropertyType.ROTATION，取值格式为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，取值格式为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br/>- 对于AnimationPropertyType.SCALE，取值格式为[scaleX, scaleY]，表示x、y方向的缩放比例。<br/>- 对于AnimationPropertyType.OPACITY，取值格式为[opacity]，表示不透明度。opacity的取值范围为[0, 1]，超出范围的值会被钳位到[0, 1]，动画正常创建。 |
 | param  | [AnimateParam](./arkui-ts/ts-explicit-animation.md#animateparam对象说明) | 是 | 动画参数。包含时长、动画曲线、结束回调等参数。 |
 
 **返回值：**
@@ -2908,7 +3260,7 @@ cancelAnimations(properties: AnimationPropertyType[]): boolean
 
 | 类型               | 说明               |
 | ------------------ | ------------------ |
-| boolean | 表示动画是否取消成功。<br/>返回值为true：动画取消成功。<br/>返回值为false：动画取消失败。<br/>可能导致动画取消失败的原因：<br/>&nbsp;1. 节点已经释放，调用过[dispose](#dispose12)方法。<br/>&nbsp;2. 对于系统组件的代理节点，即对于[isModifiable](#ismodifiable12)为false的节点，调用该接口会失败。<br/>&nbsp;3. 属性枚举数组存在非法枚举值。<br/>&nbsp;4. 系统异常。如发生ipc异常导致动画取消失败。<br/>&nbsp;1. 即使属性上没有动画，尝试取消该属性的动画，在无系统异常情况下调用取消接口也会返回true。<br/>&nbsp;2. 如果开发者保证传入参数合法且节点正常，返回false时表明发生了系统异常。此时开发者可隔一段时间后再次尝试取消，或通过调用duration为0的[createAnimation](#createanimation20)接口停止属性上的动画。|
+| boolean | 表示动画是否取消成功。<br/>返回值为true：动画取消成功。<br/>返回值为false：动画取消失败。<br/>可能导致动画取消失败的原因：<br/>&nbsp;1. 节点已经释放，调用过[dispose](#dispose12)方法。<br/>&nbsp;2. 对于系统组件的代理节点，即对于[isModifiable](#ismodifiable12)为false的节点，调用该接口会失败。<br/>&nbsp;3. 属性枚举数组存在非法枚举值。<br/>&nbsp;4. 系统异常。如发生ipc异常导致动画取消失败。<br/>补充说明：<br/>&nbsp;1. 即使属性上没有动画，尝试取消该属性的动画，在无系统异常情况下调用取消接口也会返回true。<br/>&nbsp;2. 如果开发者保证传入参数合法且节点正常，返回false时表明发生了系统异常。此时开发者可隔一段时间后再次尝试取消，或通过调用duration为0的[createAnimation](#createanimation20)接口停止属性上的动画。|
 
 **示例：**
 
@@ -2942,7 +3294,7 @@ ArkTS-Sta: getNodePropertyValue(property: AnimationPropertyType): double[]
 
 | 类型               | 说明               |
 | ------------------ | ------------------ |
-| number[] | 表示渲染节点上的属性值，返回的数组长度与属性枚举相关，异常时返回空数组。<br/>对不同属性枚举的返回值格式：<br/>- 当节点已经释放，调用过[dispose](#dispose12)方法，或者属性枚举非法时，返回长度为0的空数组。<br/>- 对于AnimationPropertyType.ROTATION，返回值为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，返回值为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br/>- 对于AnimationPropertyType.SCALE，返回值为[scaleX, scaleY]，表示x、y方向的缩放比例。<br/>- 对于AnimationPropertyType.OPACITY，返回值为[opacity]，表示不透明度。<br/>1. 动画正常取消后，节点上的属性值被恢复为取消时的值，通过该接口可以获取取消后的显示值。<br/>2. 动画期间该接口的返回值为该属性的终值，而不是动画过程的实时值。<br/>|
+| number[] | 表示FrameNode上的属性值，返回的数组长度与属性枚举相关，异常时返回空数组。<br/>对不同属性枚举的返回值格式：<br/>- 当节点已经释放，调用过[dispose](#dispose12)方法，或者属性枚举非法时，返回长度为0的空数组。<br/>- 对于AnimationPropertyType.ROTATION，返回值为[rotationX, rotationY, rotationZ]，单位为度（°），表示绕x、y、z轴的旋转角。<br/>- 对于AnimationPropertyType.TRANSLATION，返回值为[translateX, translateY]，单位为px，表示沿x、y轴的平移量。<br/>- 对于AnimationPropertyType.SCALE，返回值为[scaleX, scaleY]，表示x、y方向的缩放比例。<br/>- 对于AnimationPropertyType.OPACITY，返回值为[opacity]，表示不透明度。<br/>1. 动画正常取消后，节点上的属性值被恢复为取消时的值，通过该接口可以获取取消后的显示值。<br/>2. 动画期间该接口的返回值为该属性的终值，而不是动画过程的实时值。<br/>|
 
 **示例：**
 
@@ -2979,7 +3331,7 @@ import { FrameNode, NodeController, typeNode, NodeContent } from '@kit.ArkUI';
 // 继承NodeController实现自定义NodeAdapter控制器
 class MyNodeAdapterController extends NodeController {
   rootNode: FrameNode | null = null;
-  imageUrl: string = "";
+  imageUrl: string = '';
 
   constructor(imageUrl: string) {
     super();
@@ -2987,7 +3339,7 @@ class MyNodeAdapterController extends NodeController {
   }
 
   makeNode(uiContext: UIContext): FrameNode | null {
-    let imageNode = typeNode.createNode(uiContext, "Image");
+    let imageNode = typeNode.createNode(uiContext, 'Image');
     imageNode.initialize($r(this.imageUrl))
     imageNode.attribute.syncLoad(true).width(100).height(100);
     // 强制当前帧内即时节点更新，避免出现切换闪烁
@@ -3003,7 +3355,7 @@ struct NodeComponent3 {
 
   aboutToAppear(): void {
     const uiContext = this.getUIContext();
-    let imageNode = typeNode.createNode(uiContext, "Image");
+    let imageNode = typeNode.createNode(uiContext, 'Image');
     imageNode.initialize($r('app.media.startIcon'))
     imageNode.attribute.syncLoad(true).width(100).height(100);
     imageNode.invalidateAttributes();
@@ -3022,7 +3374,7 @@ struct NodeComponent4 {
 
   aboutToAppear(): void {
     const uiContext = this.getUIContext();
-    let imageNode = typeNode.createNode(uiContext, "Image");
+    let imageNode = typeNode.createNode(uiContext, 'Image');
     imageNode.initialize($r('app.media.startIcon'))
     imageNode.attribute.syncLoad(true).width(100).height(100);
     imageNode.invalidateAttributes();
@@ -3042,7 +3394,7 @@ struct ListNodeTest {
 
   build() {
     Column() {
-      Text("ListNode Adapter");
+      Text('ListNode Adapter');
       if (this.flag) {
         NodeComponent3()
       } else {
@@ -3067,16 +3419,34 @@ struct ListNodeTest {
       })
     }
     .borderWidth(1)
-    .width("100%")
+    .width('100%')
   }
 }
 ```
+
+### isMinimized
+
+isMinimized(): boolean
+
+用于查询当前FrameNode是否为轻量化的FrameNode，轻量化的FrameNode占用的内存更小，但是不支持除了isMinimized以外的任何接口调用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型               | 说明               |
+| ------------------ | ------------------ |
+| boolean | 返回当前FrameNode是否为轻量化的FrameNode，true表示当前FrameNode为轻量化的FrameNode，false表示当前FrameNode不是轻量化的FrameNode |
 
 ### adoptChild<sup>22+</sup>
 
 adoptChild(child: FrameNode): void
 
-当前节点接纳目标节点为附属节点。被接纳的附属节点不能已有父节点。调用该接口实际上不会将其添加为子节点，而是仅允许其接收对应子节点的生命周期回调。
+当前节点接纳目标节点为附属节点。当前FrameNode如果不可修改，抛出异常信息。被接纳的附属节点不能已有父节点。调用该接口实际上不会将目标节点添加为子节点，而是仅允许当前节点接收该附属节点的生命周期回调。使用场景：当需要监听某个节点的生命周期回调但不希望改变其父子关系或组件树结构时，可通过该接口接纳其为附属节点。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -3092,7 +3462,7 @@ adoptChild(child: FrameNode): void
 
 | 参数名  | 类型 | 必填 | 说明                                                     |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| child | [FrameNode](#framenode-1) | 是   | 指定待被接纳的节点。 |
+| child | [FrameNode](#framenode-1) | 是   | 指定待被接纳的节点。child节点不可以拥有父节点，否则抛出异常信息。 |
 
 **错误码：**
 
@@ -3112,7 +3482,7 @@ adoptChild(child: FrameNode): void
 
 removeAdoptedChild(child: FrameNode): void
 
-移除被接纳的目标附属节点。
+移除被接纳的目标附属节点。当前FrameNode如果不可修改，抛出异常信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -3128,7 +3498,7 @@ removeAdoptedChild(child: FrameNode): void
 
 | 参数名  | 类型 | 必填 | 说明                                                     |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| child | [FrameNode](#framenode-1) | 是   | 正在被接纳的节点。 |
+| child | [FrameNode](#framenode-1) | 是   | 已被接纳的目标附属节点。 |
 
 **错误码：**
 
@@ -3166,14 +3536,14 @@ ArkTS-Sta: convertPosition(position: NodePosition, targetNode: FrameNode): NodeP
 
 | 参数名  | 类型 | 必填 | 说明                                                     |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| position | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 是   | 当前节点坐标系中的相对坐标。 |
-| targetNode  | [FrameNode](#framenode-1) | 是   | 本次坐标转换的目标节点，转换得到的点坐标就是该节点坐标系中的相对坐标。 |
+| position | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 是   | 当前节点坐标系中的相对坐标。单位为VP。 |
+| targetNode  | [FrameNode](#framenode-1) | 是   | 本次坐标转换的目标节点，转换得到的点坐标就是该节点坐标系中的相对坐标。targetNode节点不可以为已释放的节点，且需与当前节点存在共同祖先节点，否则抛出异常信息。 |
 
 **返回值：**
 
 | 类型               | 说明               |
 | ------------------ | ------------------ |
-| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 目标节点局部坐标系中的转换坐标。 |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 目标节点局部坐标系中的转换坐标，单位为VP。 |
 
 **错误码：**
 
@@ -3193,7 +3563,7 @@ struct ConvertPositionTestOnly {
   private uiContext: UIContext = this.getUIContext();
   @State message: string = 'Hello World';
   @State nodeAOk: boolean = false;
-  @State nodeBOK: boolean = false;
+  @State nodeBOk: boolean = false;
 
   build() {
     Column() {
@@ -3210,7 +3580,7 @@ struct ConvertPositionTestOnly {
           .fontSize($r('app.float.page_text_font_size'))
           .fontWeight(FontWeight.Bold)
           .onAppear(() => {
-            this.nodeBOK = true
+            this.nodeBOk = true
           })
 
       }
@@ -3227,7 +3597,7 @@ struct ConvertPositionTestOnly {
   }
 
   private runBasicTest() {
-    if (!this.nodeAOk || !this.nodeBOK) {
+    if (!this.nodeAOk || !this.nodeBOk) {
       return
     }
 
@@ -3243,10 +3613,9 @@ struct ConvertPositionTestOnly {
       return;
     }
 
-    const testPoint: Position = { x: 10, y: 10 };
     const result: Position | undefined = nodeA.convertPosition({ x: 30, y: 10 }, nodeB); // 显式声明可能返回undefined
     if (result === undefined) {
-      console.info("convertPosition 转换失败，返回 undefined");
+      console.info('convertPosition 转换失败，返回 undefined');
       return;
     }
     console.info(`输出: (${result.x}, ${result.y})`);
@@ -3255,11 +3624,11 @@ struct ConvertPositionTestOnly {
 }
 ```
 
- ### isInRenderState<sup>23+</sup>
+### isInRenderState<sup>23+</sup>
 
- isInRenderState(): boolean
+isInRenderState(): boolean
 
- 获取节点是否处于渲染状态，如果一个节点的对应RenderNode在渲染树上，则处于渲染状态。
+获取节点是否处于渲染状态，如果一个节点的对应RenderNode在渲染树上，则处于渲染状态。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -3291,7 +3660,7 @@ struct Index {
 
   // 监听状态变化后打印是否处于渲染状态
   change() {
-    let buttonNode = this.getUIContext().getFrameNodeById("testButton");
+    let buttonNode = this.getUIContext().getFrameNodeById('testButton');
     if (buttonNode == null) {
       return;
     }
@@ -3323,17 +3692,17 @@ struct Index {
       }
       .width('30%')
       .alignSelf(ItemAlign.Center)
-      .height("10%")
+      .height('10%')
       .onReachEnd(() => {
-        let textNode8 = this.getUIContext().getFrameNodeById("hello8");
+        let textNode8 = this.getUIContext().getFrameNodeById('hello8');
         if (textNode8 != null) {
           let isOnRenderTree = textNode8!.isInRenderState();
           hilog.info(1, 'frameNode', 'is hello8 on RenderTree: %{public}s', isOnRenderTree);
         }
-        let textNode1 = this.getUIContext().getFrameNodeById("hello1");
+        let textNode1 = this.getUIContext().getFrameNodeById('hello1');
         if (textNode1 != null) {
           let isOnRenderTree = textNode1!.isInRenderState();
-          isOnRenderTree ? this.message = 'is on render tree' : 'is not on render tree'
+          if (isOnRenderTree) { this.message = 'is on render tree'; }
           hilog.info(1, 'frameNode', 'is hello1 on RenderTree: %{public}s', isOnRenderTree);
         }
       })
@@ -3349,7 +3718,7 @@ struct Index {
 
 isOnMainTree(): boolean
 
-查询节点是否被挂载到主节点树上。
+查询节点是否被挂载到主节点树上。与[isAttached](#isattached12)均用于判断节点是否挂载到主节点树上，区别在于本接口在节点已调用[dispose](#dispose12)解除引用时会抛出错误码100026，开发者可根据是否需要节点dispose时的错误码校验（即抛出错误码100026）来选择使用本接口或[isAttached](#isattached12)接口。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -3381,7 +3750,7 @@ isOnMainTree(): boolean
 import { NodeController, FrameNode, UIContext, typeNode } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const TEST_TAG: string = 'FrameNode '
+const TEST_TAG: string = 'FrameNode ';
 
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
@@ -3442,7 +3811,7 @@ class MyNodeController extends NodeController {
   removeChild(index: number) {
     let childNode = this.rootNode!.getChild(index);
     if (childNode == null) {
-      console.info(`${TEST_TAG} getchild at index {${index}} : fail`);
+      console.error(`${TEST_TAG} getchild at index {${index}} : fail`);
       return;
     }
     this.rootNode!.removeChild(childNode);
@@ -3465,29 +3834,29 @@ class MyNodeController extends NodeController {
     if (this.rootNode!.getFirstChild() === this.frameNode) {
       console.info(`${TEST_TAG} getFirstChild result: success. The first child of the rootNode is equals to frameNode.`);
     } else {
-      console.info(`${TEST_TAG} getFirstChild result: fail. The first child of the rootNode is not equals to frameNode.`);
+      console.error(`${TEST_TAG} getFirstChild result: fail. The first child of the rootNode is not equals to frameNode.`);
     }
     if (this.frameNode!.getChild(5) === this.frameNode!.getChild(4)!.getNextSibling()) {
       console.info(`${TEST_TAG} getNextSibling result: success.`);
     } else {
-      console.info(`${TEST_TAG} getNextSibling result: fail.`);
+      console.error(`${TEST_TAG} getNextSibling result: fail.`);
     }
     if (this.frameNode!.getChild(3) === this.frameNode!.getChild(4)!.getPreviousSibling()) {
       console.info(`${TEST_TAG} getPreviousSibling result: success.`);
     } else {
-      console.info(`${TEST_TAG} getPreviousSibling result: fail.`);
+      console.error(`${TEST_TAG} getPreviousSibling result: fail.`);
     }
     if (this.rootNode!.getFirstChild() !== null && this.rootNode!.getFirstChild()!.getParent() === this.rootNode) {
       console.info(`${TEST_TAG} getParent result: success.`);
     } else {
-      console.info(`${TEST_TAG} getParent result: fail.`);
+      console.error(`${TEST_TAG} getParent result: fail.`);
     }
-    if (this.rootNode!.getParent() !== undefined || this.rootNode!.getParent() !== null) {
+    if (this.rootNode!.getParent() !== null) {
       console.info(`${TEST_TAG} get ArkTsNode success.`)
       console.info(`${TEST_TAG} check rootNode whether is modifiable ${this.rootNode!.isModifiable()}`)
       console.info(`${TEST_TAG} check getParent whether is modifiable ${this.rootNode!.getParent()!.isModifiable()}`)
     } else {
-      console.info(`${TEST_TAG} get ArkTsNode fail.`);
+      console.error(`${TEST_TAG} get ArkTsNode fail.`);
     }
   }
 
@@ -3498,11 +3867,11 @@ class MyNodeController extends NodeController {
       if (this.rootNode!.getChild(0) === currentNode) {
         console.info(`${TEST_TAG} moveTo result: success.`);
       } else {
-        console.info(`${TEST_TAG} moveTo result: fail.`);
+        console.error(`${TEST_TAG} moveTo result: fail.`);
       }
     } catch (err) {
-      console.info(`${TEST_TAG} ${(err as BusinessError).code} : ${(err as BusinessError).message}`);
-      console.info(`${TEST_TAG} moveTo result: fail.`);
+      console.error(`${TEST_TAG} ${(err as BusinessError).code} : ${(err as BusinessError).message}`);
+      console.error(`${TEST_TAG} moveTo result: fail.`);
     }
   }
 
@@ -3940,13 +4309,13 @@ ArkTS-Sta: convertPositionToWindow(positionByLocal: NodePosition): NodePosition
 
 | 参数名  | 类型 | 必填 | 说明                                                     |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| positionByLocal | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 是   | 当前节点坐标系中的相对坐标。 |
+| positionByLocal | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 是   | 当前节点坐标系中的相对坐标。单位为VP。 |
 
 **返回值：**
 
 | 类型               | 说明               |
 | ------------------ | ------------------ |
-| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 当前节点所在窗口的坐标系中的转换坐标。 |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 当前节点所在窗口的坐标系中的转换坐标，单位为VP。 |
 
 **错误码：**
 
@@ -3983,13 +4352,13 @@ ArkTS-Sta: convertPositionFromWindow(positionByWindow: NodePosition): NodePositi
 
 | 参数名  | 类型 | 必填 | 说明                                                     |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| positionByWindow | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 是   | 当前节点所在窗口的坐标系中的相对坐标。 |
+| positionByWindow | ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 是   | 当前节点所在窗口的坐标系中的相对坐标。单位为VP。 |
 
 **返回值：**
 
 | 类型               | 说明               |
 | ------------------ | ------------------ |
-| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 当前节点坐标系中的转换坐标。 |
+| ArkTS-Dyn: [Position](./js-apis-arkui-graphics.md#position)<br/>ArkTS-Sta: [NodePosition](./js-apis-arkui-graphics.md#nodeposition23) | 当前节点坐标系中的转换坐标，单位为VP。 |
 
 **错误码：**
 
@@ -4066,7 +4435,7 @@ struct Index {
         .borderWidth(1)
         .width(300)
         .height(300)
-    }.width("100%")
+    }.width('100%')
   }
 }
 ```
@@ -4149,7 +4518,7 @@ struct Index {
         .borderWidth(1)
         .width(300)
         .height(300)
-    }.width("100%")
+    }.width('100%')
   }
 }
 ```
@@ -4233,20 +4602,18 @@ struct Index {
         .borderWidth(1)
         .width(300)
         .height(300)
-    }.width("100%")
+    }.width('100%')
   }
 }
 ```
 
 ## TypedFrameNode<sup>12+</sup>
 
-TypedFrameNode继承自[FrameNode](#framenode-1)，用于声明具体类型的FrameNode。
+TypedFrameNode继承自[FrameNode](#framenode-1)，用于声明具体类型的FrameNode，支持Text、Image、Button、Column等多种组件类型，适用于通过代码动态创建具体类型组件节点的场景。
 
 ### 属性
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -4256,12 +4623,12 @@ TypedFrameNode继承自[FrameNode](#framenode-1)，用于声明具体类型的Fr
 
 | 名称       | 类型 | 只读 | 可选 | 说明                                                         |
 | ---------- | ---- | ---- | ---- | ------------------------------------------------------------ |
-| initialize | C    | 否   | 否   | 该接口用于创建对应组件的构造参数，用于设置/更新组件的初始值。 |
-| attribute  | T    | 是   | 否   | 该接口用于获取对应组件的属性设置对象，用于设置/更新组件的通用、私有属性。 |
+| initialize | C    | 否   | 否   | 该接口用于传入对应组件的构造参数，以设置/更新组件的初始值。<br/> **模型约束：** 此接口仅可在Stage模型下使用。|
+| attribute  | T    | 是   | 否   | 该接口用于获取对应组件的属性设置对象，以设置/更新组件的通用、私有属性。<br/> **模型约束：** 此接口仅可在Stage模型下使用。|
 
 > **说明：**
 >
-> [commonAttribute](#commonattribute12)仅在CustomFrameNode上生效，TypedFrameNode上commonAttribute行为未定义。建议使用[attribute](#属性)接口而非[commonAttribute](#commonattribute12)接口进行通用属性设置，如node.attribute.backgroundColor(Color.Pink)。
+> [commonAttribute](#commonattribute12)仅在FrameNode上生效，TypedFrameNode上commonAttribute行为未定义。建议使用[attribute](#属性)接口而非[commonAttribute](#commonattribute12)接口进行通用属性设置，如node.attribute.backgroundColor(Color.Pink)。
 
 ## TypedFrameNode<sup>23+</sup>
 
@@ -4293,11 +4660,11 @@ get attribute(): T
 
 ## NodeAdapter<sup>12+</sup>
 
-NodeAdapter提供FrameNode的数据懒加载能力，通过[LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md)实现接口功能。
+NodeAdapter提供FrameNode的数据懒加载能力，通过[LazyForEach](./arkui-ts/ts-rendering-control-lazyforeach.md)实现接口功能。适用于长列表等需要按需加载节点数据的场景，可提升渲染性能并降低内存占用。
 
 > **说明：**
 >
-> 入参不能为负数，入参为负数时不做处理。
+> NodeAdapter各方法中的数值入参（如start、count、from、to）不能为负数，入参为负数时不做处理。
 
 **示例：**
 
@@ -4385,7 +4752,7 @@ ArkTS-Sta:  get totalNodeCount(): int
 
 reloadAllItems(): void
 
-重新加载全部数据操作。实际调用了LazyForEach中的[OnDataReloaded](./arkui-ts/ts-rendering-control-lazyforeach.md#ondatareloaded)接口通知组件重新加载所有数据。
+重新加载全部数据操作。实际调用了LazyForEach中的[onDataReloaded](./arkui-ts/ts-rendering-control-lazyforeach.md#ondatareloaded)接口通知组件重新加载所有数据。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4517,7 +4884,7 @@ getAllAvailableItems(): Array&lt;FrameNode&gt;
 
 | 类型                     | 说明                 |
 | ----------------- | ------------ |
-| Array&lt;FrameNode&gt; | FrameNode数据节点集合。 |
+| Array&lt;[FrameNode](#framenode-1)&gt; | FrameNode数据节点集合。 |
 
 ### onAttachToNode<sup>12+</sup>
 
@@ -4541,7 +4908,7 @@ FrameNode绑定NodeAdapter时回调。
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| target | FrameNode | 是   | 绑定NodeAdapter的FrameNode节点。 |
+| target | [FrameNode](#framenode-1) | 是   | 绑定NodeAdapter的FrameNode节点。 |
 
 ### onDetachFromNode<sup>12+</sup>
 
@@ -4619,7 +4986,7 @@ ArkTS-Sta: onCreateChild(index: int): FrameNode
 
 | 类型                     | 说明                 |
 | ----------------- | ------------ |
-| FrameNode | 返回开发者创建的FrameNode节点。 |
+| [FrameNode](#framenode-1) | 返回开发者创建的FrameNode节点。 |
 
 ### onDisposeChild<sup>12+</sup>
 
@@ -4644,7 +5011,7 @@ ArkTS-Sta: onDisposeChild(id: int, node: FrameNode): void
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
 | id | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 即将销毁的子节点id。 |
-| node | FrameNode | 是   | 即将销毁的FrameNode节点。 |
+| node | [FrameNode](#framenode-1) | 是   | 即将销毁的FrameNode节点。 |
 
 ### onUpdateChild<sup>12+</sup>
 
@@ -4669,7 +5036,7 @@ ArkTS-Sta: onUpdateChild(id: int, node: FrameNode): void
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
 | id | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是   | 复用节点的id。 |
-| node | FrameNode | 是   | 被复用的FrameNode节点。 |
+| node | [FrameNode](#framenode-1) | 是   | 被复用的FrameNode节点。 |
 
 ### attachNodeAdapter<sup>12+</sup>
 
@@ -4696,7 +5063,7 @@ static attachNodeAdapter(adapter: NodeAdapter, node: FrameNode): boolean
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
 | adapter | [NodeAdapter](#nodeadapter12) | 是   | 定义懒加载的NodeAdapter类。 |
-| node | FrameNode | 是   | 绑定的FrameNode节点。 |
+| node | [FrameNode](#framenode-1) | 是   | 绑定的FrameNode节点。 |
 
 **返回值：**
 
@@ -4724,13 +5091,13 @@ static detachNodeAdapter(node: FrameNode): void
 
 | 参数名  | 类型                                                   | 必填 | 说明             |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| node | FrameNode | 是   | 要解除绑定的FrameNode节点。 |
+| node | [FrameNode](#framenode-1) | 是   | 要解除绑定的FrameNode节点。 |
 
 ### isDisposed<sup>20+</sup>
 
 isDisposed(): boolean
 
-查询当前NodeAdapter对象是否已解除与后端实体节点的引用关系。前端节点均绑定有相应的后端实体节点，当节点调用dispose接口解除绑定后，再次调用接口可能会出现crash、返回默认值的情况。由于业务需求，可能存在节点在dispose后仍被调用接口的情况。为此，提供此接口以供开发者在操作节点前检查其有效性，避免潜在风险。
+查询当前NodeAdapter对象是否已解除与后端实体节点的引用关系。前端节点均绑定有相应的后端实体节点，当节点调用dispose接口解除绑定后，再次调用该节点的其他接口可能会出现crash、返回默认值的情况。由于业务需求，可能存在节点在dispose后仍被调用接口的情况。为此，提供此接口以供开发者在操作节点前检查其有效性，避免潜在风险。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -4753,11 +5120,16 @@ isDisposed(): boolean
 请参考[检验NodeAdapter是否有效示例](#检验nodeadapter是否有效示例)。
 
 ## 节点操作示例
+
+该示例通过[dispatchInputEvent](#dispatchinputevent)接口向子节点派发触摸事件，通过[dispatchKeyEvent](#dispatchkeyevent)接口向子节点派发按键事件。
+
+从API版本26.1.0开始，新增[dispatchInputEvent](#dispatchinputevent)、[dispatchKeyEvent](#dispatchkeyevent)接口。
+
 ```ts
 import { NodeController, FrameNode, UIContext, typeNode } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-const TEST_TAG: string = "FrameNode "
+const TEST_TAG: string = 'FrameNode '
 
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
@@ -4786,7 +5158,7 @@ class MyNodeController extends NodeController {
     }
 
     // 创建Stack容器节点
-    let stackNode = typeNode.createNode(uiContext, "Stack");
+    let stackNode = typeNode.createNode(uiContext, 'Stack');
     this.frameNode.appendChild(stackNode);
     return this.rootNode;
   }
@@ -4826,7 +5198,7 @@ class MyNodeController extends NodeController {
   removeChild(index: number) {
     let childNode = this.rootNode!.getChild(index);
     if (childNode == null) {
-      console.info(`${TEST_TAG} getchild at index {${index}} : fail`);
+      console.error(`${TEST_TAG} getchild at index {${index}} : fail`);
       return;
     }
     this.rootNode!.removeChild(childNode);
@@ -4852,29 +5224,29 @@ class MyNodeController extends NodeController {
     if (this.rootNode!.getFirstChild() === this.frameNode) {
       console.info(`${TEST_TAG} getFirstChild result: success. The first child of the rootNode is equals to frameNode.`);
     } else {
-      console.info(`${TEST_TAG} getFirstChild result: fail. The first child of the rootNode is not equals to frameNode.`);
+      console.error(`${TEST_TAG} getFirstChild result: fail. The first child of the rootNode is not equals to frameNode.`);
     }
     if (this.frameNode!.getChild(5) === this.frameNode!.getChild(4)!.getNextSibling()) {
       console.info(`${TEST_TAG} getNextSibling result: success.`);
     } else {
-      console.info(`${TEST_TAG} getNextSibling result: fail.`);
+      console.error(`${TEST_TAG} getNextSibling result: fail.`);
     }
     if (this.frameNode!.getChild(3) === this.frameNode!.getChild(4)!.getPreviousSibling()) {
       console.info(`${TEST_TAG} getPreviousSibling result: success.`);
     } else {
-      console.info(`${TEST_TAG} getPreviousSibling result: fail.`);
+      console.error(`${TEST_TAG} getPreviousSibling result: fail.`);
     }
     if (this.rootNode!.getFirstChild() !== null && this.rootNode!.getFirstChild()!.getParent() === this.rootNode) {
       console.info(`${TEST_TAG} getParent result: success.`);
     } else {
-      console.info(`${TEST_TAG} getParent result: fail.`);
+      console.error(`${TEST_TAG} getParent result: fail.`);
     }
-    if (this.rootNode!.getParent() !== undefined || this.rootNode!.getParent() !== null) {
+    if (this.rootNode!.getParent() !== null) {
       console.info(`${TEST_TAG} get ArkTsNode success.`)
       console.info(`${TEST_TAG} check rootNode whether is modifiable ${this.rootNode!.isModifiable()}`)
       console.info(`${TEST_TAG} check getParent whether is modifiable ${this.rootNode!.getParent()!.isModifiable()}`)
     } else {
-      console.info(`${TEST_TAG} get ArkTsNode fail.`);
+      console.error(`${TEST_TAG} get ArkTsNode fail.`);
     }
   }
 
@@ -4886,11 +5258,11 @@ class MyNodeController extends NodeController {
       if (this.rootNode!.getChild(0) === currentNode) {
         console.info(`${TEST_TAG} moveTo result: success.`);
       } else {
-        console.info(`${TEST_TAG} moveTo result: fail.`);
+        console.error(`${TEST_TAG} moveTo result: fail.`);
       }
     } catch (err) {
-      console.info(`${TEST_TAG} ${(err as BusinessError).code} : ${(err as BusinessError).message}`);
-      console.info(`${TEST_TAG} moveTo result: fail.`);
+      console.error(`${TEST_TAG} ${(err as BusinessError).code} : ${(err as BusinessError).message}`);
+      console.error(`${TEST_TAG} moveTo result: fail.`);
     }
   }
 
@@ -5001,7 +5373,7 @@ class MyNodeController extends NodeController {
 
   // 设置跨语言交互选项
   setCrossLanguageOptions() {
-    console.info(`${TEST_TAG} getCrossLanguageOptions ${JSON.stringify(this.frameNode?.getCrossLanguageOptions)}`);
+    console.info(`${TEST_TAG} getCrossLanguageOptions ${JSON.stringify(this.frameNode?.getCrossLanguageOptions())}`);
     try {
       this.frameNode?.setCrossLanguageOptions({
         attributeSetting: true
@@ -5011,7 +5383,7 @@ class MyNodeController extends NodeController {
       console.error(`${TEST_TAG} ${(err as BusinessError).code} : ${(err as BusinessError).message}`);
       console.error(`${TEST_TAG} setCrossLanguageOptions fail.`);
     }
-    console.info(`${TEST_TAG} getCrossLanguageOptions ${JSON.stringify(this.frameNode?.getCrossLanguageOptions)}`);
+    console.info(`${TEST_TAG} getCrossLanguageOptions ${JSON.stringify(this.frameNode?.getCrossLanguageOptions())}`);
   }
 
   getInteractionEventBindingInfo() {
@@ -5021,6 +5393,30 @@ class MyNodeController extends NodeController {
     console.info(`${TEST_TAG}${bindingInfo?.nativeEventRegistered}`);
     console.info(`${TEST_TAG}${bindingInfo?.builtInEventRegistered}`);
     console.info(`${TEST_TAG}${JSON.stringify(bindingInfo)}`);
+  }
+
+  // 向子节点派发触摸事件
+  dispatchInputEvent() {
+    this.frameNode!.commonEvent.setOnTouch((event: TouchEvent) => {
+      let childNode = this.frameNode!.getChild(0);
+      if (childNode) {
+        let result = childNode.dispatchInputEvent(event, CompetitionStrategy.DEFAULT);
+        console.info(`${TEST_TAG} dispatchInputEvent result: ${result}`);
+      }
+    })
+    console.info(`${TEST_TAG} dispatchInputEvent registered`);
+  }
+
+  // 向子节点派发按键事件
+  dispatchKeyEvent() {
+    this.frameNode!.commonEvent.setOnKeyEvent((event: KeyEvent) => {
+      let childNode = this.frameNode!.getChild(0);
+      if (childNode) {
+        let result = childNode.dispatchKeyEvent(event);
+        console.info(`${TEST_TAG} dispatchKeyEvent result: ${result}`);
+      }
+    })
+    console.info(`${TEST_TAG} dispatchKeyEvent registered`);
   }
 
   throwError() {
@@ -5054,18 +5450,18 @@ struct Index {
       Column({ space: 8 }) {
         Column() {
           Row() {
-            Button("ADD")
+            Button('ADD')
               .onClick(() => {
                 this.index++;
               })
-            Button("DEC")
+            Button('DEC')
               .onClick(() => {
                 this.index--;
               })
           }
 
           // 显示当前索引值
-          Text("Current index is " + this.index)
+          Text('Current index is ' + this.index)
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -5074,7 +5470,7 @@ struct Index {
         }
 
         Column() {
-          Text("This is a NodeContainer.")
+          Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -5088,153 +5484,153 @@ struct Index {
             .height(100)
         }
 
-        Button("appendChild")
+        Button('appendChild')
           .width(300)
           .onClick(() => {
             this.myNodeController.appendChild();
           })
-        Button("insertChildAfter")
+        Button('insertChildAfter')
           .width(300)
           .onClick(() => {
             this.myNodeController.insertChildAfter(this.index);
           })
-        Button("removeChild")
+        Button('removeChild')
           .width(300)
           .onClick(() => {
             this.myNodeController.removeChild(this.index);
           })
-        Button("clearChildren")
+        Button('clearChildren')
           .width(300)
           .onClick(() => {
             this.myNodeController.clearChildren();
           })
-        Button("getChildNumber")
+        Button('getChildNumber')
           .width(300)
           .onClick(() => {
             this.myNodeController.getChildNumber();
           })
-        Button("searchFrameNode")
+        Button('searchFrameNode')
           .width(300)
           .onClick(() => {
             this.myNodeController.searchFrameNode();
           })
-        Button("moveFrameNode")
+        Button('moveFrameNode')
           .width(300)
           .onClick(() => {
             this.myNodeController.moveFrameNode();
           })
-        Button("getPositionToWindow")
+        Button('getPositionToWindow')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToWindow();
           })
-        Button("getPositionToParent")
+        Button('getPositionToParent')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToParent();
           })
-        Button("getPositionToScreen")
+        Button('getPositionToScreen')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToScreen();
           })
-        Button("getGlobalPositionOnDisplay")
+        Button('getGlobalPositionOnDisplay')
           .width(300)
           .onClick(() => {
             this.myNodeController.getGlobalPositionOnDisplay();
           })
-        Button("getPositionToParentWithTransform")
+        Button('getPositionToParentWithTransform')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToParentWithTransform();
           })
-        Button("getPositionToWindowWithTransform")
+        Button('getPositionToWindowWithTransform')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToWindowWithTransform();
           })
-        Button("getPositionToScreenWithTransform")
+        Button('getPositionToScreenWithTransform')
           .width(300)
           .onClick(() => {
             this.myNodeController.getPositionToScreenWithTransform();
           })
-        Button("getMeasuredSize")
+        Button('getMeasuredSize')
           .width(300)
           .onClick(() => {
             this.myNodeController.getMeasuredSize();
           })
-        Button("getLayoutPosition")
+        Button('getLayoutPosition')
           .width(300)
           .onClick(() => {
             this.myNodeController.getLayoutPosition();
           })
-        Button("getUserConfigBorderWidth")
+        Button('getUserConfigBorderWidth')
           .width(300)
           .onClick(() => {
             this.myNodeController.getUserConfigBorderWidth();
           })
-        Button("getUserConfigPadding")
+        Button('getUserConfigPadding')
           .width(300)
           .onClick(() => {
             this.myNodeController.getUserConfigPadding();
           })
-        Button("getUserConfigMargin")
+        Button('getUserConfigMargin')
           .width(300)
           .onClick(() => {
             this.myNodeController.getUserConfigMargin();
           })
-        Button("getUserConfigSize")
+        Button('getUserConfigSize')
           .width(300)
           .onClick(() => {
             this.myNodeController.getUserConfigSize();
           })
-        Button("getId")
+        Button('getId')
           .width(300)
           .onClick(() => {
             this.myNodeController.getId();
           })
-        Button("getUniqueId")
+        Button('getUniqueId')
           .width(300)
           .onClick(() => {
             this.myNodeController.getUniqueId();
           })
-        Button("getNodeType")
+        Button('getNodeType')
           .width(300)
           .onClick(() => {
             this.myNodeController.getNodeType();
           })
-        Button("getOpacity")
+        Button('getOpacity')
           .width(300)
           .onClick(() => {
             this.myNodeController.getOpacity();
           })
-        Button("isVisible")
+        Button('isVisible')
           .width(300)
           .onClick(() => {
             this.myNodeController.isVisible();
           })
-        Button("isClipToFrame")
+        Button('isClipToFrame')
           .width(300)
           .onClick(() => {
             this.myNodeController.isClipToFrame();
           })
-        Button("isAttached")
+        Button('isAttached')
           .width(300)
           .onClick(() => {
             this.myNodeController.isAttached();
           })
-        Button("getInspectorInfo")
+        Button('getInspectorInfo')
           .width(300)
           .onClick(() => {
             this.myNodeController.getInspectorInfo();
           })
-        Button("getCustomProperty")
+        Button('getCustomProperty')
           .width(300)
           .onClick(() => {
             const uiContext: UIContext = this.getUIContext();
             if (uiContext) {
               // 通过组件ID获取对应的FrameNode节点
-              const node: FrameNode | null = uiContext.getFrameNodeById("Test_Button") || null;
+              const node: FrameNode | null = uiContext.getFrameNodeById('Test_Button') || null;
               if (node) {
                 for (let i = 1; i < 4; i++) {
                   const key = 'customProperty' + i;
@@ -5256,23 +5652,33 @@ struct Index {
           })
           .customProperty('customProperty2', {})
           .customProperty('customProperty2', undefined)
-        Button("setCrossLanguageOptions")
+        Button('setCrossLanguageOptions')
           .width(300)
           .onClick(() => {
             this.myNodeController.setCrossLanguageOptions();
           })
-        Button("getInteractionEventBindingInfo")
+        Button('getInteractionEventBindingInfo')
           .width(300)
           .onClick(() => {
             this.myNodeController.getInteractionEventBindingInfo();
           })
-        Button("throwError")
+        Button('dispatchInputEvent')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.dispatchInputEvent();
+          })
+        Button('dispatchKeyEvent')
+          .width(300)
+          .onClick(() => {
+            this.myNodeController.dispatchKeyEvent();
+          })
+        Button('throwError')
           .width(300)
           .onClick(() => {
             this.myNodeController.throwError();
           })
       }
-      .width("100%")
+      .width('100%')
     }
     .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
   }
@@ -5284,7 +5690,7 @@ struct Index {
 ```ts
 import { NodeController, FrameNode, UIContext, BuilderNode, ExpandMode, LengthUnit } from '@kit.ArkUI';
 
-const TEST_TAG: string = "FrameNode "
+const TEST_TAG: string = 'FrameNode '
 
 // BasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新
 class BasicDataSource implements IDataSource {
@@ -5458,30 +5864,30 @@ class MyNodeController extends NodeController {
   getChildWithNotExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.NOT_EXPAND);
     console.info(`${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND): ${childNode!.getId()}`);
-    if (childNode!.getId() === "N9") {
+    if (childNode!.getId() === 'N9') {
       console.info(`${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND) result: success.`);
     } else {
-      console.info(`${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND) result: fail.`);
+      console.error(`${TEST_TAG} getChild(3, ExpandMode.NOT_EXPAND) result: fail.`);
     }
   }
 
   getChildWithExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.EXPAND);
     console.info(`${TEST_TAG} getChild(3, ExpandMode.EXPAND): ${childNode!.getId()}`);
-    if (childNode!.getId() === "N3") {
+    if (childNode!.getId() === 'N3') {
       console.info(`${TEST_TAG} getChild(3, ExpandMode.EXPAND) result: success.`);
     } else {
-      console.info(`${TEST_TAG} getChild(3, ExpandMode.EXPAND) result: fail.`);
+      console.error(`${TEST_TAG} getChild(3, ExpandMode.EXPAND) result: fail.`);
     }
   }
 
   getChildWithLazyExpand() {
     const childNode = this.rootNode!.getChild(3, ExpandMode.LAZY_EXPAND);
     console.info(`${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND): ${childNode!.getId()}`);
-    if (childNode!.getId() === "N3") {
+    if (childNode!.getId() === 'N3') {
       console.info(`${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND) result: success.`);
     } else {
-      console.info(`${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND) result: fail.`);
+      console.error(`${TEST_TAG} getChild(3, ExpandMode.LAZY_EXPAND) result: fail.`);
     }
   }
 }
@@ -5496,7 +5902,7 @@ struct Index {
     Scroll(this.scroller) {
       Column({ space: 8 }) {
         Column() {
-          Text("This is a NodeContainer.")
+          Text('This is a NodeContainer.')
             .textAlign(TextAlign.Center)
             .borderRadius(10)
             .backgroundColor(0xFFFFFF)
@@ -5508,33 +5914,33 @@ struct Index {
             .height(100)
         }
 
-        Button("getFirstChildIndexWithoutExpand")
+        Button('getFirstChildIndexWithoutExpand')
           .width(300)
           .onClick(() => {
             this.myNodeController.getFirstChildIndexWithoutExpand();
           })
-        Button("getLastChildIndexWithoutExpand")
+        Button('getLastChildIndexWithoutExpand')
           .width(300)
           .onClick(() => {
             this.myNodeController.getLastChildIndexWithoutExpand();
           })
-        Button("getChildWithNotExpand")
+        Button('getChildWithNotExpand')
           .width(300)
           .onClick(() => {
             this.myNodeController.getChildWithNotExpand();
           })
-        Button("getChildWithExpand")
+        Button('getChildWithExpand')
           .width(300)
           .onClick(() => {
             this.myNodeController.getChildWithExpand();
           })
-        Button("getChildWithLazyExpand")
+        Button('getChildWithLazyExpand')
           .width(300)
           .onClick(() => {
             this.myNodeController.getChildWithLazyExpand();
           })
       }
-      .width("100%")
+      .width('100%')
     }
     .scrollable(ScrollDirection.Vertical) // 滚动方向纵向
   }
@@ -5622,11 +6028,11 @@ struct Index {
 
   build() {
     Column() {
-      Button("add CommonEvent to Text")
+      Button('add CommonEvent to Text')
         .onClick(() => {
-          this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling() !)
+          this.myNodeController!.addCommonEvent(this.myNodeController!.rootNode!.getParent()!.getPreviousSibling()!)
         })
-      Text("this is a Text")
+      Text('this is a Text')
         .fontSize(16)
         .borderWidth(1)
         .onHover(((isHover: boolean, event: HoverEvent): void => {
@@ -5665,7 +6071,7 @@ struct Index {
         .borderWidth(1)
         .width(300)
         .height(100)
-    }.width("100%")
+    }.width('100%')
   }
 }
 ```
@@ -5676,19 +6082,19 @@ struct Index {
 
 ```ts
 // index.ets
-import {Track, TrackManager, TrackNode} from "./track"
+import {Track, TrackManager, TrackNode} from './track'
 
 @Builder
 function page1() {
   Column() {
-    Text("Page1")
-    PageList().height("90%")
-    Button("DumpMessage")
+    Text('Page1')
+    PageList().height('90%')
+    Button('DumpMessage')
       .onClick(() => {
         TrackManager.get().dump()
       })
 
-  }.width("100%").height("100%")
+  }.width('100%').height('100%')
 }
 
 class BasicDataSource implements IDataSource {
@@ -5794,7 +6200,7 @@ struct PageList {
       LazyForEach(this.data, (item: string, index: number) => {
         ListItem() {
           // 通过TrackNode对组件进行封装埋点
-          TrackNode({track: new Track().tag("xxx"+ item).id(index + 30000)}) {
+          TrackNode({track: new Track().tag('xxx'+ item).id(index + 30000)}) {
             Row() {
               Text(item).fontSize(30)
                 .onClick(() => {
@@ -5814,7 +6220,7 @@ struct TrackTest {
   pageInfos: NavPathStack = new NavPathStack()
   build() {
     Row() {
-      TrackNode({ track: new Track().tag("root").id(10000)}) {
+      TrackNode({ track: new Track().tag('root').id(10000)}) {
         page1()
       }
     }
@@ -5839,6 +6245,7 @@ export struct TrackNode {
   trackShadow: TrackShadow = new TrackShadow()
 
   @Builder defaultBuilder() {
+    // 空函数，仅演示使用方法。
   }
 
   build() {
@@ -5904,10 +6311,11 @@ export struct TrackNode {
 
 export class Track {
   public areaPercent: number = 0
-  private trackTag: string = ""
+  private trackTag: string = ''
   private trackId: number = 0
 
   constructor() {
+    // 空函数，仅演示使用方法。
   }
 
   tag(newTag: string): Track {
@@ -5976,7 +6384,7 @@ export class TrackManager {
 
   startListenClick(context: UIContext) {
     // 通过无感监听获取FrameNode查找埋点信息
-    context.getUIObserver().on("willClick", (event: ClickEvent, node?: FrameNode) => {
+    context.getUIObserver().on('willClick', (event: ClickEvent, node?: FrameNode) => {
       console.info(`Track clicked:${node}`)
       if (node == undefined) {
         return
@@ -6005,7 +6413,7 @@ class MyNodeController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
-    this.rootNode.commonAttribute.width(100)
+    this.rootNode.commonAttribute
       .overlay('This is a FrameNode')
       .backgroundColor(Color.Pink)
       .width('100%')
@@ -6059,7 +6467,7 @@ struct Index {
         .borderWidth(1)
         .width(300)
         .height(300)
-    }.width("100%")
+    }.width('100%')
   }
 }
 ```
@@ -6069,7 +6477,7 @@ struct Index {
 import { UIContext, DrawContext, FrameNode, NodeController, LayoutConstraint, Size, Position } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 
-function GetChildLayoutConstraint(constraint: LayoutConstraint, child: FrameNode): LayoutConstraint {
+function getChildLayoutConstraint(constraint: LayoutConstraint, child: FrameNode): LayoutConstraint {
   const size = child.getUserConfigSize();
   const width = Math.max(
     Math.min(constraint.maxSize.width, size.width.value),
@@ -6099,7 +6507,7 @@ class MyFrameNode extends FrameNode {
     for (let i = 0; i < this.getChildrenCount(); i++) {
       let child = this.getChild(i);
       if (child) {
-        let childConstraint = GetChildLayoutConstraint(constraint, child);
+        let childConstraint = getChildLayoutConstraint(constraint, child);
         child.measure(childConstraint);
         let size = child.getMeasuredSize();
         sizeRes.height += size.height + this.space;
@@ -6232,7 +6640,7 @@ class MyNodeAdapter extends NodeAdapter {
 
   loadData(): void {
     for (let i = 0; i < this.totalNodeCount; i++) {
-      this.data[i] = "Adapter ListItem " + i + " r:" + this.reloadTimes;
+      this.data[i] = 'Adapter ListItem ' + i + ' r:' + this.reloadTimes;
     }
   }
 
@@ -6240,7 +6648,7 @@ class MyNodeAdapter extends NodeAdapter {
     this.changed = !this.changed;
     for (let i = 0; i < count; i++) {
       let index = i + from;
-      this.data[index] = "Adapter ListItem " + (this.changed ? "changed:" : "") + index + " r:" + this.reloadTimes;
+      this.data[index] = 'Adapter ListItem ' + (this.changed ? 'changed:' : '') + index + ' r:' + this.reloadTimes;
     }
     this.reloadItem(from, count);
   }
@@ -6248,7 +6656,7 @@ class MyNodeAdapter extends NodeAdapter {
   insertData(from: number, count: number): void {
     for (let i = 0; i < count; i++) {
       let index = i + from;
-      this.data.splice(index, 0, "Adapter ListItem " + from + "-" + i);
+      this.data.splice(index, 0, 'Adapter ListItem ' + from + '-' + i);
     }
     this.insertItem(from, count);
     this.totalNodeCount += count;
@@ -6263,8 +6671,8 @@ class MyNodeAdapter extends NodeAdapter {
   }
 
   moveData(from: number, to: number): void {
-    let tmp = this.data.splice(from, 1);
-    this.data.splice(to, 0, tmp[0]);
+    let movedItem = this.data.splice(from, 1);
+    this.data.splice(to, 0, movedItem[0]);
     this.moveItem(from, to);
   }
 
@@ -6274,7 +6682,7 @@ class MyNodeAdapter extends NodeAdapter {
   }
 
   onDetachFromNode(): void {
-    console.info("UINodeAdapter onDetachFromNode");
+    console.info('UINodeAdapter onDetachFromNode');
   }
 
   onGetChildId(index: number): number {
@@ -6294,9 +6702,9 @@ class MyNodeAdapter extends NodeAdapter {
         return cacheNode;
       }
     }
-    console.info("UINodeAdapter onCreateChild createNew");
-    let itemNode = typeNode.createNode(this.uiContext, "ListItem");
-    let textNode = typeNode.createNode(this.uiContext, "Text");
+    console.info('UINodeAdapter onCreateChild createNew');
+    let itemNode = typeNode.createNode(this.uiContext, 'ListItem');
+    let textNode = typeNode.createNode(this.uiContext, 'Text');
     textNode.initialize(this.data[index]).fontSize(20);
     itemNode.appendChild(textNode);
     return itemNode;
@@ -6329,7 +6737,7 @@ class MyNodeAdapterController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
-    let listNode = typeNode.createNode(uiContext, "List");
+    let listNode = typeNode.createNode(uiContext, 'List');
     listNode.initialize({ space: 3 }).borderWidth(2).borderColor(Color.Black);
     this.rootNode.appendChild(listNode);
     this.nodeAdapter = new MyNodeAdapter(uiContext, 100);
@@ -6345,45 +6753,45 @@ struct ListNodeTest {
 
   build() {
     Column() {
-      Text("ListNode Adapter");
+      Text('ListNode Adapter');
       NodeContainer(this.adapterController)
         .width(300).height(300)
         .borderWidth(1).borderColor(Color.Black);
       Row() {
-        Button("Reload")
+        Button('Reload')
           .onClick(() => {
             this.adapterController.nodeAdapter?.reloadData(50);
           })
-        Button("Change")
+        Button('Change')
           .onClick(() => {
             this.adapterController.nodeAdapter?.changeData(5, 10)
           })
-        Button("Insert")
+        Button('Insert')
           .onClick(() => {
             this.adapterController.nodeAdapter?.insertData(10, 10);
           })
       }
 
       Row() {
-        Button("Remove")
+        Button('Remove')
           .onClick(() => {
             this.adapterController.nodeAdapter?.removeData(10, 10);
           })
-        Button("Move")
+        Button('Move')
           .onClick(() => {
             this.adapterController.nodeAdapter?.moveData(2, 5);
           })
-        Button("Refresh")
+        Button('Refresh')
           .onClick(() => {
             this.adapterController.nodeAdapter?.refreshData();
           })
-        Button("Detach")
+        Button('Detach')
           .onClick(() => {
             this.adapterController.nodeAdapter?.detachData();
           })
       }
     }.borderWidth(1)
-    .width("100%")
+    .width('100%')
   }
 }
 
@@ -6601,7 +7009,7 @@ struct ListNodeTest {
 import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
 
 class Params {
-  text: string = "this is a text"
+  text: string = 'this is a text'
 }
 
 @Builder
@@ -6625,32 +7033,32 @@ class MyNodeController extends NodeController {
     if (this.rootNode == null) {
       this.rootNode = new FrameNode(uiContext);
       this.buttonNode = new BuilderNode(uiContext);
-      this.buttonNode.build(this.wrapBuilder, { text: "This is a Button" });
+      this.buttonNode.build(this.wrapBuilder, { text: 'This is a Button' });
       this.rootNode.appendChild(this.buttonNode.getFrameNode());
     }
     return this.rootNode;
   }
 
   onAttach(): void {
-    console.info("myButton on attach");
+    console.info('myButton on attach');
   }
 
   onDetach(): void {
-    console.info("myButton on detach");
+    console.info('myButton on detach');
   }
 
-  // onBind时，子节点已经重新上树，此时调用reuse，保证子组件的能重新被复用
+  // onBind时，子节点已经重新上树，此时调用reuse，保证子组件能重新被复用
   onBind(containerId: number): void {
     // 该方法触发子组件复用，全局复用场景下，复用FrameNode后端资源
     this.rootNode?.reuse();
-    console.info("myButton reuse");
+    console.info('myButton reuse');
   }
 
-  // onUnbind时，子节点已经完全下树，此时调用recycle，保证子组件的能完全被回收
+  // onUnbind时，子节点已经完全下树，此时调用recycle，保证子组件能完全被回收
   onUnbind(containerId: number): void {
     // 该方法触发子组件的回收，全局复用场景下，回收FrameNode后端资源用于重新利用
     this.rootNode?.recycle();
-    console.info("myButton recycle");
+    console.info('myButton recycle');
   }
 
   getButtonNode(): BuilderNode<[Params]> | null {
@@ -6674,11 +7082,11 @@ struct Index {
   build() {
     Column() {
       Row() {
-        Button("Bind/Unbind")
+        Button('Bind/Unbind')
           .onClick(() => {
             this.buttonIndex++;
           }).margin(5)
-        Button("onAttach/onDetach")
+        Button('onAttach/onDetach')
           .onClick(() => {
             this.buttonShow = !this.buttonShow
           }).margin(5)
@@ -6689,14 +7097,16 @@ struct Index {
       }
     }
     .padding({ left: 35, right: 35 })
-    .width("100%")
-    .height("100%")
+    .width('100%')
+    .height('100%')
   }
 }
 
 ```
 
 ## 组件设置和删除多态样式状态示例
+
+从API版本26.0.0开始，[UIState](#uistate20)新增HOVERED枚举。
 
 ```ts
 import { NodeController, FrameNode, typeNode, UIState } from '@kit.ArkUI';
@@ -6705,7 +7115,7 @@ import { NodeController, FrameNode, typeNode, UIState } from '@kit.ArkUI';
 class MyNodeController extends NodeController {
   private isEnable: boolean = true;
   private theStatesToBeSupported =
-    UIState.NORMAL | UIState.PRESSED | UIState.FOCUSED | UIState.DISABLED | UIState.SELECTED;
+    UIState.NORMAL | UIState.PRESSED | UIState.FOCUSED | UIState.DISABLED | UIState.SELECTED | UIState.HOVERED;
 
   makeNode(uiContext: UIContext): FrameNode | null {
     // 创建并组织节点关系
@@ -6723,7 +7133,7 @@ class MyNodeController extends NodeController {
     node.appendChild(column);
 
     let styleText = typeNode.createNode(uiContext, 'Text');
-    styleText.initialize("StyleTarget")
+    styleText.initialize('StyleTarget')
       .width('50%')
       .height('5%')
       .margin({ top: 5, bottom: 5 })
@@ -6738,31 +7148,36 @@ class MyNodeController extends NodeController {
     // 为Text组件添加多态样式处理能力
     styleText.addSupportedUIStates(this.theStatesToBeSupported, (node: FrameNode, currentState: number) => {
       if (currentState == UIState.NORMAL) { // 判断是否normal要使用等于
-        // normal状态，刷normal的UI效果
+        // normal状态，刷新普通状态的UI效果
         console.info('Callback UIState.NORMAL')
         node.commonAttribute.backgroundColor(Color.Green)
         node.commonAttribute.borderWidth(2)
         node.commonAttribute.borderColor(Color.Black)
       }
+      if ((currentState & UIState.HOVERED) == UIState.HOVERED) {
+        // hovered状态，刷新悬浮状态的UI效果
+        console.info('Callback UIState.HOVERED')
+        node.commonAttribute.backgroundColor(Color.Blue)
+      }
       if ((currentState & UIState.PRESSED) == UIState.PRESSED) {
-        // press状态，刷press的UI效果
+        // pressed状态，刷新按压状态的UI效果
         console.info('Callback UIState.PRESSED')
         node.commonAttribute.backgroundColor(Color.Brown)
       }
       if ((currentState & UIState.FOCUSED) == UIState.FOCUSED) {
-        // focused状态，刷focused的UI效果
+        // focused状态，刷新获焦状态的UI效果
         console.info('Callback UIState.FOCUSED')
         node.commonAttribute.borderWidth(5)
         node.commonAttribute.borderColor(Color.Yellow)
       }
       if ((currentState & UIState.DISABLED) == UIState.DISABLED) {
-        // disabled状态，刷disabled的UI效果
+        // disabled状态，刷新禁用状态的UI效果
         console.info('Callback UIState.DISABLED')
         node.commonAttribute.backgroundColor(Color.Gray)
         node.commonAttribute.borderWidth(0)
       }
       if ((currentState & UIState.SELECTED) == UIState.SELECTED) {
-        // selected状态，刷selected的UI效果
+        // selected状态，刷新选中状态的UI效果
         console.info('Callback UIState.SELECTED')
         node.commonAttribute.backgroundColor(Color.Pink)
       }
@@ -6772,7 +7187,7 @@ class MyNodeController extends NodeController {
 
     // 为Text组件删除多态样式处理能力
     let buttonRemove = typeNode.createNode(uiContext, 'Button');
-    buttonRemove.initialize("RemoveUIStatus")
+    buttonRemove.initialize('RemoveUIStatus')
       .width('50%')
       .height('5%')
       .fontSize(14)
@@ -6784,7 +7199,7 @@ class MyNodeController extends NodeController {
 
     // 改变多态样式目标节点的使能状态
     let buttonEnable = typeNode.createNode(uiContext, 'Button');
-    buttonEnable.initialize("DisableText")
+    buttonEnable.initialize('DisableText')
       .width('50%')
       .height('5%')
       .fontSize(14)
@@ -6811,6 +7226,8 @@ struct FrameNodeTypeTest {
   }
 }
 ```
+
+![frameNode_stateStyles](./figures/frameNode_stateStyles.gif)
 
 ## 动画创建与取消示例
 
@@ -6870,7 +7287,7 @@ class MyNodeController extends NodeController {
         let result: boolean = this.rootNode.createAnimation(AnimationPropertyType.ROTATION, startValue, endValue,
           { duration: 3000, curve: Curve.Linear, iterations: -1 });
         console.info(`create rotation animation from ${startValue ? String(startValue[2]) :
-          "undefined"} to ${endValue[2]}`);
+          'undefined'} to ${endValue[2]}`);
         if (result) {
           this.isRunning = true;
         } else {
@@ -6917,7 +7334,7 @@ struct CreateAnimationExample {
 
 ## 检验FrameNode是否有效示例
 
-该示例演示了FrameNode释放节点前后分别使用[isDisposed](#isdisposed20)接口验证节点的状态，释放节点前节点调用isDisposed接口返回true，释放节点后节点调用isDisposed接口返回false。
+该示例演示了FrameNode释放节点前后分别使用[isDisposed](#isdisposed20)接口验证节点的状态，释放节点前节点调用isDisposed接口返回false，释放节点后节点调用isDisposed接口返回true。
 
 ```ts
 import { NodeController, FrameNode, BuilderNode } from '@kit.ArkUI';
@@ -7032,7 +7449,7 @@ struct Index {
 
 ## 检验NodeAdapter是否有效示例
 
-该示例演示了[NodeAdapter](#nodeadapter12)释放节点前后分别使用[isDisposed](#isdisposed20)接口验证节点的状态，释放节点前节点调用isDisposed接口返回true，释放节点后节点调用isDisposed接口返回false。
+该示例演示了[NodeAdapter](#nodeadapter12)释放节点前后分别使用[isDisposed](#isdisposed20)接口验证节点的状态，释放节点前节点调用isDisposed接口返回false，释放节点后节点调用isDisposed接口返回true。
 
 ```ts
 import { FrameNode, NodeController, NodeAdapter, typeNode } from '@kit.ArkUI';
@@ -7055,7 +7472,7 @@ class MyNodeAdapter extends NodeAdapter {
 
   loadData(): void {
     for (let i = 0; i < this.totalNodeCount; i++) {
-      this.data[i] = "Adapter ListItem " + i + " r:" + this.reloadTimes;
+      this.data[i] = 'Adapter ListItem ' + i + ' r:' + this.reloadTimes;
     }
   }
 
@@ -7071,9 +7488,9 @@ class MyNodeAdapter extends NodeAdapter {
         return cacheNode;
       }
     }
-    console.info("UINodeAdapter onCreateChild createNew");
-    let itemNode = typeNode.createNode(this.uiContext, "ListItem");
-    let textNode = typeNode.createNode(this.uiContext, "Text");
+    console.info('UINodeAdapter onCreateChild createNew');
+    let itemNode = typeNode.createNode(this.uiContext, 'ListItem');
+    let textNode = typeNode.createNode(this.uiContext, 'Text');
     textNode.initialize(this.data[index]).fontSize(20);
     itemNode.appendChild(textNode);
     return itemNode;
@@ -7087,7 +7504,7 @@ class MyNodeAdapterController extends NodeController {
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
-    let listNode = typeNode.createNode(uiContext, "List");
+    let listNode = typeNode.createNode(uiContext, 'List');
     listNode.initialize({ space: 3 }).borderColor(Color.Black);
     this.rootNode.appendChild(listNode);
     this.nodeAdapter = new MyNodeAdapter(uiContext, 20);
@@ -7121,11 +7538,11 @@ struct ListNodeTest {
 
   build() {
     Column() {
-      Text("ListNode Adapter");
+      Text('ListNode Adapter');
       NodeContainer(this.adapterController)
         .width(300).height(300)
         .borderWidth(1).borderColor(Color.Black);
-      Button("NodeAdapter dispose")
+      Button('NodeAdapter dispose')
         .onClick(() => {
           this.adapterController.dispose();
           this.text = '';
@@ -7133,7 +7550,7 @@ struct ListNodeTest {
         .width(200)
         .height(50)
         .margin({ top: 10, bottom: 10 })
-      Button("NodeAdapter isDisposed")
+      Button('NodeAdapter isDisposed')
         .onClick(() => {
           this.text = this.adapterController.isDisposed();
         })
@@ -7142,7 +7559,7 @@ struct ListNodeTest {
       Text(this.text)
         .fontSize(25)
     }
-    .width("100%")
+    .width('100%')
   }
 }
 ```
@@ -7170,7 +7587,7 @@ struct ChildView {
         })
         .onClick(() => {
           // 通过id查询获得Text节点的FrameNode对象。不建议设置多个相同的id的节点
-          let node = this.getUIContext().getFrameNodeById("HelloWorld");
+          let node = this.getUIContext().getFrameNodeById('HelloWorld');
           console.info(`Find HelloWorld Tag:${node!.getNodeType()} id:${node!.getUniqueId()}`);
           // 通过while循环遍历查询页面的根节点。如果当前节点为自定义组件，则会继续遍历其父节点
           while (node && node.getParent() && node.getParent()!.getUniqueId() > 0) {
@@ -7208,7 +7625,7 @@ struct Index {
 ```ts
 import { NodeController, FrameNode, UIContext } from '@kit.ArkUI';
 
-const TEST_TAG: string = "FrameNode "
+const TEST_TAG: string = 'FrameNode '
 
 // 继承NodeController实现自定义UI控制器
 class MyNodeController extends NodeController {
@@ -7233,7 +7650,7 @@ class MyNodeController extends NodeController {
       this.rootNode?.adoptChild(this.frameNode);
       console.info(`${TEST_TAG} adoptChild success`);
     } catch (e) {
-      console.info(`${TEST_TAG} adoptChild fail: ${JSON.stringify(e)}`);
+      console.error(`${TEST_TAG} adoptChild fail. Code: ${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
     }
   }
 
@@ -7242,7 +7659,7 @@ class MyNodeController extends NodeController {
       this.rootNode?.removeAdoptedChild(this.frameNode);
       console.info(`${TEST_TAG} removeAdoptedChild success`);
     } catch (e) {
-      console.info(`${TEST_TAG} removeAdoptedChild fail: ${JSON.stringify(e)}`);
+      console.error(`${TEST_TAG} removeAdoptedChild fail. Code: ${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
     }
   }
 }

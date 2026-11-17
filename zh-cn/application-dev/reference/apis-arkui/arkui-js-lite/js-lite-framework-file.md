@@ -1,7 +1,7 @@
 # 文件组织
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ JS FA应用的JS模块(entry/src/main/js/module)的典型开发目录结构如�
 
   **图1** 目录结构  
 
-![zh-cn_image_0000001431388581](figures/zh-cn_image_0000001431388581.png)
+![tableOfContents](figures/tableOfContents.png)
 
 目录结构中文件分类如下：
 

@@ -1,4 +1,4 @@
-# 记忆链接错误码
+# 元数据绑定错误码
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: Msdp-->
 <!--Owner: @codexu62-->
@@ -15,7 +15,7 @@
 Internal handling failed.
 
 **错误描述**  
-当调用记忆链接模块接口时，若服务异常，会报此错误码。  
+当调用元数据绑定模块接口时，若文件创建失败，会报此错误码。  
 
 **可能原因**  
 服务状态异常。  
@@ -30,7 +30,7 @@ Internal handling failed.
 Encoding failed. Possible causes: 1. Image processing error; 2. Channel coding error. 
 
 **错误描述**  
-调用记忆链接编码接口encodeImage时，若因为算法原因编码失败，会报此错误码。
+调用元数据绑定编码接口encodeImage时，若因为算法原因编码失败，会报此错误码。
 
 **可能原因**  
 算法流程执行时内存申请失败，或其他原因导致计算失败。  
@@ -44,7 +44,7 @@ Encoding failed. Possible causes: 1. Image processing error; 2. Channel coding e
 Decoding failed. Possible causes: 1. Image not encoded; 2. Image destroyed. 
 
 **错误描述**  
-当调用记忆链接解码接口decodeImage时，若因为算法原因导致解码失败，会报此错误码。
+当调用元数据绑定解码接口decodeImage时，若因为算法原因导致解码失败，会报此错误码。
 
 **可能原因**  
 算法流程执行时内存申请失败，或其他原因导致计算失败。  
@@ -57,7 +57,7 @@ Decoding failed. Possible causes: 1. Image not encoded; 2. Image destroyed.
 
 ## 32100004 订阅失败  
 **错误信息**  
-Subscription failed. Possible causes: 1. Abnormal system capability; 2. IPC exception; 3. Algorithm loading exception. 
+Subscription Failed. Possible causes: 1. Abnormal system capability. 2. IPC communication abnormality. 3. Algorithm loading exception. 
 
 **错误描述**  
 当调用metadataBinding模块on接口时，若订阅失败，会报此错误码。
@@ -72,7 +72,7 @@ Subscription failed. Possible causes: 1. Abnormal system capability; 2. IPC exce
 ## 32100005 取消订阅失败  
 
 **错误信息**  
-Unsubscription failed. Possible causes: 1. Abnormal system capability; 2. IPC exception. 
+Unsubscription Failed. Possible causes: 1. Abnormal system capability. 2. IPC communication abnormality.
 
 **错误描述**  
 当调用metadataBinding模块off接口时，若取消订阅失败，会报此错误码。  

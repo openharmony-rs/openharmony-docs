@@ -74,16 +74,16 @@ import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
 let getDelayData: unifiedDataChannel.GetDelayData = ((type: string) => {
   if (type == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-    let plainTextDetails : Record<string, string> = {
+    let plainTextDetails: Record<string, string> = {
       'attr1': 'value1',
       'attr2': 'value2'
-    }
-    let plainText : uniformDataStruct.PlainText = {
+    };
+    let plainText: uniformDataStruct.PlainText = {
       uniformDataType: 'general.plain-text',
-      textContent : 'This is a plain text example',
-      abstract : 'This is abstract',
-      details : plainTextDetails
-    }
+      textContent: 'This is a plain text example',
+      abstract: 'This is abstract',
+      details: plainTextDetails
+    };
     let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
     let textData = new unifiedDataChannel.UnifiedData(text);
     return textData;
@@ -211,10 +211,10 @@ ArkTS-Sta类型声明：
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | extras | ArkTS-Dyn: Record<string, object> <br/>ArkTS-Sta: Record<string, RecordData> | 否 | 是 | 是一个字典类型对象，用于设置其他附加属性数据。非必填字段，默认值为空字典对象。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| tag | string | 否 | 是 | 用户自定义标签。非必填字段，默认值为空字符串。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| tag | string | 否 | 是 | 用户自定义标签。非必填字段，默认值为空字符串。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | timestamp | Date | 是 | 是 | [UnifiedData](#unifieddata)的生成时间戳。默认值为1970年1月1日（UTC）。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | shareOptions | [ShareOptions](#shareoptions12) | 否 | 是 | 指示[UnifiedData](#unifieddata)支持的设备内使用范围，非必填字段，默认值为CROSS_APP。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| getDelayData | [GetDelayData](#getdelaydata12) | 否 | 是 | 延迟获取数据回调。当前只支持同设备剪贴板场景，后续场景待开发。非必填字段，默认值为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| getDelayData | [GetDelayData](#getdelaydata12) | 否 | 是 | 延迟获取数据回调。当前只支持同设备剪贴板场景，当用户从剪贴板读取数据时触发该回调。非必填字段，默认值为undefined。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23<br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | uriAuthorizationPolicies | Array<[UriPermission](#uripermission)> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST，只对单次数据生效，优先级较低，具体策略见[UriPermission](#uripermission)。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
@@ -239,16 +239,16 @@ properties.uriAuthorizationPolicies = [
 ];
 properties.getDelayData = ((type: string) => {
   if (type == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-    let plainTextDetails : Record<string, string> = {
+    let plainTextDetails: Record<string, string> = {
       'attr1': 'value1',
       'attr2': 'value2'
-    }
-    let plainText : uniformDataStruct.PlainText = {
+    };
+    let plainText: uniformDataStruct.PlainText = {
       uniformDataType: 'general.plain-text',
-      textContent : 'This is a plain text example',
-      abstract : 'This is abstract',
-      details : plainTextDetails
-    }
+      textContent: 'This is a plain text example',
+      abstract: 'This is abstract',
+      details: plainTextDetails
+    };
     let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
     let textData = new unifiedDataChannel.UnifiedData(text);
     return textData;
@@ -351,14 +351,6 @@ constructor(record: UnifiedRecord)
 | ------ | ------------------------------- | ---- |-----------------------------------------|
 | record | [UnifiedRecord](#unifiedrecord) | 是   | 要添加到统一数据对象中的数据记录，该记录为UnifiedRecord或其子类对象。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| **错误码ID** | **错误信息**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -369,7 +361,7 @@ let plainText : uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
   textContent : 'This is a plain text example',
   abstract : 'This is abstract'
-}
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 ```
@@ -408,33 +400,26 @@ addRecord(record: UnifiedRecord): void
 | ------ | ------------------------------- | ---- |---------------------------------------------|
 | record | [UnifiedRecord](#unifiedrecord) | 是   | 要添加到统一数据对象中的数据记录，该记录为UnifiedRecord子类对象。|
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| **错误码ID** | **错误信息**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
-
 **示例：**
 
 ArkTS-Dyn示例：
 
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-let plainText : uniformDataStruct.PlainText = {
+
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
-let hyperlink : uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
-  url : 'www.XXX.com',
-  description : 'This is the description of the hyperlink'
-}
+let hyperlink: uniformDataStruct.Hyperlink = {
+  uniformDataType: 'general.hyperlink',
+  url: 'www.XXX.com',
+  description: 'This is the description of the hyperlink'
+};
 let link = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
 unifiedData.addRecord(link);
 ```
@@ -469,7 +454,7 @@ getRecords(): Array\<UnifiedRecord\>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力** ：SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -488,25 +473,24 @@ ArkTS-Dyn示例：
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
-let hyperlink : uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
-  url : 'www.XXX.com',
-  description : 'This is the description of the hyperlink'
-}
+let hyperlink: uniformDataStruct.Hyperlink = {
+  uniformDataType: 'general.hyperlink',
+  url: 'www.XXX.com',
+  description: 'This is the description of the hyperlink'
+};
 let link = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
 unifiedData.addRecord(link);
 
 let records = unifiedData.getRecords();
-for (let i = 0; i < records.length; i++) {
-  let record = records[i];
+records.forEach((record: unifiedDataChannel.UnifiedRecord) => {
   let types = record.getTypes();
   if (types.includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
     let plainText = record.getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as unifiedDataChannel.PlainText;
@@ -515,7 +499,7 @@ for (let i = 0; i < records.length; i++) {
     let hyperlink = record.getEntry(uniformTypeDescriptor.UniformDataType.HYPERLINK) as unifiedDataChannel.Hyperlink;
     console.info(`linkUrl: ${hyperlink.url}`);
   }
-}
+});
 ```
 
 ArkTS-Sta示例：
@@ -563,7 +547,7 @@ hasType(type: string): boolean
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力** ：SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -581,14 +565,6 @@ hasType(type: string): boolean
 | ---------------------------------------- |-------------------------|
 | boolean | 有指定的数据类型返回true，否则返回false。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| **错误码ID** | **错误信息**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -596,19 +572,19 @@ ArkTS-Dyn示例：
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
-let hyperlink : uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
-  url : 'www.XXX.com',
-  description : 'This is the description of the hyperlink'
-}
+let hyperlink: uniformDataStruct.Hyperlink = {
+  uniformDataType: 'general.hyperlink',
+  url: 'www.XXX.com',
+  description: 'This is the description of the hyperlink'
+};
 let link = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
 unifiedData.addRecord(link);
 
@@ -649,7 +625,7 @@ getTypes(): Array\<string\>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力** ：SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -668,19 +644,19 @@ ArkTS-Dyn示例：
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
-let hyperlink : uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
-  url : 'www.XXX.com',
-  description : 'This is the description of the hyperlink'
-}
+let hyperlink: uniformDataStruct.Hyperlink = {
+  uniformDataType: 'general.hyperlink',
+  url: 'www.XXX.com',
+  description: 'This is the description of the hyperlink'
+};
 let link = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
 unifiedData.addRecord(link);
 
@@ -722,30 +698,32 @@ let types = unifiedData.getTypes();
 | summary   | ArkTS-Dyn: Record<string, number> <br/>ArkTS-Sta: Record<string, long> | 否 | 否 | 是一个字典类型对象，key表示数据类型（见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)），value为统一数据对象中该类型记录大小总和（单位：Byte）。 <br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。 | 
 | totalSize | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 否 | 统一数据对象内记录总大小（单位：Byte）。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。|
 | overview<sup>22+</sup>   | ArkTS-Dyn: Record<string, number> <br/>ArkTS-Sta: Record<string, long> | 是 | 否 | 统一数据对象中所有类型与该类型数据记录大小的映射关系，其中数据大小单位为Byte。当获取到的统一数据对象为空时，此overview属性值为空。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| filenameExtensions   | Array\<string> | 是 | 否 | 统一数据对象中文件记录的文件扩展名数组。扩展名是唯一的，包括前导句点，并使用小写ASCII字母。例如，文件myphoto.png的扩展名是'.png'。如果没有有效的文件扩展名，则返回空数组。<br/>**ArkTS-Dyn起始版本：** 26.1.0 <br/>**ArkTS-Sta起始版本：** 26.1.0 <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
 ArkTS-Dyn示例：
 
 ```ts
-function parseSummary(summary : unifiedDataChannel.Summary) {
+function parseSummary(summary: unifiedDataChannel.Summary) {
   let summaryRecord = summary.summary as Record<string, number>;
   if (summaryRecord) {
     for (let item of Object.entries(summaryRecord)) {
       if (item && item.length <= 1) {
         continue;
       }
-      let summaryStr : string = String(item[1]);
-      let info : string[] = summaryStr.split(",");
+      let summaryStr: string = String(item[1]);
+      let info: string[] = summaryStr.split(",");
       if (info.length <= 1) {
         continue;
       }
-      let key : string = info[0];
-      let value : string = info[1];
+      let key: string = info[0];
+      let value: string = info[1];
     }
   }
   let overviewRecord = summary.overview as Record<string, number>;
   let totalSize = summary.totalSize;
+  let filenameExtensions = summary.filenameExtensions;
 }
 ```
 
@@ -804,14 +782,6 @@ constructor(type: string, value: ValueType)
 | type | string | 是   | 要创建的数据记录的类型。 |
 | value | [ValueType](#valuetype12) | 是   | 要创建的数据记录的值。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| **错误码ID** | **错误信息**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.  |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -820,27 +790,33 @@ ArkTS-Dyn示例：
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 import { image } from '@kit.ImageKit';
 
-let hyperlink : uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
-  url : 'www.XXX.com',
-  description : 'This is the description of the hyperlink'
-}
+let hyperlink: uniformDataStruct.Hyperlink = {
+  uniformDataType: 'general.hyperlink',
+  url: 'www.XXX.com',
+  description: 'This is the description of the hyperlink'
+};
 let hyperlinkRecord = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 
 let arrayBuffer = new ArrayBuffer(4 * 200 * 200);
-let opt : image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 }, alphaType: 3 };
-let pixelMap : uniformDataStruct.PixelMap = {
-  uniformDataType : 'openharmony.pixel-map',
-  pixelMap : image.createPixelMapSync(arrayBuffer, opt)
-}
-let pixelMapRecord = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP, pixelMap);
+let opt: image.InitializationOptions = {
+  editable: true,
+  pixelFormat: 3,
+  size: { height: 200, width: 200 },
+  alphaType: 3
+};
+let pixelMap: uniformDataStruct.PixelMap = {
+  uniformDataType: 'openharmony.pixel-map',
+  pixelMap: image.createPixelMapSync(arrayBuffer, opt)
+};
+let pixelMapRecord =
+  new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_PIXEL_MAP, pixelMap);
 ```
 
 ArkTS-Sta示例：
@@ -887,7 +863,7 @@ getType(): string
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力** ：SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：**  10
 
@@ -906,11 +882,11 @@ ArkTS-Dyn示例：
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
@@ -948,7 +924,7 @@ getValue(): ValueType
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**系统能力** ：SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -965,19 +941,20 @@ getValue(): ValueType
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, 'this is value of text');
+let text =
+  new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, 'this is value of text');
 let value = text.getValue();
 
-let hyperlinkDetails : Record<string, string> = {
+let hyperlinkDetails: Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
-let hyperlink : uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
-  url : 'www.XXX.com',
-  description : 'This is the description of the hyperlink',
-  details : hyperlinkDetails
-}
+};
+let hyperlink: uniformDataStruct.Hyperlink = {
+  uniformDataType: 'general.hyperlink',
+  url: 'www.XXX.com',
+  description: 'This is the description of the hyperlink',
+  details: hyperlinkDetails
+};
 let hyperlinkRecord = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
 let hyperlinkValue = hyperlinkRecord.getValue();
 ```
@@ -1003,14 +980,6 @@ addEntry(type: string, value: ValueType): void
 | type | string | 是   | 要创建的数据类型，见[UniformDataType](js-apis-data-uniformTypeDescriptor.md#uniformdatatype)。 |
 | value | [ValueType](#valuetype12) | 是   | 要创建的数据的值。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| **错误码ID** | **错误信息**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -1018,21 +987,21 @@ ArkTS-Dyn示例：
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let fileUriDetails : Record<string, string> = {
+let fileUriDetails: Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
-let fileUri : uniformDataStruct.FileUri = {
-  uniformDataType : 'general.file-uri',
-  oriUri : 'file://data/image/1.png',
-  fileType : 'general.image',
-  details : fileUriDetails
-}
-let hyperlink : uniformDataStruct.Hyperlink = {
-  uniformDataType:'general.hyperlink',
-  url : 'file://data/image/1.png',
-  description : 'This is the description of the hyperlink'
-}
+};
+let fileUri: uniformDataStruct.FileUri = {
+  uniformDataType: 'general.file-uri',
+  oriUri: 'file://data/image/1.png',
+  fileType: 'general.image',
+  details: fileUriDetails
+};
+let hyperlink: uniformDataStruct.Hyperlink = {
+  uniformDataType: 'general.hyperlink',
+  url: 'file://data/image/1.png',
+  description: 'This is the description of the hyperlink'
+};
 
 let unifiedData = new unifiedDataChannel.UnifiedData();
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HYPERLINK, hyperlink);
@@ -1095,14 +1064,6 @@ getEntry(type: string): ValueType
 | ------ |------------------------------------------------------|
 | [ValueType](#valuetype12) | 当前数据记录对应的值。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| **错误码ID** | **错误信息**                                |
-| ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -1110,29 +1071,29 @@ ArkTS-Dyn示例：
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let fileUriDetails : Record<string, string> = {
+let fileUriDetails: Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
-let fileUri : uniformDataStruct.FileUri = {
-  uniformDataType : 'general.file-uri',
-  oriUri : 'file://data/image/1.png',
-  fileType : 'general.image',
-  details : fileUriDetails
-}
-let formDetails : Record<string, string> = {
+};
+let fileUri: uniformDataStruct.FileUri = {
+  uniformDataType: 'general.file-uri',
+  oriUri: 'file://data/image/1.png',
+  fileType: 'general.image',
+  details: fileUriDetails
+};
+let formDetails: Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
-let form : uniformDataStruct.Form = {
-  uniformDataType : 'openharmony.form',
-  formId : 1,
-  formName : 'form',
-  bundleName : 'com.xx.app',
-  abilityName : 'ability',
-  module : 'module',
-  details : formDetails
-}
+};
+let form: uniformDataStruct.Form = {
+  uniformDataType: 'openharmony.form',
+  formId: 1,
+  formName: 'form',
+  bundleName: 'com.xx.app',
+  abilityName: 'ability',
+  module: 'module',
+  details: formDetails
+};
 
 let unifiedData = new unifiedDataChannel.UnifiedData();
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM, form);
@@ -1142,11 +1103,13 @@ unifiedData.addRecord(record);
 let records = unifiedData.getRecords();
 for (let i = 0; i < records.length; i++) {
   let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
-  let fileUriRead : uniformDataStruct.FileUri = unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.FILE_URI) as uniformDataStruct.FileUri;
+  let fileUriRead: uniformDataStruct.FileUri =
+    unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.FILE_URI) as uniformDataStruct.FileUri;
   if (fileUriRead != undefined) {
     console.info(`oriUri: ${fileUriRead.oriUri}`);
   }
-  let formRead = unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM) as uniformDataStruct.Form;
+  let formRead =
+    unifiedDataRecord.getEntry(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM) as uniformDataStruct.Form;
   if (formRead != undefined) {
     console.info(`formName: ${formRead.formName}`);
   }
@@ -1233,17 +1196,17 @@ import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 let fileUriDetails : Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
+};
 let fileUri : uniformDataStruct.FileUri = {
   uniformDataType : 'general.file-uri',
   oriUri : 'file://data/image/1.png',
   fileType : 'general.image',
   details : fileUriDetails
-}
+};
 let formDetails : Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
+};
 let form : uniformDataStruct.Form = {
   uniformDataType : 'openharmony.form',
   formId : 1,
@@ -1252,7 +1215,7 @@ let form : uniformDataStruct.Form = {
   abilityName : 'ability',
   module : 'module',
   details : formDetails
-}
+};
 
 let unifiedData = new unifiedDataChannel.UnifiedData();
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM, form);
@@ -1333,7 +1296,7 @@ getTypes(): Array\<string\>
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**系统能力** ：SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -1352,29 +1315,29 @@ ArkTS-Dyn示例：
 ```ts
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 
-let fileUriDetails : Record<string, string> = {
+let fileUriDetails: Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
-let fileUri : uniformDataStruct.FileUri = {
-  uniformDataType : 'general.file-uri',
-  oriUri : 'file://data/image/1.png',
-  fileType : 'general.image',
-  details : fileUriDetails
-}
-let formDetails : Record<string, string> = {
+};
+let fileUri: uniformDataStruct.FileUri = {
+  uniformDataType: 'general.file-uri',
+  oriUri: 'file://data/image/1.png',
+  fileType: 'general.image',
+  details: fileUriDetails
+};
+let formDetails: Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
-let form : uniformDataStruct.Form = {
-  uniformDataType : 'openharmony.form',
-  formId : 1,
-  formName : 'form',
-  bundleName : 'com.xx.app',
-  abilityName : 'ability',
-  module : 'module',
-  details : formDetails
-}
+};
+let form: uniformDataStruct.Form = {
+  uniformDataType: 'openharmony.form',
+  formId: 1,
+  formName: 'form',
+  bundleName: 'com.xx.app',
+  abilityName: 'ability',
+  module: 'module',
+  details: formDetails
+};
 
 let unifiedData = new unifiedDataChannel.UnifiedData();
 let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM, form);
@@ -1384,7 +1347,7 @@ unifiedData.addRecord(record);
 let records = unifiedData.getRecords();
 for (let i = 0; i < records.length; i++) {
   let unifiedDataRecord = records[i] as unifiedDataChannel.UnifiedRecord;
-  let types : Array<string> = unifiedDataRecord.getTypes();
+  let types: Array<string> = unifiedDataRecord.getTypes();
   if (types.includes(uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM)) {
     console.info(`Types include: ${uniformTypeDescriptor.UniformDataType.OPENHARMONY_FORM}`);
   }
@@ -1441,7 +1404,7 @@ for (let i = 0; i < records.length; i++) {
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1513,7 +1476,7 @@ text.textAbstract = 'This is a text abstract';
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1536,7 +1499,7 @@ link.description = 'This is description';
 
 HTML类型数据，是[Text](#text)的子类，用于描述超文本标记语言数据。
 
-**系统能力**： SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -1561,7 +1524,7 @@ html.uriAuthorizationPolicies = [
 
 File类型数据，是[UnifiedRecord](#unifiedrecord)的子类，也是文件类型数据的基类，用于描述文件类型数据，推荐开发者优先使用File的子类描述数据，如[Image](#image)、[Video](#video)、[Folder](#folder)等具体子类。
 
-**系统能力**： SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -1573,7 +1536,7 @@ File类型数据，是[UnifiedRecord](#unifiedrecord)的子类，也是文件类
 
 ```ts
 import { unifiedDataChannel } from '@kit.ArkData';
-import { fileUri } from '@kit.CoreFileKit'
+import { fileUri } from '@kit.CoreFileKit';
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
@@ -1602,7 +1565,7 @@ export default class EntryAbility extends UIAbility {
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1616,7 +1579,7 @@ export default class EntryAbility extends UIAbility {
 
 ```ts
 import { unifiedDataChannel } from '@kit.ArkData';
-import { fileUri } from '@kit.CoreFileKit'
+import { fileUri } from '@kit.CoreFileKit';
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
@@ -1637,7 +1600,7 @@ export default class EntryAbility extends UIAbility {
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1651,7 +1614,7 @@ export default class EntryAbility extends UIAbility {
 
 ```ts
 import { unifiedDataChannel } from '@kit.ArkData';
-import { fileUri } from '@kit.CoreFileKit'
+import { fileUri } from '@kit.CoreFileKit';
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
@@ -1661,7 +1624,7 @@ export default class EntryAbility extends UIAbility {
     let pathDir = context.filesDir;
     let video = new unifiedDataChannel.Video();
     let filePath = pathDir + '/test.mp4';
-    video.videoUri =fileUri.getUriFromPath(filePath);
+    video.videoUri = fileUri.getUriFromPath(filePath);
   }
 }
 ```
@@ -1672,7 +1635,7 @@ export default class EntryAbility extends UIAbility {
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1686,7 +1649,7 @@ export default class EntryAbility extends UIAbility {
 
 ```ts
 import { unifiedDataChannel } from '@kit.ArkData';
-import { fileUri } from '@kit.CoreFileKit'
+import { fileUri } from '@kit.CoreFileKit';
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
@@ -1707,7 +1670,7 @@ export default class EntryAbility extends UIAbility {
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1721,7 +1684,7 @@ export default class EntryAbility extends UIAbility {
 
 ```ts
 import { unifiedDataChannel } from '@kit.ArkData';
-import { fileUri } from '@kit.CoreFileKit'
+import { fileUri } from '@kit.CoreFileKit';
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
 
@@ -1742,7 +1705,7 @@ SystemDefinedRecord是[UnifiedRecord](#unifiedrecord)的子类，也是OpenHarmo
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1760,9 +1723,9 @@ ArkTS-Dyn示例：
 let sdr = new unifiedDataChannel.SystemDefinedRecord();
 let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 sdr.details = {
-    title: 'recordTitle',
-    version: 1,
-    content: u8Array
+  title: 'recordTitle',
+  version: 1,
+  content: u8Array
 };
 let unifiedData = new unifiedDataChannel.UnifiedData(sdr);
 ```
@@ -1786,7 +1749,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(sdr);
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1844,7 +1807,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(form);
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1873,9 +1836,9 @@ appItem.bundleName = 'MyBundleName';
 appItem.abilityName = 'MyAbilityName';
 let u8Array = new Uint8Array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 appItem.details = {
-    appItemKey1: 123,
-    appItemKey2: 'appItemValue',
-    appItemKey3: u8Array
+  appItemKey1: 123,
+  appItemKey2: 'appItemValue',
+  appItemKey3: u8Array
 };
 let unifiedData = new unifiedDataChannel.UnifiedData(appItem);
 ```
@@ -1905,7 +1868,7 @@ let unifiedData = new unifiedDataChannel.UnifiedData(appItem);
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -1963,7 +1926,7 @@ ApplicationDefinedRecord是[UnifiedRecord](#unifiedrecord)的子类，也是应�
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统能力**： SystemCapability.DistributedDataManager.UDMF.Core
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -2192,9 +2155,9 @@ type DataLoadHandler = (acceptableInfo?: DataLoadInfo) => UnifiedData | null
 
 type DelayedDataLoadHandler = (acceptableInfo?: DataLoadInfo) => Promise<UnifiedData | null>
 
-用于延迟加载数据的处理函数。支持数据发送方根据接收方传入的信息，动态生成数据，实现更灵活、精准的数据交互策略。
+用于延迟加载数据的处理函数。支持数据发送方根据接收方传入的信息，动态生成数据，实现更灵活、精准的数据交互策略。使用Promise异步回调。
 
-该处理函数为异步函数，返回Promise对象，不阻塞主线程，可处理复杂业务逻辑、执行长耗时任务。
+该处理函数为异步函数，不阻塞主线程，可处理复杂业务逻辑、执行长耗时任务。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -2260,7 +2223,7 @@ insertData(options: Options, data: UnifiedData, callback: AsyncCallback&lt;strin
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -2270,17 +2233,17 @@ ArkTS-Dyn示例：
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 let options: unifiedDataChannel.Options = {
   intention: unifiedDataChannel.Intention.DATA_HUB
-}
+};
 try {
   unifiedDataChannel.insertData(options, unifiedData, (err, key) => {
     if (err === undefined) {
@@ -2291,7 +2254,7 @@ try {
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -2355,7 +2318,7 @@ insertData(options: Options, data: UnifiedData): Promise&lt;string&gt;
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -2365,26 +2328,26 @@ ArkTS-Dyn示例：
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 
 let options: unifiedDataChannel.Options = {
   intention: unifiedDataChannel.Intention.DATA_HUB
-}
+};
 try {
   unifiedDataChannel.insertData(options, unifiedData).then((key) => {
     console.info(`Succeeded in inserting data. key = ${key}`);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message} `);
+    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -2449,7 +2412,7 @@ updateData(options: Options, data: UnifiedData, callback: AsyncCallback&lt;void&
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -2459,48 +2422,49 @@ ArkTS-Dyn示例：
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 let options: unifiedDataChannel.Options = {
   intention: unifiedDataChannel.Intention.DATA_HUB
-}
+};
 try {
   unifiedDataChannel.insertData(options, unifiedData).then((key) => {
     console.info(`Succeeded in inserting data. key = ${key}`);
     let updateOptions: unifiedDataChannel.Options = {
       intention: unifiedDataChannel.Intention.DATA_HUB,
       key: key
-    }
-    let plainTextUpdate : uniformDataStruct.PlainText = {
+    };
+    let plainTextUpdate: uniformDataStruct.PlainText = {
       uniformDataType: 'general.plain-text',
-      textContent : 'This is plainText textContent for update',
-      abstract : 'This is abstract for update'
-    }
-    let textUpdate = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
+      textContent: 'This is plainText textContent for update',
+      abstract: 'This is abstract for update'
+    };
+    let textUpdate =
+      new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
     let unifiedDataUpdate = new unifiedDataChannel.UnifiedData(textUpdate);
     try {
       unifiedDataChannel.updateData(updateOptions, unifiedDataUpdate, (err) => {
         if (err === undefined) {
           console.info('Succeeded in updating data.');
         } else {
-          console.error(`Failed to update data. code is ${err.code}, message is ${err.message} `);
+          console.error(`Failed to update data. code is ${err.code}, message is ${err.message}`);
         }
       });
     } catch (e) {
       let error: BusinessError = e as BusinessError;
-      console.error(`Update data throws an exception. code is ${error.code}, message is ${error.message} `);
+      console.error(`Update data throws an exception. code is ${error.code}, message is ${error.message}`);
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message} `);
+    console.error(`Failed to insert data. code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Insert data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -2590,7 +2554,7 @@ updateData(options: Options, data: UnifiedData): Promise&lt;void&gt;
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -2600,29 +2564,31 @@ ArkTS-Dyn示例：
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let plainText : uniformDataStruct.PlainText = {
+let plainText: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'This is a plain text example',
-  abstract : 'This is abstract'
-}
+  textContent: 'This is a plain text example',
+  abstract: 'This is abstract'
+};
 let text = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainText);
 let unifiedData = new unifiedDataChannel.UnifiedData(text);
 let options: unifiedDataChannel.Options = {
   intention: unifiedDataChannel.Intention.DATA_HUB
-}
+};
+
 try {
   unifiedDataChannel.insertData(options, unifiedData).then((key) => {
     console.info(`Succeeded in inserting data. key = ${key}`);
     let updateOptions: unifiedDataChannel.Options = {
       intention: unifiedDataChannel.Intention.DATA_HUB,
       key: key
-    }
-    let plainTextUpdate : uniformDataStruct.PlainText = {
+    };
+    let plainTextUpdate: uniformDataStruct.PlainText = {
       uniformDataType: 'general.plain-text',
-      textContent : 'This is plainText textContent for update',
-      abstract : 'This is abstract for update'
-    }
-    let textUpdate = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
+      textContent: 'This is plainText textContent for update',
+      abstract: 'This is abstract for update'
+    };
+    let textUpdate =
+      new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextUpdate);
     let unifiedDataUpdate = new unifiedDataChannel.UnifiedData(textUpdate);
     try {
       unifiedDataChannel.updateData(updateOptions, unifiedDataUpdate).then(() => {
@@ -2717,7 +2683,7 @@ queryData(options: Options, callback: AsyncCallback&lt;Array&lt;UnifiedData&gt;&
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -2739,18 +2705,19 @@ try {
         let records = data[i].getRecords();
         for (let j = 0; j < records.length; j++) {
           if (records[j].getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
-            let text = records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+            let text =
+              records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
             console.info(`${i + 1}.${text.textContent}`);
           }
         }
       }
     } else {
-      console.error(`Failed to query data. code is ${err.code}, message is ${err.message} `);
+      console.error(`Failed to query data. code is ${err.code}, message is ${err.message}`);
     }
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -2819,7 +2786,7 @@ queryData(options: Options): Promise&lt;Array&lt;UnifiedData&gt;&gt;
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -2840,17 +2807,18 @@ try {
       let records = data[i].getRecords();
       for (let j = 0; j < records.length; j++) {
         if (records[j].getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
-          let text = records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+          let text =
+            records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
           console.info(`${i + 1}.${text.textContent}`);
         }
       }
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to query data. code is ${err.code}, message is ${err.message} `);
+    console.error(`Failed to query data. code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -2899,7 +2867,7 @@ deleteData(options: Options, callback: AsyncCallback&lt;Array&lt;UnifiedData&gt;
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -2921,18 +2889,19 @@ try {
         let records = data[i].getRecords();
         for (let j = 0; j < records.length; j++) {
           if (records[j].getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
-            let text = records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+            let text =
+              records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
             console.info(`${i + 1}.${text.textContent}`);
           }
         }
       }
     } else {
-      console.error(`Failed to delete data. code is ${err.code}, message is ${err.message} `);
+      console.error(`Failed to delete data. code is ${err.code}, message is ${err.message}`);
     }
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Delete data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Delete data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -3001,7 +2970,7 @@ deleteData(options: Options): Promise&lt;Array&lt;UnifiedData&gt;&gt;
 
 | **错误码ID** | **错误信息**                                |
 | ------------ | ------------------------------------------- |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.  |
 
 **示例：**
 
@@ -3022,17 +2991,18 @@ try {
       let records = data[i].getRecords();
       for (let j = 0; j < records.length; j++) {
         if (records[j].getTypes().includes(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT)) {
-          let text = records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+          let text =
+            records[j].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
           console.info(`${i + 1}.${text.textContent}`);
         }
       }
     }
   }).catch((err: BusinessError) => {
-    console.error(`Failed to delete data. code is ${err.code}, message is ${err.message} `);
+    console.error(`Failed to delete data. code is ${err.code}, message is ${err.message}`);
   });
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Query data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Delete data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -3060,7 +3030,7 @@ setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void
 
 设置应用内拖拽通道数据可使用的范围[ShareOptions](#shareoptions12)，目前仅支持DRAG类型数据通道的管控设置。
 
-**需要权限:** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
+**需要权限：** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -3081,20 +3051,21 @@ setAppShareOptions(intention: Intention, shareOptions: ShareOptions): void
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 201          | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION". |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 20400001     | Settings already exist.       |
+| 201          | Permission verification failed. The application does not have the permission required to call the API. |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 20400001     | Settings already exist. To reconfigure, remove the existing sharing options.        |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   unifiedDataChannel.setAppShareOptions(unifiedDataChannel.Intention.DRAG, unifiedDataChannel.ShareOptions.IN_APP);
-  console.info(`[UDMF]setAppShareOptions success. `);
-}catch (e){
+  console.info(`[UDMF]setAppShareOptions success.`);
+} catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`[UDMF]setAppShareOptions throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`[UDMF]setAppShareOptions throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -3104,7 +3075,7 @@ removeAppShareOptions(intention: Intention): void
 
 清除[setAppShareOptions](#unifieddatachannelsetappshareoptions14)设置的管控信息。
 
-**需要权限:** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
+**需要权限：** ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -3124,19 +3095,20 @@ removeAppShareOptions(intention: Intention): void
 
 | **错误码ID** | **错误信息**                                                 |
 | ------------ | ------------------------------------------------------------ |
-| 201          | Permission denied. Interface caller does not have permission "ohos.permission.MANAGE_UDMF_APP_SHARE_OPTION". |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201          | Permission verification failed. The application does not have the permission required to call the API. |
+| 401          | [Sync/Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
   unifiedDataChannel.removeAppShareOptions(unifiedDataChannel.Intention.DRAG);
-  console.info(`[UDMF]removeAppShareOptions success. `);
-}catch (e){
+  console.info(`[UDMF]removeAppShareOptions success.`);
+} catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`[UDMF]removeAppShareOptions throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`[UDMF]removeAppShareOptions throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 
@@ -3147,7 +3119,7 @@ convertRecordsToEntries(data: UnifiedData): void
 本接口用于将传入的data转换成多样式数据结构。若原data使用多个record去承载同一份数据的不同样式，则可以使用此接口将原data转换为多样式数据结构。
 
 当满足以下规则时进行转换，传入的data经转换后变为多样式数据结构：
-1. data中的record数量大于1;
+1. data中的record数量大于1；
 2. data中的properties中的tag值为"records_to_entries_data_format"。
 
 否则不会产生任何行为。
@@ -3166,14 +3138,6 @@ convertRecordsToEntries(data: UnifiedData): void
 | --------- | ----------------------- | ---- | ------------------------------------------------------------ |
 | data    | [UnifiedData](#unifieddata) | 是  | 目标数据。           |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| **错误码ID** | **错误信息**                                                 |
-| ------------ | ------------------------------------------------------------ |
-| 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -3183,22 +3147,22 @@ import { unifiedDataChannel } from '@kit.ArkData';
 import { uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let details : Record<string, string> = {
+let details: Record<string, string> = {
   'attr1': 'value1',
   'attr2': 'value2'
-}
-let plainTextObj : uniformDataStruct.PlainText = {
+};
+let plainTextObj: uniformDataStruct.PlainText = {
   uniformDataType: 'general.plain-text',
-  textContent : 'The weather is very good today',
-  abstract : 'The weather is very good today',
-  details : details
-}
-let htmlObj : uniformDataStruct.HTML = {
-  uniformDataType :'general.html',
-  htmlContent : '<div><p>The weather is very good today</p></div>',
-  plainContent : 'The weather is very good today',
-  details : details
-}
+  textContent: 'The weather is very good today',
+  abstract: 'The weather is very good today',
+  details: details
+};
+let htmlObj: uniformDataStruct.HTML = {
+  uniformDataType: 'general.html',
+  htmlContent: '<div><p>The weather is very good today</p></div>',
+  plainContent: 'The weather is very good today',
+  details: details
+};
 let plainText = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT, plainTextObj);
 let html = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformDataType.HTML, htmlObj);
 let unifiedData = new unifiedDataChannel.UnifiedData(plainText);
@@ -3210,14 +3174,16 @@ try {
   let records: Array<unifiedDataChannel.UnifiedRecord> = unifiedData.getRecords();
   console.info(`Records size is ${records.length}`); // After conversion, its length must be less than 1
   if (records.length == 1) {
-    let plainTextObjRead: uniformDataStruct.PlainText = records[0].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
+    let plainTextObjRead: uniformDataStruct.PlainText =
+      records[0].getEntry(uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) as uniformDataStruct.PlainText;
     console.info(`TextContent is ${plainTextObjRead.textContent}`);
-    let htmlObjRead: uniformDataStruct.HTML = records[0].getEntry(uniformTypeDescriptor.UniformDataType.HTML) as uniformDataStruct.HTML;
+    let htmlObjRead: uniformDataStruct.HTML =
+      records[0].getEntry(uniformTypeDescriptor.UniformDataType.HTML) as uniformDataStruct.HTML;
     console.info(`HtmlContent is ${htmlObjRead.htmlContent}`);
   }
 } catch (e) {
   let error: BusinessError = e as BusinessError;
-  console.error(`Convert data throws an exception. code is ${error.code}, message is ${error.message} `);
+  console.error(`Convert data throws an exception. code is ${error.code}, message is ${error.message}`);
 }
 ```
 

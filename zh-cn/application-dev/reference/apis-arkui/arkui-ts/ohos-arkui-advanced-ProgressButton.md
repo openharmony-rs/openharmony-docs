@@ -1,8 +1,8 @@
 # ProgressButton
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangrunsen-->
-<!--Designer: @YanSanzo-->
+<!--Owner: @zhangwentao96-->
+<!--Designer: @song-song-song-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -16,9 +16,9 @@
 >
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 该组件仅可在Stage模型下使用。
+> - 本模块接口仅可在Stage模型下使用。
 >
-> - 如果ProgressButton设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ProgressButton本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ProgressButton设置通用属性和通用事件。
+> - 如果ProgressButton设置[通用属性](ts-component-general-attributes.md)或[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到ProgressButton本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议ProgressButton设置通用属性和通用事件。
 
 
 ## 导入模块
@@ -69,9 +69,6 @@ ArkTS-Sta: ProgressButton({progress: double, content: ResourceStr, progressButto
 | borderColor     | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 按钮描边颜色。<br/>默认值：#330A59F7                                        |
 | textColor       | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 按钮文本颜色。<br/>默认值：系统默认值（#CE000000）                                 |
 | backgroundColor | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是 | 按钮背景色。<br/>默认值：\$r('sys.color.ohos_id_color_foreground_contrary') |
-
-## 事件
-不支持[通用事件](ts-component-general-events.md)。
 
 ## 示例
 
@@ -180,7 +177,7 @@ struct Index {
 }
 ```
 
-![img.png](./figures/img.png)
+![progressButtonDemo1.gif](./figures/progressButtonDemo1.gif)
 
 ### 示例2（自定义颜色按钮）
 该示例实现了一个简单的自定义颜色的文本下载按钮。
@@ -301,7 +298,7 @@ struct Index {
 }
 ```
 
-![zh-cn_image_progressbutton_example02](figures/zh-cn_image_progressbutton_example02.png)
+![progressButtonDemo2.gif](./figures/progressButtonDemo2.gif)
 
 ### 示例3（自定义圆角按钮）
 该示例实现了一个简单的自定义圆角的文本下载按钮。
@@ -412,4 +409,4 @@ struct Index {
 }
 ```
 
-![zh-cn_image_progressbutton_example03](figures/zh-cn_image_progressbutton_example03.png)
+![progressButtonDemo3.gif](./figures/progressButtonDemo3.gif)

@@ -13,7 +13,9 @@ Want是对象间信息传递的载体，可以用于应用组件间的信息传�
 
 > **说明：**
 >
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 约束限制
 
@@ -30,25 +32,27 @@ import { Want } from '@kit.AbilityKit';
 
 ## Want
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityBase
 
 | 名称        | 类型                 | 只读 | 可选 | 说明                                                         |
 | ----------- | -------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| deviceId    | string               | 否 | 是 | 设备ID。在应用启动场景中表示被拉起方的设备ID，如果未设置该字段，则表示指定当前设备。               |
-| bundleName   | string               | 否 | 是  | 应用包名。在应用启动场景中表示被拉起方的应用包名。 |
-| moduleName | string | 否 | 是 | 应用模块名。在应用启动场景中表示被拉起方的应用模块名。<br/>**说明：**<br/> 若待启动的Ability所属的模块为[HAR](../../quick-start/har-package.md)，则moduleName需为依赖该HAR的[HAP](../../quick-start/hap-package.md)/[HSP](../../quick-start/in-app-hsp.md)的moduleName。 |
-| abilityName  | string               | 否 | 是  | 应用的Ability组件名。在应用启动场景中表示被拉起方的Ability组件名。如果在Want中该字段同时指定了BundleName和AbilityName，则Want可以直接匹配到指定的Ability。AbilityName需要在一个应用的范围内保证唯一。 |
-| action | string               | 否 | 是  | 表示要执行的通用操作（如：查看、分享、应用详情）。在隐式Want中，开发者可以定义该字段，配合uri或parameters来表示对数据执行的操作。隐式Want定义及匹配规则请参见[显式Want与隐式Want匹配规则](../../application-models/explicit-implicit-want-mappings.md)。      |
-| entities | Array\<string> | 否 | 是 | 表示目标Ability额外的类别信息（如：浏览器、视频播放器）。在隐式Want中是对action字段的补充。在隐式Want中，开发者可以定义该字段，来过滤匹配Ability类型。 |
-| uri | string | 否 | 是 | 统一资源标识符，一般在应用启动场景中配合type使用，指明待处理的数据类型。如果在Want中指定了uri，则Want将匹配指定的Uri信息，包括`scheme`、`schemeSpecificPart`、`authority`和`path`信息。 |
-| type | string | 否 | 是 | 表示MIME type类型描述，打开文件的类型，主要用于文件管理器打开文件。比如：'text/xml' 、 'image/*'等，MIME定义请参见[Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)。 |
-| parameters   | Record\<string, Object> | 否 | 是  | 表示WantParams描述。<br />一、以下Key均由系统赋值，开发者手动修改也不会生效，系统在数据传递时会自动修改为实际值。<br />- ohos.aafwk.param.callerPid：表示拉起方的pid，值为字符串类型。<br />- ohos.aafwk.param.callerBundleName：表示拉起方的BundleName，值为字符串类型。<br />- ohos.aafwk.param.callerAbilityName：表示拉起方的AbilityName，值为字符串类型。<br />- ohos.aafwk.param.callerNativeName：表示native调用时拉起方的进程名，值为字符串类型。<br />- ohos.aafwk.param.callerAppId：表示拉起应用的AppId信息，值为字符串类型。<br />- ohos.aafwk.param.callerAppIdentifier：表示拉起应用的AppIdentifier信息，值为字符串类型。<br />- ohos.aafwk.param.callerToken：表示拉起方的token，值为字符串类型。<br />- ohos.aafwk.param.callerUid：表示[BundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1)中的uid，应用包里应用程序的uid，值为数值类型。<br />- ohos.param.callerAppCloneIndex：表示拉起方应用的分身索引，值为数值类型。<br />- component.startup.newRules：表示是否启用新的管控规则，值为布尔类型。<br />- moduleName：表示被拉起方的moduleName，值为字符串类型。<br />- ohos.ability.params.abilityRecoveryRestart：表示当前Ability是否发生了故障恢复重启，值为布尔类型。<br />- ohos.extra.param.key.showMode：表示拉起原子化服务的展示模式，值为枚举类型[wantConstant.ShowMode](js-apis-app-ability-wantConstant.md#showmode12)。<br/><br/>**说明**：<br/>在跨端场景中，以下三个字段不生效，不可用于身份或权限校验：ohos.aafwk.param.callerPid、ohos.aafwk.param.callerToken、ohos.aafwk.param.callerUid。<br /><br />二、提供了一些由系统定义、开发者按需赋值的Key。具体的key值与对应说明详见[wantConstant.Params](js-apis-app-ability-wantConstant.md#params)<!--Del-->以及[wantConstant.Params(仅系统应用可用)](js-apis-app-ability-wantConstant-sys.md#params)<!--DelEnd-->。<br /><br />三、除了上述情况，应用间还可以相互约定传入的键值对。<br /><br />**说明**：<br/>want的Params操作的常量的具体信息请参考[wantConstant](js-apis-app-ability-wantConstant.md)。<br/>需注意，WantParams支持传输的最大数据量遵循[Want约束限制](#约束限制)。当数据量超过该限制时，请使用[WriteRawDataBuffer](../apis-ipc-kit/js-apis-rpc.md#writerawdatabuffer11)或[uri](../apis-arkts/js-apis-uri.md)的方式进行数据传输。<br/>parameters的Value值仅支持基本数据类型：String、Number、Boolean、Object、undefined和null，不支持传递Object内部的function。 |
-| flags | number | 否 | 是 | 表示处理Want的方式。值为枚举类型[Flags](js-apis-app-ability-wantConstant.md#flags)，默认传数字。<br />例如取值为0x00000001（即wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION）表示临时授予接收方读取该URI指向的数据的权限。 |
-| fds<sup>15+</sup> | Record\<string, number> | 是 | 是 | 表示文件描述符，在启动场景中拉起方写入的FD，会设置到该参数中。<br>**原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。 |
+| deviceId    | string               | 否 | 是 | 设备ID。在应用启动场景中表示被拉起方的设备ID，如果未设置该字段，则表示指定当前设备。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| bundleName   | string               | 否 | 是  | 应用包名。在应用启动场景中表示被拉起方的应用包名。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| moduleName | string | 否 | 是 | 应用模块名。在应用启动场景中表示被拉起方的应用模块名。<br/>**说明：**<br/> 若待启动的Ability所属的模块为[HAR](../../quick-start/har-package.md)，则moduleName需为依赖该HAR的[HAP](../../quick-start/hap-package.md)/[HSP](../../quick-start/in-app-hsp.md)的moduleName。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| abilityName  | string               | 否 | 是  | 应用的Ability组件名。在应用启动场景中表示被拉起方的Ability组件名。如果在Want中该字段同时指定了BundleName和AbilityName，则Want可以直接匹配到指定的Ability。AbilityName需要在一个应用的范围内保证唯一。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| action | string               | 否 | 是  | 表示要执行的通用操作（如：查看、分享、应用详情）。在隐式Want中，开发者可以定义该字段，配合uri或parameters来表示对数据执行的操作。隐式Want定义及匹配规则请参见[显式Want与隐式Want匹配规则](../../application-models/explicit-implicit-want-mappings.md)。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| entities | Array\<string> | 否 | 是 | 表示目标Ability额外的类别信息（如：浏览器、视频播放器）。在隐式Want中是对action字段的补充。在隐式Want中，开发者可以定义该字段，来过滤匹配Ability类型。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| uri | string | 否 | 是 | 统一资源标识符，一般在应用启动场景中配合type使用，指明待处理的数据类型。如果在Want中指定了uri，则Want将匹配指定的Uri信息，包括`scheme`、`schemeSpecificPart`、`authority`和`path`信息。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| type | string | 否 | 是 | 表示MIME type类型描述，打开文件的类型，主要用于文件管理器打开文件。比如：'text/xml' 、 'image/*'等，MIME定义请参见[Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml?utm_source=ld246.com)。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| parameters   | ArkTS-Dyn: Record\<string, Object><br>ArkTS-Sta: Record\<string, RecordData> | 否 | 是  | 表示WantParams描述。<br />一、以下Key均由系统赋值，开发者手动修改也不会生效，系统在数据传递时会自动修改为实际值。<br />- ohos.aafwk.param.callerPid：表示拉起方的pid，值为字符串类型。<br />- ohos.aafwk.param.callerBundleName：表示拉起方的BundleName，值为字符串类型。<br />- ohos.aafwk.param.callerAbilityName：表示拉起方的AbilityName，值为字符串类型。<br />- ohos.aafwk.param.callerNativeName：表示native调用时拉起方的进程名，值为字符串类型。<br />- ohos.aafwk.param.callerAppId：表示拉起应用的AppId信息，值为字符串类型。<br />- ohos.aafwk.param.callerAppIdentifier：表示拉起应用的AppIdentifier信息，值为字符串类型。<br />- ohos.aafwk.param.callerToken：表示拉起方的token，值为字符串类型。<br />- ohos.aafwk.param.callerUid：表示[BundleInfo](js-apis-bundleManager-bundleInfo.md#bundleinfo-1)中的uid，应用包里应用程序的uid，值为数值类型。<br />- ohos.param.callerAppCloneIndex：表示拉起方应用的分身索引，值为数值类型。<br />- component.startup.newRules：表示是否启用新的管控规则，值为布尔类型。<br />- moduleName：表示被拉起方的moduleName，值为字符串类型。<br />- ohos.ability.params.abilityRecoveryRestart：表示当前Ability是否发生了故障恢复重启，值为布尔类型。<br />- ohos.extra.param.key.showMode：表示拉起原子化服务的展示模式，值为枚举类型[wantConstant.ShowMode](js-apis-app-ability-wantConstant.md#showmode12)。<br/><br/>**说明**：<br/>在跨端场景中，以下三个字段不生效，不可用于身份或权限校验：ohos.aafwk.param.callerPid、ohos.aafwk.param.callerToken、ohos.aafwk.param.callerUid。<br /><br />二、提供了一些由系统定义、开发者按需赋值的Key。具体的key值与对应说明详见[wantConstant.Params](js-apis-app-ability-wantConstant.md#params)<!--Del-->以及[wantConstant.Params(仅系统应用可用)](js-apis-app-ability-wantConstant-sys.md#params)<!--DelEnd-->。<br /><br />三、除了上述情况，应用间还可以相互约定传入的键值对。<br /><br />**说明**：<br/>want的Params操作的常量的具体信息请参考[wantConstant](js-apis-app-ability-wantConstant.md)。<br/>需注意，WantParams支持传输的最大数据量遵循[Want约束限制](#约束限制)。当数据量超过该限制时，请使用[WriteRawDataBuffer](../apis-ipc-kit/js-apis-rpc.md#writerawdatabuffer11)或[uri](../apis-arkts/js-apis-uri.md)的方式进行数据传输。<br/>parameters的Value值仅支持基本数据类型：String、Number、Boolean、Object、undefined和null，不支持传递Object内部的function。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| flags | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 表示处理Want的方式。值为枚举类型[Flags](js-apis-app-ability-wantConstant.md#flags)，默认传数字。<br />例如取值为0x00000001（即wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION）表示临时授予接收方读取该URI指向的数据的权限。<br>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| fds<sup>15+</sup> | ArkTS-Dyn: Record\<string, number><br/>ArkTS-Sta: Record\<string, int> | 是 | 是 | 表示文件描述符的集合。在应用启动场景中，拉起方通过[startAbility](js-apis-inner-application-uiAbilityContext.md#startability)传递Want时，需在parameters中以固定键值对形式传入文件描述符，被拉起方可通过该字段获取文件描述符，具体使用方式见“文件描述符（FD）”示例。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 15开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 - 基础用法：在UIAbility对象中调用，示例中的context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -78,237 +82,546 @@ import { Want } from '@kit.AbilityKit';
 
 - 目前支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等。
 
-    * 字符串（String）
-        ```ts
-        import { UIAbility, Want } from '@kit.AbilityKit';
-        import { window } from '@kit.ArkUI';
-        import { BusinessError } from '@kit.BasicServicesKit';
+  * 字符串（String）
+    ```ts
+    import { UIAbility, Want } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    import { BusinessError } from '@kit.BasicServicesKit';
 
-        export default class EntryAbility extends UIAbility {
-          onWindowStageCreate(windowStage: window.WindowStage): void {
-            let want: Want = {
-              bundleName: 'com.example.myapplication',
-              abilityName: 'FuncAbility',
-              parameters: {
-                keyForString: 'str',
-              },
-            };
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        let want: Want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'FuncAbility',
+          parameters: {
+            keyForString: 'str',
+          },
+        };
 
-            this.context.startAbility(want, (err: BusinessError) => {
-              if (err.code) {
-                console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
-              }
-            });
+        this.context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
           }
-        }
-        ```
-    * 数字（Number）
-        ```ts
-        import { UIAbility, Want } from '@kit.AbilityKit';
-        import { window } from '@kit.ArkUI';
-        import { BusinessError } from '@kit.BasicServicesKit';
+        });
+      }
+    }
+    ```
+  * 数字（Number）
+    ```ts
+    import { UIAbility, Want } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    import { BusinessError } from '@kit.BasicServicesKit';
 
-        export default class EntryAbility extends UIAbility {
-          onWindowStageCreate(windowStage: window.WindowStage): void {
-            let want: Want = {
-              bundleName: 'com.example.myapplication',
-              abilityName: 'FuncAbility',
-              parameters: {
-                keyForInt: 100,
-                keyForDouble: 99.99,
-              },
-            };
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        let want: Want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'FuncAbility',
+          parameters: {
+            keyForInt: 100,
+            keyForDouble: 99.99,
+          },
+        };
 
-            this.context.startAbility(want, (err: BusinessError) => {
-              if (err.code) {
-                console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
-              }
-            });
+        this.context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
           }
-        }
-        ```
-    * 布尔（Boolean）
-        ```ts
-        import { UIAbility, Want } from '@kit.AbilityKit';
-        import { window } from '@kit.ArkUI';
-        import { BusinessError } from '@kit.BasicServicesKit';
+        });
+      }
+    }
+    ```
+  * 布尔（Boolean）
+    ```ts
+    import { UIAbility, Want } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    import { BusinessError } from '@kit.BasicServicesKit';
 
-        export default class EntryAbility extends UIAbility {
-          onWindowStageCreate(windowStage: window.WindowStage): void {
-            let want: Want = {
-              bundleName: 'com.example.myapplication',
-              abilityName: 'FuncAbility',
-              parameters: {
-                keyForBool: true,
-              },
-            };
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        let want: Want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'FuncAbility',
+          parameters: {
+            keyForBool: true,
+          },
+        };
 
-            this.context.startAbility(want, (err: BusinessError) => {
-              if (err.code) {
-                console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
-              }
-            });
+        this.context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
           }
-        }
-        ```
-    * 对象（Object）
-        ```ts
-        import { UIAbility, Want } from '@kit.AbilityKit';
-        import { window } from '@kit.ArkUI';
-        import { BusinessError } from '@kit.BasicServicesKit';
+        });
+      }
+    }
+    ```
+  * 对象（Object）
+    ```ts
+    import { UIAbility, Want } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    import { BusinessError } from '@kit.BasicServicesKit';
 
-        export default class EntryAbility extends UIAbility {
-          onWindowStageCreate(windowStage: window.WindowStage): void {
-            let want: Want = {
-              bundleName: 'com.example.myapplication',
-              abilityName: 'FuncAbility',
-              parameters: {
-                keyForObject: {
-                  keyForObjectString: 'str',
-                  keyForObjectInt: -200,
-                  keyForObjectDouble: 35.5,
-                  keyForObjectBool: false,
-                },
-              },
-            };
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        let want: Want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'FuncAbility',
+          parameters: {
+            keyForObject: {
+              keyForObjectString: 'str',
+              keyForObjectInt: -200,
+              keyForObjectDouble: 35.5,
+              keyForObjectBool: false,
+            },
+          },
+        };
 
-            this.context.startAbility(want, (err: BusinessError) => {
-              if (err.code) {
-                console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
-              }
-            });
+        this.context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
           }
-        }
-        ```
-    * 数组（Array）
+        });
+      }
+    }
+    ```
+  * 数组（Array）
 
-        ```ts
-        import { UIAbility, Want } from '@kit.AbilityKit';
-        import { window } from '@kit.ArkUI';
-        import { BusinessError } from '@kit.BasicServicesKit';
+    ```ts
+    import { UIAbility, Want } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    import { BusinessError } from '@kit.BasicServicesKit';
 
-        export default class EntryAbility extends UIAbility {
-          onWindowStageCreate(windowStage: window.WindowStage): void {
-            let want: Want = {
-              bundleName: 'com.example.myapplication',
-              abilityName: 'FuncAbility',
-              parameters: {
-                keyForArrayString: ['str1', 'str2', 'str3'],
-                keyForArrayInt: [100, 200, 300, 400],
-                keyForArrayDouble: [0.1, 0.2],
-                keyForArrayObject: [{ obj1: 'aaa' }, { obj2: 100 }],
-              },
-            };
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        let want: Want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'FuncAbility',
+          parameters: {
+            keyForArrayString: ['str1', 'str2', 'str3'],
+            keyForArrayInt: [100, 200, 300, 400],
+            keyForArrayDouble: [0.1, 0.2],
+            keyForArrayObject: [{ obj1: 'aaa' }, { obj2: 100 }],
+          },
+        };
 
-            this.context.startAbility(want, (err: BusinessError) => {
-              if (err.code) {
-                console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
-              }
-            });
+        this.context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
           }
+        });
+      }
+    }
+    ```
+
+  * 文件描述符（FD）
+
+    ```ts
+    // 拉起方：在parameters中以{'type':'FD','value':fd}的固定键值对形式传入文件描述符
+    import { UIAbility, Want } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { fileIo } from '@kit.CoreFileKit';
+
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        let fd: number = 0;
+
+        try {
+          fd = fileIo.openSync('/data/storage/el2/base/haps/pic.png').fd;
+        } catch (err) {
+          let code = (err as BusinessError).code;
+          let message = (err as BusinessError).message;
+          console.error(`Failed to openSync. Code: ${code}, message: ${message}`);
         }
-        ```
-
-    * 文件描述符（FD）
-
-        ```ts
-        import { UIAbility, Want } from '@kit.AbilityKit';
-        import { window } from '@kit.ArkUI';
-        import { BusinessError } from '@kit.BasicServicesKit';
-        import { fileIo } from '@kit.CoreFileKit';
-
-        export default class EntryAbility extends UIAbility {
-          onWindowStageCreate(windowStage: window.WindowStage): void {
-            let fd: number = 0;
-
-            try {
-              fd = fileIo.openSync('/data/storage/el2/base/haps/pic.png').fd;
-            } catch (err) {
-              let code = (err as BusinessError).code;
-              let message = (err as BusinessError).message;
-              console.error(`Failed to openSync. Code: ${code}, message: ${message}`);
-            }
-            let want: Want = {
-              deviceId: '', // deviceId为空表示本设备
-              bundleName: 'com.example.myapplication',
-              abilityName: 'FuncAbility',
-              moduleName: 'entry', // moduleName非必选
-              parameters: {
-                'keyFd': { 'type': 'FD', 'value': fd } // {'type':'FD', 'value':fd}是固定用法，用于表示该数据是FD
-              }
-            };
-
-            this.context.startAbility(want, (err: BusinessError) => {
-              if (err.code) {
-                console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
-              }
-            });
+        let want: Want = {
+          deviceId: '', // deviceId为空表示本设备
+          bundleName: 'com.example.myapplication',
+          abilityName: 'FuncAbility',
+          moduleName: 'entry', // moduleName非必选
+          parameters: {
+            // keyFd为自定义的key，被拉起方通过该key值查找对应value
+            // {'type':'FD','value':fd}是固定键值对，其中fd为开发者传递的文件描述符
+            'keyFd': { 'type': 'FD', 'value': fd }
           }
-        }
-        ```
+        };
 
-    * parameters参数用法：parameters携带开发者自定义参数，由UIAbilityA传递给UIAbilityB，并在UIAbilityB中进行获取。
-
-        ```ts
-        // (1) UIAbilityA通过startAbility启动UIAbilityB
-        import { UIAbility, Want } from '@kit.AbilityKit';
-        import { window } from '@kit.ArkUI';
-        import { BusinessError } from '@kit.BasicServicesKit';
-
-        export default class EntryAbility extends UIAbility {
-          onWindowStageCreate(windowStage: window.WindowStage): void {
-            let want: Want = {
-              bundleName: 'com.example.myapplication',
-              abilityName: 'UIAbilityB',
-              parameters: {
-                developerParameters: 'parameters',
-              },
-            };
-
-            this.context.startAbility(want, (err: BusinessError) => {
-              if (err.code) {
-                console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
-              }
-            });
+        this.context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
           }
+        });
+      }
+    }
+    ```
+    ```ts
+    // 被拉起方：通过want.fds获取拉起方传入的文件描述符
+    import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
+    import { fileIo } from '@kit.CoreFileKit';
+
+    export default class FuncAbility extends UIAbility {
+      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        let fd: number = -1;
+        // 从want.fds中获取拉起方传入的文件描述符，keyFd需与拉起方传入时使用的key保持一致
+        const fds = want.fds;
+        if (fds && fds.keyFd !== undefined) {
+          fd = fds.keyFd;
         }
-        ```
+        // 校验文件描述符是否有效（非负整数表示有效），若无效则记录错误并立即退出，避免后续使用非法fd导致崩溃
+        if (fd < 0) {
+          console.error(`Failed to get fd from want.fds`);
+          return;
+        }
+        // ...
+        fileIo.closeSync(fd); // 使用完毕后关闭文件描述符，避免文件描述符泄漏
+      }
+    }
+    ```
 
-        ```ts
-        // (2) 以UIAbilityB实例首次启动为例，会进入到UIAbilityB的onCreate生命周期
-        import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
 
-        class UIAbilityB extends UIAbility {
-          onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-            console.info(`onCreate, want parameters: ${want.parameters?.developerParameters}`);
+  * parameters参数用法：parameters携带开发者自定义参数，由UIAbilityA传递给UIAbilityB，并在UIAbilityB中进行获取。
+
+    ```ts
+    // (1) UIAbilityA通过startAbility启动UIAbilityB
+    import { UIAbility, Want } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    import { BusinessError } from '@kit.BasicServicesKit';
+
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        let want: Want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'UIAbilityB',
+          parameters: {
+            developerParameters: 'parameters',
+          },
+        };
+
+        this.context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
           }
-        }
-        ```
-    * parameters参数中[wantConstant](js-apis-app-ability-wantConstant.md)的Key的使用方法。
+        });
+      }
+    }
+    ```
 
-        ```ts
-        import { UIAbility, Want, wantConstant } from '@kit.AbilityKit';
-        import { window } from '@kit.ArkUI';
-        import { BusinessError } from '@kit.BasicServicesKit';
+    ```ts
+    // (2) 以UIAbilityB实例首次启动为例，会进入到UIAbilityB的onCreate生命周期
+    import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
 
-        export default class EntryAbility extends UIAbility {
-          onWindowStageCreate(windowStage: window.WindowStage): void {
-            let want: Want = {
-              bundleName: 'com.example.myapplication',
-              abilityName: 'FuncAbility',
-              parameters: {
-                [wantConstant.Params.CONTENT_TITLE_KEY]: 'contentTitle',
-              },
-            };
+    class UIAbilityB extends UIAbility {
+      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        console.info(`onCreate, want parameters: ${want.parameters?.developerParameters}`);
+      }
+    }
+    ```
+  * parameters参数中[wantConstant](js-apis-app-ability-wantConstant.md)的Key的使用方法。
 
-            this.context.startAbility(want, (err: BusinessError) => {
-              if (err.code) {
-                console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
-              }
-            });
+    ```ts
+    import { UIAbility, Want, wantConstant } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    import { BusinessError } from '@kit.BasicServicesKit';
+
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        let want: Want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'FuncAbility',
+          parameters: {
+            [wantConstant.Params.CONTENT_TITLE_KEY]: 'contentTitle',
+          },
+        };
+
+        this.context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
           }
-        }
-        ```
-    * parameters参数中获取拉起方的信息。
+        });
+      }
+    }
+    ```
+  * parameters参数中获取拉起方的信息。
 
-      详见[获取UIAbility拉起方的信息](../../application-models/uiability-usage.md#获取uiability拉起方的信息)。
+    详见[获取UIAbility拉起方的信息](../../application-models/uiability-usage.md#获取uiability拉起方的信息)。
+
+ArkTS-Sta示例：
+
+- 基础用法：在UIAbility对象中调用，示例中的context的获取方式请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+  ```ts
+  'use static'
+  import { UIAbility, Want } from '@kit.AbilityKit';
+  import { window } from '@kit.ArkUI';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  export default class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage): void {
+      let want: Want = {
+        deviceId: '', // deviceId为空表示本设备
+        bundleName: 'com.example.myapplication',
+        abilityName: 'FuncAbility',
+        moduleName: 'entry' // moduleName非必选
+      };
+  
+      this.context.startAbility(want, (err: BusinessError | null) => {
+        if (err?.code) {
+          // 显式拉起Ability，通过bundleName、abilityName和moduleName可以唯一确定一个Ability
+          console.error(`Failed to startAbility. Code: ${err?.code}, message: ${err?.message}`);
+        }
+      });
+    }
+  }
+  ```
+  
+- 目前支持的数据类型有：字符串、数字、布尔、对象、数组和文件描述符等。
+
+  * 字符串（String）
+
+    ```ts
+    import { UIAbility, Want } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+    
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        let want: Want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'FuncAbility',
+          parameters: {
+            'keyForString': 'str',
+          } as Record<string, RecordData>,
+        };
+    
+        this.context.startAbility(want, (err: BusinessError | null) => {
+          if (err?.code) {
+            console.error(`Failed to startAbility. Code: ${err?.code}, message: ${err?.message}`);
+          }
+        });
+      }
+    }
+    ```
+  
+  * 数字（Number）
+
+    ```ts
+    import { UIAbility, Want } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+    
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        let want: Want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'FuncAbility',
+          parameters: {
+            'keyForInt': 100,
+            'keyForDouble': 99.99,
+          } as Record<string, RecordData>,
+        };
+    
+        this.context.startAbility(want, (err: BusinessError | null) => {
+          if (err?.code) {
+            console.error(`Failed to startAbility. Code: ${err?.code}, message: ${err?.message}`);
+          }
+        });
+      }
+    }
+    ```
+  
+  * 布尔（Boolean）
+
+    ```ts
+    import { UIAbility, Want } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+    
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        let want: Want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'FuncAbility',
+          parameters: {
+            'keyForBool': true,
+          } as Record<string, RecordData>,
+        };
+    
+        this.context.startAbility(want, (err: BusinessError | null) => {
+          if (err?.code) {
+            console.error(`Failed to startAbility. Code: ${err?.code}, message: ${err?.message}`);
+          }
+        });
+      }
+    }
+    ```
+    
+  * 对象（Object）
+  
+    ```ts
+    import { UIAbility, Want } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+    
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        let want: Want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'FuncAbility',
+          parameters: {
+            'keyForObject': {
+              'keyForObjectString': 'str',
+              'keyForObjectInt': -200,
+              'keyForObjectDouble': 35.5,
+              'keyForObjectBool': false,
+            } as Record<string, RecordData>,
+          } as Record<string, RecordData>,
+        };
+    
+        this.context.startAbility(want, (err: BusinessError | null) => {
+          if (err?.code) {
+            console.error(`Failed to startAbility. Code: ${err?.code}, message: ${err?.message}`);
+          }
+        });
+      }
+    }
+    ```
+    
+  * 数组（Array）
+  
+    ```ts
+    import { UIAbility, Want } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+    
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+      let want: Want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'FuncAbility',
+          parameters: {
+            'keyForArrayString': ['str1', 'str2', 'str3'],
+            'keyForArrayInt': [100, 200, 300, 400],
+            'keyForArrayDouble': [0.1, 0.2],
+            'keyForArrayObject': [{ 'obj1': 'aaa' } as Record<string, Object>, { 'obj2': 100 } as Record<string, Object>],
+          } as Record<string, RecordData>,
+        };
+    
+        this.context.startAbility(want, (err: BusinessError | null) => {
+          if (err?.code) {
+            console.error(`Failed to startAbility. Code: ${err?.code}, message: ${err?.message}`);
+          }
+        });
+      }
+    }
+    ```
+    
+  * 文件描述符（FD）
+  
+    ```ts
+    import { UIAbility, Want } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+    import { fileIo } from '@kit.CoreFileKit';
+    
+    export default class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage): void {
+        let fd: number = 0;
+  
+        try {
+          fd = fileIo.openSync('/data/storage/el2/base/haps/pic.png').fd;
+        } catch (err) {
+          let code = (err as BusinessError).code;
+          let message = (err as BusinessError).message;
+          console.error(`Failed to openSync. Code: ${code}, message: ${message}`);
+        }
+        let want: Want = {
+          deviceId: '', // deviceId为空表示本设备
+          bundleName: 'com.example.myapplication',
+          abilityName: 'FuncAbility',
+          moduleName: 'entry', // moduleName非必选
+          parameters: {
+            'keyFd': {
+              'type': 'FD',
+              'value': fd
+            } as Record<string, RecordData> // {'type':'FD', 'value':fd}是固定用法，用于表示该数据是FD
+          } as Record<string, RecordData>,
+        };
+    
+        this.context.startAbility(want, (err: BusinessError | null) => {
+          if (err?.code) {
+            console.error(`Failed to startAbility. Code: ${err?.code}, message: ${err?.message}`);
+          }
+        });
+      }
+    }
+    ```
+
+  * parameters参数用法：parameters携带开发者自定义参数，由UIAbilityA传递给UIAbilityB，并在UIAbilityB中进行获取。
+
+    ```ts
+    // (1) UIAbilityA通过startAbility启动UIAbilityB
+    import { UIAbility, Want } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+    
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        let want: Want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'UIAbilityB',
+          parameters: {
+            'developerParameters': 'parameters',
+          } as Record<string, RecordData>,
+        };
+    
+        this.context.startAbility(want, (err: BusinessError | null) => {
+          if (err?.code) {
+            console.error(`Failed to startAbility. Code: ${err?.code}, message: ${err?.message}`);
+          }
+        });
+      }
+    }
+    ```
+    
+    ```ts
+    // (2) 以UIAbilityB实例首次启动为例，会进入到UIAbilityB的onCreate生命周期
+    import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
+    
+    class UIAbilityB extends UIAbility {
+      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        console.info(`onCreate, want parameters: ${JSON.stringify(want.parameters)}`);
+      }
+    }
+    ```
+
+  * parameters参数中[wantConstant](js-apis-app-ability-wantConstant.md)的Key的使用方法。
+
+    ```ts
+    import { UIAbility, Want, wantConstant } from '@kit.AbilityKit';
+    import { window } from '@kit.ArkUI';
+    import { BusinessError, RecordData } from '@kit.BasicServicesKit';
+    
+    
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        let contentTitleKey: string = wantConstant.Params.CONTENT_TITLE_KEY;
+        let parameters: Record<string, RecordData> = {};
+        parameters[contentTitleKey] = contentTitleKey;
+        let want: Want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'FuncAbility',
+          parameters: parameters
+        };
+    
+        this.context.startAbility(want, (error) => {
+          let err = error as BusinessError;
+          if (err.code) {
+            console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
+          }
+        });
+      }
+    }
+    ```
+
+  * parameters参数中获取拉起方的信息。
+
+    详见[获取UIAbility拉起方的信息](../../application-models/uiability-usage.md#获取uiability拉起方的信息)。

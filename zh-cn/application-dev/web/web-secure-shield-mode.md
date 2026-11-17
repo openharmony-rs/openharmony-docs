@@ -1,8 +1,8 @@
 # 坚盾守护模式
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @weixin_41848015-->
-<!--Designer: @libing23232323-->
+<!--Owner: @xingyihang-->
+<!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -20,11 +20,11 @@
 
 - 禁止使用MathML能力。
 
-- 禁止使用Web Speech API语音识别能力。
+- 禁止使用Web Speech API语音识别与语音合成能力。
 
 - 禁止使用RTCDataChannel接口。
 
-- 禁止使用MediaDevices.getUserMedia接口提示用户允许访问媒体输入设备。
+- 禁止使用MediaDevices.getUserMedia接口提示用户允许访问媒体输入设备（麦克风与摄像头）。
 
 - 禁止使用Service Worker能力。
 

@@ -1,9 +1,17 @@
 # Repeat (ArkTS-Sta)
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @maorh-->
+<!--Designer: @keerecles-->
+<!--Tester: @khq-->
+<!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 >
 > - 本模块仅适用于ArkTS-Sta。
-> 
+>
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 Repeat基于数组类型数据来进行循环渲染，一般与容器组件配合使用。
@@ -18,7 +26,7 @@ import { Repeat, RepeatItem } from '@ohos.arkui.component';
 
 ## 接口
 
-Repeat\<T\>(arr: RepeatArray\<T\>)
+Repeat\<T\>(arr: RepeatArray\<T\>, options?: RepeatOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -27,6 +35,7 @@ Repeat\<T\>(arr: RepeatArray\<T\>)
 | 参数名 | 类型       | 必填 | 说明      |
 | ------ | ---------- | -------- | -------- |
 | arr    | [RepeatArray\<T\>](#repeatarrayt) | 是 | 数据源，为`RepeatArray<T>`类型的数组，由开发者决定数据类型。 |
+| options    | [RepeatOptions](#repeatoptions) | 否 | 创建Repeat组件时的配置项，用于绑定控制器、设置动效过程中的子组件复用策略。不传入时使用默认配置（不绑定控制器）。<br>**起始版本：** 26.1.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ArkTS-Sta中Repeat()强制要求声明数组类型`<T>`。
 
@@ -173,6 +182,23 @@ List() {
 }
 ```
 
+### debugLine<sup>24+</sup>
+
+debugLine(sourceLine: string, moduleName?: string)
+
+设置组件源码重定向信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| sourceLine | string | 是 | 源码行号。 |
+| moduleName | string | 否 | 组件所属模块名。 |
+
 ## RepeatArray\<T\>
 
 type RepeatArray\<T\> = Array\<T\> | ReadonlyArray\<T\> | Readonly\<Array\<T\>\>
@@ -186,6 +212,199 @@ Repeat数据源参数联合类型。
 | Array\<T\> | 常规数组类型。 |
 | ReadonlyArray\<T\> | 只读数组类型，不允许数组对象变更。 |
 | Readonly\<Array\<T\>> | 只读数组类型，不允许数组对象变更。 |
+
+## RepeatOptions
+
+创建Repeat组件时的配置项。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| controller | [RepeatController](#repeatcontroller) | 否 | 是 | 绑定到Repeat组件上的控制器。绑定后，需要清理缓存时可调用[clearCache](#clearcache)清理Repeat组件懒加载模式下缓存池中的组件。该控制器仅在创建Repeat时绑定，不支持动态修改。<br>默认值：undefined，即不绑定控制器。 |
+| allowReuseInAnimation | boolean | 否 | 是 | Repeat在[animateTo](../arkts-apis-uicontext-uicontext.md#animateto)动效过程中更新时，是否允许复用子组件。仅在Repeat的父容器组件为[List](./ts-container-list.md)、[Grid](./ts-container-grid.md)、[WaterFlow](./ts-container-waterflow.md)时生效。<br>Repeat与动效一起使用时，Repeat的复用能力会与动效产生冲突，导致动效异常。在涉及动效的场景下，需将该参数设置为false，Repeat在动效过程中更新时将不复用子组件，从而支持动效。该参数在创建Repeat时设置，不支持动态修改。<br>true：动效过程中复用能力仍保持开启。<br>false：动效过程中复用能力关闭。<br>默认值：Repeat的父容器组件为List时为false；父容器组件为Grid或WaterFlow时为true。 |
+
+**示例：**
+
+以下示例中，通过[RepeatOptions](#repeatoptions)的allowReuseInAnimation属性适配了动效能力。
+
+从API版本26.1.0开始，Repeat接口新增options参数。
+
+```ts
+import { Entry, ComponentV2, Column, Row, Text, Button, ClickEvent, Grid, GridItem, Repeat, RepeatItem, TransitionEffect, ColumnOptions, RowOptions } from '@ohos.arkui.component';
+import { Local } from '@ohos.arkui.stateManagement';
+
+@Entry
+@ComponentV2
+struct RepeatAnimationDemo {
+  @Local dataArray: Array<string> = new Array<string>();
+  private count: number = 0;
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 20; i++) {
+      this.dataArray.push(`Item ${i}`);
+    }
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Row({ space: 5 } as RowOptions) {
+        Button('Update Repeat in Animation')
+          .onClick((e: ClickEvent) => { // 在动效过程中插入子组件
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              this.dataArray.splice(0, 0, `New item ${this.count++}`);
+            });
+          })
+      }
+      Row({ space: 5 } as RowOptions) {
+        Grid() {
+          Repeat<string>(this.dataArray, { allowReuseInAnimation: false }) // Repeat在动效过程中不复用子组件，从而适配动效
+            .each((ri: RepeatItem<string>) => {
+              GridItem() {
+                Text(ri.item)
+              }
+              .width(150)
+              .height(50)
+              .border({ width: 1 })
+              .transition(TransitionEffect.translate({ x: 300 })) // 设置子组件插入时的过渡效果
+            })
+            .key((item: string) => item)
+            .virtualScroll()
+        }
+        .columnsTemplate('1fr')
+        .columnsGap(5)
+        .rowsGap(5)
+        .width('80%')
+      }
+    }
+    .width('100%')
+  }
+}
+```
+
+运行效果：
+
+![Repeat-animate-grid](figures/repeat-animate-grid.gif)
+
+## RepeatController
+
+Repeat组件的控制器。通过[RepeatOptions](#repeatoptions)中的controller字段将控制器绑定到Repeat组件上，需要清理缓存时调用[clearCache](#clearcache)清理Repeat组件懒加载模式下缓存池中的组件。
+
+> **说明：**
+>
+> 1. controller仅在Repeat创建时绑定，不支持动态修改。
+> 2. 一个控制器只能控制一个Repeat组件。若将控制器绑定到另一个Repeat，则之前的绑定自动失效，控制器仅控制最后绑定的组件。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### constructor
+
+constructor()
+
+RepeatController的构造函数。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### clearCache
+
+clearCache(): void
+
+清理该控制器绑定的Repeat组件懒加载模式下缓存池中的组件。
+
+**起始版本：** 26.1.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**示例：**
+
+以下示例中，通过[RepeatOptions](#repeatoptions)的controller属性绑定了[RepeatController](#repeatcontroller)，点击Scroll按钮跳转列表，使旧的子组件进入缓存池，然后点击Clear按钮，主动清理Repeat懒加载模式下缓存池中的组件。
+
+从API版本26.1.0开始，Repeat接口新增options参数。
+
+```ts
+import { Entry, ComponentV2, Column, Text, Repeat, RepeatItem, RepeatController, List, ListItem, Button, ClickEvent, Scroller } from '@ohos.arkui.component';
+import { Param } from '@ohos.arkui.stateManagement';
+
+@ComponentV2
+struct ChildComponent {
+  @Param label: string = '';
+  aboutToAppear() {
+    console.info(`ChildComponent [${this.label}] aboutToAppear`);
+  }
+  aboutToDisappear() {
+    console.info(`ChildComponent [${this.label}] aboutToDisappear`);
+  }
+  aboutToRecycle() {
+    console.info(`ChildComponent [${this.label}] aboutToRecycle`);
+  }
+  aboutToReuse() {
+    console.info(`ChildComponent [${this.label}] aboutToReuse`);
+  }
+ 
+  build() {
+    Text(`ChildComponent: ${this.label}`)
+  }
+}
+
+@Entry
+@ComponentV2
+struct ClearCacheDemo {
+  @Param data: Array<string> = new Array<string>();
+  // 创建RepeatController对象
+  private controller: RepeatController = new RepeatController();
+  private scroller: Scroller = new Scroller();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.data.push(`item ${i}`);
+    }
+  }
+
+  build() {
+    Column() {
+      List({ space: 10, scroller: this.scroller }) {
+        // 通过RepeatOptions的controller字段绑定控制器
+        Repeat<string>(this.data, { controller: this.controller })
+          .each((ri: RepeatItem<string>) => {
+            ListItem() {
+              ChildComponent({ label: ri.item })
+            }
+          })
+          .key((item: string) => item)
+          .virtualScroll()
+      }
+      .height('80%')
+      .cachedCount(0)
+
+      Button('Scroll')
+        .onClick((e: ClickEvent) => {
+          // 主动清理Repeat缓存池中的组件
+          this.scroller.scrollToIndex(30);
+        })
+
+      Button('Clear')
+        .onClick((e: ClickEvent) => {
+          // 主动清理Repeat缓存池中的组件
+          this.controller.clearCache();
+        })
+    }
+  }
+}
+```
 
 ## RepeatItem\<T\>
 
@@ -209,6 +428,7 @@ Repeat数据源参数联合类型。
 | totalCount | int | 否 | 是  | 期望加载的数据项总数，可以不等于数据源长度（实际传入Repeat的数组的长度）。<br>取值范围：自然数。<br>totalCount缺省或超出取值范围时，totalCount取值为数据源长度，列表正常滚动。<br>totalCount = 0时，不加载数据。<br>0 < totalCount <= 数据源长度时，界面中只渲染区间[0, totalCount - 1]范围内的数据。<br>totalCount > 数据源长度时，Repeat将渲染区间[0, totalCount - 1]范围内的数据，容器组件滚动条样式根据totalCount值变化。在容器组件滚动过程中，应用需要保证在列表即将滑动到数据源末尾时请求后续数据。开发者需要对数据请求的错误场景（如网络延迟）进行保护操作，直到数据源全部加载完成，否则列表滑动过程中会出现滚动效果异常。建议配合使用[onLazyLoading](#onlazyloading)实现数据懒加载。<br>除totalCount属性外，开发者也可以通过[onTotalCount](#ontotalcount)方法设置自定义方法，计算期望加载的数据项总数。 |
 | reusable | boolean | 否 | 是  | 是否开启复用功能。<br>true：开启复用。<br>false：关闭复用。<br>默认值：true |
 | disableVirtualScroll | boolean | 否 | 是 | 是否关闭懒加载模式。<br>true：关闭懒加载模式，列表节点全部加载。<br>false：使用懒加载模式。<br>默认值：false<br>该接口仅适用于ArkTS-Sta。 |
+| memoryOptimizationStrategy | [RepeatMemOptStrategy](#repeatmemoptstrategy) | 否 | 是 | Repeat的内存优化策略。该参数在创建Repeat时设定，不支持动态修改。<br>DEFAULT：默认模式。<br>ENABLE_AUTO_CACHE_OPTIMIZATION：Repeat自动优化内存。<br>默认值：DEFAULT|
 
 **示例**
 
@@ -228,7 +448,7 @@ onTotalCount?(): int
 
 可选方法，计算期望加载的数据项总数。需要开发者给定计算方法，其返回值可以不等于数据源长度（实际传入Repeat的数组的长度）。
 
-[totalCount](#virtualscrolloptions)和onTotalCount()的返回值都表示期望加载的数据项总数。开发者可直接设置totolCount属性，给出期望加载的数据项总数，也可以通过onTotalCount()设定自定义方法，计算期望加载的数据项总数。totalCount与onTotalCount()最多设置一个。如果均未设置，则采用默认值：数据源长度；如果同时设置，则忽略totalCount。
+[totalCount](#属性-1)和onTotalCount()的返回值都表示期望加载的数据项总数。开发者可直接设置totalCount属性，给出期望加载的数据项总数，也可以通过onTotalCount()设定自定义方法，计算期望加载的数据项总数。totalCount与onTotalCount()最多设置一个。如果均未设置，则采用默认值：数据源长度；如果同时设置，则忽略totalCount。
 
 onTotalCount()不同返回值的数据加载处理规则与totalCount一致，具体如下：
 
@@ -433,3 +653,60 @@ struct Repeat_Virtual_1_2 {
 运行效果：
 
 ![repeat_sta_vs_demo](figures/repeat_sta_vs_demo.jpeg)
+
+## RepeatMemOptStrategy
+  
+Repeat内存优化策略枚举。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| --- | --- | --- |
+| DEFAULT | 0 | 无内存优化策略。 |
+| ENABLE_AUTO_CACHE_OPTIMIZATION | 1 | 自动内存优化策略，当Repeat子节点内存占用较高时，建议使用此策略以降低内存使用量。<br>当应用退后台时、Repeat所在组件不可见时（[visibility](./ts-universal-attributes-visibility.md#visibility)属性设置为Visible以外的值，或组件面积为0，不考虑遮挡）、整机低内存时（[MemoryLevel](../../apis-ability-kit/js-apis-app-ability-abilityConstant.md#memorylevel)达到MEMORY_LEVEL_LOW或MEMORY_LEVEL_CRITICAL），释放Repeat预加载区域的所有子节点。<br>当应用恢复前台、Repeat组件恢复显示时，列表滑动时恢复缓存池中的节点。 |
+
+**示例：**
+
+```ts
+import { Entry, Component, Column, Text, Color, Repeat, RepeatItem, RepeatMemOptStrategy, List, ListItem } from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Repeat_Virtual_1_2 {
+  @State simpleList: Array<string> = new Array<string>();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 50; i++) {
+      this.simpleList.push(`data_${i}`); // 向数组中添加一些数据
+    }
+  }
+
+  build() {
+    Column() {
+      List() {
+        Repeat<string>(this.simpleList) // 必须声明数据类型<T>
+          .each((ri: RepeatItem<string>) => { // RepeatItem可以省略
+            ListItem() {
+              Text(`#${ri.index}: ${ri.item}`).fontColor(Color.Red)
+            }
+          })
+          .key((item: string) => item)
+          .virtualScroll({memoryOptimizationStrategy: RepeatMemOptStrategy.ENABLE_AUTO_CACHE_OPTIMIZATION}) // 配置Repeat的内存优化策略，将自动优化内存
+          .template('ttype_a', (ri: RepeatItem<string>) => { // RepeatItem可以省略
+            ListItem() {
+              Text(`#${ri.index}: ${ri.item}`).fontColor(Color.Blue)
+            }
+          }, { cachedCount: 1 })
+          .templateId((item: string, index: int) => index % 2 === 0 ? 'ttype_a' : '')
+      }.height('40%')
+    }
+  }
+}
+```

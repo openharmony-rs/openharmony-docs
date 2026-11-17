@@ -2,15 +2,15 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
 ## 场景介绍
 
-静态订阅者在未接收订阅的目标事件时，处于未拉起状态。当系统或应用发布了指定的公共事件后，静态订阅者将被拉起，并执行[`onReceiveEvent()`](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent)回调。
+静态订阅者在未接收订阅的目标事件时，处于未拉起状态。当系统或应用发布了指定的公共事件后，静态订阅者将被拉起，并执行[onReceiveEvent()](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent)回调。
 
-开发者可以通过在[`onReceiveEvent()`](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent)回调中执行业务逻辑，实现当应用接收到特定公共事件时执行业务逻辑的目的。例如，应用希望在设备开机时执行一些初始化任务，那么该应用可以静态订阅开机事件，在收到开机事件后会拉起该应用，然后执行初始化任务。
+开发者可以通过在[onReceiveEvent()](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent)回调中执行业务逻辑，实现当应用接收到特定公共事件时执行业务逻辑的目的。例如，应用希望在设备开机时执行一些初始化任务，那么该应用可以静态订阅开机事件，在收到开机事件后会拉起该应用，然后执行初始化任务。
 
 静态订阅是通过配置文件声明和实现继承自[StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md)的类实现对公共事件的订阅。
 
@@ -20,7 +20,7 @@
 
 ## 生命周期
 
-[StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md)在[`onReceiveEvent()`](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent)执行完`15秒`后销毁。
+[StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md)在[onReceiveEvent()](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent)执行完`15秒`后销毁。
 
 ## 开发步骤
 
@@ -28,14 +28,31 @@
 
    声明一个静态订阅者，首先需要在工程中新建一个ExtensionAbility，该ExtensionAbility从[StaticSubscriberExtensionAbility](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md)派生。
 
-   开发者可以在[`onReceiveEvent()`](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent)回调中实现业务逻辑。
+   开发者可以在[onReceiveEvent()](../../reference/apis-basic-services-kit/js-apis-application-staticSubscriberExtensionAbility-sys.md#staticsubscriberextensionabilityonreceiveevent)回调中实现业务逻辑。
 
+   ArkTS-Dyn示例：
    ```ts
    import { commonEventManager, StaticSubscriberExtensionAbility } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
 
    const TAG: string = 'StaticSubscriber';
    const DOMAIN_NUMBER: number = 0xFF00;
+   
+   export default class StaticSubscriber extends StaticSubscriberExtensionAbility {
+     onReceiveEvent(event: commonEventManager.CommonEventData): void {
+       hilog.info(DOMAIN_NUMBER, TAG, 'onReceiveEvent, event: ' + event.event);
+       // ...
+     }
+   }
+   ```
+
+   ArkTS-Sta示例：
+   ```ts
+   import { commonEventManager, StaticSubscriberExtensionAbility } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+
+   const TAG: string = 'StaticSubscriber';
+   const DOMAIN_NUMBER: int = 0xFF00;
    
    export default class StaticSubscriber extends StaticSubscriberExtensionAbility {
      onReceiveEvent(event: commonEventManager.CommonEventData): void {
@@ -77,7 +94,7 @@
 
    其中部分字段解释如下：
 
-   - srcEntry：表示ExtensionAbility的入口文件路径，即步骤2中声明的静态订阅者所在的文件路径。
+   - srcEntry：表示ExtensionAbility的入口文件路径，即步骤1中声明的静态订阅者所在的文件路径。
 
    - type：表示ExtensionAbility的类型，对于静态订阅者需要声明为`staticSubscriber`。
 

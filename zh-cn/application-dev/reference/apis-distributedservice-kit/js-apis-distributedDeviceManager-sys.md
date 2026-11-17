@@ -14,7 +14,7 @@
 - 发现周边不可信设备。
 - 认证和取消认证设备。
 - 查询可信设备列表。
-- 查询本地设备信息，包括设备名称，设备类型和设备标识等。
+- 查询本地设备信息，包括设备名称、设备类型和设备标识等。
 
 > **说明：**
 >
@@ -35,6 +35,8 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **系统接口**： 此接口为系统接口。
 
 **ArkTS-Sta起始版本：** 23
@@ -48,6 +50,8 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 表示心跳广播策略。
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -65,6 +69,8 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 设备信息过滤器选项。
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -84,6 +90,8 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 15
@@ -102,6 +110,8 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 设备信息。
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -128,7 +138,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 |  hardwareVersion | string |  否   | 否  |  硬件版本。          |
 |  softwareVersion | string |  否  | 否  |  软件版本。          |
 |  protocolType    | ArkTS-Dyn: number <br /> ArkTS-Sta: int |  否   | 否  |  协议类型。 |
-|  setupType       | ArkTS-Dyn: number <br /> ArkTS-Sta: int |  否   | 否  |  设备类型。 |
+|  setupType       | ArkTS-Dyn: number <br /> ArkTS-Sta: int |  否   | 否  |  设置类型。 |
 |  wiseDeviceId    | string |  否   | 否  |  已注册设备标识。        |
 |  wiseUserId      | string |  否   | 否  |  已注册用户标识。        |
 |  registerTime    | string |  否   | 否  |  注册时间。          |
@@ -146,6 +156,8 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
@@ -157,7 +169,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 |  productId      | string  | 否 | 否   |  设备所属产品ID。          |
 |  subProductId   | string  | 否 | 是   |  设备所属产品子ID。默认为空。      |
 |  imageType      | string  | 否 | 否   |  图片类型。固定值为"ID"，表示产品实物图。 |
-|  specName       | string  | 否 | 否   |  图片规格名称。取值范围：<br /> - lg：大图，尺寸为1016064px。<br /> - sm：小图，尺寸为65536px。         |
+|  specName       | string  | 否 | 否   |  图片规格名称。取值范围：<br /> - lg：大图（尺寸：1008×1008像素）。<br /> - sm：小图（尺寸：256×256像素）。         |
 |  internalModel  | string  | 否 | 是   |  设备所属产品的内部型号。默认为空。        |
 
 ## DeviceIconInfo<sup>18+</sup>
@@ -165,6 +177,8 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 设备图标信息。
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -177,7 +191,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 |  productId      | string  | 否 | 否   |  设备所属产品ID。          |
 |  subProductId   | string  | 否 | 是   |  设备所属产品子ID。默认为空字符。     |
 |  imageType      | string  | 否 | 否   |  图片类型。固定值为"ID"，表示产品实物图。        |
-|  specName       | string  | 否 | 否   |  图片规格名称。取值范围：<br /> - lg：大图，尺寸为1016064px。<br /> - sm：小图，尺寸为65536px。         |
+|  specName       | string  | 否 | 否   |  图片规格名称。取值范围：<br /> - lg：大图（尺寸：1008×1008像素）。<br /> - sm：小图（尺寸：256×256像素）。         |
 |  url            | string  | 否 | 否   |  URL。          |
 |  icon           | ArrayBuffer | 否| 否 | 图标。         |
 |  internalModel  | string  | 否 | 是   |  设备所属产品的内部型号。默认为空。         |
@@ -187,6 +201,8 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 设备网络ID过滤器选项。
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -205,6 +221,8 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**： 此接口为系统接口。
@@ -216,7 +234,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 | 名称       | 类型  | 只读 | 可选              | 说明          |
 |----------| ---- | ------ | --------- |-------------|
 | deviceId | string  | 否 | 否   | 应用获取的匿名化设备ID。 |
-| udid     | string  | 否 | 否   | 设备唯一标识。     |
+| udid     | string  | 否 | 否   | 设备唯一标识。**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC、ohos.permission.ACCESS_SERVICE_DM和ohos.permission.sec.ACCESS_UDID。     |
 
 ## DeviceManager
 
@@ -237,6 +255,8 @@ ArkTS-Sta: replyUiAction(action: int, actionResult: string): void
 **需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -324,6 +344,8 @@ on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 10
@@ -387,6 +409,8 @@ onReplyResult(callback: Callback&lt;ReplyResult&gt;): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **系统接口**： 此接口为系统接口。
 
 **ArkTS-Sta起始版本：** 23
@@ -435,6 +459,8 @@ off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
 **需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -486,6 +512,8 @@ offReplyResult(callback?: Callback&lt;ReplyResult&gt;): void
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **系统接口**： 此接口为系统接口。
 
 **ArkTS-Sta起始版本：** 23
@@ -529,6 +557,8 @@ ArkTS-Sta: setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: int): voi
 **需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **系统接口**： 此接口为系统接口。
 
@@ -600,6 +630,8 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 15
@@ -633,6 +665,27 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.getDeviceProfileInfoList({"isCloud": false}).then((data: Array<distributedDeviceManager.DeviceProfileInfo>) => {
+      console.info('getDeviceProfileInfoList' + JSON.stringify(data));
+    }).catch((err: BusinessError) => {
+      let e: BusinessError = err as BusinessError;
+      console.error(`getDeviceProfileInfoList errCode: ${e.code}, errMessage: ${e.message}`);
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getDeviceProfileInfoList errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -662,6 +715,8 @@ ArkTS-Sta: putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfil
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
@@ -678,7 +733,7 @@ ArkTS-Sta: putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfil
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 |
+  | ArkTS-Dyn: Promise&lt;number&gt; <br /> ArkTS-Sta: Promise&lt;int&gt; | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
@@ -742,6 +797,8 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise&lt;Device
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
@@ -773,6 +830,38 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise&lt;Device
 | 11600106 | Get data from cloud fail. |
 
 **示例：**
+
+ArkTS-Dyn示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    let productIds:Array<string> = ['M0D2', 'M0D3', 'M0D5', 'M0AB', 'M0BD', 'M0E9', 'M0BC', 'M0EA'];
+    let options:distributedDeviceManager.DeviceIconInfoFilterOptions = {
+      productId: 'P14U',
+      imageType: 'ID',
+      specName: 'lg',
+    };
+    if (productIds.indexOf(options.productId) != -1) {
+      options.internalModel = '';
+    } else {
+      options.subProductId = '';
+    }
+    dmInstance.getDeviceIconInfo(options).then((data: distributedDeviceManager.DeviceIconInfo) => {
+      console.info('getDeviceIconInfo' + JSON.stringify(data));
+    }).catch((err: BusinessError) => {
+      let e: BusinessError = err as BusinessError;
+      console.error(`getDeviceIconInfo errCode: ${e.code}, errMessage: ${e.message}`);
+    });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getDeviceIconInfo errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -814,6 +903,8 @@ ArkTS-Sta: getLocalDisplayDeviceName(maxNameLength: int): Promise&lt;string&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
@@ -830,7 +921,7 @@ ArkTS-Sta: getLocalDisplayDeviceName(maxNameLength: int): Promise&lt;string&gt;
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | string | 指定名称长度最大字节数的本机设备显示名。 |
+  | Promise&lt;string&gt; | 指定名称长度最大字节数的本机设备显示名。 |
 
 **错误码：**
 
@@ -896,6 +987,8 @@ ArkTS-Sta: setLocalDeviceName(deviceName: string): Promise&lt;int&gt;
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
@@ -912,7 +1005,7 @@ ArkTS-Sta: setLocalDeviceName(deviceName: string): Promise&lt;int&gt;
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 |
+  | ArkTS-Dyn: Promise&lt;number&gt; <br /> ArkTS-Sta: Promise&lt;int&gt; | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
@@ -981,6 +1074,8 @@ ArkTS-Sta: setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
@@ -998,7 +1093,7 @@ ArkTS-Sta: setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt
 
   | 类型                                                       | 说明                               |
   | ---------------------------------------------------------- | ---------------------------------- |
-  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 操作结果，0表示本次调用成功。 |
+  | ArkTS-Dyn: Promise&lt;number&gt; <br /> ArkTS-Sta: Promise&lt;int&gt; | 操作结果，0表示本次调用成功。 |
 
 **错误码：**
 
@@ -1067,6 +1162,8 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
 **系统接口**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
@@ -1099,6 +1196,31 @@ getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt
 
 **示例：**
 
+ArkTS-Dyn示例：
+
+  ```ts
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let queryFiler: distributedDeviceManager.NetworkIdQueryFilter = {
+      wiseDeviceId: '',
+      onlineStatus: 1,
+    }
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.getDeviceNetworkIdList(queryFiler).then((data:Array<string>) => {
+      console.info('getDeviceNetworkIdList name:' + JSON.stringify(data));
+    }).catch((err: BusinessError) => {
+      let e: BusinessError = err as BusinessError;
+      console.error(`getDeviceNetworkIdList errCode: ${e.code}, errMessage: ${e.message}`);
+    })
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getDeviceNetworkIdList errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -1125,9 +1247,11 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 
 根据设备ID查询设备标识。
 
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM，ohos.permission.DISTRIBUTED_DATASYNC，ohos.permission.sec.ACCESS_UDID
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM、ohos.permission.DISTRIBUTED_DATASYNC和ohos.permission.sec.ACCESS_UDID
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1155,8 +1279,8 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 
 | 错误码ID    | 错误信息                                                                                                              |
 |----------|-------------------------------------------------------------------------------------------------------------------|
-| 201      | User permission verify failed.            |
-| 202      | The caller is not a system application.                                    |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.            |
+| 202      | Permission verification failed. A non-system application calls a system API.                                    |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed; |
 | 11600101 | Failed to execute the function.                                                                        |
 
@@ -1164,27 +1288,16 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 
   ```ts
 
-  private idsLists: undefined|Array<distributedDeviceManager.DeviceIdentification> = [];
-  getDeviceUdids(deviceIds: Array<string>): void {
-    let deviceManager: distributedDeviceManager.DeviceManager | null = null;
-    try {
-      deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication');
-      this.idsLists = deviceManager?.getIdentificationByDeviceIds(deviceIds);
-      console.info("Successfully retrieved UDID list");
-    } catch (error) {
-      console.error('Get device UDID failed:', error);
-      this.idsLists = [];
-    } finally {
-      if (deviceManager) {
-        try {
-          distributedDeviceManager.releaseDeviceManager(deviceManager);
-          console.info("deviceManager released successfully");
-        } catch (releaseError) {
-          console.error('Release device manager failed:', releaseError);
-        }
-      }
-    }
-  }
+  let idsLists: undefined|Array<distributedDeviceManager.DeviceIdentification> = [];
+  let deviceIds: Array<string> = [];
+  try {
+    let deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication');
+    idsLists = deviceManager?.getIdentificationByDeviceIds(deviceIds);
+    console.info("Successfully retrieved UDID list");
+  } catch (error) {
+    console.error('Get device UDID failed:', error);
+    idsLists = [];
+  } 
   ```
 
 ### restoreLocalDeviceName<sup>24+</sup>
@@ -1196,6 +1309,8 @@ restoreLocalDeviceName(): void
 **需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1270,6 +1385,87 @@ restoreLocalDeivceName(): void
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`restoreLocalDeivceName errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
+### getOsTypeByNetworkId
+
+ArkTS-Dyn: getOsTypeByNetworkId(networkId: string): number
+
+ArkTS-Sta: getOsTypeByNetworkId(networkId: string): int
+
+根据设备网络ID查询设备操作系统类型。
+
+**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC和ohos.permission.ACCESS_SERVICE_DM
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.1
+
+**ArkTS-Sta起始版本**：26.0.1
+
+**参数：**
+
+  | 参数名       | 类型            | 必填  | 说明                |
+  | ------------- | --------------- | ---- | ------------------- |
+  |  networkId       | string         | 是    | 设备网络ID。     |
+
+**返回值：**
+
+  | 类型                                                       | 说明                               |
+  | ---------------------------------------------------------- | ---------------------------------- |
+  | ArkTS-Dyn: number <br /> ArkTS-Sta: int | 设备操作系统类型。<br>- 10：基于OpenHarmony的操作系统。<br>- 11：非基于OpenHarmony的操作系统。<br>- -1：未知。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 11600102 | Failed to obtain service.                                 |
+| 11600110 | Invalid network ID.                                 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+  ```ts
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    let networkId: string = 'test_network_id';
+    let osType: number = dmInstance.getOsTypeByNetworkId(networkId);
+    console.info(`getOsTypeByNetworkId result: ${osType}`);
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`getOsTypeByNetworkId errCode: ${e.code}, errMessage: ${e.message}`);
+  }
+  ```
+
+ArkTS-Sta示例：
+
+  ```ts
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    let networkId: string = 'test_network_id';
+    let osType: int = dmInstance.getOsTypeByNetworkId(networkId);
+    console.info(`getOsTypeByNetworkId result: ${osType}`);
+  } catch (err) {
+    let e = err as Error;
+    console.error(`getOsTypeByNetworkId errCode: ${e.code}, errMessage: ${e.message}`);
   }
   ```
 

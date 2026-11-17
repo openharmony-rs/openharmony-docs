@@ -1,8 +1,8 @@
 # @ohos.matrix4 (矩阵变换)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -33,7 +33,7 @@ init(options: [number,number,number,number,number,number,number,number,number,nu
 
 Matrix的构造函数，可以通过传入的参数创建一个四阶矩阵，矩阵为列优先。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -136,7 +136,7 @@ identity(): Matrix4Transit
 
 Matrix的初始化函数，可以返回一个单位矩阵对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,7 +188,7 @@ struct Tests {
 
 矩阵对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -202,11 +202,11 @@ copy(): Matrix4Transit
 
 Matrix的拷贝函数，可以拷贝一份当前的矩阵对象。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本：** 7
 
 **ArkTS-Sta起始版本：** 23
 
@@ -253,7 +253,7 @@ struct Test {
 }
 ```
 
-![zh-cn_image_0000001219744181](figures/h-cn_image_0000001219744185.png)
+![Matrix4Copy](figures/matrix4-copy.png)
 
 ### combine
 
@@ -261,7 +261,7 @@ combine(options: Matrix4Transit): Matrix4Transit
 
 Matrix的叠加函数，可以将两个矩阵的效果叠加起来生成一个新的矩阵对象。会改变调用该函数的原始矩阵。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -313,7 +313,7 @@ struct Test {
 }
 ```
 
-![zh-cn_image_0000001118642902](figures/zh-cn_image_0000001118642902.png)
+![zh-cn_image_0000001118642902](figures/Matrix4-combine.png)
 
 
 ### invert
@@ -322,7 +322,7 @@ invert(): Matrix4Transit
 
 Matrix的逆函数，可以返回一个当前矩阵对象的逆矩阵，即效果正好相反。会改变调用该函数的原始矩阵。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -374,7 +374,7 @@ translate(options: TranslateOption): Matrix4Transit
 
 Matrix的平移函数，可以为当前矩阵增加x轴/y轴/z轴平移效果。会改变调用该函数的原始矩阵。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -416,7 +416,7 @@ struct Test {
 }
 ```
 
-![zh-cn_image_0000001219662645](figures/zh-cn_image_0000001219662645.png)
+![zh-cn_image_0000001219662645](figures/Matrix4-translate.png)
 
 
 ### scale
@@ -425,7 +425,7 @@ scale(options: ScaleOption): Matrix4Transit
 
 Matrix的缩放函数，可以为当前矩阵增加x轴/y轴/z轴缩放效果。会改变调用该函数的原始矩阵。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -474,16 +474,20 @@ struct Test {
 }
 ```
 
-![zh-cn_image_0000001219864131](figures/zh-cn_image_0000001219864131.png)
+![zh-cn_image_0000001219864131](figures/Matrix4-scale.png)
 
 
 ### skew<sup>12+</sup>
 
-skew(x: number, y: number): Matrix4Transit
+ArkTS-Dyn: skew(x: number, y: number): Matrix4Transit
+
+ArkTS-Sta: skew(x: double, y: double): Matrix4Transit
 
 Matrix的倾斜函数，可以为当前矩阵增加x轴/y轴倾斜效果。会改变调用该函数的原始矩阵。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -495,10 +499,10 @@ Matrix的倾斜函数，可以为当前矩阵增加x轴/y轴倾斜效果。会�
 
 **参数：**
 
-| 参数名 | 类型                        | 必填 | 说明           |
-| ------ | --------------------------- | ---- | -------------- |
-| x | number | 是   | 设置x轴倾斜参数。 |
-| y | number | 是   | 设置y轴倾斜参数。 |
+| 参数名 | 类型 | 必填 | 说明 |
+| ---- | ---- | ---- | -------------- |
+| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 设置x轴倾斜参数。 |
+| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 设置y轴倾斜参数。 |
 
 **返回值：**
 
@@ -532,7 +536,8 @@ struct Test {
 }
 ```
 
-![zh-cn_image_0000001219864132](figures/zh-cn_image_0000001219864132.jpeg)
+![zh-cn_image_0000001219864132](figures/Matrix4-skew.jpeg)
+
 
 ### skew<sup>23+</sup>
 
@@ -553,7 +558,7 @@ Matrix的倾斜函数，可以为当前矩阵增加x轴/y轴倾斜效果。会�
 | 参数名 | 类型                        | 必填 | 说明           |
 | ------ | --------------------------- | ---- | -------------- |
 | x | double | 是   | 设置x轴倾斜参数。 |
-| y | double | 是   | 设置y轴kt倾斜参数。 |
+| y | double | 是   | 设置y轴倾斜参数。 |
 
 **返回值：**
 
@@ -567,7 +572,7 @@ rotate(options: RotateOption): Matrix4Transit
 
 Matrix的旋转函数，可以为当前矩阵增加x轴/y轴/z轴旋转效果。会改变调用该函数的原始矩阵。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -615,7 +620,7 @@ struct Test {
 }
 ```
 
-![zh-cn_image_0000001174422898](figures/zh-cn_image_0000001174422898.png)
+![zh-cn_image_0000001174422898](figures/Matrix4-rotate.png)
 
 
 ### transformPoint
@@ -624,7 +629,7 @@ transformPoint(options: [number, number]): [number, number]
 
 Matrix的坐标点转换函数，可以将当前的变换效果作用到一个坐标点上。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -644,7 +649,7 @@ Matrix的坐标点转换函数，可以将当前的变换效果作用到一个�
 
 | 类型             | 说明                        |
 | ---------------- | --------------------------- |
-| [number, number] | 返回矩阵变换后的Point对象。 |
+| [number, number] | 返回矩阵变换后的坐标点，格式为[x, y]。 |
 
 **示例：**
 
@@ -709,7 +714,7 @@ Matrix的坐标点转换函数，可以将当前的变换效果作用到一个�
 | ---------------- | --------------------------- |
 | [double, double] | 返回矩阵变换后的Point对象。 |
 
-![zh-cn_image_0000001219864133](figures/zh-cn_image_0000001219864133.PNG)
+![zh-cn_image_0000001219864133](figures/Matrix4-Matrix4.PNG)
 
 ### setPolyToPoly<sup>12+</sup>
 
@@ -717,7 +722,9 @@ setPolyToPoly(options: PolyToPolyOptions): Matrix4Transit
 
 将一个多边形的顶点坐标映射到另外一个多边形的顶点坐标。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
@@ -774,7 +781,7 @@ struct Index {
 
 平移参数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -792,7 +799,7 @@ struct Index {
 
 缩放参数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -812,7 +819,7 @@ struct Index {
 
 旋转参数。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -833,7 +840,9 @@ struct Index {
 
 多边形到多边形的映射选项。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -843,9 +852,9 @@ struct Index {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | --------- | ------| ------- | ------- | --------|
-| src    |  Array<[Point](#point12)> | 是 | 否 | 源点坐标。 |
+| src    |  Array<[Point](#point12)> | 否 | 否 | 源点坐标。 |
 | srcIndex    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 源点坐标起始索引。<br>默认值:0 <br/> 取值范围：[0, +∞)|
-| dst    |  Array<[Point](#point12)>  | 是| 否 | 目标点坐标。 |
+| dst    |  Array<[Point](#point12)>  | 否 | 否 | 目标点坐标。 |
 | dstIndex    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  |  目标坐标起始索引。<br>默认值: src.length/2 <br/> 取值范围：[0, +∞) |
 | pointCount    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 使用到的点数量。<br>默认值: 0 <br/> 取值范围：[0, +∞)|
 
@@ -853,7 +862,9 @@ struct Index {
 
 坐标点的数据结构。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -921,7 +932,7 @@ struct Test {
 }
 ```
 
-![zh-cn_image_0000001219744181](figures/zh-cn_image_0000001219744181.png)
+![Matrix4Copy](figures/Matrix4Copy.png)
 
 ## matrix4.invert<sup>(deprecated)</sup>
 
@@ -934,6 +945,10 @@ Matrix的逆函数，可以返回一个当前矩阵对象的逆矩阵，即效�
 > 从API version 7开始支持，从API version 10开始废弃，建议使用[Matrix4Transit.invert](#invert)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -952,6 +967,10 @@ Matrix的叠加函数，可以将两个矩阵的效果叠加起来生成一个�
 > 从API version 7开始支持，从API version 10开始废弃，建议使用[Matrix4Transit.combine](#combine)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -977,6 +996,10 @@ Matrix的平移函数，可以为当前矩阵增加x轴/y轴/z轴平移效果。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名  | 类型                                | 必填 | 说明           |
@@ -1000,6 +1023,10 @@ Matrix的缩放函数，可以为当前矩阵增加x轴/y轴/z轴缩放效果。
 > 从API version 7开始支持，从API version 10开始废弃，建议使用[Matrix4Transit.scale](#scale)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -1025,6 +1052,10 @@ Matrix的旋转函数，可以为当前矩阵增加x轴/y轴/z轴旋转效果。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
+
 **参数：**
 
 | 参数名  | 类型                          | 必填 | 说明           |
@@ -1048,6 +1079,10 @@ Matrix的坐标点转换函数，可以将当前的变换效果作用到一个�
 > 从API version 7开始支持，从API version 10开始废弃，建议使用[Matrix4Transit.transformPoint](#transformpoint)替代。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 

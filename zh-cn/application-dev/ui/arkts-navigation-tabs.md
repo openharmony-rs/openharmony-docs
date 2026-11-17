@@ -34,7 +34,23 @@ Tabs使用花括号包裹TabContent，如图2，其中TabContent显示相应的�
 
 每一个TabContent对应的内容需要有一个页签，可以通过TabContent的tabBar属性进行配置。在如下TabContent组件上设置tabBar属性，可以设置其对应页签中的内容，tabBar作为内容的页签。
 
+ArkTS-Dyn示例：
+
 <!-- @[basic_layout_displays_one_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/TabsLayout.ets) -->
+
+``` TypeScript
+TabContent() {
+  // app.string.homepage_content资源文件中的value值为“首页的内容”
+  Text($r('app.string.homepage_content'))
+    .fontSize(30)
+}
+// app.string.homepage资源文件中的value值为“首页”
+.tabBar($r('app.string.homepage'))
+```
+
+ArkTS-Sta示例：
+
+<!-- @[basic_layout_displays_one_content](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponentStatic/entry/src/main/ets/pages/tabs/TabsLayout.ets) -->
 
 ``` TypeScript
 TabContent() {
@@ -48,6 +64,8 @@ TabContent() {
 
 
 设置多个内容时，需在Tabs内按照顺序放置。
+
+ArkTS-Dyn示例：
 
 <!-- @[basic_layout_displays_many_contents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/TabsLayout.ets) -->
 
@@ -82,11 +100,51 @@ Tabs() {
     Text($r('app.string.mine_content'))
       .fontSize(30)
   }
-  // app.string.mine_content资源文件中的value值为“我的”
+  // app.string.mine资源文件中的value值为“我的”
   .tabBar($r('app.string.mine'))
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[basic_layout_displays_many_contents](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponentStatic/entry/src/main/ets/pages/tabs/TabsLayout.ets) -->
+
+``` TypeScript
+Tabs() {
+  TabContent() {
+    // app.string.homepage_content资源文件中的value值为“首页的内容”
+    Text($r('app.string.homepage_content'))
+      .fontSize(30)
+  }
+  // app.string.homepage资源文件中的value值为“首页”
+  .tabBar($r('app.string.homepage'))
+
+
+  TabContent() {
+    // app.string.recommend_content资源文件中的value值为“推荐的内容”
+    Text($r('app.string.recommend_content'))
+      .fontSize(30)
+  }
+  // app.string.recommend资源文件中的value值为“推荐”
+  .tabBar($r('app.string.recommend'))
+
+  TabContent() {
+    // app.string.discover_content资源文件中的value值为“发现的内容”
+    Text($r('app.string.discover_content'))
+      .fontSize(30)
+  }
+  // app.string.discover资源文件中的value值为“发现”
+  .tabBar($r('app.string.discover'))
+
+  TabContent() {
+    // app.string.mine_content资源文件中的value值为“我的内容”
+    Text($r('app.string.mine_content'))
+      .fontSize(30)
+  }
+  // app.string.mine_content资源文件中的value值为“我的”
+  .tabBar($r('app.string.mine'))
+}
+```
 
 ## 底部导航
 
@@ -100,6 +158,7 @@ Tabs() {
 
 导航栏位置使用Tabs的[barPosition](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#tabsoptions15)属性进行设置。默认情况下，导航栏位于顶部，此时，barPosition为BarPosition.Start。设置为底部导航时，需要将barPosition设置为BarPosition.End。
 
+ArkTS-Dyn示例：
 
 <!-- @[bottom_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/BottomTabBar.ets) -->
 
@@ -107,6 +166,17 @@ Tabs() {
 Tabs({ barPosition: BarPosition.End }) {
   // TabContent的内容：首页、发现、推荐、我的
   // ···
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[bottom_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponentStatic/entry/src/main/ets/pages/tabs/BottomTabBar.ets) -->
+
+``` TypeScript
+Tabs({ barPosition: BarPosition.End } as TabsOptions) {
+  // TabContent的内容：首页、发现、推荐、我的
+  // ...
 }
 ```
 
@@ -121,6 +191,7 @@ Tabs({ barPosition: BarPosition.End }) {
 
 ![顶部导航](figures/顶部导航.gif)
 
+ArkTS-Dyn示例：
 
 <!-- @[top_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/TopTabBar.ets) -->
 
@@ -128,6 +199,17 @@ Tabs({ barPosition: BarPosition.End }) {
 Tabs({ barPosition: BarPosition.Start }) {
   // TabContent的内容:关注、视频、游戏、数码、科技、体育、影视
   // ···
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[top_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponentStatic/entry/src/main/ets/pages/tabs/TopTabBar.ets) -->
+
+``` TypeScript
+Tabs({ barPosition: BarPosition.Start } as TabsOptions) {
+  // TabContent的内容:关注、视频、游戏、数码、科技、体育、影视
+  // ...
 }
 ```
 
@@ -144,7 +226,7 @@ Tabs({ barPosition: BarPosition.Start }) {
 
 实现侧边导航栏需要将Tabs的[vertical](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#vertical)属性设置为true，vertical默认值为false，表明内容页和导航栏垂直方向排列。
 
-
+ArkTS-Dyn示例：
 
 <!-- @[side_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/SideTabBar.ets) -->
 
@@ -157,6 +239,21 @@ Tabs({ barPosition: BarPosition.Start }) {
   .vertical(true)
   .barWidth(100)
   .barHeight(200)
+```
+
+ArkTS-Sta示例：
+
+<!-- @[side_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponentStatic/entry/src/main/ets/pages/tabs/SideTabBar.ets) -->
+
+``` TypeScript
+Tabs({ barPosition: BarPosition.Start } as TabsOptions) {
+  // TabContent的内容:首页、发现、推荐、我的
+  // ...
+}
+// ...
+.vertical(true)
+.barWidth(100)
+.barHeight(200)
 ```
 
 
@@ -177,6 +274,8 @@ Tabs({ barPosition: BarPosition.Start }) {
 
 
 控制滑动切换的属性为[scrollable](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#scrollable)，默认值为true，表示可以滑动，若要限制滑动切换页签则需要设置为false。
+
+ArkTS-Dyn示例：
 
 <!-- @[swipe_locked_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/SwipeLockedTabBar.ets) -->
 
@@ -202,6 +301,31 @@ Tabs({ barPosition: BarPosition.Start }) {
   .scrollable(false)
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[swipe_locked_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponentStatic/entry/src/main/ets/pages/tabs/SwipeLockedTabBar.ets) -->
+
+``` TypeScript
+Tabs({ barPosition: BarPosition.End } as TabsOptions) {
+  TabContent() {
+    Column() {
+      Tabs() {
+        // 顶部导航栏内容
+        // ...
+      }
+    }
+    .backgroundColor('#ff08a8f1')
+    .width('100%')
+  }
+  // app.string.homepage资源文件中的value值为“首页”
+  .tabBar($r('app.string.homepage'))
+
+  // 其他TabContent内容：发现、推荐、我的
+  // ...
+}
+// ...
+.scrollable(false)
+```
 
 ## 固定导航栏
 
@@ -215,6 +339,8 @@ Tabs({ barPosition: BarPosition.Start }) {
 
 Tabs的[barMode](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#barmode10)属性用于控制导航栏是否可以滚动，默认值为BarMode.Fixed。
 
+ArkTS-Dyn示例：
+
 <!-- @[fixed_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/FixedTabBar.ets) -->
 
 ``` TypeScript
@@ -225,6 +351,17 @@ Tabs({ barPosition: BarPosition.End }) {
 .barMode(BarMode.Fixed)
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[fixed_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponentStatic/entry/src/main/ets/pages/tabs/FixedTabBar.ets) -->
+
+``` TypeScript
+Tabs({ barPosition: BarPosition.End } as TabsOptions) {
+  // TabContent的内容：首页、发现、推荐、我的
+  // ...
+}
+.barMode(BarMode.Fixed)
+```
 
 ## 滚动导航栏
 
@@ -238,6 +375,8 @@ Tabs({ barPosition: BarPosition.End }) {
 
 滚动导航栏需要设置Tabs组件的barMode属性，默认值为BarMode.Fixed表示为固定导航栏，BarMode.Scrollable表示可滚动导航栏。
 
+ArkTS-Dyn示例：
+
 <!-- @[scrollable_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ScrollableTabBar.ets) -->
 
 ``` TypeScript
@@ -248,6 +387,17 @@ Tabs({ barPosition: BarPosition.Start }) {
 .barMode(BarMode.Scrollable)
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[scrollable_tab_bar](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponentStatic/entry/src/main/ets/pages/tabs/ScrollableTabBar.ets) -->
+
+``` TypeScript
+Tabs({ barPosition: BarPosition.Start } as TabsOptions) {
+  // TabContent的内容：关注、视频、游戏、数码、科技、体育、影视、人文、艺术、自然、军事
+  // ...
+}
+.barMode(BarMode.Scrollable)
+```
 
 ## 自定义导航栏
 
@@ -263,6 +413,8 @@ Tabs({ barPosition: BarPosition.Start }) {
 
 
 设置自定义导航栏需要使用tabBar的参数，以其支持的CustomBuilder的方式传入自定义的函数组件样式。例如这里声明tabBuilder的自定义函数组件，传入参数包括页签文字title，对应位置index，以及选中状态和未选中状态的图片资源。通过当前活跃的currentIndex和页签对应的targetIndex匹配与否，决定UI显示的样式。
+
+ArkTS-Dyn示例：
 
 <!-- @[custom_tab_bar_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/CustomTabBar.ets) -->
 
@@ -283,8 +435,30 @@ tabBuilder(title: ResourceStr, targetIndex: number, selectedImg: Resource, norma
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[custom_tab_bar_style](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponentStatic/entry/src/main/ets/pages/tabs/CustomTabBar.ets) -->
+
+``` TypeScript
+@State currentIndex: int = 0;
+
+@Builder
+tabBuilder(title: ResourceStr, targetIndex: number, selectedImg: Resource, normalImg: Resource): void {
+  Column() {
+    Image(this.currentIndex === targetIndex ? selectedImg : normalImg)
+      .size({ width: 25, height: 25 })
+    Text(title)
+      .fontColor(this.currentIndex === targetIndex ? '#1698CE' : '#6B6B6B')
+  }
+  .width('100%')
+  .height(50)
+  .justifyContent(FlexAlign.Center)
+}
+```
 
 在TabContent对应tabBar属性中传入自定义函数组件，并传递相应的参数。
+
+ArkTS-Dyn示例：
 
 <!-- @[set_custom_tab_bar_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/CustomTabBar.ets) -->
 
@@ -302,6 +476,23 @@ TabContent() {
 .tabBar(this.tabBuilder($r('app.string.mine'), 0, $r('app.media.mine_selected'), $r('app.media.mine_normal')))
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[set_custom_tab_bar_style](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponentStatic/entry/src/main/ets/pages/tabs/CustomTabBar.ets) -->
+
+``` TypeScript
+TabContent() {
+  Column() {
+    // app.string.mine_content资源文件中的value值为“我的内容”
+    Text($r('app.string.mine_content'))  
+  }
+  .width('100%')
+  .height('100%')
+  .backgroundColor('#007DFF')
+}
+// app.string.mine资源文件中的value值为“我的”
+.tabBar(this.tabBuilder($r('app.string.mine'), 0, $r('app.media.mine_selected'), $r('app.media.mine_normal')))
+```
 
 ## 切换至指定页签
 
@@ -313,6 +504,8 @@ TabContent() {
 ![内容页和页签不联动](figures/tabcontent_tabbar_not_sync.gif)
 
 从API version 18开始，支持使用Tabs提供的[onSelected](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#onselected18)事件方法，监听索引index的变化，并将选中元素的index值传递给selectIndex，实现页签的切换。
+
+ArkTS-Dyn示例：
 
 <!-- @[content_page_tab_linkage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentPageNoAndTabLinkage.ets) -->
 
@@ -378,11 +571,82 @@ export struct ContentPageNoAndTabLinkage {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[content_page_tab_linkage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponentStatic/entry/src/main/ets/pages/tabs/ContentPageNoAndTabLinkage.ets) -->
+
+``` TypeScript
+
+// 如需作为页面入口，请取消@Entry的注释并删除export关键字
+@Entry
+@Component
+export struct ContentPageNoAndTabLinkage {
+
+  @State selectIndex: number = 0;
+  @Builder tabBuilder(title: Resource, targetIndex: number): void {
+    Column() {
+      Text(title)
+        .fontColor(this.selectIndex === targetIndex ? '#1698CE' : '#6B6B6B')
+    }
+  }
+  build(): void {
+    NavDestination() {
+      Column({ space: 12 } as ColumnOptions) {
+        // ...
+          Tabs({ barPosition: BarPosition.End }) {
+            TabContent() {
+              // app.string.homepage_content资源文件中的value值为“首页内容”
+              Text($r('app.string.homepage_content')).width('100%').height('100%').backgroundColor('rgb(213,213,213)')
+                .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
+            // app.string.homepage资源文件中的value值为“首页”
+            }.tabBar(this.tabBuilder($r('app.string.homepage'), 0))
+
+            TabContent() {
+              // app.string.discover_content资源文件中的value值为“发现内容”
+              Text($r('app.string.discover_content')).width('100%').height('100%').backgroundColor('rgb(112,112,112)')
+                .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
+            // app.string.discover资源文件中的value值为“发现”
+            }.tabBar(this.tabBuilder($r('app.string.discover'), 1))
+
+            TabContent() {
+              // app.string.recommend_content资源文件中的value值为“推荐内容”
+              Text($r('app.string.recommend_content')).width('100%').height('100%').backgroundColor('rgb(39,135,217)')
+                .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
+            // app.string.recommend资源文件中的value值为“推荐”
+            }.tabBar(this.tabBuilder($r('app.string.recommend'), 2))
+
+            TabContent() {
+              // app.string.mine_content资源文件中的value值为“我的内容”
+              Text($r('app.string.mine_content')).width('100%').height('100%').backgroundColor('rgb(0,74,175)')
+                .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
+            }
+            // app.string.mine资源文件中的value值为“我的”
+            .tabBar(this.tabBuilder($r('app.string.mine'), 3))
+          }
+          .animationDuration(0)
+          .backgroundColor('#F1F3F5')
+          .onSelected((index: int) => {
+            this.selectIndex = index;
+          })
+        // ...
+      }
+      .width('100%')
+      // ...
+    }
+    // ...
+  }
+}
+```
+
   **图11** 内容页和页签联动  
 
 ![内容页和页签联动](figures/tabcontent_tabbar_sync.gif)
 
 若希望不滑动内容页和点击页签也能实现内容页和页签的切换，可以将currentIndex传给Tabs的index参数，通过改变currentIndex来实现跳转至指定索引值对应的TabContent内容。也可以使用[TabsController](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#tabscontroller)，TabsController是Tabs组件的控制器，用于控制Tabs组件进行内容页切换。通过TabsController的changeIndex方法来实现跳转至指定索引值对应的TabContent内容。
+
+ArkTS-Dyn示例：
+
 <!-- @[switch_the_tab_specific_tab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
 
 ``` TypeScript
@@ -430,13 +694,65 @@ export struct ContentPageNoAndTabLinkage {
                   this.controller.changeIndex(index);
                 })
 ```
-  
+
+ArkTS-Sta示例：
+
+<!-- @[switch_the_tab_specific_tab](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponentStatic/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
+
+``` TypeScript
+// ...
+  @State currentIndex: int = 2;
+  @State currentAnimationMode: AnimationMode = AnimationMode.CONTENT_FIRST;
+  private controller: TabsController = new TabsController();
+
+  // ...
+              Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controller } as TabsOptions) {
+                // ...
+              }
+              .animationDuration(0)
+              .height(300)
+              .animationMode(this.currentAnimationMode)
+              .onChange((index: int) => {
+                this.currentIndex = index;
+              })
+
+              // app.string.ContentWillChange_animationMode资源文件中的value值为“动态修改animationMode”
+              Button($r('app.string.ContentWillChange_animationMode')).width('50%').margin({ top: 20 })
+                .onClick(()=>{
+                  if (this.currentAnimationMode === AnimationMode.CONTENT_FIRST) {
+                    this.currentAnimationMode = AnimationMode.ACTION_FIRST;
+                  } else if (this.currentAnimationMode === AnimationMode.ACTION_FIRST) {
+                    this.currentAnimationMode = AnimationMode.NO_ANIMATION;
+                  } else if (this.currentAnimationMode === AnimationMode.NO_ANIMATION) {
+                    this.currentAnimationMode = AnimationMode.CONTENT_FIRST_WITH_JUMP;
+                  } else if (this.currentAnimationMode === AnimationMode.CONTENT_FIRST_WITH_JUMP) {
+                    this.currentAnimationMode = AnimationMode.ACTION_FIRST_WITH_JUMP;
+                  } else if (this.currentAnimationMode === AnimationMode.ACTION_FIRST_WITH_JUMP) {
+                    this.currentAnimationMode = AnimationMode.CONTENT_FIRST;
+                  }
+                })
+
+              // app.string.ContentWillChange_changeIndex资源文件中的value值为“动态修改index”
+              Button($r('app.string.ContentWillChange_changeIndex')).width('50%').margin({ top: 20 })
+                .onClick(() => {
+                  this.currentIndex = ((this.currentIndex + 1) % 4) as int;
+                })
+
+              Button('changeIndex').width('50%').margin({ top: 20 })
+                .onClick(() => {
+                  let index = ((this.currentIndex + 1) % 4) as int;
+                  this.controller.changeIndex(index);
+                })
+```
+
   **图12** 切换指定页签    
 
 ![切换指定页签](figures/TabsChange.gif)
 
 开发者可以通过Tabs组件的[onContentWillChange](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#oncontentwillchange12)接口，设置自定义拦截回调函数。拦截回调函数在下一个页面即将展示时被调用，如果回调返回true，新页面可以展示；如果回调返回false，新页面不会展示，仍显示原来页面。
-  
+
+ArkTS-Dyn示例：
+
 <!-- @[custom_page_toggle_interception_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
 
 ``` TypeScript
@@ -451,6 +767,24 @@ Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.
   return true;
 })
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[custom_page_toggle_interception_events](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponentStatic/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
+
+``` TypeScript
+Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controllerTwo } as TabsOptions) {
+  // ...
+}
+// ...
+.onContentWillChange((currentIndex, comingIndex) => {
+  if (comingIndex === 2) {
+    return false;
+  }
+  return true;
+})
+```
+
   **图13** 支持开发者自定义页面切换拦截事件 
 
 ![TabsChange3](figures/TabsChange3.gif)
@@ -467,6 +801,8 @@ Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.
 
 <!--RP2-->
 ![适老化弹窗](figures/tabs11.png)
+
+ArkTS-Dyn示例：
 
 <!-- @[age_friendly_tab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/AgeFriendlyTabs.ets) -->
 
@@ -628,11 +964,186 @@ export struct AgeFriendlyTabs {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[age_friendly_tab](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponentStatic/entry/src/main/ets/pages/tabs/AgeFriendlyTabs.ets) -->
+
+``` TypeScript
+import { abilityManager, Configuration } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+import {
+  Entry,
+  Column,
+  Component,
+  $r,
+  BottomTabBarStyle,
+  Tabs,
+  BarMode,
+  Row,
+  Button,
+  Text,
+  BarPosition,
+  Color,
+  TabContent,
+  HorizontalAlign,
+  NavDestination,
+  State,
+} from '@kit.ArkUI';
+import uiAppearance from '@ohos.uiAppearance';
+
+const DOMAIN = 0x0000;
+const TAG: string = 'AgeFriendlyTabs';
+
+// 如需作为页面入口，请取消@Entry的注释并删除export关键字
+@Entry
+@Component
+export struct AgeFriendlyTabs {
+  @State fontColor: string = '#182431';
+  @State selectedFontColor: string = '#007DFF';
+  @State currentIndex: int = 0;
+  @State currentFontSizeScale: string = '';
+  @State showBuilderTab: boolean = false;
+  @State fontSize: number = 15;
+
+  setFontScale(scale: number): Promise<void> {
+    let configInit: Configuration = {
+      fontSizeScale: scale,
+    };
+    return abilityManager.updateConfiguration(configInit).then(() => {
+      this.currentFontSizeScale = String(scale);
+      if (scale > 1) {
+        this.fontSize = 8;
+      } else {
+        this.fontSize = 15;
+      }
+      hilog.info(DOMAIN, TAG, 'updateConfiguration success.');
+      this.getUIContext().getPromptAction().showToast({ message: `scale:${scale}, updateConfiguration success.` });
+    });
+  }
+
+  darkMode(isDarkMode: boolean): void {
+    let mode: uiAppearance.DarkMode = uiAppearance.DarkMode.ALWAYS_LIGHT;
+    if (isDarkMode) {
+      mode = uiAppearance.DarkMode.ALWAYS_DARK;
+    }
+    if (mode == uiAppearance.getDarkMode()) {
+      return;
+    }
+    try {
+      uiAppearance.setDarkMode(mode).then(() => {
+        hilog.info(DOMAIN, TAG, `TitleDarkMode Set ${mode} successfully.`);
+      }).catch((error: Error) => {
+        hilog.error(DOMAIN, TAG, `TitleDarkMode Set ${mode} failed, ${error.message}`);
+      });
+    } catch (error) {
+      let message = (error as BusinessError).message;
+      hilog.error(DOMAIN, TAG, `TitleDarkMode Set dark-mode failed, ${message}`);
+    }
+  }
+
+  build(): void {
+    NavDestination() {
+      Column() {
+        Column() {
+          Row() {
+            Text(`current fontSizeScale:${this.currentFontSizeScale}`)
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+          }
+
+          Row() {
+            Button('1.75')
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(() => {
+                this.setFontScale(1.75);
+              })
+            Button('2')
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(() => {
+                this.setFontScale(2);
+              })
+          }.margin({ top: 25 })
+
+          Row() {
+            Button('3.2')
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(() => {
+                this.setFontScale(3.2);
+              })
+            Button('1')
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(() => {
+                this.setFontScale(1);
+              })
+          }
+
+          Row() {
+            // app.string.app_name资源文件中的value值为“深色模式”
+            Button($r('app.string.app_name'))
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(() => {
+                this.darkMode(true);
+              })
+            // app.string.app_name资源文件中的value值为“浅色模式”
+            Button($r('app.string.app_name'))
+              .margin({ top: 5, bottom: 5 })
+              .fontSize(this.fontSize)
+              .width('40%')
+              .onClick(() => {
+                this.darkMode(false);
+              })
+          }
+        }.alignItems(HorizontalAlign.Start)
+
+        Column() {
+          Tabs({ barPosition: BarPosition.End }) {
+            TabContent() {
+              Column().width('100%').height('100%').backgroundColor(Color.Pink)
+            }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'OverLength'))
+            TabContent() {
+              Column().width('100%').height('100%').backgroundColor(Color.Yellow)
+            }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'SixLine'))
+            TabContent() {
+              Column().width('100%').height('100%').backgroundColor(Color.Blue)
+            }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Blue'))
+            TabContent() {
+              Column().width('100%').height('100%').backgroundColor(Color.Green)
+            }.tabBar(new BottomTabBarStyle($r('sys.media.ohos_app_icon'), 'Green'))
+          }
+          .vertical(false)
+          .scrollable(true)
+          .barMode(BarMode.Fixed)
+          .onChange((index: int) => {
+            hilog.info(DOMAIN, TAG, index.toString());
+          })
+          .width('100%')
+          .backgroundColor(0xF1F3F5)
+        }.width('80%').height(200)
+        .margin({ top: 200 })
+      }.width('100%')
+    }
+  }
+}
+```
+
 <!--RP2End-->
 
 ## 控制页面缓存数
 
-从API version 19开始，开发者可以通过[cachedMaxCount](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#cachedmaxcount19)接口，设置子组件的最大缓存个数和缓存模式。默认情况下Tabs创建时会一次性预加载所有TabContent，而且已加载的页面不会释放，可能会带来性能内存问题。此时可以设置[cachedMaxCount](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#cachedmaxcount19)属性控制缓存的页面数量，设置此属性后不会进行页面预加载，使用懒加载机制(仅切换到页面时才加载)，当切换页面时根据所设置的[TabsCacheMode](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#tabscachemode19枚举说明)决定保留缓存或者释放页面。
+从API version 19开始，开发者可以通过[cachedMaxCount](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#cachedmaxcount19)接口，设置子组件的最大缓存个数和缓存模式。默认情况下Tabs创建时会一次性预加载所有TabContent，而且已加载的页面不会释放，可能会带来性能内存问题。此时可以设置[cachedMaxCount](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#cachedmaxcount19)属性控制缓存的页面数量，设置此属性后不会进行页面预加载，使用懒加载机制（仅切换到页面时才加载），当切换页面时根据所设置的[TabsCacheMode](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#tabscachemode19枚举说明)决定保留缓存或者释放页面。
 
 >  **说明：** 
 >
@@ -645,6 +1156,9 @@ export struct AgeFriendlyTabs {
 **图15** 在页面缓存场景下通过点击yellow按键切换界面。
 
 ![cachedMaxCount2](figures/cachedMaxCount1.gif)
+
+ArkTS-Dyn示例：
+
 <!-- @[number_of_caches_tabBar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/NumberOfCachesTabBar.ets) -->
 
 ``` TypeScript
@@ -656,6 +1170,83 @@ export struct NumberOfCachesTabBar {
   build() {
     // ...
           Tabs({ barPosition: BarPosition.Start }) {
+            TabContent() {
+              MyComponent({ color: '#00CB87' })
+            }.tabBar(SubTabBarStyle.of('green'))
+
+            TabContent() {
+              MyComponent({ color: '#007DFF' })
+            }.tabBar(SubTabBarStyle.of('blue'))
+
+            TabContent() {
+              MyComponent({ color: '#FFBF00' })
+            }.tabBar(SubTabBarStyle.of('yellow'))
+
+            TabContent() {
+              MyComponent({ color: '#E67C92' })
+            }.tabBar(SubTabBarStyle.of('pink'))
+
+            TabContent() {
+              MyComponent({ color: '#FF0000' })
+            }.tabBar(SubTabBarStyle.of('red'))
+          }
+          .width(360)
+          .height(296)
+          .backgroundColor('#F1F3F5')
+          .cachedMaxCount(2, TabsCacheMode.CACHE_BOTH_SIDE)
+          // ...
+  }
+}
+
+@Component
+struct MyComponent {
+  private color: string = '';
+
+  aboutToAppear(): void {
+    console.info('aboutToAppear backgroundColor:' + this.color);
+  }
+
+  aboutToDisappear(): void {
+    console.info('aboutToDisappear backgroundColor:' + this.color);
+  }
+
+  build() {
+    Column()
+      .width('100%')
+      .height('100%')
+      .backgroundColor(this.color)
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[number_of_caches_tabBar](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ScrollableComponentStatic/entry/src/main/ets/pages/tabs/NumberOfCachesTabBar.ets) -->
+
+``` TypeScript
+
+import {
+  Entry,
+  Column,
+  Component,
+  $r,
+  ColumnOptions,
+  TabsOptions,
+  Tabs,
+  TabContent,
+  BarPosition,
+  SubTabBarStyle,
+  TabsCacheMode,
+  NavDestination
+} from '@kit.ArkUI';
+
+// 如需作为页面入口，请取消@Entry的注释并删除export关键字
+@Entry
+@Component
+export struct NumberOfCachesTabBar {
+  build(): void {
+    // ...
+          Tabs({ barPosition: BarPosition.Start } as TabsOptions) {
             TabContent() {
               MyComponent({ color: '#00CB87' })
             }.tabBar(SubTabBarStyle.of('green'))
@@ -696,7 +1287,7 @@ struct MyComponent {
     console.info('aboutToDisappear backgroundColor:' + this.color);
   }
 
-  build() {
+  build(): void {
     Column()
       .width('100%')
       .height('100%')
@@ -704,6 +1295,7 @@ struct MyComponent {
   }
 }
 ```
+
 基于以上示例代码为例，不同场景下的缓存策略如下：
 
 1. 如图16所示，使用默认翻页动画，CACHE_BOTH_SIDE模式，n设置为2，点击TabBar切换到yellow页，TabContent1\~3被缓存。再切换到red页，TabContent1、2释放，TabContent3\~5被缓存。

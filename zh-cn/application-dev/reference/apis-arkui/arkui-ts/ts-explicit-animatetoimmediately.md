@@ -1,8 +1,8 @@
 # 显式动画立即下发 (animateToImmediately)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -18,6 +18,8 @@ animateToImmediately接口用来提供[显式动画](ts-explicit-animation.md)�
 >
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## 接口
@@ -28,7 +30,7 @@ animateToImmediately(value: AnimateParam , event: () => void): void
 
 提供显式动画立即下发功能。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -43,7 +45,7 @@ animateToImmediately(value: AnimateParam , event: () => void): void
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
 | value  | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) | 是       | 设置动画效果相关参数。                                       |
-| event  | () => void                                                   | 是       | 指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+| event  | () => void                                                   | 是       | 指定显式动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
 
 ## animateToImmediately<sup>23+</sup>
 
@@ -53,9 +55,9 @@ animateToImmediately(value: AnimateParam, processor: VoidCallback): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
-
 **相关接口：** 该接口对应的ArkTS-Dyn的接口是[animateToImmediately](#animatetoimmediately)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -64,7 +66,7 @@ animateToImmediately(value: AnimateParam, processor: VoidCallback): void
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
 | value  | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) | 是       | 设置动画效果相关参数。                                       |
-| processor  |     [VoidCallback](ts-types.md#voidcallback12)    | 是       | 指定显示动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
+| processor  |     [VoidCallback](ts-types.md#voidcallback12)    | 是       | 指定显式动效的闭包函数，在闭包函数中导致的状态变化系统会自动插入过渡动画。 |
 
 ```ts
 // xxx.ets

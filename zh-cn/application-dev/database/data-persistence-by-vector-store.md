@@ -19,7 +19,7 @@
 
 ## 约束限制
 
-- 系统默认日志方式是[WAL](data-terminology.md#wal模式)（Write Ahead Log）模式，系统默认落盘方式是[FULL模式](data-terminology.md#full模式)。
+- 系统默认日志方式是[WAL](data-terminology.md#wal-mode-write-ahead-logwal模式)（Write Ahead Log）模式，系统默认落盘方式是[FULL模式](data-terminology.md#full-modefull模式)。
 
 - 数据库中默认有4个读连接和1个写连接，线程获取到空闲读连接时，即可进行读取操作。当没有空闲读连接时，会创建新的读连接。
 
@@ -40,7 +40,7 @@
 | 类型 | 描述 | 是否支持 |
 | -------- | -------- | -------- |
 | NULL | 空值 | 是 |
-| INTEGER | 整形 | 是 |
+| INTEGER | 整型 | 是 |
 | DOUBLE | 浮点类型 | 是 |
 | TEXT | 字符串类型 | 是 |
 | BLOB | 二进制类型 | 是 |
@@ -123,24 +123,11 @@ SQL语句中的函数，如下所示：
 | UPPER/LOWER | 将字符串转换为大/小写字母。 | 是 |
 | LENGTH | 返回字符串的长度。 | 是 |
 
-## 接口说明
-
-以下是向量数据库持久化功能的相关接口，更多接口及使用方式请见[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
-
-| 接口名称 | 描述 |
-| -------- | -------- |
-| getRdbStore(context: Context, config: StoreConfig): Promise&lt;RdbStore&gt; | 用户可以根据自己的需求配置StoreConfig参数获得RdbStore对象，通过调用RdbStore接口执行数据操作。|
-| execute(sql: string, txId: number, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt; | 执行包含指定参数的SQL语句，语句中的各种表达式和操作符之间的关系操作符号(例如=、>、<)不超过1000个。 |
-| querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt; | 根据指定SQL语句查询数据库中的数据，语句中的各种表达式和操作符之间的关系操作符号(例如=、>、<)不超过1000个。 |
-| beginTrans(): Promise&lt;number&gt; | 在开始执行SQL语句之前，开始事务。 |
-| commit(txId : number):Promise&lt;void&gt; | 提交已经执行的SQL语句，跟beginTrans配合使用。 |
-| rollback(txId : number):Promise&lt;void&gt; | 回滚已经执行的SQL语句，跟beginTrans配合使用。 |
-| deleteRdbStore(context: Context, config: StoreConfig): Promise&lt;void&gt; | 删除数据库。 |
-| isVectorSupported(): boolean | 判断系统是否提供向量数据库能力。 |
-
 ## 开发步骤
 
-1. 判断当前系统是否支持向量数据库，若不支持，则表示当前系统不具备向量数据库能力。示例代码如下：
+更多接口及使用方式请见[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
+
+1. 调用[isVectorSupported()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoreisvectorsupported18)接口判断当前系统是否支持向量数据库，返回false表示当前系统不具备向量数据库能力。示例代码如下：
 
    <!--@[vector_TS_isVectorSupported](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
@@ -148,7 +135,6 @@ SQL语句中的函数，如下所示：
    import { relationalStore } from '@kit.ArkData'; // 导入模块
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
-   import { UIContext } from '@kit.ArkUI';
    // ...
      // 判断当前系统是否支持向量数据库
      let ret = relationalStore.isVectorSupported();
@@ -158,7 +144,7 @@ SQL语句中的函数，如下所示：
      }
    ```
 
-2. 若支持向量数据库则需要获取一个RdbStore。通过getRdbStore接口创建数据库，并执行建表操作。
+2. 若支持向量数据库则需要获取一个RdbStore。通过[getRdbStore()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)接口创建数据库，并通过[execute()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)接口执行建表操作。
 
    > **说明：**
    >
@@ -174,8 +160,6 @@ SQL语句中的函数，如下所示：
    
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
-   /* context为应用的上下文信息，此处获取方式仅为示例。 */
-   let context: Context = new UIContext().getHostContext() as common.UIAbilityContext;
    const STORE_CONFIG: relationalStore.StoreConfig = {
      name: 'VectorTest.db', // 数据库文件名
      securityLevel: relationalStore.SecurityLevel.S1, // 数据库安全级别
@@ -231,7 +215,7 @@ SQL语句中的函数，如下所示：
      };
    ```
 
-3. 获取到RdbStore后，调用execute接口插入数据。
+3. 获取到RdbStore后，调用[execute()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)接口插入数据。
 
    > **说明：**
    >
@@ -325,7 +309,7 @@ SQL语句中的函数，如下所示：
    }
    ```
 
-5. 获取到RdbStore后，调用querySql方法查找数据，返回一个ResultSet结果集。
+5. 获取到RdbStore后，调用[querySql()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#querysql)接口查找数据，返回一个ResultSet结果集。
 
    > **说明：**
    >
@@ -333,7 +317,7 @@ SQL语句中的函数，如下所示：
 
    ArkTS-Dyn示例：
 
-   <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
+    <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
    
    ``` TypeScript
    let resultSet: relationalStore.ResultSet | undefined = undefined;
@@ -364,7 +348,18 @@ SQL语句中的函数，如下所示：
      // 释放数据集的内存，若不释放可能会引起fd泄露与内存泄露
      resultSet?.close();
    }
-   
+
+   // 搭载OpenHarmony 7.0.0及以上版本的设备，支持使用表达式进行加权打分，基于表达式得分排序查询
+   try {
+     // 创建第二张表
+     let CREATE_SQL = 'CREATE TABLE IF NOT EXISTS test1(id text PRIMARY KEY, location text, people text, age int, repr floatvector(2));';
+     await store!.execute(CREATE_SQL);
+     let resultSet = await store!.querySql("select *, (1000 * (location='local') + 500 * (people like 'Mike') + 100 * (age > 18)) as score from test1 where repr <-> '[6.2, 7.3]' < 0.8 order by score limit 5;");
+     resultSet!.close();
+   } catch (err) {
+     console.error(`query failed, code is ${err.code}, message is ${err.message}`);
+   }
+
    // 子查询
    try {
      // 创建第二张表
@@ -517,7 +512,7 @@ SQL语句中的函数，如下所示：
 
    | 类型   | 计算符号 | 备注说明   |
    | ------ | -------- | ---------- |
-   | L2     | <->      | 欧式距离。|
+   | L2     | <->      | 欧氏距离。|
    | COSINE | <=>      | 余弦距离。|
 
    **表3** 扩展语法参数(parameter)
@@ -662,7 +657,7 @@ SQL语句中的函数，如下所示：
 
 11. 删除数据库。
 
-    调用deleteRdbStore方法，删除数据库及数据库相关文件。示例代码如下：
+    调用[deleteRdbStore()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoredeleterdbstore)接口删除数据库及数据库相关文件。示例代码如下：
 
     <!--@[vector_TS_deleteStore](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
     

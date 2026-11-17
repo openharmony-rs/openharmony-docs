@@ -10,12 +10,14 @@
 AutoFillExtensionAbility模块支持账号、密码、地址等多种数据类型的自动填充与保存，继承自[ExtensionAbility](js-apis-app-ability-extensionAbility.md)。
 
 > **说明：**
-> 
-> 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  
 >
-> 本模块接口仅可在Stage模型下使用。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块为系统接口。
+> - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。  
+>
+> - 本模块接口仅可在Stage模型下使用。
+>
+> - 本模块为系统接口。
 
 ## 导入模块
 
@@ -29,20 +31,28 @@ import { AutoFillExtensionAbility } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| context | [AutoFillExtensionContext](js-apis-inner-application-autoFillExtensionContext-sys.md)  | 否 | 否 | AutoFillExtension的上下文环境，继承自ExtensionContext。 |
+| context | [AutoFillExtensionContext](js-apis-inner-application-autoFillExtensionContext-sys.md) | 否 | 否 | AutoFillExtension的上下文环境，继承自ExtensionContext。 |
 
 
 ### onCreate
 
 onCreate(): void
 
-AutoFillExtensionAbility创建时触发回调函数。
+AutoFillExtensionAbility创建时触发回调函数。在此方法中可进行初始化操作，如注册监听器、加载必要资源等。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -65,6 +75,10 @@ onFillRequest(session: UIExtensionContentSession, request: FillRequest, callback
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -74,6 +88,8 @@ onFillRequest(session: UIExtensionContentSession, request: FillRequest, callback
 | callback | [FillRequestCallback](js-apis-inner-application-autoFillRequest-sys.md#fillrequestcallback)  | 是 | 自动填充请求回调。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager, common } from '@kit.AbilityKit';
@@ -86,6 +102,46 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onFillRequest');
     hilog.info(0x0000, 'testTag', 'fill requestCallback: %{public}s', JSON.stringify(callback));
     hilog.info(0x0000, 'testTag', 'get request viewData: %{public}s', JSON.stringify(request.viewData));
+    try {
+      // 定义本地存储数据
+      let localStorageData: Record<string, UIExtensionContentSession | string | autoFillManager.FillRequestCallback |
+      autoFillManager.ViewData | common.AutoFillExtensionContext> = {
+        'session': session,
+        'message': 'AutoFill Page',
+        'saveCallback': callback,
+        'viewData': request.viewData,
+        'context': this.context
+      };
+      // 创建本地存储实例，用于在页面间传递数据
+      let storage_fill = new LocalStorage(localStorageData);
+      if (session) {
+        // 加载自动保存页面
+        session.loadContent('pages/SelectorList', storage_fill);
+      } else {
+        hilog.error(0x0000, 'testTag', '%{public}s', 'session is null');
+      }
+    } catch (err) {
+      hilog.error(0x0000, 'testTag', '%{public}s', 'failed to load content');
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager, common } from '@kit.AbilityKit';
+import { LocalStorage } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
+  onFillRequest(session: UIExtensionContentSession,
+    request: autoFillManager.FillRequest,
+    callback: autoFillManager.FillRequestCallback) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onFillRequest');
+    hilog.info(0x0000, 'testTag', 'fill requestCallback: %{public}s', JSON.stringify(callback));
+    hilog.info(0x0000, 'testTag', 'get request viewData: ', JSON.stringify(request.viewData));
     try {
       let localStorageData: Record<string, UIExtensionContentSession | string | autoFillManager.FillRequestCallback |
       autoFillManager.ViewData | common.AutoFillExtensionContext> = {
@@ -116,15 +172,21 @@ onSaveRequest(session: UIExtensionContentSession, request: SaveRequest, callback
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | session | [UIExtensionContentSession](js-apis-app-ability-uiExtensionContentSession.md)  | 是 | AutoFillExtensionAbility界面内容相关信息。 |
-| request | [SaveRequest](js-apis-inner-application-autoFillRequest-sys.md#saverequest)  | 是 | 保存请求数据。 |
+| request | [SaveRequest](js-apis-inner-application-autoFillRequest.md#saverequest)  | 是 | 保存请求数据。 |
 | callback | [SaveRequestCallback](js-apis-inner-application-autoFillRequest-sys.md#saverequestcallback)  | 是 | 保存请求回调。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager, common } from '@kit.AbilityKit';
@@ -134,6 +196,44 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   onSaveRequest(session : UIExtensionContentSession,
                 request : autoFillManager.SaveRequest,
                 callback : autoFillManager.SaveRequestCallback) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'onSaveRequest');
+    try {
+      // 定义本地存储数据
+      let localStorageData: Record<string, UIExtensionContentSession | string | autoFillManager.SaveRequestCallback |
+      autoFillManager.ViewData | common.AutoFillExtensionContext> = {
+        'session': session,
+        'message': 'AutoFill Page',
+        'fillCallback': callback,
+        'viewData': request.viewData,
+        'context': this.context,
+      };
+      // 创建本地存储实例，用于在页面间传递数据
+      let storage_save = new LocalStorage(localStorageData);
+      if (session) {
+        // 加载自动保存页面
+        session.loadContent('pages/SavePage', storage_save);
+      } else {
+        hilog.error(0x0000, 'testTag', '%{public}s', 'session is null');
+      }
+    } catch (err) {
+      hilog.error(0x0000, 'testTag', '%{public}s', 'failed to load content');
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { AutoFillExtensionAbility, UIExtensionContentSession, autoFillManager, common } from '@kit.AbilityKit';
+import { LocalStorage } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
+  onSaveRequest(session: UIExtensionContentSession,
+    request: autoFillManager.SaveRequest,
+    callback: autoFillManager.SaveRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'onSaveRequest');
     try {
       let localStorageData: Record<string, UIExtensionContentSession | string | autoFillManager.SaveRequestCallback |
@@ -161,9 +261,13 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 
 onUpdateRequest(request: UpdateRequest): void
 
-当收到更新请求时触发此回调函数。
+当应用界面数据发生变化、需要更新已填充的内容时，系统触发此回调函数。request参数包含更新后的viewData等信息。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -189,9 +293,13 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 
 onSessionDestroy(session: UIExtensionContentSession): void
 
-当AutoFillExtensionAbility界面内容对象销毁后调用。
+当AutoFillExtensionAbility的session销毁时触发此回调。session通常在用户取消填充操作或填充任务完成后销毁。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -220,6 +328,10 @@ onForeground(): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
 ```ts
@@ -240,6 +352,10 @@ onBackground(): void
 当AutoFillExtensionAbility从前台转到后台时触发。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -262,6 +378,10 @@ onDestroy(): void | Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
+
 **返回值：**
 
 | 类型                                  | 说明                            |
@@ -276,6 +396,40 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   onDestroy() {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'onDestroy');
+  }
+}
+```
+
+### onDestroy<sup>23+</sup>
+
+onDestroy(): Promise\<void\> | undefined
+
+在AutoFillExtensionAbility销毁时回调，执行资源清理等操作。回调结束直接返回，或者使用Promise异步回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型                         | 说明                            |
+| ---------------------------- | ------------------------------- |
+| Promise\<void\> \| undefined | 以Promise形式返回或返回未定义。 |
+
+**示例：**
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { AutoFillExtensionAbility } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
+  onDestroy(): Promise<void> {
     hilog.info(0x0000, 'testTag', '%{public}s', 'onDestroy');
   }
 }

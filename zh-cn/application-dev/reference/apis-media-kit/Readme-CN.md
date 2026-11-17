@@ -10,6 +10,8 @@
   - @ohos.multimedia.media (媒体服务)<!--js-apis-media-->
     - [模块描述](arkts-apis-media.md)
     - [Functions](arkts-apis-media-f.md)
+    - [Interface (AVAdsController)](arkts-apis-media-AVAdsController.md)
+    - [Interface (AVDownloaderManager)](arkts-apis-media-AVDownloaderManager.md)
     - [Interface (AVImageGenerator)](arkts-apis-media-AVImageGenerator.md)
     - [Interface (AVMetadataExtractor)](arkts-apis-media-AVMetadataExtractor.md)
     - [Interface (AVPlayer)](arkts-apis-media-AVPlayer.md)
@@ -24,6 +26,7 @@
     - [废弃的Interface (AudioPlayer, deprecated)](arkts-apis-media-AudioPlayer.md)
     - [废弃的Interface (AudioRecorder, deprecated)](arkts-apis-media-AudioRecorder.md)
     - [废弃的Interface (VideoPlayer, deprecated)](arkts-apis-media-VideoPlayer.md)
+  - [@ohos.multimedia.videoProcessing (视频处理)](arkts-apis-media-videoProcessing.md)
   <!--Del-->
   - [@ohos.multimedia.media (媒体服务)(系统接口)](js-apis-media-sys.md)
   <!--DelEnd-->
@@ -108,6 +111,7 @@
     - [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)
     - [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)
     - [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)
+    - [OH_LowPowerAVSink_Capability](capi-avsinkbase-oh-lowpoweravsinkcapability.md)
     - [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)
     - [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md)
     - [VideoProcessing_ColorSpaceInfo](capi-videoprocessing-videoprocessing-colorspaceinfo.md)

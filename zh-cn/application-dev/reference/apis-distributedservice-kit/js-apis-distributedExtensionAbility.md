@@ -6,7 +6,25 @@
 <!--Tester: @hanjiawei-->
 <!--Adviser: @w_Machine_cc-->
 
-DistributedExtensionAbility模块提供分布式相关扩展能力，提供分布式创建、销毁、连接的生命周期回调。
+DistributedExtensionAbility（分布式扩展能力）模块提供了面向多设备限定协同场景（如：面向穿戴和手机间的专有通讯服务）下的扩展能力基类。
+
+该模块作为多设备限定协同场景扩展能力基类，主要包含以下能力：
+
+- **生命周期管理**：提供onCreate（创建）、onCollaborate（协同）、onDestroy（销毁）三个生命周期回调，覆盖协同Extension从创建到销毁的完整生命周期，使应用能够在不同阶段执行初始化、协同决策和资源清理等业务逻辑。
+
+- **协同决策**：通过onCollaborate回调，应用在被跨设备拉起过程中，可根据调用方传输的协同参数自主决定是否接受协同请求（ACCEPT/REJECT），从而灵活控制协同流程是否继续。
+
+- **上下文环境**：提供distributedExtensionContext上下文环境，支持连接和断开远端ServiceExtensionAbility，实现跨设备的服务调用与数据互通。
+
+协同Extension的核心类结构及其与上下文、自定义子类的关系如下图所示。
+
+![DistributedExtensionAbility_flowchart](../figures/DistributedExtensionAbility_flowchart.png)
+
+如上图所示：
+- **继承关系**：`DistributedExtensionContext` 继承自 `ExtensionContext`（扩展上下文）；开发者自定义子类继承自 `DistributedExtensionAbility`。
+- **组合关系**：`DistributedExtensionAbility` 持有 `context` 属性，类型为 `DistributedExtensionContext`，提供连接/断开远端 `ServiceExtensionAbility` 等协同能力。
+
+开发者通过继承 `DistributedExtensionAbility` 并实现 `onCreate`、`onCollaborate`、`onDestroy` 生命周期回调，即可获得多设备限定协同场景相应能力。
 
 > **说明：**
 >
@@ -28,13 +46,15 @@ import { DistributedExtensionAbility} from '@kit.DistributedServiceKit';
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型                          | 只读 | 可选 | 说明                                                       |
 | ------- | ----------------------------- | ---- | ---- | ---------------------------------------------------------- |
-| context | DistributedExtensionContext | 否   | 否   | DistributedExtension的上下文环境，继承自ExtensionContext。 |
+| context | DistributedExtensionContext | 否   | 否   | DistributedExtension（协同Extension）的上下文环境，继承自ExtensionContext。|
 
 ### onCreate
 
@@ -46,6 +66,8 @@ Extension生命周期回调，在创建时回调，执行初始化业务逻辑�
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
+
 **ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 23
@@ -54,7 +76,7 @@ Extension生命周期回调，在创建时回调，执行初始化业务逻辑�
 
 | 参数名     | 类型 | 必填                                                             | 说明 |
 | ----------| ---- | ---------------------------------------------------------------- | ---- |
-| want      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 当前Extension相关的Want类型信息，包括ability名称、bundle名称等。 |
+| want      | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 当前Extension相关的Want信息，用于携带创建Extension所需的初始化配置信息。 |
 
 **示例：**
 
@@ -80,7 +102,7 @@ import Want from '@ohos.app.ability.Want';
 import DistributedExtensionAbility from '@ohos.application.DistributedExtensionAbility';
 
 export default class DistributedExtension extends DistributedExtensionAbility {
-  onCreate(want: Want) {
+  onCreate(want: Want):void {
     console.info(`DistributedExtension Create ok`);
     console.info(`DistributedExtension on Create want: ${JSON.stringify(want)}`);
     console.info(`DistributedExtension Create end`);
@@ -92,11 +114,13 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 
 onCollaborate(wantParam: Record <string, Object>) : AbilityConstant.CollaborateResult
 
-多设备协作场景下返回协作结果的回调。
+Extension生命周期回调，在多设备限定协同场景下，协同方应用被拉起过程中返回是否接受协同的结果，返回结果决定协同流程是否继续。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -106,13 +130,13 @@ onCollaborate(wantParam: Record <string, Object>) : AbilityConstant.CollaborateR
 
 | 参数名    | 类型   | 必填 | 说明                                                                                                                                   |
 | --------- | ------ | ---- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| wantParam | Record <string, Object> | 是   | want相关参数，仅支持key值取"ohos.extra.param.key.supportCollaborateIndex"。通过该key值可以获取到调用方传输的数据并进行相应的处理。 |
+| wantParam | Record <string, Object> | 是   | 协同回调参数，键值对对象，携带调用方传输的协同相关数据。开发者可通过"ohos.extra.param.key.supportCollaborateIndex"和"CollaborationValues"等key值获取这些数据，以决定是否接受协同请求及处理协同逻辑，影响协同流程是否继续。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | ---------- | ---- |
-| [AbilityConstant.CollaborateResult](../apis-ability-kit/js-apis-app-ability-abilityConstant.md#collaborateresult18) | 协同方应用是否接受协同。 |
+| [AbilityConstant.CollaborateResult](../apis-ability-kit/js-apis-app-ability-abilityConstant.md#collaborateresult18) | 表示协同方应用是否接受协同的结果。取值包括：**ACCEPT**表示接受协同，协同流程继续；**REJECT**表示拒绝协同，协同流程终止。 |
 
 **示例**
 
@@ -125,10 +149,10 @@ import { AbilityConstant } from '@kit.AbilityKit';
 export default class DistributedExtension extends DistributedExtensionAbility {
   onCollaborate(wantParam: Record<string, Object>) {
     console.info(`DistributedExtension onCollabRequest Accept to the result of Ability collaborate`);
-    let sessionId = -1;
     const collaborationValues = wantParam["CollaborationValues"] as abilityConnectionManager.CollaborationValues;
-    if (collaborationValues == undefined) {
-      return sessionId;
+    if (!collaborationValues) {
+      console.error('Failed to get collaborationValues.');
+      return AbilityConstant.CollaborateResult.REJECT;
     }
     console.info(`onCollab, collaborationValues: ${JSON.stringify(collaborationValues)}`);
     return AbilityConstant.CollaborateResult.ACCEPT;
@@ -149,7 +173,8 @@ export default class DistributedExtension extends DistributedExtensionAbility {
     console.info(`DistributedExtension onCollabRequest Accept to the result of Ability collaborate`);
     let sessionId: AbilityConstant.CollaborateResult = AbilityConstant.CollaborateResult.REJECT;
     const collaborationValues = wantParam["CollaborationValues"] as abilityConnectionManager.CollaborationValues;
-    if (collaborationValues == undefined) {
+    if (!collaborationValues) {
+      console.error('Failed to get collaborationValues.');
       return sessionId;
     }
     console.info(`onCollab, collaborationValues: ${JSON.stringify(collaborationValues)}`);
@@ -168,6 +193,8 @@ Extension生命周期回调，在销毁时回调，执行资源清理等操作�
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -190,11 +217,11 @@ export default class DistributedExtension extends DistributedExtensionAbility {
 ArkTS-Sta示例：
 
 ```ts
-import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionManager';
+import DistributedExtensionAbility from '@ohos.application.DistributedExtensionAbility';
 
 export default class DistributedExtension extends DistributedExtensionAbility {
 
-  onDestroy() {
+  onDestroy(): void {
     console.info('DistributedExtension onDestroy ok');
   }
 }

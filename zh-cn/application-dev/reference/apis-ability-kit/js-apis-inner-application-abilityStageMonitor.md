@@ -7,11 +7,13 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供监听指定[AbilityStage](js-apis-app-ability-abilityStage.md)对象的能力。开发者可以将AbilityStageMonitor作为[abilityDelegator.waitAbilityStageMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#waitabilitystagemonitor9)的入参来注册监听。
+本模块提供监听指定[AbilityStage](js-apis-app-ability-abilityStage.md)对象的能力。开发者可以将AbilityStageMonitor作为[abilityDelegator.waitAbilityStageMonitor](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#waitabilitystagemonitor)的入参来注册监听。
 
 > **说明：**
-> 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -21,9 +23,13 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 ## AbilityStageMonitor
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明  |
 | ---- | ---- | ---- | ---- | ---- |
@@ -37,12 +43,12 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 let monitor: abilityDelegatorRegistry.AbilityStageMonitor = {
   moduleName: 'feature_as1',
   srcEntrance: './ets/Application/MyAbilityStage.ts',
-}
+};
 
 let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.waitAbilityStageMonitor(monitor, (error, data) => {
   if (error) {
-    console.error(`waitAbilityStageMonitor fail, error: ${JSON.stringify(error)}`);
+    console.error(`waitAbilityStageMonitor fail. Code: ${error.code}, message: ${error.message}`);
   } else {
     console.info(`waitAbilityStageMonitor success, data: ${JSON.stringify(data)}`);
   }

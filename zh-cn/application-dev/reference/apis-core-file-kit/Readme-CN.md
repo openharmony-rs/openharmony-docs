@@ -2,9 +2,9 @@
 
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25-->
-<!--Designer: @bubble_mao; @gzhuangzhuang; @gsl_1234-->
-<!--Tester: @liuhonggang123-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 - ArkTS API<!--core-file-arkts-->
@@ -19,6 +19,7 @@
   - [@ohos.file.securityLabel (数据标签)](js-apis-file-securityLabel.md)
   - [@ohos.file.statvfs (文件系统空间统计)](js-apis-file-statvfs.md)
   - [@ohos.file.storageStatistics (应用空间统计)](js-apis-file-storage-statistics.md)
+  - [@ohos.file.volumeManager (卷管理)](js-apis-file-volumemanager.md)
   - [@ohos.fileshare (文件分享)](js-apis-fileShare.md)
   - [@ohos.file.BackupExtensionContext (备份恢复扩展能力)](js-apis-file-backupextensioncontext.md)
   <!--Del-->
@@ -53,6 +54,10 @@
     - [fileShare](capi-fileshare.md)
     - [fileUri](capi-fileuri.md)
     - [CloudDisk](capi-clouddisk.md)
+    - [Archive](capi-archive.md)
+    <!--Del-->
+    - [Swapfs (系统接口)](capi-swapfs-sys.md)
+    <!--DelEnd--> 
   - 头文件<!--core-file-headerfile-->
     - [oh_environment.h](capi-oh-environment-h.md)
     - [error_code.h](capi-error-code-h.md)
@@ -61,6 +66,12 @@
     - [oh_file_uri.h](capi-oh-file-uri-h.md)
     - [oh_cloud_disk_manager.h](capi-oh-cloud-disk-manager-h.md)
     - [cloud_disk_error_code.h](capi-cloud-disk-error-code-h.md)
+    - [oh_archive.h](capi-oh-archive-h.md)
+    - [oh_archive_errcode.h](capi-oh-archive-errcode-h.md)
+    <!--Del-->
+    - [oh_swapfs.h (系统接口)](capi-oh-swapfs-h-sys.md)
+    - [swapfs_errcode.h (系统接口)](capi-swapfs-errcode-h-sys.md)
+    <!--DelEnd-->
   - 结构体<!--core-file-struct-->
     - [FileShare_PolicyErrorResult](capi-fileshare-fileshare-policyerrorresult.md)
     - [FileShare_PolicyInfo](capi-fileshare-fileshare-policyinfo.md)
@@ -72,9 +83,33 @@
     - [CloudDisk_PathInfo](capi-clouddisk-clouddisk-pathinfo.md)
     - [CloudDisk_ResultList](capi-clouddisk-clouddisk-resultlist.md)
     - [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md)
+    - [OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md)
+    - [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md)
+    - [OH_CloudDisk_PlaceholderCustomInfo](capi-clouddisk-oh-clouddisk-placeholdercustominfo.md)
+    - [OH_CloudDisk_DataBuf](capi-clouddisk-oh-clouddisk-databuf.md)
+    - [OH_CloudDisk_CallbackReqHead](capi-clouddisk-oh-clouddisk-callbackreqhead.md)
+    - [OH_CloudDisk_DehydrateInfo](capi-clouddisk-oh-clouddisk-dehydrateinfo.md)
+    - [OH_CloudDisk_FetchDataRequest](capi-clouddisk-oh-clouddisk-fetchdatarequest.md)
+    - [OH_CloudDisk_CallbackContext](capi-clouddisk-oh-clouddisk-callbackcontext.md)
+    - [OH_CloudDisk_FetchData](capi-clouddisk-oh-clouddisk-fetchdata.md)
+    - [OH_CloudDisk_CallbackResponse](capi-clouddisk-oh-clouddisk-callbackresponse.md)
+    - [OH_Archive_StreamInfo](capi-archive-oh-archive-streaminfo.md)
+    - [OH_Archive_Stream_Config](capi-archive-oh-archive-stream-config.md)
+    - [ArchiveWriteCtx*](capi-archive-archivewritectx.md)
+    - [ArchiveReadCtx*](capi-archive-archivereadctx.md)
+    - [ArchiveStreamWriteCtx*](capi-archive-archivestreamwritectx.md)
+    - [ArchiveStreamReadCtx*](capi-archive-archivestreamreadctx.md)
+    <!--Del-->
+    - [OH_SwapfsConfig (系统接口)](capi-swapfs-oh-swapfsconfig-sys.md)
+    - [OH_SwapfsDataInfo (系统接口)](capi-swapfs-oh-swapfsdatainfo-sys.md)
+    - [OH_SwapfsManager (系统接口)](capi-swapfs-oh-swapfsmanager-sys.md)
+    - [OH_SwapfsStats (系统接口)](capi-swapfs-oh-swapfsstats-sys.md)
+    - [OH_SwapfsSwapInRequest (系统接口)](capi-swapfs-oh-swapfsswapinrequest-sys.md)
+    - [OH_SwapfsSwapOutRequest (系统接口)](capi-swapfs-oh-swapfsswapoutrequest-sys.md)
+    <!--DelEnd-->
 - 错误码<!--core-file-arkts-errcode-->
   - [文件管理错误码](errorcode-filemanagement.md)
   <!--Del-->
-  - [云盘管理错误码](errorcode-clouddiskmanager-sys.md)
+  - [云盘管理错误码（系统接口错误码）](errorcode-clouddiskmanager-sys.md)
   <!--DelEnd-->
   

@@ -1,7 +1,7 @@
 # 事件独占控制
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -14,6 +14,8 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 从API version 11开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## monopolizeEvents
 
@@ -23,7 +25,7 @@ ArkTS-Sta: monopolizeEvents(monopolize: boolean | undefined): this
 
 设置组件是否独占事件。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -71,48 +73,48 @@ struct Index {
       Button('clean')
         .fontSize(22)
         .margin(10)
-        // 通过button的点击事件来切换内层column的独占控制属性
+        // 通过button的点击事件清空内外层column的触摸事件提示信息。
         .onClick(() => {
-          this.messageOut = " "
-          this.messageInner = " "
+          this.messageOut = ' ';
+          this.messageInner = ' ';
         })
       Button('change monopolizeEvents')
         .fontSize(22)
         .margin(10)
-        // 通过button的点击事件来切换内层column的独占控制属性
+        // 通过button的点击事件来切换内层column的独占控制属性。
         .onClick(() => {
-          this.monopolize = !this.monopolize
+          this.monopolize = !this.monopolize;
           if (!this.monopolize) {
-            this.message = "set monopolizeEvents false"
+            this.message = 'set monopolizeEvents false';
           } else {
-            this.message = "set monopolizeEvents true"
+            this.message = 'set monopolizeEvents true';
           }
         })
       Column() {
         Column() {
         }
-        // this.monopolize是true时，点击内层column只会触发自身的触摸事件，不会触发外层column的触摸事件
-        // this.monopolize是false时，点击内层column会同时触发自身的触摸事件和外层column的触摸事件
+        // this.monopolize是true时，点击内层column只会触发自身的触摸事件，不会触发外层column的触摸事件。
+        // this.monopolize是false时，点击内层column会同时触发自身的触摸事件和外层column的触摸事件。
         .monopolizeEvents(this.monopolize)
         .width('100%')
         .height('40%')
         .backgroundColor(Color.Blue)
-        // 内层column绑定触摸事件
+        // 内层column绑定触摸事件。
         .onTouch((event: TouchEvent) => {
           if (event.type == TouchType.Down) {
-            console.info("inner column touch down")
-            this.messageInner = "inner column touch down"
+            console.info('inner column touch down');
+            this.messageInner = 'inner column touch down';
           }
         })
       }
       .backgroundColor(Color.Gray)
       .height('100%')
       .width('100%')
-      // 外层column绑定触摸事件
+      // 外层column绑定触摸事件。
       .onTouch((event) => {
         if (event.type == TouchType.Down) {
-          console.info("outside column touch down")
-          this.messageOut = "outside column touch down"
+          console.info('outside column touch down');
+          this.messageOut = 'outside column touch down';
         }
       })
     }

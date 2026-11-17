@@ -1,6 +1,6 @@
 # canBeObserved接口：判断对象是否可被观察
 
-为了判断对象是否为可被观察对象和获取对象关联的组件信息，开发者可以使用[canBeObserved接口](../../reference/apis-arkui/js-apis-stateManagement-static.md#canbeobserved24)。
+为了判断对象是否为可被观察对象和获取对象关联的组件信息，开发者可以使用[canBeObserved](../../reference/apis-arkui/js-apis-stateManagement-static.md#canbeobserved24)接口。
 
 >**说明：**
 >
@@ -59,9 +59,9 @@ let result: ObservedResult = UIUtils.canBeObserved(new User()); // 正确用法�
 以@Observed为例，@Observed装饰的class实例被@State装饰并用在UI上时，调用canBeObserved接口将获取到以下信息。
 
 示例代码：
-``` ts
-'use static'
+<!-- @[CanBeObservedObserved](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CanBeObserved/entry/src/main/ets/pages/CanBeObservedObserved.ets) -->
 
+``` TypeScript
 import { Entry, Text, Column, Component, Button, State, UIUtils, Observed } from '@kit.ArkUI'
 
 @Observed
@@ -89,26 +89,26 @@ struct Index {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "reason": "The object data is decorated with @Observed",
-  "isObserved": true,
-  "decoratorInfo": [{
-    "decoratorName": "@State",
-    "dependentInfo": [{
-      "elementId": 6,
-      "elementName": "Text"
-    }],
-    "owningComponentId": 2,
-    "stateVariableName": "info",
-    "owningComponentOrClassName": "Index"
-  }]
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "info",
+        "owningComponentOrClassName": "Index",
+        "owningComponentId": 2,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 6
+        }]
+    }]
 }
 ```
 若使用@Track，此时将以@Track装饰的属性维度展示属性与组件的绑定关系。
 
 示例代码：
-``` ts
-'use static'
+<!-- @[CanBeObservedTrack](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CanBeObserved/entry/src/main/ets/pages/CanBeObservedTrack.ets) -->
 
+``` TypeScript
 import { Entry, Text, Column, Component, Button, State, UIUtils, Observed, Track } from '@kit.ArkUI'
 
 @Observed
@@ -137,37 +137,35 @@ struct Index {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "reason": "The object data is decorated with @Observed",
-  "isObserved": true,
-  "decoratorInfo": [{
-      "decoratorName": "@Track",
-      "dependentInfo": [{
-        "elementId": 7,
-        "elementName": "Text"
-      }],
-      "owningComponentId": -1,
-      "stateVariableName": "age",
-      "owningComponentOrClassName": "Info"
-    },
-    {
-      "decoratorName": "@Track",
-      "dependentInfo": [{
-        "elementId": 6,
-        "elementName": "Text"
-      }],
-      "owningComponentId": -1,
-      "stateVariableName": "name",
-      "owningComponentOrClassName": "Info"
-    }
-  ]
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@Track",
+        "stateVariableName": "age",
+        "owningComponentOrClassName": "Info",
+        "owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 7
+        }]
+    }, {
+        "decoratorName": "@Track",
+        "stateVariableName": "name",
+        "owningComponentOrClassName": "Info",
+        "owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 6
+        }]
+    }]
 }
 ```
 若在V2自定义组件中使用，将以对象整体的维度展示对象与组件的绑定关系。
 
 示例代码：
-``` ts
-'use static'
+<!-- @[can_be_observed_v2_usage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CanBeObserved/entry/src/main/ets/pages/CanBeObservedV2Usage.ets) -->
 
+``` TypeScript
 import { Entry, Text, Column, Component, ComponentV2, Button, State, UIUtils, Observed, Param, Require } from '@kit.ArkUI'
 
 @Observed
@@ -207,43 +205,36 @@ struct ParamChild {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "reason": "The object data is decorated with @Observed",
-  "isObserved": true,
-  "decoratorInfo": [{
-      "decoratorName": "@State",
-      "dependentInfo": [{
-          "elementId": 8,
-          "elementName": "ParamChild"
-        },
-        {
-          "elementId": 7,
-          "elementName": "Text"
-        },
-        {
-          "elementId": 6,
-          "elementName": "Text"
-        }
-      ],
-      "owningComponentId": 2,
-      "stateVariableName": "info",
-      "owningComponentOrClassName": "Index"
-    },
-    {
-      "decoratorName": "@Observed(mix used in V2)",
-      "dependentInfo": [{
-          "elementId": 12,
-          "elementName": "Text"
-        },
-        {
-          "elementId": 11,
-          "elementName": "Text"
-        }
-      ],
-      "owningComponentId": -1,
-      "stateVariableName": "Any @Observed Object Property",
-      "owningComponentOrClassName": "Info"
-    }
-  ]
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "info",
+        "owningComponentOrClassName": "Index",
+        "owningComponentId": 2,
+        "dependentInfo": [{
+            "elementName": "ParamChild",
+            "elementId": 8
+        }, {
+            "elementName": "Text",
+            "elementId": 7
+        }, {
+            "elementName": "Text",
+            "elementId": 6
+        }]
+    }, {
+        "decoratorName": "@Observed(mix used in V2)",
+        "stateVariableName": "Any @Observed Object Property",
+        "owningComponentOrClassName": "Info",
+        "owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 12
+        }, {
+            "elementName": "Text",
+            "elementId": 11
+        }]
+    }]
 }
 ```
 ### @ObservedV2/@Trace观察场景
@@ -251,9 +242,9 @@ canBeObserved接口返回信息：
 在ArkTS-Sta中，被@ObservedV2装饰且属性被@Trace装饰的class实例具有被观察的能力。与@Track的场景类似，使用@Trace，仍将以@Trace装饰的属性维度展示属性与组件的绑定关系。
 
 示例代码：
-``` ts
-'use static'
+<!-- @[CanBeObservedObservedV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CanBeObserved/entry/src/main/ets/pages/CanBeObservedObservedV2.ets) -->
 
+``` TypeScript
 import { Entry, Text, Column, ComponentV2, Button, UIUtils, ObservedV2, Trace, Local } from '@kit.ArkUI'
 
 @ObservedV2
@@ -282,29 +273,27 @@ struct Index {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "reason": "The object data is decorated with V2 @ObservedV2 and @Trace",
-  "isObserved": true,
-  "decoratorInfo": [{
-      "decoratorName": "@Trace",
-      "dependentInfo": [{
-        "elementId": 7,
-        "elementName": "Text"
-      }],
-      "owningComponentId": -1,
-      "stateVariableName": "age",
-      "owningComponentOrClassName": "Info"
-    },
-    {
-      "decoratorName": "@Trace",
-      "dependentInfo": [{
-        "elementId": 6,
-        "elementName": "Text"
-      }],
-      "owningComponentId": -1,
-      "stateVariableName": "name",
-      "owningComponentOrClassName": "Info"
-    }
-  ]
+    "isObserved": true,
+    "reason": "The object data is decorated with V2 @ObservedV2 and @Trace",
+    "decoratorInfo": [{
+        "decoratorName": "@Trace",
+        "stateVariableName": "age",
+        "owningComponentOrClassName": "Info",
+        "owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 7
+        }]
+    }, {
+        "decoratorName": "@Trace",
+        "stateVariableName": "name",
+        "owningComponentOrClassName": "Info",
+        "owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 6
+        }]
+    }]
 }
 ```
 ### ObjectLiteral观察场景
@@ -320,9 +309,9 @@ canBeObserved接口返回信息：
 以V1装饰器为例，当interface字面量被V1装饰器装饰并使用在UI上时，调用canBeObserved接口将获取到以下信息。
 
 示例代码：
-``` ts
-'use static'
+<!-- @[CanBeObservedObjectLiteral](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CanBeObserved/entry/src/main/ets/pages/CanBeObservedObjectLiteral.ets) -->
 
+``` TypeScript
 import { Entry, Text, Column, Component, ComponentV2, Button, State, UIUtils, Param, Require } from '@kit.ArkUI'
 
 interface Info {
@@ -361,43 +350,36 @@ struct ParamChild {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "reason": "The object data is object literal decorated with V1 decorators or wrapped by makeObserved",
-  "isObserved": true,
-  "decoratorInfo": [{
-      "decoratorName": "@State",
-      "dependentInfo": [{
-          "elementId": 8,
-          "elementName": "ParamChild"
-        },
-        {
-          "elementId": 7,
-          "elementName": "Text"
-        },
-        {
-          "elementId": 6,
-          "elementName": "Text"
-        }
-      ],
-      "owningComponentId": 2,
-      "stateVariableName": "info",
-      "owningComponentOrClassName": "Index"
-    },
-    {
-      "decoratorName": "V1 Decorated ObjectLiteral(mix used in V2)",
-      "dependentInfo": [{
-          "elementId": 12,
-          "elementName": "Text"
-        },
-        {
-          "elementId": 11,
-          "elementName": "Text"
-        }
-      ],
-      "owningComponentId": -1,
-      "stateVariableName": "Any Object Literal Property",
-      "owningComponentOrClassName": "Info"
-    }
-  ]
+    "isObserved": true,
+    "reason": "The object data is object literal decorated with V1 decorators or wrapped by makeObserved",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "info",
+        "owningComponentOrClassName": "Index",
+        "owningComponentId": 2,
+        "dependentInfo": [{
+            "elementName": "ParamChild",
+            "elementId": 8
+        }, {
+            "elementName": "Text",
+            "elementId": 7
+        }, {
+            "elementName": "Text",
+            "elementId": 6
+        }]
+    }, {
+        "decoratorName": "V1 Decorated ObjectLiteral(mix used in V2)",
+        "stateVariableName": "Any Object Literal Property",
+        "owningComponentOrClassName": "Info",
+        "owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 12
+        }, {
+            "elementName": "Text",
+            "elementId": 11
+        }]
+    }]
 }
 ```
 ### Built-in观察场景
@@ -413,9 +395,9 @@ canBeObserved接口返回信息：
 以V1装饰器为例，当Array类型对象被V1装饰器装饰并使用在UI上时，调用canBeObserved接口将获取到以下信息。
 
 示例代码：
-``` ts
-'use static'
+<!-- @[CanBeObservedBuiltIn](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CanBeObserved/entry/src/main/ets/pages/CanBeObservedBuiltIn.ets) -->
 
+``` TypeScript
 import { Entry, Text, Column, Component, ComponentV2, Button, State, UIUtils, Param, Require } from '@kit.ArkUI'
 
 @Entry
@@ -448,46 +430,41 @@ struct ParamChild {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "reason": "The object data is built-in type data (Array/Map/Set/Date) decorated with V1/V2 decorators or wrapped by makeObserved",
-  "isObserved": true,
-  "decoratorInfo": [{
-      "decoratorName": "@State",
-      "dependentInfo": [{
-          "elementId": 7,
-          "elementName": "ParamChild"
-        },
-        {
-          "elementId": 6,
-          "elementName": "Text"
-        }
-      ],
-      "owningComponentId": 2,
-      "stateVariableName": "arr",
-      "owningComponentOrClassName": "Index"
-    },
-    {
-      "decoratorName": "V1 Decorated BuiltInType(mix used in V2)",
-      "dependentInfo": [{
-        "elementId": 10,
-        "elementName": "Text"
-      }],
-      "owningComponentId": -1,
-            // "__OB_ANY_INDEX"表示数组任意元素变化时，通知关联的组件刷新
-      "stateVariableName": "__OB_ANY_INDEX",
-      "owningComponentOrClassName": "Array"
-    },
-    {
-      "decoratorName": "V1 Decorated BuiltInType(mix used in V2)",
-      "dependentInfo": [{
-        "elementId": 10,
-        "elementName": "Text"
-      }],
-      "owningComponentId": -1,
-            // "__OB_LENGTH"表示数组长度变化时，通知关联的组件刷新
-      "stateVariableName": "__OB_LENGTH",
-      "owningComponentOrClassName": "Array"
-    }
-  ]
+    "isObserved": true,
+    "reason": "The object data is built-in type data (Array/Map/Set/Date) decorated with V1/V2 decorators or wrapped by makeObserved",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "arr",
+        "owningComponentOrClassName": "Index",
+        "owningComponentId": 2,
+        "dependentInfo": [{
+            "elementName": "ParamChild",
+            "elementId": 7
+        }, {
+            "elementName": "Text",
+            "elementId": 6
+        }]
+    }, {
+        "decoratorName": "V1 Decorated BuiltInType(mix used in V2)",
+        // "__OB_ANY_INDEX"表示数组任意元素变化时，通知关联的组件刷新
+        "stateVariableName": "__OB_ANY_INDEX",
+        "owningComponentOrClassName": "Array",
+        "owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 10
+        }]
+    }, {
+        "decoratorName": "V1 Decorated BuiltInType(mix used in V2)",
+        // "__OB_LENGTH"表示数组长度变化时，通知关联的组件刷新
+        "stateVariableName": "__OB_LENGTH",
+        "owningComponentOrClassName": "Array",
+        "owningComponentId": -1,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 10
+        }]
+    }]
 }
 ```
 
@@ -528,26 +505,26 @@ struct Index {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "isObserved": true,
-  "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
-  "decoratorInfo": [{
-    "decoratorName": "@State",
-    "stateVariableName": "info",
-    "owningComponentOrClassName": "Index",
-    "owningComponentId": 4,
-    "dependentInfo": [{
-      "elementName": "Text",
-      "elementId": 6
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed or wrapped by makeV1Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "info",
+        "owningComponentOrClassName": "Index",
+        "owningComponentId": 4,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 6
+        }]
     }]
-  }]
 }
 ```
 而相同的代码在ArkTS-Sta上，却无法观察。
 
 ArkTS-Sta代码：
-``` ts
-'use static'
+<!-- @[CanBeObservedNotRefresh](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CanBeObserved/entry/src/main/ets/pages/CanBeObservedNotRefresh.ets) -->
 
+``` TypeScript
 import { Entry, Text, Column, Component, Button, State, UIUtils } from '@kit.ArkUI'
 class Info {
   age: number = 25;
@@ -575,17 +552,17 @@ struct Index {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "reason": "The object data is not an observable object",
-  "isObserved": false,
-  "decoratorInfo": []
+    "isObserved": false,
+    "reason": "The object data is not an observable object",
+    "decoratorInfo": []
 }
 ```
 为class添加@Observed装饰，或为属性添加@Track装饰后，对象属性方能被观察。
 
 ArkTS-Sta代码：
-``` ts
-'use static'
+<!-- @[CanBeObservedAfterObserved](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/CanBeObserved/entry/src/main/ets/pages/CanBeObservedAfterObserved.ets) -->
 
+``` TypeScript
 import { Entry, Text, Column, Component, Button, State, UIUtils, Observed } from '@kit.ArkUI'
 @Observed
 class Info {
@@ -614,17 +591,17 @@ struct Index {
 canBeObserved接口返回信息：
 ``` json5
 {
-  "reason": "The object data is decorated with @Observed",
-  "isObserved": true,
-  "decoratorInfo": [{
-    "decoratorName": "@State",
-    "dependentInfo": [{
-      "elementId": 5,
-      "elementName": "Text"
-    }],
-    "owningComponentId": 2,
-    "stateVariableName": "info",
-    "owningComponentOrClassName": "Index"
-  }]
+    "isObserved": true,
+    "reason": "The object data is decorated with @Observed",
+    "decoratorInfo": [{
+        "decoratorName": "@State",
+        "stateVariableName": "info",
+        "owningComponentOrClassName": "Index",
+        "owningComponentId": 2,
+        "dependentInfo": [{
+            "elementName": "Text",
+            "elementId": 5
+        }]
+    }]
 }
 ```

@@ -35,7 +35,7 @@ Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 
 
 **错误信息**
 
-Setup error, This setting is overridden by setting in Task Manager.
+Setup error, This setting is overridden by settings in Task Manager.
 
 **错误描述**
 

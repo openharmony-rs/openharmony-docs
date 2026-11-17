@@ -9,7 +9,7 @@
 
 设备上报的手势事件。
 
->  **说明：**
+> **说明：**
 >
 >- 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
@@ -18,7 +18,7 @@
 ## 导入模块
 
 ```js
-import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '@kit.InputKit';
+import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ThreeFingersTap, ActionType } from '@kit.InputKit';
 ```
 
 ## Pinch
@@ -33,7 +33,7 @@ import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '
 
 | 名称             | 类型        | 只读   | 可选   | 说明                                       |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
-| type         | [ActionType](#actiontype)   | 否    | 否    | 手势事件类型。如：手势开始、手势更新、手势结束等。                                   |
+| type         | [ActionType](#actiontype)   | 否    | 否    | 手势事件类型，包括手势取消、手势开始、手势更新、手势结束。                                   |
 | scale        |  ArkTS-Dyn: number<br/>ArkTS-Sta: double      | 否    | 否    | 捏合度，取值范围大于等于0。                             |
 
 ## Rotate<sup>11+</sup>
@@ -49,7 +49,7 @@ import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '
 | 名称             | 类型        | 只读   | 可选   | 说明                                       |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
 | type | [ActionType](#actiontype)   | 否    | 否    | 手势事件类型。如：手势开始、手势更新、手势结束等。                                   |
-| angle | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否    | 否    | 旋转角度。                             |
+| angle | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否    | 否    | 旋转角度，单位为度。                             |
 
 ## ThreeFingersSwipe
 
@@ -64,8 +64,8 @@ import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '
 | 名称             | 类型        | 只读   | 可选   | 说明                                       |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
 | type         | [ActionType](#actiontype)   | 否    | 否    | 手势事件类型。如：手势开始、手势更新、手势结束等。                                   |
-| x        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 坐标x。                             |
-| y        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 坐标y。                             |
+| x        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 坐标x，单位为像素（px）。                             |
+| y        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 坐标y，单位为像素（px）。                             |
 
 ## FourFingersSwipe
 
@@ -80,8 +80,8 @@ import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '
 | 名称             | 类型        | 只读   | 可选   | 说明                                       |
 | -------------- | ----------- | ---- | ---- | ---------------------------------------- |
 | type         | [ActionType](#actiontype)   | 否    | 否    | 手势事件类型。如：手势开始、手势更新、手势结束等。                                   |
-| x        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 坐标x。                             |
-| y        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 坐标y。                             |
+| x        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 坐标x，单位为像素（px）。                             |
+| y        | ArkTS-Dyn: number<br/>ArkTS-Sta: int      | 否    | 否    | 坐标y，单位为像素（px）。                             |
 
 ## ThreeFingersTap<sup>11+</sup>
 

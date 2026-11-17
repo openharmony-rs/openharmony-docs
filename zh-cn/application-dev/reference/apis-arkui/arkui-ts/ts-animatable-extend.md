@@ -1,8 +1,8 @@
-# 定义可动画属性 (@AnimatableExtend)
+# @AnimatableExtend：定义可动画属性
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -18,7 +18,9 @@
 
 >  **说明：**
 >
-> - 该装饰器从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 该装饰器从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 
 ## 语法
 
@@ -36,7 +38,7 @@
 
 该接口定义非number数据类型的动画运算规则。对非number类型的数据（如数组、结构体、颜色等）做动画，需要实现AnimatableArithmetic\<T\>接口中加法、减法、乘法和判断相等函数，使得该数据能参与动画的插值运算和识别该数据是否发生改变。即定义它们为实现了AnimatableArithmetic\<T\>接口的类型。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,9 +46,9 @@
 
 plus(rhs: AnimatableArithmetic\<T\>): AnimatableArithmetic\<T\>
 
-定义数据类型的加法运算规则。
+定义该数据类型的加法运算规则。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,7 +74,7 @@ subtract(rhs: AnimatableArithmetic\<T\>): AnimatableArithmetic\<T\>
 
 定义该数据类型的减法运算规则。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -100,7 +102,7 @@ ArkTS-Sta: multiply(scale: double): AnimatableArithmetic\<T\>
 
 定义该数据类型的乘法运算规则。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -126,7 +128,7 @@ equals(rhs: AnimatableArithmetic\<T\>): boolean
 
 定义该数据类型的相等判断规则。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -238,9 +240,7 @@ class PointVector extends Array<Point> implements AnimatableArithmetic<PointVect
 
   multiply(scale: number): PointVector {
     let result = new PointVector([]);
-    for (let i = 0; i < this.length; i++) {
-      result.push((this as Array<Point>)[i].multiply(scale));
-    }
+    this.forEach((point: Point) => result.push(point.multiply(scale)));
     return result;
   }
 
@@ -248,12 +248,7 @@ class PointVector extends Array<Point> implements AnimatableArithmetic<PointVect
     if (this.length != rhs.length) {
       return false;
     }
-    for (let i = 0; i < this.length; i++) {
-      if (!(this as Array<Point>)[i].equals((rhs as Array<Point>)[i])) {
-        return false;
-      }
-    }
-    return true;
+    return this.every((point: Point, index: number) => point.equals((rhs as Array<Point>)[index]));
   }
 
   get(): Array<Object[]> {

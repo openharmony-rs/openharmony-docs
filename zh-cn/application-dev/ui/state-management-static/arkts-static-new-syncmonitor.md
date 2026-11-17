@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了增强状态管理框架对状态变量变化的监听能力，开发者可以使用\@SyncMonitor装饰器对状态变量进行监听。
+为了增强状态管理框架对状态变量变化的监听能力，开发者可以使用[\@SyncMonitor](../../reference/apis-arkui/arkui-ts/ts-state-management-syncmonitor-static.md#syncmonitor-1)装饰器对状态变量进行监听。
 
 \@SyncMonitor提供了对V2状态变量的同步监听。在阅读本文档前，建议提前阅读：[\@ComponentV2](../state-management/arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-static-new-observedV2-and-trace.md)，[\@Local](./arkts-static-new-local.md)，[\@Monitor](./arkts-static-new-monitor.md)。
 
@@ -95,40 +95,41 @@ struct CompV2 {
 
 \@SyncMonitor将调用其回调3次，分别对应从0到1、1到3和3到6的变化。
 
- ``` TypeScript
- 'use static'
- import { Entry, ComponentV2, Local, SyncMonitor, IMonitor, Column, Button, Monitor } from '@kit.ArkUI';
- import { hilog } from '@kit.PerformanceAnalysisKit';
- 
- @Entry
- @ComponentV2
- struct DocSampleArraySum {
-   @Local sum: number = 0;
-   arr: Array<number> = [1, 2, 3];
-   @SyncMonitor(['sum'])
-   syncSumMonitor(info: IMonitor) {
-     let path = info.dirty[0];
-     hilog.info(0xFF00, 'SyncMonitor', '%{public}s', `${path} changed from ${info.value<number>(path)?.before} to ${info.value<number>(path)?.now}`);
-   }
-   @Monitor(['sum'])
-   asyncSumMonitor(info: IMonitor) {
-     let path = info.dirty[0];
-     hilog.info(0xFF00, 'Monitor', '%{public}s', `${path} changed from ${info.value<number>(path)?.before} to ${info.value<number>(path)?.now}`);
-   }
- 
-   build() {
-     Column() {
-       Button('Calculate a sum')
-         .onClick(() => {  // 修改sum时，syncSumMonitor会回调3次，asyncSumMonitor只回调1次。
-           this.sum = 0;
-           this.arr.forEach((element) => {
-             this.sum += element;
-           });
-         })
-     }
-   }
- }
- ```
+<!-- @[SyncMonitorArraySum](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorArraySum.ets) -->
+
+``` TypeScript
+import { Entry, ComponentV2, Local, SyncMonitor, IMonitor, Column, Button, Monitor } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@ComponentV2
+struct DocSampleArraySum {
+  @Local sum: number = 0;
+  arr: Array<number> = [1, 2, 3];
+  @SyncMonitor(['sum'])
+  syncSumMonitor(info: IMonitor) {
+    let path = info.dirty[0];
+    hilog.info(0xFF00, 'SyncMonitor', '%{public}s', `${path} changed from ${info.value<number>(path)?.before} to ${info.value<number>(path)?.now}`);
+  }
+  @Monitor(['sum'])
+  asyncSumMonitor(info: IMonitor) {
+    let path = info.dirty[0];
+    hilog.info(0xFF00, 'Monitor', '%{public}s', `${path} changed from ${info.value<number>(path)?.before} to ${info.value<number>(path)?.now}`);
+  }
+
+  build() {
+    Column() {
+      Button('Calculate a sum')
+        .onClick(() => {  // 修改sum时，syncSumMonitor会回调3次，asyncSumMonitor只回调1次。
+          this.sum = 0;
+          this.arr.forEach((element) => {
+            this.sum += element;
+          });
+        })
+    }
+  }
+}
+```
 
 日志输出:
 
@@ -176,7 +177,7 @@ Monitor - sum changed from 0 to 6
 
 ## 接口说明
 
-IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状态变量变化监听](../../reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md)。
+IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Monitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor-static.md)。
 
 ## 监听变化
 
@@ -186,8 +187,9 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 
 - \@SyncMonitor监听的变量需要被\@Local、\@Param、\@Provider、\@Consumer、\@Computed装饰，未被状态变量装饰器装饰的变量在变化时无法被监听。\@SyncMonitor可以同时监听多个状态变量，这些变量名用字符串数组传递。
 
+   <!-- @[SyncMonitorMultiVars](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorMultiVars.ets) -->
+   
    ``` TypeScript
-   'use static'
    import { Entry, ComponentV2, Local, SyncMonitor, IMonitor, Column, Button } from '@kit.ArkUI';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
@@ -219,9 +221,10 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
    ```
 
 - \@SyncMonitor监听的状态变量为类对象时，仅能监听对象整体的变化。监听类属性的变化需要类属性被\@Trace装饰，无法监听非状态变量的变化。
-  
+   
+   <!-- @[SyncMonitorClassObject](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorClassObject.ets) -->
+   
    ``` TypeScript
-   'use static'
    import { Entry, ComponentV2, Local, SyncMonitor, IMonitor, Column, Button, Text } from '@kit.ArkUI';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
@@ -262,9 +265,10 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 使用\@SyncMonitor监听的属性发生变化时，会触发\@SyncMonitor的回调方法。
 
 - \@SyncMonitor监听的对象属性需要被\@Trace装饰，未被\@Trace装饰的属性的变化无法被监听。\@SyncMonitor可以同时监听多个属性，这些属性之间用','隔开。
-  
+   
+   <!-- @[SyncMonitorObservedClass](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorObservedClass.ets) -->
+   
    ``` TypeScript
-   'use static'
    import { Entry, ComponentV2, Local, SyncMonitor, IMonitor, Column, Button, ObservedV2, Trace } from '@kit.ArkUI';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
@@ -328,9 +332,10 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
    ```
 
 - \@SyncMonitor可以监听深层属性的变化，该深层属性需要被@Trace装饰。
-  
-   ```TypeScript
-   'use static'
+   
+   <!-- @[SyncMonitorDeepProperty](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorDeepProperty.ets) -->
+   
+   ``` TypeScript
    import { Entry, ComponentV2, Local, SyncMonitor, IMonitor, Column, Button, ObservedV2, Trace } from '@kit.ArkUI';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    
@@ -368,26 +373,27 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 
 - 在继承类场景下，可以在继承链中对同一个属性进行多次监听，父子类中定义的\@SyncMonitor回调均会被调用。
 
+   <!-- @[SyncMonitorInheritance](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorInheritance.ets) -->
+   
    ``` TypeScript
-   'use static'
    import { Entry, ComponentV2, Local, SyncMonitor, IMonitor, Column, Button, ObservedV2, Trace } from '@kit.ArkUI';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+   
    @ObservedV2
    class Base {
      @Trace public name: string;
-  
+   
      // 基类监听name属性
      @SyncMonitor(['name'])
      onBaseNameChange(monitor: IMonitor): void {
        hilog.info(0xFF00, 'testTag', '%{public}s', `Base Class name change`);
      }
-  
+   
      constructor(name: string) {
        this.name = name;
      }
    }
-  
+   
    @ObservedV2
    class Derived extends Base {
      // 继承类监听name属性
@@ -396,17 +402,17 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
      onDerivedNameChange(monitor: IMonitor): void {
        hilog.info(0xFF00, 'testTag', '%{public}s', `Derived Class name change`);
      }
-  
+   
      constructor(name: string) {
        super(name);
      }
    }
-  
+   
    @Entry
    @ComponentV2
    struct Index {
      derived: Derived = new Derived('AAA');
-  
+   
      build() {
        Column() {
          Button('change name')
@@ -426,28 +432,29 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 
 - \@SyncMonitor可以观察由调用内置类型`Map`，`Date`和`Set`的API引起的变化，例如，如果调用`set`、`add`、`delete`修改数据集合，则将执行监听函数。`Map`和`Set`中对应key的变化，不会执行监听函数，框架会打印错误日志。
 
+   <!-- @[SyncMonitorArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorArray.ets) -->
+   
    ``` TypeScript
-   'use static'
    import { Entry, ComponentV2, Local, SyncMonitor, IMonitor, Column, Button, ObservedV2, Trace } from '@kit.ArkUI';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+   
    @ObservedV2
    class Info {
      @Trace public name: string;
      @Trace public age: number;
-  
+   
      constructor(name: string, age: number) {
        this.name = name;
        this.age = age;
      }
    }
-  
+   
    @ObservedV2
    class ArrMonitor {
      @Trace public dimensionTwo: number[][] = [[1, 1, 1], [2, 2, 2], [3, 3, 3]];
      @Trace public dimensionThree: number[][][] = [[[1], [2], [3]], [[4], [5], [6]], [[7], [8], [9]]];
      @Trace public infoArr: Info[] = [new Info('Jack', 24), new Info('Lucy', 18)];
-  
+   
      // dimensionTwo为二维简单类型数组，且被@Trace装饰，能够观测里面的元素变化
      @SyncMonitor(['dimensionTwo.0.0', 'dimensionTwo.1.1'])
      onDimensionTwoChange(monitor: IMonitor): void {
@@ -456,7 +463,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
            `dimensionTwo path: ${path} change from ${monitor.value<number>(path)?.before} to ${monitor.value<number>(path)?.now}`);
        })
      }
-  
+   
      // dimensionThree为三维简单类型数组，且被@Trace装饰，能够观测里面的元素变化
      @SyncMonitor(['dimensionThree.0.0.0', 'dimensionThree.1.1.0'])
      onDimensionThreeChange(monitor: IMonitor): void {
@@ -465,7 +472,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
            `dimensionThree path: ${path} change from ${monitor.value<number>(path)?.before} to ${monitor.value<number>(path)?.now}`);
        })
      }
-  
+   
      // Info类中属性name、age均被@Trace装饰，能够监听到变化
      @SyncMonitor(['infoArr.0.name', 'infoArr.1.age'])
      onInfoArrPropertyChange(monitor: IMonitor): void {
@@ -474,25 +481,25 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
            `infoArr path:${path} change from ${monitor.value<Any>(path)?.before} to ${monitor.value<Any>(path)?.now}`);
        })
      }
-  
+   
      // infoArr被@Trace装饰，能够监听到infoArr整体赋值的变化
      @SyncMonitor(['infoArr'])
      onInfoArrChange(monitor: IMonitor): void {
        hilog.info(0xFF00, 'testTag', '%{public}s', `infoArr whole change`);
      }
-  
+   
      // 能够监听到infoArr的长度变化
      @SyncMonitor(['infoArr.length'])
      onInfoArrLengthChange(monitor: IMonitor): void {
        hilog.info(0xFF00, 'testTag', '%{public}s', `infoArr length change`);
      }
    }
-  
+   
    @Entry
    @ComponentV2
    struct Index {
      arrMonitor: ArrMonitor = new ArrMonitor();
-  
+   
      build() {
        Column() {
          Button('Change dimensionTwo')
@@ -533,49 +540,50 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
   下面的示例按照Step1-Step2-Step3的顺序点击，表现为代码注释中的行为。
 
   如果只点击Step2或Step3，改变name、age的值，此时会触发onNameChange和onAgeChange方法。
-  
+
+   <!-- @[SyncMonitorObjectAssign](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorObjectAssign.ets) -->
+   
    ``` TypeScript
-   'use static'
    import { Entry, ComponentV2, Local, SyncMonitor, IMonitor, Column, Button, ObservedV2, Trace } from '@kit.ArkUI';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+   
    @ObservedV2
    class Info {
      @Trace public person: Person;
-  
+   
      @SyncMonitor(['person.name'])
      onNameChange(monitor: IMonitor): void {
        hilog.info(0xFF00, 'testTag', '%{public}s',
          `name change from ${monitor.value<string>()?.before} to ${monitor.value<string>()?.now}`);
      }
-  
+   
      @SyncMonitor(['person.age'])
      onAgeChange(monitor: IMonitor): void {
        hilog.info(0xFF00, 'testTag', '%{public}s',
          `age change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
      }
-  
+   
      constructor(name: string, age: number) {
        this.person = new Person(name, age);
      }
    }
-  
+   
    @ObservedV2
    class Person {
      @Trace public name: string;
      @Trace public age: number;
-  
+   
      constructor(name: string, age: number) {
        this.name = name;
        this.age = age;
      }
    }
-  
+   
    @Entry
    @ComponentV2
    struct Index {
      info: Info = new Info('Tom', 25);
-  
+   
      build() {
        Column() {
          Button('Step1: Only change name')
@@ -598,28 +606,29 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 - 在一次事件中多次改变被\@SyncMonitor监听的属性，\@SyncMonitor回调将在该属性每次改变时被调用。
 
   \@SyncMonitor与\@Monitor行为不一样，\@Monitor只被调用一次并以最后一次修改为准。
-  
+   
+   <!-- @[SyncMonitorFrequency](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorFrequency.ets) -->
+   
    ``` TypeScript
-   'use static'
    import { Entry, ComponentV2, Local, SyncMonitor, IMonitor, Column, Button, ObservedV2, Trace } from '@kit.ArkUI';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+   
    @ObservedV2
    class Frequency {
      @Trace public count: number = 0;
-  
+   
      @SyncMonitor(['count'])
      onCountChange(monitor: IMonitor): void {
        hilog.info(0xFF00, 'testTag', '%{public}s',
          `count change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
      }
    }
-  
+   
    @Entry
    @ComponentV2
    struct Index {
      frequency: Frequency = new Frequency();
-  
+   
      build() {
        Column() {
          Button('change count to 1000')
@@ -664,21 +673,22 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 
 - 如果\@SyncMonitor观察的多个属性在不同的赋值操作中发生改变，则每次赋值操作后都会立即调用\@SyncMonitor回调函数。这与\@Monitor的行为相反，后者只调用一次并使用最后一次更改的值。调用Array的API可能会一次改变多个数组元素，但每次只会触发一次\@SyncMonitor装饰的回调函数。
 
-   ``` typescript
-   'use static'
+   <!-- @[SyncMonitorArrayMultiPath](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorArrayMultiPath.ets) -->
+   
+   ``` TypeScript
    import { Entry, ComponentV2, Local, SyncMonitor, IMonitor, Column, Button, ObservedV2, Trace } from '@kit.ArkUI';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-
+   
    @Entry
    @ComponentV2
    struct DocSampleArrayMultiPath {
      @Local arr: Array<number> = [0, 1, 2, 3, 4, 5]
-  
+   
      @SyncMonitor(['arr','arr.0','arr.1','arr.2','arr.3','arr.4','arr.length'])
      onArrChangedSync(m: IMonitor) {
        hilog.info(0xFF00, 'testTag', '%{public}s', `@SyncMonitor: arr: [${this.arr}], m.dirty: [${m.dirty}]`);
      }
-  
+   
      build() {
        Column() {
          Button('Change array by making separate assignments')
@@ -689,7 +699,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
              this.arr[2] = 200;
              hilog.info(0xFF00, 'testTag', '.. done');
            })
-  
+   
          Button('Change array with array functions')
            .onClick(() => {
              hilog.info(0xFF00, 'testTag', 'splice execute ...');
@@ -729,8 +739,9 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[状�
 
 ### 被观察属性变更或对象赋值时，监听函数自动执行
 
+<!-- @[SyncMonitorWildcardClass](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorWildcardClass.ets) -->
+
 ``` TypeScript
-'use static'
 import { Entry, ComponentV2, Local, SyncMonitor, IMonitor, Column, Button, ObservedV2, Trace, Divider,
          BorderStyle, Color } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -796,8 +807,9 @@ struct DocSampleClass {
 
 同步监听的观察路径：`@SyncMonitor(['arrayOfPerson.*]')`
 
+<!-- @[SyncMonitorWildcardArray](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorWildcardArray.ets) -->
+
 ``` TypeScript
-'use static'
 import { Entry, ComponentV2, Local, SyncMonitor, IMonitor, Column, Button, ObservedV2, Trace, Divider } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -849,17 +861,12 @@ struct DocSampleArray {
             this.arrayOfPerson.shift();
           }
         })
-      Button('#5 arrayOfPerson length change')
-        .onClick(() => {
-          // arrayOfPersonMonitor回调触发
-          this.arrayOfPerson.length = this.arrayOfPerson.length + 1;
-        })
-      Button('#6 arrayOfPerson = new Array')
+      Button('#5 arrayOfPerson = new Array')
         .onClick(() => {
           // arrayOfPersonMonitor回调触发
           this.arrayOfPerson = [new Person('Adrian'), new Person('Andrew')]
         })
-      Button('#7 arrayOfPerson [1] last name')
+      Button('#6 arrayOfPerson [1] last name')
         .onClick(() => {
           if (this.arrayOfPerson.length > 1 && this.arrayOfPerson[1] instanceof Person) {
             // arrayOfPersonMonitor回调不触发
@@ -871,13 +878,13 @@ struct DocSampleArray {
 }
 ```
 
-当按下按钮1-6时，监听函数会被触发:
+当按下按钮1-5时，监听函数会被触发:
 
 ```text
 ### SyncMonitor dirty: arrayOfPerson.*
 ```
 
-按下按钮7，监听函数不会被调用，因为没有数组项被更改。
+按下按钮6，监听函数不会被调用，因为没有数组项被更改。
 
 ### 嵌套被观察对象属性更改时，监听函数会执行
 
@@ -1007,8 +1014,9 @@ struct DocSampleNestedClass {
 
 在以下例子中，有两个\@SyncMonitor监听的路径分别为：`topArray.1.*`和`topArray.*`。
 
+<!-- @[SyncMonitorArrayOfArrays](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorArrayOfArrays.ets) -->  
+
 ``` TypeScript
-'use static'
 import { Entry, ComponentV2, Local, SyncMonitor, IMonitor, Column, Button, ObservedV2, Trace, Divider } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -1076,7 +1084,7 @@ struct DocSampleArrayOfArrays {
       // 当topArray[1]存在时，topArrayMonitor1Star回调触发，topArrayMonitorStar回调不触发
       Button('topArray[1].push')
         .onClick(() => {
-          if (this.topArray.length > 1 && this.topArray[1] instanceof Array<Person>) {
+          if (this.topArray.length > 1 && this.topArray[1] instanceof Array) {
             this.topArray[1].push(new Person());
           }
         })
@@ -1128,34 +1136,34 @@ struct DocSampleArrayOfArrays {
 使用\@SyncMonitor需要注意如下限制条件：
 
 - \@SyncMonitor的参数需要为监听属性名的字符串，可以使用字符串字面量、const常量、enum枚举值，不支持变量作为参数。如果使用变量作为参数，会编译报错，如下提供用例展示@SyncMonitor正常使用场景。
-
-   ```TypeScript
+   
+   ``` TypeScript
    'use static'
    import { Entry, ComponentV2, Local, SyncMonitor, IMonitor, Column, Button, ObservedV2, Trace, Divider } from '@kit.ArkUI';
    import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+   
    const propB: string = 'propB'; // const常量
-  
+   
    enum ENUM {
      propC = 'propC' // enum枚举值
    };
    let propD: string = 'propD'; // 变量
-  
+   
    @ObservedV2
    class Info {
      @Trace public propA: number = 0;
      @Trace public propB: number = 0;
      @Trace public propC: number = 0;
      @Trace public propD: number = 0;
-  
+   
      // @SyncMonitor仅支持字符串字面量
      @SyncMonitor(['propA'])
      onPropAChange(monitor: IMonitor): void {
        hilog.info(0xFF00, 'testTag', '%{public}s', `propA change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
      }
-  
-     // @SyncMonitor入参类型为const常量
-     @SyncMonitor([propB])
+   
+     // @SyncMonitor入参类型为constant字面量，顶层的const不能被当作constant字面量使用，需传入'propB'，而非propB
+     @SyncMonitor(['propB'])
      onPropBChange(monitor: IMonitor): void {
        hilog.info(0xFF00, 'testTag', '%{public}s', `propB change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
      }
@@ -1166,18 +1174,18 @@ struct DocSampleArrayOfArrays {
        hilog.info(0xFF00, 'testTag', '%{public}s', `propC change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
      }
      
-     // @SyncMonitor入参类型为变量，编译会报错，提示`Only constant expressions are supported as parameters in '@SyncMonitor'. Variables are not allowed.`
+     // @SyncMonitor入参类型为变量，编译会报错，提示`Invalid value for annotation field, expected a constant literal.`
      @SyncMonitor([propD])
      onPropDChange(monitor: IMonitor): void {
        hilog.info(0xFF00, 'testTag', '%{public}s', `propD change from ${monitor.value<number>()?.before} to ${monitor.value<number>()?.now}`);
      }
    }
-  
+   
    @Entry
    @ComponentV2
    struct Index {
      info: Info = new Info();
-  
+   
      build() {
        Column() {
          Button('Change propA')
@@ -1213,8 +1221,9 @@ struct DocSampleArrayOfArrays {
 
 下面的示例中监听了属性value的变化，并根据变化的幅度改变Text组件显示的样式。
 
+<!-- @[SyncMonitorDeepValue](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorDeepValue.ets) -->
+
 ``` TypeScript
-'use static'
 import { ObservedV2, Trace, SyncMonitor, Entry, ComponentV2, Column, Text, Button, Color,
          IMonitor } from '@kit.ArkUI';
 
@@ -1300,8 +1309,9 @@ struct Index {
 
 \@SyncMonitor可以监听变量从可访问变为不可访问或从不可访问变为可访问的变化。在下面的例子中，点击三个Button，均会触发`onChange`的回调。
 
+<!-- @[SyncMonitorAccessibility](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/SyncMonitorDecorator/entry/src/main/ets/pages/SyncMonitorAccessibility.ets) -->
+
 ``` TypeScript
-'use static'
 import { ObservedV2, Trace, SyncMonitor, Entry, ComponentV2, Column, Text, Button, Param, IMonitor,
          Local, Require, ForEach, Computed } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1320,7 +1330,8 @@ struct Page {
   onChange(mon: IMonitor) {
     mon.dirty.forEach((path: string) => {
       hilog.info(0xFF00, 'testTag', '%{public}s',
-        `onChange: User property ${path} change from ${mon.value<number>(path)?.before} to ${mon.value<number>(path)?.now}`);
+        `onChange: User property ${path} change from ${mon.value<number | undefined>(path)?.before} to ` +
+          `${mon.value<number | undefined>(path)?.now}`);
     });
   }
 

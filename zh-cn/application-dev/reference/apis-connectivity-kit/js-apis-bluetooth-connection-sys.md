@@ -3,16 +3,16 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-connection模块提供了对蓝牙操作和管理的方法。
+connection模块提供了蓝牙设备配对、配对取消、连接断开、设备信息查询、设备类型管理、带外配对、车钥匙维测、云设备管理等操作和管理方法，适用于系统应用需要对蓝牙设备进行配对管理、连接控制和设备信息维护的场景。
 
 > **说明：**
 >
 > 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.bluetooth.connection (蓝牙connection模块)](js-apis-bluetooth-connection.md)
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.bluetooth.connection (蓝牙connection模块)](js-apis-bluetooth-connection.md)。
 
 
 ## 导入模块
@@ -26,13 +26,15 @@ import { connection } from '@kit.ConnectivityKit';
 
 pairCredibleDevice(deviceId: string, transport: BluetoothTransport, callback: AsyncCallback&lt;void&gt;): void
 
-向可信的远端设备发起蓝牙配对。通过非蓝牙扫描的方式(例如NFC等)获取到外设的地址，可以通过该接口发起配对。使用Callback异步回调。
+向可信的远端设备发起蓝牙配对。通过非蓝牙扫描的方式（例如NFC等）获取到外设的地址，可以通过该接口发起配对。使用Callback异步回调。蓝牙配对状态通过[on('bondStateChange')](js-apis-bluetooth-connection.md#connectiononbondstatechange)的回调结果获取。
 
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -79,13 +81,15 @@ try {
 
 pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Promise&lt;void&gt;
 
-向可信的远端设备发起蓝牙配对。通过非蓝牙扫描的方式(例如NFC等)获取到外设的地址，可以通过该接口发起配对。使用Promise异步回调。
+向可信的远端设备发起蓝牙配对。通过非蓝牙扫描的方式（例如NFC等）获取到外设的地址，可以通过该接口发起配对。使用Promise异步回调。蓝牙配对状态通过[on('bondStateChange')](js-apis-bluetooth-connection.md#connectiononbondstatechange)的回调结果获取。
 
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -98,7 +102,7 @@ pairCredibleDevice(deviceId: string, transport: BluetoothTransport): Promise&lt;
 
 | 类型                                              | 说明                |
 | ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | 返回promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -142,6 +146,8 @@ cancelPairedDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名      | 类型     | 必填   | 说明                                    |
@@ -178,73 +184,19 @@ try {
 ```
 
 
-## connection.cancelPairedDevice
-
-cancelPairedDevice(deviceId: string): Promise&lt;void&gt;
-
-删除配对的远程设备。使用Promise异步回调。
-
-**系统接口**：此接口为系统接口。
-
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
-
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
-
-**参数：**
-
-| 参数名      | 类型     | 必填   | 说明                                    |
-| -------- | ------ | ---- | ------------------------------------- |
-| deviceId | string | 是    | 表示要删除的远程设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
-
-**返回值：**
-
-| 类型                  | 说明            |
-| ------------------- | ------------- |
-| Promise&lt;void&gt; | 返回promise对象。 |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------- |
-|201 | Permission denied.                 |
-|202 | Non-system applications are not allowed to use system APIs. |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
-|801 | Capability not supported.          |
-|2900001 | Service stopped.                         |
-|2900003 | Bluetooth disabled.                 |
-|2900099 | Operation failed.                        |
-
-**示例：**
-
-```js
-import { BusinessError } from '@kit.BasicServicesKit';
-// promise
-try {
-    connection.cancelPairedDevice('11:22:33:44:55:66').then(() => {
-        console.info('cancelPairedDevice');
-    }, (error: BusinessError) => {
-        console.error('cancelPairedDevice: errCode:' + error.code + ',errMessage' + error.message);
-    })
-
-} catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-}
-```
-
-
 ## connection.cancelPairingDevice
 
 cancelPairingDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
-删除正在配对中的远程设备。使用Callback异步回调。
+删除正在配对中的远程设备。与cancelPairedDevice（用于删除已配对的设备）不同，本接口用于取消正在进行中的配对流程。使用Callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -283,13 +235,15 @@ try {
 
 cancelPairingDevice(deviceId: string): Promise&lt;void&gt;
 
-删除正在配对中的远程设备。使用Promise异步回调。
+删除正在配对中的远程设备。与cancelPairedDevice（用于删除已配对的设备）不同，本接口用于取消正在进行中的配对流程。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -301,7 +255,7 @@ cancelPairingDevice(deviceId: string): Promise&lt;void&gt;
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | 返回promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -340,6 +294,8 @@ getLocalProfileUuids(callback: AsyncCallback&lt;Array&lt;ProfileUuids&gt;&gt;): 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -387,11 +343,13 @@ getLocalProfileUuids(): Promise&lt;Array&lt;ProfileUuids&gt;&gt;
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
-|   Promise&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | 返回promise对象。 |
+|   Promise&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | Promise对象，返回本端设备的ProfileUuids数组。 |
 
 **错误码**：
 
@@ -440,7 +398,7 @@ disconnectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;)
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
 | deviceId | string | 是    | 表示断开的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-| callback | AsyncCallback&lt;void&gt; | 是    | 以callback形式异步返回结果。当发起断开成功，err为undefined，否则为错误对象。   |
+| callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当发起断开成功，err为undefined，否则为错误对象。   |
 
 **错误码**：
 
@@ -474,69 +432,20 @@ try {
 ```
 
 
-## connection.disconnectAllowedProfiles<sup>11+</sup>
-
-disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
-
-断开远端设备所有连接的profiles。使用Promise异步回调。
-
-**系统接口**：此接口为系统接口。
-
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
-
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
-
-**参数：**
-
-| 参数名      | 类型     | 必填   | 说明                                  |
-| -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示断开的远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
-
-**返回值：**
-
-| 类型                                              | 说明                |
-| ------------------------------------------------- | ------------------- |
-| Promise&lt;void&gt; | 以Promise形式返回断开profiles的结果，返回true为成功，false为失败。 |
-
-**错误码**：
-
-以下错误码的详细介绍请参见[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------- |
-|201     | Permission denied.                       |
-|202     | Non-system applications are not allowed to use system APIs.                       |
-|401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                       |
-|801     | Capability not supported.                |
-|2900001 | Service stopped.                         |
-|2900003 | Bluetooth disabled.                 |
-|2900099 | Operation failed.                        |
-
-**示例：**
-
-```js
-import { BusinessError } from '@kit.BasicServicesKit';
-try {
-    connection.disconnectAllowedProfiles('68:13:24:79:4C:8C').then(() => {
-        console.info('disconnectAllowedProfiles');
-    }, (err: BusinessError) => {
-        console.error('disconnectAllowedProfiles:errCode' + err.code + ', errMessage: ' + err.message);
-    });
-} catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-}
-```
-
-
 ## connection.getRemoteProductId<sup>11+</sup>
 
 getRemoteProductId(deviceId: string): string
 
-获取对端蓝牙设备的Product ID。从API16开始不再校验ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH权限。
+获取对端蓝牙设备的Product ID。
+
+**需要权限**：
+- API版本11-15：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -556,6 +465,7 @@ getRemoteProductId(deviceId: string): string
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
+|201 | Permission denied.<br>适用版本：11-15 |
 |202 | Non-system applications are not allowed to use system APIs. |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
@@ -577,13 +487,15 @@ try {
 
 setRemoteDeviceType(deviceId: string, type: DeviceType): Promise&lt;void&gt;
 
-设置蓝牙远端设备自定义类型。使用Promise异步回调。
+设置蓝牙远端设备自定义类型，适用于蓝牙设置或设备管理应用中按设备类型（如汽车、耳机、助听器等）进行分类展示或差异化处理的场景。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -596,7 +508,7 @@ setRemoteDeviceType(deviceId: string, type: DeviceType): Promise&lt;void&gt;
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | 以Promise形式返回设置蓝牙远端设备类型的结果，设置失败时返回错误码信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -628,23 +540,28 @@ try {
 
 getRemoteDeviceType(deviceId: string): Promise&lt;DeviceType&gt;
 
-获取蓝牙远端设备自定义类型。使用Promise异步回调。从API18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
+获取通过setRemoteDeviceType设置的蓝牙远端设备自定义类型。使用Promise异步回调。从API version 18开始不再校验ohos.permission.ACCESS_BLUETOOTH权限。
 
 **系统接口**：此接口为系统接口。
 
+**需要权限**：
+- API版本12-17：ohos.permission.ACCESS_BLUETOOTH
+
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
-**参数：**
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
 
 | 参数名    | 类型      | 必填   | 说明                               |
 | ------ | ------- | ---- | -------------------------------- |
 | deviceId | string  | 是    | 表示远端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
-**返回值：**
+**返回值**：
 
 | 类型                  | 说明         |
 | ------------------- | ------------- |
-| Promise&lt;[DeviceType](#devicetype12)&gt; | 以Promise形式返回设置蓝牙远端设备类型的结果，返回值为设备类型。 |
+| Promise&lt;[DeviceType](#devicetype12)&gt; | Promise对象，返回设备类型。 |
 
 **错误码**：
 
@@ -652,7 +569,8 @@ getRemoteDeviceType(deviceId: string): Promise&lt;DeviceType&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-|202 | Non-system applications are not allowed to use system APIs. |
+|201 | Permission denied. <br>适用版本：12-17 |
+|202 | Non-system applications are not allowed to use system APIs. <br>适用版本：18+ |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -684,6 +602,8 @@ controlDeviceAction(controlDeviceActionParams: ControlDeviceActionParams): Promi
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名    | 类型      | 必填   | 说明                               |
@@ -694,7 +614,7 @@ controlDeviceAction(controlDeviceActionParams: ControlDeviceActionParams): Promi
 
 | 类型                  | 说明            |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | 返回promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -736,13 +656,15 @@ try {
 
 updateCloudBluetoothDevice(trustedPairedDevices: TrustedPairedDevices): Promise&lt;void&gt;
 
-更新云设备到蓝牙设置。使用Promise异步回调。
+更新云设备到蓝牙设置，适用于换机恢复或跨设备同步场景下，将云端已配对设备信息同步到本地蓝牙设置中。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.MANAGE_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -754,7 +676,7 @@ updateCloudBluetoothDevice(trustedPairedDevices: TrustedPairedDevices): Promise&
 
 | 类型                  | 说明         |
 | ------------------- | ------------- |
-| Promise&lt;void&gt; | 以Promise形式返回设置云设备的结果。设置失败时返回错误码信息。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码**：
 
@@ -818,7 +740,7 @@ try {
 
 pairDeviceOutOfBand(transport: BluetoothTransport, p192Data: OobData | null, p256Data: OobData | null): Promise&lt;void&gt;
 
-通过带外（Out of Band, [OOB](../../connectivity/terminology.md#oob)）通信机制发起与对端蓝牙设备的配对流程。使用Promise异步回调。
+通过带外（Out of Band, [OOB](../../connectivity/bluetooth/terminology.md#oob)）通信机制发起与对端蓝牙设备的配对流程。本接口所需的OobData可通过[generateLocalOobData](#connectiongeneratelocaloobdata23)生成本机OOB数据并经带外通道传输至本端后使用。使用Promise异步回调。
 
 - 蓝牙配对状态通过[on('bondStateChange')](js-apis-bluetooth-connection.md#connectiononbondstatechange)的回调结果获取。
 
@@ -835,8 +757,8 @@ pairDeviceOutOfBand(transport: BluetoothTransport, p192Data: OobData | null, p25
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
 | transport | [BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport) | 是    | 表示在配对对端设备时使用的传输方式。<br>- 若使用传统蓝牙（BR/EDR），则传入TRANSPORT_BR_EDR。若使用低功耗蓝牙（BLE），则传入TRANSPORT_LE。不支持其他[BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport)类型。|
-| p192Data | [OobData](#oobdata23) \| null | 是    | 配对过程中使用的OOB数据。P-192指一种椭圆曲线算法，其秘钥长度为192位，在蓝牙4.1及以前的传统配对方案中广泛使用。<br>- 若不使用该值，需传入null。<br>- p192Data与p256Data需至少传入一个有效值，若两者同时传入，则p256Data生效，p192Data不生效。|
-| p256Data | [OobData](#oobdata23) \| null | 是    | 配对过程中使用的OOB数据。P-256指一种椭圆曲线算法，其秘钥长度为256位，自蓝牙4.2开始成为安全连接的核心基础。基于P-256的OOB数据相比基于P-192的OOB数据具有更强的抗攻击能力与保密性。若非必须兼容蓝牙4.1或更早版本的旧设备，推荐使用p256Data。<br>- 若不使用该值，需传入null。<br>- p192Data与p256Data需至少传入一个有效值，若两者同时传入，则p256Data生效，p192Data不生效。|
+| p192Data | [OobData](#oobdata23) \| null | 是    | 配对过程中使用的OOB数据。P-192指一种椭圆曲线算法，其密钥长度为192位，在蓝牙4.1及以前的传统配对方案中广泛使用。<br>- 若不使用该值，需传入null。<br>- p192Data与p256Data需至少传入一个有效值，若两者同时传入，则p256Data生效，p192Data不生效。|
+| p256Data | [OobData](#oobdata23) \| null | 是    | 配对过程中使用的OOB数据。P-256指一种椭圆曲线算法，其密钥长度为256位，自蓝牙4.2开始成为安全连接的核心基础。基于P-256的OOB数据相比基于P-192的OOB数据具有更强的抗攻击能力与保密性。若非必须兼容蓝牙4.1或更早版本的旧设备，推荐使用p256Data。<br>- 若不使用该值，需传入null。<br>- p192Data与p256Data需至少传入一个有效值，若两者同时传入，则p256Data生效，p192Data不生效。|
 
 **返回值：**
 
@@ -892,7 +814,7 @@ try {
 
 generateLocalOobData(transport: BluetoothTransport): Promise&lt;OobData&gt;
 
-获取本机的带外（Out of Band, [OOB](../../connectivity/terminology.md#oob)）通信数据。使用Promise异步回调。
+获取本机的带外（Out of Band, [OOB](../../connectivity/bluetooth/terminology.md#oob)）通信数据。生成的OOB数据经带外通道传输至对端设备后，对端设备可通过[pairDeviceOutOfBand](#connectionpairdeviceoutofband23)使用该数据发起配对流程。使用Promise异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -942,12 +864,157 @@ try {
 }
 ```
 
+## connection.setCarKeyDfxData
+
+setCarKeyDfxData(deviceId: string, action: CarKeyActionType): void
+
+把车钥匙执行开卡、删卡操作的事件通知蓝牙，以便蓝牙模块记录相应的维测（DFX）数据用于后续问题定位。
+
+**起始版本**：26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
+
+| 参数名      | 类型     | 必填   | 说明                                  |
+| -------- | ------ | ---- | ----------------------------------- |
+| deviceId | string  | 是    | 表示远端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| action | [CarKeyActionType](#carkeyactiontype)  | 是    | 表示车钥匙执行的操作，例如开卡、删卡。 |
+           
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|202 | Non-system applications are not allowed to use system APIs. |
+|801 | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.          |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例**：
+
+```js
+try {
+    connection.setCarKeyDfxData('11:22:33:44:55:66', connection.CarKeyActionType.CAR_KEY_ACTION_ADD);
+} catch (err) {
+    console.error(`Failed to set car key dfx data. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+
+## connection.getCarKeyDfxData
+
+getCarKeyDfxData(): string
+
+获取车钥匙维测数据，例如蓝牙车钥匙连接、配对等维测数据。
+
+**起始版本**：26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值**：
+
+| 类型     | 说明            |
+| ------ | ------------- |
+| string | 以字符串格式返回车钥匙维测数据。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|202 | Non-system applications are not allowed to use system APIs. |
+|801 | Capability not supported. Failed to call the API when the short-range chip is not inserted on the 2in1 device.          |
+|2900003 | Bluetooth disabled.                 |
+|2900099 | Operation failed.                        |
+
+**示例**：
+
+```js
+try {
+    let dfxData = connection.getCarKeyDfxData();
+} catch (err) {
+    console.error(`Failed to get car key dfx data. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+
+## connection.getBleMacByBrMac
+
+getBleMacByBrMac(brMac: string): string
+
+根据已配对的对端设备的实际BR地址，获取该设备的实际BLE地址。
+
+当双模设备的BR地址与BLE地址不同时，该设备会在已配对列表中呈现为BR和BLE两个条目，本接口用于识别这两个条目是否属于同一设备。参数brMac是某个已配对远程设备的实际BR地址，返回值则是同一远程设备的实际BLE地址。
+
+**起始版本**： 26.0.1
+
+**模型约束**： 此接口仅可在Stage模型下使用。
+
+**系统接口**： 此接口为系统接口。
+
+**需要权限**： ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**： SystemCapability.Communication.Bluetooth.Core
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| brMac | string | 是 | 表示已配对的对端设备的实际BR地址，例如"11:22:33:AA:BB:FF"。 |
+
+**返回值**：
+
+| 类型 | 说明 |
+| ---- | ---- |
+| string | 表示对端设备的实际BLE地址，例如"11:22:33:AA:BB:FF"。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+|201 | Permission denied. |
+|202 | Non-system applications are not allowed to use system APIs. |
+|801 | Capability not supported. |
+|2900003 | Bluetooth disabled. |
+|2900016 | Device unpaired. |
+|2900017 | No BLE address is associated with the input BR address. |
+|2900099 | Operation failed. |
+
+**示例**：
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    let bleMac: string = connection.getBleMacByBrMac('11:22:33:AA:BB:FF'); // 入参为已配对的对端设备的实际BR地址
+    console.info(`Succeeded in getting bleMac, bleMac is ${bleMac}`);
+} catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to get bleMac by brMac. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
 
 ## PinRequiredParam
 
 描述配对请求参数。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**： 此接口仅可在Stage模型下使用。
 
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
@@ -961,9 +1028,11 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**： 此接口仅可在Stage模型下使用。
+
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string | 否    | 否 | 表示要配对的设备ID。 |
+| deviceId | string | 否    | 否 | 表示要控制的设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | type | [ControlType](#controltype15) | 否    | 否    | 表示控制类型。 |
 | typeValue | [ControlTypeValue](#controltypevalue15) | 否 | 否 | 表示控制动作。 |
 | controlObject | [ControlObject](#controlobject15) | 否 | 否 | 表示控制对象。|
@@ -975,6 +1044,8 @@ try {
 **系统接口：** 此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**： 此接口仅可在Stage模型下使用。
 
 | 名称                               | 值    | 说明              |
 | -------------------------------- | ------ | --------------- |
@@ -997,6 +1068,8 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**： 此接口仅可在Stage模型下使用。
+
 | 名称                               | 值    | 说明              |
 | -------------------------------- | ------ | --------------- |
 | DEVICE_TYPE_DEFAULT | 0 | 默认设备类型，与原类型一致。<br/>此接口为系统接口。 |
@@ -1015,6 +1088,8 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**： 此接口仅可在Stage模型下使用。
+
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
 | deviceId | string | 否    | 否    | 表示远端设备的MAC地址。<br/>此接口为系统接口。 |
@@ -1027,6 +1102,8 @@ try {
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**： 此接口仅可在Stage模型下使用。
 
 | 名称                               | 值    | 说明              |
 | -------------------------------- | ------ | --------------- |
@@ -1045,6 +1122,8 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**： 此接口仅可在Stage模型下使用。
+
 | 名称    | 值   | 说明       |
 | ------- | ---- | ---------- |
 | DISABLE | 0    | 表示禁用。 |
@@ -1059,6 +1138,8 @@ try {
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**： 此接口仅可在Stage模型下使用。
 
 | 名称           | 值   | 说明                 |
 | -------------- | ---- | -------------------- |
@@ -1075,6 +1156,8 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
+**模型约束**： 此接口仅可在Stage模型下使用。
+
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
 | trustedPairedDevices  | Array&lt;[TrustedPairedDevice](#trustedpaireddevice15)&gt; | 否    | 否    | 表示云设备列表。   |
@@ -1087,17 +1170,19 @@ try {
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core。
 
+**模型约束**： 此接口仅可在Stage模型下使用。
+
 | 名称       | 类型   | 只读   | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
 | sn  | string | 否    | 否    | 表示设备的序列号。   |
 | deviceType  | string | 否    | 否    | 表示设备类型。   |
-| modelId  | string | 否    | 否    | 表示左侧耳机的充电状态。   |
+| modelId  | string | 否    | 否    | 表示设备识别码。   |
 | manufactory  | string | 否    | 否    | 表示制造商信息。   |
 | productId  | string | 否    | 否    | 表示设备产品信息。   |
 | hiLinkVersion  | string | 否    | 否    | 表示hilink版本信息。   |
 | macAddress  | string | 否    | 否    | 表示设备MAC地址。   |
 | serviceType  | string | 否    | 否    | 表示设备服务类型。   |
-| serviceId  | string | 否    | 否    | 表示设备id。   |
+| serviceId  | string | 否    | 否    | 表示设备ID。   |
 | deviceName  | string | 否    | 否    | 表示设备名字。   |
 | uuids  | string | 否    | 否    | 表示设备的UUID。   |
 | bluetoothClass  | number | 否    | 否    | 表示远端设备类型。   |
@@ -1141,3 +1226,20 @@ try {
 | DEVICE_ROLE_CENTRAL_ONLY      | 1    | 表示该蓝牙设备仅支持作为中心设备。 |
 | DEVICE_ROLE_BOTH_PREFER_PERIPHERAL | 2    | 表示该蓝牙设备既可以作为中心设备，也可以作为外围设备，但优先作为外围设备。 |
 | DEVICE_ROLE_BOTH_PREFER_CENTRAL | 3    |  表示该蓝牙设备既可以作为中心设备，也可以作为外围设备，但优先作为中心设备。  |
+
+## CarKeyActionType
+
+枚举，车钥匙执行的操作。
+
+**起始版本**：26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称           | 值   | 说明                 |
+| -------------- | ---- | -------------------- |
+| CAR_KEY_ACTION_ADD       | 0    | 表示车钥匙执行开卡操作。 |
+| CAR_KEY_ACTION_DELETE      | 1    | 表示车钥匙执行删卡操作。 |

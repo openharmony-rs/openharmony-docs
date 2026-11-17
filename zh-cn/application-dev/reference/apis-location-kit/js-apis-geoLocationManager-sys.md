@@ -119,19 +119,6 @@ import { geoLocationManager } from '@kit.LocationKit';
 | plmnId<sup>23+</sup> |  Array&lt;number&gt; | 否 | 是 | 表示SIM卡的PLMN号码（Public Land Mobile Network Identifier，PLMN ID） <br>**系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 
-## ContinuousLocationRequest<sup>12+</sup>
-
-持续定位的请求参数。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.Location.Location.Core
-
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| -------- | -------- | -------- | -------- | -------- |
-| sportsType<sup>18+</sup> | [SportsType](#sportstype18) | 否 | 是 | 表示运动类型。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br>**系统接口**：此接口为系统接口。|
-
-
 ## LocatingRequiredData<sup>10+</sup>
 
 表示定位业务所需的数据，包含WiFi或蓝牙扫描结果，APP拿到这些数据之后可以用于网络定位等业务。
@@ -145,8 +132,8 @@ import { geoLocationManager } from '@kit.LocationKit';
 | wifiData | [WifiScanInfo](#wifiscaninfo10) | 否 | 是 | 表示WiFi扫描结果。 <br>**系统接口**：此接口为系统接口。|
 | bluetoothData |  [BluetoothScanInfo](#bluetoothscaninfo10) | 否 | 是 | 表示蓝牙扫描结果。 <br>**系统接口**：此接口为系统接口。|
 | slotId<sup>23+</sup> |  number | 否 | 是 | 表示SIM卡的卡槽号。<br/>0：卡槽1。<br/>1：卡槽2。 <br>**系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| campedCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | 否 | 是 | 表示驻留小区信息。<br> **系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
-| neighboringCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | 否 | 是 | 表示邻区信息。<br> **系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| campedCellInfo<sup>23+</sup> |  [CellInfo](#cellinfo23)| 否 | 是 | 表示驻留小区信息。<br> **系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
+| neighboringCellInfo<sup>23+</sup> |  Array&lt;[CellInfo](#cellinfo23)&gt; | 否 | 是 | 表示邻区信息。<br> **系统接口**：此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 
 ## WifiScanInfo<sup>10+</sup>
@@ -248,21 +235,6 @@ WiFi扫描信息，包含扫描到的WiFi热点的ssid、bssid和rssi等信息�
 | LOCATING_NOT_STARTED  | 0 | 表示当前无定位业务，无需显示定位图标。<br> **系统接口**：此接口为系统接口。|
 | LOCATING_STARTED | 1 | 表示当前在进行普通定位业务，需要显示普通定位图标。<br> **系统接口**：此接口为系统接口。|
 | HD_LOCATING_STARTED | 2 | 表示当前正在进行高精度定位业务，需要显示高精度定位图标。<br> **系统接口**：此接口为系统接口。|
-
-
-## SportsType<sup>18+</sup>
-
-运动类型。
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
-**系统能力**：SystemCapability.Location.Location.Core
-
-| 名称 | 值 | 说明 |
-| -------- | -------- | -------- |
-| RUNNING   | 1 |  表示跑步。 |
-| WALKING    | 2 | 表示步行。 |
-| CYCLING     | 3 | 表示骑行。 |
 
 
 ## geoLocationManager.on('locatingRequiredDataChange')<sup>10+</sup>
@@ -868,7 +840,7 @@ setReverseGeocodingMockInfo(mockInfos: Array&lt;ReverseGeocodingMockInfo&gt;): v
 
 isLocationPrivacyConfirmed(type: LocationPrivacyType): boolean
 
-查询用户是否同意定位服务隐私申明，是否同意启用定位服务。只有系统应用才能调用。
+查询用户是否同意定位服务隐私声明，是否同意启用定位服务。只有系统应用才能调用。
 
 **系统接口**：此接口为系统接口。
 
@@ -878,13 +850,13 @@ isLocationPrivacyConfirmed(type: LocationPrivacyType): boolean
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type |  [LocationPrivacyType](#locationprivacytype)| 是 | 指定隐私申明场景，例如开机向导中的隐私申明、开启网络定位功能时弹出的隐私申明等。 |
+  | type |  [LocationPrivacyType](#locationprivacytype)| 是 | 指定隐私声明场景，例如开机向导中的隐私声明、开启网络定位功能时弹出的隐私声明等。 |
 
 **返回值**：
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | boolean | true：用户同意定位服务隐私申明。<br/>false：用户不同意定位服务隐私申明。 |
+  | boolean | true：用户同意定位服务隐私声明。<br/>false：用户不同意定位服务隐私声明。 |
 
 **错误码**：
 
@@ -914,7 +886,7 @@ isLocationPrivacyConfirmed(type: LocationPrivacyType): boolean
 
 setLocationPrivacyConfirmStatus(type: LocationPrivacyType, isConfirmed: boolean): void
 
-设置用户勾选定位服务隐私申明的状态，记录用户是否同意启用定位服务。只有系统应用才能调用。
+设置用户勾选定位服务隐私声明的状态，记录用户是否同意启用定位服务。只有系统应用才能调用。
 
 **系统接口**：此接口为系统接口。
 
@@ -926,8 +898,8 @@ setLocationPrivacyConfirmStatus(type: LocationPrivacyType, isConfirmed: boolean)
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | [LocationPrivacyType](#locationprivacytype) | 是 | 指定隐私申明场景，例如开机向导中的隐私申明、开启网络定位功能时弹出的隐私申明等。 |
-  | isConfirmed | boolean | 是 | true：用户同意定位服务隐私申明。<br/>false：用户不同意定位服务隐私申明。 |
+  | type | [LocationPrivacyType](#locationprivacytype) | 是 | 指定隐私声明场景，例如开机向导中的隐私声明、开启网络定位功能时弹出的隐私声明等。 |
+  | isConfirmed | boolean | 是 | true：用户同意定位服务隐私声明。<br/>false：用户不同意定位服务隐私声明。 |
 
 **错误码**：
 

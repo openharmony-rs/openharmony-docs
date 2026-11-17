@@ -1,8 +1,8 @@
 # 几何图形绘制概述
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu; @hehongyang3-->
-<!--Designer: @sunbees; @CCFFWW-->
+<!--Owner: @camlostshi; @hehongyang3-->
+<!--Designer: @fenglinbailu; @hehongyang3-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 

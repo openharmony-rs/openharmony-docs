@@ -1,7 +1,7 @@
 # 绑定手势事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -28,7 +28,7 @@ ArkTS-Sta: gesture(gesture: GestureType, mask?: GestureMask): this
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -59,13 +59,13 @@ ArkTS-Sta: priorityGesture(gesture: GestureType, mask?: GestureMask): this
 
 1. 默认情况下，子组件优先识别通过gesture绑定的手势，当父组件配置priorityGesture时，父组件优先识别priorityGesture绑定的手势。
 
-2. 绑定长按手势时，设置触发长按的最短时间小的组件会优先响应，会忽略priorityGesture设置。
+2. 绑定长按手势时，触发长按的最短时间较短的手势会优先响应，会忽略priorityGesture设置。
 
 > **说明：**
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -98,7 +98,7 @@ ArkTS-Sta: parallelGesture(gesture: GestureType, mask?: GestureMask): this
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -127,11 +127,11 @@ ArkTS-Sta: parallelGesture(gesture: GestureType, mask?: GestureMask): this
 
 | 名称 | 值 | 说明 |
 | ---- | --- | -------- |
-| Unknown | 0 | 未知输入源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| Mouse | 1 | 鼠标。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| TouchScreen | 2 | 触摸屏。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| KEY<sup>22+</sup> | 4 | 按键。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
-| JOYSTICK<sup>22+</sup> | 5 | 手柄。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
+| Unknown | 0 | 未知输入源。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| Mouse | 1 | 鼠标。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| TouchScreen | 2 | 触摸屏。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| KEY<sup>22+</sup> | 4 | 按键。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
+| JOYSTICK<sup>22+</sup> | 5 | 手柄。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 22开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 22<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## SourceTool枚举说明<sup>9+</sup>
 
@@ -141,12 +141,12 @@ ArkTS-Sta: parallelGesture(gesture: GestureType, mask?: GestureMask): this
 
 | 名称 | 值 | 说明 |
 | -------- | - | --------- |
-| Unknown | 0 | 未知输入源。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| Finger | 1 | 手指输入。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| Pen | 2 | 手写笔输入。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
-| MOUSE<sup>12+</sup> | 7 | 鼠标输入。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| TOUCHPAD<sup>12+</sup> | 9 | 触控板输入。触控板单指输入被视为鼠标输入操作。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| JOYSTICK<sup>12+</sup> | 10 | 手柄输入。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| Unknown | 0 | 未知输入源。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| Finger | 1 | 手指输入。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| Pen | 2 | 手写笔输入。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| MOUSE<sup>12+</sup> | 7 | 鼠标输入。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| TOUCHPAD<sup>12+</sup> | 9 | 触控板输入。触控板单指输入被视为鼠标输入操作。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| JOYSTICK<sup>12+</sup> | 10 | 手柄输入。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 示例
 
@@ -168,8 +168,8 @@ struct GestureSettingsExample {
         Text('TapGesture:' + this.priorityTestValue).fontSize(28)
           .gesture(
             TapGesture()
-              .onAction((event: GestureEvent) => {
-                this.priorityTestValue += '\nText'
+              .onAction(() => {
+                this.priorityTestValue += '\nText';
               }))
       }
       .height(200)
@@ -181,7 +181,7 @@ struct GestureSettingsExample {
       .priorityGesture(
         TapGesture()
           .onAction((event: GestureEvent) => {
-            this.priorityTestValue += '\nColumn'
+            this.priorityTestValue += '\nColumn';
           }), GestureMask.IgnoreInternal)
 
       Column() {
@@ -189,7 +189,7 @@ struct GestureSettingsExample {
           .gesture(
             TapGesture()
               .onAction((event: GestureEvent) => {
-                this.parallelTestValue += '\nText'
+                this.parallelTestValue += '\nText';
               }))
       }
       .height(200)
@@ -201,18 +201,18 @@ struct GestureSettingsExample {
       .parallelGesture(
         TapGesture()
           .onAction((event: GestureEvent) => {
-            this.parallelTestValue += '\nColumn'
+            this.parallelTestValue += '\nColumn';
           }), GestureMask.Normal)
     }
   }
 }
 ```
 
-![zh-cn_image_0000001210195016](figures/zh-cn_image_0000001210195016.gif)
+![gestureBinding1](figures/gestureBinding1.gif)
 
 ### 示例2（实时监测参与滑动手势的有效触点数量）
 
-该示例通过配置fingerInfos实时监测参与滑动手势的有效触点数量。
+该示例通过读取fingerInfos实时监测参与滑动手势的有效触点数量。
 
 ```ts
 // xxx.ets
@@ -232,7 +232,7 @@ struct PanGestureWithFingerCount {
   build() {
     Column() {
       // 显示当前有效触点数量
-      Text(`触点数量: ${this.fingerCount}`)
+      Text(`触点数量：${this.fingerCount}`)
         .fontSize(20)
         .margin(10)
 
@@ -248,35 +248,35 @@ struct PanGestureWithFingerCount {
       .gesture(
         PanGesture(this.panOption)
           .onActionStart((event: GestureEvent) => {
-            console.info('Pan start')
-            this.fingerCount = event.fingerInfos?.length || 0 // 记录触点数量
+            console.info('Pan start');
+            this.fingerCount = event.fingerInfos?.length || 0; // 记录触点数量
           })
           .onActionUpdate((event: GestureEvent) => {
             if (event) {
-              console.info(`fingerInfos ${JSON.stringify(event.fingerInfos)}`)
-              this.offsetX = this.positionX + event.offsetX
-              this.offsetY = this.positionY + event.offsetY
-              this.fingerCount = event.fingerInfos?.length || 0 // 更新触点数量，记录下参与当前手势的有效触点的数量
+              console.info(`fingerInfos ${JSON.stringify(event.fingerInfos)}`);
+              this.offsetX = this.positionX + event.offsetX;
+              this.offsetY = this.positionY + event.offsetY;
+              this.fingerCount = event.fingerInfos?.length || 0; // 更新触点数量，记录下参与当前手势的有效触点的数量
             }
           })
-          .onActionEnd((event: GestureEvent) => {
-            this.positionX = this.offsetX
-            this.positionY = this.offsetY
-            this.fingerCount = 0 // 触点离开触摸区域后归零
-            console.info('Pan end')
+          .onActionEnd(() => {
+            this.positionX = this.offsetX;
+            this.positionY = this.offsetY;
+            this.fingerCount = 0; // 触点离开触摸区域后归零
+            console.info('Pan end');
           })
           .onActionCancel(() => {
-            this.fingerCount = 0 // 手势取消后归零
+            this.fingerCount = 0; // 手势取消后归零
           })
       )
 
       Button('切换为双指滑动')
         .onClick(() => {
-          this.panOption.setFingers(2)
+          this.panOption.setFingers(2);
         })
     }
   }
 }
 ```
 
-![zh-cn_image_0000001210195017](figures/zh-cn_image_0000001210195017.gif)
+![parallelGesture2](figures/parallelGesture2.gif)

@@ -54,14 +54,14 @@ async function GetMainPixelmap(pictureObj : image.Picture) {
     if (mainPixelmap != null) {
       mainPixelmap.getImageInfo().then((imageInfo: image.ImageInfo) => {
         if (imageInfo != null) {
-          console.info('GetMainPixelmap information height:' + imageInfo.size.height + ' width:' + imageInfo.size.width);
+          console.info(`Succeeded in getting main PixelMap information. Height: ${imageInfo.size.height}, width: ${imageInfo.size.width}.`);
         }
       }).catch((error: BusinessError) => {
-        console.error(funcName, `Failed error.code: ${error.code} ,error.message: ${error.message}`);
+        console.error(funcName, `Failed to get main PixelMap information. Code: ${error.code}, message: ${error.message}.`);
       });
     }
   } else {
-    console.error('PictureObj is null');
+    console.error('Picture object is null.');
   }
 }
 ```
@@ -74,6 +74,50 @@ function GetMainPixelmapFunc(picture: image.Picture): void {
     console.info(0x00000, 'GetMainPixelmapFunc', 'getMainPixelmap success!');
   } catch (err) {
     console.error(0x00000, 'GetMainPixelmapFunc', 'GetMainPixelmapFunc failed: ' + err);
+  }
+}
+```
+
+## setMainPixelmap
+
+setMainPixelmap(pixelmap: PixelMap): void
+
+设置Picture的主图。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名       | 类型                | 必填 | 说明             |
+| ------------ | ------------------- | ---- | ---------------- |
+| pixelmap | [PixelMap](arkts-apis-image-PixelMap.md) | 是   | PixelMap对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 7700204 | Parameter error. The pixelmap object is null or has been released.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function setMainPixelmap(picture : image.Picture, pixelmap : image.PixelMap) {
+  if (picture == null || pixelmap == null) {
+    console.error('picture or pixelmap is null');
+    return;
+  }
+  try {
+    picture.setMainPixelmap(pixelmap);
+  } catch(error) {
+    console.error(`Failed to do setMainPixelmap. error.code: ${error.code} ,error.message: ${error.message}`);
   }
 }
 ```
@@ -121,14 +165,14 @@ async function GetHdrComposedPixelmap(pictureObj : image.Picture) {
     if (hdrComposedPixelmap != null) {
       hdrComposedPixelmap.getImageInfo().then((imageInfo: image.ImageInfo) => {
         if (imageInfo != null) {
-          console.info(`GetHdrComposedPixelmap information height:${imageInfo.size.height} width:${imageInfo.size.width}`);
+          console.info(`Succeeded in getting HDR composed PixelMap information. Height: ${imageInfo.size.height}, width: ${imageInfo.size.width}.`);
         }
       }).catch((error: BusinessError) => {
-        console.error(funcName, `Failed error.code: ${error.code} ,error.message: ${error.message}`);
+        console.error(funcName, `Failed to get HDR composed PixelMap information. Code: ${error.code}, message: ${error.message}.`);
       });
     }
   } else {
-    console.error('PictureObj is null');
+    console.error('Picture object is null.');
   }
 }
 ```
@@ -185,11 +229,12 @@ getHdrComposedPixelmapWithOptions(options?: HdrComposeOptions): Promise\<PixelMa
 
 ArkTS-Dyn示例：
 ```ts
+// EntryAbility.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
   if (picture == null) {
-    console.error('picture is null');
+    console.error('Picture is null.');
     return;
   }
 
@@ -198,22 +243,23 @@ async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
   };
   let hdrComposedPixelmap: image.PixelMap | undefined = await picture.getHdrComposedPixelmapWithOptions(opt);
   if (hdrComposedPixelmap == null || hdrComposedPixelmap == undefined) {
-    console.error(`GetHdrComposedPixelmapWithOptions failed`);
+    console.error(`Failed to get an HDR composed PixelMap with options.`);
     return;
   }
 
   hdrComposedPixelmap.getImageInfo().then((imageInfo: image.ImageInfo) => {
     if (imageInfo !== null) {
-      console.info(`GetHdrComposedPixelmapWithOptions information height:${imageInfo.size.height} width:${imageInfo.size.width}`);
+      console.info(`Succeeded in getting HDR composed PixelMap information with options. Height: ${imageInfo.size.height}, width: ${imageInfo.size.width}.`);
     }
   }).catch((error: BusinessError) => {
-    console.error(`Failed to getHdrComposedPixelmapWithOptions information. error.code: ${error.code} ,error.message: ${error.message}`);
+    console.error(`Failed to get HDR composed PixelMap information with options. Code: ${error.code}, message: ${error.message}.`);
   });
 }
 ```
 
 ArkTS-Sta示例：
 ```ts
+// EntryAbility.ets
 async function GetHdrComposedPixelmapWithOptions(picture : image.Picture) {
   if (picture == null) {
     console.error('picture is null');
@@ -247,9 +293,9 @@ hdrComposeToMainPixelmap(): Promise\<void>
 
 调用该接口的Picture对象中必须包含主图、增益图。
 
-**起始版本**：26.0.0
+**起始版本：** 26.0.0
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -271,6 +317,7 @@ hdrComposeToMainPixelmap(): Promise\<void>
 **示例：**
 
 ```ts
+// EntryAbility.ets
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -318,18 +365,18 @@ async function GetGainmapPixelmap(pictureObj : image.Picture) {
     if (gainPixelmap != null) {
       gainPixelmap.getImageInfo().then((imageInfo: image.ImageInfo) => {
         if (imageInfo != null) {
-          console.info(`GetGainmapPixelmap information height:${imageInfo.size.height} width:${imageInfo.size.width}`);
+          console.info(`Succeeded in getting gainmap PixelMap information. Height: ${imageInfo.size.height}, width: ${imageInfo.size.width}.`);
         } else {
-          console.error('GainPixelmap is null');
+          console.error('Gainmap PixelMap is null.');
         }
       }).catch((error: BusinessError) => {
-        console.error(funcName, `Failed error.code: ${error.code} ,error.message: ${error.message}`);
+        console.error(funcName, `Failed to get gainmap PixelMap information. Code: ${error.code}, message: ${error.message}.`);
       });
     } else {
-      console.info('GainPixelmap is null');
+      console.info('Gainmap PixelMap is null.');
     }
   } else {
-    console.error('PictureObj is null');
+    console.error('Picture object is null.');
   }
 }
 ```
@@ -673,19 +720,19 @@ class MySequence implements rpc.Parcelable {
   marshalling(messageSequence: rpc.MessageSequence) {
     if(this.picture != null) {
       this.picture.marshalling(messageSequence);
-      console.info('Succeeded in marshalling.');
+      console.info('Succeeded in marshalling a picture.');
       return true;
     } else {
-      console.error('Failed to marshall.');
+      console.error('Failed to marshall a picture.');
       return false;
     }
   }
   unmarshalling(messageSequence : rpc.MessageSequence) {
     this.picture = image.createPictureFromParcel(messageSequence);
     this.picture.getMainPixelmap().getImageInfo().then((imageInfo : image.ImageInfo) => {
-      console.info(`Unmarshalling to get mainPixelmap information height:${imageInfo.size.height} width:${imageInfo.size.width}`);
+      console.info(`Succeeded in unmarshalling a picture and getting main PixelMap information. Height: ${imageInfo.size.height}, width: ${imageInfo.size.width}.`);
     }).catch((error: BusinessError) => {
-      console.error(`Failed to unmarshall. error.code: ${error.code} ,error.message: ${error.message}`);
+      console.error(`Failed to unmarshall a picture. Code: ${error.code}, message: ${error.message}.`);
     });
     return true;
   }
@@ -701,7 +748,7 @@ async function Marshalling_UnMarshalling(pictureObj : image.Picture) {
     // 反序列化。
     data.readParcelable(ret);
   } else {
-    console.error('PictureObj is null');
+    console.error('Picture object is null.');
   }
 }
 ```
@@ -785,29 +832,16 @@ release(): void
 
 ArkTS-Dyn示例：
 ```ts
-async function Release(pictureObj : image.Picture) {
-  let funcName = "Release";
-  if (pictureObj != null) {
-    pictureObj.release();
-    if (pictureObj.getMainPixelmap() == null) {
-      console.info(funcName, 'Success !');
-    } else {
-      console.error(funcName, 'Failed !');
-    }
-  } else {
-    console.error('PictureObj is null');
-  }
+function Release(pictureObj: image.Picture): void {
+  pictureObj.release();
+  console.info('Succeeded in releasing a picture.');
 }
 ```
 
 ArkTS-Sta示例：
 ```ts
-function ReleaseFunc(picture: image.Picture): void {
-  try {
-    picture.release();
-    console.info(0x00000, 'ReleaseFunc', 'release success!');
-  } catch (err) {
-    console.error(0x00000, 'ReleaseFunc', 'ReleaseFunc failed: ' + err);
-  }
+function Release(pictureObj: image.Picture): void {
+  pictureObj.release();
+  console.info('Succeeded in releasing a picture.');
 }
 ```

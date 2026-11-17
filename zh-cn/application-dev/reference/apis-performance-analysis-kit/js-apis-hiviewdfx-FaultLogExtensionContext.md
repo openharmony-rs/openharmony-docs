@@ -1,7 +1,7 @@
 # @ohos.hiviewdfx.FaultLogExtensionContext (故障延迟通知上下文)
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony-->
+<!--Owner: @chenshi51-->
 <!--Designer: @StevenLai1994-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -12,6 +12,7 @@ FaultLogExtensionContext模块提供访问[FaultLogExtensionAbility](js-apis-hiv
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块接口从API version 21开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口仅可在Stage模型下使用。
 
@@ -33,4 +34,11 @@ export default class MyFaultLogExtension extends FaultLogExtensionAbility {
 
 FaultLogExtensionContext是[FaultLogExtensionAbility](js-apis-hiviewdfx-FaultLogExtensionAbility.md)的上下文环境。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.HiviewDFX.Hiview.FaultLogger
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
+

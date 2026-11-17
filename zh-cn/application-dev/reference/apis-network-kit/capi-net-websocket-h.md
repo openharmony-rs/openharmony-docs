@@ -148,7 +148,7 @@ int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)
 | -- | -- |
 | [struct WebSocket](capi-netstack-websocket.md) *client | 客户端。 |
 | char *data |   客户端发送的数据。 |
-| size_t length | 客户端发送的数据长度。 |
+| size_t length | 客户端发送的数据长度。单位：Byte。 |
 
 **返回：**
 
@@ -201,7 +201,7 @@ int OH_WebSocketClient_Destroy(struct WebSocket *client)
 
 >**注意**
 >
->确保触发[WebSocket_OnCloseCallback](capi-net-websocket-type-h.md#websocket_onclosecallback)回调后再调用该接口，否则系统内存资源被释放后可能出现socket泄露以及连接未关闭的情况。
+>确保触发[WebSocket_OnCloseCallback](capi-net-websocket-type-h.md#websocket_onclosecallback)回调后再调用该接口，否则系统内存资源被释放后可能出现socket泄漏以及连接未关闭的情况。
 
 **系统能力：** SystemCapability.Communication.NetStack
 

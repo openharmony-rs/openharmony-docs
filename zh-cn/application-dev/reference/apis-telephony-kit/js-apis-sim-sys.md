@@ -33,7 +33,7 @@ isOperatorSimCard\(slotId: number, operator: OperatorSimCard\): boolean
 
 | 参数名  | 类型                                     | 必填 | 说明                                |
 | ------ | --------------------------------------- | ---- | ---------------------------------  |
-| slotId | number                                  | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | number                                  | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2。<br>取值限定为整数。|
 | operator | [OperatorSimCard](#operatorsimcard11) | 是   | 运营商卡名称。(当前仅支持中国电信卡)|
 
 **返回值：**
@@ -372,7 +372,7 @@ sim.getShowName(0).then((data: string) => {
 
 ## sim.setShowNumber<sup>8+</sup>
 
-setShowNumber\(slotId: number, number: string, callback: AsyncCallback\<void\>\): void
+setShowNumber\(slotId: number, teleNumber: string, callback: AsyncCallback\<void\>\): void
 
 设置指定卡槽SIM卡的号码。使用callback异步回调。
 
@@ -387,7 +387,7 @@ setShowNumber\(slotId: number, number: string, callback: AsyncCallback\<void\>\)
 | 参数名   | 类型                      | 必填 | 说明                                   |
 | -------- | ------------------------- | ---- | -------------------------------------- |
 | slotId   | number                    | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| number   | string                    | 是   | SIM卡号码。                              |
+| teleNumber   | string                    | 是   | SIM卡号码。                              |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。                             |
 
 **错误码：**
@@ -420,7 +420,7 @@ sim.setShowNumber(0, number, (err: BusinessError) => {
 
 ## sim.setShowNumber<sup>8+</sup>
 
-setShowNumber\(slotId: number, number: string\): Promise\<void\>
+setShowNumber\(slotId: number, teleNumber: string\): Promise\<void\>
 
 设置指定卡槽SIM卡的号码。使用Promise异步回调。
 
@@ -435,7 +435,7 @@ setShowNumber\(slotId: number, number: string\): Promise\<void\>
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
 | slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
-| number | string | 是   | SIM卡号码。                              |
+| teleNumber | string | 是   | SIM卡号码。                              |
 
 **返回值：**
 
@@ -3609,6 +3609,7 @@ sim.setSimLabelIndex(1,  0).then(() => {
 | --------------- | ---- | ---------- |
 | GENERAL_CONTACT | 1    | 通用联系人。 |
 | FIXED_DIALING   | 2    | 固定拨号。   |
+| SDN_DIALING<sup>24+</sup>      | 3    | 拨号功能。  |
 
 ## OperatorConfigKey<sup>9+</sup>
 
@@ -3694,3 +3695,17 @@ SIM卡鉴权响应。
 | simStatusWord1 | number |  是  | SIM卡状态字1。 |
 | simStatusWord2 | number |  是  | SIM卡状态字2。 |
 | response       | string |  是  | 鉴权响应。     |
+
+## IccAccountInfo<sup>10+</sup>
+
+Icc账户信息。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Telephony.CoreService
+
+
+| 名称       | 类型    | 只读|可选| 说明             |
+| -------------| ------ | ---- | ---------- |---------- |
+| simLabelIndex  | number  |  否 | 是| 卡槽位置。  <br>**起始版本:** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|
+| operatorName | string  |  否 | 是| SIM卡运营商名称。    <br>**起始版本:** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。|

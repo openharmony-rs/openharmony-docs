@@ -32,7 +32,7 @@
 | [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md) | ArkUI_NativeDialogAPI_2 | ArkUI提供的Native侧自定义弹窗接口集合。 |
 | [ArkUI_NativeDialogAPI_3](capi-arkui-nativemodule-arkui-nativedialogapi-3.md) | ArkUI_NativeDialogAPI_3 | ArkUI提供的Native侧自定义弹窗接口集合。 |
 | [ArkUI_DialogDismissEvent](capi-arkui-nativemodule-arkui-dialogdismissevent.md) | ArkUI_DialogDismissEvent | 定义弹窗关闭事件对象。 |
-| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md) | ArkUI_CustomDialogOptions | 定义自定义弹窗的内容对象。 |
+| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md) | ArkUI_CustomDialogOptions | 定义自定义弹窗的配置选项。 |
 
 ### 枚举
 
@@ -41,7 +41,8 @@
 | [ArkUI_DismissReason](#arkui_dismissreason) | ArkUI_DismissReason | 弹窗关闭的触发方式。 |
 | [ArkUI_LevelMode](#arkui_levelmode) | ArkUI_LevelMode | 设置弹窗显示层级。 |
 | [ArkUI_ImmersiveMode](#arkui_immersivemode) | ArkUI_ImmersiveMode | 指定嵌入式弹窗的蒙层覆盖区域。 |
-| [ArkUI_DialogState](#arkui_dialogstate) | ArkUI_DialogState | 枚举对话框的状态。 |
+| [OH_ArkUI_NativeModule_HandednessMode](#oh_arkui_nativemodule_handednessmode) | OH_ArkUI_NativeModule_HandednessMode | 枚举弹窗的握持手适配模式。 |
+| [ArkUI_DialogState](#arkui_dialogstate) | ArkUI_DialogState |  弹窗的状态。 |
 
 ### 函数
 
@@ -50,9 +51,9 @@
 | [typedef bool (\*ArkUI_OnWillDismissEvent)(int32_t reason)](#arkui_onwilldismissevent) | ArkUI_OnWillDismissEvent | 弹窗关闭的回调函数。 |
 | [void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent* event, bool shouldBlockDismiss)](#oh_arkui_dialogdismissevent_setshouldblockdismiss) | - | 设置是否需要屏蔽系统关闭弹窗行为，true表示屏蔽系统行为，不关闭弹窗，false表示不屏蔽。 |
 | [void* OH_ArkUI_DialogDismissEvent_GetUserData(ArkUI_DialogDismissEvent* event)](#oh_arkui_dialogdismissevent_getuserdata) | - | 获取弹窗关闭事件对象中的用户自定义数据指针。 |
-| [int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* event)](#oh_arkui_dialogdismissevent_getdismissreason) | - | 获取交互式关闭事件指针中的关闭原因。 |
+| [int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* event)](#oh_arkui_dialogdismissevent_getdismissreason) | - | 获取弹窗关闭事件对象中的关闭原因。 |
 | [int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, void (\*callback)(int32_t dialogId))](#oh_arkui_customdialog_opendialog) | - | 弹出自定义弹窗。 |
-| [int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, void (*callback)(int32_t dialogId))](#oh_arkui_customdialog_updatedialog) | - | 更新自定义弹窗。 |
+| [int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, void (\*callback)(int32_t dialogId))](#oh_arkui_customdialog_updatedialog) | - | 更新自定义弹窗。 |
 | [int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)](#oh_arkui_customdialog_closedialog) | - | 关闭自定义弹窗。 |
 | [ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle content)](#oh_arkui_customdialog_createoptions) | - | 创建自定义弹窗配置。 |
 | [void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)](#oh_arkui_customdialog_disposeoptions) | - | 销毁自定义弹窗配置。 |
@@ -73,6 +74,8 @@
 | [int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, bool isModal)](#oh_arkui_customdialog_setmodalmode) | - | 设置自定义弹窗是否开启模态样式的弹窗。 |
 | [int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, bool autoCancel)](#oh_arkui_customdialog_setautocancel) | - | 设置自定义弹窗是否允许点击遮罩层退出。 |
 | [int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* options, bool showInSubwindow)](#oh_arkui_customdialog_setsubwindowmode) | - | 设置弹窗是否在子窗口显示此弹窗。 |
+| [int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandednessInOptions(ArkUI_CustomDialogOptions* options, OH_ArkUI_NativeModule_HandednessMode mode)](#oh_arkui_nativemodule_customdialog_setadapttohandednessinoptions) | - | 设置弹窗参数的握持手适配模式。 |
+| [int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandedness(ArkUI_NativeDialogHandle handle, OH_ArkUI_NativeModule_HandednessMode mode)](#oh_arkui_nativemodule_customdialog_setadapttohandedness) | - | 设置指定弹窗的握持手适配模式。 |
 | [int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32_t maskColor, const ArkUI_Rect* maskRect)](#oh_arkui_customdialog_setmask) | - | 设置自定义弹窗遮罩属性。 |
 | [int32_t OH_ArkUI_CustomDialog_SetKeyboardAvoidMode(ArkUI_CustomDialogOptions* options, ArkUI_KeyboardAvoidMode keyboardAvoidMode)](#oh_arkui_customdialog_setkeyboardavoidmode) | - | 设置弹窗避让键盘的模式。 |
 | [int32_t OH_ArkUI_CustomDialog_SetHoverModeEnabled(ArkUI_CustomDialogOptions* options, bool enabled)](#oh_arkui_customdialog_sethovermodeenabled) | - | 设置弹窗是否响应悬停态。 |
@@ -104,7 +107,7 @@ enum ArkUI_DismissReason
 | 枚举项 | 描述 |
 | -- | -- |
 | DIALOG_DISMISS_BACK_PRESS = 0 | 点击三键back、侧滑（左滑/右滑）、键盘ESC触发。 |
-| DIALOG_DISMISS_TOUCH_OUTSIDE = 1 | 点击遮障层触发。 |
+| DIALOG_DISMISS_TOUCH_OUTSIDE = 1 | 点击遮罩层触发。 |
 | DIALOG_DISMISS_CLOSE_BUTTON = 2 | 点击关闭按钮。 |
 | DIALOG_DISMISS_SLIDE_DOWN = 3 | 下拉关闭。 |
 
@@ -144,6 +147,25 @@ enum ArkUI_ImmersiveMode
 | ARKUI_IMMERSIVE_MODE_DEFAULT = 0 | 弹窗蒙层按照显示页面给定的布局约束显示。 |
 | ARKUI_IMMERSIVE_MODE_EXTEND = 1 | 弹窗蒙层可扩展至覆盖状态栏和导航条。 |
 
+### OH_ArkUI_NativeModule_HandednessMode
+
+```c
+enum OH_ArkUI_NativeModule_HandednessMode
+```
+
+**描述：**
+
+
+枚举弹窗的握持手适配模式。
+
+**起始版本：** 26.1.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_NONE = 0 | 不做适配，弹窗保持当前布局。 |
+| OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_ANCHOR = 1 | 弹窗跟随触发组件的位置。 |
+| OH_ARKUI_NATIVEMODULE_HANDEDNESS_MODE_FOLLOW_GRIP_HAND = 2 | 弹窗跟随握持手（握持设备的手）。 |
+
 ### ArkUI_DialogState
 
 ```c
@@ -153,7 +175,7 @@ enum ArkUI_DialogState
 **描述：**
 
 
-枚举对话框的状态。
+弹窗的状态。
 
 **起始版本：** 20
 
@@ -184,9 +206,9 @@ typedef bool (*ArkUI_OnWillDismissEvent)(int32_t reason)
 
 **参数:**
 
-| 名称 | 描述 |
+| 参数项 | 描述 |
 | -------- | -------- |
-| reason | 触发弹窗关闭的原因。 |
+| int32_t reason | 触发弹窗关闭的原因。 |
 
 **返回值：**
 
@@ -213,7 +235,7 @@ void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent*
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_DialogDismissEvent](capi-arkui-nativemodule-arkui-dialogdismissevent.md)* event | 弹窗关闭事件对象指针。 |
-| bool shouldBlockDismiss | 实现需要屏蔽系统关闭弹窗行为。 |
+| bool shouldBlockDismiss | 是否需要屏蔽系统关闭弹窗行为。 |
 
 ### OH_ArkUI_DialogDismissEvent_GetUserData()
 
@@ -265,7 +287,7 @@ int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* e
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 关闭原因，异常情况返回-1。<br>         [DIALOG_DISMISS_BACK_PRESS](capi-native-dialog-h.md#arkui_dismissreason) 点击三键back、侧滑（左滑/右滑）、键盘ESC关闭。<br>         [DIALOG_DISMISS_TOUCH_OUTSIDE](capi-native-dialog-h.md#arkui_dismissreason) 点击遮障层时。<br>         [DIALOG_DISMISS_CLOSE_BUTTON](capi-native-dialog-h.md#arkui_dismissreason) 点击关闭按钮。<br>         [DIALOG_DISMISS_SLIDE_DOWN](capi-native-dialog-h.md#arkui_dismissreason) 下拉关闭。 |
+| int32_t | 关闭原因，异常情况返回-1。<br>         [DIALOG_DISMISS_BACK_PRESS](capi-native-dialog-h.md#arkui_dismissreason) 点击三键back、侧滑（左滑/右滑）、键盘ESC关闭。<br>         [DIALOG_DISMISS_TOUCH_OUTSIDE](capi-native-dialog-h.md#arkui_dismissreason) 点击遮罩层时。<br>         [DIALOG_DISMISS_CLOSE_BUTTON](capi-native-dialog-h.md#arkui_dismissreason) 点击关闭按钮。<br>         [DIALOG_DISMISS_SLIDE_DOWN](capi-native-dialog-h.md#arkui_dismissreason) 下拉关闭。 |
 
 ### OH_ArkUI_CustomDialog_OpenDialog()
 
@@ -286,7 +308,7 @@ int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, voi
 | 参数项                                    | 描述 |
 |----------------------------------------| -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| void (*callback)(int32_t dialogId)                               | 开启弹窗的回调，返回入参是弹窗ID。 |
+| void (\*callback)(int32_t dialogId)                               | 开启弹窗的回调，返回入参是弹窗ID。 |
 
 **返回：**
 
@@ -313,7 +335,7 @@ int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, v
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
-| void (*callback)(int32_t dialogId)                               | 更新弹窗的回调，返回入参是弹窗ID。 |
+| void (\*callback)(int32_t dialogId)                               | 更新弹窗的回调，返回入参是弹窗ID。 |
 
 **返回：**
 
@@ -877,6 +899,64 @@ int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* option
 | -- | -- |
 | int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
 
+### OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandednessInOptions()
+
+```c
+int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandednessInOptions(ArkUI_CustomDialogOptions* options, OH_ArkUI_NativeModule_HandednessMode mode)
+```
+
+**描述：**
+
+
+设置弹窗参数的握持手适配模式。弹窗根据设置的握持手适配模式mode，向触发组件位置或握持手（握持设备的手）一侧偏移。当不存在触发组件或感知服务不可用时，回退至当前布局。
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | [入参] 指向弹窗参数对象的指针。指针不能为NULL。 |
+| [OH_ArkUI_NativeModule_HandednessMode](#oh_arkui_nativemodule_handednessmode) mode | [入参] 握持手适配模式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
+### OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandedness()
+
+```c
+int32_t OH_ArkUI_NativeModule_CustomDialog_SetAdaptToHandedness(ArkUI_NativeDialogHandle handle, OH_ArkUI_NativeModule_HandednessMode mode)
+```
+
+**描述：**
+
+
+设置指定弹窗的握持手适配模式。弹窗根据设置的握持手适配模式mode，向触发组件位置或握持手（握持设备的手）一侧偏移。当不存在触发组件或感知服务不可用时，回退至当前布局。
+
+> **说明：**
+>
+> 本方法需要在调用[show](capi-arkui-nativemodule-arkui-nativedialogapi-1.md#show)方法之前调用。
+
+**起始版本：** 26.1.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialog8h.md) handle | [入参] 指向自定义弹窗控制器的指针。 |
+| [OH_ArkUI_NativeModule_HandednessMode](#oh_arkui_nativemodule_handednessmode) mode | [入参] 握持手适配模式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int32_t | 错误码。<br>         [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 函数参数异常。 |
+
 ### OH_ArkUI_CustomDialog_SetMask()
 
 ```c
@@ -897,7 +977,7 @@ int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | 弹窗参数。 |
 | uint32_t maskColor | 弹窗的遮罩颜色，0xargb格式。 |
-| [const ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)* maskRect | 遮蔽层区域范围的指针，遮蔽层区域内的事件不透传，在遮蔽层区域外的事件透传。参数类型[ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)。 |
+| [const ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)* maskRect | 遮罩层区域范围的指针，遮罩层区域内的事件不透传，在遮罩层区域外的事件透传。参数类型[ArkUI_Rect](capi-arkui-nativemodule-arkui-rect.md)。 |
 
 **返回：**
 

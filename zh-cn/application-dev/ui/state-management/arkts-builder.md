@@ -6,11 +6,11 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-ArkUI提供轻量的UI元素复用机制\@Builder，其内部UI结构固定，仅与使用方进行数据传递。开发者可将重复使用的UI元素抽象成函数，在build函数中调用。
+ArkUI提供轻量的UI元素复用机制\@Builder(ArkTS-Dyn [@Builder](../../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md#builder)和ArkTS-Sta [@Builder](../../reference/apis-arkui/arkui-ts/ts-universal-builder-static.md#builder))，其内部UI结构固定，仅与使用方进行数据传递。开发者可将重复使用的UI元素抽象成函数，在build函数中调用。
 
 在ArkTS-Sta上下文中，需导入装饰器：
 
-```ts
+``` TypeScript
 import { Builder } from '@kit.ArkUI';
 ```
 
@@ -18,11 +18,11 @@ import { Builder } from '@kit.ArkUI';
 
 在阅读本文档前，建议提前阅读：[基本语法概述](./arkts-basic-syntax-overview.md)、[声明式UI描述](./arkts-declarative-ui-description.md)、[自定义组件-创建自定义组件](./arkts-create-custom-components.md)。
 
-@Builder装饰器和[@Component装饰器](./arkts-create-custom-components.md#component)在功能和使用方式上的主要差异：
+自定义构建函数和自定义组件（[@Component](./arkts-create-custom-components.md#component)装饰器和[@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰器）在功能和使用方式上的主要差异：
 
-1. @Builder装饰器用于封装可复用的UI结构，通过提取重复的布局代码提高开发效率。该装饰器严格禁止在其内部定义[状态变量](./arkts-state-management-glossary.md#状态变量state-variables)或使用[自定义组件的生命周期函数](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md)，必须通过参数传递或者访问所属组件的状态变量完成数据交互。
+1. 自定义构建函数用于封装可复用的UI结构，通过提取重复的布局代码提高开发效率。自定义构建函数严格禁止在其内部定义[状态变量](./arkts-state-management-glossary.md#state-variables状态变量)或使用[自定义组件的生命周期函数](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md)，必须通过参数传递或者访问所属组件的状态变量完成数据交互。
 
-2. 在ArkUI框架中，@Component装饰器作为封装复杂UI组件的核心机制，允许开发者通过组合多个基础组件来构建可复用的复合界面。该装饰器不仅支持内部状态变量的定义，还能完整管理组件的生命周期。
+2. 在ArkUI框架中，自定义组件作为封装复杂UI组件的核心机制，允许开发者通过组合多个基础组件来构建可复用的复合界面。自定义组件不仅支持内部状态变量的定义，还能完整管理组件的生命周期。
 
 > **说明：**
 >
@@ -33,10 +33,12 @@ import { Builder } from '@kit.ArkUI';
 > 从API version 11开始，该装饰器支持在原子化服务中使用。
 >
 > 从API version 22开始，该装饰器支持在ArkTS-Sta中使用。
+>
+> 从API version 26.1.0开始，\@Builder支持传入配置项。
 
 ## 装饰器使用说明
 
-\@Builder装饰器有两种使用方式，分别是定义在自定义组件内部的[私有自定义构建函数](#私有自定义构建函数)和定义在全局的[全局自定义构建函数](#全局自定义构建函数)。
+\@Builder装饰器有多种使用方式，分别是定义在自定义组件内部的[私有自定义构建函数](#私有自定义构建函数)、定义在全局的[全局自定义构建函数](#全局自定义构建函数)和只适用于ArkTS-Sta的定义在对象或者接口的[成员自定义构建函数](#成员自定义构建函数)。从API version 26.1.0开始，全局自定义构建函数还支持传入配置项，详见[占位构建函数](#占位构建函数)。
 
 ### 私有自定义构建函数
 
@@ -51,7 +53,7 @@ import { Builder } from '@kit.ArkUI';
 struct BuilderDemo {
   @Builder
   showTextBuilder() {
-    // @Builder装饰此函数，使其能以链式调用的方式配置并构建Text组件
+    // @Builder装饰此函数，使其成为自定义构建函数，用于配置并构建Text组件
     Text('Hello World')
       .fontSize(30)
       .fontWeight(FontWeight.Bold)
@@ -76,7 +78,8 @@ struct BuilderDemo {
 ```
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderPrivate](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderPrivate.ets) -->
+``` TypeScript
 'use static'
 
 import { Entry, Component, Column, Text, Builder, FontWeight } from '@kit.ArkUI';
@@ -150,7 +153,8 @@ struct BuilderSample {
 ```
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderGlobal](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderGlobal.ets) -->
+``` TypeScript
 'use static'
 
 import { Entry, Component, Column, Text, Builder, FontWeight } from '@kit.ArkUI';
@@ -179,6 +183,228 @@ struct BuilderDemo {
 
 - 全局自定义构建函数允许在build函数和其他自定义构建函数中调用。
 
+### 成员自定义构建函数
+
+在ArkTS-Sta环境中，@Builder装饰器可以装饰class和interface的成员函数。该规则不适用于ArkTS-Dyn。
+
+示例：
+
+<!-- @[BuilderClassInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderClassInterface.ets) -->
+
+``` TypeScript
+import { Entry, Component, Column, Text, Builder, FontWeight, Button, ObservedV2, Trace } from '@kit.ArkUI';
+
+interface TextBuilderInterface {
+  // @Builder装饰interface成员函数
+  @Builder showTextBuilder(): void;
+}
+
+@ObservedV2
+class TextBuilder implements TextBuilderInterface {
+  @Trace text: string = 'Hello World';
+  // @Builder装饰class成员函数
+  @Builder showTextBuilder() {
+    //绑定class内声明的状态变量
+    Text(this.text)
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+
+@Entry
+@Component
+struct BuilderDemo {
+  textBuilder: TextBuilder = new TextBuilder();
+  build() {
+    Column() {
+      // 在build()中调用@Builder函数
+      this.textBuilder.showTextBuilder()
+      Button('Change text')
+        .onClick(() => {
+          this.textBuilder.text += '!';
+        })
+    }.width('100%')
+  }
+}
+```
+
+示例效果图：
+
+![arkts-builder-usage-class-interface](figures/arkts-builder-usage-class-interface.gif)
+
+- 成员自定义构建函数允许在自定义组件内、build函数和其他自定义构建函数中调用。
+
+- 在成员自定义构建函数中，`this`指代class对象，对象的状态变量可在自定义构建函数内访问。
+
+### 占位构建函数
+
+> **说明：**
+>
+> 从API version 26.1.0开始，\@Builder支持传入配置项：ArkTS-Dyn上下文详见[BuilderDecoratorConfig](../../reference/apis-arkui/arkui-ts/ts-universal-builder-dynamic.md#builderdecoratorconfig)，ArkTS-Sta上下文详见[\@Builder配置项](../../reference/apis-arkui/arkui-ts/ts-universal-builder-static.md#builder)。
+
+传入配置项的\@Builder可以将\@Builder函数声明为占位构建函数，用于在[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)创建真实列表项期间展示占位内容：List先渲染占位内容，真实列表项创建完成后再替换占位内容。占位构建函数需经[wrapBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrapbuilder)包装后，通过[PlaceholderRegister](../../reference/apis-arkui/arkts-apis-placeholderregister.md#placeholderregister)的[register](../../reference/apis-arkui/arkts-apis-placeholderregister.md#register)方法注册，并通过List的[scrollPlaceholder](../../reference/apis-arkui/arkui-ts/ts-container-list.md#scrollplaceholder)属性引用。
+
+示例：
+
+**ArkTS-Dyn:**
+<!-- @[builder_placeholder_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderPlaceholderList.ets) -->
+
+``` TypeScript
+import { PlaceholderOptions } from '@kit.ArkUI';
+
+// 占位构建函数须为全局、无参，且仅执行不依赖状态变量的静态渲染
+@Builder({ isPlaceholder: true })
+function ItemPlaceholder() {
+  Column() {
+    Text('加载中...')
+      .fontSize(16)
+      .fontColor(0x999999)
+  }
+  .width('100%')
+  .height(100)
+  .justifyContent(FlexAlign.Center)
+}
+
+@Entry
+@ComponentV2
+struct BuilderPlaceholderList {
+  @Local data: number[] = [];
+
+  aboutToAppear(): void {
+    // 通过UIContext获取占位注册表，占位构建函数经wrapBuilder包装后注册，供scrollPlaceholder按id引用
+    this.getUIContext().getPlaceholderRegister()
+      .register('itemPlaceholder', wrapBuilder(ItemPlaceholder));
+    const list: number[] = [];
+    for (let i = 0; i < 10000; i++) {
+      list.push(i);
+    }
+    this.data = list;
+  }
+
+  aboutToDisappear(): void {
+    this.getUIContext().getPlaceholderRegister()
+      .unregister('itemPlaceholder');
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      List({ space: 10 }) {
+        Repeat<number>(this.data)
+          .each((repeatItem: RepeatItem<number>) => {
+            ListItem() {
+              Text(repeatItem.item.toString())
+                .fontSize(16)
+                .width('100%')
+                .height(100)
+                .textAlign(TextAlign.Center)
+            }
+          })
+      }
+      .width('90%')
+      .height(300)
+      // id对应已注册的占位构建函数，size为占位的建议尺寸，与真实列表项高度一致，减小替换时的视觉跳动
+      .scrollPlaceholder((index: number): PlaceholderOptions | undefined => {
+        return { id: 'itemPlaceholder', size: { height: 100 } };
+      })
+    }
+    .width('100%')
+    .padding({ top: 10 })
+    .backgroundColor('#FFDCDCDC')
+  }
+}
+```
+
+**ArkTS-Sta:**
+<!-- @[BuilderPlaceholderList](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderPlaceholderList.ets) -->
+``` TypeScript
+'use static'
+
+import { Entry, ComponentV2, Column, ColumnOptions, List, ListItem, Text, Builder, Local, Repeat,
+         RepeatItem, wrapBuilder, PlaceholderRegister, PlaceholderOptions, FlexAlign, TextAlign } from '@kit.ArkUI';
+
+// 占位构建函数须为全局、无参，且仅执行不依赖状态变量的静态渲染
+@Builder({ isPlaceholder: true })
+function ItemPlaceholder() {
+  Column() {
+    Text('加载中...')
+      .fontSize(16)
+      .fontColor(0x999999)
+  }
+  .width('100%')
+  .height(100)
+  .justifyContent(FlexAlign.Center)
+}
+
+@Entry
+@ComponentV2
+struct BuilderPlaceholderList {
+  @Local data: Array<number> = [];
+
+  aboutToAppear(): void {
+    // 通过UIContext获取占位注册表，占位构建函数经wrapBuilder包装后注册，供scrollPlaceholder按id引用
+    const register: PlaceholderRegister = this.getUIContext().getPlaceholderRegister();
+    register.register('itemPlaceholder', wrapBuilder(ItemPlaceholder));
+    let list: Array<number> = [];
+    for (let i = 0; i < 10000; i++) {
+      list.push(i);
+    }
+    this.data = list;
+  }
+
+  aboutToDisappear(): void {
+    this.getUIContext().getPlaceholderRegister()
+      .unregister('itemPlaceholder');
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      List({ space: 10 }) {
+        Repeat<number>(this.data)
+          .each((repeatItem: RepeatItem<number>) => {
+            ListItem() {
+              Text(repeatItem.item.toString())
+                .fontSize(16)
+                .width('100%')
+                .height(100)
+                .textAlign(TextAlign.Center)
+            }
+          })
+      }
+      .width('90%')
+      .height(300)
+      // id对应已注册的占位构建函数，size为占位的建议尺寸，与真实列表项高度一致，减小替换时的视觉跳动
+      .scrollPlaceholder((index: int): PlaceholderOptions | undefined => {
+        return { id: 'itemPlaceholder', size: { height: 100 } };
+      })
+    }
+    .width('100%')
+    .padding({ top: 10 })
+    .backgroundColor('#FFDCDCDC')
+  }
+}
+```
+示例效果图：
+
+![arkts-builder-placeholder](figures/arkts-builder-placeholder.gif)
+
+使用方法：
+
+- \@Builder的配置项为对象字面量，目前仅支持`isPlaceholder`属性，取值必须为显式的布尔字面量`true`或`false`，字面量中的其他属性会被忽略。
+
+- `isPlaceholder`设置为`true`时，该\@Builder为占位构建函数。占位构建函数必须为全局、无参数的函数，内部仅执行不依赖状态变量的静态渲染，不能注册手势或业务回调。
+
+- `isPlaceholder`设置为`false`时，该\@Builder等价于未传入配置项的\@Builder。
+
+传入配置项的\@Builder需要注意如下限制条件：
+
+- 传入配置项的\@Builder仅支持装饰全局函数。在自定义组件的成员方法或成员变量上使用携带实参的\@Builder装饰器会编译报错：`Only global functions decorated with @Builder support parameter passing.`，错误码为[10905131](../../reference/apis-arkui/errorcode-arkui-compile.md#10905131-builder装饰器使用位置校验异常)。
+
+- 为全局\@Builder装饰器传入的实参不是单个对象字面量时，会编译报错：`The @Builder decorator supports passing only object literals.`，错误码为[10905132](../../reference/apis-arkui/errorcode-arkui-compile.md#10905132-builder装饰器实参校验异常)。
+
+- `isPlaceholder`的键拼写错误或取值不是显式布尔字面量（如变量、枚举值、undefined、null）会编译报错：`The 'isPlaceholder' option of the @Builder decorator only supports passing boolean literal.`，错误码为[10905133](../../reference/apis-arkui/errorcode-arkui-compile.md#10905133-builder配置项isplaceholder校验异常)。
+
+- `isPlaceholder`设置为`true`且函数声明了参数会编译报错：`An @Builder function with placeholder capabilities does not support parameter passing.`，错误码为[10905134](../../reference/apis-arkui/errorcode-arkui-compile.md#10905134-占位构建函数参数校验异常)。
+
 
 ## 参数传递规则
 
@@ -192,7 +418,7 @@ struct BuilderDemo {
 
 - 按回调传递和按引用传递时，支持\@Builder函数内UI组件刷新。按引用传递只在传入一个参数且该参数直接传入对象字面量时生效，有多个参数时不支持@Builder函数内UI组件刷新。
 
-- 使用引用传递时，在@Builder函数中不能修改参数的属性，但使用`UIUtils.makeBinding`并传入写回调时，我们可以在@Builder函数内修改属性，并同步到调用@Builder的组件中。
+- 按引用传递时，在@Builder函数中不能修改参数的属性，但使用`UIUtils.makeBinding`并传入写回调时，开发者可以在@Builder函数内修改属性，并同步到调用@Builder的组件中。
 
 ### 按回调传递参数
 
@@ -244,7 +470,8 @@ struct ParameterMakeBinding {
 ```
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderMakeBinding](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderMakeBinding.ets) -->
+``` TypeScript
 'use static'
 
 import { Binding, MutableBinding, UIUtils, Builder, Row, Column, Text, Button,
@@ -326,7 +553,8 @@ struct ParameterReference {
 ```
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderByReference](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderByReference.ets) -->
+``` TypeScript
 'use static'
 
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, State, FontWeight, TextAlign } from '@kit.ArkUI';
@@ -398,7 +626,8 @@ struct ParameterValue {
 ```
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderByValue](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderByValue.ets) -->
+``` TypeScript
 'use static'
 
 import { Entry, Component, Column, Row, Text, Builder, State } from '@kit.ArkUI';
@@ -494,12 +723,13 @@ struct PrivateBuilder {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario1](figures/arkts-builder-usage-scenario1.gif)
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderInCustomComponent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderInCustomComponent.ets) -->
+``` TypeScript
 'use static'
 
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, State } from '@kit.ArkUI';
@@ -550,11 +780,11 @@ struct PrivateBuilder {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario1](figures/arkts-builder-usage-scenario1-1.gif)
 
-### 全局自定义构建函数
+### 使用全局自定义构建函数
 
 创建全局的`@Builder`函数，并在`Column`中通过`overBuilder()`方式调用。传递参数时，可以使用对象字面量形式，无论是简单类型还是复杂类型，值的任何变化都会触发UI界面的刷新。
 
@@ -649,12 +879,13 @@ struct ParentDemo {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario2](figures/arkts-builder-usage-scenario2.gif)
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderGlobalScene](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderGlobalScene.ets) -->
+``` TypeScript
 'use static'
 
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, State, Observed } from '@kit.ArkUI';
@@ -749,7 +980,7 @@ struct Parent {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario2](figures/arkts-builder-usage-scenario2-2.gif)
 
@@ -798,7 +1029,7 @@ struct ParentSample {
       Text('UI Rendered via @Builder')
         .fontSize(20)
       this.privateBuilder()
-      // 点击Button更新label，触发Text组件的刷新
+      // 点击Button更新objParam.strValue和label，触发Text组件的刷新
       Button('Update Values').onClick(() => {
         this.objParam.strValue = 'strValue Hello World';
         this.label = 'label Hello World';
@@ -810,12 +1041,13 @@ struct ParentSample {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario3](figures/arkts-builder-usage-scenario3.gif)
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderDecoratorRefresh](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderDecoratorRefresh.ets) -->
+``` TypeScript
 'use static'
 
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, State, Observed } from '@kit.ArkUI';
@@ -868,13 +1100,13 @@ struct Parent {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario3](figures/arkts-builder-usage-scenario3-2.gif)
 
 ### 将@Builder装饰的函数当作CustomBuilder类型使用
 
-当参数类型为[CustomBuilder](../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)时，可以传入定义的`@Builder`函数。因为`CustomBuilder`实际上是`Function(() => any)`或`void`类型，而`@Builder`也是`Function`类型。所以通过传入`@Builder`可以实现特定效果。
+当参数类型为[CustomBuilder](../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)时，可以传入定义的`@Builder`函数。因为`CustomBuilder`实际上是`(() => any)`或`void`类型，而`@Builder`也是`Function`类型。所以通过传入`@Builder`可以实现特定效果。
 
 全局`@Builder`函数当作`CustomBuilder`类型传递时需要绑定this上下文，开发者可以直接调用全局`@Builder`函数，编译工具链会自动生成绑定this上下文的代码。
 
@@ -935,12 +1167,13 @@ struct customBuilderDemo {
   }
 }
 ```
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario4](figures/arkts-builder-usage-scenario4.gif)
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderAsCustomBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderAsCustomBuilder.ets) -->
+``` TypeScript
 'use static'
 
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ForEach, ListItem, FontWeight, List, State } from '@kit.ArkUI';
@@ -1146,7 +1379,8 @@ struct ParentExample {
 ```
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderNested](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderNested.ets) -->
+``` TypeScript
 'use static'
 
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State, PropRef } from '@kit.ArkUI';
@@ -1281,13 +1515,13 @@ struct Parent {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario5](figures/arkts-builder-usage-scenario5.gif)
 
 ### \@Builder函数联合V2装饰器
 
-由[@ObservedV2](./arkts-new-observedV2-and-trace.md)和[@Trace](./arkts-new-observedV2-and-trace.md)装饰的类对象实例具备深度观测属性变化的能力。在`@ComponentV2`装饰的自定义组件中，当调用全局Builder或局部Builder且使用值传递的方式传递参数时，修改`@Trace`装饰的对象属性可以触发UI刷新。
+由[@ObservedV2](./arkts-new-observedV2-and-trace.md)和[@Trace](./arkts-new-observedV2-and-trace.md)装饰的类对象实例具备深度观测属性变化的能力。在`@ComponentV2`装饰的自定义组件中，当调用全局Builder或局部Builder且按值传递的方式传递参数时，修改`@Trace`装饰的对象属性可以触发UI刷新。
 
 **ArkTS-Dyn:**
 <!-- @[builder_function_combined_with_the_v2_decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderCombined.ets) -->
@@ -1384,12 +1618,13 @@ struct ParentPage {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario6](figures/arkts-builder-usage-scenario6.gif)
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderCombinedV2](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderCombinedV2.ets) -->
+``` TypeScript
 'use static'
 
 import { Entry, Column, Text, Builder, Button, ClickEvent, ComponentV2, ObservedV2, Trace, Require, Param } from '@kit.ArkUI';
@@ -1481,11 +1716,11 @@ struct ParentPage {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario6](figures/arkts-builder-usage-scenario6-2.gif)
 
-当通过引用传递方式向`@Builder`传递参数时，若参数为[`@Local`](arkts-new-local.md)装饰的对象，对该对象进行整体赋值会触发`@Builder`中UI刷新。
+按引用传递参数给`@Builder`时，若参数为[`@Local`](arkts-new-local.md)装饰的对象，对该对象进行整体赋值会触发`@Builder`中UI刷新。
 
 **ArkTS-Dyn:**
 <!-- @[builder_function_combined_with_the_v2_decorator_and_local](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderCombinedLocal.ets) -->
@@ -1573,12 +1808,13 @@ struct ParentLocalPage {
   }
 }
 ```
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario8](figures/arkts-builder-usage-scenario8.gif)
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderCombinedLocal](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderCombinedLocal.ets) -->
+``` TypeScript
 'use static'
 
 import { Entry, ComponentV2, Column, Text, Builder, Button, Flex, Require, Param, Local } from '@kit.ArkUI';
@@ -1773,7 +2009,8 @@ struct ReusableChildTwoPage {
 ```
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderAcrossComponents](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderAcrossComponents.ets) -->
+``` TypeScript
 'use static'
 
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State, Reusable, ReuseObject } from '@kit.ArkUI';
@@ -1870,7 +2107,7 @@ struct ReusableChildTwoPage {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-usage-scenario7](figures/arkts-builder-usage-scenario7.gif)
 
@@ -1879,7 +2116,8 @@ struct ReusableChildTwoPage {
 使用变量存储@Builder函数，并在UI组件中使用。
 
 **ArkTS-Sta**
-```ts
+<!-- @[BuilderVariable](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderVariable.ets) -->
+``` TypeScript
 'use static'
 
 import { Builder, Component, Column, Color, Entry, ForEach, Text, State } from '@kit.ArkUI';
@@ -1921,7 +2159,8 @@ struct Index {
 Builder函数可以支持泛型声明。
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderGeneric](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderGeneric.ets) -->
+``` TypeScript
 'use static'
 
 import { Entry, Column, Component, Text, Resource, Color, ForEach, Builder, Row, TextAlign, Observed } from '@kit.ArkUI';
@@ -1940,7 +2179,7 @@ function forEachWithType<T>(arrayList: T[], closer: ItemBuilder<T>) {
 }
 
 @Observed
-class ClassA {
+export class ClassA {
   stringData: string = 'Hello';
 }
 
@@ -1950,7 +2189,7 @@ export struct ExampleOne {
   array: ClassA[] = [new ClassA(), new ClassA(), new ClassA()];
 
   @Builder
-  componentCloser(data: ClassA) {
+  componentCloser(data: ClassA): void {
     Text(`${data.stringData} genericBuilderFunc`)
       .width(230)
       .height(40)
@@ -1961,7 +2200,7 @@ export struct ExampleOne {
       .textAlign(TextAlign.Center)
   }
 
-  build() {
+  build(): void {
     Row() {
       Column() {
         forEachWithType<ClassA>(this.array, this.componentCloser)
@@ -2096,7 +2335,8 @@ struct Single {
 ```
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderStateRefresh](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderStateRefresh.ets) -->
+``` TypeScript
 'use static'
 
 import { Entry, Text, TextAttribute, Column, ComponentV2, Button, ButtonAttribute, ClickEvent, Row, Color, CommonMethod, Margin, HorizontalAlign, Builder, TextAlign, FlexAlign, applyStyles, UIUtils, Binding, MutableBinding, State, ObservedV2, Trace, Local } from '@kit.ArkUI';
@@ -2191,7 +2431,7 @@ struct Single {
 }
 ```
 
-示例效果图
+示例效果图：
 
 ![arkts-builder-refresh](figures/arkts-builder-refresh.gif)
 
@@ -2245,7 +2485,7 @@ struct Parent1 {
 ```
 
 **ArkTS-Sta:**
-```ts
+``` TypeScript
 'use static'
 
 import { Entry, Column, Text, Builder, Button, ClickEvent, Component, Line, State, Observed } from '@kit.ArkUI';
@@ -2334,7 +2574,7 @@ struct Parent2 {
 ```
 
 **ArkTS-Sta:**
-```ts
+``` TypeScript
 'use static'
 
 import { Entry, Column, Text, Builder, Button, ClickEvent, Component, Line, State, Observed } from '@kit.ArkUI';
@@ -2423,7 +2663,8 @@ struct Parent3 {
 ```
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderOneParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderOneParam.ets) -->
+``` TypeScript
 'use static'
 
 import { Entry, Column, Text, Builder, Button, ClickEvent, Component, Line, State, Observed } from '@kit.ArkUI';
@@ -2521,7 +2762,7 @@ struct PageBuilderIncorrectUsage {
 ```
 
 **ArkTS-Sta:**
-```ts
+``` TypeScript
 'use static'
 
 import { Entry, Column, Text, Builder, ComponentV2, FontWeight, Trace, ObservedV2, Local } from '@kit.ArkUI';
@@ -2663,7 +2904,8 @@ struct PageBuilderCorrectUsage {
 ```
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderComponentV2Refresh](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderComponentV2Refresh.ets) -->
+``` TypeScript
 'use static'
 
 import { Entry, Column, Text, Builder, ComponentV2, FontWeight, Trace, ObservedV2, Local } from '@kit.ArkUI';
@@ -2673,8 +2915,21 @@ class ParamTmp {
   @Trace count : number = 0;
 }
 
+export interface ParamInter {
+  count : number;
+}
+
 @Builder
 function renderText(param: ParamTmp) {
+  Column() {
+    Text(`param : ${param.count}`)
+      .fontSize(20)
+      .fontWeight(FontWeight.Bold)
+  }
+}
+
+@Builder
+function renderTextInter(param: ParamInter) {
   Column() {
     Text(`param : ${param.count}`)
       .fontSize(20)
@@ -2741,7 +2996,7 @@ struct PageBuilder {
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
       renderText(this.builderParams)
-      renderText({ count: this.builderParams.count })
+      renderTextInter({ count: this.builderParams.count })
       renderMap(this.map_value)
       renderSet(this.set_value)
       renderNumberArr(this.numArr_value)
@@ -2755,158 +3010,6 @@ struct PageBuilder {
 示例效果图：
 
 ![arkts-builder-usage-flash-by-ComponentV2](figures/arkts-builder-usage-flash-by-ComponentV2.gif)
-
-### 在\@Builder装饰的函数内部修改入参内容
-
-【反例】
-
-**ArkTS-Dyn:**
-```ts
-interface Temp {
-  paramA: string;
-}
-
-@Builder
-function overBuilder(param: Temp) {
-  Row() {
-    Column() {
-      Button(`overBuilder === ${param.paramA}`)
-        .onClick(() => {
-          // 错误写法，不允许在@Builder装饰的函数内部修改参数值，否则程序崩溃
-          param.paramA = 'Yes';
-      })
-    }
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State label: string = 'Hello';
-
-  build() {
-    Column() {
-      overBuilder({paramA: this.label})
-      Button('click me')
-        .onClick(() => {
-          this.label = 'ArkUI';
-        })
-    }
-  }
-}
-```
-
-**ArkTS-Sta:**
-```ts
-'use static'
-
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State } from '@kit.ArkUI';
-
-// 引用传递类型是interface时才能触发UI刷新。
-interface Temp {
-  paramA: string;
-}
-
-@Builder
-function overBuilder(param: Temp) {
-  Row() {
-    Column() {
-      Button(`overBuilder === ${param.paramA}`)
-        .onClick((e: ClickEvent) => {
-          // 错误写法，不允许在@Builder装饰的函数内部修改参数值，否则该参数值的修改不触发刷新
-          param.paramA = 'Yes';
-      })
-    }
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State label: string = 'Hello';
-
-  build() {
-    Column() {
-      overBuilder({paramA: this.label})
-      Button('click me')
-        .onClick((e: ClickEvent) => {
-          this.label = 'ArkUI';
-        })
-    }
-  }
-}
-```
-
-【正例】
-
-**ArkTS-Dyn:**
-```ts
-interface Temp {
-  paramA: string;
-}
-
-@Builder
-function overBuilder(param: Temp) {
-  Row() {
-    Column() {
-      Button(`overBuilder === ${param.paramA}`)
-    }
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State label: string = 'Hello';
-
-  build() {
-    Column() {
-      overBuilder({paramA: this.label})
-      Button('click me')
-        .onClick(() => {
-          this.label = 'ArkUI';
-        })
-    }
-  }
-}
-```
-
-**ArkTS-Sta:**
-```ts
-'use static'
-
-import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, ListItem, FontWeight, State } from '@kit.ArkUI';
-
-// 引用传递类型是interface时才能触发UI刷新。
-interface Temp {
-  paramA: string;
-}
-
-@Builder
-function overBuilder(param: Temp) {
-  Row() {
-    Column() {
-      Button(`overBuilder === ${param.paramA}`)
-    }
-  }
-}
-
-@Entry
-@Component
-struct Parent {
-  @State label: string = 'Hello';
-
-  build() {
-    Column() {
-      overBuilder({paramA: this.label} as Temp)
-      Button('click me')
-        .onClick((e: ClickEvent) => {
-          this.label = 'ArkUI';
-        })
-    }
-  }
-}
-```
 
 ### 在\@Builder内创建自定义组件传递参数不刷新问题
 
@@ -2972,7 +3075,7 @@ struct ParentPage1 {
 ```
 
 **ArkTS-Sta:**
-```ts
+``` TypeScript
 'use static'
 
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State, PropRef, Observed } from '@kit.ArkUI';
@@ -3094,7 +3197,8 @@ struct ParentPage2 {
 ```
 
 **ArkTS-Sta:**
-```ts
+<!-- @[BuilderComponentParam](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderComponentParam.ets) -->
+``` TypeScript
 'use static'
 
 import { Entry, Component, Column, Row, Text, Builder, Button, ClickEvent, TextAlign, FontWeight, State, PropRef } from '@kit.ArkUI';
@@ -3159,9 +3263,11 @@ struct ParentPage {
 
 ![cannot-flash-in-component](figures/cannot-flash-in-component.gif)
 
-### 在UI语句外调用\@Builder函数或方法影响节点正常刷新
+### 在UI语句外调用\@Builder函数或方法影响节点正常刷新（仅限于ArkTS-Dyn）
 
-当\@Builder方法赋值给变量或者数组后，在UI方法中无法使用，且会造成刷新时节点显示异常。
+在ArkTS-Dyn中，当\@Builder方法赋值给变量或者数组后，在UI方法中无法使用，且会造成刷新时节点显示异常。
+
+在ArkTS-Sta中，\@Builder方法调用返回void，无法赋值给变量或者数组，所以ArkTS-Sta没有该问题。
 
 【反例】
 <!-- @[calling_builder_outside_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/OutsideIncorrectUsage.ets) --> 
@@ -3219,6 +3325,7 @@ struct BackGround1 {
       })
     }
     .margin(10)
+    .width('100%')
   }
 }
 ```
@@ -3278,15 +3385,25 @@ struct BackGround2 {
       })
     }
     .margin(10)
+    .width('100%')
   }
 }
 ```
 
+示例效果图：
+
+![arkts-builder-faq-notui.gif](./figures/arkts-builder-faq-notui.gif)
+
 ### 在\@Builder方法中使用MutableBinding未传递set访问器
 
-\@Builder方法定义时使用MutableBinding，构造时没有给MutableBinding类型参数传递set访问器，触发set访问器会造成运行时错误。
+在ArkTS-Dyn中，\@Builder方法定义时使用MutableBinding，构造时没有给MutableBinding类型参数传递set访问器，触发set访问器会造成运行时错误。
+
+在ArkTS-Sta中，由于编译时会检查类型匹配，所以Binding类的入参不能传入MutableBinding类型的实例，该场景会编译报错，不会运行时异常。
 
 【反例】
+
+**ArkTS-Dyn:**
+
 <!-- @[not_passed_set_accessor_builder_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/AccessorIncorrectUsage.ets) --> 
 
 ``` TypeScript
@@ -3297,15 +3414,18 @@ class GlobalTmp1 {
   @Trace public strValue: string = 'Hello';
 }
 
+// 定义@Builder函数，接收Binding和MutableBinding类型的参数
 @Builder
 function builderWithTwoParams1(param1: Binding<GlobalTmp1>, param2: MutableBinding<number>) {
-  Column() {
+  Column({ space: 5 }) {
     Text(`strValue: ${param1.value.strValue}`)
     Button(`num: ${param2.value}`)
       .onClick(() => {
         param2.value += 1; // 点击Button触发set访问器会造成运行时错误
       })
-  }.borderWidth(1)
+  }
+  .borderWidth(1)
+  .padding(5)
 }
 
 @Entry
@@ -3315,21 +3435,75 @@ struct MakeBindingTest1 {
   @Local num: number = 0;
 
   build() {
-    Column() {
+    Column({ space: 5 }) {
       Text(`${this.GlobalTmp1.strValue}`)
       builderWithTwoParams1(UIUtils.makeBinding(() => this.GlobalTmp1),
         UIUtils.makeBinding<number>(() => this.num)) // 构造MutableBinding类型参数时没有传SetterCallback
       Button('Update Values').onClick(() => {
+        // 点击按钮更新状态变量的值
         this.GlobalTmp1.strValue = 'Hello World 2025';
         this.num = 1;
       })
     }
+    .width('100%')
   }
 }
 ```
+
+**ArkTS-Sta:**
+
+``` TypeScript
+'use static'
+import { UIUtils, Binding, MutableBinding, ObservedV2, Trace, Builder,
+         Entry, ComponentV2, Local, Column, Text, Button, ColumnOptions } from '@kit.ArkUI';
+
+@ObservedV2
+class GlobalTmp1 {
+  @Trace public strValue: string = 'Hello';
+}
+
+// 定义@Builder函数，接收Binding和MutableBinding类型的参数
+@Builder
+function builderWithTwoParams1(param1: Binding<GlobalTmp1>, param2: MutableBinding<number>) {
+  Column({ space: 5 } as ColumnOptions) {
+    Text(`strValue: ${param1.value.strValue}`)
+    Button(`num: ${param2.value}`)
+      .onClick(() => {
+        param2.value += 1;
+      })
+  }
+  .borderWidth(1)
+  .padding(5)
+}
+
+@Entry
+@ComponentV2
+struct MakeBindingTest1 {
+  @Local GlobalTmp1: GlobalTmp1 = new GlobalTmp1();
+  @Local num: number = 0;
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Text(`${this.GlobalTmp1.strValue}`)
+      builderWithTwoParams1(UIUtils.makeBinding(() => this.GlobalTmp1),
+        UIUtils.makeBinding<number>(() => this.num)) // 构造MutableBinding类型参数时没有传SetterCallback, 编译报错
+      Button('Update Values').onClick(() => {
+        // 点击按钮更新状态变量的值
+        this.GlobalTmp1.strValue = 'Hello World 2025';
+        this.num = 1;
+      })
+    }
+    .width('100%')
+  }
+}
+```
+
 使用规格详见状态管理API文档中的[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)。
 
 【正例】
+
+**ArkTS-Dyn:**
+
 <!-- @[not_passed_set_accessor_builder_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/AccessorCorrectUsage.ets) -->
 
 ``` TypeScript
@@ -3340,15 +3514,18 @@ class GlobalTmp2 {
   @Trace public strValue: string = 'Hello';
 }
 
+// 定义@Builder函数，接收Binding和MutableBinding类型的参数
 @Builder
 function builderWithTwoParams2(param1: Binding<GlobalTmp2>, param2: MutableBinding<number>) {
-  Column() {
+  Column({space: 5}) {
     Text(`strValue: ${param1.value.strValue}`)
     Button(`num: ${param2.value}`)
       .onClick(() => {
         param2.value += 1; // 修改了MutableBinding类型参数的value属性
       })
-  }.borderWidth(1)
+  }
+  .borderWidth(1)
+  .padding(5)
 }
 
 @Entry
@@ -3358,27 +3535,90 @@ struct MakeBindingTest2 {
   @Local num: number = 0;
 
   build() {
-    Column() {
+    Column({space: 5}) {
       Text(`${this.GlobalTmp2.strValue}`)
+      // 正确用法：构造MutableBinding时传递了SetterCallback
       builderWithTwoParams2(UIUtils.makeBinding(() => this.GlobalTmp2),
         UIUtils.makeBinding<number>(() => this.num,
           val => {
             this.num = val;
           }))
       Button('Update Values').onClick(() => {
+        // 点击按钮更新状态变量的值
         this.GlobalTmp2.strValue = 'Hello World 2025';
         this.num = 1;
       })
     }
+    .width('100%')
   }
 }
 ```
 
+**ArkTS-Sta:**
+
+<!-- @[BuilderMutableBindingNoSetter](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderMutableBindingNoSetter.ets) -->
+``` TypeScript
+import { UIUtils, Binding, MutableBinding, ObservedV2, Trace, Builder,
+         Column, Text, Button, Entry, ComponentV2, Local, ColumnOptions } from '@kit.ArkUI';
+
+@ObservedV2
+class GlobalTmp2 {
+  @Trace public strValue: string = 'Hello';
+}
+
+// 定义@Builder函数，接收Binding和MutableBinding类型的参数
+@Builder
+function builderWithTwoParams2(param1: Binding<GlobalTmp2>, param2: MutableBinding<number>) {
+  Column({ space: 5 } as ColumnOptions) {
+    Text(`strValue: ${param1.value.strValue}`)
+    Button(`num: ${param2.value}`)
+      .onClick(() => {
+        param2.value += 1; // 修改了MutableBinding类型参数的value属性
+      })
+  }
+  .borderWidth(1)
+  .padding(5)
+}
+
+@Entry
+@ComponentV2
+struct MakeBindingTest2 {
+  @Local GlobalTmp2: GlobalTmp2 = new GlobalTmp2();
+  @Local num: number = 0;
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Text(`${this.GlobalTmp2.strValue}`)
+      // 正确用法：构造MutableBinding时传递了SetterCallback
+      builderWithTwoParams2(UIUtils.makeBinding(() => this.GlobalTmp2),
+        UIUtils.makeBinding<number>(() => this.num,
+          val => {
+            this.num = val;
+          }))
+      Button('Update Values').onClick(() => {
+        // 点击按钮更新状态变量的值
+        this.GlobalTmp2.strValue = 'Hello World 2025';
+        this.num = 1;
+      })
+    }
+    .width('100%')
+  }
+}
+```
+
+示例效果图：
+
+![arkts-builder-faq-mutablebinding-no-setter.gif](./figures/arkts-builder-faq-mutablebinding-no-setter.gif)
+
 ### 在@Builder装饰的函数内部修改入参内容
 
-不使用[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)的情况下，在\@Builder装饰的函数内部修改参数值，修改不会生效且可能造成运行时错误。从API version 23开始，将返回错误码[140109](../../reference/apis-arkui/errorcode-stateManagement.md#140109-builder非法触发参数属性赋值)。
+在ArkTS-Dyn中，不使用[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)的情况下，在\@Builder装饰的函数内部修改参数值，修改不会生效且可能造成运行时错误。从API version 23开始，将返回错误码[140109](../../reference/apis-arkui/errorcode-stateManagement.md#140109-builder非法触发参数属性赋值)。
+
+在ArkTS-Sta中，在\@Builder装饰的函数内部修改参数值，修改不会生效，但是不会造成运行时错误，也不会返回错误码。
 
 【反例】
+
+**ArkTS-Dyn:**
 <!-- @[changing_input_parameters_builder_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingIncorrectUsage.ets) -->
 
 ``` TypeScript
@@ -3437,6 +3677,7 @@ struct ParentMod1 {
       this.extendBlank();
       Button('click me')
         .onClick(() => {
+          // 点击按钮修改状态变量，观察UI刷新
           this.label = 'ArkUI';
         })
       this.extendBlank();
@@ -3445,9 +3686,83 @@ struct ParentMod1 {
   }
 }
 ```
+
+**ArkTS-Sta:**
+
+``` TypeScript
+import { Column, Text, Builder, Row, Button, Entry, Component, State, Blank } from '@kit.ArkUI';
+
+@Builder
+function myGlobalBuilder(value: string) {
+  Column() {
+    Text(`myGlobalBuilder: ${value} `)
+      .fontSize(16)
+      .onClick(() => {
+        // 简单类型按值传递的@Builder函数中修改参数，UI不刷新
+        value = 'value change';
+      })
+  }.borderWidth(1)
+}
+
+interface TempMod1 {
+  paramA: string;
+}
+
+@Builder
+function overBuilderMod1(param: TempMod1) {
+  Row() {
+    Column() {
+      Button(`overBuilderMod1 === ${param.paramA}`)
+        .onClick(() => {
+          // 错误写法，在@Builder装饰的函数内部修改对象类型参数的属性，UI不刷新
+          param.paramA = 'Yes';
+        })
+      Button('change')
+        .onClick(() => {
+          // 错误写法，在@Builder装饰的函数内部修改对象类型参数的引用，UI不刷新
+          param = { paramA: 'change trial' };
+        })
+    }
+  }
+}
+
+@Entry
+@Component
+struct ParentMod1 {
+  @State label: string = 'Hello';
+  @State message1: string = 'Value Passing';
+
+  @Builder
+  extendBlank() {
+    Row() {
+      Blank()
+    }
+    .height(20)
+  }
+
+  build() {
+    Column() {
+      // 按引用传递能实现参数变化时的UI刷新，但不能在@Builder函数内部修改参数
+      overBuilderMod1({ paramA: this.label });
+      this.extendBlank();
+      Button('click me')
+        .onClick(() => {
+          // 点击按钮修改状态变量，观察UI刷新
+          this.label = 'ArkUI';
+        })
+      this.extendBlank();
+      myGlobalBuilder(this.message1);
+    }
+  }
+}
+```
+
 正确使用[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)可以帮助开发者在\@Builder装饰的函数内部修改参数值。
 
 【正例】
+
+**ArkTS-Dyn:**
+
 <!-- @[changing_input_parameters_builder_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ChangingCorrectUsage.ets) -->
 
 ``` TypeScript
@@ -3472,13 +3787,15 @@ interface TempMod2 {
 // 使用MutableBinding在@Builder装饰的函数内部修改参数值
 @Builder
 function overBuilderMod2(param: MutableBinding<TempMod2>) {
-  Column() {
+  Column({ space: 5 }) {
     Button(`Mod--overBuilder === ${param.value.paramA}`)
       .onClick(() => {
+        // 修改对象参数的属性值
         param.value.paramA = 'Yes';
       })
     Button(`change`)
       .onClick(() => {
+        // 整体替换对象参数
         param.value = { paramA: 'trialOne' };
       })
   }
@@ -3515,6 +3832,7 @@ struct ParentMod2 {
       this.extendBlank();
       Button('click me')
         .onClick(() => {
+          // 点击按钮修改状态变量的属性
           this.objectOne.paramA = 'ArkUI';
         })
       this.extendBlank();
@@ -3527,21 +3845,120 @@ struct ParentMod2 {
         )
       );
     }
+    .width('100%')
   }
 }
 ```
 
+**ArkTS-Sta:**
+
+<!-- @[BuilderChangeVariableRight](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderChangeVariableRight.ets) -->
+``` TypeScript
+import { UIUtils, MutableBinding, Column, Text, Button, Builder,
+         Entry, Component, Row, State, Blank, ColumnOptions } from '@kit.ArkUI';
+
+// 使用MutableBinding在@Builder装饰的函数中修改参数值
+@Builder
+function myGlobalBuilderMod(str: MutableBinding<string>) {
+  Column() {
+    Text(`Mod--MyGlobalBuilder: ${str.value}`)
+      .fontSize(16)
+      .onClick(() => {
+        str.value = 'value change mod';
+      })
+  }
+}
+
+interface TempMod2 {
+  paramA: string;
+}
+
+@Builder
+function overBuilderMod2(param: MutableBinding<TempMod2>) {
+  Column({ space: 5 } as ColumnOptions) {
+    Button(`Mod--overBuilder === ${param.value.paramA}`)
+      .onClick(() => {
+        // 修改对象参数的属性值
+        param.value.paramA = 'Yes';
+      })
+    Button(`change`)
+      .onClick(() => {
+        // 整体替换对象参数
+        param.value = { paramA: 'trialOne' };
+      })
+  }
+}
+
+@Entry
+@Component
+struct ParentMod2 {
+  @State label: string = 'Hello';
+  @State message1: string = 'Value Passing';
+  @State objectOne: TempMod2 = {
+    paramA: this.label
+  } as TempMod2;
+
+  @Builder
+  extendBlank() {
+    Row() {
+      Blank()
+    }
+    .height(20)
+  }
+
+  build() {
+    Column() {
+      // 使用MutableBinding时无法传对象字面量，需要先将字面量对象抽出为状态变量
+      overBuilderMod2(
+        UIUtils.makeBinding<TempMod2>(
+          () => this.objectOne,
+          value => {
+            this.objectOne = value; // 必须要传SetterCallback，否则触发时会造成运行时错误
+          }
+        )
+      )
+      this.extendBlank();
+      Button('click me')
+        .onClick(() => {
+          // 点击按钮修改状态变量的属性
+          this.objectOne.paramA = 'ArkUI';
+        })
+      this.extendBlank();
+      myGlobalBuilderMod(
+        UIUtils.makeBinding<string>(
+          () => this.message1,
+          value => {
+            this.message1 = value; // 必须要传SetterCallback，否则触发时会造成运行时错误
+          }
+        )
+      );
+    }
+    .width('100%')
+  }
+}
+```
+
+示例效果图：
+
+![arkts-builder-faq-change-parameter.gif](./figures/arkts-builder-faq-change-parameter.gif)
+
 ### 在\@Watch函数中执行\@Builder函数
 
-在[\@Watch](./arkts-watch.md)函数中执行\@Builder函数，会导致UI刷新异常。
+在ArkTS-Dyn中，在[\@Watch](./arkts-watch.md)函数中执行\@Builder函数，会导致UI刷新异常。
+
+在ArkTS-Sta中，\@Watch函数中调用\@Builder函数会编译报错。
 
 【反例】
+
+**ArkTS-Dyn:**
+
 <!-- @[executing_builder_function_watch_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/WatchIncorrectUsage.ets) -->
 
 ``` TypeScript
 @Entry
 @Component
 struct Child1 {
+  // 使用@Provide和@Watch装饰器，当content变化时触发provideWatch回调
   @Provide @Watch('provideWatch') content: string = 'Index: hello world';
 
   @Builder
@@ -3551,6 +3968,7 @@ struct Child1 {
     }
   }
 
+  // @Watch回调函数
   provideWatch() {
     this.watchBuilder(this.content); // 错误写法，在@Watch函数中使用@Builder函数
   }
@@ -3559,6 +3977,7 @@ struct Child1 {
     Column() {
       Button(`content value: ${this.content}`)
         .onClick(() => {
+          // 点击按钮修改content，触发@Watch回调
           this.content += '_world';
         })
       this.watchBuilder(this.content);
@@ -3566,15 +3985,19 @@ struct Child1 {
   }
 }
 ```
+
 Button按钮会出现UI异常的情况，开发者需要避免在\@Watch函数中使用\@Builder函数。
 
-【正例】
-<!-- @[executing_builder_function_watch_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/WatchCorrectUsage.ets) --> 
+**ArkTS-Sta:**
 
 ``` TypeScript
+'use static'
+import { Entry, Component, Provide, Builder, Row, Text, Column, Button, Watch } from '@kit.ArkUI';
+
 @Entry
 @Component
-struct Child2 {
+struct Child1 {
+  // 使用@Provide和@Watch装饰器，当content变化时触发provideWatch回调
   @Provide @Watch('provideWatch') content: string = 'Index: hello world';
 
   @Builder
@@ -3584,15 +4007,16 @@ struct Child2 {
     }
   }
 
+  // @Watch回调函数
   provideWatch() {
-    // 正确写法，不在@Watch函数中使用@Builder函数
-    console.info(`content value has changed.`);
+    this.watchBuilder(this.content); // 错误写法，在@Watch函数中使用@Builder函数
   }
 
   build() {
     Column() {
       Button(`content value: ${this.content}`)
         .onClick(() => {
+          // 点击按钮修改content，触发@Watch回调
           this.content += '_world';
         })
       this.watchBuilder(this.content);
@@ -3600,3 +4024,86 @@ struct Child2 {
   }
 }
 ```
+
+【正例】
+
+**ArkTS-Dyn:**
+
+<!-- @[executing_builder_function_watch_correct_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/WatchCorrectUsage.ets) --> 
+
+``` TypeScript
+@Entry
+@Component
+struct Child2 {
+  // 使用@Provide和@Watch装饰器，当content变化时触发provideWatch回调
+  @Provide @Watch('provideWatch') content: string = 'Index: hello world';
+
+  @Builder
+  watchBuilder(content: string) {
+    Row() {
+      Text(`${content}`)
+    }
+  }
+
+  // @Watch回调函数
+  provideWatch() {
+    // 正确写法，不在@Watch函数中使用@Builder函数
+    console.info(`content value has changed.`);
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Button(`content value: ${this.content}`)
+        .onClick(() => {
+          // 点击按钮修改content，触发@Watch回调
+          this.content += '_world';
+        })
+      this.watchBuilder(this.content);
+    }
+    .width('100%')
+  }
+}
+```
+
+**ArkTS-Sta:**
+
+<!-- @[BuilderCallInWatch](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/BuilderComponent/entry/src/main/ets/pages/BuilderCallInWatch.ets) -->
+``` TypeScript
+import { Entry, Component, Provide, Watch, Builder, Row, Text, Column, Button, ColumnOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Child2 {
+  // 使用@Provide和@Watch装饰器，当content变化时触发provideWatch回调
+  @Provide @Watch('provideWatch') content: string = 'Index: hello world';
+
+  @Builder
+  watchBuilder(content: string) {
+    Row() {
+      Text(`${content}`)
+    }
+  }
+
+  // @Watch回调函数
+  provideWatch(name: string) {
+    // 正确写法，不在@Watch函数中使用@Builder函数
+    console.info(`content value has changed.`);
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Button(`content value: ${this.content}`)
+        .onClick(() => {
+          // 点击按钮修改content，触发@Watch回调
+          this.content += '_world';
+        })
+      this.watchBuilder(this.content);
+    }
+    .width('100%')
+  }
+}
+```
+
+示例效果图：
+
+![arkts-builder-faq-watch-builder.gif](./figures/arkts-builder-faq-watch-builder.gif)

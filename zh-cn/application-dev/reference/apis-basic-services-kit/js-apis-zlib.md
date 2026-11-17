@@ -1,12 +1,12 @@
 # @ohos.zlib (Zip模块)
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
-<!--Owner: @wanghang904-->
-<!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Owner: @jsjzju-->
+<!--Designer: @jsjzju-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
-本模块提供压缩解压缩文件的能力。
+本模块基于zlib库开发，提供文件压缩和解压缩能力。采用DEFLATE算法，支持zlib、deflate和gzip格式的数据处理。
 
 > **说明：**
 >
@@ -33,15 +33,15 @@ zipFile(inFile: string, outFile: string, options: Options): Promise&lt;void&gt;
 
 | 参数名  | 类型                | 必填 | 说明                                                         |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
-| inFile  | string              | 是   | 指定压缩的文件夹路径或者文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../apis-ability-kit/js-apis-inner-app-context.md)，[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| outFile | string              | 是   | 指定压缩结果的文件路径（文件的扩展名zip）。                  |
+| inFile  | string              | 是   | 指定压缩的文件夹路径或者文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| outFile | string              | 是   | 指定压缩结果的文件路径（文件的扩展名zip）。路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。                  |
 | options | [Options](#options) | 是   | 压缩的可选参数。                                             |
 
 **返回值：**
 
 | 类型           | 说明                                                         |
 | -------------- | ------------------------------------------------------------ |
-| Promise\<void> | Promise对象，无返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -82,15 +82,15 @@ unzipFile(inFile:string, outFile:string, options: Options): Promise&lt;void&gt;
 
 | 参数名  | 类型                | 必填 | 说明                                                         |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
-| inFile  | string              | 是   | 指定的待解压缩文件的文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../apis-ability-kit/js-apis-inner-app-context.md)，[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。如果待解压的.zip文件中包含中文的文件名或目录名，需使用UTF8进行编码，避免解压时文件名或目录名出现中文乱码。 |
-| outFile | string              | 是   | 指定的解压文件路径。                                         |
+| inFile  | string              | 是   | 指定的待解压缩文件的文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。如果待解压的.zip文件中包含中文的文件名或目录名，需使用UTF8进行编码，避免解压时文件名或目录名出现中文乱码。 |
+| outFile | string              | 是   | 指定的解压文件路径。路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。                                         |
 | options | [Options](#options) | 是   | 解压的可选参数。                                             |
 
 **返回值：**
 
 | 类型           | 说明                                                         |
 | -------------- | ------------------------------------------------------------ |
-| Promise\<void> | Promise对象，无返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -117,7 +117,7 @@ zlib.unzipFile(inFile, outFile, options).then((data: void) => {
 
 compressFile(inFile: string, outFile: string, options: Options, callback: AsyncCallback\<void>): void
 
-压缩文件，压缩的结果。使用callback异步回调。
+压缩文件。使用callback异步回调。
 
 > **说明：**
 >
@@ -131,8 +131,8 @@ compressFile(inFile: string, outFile: string, options: Options, callback: AsyncC
 
 | 参数名                  | 类型                | 必填 | 说明                                                         |
 | ----------------------- | ------------------- | ---- | ------------------------------------------------------------ |
-| inFile                  | string              | 是   | 指定压缩的文件夹路径或者文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../apis-ability-kit/js-apis-inner-app-context.md)，[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。待压缩的文件夹不可为空，否则使用[decompressFile](#zlibdecompressfile9)对压缩后的文件解压时会报错。 |
-| outFile                 | string              | 是   | 指定的压缩结果的文件路径。多个线程同时压缩文件时，outFile不能相同。                                           |
+| inFile                  | string              | 是   | 指定压缩的文件夹路径或者文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。待压缩的文件夹不可为空，否则使用[decompressFile](#zlibdecompressfile9)对压缩后的文件解压时会报错。 |
+| outFile                 | string              | 是   | 指定的压缩结果的文件路径。路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。并发执行多个压缩任务时，各任务的outFile不能相同，否则可能导致压缩失败或输出文件损坏。                                             |
 | options                 | [Options](#options) | 是   | 压缩的配置参数。                                               |
 | callback | AsyncCallback\<void>            | 是   | 异步获取压缩结果之后的回调。成功返回null，失败返回错误码。             |
 
@@ -162,7 +162,7 @@ let options: zlib.Options = {
 
 try {
   zlib.compressFile(inFile, outFile, options, (errData: BusinessError) => {
-    if (errData !== null) {
+    if (errData) {
       console.error(`compressFile errData is errCode:${errData.code}  message:${errData.message}`);
     } else {
       console.info(`compressFile success.`);
@@ -179,7 +179,7 @@ try {
 
 compressFile(inFile: string, outFile: string, options: Options): Promise\<void>
 
-压缩文件，压缩的结果。使用Promise异步回调。
+压缩文件，压缩的结果使用Promise异步回调。
 
 > **说明：**
 >
@@ -193,15 +193,15 @@ compressFile(inFile: string, outFile: string, options: Options): Promise\<void>
 
 | 参数名  | 类型                | 必填 | 说明                                                         |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
-| inFile  | string              | 是   | 指定压缩的文件夹路径或者文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../apis-ability-kit/js-apis-inner-app-context.md)，[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。待压缩的文件夹不可为空，否则使用[decompressFile](#zlibdecompressfile9)对压缩后的文件解压时会报错。 |
-| outFile | string              | 是   | 指定的压缩结果的文件路径。多个线程同时压缩文件时，outFile不能相同。                                           |
+| inFile  | string              | 是   | 指定压缩的文件夹路径或者文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。待压缩的文件夹不可为空，否则使用[decompressFile](#zlibdecompressfile9)对压缩后的文件解压时会报错。 |
+| outFile | string              | 是   | 指定的压缩结果的文件路径。路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。多线程并发执行多个压缩任务时，各任务的outFile不能相同，否则可能导致压缩失败或输出文件损坏。                                           |
 | options | [Options](#options) | 是   | 压缩的配置参数。                                               |
 
 **返回值：**
 
 | 类型           | 说明                    |
 | -------------- | ----------------------- |
-| Promise\<void> | Promise对象，无返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -244,7 +244,7 @@ try {
 
 decompressFile(inFile: string, outFile: string, options: Options, callback: AsyncCallback\<void>): void
 
-解压文件，解压的结果。使用callback异步回调。
+解压文件，解压的结果使用callback异步回调。
 
 > **说明：**
 >
@@ -260,8 +260,8 @@ decompressFile(inFile: string, outFile: string, options: Options, callback: Asyn
 
 | 参数名                  | 类型                | 必填 | 说明                                                         |
 | ----------------------- | ------------------- | ---- | ------------------------------------------------------------ |
-| inFile                  | string              | 是   | 指定的待解压缩文件的文件路径，文件后缀需要以.zip结尾。文件路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../apis-ability-kit/js-apis-inner-app-context.md)，[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。如果待解压的.zip文件中包含中文的文件名或目录名，需使用UTF8进行编码，避免解压时文件名或目录名出现中文乱码。 |
-| outFile                 | string              | 是   | 指定的解压后的文件夹路径，文件夹目录路径需要在系统中存在，不存在则会解压失败。路径必须为沙箱路径，沙箱路径可以通过context获取，具体方法可参考[application/context（Stage模型）](../apis-ability-kit/js-apis-inner-application-context.md)或 [app/context（FA模型）](../apis-ability-kit/js-apis-inner-app-context.md)。如果待解压的文件或文件夹在解压后的路径下已经存在，则会直接覆盖同名文件或同名文件夹中的同名文件。多个线程同时解压文件时，outFile不能相同。 |
+| inFile                  | string              | 是   | 指定的待解压缩文件的文件路径，文件后缀需要以.zip结尾。文件路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。如果待解压的.zip文件中包含中文的文件名或目录名，需使用UTF8进行编码，避免解压时文件名或目录名出现中文乱码。 |
+| outFile                 | string              | 是   | 指定的解压后的文件夹路径，文件夹目录路径需要在系统中存在，不存在则会解压失败。路径必须为沙箱路径，沙箱路径可以通过context获取，具体方法可参考[Context (Stage模型的上下文基类)](../apis-ability-kit/js-apis-inner-application-context.md)或 [Context (FA模型的上下文基类)](../apis-ability-kit/js-apis-inner-app-context.md)。如果待解压的文件或文件夹在解压后的路径下已经存在，则会直接覆盖同名文件或同名文件夹中的同名文件。多线程并发执行多个压缩任务时，各任务的outFile不能相同，否则可能导致压缩失败或输出文件损坏。 |
 | options                 | [Options](#options) | 是   | 解压的配置参数。                                             |
 | callback | AsyncCallback\<void>            | 是   | 异步获取解压结果之后的回调。成功返回null，失败返回错误码。                                             |
 
@@ -274,7 +274,7 @@ decompressFile(inFile: string, outFile: string, options: Options, callback: Asyn
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 900001   | The input source file is invalid.      |
 | 900002   | The input destination file is invalid. |
-| 900003 | The input source file is not in ZIP format or is damaged. |
+| 900003 | The input source file is not in ZIP format or is damaged. <br>适用版本：10+ |
 
 **示例：**
 
@@ -291,7 +291,7 @@ let options: zlib.Options = {
 
 try {
   zlib.decompressFile(inFile, outFileDir, options, (errData: BusinessError) => {
-    if (errData !== null) {
+    if (errData) {
       console.error(`decompressFile errData is errCode:${errData.code}  message:${errData.message}`);
     } else {
       console.info(`decompressFile success.`);
@@ -308,7 +308,7 @@ try {
 
 decompressFile(inFile: string, outFile: string, options?: Options): Promise\<void>
 
-解压文件，解压的结果。使用Promise异步回调。
+解压文件。使用Promise异步回调。
 
 > **说明：**
 >
@@ -324,15 +324,15 @@ decompressFile(inFile: string, outFile: string, options?: Options): Promise\<voi
 
 | 参数名  | 类型                | 必填 | 说明                                                         |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
-| inFile  | string              | 是   | 指定的待解压缩文件的文件路径，文件后缀需要以.zip结尾。文件路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../apis-ability-kit/js-apis-inner-app-context.md)，[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。如果待解压的.zip文件中包含中文的文件名或目录名，需使用UTF8进行编码，避免解压时文件名或目录名出现中文乱码。 |
-| outFile | string              | 是   | 指定的解压后的文件夹路径，文件夹目录路径需要在系统中存在，不存在则会解压失败。路径必须为沙箱路径，沙箱路径可以通过context获取，具体方法可参考[application/context（Stage模型）](../apis-ability-kit/js-apis-inner-application-context.md)或 [app/context（FA模型）](../apis-ability-kit/js-apis-inner-app-context.md)。如果待解压的文件或文件夹在解压后的路径下已经存在，则会直接覆盖同名文件或同名文件夹中的同名文件。多个线程同时解压文件时，outFile不能相同。 |
-| options | [Options](#options) | 否   | 解压时的配置参数。                                           |
+| inFile  | string              | 是   | 指定的待解压缩文件的文件路径，文件后缀需要以.zip结尾。文件路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。如果待解压的.zip文件中包含中文的文件名或目录名，需使用UTF8进行编码，避免解压时文件名或目录名出现中文乱码。 |
+| outFile | string              | 是   | 指定的解压后的文件夹路径，文件夹目录路径需要在系统中存在，不存在则会解压失败。路径必须为沙箱路径，沙箱路径可以通过context获取，具体方法可参考[Context (Stage模型的上下文基类)](../apis-ability-kit/js-apis-inner-application-context.md)或 [Context (FA模型的上下文基类)](../apis-ability-kit/js-apis-inner-app-context.md)。如果待解压的文件或文件夹在解压后的路径下已经存在，则会直接覆盖同名文件或同名文件夹中的同名文件。多个线程同时解压文件时，outFile不能相同，否则会导致解压数据相互覆盖或文件损坏。多线程并发执行多个压缩任务时，各任务的outFile不能相同，否则可能导致压缩失败或输出文件损坏。 |
+| options | [Options](#options) | 否   | 解压时的配置参数。不传入时使用默认配置。                                           |
 
 **返回值：**
 
 | 类型           | 说明                    |
 | -------------- | ----------------------- |
-| Promise\<void> | Promise对象，无返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -343,7 +343,7 @@ decompressFile(inFile: string, outFile: string, options?: Options): Promise\<voi
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 900001 | The input source file is invalid.      |
 | 900002 | The input destination file is invalid. |
-| 900003 | The input source file is not in ZIP format or is damaged. |
+| 900003 | The input source file is not in ZIP format or is damaged. <br>适用版本：10+ |
 
 **示例：**
 
@@ -374,7 +374,7 @@ try {
 
 decompressFile(inFile: string, outFile: string, callback: AsyncCallback\<void\>): void
 
-解压文件，解压的结果。使用callback异步回调。
+解压文件。使用callback异步回调。
 
 > **说明：**
 >
@@ -390,8 +390,8 @@ decompressFile(inFile: string, outFile: string, callback: AsyncCallback\<void\>)
 
 | 参数名                  | 类型                | 必填 | 说明                                                         |
 | ----------------------- | ------------------- | ---- | ------------------------------------------------------------ |
-| inFile                  | string              | 是   | 指定的待解压缩文件的文件路径，文件后缀需要以.zip结尾。文件路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../apis-ability-kit/js-apis-inner-app-context.md)，[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。如果待解压的.zip文件中包含中文的文件名或目录名，需使用UTF8进行编码，避免解压时文件名或目录名出现中文乱码。 |
-| outFile                 | string              | 是   | 指定的解压后的文件夹路径，文件夹目录路径需要在系统中存在，不存在则会解压失败。路径必须为沙箱路径，沙箱路径可以通过context获取，具体方法可参考[application/context（Stage模型）](../apis-ability-kit/js-apis-inner-application-context.md)或 [app/context（FA模型）](../apis-ability-kit/js-apis-inner-app-context.md)。如果待解压的文件或文件夹在解压后的路径下已经存在，则会直接覆盖同名文件或同名文件夹中的同名文件。多个线程同时解压文件时，outFile不能相同。 |
+| inFile                  | string              | 是   | 指定的待解压缩文件的文件路径，文件后缀需要以.zip结尾。文件路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。如果待解压的.zip文件中包含中文的文件名或目录名，需使用UTF8进行编码，避免解压时文件名或目录名出现中文乱码。 |
+| outFile                 | string              | 是   | 指定的解压后的文件夹路径，文件夹目录路径需要在系统中存在，不存在则会解压失败。路径必须为沙箱路径，沙箱路径可以通过context获取，具体方法可参考[Context (Stage模型的上下文基类)](../apis-ability-kit/js-apis-inner-application-context.md)或 [Context (FA模型的上下文基类)](../apis-ability-kit/js-apis-inner-app-context.md)。如果待解压的文件或文件夹在解压后的路径下已经存在，则会直接覆盖同名文件或同名文件夹中的同名文件。多个线程同时解压文件时，outFile不能相同，否则会导致解压数据相互覆盖或文件损坏。多线程并发执行多个压缩任务时，各任务的outFile不能相同，否则可能导致压缩失败或输出文件损坏。 |
 | callback | AsyncCallback\<void>            | 是   | 异步获取解压结果之后的回调。成功返回null，失败返回错误码。                                             |
 
 **错误码：**
@@ -416,7 +416,7 @@ let outFileDir = '/data/storage/el2/base/temp';
 
 try {
   zlib.decompressFile(inFile, outFileDir, (errData: BusinessError) => {
-    if (errData !== null) {
+    if (errData) {
       console.error(`decompressFile failed. code is ${errData.code}, message is ${errData.message}`);
     } else {
       console.info(`decompressFile success.`);
@@ -443,7 +443,7 @@ getOriginalSize(compressedFile: string): Promise\<number>
 
 | 参数名  | 类型                | 必填 | 说明                                                         |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
-| compressedFile  | string              | 是   | 指定的压缩文件的文件路径，只支持zip格式压缩文件。文件路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../apis-ability-kit/js-apis-inner-app-context.md)，[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+| compressedFile  | string              | 是   | 指定的压缩文件的文件路径，只支持zip格式压缩文件。文件路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 
 **返回值：**
 
@@ -496,15 +496,15 @@ compressFiles(inFiles: Array&lt;string&gt;, outFile: string, options: Options): 
 
 | 参数名  | 类型                | 必填 | 说明                                                         |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
-| inFiles | Array&lt;string&gt; | 是   | 指定压缩的文件夹路径或者文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[FA模型](../apis-ability-kit/js-apis-inner-app-context.md)，[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。待压缩的文件夹不可为空，否则使用[decompressFile](#zlibdecompressfile9)对压缩后的文件解压时会报错。 |
-| outFile | string              | 是   | 指定的压缩结果的文件路径。多个线程同时压缩文件时，outFile不能相同。 |
+| inFiles | Array&lt;string&gt; | 是   | 指定压缩的文件夹路径或者文件路径，路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。待压缩的文件夹不可为空，否则使用[decompressFile](#zlibdecompressfile9)对压缩后的文件解压时会报错。 |
+| outFile | string              | 是   | 指定的压缩结果的文件路径。路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。多个线程同时压缩文件时，outFile不能相同，否则会导致压缩数据相互覆盖或文件损坏。多线程并发执行多个压缩任务时，各任务的outFile不能相同，否则可能导致压缩失败或输出文件损坏。 |
 | options | [Options](#options) | 是   | 压缩的配置参数。                                             |
 
 **返回值：**
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -523,7 +523,7 @@ compressFiles(inFiles: Array&lt;string&gt;, outFile: string, options: Options): 
 import { zlib, BusinessError } from '@kit.BasicServicesKit';
 
 let inFile = '/data/storage/el2/base/temp/filename.xxx';
-let pathDir = 'data/storage/el2/base/temp/xxx';
+let pathDir = '/data/storage/el2/base/temp/xxx';
 let outFile = '/data/storage/el2/base/temp/xxx.zip';
 let options: zlib.Options = {
   level: zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION,
@@ -532,11 +532,11 @@ let options: zlib.Options = {
 };
 
 try {
-  zlib.compressFiles([inFile, pathDir], outFile, options).then((data: void) => {
-    console.info('compressFiles success. data: ' + JSON.stringify(data));
+  zlib.compressFiles([inFile, pathDir], outFile, options).then(() => {
+    console.info('compressFiles success.');
   }).catch((errData: BusinessError) => {
     console.error(`errData is errCode:${errData.code}  message:${errData.message}`);
-  })
+  });
 } catch (errData) {
   let code = (errData as BusinessError).code;
   let message = (errData as BusinessError).message;
@@ -584,7 +584,7 @@ createChecksumSync():  Checksum
 
 | 类型                    | 说明           |
 | ----------------------- | -------------- |
-| [Checksum](#checksum12) | 校验对象实例。 |
+| [Checksum](#checksum12) | 校验对象实例，用于计算和验证数据校验和。 |
 
 **示例：**
 
@@ -665,7 +665,7 @@ adler32Combine(adler1: number, adler2: number, len2: number): Promise&lt;number&
 | ------ | ------ | ---- | ------------------------------------ |
 | adler1 | number | 是   | 第一个要合并的Adler-32校验和。       |
 | adler2 | number | 是   | 第二个要合并的Adler-32校验和。       |
-| len2   | number | 是   | 第二个Adler-32校验和的数据块的长度。 |
+| len2   | number | 是   | 第二个Adler-32校验和的数据块的长度，单位：字节。 |
 
 **返回值：**
 
@@ -781,7 +781,7 @@ crc32Combine(crc1: number, crc2: number, len2: number): Promise&lt;number&gt;
 | ------ | ------ | ---- | -------------------------------- |
 | crc1 | number | 是   | 第一个要合并的CRC-32校验。       |
 | crc2 | number | 是   | 第二个要合并的CRC-32校验。       |
-| len2   | number | 是   | 第二个CRC-32校验的数据块的长度。 |
+| len2   | number | 是   | 第二个CRC-32校验的数据块的长度，单位：字节。 |
 
 **返回值：**
 
@@ -1001,7 +1001,7 @@ let zip = zlib.createZipSync();
 
 getZStream(): Promise&lt;ZStream&gt;
 
-输出流。使用Promise异步回调。
+获取并返回ZStream流对象实例。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1011,7 +1011,7 @@ getZStream(): Promise&lt;ZStream&gt;
 
 | 类型                                 | 说明                      |
 | ------------------------------------ | ------------------------- |
-| Promise&lt;[ZStream](#zstream12)&gt; | Promise对象。返回ZStream流。 |
+| Promise&lt;[ZStream](#zstream12)&gt; | Promise对象。返回压缩和解压缩数据流管理对象，用于管理压缩和解压缩过程中的数据流。 |
 
 **示例：**
 
@@ -1085,7 +1085,7 @@ zip.zlibCompileFlags().then((data) => {
 
 compress(dest: ArrayBuffer, source: ArrayBuffer, sourceLen?: number): Promise&lt;ZipOutputInfo&gt;
 
-将源缓冲区压缩到目标缓冲区。使用Promise异步回调。
+将源缓冲区压缩到目标缓冲区。使用Promise异步回调。压缩后的数据可以使用uncompress方法进行解压。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1097,7 +1097,7 @@ compress(dest: ArrayBuffer, source: ArrayBuffer, sourceLen?: number): Promise&lt
 | --------- | ----------- | ---- | -------------- |
 | dest      | ArrayBuffer | 是   | 目标缓冲区。   |
 | source    | ArrayBuffer | 是   | 源数据缓冲区。 |
-| sourceLen | number      | 否   | 源数据长度。默认值为0。   |
+| sourceLen | number      | 否   | 源数据长度，单位：字节。取值范围：[0, source.byteLength]。未传入时，默认使用source.byteLength。   |
 
 **返回值：**
 
@@ -1151,7 +1151,7 @@ compress2(dest: ArrayBuffer, source: ArrayBuffer, level: CompressLevel, sourceLe
 | --------- | ------------- | ---- | --------------------------------------------- |
 | dest      | ArrayBuffer   | 是   | 目标缓冲区。                                  |
 | source    | ArrayBuffer   | 是   | 源数据缓冲区。                                |
-| level     | CompressLevel | 是   | 参考[CompressLevel枚举定义](#compresslevel)。 |
+| level     | [CompressLevel](#compresslevel) | 是   | 参考[CompressLevel枚举定义](#compresslevel)。 |
 | sourceLen | number        | 否   | 源数据长度。默认值为0。                                  |
 
 **返回值：**
@@ -1197,6 +1197,11 @@ uncompress(dest:ArrayBuffer, source: ArrayBuffer, sourceLen?: number): Promise&l
 
 将压缩后的数据解压缩为原始的未压缩形式。使用Promise异步回调。
 
+
+> **说明：**
+>
+> 与[uncompress2](#uncompress212)相比，本接口返回ZipOutputInfo，包含结果状态和目标缓冲区总大小；uncompress2返回DecompressionOutputInfo，额外包含源数据长度信息，适用于需要同时获取源数据长度的场景。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
@@ -1207,7 +1212,7 @@ uncompress(dest:ArrayBuffer, source: ArrayBuffer, sourceLen?: number): Promise&l
 | --------- | ----------- | ---- | -------------- |
 | dest      | ArrayBuffer | 是   | 目标缓冲区。   |
 | source    | ArrayBuffer | 是   | 源数据缓冲区。 |
-| sourceLen | number      | 否   | 源数据长度。默认值为0。   |
+| sourceLen | number      | 否   | 源数据长度，单位：字节。取值范围：[0, source.byteLength]。未传入时，默认使用source.byteLength。   |
 
 **返回值：**
 
@@ -1268,7 +1273,7 @@ uncompress2(dest: ArrayBuffer, source: ArrayBuffer, sourceLen?: number): Promise
 | --------- | ----------- | ---- | -------------- |
 | dest      | ArrayBuffer | 是   | 目标缓冲区。   |
 | source    | ArrayBuffer | 是   | 源数据缓冲区。 |
-| sourceLen | number      | 否   | 源数据长度。默认值为0。   |
+| sourceLen | number      | 否   | 源数据长度，单位：字节。取值范围：[0, source.byteLength]。未传入时，默认使用source.byteLength。   |
 
 **返回值：**
 
@@ -1353,7 +1358,7 @@ let arrayBufferIn = new ArrayBuffer(str.length);
 let byteArray = new Uint8Array(arrayBufferIn);
 
 for (let i = 0, j = str.length; i < j; i++) {
-  byteArray[i] = str.charCodeAt(i)
+  byteArray[i] = str.charCodeAt(i);
 }
 
 let zip = zlib.createZipSync();
@@ -1379,7 +1384,7 @@ inflateValidate(strm: ZStream, check: number): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 | check  | number  | 是   | 预期的校验和。                  |
 
 **返回值：**
@@ -1439,7 +1444,7 @@ inflateSyncPoint(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -1498,7 +1503,7 @@ inflateSync(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -1582,6 +1587,11 @@ inflateResetKeep(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 重置解压缩流的状态，以保留分配的霍夫曼解码树和预设字典。使用Promise异步回调。
 
+
+> **说明：**
+>
+> 与[inflateReset](#inflatereset12)和[inflateReset2](#inflatereset212)相比：本接口保留霍夫曼解码树和预设字典，适用于需要保持相同解压配置的场景；inflateReset完全重置解压流；inflateReset2可设置窗口大小并指定数据格式。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
@@ -1590,7 +1600,7 @@ inflateResetKeep(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -1649,7 +1659,7 @@ inflateSetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;ReturnS
 
 | 参数名     | 类型        | 必填 | 说明                            |
 | ---------- | ----------- | ---- | ------------------------------- |
-| strm       | ZStream     | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm       | [ZStream](#zstream12)     | 是   | zlib压缩解压的数据流管理对象。 |
 | dictionary | ArrayBuffer | 是   | 字典数据。                      |
 
 **返回值：**
@@ -1682,7 +1692,7 @@ async function demo() {
   }
   let arrayBufferOut = new ArrayBuffer(100);
   let zip = zlib.createZipSync();
-  let dictionary = 'hello'
+  let dictionary = 'hello';
   let dictionarybuf = new ArrayBuffer(dictionary.length);
   let dictionarybufdata = new Uint8Array(dictionarybuf);
   for (let i = 0, j = dictionary.length; i < j; i++) {
@@ -1747,8 +1757,8 @@ inflateReset2(strm: ZStream, windowBits: number): Promise&lt;ReturnStatus&gt;
 
 | 参数名     | 类型    | 必填 | 说明                            |
 | ---------- | ------- | ---- | ------------------------------- |
-| strm       | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
-| windowBits | number  | 是   | 控制内存窗口的大小，并指定数据的格式（zlib、gzip、raw deflate）。取值如下：<br />zlib格式：[1, 15]。<br />gzip格式：大于15。<br />raw deflate格式：[-15, -1]。   |
+| strm       | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
+| windowBits | number  | 是   | 控制内存窗口的大小，并指定数据的格式（zlib、gzip、raw deflate）。取值如下：<br>zlib格式：[8, 15]。<br>gzip格式：[24, 31]。<br>raw deflate格式：[-15, -8]。   |
 
 **返回值：**
 
@@ -1807,7 +1817,7 @@ inflateReset(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -1866,9 +1876,9 @@ inflatePrime(strm: ZStream, bits: number, value: number): Promise&lt;ReturnStatu
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
-| bits   | number  | 是   | 指定要写入比特缓冲区的比特数。                      |
-| value  | number  | 是   | 用于填充比特缓冲区的比特值。                      |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
+| bits   | number  | 是   | 指定要写入比特缓冲区的比特数。取值范围：[0，16]。                      |
+| value  | number  | 是   | 用于填充比特缓冲区的比特值。取值范围：[0，2^bits-1]。                      |
 
 **返回值：**
 
@@ -1927,7 +1937,7 @@ inflateMark(strm: ZStream): Promise&lt;number&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -1985,8 +1995,8 @@ inflateInit2(strm: ZStream, windowBits: number): Promise&lt;ReturnStatus&gt;
 
 | 参数名     | 类型    | 必填 | 说明                            |
 | ---------- | ------- | ---- | ------------------------------- |
-| strm       | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
-| windowBits | number  | 是   | 控制内存窗口的大小，并指定数据的格式（zlib、gzip、raw deflate）。取值如下：<br />zlib格式：[1, 15]。<br />gzip格式：大于15。<br />raw deflate格式：[-15, -1]。   |
+| strm       | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
+| windowBits | number  | 是   | 控制内存窗口的大小，并指定数据的格式（zlib、gzip、raw deflate）。取值如下：<br>zlib格式：[8, 15]。<br>gzip格式：[24, 31]。<br>raw deflate格式：[-15, -8]。   |
 
 **返回值：**
 
@@ -2013,7 +2023,7 @@ let arrayBufferIn = new ArrayBuffer(str.length);
 let byteArray = new Uint8Array(arrayBufferIn);
 
 for (let i = 0, j = str.length; i < j; i++) {
-  byteArray[i] = str.charCodeAt(i)
+  byteArray[i] = str.charCodeAt(i);
 }
 
 let arrayBufferOut = new ArrayBuffer(100);
@@ -2031,7 +2041,7 @@ zip.inflateInit2({ nextIn: arrayBufferIn, availableIn: 1, nextOut: arrayBufferOu
 
 inflateInit(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-初始化解压缩流。使用Promise异步回调。
+初始化解压缩流。使用Promise异步回调。需要先调用此方法初始化解压缩流，然后调用inflate进行解压，最后调用inflateEnd释放资源。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2041,7 +2051,7 @@ inflateInit(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -2067,7 +2077,7 @@ let arrayBufferIn = new ArrayBuffer(str.length);
 let byteArray = new Uint8Array(arrayBufferIn);
 
 for (let i = 0, j = str.length; i < j; i++) {
-  byteArray[i] = str.charCodeAt(i)
+  byteArray[i] = str.charCodeAt(i);
 }
 
 let arrayBufferOut = new ArrayBuffer(100);
@@ -2095,7 +2105,7 @@ inflateGetHeader(strm: ZStream, header: GzHeader): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型                    | 必填 | 说明                             |
 | ------ | ----------------------- | ---- | -------------------------------- |
-| strm   | ZStream                 | 是   | 参考[ZStream定义](#zstream12)。  |
+| strm   | [ZStream](#zstream12)                 | 是   | zlib压缩解压的数据流管理对象。  |
 | header | [GzHeader](#gzheader12) | 是   | 从压缩数据流中提取的gzip头信息。 |
 
 **返回值：**
@@ -2155,7 +2165,7 @@ inflateGetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;Diction
 
 | 参数名     | 类型        | 必填 | 说明                            |
 | ---------- | ----------- | ---- | ------------------------------- |
-| strm       | ZStream     | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm       | [ZStream](#zstream12)     | 是   | zlib压缩解压的数据流管理对象。 |
 | dictionary | ArrayBuffer | 是   | 接收解压缩字典的实际内容。      |
 
 **返回值：**
@@ -2215,7 +2225,7 @@ inflateEnd(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -2279,7 +2289,7 @@ inflateCopy(source: Zip): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型 | 必填 | 说明                    |
 | ------ | ---- | ---- | ----------------------- |
-| source | Zip  | 是   | 参考[Zip定义](#zip12)。 |
+| source | [Zip](#zip12)  | 是   | 压缩或解压缩的对象实例。 |
 
 **返回值：**
 
@@ -2329,7 +2339,7 @@ async function demo() {
 
 inflateCodesUsed(strm: ZStream): Promise&lt;number&gt;
 
-当前解压缩流中使用的霍夫曼编码树的数量。使用Promise异步回调。
+获取当前解压缩流中使用的霍夫曼编码树的数量。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2339,7 +2349,7 @@ inflateCodesUsed(strm: ZStream): Promise&lt;number&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -2397,8 +2407,8 @@ inflateBackInit(strm: ZStream, windowBits: number, window: ArrayBuffer): Promise
 
 | 参数名     | 类型        | 必填 | 说明                                          |
 | ---------- | ----------- | ---- | --------------------------------------------- |
-| strm       | ZStream     | 是   | 参考[ZStream定义](#zstream12)。               |
-| windowBits | number      | 是   | 控制内存窗口的大小，并指定数据的格式（zlib、gzip、raw deflate）。取值如下：<br />zlib格式：[1, 15]。<br />gzip格式：大于15。<br />raw deflate格式：[-15, -1]。 |
+| strm       | [ZStream](#zstream12)     | 是   | zlib压缩解压的数据流管理对象。               |
+| windowBits | number      | 是   | 控制内存窗口的大小，并指定数据的格式（zlib、gzip、raw deflate）。取值如下：<br>zlib格式：[8, 15]。<br>gzip格式：[24, 31]。<br>raw deflate格式：[-15, -8]。 |
 | window     | ArrayBuffer | 是   | 预设的窗口缓冲区。                            |
 
 **返回值：**
@@ -2434,7 +2444,7 @@ inflateBackInit()函数分配的所有内存都被释放。使用Promise异步�
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -2469,10 +2479,10 @@ inflateBack(strm: ZStream, backIn: InflateBackInputCallback, inDesc: object, bac
 
 | 参数名  | 类型                      | 必填 | 说明                                                         |
 | ------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| strm    | ZStream                   | 是   | 参考[ZStream定义](#zstream12)。                              |
-| backIn  | InflateBackInputCallback  | 是   | 一种函数，用于从末尾解压缩数据，以从输入源读取原始压缩数据。 |
+| strm    | [ZStream](#zstream12)                   | 是   | zlib压缩解压的数据流管理对象。                              |
+| backIn  | [InflateBackInputCallback](#inflatebackinputcallback12)  | 是   | 一种函数，用于从末尾解压缩数据，以从输入源读取原始压缩数据。 |
 | inDesc  | object                    | 是   | 通用对象。                                                   |
-| backOut | InflateBackOutputCallback | 是   | 将解压缩的数据写入目标输出。                                 |
+| backOut | [InflateBackOutputCallback](#inflatebackoutputcallback12) | 是   | 将解压缩的数据写入目标输出。                                 |
 | outDesc | object                    | 是   | 通用对象。                                                   |
 
 **返回值：**
@@ -2687,8 +2697,8 @@ inflate(strm: ZStream, flush: CompressFlushMode): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型              | 必填 | 说明                                                |
 | ------ | ----------------- | ---- | --------------------------------------------------- |
-| strm   | ZStream           | 是   | 参考[ZStream定义](#zstream12)。                     |
-| flush  | CompressFlushMode | 是   | 参考[CompressFlushMode定义](#compressflushmode12)。 |
+| strm   | [ZStream](#zstream12)           | 是   | zlib压缩解压的数据流管理对象。                     |
+| flush  | [CompressFlushMode](#compressflushmode12) | 是   | 压缩或解压过程中的数据刷新策略。 |
 
 **返回值：**
 
@@ -2764,7 +2774,7 @@ async function demo() {
 
 deflateInit(strm: ZStream, level: CompressLevel): Promise&lt;ReturnStatus&gt;
 
-初始化压缩流并设置指定压缩级别。使用Promise异步回调。
+初始化压缩流并设置指定压缩级别。使用Promise异步回调。需要先调用此方法初始化压缩流，然后调用deflate进行压缩，最后调用deflateEnd释放资源。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2774,8 +2784,8 @@ deflateInit(strm: ZStream, level: CompressLevel): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型          | 必填 | 说明                                          |
 | ------ | ------------- | ---- | --------------------------------------------- |
-| strm   | ZStream       | 是   | 参考[ZStream定义](#zstream12)。               |
-| level  | CompressLevel | 是   | 参考[CompressLevel枚举定义](#compresslevel)。 |
+| strm   | [ZStream](#zstream12)       | 是   | zlib压缩解压的数据流管理对象。               |
+| level  | [CompressLevel](#compresslevel) | 是   | 参考[CompressLevel枚举定义](#compresslevel)。 |
 
 **返回值：**
 
@@ -2834,12 +2844,12 @@ deflateInit2(strm: ZStream, level: CompressLevel, method: CompressMethod, window
 
 | 参数名     | 类型             | 必填 | 说明                                                |
 | ---------- | ---------------- | ---- | --------------------------------------------------- |
-| strm       | ZStream          | 是   | 参考[ZStream定义](#zstream12)。                     |
-| level      | CompressLevel    | 是   | 参考[CompressLevel枚举定义](#compresslevel)。       |
-| method     | CompressMethod   | 是   | 参考[CompressMethod枚举定义](#compressmethod12)。   |
+| strm       | [ZStream](#zstream12)          | 是   | zlib压缩解压的数据流管理对象。                     |
+| level      | [CompressLevel](#compresslevel)    | 是   | 参考[CompressLevel枚举定义](#compresslevel)。       |
+| method     | [CompressMethod](#compressmethod12)   | 是   | 压缩算法的枚举类型，指定使用DEFLATED压缩方法。   |
 | windowBits | number           | 是   | 控制内存窗口的大小，并指定数据的格式（zlib、gzip、raw deflate）。取值如下：<br />zlib格式：[1, 15]。<br />gzip格式：大于15。<br />raw deflate格式：[-15, -1]。                       |
-| memLevel   | MemLevel         | 是   | 参考[MemLevel枚举定义](#memlevel)。                 |
-| strategy   | CompressStrategy | 是   | 参考[CompressStrategy枚举定义](#compressstrategy)。 |
+| memLevel   | [MemLevel](#memlevel)         | 是   | 参考[MemLevel枚举定义](#memlevel)。                 |
+| strategy   | [CompressStrategy](#compressstrategy) | 是   | 参考[CompressStrategy枚举定义](#compressstrategy)。 |
 
 **返回值：**
 
@@ -2899,8 +2909,8 @@ deflate(strm: ZStream, flush: CompressFlushMode): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型              | 必填 | 说明                                                |
 | ------ | ----------------- | ---- | --------------------------------------------------- |
-| strm   | ZStream           | 是   | 参考[ZStream定义](#zstream12)。                     |
-| flush  | CompressFlushMode | 是   | 参考[CompressFlushMode定义](#compressflushmode12)。 |
+| strm   | [ZStream](#zstream12)           | 是   | zlib压缩解压的数据流管理对象。                     |
+| flush  | [CompressFlushMode](#compressflushmode12) | 是   | 压缩或解压过程中的数据刷新策略。 |
 
 **返回值：**
 
@@ -2965,7 +2975,7 @@ deflateEnd(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -3034,7 +3044,7 @@ deflateBound(strm: ZStream, sourceLength: number): Promise&lt;number&gt;
 
 | 参数名    | 类型    | 必填 | 说明                            |
 | --------- | ------- | ---- | ------------------------------- |
-| strm      | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm      | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 | sourceLength | number  | 是   | 源数据长度。                    |
 
 **返回值：**
@@ -3098,7 +3108,7 @@ deflateSetHeader(strm: ZStream, head: GzHeader): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型                    | 必填 | 说明                             |
 | ------ | ----------------------- | ---- | -------------------------------- |
-| strm   | ZStream                 | 是   | 参考[ZStream定义](#zstream12)。  |
+| strm   | [ZStream](#zstream12)                 | 是   | zlib压缩解压的数据流管理对象。  |
 | head   | [GzHeader](#gzheader12) | 是   | 从压缩数据流中提取的gzip头信息。 |
 
 **返回值：**
@@ -3164,7 +3174,7 @@ deflateCopy(source: Zip): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型 | 必填 | 说明                    |
 | ------ | ---- | ---- | ----------------------- |
-| source | Zip  | 是   | 参考[Zip定义](#zip12)。 |
+| source | [Zip](#zip12)  | 是   | 压缩或解压缩的对象实例。 |
 
 **返回值：**
 
@@ -3218,7 +3228,7 @@ async function demo() {
 
 deflateSetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;ReturnStatus&gt;
 
-从给定的字节序列初始化压缩字典。使用Promise异步回调。
+从给定的字节序列初始化压缩字典。使用Promise异步回调。需要在deflateInit或deflateInit2初始化压缩流后调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3228,7 +3238,7 @@ deflateSetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;ReturnS
 
 | 参数名     | 类型        | 必填 | 说明                            |
 | ---------- | ----------- | ---- | ------------------------------- |
-| strm       | ZStream     | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm       | [ZStream](#zstream12)     | 是   | zlib压缩解压的数据流管理对象。 |
 | dictionary | ArrayBuffer | 是   | 字典数据。                      |
 
 **返回值：**
@@ -3283,7 +3293,7 @@ async function demo() {
 
 deflateGetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;DictionaryOutputInfo&gt;
 
-获取当前压缩流中使用的解压缩字典内容及其长度。使用Promise异步回调。
+获取当前压缩流中使用的压缩字典内容及其长度。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3293,7 +3303,7 @@ deflateGetDictionary(strm: ZStream, dictionary: ArrayBuffer): Promise&lt;Diction
 
 | 参数名     | 类型        | 必填 | 说明                            |
 | ---------- | ----------- | ---- | ------------------------------- |
-| strm       | ZStream     | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm       | [ZStream](#zstream12)     | 是   | zlib压缩解压的数据流管理对象。 |
 | dictionary | ArrayBuffer | 是   | 接收压缩字典的实际内容。      |
 
 **返回值：**
@@ -3353,7 +3363,7 @@ async function demo() {
 
 deflateTune(strm: ZStream, goodLength: number, maxLazy: number, niceLength: number, maxChain: number): Promise&lt;ReturnStatus&gt;
 
-微调deflate的内部压缩参数。使用Promise异步回调。
+微调deflate的内部压缩参数。使用Promise异步回调。需要在deflateInit或deflateInit2初始化压缩流后调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3363,9 +3373,9 @@ deflateTune(strm: ZStream, goodLength: number, maxLazy: number, niceLength: numb
 
 | 参数名     | 类型    | 必填 | 说明                            |
 | ---------- | ------- | ---- | ------------------------------- |
-| strm       | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm       | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 | goodLength | number  | 是   | 匹配的长度阈值。                |
-| maxLazy    | number  | 是   | 压缩算法在构建哈夫曼树时的延迟匹配策略，取值范围为0到4的整数。1到4，值越大，算法越‘懒’，匹配过程越慢，但可能生成更优的压缩结果。0：禁用懒惰匹配，算法会尽快构建哈夫曼树，压缩速度快，但压缩率低。  |
+| maxLazy    | number  | 是   | 压缩算法在构建哈夫曼树时的延迟匹配策略，取值范围为0到4的整数。值越大，算法越‘懒’，匹配过程越慢，但可能生成更优的压缩结果。0：禁用懒惰匹配，算法会尽快构建哈夫曼树，压缩速度快，但压缩率低。  |
 | niceLength | number  | 是   | 适合的延迟长度阈值。              |
 | maxChain   | number  | 是   | 最大链条长度。                    |
 
@@ -3421,7 +3431,12 @@ async function demo() {
 
 deflateReset(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
-这个函数相当于先调用deflateEnd再调用deflateInit，但是并不会释放和重新分配内部解压缩状态。使用Promise异步回调。
+这个函数相当于先调用deflateEnd再调用deflateInit，但是并不会释放和重新分配内部压缩状态。使用Promise异步回调。
+
+
+> **说明：**
+>
+> 与[deflateResetKeep](#deflateresetkeep12)相比，本接口完全重置压缩流，不保留任何参数；deflateResetKeep保留压缩参数和字典，适用于需要保持相同压缩配置重新压缩的场景。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3431,7 +3446,7 @@ deflateReset(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -3487,6 +3502,11 @@ deflateResetKeep(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 重置初始化的deflate压缩流，但保留其设置的压缩参数和字典。使用Promise异步回调。
 
+
+> **说明：**
+>
+> 与[deflateReset](#deflatereset12)相比，本接口保留压缩参数和字典，适用于需要保持相同压缩配置重新压缩的场景；deflateReset完全重置压缩流，不保留任何参数。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
@@ -3495,7 +3515,7 @@ deflateResetKeep(strm: ZStream): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -3559,7 +3579,7 @@ deflatePending(strm: ZStream): Promise&lt;DeflatePendingOutputInfo&gt;
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
 
 **返回值：**
 
@@ -3623,9 +3643,9 @@ deflateParams(strm: ZStream, level: CompressLevel, strategy: CompressStrategy): 
 
 | 参数名   | 类型             | 必填 | 说明                                                |
 | -------- | ---------------- | ---- | --------------------------------------------------- |
-| strm     | ZStream          | 是   | 参考[ZStream定义](#zstream12)。                     |
-| level    | CompressLevel    | 是   | 参考[CompressLevel枚举定义](#compresslevel)。       |
-| strategy | CompressStrategy | 是   | 参考[CompressStrategy枚举定义](#compressstrategy)。 |
+| strm     | [ZStream](#zstream12)          | 是   | zlib压缩解压的数据流管理对象。                     |
+| level    | [CompressLevel](#compresslevel)    | 是   | 参考[CompressLevel枚举定义](#compresslevel)。       |
+| strategy | [CompressStrategy](#compressstrategy) | 是   | 参考[CompressStrategy枚举定义](#compressstrategy)。 |
 
 **返回值：**
 
@@ -3679,7 +3699,7 @@ async function demo() {
 
 deflatePrime(strm: ZStream, bits: number, value: number): Promise&lt;ReturnStatus&gt;
 
-在压缩流中插入位和值。使用Promise异步回调。
+在压缩流中插入位和值。使用Promise异步回调。需要在deflateInit或deflateInit2初始化压缩流后调用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3689,9 +3709,9 @@ deflatePrime(strm: ZStream, bits: number, value: number): Promise&lt;ReturnStatu
 
 | 参数名 | 类型    | 必填 | 说明                            |
 | ------ | ------- | ---- | ------------------------------- |
-| strm   | ZStream | 是   | 参考[ZStream定义](#zstream12)。 |
-| bits   | number  | 是   | 要插入的位数，取值范围在0~16。  |
-| value  | number  | 是   | 与位数相对应的位值。            |
+| strm   | [ZStream](#zstream12) | 是   | zlib压缩解压的数据流管理对象。 |
+| bits   | number  | 是   | 要插入的位数，取值范围：[0, 16]。  |
+| value  | number  | 是   | 与位数相对应的位值。取值范围根据bits确定。            |
 
 **返回值：**
 
@@ -3749,11 +3769,12 @@ Options用于指定在压缩或解压Zip文件时的选项。
 
 | 名称     | 类型             | 只读 | 可选 | 说明                                                       |
 | -------- | ---------------- | ---- | ---------------------------------------------------------- | ---- |
-| level    | [CompressLevel](#compresslevel)     | 否   | 是  | 压缩或解压时指定的压缩等级。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
-| memLevel | [MemLevel](#memlevel)         | 否   | 是  | 压缩时指定的使用内存等级。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
-| strategy | [CompressStrategy](#compressstrategy) | 否   | 是  | 压缩时指定的压缩策略。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
-| parallel<sup>18+</sup> | [ParallelStrategy](#parallelstrategy18) | 否   | 是  | 压缩或解压时指定的串行或并行策略。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
-| pathSeparatorStrategy<sup>21+</sup> | [PathSeparatorStrategy](#pathseparatorstrategy21) | 否   | 是  | 解压时指定的压缩包内文件路径中分隔符的处理策略。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。        |
+| level    | [CompressLevel](#compresslevel)     | 否   | 是  | 压缩或解压时指定的压缩等级。默认值为COMPRESS_LEVEL_DEFAULT_COMPRESSION。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。       |
+| memLevel | [MemLevel](#memlevel)         | 否   | 是  | 压缩时指定的使用内存等级。默认值为MEM_LEVEL_DEFAULT。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                        |
+| strategy | [CompressStrategy](#compressstrategy) | 否   | 是  | 压缩时指定的压缩策略。默认值为COMPRESS_STRATEGY_DEFAULT_STRATEGY。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
+| parallel<sup>18+</sup> | [ParallelStrategy](#parallelstrategy18) | 否   | 是  | 压缩或解压时指定的串行或并行策略。默认值为PARALLEL_STRATEGY_SEQUENTIAL。<br>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
+| pathSeparatorStrategy<sup>21+</sup> | [PathSeparatorStrategy](#pathseparatorstrategy21) | 否   | 是  | 解压时指定的压缩包内文件路径中分隔符的处理策略。默认值为PATH_SEPARATOR_STRATEGY_DEFAULT。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。        |
+| keepTopLevelFolder | boolean | 否   | 是  | 压缩文件夹时，是否在压缩包中保留顶层文件夹。true表示保留顶层文件夹；false表示不保留顶层文件夹。默认值为false。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。        |
 
 ## CompressLevel
 
@@ -3763,10 +3784,10 @@ Options用于指定在压缩或解压Zip文件时的选项。
 
 | 名称                               | 值   | 说明              |
 | ---------------------------------- | ---- | ----------------- |
-| COMPRESS_LEVEL_NO_COMPRESSION      | 0    | 压缩率为0压缩等级。 |
-| COMPRESS_LEVEL_BEST_SPEED          | 1    | 最佳速度压缩等级。  |
-| COMPRESS_LEVEL_BEST_COMPRESSION    | 9    | 最佳压缩等级。      |
-| COMPRESS_LEVEL_DEFAULT_COMPRESSION | -1   | 默认压缩等级。      |
+| COMPRESS_LEVEL_NO_COMPRESSION      | 0    | 压缩率为0压缩等级。适用于不压缩数据的场景，如已压缩的图片或视频文件。 |
+| COMPRESS_LEVEL_BEST_SPEED          | 1    | 以最快速度完成压缩，压缩率较低，适合对实时性要求高的场景。  |
+| COMPRESS_LEVEL_BEST_COMPRESSION    | 9    | 以最高压缩率完成压缩，压缩速度较慢，适合对存储空间敏感的场景。      |
+| COMPRESS_LEVEL_DEFAULT_COMPRESSION | -1   | 默认压缩等级，在压缩速度和压缩率之间取得平衡，适合大多数场景。      |
 
 ## MemLevel
 
@@ -3776,9 +3797,9 @@ Options用于指定在压缩或解压Zip文件时的选项。
 
 | 名称              | 值   | 说明                             |
 | ----------------- | ---- | -------------------------------- |
-| MEM_LEVEL_MIN     | 1    | zlib接口在压缩过程中最小使用内存。 |
-| MEM_LEVEL_MAX     | 9    | zlib接口在压缩过程中最大使用内存。 |
-| MEM_LEVEL_DEFAULT | 8    | zlib接口在压缩过程中默认使用内存。 |
+| MEM_LEVEL_MIN     | 1    | 使用最小内存进行压缩，压缩速度最慢但内存占用最低，适合内存受限的场景。 |
+| MEM_LEVEL_MAX     | 9    | 使用最大内存进行压缩，压缩速度最快但内存占用最高，适合内存充足的场景。 |
+| MEM_LEVEL_DEFAULT | 8    | 默认内存级别，在压缩速度和内存占用之间取得平衡，适合大多数场景。 |
 
 ## CompressStrategy
 
@@ -3788,11 +3809,11 @@ Options用于指定在压缩或解压Zip文件时的选项。
 
 | 名称                               | 值   | 说明                     |
 | ---------------------------------- | ---- | ------------------------ |
-| COMPRESS_STRATEGY_DEFAULT_STRATEGY | 0    | 常规数据策略。             |
-| COMPRESS_STRATEGY_FILTERED         | 1    | 过滤器产生的数据压缩策略。 |
-| COMPRESS_STRATEGY_HUFFMAN_ONLY     | 2    | 霍夫曼编码格式压缩策略。   |
-| COMPRESS_STRATEGY_RLE              | 3    | 游标编码压缩策略。         |
-| COMPRESS_STRATEGY_FIXED            | 4    | 固定的压缩策略。           |
+| COMPRESS_STRATEGY_DEFAULT_STRATEGY | 0    | 常规数据策略，适用于大多数数据类型，提供平衡的压缩性能。             |
+| COMPRESS_STRATEGY_FILTERED         | 1    | 过滤器产生的数据压缩策略。适用于经过预处理或过滤的数据，如delta编码后的数据。 |
+| COMPRESS_STRATEGY_HUFFMAN_ONLY     | 2    | 霍夫曼编码格式压缩策略。仅使用霍夫曼编码不进行字符串匹配，适用于需要快速压缩的场景。   |
+| COMPRESS_STRATEGY_RLE              | 3    | 游标编码压缩策略。适用于包含大量重复字节的数据，如位图图像。         |
+| COMPRESS_STRATEGY_FIXED            | 4    | 固定的压缩策略。使用固定的霍夫曼编码，适用于需要固定编码输出的场景。           |
 
 ## ParallelStrategy<sup>18+</sup>
 
@@ -3802,12 +3823,12 @@ Options用于指定在压缩或解压Zip文件时的选项。
 
 | 名称                                     | 值   | 说明                      |
 | ---------------------------------------- | ---- | ------------------------ |
-| PARALLEL_STRATEGY_SEQUENTIAL             | 0    | 默认值，串行压缩/解压策略。|
-| PARALLEL_STRATEGY_PARALLEL_DECOMPRESSION | 1    | 并行解压策略。            |
+| PARALLEL_STRATEGY_SEQUENTIAL             | 0    | 默认值，串行压缩/解压策略，按顺序逐个处理文件，适合小文件或单核处理器场景。|
+| PARALLEL_STRATEGY_PARALLEL_DECOMPRESSION | 1    | 并行解压策略，利用多核并行处理，可提升大文件解压速度。            |
 
 ## PathSeparatorStrategy<sup>21+</sup>
 
-PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解压时目标压缩包内文件路径中分隔符的处理策略。
+PathSeparatorStrategy用于指定解压时目标压缩包内文件路径中分隔符的处理策略。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -3818,7 +3839,7 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 | PATH_SEPARATOR_STRATEGY_DEFAULT           | 0    | 默认值，压缩包内文件路径中的分隔符不做处理。    |
 | PATH_SEPARATOR_STRATEGY_REPLACE_BACKSLASH | 1    | 压缩包内文件路径中的反斜杠'\\'替换为斜杠'/'。|
 
-## ErrorCode<sup>(deprecated)<sup>
+## ErrorCode<sup>(deprecated)</sup>
 
 > **说明：**
 >  
@@ -3840,10 +3861,10 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 | 名称          | 值   | 说明                                         |
 | ------------- | ---- | -------------------------------------------- |
 | NO_FLUSH      | 0    | 默认值，表示正常操作。                       |
-| PARTIAL_FLUSH | 1    | 在流中生成部分刷新点。                       |
-| SYNC_FLUSH    | 2    | 在保持压缩流状态的同时强制输出所有压缩数据。 |
-| FULL_FLUSH    | 3    | 重置压缩状态。                               |
-| FINISH        | 4    | 压缩或解压缩过程结束。                       |
+| PARTIAL_FLUSH | 1    | 在流中生成部分刷新点。适用于需要同步点以便解压流能够恢复的场景。                       |
+| SYNC_FLUSH    | 2    | 在保持压缩流状态的同时强制输出所有压缩数据。适用于需要实时输出压缩数据的场景，如网络传输。 |
+| FULL_FLUSH    | 3    | 重置压缩状态。适用于需要完全重置压缩流的场景，如压缩多个独立数据块。                               |
+| FINISH        | 4    | 压缩或解压缩过程结束。适用于压缩流程的最后一步，确保所有数据被完整输出。                       |
 | BLOCK         | 5    | 允许更精确的控制。                           |
 | TREES         | 6    | 实施过程中有特殊目的。                       |
 
@@ -3855,7 +3876,7 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 
 | 名称     | 值   | 说明       |
 | -------- | ---- | ---------- |
-| DEFLATED | 8    | 压缩方法。 |
+| DEFLATED | 8    | 使用DEFLATE算法进行压缩，是zlib库的标准压缩方法。 |
 
 ## ReturnStatus<sup>12+</sup>
 
@@ -3897,7 +3918,7 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 
 | 名称    | 类型         | 只读 | 可选 | 说明                                          |
 | ------- | ------------ | ---- | ---- | --------------------------------------------- |
-| status  | ReturnStatus | 否   | 否   | 参考[ReturnStatus枚举定义](#returnstatus12)。 |
+| status  | [ReturnStatus](#returnstatus12) | 否   | 否   | 压缩或解压函数执行结果的枚举类型，包含成功状态和各种错误码。 |
 | destLen | number       | 否   | 否   | 目标缓冲区的总长度。                          |
 
 ## DictionaryOutputInfo<sup>12+</sup>
@@ -3908,7 +3929,7 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 
 | 名称             | 类型         | 只读 | 可选 | 说明                                          |
 | ---------------- | ------------ | ---- | ---- | --------------------------------------------- |
-| status           | ReturnStatus | 否   | 否   | 参考[ReturnStatus枚举定义](#returnstatus12)。 |
+| status           | [ReturnStatus](#returnstatus12) | 否   | 否   | 压缩或解压函数执行结果的枚举类型，包含成功状态和各种错误码。 |
 | dictionaryLength | number       | 否   | 否   | 字典的长度。                                  |
 
 ## DecompressionOutputInfo<sup>12+</sup>
@@ -3919,7 +3940,7 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 
 | 名称         | 类型         | 只读 | 可选 | 说明                                          |
 | ------------ | ------------ | ---- | ---- | --------------------------------------------- |
-| status       | ReturnStatus | 否   | 否   | 参考[ReturnStatus枚举定义](#returnstatus12)。 |
+| status       | [ReturnStatus](#returnstatus12) | 否   | 否   | 压缩或解压函数执行结果的枚举类型，包含成功状态和各种错误码。 |
 | destLength   | number       | 否   | 否   | 目标缓冲区的长度。                            |
 | sourceLength | number       | 否   | 否   | 源缓冲区的长度。                              |
 
@@ -3931,7 +3952,7 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 
 | 名称    | 类型         | 只读 | 可选 | 说明                                          |
 | ------- | ------------ | ---- | ---- | --------------------------------------------- |
-| status  | ReturnStatus | 否   | 否   | 参考[ReturnStatus枚举定义](#returnstatus12)。 |
+| status  | [ReturnStatus](#returnstatus12) | 否   | 否   | 压缩或解压函数执行结果的枚举类型，包含成功状态和各种错误码。 |
 | pending | number       | 否   | 否   | 已生成的输出字节数。                          |
 | bits    | number       | 否   | 否   | 已生成的输出位数。                            |
 
@@ -3943,7 +3964,7 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 
 | 名称     | 类型        | 只读 | 可选 | 说明                                 |
 | -------- | ----------- | ---- | ---- | ------------------------------------ |
-| isText   | boolean     | 否   | 是   | 如果压缩数据被认为是文本，则为True。 |
+| isText   | boolean     | 否   | 是   | 标识压缩数据是否为文本。true表示压缩数据被认为是文本，false表示压缩数据不被认为是文本。 |
 | os       | number      | 否   | 是   | 操作系统。                           |
 | time     | number      | 否   | 是   | 修改时间。                           |
 | xflags   | number      | 否   | 是   | 额外标志。                           |
@@ -3951,8 +3972,8 @@ PathSeparatorStrategy作为[Options](#options)的一个属性，用于指定解�
 | extraLen | number      | 否   | 是   | 额外字段的长度。                     |
 | name     | ArrayBuffer | 否   | 是   | 文件名。                             |
 | comment  | ArrayBuffer | 否   | 是   | 注释。                               |
-| hcrc     | boolean     | 否   | 是   | 如果存在crc标头，则为True。          |
-| done     | boolean     | 否   | 是   | 读取gzip标头后为True。               |
+| hcrc     | boolean     | 否   | 是   | 标识是否存在crc标头。true表示存在crc标头，false表示不存在crc标头。 |
+| done     | boolean     | 否   | 是   | 标识是否已读取gzip标头。true表示已读取gzip标头，false表示尚未读取gzip标头。    |
 
 ## zlib.createGZip<sup>12+</sup>
 
@@ -4029,7 +4050,7 @@ gzdopen(fd: number, mode: string): Promise&lt;void&gt;
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4083,7 +4104,7 @@ struct Index {
 
 gzbuffer(size: number):Promise&lt;number&gt;
 
-为当前库函数设置内部缓冲区尺寸。
+为当前库函数设置内部缓冲区尺寸。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4165,14 +4186,14 @@ gzopen(path: string, mode: string): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | 是   | 需要打开的文件路径。                                         |
+| path   | string | 是   | 需要打开的文件路径。路径必须为沙箱路径，沙箱路径可以通过context获取，可参考[Stage模型](../apis-ability-kit/js-apis-inner-application-context.md)。                                         |
 | mode   | string | 是   | 指定文件打开方法。<br>基础模式（必须三选一）：<br/>-&nbsp;“r”或“rb”：读取模式，自动检测并解压gzip文件（若非gzip格式则直接读取原始数据）。<br/>-&nbsp;“w”或“wb”：写入模式，创建新文件并压缩数据。<br/>-&nbsp;“a”或“ab”：追加模式，在现有文件末尾追加新的gzip流（不校验原文件格式）。<br/>可选功能参数（可组合使用）：<br/>-&nbsp;压缩级别：0（不压缩）至9（最佳压缩），默认压缩级别为6，需要配合写入模式或者追加模式使用。<br/>-&nbsp;压缩策略：“f”（过滤策略）、“h”（霍夫曼策略）、“R”（游标编码策略）、“F”（固定编码策略），只能选取一种压缩策略。<br/>-&nbsp;透明模式：“T”，写入时不压缩且不生成gzip头（生成普通文件），与压缩策略互斥。<br/>-&nbsp;独占创建：“x”，如果文件存在则打开失败，需要配合写入模式或者追加模式使用<br/>-&nbsp;close-on-exec标志：“e”，设置文件描述符的FD_CLOEXEC属性（依赖系统支持）。<br/>模式字符串示例：<br/>-&nbsp;“r”：读取模式，读取时以二进制形式读取。<br/>-&nbsp;“rb”：读取模式，读取时以二进制形式读取。<br/>-&nbsp;“wb6”：写入模式，压缩时以二进制形式写入，压缩级别为6。<br/>-&nbsp;“wb9f”：写入模式，压缩时以二进制形式写入，压缩级别为最佳压缩，压缩策略采用过滤策略。<br/>-&nbsp;“wbT”：写入模式，不压缩，生成普通文件。<br/>-&nbsp;“wbx”：写入模式，压缩时以二进制形式写入，采用独占创建的方式写入文件。<br/>-&nbsp;“abx”：追加模式，压缩时以二进制形式追加并写入，采用独占创建的方式写入文件。 |
 
 **返回值：**
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4418,7 +4439,7 @@ gzclearerr(): Promise&lt;void&gt;
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -4475,7 +4496,7 @@ struct Index {
 
 gzerror(): Promise&lt;GzErrorOutputInfo&gt;
 
-文件上发生的最后一个错误的错误消息。使用Promise异步回调。
+获取文件上发生的最后一个错误的错误信息和状态消息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4626,7 +4647,7 @@ gzflush(flush: CompressFlushMode): Promise&lt;ReturnStatus&gt;
 
 | 参数名 | 类型              | 必填 | 说明                                                         |
 | ------ | ----------------- | ---- | ------------------------------------------------------------ |
-| flush  | CompressFlushMode | 是   | 控制刷新操作的行为，参考[CompressFlushMode枚举](#compressflushmode12)的定义。 |
+| flush  | [CompressFlushMode](#compressflushmode12) | 是   | 压缩或解压过程中的数据刷新策略。 |
 
 **返回值：**
 
@@ -4688,6 +4709,11 @@ gzfwrite(buf: ArrayBuffer, size: number, nitems: number): Promise&lt;number&gt;
 
 将大小为size，数量为nitems的数据块从buf压缩并写入文件。使用Promise异步回调。
 
+
+> **说明：**
+>
+> 与[gzwrite](#gzwrite12)相比，本接口按数据块写入，适用于写入固定大小的数据块；gzwrite直接指定写入字节数，适用于写入任意长度的数据。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
@@ -4696,7 +4722,7 @@ gzfwrite(buf: ArrayBuffer, size: number, nitems: number): Promise&lt;number&gt;
 
 | 参数名 | 类型        | 必填 | 说明                   |
 | ------ | ----------- | ---- | ---------------------- |
-| buf    | ArrayBuffer | 是   | 要将数据写入的缓冲区。 |
+| buf    | ArrayBuffer | 是   | 包含要写入数据的缓冲区。 |
 | size   | number      | 是   | 单个数据块中的字节数。 |
 | nitems | number      | 是   | 要写入的数据块数。     |
 
@@ -4765,6 +4791,11 @@ gzfread(buf: ArrayBuffer, size: number, nitems: number): Promise&lt;number&gt;
 
 从gzip压缩文件中解压缩并读取数据。使用Promise异步回调。
 
+
+> **说明：**
+>
+> 与[gzread](#gzread12)相比，本接口按数据块读取，适用于读取固定大小的数据块；gzread读取缓冲区大小的数据，适用于读取任意长度数据。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.BundleManager.Zlib
@@ -4775,7 +4806,7 @@ gzfread(buf: ArrayBuffer, size: number, nitems: number): Promise&lt;number&gt;
 | ------ | ----------- | ---- | ------------------------------ |
 | buf    | ArrayBuffer | 是   | 用于存储读取结果的目标缓冲区。 |
 | size   | number      | 是   | 单个数据块中的字节数。         |
-| nitems | number      | 是   | 要写入的数据块数。             |
+| nitems | number      | 是   | 要读取的数据块数。             |
 
 **返回值：**
 
@@ -4971,7 +5002,12 @@ struct Index {
 
 gzwrite(buf: ArrayBuffer, len: number): Promise&lt;number&gt;
 
-将buf中的len长度的未压缩字节进行压缩并将其写入文件。使用Promise异步回调。
+将buf中的len长度的未压缩字节进行压缩并将其写入文件。使用Promise异步回调。注意：此方法只能在gzopen的写模式（"w"或"wb"）下使用。
+
+
+> **说明：**
+>
+> 与[gzfwrite](#gzfwrite12)相比，本接口直接指定写入字节数，适用于写入任意长度的数据；gzfwrite按数据块写入，适用于写入固定大小的数据块。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4981,8 +5017,8 @@ gzwrite(buf: ArrayBuffer, len: number): Promise&lt;number&gt;
 
 | 参数名 | 类型        | 必填 | 说明                         |
 | ------ | ----------- | ---- | ---------------------------- |
-| buf    | ArrayBuffer | 是   | 对象指向要写入的数据缓冲区。 |
-| len    | number      | 是   | 未压缩字节长度。             |
+| buf    | ArrayBuffer | 是   | 指向要写入数据的缓冲区。 |
+| len    | number      | 是   | 未压缩字节长度，单位：字节。取值范围：[0, min(buf.byteLength, 2147483647))。             |
 
 **返回值：**
 
@@ -5130,7 +5166,7 @@ gztell(): Promise&lt;number&gt;
 
 | 类型                  | 说明                                                     |
 | --------------------- | -------------------------------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回文件种下一个gzread或gzwrite的起始位置。 |
+| Promise&lt;number&gt; | Promise对象，返回文件中下一个gzread或gzwrite的起始位置。 |
 
 **错误码：**
 
@@ -5193,8 +5229,8 @@ gzsetparams(level: CompressLevel, strategy: CompressStrategy): Promise&lt;Return
 
 | 参数名   | 类型             | 必填 | 说明                                                         |
 | -------- | ---------------- | ---- | ------------------------------------------------------------ |
-| level    | CompressLevel    | 是   | 压缩级别，参考[CompressLevel枚举定义](#compresslevel)。      |
-| strategy | CompressStrategy | 是   | 压缩策略，参考[CompressStrategy枚举定义](#compressstrategy)。 |
+| level    | [CompressLevel](#compresslevel)    | 是   | 压缩级别，参考[CompressLevel枚举定义](#compresslevel)。      |
+| strategy | [CompressStrategy](#compressstrategy) | 是   | 压缩策略，参考[CompressStrategy枚举定义](#compressstrategy)。 |
 
 **返回值：**
 
@@ -5265,8 +5301,8 @@ gzseek(offset: number, whence: OffsetReferencePoint): Promise&lt;number&gt;
 
 | 参数名 | 类型                 | 必填 | 说明                                                         |
 | ------ | -------------------- | ---- | ------------------------------------------------------------ |
-| offset | number               | 是   | 目标偏移位置。                                               |
-| whence | OffsetReferencePoint | 是   | 定义偏移的参考点，参考[OffsetReferencePoint枚举定义](#offsetreferencepoint12)。 |
+| offset | number               | 是   | 目标偏移位置，单位：字节。                                               |
+| whence | [OffsetReferencePoint](#offsetreferencepoint12) | 是   | 文件查找起始位置的枚举类型。 |
 
 **返回值：**
 
@@ -5391,7 +5427,12 @@ struct Index {
 
 gzread(buf: ArrayBuffer): Promise&lt;number&gt;
 
-从文件中读取最多len个未压缩字节并将其解压缩到buf中。使用Promise异步回调。
+从文件中读取未压缩字节并将其解压缩到buf中，读取字节数由buf缓冲区长度决定。使用Promise异步回调。注意：此方法只能在gzopen的读模式（"r"或"rb"）下使用。
+
+
+> **说明：**
+>
+> 与[gzfread](#gzfread12)相比，本接口读取缓冲区大小的数据，适用于读取任意长度数据；gzfread按数据块读取，适用于读取固定大小的数据块。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5401,7 +5442,7 @@ gzread(buf: ArrayBuffer): Promise&lt;number&gt;
 
 | 参数名 | 类型        | 必填 | 说明           |
 | ------ | ----------- | ---- | -------------- |
-| buf    | ArrayBuffer | 是   | 目标偏移位置。 |
+| buf    | ArrayBuffer | 是   | 用于存储读取结果的目标缓冲区。 |
 
 **返回值：**
 
@@ -5480,7 +5521,7 @@ gzputs(str: string): Promise&lt;number&gt;
 
 | 参数名 | 类型   | 必填 | 说明                   |
 | ------ | ------ | ---- | ---------------------- |
-| str    | string | 是   | 格式化描述符和纯文本。 |
+| str    | string | 是   | 要写入的字符串。 |
 
 **返回值：**
 
@@ -5540,7 +5581,7 @@ struct Index {
 
 gzputc(ch: number): Promise&lt;number&gt;
 
-将转换为无符号字符的c压缩并写入文件。使用Promise异步回调。
+将转换为无符号字符的ch压缩并写入文件。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5745,7 +5786,7 @@ struct Index {
 
 gzgets(buf: ArrayBuffer): Promise&lt;string&gt;
 
-从文件中读取字节并将其解压缩到buf中，直到读取len-1字符，或者直到读取换行符并将其传输到buf，或者遇到文件结束条件。使用Promise异步回调。
+从文件中读取字节并将其解压缩到buf中，直到读取换行符并将其传输到buf，或者遇到文件结束条件。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -5823,7 +5864,7 @@ struct Index {
 
 | 名称      | 类型         | 只读 | 可选 | 说明                                         |
 | --------- | ------------ | ---- | ---- | -------------------------------------------- |
-| status    | ReturnStatus | 否   | 否   | 返回zlib文件状态码，参考ReturnStatus的定义。 |
+| status    | [ReturnStatus](#returnstatus12) | 否   | 否   | 压缩或解压函数执行结果的枚举类型，包含成功状态和各种错误码。 |
 | statusMsg | string       | 否   | 否   | zlib文件上发生的最后一个状态的状态消息。     |
 
 ## OffsetReferencePoint<sup>12+</sup>

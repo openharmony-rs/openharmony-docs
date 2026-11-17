@@ -12,9 +12,10 @@ Kiosk模式是一种特殊的设备锁定模式，可以确保设备界面只服
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本模块接口仅可在Stage模型下使用。
-> - 本模块接口仅适用于通过[setAllowedKioskApps接口](../apis-mdm-kit/js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20)配置的支持Kiosk模式的应用。
+> - 本模块接口仅适用于通过[applicationManager.setAllowedKioskApps](../apis-mdm-kit/js-apis-enterprise-applicationManager.md#applicationmanagersetallowedkioskapps20)配置的支持Kiosk模式的应用。
 
 ## 导入模块
 
@@ -26,17 +27,21 @@ import { kioskManager } from '@kit.AbilityKit';
 
 enterKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
-进入Kiosk模式。使用Promise异步回调。
+调用此接口进入Kiosk模式，采用Promise异步回调方式。若触发进入Kiosk模式的应用进程被终止，系统将自动退出该模式。
 
 **系统能力**： SystemCapability.Ability.AbilityRuntime.Core
 
 **设备行为差异**：该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 需要进入kiosk模式的UIAbility的上下文。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 需要进入Kiosk模式的UIAbility的上下文，用于指定执行进入Kiosk模式的Ability实例。 |
 
 **返回值：**
 
@@ -50,13 +55,15 @@ enterKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 |---------|---------|
-| 801 | Capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 16000050 | Failed to connect to the system service. |
 | 16000110 | The current application is not in Kiosk app list and cannot enter Kiosk mode. |
 | 16000111 | The system is already in Kiosk mode and cannot enter Kiosk mode again. |
-| 16000113 | Current ability is not in foreground. |
+| 16000113 | Current ability is not in foreground. <br>适用版本：20-26.0.0 |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```ts
 import { common, kioskManager } from '@kit.AbilityKit';
@@ -78,6 +85,42 @@ struct Index {
               hilog.info(0x0000, 'testTag', '%{public}s', 'enterKioskMode success');
             })
             .catch((error: BusinessError) => {
+              hilog.error(0x0000, 'testTag', '%{public}s', `enterKioskMode failed. Code: ${error.code}, message: ${error.message}`);
+            });
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { common, kioskManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Entry, Component, Column, Button } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private uiAbilityContext: common.UIAbilityContext | undefined =
+    this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Column() {
+      Button('enterKioskMode').margin({ top: 30 })
+        .onClick(() => {
+          let context: common.UIAbilityContext = this.uiAbilityContext as common.UIAbilityContext;
+          kioskManager.enterKioskMode(context)
+            .then(() => {
+              hilog.info(0x0000, 'testTag', '%{public}s', 'enterKioskMode success');
+            })
+            .catch((err: Error) => {
+              let error = err as BusinessError;
               hilog.error(0x0000, 'testTag', '%{public}s', `enterKioskMode failed:${JSON.stringify(error)}`);
             });
         })
@@ -100,11 +143,15 @@ exitKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
 **设备行为差异**：该接口仅在Phone、PC/2in1和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------|------|------|
-| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 需要退出kiosk模式的UIAbility的上下文。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | 需要退出Kiosk模式的UIAbility的上下文，用于指定执行退出Kiosk模式的Ability实例。 |
 
 **返回值：**
 
@@ -118,12 +165,14 @@ exitKioskMode(context: UIAbilityContext): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 |---------|---------|
-| 801 | Capability not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 16000050 | Failed to connect to the system service. |
 | 16000110 | The current application is not in Kiosk app list and cannot enter Kiosk mode. |
 | 16000112 | The current application is not in Kiosk mode and cannot exit Kiosk mode. |
 
 **示例**：
+
+ArkTS-Dyn示例：
 
 ```ts
 import { common, kioskManager } from '@kit.AbilityKit';
@@ -145,6 +194,42 @@ struct Index {
               hilog.info(0x0000, 'testTag', '%{public}s', 'exitKioskMode success');
             })
             .catch((error: BusinessError) => {
+              hilog.error(0x0000, 'testTag', '%{public}s', `exitKioskMode failed. Code: ${error.code}, message: ${error.message}`);
+            });
+        })
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+import { common, kioskManager } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Entry, Component, Column, Button } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private uiAbilityContext: common.UIAbilityContext | undefined =
+    this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+  build() {
+    Column() {
+      Button('exitKioskMode').margin({ top: 10 })
+        .onClick(() => {
+          let context: common.UIAbilityContext = this.uiAbilityContext as common.UIAbilityContext;
+          kioskManager.exitKioskMode(context)
+            .then(() => {
+              hilog.info(0x0000, 'testTag', '%{public}s', 'exitKioskMode success');
+            })
+            .catch((err: Error) => {
+              let error = err as BusinessError;
               hilog.error(0x0000, 'testTag', '%{public}s', `exitKioskMode failed:${JSON.stringify(error)}`);
             });
         })

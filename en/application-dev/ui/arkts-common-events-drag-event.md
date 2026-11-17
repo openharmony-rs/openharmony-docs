@@ -27,7 +27,7 @@ When dragging is initiated by a gesture, ArkUI first verifies that the component
 
 Below you can see the drag process initiated by a gesture (finger or stylus).
 
-![en-us_image_0000001562820825](figures/en-us_image_0000001562820825.png)
+![drag-gesture](figures/drag-gesture.png)
 
 ### ​Mouse-based Drag
 

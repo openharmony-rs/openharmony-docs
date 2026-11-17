@@ -53,7 +53,7 @@ export default {
 >
 > - ECMAScript 6 (ES6) syntax is not supported in HML.
 
-![en-us_image_0000001118642003](figures/en-us_image_0000001118642003.png)
+![en-us_image_0000001118642003](figures/Data-Binding.png)
 
 ## Common Event Binding
 
@@ -132,7 +132,7 @@ Events can be written in the following formats:
   }
   ```
 
-![en-us_image_0000001118642002](figures/en-us_image_0000001118642002.gif)
+![en-us_image_0000001118642002](figures/Common-Event-Binding.gif)
 
 ## Binding for Event Bubbling<sup>5+</sup>
 
@@ -267,7 +267,7 @@ The **tid** attribute accelerates the **for** loop and improves the re-rendering
 >
 > - The **tid** attribute does not support expressions.
 
-![en-us_image_0000001118642001](figures/en-us_image_0000001118642001.gif)
+![en-us_image_0000001118642001](figures/Loop-Rendering.gif)
 
 ## Conditional Rendering
 
@@ -313,7 +313,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001118642004](figures/en-us_image_0000001118642004.gif)
+![en-us_image_0000001118642004](figures/Conditional-Rendering.gif)
 
 In the optimized rendering (**show**), if **show** is **true**, the node is rendered properly; if it is **false**, the display style will be **none**.
 
@@ -353,7 +353,7 @@ export default {
 > **NOTE**
 > Do not use **for** and **if** attributes at the same time in an element.
 
-![en-us_image_0000001118642005](figures/en-us_image_0000001118642005.gif)
+![en-us_image_0000001118642005](figures/Conditional-Rendering01.gif)
 
 ## Logic Control Block
 
@@ -387,7 +387,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001118642006](figures/en-us_image_0000001118642006.png)
+![en-us_image_0000001118642006](figures/Logic-Control-Block.png)
 
 ## Template Reference
 

@@ -6,9 +6,11 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-本模块提供[应用启动框架](../../application-models/app-startup.md)配置信息的定义。
+本模块提供[应用启动框架](../../application-models/app-startup.md)配置信息的定义，用于配置任务超时时间和启动框架的监听器。
 
 > **说明：**
+>
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -26,10 +28,14 @@ import { StartupConfig } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AppStartup
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| timeoutMs | number | 否 | 是 | 执行所有启动任务的超时时间（单位：ms），默认值为10000ms。 |
-| startupListener | [StartupListener](./js-apis-app-appstartup-startupListener.md) | 否 | 是 | 表示启动框架的监听器，该监听器将在所有启动任务完成时调用。 |
+| timeoutMs | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 执行所有启动任务的超时时间（单位：ms），默认值为10000ms。超时后启动框架会停止等待，并通过startupListener.onCompleted回调返回超时错误。超时不会中断正在执行的启动任务，但会影响后续任务的执行。 |
+| startupListener | [StartupListener](./js-apis-app-appstartup-startupListener.md) | 否 | 是 | 启动框架的监听器，该监听器将在所有启动任务完成时调用。未设置该参数时，不进行回调通知。 |
 
 **示例：**
 

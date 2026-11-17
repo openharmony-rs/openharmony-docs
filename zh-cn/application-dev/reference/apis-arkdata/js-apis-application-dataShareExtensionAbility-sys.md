@@ -1,8 +1,8 @@
 # @ohos.application.DataShareExtensionAbility (数据共享扩展能力)(系统接口)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -33,7 +33,7 @@ import { DataShareExtensionAbility } from '@kit.ArkData';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| context<sup>10+</sup> | [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)  | 是 | 否 |表示数据共享扩展能力上下文。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| context<sup>10+</sup> | [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)  | 否 | 否 | 表示数据共享扩展能力上下文。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
 | onCreate<sup>23+</sup> | [OnCreateFn](#oncreatefn23) | 否 | 是 | 初始化业务逻辑配置，默认为空（未定义），函数被定义后在DataShare客户端连接DataShareExtensionAbility服务端时，服务端回调触发。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | insert<sup>23+</sup> | [InsertFn](#insertfn23) | 否 | 是 | 插入操作配置，默认为空（未定义），在数据库插入时，服务端回调触发。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
 | update<sup>23+</sup> | [UpdateFn](#updatefn23) | 否 | 是 | 更新操作配置，默认为空（未定义），在数据库更新时，服务端回调触发。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
@@ -85,7 +85,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
       console.info(`getRdbStore done, data : ${data}`);
       rdbStore = data;
       rdbStore.executeSql(DDL_TBL_CREATE, [], (err) => {
-        console.error(`executeSql done, error message : ${err}`);
+        console.error(`Failed to executeSql. Code: ${err.code}, message: ${err.message}`);
       });
       if (callback) {
         callback();
@@ -111,9 +111,9 @@ insert?(uri: string, valueBucket: ValuesBucket, callback: AsyncCallback&lt;numbe
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ------ | ------ | ------ |
-| uri |string | 是  | 指示要插入的数据的路径。 |
-| valueBucket |[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | 是 | 指示要插入的数据。 |
-| callback |AsyncCallback&lt;number&gt; | 是 | 回调函数。返回插入数据记录的索引。 |
+| uri | string | 是  | 指示要插入的数据的路径。 |
+| valueBucket | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | 是 | 指示要插入的数据。 |
+| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回插入数据记录的索引。 |
 
 **示例：**
 
@@ -126,7 +126,7 @@ let rdbStore: relationalStore.RdbStore;
 export default class DataShareExtAbility extends DataShareExtensionAbility {
   insert(uri: string, valueBucket: ValuesBucket, callback: Function) {
     if (valueBucket === null) {
-      console.error('invalid valueBuckets');
+      console.info('invalid valueBuckets');
       return;
     }
     rdbStore.insert(TBL_NAME, valueBucket, (err, ret) => {
@@ -211,25 +211,23 @@ let TBL_NAME = 'TBL00';
 let rdbStore: relationalStore.RdbStore;
 
 export default class DataShareExtAbility extends DataShareExtensionAbility {
-  batchUpdate(operations:Record<string, Array<dataShare.UpdateOperation>>, callback:Function) {
+  batchUpdate(operations: Record<string, Array<dataShare.UpdateOperation>>, callback: Function) {
     let recordOps : Record<string, Array<dataShare.UpdateOperation>> = operations;
     let results : Record<string, Array<number>> = {};
-    let a = Object.entries(recordOps);
-    for (let i = 0; i < a.length; i++) {
-      let key = a[i][0];
-      let values = a[i][1];
+    let entries = Object.entries(recordOps);
+    entries.forEach(([key, values]) => {
       let result : number[] = [];
-      for (const value of values) {
+      values.forEach((value) => {
         rdbStore.update(TBL_NAME, value.values, value.predicates).then(async (rows) => {
           console.info('Update row count is ' + rows);
           result.push(rows);
         }).catch((err:BusinessError) => {
-          console.info('Update failed, err is ' + JSON.stringify(err));
+          console.error(`Failed to Update. Code: ${err.code}, message: ${err.message}`);
           result.push(-1)
-        })
-      }
+        });
+      });
       results[key] = result;
-    }
+    });
     callback(null, results);
   }
 };
@@ -354,7 +352,7 @@ let rdbStore: relationalStore.RdbStore;
 export default class DataShareExtAbility extends DataShareExtensionAbility {
   batchInsert(uri: string, valueBuckets: Array<ValuesBucket>, callback: Function) {
     if (valueBuckets === null || valueBuckets.length <= 0) {
-      console.error('invalid valueBuckets');
+      console.info('invalid valueBuckets');
       return;
     }
     rdbStore.batchInsert(TBL_NAME, valueBuckets, (err, ret) => {
@@ -440,12 +438,14 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
       name: key,
       message: key
     };
-      let ret = `denormalize ${uri}`;
-      callback(err, ret);
+    let ret = `denormalize ${uri}`;
+    callback(err, ret);
   }
 };
 ```
 ## UpdateOperation<sup>12+</sup>
+
+type UpdateOperation = dataShare.UpdateOperation
 
 批量更新操作的参数结构。
 

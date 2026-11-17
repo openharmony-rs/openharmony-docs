@@ -3,7 +3,7 @@
 <!--Kit: Calendar Kit-->
 <!--Subsystem: Applications-->
 <!--Owner: @qq_42718467-->
-<!--Designer: @windsky6-->
+<!--Designer: @qq_42718467-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
 
@@ -33,7 +33,7 @@ Parameter value error.
 
 **处理步骤**
 
-1. 检查参数字串长度是否超范围。
+1. 检查参数字符串长度是否超范围。
 
 2. 检查参数值是否超范围。
 
@@ -53,17 +53,21 @@ The specified account was not found.
 
 **可能原因**
 
-输入账号与创建的账户不一致，导致查询的账户不存在。
+1. 输入账号与创建的账户不一致，导致查询的账户不存在。
+
+2. 在Car设备上，华为账号发生切换。
 
 **处理步骤**
 
-确保使用已创建的账户，不要使用未创建的账户。
+1. 确保使用已创建的账户，不要使用未创建的账户。
+
+2. 确认当前华为账号是否切换，若切换，则需重新获取Calendar对象。
 
 ## 23900004 内部程序错误
 
 **错误信息**
 
-Internal program error.
+Internal program errors.
 
 **错误描述**
 
@@ -79,7 +83,7 @@ Internal program error.
 
 **处理步骤**
 
-内部异常，请稍后重试
+内部异常，请稍后重试。
 
 ## 23900005 该日程不支持编辑
 

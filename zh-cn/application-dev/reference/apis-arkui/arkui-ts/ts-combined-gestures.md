@@ -1,12 +1,12 @@
 # GestureGroup
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-手势识别组合，即两种及以上手势组合为复合手势，支持顺序识别、并发识别和互斥识别。
+手势识别组合，即两种及以上手势组合为复合手势，支持顺序识别、并行识别和互斥识别。
 
 >  **说明：**
 >
@@ -18,7 +18,7 @@
 
 GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -30,14 +30,14 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 
 | 参数名  | 类型                                                     | 必填 | 说明                                                     |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| mode    | [GestureMode](#gesturemode枚举说明)                          | 是   | 设置组合手势识别模式。<br/>默认值：GestureMode.Sequence      |
-| gesture | [GestureType](./ts-gesture-common.md#gesturetype)[] | 否   | 设置一个或者多个基础手势类型时，这些手势会被识别为组合手势。若此参数不填则组合手势识别功能不生效。<br/>**说明：**<br/>当需要为一个组件同时添加单击和双击手势时，可在组合手势中添加两个[TapGesture](ts-basic-gestures-tapgesture.md)，需要双击手势在前，单击手势在后，否则不生效。 |
+| mode    | [GestureMode](#gesturemode枚举说明)                          | 是   | 设置组合手势识别模式。该参数为必填参数，不支持省略；需要使用顺序识别时请显式传入GestureMode.Sequence。      |
+| gesture | [GestureType](./ts-gesture-common.md#gesturetype)[] | 否   | 设置两个或者多个基础手势类型时，这些手势会被识别为组合手势。若此参数不填则组合手势识别功能不生效。<br>**说明：**<br>当需要为一个组件同时添加单击和双击手势时，可在组合手势中添加两个[TapGesture](ts-basic-gestures-tapgesture.md)，需要双击手势在前，单击手势在后，否则不生效。 |
 
 ## GestureMode枚举说明
 
 定义手势组的识别模式。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,8 +48,8 @@ GestureGroup(mode: GestureMode, ...gesture: GestureType[])
 | 名称    | 值    | 说明                                       |
 | --------- | -------| ------------------------------------- |
 | Sequence | - | 顺序识别，根据注册顺序依次进行手势识别，直到所有手势识别成功。如果任一手势识别失败，则后续手势识别均无法完成。<br>在顺序识别手势组中，仅最后一个手势能响应onActionEnd事件。 |
-| Parallel | - | 并发识别，注册的手势同时识别，直到所有手势识别结束，手势识别互相不影响。     |
-| Exclusive| - | 互斥识别，注册的手势同时识别，若有一个手势识别成功，则结束手势识别，其他手势识别均失败。       |
+| Parallel | - | 并行识别，注册的手势同时识别，直到所有手势识别结束，手势识别互相不影响。适用于需要多个手势同时响应且互不阻塞的交互场景。     |
+| Exclusive| - | 互斥识别，注册的手势同时识别，若有一个手势识别成功，则结束手势识别，其他手势识别均失败。适用于多个手势可能同时触发但只允许其中一个手势生效的交互场景。       |
 
 
 ## 事件
@@ -60,9 +60,9 @@ ArkTS-Dyn: onCancel(event: () => void)
 
 ArkTS-Sta: onCancel(event: VoidCallback)
 
-手势识别成功，接收到触摸取消事件，触发回调。
+手势识别后，接收到触摸取消事件时，触发此回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,7 +95,7 @@ struct GestureGroupExample {
   build() {
     Column() {
       Text('sequence gesture\n' + 'LongPress onAction:' + this.count + '\nPanGesture offset:\nX: ' + this.offsetX + '\n' + 'Y: ' + this.offsetY)
-        .fontSize(15)
+        .fontSize(15);
     }
     .translate({ x: this.offsetX, y: this.offsetY, z: 0 })
     .height(150)
@@ -104,38 +104,38 @@ struct GestureGroupExample {
     .margin(20)
     .border({ width: 3, style: this.borderStyles })
     .gesture(
-      // 以下组合手势为顺序识别，当长按手势事件未正常触发时则不会触发滑动手势事件
+      // 以下组合手势为顺序识别，当长按手势事件未正常触发时则不会触发拖动手势事件
       GestureGroup(GestureMode.Sequence,
         LongPressGesture({ repeat: true })
           .onAction((event?: GestureEvent) => {
             if (event && event.repeat) {
-              this.count++
+              this.count++;
             }
-            console.info('LongPress onAction')
+            console.info('LongPress onAction');
           }),
         PanGesture()
           .onActionStart(() => {
-            this.borderStyles = BorderStyle.Dashed
-            console.info('pan start')
+            this.borderStyles = BorderStyle.Dashed;
+            console.info('pan start');
           })
           .onActionUpdate((event?: GestureEvent) => {
             if (event) {
-              this.offsetX = this.positionX + event.offsetX
-              this.offsetY = this.positionY + event.offsetY
+              this.offsetX = this.positionX + event.offsetX;
+              this.offsetY = this.positionY + event.offsetY;
             }
-            console.info('pan update')
+            console.info('pan update');
           })
           .onActionEnd(() => {
-            this.positionX = this.offsetX
-            this.positionY = this.offsetY
-            this.borderStyles = BorderStyle.Solid
-            console.info('pan end')
+            this.positionX = this.offsetX;
+            this.positionY = this.offsetY;
+            this.borderStyles = BorderStyle.Solid;
+            console.info('pan end');
           })
       )
         .onCancel(() => {
-          console.info('sequence gesture canceled')
+          console.info('sequence gesture canceled');
         })
-    )
+    );
   }
 }
 ```
@@ -144,8 +144,8 @@ struct GestureGroupExample {
 
 按顺序首先触发长按事件：
 
-![zh-cn_image_0000001174104384](figures/zh-cn_image_0000001174104384.png)
+![GestureGroup](figures/GestureGroup.png)
 
 按顺序首先触发长按事件，长按事件识别结束之后，触发拖动事件，向右下方拖动：
 
- ![zh-cn_image1_0000001174104384](figures/zh-cn_image1_0000001174104384.png) 
+ ![triggeringEvent](figures/triggeringEvent.png)

@@ -424,11 +424,11 @@ This change is a non-compatible change.
 
 Before change: When **showInSubWindow** is set to **true**, the mask of the **\<CustomDialog>** component covers the subwindow; when **showInSubWindow** is set to **false**, the mask covers the entire application window.
 
-![en-us_image_alert](figures/en-us_image_alert.gif)
+![image-alert](figures/en-us_image_alert.gif)
 
 After change: The mask of the **\<CustomDialog>** component covers the entire application window regardless of whether **showInSubWindow** is **true** or **false**.
 
-![en-us_image_alert_showinsubwindow](figures/en-us_image_alert_showinsubwindow.jpg)
+![image-alert-showinsubwindow](figures/en-us_image_alert_showinsubwindow.jpg)
 
 **API Level**
 

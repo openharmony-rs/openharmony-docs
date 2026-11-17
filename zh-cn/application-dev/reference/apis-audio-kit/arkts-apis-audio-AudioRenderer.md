@@ -12,6 +12,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 8开始支持。
 
@@ -24,6 +25,10 @@ import { audio } from '@kit.AudioKit';
 ## 属性
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 类型                     | 只读 | 可选 | 说明               |
 | ----- | -------------------------- | ---- | ---- | ------------------ |
@@ -45,11 +50,15 @@ getRendererInfo(callback: AsyncCallback<AudioRendererInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                     | 必填 | 说明                   |
 | :------- | :------------------------------------------------------- | :--- | :--------------------- |
-| callback | AsyncCallback<[AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8)\> | 是   | 回调函数。当获取音频渲染器的信息成功，err为undefined，data为获取到的音频渲染器的信息；否则为错误对象。 |
+| callback | AsyncCallback<[AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8)\> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频渲染器的信息成功，err为undefined，data为获取到的音频渲染器的信息；否则为错误对象。<br>ArkTS-Sta：当获取音频渲染器的信息成功，err为null，data为获取到的音频渲染器的信息；否则为错误对象。 |
 
 **示例：**
 
@@ -72,6 +81,10 @@ getRendererInfo(): Promise<AudioRendererInfo\>
 获取当前创建的音频渲染器信息。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -98,6 +111,10 @@ getRendererInfoSync(): AudioRendererInfo
 获取当前创建的音频渲染器信息。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -127,11 +144,15 @@ getStreamInfo(callback: AsyncCallback<AudioStreamInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                 | 必填 | 说明                 |
 | :------- | :--------------------------------------------------- | :--- | :------------------- |
-| callback | AsyncCallback<[AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)\> | 是   | 回调函数。当获取音频流信息成功，err为undefined，data为获取到的音频流信息；否则为错误对象。 |
+| callback | AsyncCallback<[AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)\> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频流信息成功，err为undefined，data为获取到的音频流信息；否则为错误对象。<br>ArkTS-Sta：当获取音频流信息成功，err为null，data为获取到的音频流信息；否则为错误对象。 |
 
 **示例：**
 
@@ -154,6 +175,10 @@ getStreamInfo(): Promise<AudioStreamInfo\>
 获取音频流信息。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -185,6 +210,10 @@ getStreamInfoSync(): AudioStreamInfo
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                           | 说明                   |
@@ -210,48 +239,58 @@ try {
 
 ## getAudioStreamId<sup>9+</sup>
 
-getAudioStreamId(callback: AsyncCallback<number\>): void
+ArkTS-Dyn: getAudioStreamId(callback: AsyncCallback<number\>): void
+
+ArkTS-Sta: getAudioStreamId(callback: AsyncCallback<long\>): void
 
 获取音频流id。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                 | 必填 | 说明                 |
 | :------- | :--------------------------------------------------- | :--- | :------------------- |
-| callback | AsyncCallback<number\> | 是   | 回调函数。当获取音频流id成功，err为undefined，data为获取到的音频流id；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback<number\><br>ArkTS-Sta: AsyncCallback<long\> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频流id成功，err为undefined，data为获取到的音频流id；否则为错误对象。<br>ArkTS-Sta：当获取音频流id成功，err为null，data为获取到的音频流id；否则为错误对象。 |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioRenderer.getAudioStreamId((err: BusinessError, streamId: number) => {
+audioRenderer.getAudioStreamId((err, streamId) => {
   console.info(`Renderer GetStreamId: ${streamId}`);
 });
 ```
 
 ## getAudioStreamId<sup>9+</sup>
 
-getAudioStreamId(): Promise<number\>
+ArkTS-Dyn: getAudioStreamId(): Promise<number\>
+
+ArkTS-Sta: getAudioStreamId(): Promise<long\>
 
 获取音频流id。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                           | 说明                   |
 | :--------------------------------------------- | :--------------------- |
-| Promise<number\> | Promise对象，返回音频流id。 |
+| ArkTS-Dyn: Promise<number\><br>ArkTS-Sta: Promise<long\> | Promise对象，返回音频流id。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioRenderer.getAudioStreamId().then((streamId: number) => {
+audioRenderer.getAudioStreamId().then((streamId) => {
   console.info(`Renderer getAudioStreamId: ${streamId}`);
 }).catch((err: BusinessError) => {
   console.error(`ERROR: ${err}`);
@@ -260,17 +299,23 @@ audioRenderer.getAudioStreamId().then((streamId: number) => {
 
 ## getAudioStreamIdSync<sup>10+</sup>
 
-getAudioStreamIdSync(): number
+ArkTS-Dyn: getAudioStreamIdSync(): number
+
+ArkTS-Sta: getAudioStreamIdSync(): long
 
 获取音频流id。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                           | 说明                   |
 | :--------------------------------------------- | :--------------------- |
-| number | 返回音频流id。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回音频流id。 |
 
 **示例：**
 
@@ -278,7 +323,7 @@ getAudioStreamIdSync(): number
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let streamId: number = audioRenderer.getAudioStreamIdSync();
+  let streamId = audioRenderer.getAudioStreamIdSync();
   console.info(`Renderer getAudioStreamIdSync: ${streamId}`);
 } catch (err) {
   let error = err as BusinessError;
@@ -294,12 +339,16 @@ setAudioEffectMode(mode: AudioEffectMode, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                     | 必填 | 说明                     |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
 | mode     | [AudioEffectMode](arkts-apis-audio-e.md#audioeffectmode10)    | 是   | 音效模式。               |
-| callback | AsyncCallback\<void>                     | 是   | 回调函数。当设置当前音效模式成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void>                     | 是   | 回调函数。<br>ArkTS-Dyn：当设置当前音效模式成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当设置当前音效模式成功，err为null，否则为错误对象。 |
 
 **错误码：**
 
@@ -331,6 +380,10 @@ setAudioEffectMode(mode: AudioEffectMode): Promise\<void>
 设置当前音效模式。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -373,11 +426,15 @@ getAudioEffectMode(callback: AsyncCallback\<AudioEffectMode>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                    | 必填 | 说明               |
 | -------- | ------------------------------------------------------- | ---- | ------------------ |
-| callback | AsyncCallback<[AudioEffectMode](arkts-apis-audio-e.md#audioeffectmode10)> | 是   | 回调函数。当获取当前音效模式成功，err为undefined，data为获取到的当前音效模式；否则为错误对象。 |
+| callback | AsyncCallback<[AudioEffectMode](arkts-apis-audio-e.md#audioeffectmode10)> | 是   | 回调函数。<br>ArkTS-Dyn：当获取当前音效模式成功，err为undefined，data为获取到的当前音效模式；否则为错误对象。<br>ArkTS-Sta：当获取当前音效模式成功，err为null，data为获取到的当前音效模式；否则为错误对象。 |
 
 **示例：**
 
@@ -400,6 +457,10 @@ getAudioEffectMode(): Promise\<AudioEffectMode>
 获取当前音效模式。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -427,11 +488,15 @@ start(callback: AsyncCallback<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明       |
 | -------- | -------------------- | ---- | ---------- |
-| callback | AsyncCallback\<void> | 是   | 回调函数。当启动音频渲染器成功，err为undefined，否则为错误对象。异常将返回error对象：<br>错误码6800301：表示包含状态检查异常、焦点抢占失败、系统处理异常（具体错误查看系统日志）。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn：当启动音频渲染器成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当启动音频渲染器成功，err为null，否则为错误对象。<br>异常将返回error对象：<br>错误码6800301：表示包含状态检查异常、焦点抢占失败、系统处理异常（具体错误查看系统日志）。 |
 
 **示例：**
 
@@ -454,6 +519,10 @@ start(): Promise<void\>
 启动音频渲染器。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -481,11 +550,15 @@ pause(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明             |
 | -------- | -------------------- | ---- | ---------------- |
-| callback | AsyncCallback\<void> | 是   | 回调函数。当暂停渲染成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn：当暂停渲染成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当暂停渲染成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -508,6 +581,10 @@ pause(): Promise\<void>
 暂停音频渲染。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -535,11 +612,15 @@ drain(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明             |
 | -------- | -------------------- | ---- | ---------------- |
-| callback | AsyncCallback\<void> | 是   | 回调函数。当检查缓冲区是否已被耗尽成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn：当检查缓冲区是否已被耗尽成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当检查缓冲区是否已被耗尽成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -562,6 +643,10 @@ drain(): Promise\<void>
 检查缓冲区是否已被耗尽。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -588,6 +673,10 @@ flush(): Promise\<void>
 清空缓冲区（[AudioState](arkts-apis-audio-e.md#audiostate8)为STATE_RUNNING、STATE_PAUSED、STATE_STOPPED状态下可用）。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -623,11 +712,15 @@ stop(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明             |
 | -------- | -------------------- | ---- | ---------------- |
-| callback | AsyncCallback\<void> | 是   | 回调函数。当停止渲染成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn：当停止渲染成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当停止渲染成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -650,6 +743,10 @@ stop(): Promise\<void>
 停止音频渲染。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -677,11 +774,15 @@ release(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明             |
 | -------- | -------------------- | ---- | ---------------- |
-| callback | AsyncCallback\<void> | 是   | 回调函数。当释放音频渲染器成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> | 是   | 回调函数。<br>ArkTS-Dyn：当释放音频渲染器成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当释放音频渲染器成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -705,6 +806,10 @@ release(): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                      |
@@ -725,48 +830,58 @@ audioRenderer.release().then(() => {
 
 ## getAudioTime<sup>8+</sup>
 
-getAudioTime(callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getAudioTime(callback: AsyncCallback\<number>): void
+
+ArkTS-Sta: getAudioTime(callback: AsyncCallback\<long>): void
 
 获取当前播放位置的时间戳（从1970年1月1日开始），单位为纳秒。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明             |
 | -------- | ---------------------- | ---- | ---------------- |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当获取时间戳成功，err为undefined，data为获取到的时间戳；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。<br>ArkTS-Dyn：当获取时间戳成功，err为undefined，data为获取到的时间戳；否则为错误对象。<br>ArkTS-Sta：当获取时间戳成功，err为null，data为获取到的时间戳；否则为错误对象。 |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioRenderer.getAudioTime((err: BusinessError, timestamp: number) => {
+audioRenderer.getAudioTime((err, timestamp) => {
   console.info(`Current timestamp: ${timestamp}`);
 });
 ```
 
 ## getAudioTime<sup>8+</sup>
 
-getAudioTime(): Promise\<number>
+ArkTS-Dyn: getAudioTime(): Promise\<number>
+
+ArkTS-Sta: getAudioTime(): Promise\<long>
 
 获取当前播放位置的时间戳（从1970年1月1日开始），单位为纳秒。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型             | 说明                    |
 | ---------------- | ----------------------- |
-| Promise\<number> | Promise对象，返回时间戳。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<long> | Promise对象，返回时间戳。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioRenderer.getAudioTime().then((timestamp: number) => {
+audioRenderer.getAudioTime().then((timestamp) => {
   console.info(`Current timestamp: ${timestamp}`);
 }).catch((err: BusinessError) => {
   console.error(`ERROR: ${err}`);
@@ -775,17 +890,23 @@ audioRenderer.getAudioTime().then((timestamp: number) => {
 
 ## getAudioTimeSync<sup>10+</sup>
 
-getAudioTimeSync(): number
+ArkTS-Dyn: getAudioTimeSync(): number
+
+ArkTS-Sta: getAudioTimeSync(): long
 
 获取当前播放位置的时间戳（从1970年1月1日开始），单位为纳秒。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型             | 说明                    |
 | ---------------- | ----------------------- |
-| number | 返回时间戳。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回时间戳。 |
 
 **示例：**
 
@@ -793,7 +914,7 @@ getAudioTimeSync(): number
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let timestamp: number = audioRenderer.getAudioTimeSync();
+  let timestamp = audioRenderer.getAudioTimeSync();
   console.info(`Current timestamp: ${timestamp}`);
 } catch (err) {
   let error = err as BusinessError;
@@ -807,13 +928,26 @@ getAudioTimestampInfo(): Promise\<AudioTimestampInfo>
 
 获取输出音频流时间戳和位置信息，适配倍速接口。使用Promise异步回调。
 
-获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐。
+获取输出音频流时间戳和位置信息，通常用于进行音画同步对齐，播放位置单位为采样数（samples），时间戳单位为纳秒（nanosecond，ns）。
 
-注意，当实际播放位置（framePosition）为0时，时间戳（timestamp）是固定值，直到流真正跑起来时才会更新。当调用Flush接口时实际播放位置也会被重置。
+当设备切换或暂停恢复时，由于播放通路本身需要一段时间恢复，调用该接口获取的播放位置和时间戳会短暂地保持在切换或暂停前的状态。
 
-当音频流路由（route）变化时，例如设备变化或者输出类型变化时，播放位置也会被重置，但此时时间戳仍会持续增长。推荐当实际播放位置和时间戳的变化稳定后再使用该接口获取的值。该接口适配倍速接口，例如当播放速度设置为2倍时，播放位置的增长速度也会返回为正常的2倍。
+该接口通常用来实现音画同步，调用频率建议高于200ms一次，推荐频率为每分钟一次。在能保证音画同步效果的情况下，不需要频繁地查询时间戳，避免出现功耗问题。
+
+> **说明：**
+>
+> - 当实际播放位置（framePosition）为0时，时间戳（timestamp）是固定值，直到流真正开始播放时才会更新。
+> - 播放位置（framePosition）单位为采样数，采样数计算方式为采样率乘以时间（例如，当采样率为48000Hz时，20ms音频数据对应的采样数为48000*0.02，即采样点为960）。
+> - 当调用Flush接口时实际播放位置也会被重置。
+> - 在调用此函数之前，确保音频流处于运行状态，并且至少已成功播放一帧数据。
+> - 当音频流路由（route）变化时，例如设备变化或者输出类型变化时，播放位置可能也会被重置，但此时时间戳仍会持续增长。推荐当实际播放位置和时间戳的变化稳定后再使用该接口获取的值。
+> - 该接口适配倍速接口，例如当播放速度设置为2倍时，播放位置的增长速度也会返回为正常的2倍。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -849,6 +983,10 @@ getAudioTimestampInfoSync(): AudioTimestampInfo
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型             | 说明                    |
@@ -879,7 +1017,9 @@ try {
 
 ## getLatency<sup>23+</sup>
 
-getLatency(type: AudioLatencyType): number
+ArkTS-Dyn: getLatency(type: AudioLatencyType): number
+
+ArkTS-Sta: getLatency(type: AudioLatencyType): int
 
 获取当前音频路由的预估时延。
 
@@ -893,6 +1033,10 @@ getLatency(type: AudioLatencyType): number
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -903,7 +1047,7 @@ getLatency(type: AudioLatencyType): number
 
 | 类型 | 说明 |
 | ---- | ---- |
-| number | 返回音频时延，单位为毫秒。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回音频时延，单位为毫秒。 |
 
 **错误码：**
 
@@ -921,36 +1065,40 @@ getLatency(type: AudioLatencyType): number
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  const latency: number = audioRenderer.getLatency(audio.AudioLatencyType.LATENCY_TYPE_ALL);
+  let latency = audioRenderer.getLatency(audio.AudioLatencyType.LATENCY_TYPE_ALL);
   console.info(`Current audio latency: ${latency}ms`);
 } catch (err) {
-  const error = err as BusinessError;
+  let error = err as BusinessError;
   console.error(`Failed to get latency. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
 ## getBufferSize<sup>8+</sup>
 
-getBufferSize(callback: AsyncCallback\<number>): void
+ArkTS-Dyn: getBufferSize(callback: AsyncCallback\<number>): void
+
+ArkTS-Sta: getBufferSize(callback: AsyncCallback\<long>): void
 
 获取音频渲染器的最小缓冲区大小。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                 |
 | -------- | ---------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<number> | 是   | 回调函数。当获取音频渲染器的最小缓冲区大小成功，err为undefined，data为获取到的最小缓冲区大小；否则为错误对象。<br>单位为字节。 |
+| callback | ArkTS-Dyn: AsyncCallback\<number><br>ArkTS-Sta: AsyncCallback\<long> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频渲染器的最小缓冲区大小成功，err为undefined，data为获取到的最小缓冲区大小；否则为错误对象。<br>ArkTS-Sta：当获取音频渲染器的最小缓冲区大小成功，err为null，data为获取到的最小缓冲区大小；否则为错误对象。|
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
+let bufferSize;
 
-let bufferSize: number;
-
-audioRenderer.getBufferSize((err: BusinessError, data: number) => {
+audioRenderer.getBufferSize((err, data) => {
   if (err) {
     console.error('getBufferSize error');
   } else {
@@ -962,26 +1110,32 @@ audioRenderer.getBufferSize((err: BusinessError, data: number) => {
 
 ## getBufferSize<sup>8+</sup>
 
-getBufferSize(): Promise\<number>
+ArkTS-Dyn: getBufferSize(): Promise\<number>
+
+ArkTS-Sta: getBufferSize(): Promise\<long>
 
 获取音频渲染器的最小缓冲区大小。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型             | 说明                        |
 | ---------------- | --------------------------- |
-| Promise\<number> | Promise对象，返回缓冲区大小。<br>单位为字节。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<long> | Promise对象，返回缓冲区大小。<br>单位为字节。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bufferSize: number;
+let bufferSize;
 
-audioRenderer.getBufferSize().then((data: number) => {
+audioRenderer.getBufferSize().then((data) => {
   console.info(`AudioFrameworkRenderLog: getBufferSize: SUCCESS ${data}`);
   bufferSize = data;
 }).catch((err: BusinessError) => {
@@ -991,24 +1145,30 @@ audioRenderer.getBufferSize().then((data: number) => {
 
 ## getBufferSizeSync<sup>10+</sup>
 
-getBufferSizeSync(): number
+ArkTS-Dyn: getBufferSizeSync(): number
+
+ArkTS-Sta: getBufferSizeSync(): long
 
 获取音频渲染器的最小缓冲区大小。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型             | 说明                        |
 | ---------------- | --------------------------- |
-| number | 返回缓冲区大小，单位为字节。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回缓冲区大小，单位为字节。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let bufferSize: number = 0;
+let bufferSize = 0;
 
 try {
   bufferSize = audioRenderer.getBufferSizeSync();
@@ -1021,17 +1181,23 @@ try {
 
 ## setSpeed<sup>11+</sup>
 
-setSpeed(speed: number): void
+ArkTS-Dyn: setSpeed(speed: number): void
+
+ArkTS-Sta: setSpeed(speed: double): void
 
 设置播放倍速。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                     | 必填 | 说明                   |
 | ------ | ---------------------------------------- | ---- |----------------------|
-| speed | number | 是   | 设置播放的倍速值，倍速范围为[0.25, 4.0]。 |
+| speed | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 设置播放的倍速值，倍速范围为[0.25, 4.0]。 |
 
 **错误码：**
 
@@ -1050,17 +1216,23 @@ audioRenderer.setSpeed(1.5);
 
 ## getSpeed<sup>11+</sup>
 
-getSpeed(): number
+ArkTS-Dyn: getSpeed(): number
+
+ArkTS-Sta: getSpeed(): double
 
 获取播放倍速。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                              | 说明        |
 | ------------------------------------------------- |-----------|
-| number | 返回播放的倍速值，倍速范围为[0.25, 4.0]。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 返回播放的倍速值，倍速范围为[0.25, 4.0]。 |
 
 **示例：**
 
@@ -1075,6 +1247,10 @@ setInterruptMode(mode: InterruptMode): Promise&lt;void&gt;
 设置应用的焦点模型。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1109,12 +1285,16 @@ setInterruptMode(mode: InterruptMode, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                | 必填   | 说明            |
 | ------- | ----------------------------------- | ------ | -------------- |
 |mode     | [InterruptMode](arkts-apis-audio-e.md#interruptmode9)     | 是     | 焦点模型。|
-|callback | AsyncCallback\<void>                 | 是     |回调函数。当设置应用的焦点模型成功，err为undefined，否则为错误对象。|
+|callback | AsyncCallback\<void>                 | 是     |回调函数。<br>ArkTS-Dyn：当设置应用的焦点模型成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当设置应用的焦点模型成功，err为null，否则为错误对象。|
 
 **示例：**
 
@@ -1138,6 +1318,10 @@ setInterruptModeSync(mode: InterruptMode): void
 设置应用的焦点模型。同步设置。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1170,17 +1354,23 @@ try {
 
 ## setVolume<sup>9+</sup>
 
-setVolume(volume: number): Promise&lt;void&gt;
+ArkTS-Dyn: setVolume(volume: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setVolume(volume: double): Promise&lt;void&gt;
 
 设置音频流的音量。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型    | 必填   | 说明                 |
 | ---------- | ------- | ------ | ------------------- |
-| volume     | number  | 是     | 音量值范围为[0.0, 1.0]。 |
+| volume     | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是     | 音量值范围为[0.0, 1.0]。 |
 
 **返回值：**
 
@@ -1201,18 +1391,24 @@ audioRenderer.setVolume(0.5).then(() => {
 ```
 ## setVolume<sup>9+</sup>
 
-setVolume(volume: number, callback: AsyncCallback\<void>): void
+ArkTS-Dyn: setVolume(volume: number, callback: AsyncCallback\<void>): void
+
+ArkTS-Sta: setVolume(volume: double, callback: AsyncCallback\<void>): void
 
 设置音频流的音量。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|volume   | number     | 是     | 音量值范围为[0.0, 1.0]。 |
-|callback | AsyncCallback\<void> | 是     |回调函数。当设置应用的音量成功，err为undefined，否则为错误对象。|
+|volume   | ArkTS-Dyn: number<br>ArkTS-Sta: double     | 是     | 音量值范围为[0.0, 1.0]。 |
+|callback | AsyncCallback\<void> | 是     |回调函数。<br>ArkTS-Dyn：当设置应用的音量成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当设置应用的音量成功，err为null，否则为错误对象。|
 
 **示例：**
 
@@ -1229,17 +1425,23 @@ audioRenderer.setVolume(0.5, (err: BusinessError) => {
 ```
 ## getVolume<sup>12+</sup>
 
-getVolume(): number
+ArkTS-Dyn: getVolume(): number
+
+ArkTS-Sta: getVolume(): double
 
 获取音频流的音量。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型             | 说明                        |
 | ---------------- | --------------------------- |
-| number | 返回音量大小，音量值范围为[0.0, 1.0]。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 返回音量大小，音量值范围为[0.0, 1.0]。 |
 
 **示例：**
 
@@ -1247,7 +1449,7 @@ getVolume(): number
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value: number = audioRenderer.getVolume();
+  let value = audioRenderer.getVolume();
   console.info(`Indicate that the volume is obtained ${value}.`);
 } catch (err) {
   let error = err as BusinessError;
@@ -1257,24 +1459,28 @@ try {
 
 ## getMinStreamVolume<sup>10+</sup>
 
-getMinStreamVolume(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getMinStreamVolume(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getMinStreamVolume(callback: AsyncCallback&lt;double&gt;): void
 
 获取音频流的最小音量。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|callback |AsyncCallback&lt;number&gt; | 是     |回调函数。当获取音频流的最小音量成功，err为undefined，data为获取到的应用基于音频流的最小音量；否则为错误对象。<br>音量范围为[0.0, 1.0]。|
+|callback |ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;double&gt; | 是     |回调函数。<br>ArkTS-Dyn：当获取音频流的最小音量成功，err为undefined，data为获取到的应用基于音频流的最小音量（音量范围[0, 1]）；否则为错误对象。<br>ArkTS-Sta：当获取音频流的最小音量成功，err为null，data为获取到的应用基于音频流的最小音量（音量范围[0, 1]）；否则为错误对象。|
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioRenderer.getMinStreamVolume((err: BusinessError, minVolume: number) => {
+audioRenderer.getMinStreamVolume((err, minVolume) => {
   if (err) {
     console.error(`getMinStreamVolume error: ${err}`);
   } else {
@@ -1284,24 +1490,30 @@ audioRenderer.getMinStreamVolume((err: BusinessError, minVolume: number) => {
 ```
 ## getMinStreamVolume<sup>10+</sup>
 
-getMinStreamVolume(): Promise&lt;number&gt;
+ArkTS-Dyn: getMinStreamVolume(): Promise&lt;number&gt;
+
+ArkTS-Sta: getMinStreamVolume(): Promise&lt;double&gt;
 
 获取音频流的最小音量。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise对象，返回音频流最小音量。<br>音量范围为[0.0, 1.0]。|
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;double&gt;| Promise对象，返回音频流最小音量。<br>音量范围为[0.0, 1.0]。|
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioRenderer.getMinStreamVolume().then((value: number) => {
+audioRenderer.getMinStreamVolume().then((value) => {
   console.info(`Get min stream volume Success! ${value}`);
 }).catch((err: BusinessError) => {
   console.error(`Get min stream volume Fail: ${err}`);
@@ -1310,17 +1522,23 @@ audioRenderer.getMinStreamVolume().then((value: number) => {
 
 ## getMinStreamVolumeSync<sup>10+</sup>
 
-getMinStreamVolumeSync(): number
+ArkTS-Dyn: getMinStreamVolumeSync(): number
+
+ArkTS-Sta: getMinStreamVolumeSync(): double
 
 获取音频流的最小音量。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number| 返回音频流最小音量，音量范围为[0.0, 1.0]。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double| 返回音频流最小音量，音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1328,7 +1546,7 @@ getMinStreamVolumeSync(): number
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value: number = audioRenderer.getMinStreamVolumeSync();
+  let value = audioRenderer.getMinStreamVolumeSync();
   console.info(`Get min stream volume Success! ${value}`);
 } catch (err) {
   let error = err as BusinessError;
@@ -1338,24 +1556,28 @@ try {
 
 ## getMaxStreamVolume<sup>10+</sup>
 
-getMaxStreamVolume(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getMaxStreamVolume(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getMaxStreamVolume(callback: AsyncCallback&lt;double&gt;): void
 
 获取音频流的最大音量。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|callback | AsyncCallback&lt;number&gt; | 是     |回调函数。当获取音频流的最大音量成功，err为undefined，data为获取到的应用基于音频流的最大音量；否则为错误对象。<br>音量范围为[0.0, 1.0]。|
+|callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;double&gt; | 是     |回调函数。<br>ArkTS-Dyn：当获取音频流的最大音量成功，err为undefined，data为获取到的应用基于音频流的最大音量；否则为错误对象。<br>ArkTS-Sta：当获取音频流的最大音量成功，err为null，data为获取到的应用基于音频流的最大音量；否则为错误对象。<br>音量范围为[0.0, 1.0]。|
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioRenderer.getMaxStreamVolume((err: BusinessError, maxVolume: number) => {
+audioRenderer.getMaxStreamVolume((err, maxVolume) => {
   if (err) {
     console.error(`getMaxStreamVolume Fail: ${err}`);
   } else {
@@ -1365,24 +1587,30 @@ audioRenderer.getMaxStreamVolume((err: BusinessError, maxVolume: number) => {
 ```
 ## getMaxStreamVolume<sup>10+</sup>
 
-getMaxStreamVolume(): Promise&lt;number&gt;
+ArkTS-Dyn: getMaxStreamVolume(): Promise&lt;number&gt;
+
+ArkTS-Sta: getMaxStreamVolume(): Promise&lt;double&gt;
 
 获取音频流的最大音量。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise对象，返回音频流最大音量。<br>音量范围为[0.0, 1.0]。|
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;double&gt;| Promise对象，返回音频流最大音量。<br>音量范围为[0.0, 1.0]。|
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioRenderer.getMaxStreamVolume().then((value: number) => {
+audioRenderer.getMaxStreamVolume().then((value) => {
   console.info(`Get max stream volume Success! ${value}`);
 }).catch((err: BusinessError) => {
   console.error(`Get max stream volume Fail: ${err}`);
@@ -1391,17 +1619,23 @@ audioRenderer.getMaxStreamVolume().then((value: number) => {
 
 ## getMaxStreamVolumeSync<sup>10+</sup>
 
-getMaxStreamVolumeSync(): number
+ArkTS-Dyn: getMaxStreamVolumeSync(): number
+
+ArkTS-Sta: getMaxStreamVolumeSync(): double
 
 获取音频流的最大音量。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number| 返回音频流最大音量，音量范围为[0.0, 1.0]。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: double| 返回音频流最大音量，音量范围为[0.0, 1.0]。|
 
 **示例：**
 
@@ -1409,7 +1643,7 @@ getMaxStreamVolumeSync(): number
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value: number = audioRenderer.getMaxStreamVolumeSync();
+  let value = audioRenderer.getMaxStreamVolumeSync();
   console.info(`Get max stream volume Success! ${value}`);
 } catch (err) {
   let error = err as BusinessError;
@@ -1419,24 +1653,28 @@ try {
 
 ## getUnderflowCount<sup>10+</sup>
 
-getUnderflowCount(callback: AsyncCallback&lt;number&gt;): void
+ArkTS-Dyn: getUnderflowCount(callback: AsyncCallback&lt;number&gt;): void
+
+ArkTS-Sta: getUnderflowCount(callback: AsyncCallback&lt;long&gt;): void
 
 获取当前播放音频流的欠载音频帧数量。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|callback | AsyncCallback&lt;number&gt; | 是     |回调函数。当获取当前播放音频流的欠载音频帧数量成功，err为undefined，data为获取到的当前播放音频流的欠载音频帧数量；否则为错误对象。|
+|callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是     |回调函数。<br>ArkTS-Dyn：当获取当前播放音频流的欠载音频帧数量成功，err为undefined，data为获取到的当前播放音频流的欠载音频帧数量；否则为错误对象。<br>ArkTS-Sta：当获取当前播放音频流的欠载音频帧数量成功，err为null，data为获取到的当前播放音频流的欠载音频帧数量；否则为错误对象。|
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioRenderer.getUnderflowCount((err: BusinessError, underflowCount: number) => {
+audioRenderer.getUnderflowCount((err, underflowCount) => {
   if (err) {
     console.error(`getUnderflowCount Fail: ${err}`);
   } else {
@@ -1446,24 +1684,30 @@ audioRenderer.getUnderflowCount((err: BusinessError, underflowCount: number) => 
 ```
 ## getUnderflowCount<sup>10+</sup>
 
-getUnderflowCount(): Promise&lt;number&gt;
+ArkTS-Dyn: getUnderflowCount(): Promise&lt;number&gt;
+
+ArkTS-Sta: getUnderflowCount(): Promise&lt;long&gt;
 
 获取当前播放音频流的欠载音频帧数量。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise对象，返回音频流的欠载音频帧数量。|
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt;| Promise对象，返回音频流的欠载音频帧数量。|
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioRenderer.getUnderflowCount().then((value: number) => {
+audioRenderer.getUnderflowCount().then((value) => {
   console.info(`Get underflow count Success! ${value}`);
 }).catch((err: BusinessError) => {
   console.error(`Get underflow count Fail: ${err}`);
@@ -1472,17 +1716,23 @@ audioRenderer.getUnderflowCount().then((value: number) => {
 
 ## getUnderflowCountSync<sup>10+</sup>
 
-getUnderflowCountSync(): number
+ArkTS-Dyn: getUnderflowCountSync(): number
+
+ArkTS-Sta: getUnderflowCountSync(): long
 
 获取当前播放音频流的欠载音频帧数量，同步返回数据。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number| 返回音频流的欠载音频帧数量。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: long| 返回音频流的欠载音频帧数量。|
 
 **示例：**
 
@@ -1490,7 +1740,7 @@ getUnderflowCountSync(): number
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value: number = audioRenderer.getUnderflowCountSync();
+  let value = audioRenderer.getUnderflowCountSync();
   console.info(`Get underflow count Success! ${value}`);
 } catch (err) {
   let error = err as BusinessError;
@@ -1506,11 +1756,15 @@ getCurrentOutputDevices(callback: AsyncCallback&lt;AudioDeviceDescriptors&gt;): 
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型       | 必填   | 说明                 |
 | ------- | -----------| ------ | ------------------- |
-|callback | AsyncCallback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)>| 是     |回调函数。当获取音频流输出设备信息成功，err为undefined，data为获取到的音频流输出设备信息；否则为错误对象。|
+|callback | AsyncCallback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)>| 是     |回调函数。<br>ArkTS-Dyn：当获取音频流输出设备信息成功，err为undefined，data为获取到的音频流输出设备信息；否则为错误对象。<br>ArkTS-Sta：当获取音频流输出设备信息成功，err为null，data为获取到的音频流输出设备信息；否则为错误对象。|
 
 **示例：**
 
@@ -1521,16 +1775,16 @@ audioRenderer.getCurrentOutputDevices((err: BusinessError, deviceInfo: audio.Aud
   if (err) {
     console.error(`getCurrentOutputDevices Fail: ${err}`);
   } else {
-    for (let i = 0; i < deviceInfo.length; i++) {
-      console.info(`DeviceInfo id: ${deviceInfo[i].id}`);
-      console.info(`DeviceInfo type: ${deviceInfo[i].deviceType}`);
-      console.info(`DeviceInfo role: ${deviceInfo[i].deviceRole}`);
-      console.info(`DeviceInfo name: ${deviceInfo[i].name}`);
-      console.info(`DeviceInfo address: ${deviceInfo[i].address}`);
-      console.info(`DeviceInfo samplerate: ${deviceInfo[i].sampleRates[0]}`);
-      console.info(`DeviceInfo channelcount: ${deviceInfo[i].channelCounts[0]}`);
-      console.info(`DeviceInfo channelmask: ${deviceInfo[i].channelMasks[0]}`);
-    }
+    deviceInfo.forEach((device) => {
+    console.info(`DeviceInfo id: ${device.id}`);
+    console.info(`DeviceInfo type: ${device.deviceType}`);
+    console.info(`DeviceInfo role: ${device.deviceRole}`);
+    console.info(`DeviceInfo name: ${device.name}`);
+    console.info(`DeviceInfo address: ${device.address}`);
+    console.info(`DeviceInfo samplerate: ${device.sampleRates[0]}`);
+    console.info(`DeviceInfo channelcount: ${device.channelCounts[0]}`);
+    console.info(`DeviceInfo channelmask: ${device.channelMasks[0]}`);
+  });
   }
 });
 ```
@@ -1541,6 +1795,10 @@ getCurrentOutputDevices(): Promise&lt;AudioDeviceDescriptors&gt;
 获取音频流输出设备信息。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1554,16 +1812,16 @@ getCurrentOutputDevices(): Promise&lt;AudioDeviceDescriptors&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRenderer.getCurrentOutputDevices().then((deviceInfo: audio.AudioDeviceDescriptors) => {
-  for (let i = 0; i < deviceInfo.length; i++) {
-    console.info(`DeviceInfo id: ${deviceInfo[i].id}`);
-    console.info(`DeviceInfo type: ${deviceInfo[i].deviceType}`);
-    console.info(`DeviceInfo role: ${deviceInfo[i].deviceRole}`);
-    console.info(`DeviceInfo name: ${deviceInfo[i].name}`);
-    console.info(`DeviceInfo address: ${deviceInfo[i].address}`);
-    console.info(`DeviceInfo samplerate: ${deviceInfo[i].sampleRates[0]}`);
-    console.info(`DeviceInfo channelcount: ${deviceInfo[i].channelCounts[0]}`);
-    console.info(`DeviceInfo channelmask: ${deviceInfo[i].channelMasks[0]}`);
-  }
+  deviceInfo.forEach((device) => {
+    console.info(`DeviceInfo id: ${device.id}`);
+    console.info(`DeviceInfo type: ${device.deviceType}`);
+    console.info(`DeviceInfo role: ${device.deviceRole}`);
+    console.info(`DeviceInfo name: ${device.name}`);
+    console.info(`DeviceInfo address: ${device.address}`);
+    console.info(`DeviceInfo samplerate: ${device.sampleRates[0]}`);
+    console.info(`DeviceInfo channelcount: ${device.channelCounts[0]}`);
+    console.info(`DeviceInfo channelmask: ${device.channelMasks[0]}`);
+  });
 }).catch((err: BusinessError) => {
   console.error(`Get current output devices Fail: ${err}`);
 });
@@ -1576,6 +1834,10 @@ getCurrentOutputDevicesSync(): AudioDeviceDescriptors
 获取音频流输出设备信息。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1590,21 +1852,22 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let deviceInfo: audio.AudioDeviceDescriptors = audioRenderer.getCurrentOutputDevicesSync();
-  for (let i = 0; i < deviceInfo.length; i++) {
-    console.info(`DeviceInfo id: ${deviceInfo[i].id}`);
-    console.info(`DeviceInfo type: ${deviceInfo[i].deviceType}`);
-    console.info(`DeviceInfo role: ${deviceInfo[i].deviceRole}`);
-    console.info(`DeviceInfo name: ${deviceInfo[i].name}`);
-    console.info(`DeviceInfo address: ${deviceInfo[i].address}`);
-    console.info(`DeviceInfo samplerate: ${deviceInfo[i].sampleRates[0]}`);
-    console.info(`DeviceInfo channelcount: ${deviceInfo[i].channelCounts[0]}`);
-    console.info(`DeviceInfo channelmask: ${deviceInfo[i].channelMasks[0]}`);
-  }
+  deviceInfo.forEach((device) => {
+    console.info(`DeviceInfo id: ${device.id}`);
+    console.info(`DeviceInfo type: ${device.deviceType}`);
+    console.info(`DeviceInfo role: ${device.deviceRole}`);
+    console.info(`DeviceInfo name: ${device.name}`);
+    console.info(`DeviceInfo address: ${device.address}`);
+    console.info(`DeviceInfo samplerate: ${device.sampleRates[0]}`);
+    console.info(`DeviceInfo channelcount: ${device.channelCounts[0]}`);
+    console.info(`DeviceInfo channelmask: ${device.channelMasks[0]}`);
+  });
 } catch (err) {
   let error = err as BusinessError;
   console.error(`Get current output devices Fail: ${error}`);
 }
 ```
+
 ## setChannelBlendMode<sup>11+</sup>
 
 setChannelBlendMode(mode: ChannelBlendMode): void
@@ -1612,6 +1875,10 @@ setChannelBlendMode(mode: ChannelBlendMode): void
 设置单双声道混合模式。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1637,20 +1904,27 @@ let mode = audio.ChannelBlendMode.MODE_DEFAULT;
 audioRenderer.setChannelBlendMode(mode);
 console.info(`BlendMode: ${mode}`);
 ```
+
 ## setVolumeWithRamp<sup>11+</sup>
 
-setVolumeWithRamp(volume: number, duration: number): void
+ArkTS-Dyn: setVolumeWithRamp(volume: number, duration: number): void
+
+ArkTS-Sta: setVolumeWithRamp(volume: double, duration: int): void
 
 在指定时间范围内设置音量渐变模式。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                | 必填 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- | -------------------------------------------------------- |
-| volume     | number | 是   | 渐变目标音量值，音量范围为[0.0, 1.0]。                                             |
-| duration     | number | 是   | 渐变持续时间，单位为ms。                                             |
+| volume     | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 渐变目标音量值，音量范围为[0.0, 1.0]。                                             |
+| duration     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 渐变持续时间，单位为ms。                                             |
 
 **错误码：**
 
@@ -1681,6 +1955,10 @@ setSilentModeAndMixWithOthers(on: boolean): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                     | 必填 | 说明                   |
@@ -1700,6 +1978,10 @@ getSilentModeAndMixWithOthers(): boolean
 获取静音并发播放模式。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1723,10 +2005,15 @@ setDefaultOutputDevice(deviceType: DeviceType): Promise&lt;void&gt;
 >
 > - 本接口仅适用于[StreamUsage](arkts-apis-audio-e.md#streamusage)为语音消息、VoIP语音通话或者VoIP视频通话的场景，支持听筒、扬声器和系统默认设备。
 > - 本接口允许在AudioRenderer创建后随时调用，系统会记录应用设置的默认本机内置发声设备。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从外接设备发声；否则，系统遵循应用设置的默认本机内置发声设备。
+> - 本接口优先级低于AudioSessionManager的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)。如果使用AudioSessionManager的setDefaultOutputDevice设置了默认音频输出设备，本接口的设置将不会生效。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 **设备行为差异：** 当该接口在无听筒的设备上设置默认发声设备为听筒时，将继续从扬声器发声。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1775,7 +2062,13 @@ AudioRenderer对象在start事件时获取焦点，在pause、stop等事件时�
 
 调用此方法后，如果AudioRenderer对象获取焦点失败或发生中断事件（如被其他音频打断等），会收到[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)。建议应用根据InterruptEvent的信息进行进一步处理。更多信息请参阅文档[音频焦点介绍](../../media/audio/audio-playback-concurrency.md)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioInterrupt](#onaudiointerrupt23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -1850,13 +2143,108 @@ audioRenderer.on('audioInterrupt', (interruptEvent: audio.InterruptEvent) => {
 });
 ```
 
+## onAudioInterrupt<sup>23+</sup>
+
+onAudioInterrupt(callback: Callback\<InterruptEvent>): void
+
+监听音频中断事件（当音频焦点发生变化时触发）。使用callback异步回调。
+
+AudioRenderer对象在start事件时获取焦点，在pause、stop等事件时释放焦点，无需开发者主动申请。
+
+调用此方法后，如果AudioRenderer对象获取焦点失败或发生中断事件（如被其他音频打断等），会收到[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)。建议应用根据InterruptEvent的信息进行进一步处理。更多信息请参阅文档[音频焦点介绍](../../media/audio/audio-playback-concurrency.md)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('audioInterrupt')](#onaudiointerrupt9)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Interrupt
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                                                        |
+| -------- | -------------------------------------------- | ---- | ----------------------------------------------------------- |
+| callback | Callback\<[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)\> | 是   | 回调函数，返回中断事件信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { audio } from '@kit.AudioKit';
+
+let isPlaying: boolean = false; // 标识符，表示是否正在渲染。
+let isDucked: boolean = false; // 标识符，表示是否被降低音量。
+
+audioRenderer.onAudioInterrupt((interruptEvent: audio.InterruptEvent) => {
+  // 在发生音频打断事件时，audioRenderer收到interruptEvent回调，此处根据其内容做相应处理。
+  // 1. 可选：读取interruptEvent.forceType的类型，判断系统是否已强制执行相应操作。
+  // 注意：默认焦点策略下，INTERRUPT_HINT_RESUME为INTERRUPT_SHARE类型，其余hintType均为INTERRUPT_FORCE类型。因此对forceType可不做判断。
+  // 2. 必选：读取interruptEvent.hintType的类型，做出相应的处理。
+  if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
+    // 音频焦点事件已由系统强制执行，应用需更新自身状态及显示内容等。
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
+        // 音频流已被暂停，临时失去焦点，待可重获焦点时会收到resume对应的interruptEvent。
+        console.info('Force paused. Update playing status and stop writing');
+        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_STOP:
+        // 音频流已被停止，永久失去焦点，若想恢复渲染，需用户主动触发。
+        console.info('Force stopped. Update playing status and stop writing');
+        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_DUCK:
+        // 音频流已被降低音量渲染。
+        console.info('Force ducked. Update volume status');
+        isDucked = true; // 简化处理，代表应用更新音量状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
+        // 音频流已被恢复正常音量渲染。
+        console.info('Force unducked. Update volume status');
+        isDucked = false; // 简化处理，代表应用更新音量状态的若干操作。
+        break;
+      default:
+        console.info('Invalid interruptEvent');
+        break;
+    }
+  } else if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_SHARE) {
+    // 音频焦点事件需由应用进行操作，应用可以自主选择如何处理该事件，建议应用遵从InterruptHint提示处理。
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_RESUME:
+        // 建议应用继续渲染（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复渲染）。
+        // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
+        console.info('Resume force paused renderer or ignore');
+        // 若选择继续渲染，需在此处主动执行开始渲染的若干操作。
+        break;
+      default:
+        console.info('Invalid interruptEvent');
+        break;
+    }
+  }
+});
+```
+
 ## off('audioInterrupt')<sup>18+</sup>
 
 off(type: 'audioInterrupt', callback?: Callback&lt;InterruptEvent&gt;): void
 
 取消监听音频中断事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioInterrupt](#offaudiointerrupt23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -1936,6 +2324,97 @@ audioRenderer.on('audioInterrupt', audioInterruptCallback);
 audioRenderer.off('audioInterrupt', audioInterruptCallback);
 ```
 
+## offAudioInterrupt<sup>23+</sup>
+
+offAudioInterrupt(callback?: Callback&lt;InterruptEvent&gt;): void
+
+取消监听音频中断事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('audioInterrupt')](#offaudiointerrupt18)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Interrupt
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                                                         |
+| -------- | -------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)\> | 否 |  回调函数，返回中断事件信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioRenderer.offAudioInterrupt();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let isPlaying: boolean; // 标识符，表示是否正在渲染。
+let isDucked: boolean; // 标识符，表示是否被降低音量。
+
+let audioInterruptCallback = (interruptEvent: audio.InterruptEvent) => {
+  // 在发生音频打断事件时，audioRenderer收到interruptEvent回调，此处根据其内容做相应处理。
+  // 1. 可选：读取interruptEvent.forceType的类型，判断系统是否已强制执行相应操作。
+  // 注：默认焦点策略下，INTERRUPT_HINT_RESUME为INTERRUPT_SHARE类型，其余hintType均为INTERRUPT_FORCE类型。因此对forceType可不做判断。
+  // 2. 必选：读取interruptEvent.hintType的类型，做出相应的处理。
+  if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
+    // 音频焦点事件已由系统强制执行，应用需更新自身状态及显示内容等。
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
+        // 音频流已被暂停，临时失去焦点，待可重获焦点时会收到resume对应的interruptEvent。
+        console.info('Force paused. Update playing status and stop writing');
+        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_STOP:
+        // 音频流已被停止，永久失去焦点，若想恢复渲染，需用户主动触发。
+        console.info('Force stopped. Update playing status and stop writing');
+        isPlaying = false; // 简化处理，代表应用切换至暂停状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_DUCK:
+        // 音频流已被降低音量渲染。
+        console.info('Force ducked. Update volume status');
+        isDucked = true; // 简化处理，代表应用更新音量状态的若干操作。
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_UNDUCK:
+        // 音频流已被恢复正常音量渲染。
+        console.info('Force ducked. Update volume status');
+        isDucked = false; // 简化处理，代表应用更新音量状态的若干操作。
+        break;
+      default:
+        console.info('Invalid interruptEvent');
+        break;
+    }  
+  } else if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_SHARE) {
+    // 音频焦点事件需由应用进行操作，应用可以自主选择如何处理该事件，建议应用遵从InterruptHint提示处理。
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_RESUME:
+        // 建议应用继续渲染（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复渲染）。
+        // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
+        console.info('Resume force paused renderer or ignore');
+        // 若选择继续渲染，需在此处主动执行开始渲染的若干操作。
+        break;
+      default:
+        console.info('Invalid interruptEvent');
+        break;
+    }
+  }
+};
+
+audioRenderer.onAudioInterrupt(audioInterruptCallback);
+
+audioRenderer.offAudioInterrupt(audioInterruptCallback);
+```
+
 ## on('markReach')<sup>8+</sup>
 
 on(type: 'markReach', frame: number, callback: Callback&lt;number&gt;): void
@@ -1944,7 +2423,13 @@ on(type: 'markReach', frame: number, callback: Callback&lt;number&gt;): void
 
 如果将frame设置为100，当渲染帧数到达第100帧时，系统将上报信息。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMarkReach](#onmarkreach23)。
+
 **系统能力:** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1964,6 +2449,38 @@ audioRenderer.on('markReach', 1000, (position: number) => {
 });
 ```
 
+## onMarkReach<sup>23+</sup>
+
+onMarkReach(frame: long, callback: Callback&lt;long&gt;): void
+
+监听标记到达事件（当渲染的帧数到达frame参数的值时触发，仅调用一次）。使用callback异步回调。
+
+如果将frame设置为100，当渲染帧数到达第100帧时，系统将上报信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('markReach')](#onmarkreach8)。
+
+**系统能力:** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                      |
+| :------- | :----------------------- | :--- | :---------------------------------------- |
+| frame    | long                   | 是   | 触发事件的帧数。该值必须大于0。         |
+| callback | Callback\<long>         | 是   | 回调函数，返回frame参数的值。 |
+
+**示例：**
+
+```ts
+audioRenderer.onMarkReach(1000, (position: long) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+});
+```
 
 ## off('markReach')<sup>8+</sup>
 
@@ -1971,7 +2488,13 @@ off(type: 'markReach', callback?: Callback&lt;number&gt;): void
 
 取消监听标记到达事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offMarkReach](#offmarkreach23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1998,6 +2521,44 @@ audioRenderer.on('markReach', 1000, markReachCallback);
 audioRenderer.off('markReach', markReachCallback);
 ```
 
+## offMarkReach<sup>23+</sup>
+
+offMarkReach(callback?: Callback\<long\>): void
+
+取消监听标记到达事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('markReach')](#offmarkreach8)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                              |
+| :----- | :----- | :--- | :------------------------------------------------ |
+| callback | Callback\<long>         | 否  | 回调函数，返回frame参数的值。 |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioRenderer.offMarkReach();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let markReachCallback = (position: long) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+};
+
+audioRenderer.onMarkReach(1000, markReachCallback);
+
+audioRenderer.offMarkReach(markReachCallback);
+```
+
 ## on('periodReach')<sup>8+</sup>
 
 on(type: 'periodReach', frame: number, callback: Callback&lt;number&gt;): void
@@ -2006,7 +2567,13 @@ on(type: 'periodReach', frame: number, callback: Callback&lt;number&gt;): void
 
 如果将frame设置为10，每渲染10帧数据均会上报信息（例如：第10帧、第20帧、第30帧......）。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPeriodReach](#onperiodreach23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -2026,13 +2593,52 @@ audioRenderer.on('periodReach', 1000, (position: number) => {
 });
 ```
 
+## onPeriodReach<sup>23+</sup>
+
+onPeriodReach(frame: long, callback: Callback&lt;long&gt;): void
+
+监听标记到达事件（每当渲染的帧数达到frame参数的值时触发，即按周期上报信息）。使用callback异步回调。
+
+如果将frame设置为10，每渲染10帧数据均会上报信息（例如：第10帧、第20帧、第30帧......）。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('periodReach')](#onperiodreach8)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                        |
+| :------- | :----------------------- | :--- | :------------------------------------------ |
+| frame    | long                   | 是   | 触发事件的帧数。该值必须大于 0。           |
+| callback | Callback\<long>         | 是   | 回调函数，返回frame参数的值。 |
+
+**示例：**
+
+```ts
+audioRenderer.onPeriodReach(1000, (position: long) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+});
+```
+
 ## off('periodReach')<sup>8+</sup>
 
 off(type: 'periodReach', callback?: Callback&lt;number&gt;): void
 
 取消监听标记到达事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPeriodReach](#offperiodreach23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -2059,13 +2665,57 @@ audioRenderer.on('periodReach', 1000, periodReachCallback);
 audioRenderer.off('periodReach', periodReachCallback);
 ```
 
+## offPeriodReach<sup>23+</sup>
+
+offPeriodReach(callback?: Callback&lt;long&gt;): void
+
+取消监听标记到达事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('periodReach')](#offperiodreach8)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                |
+| :----- | :----- | :--- | :-------------------------------------------------- |
+| callback | Callback\<long>         | 否  | 回调函数，返回frame参数的值。 |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioRenderer.offPeriodReach();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let periodReachCallback = (position: long) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+};
+
+audioRenderer.onPeriodReach(1000, periodReachCallback);
+
+audioRenderer.offPeriodReach(periodReachCallback);
+```
+
 ## on('stateChange')<sup>8+</sup>
 
 on(type: 'stateChange', callback: Callback<AudioState\>): void
 
 监听状态变化事件（当AudioRenderer的状态发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onstatechange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -2087,13 +2737,52 @@ audioRenderer.on('stateChange', (state: audio.AudioState) => {
 });
 ```
 
+## onStateChange<sup>23+</sup>
+
+onStateChange(callback: Callback<AudioState\>): void
+
+监听状态变化事件（当AudioRenderer的状态发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('stateChange')](#onstatechange8)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                        |
+| :------- | :------------------------- | :--- | :------------------------------------------ |
+| callback | Callback\<[AudioState](arkts-apis-audio-e.md#audiostate8)> | 是   | 回调函数，返回当前音频的状态。 |
+
+**示例：**
+
+```ts
+audioRenderer.onStateChange((state: audio.AudioState) => {
+  if (state == 1) {
+    console.info('audio renderer state is: STATE_PREPARED');
+  }
+  if (state == 2) {
+    console.info('audio renderer state is: STATE_RUNNING');
+  }
+});
+```
+
 ## off('stateChange')<sup>18+</sup>
 
 off(type: 'stateChange', callback?: Callback&lt;AudioState&gt;): void
 
 取消监听状态变化事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offstatechange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -2131,13 +2820,68 @@ audioRenderer.on('stateChange', stateChangeCallback);
 audioRenderer.off('stateChange', stateChangeCallback);
 ```
 
+## offStateChange<sup>23+</sup>
+
+offStateChange(callback?: Callback&lt;AudioState&gt;): void
+
+取消监听到达标记事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('stateChange')](#offstatechange18)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                |
+| :----- | :----- | :--- | :-------------------------------------------------- |
+| callback | Callback\<[AudioState](arkts-apis-audio-e.md#audiostate8)> | 否 | 回调函数，返回当前音频的状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioRenderer.offStateChange();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let stateChangeCallback = (state: audio.AudioState) => {
+  if (state == 1) {
+    console.info('audio renderer state is: STATE_PREPARED');
+  }
+  if (state == 2) {
+    console.info('audio renderer state is: STATE_RUNNING');
+  }
+};
+
+audioRenderer.onStateChange(stateChangeCallback);
+
+audioRenderer.offStateChange(stateChangeCallback);
+```
+
 ## on('outputDeviceChange')<sup>10+</sup>
 
 on(type: 'outputDeviceChange', callback: Callback\<AudioDeviceDescriptors>): void
 
 监听音频输出设备变化事件（当音频输出设备发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onOutputDeviceChange](#onoutputdevicechange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -2165,13 +2909,57 @@ audioRenderer.on('outputDeviceChange', (deviceInfo: audio.AudioDeviceDescriptors
 });
 ```
 
+## onOutputDeviceChange<sup>23+</sup>
+
+onOutputDeviceChange(callback: Callback\<AudioDeviceDescriptors>): void
+
+监听音频输出设备变化事件（当音频输出设备发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('outputDeviceChange')](#onoutputdevicechange10)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                        |
+| :------- | :------------------------- | :--- | :------------------------------------------ |
+| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | 是   | 回调函数，返回当前音频流的输出设备描述信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioRenderer.onOutputDeviceChange((deviceInfo: audio.AudioDeviceDescriptors) => {
+  console.info(`DeviceInfo id: ${deviceInfo[0].id}`);
+  console.info(`DeviceInfo name: ${deviceInfo[0].name}`);
+  console.info(`DeviceInfo address: ${deviceInfo[0].address}`);
+});
+```
+
 ## off('outputDeviceChange')<sup>10+</sup>
 
 off(type: 'outputDeviceChange', callback?: Callback\<AudioDeviceDescriptors>): void
 
 取消监听音频输出设备变化事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offOutputDeviceChange](#offoutputdevicechange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -2207,13 +2995,65 @@ audioRenderer.on('outputDeviceChange', outputDeviceChangeCallback);
 audioRenderer.off('outputDeviceChange', outputDeviceChangeCallback);
 ```
 
+## offOutputDeviceChange<sup>23+</sup>
+
+offOutputDeviceChange(callback?: Callback\<AudioDeviceDescriptors>): void
+
+取消监听音频输出设备变化事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('outputDeviceChange')](#offoutputdevicechange10)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                        |
+| :------- | :------------------------- | :--- | :------------------------------------------ |
+| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | 否   | 回调函数，返回当前音频流的输出设备描述信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioRenderer.offOutputDeviceChange();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let outputDeviceChangeCallback = (deviceInfo: audio.AudioDeviceDescriptors) => {
+  console.info(`DeviceInfo id: ${deviceInfo[0].id}`);
+  console.info(`DeviceInfo name: ${deviceInfo[0].name}`);
+  console.info(`DeviceInfo address: ${deviceInfo[0].address}`);
+};
+
+audioRenderer.onOutputDeviceChange(outputDeviceChangeCallback);
+
+audioRenderer.offOutputDeviceChange(outputDeviceChangeCallback);
+```
+
 ## on('outputDeviceChangeWithInfo')<sup>11+</sup>
 
 on(type: 'outputDeviceChangeWithInfo', callback: Callback\<AudioStreamDeviceChangeInfo>): void
 
 监听音频流输出设备变化及原因事件（当音频输出设备发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onOutputDeviceChangeWithInfo](#onoutputdevicechangewithinfo23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -2242,13 +3082,58 @@ audioRenderer.on('outputDeviceChangeWithInfo', (deviceChangeInfo: audio.AudioStr
 });
 ```
 
+## onOutputDeviceChangeWithInfo<sup>23+</sup>
+
+onOutputDeviceChangeWithInfo(callback: Callback\<AudioStreamDeviceChangeInfo>): void
+
+监听音频流输出设备变化及原因事件（当音频输出设备发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('outputDeviceChangeWithInfo')](#onoutputdevicechangewithinfo11)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                       | 必填 | 说明                                          |
+| :------- |:-------------------------------------------------------------------------| :--- |:--------------------------------------------|
+| callback | Callback\<[AudioStreamDeviceChangeInfo](arkts-apis-audio-i.md#audiostreamdevicechangeinfo11)> | 是   | 回调函数，返回当前音频流的输出设备描述信息及变化原因。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioRenderer.onOutputDeviceChangeWithInfo((deviceChangeInfo: audio.AudioStreamDeviceChangeInfo) => {
+  console.info(`DeviceInfo id: ${deviceChangeInfo.devices[0].id}`);
+  console.info(`DeviceInfo name: ${deviceChangeInfo.devices[0].name}`);
+  console.info(`DeviceInfo address: ${deviceChangeInfo.devices[0].address}`);
+  console.info(`Device change reason: ${deviceChangeInfo.changeReason}`);
+});
+```
+
 ## off('outputDeviceChangeWithInfo')<sup>11+</sup>
 
 off(type: 'outputDeviceChangeWithInfo', callback?: Callback\<AudioStreamDeviceChangeInfo>): void
 
 取消监听音频流输出设备变化及原因事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offOutputDeviceChangeWithInfo](#offoutputdevicechangewithinfo23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -2285,6 +3170,53 @@ audioRenderer.on('outputDeviceChangeWithInfo', outputDeviceChangeWithInfoCallbac
 audioRenderer.off('outputDeviceChangeWithInfo', outputDeviceChangeWithInfoCallback);
 ```
 
+## offOutputDeviceChangeWithInfo<sup>23+</sup>
+
+offOutputDeviceChangeWithInfo(callback?: Callback\<AudioStreamDeviceChangeInfo>): void
+
+取消监听音频流输出设备变化及原因事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('outputDeviceChangeWithInfo')](#offoutputdevicechangewithinfo11)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                       | 必填 | 说明                                          |
+| :------- |:-------------------------------------------------------------------------| :--- |:--------------------------------------------|
+| callback | Callback\<[AudioStreamDeviceChangeInfo](arkts-apis-audio-i.md#audiostreamdevicechangeinfo11)> | 否   | 回调函数，返回当前音频流的输出设备描述信息及变化原因。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioRenderer.offOutputDeviceChangeWithInfo();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let outputDeviceChangeWithInfoCallback = (deviceChangeInfo: audio.AudioStreamDeviceChangeInfo) => {
+  console.info(`DeviceInfo id: ${deviceChangeInfo.devices[0].id}`);
+  console.info(`DeviceInfo name: ${deviceChangeInfo.devices[0].name}`);
+  console.info(`DeviceInfo address: ${deviceChangeInfo.devices[0].address}`);
+  console.info(`Device change reason: ${deviceChangeInfo.changeReason}`);
+};
+
+audioRenderer.onOutputDeviceChangeWithInfo(outputDeviceChangeWithInfoCallback);
+
+audioRenderer.offOutputDeviceChangeWithInfo(outputDeviceChangeWithInfoCallback);
+```
+
 ## on('writeData')<sup>11+</sup>
 
 on(type: 'writeData', callback: AudioRendererWriteDataCallback): void
@@ -2296,7 +3228,13 @@ on(type: 'writeData', callback: AudioRendererWriteDataCallback): void
 > - 回调函数仅用来写入音频数据，请勿在回调函数中调用AudioRenderer相关接口。
 > - 为避免音频播放启动和停止时数据不连续可能出现的杂音，系统通常会在启动和停止时对音频数据做20ms以内的淡入淡出处理。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onWriteData](#onwritedata23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -2359,13 +3297,89 @@ audioRenderer.start().then(() => {
 });
 ```
 
+## onWriteData<sup>23+</sup>
+
+onWriteData(callback: AudioRendererWriteDataCallback): void
+
+监听音频数据写入回调事件（当需要写入音频数据时触发）。使用callback异步回调。
+
+回调函数仅用来写入音频数据，请勿在回调函数中调用AudioRenderer相关接口。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('writeData')](#onwritedata11)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明                                  |
+| :------- |:--------------------------------| :--- |:--------------------------------------|
+| callback | [AudioRendererWriteDataCallback](arkts-apis-audio-t.md#audiorendererwritedatacallback12)   | 是   | 回调函数，入参代表应用接收待写入的数据缓冲区。<br>API version 11 不支持返回回调结果，从 API version 12 开始支持返回回调结果[AudioDataCallbackResult](arkts-apis-audio-e.md#audiodatacallbackresult12)。        |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo, ReadOptions } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+let bufferSize: long = 0;
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let path = context.cacheDir;
+// 确保该沙箱路径下存在该资源。
+let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
+let file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY);
+let writeDataCallback = (buffer: ArrayBuffer) => {
+  let options: ReadOptions = {
+    offset: bufferSize,
+    length: buffer.byteLength
+  };
+
+  try {
+    fileIo.readSync(file.fd, buffer, options);
+    bufferSize += buffer.byteLength;
+    // API version 11不支持返回回调结果，从 API version 12开始支持返回回调结果。
+    return audio.AudioDataCallbackResult.VALID;
+  } catch (error) {
+    console.error('Error reading file:', error);
+    // API version 11不支持返回回调结果，从 API version 12开始支持返回回调结果。
+    return audio.AudioDataCallbackResult.INVALID;
+  }
+};
+
+audioRenderer.onWriteData(writeDataCallback);
+audioRenderer.start().then(() => {
+  console.info('Renderer started');
+}).catch(async (err: BusinessError) => {
+  console.error(`ERROR: ${err}`);
+});
+```
+
 ## off('writeData')<sup>11+</sup>
 
 off(type: 'writeData', callback?: AudioRendererWriteDataCallback): void
 
 取消监听音频数据写入回调事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offWriteData](#offwritedata23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -2398,6 +3412,51 @@ audioRenderer.on('writeData', writeDataCallback);
 
 audioRenderer.off('writeData', writeDataCallback);
 ```
+
+## offWriteData<sup>23+</sup>
+
+offWriteData(callback?: AudioRendererWriteDataCallback): void
+
+取消监听音频数据写入回调事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('writeData')](#offwritedata11)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                             | 必填 | 说明                                  |
+| :------- |:--------------------------------| :--- |:--------------------------------------|
+| callback | [AudioRendererWriteDataCallback](arkts-apis-audio-t.md#audiorendererwritedatacallback12)   | 否   | 回调函数，入参代表应用接收待写入的数据缓冲区。<br>API version 11 不支持返回回调结果，从 API version 12 开始支持返回回调结果[AudioDataCallbackResult](arkts-apis-audio-e.md#audiodatacallbackresult12)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioRenderer.offWriteData();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let writeDataCallback = (data: ArrayBuffer) => {
+    console.info(`write data: ${data}`);
+};
+
+audioRenderer.onWriteData(writeDataCallback);
+
+audioRenderer.offWriteData(writeDataCallback);
+```
+
 ## write<sup>(deprecated)</sup>
 
 write(buffer: ArrayBuffer, callback: AsyncCallback\<number>): void
@@ -2407,7 +3466,11 @@ write(buffer: ArrayBuffer, callback: AsyncCallback\<number>): void
 > **说明：**
 > 从API version 8开始支持，从API version 11开始废弃，建议使用[on('writeData')](#onwritedata11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -2472,7 +3535,11 @@ write(buffer: ArrayBuffer): Promise\<number>
 > **说明：**
 > 从API version 8开始支持，从API version 11开始废弃，建议使用[on('writeData')](#onwritedata11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -2539,7 +3606,11 @@ setRenderRate(rate: AudioRendererRate, callback: AsyncCallback\<void>): void
 > **说明：**
 > 从API version 8开始支持，从API version 11开始废弃，建议使用[setSpeed](#setspeed11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -2571,7 +3642,11 @@ setRenderRate(rate: AudioRendererRate): Promise\<void>
 > **说明：**
 > 从API version 8开始支持，从API version 11开始废弃，建议使用[setSpeed](#setspeed11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -2606,7 +3681,11 @@ getRenderRate(callback: AsyncCallback\<AudioRendererRate>): void
 > **说明：**
 > 从API version 8开始支持，从API version 11开始废弃，建议使用[getSpeed](#getspeed11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -2633,7 +3712,11 @@ getRenderRate(): Promise\<AudioRendererRate>
 > **说明：**
 > 从API version 8开始支持，从API version 11开始废弃，建议使用[getSpeed](#getspeed11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 8
 
 **返回值：**
 
@@ -2662,7 +3745,11 @@ getRenderRateSync(): AudioRendererRate
 > **说明：**
 > 从API version 10开始支持，从API version 11开始废弃，建议使用[getSpeed](#getspeed11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 10
 
 **返回值：**
 
@@ -2686,7 +3773,9 @@ try {
 
 ## setLoudnessGain<sup>20+</sup>
 
-setLoudnessGain(loudnessGain: number): Promise\<void>
+ArkTS-Dyn: setLoudnessGain(loudnessGain: number): Promise\<void>
+
+ArkTS-Sta: setLoudnessGain(loudnessGain: double): Promise\<void>
 
 设置播放响度。使用Promise异步回调。
 
@@ -2699,17 +3788,21 @@ setLoudnessGain(loudnessGain: number): Promise\<void>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型    | 必填 | 说明                                      |
-| ------------ | -------| ---- |------------------------------------------ |
-| loudnessGain | number | 是   | 设置播放的响度值，单位为dB，响度范围为[-90.0, 24.0]。默认值为0.0dB。|
+| ------------ | ------- | ---- | ----------------------------------------- |
+| loudnessGain | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 设置播放的响度值，单位为dB，响度范围为[-90.0, 24.0]。默认值为0.0dB。 |
 
 **返回值：**
 
-| 类型           | 说明                      |
-| -------------- | ------------------------- |
-| Promise\<void> | Promise对象，无返回结果。  |
+| 类型           | 说明                 |
+| -------------- | -------------------- |
+| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
 
 **错误码：**
 
@@ -2728,17 +3821,23 @@ audioRenderer.setLoudnessGain(1.0);
 
 ## getLoudnessGain<sup>20+</sup>
 
-getLoudnessGain(): number
+ArkTS-Dyn: getLoudnessGain(): number
+
+ArkTS-Sta: getLoudnessGain(): double
 
 获取播放响度。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型    | 说明             |
 |------- |-----------------  |
-| number | 返回播放的响度值，单位为分贝。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 返回播放的响度值。 |
 
 **示例：**
 
@@ -2748,7 +3847,9 @@ let loudnessGain = audioRenderer.getLoudnessGain();
 
 ## setIndependentAudioSessionStrategy<sup>24+</sup>
 
-setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: number): void
+ArkTS-Dyn: setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: number): void
+
+ArkTS-Sta: setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: int): void
 
 设置独立的音频会话策略和行为参数。
 
@@ -2760,12 +3861,16 @@ setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: num
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名       | 类型    | 必填 | 说明                                      |
 | ------------ | -------| ---- |------------------------------------------ |
 | strategy | [AudioSessionStrategy](arkts-apis-audio-i.md#audiosessionstrategy12) | 是   | 音频会话策略。 |
-| behavior   | number           | 是   | 用于设置音频会话行为。<br>该参数可以是单个标志，也可以是多个标志的按位OR组合。<br>当前支持的音频会话行为详见[AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24)中定义的标志。 |
+| behavior   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 用于设置音频会话行为。<br>该参数可以是单个标志，也可以是多个标志的按位OR组合。<br>当前支持的音频会话行为详见[AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24)中定义的标志。 |
 
 **错误码：**
 
@@ -2782,6 +3887,76 @@ setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: num
 let strategy: audio.AudioSessionStrategy = {
   concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
 };
-let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+let behavior = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
 audioRenderer.setIndependentAudioSessionStrategy(strategy, behavior);
+```
+
+## standby
+
+standby(on: boolean): Promise\<void>
+
+进入或退出音频standby状态。
+
+standby状态主要用于音频播放过程中短暂无数据的情况，如流媒体播放等待网络下载。
+
+进入standby状态后，音频通路保持不变，仅向应用请求数据的循环线程暂停，也不接收主动写入数据，已写入系统的数据会继续播放。
+
+只有在播放流状态为[AudioState](arkts-apis-audio-e.md#audiostate8).STATE_RUNNING时可以调用此接口进入standby状态。standby状态下才能再次调用接口退出。
+
+standby状态下也可以直接调用[pause](#pause8)、[stop](#stop8)、[release](#release8)停止播放，但不可调用[start](#start8)。
+
+使用Promise异步回调。
+
+> **注意：**
+>
+> 此接口并不会改变通过state获取的状态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                      |
+| ------ | ------- | ---- | --------------------------------------------------------- |
+| on     | boolean | 是   | 进入或退出standby状态，true表示进入，false表示退出。         |
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------ |
+| 6800103  | The operation is not allowed in the current state. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 进入standby状态。
+audioRenderer.standby(true).then(() => {
+  console.info('Succeeded in entering standby.');
+  // 数据回调已暂停，已写入的缓存继续播放。
+}).catch((err: BusinessError) => {
+  console.error(`Failed to enter standby. Code: ${err.code}, message: ${err.message}`);
+});
+
+// 退出standby状态。
+audioRenderer.standby(false).then(() => {
+  console.info('Succeeded in exiting standby.');
+  // 数据回调恢复。
+}).catch((err: BusinessError) => {
+  console.error(`Failed to exit standby. Code: ${err.code}, message: ${err.message}`);
+});
 ```

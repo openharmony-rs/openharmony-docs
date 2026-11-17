@@ -1,8 +1,8 @@
 # Canvas对象
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -39,7 +39,7 @@ canvas {
 }
 ```
 
-![zh-cn_image_0000001222984605](figures/zh-cn_image_0000001222984605.png)
+![canvas-Component](figures/canvas-Component.png)
 
 > **说明：**
 > - Canvas组件默认背景色与父组件的背景色一致。
@@ -79,7 +79,7 @@ canvas {
 }
 ```
 
-![zh-cn_image_0000001177623482](figures/zh-cn_image_0000001177623482.png)
+![Adding-Styles](figures/Adding-Styles.png)
 
 
 ## 添加事件
@@ -144,15 +144,15 @@ export default {
         ctx.strokeRect(100, 100, 300, 300);
     },
     getUrl() {
-        let el = this.$refs.canvas1
-        let dataUrl = el.toDataURL()
+        let el = this.$refs.canvas1;
+        let dataUrl = el.toDataURL();
         this.dataURL = dataUrl;
-        promptAction.showToast({ duration: 2000, message: "long press,get dataURL" })
+        promptAction.showToast({ duration: 2000, message: "long press,get dataURL" });
     }
 }
 ```
 
-![zh-cn_image_0000001222985331](figures/zh-cn_image_0000001222985331.gif)
+![Adding-Events](figures/Adding-Events.gif)
 
 > **说明：** 
 >

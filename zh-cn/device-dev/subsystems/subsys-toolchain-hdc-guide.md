@@ -139,6 +139,7 @@ hdc -t connect-key shell echo "Hello world"
 | [fport rm](#删除端口转发任务) | 删除指定的端口转发任务。 |
 | [start](#启动服务) | 启动hdc服务进程。 |
 | [kill](#终止服务) | 终止hdc服务进程。 |
+| [reconnect](#重连usb设备) | 对已连接的USB设备重置会话并触发USB重新枚举。<br/>**说明**：从API版本26.0.0开始，支持该命令。 |
 | [hilog](#打印设备端日志) | 打印设备端的日志信息。 |
 | [jpid](#显示设备已打开应用的进程pid) | 显示设备上已打开应用的进程pid。 |
 | [track-jpid](#实时显示设备已打开应用的进程pid和应用名) | 实时显示设备上已打开应用的进程pid和应用名。 |
@@ -151,6 +152,8 @@ hdc -t connect-key shell echo "Hello world"
 | [checkdevice](#检查串口连接状态) | 检查给定串口是否可用，串口是否有设备连接。（UART串口连接场景） |
 | [any](#连接首个可连接串口设备) | 尝试连接首个就绪串口设备。（UART串口连接场景） |
 | [bugreport](#导出系统信息) | 导出系统信息。 |
+| [spawn-sub](#启动子服务器) | 启动子服务器。<br/>**说明**：从API版本26.0.0开始，支持该命令。 |
+| [killall-sub](#终止子服务器) | 终止子服务器。<br/>**说明**：从API版本26.0.0开始，支持该命令。 |
 | [update](#升级整包) | 升级整包。 |
 | [flash](#刷写镜像) | 刷写镜像。 |
 | [erase](#擦除镜像) | 擦除镜像。 |
@@ -1011,6 +1014,7 @@ Remove forward ruler success, ruler:tcp:1234 tcp:1080
 | -------- | -------- |
 | start [-r] | 启动hdc服务进程，使用-r参数触发服务进程重新启动。 |
 | kill [-r] | 终止hdc服务进程，使用-r参数触发服务进程重新启动。 |
+| reconnect connect-key | 对已通过USB连接且由本机服务进程管理的目标设备重置会话并触发USB重新枚举。<br>connect-key为设备USB标识符，可通过`hdc list targets`查询。 |
 | -p | 绕过对服务进程的查询步骤，用于快速执行客户端命令。 |
 | -m | 使用前台启动模式启动服务进程。<br/>前台启动模式（添加-m参数）：实时打印服务日志到客户端窗口。<br/>后台启动模式（不添加-m参数）：客户端不打印服务日志，日志内容写入本地磁盘文件，具体文件存放路径可参考[服务器进程日志](#服务器进程日志)。 |
 | -e |  指定在TCP端口转发时，本地监听的IP地址，默认是127.0.0.1。该参数必须和-m一起使用。|
@@ -1062,6 +1066,41 @@ Kill server finish
 
 $ hdc kill # 终止服务进程。
 Kill server finish
+```
+
+### 重连USB设备
+
+对已连接且由本机hdc服务进程管理的USB目标设备，重置会话并触发USB重新枚举。
+
+命令格式如下：
+
+```shell
+hdc reconnect connect-key
+```
+
+**参数**：
+
+| 参数 | 说明 |
+| -------- | -------- |
+| connect-key | 目标设备的USB连接标识符，可通过`hdc list targets`查询。 |
+
+**返回信息**：
+
+| 返回信息 | 说明 |
+| -------- | -------- |
+| Reconnecting connect-key ... | 已开始重连指定设备。 |
+| Usage: reconnect \<target-key\> | 未指定connect-key。 |
+| Target device connect-key not available | 目标不存在或未处于已连接状态。 |
+| Reconnect only supports USB devices | 当前目标非USB连接，不支持重连。 |
+
+**使用方法**：
+
+```shell
+$ hdc list targets
+connect-key
+
+$ hdc reconnect connect-key
+Reconnecting connect-key ...
 ```
 
 ### 快速执行命令
@@ -1484,7 +1523,7 @@ hdc bugreport [FILE]
 
 | 返回信息 | 说明 |
 | -------- | -------- |
-| -------------------------------[base]-------------------------------<br/><br/>BuildId: xxx<br/>RleaseType: xxx<br/>OsVersion: default/default/default/default/xxx<br/>DeviceType: default<br/>Manufacture: default<br/>-----. | 设备基本信息。 |
+| -------------------------------[base]-------------------------------<br/><br/>BuildId: xxx<br/>ReleaseType: xxx<br/>OsVersion: default/default/default/default/xxx<br/>DeviceType: default<br/>Manufacture: default<br/>-----. | 设备基本信息。 |
 
 **使用方法**：
 
@@ -1493,7 +1532,7 @@ $ hdc bugreport
 -------------------------------[base]-------------------------------
 
 BuildId: xxx
-RleaseType: xxx
+ReleaseType: xxx
 OsVersion: default/default/default/default/xxx
 DeviceType: default
 Manufacture: default
@@ -1544,6 +1583,10 @@ hdc format <data>
 ```shell
 $ hdc format data
 ```
+
+> **说明：**
+>
+> 从API版本19开始不支持该命令格式化镜像，请使用fastboot命令替代格式化镜像场景。
 
 ### 升级整包
 
@@ -1654,6 +1697,77 @@ hdc shell ls /data/log/hilog                          # 查看已落盘hilog日�
 hdc file recv /data/log/hilog {local_path}            # 获取hilog已落盘日志（包含内核日志，local_path为本地路径，不同系统有所区别，这里未列举实际示例）。
 ```
 
+## 子服务器管理
+
+| 命令 | 说明 |
+| -------- | -------- |
+| spawn-sub | 启动子服务器。 |
+| killall-sub | 终止子服务器。 |
+
+> **说明：**
+>
+> 从API版本26.0.0开始，支持此功能。
+
+### 启动子服务器
+
+将指定USB设备与当前电脑端服务器连接断开，然后启动一个新的子服务器进程，并将USB设备连接到子服务器进程。命令格式如下：
+
+```shell
+hdc spawn-sub -i connect-key -o [IP:]port
+```
+
+创建子服务进程后，可以使用-s参数访问子服务进程，参见[远程连接场景](#远程连接场景)。
+
+**参数**：
+
+| 参数 | 说明 |
+| -------- | -------- |
+| connect-key | 指定子服务器连接的USB设备标识符。 |
+| IP | 可选参数，指定监听的IP地址，支持IPv4和IPv6。不指定IP默认监听本机127.0.0.1。 |
+| port | 指定监听的端口，范围为1~65535。 |
+
+**返回信息**：
+
+| 返回信息 | 说明 |
+| -------- | -------- |
+| Subserver connected successfully | 子服务进程已连接USB设备。 |
+| Port binding failed | 端口监听失败导致子服务进程退出。 |
+| USB connection timeout | 子服务进程连接USB设备超时退出。 |
+| Device not found | 主服务进程找不到设备。 |
+| Invalid parameters | 命令入参有误。 |
+| USB device disconnected | 子服务进程USB连接已断开。 |
+| Only main server can spawn subserver | 不能通过子服务进程创建新的子服务进程。 |
+| Subprocess launch failed | 拉起子进程失败。 |
+| Subserver process exited | 子服务器进程已退出。 |
+
+**使用方法**：
+
+```shell
+$ hdc spawn-sub -i connect-key -o [IP:]port
+Subserver connected successfully
+```
+
+### 终止子服务器
+
+将拉起的所有子服务器进程终止，命令格式如下：
+
+```shell
+hdc killall-sub
+```
+
+**返回信息**：
+
+| 返回信息 | 说明 |
+| -------- | -------- |
+| Kill subservers finish | 已终止所有的子服务器进程。 |
+
+**使用方法**：
+
+```shell
+$ hdc killall-sub
+Kill subservers finish
+```
+
 ## 可选配置项
 
 ### OHOS_HDC_SERVER_PORT
@@ -1715,6 +1829,20 @@ hdc file recv /data/log/hilog {local_path}            # 获取hilog已落盘日�
 > **说明：**
 >
 > 服务器进程运行时默认监听电脑端的8710端口，可通过设置系统环境变量OHOS_HDC_SERVER_PORT自定义监听的端口号。
+
+### OHOS_HDC_SUBSERVER_LOG_FILE
+
+默认：不开启电脑端子服务进程的日志落盘。
+
+用于设置电脑端子服务进程可落盘日志文件的数量，取值范围为[1, 20]的整数；超过20则自动截断为20；0或负数表示不允许日志落盘。
+
+子服务器进程的日志落盘在TEMP目录下的.hdc_subserver目录内。不同平台TEMP目录位置存在差异，可参考[服务器进程日志](#服务器进程日志)下“日志获取”中的表格说明。
+
+从API版本26.0.0开始，支持该参数。
+
+> **说明：**
+>
+> 由于日志文件的创建和老化存在时序关系，实际日志数量可能比配置数量多一个。
 
 ### 环境变量配置方法
 
@@ -1972,7 +2100,7 @@ hdc文件传输命令执行出现乱码，如使用file recv从设备端发送�
 
 1. 首次连接未授权：连接设备后解锁设备，屏幕显示“是否信任此设备？”窗口，点击“始终信任”或“信任”完成授权。
 
-2. 授权窗口关闭或拒绝授权：设备端授权窗口会在超时后关闭，或开发者在授权窗口点击“不信任”拒绝授权。需要再次授权可在设备端 设置>系统>开发者选项>USB调试/无线调试 中，关闭已开启的调试开关后再开启，或执行hdc kill -r重启服务进程。屏幕会再次显示“是否信任此设备？”窗口，点击“始终信任”或“信任”完成授权。
+2. 授权窗口关闭或拒绝授权：设备端授权窗口会在超时后关闭，或开发者在授权窗口点击“不信任”拒绝授权。需要再次授权可在设备端 设置>系统>开发者选项>USB调试/无线调试 中，关闭已开启的调试开关后再开启，或执行hdc kill -r重启服务进程（如果使用过spawn-sub命令需执行hdc killall-sub）。屏幕会再次显示“是否信任此设备？”窗口，点击“始终信任”或“信任”完成授权。
 
 ### 执行任意hdc命令报错：CryptAcquireContext second failed
 
@@ -2106,7 +2234,7 @@ Otherwise try 'hdc kill' if that seems wrong.
 
 1. 场景一：设备端弹出授权窗口，点击授权。具体操作为：连接设备后，系统会自动弹出授权弹窗。
 
-2. 场景二：进入设备端 设置>系统>开发者选项，关闭调试开关后重新打开，重新连接设备进行授权；或者执行命令hdc kill -r后重新启动hdc，再次触发授权弹窗，点击“始终信任”。
+2. 场景二：进入设备端 设置>系统>开发者选项，关闭调试开关后重新打开，重新连接设备进行授权；或者执行命令hdc kill -r（如果使用过spawn-sub命令需执行hdc killall-sub）后重新启动hdc，再次触发授权弹窗，点击“始终信任”。
 
 ### E000003 设备端用户未授权
 
@@ -2132,7 +2260,7 @@ then check for a confirmation dialog on your device.
 
 **处理步骤**
 
-进入设备端 设置 > 系统 > 开发者选项，关闭调试开关后重新打开，重新连接设备进行授权；或执行命令hdc kill -r后重新启动hdc，再次触发授权弹窗，点击“始终信任”。
+进入设备端 设置 > 系统 > 开发者选项，关闭调试开关后重新打开，重新连接设备进行授权；或执行命令hdc kill -r（如果使用过spawn-sub命令需执行hdc killall-sub）后重新启动hdc，再次触发授权弹窗，点击“始终信任”。
 
 ### E000004 通信连接不稳定
 

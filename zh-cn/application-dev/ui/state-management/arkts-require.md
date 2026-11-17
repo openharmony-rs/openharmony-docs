@@ -2,11 +2,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @VictorS67-->
-<!--Designer: @lixingchi1-->
+<!--Designer: @VictorS67-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@Require是校验\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）是否需要构造传参的一个装饰器。
+[\@Require](../../reference/apis-arkui/arkui-ts/ts-universal-require-dynamic.md#require)是校验\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）是否需要构造传参的一个装饰器。
 
 > **说明：**
 >
@@ -24,13 +24,23 @@
 
 ## 限制条件
 
-\@Require装饰器仅用于装饰struct内的\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）。
+1. \@Require装饰器仅用于装饰struct内的\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）。
 
-预览器的限制场景请参考[PreviewChecker检测规则](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-previewer-previewchecker-V5)。
+2. 从API版本26.1.0开始，在ArkTS-Dyn上下文中，父组件在构造子组件时，若向\@Require装饰的非空类型字段传入undefined，将在编译期输出WARN告警。
+
+   告警示例如下：
+
+   ```ts
+   The type of property 'required_value' decorated with '@Require' is expected to be 'number', but is actually 'undefined' in the component constructor.
+   ```
+
+<!--RP1-->
+
+<!--RP1End-->
 
 ## 使用场景
 
-当Child组件内使用\@Require装饰器和\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）结合使用时，父组件SceneRequire在构造Child时必须传参，否则编译不通过。
+当Child组件内使用\@Require装饰器和\@Prop、\@State、\@Provide、\@BuilderParam和普通变量（无状态装饰器修饰的变量）结合使用时，父组件SceneRequire在构造Child时必须传参，否则编译不通过。
 
 <!-- @[scene_require_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/SceneRequire.ets) -->
 
@@ -114,7 +124,7 @@ struct ChildPage {
       Text(`ChildPage childInfo age :${this.childInfo.age}`)
         .fontSize(15)
         .height(30)
-      Text(`ChildPage stateValue age :${this.stateValue}`)
+      Text(`ChildPage stateValue :${this.stateValue}`)
         .fontSize(15)
         .height(30)
     }

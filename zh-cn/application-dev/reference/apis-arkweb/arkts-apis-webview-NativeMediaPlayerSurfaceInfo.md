@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-使用[enableNativeMediaPlayer](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12)来进行同层渲染的surface信息配置，以开启应用接管网页媒体播放功能。
+NativeMediaPlayerSurfaceInfo 使用[enableNativeMediaPlayer](./arkts-basic-components-web-attributes.md#enablenativemediaplayer12)来进行同层渲染的 surface 信息配置。该类允许应用接管网页媒体播放功能，通过配置 surface 的 id 和位置信息，实现网页媒体内容与应用界面的同层渲染融合，提升媒体播放体验。
 
 > **说明：**
 >
@@ -28,5 +28,5 @@
 
 | 名称 | 类型 | 只读 | 可选  | 说明 |
 |------|------|------|------|------|
-| id<sup>12+</sup> | string | 否 | 否 | surface的id，用于同层渲染的NativeImage的surfaceId。<br/>详见[NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)。 |
-| rect<sup>12+</sup> | [RectEvent](./arkts-apis-webview-i.md#rectevent12) | 否 | 否 | surface的位置信息。 |
+| id<sup>12+</sup> | string | 否 | 否 | surface 的 id，用于同层渲染的 NativeImage 的 surfaceId。<br>详见[NativeEmbedDataInfo](./arkts-basic-components-web-i.md#nativeembeddatainfo11)。 |
+| rect<sup>12+</sup> | [RectEvent](./arkts-apis-webview-i.md#rectevent12) | 否 | 否 | surface 的位置信息，用于指定同层渲染时 surface 的显示位置和尺寸。 |

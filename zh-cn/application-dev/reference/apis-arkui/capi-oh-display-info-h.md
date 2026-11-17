@@ -1,9 +1,9 @@
 # oh_display_info.h
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
-<!--Tester: @qinliwen0417-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @wulong158-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 ## 概述
@@ -67,10 +67,10 @@ enum NativeDisplayManager_Rotation
 
 | 枚举项 | 描述 |
 | -- | -- |
-| DISPLAY_MANAGER_ROTATION_0 = 0 | 代表屏幕顺时针旋转角度0度。 |
-| DISPLAY_MANAGER_ROTATION_90 = 1 | 代表屏幕顺时针旋转角度90度。 |
-| DISPLAY_MANAGER_ROTATION_180 = 2 | 代表屏幕顺时针旋转角度180度。 |
-| DISPLAY_MANAGER_ROTATION_270 = 3 | 代表屏幕顺时针旋转角度270度。 |
+| DISPLAY_MANAGER_ROTATION_0 = 0 | 表示屏幕顺时针旋转角度0度。 |
+| DISPLAY_MANAGER_ROTATION_90 = 1 | 表示屏幕顺时针旋转角度90度。 |
+| DISPLAY_MANAGER_ROTATION_180 = 2 | 表示屏幕顺时针旋转角度180度。 |
+| DISPLAY_MANAGER_ROTATION_270 = 3 | 表示屏幕顺时针旋转角度270度。 |
 
 ### NativeDisplayManager_Orientation
 
@@ -90,7 +90,7 @@ enum NativeDisplayManager_Orientation
 | DISPLAY_MANAGER_LANDSCAPE = 1 | 表示设备当前以横屏方式显示。 |
 | DISPLAY_MANAGER_PORTRAIT_INVERTED = 2 | 表示设备当前以反向竖屏方式显示。 |
 | DISPLAY_MANAGER_LANDSCAPE_INVERTED = 3 | 表示设备当前以反向横屏方式显示。 |
-| DISPLAY_MANAGER_UNKNOWN | 表示显示未识别屏幕方向。 |
+| DISPLAY_MANAGER_UNKNOWN | 表示未识别的屏幕方向。 |
 
 ### NativeDisplayManager_ErrorCode
 
@@ -114,7 +114,7 @@ enum NativeDisplayManager_ErrorCode
 | DISPLAY_MANAGER_ERROR_INVALID_SCREEN = 1400001 | 操作的显示设备无效。 |
 | DISPLAY_MANAGER_ERROR_INVALID_CALL = 1400002 | 当前操作对象无操作权限。 |
 | DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL = 1400003 | 系统服务工作异常。 |
-| DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM = 1400004 |  非法参数。<br>**起始版本：** 20 |
+| DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM = 1400004 | 非法参数。<br>**起始版本：** 20 |
 
 ### NativeDisplayManager_FoldDisplayMode
 

@@ -7,7 +7,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-本模块提供监听指定[UIAbility](js-apis-app-ability-uiAbility.md)生命周期状态变化的能力。开发者可以将InteropAbilityMonitor作为[abilityDelegator.addInterAbilityMonitorSync](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addinteropabilitymonitorsync)的入参来注册监听。
+本模块提供监听指定[UIAbility](js-apis-app-ability-uiAbility.md)生命周期状态变化的能力。开发者可以将InteropAbilityMonitor作为abilityDelegator.[addInteropAbilityMonitorSync](../apis-test-kit/js-apis-inner-application-abilityDelegator.md#addinteropabilitymonitorsync)的入参来注册监听。
 
 **起始版本**：26.0.0
 
@@ -27,7 +27,7 @@ import { abilityDelegatorRegistry } from '@kit.TestKit';
 
 ## InteropAbilityMonitor
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API(仅ArkTS-Dyn)**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -86,3 +86,23 @@ let monitor: abilityDelegatorRegistry.InteropAbilityMonitor = {
 let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.addInteropAbilityMonitorSync(monitor);
 ```
+
+## AbilityCallbackFn
+
+type AbilityCallbackFn = (ability: Any) => void
+
+当仅监听ability时触发的回调。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| ability | Any | 是 | 表示要注册监听的ability。 |

@@ -123,6 +123,7 @@ enum Http_ErrCode
 | OH_HTTP_SSL_CA_NOT_EXIST = (OH_HTTP_NETSTACK_E_BASE + 77) | SSL CA证书不存在或无法访问。 |
 | OH_HTTP_REMOTE_FILE_NOT_FOUND = (OH_HTTP_NETSTACK_E_BASE + 78) | 远端文件未找到。 |
 | OH_HTTP_AUTHENTICATION_ERROR = (OH_HTTP_NETSTACK_E_BASE + 94) | 身份验证错误。 |
+| OH_HTTP_REQUEST_INTERCEPTED = (OH_HTTP_NETSTACK_E_BASE + 996) | 请求被HTTP全局拦截器拦截。 |
 | OH_HTTP_ACCESS_DOMAIN_NOT_ALLOWED = (OH_HTTP_NETSTACK_E_BASE + 998) | 不允许访问该域。 |
 | OH_HTTP_UNKNOWN_ERROR = (OH_HTTP_NETSTACK_E_BASE + 999) | 未知错误。 |
 
@@ -271,7 +272,7 @@ typedef void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t e
 | 参数项 | 描述 |
 | -- | -- |
 | [struct Http_Response](capi-netstack-http-response.md) *response | HTTP响应结构体，指向Http_Response的指针，参考[Http_Response](capi-netstack-http-response.md)。 |
-|  uint32_t errCode | 响应码。 |
+|  uint32_t errCode | HTTP请求错误码，参考 [Http_ErrCode](#http_errcode)。 |
 
 ### Http_OnDataReceiveCallback()
 
@@ -291,7 +292,7 @@ typedef void (*Http_OnDataReceiveCallback)(const char *data, size_t length)
 | 参数项 | 描述 |
 | -- | -- |
 | const char *data | 响应体。 |
-| size_t length | 响应体的长度。 |
+| size_t length | 响应体的长度。单位：Byte。 |
 
 ### Http_OnProgressCallback()
 
@@ -310,8 +311,8 @@ typedef void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferred
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint64_t totalSize | 数据总大小。 |
-| uint64_t transferredSize | 已传输的数据大小。 |
+| uint64_t totalSize | 数据总大小。单位：Byte。 |
+| uint64_t transferredSize | 已传输的数据大小。单位：Byte。 |
 
 ### Http_OnHeaderReceiveCallback()
 

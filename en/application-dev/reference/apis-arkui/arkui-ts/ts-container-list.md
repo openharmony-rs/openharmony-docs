@@ -1569,7 +1569,7 @@ struct ListExample {
 }
 ```
 
-![en-us_image_0000001174264378](figures/en-us_image_0000001174264378.gif)
+![list1](figures/list1.gif)
 
 
 ### Example 2: Setting Child Element Alignment

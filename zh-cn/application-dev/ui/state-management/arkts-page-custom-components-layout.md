@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @song-song-song-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,11 +12,13 @@
 
 - [onPlaceChildren](../../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#onplacechildren10)：组件每次布局时触发，开发者可以在这个回调中增加放置自定义组件内子组件位置的逻辑。
 
-以下示例中，Index页面包含一个实现了自定义布局的自定义组件，且对应自定义组件的子组件通过index页面内的builder方式传入。
+以下示例中，Index页面包含一个实现了自定义布局的自定义组件，且对应自定义组件的子组件通过Index页面内的builder方式传入。
 
 而在自定义组件中，调用了onMeasureSize和onPlaceChildren设置子组件大小和放置位置。例如，在本示例中，在onMeasureSize中初始化组件大小size=100，后续的每一个子组件size会加上上一个子组件大小的一半，实现组件大小递增的效果。而在onPlaceChildren中，定义startPos=300，设置每一个子组件的位置为startPos减去子组件自身的高度，所有子组件右下角一致在顶点位置(300, 300)，实现一个从右下角开始展示组件的类Stack组件。
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 <!-- @[CustomLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentsLayout/entry/src/main/ets/pages/Index.ets) -->
 
@@ -52,7 +54,6 @@ struct CustomLayout {
   };
 
   @BuilderParam builder: () => void = this.doNothingBuilder;
-  @State startSize: number = 100;
   result: SizeResult = {
     width: 0,
     height: 0
@@ -84,5 +85,101 @@ struct CustomLayout {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+<!-- @[CustomLayout](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/ComponentsLayout/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Column,
+  Text,
+  ForEach,
+  Builder,
+  BuilderParam,
+  SizeResult,
+  GeometryInfo,
+  Measurable,
+  MeasureResult,
+  Layoutable,
+  ConstraintSizeOptions,
+  Position,
+  CustomLayout
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      CustomLayout1({ builder: columnChildren })
+    }
+  }
+}
+
+// 通过builder的方式传递多个组件，作为自定义组件的一级子组件（即不包含容器组件，如Column）
+@Builder
+function columnChildren() {
+  ForEach([1, 2, 3], (index: Int) => { // 暂不支持lazyForEach的写法
+    Text('S' + index)
+      .fontSize(30)
+      .width(100)
+      .height(100)
+      .borderWidth(2)
+      .offset({ x: 10, y: 20 } as Position)
+  })
+}
+
+@CustomLayout
+@Component
+struct CustomLayout1 {
+  @Builder
+  doNothingBuilder() {
+  };
+
+  @BuilderParam builder: () => void = this.doNothingBuilder;
+  @State startSize: number = 100;
+  result: SizeResult = {
+    width: 0,
+    height: 0
+  } as SizeResult;
+
+  // 第一步：计算各子组件的大小
+  onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
+    let size = 100;
+    children.forEach((child) => {
+      let result: MeasureResult = child.measure({
+        minHeight: size,
+        minWidth: size,
+        maxWidth: size,
+        maxHeight: size
+      }) as MeasureResult;
+      size += result.width / 2;
+    })
+    // this.result在该用例中代表自定义组件本身的大小，onMeasureSize方法返回的是组件自身的尺寸。
+    this.result.width = 100;
+    this.result.height = 400;
+    return this.result;
+  }
+
+  // 第二步：放置各子组件的位置
+  onPlaceChildren(selfLayoutInfo: GeometryInfo, children: Array<Layoutable>, constraint: ConstraintSizeOptions) {
+    let startPos = 300;
+    children.forEach((child) => {
+      let pos = startPos - child.measureResult.height;
+      child.layout({ x: pos, y: pos })
+    })
+  }
+
+  build() {
+    this.builder()
+  }
+}
+```
+
 
 ![custom-component-custom-layout](figures/custom-component-custom-layout.png)

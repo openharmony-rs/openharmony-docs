@@ -6,11 +6,12 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-矩形绘制组件。
+矩形绘制组件，用于在界面中绘制矩形图形，支持设置填充颜色、边框样式、圆角等属性。
 
 >  **说明：**
 >
 >  - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>  该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 >  - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
@@ -21,12 +22,13 @@
 
 无
 
-
 ## 接口
 
-Rect(options?: RectOptions | RoundedRectOptions)
+### Rect
 
-用于绘制矩形的构造函数。 
+new Rect(options?: RectOptions | RoundedRectOptions)
+
+用于绘制矩形的构造函数。调用后创建一个Rect对象，可设置宽度、高度、圆角等属性。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -38,7 +40,25 @@ Rect(options?: RectOptions | RoundedRectOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [RectOptions](ts-drawing-components-rect.md#rectoptions18对象说明) \| [RoundedRectOptions](ts-drawing-components-rect.md#roundedrectoptions18对象说明)  | 否 | Rect绘制属性。<br/>异常值undefined和null按照无效值处理，本次设置不生效。|
+| options | [RectOptions](ts-drawing-components-rect.md#rectoptions18对象说明) \| [RoundedRectOptions](ts-drawing-components-rect.md#roundedrectoptions18对象说明)  | 否 | Rect绘制属性，包含宽度、高度、圆角等配置。不传入时使用各属性默认值绘制矩形（宽高和圆角均为0）。<br>异常值undefined和null按照无效值处理，本次设置不生效。|
+
+### Rect
+
+Rect(options?: RectOptions | RoundedRectOptions)
+
+用于绘制矩形的构造函数。调用后创建一个Rect对象，可设置宽度、高度、圆角等属性。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| options | [RectOptions](ts-drawing-components-rect.md#rectoptions18对象说明) \| [RoundedRectOptions](ts-drawing-components-rect.md#roundedrectoptions18对象说明)  | 否 | Rect绘制属性，包含宽度、高度、圆角等配置。不传入时使用各属性默认值绘制矩形（宽高和圆角均为0）。<br>异常值undefined和null按照无效值处理，本次设置不生效。|
 
 ## RectOptions<sup>18+</sup>对象说明
 
@@ -52,13 +72,15 @@ Rect(options?: RectOptions | RoundedRectOptions)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| width<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 宽度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值undefined、null、NaN和Infinity按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| height<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 高度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值undefined、null、NaN和Infinity按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| radius<sup>7+</sup> | [Length](ts-types.md#length) \| Array&lt;any&gt; | 否 | 是 | 圆角半径，支持分别设置四个角的圆角度数，取值范围≥0。<br/>该属性和radiusWidth/radiusHeight属性效果类似，在组合使用时优先于radiusWidth/radiusHeight生效。<br/>默认值：0<br/>默认单位：vp<br/>异常值undefined、null、NaN和Infinity按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| width<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 宽度，取值范围≥0。<br>默认值：0<br>默认单位：vp。<br>异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| height<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 高度，取值范围≥0。<br>默认值：0<br>默认单位：vp。<br>异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| radius<sup>7+</sup> | [Length](ts-types.md#length) \| Array&lt;any&gt; | 否 | 是 | 圆角半径，支持分别设置四个角的圆角半径大小，取值范围≥0。<br>该属性和radiusWidth/radiusHeight属性效果类似，在组合使用时优先于radiusWidth/radiusHeight生效。<br>默认值：0<br>默认单位：vp。<br>异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## RoundedRectOptions<sup>18+</sup>对象说明
 
@@ -72,14 +94,16 @@ Rect(options?: RectOptions | RoundedRectOptions)
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| width<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 宽度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| height<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 高度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| radiusWidth<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 圆角宽度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| radiusHeight<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 圆角高度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值按照默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| width<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 宽度，取值范围≥0。<br>默认值：0<br>默认单位：vp。<br>异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| height<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 高度，取值范围≥0。<br>默认值：0<br>默认单位：vp。<br>异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| radiusWidth<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 圆角宽度，取值范围≥0。<br>默认值：0<br>默认单位：vp。<br>异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| radiusHeight<sup>7+</sup> | [Length](ts-types.md#length) | 否 | 是 | 圆角高度，取值范围≥0。<br>默认值：0<br>默认单位：vp。<br>异常值undefined、null、NaN和Infinity按照默认值处理。<br>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -91,7 +115,7 @@ ArkTS-Dyn: radiusWidth(value: Length)
 
 ArkTS-Sta: radiusWidth(value: double | string | undefined)
 
-设置圆角的宽度，仅设置宽时宽高一致，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。 异常值按照默认值处理。
+设置圆角的宽度。仅设置radiusWidth时，圆角的宽度和高度相同。该属性与[radius](#radius)属性效果类似，当与radius组合使用时，radius属性优先于本属性生效。支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。异常值undefined、null、NaN和Infinity按照默认值处理。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -107,7 +131,7 @@ ArkTS-Sta: radiusWidth(value: double | string | undefined)
 
 | 参数名 | 类型                       | 必填 | 说明                       |
 | ------ | -------------------------- | ---- | -------------------------- |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length) <br/>ArkTS-Sta: double \| string \| undefined | 是   | 圆角的宽度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined按照默认值处理。|
+| value  | ArkTS-Dyn: [Length](ts-types.md#length) <br/>ArkTS-Sta: double \| string \| undefined | 是   | 圆角的宽度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp <br>异常值undefined、null、NaN和Infinity按照默认值处理。|
 
 ### radiusHeight
 
@@ -115,7 +139,7 @@ ArkTS-Dyn: radiusHeight(value: Length)
 
 ArkTS-Sta: radiusHeight(value: double | string | undefined)
 
-设置圆角的高度，仅设置高时宽高一致，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。  异常值按照默认值处理。
+设置圆角的高度。仅设置radiusHeight时，圆角的高度和宽度相同。该属性与[radius](#radius)属性效果类似，当与radius组合使用时，radius属性优先于本属性生效。支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。异常值undefined、null、NaN和Infinity按照默认值处理。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -131,7 +155,7 @@ ArkTS-Sta: radiusHeight(value: double | string | undefined)
 
 | 参数名 | 类型                       | 必填 | 说明                       |
 | ------ | -------------------------- | ---- | -------------------------- |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length) <br/>ArkTS-Sta: double \| string \| undefined | 是   | 圆角的高度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined按照默认值处理。|
+| value  | ArkTS-Dyn: [Length](ts-types.md#length) <br/>ArkTS-Sta: double \| string \| undefined | 是   | 圆角的高度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined、null、NaN和Infinity按照默认值处理。|
 
 ### radius
 
@@ -139,7 +163,7 @@ ArkTS-Dyn: radius(value: Length | Array&lt;any&gt;)
 
 ArkTS-Sta: radius(value: Length | Array\<RadiusItem\> | undefined)
 
-设置圆角半径大小，取值范围≥0，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。异常值按照默认值处理。
+设置圆角半径大小，取值范围≥0，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。该属性与[radiusWidth](#radiuswidth)、[radiusHeight](#radiusheight)属性效果类似，在组合使用时优先于radiusWidth和radiusHeight生效。异常值undefined、null、NaN和Infinity按照默认值处理。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -155,7 +179,7 @@ ArkTS-Sta: radius(value: Length | Array\<RadiusItem\> | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                         |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------- |
-| value  | ArkTS-Dyn: [Length](ts-types.md#length) \|&nbsp;Array&lt;any&gt; <br/>ArkTS-Sta: [Length](ts-types.md#length) \| Array\<[RadiusItem](#radiusitem22)> \| undefined | 是   | 圆角半径大小。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined和null按照[[0, 0], [0, 0], [0, 0], [0, 0]]处理。|
+| value  | ArkTS-Dyn: [Length](ts-types.md#length) \|&nbsp;Array&lt;any&gt; <br/>ArkTS-Sta: [Length](ts-types.md#length) \| Array\<[RadiusItem](#radiusitem22)> \| undefined | 是   | 圆角半径大小。<br/>默认值：0<br/>默认单位：vp <br/>异常值undefined、null、NaN和Infinity按照[[0, 0], [0, 0], [0, 0], [0, 0]]处理。|
 
 ### fill
 
@@ -215,7 +239,7 @@ stroke(value: ResourceColor)
 
 strokeDashArray(value: Array&lt;any&gt;)
 
-设置边框间隙，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。取值范围≥0。异常值将按默认值处理。
+设置边框的虚线长度和虚线间隙长度，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。取值范围≥0。异常值将按默认值处理。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -227,7 +251,7 @@ strokeDashArray(value: Array&lt;any&gt;)
 
 | 参数名 | 类型             | 必填 | 说明                      |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | 是   | 定义Rect轮廓的虚线模式的数组，数组元素交替表示线段长度和间隙长度。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。<br/>**说明：**<br/>空数组：实线<br/>偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a->间隙长度b->线段长度c->间隙长度d->线段长度a->...<br/>奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a->间隙长度b->线段长度c->间隙长度a->线段长度b->间隙长度c->线段长度a->... |
+| value  | Array&lt;any&gt; | 是   | 定义Rect边框的虚线模式的数组，数组元素交替表示线段长度和间隙长度。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。<br/>**说明：**<br/>空数组：实线<br/>偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a->间隙长度b->线段长度c->间隙长度d->线段长度a->...<br/>奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a->间隙长度b->线段长度c->间隙长度a->线段长度b->间隙长度c->线段长度a->... |
 
 ### strokeDashOffset
 
@@ -379,6 +403,8 @@ type RadiusItem = [Length, Length]
 
 使用fill、fillOpacity、stroke、radius属性分别绘制矩形的填充颜色、透明度、边框颜色、圆角。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 @Entry
@@ -423,13 +449,57 @@ struct RectExample {
 }
 ```
 
-![zh-cn_image_0000001174264386](figures/zh-cn_image_0000001174264386.png)
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Text, Rect, Color, ColumnOptions, RectOptions, RadiusItem, Margin } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct RectExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Text('normal').fontSize(11).fontColor(0xCCCCCC).width('90%')
+      Column({ space: 5 } as ColumnOptions) {
+        Text('normal').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Rect({ width: '90%', height: 50 } as RectOptions)
+          .fill(Color.Pink)
+        Rect()
+          .width('90%')
+          .height(50)
+          .fillOpacity(0)
+          .stroke(Color.Red)
+          .strokeWidth(3)
+
+        Text('with rounded corners').fontSize(11).fontColor(0xCCCCCC).width('90%')
+        Rect({ width: '90%', height: 80 } as RectOptions)
+          .radiusHeight(20)
+          .radiusWidth(40)
+          .fill(Color.Pink)
+        Rect({ width: '90%', height: 80 } as RectOptions)
+          .radius(20)
+          .fill(Color.Pink)
+          .stroke(Color.Transparent)
+      }.width('100%').margin({ top: 10 } as Margin)
+
+      Rect({ width: '90%', height: 80 } as RectOptions)
+        .radius([[40, 40] as RadiusItem, [20, 20] as RadiusItem, [40, 40] as RadiusItem, [20, 20] as RadiusItem])
+        .fill(Color.Pink)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
+![rect](figures/rect.png)
 
 ### 示例2（绘制渐变色矩形）
 
-通过通用属性[linearGradient](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient18)、[clipShape](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape18)分别绘制渐变色的矩形。
+使用通用属性[linearGradient](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient18)、[clipShape](../../../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape18)分别绘制渐变色矩形。
 
 从API version 18开始，新增linearGradient、clipShape通用属性。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -464,11 +534,51 @@ struct RectExample {
 }
 ```
 
-![zh-cn_image_0000001174264386](figures/zh-cn_image_0000001174264387.jpeg)
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Rect, Color, GradientDirection, ColumnOptions, RectOptions } from '@kit.ArkUI';
+import { RectShape, RectShapeOptions } from '@ohos.arkui.shape';
+
+@Entry
+@Component
+struct RectExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Column()
+        .width(100)
+        .height(100)
+        .linearGradient({
+          direction: GradientDirection.Right,
+          colors: [[0xff0000, 0.0], [0x0000ff, 0.3], [0xffff00, 1.0]]
+        })
+        .clipShape(
+          new RectShape({ radius: 40 } as RectShapeOptions)
+            .width(100).height(100)
+        )
+      Rect()
+        .width(100)
+        .height(100)
+        .fill(Color.Pink)
+        .radius(40)
+        .stroke(Color.Black)
+        .linearGradient({
+          direction: GradientDirection.Right,
+          colors: [[0xff0000, 0.0], [0x0000ff, 0.3], [0xffff00, 1.0]]
+        })
+    }
+  }
+}
+```
+
+![rect2](figures/rect2.jpeg)
 
 ### 示例3（使用不同参数类型绘制矩形）
 
 width、height、radius、radiusWidth、radiusHeight等属性分别使用不同的长度类型绘制图形。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -485,7 +595,7 @@ struct RectExample {
         .fillOpacity(0)
         .stroke(Color.Red)
         .strokeWidth(3)
-      // 绘制200 * 50矩形, 圆角宽80, 圆角高20
+      // 使用Resource类型从资源文件获取尺寸和圆角参数绘制矩形
       Rect({
         width: $r('app.string.RectWidth'), // 使用Resource类型，需用户自定义
         height: $r('app.string.RectHeight'),
@@ -499,17 +609,88 @@ struct RectExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Rect, Color, ColumnOptions, RectOptions, Margin, $r } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct RectExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Rect({ width: '90%', height: '50', radius: '5' } as RectOptions)
+        .fill(Color.Green)
+      Rect({ width: 200, height: 50, radius: 5 } as RectOptions)
+        .fillOpacity(0)
+        .stroke(Color.Red)
+        .strokeWidth(3)
+      Rect({
+        width: $r('app.string.RectWidth'),
+        height: $r('app.string.RectHeight'),
+        radius: $r('app.string.RectRadius')
+      } as RectOptions)
+        .radiusWidth($r('app.string.RectRadiusWidth'))
+        .radiusHeight($r('app.string.RectRadiusHeight'))
+        .fill(Color.Green)
+    }.width('100%').margin({ top: 5 } as Margin)
+  }
+}
+```
+
 ![rectDemo3](figures/rectDemo3.png)
 
 ### 示例4（使用attributeModifier动态设置Rect组件的属性）
 
 以下示例展示了如何使用attributeModifier动态设置Rect组件的fill、fillOpacity、stroke、strokeDashArray、strokeDashOffset、strokeLineCap、strokeLineJoin、strokeMiterLimit、strokeOpacity、strokeWidth和antiAlias属性。
 
+ArkTS-Dyn示例：
+
 ```ts
 // xxx.ets
 class MyRectModifier implements AttributeModifier<RectAttribute> {
   applyNormalAttribute(instance: RectAttribute): void {
-    // 填充颜色#707070，填充透明度0.5，边框颜色#2787D9，边框间隙[20]，向左偏移15，线条两端样式为半圆，拐角样式使用尖角连接路径段，斜接长度与边框宽度比值的极限值为5，边框透明度0.5，边框宽度10，抗锯齿开启
+    // 填充颜色#707070，填充透明度0.5，边框颜色#2787D9，边框线段长度和间隙长度均为20，向左偏移15，线条两端样式为半圆，拐角样式使用尖角连接路径段，斜接长度与边框宽度比值的极限值为5，边框透明度0.5，边框宽度10，抗锯齿开启
+    instance.fill("#707070")
+    instance.fillOpacity(0.5)
+    instance.stroke("#2787D9")
+    instance.strokeDashArray([20])
+    instance.strokeDashOffset("15")
+    instance.strokeLineCap(LineCapStyle.Round)
+    instance.strokeLineJoin(LineJoinStyle.Miter)
+    instance.strokeMiterLimit(5)
+    instance.strokeOpacity(0.5)
+    instance.strokeWidth(10)
+    instance.antiAlias(true)
+  }
+}
+
+@Entry
+@Component
+struct RectModifierDemo {
+  @State modifier: MyRectModifier = new MyRectModifier()
+
+  build() {
+    Column() {
+      Rect()
+        .width(200)
+        .height(200)
+        .attributeModifier(this.modifier)
+        .offset({ x: 20, y: 20 })
+    }
+  }
+}
+```
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Rect, RectAttribute, AttributeModifier, LineCapStyle, LineJoinStyle, Offset } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+class MyRectModifier implements AttributeModifier<RectAttribute> {
+  applyNormalAttribute(instance: RectAttribute): void {
     instance.fill("#707070")
     instance.fillOpacity(0.5)
     instance.stroke("#2787D9")

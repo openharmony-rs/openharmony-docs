@@ -6,7 +6,7 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
-request模块给应用提供上传下载文件、后台代理传输的基础功能。
+request模块给应用提供上传下载文件、后台代理传输的基础功能，支持HTTP/HTTPS协议，提供任务进度监控、断点续传、后台任务管理、网络类型选择等能力，适用于应用内文件上传下载、后台持续传输等场景。
 
 - request暂不支持在Extension中调用。
 
@@ -34,11 +34,11 @@ import request from '@ohos.request';
 
 > **说明：**
 >
-> **网络类型**：下载支持自定义网络类型，可以在[DownloadConfig](#downloadconfig)中通过networkType配置成以下网络类型。<br/>
+> **网络类型**：下载支持自定义网络类型，可以在[DownloadConfig](#downloadconfig)中通过networkType配置成以下网络类型。<br>
 >
-> **下载任务错误码**：下载[on('fail')](#onfail7)事件callback的错误参数、[getTaskInfo](#gettaskinfo9)返回值的failedReason字段取值。<br/>
+> **下载任务错误码**：下载[on('fail')](#onfail7)事件callback的错误参数、[getTaskInfo](#gettaskinfo9)返回值的failedReason字段取值。<br>
 >
-> **下载任务暂停原因**：下载相关[getTaskInfo](#gettaskinfo9)返回值的pausedReason字段取值。<br/>
+> **下载任务暂停原因**：下载相关[getTaskInfo](#gettaskinfo9)返回值的pausedReason字段取值。<br>
 >
 > **下载任务状态码**：下载相关[getTaskInfo](#gettaskinfo9)返回值的status字段取值。
 
@@ -47,7 +47,7 @@ import request from '@ohos.request';
 | EXCEPTION_PERMISSION<sup>9+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int |   201   | 通用错误码：权限校验失败。<br/>**ArkTS-Dyn起始版本：**  9 <br/>**ArkTS-Sta起始版本：**  23 |
 | EXCEPTION_PARAMCHECK<sup>9+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int |   401   | 通用错误码：参数检查失败。<br/>**ArkTS-Dyn起始版本：**  9 <br/>**ArkTS-Sta起始版本：**  23 |
 | EXCEPTION_UNSUPPORTED<sup>9+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int |   801   | 通用错误码：该设备不支持此API。<br/>**ArkTS-Dyn起始版本：**  9 <br/>**ArkTS-Sta起始版本：**  23 |
-| EXCEPTION_FILEIO<sup>9+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int |   13400001   | 特有错误码：文件操作异常。<br/>**ArkTS-Dyn起始版本：**  9 <br/>**ArkTS-Sta起始版本：**  23 |
+| EXCEPTION_FILEIO<sup>9+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int |   13400001   | 特有错误码：文件操作异常。具体请参考[13400001错误的处理方法](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faq-basics-service-kit-20)。<br/>**ArkTS-Dyn起始版本：**  9 <br/>**ArkTS-Sta起始版本：**  23 |
 | EXCEPTION_FILEPATH<sup>9+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int |   13400002   | 特有错误码：文件路径异常。<br/>**ArkTS-Dyn起始版本：**  9 <br/>**ArkTS-Sta起始版本：**  23 |
 | EXCEPTION_SERVICE<sup>9+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int |   13400003   | 特有错误码：服务异常。<br/>**ArkTS-Dyn起始版本：**  9 <br/>**ArkTS-Sta起始版本：**  23 |
 | EXCEPTION_OTHERS<sup>9+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int |   13499999   | 特有错误码：其他错误。<br/>**ArkTS-Dyn起始版本：**  9 <br/>**ArkTS-Sta起始版本：**  23 |
@@ -61,7 +61,7 @@ import request from '@ohos.request';
 | ERROR_INSUFFICIENT_SPACE<sup>7+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int |   5   | 下载任务错误码：存储空间不足。<br/>**ArkTS-Dyn起始版本：**  7 <br/>**ArkTS-Sta起始版本：**  23 |
 | ERROR_TOO_MANY_REDIRECTS<sup>7+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int |   6   | 下载任务错误码：网络重定向过多导致的错误。<br/>**ArkTS-Dyn起始版本：**  7 <br/>**ArkTS-Sta起始版本：**  23 |
 | ERROR_UNHANDLED_HTTP_CODE<sup>7+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int |   7   | 下载任务错误码：无法识别的HTTP代码。<br/>**ArkTS-Dyn起始版本：**  7 <br/>**ArkTS-Sta起始版本：**  23 |
-| ERROR_UNKNOWN<sup>7+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int |   8   | 下载任务错误码：未知错误。<br/>例如：API version 12及以下版本，系统仅支持串行地尝试连接域名相关IP，不支持单个IP的连接时间控制。若DNS返回的首个IP被阻塞，可能会由于握手超时导致ERROR_UNKNOWN错误。<br/>**ArkTS-Dyn起始版本：**  7 <br/>**ArkTS-Sta起始版本：**  23 |
+| ERROR_UNKNOWN<sup>7+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int |   8   | 下载任务错误码：未知错误。<br>例如：API version 12及以下版本，系统仅支持串行地尝试连接域名相关IP，不支持单个IP的连接时间控制。若DNS返回的首个IP被阻塞，可能会由于握手超时导致ERROR_UNKNOWN错误。具体请参考[ERROR_UNKNOWN错误的处理方法](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faq-basics-service-kit-73)。<br/>**ArkTS-Dyn起始版本：**  7 <br/>**ArkTS-Sta起始版本：**  23 |
 | ERROR_OFFLINE<sup>9+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int |   9   | 下载任务错误码：网络未连接。<br/>**ArkTS-Dyn起始版本：**  9 <br/>**ArkTS-Sta起始版本：**  23 |
 | ERROR_UNSUPPORTED_NETWORK_TYPE<sup>9+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int |   10   | 下载任务错误码：网络类型不匹配。<br/>**ArkTS-Dyn起始版本：**  9 <br/>**ArkTS-Sta起始版本：**  23 |
 | PAUSED_QUEUED_FOR_WIFI<sup>7+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int |   0   | 下载任务暂停原因：文件大小超过了使用蜂窝网络会话允许的最大值，下载被暂停并等待WLAN连接。<br/>**ArkTS-Dyn起始版本：**  7 <br/>**ArkTS-Sta起始版本：**  23 |
@@ -166,9 +166,9 @@ ArkTS-Dyn示例：
   let uploadConfig: request.UploadConfig = {
     url: 'http://www.example.com', // 需要手动将url替换为真实服务器的HTTP协议地址
     header: { 'Accept': '*/*' },
-    method: "POST",
-    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // 建议type填写HTTP协议规范的MIME类型
-    data: [{ name: "name123", value: "123" }],
+    method: 'POST',
+    files: [{ filename: 'test', name: 'test', uri: 'internal://cache/test.jpg', type: 'image/jpeg' }], // 建议type填写HTTP协议规范的MIME类型
+    data: [{ name: 'name123', value: '123' }],
   };
   try {
     request.uploadFile(context, uploadConfig).then((data: request.UploadTask) => {
@@ -258,9 +258,9 @@ ArkTS-Dyn示例：
   let uploadConfig: request.UploadConfig = {
     url: 'http://www.example.com', // 需要手动将url替换为真实服务器的HTTP协议地址
     header: { 'Accept': '*/*' },
-    method: "POST",
-    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // 建议type填写HTTP协议规范的MIME类型
-    data: [{ name: "name123", value: "123" }],
+    method: 'POST',
+    files: [{ filename: 'test', name: 'test', uri: 'internal://cache/test.jpg', type: 'image/jpeg' }], // 建议type填写HTTP协议规范的MIME类型
+    data: [{ name: 'name123', value: '123' }],
   };
   try {
     request.uploadFile(context, uploadConfig, (err: BusinessError, data: request.UploadTask) => {
@@ -322,7 +322,7 @@ upload(config: UploadConfig): Promise&lt;UploadTask&gt;
 
 > **说明：**
 >
-> 从API version 6 开始支持，从API version 9 开始废弃，建议使用[request.uploadFile](#requestuploadfile9)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[request.uploadFile](#requestuploadfile9)替代。
 
 **参数：**
 
@@ -351,15 +351,15 @@ upload(config: UploadConfig): Promise&lt;UploadTask&gt;
   let uploadConfig: request.UploadConfig = {
     url: 'http://www.example.com', // 需要手动将url替换为真实服务器的HTTP协议地址
     header: { 'Accept': '*/*' },
-    method: "POST",
-    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // 建议type填写HTTP协议规范的MIME类型
-    data: [{ name: "name123", value: "123" }],
+    method: 'POST',
+    files: [{ filename: 'test', name: 'test', uri: 'internal://cache/test.jpg', type: 'image/jpeg' }], // 建议type填写HTTP协议规范的MIME类型
+    data: [{ name: 'name123', value: '123' }],
   };
   request.upload(uploadConfig).then((data: request.UploadTask) => {
     uploadTask = data;
   }).catch((err: BusinessError) => {
     console.error(`Failed to request the upload. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
   ```
 
 
@@ -381,7 +381,7 @@ upload(config: UploadConfig, callback: AsyncCallback&lt;UploadTask&gt;): void
 
 > **说明：**
 >
-> 从API version 6 开始支持，从API version 9 开始废弃，建议使用[request.uploadFile](#requestuploadfile9)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[request.uploadFile](#requestuploadfile9)替代。
 
 **参数：**
 
@@ -405,9 +405,9 @@ upload(config: UploadConfig, callback: AsyncCallback&lt;UploadTask&gt;): void
   let uploadConfig: request.UploadConfig = {
     url: 'http://www.example.com', // 需要手动将url替换为真实服务器的HTTP协议地址
     header: { 'Accept': '*/*' },
-    method: "POST",
-    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // 建议type填写HTTP协议规范的MIME类型
-    data: [{ name: "name123", value: "123" }],
+    method: 'POST',
+    files: [{ filename: 'test', name: 'test', uri: 'internal://cache/test.jpg', type: 'image/jpeg' }], // 建议type填写HTTP协议规范的MIME类型
+    data: [{ name: 'name123', value: '123' }],
   };
   request.upload(uploadConfig, (err: BusinessError, data: request.UploadTask) => {
     if (err) {
@@ -420,7 +420,7 @@ upload(config: UploadConfig, callback: AsyncCallback&lt;UploadTask&gt;): void
 
 ## UploadTask
 
-上传任务，使用下列方法前，需要先获取UploadTask对象，promise形式通过[request.uploadFile](#requestuploadfile9)获取，callback形式通过[request.uploadFile](#requestuploadfile9-1)获取。
+上传任务，使用下列方法前，需要先获取UploadTask对象，Promise形式通过[request.uploadFile](#requestuploadfile9)获取，callback形式通过[request.uploadFile](#requestuploadfile9-1)获取。
 
 
 
@@ -445,14 +445,7 @@ on(type: 'progress', callback: (uploadedSize: number, totalSize: number) =&gt; v
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 订阅的事件类型。取值为'progress'，表示上传的进度信息，任务进度有进展时触发该事件。 |
-| callback | function | 是 | 上传任务进度的回调函数，返回已上传文件大小和上传文件总大小。 |
-
-  回调函数的参数：
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| uploadedSize | number | 是 | 当前已上传文件大小，单位为字节（B）。 |
-| totalSize | number | 是 | 上传文件的总大小，单位为字节（B）。 |
+| callback | (uploadedSize: number, totalSize: number) => void | 是 | 上传任务进度的回调函数，返回已上传文件大小和上传文件总大小，单位为字节（B）。 |
 
 **错误码：**
 
@@ -460,7 +453,7 @@ on(type: 'progress', callback: (uploadedSize: number, totalSize: number) =&gt; v
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
 
@@ -542,13 +535,7 @@ on(type: 'headerReceive', callback:  (header: object) =&gt; void): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 订阅的事件类型。<br>- 取值为'headerReceive'，HTTP请求接收到响应时触发该事件。 |
-  | callback | function | 是 | HTTP&nbsp;Response事件的回调函数，返回响应请求内容。 |
-
-  回调函数的参数：
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| header | object | 是 | HTTP响应。 |
+  | callback | (header: object) => void | 是 | HTTP&nbsp;Response事件的回调函数，返回响应请求内容。 |
 
 **错误码：**
 
@@ -556,7 +543,7 @@ on(type: 'headerReceive', callback:  (header: object) =&gt; void): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
 
@@ -633,7 +620,7 @@ onHeaderReceive(callback: UploadHeaderReceiveCallback): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | type | string | 是 | 订阅的事件类型，支持的事件包括：`'complete'`\|`'fail'`。<br/>\- `'complete'`：表示上传任务完成，任务完成时触发该事件。 <br/>\- `'fail'`：表示上传任务失败，任务失败时触发该事件。| 
+  | type | string | 是 | 订阅的事件类型，支持的事件包括：`'complete'`\|`'fail'`。<br>\- `'complete'`：表示上传任务完成，任务完成时触发该事件。 <br>\- `'fail'`：表示上传任务失败，任务失败时触发该事件。|
   | callback | Callback&lt;Array&lt;[TaskState](#taskstate9)&gt;&gt; | 是 | 上传任务完成或失败的回调函数。返回上传任务的任务状态信息。 |
 
 
@@ -643,7 +630,7 @@ onHeaderReceive(callback: UploadHeaderReceiveCallback): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
 
@@ -781,14 +768,7 @@ off(type:  'progress',  callback?: (uploadedSize: number, totalSize: number) =&g
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 取消订阅的事件类型。<br>- 取值为'progress'，表示上传的进度信息。 |
-  | callback | function | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
-
-回调函数的参数
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| uploadedSize | number | 是 | 当前已上传文件大小，单位为字节（B）。 |
-| totalSize | number | 是 | 上传文件的总大小，单位为字节（B）。 |
+  | callback | (uploadedSize: number, totalSize: number) => void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -796,7 +776,7 @@ off(type:  'progress',  callback?: (uploadedSize: number, totalSize: number) =&g
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
 
@@ -889,13 +869,7 @@ off(type: 'headerReceive', callback?: (header: object) =&gt; void): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 取消订阅的事件类型。<br>- 取值为'headerReceive'，表示HTTP请求接收到响应。 |
-  | callback | function | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
-
-  回调函数的参数：
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| header | object | 是 | HTTP响应。 |
+  | callback | (header: object) => void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -903,7 +877,7 @@ off(type: 'headerReceive', callback?: (header: object) =&gt; void): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
 
@@ -1005,7 +979,7 @@ offHeaderReceive(callback?: UploadHeaderReceiveCallback): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | the parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
 
@@ -1415,6 +1389,7 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 | responseCode | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 否 | 上传任务返回码。返回0表示上传任务成功，返回其它值表示上传任务失败，具体请参见message参数中的上传任务结果描述信息。<br/>此处推荐使用[request.agent.create](#requestagentcreate10-1)创建上传任务，并获取标准错误码处理异常分支。 |
 | message | string | 否 | 否 | 上传任务结果描述信息。                           |
 
+**错误码：**
 其中，responseCode包含的返回码值如下。
 
 | 返回码 | 具体信息                               |
@@ -1829,14 +1804,7 @@ on(type: 'progress', callback: (receivedSize: number, totalSize: number) =&gt; v
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 订阅的事件类型。<br>- 取值为'progress'，表示下载的进度信息，当任务进度有进展时触发该事件。 |
-  | callback | function | 是 | 下载任务进度的回调函数，返回已上传文件大小和上传文件大小总和。 |
-
-  回调函数的参数：
-
-| 参数名 | 类型 | 必填 | 说明                                                                      |
-| -------- | -------- | -------- |----------------------------------|
-| receivedSize | number | 是 | 当前下载的进度，单位为字节（B）。                |
-| totalSize | number | 是 | 下载文件的总大小，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时，totalSize为 -1。 |
+  | callback | (receivedSize: number, totalSize: number) => void | 是 | 下载任务进度的回调函数，返回已下载文件大小和下载文件总大小，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时，totalSize为 -1。 |
 
 **错误码：**
 
@@ -1844,7 +1812,7 @@ on(type: 'progress', callback: (receivedSize: number, totalSize: number) =&gt; v
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
   <!--code_no_check-->
@@ -1933,14 +1901,7 @@ off(type: 'progress', callback?: (receivedSize: number, totalSize: number) =&gt;
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 取消订阅的事件类型。<br>- 取值为'progress'，表示下载的进度信息。 |
-  | callback | function | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
-
-  回调函数的参数：
-
-| 参数名 | 类型 | 必填 | 说明                                                                      |
-| -------- | -------- | -------- |------------------------------------|
-| receivedSize | number | 是 | 当前下载的进度，单位为字节（B）。           |
-| totalSize | number | 是 | 下载文件的总大小，单位为字节（B）。在下载过程中，若服务器使用chunk方式传输导致无法从请求头中获取文件总大小时，totalSize为 -1。 |
+  | callback | (receivedSize: number, totalSize: number) => void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 
 **错误码：**
@@ -1949,7 +1910,7 @@ off(type: 'progress', callback?: (receivedSize: number, totalSize: number) =&gt;
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
   <!--code_no_check-->
@@ -2059,7 +2020,7 @@ on(type: 'complete'|'pause'|'remove', callback: () =&gt; void): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
   <!--code_no_check-->
@@ -2277,7 +2238,7 @@ off(type: 'complete'|'pause'|'remove', callback?: () =&gt; void): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
   <!--code_no_check-->
@@ -2582,13 +2543,7 @@ on(type: 'fail', callback: (err: number) =&gt; void): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 订阅的事件类型。<br>- 取值为'fail'，表示下载失败，任务失败时触发该事件。 |
-  | callback | function | 是 | 下载失败的回调函数。 |
-
-  回调函数的参数：
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| err | number | 是 | 下载失败的错误码，错误原因见下载任务的错误码[常量](#常量)。 |
+  | callback | (err: number) => void | 是 | 下载失败的回调函数。错误原因见'下载任务的错误码'[常量](#常量)。 |
 
 **错误码：**
 
@@ -2596,7 +2551,7 @@ on(type: 'fail', callback: (err: number) =&gt; void): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
   <!--code_no_check-->
@@ -2682,13 +2637,7 @@ off(type: 'fail', callback?: (err: number) =&gt; void): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 取消订阅的事件类型。<br>- 取值为'fail'，表示下载失败。 |
-  | callback | function | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
-
-  回调函数的参数：
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| err | number | 是 | 下载失败的错误码，错误原因见下载任务的错误码[常量](#常量)。 |
+  | callback | (err: number) => void | 否 | 需要取消订阅的回调函数。若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码：**
 
@@ -2696,7 +2645,7 @@ off(type: 'fail', callback?: (err: number) =&gt; void): void
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | The parameters check fails. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed.<br> 适用版本：12+ |
 
 **示例：**
   <!--code_no_check-->
@@ -4124,7 +4073,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | description | string | 否 | 否 | 待下载任务的描述信息。 |
 | downloadedBytes | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 否 | 实时下载大小，单位为字节（B）。 |
 
-## request.agent<sup>10+</sup>
+## agent<sup>10+</sup>
 
 ### 常量
 
@@ -4332,7 +4281,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> API version 12及以下版本，只支持串行的尝试连接域名相关ip，且不支持单个ip的连接时间控制，如果DNS返回的首个ip是阻塞的，可能会导致握手超时，进而引发TIMEOUT错误。
+> API version 12及以下版本，只支持串行地尝试连接域名相关IP，且不支持单个IP的连接时间控制，如果DNS返回的首个IP是阻塞的，可能会导致握手超时，进而引发TIMEOUT错误。
 
 | 名称 | 值 | 说明                                                                             |
 | -------- | -------- |--------------------------------------------------------------------------------|
@@ -4422,6 +4371,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | text    | string | 否 | 是 | 通知栏自定义正文。若不设置则使用默认显示方式。text长度上限为3072B。 <br/>**ArkTS-Dyn起始版本：**  15 <br/>**ArkTS-Sta起始版本：**  23 |
 | visibility<sup>21+</sup> | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 否 | 是 | 设置任务的通知栏显示方式，通过[VISIBILITY常量](#常量-1)的位运算方式决定显示方式，任务通知的显示方式，包括如下几种：<br/>- 仅显示完成通知，参数为VISIBILITY_COMPLETION或1，任务完成/失败后展示对应通知。<br/>- 仅显示进度通知，参数为VISIBILITY_PROGRESS或2，任务在进行中显示进度通知，当任务下载成功/失败后会直接退出进度通知，不会显示完成通知。<br/>- 显示进度通知/完成通知，参数为VISIBILITY_COMPLETION \| VISIBILITY_PROGRESS或3，任务在进行中显示进度通知，当任务下载成功/失败后会退出进度通知，并显示完成通知。<br/>若不设置该参数，则根据gauge字段来判断；若无gauge字段，则仅显示完成通知。<br/>**ArkTS-Dyn起始版本：**  21 <br/>**ArkTS-Sta起始版本：**  23 |
 | wantAgent<sup>22+</sup> | [WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) | 否 | 是 | 通知参数，用于实现点击任务通知后跳转的功能。默认值为空。<br/>**ArkTS-Dyn起始版本：**  22 <br/>**ArkTS-Sta起始版本：**  23 |
+| hideStopButton | boolean | 否 | 是 | 设置是否隐藏通知栏后台任务实时窗口中的停止按钮。该值为true时，隐藏停止按钮，且布局会自动调整；该值为false时，不隐藏停止按钮，停止按钮的显示情况与不设置该参数时保持一致（即若任务原本没有停止按钮，则不会显示）。默认值为false。<br/>**起始版本：** 26.1.0|
 
 
 **示例：**
@@ -4463,6 +4413,7 @@ ArkTS-Dyn示例：
     notification: {
       visibility: request.agent.VISIBILITY_COMPLETION | request.agent.VISIBILITY_PROGRESS,
       wantAgent: await wantAgent.getWantAgent(wantAgentInfo),
+      hideStopButton: false,
     }
   };
   let createOnCallback = (progress: request.agent.Progress) => {
@@ -4652,13 +4603,7 @@ on(event: 'progress', callback: (progress: [Progress](#requestagentprogress10)) 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 订阅的事件类型。<br>- 取值为'progress'，表示任务进度，任务进度有进展时触发该事件。 |
-  | callback | function | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -4667,6 +4612,7 @@ on(event: 'progress', callback: (progress: [Progress](#requestagentprogress10)) 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | task mode error.<br> 适用版本：10-10 |
 
 **示例：**
   <!--code_no_check-->
@@ -4811,13 +4757,7 @@ on(event: 'completed', callback: (progress: [Progress](#requestagentprogress10))
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 订阅的事件类型。<br>- 取值为'completed'，表示任务完成，任务完成时触发该事件。 |
-  | callback | function | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -4826,6 +4766,7 @@ on(event: 'completed', callback: (progress: [Progress](#requestagentprogress10))
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | task mode error.<br> 适用版本：10-10 |
 
 **示例：**
   <!--code_no_check-->
@@ -4970,13 +4911,7 @@ on(event: 'failed', callback: (progress: [Progress](#requestagentprogress10)) =&
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 订阅的事件类型。<br>- 取值为'failed'，表示任务失败，任务失败时触发该事件。 |
-  | callback | function | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -4985,6 +4920,7 @@ on(event: 'failed', callback: (progress: [Progress](#requestagentprogress10)) =&
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | Operation with wrong task mode.<br> 适用版本：10-10 |
 
 **示例：**
   <!--code_no_check-->
@@ -5127,13 +5063,7 @@ on(event: 'pause', callback: (progress: [Progress](#requestagentprogress10)) =&g
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 订阅的事件类型。<br>- 取值为'pause'，表示任务已暂停，任务暂停时触发该事件。 |
-  | callback | function | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -5290,13 +5220,7 @@ on(event: 'resume', callback: (progress: [Progress](#requestagentprogress10)) =&
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 订阅的事件类型。<br>- 取值为'resume'，表示任务恢复，任务恢复时触发该事件。 |
-  | callback | function | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -5459,13 +5383,7 @@ on(event: 'remove', callback: (progress: [Progress](#requestagentprogress10)) =&
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 订阅的事件类型。<br>- 取值为'remove'，表示任务被移除，任务移除时触发该事件。 |
-  | callback | function | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 是 | 回调函数，发生相关的事件时触发该回调方法。 |
 
 **错误码：**
 
@@ -6077,13 +5995,7 @@ off(event: 'progress', callback?: (progress: [Progress](#requestagentprogress10)
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'progress'，表示任务进度。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有进度回调函数。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有进度回调函数。 |
 
 
 **错误码：**
@@ -6093,6 +6005,7 @@ off(event: 'progress', callback?: (progress: [Progress](#requestagentprogress10)
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | task mode error.<br> 适用版本：10-10 |
 
 **示例：**
   <!--code_no_check-->
@@ -6253,13 +6166,7 @@ off(event: 'completed', callback?: (progress: [Progress](#requestagentprogress10
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'completed'，表示任务完成。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有完成回调函数。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有完成回调函数。 |
 
 
 **错误码：**
@@ -6269,6 +6176,7 @@ off(event: 'completed', callback?: (progress: [Progress](#requestagentprogress10
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | Operation with wrong task mode.<br> 适用版本：10-10 |
 
 **示例：**
   <!--code_no_check-->
@@ -6429,13 +6337,7 @@ off(event: 'failed', callback?: (progress: [Progress](#requestagentprogress10)) 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'failed'，表示任务失败。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有失败回调函数。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有失败回调函数。 |
 
 **错误码：**
 
@@ -6444,6 +6346,7 @@ off(event: 'failed', callback?: (progress: [Progress](#requestagentprogress10)) 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 21900005 | Operation with wrong task mode.<br> 适用版本：10-10 |
 
 **示例：**
   <!--code_no_check-->
@@ -6602,13 +6505,7 @@ off(event: 'pause', callback?: (progress: [Progress](#requestagentprogress10)) =
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'pause'，表示任务暂停。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有暂停回调函数。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有暂停回调函数。 |
 
 **错误码：**
 
@@ -6775,13 +6672,7 @@ off(event: 'resume', callback?: (progress: [Progress](#requestagentprogress10)) 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'resume'，表示任务恢复。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有恢复回调函数。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有恢复回调函数。 |
 
 **错误码：**
 
@@ -6948,13 +6839,7 @@ off(event: 'remove', callback?: (progress: [Progress](#requestagentprogress10)) 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | event | string | 是 | 取消订阅的事件类型。<br>- 取值为'remove'，表示任务被移除。 |
-  | callback | function | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有移除回调函数。 |
-
-回调函数的参数：
-
-  | 参数名 | 类型 | 必填 | 说明 |
-  | -------- | -------- | -------- | -------- |
-  | progress | [Progress](#requestagentprogress10) | 是 | 表示任务的进度信息。 |
+  | callback | (progress: [Progress](#requestagentprogress10)) => void | 否 | 回调函数，发生相关的事件时触发该回调方法。若无此参数，则取消订阅的所有移除回调函数。 |
 
 **错误码：**
 
@@ -6962,7 +6847,7 @@ off(event: 'remove', callback?: (progress: [Progress](#requestagentprogress10)) 
 
   | 错误码ID | 错误信息 |
   | -------- | -------- |
-  | 401 | Parameter error. Possible causes: 1. Missing mandatory parameters. 2. Incorrect parameter type. 3. Parameter verification failed. |
+  | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例：**
   <!--code_no_check-->
@@ -7882,6 +7767,7 @@ pause(callback: AsyncCallback&lt;void&gt;): void
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 13400003 | Task service ability error. |
+  | 21900005 | Operation with wrong task mode.<br> 适用版本：10-10 |
   | 21900007 | Operation with wrong task state. |
 
 **示例：**
@@ -7920,7 +7806,7 @@ ArkTS-Dyn示例：
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.pause((err: BusinessError) => {
       if (err) {
@@ -8005,6 +7891,7 @@ pause(): Promise&lt;void&gt;
   | 错误码ID | 错误信息 |
   | -------- | -------- |
   | 13400003 | Task service ability error. |
+  | 21900005 | Operation with wrong task mode.<br> 适用版本：10-10 |
   | 21900007 | Operation with wrong task state. |
 
 **示例：**
@@ -8043,7 +7930,7 @@ ArkTS-Dyn示例：
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.pause().then(() => {
       console.info(`Succeeded in pausing a download task. `);
@@ -8127,6 +8014,7 @@ resume(callback: AsyncCallback&lt;void&gt;): void
   | -------- | -------- |
   | 201 | Permission denied. |
   | 13400003 | Task service ability error. |
+  | 21900005 | Operation with wrong task mode.<br> 适用版本：10-10 |
   | 21900007 | Operation with wrong task state. |
 
 **示例：**
@@ -8165,12 +8053,12 @@ ArkTS-Dyn示例：
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.pause();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.resume((err: BusinessError) => {
       if (err) {
@@ -8259,6 +8147,7 @@ resume(): Promise&lt;void&gt;
   | -------- | -------- |
   | 201 | Permission denied. |
   | 13400003 | Task service ability error. |
+  | 21900005 | Operation with wrong task mode.<br> 适用版本：10-10 |
   | 21900007 | Operation with wrong task state. |
 
 **示例：**
@@ -8297,12 +8186,12 @@ ArkTS-Dyn示例：
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.pause();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.resume().then(() => {
       console.info(`Succeeded in resuming a download task. `);
@@ -8424,7 +8313,7 @@ ArkTS-Dyn示例：
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.stop((err: BusinessError) => {
       if (err) {
@@ -8550,7 +8439,7 @@ ArkTS-Dyn示例：
     task.start();
     // 等待1秒再执行下一步操作，以防异步乱序
     await new Promise<void>((resolve) => {
-      setTimeout(() => resolve(),1000)
+      setTimeout(() => resolve(), 1000);
     })
     task.stop().then(() => {
       console.info(`Succeeded in stopping a download task. `);
@@ -8661,7 +8550,7 @@ ArkTS-Dyn示例：
     task.setMaxSpeed(10 * 1024 * 1024).then(() => {
       console.info(`Succeeded in setting the max speed of the task. result: ${task.tid}`);
     }).catch((err: BusinessError) => {
-      console.error(`Failed to set the max speed of the task. result: ${task.tid}`);
+      console.error(`Failed to set the max speed of the task. Code: ${err.code}, message: ${err.message}`);
     });
   }).catch((err: BusinessError) => {
     console.error(`Failed to create a download task, Code: ${err.code}, message: ${err.message}`);
@@ -8697,7 +8586,7 @@ ArkTS-Sta示例：
 
 create(context: BaseContext, config: Config, callback: AsyncCallback&lt;Task&gt;): void
 
-创建需要上传或下载的任务，并将其排入队列。支持HTTP/HTTPS协议，使用callback异步回调。
+创建需要上传或下载的任务，并将其排入队列。支持HTTP/HTTPS协议，使用callback异步回调。创建任务后，需要调用[start](#start10)方法启动任务，任务才会开始运行。
 
 
 **需要权限**：ohos.permission.INTERNET
@@ -8835,7 +8724,7 @@ ArkTS-Sta示例：
 
 create(context: BaseContext, config: Config): Promise&lt;Task&gt;
 
-创建需要上传或下载的任务，并将其排入队列。支持HTTP/HTTPS协议，使用Promise异步回调。
+创建需要上传或下载的任务，并将其排入队列。支持HTTP/HTTPS协议，使用Promise异步回调。创建任务后，需要调用[start](#start10)方法启动任务，任务才会开始运行。
 
 
 **需要权限**：ohos.permission.INTERNET
@@ -8863,7 +8752,7 @@ create(context: BaseContext, config: Config): Promise&lt;Task&gt;
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| Promise&lt;[Task](#requestagenttask10)&gt; | Promise对象。返回任务配置信息的Promise对象。 |
+| Promise&lt;[Task](#requestagenttask10)&gt; | Promise对象。返回Task对象的Promise对象。 |
 
 **错误码：**
 
@@ -8918,12 +8807,12 @@ ArkTS-Dyn示例：
     token: "it is a secret"
   };
   request.agent.create(context, config).then(async (task: request.agent.Task) => {
-    console.info(`Succeeded in creating a download task. result: ${task.config}`);
+    console.info(`Succeeded in creating an upload task. result: ${task.config}`);
     await task.start();
     // 用户需要手动调用remove从而结束task对象的生命周期
     request.agent.remove(task.tid);
   }).catch((err: BusinessError) => {
-    console.error(`Failed to create a download task, Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to create an upload task, Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -8992,7 +8881,7 @@ getTask(context: BaseContext, id: string, token?: string): Promise&lt;Task&gt;
   | -------- | -------- | -------- | -------- |
   | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是 | 基于应用程序的上下文。 |
   | id | string | 是 | 任务id。 |
-  | token | string | 否 | 任务查询token。默认值为空。 |
+  | token | string | 否 | 任务查询token。当任务创建时设置了token，查询该任务需提供对应token，否则无法查询到指定任务。默认值为空（不传入时仅可查询未设置token的任务）。 |
 
 **返回值：** 
 
@@ -9020,7 +8909,7 @@ ArkTS-Dyn示例：
 
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  request.agent.getTask(context, "123456").then((task: request.agent.Task) => {
+  request.agent.getTask(context, '123456').then((task: request.agent.Task) => {
     console.info(`Succeeded in querying a task. result: ${task.tid}`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to query a task, Code: ${err.code}, message: ${err.message}`);
@@ -9080,7 +8969,7 @@ ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.remove("123456", (err: BusinessError) => {
+  request.agent.remove('123456', (err: BusinessError) => {
     if (err) {
       console.error(`Failed to remove a download task, Code: ${err.code}, message: ${err.message}`);
       return;
@@ -9147,7 +9036,7 @@ ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.remove("123456").then(() => {
+  request.agent.remove('123456').then(() => {
     console.info(`Succeeded in removing a download task. `);
   }).catch((err: BusinessError) => {
     console.error(`Failed to remove a download task, Code: ${err.code}, message: ${err.message}`);
@@ -9203,7 +9092,7 @@ ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.show("123456", (err: BusinessError, taskInfo: request.agent.TaskInfo) => {
+  request.agent.show('123456', (err: BusinessError, taskInfo: request.agent.TaskInfo) => {
     if (err) {
       console.error(`Failed to show a upload task, Code: ${err.code}, message: ${err.message}`);
       return;
@@ -9268,7 +9157,7 @@ ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.show("123456").then((taskInfo: request.agent.TaskInfo) => {
+  request.agent.show('123456').then((taskInfo: request.agent.TaskInfo) => {
     console.info(`Succeeded in showing a upload task.`);
   }).catch((err: BusinessError) => {
     console.error(`Failed to show a upload task, Code: ${err.code}, message: ${err.message}`);
@@ -9325,7 +9214,7 @@ ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.touch("123456", "token", (err: BusinessError, taskInfo: request.agent.TaskInfo) => {
+  request.agent.touch('123456', "token", (err: BusinessError, taskInfo: request.agent.TaskInfo) => {
     if (err) {
       console.error(`Failed to touch a upload task, Code: ${err.code}, message: ${err.message}`);
       return;
@@ -9391,7 +9280,7 @@ ArkTS-Dyn示例：
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  request.agent.touch("123456", "token").then((taskInfo: request.agent.TaskInfo) => {
+  request.agent.touch('123456', "token").then((taskInfo: request.agent.TaskInfo) => {
     console.info(`Succeeded in touching a upload task. `);
   }).catch((err: BusinessError) => {
     console.error(`Failed to touch a upload task, Code: ${err.code}, message: ${err.message}`);
@@ -9505,7 +9394,7 @@ ArkTS-Dyn示例：
   let filter: request.agent.Filter = {
     action: request.agent.Action.UPLOAD,
     mode: request.agent.Mode.BACKGROUND
-  }
+  };
   request.agent.search(filter, (err: BusinessError, data: Array<string>) => {
     if (err) {
       console.error(`Failed to search a upload task, Code: ${err.code}, message: ${err.message}`);
@@ -9605,7 +9494,7 @@ ArkTS-Sta示例：
 
 createGroup(config: GroupConfig): Promise\<string\>
 
-根据[GroupConfig](#requestagentgroupconfig15)分组条件创建分组，并返回分组id。使用Promise异步回调。
+根据[GroupConfig](#requestagentgroupconfig15)分组条件创建分组，并返回分组id。适用于需要将多个下载任务的通知合并展示、统一管理任务进度通知的场景。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -9674,9 +9563,9 @@ ArkTS-Sta示例：
 
 attachGroup(gid: string, tids: string[]): Promise\<void\>
 
-向指定分组id中绑定多个下载任务id。使用Promise异步回调。
+向指定分组id中绑定多个下载任务id，用于将多个下载任务归入同一分组以统一管理通知展示。使用Promise异步回调。
 
-如果任意一个任务id不满足添加条件，则所有列表中的任务都不会添加到分组中。
+如果任意一个任务id不满足添加条件（如任务不存在、任务状态不匹配、任务模式不匹配等），则所有列表中的任务都不会添加到分组中。
 
 **系统能力**：SystemCapability.Request.FileTransferAgent
 
@@ -9718,8 +9607,8 @@ ArkTS-Dyn示例：
   import { BusinessError } from '@kit.BasicServicesKit';
 
   // 准备分组id和任务id列表。
-  let groupId: string = "123456789";
-  let taskIds: string[] = ["1111", "2222", "3333", "4444"];
+  let groupId: string = '123456789';
+  let taskIds: string[] = ['1111', '2222', '3333', '4444'];
   // 调用 attachGroup 接口向分组中添加任务id列表。
   request.agent.attachGroup(groupId, taskIds).then(() => {
     console.info(`Succeeded in attaching tasks to the download task group.`);
@@ -9788,7 +9677,7 @@ ArkTS-Dyn示例：
   import { BusinessError } from '@kit.BasicServicesKit';
 
   // 准备分组id。
-  let groupId: string = "123456789";
+  let groupId: string = '123456789';
   
   // 调用 deleteGroup 接口移除分组。
   request.agent.deleteGroup(groupId).then(() => {

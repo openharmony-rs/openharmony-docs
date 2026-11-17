@@ -3,7 +3,7 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -31,28 +31,28 @@
   提供基于低功耗蓝牙（Bluetooth Low Energy）技术的蓝牙能力，可支持发现设备、发送广播报文、发现服务和传输数据等功能。具体内容可参考API [@ohos.bluetooth.ble](../reference/apis-connectivity-kit/js-apis-bluetooth-ble.md)。
 
 - **SOCKET模块**<br/>
-  提供基于串口通信协议（Serial Port Profile，SPP）实现蓝牙设备间通信连接和传输数据的能力。具体内容可参考API [@ohos.bluetooth.socket](../reference/apis-connectivity-kit/js-apis-bluetooth-socket.md)。
+  提供基于串口通信协议（Serial Port Profile, SPP）实现蓝牙设备间通信连接和传输数据的能力。具体内容可参考API [@ohos.bluetooth.socket](../reference/apis-connectivity-kit/js-apis-bluetooth-socket.md)。
 
 - **A2DP模块**<br/>
-  提供基于增强音频分发协议（Advanced Audio Distribution Profile，A2DP）实现蓝牙设备间通信连接和传输高品质音频的能力。例如：手机与耳机、音响等设备间传输音频流，实现听音乐的场景。具体内容可参考API [@ohos.bluetooth.a2dp](../reference/apis-connectivity-kit/js-apis-bluetooth-a2dp.md)。
+  提供基于增强音频分发协议（Advanced Audio Distribution Profile, A2DP）实现蓝牙设备间通信连接和传输高品质音频的能力。例如：手机与耳机、音响等设备间传输音频流，实现听音乐的场景。具体内容可参考API [@ohos.bluetooth.a2dp](../reference/apis-connectivity-kit/js-apis-bluetooth-a2dp.md)。
 
 - **HFP模块**<br/>
-  提供基于免提协议（Hands-Free Profile，HFP）实现蓝牙设备间通信连接和免提通话的能力，可支持双向语音通话和控制等功能。具体内容可参考API [@ohos.bluetooth.hfp](../reference/apis-connectivity-kit/js-apis-bluetooth-hfp.md)。
+  提供基于免提协议（Hands-Free Profile, HFP）实现蓝牙设备间通信连接和免提通话的能力，可支持双向语音通话和控制等功能。具体内容可参考API [@ohos.bluetooth.hfp](../reference/apis-connectivity-kit/js-apis-bluetooth-hfp.md)。
 
 - **HID模块**<br/>
-  提供基于人机接口协议（Human Interface Device Profile，HID）实现蓝牙设备间通信连接、无线控制和传输的能力。例如：支持键盘、鼠标、游戏手柄等设备与主机（如手机、平板和PC）间的低延迟双向通信。具体内容可参考API [@ohos.bluetooth.hid](../reference/apis-connectivity-kit/js-apis-bluetooth-hid.md)。
+  提供基于人机接口协议（Human Interface Device Profile, HID）实现蓝牙设备间通信连接、无线控制和传输的能力。例如：支持键盘、鼠标、游戏手柄等设备与主机（如手机、平板和PC）间的低延迟双向通信。具体内容可参考API [@ohos.bluetooth.hid](../reference/apis-connectivity-kit/js-apis-bluetooth-hid.md)。
 
 - **PAN模块**<br/>
-  提供基于个人局域网协议（Personal Area Network，PAN）实现设备间网络共享的能力。例如：手机与PC间的互联网共享。具体内容可参考API [@ohos.bluetooth.pan](../reference/apis-connectivity-kit/js-apis-bluetooth-pan.md)。
+  提供基于个人局域网协议（Personal Area Network, PAN）实现设备间网络共享的能力。例如：手机与PC间的互联网共享。具体内容可参考API [@ohos.bluetooth.pan](../reference/apis-connectivity-kit/js-apis-bluetooth-pan.md)。
 
 - **MAP模块**<br/>
-  提供基于消息访问协议（Message Access Profile，MAP）实现设备间消息共享的能力。例如：手机与车载间的短信数据同步。具体内容可参考API [@ohos.bluetooth.map](../reference/apis-connectivity-kit/js-apis-bluetooth-map.md)。
+  提供基于消息访问协议（Message Access Profile, MAP）实现设备间消息共享的能力。例如：手机与车载间的短信数据同步。具体内容可参考API [@ohos.bluetooth.map](../reference/apis-connectivity-kit/js-apis-bluetooth-map.md)。
 
 - **PBAP模块**<br/>
   提供基于电话簿访问协议（Phone Book Access Profile）实现设备间电话簿数据共享的能力。例如：手机与车载间的联系人和通话记录的数据同步。具体内容可参考API [@ohos.bluetooth.pbap](../reference/apis-connectivity-kit/js-apis-bluetooth-pbap.md)。
 
 ### WLAN简介
-无线局域网（Wireless Local Area Networks，WLAN），是通过无线电、红外光信号或者其他技术发送和接收数据的局域网，用户可以通过WLAN实现结点之间无物理连接的网络通讯。常用于用户携带可移动终端的办公、公众环境中。
+无线局域网（Wireless Local Area Networks, WLAN），是通过无线电、红外光信号或者其他技术发送和接收数据的局域网，用户可以通过WLAN实现结点之间无物理连接的网络通讯。常用于用户携带可移动终端的办公、公众环境中。
 
 WLAN系统为用户提供接入WLAN网络功能（STA模式）、点对点的数据传输功能（P2P模式）和热点分享功能（AP模式），让应用可以通过WLAN和其他设备互联互通。
 
@@ -83,6 +83,36 @@ NFC英文全称Near Field Communication，近距离无线通信。NFC服务提�
 
 - **PartnerAgent服务模块**<br/>
   提供了伙伴设备与OpenHarmony设备互通服务，在模块内可以实现互通业务比如媒体控制，电话反控，健康检测等。详情请参考[@ohos.FusionConnectivity.partnerAgent](../reference/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgent.md)文档。
+
+- **融合测距模块**<br/>
+  融合测距模块，提供了星闪[HADM](fusion-connectivity/fusion-connectivity-terminology.md#hadm)测距服务，在模块内可以使用星闪HADM测距的能力。详情请参考[@ohos.FusionConnectivity.ranging](../reference/apis-connectivity-kit/js-apis-fusionConnectivity-ranging.md)文档。
+
+### 星闪简介
+
+星闪（NearLink）提供一种低功耗、高速率的短距离通信服务，支持星闪设备之间的连接、数据交互。
+
+星闪提供了多种API，适用于设备发现、连接和数据传输等不同场景，助力开发者完成星闪相关开发。
+
+- **manager模块**<br/>
+  提供星闪开关状态查询、设备信息查询、配对设备管理等能力。详情请参考API [@ohos.nearlink.manager (星闪基础管理能力)](../reference/apis-connectivity-kit/js-apis-nearlink-manager.md)。
+
+- **advertising模块**<br/>
+  提供发送星闪广播、停止广播和订阅广播状态变化等能力。详情请参考API [@ohos.nearlink.advertising (星闪广播能力)](../reference/apis-connectivity-kit/js-apis-nearlink-advertising.md)。
+
+- **scan模块**<br/>
+  提供发起星闪扫描、停止扫描、订阅扫描结果和查询扫描设备信息等能力。详情请参考API [@ohos.nearlink.scan (星闪扫描能力)](../reference/apis-connectivity-kit/js-apis-nearlink-scan.md)。
+
+- **remoteDevice模块**<br/>
+  提供创建远端设备实例、发起配对、查询远端设备信息和订阅设备状态变化等能力。详情请参考API [@ohos.nearlink.remoteDevice (星闪远端设备连接能力)](../reference/apis-connectivity-kit/js-apis-nearlink-remote-device.md)。
+
+- **ssap模块**<br/>
+  提供SSAP服务端/客户端连接建立、属性读写与通知等能力。详情请参考API [@ohos.nearlink.ssap (星闪SSAP连接能力)](../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md)。
+
+- **dataTransfer模块**<br/>
+  提供基于端口通道的数据传输能力。详情请参考API [@ohos.nearlink.dataTransfer (星闪数据传输能力)](../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md)。
+
+- **cdsm模块**<br/>
+  提供合作设备集合成员设备信息的查询与订阅等能力。详情请参考API [@ohos.nearlink.cdsm (星闪合作设备集合管理能力)](../reference/apis-connectivity-kit/js-apis-nearlink-cdsm.md)。
 
 ### 运作机制
 

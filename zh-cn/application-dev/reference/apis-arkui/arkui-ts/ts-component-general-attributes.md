@@ -1,11 +1,15 @@
 # 通用属性
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 <!--Del-->
+
+通用属性用于为ArkUI组件配置尺寸、位置、布局、边框、背景、显隐、交互、无障碍等通用能力，适用于需要统一调整组件外观、布局行为和交互效果的场景，可帮助开发者提升界面构建效率并保持组件表现一致。
+
 - [尺寸设置](ts-universal-attributes-size.md)
 - [位置设置](ts-universal-attributes-location.md)
 - [布局约束](ts-universal-attributes-layout-constraints.md)
@@ -15,7 +19,7 @@
 - [边框设置](ts-universal-attributes-border.md)
 - [图片边框设置](ts-universal-attributes-border-image.md)
 - [背景设置](ts-universal-attributes-background.md)
-- [透明度设置](ts-universal-attributes-opacity.md)
+- [不透明度设置](ts-universal-attributes-opacity.md)
 - [显隐控制](ts-universal-attributes-visibility.md)
 - [禁用控制](ts-universal-attributes-enable.md)
 - [浮层](ts-universal-attributes-overlay.md)
@@ -39,6 +43,7 @@
 - [点击回弹效果](ts-universal-attributes-click-effect.md)
 - [点击音效](ts-universal-attributes-click-sound.md)
 - [智慧手势响应](ts-universal-attributes-smart-gesture-shortcut.md)
+- [Agent输入管控](ts-universal-attributes-agent-control-mode.md)
 - [无障碍属性](ts-universal-attributes-accessibility.md)
 - [动态属性设置](ts-universal-attributes-attribute-modifier.md)
 - [动态手势设置](ts-universal-attributes-gesture-modifier.md)

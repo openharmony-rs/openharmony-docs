@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍JSVM-API的场景、组成架构与关键交互流程。它是基于标准JS引擎的C语言接口，用于动态执行JS代码并将高性能C++能力注册给JS调用，适用范围与Node-API有所区别。"
+keywords: [JSVM-API, 标准JS引擎, JS与C++交互, 虚拟机生命周期, 上下文快照, code cache, CPU Profiler, 堆统计]
+doctype: guide
+status: active
+---
+
 # JSVM-API简介
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 场景介绍
 
@@ -20,7 +28,7 @@ OpenHarmony JSVM-API是并发不安全接口，开发者需保障JSVM-API的并�
 
 > **注意：**
 >
-> JSVM-API仅支持JS与C/C++的交互，如果需要实现ArkTS与C/C++的交互，请参考[Node-API简介](napi-introduction.md)
+> JSVM-API仅支持JS与C/C++的交互，如果需要实现ArkTS与C/C++的交互，请参考[Node-API简介](napi-introduction.md)。
 
 ## JSVM-API的组成架构
 
@@ -67,3 +75,5 @@ JSVM-API与Native模块之间的交互流程主要分为以下两步：
 1. **初始化阶段**：在Native模块上初始化JSVM和JS上下文，并完成Native函数的注册。Native方法将被挂载到JS执行环境的全局上下文即GlobalThis。
 
 2. **调用阶段**：当JS侧调用通过JSVM-API注册到JS全局上下文的方法时，JS引擎会找到并调用对应的C/C++方法。
+
+<!--RP1--><!--RP1End-->

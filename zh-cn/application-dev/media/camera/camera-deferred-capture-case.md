@@ -166,7 +166,7 @@ async function deferredCaptureCase(context: Context, surfaceId: string): Promise
     console.error('createOutput photoProfilesArray == null || undefined');
   }
 
-  // 创建预览输出流,其中参数surfaceId参考上文XComponent组件，预览流为XComponent组件提供的surface。
+  // 创建预览输出流，其中参数surfaceId参考上文XComponent组件，预览流为XComponent组件提供的surface。
   try {
     previewOutput = cameraManager.createPreviewOutput(previewProfilesArray[0], surfaceId);
   } catch (error) {
@@ -247,9 +247,13 @@ async function deferredCaptureCase(context: Context, surfaceId: string): Promise
   await photoSession.commitConfig();
 
   // 启动会话。
-  await photoSession.start().then(() => {
-    console.info('Promise returned to indicate the session start success.');
-  });
+  try {
+    await photoSession.start();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error('Failed to start. errorCode = ', err.code);
+  }
+
   // 判断设备是否支持闪光灯。
   let flashStatus: boolean = false;
   try {
@@ -337,19 +341,44 @@ async function deferredCaptureCase(context: Context, surfaceId: string): Promise
 
 async function releaseCamSession() {
   // 停止当前会话。
-  await photoSession?.stop();
+  try {
+    await photoSession?.stop();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error('Failed to stop, error = ' + err.code);
+  }
 
   // 释放拍照输出流。
-  await photoOutput?.release();
+  try {
+    await photoOutput?.release();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error('Failed to release photo, error = ' + err.code);
+  }
 
   // 释放预览输出流。
-  await previewOutput?.release();
+  try {
+    await previewOutput?.release();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error('Failed to release preview, error = ' + err.code);
+  }
 
   // 释放相机输入流。
-  await cameraInput?.close();
+  try {
+    await cameraInput?.close();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error('Failed to close, error = ' + err.code);
+  }
 
   // 释放会话。
-  await photoSession?.release();
+  try {
+    await photoSession?.release();
+  } catch (error) {
+    let err = error as BusinessError;
+    console.error('Failed to release session, error = ' + err.code);
+  }
 
   // 会话置空。
   photoSession = undefined;

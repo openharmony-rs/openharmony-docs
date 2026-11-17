@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-当组件获得焦点时，获焦组件触发该事件。系统会根据该事件回调函数返回值，判断是否需要键盘。
+当组件获得焦点时，获焦组件触发该事件，用于在焦点切换时灵活控制软键盘的显示与隐藏。系统会根据该事件回调函数返回值，判断是否需要键盘。主要适用于键盘接续场景，帮助开发者避免键盘频繁收起和拉起，优化用户交互体验。
 
 > **说明：**
 >
@@ -18,7 +18,7 @@
 
 onNeedSoftkeyboard(onNeedSoftkeyboardCallback: OnNeedSoftkeyboardCallback | undefined): T
 
-设置组件判断是否需要键盘时触发的回调。主要用于键盘接续场景，当焦点从输入框切换到其他组件时，如果切换后的组件回调函数[OnNeedSoftkeyboardCallback](#onneedsoftkeyboardcallback)的返回值设置为`true`，则表示该组件需要键盘，此时键盘将不会收起，如果返回值设置为`false`，则表示该组件不需要键盘，此时键盘将收起。
+设置组件判断是否需要键盘时触发的回调。主要用于键盘接续场景。当组件获得焦点时，系统会调用该组件绑定的[OnNeedSoftkeyboardCallback](#onneedsoftkeyboardcallback)回调函数，根据返回值判断是否需要键盘：如果返回值为`true`，则表示该组件需要键盘，键盘将不会收起；如果返回值为`false`，则表示该组件不需要键盘，键盘将收起。
 
 对于不能获焦的组件，本接口不生效。
 
@@ -28,7 +28,7 @@ Web组件使用该方法时，如果返回值为`true`，Web组件会判断组�
 
 XComponent组件使用该方法时，如果返回值为`true`且XComponent组件使用[OH_ArkUI_XComponent_SetNeedSoftKeyboard()](../capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_setneedsoftkeyboard)设置了需要键盘，才会保留键盘，如果返回值为`false`，无论组件如何设置，键盘都不会保留。
 
-当接口返回`true`时，应用的自绘制输入框需要主动[attach](../../apis-ime-kit/js-apis-inputmethod.md#attach15)，建立输入法框架和输入法应用的通信，否则点击键盘会失去响应（失焦时输入法框架和输入法应用的通信会断开）。
+当返回值为`true`时，应用的自绘制输入框需要在获焦时主动调用[attach](../../apis-ime-kit/js-apis-inputmethod.md#attach15)方法，建立输入法框架和输入法应用的通信，否则点击键盘会失去响应。说明：失焦时输入法框架和输入法应用的通信会断开，获焦时需要重新建立通信。
 
 该接口只适用于对输入法应用接续的场景，对自定义键盘不生效。自定义键盘接续详见[setCustomKeyboardContinueFeature](../arkts-apis-uicontext-uicontext.md#setcustomkeyboardcontinuefeature23)。
 
@@ -42,7 +42,7 @@ XComponent组件使用该方法时，如果返回值为`true`且XComponent组件
 
 | 参数名                     | 类型                                   | 必填 | 说明                                     |
 | -------------------------- | ------------------------------------- | ---- | ---------------------------------------- |
-| onNeedSoftkeyboardCallback | [OnNeedSoftkeyboardCallback](#onneedsoftkeyboardcallback) \| undefined | 是 | 事件触发时执行的回调，系统会根据回调的返回值决定是否需要键盘。<br> 设置为undefined时，不会触发回调，输入框类组件行为等同返回true。其他组件行为等同返回false。 |
+| onNeedSoftkeyboardCallback | [OnNeedSoftkeyboardCallback](#onneedsoftkeyboardcallback) \| undefined | 是 | 事件触发时执行的回调，系统会根据回调的返回值决定是否需要键盘。<br>设置为undefined时，不会触发回调，输入框类组件行为等同返回true。其他组件行为等同返回false。前提条件：组件需可获焦，否则本接口不生效。当返回值为true时，自绘制输入框需在获焦时主动调用[attach](../../apis-ime-kit/js-apis-inputmethod.md#attach15)方法建立输入法通信，否则点击键盘会失去响应。 |
 
 **返回值：**
 
@@ -54,7 +54,7 @@ XComponent组件使用该方法时，如果返回值为`true`且XComponent组件
 
 type OnNeedSoftkeyboardCallback = () => boolean
 
-当绑定该方法的组件判断是否需要键盘时，将触发此回调。
+当绑定该方法的组件判断是否需要键盘时，将触发此回调。前提条件：组件需可获焦，否则本接口不生效。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
@@ -66,7 +66,7 @@ type OnNeedSoftkeyboardCallback = () => boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 是否需要键盘。<br/>若此回调的返回值为true，则表明该组件需要键盘；返回值为false，则表明该组件不需要键盘。 |
+| boolean | 是否需要键盘。<br>若此回调的返回值为`true`，则表明该组件需要键盘；返回值为`false`，则表明该组件不需要键盘。 |
 
 ## 示例
 
@@ -84,7 +84,7 @@ struct Index {
     Column() {
       Button('切换焦点到Button')
         .onClick(() => {
-          this.getUIContext().getFocusController().requestFocus('Button')
+          this.getUIContext().getFocusController().requestFocus('Button');
         })
         .key('Button')
         .fontSize(20)

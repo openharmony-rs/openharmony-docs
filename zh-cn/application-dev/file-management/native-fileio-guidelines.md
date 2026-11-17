@@ -1,9 +1,9 @@
 # 应用文件访问(C/C++)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 ## 场景介绍
@@ -31,26 +31,19 @@ FileIO模块提供了部分文件基础操作能力，其他能力请参考[libc
 CMakeLists.txt中添加以下lib。
 
 ```txt
-target_link_libraries(sample PUBLIC libohfileio.so)
-```
-
-**添加头文件**
-
-```c++
-#include <cstdio>
-#include <cstring>
-#include <filemanagement/fileio/oh_fileio.h>
+target_link_libraries(entry PUBLIC libohfileio.so)
 ```
 
 调用OH_FileIO_GetFileLocation接口获取文件存储位置。示例代码如下所示：
 
-<!--@[get_file_location_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKAppFileSample/entry/src/main/cpp/napi_init.cpp)-->
+<!--@[get_file_location_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKAppFileSample/entry/src/main/cpp/napi_init.cpp)-->    
 
 ``` C++
 void GetFileLocationExample(char *uri)
 {
     FileIO_FileLocation location;
-    FileManagement_ErrCode ret = OH_FileIO_GetFileLocation(uri, strlen(uri), &location);
+    int uriLength = static_cast<int>(strlen(uri));
+    FileManagement_ErrCode ret = OH_FileIO_GetFileLocation(uri, uriLength, &location);
     if (ret == 0) {
         if (location == FileIO_FileLocation::LOCAL) {
             printf("Succeeded in getting file location, this file is on local.");

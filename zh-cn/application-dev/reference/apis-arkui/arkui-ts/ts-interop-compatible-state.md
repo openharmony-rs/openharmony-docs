@@ -37,6 +37,6 @@ function getCompatibleState\<T\>(state: IDecoratedV1Variable\<T\>): ESValue;
 
 |类型   | 说明             |
 |------------|--------------|
-|ESValue   |ArkTS-Dyn的@State对象。    |
+|[ESValue](../../../quick-start/arkts-interop-overview.md#esvalue)   |ArkTS-Dyn的@State对象。    |
 
 

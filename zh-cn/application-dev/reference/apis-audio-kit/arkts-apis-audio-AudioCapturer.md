@@ -12,6 +12,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 8开始支持。
 
@@ -24,6 +25,10 @@ import { audio } from '@kit.AudioKit';
 ## 属性
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 类型                     | 只读 | 可选 | 说明             |
 | :---- | :------------------------- | :--- | :--- | :--------------- |
@@ -45,11 +50,15 @@ getCapturerInfo(callback: AsyncCallback<AudioCapturerInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                              | 必填 | 说明                                 |
 | :------- | :-------------------------------- | :--- | :----------------------------------- |
-| callback | AsyncCallback<[AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)\> | 是   | 回调函数。当获取音频采集器信息成功，err为undefined，data为获取到的音频采集器信息；否则为错误对象。 |
+| callback | AsyncCallback<[AudioCapturerInfo](arkts-apis-audio-i.md#audiocapturerinfo8)\> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频采集器信息成功，err为undefined，data为获取到的音频采集器信息；否则为错误对象。<br>ArkTS-Sta：当获取音频采集器信息成功，err为null，data为获取到的音频采集器信息；否则为错误对象。 |
 
 **示例：**
 
@@ -67,7 +76,6 @@ audioCapturer.getCapturerInfo((err: BusinessError, capturerInfo: audio.AudioCapt
 });
 ```
 
-
 ## getCapturerInfo<sup>8+</sup>
 
 getCapturerInfo(): Promise<AudioCapturerInfo\>
@@ -75,6 +83,10 @@ getCapturerInfo(): Promise<AudioCapturerInfo\>
 获取音频采集器信息。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -109,6 +121,10 @@ getCapturerInfoSync(): AudioCapturerInfo
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                              | 说明                                |
@@ -138,11 +154,15 @@ getStreamInfo(callback: AsyncCallback<AudioStreamInfo\>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                 | 必填 | 说明                             |
 | :------- | :--------------------------------------------------- | :--- | :------------------------------- |
-| callback | AsyncCallback<[AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)\> | 是   | 回调函数。当获取音频采集器流信息成功，err为undefined，data为获取到的音频采集器流信息；否则为错误对象。 |
+| callback | AsyncCallback<[AudioStreamInfo](arkts-apis-audio-i.md#audiostreaminfo8)\> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频采集器流信息成功，err为undefined，data为获取到的音频采集器流信息；否则为错误对象。<br>ArkTS-Sta：当获取音频采集器流信息成功，err为null，data为获取到的音频采集器流信息；否则为错误对象。 |
 
 **示例：**
 
@@ -169,6 +189,10 @@ getStreamInfo(): Promise<AudioStreamInfo\>
 获取音频采集器流信息。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -200,6 +224,10 @@ getStreamInfoSync(): AudioStreamInfo
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                           | 说明                            |
@@ -225,67 +253,87 @@ try {
 
 ## getAudioStreamId<sup>9+</sup>
 
-getAudioStreamId(callback: AsyncCallback<number\>): void
+ArkTS-Dyn: getAudioStreamId(callback: AsyncCallback<number\>): void
+
+ArkTS-Sta: getAudioStreamId(callback: AsyncCallback<long\>): void
 
 获取音频流id。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                 | 必填 | 说明                 |
 | :------- | :--------------------------------------------------- | :--- | :------------------- |
-| callback | AsyncCallback<number\> | 是   | 回调函数。当获取音频流id成功，err为undefined，data为获取到的音频流id；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback<number\><br>ArkTS-Sta: AsyncCallback<long\> | 是   | 回调函数。<br>ArkTS-Dyn：当获取音频流id成功，err为undefined，data为获取到的音频流id；否则为错误对象。<br>ArkTS-Sta：当获取音频流id成功，err为null，data为获取到的音频流id；否则为错误对象。 |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioCapturer.getAudioStreamId((err: BusinessError, streamId: number) => {
-  console.info(`audioCapturer GetStreamId: ${streamId}`);
+audioCapturer.getAudioStreamId((err, streamId) => {
+  if (err) {
+    console.error(`Failed to get audio stream id. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in getting audio stream id. AudioStreamId: ${streamId}`);
+  }
 });
 ```
 
 ## getAudioStreamId<sup>9+</sup>
 
-getAudioStreamId(): Promise<number\>
+ArkTS-Dyn: getAudioStreamId(): Promise<number\>
+
+ArkTS-Sta: getAudioStreamId(): Promise<long\>
 
 获取音频流id。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型             | 说明                   |
 | :----------------| :--------------------- |
-| Promise<number\> | Promise对象，返回音频流id。 |
+| ArkTS-Dyn: Promise<number\><br>ArkTS-Sta: Promise<long\> | Promise对象，返回音频流id。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioCapturer.getAudioStreamId().then((streamId: number) => {
-  console.info(`audioCapturer getAudioStreamId: ${streamId}`);
+audioCapturer.getAudioStreamId().then((streamId) => {
+  console.info(`Succeeded in getting audio stream id. AudioStreamId: ${streamId}`);
 }).catch((err: BusinessError) => {
-  console.error(`ERROR: ${err}`);
+  console.error(`Failed to get audio stream id. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
 ## getAudioStreamIdSync<sup>10+</sup>
 
-getAudioStreamIdSync(): number
+ArkTS-Dyn: getAudioStreamIdSync(): number
+
+ArkTS-Sta: getAudioStreamIdSync(): long
 
 获取音频流id。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型             | 说明                   |
 | :----------------| :--------------------- |
-| number | 返回音频流id。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回音频流id。 |
 
 **示例：**
 
@@ -293,11 +341,11 @@ getAudioStreamIdSync(): number
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let streamId: number = audioCapturer.getAudioStreamIdSync();
-  console.info(`audioCapturer getAudioStreamIdSync: ${streamId}`);
+  let streamId = audioCapturer.getAudioStreamIdSync();
+  console.info(`Succeeded in getting audio stream id. AudioStreamId: ${streamId}`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`ERROR: ${error}`);
+  console.error(`Failed to get audio stream id. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -309,11 +357,15 @@ start(callback: AsyncCallback<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                           |
 | :------- | :------------------- | :--- | :----------------------------- |
-| callback | AsyncCallback<void\> | 是   | 回调函数。当启动音频采集器成功，err为undefined，否则为错误对象。异常将返回error对象：<br>错误码6800301：表示包含状态检查异常、焦点抢占失败、系统处理异常（具体错误查看系统日志）。 |
+| callback | AsyncCallback<void\> | 是   | 回调函数。<br>ArkTS-Dyn：当启动音频采集器成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当启动音频采集器成功，err为null，否则为错误对象。<br>异常将返回error对象：<br>错误码6800301：表示包含状态检查异常、焦点抢占失败、系统处理异常（具体错误查看系统日志）。 |
 
 **示例：**
 
@@ -329,7 +381,6 @@ audioCapturer.start((err: BusinessError) => {
 });
 ```
 
-
 ## start<sup>8+</sup>
 
 start(): Promise<void\>
@@ -337,6 +388,10 @@ start(): Promise<void\>
 启动音频采集器，开始获取音频数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -359,6 +414,40 @@ audioCapturer.start().then(() => {
 });
 ```
 
+## requestPlaybackCaptureStart
+
+requestPlaybackCaptureStart(callback: Callback\<PlaybackCaptureStartState>): void
+
+请求启动内录流接口，内录流只能通过该接口触发启动。使用callback异步回调。
+
+内录是指以系统内部音频数据作为音频源的输入类型，简称为内录，对应的流称为内录流。常用于录制目标设备应用发送到系统以供播放的音频。
+
+该接口为非阻塞接口，系统接收到内录启动请求后，会继续处理用户授权检查和内录流启动，最终结果通过回调函数返回。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| :--- | :--- | :--- | :--- |
+| callback | Callback<[PlaybackCaptureStartState](arkts-apis-audio-e.md#playbackcapturestartstate)> | 是 | 回调函数，用于接收启动内录请求的最终结果。 |
+
+**示例：**
+
+```ts
+audioCapturer.requestPlaybackCaptureStart((state: audio.PlaybackCaptureStartState) => {
+  if (state === audio.PlaybackCaptureStartState.STATE_SUCCESS) {
+    console.info('Succeeded in starting Playback capture.');
+  } else {
+    console.error(`Failed to start Playback capture. State: ${state}.`);
+  }
+});
+```
+
 ## stop<sup>8+</sup>
 
 stop(callback: AsyncCallback<void\>): void
@@ -367,11 +456,15 @@ stop(callback: AsyncCallback<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                           |
 | :------- | :------------------- | :--- | :----------------------------- |
-| callback | AsyncCallback<void\> | 是   | 回调函数。当停止音频采集成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback<void\> | 是   | 回调函数。<br>ArkTS-Dyn：当停止音频采集成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当停止音频采集成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -387,7 +480,6 @@ audioCapturer.stop((err: BusinessError) => {
 });
 ```
 
-
 ## stop<sup>8+</sup>
 
 stop(): Promise<void\>
@@ -395,6 +487,10 @@ stop(): Promise<void\>
 停止音频采集器，停止输入音频流。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -425,11 +521,15 @@ release(callback: AsyncCallback<void\>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                 | 必填 | 说明                                |
 | :------- | :------------------- | :--- | :---------------------------------- |
-| callback | AsyncCallback<void\> | 是   | 回调函数。当释放音频采集器成功，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback<void\> | 是   | 回调函数。<br>ArkTS-Dyn：当释放音频采集器成功，err为undefined，否则为错误对象。<br>ArkTS-Sta：当释放音频采集器成功，err为null，否则为错误对象。 |
 
 **示例：**
 
@@ -454,6 +554,10 @@ release(): Promise<void\>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型           | 说明                          |
@@ -470,55 +574,69 @@ audioCapturer.release().then(() => {
   console.info('AudioFrameworkRecLog: Capturer release : SUCCESS');
   console.info(`AudioFrameworkRecLog: AudioCapturer : STATE : ${audioCapturer.state}`);
 }).catch((err: BusinessError) => {
-  console.error(`AudioFrameworkRecLog: Capturer stop: ERROR: ${err}`);
+  console.error(`AudioFrameworkRecLog: Capturer release: ERROR: ${err}`);
 });
 ```
 
 
 ## getAudioTime<sup>8+</sup>
 
-getAudioTime(callback: AsyncCallback<number\>): void
+ArkTS-Dyn: getAudioTime(callback: AsyncCallback<number\>): void
+
+ArkTS-Sta: getAudioTime(callback: AsyncCallback<long\>): void
 
 获取当前录制位置的时间戳（从1970年1月1日开始），单位为纳秒。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                           |
 | :------- | :--------------------- | :--- | :----------------------------- |
-| callback | AsyncCallback<number\> | 是   | 回调函数。当获取时间戳成功，err为undefined，data为获取到的时间戳；否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback<number\><br>ArkTS-Sta: AsyncCallback<long\> | 是   | 回调函数。<br>ArkTS-Dyn：当获取时间戳成功，err为undefined，data为获取到的时间戳；否则为错误对象。<br>ArkTS-Sta：当获取时间戳成功，err为null，data为获取到的时间戳；否则为错误对象。 |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioCapturer.getAudioTime((err: BusinessError, timestamp: number) => {
-  console.info(`Succeeded in getting audio time. Timestamp: ${timestamp}`);
+audioCapturer.getAudioTime((err, timestamp) => {
+  if (err) {
+    console.error(`Failed to get audio time. Code: ${err.code}, message: ${err.message}`);
+  } else {
+    console.info(`Succeeded in getting audio time. Timestamp: ${timestamp}`);
+  }
 });
 ```
 
 ## getAudioTime<sup>8+</sup>
 
-getAudioTime(): Promise<number\>
+ArkTS-Dyn: getAudioTime(): Promise<number\>
+
+ArkTS-Sta: getAudioTime(): Promise<long\>
 
 获取当前录制位置的时间戳（从1970年1月1日开始），单位为纳秒。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型             | 说明                          |
 | :--------------- | :---------------------------- |
-| Promise<number\> | Promise对象，返回时间戳（从1970年1月1日开始）。<br>单位为纳秒。 |
+| ArkTS-Dyn: Promise<number\><br>ArkTS-Sta: Promise<long\> | Promise对象，返回时间戳（从1970年1月1日开始）。<br>单位为纳秒。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioCapturer.getAudioTime().then((timestamp: number) => {
+audioCapturer.getAudioTime().then((timestamp) => {
   console.info(`Succeeded in getting audio time. Timestamp: ${timestamp}`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to get audio time. Code: ${err.code}, message: ${err.message}`);
@@ -527,17 +645,23 @@ audioCapturer.getAudioTime().then((timestamp: number) => {
 
 ## getAudioTimeSync<sup>10+</sup>
 
-getAudioTimeSync(): number
+ArkTS-Dyn: getAudioTimeSync(): number
+
+ArkTS-Sta: getAudioTimeSync(): long
 
 获取当前录制位置的时间戳（从1970年1月1日开始），单位为纳秒。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型             | 说明                          |
 | :--------------- | :---------------------------- |
-| number | 返回时间戳。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回时间戳。 |
 
 **示例：**
 
@@ -545,7 +669,7 @@ getAudioTimeSync(): number
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let timestamp: number = audioCapturer.getAudioTimeSync();
+  let timestamp = audioCapturer.getAudioTimeSync();
   console.info(`Succeeded in getting audio time. Timestamp: ${timestamp}`);
 } catch (err) {
   let error = err as BusinessError;
@@ -562,6 +686,10 @@ getAudioTimestampInfo(): Promise\<AudioTimestampInfo>
 该接口可以获取到音频通道实际录制位置（framePos）以及录制到该位置时候的时间戳（timestamp），时间戳单位为纳秒。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -597,6 +725,10 @@ getAudioTimestampInfoSync(): AudioTimestampInfo
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型             | 说明                    |
@@ -627,24 +759,28 @@ try {
 
 ## getBufferSize<sup>8+</sup>
 
-getBufferSize(callback: AsyncCallback<number\>): void
+ArkTS-Dyn: getBufferSize(callback: AsyncCallback<number\>): void
+
+ArkTS-Sta: getBufferSize(callback: AsyncCallback<long\>): void
 
 获取采集器合理的最小缓冲区大小。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                   | 必填 | 说明                                 |
 | :------- | :--------------------- | :--- | :----------------------------------- |
-| callback | AsyncCallback<number\> | 是   | 回调函数。当获取采集器合理的最小缓冲区大小成功，err为undefined，data为获取到的采集器合理的最小缓冲区大小；否则为错误对象。<br>单位为字节。 |
+| callback | ArkTS-Dyn: AsyncCallback<number\><br>ArkTS-Sta: AsyncCallback<long\> | 是   | 回调函数。<br>ArkTS-Dyn：当获取采集器合理的最小缓冲区大小成功，err为undefined，data为获取到的采集器合理的最小缓冲区大小；否则为错误对象。<br>ArkTS-Sta：当获取采集器合理的最小缓冲区大小成功，err为null，data为获取到的采集器合理的最小缓冲区大小；否则为错误对象。<br>单位为字节。 |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-audioCapturer.getBufferSize((err: BusinessError, bufferSize: number) => {
+audioCapturer.getBufferSize((err, bufferSize) => {
   if (err) {
     console.error(`Failed to get buffer size. Code: ${err.code}, message: ${err.message}`);
   } else {
@@ -655,24 +791,30 @@ audioCapturer.getBufferSize((err: BusinessError, bufferSize: number) => {
 
 ## getBufferSize<sup>8+</sup>
 
-getBufferSize(): Promise<number\>
+ArkTS-Dyn: getBufferSize(): Promise<number\>
+
+ArkTS-Sta: getBufferSize(): Promise<long\>
 
 获取采集器合理的最小缓冲区大小。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型             | 说明                                |
 | :--------------- | :---------------------------------- |
-| Promise<number\> | Promise对象，返回缓冲区大小。<br>单位为字节。 |
+| ArkTS-Dyn: Promise<number\><br>ArkTS-Sta: Promise<long\> | Promise对象，返回缓冲区大小。<br>单位为字节。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioCapturer.getBufferSize().then((bufferSize: number) => {
+audioCapturer.getBufferSize().then((bufferSize) => {
   console.info(`Succeeded in getting buffer size, BufferSize: ${bufferSize}.`);
 }).catch((err: BusinessError) => {
   console.error(`Failed to get buffer size. Code: ${err.code}, message: ${err.message}`);
@@ -681,17 +823,23 @@ audioCapturer.getBufferSize().then((bufferSize: number) => {
 
 ## getBufferSizeSync<sup>10+</sup>
 
-getBufferSizeSync(): number
+ArkTS-Dyn: getBufferSizeSync(): number
+
+ArkTS-Sta: getBufferSizeSync(): long
 
 获取采集器合理的最小缓冲区大小。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型             | 说明                                |
 | :--------------- | :---------------------------------- |
-| number | 返回缓冲区大小，单位为字节。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回缓冲区大小，单位为字节。 |
 
 **示例：**
 
@@ -714,6 +862,10 @@ getCurrentInputDevices(): AudioDeviceDescriptors
 获取录音流输入设备信息。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -745,6 +897,10 @@ getCurrentAudioCapturerChangeInfo(): AudioCapturerChangeInfo
 获取录音流配置。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -782,7 +938,13 @@ AudioCapturer对象在start事件时获取焦点，在pause、stop等事件时�
 
 调用此方法后，如果AudioCapturer对象获取焦点失败或发生中断事件（如被其他音频打断等），会收到[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)。建议应用根据InterruptEvent的信息进行进一步处理。更多信息请参阅文档[音频焦点介绍](../../media/audio/audio-playback-concurrency.md)。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioInterrupt](#onaudiointerrupt23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -835,11 +997,72 @@ audioCapturer.on('audioInterrupt', (interruptEvent: audio.InterruptEvent) => {
       case audio.InterruptHint.INTERRUPT_HINT_RESUME:
         // 建议应用继续采集（说明音频流此前被强制暂停，临时失去焦点，现在可以恢复采集）。
         // 由于INTERRUPT_HINT_RESUME操作需要应用主动执行，系统无法强制，故INTERRUPT_HINT_RESUME事件一定为INTERRUPT_SHARE类型。
-        console.info('Resume force paused renderer or ignore');
+        console.info('Resume force paused capturer or ignore');
         // 若选择继续采集，需在此处主动执行开始采集的若干操作。
         break;
       default:
         console.info('Invalid interruptEvent');
+        break;
+    }
+  }
+});
+```
+
+## onAudioInterrupt<sup>23+</sup>
+
+onAudioInterrupt(callback: Callback\<InterruptEvent>): void
+
+监听音频中断事件（当音频焦点发生变化时触发）。使用callback异步回调。
+
+AudioCapturer对象在start事件时获取焦点，在pause、stop等事件时释放焦点，无需开发者主动申请。
+
+调用此方法后，如果AudioCapturer对象获取焦点失败或发生中断事件（如被其他音频打断等），会收到[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)。建议应用根据InterruptEvent的信息进行进一步处理。更多信息请参阅文档[音频焦点介绍](../../media/audio/audio-playback-concurrency.md)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('audioInterrupt')](#onaudiointerrupt10)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Interrupt
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                         | 必填 | 说明                                                         |
+| -------- | -------------------------------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback\<[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)\> | 是   | 回调函数，返回中断事件信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+let isCapturing: boolean = false;
+
+audioCapturer.onAudioInterrupt((interruptEvent: audio.InterruptEvent) => {
+  if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_FORCE) {
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_PAUSE:
+        isCapturing = false;
+        break;
+      case audio.InterruptHint.INTERRUPT_HINT_STOP:
+        isCapturing = false;
+        break;
+      default:
+        break;
+    }
+  } else if (interruptEvent.forceType == audio.InterruptForceType.INTERRUPT_SHARE) {
+    switch (interruptEvent.hintType) {
+      case audio.InterruptHint.INTERRUPT_HINT_RESUME:
+        isCapturing = true;
+        break;
+      default:
         break;
     }
   }
@@ -852,7 +1075,13 @@ off(type: 'audioInterrupt'): void
 
 取消监听音频中断事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioInterrupt](#offaudiointerrupt23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -875,13 +1104,39 @@ off(type: 'audioInterrupt'): void
 audioCapturer.off('audioInterrupt');
 ```
 
+## offAudioInterrupt<sup>23+</sup>
+
+offAudioInterrupt(): void
+
+取消监听音频中断事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('audioInterrupt')](#offaudiointerrupt10)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Interrupt
+
+**ArkTS-Sta起始版本：** 23
+
+**示例：**
+
+```ts
+audioCapturer.offAudioInterrupt();
+```
+
 ## on('inputDeviceChange')<sup>11+</sup>
 
 on(type: 'inputDeviceChange', callback: Callback\<AudioDeviceDescriptors>): void
 
 监听音频输入设备变化事件（当音频输入设备发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onInputDeviceChange](#oninputdevicechange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -908,13 +1163,58 @@ audioCapturer.on('inputDeviceChange', (deviceChangeInfo: audio.AudioDeviceDescri
   console.info(`inputDevice deviceType: ${deviceChangeInfo[0].deviceType}`);
 });
 ```
+
+## onInputDeviceChange<sup>23+</sup>
+
+onInputDeviceChange(callback: Callback\<AudioDeviceDescriptors>): void
+
+监听音频输入设备变化事件（当音频输入设备发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('inputDeviceChange')](#oninputdevicechange11)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                        |
+| :------- | :------------------------- | :--- | :------------------------------------------ |
+| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) > | 是   | 回调函数，返回变化后的音频输入设备信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioCapturer.onInputDeviceChange((deviceChangeInfo: audio.AudioDeviceDescriptors) => {
+  console.info(`inputDevice id: ${deviceChangeInfo[0].id}`);
+  console.info(`inputDevice deviceRole: ${deviceChangeInfo[0].deviceRole}`);
+  console.info(`inputDevice deviceType: ${deviceChangeInfo[0].deviceType}`);
+});
+```
+
 ## off('inputDeviceChange')<sup>11+</sup>
 
 off(type: 'inputDeviceChange', callback?: Callback\<AudioDeviceDescriptors>): void
 
 取消监听音频输入设备更改事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offInputDeviceChange](#offinputdevicechange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -950,13 +1250,67 @@ audioCapturer.on('inputDeviceChange', inputDeviceChangeCallback);
 audioCapturer.off('inputDeviceChange', inputDeviceChangeCallback);
 ```
 
+## offInputDeviceChange<sup>23+</sup>
+
+offInputDeviceChange(callback?: Callback\<AudioDeviceDescriptors>): void
+
+取消监听音频输入设备更改事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('inputDeviceChange')](#offinputdevicechange11)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                       |
+| :------- | :------------------------- | :--- |:-----------------------------------------|
+| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) > | 否   | 回调函数，返回音频输入设备信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioCapturer.offInputDeviceChange();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let inputDeviceChangeCallback = (deviceChangeInfo: audio.AudioDeviceDescriptors) => {
+  console.info(`inputDevice id: ${deviceChangeInfo[0].id}`);
+  console.info(`inputDevice deviceRole: ${deviceChangeInfo[0].deviceRole}`);
+  console.info(`inputDevice deviceType: ${deviceChangeInfo[0].deviceType}`);
+};
+
+audioCapturer.onInputDeviceChange(inputDeviceChangeCallback);
+
+audioCapturer.offInputDeviceChange(inputDeviceChangeCallback);
+```
+
 ## on('audioCapturerChange')<sup>11+</sup>
 
 on(type: 'audioCapturerChange', callback: Callback\<AudioCapturerChangeInfo>): void
 
-监听录音流配置变化事件（当音频录制流状态变化、设备变化时触发）。使用callback异步回调。订阅内部是异步实现，是非精确回调，在录音流配置变化的同时注册回调，收到的返回结果存在变化可能性。
+监听录音流配置变化事件（当音频录制流状态变化、设备变化时触发）。使用callback异步回调。
+
+订阅内部是异步实现，是非精确回调，在录音流配置变化的同时注册回调，收到的返回结果存在变化可能性。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onAudioCapturerChange](#onaudiocapturerchange23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -982,13 +1336,57 @@ audioCapturer.on('audioCapturerChange', (capturerChangeInfo: audio.AudioCapturer
 });
 ```
 
+## onAudioCapturerChange<sup>23+</sup>
+
+onAudioCapturerChange(callback: Callback\<AudioCapturerChangeInfo>): void
+
+监听录音流配置变化事件（当音频录制流状态变化、设备变化时触发）。使用callback异步回调。
+
+订阅内部是异步实现，是非精确回调，在录音流配置变化的同时注册回调，收到的返回结果存在变化可能性。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('audioCapturerChange')](#onaudiocapturerchange11)
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                        |
+| :------- | :------------------------- | :--- | :------------------------------------------ |
+| callback | Callback\<[AudioCapturerChangeInfo](arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | 是   | 回调函数，录音流配置或状态变化时返回监听的录音流当前配置和状态信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioCapturer.onAudioCapturerChange((capturerChangeInfo: audio.AudioCapturerChangeInfo) => {
+  console.info(`Succeeded in using on function, AudioCapturerChangeInfo: ${capturerChangeInfo}.`);
+});
+```
+
 ## off('audioCapturerChange')<sup>11+</sup>
 
 off(type: 'audioCapturerChange', callback?: Callback\<AudioCapturerChangeInfo>): void
 
 取消监听录音流配置变化事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioCapturerChange](#offaudiocapturerchange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1022,6 +1420,50 @@ audioCapturer.on('audioCapturerChange', audioCapturerChangeCallback);
 audioCapturer.off('audioCapturerChange', audioCapturerChangeCallback);
 ```
 
+## offAudioCapturerChange<sup>23+</sup>
+
+offAudioCapturerChange(callback?: Callback\<AudioCapturerChangeInfo>): void
+
+取消监听录音流配置变化事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('audioCapturerChange')](#offaudiocapturerchange11)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                        |
+| :------- | :------------------------- | :--- | :------------------------------------------ |
+| callback | Callback\<[AudioCapturerChangeInfo](arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | 否   | 回调函数，返回取消监听的录音流配置或状态变化。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioCapturer.offAudioCapturerChange();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let audioCapturerChangeCallback = (capturerChangeInfo: audio.AudioCapturerChangeInfo) => {
+  console.info(`Succeeded in using on or off function, AudioCapturerChangeInfo: ${capturerChangeInfo}.`);
+};
+
+audioCapturer.onAudioCapturerChange(audioCapturerChangeCallback);
+
+audioCapturer.offAudioCapturerChange(audioCapturerChangeCallback);
+```
+
 ## on('markReach')<sup>8+</sup>
 
 on(type: 'markReach', frame: number, callback: Callback&lt;number&gt;): void
@@ -1030,7 +1472,13 @@ on(type: 'markReach', frame: number, callback: Callback&lt;number&gt;): void
 
 如果将frame设置为100，当采集帧数到达第100帧时，系统将上报信息。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onMarkReach](#onmarkreach23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1050,13 +1498,52 @@ audioCapturer.on('markReach', 1000, (position: number) => {
 });
 ```
 
+## onMarkReach<sup>23+</sup>
+
+onMarkReach(frame: long, callback: Callback&lt;long&gt;): void
+
+监听标记到达事件（当采集的帧数达到frame参数的值时触发，仅调用一次）。使用callback异步回调。
+
+如果将frame设置为100，当采集帧数到达第100帧时，系统将上报信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('markReach')](#onmarkreach8)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                       |
+| :------- | :----------------------  | :--- | :----------------------------------------- |
+| frame    | long                   | 是   | 触发事件的帧数。该值必须大于0。           |
+| callback | Callback&lt;long&gt;         | 是   | 回调函数，返回frame参数的值。 |
+
+**示例：**
+
+```ts
+audioCapturer.onMarkReach(1000, (position: long) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+});
+```
+
 ## off('markReach')<sup>8+</sup>
 
 off(type: 'markReach', callback?: Callback&lt;number&gt;): void
 
 取消监听标记到达事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offMarkReach](#offmarkreach23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1083,15 +1570,59 @@ audioCapturer.on('markReach', 1000, markReachCallback);
 audioCapturer.off('markReach', markReachCallback);
 ```
 
+## offMarkReach<sup>23+</sup>
+
+offMarkReach(callback?: Callback&lt;long&gt;): void
+
+取消监听标记到达事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('markReach')](#offmarkreach8)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                              |
+| :----- | :----- | :--- | :------------------------------------------------ |
+| callback | Callback&lt;long&gt;         | 否  | 回调函数，返回frame参数的值。 |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioCapturer.offMarkReach();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let markReachCallback = (position: long) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+};
+
+audioCapturer.onMarkReach(1000, markReachCallback);
+
+audioCapturer.offMarkReach(markReachCallback);
+```
+
 ## on('periodReach')<sup>8+</sup>
 
 on(type: 'periodReach', frame: number, callback: Callback&lt;number&gt;): void
 
-监听标记到达事件（当采集的帧数达到frame参数的值时触发，即按周期上报信息）。使用callback异步回调。
+监听周期到达事件（当采集的帧数达到frame参数的值时触发，即按周期上报信息）。使用callback异步回调。
 
-如果将frame设置为10，每渲染10帧数据均会上报信息（例如：第10帧、第20帧、第30帧......）。
+如果将frame设置为10，每采集10帧数据均会上报信息（例如：第10帧、第20帧、第30帧......）。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onPeriodReach](#onperiodreach23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1111,13 +1642,52 @@ audioCapturer.on('periodReach', 1000, (position: number) => {
 });
 ```
 
+## onPeriodReach<sup>23+</sup>
+
+onPeriodReach(frame: long, callback: Callback&lt;long&gt;): void
+
+监听标记到达事件（当采集的帧数达到frame参数的值时触发，即按周期上报信息）。使用callback异步回调。
+
+如果将frame设置为10，每采集10帧数据均会上报信息（例如：第10帧、第20帧、第30帧......）。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('periodReach')](#onperiodreach8)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                        |
+| :------- | :----------------------- | :--- | :------------------------------------------ |
+| frame    | long                   | 是   | 触发事件的帧数。该值必须大于0。            |
+| callback | Callback&lt;long&gt;         | 是   |回调函数，返回frame参数的值。    |
+
+**示例：**
+
+```ts
+audioCapturer.onPeriodReach(1000, (position: long) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+});
+```
+
 ## off('periodReach')<sup>8+</sup>
 
 off(type: 'periodReach', callback?: Callback&lt;number&gt;): void
 
 取消监听标记到达事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offPeriodReach](#offperiodreach23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1144,13 +1714,57 @@ audioCapturer.on('periodReach', 1000, periodReachCallback);
 audioCapturer.off('periodReach', periodReachCallback);
 ```
 
+## offPeriodReach<sup>23+</sup>
+
+offPeriodReach(callback?: Callback&lt;long&gt;): void
+
+取消监听标记到达事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('periodReach')](#offperiodreach8)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                |
+| :----- | :----- | :--- | :-------------------------------------------------- |
+| callback | Callback&lt;long&gt;         | 否  | 回调函数，返回frame参数的值。 |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioCapturer.offPeriodReach();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let periodReachCallback = (position: long) => {
+  if (position == 1000) {
+    console.info('ON Triggered successfully');
+  }
+};
+
+audioCapturer.onPeriodReach(1000, periodReachCallback);
+
+audioCapturer.offPeriodReach(periodReachCallback);
+```
+
 ## on('stateChange')<sup>8+</sup>
 
 on(type: 'stateChange', callback: Callback<AudioState\>): void
 
 监听状态变化事件（当AudioCapturer状态发生变化时触发）。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onstatechange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1172,13 +1786,52 @@ audioCapturer.on('stateChange', (state: audio.AudioState) => {
 });
 ```
 
+## onStateChange<sup>23+</sup>
+
+onStateChange(callback: Callback<AudioState\>): void
+
+监听状态变化事件（当AudioCapturer状态发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('stateChange')](#onstatechange8)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                        |
+| :------- | :------------------------- | :--- | :------------------------------------------ |
+| callback | Callback\<[AudioState](arkts-apis-audio-e.md#audiostate8)> | 是   | 回调函数，返回当前音频的状态。 |
+
+**示例：**
+
+```ts
+audioCapturer.onStateChange((state: audio.AudioState) => {
+  if (state == 1) {
+    console.info('audio capturer state is: STATE_PREPARED');
+  }
+  if (state == 2) {
+    console.info('audio capturer state is: STATE_RUNNING');
+  }
+});
+```
+
 ## off('stateChange')<sup>18+</sup>
 
 off(type: 'stateChange', callback?: Callback&lt;AudioState&gt;): void
 
 取消监听状态变化事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offstatechange23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 18
 
 **参数：**
 
@@ -1204,16 +1857,65 @@ audioCapturer.off('stateChange');
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let stateChangeCallback = (state: audio.AudioState) => {
   if (state == 1) {
-    console.info('audio renderer state is: STATE_PREPARED');
+    console.info('audio capturer state is: STATE_PREPARED');
   }
   if (state == 2) {
-    console.info('audio renderer state is: STATE_RUNNING');
+    console.info('audio capturer state is: STATE_RUNNING');
   }
 };
 
 audioCapturer.on('stateChange', stateChangeCallback);
 
 audioCapturer.off('stateChange', stateChangeCallback);
+```
+
+## offStateChange<sup>23+</sup>
+
+offStateChange(callback?: Callback&lt;AudioState&gt;): void
+
+取消监听状态变化事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('stateChange')](#offstatechange18)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                |
+| :----- | :----- | :--- | :-------------------------------------------------- |
+| callback | Callback\<[AudioState](arkts-apis-audio-e.md#audiostate8)> | 否 | 回调函数，返回当前音频的状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioCapturer.offStateChange();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let stateChangeCallback = (state: audio.AudioState) => {
+  if (state == 1) {
+    console.info('audio capturer state is: STATE_PREPARED');
+  }
+  if (state == 2) {
+    console.info('audio capturer state is: STATE_RUNNING');
+  }
+};
+
+audioCapturer.onStateChange(stateChangeCallback);
+
+audioCapturer.offStateChange(stateChangeCallback);
 ```
 
 ## on('readData')<sup>11+</sup>
@@ -1226,7 +1928,13 @@ on(type: 'readData', callback: Callback\<ArrayBuffer>): void
 
 为了消除麦克风硬件设计带来的上电杂音，通常会对录音启动后的前100ms数据进行静音。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onReadData](#onreaddata23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1282,13 +1990,81 @@ audioCapturer.start((err: BusinessError) => {
 });
 ```
 
+## onReadData<sup>23+</sup>
+
+onReadData(callback: Callback\<ArrayBuffer>): void
+
+监听音频数据读取回调事件（当需要读取音频流数据时触发）。使用callback异步回调。
+
+回调函数仅用来读取音频数据，请勿在回调函数中调用AudioCapturer相关接口。
+
+为了消除麦克风硬件设计带来的上电杂音，通常会对录音启动后的前100ms数据进行静音。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('readData')](#onreaddata11)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                        |
+| :------- |:-----------------------| :--- |:--------------------------|
+| callback | Callback\<ArrayBuffer> | 是   | 回调函数，返回读到的数据缓冲区。            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo, WriteOptions } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+let bufferSize = 0;
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+let path = context.cacheDir;
+let filePath = path + '/StarWars10s-2C-48000-4SW.pcm';
+let file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+let readDataCallback = (buffer: ArrayBuffer) => {
+  let options: WriteOptions = {
+    offset: bufferSize,
+    length: buffer.byteLength
+  };
+  fileIo.writeSync(file.fd, buffer, options);
+  bufferSize += buffer.byteLength;
+}
+
+audioCapturer.onReadData(readDataCallback);
+
+audioCapturer.start().then(() => {
+  console.info('Capturer start success.');
+}).catch((err: BusinessError) => {
+  console.error('Capturer start failed.');
+});
+```
+
 ## off('readData')<sup>11+</sup>
 
 off(type: 'readData', callback?: Callback\<ArrayBuffer>): void
 
 取消监听音频数据读取回调事件。使用callback异步回调。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offReadData](#offreaddata23)。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -1322,26 +2098,76 @@ audioCapturer.on('readData', readDataCallback);
 audioCapturer.off('readData', readDataCallback);
 ```
 
+## offReadData<sup>23+</sup>
+
+offReadData(callback?: Callback\<ArrayBuffer>): void
+
+取消监听音频数据读取回调事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('readData')](#offreaddata11)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                                         |
+| :------- |:-----------------------| :--- |:-------------------------------------------|
+| callback | Callback\<ArrayBuffer> | 否   | 回调函数，返回读到的数据缓冲区。                            |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioCapturer.offReadData();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let readDataCallback = (data: ArrayBuffer) => {
+    console.info(`read data: ${data}`);
+};
+
+audioCapturer.onReadData(readDataCallback);
+
+audioCapturer.offReadData(readDataCallback);
+```
+
 ## getOverflowCount<sup>12+</sup>
 
-getOverflowCount(): Promise&lt;number&gt;
+ArkTS-Dyn: getOverflowCount(): Promise&lt;number&gt;
+
+ArkTS-Sta: getOverflowCount(): Promise&lt;long&gt;
 
 获取当前录制音频流的过载音频帧数量。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| Promise&lt;number&gt;| Promise对象，返回音频流的过载音频帧数量。|
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt;| Promise对象，返回音频流的过载音频帧数量。|
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-audioCapturer.getOverflowCount().then((value: number) => {
+audioCapturer.getOverflowCount().then((value) => {
   console.info(`Get overflow count Success! ${value}`);
 }).catch((err: BusinessError) => {
   console.error(`Get overflow count Fail: ${err}`);
@@ -1350,17 +2176,23 @@ audioCapturer.getOverflowCount().then((value: number) => {
 
 ## getOverflowCountSync<sup>12+</sup>
 
-getOverflowCountSync(): number
+ArkTS-Dyn: getOverflowCountSync(): number
+
+ArkTS-Sta: getOverflowCountSync(): long
 
 获取当前录制音频流的过载音频帧数量。同步返回数据。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number| 返回音频流的过载音频帧数量。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: long| 返回音频流的过载音频帧数量。|
 
 **示例：**
 
@@ -1368,7 +2200,7 @@ getOverflowCountSync(): number
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let value: number = audioCapturer.getOverflowCountSync();
+  let value = audioCapturer.getOverflowCountSync();
   console.info(`Get overflow count Success! ${value}`);
 } catch (err) {
   let error = err as BusinessError;
@@ -1384,11 +2216,15 @@ setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型             | 必填   | 说明                                                      |
 | ---------- |---------------- | ------ |---------------------------------------------------------|
-| muteWhenInterrupted | boolean  | 是  | 设置当前录制音频流是否启用静音打断模式, true表示启用，false表示不启用，保持为默认打断模式。 |
+| muteWhenInterrupted | boolean  | 是  | 设置当前录制音频流是否启用静音打断模式，true表示启用，false表示不启用，保持为默认打断模式。 |
 
 **返回值：**
 
@@ -1432,6 +2268,10 @@ setMuteHint(mute: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名     | 类型             | 必填   | 说明                                                      |
@@ -1473,7 +2313,11 @@ read(size: number, isBlockingRead: boolean, callback: AsyncCallback<ArrayBuffer\
 > **说明：**
 > 从API version 8开始支持，从API version 11开始废弃，建议使用[on('readData')](#onreaddata11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1511,7 +2355,11 @@ read(size: number, isBlockingRead: boolean): Promise<ArrayBuffer\>
 > **说明：**
 > 从API version 8开始支持，从API version 11开始废弃，建议使用[on('readData')](#onreaddata11)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数：**
 
@@ -1545,7 +2393,9 @@ audioCapturer.getBufferSize().then((bufferSize: number) => {
 
 ## setIndependentAudioSessionStrategy<sup>24+</sup>
 
-setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: number): void
+ArkTS-Dyn: setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: number): void
+
+ArkTS-Sta: setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: int): void
 
 设置独立的音频会话策略和行为参数。
 
@@ -1557,12 +2407,16 @@ setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: num
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名       | 类型    | 必填 | 说明                                      |
 | ------------ | -------| ---- |------------------------------------------ |
 | strategy | [AudioSessionStrategy](arkts-apis-audio-i.md#audiosessionstrategy12) | 是   | 音频会话策略。 |
-| behavior   | number           | 是   | 用于设置音频会话行为。<br>该参数可以是单个标志，也可以是多个标志的按位OR组合。<br>当前支持的音频会话行为详见[AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24)中定义的标志。 |
+| behavior   | ArkTS-Dyn: number<br>ArkTS-Sta: int           | 是   | 用于设置音频会话行为。<br>该参数可以是单个标志，也可以是多个标志的按位OR组合。<br>当前支持的音频会话行为详见[AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24)中定义的标志。 |
 
 **错误码：**
 
@@ -1579,6 +2433,142 @@ setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: num
 let strategy: audio.AudioSessionStrategy = {
   concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
 };
-let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+let behavior = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
 audioCapturer.setIndependentAudioSessionStrategy(strategy, behavior);
+```
+
+## setNoiseReductionMode
+
+ArkTS-Dyn: setNoiseReductionMode(noiseReductionMode: NoiseReductionMode): void
+
+ArkTS-Sta: setNoiseReductionMode(noiseReductionMode: NoiseReductionMode): void
+
+设置当前录音流的降噪模式。建议先调用[getSupportedNoiseReductionModes](#getsupportednoisereductionmodes)获取当前录音流支持的降噪模式后，再通过本接口进行设置。
+
+> **说明：**
+>
+> - 当前仅支持使用[SourceType.SOURCE_TYPE_VOICE_MESSAGE](arkts-apis-audio-e.md#sourcetype8)创建的录音流进行降噪模式设置，其他录音流默认仅支持[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。
+> - 降噪效果受设备平台、音频设备和录音并发情况影响。存在多个录音流同时运行时，设置的降噪模式可能不生效。
+> - 该接口仅可在录音流创建后未开始录音，或停止录音后调用；录音流处于运行态或已释放时调用将抛出异常。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| :--- | :--- | :--- | :--- |
+| noiseReductionMode | [NoiseReductionMode](arkts-apis-audio-e.md#noisereductionmode) | 是 | 要设置的降噪模式。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800103 | Illegal state, audio capturer is in running or released state. |
+| 6800104 | The setted mode is not supported. |
+| 6800301 | Audio server process died. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let supportedModes: Array<audio.NoiseReductionMode> = audioCapturer.getSupportedNoiseReductionModes();
+  if (supportedModes.includes(audio.NoiseReductionMode.PURE_VOCALS)) {
+    audioCapturer.setNoiseReductionMode(audio.NoiseReductionMode.PURE_VOCALS);
+  } else {
+    audioCapturer.setNoiseReductionMode(audio.NoiseReductionMode.FIDELITY);
+  }
+  console.info(`setNoiseReductionMode success: ${audioCapturer.getNoiseReductionMode()}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`setNoiseReductionMode failed. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## getNoiseReductionMode
+
+ArkTS-Dyn: getNoiseReductionMode(): NoiseReductionMode
+
+ArkTS-Sta: getNoiseReductionMode(): NoiseReductionMode
+
+获取当前录音流的降噪模式。返回结果仅反映当前录音流的降噪模式。默认值为[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**返回值：**
+
+| 类型 | 说明 |
+| :--- | :--- |
+| [NoiseReductionMode](arkts-apis-audio-e.md#noisereductionmode) | 当前录音流的降噪模式。 |
+
+**示例：**
+
+```ts
+let noiseReductionMode: audio.NoiseReductionMode = audioCapturer.getNoiseReductionMode();
+console.info(`getNoiseReductionMode success: ${noiseReductionMode}`);
+```
+
+## getSupportedNoiseReductionModes
+
+ArkTS-Dyn: getSupportedNoiseReductionModes(): Array&lt;NoiseReductionMode&gt;
+
+ArkTS-Sta: getSupportedNoiseReductionModes(): Array&lt;NoiseReductionMode&gt;
+
+获取当前设备支持的录音降噪模式。
+
+> **说明：**
+>
+> - 当前仅使用[SourceType.SOURCE_TYPE_VOICE_MESSAGE](arkts-apis-audio-e.md#sourcetype8)创建的录音流会根据设备平台查询支持的降噪模式，其他录音流默认仅返回[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。
+> - 返回结果仅考虑音频格式和设备平台，不考虑当前输入设备和录音并发情况。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**返回值：**
+
+| 类型 | 说明 |
+| :--- | :--- |
+| Array&lt;[NoiseReductionMode](arkts-apis-audio-e.md#noisereductionmode)&gt; | 支持的录音降噪模式数组，默认支持[NoiseReductionMode.FIDELITY](arkts-apis-audio-e.md#noisereductionmode)。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800301 | Audio server process died. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let supportedModes: Array<audio.NoiseReductionMode> = audioCapturer.getSupportedNoiseReductionModes();
+  console.info(`getSupportedNoiseReductionModes success: ${supportedModes}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`getSupportedNoiseReductionModes failed. Code: ${error.code}, message: ${error.message}`);
+}
 ```

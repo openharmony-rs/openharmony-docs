@@ -1,8 +1,8 @@
 # 通用方法
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -22,10 +22,10 @@ animate( keyframes: Keyframes, options: Options)：void
 
 | 参数名       | 类型      | 必填   | 说明                                   |
 | --------- | --------- | ---- | ------------------------------------ |
-| keyframes | keyframes | 是    | 设置动画样式。                               |
+| keyframes | Keyframes | 是    | 设置动画样式。                               |
 | options   | Options   | 是    | 用于设置动画属性的对象列表。具体参数说明请参见表3 Options说明。 |
 
-  **表1** keyframes
+  **表1** Keyframes
 
 | 属性     | 类型                 | 说明                                     |
 | ------ | ------------------ | -------------------------------------- |
@@ -41,7 +41,7 @@ animate( keyframes: Keyframes, options: Options)：void
 | opacity            | number                                   | 1                    | 设置到组件上的透明度，取值范围在0到1之间。                      |
 | backgroundPosition | string                                   | -                    | 格式为"x&nbsp;y"，单位为百分号或者px。<br/>第一个值是水平位置，第二个值是垂直位置。<br/>如果仅规定了一个值，另一个值为&nbsp;50%。 |
 | transformOrigin    | string                                   | 'center&nbsp;center' | 变换对象的中心点。<br/>第一个参数表示x轴的值，可以设置为left、center、right、长度值或百分比值。<br/>第二个参数表示y轴的值，可以设置为top、center、bottom、长度值或百分比值。 |
-| transform          | [Transform](js-components-common-animation.md) | -                    | 设置到变换对象上的类型。                             |
+| transform          | [Transform](js-components-common-animation.md#属性) | -                    | 设置到变换对象上的类型。                             |
 | offset             | number                                   | -                    | -&nbsp;offset值（如果提供）必须在0.0到1.0（含）之间，并以升序排列。<br/>-&nbsp;若仅有两帧，offset参数可省略。<br/>-&nbsp;若超过两帧，offset必填。 |
 
   **表3** Options说明
@@ -64,7 +64,7 @@ animate( keyframes: Keyframes, options: Options)：void
 | ease-out                                 | 动画速度先快后慢，cubic-bezier(0.0,&nbsp;0.0,&nbsp;0.58,&nbsp;1.0)。 |
 | ease-in-out                              | 动画先加速后减速，cubic-bezier(0.42,&nbsp;0.0,&nbsp;0.58,&nbsp;1.0)。 |
 | friction                                 | 阻尼曲线，cubic-bezier(0.2,&nbsp;0.0,&nbsp;0.2,&nbsp;1.0)。 |
-| extreme-deceleration                     | 急缓曲线，cubic-bezier(0.0,&nbsp;0.0,&nbsp;0.0,&nbsp;1.0)。 |
+| extreme-deceleration                     | 极缓曲线，cubic-bezier(0.0,&nbsp;0.0,&nbsp;0.0,&nbsp;1.0)。 |
 | sharp                                    | 锐利曲线，cubic-bezier(0.33,&nbsp;0.0,&nbsp;0.67,&nbsp;1.0)。 |
 | rhythm                                   | 节奏曲线，cubic-bezier(0.7,&nbsp;0.0,&nbsp;0.2,&nbsp;1.0)。 |
 | smooth                                   | 平滑曲线，cubic-bezier(0.4,&nbsp;0.0,&nbsp;0.4,&nbsp;1.0)。 |
@@ -185,7 +185,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001229677045](figures/zh-cn_image_0000001229677045.gif)
+![animate](figures/animate.gif)
 
 ## getBoundingClientRect
 

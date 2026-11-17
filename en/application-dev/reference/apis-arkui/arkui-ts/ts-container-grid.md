@@ -1085,7 +1085,7 @@ struct GridExample {
 }
 ```
 
-![en-us_image_0000001219744183](figures/en-us_image_0000001219744183.gif)
+![grid1](figures/grid1.gif)
 
 ### Example 2: Implementing a Scrollable Grid with Scroll Events
 

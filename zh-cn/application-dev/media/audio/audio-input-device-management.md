@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "介绍音频输入设备管理能力，指导开发者使用AudioRoutingManager查询输入设备信息、监听设备连接状态变化，并说明支持的音频输入设备类型。"
+keywords: [音频输入设备, AudioRoutingManager, getDevices, deviceChange, 麦克风, 蓝牙耳机, 有线耳机, 星闪设备, 录音设备]
+doctype: guide
+status: active
+---
 # 查询和监听音频输入设备
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -8,19 +15,34 @@
 
 本模块提供音频输入设备管理能力，包括查询输入设备信息、监听设备连接状态变化等。具体API说明可参考文档[AudioRoutingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md)。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS)。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。
 
 ## 创建AudioRoutingManager实例
 
 在使用AudioRoutingManager管理音频设备前，需要先导入模块并创建实例。
 
-<!-- @[getRoutingManager_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[getRoutingManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit'; // 导入audio模块。
+import { audio } from '@kit.AudioKit';
+// ...
 
-let audioManager = audio.getAudioManager(); // 需要先创建AudioManager实例。
-let audioRoutingManager = audioManager.getRoutingManager(); // 再调用AudioManager的方法创建AudioRoutingManager实例。
+let audioManager = audio.getAudioManager();
+let audioRoutingManager = audioManager.getRoutingManager();
+```
+
+ArkTS-Sta示例：
+
+<!-- @[getRoutingManager](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->
+
+``` TypeScript
+// ...
+import { audio } from '@kit.AudioKit';
+// ...
+let audioManager = audio.getAudioManager();
+let audioRoutingManager = audioManager.getRoutingManager();
 ```
 
 ## 支持的音频输入设备类型
@@ -39,14 +61,38 @@ let audioRoutingManager = audioManager.getRoutingManager(); // 再调用AudioMan
 
 使用[getDevices](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevices9)方法可以获取当前所有输入设备的信息。
 
-<!-- @[getDevices_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
+ArkTS-Dyn示例：
+
+<!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit'; // 导入audio模块。
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // ...
-  audioRoutingManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG).then((data: audio.AudioDeviceDescriptors) => {
-    console.info('Promise returned to indicate that the device list is obtained.');
 
+  audioRoutingManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG).then((audioDeviceDescriptors: audio.
+    AudioDeviceDescriptors) => {
+    console.info(`Succeeded in getting devices. AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}`);
+    // ...
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to get devices. Code: ${err.code}, message: ${err.message}`);
+    // ...
+  });
+```
+
+ArkTS-Sta示例：
+
+<!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->
+
+``` TypeScript
+// ...
+import { audio } from '@kit.AudioKit';
+// ...
+  audioRoutingManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG).then((audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
+    console.info(`Succeeded in getting devices. AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}`);
+    // ...
+  }).catch((err) => {
+    console.error(`Failed to get devices. Code: ${err.code}, message: ${err.message}`);
     // ...
   });
 ```
@@ -55,25 +101,42 @@ import { audio } from '@kit.AudioKit'; // 导入audio模块。
 
 可以设置监听事件来监听设备连接状态的变化，当有设备连接或断开时触发回调：
 
-<!-- @[listen_InputStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->  
+ArkTS-Dyn示例：
+
+<!-- @[onDeviceChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->  
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit';  // 导入audio模块。
+import { audio } from '@kit.AudioKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 // ...
-  // 监听音频设备状态变化。
-  audioRoutingManager.on('deviceChange', audio.DeviceFlag.INPUT_DEVICES_FLAG,
-    (deviceChanged: audio.DeviceChangeAction) => {
-    console.info('device change type : ' + deviceChanged.type);  // 设备连接状态变化,0为连接,1为断开连接。
-    console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
-    console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);  // 设备角色。
-    console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);  // 设备类型。
 
-    // ...
-  });
+let deviceChangeCallback = (deviceChanged: audio.DeviceChangeAction) => {
+  console.info(`Succeeded in using on function. DeviceChangeAction: ${JSON.stringify(deviceChanged)}`);
   // ...
-  // 取消监听音频设备状态变化。
-  audioRoutingManager.off('deviceChange', (deviceChanged: audio.DeviceChangeAction) => {
-    console.info('Should be no callback.');
+}
+// ...
+
+  try {
+    // 监听音频设备状态变化。
+    audioRoutingManager.on('deviceChange', audio.DeviceFlag.INPUT_DEVICES_FLAG, deviceChangeCallback);
+  } catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to use on function. Code: ${error.code}, message: ${error.message}`);
+    // ...
+  }
+```
+
+ArkTS-Sta示例：
+
+<!-- @[onDeviceChange](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioInputDeviceManagement.ets) -->  
+
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+// ...
+
+  audioRoutingManager.onDeviceChange(audio.DeviceFlag.INPUT_DEVICES_FLAG, (deviceChanged: audio.DeviceChangeAction) => {
+    console.info(`Succeeded in using on function. DeviceChangeAction: ${JSON.stringify(deviceChanged)}`);
+    // ...
   });
 ```
 
@@ -114,3 +177,9 @@ async function getRoutingManager() {
 }
 ```
 <!--DelEnd-->
+
+## 相关主题推荐
+
+- [实现音频输入设备路由切换](audio-input-device-switcher.md)
+- [查询和监听音频输出设备](audio-output-device-management.md)
+- [选择合适的录制流类型](using-right-sourcetype-for-recording.md)

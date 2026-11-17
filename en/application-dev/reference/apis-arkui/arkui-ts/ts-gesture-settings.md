@@ -188,7 +188,7 @@ struct GestureSettingsExample {
 }
 ```
 
-![en-us_image_0000001210195016](figures/en-us_image_0000001210195016.gif)
+![gestureBinding1](figures/gestureBinding1.gif)
 
 ### Example 2: Implementing Real-time Monitoring of Effective Touch Points Involved in a Swipe Gesture
 

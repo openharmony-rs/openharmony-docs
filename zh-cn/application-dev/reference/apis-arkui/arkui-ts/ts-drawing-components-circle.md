@@ -17,12 +17,13 @@
 
 无
 
-
 ## 接口
 
-Circle(value?: CircleOptions)
+### Circle
 
-用于绘制圆形的构造函数。 
+new Circle(value?: CircleOptions)
+
+用于绘制圆形的构造函数。调用后创建一个Circle对象，可设置宽高属性。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -34,7 +35,25 @@ Circle(value?: CircleOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [CircleOptions](#circleoptions对象说明) | 否 | 设置圆形尺寸<br/>异常值undefined和null按照无效值处理，本次设置不生效。 |
+| value | [CircleOptions](#circleoptions对象说明) | 否 | 设置圆形尺寸。当需要自定义圆形大小时传入此参数，不传入时width和height默认为0。<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
+
+### Circle
+
+Circle(value?: CircleOptions)
+
+用于绘制圆形的构造函数。调用后创建一个Circle对象，可设置宽高属性。
+
+**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| value | [CircleOptions](#circleoptions对象说明) | 否 | 设置圆形尺寸。当需要自定义圆形大小时传入此参数，不传入时width和height默认为0。<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ## CircleOptions对象说明
 
@@ -48,8 +67,8 @@ Circle(value?: CircleOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| width | [Length](ts-types.md#length) | 否 | 是 | 宽度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值undefined、null、NaN和Infinity按照默认值处理。 |
-| height | [Length](ts-types.md#length) | 否 | 是 | 高度，取值范围≥0。<br/>默认值：0<br/>默认单位：vp<br/>异常值undefined、null、NaN和Infinity按照默认值处理。 |
+| width | [Length](ts-types.md#length) | 否 | 是 | 宽度，取值范围≥0。当需要自定义圆形大小时设置此属性，不传入时默认为0。<br>默认单位：vp<br>异常值undefined、null、NaN和Infinity按照默认值处理。 |
+| height | [Length](ts-types.md#length) | 否 | 是 | 高度，取值范围≥0。当需要自定义圆形大小时设置此属性，不传入时默认为0。<br>默认单位：vp<br>异常值undefined、null、NaN和Infinity按照默认值处理。 |
 
 ## 属性
 
@@ -89,7 +108,7 @@ fillOpacity(value: number | string | Resource)
 
 | 参数名 | 类型                                                         | 必填 | 说明                           |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------ |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 填充区域透明度。<br/>**说明：**<br/>number格式取值范围是[0.0, 1.0]，若给定值小于0.0，则取值为0.0；若给定值大于1.0，则取值为1.0，其余异常值按1.0处理。<br/>string格式支持number格式取值的字符串，取值范围与number格式相同。<br/>Resource格式支持系统资源或者应用资源中的字符串，取值范围和number格式相同。<br/>异常值NaN按0.0处理，undefined、null和Infinity按1.0处理。<br/>默认值：1.0 |
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 填充区域透明度。<br/>**说明：**<br/>number格式取值范围是[0.0, 1.0]，若给定值小于0.0，则取值为0.0；若给定值大于1.0，则取值为1.0，其余异常值按1.0处理<br/>string格式支持number格式取值的字符串，取值范围与number格式相同。<br/>Resource格式支持系统资源或者应用资源中的字符串，取值范围和number格式相同。<br/>异常值NaN按0.0处理，undefined、null和Infinity按1.0处理。<br/>默认值：1.0 |
 
 ### stroke
 
@@ -125,7 +144,7 @@ strokeDashArray(value: Array&lt;any&gt;)
 
 | 参数名 | 类型             | 必填 | 说明                      |
 | ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | 是   | 定义Circle轮廓的虚线模式的数组，数组元素交替表示线段长度和间隙长度。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。<br/>**说明：**<br/>空数组：实线<br/>偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a->间隙长度b->线段长度c->间隙长度d->线段长度a->...<br/>奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a->间隙长度b->线段长度c->间隙长度a->线段长度b->间隙长度c->线段长度a->... |
+| value  | Array&lt;any&gt; | 是   | 定义Circle轮廓的虚线模式的数组，数组元素交替表示线段长度和间隙长度。<br/>默认值：[]（空数组）<br/>默认单位：vp <br/>异常值undefined和null按照默认值处理。<br/>**说明：**<br/>空数组：实线<br/>偶数多元素数组：组元素按顺序循环，如[a, b, c, d]表示线段长度a->间隙长度b->线段长度c->间隙长度d->线段长度a->...<br/>奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a->间隙长度b->线段长度c->间隙长度a->线段长度b->间隙长度c->线段长度a->... |
 
 ### strokeDashOffset
 
@@ -215,7 +234,7 @@ strokeOpacity(value: number | string | Resource)
 
 | 参数名 | 类型                                                         | 必填 | 说明                       |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------- |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 边框透明度。<br/>该属性的取值范围是[0.0, 1.0]，若给定值小于0.0，则取值为0.0，若给定值大于1.0，则取值为1.0。<br/>默认值：[stroke](#stroke)接口设置的透明度。<br/>异常值NaN按0.0处理，undefined、null和Infinity按1.0处理。 |
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 是   | 边框透明度。<br/>该属性的取值范围是[0.0, 1.0]，若给定值小于0.0，则取值为0.0，若给定值大于1.0，则取值为1.0。<br/>默认值：[stroke](#stroke)接口设置的明度。<br/>异常值NaN按0.0处理，undefined、null和Infinity按1.0处理。 |
 
 ### strokeWidth
 
@@ -253,11 +272,53 @@ antiAlias(value: boolean)
 | ------ | ------- | ---- | ------------------------------------- |
 | value  | boolean | 是   | 是否开启抗锯齿效果。<br/>-true：开启抗锯齿。<br/>-false：关闭抗锯齿。<br/>默认值：true <br/>异常值undefined和null按照false处理。|
 
+### stroke
+
+stroke(value: ResourceColor | ColorMetrics)
+
+设置边框颜色，相较于[stroke](#stroke)接口，本接口新增支持使用[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)描述颜色<!--Del-->，可进行HDR提亮<!--DelEnd-->。支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性。不设置时，默认边框颜色为[Color](ts-appendix-enums.md#color).Transparent，即没有边框。异常值undefined和null按照默认值处理，NaN和Infinity按照[Color](ts-appendix-enums.md#color).Black处理。
+
+**起始版本：** 26.0.0
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| value  | [ResourceColor](ts-types.md#resourcecolor) \| [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 边框颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Transparent<br/>异常值undefined和null按照默认值处理，NaN和Infinity按照[Color](ts-appendix-enums.md#color).Black处理。 |
+
+### fill
+
+fill(value: ResourceColor | ColorMetrics)
+
+设置填充区域的颜色，相较于[fill](#fill)接口，本接口新增支持使用[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)描述颜色<!--Del-->，可进行HDR提亮<!--DelEnd-->。支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性。不设置时，默认填充颜色为[Color](ts-appendix-enums.md#color).Black。异常值undefined、null、NaN和Infinity按照默认值处理。与通用属性foregroundColor同时设置时，后设置的属性生效。
+
+**起始版本：** 26.0.0
+
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| value  | [ResourceColor](ts-types.md#resourcecolor) \| [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 是   | 填充区域颜色。<br/>默认值：[Color](ts-appendix-enums.md#color).Black <br/>异常值undefined、null、NaN和Infinity按照默认值处理。 |
+
 ## 示例
 
 ### 示例1（组件属性绘制）
 
 通过fillOpacity、stroke、strokeDashArray属性可分别设置圆的透明度、边框颜色和边框间隙样式。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -281,11 +342,37 @@ struct CircleExample {
 }
 ```
 
-![zh-cn_image_0000001219744191](figures/zh-cn_image_0000001219744191.png)
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Circle, Color, ColumnOptions } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CircleExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Circle({ width: 150, height: 150 })
+      Circle()
+        .width(150)
+        .height(200)
+        .fillOpacity(0)
+        .strokeWidth(3)
+        .stroke(Color.Red)
+        .strokeDashArray([1, 2])
+    }.width('100%')
+  }
+}
+```
+
+![circle1](figures/circle1.png)
 
 ### 示例2（宽和高使用不同参数类型绘制圆）
 
 width、height属性分别使用不同的长度类型绘制圆。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -305,11 +392,32 @@ struct CircleTypeExample {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Circle, CircleOptions, ColumnOptions, $r } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CircleTypeExample {
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Circle({ width: '50', height: '50' } as CircleOptions)
+      Circle({ width: 100, height: 100 } as CircleOptions)
+      Circle({ width: $r('app.string.CircleWidth'), height: $r('app.string.CircleHeight') } as CircleOptions)
+    }.width('100%')
+  }
+}
+```
+
 ![circleDemo2](figures/circleDemo2.png)
 
 ### 示例3（使用attributeModifier动态设置Circle组件的属性）
 
 以下示例展示了如何使用attributeModifier动态设置Circle组件的fill、fillOpacity、stroke、strokeDashArray、strokeDashOffset、strokeLineCap、strokeOpacity、strokeWidth和antiAlias属性。
+
+ArkTS-Dyn示例：
 
 ```ts
 // xxx.ets
@@ -336,6 +444,42 @@ struct CircleModifierDemo {
   build() {
     Column() {
       Circle({ width: 150, height: 150 })
+        .attributeModifier(this.modifier)
+        .offset({ x: 20, y: 20 })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// xxx.ets
+import { Entry, Component, Column, Circle, CircleOptions, CircleAttribute, AttributeModifier, LineCapStyle } from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+
+class MyCircleModifier implements AttributeModifier<CircleAttribute> {
+  applyNormalAttribute(instance: CircleAttribute): void {
+    instance.fill("#707070")
+    instance.fillOpacity(0.5)
+    instance.stroke("#2787D9")
+    instance.strokeDashArray([20])
+    instance.strokeDashOffset("15")
+    instance.strokeLineCap(LineCapStyle.Round)
+    instance.strokeOpacity(0.5)
+    instance.strokeWidth(10)
+    instance.antiAlias(true)
+  }
+}
+
+@Entry
+@Component
+struct CircleModifierDemo {
+  @State modifier: MyCircleModifier = new MyCircleModifier()
+
+  build() {
+    Column() {
+      Circle({ width: 150, height: 150 } as CircleOptions)
         .attributeModifier(this.modifier)
         .offset({ x: 20, y: 20 })
     }

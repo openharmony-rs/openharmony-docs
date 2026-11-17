@@ -1,9 +1,17 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍ArkGraphics 2D的能力范围与使用场景，涵盖图像处理、色彩管理、可变帧率、自绘制、HDR及Native图形绘制等核心能力。"
+keywords: [ArkGraphics 2D, 图形绘制, 图像处理, 色彩管理, 可变帧率, 自绘制, HDR]
+doctype: guide
+status: active
+---
+
 # ArkGraphics 2D简介
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @oh_wangxk; @goumiao; @hangmengxin-->
-<!--Designer: @liumingxiang; @wangyanglan-->
+<!--Designer: @liumingxiang; @wanyanglan-->
 <!--Tester: @yhl0101; @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -25,7 +33,7 @@ ArkGraphics 2D（方舟2D图形服务 ）主要提供图形绘制与显示相关
 
 ## 使用场景
 
-- 图像效果处理：开发者可根据不同的UI效果需要，使用[effectKit模块](../reference/apis-arkgraphics2d/js-apis-effectKit.md)实现图像的效果处理，以提升用户浏览体验。
+- 图像效果处理：开发者可根据不同的UI效果需要，使用[@ohos.effectKit (图像效果)](../reference/apis-arkgraphics2d/js-apis-effectKit.md)实现图像的效果处理，以提升用户浏览体验。
 
 - 设置图像色域：开发者可根据设计需求使用图像文件并设置色域信息，实现图像广色域效果的绘制和显示。
 
@@ -42,4 +50,6 @@ ArkGraphics 2D（方舟2D图形服务 ）主要提供图形绘制与显示相关
 - 支持录制回放机制，提升交互体验：支持录制命令的缓存，可对绘制指令进行回放，以提升UI绘制的跟手性。
   
 - 支持多种渲染后端：一次开发，支持多种渲染绘制后端，以降低多端适配成本，并满足应用的差异化需求。
-  
+
+<!--RP1-->
+<!--RP1End-->

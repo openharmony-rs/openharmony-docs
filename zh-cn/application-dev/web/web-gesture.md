@@ -1,8 +1,8 @@
 # 使用Web组件的手势与应用交互
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 在移动端或支持触控的Web应用中，用户通过触摸屏与页面交互，Web组件支持了常见的手势识别，例如长按、滑动、点击等，以支持丰富的用户交互体验。
@@ -37,7 +37,7 @@ ArkUI提供了[手势绑定](../ui/arkts-gesture-events-binding.md)，Web组件�
 > 该示例仅用于说明ArkUI手势和ArkWeb手势的区别，不建议使用此方法进行Web组件的缩放。
 
 ArkTS-Dyn示例：
-<!-- @[DistinguishTwoGesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/DistinguishTwoGesture.ets) -->
+<!-- @[DistinguishTwoGesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/DistinguishTwoGesture.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -79,11 +79,9 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
-<!-- @[DistinguishTwoGesture](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebGestureInteraction/entry/src/main/ets/pages/DistinguishTwoGesture.ets) -->
+<!-- @[DistinguishTwoGesture](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebGestureInteraction/entry/src/main/ets/pages/DistinguishTwoGesture.ets) --> 
 
 ``` TypeScript
-'use static'
-
 import { Column, Component, Entry, GestureEvent, PinchGesture, Web } from '@ohos.arkui.component';
 import { State } from '@ohos.arkui.stateManagement';
 import webview from '@ohos.web.webview';
@@ -175,7 +173,7 @@ struct Index {
         return true;
       }
     } catch (err) {
-      console.error(`copyUrlPicToDir failed with error: ${err.code}, ${err.message}`);
+      console.error(`onBackPress failed with error: ${err.code}, ${err.message}`);
     }
     // 执行系统默认返回逻辑，返回上一个页面
     return false;
@@ -187,8 +185,6 @@ ArkTS-Sta示例：
 <!-- @[ReturnLastWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebGestureInteraction/entry/src/main/ets/pages/ReturnLastWebPage.ets) --> 
 
 ``` TypeScript
-'use static'
-
 import { Column, Component, Entry, Web } from '@ohos.arkui.component';
 import webview from '@ohos.web.webview';
 
@@ -212,7 +208,7 @@ struct Index {
         return true;
       }
     } catch (err) {
-      console.error(`copyUrlPicToDir failed with error: ${err.code}, ${err.message}`);
+      console.error(`onBackPress failed with error: ${err.code}, ${err.message}`);
     }
     // 执行系统默认返回逻辑，返回上一个page页
     return false;
@@ -225,7 +221,7 @@ struct Index {
 网页可能基于其他平台的User-Agent进行判断。为解决此问题，可以使用[setCustomUserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)在Web组件中设置自定义User-Agent，例如：
 
 ArkTS-Dyn示例：
-<!-- @[SetUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/SetUserAgent.ets) -->
+<!-- @[SetUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/SetUserAgent.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -250,11 +246,9 @@ struct Index {
 ```
 
 ArkTS-Sta示例：
-<!-- @[SetUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebGestureInteraction/entry/src/main/ets/pages/SetUserAgent.ets) -->
+<!-- @[SetUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/WebGestureInteraction/entry/src/main/ets/pages/SetUserAgent.ets) --> 
 
 ``` TypeScript
-'use static'
-
 import { Column, Component, Entry, Web } from '@ohos.arkui.component';
 import webview from '@ohos.web.webview';
 

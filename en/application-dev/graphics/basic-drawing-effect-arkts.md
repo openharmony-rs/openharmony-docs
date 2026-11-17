@@ -101,7 +101,7 @@ The following table lists the APIs for setting the drawing effect using a pen. F
 | setAntiAlias(aa: boolean) : void | Enables or disables anti-aliasing for a pen. Anti-aliasing makes the pixels around the shape edges semi-transparent.|
 | setCapStyle(style: CapStyle): void | Sets the line cap style for a pen.|
 | setJoinStyle(style: JoinStyle): void | Sets the line join style for a pen.|
-| detachPen(): void | Removes the brush from the canvas. After the execution, the canvas does not draw the outline of the shape and restores to the default fill effect.|
+| detachPen(): void | Removes the pen from the canvas. After the execution, the canvas does not draw the outline of the shape and restores to the default fill effect.|
 
 
 ### How to Develop
@@ -183,9 +183,9 @@ The following table lists the APIs for setting the drawing effect using a pen. F
 
       | Line Join Style| Description| Effect|
       | -------- | -------- | -------- |
-      | MITER_JOIN | Miter join.| ![image_0000002158744154](figures/image_0000002158744154.png)|
-      | ROUND_JOIN | Round join.| ![image_0000002158744146](figures/image_0000002158744146.png)|
-      | BEVEL_JOIN | Beveled join.| ![image_0000002194025257](figures/image_0000002194025257.png)|
+      | MITER_JOIN | Miter join.| ![MITER-JOIN](figures/MITER-JOIN.png)|
+      | ROUND_JOIN | Round join.| ![ROUND-JOIN](figures/ROUND-JOIN.png)|
+      | BEVEL_JOIN | Beveled join.| ![BEVEL-JOIN](figures/BEVEL-JOIN.png)|
 
 4. Draw primitives as required. For details, see [Drawing Primitives](primitive-drawing-overview.md).
 

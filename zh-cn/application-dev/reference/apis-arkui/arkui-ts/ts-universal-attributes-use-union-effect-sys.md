@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
-<!--Designer: @CCFFWW-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,11 +12,13 @@
 >
 > - 从API version 23开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
+>
 > - 本模块为系统接口。
 
 ## useUnionEffect
 
-useUnionEffect(value: boolean | undefined): T;
+useUnionEffect(value: boolean \| undefined): T
 
 表示是否使用祖先组件[UnionEffectContainer](ts-container-unioneffectcomponent-sys.md)的融合效果，是否作为UnionEffectContainer做形状融合的一部分。
 
@@ -32,7 +34,7 @@ useUnionEffect(value: boolean | undefined): T;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | boolean \| undefined | 是 | 表示是否使用祖先组件UnionEffectContainer的融合效果。<br/>useUnionEffect为true时，当前组件使用祖先组件UnionEffectContainer的融合效果，在祖先组件UnionEffectContainer计算形状时会作为UnionEffectContainer的一部分。<br/>useUnionEffect为false时，当前组件不使用祖先组件UnionEffectContainer的融合效果。<br/>设置为undefined时恢复为不使用祖先组件UnionEffectContainer的融合效果。|
+| value | boolean \| undefined | 是 | 表示是否使用祖先组件UnionEffectContainer的融合效果。<br/>取值为true时，当前组件使用祖先组件UnionEffectContainer的融合效果，在祖先组件UnionEffectContainer计算形状时会作为UnionEffectContainer的一部分。<br/>取值为false时，当前组件不使用祖先组件UnionEffectContainer的融合效果。<br/>设置为undefined时恢复为不使用祖先组件UnionEffectContainer的融合效果。|
 
 **返回值：**
 

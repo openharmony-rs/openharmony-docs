@@ -27,7 +27,7 @@ getExposureDuration(): number
 
 获取当前曝光时长值。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -72,7 +72,7 @@ setExposureDuration(exposureDuration: number): void
 
 仅在[ExposureMode](arkts-apis-camera-e.md#exposuremode).EXPOSURE_MODE_MANUAL 手动曝光模式下设置生效。
 
-**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -80,7 +80,7 @@ setExposureDuration(exposureDuration: number): void
 
 | 参数名      | 类型                           | 必填  | 说明                           |
 | -------- | -------------------------------| ---- | ----------------------------- |
-| exposureDuration   | number  | 是   | 曝光时长值。单位：微秒。                 |
+| exposureDuration   | number  | 是   | 曝光时长值。单位：微秒（μs）。通过[getSupportedExposureDurationRange](arkts-apis-camera-ManualExposureQuery.md#getsupportedexposuredurationrange24)接口获取支持的曝光时长范围。                 |
 
 **错误码：**
 
@@ -97,6 +97,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 function setExposureDuration(photoSession: camera.PhotoSession, exposureDuration: number): void {
   try {
+    let durationRange = photoSession.getSupportedExposureDurationRange();
+    if (!durationRange.includes(exposureDuration)) {
+      console.error(`invalid exposureDuration.`);
+      return;
+    }
     photoSession.setExposureDuration(exposureDuration);
   } catch (error) {
     // 失败返回错误码error.code并处理。

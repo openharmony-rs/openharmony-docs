@@ -6,12 +6,12 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-在广告、中奖、警告、软件更新等与用户交互响应操作的场景下，可以使用UIContext中获取到的PromptAction对象提供的[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口来实现自定义弹出框。相较于[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)优势点在于页面解耦，支持[动态刷新](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#update)。
+在广告、中奖、警告、软件更新等与用户交互响应操作的场景下，可以使用UIContext中获取到的PromptAction对象提供的[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口来实现自定义弹出框。相较于[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)优势点在于页面解耦，支持动态刷新[update](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#update)。
 
 > **说明：**
 > 
 > 弹出框（openCustomDialog）存在两种入参方式创建自定义弹出框：
-> - openCustomDialog（传参为ComponentContent形式）：通过ComponentContent封装内容可以与UI界面解耦，调用更加灵活，可以满足开发者的封装诉求。具有较高的灵活性，弹出框样式完全自定义，并且在弹出框打开后可以使用updateCustomDialog方法动态更新弹出框的参数。
+> - openCustomDialog（传参为ComponentContent形式）：通过ComponentContent封装内容可以与UI界面解耦，调用更加灵活，可以满足开发者的封装诉求。具有较高的灵活性，弹出框样式完全自定义，并且在弹出框打开后可以使用updateCustomDialog()方法动态更新弹出框的参数。
 > - openCustomDialog（传参为builder形式）：相对于ComponentContent，builder必须要与上下文做绑定，与UI存在一定耦合。此方法有默认的弹出框样式，适合于开发者想要实现与系统弹窗默认风格一致的效果。
 > 
 > 本文介绍通过入参形式为ComponentContent创建自定义弹出框，传builder形式的弹出框使用方法可参考[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12-1)。
@@ -41,16 +41,29 @@
    
    ComponentContent用于定义自定义弹出框的内容。其中，[wrapBuilder(buildText)](../ui/state-management/arkts-wrapBuilder.md)封装自定义组件，new Params(this.message)是自定义组件的入参，可以缺省，也可以传入基础数据类型。
    
+   ArkTS-Dyn示例：
+
    <!-- @[open_dialog_and_update_create_componentContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/OpenDialogAndUpdate.ets) -->
    
    ``` TypeScript
    private contentNode: ComponentContent<Object> =
      new ComponentContent(this.ctx, wrapBuilder(buildText), new Params(this.message));
    ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[open_dialog_and_update_create_componentContent](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/opencustomdialog/OpenDialogAndUpdate.ets) -->
+   
+   ``` TypeScript
+   private contentNode: ComponentContent<Params> =
+     new ComponentContent<Params>(this.ctx, wrapBuilder(buildText), new Params(this.message));
+   ```
 2. 打开自定义弹出框。
    
    调用[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口打开的弹出框默认customStyle为true，即弹出框的内容样式完全按照contentNode自定义样式显示。
    
+   ArkTS-Dyn示例：
+
    <!-- @[prompt_action_class_open_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
    
    ``` TypeScript
@@ -61,7 +74,21 @@
      .catch((error: BusinessError) => {
        let message = (error as BusinessError).message;
        let code = (error as BusinessError).code;
-       hilog.error(DOMAIN, 'testTag', 'testTag', 'OpenCustomDialog args error code is ${code}, message is ${message}');
+       hilog.error(DOMAIN, 'testTag', 'testTag', `OpenCustomDialog args error code is ${code}, message is ${message}`);
+     })
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[prompt_action_class_open_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
+   
+   ``` TypeScript
+   PromptActionClassNew.ctx.getPromptAction().openCustomDialogWithController(PromptActionClassNew.contentNode, PromptActionClassNew.dialogController, PromptActionClassNew.options)
+     .then(() => {
+       hilog.info(DOMAIN, 'testTag', 'OpenCustomDialog complete.');
+     })
+     .catch((err) => {
+       hilog.error(DOMAIN, 'testTag', 'OpenCustomDialog args error: %{public}s', err);
      })
    ```
 3. 关闭自定义弹出框。
@@ -70,12 +97,14 @@
    
    关闭弹出框之后若需要释放对应的ComponentContent，则需要调用ComponentContent的[dispose](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#dispose)方法。
    
+   ArkTS-Dyn示例：
+
    <!-- @[prompt_action_class_close_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
    
    ``` TypeScript
    PromptActionClassNew.ctx.getPromptAction().closeCustomDialog(PromptActionClassNew.contentNode)
      .then(() => {
-       hilog.info(DOMAIN, 'testTag', 'testTag', 'CloseCustomDialog complete.g complete.');
+       hilog.info(DOMAIN, 'testTag', 'testTag', 'CloseCustomDialog complete.');
        if (this.contentNode !== null) {
          this.contentNode.dispose();   // 释放contentNode
        }
@@ -83,7 +112,24 @@
      .catch((error: BusinessError) => {
        let message = (error as BusinessError).message;
        let code = (error as BusinessError).code;
-       hilog.error(DOMAIN, 'testTag', 'testTag', 'CloseCustomDialog args error code is ${code}, message is ${message}');
+       hilog.error(DOMAIN, 'testTag', 'testTag', `CloseCustomDialog args error code is ${code}, message is ${message}`);
+     })
+   ```
+
+   ArkTS-Sta示例：
+
+   <!-- @[prompt_action_class_close_custom_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
+   
+   ``` TypeScript
+   PromptActionClassNew.ctx.getPromptAction().closeCustomDialog(PromptActionClassNew.contentNode)
+     .then(() => {
+       hilog.info(DOMAIN, 'testTag', 'CloseCustomDialog complete.');
+       if (PromptActionClassNew.contentNode !== null) {
+         PromptActionClassNew.contentNode.dispose();   // 释放contentNode
+       }
+     })
+     .catch((err) => {
+       hilog.error(DOMAIN, 'testTag', 'CloseCustomDialog args error: %{public}s', err);
      })
    ```
 
@@ -101,6 +147,8 @@ this.contentNode.update(new Params('update'))
 
 更新属性时，未设置的属性会恢复为默认值。例如，初始设置{ alignment: DialogAlignment.Top, offset: { dx: 0, dy: 50 } }，更新时设置{ alignment: DialogAlignment.Bottom }，则初始设置的offset: { dx: 0, dy: 50 }不会保留，会恢复为默认值。
 
+ArkTS-Dyn示例：
+
 <!-- @[prompt_action_class_update_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
 
 ``` TypeScript
@@ -111,7 +159,21 @@ PromptActionClassNew.ctx.getPromptAction().updateCustomDialog(PromptActionClassN
   .catch((error: BusinessError) => {
     let message = (error as BusinessError).message;
     let code = (error as BusinessError).code;
-    hilog.error(DOMAIN, 'testTag', 'testTag', 'UpdateCustomDialog args error code is ${code}, message is ${message}');
+    hilog.error(DOMAIN, 'testTag', 'testTag', `UpdateCustomDialog args error code is ${code}, message is ${message}`);
+  })
+```
+
+ArkTS-Sta示例：
+
+<!-- @[prompt_action_class_update_options](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
+
+``` TypeScript
+PromptActionClassNew.ctx.getPromptAction().updateCustomDialog(PromptActionClassNew.contentNode, options)
+  .then(() => {
+    hilog.info(DOMAIN, 'testTag', 'UpdateCustomDialog complete.');
+  })
+  .catch((err) => {
+    hilog.error(DOMAIN, 'testTag', 'UpdateCustomDialog args error: %{public}s', err);
   })
 ```
 
@@ -122,6 +184,8 @@ PromptActionClassNew.ctx.getPromptAction().updateCustomDialog(PromptActionClassN
 > **说明：** 
 >
 > 当isModal为true时，蒙层将显示，此时可以设置蒙层的动画效果；否则，maskTransition将不生效。
+
+ArkTS-Dyn示例：
 
 <!-- @[custom_dialog_with_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/customDialogComponentWithTransition.ets) -->
 
@@ -194,6 +258,92 @@ export struct CustomDialogComponentWithTransition {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[custom_dialog_with_transition](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/opencustomdialog/customDialogComponentWithTransition.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Row,
+  RowOptions,
+  Button,
+  Text,
+  NavDestination,
+  Builder,
+  Color,
+  TransitionEffect,
+  Curve,
+  $r
+} from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN: int = 0x0000;
+
+@Entry
+@Component
+export struct CustomDialogComponentWithTransition {
+  private customDialogComponentId: int = 0
+
+  @Builder
+  customDialogComponent(): void {
+    Row({ space: 50 } as RowOptions) {
+      // 请将$r('app.string.this_is_a_window')替换为实际资源文件，在本示例中该资源文件的value值为"这是一个弹窗"
+      Button($r('app.string.this_is_a_window'))
+    }.height(200).padding(5)
+  }
+
+  build(): void {
+    NavDestination() {
+      Row() {
+        Row({ space: 20 } as RowOptions) {
+          // 请将$r('app.string.open_windows')替换为实际资源文件，在本示例中该资源文件的value值为"打开弹窗"
+          Text($r('app.string.open_windows'))
+            .fontSize(30)
+            .onClick((): void => {
+              this.getUIContext()
+                .getPromptAction()
+                .openCustomDialog({
+                  builder: (): void => {
+                    this.customDialogComponent()
+                  },
+                  isModal: true,
+                  showInSubWindow: false,
+                  maskColor: Color.Pink,
+                  maskRect: {
+                    x: 20,
+                    y: 20,
+                    width: '90%',
+                    height: '90%'
+                  },
+
+                  dialogTransition: // 设置弹窗内容显示的过渡效果
+                  TransitionEffect.translate({ x: 0, y: 290, z: 0 })
+                    .animation({ duration: 4000, curve: Curve.Smooth }), // 四秒钟的偏移渐变动画
+
+                  maskTransition: // 设置蒙层显示的过渡效果
+                  TransitionEffect.opacity(0)
+                    .animation({ duration: 4000, curve: Curve.Smooth }) // 四秒钟的透明渐变动画
+
+                })
+                .then((dialogId: int): void => {
+                  this.customDialogComponentId = dialogId;
+                })
+                .catch((error) => {
+                  hilog.error(DOMAIN, 'testTag',
+                    'openCustomDialog error: %{public}s', error)
+                })
+            })
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }
+  }
+}
+```
+
  ![UIContextPromptAction](figures/UIContextPromptActionDialogMask.gif)
 
 ## 设置弹出框避让软键盘的距离
@@ -201,6 +351,8 @@ export struct CustomDialogComponentWithTransition {
 为显示弹出框的独立性，弹出框弹出时会与周边进行避让，包括状态栏、导航条以及键盘等留有间距。故当软键盘弹出时，默认情况下，弹出框会自动避开软键盘，并与之保持16vp的距离。从API version 15开始，开发者可以利用[BaseDialogOptions](../reference/apis-arkui/js-apis-promptAction.md#basedialogoptions11)中的keyboardAvoidMode和keyboardAvoidDistance这两个配置项，来设置弹出框在软键盘弹出时的行为，包括是否需要避开软键盘以及与软键盘之间的距离。
 
 设置软键盘间距时，需要将keyboardAvoidMode值设为KeyboardAvoidMode.DEFAULT。
+
+ArkTS-Dyn示例：
 
 <!-- @[custom_dialog_with_key_board_distance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/customDialogWithKeyboardAvoidDistance.ets) -->
 
@@ -253,10 +405,78 @@ export struct CustomDialogWithKeyboardAvoidDistance {
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[custom_dialog_with_key_board_distance](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/opencustomdialog/customDialogWithKeyboardAvoidDistance.ets) -->
+
+``` TypeScript
+import {
+  Entry,
+  Component,
+  Column,
+  Row,
+  RowOptions,
+  Text,
+  TextInput,
+  NavDestination,
+  Builder,
+  DialogAlignment,
+  KeyboardAvoidMode,
+  LengthMetrics,
+  $r
+} from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN: int = 0x0000;
+
+@Entry
+@Component
+export struct CustomDialogWithKeyboardAvoidDistance {
+  @Builder
+  customDialogComponent(): void {
+    Column() {
+      Text('keyboardAvoidDistance: 0vp')
+        .fontSize(20)
+        .margin({ bottom: 36 })
+      TextInput({ placeholder: '' })
+    }.backgroundColor('#FFF0F0F0')
+  }
+
+  build(): void {
+    NavDestination() {
+      Row() {
+        Row({ space: 20 } as RowOptions) {
+          // 请将$r('app.string.open_windows')替换为实际资源文件,在本示例中该资源文件的value值为"打开弹窗"
+          Text($r('app.string.open_windows'))
+            .fontSize(30)
+            .onClick((): void => {
+              this.getUIContext().getPromptAction().openCustomDialog({
+                builder: (): void => {
+                  this.customDialogComponent();
+                },
+                alignment: DialogAlignment.Bottom,
+                keyboardAvoidMode: KeyboardAvoidMode.DEFAULT, // 软键盘弹出时，弹出框自动避让
+                keyboardAvoidDistance: LengthMetrics.vp(0) // 软键盘弹出时与弹出框的距离为0vp
+              }).catch((error) => {
+                hilog.error(DOMAIN, 'testTag',
+                  'openCustomDialog error: %{public}s', error);
+              })
+            })
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }
+  }
+}
+```
+
  ![UIContextPromptAction](figures/UIContextPromptActionCustomDialog.gif)
 
 
 ## 完整示例
+
+ArkTS-Dyn示例：
 
 <!-- @[prompt_action_class_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
 
@@ -294,7 +514,7 @@ export class PromptActionClassNew {
         .catch((error: BusinessError) => {
           let message = (error as BusinessError).message;
           let code = (error as BusinessError).code;
-          hilog.error(DOMAIN, 'testTag', 'testTag', 'OpenCustomDialog args error code is ${code}, message is ${message}');
+          hilog.error(DOMAIN, 'testTag', 'testTag', `OpenCustomDialog args error code is ${code}, message is ${message}`);
         })
     }
   }
@@ -309,7 +529,7 @@ export class PromptActionClassNew {
         .catch((error: BusinessError) => {
           let message = (error as BusinessError).message;
           let code = (error as BusinessError).code;
-          hilog.error(DOMAIN, 'testTag', 'testTag', 'CloseCustomDialog args error code is ${code}, message is ${message}');
+          hilog.error(DOMAIN, 'testTag', 'testTag', `CloseCustomDialog args error code is ${code}, message is ${message}`);
         })
     }
   }
@@ -326,13 +546,87 @@ export class PromptActionClassNew {
         .catch((error: BusinessError) => {
           let message = (error as BusinessError).message;
           let code = (error as BusinessError).code;
-          hilog.error(DOMAIN, 'testTag', 'testTag', 'UpdateCustomDialog args error code is ${code}, message is ${message}');
+          hilog.error(DOMAIN, 'testTag', 'testTag', `UpdateCustomDialog args error code is ${code}, message is ${message}`);
         })
     }
   }
 }
 ```
 
+ArkTS-Sta示例：
+
+<!-- @[prompt_action_class_new](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/common/PromptActionClassNew.ts) -->
+
+``` TypeScript
+// PromptActionClassNew.ets
+import { ComponentContent, promptAction, UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN: number = 0x0000;
+
+export class PromptActionClassNew {
+  static ctx: UIContext;
+  static contentNode: ComponentContent<Object>;
+  static options: promptAction.BaseDialogOptions;
+  static dialogController: promptAction.CommonController = new promptAction.DialogController();
+
+  static setContext(context: UIContext): void {
+    PromptActionClassNew.ctx = context;
+  }
+
+  static setContentNode(node: ComponentContent<Object>): void {
+    PromptActionClassNew.contentNode = node;
+  }
+
+  static setOptions(options: promptAction.BaseDialogOptions): void {
+    PromptActionClassNew.options = options;
+  }
+
+  // 打开弹窗
+  static openDialog(): void {
+    if (PromptActionClassNew.contentNode !== null) {
+      PromptActionClassNew.ctx.getPromptAction().openCustomDialogWithController(PromptActionClassNew.contentNode, PromptActionClassNew.dialogController, PromptActionClassNew.options)
+        .then(() => {
+          hilog.info(DOMAIN, 'testTag', 'OpenCustomDialog complete.');
+        })
+        .catch((err) => {
+          hilog.error(DOMAIN, 'testTag', 'OpenCustomDialog args error: %{public}s', err);
+        })
+    }
+  }
+
+  // 关闭弹窗
+  static closeDialog(): void {
+    if (PromptActionClassNew.contentNode !== null) {
+      PromptActionClassNew.ctx.getPromptAction().closeCustomDialog(PromptActionClassNew.contentNode)
+        .then(() => {
+          hilog.info(DOMAIN, 'testTag', 'CloseCustomDialog complete.');
+        })
+        .catch((err) => {
+          hilog.error(DOMAIN, 'testTag', 'CloseCustomDialog args error: %{public}s', err);
+        })
+    }
+  }
+
+  // ...
+
+  // 更新弹窗
+  static updateDialog(options: promptAction.BaseDialogOptions): void {
+    if (PromptActionClassNew.contentNode !== null) {
+      PromptActionClassNew.ctx.getPromptAction().updateCustomDialog(PromptActionClassNew.contentNode, options)
+        .then(() => {
+          hilog.info(DOMAIN, 'testTag', 'UpdateCustomDialog complete.');
+        })
+        .catch((err) => {
+          hilog.error(DOMAIN, 'testTag', 'UpdateCustomDialog args error: %{public}s', err);
+        })
+    }
+  }
+}
+```
+
+
+ArkTS-Dyn示例：
 
 <!-- @[open_dialog_and_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/opencustomdialog/OpenDialogAndUpdate.ets) -->
 
@@ -395,6 +689,101 @@ export struct OpenDialogAndUpdate {
           Button('open dialog and update content')
             .margin({ top: 50 })
             .onClick(() => {
+              PromptActionClassNew.openDialog();
+
+              setTimeout(() => {
+                this.contentNode.update(new Params('update'));
+              }, 1500)
+            })
+        }
+        .width('100%')
+        .height('100%')
+      }
+      .height('100%')
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+<!-- @[open_dialog_and_update](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/DialogProject/entry/src/main/ets/pages/opencustomdialog/OpenDialogAndUpdate.ets) -->
+
+``` TypeScript
+// Index.ets
+import {
+  Entry,
+  Component,
+  Column,
+  Row,
+  Button,
+  Text,
+  NavDestination,
+  Builder,
+  UIContext,
+  ComponentContent,
+  wrapBuilder,
+  DialogAlignment,
+  FontWeight
+} from '@kit.ArkUI';
+import { State } from '@ohos.arkui.stateManagement';
+import { PromptActionClassNew } from '../../common/PromptActionClassNew';
+
+export class Params {
+  public text: string = '';
+
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+@Builder
+function buildText(params: Params): void {
+  Column() {
+    Text(params.text)
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+      .margin({ bottom: 36 })
+    Button('Close')
+      .onClick((): void => {
+        PromptActionClassNew.closeDialog();
+      })
+  }.backgroundColor('#FFF0F0F0')
+}
+
+@Entry
+@Component
+export struct OpenDialogAndUpdate {
+  @State message: string = 'hello';
+  private ctx: UIContext = this.getUIContext();
+  private contentNode: ComponentContent<Params> =
+    new ComponentContent<Params>(this.ctx, wrapBuilder(buildText), new Params(this.message));
+
+  aboutToAppear(): void {
+    PromptActionClassNew.setContext(this.ctx);
+    PromptActionClassNew.setContentNode(this.contentNode as ComponentContent<Any>);
+    PromptActionClassNew.setOptions({ alignment: DialogAlignment.Top, offset: { dx: 0, dy: 50 } });
+  }
+
+  build(): void {
+    NavDestination() {
+      Row() {
+        Column() {
+          Button('open dialog and update options')
+            .margin({ top: 50 })
+            .onClick((): void => {
+              PromptActionClassNew.openDialog();
+
+              setTimeout(() => {
+                PromptActionClassNew.updateDialog({
+                  alignment: DialogAlignment.Bottom,
+                  offset: { dx: 0, dy: -50 }
+                });
+              }, 1500)
+            })
+          Button('open dialog and update content')
+            .margin({ top: 50 })
+            .onClick((): void => {
               PromptActionClassNew.openDialog();
 
               setTimeout(() => {

@@ -2,7 +2,7 @@
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @mr-chencxy; @zhanghongran; @yang-xiaoyu5-->
+<!--Owner: @mr-chencxy; @rchdlee; @yang-xiaoyu5-->
 <!--Designer: @dpy2650--->
 <!--Tester: @baotianhao; @cyakee-->
 <!--Adviser: @w_Machine_cc-->
@@ -21,6 +21,7 @@
     - [Multimedia_Drm](capi-multimedia-drm.md)
   - 头文件<!--avcodec-headerfile-->
     - [native_avcapability.h](capi-native-avcapability-h.md)
+    - [native_avcodec_audiobase.h](capi-native-avcodec-audiobase-h.md)
     - [native_avcodec_audiocodec.h](capi-native-avcodec-audiocodec-h.md)
     - [native_avcodec_base.h](capi-native-avcodec-base-h.md)
     - [media_types.h](capi-media-types-h.md)
@@ -31,6 +32,7 @@
     - [native_averrors.h](capi-native-averrors-h.md)
     - [native_avformat.h](capi-native-avformat-h.md)
     - [native_avmemory.h](capi-native-avmemory-h.md)
+    - [native_avcodec_videobase.h](capi-native-avcodec-videobase-h.md)
     - [native_avcodec_videodecoder.h](capi-native-avcodec-videodecoder-h.md)
     - [native_avcodec_videoencoder.h](capi-native-avcodec-videoencoder-h.md)
     - [native_avdemuxer.h](capi-native-avdemuxer-h.md)

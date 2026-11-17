@@ -68,7 +68,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 - 获取相册管理模块photoAccessHelper实例。
 - [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'。
 
-下面以获取一个相册名为'albumName'的用户相册为例。
+下面以获取一个相册名为'test'的用户相册为例。
 
 **开发步骤**
 
@@ -128,7 +128,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 - 获取相册管理模块photoAccessHelper实例。
 - [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'和'ohos.permission.WRITE_IMAGEVIDEO'。
 
-下面以将一个相册名为'albumName'的用户相册重命名为例。
+下面以将一个相册名为'test'的用户相册重命名为例。
 
 **开发步骤**
 
@@ -185,16 +185,16 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 - 获取相册管理模块photoAccessHelper实例。
 - [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'和'ohos.permission.WRITE_IMAGEVIDEO'。
 
-下面以将往相册名为'albumName'的用户相册中添加一张图片为例。
+下面以往相册名为'test'的用户相册中添加一张图片为例。
 
 **开发步骤**
 
 1. 建立相册检索条件，用于获取用户相册。
 2. 建立图片检索条件，用于获取图片。
 3. 调用PhotoAccessHelper.getAlbums接口获取用户相册资源。
-4. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject)接口获取第一个用户相册。
+4. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一个用户相册。
 5. 调用[PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets)接口获取图片资源。
-6. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject)接口获取第一张图片。
+6. 调用[FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1)接口获取第一张图片。
 7. 调用MediaAlbumChangeRequest.addAssets接口往用户相册中添加图片。
 8. 调用PhotoAccessHelper.applyChanges接口提交相册变更请求。
 
@@ -254,7 +254,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 - 获取相册管理模块photoAccessHelper实例。
 - [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'和'ohos.permission.WRITE_IMAGEVIDEO'。
 
-下面以获取相册名为'albumName'的用户相册中的一张图片为例。
+下面以获取相册名为'test'的用户相册中的一张图片为例。
 
 **开发步骤**
 
@@ -318,7 +318,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 - 获取相册管理模块photoAccessHelper实例。
 - [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'和'ohos.permission.WRITE_IMAGEVIDEO'。
 
-下面以从相册名为'albumName'的用户相册中移除一张图片为例。
+下面以从相册名为'test'的用户相册中移除一张图片为例。
 
 **开发步骤**
 

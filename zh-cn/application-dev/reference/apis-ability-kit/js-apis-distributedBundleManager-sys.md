@@ -3,14 +3,16 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
+<!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
 本模块提供分布式应用的管理能力。
 
 > **说明：**
 >
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
 
@@ -44,12 +46,16 @@ getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback\<RemoteAb
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | elementName | [ElementName](js-apis-bundleManager-elementName.md)          | 是   | ElementName信息。                                            |
-| callback    | AsyncCallback<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象, data为undefined。 |
+| callback    | AsyncCallback<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象，data为undefined。 |
 
 **错误码：**
 
@@ -68,6 +74,7 @@ getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback\<RemoteAb
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { distributedBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -79,6 +86,33 @@ try {
             bundleName: 'com.example.application',
             abilityName: 'EntryAbility'
         }, (err: BusinessError, data: distributedBundleManager.RemoteAbilityInfo) => {
+            if (err) {
+                console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
+            } else {
+                console.info('Operation succeed:' + JSON.stringify(data));
+            }
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 开发者需根据实际工程更新deviceId、bundleName和abilityName。
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        {
+            deviceId: '1',
+            bundleName: 'com.example.application',
+            abilityName: 'EntryAbility'
+        }, (err: BusinessError | null, data: distributedBundleManager.RemoteAbilityInfo | undefined) => {
             if (err) {
                 console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
             } else {
@@ -103,6 +137,10 @@ getRemoteAbilityInfo(elementName: ElementName): Promise\<RemoteAbilityInfo>
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -133,6 +171,7 @@ getRemoteAbilityInfo(elementName: ElementName): Promise\<RemoteAbilityInfo>
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { distributedBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -154,12 +193,37 @@ try {
     console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 开发者需根据实际工程更新deviceId、bundleName和abilityName。
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        {
+            deviceId: '1',
+            bundleName: 'com.example.application',
+            abilityName: 'EntryAbility'
+        }).then((data: distributedBundleManager.RemoteAbilityInfo) => {
+            console.info('Operation succeed:' + JSON.stringify(data));
+        }).catch((err: Error) => {
+            console.error(`Operation failed: error code is ${(err as BusinessError).code}  and error message is ${(err as BusinessError).message}`);
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
 
 ## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, callback: AsyncCallback\<Array\<RemoteAbilityInfo>>): void
 
-获取由elementName指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
+获取由elementNames指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -167,12 +231,16 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>, callback: AsyncCallback\
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型                                                         | 必填 | 说明                                                         |
 | ------------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)>   | 是   | ElementName信息,最大数组长度为10。                             |
-| callback     | AsyncCallback\<Array\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象, data为undefined。 |
+| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)>   | 是   | ElementName信息，最大数组长度为10。                             |
+| callback     | AsyncCallback\<Array\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象，data为undefined。 |
 
 **错误码：**
 
@@ -191,6 +259,7 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>, callback: AsyncCallback\
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { distributedBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -221,18 +290,58 @@ try {
     console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleManager } from '@kit.AbilityKit';
+
+// 开发者需根据实际工程更新deviceId、bundleName和abilityName。
+let elementNames: Array<bundleManager.ElementName> = [
+    {
+        deviceId: '1',
+        bundleName: 'com.example.application1',
+        abilityName: 'EntryAbility1'
+    },
+    {
+        deviceId: '1',
+        bundleName: 'com.example.application2',
+        abilityName: 'EntryAbility'
+    }
+]
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        elementNames, (err: BusinessError | null, data: distributedBundleManager.RemoteAbilityInfo[] | undefined) => {
+          if (err) {
+            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
+          } else {
+            console.info('Operation succeed:' + JSON.stringify(data));
+          }
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
 
 ## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>): Promise\<Array\<RemoteAbilityInfo>>
 
-获取由elementName指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
+获取由elementNames指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -244,7 +353,7 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>): Promise\<Array\<RemoteA
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
+| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise对象，调用成功返回RemoteAbilityInfo对象列表；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -263,6 +372,7 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>): Promise\<Array\<RemoteA
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { distributedBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -291,6 +401,39 @@ try {
     console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleManager } from '@kit.AbilityKit';
+
+// 开发者需根据实际工程更新deviceId、bundleName和abilityName。
+let elementNames: Array<bundleManager.ElementName> = [
+    {
+        deviceId: '1',
+        bundleName: 'com.example.application1',
+        abilityName: 'EntryAbility1'
+    },
+    {
+        deviceId: '1',
+        bundleName: 'com.example.application2',
+        abilityName: 'EntryAbility'
+    }
+]
+try {
+    distributedBundleManager.getRemoteAbilityInfo(elementNames).then((data: distributedBundleManager.RemoteAbilityInfo[]) => {
+            console.info('Operation succeed:' + JSON.stringify(data));
+        }).catch((err: Error) => {
+            console.error(`Operation failed: error code is ${(err as BusinessError).code}  and error message is ${(err as BusinessError).message}`);
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
 
 ## distributedBundleManager.getRemoteAbilityInfo
 
@@ -304,13 +447,17 @@ getRemoteAbilityInfo(elementName: ElementName, locale: string, callback: AsyncCa
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名       | 类型                                                         | 必填 | 说明                                               |
 | ----------- | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
 | elementName | [ElementName](js-apis-bundleManager-elementName.md)                 | 是   | ElementName信息。                            |
 | locale  | string |是 | 语言地区。 |
-| callback    | AsyncCallback<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象, data为undefined。 |
+| callback    | AsyncCallback<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象，data为undefined。 |
 
 **错误码：**
 
@@ -329,6 +476,7 @@ getRemoteAbilityInfo(elementName: ElementName, locale: string, callback: AsyncCa
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { distributedBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -340,6 +488,33 @@ try {
             bundleName: 'com.example.application',
             abilityName: 'EntryAbility'
         }, 'zh-Hans-CN', (err: BusinessError, data: distributedBundleManager.RemoteAbilityInfo) => {
+          if (err) {
+            console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
+          } else {
+            console.info('Operation succeed:' + JSON.stringify(data));
+          }
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 开发者需根据实际工程更新deviceId、bundleName和abilityName。
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        {
+            deviceId: '1',
+            bundleName: 'com.example.application',
+            abilityName: 'EntryAbility'
+        }, 'zh-Hans-CN', (err: BusinessError | null, data: distributedBundleManager.RemoteAbilityInfo | undefined) => {
           if (err) {
             console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
           } else {
@@ -364,6 +539,10 @@ getRemoteAbilityInfo(elementName: ElementName, locale: string): Promise\<RemoteA
 **需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -395,6 +574,7 @@ getRemoteAbilityInfo(elementName: ElementName, locale: string): Promise\<RemoteA
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { distributedBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -416,12 +596,37 @@ try {
     console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 开发者需根据实际工程更新deviceId、bundleName和abilityName。
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        {
+            deviceId: '1',
+            bundleName: 'com.example.application',
+            abilityName: 'EntryAbility'
+        }, 'zh-Hans-CN').then((data: distributedBundleManager.RemoteAbilityInfo) => {
+            console.info('Operation succeed:' + JSON.stringify(data));
+        }).catch((err: Error) => {
+            console.error(`Operation failed: error code is ${(err as BusinessError).code}  and error message is ${(err as BusinessError).message}`);
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
 
 ## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string, callback: AsyncCallback\<Array\<RemoteAbilityInfo>>): void
 
-获取由elementName和locale指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
+获取由elementNames和locale指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -429,13 +634,17 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string, callback
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型                                                         | 必填 | 说明                                               |
 | ------------ | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
-| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)>          | 是   | ElementName信息,最大数组长度为10。                   |
+| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)>          | 是   | ElementName信息，最大数组长度为10。                   |
 | locale  | string |是 | 语言地区。 |
-| callback     | AsyncCallback\<Array\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | 是   | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象, data为undefined。 |
+| callback     | AsyncCallback\<Array\<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | 是   | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象，data为undefined。 |
 
 **错误码：**
 
@@ -454,6 +663,7 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string, callback
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { distributedBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -484,12 +694,48 @@ try {
     console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleManager } from '@kit.AbilityKit';
+
+// 开发者需根据实际工程更新deviceId、bundleName和abilityName。
+let elementNames: Array<bundleManager.ElementName> = [
+    {
+        deviceId: '1',
+        bundleName: 'com.example.application1',
+        abilityName: 'EntryAbility1'
+    },
+    {
+        deviceId: '1',
+        bundleName: 'com.example.application2',
+        abilityName: 'EntryAbility'
+    }
+]
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        elementNames, 'zh-Hans-CN', (err: BusinessError | null, data: distributedBundleManager.RemoteAbilityInfo[] | undefined) => {
+          if (err) {
+           console.error(`Operation failed: error code is ${err.code}  and error message is ${err.message}`);
+          } else {
+            console.info('Operation succeed:' + JSON.stringify(data));
+          }
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
 
 ## distributedBundleManager.getRemoteAbilityInfo
 
 getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string): Promise\<Array\<RemoteAbilityInfo>>
 
-获取由elementName和locale指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
+获取由elementNames和locale指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -497,18 +743,22 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string): Promise
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名        | 类型                                                | 必填 | 说明                    |
 | ------------ | --------------------------------------------------- | ---- | ----------------------- |
-| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)> | 是   | ElementName信息,最大数组长度为10。 |
+| elementNames | Array<[ElementName](js-apis-bundleManager-elementName.md)> | 是   | ElementName信息，最大数组长度为10。 |
 | locale  | string |是 | 语言地区。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
+| Promise\<Array<[RemoteAbilityInfo](js-apis-bundleManager-remoteAbilityInfo-sys.md)>> | Promise对象，调用成功返回RemoteAbilityInfo对象列表；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -527,6 +777,7 @@ getRemoteAbilityInfo(elementNames: Array\<ElementName>, locale: string): Promise
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { distributedBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -555,12 +806,48 @@ try {
     console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { bundleManager } from '@kit.AbilityKit';
+
+// 开发者需根据实际工程更新deviceId、bundleName和abilityName。
+let elementNames: Array<bundleManager.ElementName> = [
+    {
+        deviceId: '1',
+        bundleName: 'com.example.application1',
+        abilityName: 'EntryAbility1'
+    },
+    {
+        deviceId: '1',
+        bundleName: 'com.example.application2',
+        abilityName: 'EntryAbility'
+    }
+]
+try {
+    distributedBundleManager.getRemoteAbilityInfo(
+        elementNames, 'zh-Hans-CN').then((data: distributedBundleManager.RemoteAbilityInfo[]) => {
+            console.info('Operation succeed:' + JSON.stringify(data));
+        }).catch((err: Error) => {
+            console.error(`Operation failed: error code is ${(err as BusinessError).code}  and error message is ${(err as BusinessError).message}`);
+        });
+} catch (err) {
+    let code = (err as BusinessError).code;
+    let message = (err as BusinessError).message;
+    console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
+}
+```
 
 ## distributedBundleManager.getRemoteBundleVersionCode
 
-getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promise\<number>
+ArkTS-Dyn: getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promise\<number>
 
-获取指定远程设备上指定包名的应用版本信息。使用Promise异步回调。
+ArkTS-Sta: getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promise\<long>
+
+获取指定远程设备上指定包名的应用版本号。使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -570,7 +857,9 @@ getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promise\<numbe
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -583,7 +872,7 @@ getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promise\<numbe
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<number> | Promise对象，调用成功返回版本信息；调用失败返回错误对象。 |
+| ArkTS-Dyn: Promise\<number><br>ArkTS-Sta: Promise\<long> | Promise对象，调用成功返回版本号；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -600,6 +889,7 @@ getRemoteBundleVersionCode(deviceId: string, bundleName: string): Promise\<numbe
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { distributedBundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -616,6 +906,90 @@ try {
   console.error(`getRemoteBundleVersionCode failed: error code is ${code}  and error msg is ${message}`);
 }
 ```
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  distributedBundleManager.getRemoteBundleVersionCode('1111', 'com.hap.myapplication').then((data: long) => {
+    console.info(`getRemoteBundleVersionCode succeed:` + data);
+  }).catch((err: Error) => {
+    console.error(`getRemoteBundleVersionCode failed: error code is ${(err as BusinessError).code}` +
+      `  and error msg is ${(err as BusinessError).message}`);
+  });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`getRemoteBundleVersionCode failed: error code is ${code}  and error msg is ${message}`);
+}
+```
+
+## distributedBundleManager.getRemoteMetadata
+
+getRemoteMetadata(deviceId: string, bundleName: string): Promise\<Array\<ModuleMetadata>>
+
+获取指定远程设备上指定包名的应用元数据信息。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**参数：**
+
+| 参数名        | 类型                                                | 必填 | 说明                    |
+| ------------ | --------------------------------------------------- | ---- | ----------------------- |
+| deviceId | string | 是   | 远程设备ID。可以通过[getAvailableDeviceList](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelist)获取所有可信设备列表，取值为可信设备信息下networkId字段。 |
+| bundleName  | string |是 | 应用的包名。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                              |
+| ------------------------------------------------------------ | --------------------------------- |
+| Promise\<Array\<[ModuleMetadata](js-apis-bundleManager-applicationInfo.md#modulemetadata10)\>\> | Promise对象，调用成功返回[ModuleMetadata](js-apis-bundleManager-applicationInfo.md#modulemetadata10)数组（每个元素携带一个模块的metadata）；调用失败返回错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID |    错误信息                   |
+|----------|-------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 801 | Capability not supported. |
+| 17700001 | The specified bundle is not found. |
+| 17700007 | The specified device ID is not found. |
+| 17700027 | The distributed service is not running. |
+| 17700101 | Bundle manager service is excepted. |
+
+**示例：**
+
+```ts
+import { distributedBundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  distributedBundleManager.getRemoteMetadata('1111', 'com.hap.myapplication').then((data) => {
+    console.info(`getRemoteMetadata succeed:` + JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    console.error(`getRemoteMetadata failed: error code is ${err.code}  and error msg is ${err.message}`);
+  });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error(`getRemoteMetadata failed: error code is ${code}  and error msg is ${message}`);
+}
+```
 
 ## RemoteAbilityInfo
 
@@ -626,6 +1000,10 @@ type RemoteAbilityInfo = _RemoteAbilityInfo
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |

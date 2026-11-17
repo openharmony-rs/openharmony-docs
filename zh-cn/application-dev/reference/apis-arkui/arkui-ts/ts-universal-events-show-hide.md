@@ -1,7 +1,7 @@
 # 挂载卸载事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -30,6 +30,8 @@ ArkTS-Sta: onAttach(callback: VoidCallback | undefined): this
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 12
@@ -55,9 +57,11 @@ ArkTS-Dyn: onDetach(callback: Callback\<void>): T
 
 ArkTS-Sta: onDetach(callback: VoidCallback | undefined): this
 
-组件从组件树卸载时触发此回调。建议使用[onDisAppear](#ondisappear)替代此接口。
+组件从组件树卸载时触发此回调。如果需要在回调中对组件树进行变更，建议使用[onDisAppear](#ondisappear)替代此接口。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -118,7 +122,7 @@ ArkTS-Dyn: onDisAppear(event: () => void): T
 
 ArkTS-Sta: onDisAppear(event: (() => void) | undefined): this
 
-组件从组件树卸载时触发此回调。
+组件消失时触发此回调。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -134,7 +138,7 @@ ArkTS-Sta: onDisAppear(event: (() => void) | undefined): this
 
 | 参数名 | 类型  | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| event  | ArkTS-Dyn: () => void  <br/>ArkTS-Sta: (() => void) \| undefined| 是   | onDisAppear事件的回调函数，表示组件已卸载消失。|
+| event  | ArkTS-Dyn: () => void  <br/>ArkTS-Sta: (() => void) \| undefined| 是   | onDisAppear事件的回调函数，表示组件已消失。|
 
 **返回值：**
 
@@ -145,12 +149,12 @@ ArkTS-Sta: onDisAppear(event: (() => void) | undefined): this
 
 ## 示例
 
+### 示例1（onAttach和onDetach事件）
+
 该示例通过按钮控制组件的挂载和卸载，触发onAttach和onDetach事件。
 
 ```ts
 // xxx.ets
-import { promptAction } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct AppearExample {
@@ -186,4 +190,45 @@ struct AppearExample {
 }
 ```
 
-![zh-cn_image_0000001219864151](figures/zh-cn_image_0000001219864151.gif)
+![attach_and_detach](figures/onDisAppear.gif)
+
+### 示例2（onAppear和onDisAppear事件）
+
+该示例通过按钮控制组件的显示和消失，触发onAppear和onDisAppear事件。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct AppearDisappearExample {
+  @State isShow: boolean = true;
+  @State changeAppear: string = '点我隐藏显示组件';
+  private myText: string = 'Text for onDisAppear';
+
+  build() {
+    Column() {
+      Button(this.changeAppear)
+        .onClick(() => {
+          this.isShow = !this.isShow
+        }).margin(15)
+      if (this.isShow) {
+        Text(this.myText).fontSize(26).fontWeight(FontWeight.Bold)
+          .onAppear(() => {
+            this.getUIContext().getPromptAction().showToast({
+              message: 'The text is shown',
+              duration: 2000,
+              bottom: 500
+            })
+          })
+          .onDisAppear(() => {
+            this.getUIContext().getPromptAction().showToast({
+              message: 'The text is hidden',
+              duration: 2000,
+              bottom: 500
+            })
+          })
+      }
+    }.padding(30).width('100%')
+  }
+}
+```

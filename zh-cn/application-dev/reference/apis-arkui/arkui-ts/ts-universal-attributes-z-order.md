@@ -1,7 +1,7 @@
 # Z序控制
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -108,9 +108,9 @@ struct ZIndexExample {
           .size({ width: '70%', height: '50%' }).backgroundColor(0xd2cab3).align(Alignment.TopStart)
           .zIndex(1)
         // Text2设置zIndex默认值为0
-        Text('2, default zIndex(0), now zIndex:' + this.zIndex_)
+        Text('2, default zIndex(0), now zIndex:' + this.zIndexValue)
           .size({ width: '90%', height: '80%' }).backgroundColor(0xc1cbac).align(Alignment.TopStart)
-          .zIndex(this.zIndex_)
+          .zIndex(this.zIndexValue)
       }.width('100%').height(200)
     }.width('100%').height(200)
   }

@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -10,14 +10,14 @@
 
 ## 如何建立应用侧与H5侧的交互通道
 
-注册应用侧代码有两种方式，一种在Web组件初始化调用，使用[javaScriptProxy()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)接口。另外一种在Web组件初始化完成后调用，使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)接口。两种方式都需要和[deleteJavaScriptRegister](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#deletejavascriptregister)接口配合使用，防止内存泄漏。
+注册应用侧代码有两种方式，一种在Web组件初始化调用，使用[javaScriptProxy()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)接口。另外一种在Web组件初始化完成后调用，使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)接口。两种方式都需要和[deleteJavaScriptRegister()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#deletejavascriptregister)接口配合使用，防止内存泄漏。
 
 在下面的示例中，将test()方法注册在前端页面中， 该函数可以在前端页面触发运行。
 
 应用侧使用[javaScriptProxy()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)接口注册示例：
 
+ArkTS-Dyn示例：
 <!-- @[functions_that_trigger_a_run_on_the_front_end_page_are_registered_in_the_front_end_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/JavaScriptProxy.ets) -->
-
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -75,6 +75,67 @@ struct WebComponent {
 }
 ```
 
+ArkTS-Sta示例：
+<!-- @[functions_that_trigger_a_run_on_the_front_end_page_are_registered_in_the_front_end_page](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/UseFrontendJSApp/entry2/src/main/ets/pages/JavaScriptProxy.ets) -->
+
+``` TypeScript
+import { $rawfile, Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+class TestClass {
+  constructor() {
+  }
+
+  test(): string {
+    return 'ArkTS Hello World!';
+  }
+}
+
+@Entry
+@Component
+struct WebComponent {
+  webviewController: webview.WebviewController = new webview.WebviewController(undefined);
+  // 声明需要注册的对象
+  @State testObj: TestClass = new TestClass();
+
+  build() {
+    Column() {
+      Button('deleteJavaScriptRegister')
+        .onClick(() => {
+          try {
+            this.webviewController.deleteJavaScriptRegister('testObjName');
+            this.webviewController.refresh();
+          } catch (error) {
+            console.error(
+              `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      // Web组件加载本地index.html页面
+      Web({ src: $rawfile('index1.html'), controller: this.webviewController})
+        // 将对象注入到web端
+        .javaScriptProxy({
+          jsObject: this.testObj,
+          name: 'testObjName',
+          methodList: ['test'],
+          controller: this.webviewController,
+          // 可选参数
+          asyncMethodList: [],
+          permission: '{"javascriptProxyPermission":{"urlPermissionList":' +
+            '[{"scheme":"resource","host":"rawfile","port":"","path":""},' +
+            '{"scheme":"e","host":"f","port":"g","path":"h"}],"methodList":' +
+            '[{"methodName":"test","urlPermissionList":' +
+            '[{"scheme":"https","host":"xxx.com","port":"","path":""},' +
+            '{"scheme":"resource","host":"rawfile","port":"","path":""}]},' +
+            '{"methodName":"test11","urlPermissionList":' +
+            '[{"scheme":"q","host":"r","port":"","path":"t"},' +
+            '{"scheme":"u","host":"v","port":"","path":""}]}]}}'
+        })
+    }
+  }
+}
+```
+
   应用侧使用[registerJavaScriptProxy()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)接口注册。
 
   > **说明：**
@@ -83,9 +144,10 @@ struct WebComponent {
 
 - 示例1：
 
-  <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->
-  
+  ArkTS-Dyn示例：
+  <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->    
   ``` TypeScript
+  // xxx.ets
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
   
@@ -121,6 +183,7 @@ struct WebComponent {
             }
           })
         Web({ src: $rawfile('index1.html'), controller: this.webviewController })
+        // 在页面加载前注册，页面加载完成后生效
           .onControllerAttached(()=>{
             try {
               this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString'],
@@ -142,12 +205,74 @@ struct WebComponent {
   }
   ```
  
+  ArkTS-Sta示例：
+  <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->
+
+  ``` TypeScript
+  import { $rawfile, Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  
+  class TestClass {
+    constructor() {
+    }
+  
+    test(): string {
+      return 'ArkUI Web Component';
+    }
+  
+    toString(): string {
+      console.info('Web Component toString');
+      return 'Web Component toString';
+    }
+  }
+  
+  @Entry
+  @Component
+  struct Index {
+    webviewController: webview.WebviewController = new webview.WebviewController(undefined);
+    @State testObj: TestClass = new TestClass();
+  
+    build() {
+      Column() {
+        // jsb对象不再使用后，需解除注册，防止内存泄漏
+        Button('deleteJavaScriptRegister')
+          .onClick(() => {
+            try {
+              this.webviewController.deleteJavaScriptRegister('testObjName');
+              this.webviewController.refresh();
+            } catch (err) {
+              console.error(`ErrorCode: ${(err as BusinessError).code},  Message: ${(err as BusinessError).message}`);
+            }
+          })
+        Web({ src: $rawfile('index1.html'), controller: this.webviewController })
+        // 在页面加载前注册，页面加载完成后生效
+          .onControllerAttached((): void => {
+            try {
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString'],
+                      // 可选参数, asyncMethodList
+                      [],
+                      // 可选参数, permission
+                      '{"javascriptProxyPermission":{"urlPermissionList":[{"scheme":"resource","host":"rawfile","port":"","path":""},' +
+                      '{"scheme":"e","host":"f","port":"g","path":"h"}],"methodList":[{"methodName":"test","urlPermissionList":' +
+                      '[{"scheme":"https","host":"xxx.com","port":"","path":""},{"scheme":"resource","host":"rawfile","port":"","path":""}]},' +
+                      '{"methodName":"test11","urlPermissionList":[{"scheme":"q","host":"r","port":"","path":"t"},' +
+                      '{"scheme":"u","host":"v","port":"","path":""}]}]}}'
+              );
+            } catch (err) {
+              console.error(`ErrorCode: ${(err as BusinessError).code},  Message: ${(err as BusinessError).message}`);
+            }
+          })
+      }
+    }
+  }
+  ```
+
 - 示例2：
 
-   <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) -->
-   
+   ArkTS-Dyn示例：
+   <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) -->    
    ``` TypeScript
-   // xxx.ets
    // xxx.ets
    import { webview } from '@kit.ArkWeb';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -171,7 +296,7 @@ struct WebComponent {
      webviewController: webview.WebviewController = new webview.WebviewController();
      @State testObj: TestClass = new TestClass();
      @State isRegistered: boolean = false;
-   
+
      build() {
        Column() {
          // jsb对象不再使用后，需解除注册，防止内存泄漏
@@ -200,10 +325,78 @@ struct WebComponent {
                  );
                  this.isRegistered = true;
                  // onPageEnd中注册方法后，需重新加载后生效
-                 this.webviewController.refresh();              
+                 this.webviewController.refresh();
                }
              } catch (error) {
                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             }
+           })
+       }
+     }
+   }
+   ```
+
+   ArkTS-Sta示例：
+   <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) -->
+
+   ``` TypeScript
+   import { $rawfile, Button, Column, Component, Entry, State, Web } from '@kit.ArkUI';
+   import { webview } from '@kit.ArkWeb';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   
+   class TestClass {
+     constructor() {
+     }
+   
+     test(): string {
+       return 'ArkUI Web Component';
+     }
+   
+     toString(): string {
+       console.info('Web Component toString');
+       return 'Web Component toString';
+     }
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     webviewController: webview.WebviewController = new webview.WebviewController(undefined);
+     @State testObj: TestClass = new TestClass();
+     @State isRegistered: boolean = false;
+   
+     build() {
+       Column() {
+         // jsb对象不再使用后，需解除注册，防止内存泄漏
+         Button('deleteJavaScriptRegister')
+           .onClick(() => {
+             try {
+               this.webviewController.deleteJavaScriptRegister('testObjName');
+               this.webviewController.refresh();
+             } catch (err) {
+               console.error(`ErrorCode: ${(err as BusinessError).code},  Message: ${(err as BusinessError).message}`);
+             }
+           })
+         Web({ src: $rawfile('index1.html'), controller: this.webviewController })
+           .onPageEnd(()=>{
+             try {
+               if(!this.isRegistered){
+                 this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString'],
+                       // 可选参数, asyncMethodList
+                       [],
+                       // 可选参数, permission
+                       '{"javascriptProxyPermission":{"urlPermissionList":[{"scheme":"resource","host":"rawfile","port":"","path":""},' +
+                       '{"scheme":"e","host":"f","port":"g","path":"h"}],"methodList":[{"methodName":"test","urlPermissionList":' +
+                       '[{"scheme":"https","host":"xxx.com","port":"","path":""},{"scheme":"resource","host":"rawfile","port":"","path":""}]},' +
+                       '{"methodName":"test11","urlPermissionList":[{"scheme":"q","host":"r","port":"","path":"t"},' +
+                       '{"scheme":"u","host":"v","port":"","path":""}]}]}}'
+                 );
+                 this.isRegistered = true;
+                 // onPageEnd中注册方法后，需重新加载后生效
+                 this.webviewController.refresh();              
+               }
+             } catch (err) {
+               console.error(`ErrorCode: ${(err as BusinessError).code},  Message: ${(err as BusinessError).message}`);
              }
            })
        }
@@ -293,30 +486,31 @@ struct WebComponent {
 ### 应用侧和前端页面之间传递Array
 
  Array可以作为注册对象方法的参数或返回值，在应用侧和前端页面之间传递。
-  ```ts
-  // xxx.ets
+  <!-- @[pass_an_array_between_the_application_side_and_the_front_end_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_one.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   class TestClass {
     constructor() {
     }
-
+  
     test(): Array<number> {
-      return [1, 2, 3, 4]
+      return [1, 2, 3, 4];
     }
-
-    toString(param: string): void {
+  
+    toString(param: Array<number>): void {
       console.info('Web Component toString' + param);
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     webviewController: webview.WebviewController = new webview.WebviewController();
     @State testObj: TestClass = new TestClass();
-
+  
     build() {
       Column() {
         Button('refresh')
@@ -324,33 +518,36 @@ struct WebComponent {
             try {
               this.webviewController.refresh();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('Register JavaScript To Window')
           .onClick(() => {
             try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"]);
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString']);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.deleteJavaScriptRegister('testObjName');
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+        Web({ src: $rawfile('index7.html'), controller: this.webviewController })
       }
     }
   }
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index7.html -->
   <!DOCTYPE html>
   <html>
   <body>
@@ -368,37 +565,38 @@ struct WebComponent {
 ### 非Function等复杂类型使用
 
   非Function等复杂类型作为注册对象方法的参数或返回值，在应用侧和前端页面之间传递。
-  ```ts
-  // xxx.ets
+  <!-- @[the_base_type_is_passed_between_the_app_side_and_front_end_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_two.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   class Student {
-    name: string = '';
-    age: string = '';
+    public name: string = '';
+    public age: string = '';
   }
-
+  
   class TestClass {
     constructor() {
     }
-
-    // 传递的基础类型name:"jeck", age:"12"。
+  
+    // 传递的基础类型name:'jeck', age:'12'。
     test(): Student {
-      let st: Student = { name: "jeck", age: "12" };
+      let st: Student = { name: 'jeck', age: '12' };
       return st;
     }
-
+  
     toString(param: ESObject): void {
-      console.info('Web Component toString' + param["name"]);
+      console.info('Web Component toString' + param['name']);
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     webviewController: webview.WebviewController = new webview.WebviewController();
     @State testObj: TestClass = new TestClass();
-
+  
     build() {
       Column() {
         Button('refresh')
@@ -406,33 +604,36 @@ struct WebComponent {
             try {
               this.webviewController.refresh();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('Register JavaScript To Window')
           .onClick(() => {
             try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"]);
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString']);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.deleteJavaScriptRegister('testObjName');
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+        Web({ src: $rawfile('index9.html'), controller: this.webviewController })
       }
     }
   }
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index9.html -->
   <!DOCTYPE html>
   <html>
   <body>
@@ -449,30 +650,31 @@ struct WebComponent {
 ### 应用侧调用前端页面的Callback
 
   Callback可以作为注册对象方法的参数或返回值，在应用侧和前端页面之间传递。
-  ```ts
-  // xxx.ets
+  <!-- @[the_application_side_calls_the_callback_of_the_front_end_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_three.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   class TestClass {
     constructor() {
     }
-
+  
     test(param: Function): void {
-      param("call callback");
+      param('call callback');
     }
-
-    toString(param: String): void {
+  
+    toString(param: string): void {
       console.info('Web Component toString' + param);
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     webviewController: webview.WebviewController = new webview.WebviewController();
     @State testObj: TestClass = new TestClass();
-
+  
     build() {
       Column() {
         Button('refresh')
@@ -480,33 +682,36 @@ struct WebComponent {
             try {
               this.webviewController.refresh();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('Register JavaScript To Window')
           .onClick(() => {
             try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"]);
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString']);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.deleteJavaScriptRegister('testObjName');
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+        Web({ src: $rawfile('index8.html'), controller: this.webviewController })
       }
     }
   }
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index8.html -->
   <!DOCTYPE html>
   <html>
   <body>
@@ -523,30 +728,31 @@ struct WebComponent {
 ### 应用侧调用前端页面Object里的Function
 
   前端页面Object里的Function可以作为注册对象方法的参数或返回值，在应用侧和前端页面之间传递。
-  ```ts
-  // xxx.ets
+  <!-- @[call_the_function_in_the_object_of_the_front_end_page_on_the_application_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_four.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   class TestClass {
     constructor() {
     }
-
+  
     test(param: ESObject): void {
-      param.hello("call obj func");
+      param.hello('call obj func');
     }
-
+  
     toString(param: string): void {
       console.info('Web Component toString' + param);
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     webviewController: webview.WebviewController = new webview.WebviewController();
     @State testObj: TestClass = new TestClass();
-
+  
     build() {
       Column() {
         Button('refresh')
@@ -554,33 +760,36 @@ struct WebComponent {
             try {
               this.webviewController.refresh();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('Register JavaScript To Window')
           .onClick(() => {
             try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"]);
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString']);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.deleteJavaScriptRegister('testObjName');
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+        Web({ src: $rawfile('index6.html'), controller: this.webviewController })
       }
     }
   }
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index6.html -->
   <!DOCTYPE html>
   <html>
   <body>
@@ -622,45 +831,46 @@ struct WebComponent {
 ### 前端页面调用应用侧Object里的Function
 
   应用侧Object里的Function可以作为注册对象方法的参数或返回值，在应用侧和前端页面之间传递。
-  ```ts
-  // xxx.ets
+  <!-- @[the_front_end_page_calls_the_function_in_the_object_on_the_application_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_five.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   class ObjOther {
-    methodNameListForJsProxy: string[]
-
+    public methodNameListForJsProxy: string[];
+  
     constructor(list: string[]) {
-      this.methodNameListForJsProxy = list
+      this.methodNameListForJsProxy = list;
     }
-
+  
     testOther(json: string): void {
-      console.info(json)
+      console.info(json);
     }
   }
-
+  
   class TestClass {
-    ObjReturn: ObjOther
-
+  public objReturn: ObjOther
+  
     constructor() {
-      this.ObjReturn = new ObjOther(["testOther"]);
+      this.objReturn = new ObjOther(['testOther']);
     }
-
+  
     test(): ESObject {
-      return this.ObjReturn
+      return this.objReturn
     }
-
+  
     toString(param: string): void {
       console.info('Web Component toString' + param);
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     webviewController: webview.WebviewController = new webview.WebviewController();
     @State testObj: TestClass = new TestClass();
-
+  
     build() {
       Column() {
         Button('refresh')
@@ -668,33 +878,36 @@ struct WebComponent {
             try {
               this.webviewController.refresh();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('Register JavaScript To Window')
           .onClick(() => {
             try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"]);
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString']);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.deleteJavaScriptRegister('testObjName');
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+        Web({ src: $rawfile('index5.html'), controller: this.webviewController })
       }
     }
   }
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index5.html -->
   <!DOCTYPE html>
   <html>
   <body>
@@ -712,36 +925,37 @@ struct WebComponent {
 ### Promise场景
 
   第一种使用方法，在应用侧new Promise，将Promise作为对象方法的参数或返回值，向前端页面传递。
-  ```ts
-  // xxx.ets
+  <!-- @[on_the_application_side_of_new_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/Promise_one.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   class TestClass {
     constructor() {
     }
-
+  
     test(): Promise<string> {
       let p: Promise<string> = new Promise((resolve, reject) => {
         setTimeout(() => {
-          console.info('执行完成');
+          console.info('Execute Finished');
           reject('fail');
         }, 10000);
       });
       return p;
     }
-
+  
     toString(param: string): void {
-      console.info(" " + param);
+      console.info(' ' + param);
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     webviewController: webview.WebviewController = new webview.WebviewController();
     @State testObj: TestClass = new TestClass();
-
+  
     build() {
       Column() {
         Button('refresh')
@@ -749,33 +963,36 @@ struct WebComponent {
             try {
               this.webviewController.refresh();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('Register JavaScript To Window')
           .onClick(() => {
             try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"]);
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString']);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.deleteJavaScriptRegister('testObjName');
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+        Web({ src: $rawfile('index2.html'), controller: this.webviewController })
       }
     }
   }
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index2.html -->
   <!DOCTYPE html>
   <html>
   <body>
@@ -790,30 +1007,31 @@ struct WebComponent {
   </html>
   ```
   第二种使用方法，在前端页面new Promise，将Promise作为对象方法的参数或返回值，向应用侧传递。
-  ```ts
-  // xxx.ets
+  <!-- @[on_the_front_end_page_new_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/Promise_two.ets) -->
+  
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   class TestClass {
     constructor() {
     }
-
+  
     test(param:Function): void {
-      setTimeout( () => { param("suc") }, 10000)
+      setTimeout( () => { param('suc') }, 10000)
     }
-
+  
     toString(param:string): void {
-      console.info(" " + param);
+      console.info(' ' + param);
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     webviewController: webview.WebviewController = new webview.WebviewController();
     @State testObj: TestClass = new TestClass();
-
+  
     build() {
       Column() {
         Button('refresh')
@@ -821,33 +1039,36 @@ struct WebComponent {
             try {
               this.webviewController.refresh();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('Register JavaScript To Window')
           .onClick(() => {
             try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"]);
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString']);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.deleteJavaScriptRegister('testObjName');
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+        Web({ src: $rawfile('index3.html'), controller: this.webviewController })
       }
     }
   }
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index3.html -->
   <!DOCTYPE html>
   <html>
   <body>

@@ -147,7 +147,7 @@ You can use [transition](../reference/apis-arkui/arkui-ts/ts-transition-animatio
 
 
 
-![en-us_image_0000001599818064](figures/en-us_image_0000001599818064.gif)
+![en-us_image_0000001599818064](figures/Enter-Exit-Transition.gif)
 
 
 When adding transition effects to multiple components, you can configure different delay values in [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md#animation) parameters of these effects so that the components exit one by one.
@@ -215,4 +215,4 @@ When adding transition effects to multiple components, you can configure differe
    }
    ```
 
-![en-us_image_0000001599818064](figures/en-us_image_0000001599818065.gif)
+![en-us_image_0000001599818064](figures/Enter-Exit-Transition01.gif)

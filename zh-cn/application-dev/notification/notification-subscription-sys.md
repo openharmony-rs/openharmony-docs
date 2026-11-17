@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -13,11 +13,11 @@
 
 ## 通知订阅原理
 
-通知业务流程由通知子系统、通知发送端、通知订阅端组成。一条通知从通知发送端产生，通过[IPC通信](../ipc/ipc-rpc-overview.md)发送到通知子系统，再由通知子系统分发给通知订阅端。
+通知业务流程由通知子系统、通知发送端、[通知订阅](notification-glossary.md#notification-subscription通知订阅)端组成。一条通知从通知发送端产生，通过[IPC通信](../ipc/ipc-rpc-overview.md)发送到通知子系统，再由通知子系统分发给通知订阅端。
 
 * 通知发送端：可以是三方应用或系统应用。开发者重点关注。
 
-* 通知订阅端：只能为系统应用，比如通知中心。通知中心默认会订阅手机上所有应用对当前用户的通知。开发者无需关注。
+* 通知订阅端：只能为系统应用，比如[通知中心](notification-glossary.md#notification-center通知中心)。通知中心默认会订阅手机上所有应用对当前用户的通知。开发者无需关注。
 
 **图1** 通知业务流程  
 
@@ -26,7 +26,7 @@
 
 ## 接口说明
 
-通知订阅主要接口如下。详细接口介绍请参见[@ohos.notificationSubscribe (NotificationSubscribe模块)(系统接口)](../reference/apis-notification-kit/js-apis-notificationSubscribe-sys.md)。
+[通知订阅](notification-glossary.md#notification-subscription通知订阅)主要接口如下。详细接口介绍请参见[@ohos.notificationSubscribe (NotificationSubscribe模块)(系统接口)](../reference/apis-notification-kit/js-apis-notificationSubscribe-sys.md)。
 
 **表1** 通知订阅接口介绍
 
@@ -62,7 +62,9 @@
 
 1. 申请`ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER`权限，配置方式请参见[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
-2. 导入通知订阅模块。
+2. 导入[通知订阅](notification-glossary.md#notification-subscription通知订阅)模块。
+
+   ArkTS-Dyn示例：
    
    ```ts
    import { notificationSubscribe, notificationManager } from '@kit.NotificationKit';
@@ -73,8 +75,19 @@
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
-3. 创建订阅者对象。
+   ArkTS-Sta示例：
    
+   ```ts
+   import { notificationSubscribe, notificationManager } from '@kit.NotificationKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+
+   const TAG: string = '[SubscribeOperations]';
+   const DOMAIN_NUMBER: int = 0xFF00;
+   ```
+
+3. 创建订阅者对象。
+
    ```ts
    let subscriber: notificationSubscribe.NotificationSubscriber = {
      onConsume: (data:notificationSubscribe.SubscribeCallbackData) => {
@@ -84,9 +97,6 @@
      onCancel: (data:notificationSubscribe.SubscribeCallbackData) => {
        let req: notificationManager.NotificationRequest = data.request;
        hilog.info(DOMAIN_NUMBER, TAG, `onCancel callback. req.id: ${req.id}`);
-     },
-     onUpdate: (data) => {
-       hilog.info(DOMAIN_NUMBER, TAG, `onUpdate callback. req.id: ${data.sortedHashCode}`);
      },
      onConnect: () => {
        hilog.info(DOMAIN_NUMBER, TAG, `onConnect callback.`);
@@ -126,13 +136,26 @@
      },
    };
    ```
-   
+
 4. 发起通知订阅。
+
+   ArkTS-Dyn示例：
    
    ```ts
    notificationSubscribe.subscribeNotification(subscriber).then(() => {
      hilog.info(DOMAIN_NUMBER, TAG, "subscribeNotification success");
    }).catch((err: BusinessError) => {
      hilog.error(DOMAIN_NUMBER, TAG, `subscribeNotification failed, code is ${err.code}, message is ${err.message}`);
+   });
+   ```
+
+   ArkTS-Sta示例：
+   
+   ```ts
+   notificationSubscribe.subscribeNotification(subscriber).then(() => {
+     hilog.info(DOMAIN_NUMBER, TAG, "subscribeNotification success");
+   }).catch((err: Error) => {
+     let error: BusinessError = err as BusinessError;
+     hilog.error(DOMAIN_NUMBER, TAG, `subscribeNotification failed, code is ${error.code}, message is ${error.message}`);
    });
    ```

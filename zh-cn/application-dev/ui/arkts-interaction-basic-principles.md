@@ -1,7 +1,7 @@
 # 交互基础机制说明
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -46,7 +46,7 @@
 
 ## 事件响应链
 
-事件响应链是指通过触摸测试收集到的、能够响应本次交互的所有组件组成的有序链条。当用户触摸屏幕时，系统会从触摸点位置开始，遵循右子树优先的后序遍历顺序（即从最内层组件开始，自下而上、从右到左逐层向外收集），形成完整的响应链。
+事件响应链是指通过触摸测试收集到的、能够响应本次交互的所有组件组成的有序链条。当用户触摸屏幕时，系统会从触摸点位置开始，遵循右子树优先的后序遍历顺序（即从最内层组件开始，自下而上、从右到左逐层向外收集），形成完整的响应链。<!--RP1--><!--RP1End-->
 
 下图展示了组件树的层级结构与事件响应链的收集过程。图中父、子节点分别对应父组件和子组件，左子树和右子树对应兄弟组件，右子树对应的组件会显示在左子树对应组件的上方。
 
@@ -120,6 +120,9 @@
    > 百分比相对于组件自身宽高进行计算。
 
    以下是一个绑定多个热区范围的示例：
+
+   ArkTS-Dyn示例：
+
    <!-- @[focus_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/FocusOnclickExample/FocusOnclickExample.ets) -->
    
    ``` TypeScript
@@ -159,6 +162,51 @@
    }
    ```
 
+   ArkTS-Sta示例：
+
+   <!-- @[focus_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/FocusOnclickExample/FocusOnclickExample.ets) -->
+   
+   ``` TypeScript
+   import { Entry, Component, State, Column, Text, Button, $r, Margin, FlexAlign, Rectangle } from '@kit.ArkUI';
+   
+   @Entry
+   @Component
+   struct FocusOnclickExample {
+     @State text: string = '';
+     @State clickCount: number = 0;
+   
+     build() {
+       Column() {
+         Text(this.text)
+           .margin({ bottom: 20 } as Margin)
+         // 请将$r('app.string.button')替换为实际资源文件，在本示例中该资源文件的value值为"按钮"
+         Button($r('app.string.button'))
+           .responseRegion([
+             // 第一个热区为按钮的左侧1/3区域
+             {
+               x: 0,
+               y: 0,
+               width: '30%',
+               height: '100%'
+             } as Rectangle,
+             // 第二个热区为按钮的右侧1/3区域
+             {
+               x: '70%',
+               y: 0,
+               width: '30%',
+               height: '100%'
+             } as Rectangle
+           ])
+           .onClick(() => {
+             this.clickCount++;
+             this.text = 'button' + this.clickCount + 'clicked';
+           })
+           .width(200)
+       }.width('100%').justifyContent(FlexAlign.Center)
+     }
+   }
+   ```
+
    上面的代码可以将按钮切分成了3部分，中间40%的区域不响应点击，而两侧的剩下部分可响应。
 
    ![response region](figures/interaction-basic-response-region-01.png)
@@ -169,7 +217,7 @@
 
    开发者可以通过配置触摸测试控制，来实现阻塞组件自身或其他组件的触摸测试。
 
-   - HitTestMode.Default：默认不配hitTestBehavior属性，自身如果命中会阻塞兄弟组件，但是不阻塞子组件。
+   - HitTestMode.Default：默认不配置hitTestBehavior属性，自身如果命中会阻塞兄弟组件，但是不阻塞子组件。
 
      ![hitTestModeDefault](figures/hitTestModeDefault.png)
 

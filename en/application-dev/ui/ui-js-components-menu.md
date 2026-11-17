@@ -44,7 +44,7 @@ Create a **&lt;menu&gt;** component in the .hml file under **pages/index** and a
 }
 ```
 
-![en-us_image_0000001232162284](figures/en-us_image_0000001232162284.gif)
+![menu-Component](figures/menu-Component.gif)
 
 > **NOTE**
 > - The **&lt;menu&gt;** component supports only the [option](../reference/apis-arkui/arkui-js/js-components-basic-option.md) child component.
@@ -101,7 +101,7 @@ option{
 }
 ```
 
-![en-us_image_0000001275803137](figures/en-us_image_0000001275803137.gif)
+![Setting-Styles-1](figures/Setting-Styles-1.gif)
 
 
 ## Binding Events
@@ -169,4 +169,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001226815403](figures/en-us_image_0000001226815403.gif)
+![Binding-Events](figures/Binding-Events.gif)

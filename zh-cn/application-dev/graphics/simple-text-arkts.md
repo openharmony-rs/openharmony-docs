@@ -1,7 +1,7 @@
 # 简单文本绘制与显示（ArkTS）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -27,14 +27,13 @@
    ``` TypeScript
    let canvas = context.canvas;
    ```
-   <!-- -->
 
 2. 初始化文本样式，此处设置字体颜色为红色，字体大小为100px。
 
    <!-- @[arkts_drawing_simple_text_create_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   // 获取文本样式
+   // 初始化文本样式
    let myTextStyle: text.TextStyle = {
      // 文本颜色
      color: {
@@ -47,7 +46,6 @@
      fontSize: 100
    };
    ```
-   <!-- -->
 
 3. 初始化段落样式。
 
@@ -58,7 +56,6 @@
      textStyle: myTextStyle,
    };
    ```
-   <!-- -->
 
 4. 初始化段落对象，并添加文本。
 
@@ -66,13 +63,12 @@
    
    ``` TypeScript
    let fontCollection = text.FontCollection.getGlobalInstance();
-   let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+   let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
    // 更新文本样式
-   ParagraphGraphBuilder.pushStyle(myTextStyle);
+   paragraphBuilder.pushStyle(myTextStyle);
    // 添加文本
-   ParagraphGraphBuilder.addText("Hello World");
+   paragraphBuilder.addText("Hello World");
    ```
-   <!-- -->
 
 5. 排版段落并进行文本绘制。
 
@@ -80,7 +76,7 @@
    
    ``` TypeScript
    // 生成段落
-   let paragraph = ParagraphGraphBuilder.build();
+   let paragraph = paragraphBuilder.build();
    // 布局
    paragraph.layoutSync(1250);
    // 绘制文本

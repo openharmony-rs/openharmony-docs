@@ -12,6 +12,7 @@ ColorManagement继承自[ColorManagementQuery](arkts-apis-camera-ColorManagement
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
 
@@ -35,7 +36,9 @@ P3广色域与HDR高动态范围成像：
 
 应用针对不同模式使能HDR效果、设置的色彩空间以及设置相机输出流[Profile](arkts-apis-camera-i.md#profile)中的[CameraFormat](arkts-apis-camera-e.md#cameraformat)一一对应关系可参考下表。例如，在录像模式下若需要选择HDR拍摄，相机预览输出流和录像输出流[Profile](arkts-apis-camera-i.md#profile)中的[CameraFormat](arkts-apis-camera-e.md#cameraformat)可选择CAMERA_FORMAT_YCRCB_P010，色彩空间ColorSpace可选择设置BT2020_HLG_LIMIT。
 
-在拍照模式下，若需要获取HDR高显效果的图片，可通过设置色彩空间（ColorSpace）为DISPLAY_P3或BT2020_HLG实现。其中BT2020_HLG能够表示更广的色域，需要搭配使用预览输出格式（Profile.format）P010（CAMERA_FORMAT_YCRCB_P010/CAMERA_FORMAT_YCBCR_P010）来提升图像质感。
+在拍照模式下，若需要获取HDR高显色效果的图片，可通过设置色彩空间（ColorSpace）为DISPLAY_P3或BT2020_HLG实现。其中BT2020_HLG能够表示更广的色域，需要搭配使用预览输出格式（Profile.format）P010（CAMERA_FORMAT_YCRCB_P010/CAMERA_FORMAT_YCBCR_P010）来提升图像质感。
+
+在录像模式下，通过设置色彩空间为H_LOG，可以录制LOG视频（不支持前置与微距）。
 
 从API version 23开始，可以通过接口[getSupportedFullOutputCapability](arkts-apis-camera-CameraManager.md#getsupportedfulloutputcapability23)查询是否支持拍照模式下的预览P010格式。
  - 若应用不主动设置色彩空间，在拍照模式下，当预览输出格式为CAMERA_FORMAT_YUV_420_SP时，色彩空间默认为SRGB；当预览输出格式为CAMERA_FORMAT_YCRCB_P010/CAMERA_FORMAT_YCBCR_P010时，色彩空间默认为BT2020_HLG。
@@ -59,9 +62,13 @@ P3广色域与HDR高动态范围成像：
 | HDR_VIVID          | CAMERA_FORMAT_YCRCB_P010 | BT2020_HLG_LIMIT、<br>BT2020_HLG |
 | HDR_VIVID          | CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT、<br>BT2020_HLG |
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -86,12 +93,14 @@ P3广色域与HDR高动态范围成像：
 import { BusinessError } from '@kit.BasicServicesKit';
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
-function setColorSpace(session: camera.PhotoSession, colorSpaces: Array<colorSpaceManager.ColorSpace>): void {
-  if (colorSpaces === undefined || colorSpaces.length <= 0) {
+function setColorSpace(session: camera.PhotoSession, colorSpace: colorSpaceManager.ColorSpace): void {
+  let colors = session.getSupportedColorSpaces();
+  if (!colors.includes(colorSpace)) {
+    console.error(`invalid colorSpaces.`);
     return;
   }
   try {
-    session.setColorSpace(colorSpaces[0]);
+    session.setColorSpace(colorSpace);
   } catch (error) {
     let err = error as BusinessError;
     console.error(`The setColorSpace call failed, error code: ${err.code}`);
@@ -105,9 +114,13 @@ getActiveColorSpace(): colorSpaceManager.ColorSpace
 
 获取当前设置的色彩空间。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

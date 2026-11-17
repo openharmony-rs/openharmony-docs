@@ -142,7 +142,7 @@ struct FlexExample1 {
 }
 ```
 
-![en-us_image_0000001219744189](figures/en-us_image_0000001219744189.PNG)
+![flex1](figures/flex1.PNG)
 
 ### Example 2: Implementing Single- and Multi-Line Layouts
 This example demonstrates single-line and multi-line layouts for child components by setting the **wrap** property.
@@ -190,7 +190,7 @@ struct FlexExample2 {
 }
 ```
 
-![en-us_image_0000001174264366](figures/en-us_image_0000001174264366.png)
+![flex2](figures/flex2.png)
 
 ### Example 3: Setting Alignment Along the Main Axis
 This example demonstrates different alignment effects for child components along the main axis by setting the **justifyContent** property.
@@ -292,7 +292,7 @@ struct FlexExample4 {
 }
 ```
 
-![en-us_image_0000001174422904](figures/en-us_image_0000001174422904.png)
+![flex4](figures/flex4.png)
 
 ### Example 5: Setting Alignment of Multiple Lines
 This example demonstrates different alignment effects for multiple lines of content by setting the **alignContent** property.
@@ -355,7 +355,7 @@ struct FlexExample5 {
 }
 ```
 
-![en-us_image_0000001174422906](figures/en-us_image_0000001174422906.PNG)
+![flex5](figures/flex5.PNG)
 
 ### Example 6: Setting the Spacing Between Child Components Along the Main Axis or Cross Axis
 This example shows how to set the spacing between child components along the main axis or cross axis using the **space** property.
@@ -404,7 +404,7 @@ struct FlexExample2 {
 }
 ```
 
-![en-us_image_0000001174422907](figures/en-us_image_0000001174422907.PNG)
+![flex6](figures/flex6.PNG)
 
 ### Example 7: Implementing a Flex Component with Adaptive Width
 This example shows how the **Flex** component can automatically adjust to fit the layout of child components when the width is set to **auto**.
@@ -458,4 +458,4 @@ struct Index {
 }
 ```
 
-![en-us_flexDemo_7](figures/en-us_flexDemo_7.png)
+![flexDemo7](figures/flexDemo7.png)

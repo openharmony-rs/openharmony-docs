@@ -56,15 +56,17 @@ edgeAlign(alignType: CalendarAlign, offset?: Offset)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[edgeAlign<sup>23+</sup>](#edgealign23)。
-
 **ArkTS-Dyn起始版本：** 10
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[edgeAlign<sup>23+</sup>](#edgealign23)。
 
 **参数：**
 
@@ -80,6 +82,8 @@ edgeAlign(alignType: Optional\<CalendarAlign>, offset?: Offset)
 设置选择器与入口组件的对齐方式。与[edgeAlign](#edgealign)相比，alignType参数新增了对undefined类型的支持。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,6 +108,8 @@ edgeAlign(alignType: CalendarAlign | undefined, offset?: Offset)
 
 设置选择器与入口组件的对齐方式。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -127,15 +133,17 @@ textStyle(value: PickerTextStyle)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[textStyle<sup>23+</sup>](#textstyle23)。
-
 **ArkTS-Dyn起始版本：** 10
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[textStyle<sup>23+</sup>](#textstyle23)。
 
 **参数：**
 
@@ -150,6 +158,8 @@ textStyle(style: Optional\<PickerTextStyle>)
 入口区的文本颜色、字号、字体粗细。与[textStyle](#textstyle)相比，style参数新增了对undefined类型的支持。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -173,6 +183,8 @@ textStyle(value: PickerTextStyle | undefined)
 
 入口区的文本颜色、字号、字体粗细。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -194,6 +206,8 @@ markToday(enabled: boolean)
 设置日历选择器中系统当前日期是否保持高亮显示。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -217,6 +231,8 @@ markToday(enabled: boolean | undefined)
 
 设置日历选择器中系统当前日期是否保持高亮显示。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -237,6 +253,8 @@ attributeModifier(modifier: AttributeModifier\<CalendarPickerAttribute> | Attrib
 
 设置属性修改器。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -248,6 +266,32 @@ attributeModifier(modifier: AttributeModifier\<CalendarPickerAttribute> | Attrib
 | 参数名   | 类型               | 必填   | 说明      |
 | ----- | ---------- | ---- | ----------------------- |
 | modifier | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CalendarPickerAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是    | 设置属性修改器。CommonMethod表示[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)。<br/>CalendarPickerAttribute表示当前组件的[属性](#属性)和[事件](#事件)。 |
+
+### firstDayOfWeek
+
+ArkTS-Dyn: firstDayOfWeek(value: CalendarFirstDayOfWeek)
+
+ArkTS-Sta: firstDayOfWeek(value: CalendarFirstDayOfWeek | undefined)
+
+设置日历选择器每周的起始日。未通过该接口设置时，默认为CalendarFirstDayOfWeek.LOCAL（跟随系统区域变化）。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| value | ArkTS-Dyn: [CalendarFirstDayOfWeek](#calendarfirstdayofweek) <br> ArkTS-Sta: [CalendarFirstDayOfWeek](#calendarfirstdayofweek) \| undefined | 是 | 设置日历选择器每周的起始日。<br>取值为undefined时，按默认值处理。 |
 
 ## 事件
 
@@ -261,15 +305,17 @@ onChange(callback: Callback\<Date>)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange<sup>23+</sup>](#onchange23)。
-
 **ArkTS-Dyn起始版本：** 10
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onChange<sup>23+</sup>](#onchange23)。
 
 **参数：**
 
@@ -288,6 +334,8 @@ onChange(callback: Optional\<Callback\<Date>>)
 > 从API version 20开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -311,6 +359,8 @@ onChange(callback: Callback\<Date> | undefined)
 
 选择日期时触发该事件。不能通过双向绑定的状态变量触发。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
@@ -325,11 +375,13 @@ onChange(callback: Callback\<Date> | undefined)
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | [Callback](ts-types.md#callback12)\<Date> \| undefined | 是   | 选中的日期值。<br>当callback的值为undefined时，不使用回调函数。 |
 
-##  CalendarOptions对象说明
+## CalendarOptions对象说明
 
 日历选择器组件的参数说明。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -337,7 +389,7 @@ onChange(callback: Callback\<Date> | undefined)
 
 | 名称      | 类型       | 只读 | 可选        | 说明                            |
 | ----------- | ---------- | ---- | ---- | --------------------------------- |
-| hintRadius | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: double \| [Resource](ts-types.md#resource) | 否   | 是    | 描述日期选中态底板样式。<br />取值范围：[0.0, 16.0]<br />单位：vp<br/>默认值：16.0，即底板样式为圆形。<br />**说明：**<br />当hintRadius为0.0时表示底板样式为直角矩形；当hintRadius为(0.0, 16.0)时，底板样式为圆角矩形；当hintRadius为负数或大于16.0时，恢复为默认值16.0。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| hintRadius | ArkTS-Dyn: number \| [Resource](ts-types.md#resource) <br> ArkTS-Sta: double \| [Resource](ts-types.md#resource) | 否   | 是    | 设置日期选中态底板的圆角半径。<br />取值范围：[0.0, 16.0]<br />单位：vp<br/>默认值：16.0，即底板样式为圆形。<br />**说明：**<br />当hintRadius为0.0时表示底板样式为直角矩形；当hintRadius为(0.0, 16.0)时，底板样式为圆角矩形；当hintRadius为负数或大于16.0时，恢复为默认值16.0。<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
 | selected | Date | 否   | 是    | 设置选中项的日期。选中的日期未设置或日期格式不符合规范则为默认值。<br/>默认值：当前系统日期。<br/>取值范围：\[Date('0001-01-01'), Date('5000-12-31')]<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
 | start<sup>18+</sup> | Date | 否   | 是    | 设置开始日期。<br/>默认值：Date('0001-01-01')<br/>取值范围：\[Date('0001-01-01'), Date('5000-12-31')]<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
 | end<sup>18+</sup> | Date | 否   | 是    | 设置结束日期。<br/>默认值：Date('5000-12-31')<br/>取值范围：\[Date('0001-01-01'), Date('5000-12-31')]<br />**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
@@ -360,6 +412,8 @@ onChange(callback: Callback\<Date> | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
@@ -373,6 +427,33 @@ onChange(callback: Callback\<Date> | undefined)
 | START  | 0 | 设置选择器与入口组件的对齐方式为左对齐。   |
 | CENTER | 1 | 设置选择器与入口组件的对齐方式为居中对齐。 |
 | END    | 2 | 设置选择器与入口组件的对齐方式为右对齐。   |
+
+## CalendarFirstDayOfWeek
+
+日历选择器每周起始日的枚举类型。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**设备行为差异：** 本接口实际支持的设备类型范围（Phone、PC/2in1、Tablet、TV）小于其所属系统能力支持的设备类型范围（Phone、PC/2in1、Tablet、TV、Wearable）。因硬件能力限制，该接口在Wearable设备中调用将运行异常，异常信息中提示接口未定义。
+
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
+
+| 名称   | 值 | 说明                     |
+| ------ | - | ------------------------ |
+| LOCAL  | 0 | 跟随系统区域变化。       |
+| MON    | 1 | 周一。                   |
+| TUE    | 2 | 周二。                   |
+| WED    | 3 | 周三。                   |
+| THU    | 4 | 周四。                   |
+| FRI    | 5 | 周五。                   |
+| SAT    | 6 | 周六。                   |
+| SUN    | 7 | 周日。                   |
 
 ##  DateRange<sup>19+</sup>对象说明
 
@@ -540,3 +621,82 @@ struct CalendarPickerExample {
 ```
 
 ![CalendarPicker](figures/CalendarPickerDemo4.png)
+
+### 示例5（设置每周起始日）
+
+该示例通过firstDayOfWeek设置日历选择器每周的起始日为周一。
+
+从API版本26.1.0开始，新增了[firstDayOfWeek](#firstdayofweek)接口。
+
+ArkTS-Dyn示例：
+
+```ts
+// CalendarPickerExampleDyn.ets
+@Entry
+@Component
+struct CalendarPickerExample {
+  private selectedDate: Date = new Date('2025-01-15');
+
+  build() {
+    Column() {
+      Column() {
+        Text('日历日期选择器').fontSize(30)
+        CalendarPicker({ hintRadius: 10, selected: this.selectedDate })
+          .edgeAlign(CalendarAlign.CENTER)
+          .firstDayOfWeek(CalendarFirstDayOfWeek.MON)
+          .textStyle({ color: '#ff182431', font: { size: 20, weight: FontWeight.Normal } })
+          .margin(10)
+          .onChange((value) => {
+            console.info(`CalendarPicker onChange: ${value.toString()}`);
+          })
+      }.alignItems(HorizontalAlign.Center).width("100%")
+    }
+    .width('100%')
+    .margin({ top: 100 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+// CalendarPickerExampleSta.ets
+
+import {
+  CalendarAlign,
+  CalendarFirstDayOfWeek,
+  CalendarPicker,
+  Column,
+  Component,
+  Entry,
+  FontWeight,
+  HorizontalAlign,
+  Text
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct CalendarPickerExample {
+  private selectedDate: Date = new Date('2025-01-15');
+
+  build() {
+    Column() {
+      Column() {
+        Text('日历日期选择器').fontSize(30)
+        CalendarPicker({ hintRadius: 10, selected: this.selectedDate })
+          .edgeAlign(CalendarAlign.CENTER)
+          .firstDayOfWeek(CalendarFirstDayOfWeek.MON)
+          .textStyle({ color: '#ff182431', font: { size: 20, weight: FontWeight.Normal } })
+          .margin(10)
+          .onChange((value) => {
+            console.info(`CalendarPicker onChange: ${value.toString()}`);
+          })
+      }.alignItems(HorizontalAlign.Center).width("100%")
+    }
+    .width('100%')
+    .margin({ top: 100 })
+  }
+}
+```
+
+![CalendarPicker](figures/calendar-picker-first-day-of-week.png)

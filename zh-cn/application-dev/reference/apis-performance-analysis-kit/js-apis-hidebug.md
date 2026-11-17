@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-为应用提供多种调试、调优的方法。包括但不限于内存、CPU、GPU、GC等相关数据的获取，进程trace、profiler采集，VM堆快照转储等。由于该模块的接口大多比较耗费性能，接口调用较为耗时，且基于HiDebug模块定义，该模块内的接口仅建议在应用调试、调优阶段使用。若需要在其他场景使用时，请认真评估所需调用的接口对应用性能的影响。
+为应用提供多种调试、调优的方法，帮助开发者定位性能瓶颈、优化应用性能。主要功能包括：内存数据分析、CPU使用率监控、trace采集、profiler采集、VM堆快照转储。由于该模块的接口大多比较耗费性能，接口调用较为耗时，且基于HiDebug模块定义，该模块内的接口仅建议在应用调试、调优阶段使用。若需要在其他场景使用时，请认真评估所需调用的接口对应用性能的影响。
 
 > **说明**：
 >
@@ -272,8 +272,8 @@ ArkTS-Sta: getServiceDump(serviceid: int, fd: int, args: Array\<string>): void
 
 | 参数名   | 类型                                    | 必填 | 说明                         |
 | -------- |---------------------------------------| ---- |----------------------------|
-| serviceid | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是   | 基于用户输入的service id获取系统服务信息。 |
-| fd | ArkTS-Dyn: number<br/> ArkTS-Sta: int                                | 是   | 文件描述符，接口会向该fd写入数据。         |
+| serviceid | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是   | 系统服务ID，用于标识要获取信息的系统服务。取值由系统定义，取值范围[0, 255]。传入无效值时返回错误码401。 |
+| fd | ArkTS-Dyn: number<br/> ArkTS-Sta: int                                | 是   | 文件描述符，接口会向该fd写入数据。传入无效文件描述符时返回错误码401。         |
 | args | Array&lt;string&gt;                   | 是   | 系统服务的dump接口参数列表。string长度的最大值为254。 |
 
 **错误码**：
@@ -282,7 +282,7 @@ ArkTS-Sta: getServiceDump(serviceid: int, fd: int, args: Array\<string>): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | the parameter check failed,Possible causes:1.the parameter type error 2.the args parameter is not string array.  |
+| 401 | [Sync] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.  |
 | 11400101 | ServiceId invalid. The system ability does not exist.                                           |
 
 **示例**：
@@ -360,7 +360,7 @@ startJsCpuProfiling(filename: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | the parameter check failed,Parameter type error.                        |
+| 401 | [Sync] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.                        |
 
 **示例**：
 
@@ -404,11 +404,17 @@ try {
 }
 ```
 
-## hidebug.dumpJsHeapData<sup>9+</sup>
+## hidebug.dumpJsHeapData<sup>(deprecated)</sup>
 
 dumpJsHeapData(filename: string): void
 
 虚拟机堆数据转储。
+
+**起始版本：** 9
+
+**废弃版本：** 26.1.0
+
+**替代接口：** [hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)
 
 > **注意**：
 >
@@ -418,7 +424,7 @@ dumpJsHeapData(filename: string): void
 
 **ArkTS-Dyn起始版本**：9
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -432,7 +438,7 @@ dumpJsHeapData(filename: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | the parameter check failed, Parameter type error.                      |
+| 401 | [Sync] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed.                      |
 
 **示例**：
 
@@ -447,11 +453,17 @@ try {
 }
 ```
 
-## hidebug.dumpJsHeapData<sup>24+</sup>
+## hidebug.dumpJsHeapData<sup>(deprecated)</sup>
 
 dumpJsHeapData(filename: string, needClean: boolean): void
 
 虚拟机堆数据转储，支持清除nodeId缓存。
+
+**起始版本：** 24
+
+**废弃版本：** 26.1.0
+
+**替代接口：** [hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata24)
 
 > **注意**：
 >
@@ -459,13 +471,13 @@ dumpJsHeapData(filename: string, needClean: boolean): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
-**模型约束**：此接口仅可在stage模型下使用。
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -555,7 +567,7 @@ dumpHeapData(filename: string): void
 
 > **说明**：
 > 
-> 从API version 8支持，从API version 9开始废弃，建议使用[hidebug.dumpJsHeapData](#hidebugdumpjsheapdata9)替代。
+> 从API version 8支持，从API version 9开始废弃，建议使用[hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)替代。
 
 虚拟机堆数据转储，生成`filename.heapsnapshot`文件。
 
@@ -662,7 +674,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let appThreadCpuUsage: hidebug.ThreadCpuUsage[] = hidebug.getAppThreadCpuUsage();
 for (let i = 0; i < appThreadCpuUsage.length; i++) {
-  console.info(`threadId=${appThreadCpuUsage[i].threadId}, cpuUsage=${appThreadCpuUsage[i].cpuUsage}`);
+  console.info(`threadId=${appThreadCpuUsage[i].threadId}, cpuUsage=${appThreadCpuUsage[i].cpuUsage}, threadName=${appThreadCpuUsage[i].threadName}`);
 }
 ```
 
@@ -684,7 +696,7 @@ ArkTS-Sta: startAppTraceCapture(tags: long[], flag: TraceFlag, limitSize: int): 
 
 trace单位流量：应用每秒产生的trace大小，系统推荐值为300KB/s，建议开发者采用自身应用的实测值，单位KB/s。
 
-trace单位流量实测方法：limitSize设置为最大值500M，调用startAppTraceCapture接口，在应用上操作N秒后，调用stopAppTraceCapture停止采集，然后查看trace大小S（Kb）。那么trace单位流量 = S/N（Kb/s）。
+trace单位流量实测方法：limitSize设置为最大值500M，调用startAppTraceCapture接口，在应用上操作N秒后，调用stopAppTraceCapture停止采集，然后查看trace大小S（KB）。那么trace单位流量 = S/N（KB/s）。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -696,9 +708,9 @@ trace单位流量实测方法：limitSize设置为最大值500M，调用startApp
 
 | 参数名   | 类型                                          | 必填 | 说明                                 |
 | -------- |---------------------------------------------| ---- |------------------------------------|
-| tags     | ArkTS-Dyn: number[] <br/> ArkTS-Sta: long[] | 是   | trace范围，详情请见[tags](#hidebugtags12)。   |
+| tags     | ArkTS-Dyn: number[] <br/> ArkTS-Sta: long[] | 是   | trace范围，详情请见[tags](#tags12)。   |
 | flag     | TraceFlag                                   | 是   | 详情请见[TraceFlag](#traceflag12)。        |
-| limitSize| ArkTS-Dyn: number <br/> ArkTS-Sta: int      | 是   | 开启trace文件大小限制，单位为Byte，单个文件大小上限为500MB。 |
+| limitSize| ArkTS-Dyn: number <br/> ArkTS-Sta: int      | 是   | 开启trace文件大小限制，单位为Byte，取值范围（0, 500MB]。超出范围时返回错误码401。 |
 
 **返回值**：
 
@@ -712,7 +724,7 @@ trace单位流量实测方法：limitSize设置为最大值500M，调用startApp
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | Invalid argument, Possible causes:1.The limit parameter is too small 2.The parameter is not within the enumeration type 3.The parameter type error or parameter order error. |
+| 401 | Invalid argument, Possible causes:1.The limit parameter is too small. 2.The parameter is not within the enumeration type. 3.The parameter type error or parameter order error. |
 | 11400102 | Capture trace already enabled.                                         |
 | 11400103 | No write permission on the file.                                |
 | 11400104 | Abnormal trace status.                                 |
@@ -834,7 +846,7 @@ requestTrace(config: RequestTraceConfig): Promise&lt;string&gt;
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -970,7 +982,7 @@ setAppResourceLimit(type: string, value: number, enableDebugLog: boolean): void
 >
 > 打开设置中的开发者选项后，在开发者选项列表中找到“系统资源泄漏日志”并启用，重启设备后接口生效。
 
-**原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -992,7 +1004,7 @@ setAppResourceLimit(type: string, value: number, enableDebugLog: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
-| 401 | Invalid argument, Possible causes:1.The limit parameter is too small 2.The parameter is not in the specified type 3.The parameter type error or parameter order error.  |
+| 401 | Invalid argument, Possible causes:1.The limit parameter is too small. 2.The parameter is not in the specified type. 3.The parameter type error or parameter order error.  |
 | 11400104 | Set limit failed due to remote exception. |
 
 **示例**：
@@ -1211,7 +1223,7 @@ ArkTS-Sta: getVMRuntimeStat(item: string): long
 
 | 错误码ID | 错误信息                                                                                                       |
 | ------- |------------------------------------------------------------------------------------------------------------|
-| 401 | Possible causes:1. Invalid parameter, a string parameter required. 2. Invalid parameter, unknown property. |
+| 401 | Possible causes: 1. Invalid parameter, a string parameter required. 2. Invalid parameter, unknown property. |
 
 **示例**：
 
@@ -1269,16 +1281,13 @@ VM内存信息。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**ArkTS-Dyn起始版本**：12
-
-**ArkTS-Sta起始版本**：23
-
 | 名称               | 类型    | 只读 | 可选 | 说明                                |
 | -------------------| ------- |----|----| ----------------------------------- |
-| threadId           | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 线程号。      |
-| cpuUsage           | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 线程CPU使用率。 |
+| threadId           | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 线程号。<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23      |
+| cpuUsage           | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 线程CPU使用率。<br>**ArkTS-Dyn起始版本**：12 <br>**ArkTS-Sta起始版本**：23 |
+| threadName           | string  | 否  | 是  | 线程名。<br>**ArkTS-Dyn起始版本**：26.0.1<br>**ArkTS-Sta起始版本**：26.0.1 |
 
-## hidebug.tags<sup>12+</sup>
+## tags<sup>12+</sup>
 
 ### 常量
 
@@ -1410,7 +1419,7 @@ TRIM_LEVEL_2相比TRIM_LEVEL_1，裁剪时间更长。冻屏的阈值为6秒。�
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本**：26.0.1
 
 | 名称         | 值   | 说明                                                         |
 | ------------ | ---- | ------------------------------------------------------------ |
@@ -1421,7 +1430,7 @@ TRIM_LEVEL_2相比TRIM_LEVEL_1，裁剪时间更长。冻屏的阈值为6秒。�
 
 描述应用进程的物理内存信息。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1440,7 +1449,7 @@ TRIM_LEVEL_2相比TRIM_LEVEL_1，裁剪时间更长。冻屏的阈值为6秒。�
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1489,7 +1498,7 @@ ArkTS-Sta: getGraphicsMemory(): Promise&lt;int&gt;
 
 获取应用显存总大小（gl + graph），使用Promise异步回调。
 
-**原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1547,7 +1556,7 @@ ArkTS-Sta: getGraphicsMemorySync(): int
 >
 > 由于该接口涉及多次跨进程通信，其耗时可能达到秒级。为了避免引入性能问题，建议不要在主线程调用该接口，推荐使用异步接口`getGraphicsMemory`。
 
-**原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1590,7 +1599,7 @@ ArkTS-Sta: getGraphicsMemorySummary(interval?: int): Promise&lt;GraphicsMemorySu
 
 获取应用显存数据，使用Promise进行异步回调。
 
-**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -1620,6 +1629,7 @@ ArkTS-Sta: getGraphicsMemorySummary(interval?: int): Promise&lt;GraphicsMemorySu
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1627,6 +1637,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 hidebug.getGraphicsMemorySummary().then((ret: hidebug.GraphicsMemorySummary) => {
   console.info(`get graphicsMemory gl: ${ret.gl} graph: ${ret.graph}.`)
 }).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}.`);
+})
+```
+
+ArkTS-Sta示例：
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+hidebug.getGraphicsMemorySummary().then((ret: hidebug.GraphicsMemorySummary) => {
+  console.info(`get graphicsMemory gl: ${ret.gl} graph: ${ret.graph}.`)
+}).catch((error: Error) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}.`);
 })
 ```
@@ -1639,17 +1661,17 @@ dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 
 > **注意**：
 >
-> 系统通过该接口转存快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
+> 系统通过该接口转储快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
 >
 > 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
 
-**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -1680,12 +1702,24 @@ dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 hidebug.dumpJsRawHeapData().then((filePath: string) => {
   console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`)
 }).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```
+
+ArkTS-Sta示例：
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+hidebug.dumpJsRawHeapData().then((filePath: string) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`)
+}).catch((error: Error) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}`);
 })
 ```
@@ -1698,19 +1732,19 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise&lt;string&gt;
 
 > **注意**：
 >
-> 系统通过该接口转存快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
+> 系统通过该接口转储快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
 >
 > 建议在开发者模式下调用该接口，可免除调用配额限制，当设置的开发者选项开关打开并重启设备后即可生效。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **ArkTS-Dyn起始版本**：24
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -1742,6 +1776,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise&lt;string&gt;
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1749,6 +1784,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
   console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`);
 }).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```
+
+ArkTS-Sta示例：
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`);
+}).catch((error: Error) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}`);
 })
 ```
@@ -1766,13 +1813,13 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Pr
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **ArkTS-Dyn起始版本**：26.0.0
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -1805,6 +1852,7 @@ dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Pr
 
 **示例**：
 
+ArkTS-Dyn示例：
 ```ts
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1812,6 +1860,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 hidebug.dumpJsRawHeapData(true, true, true).then((filePathArray: Array<string>) => {
   console.info(`dumpJsRawHeapData success and generated file path is ${JSON.stringify(filePathArray)}`);
 }).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```
+
+ArkTS-Sta示例：
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+hidebug.dumpJsRawHeapData(true, true, true).then((filePathArray: Array<string>) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${JSON.stringify(filePathArray)}`);
+}).catch((error: Error) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}`);
 })
 ```
@@ -1977,7 +2037,7 @@ setJsRawHeapTrimLevel(level: JsRawHeapTrimLevel): void
 
 **ArkTS-Dyn起始版本**：20
 
-**ArkTS-Sta起始版本**：26.0.0
+**ArkTS-Sta起始版本**：26.0.1
 
 **参数**：
 
@@ -1997,7 +2057,7 @@ hidebug.setJsRawHeapTrimLevel(hidebug.JsRawHeapTrimLevel.TRIM_LEVEL_2);
 
 描述应用显存数据，包括gl和graph部分。
 
-**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 21开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -2024,7 +2084,7 @@ setProcDumpInSharedOOM(enable: boolean): void
 >
 > 该接口在应用的生命周期内可被多次调用，但仅最后一次调用的执行结果会生效。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -2054,7 +2114,7 @@ getRssInfo(): RssInfo
 
 获取应用程序进程的物理内存使用信息。读取/proc/{pid}/status节点的数据。
 
-**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
@@ -2079,4 +2139,70 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let rssInfo: hidebug.RssInfo = hidebug.getRssInfo();
 console.info(`rss: ${rssInfo.rss}, swapRss: ${rssInfo.swapRss}`);
+```
+
+## hidebug.getAppRunningUniqueId
+
+getAppRunningUniqueId(): string
+
+获取应用程序的运行唯一标识符。
+
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**ArkTS-Dyn起始版本**：26.0.1
+
+**ArkTS-Sta起始版本**：26.0.1
+
+**返回值**：
+
+| 类型  | 说明                      |
+| ------ | -------------------------- |
+| string | 返回运行唯一标识ID字符串。失败时返回空字符串。 |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+let appRunningId = hidebug.getAppRunningUniqueId();
+console.info(`appRunningId: ${appRunningId}`);
+```
+
+## hidebug.getAppSharedHeapObjectUsedSize
+
+getAppSharedHeapObjectUsedSize(): bigint
+
+获取虚拟机中共享堆对象所占用的内存大小。
+
+**ArkTS-Dyn起始版本**：26.1.0
+
+**ArkTS-Sta起始版本**：26.1.0
+
+**原子化服务API（仅ArkTS-Dyn）**：从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**返回值**：
+
+| 类型  | 说明                      |
+| ------ | -------------------------- |
+| bigint | 虚拟机中共享堆对象所占用的内存大小，单位为KB。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[HiDebug SharedHeapObjectUsedSize错误码](errorcode-hiviewdfx-hidebug-sharedheapobjectusedsize.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------------------------------------------------- |
+| 11400104 | VM instance exception.                                           |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+
+let sharedHeap = hidebug.getAppSharedHeapObjectUsedSize();
+console.info(`sharedHeap: ${sharedHeap}`);
 ```

@@ -49,7 +49,7 @@ ArkTS-Dyn: images(value: Array\<ImageFrameInfo>)
 
 ArkTS-Sta: images(value: Array\<ImageFrameInfo> | undefined)
 
-设置图片帧信息集合。不支持动态更新。
+设置图片帧信息集合。不支持动态更新，否则可能会导致不可预期的行为。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -97,7 +97,7 @@ ArkTS-Dyn: duration(value: number)
 
 ArkTS-Sta: duration(value: int | undefined)
 
-设置播放时长。当Images中任意一帧图片设置了单独的duration后，该属性设置无效。
+设置播放时长。当[images](#images)中任意一帧图片设置了单独的duration后，该属性设置无效。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
@@ -113,7 +113,7 @@ ArkTS-Sta: duration(value: int | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number <br/>ArkTS-Sta: int \| undefined | 是   | 播放时长。<br/>value为0时，不播放图片。<br/> 设置undefined时，按默认值处理。<br/>设置为负数时，取默认值。<br/>value的改变只会在下一次循环开始时生效。<br/>单位：毫秒<br/>默认值：1000ms |
+| value  | ArkTS-Dyn: number <br/>ArkTS-Sta: int \| undefined | 是   | 播放时长。<br/>value为0时，不播放图片。<br/>value平均分配给单张图片的播放时长小于一帧时间，将导致播放异常。<br/> 设置undefined时，按默认值处理。<br/>设置为负数时，取默认值。<br/>value的改变只会在下一次循环开始时生效。<br/>单位：ms<br/>默认值：1000ms |
 
 ### reverse
 
@@ -183,7 +183,7 @@ preDecode(value: number)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | 是   | 预解码的图片数量。例如，设置为2时，播放当前页时会提前加载后面两张图片至缓存，以提升性能。<br/>默认值：0 |
+| value  | number | 是   | 预解码的图片数量。例如，设置为2时，播放当前帧时会提前加载后面两张图片至缓存，以提升性能。<br/>默认值：0 |
 
 ### fillMode
 
@@ -209,6 +209,30 @@ ArkTS-Sta: fillMode(value: FillMode | undefined)
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: [FillMode](ts-appendix-enums.md#fillmode) <br/>ArkTS-Sta: [FillMode](ts-appendix-enums.md#fillmode) \| undefined| 是   | 当前播放方向下，动画开始前和结束后的状态。<br/> 设置undefined时，按默认值处理。<br/>默认值：FillMode.Forwards |
 
+### interpolation
+
+ArkTS-Dyn: interpolation(value: ImageInterpolation)
+
+ArkTS-Sta: interpolation(value: ImageInterpolation | undefined)
+
+设置帧图片的插值效果。用于优化图片缩放时的锯齿问题。SVG类型图源不支持该属性。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**参数：**
+
+| 参数名 | 类型                                                          | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| value  | ArkTS-Dyn: [ImageInterpolation](ts-basic-components-image.md#imageinterpolation) <br/>ArkTS-Sta: [ImageInterpolation](ts-basic-components-image.md#imageinterpolation) \| undefined | 是   | 帧图片的插值效果。<br/>设置undefined时，按默认值处理。<br/>默认值：ImageInterpolation.Low |
+
 ### iterations
 
 ArkTS-Dyn: iterations(value: number)
@@ -216,6 +240,8 @@ ArkTS-Dyn: iterations(value: number)
 ArkTS-Sta: iterations(value: int | undefined)
 
 设置播放次数。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -241,6 +267,8 @@ ArkTS-Sta: monitorInvisibleArea(monitorInvisibleArea: boolean | undefined)
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 17开始，该接口支持在原子化服务中使用。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 17
@@ -252,7 +280,7 @@ ArkTS-Sta: monitorInvisibleArea(monitorInvisibleArea: boolean | undefined)
 <!--Table: auto; 10%; 10%; auto-->
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| monitorInvisibleArea  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是 | 当设置为true时，组件将基于系统的[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)可见性判定，控制组件的暂停和播放。<br/> 当组件的运行状态为[AnimationStatus](ts-appendix-enums.md#animationstatus)的Running时，若判定组件不可见，则自动执行暂停操作；若判定为可见，则自动恢复播放。<br/>当设置为false时，组件的暂停和播放不受到onVisibleAreaChange影响。<br/> 设置undefined时，按默认值处理。<br/>默认值：false <br/> **说明：** <br/>当该属性由true动态修改为false时，组件将依据当前的[AnimationStatus](ts-appendix-enums.md#animationstatus)状态进行处理。<br/> 例如，若当前状态为Running且因[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)的不可见回调暂停，则在属性由true改为false后，组件会从上次暂停的位置重新开始播放。<br/>由该属性导致的不可见暂停和可见暂停操作不会改变用户设置的[state](./ts-basic-components-imageanimator.md#state)值。|
+| monitorInvisibleArea  | ArkTS-Dyn: boolean <br/>ArkTS-Sta: boolean \| undefined | 是 | 当设置为true时，组件将基于系统的[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)可见性判定，控制组件的暂停和播放。<br/> 当组件的运行状态为[AnimationStatus](ts-appendix-enums.md#animationstatus)的Running时，若判定组件不可见，则自动执行暂停操作；若判定为可见，则自动恢复播放。<br/>当设置为false时，组件的暂停和播放不受到onVisibleAreaChange影响。<br/> 设置undefined时，按默认值处理。<br/>默认值：false <br/> **说明：** <br/>当该属性由true动态修改为false时，组件将依据当前的[AnimationStatus](ts-appendix-enums.md#animationstatus)状态进行处理。<br/> 例如，若当前状态为Running且因[onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange)的不可见回调暂停，则在属性由true改为false后，组件会从上次暂停的位置重新开始播放。<br/>由该属性导致的不可见暂停和可见播放操作不会改变用户设置的[state](./ts-basic-components-imageanimator.md#state)值。|
 
 ### attributeModifier<sup>23+</sup>
 
@@ -293,7 +321,7 @@ attributeModifier(modifier: AttributeModifier\<ImageAnimatorAttribute> | Attribu
 | height   | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: double&nbsp;\|&nbsp;string | 否 | 是 | 图片高度。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp     <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用        |
 | top      | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: double&nbsp;\|&nbsp;string | 否 | 是 | 图片相对于组件左上角的纵向坐标。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp  <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用  |
 | left     | ArkTS-Dyn: number&nbsp;\|&nbsp;string <br> ArkTS-Sta: double&nbsp;\|&nbsp;string | 否 | 是 | 图片相对于组件左上角的横向坐标。string类型支持number类型取值的字符串形式，可以附带单位，例如"2"、"2px"。<br/>默认值：0<br/>单位：vp <br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用   |
-| duration | ArkTS-Dyn: number <br> ArkTS-Sta: int          | 否    | 是    | 每帧图片的播放时长，单位毫秒。<br/>默认值：0<br/>不支持负数。设置为负数将导致图片在当前帧长时间停留，影响正常播放。         |
+| duration | ArkTS-Dyn: number <br> ArkTS-Sta: int          | 否    | 是    | 每帧图片的播放时长，单位：ms。<br/>默认值：0<br/>不支持负数。设置为负数将导致图片在当前帧长时间停留，影响正常播放。         |
 
 ## 事件
 
@@ -301,9 +329,9 @@ attributeModifier(modifier: AttributeModifier\<ImageAnimatorAttribute> | Attribu
 
 ### onStart
 
-ArkTS-Sta: onStart(event: (() => void) | undefined)
-
 ArkTS-Dyn: onStart(event: () => void)
+
+ArkTS-Sta: onStart(event: (() => void) | undefined)
 
 状态回调，动画开始播放时触发。
 
@@ -325,9 +353,9 @@ ArkTS-Dyn: onStart(event: () => void)
 
 ### onPause
 
-ArkTS-Sta: onPause(event: (() => void) | undefined)
-
 ArkTS-Dyn: onPause(event: () => void)
+
+ArkTS-Sta: onPause(event: (() => void) | undefined)
 
 状态回调，动画暂停播放时触发。
 
@@ -349,11 +377,13 @@ ArkTS-Dyn: onPause(event: () => void)
 
 ### onRepeat
 
-ArkTS-Sta: onRepeat(event: (() => void) | undefined)
-
 ArkTS-Dyn: onRepeat(event: () => void)
 
+ArkTS-Sta: onRepeat(event: (() => void) | undefined)
+
 状态回调，动画重复播放时触发。
+
+**卡片能力（仅ArkTS-Dyn）：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -371,9 +401,9 @@ ArkTS-Dyn: onRepeat(event: () => void)
 
 ### onCancel
 
-ArkTS-Sta: onCancel(event: (() => void) | undefined)
-
 ArkTS-Dyn: onCancel(event: () => void)
+
+ArkTS-Sta: onCancel(event: (() => void) | undefined)
 
 状态回调，动画返回最初状态时触发。
 
@@ -395,9 +425,9 @@ ArkTS-Dyn: onCancel(event: () => void)
 
 ### onFinish
 
-ArkTS-Sta: onFinish(event: (() => void) | undefined)
-
 ArkTS-Dyn: onFinish(event: () => void)
+
+ArkTS-Sta: onFinish(event: (() => void) | undefined)
 
 状态回调，动画播放完成时或者停止播放时触发。 
 
@@ -421,7 +451,7 @@ ArkTS-Dyn: onFinish(event: () => void)
 
 ### 示例1（播放Resource动画）
 
-通过ImageAnimator组件播放Resource动画。
+通过ImageAnimator组件播放Resource动画。从API版本26.0.1开始支持[interpolation](#interpolation)接口。
 
 ```ts
 // xxx.ets
@@ -458,6 +488,7 @@ struct ImageAnimatorExample {
         .reverse(this.reverse)
         .fillMode(FillMode.None)
         .iterations(this.iterations)
+        .interpolation(ImageInterpolation.Low)
         .width(340)
         .height(240)
         .margin({ top: 100 })
@@ -594,13 +625,20 @@ struct ImageAnimatorExample {
   }
 
   private async getPixmapFromMedia(resource: Resource) {
-    let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
-    let imageSource = image.createImageSource(unit8Array?.buffer.slice(0, unit8Array.buffer.byteLength));
-    let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
-      desiredPixelFormat: image.PixelMapFormat.RGBA_8888
-    });
-    await imageSource.release();
-    return createPixelMap;
+    // 获取资源文件的内容数据
+    let uint8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
+    // 根据二进制数据创建图像源
+    let imageSource = image.createImageSource(uint8Array?.buffer.slice(0, uint8Array.buffer.byteLength));
+    try {
+      // 从图像源创建PixelMap对象，指定像素格式为RGBA_8888
+      let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
+        desiredPixelFormat: image.PixelMapFormat.RGBA_8888
+      });
+      return createPixelMap;
+    } finally {
+      // 释放图像源资源
+      await imageSource.release();
+    }
   }
 }
 ```
@@ -682,7 +720,7 @@ struct ImageAnimatorAutoPauseTest {
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, (item: string) => item)
+          }, (item: number) => item.toString())
         }.width('100%')
       }
       .scrollable(ScrollDirection.Vertical) // 滚动方向纵向

@@ -10,9 +10,9 @@
 
 升级类型：SD卡升级、在线升级、恢复出厂升级。
 
-- SD卡升级依赖升级包和SD卡安装。
+- SD卡升级依赖升级包和SD卡安装。详见[术语](../../basic-services/update/update-kit-term.md)。
 
-- 在线升级依赖设备厂商部署的用于管理升级包的服务器。服务器由设备厂商部署，IP由调用者传入，请求的request接口是固定的，由设备厂商开发。
+- 在线升级依赖设备厂商部署的用于管理升级包的服务器。服务器由设备厂商部署，IP由调用者传入，请求的request接口是固定的，由设备厂商开发。详见[术语](../../basic-services/update/update-kit-term.md)。
 
 - 恢复出厂升级对象提供恢复出厂相关接口。
 
@@ -2029,7 +2029,7 @@ try {
 
 factoryReset(callback: AsyncCallback\<void>): void
 
-清除用户数据分区。使用callback异步回调。
+恢复出厂设置。详见[术语](../../basic-services/update/update-kit-term.md)。使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2074,7 +2074,7 @@ try {
 
 factoryReset(): Promise\<void>
 
-清除用户数据分区。使用Promise异步回调。
+恢复出厂设置。详见[术语](../../basic-services/update/update-kit-term.md)。使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2122,7 +2122,7 @@ try {
 
 forceFactoryReset(): Promise\<void>
 
-清除用户数据分区，同步清除文件秘钥。使用Promise异步回调。
+强制恢复出厂设置，详见[术语](../../basic-services/update/update-kit-term.md)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -2718,7 +2718,7 @@ try {
 | upgradeAction   | [UpgradeAction](#upgradeaction)     | 否 | 否 | 升级方式。     |
 | displayVersion  | string                              | 否 | 否 | 显示版本号。    |
 | innerVersion    | string                              | 否 | 否 | 版本号。      |
-| size            | int                              | 否 | 否 | 升级包大小，单位为B。    |
+| size            | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 升级包大小，单位为B。    |
 | effectiveMode   | [EffectiveMode](#effectivemode)     | 否 | 否 | 生效模式。     |
 | descriptionInfo | [DescriptionInfo](#descriptioninfo) | 否 | 否 | 版本描述文件信息。 |
 | otaMode<sup>20+</sup> | [OtaMode](#otamode20)                 | 否 | 是 | 升级模式。     |
@@ -2905,8 +2905,8 @@ try {
 
 | 名称    | 类型   | 只读 | 可选 | 说明 |
 | ----- | ------ | ---- | ---- | ---- |
-| start | int | 否 | 否 | 开始时间。 |
-| end   | int | 否 | 否 | 结束时间。 |
+| start | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 开始时间。 |
+| end   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 结束时间。 |
 
 ## TaskInfo
 
@@ -2958,9 +2958,9 @@ try {
 | ----------------- | ---------------------------------------- | ---- | ---- | ---- |
 | versionDigestInfo | [VersionDigestInfo](#versiondigestinfo)  | 否 |  否    | 版本摘要。 |
 | status            | [UpgradeStatus](#upgradestatus)          | 否 |  否    | 升级状态。 |
-| subStatus         | int                                   | 否 |  否    | 子状态。  |
-| progress          | int                                   | 否 |  否    | 进度。   |
-| installMode       | int                                   | 否 |  否    | 安装模式。 |
+| subStatus         | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |  否    | 子状态。  |
+| progress          | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |  否    | 进度。   |
+| installMode       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 |  否    | 安装模式。 |
 | errorMessages     | Array\<[ErrorMessage](#errormessage)>    | 否 |  否    | 错误信息。 |
 | versionComponents | Array\<[VersionComponent](#versioncomponent)> | 否 | 否    | 版本组件。 |
 
@@ -2974,7 +2974,7 @@ try {
 
 | 名称           | 类型   | 只读 | 可选  | 说明   |
 | ------------ | ------ | ---- | ---- | ---- |
-| errorCode    | int | 否 | 否  | 错误码。  |
+| errorCode    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否  | 错误码。  |
 | errorMessage | string | 否 | 否  | 错误描述。 |
 
 ## EventClassifyInfo
@@ -3046,7 +3046,7 @@ try {
 
 | 名称       | 类型                            | 只读 | 可选 | 说明   |
 | -------- | ------------------------------- | ---- | ---- | ---- |
-| duration | int                          | 否    | 否 | 恢复出厂设置所需持续时间。 |
+| duration | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 否 | 恢复出厂设置所需持续时间。 |
 
 ## FactoryResetScope
 
@@ -3115,7 +3115,7 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 | 名称      | 值  | 说明   |
 | -------- | ---- | ---- |
-| FIRMWARE | 1    | 固件。   |
+| FIRMWARE | 1    | 固件。详见[术语](../../basic-services/update/update-kit-term.md)。 |
 
 ## ComponentType
 
@@ -3147,8 +3147,8 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 | 名称      | 值        | 说明   |
 | -------- | ---------- | ---- |
-| UPGRADE  | "upgrade"  | 差分包。  |
-| RECOVERY | "recovery" | 修复包。  |
+| UPGRADE  | "upgrade"  | 差分包。详见[术语](../../basic-services/update/update-kit-term.md)。|
+| RECOVERY | "recovery" | 修复包。详见[术语](../../basic-services/update/update-kit-term.md)。|
 
 ## EffectiveMode
 
@@ -3164,9 +3164,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
 | 名称           | 值  | 说明   |
 | ------------- | ---- | ---- |
-| COLD          | 1    | 冷升级。  |
-| LIVE          | 2    | 热升级。  |
-| LIVE_AND_COLD | 3    | 融合升级。 |
+| COLD          | 1    | 冷升级。详见[术语](../../basic-services/update/update-kit-term.md)。|
+| LIVE          | 2    | 热升级。详见[术语](../../basic-services/update/update-kit-term.md)。|
+| LIVE_AND_COLD | 3    | 融合升级。详见[术语](../../basic-services/update/update-kit-term.md)。|
 
 ## OtaMode<sup>20+</sup>
 
@@ -3183,9 +3183,9 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 | 名称           | 值  | 说明   |
 | ------------- | ---- | ---- |
 | REGULAR_OTA   | 0    | 正常升级。|
-| STREAM_OTA    | 1    | 流式升级。|
-| AB_REGULAR_OTA | 2    | AB正常升级。 |
-| AB_STREAM_OTA  | 3    | AB流式升级。 |
+| STREAM_OTA    | 1    | 流式升级。详见[术语](../../basic-services/update/update-kit-term.md)。|
+| AB_REGULAR_OTA | 2    | AB正常升级。详见[术语](../../basic-services/update/update-kit-term.md)。|
+| AB_STREAM_OTA  | 3    | AB流式升级。详见[术语](../../basic-services/update/update-kit-term.md)。|
 
 ## DescriptionType
 
@@ -3326,10 +3326,10 @@ type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 | EVENT_DOWNLOAD_RESUME  | 0x01000007 | 恢复下载。   |
 | EVENT_DOWNLOAD_SUCCESS | 0x01000008 | 下载成功。   |
 | EVENT_DOWNLOAD_FAIL    | 0x01000009 | 下载失败。   |
-| EVENT_UPGRADE_WAIT     | 0x0100000A | 待升级。    |
-| EVENT_UPGRADE_START    | 0x0100000B | 开始升级。   |
-| EVENT_UPGRADE_UPDATE   | 0x0100000C | 升级中。    |
-| EVENT_APPLY_WAIT       | 0x0100000D | 待生效。    |
-| EVENT_APPLY_START      | 0x0100000E | 开始生效。   |
-| EVENT_UPGRADE_SUCCESS  | 0x0100000F | 更新成功。   |
+| EVENT_UPGRADE_WAIT     | 0x0100000a | 待升级。    |
+| EVENT_UPGRADE_START    | 0x0100000b | 开始升级。   |
+| EVENT_UPGRADE_UPDATE   | 0x0100000c | 升级中。    |
+| EVENT_APPLY_WAIT       | 0x0100000d | 待生效。    |
+| EVENT_APPLY_START      | 0x0100000e | 开始生效。   |
+| EVENT_UPGRADE_SUCCESS  | 0x0100000f | 更新成功。   |
 | EVENT_UPGRADE_FAIL     | 0x01000010 | 更新失败。   |

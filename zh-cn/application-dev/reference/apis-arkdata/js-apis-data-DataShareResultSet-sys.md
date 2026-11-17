@@ -1,8 +1,8 @@
 # @ohos.data.dataShareResultSet (数据共享结果集)(系统接口)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -40,7 +40,7 @@ export default class EntryAbility extends UIAbility {
     let context = this.context;
     dataShare.createDataShareHelper(context, uri, (err:BusinessError, data:dataShare.DataShareHelper) => {
       if (err != undefined) {
-        console.error("createDataShareHelper fail, error message : " + err);
+        console.error(`Failed to create DataShareHelper. Code: ${err.code}, message: ${err.message}`);
       } else {
         console.info("createDataShareHelper end, data : " + data);
         dataShareHelper = data;
@@ -54,7 +54,7 @@ export default class EntryAbility extends UIAbility {
           console.info("query end, data : " + data);
           resultSet = data;
         }).catch((err: BusinessError) => {
-          console.error("query fail, error message : " + err);
+          console.error(`Failed to query. Code: ${err.code}, message: ${err.message}`);
         });
       }
     });
@@ -476,9 +476,9 @@ ArkTS-Sta: getColumnIndex(columnName: string): int
 **示例：**
 
 ```ts
-let ColumnName = "name";
+let columnName = "name";
 if (resultSet != undefined) {
-  let getColumnIndex = (resultSet as DataShareResultSet).getColumnIndex(ColumnName);
+  let getColumnIndex = (resultSet as DataShareResultSet).getColumnIndex(columnName);
   console.info('resultSet.getColumnIndex: ' + getColumnIndex);
 }
 ```

@@ -12,7 +12,7 @@ The following figure shows the typical directory structure of the JavaScript mod
 
   **Figure 1** Directory structure 
 
-![en-us_image_0000001431388581](figures/en-us_image_0000001431388581.png)
+![directoryStructure](figures/directoryStructure.png)
 
 Functions of the files are as follows:
 

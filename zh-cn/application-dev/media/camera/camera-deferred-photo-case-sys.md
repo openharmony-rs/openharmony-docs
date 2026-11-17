@@ -183,7 +183,7 @@ async function deferredPhotoCase(context: Context, surfaceId: string): Promise<v
     console.error("createOutput photoProfilesArray == null || undefined");
   }
 
-  // 创建预览输出流,其中参数 surfaceId 参考上文 XComponent 组件，预览流为XComponent组件提供的surface。
+  // 创建预览输出流，其中参数 surfaceId 参考上文 XComponent 组件，预览流为XComponent组件提供的surface。
   let previewOutput: camera.PreviewOutput | undefined = undefined;
   try {
     previewOutput = cameraManager.createPreviewOutput(previewProfilesArray[0], surfaceId);
@@ -336,7 +336,7 @@ async function deferredPhotoCase(context: Context, surfaceId: string): Promise<v
     }
   }
 
-  // 判断是否支持连续自动变焦模式。
+  // 判断是否支持连续自动对焦模式。
   let focusModeStatus: boolean = false;
   try {
     let status: boolean = photoSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
@@ -347,7 +347,7 @@ async function deferredPhotoCase(context: Context, surfaceId: string): Promise<v
   }
 
   if (focusModeStatus) {
-    // 设置连续自动变焦模式。
+    // 设置连续自动对焦模式。
     try {
       photoSession.setFocusMode(camera.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
     } catch (error) {

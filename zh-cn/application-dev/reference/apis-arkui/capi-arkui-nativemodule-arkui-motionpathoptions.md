@@ -2,9 +2,9 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
-<!--Designer: @chensiyi_CE-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ``` c
 typedef struct ArkUI_MotionPathOptions ArkUI_MotionPathOptions

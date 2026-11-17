@@ -2,7 +2,7 @@
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -2601,7 +2601,7 @@ keyboardController.hideKeyboard().then(() => {
 
 exitCurrentInputType(callback: AsyncCallback&lt;void&gt;): void
 
-Exits this input type. This API can be called only by the preconfigured default input method. This API uses an asynchronous callback to return the result.
+Exits this input type. This API can be called only by the preconfigured default input method or the input method that provides system-level input capability. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -2638,7 +2638,7 @@ keyboardController.exitCurrentInputType((err: BusinessError) => {
 
 exitCurrentInputType(): Promise&lt;void&gt;
 
-Exits this input type. This API can be called only by the preconfigured default input method. This API uses a promise to return the result.
+Exits this input type. This API can be called only by the preconfigured default input method or the input method that provides system-level input capability. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

@@ -338,7 +338,7 @@ settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', set
 
 getValue(context: Context, name: string, callback: AsyncCallback\<string>): void
 
-获取数据库中DEVICE_SHARD域指定数据项的值。使用callback异步回调。
+获取数据库中DEVICE_SHARED域指定数据项的值。使用callback异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -374,7 +374,7 @@ settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, (err, valu
 
 getValue(context: Context, name: string): Promise\<string>
 
-获取数据库中DEVICE_SHARD域指定数据项的值。使用Promise异步回调。
+获取数据库中DEVICE_SHARED域指定数据项的值。使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -441,7 +441,6 @@ getValue(context: Context, name: string, domainName: string): Promise\<string>
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// 更新数据项亮度的值(该数据项在数据库中已存在，故getValue方法将更新该数据项的值)。
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.getValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, settings.domainName.DEVICE_SHARED).then((value) => {
@@ -480,7 +479,6 @@ getValueSync(context: Context, name: string, defValue: string): string
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// 获取数据项亮度的值(该数据项在数据库中已存在)。
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '10');
@@ -522,7 +520,6 @@ getValueSync(context: Context, name: string, defValue: string, domainName: strin
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// 更新数据项亮度的值(该数据项在数据库中已存在)。
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100',  settings.domainName.DEVICE_SHARED);
@@ -946,7 +943,7 @@ settings.getURI(settings.display.SCREEN_BRIGHTNESS_STATUS).then((uri:string) => 
 
 getValue(dataAbilityHelper: DataAbilityHelper, name: string, callback: AsyncCallback\<object>): void
 
-获取数据库中DEVICE_SHARD域指定数据项的值。使用callback异步回调。
+获取数据库中DEVICE_SHARED域指定数据项的值。使用callback异步回调。
 
 > **说明：**
 >
@@ -984,7 +981,7 @@ settings.getValue(helper, settings.display.SCREEN_BRIGHTNESS_STATUS, (err:Error,
 
 getValue(dataAbilityHelper: DataAbilityHelper, name: string): Promise\<object>
 
-获取数据库中DEVICE_SHARD域指定数据项的值。使用Promise异步回调。
+获取数据库中DEVICE_SHARED域指定数据项的值。使用Promise异步回调。
 
 > **说明：**
 >
@@ -1194,7 +1191,7 @@ openBiometricsSettingsPage(context: Context): void
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
-**设备行为差异**：该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备调用不生效。
+**设备行为差异**：该接口在Phone、Tablet、PC/2in1、Wearable设备中可正常调用，在其他设备调用不生效。
 
 **参数**：
 
@@ -1236,7 +1233,7 @@ openNfcSettingsPage(context: Context): void
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
-**设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
+**设备行为差异**：该接口在Phone、Tablet、Wearable设备中可正常调用，在其他设备调用不生效。
 
 **参数**：
 
@@ -1266,6 +1263,76 @@ try {
 } catch (err) {
   console.error(`Failed to open the NFC settings page. code: ${err?.code}, message: ${err?.message}`);
 }
+```
+
+## settings.openDoubleClickSettingsPage<sup>24+</sup>
+
+openDoubleClickSettingsPage(context: Context): void
+
+打开按键设置-双击下按键页面。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口仅在Wearable设备中可正常调用，在其他设备调用不生效。
+
+**参数**：
+
+| 参数名   | 类型                   | 必填 | 说明                                                                                                                                         |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[设置数据项错误码](errorcode-settings.md)。
+
+| 错误码ID    | 错误信息                    |
+|----------|-------------------------|
+| 16900010 | 1. The parameter is incorrect. <br> 2. The parameter is not transferred or the transferred parameter is invalid.       |
+| 16900020 | 1. The setting page cannot be opened through redirection.<br> 2. Internal error |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openDoubleClickSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the DoubleClick settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.isDoubleClickAppForSelf<sup>24+</sup>
+
+isDoubleClickAppForSelf(): Promise\<boolean>
+
+判断双击下按键的默认启动应用是否为本应用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Applications.Settings.Core
+
+**设备行为差异**：该接口仅在Wearable设备中可正常调用，在其他设备调用不生效。
+
+**返回值**：
+
+| 类型             | 说明                    |
+| ---------------- |-----------------------|
+| Promise\<boolean> | Promise对象。返回true表示是当前应用，返回false表示非当前应用。 |
+
+**示例**：
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+
+settings.isDoubleClickAppForSelf().then((result: boolean) => {
+  console.info(`isDoubleClickAppForSelf result: ${result}`);
+})
 ```
 
 ## settings.openMobileNetworkSettingsPage
@@ -1412,7 +1479,7 @@ openSoundSettingsPage(context: Context): void
 
 **系统能力**：SystemCapability.Applications.Settings.Core
 
-**设备行为差异**：该接口在Phone、Tablet、PC/2in1设备中可正常调用，在其他设备调用不生效。
+**设备行为差异**：该接口在Phone、Tablet设备中可正常调用，在其他设备调用不生效。
 
 **参数**：
 
@@ -1490,7 +1557,7 @@ try {
 
 ## settings.openAppDetailSettingsPage
 
-openAppDetailSettingsPage(context: Context, bundleName: string, appIndex?: int): void
+openAppDetailSettingsPage(context: Context, bundleName: string, appIndex?: number): void
 
 打开应用详情设置页面。
 
@@ -1508,7 +1575,7 @@ openAppDetailSettingsPage(context: Context, bundleName: string, appIndex?: int):
 | -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
 | context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是 | 应用上下文（仅支持UIAbilityContext和ExtensionContext）。<br />Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | bundleName  | string | 是 | 应用包名 |
-| appIndex  | int | 否 | 应用分身的索引 |
+| appIndex  | number | 否 | 应用分身的索引 |
 
 **错误码**：
 

@@ -8,7 +8,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+> - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## AudioStreamInfo<sup>8+</sup>
 
@@ -18,11 +19,11 @@
 
 | 名称         | 类型                                               | 只读 | 可选 | 说明               |
 | ------------ | ------------------------------------------------- | ---- |---| ------------------ |
-| samplingRate | ArkTS-Dyn: [AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8) \| number<br> ArkTS-Sta: [AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8) \| int| 否 | 否 | 音频文件的采样率，单位为赫兹（Hz）。支持传入[AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8)。<br>从API版本26.0.0开始：<br>- 参数samplingRate在ArkTS-Dyn上支持number类型，ArkTS-Sta上支持int类型。<br>- 音频渲染扩展支持8000Hz到384000Hz范围内以10Hz为步长的采样率值。具体设备支持的采样率规格会存在差异。<br>**ArkTS-Dyn起始版本：** 26.0.0<br> **ArkTS-Sta起始版本：** 26.0.0|
-| channels     | [AudioChannel](arkts-apis-audio-e.md#audiochannel8)                    | 否 | 否 | 音频文件的通道数。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
-| sampleFormat | [AudioSampleFormat](arkts-apis-audio-e.md#audiosampleformat8)         | 否 | 否 | 音频采样格式。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
-| encodingType | [AudioEncodingType](arkts-apis-audio-e.md#audioencodingtype8)          | 否 | 否 | 音频编码格式。<br>**ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 23|
-| channelLayout<sup>11+</sup> | [AudioChannelLayout](arkts-apis-audio-e.md#audiochannellayout11)  | 否 | 是 | 音频声道布局，默认值为0x0。<br>**ArkTS-Dyn起始版本：** 11<br> **ArkTS-Sta起始版本：** 23|
+| samplingRate | ArkTS-Dyn: [AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8) \| number<br>ArkTS-Sta: [AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8) \| int| 否 | 否 | 音频文件的采样率，单位为赫兹（Hz）。支持传入[AudioSamplingRate](arkts-apis-audio-e.md#audiosamplingrate8)。<br>从API版本26.0.0开始：<br>ArkTS-Dyn：- 参数samplingRate支持number类型。<br>ArkTS-Sta：- 参数samplingRate支持int类型。<br>- 音频渲染扩展支持8000Hz到384000Hz范围内以10Hz为步长的采样率值。具体设备支持的采样率规格会存在差异。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23|
+| channels     | [AudioChannel](arkts-apis-audio-e.md#audiochannel8)                    | 否 | 否 | 音频文件的通道数。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
+| sampleFormat | [AudioSampleFormat](arkts-apis-audio-e.md#audiosampleformat8)          | 否 | 否 | 音频采样格式。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23     |
+| encodingType | [AudioEncodingType](arkts-apis-audio-e.md#audioencodingtype8)          | 否 | 否 | 音频编码格式。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23     |
+| channelLayout<sup>11+</sup> | [AudioChannelLayout](arkts-apis-audio-e.md#audiochannellayout11)  | 否 | 是 | 音频声道布局，默认值为0x0。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
 
 ## AudioRendererInfo<sup>8+</sup>
 
@@ -30,10 +31,10 @@
 
 | 名称          | 类型                        | 只读 | 可选 | 说明            |
 | ------------- | --------------------------- | ---- |---| --------------- |
-| content<sup>(deprecated)</sup> | [ContentType](arkts-apis-audio-e.md#contenttypedeprecated) | 否 | 是 | 音频内容类型。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core <br>API version 8、9为必填参数，从API version 10开始为可选参数，默认值为CONTENT_TYPE_UNKNOWN。<br>从API version 8开始支持，从API version 10开始废弃，建议使用usage替代。 |
-| usage         | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 否 | 否 | 音频流使用类型。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| rendererFlags | number                      | 否 | 否 | 播放流行为标志。<br>设置为0即可。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| volumeMode<sup>19+</sup> | [AudioVolumeMode](arkts-apis-audio-e.md#audiovolumemode19) | 否 | 是 | 音频的音量模式。默认值为SYSTEM_GLOBAL。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Volume|
+| content<sup>(deprecated)</sup> | [ContentType](arkts-apis-audio-e.md#contenttypedeprecated) | 否 | 是 | 音频内容类型。<br>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br>**系统能力：** SystemCapability.Multimedia.Audio.Core <br>API version 8、9为必填参数，从API version 10开始为可选参数，默认值为CONTENT_TYPE_UNKNOWN。<br>从API version 8开始支持，从API version 10开始废弃，建议使用usage替代。<br>**ArkTS-Dyn起始版本：** 8 |
+| usage         | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 否 | 否 | 音频流使用类型。<br>**系统能力：** SystemCapability.Multimedia.Audio.Core <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23|
+| rendererFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 播放流行为标志。<br>设置为0即可。<br>**系统能力：** SystemCapability.Multimedia.Audio.Core <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23|
+| volumeMode<sup>19+</sup> | [AudioVolumeMode](arkts-apis-audio-e.md#audiovolumemode19) | 否 | 是 | 音频的音量模式。默认值为SYSTEM_GLOBAL。<br>**系统能力：** SystemCapability.Multimedia.Audio.Volume<br>**ArkTS-Dyn起始版本：** 19<br>**ArkTS-Sta起始版本：** 23|
 
 ## AudioRendererOptions<sup>8+</sup>
 
@@ -41,9 +42,9 @@
 
 | 名称         | 类型                                     | 只读 | 可选 | 说明             |
 | ------------ | ---------------------------------------- | ---- |---| ---------------- |
-| streamInfo   | [AudioStreamInfo](#audiostreaminfo8)     | 否 | 否 | 音频流信息。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Renderer |
-| rendererInfo | [AudioRendererInfo](#audiorendererinfo8) | 否 | 否 | 音频渲染器信息。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Renderer |
-| privacyType<sup>10+</sup> | [AudioPrivacyType](arkts-apis-audio-e.md#audioprivacytype10) | 否 | 是 | 表示音频流是否可以被其他应用录制，默认值为0。<br/>**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture |
+| streamInfo   | [AudioStreamInfo](#audiostreaminfo8)     | 否 | 否 | 音频流信息。<br>**系统能力：** SystemCapability.Multimedia.Audio.Renderer<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
+| rendererInfo | [AudioRendererInfo](#audiorendererinfo8) | 否 | 否 | 音频渲染器信息。<br>**系统能力：** SystemCapability.Multimedia.Audio.Renderer<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23 |
+| privacyType<sup>10+</sup> | [AudioPrivacyType](arkts-apis-audio-e.md#audioprivacytype10) | 否 | 是 | 表示音频流是否可以被其他应用录制，默认值为0。<br>**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23 |
 
 ## InterruptEvent<sup>9+</sup>
 
@@ -52,6 +53,10 @@
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                                       | 只读 | 可选 | 说明                                 |
 | --------- | ------------------------------------------ | ---- |---| ------------------------------------ |
@@ -65,6 +70,10 @@
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
+**ArkTS-Dyn起始版本：** 13
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称              | 类型                                              | 只读 | 可选 | 说明               |
 | :---------------- | :------------------------------------------------ | :--- |---| :----------------- |
 | blockStatus       | [DeviceBlockStatus](arkts-apis-audio-e.md#deviceblockstatus13)           | 否 | 否 | 音频设备堵塞状态。 |
@@ -74,9 +83,13 @@
 
 音频会话策略。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型                                              | 只读 | 可选 | 说明             |
 | :------------ |:------------------------------------------------| :--- |---| :--------------- |
@@ -88,6 +101,10 @@
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 类型                                                                | 只读 | 可选 | 说明             |
 | :------------ |:------------------------------------------------------------------| :--- |---| :--------------- |
 | reason        | [AudioSessionDeactivatedReason](arkts-apis-audio-e.md#audiosessiondeactivatedreason12) | 否 | 否 | 音频会话停用原因。       |
@@ -97,6 +114,10 @@
 音频会话状态变更事件。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型                                              | 只读 | 可选 | 说明             |
 | :------------ |:------------------------------------------------| :--- |---| :--------------- |
@@ -108,9 +129,13 @@
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称               | 类型                                       | 只读 | 可选 | 说明                          |
 | -------------------| ----------------------------------------- | ---- | ---- | ---------------------------- |
-| streamId           | number                                    | 是   | 否   | 音频流唯一id。                |
+| streamId           | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 音频流唯一ID。                |
 | rendererInfo       | [AudioRendererInfo](#audiorendererinfo8)  | 是   | 否   | 音频渲染器信息。               |
 | deviceDescriptors  | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)      | 是   | 否   | 音频设备描述。|
 
@@ -122,10 +147,10 @@
 
 | 名称               | 类型                                       | 只读 | 可选 | 说明                          |
 | -------------------| ----------------------------------------- | ---- | ---- | ---------------------------- |
-| streamId           | number                                    | 是   | 否   | 音频流唯一id。                |
-| capturerInfo       | [AudioCapturerInfo](#audiocapturerinfo8)  | 是   | 否   | 音频采集器信息。               |
-| deviceDescriptors  | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)      | 是   | 否   | 音频设备信息。|
-| muted<sup>11+</sup>  | boolean    | 是   | 是 | 音频采集器是否处于静音状态。true表示静音，false表示非静音。|
+| streamId           | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 音频流唯一ID。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                |
+| capturerInfo       | [AudioCapturerInfo](#audiocapturerinfo8)  | 是   | 否   | 音频采集器信息。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23               |
+| deviceDescriptors  | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)      | 是   | 否   | 音频设备信息。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
+| muted<sup>11+</sup>  | boolean    | 是   | 是 | 音频采集器是否处于静音状态。true表示静音，false表示非静音。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23|
 
 ## AudioDeviceDescriptor
 
@@ -133,19 +158,36 @@
 
 | 名称                          | 类型                       | 只读 | 可选 | 说明       |
 | ----------------------------- | -------------------------- | ---- | ---- | ---------- |
-| deviceRole                    | [DeviceRole](arkts-apis-audio-e.md#devicerole)  | 是   | 否   | 设备角色。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| deviceType                    | [DeviceType](arkts-apis-audio-e.md#devicetype)  | 是   | 否   | 设备类型。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| id<sup>9+</sup>               | number                     | 是   | 否   | 唯一的设备id。  <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| name<sup>9+</sup>             | string                     | 是   | 否   | 设备名称。<br>如果是蓝牙设备，需要申请权限ohos.permission.USE_BLUETOOTH。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| address<sup>9+</sup>          | string                     | 是   | 否   | 设备静态MAC地址。<br>如果是蓝牙设备，需要申请权限ohos.permission.USE_BLUETOOTH。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| sampleRates<sup>9+</sup>      | Array&lt;number&gt;        | 是   | 否   | 支持的采样率。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| channelCounts<sup>9+</sup>    | Array&lt;number&gt;        | 是   | 否   | 支持的通道数。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| channelMasks<sup>9+</sup>     | Array&lt;number&gt;        | 是   | 否   | 支持的通道掩码。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| displayName<sup>10+</sup>     | string                     | 是   | 否   | 设备显示名。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| encodingTypes<sup>11+</sup>    | Array&lt;[AudioEncodingType](arkts-apis-audio-e.md#audioencodingtype8)&gt;                     | 是   | 是 | 支持的编码类型。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Core <br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| spatializationSupported<sup>18+</sup>     | boolean                     | 是   | 是 | 设备是否支持空间音频。true表示支持空间音频，false表示不支持空间音频。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Spatialization|
-| model<sup>22+</sup>           | string                     | 是   | 是 | 设备的具体型号类别。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
-| capabilities<sup>22+</sup>    | Array&lt;[AudioStreamInfo](#audiostreaminfo8)&gt;| 是   | 是 | 设备支持的音频流能力。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device|
+| deviceRole                    | [DeviceRole](arkts-apis-audio-e.md#devicerole)  | 是   | 否   | 设备角色。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23|
+| deviceType                    | [DeviceType](arkts-apis-audio-e.md#devicetype)  | 是   | 否   | 设备类型。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 6<br>**ArkTS-Sta起始版本：** 23|
+| id<sup>9+</sup>               | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 否   | 唯一的设备ID。  <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
+| name<sup>9+</sup>             | string                     | 是   | 否   | 设备名称。<br>如果是蓝牙设备，需要申请权限ohos.permission.USE_BLUETOOTH。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
+| address<sup>9+</sup>          | string                     | 是   | 否   | 设备静态MAC地址。<br>如果是蓝牙设备，需要申请权限ohos.permission.USE_BLUETOOTH。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
+| sampleRates<sup>9+</sup>      | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;int&gt; | 是   | 否   | 支持的采样率。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
+| channelCounts<sup>9+</sup>    | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;int&gt; | 是   | 否   | 支持的通道数。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
+| channelMasks<sup>9+</sup>     | ArkTS-Dyn: Array&lt;number&gt;<br>ArkTS-Sta: Array&lt;int&gt; | 是   | 否   | 支持的通道掩码。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
+| displayName<sup>10+</sup>     | string                     | 是   | 否   | 设备显示名。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Device <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 10<br>**ArkTS-Sta起始版本：** 23|
+| encodingTypes<sup>11+</sup>    | Array&lt;[AudioEncodingType](arkts-apis-audio-e.md#audioencodingtype8)&gt;                     | 是   | 是 | 支持的编码类型。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Core <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23|
+| spatializationSupported<sup>18+</sup>     | boolean                     | 是   | 是 | 设备是否支持空间音频。true表示支持空间音频，false表示不支持空间音频。 <br> **系统能力：** SystemCapability.Multimedia.Audio.Spatialization<br>**ArkTS-Dyn起始版本：** 18<br>**ArkTS-Sta起始版本：** 23|
+| model<sup>22+</sup>           | string                     | 是   | 是 | 设备的具体型号类别。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23|
+| capabilities<sup>22+</sup>    | Array&lt;[AudioStreamInfo](#audiostreaminfo8)&gt;| 是   | 是 | 设备支持的音频流能力。<br> **系统能力：** SystemCapability.Multimedia.Audio.Device<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23|
+
+## AudioDevicePair
+
+描述返听使用的音频设备对，包含输入设备和输出设备。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称              | 类型                                              | 只读 | 可选 | 说明               |
+| :---------------- | :------------------------------------------------ | :--- |---| :----------------- |
+| inputDevice | [AudioDeviceDescriptor](#audiodevicedescriptor) | 否 | 否 | 输入音频设备描述。 |
+| outputDevice | [AudioDeviceDescriptor](#audiodevicedescriptor) | 否 | 否 | 输出音频设备描述。 |
 
 ## VolumeEvent<sup>9+</sup>
 
@@ -155,10 +197,10 @@
 
 | 名称       | 类型                                | 只读 | 可选 | 说明                                        |
 | ---------- | ----------------------------------- | ---- |---|-------------------------------------------|
-| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 否 | 否 | 音频音量类型。                                    |
-| volume     | number                              | 否 | 否 |音量等级，可设置范围通过调用getMinVolume和getMaxVolume方法获取。  |
-| updateUi   | boolean                             | 否 | 否 |  是否在UI中显示音量变化。true表示显示，false表示不显示。             |
-| volumeMode<sup>19+</sup> | [AudioVolumeMode](arkts-apis-audio-e.md#audiovolumemode19) | 否 | 是 | 音频的音量模式。默认值为SYSTEM_GLOBAL。|
+| volumeType | [AudioVolumeType](arkts-apis-audio-e.md#audiovolumetype) | 否 | 否 | 音频音量类型。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                    |
+| volume     | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否 | 否 |音量等级，可设置范围通过调用getMinVolume和getMaxVolume方法获取。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23  |
+| updateUi   | boolean                             | 否 | 否 |  标识是否会显示系统本身的音量条，true表示会显示系统音量条，false表示不会显示系统音量条。<br>若应用内含自定义音量条，建议根据此参数动态控制其显示：当updateUi为true时不显示自定义音量条，为false时显示自定义音量条，从而避免出现系统本身音量条与应用自定义音量条同时显示或不显示的问题。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23             |
+| volumeMode<sup>19+</sup> | [AudioVolumeMode](arkts-apis-audio-e.md#audiovolumemode19) | 否 | 是 | 音频的音量模式。默认值为SYSTEM_GLOBAL。<br>**ArkTS-Dyn起始版本：** 19<br>**ArkTS-Sta起始版本：** 23|
 
 
 ## MicStateChangeEvent<sup>9+</sup>
@@ -166,6 +208,10 @@
 麦克风状态变化时，应用接收到的事件。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型                                | 只读 | 可选 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- |---|-------------------------------------------------------- |
@@ -180,16 +226,20 @@
 
 | 名称       | 类型                                | 只读 | 可选 | 说明                                                     |
 | ---------- | ----------------------------------- | ---- |---|-------------------------------------------------------- |
-| streamUsage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 否 | 否 | 音量发生变化的音频流。          |
-| volume | number | 否 | 否 | 音量值。          |
-| updateUi | boolean | 否 | 否 | 是否在UI上展示音量变化。true表示展示，false表示不展示。          |
-| previousVolume<sup>23+</sup> | number | 否 | 是 | 变化前的音量值。 |
+| streamUsage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 否 | 否 | 音量发生变化的音频流。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23          |
+| volume | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 音量值。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23          |
+| updateUi | boolean | 否 | 否 | 标识是否会显示系统本身的音量条，true表示会显示系统音量条，false表示不会显示系统音量条。<br>若应用内含自定义音量条，建议根据此参数动态控制其显示：当updateUi为true时不显示自定义音量条，为false时显示自定义音量条，从而避免出现系统本身音量条与应用自定义音量条同时显示或不显示的问题。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23          |
+| previousVolume<sup>23+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 变化前的音量值。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 
 ## DeviceChangeAction
 
 描述设备连接状态变化和设备信息。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型                                              | 只读 | 可选 | 说明               |
 | :---------------- | :------------------------------------------------ | :--- |---| :----------------- |
@@ -204,9 +254,9 @@
 
 | 名称              | 类型                                                                | 只读 | 可选 | 说明               |
 | :---------------- |:------------------------------------------------------------------| :--- |---| :----------------- |
-| devices              | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)                 | 否 | 否 | 设备信息。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| changeReason | [AudioStreamDeviceChangeReason](arkts-apis-audio-e.md#audiostreamdevicechangereason11) | 否 | 否 | 流设备变更原因。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| preDevices | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) | 否 | 是 | 应用流设备变更前的设备信息。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
+| devices              | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)                 | 否 | 否 | 设备信息。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| changeReason | [AudioStreamDeviceChangeReason](arkts-apis-audio-e.md#audiostreamdevicechangereason11) | 否 | 否 | 流设备变更原因。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| preDevices | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) | 否 | 是 | 应用流设备变更前的设备信息。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## CurrentOutputDeviceChangedEvent<sup>20+</sup>
 
@@ -214,18 +264,26 @@
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称              | 类型                                                                | 只读 | 可选 | 说明               |
 | :---------------- |:------------------------------------------------------------------| :--- |---| :----------------- |
-| devices              | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)                 | 否 | 否 | 设备信息。 |
-| changeReason | [AudioStreamDeviceChangeReason](arkts-apis-audio-e.md#audiostreamdevicechangereason11) | 否 | 否 | 设备变更原因。 |
-| recommendedAction | [OutputDeviceChangeRecommendedAction](arkts-apis-audio-e.md#outputdevicechangerecommendedaction20) | 否 | 否 | 设备变更后推荐的操作。 |
-| preDevices | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) | 否 | 是 | 应用输出设备变更前的设备信息。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| devices              | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)                 | 否 | 否 | 设备信息。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| changeReason | [AudioStreamDeviceChangeReason](arkts-apis-audio-e.md#audiostreamdevicechangereason11) | 否 | 否 | 设备变更原因。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| recommendedAction | [OutputDeviceChangeRecommendedAction](arkts-apis-audio-e.md#outputdevicechangerecommendedaction20) | 否 | 否 | 设备变更后推荐的操作。<br>**ArkTS-Dyn起始版本：** 20<br>**ArkTS-Sta起始版本：** 23 |
+| preDevices | [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) | 否 | 是 | 应用输出设备变更前的设备信息。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## CurrentInputDeviceChangedEvent<sup>21+</sup>
 
 应用接收到输入设备的变更事件。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称              | 类型                                                                | 只读 | 可选 | 说明               |
 | :---------------- |:------------------------------------------------------------------| :--- |---| :----------------- |
@@ -238,10 +296,14 @@
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型 | 只读 | 可选 | 说明                                |
 | ---------| ------ | ---- | ---- |-----------------------------------|
-| framePos | number | 是   | 否   | 当前播放或者录制的数据帧位置。                   |
-| timestamp | number | 是   | 否   | 播放或者录制到当前数据帧位置时对应的时间戳，单位为纳秒。 |
+| framePos | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 当前播放或者录制的数据帧位置。                   |
+| timestamp | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 播放或者录制到当前数据帧位置时对应的时间戳，单位为纳秒。 |
 
 ## AudioCapturerInfo<sup>8+</sup>
 
@@ -249,10 +311,14 @@
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 类型                      | 只读 | 可选 | 说明             |
 | :------------ | :------------------------ | :--- |---| :--------------- |
 | source        | [SourceType](arkts-apis-audio-e.md#sourcetype8) | 否 | 否 | 音源类型。       |
-| capturerFlags | number                    | 否 | 否 | 录制流行为标志。<br>设置为0即可。 |
+| capturerFlags | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 录制流行为标志。<br>设置为0即可。 |
 
 ## AudioCapturerOptions<sup>8+</sup>
 
@@ -260,25 +326,35 @@
 
 | 名称                                | 类型                                                      | 只读 | 可选 | 说明                                                         |
 | ----------------------------------- | --------------------------------------------------------- | ---- |---| ------------------------------------------------------------ |
-| streamInfo                          | [AudioStreamInfo](#audiostreaminfo8)                      | 否 | 否 | 音频流信息。 <br/>**系统能力：** SystemCapability.Multimedia.Audio.Capturer   |
-| capturerInfo                        | [AudioCapturerInfo](#audiocapturerinfo8)                   | 否 | 否 | 音频采集器信息。 <br/>**系统能力：** SystemCapability.Multimedia.Audio.Capturer        |
-| playbackCaptureConfig<sup>(deprecated)</sup> | [AudioPlaybackCaptureConfig](#audioplaybackcaptureconfigdeprecated) | 否 | 是 | 音频内录的配置信息。<br/>**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture<br/> 从API version 10开始支持，从API version 12开始废弃，建议使用[录屏接口AVScreenCapture](../apis-media-kit/capi-avscreencapture.md)替代。  |
-
+| streamInfo                          | [AudioStreamInfo](#audiostreaminfo8)                      | 否 | 否 | 音频流信息。 <br/>**系统能力：** SystemCapability.Multimedia.Audio.Capturer<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23   |
+| capturerInfo                        | [AudioCapturerInfo](#audiocapturerinfo8)                   | 否 | 否 | 音频采集器信息。 <br/>**系统能力：** SystemCapability.Multimedia.Audio.Capturer<br>**ArkTS-Dyn起始版本：** 8<br>**ArkTS-Sta起始版本：** 23        |
+| playbackCaptureConfig<sup>(deprecated)</sup> | [AudioPlaybackCaptureConfig](#audioplaybackcaptureconfigdeprecated) | 否 | 是 | 音频内录的配置信息。**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture<br/> 从API version 10开始支持，从API version 12开始废弃，建议使用[录屏接口AVScreenCapture](../apis-media-kit/capi-avscreencapture.md)替代。<br>**ArkTS-Dyn起始版本：** 10  |
+| playbackCaptureMode | [AudioPlaybackCaptureMode](arkts-apis-audio-e.md#audioplaybackcapturemode) | 否 | 是 | 内录模式。可设置为AudioPlaybackCaptureMode中的枚举值或其按位或组合，当前仅支持MODE_DEFAULT（0x0）、MODE_MEDIA（0x1）、MODE_EXCLUDING_SELF（0x8000），以及MODE_MEDIA和MODE_EXCLUDING_SELF的按位或组合（0x8001）。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture |
 ## AudioInterrupt<sup>(deprecated)</sup>
 
 音频监听事件传入的参数。
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
+> 从API version 7开始支持，从API version 9开始废弃。
+>
+> 申请音频焦点时，建议使用[AudioRendererOptions](arkts-apis-audio-i.md#audiorendereroptions8).rendererInfo替代，[StreamUsage](arkts-apis-audio-e.md#streamusage)决定音频流的焦点策略。
+>
+> 建议使用[on('audioInterrupt')](arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9)接口监听音频焦点事件[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)，替代音频中断事件。
+>
+> 使用已废弃的接口[on('interrupt')](arkts-apis-audio-AudioManager.md#oninterruptdeprecated)不会打断新机制的音频流，也不会收到焦点中断事件。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+**ArkTS-Dyn起始版本：** 7
+
 | 名称            | 类型                        | 只读 | 可选 | 说明                                                         |
 | --------------- | --------------------------- | ----|---| ------------------------------------------------------------ |
-| streamUsage     | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 否 | 否 | 音频流使用类型。                                             |
-| contentType     | [ContentType](arkts-apis-audio-e.md#contenttypedeprecated) | 否 | 否 | 音频打断媒体类型。                                           |
-| pauseWhenDucked | boolean                     | 否 | 否 | 音频打断时是否可以暂停音频播放。true表示音频播放可以在音频打断期间暂停，false表示音频播放不可以在音频打断期间暂停。 |
+| streamUsage     | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 否 | 否 | 音频流使用类型。<br> **说明：** 从API version 7开始支持，从API version 9开始废弃，建议使用[AudioRendererOptions](arkts-apis-audio-i.md#audiorendereroptions8).rendererInfo替代。 |
+| contentType     | [ContentType](arkts-apis-audio-e.md#contenttypedeprecated) | 否 | 否 | 音频打断媒体类型。<br> **说明：** 从API version 7开始支持，从API version 9开始废弃，建议使用[AudioRendererOptions](arkts-apis-audio-i.md#audiorendereroptions8).rendererInfo替代。 |
+| pauseWhenDucked | boolean                     | 否 | 否 | 音频打断时是否可以暂停音频播放。true表示音频播放可以在音频打断期间暂停，false表示音频播放不可以在音频打断期间暂停。<br> **说明：** 从API version 7开始支持，从API version 9开始废弃，建议使用[InterruptEvent](arkts-apis-audio-i.md#interruptevent9).hintType替代。 |
 
 ## CaptureFilterOptions<sup>(deprecated)</sup>
 
@@ -287,7 +363,11 @@
 > **说明：**
 > 从API version 10开始支持，从API version 12开始废弃，建议使用[录屏接口AVScreenCapture](../apis-media-kit/capi-avscreencapture.md)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
+
+**ArkTS-Dyn起始版本：** 10
 
 | 名称   | 类型                               | 只读 | 可选 | 说明                                                         |
 | ------ | ---------------------------------- | ---- |---| ------------------------------------------------------------ |
@@ -300,7 +380,11 @@
 > **说明：**
 > 从API version 10开始支持，从API version 12开始废弃，建议使用[录屏接口AVScreenCapture](../apis-media-kit/capi-avscreencapture.md)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
+
+**ArkTS-Dyn起始版本：** 10
 
 | 名称          | 类型                                          | 只读 | 可选 | 说明                             |
 | ------------- | --------------------------------------------- | ---- |---| -------------------------------- |
@@ -314,11 +398,31 @@
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[InterruptEvent](#interruptevent9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 7
 
 | 名称       | 类型                                        | 只读 | 可选 | 说明                                                         |
 | ---------- | ------------------------------------------- | ---- |---| ------------------------------------------------------------ |
 | actionType | [InterruptActionType](arkts-apis-audio-e.md#interruptactiontypedeprecated) | 否 | 否 | 事件返回类型。TYPE_ACTIVATED为焦点触发事件，TYPE_INTERRUPT为音频打断事件。 |
 | type       | [InterruptType](arkts-apis-audio-e.md#interrupttype)             | 否 | 是 | 打断事件类型。                                               |
 | hint       | [InterruptHint](arkts-apis-audio-e.md#interrupthint)             | 否 | 是 | 打断事件提示。                                               |
-| activated  | boolean                                     | 否 | 是 | 焦点获取/释放是否成功。true表示焦点获取/释放成功，false表示焦点获得/释放失败。 |
+| activated  | boolean                                     | 否 | 是 | 焦点获取/释放是否成功。true表示焦点获取/释放成功，false表示焦点获取/释放失败。 |
+
+## SystemRecordControllerConfig
+
+系统录音控制面板的配置信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| :---- | :---- | :---- | :---- | :---- |
+| sourceType | [SourceType](arkts-apis-audio-e.md#sourcetype8) | 否 | 否 | 应用期望使用的音频源类型。系统会根据该参数确定应用的录音场景，并为用户提供匹配的降噪模式选择能力。支持的音频源类型包括SOURCE_TYPE_MIC、SOURCE_TYPE_CAMCORDER和SOURCE_TYPE_LIVE。 |

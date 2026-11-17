@@ -31,7 +31,7 @@ Create a **&lt;switch&gt;** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001231843096](figures/en-us_image_0000001231843096.png)
+![switch-Component](figures/switch-Component.png)
 
 
 ## Adding Attributes and Methods
@@ -84,7 +84,7 @@ export default {
 ```
 
 
-![en-us_image_0000001276003505](figures/en-us_image_0000001276003505.gif)
+![Attributes-and-Methods](figures/Attributes-and-Methods.gif)
 
 
 > **NOTE**
@@ -197,4 +197,4 @@ export default {
 }
 ```
 
-![en-us_image_0000001231843100](figures/en-us_image_0000001231843100.gif)
+![Example-Scenario-10](figures/Example-Scenario-10.gif)

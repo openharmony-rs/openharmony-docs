@@ -30,7 +30,30 @@ constructor()
 
 创建DrawableDescriptor或LayeredDrawableDescriptor对象。对象构造需要使用全球化接口[getDrawableDescriptor](../apis-localization-kit/js-apis-resource-manager.md#getdrawabledescriptor10)或[getDrawableDescriptorByName](../apis-localization-kit/js-apis-resource-manager.md#getdrawabledescriptorbyname10)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+### setSVGResourceLimitLevel
+
+setSVGResourceLimitLevel(limit: image.SVGResourceLimitLevel): void
+
+设置SVG解码的资源限制等级。未通过该接口设置时，默认值为image.[SVGResourceLimitLevel](../apis-image-kit/js-apis-image-sys.md#svgresourcelimitlevel).NONE。
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**参数：**
+
+| 参数名     | 类型              | 必填  | 说明                                       |
+| --------- | ---------------- | ---- | ------------------------------------------ |
+| limit | image.[SVGResourceLimitLevel](../apis-image-kit/js-apis-image-sys.md#svgresourcelimitlevel)  | 是   | SVG解码的资源限制等级。  |

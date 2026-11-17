@@ -1,7 +1,7 @@
 # 焦点事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -30,7 +30,7 @@ ArkTS-Sta: onFocus(event: (() => void) | undefined): this
 
 当前组件获取焦点时触发的回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,7 +58,7 @@ ArkTS-Sta: onBlur(event: (() => void) | undefined): this
 
 当前组件失去焦点时触发的回调。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -93,12 +93,13 @@ struct FocusEventExample {
 
   build() {
     Column({ space: 20 }) {
-      // 通过外接键盘的Tab键激活焦点，并使用上下键让焦点在三个按钮间移动，按钮获焦时颜色变化，失焦时变回原背景色
+      // 当焦点在三个按钮间移动，按钮获焦时颜色变化，失焦时变回原背景色
       Button('First Button')
         .backgroundColor(this.oneButtonColor)
         .width(260)
         .height(70)
         .fontColor(Color.Black)
+        .focusOnTouch(true)
         .focusable(true)
         .onFocus(() => {
           this.oneButtonColor = '#FFFFFF'
@@ -111,6 +112,7 @@ struct FocusEventExample {
         .width(260)
         .height(70)
         .fontColor(Color.Black)
+        .focusOnTouch(true)
         .focusable(true)
         .onFocus(() => {
           this.twoButtonColor = '#FFFFFF'
@@ -123,6 +125,7 @@ struct FocusEventExample {
         .width(260)
         .height(70)
         .fontColor(Color.Black)
+        .focusOnTouch(true)
         .focusable(true)
         .onFocus(() => {
           this.threeButtonColor = '#FFFFFF'

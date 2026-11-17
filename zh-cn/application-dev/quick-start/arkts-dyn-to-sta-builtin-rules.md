@@ -4,7 +4,7 @@
 <!--Owner: @lijin1039-->
 <!--Designer: @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS-Sta版本中，builtin API引入了一些新特性，部分变更会影响多个builtin对象，部分变更只影响某个具体API。本文按“跨对象通用规则”和“按builtin对象查看”两种方式整理：通用规则用于了解跨对象的迁移模式，对象文档用于查看具体签名、参数说明和适配示例。
 
@@ -43,7 +43,7 @@ ArkTS-Sta版本中，builtin API引入了一些新特性，部分变更会影响
 
 ## number类型收窄为int/long类型
 
-**规则：** `builtin-api-num2int`
+**规则：** `arkts-builtin-api-num2int`
 
 **适用范围：**
 
@@ -53,7 +53,7 @@ ArkTS-Sta版本中，builtin API引入了一些新特性，部分变更会影响
 
 在ArkTS-Dyn中，builtin API的入参、返回值或属性中常使用`number`表示数字类型。ArkTS-Sta将数字类型进一步区分为`int`、`long`、`double`等具体类型；对于实际表示整型语义的builtin API，ArkTS-Sta声明中会将对应位置的`number`收窄为`int`或`long`。
 
-迁移检查工具会基于工程目标ES版本选择ArkTS-Dyn builtin声明，并与ArkTS-Sta builtin声明进行签名匹配。若同一builtin API在ArkTS-Dyn中为`number`，在ArkTS-Sta中变更为`int`或`long`，工具会报告`builtin-api-num2int`问题。
+迁移检查工具会基于工程目标ES版本选择ArkTS-Dyn builtin声明，并与ArkTS-Sta builtin声明进行签名匹配。若同一builtin API在ArkTS-Dyn中为`number`，在ArkTS-Sta中变更为`int`或`long`，工具会报告`arkts-builtin-api-num2int`问题。
 
 **变更原因：**
 
@@ -67,7 +67,7 @@ ArkTS-Sta通过更精确的数字类型提升类型安全和运行性能。原�
 
 ### 参数类型变更
 
-**规则：** `builtin-api-num2int`
+**规则：** `arkts-builtin-api-num2int`
 
 **ArkTS-Dyn版本签名：**
 
@@ -115,7 +115,7 @@ ArkTS-Sta通过更精确的数字类型提升类型安全和运行性能。原�
 
 ### 返回值类型变更
 
-**规则：** `builtin-api-num2int`
+**规则：** `arkts-builtin-api-num2int`
 
 **ArkTS-Dyn版本签名：**
 
@@ -155,7 +155,7 @@ ArkTS-Sta通过更精确的数字类型提升类型安全和运行性能。原�
 
 ### 属性类型变更
 
-**规则：** `builtin-api-num2int`
+**规则：** `arkts-builtin-api-num2int`
 
 **ArkTS-Dyn版本签名：**
 
@@ -197,7 +197,7 @@ ArkTS-Sta通过更精确的数字类型提升类型安全和运行性能。原�
 
 ### 嵌套签名类型变更
 
-**规则：** `builtin-api-num2int`
+**规则：** `arkts-builtin-api-num2int`
 
 builtin API的`number`到`int`变更可能出现在函数类型参数、函数类型返回值、泛型参数或元组元素中。
 
@@ -229,7 +229,7 @@ builtin API的`number`到`int`变更可能出现在函数类型参数、函数�
 
   ```typescript
   let arr: Array<string> = new Array<string>('a', 'bb');
-  let index: number = arr.findIndex((value: string, index: number): unknown => {
+  let index: number = arr.findIndex((value: string, index: number) => {
     return value.length === index;
   });
   ```
@@ -277,7 +277,7 @@ builtin API的`number`到`int`变更可能出现在函数类型参数、函数�
 
 ### int和long重载歧义
 
-**规则：** `builtin-api-num2int`
+**规则：** `arkts-builtin-api-num2int`
 
 部分builtin API在ArkTS-Sta中同时存在`int`和`long`重载。若ArkTS-Dyn代码传入的表达式类型为`number`，工具无法仅根据调用点安全判断应该选择`int`还是`long`。
 
@@ -288,8 +288,12 @@ builtin API的`number`到`int`变更可能出现在函数类型参数、函数�
 **示例：**
 
   ```typescript
+  function getValue(): number {
+    return 10.0;
+  }
+
   let value: number = getValue();
-  let result = Math.abs(value);
+  let result: number = Math.abs(value);
   ```
 
 **ArkTS-Sta版本签名：**
@@ -300,15 +304,23 @@ builtin API的`number`到`int`变更可能出现在函数类型参数、函数�
 **示例：**
 
   ```typescript
-  let value: int = getValue().toInt();
-  let result: int = Math.abs(value);
+  function getValue(): number {
+    return 10.0;
+  }
+
+  let value: number = getValue();
+  let result: int = Math.abs(value.toInt());
   ```
 
   或者：
 
   ```typescript
-  let value: long = getValue().toLong();
-  let result: long = Math.abs(value);
+  function getValue(): number {
+    return 10.0;
+  }
+
+  let value: number = getValue();
+  let result: long = Math.abs(value.toLong());
   ```
 
 **适配建议：**

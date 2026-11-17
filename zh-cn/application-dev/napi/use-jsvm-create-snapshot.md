@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍如何使用OH_JSVM_CreateSnapshot创建虚拟机启动快照以保存堆内存、执行上下文等状态，并通过OH_JSVM_CreateEnvFromSnapshot从快照恢复运行环境。"
+keywords: [OH_JSVM_CreateSnapshot, OH_JSVM_CreateEnvFromSnapshot, 虚拟机快照, 启动快照, 状态保存, 环境恢复, externalReferences]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行虚拟机快照相关开发
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -30,7 +38,7 @@ JavaScript虚拟机（JSVM）的快照创建功能，将当前运行时的JavaSc
 
 cpp部分代码：
 
-**注意事项**: 需要在OH_JSVM_Init的时候，将JSVM对外部的依赖注册到initOptions.externalReferences中。
+**注意事项**：需要在OH_JSVM_Init的时候，将JSVM对外部的依赖注册到initOptions.externalReferences中。
 
 <!-- @[oh_jsvm_create_snapshot_and_create_env_from_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsOne/createsnapshot/src/main/cpp/hello.cpp) -->
 
@@ -339,7 +347,7 @@ struct Index {
 ```ts
 Test JSVM RunVMSnapshot read file blobSize = : 300064
 ```
-多次点击屏幕,LOG中输出:
+多次点击屏幕，LOG中输出：
 ```ts
 Test JSVM RunVMSnapshot read file blobSize = : 300176
 Test JSVM RunVMSnapshot read file blobSize = : 300064

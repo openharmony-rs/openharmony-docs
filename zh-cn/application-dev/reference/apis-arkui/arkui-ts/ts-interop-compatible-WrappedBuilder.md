@@ -10,7 +10,7 @@
 
 ## compatibleWrappedBuilder
 
-compatibleWrappedBuilder(builder: Any, ...args: FixedArray\<ESValue\>): void
+compatibleWrappedBuilder(builder: Any, ...args: FixedArray\<[ESValue](../../../quick-start/arkts-interop-overview.md#esvalue)\>): void
 
 为ArkTS-Sta提供使用ArkTS-Dyn WrappedBuilder对象的互操作方法。
 
@@ -28,4 +28,4 @@ compatibleWrappedBuilder(builder: Any, ...args: FixedArray\<ESValue\>): void
 
 **示例：**
 
-接口示例请参考ArkTS-Sta使用ArkTS-Dyn WrappedBuilder对象的开发场景
+接口示例请参考ArkTS-Sta使用ArkTS-Dyn WrappedBuilder对象的[开发场景](../../../ui/arkts-sta-interop-dyn-wrappedbuilder.md)。

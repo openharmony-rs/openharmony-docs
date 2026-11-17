@@ -1,14 +1,14 @@
 # 动态属性设置常见问题
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangjunman1-->
+<!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
 本文档介绍动态属性设置的常见问题并提供参考。
 
-## 使用AttributeModifier设置组件动态属性，出现jscrash
+## 使用AttributeModifier设置组件动态属性，出现JS Crash
 
 **问题现象**
 
@@ -24,7 +24,7 @@
 
 **示例代码**
 
-该示例通过Button绑定AttributeModifier，展示了AttributeModifier在设置不支持的属性时会抛出异常的场景，运行示例代码后会出现jscrash报错，参考下方的动图，跳转至具体的报错场景。在本示例中，删除reuseId相关代码即可正常运行。
+该示例通过Button绑定AttributeModifier，展示了AttributeModifier在设置不支持的属性时会抛出异常的场景，运行示例代码后会出现JS Crash报错，参考下方的动图，跳转至具体的报错场景。在本示例中，删除reuseId相关代码即可正常运行。
 
 ```ts
 // xxx.ets
@@ -39,7 +39,7 @@ class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
 
 @Entry
 @Component
-struct attributeDemo {
+struct AttributeDemo {
   @State modifier: MyButtonModifier = new MyButtonModifier();
 
   build() {

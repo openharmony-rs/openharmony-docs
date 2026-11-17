@@ -67,7 +67,7 @@ export default {
 ```
 
 
-![en-us_image_0000001231683156](figures/en-us_image_0000001231683156.png)
+![chart-Component](figures/chart-Component.png)
 
 
 ## Setting the Chart Type
@@ -214,7 +214,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001275803181](figures/en-us_image_0000001275803181.gif)
+![Chart-Type](figures/Chart-Type.gif)
 
 > **NOTE**
 >
@@ -525,4 +525,4 @@ export default {
 
 ```
 
-![en-us_image_0000001232162328](figures/en-us_image_0000001232162328.gif)
+![Example-Scenario-4](figures/Example-Scenario-4.gif)

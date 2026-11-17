@@ -3,7 +3,7 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -14,6 +14,10 @@
 
 ### 申请蓝牙权限
 需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，请参考[声明权限](../../security/AccessToken/declare-permissions.md)和[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
+
+### 查询是否支持蓝牙
+
+调用[isBluetoothSupported](../../reference/apis-connectivity-kit/js-apis-bluetooth-access.md#accessisbluetoothsupported)接口查询该设备是否支持蓝牙，支持后再进行后续步骤；不支持时，请勿使用相关接口。
 
 ### 导入所需API模块
 导入ble和错误码模块。
@@ -234,7 +238,7 @@ let advertisingParams: ble.AdvertisingParams = {
   advertisingSettings: setting,
   advertisingData: advData, // 注意: 广播报文长度不能超过31个字节
   advertisingResponse: advResponse, // 注意: 广播报文长度不能超过31个字节
-  duration: 0 // 可选参数，若大于0，则广播发送一段时间后，则会停止，但分配的广播资源还在，可重新启动发送
+  duration: 0 // 可选参数，若大于0，则广播发送一段时间后会停止，但分配的广播资源还在，可重新启动发送
 }
 
 let advHandle = 0xFF; // 定义广播标识
@@ -371,7 +375,7 @@ try {
 ### BLE扫描流程
 ```ts
 import { ble } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const TAG: string = 'BleScanManager';
 
@@ -424,8 +428,8 @@ export class BleScanManager {
     let localName: string = '';
     let serviceUuids: string[] = [];
     let serviceSolicitationUuids: string[] = [];
-    let manufactureSpecificDatas: Record<number, Uint8Array> = {};
-    let serviceDatas: Record<string, Uint8Array> = {};
+    let manufactureSpecificData: Record<number, Uint8Array> = {};
+    let serviceData: Record<string, Uint8Array> = {};
 
     let curPos = 0;
     while (curPos < advData.byteLength) {
@@ -475,16 +479,16 @@ export class BleScanManager {
             advData, serviceSolicitationUuids);
           break;
         case BLE_ADV_TYPE_16_BIT_SERVICE_DATA:
-          this.parseServiceData(BLUETOOTH_UUID_16_BIT_LENGTH, curPos, advDataLength, advData, serviceDatas);
+          this.parseServiceData(BLUETOOTH_UUID_16_BIT_LENGTH, curPos, advDataLength, advData, serviceData);
           break;
         case BLE_ADV_TYPE_32_BIT_SERVICE_DATA:
-          this.parseServiceData(BLUETOOTH_UUID_32_BIT_LENGTH, curPos, advDataLength, advData, serviceDatas);
+          this.parseServiceData(BLUETOOTH_UUID_32_BIT_LENGTH, curPos, advDataLength, advData, serviceData);
           break;
         case BLE_ADV_TYPE_128_BIT_SERVICE_DATA:
-          this.parseServiceData(BLUETOOTH_UUID_128_BIT_LENGTH, curPos, advDataLength, advData, serviceDatas);
+          this.parseServiceData(BLUETOOTH_UUID_128_BIT_LENGTH, curPos, advDataLength, advData, serviceData);
           break;
         case BLE_ADV_TYPE_MANUFACTURER_SPECIFIC_DATA:
-          this.parseManufactureData(curPos, advDataLength, advData, manufactureSpecificDatas);
+          this.parseManufactureData(curPos, advDataLength, advData, manufactureSpecificData);
           break;
         default:
           break;
@@ -496,8 +500,8 @@ export class BleScanManager {
     console.info(TAG, 'localName: ' + localName);
     console.info(TAG, 'serviceUuids: ' + JSON.stringify(serviceUuids));
     console.info(TAG, 'serviceSolicitationUuids: ' + JSON.stringify(serviceSolicitationUuids));
-    console.info(TAG, 'manufactureSpecificDatas: ' + JSON.stringify(manufactureSpecificDatas));
-    console.info(TAG, 'serviceDatas: ' + JSON.stringify(serviceDatas));
+    console.info(TAG, 'manufactureSpecificData: ' + JSON.stringify(manufactureSpecificData));
+    console.info(TAG, 'serviceData: ' + JSON.stringify(serviceData));
   }
 
   private parseServiceUuid(uuidLength: number, curPos: number, advDataLength: number,
@@ -543,17 +547,17 @@ export class BleScanManager {
   }
 
   private parseServiceData(uuidLength: number, curPos: number, advDataLength: number,
-    advData: Uint8Array, serviceDatas: Record<number, Uint8Array>) {
+    advData: Uint8Array, serviceData: Record<number, Uint8Array>) {
     let uuid: Uint8Array = advData.slice(curPos, curPos + uuidLength);
     let data: Uint8Array = advData.slice(curPos + uuidLength, curPos + advDataLength);
-    serviceDatas[this.getUuidFromUint8Array(uuidLength, uuid)] = data;
+    serviceData[this.getUuidFromUint8Array(uuidLength, uuid)] = data;
   }
 
   private parseManufactureData(curPos: number, advDataLength: number,
-    advData: Uint8Array, manufactureSpecificDatas: Record<number, Uint8Array>) {
+    advData: Uint8Array, manufactureSpecificData: Record<number, Uint8Array>) {
     let manufactureId: number = (advData[curPos + 1] << 8) + advData[curPos];
     let data: Uint8Array = advData.slice(curPos + BLUETOOTH_MANUFACTURE_ID_LENGTH, curPos + advDataLength);
-    manufactureSpecificDatas[manufactureId] = data;
+    manufactureSpecificData[manufactureId] = data;
   }
 
   // 2. 开启扫描

@@ -52,7 +52,7 @@
 
 | 名称     | 参数                              | 描述             |
 | ------ | ------------------------------- | -------------- |
-| change | {&nbsp;checked：isChecked&nbsp;} | 组件选中状态发生变化时触发。 |
+| change | {&nbsp;checked: isChecked&nbsp;} | 组件选中状态发生变化时触发。 |
 
 
 ## 方法
@@ -135,4 +135,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001173164927](figures/zh-cn_image_0000001173164927.png)
+![toggle](figures/toggle.png)

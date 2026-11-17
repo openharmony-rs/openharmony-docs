@@ -812,7 +812,7 @@ promptAction.showDialog({
   })
 ```
 
-![en-us_image_0002](figures/en-us_image_0002.gif)
+![en-us_image_0002](figures/showDialog-example01.gif)
 
 ## promptAction.showDialog<sup>(deprecated)</sup>
 
@@ -880,7 +880,7 @@ try {
 };
 ```
 
-![en-us_image_0004](figures/en-us_image_0004.gif)
+![en-us_image_0004](figures/showDialog-example02.gif)
 
 When the **showInSubWindow** attribute is set to **true**, the toast can be displayed outside the window.
 
@@ -918,7 +918,7 @@ try {
 };
 ```
 
-![en-us_image_0002_showinsubwindow](figures/en-us_image_0002_showinsubwindow.jpg)
+![en-us_image_0002_showinsubwindow](figures/showDialog-showinsubwindow.jpg)
 
 This example demonstrates how to use the **onDidAppear**, **onDidDisappear**, **onWillAppear**, and **onWillDisappear** properties of [ShowDialogOptions](#showdialogoptions) to implement the dialog box lifecycle callbacks, supported since API version 19.
 
@@ -981,7 +981,7 @@ struct DialogExample {
 }
 ```
 
-![en-us_image_0002_lifecycle](figures/en-us_image_0002_lifecycle.gif)
+![en-us_image_0002_lifecycle](figures/showDialog-lifecycle.gif)
 
 
 
@@ -1050,7 +1050,7 @@ try {
 };
 ```
 
-![en-us_image_0005](figures/en-us_image_0005.gif)
+![en-us_image_0005](figures/showActionMenu-example01.gif)
 
 **Example 2**
 
@@ -1125,7 +1125,7 @@ struct Index {
 }
 ```
 
-![en-us_image_0008](figures/en-us_image_0008.gif)
+![en-us_image_0008](figures/showActionMenu-example03.gif)
 
 ## promptAction.showActionMenu<sup>(deprecated)</sup>
 
@@ -1190,7 +1190,7 @@ promptAction.showActionMenu({
   })
 ```
 
-![en-us_image_0006](figures/en-us_image_0006.gif)
+![en-us_image_0006](figures/showActionMenu-example02.gif)
 
 ## promptAction.openCustomDialog<sup>(deprecated)</sup>
 
@@ -1389,7 +1389,7 @@ struct Index {
 }
 ```
 
-![en-us_image_0007](figures/en-us_image_0007.gif)
+![en-us_image_0007](figures/CustomDialog-example01.gif)
 
 This example shows how to implement a dialog box on a page.
 

@@ -1,4 +1,4 @@
-# 消息摘要计算介绍及算法规格
+# 消息摘要计算
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -34,3 +34,5 @@
 | HASH | SHA3-256 | 32 | 22+ |
 | HASH | SHA3-384 | 48 | 22+ |
 | HASH | SHA3-512 | 64 | 22+ |
+| XOF | SHAKE128 | 32~65536（可变长度） | 26.1.0+ |
+| XOF | SHAKE256 | 64~65536（可变长度） | 26.1.0+ |

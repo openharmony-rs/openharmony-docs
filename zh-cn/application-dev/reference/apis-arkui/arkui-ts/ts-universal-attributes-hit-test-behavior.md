@@ -1,7 +1,7 @@
 # 触摸测试控制
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -26,9 +26,9 @@ ArkTS-Sta: hitTestBehavior(value: HitTestMode | undefined): this
 
 设置组件的触摸测试类型。如果组件不设置hitTestBehavior，其默认触摸测试类型为HitTestMode.Default。
 
-**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,7 +92,7 @@ struct HitTestBehaviorExample {
 
 ### 示例2（触摸测试类型为BLOCK_HIERARCHY时的触摸测试效果）
 
-从API version 20开始，该示例演示了设置触摸测试类型为BLOCK_HIERARCHY时的触摸测试效果。
+从API version 20开始，该示例演示了设置触摸测试模式为BLOCK_HIERARCHY时的触摸测试效果。
 
 ```ts
 // xxx.ets
@@ -169,7 +169,7 @@ struct BlockHierarchy {
 
 ### 示例3（触摸测试类型为BLOCK_DESCENDANTS时的触摸测试效果）
 
-从API version 20开始，该示例演示了设置触摸测试类型为BLOCK_DESCENDANTS时的触摸测试效果。
+从API version 20开始，该示例演示了设置触摸测试模式为BLOCK_DESCENDANTS时的触摸测试效果。
 
 ```ts
 // xxx.ets
@@ -232,7 +232,7 @@ struct BlockDescendants {
 @Entry
 @Component
 struct Index {
-  @State @Watch('onModeChange') mode: number = HitTestMode.None;
+  @State @Watch('onModeChange') mode: HitTestMode = HitTestMode.None;
   @State modeStr: string = 'None';
 
   onModeChange() {

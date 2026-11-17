@@ -1,7 +1,7 @@
 # 点光源设置 (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -13,6 +13,8 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - 只有[Image](./ts-basic-components-image.md)、[Column](./ts-container-column.md)、[Flex](./ts-container-flex.md)、[Row](./ts-container-row.md)、[Stack](./ts-container-stack.md)支持设置点光源。
 
@@ -51,7 +53,7 @@
 | positionX           | [Dimension](ts-types.md#dimension10)       | 否 | 否   | 光源相对于当前组件的X坐标。                              |
 | positionY           | [Dimension](ts-types.md#dimension10)       | 否 | 否   | 光源相对于当前组件的Y坐标。                              |
 | positionZ           | [Dimension](ts-types.md#dimension10)       | 否 | 否   | 光源高度。光源越高，照射范围越大。                       |
-| intensity           | number                                     | 否 | 否   | 光源强度，建议取值范围0-1。当光源强度为0时，光源不发光。 |
+| intensity           | number                                     | 否 | 否   | 光源强度，取值范围为[0, +∞)，超出取值范围时转换为默认值0。当光源强度为0时，光源不发光。 |
 | color<sup>12+</sup> | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 光源颜色。<br/>默认值：Color.White                       |
 
 ## 示例

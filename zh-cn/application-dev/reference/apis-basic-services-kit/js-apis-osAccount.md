@@ -4,7 +4,7 @@
 <!--Subsystem: Account-->
 <!--Owner: @steven-q-->
 <!--Designer: @JiDong-CS1-->
-<!--Tester: @zhaimengchao-->
+<!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
 
 本模块提供管理系统账号的基础能力，包括系统账号的添加、删除、查询、设置、订阅、启动等功能。
@@ -67,7 +67,7 @@ isDomainAccountSupported(): Promise&lt;boolean&gt;
 **返回值：**
 
 | 类型                   | 说明                                                        |
-| :--------------------- | :--------------------------------------------------------- |
+| --------------------- | --------------------------------------------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示支持域账号；返回false表示不支持。|
 
 **错误码：**
@@ -153,11 +153,10 @@ checkMultiOsAccountEnabled(callback: AsyncCallback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -217,7 +216,7 @@ checkMultiOsAccountEnabled(): Promise&lt;boolean&gt;
 **返回值：**
 
 | 类型                   | 说明                                                        |
-| :--------------------- | :--------------------------------------------------------- |
+| --------------------- | --------------------------------------------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示支持多系统账号；返回false表示不支持。 |
 
 **错误码：**
@@ -275,7 +274,7 @@ checkOsAccountActivated(localId: number, callback: AsyncCallback&lt;boolean&gt;)
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -298,8 +297,7 @@ checkOsAccountActivated(localId: number, callback: AsyncCallback&lt;boolean&gt;)
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -312,6 +310,7 @@ checkOsAccountActivated(localId: number, callback: AsyncCallback&lt;boolean&gt;)
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   try {
     accountManager.checkOsAccountActivated(localId, (err: BusinessError, isActivated: boolean) => {
@@ -335,7 +334,7 @@ checkOsAccountActivated(localId: number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -363,8 +362,7 @@ checkOsAccountActivated(localId: number): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -377,6 +375,7 @@ checkOsAccountActivated(localId: number): Promise&lt;boolean&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   try {
     accountManager.checkOsAccountActivated(localId).then((isActivated: boolean) => {
@@ -406,7 +405,7 @@ isOsAccountConstraintEnabled(constraint: string): Promise&lt;boolean&gt;
 
 | 参数名     | 类型   | 必填 | 说明                                |
 | ---------- | ------ | ---- | ---------------------------------- |
-| constraint | string | 是   | 指定的[约束](#系统账号约束列表)名称。 |
+| constraint | string | 是   | 指定的[约束](appendix-osAccount-constraints.md)名称。  |
 
 **返回值：**
 
@@ -416,11 +415,10 @@ isOsAccountConstraintEnabled(constraint: string): Promise&lt;boolean&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -474,7 +472,7 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string, callback: A
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -489,7 +487,7 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string, callback: A
 | 参数名     | 类型                         | 必填 | 说明                                                               |
 | ---------- | ---------------------------- | ---- | ----------------------------------------------------------------- |
 | localId    | number                       | 是   | 系统账号ID。                                 |
-| constraint | string                       | 是   | 指定的[约束](#系统账号约束列表)名称。                                |
+| constraint | string                       | 是   | 指定的[约束](appendix-osAccount-constraints.md)名称。                                |
 | callback   | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
 
 **错误码：**
@@ -498,15 +496,14 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string, callback: A
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or constraint.    |
 | 12300003 | Account not found. |
 
 **示例：**
 
-判断ID为100的系统账号是否有禁止使用Wi-Fi的约束。
+判断当前系统账号是否有禁止使用Wi-Fi的约束。
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -536,7 +533,7 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -551,7 +548,7 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt
 | 参数名     | 类型   | 必填 | 说明                                |
 | ---------- | ------ | ---- | ---------------------------------- |
 | localId    | number | 是   | 系统账号ID。  |
-| constraint | string | 是   | 指定的[约束](#系统账号约束列表)名称。 |
+| constraint | string | 是   | 指定的[约束](appendix-osAccount-constraints.md)名称。 |
 
 **返回值：**
 
@@ -565,8 +562,7 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId or constraint.    |
 | 12300003 | Account not found. |
@@ -579,6 +575,7 @@ checkOsAccountConstraintEnabled(localId: number, constraint: string): Promise&lt
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   try {
@@ -613,11 +610,10 @@ checkOsAccountTestable(callback: AsyncCallback&lt;boolean&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -731,7 +727,7 @@ ArkTS-Sta示例：
 
 isOsAccountUnlocked(): Promise&lt;boolean&gt;
 
-检查当前系统账号是否已认证解锁。使用Promise异步回调。
+检查当前系统账号是否已解锁。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -743,7 +739,7 @@ isOsAccountUnlocked(): Promise&lt;boolean&gt;
 
 | 类型                   | 说明                                                                      |
 | ---------------------- | ------------------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示当前账号已解锁；返回false表示当前账号未解锁。 |
 
 **错误码：**
 
@@ -801,7 +797,7 @@ checkOsAccountVerified(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。建议使用[isOsAccountUnlocked](#isosaccountunlocked11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[isOsAccountUnlocked](#isosaccountunlocked11)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -851,7 +847,7 @@ checkOsAccountVerified(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。建议使用[isOsAccountUnlocked](#isosaccountunlocked11)替代。
+> 从API version 9开始支持，从API version 11开始废弃，建议使用[isOsAccountUnlocked](#isosaccountunlocked11)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -899,7 +895,7 @@ checkOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;):
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -914,7 +910,7 @@ checkOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;):
 | 参数名   | 类型                         | 必填 | 说明                                                            |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------- |
 | localId  | number                       | 是   | 系统账号ID。                              |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示当前账号已认证解锁；返回false表示当前账号未认证解锁。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示指定账号已认证解锁；返回false表示指定账号未认证解锁。 |
 
 **错误码：**
 
@@ -922,8 +918,7 @@ checkOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;):
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -934,6 +929,7 @@ checkOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;):
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   try {
     accountManager.checkOsAccountVerified(localId, (err: BusinessError, isVerified: boolean) => {
@@ -957,7 +953,7 @@ checkOsAccountVerified(localId: number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -985,8 +981,7 @@ checkOsAccountVerified(localId: number): Promise&lt;boolean&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -997,6 +992,7 @@ checkOsAccountVerified(localId: number): Promise&lt;boolean&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   try {
     accountManager.checkOsAccountVerified(localId).then((isVerified: boolean) => {
@@ -1038,8 +1034,7 @@ ArkTS-Sta: getOsAccountCount(callback: AsyncCallback&lt;int&gt;): void
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1112,7 +1107,7 @@ ArkTS-Sta: getOsAccountCount(): Promise&lt;int&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1177,11 +1172,10 @@ ArkTS-Sta: getOsAccountLocalId(callback: AsyncCallback&lt;int&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1317,11 +1311,10 @@ ArkTS-Sta: getOsAccountLocalIdForUid(uid: int, callback: AsyncCallback&lt;int&gt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息         |
 | -------- | --------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid uid.    |
 
@@ -1335,13 +1328,15 @@ ArkTS-Dyn示例：
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // uid为进程uid，请通过应用信息获取
   let uid: number = 12345678;
   try {
     accountManager.getOsAccountLocalIdForUid(uid, (err: BusinessError, localId: number) => {
       if (err) {
         console.error(`getOsAccountLocalIdForUid failed, code is ${err.code}, message is ${err.message}`);
+      } else {
+        console.info('getOsAccountLocalIdForUid successfully, localId: ' + localId);
       }
-      console.info('getOsAccountLocalIdForUid successfully, localId: ' + localId);
     });
   } catch (e) {
     const err = e as BusinessError;
@@ -1398,11 +1393,10 @@ ArkTS-Sta: getOsAccountLocalIdForUid(uid: int): Promise&lt;int&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid uid. |
 
@@ -1416,6 +1410,7 @@ ArkTS-Dyn示例：
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // uid为进程uid，请通过应用信息获取
   let uid: number = 12345678;
   try {
     accountManager.getOsAccountLocalIdForUid(uid).then((localId: number) => {
@@ -1478,11 +1473,10 @@ ArkTS-Sta: getOsAccountLocalIdForUidSync(uid: int): int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300002 | Invalid uid. |
 
 **示例：**
@@ -1494,6 +1488,7 @@ ArkTS-Dyn示例：
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // uid为进程uid，请通过应用信息获取
   let uid: number = 12345678;
   try {
     let localId : number = accountManager.getOsAccountLocalIdForUidSync(uid);
@@ -1546,10 +1541,10 @@ ArkTS-Sta: getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo, callback:
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainInfo. |
+| 12300003 | Domain account not found. |
 
 **示例：**
 
@@ -1620,7 +1615,7 @@ ArkTS-Sta: getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise&
 **返回值：**
 
 | 类型                  | 说明                                    |
-| :-------------------- | :------------------------------------- |
+| -------------------- | ------------------------------------- |
 | ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回域账号关联的系统账号ID。 |
 
 **错误码：**
@@ -1629,10 +1624,10 @@ ArkTS-Sta: getOsAccountLocalIdForDomain(domainInfo: DomainAccountInfo): Promise&
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid domainInfo. |
+| 12300003 | Domain account not found. |
 
 **示例：**
 
@@ -1683,7 +1678,7 @@ getOsAccountConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;str
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1698,7 +1693,7 @@ getOsAccountConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;str
 | 参数名   | 类型                                     | 必填 | 说明                                                                                           |
 | -------- | ---------------------------------------- | ---- | -------------------------------------------------------------------------------------------- |
 | localId  | number                                   | 是   | 系统账号ID。                                                                                  |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数，如果获取成功，err为null，data为该系统账号的全部[约束](#系统账号约束列表)；否则为错误对象。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数，如果获取成功，err为null，data为该系统账号的全部[约束](appendix-osAccount-constraints.md)；否则为错误对象。 |
 
 **错误码：**
 
@@ -1706,8 +1701,7 @@ getOsAccountConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;str
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -1720,6 +1714,7 @@ getOsAccountConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;str
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   try {
     accountManager.getOsAccountConstraints(localId, (err: BusinessError, constraints: string[]) => {
@@ -1743,7 +1738,7 @@ getOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1763,7 +1758,7 @@ getOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 
 | 类型                               | 说明                                                       |
 | ---------------------------------- | ---------------------------------------------------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回指定系统账号的全部[约束](#系统账号约束列表)。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回指定系统账号的全部[约束](appendix-osAccount-constraints.md)。 |
 
 **错误码：**
 
@@ -1771,8 +1766,7 @@ getOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -1785,6 +1779,7 @@ getOsAccountConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   try {
     accountManager.getOsAccountConstraints(localId).then((constraints: string[]) => {
@@ -1820,11 +1815,10 @@ ArkTS-Sta: getActivatedOsAccountLocalIds(callback: AsyncCallback&lt;Array&lt;int
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -1892,7 +1886,7 @@ ArkTS-Sta: getActivatedOsAccountLocalIds(): Promise&lt;Array&lt;int&gt;&gt;
 **返回值：**
 
 | 类型                               | 说明                                               |
-| :--------------------------------- | :------------------------------------------------ |
+| --------------------------------- | ------------------------------------------------ |
 | ArkTS-Dyn: Promise&lt;Array&lt;number&gt;&gt;<br/> ArkTS-Sta: Promise&lt;Array&lt;int&gt;&gt; | Promise对象，返回当前处于激活状态的系统账号的ID列表。 |
 
 **错误码：**
@@ -1950,7 +1944,7 @@ getCurrentOsAccount(callback: AsyncCallback&lt;OsAccountInfo&gt;): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -1972,8 +1966,7 @@ getCurrentOsAccount(callback: AsyncCallback&lt;OsAccountInfo&gt;): void
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -2004,7 +1997,7 @@ getCurrentOsAccount(): Promise&lt;OsAccountInfo&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。替代方法仅向系统应用开放。
+> 从API version 9开始支持，从API version 11开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2026,7 +2019,7 @@ getCurrentOsAccount(): Promise&lt;OsAccountInfo&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -2067,11 +2060,10 @@ getOsAccountType(callback: AsyncCallback&lt;OsAccountType&gt;): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -2209,8 +2201,7 @@ queryDistributedVirtualDeviceId(callback: AsyncCallback&lt;string&gt;): void
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -2281,7 +2272,7 @@ queryDistributedVirtualDeviceId(): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -2346,11 +2337,10 @@ ArkTS-Sta: getOsAccountLocalIdForSerialNumber(serialNumber: long, callback: Asyn
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid serialNumber. |
 | 12300003 | The account indicated by serialNumber does not exist. |
@@ -2365,6 +2355,7 @@ ArkTS-Dyn示例：
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // serialNumber为账号SN码，可通过getSerialNumberForOsAccountLocalId接口获取
   let serialNumber: number = 12345;
   try {
     accountManager.getOsAccountLocalIdForSerialNumber(serialNumber, (err: BusinessError, localId: number)=>{
@@ -2429,11 +2420,10 @@ ArkTS-Sta: getOsAccountLocalIdForSerialNumber(serialNumber: long): Promise&lt;in
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息               |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid serialNumber. |
 | 12300003 | The account indicated by serialNumber does not exist. |
@@ -2448,6 +2438,7 @@ ArkTS-Dyn示例：
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // serialNumber为账号SN码，可通过getSerialNumberForOsAccountLocalId接口获取
   let serialNumber: number = 12345;
   try {
     accountManager.getOsAccountLocalIdForSerialNumber(serialNumber).then((localId: number) => {
@@ -2504,11 +2495,10 @@ ArkTS-Sta: getSerialNumberForOsAccountLocalId(localId: int, callback: AsyncCallb
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -2523,6 +2513,7 @@ ArkTS-Dyn示例：
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   try {
     accountManager.getSerialNumberForOsAccountLocalId(localId, (err: BusinessError, serialNumber: number)=>{
@@ -2582,16 +2573,15 @@ ArkTS-Sta: getSerialNumberForOsAccountLocalId(localId: int): Promise&lt;long&gt;
 **返回值：**
 
 | 类型                  | 说明                                    |
-| :-------------------- | :------------------------------------- |
+| -------------------- | ------------------------------------- |
 | ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回与该系统账号关联的SN码。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid localId.    |
 | 12300003 | Account not found. |
@@ -2606,6 +2596,7 @@ ArkTS-Dyn示例：
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   try {
     accountManager.getSerialNumberForOsAccountLocalId(localId).then((serialNumber: number) => {
@@ -2647,7 +2638,7 @@ isMultiOsAccountEnable(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[checkMultiOsAccountEnabled](#checkmultiosaccountenabled9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[checkMultiOsAccountEnabled](#checkmultiosaccountenabled9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2684,7 +2675,7 @@ isMultiOsAccountEnable(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[checkMultiOsAccountEnabled](#checkmultiosaccountenabled9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[checkMultiOsAccountEnabled](#checkmultiosaccountenabled9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2695,7 +2686,7 @@ isMultiOsAccountEnable(): Promise&lt;boolean&gt;
 **返回值：**
 
 | 类型                   | 说明                                                       |
-| :--------------------- | :--------------------------------------------------------- |
+| --------------------- | --------------------------------------------------------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示支持多系统账号；返回false表示不支持。 |
 
 **示例：**
@@ -2719,7 +2710,7 @@ isOsAccountActived(localId: number, callback: AsyncCallback&lt;boolean&gt;): voi
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2744,6 +2735,7 @@ isOsAccountActived(localId: number, callback: AsyncCallback&lt;boolean&gt;): voi
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   accountManager.isOsAccountActived(localId, (err: BusinessError, isActived: boolean) => {
     if (err) {
@@ -2762,7 +2754,7 @@ isOsAccountActived(localId: number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2792,6 +2784,7 @@ isOsAccountActived(localId: number): Promise&lt;boolean&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   accountManager.isOsAccountActived(localId).then((isActived: boolean) => {
     console.info('isOsAccountActived successfully, isActived: ' + isActived);
@@ -2808,7 +2801,7 @@ isOsAccountConstraintEnable(localId: number, constraint: string, callback: Async
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2823,7 +2816,7 @@ isOsAccountConstraintEnable(localId: number, constraint: string, callback: Async
 | 参数名     | 类型                         | 必填 | 说明                                                                |
 | ---------- | ---------------------------- | ---- | ----------------------------------------------------------------- |
 | localId    | number                       | 是   | 系统账号ID。                                 |
-| constraint | string                       | 是   | 指定的[约束](#系统账号约束列表)名称。                                |
+| constraint | string                       | 是   | 指定的[约束](appendix-osAccount-constraints.md)名称。                                |
 | callback   | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示已使能指定的约束；返回false表示未使能指定的约束。 |
 
 **示例：**
@@ -2834,6 +2827,7 @@ isOsAccountConstraintEnable(localId: number, constraint: string, callback: Async
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   accountManager.isOsAccountConstraintEnable(localId, constraint, (err: BusinessError, isEnabled: boolean) => {
@@ -2853,7 +2847,7 @@ isOsAccountConstraintEnable(localId: number, constraint: string): Promise&lt;boo
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2868,7 +2862,7 @@ isOsAccountConstraintEnable(localId: number, constraint: string): Promise&lt;boo
 | 参数名     | 类型   | 必填 | 说明                                 |
 | ---------- | ------ | ---- | ---------------------------------- |
 | localId    | number | 是   | 系统账号ID。  |
-| constraint | string | 是   | 指定的[约束](#系统账号约束列表)名称。 |
+| constraint | string | 是   | 指定的[约束](appendix-osAccount-constraints.md)名称。 |
 
 **返回值：**
 
@@ -2884,6 +2878,7 @@ isOsAccountConstraintEnable(localId: number, constraint: string): Promise&lt;boo
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   let constraint: string = 'constraint.wifi';
   accountManager.isOsAccountConstraintEnable(localId, constraint).then((isEnabled: boolean) => {
@@ -2901,7 +2896,7 @@ isTestOsAccount(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[checkOsAccountTestable](#checkosaccounttestable9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[checkOsAccountTestable](#checkosaccounttestable9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2938,7 +2933,7 @@ isTestOsAccount(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[checkOsAccountTestable](#checkosaccounttestable9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[checkOsAccountTestable](#checkosaccounttestable9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2974,7 +2969,7 @@ isOsAccountVerified(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[checkOsAccountVerified](#checkosaccountverifieddeprecated)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[checkOsAccountVerified](#checkosaccountverifieddeprecated)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -2988,7 +2983,7 @@ isOsAccountVerified(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名   | 类型                         | 必填 | 说明                                                            |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示指定账号已验证；返回false表示指定账号未验证。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回true表示当前账号已验证；返回false表示当前账号未验证。 |
 
 **示例：**
 
@@ -3013,7 +3008,7 @@ isOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;): vo
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3036,6 +3031,7 @@ isOsAccountVerified(localId: number, callback: AsyncCallback&lt;boolean&gt;): vo
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   accountManager.isOsAccountVerified(localId, (err: BusinessError, isVerified: boolean) => {
     if (err) {
@@ -3054,7 +3050,7 @@ isOsAccountVerified(localId?: number): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3097,7 +3093,7 @@ getCreatedOsAccountsCount(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountCount](#getosaccountcount9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getOsAccountCount](#getosaccountcount9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3136,7 +3132,7 @@ getCreatedOsAccountsCount(): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountCount](#getosaccountcount9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getOsAccountCount](#getosaccountcount9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3173,7 +3169,7 @@ getOsAccountLocalIdFromProcess(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountLocalId](#getosaccountlocalid9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getOsAccountLocalId](#getosaccountlocalid9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3210,7 +3206,7 @@ getOsAccountLocalIdFromProcess(): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountLocalId](#getosaccountlocalid9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getOsAccountLocalId](#getosaccountlocalid9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3221,7 +3217,7 @@ getOsAccountLocalIdFromProcess(): Promise&lt;number&gt;
 **返回值：**
 
 | 类型                  | 说明                                      |
-| :-------------------- | :--------------------------------------- |
+| -------------------- | --------------------------------------- |
 | Promise&lt;number&gt; | Promise对象，返回当前进程所属的系统账号ID。 |
 
 **示例：**
@@ -3245,7 +3241,7 @@ getOsAccountLocalIdFromUid(uid: number, callback: AsyncCallback&lt;number&gt;): 
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountLocalIdForUid](#getosaccountlocalidforuid9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getOsAccountLocalIdForUid](#getosaccountlocalidforuid9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3286,7 +3282,7 @@ getOsAccountLocalIdFromUid(uid: number): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountLocalIdForUid](#getosaccountlocalidforuid9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getOsAccountLocalIdForUid](#getosaccountlocalidforuid9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3303,7 +3299,7 @@ getOsAccountLocalIdFromUid(uid: number): Promise&lt;number&gt;
 **返回值：**
 
 | 类型                  | 说明                                  |
-| :-------------------- | :----------------------------------- |
+| -------------------- | ----------------------------------- |
 | Promise&lt;number&gt; | Promise对象，返回uid对应的系统账号ID。 |
 
 **示例：**
@@ -3330,7 +3326,7 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo, callback: AsyncCall
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3371,7 +3367,7 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo): Promise&lt;number&
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getOsAccountLocalIdForDomain](#getosaccountlocalidfordomain9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3390,7 +3386,7 @@ getOsAccountLocalIdFromDomain(domainInfo: DomainAccountInfo): Promise&lt;number&
 **返回值：**
 
 | 类型                  | 说明                                    |
-| :-------------------- | :------------------------------------- |
+| -------------------- | ------------------------------------- |
 | Promise&lt;number&gt; | Promise对象，返回域账号关联的系统账号ID。 |
 
 **示例：**
@@ -3415,7 +3411,7 @@ getOsAccountAllConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3430,7 +3426,7 @@ getOsAccountAllConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;
 | 参数名   | 类型                                     | 必填 | 说明                                                                                             |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------------------------------------------- |
 | localId  | number                                   | 是   | 系统账号ID。                                                                                    |
-| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数。如果获取成功，err为null，data为指定系统账号的全部[约束](#系统账号约束列表)；否则为错误对象。 |
+| callback | AsyncCallback&lt;Array&lt;string&gt;&gt; | 是   | 回调函数。如果获取成功，err为null，data为指定系统账号的全部[约束](appendix-osAccount-constraints.md)；否则为错误对象。 |
 
 **示例：**
 
@@ -3440,6 +3436,7 @@ getOsAccountAllConstraints(localId: number, callback: AsyncCallback&lt;Array&lt;
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   accountManager.getOsAccountAllConstraints(localId, (err: BusinessError, constraints: string[])=>{
     if (err) {
@@ -3458,7 +3455,7 @@ getOsAccountAllConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3477,8 +3474,8 @@ getOsAccountAllConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
 **返回值：**
 
 | 类型                               | 说明                                                         |
-| :--------------------------------- | :----------------------------------------------------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回指定系统账号的全部[约束](#系统账号约束列表)。 |
+| --------------------------------- | ----------------------------------------------------------- |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回指定系统账号的全部[约束](appendix-osAccount-constraints.md)。 |
 
 **示例：**
 
@@ -3488,6 +3485,7 @@ getOsAccountAllConstraints(localId: number): Promise&lt;Array&lt;string&gt;&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   accountManager.getOsAccountAllConstraints(localId).then((constraints: string[]) => {
     console.info('getOsAccountAllConstraints, constraints: ' + constraints);
@@ -3504,7 +3502,7 @@ queryActivatedOsAccountIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): 
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3542,7 +3540,7 @@ queryActivatedOsAccountIds(): Promise&lt;Array&lt;number&gt;&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getActivatedOsAccountLocalIds](#getactivatedosaccountlocalids9-1)替代。
 
 查询当前处于激活状态的系统账号的ID列表。使用Promise异步回调。
 
@@ -3579,7 +3577,7 @@ queryCurrentOsAccount(callback: AsyncCallback&lt;OsAccountInfo&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3618,7 +3616,7 @@ queryCurrentOsAccount(): Promise&lt;OsAccountInfo&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。替代方法仅向系统应用开放。
+> 从API version 7开始支持，从API version 9开始废弃，替代方法仅向系统应用开放。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3655,7 +3653,7 @@ getOsAccountTypeFromProcess(callback: AsyncCallback&lt;OsAccountType&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountType](#getosaccounttype9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getOsAccountType](#getosaccounttype9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3692,7 +3690,7 @@ getOsAccountTypeFromProcess(): Promise&lt;OsAccountType&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[getOsAccountType](#getosaccounttype9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[getOsAccountType](#getosaccounttype9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3727,7 +3725,7 @@ getDistributedVirtualDeviceId(callback: AsyncCallback&lt;string&gt;): void
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3766,7 +3764,7 @@ getDistributedVirtualDeviceId(): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃。建议使用[queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid9-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[queryDistributedVirtualDeviceId](#querydistributedvirtualdeviceid9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3803,7 +3801,7 @@ getOsAccountLocalIdBySerialNumber(serialNumber: number, callback: AsyncCallback&
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3844,7 +3842,7 @@ getOsAccountLocalIdBySerialNumber(serialNumber: number): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getOsAccountLocalIdForSerialNumber](#getosaccountlocalidforserialnumber9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3888,7 +3886,7 @@ getSerialNumberByOsAccountLocalId(localId: number, callback: AsyncCallback&lt;nu
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3911,6 +3909,7 @@ getSerialNumberByOsAccountLocalId(localId: number, callback: AsyncCallback&lt;nu
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   accountManager.getSerialNumberByOsAccountLocalId(localId, (err: BusinessError, serialNumber: number)=>{
     if (err) {
@@ -3929,7 +3928,7 @@ getSerialNumberByOsAccountLocalId(localId: number): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃。建议使用[getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid9-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getSerialNumberForOsAccountLocalId](#getserialnumberforosaccountlocalid9-1)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -3957,6 +3956,7 @@ getSerialNumberByOsAccountLocalId(localId: number): Promise&lt;number&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
 
   let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+  // localId为系统账号ID，请通过getOsAccountLocalId接口获取
   let localId: number = 100;
   accountManager.getSerialNumberByOsAccountLocalId(localId).then((serialNumber: number) => {
     console.info('getSerialNumberByOsAccountLocalId serialNumber: ' + serialNumber);
@@ -3980,7 +3980,7 @@ getOsAccountName(): Promise&lt;string&gt;
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;string&gt; | Promise对象，返回调用方所属系统账号的名称。 |
 
 **错误码：**
@@ -4038,15 +4038,15 @@ ArkTS-Sta示例：
  
  根据系统账号的本地ID获取系统账号的名称。使用Promise异步回调。
  
- **模型约束**：此接口仅可在Stage模型下使用。
+ **模型约束：** 此接口仅可在Stage模型下使用。
  
  **需要权限**： ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
  
  **系统能力**： SystemCapability.Account.OsAccount
 
- **ArkTS-Dyn起始版本**：26.0.0
+ **ArkTS-Dyn起始版本：** 26.0.0
  
- **ArkTS-Sta起始版本**：26.0.0
+ **ArkTS-Sta起始版本：** 26.0.0
  
  **参数**：
  
@@ -4062,11 +4062,11 @@ ArkTS-Sta示例：
  
  **错误码：**
  
- 以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+ 以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)。
  
  | 错误码ID | 错误信息                     |
  | -------- | --------------------------- |
- | 201 | Permission denied. |
+ | 201 | Permission verification failed. The application does not have the permission required to call the API. |
  | 12300001 | The system service works abnormally. |
  | 12300003 | Account not found. |
  | 12300008 | Restricted Account. |
@@ -4107,7 +4107,7 @@ ArkTS-Sta: getForegroundOsAccountLocalId(): Promise&lt;int&gt;
 
 | 类型                   | 说明                                                               |
 | ---------------------- | ----------------------------------------------------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;int&gt; | Promise对象。返回前台系统账号的ID。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回前台系统账号的ID。 |
 
 **错误码：**
 
@@ -4182,7 +4182,7 @@ getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;
 
 | 类型                   | 说明                                                               |
 | ---------------------- | ----------------------------------------------------------------- |
-| Promise&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | Promise对象。返回与指定系统账号关联的域账号信息。 |
+| Promise&lt;[DomainAccountInfo](#domainaccountinfo8)&gt; | Promise对象，返回与指定系统账号关联的域账号信息。 |
 
 **错误码：**
 
@@ -4190,8 +4190,7 @@ getOsAccountDomainInfo(localId: number): Promise&lt;DomainAccountInfo&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | OS account not found. |
 
@@ -4201,6 +4200,7 @@ import { osAccount } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let accountManager: osAccount.AccountManager = osAccount.getAccountManager();
+// localId为系统账号ID，请通过getOsAccountLocalId接口获取
 let localId: number = 100;
 accountManager.getOsAccountDomainInfo(localId).then((domainAccountInfo: osAccount.DomainAccountInfo) => {
   if (domainAccountInfo === null) {
@@ -4248,7 +4248,7 @@ getOsAccountDomainInfo(localId: int): Promise&lt;DomainAccountInfo|null&gt;
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 12300001 | The system service works abnormally. |
 | 12300003 | OS account not found. |
 
@@ -4293,7 +4293,7 @@ ArkTS-Sta: getOsAccountLocalIds(): Promise&lt;int[]&gt;
 **返回值：**
 
 | 类型                               | 说明                                   |
-| :--------------------------------- | :------------------------------------- |
+| --------------------------------- | ------------------------------------- |
 | ArkTS-Dyn: Promise&lt;number[]&gt;<br/>ArkTS-Sta: Promise&lt;int[]&gt; | Promise对象，返回所有非系统级的操作系统账号的本地ID。 |
 
 **错误码：**
@@ -4302,7 +4302,7 @@ ArkTS-Sta: getOsAccountLocalIds(): Promise&lt;int[]&gt;
 
 | 错误码ID | 错误信息             |
 | -------- | ------------------- |
-| 201 | Permission denied.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -4348,11 +4348,11 @@ try {
 
 ### updateAccountInfo<sup>18+</sup>
 
-updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccountInfo): Promise&lt;void&gt;
+static updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccountInfo): Promise&lt;void&gt;
 
 修改指定域账号信息。使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS或ohos.permission.MANAGE_DOMAIN_ACCOUNTS
+**需要权限：** ohos.permission.MANAGE_LOCAL_ACCOUNTS（仅系统应用可申请）或ohos.permission.MANAGE_DOMAIN_ACCOUNTS
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -4370,8 +4370,8 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| ------------------------ | ----------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4379,8 +4379,8 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | The new account info is invalid. |
 | 12300003 | The old account not found. |
@@ -4442,7 +4442,7 @@ ArkTS-Sta示例：
 | localId                        | ArkTS-Dyn: number<br>ArkTS-Sta: int                         | 否 | 否  | 系统账号ID。  <br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23  |
 | localName                      | string                                                       | 否 | 否  | 系统账号名称。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23  |
 | type                           | [OsAccountType](#osaccounttype)                              | 否 | 否  | 系统账号类型。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23  |
-| constraints                    | Array&lt;string&gt;                                          | 否 | 否  | 系统账号[约束](#系统账号约束列表)，默认为空。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23|
+| constraints                    | Array&lt;string&gt;                                          | 否 | 否  | 系统账号[约束](appendix-osAccount-constraints.md)，默认为空。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23|
 | isVerified<sup>(deprecated)</sup> | boolean                                                   | 否 | 否  | 账号是否验证。true表示指定账号已验证；false表示指定账号未验证。<br>**说明**：从API version 7开始支持，从API version 11开始废弃，建议使用isUnlocked。<br/>**ArkTS模式：** 仅适用于ArkTS-Dyn。 <br/>**ArkTS-Dyn起始版本：** 7           |
 | isUnlocked<sup>11+</sup>      | boolean                                                       | 否 | 否  | 账号是否已解锁（EL2级别目录是否解密）。true表示指定账号已解锁；false表示指定账号未解锁。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23                      |
 | photo<sup>8+</sup>             | string                                                       | 否 | 否  | 系统账号头像，默认为空。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
@@ -4463,10 +4463,10 @@ ArkTS-Sta示例：
 
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
-| domain      | string | 否 | 否  | 域名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
-| accountName | string | 否 | 否  | 域账号名。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| domain      | string | 否 | 否  | 域名。最大长度为128个字节。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23     |
+| accountName | string | 否 | 否  | 域账号名。最大长度为256个字节。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
 | serverConfigId<sup>18+</sup> | string | 否 | 是  | 域账号配置ID，默认为空字符串。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
-| additionalInfo | ArkTS-Dyn: Record<string, Object><br/>ArkTS-Sta: Record<string, RecordData> | 否 | 是 | 域账号附加信息。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 <br/>**模型约束**：此接口仅可在Stage模型下使用。 |
+| additionalInfo | ArkTS-Dyn: Record<string, Object><br/>ArkTS-Sta: Record<string, RecordData> | 否 | 是 | 域账号附加信息，默认为空。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## DomainServerConfig<sup>18+</sup>
 
@@ -4490,30 +4490,30 @@ ArkTS-Sta示例：
 
 ### addServerConfig<sup>18+</sup>
 
-ArkTS-Dyn: static addServerConfig(parameters: Record&lt;string, Object&gt;): Promise&lt;DomainServerConfig&gt;
-
-ArkTS-Sta: static addServerConfig(parameters: Record&lt;string, RecordData&gt;): Promise&lt;DomainServerConfig&gt;
+static addServerConfig(parameters: Record&lt;string, Object&gt;): Promise&lt;DomainServerConfig&gt;
 
 添加域服务器配置。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[addServerConfig](#addserverconfig23)。
+
+**需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 23
-
-**需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
-
 **参数：**
 
 | 参数名    | 类型                     | 必填 | 说明                      |
 | ----------| ----------------------- | --- | -------------------------- |
-| parameters   | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record&lt;string, RecordData&gt;   | 是  | 表示域服务器配置参数。 |
+| parameters   | Record&lt;string, Object&gt;   | 是  | 表示域服务器配置参数，用于配置域服务器的连接信息。参数对象包含服务器地址、端口等配置项。 |
 
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise对象，返回新添加的域服务器配置。 |
 
 **错误码：**
@@ -4522,8 +4522,8 @@ ArkTS-Sta: static addServerConfig(parameters: Record&lt;string, RecordData&gt;):
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid server config parameters. |
 | 12300211 | Server unreachable. |
@@ -4532,7 +4532,6 @@ ArkTS-Sta: static addServerConfig(parameters: Record&lt;string, RecordData&gt;):
 
 **示例：**
 
-ArkTS-Dyn示例：
   ```ts
   import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -4549,7 +4548,50 @@ ArkTS-Dyn示例：
   });
   ```
 
-ArkTS-Sta示例：
+### addServerConfig<sup>23+</sup>
+
+static addServerConfig(parameters: Record&lt;string, RecordData&gt;): Promise&lt;DomainServerConfig&gt;
+
+添加域服务器配置。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[addServerConfig](#addserverconfig18)。
+
+**需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                     | 必填 | 说明                      |
+| ----------| ----------------------- | --- | -------------------------- |
+| parameters   | Record&lt;string, RecordData&gt;   | 是  | 表示域服务器配置参数，用于配置域服务器的连接信息。参数对象包含服务器地址、端口等配置项。 |
+
+**返回值：**
+
+| 类型                      | 说明                     |
+| ------------------------ | ----------------------- |
+| Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise对象，返回新添加的域服务器配置。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                     |
+| -------- | --------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid server config parameters. |
+| 12300211 | Server unreachable. |
+| 12300213 | Server config already exists. |
+| 12300215 | The number of server config reaches the upper limit. |
+
+**示例：**
+
   ```ts
   import osAccount from '@ohos.account.osAccount';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -4591,8 +4633,8 @@ static removeServerConfig(configId: string): Promise&lt;void&gt;
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果的Promise对象。 |
+| ------------------------ | ----------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4600,8 +4642,8 @@ static removeServerConfig(configId: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300212 | Server config not found. |
 | 12300214 | Server config has been associated with an account. |
@@ -4650,31 +4692,31 @@ ArkTS-Sta示例：
 
 ### updateServerConfig<sup>18+</sup>
 
-ArkTS-Dyn: static updateServerConfig(configId: string, parameters: Record&lt;string, Object&gt;): Promise&lt;DomainServerConfig&gt;
-
-ArkTS-Sta: static updateServerConfig(configId: string, parameters: Record&lt;string, RecordData&gt;): Promise&lt;DomainServerConfig&gt;
+static updateServerConfig(configId: string, parameters: Record&lt;string, Object&gt;): Promise&lt;DomainServerConfig&gt;
 
 更新域服务器配置。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[updateServerConfig](#updateserverconfig23)。
+
+**需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
 **系统能力：** SystemCapability.Account.OsAccount
 
 **ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
-**需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
 
 **参数：**
 
 | 参数名    | 类型                     | 必填 | 说明                      |
 | ----------| ----------------------- | --- | -------------------------- |
 | configId   | string  | 是  | 表示服务器配置标识。 |
-| parameters   | ArkTS-Dyn: Record<string, Object><br>ArkTS-Sta: Record&lt;string, RecordData&gt;  | 是  | 表示域服务器配置参数。 |
+| parameters   | Record&lt;string, Object&gt;  | 是  | 表示域服务器配置参数，用于配置域服务器的连接信息。参数对象包含服务器地址、端口等配置项。 |
 
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise对象，返回更新后的域服务器配置。 |
 
 **错误码：**
@@ -4683,8 +4725,8 @@ ArkTS-Sta: static updateServerConfig(configId: string, parameters: Record&lt;str
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300002 | Invalid server config parameters. |
 | 12300211 | Server unreachable. |
@@ -4694,7 +4736,6 @@ ArkTS-Sta: static updateServerConfig(configId: string, parameters: Record&lt;str
 
 **示例：**
 
-ArkTS-Dyn示例：
   ```ts
   import { osAccount } from '@kit.BasicServicesKit';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -4716,7 +4757,52 @@ ArkTS-Dyn示例：
   });
   ```
 
-ArkTS-Sta示例：
+### updateServerConfig<sup>23+</sup>
+
+static updateServerConfig(configId: string, parameters: Record&lt;string, RecordData&gt;): Promise&lt;DomainServerConfig&gt;
+
+更新域服务器配置。使用Promise异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[updateServerConfig](#updateserverconfig18)。
+
+**需要权限：** ohos.permission.MANAGE_DOMAIN_ACCOUNT_SERVER_CONFIGS
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                     | 必填 | 说明                      |
+| ----------| ----------------------- | --- | -------------------------- |
+| configId   | string  | 是  | 表示服务器配置标识。 |
+| parameters   | Record&lt;string, RecordData&gt;  | 是  | 表示域服务器配置参数。 |
+
+**返回值：**
+
+| 类型                      | 说明                     |
+| ------------------------ | ----------------------- |
+| Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise对象，返回更新后的域服务器配置。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                     |
+| -------- | --------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid server config parameters. |
+| 12300211 | Server unreachable. |
+| 12300212 | Server config not found. |
+| 12300213 | Server config already exists. |
+| 12300214 | Server config has been associated with an account. |
+
+**示例：**
+
   ```ts
   import osAccount from '@ohos.account.osAccount';
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -4764,7 +4850,7 @@ static getServerConfig(configId: string): Promise&lt;DomainServerConfig&gt;
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise对象，返回获取的域服务器配置。 |
 
 **错误码：**
@@ -4773,8 +4859,8 @@ static getServerConfig(configId: string): Promise&lt;DomainServerConfig&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300212 | Server config not found. |
 
@@ -4844,7 +4930,7 @@ static getAllServerConfigs(): Promise&lt;Array&lt;DomainServerConfig&gt;&gt;
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;Array&lt;[DomainServerConfig](#domainserverconfig18)&gt;&gt; | Promise对象，返回获取的所有域服务器配置。 |
 
 **错误码：**
@@ -4853,8 +4939,8 @@ static getAllServerConfigs(): Promise&lt;Array&lt;DomainServerConfig&gt;&gt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 
 **示例：**
@@ -4929,7 +5015,7 @@ static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise&lt;
 **返回值：**
 
 | 类型                      | 说明                     |
-| :------------------------ | ----------------------- |
+| ------------------------ | ----------------------- |
 | Promise&lt;[DomainServerConfig](#domainserverconfig18)&gt; | Promise对象，返回目标账号的域服务器配置。 |
 
 **错误码：**
@@ -4938,8 +5024,8 @@ static getAccountServerConfig(domainAccountInfo: DomainAccountInfo): Promise&lt;
 
 | 错误码ID | 错误信息                     |
 | -------- | --------------------------- |
-| 201 | Permission denied.|
-| 801 | Capability not supported.|
+| 201 | Permission verification failed. The application does not have the permission required to call the API.|
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
 | 12300001 | The system service works abnormally. |
 | 12300003 | Domain account not found. |
 
@@ -4979,71 +5065,3 @@ ArkTS-Sta示例：
     console.error(`add server configuration failed, code is ${err.code}, message is ${err.message}`);
   });
   ```
-
-## 系统账号约束列表
-
-| 约束                                  | 说明                           |
-| ------------------------------------- | ------------------------------ |
-| constraint.wifi                       | 禁止使用Wi-Fi                  |
-| constraint.wifi.set                   | 禁止配置Wi-Fi                  |
-| constraint.locale.set                 | 禁止配置设备语言               |
-| constraint.app.accounts               | 禁止添加和删除应用账号         |
-| constraint.apps.install               | 禁止安装应用                   |
-| constraint.apps.uninstall             | 禁止卸载应用                   |
-| constraint.location.shared            | 禁止打开位置共享               |
-| constraint.unknown.sources.install    | 禁止安装未知来源的应用         |
-| constraint.global.unknown.app.install | 禁止所有用户安装未知来源的应用 |
-| constraint.bluetooth.set              | 禁止配置蓝牙                   |
-| constraint.bluetooth | 禁止使用蓝牙 |
-| constraint.bluetooth.share | 禁止共享使用蓝牙 |
-| constraint.usb.file.transfer | 禁止通过USB传输文件 |
-| constraint.credentials.set | 禁止配置用户凭据 |
-| constraint.os.account.remove | 禁止删除用户 |
-| constraint.managed.profile.remove | 禁止删除此用户的托管配置文件 |
-| constraint.debug.features.use | 禁止启用或访问调试功能 |
-| constraint.vpn.set | 禁止配置VPN |
-| constraint.date.time.set | 禁止配置日期时间和时区 |
-| constraint.tethering.config | 禁止配置Tethering |
-| constraint.network.reset | 禁止重置网络设置 |
-| constraint.factory.reset | 禁止出厂设置 |
-| constraint.os.account.create | 禁止创建新用户 |
-| constraint.add.managed.profile | 禁止添加托管配置文件 |
-| constraint.apps.verify.disable | 强制应用程序验证 |
-| constraint.cell.broadcasts.set | 禁止配置小区广播 |
-| constraint.mobile.networks.set | 禁止配置移动网络 |
-| constraint.control.apps | 禁止在设置或启动模块中修改应用程序 |
-| constraint.physical.media | 禁止装载物理外部介质 |
-| constraint.microphone | 禁止使用麦克风 |
-| constraint.microphone.unmute | 禁止取消麦克风静音 |
-| constraint.volume.adjust | 禁止调整音量 |
-| constraint.calls.outgoing | 禁止拨打外呼电话 |
-| constraint.sms.use | 禁止发送或接收短信 |
-| constraint.fun | 禁止享受乐趣 |
-| constraint.windows.create | 禁止创建应用程序窗口以外的窗口 |
-| constraint.system.error.dialogs | 禁止显示崩溃或无响应应用程序的系统错误对话框 |
-| constraint.cross.profile.copy.paste | 禁止通过将数据粘贴到其他用户或配置文件来导出剪贴板内容 |
-| constraint.beam.outgoing | 禁止使用NFC从应用程序传送数据 |
-| constraint.wallpaper | 禁止管理壁纸 |
-| constraint.safe.boot | 禁止进入安全引导模式 |
-| constraint.parent.profile.app.linking | 禁止父配置文件中的应用程序处理来自托管配置文件的Web链接 |
-| constraint.audio.record | 禁止录制音频 |
-| constraint.camera.use | 禁止使用摄像机 |
-| constraint.os.account.background.run | 禁止在后台运行 |
-| constraint.data.roam | 禁止漫游通话时使用蜂窝数据 |
-| constraint.os.account.set.icon | 禁止修改用户头像 |
-| constraint.wallpaper.set | 禁止设置壁纸 |
-| constraint.oem.unlock | 禁止启用oem解锁 |
-| constraint.device.unmute | 禁止取消设备静音 |
-| constraint.password.unified | 禁止托管配置文件与主用户进行统一锁屏质询 |
-| constraint.autofill | 禁止使用自动填充服务 |
-| constraint.content.capture | 禁止捕获用户屏幕 |
-| constraint.content.suggestions | 禁止接收内容建议 |
-| constraint.os.account.activate | 禁止前台启动用户 |
-| constraint.location.set | 禁止配置位置服务 |
-| constraint.airplane.mode.set | 禁止飞行模式 |
-| constraint.brightness.set | 禁止配置亮度 |
-| constraint.share.into.profile | 禁止将主要用户的文件/图片/数据共享到托管配置文件中 |
-| constraint.ambient.display | 禁止显示环境 |
-| constraint.screen.timeout.set | 禁止配置屏幕关闭的超时 |
-| constraint.print | 禁止打印 |
-| constraint.private.dns.set | 禁止配置专用DNS |

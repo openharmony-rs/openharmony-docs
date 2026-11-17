@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍使用Node-API接口进行错误处理开发，包括抛出异常、创建Error对象、类型错误和范围错误等，帮助开发者在Node-API模块中管理和响应ArkTS异常。"
+keywords: [Node-API, 错误处理, 异常, napi_throw, Error, TypeError, RangeError, napi_throw_error, 错误管理]
+doctype: guide
+status: active
+---
+
 # 使用Node-API接口进行错误处理开发
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 简介
 
@@ -33,7 +41,7 @@
 | napi_get_and_clear_last_exception | 当你需要获取最近一次出现的异常，并将异常队列清空时，可以使用这个函数。 |
 | napi_is_exception_pending | 当你需要判断是否有未处理的异常时，可以使用这个函数。 |
 | napi_fatal_error | 当遇到严重错误或不可恢复的情况时，可以使用这个函数引发致命错误来立即终止进程。 |
-| napi_fatal_exception | 抛出一个致命异常并终止进程, 同时产生相应的crash日志。|
+| napi_fatal_exception | 抛出一个致命异常并终止进程，同时产生相应的crash日志。|
 
 ## 使用示例
 
@@ -41,7 +49,7 @@ Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程
 
 ### napi_get_last_error_info
 
-用于获取最后一次发生的错误信息，包括错误码、错误消息以及错误进栈信息，即使存在挂起的ArkTS异常，也可以调用此API。
+用于获取最后一次发生的错误信息，包括错误码、错误消息以及错误栈信息，即使存在挂起的ArkTS异常，也可以调用此API。
 
 cpp部分代码
 
@@ -60,7 +68,7 @@ static napi_value GetLastErrorInfo(napi_env env, napi_callback_info info)
     napi_status status = napi_get_value_int32(env, args[0], &value);
     // 接口使用错误，故返回值不为napi_ok
     if (status != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "napi_get_value_int32 return status, status is not equal to napi_ok.");
+        OH_LOG_ERROR(LOG_APP, "napi_get_value_int32 return status, status is not equal to napi_ok.");
     }
     // 调用接口napi_get_last_error_info获取最后一次错误信息
     const napi_extended_error_info *errorInfo;
@@ -117,7 +125,6 @@ static napi_value CreateTypeError(napi_env env, napi_callback_info info)
     napi_create_string_utf8(env, "napi_create_error errorCode", NAPI_AUTO_LENGTH, &errorCode);
     napi_value errorMessage = nullptr;
     napi_create_string_utf8(env, "napi_create_error errorMessage", NAPI_AUTO_LENGTH, &errorMessage);
-    // 调用napi_create_type_error创建一个typeError错误对象
     napi_value error = nullptr;
     napi_create_type_error(env, errorCode, errorMessage, &error);
     return error;
@@ -165,7 +172,6 @@ static napi_value CreateRangeError(napi_env env, napi_callback_info info)
     napi_create_string_utf8(env, "napi_create_error errorCode", NAPI_AUTO_LENGTH, &errorCode);
     napi_value errorMessage = nullptr;
     napi_create_string_utf8(env, "napi_create_error errorMessage", NAPI_AUTO_LENGTH, &errorMessage);
-    // 调用napi_create_range_error创建一个typeError错误对象
     napi_value error = nullptr;
     napi_create_range_error(env, errorCode, errorMessage, &error);
     return error;
@@ -330,7 +336,7 @@ try {
 
 ### napi_throw_business_error
 
-用于抛出一个带文本信息的ArkTS Error，其错误对象的code属性类型为number。[该接口抛出的是一个原生的Error对象，并不是ArkTS的SDK中声明的BusinessError对象。](../reference/native-lib/napi.md#node-api组件扩展的符号列表)
+[napi_throw_business_error](../reference/native-lib/napi.md#napi_throw_business_error)用于抛出一个带文本信息的ArkTS Error，其错误对象的code属性类型为number。该接口抛出的是一个原生的Error对象，并不是ArkTS的SDK中声明的BusinessError对象。
 
 cpp部分代码
 
@@ -347,7 +353,7 @@ static napi_value NapiThrowBusinessError(napi_env env, napi_callback_info info)
 {
     napi_status status = napi_throw_business_error(env, INT_ARG_100, "error message");
     if (status != napi_ok) {
-        OH_LOG_INFO(LOG_APP, "napi_throw_business_error failed :: %{public}d", status);
+        OH_LOG_ERROR(LOG_APP, "napi_throw_business_error failed: %{public}d", status);
     }
     return nullptr;
 }
@@ -627,9 +633,10 @@ ArkTS侧示例代码
 ``` TypeScript
 // napi_get_and_clear_last_exception
 // 这里获取到最后一个未处理的异常
+let exception = testNapi.getAndClearLastException();
 hilog.info(0x0000, 'testTag',
   'Test Node-API napi_get_and_clear_last_exception, error.message: %{public}s',
-  testNapi.getAndClearLastException());
+  exception ? exception.message : '');
 ```
 
 ### napi_is_exception_pending

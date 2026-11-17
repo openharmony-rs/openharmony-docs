@@ -69,6 +69,8 @@ Purgeable Memory 在系统压力较大时优先回收，可以有效缓解内存
 
 ## 约束与限制
 
+<!--RP2--><!--RP2End-->
+
 ### QoS 使用限制
 
 - QoS 接口只能设置当前任务的 QoS 等级，不能设置其他任务的 QoS 等级。
@@ -88,3 +90,5 @@ Purgeable Memory 在系统压力较大时优先回收，可以有效缓解内存
 - [QoS 开发指导](qos-guidelines.md)
 - [Purgeable 内存开发指导](purgeable-memory-guidelines.md)
 - [格物开发指导](gewu-ndk-api-guidelines.md)
+ 
+<!--RP1--><!--RP1End-->

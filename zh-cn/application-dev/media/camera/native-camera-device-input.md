@@ -43,7 +43,7 @@
    // 监听cameraInput错误信息。
    void OnCameraInputError(const Camera_Input* cameraInput, Camera_ErrorCode errorCode)
    {
-      OH_LOG_INFO(LOG_APP, "OnCameraInput errorCode: %{public}d", errorCode);
+      OH_LOG_ERROR(LOG_APP, "OnCameraInput errorCode: %{public}d", errorCode);
    }
 
    CameraInput_Callbacks* GetCameraInputListener(void)
@@ -107,7 +107,7 @@
        // 打开相机。
        ret = OH_CameraInput_Open(cameraInput);
        if (ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_CameraInput_open failed.");
+           OH_LOG_ERROR(LOG_APP, "OH_CameraInput_Open failed.");
            return;
        }
    }

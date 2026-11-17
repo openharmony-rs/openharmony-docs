@@ -1,7 +1,7 @@
 # TapGesture
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -23,9 +23,9 @@ TapGesture(value?: TapGestureParameters)
 
 创建点击手势对象。继承自[GestureInterface\<T>](ts-gesture-common.md#gestureinterfacet11)。
 
-触发点击手势事件的设备类型为键盘或手柄时，事件的[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9)值为Unknown，事件的[SourceType](ts-gesture-settings.md#sourcetype枚举说明8)值为KEY，JOYSTICK。
+触发点击手势事件的设备类型为键盘或手柄时，事件的[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9)值为Unknown；设备类型为键盘时，事件的[SourceType](ts-gesture-settings.md#sourcetype枚举说明8)值为KEY；设备类型为手柄时，事件的[SourceType](ts-gesture-settings.md#sourcetype枚举说明8)值为JOYSTICK。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,7 +37,7 @@ TapGesture(value?: TapGestureParameters)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | [TapGestureParameters](#tapgestureparameters12对象说明) | 否 | 点击手势的相关参数。|
+| value | [TapGestureParameters](#tapgestureparameters12对象说明) | 否 | 点击手势的相关参数。用于配置连续点击次数、触发点击的手指数、点击手势移动阈值等点击识别条件；当需要自定义点击手势识别条件时传入。不传入时使用TapGestureParameters中各参数的默认配置。 |
 
 ## TapGestureParameters<sup>12+</sup>对象说明
 
@@ -47,13 +47,15 @@ TapGesture(value?: TapGestureParameters)
 
 点击手势参数。继承自[BaseHandlerOptions](./ts-gesturehandler.md#basehandleroptions15)。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| count<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 识别的连续点击次数。当设置的值小于1或不设置时，会被转化为默认值。<br/>默认值：1<br/>取值范围：[0, +∞)<br/>**说明：**<br/>1. 当配置多击时，上一次的最后一根手指抬起和下一次的第一根手指按下的超时时间为300毫秒。<br/>2. 当上次点击的位置与当前点击的位置距离超过60vp时，手势识别失败。在多指情况下，点击的位置为所有参与手势响应手指的平均位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23|
-| fingers<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 触发点击的手指数，最小为1指，&nbsp;最大为10指。当设置小于1的值或不设置时，会被转化为默认值。<br/>默认值：1<br/>**说明：**<br/>1. 当配置多指时，第一根手指按下后300毫秒内未有足够的手指数按下，手势识别失败；手指抬起时，抬起后剩余的手指数小于阈值时开始计时，如300ms内未全部抬起则手势识别失败。<br/>2. 实际点击手指数超过配置值，手势识别成功。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| distanceThreshold | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 点击手势移动阈值。当设置的值小于等于0或不设置时，会被转化为默认值。<br/>默认值：2³¹-1<br/>单位：vp<br/>**说明：**<br/>当手指的移动距离超出开发者预设的移动阈值时，点击识别失败。如果初始化为默认阈值时，手指移动超过组件热区范围，点击识别失败。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
+| count<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 识别的连续点击次数。当设置的值小于1或不设置时，会被转化为默认值。<br/>默认值：1<br/>取值范围：[0, +∞)<br/>**说明：**<br/>1. 当配置多击时，上一次的最后一根手指抬起和下一次的第一根手指按下的超时时间为300毫秒。<br/>2. 当上次点击的位置与当前点击的位置距离超过60vp时，手势识别失败。在多指情况下，点击的位置为所有参与手势响应手指的平均位置。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23|
+| fingers<sup>11+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 触发点击的手指数，最小为1指，&nbsp;最大为10指。当设置小于1的值或不设置时，会被转化为默认值。<br/>默认值：1<br/>**说明：**<br/>1. 当配置多指时，第一根手指按下后300毫秒内未有足够的手指数按下，手势识别失败；手指抬起时，抬起后剩余的手指数小于阈值时开始计时，如300ms内未全部抬起则手势识别失败。<br/>2. 实际点击手指数达到或超过配置值，手势识别成功。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| distanceThreshold | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 点击手势移动阈值。当设置的值小于等于0或不设置时，会被转化为默认值。<br/>默认值：2³¹-1<br/>单位：vp<br/>**说明：**<br/>当手指的移动距离超出开发者预设的移动阈值时，点击识别失败。如果初始化为默认阈值时，手指移动超过组件热区范围，点击识别失败。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 
 ## 事件
 
@@ -61,7 +63,7 @@ TapGesture(value?: TapGestureParameters)
 >
 >  组件通过手势事件绑定不同GestureType的手势对象，各手势对象在响应手势操作的事件回调中提供手势相关信息。下面通过TapGesture手势对象的[onAction](#onaction)事件响应点击事件，获取事件相关信息。其余手势对象的事件定义见各个手势对象章节。 若需绑定多种手势，请使用[GestureGroup](ts-combined-gestures.md)。
 >
->  在[GestureEvent](ts-gesture-common.md#gestureevent对象说明)的fingerList元素中，手指索引编号与位置相对应，即fingerList[index]的id为index。对于先按下但未参与当前手势触发的手指，fingerList中对应的位置为空。建议优先使用fingerInfos。
+>  在[GestureEvent](ts-gesture-common.md#gestureevent对象说明)的fingerList元素中，手指索引编号与位置相对应，即fingerList[index]的id为index。对于先按下但未参与当前手势触发的手指，fingerList中对应的位置为undefined。建议优先使用fingerInfos。
 
 ### onAction
 
@@ -69,9 +71,9 @@ ArkTS-Dyn: onAction(event: (event: GestureEvent) => void)
 
 ArkTS-Sta: onAction(event: Callback\<GestureEvent>)
 
-点击手势识别成功回调。
+点击手势识别成功回调。当组件同时绑定双击和单击手势且双击手势先绑定时，单击手势对应的onAction回调会有300ms的延时。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,14 +99,14 @@ ArkTS-Sta: onAction(event: Callback\<GestureEvent>)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于组件左上角的X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于组件左上角的Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| windowX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于窗口的左上角X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| windowY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于窗口的左上角Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| displayX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于屏幕的左上角X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| displayY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于屏幕的左上角Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
-| globalDisplayX<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
-| globalDisplayY<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
+| x | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于组件左上角的X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| y | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于组件左上角的Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| windowX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于窗口的左上角X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| windowY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于窗口的左上角Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| displayX | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于屏幕的左上角X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| displayY | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否 | 相对于屏幕的左上角Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23 |
+| globalDisplayX<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的X坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayY<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 在[全局坐标系](../../../windowmanager/window-terminology.md#global-coordinate-system全局坐标系)中的Y坐标。<br/>取值范围：[0, +∞) <br/>单位：vp <br/> **原子化服务API（仅ArkTS-Dyn）：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 24 |
 
 ### getCurrentLocalPosition
 
@@ -112,9 +114,9 @@ ArkTS-Dyn: getCurrentLocalPosition?(): Coordinate2D
  
 ArkTS-Sta: default getCurrentLocalPosition(): Coordinate2D
 
-获取点击位置相对于当前组件实时位置的左上角坐标。
+获取点击位置相对于当前组件实时位置的左上角坐标。在事件无法提供有效的实时组件坐标时，返回空值，使用前请进行判空处理。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -151,22 +153,22 @@ struct TapGestureExample {
         TapGesture({ count: 2 })
           .onAction((event: GestureEvent) => {
             if (event) {
-              this.value = JSON.stringify(event.fingerList[0])
+              this.value = JSON.stringify(event.fingerList[0]);
             }
           })
-        )
-      Text(this.value)
+        );
+      Text(this.value);
     }
     .height(300)
     .width(300)
     .padding(20)
     .border({ width: 3 })
-    .margin(30)
+    .margin(30);
   }
 }
 ```
 
-![zh-cn_image_0000001174422900](figures/zh-cn_image_0000001174422900.gif)
+![tapGesture1](figures/tapGesture1.gif)
 
 ### 示例2（获取单击手势坐标）
 
@@ -185,18 +187,18 @@ struct TapGestureExample {
           TapGesture({ count: 1, fingers: 1 })
             .onAction((event: GestureEvent | undefined) => {
               if (event) {
-                console.info(`x = ${JSON.stringify(event.tapLocation?.x)}`)
-                console.info(`y = ${JSON.stringify(event.tapLocation?.y)}`)
-                console.info(`windowX = ${JSON.stringify(event.tapLocation?.windowX)}`)
-                console.info(`windowY = ${JSON.stringify(event.tapLocation?.windowY)}`)
-                console.info(`displayX = ${JSON.stringify(event.tapLocation?.displayX)}`)
-                console.info(`displayY = ${JSON.stringify(event.tapLocation?.displayY)}`)
+                console.info(`x = ${JSON.stringify(event.tapLocation?.x)}`);
+                console.info(`y = ${JSON.stringify(event.tapLocation?.y)}`);
+                console.info(`windowX = ${JSON.stringify(event.tapLocation?.windowX)}`);
+                console.info(`windowY = ${JSON.stringify(event.tapLocation?.windowY)}`);
+                console.info(`displayX = ${JSON.stringify(event.tapLocation?.displayX)}`);
+                console.info(`displayY = ${JSON.stringify(event.tapLocation?.displayY)}`);
                 // 从API version 23开始，新增globalDisplayX和globalDisplayY属性。
-                console.info(`globalDisplayX = ${JSON.stringify(event.tapLocation?.globalDisplayX)}`)
-                console.info(`globalDisplayY = ${JSON.stringify(event.tapLocation?.globalDisplayY)}`)
+                console.info(`globalDisplayX = ${JSON.stringify(event.tapLocation?.globalDisplayX)}`);
+                console.info(`globalDisplayY = ${JSON.stringify(event.tapLocation?.globalDisplayY)}`);
               }
             })
-        )
+        );
     }
     .height(200)
     .width(300)
@@ -210,7 +212,7 @@ struct TapGestureExample {
 
 ### 示例3（获取组件实时位置）
 
-该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取当前组件基于其实时位置的左上角坐标。
+该示例通过[getCurrentLocalPosition](#getcurrentlocalposition)方法获取点击位置相对于当前组件实时位置左上角的坐标。
 
 从API版本26.0.0开始，新增支持getCurrentLocalPosition接口。
 
@@ -230,6 +232,7 @@ struct GetCurrentLocalPositionExample {
           TapGesture({ count: 1 })
             .onAction((event: GestureEvent) => {
               if (event) {
+                // 移动组件后延迟获取点击位置相对于组件实时位置左上角的坐标。
                 this.textOffsetY = -200;
                 setTimeout(() => {
                   let localPos: Coordinate2D | undefined = event?.tapLocation?.getCurrentLocalPosition?.();
@@ -237,10 +240,10 @@ struct GetCurrentLocalPositionExample {
                 }, 2000);
               }
             })
-        )
+        );
 
-      Text(this.positionText)
-    }.width('100%')
+      Text(this.positionText);
+    }.width('100%');
   }
 }
 ```

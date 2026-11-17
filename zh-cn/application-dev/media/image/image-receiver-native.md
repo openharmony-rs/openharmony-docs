@@ -143,7 +143,6 @@ EXTERN_C_END
 ```c++
 #include <multimedia/image_framework/image_mdk.h>
 #include <multimedia/image_framework/image_receiver_mdk.h>
-#include <malloc.h>
 #include <hilog/log.h>
 
 static napi_value createFromReceiver(napi_env env, napi_callback_info info)
@@ -166,9 +165,9 @@ static napi_value createFromReceiver(napi_env env, napi_callback_info info)
    int32_t format;
    OH_Image_Receiver_GetFormat(imgReceiver_c, &format);
    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "[receiver]", "format: %{public}d", format);
-   char * surfaceId = static_cast<char *>(malloc(sizeof(char)));
-   OH_Image_Receiver_GetReceivingSurfaceId(imgReceiver_c, surfaceId, sizeof(char));
-   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "[receiver]", "surfaceId: %{public}c", surfaceId[0]);
+   char surfaceId[128] = {0};
+   OH_Image_Receiver_GetReceivingSurfaceId(imgReceiver_c, surfaceId, sizeof(surfaceId));
+   OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "[receiver]", "surfaceId: %{public}s", surfaceId);
    OhosImageSize size;
    OH_Image_Receiver_GetSize(imgReceiver_c, &size);
    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "[receiver]", "OH_Image_Receiver_GetSize  width: %{public}d, height:%{public}d", size.width, size.height);
@@ -184,7 +183,7 @@ static napi_value createFromReceiver(napi_env env, napi_callback_info info)
    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "[receiver]", "OH_Image_Size  width: %{public}d, height:%{public}d", imageSize.width, imageSize.height);
 
    OhosImageComponent imgComponent;
-   OH_Image_GetComponent(nextImage_native, 4, &imgComponent); // 4=jpeg
+   OH_Image_GetComponent(nextImage_native, OHOS_IMAGE_COMPONENT_FORMAT_JPEG, &imgComponent);
    
    uint8_t *img_buffer = imgComponent.byteBuffer;
    

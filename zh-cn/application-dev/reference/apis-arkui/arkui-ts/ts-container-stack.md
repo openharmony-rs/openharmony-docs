@@ -2,11 +2,11 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-堆叠容器，子组件按照顺序依次入栈，后一个子组件覆盖前一个子组件。
+堆叠容器，子组件按照顺序依次入栈，后一个子组件覆盖前一个子组件。堆叠顺序基于子组件在父容器中的声明顺序，后声明的子组件具有更高的渲染层级，在视觉上覆盖前面的子组件。适用于需要层叠布局的场景，如页面上的悬浮按钮或提示信息、图片或视频上覆盖文字标签、多层叠加的弹窗或对话框等。相比使用多个容器嵌套实现层叠效果，Stack提供了更简洁高效的解决方案。
 
 > **说明：**
 >
@@ -27,15 +27,17 @@
 
 Stack(options?: StackOptions)
 
-堆叠容器，子组件按照顺序依次入栈，后一个子组件覆盖前一个子组件。
+堆叠容器，子组件按照顺序依次入栈，后一个子组件覆盖前一个子组件。堆叠顺序基于子组件在父容器中的声明顺序，后声明的子组件具有更高的渲染层级，在视觉上覆盖前面的子组件。
 
 > **说明：**
 >
-> 过多的组件嵌套会导致性能劣化。在部分场景中，直接使用组件属性或借助系统API的能力可以替代层叠容器的效果，减少了嵌套组件数进而优化性能。最佳实践请参考[组件嵌套优化-优先使用组件属性代替嵌套组件](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-nesting-optimization#section78181114123811)。
+> 组件嵌套层数过多会导致性能下降。在可通过组件属性或系统API实现相同布局效果的场景中，使用这些替代方法可以减少嵌套层数，从而优化性能。最佳实践请参考[组件嵌套优化-优先使用组件属性代替嵌套组件](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-nesting-optimization#section78181114123811)。
+>
+> 该接口的alignContent参数与[align](./ts-universal-attributes-location.md#align)同时设置时，后设置的属性值会覆盖先设置的属性值。该接口的alignContent参数与alignContent属性同时设置时，以属性设置的值为准。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,7 +49,7 @@ Stack(options?: StackOptions)
 
 | 参数名       | 类型                                    | 必填 | 说明                                                    |
 | ------------ | ------------------------------------------- | ---- | ----------------------------------------------------------- |
-| options | [StackOptions](#stackoptions18对象说明) | 否   | 设置子组件在容器内的对齐方式。 |
+| options | [StackOptions](#stackoptions18对象说明) | 否   | 设置子组件在容器内的对齐方式。当需要将子组件对齐到特定位置（如顶部、底部、左上角等）而非默认居中时传入此参数；如果不传入此参数，则使用StackOptions的默认配置，其中alignContent默认为Alignment.Center。 |
 
 ## StackOptions<sup>18+</sup>对象说明
 
@@ -57,9 +59,11 @@ Stack(options?: StackOptions)
 >
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
-**卡片能力：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -69,7 +73,7 @@ Stack(options?: StackOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| alignContent<sup>7+</sup> | [Alignment](ts-appendix-enums.md#alignment) | 否 | 是   | 设置子组件在容器内的对齐方式。<br/>默认值：Alignment.Center <br />非法值：按默认值处理。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
+| alignContent<sup>7+</sup> | [Alignment](ts-appendix-enums.md#alignment) | 否 | 是   | 设置子组件在容器内的对齐方式。<br/>默认值：Alignment.Center <br />非法值：按默认值处理。<br/>**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 属性
 
@@ -81,11 +85,11 @@ ArkTS-Dyn: alignContent(value: Alignment)
 
 ArkTS-Sta: alignContent(value: Alignment | undefined)
 
-设置子组件在容器内的对齐方式。该属性与[align](ts-universal-attributes-location.md#align)同时设置时，后设置的属性生效。该属性与接口的构造入参同时设置时，生效属性上的设置效果。
+设置子组件在容器内的对齐方式。该属性与[align](ts-universal-attributes-location.md#align)同时设置时，后设置的属性值会覆盖先设置的属性值。该属性与接口构造入参同时设置时，以属性设置的值为准，与设置顺序无关。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -99,19 +103,15 @@ ArkTS-Sta: alignContent(value: Alignment | undefined)
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------------------- |
 | value  | ArkTS-Dyn: [Alignment](ts-appendix-enums.md#alignment)<br/>ArkTS-Sta: [Alignment](ts-appendix-enums.md#alignment) \| undefined | 是   | 所有子组件在容器内的对齐方式。<br/>默认值：Alignment.Center <br />非法值：按默认值处理。<br/>取值为undefined时，按默认值处理。 |
 
-### attributeModifier<sup>12+</sup>
+### attributeModifier<sup>23+</sup>
 
-ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<StackAttribute>)
-
-ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<StackAttribute> | AttributeModifier\<CommonMethod> | undefined)
+attributeModifier(modifier: AttributeModifier\<StackAttribute> | AttributeModifier\<CommonMethod> | undefined)
 
 设置组件的动态属性。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -119,15 +119,17 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<StackAttribute> | Attr
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<StackAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<StackAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置Stack组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<StackAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置Stack组件的属性。<br/>取值为undefined时，按当前组件的属性方法默认值处理。 |
 
 ### syncLoad
 
-syncLoad(enable: boolean)
+ArkTS-Dyn: syncLoad(enable: boolean)
+
+ArkTS-Sta: syncLoad(enable: boolean | undefined)
 
 设置是否同步加载Stack区域内所有子组件。
 
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -141,7 +143,7 @@ syncLoad(enable: boolean)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| enable   | boolean | 是   | 是否同步加载Stack区域内所有子组件。<br/>true表示同步加载；false表示异步加载。<br/>默认值：true<br/>**说明：** <br/>设置为false时，在首次显示场景，若当前帧布局耗时超过50ms，会将Stack区域内尚未布局的子组件延后到下一帧进行布局。 |
+| enable   | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否同步加载Stack区域内所有子组件。<br/>true表示同步加载；false表示异步加载。<br/>默认值：true<br/>取值为undefined时，按默认值处理。<br/>**说明：** <br/>设置为false时，在首次显示场景，若当前帧布局耗时超过50ms，会将Stack区域内尚未布局的子组件延后到下一帧进行布局。 |
 
 ## 事件
 
@@ -161,11 +163,14 @@ syncLoad(enable: boolean)
 @Component
 struct StackExample {
   build() {
+    // 设置子组件在Stack容器底部对齐
     Stack({ alignContent: Alignment.Bottom }) {
+      // 第一个子组件，显示在底部
       Text('First child, show in bottom').width('90%').height('100%').backgroundColor(0xd2cab3).align(Alignment.Top)
+      // 第二个子组件，显示在上层
       Text('Second child, show in top').width('70%').height('60%').backgroundColor(0xc1cbac).align(Alignment.Top)
     }.width('100%').height(150).margin({ top: 5 })
-    // 从API版本26.0.0开始，新增syncLoad属性。
+    // 从API版本26.0.0开始，新增syncLoad属性，设置为true表示同步加载Stack区域内所有子组件
     .syncLoad(true)
   }
 }
@@ -189,4 +194,22 @@ struct StackExample {
 }
 ```
 
-![zh-cn_image_0000001219982699](figures/zh-cn_image_0000001219982699.PNG)
+**ArkTS-Sta示例：**
+
+```ts
+// xxx.ets
+import { Entry, Component, Text, Stack, Alignment, Margin } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct StackExample {
+  build() {
+    Stack({ alignContent: Alignment.Bottom }) {
+      Text('First child, show in bottom').width('90%').height('100%').backgroundColor(0xd2cab3).align(Alignment.Top)
+      Text('Second child, show in top').width('70%').height('60%').backgroundColor(0xc1cbac).align(Alignment.Top)
+    }.width('100%').height(150).margin({ top: 5 } as Margin)
+  }
+}
+```
+
+![stack](figures/stack.PNG)

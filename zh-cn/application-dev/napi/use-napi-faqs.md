@@ -1,10 +1,18 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "Node-API常见问题汇总入口，按稳定性、内存泄漏、常见基本功能三大类别整理高频问题，提供问题索引和快速跳转，帮助开发者快速定位典型问题。"
+keywords: [Node-API, 常见问题, 稳定性, 内存泄漏, 模块加载, 线程安全, 闪退, napi_ref泄漏, napi_env]
+doctype: faq
+status: active
+---
+
 # Node-API常见问题
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 稳定性  
 1. [应用运行过程中出现高概率闪退，出现cppcrash栈，栈顶为系统库libark_jsruntime.so，崩溃栈前几帧也有libace_napi.z.so，怎么进行定位解决](napi-faq-about-stability.md#应用运行过程中出现高概率闪退怎么进行定位解决)  

@@ -71,7 +71,7 @@ this.objLink= ...
 
   **Figure 1** Initialization rule 
 
-  ![en-us_image_0000001502255261](figures/en-us_image_0000001502255261.PNG)
+  ![en-us_image_0000001502255261](figures/Initialization-rules01.PNG)
 
 
 ## Observed Changes and Behavior
@@ -1625,7 +1625,7 @@ struct UserChild {
 
 The following figure shows the relationship in the preceding example.
 
-![en-us_image_0000001653949465](figures/en-us_image_0000001653949465.jpg)
+![en-us_image_0000001653949465](figures/Differences-example.jpg)
 
 ### Member Variable Changes in the \@Observed Decorated Class Constructor Not Taking Effect
 

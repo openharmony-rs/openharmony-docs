@@ -36,7 +36,7 @@
 
 hilog -T xxx 按tag过滤;
 
-hilog –D xxx 按domain过滤;
+hilog -D xxx 按domain过滤;
 
 hilog -e 对日志内容匹配，支持正则式tag, domain, pid都支持多重过滤,组合过滤以及反向过滤。
 
@@ -54,7 +54,7 @@ hilog -e 对日志内容匹配，支持正则式tag, domain, pid都支持多重�
 
 console是对hilog日志系统的封装，其采用默认参数，主要用于应用开发调试阶段。
 
-推荐使用hilog，可以对日志系统进行分类和统一处理，具体参考文档：[hilog日志系统](../reference/apis-performance-analysis-kit/js-apis-hilog.md)
+推荐使用hilog，可以对日志系统进行分类和统一处理，具体参考文档：[@ohos.hilog (HiLog日志打印)](../reference/apis-performance-analysis-kit/js-apis-hilog.md)
 
 hilog接口参数domain的取值范围0x0~0xFFFF，建议开发者在应用内根据需要自定义划分。
 
@@ -131,15 +131,15 @@ hdc shell hilog -L &lt;D/I/W/E/F&gt;
 
 主要查看方向：
 
-1、先看一下Reason是什么事件的；根据不同的Reason下面有大致的检测原理和分析样例。
+1. 先看一下Reason是什么事件的；根据不同的Reason下面有大致的检测原理和分析样例。
 
-2、关注MSG有什么信息，根据MSG的信息看一下大致的方向；
+2. 关注MSG有什么信息，根据MSG的信息看一下大致的方向；
 
-3、分析OpenStacktraceCatcher里面的应用栈信息，并且结合流水日志一起确定一下当前在干什么事情；
+3. 分析OpenStacktraceCatcher里面的应用栈信息，并且结合流水日志一起确定一下当前在干什么事情；
 
-4、看一下PeerBinderCatcher当前进程是否有对端的binder卡住，如果有跟当前进程相关的同步wait，则会有相应的PeerBinder Stacktrace信息——这个是卡住你当前进程的对端进程的栈信息。
+4. 看一下PeerBinderCatcher当前进程是否有对端的binder卡住，如果有跟当前进程相关的同步wait，则会有相应的PeerBinder Stacktrace信息——这个是卡住你当前进程的对端进程的栈信息。
 
-5、还有整机进程的cpu信息和当前进程的内存信息辅助定位。
+5. 还有整机进程的cpu信息和当前进程的内存信息辅助定位。
 
 ## 如何查看ArkCompiler出现Error日志时，具体的异常调用栈信息？(API 10)
 

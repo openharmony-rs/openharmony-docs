@@ -1,8 +1,8 @@
 # 属性动画 (animation)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -22,13 +22,13 @@ animation(value:AnimateParam): T
 
 > **说明：**
 >
->  - 在单一页面上存在大量应用动效的组件时，可以使用[renderGroup](ts-universal-attributes-image-effect.md#rendergroup10)方法来解决卡顿问题，从而提升动画性能。最佳实践请参考[动画使用指导-使用renderGroup](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fair-use-animation#section1223162922415)。
+>  - 在单一页面上存在大量应用动效的组件时，可以使用[renderGroup](ts-universal-attributes-image-effect.md#rendergroup10)方法来解决卡顿问题，从而提升动画性能。最佳实践请参考优化动画性能中的[使用renderGroup](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-animation-usage-guide#使用rendergroup)。
 >
 >  - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**卡片能力（仅ArkTS-Dyn）：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -51,13 +51,13 @@ animation(value:AnimateParam): T
 
 ## animation<sup>23+</sup>
 
-animation(value: AnimateParam | undefined): this
+animation(value: AnimateParam | undefined)
 
 设置组件的属性动画。
 
 > **说明：**
 >
->  - 在单一页面上存在大量应用动效的组件时，可以使用[renderGroup](ts-universal-attributes-image-effect.md#rendergroup10)方法来解决卡顿问题，从而提升动画性能。最佳实践请参考[动画使用指导-使用renderGroup](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-fair-use-animation#section1223162922415)。
+>  - 在单一页面上存在大量应用动效的组件时，可以使用[renderGroup](ts-universal-attributes-image-effect.md#rendergroup10)方法来解决卡顿问题，从而提升动画性能。最佳实践请参考优化动画性能中的[使用renderGroup](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-animation-usage-guide#使用rendergroup)。
 >
 >  - 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
@@ -73,12 +73,6 @@ animation(value: AnimateParam | undefined): this
 | 参数名   | 类型                                | 必填 | 说明                                    |
 | ----- | --------------------------------- | ---- | ------------------------------------- |
 | value | [AnimateParam](ts-explicit-animation.md#animateparam对象说明) \| undefined | 是    | 设置动画效果相关参数。<br/>当value的值为undefined时，无动画效果。          |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| this | 返回当前组件。 |
 
 属性动画只对写在animation前面的属性生效，且对组件构造器的属性不生效。
 
