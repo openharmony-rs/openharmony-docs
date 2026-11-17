@@ -1007,3 +1007,20 @@ Allows an enterprise application to configure data encryption policies for ToB d
 **Supported devices**: PCs/2-in-1 devices
 
 **Since**: 26.1.0
+
+## ohos.permission.ENTERPRISE_CONTROL_DEVICE
+ 
+Allows a device management application to control user behavior.
+
+<!--RP1--><!--RP1End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+ 
+**Supported devices**: PCs/2-in-1 devices | tablets
+ 
+**Since**: 26.1.0
