@@ -47,33 +47,7 @@
 
   minHeight：窗口的最小高度，默认单位为px。
 
-  ```ts
-  import { UIAbility } from '@kit.AbilityKit';
-  import { window } from '@kit.ArkUI';
-  export default class EntryAbility extends UIAbility {
-    onWindowStageCreate(windowStage: window.WindowStage): void {
-      windowStage.loadContent('pages/Index', (err) => {
-        let windowClass = windowStage.getMainWindowSync();
-        try {
-          let windowLimits: window.WindowLimits = {
-            maxWidth: 1500,
-            maxHeight: 1000,
-            minWidth: 600,
-            minHeight: 500
-          };
-          let promise = windowClass.setWindowLimits(windowLimits);
-          promise.then((data) => {
-            console.info('Succeeded in changing the window limits. Cause:' + JSON.stringify(data));
-          }).catch((err: BusinessError) => {
-            console.error(`Failed to change the window limits. Cause code: ${err.code}, message: ${err.message}`);
-          });
-        } catch (exception) {
-          console.error(`Failed to change the window limits. Cause code: ${exception.code}, message: ${exception.message}`);
-        }
-      });
-    }
-  }
-  ```
+<!-- @[freeWindow_setWindowLimits](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/SetWindowLimits/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 - 应用在使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)接口拉起主窗口时可通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions)指定主窗口尺寸限制。  
 
@@ -85,7 +59,7 @@
 
   maxWindowHeight：窗口的最大高度，单位为vp。
 
-  <!-- @[free_window_setWindowLimitsByStartOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/SetWindowLimitsByStartOptions/entry/src/main/ets/pages/Index.ets) -->
+  <!-- @[freeWindow_setWindowLimitsByStartOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/SetWindowLimitsByStartOptions/entry/src/main/ets/pages/Index.ets) -->
 
 - 可通过[module.json5配置文件](../quick-start/module-configuration-file.md#配置文件标签)中的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)限制主窗口处于自由窗口状态下的最大和最小尺寸。
 
@@ -97,7 +71,7 @@
 
   minWindowHeight：当前UIAbility组件支持的最小的窗口高度，单位为vp。
 
-  <!-- @[free_window_setWindowLimitsByModuleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/SetWindowLimitsByModuleJson5/entry/src/main/module.json5) -->
+  <!-- @[freeWindow_setWindowLimitsByModuleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/SetWindowLimitsByModuleJson5/entry/src/main/module.json5) -->
 
 > **说明：**
 > 
@@ -152,7 +126,7 @@
 
 2. 通过[getTitleButtonRect()](../reference/apis-arkui/arkts-apis-window-Window.md#gettitlebuttonrect11)接口或[on('windowTitleButtonRectChange')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowtitlebuttonrectchange11)接口获取到窗口三键的位置和尺寸，在页面顶部元素布局时，去除窗口三键的区域。
 
-<!-- @[free_window_avoidWindowTitleButton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/AvoidWindowTitleButton/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[freeWindow_avoidWindowTitleButton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FreeWindow/AvoidWindowTitleButton/entry/src/main/ets/pages/Index.ets) -->
 
 示例代码效果图如下：
 
