@@ -2417,7 +2417,7 @@ NODE_GRID_SCROLL_TO_INDEX = 1013014
 | .value[0].i32 | 要滑动到的目标元素在当前容器中的索引值。 |
 | .value[1]?.i32 | 设置滑动到目标元素时是否有动效，1表示有动效，0表示没有动效。默认值：0。 |
 | .value[2]?.i32 | 指定滑动到的目标元素与当前容器的对齐方式，参数类型[ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment)。默认值：ARKUI_SCROLL_ALIGNMENT_AUTO。 |
-| .value[3]?.f32 | 滑动到目标元素后的额外偏移量，默认值：0。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。单位规则：启用快速滚动模式时，按节点配置的长度单位解释，默认单位为vp，也可配置为px等单位；未启用快速滚动模式时，按px解释，不进行单位换算。 |
+| .value[3]?.f32 | 滑动到目标元素后的额外偏移量，默认值：0，单位：vp。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。 |
 | .value[4]?.i32 | 快速滚动模式。参数类型为[OH_ArkUI_FastScrollMode](capi-scroll-h.md#oh_arkui_fastscrollmode)。仅当.value[1]?.i32为1（开启动效）时生效。<br/>设置为OH_ARKUI_FAST_SCROLL_MODE_SKIP_MEASURE时跳过中间子组件的测量；设置为OH_ARKUI_FAST_SCROLL_MODE_SKIP_CREATE_AND_MEASURE时跳过中间子组件的创建和测量。<br/>默认值为OH_ARKUI_FAST_SCROLL_MODE_NONE，与不设置此参数时的行为相同。<br/>取值范围为0、1、2。传入其他值时按OH_ARKUI_FAST_SCROLL_MODE_NONE处理。此时不启用快速滚动优化，其余滚动参数仍按原有规则生效。该参数从API版本26.1.0开始支持。 |
 
 ## NODE_GRID_SUPPORT_EMPTY_BRANCH_IN_LAZY_LOADING
