@@ -427,13 +427,17 @@
     
     export default class EntryFormAbility extends FormExtensionAbility {
       async onFormEvent(formId: string, message: string) {
-        let shortMessage: string = JSON.parse(message)['message'];
+        try {
+          let shortMessage: string = JSON.parse(message)['message'];
     
-        // 当接收的message为requestOverflow，触发互动卡片动效
-        if (shortMessage === 'requestOverflow') {
-          let formRect: formInfo.Rect = await formProvider.getFormRect(formId);
-          this.requestOverflow(formId, formRect.width, formRect.height);
-          return;
+          // 当接收的message为requestOverflow，触发互动卡片动效
+          if (shortMessage === 'requestOverflow') {
+            let formRect: formInfo.Rect = await formProvider.getFormRect(formId);
+            this.requestOverflow(formId, formRect.width, formRect.height);
+            return;
+          }
+        } catch (err) {
+          hilog.error(DOMAIN_NUMBER, TAG, `onFormEvent catch error, code: ${err.code}, message: ${err.message}`);
         }
       }
     
@@ -466,13 +470,11 @@
             useDefaultAnimation: true,
           }).then(() => {
             hilog.info(DOMAIN_NUMBER, TAG, 'requestOverflow succeed');
-          }).catch((error: BusinessError) => {
-            hilog.error(DOMAIN_NUMBER, TAG, `requestOverflow catch error` + `,
-              code: ${error.code}, message: ${error.message}`);
+          }).catch((err: BusinessError) => {
+            hilog.error(DOMAIN_NUMBER, TAG, `requestOverflow catch error, code: ${err.code}, message: ${err.message}`);
           })
-        } catch (e) {
-          hilog.error(DOMAIN_NUMBER, TAG, `requestOverflow catch error` + `,
-            code: ${e.code}, message: ${e.message}`);
+        } catch (err) {
+          hilog.error(DOMAIN_NUMBER, TAG, `requestOverflow catch error, code: ${err.code}, message: ${err.message}`);
         }
       }
     }
