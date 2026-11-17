@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "提供使用TaskPool提升ArkUI瀑布流渲染性能的开发指导：将数据库查询等耗时操作放入子线程执行并返回数据，UI线程感知数据更新后渲染WaterFlow瀑布流组件，避免大数据量下主线程长时间等待。"
 keywords: [瀑布流渲染, WaterFlow, TaskPool, 渲染性能优化, 子线程查询, 数据库读取, UI数据更新]
 doctype: guide
