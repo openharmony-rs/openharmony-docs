@@ -1009,8 +1009,8 @@ udp.off('error');
 | 名称   | 类型                                           | 只读 | 可选 |说明                    |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | address<sup>11+</sup> | string | 否   | 否   | IP地址。                                           |
-| port    | number | 否   | 是   | 端口号 ，范围0~65535。如果不指定系统随机分配端口。           |
-| family  | number | 否   | 是  | 网络协议类型，可选类型：<br />- 1：IPv4。默认为1。<br />- 2：IPv6。地址为IPv6类型，该字段必须被显式指定为2。<br />- 3：Domain（从API version 18开始支持）。地址为Domain类型，该字段必须被显式指定为3。当前仅支持[TCPSocket.connect](#connect)和[TLSSocket.connect](#connect9)。|
+| port    | number | 否   | 否   | 端口号 ，范围0~65535。如果不指定系统随机分配端口。           |
+| family  | number | 否   | 否  | 网络协议类型，可选类型：<br />- 1：IPv4。默认为1。<br />- 2：IPv6。地址为IPv6类型，该字段必须被显式指定为2。<br />- 3：Domain（从API version 18开始支持）。地址为Domain类型，该字段必须被显式指定为3。当前仅支持[TCPSocket.connect](#connect)和[TLSSocket.connect](#connect9)。|
 
 ## ProxyOptions<sup>18+</sup>
 
@@ -4981,7 +4981,7 @@ client.connect(connectOpt).then(() => {
   client.getExtraOptions().then((options : socket.ExtraOptionsBase) => {
     console.info('options: ' + JSON.stringify(options));
   }).catch((err: Object) => {
-    console.error('setExtraOptions fail: ' + JSON.stringify(err));
+    console.error('getExtraOptions fail: ' + JSON.stringify(err));
   });
 }).catch((err: Object) => {
   console.error('connect fail: ' + JSON.stringify(err));
