@@ -347,7 +347,7 @@ try {
 
 startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback&lt;void&gt;): void
 
-申请长时任务，支持申请一种类型，使用callback异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。</br>从API版本26.0.1开始，通过本接口申请的长时任务，包含数据传输类型时，可以通过[updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress)接口更新长时任务通知，可选择通知是否有进度环，进度为100时是否响铃。
+申请长时任务，支持申请一种类型，使用callback异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。<br>从API版本26.0.1开始，通过本接口申请的长时任务，包含数据传输类型时，可以通过[updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress)接口更新长时任务通知，可选择通知是否有进度环，进度为100时是否响铃。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -492,7 +492,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;
 
-申请长时任务，支持申请一种类型，使用Promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。</br>从API版本26.0.1开始，通过本接口申请的长时任务，包含数据传输类型时，可以通过[updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress)接口更新长时任务通知，可选择通知是否有进度环，进度为100时是否响铃。
+申请长时任务，支持申请一种类型，使用Promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。<br>从API版本26.0.1开始，通过本接口申请的长时任务，包含数据传输类型时，可以通过[updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress)接口更新长时任务通知，可选择通知是否有进度环，进度为100时是否响铃。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -635,7 +635,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent): Promise&lt;ContinuousTaskNotification&gt;
 
-申请长时任务，支持申请多种类型，使用Promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。</br>从API版本26.0.1开始，通过本接口申请的长时任务，包含数据传输类型时，可以通过[updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress)接口更新长时任务通知，可选择通知是否有进度环，进度为100时是否响铃。
+申请长时任务，支持申请多种类型，使用Promise异步回调。长时任务申请成功后，会有通知栏消息，没有提示音。一个UIAbility（FA模型则为ServiceAbility）同一时刻仅支持通过本接口申请一个长时任务，可以通过API version 21新增接口[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)申请多个长时任务。<br>从API版本26.0.1开始，通过本接口申请的长时任务，包含数据传输类型时，可以通过[updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress)接口更新长时任务通知，可选择通知是否有进度环，进度为100时是否响铃。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -756,7 +756,7 @@ export default class EntryAbility extends UIAbility {
       },
       id: this.notificationId, // 必须是申请长时任务返回的notificationId，否则应用更新通知失败
       notificationSlotType: notificationManager.SlotType.LIVE_VIEW, // 实况窗类型，保持不变
-      template: downloadTemplate // 应用需要设置的模版名称
+      template: downloadTemplate // 应用需要设置的模板名称
     };
 
     try {
@@ -999,7 +999,7 @@ startContinuousTask(context: Context, request: ContinuousTaskRequest): Promise&l
  
 如果通过本接口申请的一个长时任务中同时包含多种类型，且包含数据传输类型，则在通知栏会发送2个长时任务通知，一个为数据传输类型，另一个为其他类型的合并通知。任意一个通知被移除时，长时任务取消，且另一个通知也会同步移除。
  
-通过本接口申请长时任务时，支持包含数据传输类型的长时任务直接发送进度模版通知，可选择通知是否有进度环，进度为100时是否响铃，具体请参考[ProgressInfo](#progressinfo)。也可以通过[updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress)接口更新长时任务通知。<!--RP1--><!--RP1End-->
+通过本接口申请长时任务时，支持包含数据传输类型的长时任务直接发送进度模板通知，可选择通知是否有进度环，进度为100时是否响铃，具体请参考[ProgressInfo](#progressinfo)。也可以通过[updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress)接口更新长时任务通知。<!--RP1--><!--RP1End-->
  
 **模型约束：** 此接口仅可在Stage模型下使用。
  
@@ -1446,7 +1446,7 @@ updateBackgroundRunning(context: Context, bgModes: string[]): Promise&lt;Continu
 
 更新长时任务，使用Promise异步回调。更新成功后仅显示通知栏消息，不播放提示音。适用于应用功能切换（如从音视频播放切换到录音）等需要调整长时任务以匹配新业务的场景。
 
-更新长时任务前，可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20)接口获取当前所有长时任务信息，如果当前没有已经存在的长时任务，会更新失败。</br>调用本接口前，必须先申请长时任务，该接口仅支持更新如下三个接口申请的长时任务：</br>[startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback&lt;void&gt;): void](#backgroundtaskmanagerstartbackgroundrunning)</br>[startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;](#backgroundtaskmanagerstartbackgroundrunning-1)</br>[startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent): Promise&lt;ContinuousTaskNotification&gt;](#backgroundtaskmanagerstartbackgroundrunning12)
+更新长时任务前，可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20)接口获取当前所有长时任务信息，如果当前没有已经存在的长时任务，会更新失败。<br>调用本接口前，必须先申请长时任务，该接口仅支持更新如下三个接口申请的长时任务：<br>[startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent, callback: AsyncCallback&lt;void&gt;): void](#backgroundtaskmanagerstartbackgroundrunning)<br>[startBackgroundRunning(context: Context, bgMode: BackgroundMode, wantAgent: WantAgent): Promise&lt;void&gt;](#backgroundtaskmanagerstartbackgroundrunning-1)<br>[startBackgroundRunning(context: Context, bgModes: string[], wantAgent: WantAgent): Promise&lt;ContinuousTaskNotification&gt;](#backgroundtaskmanagerstartbackgroundrunning12)
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -2719,7 +2719,7 @@ export default class EntryAbility extends UIAbility {
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | requestId       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 否    | 短时任务的请求ID。                               |
-| actualDelayTime | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 否    | 应用实际申请的短时任务时间，单位：ms。<br/> **说明：** 申请时间最长为3分钟，低电量（[BatteryCapacityLevel](../apis-basic-services-kit/js-apis-battery-info.md#batterycapacitylevel9)为LEVEL_LOW）时最长为1分钟。 |
+| actualDelayTime | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 否    | 应用实际申请的短时任务时间，单位：ms。<br> **说明：** 申请时间最长为3分钟，低电量（[BatteryCapacityLevel](../apis-basic-services-kit/js-apis-battery-info.md#batterycapacitylevel9)为LEVEL_LOW）时最长为1分钟。 |
 
 ## TransientTaskInfo<sup>20+</sup>
 
@@ -2745,14 +2745,14 @@ export default class EntryAbility extends UIAbility {
 <!--Table: 30%; 10%; 60%-->
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
-| DATA_TRANSFER           | 1    | 数据传输。<br/>使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。<br/>**说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23       |
-| AUDIO_PLAYBACK          | 2    | 音视频播放。<br/>使用场景举例：音频、视频在后台播放，音视频投播。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br/>**说明：** 从API version 20开始，申请/更新AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请/更新长时任务成功后会在通知栏显示通知。 <br/>接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。 <br/>对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                  |
-| AUDIO_RECORDING         | 3    | 录制。<br/>使用场景举例：录音、录屏退后台。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd--> <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                    |
-| LOCATION                | 4    | 定位导航。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                   |
-| BLUETOOTH_INTERACTION   | 5    | 蓝牙相关业务。<br/>使用场景举例：通过蓝牙传输文件时退后台。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                  |
-| MULTI_DEVICE_CONNECTION | 6    | 多设备互联。<br/>使用场景举例：分布式业务连接、投播。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                 |
-| VOIP<sup>13+</sup> | 8    | 音视频通话。<br/>使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->  <br> **ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23                |
-| TASK_KEEPING            | 9    | 计算任务。<br/>使用场景举例：杀毒软件。<br/>**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23        |
+| DATA_TRANSFER           | 1    | 数据传输。<br>使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。<br>**说明：** 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br>更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23       |
+| AUDIO_PLAYBACK          | 2    | 音视频播放。<br>使用场景举例：音频、视频在后台播放，音视频投播。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br>**说明：** 从API version 20开始，申请/更新AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请/更新长时任务成功后会在通知栏显示通知。 <br>接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。 <br>对于API version 19及之前的版本，后台任务模块不会在通知栏显示通知。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                  |
+| AUDIO_RECORDING         | 3    | 录制。<br>使用场景举例：录音、录屏退后台。<!--Del--><br>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd--> <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                    |
+| LOCATION                | 4    | 定位导航。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                   |
+| BLUETOOTH_INTERACTION   | 5    | 蓝牙相关业务。<br>使用场景举例：通过蓝牙传输文件时退后台。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                  |
+| MULTI_DEVICE_CONNECTION | 6    | 多设备互联。<br>使用场景举例：分布式业务连接、投播。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23                 |
+| VOIP<sup>13+</sup> | 8    | 音视频通话。<br>使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。<!--Del--><br>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->  <br> **ArkTS-Dyn起始版本：** 13 <br> **ArkTS-Sta起始版本：** 23                |
+| TASK_KEEPING            | 9    | 计算任务。<br>使用场景举例：杀毒软件。<br>**说明：** 从API version 21开始，对PC/2in1设备、非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。 API version 20及之前版本，仅对PC/2in1设备开放。 <br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23        |
 
 ## ContinuousTaskNotification<sup>12+</sup>
 
@@ -2762,10 +2762,10 @@ export default class EntryAbility extends UIAbility {
 
 | 名称             | 类型     | 只读     | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| slotType       | [notificationManager.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否    | 否    | 长时任务通知的渠道类型。<br/>**说明：** 长时任务申请或更新成功后不支持提示音。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23  |
-| contentType | [notificationManager.ContentType](../apis-notification-kit/js-apis-notificationManager.md#contenttype) | 否    | 否    | 长时任务通知的内容类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
-| notificationId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 否    | 长时任务通知ID。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
-| continuousTaskId<sup>15+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 是    | 长时任务ID。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 15 <br> **ArkTS-Sta起始版本：** 23|
+| slotType       | [notificationManager.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否    | 否    | 长时任务通知的渠道类型。<br>**说明：** 长时任务申请或更新成功后不支持提示音。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23  |
+| contentType | [notificationManager.ContentType](../apis-notification-kit/js-apis-notificationManager.md#contenttype) | 否    | 否    | 长时任务通知的内容类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| notificationId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 否    | 长时任务通知ID。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| continuousTaskId<sup>15+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 是    | 长时任务ID。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 15 <br> **ArkTS-Sta起始版本：** 23|
 
 ## ContinuousTaskCancelInfo<sup>15+</sup>
 
@@ -2777,7 +2777,7 @@ export default class EntryAbility extends UIAbility {
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | reason | [ContinuousTaskCancelReason](#continuoustaskcancelreason15) | 否    | 否    | 长时任务取消原因。<br> **ArkTS-Dyn起始版本：** 15 <br> **ArkTS-Sta起始版本：** 23|
 | id | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 否    | 被取消的长时任务 Id。<br> **ArkTS-Dyn起始版本：** 15 <br> **ArkTS-Sta起始版本：** 23|
-| detailedReason | [ContinuousTaskDetailedCancelReason](#continuoustaskdetailedcancelreason) | 否    | 是    | 长时任务取消详细原因。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0|
+| detailedReason | [ContinuousTaskDetailedCancelReason](#continuoustaskdetailedcancelreason) | 否    | 是    | 长时任务取消详细原因。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
 
 ## ContinuousTaskCancelReason<sup>15+</sup>
 
@@ -2820,7 +2820,7 @@ export default class EntryAbility extends UIAbility {
 | ----------------------- | ---- | --------------------- |
 | USER_CANCEL_REMOVE_NOTIFICATION           | 3    | 用户移除通知。 |
 | SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED     | 4    | 申请DATA_TRANSFER类型长时任务，但是数据传输速率低。 |
-| SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_RUNNING  | 6    | 申请AUDIO_PLAYBACK类型长时任务，但是未播放音视频。<br/>**说明：** 需要先注册暂停回调[on('continuousTaskSuspend')](#backgroundtaskmanageroncontinuoustasksuspend20)，当连续检测失败时，系统取消对应的长时任务，返回该取消原因。   |
+| SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_RUNNING  | 6    | 申请AUDIO_PLAYBACK类型长时任务，但是未播放音视频。<br>**说明：** 需要先注册暂停回调[on('continuousTaskSuspend')](#backgroundtaskmanageroncontinuoustasksuspend20)，当连续检测失败时，系统取消对应的长时任务，返回该取消原因。   |
 | SYSTEM_CANCEL_AUDIO_RECORDING_NOT_RUNNING | 7    | 申请AUDIO_RECORDING类型长时任务，但是未录制。       |
 | SYSTEM_CANCEL_NOT_USE_LOCATION            | 8    | 申请LOCATION类型长时任务，但是未使用定位导航。      |
 | SYSTEM_CANCEL_NOT_USE_BLUETOOTH           | 9    | 申请BLUETOOTH_INTERACTION类型长时任务，但是未使用蓝牙相关业务。 |
@@ -2829,9 +2829,9 @@ export default class EntryAbility extends UIAbility {
 | SYSTEM_CANCEL_DATA_TRANSFER_NOT_UPDATE    | 12   | 申请DATA_TRANSFER类型长时任务，但是进度长时间（首次更新超过10分钟）未更新。  |
 | SYSTEM_CANCEL_VOIP_NOT_RUNNING            | 13   | 申请VOIP类型长时任务，但是未检测到音频流或者录音流。  |
 | SYSTEM_CANCEL_USER_UNAUTHORIZED           | 14   | 申请特殊场景类型长时任务，但是用户未授权。  |
-| SYSTEM_CANCEL_NOT_USE_NEARLINK            | 15   | 申请NEARLINK类型长时任务，但是未使用星闪相关业务。<br/>**ArkTS-Dyn起始版本：** 26.0.1 <br/>**ArkTS-Sta起始版本：** 26.0.1 |
-| SYSTEM_CANCEL_NOT_USE_USB                 | 16   | 申请USB类型长时任务，但是未检测到USB设备。<br/>**ArkTS-Dyn起始版本：** 26.0.1 <br/>**ArkTS-Sta起始版本：** 26.0.1 |
-| SYSTEM_CANCEL_USB_ALREADY_OCCUPIED        | 17   | 申请USB类型长时任务，但是USB设备已经被占用。<br/>**ArkTS-Dyn起始版本：** 26.0.1 <br/>**ArkTS-Sta起始版本：** 26.0.1 |
+| SYSTEM_CANCEL_NOT_USE_NEARLINK            | 15   | 申请NEARLINK类型长时任务，但是未使用星闪相关业务。<br>**ArkTS-Dyn起始版本：** 26.0.1 <br>**ArkTS-Sta起始版本：** 26.0.1 |
+| SYSTEM_CANCEL_NOT_USE_USB                 | 16   | 申请USB类型长时任务，但是未检测到USB设备。<br>**ArkTS-Dyn起始版本：** 26.0.1 <br>**ArkTS-Sta起始版本：** 26.0.1 |
+| SYSTEM_CANCEL_USB_ALREADY_OCCUPIED        | 17   | 申请USB类型长时任务，但是USB设备已经被占用。<br>**ArkTS-Dyn起始版本：** 26.0.1 <br>**ArkTS-Sta起始版本：** 26.0.1 |
 
 ## BackgroundSubMode<sup>16+</sup>
 
@@ -2845,7 +2845,7 @@ export default class EntryAbility extends UIAbility {
 
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
-| CAR_KEY           | 1    | 车钥匙。<br/>**说明：** <br/>1. 只有申请BLUETOOTH_INTERACTION类型的长时任务，车钥匙子类型才能生效。<br/>2. 不支持通过[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning12)接口更新为此类型长时任务。                  |
+| CAR_KEY           | 1    | 车钥匙。<br>**说明：** <br>1. 只有申请BLUETOOTH_INTERACTION类型的长时任务，车钥匙子类型才能生效。<br>2. 不支持通过[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning12)接口更新为此类型长时任务。                  |
 
 ## BackgroundModeType<sup>16+</sup>
 
@@ -2872,7 +2872,7 @@ export default class EntryAbility extends UIAbility {
 | continuousTaskId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 否    | 被暂停的长时任务 Id。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
 | suspendState | boolean | 否    | 否    | 长时任务状态，false表示激活，true表示暂停。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
 | suspendReason | [ContinuousTaskSuspendReason](#continuoustasksuspendreason20) | 否    | 否    | 长时任务暂停原因。，恒为-1。建议使用[suspendMessage](#suspendmessage)字段获取长时任务暂停的具体原因。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23|
-| suspendMessage | [SuspendMessage](#suspendmessage) | 否    | 是    | 长时任务暂停信息。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0|
+| suspendMessage | [SuspendMessage](#suspendmessage) | 否    | 是    | 长时任务暂停信息。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0|
 
 ## SuspendMessage
 
@@ -2908,15 +2908,15 @@ export default class EntryAbility extends UIAbility {
 | SYSTEM_SUSPEND_MULTI_DEVICE_NOT_USED       | 10   | 申请MULTI_DEVICE_CONNECTION类型长时任务，但是未使用多设备互联。 <br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
 | SYSTEM_SUSPEND_USED_ILLEGALLY              | 11    | 使用非法类型的长时任务，如申请AUDIO_PLAYBACK类型长时任务，但是使用音视频播放及定位导航业务。预留接口，暂未启用。 <br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23    |
 | SYSTEM_SUSPEND_SYSTEM_LOAD_WARNING         | 12    | 系统高负载暂停长时任务。预留接口，暂未启用。 <br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23       |
-| SYSTEM_SUSPEND_VOIP_NOT_USED               | 13   | 申请VOIP类型长时任务，但是未检测到音频流或者录音流。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| SYSTEM_SUSPEND_BLUETOOTH_DATA_NOT_EXIST    | 14   | 申请BLUETOOTH_INTERACTION类型长时任务，但是一段时间没有蓝牙数据流。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| SYSTEM_SUSPEND_POSITION_NOT_MOVED          | 15   | 申请LOCATION类型长时任务，但是一段时间内设备处于绝对静止状态。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| SYSTEM_SUSPEND_AUDIO_PLAYBACK_MUTE         | 16   | 申请AUDIO_PLAYBACK类型长时任务，但是一段时间内处于整机静音状态。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| SYSTEM_SUSPEND_NEARLINK_NOT_USED         | 17   | 申请星闪类型长时任务，但是一段时间没有星闪配对连接。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| SYSTEM_SUSPEND_NEARLINK_DATA_NOT_EXIST           | 18   | 申请星闪类型长时任务，但是一段时间没有星闪数据流。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| SYSTEM_SUSPEND_USER_UNAUTHORIZED           | 19   | 申请特殊场景类型长时任务，但是用户未授权。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
-| SYSTEM_SUSPEND_USB_NOT_USED                | 20   | 申请USB类型长时任务，但是未使用USB设备。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.1 <br/>**ArkTS-Sta起始版本：** 26.0.1 |
-| SYSTEM_SUSPEND_USB_ALREADY_OCCUPIED        | 21   | 申请USB类型长时任务，但是USB设备已经被占用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.1 <br/>**ArkTS-Sta起始版本：** 26.0.1 |
+| SYSTEM_SUSPEND_VOIP_NOT_USED               | 13   | 申请VOIP类型长时任务，但是未检测到音频流或者录音流。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0 |
+| SYSTEM_SUSPEND_BLUETOOTH_DATA_NOT_EXIST    | 14   | 申请BLUETOOTH_INTERACTION类型长时任务，但是一段时间没有蓝牙数据流。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0 |
+| SYSTEM_SUSPEND_POSITION_NOT_MOVED          | 15   | 申请LOCATION类型长时任务，但是一段时间内设备处于绝对静止状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0 |
+| SYSTEM_SUSPEND_AUDIO_PLAYBACK_MUTE         | 16   | 申请AUDIO_PLAYBACK类型长时任务，但是一段时间内处于整机静音状态。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0 |
+| SYSTEM_SUSPEND_NEARLINK_NOT_USED         | 17   | 申请星闪类型长时任务，但是一段时间没有星闪配对连接。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0 |
+| SYSTEM_SUSPEND_NEARLINK_DATA_NOT_EXIST           | 18   | 申请星闪类型长时任务，但是一段时间没有星闪数据流。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0 |
+| SYSTEM_SUSPEND_USER_UNAUTHORIZED           | 19   | 申请特殊场景类型长时任务，但是用户未授权。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br>**ArkTS-Sta起始版本：** 26.0.0 |
+| SYSTEM_SUSPEND_USB_NOT_USED                | 20   | 申请USB类型长时任务，但是未使用USB设备。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.1 <br>**ArkTS-Sta起始版本：** 26.0.1 |
+| SYSTEM_SUSPEND_USB_ALREADY_OCCUPIED        | 21   | 申请USB类型长时任务，但是USB设备已经被占用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.1 <br>**ArkTS-Sta起始版本：** 26.0.1 |
 
 ## ContinuousTaskActiveInfo<sup>20+</sup>
 
@@ -2974,12 +2974,12 @@ export default class EntryAbility extends UIAbility {
 <!--Table: 25%; 25%; 8%; 8%; 44%-->
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | 否    | 否    | 长时任务主类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 主类型与子类型必须匹配。具体对应关系请参考[长时任务主类型与子类型对照表](js-apis-resourceschedule-backgroundTaskManager-continuousTaskTypeMapping.md)。<br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 24      |
-| backgroundTaskSubmodes | [BackgroundTaskSubmode](#backgroundtasksubmode21)[] | 否    | 否    | 长时任务子类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**说明：** 主类型与子类型必须匹配。具体对应关系请参考[长时任务主类型与子类型对照表](js-apis-resourceschedule-backgroundTaskManager-continuousTaskTypeMapping.md)。<br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 24 |
-| wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 否    | 通知参数，用于指定点击长时任务通知后跳转的界面。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 24  |
-| combinedTaskNotification | boolean   | 否    | 是    | 是否合并通知，true表示合并，false表示不合并，默认为false。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 该属性在[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。<br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 24 |
-| continuousTaskId | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 是    | 长时任务ID，默认值为-1。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br/>**说明：** 如果combinedTaskNotification取值为true，则该值为必填项，且必须是存在的ID。<br/>作为[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口入参时，该属性必填，且必须是存在的ID。<br/>可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口查看当前所有长时任务信息。<br/> **ArkTS-Dyn起始版本：** 21 <br/> **ArkTS-Sta起始版本：** 24    |
-| progressInfo | [ProgressInfo](#progressinfo)   | 否    | 是    | 长时任务通知进度信息。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**说明：** 该属性仅在通过[startcontinuoustask()](#backgroundtaskmanagerstartcontinuoustask)接口申请长时任务，且长时任务类型包含数据传输类型[MODE_DATA_TRANSFER](#backgroundtaskmode21)时生效。<br/>在[updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21)接口中使用该属性报错，错误码为[9800006](errorcode-backgroundTaskMgr.md#9800006-长时任务通知信息校验失败)。<!--RP1--><!--RP1End--> <br/> **ArkTS-Dyn起始版本：** 26.0.1 <br/> **ArkTS-Sta起始版本：** 26.0.1  |
+| backgroundTaskModes       | [BackgroundTaskMode](#backgroundtaskmode21)[] | 否    | 否    | 长时任务主类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**说明：** 主类型与子类型必须匹配。具体对应关系请参考[长时任务主类型与子类型对照表](js-apis-resourceschedule-backgroundTaskManager-continuousTaskTypeMapping.md)。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24      |
+| backgroundTaskSubmodes | [BackgroundTaskSubmode](#backgroundtasksubmode21)[] | 否    | 否    | 长时任务子类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**说明：** 主类型与子类型必须匹配。具体对应关系请参考[长时任务主类型与子类型对照表](js-apis-resourceschedule-backgroundTaskManager-continuousTaskTypeMapping.md)。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24 |
+| wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 否    | 通知参数，用于指定点击长时任务通知后跳转的界面。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24  |
+| combinedTaskNotification | boolean   | 否    | 是    | 是否合并通知，true表示合并，false表示不合并，默认为false。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**说明：** 该属性在[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24 |
+| continuousTaskId | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 是    | 长时任务ID，默认值为-1。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**说明：** 如果combinedTaskNotification取值为true，则该值为必填项，且必须是存在的ID。<br>作为[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口入参时，该属性必填，且必须是存在的ID。<br>可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口查看当前所有长时任务信息。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24    |
+| progressInfo | [ProgressInfo](#progressinfo)   | 否    | 是    | 长时任务通知进度信息。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**说明：** 该属性仅在通过[startcontinuoustask()](#backgroundtaskmanagerstartcontinuoustask)接口申请长时任务，且长时任务类型包含数据传输类型[MODE_DATA_TRANSFER](#backgroundtaskmode21)时生效。<br>在[updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21)接口中使用该属性报错，错误码为[9800006](errorcode-backgroundTaskMgr.md#9800006-长时任务通知信息校验失败)。<!--RP1--><!--RP1End--> <br> **ArkTS-Dyn起始版本：** 26.0.1 <br> **ArkTS-Sta起始版本：** 26.0.1  |
 
 ### isModeSupported<sup>21+</sup>
 
@@ -3447,25 +3447,25 @@ class EntryAbility extends UIAbility {
 
 ## BackgroundTaskMode<sup>21+</sup>
 
-长时任务主类型。通常与长时任务子类型[BackgroundTaskSubmode](#backgroundtasksubmode21)配合使用，对照关系请参考[长时任务主类型与子类型对照表](js-apis-resourceschedule-backgroundTaskManager-continuousTaskTypeMapping.md)，两者共同作为API version 21新增的申请[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)、更新[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)长时任务接口入参，用于指定长时任务类型。<br/>仅当主类型为MODE_SPECIAL_SCENARIO_PROCESSING特殊场景类型，或非PC/2in1设备主类型为MODE_TASK_KEEPING计算任务时，调用长时任务相关接口时需同时申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)，其他场景无需申请该权限。
+长时任务主类型。通常与长时任务子类型[BackgroundTaskSubmode](#backgroundtasksubmode21)配合使用，对照关系请参考[长时任务主类型与子类型对照表](js-apis-resourceschedule-backgroundTaskManager-continuousTaskTypeMapping.md)，两者共同作为API version 21新增的申请[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)、更新[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)长时任务接口入参，用于指定长时任务类型。<br>仅当主类型为MODE_SPECIAL_SCENARIO_PROCESSING特殊场景类型，或非PC/2in1设备主类型为MODE_TASK_KEEPING计算任务时，调用长时任务相关接口时需同时申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)，其他场景无需申请该权限。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 <!--Table: 40%; 10%; 50%-->
 | 名称                     | 值  | 说明                    |
 | ------------------------ | ---- | --------------------- |
-| MODE_DATA_TRANSFER              | 1         | 数据传输。<br/>使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。<br/>**说明：** <br/>1. 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br/>2. 更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24                  |
-| MODE_AUDIO_PLAYBACK             | 2         | 音视频播放。<br/>使用场景举例：音频、视频在后台播放，音视频投播。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**说明：** 申请/更新MODE_AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请/更新长时任务成功后会在通知栏显示通知。接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。 <br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24               |
-| MODE_AUDIO_RECORDING            | 3         | 录制。<br/>使用场景举例：录音、录屏退后台。<!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd--> <br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24                  |
-| MODE_LOCATION                   | 4         | 定位导航。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24                    |
-| MODE_BLUETOOTH_INTERACTION      | 5         | 蓝牙相关业务。<br/>使用场景举例：通过蓝牙传输文件时退后台。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24              |
-| MODE_MULTI_DEVICE_CONNECTION    | 6         | 多设备互联。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>使用场景举例：分布式业务连接、投播。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24            |
-| MODE_VOIP                       | 8         | 音视频通话。<br/>使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。 <!--Del--><br/>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->  <br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24            |
-| MODE_TASK_KEEPING               | 9         | 计算任务。<br/>使用场景举例：杀毒软件。<br/>**说明：** 仅对PC/2in1设备开放，或者非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24   |
-| MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>    | 12         | 多媒体相关业务。<br/>使用场景举例：音视频播放、录制、音视频通话场景，场景需与长时任务子类型相匹配。在上述场景下，选择此类型或者对应的长时任务主类型均可。例如：音视频播放场景可以申请MODE_AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD长时任务主类型。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 24              |
-| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型（仅对Phone、Tablet、PC/2in1设备开放）。<br/>使用场景举例：应用在后台导出媒体文件、应用使用三方投播组件在后台进行投播、应用在后台有室内运动场景，场景需与长时任务子类型相匹配。<br/>**说明：**  <br/>1. 如果应用需要在后台长时间运行，可以通过[requestAuthFromUser](#requestauthfromuser22)接口请求用户授权、通过[checkSpecialScenarioAuth](#checkspecialscenarioauth22)接口查询用户授权结果。<br/>2. 从API version 24开始，仅对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_special_scenario)的应用开放。API version 23及之前版本，仅对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放，已经申请该权限的应用在API version 24之后不受影响。<br/>3. 必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。<br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 24   |
-| MODE_NEARLINK | 14 | 星闪业务。<br/>使用场景举例：通过星闪传输文件时退后台。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/> **ArkTS-Sta起始版本：** 26.0.0 |
-| MODE_USB_CONNECTION | 16 | USB业务（仅对Phone、Tablet、PC/2in1、TV设备开放）。<br/>使用场景举例：通过USB设备进行音频播放时退后台。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.1 <br/> **ArkTS-Sta起始版本：** 26.0.1 |
+| MODE_DATA_TRANSFER              | 1         | 数据传输。<br>使用场景举例：非托管形式的上传、下载，如在浏览器后台上传或下载数据。<br>**说明：** <br>1. 在数据传输时，应用需要更新进度，如果进度长时间（超过10分钟）未更新，数据传输的长时任务会被取消。<br>2. 更新进度的通知类型必须为实况窗，具体实现可参考[startBackgroundRunning()](#backgroundtaskmanagerstartbackgroundrunning12)中的示例。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24                  |
+| MODE_AUDIO_PLAYBACK             | 2         | 音视频播放。<br>使用场景举例：音频、视频在后台播放，音视频投播。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**说明：** 申请/更新MODE_AUDIO_PLAYBACK类型长时任务但不接入AVSession，申请/更新长时任务成功后会在通知栏显示通知。接入AVSession后，后台任务模块不会发送通知栏通知，由AVSession发送通知。 <br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24               |
+| MODE_AUDIO_RECORDING            | 3         | 录制。<br>使用场景举例：录音、录屏退后台。<!--Del--><br>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd--> <br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24                  |
+| MODE_LOCATION                   | 4         | 定位导航。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24                    |
+| MODE_BLUETOOTH_INTERACTION      | 5         | 蓝牙相关业务。<br>使用场景举例：通过蓝牙传输文件时退后台。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24              |
+| MODE_MULTI_DEVICE_CONNECTION    | 6         | 多设备互联。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>使用场景举例：分布式业务连接、投播。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24            |
+| MODE_VOIP                       | 8         | 音视频通话。<br>使用场景举例：某些聊天类应用（具有音视频业务）音频、视频通话时退后台。 <!--Del--><br>**说明：** 系统应用申请/更新该类型的长时任务，没有通知栏消息。<!--DelEnd-->  <br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24            |
+| MODE_TASK_KEEPING               | 9         | 计算任务。<br>使用场景举例：杀毒软件。<br>**说明：** 仅对PC/2in1设备开放，或者非PC/2in1设备但申请了ACL权限为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24   |
+| MODE_AV_PLAYBACK_AND_RECORD<sup>22+</sup>    | 12         | 多媒体相关业务。<br>使用场景举例：音视频播放、录制、音视频通话场景，场景需与长时任务子类型相匹配。在上述场景下，选择此类型或者对应的长时任务主类型均可。例如：音视频播放场景可以申请MODE_AUDIO_PLAYBACK或者MODE_AV_PLAYBACK_AND_RECORD长时任务主类型。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 24              |
+| MODE_SPECIAL_SCENARIO_PROCESSING<sup>22+</sup> | 13 | 特殊场景类型（仅对Phone、Tablet、PC/2in1设备开放）。<br>使用场景举例：应用在后台导出媒体文件、应用使用三方投播组件在后台进行投播、应用在后台有室内运动场景，场景需与长时任务子类型相匹配。<br>**说明：**  <br>1. 如果应用需要在后台长时间运行，可以通过[requestAuthFromUser](#requestauthfromuser22)接口请求用户授权、通过[checkSpecialScenarioAuth](#checkspecialscenarioauth22)接口查询用户授权结果。<br>2. 从API version 24开始，仅对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_special_scenario)的应用开放。API version 23及之前版本，仅对申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)的应用开放，已经申请该权限的应用在API version 24之后不受影响。<br>3. 必须单独使用且不支持通知合并，即申请或更新长时任务时，长时任务类型只能有特殊场景类型，否则返回错误。<br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 24   |
+| MODE_NEARLINK | 14 | 星闪业务。<br>使用场景举例：通过星闪传输文件时退后台。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0 <br> **ArkTS-Sta起始版本：** 26.0.0 |
+| MODE_USB_CONNECTION | 16 | USB业务（仅对Phone、Tablet、PC/2in1、TV设备开放）。<br>使用场景举例：通过USB设备进行音频播放时退后台。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.1 <br> **ArkTS-Sta起始版本：** 26.0.1 |
 
 ## BackgroundTaskSubmode<sup>21+</sup>
 
@@ -3477,16 +3477,16 @@ class EntryAbility extends UIAbility {
 | 名称                     | 值  | 说明                    |
 | ----------------------- | ---- | --------------------- |
 | SUBMODE_CAR_KEY_NORMAL_NOTIFICATION     | 1    | 车钥匙类型，通知类型为普通文本通知。 <br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24        |
-| SUBMODE_NORMAL_NOTIFICATION    | 2    | 普通文本通知。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24                    |
+| SUBMODE_NORMAL_NOTIFICATION    | 2    | 普通文本通知。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24                    |
 | SUBMODE_LIVE_VIEW_NOTIFICATION  | 3    | 实况窗通知。 <br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24             |
-| SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<sup>22+</sup>  | 4    | 音视频播放，通知类型为普通文本通知。根据实际场景选择是否接入[AVSession](../../media/avsession/avsession-overview.md)。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 24              |
-| SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup>  | 5    | 已接入[AVSession](../../media/avsession/avsession-overview.md)的音视频播放场景，不发送通知。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 24            |
+| SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION<sup>22+</sup>  | 4    | 音视频播放，通知类型为普通文本通知。根据实际场景选择是否接入[AVSession](../../media/avsession/avsession-overview.md)。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 24              |
+| SUBMODE_AVSESSION_AUDIO_PLAYBACK<sup>22+</sup>  | 5    | 已接入[AVSession](../../media/avsession/avsession-overview.md)的音视频播放场景，不发送通知。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 24            |
 | SUBMODE_AUDIO_RECORD_NORMAL_NOTIFICATION<sup>22+</sup>  | 6    | 录音，通知类型为普通文本通知。 <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 24           |
 | SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION<sup>22+</sup>  | 7    | 录屏，通知类型为普通文本通知。 <br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 24           |
 | SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION<sup>22+</sup>  | 8    | 通话，通知类型为普通文本通知。<br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 24            |
 | SUBMODE_MEDIA_PROCESS_NORMAL_NOTIFICATION<sup>22+</sup>  | 9 | 媒体处理，例如：应用在后台导出媒体文件，通知类型为普通文本通知。<br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 24    |
 | SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION<sup>22+</sup>  | 10 | 视频投播，例如：应用使用三方投播组件在后台进行投播，通知类型为普通文本通知。<br> **ArkTS-Dyn起始版本：** 22 <br> **ArkTS-Sta起始版本：** 24  |
-| SUBMODE_WORK_OUT_NORMAL_NOTIFICATION<sup>23+</sup>  | 11 | 运动，例如：应用在后台有室内跑步场景，通知类型为普通文本通知。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。<br> **ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 24 |
+| SUBMODE_WORK_OUT_NORMAL_NOTIFICATION<sup>23+</sup>  | 11 | 运动，例如：应用在后台有室内跑步场景，通知类型为普通文本通知。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **ArkTS-Dyn起始版本：** 23 <br> **ArkTS-Sta起始版本：** 24 |
 
 ## UserAuthResult<sup>22+</sup>
 
@@ -3504,8 +3504,8 @@ class EntryAbility extends UIAbility {
 | NOT_SUPPORTED | 0 | 不支持。例如：申请的长时任务主类型非MODE_SPECIAL_SCENARIO_PROCESSING时，不支持申请用户授权是否能在后台长时间运行。 |
 | NOT_DETERMINED | 1 | 用户未操作。 |
 | DENIED  | 2 | 拒绝。    |
-| GRANTED_ONCE | 3 | 本次允许。<br/>**说明：** 在应用退出时该授权记录会被清除。  |
-| GRANTED_ALWAYS | 4 | 始终允许。<br/>**说明：** <br/>当接收到以下公共事件时，相关授权记录将被清除：<br/>[COMMON_EVENT_PACKAGE_ADDED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_added)、[COMMON_EVENT_PACKAGE_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_removed)、[COMMON_EVENT_BUNDLE_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_bundle_removed)、[COMMON_EVENT_PACKAGE_FULLY_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_fully_removed)、[COMMON_EVENT_PACKAGE_CHANGED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_changed)。  |
+| GRANTED_ONCE | 3 | 本次允许。<br>**说明：** 在应用退出时该授权记录会被清除。  |
+| GRANTED_ALWAYS | 4 | 始终允许。<br>**说明：** <br>当接收到以下公共事件时，相关授权记录将被清除：<br>[COMMON_EVENT_PACKAGE_ADDED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_added)、[COMMON_EVENT_PACKAGE_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_removed)、[COMMON_EVENT_BUNDLE_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_bundle_removed)、[COMMON_EVENT_PACKAGE_FULLY_REMOVED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_fully_removed)、[COMMON_EVENT_PACKAGE_CHANGED](../../../application-dev/reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_package_changed)。  |
 
 ## ProgressInfo
 
@@ -3523,8 +3523,8 @@ class EntryAbility extends UIAbility {
 | --------------- | --------------------------------- | ---- | ---- | ---------------- |
 | title           | string                            | 否    | 否    | 通知标题。 |
 | fileName        | string                            | 否    | 否    | 通知内容。 |
-| progressValue   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 是    | 通知进度。取值范围：[0,100]。<br/>**说明：** 如果该字段存在，则通知有进度环，通知类型为实况窗通知。如果该字段不存在或值为100，则通知无进度环，通知类型为普通通知。 |
-| isMute          | boolean                           | 否    | 是    | 通知进度达到100时是否静音，true表示静音，false表示非静音（响铃+震动），默认为false。<br/>**说明：** 该字段仅在progressValue字段值为100时生效。|
+| progressValue   | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否    | 是    | 通知进度。取值范围：[0,100]。<br>**说明：** 如果该字段存在，则通知有进度环，通知类型为实况窗通知。如果该字段不存在或值为100，则通知无进度环，通知类型为普通通知。 |
+| isMute          | boolean                           | 否    | 是    | 通知进度达到100时是否静音，true表示静音，false表示非静音（响铃+震动），默认为false。<br>**说明：** 该字段仅在progressValue字段值为100时生效。|
 
 ## DataTransferProgress
 
