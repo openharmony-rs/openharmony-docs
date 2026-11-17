@@ -167,8 +167,6 @@ void OH_Usb_FreeConfigDescriptor(struct UsbDdkConfigDescriptor * const config)
 
 Releases a configuration descriptor after use to prevent memory leakage.
 
-**Required permissions**: ohos.permission.ACCESS_DDK_USB
-
 **Since**: 10
 
 
@@ -446,8 +444,6 @@ void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)
 **Description**
 
 Destroys a buffer. To prevent resource leakage, destroy a buffer in time after use.
-
-**Required permissions**: ohos.permission.ACCESS_DDK_USB
 
 **Since**: 10
 
