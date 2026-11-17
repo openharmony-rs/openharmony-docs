@@ -408,9 +408,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 ## VolumeLimitExceededEvent
 
-音量超过阈值时，应用接收的通知事件。
-
-收到通知后，应用必须通过`confirmVolumeLimitExceeded`提交确认结果，才能继续调节音量。
+描述音量超过阈值时的通知事件。收到通知后，应用在继续调整音量前必须通过`confirmVolumeLimitExceeded`发送确认结果。
 
 **起始版本：** 26.0.1
 
@@ -422,10 +420,10 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| uid | number | 否 | 否 | 触发音量超过阈值的进程UID。 |
+| uid | number | 否 | 否 | 指示触发音量越限的进程的UID。 |
 | volumeType | [AudioVolumeType](#audiovolumetype) | 否 | 否 | 当前音量类型。 |
-| currentVolume | number | 否 | 否 | 当前音量级别。范围介于`getMinSystemVolume()`和`getMaxSystemVolume()`接口获取的值之间。 |
-| volumeThreshold | number | 否 | 否 | 当前音量类型的音量阈值。范围介于`getMinSystemVolume()`和`getMaxSystemVolume()`接口获取的值之间。 |
+| currentVolume | number | 否 | 否 | 当前音量等级。取值范围在`getMinSystemVolume()`和`getMaxSystemVolume()`获取的值之间。 |
+| volumeThreshold | number | 否 | 否 | 当前音量类型的音量阈值。取值范围在`getMinSystemVolume()`和`getMaxSystemVolume()`获取的值之间。 |
 
 ## ConnectType<sup>9+</sup>
 
@@ -1881,7 +1879,7 @@ audioVolumeManager.offVolumePercentageChange(volumePercentageChangeCallback);
 
 onVolumeLimitExceeded(callback: Callback\<VolumeLimitExceededEvent>): void
 
-监听当前音量超过音量保护阈值的事件。使用callback异步回调。
+监听当前音量超过音量保护阈值的事件。
 
 **起始版本：** 26.0.1
 
@@ -1895,7 +1893,7 @@ onVolumeLimitExceeded(callback: Callback\<VolumeLimitExceededEvent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| callback | Callback\<[VolumeLimitExceededEvent](#volumelimitexceededevent)> | 是 | 回调函数，返回音量超过阈值的事件信息。 |
+| callback | Callback\<[VolumeLimitExceededEvent](#volumelimitexceededevent)> | 是 | 用于获取音量限制事件的回调函数。 |
 
 **错误码：**
 
@@ -1921,7 +1919,7 @@ audioVolumeManager.onVolumeLimitExceeded((event: audio.VolumeLimitExceededEvent)
 
 offVolumeLimitExceeded(callback?: Callback\<VolumeLimitExceededEvent>): void
 
-取消当前音量超过音量保护阈值的事件监听。callback参数为空时，取消该事件的所有监听。
+取消监听当前音量是否超过音量保护阈值。
 
 **起始版本：** 26.0.1
 
@@ -1935,7 +1933,7 @@ offVolumeLimitExceeded(callback?: Callback\<VolumeLimitExceededEvent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| callback | Callback\<[VolumeLimitExceededEvent](#volumelimitexceededevent)> | 否 | 需要取消监听的回调函数。 |
+| callback | Callback\<[VolumeLimitExceededEvent](#volumelimitexceededevent)> | 否 | 用于获取音量限制事件的回调函数。 |
 
 **错误码：**
 
@@ -1967,7 +1965,7 @@ audioVolumeManager.offVolumeLimitExceeded();
 
 confirmVolumeLimitExceeded(volumeType: AudioVolumeType, result: boolean): void
 
-确认音量调节超过音量保护阈值的结果。
+确认超出音量保护阈值的音量调节结果。
 
 **起始版本：** 26.0.1
 
@@ -1981,8 +1979,8 @@ confirmVolumeLimitExceeded(volumeType: AudioVolumeType, result: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | 是 | 音量类型。不同音量类型的保护阈值不同，此参数用于确定当前音量类型对应的阈值。 |
-| result | boolean | 是 | 是否确认音量调节超过音量保护阈值。true表示确认，false表示不确认。 |
+| volumeType | [AudioVolumeType](#audiovolumetype) | 是 | 音频音量类型，不同的音量类型有不同的阈值，volumeType用于标识当前音量类型的阈值。 |
+| result | boolean | 是 | 确认音量调整超出音量保护阈值。false表示未超出。|
 
 **错误码：**
 
