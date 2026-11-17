@@ -5081,9 +5081,9 @@ let client: socket.LocalSocket = socket.constructLocalSocketInstance();
 client.on('message', (value: socket.LocalSocketMessageInfo) => {
   const uintArray = new Uint8Array(value.message)
   let messageView = '';
-  for (let i = 0; i < uintArray.length; i++) {
-    messageView += String.fromCharCode(uintArray[i]);
-  }
+  uintArry.forEach((code:number) => {
+    messageView += String.fromCharCode(code);
+    });
   console.info('total: ' + JSON.stringify(value));
   console.info('message information: ' + messageView);
 });
@@ -5122,9 +5122,9 @@ let messageView = '';
 let callback = (value: socket.LocalSocketMessageInfo) => {
   const uintArray = new Uint8Array(value.message)
   let messageView = '';
-  for (let i = 0; i < uintArray.length; i++) {
-    messageView += String.fromCharCode(uintArray[i]);
-  }
+  uintArry.forEach((code:number) => {
+    messageView += String.fromCharCode(code);
+    });
   console.info('total: ' + JSON.stringify(value));
   console.info('message information: ' + messageView);
 }
@@ -6240,9 +6240,9 @@ server.on('connect', (connection: socket.LocalSocketConnection) => {
   connection.on('message', (value: socket.LocalSocketMessageInfo) => {
     const uintArray = new Uint8Array(value.message);
     let messageView = '';
-    for (let i = 0; i < uintArray.length; i++) {
-      messageView += String.fromCharCode(uintArray[i]);
-    }
+    uintArry.forEach((code:number) => {
+      messageView += String.fromCharCode(code);
+    });
     console.info('total: ' + JSON.stringify(value));
     console.info('message information: ' + messageView);
   });
