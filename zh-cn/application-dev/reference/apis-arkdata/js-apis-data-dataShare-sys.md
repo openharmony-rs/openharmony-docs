@@ -985,6 +985,55 @@ if (dataShareHelper != undefined) {
 }
 ```
 
+### cleanInvalidData<sup>26.1.0+</sup>
+
+cleanInvalidData(validSubscribers: Array&lt;string&gt;): Promise&lt;void&gt;
+
+使用有效的订阅者ID，清理无效订阅者ID的数据。
+
+订阅者ID不在有效订阅者ID列表中的模板将从服务端移除。仅支持静默访问。
+
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+**参数：**
+
+| 参数名     | 类型        | 必填 | 说明                       |
+| -------- | -------------| ---- | ------------------------- |
+| validSubscribers | Array&lt;string&gt; | 是   | 有效的订阅者ID列表，取值为调用[addTemplate](#addtemplate10)时传入的subscriberId。<br>最大长度为50且不能为空。 |
+
+**返回值：**
+
+| 类型             | 说明                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| Promise&lt;void&gt; | Promise对象。无返回结果。                         |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[数据共享错误码](errorcode-datashare.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息              |
+| -------- | -------------------- |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 15700013 | The DataShareHelper instance is already closed. |
+| 15700016 | Parameter error.Possible causes:<br>1. The array parameter exceeds the allowed length.<br>2. The array parameter is empty. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let uri = "datashareproxy://com.samples.datasharetest.DataShare";
+// 传入当前有效的订阅者ID列表，列表外的模板数据将被清理
+let validSubscribers: Array<string> = ['11', '12'];
+if (dataShareHelper != undefined) {
+  (dataShareHelper as dataShare.DataShareHelper).cleanInvalidData(validSubscribers).then(() => {
+    console.info("cleanInvalidData success");
+  }).catch((err: BusinessError) => {
+    console.error(`cleanInvalidData fail, code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
 ### on('rdbDataChange')<sup>10+</sup>
 
 on(type: 'rdbDataChange', uris: Array&lt;string&gt;, templateId: TemplateId, callback: AsyncCallback&lt;RdbDataChangeNode&gt;): Array&lt;OperationResult&gt;
