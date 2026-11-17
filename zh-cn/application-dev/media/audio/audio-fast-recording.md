@@ -51,20 +51,53 @@
 
 ### 设置低时延模式
 
-开发者通过调用[OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode)，设置[OH_AudioStream_LatencyMode](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode)来决定音频流使用的模式。
+1. 判断当前设备和当前音频场景是否支持低时延。
 
-设置低时延模式开发示例：
+    <!-- @[IsFastRecordingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
-<!-- @[latencyMode_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+    ``` C++
+    // 构造与待创建录制流一致的音频流参数。
+    OH_AudioStreamInfo streamInfo;
+    const int SAMPLING_RATE_48K = 48000;
+    streamInfo.samplingRate = SAMPLING_RATE_48K;
+    streamInfo.channelLayout = CH_LAYOUT_STEREO;
+    streamInfo.encodingType = AUDIOSTREAM_ENCODING_TYPE_RAW;
+    streamInfo.sampleFormat = AUDIOSTREAM_SAMPLE_S16LE;
 
-``` C++
-OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
-OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
-```
+    // 查询当前设备是否支持低时延录制。
+    bool supported = false;
+    supported = OH_AudioStreamManager_IsFastRecordingSupported(
+        streamManager, &streamInfo, AUDIOSTREAM_SOURCE_TYPE_MIC);
+    ```
 
-从API版本20开始，支持低时延相关查询接口。
-- 开发者通过调用[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)来获取音频录制流是否正在低时延状态下工作。
-- 在部分特殊场景（如：存在更高优先级流、当前连接设备不支持等）下，开发者可以通过调用[OH_AudioCapturer_OnFastStatusChange()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_onfaststatuschange)来获取低时延状态改变事件。
+2. 设置低时延模式。
+
+    在查询结果为支持的前提下，通过[OH_AudioStreamBuilder_SetLatencyMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setlatencymode)设置[OH_AudioStream_LatencyMode](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_latencymode)来决定音频流使用的模式。
+    <!-- @[latencyMode_Capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+
+    ``` C++
+    OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_FAST;
+    OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
+    ```
+
+3. 监听状态变化。
+
+    在创建音频流之前，可通过注册`OH_AudioCapturer_OnFastStatusChange`回调，用来在音频流运行期间，及时感知到模式发生变化。
+    <!-- @[SetCapturerFastStatusChangeCallback_Fast](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+
+    ``` C++
+    OH_AudioStreamBuilder_SetCapturerFastStatusChangeCallback(builder, MyOnFastStatusChange, nullptr);
+    ```
+
+4. 查询低时延流实际运行状态。
+
+    音频流创建并启动后，可通过[OH_AudioCapturer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_getfaststatus)来获取音频录制流是否正在低时延状态下工作。其返回值为OH_AudioStream_FastStatus枚举：AUDIOSTREAM_FASTSTATUS_NORMAL表示运行在普通模式，AUDIOSTREAM_FASTSTATUS_FAST表示运行在低时延模式，AUDIOSTREAM_FASTSTATUS_ULTRA_FAST表示运行在超低时延模式（从API版本26.1.0起，该接口可返回该值）。
+    <!-- @[GetFastStatus_UltraFast](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
+
+    ``` C++
+    OH_AudioStream_FastStatus fastStatus = AUDIOSTREAM_FASTSTATUS_NORMAL;
+    OH_AudioCapturer_GetFastStatus(g_ultraFastCapturer, &fastStatus);
+    ```
 
 ### 设置超低时延模式
 
