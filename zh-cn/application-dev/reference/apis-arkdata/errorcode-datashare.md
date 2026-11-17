@@ -172,3 +172,25 @@ No permission to access the data specified by the URI.
 **处理步骤**
 
 咨询数据提供方访问指定数据所需的权限。
+
+## 15700016 订阅者列表参数错误
+
+**错误信息**
+
+Parameter error. Possible causes: 1. The array parameter exceeds the allowed length. 2. The array parameter is empty.
+
+**错误描述**
+
+参数错误。可能原因：1. 数组参数长度超出范围；2. 数组参数长度为空。
+
+**可能原因**
+
+1. 数组参数长度超出范围。
+
+2. 数组参数长度为空。
+
+**处理步骤**
+
+1. 检查接口传入的数组的长度是否超过50。
+
+2. 检查接口传入的数组的长度是否为0。
