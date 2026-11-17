@@ -33,7 +33,7 @@ import {
 
 RecentPhotoComponent({ recentPhotoOptions?: RecentPhotoOptions, onRecentPhotoCheckResult?: RecentPhotoCheckResultCallback, onRecentPhotoClick: RecentPhotoClickCallback, onRecentPhotoCheckInfo?: RecentPhotoCheckInfoCallback, })
 
-应用可以在布局中嵌入图最近图片组件，用于访问按创建时间排序的公共目录下最新的一个照片或视频文件。应用无需申请媒体访问权限，即可根据配置项访问。
+应用可以在布局中嵌入最近图片组件，用于访问按创建时间排序的公共目录下最新的一个照片或视频文件。应用无需申请媒体访问权限，即可根据配置项访问。
 
 **装饰器类型：** @Component
 
