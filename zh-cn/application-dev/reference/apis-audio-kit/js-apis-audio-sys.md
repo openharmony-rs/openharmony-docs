@@ -661,9 +661,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 
 ## VolumeLimitExceededEvent
 
-音量超过阈值时，应用接收的通知事件。
-
-收到通知后，应用必须通过`confirmVolumeLimitExceeded`提交确认结果，才能继续调节音量。
+描述表示音量超过阈值时的通知事件。在收到通知后，应用必须发送确认结果。在继续调整音量之前，通过`confirmVolumeLimitExceeded`进行确认。
 
 **起始版本：** 26.0.1
 
@@ -2576,7 +2574,7 @@ audioVolumeManager.offVolumePercentageChange(volumePercentageChangeCallback);
 
 onVolumeLimitExceeded(callback: Callback\<VolumeLimitExceededEvent>): void
 
-监听当前音量超过音量保护阈值的事件。使用callback异步回调。
+监听当前音量超过音量保护阈值的事件。
 
 **起始版本：** 26.0.1
 
@@ -2590,7 +2588,7 @@ onVolumeLimitExceeded(callback: Callback\<VolumeLimitExceededEvent>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| callback | Callback\<[VolumeLimitExceededEvent](#volumelimitexceededevent)> | 是 | 回调函数，返回音量超过阈值的事件信息。 |
+| callback | Callback\<[VolumeLimitExceededEvent](#volumelimitexceededevent)> | 是 | 回调函数，用于获取音量限制事件。 |
 
 **错误码：**
 
@@ -2616,7 +2614,7 @@ audioVolumeManager.onVolumeLimitExceeded((event: audio.VolumeLimitExceededEvent)
 
 offVolumeLimitExceeded(callback?: Callback\<VolumeLimitExceededEvent>): void
 
-取消当前音量超过音量保护阈值的事件监听。callback参数为空时，取消该事件的所有监听。
+取消订阅当前音量是否超过音量保护阈值的监控。
 
 **起始版本：** 26.0.1
 
@@ -2662,7 +2660,7 @@ audioVolumeManager.offVolumeLimitExceeded();
 
 confirmVolumeLimitExceeded(volumeType: AudioVolumeType, result: boolean): void
 
-确认音量调节超过音量保护阈值的结果。
+确认调整超出音量保护阈值的音量结果。
 
 **起始版本：** 26.0.1
 
@@ -2676,8 +2674,8 @@ confirmVolumeLimitExceeded(volumeType: AudioVolumeType, result: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| volumeType | [AudioVolumeType](#audiovolumetype) | 是 | 音量类型。不同音量类型的保护阈值不同，此参数用于确定当前音量类型对应的阈值。 |
-| result | boolean | 是 | 是否确认音量调节超过音量保护阈值。true表示确认，false表示不确认。 |
+| volumeType | [AudioVolumeType](#audiovolumetype) | 是 | 音频音量类型，不同的音量类型有不同的阈值，volumeType用于识别当前的音量类型阈值。 |
+| result | boolean | 是 | 确认音量调整已超过音量保护阈值。 |
 
 **错误码：**
 
