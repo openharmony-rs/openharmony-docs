@@ -99,7 +99,13 @@
     ``` C++
     OH_AudioStreamBuilder_SetRendererFastStatusChangeCallback(builder, MyOnFastStatusChange, nullptr);
     ```
-
+    <!-- @[Render_GetFastStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+    
+    ``` C++
+    // 查询音频流实际运行的低时延状态。
+    OH_AudioStream_FastStatus fastStatus = AUDIOSTREAM_FASTSTATUS_NORMAL;
+    OH_AudioStream_Result result = OH_AudioRenderer_GetFastStatus(audioRenderer, &fastStatus);
+    ```
 3. 监听状态变化。
 
     在创建音频流之前，可通过注册`OH_AudioRenderer_OnFastStatusChange`回调，用来在音频流运行期间，及时感知到模式发生变化。
