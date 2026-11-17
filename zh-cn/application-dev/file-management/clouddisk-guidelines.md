@@ -1284,6 +1284,8 @@ static napi_value UnregisterCallbackTable(napi_env env, napi_callback_info info)
 | 同一应用并发水合任务上限 | 5个（水合中状态） | 超出的水合请求排队等待，取数回调延迟下发。 |
 | 水合任务空闲超时 | 5分钟（每次Execute回传刷新计时） | 任务被取消，并通过回调表下发取消取数请求。 |
 
+调用OH_CloudDisk_Execute()回传数据的完整流程如下：
+
 <!-- @[execute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
@@ -1340,18 +1342,20 @@ static napi_value Execute(napi_env env, napi_callback_info info)
 }
 ```
 
-**占位符size与云侧文件实际size不一致的影响**
+**应用侧防滥用实践**
+
+**不一致的影响**
 
 - 预设值偏小：水合后文件被实际数据扩展至真实大小，进度总量、展示大小与应用侧记录的大小不一致，无法进行一致性校验。
-- 预设值偏大：水合完成后本地文件体积大于实际数据量，尾部区域无实际数据（以稀疏形式存在）；按st_size全量读取、拷贝、上传的链路会把尾部区域当作有效数据处理，尾部被写实时转为真实磁盘块，磁盘占用与流量被放大；占位符反复水合、脱水时预设值与实际大小持续偏离，无法校验实际占用。
+- 预设值偏大：水合完成后本地文件体积大于实际数据量，尾部区域无实际数据（以稀疏形式存在）；按st_size全量读取、拷贝、上传的链路会把尾部区域当作有效数据处理，尾部被写实时转为真实磁盘块，磁盘占用与流量被放大。
 
-**应用侧防滥用实践**
+**规避实践**
 
 - 创建占位符时按云侧文件实际大小设置logicalSize，云侧大小未知时先查询元数据获得实际大小后再创建，避免为未知大小的文件创建占位符。
 - 云侧文件大小变化时，需先通过OH_CloudDisk_GetPlaceholderState()确认目标文件为占位符文件，再调用OH_CloudDisk_UpdatePlaceholder()按云侧最新元数据重置占位符，详见下方示例代码。
 - 不要以st_size判断文件实际数据量：未水合占位符的st_size等于预设值但本地无数据，应以应用自身记录的云侧文件大小为准。
 
-云侧文件大小变化后重置占位符的示例代码如下（源自CloudDisk示例更新占位符元数据模块）：
+云侧文件大小变化后重置占位符的示例代码如下（源自CloudDisk示例更新占位符元数据模块；重置完成后占位符回到未水合状态，应用需再通过OH_CloudDisk_HydratePlaceholder()接口触发水合，并在收到取数回调后调用OH_CloudDisk_Execute()回传云侧最新数据，完成重新水合）：
 
 <!-- @[update_on_cloud_size_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/ets/pages/Index.ets) -->
 
