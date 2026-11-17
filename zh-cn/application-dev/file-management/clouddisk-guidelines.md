@@ -1377,7 +1377,9 @@ Button($r('app.string.update_on_cloud_size_change_btn'))
     }
     // 步骤2：按云侧最新元数据（大小、时间戳从云侧元数据查询获得，此处由入参模拟）
     // 更新占位符：本地已水合数据会被清空，占位符回到未水合状态；
-    // 若存在水合任务会返回OH_CLOUD_DISK_HYDRATE_IN_PROGRESS，可取消水合后重试
+    // 若存在水合任务会返回OH_CLOUD_DISK_HYDRATE_IN_PROGRESS，可取消水合后重试。
+    // 重置完成后，应用需再通过OH_CloudDisk_HydratePlaceholder()接口触发水合，
+    // 并在收到取数回调后调用OH_CloudDisk_Execute()回传云侧最新数据，完成重新水合
     let ret: number = cloudDisk.updatePlaceholder(
       this.updatePlaceholderSyncPath, this.updatePlaceholderFilePath,
       parseInt(this.updateOnCloudSizeChangeAtimeMs) || 0,
