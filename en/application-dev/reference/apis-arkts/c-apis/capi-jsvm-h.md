@@ -252,6 +252,14 @@ Provides the JSVM API define.<br> Provides API to Provide independent, standard,
 | [JSVM_EXTERN JSVM_Status OH_JSVM_RemoveHandlerForGC(JSVM_VM vm, JSVM_CBTriggerTimeForGC triggerTime, JSVM_HandlerForGC handler, void* userData)](#oh_jsvm_removehandlerforgc) | Remove VM GC Callback. |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_BackgroundDeserialize(JSVM_VM vm, JSVM_CodeCache cacheData, JSVM_DeserializeResult* result)](#oh_jsvm_backgrounddeserialize) | Deserialize JavaScript code cache in thread pool, and release JSVM_DeserializeResult with OH_JSVM_ReleaseDeserializeResult. |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseDeserializeResult(JSVM_DeserializeResult result)](#oh_jsvm_releasedeserializeresult) | Release deserialize result. |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateSharedArrayBuffer(JSVM_Env env, size_t byteLength, void** data, JSVM_Value* result)](#oh_jsvm_createsharedarraybuffer) | Creates an engine-managed JavaScript SharedArrayBuffer. |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsSharedArrayBuffer(JSVM_Env env, JSVM_Value value, bool* result)](#oh_jsvm_issharedarraybuffer) | Checks whether a value is a JavaScript SharedArrayBuffer. |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSharedArrayBufferInfo(JSVM_Env env, JSVM_Value sharedArrayBuffer, void** data, size_t* byteLength, size_t* maxByteLength)](#oh_jsvm_getsharedarraybufferinfo) | Gets information from a JavaScript SharedArrayBuffer.<br> All output parameters are optional. |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetSharedArrayBufferBackingStore(JSVM_Env env, JSVM_Value sharedArrayBuffer, JSVM_BackingStore* result)](#oh_jsvm_getsharedarraybufferbackingstore) | Acquires the backing store of a SharedArrayBuffer.<br> The returned handle owns a shared reference and remains valid after the source SharedArrayBuffer or its JSVM instance is destroyed. Release it with OH_JSVM_ReleaseBackingStore. |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_RetainBackingStore(JSVM_BackingStore backingStore, JSVM_BackingStore* result)](#oh_jsvm_retainbackingstore) | Creates an independent native handle that shares ownership of a backing store. |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseBackingStore(JSVM_BackingStore backingStore)](#oh_jsvm_releasebackingstore) | Releases one native backing-store handle.<br> JavaScript ArrayBuffer objects and other native handles that reference the same backing store remain valid. |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_GetBackingStoreInfo(JSVM_BackingStore backingStore, void** data, size_t* byteLength, size_t* maxByteLength, bool* isShared, bool* isResizable)](#oh_jsvm_getbackingstoreinfo) | Gets information directly from a VM-independent backing-store handle.<br> All output parameters are optional. |
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateSharedArrayBufferFromBackingStore(JSVM_Env env, JSVM_BackingStore backingStore, JSVM_Value* result)](#oh_jsvm_createsharedarraybufferfrombackingstore) | Creates a SharedArrayBuffer in an environment using an existing shared backing store.<br> The new SharedArrayBuffer and backingStore share ownership of the same memory. This function does not consume backingStore. |
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromExternalMemory(JSVM_Env env, void* externalData, size_t byteLength, JSVM_FinalizeArrayBuffer finalizeCb, void* finalizeHint, bool* copied, JSVM_Value* result)](#oh_jsvm_createarraybufferfromexternalmemory) | Creates a JavaScript ArrayBuffer whose content is initialized from user-provided external memory. The implementation may either directly reference the external memory (zero-copy) or copy the data into an internally managed buffer, depending on engine implementation.<br> When zero-copy is used, the ArrayBuffer directly references the external memory. The caller must NOT free it before the finalize callback is invoked.<br> When a copy occurs, the data is copied into engine-managed memory. The copied output parameter is set to true so the caller knows their memory is no longer referenced. The resulting ArrayBuffer's data pointer (from OH_JSVM_GetArraybufferInfo) will differ from externalData. |
 
 ## Function description
@@ -7130,6 +7138,249 @@ Release deserialize result.
 | Type | Description |
 | -- | -- |
 | JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | Returns JSVM funtions result code. [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) if the function executed successfully.\n [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) if any of the pointer arguments is NULL.\n |
+
+### OH_JSVM_CreateSharedArrayBuffer()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_CreateSharedArrayBuffer(JSVM_Env env, size_t byteLength, void** data, JSVM_Value* result)
+```
+
+**Description**
+
+Creates an engine-managed JavaScript SharedArrayBuffer.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateSharedArrayBuffer(JSVM_Env env, size_t byteLength, void** data, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateSharedArrayBuffer(JSVM_Env env, size_t byteLength, void** data, JSVM_Value* result)-End-->
+
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | [in] The environment that the API is invoked under. |
+| size_t byteLength | [in] Size of the shared buffer in bytes. |
+| void** data | [out] Optional output for the backing-store data address. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | [out] A JSVM_Value representing the created SharedArrayBuffer. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | Returns JSVM funtions result code. [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) on success.<br> [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) for invalid arguments.<br> [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) if allocation fails. |
+
+### OH_JSVM_IsSharedArrayBuffer()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_IsSharedArrayBuffer(JSVM_Env env, JSVM_Value value, bool* result)
+```
+
+**Description**
+
+Checks whether a value is a JavaScript SharedArrayBuffer.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsSharedArrayBuffer(JSVM_Env env, JSVM_Value value, bool* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_IsSharedArrayBuffer(JSVM_Env env, JSVM_Value value, bool* result)-End-->
+
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | [in] The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | [in] The JavaScript value to check. |
+| bool* result | [out] Receives true when value is a SharedArrayBuffer. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | Returns JSVM funtions result code. [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) on success.<br> [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) for invalid arguments. |
+
+### OH_JSVM_GetSharedArrayBufferInfo()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_GetSharedArrayBufferInfo(JSVM_Env env, JSVM_Value sharedArrayBuffer, void** data, size_t* byteLength, size_t* maxByteLength)
+```
+
+**Description**
+
+Gets information from a JavaScript SharedArrayBuffer.<br> All output parameters are optional.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSharedArrayBufferInfo(JSVM_Env env, JSVM_Value sharedArrayBuffer, void** data, size_t* byteLength, size_t* maxByteLength)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSharedArrayBufferInfo(JSVM_Env env, JSVM_Value sharedArrayBuffer, void** data, size_t* byteLength, size_t* maxByteLength)-End-->
+
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | [in]The environment that the API is invoked under. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) sharedArrayBuffer | [in] The SharedArrayBuffer to inspect. |
+| void** data | [out] Optional output for the backing-store data address. |
+| size_t* byteLength | [out] Optional output for the current length in bytes. |
+| size_t* maxByteLength | [out] Optional output for the maximum length in bytes. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | Returns JSVM funtions result code. [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) on success.<br> [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) if the value is not a SharedArrayBuffer or an argument is invalid. |
+
+### OH_JSVM_GetSharedArrayBufferBackingStore()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_GetSharedArrayBufferBackingStore(JSVM_Env env, JSVM_Value sharedArrayBuffer, JSVM_BackingStore* result)
+```
+
+**Description**
+
+Acquires the backing store of a SharedArrayBuffer.<br> The returned handle owns a shared reference and remains valid after the source SharedArrayBuffer or its JSVM instance is destroyed. Release it with OH_JSVM_ReleaseBackingStore.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSharedArrayBufferBackingStore(JSVM_Env env, JSVM_Value sharedArrayBuffer, JSVM_BackingStore* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetSharedArrayBufferBackingStore(JSVM_Env env, JSVM_Value sharedArrayBuffer, JSVM_BackingStore* result)-End-->
+
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | [in] The environment that owns sharedArrayBuffer. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) sharedArrayBuffer | [in] The SharedArrayBuffer whose backing store is acquired. |
+| [JSVM_BackingStore](capi-jsvm-jsvm-backingstore--8h.md)* result | [out] Receives a new VM-independent backing-store handle. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | Returns JSVM funtions result code. [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) on success.<br> [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) for invalid arguments.<br> [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) if the handle cannot be allocated. |
+
+### OH_JSVM_RetainBackingStore()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_RetainBackingStore(JSVM_BackingStore backingStore, JSVM_BackingStore* result)
+```
+
+**Description**
+
+Creates an independent native handle that shares ownership of a backing store.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_RetainBackingStore(JSVM_BackingStore backingStore, JSVM_BackingStore* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_RetainBackingStore(JSVM_BackingStore backingStore, JSVM_BackingStore* result)-End-->
+
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [JSVM_BackingStore](capi-jsvm-jsvm-backingstore--8h.md) backingStore | [in] The backing-store handle to retain. |
+| [JSVM_BackingStore](capi-jsvm-jsvm-backingstore--8h.md)* result | [out] Receives a new handle. It must be released independently. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | Returns JSVM funtions result code. [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) on success.<br> [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) for invalid arguments.<br> [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status) if the handle cannot be allocated. |
+
+### OH_JSVM_ReleaseBackingStore()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseBackingStore(JSVM_BackingStore backingStore)
+```
+
+**Description**
+
+Releases one native backing-store handle.<br> JavaScript ArrayBuffer objects and other native handles that reference the same backing store remain valid.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseBackingStore(JSVM_BackingStore backingStore)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseBackingStore(JSVM_BackingStore backingStore)-End-->
+
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [JSVM_BackingStore](capi-jsvm-jsvm-backingstore--8h.md) backingStore | [in] The handle to release. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | Returns JSVM funtions result code. [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) on success.<br> [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) if backingStore is NULL. |
+
+### OH_JSVM_GetBackingStoreInfo()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_GetBackingStoreInfo(JSVM_BackingStore backingStore, void** data, size_t* byteLength, size_t* maxByteLength, bool* isShared, bool* isResizable)
+```
+
+**Description**
+
+Gets information directly from a VM-independent backing-store handle.<br> All output parameters are optional.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetBackingStoreInfo(JSVM_BackingStore backingStore, void** data, size_t* byteLength, size_t* maxByteLength, bool* isShared, bool* isResizable)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_GetBackingStoreInfo(JSVM_BackingStore backingStore, void** data, size_t* byteLength, size_t* maxByteLength, bool* isShared, bool* isResizable)-End-->
+
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [JSVM_BackingStore](capi-jsvm-jsvm-backingstore--8h.md) backingStore | [in] The backing store to inspect. |
+| void** data | [out] Optional output for the data address. |
+| size_t* byteLength | [out] Optional output for the current length in bytes. |
+| size_t* maxByteLength | [out] Optional output for the maximum length in bytes. |
+| bool* isShared | [out] Optional output indicating whether this is shared storage. |
+| bool* isResizable | [out] Optional output indicating whether JavaScript can resize or grow it. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | Returns JSVM funtions result code. [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) on success.<br> [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) for an invalid handle. |
+
+### OH_JSVM_CreateSharedArrayBufferFromBackingStore()
+
+```c
+JSVM_EXTERN JSVM_Status OH_JSVM_CreateSharedArrayBufferFromBackingStore(JSVM_Env env, JSVM_BackingStore backingStore, JSVM_Value* result)
+```
+
+**Description**
+
+Creates a SharedArrayBuffer in an environment using an existing shared backing store.<br> The new SharedArrayBuffer and backingStore share ownership of the same memory. This function does not consume backingStore.
+
+<!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateSharedArrayBufferFromBackingStore(JSVM_Env env, JSVM_BackingStore backingStore, JSVM_Value* result)--><!--Device-JSVM_EXTERN JSVM_Status OH_JSVM_CreateSharedArrayBufferFromBackingStore(JSVM_Env env, JSVM_BackingStore backingStore, JSVM_Value* result)-End-->
+
+**System capability**: SystemCapability.ArkCompiler.JSVM
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | [in] The target environment. |
+| [JSVM_BackingStore](capi-jsvm-jsvm-backingstore--8h.md) backingStore | [in] A backing store for which isShared is true. |
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | [out] Receives the new SharedArrayBuffer. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) | Returns JSVM funtions result code. [JSVM_OK](capi-jsvm-types-h.md#jsvm_status) on success.<br> [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status) if an argument is invalid or backingStore is not shared. |
 
 ### OH_JSVM_CreateArrayBufferFromExternalMemory()
 

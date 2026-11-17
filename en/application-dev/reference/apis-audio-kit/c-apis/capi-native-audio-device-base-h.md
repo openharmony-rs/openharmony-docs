@@ -28,6 +28,7 @@ Declare audio device related interfaces for audio device descriptor.<br> Defines
 | [OH_AudioDevice_ChangeType](#oh_audiodevice_changetype) | OH_AudioDevice_ChangeType | Defines the audio device change type. |
 | [OH_AudioDevice_Role](#oh_audiodevice_role) | OH_AudioDevice_Role | Defines the audio device role. |
 | [OH_AudioDevice_Type](#oh_audiodevice_type) | OH_AudioDevice_Type | Defines the audio device type. |
+| [OH_AudioDevice_UsbHeadsetType](#oh_audiodevice_usbheadsettype) | OH_AudioDevice_UsbHeadsetType | Defines the USB headset subtype. |
 | [OH_AudioDevice_Flag](#oh_audiodevice_flag) | OH_AudioDevice_Flag | Defines the audio device flag. |
 | [OH_AudioDevice_Usage](#oh_audiodevice_usage) | OH_AudioDevice_Usage | Defines the audio device usage. |
 | [OH_AudioDevice_BlockStatus](#oh_audiodevice_blockstatus) | OH_AudioDevice_BlockStatus | Declaring the audio device blocked status. By default, the audio device is considered as unblocked. |
@@ -38,6 +39,7 @@ Declare audio device related interfaces for audio device descriptor.<br> Defines
 | -- | -- |
 | [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceRole(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioDevice_Role *deviceRole)](#oh_audiodevicedescriptor_getdevicerole) | Query the device role of the target audio device descriptor. |
 | [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceType(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioDevice_Type *deviceType)](#oh_audiodevicedescriptor_getdevicetype) | Query the device type of the target audio device descriptor. |
+| [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetUsbHeadsetType(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioDevice_UsbHeadsetType *usbHeadsetType)](#oh_audiodevicedescriptor_getusbheadsettype) | Queries the USB headset subtype of the USB headset device descriptor. <br>The caller should first confirm through [OH_AudioDeviceDescriptor_GetDeviceType](capi-native-audio-device-base-h.md#oh_audiodevicedescriptor_getdevicetype) that the device type is [AUDIO_DEVICE_TYPE_USB_HEADSET](capi-native-audio-device-base-h.md#oh_audiodevice_type) and then call this API. <br>When the device type is Audio Device Type USB Headset, this interface returns the HiFi USB headset, ARM USB headset. Otherwise, an invalid value is returned. |
 | [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceId(OH_AudioDeviceDescriptor *audioDeviceDescriptor, uint32_t *id)](#oh_audiodevicedescriptor_getdeviceid) | Query the device id of the target audio device descriptor. |
 | [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceName(OH_AudioDeviceDescriptor *audioDeviceDescriptor, char **name)](#oh_audiodevicedescriptor_getdevicename) | Query the device name of the target audio device descriptor. |
 | [OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetDeviceAddress(OH_AudioDeviceDescriptor *audioDeviceDescriptor, char **address)](#oh_audiodevicedescriptor_getdeviceaddress) | Query the device address of the target audio device descriptor. |
@@ -126,6 +128,28 @@ Defines the audio device type.
 | AUDIO_DEVICE_TYPE_HEARING_AID = 30 | Hearing aid device.<br>**Since**: 20 |
 | AUDIO_DEVICE_TYPE_NEARLINK = 31 | Nearlink device.<br>**Since**: 20 |
 | AUDIO_DEVICE_TYPE_DEFAULT = 1000 | Default device type. |
+
+### OH_AudioDevice_UsbHeadsetType
+
+```c
+enum OH_AudioDevice_UsbHeadsetType
+```
+
+**Description**
+
+Defines the USB headset subtype.
+
+<!--Device-OH_AudioDevice_UsbHeadsetType--><!--Device-OH_AudioDevice_UsbHeadsetType-End-->
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+**Since**: 26.1.0
+
+| Enum item | Description |
+| -- | -- |
+| OH_AUDIO_DEVICE_USB_HEADSET_TYPE_INVALID = 0 | Invalid USB headset subtype.<br>**Since**: 26.1.0 |
+| OH_AUDIO_DEVICE_USB_HEADSET_TYPE_HIFI = 1 | HiFi USB headset.<br>**Since**: 26.1.0 |
+| OH_AUDIO_DEVICE_USB_HEADSET_TYPE_ARM = 2 | ARM USB headset.<br>**Since**: 26.1.0 |
 
 ### OH_AudioDevice_Flag
 
@@ -256,6 +280,35 @@ Query the device type of the target audio device descriptor.
 | Type | Description |
 | -- | -- |
 | [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | [AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) or [AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result). |
+
+### OH_AudioDeviceDescriptor_GetUsbHeadsetType()
+
+```c
+OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetUsbHeadsetType(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioDevice_UsbHeadsetType *usbHeadsetType)
+```
+
+**Description**
+
+Queries the USB headset subtype of the USB headset device descriptor. <br>The caller should first confirm through [OH_AudioDeviceDescriptor_GetDeviceType](capi-native-audio-device-base-h.md#oh_audiodevicedescriptor_getdevicetype) that the device type is [AUDIO_DEVICE_TYPE_USB_HEADSET](capi-native-audio-device-base-h.md#oh_audiodevice_type) and then call this API. <br>When the device type is Audio Device Type USB Headset, this interface returns the HiFi USB headset, ARM USB headset. Otherwise, an invalid value is returned.
+
+<!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetUsbHeadsetType(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioDevice_UsbHeadsetType *usbHeadsetType)--><!--Device-OH_AudioCommon_Result OH_AudioDeviceDescriptor_GetUsbHeadsetType(OH_AudioDeviceDescriptor *audioDeviceDescriptor, OH_AudioDevice_UsbHeadsetType *usbHeadsetType)-End-->
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [OH_AudioDeviceDescriptor](capi-ohaudio-oh-audiodevicedescriptor.md) *audioDeviceDescriptor | [in] USB headset device descriptor. [OH_AudioRoutingManager_GetDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getdevices) or to OH_AudioRoutingManager_OnDeviceChangedCallback. |
+| [OH_AudioDevice_UsbHeadsetType](capi-native-audio-device-base-h.md#oh_audiodevice_usbheadsettype) *usbHeadsetType | [out] Point to the variable used to receive the USB headset subtype. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | <ul> <li>AUDIOCOMMON_RESULT_SUCCESS: The function is executed successfully. </li> <li>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM: <br>1. The value of audioDeviceDescriptor is nullptr. <br>2. The usbHeadsetType parameter is nullptr. <br>3. The device type corresponding to audioDeviceDescriptor is not [AUDIO_DEVICE_TYPE_USB_HEADSET](capi-native-audio-device-base-h.md#oh_audiodevice_type). </li> </ul> |
 
 ### OH_AudioDeviceDescriptor_GetDeviceId()
 

@@ -24,7 +24,7 @@ Describes the original HID device information, including key identifiers such as
 
 | Name | Description |
 | -- | -- |
-| uint32_t busType | Bus type. For details about the value, see the bus type definition in the standard HID protocol. |
+| uint32_t busType | Bus type, which identifies the physical connection method of the HID device. |
 | uint16_t vendor | Vendor ID. |
 | uint16_t product | Product ID. |
 

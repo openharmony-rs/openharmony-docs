@@ -2,7 +2,7 @@
 
 ## 概述
 
-Provides APIs for storing and managing short sensitive data of users, including adding, deleting, updating, and querying the data. The short sensitive data refers to sensitive data shorter than 1024 bytes, including the user passwords (accounts/passwords), token data (application credentials), and critical data in plaintext (bank card numbers).
+提供用户短敏感数据的安全存储及管理能力，包括新增、删除、更新、查询等。 短敏感数据是指长度小于1024字节的敏感数据，包括用户密码（账号/密码）、Token类数据（应用凭据）、关键明文数据（如银行卡号）。
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -12,4 +12,4 @@ Provides APIs for storing and managing short sensitive data of users, including 
 
 | 名称 | 描述 |
 | -- | -- |
-| [asset_api.h](capi-asset-api-h.md) | Declares the APIs for accessing assets. |
+| [asset_api.h](capi-asset-api-h.md) | 声明用于访问关键资产的接口。 |

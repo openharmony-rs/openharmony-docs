@@ -28,7 +28,7 @@ Provides the enumeration types and structures used in USB Serial DDK APIs. It is
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [UsbSerial_DdkRetCode](#usbserial_ddkretcode) | UsbSerial_DdkRetCode | Defines the return codes used by the USB Serial DDK. |
-| [UsbSerial_FlowControl](#usbserial_flowcontrol) | UsbSerial_FlowControl | Defines the flow control mode for the USB Serial DDK. When using the USB serial port for data transfer, you need to select a proper flow control mode based on the communication scenario. For example, in high-speed and large- volume data transmission scenarios, hardware flow control is recommended to avoid data loss. In low-speed or scenarios that do not require high real-time performance, software flow control can be used. In short-range and reliable point-to-point communication scenarios, no flow control can be selected. |
+| [UsbSerial_FlowControl](#usbserial_flowcontrol) | UsbSerial_FlowControl | Defines the flow control mode for the USB Serial DDK. When using the USB serial port for data transfer, you need to select a proper flow control mode based on the communication scenario. For example, in high-speed and large-volume data transmission scenarios, hardware flow control is recommended to avoid data loss. In low-speed or scenarios that do not require high real-time performance, software flow control can be used. In short-range and reliable point-to-point communication scenarios, no flow control can be selected. |
 | [UsbSerial_Parity](#usbserial_parity) | UsbSerial_Parity | Defines the enums of the parity parameter used by the USB Serial DDK. When configuring the USB serial port communication parameters, you need to select a proper parity mode based on the reliability requirements of data transmission. For example, in industrial control scenarios that require high data integrity, it is recommended that odd or even parity be used to detect transfer errors. In environments with high noise interference, parity can help recognize error data. In short-range and reliable communication scenarios, no parity can be selected to improve transfer efficiency. |
 
 ## Enum type description
@@ -69,7 +69,7 @@ enum UsbSerial_FlowControl
 
 **Description**
 
-Defines the flow control mode for the USB Serial DDK. When using the USB serial port for data transfer, you need to select a proper flow control mode based on the communication scenario. For example, in high-speed and large- volume data transmission scenarios, hardware flow control is recommended to avoid data loss. In low-speed or scenarios that do not require high real-time performance, software flow control can be used. In short-range and reliable point-to-point communication scenarios, no flow control can be selected.
+Defines the flow control mode for the USB Serial DDK. When using the USB serial port for data transfer, you need to select a proper flow control mode based on the communication scenario. For example, in high-speed and large-volume data transmission scenarios, hardware flow control is recommended to avoid data loss. In low-speed or scenarios that do not require high real-time performance, software flow control can be used. In short-range and reliable point-to-point communication scenarios, no flow control can be selected.
 
 <!--Device-UsbSerial_FlowControl--><!--Device-UsbSerial_FlowControl-End-->
 

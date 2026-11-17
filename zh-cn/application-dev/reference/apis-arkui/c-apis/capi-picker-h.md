@@ -27,6 +27,7 @@
 | [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md) | ArkUI_PickerIndicatorStyle | 选中项指示器的样式。包含指示器的颜色、大小等属性配置，用于增强Picker组件的选中项视觉效果，提升用户交互体验。 |
 | [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md) | ArkUI_TextPickerRangeContentArray | 定义文本选择器的选项内容数组。该结构体用于配置文本选择器的选项列表，通过索引设置每个选项的图标和文本内容，适用于日期选择、时间选择、列表选择等需要展示多个选项供用户滚动选择的场景。 |
 | [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md) | ArkUI_TextCascadePickerRangeContentArray | 定义多列联动文本选择器的选项内容数组。该结构体用于配置多列联动选择器的层级数据，通过索引设置各列选项的文本及子级数据，适用于省市区联动、产品分类选择等需要多列数据联动的场景。 |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md) | ArkUI_PickerComponentTextStyle | 定义选择器组件的文本样式。 |
 
 ### 枚举
 
@@ -51,6 +52,14 @@
 | [void OH_ArkUI_TextCascadePickerRangeContentArray_Destroy(ArkUI_TextCascadePickerRangeContentArray* handle)](#oh_arkui_textcascadepickerrangecontentarray_destroy) | 销毁ArkUI_TextCascadePickerRangeContentArray数组对象。此方法必须与OH_ArkUI_TextCascadePickerRangeContentArray_Create配对使用， 用于释放创建的数组对象资源。 |
 | [ArkUI_PickerIndicatorStyle* OH_ArkUI_PickerIndicatorStyle_Create(ArkUI_PickerIndicatorType type)](#oh_arkui_pickerindicatorstyle_create) | 创建选中项指示器的样式实例，用于高亮显示用户当前选中的选项，提升用户交互体验。创建后必须在使用完毕后调用OH_ArkUI_PickerIndicatorStyle_Dispose释放资源，否则会导致内存泄漏。 |
 | [void OH_ArkUI_PickerIndicatorStyle_Dispose(ArkUI_PickerIndicatorStyle* style)](#oh_arkui_pickerindicatorstyle_dispose) | 销毁选中项指示器的样式实例。此方法必须与OH_ArkUI_PickerIndicatorStyle_Create配对使用，用于释放创建的样式实例资源。 |
+| [ArkUI_PickerComponentTextStyle* OH_ArkUI_PickerComponentTextStyle_Create(void)](#oh_arkui_pickercomponenttextstyle_create) | 创建选择器组件的文本样式实例。使用完毕后，请调用[OH_ArkUI_PickerComponentTextStyle_Dispose](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_dispose)销毁实例。 |
+| [void OH_ArkUI_PickerComponentTextStyle_Dispose(ArkUI_PickerComponentTextStyle* style)](#oh_arkui_pickercomponenttextstyle_dispose) | 销毁选择器组件的文本样式实例。与[OH_ArkUI_PickerComponentTextStyle_Create](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_create)成对使用，否则会导致内存泄漏。 |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetColor(ArkUI_PickerComponentTextStyle* style, uint32_t color)](#oh_arkui_pickercomponenttextstyle_setcolor) | 设置选择器组件文本样式的字体颜色。 |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontSize(ArkUI_PickerComponentTextStyle* style, float fontSize)](#oh_arkui_pickercomponenttextstyle_setfontsize) | 设置选择器组件文本样式的字号。 |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontWeight(ArkUI_PickerComponentTextStyle* style, ArkUI_FontWeight fontWeight)](#oh_arkui_pickercomponenttextstyle_setfontweight) | 设置选择器组件文本样式的字体粗细。 |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMinFontSize(ArkUI_PickerComponentTextStyle* style, float minFontSize)](#oh_arkui_pickercomponenttextstyle_setminfontsize) | 设置选择器组件文本样式的最小字号。与**maxFontSize**配合使用以启用字号缩放。当**minFontSize**与 **maxFontSize**同时设置时，**fontSize**不生效。 |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMaxFontSize(ArkUI_PickerComponentTextStyle* style, float maxFontSize)](#oh_arkui_pickercomponenttextstyle_setmaxfontsize) | 设置选择器组件文本样式的最大字号。与**minFontSize**配合使用以启用字号缩放。当**minFontSize**与 **maxFontSize**同时设置时，**fontSize**不生效。 |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetOverflow(ArkUI_PickerComponentTextStyle* style, ArkUI_TextOverflow overflow)](#oh_arkui_pickercomponenttextstyle_setoverflow) | 设置选择器组件文本样式的文本溢出处理方式。设置为<b>ARKUI_TEXT_OVERFLOW_MARQUEE</b>时不生效。 |
 
 ## 枚举类型说明
 
@@ -394,5 +403,225 @@ void OH_ArkUI_PickerIndicatorStyle_Dispose(ArkUI_PickerIndicatorStyle* style)
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* style | 要销毁的[ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)实例。 |
+
+### OH_ArkUI_PickerComponentTextStyle_Create()
+
+```c
+ArkUI_PickerComponentTextStyle* OH_ArkUI_PickerComponentTextStyle_Create(void)
+```
+
+**描述：**
+
+创建选择器组件的文本样式实例。使用完毕后，请调用[OH_ArkUI_PickerComponentTextStyle_Dispose](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_dispose)销毁实例。
+
+<!--Device-ArkUI_PickerComponentTextStyle* OH_ArkUI_PickerComponentTextStyle_Create(void)--><!--Device-ArkUI_PickerComponentTextStyle* OH_ArkUI_PickerComponentTextStyle_Create(void)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**资源释放：** [OH_ArkUI_PickerComponentTextStyle_Dispose](#oh_arkui_pickercomponenttextstyle_dispose)
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle*](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md) | 指向[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)实例的指针。如果返回空指针，表示创建失败。 |
+
+### OH_ArkUI_PickerComponentTextStyle_Dispose()
+
+```c
+void OH_ArkUI_PickerComponentTextStyle_Dispose(ArkUI_PickerComponentTextStyle* style)
+```
+
+**描述：**
+
+销毁选择器组件的文本样式实例。与[OH_ArkUI_PickerComponentTextStyle_Create](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_create)成对使用，否则会导致内存泄漏。
+
+<!--Device-void OH_ArkUI_PickerComponentTextStyle_Dispose(ArkUI_PickerComponentTextStyle* style)--><!--Device-void OH_ArkUI_PickerComponentTextStyle_Dispose(ArkUI_PickerComponentTextStyle* style)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [in] 指向要销毁的[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)实例的指针。如果传入空指针，则不执行任何操作。 |
+
+### OH_ArkUI_PickerComponentTextStyle_SetColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetColor(ArkUI_PickerComponentTextStyle* style, uint32_t color)
+```
+
+**描述：**
+
+设置选择器组件文本样式的字体颜色。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetColor(ArkUI_PickerComponentTextStyle* style, uint32_t color)--><!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetColor(ArkUI_PickerComponentTextStyle* style, uint32_t color)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [in] 指向[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)实例的指针， 通过{@OH_ArkUI_PickerComponentTextStyle_Create}获取。如果传入空指针，则不执行任何操作。 |
+| uint32_t color | [in] 字体颜色，采用0xARGB格式，例如<b>0xFF182431</b>。默认值：sys.color.font_primary。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回结果。<ul> <li>返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)表示操作成功。</li> <li>返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)表示**style**参数为空指针。</li> </ul> |
+
+### OH_ArkUI_PickerComponentTextStyle_SetFontSize()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontSize(ArkUI_PickerComponentTextStyle* style, float fontSize)
+```
+
+**描述：**
+
+设置选择器组件文本样式的字号。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontSize(ArkUI_PickerComponentTextStyle* style, float fontSize)--><!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontSize(ArkUI_PickerComponentTextStyle* style, float fontSize)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [in] 指向[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)实例的指针， 通过{@OH_ArkUI_PickerComponentTextStyle_Create}获取。如果传入空指针，则不执行任何操作。 |
+| float fontSize | [in] 字号，单位为fp。默认值：20.0。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回结果。<ul> <li>返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)表示操作成功。</li> <li>返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)表示**style**参数为空指针。</li> </ul> |
+
+### OH_ArkUI_PickerComponentTextStyle_SetFontWeight()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontWeight(ArkUI_PickerComponentTextStyle* style, ArkUI_FontWeight fontWeight)
+```
+
+**描述：**
+
+设置选择器组件文本样式的字体粗细。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontWeight(ArkUI_PickerComponentTextStyle* style, ArkUI_FontWeight fontWeight)--><!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontWeight(ArkUI_PickerComponentTextStyle* style, ArkUI_FontWeight fontWeight)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [in] 指向[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)实例的指针， 通过{@OH_ArkUI_PickerComponentTextStyle_Create}获取。如果传入空指针，则不执行任何操作。 |
+| [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight) fontWeight | [in] 字体粗细。取值为[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)的枚举值。默认值：ArkUI_FontWeight.Normal。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回结果。<ul> <li>返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)表示操作成功。</li> <li>返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)表示**style**参数为空指针。</li> </ul> |
+
+### OH_ArkUI_PickerComponentTextStyle_SetMinFontSize()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMinFontSize(ArkUI_PickerComponentTextStyle* style, float minFontSize)
+```
+
+**描述：**
+
+设置选择器组件文本样式的最小字号。与**maxFontSize**配合使用以启用字号缩放。当**minFontSize**与 **maxFontSize**同时设置时，**fontSize**不生效。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMinFontSize(ArkUI_PickerComponentTextStyle* style, float minFontSize)--><!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMinFontSize(ArkUI_PickerComponentTextStyle* style, float minFontSize)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [in] 指向[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)实例的指针， 通过{@OH_ArkUI_PickerComponentTextStyle_Create}获取。如果传入空指针，则不执行任何操作。 |
+| float minFontSize | [in] 最小字号，单位为fp。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回结果。<ul> <li>返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)表示操作成功。</li> <li>返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)表示**style**参数为空指针。</li> </ul> |
+
+### OH_ArkUI_PickerComponentTextStyle_SetMaxFontSize()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMaxFontSize(ArkUI_PickerComponentTextStyle* style, float maxFontSize)
+```
+
+**描述：**
+
+设置选择器组件文本样式的最大字号。与**minFontSize**配合使用以启用字号缩放。当**minFontSize**与 **maxFontSize**同时设置时，**fontSize**不生效。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMaxFontSize(ArkUI_PickerComponentTextStyle* style, float maxFontSize)--><!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMaxFontSize(ArkUI_PickerComponentTextStyle* style, float maxFontSize)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [in] 指向[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)实例的指针， 通过{@OH_ArkUI_PickerComponentTextStyle_Create}获取。如果传入空指针，则不执行任何操作。 |
+| float maxFontSize | [in] 最大字号，单位为fp。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回结果。<ul> <li>返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)表示操作成功。</li> <li>返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)表示**style**参数为空指针。</li> </ul> |
+
+### OH_ArkUI_PickerComponentTextStyle_SetOverflow()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetOverflow(ArkUI_PickerComponentTextStyle* style, ArkUI_TextOverflow overflow)
+```
+
+**描述：**
+
+设置选择器组件文本样式的文本溢出处理方式。设置为<b>ARKUI_TEXT_OVERFLOW_MARQUEE</b>时不生效。
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetOverflow(ArkUI_PickerComponentTextStyle* style, ArkUI_TextOverflow overflow)--><!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetOverflow(ArkUI_PickerComponentTextStyle* style, ArkUI_TextOverflow overflow)-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.1.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [in] 指向[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)实例的指针， 通过{@OH_ArkUI_PickerComponentTextStyle_Create}获取。如果传入空指针，则不执行任何操作。 |
+| [ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow) overflow | [in] 文本溢出处理方式。取值为[ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow)的枚举值。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| ArkUI_ErrorCode | 返回结果。<ul> <li>返回[ARKUI_ERROR_CODE_NO_ERROR](capi-error-code-h.md#arkui_errorcode)表示操作成功。</li> <li>返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-error-code-h.md#arkui_errorcode)表示**style**参数为空指针。</li> </ul> |
 
 

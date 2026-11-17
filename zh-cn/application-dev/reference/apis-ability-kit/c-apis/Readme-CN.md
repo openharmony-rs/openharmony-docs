@@ -28,6 +28,7 @@
     - [bundle_manager_common.h](capi-bundle-manager-common-h.md)
     - [native_child_process.h](capi-native-child-process-h.md)
 - 结构体<!--abilitykit-struct-->
+    - [OH_AT_PermissionsRequestResult](capi-abilityaccesscontrol-oh-at-permissionsrequestresult.md)
     - [AbilityBase_Element](capi-abilitybase-abilitybase-element.md)
     - [AbilityBase_Want](capi-abilitybase-abilitybase-want.md)
     - [AbilityRuntime_Context](capi-abilityruntime-abilityruntime-context.md)

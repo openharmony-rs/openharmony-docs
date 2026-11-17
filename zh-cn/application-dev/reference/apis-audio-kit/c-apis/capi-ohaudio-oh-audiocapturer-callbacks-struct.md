@@ -16,7 +16,7 @@ typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callback
 
 **废弃版本：** 20
 
-**替代接口：** Use the callback type: OH_AudioCapturer_OnReadDataCallback, OH_AudioCapturer_OnDeviceChangeCallback, OH_AudioCapturer_OnInterruptCallback and OH_AudioCapturer_OnErrorCallback separately.
+**替代接口：** 请分别使用以下的回调类型替代: OH_AudioCapturer_OnReadDataCallback, OH_AudioCapturer_OnDeviceChangeCallback, OH_AudioCapturer_OnInterruptCallback and OH_AudioCapturer_OnErrorCallback separately.
 
 **相关模块：** [OHAudio](capi-audio-kit-ohaudio.md)
 

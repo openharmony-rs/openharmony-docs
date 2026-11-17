@@ -49,7 +49,7 @@ Defines the enum variables and structs used in the HID DDK, allowing you to defi
 
 | Name | Description |
 | -- | -- |
-| HID_MAX_REPORT_BUFFER_SIZE (16 * 1024 - 1) | **Since**: 18 |
+| HID_MAX_REPORT_BUFFER_SIZE (16 * 1024 - 1) | Defines the maximum size of the report buffer.<br>**Since**: 18 |
 
 ## Enum type description
 
@@ -326,11 +326,11 @@ Enumerates the relative coordinates.
 | HID_REL_RZ = 0x05 | Z axis of the right analog stick. |
 | HID_REL_HWHEEL = 0x06 | Horizontal scroll wheel, indicating the scroll direction and distance of the mouse horizontal scroll wheel. It is used for horizontal scrolling operations. |
 | HID_REL_DIAL = 0x07 | Knob or scale, indicating the rotation direction and distance of the knob or scale plate. It is used to adjust the volume, brightness, or other adjustable parameters. |
-| HID_REL_WHEEL = 0x08 | Scroll wheel. |
-| HID_REL_MISC = 0x09 | Miscellaneous absolute coordinate axes, which are used to identify miscellaneous axis types that do not fit into the preceding categories. |
+| HID_REL_WHEEL = 0x08 | Vertical scroll wheel, indicating the scroll direction and distance of the mouse vertical scroll wheel. It is used for vertical scrolling operations. |
+| HID_REL_MISC = 0x09 | Miscellaneous relative coordinate events, which are used to identify miscellaneous relative coordinate events that do not fit into the preceding categories. |
 | HID_REL_RESERVED = 0x0a | Reserved. |
 | HID_REL_WHEEL_HI_RES = 0x0b | High-resolution scroll wheel, indicating the scroll direction and distance of the mouse high-resolution scroll wheel. It provides higher resolution and precision than a common scroll wheel. |
-| HID_REL_HWHEEL_HI_RES = 0x0c | High-resolution horizontal scroll wheel, indicating the scroll direction and distance of the mouse high- resolution horizontal scroll wheel. It provides higher resolution and precision than a common horizontal scroll wheel. |
+| HID_REL_HWHEEL_HI_RES = 0x0c | High-resolution horizontal scroll wheel, indicating the scroll direction and distance of the mouse high-resolution horizontal scroll wheel. It provides higher resolution and precision than a common horizontal scroll wheel. |
 
 ### Hid_MscEvent
 

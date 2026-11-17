@@ -2,7 +2,7 @@
 
 ## Overview
 
-Provides USB SERIAL DDK types and declares the macros, enumerated variables, and data structures required by the USB SERIAL DDK APIs.
+Provides USB Serial Driver Development Kit (USB Serial DDK) APIs, including the enum types and data structs used by USB Serial DDK APIs. Serial port communication is often used in industrial scenarios and some legacy devices,such as card issuers and ID card readers. By using the USB Serial DDK, you can develop USB serial port peripherals extension drivers.
 
 **System capability**: SystemCapability.Driver.UsbSerial.Extension
 

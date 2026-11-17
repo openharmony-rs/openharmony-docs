@@ -24,7 +24,7 @@ Defines standard device descriptors, which correspond to **Standard Device Descr
 
 | Name | Description |
 | -- | -- |
-| uint8_t bLength | Size of this descriptor, in bytes. |
+| uint8_t bLength | Size of the descriptor, in bytes. |
 | uint8_t bDescriptorType | Descriptor type. |
 | uint16_t bcdUSB | Version of the USB protocol. |
 | uint8_t bDeviceClass | Device class code allocated by the USB-IF. |

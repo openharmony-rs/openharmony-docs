@@ -2,7 +2,7 @@
 
 ## 概述
 
-Declares the APIs for accessing assets.
+声明用于访问关键资产的接口。
 
 **库：** libasset_ndk.z.so
 

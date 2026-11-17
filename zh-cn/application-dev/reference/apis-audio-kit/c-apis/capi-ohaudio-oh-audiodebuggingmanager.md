@@ -6,7 +6,7 @@ typedef struct OH_AudioDebuggingManager OH_AudioDebuggingManager
 
 ## 概述
 
-声明音频调试管理结构体，该结构体用于调用输出音频调试信息功能接口。
+声明音频调试管理器。用于音频运行时调试，包括获取快照信息等功能。
 
 <!--Device-typedef struct OH_AudioDebuggingManager OH_AudioDebuggingManager--><!--Device-typedef struct OH_AudioDebuggingManager OH_AudioDebuggingManager-End-->
 

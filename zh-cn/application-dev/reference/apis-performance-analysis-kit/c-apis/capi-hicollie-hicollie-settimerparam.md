@@ -6,7 +6,7 @@ typedef struct HiCollie_SetTimerParam {...} HiCollie_SetTimerParam
 
 ## 概述
 
-定义OH_HiCollie_SetTimer函数的输入参数。
+定义OH_HiCollie_SetTimer函数的输入参数，用于设置定时器监控任务的名称、任务超时时间阈值、超时回调函数及执行动作标志。 使用场景：适用于需要监控任务执行时间的场景，帮助开发者监控和处理任务超时问题。
 
 <!--Device-struct HiCollie_SetTimerParam {...}--><!--Device-struct HiCollie_SetTimerParam {...}-End-->
 
@@ -24,8 +24,8 @@ typedef struct HiCollie_SetTimerParam {...} HiCollie_SetTimerParam
 
 | 名称 | 描述 |
 | -- | -- |
-| const char *name | timer 任务名称。 |
-| unsigned int timeout | 任务超时时间阈值，单位：秒。 |
+| const char *name | timer任务名称。任务名称不可为空。 |
+| unsigned int timeout | 任务超时时间阈值，单位：s，取值为大于0的正整数。当任务执行时间超过该阈值时，将触发超时处理机制。建议根据实际业务场景设置。 |
 | [OH_HiCollie_Callback](capi-hicollie-h.md#oh_hicollie_callback) func | 超时发生时执行的回调函数。 |
 | void *arg | 回调函数的参数。 |
 | [HiCollie_Flag](capi-hicollie-h.md#hicollie_flag) flag | 超时发生时执行的动作，参考[HiCollie_Flag](capi-hicollie-h.md#hicollie_flag)。 |

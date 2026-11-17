@@ -2,7 +2,7 @@
 
 ## 概述
 
-定义HiCollie模块的接口。
+HiCollie模块提供检测业务线程卡死卡顿以及上报卡死事件的能力。
 
 **库：** libohhicollie.so
 
@@ -18,8 +18,8 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [HiCollie_DetectionParam](capi-hicollie-hicollie-detectionparam.md) | HiCollie_DetectionParam | 检测业务线程卡顿的相关参数。请注意，API 12及以上支持。 |
-| [HiCollie_SetTimerParam](capi-hicollie-hicollie-settimerparam.md) | HiCollie_SetTimerParam | 定义OH_HiCollie_SetTimer函数的输入参数。 |
+| [HiCollie_DetectionParam](capi-hicollie-hicollie-detectionparam.md) | HiCollie_DetectionParam | 检测业务线程卡顿的相关参数，可用于应用线程卡顿检测与分析等场景。请注意，从API version 12及以上支持。 |
+| [HiCollie_SetTimerParam](capi-hicollie-hicollie-settimerparam.md) | HiCollie_SetTimerParam | 定义OH_HiCollie_SetTimer函数的输入参数，用于设置定时器监控任务的名称、任务超时时间阈值、超时回调函数及执行动作标志。 使用场景：适用于需要监控任务执行时间的场景，帮助开发者监控和处理任务超时问题。 |
 
 ### 枚举
 

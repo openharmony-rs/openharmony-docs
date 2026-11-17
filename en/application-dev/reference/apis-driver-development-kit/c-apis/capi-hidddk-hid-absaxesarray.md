@@ -25,6 +25,6 @@ Defines an array of absolute coordinate attributes, which stores attributes abou
 | Name | Description |
 | -- | -- |
 | [Hid_AbsAxes](capi-hid-ddk-types-h.md#hid_absaxes) *hidAbsAxes | Pointer to the first element of the array of absolute coordinate codes. This parameter must be used together with **length**. The pointer must be valid and cannot be null. |
-| uint16_t length | Valid length of the array, which cannot exceed the actual length of the **hidEventType** array. |
+| uint16_t length | Valid length of the array, indicating the number of valid elements to which the **hidAbsAxes** pointer points. The value range is [0, 65535]. |
 
 

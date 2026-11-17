@@ -16,7 +16,7 @@ typedef struct OH_AudioRenderer_Callbacks_Struct {...} OH_AudioRenderer_Callback
 
 **废弃版本：** 20
 
-**替代接口：** Use the callback type: OH_AudioRenderer_OnWriteDataCallback, OH_AudioRenderer_OutputDeviceChangeCallback, OH_AudioRenderer_OnInterruptCallback, OH_AudioRenderer_OnErrorCallback separately.
+**替代接口：** 请分别使用以下回调类型替代: OH_AudioRenderer_OnWriteDataCallback, OH_AudioRenderer_OutputDeviceChangeCallback, OH_AudioRenderer_OnInterruptCallback, OH_AudioRenderer_OnErrorCallback separately.
 
 **相关模块：** [OHAudio](capi-audio-kit-ohaudio.md)
 

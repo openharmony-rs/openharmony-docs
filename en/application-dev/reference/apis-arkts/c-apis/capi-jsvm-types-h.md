@@ -46,6 +46,7 @@ Provides the JSVM API type define.<br> Provides API to Provide independent, stan
 | [JSVM_CallbackInfo\_\_*](capi-jsvm-jsvm-callbackinfo--8h.md) | JSVM_CallbackInfo | To represent a JavaScript VM callback additional information. |
 | [JSVM_Deferred\_\_*](capi-jsvm-jsvm-deferred--8h.md) | JSVM_Deferred | To represent a JavaScript VM value deferred. |
 | [JSVM_Data\_\_*](capi-jsvm-jsvm-data--8h.md) | JSVM_Data | To represent a JavaScript Data type. |
+| [JSVM_BackingStore\_\_*](capi-jsvm-jsvm-backingstore--8h.md) | JSVM_BackingStore | To represent a SharedArrayBuffer BackingStore, which can be shared across multiple VM environments. |
 | [JSVM_DeserializeResult\_\_*](capi-jsvm-jsvm-deserializeresult--8h.md) | JSVM_DeserializeResult | To represent a JavaScript background deserialize result. |
 | [JSVM_CallbackStruct*](capi-jsvm-jsvm-callbackstruct8h.md) | JSVM_Callback | Function pointer type for user-provided native function which are to exposed to js via JSVM-API. |
 | [JSVM_PropertyHandlerConfigurationStruct*](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md) | JSVM_PropertyHandlerCfg | The pointer type of the structure which contains the property handlers. |

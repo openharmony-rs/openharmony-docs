@@ -6,7 +6,11 @@ typedef struct HiTraceId {...} HiTraceId
 
 ## 概述
 
-用于标识调用链的结构体。
+用于标识调用链的结构体。<br> 使用场景：
+- 跨服务调用追踪：在分布式系统中，用于标识和关联同一业务请求在不同服务间的调用链路。
+- 性能分析：配合HiTrace链路追踪功能，分析应用性能瓶颈和调用耗时。
+- 日志关联：在日志系统中，通过HiTraceId将同一请求的不同阶段日志关联起来，便于问题排查。
+- 调用链可视化：通过HiTraceId实现端到端的调用链路可视化，帮助理解系统行为。
 
 <!--Device-struct HiTraceId {...}--><!--Device-struct HiTraceId {...}-End-->
 

@@ -6,7 +6,7 @@ typedef struct HiCollie_DetectionParam {...} HiCollie_DetectionParam
 
 ## 概述
 
-检测业务线程卡顿的相关参数。请注意，API 12及以上支持。
+检测业务线程卡顿的相关参数，可用于应用线程卡顿检测与分析等场景。请注意，从API version 12及以上支持。
 
 <!--Device-struct HiCollie_DetectionParam {...}--><!--Device-struct HiCollie_DetectionParam {...}-End-->
 
@@ -24,7 +24,7 @@ typedef struct HiCollie_DetectionParam {...} HiCollie_DetectionParam
 
 | 名称 | 描述 |
 | -- | -- |
-| int sampleStackTriggerTime | 卡顿场景下，触发采样栈的时间阈值。 |
-| int reserved | 扩展参数以供将来使用。 |
+| int sampleStackTriggerTime | 保留字段，用于后续功能扩展。 |
+| int reserved | 保留字段，用于后续功能扩展。 |
 
 

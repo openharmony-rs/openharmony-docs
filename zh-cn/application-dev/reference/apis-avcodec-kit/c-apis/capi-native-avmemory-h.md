@@ -29,7 +29,7 @@
 | [OH_AVMemory *OH_AVMemory_Create(int32_t size)](#oh_avmemory_create) | 创建OH_AVMemory实例的指针。(API11废弃) |
 | [uint8_t *OH_AVMemory_GetAddr(struct OH_AVMemory *mem)](#oh_avmemory_getaddr) | 获取内存虚拟地址。(API11废弃) |
 | [int32_t OH_AVMemory_GetSize(struct OH_AVMemory *mem)](#oh_avmemory_getsize) | 获取内存长度。(API11废弃) |
-| [OH_AVErrCode OH_AVMemory_Destroy(struct OH_AVMemory *mem)](#oh_avmemory_destroy) | 释放OH_AVMemory实例指针的资源。(API11废弃) |
+| [OH_AVErrCode OH_AVMemory_Destroy(struct OH_AVMemory *mem)](#oh_avmemory_destroy) | 释放OH_AVMemory实例占用的资源。(API11废弃) |
 
 ## 函数说明
 
@@ -137,7 +137,7 @@ OH_AVErrCode OH_AVMemory_Destroy(struct OH_AVMemory *mem)
 
 **描述：**
 
-释放OH_AVMemory实例指针的资源。
+释放OH_AVMemory实例占用的资源。
 
 <!--Device-OH_AVErrCode OH_AVMemory_Destroy(struct OH_AVMemory *mem)--><!--Device-OH_AVErrCode OH_AVMemory_Destroy(struct OH_AVMemory *mem)-End-->
 

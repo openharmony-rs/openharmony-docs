@@ -43,6 +43,7 @@
     - [JSVM_CallbackInfo__*](capi-jsvm-jsvm-callbackinfo--8h.md)
     - [JSVM_Deferred__*](capi-jsvm-jsvm-deferred--8h.md)
     - [JSVM_Data__*](capi-jsvm-jsvm-data--8h.md)
+    - [JSVM_BackingStore__*](capi-jsvm-jsvm-backingstore--8h.md)
     - [JSVM_DeserializeResult__*](capi-jsvm-jsvm-deserializeresult--8h.md)
     - [JSVM_CallbackStruct*](capi-jsvm-jsvm-callbackstruct8h.md)
     - [JSVM_PropertyHandlerConfigurationStruct*](capi-jsvm-jsvm-propertyhandlerconfigurationstruct8h.md)

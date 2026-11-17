@@ -24,7 +24,7 @@ Defines the non-root hub array, which is used to store the non-root hub IDs and 
 
 | Name | Description |
 | -- | -- |
-| uint64_t* nonRootHubIds | Start address of the non-root hub ID array. It is recommended that the number of non-root hub IDs not exceed 128 to prevent excessive memory usage. The device ID of a non-root USB hub is constructed by left-shifting its bus number by 32 bits and adding it to its device address.<br>**Since**: 26.0.0 |
-| uint32_t num | Number of returned non-root hubs. The system traverses **nonRootHubIds** to obtain the non-root hub ID based on the number. If the value is **0**, no non-root hub exists.<br>**Since**: 26.0.0 |
+| uint64_t* nonRootHubIds | Start address of the non-root hub ID array. It is recommended that the number of non-root hub IDs not exceed 128 to prevent excessive memory usage. The device ID of a non-root USB hub is constructed by left-shifting its bus number by 32 bits and adding it to its device address. |
+| uint32_t num | Number of returned non-root hubs. The system traverses **nonRootHubIds** to obtain the non-root hub ID based on the number. If the value is **0**, no non-root hub exists. |
 
 

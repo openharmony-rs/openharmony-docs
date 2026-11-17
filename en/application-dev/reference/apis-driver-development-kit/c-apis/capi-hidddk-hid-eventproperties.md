@@ -24,7 +24,7 @@ Defines device event attributes, including the event type, key value, absolute c
 
 | Name | Description |
 | -- | -- |
-| [struct Hid_EventTypeArray](capi-hidddk-hid-eventtypearray.md) hidEventTypes | Pointer to the array of event type codes, which points to the array pre-allocated by the caller. The pointer cannot be null. The array size must be greater than or equal to the value of length. |
+| [struct Hid_EventTypeArray](capi-hidddk-hid-eventtypearray.md) hidEventTypes | Array of event types, which contains the set of event types supported by the device. This parameter is used to configure the events that can be triggered by the HID device. |
 | [struct Hid_KeyCodeArray](capi-hidddk-hid-keycodearray.md) hidKeys | Array of key codes, which contains the set of key codes supported by the device. This parameter is used to configure the key functions supported by the HID device. |
 | [struct Hid_AbsAxesArray](capi-hidddk-hid-absaxesarray.md) hidAbs | Array of absolute coordinate codes, which is used to configure absolute coordinate input (such as touchscreen and analog stick). |
 | [struct Hid_RelAxesArray](capi-hidddk-hid-relaxesarray.md) hidRelBits | Array of relative coordinate codes, which is used to configure relative coordinate input (such as mouse movement). |

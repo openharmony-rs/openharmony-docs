@@ -27,6 +27,7 @@ Defines **Picker** node types for **NativeNode** APIs, which support various pic
 | [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md) | ArkUI_PickerIndicatorStyle | Defines the style of the selected item indicator. It contains attribute configurations such as the indicator color and size, used to enhance the visual effect of the selected item in the **Picker** component and improve the user interaction experience. |
 | [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md) | ArkUI_TextPickerRangeContentArray | Defines the option content array of a text picker. This struct is used to configure the option list of a text picker, setting the icon and text content of each option by index. It applies to scenarios such as date selection, time selection, and list selection that require displaying multiple options for users to select by scrolling. |
 | [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md) | ArkUI_TextCascadePickerRangeContentArray | Defines an option array of a multi-column text cascade picker. This struct is used to configure the hierarchical data of a multi-column text cascade picker, that is, configure the text and child-level data of each column's options through indexes. It is applicable to scenarios that require multi-column data cascade, such as province-city-district cascade and product category selection. |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md) | ArkUI_PickerComponentTextStyle | Defines the text style of the selector component. |
 
 ### Enums
 
@@ -51,6 +52,14 @@ Defines **Picker** node types for **NativeNode** APIs, which support various pic
 | [void OH_ArkUI_TextCascadePickerRangeContentArray_Destroy(ArkUI_TextCascadePickerRangeContentArray* handle)](#oh_arkui_textcascadepickerrangecontentarray_destroy) | Destroys the **ArkUI_TextCascadePickerRangeContentArray** array object. This API must be used in pair with **<br>OH_ArkUI_TextCascadePickerRangeContentArray_Create** to release the created array object resources. |
 | [ArkUI_PickerIndicatorStyle* OH_ArkUI_PickerIndicatorStyle_Create(ArkUI_PickerIndicatorType type)](#oh_arkui_pickerindicatorstyle_create) | Creates a style instance of the selected item indicator, which is used to highlight the option currently selected by the user and improve the user interaction experience. After creation, you must call **<br>OH_ArkUI_PickerIndicatorStyle_Dispose** to release resources after use; otherwise, a memory leak occurs. |
 | [void OH_ArkUI_PickerIndicatorStyle_Dispose(ArkUI_PickerIndicatorStyle* style)](#oh_arkui_pickerindicatorstyle_dispose) | Disposes of the style instance of the selected item indicator. This API must be used in pair with **<br>OH_ArkUI_PickerIndicatorStyle_Create** to release the created style instance resources. |
+| [ArkUI_PickerComponentTextStyle* OH_ArkUI_PickerComponentTextStyle_Create(void)](#oh_arkui_pickercomponenttextstyle_create) | Creates a text style instance of the Selector component. Destroy the instance by calling [OH_ArkUI_PickerComponentTextStyle_Dispose](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_dispose). |
+| [void OH_ArkUI_PickerComponentTextStyle_Dispose(ArkUI_PickerComponentTextStyle* style)](#oh_arkui_pickercomponenttextstyle_dispose) | Destroys a text style instance of the selector component. This parameter must be used in pairs with [OH_ArkUI_PickerComponentTextStyle_Create](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_create). Otherwise, memory leakage may occur. |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetColor(ArkUI_PickerComponentTextStyle* style, uint32_t color)](#oh_arkui_pickercomponenttextstyle_setcolor) | Sets the font color for the Selector component text style. |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontSize(ArkUI_PickerComponentTextStyle* style, float fontSize)](#oh_arkui_pickercomponenttextstyle_setfontsize) | Sets the font size for the Selector component text style. |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontWeight(ArkUI_PickerComponentTextStyle* style, ArkUI_FontWeight fontWeight)](#oh_arkui_pickercomponenttextstyle_setfontweight) | Sets the font weight for the Selector component text style. |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMinFontSize(ArkUI_PickerComponentTextStyle* style, float minFontSize)](#oh_arkui_pickercomponenttextstyle_setminfontsize) | Sets the minimum font size for the selector component text style. Use with **maxFontSize** to enable font size scaling. When **minFontSize** andIf * **maxFontSize** is set at the same time, **fontSize** does not take effect. |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMaxFontSize(ArkUI_PickerComponentTextStyle* style, float maxFontSize)](#oh_arkui_pickercomponenttextstyle_setmaxfontsize) | Sets the maximum font size for the Selector component text style. Use with **minFontSize** to enable font size scaling. When **minFontSize** andIf * **maxFontSize** is set at the same time, **fontSize** does not take effect. |
+| [ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetOverflow(ArkUI_PickerComponentTextStyle* style, ArkUI_TextOverflow overflow)](#oh_arkui_pickercomponenttextstyle_setoverflow) | Sets how text overflow is handled for selector component text styles. This parameter does not take effect when this parameter is set to <b>ARKUI_TEXT_OVERFLOW_MARQUEE</b>. |
 
 ## Enum type description
 
@@ -394,5 +403,225 @@ Disposes of the style instance of the selected item indicator. This API must be 
 | Parameter | Description |
 | -- | -- |
 | [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* style | Pointer to the [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md) instance to be disposed of. |
+
+### OH_ArkUI_PickerComponentTextStyle_Create()
+
+```c
+ArkUI_PickerComponentTextStyle* OH_ArkUI_PickerComponentTextStyle_Create(void)
+```
+
+**Description**
+
+Creates a text style instance of the Selector component. Destroy the instance by calling [OH_ArkUI_PickerComponentTextStyle_Dispose](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_dispose).
+
+<!--Device-ArkUI_PickerComponentTextStyle* OH_ArkUI_PickerComponentTextStyle_Create(void)--><!--Device-ArkUI_PickerComponentTextStyle* OH_ArkUI_PickerComponentTextStyle_Create(void)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Resource release**: [OH_ArkUI_PickerComponentTextStyle_Dispose](#oh_arkui_pickercomponenttextstyle_dispose)
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle*](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md) | Pointer to the [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md) instance. If a null pointer is returned, the creation fails. |
+
+### OH_ArkUI_PickerComponentTextStyle_Dispose()
+
+```c
+void OH_ArkUI_PickerComponentTextStyle_Dispose(ArkUI_PickerComponentTextStyle* style)
+```
+
+**Description**
+
+Destroys a text style instance of the selector component. This parameter must be used in pairs with [OH_ArkUI_PickerComponentTextStyle_Create](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_create). Otherwise, memory leakage may occur.
+
+<!--Device-void OH_ArkUI_PickerComponentTextStyle_Dispose(ArkUI_PickerComponentTextStyle* style)--><!--Device-void OH_ArkUI_PickerComponentTextStyle_Dispose(ArkUI_PickerComponentTextStyle* style)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [in] Pointer to the [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md) instance to be destroyed. If a null pointer is passed, no operation is performed. |
+
+### OH_ArkUI_PickerComponentTextStyle_SetColor()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetColor(ArkUI_PickerComponentTextStyle* style, uint32_t color)
+```
+
+**Description**
+
+Sets the font color for the Selector component text style.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetColor(ArkUI_PickerComponentTextStyle* style, uint32_t color)--><!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetColor(ArkUI_PickerComponentTextStyle* style, uint32_t color)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [in] Pointer to the [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md) instance, Obtain the value from {@OH_ArkUI_PickerComponentTextStyle_Create}. If a null pointer is passed, no operation is performed. |
+| uint32_t color | [in] Font color. The format is 0xARGB, for example, 0xFF182431. Default value: sys.color.font_primary. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| ArkUI_ErrorCode | Return the result. <ul> <li>If ARKUI_ERROR_CODE_NO_ERROR is returned, the operation is successful. </li> <li>If ARKUI_ERROR_CODE_PARAM_INVALID is returned, the **style** parameter is a null pointer. </li> </ul> |
+
+### OH_ArkUI_PickerComponentTextStyle_SetFontSize()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontSize(ArkUI_PickerComponentTextStyle* style, float fontSize)
+```
+
+**Description**
+
+Sets the font size for the Selector component text style.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontSize(ArkUI_PickerComponentTextStyle* style, float fontSize)--><!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontSize(ArkUI_PickerComponentTextStyle* style, float fontSize)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [in] Pointer to the [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md) instance, Obtain the value from {@OH_ArkUI_PickerComponentTextStyle_Create}. If a null pointer is passed, no operation is performed. |
+| float fontSize | [in] Font size, in fp. Default value: 20.0. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| ArkUI_ErrorCode | Return the result. <ul> <li>If ARKUI_ERROR_CODE_NO_ERROR is returned, the operation is successful. </li> <li>If ARKUI_ERROR_CODE_PARAM_INVALID is returned, the **style** parameter is a null pointer. </li> </ul> |
+
+### OH_ArkUI_PickerComponentTextStyle_SetFontWeight()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontWeight(ArkUI_PickerComponentTextStyle* style, ArkUI_FontWeight fontWeight)
+```
+
+**Description**
+
+Sets the font weight for the Selector component text style.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontWeight(ArkUI_PickerComponentTextStyle* style, ArkUI_FontWeight fontWeight)--><!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetFontWeight(ArkUI_PickerComponentTextStyle* style, ArkUI_FontWeight fontWeight)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [in] Pointer to the [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md) instance, Obtain the value from {@OH_ArkUI_PickerComponentTextStyle_Create}. If a null pointer is passed, no operation is performed. |
+| [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight) fontWeight | [in] Font thickness. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). Default value: ArkUI_FontWeight.Normal. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| ArkUI_ErrorCode | Return the result. <ul> <li>If ARKUI_ERROR_CODE_NO_ERROR is returned, the operation is successful. </li> <li>If ARKUI_ERROR_CODE_PARAM_INVALID is returned, the **style** parameter is a null pointer. </li> </ul> |
+
+### OH_ArkUI_PickerComponentTextStyle_SetMinFontSize()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMinFontSize(ArkUI_PickerComponentTextStyle* style, float minFontSize)
+```
+
+**Description**
+
+Sets the minimum font size for the selector component text style. Use with **maxFontSize** to enable font size scaling. When **minFontSize** andIf * **maxFontSize** is set at the same time, **fontSize** does not take effect.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMinFontSize(ArkUI_PickerComponentTextStyle* style, float minFontSize)--><!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMinFontSize(ArkUI_PickerComponentTextStyle* style, float minFontSize)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [in] Pointer to the [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md) instance, Obtain the value from {@OH_ArkUI_PickerComponentTextStyle_Create}. If a null pointer is passed, no operation is performed. |
+| float minFontSize | [in] Minimum font size, in fp. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| ArkUI_ErrorCode | Return the result. <ul> <li>If ARKUI_ERROR_CODE_NO_ERROR is returned, the operation is successful. </li> <li>If ARKUI_ERROR_CODE_PARAM_INVALID is returned, the **style** parameter is a null pointer. </li> </ul> |
+
+### OH_ArkUI_PickerComponentTextStyle_SetMaxFontSize()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMaxFontSize(ArkUI_PickerComponentTextStyle* style, float maxFontSize)
+```
+
+**Description**
+
+Sets the maximum font size for the Selector component text style. Use with **minFontSize** to enable font size scaling. When **minFontSize** andIf * **maxFontSize** is set at the same time, **fontSize** does not take effect.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMaxFontSize(ArkUI_PickerComponentTextStyle* style, float maxFontSize)--><!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetMaxFontSize(ArkUI_PickerComponentTextStyle* style, float maxFontSize)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [in] Pointer to the [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md) instance, Obtain the value from {@OH_ArkUI_PickerComponentTextStyle_Create}. If a null pointer is passed, no operation is performed. |
+| float maxFontSize | [in] Maximum font size, in fp. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| ArkUI_ErrorCode | Return the result. <ul> <li>If ARKUI_ERROR_CODE_NO_ERROR is returned, the operation is successful. </li> <li>If ARKUI_ERROR_CODE_PARAM_INVALID is returned, the **style** parameter is a null pointer. </li> </ul> |
+
+### OH_ArkUI_PickerComponentTextStyle_SetOverflow()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetOverflow(ArkUI_PickerComponentTextStyle* style, ArkUI_TextOverflow overflow)
+```
+
+**Description**
+
+Sets how text overflow is handled for selector component text styles. This parameter does not take effect when this parameter is set to <b>ARKUI_TEXT_OVERFLOW_MARQUEE</b>.
+
+<!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetOverflow(ArkUI_PickerComponentTextStyle* style, ArkUI_TextOverflow overflow)--><!--Device-ArkUI_ErrorCode OH_ArkUI_PickerComponentTextStyle_SetOverflow(ArkUI_PickerComponentTextStyle* style, ArkUI_TextOverflow overflow)-End-->
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.1.0
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)* style | [in] Pointer to the [ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md) instance, Obtain the value from {@OH_ArkUI_PickerComponentTextStyle_Create}. If a null pointer is passed, no operation is performed. |
+| [ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow) overflow | [in] Text overflow processing mode. The value is an enumerated value of [ArkUI_TextOverflow](capi-text-common-h.md#arkui_textoverflow). |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| ArkUI_ErrorCode | Return the result. <ul> <li>If ARKUI_ERROR_CODE_NO_ERROR is returned, the operation is successful. </li> <li>If ARKUI_ERROR_CODE_PARAM_INVALID is returned, the **style** parameter is a null pointer. </li> </ul> |
 
 

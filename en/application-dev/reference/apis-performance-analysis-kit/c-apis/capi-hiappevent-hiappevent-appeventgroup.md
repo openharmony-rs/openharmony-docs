@@ -24,8 +24,8 @@ Defines the information of an event group, including its name, the array of even
 
 | Name | Description |
 | -- | -- |
-| const char* name | The name of the event.<br>**Since**: 12 |
-| [const struct HiAppEvent_AppEventInfo*](capi-hiappevent-hiappevent-appeventinfo.md) appEventInfos | The event array which is grouped by the name.<br>**Since**: 12 |
-| uint32_t infoLen | The length of appEventInfos array.<br>**Since**: 12 |
+| const char* name | The same event name in the event array.<br>**Since**: 12 |
+| [const struct HiAppEvent_AppEventInfo*](capi-hiappevent-hiappevent-appeventinfo.md) appEventInfos | Array of events with the same event name.<br>**Since**: 12 |
+| uint32_t infoLen | Length of an array of events with the same event name.<br>**Since**: 12 |
 
 

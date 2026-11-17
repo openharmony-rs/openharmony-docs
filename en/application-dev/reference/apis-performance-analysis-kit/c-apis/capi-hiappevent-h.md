@@ -20,7 +20,7 @@ The **HiAppEvent** module provides event subscription and event logging function
 | -- | -- | -- |
 | [HiAppEvent_AppEventInfo](capi-hiappevent-hiappevent-appeventinfo.md) | HiAppEvent_AppEventInfo | Defines a struct for the information about a single event, including the domain, name, type, and custom parameter list in JSON string format. |
 | [HiAppEvent_AppEventGroup](capi-hiappevent-hiappevent-appeventgroup.md) | HiAppEvent_AppEventGroup | Defines the information of an event group, including its name, the array of event information grouped by name, and the length of the event array. |
-| [OH_HiAppEvent_ExternalLog](capi-hiappevent-oh-hiappevent-externallog.md) | OH_HiAppEvent_ExternalLog | The OH_HiAppEvent_ExternalLog structure is used to describe external log information, including the file path, the generation timestamp, file size, and type of system event. |
+| [OH_HiAppEvent_ExternalLog](capi-hiappevent-oh-hiappevent-externallog.md) | OH_HiAppEvent_ExternalLog | This structure is used to describe external log information, including the file path, generation timestamp, file size, and system event type. |
 | [ParamListNode*](capi-hiappevent-paramlistnode8h.md) | ParamList | Defines the event parameter list node. |
 | [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md) | HiAppEvent_Watcher | Defines the watcher for application events. |
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md) | HiAppEvent_Processor | Defines a processor for application events. |
@@ -87,7 +87,7 @@ The **HiAppEvent** module provides event subscription and event logging function
 | [HiAppEvent_Config* OH_HiAppEvent_CreateConfig(void)](#oh_hiappevent_createconfig) | - | Creates a pointer to the configuration object that sets the conditions for triggering system events. Note: If the created pointer to the configuration object that sets the conditions for triggering system events is no longer used, destroy it by calling [OH_HiAppEvent_DestroyConfig](capi-hiappevent-h.md#oh_hiappevent_destroyconfig). |
 | [void OH_HiAppEvent_DestroyConfig(HiAppEvent_Config* config)](#oh_hiappevent_destroyconfig) | - | Destroys a configuration object. Note: If a configuration object is no longer used, destroy it to release memory to prevent memory leaks. After the object is destroyed, set its pointer to null. |
 | [int OH_HiAppEvent_SetConfigItem(HiAppEvent_Config* config, const char* itemName, const char* itemValue)](#oh_hiappevent_setconfigitem) | - | Sets the items in the configuration object. |
-| [int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)](#oh_hiappevent_seteventconfig) | - | Sets event configuration parameters. Configuration items vary depending on events. Currently, only the following events are supported: **MAIN_THREAD_JANK**. **MAIN_THREAD_JANK_V2**. **EVENT_APP_CRASH**, is supported since API version 24. |
+| [int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)](#oh_hiappevent_seteventconfig) | - | This topic describes how to set event-related parameters.<br> Different events have different configuration items. Currently, only the following events are supported: **MAIN_THREAD_JANK**. **MAIN_THREAD_JANK_V2**. **EVENT_APP_CRASH** This event is supported in API version 24 and later versions. |
 | [typedef void (\*OH_HiAppEvent_ExternalLogCapacityReachedCallback)(OH_HiAppEvent_ExternalLog* externalLogArr, uint32_t arrLen)](#oh_hiappevent_externallogcapacityreachedcallback) | OH_HiAppEvent_ExternalLogCapacityReachedCallback | The parameter of OH_HiAppEvent_RegExternalLogCapacityReachedCallback function which acts as the callback function when external log directory capacity is reached. |
 | [int OH_HiAppEvent_RegExternalLogCapacityReachedCallback(OH_HiAppEvent_ExternalLogCapacityReachedCallback callback)](#oh_hiappevent_regexternallogcapacityreachedcallback) | - | The interface to set the callback when external log directory capacity is reached. |
 | [int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)](#oh_hiappevent_reportframeworkmemanomaly) | - | Reports information about abnormal memory usage of the application framework. <br>This API can be called once every minute at most. If the frequency limit is exceeded, the error code **HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED** will be returned. <br>When the application detects that the memory usage of the application framework is abnormal and the operation is successful after this API is called: <br>1. If you have subscribed to the application event whose domain is **HIVIEWDFX** and name is **FW_MEM_ANOMALY**, the application will receive a callback containing the information about the abnormal memory usage of the application framework. <br>2. If you have not subscribed to this application event, the application will not receive the callback containing the information about the abnormal memory usage of the application framework. |
@@ -140,10 +140,10 @@ Enumerates the event types. You are advised to select different event types base
 
 | Enum item | Description |
 | -- | -- |
-| FAULT = 1 | Fault event type |
-| STATISTIC = 2 | Statistic event type |
-| SECURITY = 3 | Security event type |
-| BEHAVIOR = 4 | Behavior event type |
+| FAULT = 1 | Fault event type.<br>**Since**: 8 |
+| STATISTIC = 2 | Statistics event type.<br>**Since**: 8 |
+| SECURITY = 3 | Security event type.<br>**Since**: 8 |
+| BEHAVIOR = 4 | Behavior event type.<br>**Since**: 8 |
 
 ### OH_HiAppEvent_SysEvent
 
@@ -163,12 +163,12 @@ System event types.<br> You are advised to select system event types based on th
 
 | Enum item | Description |
 | -- | -- |
-| OH_APP_CRASH = 1 | App crash event type.<br>**Since**: 26.0.1 |
-| OH_APP_FREEZE = 2 | App freeze event type.<br>**Since**: 26.0.1 |
-| OH_RESOURCE_OVERLIMIT = 3 | Resource overlimit event type.<br>**Since**: 26.0.1 |
-| OH_ADDRESS_SANITIZER = 4 | Address sanitizer event type.<br>**Since**: 26.0.1 |
-| OH_APP_HICOLLIE = 5 | App hicollie event type.<br>**Since**: 26.0.1 |
-| OH_CPU_USAGE_HIGH = 6 | CPU usage high event type.<br>**Since**: 26.0.1 |
+| OH_APP_CRASH = 1 | Crash event.<br>**Since**: 26.0.1 |
+| OH_APP_FREEZE = 2 | Apply the screen freezing event.<br>**Since**: 26.0.1 |
+| OH_RESOURCE_OVERLIMIT = 3 | Resource leakage event.<br>**Since**: 26.0.1 |
+| OH_ADDRESS_SANITIZER = 4 | Address out-of-bounds event.<br>**Since**: 26.0.1 |
+| OH_APP_HICOLLIE = 5 | Task execution timeout event.<br>**Since**: 26.0.1 |
+| OH_CPU_USAGE_HIGH = 6 | The CPU is overloaded.<br>**Since**: 26.0.1 |
 
 ### OH_HiAppEvent_FrameworkType
 
@@ -190,7 +190,7 @@ Enumerates the application framework types. You are advised to select an applica
 | -- | -- |
 | OH_FLUTTER_DART = 0 | Flutter_dart type.<br>**Since**: 26.0.0 |
 | OH_REACT_NATIVE_HERMES = 1 | React_native_hermes type.<br>**Since**: 26.0.0 |
-| OH_KMP_KOTLIN = 2 | Kmp_kotlin type.<br>**Since**: 26.0.0 |
+| OH_KMP_KOTLIN = 2 | Indicates the Kmp_kotlin type.<br>**Since**: 26.0.0 |
 
 
 ## Function description
@@ -1548,7 +1548,7 @@ Sets the items in the configuration object.
 
 | Parameter | Description |
 | -- | -- |
-| [HiAppEvent_Config](capi-hiappevent-hiappevent-config.md)* config | Pointer to the configuration object, that is, the pointer returned by the [OH_HiAppEvent_CreateConfig](capi-hiappevent-h.md#oh_hiappevent_createconfig) API. |
+| [HiAppEvent_Config](capi-hiappevent-hiappevent-config.md)* config | Pointer to the configuration object, that is, the pointer returned by  the [OH_HiAppEvent_CreateConfig](capi-hiappevent-h.md#oh_hiappevent_createconfig) API. |
 | const char* itemName | Name of the configuration item. |
 | const char* itemValue | Value of the configuration item. |
 
@@ -1566,7 +1566,7 @@ int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)
 
 **Description**
 
-Sets event configuration parameters. Configuration items vary depending on events. Currently, only the following events are supported: **MAIN_THREAD_JANK**. **MAIN_THREAD_JANK_V2**. **EVENT_APP_CRASH**, is supported since API version 24.
+This topic describes how to set event-related parameters.<br> Different events have different configuration items. Currently, only the following events are supported: **MAIN_THREAD_JANK**. **MAIN_THREAD_JANK_V2**. **EVENT_APP_CRASH** This event is supported in API version 24 and later versions.
 
 <!--Device-int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)--><!--Device-int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)-End-->
 

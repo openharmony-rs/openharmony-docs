@@ -82,4 +82,16 @@ NODE_PICKER_ITEM_HEIGHT = 1018005
 
 **起始版本：** 26.0.0
 
+### NODE_PICKER_SELECTED_TEXT_STYLE
+
+```c
+NODE_PICKER_SELECTED_TEXT_STYLE = 1018007
+```
+
+**描述：**
+
+<b>Picker</b>组件选中项的文本样式。此属性支持按需设置、重置和获取。<br> **设置属性时的[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：**<br><ul> <li>.object：选中项的文本样式。参数类型为[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)。 使用[OH_ArkUI_PickerComponentTextStyle_Create](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_create)创建实例，通过[OH_ArkUI_PickerComponentTextStyle_SetColor](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_setcolor)、 [OH_ArkUI_PickerComponentTextStyle_SetFontSize](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_setfontsize)、[OH_ArkUI_PickerComponentTextStyle_SetFontWeight](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_setfontweight)、 [OH_ArkUI_PickerComponentTextStyle_SetMinFontSize](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_setminfontsize)、[OH_ArkUI_PickerComponentTextStyle_SetMaxFontSize](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_setmaxfontsize)、 [OH_ArkUI_PickerComponentTextStyle_SetOverflow](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_setoverflow)设置属性后，将指针传入**.object**。 设置完成后，调用[OH_ArkUI_PickerComponentTextStyle_Dispose](capi-picker-h.md#oh_arkui_pickercomponenttextstyle_dispose)销毁实例。未设置时使用系统默认样式。</li> </ul><br> **返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)的格式：**<br><ul> <li>.object：选中项的文本样式。参数类型为[ArkUI_PickerComponentTextStyle](capi-arkui-nativemodule-arkui-pickercomponenttextstyle.md)。</li> </ul>
+
+**起始版本：** 26.1.0
+
 
