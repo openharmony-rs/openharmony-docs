@@ -45,6 +45,7 @@ import { taskpool } from '@kit.ArkTS';
 | napi_load_module | 用于在Node-API模块中将abc文件作为模块加载，返回模块的命名空间，适用于需要在运行时动态加载模块或资源的应用程序，从而实现灵活的扩展和定制。 |
 | napi_load_module_with_info | 用于在Node-API中进行模块的加载，当模块加载出来之后，可以使用函数napi_get_property获取模块导出的变量，也可以使用napi_get_named_property获取模块导出的函数，该函数可以在[新创建的ArkTS基础运行时环境](use-napi-ark-runtime.md)中使用。 |
 | napi_module_register | 有些功能可能需要通过Node-API模块来实现以获得更好的性能，通过将这些功能实现为自定义模块并注册到ArkTS环境中，可以在一定程度上提高整体的性能。 |
+| napi_shared_module_register | 注册Sendable共享NAPI模块，init在进程内只执行一次，导出对象跨Worker共享。 |
 
 ### 使用示例
 
@@ -139,6 +140,10 @@ ArkTS侧示例代码
 ``` TypeScript
 hilog.info(0x0000, 'testTag', 'Test Node-API 2 + 3 = %{public}d', testNapi.add(2, 3));
 ```
+
+**napi_shared_module_register**
+
+[使用Node-API实现多Worker/TaskPool共享NAPI模块](use-napi-shared-module.md)
 
 
 ## ArkTS Object相关

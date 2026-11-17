@@ -720,3 +720,4 @@ status: active
 | napi_close_microtask_scope | 关闭微任务作用域，并同步执行作用域打开期间累积的微任务。 | napi_invalid_arg | 入参scope为nullptr | 确保入参正确 |
 | napi_close_microtask_scope | 关闭微任务作用域，并同步执行作用域打开期间累积的微任务。 | napi_invalid_arg | 没有处于打开状态的微任务作用域（如：重复关闭） | 确保微任务作用域处于打开状态且未重复关闭 |
 | napi_close_microtask_scope | 关闭微任务作用域，并同步执行作用域打开期间累积的微任务。 | napi_pending_exception | 调用该接口前或调用过程中出现未捕获的ArkTS异常，此时微任务作用域已完成关闭，尚未执行的累积微任务不会丢失 | 根据异常信息（hilog/crash栈）处理异常 |
+| napi_shared_module_register | 注册Sendable共享NAPI模块，init在进程内只执行一次，导出对象跨Worker共享。 | 不涉及 | 不涉及 | 不涉及 |
