@@ -4,7 +4,7 @@
 export declare class FilterParams
 ```
 
-This parameter is used to define the input of each filtering dimension.
+该参数用于定义每个过滤维度的输入。
 
 **起始版本：** 10
 

@@ -4,7 +4,7 @@
 export interface BehaviorAwarenessPayload
 ```
 
-习惯感知领域 payload。HABIT_AWARENESS 领域的具体数据。
+行为感知负载。HABIT_AWARENESS领域的具体数据。
 
 **起始版本：** 26.1.0
 

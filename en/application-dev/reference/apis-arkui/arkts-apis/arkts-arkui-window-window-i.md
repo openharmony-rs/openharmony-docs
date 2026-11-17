@@ -520,6 +520,35 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## getAvoidAreaInsets
+
+```TypeScript
+getAvoidAreaInsets(): AvoidAreaInsets
+```
+
+Obtains the avoid area insets of the current window.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Window-getAvoidAreaInsets(): AvoidAreaInsets--><!--Device-Window-getAvoidAreaInsets(): AvoidAreaInsets-End-->
+
+**System capability:** SystemCapability.Window.SessionManager
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [AvoidAreaInsets](arkts-arkui-window-avoidareainsets-i.md) | Avoid area insets. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
+| [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+
 ## getDecorButtonStyle
 
 ```TypeScript
@@ -4953,6 +4982,35 @@ windowClass.off('systemAvoidAreaChange', callback);
 windowClass.off('systemAvoidAreaChange');
 ```
 
+## offAvoidAreaInsetsChange
+
+```TypeScript
+offAvoidAreaInsetsChange(callback?: Callback<void>): void
+```
+
+Unsubscribes from the change event of the avoid area insets of a window.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Window-offAvoidAreaInsetsChange(callback?: Callback<void>): void--><!--Device-Window-offAvoidAreaInsetsChange(callback?: Callback<void>): void-End-->
+
+**System capability:** SystemCapability.Window.SessionManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [Callback](arkts-arkui-window-callback-i.md)&lt;void&gt; | No | Callback function. If a value is passed in, the corresponding listener is disabled. If no value is passed in, all listeners for the change event are disabled. The default value is **undefined**. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
+| [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
+
 ## offWindowFocusStateChange
 
 ```TypeScript
@@ -6434,6 +6492,45 @@ windowClass.on('systemAvoidAreaChange', (data) => {
   console.info('Succeeded in enabling the listener for system avoid area changes. Data: ' + JSON.stringify(data));
 });
 ```
+
+## onAvoidAreaInsetsChange
+
+```TypeScript
+onAvoidAreaInsetsChange(callback: Callback<void>): void
+```
+
+Subscribes to the change event of the avoid area insets of a window.
+
+The callback is triggered when the avoid area of the window changes. If multiple avoid areas change at the same time, the callback is triggered only once after the related avoid area information is updated.
+
+> **NOTE:** 
+> 
+> You can call [getAvoidAreaInsets](#getavoidareainsets) in the callback to obtain
+> the latest avoid area insets of the window, or use
+> [getWindowAvoidArea](#getwindowavoidarea) to obtain the avoid area of a specified type.
+> 
+> Changes in the avoid area of the [TYPE_KEYBOARD](arkts-arkui-window-avoidareatype-e.md) type do not trigger the callback.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Window-onAvoidAreaInsetsChange(callback: Callback<void>): void--><!--Device-Window-onAvoidAreaInsetsChange(callback: Callback<void>): void-End-->
+
+**System capability:** SystemCapability.Window.SessionManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [Callback](arkts-arkui-window-callback-i.md)&lt;void&gt; | Yes | Callback function. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
+| [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
 
 ## onWindowFocusStateChange
 

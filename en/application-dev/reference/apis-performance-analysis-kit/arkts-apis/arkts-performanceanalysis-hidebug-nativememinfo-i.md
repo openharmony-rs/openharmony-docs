@@ -24,7 +24,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 privateClean: bigint
 ```
 
-The size of the private clean memory, in kilobyte
+Size of the private clean memory, in KB. The value of this parameter is obtained by reading the value of **Private_Clean** in the **\/proc/{pid}/smaps_rollup** node.
 
 **Type:** bigint
 
@@ -40,7 +40,7 @@ The size of the private clean memory, in kilobyte
 privateDirty: bigint
 ```
 
-The size of the private dirty memory, in kilobyte
+Size of the private dirty memory, in KB. The value of this parameter is obtained by reading the value of **Private_Dirty** in the **\/proc/{pid}/smaps_rollup** node.
 
 **Type:** bigint
 
@@ -56,7 +56,7 @@ The size of the private dirty memory, in kilobyte
 pss: bigint
 ```
 
-Process proportional set size memory, in kilobyte
+Size of the occupied physical memory (including the proportionally allocated memory occupied by the shared library), in KB. The value of this parameter is obtained by summing up the values of **Pss** and **SwapPss** in the **\/proc/{pid}/smaps_rollup** node.
 
 **Type:** bigint
 
@@ -72,7 +72,7 @@ Process proportional set size memory, in kilobyte
 rss: bigint
 ```
 
-Resident set size, in kilobyte
+Size of the occupied physical memory (including the memory occupied by the shared library), in KB. The value of this parameter is obtained by reading the value of **Rss** in the **\/proc/{pid}/smaps_rollup** node.
 
 **Type:** bigint
 
@@ -88,7 +88,7 @@ Resident set size, in kilobyte
 sharedClean: bigint
 ```
 
-The size of the shared clean memory, in kilobyte
+Size of the shared clean memory, in KB. The value of this parameter is obtained by reading the value of **Shared_Clean** in the **\/proc/{pid}/smaps_rollup** node.
 
 **Type:** bigint
 
@@ -104,7 +104,7 @@ The size of the shared clean memory, in kilobyte
 sharedDirty: bigint
 ```
 
-The size of the shared dirty memory, in kilobyte
+Size of the shared dirty memory, in KB. The value of this parameter is obtained by reading the value of **Shared_Dirty** in the **\/proc/{pid}/smaps_rollup** node.
 
 **Type:** bigint
 
@@ -120,7 +120,7 @@ The size of the shared dirty memory, in kilobyte
 vss: bigint
 ```
 
-Virtual set size memory, in kilobyte
+Size of the occupied virtual memory (including the memory occupied by the shared library), in KB. The value of this parameter is obtained by multiplying the value of **size** in the **\/proc/{pid}/statm** node by **4**.
 
 **Type:** bigint
 

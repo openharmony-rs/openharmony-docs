@@ -126,7 +126,7 @@ attach不能并发调用，否则可能出现未响应情况并报错14800015，
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| context | Context | 是 | 应用的上下文。<br>FA模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md)。<br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context.md)。 |
+| context | Context | 是 | 应用的上下文。<br>FA模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-depr-i.md)。<br>Stage模型的应用Context定义见[Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md)。 |
 | config | [StoreConfig](arkts-arkdata-relationalstore-storeconfig-i.md) | 是 | 与此RDB存储相关的数据库配置。 |
 | attachName | string | 是 | 表示附加后的数据库的别名，不能为空字符串。 |
 | waitTime | number | 否 | 表示附加数据库文件的等待时长，单位：s。默认值2s，最小值1s，最大值300s。 |
@@ -3704,8 +3704,6 @@ obtainDistributedTableName(device: string, table: string, callback: AsyncCallbac
 
 **起始版本：** 9
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
-
 <!--Device-RdbStore-obtainDistributedTableName(device: string, table: string, callback: AsyncCallback<string>): void--><!--Device-RdbStore-obtainDistributedTableName(device: string, table: string, callback: AsyncCallback<string>): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -3776,8 +3774,6 @@ obtainDistributedTableName(device: string, table: string): Promise<string>
 > 方法得到。
 
 **起始版本：** 9
-
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 <!--Device-RdbStore-obtainDistributedTableName(device: string, table: string): Promise<string>--><!--Device-RdbStore-obtainDistributedTableName(device: string, table: string): Promise<string>-End-->
 
@@ -3928,7 +3924,6 @@ off(
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
@@ -4180,7 +4175,6 @@ on(event: 'dataChange', type: SubscribeType, observer: Callback<Array<string>> |
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed.<br>**适用版本：** 12+ |
 
@@ -6102,8 +6096,6 @@ setDistributedTables(tables: Array<string>, callback: AsyncCallback<void>): void
 
 **起始版本：** 9
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
-
 <!--Device-RdbStore-setDistributedTables(tables: Array<string>, callback: AsyncCallback<void>): void--><!--Device-RdbStore-setDistributedTables(tables: Array<string>, callback: AsyncCallback<void>): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -6147,8 +6139,6 @@ setDistributedTables(tables: Array<string>): Promise<void>
 设置分布式数据库表，使用Promise异步回调。
 
 **起始版本：** 9
-
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 <!--Device-RdbStore-setDistributedTables(tables: Array<string>): Promise<void>--><!--Device-RdbStore-setDistributedTables(tables: Array<string>): Promise<void>-End-->
 
@@ -6198,8 +6188,6 @@ setDistributedTables(tables: Array<string>, type: DistributedType, callback: Asy
 设置分布式数据库表，支持指定表的分布式类型，使用callback异步回调。
 
 **起始版本：** 10
-
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 <!--Device-RdbStore-setDistributedTables(tables: Array<string>, type: DistributedType, callback: AsyncCallback<void>): void--><!--Device-RdbStore-setDistributedTables(tables: Array<string>, type: DistributedType, callback: AsyncCallback<void>): void-End-->
 
@@ -6252,8 +6240,6 @@ setDistributedTables(
 
 **起始版本：** 10
 
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
-
 <!--Device-RdbStore-setDistributedTables(      tables: Array<string>,      type: DistributedType,      config: DistributedConfig,      callback: AsyncCallback<void>    ): void--><!--Device-RdbStore-setDistributedTables(      tables: Array<string>,      type: DistributedType,      config: DistributedConfig,      callback: AsyncCallback<void>    ): void-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
@@ -6302,8 +6288,6 @@ setDistributedTables(tables: Array<string>, type?: DistributedType, config?: Dis
 设置分布式数据库表，支持指定表的分布式类型和表的分布式配置信息，使用Promise异步回调。
 
 **起始版本：** 10
-
-**需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
 <!--Device-RdbStore-setDistributedTables(tables: Array<string>, type?: DistributedType, config?: DistributedConfig): Promise<void>--><!--Device-RdbStore-setDistributedTables(tables: Array<string>, type?: DistributedType, config?: DistributedConfig): Promise<void>-End-->
 

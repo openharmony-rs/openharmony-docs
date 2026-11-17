@@ -26,7 +26,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 contentUnderstand?: boolean
 ```
 
-Whether content understanding is required. The default value is **False**.
+Whether to perform content understanding. The value **true** means yes, and **false** means no. The default value is **false**.
 
 **Type:** boolean
 
@@ -44,7 +44,7 @@ Whether content understanding is required. The default value is **False**.
 pageLink?: boolean
 ```
 
-Whether to obtain the page link. The default value is **False**.
+Whether to obtain the revisit link. The value **true** means to obtain it, and **false** means not to obtain it. The default value is **false**.
 
 **Type:** boolean
 
@@ -62,7 +62,7 @@ Whether to obtain the page link. The default value is **False**.
 textOnly?: boolean
 ```
 
-Whether to obtain only the text and divide the text into paragraphs. The default value is **False**.
+Whether to obtain only text and divide it into paragraphs. The value **true** means yes, and **false** means no. The default value is **false**.
 
 **Type:** boolean
 
@@ -80,7 +80,7 @@ Whether to obtain only the text and divide the text into paragraphs. The default
 windowId?: number
 ```
 
-ID of the window whose content needs to be obtained. If this parameter is not set or is set to **undefined**, the content of the full-screen window is obtained by default.
+Window ID of the content to be obtained. If not assigned or assigned **undefined**, the full-screen window is obtained by default.
 
 **Type:** number
 

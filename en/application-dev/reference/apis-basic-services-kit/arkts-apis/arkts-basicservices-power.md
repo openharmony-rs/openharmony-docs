@@ -38,6 +38,7 @@ import { power } from '@kit.BasicServicesKit';
 | [reboot](arkts-basicservices-power-reboot-f-sys.md#reboot-1) | Reboots a device. |
 | [reboot](arkts-basicservices-power-reboot-f-sys.md#reboot-2) | Reboots a device. |
 | [refreshActivity](arkts-basicservices-power-refreshactivity-f-sys.md#refreshactivity-1) | Refreshes the device activity status (for example, resetting the screen-off time). |
+| [registerHibernateCallback](arkts-basicservices-power-registerhibernatecallback-f-sys.md#registerhibernatecallback-1) | Registers a callback to be invoked when the device enters or exits hibernation. |
 | [registerShutdownCallback](arkts-basicservices-power-registershutdowncallback-f-sys.md#registershutdowncallback-1) | Registers a callback to be invoked when the device is shut down or rebooted. This API uses an asynchronous callback to return the result. |
 | [setPowerConfig](arkts-basicservices-power-setpowerconfig-f-sys.md#setpowerconfig-1) | Update the power configuration value for a given scene name. |
 | [setPowerKeyFilteringStrategy](arkts-basicservices-power-setpowerkeyfilteringstrategy-f-sys.md#setpowerkeyfilteringstrategy-1) | Sets the power key filtering strategy. After the power service subscribes to the power key event, this API is used to configure the processing mode of this event. |
@@ -49,9 +50,18 @@ import { power } from '@kit.BasicServicesKit';
 | [shutdown](arkts-basicservices-power-shutdown-f-sys.md#shutdown-2) | Shuts down the system. |
 | [suspend](arkts-basicservices-power-suspend-f-sys.md#suspend-1) | Enables a device to enter the sleep state. |
 | [suspend](arkts-basicservices-power-suspend-f-sys.md#suspend-2) | Enables a device to enter the sleep state. |
+| [unregisterHibernateCallback](arkts-basicservices-power-unregisterhibernatecallback-f-sys.md#unregisterhibernatecallback-1) | Unregisters the callback invoked when the device enters or exits hibernation. All registered hibernation callbacks are removed. |
 | [unregisterShutdownCallback](arkts-basicservices-power-unregistershutdowncallback-f-sys.md#unregistershutdowncallback-1) | Unregisters the callback to be invoked when the device is shut down or rebooted. This API uses a callback to return the result. |
 | [wakeup](arkts-basicservices-power-wakeup-f-sys.md#wakeup-1) | Wakes up a device. |
 | [wakeup](arkts-basicservices-power-wakeup-f-sys.md#wakeup-2) | Wakes up a device. |
+<!--DelEnd-->
+
+<!--Del-->
+### Interfaces(System API)
+
+| Name | Description |
+| --- | --- |
+| [HibernateCallback](arkts-basicservices-power-hibernatecallback-i-sys.md) | Defines the hibernation event callback interface. |
 <!--DelEnd-->
 
 ### Enums

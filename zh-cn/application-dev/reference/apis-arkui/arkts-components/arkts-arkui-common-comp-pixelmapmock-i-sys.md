@@ -20,7 +20,7 @@ declare interface PixelMapMock
 release(): void
 ```
 
-release function.
+释放函数。
 
 **起始版本：** 7
 

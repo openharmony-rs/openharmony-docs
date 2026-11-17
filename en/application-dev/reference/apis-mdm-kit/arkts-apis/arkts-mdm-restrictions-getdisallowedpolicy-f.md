@@ -133,3 +133,84 @@ try {
   console.error(`Failed to get Wi-Fi P2P disabled status. Code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+
+## getDisallowedPolicy
+
+```TypeScript
+function getDisallowedPolicy(feature: FeatureForDevice, queryPolicy?: common.QueryPolicy): boolean
+```
+
+Query whether the feature of a specified device is disabled.
+
+**Since:** 26.1.0
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-restrictions-function getDisallowedPolicy(feature: FeatureForDevice, queryPolicy?: common.QueryPolicy): boolean--><!--Device-restrictions-function getDisallowedPolicy(feature: FeatureForDevice, queryPolicy?: common.QueryPolicy): boolean-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| feature | [FeatureForDevice](arkts-mdm-restrictions-featurefordevice-e.md) | Yes | Specifies the device feature to be queried. <br> **Note: * * An application applies for the permission ohos.permission.PERSONAL_MANAGE_RESTRICTIONS and activates it as the [BDA](../../../mdm/mdm-kit-term.md#byod-device-admin-bdabyod device administrator) through [startAdminProvision](arkts-mdm-adminmanager-startadminprovision-f.md). This interface can be used to obtain the status of the following features: the status of the features marked with "√" in the BYOD column in [FeatureForDevice](arkts-mdm-restrictions-featurefordevice-e.md). |
+| queryPolicy | [common.QueryPolicy](arkts-mdm-common-querypolicy-e.md) | No | Indicates the policy to be queried. <br>Default value: common.QueryPolicy.SELF. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| boolean | If true is returned, the device feature corresponding to the feature is disabled. If false is returned, the device feature corresponding to the feature is not disabled. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-deviceadmin-not-enabled) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-parameter-verification-failed) | Parameter verification failed. |
+| [9200016](../errorcode-enterpriseDeviceManager.md#9200016-service-timeout) | Service timeout. |
+
+**Examples**
+
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // Replace parameters with actual values.
+  let result: boolean = restrictions.getDisallowedPolicy(wantTemp, 'printer');
+  console.info(`Succeeded in querying whether the printing function is disabled. Disabled status: ${result}`);
+} catch (err) {
+  console.error(`Failed to get printer disabled status. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+```TypeScript
+import { restrictions } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: boolean = restrictions.getDisallowedPolicy(wantTemp, restrictions.FeatureForDevice.WIFI_P2P);
+  console.info(`Succeeded in querying whether Wi-Fi P2P is disabled. Disabled status: ${result}`);
+} catch (err) {
+  console.error(`Failed to get Wi-Fi P2P disabled status. Code is ${err.code}, message is ${err.message}`);
+}
+```

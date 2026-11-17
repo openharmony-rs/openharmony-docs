@@ -2041,7 +2041,7 @@ Marshals this PixelMap object and writes it to a MessageSequence object.
 | Error Code ID | Error Message |
 | --- | --- |
 | [62980115](../errorcode-image.md#62980115-invalid-image-parameter) | Invalid image parameter. |
-| [62980097](../errorcode-image.md#62980097-pixelmap-serialization-failed) | IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception.         3. Decode process exception. 4. Insufficient memory. |
+| [62980097](../errorcode-image.md#62980097-pixelmap-serialization-transfer-failure) | IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception.         3. Decode process exception. 4. Insufficient memory. |
 
 **Examples**
 
@@ -3912,7 +3912,7 @@ Unmarshals a MessageSequence object to obtain a PixelMap object. To create a Pix
 | Error Code ID | Error Message |
 | --- | --- |
 | [62980115](../errorcode-image.md#62980115-invalid-image-parameter) | Invalid image parameter. |
-| [62980097](../errorcode-image.md#62980097-pixelmap-serialization-failed) | IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception.         3. Decode process exception. 4. Insufficient memory. |
+| [62980097](../errorcode-image.md#62980097-pixelmap-serialization-transfer-failure) | IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception.         3. Decode process exception. 4. Insufficient memory. |
 | [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 
 **Examples**

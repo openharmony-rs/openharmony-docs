@@ -4,7 +4,7 @@
 export declare class SelectOptions
 ```
 
-Declare type SelectOption
+声明SelectOption类型。
 
 **起始版本：** 10
 

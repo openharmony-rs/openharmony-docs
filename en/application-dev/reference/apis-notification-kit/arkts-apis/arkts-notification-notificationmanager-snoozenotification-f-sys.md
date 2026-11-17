@@ -12,7 +12,7 @@ import { notificationManager } from '@kit.NotificationKit';
 function snoozeNotification(hashCode: string, delayTime: number): Promise<void>
 ```
 
-Sets [notification snooze](../../../notification/notification-glossary.md#notification-snooze). The notification is reminded again after the specified time. Each setting triggers only one reminder, and the reminder mode is the same as that of the notification.
+Sets notification snooze. The notification is reminded again after the specified time. Each setting triggers only one reminder, and the reminder mode is the same as that of the notification.
 
 After the setting, the notification is deleted.
 

@@ -4,7 +4,7 @@
 export interface NotificationCheckResult
 ```
 
-Defines the [notification check](../../../notification/notification-glossary.md#notification-check) result.
+Defines the notification check result.
 
 **Since:** 10
 

@@ -15,7 +15,7 @@ declare enum TextContentStyle
 ## DEFAULT
 
 ```TypeScript
-DEFAULT = 0
+DEFAULT
 ```
 
 默认风格。光标宽度为1.5vp，光标高度与文本选中高亮高度和字体大小相关。
@@ -26,14 +26,14 @@ DEFAULT = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-TextContentStyle-DEFAULT = 0--><!--Device-TextContentStyle-DEFAULT = 0-End-->
+<!--Device-TextContentStyle-DEFAULT--><!--Device-TextContentStyle-DEFAULT-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## INLINE
 
 ```TypeScript
-INLINE = 1
+INLINE
 ```
 
 内联输入风格，也称内联模式。文本选中高亮高度与输入框高度相同。
@@ -50,6 +50,6 @@ INLINE = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-TextContentStyle-INLINE = 1--><!--Device-TextContentStyle-INLINE = 1-End-->
+<!--Device-TextContentStyle-INLINE--><!--Device-TextContentStyle-INLINE-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

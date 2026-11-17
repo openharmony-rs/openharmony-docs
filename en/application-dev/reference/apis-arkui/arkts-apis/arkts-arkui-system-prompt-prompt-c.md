@@ -6,7 +6,7 @@ export default class Prompt
 
 Defines the prompt interface.
 
-**Since:** 11
+**Since:** 3
 
 <!--Device-unnamed-export default class Prompt--><!--Device-unnamed-export default class Prompt-End-->
 
@@ -26,7 +26,7 @@ static showActionMenu(options: ShowActionMenuOptions): void
 
 Displays the menu.
 
-**Since:** 11
+**Since:** 6
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
@@ -80,7 +80,7 @@ static showDialog(options: ShowDialogOptions): void
 
 Displays the dialog box.
 
-**Since:** 11
+**Since:** 3
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
@@ -131,7 +131,7 @@ static showToast(options: ShowToastOptions): void
 
 Displays the notification text.
 
-**Since:** 11
+**Since:** 3
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 

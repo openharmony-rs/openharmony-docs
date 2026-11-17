@@ -38,7 +38,7 @@ SUCCESS = 0
 TOKEN_ID_NOT_EXIST = 1
 ```
 
-指定的目标应用token ID不存在。
+指定的targetTokenID不存在，或对应目标不是应用进程。
 
 **起始版本：** 26.1.0
 

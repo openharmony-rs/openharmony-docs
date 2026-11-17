@@ -28,7 +28,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 angularVelocity?: number[]
 ```
 
-Angular velocity of user motion status, in rad/s.
+Angular velocity of the device in the current state. The array length is 3, representing the angular velocity components of rotation around the x, y, and z axes respectively. Unit: rad/s.
 
 **Type:** number[]
 
@@ -48,7 +48,7 @@ Angular velocity of user motion status, in rad/s.
 azimuth?: number[]
 ```
 
-Azimuth of user motion status. The value ranges from 0 to 360, in degrees.
+Azimuth of the device in the current state. The array length is 3, representing the yaw angle (around the y-axis), pitch angle (around the x-axis), and roll angle (around the z-axis) respectively. Value range: [0, 360]. Unit: deg.
 
 **Type:** number[]
 
@@ -68,7 +68,7 @@ Azimuth of user motion status. The value ranges from 0 to 360, in degrees.
 faceNum?: number
 ```
 
-Number of faces detected. The value must be an integer within [0,3].
+Number of detected faces. Value range: [0, 3].
 
 **Type:** number
 
@@ -88,7 +88,7 @@ Number of faces detected. The value must be an integer within [0,3].
 gravityAcceleration?: number[]
 ```
 
-Gravity acceleration of user motion status, in m/s².
+Gravity acceleration of the device in the current state. The array length is 3, representing the acceleration components in the x, y, and z directions respectively. Unit: m/s².
 
 **Type:** number[]
 
@@ -108,7 +108,7 @@ Gravity acceleration of user motion status, in m/s².
 linearAcceleration?: number[][]
 ```
 
-Linear acceleration of user motion status, in m/s².
+Linear acceleration of the device in the current state. Two-dimensional array. The outer layer represents sampling at multiple points, and the inner layer is an array of length 3, representing the acceleration components in the x, y, and z directions respectively. Unit: m/s².
 
 **Type:** number[][]
 
@@ -128,7 +128,7 @@ Linear acceleration of user motion status, in m/s².
 visualAngle?: number[]
 ```
 
-User visual angle. The value ranges from 0 to 90, in degrees.
+Viewing angle of the user looking at the screen. Value range: [0, 90]. Unit: deg.
 
 **Type:** number[]
 

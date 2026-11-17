@@ -38,16 +38,20 @@ import { usbManager } from '@kit.MDMKit';
 | [getDisallowedUsbDevices](arkts-mdm-usbmanager-getdisallowedusbdevices-f.md#getdisallowedusbdevices-1) | 获取禁止使用的USB设备类型。 |
 | [getDisallowedUsbDevices](arkts-mdm-usbmanager-getdisallowedusbdevices-f.md#getdisallowedusbdevices-2) | 获取禁止使用的USB设备类型。 |
 | [getExternalStorageDeviceInfos](arkts-mdm-usbmanager-getexternalstoragedeviceinfos-f.md#getexternalstoragedeviceinfos-1) | 获取当前设备的卷信息。 |
+| [getUsbDeviceInfos](arkts-mdm-usbmanager-getusbdeviceinfos-f.md#getusbdeviceinfos-1) | 获取当前已连接的全部USB设备信息。 |
 | [getUsbSerialNumber](arkts-mdm-usbmanager-getusbserialnumber-f.md#getusbserialnumber-1) | 获取USB设备的序列号。 |
 | [getUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-getusbstoragedeviceaccesspolicy-f.md#getusbstoragedeviceaccesspolicy-1) | 获取USB存储设备（baseClass = 0x08）访问策略。 |
 | [getUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-getusbstoragedeviceaccesspolicy-f.md#getusbstoragedeviceaccesspolicy-2) | 获取USB存储设备（baseClass = 0x08）访问策略。 |
 | [isExternalStorageInterceptEnable](arkts-mdm-usbmanager-isexternalstorageinterceptenable-f.md#isexternalstorageinterceptenable-1) | 查询外置存储挂载使能状态。 |
+| [isUsbInterceptEnable](arkts-mdm-usbmanager-isusbinterceptenable-f.md#isusbinterceptenable-1) | 查询USB拦截使能状态。 |
 | [removeAllowedOpticalDiscDriveBurnUsbDevices](arkts-mdm-usbmanager-removeallowedopticaldiscdriveburnusbdevices-f.md#removeallowedopticaldiscdriveburnusbdevices-1) | 将USB设备从支持CD/DVD刻录的USB设备列表中移除。 |
 | [removeAllowedUsbDevices](arkts-mdm-usbmanager-removeallowedusbdevices-f.md#removeallowedusbdevices-1) | 移除USB设备可用名单。 |
 | [removeDisallowedPermissiveUsbDevices](arkts-mdm-usbmanager-removedisallowedpermissiveusbdevices-f.md#removedisallowedpermissiveusbdevices-1) | 移除通过[addDisallowedPermissiveUsbDevices](arkts-mdm-usbmanager-adddisallowedpermissiveusbdevices-f.md)接口禁用的USB设备类型。被移除的USB设备类型可恢复正常使用。 |
 | [removeDisallowedUsbDevices](arkts-mdm-usbmanager-removedisallowedusbdevices-f.md#removedisallowedusbdevices-1) | 移除禁止使用的USB设备类型。 |
 | [setExternalStorageDeviceMountPolicy](arkts-mdm-usbmanager-setexternalstoragedevicemountpolicy-f.md#setexternalstoragedevicemountpolicy-1) | 设置外部存储设备的挂载策略。 |
 | [setExternalStorageInterceptEnable](arkts-mdm-usbmanager-setexternalstorageinterceptenable-f.md#setexternalstorageinterceptenable-1) | 设置外置存储挂载使能状态。 |
+| [setUsbDeviceStates](arkts-mdm-usbmanager-setusbdevicestates-f.md#setusbdevicestates-1) | 设置USB设备状态。 |
+| [setUsbInterceptEnable](arkts-mdm-usbmanager-setusbinterceptenable-f.md#setusbinterceptenable-1) | 设置USB拦截使能状态。 |
 | [setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md#setusbstoragedeviceaccesspolicy-1) | 设置USB存储设备（baseClass = 0x08）访问策略。 |
 
 <!--Del-->

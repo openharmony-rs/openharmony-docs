@@ -24,7 +24,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 rssLimit: bigint
 ```
 
-The limit of the application process's resident set, in kilobyte
+Limit on the physical memory size of the application process, in KB. Currently, the system does not limit the physical memory size of the process. However, the available physical memory of the process cannot exceed the maximum physical memory of the device. You can call [hidebug.getSystemMemInfo](arkts-performanceanalysis-hidebug-getsystemmeminfo-f.md) to obtain the physical memory usage of the device.
 
 **Type:** bigint
 
@@ -40,7 +40,7 @@ The limit of the application process's resident set, in kilobyte
 vmHeapLimit: bigint
 ```
 
-The limit of the js vm heap size of current virtual machine, in kilobyte
+Limit on the JS VM heap size of the calling thread, in KB.
 
 **Type:** bigint
 
@@ -56,7 +56,7 @@ The limit of the js vm heap size of current virtual machine, in kilobyte
 vmTotalHeapSize: bigint
 ```
 
-The limit of the total js vm heap size of process, in kilobyte
+Limit on the JS heap memory size of the process, in KB.
 
 **Type:** bigint
 
@@ -72,7 +72,7 @@ The limit of the total js vm heap size of process, in kilobyte
 vssLimit: bigint
 ```
 
-The limit of the application process's virtual memory, in kilobyte
+Limit on the virtual memory size, in KB.
 
 **Type:** bigint
 

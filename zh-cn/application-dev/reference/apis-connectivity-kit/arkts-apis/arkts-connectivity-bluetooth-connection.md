@@ -23,6 +23,7 @@ import { connection } from '@kit.ConnectivityKit';
 | 名称 | 说明 |
 | --- | --- |
 | [cancelPairedDevice](arkts-connectivity-connection-cancelpaireddevice-f.md#cancelpaireddevice-2) | 删除已配对的远端设备。 |
+| [cancelPairingDevice](arkts-connectivity-connection-cancelpairingdevice-f.md#cancelpairingdevice-2) | 取消当前应用发起的配对远端设备。 |
 | [connectAllowedProfiles](arkts-connectivity-connection-connectallowedprofiles-f.md#connectallowedprofiles-1) | 连接对端设备支持的Profile（只包括A2DP、HFP和HID）。使用Callback异步回调。 |
 | [connectAllowedProfiles](arkts-connectivity-connection-connectallowedprofiles-f.md#connectallowedprofiles-2) | 连接对端设备支持的Profile（只包括A2DP、HFP和HID）。使用Promise异步回调。 |
 | [disconnectAllowedProfiles](arkts-connectivity-connection-disconnectallowedprofiles-f.md#disconnectallowedprofiles-2) | 断开对端设备支持的Profile（只包括A2DP和HFP）。 |
@@ -74,7 +75,6 @@ import { connection } from '@kit.ConnectivityKit';
 | --- | --- |
 | [cancelPairedDevice](arkts-connectivity-connection-cancelpaireddevice-f-sys.md#cancelpaireddevice-1) | 删除配对的远程设备。使用Callback异步回调。 |
 | [cancelPairingDevice](arkts-connectivity-connection-cancelpairingdevice-f-sys.md#cancelpairingdevice-1) | 删除正在配对中的远程设备。与cancelPairedDevice（用于删除已配对的设备）不同，本接口用于取消正在进行中的配对流程。使用Callback异步回调。 |
-| [cancelPairingDevice](arkts-connectivity-connection-cancelpairingdevice-f-sys.md#cancelpairingdevice-2) | 删除正在配对中的远程设备。与cancelPairedDevice（用于删除已配对的设备）不同，本接口用于取消正在进行中的配对流程。使用Promise异步回调。 |
 | [controlDeviceAction](arkts-connectivity-connection-controldeviceaction-f-sys.md#controldeviceaction-1) | 查找蓝牙耳机设备时，向耳机发送控制命令。使用Promise异步回调。 |
 | [disconnectAllowedProfiles](arkts-connectivity-connection-disconnectallowedprofiles-f-sys.md#disconnectallowedprofiles-1) | 断开远端设备所有连接的profiles。使用Callback异步回调。 |
 | [generateLocalOobData](arkts-connectivity-connection-generatelocaloobdata-f-sys.md#generatelocaloobdata-1) | 获取本机的带外（Out of Band, OOB）通信数据。生成的OOB数据经带外通道传输至对端设备后，对端设备可通过[pairDeviceOutOfBand](arkts-connectivity-connection-pairdeviceoutofband-f-sys.md)使用该数据发起配对流程。使用Promise异步回调。 |

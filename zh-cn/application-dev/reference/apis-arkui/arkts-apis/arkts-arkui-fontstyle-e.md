@@ -15,7 +15,7 @@ declare enum FontStyle
 ## Italic
 
 ```TypeScript
-Italic = 1
+Italic
 ```
 
 斜体的字体样式。
@@ -26,14 +26,14 @@ Italic = 1
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-FontStyle-Italic = 1--><!--Device-FontStyle-Italic = 1-End-->
+<!--Device-FontStyle-Italic--><!--Device-FontStyle-Italic-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Normal
 
 ```TypeScript
-Normal = 0
+Normal
 ```
 
 标准的字体样式。
@@ -44,6 +44,6 @@ Normal = 0
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-FontStyle-Normal = 0--><!--Device-FontStyle-Normal = 0-End-->
+<!--Device-FontStyle-Normal--><!--Device-FontStyle-Normal-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

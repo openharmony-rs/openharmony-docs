@@ -36,7 +36,7 @@ function query(faultType: FaultType, callback: AsyncCallback<Array<FaultLogInfo>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: The specified SystemCapability name was not found. |
-| [10600001](../errorcode-faultlogger.md#10600001-服务未启动或故障) | The service is not started or is faulty |
+| [10600001](../errorcode-faultlogger.md#10600001-服务未启动或故障) | The service is not started or is faulty. |
 
 **示例**
 
@@ -106,7 +106,7 @@ function query(faultType: FaultType): Promise<Array<FaultLogInfo>>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: The specified SystemCapability name was not found. |
-| [10600001](../errorcode-faultlogger.md#10600001-服务未启动或故障) | The service is not started or is faulty |
+| [10600001](../errorcode-faultlogger.md#10600001-服务未启动或故障) | The service is not started or is faulty. |
 
 **示例**
 

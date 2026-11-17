@@ -26,7 +26,7 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 domain: PerceptionDomain
 ```
 
-感知领域类型。
+感知领域类型（必填）。
 
 **类型：** [PerceptionDomain](arkts-multimodalawareness-behaviorawareness-perceptiondomain-e-sys.md)
 
@@ -46,7 +46,7 @@ domain: PerceptionDomain
 patternTypes?: PatternType[]
 ```
 
-子类型过滤（可选。不指定时订阅该领域下所有模式。）。默认值：不过滤，订阅该领域下所有子类型。
+子类型过滤（可选，不填则订阅该领域下所有模式）。默认值：不设置过滤，订阅该领域下所有子类型。
 
 **类型：** [PatternType](arkts-multimodalawareness-behaviorawareness-patterntype-e-sys.md)[]
 

@@ -20,7 +20,7 @@ Result parameter for onAfterInvokeFunction.
 dmSessionId?: string
 ```
 
-Indicates the session ID of the dialog manager (DM), echoed from [InvokeOptions](arkts-ability-functionmanager-invokeoptions-i-sys.md). Present only when the caller passed it. The value consists of letters, digits,'_' and '-', with a maximum length of 256.
+Indicates the session ID of the dialog manager (DM), echoed from [InvokeOptions](arkts-ability-functionmanager-invokeoptions-i.md). Present only when the caller passed it. The value consists of letters, digits,'_' and '-', with a maximum length of 256.
 
 **Type:** string
 
@@ -60,7 +60,7 @@ Indicates the invocation result.
 toolCallId?: string
 ```
 
-Indicates the unique identifier of the function call, echoed from [InvokeOptions](arkts-ability-functionmanager-invokeoptions-i-sys.md). Present only when the caller passed it. The value consists of letters, digits,'_' and '-', with a maximum length of 256.
+Indicates the unique identifier of the function call, echoed from [InvokeOptions](arkts-ability-functionmanager-invokeoptions-i.md). Present only when the caller passed it. The value consists of letters, digits,'_' and '-', with a maximum length of 256.
 
 **Type:** string
 

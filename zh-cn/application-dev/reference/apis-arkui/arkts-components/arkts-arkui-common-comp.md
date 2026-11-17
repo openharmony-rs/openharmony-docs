@@ -114,7 +114,7 @@ Common()
 
 | 名称 | 说明 |
 | --- | --- |
-| [AccessibilityHoverEvent](arkts-arkui-common-comp-accessibilityhoverevent-i.md) | The accessibility hover action triggers this method invocation. |
+| [AccessibilityHoverEvent](arkts-arkui-common-comp-accessibilityhoverevent-i.md) | 无障碍悬浮事件对象，用于获取触发无障碍悬浮事件时的详细信息，包括无障碍悬浮动作类型（type）、手指相对于组件/窗口/屏幕的坐标（x、y、windowX、windowY、displayX、displayY、globalDisplayX、globalDisplayY）等属性。 |
 | [AlignRuleOption](arkts-arkui-common-comp-alignruleoption-i.md) | 相对布局组件中子组件的对齐规则。 |
 | [AnimatableArithmetic](arkts-arkui-common-comp-animatablearithmetic-i.md) | 该接口定义非number数据类型的动画运算规则。对非number类型的数据（如数组、结构体、颜色等）做动画，需要实现AnimatableArithmetic\<T\>接口中加法、减法、乘法和判断相等函数，使得该数据能参与动画的插值运算和识别该数据是否发生改变。即定义它们为实现了AnimatableArithmetic\<T\>接口的类型。 |
 | [AnimateParam](arkts-arkui-common-comp-animateparam-i.md) | 动画效果相关参数。 |
@@ -130,14 +130,14 @@ Common()
 | [BindOptions](arkts-arkui-common-comp-bindoptions-i.md) | 半模态、全模态的公共配置接口。 |
 | [BlurOptions](arkts-arkui-common-comp-bluroptions-i.md) | 灰阶模糊参数。 |
 | [BlurStyleOptions](arkts-arkui-common-comp-blurstyleoptions-i.md) | 模糊样式选项，用于配置模糊效果的深浅色模式、取色模式、灰阶模糊参数和模糊程度。 |
-| [BorderImageOption](arkts-arkui-common-comp-borderimageoption-i.md) | Border image option |
+| [BorderImageOption](arkts-arkui-common-comp-borderimageoption-i.md) | 图片边框或者渐变色边框设置接口。 |
 | [Callback](arkts-arkui-common-comp-callback-i.md) | 定义基础的回调函数。 |
 | [CaretOffset](arkts-arkui-common-comp-caretoffset-i.md) | 光标相对输入框的位置信息。 |
 | [ClickEffect](arkts-arkui-common-comp-clickeffect-i.md) | 定义点击回弹效果。 |
 | [ClickEvent](arkts-arkui-common-comp-clickevent-i.md) | 继承于[BaseEvent](arkts-arkui-common-comp-baseevent-i.md)。 |
 | [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md) | 开发者需要自定义class实现ContentModifier接口。 |
 | [ComponentOptions](arkts-arkui-common-comp-componentoptions-i.md) | 自定义组件参数，用于配置是否支持组件冻结和全局复用池，适用于需要优化自定义组件性能表现和提升组件复用效率的场景。 |
-| [Configuration](arkts-arkui-common-comp-configuration-i.md) | Defines the data type of the interface restriction. |
+| [Configuration](arkts-arkui-common-comp-configuration-i.md) | 数据类型。用于设置颜色模式和字体缩放倍数。 |
 | [ContentCoverOptions](arkts-arkui-common-comp-contentcoveroptions-i.md) | 继承自[BindOptions](arkts-arkui-common-comp-bindoptions-i.md)。 |
 | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md) | 开发者需要自定义class实现ContentModifier接口。 |
 | [ContextMenuAnimationOptions](arkts-arkui-common-comp-contextmenuanimationoptions-i.md) | 长按预览时显示的样式信息。 |
@@ -204,6 +204,7 @@ Common()
 | [NestedScrollOptions](arkts-arkui-common-comp-nestedscrolloptions-i.md) | nestedScroll属性参数对象。 |
 | [OverlayOffset](arkts-arkui-common-comp-overlayoffset-i.md) | 设置浮层基于自身左上角的偏移量。浮层默认处于组件左上角。 |
 | [OverlayOptions](arkts-arkui-common-comp-overlayoptions-i.md) | 浮层的定位。 |
+| [PickerComponentTextStyle](arkts-arkui-common-comp-pickercomponenttextstyle-i.md) | 定义DatePickerComponent与UIPickerComponent共用的文本样式。 |
 | [PickerDialogButtonStyle](arkts-arkui-common-comp-pickerdialogbuttonstyle-i.md) | 提供选择器按钮样式的接口。 |
 | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Provide an interface for the text style of picker |
 | [PixelRoundPolicy](arkts-arkui-common-comp-pixelroundpolicy-i.md) | 指定组件级像素取整的方向。 |
@@ -289,7 +290,7 @@ Common()
 | [BuilderCallback](arkts-arkui-common-comp-buildercallback-t.md) | `BuilderCallback`是全局`@Builder`函数的类型别名，作为`mutableBuilder`函数的入参类型，用于指定待封装的全局`@Builder`函数。 |
 | [CircleShape](arkts-arkui-common-comp-circleshape-t.md) | 导入CircleShape类型对象。 |
 | [ComponentContent](arkts-arkui-common-comp-componentcontent-t.md) | 组件内容的实体封装。 |
-| [Context](arkts-arkui-common-comp-context-t.md) | Get context. |
+| [Context](arkts-arkui-common-comp-context-t.md) | 返回当前组件所在Ability的Context，Context的具体类型为当前Ability关联的Context对象。例如：在UIAbility窗口中的页面调用该接口，返回类型为UIAbilityContext。在ExtensionAbility窗口中的页面调用该接口，返回类型为ExtensionContext。 |
 | [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) | 定义CustomBuilder类型。 |
 | [CustomBuilderT](arkts-arkui-common-comp-custombuildert-t.md) | 定义带参数的CustomBuilder类型 |
 | [DataLoadParams](arkts-arkui-common-comp-dataloadparams-t.md) | 落入操作时使用的数据加载参数。 |
@@ -318,11 +319,11 @@ Common()
 | [OnNeedSoftkeyboardCallback](arkts-arkui-common-comp-onneedsoftkeyboardcallback-t.md) | 当绑定该方法的组件判断是否需要键盘时，将触发此回调。前提条件：组件需可获焦，否则本接口不生效。 |
 | [OnScrollCallback](arkts-arkui-common-comp-onscrollcallback-t.md) | 滚动组件滑动时触发的回调。 |
 | [OnVisibleIndexesChangeCallback](arkts-arkui-common-comp-onvisibleindexeschangecallback-t.md) | 懒加载布局容器[LazyColumnLayout](arkts-arkui-lazycolumnlayout-comp-attribute.md#lazycolumnlayout)、[LazyVGridLayout](arkts-arkui-lazyvgridlayout-comp.md)、[LazyVWaterFlowLayout](arkts-arkui-lazyvwaterflowlayout-comp.md#lazyvwaterflowlayout)所显示的子组件索引发生变化时的回调类型。 |
-| [OnWillScrollCallback](arkts-arkui-common-comp-onwillscrollcallback-t.md) | Called before scroll to allow developer to control real offset the Scrollable can scroll. |
+| [OnWillScrollCallback](arkts-arkui-common-comp-onwillscrollcallback-t.md) | 滚动组件滑动前触发的回调。 |
 | [OnWillStopDraggingCallback](arkts-arkui-common-comp-onwillstopdraggingcallback-t.md) | 滚动组件划动离手时触发的回调。 |
 | [Optional](arkts-arkui-common-comp-optional-t.md) | 定义可选类型，其值可以是undefined。 |
 | [PathShape](arkts-arkui-common-comp-pathshape-t.md) | 导入PathShape类型对象。 |
-| [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) | Defines the PixelMap type object for ui component. |
+| [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) | 图像像素类，用于读取或写入图像数据以及获取图像信息。 |
 | [PointerStyle](arkts-arkui-common-comp-pointerstyle-t.md) | 光标样式。 |
 | [PopupStateChangeCallback](arkts-arkui-common-comp-popupstatechangecallback-t.md) | 气泡状态变化事件回调。 |
 | [PromptActionDialogController](arkts-arkui-common-comp-promptactiondialogcontroller-t.md) | 从promptAction导入弹出框控制器类型 |

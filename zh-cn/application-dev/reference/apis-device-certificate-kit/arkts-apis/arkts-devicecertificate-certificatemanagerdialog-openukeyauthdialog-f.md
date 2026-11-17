@@ -45,7 +45,7 @@ function openUkeyAuthDialog(context: common.Context, ukeyAuthRequest: UkeyAuthRe
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because the certificate management application hap is not preinstalled in the system. |
 | [29700001](../errorcode-certManagerDialog.md#29700001-内部错误) | Internal error. Possible causes: 1. IPC communication failed; <br>2. Memory operation error; 3. File operation error. Please try again. |
 | [29700002](../errorcode-certManagerDialog.md#29700002-操作取消) | The user cancels the authentication operation or operation timed out. |
-| [29700003](../errorcode-certManagerDialog.md#29700003-证书安装失败错误) | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal, Please ask the user to check the status of the Ukey. The Ukey authentication dialog box cannot be opened concurrently. Please try again later. |
+| [29700003](../errorcode-certManagerDialog.md#29700003-证书安装失败错误) | The authentication operation failed, such as: The USB key certificate does not exist. The USB key status is abnormal. Please ask the user to check the status of the Ukey. The Ukey authentication dialog box cannot be opened concurrently. Please try again later. |
 | [29700006](../errorcode-certManagerDialog.md#29700006-入参校验失败) | Indicates that the input parameters validation failed. For example, the parameter format is incorrect or the value range is invalid. |
 
 **示例**

@@ -478,6 +478,22 @@ PACKET_FILTERING = 3
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+## POWER_SAVING_MODE
+
+```TypeScript
+POWER_SAVING_MODE = 57
+```
+
+省电模式，包含省电模式、超级省电模式和户外探索。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FeatureForDevice-POWER_SAVING_MODE = 57--><!--Device-FeatureForDevice-POWER_SAVING_MODE = 57-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## PRINTER
 
 ```TypeScript

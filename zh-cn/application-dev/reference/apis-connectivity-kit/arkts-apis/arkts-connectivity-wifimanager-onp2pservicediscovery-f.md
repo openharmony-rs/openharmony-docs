@@ -14,7 +14,7 @@ function onP2pServiceDiscovery(callback: Callback<P2pServiceDiscoveryInfo>): voi
 
 订阅来自对端设备的通用服务响应事件。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -28,7 +28,7 @@ function onP2pServiceDiscovery(callback: Callback<P2pServiceDiscoveryInfo>): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;P2pServiceDiscoveryInfo&gt; | 是 | 收到对端设备的服务发现响应时触发的回调函数。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[P2pServiceDiscoveryInfo](arkts-connectivity-wifimanager-p2pservicediscoveryinfo-t.md)&gt; | 是 | 收到对端设备的服务发现响应时触发的回调函数。 |
 
 **错误码：**
 

@@ -12,7 +12,9 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 function onSmartRotateChange(callback: Callback<SmartRotateEvent>): void
 ```
 
-订阅智能旋转传感器事件。
+订阅智能旋转传感器事件。当设备物理方向变化或智能算法调整逻辑方向时触发该事件并回调，当需要实现智能屏幕旋转等场景时使用。需与offSmartRotateChange配对使用，使用完毕后应调用offSmartRotateChange取消订阅以释放系统资源。
+
+与onRotateChange相比，onSmartRotateChange不仅返回重力传感器检测的物理方向，还提供智能算法调整后的逻辑方向
 
 **起始版本：** 26.0.0
 

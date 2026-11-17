@@ -30,7 +30,7 @@ Obtains the resource information based on the given file path and resource flags
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| filePath | string | Yes | Path where the file is stored. The path must be the relative path of the current bundle's data directory. |
+| filePath | string | Yes | Path where the file is stored. The path can be an absolute path or a sandbox path of the current bundle's data directory. |
 | resourceFlags | number | No | Type of the resource information to obtain. For details. see [ResourceFlag](arkts-ability-bundleresourcemanager-resourceflag-e-sys.md). |
 
 **Return value:**

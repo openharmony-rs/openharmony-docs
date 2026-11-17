@@ -167,6 +167,10 @@ import { wifiManager } from '@kit.ConnectivityKit';
 | [ConnectSettings](arkts-connectivity-wifimanager-connectsettings-i.md) | 连接Wi-Fi设置信息。 |
 | [IpInfo](arkts-connectivity-wifimanager-ipinfo-i.md) | IPV4信息。 |
 | [Ipv6Info](arkts-connectivity-wifimanager-ipv6info-i.md) | Ipv6信息。 |
+| [P2pDnsSdInfo](arkts-connectivity-wifimanager-p2pdnssdinfo-i.md) | 表示从对端设备收到的DNS-SD服务响应信息。 |
+| [P2pDnsSdTxtInfo](arkts-connectivity-wifimanager-p2pdnssdtxtinfo-i.md) | 表示从对端设备收到的DNS-SD TXT记录信息。 |
+| [P2pGenericInfo](arkts-connectivity-wifimanager-p2pgenericinfo-i.md) | 表示从对端设备收到的通用服务响应信息。 |
+| [P2pUpnpInfo](arkts-connectivity-wifimanager-p2pupnpinfo-i.md) | 表示从对端设备收到的UPnP服务响应信息。 |
 | [WifiDeviceConfig](arkts-connectivity-wifimanager-wifideviceconfig-i.md) | Wi-Fi配置信息。 |
 | [WifiEapConfig](arkts-connectivity-wifimanager-wifieapconfig-i.md) | 可扩展身份验证协议配置信息。 |
 | [WifiInfoElem](arkts-connectivity-wifimanager-wifiinfoelem-i.md) | Wi-Fi热点信息。 |
@@ -176,6 +180,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 | [WifiP2pGroupInfo](arkts-connectivity-wifimanager-wifip2pgroupinfo-i.md) | 表示P2P群组相关信息。 |
 | [WifiP2pLinkedInfo](arkts-connectivity-wifimanager-wifip2plinkedinfo-i.md) | 提供Wi-Fi连接的相关信息。 |
 | [WifiP2pServiceInfo](arkts-connectivity-wifimanager-wifip2pserviceinfo-i.md) | 表示P2P服务信息。 |
+| [WifiP2pServiceRequest](arkts-connectivity-wifimanager-wifip2pservicerequest-i.md) | 表示P2P服务发现请求（TLV查询）。 |
 | [WifiScanInfo](arkts-connectivity-wifimanager-wifiscaninfo-i.md) | Wi-Fi热点信息。 |
 | [WifiWapiConfig](arkts-connectivity-wifimanager-wifiwapiconfig-i.md) | WAPI(Wireless LAN Authentication and Privacy Infrastructure) 身份验证协议配置。 |
 
@@ -193,6 +198,12 @@ import { wifiManager } from '@kit.ConnectivityKit';
 | [WifiProxyConfig](arkts-connectivity-wifimanager-wifiproxyconfig-i-sys.md) | Wi-Fi代理配置。 |
 | [WifiScanInfo](arkts-connectivity-wifimanager-wifiscaninfo-i-sys.md) | Wi-Fi热点信息。 |
 <!--DelEnd-->
+
+### 类型
+
+| 名称 | 说明 |
+| --- | --- |
+| [P2pServiceDiscoveryInfo](arkts-connectivity-wifimanager-p2pservicediscoveryinfo-t.md) | 表示从对端设备收到的P2P服务发现响应信息。具体类型由响应的服务协议类型决定。 |
 
 ### 枚举
 

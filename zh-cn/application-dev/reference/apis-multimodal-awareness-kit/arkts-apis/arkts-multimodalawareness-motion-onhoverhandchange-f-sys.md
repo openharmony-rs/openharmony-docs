@@ -12,7 +12,11 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 function onHoverHandChange(detectionArea: HoverHandDetectionArea, callback: Callback<HoverHandAction>): void
 ```
 
-订阅悬停手势事件，并立即开始5秒检测。
+订阅悬浮手事件，并立即开启悬浮手事件检测，检测时长为五秒。需与offHoverHandChange配对使用，使用完毕后应调用offHoverHandChange取消订阅以释放系统资源。
+
+> **说明：** 
+> 
+> 检测时长到期后，悬浮手事件检测将自动终止，不再上报悬浮手事件，需要开发者再次调用订阅此接口以重新开启检测。
 
 **起始版本：** 26.0.0
 
@@ -48,7 +52,11 @@ function onHoverHandChange(
     detectionArea: HoverHandDetectionArea, duration: number, callback: Callback<HoverHandAction>): void
 ```
 
-订阅悬停手势事件，并立即开始检测。
+订阅悬浮手事件，并立即开启悬浮手事件检测，支持指定检测时长。需与offHoverHandChange配对使用，使用完毕后应调用offHoverHandChange取消订阅以释放系统资源。
+
+> **说明：** 
+> 
+> 检测时长到期后，悬浮手事件检测将自动终止，不再上报悬浮手事件，需要开发者再次调用订阅此接口以重新开启检测。
 
 **起始版本：** 26.0.0
 

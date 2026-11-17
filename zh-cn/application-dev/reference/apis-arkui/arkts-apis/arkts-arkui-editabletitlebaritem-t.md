@@ -4,7 +4,7 @@
 export type EditableTitleBarItem = EditableTitleBarMenuItem
 ```
 
-Declaration of the image item .
+声明图片项。
 
 **类型：** [EditableTitleBarMenuItem](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebarmenuitem-c.md)
 

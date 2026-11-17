@@ -15,7 +15,7 @@ declare enum TextOverflow
 ## Clip
 
 ```TypeScript
-Clip = 1
+Clip
 ```
 
 文本超长时按最大行截断显示，与None效果相同。
@@ -26,14 +26,14 @@ Clip = 1
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextOverflow-Clip = 1--><!--Device-TextOverflow-Clip = 1-End-->
+<!--Device-TextOverflow-Clip--><!--Device-TextOverflow-Clip-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## Ellipsis
 
 ```TypeScript
-Ellipsis = 2
+Ellipsis
 ```
 
 文本超长时显示不下的文本用省略号代替。
@@ -44,14 +44,14 @@ Ellipsis = 2
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextOverflow-Ellipsis = 2--><!--Device-TextOverflow-Ellipsis = 2-End-->
+<!--Device-TextOverflow-Ellipsis--><!--Device-TextOverflow-Ellipsis-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## MARQUEE
 
 ```TypeScript
-MARQUEE = 3
+MARQUEE
 ```
 
 文本超长时以跑马灯的方式展示。
@@ -62,14 +62,14 @@ MARQUEE = 3
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-TextOverflow-MARQUEE = 3--><!--Device-TextOverflow-MARQUEE = 3-End-->
+<!--Device-TextOverflow-MARQUEE--><!--Device-TextOverflow-MARQUEE-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## None
 
 ```TypeScript
-None = 0
+None
 ```
 
 文本超长时按最大行截断显示。
@@ -80,6 +80,6 @@ None = 0
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-TextOverflow-None = 0--><!--Device-TextOverflow-None = 0-End-->
+<!--Device-TextOverflow-None--><!--Device-TextOverflow-None-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

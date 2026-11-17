@@ -28,7 +28,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 eventType: number
 ```
 
-Event type. The value ranges from 0 to 1. 0: Gaze event, 1: Ambient sound event..
+Event type. The value 0 indicates a gaze event, and 1 indicates an ambient sound event.
 
 **Type:** number
 
@@ -48,7 +48,7 @@ Event type. The value ranges from 0 to 1. 0: Gaze event, 1: Ambient sound event.
 fusionReminderData: ReminderLevel
 ```
 
-Fusion reminder data.
+Reminder level after comprehensive detection.
 
 **Type:** [ReminderLevel](arkts-multimodalawareness-userstatus-reminderlevel-e-sys.md)
 
@@ -68,7 +68,7 @@ Fusion reminder data.
 swingReminderData: ReminderLevel
 ```
 
-Swing reminder data.
+Reminder level when gazing at the screen.
 
 **Type:** [ReminderLevel](arkts-multimodalawareness-userstatus-reminderlevel-e-sys.md)
 

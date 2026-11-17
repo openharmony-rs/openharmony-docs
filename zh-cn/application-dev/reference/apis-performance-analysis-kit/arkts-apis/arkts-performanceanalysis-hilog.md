@@ -1,6 +1,4 @@
-# @ohos.hilog(日志打印)
-
-hilog日志系统，使应用/服务可以按照指定级别、标识和格式字符串输出日志内容，帮助开发者了解应用/服务的运行状态，更好地调试程序。
+# @ohos.hilog(HiLOG日志打印)
 
 **起始版本：** 7
 
@@ -26,7 +24,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 | [info](arkts-performanceanalysis-hilog-info-f.md#info-1) | 打印INFO级别的日志。 |
 | [isLoggable](arkts-performanceanalysis-hilog-isloggable-f.md#isloggable-1) | 在打印日志前调用该接口，用于检查指定领域标识、日志标识和级别的日志是否可以打印。 |
 | [setLogLevel](arkts-performanceanalysis-hilog-setloglevel-f.md#setloglevel-1) | 设置当前应用程序进程的最低日志级别。 |
-| [setMinLogLevel](arkts-performanceanalysis-hilog-setminloglevel-f.md#setminloglevel-1) | 设置应用日志打印的最低日志级别，用于拦截低级别日志打印。 |
+| [setMinLogLevel](arkts-performanceanalysis-hilog-setminloglevel-f.md#setminloglevel-1) | 设置应用日志打印的最低日志级别，用于拦截低级别日志打印。在需要优化应用性能或减少低价值日志干扰时使用，避免冗余日志。 |
 | [warn](arkts-performanceanalysis-hilog-warn-f.md#warn-1) | 打印WARN级别的日志。 |
 
 ### 枚举

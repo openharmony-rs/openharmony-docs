@@ -150,7 +150,7 @@ Generates a media key request. This API uses a promise to return the result.
 | --- | --- | --- | --- |
 | mimeType | string | Yes | MIME type. The supported DRM solution names can be obtained by calling [isMediaKeySystemSupported](arkts-drm-drm-ismediakeysystemsupported-f.md#ismediakeysystemsupported-2). |
 | initData | Uint8Array | Yes | Initial data. |
-| mediaKeyType | number | Yes | Type of the media key. The value **0** means an online media key, and **1** means an offline media key. |
+| mediaKeyType | number | Yes | Type of the media key. The value **1** means an online media key, and **0** means an offline media key. |
 | options | [OptionsData](arkts-drm-drm-optionsdata-i.md)[] | No | Optional data. |
 
 **Return value:**

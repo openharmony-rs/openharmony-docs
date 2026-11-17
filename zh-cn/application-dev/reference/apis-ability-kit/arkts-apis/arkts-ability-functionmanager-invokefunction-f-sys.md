@@ -34,13 +34,13 @@ function invokeFunction(functionNamespace: string, functionName: string,
 | functionNamespace | string | 是 | 目标Function的命名空间，与functionName共同确定唯一的Function。 |
 | functionName | string | 是 | 目标Function的名称，与functionNamespace共同确定唯一的Function。 |
 | args | Record&lt;string, Object&gt; | 是 | 符合Function提供方定义格式的输入参数。 |
-| options | [InvokeOptions](arkts-ability-functionmanager-invokeoptions-i-sys.md) | 否 | Function调用的可选参数。默认值：详见[InvokeOptions](arkts-ability-functionmanager-invokeoptions-i-sys.md)的具体属性默认值。 |
+| options | [InvokeOptions](arkts-ability-functionmanager-invokeoptions-i.md) | 否 | Function调用的可选参数。默认值：详见[InvokeOptions](arkts-ability-functionmanager-invokeoptions-i.md)的具体属性默认值。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[InvokeResult](arkts-ability-functionmanager-invokeresult-i-sys.md)&gt; | Promise对象。返回Function调用的结果。 |
+| Promise&lt;[InvokeResult](arkts-ability-functionmanager-invokeresult-i.md)&gt; | Promise对象。返回Function调用的结果。 |
 
 **错误码：**
 

@@ -13,7 +13,7 @@ function subscribe(featureId: UserStatusFeature, callback: Callback<UserStatusDa
     deviceInfo?: DeviceInfo[]): number
 ```
 
-Subscribes to user status monitoring.
+Subscribes to user status monitoring to obtain user status data. After calling subscribe(), you must call unsubscribe() to cancel the subscription and release callback resources when they are no longer needed. Failure to call unsubscribe() causes callback resource leakage and affects application performance. It is recommended to call configure() to configure feature parameters before calling subscribe() to start the subscription.
 
 **Since:** 26.0.0
 
@@ -30,8 +30,8 @@ Subscribes to user status monitoring.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | featureId | [UserStatusFeature](arkts-multimodalawareness-userstatus-userstatusfeature-e-sys.md) | Yes | Indicates the feature to be subscribed to. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md)&gt; | Yes | Callback used to return user status data. |
-| deviceInfo | [DeviceInfo](arkts-multimodalawareness-userstatus-deviceinfo-i-sys.md)[] | No | List of devices to enable user status monitoring. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[UserStatusData](arkts-multimodalawareness-userstatus-userstatusdata-i-sys.md)&gt; | Yes | Callback invoked to return the user status data. It is invoked when the subscribed user status data is updated. |
+| deviceInfo | [DeviceInfo](arkts-multimodalawareness-userstatus-deviceinfo-i-sys.md)[] | No | List of devices for which user status monitoring is to be enabled. When featureId is HAND_GAZE_COORDINATION, valid and non-empty deviceInfo must be provided; otherwise, the function may not work properly. For other featureId values, this parameter can be omitted. If an empty value, undefined, or null is passed, it is considered that no actual value is provided. |
 
 **Return value:**
 

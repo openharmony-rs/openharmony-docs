@@ -4,7 +4,7 @@
 export interface ToolBarV2ItemOptions
 ```
 
-Declare the options of ToolBarV2Item
+声明ToolBarV2Item的选项。
 
 **起始版本：** 18
 
@@ -15,7 +15,7 @@ Declare the options of ToolBarV2Item
 ## 导入模块
 
 ```TypeScript
-import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolbarV2Item, AdvancedToolbarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolbarV2ItemGroupStyle, ToolbarV2ItemGroupStyleOptions, ToolbarV2ItemPlacement, ToolbarV2OverflowMenuStyle, ToolbarV2PaddingOptions, ToolbarV2StyleConfigs, ToolbarV2StyleOptions, ToolbarV2TitleConfigs, ToolbarV2TitleOptions, ToolbarV2TitleStyle, ToolbarV2TitleStyleOptions } from '@kit.ArkUI';
+import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolBarV2Item, AdvancedToolBarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolBarV2ItemGroupStyle, ToolBarV2ItemGroupStyleOptions, ToolBarV2ItemPlacement, ToolBarV2OverflowMenuStyle, ToolBarV2PaddingOptions, ToolBarV2StyleConfigs, ToolBarV2StyleOptions, ToolBarV2TitleConfigs, ToolBarV2TitleOptions, ToolBarV2TitleStyle, ToolBarV2TitleStyleOptions, ToolBarV2MaterialStyle } from '@kit.ArkUI';
 ```
 
 ## action
@@ -24,7 +24,7 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 action?: ToolBarV2ItemAction
 ```
 
-Define the action event.
+定义点击事件。
 
 **起始版本：** 18
 
@@ -42,7 +42,7 @@ Define the action event.
 accessibilityDescription?: ResourceStr
 ```
 
-The accessibilityDescription of item.
+项的无障碍描述。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -62,7 +62,7 @@ The accessibilityDescription of item.
 accessibilityLevel?: string
 ```
 
-The accessibilityLevel of item.
+项的无障碍重要性级别。
 
 **类型：** string
 
@@ -84,7 +84,7 @@ The accessibilityLevel of item.
 accessibilityText?: ResourceStr
 ```
 
-The accessibilityText of item.
+项的无障碍文本。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -104,7 +104,7 @@ The accessibilityText of item.
 content: ToolBarV2ItemText
 ```
 
-Define text content.
+定义文本内容。
 
 **类型：** [ToolBarV2ItemText](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemtext-c.md)
 
@@ -124,7 +124,7 @@ Define text content.
 icon?: ToolBarV2ItemIconType
 ```
 
-Define icon resource.
+定义图标资源。
 
 **类型：** [ToolBarV2ItemIconType](arkts-arkui-toolbarv2itemicontype-t.md)
 
@@ -144,7 +144,7 @@ Define icon resource.
 state?: ToolBarV2ItemState
 ```
 
-Define item type.
+定义项类型。
 
 **类型：** [ToolBarV2ItemState](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemstate-e.md)
 

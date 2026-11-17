@@ -28,7 +28,7 @@ Sets the enabling status of the priority notification.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | boolean | Yes | Whether all notifications are allowed to be set as priority notifications. <br> - **true**: allows the notification to be set as a [priority notification](../../../notification/notification-glossary.md#priority-notification). <br> - **false**: forbids the notification from being set as a priority notification. |
+| enable | boolean | Yes | Whether all notifications are allowed to be set as priority notifications. <br> - **true**: allows the notification to be set as a priority notification. <br> - **false**: forbids the notification from being set as a priority notification. |
 
 **Return value:**
 

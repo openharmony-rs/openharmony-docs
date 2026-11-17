@@ -32,7 +32,7 @@ Single-Carrier Radio Transmission Technology (1XRTT)
 RADIO_TECHNOLOGY_EHRPD = 8
 ```
 
-Evolved High Rate Package Data (EHRPD)
+Evolved High Rate Packet Data (EHRPD)
 
 **Since:** 6
 

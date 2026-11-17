@@ -28,7 +28,7 @@ build(): void
 
 The build function is a member function that must return an ArkTS component type (Element) to represent the component to be rendered as a user interface.
 
-**Since:** 12
+**Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -30,7 +30,7 @@ import { EditableLeftIconType, EditableTitleBar, EditableTitleBarMenuItem, Edita
 
 | 名称 | 说明 |
 | --- | --- |
-| [EditableTitleBarItem](arkts-arkui-editabletitlebaritem-t.md) | Declaration of the image item . |
+| [EditableTitleBarItem](arkts-arkui-editabletitlebaritem-t.md) | 声明图片项。 |
 
 ### 枚举
 

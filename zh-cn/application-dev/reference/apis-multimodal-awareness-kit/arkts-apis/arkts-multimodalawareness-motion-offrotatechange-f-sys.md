@@ -12,7 +12,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 function offRotateChange(callback?: Callback<RotateEvent>): void
 ```
 
-取消订阅旋转传感器事件。
+取消订阅旋转传感器事件。需先调用onRotateChange订阅后才能取消，若未订阅则不生效。当应用不再需要监听旋转事件时使用如页面销毁、应用进入后台或暂停相关功能时，应调用此接口取消订阅以释放系统资源。
 
 **起始版本：** 26.0.0
 

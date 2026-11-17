@@ -4,15 +4,13 @@ Function是定义在应用包中的一个业务逻辑单元，可以接收大模
 
 本模块提供Function的管理和调用能力，可以查询可用的Function信息、调用指定的Function执行业务逻辑。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace functionManager--><!--Device-unnamed-declare namespace functionManager-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
-
-**系统接口：** 此接口为系统接口。
 
 ## 导入模块
 
@@ -21,6 +19,13 @@ import { functionManager, FunctionHook, InvokeFunctionParam, FunctionResultWrap 
 ```
 
 ## 汇总
+
+### 函数
+
+| 名称 | 说明 |
+| --- | --- |
+| [invokePublicFunction](arkts-ability-functionmanager-invokepublicfunction-f.md#invokepublicfunction-1) | 根据函数命名空间和函数名称调用公开函数（Function），使用Promise异步回调。三方应用通过ACL授权获取权限后可调用此接口执行公开函数（Function）。 |
+| [queryPublicFunctions](arkts-ability-functionmanager-querypublicfunctions-f.md#querypublicfunctions-1) | 查询公开函数（Function），使用Promise异步回调。三方应用通过ACL授权获取权限后可调用此接口查询公开函数（Function）。 |
 
 <!--Del-->
 ### 函数（系统接口）
@@ -33,11 +38,9 @@ import { functionManager, FunctionHook, InvokeFunctionParam, FunctionResultWrap 
 | [unregisterFunctionHook](arkts-ability-functionmanager-unregisterfunctionhook-f-sys.md#unregisterfunctionhook-1) | 取消注册之前注册的Function Hook。Hook对象必须与传递给registerFunctionHook的对象相同。若未注册Hook，调用将失败并抛出错误。 |
 <!--DelEnd-->
 
-<!--Del-->
-### 接口（系统接口）
+### 接口
 
 | 名称 | 说明 |
 | --- | --- |
-| [InvokeOptions](arkts-ability-functionmanager-invokeoptions-i-sys.md) | Function调用的可选参数。包含Function调用时的应用上下文信息。 |
-| [InvokeResult](arkts-ability-functionmanager-invokeresult-i-sys.md) | Function调用的结果。包含Function调用成功时返回的数据，调用失败时的错误码和错误信息。 |
-<!--DelEnd-->
+| [InvokeOptions](arkts-ability-functionmanager-invokeoptions-i.md) | Function调用的可选参数。包含Function调用时的应用上下文信息。 |
+| [InvokeResult](arkts-ability-functionmanager-invokeresult-i.md) | Function调用的结果。包含Function调用成功时返回的数据，调用失败时的错误码和错误信息。 |

@@ -12,7 +12,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 function getVMRuntimeStat(item: string): number
 ```
 
-Obtains the specified system GC statistics based on parameters.
+Obtains the specified system [GC](../../../arkts-utils/gc-introduction.md) statistics based on parameters.
 
 **Since:** 12
 

@@ -1,4 +1,4 @@
-# @ohos.arkui.UIContext
+# @ohos.arkui.UIContext(UIContext instance)
 
 ## Modules to Import
 

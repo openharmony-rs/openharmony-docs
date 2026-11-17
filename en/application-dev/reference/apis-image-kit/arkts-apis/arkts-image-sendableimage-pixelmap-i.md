@@ -582,7 +582,7 @@ Marshalling PixelMap and write into MessageSequence.
 | Error Code ID | Error Message |
 | --- | --- |
 | [62980115](../errorcode-image.md#62980115-invalid-image-parameter) | Invalid image parameter. |
-| [62980097](../errorcode-image.md#62980097-pixelmap-serialization-failed) | IPC error. |
+| [62980097](../errorcode-image.md#62980097-pixelmap-serialization-transfer-failure) | IPC error. |
 
 **Examples**
 
@@ -1308,7 +1308,7 @@ Creates a PixelMap object based on MessageSequence parameter.
 | Error Code ID | Error Message |
 | --- | --- |
 | [62980115](../errorcode-image.md#62980115-invalid-image-parameter) | Invalid image parameter. |
-| [62980097](../errorcode-image.md#62980097-pixelmap-serialization-failed) | IPC error. |
+| [62980097](../errorcode-image.md#62980097-pixelmap-serialization-transfer-failure) | IPC error. |
 | [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. |
 
 **Examples**

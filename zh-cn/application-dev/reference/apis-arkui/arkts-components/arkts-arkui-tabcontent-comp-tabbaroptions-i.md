@@ -22,7 +22,7 @@ declare interface TabBarOptions
 icon?: string | Resource
 ```
 
-TabBar icon.
+页签内的图片内容。
 
 **类型：** string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 
@@ -40,7 +40,7 @@ TabBar icon.
 text?: string | Resource
 ```
 
-TabBar text.
+页签内的文字内容。
 
 **类型：** string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 

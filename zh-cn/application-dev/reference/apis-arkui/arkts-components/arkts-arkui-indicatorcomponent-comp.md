@@ -8,7 +8,7 @@ Defines IndicatorComponent.
 IndicatorComponent(controller?: IndicatorComponentController)
 ```
 
-Called when a indicator is set.
+设置指示器时调用。
 
 **起始版本：** 15
 

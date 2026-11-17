@@ -1,6 +1,6 @@
 # ArcSwiper
 
-Defines the ArcSwiper Component that can provide the ability for sub components to swipe and display.
+弧形滑块视图容器，提供子组件滑动轮播显示的能力。
 
 ## ArcSwiper
 

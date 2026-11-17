@@ -22,7 +22,7 @@ readonly enable: boolean
 
 Priority enabled state of all notifications.
 
-- **true**: Allow setting as [priority notification](../../../notification/notification-glossary.md#priority-notification).  
+- **true**: Allow setting as priority notification.  
 - **false**: Prohibit setting as priority notification.
 
 **Type:** boolean

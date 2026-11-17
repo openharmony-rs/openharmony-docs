@@ -12,7 +12,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 function offPickupChange(callback?: Callback<PickupEvent>): void
 ```
 
-Unsubscribe to pick up sensor event.
+Unsubscribes from the pickup sensor event. This API takes effect only after onPickupChange is called to subscribe; if not subscribed, it will not take effect. When the application no longer needs to monitor the pickup event, such as page destruction, application entering the background, or pausing related functions, call this API to unsubscribe and release system resources.
 
 **Since:** 26.0.0
 

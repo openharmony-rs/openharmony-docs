@@ -15,7 +15,7 @@ declare enum ImageSpanAlignment
 ## BASELINE
 
 ```TypeScript
-BASELINE = 0
+BASELINE
 ```
 
 图片下边沿与文本BaseLine对齐。
@@ -26,14 +26,14 @@ BASELINE = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ImageSpanAlignment-BASELINE = 0--><!--Device-ImageSpanAlignment-BASELINE = 0-End-->
+<!--Device-ImageSpanAlignment-BASELINE--><!--Device-ImageSpanAlignment-BASELINE-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## BOTTOM
 
 ```TypeScript
-BOTTOM = 1
+BOTTOM
 ```
 
 图片下边沿与行下边沿对齐。
@@ -44,14 +44,14 @@ BOTTOM = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ImageSpanAlignment-BOTTOM = 1--><!--Device-ImageSpanAlignment-BOTTOM = 1-End-->
+<!--Device-ImageSpanAlignment-BOTTOM--><!--Device-ImageSpanAlignment-BOTTOM-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## CENTER
 
 ```TypeScript
-CENTER = 2
+CENTER
 ```
 
 图片中间与行中间对齐。
@@ -62,14 +62,14 @@ CENTER = 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ImageSpanAlignment-CENTER = 2--><!--Device-ImageSpanAlignment-CENTER = 2-End-->
+<!--Device-ImageSpanAlignment-CENTER--><!--Device-ImageSpanAlignment-CENTER-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## FOLLOW_PARAGRAPH
 
 ```TypeScript
-FOLLOW_PARAGRAPH = 4
+FOLLOW_PARAGRAPH
 ```
 
 对齐方式跟随Text父组件。
@@ -80,14 +80,14 @@ FOLLOW_PARAGRAPH = 4
 
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
-<!--Device-ImageSpanAlignment-FOLLOW_PARAGRAPH = 4--><!--Device-ImageSpanAlignment-FOLLOW_PARAGRAPH = 4-End-->
+<!--Device-ImageSpanAlignment-FOLLOW_PARAGRAPH--><!--Device-ImageSpanAlignment-FOLLOW_PARAGRAPH-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## TOP
 
 ```TypeScript
-TOP = 3
+TOP
 ```
 
 图片上边沿与行上边沿对齐。
@@ -98,6 +98,6 @@ TOP = 3
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ImageSpanAlignment-TOP = 3--><!--Device-ImageSpanAlignment-TOP = 3-End-->
+<!--Device-ImageSpanAlignment-TOP--><!--Device-ImageSpanAlignment-TOP-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

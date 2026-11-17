@@ -146,6 +146,7 @@
   - [cancelPairedDevice](arkts-connectivity-connection-cancelpaireddevice-f.md)
   <!--Del-->
   - [cancelPairedDevice（系统接口）](arkts-connectivity-connection-cancelpaireddevice-f-sys.md)<!--DelEnd-->
+  - [cancelPairingDevice](arkts-connectivity-connection-cancelpairingdevice-f.md)
   <!--Del-->
   - [cancelPairingDevice（系统接口）](arkts-connectivity-connection-cancelpairingdevice-f-sys.md)<!--DelEnd-->
   - [connectAllowedProfiles](arkts-connectivity-connection-connectallowedprofiles-f.md)
@@ -876,6 +877,10 @@
   <!--Del-->
   - [Ipv6Config（系统接口）](arkts-connectivity-wifimanager-ipv6config-i-sys.md)<!--DelEnd-->
   - [Ipv6Info](arkts-connectivity-wifimanager-ipv6info-i.md)
+  - [P2pDnsSdInfo](arkts-connectivity-wifimanager-p2pdnssdinfo-i.md)
+  - [P2pDnsSdTxtInfo](arkts-connectivity-wifimanager-p2pdnssdtxtinfo-i.md)
+  - [P2pGenericInfo](arkts-connectivity-wifimanager-p2pgenericinfo-i.md)
+  - [P2pUpnpInfo](arkts-connectivity-wifimanager-p2pupnpinfo-i.md)
   <!--Del-->
   - [StationInfo（系统接口）](arkts-connectivity-wifimanager-stationinfo-i-sys.md)<!--DelEnd-->
   - [WifiDeviceConfig](arkts-connectivity-wifimanager-wifideviceconfig-i.md)
@@ -891,12 +896,14 @@
   - [WifiP2pGroupInfo](arkts-connectivity-wifimanager-wifip2pgroupinfo-i.md)
   - [WifiP2pLinkedInfo](arkts-connectivity-wifimanager-wifip2plinkedinfo-i.md)
   - [WifiP2pServiceInfo](arkts-connectivity-wifimanager-wifip2pserviceinfo-i.md)
+  - [WifiP2pServiceRequest](arkts-connectivity-wifimanager-wifip2pservicerequest-i.md)
   <!--Del-->
   - [WifiProxyConfig（系统接口）](arkts-connectivity-wifimanager-wifiproxyconfig-i-sys.md)<!--DelEnd-->
   - [WifiScanInfo](arkts-connectivity-wifimanager-wifiscaninfo-i.md)
   <!--Del-->
   - [WifiScanInfo（系统接口）](arkts-connectivity-wifimanager-wifiscaninfo-i-sys.md)<!--DelEnd-->
   - [WifiWapiConfig](arkts-connectivity-wifimanager-wifiwapiconfig-i.md)
+  - [P2pServiceDiscoveryInfo](arkts-connectivity-wifimanager-p2pservicediscoveryinfo-t.md)
   - [ConnState](arkts-connectivity-wifimanager-connstate-e.md)
   - [DeviceAddressType](arkts-connectivity-wifimanager-deviceaddresstype-e.md)
   <!--Del-->

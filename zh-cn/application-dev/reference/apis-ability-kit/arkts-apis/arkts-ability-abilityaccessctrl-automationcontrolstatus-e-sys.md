@@ -4,7 +4,7 @@
 export enum AutomationControlStatus
 ```
 
-自动化控制开关状态值。
+表示自动化控制开关状态的枚举。
 
 **起始版本：** 26.1.0
 
@@ -20,7 +20,7 @@ export enum AutomationControlStatus
 DISABLED = 0
 ```
 
-关闭自动化控制权限
+禁止自动化控制。
 
 **起始版本：** 26.1.0
 
@@ -38,7 +38,7 @@ DISABLED = 0
 ENABLED = 1
 ```
 
-授予自动化控制权限。
+允许自动化控制。
 
 **起始版本：** 26.1.0
 

@@ -12,7 +12,7 @@
 | [EnabledNotificationCallbackData](arkts-notification-notificationsubscriber-enablednotificationcallbackdata-i-sys.md) | 应用角标使能状态变化的回调数据。 |
 | [EnabledPriorityNotificationByBundleCallbackData](arkts-notification-notificationsubscriber-enabledprioritynotificationbybundlecallbackdata-i-sys.md) | 应用通知优先级开关状态变化的回调数据。 |
 | [EnabledPriorityNotificationCallbackData](arkts-notification-notificationsubscriber-enabledprioritynotificationcallbackdata-i-sys.md) | 通知优先级总开关状态变化的回调数据。 |
-| [EnabledSilentReminderCallbackData](arkts-notification-notificationsubscriber-enabledsilentremindercallbackdata-i-sys.md) | 应用通知[静默提醒](../../../notification/notification-glossary.md#silent-reminder静默提醒)开关状态变化的回调数据。 |
+| [EnabledSilentReminderCallbackData](arkts-notification-notificationsubscriber-enabledsilentremindercallbackdata-i-sys.md) | 应用通知静默提醒开关状态变化的回调数据。 |
 | [NotificationClassification](arkts-notification-notificationsubscriber-notificationclassification-i-sys.md) | 通知分类信息。 |
 | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | 作为订阅通知接口[subscribeNotification](arkts-notification-notificationsubscribe-subscribenotification-f-sys.md)的入参，提供订阅者接收到新通知、取消通知等的回调方法。 |
 | [NotificationSwitchChangedCallbackData](arkts-notification-notificationsubscriber-notificationswitchchangedcallbackdata-i-sys.md) | 通知开关状态变化的回调数据。 |
@@ -25,7 +25,7 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [EnabledSilentReminderChangedCallback](arkts-notification-enabledsilentreminderchangedcallback-t-sys.md) | 注册应用通知[静默提醒](../../../notification/notification-glossary.md#silent-reminder静默提醒)使能状态变化的回调函数类型。 |
+| [EnabledSilentReminderChangedCallback](arkts-notification-enabledsilentreminderchangedcallback-t-sys.md) | 注册应用通知静默提醒使能状态变化的回调函数类型。 |
 | [NotificationSwitchChangedCallback](arkts-notification-notificationswitchchangedcallback-t-sys.md) | 注册由[notificationManager.setNotificationSwitch](arkts-notification-notificationmanager-setnotificationswitch-f-sys.md)接口设置的通知开关状态变化的回调函数类型。 |
 | [SystemUpdateCallback](arkts-notification-systemupdatecallback-t-sys.md) | 返回携带系统属性值通知信息的回调函数类型。 |
 <!--DelEnd-->

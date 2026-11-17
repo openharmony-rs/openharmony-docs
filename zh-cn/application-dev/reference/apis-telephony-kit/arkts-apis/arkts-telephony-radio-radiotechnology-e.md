@@ -32,7 +32,7 @@ RADIO_TECHNOLOGY_1XRTT = 2
 RADIO_TECHNOLOGY_EHRPD = 8
 ```
 
-无线接入技术EHRPD(Evolved High Rate Package Data)。
+无线接入技术EHRPD(Evolved High Rate Packet Data)。
 
 **起始版本：** 6
 

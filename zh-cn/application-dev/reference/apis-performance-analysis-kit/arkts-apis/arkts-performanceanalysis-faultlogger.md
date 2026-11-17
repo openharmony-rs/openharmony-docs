@@ -2,7 +2,7 @@
 
 应用可以使用faultLogger接口查询系统侧缓存的当前应用的故障日志。接口以应用包名和系统分配的UID作为唯一键值。
 
-系统侧保存的应用故障日志数量受系统日志的压力限制，推荐使用[@ohos.hiviewdfx.hiAppEvent](arkts-performanceanalysis-hiappevent-n.md)订阅APP_CRASH及APP_FREEZE等故障事件。详见：  
+系统侧保存的故障信息与应用故障日志受系统压力限制，会被老化删除。故障信息被老化后会查询不到结果。故障信息存在但故障日志文件被老化后查询的故障信息数据结构中fullLog会打印错误信息`Fail to get log, fd is -1`。推荐使用[@ohos.hiviewdfx.hiAppEvent](arkts-performanceanalysis-hiappevent-n.md)订阅APP_CRASH及APP_FREEZE等故障事件。详见：  
 - [从Faultlogger接口迁移崩溃事件](../../../dfx/hiappevent-watcher-crash-events-arkts.md#从faultlogger接口迁移崩溃事件)  
 - [从Faultlogger接口迁移应用冻屏事件](../../../dfx/hiappevent-watcher-freeze-events-arkts.md#从faultlogger接口迁移应用冻屏事件)
 

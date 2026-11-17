@@ -369,6 +369,7 @@
   - [NestedScrollOptions](arkts-arkui-common-comp-nestedscrolloptions-i.md)
   - [OverlayOffset](arkts-arkui-common-comp-overlayoffset-i.md)
   - [OverlayOptions](arkts-arkui-common-comp-overlayoptions-i.md)
+  - [PickerComponentTextStyle](arkts-arkui-common-comp-pickercomponenttextstyle-i.md)
   - [PickerDialogButtonStyle](arkts-arkui-common-comp-pickerdialogbuttonstyle-i.md)
   - [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)
   <!--Del-->
@@ -1403,6 +1404,7 @@
   - [TabsOptions](arkts-arkui-tabs-comp-tabsoptions-i.md)
   - [TabsSidebarSearchableOptions](arkts-arkui-tabs-comp-tabssidebarsearchableoptions-i.md)
   - [TabsSidebarTitleBarOptions](arkts-arkui-tabs-comp-tabssidebartitlebaroptions-i.md)
+  - [TabViewCustomization](arkts-arkui-tabs-comp-tabviewcustomization-i.md)
   - [TopFloatingTabBarStyle](arkts-arkui-tabs-comp-topfloatingtabbarstyle-i.md)
   - [CommonModifier](arkts-arkui-tabs-comp-commonmodifier-t.md)
   - [OnTabsAnimationEndCallback](arkts-arkui-tabs-comp-ontabsanimationendcallback-t.md)
@@ -1415,6 +1417,7 @@
   - [UIMaterial](arkts-arkui-tabs-comp-uimaterial-t.md)
   - [AnimationMode](arkts-arkui-tabs-comp-animationmode-e.md)
   - [BarMode](arkts-arkui-tabs-comp-barmode-e.md)
+  - [BarOverlapMode](arkts-arkui-tabs-comp-baroverlapmode-e.md)
   - [BarPosition](arkts-arkui-tabs-comp-barposition-e.md)
   - [LayoutStyle](arkts-arkui-tabs-comp-layoutstyle-e.md)
   - [TabBarDisplayMode](arkts-arkui-tabs-comp-tabbardisplaymode-e.md)

@@ -203,6 +203,7 @@ Constructor
 | [NestedScrollOptions](arkts-arkui-common-comp-nestedscrolloptions-i.md) | Implements an object used to configure the [nestedScroll](arkts-arkui-common-comp-scrollablecommonmethod-c.md#nestedscroll) attribute. |
 | [OverlayOffset](arkts-arkui-common-comp-overlayoffset-i.md) | Offset of the overlay from the upper left corner. By default, the overlay is in the upper left corner of the component. |
 | [OverlayOptions](arkts-arkui-common-comp-overlayoptions-i.md) |  |
+| [PickerComponentTextStyle](arkts-arkui-common-comp-pickercomponenttextstyle-i.md) | Defines the text style shared by DatePickerComponent and UIPickerComponent. |
 | [PickerDialogButtonStyle](arkts-arkui-common-comp-pickerdialogbuttonstyle-i.md) | Provide an interface for the button style of picker |
 | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Provide an interface for the text style of picker |
 | [PixelRoundPolicy](arkts-arkui-common-comp-pixelroundpolicy-i.md) | Rounding strategy for the boundary of the current component. |

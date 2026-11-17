@@ -14,7 +14,7 @@ function addDnsSdServiceRequest(serviceType?: string, instanceName?: string): vo
 
 添加DNS-SD服务发现请求，用于匹配DNS-SD服务。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 

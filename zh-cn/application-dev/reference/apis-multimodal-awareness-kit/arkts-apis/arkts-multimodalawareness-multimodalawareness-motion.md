@@ -31,15 +31,15 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [offHoverHandChange](arkts-multimodalawareness-motion-offhoverhandchange-f-sys.md#offhoverhandchange-1) | 取消订阅悬停手势事件。 |
-| [offPickupChange](arkts-multimodalawareness-motion-offpickupchange-f-sys.md#offpickupchange-1) | 取消订阅拾起传感器事件。 |
-| [offRotateChange](arkts-multimodalawareness-motion-offrotatechange-f-sys.md#offrotatechange-1) | 取消订阅旋转传感器事件。 |
-| [offSmartRotateChange](arkts-multimodalawareness-motion-offsmartrotatechange-f-sys.md#offsmartrotatechange-1) | 取消订阅智能旋转传感器事件。 |
-| [onHoverHandChange](arkts-multimodalawareness-motion-onhoverhandchange-f-sys.md#onhoverhandchange-1) | 订阅悬停手势事件，并立即开始5秒检测。 |
-| [onHoverHandChange](arkts-multimodalawareness-motion-onhoverhandchange-f-sys.md#onhoverhandchange-2) | 订阅悬停手势事件，并立即开始检测。 |
+| [offHoverHandChange](arkts-multimodalawareness-motion-offhoverhandchange-f-sys.md#offhoverhandchange-1) | 取消订阅悬浮手事件。当应用不再需要监听悬浮手事件时使用，应调用此接口取消订阅以释放系统资源。 |
+| [offPickupChange](arkts-multimodalawareness-motion-offpickupchange-f-sys.md#offpickupchange-1) | 取消订阅拾取传感器事件。需先调用onPickupChange订阅后才能取消，若未订阅则不生效。当应用不再需要监听拾取事件时使用如页面销毁、应用进入后台或暂停相关功能时，应调用此接口取消订阅以释放系统资源。 |
+| [offRotateChange](arkts-multimodalawareness-motion-offrotatechange-f-sys.md#offrotatechange-1) | 取消订阅旋转传感器事件。需先调用onRotateChange订阅后才能取消，若未订阅则不生效。当应用不再需要监听旋转事件时使用如页面销毁、应用进入后台或暂停相关功能时，应调用此接口取消订阅以释放系统资源。 |
+| [offSmartRotateChange](arkts-multimodalawareness-motion-offsmartrotatechange-f-sys.md#offsmartrotatechange-1) | 取消订阅智能旋转传感器事件。需先调用onSmartRotateChange订阅后才能取消，若未订阅则不生效当应用不再需要监听智能旋转事件时使用，如页面销毁、应用进入后台或暂停相关功能时，应调用此接口取消订阅以释放系统资源。 |
+| [onHoverHandChange](arkts-multimodalawareness-motion-onhoverhandchange-f-sys.md#onhoverhandchange-1) | 订阅悬浮手事件，并立即开启悬浮手事件检测，检测时长为五秒。需与offHoverHandChange配对使用，使用完毕后应调用offHoverHandChange取消订阅以释放系统资源。 |
+| [onHoverHandChange](arkts-multimodalawareness-motion-onhoverhandchange-f-sys.md#onhoverhandchange-2) | 订阅悬浮手事件，并立即开启悬浮手事件检测，支持指定检测时长。需与offHoverHandChange配对使用，使用完毕后应调用offHoverHandChange取消订阅以释放系统资源。 |
 | [onPickupChange](arkts-multimodalawareness-motion-onpickupchange-f-sys.md#onpickupchange-1) | 订阅拾起传感器事件。 |
 | [onRotateChange](arkts-multimodalawareness-motion-onrotatechange-f-sys.md#onrotatechange-1) | 订阅旋转传感器事件。 |
-| [onSmartRotateChange](arkts-multimodalawareness-motion-onsmartrotatechange-f-sys.md#onsmartrotatechange-1) | 订阅智能旋转传感器事件。 |
+| [onSmartRotateChange](arkts-multimodalawareness-motion-onsmartrotatechange-f-sys.md#onsmartrotatechange-1) | 订阅智能旋转传感器事件。当设备物理方向变化或智能算法调整逻辑方向时触发该事件并回调，当需要实现智能屏幕旋转等场景时使用。需与offSmartRotateChange配对使用，使用完毕后应调用offSmartRotateChange取消订阅以释放系统资源。 |
 <!--DelEnd-->
 
 <!--Del-->

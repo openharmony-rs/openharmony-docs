@@ -46,7 +46,7 @@ status: AutomationControlStatus
 targetTokenID: number
 ```
 
-目标被控制应用的Token ID。取值限定为整数。
+目标被控制应用的身份标识。取值限定为整数。
 
 **类型：** number
 

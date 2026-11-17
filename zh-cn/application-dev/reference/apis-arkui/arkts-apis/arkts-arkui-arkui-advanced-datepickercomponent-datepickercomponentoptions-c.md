@@ -68,6 +68,66 @@ displayMode?: DisplayMode
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## itemTextStyle
+
+```TypeScript
+itemTextStyle?: PickerComponentTextStyle
+```
+
+全部项的文本样式。当selectedTextStyle与itemTextStyle同时设置时，itemTextStyle应用于非选中项。默认值：{color: $r('sys.color.font_primary'), font: {size: '14vp'（显示列数大于或等于6时）或 '16vp'（其他情况），weight: FontWeight.Normal}, overflow: TextOverflow.Clip}
+
+**类型：** [PickerComponentTextStyle](../arkts-components/arkts-arkui-common-comp-pickercomponenttextstyle-i.md)
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-DatePickerComponentOptions-itemTextStyle?: PickerComponentTextStyle--><!--Device-DatePickerComponentOptions-itemTextStyle?: PickerComponentTextStyle-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## selectedTextStyle
+
+```TypeScript
+selectedTextStyle?: PickerComponentTextStyle
+```
+
+选中项的文本样式。默认值：{color: $r('sys.color.font_primary'), font: {size: '14vp'（显示列数大于或等于6时）或 '16vp'（其他情况），weight: FontWeight.Normal}, overflow: TextOverflow.Clip}
+
+**类型：** [PickerComponentTextStyle](../arkts-components/arkts-arkui-common-comp-pickercomponenttextstyle-i.md)
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-DatePickerComponentOptions-selectedTextStyle?: PickerComponentTextStyle--><!--Device-DatePickerComponentOptions-selectedTextStyle?: PickerComponentTextStyle-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## selectionIndicator
+
+```TypeScript
+selectionIndicator?: PickerIndicatorStyle
+```
+
+选中项指示器的样式。默认值：{type: PickerIndicatorType.BACKGROUND, strokeWidth: {value: 2, unit: LengthUnit.px}, dividerColor: 'sys.color.comp_divider', startMargin: {value: 0, unit: LengthUnit.px}, endMargin: {value: 0, unit: LengthUnit.px}, borderRadius: {value: 12, unit: LengthUnit.vp}, backgroundColor: 'sys.color.comp_background_tertiary'}
+
+**类型：** [PickerIndicatorStyle](../arkts-components/arkts-arkui-uipickercomponent-comp-pickerindicatorstyle-i.md)
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-DatePickerComponentOptions-selectionIndicator?: PickerIndicatorStyle--><!--Device-DatePickerComponentOptions-selectionIndicator?: PickerIndicatorStyle-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## timeOptions
 
 ```TypeScript

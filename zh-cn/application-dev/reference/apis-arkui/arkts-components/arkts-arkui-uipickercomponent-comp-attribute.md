@@ -182,6 +182,30 @@ onScrollStop(callback: Optional<OnUIPickerComponentCallback>)
 | --- | --- | --- | --- |
 | callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[OnUIPickerComponentCallback](arkts-arkui-uipickercomponent-comp-onuipickercomponentcallback-t.md)&gt; | 是 | 当选择器滑动停止时触发的回调函数。当callback的值为undefined时，不使用回调函数。 |
 
+## selectedTextStyle
+
+```TypeScript
+selectedTextStyle(style: Optional<PickerComponentTextStyle>)
+```
+
+设置选中项的文本样式。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-UIPickerComponentAttribute-selectedTextStyle(style: Optional<PickerComponentTextStyle>): UIPickerComponentAttribute--><!--Device-UIPickerComponentAttribute-selectedTextStyle(style: Optional<PickerComponentTextStyle>): UIPickerComponentAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerComponentTextStyle](arkts-arkui-common-comp-pickercomponenttextstyle-i.md)&gt; | 是 | 选中项的文本样式。<br>默认值：<br>{<br>color: $r('sys.color.font_primary'), <br>font: {<br>size: '20fp', <br>weight: FontWeight.Normal <br>}, <br>overflow: TextOverflow.Clip <br>} <br>当style的值为undefined时，使用默认值。 |
+
 ## selectionIndicator
 
 ```TypeScript

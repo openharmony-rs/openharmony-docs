@@ -5,7 +5,7 @@ declare type OnWillScrollCallback =
 (scrollOffset: number, scrollState: ScrollState, scrollSource: ScrollSource) => void | ScrollResult
 ```
 
-Called before scroll to allow developer to control real offset the Scrollable can scroll.
+滚动组件滑动前触发的回调。
 
 **起始版本：** 12
 
@@ -21,12 +21,12 @@ Called before scroll to allow developer to control real offset the Scrollable ca
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| scrollOffset | number | 是 | offset this frame will scroll, which may or may not be reached. |
-| scrollState | [ScrollState](arkts-arkui-list-comp-scrollstate-e.md) | 是 | current scroll state. |
-| scrollSource | [ScrollSource](../arkts-apis/arkts-arkui-scrollsource-e.md) | 是 | source of current scroll. |
+| scrollOffset | number | 是 | 相对于上一帧的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br>单位vp。 |
+| scrollState | [ScrollState](arkts-arkui-list-comp-scrollstate-e.md) | 是 | 当前滑动状态。 |
+| scrollSource | [ScrollSource](../arkts-apis/arkts-arkui-scrollsource-e.md) | 是 | 当前滑动操作的来源。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| void &#124; [ScrollResult](arkts-arkui-common-comp-scrollresult-c.md) | the remain offset for the scrollable, same as scrollOffset when no ScrollResult is returned. |
+| void &#124; [ScrollResult](arkts-arkui-common-comp-scrollresult-c.md) | 返回ScrollResult时按照开发者指定的相对上一帧的偏移量滑动；不返回时按回调参数scrollOffset滑动。<br>取值范围：(-∞, +∞) |

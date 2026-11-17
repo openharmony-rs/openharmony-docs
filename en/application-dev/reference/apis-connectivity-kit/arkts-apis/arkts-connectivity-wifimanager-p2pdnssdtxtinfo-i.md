@@ -6,7 +6,7 @@ interface P2pDnsSdTxtInfo
 
 Represents the DNS-SD TXT record information received from a peer device.
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 <!--Device-wifiManager-interface P2pDnsSdTxtInfo--><!--Device-wifiManager-interface P2pDnsSdTxtInfo-End-->
 
@@ -28,7 +28,7 @@ The peer device that responded with the TXT record.
 
 **Type:** [WifiP2pDevice](arkts-connectivity-wifimanager-wifip2pdevice-i.md)
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -46,7 +46,7 @@ TXT record map containing key/value pairs.
 
 **Type:** Map&lt;string, string&gt;
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -64,7 +64,7 @@ The full domain name of the TXT record. The format is instanceName + "." + servi
 
 **Type:** string
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

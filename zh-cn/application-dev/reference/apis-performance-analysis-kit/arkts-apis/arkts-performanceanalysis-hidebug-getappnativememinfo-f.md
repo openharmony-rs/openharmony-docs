@@ -16,8 +16,8 @@ function getAppNativeMemInfo(): NativeMemInfo
 
 > **注意**：
 > 
-> 由于读取/proc/{pid}/smaps_rollup耗时较长，推荐使用异步接口
-> [hidebug.getAppNativeMemInfoAsync](arkts-performanceanalysis-hidebug-getappnativememinfoasync-f.md)，以避免应用丢帧或卡顿。
+> 由于读取/proc/{pid}/smaps_rollup耗时较长，
+> 推荐使用异步接口[hidebug.getAppNativeMemInfoAsync](arkts-performanceanalysis-hidebug-getappnativememinfoasync-f.md)，以避免应用丢帧或卡顿。
 > 
 > 推荐使用[hidebug.getRssInfo](arkts-performanceanalysis-hidebug-getrssinfo-f.md)接口获取应用的rss使用信息
 

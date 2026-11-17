@@ -18,9 +18,7 @@ Obtains the current system color mode configuration. This API is applicable to s
 
 > **NOTE:** 
 > 
-> This API is a system API in API version 19 and earlier. Using this API requires the
-> [ohos.permission.UPDATE_CONFIGURATION](../../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration)
-> permission.
+> This API is a system API in API version 19 and earlier. Using this API requires the [ohos.permission.UPDATE_CONFIGURATION](../../../security/AccessToken/permissions-for-system-apps.md#ohospermissionupdate_configuration) permission.
 
 <!--DelEnd-->
 

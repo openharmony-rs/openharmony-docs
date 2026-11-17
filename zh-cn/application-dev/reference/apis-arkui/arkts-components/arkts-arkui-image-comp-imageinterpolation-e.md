@@ -18,7 +18,7 @@ declare enum ImageInterpolation
 High
 ```
 
-High usage of interpolated image data may affect the speed of image rendering.
+Cubic插值，插值质量最高，可能会影响图片渲染的速度。
 
 **起始版本：** 7
 
@@ -38,7 +38,7 @@ High usage of interpolated image data may affect the speed of image rendering.
 Low
 ```
 
-Low usage of interpolated image data.
+双线性插值。
 
 **起始版本：** 7
 
@@ -58,7 +58,7 @@ Low usage of interpolated image data.
 Medium
 ```
 
-Interpolated image data is used moderately.
+MipMap插值。
 
 **起始版本：** 7
 

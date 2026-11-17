@@ -51,11 +51,13 @@ import { restrictions } from '@kit.MDMKit';
 | [addDisallowedListForAccount](arkts-mdm-restrictions-adddisallowedlistforaccount-f.md#adddisallowedlistforaccount-1) | Adds a list of applications that are not allowed to use a feature for a specified user. |
 | [getDisallowedListForAccount](arkts-mdm-restrictions-getdisallowedlistforaccount-f.md#getdisallowedlistforaccount-1) | Obtains the list of applications that are not allowed to use a feature for a specified user. |
 | [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-2) | Queries whether a specified device feature is disabled. |
+| [getDisallowedPolicy](arkts-mdm-restrictions-getdisallowedpolicy-f.md#getdisallowedpolicy-3) | Query whether the feature of a specified device is disabled. |
 | [getDisallowedPolicyForAccount](arkts-mdm-restrictions-getdisallowedpolicyforaccount-f.md#getdisallowedpolicyforaccount-2) | Obtains the status of a feature for a specified user. |
 | [getUserRestricted](arkts-mdm-restrictions-getuserrestricted-f.md#getuserrestricted-2) | Obtains the disabled status of the specified device setting item. |
 | [getUserRestrictedForAccount](arkts-mdm-restrictions-getuserrestrictedforaccount-f.md#getuserrestrictedforaccount-2) | Obtains the disabled status of a setting item for a specified user. |
 | [removeDisallowedListForAccount](arkts-mdm-restrictions-removedisallowedlistforaccount-f.md#removedisallowedlistforaccount-1) | Removes the list of applications that are not allowed to use a feature for a specified user. |
 | [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-2) | Enables or disables a specified device feature. Once disabled, the feature cannot be used. |
+| [setDisallowedPolicy](arkts-mdm-restrictions-setdisallowedpolicy-f.md#setdisallowedpolicy-3) | Enable or disable the feature of a specified device. After the feature is disabled, the feature cannot be used. |
 | [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md#setdisallowedpolicyforaccount-2) | Disallows a feature for a specified user. |
 | [setUserRestriction](arkts-mdm-restrictions-setuserrestriction-f.md#setuserrestriction-2) | Restricts users from modifying specified device setting items. |
 | [setUserRestrictionForAccount](arkts-mdm-restrictions-setuserrestrictionforaccount-f.md#setuserrestrictionforaccount-2) | Restricts a specified user from modifying specified setting items. |

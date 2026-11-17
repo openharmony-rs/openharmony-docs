@@ -52,7 +52,7 @@ All application notifications are set as priority notifications.
 ENABLE_BY_INTELLIGENT = 1
 ```
 
-The priority switch of the application notification is in the intelligent recognition state. It can be set to [priority notification](../../../notification/notification-glossary.md#priority-notification) through intelligent recognition, user keyword matching, application rule matching, and other methods.
+The priority switch of the application notification is in the intelligent recognition state. It can be set to priority notification through intelligent recognition, user keyword matching, application rule matching, and other methods.
 
 **Since:** 23
 

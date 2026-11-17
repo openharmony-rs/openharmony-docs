@@ -68,7 +68,7 @@ User emotion level. The value ranges from 0 to 5. 0: Very happy, 1: A little hap
 facePosition?: number[]
 ```
 
-Face position relative to screen. The normalized coordinate system ranges from 0 to 640.
+Coordinates of the face relative to the screen. The array length is 8, representing the x and y coordinates of the four vertices (top, bottom, left, and right). The value range in the normalized coordinate system is [0,640]. Unit: px
 
 **Type:** number[]
 
@@ -88,7 +88,7 @@ Face position relative to screen. The normalized coordinate system ranges from 0
 gravityAcceleration?: number[]
 ```
 
-Gravity acceleration of user motion status, in m/s².
+Gravity acceleration of the device in the current state. The array length is 3, representing the acceleration components in the x, y, and z directions. Unit: m/s².
 
 **Type:** number[]
 
@@ -128,7 +128,7 @@ Whether user is gazing at screen.
 linearAcceleration?: number[][]
 ```
 
-Linear acceleration of user motion status, in m/s²..
+Linear acceleration of the device in the current state. A two-dimensional array. The outer layer represents sampling at multiple points, and the inner layer is an array of length 3, representing the acceleration components in the x, y, and z directions. Unit: m/s².
 
 **Type:** number[][]
 

@@ -174,7 +174,7 @@ constructor(d: string)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| d | string | 是 | 符合SVG路径描述规范的路径字符串，格式参考SVG路径描述规范，异常值按无效值处理。 |
+| d | string | 是 | 符合SVG路径描述规范的路径字符串，格式参考[SVG路径描述规范](arkts-arkui-path-comp.md)，异常值按无效值处理。 |
 
 ## constructor
 
@@ -200,5 +200,5 @@ constructor(description: string, unit: LengthMetricsUnit)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| description | string | 是 | 符合SVG路径描述规范的路径字符串，格式参考SVG路径描述规范，异常值按无效值处理。 |
+| description | string | 是 | 符合SVG路径描述规范的路径字符串，格式参考[SVG路径描述规范](arkts-arkui-path-comp.md)，异常值按无效值处理。 |
 | unit | LengthMetricsUnit | 是 | 用来配置Path2D对象的单位模式，配置后无法动态更改，配置方法同[CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md)。<br>异常值NaN和Infinity按默认值处理。<br>默认值：DEFAULT |

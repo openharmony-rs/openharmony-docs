@@ -12,6 +12,24 @@ enum WindowType
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
+## TYPE_ACCESSIBILITY_CALL_HELPER
+
+```TypeScript
+TYPE_ACCESSIBILITY_CALL_HELPER = 27
+```
+
+无障碍通话窗口
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowType-TYPE_ACCESSIBILITY_CALL_HELPER = 27--><!--Device-WindowType-TYPE_ACCESSIBILITY_CALL_HELPER = 27-End-->
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**系统接口：** 此接口为系统接口。
+
 ## TYPE_DESKTOP
 
 ```TypeScript

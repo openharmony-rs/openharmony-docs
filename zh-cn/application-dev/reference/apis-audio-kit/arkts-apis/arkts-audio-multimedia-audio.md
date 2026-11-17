@@ -128,6 +128,7 @@ import { audio } from '@kit.AudioKit';
 | [AudioSpatialDeviceState](arkts-audio-audio-audiospatialdevicestate-i-sys.md) | 空间化设备状态。 |
 | [AudioSpatialEnabledStateForDevice](arkts-audio-audio-audiospatialenabledstatefordevice-i-sys.md) | 监听设备空间音频开关状态。 |
 | [AudioSpatializationManager](arkts-audio-audio-audiospatializationmanager-i-sys.md) | 空间音频管理。在使用AudioSpatializationManager的接口前，需要使用[getSpatializationManager](arkts-audio-audio-audiomanager-i.md#getspatializationmanager)获取AudioSpatializationManager实例。 |
+| [AudioStreamManager](arkts-audio-audio-audiostreammanager-i-sys.md) | AudioStreamManager是音频系统中的音频流管理模块。本模块提供音频流生命周期管理能力，包括音频渲染器和采集器的信息查询、状态监听、音效模式管理等。当开发者需要实时掌握音频流状态变化以优化音频应用用户体验时，使用本模块接口完成相关操作。在使用AudioStreamManager的接口之前，需先通过[getStreamManager](arkts-audio-audio-audiomanager-i.md#getstreammanager)获取AudioStreamManager实例。 |
 | [AudioSuiteDownloadManager](arkts-audio-audio-audiosuitedownloadmanager-i-sys.md) | 提供音频编创特性下载管理能力，包括启动、暂停、取消下载、查询状态、卸载特性功能。 |
 | [AudioSuiteFeatureStatusInfo](arkts-audio-audio-audiosuitefeaturestatusinfo-i-sys.md) | 定义音频编创特性的状态信息。 |
 | [AudioSuiteFeatureVersionInfo](arkts-audio-audio-audiosuitefeatureversioninfo-i-sys.md) | 定义音频编创特性的版本信息。 |
@@ -150,7 +151,7 @@ import { audio } from '@kit.AudioKit';
 | [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md) | 设备属性数组类型，[AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md)数组，只读。 |
 | [AudioEffectInfoArray](arkts-audio-audio-audioeffectinfoarray-t.md) | ContentType和StreamUsage组合场景下的音效模式数组类型，[AudioEffectMode](arkts-audio-audio-audioeffectmode-e.md)数组，只读。 |
 | [AudioRendererChangeInfoArray](arkts-audio-audio-audiorendererchangeinfoarray-t.md) | 数组类型，[AudioRendererChangeInfo](arkts-audio-audio-audiorendererchangeinfo-i.md)数组，只读。 |
-| [AudioRendererWriteDataCallback](arkts-audio-audio-audiorendererwritedatacallback-t.md) | 回调函数类型，用于音频渲染器的数据写入，回调函数结束后，音频服务会把data指向的数据放入队列里等待播放，因此请勿在回调外再次更改data指向的数据, 且务必保证往data填满待播放数据, 否则会导致音频服务播放杂音。 |
+| [AudioRendererWriteDataCallback](arkts-audio-audio-audiorendererwritedatacallback-t.md) | 回调函数类型，用于音频渲染器的数据写入，回调函数结束后，音频服务会把data指向的数据放入队列里等待播放，因此请勿在回调外再次更改data指向的数据，且务必保证往data填满待播放数据，否则会导致音频服务播放杂音。 |
 | [DeviceTypeArray](arkts-audio-audio-devicetypearray-t.md) | 数组类型，[DeviceType](arkts-audio-audio-devicetype-e.md)数组。 |
 
 <!--Del-->
@@ -214,7 +215,7 @@ import { audio } from '@kit.AudioKit';
 | [PlaybackCaptureStartState](arkts-audio-audio-playbackcapturestartstate-e.md) | 表示调用[requestPlaybackCaptureStart](arkts-audio-audio-audiocapturer-i.md#requestplaybackcapturestart)后异步返回的内录启动状态的枚举。 |
 | [SoundCardType](arkts-audio-audio-soundcardtype-e.md) | 枚举声卡类型。 |
 | [SourceType](arkts-audio-audio-sourcetype-e.md) | 表示录制音频源类型的枚举。 |
-| [StreamUsage](arkts-audio-audio-streamusage-e.md) | 枚举，音频流使用类型。 |
+| [StreamUsage](arkts-audio-audio-streamusage-e.md) | 表示播放音频流类型的枚举。 |
 | [ActiveDeviceType](arkts-audio-audio-activedevicetype-e.md) | 表示活跃设备类型的枚举。 |
 | [ContentType](arkts-audio-audio-contenttype-e.md) | 表示音频内容类型的枚举。 |
 | [InterruptActionType](arkts-audio-audio-interruptactiontype-e.md) | 表示中断事件返回类型的枚举。 |
@@ -250,7 +251,7 @@ import { audio } from '@kit.AudioKit';
 | [RenderTarget](arkts-audio-audio-rendertarget-e-sys.md) | 枚举，音频渲染器的渲染目标。 |
 | [SourceType](arkts-audio-audio-sourcetype-e-sys.md) | 表示录制音频源类型的枚举。 |
 | [SpatialAudioSourceType](arkts-audio-audio-spatialaudiosourcetype-e-sys.md) | 表示空间音频源类型的枚举。 |
-| [StreamUsage](arkts-audio-audio-streamusage-e-sys.md) | 枚举，音频流使用类型。 |
+| [StreamUsage](arkts-audio-audio-streamusage-e-sys.md) | 表示播放音频流类型的枚举。 |
 | [ToneType](arkts-audio-audio-tonetype-e-sys.md) | 枚举，播放器的音调类型。 |
 | [VolumeAdjustType](arkts-audio-audio-volumeadjusttype-e-sys.md) | 枚举，音量调节类型。 |
 | [VolumeFlag](arkts-audio-audio-volumeflag-e-sys.md) | 枚举，音量相关操作。 |

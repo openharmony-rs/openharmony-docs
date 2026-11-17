@@ -53,3 +53,27 @@ displayId?: number
 <!--Device-CaptureOption-displayId?: long--><!--Device-CaptureOption-displayId?: long-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## pixelFormat
+
+```TypeScript
+pixelFormat?: image.PixelMapFormat
+```
+
+捕获图像的像素格式。仅[RGBA_8888](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmapformat-e.md)和[BGRA_8888](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmapformat-e.md)是支持的。如果不指定该参数，则使用默认值image.PixelMapFormat.RGBA_8888。
+
+[
+
+**类型：** [image.PixelMapFormat](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmapformat-e.md)
+
+**默认值：** ](https://gitcode.com/default) image.PixelMapFormat.RGBA_8888
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-CaptureOption-pixelFormat?: image.PixelMapFormat--><!--Device-CaptureOption-pixelFormat?: image.PixelMapFormat-End-->
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core

@@ -4,7 +4,12 @@
 namespace tags
 ```
 
-Provide trace tags
+Enumerates the tags used in trace collection. You can use the [HiTrace](../../../dfx/hitrace.md) commands to capture the trace data of a specified tag.
+
+> **NOTE:** 
+> 
+> The following tag values are defined by the system and may change with the version upgrade. To avoid
+> compatibility issues after the upgrade, use the tag names instead of the tag values in application development.
 
 **Since:** 12
 

@@ -1,4 +1,4 @@
-# @ohos.file.fileuri
+# @ohos.file.fileuri(File URI)
 
 Provides fileUri APIS
 

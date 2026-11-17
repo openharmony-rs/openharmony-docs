@@ -302,6 +302,24 @@ HTTP request parameters. Parameters of the string type need to be encoded before
 
 **System capability:** SystemCapability.Communication.NetStack
 
+## followRedirectPostToGet
+
+```TypeScript
+followRedirectPostToGet?: boolean
+```
+
+Whether to convert POST method to GET when following 301/302/303 redirect responses. Default value: false.
+
+**Type:** boolean
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HttpRequestOptions-followRedirectPostToGet?: boolean--><!--Device-HttpRequestOptions-followRedirectPostToGet?: boolean-End-->
+
+**System capability:** SystemCapability.Communication.NetStack
+
 ## header
 
 ```TypeScript

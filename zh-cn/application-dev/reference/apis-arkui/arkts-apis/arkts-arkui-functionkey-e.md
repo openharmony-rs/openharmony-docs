@@ -12,6 +12,60 @@ declare enum FunctionKey
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## BACKSPACE
+
+```TypeScript
+BACKSPACE = 30
+```
+
+表示键盘上的Backspace键。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-BACKSPACE = 30--><!--Device-FunctionKey-BACKSPACE = 30-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## CAPS_LOCK
+
+```TypeScript
+CAPS_LOCK = 18
+```
+
+表示键盘上的CapsLock键。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-CAPS_LOCK = 18--><!--Device-FunctionKey-CAPS_LOCK = 18-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## DELETE
+
+```TypeScript
+DELETE = 24
+```
+
+表示键盘上的Delete键。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-DELETE = 24--><!--Device-FunctionKey-DELETE = 24-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## DPAD_DOWN
 
 ```TypeScript
@@ -81,6 +135,42 @@ DPAD_UP
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-FunctionKey-DPAD_UP--><!--Device-FunctionKey-DPAD_UP-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## END
+
+```TypeScript
+END = 26
+```
+
+表示键盘上的End键。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-END = 26--><!--Device-FunctionKey-END = 26-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## ENTER
+
+```TypeScript
+ENTER = 29
+```
+
+表示键盘上的Enter键。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-ENTER = 29--><!--Device-FunctionKey-ENTER = 29-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -315,6 +405,132 @@ F9
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FunctionKey-F9--><!--Device-FunctionKey-F9-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## HOME
+
+```TypeScript
+HOME = 25
+```
+
+表示键盘上的Home键。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-HOME = 25--><!--Device-FunctionKey-HOME = 25-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## INSERT
+
+```TypeScript
+INSERT = 23
+```
+
+表示键盘上的Insert键。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-INSERT = 23--><!--Device-FunctionKey-INSERT = 23-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## NUM_LOCK
+
+```TypeScript
+NUM_LOCK = 22
+```
+
+表示键盘上的NumLock键。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-NUM_LOCK = 22--><!--Device-FunctionKey-NUM_LOCK = 22-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## PAGE_DOWN
+
+```TypeScript
+PAGE_DOWN = 28
+```
+
+表示键盘上的Page Down键。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-PAGE_DOWN = 28--><!--Device-FunctionKey-PAGE_DOWN = 28-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## PAGE_UP
+
+```TypeScript
+PAGE_UP = 27
+```
+
+表示键盘上的Page Up键。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-PAGE_UP = 27--><!--Device-FunctionKey-PAGE_UP = 27-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## PAUSE_BREAK
+
+```TypeScript
+PAUSE_BREAK = 21
+```
+
+表示键盘上的Pause/Break键。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-PAUSE_BREAK = 21--><!--Device-FunctionKey-PAUSE_BREAK = 21-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## SCROLL_LOCK
+
+```TypeScript
+SCROLL_LOCK = 20
+```
+
+表示键盘上的ScrollLock键。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-SCROLL_LOCK = 20--><!--Device-FunctionKey-SCROLL_LOCK = 20-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

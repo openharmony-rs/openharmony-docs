@@ -46,6 +46,7 @@ import { applicationManager } from '@kit.MDMKit';
 | [getAllowedNotificationBundles](arkts-mdm-applicationmanager-getallowednotificationbundles-f.md#getallowednotificationbundles-1) | 获取允许发送通知的应用名单。 |
 | [getAllowedRunningBundles](arkts-mdm-applicationmanager-getallowedrunningbundles-f.md#getallowedrunningbundles-1) | 获取指定用户下的应用运行允许名单。 |
 | [getAllowedRunningBundles](arkts-mdm-applicationmanager-getallowedrunningbundles-f.md#getallowedrunningbundles-2) | 获取指定用户下的应用运行允许名单。 |
+| [getApplicationIconData](arkts-mdm-applicationmanager-getapplicationicondata-f.md#getapplicationicondata-1) | 获取应用的图标数据。 |
 | [getApplicationWindowStates](arkts-mdm-applicationmanager-getapplicationwindowstates-f.md#getapplicationwindowstates-1) | 查询指定应用的窗口状态信息列表。可以查询到应用是否在底部Dock栏，以及当前应用窗口是否在前台显示等信息。 |
 | [getAutoStartApps](arkts-mdm-applicationmanager-getautostartapps-f.md#getautostartapps-1) | 查询当前用户开机自启动应用名单。 |
 | [getAutoStartApps](arkts-mdm-applicationmanager-getautostartapps-f.md#getautostartapps-2) | 查询当前用户开机自启动应用名单。 |

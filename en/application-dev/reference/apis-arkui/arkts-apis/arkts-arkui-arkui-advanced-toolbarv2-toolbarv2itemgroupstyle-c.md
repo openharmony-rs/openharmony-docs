@@ -1,32 +1,32 @@
-# ToolbarV2ItemGroupStyle
+# ToolBarV2ItemGroupStyle
 
 ```TypeScript
-export declare class ToolbarV2ItemGroupStyle
+export declare class ToolBarV2ItemGroupStyle
 ```
 
-Defines the style configuration for toolbar item group.
+定义工具栏项组的样式配置。
 
 **Since:** 26.1.0
 
 **Decorator:** @ObservedV2
 
-<!--Device-unnamed-export declare class ToolbarV2ItemGroupStyle--><!--Device-unnamed-export declare class ToolbarV2ItemGroupStyle-End-->
+<!--Device-unnamed-export declare class ToolBarV2ItemGroupStyle--><!--Device-unnamed-export declare class ToolBarV2ItemGroupStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
 
 ```TypeScript
-import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolbarV2Item, AdvancedToolbarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolbarV2ItemGroupStyle, ToolbarV2ItemGroupStyleOptions, ToolbarV2ItemPlacement, ToolbarV2OverflowMenuStyle, ToolbarV2PaddingOptions, ToolbarV2StyleConfigs, ToolbarV2StyleOptions, ToolbarV2TitleConfigs, ToolbarV2TitleOptions, ToolbarV2TitleStyle, ToolbarV2TitleStyleOptions } from '@kit.ArkUI';
+import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolBarV2Item, AdvancedToolBarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolBarV2ItemGroupStyle, ToolBarV2ItemGroupStyleOptions, ToolBarV2ItemPlacement, ToolBarV2OverflowMenuStyle, ToolBarV2PaddingOptions, ToolBarV2StyleConfigs, ToolBarV2StyleOptions, ToolBarV2TitleConfigs, ToolBarV2TitleOptions, ToolBarV2TitleStyle, ToolBarV2TitleStyleOptions, ToolBarV2MaterialStyle } from '@kit.ArkUI';
 ```
 
 ## constructor
 
 ```TypeScript
-constructor(options?: ToolbarV2ItemGroupStyleOptions)
+constructor(options?: ToolBarV2ItemGroupStyleOptions)
 ```
 
-Constructs a ToolbarV2ItemGroupStyle instance.
+构造ToolBarV2ItemGroupStyle实例。
 
 **Since:** 26.1.0
 
@@ -34,7 +34,7 @@ Constructs a ToolbarV2ItemGroupStyle instance.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2ItemGroupStyle-constructor(options?: ToolbarV2ItemGroupStyleOptions)--><!--Device-ToolbarV2ItemGroupStyle-constructor(options?: ToolbarV2ItemGroupStyleOptions)-End-->
+<!--Device-ToolBarV2ItemGroupStyle-constructor(options?: ToolBarV2ItemGroupStyleOptions)--><!--Device-ToolBarV2ItemGroupStyle-constructor(options?: ToolBarV2ItemGroupStyleOptions)-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -42,7 +42,7 @@ Constructs a ToolbarV2ItemGroupStyle instance.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ToolbarV2ItemGroupStyleOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemgroupstyleoptions-i.md) | No | Constructor options. |
+| options | [ToolBarV2ItemGroupStyleOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemgroupstyleoptions-i.md) | No | 构造函数选项。 |
 
 ## backgroundColor
 
@@ -50,7 +50,7 @@ Constructs a ToolbarV2ItemGroupStyle instance.
 backgroundColor?: ColorMetrics
 ```
 
-Background color of the group container. Default value: $r('sys.color.comp_background_primary').
+组容器的背景颜色。默认值：undefined。值为undefined或不设置时，值为$r('sys.color.comp_background_primary').
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -62,7 +62,7 @@ Background color of the group container. Default value: $r('sys.color.comp_backg
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2ItemGroupStyle-backgroundColor?: ColorMetrics--><!--Device-ToolbarV2ItemGroupStyle-backgroundColor?: ColorMetrics-End-->
+<!--Device-ToolBarV2ItemGroupStyle-backgroundColor?: ColorMetrics--><!--Device-ToolBarV2ItemGroupStyle-backgroundColor?: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,7 +72,7 @@ Background color of the group container. Default value: $r('sys.color.comp_backg
 borderColor?: ColorMetrics
 ```
 
-Border color of the group container. Default value: undefined.
+组容器的圆角颜色。默认值：undefined。值为undefined或不设置时，默认无颜色。
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -84,7 +84,7 @@ Border color of the group container. Default value: undefined.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2ItemGroupStyle-borderColor?: ColorMetrics--><!--Device-ToolbarV2ItemGroupStyle-borderColor?: ColorMetrics-End-->
+<!--Device-ToolBarV2ItemGroupStyle-borderColor?: ColorMetrics--><!--Device-ToolBarV2ItemGroupStyle-borderColor?: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,7 +94,7 @@ Border color of the group container. Default value: undefined.
 borderRadius?: LengthMetrics
 ```
 
-Border radius of the group container. Default value: undefined.
+组容器的边界边框圆角半径。默认值：undefined。值为undefined或不设置时，默认值为工具栏交叉轴长度的一半。
 
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
@@ -106,7 +106,7 @@ Border radius of the group container. Default value: undefined.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2ItemGroupStyle-borderRadius?: LengthMetrics--><!--Device-ToolbarV2ItemGroupStyle-borderRadius?: LengthMetrics-End-->
+<!--Device-ToolBarV2ItemGroupStyle-borderRadius?: LengthMetrics--><!--Device-ToolBarV2ItemGroupStyle-borderRadius?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -116,7 +116,7 @@ Border radius of the group container. Default value: undefined.
 borderWidth?: LengthMetrics
 ```
 
-Border width of the group container. Default value: undefined.
+组容器的边框宽度。默认值：undefined。值为undefined或不设置时，默认无宽度。
 
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
@@ -128,19 +128,19 @@ Border width of the group container. Default value: undefined.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2ItemGroupStyle-borderWidth?: LengthMetrics--><!--Device-ToolbarV2ItemGroupStyle-borderWidth?: LengthMetrics-End-->
+<!--Device-ToolBarV2ItemGroupStyle-borderWidth?: LengthMetrics--><!--Device-ToolBarV2ItemGroupStyle-borderWidth?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## padding
 
 ```TypeScript
-padding?: ToolbarV2PaddingOptions
+padding?: ToolBarV2PaddingOptions
 ```
 
-Padding of the group container. Default value: undefined.
+group容器的Padding。默认值：undefined。值为undefined或不设置时，默认值为12vp。
 
-**Type:** [ToolbarV2PaddingOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2paddingoptions-i.md)
+**Type:** [ToolBarV2PaddingOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2paddingoptions-i.md)
 
 **Since:** 26.1.0
 
@@ -150,19 +150,19 @@ Padding of the group container. Default value: undefined.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2ItemGroupStyle-padding?: ToolbarV2PaddingOptions--><!--Device-ToolbarV2ItemGroupStyle-padding?: ToolbarV2PaddingOptions-End-->
+<!--Device-ToolBarV2ItemGroupStyle-padding?: ToolBarV2PaddingOptions--><!--Device-ToolBarV2ItemGroupStyle-padding?: ToolBarV2PaddingOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## placement
 
 ```TypeScript
-placement?: ToolbarV2ItemPlacement
+placement?: ToolBarV2ItemPlacement
 ```
 
-Placement position of the group within the toolbar. The group placement takes precedence over the placement of individual items within the group. Default value: ToolbarV2ItemPlacement.MAIN.
+组在工具栏中的放置位置。组放置优先于组中单个项目的放置。默认值：ToolBarV2ItemPlacement.MAIN。
 
-**Type:** [ToolbarV2ItemPlacement](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemplacement-e.md)
+**Type:** [ToolBarV2ItemPlacement](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemplacement-e.md)
 
 **Since:** 26.1.0
 
@@ -172,7 +172,7 @@ Placement position of the group within the toolbar. The group placement takes pr
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2ItemGroupStyle-placement?: ToolbarV2ItemPlacement--><!--Device-ToolbarV2ItemGroupStyle-placement?: ToolbarV2ItemPlacement-End-->
+<!--Device-ToolBarV2ItemGroupStyle-placement?: ToolBarV2ItemPlacement--><!--Device-ToolBarV2ItemGroupStyle-placement?: ToolBarV2ItemPlacement-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -182,7 +182,7 @@ Placement position of the group within the toolbar. The group placement takes pr
 space?: LengthMetrics
 ```
 
-Spacing between items within the group. Default value: 0vp.
+组内项目之间的间距。默认值：0vp。
 
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
@@ -194,7 +194,7 @@ Spacing between items within the group. Default value: 0vp.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2ItemGroupStyle-space?: LengthMetrics--><!--Device-ToolbarV2ItemGroupStyle-space?: LengthMetrics-End-->
+<!--Device-ToolBarV2ItemGroupStyle-space?: LengthMetrics--><!--Device-ToolBarV2ItemGroupStyle-space?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -204,7 +204,7 @@ Spacing between items within the group. Default value: 0vp.
 stateEffect?: boolean
 ```
 
-Whether to show the press-state effect for items within the group. Default value: true.
+是否显示组内项目的按压状态效果。默认值：true。
 
 **Type:** boolean
 
@@ -216,6 +216,6 @@ Whether to show the press-state effect for items within the group. Default value
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2ItemGroupStyle-stateEffect?: boolean--><!--Device-ToolbarV2ItemGroupStyle-stateEffect?: boolean-End-->
+<!--Device-ToolBarV2ItemGroupStyle-stateEffect?: boolean--><!--Device-ToolBarV2ItemGroupStyle-stateEffect?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -4,7 +4,7 @@
 export declare interface Colors
 ```
 
-主题颜色资源。
+主题颜色资源。<!--RP1--><!--RP1End-->
 
 **起始版本：** 12
 

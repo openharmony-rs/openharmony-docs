@@ -4,7 +4,7 @@
 export interface ToolBarV2ItemOptions
 ```
 
-Defines the options for initializing a **ToolBarV2Item** object.
+用于构建ToolBarV2Item对象。
 
 **Since:** 18
 
@@ -15,7 +15,7 @@ Defines the options for initializing a **ToolBarV2Item** object.
 ## Modules to Import
 
 ```TypeScript
-import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolbarV2Item, AdvancedToolbarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolbarV2ItemGroupStyle, ToolbarV2ItemGroupStyleOptions, ToolbarV2ItemPlacement, ToolbarV2OverflowMenuStyle, ToolbarV2PaddingOptions, ToolbarV2StyleConfigs, ToolbarV2StyleOptions, ToolbarV2TitleConfigs, ToolbarV2TitleOptions, ToolbarV2TitleStyle, ToolbarV2TitleStyleOptions } from '@kit.ArkUI';
+import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolBarV2Item, AdvancedToolBarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolBarV2ItemGroupStyle, ToolBarV2ItemGroupStyleOptions, ToolBarV2ItemPlacement, ToolBarV2OverflowMenuStyle, ToolBarV2PaddingOptions, ToolBarV2StyleConfigs, ToolBarV2StyleOptions, ToolBarV2TitleConfigs, ToolBarV2TitleOptions, ToolBarV2TitleStyle, ToolBarV2TitleStyleOptions, ToolBarV2MaterialStyle } from '@kit.ArkUI';
 ```
 
 ## action
@@ -24,9 +24,9 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 action?: ToolBarV2ItemAction
 ```
 
-Click event of the toolbar item.
+工具栏子项点击事件。
 
-By default, there is no click event.
+默认无点击事件。
 
 **Since:** 18
 
@@ -44,9 +44,9 @@ By default, there is no click event.
 accessibilityDescription?: ResourceStr
 ```
 
-Accessible description of the toolbar item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.
+工具栏子项的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。
 
-Default value: **"Double-tap to activate"**
+默认值为“单指双击即可执行”。
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -66,19 +66,19 @@ Default value: **"Double-tap to activate"**
 accessibilityLevel?: string
 ```
 
-Accessibility level of the toolbar item, which controls whether the current item can be recognized by the accessibility service.
+工具栏子项无障碍重要性。用于控制当前项是否可被无障碍辅助服务所识别。
 
-</div>Supported values:
+</div>支持的值为：
 
-**"auto"**: The current value is converted to **"yes"**.
+"auto"：当前值转换为"yes"。
 
-**"yes"**: The current component can be recognized by the accessibility service.
+"yes"：当前组件可被无障碍辅助服务所识别。
 
-**"no"**: The current component cannot be recognized by the accessibility service.
+"no"：当前组件不可被无障碍辅助服务所识别。
 
-**"no-hide-descendants"**: The current component and all its child components cannot be recognized by the accessibility service.
+"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。
 
-Default value: **"auto"**
+默认值："auto"
 
 **Type:** string
 
@@ -100,9 +100,9 @@ Default value: **"auto"**
 accessibilityText?: ResourceStr
 ```
 
-Accessibility text, that is, accessible label name, of the toolbar item. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.
+工具栏子项的无障碍文本属性。当组件不包含文本属性时，屏幕朗读选中此组件时不播报，使用者无法清楚地知道当前选中了什么组件。为了解决此场景，开发人员可为不包含文字信息的组件设置无障碍文本，当屏幕朗读选中此组件时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己选中了什么组件。
 
-Default value: value of **content**
+默认值为当前项content属性内容。
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -122,7 +122,7 @@ Default value: value of **content**
 content: ToolBarV2ItemText
 ```
 
-Text of the toolbar item.
+工具栏子项的文本。
 
 **Type:** [ToolBarV2ItemText](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemtext-c.md)
 
@@ -142,9 +142,9 @@ Text of the toolbar item.
 icon?: ToolBarV2ItemIconType
 ```
 
-Icon of the toolbar item.
+工具栏子项的图标。
 
-By default, there is no icon.
+默认不显示图标。
 
 **Type:** [ToolBarV2ItemIconType](arkts-arkui-toolbarv2itemicontype-t.md)
 
@@ -164,9 +164,9 @@ By default, there is no icon.
 state?: ToolBarV2ItemState
 ```
 
-State of the toolbar item.
+工具栏子项的状态。
 
-Default value: **ToolBarV2ItemState.ENABLE**.
+默认为ToolBarV2ItemState.ENABLE。
 
 **Type:** [ToolBarV2ItemState](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemstate-e.md)
 

@@ -26,7 +26,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 deviceId: string
 ```
 
-Device ID.
+Device ID. A unique device identifier used to identify and distinguish different devices. The string length ranges from 0 to 64.
 
 **Type:** string
 
@@ -46,7 +46,7 @@ Device ID.
 deviceName: string
 ```
 
-Device name.
+Device name. A user-defined device display name used to show device information in the UI. The string length ranges from 0 to 64.
 
 **Type:** string
 
@@ -86,7 +86,7 @@ Device type.
 networkId: string
 ```
 
-Device network ID.
+Device network ID. A unique network identifier used for device networking and cross-device communication. The string length ranges from 0 to 64.
 
 **Type:** string
 

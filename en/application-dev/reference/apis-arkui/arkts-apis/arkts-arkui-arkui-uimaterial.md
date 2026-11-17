@@ -67,6 +67,7 @@ import { uiMaterial } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
+| [ImmersiveOptions](arkts-arkui-uimaterial-immersiveoptions-i-sys.md) | Immersive material parameters. |
 | [MaterialOptions](arkts-arkui-uimaterial-materialoptions-i-sys.md) | System material options. |
 <!--DelEnd-->
 
@@ -85,6 +86,7 @@ import { uiMaterial } from '@kit.ArkUI';
 | Name | Description |
 | --- | --- |
 | [ImmersiveStyle](arkts-arkui-uimaterial-immersivestyle-e-sys.md) | Enumerates the material styles. The enum values suffixed with EC are set on [EffectComponent](../arkts-components/arkts-arkui-effectcomponent-comp-sys.md), and those suffixed with EC_SUB are set on the child components of EffectComponent. The two work together to achieve merged optimization of material effect rendering. The material blur set on EffectComponent will ultimately take effect on its child components. Different material styles correspond to different material parameters, mainly including the blur level and highlight effect of the material. For details, see [ImmersiveStyle](arkts-arkui-uimaterial-immersivestyle-e.md). |
+| [MaterialColorBlendMode](arkts-arkui-uimaterial-materialcolorblendmode-e-sys.md) | Material color blend mode. |
 | [MaterialType](arkts-arkui-uimaterial-materialtype-e-sys.md) | Enumerates the system material types. This section contains only the system APIs of this module. For other public types, see [MaterialType](arkts-arkui-uimaterial-materialtype-e.md). |
 <!--DelEnd-->
 

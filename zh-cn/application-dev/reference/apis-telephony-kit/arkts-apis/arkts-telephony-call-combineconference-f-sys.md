@@ -39,7 +39,7 @@ function combineConference(callId: number, callback: AsyncCallback<void>): void
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| 8300007 | The number of conference calls exceeds the limit. |
+| [8300007](../errorcode-telephony.md#8300007-会议接入的通话数超出限制) | The number of conference calls exceeds the limit. |
 
 <!--Del-->
 **示例**
@@ -97,7 +97,7 @@ function combineConference(callId: number): Promise<void>
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| 8300007 | The number of conference calls exceeds the limit. |
+| [8300007](../errorcode-telephony.md#8300007-会议接入的通话数超出限制) | The number of conference calls exceeds the limit. |
 
 <!--Del-->
 **示例**

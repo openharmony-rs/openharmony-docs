@@ -16,8 +16,8 @@ function setJsRawHeapTrimLevel(level: JsRawHeapTrimLevel): void
 
 > **注意**：
 > 
-> 默认裁剪级别是TRIM_LEVEL_1。如果设置了TRIM_LEVEL_2裁剪，需使用API version 20之后的
-> [rawheap-translator](../../../tools/rawheap-translator.md)工具才能将.rawheap文件转换为.heapsnapshot文件，否则可能导致转换失败。
+> 默认裁剪级别是TRIM_LEVEL_1。如果设置了TRIM_LEVEL_2裁剪，
+> 需使用API version 20之后的[rawheap-translator](../../../tools/rawheap-translator.md)工具才能将.rawheap文件转换为.heapsnapshot文件，否则可能导致转换失败。
 > 
 > 该接口影响[dumpJsRawHeapData](arkts-performanceanalysis-hidebug-dumpjsrawheapdata-f.md)的结果。
 

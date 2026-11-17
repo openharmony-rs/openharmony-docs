@@ -6,7 +6,7 @@ interface P2pUpnpInfo
 
 Represents the UPnP service response information received from a peer device.
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 <!--Device-wifiManager-interface P2pUpnpInfo--><!--Device-wifiManager-interface P2pUpnpInfo-End-->
 
@@ -28,7 +28,7 @@ The peer device that responded with the service.
 
 **Type:** [WifiP2pDevice](arkts-connectivity-wifimanager-wifip2pdevice-i.md)
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -46,7 +46,7 @@ List of unique service names discovered. The maximum size of a single data recor
 
 **Type:** Array&lt;string&gt;
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

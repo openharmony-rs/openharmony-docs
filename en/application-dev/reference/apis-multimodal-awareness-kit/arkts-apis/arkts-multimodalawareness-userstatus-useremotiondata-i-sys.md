@@ -88,7 +88,7 @@ User real-time emotion level. The value ranges from 0 to 5. 0: Very happy, 1: A 
 gravityAcceleration?: number[]
 ```
 
-Gravity acceleration of user motion status, in m/s².
+Gravity acceleration of the device in the current state. The array length is 3, representing the acceleration components in the x, y, and z directions respectively, in m/s².
 
 **Type:** number[]
 
@@ -128,7 +128,7 @@ Whether emotion data is real-time.
 linearAcceleration?: number[][]
 ```
 
-Linear acceleration of user motion status, in m/s².
+Linear acceleration of the device in the current state. It is a two-dimensional array. The outer layer represents sampling at multiple points, and the inner layer is an array of length 3, representing the acceleration components in the x, y, and z directions respectively, in m/s².
 
 **Type:** number[][]
 

@@ -4,7 +4,7 @@
 export declare interface Colors
 ```
 
-Defines the color resources of a theme.
+Defines the color resources of a theme. <!--RP1--><!--RP1End-->
 
 **Since:** 12
 

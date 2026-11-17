@@ -4,9 +4,9 @@
 export declare class AdvancedToolBarV2Modifier
 ```
 
-Advanced modifier for ToolBarV2. Merges layout attributes, style configs, and overflow menu style into a single modifier class.
+ToolBarV2的高级修饰符。合并布局属性、样式配置、和溢出菜单样式到单个修饰符类中。
 
-Uses chainable setter methods that accept original config objects.
+使用可链接的setter方法，这些方法接受原始配置对象。
 
 **Since:** 26.1.0
 
@@ -19,7 +19,7 @@ Uses chainable setter methods that accept original config objects.
 ## Modules to Import
 
 ```TypeScript
-import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolbarV2Item, AdvancedToolbarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolbarV2ItemGroupStyle, ToolbarV2ItemGroupStyleOptions, ToolbarV2ItemPlacement, ToolbarV2OverflowMenuStyle, ToolbarV2PaddingOptions, ToolbarV2StyleConfigs, ToolbarV2StyleOptions, ToolbarV2TitleConfigs, ToolbarV2TitleOptions, ToolbarV2TitleStyle, ToolbarV2TitleStyleOptions } from '@kit.ArkUI';
+import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolBarV2Item, AdvancedToolBarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolBarV2ItemGroupStyle, ToolBarV2ItemGroupStyleOptions, ToolBarV2ItemPlacement, ToolBarV2OverflowMenuStyle, ToolBarV2PaddingOptions, ToolBarV2StyleConfigs, ToolBarV2StyleOptions, ToolBarV2TitleConfigs, ToolBarV2TitleOptions, ToolBarV2TitleStyle, ToolBarV2TitleStyleOptions, ToolBarV2MaterialStyle } from '@kit.ArkUI';
 ```
 
 ## crossAxisLength
@@ -28,9 +28,9 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 crossAxisLength(value: LengthMetrics): AdvancedToolBarV2Modifier
 ```
 
-Sets the breadth of the toolbar perpendicular to the layout direction.
+设置工具栏垂直于布局方向的宽度。
 
-Horizontal: controls height. Vertical: controls width. When not set, the cross-axis is auto-sized by content.
+水平：控制高度。垂直：控制宽度。默认值：undefined。值为undefined或未设置时，值为56vp。
 
 **Since:** 26.1.0
 
@@ -46,13 +46,13 @@ Horizontal: controls height. Vertical: controls width. When not set, the cross-a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md) | Yes | The breadth value perpendicular to the layout direction. |
+| value | [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md) | Yes | 垂直于布局方向的宽度值。 |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [AdvancedToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-advancedtoolbarv2modifier-c.md) | Returns this modifier for chaining. |
+| [AdvancedToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-advancedtoolbarv2modifier-c.md) | 返回用于链接的此修饰符。 |
 
 ## direction
 
@@ -60,9 +60,9 @@ Horizontal: controls height. Vertical: controls width. When not set, the cross-a
 direction(value: Axis): AdvancedToolBarV2Modifier
 ```
 
-Sets the layout direction of the toolbar.
+设置工具栏的布局方向。
 
-HORIZONTAL: items arranged in a row (default). VERTICAL: items arranged in a column.
+默认值：undefined。值为undefined或未设置时，水平排列。
 
 **Since:** 26.1.0
 
@@ -78,13 +78,13 @@ HORIZONTAL: items arranged in a row (default). VERTICAL: items arranged in a col
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [Axis](arkts-arkui-axis-e.md) | Yes | The direction value. |
+| value | [Axis](arkts-arkui-axis-e.md) | Yes | 方向值。 |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [AdvancedToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-advancedtoolbarv2modifier-c.md) | Returns this modifier for chaining. |
+| [AdvancedToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-advancedtoolbarv2modifier-c.md) | 返回用于链接的此修饰符。 |
 
 ## mainAxisLength
 
@@ -92,9 +92,9 @@ HORIZONTAL: items arranged in a row (default). VERTICAL: items arranged in a col
 mainAxisLength(value: LengthMetrics): AdvancedToolBarV2Modifier
 ```
 
-Sets the length of the toolbar along the layout direction.
+设置工具栏沿布局方向的长度。
 
-Horizontal: controls width. Vertical: controls height. Default value: '100%'.
+水平：控制宽度。垂直：控制高度。默认值：undefined。值为undefined或不设置时，默认占满。
 
 **Since:** 26.1.0
 
@@ -110,21 +110,21 @@ Horizontal: controls width. Vertical: controls height. Default value: '100%'.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md) | Yes | The length value along the layout direction. |
+| value | [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md) | Yes | 沿布局方向的长度值。 |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [AdvancedToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-advancedtoolbarv2modifier-c.md) | Returns this modifier for chaining. |
+| [AdvancedToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-advancedtoolbarv2modifier-c.md) | 返回用于链接的此修饰符。 |
 
 ## overflowMenuStyle
 
 ```TypeScript
-overflowMenuStyle(menuStyle: ToolbarV2OverflowMenuStyle): AdvancedToolBarV2Modifier
+overflowMenuStyle(menuStyle: ToolBarV2OverflowMenuStyle): AdvancedToolBarV2Modifier
 ```
 
-Sets the style configuration for the overflow menu popup.
+设置溢出菜单弹出窗口的样式配置。
 
 **Since:** 26.1.0
 
@@ -132,7 +132,7 @@ Sets the style configuration for the overflow menu popup.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-AdvancedToolBarV2Modifier-overflowMenuStyle(menuStyle: ToolbarV2OverflowMenuStyle): AdvancedToolBarV2Modifier--><!--Device-AdvancedToolBarV2Modifier-overflowMenuStyle(menuStyle: ToolbarV2OverflowMenuStyle): AdvancedToolBarV2Modifier-End-->
+<!--Device-AdvancedToolBarV2Modifier-overflowMenuStyle(menuStyle: ToolBarV2OverflowMenuStyle): AdvancedToolBarV2Modifier--><!--Device-AdvancedToolBarV2Modifier-overflowMenuStyle(menuStyle: ToolBarV2OverflowMenuStyle): AdvancedToolBarV2Modifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -140,23 +140,23 @@ Sets the style configuration for the overflow menu popup.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| menuStyle | [ToolbarV2OverflowMenuStyle](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2overflowmenustyle-i.md) | Yes | The overflow menu style configuration object. |
+| menuStyle | [ToolBarV2OverflowMenuStyle](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2overflowmenustyle-i.md) | Yes | 溢出菜单样式配置对象。 |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [AdvancedToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-advancedtoolbarv2modifier-c.md) | Returns this modifier for chaining. |
+| [AdvancedToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-advancedtoolbarv2modifier-c.md) | 返回用于链接的此修饰符。 |
 
 ## style
 
 ```TypeScript
-style(styleConfigs: ToolbarV2StyleConfigs): AdvancedToolBarV2Modifier
+style(styleConfigs: ToolBarV2StyleConfigs): AdvancedToolBarV2Modifier
 ```
 
-Sets the toolbar style configuration.
+设置工具栏样式配置。
 
-Controls background, padding, groupSpace, border, and item active/disabled colors.
+控制背景、填充、groupSpace、边框和项目活动/禁用的颜色。
 
 **Since:** 26.1.0
 
@@ -164,7 +164,7 @@ Controls background, padding, groupSpace, border, and item active/disabled color
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-AdvancedToolBarV2Modifier-style(styleConfigs: ToolbarV2StyleConfigs): AdvancedToolBarV2Modifier--><!--Device-AdvancedToolBarV2Modifier-style(styleConfigs: ToolbarV2StyleConfigs): AdvancedToolBarV2Modifier-End-->
+<!--Device-AdvancedToolBarV2Modifier-style(styleConfigs: ToolBarV2StyleConfigs): AdvancedToolBarV2Modifier--><!--Device-AdvancedToolBarV2Modifier-style(styleConfigs: ToolBarV2StyleConfigs): AdvancedToolBarV2Modifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -172,10 +172,10 @@ Controls background, padding, groupSpace, border, and item active/disabled color
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| styleConfigs | [ToolbarV2StyleConfigs](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2styleconfigs-c.md) | Yes | The style configuration object. |
+| styleConfigs | [ToolBarV2StyleConfigs](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2styleconfigs-c.md) | Yes | 样式配置对象。 |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [AdvancedToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-advancedtoolbarv2modifier-c.md) | Returns this modifier for chaining. |
+| [AdvancedToolBarV2Modifier](arkts-arkui-arkui-advanced-toolbarv2-advancedtoolbarv2modifier-c.md) | 返回用于链接的此修饰符。 |

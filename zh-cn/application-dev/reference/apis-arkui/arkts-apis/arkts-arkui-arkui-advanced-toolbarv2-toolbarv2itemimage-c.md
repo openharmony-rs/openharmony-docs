@@ -4,7 +4,7 @@
 export declare class ToolBarV2ItemImage
 ```
 
-Declare type ToolBarV2ItemImage
+声明ToolBarV2ItemImage类型。
 
 **起始版本：** 18
 
@@ -17,7 +17,7 @@ Declare type ToolBarV2ItemImage
 ## 导入模块
 
 ```TypeScript
-import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolbarV2Item, AdvancedToolbarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolbarV2ItemGroupStyle, ToolbarV2ItemGroupStyleOptions, ToolbarV2ItemPlacement, ToolbarV2OverflowMenuStyle, ToolbarV2PaddingOptions, ToolbarV2StyleConfigs, ToolbarV2StyleOptions, ToolbarV2TitleConfigs, ToolbarV2TitleOptions, ToolbarV2TitleStyle, ToolbarV2TitleStyleOptions } from '@kit.ArkUI';
+import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolBarV2Item, AdvancedToolBarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolBarV2ItemGroupStyle, ToolBarV2ItemGroupStyleOptions, ToolBarV2ItemPlacement, ToolBarV2OverflowMenuStyle, ToolBarV2PaddingOptions, ToolBarV2StyleConfigs, ToolBarV2StyleOptions, ToolBarV2TitleConfigs, ToolBarV2TitleOptions, ToolBarV2TitleStyle, ToolBarV2TitleStyleOptions, ToolBarV2MaterialStyle } from '@kit.ArkUI';
 ```
 
 ## constructor
@@ -50,7 +50,7 @@ ToolBarV2ItemImage的构造函数。
 activatedColor?: ColorMetrics
 ```
 
-Icon fillColor when the item is activated.
+项被激活时的图标填充颜色。
 
 **类型：** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -72,7 +72,7 @@ Icon fillColor when the item is activated.
 color?: ColorMetrics
 ```
 
-Define icon fillColor.
+定义图标填充颜色。
 
 **类型：** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -94,7 +94,7 @@ Define icon fillColor.
 src: ResourceStr
 ```
 
-Define icon resource.
+定义图标资源。
 
 **类型：** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

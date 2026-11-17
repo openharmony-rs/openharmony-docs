@@ -1010,6 +1010,39 @@ async function demo() {
 }
 ```
 
+## isReachable
+
+```TypeScript
+isReachable(): Promise<boolean>
+```
+
+Checks whether this component is reachable. A component is unreachable if its center point is occluded by another component stacked above it, or if the component is invisible, has a zero-area bounds, or does not respond to the touch test. This API uses a promise to return the result.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-Component-isReachable(): Promise<boolean>--><!--Device-Component-isReachable(): Promise<boolean>-End-->
+
+**System capability:** SystemCapability.Test.UiTest
+
+**Test API:** This API is used only in automated test scripts.
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;boolean&gt; | Promise used to return whether the component is reachable. The value **true** indicates that the component is reachable, and **false** indicates that it is occluded, invisible, zero-area, or does not respond to the touch test. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [17000002](../errorcode-uitest.md#17000002-api-does-not-support-concurrent-calls) | The API does not support concurrent calls. |
+| [17000004](../errorcode-uitest.md#17000004-target-componentwindow-invisible-or-destroyed) | The window or component is invisible or destroyed. |
+
 ## isScrollable
 
 ```TypeScript

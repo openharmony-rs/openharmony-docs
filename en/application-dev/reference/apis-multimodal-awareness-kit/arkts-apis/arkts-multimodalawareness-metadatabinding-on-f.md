@@ -27,8 +27,8 @@ Subscribes to the event of a system application requesting to obtain encoded con
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'operationSubmitMetadata' | Yes | Event type. This parameter has a fixed value of **operationSubmitMetadata**, indicating the system application's attempt to obtain the encoded metadata. |
-| bundleName | string | Yes | Application bundle name. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | Yes | Callback used to return the encoded metadata. |
+| bundleName | string | Yes | Application bundle name, used to identify the third-party application that registers the subscription event. When the event occurs, the system identifies and notifies the corresponding registered application by this bundle name. Ensure that the passed bundle name is a valid application bundle name. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | Yes | Callback function, used to return the event code. When the event value is 1, it indicates a screenshot event. Currently, only the screenshot event is supported. Value range: 1 (screenshot event). Note: The callback function should execute quickly to avoid blocking the UI thread. |
 
 **Error codes:**
 

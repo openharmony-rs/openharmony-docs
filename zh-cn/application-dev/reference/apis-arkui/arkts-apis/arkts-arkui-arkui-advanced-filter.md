@@ -23,8 +23,8 @@ import { Filter, FilterParams, FilterResult, FilterType } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [FilterParams](arkts-arkui-arkui-advanced-filter-filterparams-c.md) | This parameter is used to define the input of each filtering dimension. |
-| [FilterResult](arkts-arkui-arkui-advanced-filter-filterresult-c.md) | This parameter specifies the selection result of a filtering dimension. The index starts from 0. |
+| [FilterParams](arkts-arkui-arkui-advanced-filter-filterparams-c.md) | 该参数用于定义每个过滤维度的输入。 |
+| [FilterResult](arkts-arkui-arkui-advanced-filter-filterresult-c.md) | 该参数用于指定某个过滤维度的选择结果。索引从0开始。 |
 
 ### 结构体
 

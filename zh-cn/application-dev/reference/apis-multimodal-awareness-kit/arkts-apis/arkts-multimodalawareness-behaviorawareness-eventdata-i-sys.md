@@ -46,7 +46,7 @@ attributes?: TimeAttributes | LocationAttributes | SystemEventAttributes
 eventId: string
 ```
 
-事件 ID。
+事件标识。
 
 **类型：** string
 
@@ -106,7 +106,7 @@ name: string
 params?: Record<string, string | number | boolean>
 ```
 
-附加参数。默认值：无附加参数时的默认行为。
+附加参数。默认值：不带附加参数。
 
 **类型：** Record&lt;string, string &#124; number &#124; boolean&gt;
 
@@ -126,7 +126,7 @@ params?: Record<string, string | number | boolean>
 timestamp: number
 ```
 
-发生时间戳。单位：毫秒。
+发生时间戳。单位为：毫秒。
 
 **类型：** number
 

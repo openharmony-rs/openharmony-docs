@@ -112,7 +112,7 @@ NO_BE_INFO = 1 << 3
 
 无开始结束信息标志。
 
-调试场景下设置该标志，调用开始跟踪接口[begin()](arkts-performanceanalysis-hitracechain-begin-f.md)和结束跟踪接口[end()](arkts-performanceanalysis-hitracechain-end-f.md)时，分别会打印开始、结束跟踪信息hilo日志；默认不打印开始、结束跟踪信息hilog日志。
+调试场景下设置该标志，调用开始跟踪接口[begin()](arkts-performanceanalysis-hitracechain-begin-f.md)和结束跟踪接口[end()](arkts-performanceanalysis-hitracechain-end-f.md)时，分别会打印开始、结束跟踪信息hilog日志；默认不打印开始、结束跟踪信息hilog日志。
 
 **起始版本：** 8
 

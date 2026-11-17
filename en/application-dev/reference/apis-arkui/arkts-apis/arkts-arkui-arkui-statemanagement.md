@@ -17,7 +17,7 @@ T and S in this topic represent the types as described below.
 ## Modules to Import
 
 ```TypeScript
-import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, MutableBinding, CustomComponentLifecycle, CustomComponentLifecycleObserver, CustomComponentLifecycleState, ComponentInit, ComponentAppear, ComponentBuilt, ComponentReuse, ComponentActive, ComponentInactive, ComponentRecycle, ComponentDisappear, CollectionType, ConnectOptionsCollections, CustomComponentContext, IReusePool, IDefaultReusePool, IReusableInfo, StorageDefaultCreator, TypeConstructorWithArgs, PersistenceErrorCallback, TypeConstructor, TypeDecorator, MonitorCallback, MonitorOptions, GetterCallback, SetterCallback, ObservedResult, DecoratorInfo, ElementInfo } from '@kit.ArkUI';
+import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, MutableBinding, CustomComponentLifecycle, CustomComponentLifecycleObserver, CustomComponentLifecycleState, ComponentInit, ComponentAppear, ComponentBuilt, ComponentReuse, ComponentActive, ComponentInactive, ComponentRecycle, ComponentDisappear, CollectionType, ConnectOptionsCollections, CustomComponentContext, IReusePool, IDefaultReusePool, IReusableInfo, StorageDefaultCreator, TypeConstructorWithArgs, PersistenceErrorCallback, TypeConstructor, TypeDecorator, MonitorCallback, MonitorOptions, GetterCallback, SetterCallback, ObservedResult, DecoratorInfo, ElementInfo, RecoverableStorage, RecoverableConnectOptions, RecoverableStorageError, NotifyOnErrorCallback } from '@kit.ArkUI';
 ```
 
 ## Summary
@@ -46,6 +46,8 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 | [ConnectOptionsCollections](arkts-arkui-arkui-statemanagement-connectoptionscollections-c.md) | Defines the parameter type for the globalConnect API. **ConnectOptionsCollections** is inherited from [ConnectOptions\<T\>](arkts-arkui-arkui-statemanagement-connectoptions-c.md). You can use the **ConnectOptionsCollections** input parameter to persist container data (such as **Array\<S>**). |
 | [MutableBinding](arkts-arkui-arkui-statemanagement-mutablebinding-c.md) | Represents a generic class for mutable data binding, which allows the read and write operations on the bound value and provides complete **get** and **set** accessors. |
 | [PersistenceV2](arkts-arkui-arkui-statemanagement-persistencev2-c.md) | Provides persistent storage for UI states. This API is inherited from [AppStorageV2](arkts-arkui-arkui-statemanagement-appstoragev2-c.md). It supports persisting application state data to disks and restoring data after application restart, making it suitable for scenarios where UI state data needs to be retained. For details about the UI usage, see [PersistenceV2: Persisting UI States](../../../ui/state-management/arkts-new-persistencev2.md). |
+| [RecoverableConnectOptions](arkts-arkui-arkui-statemanagement-recoverableconnectoptions-c.md) | Defines the options of [RecoverableStorage.connect](arkts-arkui-arkui-statemanagement-recoverablestorage-c.md#connect). |
+| [RecoverableStorage](arkts-arkui-arkui-statemanagement-recoverablestorage-c.md) | Provides the capability of automatically saving and restoring declared state variables when the application is terminated due to resource control or exits abnormally. After a variable is declared through [connect](arkts-arkui-arkui-statemanagement-recoverablestorage-c.md#connect), its value is saved automatically on the save occasions of the system recovery pipeline and restored automatically on the next recovery restart. |
 | [UIUtils](arkts-arkui-arkui-statemanagement-uiutils-c.md) | Provides APIs related to state management, including obtaining the original object from a proxy object, converting non-observable data into observable data, dynamically adding and removing state variable listeners, synchronously refreshing state variable modifications, and creating data bindings. It is suitable for scenarios where manual management of state observation, listening, and synchronous refresh is required. |
 
 ### Interfaces
@@ -62,6 +64,7 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 | [IReusePool](arkts-arkui-arkui-statemanagement-ireusepool-i.md) | Provides the features related to the global reuse pool of a custom component, including querying the current count and upper limit of recycled components and pre-rendering reusable components into the reuse pool. It is suitable for scenarios where you need to manually manage and optimize component reuse efficiency. |
 | [MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md) | Defines the optional parameters for [addMonitor](arkts-arkui-arkui-statemanagement-uiutils-c.md#addmonitor), which are used to configure the callback type and whether to enable the wildcard capability. |
 | [ObservedResult](arkts-arkui-arkui-statemanagement-observedresult-i.md) | Provides the result of whether the object can be observed. |
+| [RecoverableStorageError](arkts-arkui-arkui-statemanagement-recoverablestorageerror-i.md) | Defines the error information reported through the callback of [RecoverableStorage](../../../ui/state-management/arkts-new-recoverablestorage.md). |
 | [TypeConstructor](arkts-arkui-arkui-statemanagement-typeconstructor-i.md) | Represents a class constructor. |
 | [TypeConstructorWithArgs](arkts-arkui-arkui-statemanagement-typeconstructorwithargs-i.md) | Represents a class constructor that accepts arbitrary arguments. |
 
@@ -72,6 +75,7 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 | [CollectionType](arkts-arkui-collectiontype-t.md) | Defines the types of persistent collection data supported by **globalConnect** using the generic type of the input parameter of **globalConnect**. |
 | [GetterCallback](arkts-arkui-gettercallback-t.md) | Defines a callback used to obtain a value. |
 | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | A listener callback function of the [IMonitor](../arkts-components/arkts-arkui-common-comp-imonitor-i.md) type. |
+| [NotifyOnErrorCallback](arkts-arkui-notifyonerrorcallback-t.md) | Defines a callback used to report errors of [RecoverableStorage](../../../ui/state-management/arkts-new-recoverablestorage.md). The callback is invoked on the UI thread and must not throw exceptions. |
 | [PersistenceErrorCallback](arkts-arkui-persistenceerrorcallback-t.md) | Defines a callback used to return the cause of the persistence failure. |
 | [ReusableComponentConstructor](arkts-arkui-reusablecomponentconstructor-t.md) | Function for initializing the reusable custom component. |
 | [SetterCallback](arkts-arkui-settercallback-t.md) | Defines a callback used to set a value. |

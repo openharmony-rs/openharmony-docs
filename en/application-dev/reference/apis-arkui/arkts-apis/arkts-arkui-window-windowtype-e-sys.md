@@ -12,6 +12,24 @@ Enumerates the window types.
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
+## TYPE_ACCESSIBILITY_CALL_HELPER
+
+```TypeScript
+TYPE_ACCESSIBILITY_CALL_HELPER = 27
+```
+
+Window for accessibility.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WindowType-TYPE_ACCESSIBILITY_CALL_HELPER = 27--><!--Device-WindowType-TYPE_ACCESSIBILITY_CALL_HELPER = 27-End-->
+
+**System capability:** SystemCapability.Window.SessionManager
+
+**System API:** This is a system API.
+
 ## TYPE_DESKTOP
 
 ```TypeScript

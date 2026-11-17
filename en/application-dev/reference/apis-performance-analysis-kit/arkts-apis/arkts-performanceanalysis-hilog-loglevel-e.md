@@ -4,7 +4,7 @@
 enum LogLevel
 ```
 
-Enumerates the log levels.
+Log level.
 
 **Since:** 7
 
@@ -18,7 +18,7 @@ Enumerates the log levels.
 DEBUG = 3
 ```
 
-Log level used to record more detailed process information than INFO logs to help developers analyze service processes and locate faults.
+Detailed process records. Logs at this level can be used to analyze business processes and locate issues in detail.
 
 **Since:** 7
 
@@ -34,7 +34,7 @@ Log level used to record more detailed process information than INFO logs to hel
 ERROR = 6
 ```
 
-Log level used to record program or functional errors that affect the normal running or use of the functionality and can be fixed at a high cost, for example, by resetting data.
+The application has encountered an error that affects normal function operation or user experience. Recovery is possible but at a high cost, such as resetting data.
 
 **Since:** 7
 
@@ -50,7 +50,7 @@ Log level used to record program or functional errors that affect the normal run
 FATAL = 7
 ```
 
-Log level used to record program or functionality crashes that cannot be rectified.
+A major fatal exception indicating that the application is about to crash and the fault cannot be recovered.
 
 **Since:** 7
 
@@ -66,11 +66,11 @@ Log level used to record program or functionality crashes that cannot be rectifi
 INFO = 4
 ```
 
-Log level used to record key service process nodes and exceptions that occur during service running,
+Used to record key business process nodes, which can restore the main running process of the business;
 
-for example, no network signal or login failure.
+Used to record information about expected abnormal situations, such as no network signal, login failure, etc.
 
-These logs should be recorded by the dominant module in the service to avoid repeated logging conducted by multiple invoked modules or low-level functions.
+These logs should be recorded by the dominant module in the business, avoiding duplicate recording in multiple called modules or low-level functions.
 
 **Since:** 7
 
@@ -86,7 +86,7 @@ These logs should be recorded by the dominant module in the service to avoid rep
 WARN = 5
 ```
 
-Log level used to record severe, unexpected faults that have little impact on users and can be rectified by the programs themselves or through simple operations.
+Used to record relatively severe unexpected situations that have little impact on users. The application can recover automatically or through simple operations.
 
 **Since:** 7
 

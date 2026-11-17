@@ -14,7 +14,7 @@ function onP2pServiceDiscovery(callback: Callback<P2pServiceDiscoveryInfo>): voi
 
 Subscribes to generic service response events from peer devices.
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 

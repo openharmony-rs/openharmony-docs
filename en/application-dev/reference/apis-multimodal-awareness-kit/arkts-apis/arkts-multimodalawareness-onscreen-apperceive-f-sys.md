@@ -15,6 +15,16 @@ function apperceive(capability: OnscreenAwarenessCap,
 
 Proactively triggers screen content awareness to obtain the screen content for snapshot analysis.
 
+The groupId capability list supported by the apperceive API is as follows:
+
+|groupId Capability List|Corresponding Sub-Item Capability|Description|  
+| ---- | ------ | ------|  
+|SmartEdge|Article|Obtains the reading scenario awareness information.|  
+|SmartEdge|ShortVideo|Obtains the short video scenario awareness information.|  
+|SmartEdge|Todo|Obtains the to-do scenario awareness information.|  
+|SmartEdge|Activity|Obtains the basic service awareness information.|  
+|CeliaMemory|Article|Obtains the reading scenario awareness information.|
+
 **Since:** 23
 
 **Required permissions:** 

@@ -4,7 +4,7 @@
 export interface Coordinates
 ```
 
-地理坐标。
+经纬度坐标。
 
 **起始版本：** 26.1.0
 
@@ -26,7 +26,7 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 latitude: number
 ```
 
-纬度。单位：度。取值范围：[-90,90]。
+纬度。单位为：度。取值范围：[-90,90]。
 
 **类型：** number
 
@@ -46,7 +46,7 @@ latitude: number
 longitude: number
 ```
 
-经度。单位：度。取值范围：[-180,180]。
+经度。单位为：度。取值范围：[-180,180]。
 
 **类型：** number
 

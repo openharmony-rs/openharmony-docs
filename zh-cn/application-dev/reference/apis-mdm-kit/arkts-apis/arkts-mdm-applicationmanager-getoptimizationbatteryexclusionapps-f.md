@@ -28,14 +28,14 @@ function getOptimizationBatteryExclusionApps(accountId: number, queryPolicy?: co
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| accountId | number | 是 | 用户帐号ID。<br>取值应≥0。 |
+| accountId | number | 是 | 用户账号ID。<br>取值应≥0。 |
 | queryPolicy | [common.QueryPolicy](arkts-mdm-common-querypolicy-e.md) | 否 | 查询策略。如果不指定该参数，则默认使用了[SELF](arkts-mdm-common-querypolicy-e.md#self)。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;string&gt; | 返回电池优化排除列表中的应用包名。 |
+| Array&lt;string&gt; | 返回电池优化排除列表中的应用唯一标识符。 |
 
 **错误码：**
 
@@ -44,4 +44,5 @@ function getOptimizationBatteryExclusionApps(accountId: number, queryPolicy?: co
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
-| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
+| [9200006](../errorcode-enterpriseDeviceManager.md#9200006-指定的用户id非法) | The specified account ID is invalid. |
+| [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |

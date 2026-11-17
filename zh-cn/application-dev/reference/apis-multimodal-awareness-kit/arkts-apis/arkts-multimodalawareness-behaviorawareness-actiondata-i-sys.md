@@ -106,7 +106,7 @@ name: string
 params?: Record<string, string | number | boolean>
 ```
 
-附加参数。默认值：无附加参数时的默认行为。
+附加参数。默认值：不带附加参数。
 
 **类型：** Record&lt;string, string &#124; number &#124; boolean&gt;
 

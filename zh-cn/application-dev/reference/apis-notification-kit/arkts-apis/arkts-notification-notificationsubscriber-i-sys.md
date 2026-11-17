@@ -515,7 +515,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback
 ```
 
-返回应用通知[静默提醒](../../../notification/notification-glossary.md#silent-reminder静默提醒)的使能状态变化。
+返回应用通知静默提醒的使能状态变化。
 
 **起始版本：** 24
 

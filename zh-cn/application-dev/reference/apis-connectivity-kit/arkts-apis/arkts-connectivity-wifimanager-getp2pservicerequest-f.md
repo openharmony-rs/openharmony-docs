@@ -14,7 +14,7 @@ function getP2pServiceRequest(): Promise<Array<WifiP2pServiceRequest>>
 
 查询待处理的P2P服务发现请求，使用Promise异步回调。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
@@ -28,7 +28,7 @@ function getP2pServiceRequest(): Promise<Array<WifiP2pServiceRequest>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;WifiP2pServiceRequest&gt;&gt; | Promise对象。用于返回待处理的服务发现请求列表。 |
+| Promise&lt;Array&lt;[WifiP2pServiceRequest](arkts-connectivity-wifimanager-wifip2pservicerequest-i.md)&gt;&gt; | Promise对象。用于返回待处理的服务发现请求列表。 |
 
 **错误码：**
 

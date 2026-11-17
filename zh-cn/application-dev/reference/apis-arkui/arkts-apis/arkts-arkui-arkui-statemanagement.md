@@ -14,7 +14,7 @@
 ## 导入模块
 
 ```TypeScript
-import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, MutableBinding, CustomComponentLifecycle, CustomComponentLifecycleObserver, CustomComponentLifecycleState, ComponentInit, ComponentAppear, ComponentBuilt, ComponentReuse, ComponentActive, ComponentInactive, ComponentRecycle, ComponentDisappear, CollectionType, ConnectOptionsCollections, CustomComponentContext, IReusePool, IDefaultReusePool, IReusableInfo, StorageDefaultCreator, TypeConstructorWithArgs, PersistenceErrorCallback, TypeConstructor, TypeDecorator, MonitorCallback, MonitorOptions, GetterCallback, SetterCallback, ObservedResult, DecoratorInfo, ElementInfo } from '@kit.ArkUI';
+import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, MutableBinding, CustomComponentLifecycle, CustomComponentLifecycleObserver, CustomComponentLifecycleState, ComponentInit, ComponentAppear, ComponentBuilt, ComponentReuse, ComponentActive, ComponentInactive, ComponentRecycle, ComponentDisappear, CollectionType, ConnectOptionsCollections, CustomComponentContext, IReusePool, IDefaultReusePool, IReusableInfo, StorageDefaultCreator, TypeConstructorWithArgs, PersistenceErrorCallback, TypeConstructor, TypeDecorator, MonitorCallback, MonitorOptions, GetterCallback, SetterCallback, ObservedResult, DecoratorInfo, ElementInfo, RecoverableStorage, RecoverableConnectOptions, RecoverableStorageError, NotifyOnErrorCallback } from '@kit.ArkUI';
 ```
 
 ## 汇总
@@ -43,6 +43,8 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 | [ConnectOptionsCollections](arkts-arkui-arkui-statemanagement-connectoptionscollections-c.md) | globalConnect接口参数类型，ConnectOptionsCollections继承自[ConnectOptions\<T\>](arkts-arkui-arkui-statemanagement-connectoptions-c.md)。当开发者需要持久化容器类型数据（如`Array<S>`）时，需要使用`ConnectOptionsCollections`入参。 |
 | [MutableBinding](arkts-arkui-arkui-statemanagement-mutablebinding-c.md) | 可变数据绑定的泛型类，允许对绑定值进行读写操作，提供完整的get和set访问器。 |
 | [PersistenceV2](arkts-arkui-arkui-statemanagement-persistencev2-c.md) | 继承自[AppStorageV2](arkts-arkui-arkui-statemanagement-appstoragev2-c.md)，PersistenceV2提供UI状态的持久化存储能力，支持将应用状态数据持久化到磁盘，在应用重启后恢复数据，适用于需要保留UI状态数据的场景。具体UI使用说明，详见[PersistenceV2(持久化存储UI状态)](../../../ui/state-management/arkts-new-persistencev2.md)。 |
+| [RecoverableConnectOptions](arkts-arkui-arkui-statemanagement-recoverableconnectoptions-c.md) | 定义[RecoverableStorage.connect](arkts-arkui-arkui-statemanagement-recoverablestorage-c.md#connect)的连接选项。 |
+| [RecoverableStorage](arkts-arkui-arkui-statemanagement-recoverablestorage-c.md) | 提供在应用被资源管控终止或异常退出时自动保存与恢复所声明的状态变量的能力。通过[connect](arkts-arkui-arkui-statemanagement-recoverablestorage-c.md#connect)声明变量后，其值在系统恢复链路的保存时机自动保存，并在下一次恢复重启时自动恢复。 |
 | [UIUtils](arkts-arkui-arkui-statemanagement-uiutils-c.md) | UIUtils状态管理相关的工具方法，包括获取代理对象的原始对象、将非观察数据变为可观察数据、动态添加和删除状态变量监听、同步刷新状态变量修改、创建数据绑定等，适用于需要手动管理状态观察、监听和同步刷新的场景。 |
 
 ### 接口
@@ -59,6 +61,7 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 | [IReusePool](arkts-arkui-arkui-statemanagement-ireusepool-i.md) | `IReusePool`接口提供自定义组件上的全局复用池的相关功能，包括查询回收组件的当前数量和上限信息、预渲染可复用组件到复用池中等，适用于开发者需要手动管理和优化组件复用效率的场景。 |
 | [MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md) | [addMonitor](arkts-arkui-arkui-statemanagement-uiutils-c.md#addmonitor)的可选参数，用于配置回调类型以及是否使能通配符能力。 |
 | [ObservedResult](arkts-arkui-arkui-statemanagement-observedresult-i.md) | 对象是否可被观察的结果。 |
+| [RecoverableStorageError](arkts-arkui-arkui-statemanagement-recoverablestorageerror-i.md) | 定义[RecoverableStorage](../../../ui/state-management/arkts-new-recoverablestorage.md)回调上报的错误信息。 |
 | [TypeConstructor](arkts-arkui-arkui-statemanagement-typeconstructor-i.md) | 类构造函数。 |
 | [TypeConstructorWithArgs](arkts-arkui-arkui-statemanagement-typeconstructorwithargs-i.md) | 含有任意入参的类构造器。 |
 
@@ -69,6 +72,7 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 | [CollectionType](arkts-arkui-collectiontype-t.md) | globalConnect的入参泛型，用于定义globalConnect支持的持久化集合数据类型。 |
 | [GetterCallback](arkts-arkui-gettercallback-t.md) | 获取值的回调方法。 |
 | [MonitorCallback](arkts-arkui-monitorcallback-t.md) | 参数为[IMonitor](../arkts-components/arkts-arkui-common-comp-imonitor-i.md)类型的监听回调函数。 |
+| [NotifyOnErrorCallback](arkts-arkui-notifyonerrorcallback-t.md) | 定义用于上报[RecoverableStorage](../../../ui/state-management/arkts-new-recoverablestorage.md)错误的回调。回调在UI线程执行，回调内不应抛出异常。 |
 | [PersistenceErrorCallback](arkts-arkui-persistenceerrorcallback-t.md) | 持久化失败时返回错误原因的回调。 |
 | [ReusableComponentConstructor](arkts-arkui-reusablecomponentconstructor-t.md) | 复用自定义组件初始化函数。 |
 | [SetterCallback](arkts-arkui-settercallback-t.md) | 设置值的回调方法。 |

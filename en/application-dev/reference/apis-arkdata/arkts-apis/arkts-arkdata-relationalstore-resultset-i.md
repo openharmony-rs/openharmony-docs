@@ -82,7 +82,6 @@ Obtains the value from the specified column in the current row, and returns the 
 | Error Code ID | Error Message |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-column-index-out-of-range) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error.<br>**Applicable version:** 12 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
 | [14800012](../errorcode-data-rdb.md#14800012-result-set-is-empty-or-pointer-index-is-out-of-bounds) | ResultSet is empty or pointer index is out of bounds.<br>**Applicable version:** 12 and later |
@@ -141,7 +140,6 @@ Obtains the value from the specified column in the current row, and returns the 
 | Error Code ID | Error Message |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-column-index-out-of-range) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error.<br>**Applicable version:** 12 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
 | [14800012](../errorcode-data-rdb.md#14800012-result-set-is-empty-or-pointer-index-is-out-of-bounds) | ResultSet is empty or pointer index is out of bounds.<br>**Applicable version:** 12 and later |
@@ -202,7 +200,6 @@ If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BL
 | Error Code ID | Error Message |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-column-index-out-of-range) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error.<br>**Applicable version:** 12 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
 | [14800012](../errorcode-data-rdb.md#14800012-result-set-is-empty-or-pointer-index-is-out-of-bounds) | ResultSet is empty or pointer index is out of bounds.<br>**Applicable version:** 12 and later |
@@ -323,7 +320,6 @@ Obtains the column name based on the column index.
 | Error Code ID | Error Message |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-column-index-out-of-range) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error.<br>**Applicable version:** 12 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -626,7 +622,6 @@ If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BL
 | Error Code ID | Error Message |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-column-index-out-of-range) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error.<br>**Applicable version:** 12 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
 | [14800012](../errorcode-data-rdb.md#14800012-result-set-is-empty-or-pointer-index-is-out-of-bounds) | ResultSet is empty or pointer index is out of bounds.<br>**Applicable version:** 12 and later |
@@ -693,7 +688,6 @@ If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BL
 | Error Code ID | Error Message |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-column-index-out-of-range) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error.<br>**Applicable version:** 12 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
 | [14800012](../errorcode-data-rdb.md#14800012-result-set-is-empty-or-pointer-index-is-out-of-bounds) | ResultSet is empty or pointer index is out of bounds.<br>**Applicable version:** 12 and later |
@@ -1070,7 +1064,6 @@ If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BL
 | Error Code ID | Error Message |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-column-index-out-of-range) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error.<br>**Applicable version:** 12 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
 | [14800012](../errorcode-data-rdb.md#14800012-result-set-is-empty-or-pointer-index-is-out-of-bounds) | ResultSet is empty or pointer index is out of bounds.<br>**Applicable version:** 12 and later |
@@ -1128,7 +1121,6 @@ Obtains the value from the specified column in the current row. If the value typ
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted. |
 | [14800012](../errorcode-data-rdb.md#14800012-result-set-is-empty-or-pointer-index-is-out-of-bounds) | ResultSet is empty or pointer index is out of bounds. |
@@ -1194,7 +1186,6 @@ Moves the result set pointer based on the offset specified.
 | Error Code ID | Error Message |
 | --- | --- |
 | [14800012](../errorcode-data-rdb.md#14800012-result-set-is-empty-or-pointer-index-is-out-of-bounds) | ResultSet is empty or pointer index is out of bounds. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error.<br>**Applicable version:** 12 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -1461,7 +1452,6 @@ Moves to the specified row in the result set.
 | Error Code ID | Error Message |
 | --- | --- |
 | [14800012](../errorcode-data-rdb.md#14800012-result-set-is-empty-or-pointer-index-is-out-of-bounds) | ResultSet is empty or pointer index is out of bounds. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error.<br>**Applicable version:** 12 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
 | [14800014](../errorcode-data-rdb.md#14800014-target-instance-closed) | The target instance is already closed.<br>**Applicable version:** 12 and later |
@@ -1520,7 +1510,6 @@ Checks whether the value in the specified column is null.
 | Error Code ID | Error Message |
 | --- | --- |
 | [14800013](../errorcode-data-rdb.md#14800013-column-index-out-of-range) | Column index is out of bounds. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; 3. Parameter verification failed. |
 | [14800000](../errorcode-data-rdb.md#14800000-internal-error) | Inner error.<br>**Applicable version:** 12 and later |
 | [14800011](../errorcode-data-rdb.md#14800011-database-file-corrupted) | The current operation failed because the database is corrupted.<br>**Applicable version:** 12 and later |
 | [14800012](../errorcode-data-rdb.md#14800012-result-set-is-empty-or-pointer-index-is-out-of-bounds) | ResultSet is empty or pointer index is out of bounds.<br>**Applicable version:** 12 and later |

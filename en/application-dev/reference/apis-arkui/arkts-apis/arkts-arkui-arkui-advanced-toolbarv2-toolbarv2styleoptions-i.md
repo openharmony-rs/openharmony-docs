@@ -1,21 +1,21 @@
-# ToolbarV2StyleOptions
+# ToolBarV2StyleOptions
 
 ```TypeScript
-export interface ToolbarV2StyleOptions
+export interface ToolBarV2StyleOptions
 ```
 
-Defines the constructor options for ToolbarV2StyleConfigs.
+定义ToolBarV2StyleConfigs的构造函数选项。
 
 **Since:** 26.1.0
 
-<!--Device-unnamed-export interface ToolbarV2StyleOptions--><!--Device-unnamed-export interface ToolbarV2StyleOptions-End-->
+<!--Device-unnamed-export interface ToolBarV2StyleOptions--><!--Device-unnamed-export interface ToolBarV2StyleOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
 
 ```TypeScript
-import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolbarV2Item, AdvancedToolbarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolbarV2ItemGroupStyle, ToolbarV2ItemGroupStyleOptions, ToolbarV2ItemPlacement, ToolbarV2OverflowMenuStyle, ToolbarV2PaddingOptions, ToolbarV2StyleConfigs, ToolbarV2StyleOptions, ToolbarV2TitleConfigs, ToolbarV2TitleOptions, ToolbarV2TitleStyle, ToolbarV2TitleStyleOptions } from '@kit.ArkUI';
+import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolBarV2Item, AdvancedToolBarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolBarV2ItemGroupStyle, ToolBarV2ItemGroupStyleOptions, ToolBarV2ItemPlacement, ToolBarV2OverflowMenuStyle, ToolBarV2PaddingOptions, ToolBarV2StyleConfigs, ToolBarV2StyleOptions, ToolBarV2TitleConfigs, ToolBarV2TitleOptions, ToolBarV2TitleStyle, ToolBarV2TitleStyleOptions, ToolBarV2MaterialStyle } from '@kit.ArkUI';
 ```
 
 ## backgroundBlurStyle
@@ -24,7 +24,7 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 backgroundBlurStyle?: BlurStyle
 ```
 
-Background blur style of the toolbar.
+工具栏背景模糊样式。默认值：undefined。不设置时，无模糊效果。
 
 **Type:** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
@@ -34,7 +34,7 @@ Background blur style of the toolbar.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2StyleOptions-backgroundBlurStyle?: BlurStyle--><!--Device-ToolbarV2StyleOptions-backgroundBlurStyle?: BlurStyle-End-->
+<!--Device-ToolBarV2StyleOptions-backgroundBlurStyle?: BlurStyle--><!--Device-ToolBarV2StyleOptions-backgroundBlurStyle?: BlurStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,7 +44,7 @@ Background blur style of the toolbar.
 backgroundColor?: ColorMetrics
 ```
 
-Background color of the toolbar. Default value: $r('sys.color.comp_background_primary').
+工具栏背景颜色。默认值：undefined。不设置时，默认为$r('sys.color.comp_background_primary')。
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -54,27 +54,7 @@ Background color of the toolbar. Default value: $r('sys.color.comp_background_pr
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2StyleOptions-backgroundColor?: ColorMetrics--><!--Device-ToolbarV2StyleOptions-backgroundColor?: ColorMetrics-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## backgroundVisibility
-
-```TypeScript
-backgroundVisibility?: BarBackgroundVisibility
-```
-
-Whether the toolbar background is visible. Default value: BarBackgroundVisibility.VISIBLE.
-
-**Type:** [BarBackgroundVisibility](arkts-arkui-arkui-advanced-toolbarv2-barbackgroundvisibility-e.md)
-
-**Since:** 26.1.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
-
-<!--Device-ToolbarV2StyleOptions-backgroundVisibility?: BarBackgroundVisibility--><!--Device-ToolbarV2StyleOptions-backgroundVisibility?: BarBackgroundVisibility-End-->
+<!--Device-ToolBarV2StyleOptions-backgroundColor?: ColorMetrics--><!--Device-ToolBarV2StyleOptions-backgroundColor?: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,7 +64,7 @@ Whether the toolbar background is visible. Default value: BarBackgroundVisibilit
 borderColor?: ColorMetrics
 ```
 
-Border color of the toolbar. Default value: undefined.
+工具栏的边框颜色。默认值：undefined。值为undefined或不设置时，无颜色。
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -94,7 +74,7 @@ Border color of the toolbar. Default value: undefined.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2StyleOptions-borderColor?: ColorMetrics--><!--Device-ToolbarV2StyleOptions-borderColor?: ColorMetrics-End-->
+<!--Device-ToolBarV2StyleOptions-borderColor?: ColorMetrics--><!--Device-ToolBarV2StyleOptions-borderColor?: ColorMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,7 +84,7 @@ Border color of the toolbar. Default value: undefined.
 borderRadius?: LengthMetrics
 ```
 
-Border radius of the toolbar. Default value: undefined.
+工具栏的边框圆角半径。默认值：undefined。值为undefined或不设置时，圆角半径为工具栏交叉轴长度的一半。
 
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
@@ -114,7 +94,7 @@ Border radius of the toolbar. Default value: undefined.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2StyleOptions-borderRadius?: LengthMetrics--><!--Device-ToolbarV2StyleOptions-borderRadius?: LengthMetrics-End-->
+<!--Device-ToolBarV2StyleOptions-borderRadius?: LengthMetrics--><!--Device-ToolBarV2StyleOptions-borderRadius?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -124,7 +104,7 @@ Border radius of the toolbar. Default value: undefined.
 borderWidth?: LengthMetrics
 ```
 
-Border width of the toolbar. Default value: undefined.
+工具栏的边框宽度。默认值：undefined。值为undefined或不设置时，无宽度。
 
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
@@ -134,7 +114,7 @@ Border width of the toolbar. Default value: undefined.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2StyleOptions-borderWidth?: LengthMetrics--><!--Device-ToolbarV2StyleOptions-borderWidth?: LengthMetrics-End-->
+<!--Device-ToolBarV2StyleOptions-borderWidth?: LengthMetrics--><!--Device-ToolBarV2StyleOptions-borderWidth?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -144,7 +124,7 @@ Border width of the toolbar. Default value: undefined.
 fontSize?: LengthMetrics
 ```
 
-Font size of the toolbar item text. Default value: $r('sys.float.ohos_id_text_size_caption').
+工具栏项里的文本的默认字体大小。默认值：undefined。值为undefined或不设置时，字体大小为$r('sys.float.ohos_id_text_size_caption')。
 
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
@@ -154,7 +134,7 @@ Font size of the toolbar item text. Default value: $r('sys.float.ohos_id_text_si
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2StyleOptions-fontSize?: LengthMetrics--><!--Device-ToolbarV2StyleOptions-fontSize?: LengthMetrics-End-->
+<!--Device-ToolBarV2StyleOptions-fontSize?: LengthMetrics--><!--Device-ToolBarV2StyleOptions-fontSize?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,7 +144,7 @@ Font size of the toolbar item text. Default value: $r('sys.float.ohos_id_text_si
 groupSpace?: LengthMetrics
 ```
 
-Spacing between item groups. Default value: 12vp, value range [8vp, 20vp], clamped to the boundary when out of range.
+工具栏的组间距。工具栏分组与分组之间、分组与独立项之间的间距。默认值: undefined。值为undefined或不设置时，默认间距为12vp，取值范围在[8vp, 20vp]。
 
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
@@ -174,7 +154,7 @@ Spacing between item groups. Default value: 12vp, value range [8vp, 20vp], clamp
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2StyleOptions-groupSpace?: LengthMetrics--><!--Device-ToolbarV2StyleOptions-groupSpace?: LengthMetrics-End-->
+<!--Device-ToolBarV2StyleOptions-groupSpace?: LengthMetrics--><!--Device-ToolBarV2StyleOptions-groupSpace?: LengthMetrics-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -184,7 +164,7 @@ Spacing between item groups. Default value: 12vp, value range [8vp, 20vp], clamp
 itemSize?: Size
 ```
 
-Item size of the toolbar items. Default value: mainAxis 56vp x crossAxis 48vp. When horizontal: 56vp(width) x 48vp(height). When vertical: 48vp(width) x 56vp(height).
+工具栏的项的大小。默认值：undefined。值为undefined或不设置时，主轴长56vp，交叉轴长48vp。
 
 **Type:** Size
 
@@ -194,19 +174,19 @@ Item size of the toolbar items. Default value: mainAxis 56vp x crossAxis 48vp. W
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2StyleOptions-itemSize?: Size--><!--Device-ToolbarV2StyleOptions-itemSize?: Size-End-->
+<!--Device-ToolBarV2StyleOptions-itemSize?: Size--><!--Device-ToolBarV2StyleOptions-itemSize?: Size-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## padding
 
 ```TypeScript
-padding?: ToolbarV2PaddingOptions
+padding?: ToolBarV2PaddingOptions
 ```
 
-Toolbar padding. Each edge can be set independently. Default value: undefined.
+工具栏内边距。
 
-**Type:** [ToolbarV2PaddingOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2paddingoptions-i.md)
+**Type:** [ToolBarV2PaddingOptions](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2paddingoptions-i.md)
 
 **Since:** 26.1.0
 
@@ -214,7 +194,7 @@ Toolbar padding. Each edge can be set independently. Default value: undefined.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2StyleOptions-padding?: ToolbarV2PaddingOptions--><!--Device-ToolbarV2StyleOptions-padding?: ToolbarV2PaddingOptions-End-->
+<!--Device-ToolBarV2StyleOptions-padding?: ToolBarV2PaddingOptions--><!--Device-ToolBarV2StyleOptions-padding?: ToolBarV2PaddingOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -224,7 +204,7 @@ Toolbar padding. Each edge can be set independently. Default value: undefined.
 stateEffect?: boolean
 ```
 
-Whether to enable the state effect. Default value: true.
+是否使能按压效果。默认值：true。
 
 **Type:** boolean
 
@@ -234,6 +214,6 @@ Whether to enable the state effect. Default value: true.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2StyleOptions-stateEffect?: boolean--><!--Device-ToolbarV2StyleOptions-stateEffect?: boolean-End-->
+<!--Device-ToolBarV2StyleOptions-stateEffect?: boolean--><!--Device-ToolBarV2StyleOptions-stateEffect?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

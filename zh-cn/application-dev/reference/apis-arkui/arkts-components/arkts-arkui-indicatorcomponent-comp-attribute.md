@@ -104,7 +104,7 @@ loop(isLoop: boolean)
 onChange(event: Callback<number>)
 ```
 
-Called when the index value changes.
+当索引值变化时调用。
 
 **起始版本：** 15
 

@@ -12,7 +12,7 @@ import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 function encodeImage(srcImage: image.PixelMap, metadata: string): Promise<image.PixelMap>
 ```
 
-Encodes metadata into an image. This API uses a promise to return the result.
+Embeds information into an image. This API embeds metadata into the image using a specific encoding algorithm. The encoding process has minimal impact on the visual presentation of the image, and the embedded information can be parsed through the decodeImage API. It can be used in scenarios such as anti-counterfeiting and copyright protection. This API uses a promise to return the result asynchronously.
 
 **Since:** 18
 
@@ -26,8 +26,8 @@ Encodes metadata into an image. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| srcImage | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | Yes | Source image. |
-| metadata | string | Yes | Metadata to be encoded. |
+| srcImage | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | Yes | Original image to be encoded, used to embed metadata. |
+| metadata | string | Yes | Information to be embedded. The string encoding format is recommended to be UTF-8, the length should not exceed 128 bytes, and non-printable characters should be avoided. |
 
 **Return value:**
 

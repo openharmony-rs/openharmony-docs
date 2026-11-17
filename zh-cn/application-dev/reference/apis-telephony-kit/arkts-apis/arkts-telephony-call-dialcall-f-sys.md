@@ -42,8 +42,8 @@ function dialCall(phoneNumber: string, options: DialCallOptions, callback: Async
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| 8300005 | Airplane mode is on. |
-| 8300006 | Network not in service. |
+| [8300005](../errorcode-telephony.md#8300005-飞行模式已开启) | Airplane mode is on. |
+| [8300006](../errorcode-telephony.md#8300006-网络无服务) | Network not in service. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
 <!--Del-->
@@ -111,8 +111,8 @@ function dialCall(phoneNumber: string, options?: DialCallOptions): Promise<void>
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| 8300005 | Airplane mode is on. |
-| 8300006 | Network not in service. |
+| [8300005](../errorcode-telephony.md#8300005-飞行模式已开启) | Airplane mode is on. |
+| [8300006](../errorcode-telephony.md#8300006-网络无服务) | Network not in service. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
 <!--Del-->
@@ -172,8 +172,8 @@ function dialCall(phoneNumber: string, callback: AsyncCallback<void>): void
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
-| 8300005 | Airplane mode is on. |
-| 8300006 | Network not in service. |
+| [8300005](../errorcode-telephony.md#8300005-飞行模式已开启) | Airplane mode is on. |
+| [8300006](../errorcode-telephony.md#8300006-网络无服务) | Network not in service. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
 <!--Del-->

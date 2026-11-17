@@ -26,7 +26,7 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 dayOfMonth?: number
 ```
 
-每月的第几天。单位：天。取值需为 [1,31] 范围内的整数。默认值：默认值为 0。
+月中的第几天（适用于每月重复）。取值范围：1~31。单位为：天。取值应为[1,31]内的整数。默认值：默认值为0。
 
 **类型：** number
 
@@ -46,7 +46,7 @@ dayOfMonth?: number
 dayOfWeek?: number
 ```
 
-星期几。取值需为 [1,7] 范围内的整数。默认值：默认值为 0。
+星期几（适用于每周重复）。取值应为[1,7]内的整数。默认值：默认值为0。
 
 **类型：** number
 

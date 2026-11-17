@@ -93,7 +93,7 @@ take a snapshot for the current scene;
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 25603001 |  |
-| 25603002 |  |
-| 25601002 |  |
-| 25601005 |  |
+| [25603001](../errorcode-graphics3d.md#25603001-parameter-exceeds-the-allowed-range) |  |
+| [25603002](../errorcode-graphics3d.md#25603002-parameter-type-or-count-mismatch) |  |
+| [25601002](../errorcode-graphics3d.md#25601002-scene-used-after-destruction) |  |
+| [25601005](../errorcode-graphics3d.md#25601005-memory-allocation-failure) |  |

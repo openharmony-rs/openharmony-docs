@@ -16,9 +16,7 @@ Particle(particles: Particles<
     >)
 ```
 
-create a particle array.
-
-Anonymous Object Rectification.
+创建粒子数组。
 
 **起始版本：** 10
 
@@ -34,7 +32,7 @@ Anonymous Object Rectification.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| particles | [Particles](arkts-arkui-particle-comp-particles-i.md)&lt;PARTICLE, COLOR_UPDATER, OPACITY_UPDATER, SCALE_UPDATER, ACC_SPEED_UPDATER, ACC_ANGLE_UPDATER, SPIN_UPDATER&gt; | 是 | Array of particles. |
+| particles | [Particles](arkts-arkui-particle-comp-particles-i.md)&lt;PARTICLE, COLOR_UPDATER, OPACITY_UPDATER, SCALE_UPDATER, ACC_SPEED_UPDATER, ACC_ANGLE_UPDATER, SPIN_UPDATER&gt; | 是 | 粒子动画的集合，详见Particles属性说明。 |
 
 ## 汇总
 

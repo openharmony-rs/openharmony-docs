@@ -1,21 +1,21 @@
-# ToolbarV2TitleOptions
+# ToolBarV2TitleOptions
 
 ```TypeScript
-export interface ToolbarV2TitleOptions
+export interface ToolBarV2TitleOptions
 ```
 
-Defines the constructor options for ToolbarV2TitleConfigs.
+定义ToolBarV2TitleConfigs的构造函数选项。
 
 **Since:** 26.1.0
 
-<!--Device-unnamed-export interface ToolbarV2TitleOptions--><!--Device-unnamed-export interface ToolbarV2TitleOptions-End-->
+<!--Device-unnamed-export interface ToolBarV2TitleOptions--><!--Device-unnamed-export interface ToolBarV2TitleOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## Modules to Import
 
 ```TypeScript
-import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolbarV2Item, AdvancedToolbarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolbarV2ItemGroupStyle, ToolbarV2ItemGroupStyleOptions, ToolbarV2ItemPlacement, ToolbarV2OverflowMenuStyle, ToolbarV2PaddingOptions, ToolbarV2StyleConfigs, ToolbarV2StyleOptions, ToolbarV2TitleConfigs, ToolbarV2TitleOptions, ToolbarV2TitleStyle, ToolbarV2TitleStyleOptions } from '@kit.ArkUI';
+import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolBarV2Item, AdvancedToolBarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolBarV2ItemGroupStyle, ToolBarV2ItemGroupStyleOptions, ToolBarV2ItemPlacement, ToolBarV2OverflowMenuStyle, ToolBarV2PaddingOptions, ToolBarV2StyleConfigs, ToolBarV2StyleOptions, ToolBarV2TitleConfigs, ToolBarV2TitleOptions, ToolBarV2TitleStyle, ToolBarV2TitleStyleOptions, ToolBarV2MaterialStyle } from '@kit.ArkUI';
 ```
 
 ## content
@@ -24,7 +24,7 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 content?: ResourceStr
 ```
 
-Title text content. Required when constructing ToolbarV2TitleConfigs. Default value: undefined.
+标题文本内容。
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -34,19 +34,19 @@ Title text content. Required when constructing ToolbarV2TitleConfigs. Default va
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2TitleOptions-content?: ResourceStr--><!--Device-ToolbarV2TitleOptions-content?: ResourceStr-End-->
+<!--Device-ToolBarV2TitleOptions-content?: ResourceStr--><!--Device-ToolBarV2TitleOptions-content?: ResourceStr-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## placement
 
 ```TypeScript
-placement?: ToolbarV2ItemPlacement
+placement?: ToolBarV2ItemPlacement
 ```
 
-Placement position of the title within the toolbar. Reuses `ToolbarV2ItemPlacement` — the title is arranged in the same area as items with the same placement. Default value: ToolbarV2ItemPlacement.LEADING.
+标题位置。
 
-**Type:** [ToolbarV2ItemPlacement](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemplacement-e.md)
+**Type:** [ToolBarV2ItemPlacement](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemplacement-e.md)
 
 **Since:** 26.1.0
 
@@ -54,19 +54,19 @@ Placement position of the title within the toolbar. Reuses `ToolbarV2ItemPlaceme
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2TitleOptions-placement?: ToolbarV2ItemPlacement--><!--Device-ToolbarV2TitleOptions-placement?: ToolbarV2ItemPlacement-End-->
+<!--Device-ToolBarV2TitleOptions-placement?: ToolBarV2ItemPlacement--><!--Device-ToolBarV2TitleOptions-placement?: ToolBarV2ItemPlacement-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## style
 
 ```TypeScript
-style?: ToolbarV2TitleStyle
+style?: ToolBarV2TitleStyle
 ```
 
-Title text style.
+标题文字样式。
 
-**Type:** [ToolbarV2TitleStyle](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2titlestyle-c.md)
+**Type:** [ToolBarV2TitleStyle](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2titlestyle-c.md)
 
 **Since:** 26.1.0
 
@@ -74,7 +74,47 @@ Title text style.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2TitleOptions-style?: ToolbarV2TitleStyle--><!--Device-ToolbarV2TitleOptions-style?: ToolbarV2TitleStyle-End-->
+<!--Device-ToolBarV2TitleOptions-style?: ToolBarV2TitleStyle--><!--Device-ToolBarV2TitleOptions-style?: ToolBarV2TitleStyle-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## subTitleContent
+
+```TypeScript
+subTitleContent?: ResourceStr
+```
+
+副标题文本内容。
+
+**Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-ToolBarV2TitleOptions-subTitleContent?: ResourceStr--><!--Device-ToolBarV2TitleOptions-subTitleContent?: ResourceStr-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## subTitleStyle
+
+```TypeScript
+subTitleStyle?: ToolBarV2TitleStyle
+```
+
+副标题文字样式。
+
+**Type:** [ToolBarV2TitleStyle](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2titlestyle-c.md)
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-ToolBarV2TitleOptions-subTitleStyle?: ToolBarV2TitleStyle--><!--Device-ToolBarV2TitleOptions-subTitleStyle?: ToolBarV2TitleStyle-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,7 +124,7 @@ Title text style.
 visible?: boolean
 ```
 
-Whether the title is visible. Default value: true.
+标题是否可见。
 
 **Type:** boolean
 
@@ -94,6 +134,6 @@ Whether the title is visible. Default value: true.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2TitleOptions-visible?: boolean--><!--Device-ToolbarV2TitleOptions-visible?: boolean-End-->
+<!--Device-ToolBarV2TitleOptions-visible?: boolean--><!--Device-ToolBarV2TitleOptions-visible?: boolean-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

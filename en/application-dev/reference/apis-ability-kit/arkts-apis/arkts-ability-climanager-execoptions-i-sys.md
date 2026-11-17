@@ -68,9 +68,9 @@ Indicates the session ID of the dialog manager (DM), which uniquely identifies t
 policy?: string
 ```
 
-Indicates the security policy. The parameter format is a JSON string.
+Security policy. The value is a JSON string.
 
-The policy string is interpreted by the system service to enforce additional security constraints on the command.
+The policy string is parsed by the system service to impose additional security constraints on command execution.
 
 **Type:** string
 

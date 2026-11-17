@@ -26,7 +26,7 @@ import { behaviorAwareness } from '@kit.MultimodalAwarenessKit';
 appId?: string
 ```
 
-应用 ID（用于应用相关事件）。
+应用 ID（应用类事件）。
 
 **类型：** string
 
@@ -66,7 +66,7 @@ appName?: string
 batteryThreshold?: number
 ```
 
-电量阈值。单位：百分比。取值需为 [0,100] 范围内的整数。默认值：默认值为 0。
+电池阈值。单位为：百分比。取值应为[0,100]内的整数。默认值：默认值为0。
 
 **类型：** number
 
@@ -106,7 +106,7 @@ bluetoothDeviceName?: string
 bluetoothDeviceType?: BluetoothDeviceType
 ```
 
-蓝牙设备类型。默认值：默认值为 0。
+蓝牙设备类型（蓝牙类事件）。默认值：默认值为0。
 
 **类型：** [BluetoothDeviceType](arkts-multimodalawareness-behaviorawareness-bluetoothdevicetype-e-sys.md)
 
@@ -126,7 +126,7 @@ bluetoothDeviceType?: BluetoothDeviceType
 dailyDurationThreshold?: number
 ```
 
-当日使用时长阈值。单位：分钟。取值需为 [0,1440] 范围内的整数。默认值：默认值为 0。
+日使用时长阈值（应用时长事件）。单位为：分钟。取值应为[0,1440]内的整数。默认值：默认值为0。
 
 **类型：** number
 
@@ -146,7 +146,7 @@ dailyDurationThreshold?: number
 durationThreshold?: number
 ```
 
-单次使用时长阈值。单位：分钟。取值应为整数。默认值：默认值为 0。
+单次使用时长阈值。单位为：分钟。取值限定为整数。默认值：默认值为0。
 
 **类型：** number
 
@@ -186,7 +186,7 @@ kind: 'systemEvent'
 level?: number
 ```
 
-电量百分比。单位：百分比。取值需为 [0,100] 范围内的整数。默认值：默认值为 0。
+电池百分比。单位为：百分比。取值应为[0,100]内的整数。默认值：默认值为0。
 
 **类型：** number
 
@@ -206,7 +206,7 @@ level?: number
 packageName?: string
 ```
 
-应用包名。
+应用包名（应用类事件）。
 
 **类型：** string
 

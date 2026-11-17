@@ -370,6 +370,7 @@
   - [NestedScrollOptions](arkts-arkui-common-comp-nestedscrolloptions-i.md)
   - [OverlayOffset](arkts-arkui-common-comp-overlayoffset-i.md)
   - [OverlayOptions](arkts-arkui-common-comp-overlayoptions-i.md)
+  - [PickerComponentTextStyle](arkts-arkui-common-comp-pickercomponenttextstyle-i.md)
   - [PickerDialogButtonStyle](arkts-arkui-common-comp-pickerdialogbuttonstyle-i.md)
   - [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md)
   <!--Del-->

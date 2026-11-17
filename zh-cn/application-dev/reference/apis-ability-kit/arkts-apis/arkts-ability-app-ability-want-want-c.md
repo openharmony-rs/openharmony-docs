@@ -199,7 +199,7 @@ parameters?: Record<string, Object>
 
 在跨端场景中，以下三个字段不生效，不可用于身份或权限校验：ohos.aafwk.param.callerPid、ohos.aafwk.param.callerToken、ohos.aafwk.param.callerUid。
 
-二、提供了一些由系统定义、开发者按需赋值的Key。具体的key值与对应说明详见wantConstant.Params。
+二、提供了一些由系统定义、开发者按需赋值的Key。具体的key值与对应说明详见[wantConstant.Params](arkts-ability-wantconstant-params-e.md)<!--Del-->以及[wantConstant.Params(仅系统应用可用)](arkts-ability-wantconstant-params-e.md)<!--DelEnd-->。
 
 三、除了上述情况，应用间还可以相互约定传入的键值对。
 

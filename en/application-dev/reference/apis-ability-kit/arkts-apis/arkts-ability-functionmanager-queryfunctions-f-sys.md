@@ -30,7 +30,7 @@ Query all available functions.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[FunctionInfo](arkts-ability-functioninfo-i-sys.md)&gt;&gt; | The promise used to return available functions. |
+| Promise&lt;Array&lt;[FunctionInfo](arkts-ability-functioninfo-i.md)&gt;&gt; | The promise used to return available functions. |
 
 **Error codes:**
 

@@ -37,6 +37,10 @@ import { common } from '@kit.MDMKit';
 | [InstallationResult](arkts-mdm-common-installationresult-i.md) | 应用安装结果。 |
 | [PolicyChangedEvent](arkts-mdm-common-policychangedevent-i.md) | 策略变更事件。 |
 | [SmsReceiveInfo](arkts-mdm-common-smsreceiveinfo-i.md) | 短信接收信息。 |
+| [USBConfigurationInfo](arkts-mdm-common-usbconfigurationinfo-i.md) | USB配置信息。 |
+| [USBDeviceConfigInfo](arkts-mdm-common-usbdeviceconfiginfo-i.md) | USB设备配置信息。 |
+| [UsbDeviceInfo](arkts-mdm-common-usbdeviceinfo-i.md) | USB设备信息。 |
+| [USBInterfaceInfo](arkts-mdm-common-usbinterfaceinfo-i.md) | USB接口信息。 |
 
 ### 类型
 

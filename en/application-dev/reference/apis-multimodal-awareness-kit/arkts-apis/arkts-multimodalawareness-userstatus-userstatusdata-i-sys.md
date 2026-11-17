@@ -86,7 +86,7 @@ User status detection result. The value `0` indicates success, and other values 
 status: string
 ```
 
-Multi-stage detection states under a single perception feature.
+Multi-stage detection status under a specific function. The string value indicates the corresponding detection status, and the maximum length of the string is 64.
 
 **Type:** string
 

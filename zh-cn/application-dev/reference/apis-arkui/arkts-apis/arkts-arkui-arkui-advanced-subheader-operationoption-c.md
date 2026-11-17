@@ -4,7 +4,7 @@
 export declare class OperationOption
 ```
 
-Declare type OperationOption
+声明OperationOption类型。
 
 **起始版本：** 10
 

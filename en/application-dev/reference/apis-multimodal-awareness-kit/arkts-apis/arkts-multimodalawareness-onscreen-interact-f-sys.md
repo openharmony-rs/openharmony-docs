@@ -15,6 +15,14 @@ function interact(capability: OnscreenAwarenessCap,
 
 Proactively triggers screen behavior interaction to identify screen behaviors and return behavior receipts. For example, after a link is clicked, the system accurately jumps to the specified paragraph and highlights the text based on the receipt information.
 
+The capList capability list supported by the interact API is as follows:
+
+|capList Capability List|Description|  
+| ---- | ------ |  
+|JumpContext|Highlights and jumps to the specified context.|  
+|InjectEvent|Injects an event. When the capList capability list is **InjectEvent**, the options field is mandatory, and its content must comply with the **InjectEvent** option specification (see the example for details). If options does not comply with the specification, the injection operation fails and error code 34000001 is returned.<br> **Since:** 26.0.0|  
+|SmartAutoFill|Intelligently fills in the page input box content. When the capList capability list is **SmartAutoFill**, options must contain the **autoFillItems** array (see the example for details); otherwise, the fill operation fails and error code 34000001 is returned.<br> **Since:** 26.0.0|
+
 **Since:** 23
 
 **Required permissions:** 

@@ -4,7 +4,7 @@
 declare interface BorderImageOption
 ```
 
-Border image option
+图片边框或者渐变色边框设置接口。
 
 **起始版本：** 11
 

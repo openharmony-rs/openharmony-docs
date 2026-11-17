@@ -14,6 +14,16 @@ function configure(featureId: UserStatusFeature, detail: string): number
 
 配置功能参数。调用成功后，将更新指定功能的配置参数，影响后续该功能的检测行为，如检测灵敏度、采样频率、启用的检测项等。建议在subscribe()之前调用configure()配置功能参数，确保配置在订阅时生效。对于需要特定配置的功能（如USER_MOOD的实时/非实时模式），建议先configure()再subscribe()。
 
+**detail定义说明**：
+
+| featureId | description | value | 说明 |  
+| --- | --- | --- | --- |  
+| USER_MOOD | isRealTime | [ ] | isRealTime取值为0或1，0表示非实时，1表示实时。实时模式下获取数据会增加性能开销，建议根据业务需要选择合适模式以优化性能。 |  
+| - | atomicCapabilities | [ ] | atomicCapabilities取值可以包含至少一个或多个值，重复值会被自动去重。启用多个能力会增加计算负担，建议根据业务需求按需选择以优化性能。<br>5=原子重力传感器<br>8=原子线性加速度传感器<br>12=原子情绪能力 |  
+| GESTURES_RECOGNITION<br>QUICK_GESTURES_RECOGNITION | dynamicGestureTypes | [ ] | dynamicGestureTypes取值可以包含至少一个或多个值，重复值无效。启用多种手势类型会增加识别计算负担，建议按需选择以优化性能。<br>0=抓取<br>1=向下滑动<br>2=上翻初始手势<br>3=下翻初始手势<br>4=向上滑动<br>5=拳头变掌<br>6=消失 |  
+| - | staticGestureTypes | [ ] | staticGestureTypes取值可以包含至少一个或多个值，重复值无效。启用多种手势类型会增加识别计算负担，建议按需选择以优化性能。<br>7=手掌<br>8=剪刀手<br>9=拳头<br>10=爱心手势 |  
+| USER_BLOWING_STATUS | atomicCapabilities | [ ] | atomicCapabilities取值可以包含至少一个或多个值，重复值会被自动去重。启用多个能力会增加计算负担，建议根据业务需求按需选择以优化性能。<br>5=原子重力传感器<br>8=原子线性加速度传感器<br>11=原子吹气能力<br>12=原子情绪能力<br>15=原子屏幕注视能力 |
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。

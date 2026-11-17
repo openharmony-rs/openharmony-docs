@@ -172,13 +172,13 @@ Dumps client information. It is recommended that developers don't DUMP sensitive
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| params | Array&lt;string&gt; | Yes | Parameters in the form of a command. |
+| params | Array&lt;string&gt; | Yes | Array of dump command parameters. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Array&lt;string&gt; | String array used to dump client information. |
+| Array&lt;string&gt; | String array containing the dumped client information. |
 
 **Examples**
 

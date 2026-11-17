@@ -14,7 +14,7 @@ function removeP2pServiceRequest(request: WifiP2pServiceRequest): void
 
 Removes a specified service discovery request. You can obtain the list of registered service discovery requests by calling [getP2pServiceRequest](arkts-connectivity-wifimanager-getp2pservicerequest-f.md).
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO_INTERNAL
 

@@ -12,7 +12,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 function onPickupChange(callback: Callback<PickupEvent>): void
 ```
 
-Subscribe to pick up sensor event.
+Subscribes to pickup sensor events. This event is triggered and the callback is invoked when the system detects that the device is picked up. It can be used to trigger scenarios such as smart wake-up. This API must be used in pair with offPickupChange. After use, call offPickupChange to unsubscribe and release system resources.
 
 **Since:** 26.0.0
 

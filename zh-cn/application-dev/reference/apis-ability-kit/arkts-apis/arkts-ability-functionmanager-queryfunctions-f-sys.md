@@ -30,7 +30,7 @@ function queryFunctions(): Promise<Array<FunctionInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[FunctionInfo](arkts-ability-functioninfo-i-sys.md)&gt;&gt; | Promise对象，返回可用Function的信息列表，包含命名空间、名称、版本、描述、输入输出模式等。 |
+| Promise&lt;Array&lt;[FunctionInfo](arkts-ability-functioninfo-i.md)&gt;&gt; | Promise对象，返回可用Function的信息列表，包含命名空间、名称、版本、描述、输入输出模式等。 |
 
 **错误码：**
 

@@ -57,8 +57,10 @@ import { observer } from '@kit.TelephonyKit';
 | 名称 | 说明 |
 | --- | --- |
 | [off('cellInfoChange')](arkts-telephony-observer-off-f-sys.md#offcellinfochange) | 取消订阅小区信息变化事件，使用callback方式作为异步方法。 |
+| [offCallTransferChange](arkts-telephony-observer-offcalltransferchange-f-sys.md#offcalltransferchange-1) | 取消订阅呼叫转移状态变化事件，使用callback方式作为异步方法。 |
 | [on('cellInfoChange')](arkts-telephony-observer-on-f-sys.md#oncellinfochange) | 订阅小区信息变化事件，使用callback方式作为异步方法。 |
 | [on('cellInfoChange')](arkts-telephony-observer-on-f-sys.md#oncellinfochange) | 订阅指定卡槽位的小区信息变化事件，使用callback方式作为异步方法。 |
+| [onCallTransferChange](arkts-telephony-observer-oncalltransferchange-f-sys.md#oncalltransferchange-1) | 订阅呼叫转移状态变化事件，使用callback方式作为异步方法。当指定卡槽的呼叫转移状态发生变化时回调。 |
 <!--DelEnd-->
 
 ### 接口

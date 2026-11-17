@@ -4,7 +4,7 @@
 export declare class ToolBarV2ItemText
 ```
 
-Defines the text of a toolbar item.
+定义工具栏子项的文本。
 
 **Since:** 18
 
@@ -17,7 +17,7 @@ Defines the text of a toolbar item.
 ## Modules to Import
 
 ```TypeScript
-import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolbarV2Item, AdvancedToolbarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolbarV2ItemGroupStyle, ToolbarV2ItemGroupStyleOptions, ToolbarV2ItemPlacement, ToolbarV2OverflowMenuStyle, ToolbarV2PaddingOptions, ToolbarV2StyleConfigs, ToolbarV2StyleOptions, ToolbarV2TitleConfigs, ToolbarV2TitleOptions, ToolbarV2TitleStyle, ToolbarV2TitleStyleOptions } from '@kit.ArkUI';
+import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolBarV2Item, AdvancedToolBarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolBarV2ItemGroupStyle, ToolBarV2ItemGroupStyleOptions, ToolBarV2ItemPlacement, ToolBarV2OverflowMenuStyle, ToolBarV2PaddingOptions, ToolBarV2StyleConfigs, ToolBarV2StyleOptions, ToolBarV2TitleConfigs, ToolBarV2TitleOptions, ToolBarV2TitleStyle, ToolBarV2TitleStyleOptions, ToolBarV2MaterialStyle } from '@kit.ArkUI';
 ```
 
 ## constructor
@@ -26,7 +26,7 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 constructor(options: ToolBarV2ItemTextOptions)
 ```
 
-A constructor used to create a **ToolBarV2ItemText** instance.
+ToolBarV2ItemText的构造函数。
 
 **Since:** 18
 
@@ -50,11 +50,9 @@ A constructor used to create a **ToolBarV2ItemText** instance.
 activatedColor?: ColorMetrics
 ```
 
-Font color of the toolbar item in the activated state.
+工具栏子项在激活态下文本的颜色。
 
-</div>Default value: **$r('sys.color.font_emphasize')**.
-
-Decorator: @Trace
+</div>默认值：$r('sys.color.font_emphasize')
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -76,11 +74,9 @@ Decorator: @Trace
 color?: ColorMetrics
 ```
 
-Font color of the toolbar item.
+工具栏子项的文本的颜色。
 
-Default value: **$r('sys.color.font_primary')**.
-
-Decorator: @Trace
+默认值：$r('sys.color.font_primary')
 
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
@@ -102,9 +98,7 @@ Decorator: @Trace
 text: ResourceStr
 ```
 
-Text of the toolbar item.
-
-Decorator: @Trace
+工具栏子项的文本。
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

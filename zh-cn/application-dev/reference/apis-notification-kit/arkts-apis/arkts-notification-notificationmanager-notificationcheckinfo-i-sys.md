@@ -4,7 +4,7 @@
 export interface NotificationCheckInfo
 ```
 
-[通知校验](../../../notification/notification-glossary.md#notification-check通知校验)参数。
+通知校验参数。
 
 **起始版本：** 10
 

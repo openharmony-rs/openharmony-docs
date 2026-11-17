@@ -183,6 +183,30 @@ Triggered when the picker stops scrolling. The picker stops scrolling when the s
 | --- | --- | --- | --- |
 | callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[OnUIPickerComponentCallback](arkts-arkui-uipickercomponent-comp-onuipickercomponentcallback-t.md)&gt; | Yes | Callback invoked when the picker stops scrolling. When the value of callback is undefined, the callback is not used. |
 
+## selectedTextStyle
+
+```TypeScript
+selectedTextStyle(style: Optional<PickerComponentTextStyle>)
+```
+
+Sets the text style of the selected item.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-UIPickerComponentAttribute-selectedTextStyle(style: Optional<PickerComponentTextStyle>): UIPickerComponentAttribute--><!--Device-UIPickerComponentAttribute-selectedTextStyle(style: Optional<PickerComponentTextStyle>): UIPickerComponentAttribute-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[PickerComponentTextStyle](arkts-arkui-common-comp-pickercomponenttextstyle-i.md)&gt; | Yes | Text style of the selected item. <br>Default value: <br>{<br>color: $r('sys.color.font_primary'), <br>font: {<br>size: '20fp', <br>weight: FontWeight.Normal <br>}, <br>overflow: TextOverflow.Clip <br>}. <br>If the value of **style** is undefined, the default value is used. |
+
 ## selectionIndicator
 
 ```TypeScript

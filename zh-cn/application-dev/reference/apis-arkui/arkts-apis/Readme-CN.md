@@ -595,6 +595,8 @@
   - [ConnectOptionsCollections](arkts-arkui-arkui-statemanagement-connectoptionscollections-c.md)
   - [MutableBinding](arkts-arkui-arkui-statemanagement-mutablebinding-c.md)
   - [PersistenceV2](arkts-arkui-arkui-statemanagement-persistencev2-c.md)
+  - [RecoverableConnectOptions](arkts-arkui-arkui-statemanagement-recoverableconnectoptions-c.md)
+  - [RecoverableStorage](arkts-arkui-arkui-statemanagement-recoverablestorage-c.md)
   - [UIUtils](arkts-arkui-arkui-statemanagement-uiutils-c.md)
   - [CustomComponentContext](arkts-arkui-arkui-statemanagement-customcomponentcontext-i.md)
   - [CustomComponentLifecycle](arkts-arkui-arkui-statemanagement-customcomponentlifecycle-i.md)
@@ -606,11 +608,13 @@
   - [IReusePool](arkts-arkui-arkui-statemanagement-ireusepool-i.md)
   - [MonitorOptions](arkts-arkui-arkui-statemanagement-monitoroptions-i.md)
   - [ObservedResult](arkts-arkui-arkui-statemanagement-observedresult-i.md)
+  - [RecoverableStorageError](arkts-arkui-arkui-statemanagement-recoverablestorageerror-i.md)
   - [TypeConstructor](arkts-arkui-arkui-statemanagement-typeconstructor-i.md)
   - [TypeConstructorWithArgs](arkts-arkui-arkui-statemanagement-typeconstructorwithargs-i.md)
   - [CollectionType](arkts-arkui-collectiontype-t.md)
   - [GetterCallback](arkts-arkui-gettercallback-t.md)
   - [MonitorCallback](arkts-arkui-monitorcallback-t.md)
+  - [NotifyOnErrorCallback](arkts-arkui-notifyonerrorcallback-t.md)
   - [PersistenceErrorCallback](arkts-arkui-persistenceerrorcallback-t.md)
   - [ReusableComponentConstructor](arkts-arkui-reusablecomponentconstructor-t.md)
   - [SetterCallback](arkts-arkui-settercallback-t.md)
@@ -625,7 +629,7 @@
   - [Theme](arkts-arkui-arkui-theme-theme-i.md)
   - [CustomColors](arkts-arkui-customcolors-t.md)
   - [CustomDarkColors](arkts-arkui-customdarkcolors-t.md)
-- [@ohos.arkui.UIContext](arkts-arkui-arkui-uicontext.md)
+- [@ohos.arkui.UIContext（UIContext实例）](arkts-arkui-arkui-uicontext.md)
   - [BackPressActionProposal](arkts-arkui-arkui-uicontext-backpressactionproposal-c.md)
   - [BaseGestureHandlingProposal](arkts-arkui-arkui-uicontext-basegesturehandlingproposal-c.md)
   - [ClickActionProposal](arkts-arkui-arkui-uicontext-clickactionproposal-c.md)
@@ -722,6 +726,8 @@
   <!--Del-->
   - [Material（系统接口）](arkts-arkui-uimaterial-material-c-sys.md)<!--DelEnd-->
   - [ImmersiveOptions](arkts-arkui-uimaterial-immersiveoptions-i.md)
+  <!--Del-->
+  - [ImmersiveOptions（系统接口）](arkts-arkui-uimaterial-immersiveoptions-i-sys.md)<!--DelEnd-->
   - [LightEffectOptions](arkts-arkui-uimaterial-lighteffectoptions-i.md)
   - [MaterialInfo](arkts-arkui-uimaterial-materialinfo-i.md)
   <!--Del-->
@@ -729,6 +735,8 @@
   - [ImmersiveStyle](arkts-arkui-uimaterial-immersivestyle-e.md)
   <!--Del-->
   - [ImmersiveStyle（系统接口）](arkts-arkui-uimaterial-immersivestyle-e-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [MaterialColorBlendMode（系统接口）](arkts-arkui-uimaterial-materialcolorblendmode-e-sys.md)<!--DelEnd-->
   - [MaterialLevel](arkts-arkui-uimaterial-materiallevel-e.md)
   - [MaterialState](arkts-arkui-uimaterial-materialstate-e.md)
   - [MaterialType](arkts-arkui-uimaterial-materialtype-e.md)

@@ -12,7 +12,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 function getOutputType(): OutputType
 ```
 
-Returns the current output type of hilog.
+Gets the current hilog output type.
 
 **Since:** 26.0.0
 
@@ -28,7 +28,7 @@ Returns the current output type of hilog.
 
 | Type | Description |
 | --- | --- |
-| [OutputType](arkts-performanceanalysis-hilog-outputtype-e.md) | current output type for hilog. |
+| [OutputType](arkts-performanceanalysis-hilog-outputtype-e.md) | Returns the current hilog output type. |
 
 **Examples**
 

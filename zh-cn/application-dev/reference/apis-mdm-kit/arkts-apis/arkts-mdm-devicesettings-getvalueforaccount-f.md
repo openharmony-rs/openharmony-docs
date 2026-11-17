@@ -69,3 +69,51 @@ try {
   console.error(`Failed to get device name. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+
+## getValueForAccount
+
+```TypeScript
+function getValueForAccount(item: SettingsItem, accountId: number): string
+```
+
+获取指定用户的设备设置策略。该接口可以获取指定用户在设置应用中的某个参数，比如获取用户100的设备名称等。
+
+**起始版本：** 26.1.0
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-deviceSettings-function getValueForAccount(item: SettingsItem, accountId: number): string--><!--Device-deviceSettings-function getValueForAccount(item: SettingsItem, accountId: number): string-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| item | [SettingsItem](arkts-mdm-devicesettings-settingsitem-e.md) | 是 | 设备设置策略类型。支持的策略类型包括：DEVICE_NAME（设备名称）、FLOATING_NAVIGATION（三键导航）。 |
+| accountId | number | 是 | 用户ID，取值范围：大于等于0。<br>accountId可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)等接口来获取。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| string | 策略类型值。<br>当item为[SettingsItem.DEVICE_NAME](arkts-mdm-devicesettings-settingsitem-e.md)时，返回当前用户的设备名称，查询非当前用户的设备名称返回9200012错误码。 <br>当item为[SettingsItem.FLOATING_NAVIGATION](arkts-mdm-devicesettings-settingsitem-e.md)时，返回指定用户的三键导航的开关状态。<br>当item为[SettingsItem.FLOATING_NAVIGATION](arkts-mdm-devicesettings-settingsitem-e.md)时，该接口在Phone和Tablet设备中可正常调用，在其他设备中返回空字符串。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
+| [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+| [9200006](../errorcode-enterpriseDeviceManager.md#9200006-指定的用户id非法) | The specified account ID is invalid. |
+| [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
+| [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |
+| 9200020 | Cross-user configuration is not supported. |
+
+**示例**
+
+参见 [getValueForAccount](#getvalueforaccount)

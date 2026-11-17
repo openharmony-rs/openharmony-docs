@@ -14,6 +14,8 @@ function removeCheckRule(rule: bigint) : void
 
 Removes one or more rules. The removed rules will become ineffective.
 
+If the rule level of the passed-in rule is thread level, the rule is removed only from the current thread.
+
 **Since:** 9
 
 <!--Device-hichecker-function removeCheckRule(rule: bigint) : void--><!--Device-hichecker-function removeCheckRule(rule: bigint) : void-End-->
@@ -24,7 +26,7 @@ Removes one or more rules. The removed rules will become ineffective.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| rule | bigint | Yes | Rule to be removed. |
+| rule | bigint | Yes | Rule to remove. Multiple rules can be combined using the OR operation. Available values include:<br>**RULE_CAUTION_PRINT_LOG** (log recording), **RULE_CAUTION_TRIGGER_CRASH** (application exit), and **RULE_THREAD_CHECK_SLOW_PROCESS** (detect time-consuming function calls). For details, see the constants. |
 
 **Error codes:**
 

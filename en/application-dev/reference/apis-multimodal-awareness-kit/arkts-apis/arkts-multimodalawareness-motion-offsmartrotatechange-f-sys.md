@@ -12,7 +12,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 function offSmartRotateChange(callback?: Callback<SmartRotateEvent>): void
 ```
 
-Unsubscribe to smart rotate sensor event.
+Unsubscribes from the smart rotation sensor event. This API takes effect only after onSmartRotateChange is called to subscribe; if not subscribed, it will not take effect. When the application no longer needs to monitor the smart rotation event, such as page destruction, application entering the background, or pausing related functions, call this API to unsubscribe and release system resources.
 
 **Since:** 26.0.0
 

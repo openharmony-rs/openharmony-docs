@@ -20,7 +20,7 @@ export enum PatternType
 EVENT_PATTERN = 'eventPattern'
 ```
 
-事件序列模式：基于事件触发动作组合的感知模式。
+动作序列模式：动作到动作组合。
 
 **起始版本：** 26.1.0
 
@@ -38,7 +38,7 @@ EVENT_PATTERN = 'eventPattern'
 LOCATION_PATTERN = 'locationPattern'
 ```
 
-位置模式：基于地理位置触发动作组合的感知模式。
+位置模式：位置到动作组合。
 
 **起始版本：** 26.1.0
 
@@ -56,7 +56,7 @@ LOCATION_PATTERN = 'locationPattern'
 TIME_PATTERN = 'timePattern'
 ```
 
-时间模式：基于时间触发动作的感知模式。
+时间模式：时间到动作组合。
 
 **起始版本：** 26.1.0
 

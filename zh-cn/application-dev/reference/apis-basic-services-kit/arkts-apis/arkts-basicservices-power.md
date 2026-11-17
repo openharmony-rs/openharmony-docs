@@ -38,6 +38,7 @@ import { power } from '@kit.BasicServicesKit';
 | [reboot](arkts-basicservices-power-reboot-f-sys.md#reboot-1) | 重启设备。 |
 | [reboot](arkts-basicservices-power-reboot-f-sys.md#reboot-2) | 重启设备。 |
 | [refreshActivity](arkts-basicservices-power-refreshactivity-f-sys.md#refreshactivity-1) | 刷新设备活动状态（如：重设屏幕超时灭屏时间等）。<br><br>此接口仅在设备活动状态下生效。 |
+| [registerHibernateCallback](arkts-basicservices-power-registerhibernatecallback-f-sys.md#registerhibernatecallback-1) | 订阅设备进入或退出休眠的回调。 |
 | [registerShutdownCallback](arkts-basicservices-power-registershutdowncallback-f-sys.md#registershutdowncallback-1) | 订阅电源关机或重启的回调提醒。使用callback异步回调。调用此方法订阅回调后，可在不再需要时调用power.unregisterShutdownCallback取消订阅，释放系统资源。 |
 | [setPowerConfig](arkts-basicservices-power-setpowerconfig-f-sys.md#setpowerconfig-1) | 根据场景名称设置电源配置值。例如，在系统电源管理应用中需要动态调整特定场景的电源配置参数时使用。 |
 | [setPowerKeyFilteringStrategy](arkts-basicservices-power-setpowerkeyfilteringstrategy-f-sys.md#setpowerkeyfilteringstrategy-1) | 设置电源键过滤策略，在电源服务订阅电源键事件后，用于配置电源键事件的处理方式。 |
@@ -49,9 +50,18 @@ import { power } from '@kit.BasicServicesKit';
 | [shutdown](arkts-basicservices-power-shutdown-f-sys.md#shutdown-2) | 系统关机。与reboot方法的区别：shutdown使设备完全关机不再运行，reboot使设备关机后自动重启。 |
 | [suspend](arkts-basicservices-power-suspend-f-sys.md#suspend-1) | 使设备进入睡眠状态。<br><br>调用此方法后设备将进入睡眠，如需恢复到活动状态，需调用power.wakeup唤醒设备。<br><br>与hibernate方法的区别：suspend为较浅的低功耗睡眠状态（灭屏后进入睡眠），hibernate为更深的休眠状态（休眠前可选择清理内存）。需快速恢复设备活动时选择suspend，需最大程度节省电量时选择hibernate。 |
 | [suspend](arkts-basicservices-power-suspend-f-sys.md#suspend-2) | 使设备进入休眠状态。 |
+| [unregisterHibernateCallback](arkts-basicservices-power-unregisterhibernatecallback-f-sys.md#unregisterhibernatecallback-1) | 取消订阅设备进入或退出休眠的回调。所有已注册的休眠回调都会被移除。 |
 | [unregisterShutdownCallback](arkts-basicservices-power-unregistershutdowncallback-f-sys.md#unregistershutdowncallback-1) | 取消订阅电源关机或重启的回调提醒。使用callback同步回调。此方法与power.registerShutdownCallback配对使用，必须在先调用registerShutdownCallback订阅回调后，再调用此方法取消订阅。 |
 | [wakeup](arkts-basicservices-power-wakeup-f-sys.md#wakeup-1) | 唤醒设备，将设备从睡眠状态恢复到活动状态。 |
 | [wakeup](arkts-basicservices-power-wakeup-f-sys.md#wakeup-2) | 唤醒设备。 |
+<!--DelEnd-->
+
+<!--Del-->
+### 接口（系统接口）
+
+| 名称 | 说明 |
+| --- | --- |
+| [HibernateCallback](arkts-basicservices-power-hibernatecallback-i-sys.md) | 定义休眠事件回调接口。 |
 <!--DelEnd-->
 
 ### 枚举

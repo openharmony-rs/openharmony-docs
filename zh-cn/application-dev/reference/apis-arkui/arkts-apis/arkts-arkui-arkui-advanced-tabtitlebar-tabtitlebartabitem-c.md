@@ -4,7 +4,7 @@
 export declare class TabTitleBarTabItem
 ```
 
-Declaration of the tab item.
+声明页签项。
 
 **起始版本：** 10
 

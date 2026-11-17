@@ -1,14 +1,14 @@
-# ToolbarV2ItemPlacement
+# ToolBarV2ItemPlacement
 
 ```TypeScript
-export declare enum ToolbarV2ItemPlacement
+export declare enum ToolBarV2ItemPlacement
 ```
 
-Defines the placement position of a toolbar item within the toolbar.
+定义工具栏项在工具栏中的放置位置。
 
 **Since:** 26.1.0
 
-<!--Device-unnamed-export declare enum ToolbarV2ItemPlacement--><!--Device-unnamed-export declare enum ToolbarV2ItemPlacement-End-->
+<!--Device-unnamed-export declare enum ToolBarV2ItemPlacement--><!--Device-unnamed-export declare enum ToolBarV2ItemPlacement-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -18,7 +18,7 @@ Defines the placement position of a toolbar item within the toolbar.
 LEADING = 1
 ```
 
-Leading half-area. Suitable for primary actions placed before the main content.
+前半区。适合于导航或放置在主要内容之前的主要操作。
 
 **Since:** 26.1.0
 
@@ -26,7 +26,7 @@ Leading half-area. Suitable for primary actions placed before the main content.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2ItemPlacement-LEADING = 1--><!--Device-ToolbarV2ItemPlacement-LEADING = 1-End-->
+<!--Device-ToolBarV2ItemPlacement-LEADING = 1--><!--Device-ToolBarV2ItemPlacement-LEADING = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -36,7 +36,7 @@ Leading half-area. Suitable for primary actions placed before the main content.
 MAIN = 0
 ```
 
-Center area (default). Suitable for primary toolbar actions displayed in the main content region.
+中心区域。适用于主内容区域中显示的主要工具栏操作。一般项的默认位置。
 
 **Since:** 26.1.0
 
@@ -44,7 +44,7 @@ Center area (default). Suitable for primary toolbar actions displayed in the mai
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2ItemPlacement-MAIN = 0--><!--Device-ToolbarV2ItemPlacement-MAIN = 0-End-->
+<!--Device-ToolBarV2ItemPlacement-MAIN = 0--><!--Device-ToolBarV2ItemPlacement-MAIN = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +54,7 @@ Center area (default). Suitable for primary toolbar actions displayed in the mai
 TRAILING = 2
 ```
 
-Trailing half-area. Suitable for secondary or overflow actions placed after the main content.
+后半区。适用于放置在主要内容之后的次要或溢出操作。
 
 **Since:** 26.1.0
 
@@ -62,6 +62,6 @@ Trailing half-area. Suitable for secondary or overflow actions placed after the 
 
 **Atomic service API:** This API can be used in atomic services since API version 26.1.0.
 
-<!--Device-ToolbarV2ItemPlacement-TRAILING = 2--><!--Device-ToolbarV2ItemPlacement-TRAILING = 2-End-->
+<!--Device-ToolBarV2ItemPlacement-TRAILING = 2--><!--Device-ToolBarV2ItemPlacement-TRAILING = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

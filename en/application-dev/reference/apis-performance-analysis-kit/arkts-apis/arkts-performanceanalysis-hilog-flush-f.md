@@ -12,7 +12,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 function flush(): void
 ```
 
-Flush hilog logs in the sandbox.
+Flushes hilog logs in the sandbox to ensure logs are persisted to disk.
 
 **Since:** 26.0.0
 

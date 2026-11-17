@@ -34,13 +34,13 @@ Invoke a function by functionNamespace and functionName.
 | functionNamespace | string | Yes | The namespace of the target function. |
 | functionName | string | Yes | The name of the target function. |
 | args | Record&lt;string, Object&gt; | Yes | The input arguments for the function. |
-| options | [InvokeOptions](arkts-ability-functionmanager-invokeoptions-i-sys.md) | No | The options for this invocation. |
+| options | [InvokeOptions](arkts-ability-functionmanager-invokeoptions-i.md) | No | The options for this invocation. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[InvokeResult](arkts-ability-functionmanager-invokeresult-i-sys.md)&gt; | The promise used to return the result of function invocation. |
+| Promise&lt;[InvokeResult](arkts-ability-functionmanager-invokeresult-i.md)&gt; | The promise used to return the result of function invocation. |
 
 **Error codes:**
 

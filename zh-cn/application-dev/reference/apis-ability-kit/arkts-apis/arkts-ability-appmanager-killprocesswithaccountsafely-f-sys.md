@@ -53,4 +53,4 @@ function killProcessWithAccountSafely(bundleName: string, accountId: number, cle
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Connect to system server failed. |
-| 16000210 | The target process is protected by an MDM application and cannot be terminated. |
+| [16000210](../errorcode-ability.md#16000210-目标进程受mdm应用保护无法终止) | The target process is protected by an MDM application and cannot be terminated. |

@@ -49,3 +49,23 @@ Status set between the current application and the current user. Each bit indica
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
+
+## keepDataOnUninstall
+
+```TypeScript
+readonly keepDataOnUninstall?: boolean
+```
+
+Whether application data is retained upon uninstallation. **true** if retained, **false** otherwise. The default value is **false**.
+
+**Type:** boolean
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ApplicationInfo-readonly keepDataOnUninstall?: boolean--><!--Device-ApplicationInfo-readonly keepDataOnUninstall?: boolean-End-->
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**System API:** This is a system API.

@@ -1,4 +1,4 @@
-# @ohos.file.BackupExtensionContext
+# @ohos.file.BackupExtensionContext(Backup and restore extention context)
 
 ## Modules to Import
 

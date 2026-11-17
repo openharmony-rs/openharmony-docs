@@ -26,7 +26,7 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 logicalOrientation?: LogicalOrientation
 ```
 
-The logical orientation adjusted by smart algorithms.
+Logical orientation adjusted by the smart algorithm. When the smart algorithm cannot determine the orientation, this field may be empty or not returned.
 
 **Type:** [LogicalOrientation](arkts-multimodalawareness-motion-logicalorientation-e-sys.md)
 

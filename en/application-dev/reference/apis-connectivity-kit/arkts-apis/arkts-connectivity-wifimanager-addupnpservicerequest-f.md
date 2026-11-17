@@ -14,7 +14,7 @@ function addUpnpServiceRequest(searchTarget?: string): void
 
 Adds a UPnP service discovery request that matches the specified search target.
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO_INTERNAL
 

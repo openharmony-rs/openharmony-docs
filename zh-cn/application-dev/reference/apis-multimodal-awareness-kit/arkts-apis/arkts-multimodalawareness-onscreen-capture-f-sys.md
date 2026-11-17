@@ -15,6 +15,14 @@ function capture(capability: OnscreenAwarenessCap,
 
 主动触发屏幕内容感知，获取页面信息。
 
+capture接口支持的capList能力列表，如下：
+
+|capList能力列表|功能说明|  
+| ---- | ------ |  
+|UiImage|获取页面内子图信息。|  
+|QuickSnap|获取截屏信息。|  
+|UiTree|获取页面JSON树信息。<br> **起始版本：** 26.0.0|
+
 **起始版本：** 23
 
 **需要权限：** 

@@ -908,7 +908,7 @@ allowDrop(value: Array<UniformDataType>  | null | Array<string>): T
 allowForceDark(value: boolean): T
 ```
 
-Set whether the component enables the ability to invert colors. This interface needs to be set as the first attribute of the component.
+设置组件是否使用反色能力。该接口需要设置为组件的第一个属性。
 
 **起始版本：** 21
 
@@ -924,7 +924,7 @@ Set whether the component enables the ability to invert colors. This interface n
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | boolean | 是 | value indicates whether the component enables the ability to invert colors. |
+| value | boolean | 是 | value表示组件是否使用反色能力。 |
 
 **返回值：**
 

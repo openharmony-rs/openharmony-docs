@@ -351,6 +351,8 @@
   - [off](arkts-telephony-observer-off-f.md)
   <!--Del-->
   - [off（系统接口）](arkts-telephony-observer-off-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [offCallTransferChange（系统接口）](arkts-telephony-observer-offcalltransferchange-f-sys.md)<!--DelEnd-->
   - [offCCallStateChange](arkts-telephony-observer-offccallstatechange-f.md)
   - [offCommunicationStateChange](arkts-telephony-observer-offcommunicationstatechange-f.md)
   - [offGetSimActiveState](arkts-telephony-observer-offgetsimactivestate-f.md)
@@ -358,6 +360,8 @@
   - [on](arkts-telephony-observer-on-f.md)
   <!--Del-->
   - [on（系统接口）](arkts-telephony-observer-on-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [onCallTransferChange（系统接口）](arkts-telephony-observer-oncalltransferchange-f-sys.md)<!--DelEnd-->
   - [onCCallStateChange](arkts-telephony-observer-onccallstatechange-f.md)
   - [onCommunicationStateChange](arkts-telephony-observer-oncommunicationstatechange-f.md)
   - [onGetSimActiveState](arkts-telephony-observer-ongetsimactivestate-f.md)

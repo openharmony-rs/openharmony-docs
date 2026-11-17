@@ -24,7 +24,7 @@ import { abilityAccessCtrl, Context, PermissionRequestResult, Permissions } from
 getAutomationControlControllers(targetTokenID: number): Promise<Array<AutomationControlControllerInfo>>
 ```
 
-查询对目标应用有自动化控制能力的控制方应用。返回控制方应用信息列表。
+查询对目标应用有自动化控制能力的控制方应用。返回控制方应用信息列表。使用Promise异步回调。
 
 **起始版本：** 26.1.0
 
@@ -42,13 +42,13 @@ getAutomationControlControllers(targetTokenID: number): Promise<Array<Automation
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| targetTokenID | number | 是 | 目标被控制应用的Token ID。<br>取值限定为整数。 |
+| targetTokenID | number | 是 | 目标被控制应用的身份标识。可通过应用BundleInfo中的ApplicationInfo的[accessTokenId]{@link./bundleManager/ApplicationInfo:ApplicationInfo.accessTokenId}字段获取。该参数必须为大于0的整数，传入0时返回错误码12100002。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[AutomationControlControllerInfo](arkts-ability-abilityaccessctrl-automationcontrolcontrollerinfo-i-sys.md)&gt;&gt; | Promise用于返回控制方应用的列表，这些应用可对指定的目标应用进行自动化控制。 |
+| Promise&lt;Array&lt;[AutomationControlControllerInfo](arkts-ability-abilityaccessctrl-automationcontrolcontrollerinfo-i-sys.md)&gt;&gt; | Promise对象，用于返回控制方应用的列表，这些应用可对指定的目标应用进行自动化控制。 |
 
 **错误码：**
 
@@ -65,7 +65,7 @@ getAutomationControlControllers(targetTokenID: number): Promise<Array<Automation
 getAutomationControlTargets(controllerTokenID: number): Promise<Array<AutomationControlTargetResult>>
 ```
 
-查询指定应用的自动化控制目标应用的信息。返回目标应用列表及其状态。
+查询被指定应用自动化控制的目标应用的信息。返回目标应用列表及其状态。使用Promise异步回调。
 
 **起始版本：** 26.1.0
 
@@ -83,13 +83,13 @@ getAutomationControlTargets(controllerTokenID: number): Promise<Array<Automation
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| controllerTokenID | number | 是 | 控制方应用的Token ID。<br>取值限定为整数。 |
+| controllerTokenID | number | 是 | 控制方应用的身份标识。可通过应用BundleInfo中的ApplicationInfo的[accessTokenId]{@link./bundleManager/ApplicationInfo:ApplicationInfo.accessTokenId}字段获取。该参数必须为大于0的整数，传入0时返回错误码12100002。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[AutomationControlTargetResult](arkts-ability-abilityaccessctrl-automationcontroltargetresult-i-sys.md)&gt;&gt; | Promise用于返回目标应用及其自动化控制状态。 |
+| Promise&lt;Array&lt;[AutomationControlTargetResult](arkts-ability-abilityaccessctrl-automationcontroltargetresult-i-sys.md)&gt;&gt; | Promise对象，用于返回目标应用及其自动化控制状态。 |
 
 **错误码：**
 
@@ -1240,7 +1240,7 @@ setAutomationControlStatus(
     ): Promise<Array<AutomationControlSetResult>>
 ```
 
-设置控制方应用对目标应用的自动化控制开关，返回每个目标应用的结果。该开关状态包含允许和禁止。
+设置控制方应用对目标应用的自动化控制开关状态，返回每个目标应用的设置结果。该开关状态包含允许和禁止。使用Promise异步回调。
 
 **起始版本：** 26.1.0
 
@@ -1258,14 +1258,14 @@ setAutomationControlStatus(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| controllerTokenID | number | 是 | 控制方应用的身份标识，参数值大于0。<br>取值限定为整数。 |
+| controllerTokenID | number | 是 | 控制方应用的身份标识。可通过应用BundleInfo中的ApplicationInfo的[accessTokenId]{@link./bundleManager/ApplicationInfo:ApplicationInfo.accessTokenId}字段获取。该参数必须为大于0的整数，传入0时返回错误码12100001。 |
 | targetList | Array&lt;[AutomationControlTargetParam](arkts-ability-abilityaccessctrl-automationcontroltargetparam-i-sys.md)&gt; | 是 | 被控制目标应用列表及其自动化控制开关状态。<br>最大长度为1024且不能为空。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[AutomationControlSetResult](arkts-ability-abilityaccessctrl-automationcontrolsetresult-e-sys.md)&gt;&gt; | Promise用于返回每个目标应用的结果。与targetList的顺序相同。 |
+| Promise&lt;Array&lt;[AutomationControlSetResult](arkts-ability-abilityaccessctrl-automationcontrolsetresult-e-sys.md)&gt;&gt; | Promise对象，用于返回每个目标应用的设置结果，与targetList传入的应用顺序相同。 |
 
 **错误码：**
 

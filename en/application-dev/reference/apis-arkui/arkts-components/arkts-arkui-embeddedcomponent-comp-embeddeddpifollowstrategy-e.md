@@ -30,6 +30,24 @@ The DPI follows the host.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## FOLLOW_HOST_DPI_ALL
+
+```TypeScript
+FOLLOW_HOST_DPI_ALL = 2
+```
+
+The UI and subWindow in the UIExtensionAbility both follow the host resolution.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.1.0.
+
+<!--Device-EmbeddedDpiFollowStrategy-FOLLOW_HOST_DPI_ALL = 2--><!--Device-EmbeddedDpiFollowStrategy-FOLLOW_HOST_DPI_ALL = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## FOLLOW_UI_EXTENSION_ABILITY_DPI
 
 ```TypeScript

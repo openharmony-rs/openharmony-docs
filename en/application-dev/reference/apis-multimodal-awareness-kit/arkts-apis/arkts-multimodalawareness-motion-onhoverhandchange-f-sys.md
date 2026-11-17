@@ -12,7 +12,11 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 function onHoverHandChange(detectionArea: HoverHandDetectionArea, callback: Callback<HoverHandAction>): void
 ```
 
-Subscribes to hover hand events and immediately starts detection for five seconds.
+Subscribes to the hover hand event and immediately starts hover hand event detection, with a detection duration of five seconds. This API must be used in pairs with offHoverHandChange. After use, call offHoverHandChange to unsubscribe and release system resources.
+
+> **NOTE:** 
+> 
+> After the detection duration expires, hover hand event detection automatically stops and no more hover hand events are reported. The developer must call this API again to restart detection.
 
 **Since:** 26.0.0
 
@@ -48,7 +52,11 @@ function onHoverHandChange(
     detectionArea: HoverHandDetectionArea, duration: number, callback: Callback<HoverHandAction>): void
 ```
 
-Subscribes to hover hand events and immediately starts detection.
+Subscribes to hover hand events and immediately starts hover hand event detection, with a configurable detection duration. This API must be used in pair with offHoverHandChange. After use, call offHoverHandChange to unsubscribe and release system resources.
+
+> **NOTE:** 
+> 
+> After the detection duration expires, hover hand event detection stops automatically and no more hover hand events are reported. The developer must call this API again to restart detection.
 
 **Since:** 26.0.0
 

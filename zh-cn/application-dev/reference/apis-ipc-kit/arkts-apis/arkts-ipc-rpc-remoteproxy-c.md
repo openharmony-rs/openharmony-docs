@@ -138,7 +138,7 @@ getLocalInterface(interfaceDes: string): IRemoteBroker
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | check param failed |
-| [1900006](../errorcode-rpc.md#1900006-ipc对象权限错误) | Operation allowed only for the remote object. |
+| [1900006](../errorcode-rpc.md#1900006-ipc对象权限错误仅remoteobject对象允许) | Operation allowed only for the remote object. |
 
 **示例**
 

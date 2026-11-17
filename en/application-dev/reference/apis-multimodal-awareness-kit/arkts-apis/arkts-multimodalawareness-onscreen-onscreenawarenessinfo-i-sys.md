@@ -186,7 +186,7 @@ Page language information.
 miniProgramId?: string
 ```
 
-Applet ID, for example, the ID of WeChat or Alipay.
+Mini program ID, for example, the mini program ID of a third-party application such as WeChat or Alipay.
 
 **Type:** string
 

@@ -25,6 +25,7 @@ import { jsLeakWatcher } from '@kit.PerformanceAnalysisKit';
 | [enable](arkts-performanceanalysis-jsleakwatcher-enable-f.md#enable-1) | Enables the detection for ArkTS object leaks. This function is disabled by default. |
 | [enableLeakWatcher](arkts-performanceanalysis-jsleakwatcher-enableleakwatcher-f.md#enableleakwatcher-1) | Enables the ArkTS object leak detection. |
 | [enableLeakWatcher](arkts-performanceanalysis-jsleakwatcher-enableleakwatcher-f.md#enableleakwatcher-2) | Enables the ArkTS object leak detection. |
+| [markLifecycleEnded](arkts-performanceanalysis-jsleakwatcher-marklifecycleended-f.md#marklifecycleended-1) | Marks an object as a lifecycle-ended object. If a developer determines that an object should no longer be used or referenced, the developer uses this API to mark the object before releasing it. When an OOM fault occurs, if the attributes of an object in the exported heap snapshot file contain the __ohosDfxJsLeakMarker attribute, the object is not released as expected. |
 | [watch](arkts-performanceanalysis-jsleakwatcher-watch-f.md#watch-1) | Registers the object to be checked. |
 
 ### Interfaces

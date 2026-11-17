@@ -4,7 +4,7 @@
 export class ToolBarV2SymbolGlyph
 ```
 
-Defines the icon symbol options.
+ToolBarV2SymbolGlyph定义Symbol图标的属性。
 
 **Since:** 18
 
@@ -17,7 +17,7 @@ Defines the icon symbol options.
 ## Modules to Import
 
 ```TypeScript
-import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolbarV2Item, AdvancedToolbarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolbarV2ItemGroupStyle, ToolbarV2ItemGroupStyleOptions, ToolbarV2ItemPlacement, ToolbarV2OverflowMenuStyle, ToolbarV2PaddingOptions, ToolbarV2StyleConfigs, ToolbarV2StyleOptions, ToolbarV2TitleConfigs, ToolbarV2TitleOptions, ToolbarV2TitleStyle, ToolbarV2TitleStyleOptions } from '@kit.ArkUI';
+import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, ToolBarV2ItemText, ToolBarV2ItemTextOptions, ToolBarV2ItemIconType, ToolBarV2ItemImage, ToolBarV2ItemImageOptions, ToolBarV2, ToolBarV2Item, ToolBarV2ItemOptions, ToolBarV2Modifier, ToolBarV2ItemAction, AdvancedToolBarV2Item, AdvancedToolBarV2ItemOptions, AdvancedToolBarV2Modifier, BarBackgroundVisibility, ToolBarV2ItemGroupStyle, ToolBarV2ItemGroupStyleOptions, ToolBarV2ItemPlacement, ToolBarV2OverflowMenuStyle, ToolBarV2PaddingOptions, ToolBarV2StyleConfigs, ToolBarV2StyleOptions, ToolBarV2TitleConfigs, ToolBarV2TitleOptions, ToolBarV2TitleStyle, ToolBarV2TitleStyleOptions, ToolBarV2MaterialStyle } from '@kit.ArkUI';
 ```
 
 ## constructor
@@ -26,7 +26,7 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 constructor(options: ToolBarV2SymbolGlyphOptions)
 ```
 
-A constructor used to create a **ToolBarV2SymbolGlyph** object.
+ToolBarV2SymbolGlyph的构造函数。
 
 **Since:** 18
 
@@ -50,13 +50,9 @@ A constructor used to create a **ToolBarV2SymbolGlyph** object.
 activated?: SymbolGlyphModifier
 ```
 
-Icon symbol of the toolbar item in activated state.
+工具栏symbol图标激活态样式。
 
-Default value:
-
-**fontColor**: **$r('sys.color.icon_emphasize')**, **fontSize**: **24vp**
-
-Decorator: @Trace
+默认值：fontColor：$r('sys.color.icon_emphasize')，fontSize：24vp。
 
 **Type:** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
@@ -78,9 +74,7 @@ Decorator: @Trace
 normal: SymbolGlyphModifier
 ```
 
-Icon symbol of the toolbar item in normal state.
-
-Decorator: @Trace
+工具栏symbol图标普通态样式。
 
 **Type:** [SymbolGlyphModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 

@@ -497,6 +497,22 @@ Parent Control
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
+## POWER_SAVING_MODE
+
+```TypeScript
+POWER_SAVING_MODE = 57
+```
+
+Power saving mode, including battery saver, ultra battery saver and expedition.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-POWER_SAVING_MODE = 57--><!--Device-FeatureForDevice-POWER_SAVING_MODE = 57-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## PRINTER
 
 ```TypeScript

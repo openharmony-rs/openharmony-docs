@@ -14,7 +14,7 @@ function removeAllP2pServiceRequests(): void
 
 Removes all pending service discovery requests.
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO_INTERNAL
 

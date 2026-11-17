@@ -1,4 +1,4 @@
-# @ohos.file.backup
+# @ohos.file.backup(backup and restore)
 
 Module providing backup and restore capabilities.
 

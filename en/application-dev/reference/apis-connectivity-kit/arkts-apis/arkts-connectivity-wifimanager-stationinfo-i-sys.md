@@ -48,7 +48,7 @@ Whether the disconnection is initiated by the local device when the Wi-Fi client
 
 **Type:** boolean
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -122,7 +122,7 @@ The client reason code of the Wi-Fi client leaving the hotspot, as defined in th
 
 **Type:** number
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -142,7 +142,7 @@ The Received Signal Strength Indicator (RSSI) in dBm of the Wi-Fi client when it
 
 **Type:** number
 
-**Since:** 26.0.1
+**Since:** 26.1.0
 
 **Model restriction:** This API can be used only in the stage model.
 

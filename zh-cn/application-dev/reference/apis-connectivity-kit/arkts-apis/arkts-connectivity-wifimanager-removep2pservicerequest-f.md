@@ -14,7 +14,7 @@ function removeP2pServiceRequest(request: WifiP2pServiceRequest): void
 
 移除指定的服务发现请求。可以通过[getP2pServiceRequest](arkts-connectivity-wifimanager-getp2pservicerequest-f.md)获取已注册的服务发现请求列表。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.GET_WIFI_INFO_INTERNAL
 
@@ -28,7 +28,7 @@ function removeP2pServiceRequest(request: WifiP2pServiceRequest): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| request | WifiP2pServiceRequest | 是 | 待移除的服务发现请求。 |
+| request | [WifiP2pServiceRequest](arkts-connectivity-wifimanager-wifip2pservicerequest-i.md) | 是 | 待移除的服务发现请求。 |
 
 **错误码：**
 

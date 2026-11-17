@@ -37,7 +37,7 @@ Creates a PixelMap object based on MessageSequence parameter.
 | Error Code ID | Error Message |
 | --- | --- |
 | [62980096](../errorcode-image.md#62980096-operation-failed) | Operation failed. |
-| [62980097](../errorcode-image.md#62980097-pixelmap-serialization-failed) | IPC error. |
+| [62980097](../errorcode-image.md#62980097-pixelmap-serialization-transfer-failure) | IPC error. |
 | [62980115](../errorcode-image.md#62980115-invalid-image-parameter) | Invalid input parameter. |
 | [62980105](../errorcode-image.md#62980105-failure-in-obtaining-image-data) | Failed to get the data. |
 | [62980177](../errorcode-image.md#62980177-abnormal-api-environment) | Abnormal API environment. |

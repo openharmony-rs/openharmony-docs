@@ -15,6 +15,14 @@ function capture(capability: OnscreenAwarenessCap,
 
 Proactively triggers screen content awareness to obtain page information.
 
+The capList capability list supported by the capture API is as follows:
+
+|capList Capability List|Description|  
+| ---- | ------ |  
+|UiImage|Obtains the sub-image information in the page.|  
+|QuickSnap|Obtains the screenshot information.|  
+|UiTree|Obtains the page JSON tree information.<br> **Since:** 26.0.0|
+
 **Since:** 23
 
 **Required permissions:** 

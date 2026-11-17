@@ -14,7 +14,7 @@ function offP2pServiceDiscovery(callback?: Callback<P2pServiceDiscoveryInfo>): v
 
 取消订阅通用服务响应事件。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.1.0
 
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
@@ -28,7 +28,7 @@ function offP2pServiceDiscovery(callback?: Callback<P2pServiceDiscoveryInfo>): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;P2pServiceDiscoveryInfo&gt; | 否 | 待取消注册的回调函数。未指定该参数时，取消注册该事件类型的所有回调。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[P2pServiceDiscoveryInfo](arkts-connectivity-wifimanager-p2pservicediscoveryinfo-t.md)&gt; | 否 | 待取消注册的回调函数。未指定该参数时，取消注册该事件类型的所有回调。 |
 
 **错误码：**
 

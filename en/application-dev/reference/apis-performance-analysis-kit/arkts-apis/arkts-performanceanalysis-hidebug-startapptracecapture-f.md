@@ -44,7 +44,7 @@ To obtain the unit trace traffic of an application, you can call **startAppTrace
 
 | Type | Description |
 | --- | --- |
-| string | Trace file path. (The API returns the actual physical path. If the path needs to be accessed in the application, convert the path by referring to Mappings Between Application Sandbox Paths and Physical Paths.) |
+| string | Trace file path. (The API returns the actual physical path. If the path needs to be accessed in the application, convert the path by referring to [Mappings Between Application Sandbox Paths and Physical Paths](../../../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).) |
 
 **Error codes:**
 

@@ -203,3 +203,43 @@ rejectRecords: Array<UsedRecordDetail>
 **系统能力：** SystemCapability.Security.AccessToken
 
 **系统接口：** 此接口为系统接口。
+
+## targetBundleName
+
+```TypeScript
+targetBundleName?: string
+```
+
+被自动化控制的目标应用的包名。仅在查询自动化控制记录的情况时有效。查询非自动化控制记录时，该值为空字符串。默认值：空。
+
+**类型：** string
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PermissionUsedRecord-targetBundleName?: string--><!--Device-PermissionUsedRecord-targetBundleName?: string-End-->
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+## targetTokenId
+
+```TypeScript
+targetTokenId?: number
+```
+
+被自动化控制的目标应用的身份标识。仅在查询自动化控制记录的情况时有效。查询非自动化控制记录时，该值为0。取值限定为整数。默认值：0。
+
+**类型：** number
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PermissionUsedRecord-targetTokenId?: int--><!--Device-PermissionUsedRecord-targetTokenId?: int-End-->
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。

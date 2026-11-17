@@ -4,7 +4,7 @@
 export type UnifiedGroupInfo = _UnifiedGroupInfo
 ```
 
-Describes the information fields of notification [smart aggregation](../../../notification/notification-glossary.md#notification-smart-aggregation).
+Describes the information fields of notification smart aggregation.
 
 **Type:** _UnifiedGroupInfo
 

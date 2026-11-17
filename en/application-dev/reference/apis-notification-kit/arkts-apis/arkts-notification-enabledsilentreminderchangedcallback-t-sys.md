@@ -4,7 +4,7 @@
 export type EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentReminderCallbackData) => void
 ```
 
-Triggered for registering the [silent reminder](../../../notification/notification-glossary.md#silent-reminder) enabled state change of application notifications.
+Triggered for registering the silent reminder enabled state change of application notifications.
 
 **Since:** 24
 

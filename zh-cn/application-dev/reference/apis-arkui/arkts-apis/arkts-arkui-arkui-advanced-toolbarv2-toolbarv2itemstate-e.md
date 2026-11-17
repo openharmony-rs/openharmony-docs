@@ -4,7 +4,7 @@
 export declare enum ToolBarV2ItemState
 ```
 
-Declare enum ToolBarV2ItemState
+声明ToolBarV2ItemState枚举。
 
 **起始版本：** 18
 
@@ -18,7 +18,7 @@ Declare enum ToolBarV2ItemState
 ACTIVATE = 3
 ```
 
-Activate type.
+激活类型。
 
 **起始版本：** 18
 
@@ -36,7 +36,7 @@ Activate type.
 DISABLE = 2
 ```
 
-Disable type.
+禁用类型。
 
 **起始版本：** 18
 
@@ -54,7 +54,7 @@ Disable type.
 ENABLE = 1
 ```
 
-Enable type.
+启用类型。
 
 **起始版本：** 18
 

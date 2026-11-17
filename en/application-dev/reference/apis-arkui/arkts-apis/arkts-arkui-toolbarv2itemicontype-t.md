@@ -4,7 +4,7 @@
 export declare type ToolBarV2ItemIconType = ToolBarV2ItemImage | ToolBarV2SymbolGlyph
 ```
 
-Defines the union type for the icon content of a toolbar item.
+工具栏子项图标内容的联合类型。
 
 **Since:** 18
 
@@ -18,5 +18,5 @@ Defines the union type for the icon content of a toolbar item.
 
 | Type | Description |
 | --- | --- |
-| [ToolBarV2ItemImage](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemimage-c.md) | Type for defining a common icon. |
-| [ToolBarV2SymbolGlyph](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2symbolglyph-c.md) | Type for defining a symbol icon. |
+| [ToolBarV2ItemImage](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemimage-c.md) | 用于定义普通图标。 |
+| [ToolBarV2SymbolGlyph](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2symbolglyph-c.md) | 用于定义Symbol图标。 |
