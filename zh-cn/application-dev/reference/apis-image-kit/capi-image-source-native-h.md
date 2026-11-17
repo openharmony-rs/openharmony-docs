@@ -1309,7 +1309,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImageProperty(OH_ImageSourceNative *sour
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：source为空，或者key为空，或者value为空。<br>IMAGE_ALLOC_FAILED：内存分配失败。<br>IMAGE_COPY_FAILED：内存拷贝失败。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。<br>IMAGE_BAD_PARAMETER：source、key或value为空。<br>IMAGE_ALLOC_FAILED：内存分配失败。<br>IMAGE_COPY_FAILED：内存拷贝失败。 |
 
 ### OH_ImageSourceNative_GetImagePropertyShort()
 
@@ -1346,7 +1346,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyShort(OH_ImageSourceNative 
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source为空，或者key为空，或者value为空。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是短整型的值。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为空。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是短整型的值。 |
 
 ### OH_ImageSourceNative_GetImagePropertyLong()
 
