@@ -1355,7 +1355,7 @@ static napi_value Execute(napi_env env, napi_callback_info info)
 - 云侧文件大小变化时，需先通过OH_CloudDisk_GetPlaceholderState()确认目标文件为占位符文件，再调用OH_CloudDisk_UpdatePlaceholder()按云侧最新元数据重置占位符，详见下方示例代码。
 - 不要以st_size判断文件实际数据量：未水合占位符的st_size等于预设值但本地无数据，应以应用自身记录的云侧文件大小为准。
 
-云侧文件大小变化后重置占位符的示例代码如下（源自CloudDisk示例更新占位符元数据模块；重置完成后占位符回到未水合状态，应用需再通过OH_CloudDisk_HydratePlaceholder()接口触发水合，并在收到取数回调后调用OH_CloudDisk_Execute()回传云侧最新数据，完成重新水合）：
+云侧文件大小变化后重置占位符的示例代码如下（源自CloudDisk示例更新占位符元数据模块）：
 
 <!-- @[update_on_cloud_size_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/ets/pages/Index.ets) -->
 
