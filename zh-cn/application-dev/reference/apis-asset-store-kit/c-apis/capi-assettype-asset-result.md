@@ -6,7 +6,7 @@ typedef struct Asset_Result {...} Asset_Result
 
 ## 概述
 
-单条关键资的产查询结果。
+单条关键资产的查询结果。
 
 <!--Device-typedef struct Asset_Result {...} Asset_Result--><!--Device-typedef struct Asset_Result {...} Asset_Result-End-->
 

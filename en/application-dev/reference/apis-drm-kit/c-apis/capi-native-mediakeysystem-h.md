@@ -214,7 +214,7 @@ Checks whether the device supports the combination of the DRM solution and MIME 
 | Parameter | Description |
 | -- | -- |
 | const char *name | Pointer to the DRM solution name. |
-| const char *mimeType | Pointer to the MIME type. The supported MIME types depend on the DRM solution. Example types are video/avc and video/hev. |
+| const char *mimeType | Pointer to the MIME type. The supported MIME types depend on the DRM solution. Example types are video/avc and video/hevc. |
 
 **Returns**:
 
@@ -243,7 +243,7 @@ Checks whether the device supports the combination of the DRM solution, MIME typ
 | Parameter | Description |
 | -- | -- |
 | const char *name | Pointer to the DRM solution name. |
-| const char *mimeType | Pointer to the MIME type. The supported MIME types depend on the DRM solution. Example types are video/avc and video/hev. |
+| const char *mimeType | Pointer to the MIME type. The supported MIME types depend on the DRM solution. Example types are video/avc and video/hevc. |
 | [DRM_ContentProtectionLevel](capi-native-drm-common-h.md#drm_contentprotectionlevel) contentProtectionLevel | Content protection level. |
 
 **Returns**:

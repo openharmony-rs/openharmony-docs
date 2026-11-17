@@ -18,7 +18,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) | OH_AudioDebuggingManager | 声明音频调试管理结构体，该结构体用于调用输出音频调试信息功能接口。 |
+| [OH_AudioDebuggingManager](capi-ohaudio-oh-audiodebuggingmanager.md) | OH_AudioDebuggingManager | 声明音频调试管理器。用于音频运行时调试，包括获取快照信息等功能。 |
 
 ### 函数
 

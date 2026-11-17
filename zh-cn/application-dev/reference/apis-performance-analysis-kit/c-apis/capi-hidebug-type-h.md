@@ -2,7 +2,7 @@
 
 ## 概述
 
-Defines the code of the HiDebug module.
+HiDebug模块代码结构体定义。
 
 **库：** libohhidebug.so
 
@@ -32,7 +32,7 @@ Defines the code of the HiDebug module.
 | [OH_HiDebug_ProfilingResult](capi-hidebug-oh-hidebug-profilingresult.md) | OH_HiDebug_ProfilingResult | 封装单次资源采集的结果。 |
 | [OH_HiDebug_ResProfilerConfig](capi-hidebug-oh-hidebug-resprofilerconfig.md) | OH_HiDebug_ResProfilerConfig | 定义资源采集配置结构体类型。 |
 | [HiDebug_Backtrace_Object\_\_*](capi-hidebug-hidebug-backtrace-object--8h.md) | HiDebug_Backtrace_Object | 用于栈回溯及栈解析的对象。该对象封装了栈回溯所需的上下文信息，包括调用栈地址、线程状态等数据，通过相关接口可获取详细的栈帧信息和符号解析结果。该对象通过HiDebug相关接口创建，使用后需要调用对应的销毁接口释放资源。 |
-| [HiDebug_ThreadCpuUsage*](capi-hidebug-hidebug-threadcpuusage8h.md) | HiDebug_ThreadCpuUsagePtr | Defines pointer of HiDebug_ThreadCpuUsage. |
+| [HiDebug_ThreadCpuUsage*](capi-hidebug-hidebug-threadcpuusage8h.md) | HiDebug_ThreadCpuUsagePtr | 定义HiDebug_ThreadCpuUsage的指针类型。 |
 
 ### 枚举
 
@@ -50,38 +50,38 @@ Defines the code of the HiDebug module.
 
 | 名称 | 描述 |
 | -- | -- |
-| HIDEBUG_TRACE_TAG_FFRT (1ULL << 13) | FFRT tasks.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_COMMON_LIBRARY (1ULL << 16) | Common library subsystem tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_HDF (1ULL << 18) | HDF subsystem tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_NET (1ULL << 23) | Net tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_NWEB (1ULL << 24) | NWeb tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_DISTRIBUTED_AUDIO (1ULL << 27) | Distributed audio tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_FILE_MANAGEMENT (1ULL << 29) | File management tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_OHOS (1ULL << 30) | OHOS generic tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_ABILITY_MANAGER (1ULL << 31) | Ability Manager tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_CAMERA (1ULL << 32) | Camera module tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_MEDIA (1ULL << 33) | Media module tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_IMAGE (1ULL << 34) | Image module tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_AUDIO (1ULL << 35) | Audio module tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_DISTRIBUTED_DATA (1ULL << 36) | Distributed data manager module tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_GRAPHICS (1ULL << 38) | Graphics module tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_ARKUI (1ULL << 39) | ARKUI development framework tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_NOTIFICATION (1ULL << 40) | Notification module tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_MISC (1ULL << 41) | MISC module tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_MULTIMODAL_INPUT (1ULL << 42) | Multimodal input module tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_RPC (1ULL << 46) | RPC tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_ARK (1ULL << 47) | ARK tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_WINDOW_MANAGER (1ULL << 48) | Window manager tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_DISTRIBUTED_SCREEN (1ULL << 50) | Distributed screen tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_DISTRIBUTED_CAMERA (1ULL << 51) | Distributed camera tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_DISTRIBUTED_HARDWARE_FRAMEWORK (1ULL << 52) | Distributed hardware framework tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_GLOBAL_RESOURCE_MANAGER (1ULL << 53) | Global resource manager tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_DISTRIBUTED_HARDWARE_DEVICE_MANAGER (1ULL << 54) | Distributed hardware device manager tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_SAMGR (1ULL << 55) | SA tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_POWER_MANAGER (1ULL << 56) | Power manager tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_DISTRIBUTED_SCHEDULER (1ULL << 57) | Distributed scheduler tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_DISTRIBUTED_INPUT (1ULL << 59) | Distributed input tag.<br>**起始版本：** 12 |
-| HIDEBUG_TRACE_TAG_BLUETOOTH (1ULL << 60) | bluetooth tag.<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_FFRT (1ULL << 13) | FFRT任务标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_COMMON_LIBRARY (1ULL << 16) | 公共库子系统标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_HDF (1ULL << 18) | HDF子系统标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_NET (1ULL << 23) | 网络标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_NWEB (1ULL << 24) | NWeb标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_DISTRIBUTED_AUDIO (1ULL << 27) | 分布式音频标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_FILE_MANAGEMENT (1ULL << 29) | 文件管理标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_OHOS (1ULL << 30) | OHOS通用标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_ABILITY_MANAGER (1ULL << 31) | Ability Manager标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_CAMERA (1ULL << 32) | 相机模块标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_MEDIA (1ULL << 33) | 媒体模块标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_IMAGE (1ULL << 34) | 图像模块标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_AUDIO (1ULL << 35) | 音频模块标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_DISTRIBUTED_DATA (1ULL << 36) | 分布式数据管理器模块标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_GRAPHICS (1ULL << 38) | 图形模块标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_ARKUI (1ULL << 39) | ArkUI开发框架标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_NOTIFICATION (1ULL << 40) | 通知模块标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_MISC (1ULL << 41) | MISC模块标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_MULTIMODAL_INPUT (1ULL << 42) | 多模态输入模块标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_RPC (1ULL << 46) | RPC标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_ARK (1ULL << 47) | JSVM虚拟机标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_WINDOW_MANAGER (1ULL << 48) | 窗口管理器标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_DISTRIBUTED_SCREEN (1ULL << 50) | 分布式屏幕标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_DISTRIBUTED_CAMERA (1ULL << 51) | 分布式相机标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_DISTRIBUTED_HARDWARE_FRAMEWORK (1ULL << 52) | 分布式硬件框架标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_GLOBAL_RESOURCE_MANAGER (1ULL << 53) | 全局资源管理器标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_DISTRIBUTED_HARDWARE_DEVICE_MANAGER (1ULL << 54) | 分布式硬件设备管理器标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_SAMGR (1ULL << 55) | SA标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_POWER_MANAGER (1ULL << 56) | 电源管理器标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_DISTRIBUTED_SCHEDULER (1ULL << 57) | 分布式调度程序标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_DISTRIBUTED_INPUT (1ULL << 59) | 分布式输入标签。<br>**起始版本：** 12 |
+| HIDEBUG_TRACE_TAG_BLUETOOTH (1ULL << 60) | 蓝牙标签。<br>**起始版本：** 12 |
 
 ### 函数
 
@@ -94,7 +94,7 @@ Defines the code of the HiDebug module.
 
 | 名称 | 描述 |
 | -- | -- |
-| HiDebug_ThreadCpuUsage* HiDebug_ThreadCpuUsagePtr | Defines pointer of HiDebug_ThreadCpuUsage.<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug |
+| HiDebug_ThreadCpuUsage* HiDebug_ThreadCpuUsagePtr | 定义HiDebug_ThreadCpuUsage的指针类型。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug |
 
 ## 枚举类型说明
 

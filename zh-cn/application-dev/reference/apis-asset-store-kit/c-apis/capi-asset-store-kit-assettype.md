@@ -2,7 +2,7 @@
 
 ## 概述
 
-Provides the enums, structs, and error codes used in the Asset APIs.
+提供关键资产存储服务中通用的枚举值、数据结构和错误码。
 
 **系统能力：** SystemCapability.Security.Asset
 
@@ -12,4 +12,4 @@ Provides the enums, structs, and error codes used in the Asset APIs.
 
 | 名称 | 描述 |
 | -- | -- |
-| [asset_type.h](capi-asset-type-h.md) | Defines the enums, structs, and error codes used in the asset store service. |
+| [asset_type.h](capi-asset-type-h.md) | 定义关键资产存储服务中通用的枚举值、数据结构和错误码。 |

@@ -24,7 +24,7 @@ Defines the SCSI command (**TEST UNIT READY**) request struct, which is usually 
 
 | Name | Description |
 | -- | -- |
-| uint8_t control | Control** field, which specifies the control flags of a SCSI command, such as the priority and linked command. |
+| uint8_t control | Control** field used to specify the control information of the SCSI command. |
 | uint32_t timeout | Timeout interval, in milliseconds. |
 
 

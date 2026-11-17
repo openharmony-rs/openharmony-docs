@@ -6,7 +6,7 @@ typedef HiDebug_ThreadCpuUsage* HiDebug_ThreadCpuUsagePtr
 
 ## 概述
 
-Defines pointer of HiDebug_ThreadCpuUsage.
+定义HiDebug_ThreadCpuUsage的指针类型。
 
 <!--Device-typedef HiDebug_ThreadCpuUsage* HiDebug_ThreadCpuUsagePtr--><!--Device-typedef HiDebug_ThreadCpuUsage* HiDebug_ThreadCpuUsagePtr-End-->
 

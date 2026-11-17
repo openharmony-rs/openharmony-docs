@@ -2,7 +2,7 @@
 
 ## 概述
 
-hitraceChain provides APIs for cross-thread and cross-process distributed tracing. hiTraceChain generates a unique chain ID for a service process and passes it to various information (including application events, system events, and logs) specific to the service process. During debugging and fault locating, you can use the unique chain ID to quickly correlate various information related to the service process.
+HiTraceChain为开发者提供跨线程、跨进程的分布式跟踪能力。 HiTraceChain支持在业务执行流程中生成和传递唯一跟踪标识，在业务流程中输出的各类调试信息中 （包括HiTraceMeter打点、应用事件、hilog日志等）记录该跟踪标识。 在调试、问题定位过程中，开发人员可以通过该标识将本次业务流程端到端的各类信息快速关联起来。
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 

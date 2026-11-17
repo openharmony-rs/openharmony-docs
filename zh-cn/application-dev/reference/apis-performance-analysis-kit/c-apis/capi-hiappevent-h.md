@@ -20,7 +20,7 @@ HiAppEvent模块为应用开发者提供的事件订阅和事件打点函数定�
 | -- | -- | -- |
 | [HiAppEvent_AppEventInfo](capi-hiappevent-hiappevent-appeventinfo.md) | HiAppEvent_AppEventInfo | 单个事件信息，包含事件领域、事件名称、事件类型和事件携带的用JSON格式字符串表示的自定义参数列表。 |
 | [HiAppEvent_AppEventGroup](capi-hiappevent-hiappevent-appeventgroup.md) | HiAppEvent_AppEventGroup | 一组事件信息，用于管理和组织具有相同名称的事件信息。该结构体包含事件组的名称，按名称分组的单个事件信息数组，事件数组的长度。 |
-| [OH_HiAppEvent_ExternalLog](capi-hiappevent-oh-hiappevent-externallog.md) | OH_HiAppEvent_ExternalLog | The OH_HiAppEvent_ExternalLog 结构体用于描述外部日志信息，包括 文件路径、生成时间戳、文件大小、系统事件类型。 |
+| [OH_HiAppEvent_ExternalLog](capi-hiappevent-oh-hiappevent-externallog.md) | OH_HiAppEvent_ExternalLog | 该结构体用于描述外部日志信息，包括文件路径、生成时间戳、文件大小、系统事件类型。 |
 | [ParamListNode*](capi-hiappevent-paramlistnode8h.md) | ParamList | 事件参数列表节点。用于组织和管理事件参数列表信息，通过ParamListNode可以构建参数链表，支持多参数事件的参数传递。 |
 | [HiAppEvent_Watcher](capi-hiappevent-hiappevent-watcher.md) | HiAppEvent_Watcher | 接收应用事件的事件观察者。用于对应用事件进行监听和处理。 |
 | [HiAppEvent_Processor](capi-hiappevent-hiappevent-processor.md) | HiAppEvent_Processor | 应用事件上报的处理者。用于事件的上报和管理，开发者可自定义数据处理配置，满足不同的数据处理需求。 |
@@ -32,8 +32,8 @@ HiAppEvent模块为应用开发者提供的事件订阅和事件打点函数定�
 | -- | -- | -- |
 | [HiAppEvent_ErrorCode](#hiappevent_errorcode) | HiAppEvent_ErrorCode | 错误码定义。 |
 | [EventType](#eventtype) | EventType | 事件类型。建议开发者根据不同的使用场景选择不同的事件类型。 |
-| [OH_HiAppEvent_FrameworkType](#oh_hiappevent_frameworktype) | OH_HiAppEvent_FrameworkType | 应用框架类型。建议开发者根据实际的使用场景选择对应的应用框架类型。 |
 | [OH_HiAppEvent_SysEvent](#oh_hiappevent_sysevent) | OH_HiAppEvent_SysEvent | 系统事件类型。<br> *建议根据不同的使用场景选择不同的系统事件类型。 |
+| [OH_HiAppEvent_FrameworkType](#oh_hiappevent_frameworktype) | OH_HiAppEvent_FrameworkType | 应用框架类型。建议开发者根据实际的使用场景选择对应的应用框架类型。 |
 
 ### 函数
 
@@ -88,9 +88,9 @@ HiAppEvent模块为应用开发者提供的事件订阅和事件打点函数定�
 | [void OH_HiAppEvent_DestroyConfig(HiAppEvent_Config* config)](#oh_hiappevent_destroyconfig) | - | 销毁已创建的配置对象。注意：已创建的配置对象不再使用后，需要将其销毁，释放内存，防止内存泄漏，销毁后需要将对应指针置空。 |
 | [int OH_HiAppEvent_SetConfigItem(HiAppEvent_Config* config, const char* itemName, const char* itemValue)](#oh_hiappevent_setconfigitem) | - | 设置配置对象中的配置项。 |
 | [int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)](#oh_hiappevent_seteventconfig) | - | 事件相关的配置参数设置方法。<br> 不同的事件有不同的配置项，目前仅支持以下事件： **MAIN_THREAD_JANK**。 **MAIN_THREAD_JANK_V2**。 **EVENT_APP_CRASH**，从API version 24开始支持该事件。 |
-| [int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)](#oh_hiappevent_reportframeworkmemanomaly) | - | 报告应用框架内存占用异常的信息。 <br>该接口的调用频率限制为：1分钟最多能成功调用1次，超过频率限制会返回错误码HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED。 <br>当应用检测到应用框架内存占用异常，并且调用该接口返回操作成功时： <br>1. 若开发者已经订阅了事件领域domain为“HIVIEWDFX”，且事件名称names为“FW_MEM_ANOMALY”的应用事件，则应用中将会收到应用框架内存占用异常信息的回调。 <br>2. 若开发者未订阅该应用事件，则应用中将不会收到应用框架内存占用异常信息的回调。 |
 | [typedef void (\*OH_HiAppEvent_ExternalLogCapacityReachedCallback)(OH_HiAppEvent_ExternalLog* externalLogArr, uint32_t arrLen)](#oh_hiappevent_externallogcapacityreachedcallback) | OH_HiAppEvent_ExternalLogCapacityReachedCallback | OH_HiAppEvent_RegExternalLogCapacityReachedCallback函数的参数 当外部日志目录容量达到时，作为回调函数。 |
 | [int OH_HiAppEvent_RegExternalLogCapacityReachedCallback(OH_HiAppEvent_ExternalLogCapacityReachedCallback callback)](#oh_hiappevent_regexternallogcapacityreachedcallback) | - | 设置外部日志目录容量达到时的回调。 |
+| [int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)](#oh_hiappevent_reportframeworkmemanomaly) | - | 报告应用框架内存占用异常的信息。 <br>该接口的调用频率限制为：1分钟最多能成功调用1次，超过频率限制会返回错误码HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED。 <br>当应用检测到应用框架内存占用异常，并且调用该接口返回操作成功时： <br>1. 若开发者已经订阅了事件领域domain为“HIVIEWDFX”，且事件名称names为“FW_MEM_ANOMALY”的应用事件，则应用中将会收到应用框架内存占用异常信息的回调。 <br>2. 若开发者未订阅该应用事件，则应用中将不会收到应用框架内存占用异常信息的回调。 |
 
 ## 枚举类型说明
 
@@ -140,32 +140,10 @@ enum EventType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| FAULT = 1 | 故障事件类型 |
-| STATISTIC = 2 | 统计事件类型 |
-| SECURITY = 3 | 安全事件类型 |
-| BEHAVIOR = 4 | 行为事件类型 |
-
-### OH_HiAppEvent_FrameworkType
-
-```c
-enum OH_HiAppEvent_FrameworkType
-```
-
-**描述：**
-
-应用框架类型。建议开发者根据实际的使用场景选择对应的应用框架类型。
-
-<!--Device-OH_HiAppEvent_FrameworkType--><!--Device-OH_HiAppEvent_FrameworkType-End-->
-
-**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
-
-**起始版本：** 26.0.0
-
-| 枚举项 | 描述 |
-| -- | -- |
-| OH_FLUTTER_DART = 0 | Flutter_dart类型。<br>**起始版本：** 26.0.0 |
-| OH_REACT_NATIVE_HERMES = 1 | React_native_hermes类型。<br>**起始版本：** 26.0.0 |
-| OH_KMP_KOTLIN = 2 | Kmp_kotlin类型。<br>**起始版本：** 26.0.0 |
+| FAULT = 1 | 故障事件类型。<br>**起始版本：** 8 |
+| STATISTIC = 2 | 统计事件类型。<br>**起始版本：** 8 |
+| SECURITY = 3 | 安全事件类型。<br>**起始版本：** 8 |
+| BEHAVIOR = 4 | 行为事件类型。<br>**起始版本：** 8 |
 
 ### OH_HiAppEvent_SysEvent
 
@@ -191,6 +169,28 @@ enum OH_HiAppEvent_SysEvent
 | OH_ADDRESS_SANITIZER = 4 | 地址越界事件。<br>**起始版本：** 26.0.1 |
 | OH_APP_HICOLLIE = 5 | 任务执行超时事件。<br>**起始版本：** 26.0.1 |
 | OH_CPU_USAGE_HIGH = 6 | CPU高负载事件。<br>**起始版本：** 26.0.1 |
+
+### OH_HiAppEvent_FrameworkType
+
+```c
+enum OH_HiAppEvent_FrameworkType
+```
+
+**描述：**
+
+应用框架类型。建议开发者根据实际的使用场景选择对应的应用框架类型。
+
+<!--Device-OH_HiAppEvent_FrameworkType--><!--Device-OH_HiAppEvent_FrameworkType-End-->
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**起始版本：** 26.0.0
+
+| 枚举项 | 描述 |
+| -- | -- |
+| OH_FLUTTER_DART = 0 | Flutter_dart类型。<br>**起始版本：** 26.0.0 |
+| OH_REACT_NATIVE_HERMES = 1 | React_native_hermes类型。<br>**起始版本：** 26.0.0 |
+| OH_KMP_KOTLIN = 2 | Kmp_kotlin类型。<br>**起始版本：** 26.0.0 |
 
 
 ## 函数说明
@@ -1583,36 +1583,6 @@ int OH_HiAppEvent_SetEventConfig(const char* name, HiAppEvent_Config* config)
 | -- | -- |
 | int | <ul> <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode)：接口调用成功；</li> <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode)：设置的参数无效。</li> </ul>具体可参考[HiAppEvent_ErrorCode](capi-hiappevent-h.md#hiappevent_errorcode)。 |
 
-### OH_HiAppEvent_ReportFrameworkMemAnomaly()
-
-```c
-int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)
-```
-
-**描述：**
-
-报告应用框架内存占用异常的信息。 <br>该接口的调用频率限制为：1分钟最多能成功调用1次，超过频率限制会返回错误码HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED。 <br>当应用检测到应用框架内存占用异常，并且调用该接口返回操作成功时： <br>1. 若开发者已经订阅了事件领域domain为“HIVIEWDFX”，且事件名称names为“FW_MEM_ANOMALY”的应用事件，则应用中将会收到应用框架内存占用异常信息的回调。 <br>2. 若开发者未订阅该应用事件，则应用中将不会收到应用框架内存占用异常信息的回调。
-
-<!--Device-int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)--><!--Device-int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)-End-->
-
-**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
-
-**起始版本：** 26.0.0
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| enum [OH_HiAppEvent_FrameworkType](capi-hiappevent-h.md#oh_hiappevent_frameworktype) frameworkType | 应用框架类型。 |
-| const char* frameworkVersion | 应用框架版本。 |
-| const char* description | 应用框架内存占用异常的描述信息。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -- | -- |
-| int | <ul> <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) 操作成功。</li> <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) 参数值无效。</li> <li>[HIAPPEVENT_OPERATE_FAILED](capi-hiappevent-h.md#hiappevent_errorcode) 系统/应用事件写入失败或时间戳提取失败。</li> <li>[HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED](capi-hiappevent-h.md#hiappevent_errorcode) 报告频率超出。</li> </ul> |
-
 ### OH_HiAppEvent_ExternalLogCapacityReachedCallback()
 
 ```c
@@ -1663,5 +1633,35 @@ int OH_HiAppEvent_RegExternalLogCapacityReachedCallback(OH_HiAppEvent_ExternalLo
 | 类型 | 说明 |
 | -- | -- |
 | int | <ul> <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) 操作成功。</li> <li>[HIAPPEVENT_OPERATE_FAILED](capi-hiappevent-h.md#hiappevent_errorcode) 操作失败。</li> </ul> |
+
+### OH_HiAppEvent_ReportFrameworkMemAnomaly()
+
+```c
+int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)
+```
+
+**描述：**
+
+报告应用框架内存占用异常的信息。 <br>该接口的调用频率限制为：1分钟最多能成功调用1次，超过频率限制会返回错误码HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED。 <br>当应用检测到应用框架内存占用异常，并且调用该接口返回操作成功时： <br>1. 若开发者已经订阅了事件领域domain为“HIVIEWDFX”，且事件名称names为“FW_MEM_ANOMALY”的应用事件，则应用中将会收到应用框架内存占用异常信息的回调。 <br>2. 若开发者未订阅该应用事件，则应用中将不会收到应用框架内存占用异常信息的回调。
+
+<!--Device-int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)--><!--Device-int OH_HiAppEvent_ReportFrameworkMemAnomaly(enum OH_HiAppEvent_FrameworkType frameworkType, const char* frameworkVersion, const char* description)-End-->
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| enum [OH_HiAppEvent_FrameworkType](capi-hiappevent-h.md#oh_hiappevent_frameworktype) frameworkType | 应用框架类型。 |
+| const char* frameworkVersion | 应用框架版本。 |
+| const char* description | 应用框架内存占用异常的描述信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | <ul> <li>[HIAPPEVENT_SUCCESS](capi-hiappevent-h.md#hiappevent_errorcode) 操作成功。</li> <li>[HIAPPEVENT_INVALID_PARAM_VALUE](capi-hiappevent-h.md#hiappevent_errorcode) 参数值无效。</li> <li>[HIAPPEVENT_OPERATE_FAILED](capi-hiappevent-h.md#hiappevent_errorcode) 系统/应用事件写入失败或时间戳提取失败。</li> <li>[HIAPPEVENT_REPORT_FREQUENCY_EXCEEDED](capi-hiappevent-h.md#hiappevent_errorcode) 报告频率超出。</li> </ul> |
 
 

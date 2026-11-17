@@ -47,7 +47,7 @@ Defines the functions for obtaining and using a native buffer.
 | [int32_t OH_NativeBuffer_SetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_ColorSpace colorSpace)](#oh_nativebuffer_setcolorspace) | Set the color space of the OH_NativeBuffer. This interface is a non-thread-safe type interface. |
 | [int32_t OH_NativeBuffer_GetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_ColorSpace *colorSpace)](#oh_nativebuffer_getcolorspace) | Get the color space of the OH_NativeBuffer. This interface is a non-thread-safe type interface. |
 | [int32_t OH_NativeBuffer_SetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey, int32_t size, uint8_t *metadata)](#oh_nativebuffer_setmetadatavalue) | Set the metadata type of the OH_NativeBuffer. This interface is a non-thread-safe type interface. |
-| [int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey, int32_t *size, uint8_t **metadata)](#oh_nativebuffer_getmetadatavalue) | Set the metadata type of the OH_NativeBuffer. This interface is a non-thread-safe type interface. |
+| [int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey, int32_t *size, uint8_t **metadata)](#oh_nativebuffer_getmetadatavalue) | Get the metadata type of the OH_NativeBuffer. This interface is a non-thread-safe type interface. |
 | [int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, void **virAddr)](#oh_nativebuffer_mapwaitfence) | Provide direct cpu access to the OH_NativeBuffer in the process's address space and wait fence. If the interface returns OK, fenceFd does not need to be closed by the developer, Otherwise, the developer needs to close the fenceFd. This interface is a non-thread-safe type interface. |
 | [int32_t OH_NativeBuffer_WriteToParcel(OH_NativeBuffer* buffer, OHIPCParcel* parcel)](#oh_nativebuffer_writetoparcel) | Serialize <b>OH_NativeBuffer</b> object to the serialized <b>OHIPCParcel</b> object. This interface is a non-thread-safe type interface. |
 | [int32_t OH_NativeBuffer_ReadFromParcel(OHIPCParcel* parcel, OH_NativeBuffer** buffer)](#oh_nativebuffer_readfromparcel) | Deserialize data from the serialized <b>OHIPCParcel</b> object and rebuild <b>OH_NativeBuffer</b> object. This interface will cause an increase in the reference count of the <b>OH_NativeBuffer</b> instance. This interface needs to be used in conjunction with <b>OH_NativeBuffer_Unreference</b>, otherwise memory leaks will occur. This interface is a non-thread-safe type interface. |
@@ -465,7 +465,7 @@ int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffe
 
 **Description**
 
-Set the metadata type of the OH_NativeBuffer. This interface is a non-thread-safe type interface.
+Get the metadata type of the OH_NativeBuffer. This interface is a non-thread-safe type interface.
 
 <!--Device-int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey, int32_t *size, uint8_t **metadata)--><!--Device-int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey, int32_t *size, uint8_t **metadata)-End-->
 

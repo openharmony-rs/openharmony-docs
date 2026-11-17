@@ -6,7 +6,7 @@ typedef struct OH_HiAppEvent_ExternalLog {...} OH_HiAppEvent_ExternalLog
 
 ## Overview
 
-The OH_HiAppEvent_ExternalLog structure is used to describe external log information, including the file path, the generation timestamp, file size, and type of system event.
+This structure is used to describe external log information, including the file path, generation timestamp, file size, and system event type.
 
 <!--Device-struct OH_HiAppEvent_ExternalLog {...}--><!--Device-struct OH_HiAppEvent_ExternalLog {...}-End-->
 
@@ -24,9 +24,9 @@ The OH_HiAppEvent_ExternalLog structure is used to describe external log informa
 
 | Name | Description |
 | -- | -- |
-| const char* filePath | The log file path.<br>**Since**: 26.0.1 |
-| long long generationTs | The timestamp of the file generation in ms.<br>**Since**: 26.0.1 |
-| long fileSize | The file size in kb.<br>**Since**: 26.0.1 |
-| [OH_HiAppEvent_SysEvent](capi-hiappevent-h.md#oh_hiappevent_sysevent) event | The system event type.<br>**Since**: 26.0.1 |
+| const char* filePath | Log file path.<br>**Since**: 26.0.1 |
+| long long generationTs | Timestamp when a file is generated, in ms.<br>**Since**: 26.0.1 |
+| long fileSize | File size in KB.<br>**Since**: 26.0.1 |
+| [OH_HiAppEvent_SysEvent](capi-hiappevent-h.md#oh_hiappevent_sysevent) event | System event type.<br>**Since**: 26.0.1 |
 
 

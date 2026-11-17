@@ -2,7 +2,7 @@
 
 ## 概述
 
-Defines the enums, structs, and error codes used in the asset store service.
+定义关键资产存储服务中通用的枚举值、数据结构和错误码。
 
 **库：** libasset_ndk.z.so
 
@@ -21,7 +21,7 @@ Defines the enums, structs, and error codes used in the asset store service.
 | [Asset_Blob](capi-assettype-asset-blob.md) | Asset_Blob | 二进制数组类型，即不定长的字节数组。 |
 | [Asset_Value](capi-assettype-asset-value.md) | Asset_Value | 关键资产属性的值（内容）。 |
 | [Asset_Attr](capi-assettype-asset-attr.md) | Asset_Attr | 关键资产属性，属性由标签和值组成，以键值对的形式存在。 |
-| [Asset_Result](capi-assettype-asset-result.md) | Asset_Result | 单条关键资的产查询结果。 |
+| [Asset_Result](capi-assettype-asset-result.md) | Asset_Result | 单条关键资产的查询结果。 |
 | [Asset_ResultSet](capi-assettype-asset-resultset.md) | Asset_ResultSet | 多条关键资产的查询结果。 |
 | [Asset_SyncResult](capi-assettype-asset-syncresult.md) | Asset_SyncResult | 关键资产同步结果。 |
 
@@ -141,7 +141,7 @@ ASSET APIs使用的结果码。
 | -- | -- |
 | ASSET_SUCCESS = 0 | 表示操作成功。 |
 | ASSET_PERMISSION_DENIED = 201 | 表示权限校验失败，应用无权限使用该API，需要申请权限。 |
-| ASSET_INVALID_ARGUMENT = 401 | 表示参数错误。 |
+| ASSET_INVALID_ARGUMENT = 401 | 表示参数错误。可能原因： 1. 必选参数未指定。 2. 参数类型错误。 3. 参数校验失败。 |
 | ASSET_SERVICE_UNAVAILABLE = 24000001 | 表示关键资产服务不可用。 |
 | ASSET_NOT_FOUND = 24000002 | 表示未找到关键资产。 |
 | ASSET_DUPLICATED = 24000003 | 表示关键资产已存在。 |

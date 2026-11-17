@@ -45,4 +45,5 @@ Enumerates the attribute types that can be set by ArkUI on the native side.
 - [Scrollable Container Component](capi-arkui-nodeattributetype-scrollable-container-component.md)
 - [EmbeddedComponent](capi-arkui-nodeattributetype-embeddedcomponent.md)
 - [Picker](capi-arkui-nodeattributetype-picker.md)
+- [Picker](capi-arkui-nodeattributetype-picker.md)
 <!--DelEnd-->

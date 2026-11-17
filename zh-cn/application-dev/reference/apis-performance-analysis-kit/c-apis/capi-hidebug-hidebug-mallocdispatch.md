@@ -18,3 +18,91 @@ typedef struct HiDebug_MallocDispatch {...} HiDebug_MallocDispatch
 
 **所在头文件：** [hidebug_type.h](capi-hidebug-type-h.md)
 
+## 汇总
+
+### 成员函数
+
+| 名称 | 描述 |
+| -- | -- |
+| [void* (\*malloc)(size_t)](#malloc) | - | 开发者自定义malloc函数指针。用于替代系统默认的内存分配函数，在分配内存时记录分配信息或执行自定义逻辑，可用于内存泄漏追踪和性能监控。 |
+| [void* (\*calloc)(size_t, size_t)](#calloc) | - | 开发者自定义calloc函数指针。用于替代系统默认的calloc函数，在分配并初始化零内存时记录分配信息或执行自定义逻辑，可用于追踪大块内存分配和内存初始化监控。 |
+| [void* (\*realloc)(void*, size_t)](#realloc) | - | 开发者自定义realloc函数指针。用于替代系统默认的realloc函数，在调整已分配内存大小时记录操作信息或执行自定义逻辑，可用于监控内存重分配行为和内存碎片分析。 |
+| [void  (\*free)(void*)](#free) | - | 开发者自定义free函数指针。用于替代系统默认的free函数，在释放内存时记录释放信息，或执行自定义处理逻辑。使用时需确保传入的指针有效，避免重复释放或释放野指针。 |
+| [void* (\*mmap)(void*, size_t, int, int, int, off_t)](#mmap) | - | 开发者自定义mmap函数指针。用于替代系统默认的mmap函数，在内存映射时记录映射信息或执行自定义逻辑，可用于监控大块内存映射操作和共享内存使用情况。 |
+| [int   (\*munmap)(void*, size_t)](#munmap) | - | 开发者自定义munmap函数指针。用于替代系统默认的munmap函数，在取消内存映射时记录操作信息或执行自定义逻辑，可配合mmap函数进行映射内存的生命周期管理。 |
+
+## 成员函数说明
+
+### malloc()
+
+```c
+void* (*malloc)(size_t)
+```
+
+**描述：**
+
+开发者自定义malloc函数指针。用于替代系统默认的内存分配函数，在分配内存时记录分配信息或执行自定义逻辑，可用于内存泄漏追踪和性能监控。
+
+<!--Device-void* (*malloc)(size_t)--><!--Device-void* (*malloc)(size_t)-End-->
+
+### calloc()
+
+```c
+void* (*calloc)(size_t, size_t)
+```
+
+**描述：**
+
+开发者自定义calloc函数指针。用于替代系统默认的calloc函数，在分配并初始化零内存时记录分配信息或执行自定义逻辑，可用于追踪大块内存分配和内存初始化监控。
+
+<!--Device-void* (*calloc)(size_t, size_t)--><!--Device-void* (*calloc)(size_t, size_t)-End-->
+
+### realloc()
+
+```c
+void* (*realloc)(void*, size_t)
+```
+
+**描述：**
+
+开发者自定义realloc函数指针。用于替代系统默认的realloc函数，在调整已分配内存大小时记录操作信息或执行自定义逻辑，可用于监控内存重分配行为和内存碎片分析。
+
+<!--Device-void* (*realloc)(void*, size_t)--><!--Device-void* (*realloc)(void*, size_t)-End-->
+
+### free()
+
+```c
+void  (*free)(void*)
+```
+
+**描述：**
+
+开发者自定义free函数指针。用于替代系统默认的free函数，在释放内存时记录释放信息，或执行自定义处理逻辑。使用时需确保传入的指针有效，避免重复释放或释放野指针。
+
+<!--Device-void (*free)(void*)--><!--Device-void (*free)(void*)-End-->
+
+### mmap()
+
+```c
+void* (*mmap)(void*, size_t, int, int, int, off_t)
+```
+
+**描述：**
+
+开发者自定义mmap函数指针。用于替代系统默认的mmap函数，在内存映射时记录映射信息或执行自定义逻辑，可用于监控大块内存映射操作和共享内存使用情况。
+
+<!--Device-void* (*mmap)(void*, size_t, int, int, int, off_t)--><!--Device-void* (*mmap)(void*, size_t, int, int, int, off_t)-End-->
+
+### munmap()
+
+```c
+int   (*munmap)(void*, size_t)
+```
+
+**描述：**
+
+开发者自定义munmap函数指针。用于替代系统默认的munmap函数，在取消内存映射时记录操作信息或执行自定义逻辑，可配合mmap函数进行映射内存的生命周期管理。
+
+<!--Device-int (*munmap)(void*, size_t)--><!--Device-int (*munmap)(void*, size_t)-End-->
+
+

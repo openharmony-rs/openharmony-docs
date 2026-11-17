@@ -2,7 +2,7 @@
 
 ## Overview
 
-Provides USB DDK types and declares the macros, enumerated variables, and data structures required by the USB DDK APIs.
+Provides USB DDK APIs to open and close USB interfaces, perform non-isochronous and isochronous data transfer over USB pipes, and implement control transfer and interrupt transfer. This module is applicable to scenarios where underlying interaction and data communication with USB devices are required, helping you efficiently develop USB device drivers.
 
 **System capability**: SystemCapability.Driver.USB.Extension
 
