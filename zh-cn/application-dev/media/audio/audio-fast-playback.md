@@ -135,7 +135,13 @@ status: active
     // 查询当前设备是否支持超低时延播放。
     bool supported = false;
     OH_AudioCommon_Result result = OH_AudioStreamManager_IsUltraFastPlaybackSupported(
-        audioStreamManager, &streamInfo, AUDIOSTREAM_USAGE_MUSIC, &supported);
+    <!-- @[Render_GetUltraFastStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+    
+    ``` C++
+    // 查询音频流实际运行的低时延状态。
+    OH_AudioStream_FastStatus fastStatus = AUDIOSTREAM_FASTSTATUS_NORMAL;
+    OH_AudioStream_Result result = OH_AudioRenderer_GetFastStatus(g_ultraAudioRenderer, &fastStatus);
+    ```
     ```
 
 4. 查询低时延模式实际运行状态。
