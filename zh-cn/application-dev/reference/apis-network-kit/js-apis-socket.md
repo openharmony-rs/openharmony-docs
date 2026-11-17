@@ -4981,7 +4981,7 @@ client.connect(connectOpt).then(() => {
   client.getExtraOptions().then((options : socket.ExtraOptionsBase) => {
     console.info('options: ' + JSON.stringify(options));
   }).catch((err: Object) => {
-    console.error('setExtraOptions fail: ' + JSON.stringify(err));
+    console.error('getExtraOptions fail: ' + JSON.stringify(err));
   });
 }).catch((err: Object) => {
   console.error('connect fail: ' + JSON.stringify(err));
