@@ -935,3 +935,31 @@ After obtaining this permission, applications can query the physical disk inform
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | cars | TVs
 
 **Since**: 26.0.1
+
+## ohos.permission.REGISTER_DAEMON_SERVICE
+ 
+Allows an application to register and unregister daemon services.
+
+With this permission, the application can register daemon services. Applications declaring this permission cannot be released on AppGallery and can only be used in free distribution scenarios.
+ 
+**Permission level**: normal
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: PCs/2-in-1 devices | tablets
+ 
+**Valid since**: 26.1.0
+ 
+## ohos.permission.USE_DAEMON_SERVICE
+ 
+Allows an application to use daemon services.
+
+With this permission, the application can start and connect to daemon services.
+ 
+**Permission level**: normal
+ 
+**Authorization mode**: system_grant
+ 
+**Supported devices**: PCs/2-in-1 devices | tablets
+ 
+**Valid since**: 26.1.0

@@ -1024,3 +1024,20 @@ Allows a device management application to control user behavior.
 **Supported devices**: PCs/2-in-1 devices | tablets
  
 **Since**: 26.1.0
+
+## ohos.permission.ENTERPRISE_REGISTER_DAEMON_SERVICE
+ 
+Allows an MDM application to register and unregister daemon services.
+ 
+<!--RP1--><!--RP1End-->
+
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+ 
+**Supported devices**: PCs/2-in-1 devices | tablets
+ 
+**Valid since**: 26.1.0

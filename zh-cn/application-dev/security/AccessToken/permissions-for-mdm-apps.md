@@ -957,7 +957,7 @@ MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)�
 **支持设备**：PC/2in1
 
 **起始版本**：26.0.1
- 
+
 ## ohos.permission.ENTERPRISE_ATTEST_KEY
  
 允许设备管理应用使用非匿名密钥证明能力，使用设备证书签发密钥证明证书链。
@@ -996,6 +996,23 @@ MDM应用的详细介绍，请参考[MDM Kit简介](../../mdm/mdm-kit-intro.md)�
  
 允许设备管理应用管控用户行为。
  
+<!--RP1--><!--RP1End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+<!--Del-->
+**是否支持证书授权**：true<!--DelEnd-->
+ 
+**支持设备**：PC/2in1 | Tablet
+ 
+**起始版本**：26.1.0
+
+## ohos.permission.ENTERPRISE_REGISTER_DAEMON_SERVICE
+ 
+允许MDM应用注册、取消注册daemon服务。
+
 <!--RP1--><!--RP1End-->
  
 **权限级别**：system_basic

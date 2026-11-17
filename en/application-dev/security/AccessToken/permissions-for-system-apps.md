@@ -9930,3 +9930,19 @@ Allows an application to manage mouse cursor styles.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
 
 **Since**: 26.1.0
+
+## ohos.permission.MANAGE_DAEMON_SERVICE
+ 
+Allows a system application to manage daemon services.
+
+With this permission, the system application can query daemon service information and set their enablement status.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: PCs/2-in-1 devices | tablets
+ 
+**Valid since**: 26.1.0
