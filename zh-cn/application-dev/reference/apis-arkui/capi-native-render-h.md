@@ -198,6 +198,7 @@
 | [ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromOvalShape(ArkUI_RectShapeOption* shape)](#oh_arkui_rendernodeutils_createrendernodeclipoptionfromovalshape) | - | 从椭圆形形状创建裁剪。|
 | [ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromCommandPath(ArkUI_CommandPathOption* path)](#oh_arkui_rendernodeutils_createrendernodeclipoptionfromcommandpath) | - | 从自定义绘制路径创建裁剪。|
 | [void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption(ArkUI_RenderNodeClipOption* option)](#oh_arkui_rendernodeutils_disposerendernodeclipoption) | - | 释放渲染节点裁剪。|
+| [int32_t OH_ArkUI_RenderNodeUtils_GetRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle* renderNode)](#oh_arkui_rendernodeutils_getrendernode) | - | 获取已被接纳为附属节点的目标节点的RenderNode。|
 | [void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionValue(ArkUI_RectShapeOption* option, float x, float y, float width, float height)](#oh_arkui_rendernodeutils_setrectshapeoptionvalue) | - | 设置矩形形状选项的边框矩形范围。|
 | [void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionValue(ArkUI_RoundRectShapeOption* option, float x, float y, float width, float height)](#oh_arkui_rendernodeutils_setroundrectshapeoptionvalue) | - | 设置圆角矩形形状选项的边框矩形范围。|
 | [ArkUI_RenderBlurStyleOption* OH_ArkUI_RenderNodeUtils_CreateBlurStyleOption()](#oh_arkui_rendernodeutils_createblurstyleoption) | - | 创建一个模糊样式对象。|
