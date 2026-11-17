@@ -689,7 +689,7 @@ import { UIAbility, wantAgent, WantAgent } from '@kit.AbilityKit';
 // 在原子化服务中，请删除WantAgent导入
 
 export default class EntryAbility extends UIAbility {
-  notificationId: number = 0; // 保存通知Id
+  notificationId: number = 0; // 保存通知ID
 
   onCreate() {
     let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -781,7 +781,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { wantAgent, WantAgent, AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
-  notificationId: int = 0; // 保存通知Id
+  notificationId: int = 0; // 保存通知ID
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     let wantAgentInfo: wantAgent.WantAgentInfo = {
       // 点击通知后，将要执行的动作列表
@@ -826,7 +826,7 @@ export default class EntryAbility extends UIAbility {
 
 startBackgroundRunning(context: Context, request: ContinuousTaskRequest): Promise&lt;ContinuousTaskNotification&gt;
 
-申请长时任务，一个UIAbility（FA模型则为ServiceAbility）下支持通过本接口申请多个长时任务，使用Promise异步回调。通过本接口申请长时任务时，支持与已存在的长时任务合并通知，具体请参考[ContinuousTaskRequest](#continuoustaskrequest21)。<br>同一时间最多可存在10个长时任务，长时任务申请成功后，会有通知栏消息，没有提示音。<br>如果通过本接口申请的一个长时任务中同时包含多种类型，且包含数据传输类型，则在通知栏会发送2个长时任务通知，一个为数据传输类型，另一个为其他类型的合并通知。任意一个通知被移除时，长时任务取消，且另一个通知也会同步移除。接口返回的长时任务通知Id为数据传输类型的Id，主要用于数据传输的进度更新。<br>从API版本26.0.1开始，通过本接口申请的长时任务，包含数据传输类型时，可以通过[updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress)接口更新长时任务通知，可选择通知是否有进度环，进度为100时是否响铃。
+申请长时任务，一个UIAbility（FA模型则为ServiceAbility）下支持通过本接口申请多个长时任务，使用Promise异步回调。通过本接口申请长时任务时，支持与已存在的长时任务合并通知，具体请参考[ContinuousTaskRequest](#continuoustaskrequest21)。<br>同一时间最多可存在10个长时任务，长时任务申请成功后，会有通知栏消息，没有提示音。<br>如果通过本接口申请的一个长时任务中同时包含多种类型，且包含数据传输类型，则在通知栏会发送2个长时任务通知，一个为数据传输类型，另一个为其他类型的合并通知。任意一个通知被移除时，长时任务取消，且另一个通知也会同步移除。接口返回的长时任务通知ID为数据传输类型的ID，主要用于数据传输的进度更新。<br>从API版本26.0.1开始，通过本接口申请的长时任务，包含数据传输类型时，可以通过[updateDataTransferProgress()](#backgroundtaskmanagerupdatedatatransferprogress)接口更新长时任务通知，可选择通知是否有进度环，进度为100时是否响铃。
 
 **需要权限：** ohos.permission.KEEP_BACKGROUND_RUNNING
 
@@ -876,7 +876,7 @@ import { UIAbility, wantAgent, WantAgent } from '@kit.AbilityKit';
 // 在原子化服务中，请删除WantAgent导入
 
 export default class EntryAbility extends UIAbility {
-  notificationId: number = 0; // 保存通知id
+  notificationId: number = 0; // 保存通知ID
   continuousTaskId: number | undefined = -1;
   onCreate() {
     let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -937,7 +937,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { wantAgent, WantAgent, AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
-  notificationId: int = 0; // 保存通知id
+  notificationId: int = 0; // 保存通知ID
   continuousTaskId: int | undefined = -1;
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -1117,7 +1117,7 @@ import { wantAgent, WantAgent, AbilityConstant, UIAbility, Want } from '@kit.Abi
 // 在原子化服务中，请删除WantAgent导入
  
 export default class EntryAbility extends UIAbility {
-  continuousTaskId : int | undefined = -1; // 保存长时任务Id
+  continuousTaskId : int | undefined = -1; // 保存长时任务ID
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     let wantAgentInfo: wantAgent.WantAgentInfo = {
       // 请开发者替换为实际被拉起应用的bundleName和abilityName
@@ -1600,7 +1600,7 @@ import { UIAbility, wantAgent, WantAgent } from '@kit.AbilityKit';
 // 在原子化服务中，请删除WantAgent导入
 
 export default class EntryAbility extends UIAbility {
-  notificationId: number = 0; // 保存通知id
+  notificationId: number = 0; // 保存通知ID
   continuousTaskId: number | undefined = -1; // 长时任务ID
   onCreate() {
     let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -1753,7 +1753,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { UIAbility, wantAgent, WantAgent } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
-  continuousTaskId: number = -1; // 保存长时任务Id
+  continuousTaskId: number = -1; // 保存长时任务ID
   onCreate() {
     let wantAgentInfo: wantAgent.WantAgentInfo = {
       // 点击通知后，将要执行的动作列表
@@ -1821,7 +1821,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { wantAgent, WantAgent, AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
-  continuousTaskId : int = -1; // 保存长时任务Id
+  continuousTaskId : int = -1; // 保存长时任务ID
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     let wantAgentInfo: wantAgent.WantAgentInfo = {
       // 点击通知后，将要执行的动作列表
@@ -2979,7 +2979,7 @@ export default class EntryAbility extends UIAbility {
 | wantAgent | [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否    | 否    | 通知参数，用于指定点击长时任务通知后跳转的界面。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24  |
 | combinedTaskNotification | boolean   | 否    | 是    | 是否合并通知，true表示合并，false表示不合并，默认为false。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**说明：** 该属性在[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口中不生效，如需在已有任务上合并通知，请重新申请该任务，并在申请时设置为支持合并。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24 |
 | continuousTaskId | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 是    | 长时任务ID，默认值为-1。<br>**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 <br>**说明：** 如果combinedTaskNotification取值为true，则该值为必填项，且必须是存在的ID。<br>作为[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)接口入参时，该属性必填，且必须是存在的ID。<br>可以通过[getAllContinuousTasks](#backgroundtaskmanagergetallcontinuoustasks20-1)接口查看当前所有长时任务信息。<br> **ArkTS-Dyn起始版本：** 21 <br> **ArkTS-Sta起始版本：** 24    |
-| progressInfo | [ProgressInfo](#progressinfo)   | 否    | 是    | 长时任务通知进度信息。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**说明：** 该属性仅在通过[startcontinuoustask()](#backgroundtaskmanagerstartcontinuoustask)接口申请长时任务，且长时任务类型包含数据传输类型[MODE_DATA_TRANSFER](#backgroundtaskmode21)时生效。<br>在[updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21)接口中使用该属性报错，错误码为[9800006](errorcode-backgroundTaskMgr.md#9800006-长时任务通知信息校验失败)。<!--RP1--><!--RP1End--> <br> **ArkTS-Dyn起始版本：** 26.0.1 <br> **ArkTS-Sta起始版本：** 26.0.1  |
+| progressInfo | [ProgressInfo](#progressinfo)   | 否    | 是    | 长时任务通知进度信息，不传入时不设置进度。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**说明：** 该属性仅在通过[startcontinuoustask()](#backgroundtaskmanagerstartcontinuoustask)接口申请长时任务，且长时任务类型包含数据传输类型[MODE_DATA_TRANSFER](#backgroundtaskmode21)时生效。<br>在[updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21)接口中使用该属性报错，错误码为[9800006](errorcode-backgroundTaskMgr.md#9800006-长时任务通知信息校验失败)。<!--RP1--><!--RP1End--> <br> **ArkTS-Dyn起始版本：** 26.0.1 <br> **ArkTS-Sta起始版本：** 26.0.1  |
 
 ### isModeSupported<sup>21+</sup>
 
@@ -3084,7 +3084,7 @@ requestAuthFromUser(context: Context, callback: Callback&lt;UserAuthResult&gt;):
 
 | 参数名      | 类型                                                  | 必填   | 说明           |
 | -------- |-----------------------------------------------------| ---- |--------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请。 |
 | callback | Callback&lt;[UserAuthResult](#userauthresult22)&gt; | 是    | 用户操作后，返回授权结果。 |
 
 **错误码：**
@@ -3179,7 +3179,7 @@ requestAuthFromUserByDialog(context: Context, callback: Callback&lt;UserAuthResu
 
 | 参数名      | 类型                                                  | 必填   | 说明           |
 | -------- |-----------------------------------------------------| ---- |--------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。 |
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请。 |
 | callback | Callback&lt;[UserAuthResult](#userauthresult22)&gt; | 是    | 用户操作后，返回授权结果。 |
 
 **错误码：**
@@ -3287,7 +3287,7 @@ checkSpecialScenarioAuth(context: Context): Promise&lt;UserAuthResult&gt;
 
 | 参数名      | 类型                                                  | 必填   | 说明           |
 | -------- |-----------------------------------------------------| ---- |--------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请。|
 
 **返回值：**
 
@@ -3377,7 +3377,7 @@ checkSpecialScenarioAuthResult(context: Context): Promise&lt;UserAuthResult&gt;
 
 | 参数名      | 类型                                                  | 必填   | 说明           |
 | -------- |-----------------------------------------------------| ---- |--------------|
-| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请；FA模型中，仅支持ServiceAbility申请。|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | 是    | 应用运行的上下文。<br>Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 <br> **说明：** Stage模型中，仅支持UIAbility申请。|
 
 **返回值：**
 
@@ -3447,7 +3447,7 @@ class EntryAbility extends UIAbility {
 
 ## BackgroundTaskMode<sup>21+</sup>
 
-长时任务主类型。通常与长时任务子类型[BackgroundTaskSubmode](#backgroundtasksubmode21)配合使用，对照关系请参考[长时任务主类型与子类型对照表](js-apis-resourceschedule-backgroundTaskManager-continuousTaskTypeMapping.md)，两者共同作为API version 21新增的申请[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)、更新[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)长时任务接口入参，用于指定长时任务类型。<br>仅当主类型为MODE_SPECIAL_SCENARIO_PROCESSING特殊场景类型，或非PC/2in1设备主类型为MODE_TASK_KEEPING计算任务时，调用长时任务相关接口时需同时申请ACL权限[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)，其他场景无需申请该权限。
+长时任务主类型。通常与长时任务子类型[BackgroundTaskSubmode](#backgroundtasksubmode21)配合使用，对照关系请参考[长时任务主类型与子类型对照表](js-apis-resourceschedule-backgroundTaskManager-continuousTaskTypeMapping.md)，两者共同作为API version 21新增的申请[startBackgroundRunning](#backgroundtaskmanagerstartbackgroundrunning21)、更新[updateBackgroundRunning](#backgroundtaskmanagerupdatebackgroundrunning21)长时任务接口入参，用于指定长时任务类型。<br>仅当主类型为MODE_SPECIAL_SCENARIO_PROCESSING特殊场景类型（从API version 24开始所需ACL权限变更为[ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_special_scenario)，API version 23及之前版本为[ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system)），或非PC/2in1设备主类型为MODE_TASK_KEEPING计算任务时，调用长时任务相关接口时需同时申请相应ACL权限，其他场景无需申请该权限。
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
