@@ -5,13 +5,14 @@
 <!--Designer: @tsj_20201-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=59e7773ac0ad5cb4923625e28815dece9f2c16e6 translatedAt=2026-09-18T01:11:24.076Z pushedAt=2026-09-18T01:17:11.872Z -->
+<!-- md-trans-meta sourceCommit=48d49a058260f3fbff1ed5bef0fc1ec1339e9bd1 translatedAt=2026-11-17T03:21:58.462Z pushedAt=2026-11-17T03:54:08.877Z nl=1 -->
 
 - ArkTS API<!--arkui-arkts-->
   - UI<!--ui-->
     - [@ohos.animator (Animator)](js-apis-animator.md)
     - [@ohos.arkui.componentSnapshot (Component Snapshot)](js-apis-arkui-componentSnapshot.md)
     - [@ohos.arkui.componentUtils (componentUtils)](js-apis-arkui-componentUtils.md)
+    - [@ohos.arkui.dialog (Dialog Box)](js-apis-dialog.md)
     - [@ohos.arkui.dragController (DragController)](js-apis-arkui-dragController.md)
     - [@ohos.arkui.drawableDescriptor (DrawableDescriptor)](js-apis-arkui-drawableDescriptor.md)
     - [@ohos.arkui.inspector (Layout Callback)](js-apis-arkui-inspector.md)
@@ -29,6 +30,7 @@
       - [Class (ComponentUtils)](arkts-apis-uicontext-componentutils.md)
       - [Class (ContextMenuController)](arkts-apis-uicontext-contextmenucontroller.md)
       - [Class (CursorController)](arkts-apis-uicontext-cursorcontroller.md)
+      - [Class (DialogPresenter)](arkts-apis-uicontext-dialogpresenter.md)
       - [Class (DragController)](arkts-apis-uicontext-dragcontroller.md)
       - [Class (DynamicSyncScene)](arkts-apis-uicontext-dynamicsyncscene.md)
       - [Class (FocusController)](arkts-apis-uicontext-focuscontroller.md)
@@ -88,6 +90,7 @@
     - [getContext](js-apis-getContext.md)
     - [postCardAction](js-apis-postCardAction.md)
     <!--Del-->
+    - [@ohos.arkui.dialog (Dialog Box) (System API)](js-apis-dialog-sys.md)
     - [@ohos.arkui.drawableDescriptor (DrawableDescriptor) (System API)](js-apis-arkui-drawableDescriptor-sys.md)
     - [@ohos.arkui.performanceMonitor (Performance Monitoring) (System API)](js-apis-arkui-performancemonitor-sys.md)
     - [@ohos.arkui.uiExtension (uiExtension) (System API)](js-apis-arkui-uiExtension-sys.md)
@@ -680,6 +683,7 @@
     - [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
   - Header Files<!--arkui-headerfile-->
     - [common_attributes.h](capi-common-attributes-h.md)
+    - [common_type.h](capi-common-type-h.md)
     - [drag_and_drop.h](capi-drag-and-drop-h.md)
     - [drawable_descriptor.h](capi-drawable-descriptor-h.md)
     - [image.h](capi-image-h.md)
@@ -720,6 +724,7 @@
     - [native_render.h](capi-native-render-h.md)
     - [grid.h](capi-grid-h.md)
     - [list.h](capi-list-h.md)
+    - [list_item.h](capi-list-item-h.md)
     - [native_type.h](capi-native-type-h.md)
     - [native_type_visual.h](capi-native-type-visual-h.md)
     - [native_xcomponent_key_event.h](capi-native-xcomponent-key-event-h.md)
@@ -775,6 +780,10 @@
     - [ArkUI_AnimatorEvent](capi-arkui-nativemodule-arkui-animatorevent.md)
     - [ArkUI_AnimatorOnFrameEvent](capi-arkui-nativemodule-arkui-animatoronframeevent.md)
     - [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md)
+    - [OH_ArkUI_PropertyAnimation*](capi-arkui-nativemodule-arkui-propertyanimation8h.md)
+    - [OH_ArkUI_KeyframeAnimation*](capi-arkui-nativemodule-arkui-keyframeanimation8h.md)
+    - [OH_ArkUI_PathAnimation*](capi-arkui-nativemodule-arkui-pathanimation8h.md)
+    - [OH_ArkUI_AnimationGroup*](capi-arkui-nativemodule-arkui-animationgroup8h.md)
     - [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md)
     - [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md)
     - [ArkUI_NativeDialogAPI_3](capi-arkui-nativemodule-arkui-nativedialogapi-3.md)
@@ -817,7 +826,7 @@
     - [OH_NativeXComponent_ExtraMouseEventInfo](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-extramouseeventinfo.md)
     - [OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)
     - [OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)
-    - [OHNativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)
+    - [NativeWindow](capi-oh-nativexcomponent-native-xcomponent-nativewindow.md)
     - [ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)
     - [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)
     - [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md)
@@ -849,7 +858,6 @@
     - [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md)
     - [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)
     - [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)
-    - [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md)
     - [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md)
     - [ArkUI_NativeDialog*](capi-arkui-nativemodule-arkui-nativedialog8h.md)
     - [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)
@@ -955,7 +963,7 @@
     - [ArkUI_TouchTestInfo](capi-arkui-nativemodule-arkui-touchtestinfo.md)
     - [ArkUI_TouchTestInfoItem](capi-arkui-nativemodule-arkui-touchtestinfoitem.md)
     - [ArkUI_TouchTestInfoItem*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandle.md)
-    - [ArkUI_TouchTestInfoItemHandle*](capi-arkui-nativemodule-arkui-touchtestinfoitemhandlearray.md)
+    - [ArkUI_TouchTestInfoItemHandle*](capi-arkui-eventmodule-arkui-touchtestinfoitemhandle8h.md)
     - [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)
     - [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)
     - [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)
@@ -977,6 +985,7 @@
     - [ArkUI_ParallelGestureEvent](capi-arkui-nativemodule-arkui-parallelgestureevent.md)
     - [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)
     - [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)
+    - [OH_ArkUI_NativeModule_LineSpacingOptions](capi-arkui-nativemodule-oh-arkui-nativemodule-linespacingoptions.md)
 - Error Codes<!--arkui-arkts-errcode-->
   - UI<!--arkui-ui-arkts-errcode-->
     - [API Call Error Codes](errorcode-internal.md)
@@ -1008,10 +1017,9 @@
     - [DrawableDescriptor Error Codes](errorcode-drawable-descriptor.md)
     - [Environment Variable Error Codes](errorcode-env.md)
     - [Color Inversion Error Codes](errorcode-force-dark.md)
+    - [Animation and Visual Effect Error Codes](errorcode-animation.md)
   - Graphics<!--arkui-graphics-images-arkts-errcode-->
     - [Display Error Codes](errorcode-display.md)
     - [Window Error Codes](errorcode-window.md)
   - UI Compilation<!--arkui-compile-arkts-errcode-->
     - [Compilation Error Codes](errorcode-arkui-compile.md)
-
-<!--no_check-->

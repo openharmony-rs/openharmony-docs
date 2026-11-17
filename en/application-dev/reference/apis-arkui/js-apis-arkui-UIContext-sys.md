@@ -5,8 +5,11 @@
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=80940a9514e9d2915ef56509a2953f81ca7ff77d translatedAt=2026-11-17T03:30:11.357Z pushedAt=2026-11-17T07:18:56.178Z nl=1 -->
 
-In the stage model, a window stage or window can use the **loadContent** API to load pages, create a UI instance, and render page content to the associated window. Naturally, UI instances and windows are associated on a one-by-one basis. Some global UI APIs are executed in the context of certain UI instances. When calling these APIs, you must identify the UI context, and consequently UI instance, by tracing the call chain. If these APIs are called on a non-UI page or in some asynchronous callback, the current UI context may fail to be identified, resulting in API execution errors.
+In the stage model, a window stage or window can use the [loadContent](arkts-apis-window-Window.md#loadcontent9) API to load pages, create a UI instance, and render page content to the associated window. Therefore, UI instances and windows are associated on a one-to-one basis. Some global UI APIs are executed in the context of certain UI instances. When calling these APIs, you must identify the UI context, and consequently UI instance, by tracing the call chain. If these APIs are called on a non-UI page or in some asynchronous callback not bound to the current UI context, the current UI context may fail to be identified, resulting in API execution errors.
+
+**UIContext** is used to obtain the context associated with a specific UI instance, allowing you to call context-related UI APIs on the corresponding UI instance. This module provides system capabilities such as component dimming and freezing, keyboard style configuration, resource cache clearing, background luminance sampling, image memory reclamation for invisible **Image** components, and component snapshot.
 
 > **NOTE**
 >
@@ -42,7 +45,7 @@ Sets the dynamic dimming degree of the component.
 | Name| Type| Mandatory| Description|
 | ------- | ------- | ------- | ------- |
 | id | string | Yes| Component ID.|
-| value | number | Yes| Dynamic dimming degree of the component. The value range is [0, 1]. The component is brighter with a larger value.|
+| value | number | Yes | Dynamic dimming degree of the component. The value range is [0, 1]. The component is brighter with a larger value. |
 
 **Example**
 
@@ -65,7 +68,7 @@ struct Index {
   }
 }
 ```
-![api-switch-overview](../apis-arkui/figures/dynamicDinning.gif)
+![api-switch-overview](../apis-arkui/figures/dynamicDimming.gif)
 
 ### freezeUINode<sup>18+</sup>
 
@@ -73,7 +76,7 @@ freezeUINode(id: string, isFrozen: boolean): void
 
 Sets whether to freeze a specific component by **id** to prevent it from being marked as dirty and triggering layout updates.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -84,7 +87,7 @@ Sets whether to freeze a specific component by **id** to prevent it from being m
 | Name    | Type   | Mandatory  | Description     |
 | --- | --- | --- | --- |
 | id | string | Yes| ID of the target component.|
-| isFrozen | boolean | Yes| Whether to freeze the component.<br>The value **true** means to freeze the component, and **false** means the opposite.<br>Default value: **false**.|
+| isFrozen | boolean | Yes | Whether to freeze the component.<br>The value **true** means to freeze the component, and **false** means the opposite.<br>The default value is **false**. If `undefined` is passed, it is processed as **false**.|
 
 **Error codes**
 
@@ -140,7 +143,7 @@ struct Index {
         })
         .onWillShow(() => {
           // When the TabContent with id 'tab2' is shown, set the freeze state of the node with id 'tab1' to true.
-          // Change the width of the Column node in the tab1 node based on the state variable. Because tab1 is in frozen state, dirty state marking stops at the TabContent level, and no layout update will be triggered.
+          // Change the width of the Column node in the tab1 node based on the state variable. Because tab1 is in frozen state, dirty marking stops at the TabContent level, and no layout update will be triggered.
           this.getUIContext().freezeUINode('tab1', true);
           this.columnWidth1 = '50%';
           // Configure a delayed task.
@@ -149,7 +152,7 @@ struct Index {
             this.getUIContext().freezeUINode('tab1', false);
             // Update the width of the Column node in the tab1 node through the state variable: Set this.columnWidth1 to '20%'.
             this.columnWidth1 = '20%';
-          }, 5000)
+          }, 5000);
         })
 
          TabContent() {
@@ -193,7 +196,7 @@ freezeUINode(uniqueId: number, isFrozen: boolean): void
 
 Sets whether to freeze a specific component by **uniqueId** to prevent it from being marked as dirty and triggering layout updates.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Model restriction**: This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -204,7 +207,7 @@ Sets whether to freeze a specific component by **uniqueId** to prevent it from b
 | Name    | Type   | Mandatory  | Description     |
 | --- | --- | --- | --- |
 | uniqueId | number | Yes| Unique ID of the component.|
-| isFrozen | boolean | Yes| Whether to freeze the component.<br>The value **true** means to freeze the component, and **false** means the opposite.<br>Default value: **false**.|
+| isFrozen | boolean | Yes | Whether to freeze the component.<br>The value **true** means to freeze the component, and **false** means the opposite.<br>The default value is **false**. If `undefined` is passed, it is processed as **false**.|
 
 **Error codes**
 
@@ -240,16 +243,20 @@ struct Index {
         .onWillHide(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // Set the freeze state of the node with id 'tab1' based on its uniqueId to true when the TabContent is hidden.
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node to true through uniqueId when the TabContent with id being set to tab1 is hidden.
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // Set the freeze state of the node with id 'tab1' based on its uniqueId to false when the TabContent is shown.
-          this.getUIContext().freezeUINode(uniqueId, false)
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node to false through uniqueId when the TabContent with id being set to tab1 is displayed.
+            this.getUIContext().freezeUINode(uniqueId, false);
+          }
         })
 
         TabContent() {
@@ -263,25 +270,29 @@ struct Index {
         .onWillHide(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab2');
-          const uniqueId = node?.getUniqueId();
-          // Set the freeze state of the node with id 'tab2' based on its uniqueId to true when the TabContent is hidden.
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node to true through uniqueId when the TabContent with id being set to tab2 is hidden.
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab1');
-          const uniqueId = node?.getUniqueId();
-          // When the TabContent with id 'tab2' is shown, set the freeze state of the node with id 'tab1' based on its uniqueId to true.
-          // Change the width of the Column within the node with id 'tab1' via the state variable. Since the node's freeze state is true, dirty marking stops at TabContent and does not trigger layout.
-          this.getUIContext().freezeUINode(uniqueId, true);
-          this.columnWidth1 = '50%';
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node with id being set to tab1 to true through uniqueId when the TabContent with id being set to tab2 is displayed.
+            // Change the width of the Column node inside the node with id being set to tab1 through a state variable. Since the freeze state of the node with id being set to tab1 is set to true, dirty marking stops at this TabContent, and layout is not triggered from this node.
+            this.getUIContext().freezeUINode(uniqueId, true);
+            this.columnWidth1 = '50%';
 
-          // Configure a delayed task.
-          setTimeout(() => {
-            // Set the freeze state of the node with id 'tab1' to false, re-triggering marking and layout.
-            this.getUIContext().freezeUINode(uniqueId, false);
-            this.columnWidth1 = '20%';
-          }, 5000)
+            // Set a delayed task.
+            setTimeout(() => {
+              // Set the freeze state of the node with id being set to tab1 to false to re-trigger marking and layout.
+              this.getUIContext().freezeUINode(uniqueId, false);
+              this.columnWidth1 = '20%';
+            }, 5000);
+          }
         })
 
          TabContent() {
@@ -295,16 +306,20 @@ struct Index {
         .onWillHide(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab3');
-          const uniqueId = node?.getUniqueId();
-          // Set the freeze state of the node with id 'tab3' based on its uniqueId to true when the TabContent is hidden.
-          this.getUIContext().freezeUINode(uniqueId, true);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node to true through uniqueId when the TabContent with id being set to tab3 is hidden.
+            this.getUIContext().freezeUINode(uniqueId, true);
+          }
         })
         .onWillShow(() => {
           // Obtain the uniqueId of the node based on its ID.
           const node = this.getUIContext().getFrameNodeById('tab3');
-          const uniqueId = node?.getUniqueId();
-          // Set the freeze state of the node with id 'tab3' based on its uniqueId to false when the TabContent is shown.
-          this.getUIContext().freezeUINode(uniqueId, false);
+          if (node !== null) {
+            const uniqueId = node.getUniqueId();
+            // Set the freeze state of the node to false through uniqueId when the TabContent with id being set to tab3 is displayed.
+            this.getUIContext().freezeUINode(uniqueId, false);
+          }
         })
 
       }
@@ -425,7 +440,7 @@ Obtains the [LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md) col
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System API**: This is a system API.
+**System API**: This is a system API. 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -443,7 +458,7 @@ Obtains the [LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md) col
 
 **Example**
 
-For details, see the example of [offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange23).
+For details, see the example of [offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange).
 
 ### recycleInvisibleImageMemory<sup>23+</sup>
 
@@ -455,7 +470,7 @@ This API is mainly used for optimization in memory-sensitive scenarios, such as 
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System API**: This is a system API.
+**System API**: This is a system API. 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -489,6 +504,216 @@ struct ImageRecycleSample {
 }
 ```
 
+### createModalUIExtension
+
+createModalUIExtension(want: Want, options?: ModalUIExtensionOptions, callback?: ModalUIExtensionCallback): number
+
+Creates and displays a modal UIExtension. This API returns the result asynchronously through a callback. **sessionId** returned can be used to call [closeModalUIExtension](#closemodaluiextension) to close the modal UIExtension.
+
+The modal UIExtension created by this API is displayed as a modal pop-up layer. Its content runs in the process corresponding to the launched [UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md), and the host application does not participate in its internal layout and rendering.
+
+If no [transition](arkui-ts/ts-transition-animation-component.md#transitioneffect10) effect is specified, the modal UIExtension is displayed without animation. If a transition is specified, the appear and disappear transition animations are played when the modal is displayed and closed, respectively.
+
+The launched ability must be a UI-enabled ability extension. For details about how to implement a UI-enabled ability extension, see [@ohos.app.ability.UIExtensionAbility (ExtensionAbility with UI)](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md).
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name      | Type                                                         | Mandatory | Description                                                       |
+| --------- | ------------------------------------------------------------ | --------- | ---------------------------------------------------------- |
+| want      | [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | Yes   | Want corresponding to the UIExtensionAbility to be launched.                     |
+| options   | [ModalUIExtensionOptions](#modaluiextensionoptions)        | No   | Creation options of the modal UIExtension, including the DPI follow policy, window mode follow policy, and transition effect. |
+| callback  | [ModalUIExtensionCallback](#modaluiextensioncallback)     | No   | Set of lifecycle callbacks of the modal UIExtension.                         |
+
+**Return value**
+
+| Type   | Description                                                         |
+| ------ | ------------------------------------------------------------ |
+| number | **sessionId** of the modal UIExtension. Value range: [0, +∞). A value of 0 indicates creation failure, and a value greater than 0 indicates creation success. This **sessionId** can be used to call [closeModalUIExtension](#closemodaluiextension) to close the modal UIExtension. |
+
+**Example**
+
+```ts
+import { ComponentContent, UIContext } from '@kit.ArkUI';
+import { Want } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct ModalUIExtensionExample {
+  @State windowModeStrategy: WindowModeFollowStrategy = WindowModeFollowStrategy.FOLLOW_HOST_WINDOW_MODE;
+  @State dpiFollowStrategy: DpiFollowStrategy = DpiFollowStrategy.FOLLOW_HOST_DPI;
+  @State sessionId: number = 0;
+  private uiContext: UIContext = this.getUIContext();
+  build() {
+    Column() {
+      Button('Create Modal UIExtension')
+        .onClick(() => {
+          const want: Want = {
+            bundleName: 'com.example.modalprovider',
+            abilityName: 'ModalUIExtensionAbility',
+            parameters: {
+              'ability.want.params.uiExtensionType': 'sys/commonUI'
+            }
+          };
+          // Create and display the modal UIExtension.
+          this.sessionId = this.uiContext.createModalUIExtension(
+            want,
+            {
+              transition: TransitionEffect.SLIDE.animation({ duration: 5000, curve: Curve.LinearOutSlowIn }),
+              dpiFollowStrategy: this.dpiFollowStrategy,
+              windowModeFollowStrategy: this.windowModeStrategy
+            },
+            {
+              onRemoteReady: (proxy) => {
+                console.info('UIExtension onRemoteReady');
+              },
+              onReceive: () => {
+                console.info('UIExtension onReceive');
+              },
+              onError: (error) => {
+                console.info('UIExtension onReceive');
+              },
+              onTerminated: (info) => {
+                console.info('UIExtension onTerminated');
+                this.uiContext.closeModalUIExtension(this.sessionId);
+              },
+              onDrawReady: () => {
+                console.info('UIExtension onDrawReady');
+              },
+            });
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### closeModalUIExtension
+
+closeModalUIExtension(sessionId: number): void
+
+Closes the modal UIExtension.
+
+If a [transition](arkui-ts/ts-transition-animation-component.md#transitioneffect10) effect is specified when the modal UIExtension is created, the disappear transition animation is played first upon closure, and the UIExtension is closed after the animation ends. An invalid, already closed, or currently closing modal UIExtension specified by **sessionId** is silently ignored.
+
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.0.1
+
+**Parameters**
+
+| Name | Type   | Mandatory | Description                                                                 |
+| -------------- | ------ | --------- | --------------------------------------------------------------------------- |
+| sessionId      | number | Yes       | **sessionId** returned by [createModalUIExtension](#createmodaluiextension). Value range: [0, +∞). A value of 0 indicates creation failure, and a value greater than 0 indicates creation success. |
+
+**Example**
+
+```ts
+import { ComponentContent, UIContext } from '@kit.ArkUI';
+import { Want } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct ModalUIExtensionExample {
+  @State windowModeStrategy: WindowModeFollowStrategy = WindowModeFollowStrategy.FOLLOW_HOST_WINDOW_MODE;
+  @State dpiFollowStrategy: DpiFollowStrategy = DpiFollowStrategy.FOLLOW_HOST_DPI;
+  @State sessionId: number = 0;
+  private uiContext: UIContext = this.getUIContext();
+  build() {
+    Column() {
+      Button('Create Modal UIExtension')
+        .onClick(() => {
+          const want: Want = {
+            bundleName: 'com.example.modalprovider',
+            abilityName: 'ModalUIExtensionAbility',
+            parameters: {
+              'ability.want.params.uiExtensionType': 'sys/commonUI'
+            }
+          };
+          this.sessionId = this.uiContext.createModalUIExtension(
+            want,
+            {
+              transition: TransitionEffect.SLIDE.animation({ duration: 5000, curve: Curve.LinearOutSlowIn }),
+              dpiFollowStrategy: this.dpiFollowStrategy,
+              windowModeFollowStrategy: this.windowModeStrategy
+            },
+            {
+              onRemoteReady: (proxy) => {
+                console.info('UIExtension onRemoteReady');
+              },
+              onReceive: () => {
+                console.info('UIExtension onReceive');
+              },
+              onError: (error) => {
+                console.info('UIExtension onReceive');
+              },
+              onTerminated: (info) => {
+                console.info('UIExtension onTerminated');
+                // Close the modal UIExtension.
+                this.uiContext.closeModalUIExtension(this.sessionId);
+              },
+              onDrawReady: () => {
+                console.info('UIExtension onDrawReady');
+              },
+            });
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+  
+## ModalUIExtensionOptions
+
+Options for creating a modal UIExtension.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.0.1
+
+| Name                    | Type                                                           | Read-Only | Optional | Description                                                   |
+| ----------------------- | -------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------ |
+| dpiFollowStrategy       | [DpiFollowStrategy](arkui-ts/ts-container-ui-extension-component-sys.md#dpifollowstrategy12) | No   | Yes   | DPI follow policy.</br>Default value: **DpiFollowStrategy.FOLLOW_HOST_DPI** |
+| windowModeFollowStrategy | [WindowModeFollowStrategy](arkui-ts/ts-container-ui-extension-component-sys.md#windowmodefollowstrategy18) | No   | Yes | Window mode follow policy.</br>Default value: **WindowModeFollowStrategy.FOLLOW_HOST_WINDOW_MODE** |
+| transition              | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10) | No   | Yes   | Transition animation effect played when the modal UIExtension is displayed and closed.</br>Default value: **TransitionEffect.IDENTITY** (no animation) |
+
+## ModalUIExtensionCallback
+
+A collection of lifecycle callbacks for a modal UIExtension.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.0.1
+
+| Name          | Type                                                         | Read-Only | Optional | Description                                                         |
+| ------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| onRemoteReady | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)&lt;[UIExtensionProxy](arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy)&gt; | No | Yes | Callback invoked after the UIExtensionAbility is connected. The callback parameter is a [UIExtensionProxy](arkui-ts/ts-container-ui-extension-component-sys.md#uiextensionproxy) instance, through which data can be sent to the launched ability. |
+| onReceive     | [ReceiveCallback](arkui-ts/ts-container-ui-extension-component-sys.md#receivecallback18) | No   | Yes   | Callback invoked when data sent by the launched ability is received.                  |
+| onError       | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) ;[BusinessError](../apis-basic-services-kit/js-apis-base.md#businesserror)&gt; | No   | Yes   | Callback invoked when an exception occurs during the running of the launched ability extension. The error information can be obtained through **code**, **name**, and **message** in the callback parameter. For details about the service error codes, see [UIExtension Error Codes](errorcode-uiextension.md). |
+| onTerminated  | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)&lt;[TerminationInfo](arkui-ts/ts-container-ui-extension-component-sys.md#terminationinfo12)&gt; | No | Yes | Callback invoked when the launched UIExtensionAbility exits normally by calling [terminateSelfWithResult](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult) or [terminateSelf](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself). |
+| onDrawReady   | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)&lt;void&gt; | No   | Yes   | Callback invoked when the launched UIExtensionAbility draws the first frame.           |
+
 ## ComponentSnapshot<sup>12+</sup>
 
 In the following API examples, you must first use [getComponentSnapshot()](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12) in **UIContext** to obtain a **ComponentSnapshot** instance, and then call the APIs using the obtained instance.
@@ -503,8 +728,6 @@ Captures a snapshot of the area between two specified components. This API uses 
 > **NOTE**
 >
 > The components corresponding to **start** and **end** must belong to the same component tree, and the **start** component must be an ancestor of the **end** component.
-
-**Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -525,7 +748,7 @@ Captures a snapshot of the area between two specified components. This API uses 
 | -------- | -------- |
 | image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Result of the snapshot.|
 
-**Error codes**
+**Error codes** 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md), [Snapshot Error Codes](errorcode-snapshot.md), and [API Call Error Codes](errorcode-internal.md).
 
@@ -533,9 +756,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------ | ------- |
 | 202    | The caller is not a system application. |
 | 100001 | Invalid ID detected. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options.<br>Applicable versions: 23+ |
 
-**Example**
+**Example** 
 
 ```ts
 import { image } from '@kit.ImageKit';
