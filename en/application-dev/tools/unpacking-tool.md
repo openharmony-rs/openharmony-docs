@@ -5,7 +5,7 @@
 <!--Designer: @jsjzju-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=b09766262e176d598c6af77970ff4840525700ad translatedAt=2026-11-02T08:05:53.471Z pushedAt=2026-11-03T02:25:24.171Z nl=1 -->
+<!-- md-trans-meta sourceCommit=31661175150dbd26aebd7a7c4c7a32ee3048209a translatedAt=2026-11-13T12:20:14.468Z pushedAt=2026-11-16T02:06:53.371Z nl=1 -->
 
 The unpacking tool is a commissioning tool used to unpack HAP (an application package), HSP (dynamically shared library), and APP (application set to launch to the application market) files. It also provides Java APIs to parse the HAP, HSP, and APP files.
 
@@ -289,6 +289,7 @@ For details, see [alternateIcons](../quick-start/app-configuration-file.md#alter
 | originalSize         | long                        | Original size of the HAP, in bytes.        | NA             |
 | isModuleAbcCompressed  | boolean                   | Whether the [modules.abc](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-compile-build) file is compressed. The value **true** indicates that the file is compressed, and **false** indicates that the opposite.        | NA             |
 | skillProfiles    | List\<[SkillProfileInfo](#skillprofileinfo)\>  | Skill configuration information of the current module and is used to define the skill capabilities of an AI agent.  | Supported since API version 26.0.0. |
+| anyOfDeviceFeatures  | Map\<String, List\<String>> | Identifies the specific device features required for the current module to run. Any one of the device features is sufficient. | Supported from API version 26.1.0. |
 <!--RP1--><!--RP1End-->
 
 ### AbilityInfo Struct
@@ -492,6 +493,7 @@ For details, see [alternateIcons](../quick-start/app-configuration-file.md#alter
 | Field               | Type                    | Description                                                        | Remarks       |
 | ------------------- | -------------------------| ------------------------------------------------------------ |-----------|
 | name                | String                   | Name of the widget.                                             | NA        |
+| formManagerAnimatedImages | List\<String> | Indicates the list of parsing results of the dynamic image resources of the card. The original reference is retained when the resource is not matched. | Supported only in the Stage model. Returns an empty list when the field is missing or the array is empty. Starts to support since API version 26.1.0. |
 | type                | String                   | Type of the widget.                                          | NA        |
 | updateEnabled       | boolean                  | Whether the widget supports scheduled refresh. **true** to support, **false** otherwise.                                  | NA        |
 | scheduledUpdateTime | String                   | Identifies the time for scheduled card refresh, using a 24-hour format and accurate to the minute.       | NA        |

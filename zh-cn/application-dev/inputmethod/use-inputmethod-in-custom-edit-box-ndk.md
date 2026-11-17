@@ -26,12 +26,23 @@ libhilog_ndk.z.so
 
 ## 引用头文件
 
-```c
-#include <inputmethod/inputmethod_controller_capi.h>
-#include <inputmethod/inputmethod_text_editor_proxy_capi.h>
-#include <inputmethod/inputmethod_preview_text_style_capi.h>
-```
+本示例使用的头文件如下：
 
+<!-- @[preview_style_c_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+#include <algorithm>
+#include <mutex>
+#include <string>
+
+#include "PreviewDisplayState.h"
+
+#include "hilog/log.h"
+#include "inputmethod/inputmethod_text_editor_proxy_capi.h"
+#include "inputmethod/inputmethod_preview_text_style_capi.h"
+#include "inputmethod/inputmethod_controller_capi.h"
+#include "napi/native_api.h"
+```
 
 ## 绑定输入法
 
@@ -41,7 +52,7 @@ libhilog_ndk.z.so
 
    <!-- @[input_case_input_TextEditorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp) -->
 
-   ``` C++
+   ```cpp
    textEditorProxy = OH_TextEditorProxy_Create();
    ```
 
@@ -50,7 +61,7 @@ libhilog_ndk.z.so
 
    <!-- @[input_case_input_attachOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp) -->
 
-   ``` C++
+   ```cpp
    attachOptions = OH_AttachOptions_Create(true);
    ```
 
@@ -59,7 +70,7 @@ libhilog_ndk.z.so
 
    <!-- @[input_case_input_OH_InputMethodController_Attach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp) -->
 
-   ``` C++
+   ```cpp
    result = OH_InputMethodController_Attach(textEditorProxy, attachOptions, &inputMethodProxy);
    if (result != IME_ERR_OK) {
        inputMethodProxy = nullptr;
@@ -71,45 +82,158 @@ libhilog_ndk.z.so
 
 ## 显示/隐藏面板功能
 
-绑定成功后，可以使用获取到的[InputMethod_InputMethodProxy](../reference/apis-ime-kit/capi-inputmethod-inputmethod-inputmethodproxy.md)对象向输入法发送消息。示例代码如下所示：
+绑定成功后，调用OH_InputMethodProxy_ShowKeyboard显示键盘。本示例在ShowInputMethodKeyboard中检查代理是否存在，再调用显示接口：
 
-```c
-// 显示键盘
-if (OH_InputMethodProxy_ShowKeyboard(inputMethodProxy) != InputMethod_ErrorCode::IME_ERR_OK) {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "ShowKeyboard failed!");
-}
-// 隐藏键盘
-if (OH_InputMethodProxy_HideKeyboard(inputMethodProxy) != InputMethod_ErrorCode::IME_ERR_OK) {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "HideKeyboard failed!");
-}
-// 通知输入框配置信息变化
-if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_EnterKeyType::IME_ENTER_KEY_GO, InputMethod_TextInputType::IME_TEXT_INPUT_TYPE_TEXT) != InputMethod_ErrorCode::IME_ERR_OK) {
-    OH_LOG_Print(LOG_APP, LOG_ERROR, 0, "testTag", "NotifyConfigurationChange failed!");
-}
+<!-- @[preview_style_c_show_keyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+const auto code = inputMethodProxy == nullptr ? IME_ERR_NULL_POINTER :
+    OH_InputMethodProxy_ShowKeyboard(inputMethodProxy);
+```
+
+解绑前，调用OH_InputMethodProxy_HideKeyboard隐藏键盘。本示例在ReleaseCEditor中调用：
+
+<!-- @[preview_style_c_hide_keyboard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
+OH_InputMethodProxy_HideKeyboard(inputMethodProxy);
 ```
 
 ## 监听输入法应用的请求/通知
 
-1. 需要先实现对输入法应用发送的请求或通知的响应处理函数，示例代码如下所示：
+1. 在[napi_init.cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp)中，实现GetTextConfigFunc、InsertTextFunc、DeleteForwardFunc等回调。输入法框架请求输入框配置、插入或删除文本时，会调用对应回调，由自绘编辑框处理请求并更新文本状态。对应回调实现如下。
 
-   ```c
-   // 实现InputMethod_TextEditorProxy中的输入法应用事件响应函数
-   void GetTextConfigFunc(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_TextConfig *config)
+   本示例收到键盘状态通知时，不在`SendKeyboardStatusFunc`中更新编辑框。编辑框的显示状态由文本编辑回调更新。
+
+   <!-- @[preview_style_c_edit_callbacks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp) -->
+   
+   ``` C++
+   void GetTextConfigFunc(InputMethod_TextEditorProxy *proxy, InputMethod_TextConfig *config)
    {
-       // 处理输入法发送的获取输入框配置请求
+       // 处理获取输入框配置请求
+       auto ret = OH_TextConfig_SetEnterKeyType(config, InputMethod_EnterKeyType::IME_ENTER_KEY_SEND);
+       if (ret != IME_ERR_OK) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 0xF811, "PreviewTextStyleC", "SetEnterKeyType failed, ret=%{public}d", ret);
+           return;
+       }
+   
+       ret = OH_TextConfig_SetInputType(config, InputMethod_TextInputType::IME_TEXT_INPUT_TYPE_TEXT);
+       if (ret != IME_ERR_OK) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 0xF811, "PreviewTextStyleC", "SetInputType failed, ret=%{public}d", ret);
+           return;
+       }
+   
+       ret = OH_TextConfig_SetPreviewTextSupport(config, true);
+       if (ret != IME_ERR_OK) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 0xF811, "PreviewTextStyleC",
+               "SetPreviewTextSupport failed, ret=%{public}d", ret);
+       }
    }
-   void InsertTextFunc(InputMethod_TextEditorProxy *textEditorProxy, const char16_t *text, size_t length)
+   
+   void InsertTextFunc(InputMethod_TextEditorProxy *proxy, const char16_t *text, size_t length)
    {
-       // 处理输入法发送的插入文本请求
+       if (text == nullptr) {
+           return;
+       }
+       std::lock_guard<std::mutex> lock(g_textMutex);
+       g_display.text.append(text, length);
+       g_display.active = false;
    }
-   void DeleteForwardFunc(InputMethod_TextEditorProxy *textEditorProxy, int32_t length)
+   
+   // 框架为兼容性反转输入方向；C编辑框的向后删除表示退格。
+   void DeleteBackwardFunc(InputMethod_TextEditorProxy *proxy, int32_t length)
    {
-       // 处理输入法发送的删除文本请求
+       std::lock_guard<std::mutex> lock(g_textMutex);
+       if (length <= 0) {
+           return;
+       }
+       size_t count = std::min(static_cast<size_t>(length), g_display.text.size());
+       size_t start = g_display.text.size() - count;
+       if (start > 0 && start < g_display.text.size() && g_display.text[start] >= 0xDC00 &&
+           g_display.text[start] <= 0xDFFF && g_display.text[start - 1] >= 0xD800 &&
+           g_display.text[start - 1] <= 0xDBFF) {
+           --start;
+       }
+       g_display.text.erase(start);
+       g_display.active = false;
    }
-   // ......
+   
+   void DeleteForwardFunc(InputMethod_TextEditorProxy *proxy, int32_t length)
+   {
+       std::lock_guard<std::mutex> lock(g_textMutex);
+       // 本示例将光标保持在文本末尾，光标右侧没有文本。
+   }
+   
+   void SendKeyboardStatusFunc(InputMethod_TextEditorProxy *proxy, InputMethod_KeyboardStatus status)
+   {
+       // 无需处理：本示例通过编辑回调更新显示状态。
+   }
+   
+   void SendEnterKeyFunc(InputMethod_TextEditorProxy *proxy, InputMethod_EnterKeyType type)
+   {
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xF811, "PreviewTextStyleC", "C enter action=%{public}d", type);
+   }
+   
+   void MoveCursorFunc(InputMethod_TextEditorProxy *proxy, InputMethod_Direction direction)
+   {
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xF811, "PreviewTextStyleC", "C cursor request=%{public}d", direction);
+   }
+   
+   void HandleSetSelectionFunc(InputMethod_TextEditorProxy *proxy, int32_t start, int32_t end)
+   {
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xF811, "PreviewTextStyleC",
+           "C selection request=%{public}d,%{public}d", start, end);
+   }
+   
+   void HandleExtendActionFunc(InputMethod_TextEditorProxy *proxy, InputMethod_ExtendAction action)
+   {
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xF811, "PreviewTextStyleC", "C edit action=%{public}d", action);
+   }
+   
+   void GetLeftTextOfCursorFunc(InputMethod_TextEditorProxy *proxy, int32_t number, char16_t text[], size_t *length)
+   {
+       if (length == nullptr) {
+           return;
+       }
+       if (text == nullptr || number <= 0) {
+           *length = 0;
+           return;
+       }
+       std::lock_guard<std::mutex> lock(g_textMutex);
+       const size_t count = std::min(static_cast<size_t>(number), g_display.text.size());
+       std::copy(g_display.text.end() - count, g_display.text.end(), text);
+       *length = count;
+   }
+   
+   void GetRightTextOfCursorFunc(InputMethod_TextEditorProxy *proxy, int32_t number, char16_t text[], size_t *length)
+   {
+       if (length != nullptr) {
+           *length = 0;
+       }
+   }
+   
+   int32_t GetTextIndexAtCursorFunc(InputMethod_TextEditorProxy *proxy)
+   {
+       std::lock_guard<std::mutex> lock(g_textMutex);
+       return static_cast<int32_t>(g_display.text.size());
+   }
+   
+   int32_t ReceivePrivateCommandFunc(InputMethod_TextEditorProxy *proxy, InputMethod_PrivateCommand *privateCommand[],
+       size_t size)
+   {
+       OH_LOG_Print(LOG_APP, LOG_INFO, 0xF811, "PreviewTextStyleC", "C private command received");
+       return 0;
+   }
+   
+   // OH_InputMethodController_Attach要求注册SetPreviewText回调；样式由带样式的回调处理。
+   int32_t SetPreviewTextFunc(InputMethod_TextEditorProxy *proxy, const char16_t *text, size_t length,
+       int32_t start, int32_t end)
+   {
+       return text == nullptr ? IME_ERR_NULL_POINTER : IME_ERR_OK;
+   }
    ```
 
-2. 将实现后的响应函数，设置到[InputMethod_TextEditorProxy](../reference/apis-ime-kit/capi-inputmethod-inputmethod-texteditorproxy.md)中，再通过绑定输入法时调用的[OH_InputMethodController_Attach](../reference/apis-ime-kit/capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)将其设置到输入法框架中，完成监听注册。示例代码如下所示：
+2. 在ConstructTextEditorProxy中，调用OH_TextEditorProxy_SetGetTextConfigFunc、OH_TextEditorProxy_SetInsertTextFunc等Set接口，将上述回调注册到[InputMethod_TextEditorProxy](../reference/apis-ime-kit/capi-inputmethod-inputmethod-texteditorproxy.md)。随后，AttachEditor调用[OH_InputMethodController_Attach](../reference/apis-ime-kit/capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)绑定输入法，框架通过已注册的回调传递请求或通知。回调注册代码如下；AttachEditor的调用顺序见[完整示例](#完整示例)的第二段代码。
 
    这些设置函数将输入配置、文本插入与删除、光标查询等处理函数保存到textEditorProxy。预上屏相关设置检查返回值；样式回调设置后还会读取并核对函数指针。注册完成后再调用OH_InputMethodController_Attach绑定输入法。
 
@@ -195,7 +319,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
 
 示例代码展示了绑定输入法、接收带样式的预上屏回调、结束预上屏和解绑输入法的流程。页面只保留一个自绘编辑框、绑定/解绑按钮和状态提示。
 
-示例代码入口为`AttachEditor`函数，由页面的绑定操作调用。`PreviewTextStyleObjectExample`演示样式对象的创建、设置、读取和销毁；编辑框显示的内容与样式仅来自真实回调。完整工程及`PreviewDisplayState.h`可见[PreviewTextStyleJS示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/InputMethod/PreviewTextStyleJS)。该工程包含JS、C两个编辑器页面。从JS页面点击“打开C编辑器”进入C页面，点击“返回JS”返回JS页面。
+示例代码入口为`AttachEditor`函数，由页面的绑定操作调用。`PreviewTextStyleObjectExample`演示样式对象的创建、设置、读取和销毁；编辑框显示的内容与样式仅来自真实回调。该工程包含JS、C两个编辑器页面。从JS页面点击“打开C编辑器”进入C页面，点击“返回JS”返回JS页面。
 
 > **说明：**
 >
@@ -254,7 +378,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
        g_display.active = false;
    }
 
-   // The framework reverses IME directions for compatibility; C editor backward means backspace.
+   // 框架为兼容性反转输入方向；C编辑框的向后删除表示退格。
    void DeleteBackwardFunc(InputMethod_TextEditorProxy *proxy, int32_t length)
    {
        std::lock_guard<std::mutex> lock(g_textMutex);
@@ -275,12 +399,12 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
    void DeleteForwardFunc(InputMethod_TextEditorProxy *proxy, int32_t length)
    {
        std::lock_guard<std::mutex> lock(g_textMutex);
-       // This minimal editor keeps its cursor at the end; there is no text to its right.
+       // 本示例将光标保持在文本末尾，光标右侧没有文本。
    }
 
    void SendKeyboardStatusFunc(InputMethod_TextEditorProxy *proxy, InputMethod_KeyboardStatus status)
    {
-       // No-op: this editor derives its display state from the editing callbacks.
+       // 无需处理：本示例通过编辑回调更新显示状态。
    }
 
    void SendEnterKeyFunc(InputMethod_TextEditorProxy *proxy, InputMethod_EnterKeyType type)
@@ -339,12 +463,13 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
        return 0;
    }
 
-   // Attach requires the legacy callback. Rendering is owned by the styled callback.
+   // OH_InputMethodController_Attach要求注册SetPreviewText回调；样式由带样式的回调处理。
    int32_t SetPreviewTextFunc(InputMethod_TextEditorProxy *proxy, const char16_t *text, size_t length,
        int32_t start, int32_t end)
    {
        return text == nullptr ? IME_ERR_NULL_POINTER : IME_ERR_OK;
    }
+
 
    int32_t SetPreviewTextWithStyleFunc(InputMethod_TextEditorProxy *proxy, const char16_t *text, uint32_t length,
        int32_t start, int32_t end, const OH_InputMethod_PreviewTextStyle *style)
@@ -355,8 +480,8 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
        OH_InputMethod_UnderlineStyle kind = OH_INPUTMETHOD_UNDERLINE_STYLE_NONE;
        uint32_t color = 0;
        bool hasColor = false;
-       // Read the borrowed object; its lifetime belongs to the input method framework.
-       // The C getters accept a mutable pointer but only read this framework-owned object.
+       // 读取框架传入的样式对象，其生命周期由输入法框架管理。
+       // C接口接收非const指针，但此处仅读取框架持有的对象。
        auto *readStyle = const_cast<OH_InputMethod_PreviewTextStyle *>(style);
        auto result = OH_InputMethod_PreviewTextStyle_GetUnderlineStyle(readStyle, &kind);
        if (result != IME_ERR_OK) {
@@ -421,8 +546,8 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
 
    <!-- @[input_case_input_CPreview208](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/PreviewTextStyleJS/entry/src/main/cpp/napi_init.cpp) -->
 
-   ``` C++
-   // A failed detach can already have deleted the native proxy. Stop reuse until restart.
+   ```cpp
+   // 解绑失败时原生代理可能已被删除，重新启动前停止复用。
    static int g_releaseError = IME_ERR_OK;
    static int ReleaseCEditor()
    {
@@ -454,7 +579,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
    }
 
 
-   // One normal object-lifetime example, independent of received preview content.
+   // 样式对象的创建与销毁示例，不依赖接收到的预上屏内容。
    static int32_t PreviewTextStyleObjectExample()
    {
        auto *style = OH_InputMethod_PreviewTextStyle_Create();

@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=ad6e19148a2e0fc0380b16e183aef2ad5ce1d4ae translatedAt=2026-11-03T06:34:34.036Z pushedAt=2026-11-03T07:54:40.199Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2348ec05ef98b768ce1767324aeb24767349c321 translatedAt=2026-11-12T03:31:44.314Z pushedAt=2026-11-12T09:15:37.723Z nl=1 -->
 
 The decorators described above (including [\@State](./arkts-state.md), [\@Prop](./arkts-prop.md), [\@Link](./arkts-link.md), and [\@Provide and \@Consume](./arkts-provide-and-consume.md)) can only observe changes at the first layer. However, in actual app development, developers often encapsulate their own data models based on requirements. For multi-level nesting scenarios, such as two-dimensional arrays, object arrays, and nested classes, changes to second-layer properties cannot be observed. Therefore, the [\@Observed](../../reference/apis-arkui/arkui-ts/ts-state-management-observed.md#observed) and [\@ObjectLink](../../reference/apis-arkui/arkui-ts/ts-state-management-objectlink.md#objectlink) decorators are introduced to enable observation of deep property changes in nested data structures.
 
@@ -67,7 +67,7 @@ this.objLink= ...
 | --------------------- | ------------------------------------------------------------ |
 | Initialized from the parent component | Mandatory.<br/>The variable decorated by @ObjectLink must be initialized with a complex type. To observe changes, the following conditions must be met:<br/>-&nbsp;Before API version 19, the type must be an instance of a class decorated by @Observed.<br/>- From API version 19 onward, @ObjectLink can be initialized with a complex type, that is, a class, object, or built-in type. However, when observing nested types, it must still receive an instance of a class decorated by @Observed or the return value of makeV1Observed.<br/>-&nbsp;The class or array of the synchronization source must be data decorated by [@State](./arkts-state.md), [@Link](./arkts-link.md), [@Provide](./arkts-provide-and-consume.md), [@Consume](./arkts-provide-and-consume.md), or @ObjectLink.<br/>For an example where the synchronization source is an array item, see [Object Arrays](#object-arrays). For an example of initializing a class, see [Nested Objects](#nested-objects). |
 | Synchronized with the source object | Bidirectional.                                                       |
-| Can initialize child components | Allowed. Can be used to initialize regular variables, @State, @Link, @Prop, and @Provide. |
+| Can initialize child components      | Supported; can be used to initialize a regular variable or \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component. |
 
 
   **Figure 1** Initialization rule illustration

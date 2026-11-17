@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-10-30T03:49:09.761Z pushedAt=2026-10-30T07:26:02.699Z nl=1 -->
+<!-- md-trans-meta sourceCommit=e7554d4fdf6804e9d8e84917f943d2f09e968e66 translatedAt=2026-11-13T12:34:27.093Z pushedAt=2026-11-16T02:06:53.444Z nl=1 -->
 
 Starting from API version 22, the algorithm library supports key derivation using this algorithm.
 
@@ -21,7 +21,7 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
    - **algName**: algorithm to use, which is **'X963Kdf'**.
    - **key**: original key material.
 
-      If the string type is used, pass in the data used for key derivation instead of the string type such as HexString or base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
+      If the string type is used, pass in the data used for key derivation instead of the string type such as HexString or Base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
    - info: optional context and application-related information, which can be empty and is used to extend short keys.
    - **keySize**: length of the key to derive, in bytes. The value must be a positive integer.
 
@@ -44,20 +44,26 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   async function kdfAwait() {
-    let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
-    let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
-    let spec: cryptoFramework.X963KdfSpec = {
-      algName: 'X963KDF',
-      key: keyData,
-      info: infoData,
-      keySize: 32
-    };
-    let kdf = cryptoFramework.createKdf('X963KDF|SHA256');
-    let secret = await kdf.generateSecret(spec);
-    console.info('key derivation output: ' + secret.data);
+    try {
+      let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+      let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
+      let spec: cryptoFramework.X963KdfSpec = {
+        algName: 'X963KDF',
+        key: keyData,
+        info: infoData,
+        keySize: 32
+      };
+      let kdf = cryptoFramework.createKdf('X963KDF|SHA256');
+      let secret = await kdf.generateSecret(spec);
+      console.info('key derivation output: ' + secret.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 
@@ -97,20 +103,26 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   function kdfSync() {
-    let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
-    let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
-    let spec: cryptoFramework.X963KdfSpec = {
-      algName: 'X963KDF',
-      key: keyData,
-      info: infoData,
-      keySize: 32
-    };
-    let kdf = cryptoFramework.createKdf('X963KDF|SHA256');
-    let secret = kdf.generateSecretSync(spec);
-    console.info('[Sync]key derivation output: ' + secret.data);
+    try {
+      let keyData = new Uint8Array(buffer.from('012345678901234567890123456789', 'utf-8').buffer);
+      let infoData = new Uint8Array(buffer.from('infostring', 'utf-8').buffer);
+      let spec: cryptoFramework.X963KdfSpec = {
+        algName: 'X963KDF',
+        key: keyData,
+        info: infoData,
+        keySize: 32
+      };
+      let kdf = cryptoFramework.createKdf('X963KDF|SHA256');
+      let secret = kdf.generateSecretSync(spec);
+      console.info('[Sync]key derivation output: ' + secret.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    }
   }
   ```
 

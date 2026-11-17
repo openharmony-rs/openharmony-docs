@@ -19,6 +19,7 @@
   - [@ohos.multimodalAwareness.onScreen (屏上感知)(系统接口)](js-apis-awareness-onScreen-sys.md)
   - [@ohos.multimodalAwareness.spatialAwareness (空间感知)(系统接口)](js-apis-awareness-spatialAwareness-sys.md)
   - [@ohos.multimodalAwareness.carAwareness (车辆感知)(系统接口)](js-apis-awareness-carAwareness-sys.md)
+  - [@ohos.multimodalAwareness.behaviorAwareness (行为感知)(系统接口)](js-apis-awareness-behaviorAwareness-sys.md)
   <!--DelEnd-->
 - 错误码<!--multimodal-awareness-arkts-errcode-->
   - [动作感知错误码](errorcode-motion.md)

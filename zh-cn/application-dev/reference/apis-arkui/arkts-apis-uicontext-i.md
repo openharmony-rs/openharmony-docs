@@ -108,3 +108,23 @@ Swiper子组件的信息，包含子组件的唯一标识符和索引，可通�
 | --------- | ---- | ----- | ---- | -----------------------|
 | uniqueId  | number | 否 | 否 | Swiper子组件的唯一标识符。   |
 | index     | number | 否 | 否 | Swiper子组件在Swiper中的索引，取值从0开始，最大值为Swiper子组件数量-1。 |
+
+## NodeSensitiveInputInfo
+
+定义输入事件分发到[onNodeSensitiveInput](arkts-apis-uicontext-uiobserver.md#onnodesensitiveinput)接口中nodeIdentity指定节点时上报的信息。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| isAgent | boolean | 否 | 否 | 事件是否为Agent生成的事件。true表示该事件由系统Agent生成，或由具有ohos.permission.CONTROL_COMPONENT权限的应用注入；false表示用户生成的输入事件或其他注入事件。 |
+| type | [NodeSensitiveInputEventType](arkts-apis-uicontext-e.md#nodesensitiveinputeventtype) | 否 | 否 | 上报的输入事件类型。 |
+| touchEvent | [TouchEvent](arkui-ts/ts-universal-events-touch.md#touchevent对象说明) | 否 | 是 | 触摸事件，仅当type为NodeSensitiveInputEventType.TOUCH时该字段生效；type为其他值时，该字段不生效，默认为undefined。 |
+| mouseEvent | [MouseEvent](arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明) | 否 | 是 | 鼠标事件，仅当type为NodeSensitiveInputEventType.MOUSE时该字段生效；type为其他值时，该字段不生效，默认为undefined。 |
+| keyEvent | [KeyEvent](arkui-ts/ts-universal-events-key.md#keyevent对象说明) | 否 | 是 | 按键事件，仅当type为NodeSensitiveInputEventType.KEY时该字段生效；type为其他值时，该字段不生效，默认为undefined。 |

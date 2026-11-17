@@ -5,7 +5,7 @@
 <!--Designer: @BlYynNe-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c43f545993abb1b7c978ab69ae099e2e7ecdd06c translatedAt=2026-11-03T06:31:37.469Z pushedAt=2026-11-03T07:53:55.247Z nl=1 -->
+<!-- md-trans-meta sourceCommit=d59a5f16eefd936e360981b93f0b77bb90d32ba1 translatedAt=2026-11-12T03:27:22.664Z pushedAt=2026-11-12T09:01:49.814Z nl=1 -->
 
 In the preceding example, you can use [\@Styles](arkts-style.md) to reuse styles. Building on \@Styles, ArkUI provides [\@Extend](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-extend.md#extend) for extending component styles.
 
@@ -124,7 +124,7 @@ It also supports declaring the effective system version range of the extended st
   }
   ```
 
-- Parameters passed into \@Extend decorated methods can also be [state variables](arkts-state-management-overview.md). Changes to these state variables cause the UI to re-render.
+- The parameter of \@Extend can be a state variable. When the state variable changes, the UI can refresh and render normally.
   <!-- @[Extend_Refresh_rendering_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUIStateVariable.ets) --> 
   
   ``` TypeScript
@@ -432,4 +432,5 @@ struct VersionConditionUseDemo {
 **On devices with a system version equal to or later than API version 26.0.0, the behavior is as follows:**
 
 ![](figures/arkts-extend-versionCondition-high.png)
+
 <!--no_check-->

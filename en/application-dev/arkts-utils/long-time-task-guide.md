@@ -1,10 +1,19 @@
-# Continuous Task Development (TaskPool)
+---
+kits: ["ArkTS"]
+description: "Provides guidance on developing long tasks using TaskPool: using periodic sensor data collection as an example, it demonstrates the creation, execution, and result retrieval of a long task (LongTask). The task will not be terminated due to timeout even when running for a long time, avoiding blocking the UI main thread."
+keywords: [LongTask, LongTask, TaskPool, sensor data collection, periodic collection, task listening, background execution]
+doctype: guide
+status: active
+---
+
+# Long-Running Task Development Guide (TaskPool)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=f8431cb42cf0d545a37a384860003cd8449b0b43 translatedAt=2026-11-06T10:36:40.619Z pushedAt=2026-11-12T08:06:24.858Z nl=1 -->
 
 This section provides a development guide for continuous tasks using TaskPool, with the example of periodically collecting sensor data.
 
@@ -12,8 +21,9 @@ This section provides a development guide for continuous tasks using TaskPool, w
 
 1. Import the required module.
 
-   ```ts
-   // Index.ets
+   <!-- @[taskpool_listen_sensor_data_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/LongTimeTaskGuide.ets) -->
+   
+   ``` TypeScript
    import { sensor } from '@kit.SensorServiceKit';
    import { taskpool } from '@kit.ArkTS';
    import { BusinessError, emitter } from '@kit.BasicServicesKit';
@@ -21,10 +31,11 @@ This section provides a development guide for continuous tasks using TaskPool, w
 
 2. Define a continuous task to listen for sensor data internally and register a destruction notification via emitter.
 
-   ```ts
-   // Index.ets
+   <!-- @[taskpool_listen_sensor_data_concurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/LongTimeTaskGuide.ets) -->
+   
+   ``` TypeScript
    @Concurrent
-   async function SensorListener() : Promise<void> {
+   async function sensorListener(): Promise<void> {
      sensor.on(sensor.SensorId.ACCELEROMETER, (data) => {
        emitter.emit({ eventId: 0 }, { data: data });
      }, { interval: 1000000000 });
@@ -36,10 +47,9 @@ This section provides a development guide for continuous tasks using TaskPool, w
    }
    ```
 
-3. Add the ohos.permission.ACCELEROMETER permission to the sensor.
+3. Add the ohos.permission.ACCELEROMETER permission to the application. In the "module" field of module.json5, add the "requestPermissions" field as shown in the following code example to configure the related permission.
 
    ```json
-   // module.json5
    "requestPermissions": [
      {
        "name": "ohos.permission.ACCELEROMETER"
@@ -50,42 +60,64 @@ This section provides a development guide for continuous tasks using TaskPool, w
    - Registration: Initiate the continuous task and receive listening data via emitter.
    - Destruction: Send an event to cancel sensor listening and terminate the continuous task.
 
-   ```ts
-   // Index.ets
+   <!-- @[taskpool_listen_sensor_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/LongTimeTaskGuide.ets) -->
+   
+   ``` TypeScript
+   import { sensor } from '@kit.SensorServiceKit';
+   import { taskpool } from '@kit.ArkTS';
+   import { BusinessError, emitter } from '@kit.BasicServicesKit';
+   
+   @Concurrent
+   async function sensorListener(): Promise<void> {
+     sensor.on(sensor.SensorId.ACCELEROMETER, (data) => {
+       emitter.emit({ eventId: 0 }, { data: data });
+     }, { interval: 1000000000 });
+   
+     emitter.on({ eventId: 1 }, () => {
+       sensor.off(sensor.SensorId.ACCELEROMETER)
+       emitter.off(1)
+     })
+   }
+   
    @Entry
    @Component
    struct Index {
      sensorTask?: taskpool.LongTask
+     @State addListener: string = 'Add listener';
+     @State deleteListener: string = 'Delete listener';
    
      build() {
        Column() {
-         Text("Add listener")
-           .id('HelloWorld')
+         Text(this.addListener)
+           .id('Add listener')
            .fontSize(50)
            .fontWeight(FontWeight.Bold)
            .onClick(() => {
-             this.sensorTask = new taskpool.LongTask(SensorListener);
+             this.sensorTask = new taskpool.LongTask(sensorListener);
              emitter.on({ eventId: 0 }, (data) => {
                // Do something here
                console.info(`Receive ACCELEROMETER data: {${data.data?.x}, ${data.data?.y}, ${data.data?.z}}`);
              });
              taskpool.execute(this.sensorTask).then(() => {
-               console.info("Add listener of ACCELEROMETER success");
+               this.addListener = 'success';
+               console.info('Add listener of ACCELEROMETER success');
              }).catch((e: BusinessError) => {
-               // Process error
+               this.addListener = 'failed';
              })
            })
-         Text("Delete listener")
-           .id('HelloWorld')
+         Text(this.deleteListener)
+           .id('Delete listener')
            .fontSize(50)
            .fontWeight(FontWeight.Bold)
            .onClick(() => {
              emitter.emit({ eventId: 1 });
              emitter.off(0);
-             if(this.sensorTask != undefined) {
+             if (this.sensorTask != undefined) {
                taskpool.terminateTask(this.sensorTask);
+               this.deleteListener = 'success';
              } else {
-               console.error("sensorTask is undefined.");
+               console.error('sensorTask is undefined.');
+               this.deleteListener = 'failed';
              }
            })
        }
@@ -94,6 +126,3 @@ This section provides a development guide for continuous tasks using TaskPool, w
      }
    }
    ```
-   <!-- @[taskpool_listen_sensor_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/LongTimeTaskGuide.ets) -->
-   
-   

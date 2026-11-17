@@ -5,7 +5,7 @@
 <!--Designer: @wangyang2022; @jiyujia926-->
 <!--Tester: @sally__; @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=052c1aa99020ef2d79ebffc424707e42298dd66d translatedAt=2026-09-01T12:24:30.533Z -->
+<!-- md-trans-meta sourceCommit=a27c956231184294eea0c5b016465c01db7db248 translatedAt=2026-11-03T03:17:55.976Z pushedAt=2026-11-13T01:06:00.085Z nl=1 -->
 
 When you want to set custom properties on a component, you can use the custom property setting feature. These custom properties can be obtained on the FrameNode corresponding to the component, facilitating component management based on the custom properties.
 
@@ -31,7 +31,7 @@ Since API 26.0.0, custom components support setting and reading custom propertie
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
@@ -147,6 +147,7 @@ function columnChildren() {
 struct CustomLayout {
   @Builder
   doNothingBuilder() {
+    // Empty function, used only to demonstrate the usage.
   };
 
   @BuilderParam builder: () => void = this.doNothingBuilder;

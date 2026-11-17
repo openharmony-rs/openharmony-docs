@@ -42,7 +42,7 @@ status: active
 
 在应用开发过程中，开发者应按一定顺序调用方法，执行对应操作，否则系统可能会抛出异常或生成其他未定义的行为。具体顺序可参考下列开发步骤及对应说明。
 
-### 在 CMake 脚本中链接动态库
+### 在CMake脚本中链接动态库
 
 ``` cmake
 target_link_libraries(sample PUBLIC libnative_drm.so)

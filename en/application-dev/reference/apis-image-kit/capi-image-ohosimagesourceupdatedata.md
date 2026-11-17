@@ -1,12 +1,11 @@
 # OhosImageSourceUpdateData
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9329f19aa2995f079ff9cf109a20aad0033a91a3 translatedAt=2026-08-03T04:04:21.399Z pushedAt=2026-08-04T02:52:58.182Z -->
+<!-- md-trans-meta sourceCommit=a71c0a82e5ac85b488b13af278b7bfd23da513e9 translatedAt=2026-11-06T02:06:42.877Z pushedAt=2026-11-12T06:20:31.636Z nl=1 -->
 
 ```c
 struct OhosImageSourceUpdateData {...}
@@ -28,8 +27,14 @@ The struct describes the update data option of the image source. It is obtained 
 
 | Name| Description|
 | -- | -- |
-| uint8_t* buffer = nullptr | Pointer to the buffer for storing the update data.|
-| size_t bufferSize = 0 | Size of the buffer.|
-| uint32_t offset = 0 | Offset of the update data in the buffer.|
-| uint32_t updateLength = 0 | Length of the update data in the buffer.|
-| int8_t isCompleted = 0 | Whether the image source data update is completed.|
+| uint8_t* buffer = nullptr | Buffer for the image source update data. This setting is applicable only to the C++ compilation environment. |
+| size_t bufferSize = 0 | Size of the buffer for the image source update data. This setting is applicable only to the C++ compilation environment. |
+| uint32_t offset = 0 | Start of the buffer for the image source update data. This setting is applicable only to the C++ compilation environment. |
+| uint32_t updateLength = 0 | Length of the update data in the buffer for the image source update data. This setting is applicable only to the C++ compilation environment. |
+| int8_t isCompleted = 0 | Whether the image source update data is completed in this section. This setting is applicable only to the C++ compilation environment. |
+| uint8_t* buffer | Buffer for the image source update data. This setting is applicable only to the C compilation environment. |
+| size_t bufferSize | Size of the buffer for the image source update data. This setting is applicable only to the C compilation environment. |
+| uint32_t offset | Start of the buffer for the image source update data. This setting is applicable only to the C compilation environment. |
+| uint32_t updateLength | Length of the update data in the buffer for the image source update data. This setting is applicable only to the C compilation environment. |
+| int8_t isCompleted | Whether the image source update data is completed in this section. This setting is applicable only to the C compilation environment. |
+

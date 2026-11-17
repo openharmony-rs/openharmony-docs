@@ -466,8 +466,8 @@ function testFinally(): string {
 let result: string = testFinally();
 console.info(`返回值: ${result}`);
 // 输出:
-// try块
-// finally块
+// try 块
+// finally 块
 // 返回值: return from try
 ```
 
@@ -649,9 +649,9 @@ function parseJSONSafe(jsonStr: string): Result<Object> {
 let parseResult: Result<Object> = parseJSONSafe('{"name": "Alice"}');
 
 if (parseResult.error !== null) {
-    console.error('解析失败:', parseResult.error.message);
+  console.error('解析失败:', parseResult.error.message);
 } else {
-    console.info(`解析成功: ${parseResult.data}`);
+  console.info(`解析成功: ${parseResult.data}`);
 }
 
 // 另一个示例
@@ -670,9 +670,9 @@ function patternDivideNumbers(a: number, b: number): Result<number> {
 
 let divideResult: Result<number> = patternDivideNumbers(10, 2);
 if (divideResult.error !== null) {
-    console.error('计算失败:', divideResult.error.message);
+  console.error('计算失败:', divideResult.error.message);
 } else {
-    console.info(`计算结果: ${divideResult.data}`);
+  console.info(`计算结果: ${divideResult.data}`);
 }
 ```
 
@@ -749,7 +749,7 @@ async function handleAsyncOperation(): Promise<void> {
   try {
     let result = await asyncOperation();
     console.info(`结果: ${result}`);
-    } catch (error) {
+  } catch (error) {
     console.error('捕获异步错误:', (error as Error).message);
   }
 }
@@ -757,7 +757,7 @@ async function handleAsyncOperation(): Promise<void> {
 handleAsyncOperation();
 ```
 
-### Promise的.catch() 链式捕获错误
+### Promise的.catch()链式捕获错误
 
 `Promise`的`.catch()`方法是链式捕获`Promise`错误的方式，提供`Promise`链的错误处理机制。
 
@@ -1036,7 +1036,7 @@ interface FallbackDataService {
 
 class PrimaryDataService implements FallbackDataService {
   async getData(): Promise<string> {
-        // 模拟主服务可能失败
+    // 模拟主服务可能失败
     throw new Error('主服务不可用');
   }
 }

@@ -5,9 +5,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=7120e32332fffd38f0af7024c4cb350c11d6fd90 translatedAt=2026-11-03T06:31:48.948Z pushedAt=2026-11-03T07:53:58.395Z nl=1 -->
+<!-- md-trans-meta sourceCommit=2348ec05ef98b768ce1767324aeb24767349c321 translatedAt=2026-11-12T03:27:47.771Z pushedAt=2026-11-12T08:59:46.238Z nl=1 -->
 
-In ArkUI, components refer to the elements displayed on the UI. They fall into two categories: built-in components (provided by the ArkUI framework out of the box) and custom components (defined by developers). When developing UIs, you need to not only combine and use system components, but also consider factors such as code reusability, separation of business logic from the UI, and future version evolution. Creating custom components, which encapsulate UI elements and service logic, serves as a critical step in achieving this goal.
+In ArkUI, components refer to the elements displayed on the UI. They fall into two categories: built-in components (provided by the ArkUI framework out of the box) and custom components (defined by developers). When developing UIs, you need to not only combine and use system components, but also consider factors such as code reusability, separation of service logic from the UI, and future version evolution. Creating custom components, which encapsulate UI elements and service logic, serves as a critical step in achieving this goal.
 
 Custom components offer the following features:
 
@@ -102,7 +102,7 @@ The definition of a custom component must start with the \@Component struct foll
 
 ### \@Entry
 
-A custom component decorated with [@Entry](../../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entry) serves as the entry to a [UI page](../arkts-router-to-navigation.md#page-structure). A single UI page can have only one @Entry decorated custom component as the page entry.
+[\@Entry](../../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entry) A custom component decorated with [@Entry](../../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entry) serves as the entry to a UI [page](../arkts-router-to-navigation.md#page-structure). A single UI page can have only one @Entry decorated custom component as the page entry.
 
   > **NOTE**
   >
@@ -288,10 +288,10 @@ The initialization rules for member variables of a custom component vary dependi
 | [@ObjectLink](arkts-observed-and-objectlink.md) | Not supported | Mandatory. A class instance decorated by [@Observed](arkts-observed-and-objectlink.md) must be passed in (complex types can be passed in since API version 19). |
 | [@Provide](arkts-provide-and-consume.md) | Mandatory | Optional. If a non-undefined value is passed, the passed value is used; otherwise, the local default value is used. |
 | [@Consume](arkts-provide-and-consume.md) | Not supported (optional since API version 20) | Not supported. Initialized by matching the alias/variable name \@Provide. |
-| [@StorageProp](arkts-appstorage.md) | Mandatory | Not supported. Initialized through the corresponding key in [AppStorage](arkts-appstorage.md). |
-| [@StorageLink](arkts-appstorage.md) | Mandatory | Not supported. Initialized through the corresponding key in [AppStorage](arkts-appstorage.md). |
-| [@LocalStorageProp](arkts-localstorage.md) | Mandatory | Not supported. Initialized through the corresponding key in [LocalStorage](arkts-localstorage.md). |
-| [@LocalStorageLink](arkts-localstorage.md) | Mandatory | Not supported. Initialized through the corresponding key in [LocalStorage](arkts-localstorage.md). |
+| [@StorageProp](arkts-appstorage.md#storageprop) | Mandatory | Not supported. Initialized through the corresponding key in [AppStorage](arkts-appstorage.md). |
+| [@StorageLink](arkts-appstorage.md#storagelink) | Mandatory | Not supported. Initialized through the corresponding key in [AppStorage](arkts-appstorage.md). |
+| [@LocalStorageProp](arkts-localstorage.md#localstorageprop) | Mandatory | Not supported. Initialized through the corresponding key in [LocalStorage](arkts-localstorage.md). |
+| [@LocalStorageLink](arkts-localstorage.md#localstoragelink) | Mandatory | Not supported. Initialized through the corresponding key in [LocalStorage](arkts-localstorage.md). |
 
 **Initialization Rules for @ComponentV2 Member Variables**
 
@@ -304,7 +304,7 @@ The initialization rules for member variables of a custom component vary dependi
 | [@Provider](arkts-new-provider-and-consumer.md) | Mandatory | Not supported. |
 | [@Consumer](arkts-new-provider-and-consumer.md) | Mandatory | Not supported. Initialized by matching the alias/variable name \@Provider. |
 
-The following example uses a regular variable to demonstrate how to initialize parameters of a custom component in the build method. For usage examples of other decorators, refer to their respective documentation.
+The following example uses an ordinary variable to demonstrate how to initialize parameters of a custom component in the build method. For usage examples of other decorators, refer to their respective documentation.
 
 <!-- @[Parameter_specification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParameterSpecification.ets) -->  
 

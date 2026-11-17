@@ -5,6 +5,7 @@
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=ecf5d58a25055daa53a34747272770e0f3c1f57a translatedAt=2026-11-12T04:18:20.962Z pushedAt=2026-11-12T08:35:17.722Z nl=1 -->
 
 >  **NOTE**
 >
@@ -24,13 +25,13 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 
 | Name| Type| Default Value| Mandatory| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| min | number | 0 | No| Minimum value of the slider.|
-| max | number | 100 | No| Maximum value of the slider.|
+| min | number | 0 | No | Minimum value of the slider. |
+| max | number | 100 | No | Maximum value of the slider. |
 | step | number | 1 | No| Step of each slide.|
-| value | number | 0 | No| Initial value of the slider.|
+| value | number | 0 | No | Initial value of the slider. |
 | mode<sup>5+</sup> | string | outset | No| Slider style. Available values are as follows:<br>- **outset**: The slider is on the slider track.<br>- **inset**: The slider is in the slider track.|
-| showsteps<sup>5+</sup> | boolean | false | No| Whether to display slider scales.|
-| showtips<sup>5+</sup> | boolean | false | No| Whether a tooltip is displayed to show the percentage value on the slider.|
+| showsteps<sup>5+</sup> | boolean | false | No| Whether to display slider scales. The value **true** means to display slider scales, and **false** means the opposite.|
+| showtips<sup>5+</sup> | boolean | false | No| Whether a tooltip is displayed to show the percentage value on the slider. The value **true** means a tooltip is displayed, and **false** means the opposite.|
 
 
 ## Styles
@@ -41,7 +42,7 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | -------- | -------- | -------- | -------- | -------- |
 | color | &lt;color&gt; | #19000000 | No| Background color of the slider.|
 | selected-color | &lt;color&gt; | #ff007dff | No| Selected color of the slider.|
-| block-color | &lt;color&gt; | \#ffffff | No| Slider color.|
+| block-color | &lt;color&gt; | #ffffff | No | Block color of the slider. |
 
 
 ## Events
@@ -56,8 +57,8 @@ In addition to the [universal events](js-components-common-events.md), the follo
 
 | Attribute| Type| Description|
 | -------- | -------- | -------- |
-| value<sup>5+</sup> | number | Current value of the slider.|
-| mode<sup>5+</sup> | string | Type of the change event. Available values are as follows:<br>- **start**: The **value** starts to change.<br>- **move**: The **value** is changing with users' dragging.<br>- **end**: The **value** stops changing.<br>- **click**: The **value** changes upon a touch on the slider.|
+| value<sup>5+</sup> | number | Current progress value of the slider. |
+| mode<sup>5+</sup> | string | Type of the current change event. Available values are as follows:<br/>-&nbsp;**start**: The value of the slider starts to change.<br/>-&nbsp;**move**: The value of the slider changes with users' dragging.<br/>-&nbsp;**end**: The value of the slider stops changing.<br/>-&nbsp;**click**: The value of the slider changes upon a touch on the slider. |
 
 
 ## Example
@@ -85,3 +86,5 @@ In addition to the [universal events](js-components-common-events.md), the follo
 
 
 ![en-us_image_0000001173324709](figures/slider.png)
+
+

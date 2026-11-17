@@ -30,7 +30,7 @@ The ISendable type alias is defined to align with the API specifications of the 
 
 | Type               | Description                    |
 | ------------------ | ------------------------ |
-| [lang.ISendable](../apis-arkts/js-apis-arkts-lang.md#langisendable)  | Parent type of all sendable types.              |
+| [lang.ISendable](../apis-arkts/js-apis-arkts-lang.md)  | Parent type of all sendable types.              |
 
 ## sendableColorSpaceManager.create
 

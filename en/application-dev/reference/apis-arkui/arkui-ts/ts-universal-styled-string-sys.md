@@ -5,7 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=92567145241181b97abe57e944e177355e50f4eb translatedAt=2026-09-02T12:35:22.932Z -->
+<!-- md-trans-meta sourceCommit=8aa8522c1582655206875d9c89c21656113a2dda translatedAt=2026-11-03T03:58:23.288Z pushedAt=2026-11-13T01:06:00.178Z nl=1 -->
 
 A styled string is an object used to flexibly apply and manage text styles. It supports serialization storage of text styles, cross-process transfer, and custom style extension. This object can be bound to the **Text** component through [setStyledString](ts-basic-components-text.md#setstyledstring12) in TextController, or to the **RichEditor** component through [setStyledString](ts-basic-components-richeditor.md#setstyledstring12) in RichEditorStyledStringController. It is suitable for scenarios where complex text styles need to be persisted in an application or shared across components.
 
@@ -64,7 +64,7 @@ Use this method when a styled string contains custom styles such as UserDataSpan
 
 | Type             |Description      |
 | ------- | --------------------------------- |
-| ArrayBuffer | Buffer information after serialization.<br>**Note:** <br>Currently, text and images are supported. |
+| ArrayBuffer | Buffer information after serialization.<br>**Description:** <br>Supports serialization of text, images, and custom UserDataSpan objects.|
 
 ### unmarshalling
 
@@ -122,7 +122,7 @@ Use this method when restoring a styled string that contains custom styles such 
 
 | Type                            | Description                 |
 | -------------------------------- | --------------------- |
-| Promise\<[StyledString](ts-universal-styled-string.md#styledstring)> |Promise object, which returns the styled string on success and an error code on failure. For details about the error codes, see the error code section.<br>**Note:** <br>Currently, text and images are supported. |
+| Promise\<[StyledString](ts-universal-styled-string.md#styledstring)> |Promise object that returns the styled string on success and an error code on failure. For details, see the error codes.<br>**NOTE**<br>Supports deserialization of text, images, and custom **UserDataSpan**. |
 
 **Error codes**
 

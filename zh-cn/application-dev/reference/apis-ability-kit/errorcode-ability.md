@@ -2198,6 +2198,26 @@ The specified application is not authorized to start before the user is unlocked
 确认目标应用已申请并获授[ohos.permission.ALLOW_DIRECT_BOOT](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionallow_direct_boot)权限，再重新设置用户解锁前自启动。
 <!--DelEnd-->
 
+<!--Del-->
+## 16000210 目标进程受MDM应用保护无法终止
+
+**错误信息**
+
+The target process is protected by an MDM application and cannot be terminated.
+
+**错误描述**
+
+调用[appManager.killProcessWithAccountSafely](js-apis-app-ability-appManager-sys.md#appmanagerkillprocesswithaccountsafely)终止应用进程时，如果查询到目标应用已被MDM设置为禁止停止，方法将返回该错误码。
+
+**可能原因**
+
+目标应用已被MDM设置为禁止停止。
+
+**处理步骤**
+
+确认目标应用的MDM防禁用配置。如需终止该应用进程，请先由MDM解除防禁用配置，再重试。
+<!--DelEnd-->
+
 ## 10110000 装饰器参数声明错误
 
 **错误信息**

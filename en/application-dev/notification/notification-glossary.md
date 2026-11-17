@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-11-03T09:17:02.335Z pushedAt=2026-11-03T09:17:02.335Z nl=1 -->
+<!-- md-trans-meta sourceCommit=23b90a9f0d809e2f9c0564bfb86befaf8a00ba9e translatedAt=2026-11-10T07:43:55.762Z pushedAt=2026-11-10T07:46:25.604Z nl=1 -->
 
 ## C
 
@@ -57,10 +57,6 @@ A notification that is directly published and displayed locally on the client by
 
 A type of live view notification that is created and updated directly by system applications. It supports multiple update modes such as incremental and full updates, as well as extended content such as attached images and buttons, and is used by system applications to display real-time status.
 
-### Notification Action Button
-
-An interactive action button displayed in a notification. It allows users to trigger a `WantAgent` action by tapping the button. A notification can contain up to two buttons, which are suitable for quick actions such as "Reply" and "Mark as read".
-
 ### Notification Authorization
 
 A user permission that an app must obtain before publishing notifications. The system displays a dialog box for the user to decide whether to allow the app to send notifications.
@@ -71,7 +67,7 @@ A notification count indicator displayed as a number in the upper right corner o
 
 ### Notification Button
 
-An interactive button displayed in a live view, as part of the live view notification content. You can configure a button name list and an icon list, with a maximum of three buttons. Unlike a notification action button, it is dedicated to live view scenarios.
+An interactive action button displayed in a notification, used to let users trigger a WantAgent action by tapping the button. A non-Live View notification can contain at most two buttons, which is applicable to quick-action scenarios such as **Reply** and **Mark as read**. A Live View notification supports up to three buttons, and supports configuring a list of button names and a list of icons.
 
 ### Notification Capsule
 
@@ -84,10 +80,6 @@ A card displayed on the device after notification publication. It appears in the
 ### Notification Center
 
 A system UI on the device that centrally displays and manages notifications. After a notification is published, it is displayed in the notification center, where users can view, manage, and delete notifications. An application can query the number and details of its existing notifications in the notification center.
-
-### Notification Check
-
-A mechanism by which a system application authenticates the content and channel of a notification before it is published. A notification is displayed only after passing the check; otherwise, it is blocked. This mechanism enables unified control and filtering before notifications are displayed.
 
 ### Notification Content
 
@@ -105,10 +97,6 @@ A Kit that provides a local notification publication channel for developers. It 
 
 A description field used to display progress bar information in a live view. It is a component of live view notification content.
 
-### Notification Proxy
-
-A notification published by one application on behalf of another. When published, it carries the identity information of the proxied application so that the notification is displayed under the identity of the proxied application. It applies to scenarios where a system application sends notifications on behalf of third-party applications in a unified manner.
-
 ### Notification Request
 
 A data carrier that describes all information of a notification, including notification content, identifiers, display styles, and interaction behaviors. When publishing a notification, you use it to specify the attributes of the notification. It serves as the basis for notification publication and update.
@@ -125,18 +113,6 @@ The setting states of notification reminder method switches, including the switc
 
 A classification mechanism for managing notification reminder methods (sound, vibration, lock screen display, and so on). Notifications in the same slot share consistent reminder behavior. By creating and configuring slots, you can uniformly manage the reminder behavior, such as ringtone, vibration, and banner, of different categories of notifications from the same application.
 
-### Notification Smart Aggregation
-
-A mechanism that automatically merges multiple related notifications into one aggregation group based on aggregation scenarios and rules. You can set the title and summary of an aggregation group to intelligently aggregate a large number of similar notifications and improve the readability of the notification list.
-
-### Notification Snooze
-
-A mechanism that sets an existing notification to remind again after a specified time interval. Each setting triggers only one reminder, and the reminder method is the same as that of the original notification. After the setting takes effect, the original notification is deleted. This mechanism applies to scenarios where a user wants to postpone handling a notification and receive a reminder again later.
-
-### Notification Sorting
-
-Provides sorting information about activity notifications, including the notification channel, notification level, and unique notification identifier. The system sorts and displays activity notifications among the subscribed notifications based on the sorting information. You can obtain the sorting information of all activity notifications in batches through the notification sorting map.
-
 ### Notification Subscription
 
 A mechanism by which an application registers a subscriber with the notification subsystem to receive notification changes. It supports subscribing to notifications published by all apps or by specified apps.
@@ -145,17 +121,7 @@ A mechanism by which an application registers a subscriber with the notification
 
 An update mechanism in which a newly published notification replaces an existing notification when both have the same ID and tag. If no notification with the same ID exists, a new notification is created. You can set the `updateOnly` field to control whether only updates are allowed without creating a new notification.
 
-## P
-
-### Priority Notification
-
-A feature that marks specific types of notifications as priority notifications through priority policies. It supports methods such as intelligent recognition, user keyword matching, and app rule matching, and covers management capabilities including the priority master switch, app-level switch, intelligent service enablement status, and priority policies. It ensures that important notifications (such as payment and repayment, account transaction reminders, logistics progress, and missed calls) receive priority processing and display, and is distinct from the notification priority of a notification channel.
-
 ## S
-
-### Silent Reminder
-
-A notification reminder method at the application level. After it is enabled for an application, notifications published by the application do not trigger reminder behaviors such as ringtones and vibration upon delivery, and are only displayed silently. It applies to notification scenarios that do not require immediate interruption of the user, and is independent of the system-level Do Not Disturb mode.
 
 ### System Live View
 

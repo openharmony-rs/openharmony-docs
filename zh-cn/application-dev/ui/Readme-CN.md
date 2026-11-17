@@ -179,7 +179,7 @@
        - [弹出框控制器](arkts-dialog-controller.md)
        - [弹出框焦点策略](arkts-dialog-focusable.md)
        - [弹出框蒙层控制](arkts-dialog-mask.md)
-       - [弹出框迁移指南](arkui-dialog-migration-guide.md)
+       - [弹出框迁移指导](arkui-dialog-migration-guide.md)
      - 菜单<!--arkts-use-menu-->
        - [菜单概述](arkts-menu-overview.md)
        - [菜单控制（Menu）](arkts-popup-and-menu-components-menu.md)
@@ -194,7 +194,8 @@
         - [绑定全模态页面（bindContentCover）](arkts-contentcover-page.md)
      - [即时反馈（Toast）](arkts-create-toast.md)
      - [设置浮层（OverlayManager）](arkts-create-overlaymanager.md)<!--RP9--><!--RP9End-->
-  - 沉浸光感<!--arkts-immersive-light-sense-->
+     - [弹窗跟手](arkts-ui-handedness.md)
+   - 沉浸光感<!--arkts-immersive-light-sense-->
     - [沉浸光感简介](arkts-immersive-light-sense-overview.md)
     - 沉浸光感开发指导<!--arkts-immersive-light-sense-development-->
       - [开启沉浸光感](arkts-immersive-light-sense-enable.md)
@@ -409,6 +410,7 @@
 - UI开发调试调优<!--ui-debug-optimize-->
   - UI稳定性故障调试<!--ui-stability-->
     - [UI稳定性故障分析概述](arkts-stability-guide.md)
+    - [ArkUI NDK稳定性检测](ndk-stability-detection.md)
     - [UI相关应用崩溃常见问题](arkts-stability-crash-issues.md)
     - [UI相关应用无响应常见问题](arkts-stability-freeze-issues.md)
   - [UI显示异常调试](arkts-layout-debug.md)

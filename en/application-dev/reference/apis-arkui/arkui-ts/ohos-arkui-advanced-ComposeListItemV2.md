@@ -1,12 +1,12 @@
 # ComposeListItemV2
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @rongShao-Z; @wind_-->
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=33a389a0fc34d0c1a1567d26d02e828fcea05659 translatedAt=2026-08-28T01:31:52.196Z pushedAt=2026-08-28T09:09:08.968Z -->
+<!-- md-trans-meta sourceCommit=ff7d128f46b76146f819c18111e12c2a46f98198 translatedAt=2026-11-03T01:25:00.627Z pushedAt=2026-11-13T01:05:59.852Z nl=1 -->
+
 
 The **ComposeListItemV2** component is used to display a series of list items with the same width, suitable for presenting continuous, multi-row combinations of similar data (such as images and text).
 
@@ -48,6 +48,7 @@ Defines the left element, middle element, and right display content of the list 
 
 **Device behavior differences:** The actual device types supported by this API (phone, PC/2-in-1 device, tablet, and TV) are fewer than those supported by its system capability (phone, PC/2-in-1 device, tablet, TV, and wearable). Due to hardware capability restrictions, calling this API on wearables results in a runtime exception indicating that the API is undefined.
 
+
 | Name | Type | Mandatory | Decorator Type | Description |
 | -------- | -------- | -------- | -------- | -------- |
 | contentItemV2 | [ContentItemV2](#contentitemv2) | No | \@Param | Left and middle elements of the list item.<br/>If not set or set to undefined, the left and middle elements are not displayed. |
@@ -56,6 +57,8 @@ Defines the left element, middle element, and right display content of the list 
 ## ContentItemV2
 
 Defines the left icon, icon size, and middle element text content displayed in the list item.
+
+### Attributes
 
 **Since:** 26.0.0
 
@@ -68,6 +71,7 @@ Defines the left icon, icon size, and middle element text content displayed in t
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 **Device behavior differences:** The actual device types supported by this API (phone, PC/2-in-1 device, tablet, and TV) are fewer than those supported by its system capability (phone, PC/2-in-1 device, tablet, TV, and wearable). Due to hardware capability restrictions, calling this API on wearables results in a runtime exception indicating that the API is undefined.
+
 
 | Name | Type | Read-only | Optional | Description |
 | -------- | -------- |---|----|-------------|
@@ -99,6 +103,7 @@ A constructor used to create a **ContentItemV2** object.
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ---- | ---- |
 | options | [ContentItemV2Options](#contentitemv2options) | No | Configuration of the left element of the list item.<br/>If not set or set to **undefined**, an object is created based on the default effect of each attribute. |
+
 
 ## ContentItemV2Options
 
@@ -152,6 +157,8 @@ Enumerates icon types for the left element of list items.
 
 Defines the element types for the right element of list items.
 
+### Attributes
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -199,6 +206,7 @@ A constructor used to create an **OperateItemV2** object.
 | ------ | ---- | ---- | ---- |
 | options | [OperateItemV2Options](#operateitemv2options) | No | Configuration of the right element of the list item.<br/>If not set or set to undefined, an object is created based on the default effect of each attribute. |
 
+
 ## OperateItemV2Options
 
 Defines the options for the **OperateItemV2** constructor.
@@ -229,6 +237,8 @@ Defines the options for the **OperateItemV2** constructor.
 ## OperateIconV2
 
 Defines the type of the right icon element of the list item.
+
+### Attributes
 
 **Since:** 26.0.0
 
@@ -273,6 +283,7 @@ A constructor used to create an **OperateIconV2** object.
 | ------ | ---- | ---- | ---- |
 | options | [OperateIconV2Options](#operateiconv2options) | No | Configuration of the right icon of the list item.<br/>If this parameter is not set or is set to **undefined**, an object is created based on the default effect of each attribute. |
 
+
 ## OperateIconV2Options
 
 Defines options for the **OperateIconV2** constructor.
@@ -299,6 +310,8 @@ Defines options for the **OperateIconV2** constructor.
 ## OperateButtonV2
 
 Defines the type of the right button element of the list item.
+
+### Attributes
 
 **Since:** 26.0.0
 
@@ -341,6 +354,7 @@ A constructor used to create a **OperateButtonV2** object.
 | ------ | ---- | ---- | ---- |
 | options | [OperateButtonV2Options](#operatebuttonv2options) | No | Configuration of the right icon of the list item.<br/>If not set or set to **undefined**, an object is created based on the default effect of each attribute. |
 
+
 ## OperateButtonV2Options
 
 Defines options for the **OperateButtonV2** constructor.
@@ -365,6 +379,8 @@ Defines options for the **OperateButtonV2** constructor.
 ## OperateCheckV2
 
 Defines the **Switch**, **CheckBox**, and **Radio** types for the right element of the list item. You can set the corresponding attribute based on the type.
+
+### Attributes
 
 **Since:** 26.0.0
 
@@ -422,9 +438,9 @@ Defines options for the **OperateCheckV2** constructor.
 
 **Device behavior differences:** The actual device types supported by this API (phone, PC/2-in-1 device, tablet, and TV) are fewer than those supported by its system capability (phone, PC/2-in-1 device, tablet, TV, and wearable). Due to hardware capability restrictions, calling this API on wearables results in a runtime exception indicating that the API is undefined.
 
-| Name | Type | Readonly | Optional | Description |
+| Name | Type | Read-Only | Optional | Description |
 | -------- | -------- | -------- | -------- | -------- |
-| isCheck | boolean | No | Yes | Selected state of the right element **Switch**, **CheckBox**, or **Radio** of the list item.<br/>The value **true** indicates selected, and **false** indicates unselected. |
+| isCheck | boolean | No | Yes | Selected state of the **Switch**/**CheckBox**/**Radio** element on the right side of the list item.<br/>The default value is **false**.<br/>The value **true** indicates selected, and **false** indicates not selected. |
 | onChange | [OnChangeCallback](#onchangecallback) | No | Yes | Callback triggered when the selected state of the right element **Switch**, **CheckBox**, or **Radio** of the list item changes.<br/>By default or when set to **undefined**, the callback is not triggered when the state changes. |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility text of the right element **Switch**, **CheckBox**, or **Radio** of the list item. When a component does not contain a text attribute, the screen reader does not announce it upon selection, leaving users unaware of which component is currently selected. To address this, you can set accessibility text for components without text information. When the screen reader selects such a component, it announces the accessibility text, helping screen reader users clearly understand which component they have selected.<br/>Default value: **""** |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the right element **Switch**, **CheckBox**, or **Radio** of the list item. This description is used to explain the current component to users in detail. You should provide a relatively detailed text description for this attribute to help users understand the operation to be performed and its possible consequences, especially when such consequences cannot be directly inferred from the component's attributes and accessibility text. If a component that is selected has both a text attribute and an accessibility description attribute, the system first announces the text attribute, followed by the accessibility description.<br/>By default, the announcement rules of the base components **Switch**, **CheckBox**, and **Radio** are followed. |
@@ -469,7 +485,6 @@ Defines the callback triggered when the state of the right element **Switch**, *
 | value | boolean   | Yes   | Callback triggered when the selection state of the right element **Switch**, **CheckBox**, or **Radio** element of the list item changes.<br>The value **true** indicates that the state changes from unselected to selected.<br>The value **false** indicates that the state changes from selected to unselected. |
 
 ## Events
-
 [Universal events](ts-component-general-events.md) are not supported.
 
 ## Example
@@ -515,7 +530,6 @@ struct ComposeListItemV2Example {
   }
 }
 ```
-
 <!--Del--> <!--DelEnd-->
 
 ### Example 2: Setting Custom Announcements for Different Right Elements of the List Item
@@ -607,7 +621,6 @@ struct ComposeListItemV2Example {
   }
 }
 ```
-
 <!--Del--> <!--DelEnd-->
 
 ### Example 3: Setting Symbol Icons
@@ -690,5 +703,4 @@ struct ComposeListItemV2Example {
   }
 }
 ```
-
 <!--Del--> <!--DelEnd-->

@@ -1,4 +1,4 @@
-# Document Description
+# Development Description
 
 <!--Kit: Common-->
 <!--Subsystem: Common-->
@@ -6,6 +6,7 @@
 <!--Designer: @RayShih-->
 <!--Tester: @RayShih-->
 <!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=714e48ace2337db6c5d136b0714f8325862b56dd translatedAt=2026-11-06T12:21:52.517Z pushedAt=2026-11-13T13:12:32.985Z nl=1 -->
 
 API references provide the description of APIs used for application development. This topic describes common fields in the API references to help you better use the reference document.
 
@@ -14,7 +15,9 @@ API references provide the description of APIs used for application development.
 In API references, the earliest versions of APIs and components are specified in the following ways:
 
 - For a new API or component, the version information is provided at the beginning of the reference document. Example: "The initial APIs of this module are supported since API version 7."
-- For a new feature of an existing API or component, a superscript is added following the feature. For example, "uid<sup>8+</sup>" indicates that the **uid** attribute is supported since API version 8.
+- For a new feature of an existing component or API, the version information is provided after the feature. Example: "uid<sup>8+</sup>" indicates that the uid attribute is supported since API version 8.
+
+<!--RP3--><!--RP3End-->
 
 ## System Capability Description
 
@@ -23,10 +26,9 @@ System capability refers to a relatively independent feature in the operating sy
 The following description is provided for each API in the reference document to describe the system capability of the API: "**System capability**: SystemCapability.xxx.xxx"
 
 <!--Del-->
-- You can use the [SystemCapability List](phone-syscap-list.md) to query the devices supported by a specific capability set.<!--DelEnd-->
-- You can call the **canIUse** API to [check whether an API is available](syscap.md#checking-whether-an-api-is-available).
-- The performance of a SysCap may vary by device type. You can [check the differences between devices with a specific SysCap](syscap.md#checking-the-differences-between-devices-with-a-specific-syscap).
-<!--RP2--><!--RP2End-->
+- You can use the [SystemCapability list](phone-syscap-list.md) to quickly look up the devices supported by a specific capability set; <!--DelEnd-->
+- The system provides the canIUse API. You can [use canIUse to check whether a SysCap is callable](./syscap.md#using-caniuse-to-determine-whether-a-syscap-can-be-called);
+- The same system capability may differ across devices. You can perform [adaptation development in multi-device application development scenarios](./syscap.md#adaptation-development-in-multi-device-app-development-scenarios).
 
 <!--RP1--><!--RP1End-->
 
@@ -91,7 +93,7 @@ The public SDK, which does not include system APIs, is provided as standard in D
 
 A deprecated API is an API no longer recommended and is marked with the <sup>deprecated</sup> superscript.
 
-While deprecated APIs can still be implemented in the five API levels immediately following the version when the API is deprecated, this is not recommended.
+A deprecated API is marked with the version since which it is deprecated. OpenHarmony may remove deprecated APIs in the future, but will notify developers in advance before removal.
 
-- Do not use deprecated APIs in new code. If possible, rewrite old code by replacing the deprecated APIs with their substitutes.
-- If no substitute is available, change the implementation mode by referring to the deprecation description and changelog.
+- If a replacement API is provided, you are advised to refer to the documentation of the new API and complete adaptation as soon as possible.
+- If no replacement API is provided, you are advised to refer to the deprecation description and the change log (changelog) to adjust the implementation.

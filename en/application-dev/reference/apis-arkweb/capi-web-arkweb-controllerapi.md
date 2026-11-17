@@ -1,12 +1,11 @@
 # ArkWeb_ControllerAPI
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-03T09:52:39.334Z pushedAt=2026-08-06T09:18:52.725Z -->
+<!-- md-trans-meta sourceCommit=139f361c99d1eb7fa10bc5ed4f9201142264b775 translatedAt=2026-11-06T11:45:28.740Z pushedAt=2026-11-13T11:15:58.141Z nl=1 -->
 
 ```c
 typedef struct {...} ArkWeb_ControllerAPI
@@ -31,6 +30,7 @@ Controller-related APIs must be called on the UI thread by calling the OH_ArkWeb
 | Name| Description|
 | -- | -- |
 | size_t size | Size of the struct.|
+
 
 ### Member Functions
 
@@ -161,7 +161,7 @@ After creating ports, you need to send the ports to the HTML main page through p
 
 | Type                          | Description|
 |------------------------------|----|
-| [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md) | Pointer to the message port.  |
+| [ArkWeb_WebMessagePortPtr](capi-web-arkweb-webmessageport8h.md)* | Post Message port structure pointer.   |
 
 ### destroyWebMessagePorts()
 
@@ -217,7 +217,7 @@ const char* (*getLastJavascriptProxyCallingFrameUrl)()
 
 **Description**
 
-Obtains the URL of the last frame that calls JavaScriptProxy. This method records the frame context of the last JavaScript call through a frame stack tracing mechanism. It is called on the thread where JavaScriptProxy is called. A JavaScript object is injected into the window object through registerJavaScriptProxy or JavaScriptProxy. This API can obtain the URL of the frame that last called the injected object. If the injected object has never been called, the return value is undefined. The correct URL can be obtained only when this API is called inside the called function. You can obtain the URL inside the function and save it. This API must be called on the UI thread by calling the OH_ArkWeb_GetNativeAPI method.
+Obtains the URL of the last frame that invoked JavaScriptProxy. This method uses a frame stack tracking mechanism to record the frame context of the last JavaScript call. Call it on the thread where JavaScriptProxy is invoked. Inject a JavaScript object into the window object through [registerJavaScriptProxy()](#registerjavascriptproxy) or [javaScriptProxy](./arkts-basic-components-web-attributes.md#javascriptproxy). This Interface can obtain the URL of the frame that last invoked the injected object. If the injected object has never been invoked, the return value is undefined. The correct URL can be obtained only when it is retrieved inside the called function. You can retrieve the URL inside the function and then save it. Call OH_ArkWeb_GetNativeAPI on the UI thread to obtain this Interface.
 
 **Since**: 14
 
@@ -266,3 +266,4 @@ Injects a JavaScript object into the window object and calls the asynchronous me
 | const char* webTag | Name of the **Web** component. |
 | const ArkWeb_ProxyObject* proxyObject | Object to be registered. |
 | const char* permission | JSON format string, which defaults to an empty value. It is used to configure the permission restrictions of JSBridge at the object and method levels. |
+

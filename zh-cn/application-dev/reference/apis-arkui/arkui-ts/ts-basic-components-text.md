@@ -784,25 +784,7 @@ heightAdaptivePolicy(value: TextHeightAdaptivePolicy)
 
 规则如下：
 
-```mermaid
-graph TD
-  A[文本自适应布局] --> B{模式选择}
-  B -->|MAX_LINES_FIRST| C[优先用maxLines调整高度]
-  C --> D{布局是否超过约束?}
-  D -->|是| E[在minFontSize~maxFontSize范围内缩小字体以显示更多文本]
-  D -->|否| F[保持当前布局]
-  B -->|MIN_FONT_SIZE_FIRST| G[优先用minFontSize调整高度]
-  G --> H{能否一行显示?}
-  H -->|是| I[在minFontSize~maxFontSize范围内增大字体至最大]
-  H -->|否| J[按minFontSize显示]
-  B -->|LAYOUT_CONSTRAINT_FIRST| K[优先用布局约束调整高度]
-  K --> L{布局是否超过约束?}
-  L -->|是| M[缩小字体以满足约束]
-  M --> N{缩小到minFontSize后仍超约束?}
-  N -->|是| O[删除超过布局约束的行]
-  N -->|否| F
-  L -->|否| F
-```
+![](figures/heightAdaptivePolicy-flowchart.png)
 
 - MAX_LINES_FIRST模式：优先使用[maxLines](#maxlines)属性来调整文本高度。如果使用maxLines属性的布局大小超过了布局约束，则尝试在[minFontSize](#minfontsize)和[maxFontSize](#maxfontsize)的范围内缩小字体以显示更多文本。
 

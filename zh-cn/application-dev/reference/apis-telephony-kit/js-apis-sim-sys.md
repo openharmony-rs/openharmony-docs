@@ -33,7 +33,7 @@ isOperatorSimCard\(slotId: number, operator: OperatorSimCard\): boolean
 
 | 参数名  | 类型                                     | 必填 | 说明                                |
 | ------ | --------------------------------------- | ---- | ---------------------------------  |
-| slotId | number                                  | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| slotId | number                                  | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2。<br>取值限定为整数。 |
 | operator | [OperatorSimCard](#operatorsimcard11) | 是   | 运营商卡名称。（当前仅支持中国电信卡）|
 
 **返回值：**

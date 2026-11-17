@@ -1,20 +1,21 @@
 # ChipGroup
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @song-song-song-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @weixin_45530366-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=cb07c88a12c08531483c587b9f716e1ef72fa986 translatedAt=2026-08-24T06:51:52.238Z pushedAt=2026-08-25T07:34:32.961Z -->
+<!-- md-trans-meta sourceCommit=808f3307b7c9837036cb1a7536d6fdfd3277166b translatedAt=2026-11-03T01:23:25.713Z pushedAt=2026-11-13T01:05:59.846Z nl=1 -->
 
 The **ChipGroup** component provides chip group capabilities, supporting single-selection or multi-selection modes, customizable styles, icons, and spacing, as well as selected state management and event callbacks. It is suitable for various scenarios such as file categorization, resource filtering, tag selection, and content grouping, helping developers quickly implement selection functionality while delivering a consistent visual and interactive experience.
 
 > **NOTE**
 >
-> - This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 12. Newly added content in later versions will be marked with a superscript to indicate the version in which it was introduced.
 >
 > - The APIs of this module can be used only in the stage model.
+>
+> - If [universal attributes](ts-component-general-attributes.md) or [universal events](ts-component-general-events.md) are set for **ChipGroup**, the compilation toolchain additionally generates a node named **\_\_Common\_\_** and mounts the universal attributes or universal events on **\_\_Common\_\_** instead of applying them directly to **ChipGroup** itself. This may cause the universal attributes or universal events set by developers to fail to take effect or to behave unexpectedly. Therefore, it is not recommended to set universal attributes and universal events for **ChipGroup**.
 
 ## Modules to Import
 
@@ -38,6 +39,7 @@ ChipGroup({ <br>
   backgroundSystemMaterial?: uiMaterial.Material, <br> 
   selectedBackgroundSystemMaterial?: uiMaterial.Material, <br> 
   onChange?: Callback<Array<number\>\>, <br> 
+  onItemsChange?: Callback<ChipGroupItemOptions[]\>, <br> 
   suffix?: Callback<void\> <br> 
 })
 
@@ -50,14 +52,15 @@ ChipGroup({ <br>
 | Name           | Type                                           | Mandatory| Decorator| Description                                                                                    |
 | --------------- | ----------------------------------------------- | ---- | ------------------------------------------------------------                             | ------------------------------------------------------------                             |
 | items           | [ChipGroupItemOptions[]](#chipgroupitemoptions) | Yes   | @Require &nbsp;@Prop | Specific properties of each chip. For details, see [ChipGroupItemOptions[]](#chipgroupitemoptions).<br>If **undefined**, ChipGroup is empty by default.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| itemStyle       | [ChipItemStyle](#chipitemstyle)                 | No   | @Prop | Style of the chip, such as color and size. For details, see [ChipItemStyle](#chipitemstyle). Pass this parameter when you need to customize the appearance of the chip, such as changing the background color, font color, and size.<br>Default value:<br>**{  size: ChipSize.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }**<br>If **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
+| itemStyle       | [ChipItemStyle](#chipitemstyle)                 | No   | @Prop | Style of the `Chip`, such as color and size. For details, see [ChipItemStyle](#chipitemstyle). Pass this parameter when you need to customize the appearance of the chip, such as changing the background color, font color, and size.<br>Default value:<br>{  size: ChipSize.NORMAL, backgroundColor: $r('sys.color.ohos_id_color_button_normal'), fontColor: $r('sys.color.ohos_id_color_text_primary'), selectedFontColor: $r('sys.color.ohos_id_color_text_primary_contrary'), selectedBackgroundColor: $r('sys.color.ohos_id_color_emphasize') }<br>If **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | selectedIndexes | Array&lt;number&gt;                             | No   | @Prop | Indexes of the selected chips, counted from 0.<br>Value range: The index value is a non-negative integer and cannot exceed the length of the **items** array minus 1.<br>If a negative number, an index value beyond the array range, or a non-integer is passed, the index value does not take effect.<br>Default value: **[0]**<br>If **multiple** is **false** and **selectedIndexes** is an empty array, the first chip is selected by default. If **selectedIndexes** contains multiple elements, only the first index takes effect.<br>If **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12.  |
 | multiple        | boolean                                         | No   | @Prop | Whether to select multiple chips.<br>**true**: Multiple chips can be selected, which applies to scenarios where multiple options need to be selected at the same time, such as multi-tag selection and multi-condition filtering. **false**: Only a single chip can be selected, which applies to single-selection scenarios, such as single-item selection.<br>Default value: **false**<br>If **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | chipGroupSpace  | [ChipGroupSpaceOptions](#chipgroupspaceoptions) | No   | @Prop | Left and right padding and spacing between chips. For details, see [ChipGroupSpaceOptions](#chipgroupspaceoptions). Pass this parameter when the default spacing cannot meet the layout requirements or when the spacing between chips needs to be adjusted according to the UI design.<br>Default value: **{ itemSpace: 8, startSpace: 16, endSpace: 16 }**<br>Unit: vp<br>If **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 | chipGroupPadding  | [ChipGroupPaddingOptions](#chipgrouppaddingoptions) | No   | @Prop | Top and bottom padding of the **ChipGroup**, used to control the overall height. The type is [ChipGroupPaddingOptions](#chipgrouppaddingoptions). Pass this parameter when you need to adjust the vertical space occupied by the **ChipGroup** component or match specific UI design requirements.<br>Default value: **{ top: 14, bottom: 14 }**<br>Unit: vp<br>If **undefined**, the default value is used.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
-| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | No | @Prop | System material style of the component. Different materials have different effects and can affect the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [border](ts-universal-attributes-border.md#border), and [shadow](ts-universal-attributes-image-effect.md#shadow) visual properties of the component. When a system material with auto-invert is set, if **fontColor** uses a system-predefined invertible color resource (such as `$r('sys.color.font_primary')`), the color automatically adapts to the inverted color of the material background color. When **backgroundSystemMaterial** is set, **backgroundColor** should be set to **Color.Transparent**, otherwise it will conflict with the system material.<br>Default value: **undefined**<br>If **undefined**, no material style is applied.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
-| selectedBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | No | @Prop | System material style for the selected state of the component. Different materials have different effects and can affect the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [border](ts-universal-attributes-border.md#border), and [shadow](ts-universal-attributes-image-effect.md#shadow) visual properties of the component when selected. When a system material with auto-invert is set, if **selectedFontColor** uses a system-predefined invertible color resource (such as `$r('sys.color.font_primary')`), the color automatically adapts to the inverted color of the material background color. When **selectedBackgroundSystemMaterial** is set, **selectedBackgroundColor** should be set to **Color.Transparent**, otherwise it will conflict with the system material.<br>Default value: **undefined**<br>If **undefined**, no material style is applied to the selected state.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
+| backgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | No | @Prop | System material style of the component. The component needs to be placed in the title bar of **Navigation** or **NavDestination**, or in the bottom **TabBar** of horizontal **Tabs**, for the immersive light effect to take effect. Different materials have different effects and can affect the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [border](ts-universal-attributes-border.md#border), and [shadow](ts-universal-attributes-image-effect.md#shadow) visual attributes of the component. When an automatically inverted system material is set, if fontColor uses a system predefined invertible color resource (such as `$r('sys.color.font_primary')`), the color automatically adapts to the inverted background color of the material. When backgroundSystemMaterial is set, backgroundColor should be set to Color.Transparent; otherwise, it conflicts with the system material.<br>Default value: undefined<br>If **undefined**, the material style is not applied.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
+| selectedBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | No | @Prop | System material style of the component in the selected state. The component needs to be placed in the title bar of **Navigation** or **NavDestination**, or in the bottom **TabBar** of horizontal **Tabs**, for the immersive light effect to take effect. Different materials have different effects and can affect the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [border](ts-universal-attributes-border.md#border), and [shadow](ts-universal-attributes-image-effect.md#shadow) visual attributes of the component when selected. When an automatically inverted system material is set, if **selectedFontColor** uses a system predefined invertible color resource (such as `$r('sys.color.font_primary')`), the color automatically adapts to the inverted background color of the material. When **selectedBackgroundSystemMaterial** is set, **selectedBackgroundColor** should be set to **Color.Transparent**; otherwise, it conflicts with the system material.<br>Default value: **undefined**<br>If **undefined**, the material style of the selected state is not applied.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
 | onChange        | [Callback](ts-types.md#callback12)\<Array\<number>>  | No   | -  | Callback invoked when the chip state changes, used to listen for changes in the chip selected state. This callback is triggered after the **selectedIndexes** attribute is updated. Developers can obtain the latest selected state in the callback and perform corresponding operations, such as updating the UI, saving selected data, and triggering business logic. Pass this parameter when you need to listen for the user's chip selection operation and execute the corresponding business logic. If not passed, notifications of chip state changes cannot be received.<br>If **undefined**, this callback is not triggered.<br>**Atomic service API:** This API can be used in atomic services since API version 12.                                                              |
+| onItemsChange  | [Callback](ts-types.md#callback12)\<[ChipGroupItemOptions[]](#chipgroupitemoptions)\>  | No   | -  | Callback for **ChipItems** to listen for changes in items. Triggering scenario: triggered when the user closes a [Chip](./ohos-arkui-advanced-Chip.md), causing the chip to be deleted. It is not triggered when the developer proactively modifies items. The callback parameter is the currently effective items array. The component does not modify the items passed in by the developer; it only notifies the effective array. Pass this parameter when you need to perceive changes in the **ChipGroup** content and synchronize business data. If it is not passed in, notifications of items changes cannot be received.<br>If **undefined**, the callback is not triggered.<br>**Since:** 26.1.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.1.0. |
 | suffix          | [Callback](ts-types.md#callback12)\<void\>                                        | No   | @BuilderParam | Used to customize a builder. To display custom content on the rightmost side of the component, configure the **suffix** attribute. When using the **suffix** attribute, reference the [IconGroupSuffix](#icongroupsuffix) API.<br>When not passed by default, there is no suffix.<br>If **undefined**, there is no suffix.<br>**Atomic service API:** This API can be used in atomic services since API version 12. |
 
 > **NOTE**
@@ -89,6 +92,7 @@ Defines the specific attributes of individual chips.
 | closeOptions<sup>14+</sup> | [CloseOptions](ohos-arkui-advanced-Chip.md#closeoptions14) | No | Yes | Accessibility reading and font size properties of the default close icon. Set this parameter when custom accessibility reading content and font size need to be provided for the close icon.<br>Default value: the default configuration in [CloseOptions](ohos-arkui-advanced-Chip.md#closeoptions14) is used. <br>If the value is **undefined**, the default value is used.<br> **Atomic service API:** This API can be used in atomic services since API version 14. |
 | accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the chip in the **ChipGroup**. This description is used to explain the chip in the **ChipGroup** to users in detail. Developers should provide a relatively detailed text description for this attribute of the chip to help users understand the operation to be performed and its possible results, especially when these results cannot be directly learned from the chip's attributes and accessibility text alone. If the chip has both a label text attribute and an accessibility description attribute, when it is selected, the system first announces the chip's label text attribute, and then announces the content of the accessibility description attribute.<br>Default value: empty string.<br>If the value is **undefined**, the default value is used.<br> **Atomic service API:** This API can be used in atomic services since API version 14. |
 | accessibilityLevel<sup>14+</sup> | string | No | Yes | Accessibility level of the chip in the **ChipGroup**. Controls whether the chip in the **ChipGroup** can be recognized by accessibility services.<br>The supported values are:<br>**"auto"**: The chip in the **ChipGroup** is converted to "yes", which applies to most scenarios.<br>**"yes"**: The chip in the **ChipGroup** can be recognized by accessibility services, which applies to scenarios where accessibility needs to be explicitly enabled.<br>**"no"**: The chip in the **ChipGroup** cannot be recognized by accessibility services, which applies to purely decorative icon scenarios.<br>**"no-hide-descendants"**: The chip in the **ChipGroup** and all its child components cannot be recognized by accessibility services, which applies to scenarios where the entire area needs to be hidden.<br>Default value: **"auto"**<br>If the value is **undefined**, the default value is used.<br> **Atomic service API:** This API can be used in atomic services since API version 14. |
+
 
 > **NOTE**
 >
@@ -185,7 +189,7 @@ Defines the suffix icon option type for **ChipGroup**.
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | --- | ---- | ---- |
 | symbol | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No | No | **SymbolGlyphModifier** configuration object for the trailing icon, used to set the icon's display style, rendering mode, etc.|
-| action | [VoidCallback](ts-types.md#voidcallback12) | No | No | Response event of the trailing icon. The callback is triggered when the user taps the tail icon. Set this parameter when you need to add custom interaction to the tail icon, such as performing a specific operation or opening an interface.<br>If the value is **undefined**, there is no tail icon response event.|
+| action | [VoidCallback](ts-types.md#voidcallback12) | No | No | Response event of the trailing icon. The callback is triggered when the user taps the trailing icon. Set this parameter when you need to add custom interaction to the trailing icon, such as performing a specific operation or opening an interface.<br>If the value is **undefined**, there is no trailing icon response event.|
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text attribute of the trailing icon. This attribute is used to further explain the trailing icon to users. You can set a relatively detailed description for this attribute of the trailing icon to help users understand the operation to be performed, especially the possible consequences that cannot be inferred from the trailing icon's own attributes and accessibility text. When the trailing icon has both a text attribute and an accessibility description attribute, the system first reads the text attribute of the trailing icon, followed by the content of the accessibility description attribute.<br>The default value is an empty string.<br>If the value is **undefined**, the default value is used.|
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Accessibility description of the trailing icon. This description is used to explain the trailing icon to users in detail. You should provide a thorough text description for this attribute to help users understand the operation to be performed and its possible results, especially when such results cannot be directly inferred from the trailing icon's attributes and accessibility text. When a trailing icon that is selected has both a text attribute and an accessibility description attribute, the system first reads the text attribute, followed by the content of the accessibility description attribute.<br>Default value: empty string.<br>If the value is **undefined**, the default value is used.|
 | accessibilityLevel | string | No | Yes | Accessibility level of the trailing icon. Used to control whether the trailing icon can be recognized by accessibility services. Set this parameter when you need to provide access support for users of accessibility services, or when you need to exclude decorative icons from the accessibility tree.<br>Supported values:<br>**"auto"**: The trailing icon is converted to **"yes"**, applicable to most scenarios.<br>**"yes"**: The trailing icon can be recognized by accessibility services, applicable to scenarios where accessibility access needs to be explicitly enabled.<br>**"no"**: The trailing icon cannot be recognized by accessibility services, applicable to purely decorative icon scenarios.<br>**"no-hide-descendants"**: The trailing icon and all its child components cannot be recognized by accessibility services, applicable to scenarios where the entire area needs to be hidden.<br>Default value: **"auto"**.<br>If the value is **undefined**, the default value is used. |
@@ -208,7 +212,7 @@ IconGroupSuffix({
 | Name    | Type                   | Mandatory| Decorator| Description                                                             |
 | -------- | ---------------------- | ---- | ----------------------------------------------| ----------------------------------------------|
 | items                       | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [SymbolItemOptions](#symbolitemoptions14)> | Yes   | @Require &nbsp;@Prop | Array of custom items displayed in the trailing area. The array supports **IconItemOptions** (image icon), **SymbolGlyphModifier** (symbol icon), or **SymbolItemOptions** (symbol icon configuration) types.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
-| iconBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | No | @Prop | System material style of the component. Different materials have different effects and can affect the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [border](ts-universal-attributes-border.md#border), and [shadow](ts-universal-attributes-image-effect.md#shadow) visual properties of the component. When a system material with auto-invert is set, if **fontColor** uses a system-predefined invertible color resource (such as `$r('sys.color.font_primary')`), the color automatically adapts to the inverted color of the material background color.<br>Default value: **undefined**<br>When the **value** is **undefined**, no material style is applied.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API:** This API can be used in atomic services since API version 26.0.0. |
+| iconBackgroundSystemMaterial | [uiMaterial.Material](../arkts-apis-uimaterial.md#material) | No | @Prop | System material style of the component. The component needs to be placed in the title bar of **Navigation** or **NavDestination**, or in the bottom **TabBar** of horizontal **Tabs**, for the immersive light effect to take effect. Different materials have different effects and can affect the [backgroundColor](ts-universal-attributes-background.md#backgroundcolor), [border](ts-universal-attributes-border.md#border), and [shadow](ts-universal-attributes-image-effect.md#shadow) visual attributes of the component. When an automatically inverted system material is set, if **fontColor** uses a system predefined invertible color resource (such as `$r('sys.color.font_primary')`), the color automatically adapts to the inverted color of the material background color.<br>Default value: **undefined**<br>When the value is **undefined**, the material style is not applied.<br>**Since:** 26.0.0<br>**Model restriction:** This API can only be used in the Stage model.<br>**Atomic service API:** Since API version 26.0.0, this API supports use in atomic services.|
 
 > **NOTE**
 >
@@ -266,8 +270,10 @@ Defines the text attributes.
 
 This example shows how to implement a chip group without a builder-defined suffix.
 
+Since API version 26.2.0, [ChipGroup](#chipgroup-1) adds the **onItemsChange** attribute.
+
 ```typescript
-import { ChipSize, ChipGroup } from '@kit.ArkUI';
+import { ChipSize, ChipGroup, ChipGroupItemOptions } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -327,6 +333,9 @@ struct Index {
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        onItemsChange: (items: ChipGroupItemOptions[]) => {
+          console.info('chip items changed');
+        },
       })
     }
   }
@@ -339,8 +348,10 @@ struct Index {
 
 This example shows how to implement a chip group with a builder-defined suffix.
 
+Since API version 26.2.0, [ChipGroup](#chipgroup-1) adds the **onItemsChange** attribute.
+
 ```typescript
-import { ChipSize, ChipGroup, IconGroupSuffix } from '@kit.ArkUI';
+import { ChipSize, ChipGroup, ChipGroupItemOptions, IconGroupSuffix } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -421,6 +432,9 @@ struct Index {
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        onItemsChange: (items: ChipGroupItemOptions[]) => {
+          console.info('chip items changed');
+        },
         // Customize the builder to display custom content on the rightmost side of the component.
         suffix: this.ChipGroupSuffix
       })
@@ -432,11 +446,12 @@ struct Index {
 ![](figures/ChipGroupDemo2.png)
 
 ### Example 3: Setting the Symbol Icon
-
 This example implements **IconGroupSuffix** and **ChipGroup** with **SymbolGlyph** resources.
 
+Since API version 26.2.0, [ChipGroup](#chipgroup-1) adds the **onItemsChange** attribute.
+
 ```typescript
-import { ChipSize, ChipGroup, IconGroupSuffix, SymbolGlyphModifier } from '@kit.ArkUI';
+import { ChipSize, ChipGroup, ChipGroupItemOptions, IconGroupSuffix, SymbolGlyphModifier } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -521,6 +536,9 @@ struct Index {
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        onItemsChange: (items: ChipGroupItemOptions[]) => {
+          console.info('chip items changed');
+        },
         // Customize the builder to display custom content on the rightmost side of the component.
         suffix: this.ChipGroupSuffix
       })
@@ -528,7 +546,6 @@ struct Index {
   }
 }
 ```
-
 ![](figures/ChipGroupDemo3.png)
 
 ### Example 4: Implementing the Screen Reader Feature for the Single-Selection Scenario
@@ -714,6 +731,8 @@ export struct ChipGroupExample2 {
 }
 ```
 
+<!--Del--> <!--DelEnd-->
+
 ### Example 5: Implementing the Screen Reader Feature for the Multi-selection Scenario
 
 This example demonstrates how to implement the screen reader feature for a chip group with and without a suffix area in multi-selection mode. The content to be read is the value of the **accessibilityText** attribute.
@@ -866,6 +885,8 @@ export struct ChipGroupExample2 {
 }
 ```
 
+<!--Del--> <!--DelEnd-->
+
 ### Example 6: Setting System Material Style
 
 This example implements the system material style by configuring **backgroundSystemMaterial** and **iconBackgroundSystemMaterial**, and enables the auto-invert feature so that the text color adapts to the background color.
@@ -894,7 +915,8 @@ struct ChipGroupMaterialExample {
     })
   }
 
-  build() {
+  @Builder
+  NavigationTitle() {
     Column({ space: 10 }) {
       ChipGroup({
         items: [
@@ -936,12 +958,22 @@ struct ChipGroupMaterialExample {
     })
     .padding(12)
     .width('100%')
-    .height('100%')
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        // Page content
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
   }
 }
 ```
 
-![](figures/chip_group_material.png)
+The illustration in this example shows the strong effect on a high-computing-power device.
+
+<!--Del--> <!--DelEnd-->
 
 ### Example 7: Setting the System Material Style for the Selected State of a Component
 
@@ -971,7 +1003,8 @@ struct ChipGroupMaterialExample {
     })
   }
 
-  build() {
+  @Builder
+  NavigationTitle() {
     Column({ space: 10 }) {
       ChipGroup({
         items: [
@@ -1019,10 +1052,20 @@ struct ChipGroupMaterialExample {
     })
     .padding(12)
     .width('100%')
-    .height('100%')
+  }
+
+  build() {
+    Column() {
+      Navigation() {
+        // Page content
+      }
+      .title({ builder: this.NavigationTitle, height: '100%' })
+    }.width('100%').height('100%')
   }
 }
 
 ```
+
+The illustration in this example shows the strong effect on a high-computing-power device.
 
 <!--Del--> <!--DelEnd-->

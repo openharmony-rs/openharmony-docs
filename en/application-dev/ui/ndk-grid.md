@@ -6,6 +6,7 @@
 <!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=85a92fc402223c46aef122b43a87fd587f55d827 translatedAt=2026-11-12T04:23:59.537Z pushedAt=2026-11-13T09:25:30.576Z nl=1 -->
 
 ## Overview
 
@@ -212,7 +213,7 @@ The **Grid** component supports the use of [NodeAdapter](../reference/apis-arkui
 
 ## Handling Scroll Events
 
-### Listening for Scrolling Events
+### Listening for Scroll Events
 
 Refer to the sample code for listening to the **NODE_LIST_ON_SCROLL_INDEX** event in the [ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype) component in [Adding an Event Listener](ndk-add-component-events.md) to implement grid scroll event listening.
 
@@ -220,13 +221,13 @@ The **Grid** component supports the following scroll events:
 
 | Event Enum| Event Description| Start API Version|
 |---------|------|---------|
-| NODE_SCROLL_EVENT_ON_SCROLL_FRAME_BEGIN  | Triggered when the **Grid** component starts a new frame, providing the offset to be scrolled in the current frame and current scroll state.| 12 |
+| NODE_SCROLL_EVENT_ON_SCROLL_FRAME_BEGIN  | Called back when the grid component starts scrolling each frame, with the offset to be scrolled in the current frame and the current scrolling state. | 12 |
 | NODE_SCROLL_EVENT_ON_SCROLL_START | Triggered when the **Grid** component starts scrolling.| 22 |
 | NODE_SCROLL_EVENT_ON_SCROLL_STOP | Triggered when the **Grid** component stops scrolling.| 22 |
 | NODE_SCROLL_EVENT_ON_REACH_START | Triggered when the **Grid** component reaches the start position.| 12 |
 | NODE_SCROLL_EVENT_ON_REACH_END | Triggered when the **Grid** component reaches the end position.| 12 |
 | NODE_SCROLL_EVENT_ON_WILL_STOP_DRAGGING | Triggered when the user is about to release the drag on the **Grid** component.| 20 |
-| NODE_SCROLL_EVENT_ON_WILL_START_DRAGGING | Triggered when the drag on the **Grid** component starts.| 21 |
+| NODE_SCROLL_EVENT_ON_WILL_START_DRAGGING | Called back when the grid component is about to start dragging. | 21 |
 | NODE_SCROLL_EVENT_ON_DID_STOP_DRAGGING | Triggered when the drag on the **Grid** component ends.| 21 |
 | NODE_SCROLL_EVENT_ON_WILL_START_FLING | Triggered when the sliding animation of the **Grid** component is about to start.| 21 |
 | NODE_SCROLL_EVENT_ON_DID_STOP_FLING | Triggered when the sliding animation of the **Grid** component ends.| 21 |

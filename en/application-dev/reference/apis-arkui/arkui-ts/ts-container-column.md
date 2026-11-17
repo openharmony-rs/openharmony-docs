@@ -1,12 +1,11 @@
 # Column
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=0a724a1bcf6a29fe23177af55231e875c486ee05 translatedAt=2026-08-21T02:21:45.306Z pushedAt=2026-08-21T07:09:25.992Z -->
+<!-- md-trans-meta sourceCommit=dd07145b5a0181d2f6e100ec071d82f9204d9c96 translatedAt=2026-11-03T01:55:42.971Z pushedAt=2026-11-13T01:05:59.927Z nl=1 -->
 
 A container that lays out child components along the vertical direction. It is suitable for scenarios where multiple child components need to be arranged sequentially in the vertical direction, such as list items, form items, and card content. It supports setting attributes such as child component spacing and alignment, enabling quick implementation of vertical linear layout.
 
@@ -16,9 +15,11 @@ A container that lays out child components along the vertical direction. It is s
 >
 >  If no height or width is set for the **Column** component, it adapts to the size of child components in the main axis (vertical direction) or cross axis (horizontal direction).
 
+
 ## Child Components
 
 Supported
+
 
 ## APIs
 
@@ -45,7 +46,6 @@ Creates a vertical linear layout container. You can set the spacing between chil
 | options<sup>18+</sup> | [ColumnOptions](#columnoptions18) | No | Spacing configuration options of the **Column** component. It sets the vertical spacing between elements in the column layout through the **space** attribute. Pass this parameter when a fixed vertical spacing needs to be set for child components; if omitted, no child component spacing is set.<br>**Model restriction:** This API can be used only in the stage model. |
 
 ### Column<sup>18+</sup>
-
 Column(options?: ColumnOptions | ColumnOptionsV2)
 
 Creates a vertical linear layout container. You can set the spacing between child components.
@@ -86,7 +86,7 @@ Sets the spacing between child components of the **Column** component.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| space<sup>7+</sup> | string&nbsp;\|&nbsp;number | No | Yes | Vertical spacing between child components in the column layout.<br>If **space** is a negative number or [justifyContent](#justifycontent8) is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**, **space** does not take effect.<br>Value range: [0, +∞)<br>Default value: **0**<br>Invalid value: handled as the default value.<br>Unit: vp<br>**NOTE**<br>The value of **space** is a number greater than or equal to 0, or a string that can be converted to a non-negative number.<br>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| space<sup>7+</sup> | string&nbsp;\|&nbsp;number | No | Yes | Vertical spacing between elements in the column layout.<br>If space is a negative number or [justifyContent](#justifycontent8) is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**, **space** does not take effect.<br>Value range: [0, +∞)<br>Default value: **0**<br>Invalid value: the default value is used.<br>Unit: vp<br>**Note:**<br>The value of **space** is a number greater than or equal to 0, or a string that can be converted to a non-negative number. Percentages are not supported.<br>**Widget capability:** Since API version 9, this API is supported in ArkTS widgets.<br>**Atomic service API:** Since API version 11, this API is supported in atomic services. |
 
 ## ColumnOptionsV2<sup>18+</sup>
 
@@ -102,7 +102,7 @@ Sets the spacing between child components of the **Column** component. The spaci
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| space | [SpaceType](#spacetype18) | No | Yes | Vertical spacing between elements in the column layout.<br>If **space** is a negative number or [justifyContent](#justifycontent8) is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**, **space** does not take effect.<br>Value range: [0, +∞)<br>Default value: **0**<br>Unit: vp<br>Invalid value: The default value is used.<br>**NOTE**<br>The value of **space** is a number greater than or equal to 0, a string that can be converted to a non-negative number, or a Resource type that can be converted to a number. |
+| space | [SpaceType](#spacetype18) | No | Yes | Vertical spacing between elements in the column layout.<br>If **space** is a negative number or [justifyContent](#justifycontent8) is set to **FlexAlign.SpaceBetween**, **FlexAlign.SpaceAround**, or **FlexAlign.SpaceEvenly**, **space** does not take effect.<br>Value range: [0, +∞)<br>Default value: **0**<br>Unit: vp<br>Invalid value: The default value is used.<br>**NOTE**<br>The value of **space** is a number greater than or equal to 0, a string that can be converted to a non-negative number, or a Resource type that can be converted to a number. Setting a percentage is not supported. |
 
 ## SpaceType<sup>18+</sup>
 
@@ -123,6 +123,7 @@ Describes the supported data types for the **space** parameter in the constructo
 |number|The value type is number, and the value must be greater than or equal to 0. If a negative number or invalid value is set, the default value **0** is used.|
 |string|The value type is string, and the value must be a string that can be converted to a non-negative number. If a negative number or a string that cannot be converted is set, the default value **0** is used.|
 |[Resource](ts-types.md#resource)|The value type is a resource reference type. It can take values from system resources or application resources.|
+
 
 ## Attributes
 

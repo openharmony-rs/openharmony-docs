@@ -6,9 +6,9 @@
 <!--Designer: @guozejun-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b6f38d021a31abc28b1dd271b68098ebc074e7ab translatedAt=2026-08-04T12:13:12.244Z pushedAt=2026-08-10T02:28:19.824Z -->
+<!-- md-trans-meta sourceCommit=740dbb7604952a9e4ff4c9e3c848cb10d774c82a translatedAt=2026-11-03T02:06:47.934Z pushedAt=2026-11-13T01:05:59.952Z nl=1 -->
 
-The **LazyVWaterFlowLayout** component is used to implement a waterfall layout that supports lazy loading, suitable for displaying a large number of list items with varying heights, such as image walls and product lists. Through the lazy loading mechanism, this component only loads content in and near the visible area, reducing memory usage and rendering overhead, and improving scrolling smoothness. This component should be placed under a vertical [List](ts-container-list.md), [Scroll](ts-container-scroll.md), or [WaterFlow](ts-container-waterflow.md) component, and supports being used after being wrapped by [FlowItem](ts-container-flowitem.md), [LazyColumnLayout](ts-container-lazycolumnlayout.md), a custom component, or [NodeContainer](ts-basic-components-nodecontainer.md).
+The **LazyVWaterFlowLayout** component is used to implement a waterfall layout that supports lazy loading, suitable for displaying a large number of list items with varying heights, such as image walls and product lists. Through the lazy loading mechanism, this component only loads content in and near the visible area, reducing memory usage and rendering overhead, and improving scrolling smoothness. This component should be placed under a vertical [List](ts-container-list.md), [Scroll](ts-container-scroll.md), or [WaterFlow](ts-container-waterflow.md) component, and supports being used after being wrapped by [FlowItem](ts-container-flowitem.md), [LazyColumnLayout](ts-container-lazycolumnlayout.md), a [custom component](../../../ui/state-management/arkts-create-custom-components.md), or [NodeContainer](ts-basic-components-nodecontainer.md).
 
 For more usage scenarios and complete examples of lazy-loading layouts, see [Creating Lazy Layouts](../../../ui/arkts-layout-development-create-lazy-layout.md).
 
@@ -57,21 +57,19 @@ columnsTemplate(value: string | ItemFillPolicy | undefined)
 Sets the number of columns, fixed column width, or minimum column width of the current **LazyVWaterFlowLayout**. If this attribute is not set, one column is used by default.
 
 - When **value** is of the string type, you can set the number of columns, fixed column width, or minimum column width of the current **LazyVWaterFlowLayout**. Typical values and their meanings are as follows. For usage effects, see [Example 3](#example-3-setting-adaptive-column-count):
-
   1. **columnsTemplate('1fr 1fr 2fr')** divides the **LazyVWaterFlowLayout** into three columns, with the component width divided into four equal parts: the first column takes up one part, the second column takes up one part, and the third column takes up two parts.
-
   2. **columnsTemplate('repeat(auto-fit, track-size)')** sets the minimum column width to **track-size** and automatically calculates the number of columns and the actual column width.
-
   3. **columnsTemplate('repeat(auto-fill, track-size)')** sets the fixed column width to **track-size** and automatically calculates the number of columns.
-
   4. **columnsTemplate('repeat(auto-stretch, track-size)')** sets the fixed column width to **track-size**, uses [columnsGap](#columnsgap) as the minimum column spacing, and automatically calculates the number of columns and the actual column spacing.
 
   Here, **repeat**, **auto-fit**, **auto-fill**, and **auto-stretch** are keywords. **track-size** is the column width, which supports units including px, vp, %, or a valid number. The default unit is vp. **track-size** must include at least one valid column width.
 
   The **auto-fit** mode and **auto-stretch** mode support only one valid column width value for **track-size**, and in the **auto-stretch** mode, **track-size** supports only px, vp, and valid numbers, not %. The **auto-fill** mode supports one or more valid column widths, for example, **columnsTemplate('repeat(auto-fill, 20)')** and **columnsTemplate('repeat(auto-fill, 20 80px)')**.
 
-- When **value** is of the **ItemFillPolicy** type, the number of columns is determined based on the [breakpoint type](../../../ui/arkts-layout-development-grid-layout.md#breakpoints) corresponding to the width of the **LazyVWaterFlowLayout** component. For example, when the **fillType** attribute of **ItemFillPolicy** is set to **PresetFillType.BREAKPOINT_DEFAULT**, two columns are displayed when the component width falls within the sm or smaller breakpoint interval, three columns when within the md breakpoint interval, and five columns when within the lg or larger breakpoint interval, with each column set to **1fr** (meaning each column takes up one equal portion of the available width).
+  In a non-repeat template string, each item supports only three formats: 'number+fr', 'number+px', and 'number+%'. vp is not supported (for example, columnsTemplate('100vp 100vp')). To automatically calculate the number of columns based on a fixed vp size, use repeat(auto-fill, track-size).
 
+  If this attribute is set to **'0fr'**, the column width is 0, and child components are not displayed. If this attribute is set to an invalid value, the child components are displayed in a fixed single column.
+- When **value** is of the **ItemFillPolicy** type, the number of columns is determined based on the [breakpoint type](../../../ui/arkts-layout-development-grid-layout.md#breakpoints) corresponding to the width of the **LazyVWaterFlowLayout** component. For example, when the **fillType** attribute of **ItemFillPolicy** is set to **PresetFillType.BREAKPOINT_DEFAULT**, two columns are displayed when the component width falls within the sm or smaller breakpoint interval, three columns when within the md breakpoint interval, and five columns when within the lg or larger breakpoint interval, with each column set to **1fr** (meaning each column takes up one equal portion of the available width).
 - When **value** is set to **undefined**, the default value (one column) is restored.
 
 **Since:** 26.0.0
@@ -82,7 +80,7 @@ Sets the number of columns, fixed column width, or minimum column width of the c
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type  | Mandatory| Description                              |
 | ------ | ------ | ---- | ---------------------------------- |
@@ -102,7 +100,7 @@ Sets the gap between columns. The default value is **LengthMetrics.vp(0)**. If a
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                        |
 | ------ | ---------------------------- | ---- | ---------------------------- |
@@ -128,7 +126,7 @@ Sets the gap between rows. The default value is **LengthMetrics.vp(0)**. If a va
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                        | Mandatory| Description                        |
 | ------ | ---------------------------- | ---- | ---------------------------- |
@@ -282,12 +280,11 @@ Sets the **onVisibleIndexesChange** callback. When the indexes of child componen
 
 This example shows how to use the [Scroll](ts-container-scroll.md) and **LazyVWaterFlowLayout** components to implement the lazy-loading waterfall layout.
 
-**MyDataSource** implements the **LazyForEach** data source API [IDataSource](ts-rendering-control-lazyforeach.md#idatasource), which is used to provide child components for **LazyVWaterFlowLayout** through **LazyForEach**.
+**MyDataSource** implements the **LazyForEach** data source API [IDataSource](ts-rendering-control-lazyforeach.md#idatasource), which is used to provide child components for **LazyVWaterFlowLayout** through **LazyForEach**. 
 
 Since API version 26.0.0, the **LazyVWaterFlowLayout** component is supported.
 
 <!--code_no_check-->
-
 ```ts
 import { LengthMetrics, LazyVWaterFlowLayout, LazyVWaterFlowLayoutAttribute } from '@kit.ArkUI';
 // MyDataSource is a custom data source class that implements the IDataSource interface required by LazyForEach.
@@ -357,7 +354,6 @@ struct LazyVWaterFlowLayoutSample1 {
 ```
 
 <!--code_no_check-->
-
 ```ts
 // MyDataSource.ets
 export class BasicDataSource<T> implements IDataSource {
@@ -450,7 +446,6 @@ export class MyDataSource<T> extends BasicDataSource<T> {
   }
 }
 ```
-
 ![scroll_lazyvwaterflowlayout.png](figures/scroll_lazyvwaterflowlayout.png)
 
 ### Example 2: Setting Header or Footer Component and Sticky Styles
@@ -460,9 +455,8 @@ This example nests **LazyVWaterFlowLayout** inside [Scroll](ts-container-scroll.
 Since API version 26.0.0, the header, footer, and sticky attributes are supported.
 
 <!--code_no_check-->
-
 ```ts
-import { LengthMetrics, LazyVWaterFlowLayout, LazyVWaterFlowLayoutAttribute, StickyStyle } from '@kit.ArkUI';
+import { LengthMetrics, LazyVWaterFlowLayout, LazyVWaterFlowLayoutAttribute } from '@kit.ArkUI';
 // MyDataSource is a custom data source class that implements the IDataSource interface required by LazyForEach.
 import { MyDataSource } from './MyDataSource';
 
@@ -561,7 +555,6 @@ struct LazyVWaterFlowLayoutStickyDemo {
   }
 }
 ```
-
 ![scroll_lazyvwaterflowlayout_header_footer.gif](figures/scroll_lazyvwaterflowlayout_header_footer.gif)
 
 ### Example 3: Setting Adaptive Column Count
@@ -571,7 +564,6 @@ This example uses [columnsTemplate](#columnstemplate) to set **repeat(auto-fill,
 Since API version 26.0.0, the [columnsTemplate](#columnstemplate) interface is supported.
 
 <!--code_no_check-->
-
 ```ts
 import {
   LengthMetrics,
@@ -693,6 +685,4 @@ struct LazyVWaterFlowLayoutColumnsTemplateDemo {
   }
 }
 ```
-
 ![scroll-lazyvwaterflowlayout-columntemplate.gif](figures/scroll-lazyvwaterflowlayout-columntemplate.gif)
-<!--no_check-->

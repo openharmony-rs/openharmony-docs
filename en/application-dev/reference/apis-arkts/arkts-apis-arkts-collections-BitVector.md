@@ -1,10 +1,12 @@
 # Class (BitVector)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @wang_zhaoyong-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=6765e63d2877178f84dcdcc92016726d39eb79a0 translatedAt=2026-11-06T08:21:24.664Z pushedAt=2026-11-12T13:58:47.867Z nl=2 -->
+
 A linear data structure that is implemented on arrays. A bit vector stores bit values and provides bit-level storage and processing.
 
 > **NOTE**
@@ -51,13 +53,13 @@ Constructor used to create a bit vector.
 **Example**
 
 ```ts
-let bitVector: collections.BitVector = new collections.BitVector(0);
+let bitVector: collections.BitVector = new collections.BitVector(0); // Initialize the length of BitVector to 0.
 ```
 
 
 ## push
 
-push(element:number): boolean
+push(element: number): boolean
 
 Adds an element at the end of this bit vector.
 
@@ -79,11 +81,10 @@ Adds an element at the end of this bit vector.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200011 | The push method cannot be bound.                             |
 | 10200201 | Concurrent modification error.                               |
 
@@ -133,7 +134,7 @@ bitVector.push(0);
 bitVector.push(1);
 bitVector.push(0); // bitVector: [0, 1, 0, 1, 0]
 let res = bitVector.pop(); // bitVector: [0, 1, 0, 1]
-console.info("bitVector pop:", res); // 0
+console.info(`bitVector pop: ${res}`); // 0
 ```
 
 ## has
@@ -151,8 +152,8 @@ Checks whether a bit value is included in a given range of this bit vector.
 | Name   | Type  | Mandatory| Description                                |
 | --------- | ------ | ---- | ------------------------------------ |
 | element   | number | Yes  | Bit value. The value **0** indicates bit value 0, and other values indicate bit value 1.|
-| fromIndex | number | Yes  | Start index of the range (inclusive). If **fromIndex** is less than **0** or greater than or equal to **toIndex**, an error is thrown. |
-| toIndex   | number | Yes  | End index of the range (inclusive). If **toIndex** is less than **0** or greater than or equal to **length**, an error is thrown.      |
+| fromIndex | number | Yes   | Range start index, inclusive of this index. If fromIndex < 0 or fromIndex >= toIndex, then an exception will be thrown.  |
+| toIndex   | number | Yes   | Range end index, exclusive of this index. If toIndex < 0 or toIndex >= length, then an exception will be thrown.       |
 
 **Return value**
 
@@ -180,7 +181,7 @@ bitVector.push(0);
 bitVector.push(1);
 bitVector.push(0); // bitVector: [0, 1, 0, 1, 0]
 let res0: boolean = bitVector.has(0, 1, 4);
-console.info("bitVector has 0:", res0); // true
+console.info(`bitVector has 0: ${res0}`); // true
 ```
 
 ## setBitsByRange
@@ -197,17 +198,16 @@ Sets elements in a given range in this bit vector to a bit value.
 
 | Name   | Type  | Mandatory| Description                              |
 | --------- | ------ | ---- | ---------------------------------- |
-| element   | number | Yes  | Bit value to set. The value **0** indicates bit value 0, and other values indicate bit value 1.|
-| fromIndex | number | Yes  | Start index of the range (inclusive). If **fromIndex** is less than **0** or greater than or equal to **toIndex**, an error is thrown. |
-| toIndex   | number | Yes  | End index of the range (exclusive). If **toIndex** is less than **0** or greater than or equal to **length**, an error is thrown.    |
+| element   | number | Yes  | Bit value to be set. 0 indicates 0, and other values indicate 1. |
+| fromIndex | number | Yes  | Range start index, inclusive of this index. If fromIndex < 0 or fromIndex >= toIndex, then an exception will be thrown.  |
+| toIndex   | number | Yes  | Range end index, exclusive of this index. If toIndex < 0 or toIndex >= length, then an exception will be thrown.     |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The setBitsByRange method cannot be bound.                   |
 | 10200201 | Concurrent modification error.                               |
@@ -242,11 +242,10 @@ Sets all elements in this bit vector to a bit value.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200011 | The setAllBits method cannot be bound.                       |
 | 10200201 | Concurrent modification error.                               |
 
@@ -276,8 +275,8 @@ Obtains bit values within a given range of this bit vector.
 
 | Name   | Type  | Mandatory| Description                          |
 | --------- | ------ | ---- | ------------------------------ |
-| fromIndex | number | Yes  | Start index of the range (inclusive). If **fromIndex** is less than **0** or greater than or equal to **toIndex**, an error is thrown.  |
-| toIndex   | number | Yes  | End index of the range (exclusive). If **toIndex** is less than **0** or greater than or equal to **length**, an error is thrown.     |
+| fromIndex | number | Yes   | Range Start index, inclusive of this index value. If fromIndex < 0 or fromIndex >= toIndex, then an exception will be thrown.   |
+| toIndex   | number | Yes   | Range End index, exclusive of this index value. If toIndex < 0 or toIndex >= length, then an exception will be thrown.      |
 
 **Return value**
 
@@ -287,11 +286,10 @@ Obtains bit values within a given range of this bit vector.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The getBitsByRange method cannot be bound.                   |
 | 10200201 | Concurrent modification error.                               |
@@ -306,7 +304,7 @@ bitVector.push(0);
 bitVector.push(1);
 bitVector.push(0); // bitVector: [0, 1, 0, 1, 0]
 let bitVector2 = bitVector.getBitsByRange(1, 3); // bitVector2: [1, 0]
-console.info("bitVector2 length:", bitVector2.length); // 2
+console.info(`bitVector2 length: ${bitVector2.length}`); // 2
 ```
 
 ## resize
@@ -331,11 +329,10 @@ If **size** is less than or equal to the length of the existing bit vector, the 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200011 | The resize method cannot be bound.                           |
 | 10200201 | Concurrent modification error.                               |
 
@@ -349,16 +346,16 @@ bitVector.push(0);
 bitVector.push(1);
 bitVector.push(0); // bitVector: [0, 1, 0, 1, 0]
 bitVector.resize(10); // bitVector: [0, 1, 0, 1, 0, 0, 0, 0, 0, 0]
-console.info("bitVector get bit vector's length:", bitVector.length); // 10
+console.info(`bitVector get bit vector's length: ${bitVector.length}`); // 10
 bitVector.resize(3); // bitVector: [0, 1, 0]
-console.info("bitVector get bit vector's length:", bitVector.length); // 3
+console.info(`bitVector get bit vector's length: ${bitVector.length}`); // 3
 ```
 
 ## getBitCountByRange
 
 getBitCountByRange(element: number, fromIndex: number, toIndex: number): number
 
-Counts the number of bit values in a given range of this bit vector.
+Counts the number of the specified bit value within the specified range.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -369,8 +366,8 @@ Counts the number of bit values in a given range of this bit vector.
 | Name   | Type  | Mandatory| Description                                |
 | --------- | ------ | ---- | ------------------------------------ |
 | element   | number | Yes  | Bit value. The value **0** indicates bit value 0, and other values indicate bit value 1.|
-| fromIndex | number | Yes  | Start index of the range (inclusive). If **fromIndex** is less than **0** or greater than or equal to **toIndex**, an error is thrown.   |
-| toIndex   | number | Yes  | End index of the range (exclusive). If **toIndex** is less than **0** or greater than or equal to **length**, an error is thrown.      |
+| fromIndex | number | Yes   | Range start index, inclusive of this index value. If fromIndex < 0 or fromIndex >= toIndex, then an exception will be thrown.    |
+| toIndex   | number | Yes   | Range end index, exclusive of this index value. If toIndex < 0 or toIndex >= length, then an exception will be thrown.       |
 
 **Return value**
 
@@ -380,11 +377,10 @@ Counts the number of bit values in a given range of this bit vector.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The getBitCountByRange method cannot be bound.               |
 | 10200201 | Concurrent modification error.                               |
@@ -399,7 +395,7 @@ bitVector.push(0);
 bitVector.push(1);
 bitVector.push(0); // bitVector: [0, 1, 0, 1, 0]
 let res: number = bitVector.getBitCountByRange(1, 1, 4);
-console.info("bitVector getBitCountByRange:", res); // 2
+console.info(`bitVector getBitCountByRange: ${res}`); // 2
 ```
 
 ## getIndexOf
@@ -416,23 +412,22 @@ Returns the index of the first occurrence of a bit value in this bit vector. If 
 
 | Name   | Type  | Mandatory| Description                                |
 | --------- | ------ | ---- | ------------------------------------ |
-| element   | number | Yes  | Bit value. The value **0** indicates bit value 0, and other values indicate bit value 1.|
-| fromIndex | number | Yes  | Start index of the range (inclusive). If **fromIndex** is less than **0** or greater than or equal to **toIndex**, an error is thrown.   |
-| toIndex   | number | Yes  | End index of the range (exclusive). If **toIndex** is less than **0** or greater than or equal to **length**, an error is thrown.      |
+| element   | number | Yes   | The bit value to be searched. 0 indicates 0, and other values indicate 1. |
+| fromIndex | number | Yes   | Range start index, inclusive of this index. If fromIndex < 0 or fromIndex >= toIndex, then an exception will be thrown.    |
+| toIndex   | number | Yes   | Range end index, exclusive of this index. If toIndex < 0 or toIndex >= length, then an exception will be thrown.       |
 
 **Return value**
 
 | Type  | Description                                             |
 | ------ | ------------------------------------------------- |
-| number | Index of the first occurrence of the bit value. If the bit value is not found, **-1** is returned.|
+| number | Returns the index value of the first occurrence of the specified bit value, and returns -1 on search failure. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The getIndexOf method cannot be bound.                       |
 | 10200201 | Concurrent modification error.                               |
@@ -447,14 +442,14 @@ bitVector.push(0);
 bitVector.push(1);
 bitVector.push(0); // bitVector: [0, 1, 0, 1, 0]
 let res: number = bitVector.getIndexOf(0, 1, 4);
-console.info("bitVector getIndexOf:", res); // 2
+console.info(`bitVector getIndexOf: ${res}`); // 2
 ```
 
 ## getLastIndexOf
 
 getLastIndexOf(element: number, fromIndex: number, toIndex: number): number
 
-Returns the index of the last occurrence of a bit value in this bit vector. If the bit value is not found, **-1** is returned.
+Returns the index value of the last occurrence of the specified bit value, and returns -1 on search failure.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -464,23 +459,22 @@ Returns the index of the last occurrence of a bit value in this bit vector. If t
 
 | Name   | Type  | Mandatory| Description                                |
 | --------- | ------ | ---- | ------------------------------------ |
-| element   | number | Yes  | Bit value. The value **0** indicates bit value 0, and other values indicate bit value 1.|
-| fromIndex | number | Yes  | Start index of the range (inclusive). If **fromIndex** is less than **0** or greater than or equal to **toIndex**, an error is thrown.   |
-| toIndex   | number | Yes  | End index of the range (exclusive). If **toIndex** is less than **0** or greater than or equal to **length**, an error is thrown.      |
+| element   | number | Yes   | Bit value to be searched. 0 indicates 0, and other values indicate 1. |
+| fromIndex | number | Yes   | Range start index, inclusive of this index. If fromIndex < 0 or fromIndex >= toIndex, then an exception will be thrown.    |
+| toIndex   | number | Yes   | Range end index, exclusive of this index. If toIndex < 0 or toIndex >= length, then an exception will be thrown.       |
 
 **Return value**
 
 | Type  | Description                                                 |
 | ------ | ----------------------------------------------------- |
-| number | Index of the last occurrence of the bit value. If the bit value is not found, **-1** is returned.|
+| number | Returns the index value of the last occurrence of the specified bit value. Returns -1 on search failure. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The getLastIndexOf method cannot be bound.                   |
 | 10200201 | Concurrent modification error.                               |
@@ -495,7 +489,7 @@ bitVector.push(0);
 bitVector.push(1);
 bitVector.push(0); // bitVector: [0, 1, 0, 1, 0]
 let res: number = bitVector.getLastIndexOf(0, 1, 4);
-console.info("bitVector getLastIndexOf:", res); // 2
+console.info(`bitVector getLastIndexOf: ${res}`); // 2
 ```
 
 ## flipBitByIndex
@@ -512,15 +506,14 @@ Flips the bit value (from 0 to 1 or from 1 to 0) at a given index in this bit ve
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| index  | number | Yes  | Index. If **index** is less than **0** or greater than or equal to **length**, an error is reported.|
+| index  | number | Yes   | Specified index. If index < 0 or index >= length, then an exception will be thrown. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200001 | The value of index is out of range.                          |
 | 10200011 | The flipBitByIndex method cannot be bound.                   |
 | 10200201 | Concurrent modification error.                               |
@@ -551,16 +544,15 @@ Flips the bit values (from 0 to 1 or from 1 to 0) in a given range in this bit v
 
 | Name   | Type  | Mandatory| Description                          |
 | --------- | ------ | ---- | ------------------------------ |
-| fromIndex | number | Yes  | Start index of the range (inclusive). If **fromIndex** is less than **0** or greater than or equal to **toIndex**, an error is thrown. |
-| toIndex   | number | Yes  | End index of the range (exclusive). If **toIndex** is less than **0** or greater than or equal to **length**, an error is thrown.    |
+| fromIndex | number | Yes   | Range start index, inclusive of this index value. If fromIndex < 0 or fromIndex >= toIndex, then an exception will be thrown.  |
+| toIndex   | number | Yes   | Range end index, exclusive of this index value. If toIndex < 0 or toIndex >= length, then an exception will be thrown.     |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
 | 10200001 | The value of fromIndex or toIndex is out of range.           |
 | 10200011 | The flipBitsByRange method cannot be bound.                  |
 | 10200201 | Concurrent modification error.                               |
@@ -658,7 +650,7 @@ bitVector.push(1);
 bitVector.push(0);
 
 for (let item of bitVector) {
-  console.info("value: " + item);
+  console.info(`value: ${item}`);
 }
 ```
 
@@ -676,7 +668,7 @@ Returns the element at a given index in this BitVector.
 
 | Name   | Type  | Mandatory| Description                    |
 | ----- | ------ | ---- | -------------------------- |
-| index | number | Yes  | Index of the element. The index starts from zero.|
+| index | number | Yes | Zero-based index of the required code unit. When index < 0 or index >= length, then an exception will be thrown |
 
 **Return value**
 
@@ -693,5 +685,5 @@ bitVector.push(1);
 bitVector.push(0);
 bitVector.push(1);
 bitVector.push(0); // bitVector: [0, 1, 0, 1, 0]
-console.info("BitVector Element Index at 1: " + bitVector[1]);
+console.info(`BitVector Element Index at 1: ${bitVector[1]}`); // bitVector 1
 ```

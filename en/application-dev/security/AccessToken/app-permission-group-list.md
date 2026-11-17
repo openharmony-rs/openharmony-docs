@@ -142,6 +142,12 @@
 
 - [ohos.permission.CUSTOM_SCREEN_CAPTURE](permissions-for-all-user.md#ohospermissioncustom_screen_capture)
 
+<!--Del-->
+- [ohos.permission.ONSCREEN_AWARENESS](permissions-for-system-apps-user.md#ohospermissiononscreen_awareness)
+<!--DelEnd-->
+
+- [ohos.permission.WINDOW_CAPTURE](permissions-for-all-user.md#ohospermissionwindow_capture)
+
 ## Directory
 
 > **NOTE**
@@ -151,6 +157,14 @@
 
 - [ohos.permission.READ_WRITE_DESKTOP_DIRECTORY](restricted-permissions.md#ohospermissionread_write_desktop_directory)
 - [ohos.permission.READ_WRITE_DOCUMENTS_DIRECTORY](permissions-for-all-user.md#ohospermissionread_write_documents_directory)
+
+## Input assistance
+ 
+- [ohos.permission.HOOK_KEY_EVENT](restricted-permissions.md#ohospermissionhook_key_event)
+ 
+- [ohos.permission.HOOK_INPUT_EVENT](restricted-permissions.md#ohospermissionhook_input_event)
+ 
+- [ohos.permission.INPUT_RECORDING](restricted-permissions.md#ohospermissioninput_recording)
 
 ## Files<sup>(deprecated)</sup>
 

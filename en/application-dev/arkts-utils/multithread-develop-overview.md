@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS / Ark Programming Language"]
+description: "Overview of task classification and selection for multithreaded application development: business is divided into three categories, namely time-consuming tasks, long-running tasks, and resident tasks. Time-consuming tasks are further subdivided into CPU-intensive, I/O-intensive, and synchronous tasks, guiding developers to choose TaskPool or Worker based on the scenario."
+keywords: [multithreaded development overview, time-consuming task, long-running task, resident task, CPU-intensive, I/O-intensive, synchronous task, concurrency selection]
+doctype: guide
+status: active
+---
+
 # Overview of Multithreaded Development
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @lijiamin2025-->
+<!--Owner: @huanghello-->
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=f8431cb42cf0d545a37a384860003cd8449b0b43 translatedAt=2026-11-06T10:39:34.629Z pushedAt=2026-11-12T08:41:40.672Z nl=1 -->
 
 In ArkTS application development, different service scenarios require different concurrency capabilities and task types.
 

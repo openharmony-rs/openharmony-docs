@@ -5,11 +5,11 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=f40d976a55afa9474832553b7faba446f7655708 translatedAt=2026-09-21T11:20:37.976Z pushedAt=2026-09-23T09:11:43.542Z -->
+<!-- md-trans-meta sourceCommit=2348ec05ef98b768ce1767324aeb24767349c321 translatedAt=2026-11-12T03:30:23.048Z pushedAt=2026-11-12T09:09:35.370Z nl=1 -->
 
 [\@Provider](../../reference/apis-arkui/arkui-ts/ts-state-management-provider.md#provider) and [\@Consumer](../../reference/apis-arkui/arkui-ts/ts-state-management-consumer.md#consumer) are used for two-way synchronization of data across component levels, freeing you from the constraints of the component hierarchy.
 
-\@Provider and \@Consumer are decorators in state management V2, so they can be used only in [\@ComponentV2](./arkts-create-custom-components.md#componentv2). A compilation error will be reported if they are used in [\@Component](./arkts-create-custom-components.md).
+\@Provider and \@Consumer are decorators in state management V2, so they can only be used in [\@ComponentV2](./arkts-create-custom-components.md#componentv2). A compilation error will be reported if they are used in [\@Component](./arkts-create-custom-components.md#component).
 
 \@Provider and \@Consumer provide the capability of synchronizing data across the component levels in a two-way manner. Before reading this document, you are advised to read [\@ComponentV2](./arkts-create-custom-components.md#componentv2). For details about common problems, see [In-Component State Management FAQs](./arkts-state-management-faq-inner-component.md).
 
@@ -48,7 +48,7 @@ If you are not familiar with \@Provide and \@Consume in state management V1, you
 | Supported Types           | Supports function. | Does not support function. |
 | Observation capability           | Can only observe changes to the data itself. To observe nested scenarios, cooperate with [\@Trace](arkts-new-observedV2-and-trace.md). | Observes first-layer changes. To observe nested scenarios, cooperate with [\@Observed and \@ObjectLink](arkts-observed-and-objectlink.md). |
 | alias and property name         | alias is the unique matching key. When omitted, alias defaults to the property name. | Both alias and the property name serve as keys. alias is matched first; if no match is found, the property name can be matched.|
-| \@Provide(r) initialize from parent component      | Not allowed. | Allowed.|
+| \@Provide(r) initialize from the parent component      | Not allowed. | Allowed.|
 | \@Provide(r) supports overloading  | Enabled by default, meaning \@Provider can have duplicate names, and \@Consumer performs an upward lookup for the nearest \@Provider. | Disabled by default, meaning duplicate \@Provide names are not allowed on the component tree. To enable overloading, configure allowOverride.|
 
 ## Decorator Description
@@ -182,7 +182,7 @@ struct Parent {
 
 @ComponentV2
 struct Child {
-  // The name of the @Consumer decorated attribute str is the same as that of the @Provider decorated attribute str in the Parent component. Therefore, a bidirectional binding relationship is established.
+  // The name of the @Consumer decorated attribute str is the same as that of the @Provider decorated attribute str in the Parent component. Therefore, a two-way binding relationship is established.
   @Consumer() str: string = 'world';
 
   build() {
@@ -235,7 +235,7 @@ struct Parent {
 
 @ComponentV2
 struct Child {
-  // The name of the @Consumer decorated attribute str is different from that of the @Provider decorated attribute str1 in the Parent component. Therefore, the bidirectional binding relationship cannot be established.
+  // The name of the @Consumer decorated attribute str is different from that of the @Provider decorated attribute str1 in the Parent component. Therefore, the two-way binding relationship cannot be established.
   @Consumer() str: string = 'world';
 
   build() {
@@ -455,7 +455,7 @@ struct Parent {
           .fontSize(20)
         Divider()
       })
-      // message is decorated by @Provider, and changes from overall assignment of the Map and from calling Map interfaces can be observed.
+      // message is decorated by @Provider, and changes from overall assignment of the Map and from calling the Map API can be observed.
       Button('init map')
         .width(300)
         .margin(5)

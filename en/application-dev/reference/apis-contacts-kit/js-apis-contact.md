@@ -6,7 +6,7 @@
 <!--Designer: @jiayanhong-hw-->
 <!--Tester: @shangzhijie-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=37a41c7e4764d3e7f831e1f47fc28c3acf56e6c1 translatedAt=2026-11-03T03:48:29.002Z pushedAt=2026-11-03T08:12:13.108Z nl=2 -->
+<!-- md-trans-meta sourceCommit=17885c587865c3c2ad60da662118c5a3c3d18939 translatedAt=2026-11-12T03:48:00.884Z pushedAt=2026-11-12T05:49:10.108Z nl=2 -->
 
 This module provides contact management capabilities, including adding, deleting, and updating contacts.
 
@@ -43,7 +43,7 @@ Adds a contact. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [General Error Code Description](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the following error codes, see [General Error Code Description](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID | Error Message           |
 | -------- | ------------------ |
@@ -152,7 +152,7 @@ Adds a contact. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [General Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID | Error Message |
 | -------- | ------------------ |
@@ -436,7 +436,7 @@ Updates a contact. This API uses an asynchronous callback to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [General Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID | Error Message           |
 | -------- | ------------------ |
@@ -545,7 +545,7 @@ Updates a contact (with support for passing in a list of contact attributes). Th
 
 **Error codes**
 
-For details about the following error codes, see [General Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID | Error Message           |
 | -------- | ------------------ |
@@ -664,7 +664,7 @@ Updates a contact (with the attribute list of the contact supported). This API u
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID | Error Message           |
 | -------- | ------------------ |
@@ -2555,7 +2555,7 @@ Queries contacts by phone number. This API uses an asynchronous callback to retu
 
 **Error codes**
 
-For details about the following error codes, see [General Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID | Error Message           |
 | -------- | ------------------ |
@@ -2588,7 +2588,7 @@ For details about the following error codes, see [General Error Codes](../errorc
 
 queryContactsByPhoneNumber(phoneNumber: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-Queries contacts by phone number. This API uses an asynchronous callback to return the result. This API returns only the id, key, and phoneNumbers attributes in the contact information. To query all information of a contact, you are advised to use the [queryContact](#contactquerycontact10-3) API and query based on the key attribute returned by that API. When an app calls this API to obtain contact information in the background, it must apply for the corresponding long-running task.
+Queries contacts by phone number. This API uses an asynchronous callback to return the result. This API returns only the id, key, and phoneNumbers attributes in the contact information. To query all information of a contact, you are advised to use the [queryContact](#contactquerycontact10-3) API and query based on the key attribute returned by that API. When an app calls this API to obtain contact information in the background, it must apply for the corresponding continuous task.
 
 > **NOTE**
 >
@@ -2642,7 +2642,7 @@ Queries contacts by phone number and holder. This API uses an asynchronous callb
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID | Error Message           |
 | -------- | ------------------ |
@@ -2738,7 +2738,7 @@ Queries contacts by phone number and attrs. This API uses an asynchronous callba
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID | Error Message           |
 | -------- | ------------------ |
@@ -2830,7 +2830,7 @@ Queries contacts by phone number, holder, and attrs. This API uses an asynchrono
 
 **Error codes**
 
-For details about the following error codes, see [General Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID | Error Message           |
 | -------- | ------------------ |
@@ -2936,7 +2936,7 @@ Queries contacts by phone number, holder, and attrs. This API uses a promise to 
 
 **Error codes**
 
-For details about the following error codes, see [General Error Code Description](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the following error codes, see [General Error Code Description](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID | Error Message           |
 | -------- | ------------------ |
@@ -2971,7 +2971,7 @@ For details about the following error codes, see [General Error Code Description
 
 queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-Queries contacts by phone number, holder, and attrs. This API uses a promise to return the result. The list returned by this API contains only the id, key, and phoneNumbers attributes in the contact information. To query all information about a contact, you are advised to use the [queryContact](#contactquerycontact10-3) API to query by the key attribute returned by that API. When an app calls this API to obtain contact information in the background, it must request the corresponding long-running task.
+Queries contacts by phone number, holder, and attrs. This API uses a promise to return the result. The list returned by this API contains only the id, key, and phoneNumbers attributes in the contact information. To query all information about a contact, you are advised to use the [queryContact](#contactquerycontact10-3) API to query by the key attribute returned by that API. When an app calls this API to obtain contact information in the background, it must request the corresponding continuous task.
 
 > **NOTE**
 >
@@ -4221,7 +4221,7 @@ Queries the total number of contacts. This API uses a promise to return the resu
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID | Error Message           |
 | -------- | ------------------ |
@@ -4271,7 +4271,7 @@ Calls the contact creation API to open the contact creation UI. This API uses a 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID                 | Error Message                                       |
 | --------------------- | ------------------------------------------ |
@@ -4332,7 +4332,7 @@ Opens the contact selection UI to save information to an existing contact. This 
 
 **Error codes**
 
-For details about the following error codes, see [General Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID                 | Error Message                                       |
 | --------------------- | ------------------------------------------ |
@@ -4397,7 +4397,7 @@ Adds contacts in batches. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID | Error Message           |
 | -------- | ------------------ |
@@ -4462,7 +4462,7 @@ Checks whether there are call records that meet the specified conditions, only f
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID | Error Message           |
 | -------- | ------------------ |
@@ -4523,7 +4523,7 @@ Checks whether there are matching call logs. By default, call logs within the la
 
 **Error codes**
 
-For details about the following error codes, see [General Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID | Error Message           |
 | -------- | ------------------ |
@@ -4585,7 +4585,7 @@ Synchronizes multiple contacts to the contact database in batches. A maximum of 
 
 **Error codes**
 
-For details about the following error codes, see [General Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID | Error Message           |
 | -------- | ------------------ |
@@ -4679,7 +4679,7 @@ Queries the contact information synchronization status of the current app. If th
 
 **Error codes**
 
-For details about the following error codes, see [General Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID | Error Message           |
 | -------- | ------------------ |
@@ -4731,7 +4731,7 @@ Imports multiple contacts in batches through UI interaction. A maximum of 100 co
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contacts Error Codes](../apis-contacts-kit/errorcode-contacts.md).
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Contact Error Codes](../apis-contacts-kit/errorcode-contacts.md).
 
 | ID | Error Message |
 | -------- | ------------------ |
@@ -4898,7 +4898,7 @@ Defines a contact object class.
 | key               | string                                  | Yes   | Yes   | Contact key, which is automatically generated by the system.               |
 | contactAttributes | [ContactAttributes](#contactattributes) | No   | Yes   | Contact attribute list. If this parameter is empty, all attribute fields (including the name, phone number, and email address) of the contact are queried.                     |
 | emails            | [Email](#email)[]                       | No   | Yes   | List of email addresses of the contact.                 |
-| events<sup>(deprecated)</sup>            | [Event](#eventdeprecated)[]                       | No   | Yes   | List of important dates of the contact, such as birthdays and anniversaries.<br> **Since:** 7 <br> **Deprecated since:** 26.1.0 <br> **Replaced by:** significantDates |
+| events<sup>(deprecated)</sup>            | [Event](#eventdeprecated)[]                       | No   | Yes   | List of important dates of the contact, such as birthday and anniversary.<br> **Since:** 7 <br> **Deprecated since:** 26.0.1 <br> **Replacement API:** significantDates |
 | groups            | [Group](#group)[]                       | No   | Yes   | List of groups of the contact.<br> Note: When adding or updating a contact, you can only associate the contact with an existing group. Creating a new group is not supported.                     |
 | imAddresses       | [ImAddress](#imaddress)[]               | No   | Yes   | List of instant message addresses of the contact.             |
 | phoneNumbers      | [PhoneNumber](#phonenumber)[]           | No   | Yes   | List of phone numbers of the contact.                 |
@@ -4911,7 +4911,7 @@ Defines a contact object class.
 | nickName          | [NickName](#nickname)                   | No   | Yes   | Nickname of the contact.                         |
 | note              | [Note](#note)                           | No   | Yes   | Note of the contact.                         |
 | organization      | [Organization](#organization)           | No   | Yes   | Organization information of the contact.                     |
-| significantDates      | [SignificantDate](#significantdate)[]           | No   | Yes   | List of important dates of the contact, such as birthdays and anniversaries.<br> **Since:** 26.1.0                    |
+| significantDates      | [SignificantDate](#significantdate)[]           | No   | Yes   | Important dates of the contact, such as birthday and anniversary.<br> **Since:** 26.0.1                    |
 
 **Example**
 
@@ -5066,7 +5066,7 @@ Defines the contact event class.
 
 **Since:** 7
 
-**Deprecated since:** 26.1.0
+**Deprecated since:** 26.0.1
 
 **Replaced by:** [SignificantDate](#significantdate)
 
@@ -5598,9 +5598,9 @@ Information about contact synchronization for the calling app.
 
 Enumerates the important date types of a contact.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -5618,9 +5618,9 @@ Enumerates the important date types of a contact.
 
 Defines the significant date of a contact.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
-**Atomic service API**: This API can be used in atomic services since API version 26.1.0.
+**Atomic service API**: This API can be used in atomic services since API version 26.0.1.
 
 **Model restriction:** This API can be used only in the stage model.
 
