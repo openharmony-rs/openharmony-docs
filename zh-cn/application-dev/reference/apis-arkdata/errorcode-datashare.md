@@ -181,13 +181,13 @@ Parameter error. Possible causes: 1. The array parameter exceeds the allowed len
 
 **错误描述**
 
-参数错误。可能原因：1. 数组参数长度超出范围；2. 数组参数长度为空。
+参数错误。可能原因：1. 数组参数长度超出范围；2. 数组参数为空。
 
 **可能原因**
 
 1. 数组参数长度超出范围。
 
-2. 数组参数长度为空。
+2. 数组参数为空。
 
 **处理步骤**
 
