@@ -83,7 +83,7 @@ OH_AudioStreamBuilder_Destroy(builder);
 1. 创建构造器。
 
    <!-- @[Render_Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
+   
    ``` C++
    OH_AudioStreamBuilder* builder;
    // ...
