@@ -144,7 +144,7 @@
 | [int32_t OH_ArkUI_NodeUtils_GetNodeUniqueId(ArkUI_NodeHandle node, int32_t* uniqueId)](#oh_arkui_nodeutils_getnodeuniqueid) | - | 获取目标节点的uniqueId。 |
 | [int32_t OH_ArkUI_NativeModule_AdoptChild(ArkUI_NodeHandle node, ArkUI_NodeHandle child)](#oh_arkui_nativemodule_adoptchild) | - | 当前节点接纳目标节点为附属节点。被接纳的节点不能已有父节点。调用该接口实际上不会将其添加为子节点，而是仅允许其接收对应子节点的生命周期回调。 |
 | [int32_t OH_ArkUI_NativeModule_AdoptChildWithPolicy(ArkUI_NodeHandle node, ArkUI_NodeHandle child, OH_ArkUI_AdoptPolicy policy)](#oh_arkui_nativemodule_adoptchildwithpolicy) | - | 当前节点接纳目标节点为附属节点。被接纳的节点不能已有父节点。调用该接口实际上不会将其添加为子节点。而是仅允许其接收对应子节点的生命周期回调。通过策略配置被接纳节点的浮层节点渲染位置。 |
-| [int32_t OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation(ArkUI_NodeHandle adoptedChild, const ArkUI_PointF* compensationOffset, const ArkUI_Matrix4* compensationTransform)](#oh_arkui_nativemodule_setadoptedchildoverlaypositioncompensation) | - | 设置从被接纳的子节点到接纳其的父节点间的位置补偿。此补偿代表了它们之间的纯渲染节点树的总体影响。首先通过compensationOffset平移然后通过compensationTransform进行变换。补偿只有当子节点已通过以下策略被接纳时才生效：[OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN](#oh_arkui_adoptpolicy)。 |
+| [int32_t OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation(ArkUI_NodeHandle adoptedChild, const ArkUI_PointF* compensationOffset, const ArkUI_Matrix4* compensationTransform)](#oh_arkui_nativemodule_setadoptedchildoverlaypositioncompensation) | - | 设置从被接纳的子节点到接纳其的父节点间的位置补偿。此补偿代表了它们之间的纯渲染节点树的总体影响。compensationOffset是纯渲染节点的累计偏移量补偿，只包含每个节点的偏移。compensationTransform是纯渲染节点的累计变换补偿矩阵，包含每个节点的偏移、旋转和缩放等变换。补偿只有当子节点已通过以下策略被接纳时才生效：[OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN](#oh_arkui_adoptpolicy)。 |
 | [int32_t OH_ArkUI_NativeModule_RemoveAdoptedChild(ArkUI_NodeHandle node, ArkUI_NodeHandle child)](#oh_arkui_nativemodule_removeadoptedchild) | - | 移除被接纳的目标附属节点。 |
 | [int32_t OH_ArkUI_NativeModule_IsInRenderState(ArkUI_NodeHandle node, bool* isInRenderState)](#oh_arkui_nativemodule_isinrenderstate) | - | 获取节点是否处于渲染状态，如果一个节点的对应RenderNode在渲染树上，则处于渲染状态。 |
 | [int32_t OH_ArkUI_NodeUtils_SetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_CrossLanguageOption* option)](#oh_arkui_nodeutils_setcrosslanguageoption) | - | 设置目标节点跨语言设置属性的能力。 |
@@ -577,7 +577,7 @@ enum OH_ArkUI_AdoptPolicy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN = 0 | 被接纳节点的浮层节点基于接纳此节点的寄养父节点链计算显示位置，并在每个接纳边距应用开发者提供的补偿。 |
+| OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN = 0 | 被接纳节点的浮层节点基于接纳此节点的寄养父节点链计算显示位置，并在每个接纳边界应用开发者调用[OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation](#oh_arkui_nativemodule_setadoptedchildoverlaypositioncompensation)接口提供的补偿。 |
 
 ## 函数说明
 
@@ -2843,7 +2843,7 @@ int32_t OH_ArkUI_NativeModule_AdoptChildWithPolicy(ArkUI_NodeHandle node, ArkUI_
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回值。 <br>如果操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>如果CAPI初始化失败，返回[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>如果被接纳的节点已有父节点，返回[ARKUI_ERROR_CODE_NODE_HAS_PARENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>如果节点无法被接纳为附属节点，返回[ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>如果节点无法接纳其他附属节点，返回[ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
+| int32_t | 返回值。 <br>如果操作成功，返回[ARKUI_ERROR_CODE_NO_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>如果参数异常，返回[ARKUI_ERROR_CODE_PARAM_INVALID](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>如果CAPI初始化失败，返回[ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>如果被接纳的节点已有父节点，返回[ARKUI_ERROR_CODE_NODE_HAS_PARENT](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>如果节点无法被接纳为附属节点，返回[ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。<br>如果节点无法接纳其他附属节点，返回[ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO](capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
 
 ### OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation()
 
@@ -2853,7 +2853,7 @@ int32_t OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation(ArkUI_N
 
 **描述：**
 
-设置从被接纳的子节点到接纳其的父节点间的位置补偿。此补偿代表了它们之间的纯渲染节点树的总体影响。首先通过compensationOffset平移然后通过compensationTransform进行变换。补偿只有当子节点已通过以下策略被接纳时才生效：[OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN](#oh_arkui_adoptpolicy)。
+设置从被接纳的子节点到接纳其的父节点间的位置补偿。此补偿代表了它们之间的纯渲染节点树的总体影响。compensationOffset是纯渲染节点的累计偏移量补偿，只包含每个节点的偏移。compensationTransform是纯渲染节点的累计变换补偿矩阵，包含每个节点的偏移、旋转和缩放等变换。补偿只有当子节点已通过以下策略被接纳时才生效：[OH_ARKUI_NATIVE_MODULE_ADOPT_POLICY_OVERLAY_POSITION_FOLLOWS_ADOPT_PARENT_CHAIN](#oh_arkui_adoptpolicy)。
 
 **起始版本：** 26.1.0
 
@@ -2862,8 +2862,8 @@ int32_t OH_ArkUI_NativeModule_SetAdoptedChildOverlayPositionCompensation(ArkUI_N
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) adoptedChild | [入参] 需要进行位置补偿的被接纳节点。 |
-| const [ArkUI_PointF](capi-arkui-nativemodule-arkui-pointf.md)* compensationOffset | [入参] x/y偏移量补偿（以px为单位）。 |
-| const [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)* compensationTransform | [入参] 聚合变换补偿。 |
+| const [ArkUI_PointF](capi-arkui-nativemodule-arkui-pointf.md)* compensationOffset | [入参] x/y补偿偏移量（以px为单位）。 |
+| const [ArkUI_Matrix4](capi-arkui-nativemodule-arkui-matrix4.md)* compensationTransform | [入参] 聚合变换补偿矩阵。 |
 
 **返回：**
 
