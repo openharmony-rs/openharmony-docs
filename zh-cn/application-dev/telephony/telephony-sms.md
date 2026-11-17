@@ -70,10 +70,10 @@ import { sms } from '@kit.TelephonyKit';
 import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 // ...
           let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
-              console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
+              console.info(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
           }
           let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
-              console.log(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
+              console.info(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`); 
           }
           let slotId: number = 0;
           let content: string = '短信内容';
