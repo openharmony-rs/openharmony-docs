@@ -1270,6 +1270,11 @@
 						"end_line":120,
 						"name":"module_executableBinaryPaths",
 						"start_line":18
+					},
+					{
+						"end_line":123,
+						"name":"module_launchServices",
+						"start_line":19
 					}
 				]
 			},
