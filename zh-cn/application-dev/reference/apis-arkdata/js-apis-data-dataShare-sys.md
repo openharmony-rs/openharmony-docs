@@ -1015,7 +1015,7 @@ cleanInvalidData(validSubscribers: Array&lt;string&gt;): Promise&lt;void&gt;
 | -------- | -------------------- |
 | 202      | Permission verification failed. A non-system application calls a system API. |
 | 15700013 | The DataShareHelper instance is already closed. |
-| 15700016 | Parameter error.Possible causes:<br>1. The array parameter exceeds the allowed length.<br>2. The array parameter is empty. |
+| 15700016 | Parameter error. Possible causes:<br>1. The array parameter exceeds the allowed length.<br>2. The array parameter is empty. |
 
 **示例：**
 
