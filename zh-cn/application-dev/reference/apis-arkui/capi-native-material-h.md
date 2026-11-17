@@ -54,7 +54,7 @@
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetApplyShadow(ArkUI_ImmersiveMaterialHandle material, bool applyShadow)](#oh_arkui_nativemodule_immersivematerial_setapplyshadow) | - | 设置沉浸式材质对象是否应用阴影。该参数对所有等级材质都生效。当该参数为true时，材质中的阴影效果生效，优先于阴影通用属性，适用于使用材质自带阴影的场景。当该参数为false时，阴影通用属性生效，材质无阴影效果，适用于需要使用自定义阴影效果替代材质阴影的场景。如果不设置，默认值为true。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetApplyShadow(ArkUI_ImmersiveMaterialHandle material, bool* applyShadow)](#oh_arkui_nativemodule_immersivematerial_getapplyshadow) | - | 获取沉浸式材质对象是否应用阴影。如果从未显式设置过该属性，将返回默认值true。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive(ArkUI_ImmersiveMaterialHandle material, bool interactive)](#oh_arkui_nativemodule_immersivematerial_setinteractive) | - | 设置沉浸式材质对象是否可交互形变。该参数对所有等级材质都生效。当该参数为true时，材质可交互形变。当该参数为false时，材质不可交互形变。如果不设置，遵循组件的行为。 |
-| [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetInteractive(ArkUI_ImmersiveMaterialHandle material, bool* interactive)](#oh_arkui_nativemodule_immersivematerial_getinteractive) | - | 获取沉浸式材质对象的可交互形变属性。如果从未设置过该属性，请先调用OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive设置该属性后再获取。，函数将返回[ARKUI_ERROR_CODE_PARAM_ERROR](./capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetInteractive(ArkUI_ImmersiveMaterialHandle material, bool* interactive)](#oh_arkui_nativemodule_immersivematerial_getinteractive) | - | 获取沉浸式材质对象的可交互形变属性。建议先通过[OH_ArkUI_NativeModule_ImmersiveMaterial_SetInteractive](#oh_arkui_nativemodule_immersivematerial_setinteractive)设置该属性后再调用本接口获取，如果从未设置过该属性，函数将返回[ARKUI_ERROR_CODE_PARAM_ERROR](./capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)。 |
 | [ArkUI_LightEffectOptionsHandle OH_ArkUI_NativeModule_LightEffectOptions_Create()](#oh_arkui_nativemodule_lighteffectoptions_create) | - | 创建光感交互效果配置对象，用于配置沉浸式材质的触摸高亮反馈效果。默认颜色为白色（0xffffffff）。 |
 | [void OH_ArkUI_NativeModule_LightEffectOptions_Destroy(ArkUI_LightEffectOptionsHandle options)](#oh_arkui_nativemodule_lighteffectoptions_destroy) | - | 销毁光感交互效果配置对象。 |
 | [ArkUI_ErrorCode OH_ArkUI_NativeModule_LightEffectOptions_SetColor(ArkUI_LightEffectOptionsHandle options, uint32_t color)](#oh_arkui_nativemodule_lighteffectoptions_setcolor) | - | 设置光感交互效果的颜色。如果不设置，默认颜色为白色（0xffffffff）。 |
@@ -279,7 +279,7 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_ImmersiveMaterial_GetMaterialColor(ArkUI_I
 
 | 类型 | 说明 |
 | -- | -- |
-| [ArkUI_ErrorCode](./capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | [ARKUI_ERROR_CODE_NO_ERROR](./capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](./capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 参数异常（material为NULL或color为NULL），请确保material和color均为有效指针。 |
+| [ArkUI_ErrorCode](./capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) | [ARKUI_ERROR_CODE_NO_ERROR](./capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 操作成功。<br>[ARKUI_ERROR_CODE_PARAM_INVALID](./capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 参数异常（material为NULL或color为NULL），请确保material和color均为有效指针。<br>[ARKUI_ERROR_CODE_PARAM_ERROR](./capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode) 从未设置过该属性。 |
 
 ### OH_ArkUI_NativeModule_ImmersiveMaterial_SetApplyShadow()
 
