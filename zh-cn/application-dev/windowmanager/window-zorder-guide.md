@@ -47,12 +47,12 @@ ZOrder值越大，窗口越靠前显示，能够覆盖ZOrder值较小的窗口�
 
   系统中所有类型的窗口自上而下的层级关系如下表所示（层级由高到低）：
 
-  | 窗口类别 | 说明 |
-  | -------- | -------- |
-  | 画中画窗口 | 通过[PiPWindow.create()](../reference/apis-arkui/js-apis-pipWindow.md#pipwindowcreate)接口创建，用于以小窗形式显示视频内容，如视频通话或视频播放过程中上划退出应用，画面仍以小窗形式继续显示。 |
+  | 窗口类别 | 说明                                                                                                                                                                                                                                                                                                                              |
+  | -------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 画中画窗口 | 通过[PiPWindow.create()](../reference/apis-arkui/js-apis-pipWindow.md#pipwindowcreate)接口创建，用于以小窗形式显示视频内容，如视频通话或视频播放过程中上滑退出应用，画面仍以小窗形式继续显示。                                                                                                                                                                                        |
   | 全局悬浮窗 | 使用[createWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowcreatewindow9-1)创建的[WindowType.TYPE_FLOAT](../reference/apis-arkui/arkts-apis-window-e.md#windowtype7)类型的窗口，需申请[ohos.permission.SYSTEM_FLOAT_WINDOW](../security/AccessToken/restricted-permissions.md#ohospermissionsystem_float_window)权限，位于所有应用窗口之上。 |
-  | 置顶主窗口 | 调用[setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14)置顶的主窗口，位于其他应用的普通主窗口之上，但仍低于上方的画中画窗口和全局悬浮窗。 |
-  | 应用主窗口 | 默认创建的应用主窗口，多个主窗口之间按激活顺序叠放。 |
+  | 置顶主窗口 | 调用[setWindowTopmost()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtopmost14)置顶的主窗口，位于其他应用的普通主窗口之上，但仍低于上方的画中画窗口和全局悬浮窗。                                                                                                                                                                                         |
+  | 应用主窗口 | 默认创建的应用主窗口，多个主窗口之间按激活顺序叠放。                                                                                                                                                                                                                                                                                                      |
 
   各层级的具体数值在不同设备（如PC/2in1、Phone等设备）上存在差异，上表仅描述相对层级关系。
 
