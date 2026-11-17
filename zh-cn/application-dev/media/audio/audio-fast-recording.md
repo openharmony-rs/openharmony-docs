@@ -58,13 +58,15 @@
     ``` C++
     // 构造与待创建录制流一致的音频流参数。
     OH_AudioStreamInfo streamInfo;
-    const int SAMPLING_RATE_48K = 48000;
+    const int32_t SAMPLING_RATE_48K = 48000;
     streamInfo.samplingRate = SAMPLING_RATE_48K;
     streamInfo.channelLayout = CH_LAYOUT_STEREO;
     streamInfo.encodingType = AUDIOSTREAM_ENCODING_TYPE_RAW;
     streamInfo.sampleFormat = AUDIOSTREAM_SAMPLE_S16LE;
 
     // 查询当前设备是否支持低时延录制。
+    // 说明：OH_AudioStreamManager_IsFastRecordingSupported 直接返回bool（与超低时延查询接口
+    // OH_AudioStreamManager_IsUltraFastRecordingSupported 通过出参返回结果的API形态不同）。
     bool supported = false;
     supported = OH_AudioStreamManager_IsFastRecordingSupported(
         streamManager, &streamInfo, AUDIOSTREAM_SOURCE_TYPE_MIC);
@@ -113,7 +115,7 @@
     ``` C++
     // 构造与待创建录制流一致的音频流参数。
     OH_AudioStreamInfo streamInfo;
-    const int SAMPLING_RATE_48K = 48000;
+    const int32_t SAMPLING_RATE_48K = 48000;
     streamInfo.samplingRate = SAMPLING_RATE_48K;
     streamInfo.channelLayout = CH_LAYOUT_STEREO;
     streamInfo.encodingType = AUDIOSTREAM_ENCODING_TYPE_RAW;
