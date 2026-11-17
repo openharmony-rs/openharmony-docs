@@ -2805,7 +2805,7 @@ static&nbsp;connect\<T&nbsp;extends&nbsp;object,&nbsp;S&nbsp;extends&nbsp;object
 
 >**说明：**
 >
->1. 仅支持对象类型，不支持基本类型。连接number、string、boolean等基本类型会抛出[BusinessError(140124)](./errorcode-stateManagement.md#140124)。
+>1. 仅支持对象类型，不支持基本类型。传入number、string、boolean等基本类型会抛出[BusinessError(140124)](./errorcode-stateManagement.md#140124)。
 >
 >2. 同一实例的同一key以相同类型重复连接时，返回已有引用；类型不匹配时抛出[BusinessError(140124)](./errorcode-stateManagement.md#140124)。
 >
@@ -2942,7 +2942,7 @@ static&nbsp;remove\<T\>(component:&nbsp;BaseCustomComponent,&nbsp;keyOrType:&nbs
 
 >**说明：**
 >
->注销不存在的key时会报告警告。
+>注销不存在的key时会产生警告。
 
 **起始版本：** 26.1.0
 
@@ -3023,12 +3023,12 @@ struct MyPage {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束：** 此类型仅可在Stage模型下使用。
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------| ---- | ---------------------- |
-| reason | 'serialization' \| 'deserialization' | 是 | 错误原因。'serialization'表示序列化失败（如超出序列化上限或字段不可序列化），'deserialization'表示反序列化失败（如数据损坏、类型不匹配）。connect入口错误（类型不支持、参数非法）以[BusinessError(140124)](./errorcode-stateManagement.md#140124)直接抛出，不经本回调上报。推荐用户数据总量：每实例≤100KB。<br>（150KB序列化预算，与系统数据共享） |
-| keys | Array\<string\> | 是 | 受错误影响的key列表。 |
+| reason | 'serialization' \| 'deserialization' | 是 | 错误原因。'serialization'表示保存失败（如数据超出上限或包含不支持的数据），'deserialization'表示恢复失败（如数据损坏、类型不匹配）。connect入口错误（类型不支持、参数非法）以[BusinessError(140124)](./errorcode-stateManagement.md#140124)直接抛出，不经本回调上报。推荐数据总量：每实例≤100KB。<br>（150KB序列化数据上限，与系统数据共享） |
+| keys | Array\<string\> | 是 | 保存或恢复失败所影响的可恢复状态变量key列表。 |
 | message | string | 是 | 错误的附加信息。 |
 
 ## NotifyOnErrorCallback
