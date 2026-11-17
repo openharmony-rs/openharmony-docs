@@ -51,7 +51,7 @@ status: active
 
 OH_ORIGINAL_STREAM模式下，应用侧通过OH_AVScreenCapture_OnBufferAvailable()获取到的视频帧率较少，单位时间内收到的帧率远低于配置的目标帧率，表现为画面长时间静止期间几乎收不到新帧。
 
-OH_CAPTURE_FILE模式下生成的mp4文件可播放，但视频轨帧率远低于预期值。例如配置30fps，实际仅 5~10fps。
+OH_CAPTURE_FILE模式下生成的mp4文件可播放，但视频轨帧率远低于预期值。例如配置30fps，实际仅5~10fps。
 
 ### 可能原因
 
