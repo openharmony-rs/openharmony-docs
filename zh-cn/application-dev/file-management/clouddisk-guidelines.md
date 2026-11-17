@@ -1348,7 +1348,7 @@ static napi_value Execute(napi_env env, napi_callback_info info)
 **应用侧防滥用实践**
 
 - 创建占位符时按云侧文件实际大小设置logicalSize，云侧大小未知时先查询元数据获得实际大小后再创建，避免为未知大小的文件创建占位符。
-- 云侧文件大小变化时，先通过OH_CloudDisk_GetPlaceholderState()确认目标文件为占位符文件（返回state为非占位符时无法更新），再调用OH_CloudDisk_UpdatePlaceholder()按云侧最新元数据重置占位符（本地已水合数据会被清空，占位符回到未水合状态；若存在水合任务会返回OH_CLOUD_DISK_HYDRATE_IN_PROGRESS，可取消水合后重试）。完整示例参见[CloudDisk示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/README_zh.md)。
+- 云侧文件大小变化时，需先通过OH_CloudDisk_GetPlaceholderState()确认目标文件为占位符文件，再调用OH_CloudDisk_UpdatePlaceholder()按云侧最新元数据重置占位符，详见下方示例代码。
 - 不要以st_size判断文件实际数据量：未水合占位符的st_size等于预设值但本地无数据，应以应用自身记录的云侧文件大小为准。
 
 云侧文件大小变化后重置占位符的示例代码如下（源自CloudDisk示例更新占位符元数据模块）：
@@ -1372,7 +1372,8 @@ Button($r('app.string.update_on_cloud_size_change_btn'))
       return;
     }
     // 步骤2：按云侧最新元数据（大小、时间戳从云侧元数据查询获得，此处由入参模拟）
-    // 更新占位符：本地已水合数据会被清空，占位符回到未水合状态
+    // 更新占位符：本地已水合数据会被清空，占位符回到未水合状态；
+    // 若存在水合任务会返回OH_CLOUD_DISK_HYDRATE_IN_PROGRESS，可取消水合后重试
     let ret: number = cloudDisk.updatePlaceholder(
       this.updatePlaceholderSyncPath, this.updatePlaceholderFilePath,
       parseInt(this.updateOnCloudSizeChangeAtimeMs) || 0,
