@@ -98,7 +98,7 @@
 
    > **注意：**
    >
-   > 通过Canvas相关接口（如drawImage、drawImageLattice、drawImageNine、drawImageRect、drawImageRectWithSrc）绘制PixelMap时，仅支持像素格式为RGB_565、RGBA_8888、BGRA_8888、ALPHA_8和RGBA_F16的PixelMap。
+   > 通过Canvas相关接口绘制PixelMap时，仅支持像素格式为RGB_565、RGBA_8888、BGRA_8888、ALPHA_8和RGBA_F16的PixelMap。
 
    <!-- @[arkts_graphics_draw_image_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/PixelMapDrawing.ets) -->
    
