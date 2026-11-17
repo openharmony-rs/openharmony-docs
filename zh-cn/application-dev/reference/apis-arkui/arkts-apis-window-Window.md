@@ -1463,11 +1463,13 @@ try {
 }
 ```
 
-## getAvoidAreaInsets<sup>26+</sup>
+## getAvoidAreaInsets
 
 getAvoidAreaInsets(): AvoidAreaInsets
 
-获取当前窗口的避让区边衬。
+获取当前窗口的内容避让距离。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1477,15 +1479,15 @@ getAvoidAreaInsets(): AvoidAreaInsets
 
 | 类型 | 说明 |
 |----------------------------------| ----------------- |
-| [AvoidAreaInsets](arkts-apis-window-i.md#avoidareainsets26) | 窗口避让区边衬。 |
+| [AvoidAreaInsets](arkts-apis-window-i.md#avoidareainsets) | 窗口内容避让距离。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
 
 **示例：**
@@ -3617,18 +3619,20 @@ try {
 }
 ```
 
-## onAvoidAreaInsetsChange<sup>26+</sup>
+## onAvoidAreaInsetsChange
 
 onAvoidAreaInsetsChange(callback: Callback&lt;void&gt;): void
 
-订阅窗口避让区边衬变化事件。
+订阅窗口内容避让距离的变化事件。
 
 当窗口避让区域发生变化时，触发回调。如果多个避让区域同时发生变化，在相关避让区域信息更新完成后，仅触发一次回调。
 
 > **说明：**
 >
-> - 可以在回调中调用[getAvoidAreaInsets()](#getavoidareainsets26)获取窗口最新的避让区边衬，或使用[getWindowAvoidArea()](#getwindowavoidarea9)获取指定类型的避让区域。
+> - 可以在回调中调用[getAvoidAreaInsets()](#getavoidareainsets)获取窗口最新的内容避让距离，或使用[getWindowAvoidArea()](#getwindowavoidarea9)获取指定类型的避让区域。
 > - [TYPE_KEYBOARD](arkts-apis-window-e.md#avoidareatype7)类型的避让区域变化不会触发该回调。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3638,15 +3642,15 @@ onAvoidAreaInsetsChange(callback: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                | 必填 | 说明                       |
 | -------- | ------------------- | ---- | -------------------------- |
-| callback | Callback&lt;void&gt; | 是   | 回调函数。                 |
+| callback | Callback&lt;void&gt; | 是   | 回调函数。当窗口内容避让距离发生变化时调用。                 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
 
 **示例：**
@@ -3665,11 +3669,13 @@ try {
 }
 ```
 
-## offAvoidAreaInsetsChange<sup>26+</sup>
+## offAvoidAreaInsetsChange
 
 offAvoidAreaInsetsChange(callback?: Callback&lt;void&gt;): void
 
-取消订阅窗口避让区边衬变化事件。
+取消订阅窗口内容避让距离的变化事件。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3679,15 +3685,15 @@ offAvoidAreaInsetsChange(callback?: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                | 必填 | 说明                                                         |
 | -------- | ------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;void&gt; | 否   | 回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有避让区边衬变化事件的监听。默认值为**undefined**。 |
+| callback | Callback&lt;void&gt; | 否   | 回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有内容避让距离变化事件的监听。默认值为undefined。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
 
 **示例：**
