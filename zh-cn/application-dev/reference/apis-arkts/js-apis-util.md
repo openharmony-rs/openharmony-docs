@@ -3622,6 +3622,7 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
 **示例：**
 
   ```ts
+  import { util } from '@kit.ArkTS';
   // MIME编码
   let base64Helper = new util.Base64Helper();
   let array =
@@ -3639,7 +3640,10 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
   aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
    */
+  ```
 
+  ```ts
+  import { util } from '@kit.ArkTS';
   // BASIC编码
   let base64Helper = new util.Base64Helper();
   let array =
@@ -3655,7 +3659,10 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   /*
   输出结果：result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
    */
+  ```
 
+  ```ts
+  import { util } from '@kit.ArkTS';
   // BASIC_URL_SAFE编码
   let base64Helper = new util.Base64Helper();
   let array =
@@ -3671,6 +3678,10 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   /*
   输出结果：result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU
    */
+  ```
+
+  ```ts
+  import { util } from '@kit.ArkTS';
   // MIME_URL_SAFE编码
   let base64Helper = new util.Base64Helper();
   let array =

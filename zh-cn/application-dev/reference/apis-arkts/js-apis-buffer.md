@@ -22,7 +22,7 @@ import { buffer } from '@kit.ArkTS';
 
 ## BufferEncoding
 
-type BufferEncoding = | 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'
+type BufferEncoding = 'ascii' | 'utf8' | 'utf-8' | 'utf16le' | 'ucs2' | 'ucs-2' | 'base64' | 'base64url' | 'latin1' | 'binary' | 'hex'
 
 表示支持的编码格式类型。
 
@@ -1051,13 +1051,16 @@ import { buffer } from '@kit.ArkTS';
 
 let buf = buffer.from([0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x70,
   0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78]);
-console.info(buf.readBigUInt64LE(0).toString());
+let buf0 = buf.readBigInt64LE(0);
+console.info(buf0.toString());
 // 输出结果：8100120198111388771
 
 let buf1 = buffer.allocUninitializedFromPool(8);
-let result = buf1.writeBigUInt64BE(BigInt(0xdecafafecacefade), 0);
+let result = buf1.writeBigInt64LE(BigInt(buf0), 0);
 console.info("result = " + result);
 // 输出结果：result = 8
+console.info(buf1.readBigInt64LE(0).toString());
+// 输出结果：8100120198111388771
 ```
 
 ### readBigUInt64BE
@@ -1142,13 +1145,16 @@ import { buffer } from '@kit.ArkTS';
 
 let buf = buffer.from([0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x70,
   0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78]);
-console.info(buf.readBigUInt64LE(0).toString());
+let buf0 = buf.readBigUInt64LE(0);
+console.info(buf0.toString());
 // 输出结果：8100120198111388771
 
 let buf1 = buffer.allocUninitializedFromPool(8);
-let result = buf1.writeBigUInt64BE(BigInt(0xdecafafecacefade), 0);
+let result = buf1.writeBigUInt64LE(BigInt(buf0), 0);
 console.info("result = " + result);
 // 输出结果：result = 8
+console.info(buf1.readBigUInt64LE(0).toString());
+// 输出结果：8100120198111388771
 ```
 
 ### readDoubleBE
@@ -2361,9 +2367,9 @@ console.info("result = " + result);
 
 writeBigUInt64BE(value: bigint, offset?: number): number
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
-
 在Buffer对象的offset偏移处写入无符号的大端序64位BigUInt型数据。
+
+**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
 
