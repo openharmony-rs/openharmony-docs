@@ -109,7 +109,22 @@
 3. 监听状态变化。
 
     在创建音频流之前，可通过注册`OH_AudioRenderer_OnFastStatusChange`回调，用来在音频流运行期间，及时感知到模式发生变化。
-    <!-- @[Render_SetRendererFastStatusChangeCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+    <!-- @[Render_IsUltraFastPlaybackSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+    
+    ``` C++
+    // 构造与待创建播放流一致的音频流参数。
+    const int samplingRate48K = 48000;
+    OH_AudioStreamInfo streamInfo;
+    streamInfo.samplingRate = samplingRate48K;
+    streamInfo.channelLayout = CH_LAYOUT_STEREO;
+    streamInfo.encodingType = AUDIOSTREAM_ENCODING_TYPE_RAW;
+    streamInfo.sampleFormat = AUDIOSTREAM_SAMPLE_S16LE;
+     
+    // 查询当前设备是否支持超低时延播放。
+    bool supported = false;
+    OH_AudioCommon_Result result = OH_AudioStreamManager_IsUltraFastPlaybackSupported(
+        audioStreamManager, &streamInfo, AUDIOSTREAM_USAGE_MUSIC, &supported);
+    ```
 
 4. 查询低时延模式实际运行状态。
 
