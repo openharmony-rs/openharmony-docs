@@ -9,8 +9,8 @@ status: active
 # 使用JSVM-API实现JS与C/C++语言交互开发流程
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou-->
-<!--Designer: @knightaoko-->
+<!--Owner: @lijin1039-->
+<!--Designer: @lijin1039-->
 <!--Tester: @test_lzz-->
 <!--Adviser: @k1ngqaquuu-->
 
