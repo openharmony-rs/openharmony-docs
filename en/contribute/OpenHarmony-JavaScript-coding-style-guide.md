@@ -1,5 +1,7 @@
 # JavaScript Coding Style Guide
 
+<!-- md-trans-meta sourceCommit=ca78672f1b8af65e827c7eb0f993c1619ecaaf12 translatedAt=2026-11-17T02:46:33.905Z nl=2 -->
+
 ## Goal
 Rules are not perfect. Prohibiting features that are useful in specific situations can have an impact on code implementation, but we set the rules for the benefit of most programmers. If we identify a rule cannot be followed in the operations, we should work together to improve the rule. You are supposed to have the basic JavaScript language capabilities to refer to this guide, instead of learning the JavaScript language from it.
 

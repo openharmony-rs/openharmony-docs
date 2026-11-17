@@ -1,5 +1,7 @@
 # Debugging Tool Writing Template
 
+<!-- md-trans-meta sourceCommit=e7033ba74717ca63bd36c289337ba06a877fc743 translatedAt=2026-11-17T02:46:33.905Z nl=2 -->
+
 ## General Writing Instructions
 > **NOTE**
 >
@@ -95,7 +97,7 @@ bm install [-h] [-p filePath] [-u userId] [-r] [-w waitingTime] [-s hspDirPath]
 | -p | Installs an HAP with other HAPs in the specified path. This parameter is mandatory.|
 | -u | Installs an HAP for a given user, which is the currently active user by default. This parameter is optional.  |
 | -r | Installs an HAP in overwrite mode. This parameter is optional. By default, the HAP is installed in overwrite mode.|
-| -s | This parameter is mandatory only for HSP installation. Installs an HSP. Each directory can have only one HSP with the same bundle name. This parameter is mandatory only for HSP installation.|
+| -s | This parameter is mandatory for installing an inter-application HSP and optional in other scenarios. Since API version 24, a specified directory can contain multiple HSPs with the same bundle name but different module names. In API version 23 and earlier, the directory can contain only one HSP.|
 | -w | Waits for a specified time before installing a HAP. The minimum waiting time is 5s, and the maximum waiting time is 600s. The default waiting time is 5s. This parameter is optional.|
 
 

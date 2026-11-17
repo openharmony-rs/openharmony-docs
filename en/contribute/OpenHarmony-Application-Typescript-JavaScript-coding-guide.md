@@ -1,5 +1,7 @@
 # TypeScript and JavaScript Coding Style Guide
 
+<!-- md-trans-meta sourceCommit=8e600af821b06715faa08e9e35b44f81c8d6dd8d translatedAt=2026-11-17T02:46:33.905Z nl=2 -->
+
 # Overview
 
 ## Purpose

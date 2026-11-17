@@ -1,5 +1,7 @@
 # How to Contribute
 
+<!-- md-trans-meta sourceCommit=8e600af821b06715faa08e9e35b44f81c8d6dd8d translatedAt=2026-11-17T02:46:33.905Z nl=2 -->
+
 ## Contributing Code
 
 ## Before You Start
@@ -16,7 +18,7 @@ OpenHarmony is an open source community that relies entirely on the friendly, we
 
 ## **Finding the SIG Group You Are Interested**
 
-For details about how to participate in Special Interest Group (SIG), see **SIG Governance**.
+For details about how to participate in Special Interest Group (SIG), see [SIG Governance](https://gitcode.com/openharmony/community/tree/master/sig).
 
 ## Starting Contributing
 

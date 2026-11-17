@@ -1,5 +1,7 @@
 # Documentation Contribution
 
+<!-- md-trans-meta sourceCommit=2c26b5dd4532c9a073b02eefd10bd7898a3c1e5b translatedAt=2026-11-17T02:46:33.905Z nl=2 -->
+
 You are welcome to make contributions to OpenHarmony documentation, in any of the methods provided below. You can help us improve the existing documents or submit new, original content.
 
 Excellent contributors will be awarded and the contributions will be publicized in the developer community.
