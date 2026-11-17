@@ -1901,3 +1901,17 @@ Allows an application to intercept input events.
 **Supported devices**: PCs/2-in-1 devices
 
 **Since**: 26.1.0
+
+## ohos.permission.OPERATE_TEXT_ACROSS_APPLICATION
+
+Allows an application to manipulate text in focused input boxes of other applications.
+
+<!--RP124--><!--RP124End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: manual_settings
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.1.0
