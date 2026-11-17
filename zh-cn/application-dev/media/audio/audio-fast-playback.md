@@ -121,7 +121,12 @@ status: active
     ``` C++
     // 构造与待创建播放流一致的音频流参数。
     const int samplingRate48K = 48000;
-    OH_AudioStreamInfo streamInfo;
+    <!-- @[Render_SetUltraFastLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
+    
+    ``` C++
+    OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST;
+    OH_AudioStreamBuilder_SetLatencyMode(g_ultraBuilder, latencyMode);
+    ```
     streamInfo.samplingRate = samplingRate48K;
     streamInfo.channelLayout = CH_LAYOUT_STEREO;
     streamInfo.encodingType = AUDIOSTREAM_ENCODING_TYPE_RAW;
