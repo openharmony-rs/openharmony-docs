@@ -1467,7 +1467,7 @@ try {
 
 getAvoidAreaInsets(): AvoidAreaInsets
 
-获取当前窗口的避让区边衬，即窗口内容在各方向可能被系统UI遮挡的区域大小。
+获取当前窗口的避让区边衬。
 
 **起始版本：** 26.1.0
 
@@ -1487,7 +1487,7 @@ getAvoidAreaInsets(): AvoidAreaInsets
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
 
 **示例：**
@@ -3623,7 +3623,9 @@ try {
 
 onAvoidAreaInsetsChange(callback: Callback&lt;void&gt;): void
 
-订阅窗口避让区边衬的变化事件。当窗口避让区域发生变化时，触发回调。如果多个避让区域同时发生变化，在相关避让区域信息更新完成后，仅触发一次回调。
+订阅当前窗口避让区边衬的变化。
+
+当窗口避让区域发生变化时，会触发回调。在同一次变化，如果多个避让区发生变化，相关避让区信息更新后，只会触发一次回调。
 
 > **说明：**
 >
@@ -3648,7 +3650,7 @@ onAvoidAreaInsetsChange(callback: Callback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
 
 **示例：**
@@ -3683,7 +3685,7 @@ offAvoidAreaInsetsChange(callback?: Callback&lt;void&gt;): void
 
 | 参数名   | 类型                | 必填 | 说明                                                         |
 | -------- | ------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;void&gt; | 否   | 回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有避让区边衬变化事件的监听。默认值为undefined。 |
+| callback | Callback&lt;void&gt; | 否   | 回调函数。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有避让区边衬变化事件的监听。默认值：undefined。 |
 
 **错误码：**
 
@@ -3691,7 +3693,7 @@ offAvoidAreaInsetsChange(callback?: Callback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. Possible cause: The internal services of the window are not started normally. |
 
 **示例：**
