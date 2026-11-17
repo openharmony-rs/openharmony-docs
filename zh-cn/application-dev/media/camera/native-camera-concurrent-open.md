@@ -202,7 +202,7 @@
 8. 在多摄同开状态下，前/后置相机可配置的能力示例如下（当前版本仅支持本文开头部分所示的七项基础功能）。
 
    <!-- @[settings_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->    
-
+   
    ``` C++
    Camera_ErrorCode NDKCamera::HasFlashFn(uint32_t mode)
    {
@@ -218,7 +218,7 @@
        } else {
            OH_LOG_ERROR(LOG_APP, "hasFlash fail-----");
        }
-
+   
        // 查询闪光灯模式是否支持。
        bool isSupported = false;
        ret = OH_CaptureSession_IsFlashModeSupported(captureSession_, flashMode, &isSupported);
@@ -230,7 +230,7 @@
        } else {
            OH_LOG_ERROR(LOG_APP, "isFlashModeSupported fail-----");
        }
-
+   
        // 设置闪光灯模式。
        ret = OH_CaptureSession_SetFlashMode(captureSession_, flashMode);
        if (ret == CAMERA_OK) {
@@ -238,7 +238,7 @@
        } else {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetFlashMode failed. %{public}d.", ret);
        }
-
+   
        // 获取当前设备的闪光灯模式。
        ret = OH_CaptureSession_GetFlashMode(captureSession_, &flashMode);
        if (ret == CAMERA_OK) {
@@ -248,7 +248,7 @@
        }
        return ret;
    }
-
+   
    // 对焦模式。
    Camera_ErrorCode NDKCamera::IsFocusModeSupported(uint32_t mode)
    {
@@ -260,7 +260,7 @@
        }
        return ret_;
    }
-
+   
    Camera_ErrorCode NDKCamera::IsFocusMode(uint32_t mode)
    {
        OH_LOG_INFO(LOG_APP, "IsFocusMode start.");
@@ -283,7 +283,7 @@
        OH_LOG_INFO(LOG_APP, "IsFocusMode end.");
        return ret_;
    }
-
+   
    Camera_ErrorCode NDKCamera::setZoomRatioFn(uint32_t zoomRatio)
    {
        float zoom = float(zoomRatio);
@@ -297,7 +297,7 @@
            OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatioRange success. minZoom: %{public}f, maxZoom: %{public}f.",
                minZoom, maxZoom);
        }
-
+   
        // 设置缩放比例。
        ret = OH_CaptureSession_SetZoomRatio(captureSession_, zoom);
        if (ret == CAMERA_OK) {
@@ -305,7 +305,7 @@
        } else {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetZoomRatio failed. %{public}d.", ret);
        }
-
+   
        // 获取当前设备的缩放比例。
        ret = OH_CaptureSession_GetZoomRatio(captureSession_, &zoom);
        if (ret == CAMERA_OK) {
