@@ -237,16 +237,20 @@
         let promise: Promise<preferences.Preferences> = preferences.getPreferences(this.context, 'myStore');
         promise.then(async (storeDB: preferences.Preferences) => {
           hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded to get preferences.');
-          let msg: Record<string, string> = JSON.parse(message);
-          if (msg.selectA !== undefined) {
-            hilog.info(DOMAIN_NUMBER, TAG, 'onFormEvent selectA info:' + msg.selectA);
-            await storeDB.put('A' + formId, msg.selectA);
+          try {
+            let msg: Record<string, string> = JSON.parse(message);
+            if (msg.selectA !== undefined) {
+              hilog.info(DOMAIN_NUMBER, TAG, 'onFormEvent selectA info:' + msg.selectA);
+              await storeDB.put('A' + formId, msg.selectA);
+            }
+            if (msg.selectB !== undefined) {
+              hilog.info(DOMAIN_NUMBER, TAG, 'onFormEvent selectB info:' + msg.selectB);
+              await storeDB.put('B' + formId, msg.selectB);
+            }
+            await storeDB.flush();
+          } catch (error) {
+            hilog.error(DOMAIN_NUMBER, TAG, `onFormEvent catch error, code: ${error.code}, message: ${error.message}`);
           }
-          if (msg.selectB !== undefined) {
-            hilog.info(DOMAIN_NUMBER, TAG, 'onFormEvent selectB info:' + msg.selectB);
-            await storeDB.put('B' + formId, msg.selectB);
-          }
-          await storeDB.flush();
         }).catch((error: BusinessError) => {
           hilog.error(DOMAIN_NUMBER, TAG, `Failed to get preferences. error code: ${error.code}, error message: ${error.message}`);
         });
