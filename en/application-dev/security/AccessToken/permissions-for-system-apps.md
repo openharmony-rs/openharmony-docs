@@ -5786,7 +5786,7 @@ Allows an application to install freely distributable applications.
 
 ## ohos.permission.vehicle.MMA_OCCUPANT
 
-Allows an in-vehicle application to call spatial gesture APIs to enable contactless interaction for passengers.
+Allows an in-vehicle application to obtain occupant status, including seat occupancy and occupant types.
 
 **Permission level**: system_basic
  
@@ -5794,7 +5794,7 @@ Allows an in-vehicle application to call spatial gesture APIs to enable contactl
 
 **Certificate-based authorization**: true
  
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.0.1
 
@@ -5808,7 +5808,7 @@ Allows an in-vehicle application to obtain the real-time status of vehicle compo
 
 **Certificate-based authorization**: true
  
-**Supported devices**: Car
+**Supported devices**: cars
 
 **Valid since**: 26.0.1
 
