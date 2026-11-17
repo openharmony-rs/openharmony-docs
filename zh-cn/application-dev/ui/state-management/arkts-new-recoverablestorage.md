@@ -16,7 +16,7 @@ RecoverableStorage是应用程序中的可选单例对象。此对象的作用�
 
 >**说明：**
 >
->RecoverableStorage从API version 26开始支持。
+>RecoverableStorage从API版本26.1.0开始支持。
 
 ## 概述
 

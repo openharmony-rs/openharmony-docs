@@ -2789,7 +2789,7 @@ type ReusableComponentConstructor = Function
 
 RecoverableConnectOptions从API版本26.1.0开始支持。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2817,7 +2817,7 @@ static&nbsp;connect\<T&nbsp;extends&nbsp;object,&nbsp;S&nbsp;extends&nbsp;object
 
 RecoverableStorageError从API版本26.1.0开始支持。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2848,6 +2848,7 @@ RecoverableStorageError从API版本26.1.0开始支持。
 ```ts
 import { RecoverableStorage } from '@kit.ArkUI';
 
+// 可恢复状态变量的类型
 class Draft {
   text: string = '';
   constructor(text: string = '') { this.text = text; }
@@ -2856,8 +2857,9 @@ class Draft {
 @Entry
 @Component
 struct DraftPage {
+  // 连接可恢复状态变量：恢复时读回保存值，否则走默认构造
   @State draft: Draft = RecoverableStorage.connect({
-    component: this,
+    component: this,   // 传入当前组件实例
     type: Draft,
     defaultCreator: (): Draft => new Draft('')
   });
@@ -2883,7 +2885,7 @@ static&nbsp;keys(component:&nbsp;BaseCustomComponent):&nbsp;Array\<string\>
 
 NotifyOnErrorCallback从API版本26.1.0开始支持。
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2944,7 +2946,7 @@ static&nbsp;remove\<T\>(component:&nbsp;BaseCustomComponent,&nbsp;keyOrType:&nbs
 
 **起始版本：** 26.1.0
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -2996,7 +2998,7 @@ struct MyPage {
 
 **起始版本：** 26.1.0
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3005,11 +3007,11 @@ struct MyPage {
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------| ---- | ---------------------- |
 | component | [BaseCustomComponent](../../ui/state-management/arkts-create-custom-components.md) | 是 | 自定义组件实例，在自定义组件中使用时，直接传入**this**。 |
-| type | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | 是 | 可恢复状态变量的类型。仅支持对象类型。 |
+| type | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | 是 | 可恢复状态变量的类型。<br>仅支持对象类型。 |
 | key | string | 否 | 可恢复状态变量的key。<br>不指定时使用类型名作为key。 |
-| defaultCreator | [StorageDefaultCreator\<T\>](#storagedefaultcreatort) | 是 | 默认值构造器。首次连接时使用，恢复失败时作为回退。 |
+| defaultCreator | [StorageDefaultCreator\<T\>](#storagedefaultcreatort) | 是 | 默认值构造器。<br>首次连接时使用，恢复失败时作为回退。 |
 | defaultSubCreator | [StorageDefaultCreator\<S\>](#storagedefaultcreatort) | 否 | 集合嵌套\@Type成员的构造器，恢复时用于重建嵌套对象。<br>仅对容器类型（Array/Map/Set）顶层生效。 |
-| notifyOnError | [NotifyOnErrorCallback](#notifyonerrorcallback) | 否 | 序列化/反序列化错误回调。不指定时错误在内部处理，不会导致应用崩溃。 |
+| notifyOnError | [NotifyOnErrorCallback](#notifyonerrorcallback) | 否 | 序列化/反序列化错误回调，用于在保存/恢复失败时获取原因与受影响的key。<br>不指定时错误在内部处理，不会导致应用崩溃。 |
 
 ## RecoverableStorageError
 
@@ -3017,7 +3019,7 @@ struct MyPage {
 
 **起始版本：** 26.1.0
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -3037,7 +3039,7 @@ type&nbsp;NotifyOnErrorCallback&nbsp;=&nbsp;(error:&nbsp;RecoverableStorageError
 
 **起始版本：** 26.1.0
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
