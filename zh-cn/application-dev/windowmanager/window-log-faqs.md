@@ -321,18 +321,18 @@ RectCheck err size cur persistentId: [persistentId], windowType: [windowType], w
 
 字段含义：
 
-| 字段 | 含义 | 说明                                                                                                                                                                                                                                     |
-|------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `persistentId` | 窗口持久化ID | 窗口的唯一标识，用于定位具体窗口                                                                                                                                                                                                                       |
-| `windowName` | 窗口名称 | 应用设置的窗口名称                                                                                                                                                                                                                              |
-| `windowType` | 窗口类型 | 窗口类型值（如应用主窗口、子窗口等）                                                                                                                                                                                                                     |
-| `windowState` | 窗口状态 | 窗口当前状态（显示、隐藏等）                                                                                                                                                                                                                         |
-| `curWidth` | 当前宽度（vp） | 窗口当前实际宽度，单位为vp                                                                                                                                                                                                                         |
-| `curHeight` | 当前高度（vp） | 窗口当前实际高度，单位为vp                                                                                                                                                                                                                         |
-| `minWidth` | 最小宽度限制（vp） | 系统规定的最小宽度。该值等于未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)配置过WindowLimits时，[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最小宽度。     |
-| `minHeight` | 最小高度限制（vp） | 系统规定的最小高度。该值等于未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)配置过WindowLimits时，[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最小高度。     |
+| 字段 | 含义 | 说明 |
+|------|------|---|
+| `persistentId` | 窗口持久化ID | 窗口的唯一标识，用于定位具体窗口 |
+| `windowName` | 窗口名称 | 应用设置的窗口名称 |
+| `windowType` | 窗口类型 | 窗口类型值（如应用主窗口、子窗口等） |
+| `windowState` | 窗口状态 | 窗口当前状态（显示、隐藏等） |
+| `curWidth` | 当前宽度（vp） | 窗口当前实际宽度，单位为vp |
+| `curHeight` | 当前高度（vp） | 窗口当前实际高度，单位为vp |
+| `minWidth` | 最小宽度限制（vp） | 系统规定的最小宽度。该值等于未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)配置过WindowLimits时，[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最小宽度。 |
+| `minHeight` | 最小高度限制（vp） | 系统规定的最小高度。该值等于未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)配置过WindowLimits时，[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最小高度。 |
 | `maxFloatingWindowSize` | 最大尺寸限制（vp） | 系统规定的最大尺寸阈值。该值等于未调用[setWindowLimits()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)配置过WindowLimits时，[getWindowLimitsVP()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimitsvp22)返回的最大尺寸阈值。 |
-| `sessionRect` | 窗口矩形区域（px） | 窗口的位置和尺寸，单位为px，坐标以屏幕左顶点为原点                                                                                                                                                                                                             |
+| `sessionRect` | 窗口矩形区域（px） | 窗口的位置和尺寸，单位为px，坐标以屏幕左顶点为原点 |
 
 **检测逻辑**
 
