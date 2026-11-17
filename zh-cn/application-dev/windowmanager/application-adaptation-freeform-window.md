@@ -506,6 +506,6 @@
 > 
 > 在进入全屏播放后，如果需要退出全屏播放，有以下两种方式：
 > 
-> - 调用[recover()](../reference/apis-arkui/arkts-apis-window-Window.md#recover11)接口将窗口从全屏模式下还原为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING），并恢复到进入该模式之前的大小和位置。
+> - 调用[recover()](../reference/apis-arkui/arkts-apis-window-Window.md#recover11)接口将窗口从全屏模式下还原为自由悬浮窗口模式（即窗口模式为window.[WindowStatusType](../reference/apis-arkui/arkts-apis-window-e.md#windowstatustype11).FLOATING），并恢复到进入该模式之前的大小和位置。
 > 
 > - 调用[maximize()](../reference/apis-arkui/arkts-apis-window-Window.md#maximize12)接口，传参[EXIT_IMMERSIVE](../reference/apis-arkui/arkts-apis-window-e.md#maximizepresentation12)，将窗口从全屏改变为最大化状态。
