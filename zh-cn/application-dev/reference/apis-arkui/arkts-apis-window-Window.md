@@ -5271,13 +5271,13 @@ ArkTS-Dyn示例：
 
 ```ts
 const callback = () => {
+  // windowClass为已获取的Window实例，获取方式请参考本文档开头说明
   let avoidAreaInsets = windowClass.getAvoidAreaInsets();
   console.info('onAvoidAreaInsetsChange triggered. top: ' + avoidAreaInsets.top +
   ', left: ' + avoidAreaInsets.left + ', right: ' + avoidAreaInsets.right +
   ', bottom: ' + avoidAreaInsets.bottom);
 }
 try {
-  // windowClass为已获取的Window实例，获取方式请参考本文档开头说明
   windowClass.onAvoidAreaInsetsChange(callback);
 } catch (exception) {
   console.error(`Failed to enable the listener for avoid area insets changes. Cause code: ${exception.code}, message: ${exception.message}`);
@@ -5288,13 +5288,13 @@ ArkTS-Sta示例：
 
 ```ts
 const callback = () => {
+  // windowClass为已获取的Window实例，获取方式请参考本文档开头说明
   let avoidAreaInsets = windowClass.getAvoidAreaInsets();
   console.info('onAvoidAreaInsetsChange triggered. top: ' + avoidAreaInsets.top +
   ', left: ' + avoidAreaInsets.left + ', right: ' + avoidAreaInsets.right +
   ', bottom: ' + avoidAreaInsets.bottom);
 }
 try {
-  // windowClass为已获取的Window实例，获取方式请参考本文档开头说明
   windowClass.onAvoidAreaInsetsChange(callback);
 } catch (exception) {
   let error = exception as BusinessError;
