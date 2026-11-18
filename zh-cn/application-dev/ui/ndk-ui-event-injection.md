@@ -104,22 +104,7 @@ mode决定命令的执行方式，仅click和scroll使用，content_switch固定
 
 ### 错误码
 
-同步返回值表示命令是否被接受。
-
-| 返回值 | 说明 |
-| --- | --- |
-| ARKUI_ERROR_CODE_NO_ERROR | 命令已入队，执行结果通过回调返回。 |
-| ARKUI_ERROR_CODE_PARAM_INVALID | command为空、JSON不合法或缺少必填字段、命令投递失败。 |
-| ARKUI_ERROR_CODE_UI_CONTEXT_INVALID | uiContext为空，或对应的UI实例不可用。 |
-
-回调结果码表示命令的实际执行结果。
-
-| 结果码 | 说明 |
-| --- | --- |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_SUCCESS | 命令执行成功。 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_TARGET_NOT_FOUND | 未找到能响应命令的组件或目标，例如target模式下坐标未命中组件，或命令被接受后UI实例已不可用。 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_COMMAND_NOT_SUPPORTED | 命令本身合法，但当前UI状态下无法执行。 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_INTERRUPTED_BY_USER | 命令被用户操作中断。 |
+同步返回值表示命令是否被接受，回调结果码表示命令的实际执行结果，二者的取值和含义请参考[ui_event_injection.h](../reference/apis-arkui/capi-ui-event-injection-h.md)。
 
 ## 开发步骤
 
