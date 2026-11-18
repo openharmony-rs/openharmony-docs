@@ -43,7 +43,7 @@ Performance Analysis Kit承载着HarmonyOS DFX子系统面向应用开发者提�
 
 - [错误管理](errormanager-guidelines.md)与[应用恢复](apprecovery-guidelines.md)，提供开发者捕获应用运行时异常能力，以及应用非预期退出后启动状态和数据的自恢复能力。
 
-- 调试命令提供包含[hdc](hdc.md)、[hilog](hilog.md)、[hidumper](hidumper.md)、[hitrace](hitrace.md)、[hiperf](hiperf.md)等工具用于调试系统和应用。
+- 调试命令提供包含[hdc](hdc.md)、[hilog](hilog.md)、[hidumper](hidumper.md)、[hitrace](hitrace.md)、[hiperf](hiperf.md)、[hiprofiler](hiprofiler.md)等工具用于调试系统和应用。
 
 
 ## 亮点/特征
