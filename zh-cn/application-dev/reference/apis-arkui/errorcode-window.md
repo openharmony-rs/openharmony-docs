@@ -1051,6 +1051,7 @@ This window type is invalid.
 窗口类型不支持该操作。
 
 **可能原因**
+
 主窗、子窗、dialog、TYPE_FLOAT非系统窗类型不支持某些操作。
 
 **处理步骤**
