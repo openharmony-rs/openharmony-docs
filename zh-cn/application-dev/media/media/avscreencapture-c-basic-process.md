@@ -102,9 +102,9 @@ g_avCapture = OH_AVScreenCapture_Create();
 <!-- @[screenCapture_config_buffer_audio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->    
 
 ``` C++
-// 录屏时获取麦克风，如果同时设置了内录和麦克风音频信息，两者参数设置需保持一致。
+// 录屏时获取麦克风。
 OH_AudioCaptureInfo micCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_MIC};
-// 录屏时获取内录数据，内录参数必填。如果同时设置了内录和麦克风音频信息，两者参数设置需保持一致。
+// 录屏时获取内录数据。
 OH_AudioCaptureInfo innerCapInfo = {.audioSampleRate = 48000, .audioChannels = 2, .audioSource = OH_ALL_PLAYBACK};
 // 录屏音频输出规格配置。audioBitrate保证输出文件的比特率为设置的预期比特率，和audioSampleRate无强关联。
 // 为保证音频质量，此处音频比特率取值为128000。如果录屏内容以语音为主，不包含音乐、游戏音效等，可以降低为96000或48000。
@@ -181,7 +181,7 @@ AVScreenCapture实例的配置信息为[OH_AVScreenCaptureConfig](../../referenc
 // 初始化录屏，传入配置信息OH_AVScreenCaptureConfig。
 config = {
     .captureMode = OH_CAPTURE_HOME_SCREEN, // 录屏模式设置。
-    .dataType = OH_ORIGINAL_STREAM, // 录屏数据类型，原始码流或文件。
+    .dataType = OH_ORIGINAL_STREAM, // 录屏数据类型，原始码流。
     .audioInfo = audioInfo,
     .videoInfo = videoInfo
 };
@@ -450,7 +450,8 @@ config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
 config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
 OH_NativeDisplayManager_DestroyDisplay(displayInfo);
 displayInfo = nullptr;
-// 设置录屏模式为OH_CAPTURE_SPECIFIED_SCREEN，传入屏幕ID。
+// 当不使用Picker时，通过OH_AVScreenCapture_StrategyForPickerPopUp设置为false，
+// 开发者可通过设置录屏模式为OH_CAPTURE_SPECIFIED_SCREEN，传入具体屏幕ID来录屏。
 config.captureMode = OH_CAPTURE_SPECIFIED_SCREEN;
 config.videoInfo.videoCapInfo.displayId = 0;
 ```
@@ -511,7 +512,8 @@ config.videoInfo.videoCapInfo.videoFrameWidth = displayInfo->width;
 config.videoInfo.videoCapInfo.videoFrameHeight = displayInfo->height;
 OH_NativeDisplayManager_DestroyDisplay(displayInfo);
 displayInfo = nullptr;
-// 设置录屏模式为OH_CAPTURE_SPECIFIED_WINDOW，传入屏幕ID。
+// 当不使用Picker时，通过OH_AVScreenCapture_StrategyForPickerPopUp设置为false，
+// 开发者可通过设置录屏模式为OH_CAPTURE_SPECIFIED_WINDOW，传入具体窗口ID来录屏。
 config.captureMode = OH_CAPTURE_SPECIFIED_WINDOW;
 config.videoInfo.videoCapInfo.displayId = 0;
 
