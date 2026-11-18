@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件在新窗口中打开页面的方法，包括开启多窗口访问、在新窗口事件回调中创建并绑定新窗口，以及激活已有窗口。"
+keywords: [新窗口, onWindowNew, onWindowNewExt, allowWindowOpenMethod]
+doctype: guide
+status: active
+---
+
 # 在新窗口中打开页面
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

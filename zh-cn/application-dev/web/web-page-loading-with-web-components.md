@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件加载网络页面、本地页面和HTML富文本数据的方法，涵盖rawfile与沙箱路径加载、resource协议访问本地资源及网络权限配置。"
+keywords: [Web组件, 页面加载, loadUrl, loadData, rawfile, resource协议, 沙箱路径, fileAccess, ohos.permission.INTERNET]
+doctype: guide
+status: active
+---
+
 # 使用Web组件加载页面
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍使用DevTools在电脑上调试Web组件加载的前端页面，涵盖无线调试与USB连接调试两种流程及端口转发配置，并汇总常见调试问题的解决方法。"
+keywords: [DevTools, 前端页面调试, setWebDebuggingAccess, 无线调试, USB调试, chrome://inspect, hdc fport, 端口转发]
+doctype: guide
+status: active
+---
+
 # 使用DevTools工具调试前端页面
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

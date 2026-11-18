@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "汇总网页加载失败问题的定位方法，涵盖权限与网络状态检查、本地资源跨域处理、错误上报回调排查、User-Agent适配及Cookie相关问题的分析与解决。"
+keywords: [网页加载失败, 问题定位, 跨域, CORS, onInterceptRequest, setPathAllowingUniversalAccess, onErrorReceive, UserAgent, Cookie]
+doctype: guide
+status: active
+---
+
 # 定位网页加载问题
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

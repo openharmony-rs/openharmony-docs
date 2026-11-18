@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍在初始化内核前开启Web组件前进后退缓存BFCache，并设置缓存页面数量与留存时间以加速前进后退浏览的方法。"
+keywords: [前进后退缓存, BFCache, enableBackForwardCache, setBackForwardCacheOptions, BackForwardCacheSupportedFeatures, BackForwardCacheOptions, initializeWebEngine, 页面快照]
+doctype: guide
+status: active
+---
+
 # 设置Web组件前进后退缓存
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

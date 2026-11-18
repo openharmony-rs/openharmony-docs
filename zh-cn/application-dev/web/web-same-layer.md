@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍ArkWeb同层渲染架构，讲解通过embed/object标签与NodeController构建同层组件并处理生命周期与输入事件，适用于地图、输入框等场景。"
+keywords: [同层渲染, embed标签, object标签, enableNativeEmbedMode, registerNativeEmbedRule, onNativeEmbedLifecycleChange, NodeController, BuilderNode, arkwebnativestyle]
+doctype: guide
+status: active
+---
+
 # 同层渲染
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
