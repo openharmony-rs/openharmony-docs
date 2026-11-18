@@ -101,7 +101,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 ## 使用限制
 
-1. 仅支持对象类型（`T extends object`），不支持基本类型。传入number、string、boolean等基本类型会抛出[BusinessError(140124)](../../reference/apis-arkui/errorcode-stateManagement.md)。类的成员属性支持基本类型与联合类型（如`string | null`、`number | undefined`），`null`/`undefined`属性值可正常保存与恢复。
+1. 仅支持对象类型（`T extends object`），不支持基本类型。传入number、string、boolean等基本类型会抛出[错误码](../../reference/apis-arkui/errorcode-stateManagement.md)。类的成员属性支持基本类型与联合类型（如`string | null`、`number | undefined`），`null`/`undefined`属性值可正常保存与恢复。
 
 2. 单实例可保存的序列化数据上限为150KB，推荐数据总量不超过100KB。超出上限的数据不会被保存，系统侧将输出错误日志提示开发者。若connect时传入了`notifyOnError`，也会通过`notifyOnError`上报错误信息，不会导致应用崩溃。
 
