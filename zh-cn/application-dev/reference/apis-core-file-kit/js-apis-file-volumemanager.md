@@ -139,57 +139,6 @@ volumeManager.getLocalDiskInfos().then((disks: Array<volumeManager.LocalDiskInfo
 });
 ```
 
-## volumeManager.getDiskSerialNumber
-
-getDiskSerialNumber(sysPath: string): Promise&lt;string&gt;
-
-获取指定磁盘的序列号。使用Promise异步回调。
-
-**起始版本**：26.1.0
-
-**需要权限**：ohos.permission.ACCESS_DISK_PHY_INFO
-
-**模型约束**：此接口仅可在Stage模型下使用。
-
-**系统能力**：SystemCapability.FileManagement.StorageService.Volume
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| sysPath | string | 是 | 磁盘设备节点的物理路径，如/sys/block/nvme0n1。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| Promise&lt;string&gt; | Promise对象，返回磁盘序列号。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 201 | Permission verification failed. |
-| 13600001 | IPC error. |
-| 13900042 | Unknown error. The sysPath is invalid or the disk does not exist. |
-| 13600002 | The file system is not supported. |
-| 13600008 | The object does not exist. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let sysPath: string = "/sys/block/nvme0n1";
-volumeManager.getDiskSerialNumber(sysPath).then((serial: string) => {
-  console.info("getDiskSerialNumber successfully:" + serial);
-}).catch((error: BusinessError) => {
-  console.error(`Failed to getDiskSerialNumber. Code: ${error.code}, message: ${error.message}`);
-});
-```
-
 ## volumeManager.getDiskPowerCycleCount
 
 getDiskPowerCycleCount(sysPath: string): Promise&lt;number&gt;
