@@ -2851,7 +2851,9 @@ import { RecoverableStorage } from '@kit.ArkUI';
 // 可恢复状态变量的类型
 class Draft {
   text: string = '';
-  constructor(text: string = '') { this.text = text; }
+  constructor(text: string = '') {
+    this.text = text;
+  }
 }
 
 @Entry
@@ -2909,7 +2911,9 @@ static&nbsp;keys(component:&nbsp;BaseCustomComponent):&nbsp;Array\<string\>
 import { RecoverableStorage } from '@kit.ArkUI';
 
 // 可恢复状态变量的类型
-class Draft { text: string = ''; }
+class Draft {
+  text: string = '';
+}
 
 @Entry
 @Component
@@ -2965,7 +2969,9 @@ static&nbsp;remove\<T\>(component:&nbsp;BaseCustomComponent,&nbsp;keyOrType:&nbs
 import { RecoverableStorage } from '@kit.ArkUI';
 
 // 可恢复状态变量的类型
-class Draft { text: string = ''; }
+class Draft {
+  text: string = '';
+}
 
 @Entry
 @Component

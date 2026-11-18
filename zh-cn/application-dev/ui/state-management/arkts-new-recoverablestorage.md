@@ -159,7 +159,7 @@ struct MyPage {
 ```ts
 import { RecoverableStorage } from '@kit.ArkUI';
 
-// \@Observed装饰的类
+// @Observed装饰的类
 @Observed
 class Cart {
   count: number = 0;
@@ -193,7 +193,7 @@ struct CartPage {
 ```ts
 import { RecoverableStorage } from '@kit.ArkUI';
 
-// \@ObservedV2装饰的类，嵌套成员使用\@Type标注
+// @ObservedV2装饰的类，嵌套成员使用@Type标注
 @ObservedV2
 class Envelope {
   @Trace title: string = '';
