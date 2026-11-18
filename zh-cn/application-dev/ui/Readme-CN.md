@@ -333,7 +333,7 @@
   - [NDK多实例场景开发](ndk-scope-task.md)
   - [NDK多线程创建组件](ndk-build-on-multi-thread.md)
   - [构建渲染节点](ndk-embed-render-components.md)
-  - [UI事件注入(C/C++)](ndk-ui-event-injection.md)
+  - [注入手势命令](ndk-ui-event-injection.md)
 - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
   - [UI开发 (兼容JS的类Web开发范式)概述](ui-js-overview.md)
   - 框架说明<!--js-framework-overview-->

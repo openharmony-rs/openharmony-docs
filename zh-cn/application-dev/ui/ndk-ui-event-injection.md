@@ -1,4 +1,4 @@
-# UI事件注入(C/C++)
+# 注入手势命令
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhou-chaobo-->
@@ -6,7 +6,9 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-UI事件注入接口为应用内智能体和UI自动化场景提供UI控制能力：应用可以通过NDK接口，向本应用的UI实例异步注入交互命令（点击、滚动、内容切换、返回、按键）。命令以JSON描述，只声明交互意图，不指定具体组件，由系统根据执行模式决定如何执行，执行结果通过完成回调返回。
+## 概述
+
+UI事件注入接口为应用内智能体和UI自动化场景提供UI控制能力，应用可以通过NDK接口，向本应用的UI实例异步注入交互命令（点击、滚动、内容切换、返回、按键）。命令采用JSON格式描述，只声明交互意图，不指定具体组件，由系统根据执行模式决定如何执行；执行结果通过回调异步通知。
 
 ## 约束与限制
 
@@ -20,19 +22,19 @@ UI事件注入接口为应用内智能体和UI自动化场景提供UI控制能�
 | 回调时机 | 回调在命令执行完成时触发一次，不等待组件的延迟效果或渲染完成；在目标UI线程上调用时，回调发生在接口返回之后，在其他线程上调用时，回调可能早于接口返回。 |
 | 坐标 | 所有位置坐标相对于窗口，单位为物理像素（px）。 |
 
-## 接口说明
+命令采用JSON格式，顶层schemaVersion字段必须为1，仅支持五种命令类型，具体格式见接口规格。
+
+## 接口规格
 
 | 接口 | 说明 |
 | --- | --- |
-| [OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction) | 异步向UI注入非精确目标的交互命令。 |
+| [OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction) | 异步向UI实例注入非精确目标的交互命令。 |
 | [OH_ArkUI_NativeModule_UIJsonWrapperCreate](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate) | 从JSON字符串创建命令对象。 |
 | [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy) | 销毁命令对象并释放资源。 |
 
-命令执行完成后，结果通过[OH_ArkUI_NativeModule_UIEventInjectionCallback](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback)回调通知，取值为[OH_ArkUI_NativeModule_UIEventInjection_ResultCode](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)枚举。callback也可以为NULL，表示不关注执行结果。
+命令执行完成后，结果通过[OH_ArkUI_NativeModule_UIEventInjectionCallback](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback)回调通知，取值为[OH_ArkUI_NativeModule_UIEventInjection_ResultCode](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)枚举。callback可以为NULL，表示不关注执行结果。
 
-## 命令格式
-
-命令的顶层结构如下。
+命令采用JSON格式，顶层结构如下。
 
 ```json
 {
@@ -45,19 +47,19 @@ UI事件注入接口为应用内智能体和UI自动化场景提供UI控制能�
 }
 ```
 
-`schemaVersion`必须为1。`cmd.type`支持以下五类命令：
+schemaVersion必须为1，cmd.type支持以下五类命令：
 
 | 命令 | mode取值 | action_info关键字段 | 说明 |
 | --- | --- | --- | --- |
-| click | auto（默认）/ simulating / target | coordinates.x1、y1（必填） | 点击指定坐标。 |
-| scroll | auto（默认）/ simulating / target | coordinates.x1、y1（必填），x2、y2（可选，滚动终点）；direction（可选，取值forward、backward、left、right、up、down，默认forward）；distance（可选，非负物理像素值，默认为窗口高度的1/3） | 从起点向终点滚动；未指定终点时，按direction和distance确定滚动轨迹。 |
-| content_switch | target（必填） | coordinates.pos.x、pos.y（必填）；direction（可选，forward或backward，默认forward）；count（可选，正整数，默认1） | 在指定位置切换内容，例如翻页。 |
+| click | auto（默认）/ simulating / target | coordinates.x1、coordinates.y1（必填） | 点击指定坐标。 |
+| scroll | auto（默认）/ simulating / target | coordinates.x1、coordinates.y1（必填），x2、y2（可选，滚动终点）；direction（可选，取值forward、backward、left、right、up、down，默认forward）；distance（可选，非负物理像素值，默认为窗口高度的1/3） | 从起点向终点滚动；未指定终点时，按direction和distance确定滚动轨迹。 |
+| content_switch | target（必填） | coordinates.pos.x、coordinates.pos.y（必填）；direction（可选，forward或backward，默认forward）；count（可选，正整数，默认1） | 在指定位置切换内容，例如翻页。 |
 | backpress | 不涉及 | 不涉及 | 执行返回操作。 |
 | key | 不涉及 | code（必填，虚拟键码） | 注入按键事件。 |
 
 未标注必填的字段均为可选。所有位置坐标相对于窗口，单位为物理像素（px）。
 
-`mode`决定命令的执行方式，仅click和scroll使用（content_switch固定为target），含义如下：
+mode决定命令的执行方式，仅click和scroll使用，content_switch固定为target，含义如下：
 
 | 执行模式 | 说明 |
 | --- | --- |
@@ -65,35 +67,67 @@ UI事件注入接口为应用内智能体和UI自动化场景提供UI控制能�
 | simulating | 不定位组件，直接派发完整的触摸事件序列（按下、移动、抬起）。 |
 | target | 直接触发坐标处命中的组件手势，未命中组件时回调收到TARGET_NOT_FOUND。 |
 
-各命令的JSON示例如下：
+### 命令示例
+
+点击坐标(100, 200)的示例。
 
 ```json
-// click：点击(100, 200)
 { "schemaVersion": 1, "cmd": { "type": "click", "mode": "auto",
     "action_info": { "coordinates": { "x1": 100.0, "y1": 200.0 } } } }
+```
 
-// scroll：从(100, 200)滚动到(100, 400)
+从(100, 200)滚动到(100, 400)的示例。
+
+```json
 { "schemaVersion": 1, "cmd": { "type": "scroll", "mode": "auto",
     "action_info": { "coordinates": { "x1": 100.0, "y1": 200.0, "x2": 100.0, "y2": 400.0 } } } }
+```
 
-// content_switch：在(100, 200)处向前切换内容
+在(100, 200)处向前切换内容的示例。
+
+```json
 { "schemaVersion": 1, "cmd": { "type": "content_switch", "mode": "target",
     "action_info": { "coordinates": { "pos": { "x": 100.0, "y": 200.0 } }, "direction": "forward" } } }
+```
 
-// backpress：返回
+返回操作的示例。
+
+```json
 { "schemaVersion": 1, "cmd": { "type": "backpress" } }
+```
 
-// key：注入Tab键（键码2049）
+注入Tab键（键码2049）的示例。
+
+```json
 { "schemaVersion": 1, "cmd": { "type": "key", "action_info": { "code": 2049 } } }
 ```
 
-如果JSON不合法、缺少必填字段或数值超出有效范围，接口同步返回`ARKUI_ERROR_CODE_PARAM_INVALID`，命令不会执行，也不会触发回调。
+如果JSON不合法、缺少必填字段或数值超出有效范围，接口同步返回ARKUI_ERROR_CODE_PARAM_INVALID，命令不会执行，也不会触发回调。
+
+### 错误码
+
+同步返回值表示命令是否被接受。
+
+| 返回值 | 说明 |
+| --- | --- |
+| ARKUI_ERROR_CODE_NO_ERROR | 命令已入队，执行结果通过回调返回。 |
+| ARKUI_ERROR_CODE_PARAM_INVALID | command为空、JSON不合法或缺少必填字段、命令投递失败。 |
+| ARKUI_ERROR_CODE_UI_CONTEXT_INVALID | uiContext为空，或对应的UI实例不可用。 |
+
+回调结果码表示命令的实际执行结果。
+
+| 结果码 | 说明 |
+| --- | --- |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_SUCCESS | 命令执行成功。 |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_TARGET_NOT_FOUND | 未找到能响应命令的组件或目标，例如target模式下坐标未命中组件，或命令被接受后UI实例已不可用。 |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_COMMAND_NOT_SUPPORTED | 命令本身合法，但当前UI状态下无法执行。 |
+| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_INTERRUPTED_BY_USER | 命令被用户操作中断。 |
 
 ## 开发步骤
 
 ### 添加动态链接库
 
-在CMakeLists.txt中链接`libace_ndk.z.so`：
+在CMakeLists.txt中链接libace_ndk.z.so。
 
 ```Text
 target_link_libraries(entry PUBLIC libace_ndk.z.so)
@@ -108,7 +142,7 @@ target_link_libraries(entry PUBLIC libace_ndk.z.so)
 
 ### 完整示例
 
-下面以注入一次点击为例：
+下面以注入一次点击为例。
 
 ```C++
 // 定义完成回调：命令执行完成后回调一次，result为执行结果
@@ -140,32 +174,21 @@ if (ret != ARKUI_ERROR_CODE_NO_ERROR) {
 }
 ```
 
-示例中的`uiContext`为目标UI实例的`ArkUI_ContextHandle`。接口返回`ARKUI_ERROR_CODE_NO_ERROR`只表示命令已入队，实际执行结果以回调中的`result`为准。
+示例中的uiContext为目标UI实例的ArkUI_ContextHandle。接口返回ARKUI_ERROR_CODE_NO_ERROR只表示命令已入队，实际执行结果以回调中的result为准。
 
-## 返回值与结果码
+## 异常处理
 
-同步返回值表示命令是否被接受：
+高频调用时需要注意：
 
-| 返回值 | 说明 |
-| --- | --- |
-| ARKUI_ERROR_CODE_NO_ERROR | 命令已入队，执行结果通过回调返回。 |
-| ARKUI_ERROR_CODE_PARAM_INVALID | command为空、JSON不合法或缺少必填字段、命令投递失败。 |
-| ARKUI_ERROR_CODE_UI_CONTEXT_INVALID | uiContext为空，或对应的UI实例不可用。 |
+- 接口不提供取消操作，命令被接受后无法主动撤销，应控制调用频率。
+- 可以同时提交多条命令，但执行和回调顺序不保证，高频注入时避免依赖命令之间的先后顺序。
 
-回调结果码表示命令的实际执行结果：
+异常处理建议：
 
-| 结果码 | 说明 |
-| --- | --- |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_SUCCESS | 命令执行成功。 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_TARGET_NOT_FOUND | 未找到能响应命令的组件或目标，例如target模式下坐标未命中组件，或命令被接受后UI实例已不可用。 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_COMMAND_NOT_SUPPORTED | 命令本身合法，但当前UI状态下无法执行。 |
-| OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_INTERRUPTED_BY_USER | 命令被用户操作中断。 |
-
-使用时还需注意：
-
-- 接口返回前完成JSON的校验和复制，返回后可以立即销毁`command`对象；要再次注入同一条命令，需要重新创建命令对象。
-- `callback`被接受后必须保持可调用，直到回调返回。
-- `userData`由调用方管理，框架只透传指针；请求被接受后到回调返回前，非NULL的`userData`必须保持有效。
+- 接口返回前完成JSON的校验和复制，返回后可以立即销毁命令对象；要再次注入同一条命令，需要重新创建命令对象。
+- 回调被接受后必须保持可调用，直到回调返回。
+- 用户数据由调用方管理，框架只透传指针；请求被接受后到回调返回前，非空的用户数据必须保持有效。
+- 命令被接受后如果目标UI实例不再可用，回调会收到TARGET_NOT_FOUND，调用方应根据结果码处理失败。
 
 ## 相关资料
 
