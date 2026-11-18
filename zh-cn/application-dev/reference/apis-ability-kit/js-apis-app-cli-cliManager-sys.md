@@ -62,15 +62,17 @@ import { cliManager } from '@kit.AbilityKit';
 
 queryToolSummaries(): Promise\<Array\<ToolSummary>>
 
-查询所有CLI工具的摘要信息。摘要信息仅包含名称、版本和描述字段，使用Promise异步回调。
+查询CLI工具的摘要信息。摘要信息仅包含名称、版本和描述字段，使用Promise异步回调。从API版本26.0.1开始，持ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具；无public工具时返回空数组。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口：** 此接口为系统接口。
+**系统接口：** 此接口在API版本26.0.0为系统接口，从API版本26.0.1开始为公开接口。
 
-**需要权限：** ohos.permission.QUERY_CLI_TOOL
+**需要权限：**
+- API版本26.0.1及以后版本：ohos.permission.QUERY_CLI_TOOL 或 ohos.permission.QUERY_PUBLIC_CLI_TOOL
+- API版本26.0.0：ohos.permission.QUERY_CLI_TOOL
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -87,7 +89,7 @@ queryToolSummaries(): Promise\<Array\<ToolSummary>>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission verification failed. A non-system application calls a system API. |
+| 202      | Permission verification failed. A non-system application calls a system API.<br>**说明**：仅API版本26.0.0返回此错误码。 |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
 **示例：**
@@ -117,15 +119,17 @@ try {
 
 queryTools(): Promise\<Array\<ToolInfo\>\>
 
-查询所有CLI工具的详细信息，使用Promise异步回调。
+查询CLI工具的详细信息，使用Promise异步回调。从API版本26.0.1开始，持ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具；无public工具时返回空数组。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口：** 此接口为系统接口。
+**系统接口：** 此接口在API版本26.0.0为系统接口，从API版本26.0.1开始为公开接口。
 
-**需要权限：** ohos.permission.QUERY_CLI_TOOL
+**需要权限：**
+- API版本26.0.1及以后版本：ohos.permission.QUERY_CLI_TOOL 或 ohos.permission.QUERY_PUBLIC_CLI_TOOL
+- API版本26.0.0：ohos.permission.QUERY_CLI_TOOL
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -142,7 +146,7 @@ queryTools(): Promise\<Array\<ToolInfo\>\>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission verification failed. A non-system application calls a system API. |
+| 202      | Permission verification failed. A non-system application calls a system API.<br>**说明**：仅API版本26.0.0返回此错误码。 |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
 **示例：**
@@ -172,15 +176,17 @@ try {
 
 getToolInfoByName(toolName: string): Promise\<ToolInfo\>
 
-根据工具名称获取单个工具的详细信息，使用Promise异步回调。
+根据工具名称获取单个工具的详细信息，使用Promise异步回调。从API版本26.0.1开始，持ohos.permission.QUERY_CLI_TOOL的调用方可查询全量工具，仅持ohos.permission.QUERY_PUBLIC_CLI_TOOL的调用方只能查询public工具，查询private工具时返回错误码35600030。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口：** 此接口为系统接口。
+**系统接口：** 此接口在API版本26.0.0为系统接口，从API版本26.0.1开始为公开接口。
 
-**需要权限：** ohos.permission.QUERY_CLI_TOOL
+**需要权限：**
+- API版本26.0.1及以后版本：ohos.permission.QUERY_CLI_TOOL 或 ohos.permission.QUERY_PUBLIC_CLI_TOOL
+- API版本26.0.0：ohos.permission.QUERY_CLI_TOOL
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
@@ -203,7 +209,7 @@ getToolInfoByName(toolName: string): Promise\<ToolInfo\>
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 202      | Permission verification failed. A non-system application calls a system API. |
+| 202      | Permission verification failed. A non-system application calls a system API.<br>**说明**：仅API版本26.0.0返回此错误码。 |
 | 35600030 | No tool with the specified name exists.                      |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 

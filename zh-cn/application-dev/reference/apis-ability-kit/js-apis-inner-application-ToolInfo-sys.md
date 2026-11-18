@@ -46,6 +46,7 @@ import { ToolInfo, ToolSummary, SubCommandInfo } from '@kit.AbilityKit';
 | hasSubCommand      | boolean                                                | 是   | 是   | 指示该工具是否支持子命令。true表示工具支持子命令，false表示不支持子命令。默认值为false。 |
 | subcommands        | Record<string, [SubCommandInfo](#subcommandinfo)>       | 是   | 是   | 子命令信息列表。以键值对形式存储，键为子命令名称，值为子命令的详细信息。默认值为空对象。 |
 | isLockScreenExecutionAllowed        | boolean       | 是   | 是   | 指示该工具是否支持在锁屏状态下执行。true表示工具支持在锁屏状态下执行，false表示工具不支持在锁屏状态下执行。默认值为false。 |
+| supportedDevices   | Array\<string> | 是   | 是   | CLI工具支持的设备类型列表。默认值为空数组。<br>**说明**：从API版本26.1.0开始支持。 |
 
 ## ToolSummary
 
