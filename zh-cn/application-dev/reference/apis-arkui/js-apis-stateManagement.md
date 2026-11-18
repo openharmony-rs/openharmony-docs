@@ -2783,7 +2783,7 @@ type ReusableComponentConstructor = Function
 >
 >- 资源管控终止（如低内存）场景：恢复退后台时保存的值。
 >
->- JS_ERROR与APP_FREEZE异常退出场景：异常发生时刻的值被保存，并在系统自动重启后恢复。前提是应用已在AbilityStage的onCreate中调用[enableAppRecovery](../apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)（默认参数即可满足）且未注册错误观察者。
+>- JS_ERROR与APP_FREEZE异常退出场景：异常发生时刻的值被保存，并在系统自动重启后恢复。前提是应用已在AbilityStage的onCreate中调用[enableAppRecovery](../apis-ability-kit/js-apis-app-ability-appRecovery.md#apprecoveryenableapprecovery)（默认参数即可满足）且未注册错误观察者。
 >
 >仅系统携带恢复重启参数拉起的启动会执行恢复。用户手动启动应用始终为冷启动，[connect](#connect-1)返回默认值。
 
@@ -2805,11 +2805,11 @@ static&nbsp;connect\<T&nbsp;extends&nbsp;object,&nbsp;S&nbsp;extends&nbsp;object
 
 >**说明：**
 >
->1. 仅支持对象类型，不支持基本类型。传入number、string、boolean等基本类型会抛出[BusinessError(140124)](./errorcode-stateManagement.md#140124)。
+>1. 仅支持对象类型，不支持基本类型。传入number、string、boolean等基本类型会抛出[BusinessError(140124)](./errorcode-stateManagement.md)。
 >
->2. 同一实例的同一key以相同类型重复连接时，返回已有引用；类型不匹配时抛出[BusinessError(140124)](./errorcode-stateManagement.md#140124)。
+>2. 同一实例的同一key以相同类型重复连接时，返回已有引用；类型不匹配时抛出[BusinessError(140124)](./errorcode-stateManagement.md)。
 >
->3. 恢复重启时恢复值优先于默认值；恢复失败时返回通过[defaultCreator](#recoverableconnectoptionst-s)构造的默认值，并经[notifyOnError](#recoverableconnectoptionst-s)上报错误。
+>3. 恢复重启时恢复值优先于默认值；恢复失败时返回通过[defaultCreator](#recoverableconnectoptionst-s)构造的默认值，并经`notifyOnError`上报错误。
 >
 >4. 典型用法为修改所连接对象的属性。对例如[状态管理V1](../../ui/state-management/arkts-application-state-management-overview.md)的[\@State](../../ui/state-management/arkts-state.md)变量整体重新赋值会导致已存引用失效，不被跟踪。
 >
@@ -3016,7 +3016,7 @@ struct MyPage {
 | type | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | 是 | 可恢复状态变量的类型。<br>仅支持对象类型。 |
 | key | string | 否 | 可恢复状态变量的key。<br>不指定时使用类型名作为key。 |
 | defaultCreator | [StorageDefaultCreator\<T\>](#storagedefaultcreatort) | 是 | 默认值构造器。<br>首次连接时使用，恢复失败时作为回退。 |
-| defaultSubCreator | [StorageDefaultCreator\<S\>](#storagedefaultcreatort) | 否 | 集合嵌套\@Type成员的构造器，恢复时用于重建嵌套对象。<br>仅对容器类型（Array/Map/Set）顶层生效。 |
+| defaultSubCreator | StorageDefaultCreator\<S\> | 否 | 集合嵌套\@Type成员的构造器，恢复时用于重建嵌套对象。<br>仅对容器类型（Array/Map/Set）顶层生效。 |
 | notifyOnError | [NotifyOnErrorCallback](#notifyonerrorcallback) | 否 | 序列化/反序列化错误回调，用于在保存/恢复失败时获取原因与受影响的key。<br>不指定时错误在内部处理，不会导致应用崩溃。 |
 
 ## RecoverableStorageError
@@ -3033,7 +3033,7 @@ struct MyPage {
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------| ---- | ---------------------- |
-| reason | 'serialization' \| 'deserialization' | 是 | 错误原因。'serialization'表示保存失败（如数据超出上限或包含不支持的数据），'deserialization'表示恢复失败（如数据损坏、类型不匹配）。connect入口错误（类型不支持、参数非法）以[BusinessError(140124)](./errorcode-stateManagement.md#140124)直接抛出，不经本回调上报。推荐数据总量：每实例≤100KB。（150KB序列化数据上限，与系统数据共享） |
+| reason | 'serialization' \| 'deserialization' | 是 | 错误原因。'serialization'表示保存失败（如数据超出上限或包含不支持的数据），'deserialization'表示恢复失败（如数据损坏、类型不匹配）。connect入口错误（类型不支持、参数非法）以[BusinessError(140124)](./errorcode-stateManagement.md)直接抛出，不经本回调上报。推荐数据总量：每实例≤100KB。（150KB序列化数据上限，与系统数据共享） |
 | keys | Array\<string\> | 是 | 保存或恢复失败所影响的可恢复状态变量key列表。 |
 | message | string | 是 | 错误的附加信息。 |
 

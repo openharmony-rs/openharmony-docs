@@ -35,7 +35,7 @@ RecoverableStorage是应用启动时创建的单例，提供资源管控终止/�
 
 ### 使能资源管控终止恢复
 
-在UIAbility的onCreate中调用[setRestoreEnabled](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setrestoreenabled)(true)开启应用的恢复能力：
+在UIAbility的onCreate中调用[setRestoreEnabled](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setrestoreenabled14)(true)开启应用的恢复能力：
 
 ```ts
 // EntryAbility.ets
@@ -58,11 +58,11 @@ export default class EntryAbility extends UIAbility {
 
 ### 使能异常退出恢复
 
-在UIAbility的onCreate中调用[restoreWindowStage](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#restorewindowstage)初始化页面内容存储，以及在AbilityStage的onCreate中调用[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)：
+在UIAbility的onCreate中调用[restoreWindowStage](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#restorewindowstage)初始化页面内容存储，以及在AbilityStage的onCreate中调用[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#apprecoveryenableapprecovery)：
 
 >**注意：**
 >
->[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)必须在AbilityStage的onCreate（应用级入口）调用，否则异常退出场景不保存、不自动重启。
+>[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#apprecoveryenableapprecovery)必须在AbilityStage的onCreate（应用级入口）调用，否则异常退出场景不保存、不自动重启。
 
 ```ts
 // EntryAbility.ets
@@ -99,9 +99,9 @@ export default class MyAbilityStage extends AbilityStage {
 
 ## 使用限制
 
-1. 仅支持对象类型（`T extends object`），不支持基本类型。传入number、string、boolean等基本类型会抛出[BusinessError(140124)](../../reference/apis-arkui/errorcode-stateManagement.md#140124)。类的成员属性支持基本类型与联合类型（如`string | null`、`number | undefined`），`null`/`undefined`属性值可正常保存与恢复。
+1. 仅支持对象类型（`T extends object`），不支持基本类型。传入number、string、boolean等基本类型会抛出[BusinessError(140124)](../../reference/apis-arkui/errorcode-stateManagement.md)。类的成员属性支持基本类型与联合类型（如`string | null`、`number | undefined`），`null`/`undefined`属性值可正常保存与恢复。
 
-2. 单实例可保存的序列化数据上限为150KB，推荐数据总量不超过100KB。超出上限的数据不会被保存，并通过[notifyOnError](../../reference/apis-arkui/js-apis-stateManagement.md#recoverableconnectoptionst-s)告知开发者，不会导致应用崩溃。
+2. 单实例可保存的序列化数据上限为150KB，推荐数据总量不超过100KB。超出上限的数据不会被保存，并通过`notifyOnError`告知开发者，不会导致应用崩溃。
 
 3. 须在自定义组件内调用，[component](../../reference/apis-arkui/js-apis-stateManagement.md#recoverableconnectoptionst-s)参数传`this`（组件实例）。运行时校验component有效性，持有有效组件实例时在组件外调用亦可连接成功。
 
@@ -186,7 +186,7 @@ struct CartPage {
 
 ### 保存\@ObservedV2装饰的对象
 
-[\@ObservedV2](./arkts-new-observedV2-and-trace.md)装饰的类配合[\@Trace](./arkts-new-observedV2-and-trace.md#trace)与[\@Type](./arkts-new-observedV2-and-trace.md#type)使用，嵌套对象由\@Type元数据驱动重建。
+[\@ObservedV2](./arkts-new-observedV2-and-trace.md)装饰的类配合[\@Trace](./arkts-new-observedV2-and-trace.md)与[\@Type](./arkts-new-observedV2-and-trace.md)使用，嵌套对象由\@Type元数据驱动重建。
 
 ```ts
 import { RecoverableStorage, Type } from '@kit.ArkUI';
@@ -227,7 +227,7 @@ struct MyPage {
 
 ### 保存容器类数据
 
-容器类（Array/Map/Set）须同时传入[defaultSubCreator](../../reference/apis-arkui/js-apis-stateManagement.md#recoverableconnectoptionst-s)，作为容器元素构造器，使元素恢复为类实例。
+容器类（Array/Map/Set）须同时传入`defaultSubCreator`，作为容器元素构造器，使元素恢复为类实例。
 
 ```ts
 import { RecoverableStorage } from '@kit.ArkUI';
