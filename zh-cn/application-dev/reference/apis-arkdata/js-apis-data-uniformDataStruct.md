@@ -356,7 +356,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 | --- | --- | --- | --- | --- |
 | name | string | 否 | 否 | 节点名称，最多255字节，不能为空、`.`、`..`，也不能包含斜杠、反斜杠或空字符。同一目录下子节点名称不得重复。 |
 | type | 'file' \| 'dir' | 是 | 否 | 节点类型，file为文件类型，dir为目录类型。 |
-| modifyTime | number | 否 | 否 | 最近的修改时间，以Unix时间戳表示，单位为ms。 |
+| modifyTime | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 否 | 最近的修改时间，以Unix时间戳表示，单位为ms。 |
 
 ## VirtualFileItem
 
@@ -372,7 +372,7 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 | --- | --- | --- | --- | --- |
 | id | string | 否 | 否 | 传给虚拟文件回调的文件标识，最多1024字节，不同文件应使用不同id。 |
 | type | 'file' | 是 | 否 | 文件节点类型。 |
-| size | number | 否 | 否 | 文件大小，单位为字节。需为非负整数，0表示真实空文件。 |
+| size | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 否 | 否 | 文件大小，单位为字节。需为非负整数，0表示真实空文件。 |
 
 ## VirtualDirItem
 
@@ -436,7 +436,9 @@ type VirtualFileOnStat = (id: string) => Promise&lt;VirtualFileItem&gt;
 
 ## VirtualFileOnRead
 
-type VirtualFileOnRead = (id: string, offset: number, length: number) => Promise&lt;Uint8Array&gt;
+ArkTS-Dyn: type VirtualFileOnRead = (id: string, offset: number, length: number) => Promise&lt;Uint8Array&gt;
+
+ArkTS-Sta: type VirtualFileOnRead = (id: string, offset: long, length: int) => Promise&lt;Uint8Array&gt;
 
 从虚拟文件读取至多length字节，单次请求最大为5MiB。使用Promise异步回调。
 
@@ -451,8 +453,8 @@ type VirtualFileOnRead = (id: string, offset: number, length: number) => Promise
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | string | 是 | 待读取文件的标识，非空且最多1024字节。 |
-| offset | number | 是 | 本次读取在文件中的起始位置，单位为字节，从0开始计算。 |
-| length | number | 是 | 本次最多需要提供的字节数，正常回调中取值为1～5242880（5MiB），且不超过文件剩余大小。返回的数据长度不得超过该值。 |
+| offset | ArkTS-Dyn: number <br/>ArkTS-Sta: long | 是 | 本次读取在文件中的起始位置，单位为字节，从0开始计算。 |
+| length | ArkTS-Dyn: number <br/>ArkTS-Sta: int | 是 | 本次最多需要提供的字节数，正常回调中取值为1～5242880（5MiB），且不超过文件剩余大小。返回的数据长度不得超过该值。 |
 
 **返回值：**
 
