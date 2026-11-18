@@ -108,13 +108,17 @@ mode决定命令的执行方式，仅click和scroll使用，content_switch固定
 
 ## 开发步骤
 
-以注入一次点击为例。
+以注入一次点击为例，先引入头文件。
 
 ```C++
 #include <arkui/ui_event_injection.h>
 #include <arkui/ui_json_wrapper.h>
+```
 
-// 定义完成回调：命令执行完成后回调一次，result为执行结果
+<!-- @[inject_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkUiEventInjection/entry/src/main/cpp/NativeEntry.cpp) -->
+
+```C++
+// 定义完成回调：命令执行完成后回调一次，result为执行结果。
 static void OnInjectionResult(OH_ArkUI_NativeModule_UIEventInjection_ResultCode result, void* userData)
 {
     int* finished = static_cast<int*>(userData);
@@ -123,23 +127,27 @@ static void OnInjectionResult(OH_ArkUI_NativeModule_UIEventInjection_ResultCode 
     }
 }
 
-// 构造命令JSON并创建命令对象
-const char* json = R"({"schemaVersion":1,"cmd":{"type":"click","mode":"auto",)"
-                  R"("action_info":{"coordinates":{"x1":100.0,"y1":200.0}}}})";
-OH_ArkUI_NativeModule_UIJsonWrapper* command = nullptr;
-ArkUI_ErrorCode ret = OH_ArkUI_NativeModule_UIJsonWrapperCreate(json, strlen(json), &command);
-if (ret != ARKUI_ERROR_CODE_NO_ERROR || command == nullptr) {
-    return; // JSON不合法或内存分配失败
-}
+// 通过ArkUI_ContextHandle注入一次点击手势命令。
+void InjectClickCommand(ArkUI_ContextHandle uiContext)
+{
+    // 构造命令JSON并创建命令对象。
+    const char* json = R"({"schemaVersion":1,"cmd":{"type":"click","mode":"auto",)"
+                      R"("action_info":{"coordinates":{"x1":100.0,"y1":200.0}}}})";
+    OH_ArkUI_NativeModule_UIJsonWrapper* command = nullptr;
+    ArkUI_ErrorCode ret = OH_ArkUI_NativeModule_UIJsonWrapperCreate(json, strlen(json), &command);
+    if (ret != ARKUI_ERROR_CODE_NO_ERROR || command == nullptr) {
+        return; // JSON不合法或内存分配失败。
+    }
 
-// 注入命令
-int finished = 0;
-ret = OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(uiContext, command, OnInjectionResult, &finished);
+    // 注入命令。
+    int finished = 0;
+    ret = OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(uiContext, command, OnInjectionResult, &finished);
 
-// JSON在接口返回前已被复制，返回后可立即销毁命令对象
-OH_ArkUI_NativeModule_UIJsonWrapperDestroy(command);
-if (ret != ARKUI_ERROR_CODE_NO_ERROR) {
-    return; // 请求被拒绝，不会触发回调
+    // JSON在接口返回前已被复制，返回后可立即销毁命令对象。
+    OH_ArkUI_NativeModule_UIJsonWrapperDestroy(command);
+    if (ret != ARKUI_ERROR_CODE_NO_ERROR) {
+        return; // 请求被拒绝，不会触发回调。
+    }
 }
 ```
 
