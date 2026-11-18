@@ -146,7 +146,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      
      ``` TypeScript
      import { BusinessError } from '@kit.BasicServicesKit';
-     import { fileIo as fs } from '@kit.CoreFileKit';
+     import { fileIo } from '@kit.CoreFileKit';
      import { common } from '@kit.AbilityKit';
      // ...
      class Options {
