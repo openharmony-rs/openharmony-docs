@@ -1469,6 +1469,8 @@ getAvoidAreaInsets(): AvoidAreaInsets
 
 获取当前窗口的避让区边衬。
 
+若需要获取指定类型避让区的原始形状（如挖孔区域），请使用[getWindowAvoidArea(type)](#getwindowavoidarea9)。
+
 **起始版本：** 26.1.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -3628,6 +3630,8 @@ onAvoidAreaInsetsChange(callback: Callback&lt;void&gt;): void
 当窗口的避让区发生变化时，会触发回调。
 
 在同一次变化中，如果多个避让区发生变化，相关的避让区信息更新后，只会触发一次回调。
+
+若需要按避让区域类型逐类监听并区分来源（如状态栏、挖孔、手势区等），请使用[on('avoidAreaChange')](#onavoidareachange9)。
 
 > **说明：**
 >
