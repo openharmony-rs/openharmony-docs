@@ -3033,7 +3033,7 @@ struct MyPage {
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------| ---- | ---------------------- |
-| reason | 'serialization' \| 'deserialization' | 是 | 错误原因。'serialization'表示保存失败（如数据超出上限或包含不支持的数据），'deserialization'表示恢复失败（如数据损坏、类型不匹配）。connect入口错误（类型不支持、参数非法）以[BusinessError(140124)](./errorcode-stateManagement.md#140124)直接抛出，不经本回调上报。推荐数据总量：每实例≤100KB。<br>（150KB序列化数据上限，与系统数据共享） |
+| reason | 'serialization' \| 'deserialization' | 是 | 错误原因。'serialization'表示保存失败（如数据超出上限或包含不支持的数据），'deserialization'表示恢复失败（如数据损坏、类型不匹配）。connect入口错误（类型不支持、参数非法）以[BusinessError(140124)](./errorcode-stateManagement.md#140124)直接抛出，不经本回调上报。推荐数据总量：每实例≤100KB。（150KB序列化数据上限，与系统数据共享） |
 | keys | Array\<string\> | 是 | 保存或恢复失败所影响的可恢复状态变量key列表。 |
 | message | string | 是 | 错误的附加信息。 |
 

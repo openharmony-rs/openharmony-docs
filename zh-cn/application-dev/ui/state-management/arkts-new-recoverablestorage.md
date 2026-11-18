@@ -58,11 +58,11 @@ export default class EntryAbility extends UIAbility {
 
 ### 使能异常退出恢复
 
+在UIAbility的onCreate中调用[restoreWindowStage](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#restorewindowstage)初始化页面内容存储，以及在AbilityStage的onCreate中调用[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)：
+
 >**注意：**
 >
 >[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)必须在AbilityStage的onCreate（应用级入口）调用，否则异常退出场景不保存、不自动重启。
-
-在UIAbility的onCreate中调用[restoreWindowStage](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#restorewindowstage)初始化页面内容存储，以及在AbilityStage的onCreate中调用[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)：
 
 ```ts
 // EntryAbility.ets
