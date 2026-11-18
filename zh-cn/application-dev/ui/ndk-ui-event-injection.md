@@ -8,7 +8,7 @@
 
 ## 概述
 
-UI事件注入接口为应用内智能体和UI自动化场景提供UI控制能力，应用可以通过NDK接口，向本应用的UI实例异步注入交互命令（点击、滚动、内容切换、返回、按键）。命令采用JSON格式描述，只声明交互意图，不指定具体组件，由系统根据执行模式决定如何执行；执行结果通过回调异步通知。
+应用可以通过NDK接口向指定的UI实例注入手势命令，模拟点击、滚动、内容切换、返回和按键等操作。手势命令通过JSON描述，由系统根据执行模式决定如何执行，执行结果通过回调通知。
 
 ## 约束与限制
 
@@ -17,24 +17,22 @@ UI事件注入接口为应用内智能体和UI自动化场景提供UI控制能�
 | 版本要求 | 从API版本26.1.0开始支持。 |
 | 注入范围 | 只能向本应用的UI实例注入，不支持跨应用。 |
 | 线程要求 | 接口线程安全，可以在任意线程调用，不会阻塞调用线程；命令的执行和回调在目标UI实例的UI线程上进行。 |
-| 并发与取消 | 可以同时提交多条命令，不保证执行和回调顺序；接口不提供取消操作，也没有固定的完成超时。 |
-| 实例失效 | 命令被接受后，如果目标UI实例不再可用，回调会收到TARGET_NOT_FOUND。 |
+| 并发与取消 | 可以同时提交多条命令，不保证执行和回调顺序；接口不支持取消。 |
+| 实例失效 | 命令被接受后，如果目标UI实例不再可用，回调返回TARGET_NOT_FOUND。 |
 | 回调时机 | 回调在命令执行完成时触发一次，不等待组件的延迟效果或渲染完成；在目标UI线程上调用时，回调发生在接口返回之后，在其他线程上调用时，回调可能早于接口返回。 |
 | 坐标 | 所有位置坐标相对于窗口，单位为物理像素（px）。 |
-
-命令采用JSON格式，顶层schemaVersion字段必须为1，仅支持五种命令类型，具体格式见接口规格。
 
 ## 接口规格
 
 | 接口 | 说明 |
 | --- | --- |
-| [OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction) | 异步向UI实例注入非精确目标的交互命令。 |
+| [OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction) | 向当前UI实例注入交互命令。 |
 | [OH_ArkUI_NativeModule_UIJsonWrapperCreate](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate) | 从JSON字符串创建命令对象。 |
 | [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy) | 销毁命令对象并释放资源。 |
 
 命令执行完成后，结果通过[OH_ArkUI_NativeModule_UIEventInjectionCallback](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback)回调通知，取值为[OH_ArkUI_NativeModule_UIEventInjection_ResultCode](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)枚举。callback可以为NULL，表示不关注执行结果。
 
-命令采用JSON格式，顶层结构如下。
+命令通过JSON字符串描述，顶层结构如下。
 
 ```json
 {
@@ -47,7 +45,7 @@ UI事件注入接口为应用内智能体和UI自动化场景提供UI控制能�
 }
 ```
 
-schemaVersion必须为1，cmd.type支持以下五类命令：
+cmd.type支持以下五类命令。
 
 | 命令 | mode取值 | action_info关键字段 | 说明 |
 | --- | --- | --- | --- |
@@ -57,9 +55,9 @@ schemaVersion必须为1，cmd.type支持以下五类命令：
 | backpress | 不涉及 | 不涉及 | 执行返回操作。 |
 | key | 不涉及 | code（必填，虚拟键码） | 注入按键事件。 |
 
-未标注必填的字段均为可选。所有位置坐标相对于窗口，单位为物理像素（px）。
+未标注必填的字段均为可选。
 
-mode决定命令的执行方式，仅click和scroll使用，content_switch固定为target，含义如下：
+mode决定命令的执行方式，仅click和scroll使用，content_switch固定为target。
 
 | 执行模式 | 说明 |
 | --- | --- |
@@ -142,7 +140,7 @@ target_link_libraries(entry PUBLIC libace_ndk.z.so)
 
 ### 完整示例
 
-下面以注入一次点击为例。
+以注入一次点击为例。
 
 ```C++
 // 定义完成回调：命令执行完成后回调一次，result为执行结果
@@ -178,17 +176,9 @@ if (ret != ARKUI_ERROR_CODE_NO_ERROR) {
 
 ## 异常处理
 
-高频调用时需要注意：
+接口不支持取消，命令被接受后无法撤销，高频调用时请自行控制频率。同步返回值非ARKUI_ERROR_CODE_NO_ERROR表示命令未被接受，回调结果码非SUCCESS表示命令执行失败，二者需要分别处理。
 
-- 接口不提供取消操作，命令被接受后无法主动撤销，应控制调用频率。
-- 可以同时提交多条命令，但执行和回调顺序不保证，高频注入时避免依赖命令之间的先后顺序。
-
-异常处理建议：
-
-- 接口返回前完成JSON的校验和复制，返回后可以立即销毁命令对象；要再次注入同一条命令，需要重新创建命令对象。
-- 回调被接受后必须保持可调用，直到回调返回。
-- 用户数据由调用方管理，框架只透传指针；请求被接受后到回调返回前，非空的用户数据必须保持有效。
-- 命令被接受后如果目标UI实例不再可用，回调会收到TARGET_NOT_FOUND，调用方应根据结果码处理失败。
+接口返回前会完成JSON的校验和复制，返回后可以立即销毁命令对象；回调被接受后要保持可调用，用户数据在回调返回前要保持有效。
 
 ## 相关资料
 
