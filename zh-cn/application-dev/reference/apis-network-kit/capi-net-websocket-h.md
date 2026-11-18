@@ -92,7 +92,7 @@ int OH_WebSocketClient_AddHeader(struct WebSocket *client, struct WebSocket_Head
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回值为0表示执行成功，返回值不为0表示失败。返回值详细信息可以查看OH_Websocket_ErrCode。 |
+| int | 返回值为0表示执行成功，返回值不为0表示失败。返回值详细信息可以查看[WebSocket_ErrCode](capi-net-websocket-type-h.md#websocket_errcode)。 |
 
 ### OH_WebSocketClient_Connect()
 
@@ -123,7 +123,7 @@ int OH_WebSocketClient_Connect(struct WebSocket *client, const char *url, struct
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回值为0表示执行成功，返回值不为0表示失败。返回值详细信息可以查看OH_Websocket_ErrCode。 |
+| int | 返回值为0表示执行成功，返回值不为0表示失败。返回值详细信息可以查看[WebSocket_ErrCode](capi-net-websocket-type-h.md#websocket_errcode)。 |
 
 ### OH_WebSocketClient_Send()
 
@@ -154,7 +154,7 @@ int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回值为0表示执行成功，返回值不为0表示失败。返回值详细信息可以查看OH_Websocket_ErrCode。 |
+| int | 返回值为0表示执行成功，返回值不为0表示失败。返回值详细信息可以查看[WebSocket_ErrCode](capi-net-websocket-type-h.md#websocket_errcode)。 |
 
 ### OH_WebSocketClient_Close()
 
@@ -184,7 +184,7 @@ int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOpt
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回值为0表示执行成功，返回值不为0表示失败。返回值详细信息可以查看OH_Websocket_ErrCode。 |
+| int | 返回值为0表示执行成功，返回值不为0表示失败。返回值详细信息可以查看[WebSocket_ErrCode](capi-net-websocket-type-h.md#websocket_errcode)。 |
 
 ### OH_WebSocketClient_Destroy()
 
@@ -220,5 +220,5 @@ int OH_WebSocketClient_Destroy(struct WebSocket *client)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回值为0表示执行成功，返回值不为0表示失败。返回值详细信息可以查看OH_Websocket_ErrCode。 |
+| int | 返回值为0表示执行成功，返回值不为0表示失败。返回值详细信息可以查看[WebSocket_ErrCode](capi-net-websocket-type-h.md#websocket_errcode)。 |
 
