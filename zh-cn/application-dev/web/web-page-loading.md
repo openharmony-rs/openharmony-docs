@@ -77,7 +77,7 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
 
       以下结合示例说明如何使用HTTP或HTTPS等协议解决本地资源跨域访问失败的问题。其中，index.html和js/script.js文件置于工程的rawfile目录下。当使用resource协议访问index.html时，js/script.js文件因跨域而被拦截，无法加载。在示例中，使用https:\//www\.example.com/域名替换了原有的resource协议，同时利用onInterceptRequest接口替换资源，确保js/script.js文件可以成功加载，从而解决跨域拦截问题。
 
-    <!-- @[CrossDomainIntercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/CrossDomainIntercept.ets) -->
+    <!-- @[CrossDomainIntercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/CrossDomainIntercept.ets) -->    
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -101,7 +101,7 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
       build() {
         Row() {
           Column() {
-            // 针对本地index.html,使用http或者https协议代替file协议或者resource协议，并且构造一个属于自己的域名。
+            // 针对本地index.html，使用http或者https协议代替file协议或者resource协议，并且构造一个属于自己的域名。
             // 本例中构造www.example.com为例。
             Web({ src: 'https://www.example.com/index.html', controller: this.webviewController })
               .javaScriptAccess(true)
@@ -322,7 +322,7 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
              let userAgent = this.controller.getUserAgent() + this.customUserAgent;
              this.controller.setCustomUserAgent(userAgent);
            } catch (error) {
-             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+             console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
            }
          })
      }

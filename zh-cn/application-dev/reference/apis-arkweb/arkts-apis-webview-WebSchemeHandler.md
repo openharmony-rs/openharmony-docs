@@ -98,7 +98,7 @@ struct WebComponent {
                   console.info("[schemeHandler] onRequestStart has no http body stream");
                 }
               } catch (error) {
-                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
               }
 
               if (request.getRequestUrl().endsWith("example.com")) {
@@ -143,7 +143,7 @@ struct WebComponent {
 
             this.controller.setWebSchemeHandler('https', this.schemeHandler);
           } catch (error) {
-            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
           }
         })
         .javaScriptAccess(true)
