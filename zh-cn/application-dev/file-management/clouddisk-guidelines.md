@@ -635,7 +635,7 @@ static napi_value GetFileSyncStates(napi_env env, napi_callback_info info)
 
 **创建占位符文件**
 
-调用OH_CloudDisk_CreatePlaceholder()接口，应用创建一个本地的占位符文件来映射云侧的真实数据，以达到在端侧浏览云侧文件的目的。需已注册同步根，创建的占位符文件是后续水合/脱水的操作对象。创建时可通过customInfo参数可选写入自定义信息（如云侧文件标识），不写入时传NULL，写入后可通过OH_CloudDisk_GetPlaceholderCustomInfo()读回。
+调用OH_CloudDisk_CreatePlaceholder()接口，应用创建一个本地的占位符文件来映射云侧的真实数据，以达到在端侧浏览云侧文件的目的。需已注册同步根，创建的占位符文件是后续水合/脱水的操作对象。创建时可通过customInfo参数可选写入自定义信息（如云侧文件标识），不写入时传NULL，写入后可通过OH_CloudDisk_GetPlaceholderCustomInfo()读回。创建占位符时应按云侧文件实际大小设置logicalSize，避免预设值与实际大小不一致导致水合后文件体积异常，详见[占位符元数据一致性建议](#占位符元数据一致性建议)。
 
 <!-- @[create_placeholder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -1269,22 +1269,21 @@ static napi_value UnregisterCallbackTable(napi_env env, napi_callback_info info)
 
 > **注意：**
 >
-> - 数据分多次传输时，需重复调用直至fetchDataRsp.isComplete为true。
-> - 水合总量以首次调用OH_CloudDisk_Execute()回传的fetchDataRsp.totalSize为准，占位符logicalSize仅为创建占位符时的预设值，不参与水合总量控制；若预设值与回传totalSize不一致，水合完成后本地文件体积可能与实际数据量不一致（预设值偏大时尾部无实际数据区域保留，预设值偏小时文件被实际数据扩展）。
-> - 系统不保障本地占位符文件与云侧文件大小的一致性，应用需通过OH_CloudDisk_UpdatePlaceholder()接口保障本地占位符文件的元数据与云侧文件元数据的一致性。
-
-**系统侧size与并发约束**
+> - 数据分多次传输时，需重复调用直至fetchDataRsp.isComplete为true；单次回传数据块不能超过128 KiB，超出返回CLOUD_DISK_INVALID_ARG。
+> - 水合总量以首次调用OH_CloudDisk_Execute()回传的fetchDataRsp.totalSize为准，后续回传的totalSize必须与首次一致，否则返回CLOUD_DISK_INVALID_ARG。
+> - 占位符logicalSize仅为创建占位符时的预设值，不参与水合总量控制；若预设值与回传totalSize不一致，可能导致水合后文件体积异常，详见[占位符元数据一致性建议](#占位符元数据一致性建议)。
+> - 系统不保障水合后本地文件实际数据大小与占位符logicalSize预设值的一致性。应用需通过OH_CloudDisk_UpdatePlaceholder()接口及时更新占位符元数据，使其与云侧文件的真实大小保持一致。
 
 调用OH_CloudDisk_Execute()回传数据前，需了解网盘服务底座对占位符与水合任务的以下限制：
 
-| 约束项 | 上限/规则 | 超限后果 |
+| 约束项 | 上限/规则 | 后果 |
 | -------- | -------- | -------- |
-| 占位符logicalSize上限 | INT64_MAX（即 2^63-1 字节） | 创建/更新占位符返回OH_CLOUD_DISK_FILE_TOO_LARGE。 |
+| 占位符logicalSize上限 | int64理论最大值（9223372036854775807字节），实际应按云侧文件真实大小设置 | 创建/更新占位符返回OH_CLOUD_DISK_FILE_TOO_LARGE。 |
 | 单次Execute回传数据块上限 | 128 KiB | 回传请求被拒绝，返回CLOUD_DISK_INVALID_ARG。 |
-| 同一应用并发水合任务上限 | 5个（水合中状态） | 超出的水合请求排队等待，取数回调延迟下发。 |
-| 水合任务空闲超时 | 5分钟（每次Execute回传刷新计时） | 任务被取消，并通过回调表下发取消取数请求。 |
+| 同一应用并发水合任务上限（水合中状态） | 5个 | 超过后新任务排队等待、不报错，取数回调延后下发。 |
+| 水合任务空闲超时 | 5分钟（自上次成功回传起计时，每次Execute回传刷新，排队任务不计入） | 任务被取消，并通过回调表下发取消取数请求。 |
 
-调用OH_CloudDisk_Execute()回传数据的完整流程如下：
+调用OH_CloudDisk_Execute()回传数据的核心流程如下（示例为简化演示，未体现分块逻辑，分块要求见上方注意事项）：
 
 <!-- @[execute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -1342,58 +1341,7 @@ static napi_value Execute(napi_env env, napi_callback_info info)
 }
 ```
 
-**应用侧防滥用实践**
-
-**logicalSize与totalSize不一致的影响**
-
-- 预设值偏小：水合后文件被实际数据扩展至真实大小，进度总量、展示大小与应用侧记录的大小不一致，无法进行一致性校验。
-- 预设值偏大：水合完成后本地文件体积大于实际数据量，尾部区域无实际数据（以稀疏形式存在）；按本地文件大小全量读取、拷贝、上传的链路会把尾部区域当作有效数据处理，尾部被写实时转为真实磁盘块，磁盘占用与流量被放大。
-
-**规避实践**
-
-- 创建占位符时按云侧文件实际大小设置logicalSize，云侧大小未知时先查询元数据获得实际大小后再创建，避免为未知大小的文件创建占位符。
-- 云侧文件大小变化时，需先通过OH_CloudDisk_GetPlaceholderState()确认目标文件为占位符文件，再调用OH_CloudDisk_UpdatePlaceholder()按云侧最新元数据重置占位符，详见下方示例代码。
-- 不要以本地文件大小判断文件实际数据量：未水合占位符的本地文件大小等于预设值但本地无数据，应以应用自身记录的云侧文件大小为准。
-
-云侧文件大小变化后重置占位符的示例代码如下（源自CloudDisk示例更新占位符元数据模块）：
-
-<!-- @[update_on_cloud_size_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-Button($r('app.string.update_on_cloud_size_change_btn'))
-  .id('updateOnCloudSizeChangeBtn')
-  .onClick(() => {
-    // 步骤1：查询占位符水合状态，确认目标文件为占位符文件
-    // （非占位符文件无法更新占位符元数据）
-    let stateRet: PlaceholderStateResult = cloudDisk.getPlaceholderState(
-      this.updatePlaceholderSyncPath, this.updatePlaceholderFilePath);
-    if (stateRet.code !== 0) {
-      this.promptAction.showDialog({ title: $r('app.string.update_failed'), message: this.resStr($r('app.string.error_code_label')) + stateRet.code.toString() + '\n' + this.resStr($r('app.string.reason_label')) + this.getErrorCodeMsg(stateRet.code), buttons: [{ text: $r('app.string.confirm'), color: '#000000' }] });
-      return;
-    }
-    if (stateRet.state === 0) {
-      this.promptAction.showDialog({ title: $r('app.string.update_failed'), message: $r('app.string.not_placeholder'), buttons: [{ text: $r('app.string.confirm'), color: '#000000' }] });
-      return;
-    }
-    // 步骤2：按云侧最新元数据（大小、时间戳从云侧元数据查询获得，此处由入参模拟）
-    // 更新占位符：本地已水合数据会被清空，占位符回到未水合状态；
-    // 若存在水合任务会返回OH_CLOUD_DISK_HYDRATE_IN_PROGRESS，可稍后重试或者取消水合后重试。
-    // 重置完成后，应用需再通过OH_CloudDisk_HydratePlaceholder()接口触发水合，
-    // 并在收到水合取数回调后调用OH_CloudDisk_Execute()回传云侧最新数据，完成重新水合
-    let ret: number = cloudDisk.updatePlaceholder(
-      this.updatePlaceholderSyncPath, this.updatePlaceholderFilePath,
-      parseInt(this.updateOnCloudSizeChangeAtimeMs) || 0,
-      parseInt(this.updateOnCloudSizeChangeMtimeMs) || 0,
-      parseInt(this.updateOnCloudSizeChangeSize) || 0
-    );
-    if (ret === 0) {
-      // 展示重置前占位符状态：未水合（本地无数据，仅更新元数据）/部分水合或完全水合（本地数据已清空，回到未水合）
-      this.promptAction.showDialog({ title: $r('app.string.update_success'), message: this.getPlaceholderStateMsg(stateRet.state), buttons: [{ text: $r('app.string.confirm'), color: '#000000' }] });
-    } else {
-      this.promptAction.showDialog({ title: $r('app.string.update_failed'), message: this.resStr($r('app.string.error_code_label')) + ret.toString() + '\n' + this.resStr($r('app.string.reason_label')) + this.getErrorCodeMsg(ret), buttons: [{ text: $r('app.string.confirm'), color: '#000000' }] });
-    }
-  })
-```
+水合总量与占位符logicalSize的关系及一致性要求，参见[占位符元数据一致性建议](#占位符元数据一致性建议)。
 
 **取消水合**
 
@@ -1499,4 +1447,58 @@ static napi_value DehydrateFile(napi_env env, napi_callback_info info)
     napi_create_int32(env, ret, &result);
     return result;
 }
+```
+
+### 占位符元数据一致性建议
+
+**logicalSize与totalSize不一致的影响**
+
+- 预设值偏小：水合后文件被实际数据扩展至真实大小，水合进度百分比、文件管理器显示的文件大小与应用本地记录的文件大小不一致，应用无法再据预设值校验文件数据的一致性。
+- 预设值偏大：水合完成后本地文件体积大于实际数据量，尾部区域无实际数据；按本地文件大小全量读取、拷贝、上传时，尾部区域会被当作真实数据处理，一旦被写入实际数据还会占用额外磁盘空间，造成磁盘占用与流量放大。
+
+**规避实践**
+
+- 创建占位符时按云侧文件实际大小设置logicalSize；云侧大小未知时，应用应先从自身维护的云侧元数据获取实际大小，再创建占位符，避免为未知大小的文件创建占位符。
+- 云侧文件大小变化时，需先通过OH_CloudDisk_GetPlaceholderState()确认目标文件为占位符文件，再调用OH_CloudDisk_UpdatePlaceholder()按云侧最新元数据重置占位符（重置会清空本地已水合数据，占位符回到未水合状态；若存在水合任务会返回OH_CLOUD_DISK_HYDRATE_IN_PROGRESS，可稍后重试或者取消水合后重试），详见下方示例代码。
+- 不要以本地文件大小判断文件实际数据量：未水合占位符的本地文件大小等于预设值但本地无数据，应以应用自身记录的云侧文件大小为准。
+
+云侧文件大小变化后重置占位符的示例代码如下（源自CloudDisk示例更新占位符元数据模块，示例中cloudDisk为该工程对CAPI的ETS封装）：
+
+<!-- @[update_on_cloud_size_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+Button($r('app.string.update_on_cloud_size_change_btn'))
+  .id('updateOnCloudSizeChangeBtn')
+  .onClick(() => {
+    // 步骤1：查询占位符水合状态，确认目标文件为占位符文件
+    // （非占位符文件无法更新占位符元数据）
+    let stateRet: PlaceholderStateResult = cloudDisk.getPlaceholderState(
+      this.updatePlaceholderSyncPath, this.updatePlaceholderFilePath);
+    if (stateRet.code !== 0) {
+      this.promptAction.showDialog({ title: $r('app.string.update_failed'), message: this.resStr($r('app.string.error_code_label')) + stateRet.code.toString() + '\n' + this.resStr($r('app.string.reason_label')) + this.getErrorCodeMsg(stateRet.code), buttons: [{ text: $r('app.string.confirm'), color: '#000000' }] });
+      return;
+    }
+    if (stateRet.state === 0) {
+      this.promptAction.showDialog({ title: $r('app.string.update_failed'), message: $r('app.string.not_placeholder'), buttons: [{ text: $r('app.string.confirm'), color: '#000000' }] });
+      return;
+    }
+    // 步骤2：按云侧最新元数据（大小、时间戳从云侧元数据查询获得，此处由入参模拟；
+    // 示例简化了输入校验，实际使用时应对非法输入做校验）
+    // 更新占位符：本地已水合数据会被清空，占位符回到未水合状态；
+    // 若存在水合任务会返回OH_CLOUD_DISK_HYDRATE_IN_PROGRESS，可稍后重试或者取消水合后重试。
+    // 重置完成后，应用需再通过OH_CloudDisk_HydratePlaceholder()接口触发水合，
+    // 并在收到水合取数回调后调用OH_CloudDisk_Execute()回传云侧最新数据，完成重新水合
+    let ret: number = cloudDisk.updatePlaceholder(
+      this.updatePlaceholderSyncPath, this.updatePlaceholderFilePath,
+      parseInt(this.updateOnCloudSizeChangeAtimeMs) || 0,
+      parseInt(this.updateOnCloudSizeChangeMtimeMs) || 0,
+      parseInt(this.updateOnCloudSizeChangeSize) || 0
+    );
+    if (ret === 0) {
+      // 重置成功：占位符已回到未水合状态，本地数据已清空，提示重置后的目标状态
+      this.promptAction.showDialog({ title: $r('app.string.update_success'), message: $r('app.string.state_unhydrated'), buttons: [{ text: $r('app.string.confirm'), color: '#000000' }] });
+    } else {
+      this.promptAction.showDialog({ title: $r('app.string.update_failed'), message: this.resStr($r('app.string.error_code_label')) + ret.toString() + '\n' + this.resStr($r('app.string.reason_label')) + this.getErrorCodeMsg(ret), buttons: [{ text: $r('app.string.confirm'), color: '#000000' }] });
+    }
+  })
 ```
