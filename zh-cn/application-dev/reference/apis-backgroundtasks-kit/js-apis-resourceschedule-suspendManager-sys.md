@@ -7,13 +7,13 @@
 <!--Tester: @leetestnady-->
 <!--Adviser: @HelloCrease-->
 
-提供查询应用卡顿状态和注册监听器的API，可监听应用冻结状态改变，并通过进程PID列表查询应用当前的冻结状态。
+本模块提供查询应用状态和注册监听的API，可监听应用冻结状态的改变，并通过进程pid列表查询应用当前的冻结状态。
 
 >  **说明**:
 >
-> 本模块首批接口从API version 26.1.0开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
 > 本模块接口为系统接口。
+
+**起始版本：** 26.1.0
 
 ## 导入模块
 
@@ -25,19 +25,22 @@ import { suspendManager } from '@kit.BackgroundTasksKit';
 
 registerSuspendStateObserver(observer: SuspendStateObserver, stateList: Array&lt;FreezeState&gt;, pidList?: Array&lt;number&gt;): void
 
-注册一个冻结状态观察者来监听应用的冻结状态变化。
+注册一个冻结状态观察者来监听应用冻结状态的变化。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
 **需要权限:** ohos.permission.GET_SUSPEND_STATE
 
+**系统接口：** 此接口为系统接口。
 
 **参数**：
 
 | 参数名      | 类型                   | 必填   | 说明                             |
 | -------- | -------------------- | ---- | ------------------------------ |
 | observer |[SuspendStateObserver](#suspendstateobserver)| 是    | 要注册的观察者。 |
-| stateList |Array&lt;[FreezeState](#freezestate)&gt; | 是    | 订阅状态类型列表。 |
+| stateList |Array&lt;[FreezeState](#freezestate)&gt; | 是    | 订阅状态类型的列表。 |
 | pidList |Array&lt;number&gt; | 否    | 要筛选的可选进程ID列表。如果未指定或为空，所有进程状态更改都会触发回调。 |
 
 **错误码**：
@@ -46,8 +49,8 @@ registerSuspendStateObserver(observer: SuspendStateObserver, stateList: Array&lt
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202 | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 31800005 | Parameter error. |
 | 31800006 | Failed to get suspend manager service. |
 
@@ -83,10 +86,13 @@ unregisterSuspendStateObserver(observer: SuspendStateObserver): void
 
 注销先前注册的冻结状态观察者。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
 **需要权限:** ohos.permission.GET_SUSPEND_STATE
 
+**系统接口：** 此接口为系统接口。
 
 **参数**：
 
@@ -100,8 +106,8 @@ unregisterSuspendStateObserver(observer: SuspendStateObserver): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202 | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 31800005 | Parameter error. |
 | 31800006 | Failed to get suspend manager service. |
 
@@ -134,12 +140,15 @@ try {
 
 getSuspendStateByPidList(pidList: Array&lt;number&gt;): Array&lt;FreezeState&gt;
 
-根据进程的PID查询进程的冻结状态。
+根据进程的pid查询进程的冻结状态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
 **需要权限:** ohos.permission.GET_SUSPEND_STATE
 
+**系统接口：** 此接口为系统接口。
 
 **参数**：
 
@@ -159,8 +168,8 @@ getSuspendStateByPidList(pidList: Array&lt;number&gt;): Array&lt;FreezeState&gt;
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied. |
-| 202 | Not System App. |
+| 201  | Permission verification failed. The application does not have the permission required to call the API |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 31800005 | Parameter error. |
 | 31800006 | Failed to get suspend manager service. |
 
@@ -184,21 +193,132 @@ try {
 
 定义冻结状态变化的观察者。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
+**系统接口：** 此接口为系统接口。
 
-|名称  |类型   | 只读   | 可选   |说明   |
-| ------------ | ------------ |------------ |------------ | ------------ |
-|onActive   | (pidList: Array&lt;number&gt;, uid: number) =&gt; void  | 否   | 否   |当应用程序转换到活动状态时调用。pidList为转换为活动的进程ID列表，uid为应用的UID。   |
-|onDoze   |(pidList: Array&lt;number&gt;, uid: number) =&gt; void   | 否   | 否   |  当应用程序进入doze状态时调用。pidList为被doze的进程ID列表，uid为应用的UID。  |
-|onFrozen   | (pidList: Array&lt;number&gt;, uid: number) =&gt; void  | 否   | 否   | 当应用程序完全冻结时调用。pidList为被冻结的进程ID列表，uid为应用的UID。 |
+### onActive
+
+onActive(pidList: Array&lt;number&gt;, uid: number): void;
+
+当应用状态转换到活动状态时回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
+
+**系统接口：** 此接口为系统接口
+
+**参数：**
+
+| 参数名  | 类型      | 必填   | 说明                |
+|------| ------- | ---- |-------------------|
+| pidList | Array&lt;number&gt; | 是    | 转换为激活状态的uid对应的pid列表。 |
+| uid | number | 是    | 应用转为激活状态的uid。 |
+
+**示例**：
+
+```ts
+import { suspendManager } from '@kit.BackgroundTasksKit';
+
+let observer: suspendManager.SuspendStateObserver = {
+  onActive: (pidList: Array<number>, uid: number) => {
+    console.info('SUSPEND_MANAGER onActive, pidList: ' + JSON.stringify(pidList) + ', uid: ' + uid);
+  },
+  onDoze: (pidList: Array<number>, uid: number) => {
+    console.info('SUSPEND_MANAGER onDoze, pidList: ' + JSON.stringify(pidList) + ', uid: ' + uid);
+  },
+  onFrozen: (pidList: Array<number>, uid: number) => {
+    console.info('SUSPEND_MANAGER onFrozen, pidList: ' + JSON.stringify(pidList) + ', uid: ' + uid);
+  }
+};
+```
+
+### onDoze
+
+onDoze(pidList: Array&lt;number&gt;, uid: number): void;
+
+当应用程序进入doze状态时回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
+
+**系统接口：** 此接口为系统接口
+
+**参数：**
+
+| 参数名  | 类型      | 必填   | 说明                |
+|------| ------- | ---- |-------------------|
+| pidList | Array&lt;number&gt; | 是    | 被doze的uid对应的pid列表。 |
+| uid | number | 是    | 被doze的应用的uid。 |
+
+**示例**：
+
+```ts
+import { suspendManager } from '@kit.BackgroundTasksKit';
+
+let observer: suspendManager.SuspendStateObserver = {
+  onActive: (pidList: Array<number>, uid: number) => {
+    console.info('SUSPEND_MANAGER onActive, pidList: ' + JSON.stringify(pidList) + ', uid: ' + uid);
+  },
+  onDoze: (pidList: Array<number>, uid: number) => {
+    console.info('SUSPEND_MANAGER onDoze, pidList: ' + JSON.stringify(pidList) + ', uid: ' + uid);
+  },
+  onFrozen: (pidList: Array<number>, uid: number) => {
+    console.info('SUSPEND_MANAGER onFrozen, pidList: ' + JSON.stringify(pidList) + ', uid: ' + uid);
+  }
+};
+```
+
+### onFrozen
+
+onFrozen(pidList: Array&lt;number&gt;, uid: number): void;
+
+当应用程序完全冻结时回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
+
+**系统接口：** 此接口为系统接口
+
+**参数：**
+
+| 参数名  | 类型      | 必填   | 说明                |
+|------| ------- | ---- |-------------------|
+| pidList | Array&lt;number&gt;| 是    | 冻结的uid对应的pid列表。 |
+| uid | number | 是    | 被冻结的应用uid。 |
+
+**示例**：
+
+```ts
+import { suspendManager } from '@kit.BackgroundTasksKit';
+
+let observer: suspendManager.SuspendStateObserver = {
+  onActive: (pidList: Array<number>, uid: number) => {
+    console.info('SUSPEND_MANAGER onActive, pidList: ' + JSON.stringify(pidList) + ', uid: ' + uid);
+  },
+  onDoze: (pidList: Array<number>, uid: number) => {
+    console.info('SUSPEND_MANAGER onDoze, pidList: ' + JSON.stringify(pidList) + ', uid: ' + uid);
+  },
+  onFrozen: (pidList: Array<number>, uid: number) => {
+    console.info('SUSPEND_MANAGER onFrozen, pidList: ' + JSON.stringify(pidList) + ', uid: ' + uid);
+  }
+};
+```
 
 ## FreezeState
 
-枚举应用程序的冻结状态。
+应用程序状态的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
+**系统接口：** 此接口为系统接口。
 
 |名称   |值   |说明|
 | ------------ | ------------ |--------------|
