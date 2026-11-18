@@ -81,6 +81,7 @@
       - [canBeObserved接口：判断对象是否可被观察](state-management/arkts-new-canBeObserved.md)
       - [addMonitor/clearMonitor接口：动态添加/取消监听](state-management/arkts-new-addMonitor-clearMonitor.md)
       - [applySync/flushUpdates/flushUIUpdates接口：同步刷新](state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md)
+      - [RecoverableStorage: 可恢复的UI状态存储](state-management/arkts-new-recoverablestorage.md)
     - 语法糖<!--arkts-state-management-syntactic-sugar-->
       - [$$语法：系统组件双向同步](state-management/arkts-two-way-sync.md)
       - [!!语法：双向绑定](state-management/arkts-new-binding.md)
