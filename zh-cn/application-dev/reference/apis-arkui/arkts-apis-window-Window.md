@@ -3660,13 +3660,13 @@ onAvoidAreaInsetsChange(callback: Callback&lt;void&gt;): void
 
 ```ts
 const callback = () => {
+  // windowClass为已创建/获取的Window实例
   let avoidAreaInsets = windowClass.getAvoidAreaInsets();
   console.info('onAvoidAreaInsetsChange triggered. top: ' + avoidAreaInsets.top +
   ', left: ' + avoidAreaInsets.left + ', right: ' + avoidAreaInsets.right +
   ', bottom: ' + avoidAreaInsets.bottom);
 }
 try {
-  // windowClass为已创建/获取的Window实例
   windowClass.onAvoidAreaInsetsChange(callback);
 } catch (exception) {
   console.error(`Failed to enable the listener for avoid area insets changes. Cause code: ${exception.code}, message: ${exception.message}`);
