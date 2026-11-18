@@ -39,38 +39,39 @@
    ```
 
 3. 通过[OH_CameraManager_CreateCameraInput()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createcamerainput)方法，获取cameraInput对象。
-   ```c++
+
+   <!-- @[create_camera_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+
+   ``` C++
    // 监听cameraInput错误信息。
-   void OnCameraInputError(const Camera_Input* cameraInput, Camera_ErrorCode errorCode)
+   void OnCameraInputError(const Camera_Input *cameraInput, Camera_ErrorCode errorCode)
    {
-      OH_LOG_ERROR(LOG_APP, "OnCameraInput errorCode: %{public}d", errorCode);
+       OH_LOG_INFO(LOG_APP, "OnCameraInput errorCode = %{public}d", errorCode);
    }
 
-   CameraInput_Callbacks* GetCameraInputListener(void)
+   CameraInput_Callbacks *NDKCamera::GetCameraInputListener(void)
    {
-      static CameraInput_Callbacks cameraInputCallbacks = {
-         .onError = OnCameraInputError
-      };
-      return &cameraInputCallbacks;
+       static CameraInput_Callbacks cameraInputCallbacks = {
+           .onError = OnCameraInputError
+       };
+       return &cameraInputCallbacks;
    }
-   ```
-   ```c++
+
    // 监听cameraStatus信息。
-   void CameraManagerStatusCallback(Camera_Manager* cameraManager, Camera_StatusInfo* status)
+   void CameraManagerStatusCallback(Camera_Manager *cameraManager, Camera_StatusInfo *status)
    {
-       OH_LOG_INFO(LOG_APP, "CameraManagerStatusCallback is called");
+       OH_LOG_INFO(LOG_APP, "CameraManagerStatusCallback");
    }
 
-   CameraManager_Callbacks* GetCameraManagerListener()
+   CameraManager_Callbacks* NDKCamera::GetCameraManagerListener(void)
    {
        static CameraManager_Callbacks cameraManagerListener = {
            .onCameraStatus = CameraManagerStatusCallback
        };
        return &cameraManagerListener;
    }
-   ```
-   ```c++
-   void CreateAndOpenCamera()
+
+   void NDKCamera::CreateAndOpenCamera()
    {
        Camera_Manager* cameraManager = nullptr;
        Camera_Input* cameraInput = nullptr;
@@ -89,11 +90,11 @@
            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_RegisterCallback failed.");
        }
        // 获取相机列表。
-        ret = OH_CameraManager_GetSupportedCameras(cameraManager, &cameras, &size);
-        if (cameras == nullptr || size == 0 || ret != CAMERA_OK) {
-            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedCameras failed.");
-            return;
-        }
+       ret = OH_CameraManager_GetSupportedCameras(cameraManager, &cameras, &size);
+       if (cameras == nullptr || size == 0 || ret != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedCameras failed.");
+           return;
+       }
        // 创建相机输入流。
        ret = OH_CameraManager_CreateCameraInput(cameraManager, &cameras[cameraDeviceIndex], &cameraInput);
        if (cameraInput == nullptr || ret != CAMERA_OK) {
@@ -119,35 +120,43 @@
 
 4. 通过[OH_CameraManager_GetSupportedSceneModes()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedscenemodes)方法，获取当前相机设备支持的模式列表，列表中存储了相机设备支持的所有模式[Camera_SceneMode](../../reference/apis-camera-kit/capi-camera-h.md#camera_scenemode)。
 
-   ```c++
-   bool IsSupportedSceneMode(Camera_Device camera, Camera_SceneMode sceneMode)
+   <!-- @[get_supported_scene_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+
+   ``` C++
+   bool NDKCamera::IsSupportedSceneMode(Camera_Manager* cameraManager, Camera_Device camera, Camera_SceneMode sceneMode)
    {
        Camera_SceneMode* sceneModes = nullptr;
        uint32_t sceneModeSize = 0;
        Camera_ErrorCode ret = OH_CameraManager_GetSupportedSceneModes(&camera, &sceneModes, &sceneModeSize);
-       if (sceneModes == nullptr || ret != CAMERA_OK) {
+       if (ret != CAMERA_OK || sceneModes == nullptr) {
            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_GetSupportedSceneModes failed.");
            return false;
        }
+       bool isSupported = false;
        for (uint32_t index = 0; index < sceneModeSize; index++) {
            OH_LOG_INFO(LOG_APP, "scene mode = %{public}u ", sceneModes[index]);    // 获取相机指定模式。
            if (sceneModes[index] == sceneMode) {
-               return true;
+               isSupported = true;
+               break;
            }
        }
-       return false;
+       // 使用完毕后释放场景模式列表，防止内存泄漏。
+       OH_CameraManager_DeleteSceneModes(cameraManager, sceneModes);
+       return isSupported;
    }
    ```
 
 5. 通过[OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapabilitywithscenemode)方法，获取当前设备在当前模式下支持的所有输出流，如预览流、拍照流等。输出流在[Camera_OutputCapability](../../reference/apis-camera-kit/capi-oh-camera-camera-outputcapability.md)中的各个profile字段中。根据相机设备指定模式[Camera_SceneMode](../../reference/apis-camera-kit/capi-camera-h.md#camera_scenemode)的不同，需要向Session中添加对应类型的输出流，请参考会话管理[开发步骤](./native-camera-session-management.md#开发步骤)中的第6步。
 
+   <!-- @[get_supported_camera_output_capability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
 
-   ```c++
-   Camera_OutputCapability* GetSupportedCameraOutputCapability(Camera_Manager* cameraManager, Camera_Device &camera)
+   ``` C++
+   Camera_OutputCapability* NDKCamera::GetSupportedCameraOutputCapability(Camera_Manager* cameraManager,
+       Camera_Device &camera)
    {
        Camera_OutputCapability* cameraOutputCapability = nullptr;
        // 示例代码以NORMAL_PHOTO模式为例，查询NORMAL_PHOTO在camera中是否支持。
-       bool isSupported = IsSupportedSceneMode(camera, Camera_SceneMode::NORMAL_PHOTO);
+       bool isSupported = IsSupportedSceneMode(cameraManager, camera, Camera_SceneMode::NORMAL_PHOTO);
        if (!isSupported) {
            OH_LOG_ERROR(LOG_APP, "NORMAL_PHOTO is not supported.");
            return cameraOutputCapability;
