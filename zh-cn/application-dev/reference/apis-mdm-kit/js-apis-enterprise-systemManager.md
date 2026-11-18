@@ -640,7 +640,7 @@ try {
 
 setLocalHotaDomain(domain: string): void
 
-设置设备本机HOTA（Huawei Over-the-Air）域名。设置成功后，系统将使用指定的HOTA域名进行升级。适用于企业内网升级场景，帮助企业管理员指定设备本机HOTA域名，使设备能够从企业指定的升级服务器获取升级包，避免通过公网升级，提升升级的安全性和可控性。调用本接口前，可通过[common.isFeatureSupported](./js-apis-enterprise-common.md#commonisfeaturesupported)接口（入参为common.ManagedFeature.LOCAL_HOTA_DOMAIN）查询设备是否支持本机HOTA域名特性。
+设置设备本机HOTA（Huawei Over-the-Air）域名。设置成功后，系统将使用指定的HOTA域名进行升级。适用于企业内网升级场景，帮助企业管理员指定设备本机HOTA域名，使设备能够从企业指定的升级服务器获取升级包，避免通过公网升级，提升升级的安全性和可控性。部分产品版本不支持，调用本接口前，可通过[common.isFeatureSupported](./js-apis-enterprise-common.md#commonisfeaturesupported)接口（入参为common.ManagedFeature.LOCAL_HOTA_DOMAIN）查询设备是否支持本机HOTA域名特性。
 
 HOTA域名使用流程：
 1. 企业管理员通过MDM应用调用[systemManager.setLocalHotaDomain](#systemmanagersetlocalhotadomain)接口设置设备本机HOTA域名，指定升级包下载服务器。
