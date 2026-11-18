@@ -10,7 +10,7 @@
 
 RecoverableStorage是应用程序中的可选单例对象。此对象的作用是：当应用被系统以资源管控方式终止（如低内存）或因JS_ERROR、APP_FREEZE异常退出时，自动保存所声明的状态变量的当前值；应用被系统重新拉起后，自动恢复这些值，实现UI无感恢复。
 
-与[PersistenceV2](./arkts-new-persistencev2.md)的持久化模型不同，RecoverableStorage采用**快照模型**：仅在系统存盘时机（应用退后台时预备存档/异常发生时点存档）一次性提取当前值，而非每次变量变更即写入磁盘。界面无变化时不产生任何磁盘写入，恢复数据为临时数据（用户上滑删除即清除），适合保存页面草稿、滚动位置等轻量UI状态。
+与[PersistenceV2](./arkts-new-persistencev2.md)的持久化模型不同，RecoverableStorage采用快照模型：仅在系统存盘时机（应用退后台时预备存档/异常发生时点存档）一次性提取当前值，而非每次变量变更即写入磁盘。界面无变化时不产生任何磁盘写入，恢复数据为临时数据（上滑删除应用即清除），适合保存页面草稿、滚动位置等轻量UI状态。
 
 在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[RecoverableStorage-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#recoverablestorage)。
 
@@ -20,7 +20,7 @@ RecoverableStorage是应用程序中的可选单例对象。此对象的作用�
 
 ## 概述
 
-RecoverableStorage是应用启动时创建的单例，提供资源管控终止/异常退出场景下状态变量的声明、保存与恢复能力。开发者通过[connect](../../reference/apis-arkui/js-apis-stateManagement.md#connect-1)声明变量后，系统在存盘时机自动提取当前值；应用被系统恢复重启（系统携带恢复参数自动拉起，区别于用户手动打开）后，再次执行connect即可读回保存的值。
+RecoverableStorage是应用启动时创建的单例，提供资源管控终止/异常退出场景下状态变量的声明、保存与恢复能力。开发者通过[connect](../../reference/apis-arkui/js-apis-stateManagement.md#connect-1)声明变量后，系统在存盘时机自动提取当前值；应用被系统恢复重启（系统携带恢复参数自动拉起，区别于手动打开）后，再次执行connect即可读回保存的值。
 
 与PersistenceV2的差异如下：
 
@@ -33,9 +33,9 @@ RecoverableStorage是应用启动时创建的单例，提供资源管控终止/�
 
 ## 使能恢复能力
 
-### 资源管控终止恢复的使能
+### 使能资源管控终止恢复
 
-在UIAbility的onCreate中调用[setRestoreEnabled](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setrestoreenabled)(true)开启应用的恢复能力，并调用[restoreWindowStage](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#restorewindowstage)初始化页面内容存储：
+在UIAbility的onCreate中调用[setRestoreEnabled](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setrestoreenabled)(true)开启应用的恢复能力：
 
 ```ts
 // EntryAbility.ets
@@ -58,9 +58,26 @@ export default class EntryAbility extends UIAbility {
 
 完成上述配置后，应用退后台时自动存档；被资源管控终止后，从最近任务重新打开即恢复。
 
-### 异常退出恢复的使能
+### 使能异常退出恢复
 
-除上述公共配置外，还须在AbilityStage的onCreate中调用[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)：
+在UIAbility的onCreate中调用[restoreWindowStage](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#restorewindowstage)初始化页面内容存储，以及在AbilityStage的onCreate中调用[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)：
+
+```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+
+export default class EntryAbility extends UIAbility {
+  onCreate(): void {
+    // 初始化页面内容存储，异常退出后的恢复依赖此调用
+    this.context.restoreWindowStage(new LocalStorage());
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    windowStage.loadContent('pages/Index');
+  }
+}
+```
 
 ```ts
 // MyAbilityStage.ets（module.json5中srcEntry指向该文件）
@@ -71,7 +88,8 @@ export default class MyAbilityStage extends AbilityStage {
     // 必须在AbilityStage.onCreate调用，写在UIAbility.onCreate会因晚于配置固化而无效
     appRecovery.enableAppRecovery(
       appRecovery.RestartFlag.ALWAYS_RESTART,
-      appRecovery.SaveOccasionFlag.SAVE_WHEN_ERROR | appRecovery.SaveOccasionFlag.SAVE_WITH_FILE
+      appRecovery.SaveOccasionFlag.SAVE_WHEN_ERROR | appRecovery.SaveOccasionFlag.SAVE_WHEN_BACKGROUND,
+      appRecovery.SaveModeFlag.SAVE_WITH_FILE
     );
   }
 }
@@ -79,7 +97,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 >**注意：**
 >
->[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)必须在AbilityStage的onCreate（应用级入口）调用，且未注册errorManager错误观察器；否则异常退出场景不保存、不自动重启。
+>[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)必须在AbilityStage的onCreate（应用级入口）调用，否则异常退出场景不保存、不自动重启。
 
 ## 使用限制
 
@@ -87,7 +105,7 @@ export default class MyAbilityStage extends AbilityStage {
 
 2. 单实例可保存的序列化数据上限为150KB，推荐数据总量不超过100KB。超出上限的数据不会被保存，并通过[notifyOnError](../../reference/apis-arkui/js-apis-stateManagement.md#recoverableconnectoptionst-s)告知开发者，不会导致应用崩溃。
 
-3. 须在自定义组件内调用，[component](../../reference/apis-arkui/js-apis-stateManagement.md#recoverableconnectoptionst-s)参数传`this`（组件实例）。运行时校验的是component有效性（能否提供实例ID），持有有效组件实例时在组件外调用亦可连接成功。
+3. 须在自定义组件内调用，[component](../../reference/apis-arkui/js-apis-stateManagement.md#recoverableconnectoptionst-s)参数传`this`（组件实例）。运行时校验component有效性，持有有效组件实例时在组件外调用亦可连接成功。
 
 4. [多实例](../../application-models/uiability-launch-type.md)（multiton启动模式的各窗口）各自独立分区，同一key在不同窗口互不干扰。
 
@@ -179,7 +197,8 @@ import { RecoverableStorage } from '@kit.ArkUI';
 @ObservedV2
 class Envelope {
   @Trace title: string = '';
-  @Type(Attachment) attach: Attachment = new Attachment();
+  @Type(Attachment)
+  attach: Attachment = new Attachment();
 }
 
 @ObservedV2
@@ -230,7 +249,7 @@ struct CartPage {
   // 连接容器类可恢复变量，defaultSubCreator使元素恢复为CartItem实例
   @State cart: CartItem[] = RecoverableStorage.connect({
     component: this,   // 传入当前组件实例
-    type: Array,
+    type: Array<CartItem>,
     defaultCreator: (): CartItem[] => [],
     defaultSubCreator: (): CartItem => new CartItem()
   });
@@ -244,10 +263,6 @@ struct CartPage {
   }
 }
 ```
-
-### 多实例隔离
-
-每个窗口实例（[multiton启动模式](../../application-models/uiability-launch-type.md)的各窗口）有独立分区。一个实例的connect仅返回本实例已注册变量的保存值或默认构造值，不会返回其他实例的值。
 
 ### 通过notifyOnError获取错误信息
 
@@ -289,7 +304,7 @@ struct BigPage {
 }
 ```
 
-应用退后台触发保存时，超出上限的数据不会被保存，回调输出如下（真实格式）：
+应用退后台触发保存时，超出上限的数据不会被保存，回调输出如下内容：
 
 ```text
 reason: serialization, keys: bigDraft, message: serialize budget (153600 bytes) exceeded, 1 key(s) evicted

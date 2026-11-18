@@ -2586,7 +2586,7 @@ clearCache(reuseId?: string): void
 
 **参数：**
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
+| 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ---- | -------- |
 | reuseId | string | 否   | 需要清理的复用池中可复用自定义组件的复用标识ID。<br>默认值：undefined，即清理复用池中的全部组件。 |
 
@@ -2775,20 +2775,19 @@ type ReusableComponentConstructor = Function
 
 ## RecoverableStorage
 
-提供在应用被资源管控终止或异常退出时自动保存与恢复所声明的状态变量的能力。通过connect声明变量后，其值在系统恢复链路的保存时机自动保存，并在下一次恢复重启时自动恢复。具体UI使用说明，详见[RecoverableStorage: 可恢复存储UI状态](../../ui/state-management/arkts-new-recoverablestorage.md)。
+提供在应用被资源管控终止或异常退出时自动保存与恢复所声明的状态变量的能力。通过[connect](#connect-1)声明变量后，其值在系统恢复链路的保存时机自动保存，并在下一次恢复重启时自动恢复。具体UI使用说明，详见[RecoverableStorage: 可恢复存储UI状态](../../ui/state-management/arkts-new-recoverablestorage.md)。
 
 >**说明：**
 >
 >可恢复场景包括：
 >
->1. 资源管控终止（如低内存）场景：恢复退后台时保存的值。
+>- 资源管控终止（如低内存）场景：恢复退后台时保存的值。
 >
->2. JS_ERROR与APP_FREEZE异常退出场景：异常发生时刻的值被保存，并在系统自动重启后恢复。前提是应用已在AbilityStage的onCreate中调用[enableAppRecovery](../apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)（默认参数即可满足）且未注册错误观察者。
+>- JS_ERROR与APP_FREEZE异常退出场景：异常发生时刻的值被保存，并在系统自动重启后恢复。前提是应用已在AbilityStage的onCreate中调用[enableAppRecovery](../apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)（默认参数即可满足）且未注册错误观察者。
 >
->3. 仅系统携带恢复重启参数拉起的启动会执行恢复。用户手动启动应用始终为冷启动，[connect](#connect-1)返回默认值。
+>仅系统携带恢复重启参数拉起的启动会执行恢复。用户手动启动应用始终为冷启动，[connect](#connect-1)返回默认值。
 
-
-RecoverableStorage从API版本26.1.0开始支持。
+**起始版本：** 26.1.0
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -2814,10 +2813,9 @@ static&nbsp;connect\<T&nbsp;extends&nbsp;object,&nbsp;S&nbsp;extends&nbsp;object
 >
 >4. 典型用法为修改所连接对象的属性。对例如[状态管理V1](../../ui/state-management/arkts-application-state-management-overview.md)的[\@State](../../ui/state-management/arkts-state.md)变量整体重新赋值会导致已存引用失效，不被跟踪。
 >
->5. 变量按**component**获取的窗口级实例ID隔离，归属于不同窗口实例的变量互不影响。
+>5. 变量按component入参获取的窗口级实例ID隔离，归属于不同窗口实例的变量互不影响。
 
-
-connect从API版本26.1.0开始支持。
+**起始版本：** 26.1.0
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -2885,8 +2883,7 @@ static&nbsp;keys(component:&nbsp;BaseCustomComponent):&nbsp;Array\<string\>
 >
 >key在Array中的顺序是无序的，与key注册的顺序无关。
 
-
-keys从API版本26.1.0开始支持。
+**起始版本：** 26.1.0
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -2923,7 +2920,7 @@ struct MyPage {
     type: Draft,
     defaultCreator: (): Draft => new Draft()
   });
-  @State keys: string[] = [];   // 查询结果
+  @State keys: string[] = [];   // 保存查询结果
 
   build() {
     Column() {
@@ -2947,8 +2944,7 @@ static&nbsp;remove\<T\>(component:&nbsp;BaseCustomComponent,&nbsp;keyOrType:&nbs
 >
 >注销不存在的key时会产生警告。
 
-
-remove从API版本26.1.0开始支持。
+**起始版本：** 26.1.0
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -3000,8 +2996,7 @@ struct MyPage {
 
 定义[RecoverableStorage.connect](#connect-1)的连接选项，用于指定连接的组件实例（component）、变量类型（type）与默认值构造器（defaultCreator），可选配置key、容器元素构造器与错误回调。
 
-
-RecoverableConnectOptions从API版本26.1.0开始支持。
+**起始版本：** 26.1.0
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -3022,8 +3017,7 @@ RecoverableConnectOptions从API版本26.1.0开始支持。
 
 定义[RecoverableStorage](#recoverablestorage)通过notifyOnError回调上报的错误信息，包含错误原因（reason）、受影响的key列表（keys）与附加信息（message），用于定位保存/恢复失败的原因。
 
-
-RecoverableStorageError从API版本26.1.0开始支持。
+**起始版本：** 26.1.0
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
@@ -3044,7 +3038,7 @@ type&nbsp;NotifyOnErrorCallback&nbsp;=&nbsp;(error:&nbsp;RecoverableStorageError
 定义用于上报[RecoverableStorage](#recoverablestorage)序列化/反序列化错误的回调类型。设置于连接选项（notifyOnError），回调在UI线程执行，回调内不应抛出异常。
 
 
-NotifyOnErrorCallback从API版本26.1.0开始支持。
+**起始版本：** 26.1.0
 
 **原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
