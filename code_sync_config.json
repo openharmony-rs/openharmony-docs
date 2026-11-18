@@ -57772,9 +57772,9 @@
 						"start_line":522
 					},
 					{
-						"end_line":114,
+						"end_line":252,
 						"name":"screenCapture_config_buffer_audio",
-						"start_line":93
+						"start_line":231
 					},
 					{
 						"end_line":283,
@@ -57782,9 +57782,9 @@
 						"start_line":252
 					},
 					{
-						"end_line":293,
+						"end_line":294,
 						"name":"screenCapture_config_buffer_init",
-						"start_line":284
+						"start_line":285
 					},
 					{
 						"end_line":219,
@@ -57812,9 +57812,9 @@
 						"start_line":1005
 					},
 					{
-						"end_line":434,
+						"end_line":424,
 						"name":"screenCapture_PCSpecifiedScreenConfigBuffer",
-						"start_line":417
+						"start_line":406
 					},
 					{
 						"end_line":455,
@@ -57822,9 +57822,9 @@
 						"start_line":439
 					},
 					{
-						"end_line":484,
+						"end_line":475,
 						"name":"SetPCSpecifiedWindowScreenConfigBuffer",
-						"start_line":460
+						"start_line":450
 					},
 					{
 						"end_line":513,
