@@ -1817,7 +1817,7 @@ confirmVolumeLimitExceeded(volumeType: AudioVolumeType, result: boolean): void
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
 | volumeType | [AudioVolumeType](#audiovolumetype) | 是 | 音频音量类型，不同的音量类型有不同的阈值，volumeType用于标识当前音量类型的阈值。 |
-| result | boolean | 是 | 确认音量调整超出音量保护阈值。false表示未超出。|
+| result | boolean | 是 | 确认音量调整超出音量保护阈值。true表示超出，false表示未超出。|
 
 **错误码：**
 
