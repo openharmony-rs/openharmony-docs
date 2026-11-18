@@ -885,7 +885,7 @@ NODE_LIST_SCROLL_TO_INDEX = 1003005
 | .value[0].i32 | 要滑动到的目标元素在当前容器中的索引值。传入-1时，指滑动到当前容器的最后一个元素。 |
 | .value[1]?.i32 | 设置滑动到列表项在列表中的索引值时是否有动效，1表示有动效，0表示没有动效。默认值：0。 |
 | .value[2]?.i32 | 指定滑动到的元素与当前容器的对齐方式，参数类型[ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment)，默认值：[ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment)。 |
-| .value[3]?.f32 | 额外偏移量，默认值：0，单位：vp。正数表示向末尾端额外偏移，负数表示向起始端额外偏移。该参数从API version 15开始支持。 |
+| .value[3]?.f32 | 额外偏移量，默认值：0，单位：px。正数表示向末尾端额外偏移，负数表示向起始端额外偏移。该参数从API version 15开始支持。 |
 
 ## NODE_LIST_ALIGN_LIST_ITEM
 
@@ -1858,7 +1858,7 @@ NODE_WATER_FLOW_SCROLL_TO_INDEX = 1010009
 | .value[0].i32 | 要滑动到的目标元素在当前容器中的索引值。 |
 | .value[1]?.i32 | 设置滑动到列表项在列表中的索引值时是否有动效，1表示有动效，0表示没有动效。默认值：0。 |
 | .value[2]?.i32 | 指定滑动到的元素与当前容器的对齐方式，参数类型[ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment)。默认值为：[ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment)。 |
-| .value[3]?.f32 | 滑动到目标元素后的额外偏移量，默认值：0，单位：vp。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。该参数从API version 23开始支持。 |
+| .value[3]?.f32 | 滑动到目标元素后的额外偏移量，默认值：0，单位：px。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。该参数从API version 23开始支持。 |
 
 ## NODE_WATER_FLOW_ITEM_CONSTRAINT_SIZE
 
@@ -2357,7 +2357,7 @@ NODE_GRID_SCROLL_TO_INDEX = 1013014
 | .value[0].i32 | 要滑动到的目标元素在当前容器中的索引值。 |
 | .value[1]?.i32 | 设置滑动到目标元素时是否有动效，1表示有动效，0表示没有动效。默认值：0。 |
 | .value[2]?.i32 | 指定滑动到的目标元素与当前容器的对齐方式，参数类型[ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment)。默认值：ARKUI_SCROLL_ALIGNMENT_AUTO。 |
-| .value[3]?.f32 | 滑动到目标元素后的额外偏移量，默认值：0，单位：vp。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。 |
+| .value[3]?.f32 | 滑动到目标元素后的额外偏移量，默认值：0，单位：px。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。 |
 
 ## NODE_GRID_SUPPORT_EMPTY_BRANCH_IN_LAZY_LOADING
 
@@ -2592,7 +2592,7 @@ NODE_ARC_LIST_SCROLL_TO_INDEX = 1019003
 | .value[0].i32 | 要滑动到的目标元素在当前容器中的索引值。传入-1时，指滑动到当前容器的最后一个元素。 |
 | .value[1]?.i32 | 设置滑动到指定索引值对应的列表项时是否有动效，1表示有动效，0表示没有动效。默认值：0。 |
 | .value[2]?.i32 | 指定滑动到的列表项与当前容器的对齐方式，参数类型[ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment)，默认值：[ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment)。 |
-| .value[3]?.f32 | 额外偏移量，默认值：0，单位：vp。正数表示向末尾端额外偏移，负数表示向起始端额外偏移。 |
+| .value[3]?.f32 | 额外偏移量，默认值：0，单位：px。正数表示向末尾端额外偏移，负数表示向起始端额外偏移。 |
 
 ## NODE_ARC_LIST_CHAIN_ANIMATION
 
