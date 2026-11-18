@@ -30,7 +30,7 @@
 
 各参数的详细说明请参考[ui_event_injection.h](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction)。
 
-命令执行完成后，结果通过[OH_ArkUI_NativeModule_UIEventInjectionCallback](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback)回调通知，取值为[OH_ArkUI_NativeModule_UIEventInjection_ResultCode](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)枚举。callback可以为NULL，表示不关注执行结果。
+命令执行完成后，结果通过回调通知。callback可以为NULL，表示不关注执行结果。
 
 命令通过JSON字符串描述，顶层结构如下。
 
