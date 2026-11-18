@@ -758,7 +758,6 @@ cleanInvalidData(validSubscribers: Array&lt;string&gt;): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let uri = "datashareproxy://com.samples.datasharetest.DataShare";
 // 传入当前有效的订阅者ID列表，列表外的模板数据将被清理
 let validSubscribers: Array<string> = ['11', '12'];
 if (dataShareHelper != undefined) {
