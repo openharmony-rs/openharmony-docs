@@ -992,7 +992,9 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 
 开启smooth动画且未启用快速滚动优化时，会对经过的所有item进行加载和布局计算。当大量加载item时会导致性能问题，开发者可先调用scrollToIndex不带动画跳转到目标附近位置，再调用scrollToIndex带动画滚动到目标位置，以优化性能。
 
-从API版本26.1.0开始，List组件和[SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)布局模式的WaterFlow组件支持通过options.fastScroll设置[快速滚动模式](#fastscrollmode)。当smooth为true且fastScroll设置为FastScrollMode.SKIP_MEASURE或FastScrollMode.SKIP_CREATE_AND_MEASURE时，长距离滚动动画可跳过部分滚动路径，并按所选模式减少这段路径上的子组件创建或测量开销。该选项不改变value、align和extraOffset的含义；smooth为false时不生效。Grid、ArcList以及ALWAYS_TOP_DOWN布局模式的WaterFlow组件不支持此优化，仍按原有方式滚动。
+从API版本26.1.0开始，List组件、Grid组件和[SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)布局模式的WaterFlow组件支持通过options.fastScroll设置[快速滚动模式](#fastscrollmode)。当smooth为true且fastScroll设置为FastScrollMode.SKIP_MEASURE或FastScrollMode.SKIP_CREATE_AND_MEASURE时，长距离滚动动画可跳过部分滚动路径，并按所选模式减少这段路径上的子组件创建或测量开销。该选项不改变value、align和extraOffset的含义；smooth为false时不生效。ArcList以及ALWAYS_TOP_DOWN布局模式的WaterFlow组件不支持此优化，仍按原有方式滚动。
+
+从API版本26.1.0开始，Grid组件使用[FastScrollMode](#fastscrollmode).SKIP_CREATE_AND_MEASURE时，如果目标项及中间项的跨行或跨列信息尚未确定（例如只能在创建GridItem后才能取得），需要通过[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)提前提供完整、准确的跨度信息，包括影响目标位置的所有跨行跨列项（不仅是目标项），否则不保证滚动到目标位置，且不会自动降级为其他模式。使用[FastScrollMode](#fastscrollmode).SKIP_MEASURE时，Grid可按需创建中间GridItem以确认跨行或跨列信息。
 
 
 >  **说明：**
@@ -1308,7 +1310,7 @@ getScrollState(): ScrollState
 | 名称   | 类型  | 只读 | 可选 | 说明              |
 | ----- | ------ | ------ | -- | ----------------- |
 | extraOffset | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 滑动到指定Index的额外偏移量。如果值为正数，则向底部额外偏移；如果值为负数，则向顶部额外偏移。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| fastScroll | [FastScrollMode](#fastscrollmode) | 否 | 是 | 滚动到指定Index时使用的快速滚动模式。设置为SKIP_MEASURE时，跳过中间子组件的测量；设置为SKIP_CREATE_AND_MEASURE时，跳过中间子组件的创建和测量。支持List组件和[SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)布局模式的WaterFlow组件，且仅当scrollToIndex的smooth参数为true时生效。<br/>默认值：FastScrollMode.NONE，与不设置此参数时的行为相同。<br/>取值范围：本枚举定义的0、1、2。传入其他值时，按FastScrollMode.NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+| fastScroll | [FastScrollMode](#fastscrollmode) | 否 | 是 | 滚动到指定Index时使用的快速滚动模式。设置为SKIP_MEASURE时，跳过中间子组件的测量；设置为SKIP_CREATE_AND_MEASURE时，跳过中间子组件的创建和测量。支持List组件、Grid组件和[SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)布局模式的WaterFlow组件，且仅当scrollToIndex的smooth参数为true时生效。<br/>默认值：FastScrollMode.NONE，与不设置此参数时的行为相同。<br/>取值范围：本枚举定义的0、1、2。传入其他值时，按FastScrollMode.NONE处理，不启用快速滚动优化，其余滚动参数仍按原有规则生效。<br/>**起始版本：** 26.1.0<br/>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
 
 ## FastScrollMode
 
@@ -1332,8 +1334,8 @@ FastScrollMode表示滚动到指定Index时使用的快速滚动模式，配合[
 | 名称 | 值 | 说明 |
 | -- | -- | -- |
 | NONE | 0 | 不启用快速滚动优化，与不设置fastScroll参数时的行为相同。开启动画时，会在动画开始前创建并测量滚动路径上的所有子组件。 |
-| SKIP_MEASURE | 1 | 跳过中间子组件的测量，仍可创建中间子组件以确认类型和目标所在行。适用于多列List中同时存在ListItem和ListItemGroup的场景：ListItem占一行中的一列，ListItemGroup占满一整行，需要根据子组件类型确定目标所在行。 |
-| SKIP_CREATE_AND_MEASURE | 2 | 跳过中间子组件的创建和测量，进一步减少开销。<br/>**说明：**<br/>不适用于多列List中同时存在ListItem和ListItemGroup的场景。在该场景下使用此模式会导致List布局和滚动异常，应改用SKIP_MEASURE。<br/>WaterFlow组件建议使用此模式。[SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)布局模式下，WaterFlow定位目标FlowItem不依赖中间子组件，SKIP_MEASURE仍会创建沿途中间子组件，带来多余的创建开销。 |
+| SKIP_MEASURE | 1 | 跳过中间子组件的测量，仍可创建中间子组件以确认类型、目标所在行或GridItem的跨行跨列信息。适用于多列List中同时存在ListItem和ListItemGroup的场景：ListItem占一行中的一列，ListItemGroup占满一整行，需要根据子组件类型确定目标所在行。对于Grid组件，可按需创建中间GridItem以确认其跨行或跨列信息。 |
+| SKIP_CREATE_AND_MEASURE | 2 | 跳过中间子组件的创建和测量，进一步减少开销。<br/>**说明：**<br/>不适用于多列List中同时存在ListItem和ListItemGroup的场景。在该场景下使用此模式会导致List布局和滚动异常，应改用SKIP_MEASURE。<br/>WaterFlow组件建议使用此模式。[SLIDING_WINDOW](ts-container-waterflow.md#waterflowlayoutmode12枚举说明)布局模式下，WaterFlow定位目标FlowItem不依赖中间子组件，SKIP_MEASURE仍会创建沿途中间子组件，带来多余的创建开销。对于Grid组件，如果目标项或中间项的跨行、跨列信息尚未确定，需通过[GridLayoutOptions](ts-container-grid.md#gridlayoutoptions10对象说明)提前提供完整、准确的跨度信息（包括影响目标位置的所有跨行跨列项）；缺少该信息时不保证滚动到目标位置，且不会自动降级为其他模式。 |
 
 ## ScrollPageOptions<sup>14+</sup>对象说明
 
