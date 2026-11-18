@@ -496,8 +496,6 @@ export interface UserIdentity {
 <!-- @[shared_types_usage_profile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/SharedTypesUsage.ets) -->
 
 ``` TypeScript
-import { UserIdentity } from '../common/Types';
-
 export function getProfileName(identity: UserIdentity): string {
   return 'user-' + identity.id.toString();
 }
