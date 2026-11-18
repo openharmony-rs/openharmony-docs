@@ -33,31 +33,12 @@
 <!-- @[user_recognition_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
+// The API 26 public SDK removed getUserRecognitionMgr / UserRecognitionResult /
+// UserRecognitionResultCallback (passive recognition); keep the entry and report unsupported.
 async obtainingUserRecognitionResult(): Promise<string> {
-  try {
-    // 获取实例
-    let mgr = userAuth.getUserRecognitionMgr();
-    if (!mgr) {
-      Logger.error('the device does not support user recognition.');
-      return 'the device does not support user recognition.';
-    }
-    // 获取最新识别结果
-    let result = await mgr.getUserRecognitionResult();
-    Logger.info(`status: ${result.status}, userId: ${result.userId}`);
-    // 订阅识别结果变化
-    let callback: userAuth.UserRecognitionResultCallback = (recognitionResult: userAuth.UserRecognitionResult) => {
-      Logger.info(`status: ${recognitionResult.status}, userId: ${recognitionResult.userId}`);
-    };
-    mgr.onUserRecognitionChange(callback);
-    // 取消订阅
-    mgr.offUserRecognitionChange(callback);
-    return `status: ${result.status}, userId: ${result.userId}`;
-  } catch (error) {
-    const err: BusinessError = error as BusinessError;
-    const errMessage: string = `getUserRecognitionResult failed, Code: ${err?.code}, message: ${err?.message}`;
-    Logger.error(errMessage);
-    return errMessage;
-  }
+  const message: string = 'user recognition is not supported by current SDK (API 26).';
+  Logger.info(message);
+  return message;
 }
 ```
 
