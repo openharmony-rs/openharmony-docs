@@ -36094,6 +36094,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/JavaScriptProxy.ets",
+				"functions":[
+					{
+						"end_line":71,
+						"name":"functions_that_trigger_a_run_on_the_front_end_page_are_registered_in_the_front_end_page",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -47506,6 +47516,16 @@
 						"start_line":17
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets",
+				"functions":[
+					{
+						"end_line":40,
+						"name":"web_Debugging_Wireless",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
@@ -47561,6 +47581,16 @@
 						"start_line":17
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/Cache_two.ets",
+				"functions":[
+					{
+						"end_line":42,
+						"name":"clear_the_cached_resources_that_have_been_stored",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -47604,6 +47634,16 @@
 						"end_line":44,
 						"name":"get_a_custom_user_agent_static",
 						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsTwo/entry/src/main/ets/pages/UserAgent_four.ets",
+				"functions":[
+					{
+						"end_line":49,
+						"name":"set_app_custom_user_agent",
+						"start_line":16
 					}
 				]
 			}
@@ -49238,6 +49278,36 @@
 						"end_line":62,
 						"name":"EntryAbility",
 						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingWebPages.ets",
+				"functions":[
+					{
+						"end_line":41,
+						"name":"use_load_interface_to_show_web_changes",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingLocalPages.ets",
+				"functions":[
+					{
+						"end_line":42,
+						"name":"after_load_complete_call_to_change_page",
+						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/LoadPages/entry/src/main/ets/pages/LoadingHTMLRichTextData.ets",
+				"functions":[
+					{
+						"end_line":44,
+						"name":"devs_load_page_fragments_for_quick_loading",
+						"start_line":15
 					}
 				]
 			}
