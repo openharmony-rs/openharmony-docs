@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍TaskPool任务与宿主线程的通信方法：任务中通过sendData()向宿主线程发送消息，宿主线程经onReceiveData()接收，实现任务状态通知与数据变化上报，支持从数据库等场景分段返回大量数据。"
 keywords: [宿主线程通信, sendData, onReceiveData, 任务状态通知, 分段返回数据, TaskPool, 实时数据上报]
 doctype: guide
