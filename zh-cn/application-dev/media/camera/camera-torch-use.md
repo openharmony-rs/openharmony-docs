@@ -27,47 +27,60 @@
 
 2. 通过[CameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)中的[isTorchSupported](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#istorchsupported11)方法，检测当前设备是否支持手电筒功能。
 
-    ```ts
-    function isTorchSupported(cameraManager: camera.CameraManager) : boolean {
-      let torchSupport: boolean = false;
-      try {
-        torchSupport = cameraManager.isTorchSupported();
-      } catch (error) {
-        let err = error as BusinessError;
-        console.error('Failed to torch. errorCode = ' + err.code);
-      }
-      console.info('Returned with the torch support status:' + torchSupport);
-      return torchSupport;
-    }
-    ```
+   <!-- @[camera_isTorchSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+   ``` TypeScript
+   isTorchSupported(cameraManager: camera.CameraManager) : boolean {
+     let torchSupport: boolean = false;
+     try {
+       torchSupport = cameraManager.isTorchSupported();
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`Failed to torch. errorCode = ${err.code}`);
+     }
+     console.info(`Returned with the torch support status:${torchSupport}`);
+     return torchSupport;
+   }
+   ```
 
 3. 通过[CameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)中的[isTorchModeSupported](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#istorchmodesupported11)方法，检测是否支持指定的手电筒模式[TorchMode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#torchmode11)。
 
-    ```ts
-    function isTorchModeSupported(cameraManager: camera.CameraManager, torchMode: camera.TorchMode) : boolean {
-      let isTorchModeSupport: boolean = false;
-      try {
-        isTorchModeSupport = cameraManager.isTorchModeSupported(torchMode);
-      } catch (error) {
-        let err = error as BusinessError;
-        console.error('Failed to check the torch mode. errorCode = ' + err.code);
-      }
-      return isTorchModeSupport;
-    }
-    ```
+   <!-- @[camera_isTorchModeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+   ``` TypeScript
+   isTorchModeSupported(cameraManager: camera.CameraManager, torchMode: camera.TorchMode) : boolean {
+     let isTorchModeSupport: boolean = false;
+     try {
+       isTorchModeSupport = cameraManager.isTorchModeSupported(torchMode);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`Failed to check the torch mode. err code: ${err.code}.`);
+     }
+     return isTorchModeSupport;
+   }
+   ```
 
 4. 通过[CameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)中的[setTorchMode](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#settorchmode11)方法，设置当前设备的手电筒模式。以及通过[CameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)中的[getTorchMode](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#gettorchmode11)方法，获取当前设备的手电筒模式。
 
     > **说明：**
     > 在使用[getTorchMode](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#gettorchmode11)方法前，需要先注册监听手电筒的状态变化，请参考[状态监听](camera-torch-use.md#状态监听)。
 
-    ```ts
-    function setTorchModeSupported(cameraManager: camera.CameraManager, torchMode: camera.TorchMode) : void {
-      cameraManager.setTorchMode(torchMode);
-      let isTorchMode = cameraManager.getTorchMode();
-      console.info(`Returned with the torch mode supported mode: ${isTorchMode}`);
-    }
-    ```
+   <!-- @[camera_setTorchMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+  
+   ``` TypeScript
+   setTorchMode(cameraManager: camera.CameraManager, torchMode: camera.TorchMode) : void {
+     try {
+       if (this.isTorchModeSupported(cameraManager, torchMode)) {
+         cameraManager.setTorchMode(torchMode);
+         let isTorchMode = cameraManager.getTorchMode();
+         console.info(`Returned with the torch mode supported mode: ${isTorchMode}`);
+       }
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`Failed to setTorchMode, err code: ${err.code}.`);
+     }
+   }
+   ```
 
 
 ## 状态监听
@@ -77,15 +90,17 @@
 注册torchStatusChange事件后，回调会返回监听结果，callback返回TorchStatusInfo参数，参数的具体内容可参考相机管理器回调接口实例[TorchStatusInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#torchstatusinfo11)。
 
 
-```ts
-function onTorchStatusChange(cameraManager: camera.CameraManager): void {
+<!-- @[camera_onTorchStatusChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
+
+``` TypeScript
+onTorchStatusChange(cameraManager: camera.CameraManager): void {
   cameraManager.on('torchStatusChange', (err: BusinessError, torchStatusInfo: camera.TorchStatusInfo) => {
     if (err !== undefined && err.code !== 0) {
       console.error(`Callback Error, errorCode: ${err.code}`);
       return;
     }
     console.info(`onTorchStatusChange, isTorchAvailable: ${torchStatusInfo.isTorchAvailable}, isTorchActive: ${torchStatusInfo.
-      isTorchActive}, level: ${torchStatusInfo.torchLevel}`);
+    isTorchActive}, level: ${torchStatusInfo.torchLevel}`);
   });
 }
 ```
