@@ -35,6 +35,7 @@ PKCS #7是用于存储签名或加密数据的标准语法。CMS（Cryptographic
 ``` TypeScript
 
 import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let ECC_256_PUBKEY: string =
   '-----BEGIN CERTIFICATE-----\n' +
@@ -76,7 +77,9 @@ async function createX509Cert(inStream: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (error) {
-    console.error(`createX509Cert failed: errCode: ${error.code}, message: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`createX509Cert failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
   return x509Cert;
 }
@@ -112,7 +115,9 @@ async function testCmsDecryptTest() {
     let decPlainText: Uint8Array = await cmsDecrypt.decryptEnvelopedData(config);
     console.info('decryptEnvelopedData result: success, decPlainText = ' + decPlainText);
   } catch (error) {
-    console.error(`decryptEnvelopedData failed: errCode: ${error.code}, message: ${error.message}`);
+    let e: BusinessError = error as BusinessError;
+    console.error(`decryptEnvelopedData failed: errCode: ${e.code}, message: ${e.message}`);
+    // ...
   }
 }
 ```

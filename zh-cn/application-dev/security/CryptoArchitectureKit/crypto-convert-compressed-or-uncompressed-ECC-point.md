@@ -38,6 +38,7 @@ function eccPointUncompressedToCompressed() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`eccPointUncompressedToCompressed failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 }
 ```
@@ -82,6 +83,7 @@ async function eccPointCompressedToPoint() {
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`eccPointCompressedToPoint failed: errCode: ${e.code}, errMsg: ${e.message}`);
+    // ...
   }
 }
 ```

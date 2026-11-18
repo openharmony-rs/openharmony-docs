@@ -99,6 +99,7 @@
       console.info('result: ' + ret);
     } catch (e) {
       console.error(`get pubkey from prikey failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -172,6 +173,7 @@
       console.info('result: ' + ret);
     } catch (e) {
       console.error(`get pubkey from prikey failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
