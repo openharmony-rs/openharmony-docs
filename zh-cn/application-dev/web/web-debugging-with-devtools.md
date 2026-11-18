@@ -30,6 +30,7 @@ Web组件支持使用DevTools工具调试前端页面。DevTools是Web前端开�
 
       ArkTS-Dyn示例：
       <!-- @[web_Debugging_Wireless](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDebuggingWithDevtools/entry/src/main/ets/pages/WebDebuggingWithWiFi.ets) -->  
+      
       ``` TypeScript
       import { webview } from '@kit.ArkWeb';
       import { BusinessError } from '@kit.BasicServicesKit';

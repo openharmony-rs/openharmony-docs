@@ -26,6 +26,7 @@ status: active
 
 ArkTS-Dyn示例：
 <!-- @[functions_that_trigger_a_run_on_the_front_end_page_are_registered_in_the_front_end_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/JavaScriptProxy.ets) -->  
+
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -154,6 +155,7 @@ struct WebComponent {
 
   ArkTS-Dyn示例：
   <!-- @[Register_before_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyOne.ets) -->
+  
   ``` TypeScript
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -280,6 +282,7 @@ struct WebComponent {
 
    ArkTS-Dyn示例：
    <!-- @[Register_after_loaded](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/RegisterJavaScriptProxyTwo.ets) --> 
+   
    ``` TypeScript
    // xxx.ets
    import { webview } from '@kit.ArkWeb';
@@ -304,7 +307,7 @@ struct WebComponent {
      webviewController: webview.WebviewController = new webview.WebviewController();
      @State testObj: TestClass = new TestClass();
      @State isRegistered: boolean = false;
-
+   
      build() {
        Column() {
          // jsb对象不再使用后，需解除注册，防止内存泄漏
@@ -333,7 +336,7 @@ struct WebComponent {
                  );
                  this.isRegistered = true;
                  // onPageEnd中注册方法后，需重新加载后生效
-                 this.webviewController.refresh();
+                 this.webviewController.refresh();              
                }
              } catch (error) {
                console.error(`ErrorCode: ${(error as BusinessError).code}, Message: ${(error as BusinessError).message}`);
