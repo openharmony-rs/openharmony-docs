@@ -39,7 +39,7 @@
      <!-- @[movingphotoview_import_api22](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoViewSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
-     import { MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
+     import { MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
      ```
 
 2. 获取动态照片对象（[MovingPhoto](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MovingPhoto.md)）。
@@ -69,8 +69,8 @@
    <!-- @[movingphotoview_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/MovingPhotoViewSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   // API version 21及之前版本导入方式：import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
-   // API version 22及之后版本导入方式如下：
+   // import way for API version 26 and earlier: import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
+   // import way for API version 22 and later: 
    // import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController } from '@kit.MediaLibraryKit';
    
    @Entry
@@ -91,39 +91,41 @@
            movingPhoto: this.src,
            controller: this.controller
          })
-           // 是否静音播放，此处由按钮控制，默认值为false非静音播放。
+           // muted state controlled by the button, default false means unmuted playback
            .muted(this.isMuted)
-           // 视频显示模式，默认值为Cover。
+           // video display mode, default is Cover
            .objectFit(ImageFit.Cover)
-           // 播放时触发。
+           // triggered when playback starts
            .onStart(() => {
              console.info('onStart');
            })
-           // 播放结束触发。
+           // triggered when playback finishes
            .onFinish(() => {
              console.info('onFinish');
            })
-           // 播放停止触发。
+           // triggered when playback stops
            .onStop(() => {
              console.info('onStop')
            })
-           // 出现错误触发。
+           // triggered when an error occurs
            .onError(() => {
              console.error('onError');
            })
          // ...
    
          Row() {
-           // 按钮：开始播放。
-           Button('PLAY')
+           // Button: start playback.
+           Button($r('app.string.play_button'))
              .onClick(() => {
                this.controller.startPlayback()
+               this.message = $r('app.string.playback_started')
              })
              .margin(5)
-           // 按钮：停止播放。
-           Button('STOP')
+           // Button: stop playback.
+           Button($r('app.string.stop_button'))
              .onClick(() => {
                this.controller.stopPlayback()
+               this.message = $r('app.string.playback_stopped')
              })
              .margin(5)
            // ...
