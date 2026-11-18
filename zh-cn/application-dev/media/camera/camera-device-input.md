@@ -28,7 +28,7 @@
 2. 通过[cameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)中的[createCameraInput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createcamerainput)方法创建相机输入流。
 
    <!-- @[camera_createCameraInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->   
-
+   
    ``` TypeScript
    /**
     * 创建cameraInput对象。
@@ -46,7 +46,7 @@
      }
      return cameraInput;
    }
-
+   
    /**
     * 打开相机。
     */
@@ -67,7 +67,7 @@
 3. 通过[getSupportedSceneModes](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedscenemodes11)方法，获取当前相机设备支持的模式列表，列表中存储了相机设备支持的所有模式[SceneMode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#scenemode11)。
 
    <!-- @[camera_getSupportedSceneMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+   
    ``` TypeScript
    getSupportedSceneMode(cameraDevice: camera.CameraDevice,
      cameraManager: camera.CameraManager): camera.SceneMode[] {
@@ -88,7 +88,7 @@
 4. 通过[getSupportedOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)方法，获取当前相机设备支持的所有输出流，如预览流、拍照流、录像流等。输出流在[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的各个profile字段中，根据相机设备指定模式[SceneMode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#scenemode11)的不同，需要添加不同类型的输出流。
 
    <!-- @[camera_getSupportedOutputCapability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+   
    ``` TypeScript
    async getSupportedOutputCapabilityFn(cameraDevice: camera.CameraDevice, cameraManager: camera.CameraManager,
      sceneMode: camera.SceneMode): Promise<camera.CameraOutputCapability | undefined> {

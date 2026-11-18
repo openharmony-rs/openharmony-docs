@@ -41,14 +41,14 @@
 3. 通过[OH_CameraManager_CreateCameraInput()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createcamerainput)方法，获取cameraInput对象。
 
    <!-- @[create_camera_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    // 监听cameraInput错误信息。
    void OnCameraInputError(const Camera_Input *cameraInput, Camera_ErrorCode errorCode)
    {
        OH_LOG_INFO(LOG_APP, "OnCameraInput errorCode = %{public}d", errorCode);
    }
-
+   
    CameraInput_Callbacks *NDKCamera::GetCameraInputListener(void)
    {
        static CameraInput_Callbacks cameraInputCallbacks = {
@@ -56,13 +56,13 @@
        };
        return &cameraInputCallbacks;
    }
-
+   
    // 监听cameraStatus信息。
    void CameraManagerStatusCallback(Camera_Manager *cameraManager, Camera_StatusInfo *status)
    {
        OH_LOG_INFO(LOG_APP, "CameraManagerStatusCallback");
    }
-
+   
    CameraManager_Callbacks* NDKCamera::GetCameraManagerListener(void)
    {
        static CameraManager_Callbacks cameraManagerListener = {
@@ -70,7 +70,7 @@
        };
        return &cameraManagerListener;
    }
-
+   
    void NDKCamera::CreateAndOpenCamera()
    {
        Camera_Manager* cameraManager = nullptr;
@@ -121,7 +121,7 @@
 4. 通过[OH_CameraManager_GetSupportedSceneModes()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedscenemodes)方法，获取当前相机设备支持的模式列表，列表中存储了相机设备支持的所有模式[Camera_SceneMode](../../reference/apis-camera-kit/capi-camera-h.md#camera_scenemode)。
 
    <!-- @[get_supported_scene_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    bool NDKCamera::IsSupportedSceneMode(Camera_Manager* cameraManager, Camera_Device camera, Camera_SceneMode sceneMode)
    {
@@ -149,7 +149,7 @@
 5. 通过[OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapabilitywithscenemode)方法，获取当前设备在当前模式下支持的所有输出流，如预览流、拍照流等。输出流在[Camera_OutputCapability](../../reference/apis-camera-kit/capi-oh-camera-camera-outputcapability.md)中的各个profile字段中。根据相机设备指定模式[Camera_SceneMode](../../reference/apis-camera-kit/capi-camera-h.md#camera_scenemode)的不同，需要向Session中添加对应类型的输出流，请参考会话管理[开发步骤](./native-camera-session-management.md#开发步骤)中的第6步。
 
    <!-- @[get_supported_camera_output_capability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    Camera_OutputCapability* NDKCamera::GetSupportedCameraOutputCapability(Camera_Manager* cameraManager,
        Camera_Device &camera)

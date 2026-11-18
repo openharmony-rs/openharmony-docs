@@ -41,16 +41,16 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 2. 通过[getCameraDevice](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameradevice18)获取对应的前置和后置相机。如果接口返回undefined，基于示例中的配置信息，表示当前设备不支持指定位置（前置/后置）的默认类型相机，无法实现多摄同开功能。
 
    <!-- @[camera_getSupportedCameras_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+   
    ``` TypeScript
    getSupportedCamerasForConcurrentFn(cameraManager: camera.CameraManager) {
      let cameras = cameraManager.getSupportedCameras();
-
+   
      // 如果相机数量少于2，说明只存在单侧相机，返回。
      if (cameras.length < 2) {
        return;
      }
-
+   
      // 获取逻辑后置和逻辑前置。
      let curCameraDeviceBack = cameraManager.getCameraDevice(camera.CameraPosition.CAMERA_POSITION_BACK,
        camera.CameraType.CAMERA_TYPE_DEFAULT);
@@ -62,7 +62,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 3. 获取对应的并发能力集。通过[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)获取相机的输出并发能力信息数组[CameraConcurrentInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraconcurrentinfo18)，数组内部包含相机在对应并发模式下支持的模式和输出能力，**在多摄同开场景下设置的模式和输出能力必须在并发能力集的范围之内**。若[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)接口返回空数组，则表明当前设备不支持并发功能。
 
    <!-- @[camera_getSupportedOutputCapability_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+   
    ``` TypeScript
    getSupportedOutputCapabilityForConcurrentFn(cameraManager: camera.CameraManager,
      curCameraDeviceFront: camera.CameraDevice,
@@ -78,16 +78,16 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
      }
      let cameraOutputCapability = cameraManager.getSupportedOutputCapability(curCameraDeviceFront,
        camera.SceneMode.NORMAL_PHOTO);
-
+   
      let deviceArray: camera.CameraDevice[] = [curCameraDeviceFront, curCameraDeviceBack];
-
+   
      // 获取并发能力集。
      let concurrentInfo: camera.CameraConcurrentInfo[] = cameraManager.getCameraConcurrentInfos(deviceArray);
-
+   
      if (concurrentInfo.length === 0) {
        return undefined;
      }
-
+   
      // 用并发能力集替换原始能力集。
      for (let i = 0; i < concurrentInfo.length; i++) {
        if (concurrentInfo[i].device.cameraPosition == camera.CameraPosition.CAMERA_POSITION_FRONT) {
@@ -102,7 +102,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 4. 确定预览输出流。
 
    <!-- @[camera_createPreviewOutput_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+   
    ``` TypeScript
    getPreviewOutputForConcurrentFn(cameraManager: camera.CameraManager,
      cameraOutputCapability: camera.CameraOutputCapability, surfaceId: string): camera.PreviewOutput | undefined {
@@ -127,7 +127,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
      if (index === -1) {
        return undefined;
      }
-
+   
      // 创建previewOutput对象。
      let previewOutput = cameraManager.createPreviewOutput(previewProfileObj, surfaceId);
      if (previewOutput === undefined) {
@@ -140,7 +140,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 5. 确定拍照输出流。
 
    <!-- @[camera_createPhotoOutput_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+   
    ``` TypeScript
    getPhotoOutputForConcurrentFn(cameraManager: camera.CameraManager,
      cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
@@ -176,7 +176,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 6. 确定录像输出流。
 
    <!-- @[camera_createVideoOutput_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+   
    ``` TypeScript
    async createAVRecorderForConcurrent(): Promise<media.AVRecorder | undefined> {
      let avRecorder: media.AVRecorder | undefined = undefined;
@@ -187,7 +187,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
      }
      return avRecorder;
    }
-
+   
    initFdForConcurrent(context: common.Context): number {
      let filesDir = context.filesDir;
      let filePath = filesDir + `/${Date.now()}.mp4`;
@@ -201,7 +201,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
        return -1;
      }
    }
-
+   
    async prepareAVRecorderForConcurrent(videoProfileObj: camera.VideoProfile, curCameraDevice: camera.CameraDevice,
      avRecorder: media.AVRecorder, context: common.Context): Promise<void> {
      let fd = this.initFdForConcurrent(context);
@@ -227,7 +227,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
        console.error(`prepareAVRecorder prepare err code: ${err.code}.`);
      });
    }
-
+   
    async getVideoOutputFn(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability,
      concurrentInfo: camera.CameraConcurrentInfo[], curCameraDeviceFront: camera.CameraDevice,
      context: common.Context): Promise<camera.VideoOutput | undefined> {
@@ -244,7 +244,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
          max: 60
        }
      };
-
+   
      // 替换相应能力集。
      for (let i = 0; i < concurrentInfo.length; i++) {
        if (concurrentInfo[i].device.cameraPosition == camera.CameraPosition.CAMERA_POSITION_FRONT) {
@@ -286,7 +286,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 7. 打开相机。通过[open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18)以多摄同开状态打开指定相机。在使用[open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18)接口前，请先查询接口是否支持并发能力集，并优先调用[getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18)方法，获取多摄同开状态下的相机并发能力集。请勿在未查询并发能力集的情况下使用[open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18)，否则会导致打开相机失败。
 
    <!-- @[camera_openCamera_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+   
    ``` TypeScript
    async openCameraForConcurrent(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice) {
      let cameraInput: camera.CameraInput | undefined = undefined;
@@ -312,7 +312,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 8. 会话流程。
 
    <!-- @[camera_sessionFlow_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+   
    ``` TypeScript
    // 监听捕获会话错误变化。
    onSessionErrorChangeForConcurrent(session: camera.PhotoSession | camera.VideoSession): void {
@@ -324,11 +324,11 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
        console.error(`onSessionErrorChangeForConcurrent err code: ${err.code}`);
      }
    }
-
+   
    // 监听拍照事件。
    photoOutputCallBackForConcurrent(photoOutput: camera.PhotoOutput): void {
      try {
-
+   
        // 监听拍照开始。
        photoOutput.on('captureStartWithInfo', (err: BusinessError, captureStartInfo: camera.CaptureStartInfo): void => {
          if (err) {
@@ -337,7 +337,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
          }
          console.info(`capture is called, captureId: ${captureStartInfo.captureId}.`);
        });
-
+   
        // 监听拍照帧输出捕获。
        photoOutput.on('frameShutter', (err: BusinessError, frameShutterInfo: camera.FrameShutterInfo): void => {
          if (err) {
@@ -346,7 +346,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
          }
          console.info(`frameShutter is called, captureId: ${frameShutterInfo.captureId}.`);
        });
-
+   
        // 监听拍照结束。
        photoOutput.on('captureEnd', (err: BusinessError, captureEndInfo: camera.CaptureEndInfo): void => {
          if (err) {
@@ -355,7 +355,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
          }
          console.info(`captureEnd is called, captureId: ${captureEndInfo.captureId}.`);
        });
-
+   
        // 监听拍照异常。
        photoOutput.on('error', (err: BusinessError): void => {
          console.error(`photoOutput error, err code: ${err.code}.`);
@@ -377,7 +377,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
        console.error(`photoOutputCallBackForConcurrent failed, err code: ${err.code}`);
      }
    }
-
+   
    // 会话流程。
    async sessionFlowForConcurrentFn(cameraManager: camera.CameraManager, cameraInput: camera.CameraInput,
      previewOutput: camera.PreviewOutput, photoOutput: camera.PhotoOutput | undefined,
@@ -394,24 +394,24 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
          return;
        }
        this.onSessionErrorChangeForConcurrent(session);
-
+   
        // 开始配置会话。
        session.beginConfig();
-
+   
        // 向会话中添加相机输入流。
        session.addInput(cameraInput);
-
+   
        // 向会话中添加预览输出流。
        session.addOutput(previewOutput);
-
+   
        if (curSceneMode === camera.SceneMode.NORMAL_PHOTO) {
          if (photoOutput === undefined) {
            return;
          }
-
+   
          // 拍照监听事件。
          this.photoOutputCallBackForConcurrent(photoOutput);
-
+   
          // 向会话中添加拍照输出流。
          session.addOutput(photoOutput);
        } else if (curSceneMode === camera.SceneMode.NORMAL_VIDEO) {
@@ -435,7 +435,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 9. 拍照，通过步骤8中配置的photoOutput使用前置或后置相机进行拍照，多摄同开状态下不支持前后相机同时拍照。
 
    <!-- @[camera_takePicture_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+   
    ``` TypeScript
    async takePicture(photoOutput: camera.PhotoOutput): Promise<void> {
      if (photoOutput === undefined || photoOutput === null) {
@@ -454,7 +454,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 10. 录制。
 
     <!-- @[camera_startVideo_forConcurrent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+    
     ``` TypeScript
     // 启动录制。
     async startVideoForConcurrent(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
@@ -466,7 +466,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
         console.error(`startVideo failed, err code: ${err.code}.`);
       }
     }
-
+    
     // 停止录制。
     async stopVideoForConcurrent(videoOutput: camera.VideoOutput, avRecorder: media.AVRecorder): Promise<void> {
       try {
@@ -486,7 +486,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
 11. 在多摄同开状态下，前/后置相机可配置的能力示例如下（当前版本仅支持本文开头部分所示的七项基础功能）。
 
     <!-- @[camera_flash](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
- 
+    
     ``` TypeScript
     // 闪光灯。
     hasFlashFn(flashMode: camera.FlashMode): void {
@@ -508,7 +508,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     ```
 
     <!-- @[camera_setExposureMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+    
     ``` TypeScript
     // 曝光。
     setExposureModeForConcurrentFn(exposureMode: camera.ExposureMode,
@@ -528,7 +528,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     ```
 
     <!-- @[camera_setZoomRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+    
     ``` TypeScript
     // 变焦。
     setZoomRatioFn(zoomRatio: number): void {
@@ -541,7 +541,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
         let err = error as BusinessError;
         Logger.error(TAG, `getZoomRatioRange fail: ${err.code}`);
       }
-
+    
       try {
         this.session?.setZoomRatio(zoomRatio);
         Logger.info(TAG, 'setZoomRatioFn success');
@@ -553,7 +553,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     ```
 
     <!-- @[camera_setExposureBias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+    
     ``` TypeScript
     // 曝光补偿。
     setExposureBiasFn(exposureBias: number,
@@ -577,7 +577,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     ```
 
     <!-- @[camera_setFocusMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+    
     ``` TypeScript
     // 对焦模式。
     setFocusMode(focusMode: camera.FocusMode,
@@ -598,7 +598,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     ```
 
     <!-- @[camera_setStabilization](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
- 
+    
     ``` TypeScript
     // 设置防抖。
     setStabilizationFn(session: camera.VideoSession, stabilizationMode: camera.VideoStabilizationMode) {
@@ -612,7 +612,7 @@ Context获取方式请参考：[获取UIAbility的上下文信息](../../applica
     ```
 
     <!-- @[camera_setColorSpace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
- 
+    
     ``` TypeScript
     // 设置色彩空间。
     setColorSpaceFn(session: camera.PhotoSession | camera.VideoSession, color: colorSpaceManager.ColorSpace) {

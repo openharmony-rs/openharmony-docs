@@ -112,7 +112,7 @@
 在相机应用开发过程中，可以随时监听动态照片拍照输出流状态。通过注册photoAsset的回调函数获取监听结果，photoOutput创建成功时即可监听。
 
    <!-- @[photo_asset_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+   
    ``` TypeScript
    onPhotoOutputPhotoAssetAvailable(photoOutput: camera.PhotoOutput, context: Context): void {
      photoOutput.on('photoAssetAvailable', (err: BusinessError, photoAsset: photoAccessHelper.PhotoAsset) => {
@@ -130,7 +130,7 @@
        this.mediaLibRequestBuffer(photoAsset, context, this.callback);
      });
    }
-
+   
    async mediaLibSavePhoto(photoAsset: photoAccessHelper.PhotoAsset,
      phAccessHelper: photoAccessHelper.PhotoAccessHelper): Promise<void> {
      try {
@@ -145,7 +145,7 @@
        Logger.error(`apply saveCameraPhoto failed with error: ${error.code}, ${error.message}`);
      }
    }
-
+   
    async mediaLibRequestBuffer(photoAsset: photoAccessHelper.PhotoAsset, context: Context,
      callback: (pixelMap: image.PixelMap, url: string) => void) {
      class MediaDataHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayBuffer> {
@@ -162,7 +162,7 @@
          })
        }
      }
-
+   
      let requestOptions: photoAccessHelper.RequestOptions = {
        deliveryMode: photoAccessHelper.DeliveryMode.FAST_MODE,
      }
