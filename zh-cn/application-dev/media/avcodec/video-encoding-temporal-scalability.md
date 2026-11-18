@@ -146,7 +146,7 @@ status: active
     <!-- @[temporal_scalability_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
 
     ```c++
-    constexpr int32_t TGOP_SIZE = 3; 
+    constexpr int32_t TGOP_SIZE = 3;
     // 2.1 创建配置用临时AVFormat。
     auto format = std::shared_ptr<OH_AVFormat>(OH_AVFormat_Create(), OH_AVFormat_Destroy);
     if (format == nullptr) {
@@ -241,7 +241,7 @@ status: active
 
     ```c++
     constexpr int32_t TGOP_SIZE = 3;
-    uint32_t outPoc = 0;
+    uint32_t g_outPoc = 0;
     // 通过输出回调中有效帧数，获取TGOP内相对位置，对照配置确认层级。
     static void OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
     {
@@ -252,17 +252,17 @@ status: active
         }
         // 刷新I帧后POC归零。
         if (attr.flags & AVCODEC_BUFFER_FLAGS_SYNC_FRAME) {
-            outPoc = 0;
+            g_outPoc = 0;
         }
         // 只有XPS的输出需要跳过。
         if (attr.flags != AVCODEC_BUFFER_FLAGS_CODEC_DATA) {
-            int32_t tGopInner = outPoc % TGOP_SIZE;
+            int32_t tGopInner = g_outPoc % TGOP_SIZE;
             if (tGopInner == 0) {
                 // 时域关键帧，后续传输、解码流程不可丢弃。
             } else {
                 // 时域非关键帧，后续传输、解码流程可以丢弃。
             }
-            outPoc++;
+            g_outPoc++;
         }
     }
     ```
@@ -343,7 +343,8 @@ status: active
     // 1.3 确定支持的LTR数目。
     if (isSupported) {
         OH_AVFormat *properties = OH_AVCapability_GetFeatureProperties(cap, VIDEO_ENCODER_LONG_TERM_REFERENCE);
-        if (!OH_AVFormat_GetIntValue(properties, OH_FEATURE_PROPERTY_KEY_VIDEO_ENCODER_MAX_LTR_FRAME_COUNT, &supportedLTRCount)) {
+        if (!OH_AVFormat_GetIntValue(properties, OH_FEATURE_PROPERTY_KEY_VIDEO_ENCODER_MAX_LTR_FRAME_COUNT,
+                                     &supportedLTRCount)) {
             // 异常处理。
         }
         OH_AVFormat_Destroy(properties);
@@ -373,15 +374,21 @@ status: active
         OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
         if (format == nullptr) {
             // 异常处理。
+            return;
         }
+        // 随帧参数写入：将当前帧标记为LTR帧，并指定参考的LTR帧POC号。
+        constexpr int32_t useLtrFramePoc = 4; // 当前帧参考的LTR帧POC号，需为已标记的LTR帧POC。
         OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR, 1);
-        OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR, 4);
+        OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR, useLtrFramePoc);
         OH_AVBuffer_SetParameter(buffer, format);
         OH_AVFormat_Destroy(format);
         // 通知编码器buffer输入完成。
-        OH_VideoEncoder_PushInputBuffer(codec, index);
+        OH_AVErrCode ret = OH_VideoEncoder_PushInputBuffer(codec, index);
+        if (ret != AV_ERR_OK) {
+            // 异常处理。
+        }
     }
-
+    
     // 2.2 编码输出回调OH_AVCodecOnNewOutputBuffer实现。
     static void OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
     {
@@ -390,13 +397,43 @@ status: active
         // 数据处理，请参考：
         // - 释放编码帧。
         // - 记录POC和LTR生效情况。
+        // 获取出帧属性，出帧时间戳attr.pts可作为输入/输出轮转参数匹配的键值。
+        struct OH_AVCodecBufferAttr attr;
+        OH_AVErrCode ret = OH_AVBuffer_GetBufferAttr(buffer, &attr);
+        if (ret != AV_ERR_OK) {
+            // 异常处理。
+            return;
+        }
+        // 记录POC和LTR生效情况：读取完成帧携带的帧POC与LTR标记，结合输入轮转中
+        // 随帧下发的MARK_LTR/USE_LTR记录，核对参考结构是否符合预期。
+        OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
+        if (format != nullptr) {
+            int32_t framePoc = -1;
+            int32_t isLtrFrame = 0;
+            OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PER_FRAME_POC, &framePoc);
+            OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PER_FRAME_IS_LTR, &isLtrFrame);
+            OH_AVFormat_Destroy(format);
+        }
+        // 释放编码帧。
+        ret = OH_VideoEncoder_FreeOutputBuffer(codec, index);
+        if (ret != AV_ERR_OK) {
+            // 异常处理。
+        }
     }
-
+    
     // 2.3 注册数据回调。
-    OH_AVCodecCallback cb;
-    cb.onNeedInputBuffer = OnNeedInputBuffer;
-    cb.onNewOutputBuffer = OnNewOutputBuffer;
-    OH_VideoEncoder_RegisterCallback(videoEnc, cb, nullptr);
+    static OH_AVErrCode RegisterLtrBufferCallbacks(OH_AVCodec *videoEnc)
+    {
+        // 零初始化，未注册的回调成员为空指针，框架触发对应事件时会跳过空回调。
+        OH_AVCodecCallback cb = {};
+        cb.onNeedInputBuffer = OnNeedInputBuffer;
+        cb.onNewOutputBuffer = OnNewOutputBuffer;
+        OH_AVErrCode ret = OH_VideoEncoder_RegisterCallback(videoEnc, cb, nullptr);
+        if (ret != AV_ERR_OK) {
+            // 异常处理。
+        }
+        return ret;
+    }
     ```
 
     Surface输入模式示例：
@@ -409,6 +446,7 @@ status: active
     {
         if (parameter == nullptr) {
             // 异常处理。
+            return;
         }
         // 输入帧buffer对应的index，送入InIndexQueue队列。
         // 输入帧的数据avformat送入InFormatQueue队列。
@@ -416,12 +454,17 @@ status: active
         // - 写入编码码流。
         // - 通知编码器码流结束。
         // - 随帧参数写入。
+        // 随帧参数写入：将当前帧标记为LTR帧，并指定参考的LTR帧POC号。
+        constexpr int32_t useLtrFramePoc = 4; // 当前帧参考的LTR帧POC号，需为已标记的LTR帧POC。
         OH_AVFormat_SetIntValue(parameter, OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR, 1);
-        OH_AVFormat_SetIntValue(parameter, OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR, 4);
+        OH_AVFormat_SetIntValue(parameter, OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR, useLtrFramePoc);
         // 通知编码器随帧参数配置输入完成。
-        OH_VideoEncoder_PushInputParameter(codec, index);
+        OH_AVErrCode ret = OH_VideoEncoder_PushInputParameter(codec, index);
+        if (ret != AV_ERR_OK) {
+            // 异常处理。
+        }
     }
-
+    
     // 2.2 编码输出回调OH_AVCodecOnNewOutputBuffer实现。
     static void OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
     {
@@ -430,15 +473,49 @@ status: active
         // 数据处理，请参考：
         // - 释放编码帧。
         // - 记录POC和LTR生效情况。
+        // 获取出帧属性，出帧时间戳attr.pts可作为输入/输出轮转参数匹配的键值。
+        struct OH_AVCodecBufferAttr attr;
+        OH_AVErrCode ret = OH_AVBuffer_GetBufferAttr(buffer, &attr);
+        if (ret != AV_ERR_OK) {
+            // 异常处理。
+            return;
+        }
+        // 记录POC和LTR生效情况：读取完成帧携带的帧POC与LTR标记，结合输入轮转中
+        // 随帧下发的MARK_LTR/USE_LTR记录，核对参考结构是否符合预期。
+        OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
+        if (format != nullptr) {
+            int32_t framePoc = -1;
+            int32_t isLtrFrame = 0;
+            OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PER_FRAME_POC, &framePoc);
+            OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PER_FRAME_IS_LTR, &isLtrFrame);
+            OH_AVFormat_Destroy(format);
+        }
+        // 释放编码帧。
+        ret = OH_VideoEncoder_FreeOutputBuffer(codec, index);
+        if (ret != AV_ERR_OK) {
+            // 异常处理。
+        }
     }
-
+    
     // 2.3 注册数据回调。
-    OH_AVCodecCallback cb;
-    cb.onNewOutputBuffer = OnNewOutputBuffer;
-    OH_VideoEncoder_RegisterCallback(videoEnc, cb, nullptr);
     // 2.4 注册随帧参数回调。
-    OH_VideoEncoder_OnNeedInputParameter inParaCb = OnNeedInputParameter;
-    OH_VideoEncoder_RegisterParameterCallback(videoEnc, inParaCb, nullptr);
+    static OH_AVErrCode RegisterLtrSurfaceCallbacks(OH_AVCodec *videoEnc)
+    {
+        // 零初始化，未注册的回调成员为空指针，框架触发对应事件时会跳过空回调。
+        OH_AVCodecCallback cb = {};
+        cb.onNewOutputBuffer = OnNewOutputBuffer;
+        OH_AVErrCode ret = OH_VideoEncoder_RegisterCallback(videoEnc, cb, nullptr);
+        if (ret != AV_ERR_OK) {
+            // 异常处理。
+        }
+        // 注册随帧参数回调，Surface输入模式下随帧参数经该通路随帧下发。
+        OH_VideoEncoder_OnNeedInputParameter inParaCb = OnNeedInputParameter;
+        OH_AVErrCode paramRet = OH_VideoEncoder_RegisterParameterCallback(videoEnc, inParaCb, nullptr);
+        if (paramRet != AV_ERR_OK) {
+            // 异常处理。
+        }
+        return ret != AV_ERR_OK ? ret : paramRet;
+    }
     ```
 
 3. 在配置阶段，设置最大LTR数目。
