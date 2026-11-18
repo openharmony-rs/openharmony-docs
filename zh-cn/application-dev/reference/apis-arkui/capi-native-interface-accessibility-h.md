@@ -180,7 +180,7 @@ Accessibility事件类型的枚举。
 | ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_PAGE_OPEN = 0x20000000 | UI组件上报页面打开事件。 |
 | ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_PAGE_CLOSE = 0x08000000 | UI组件上报页面关闭事件。 |
 | ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_ANNOUNCE_FOR_ACCESSIBILITY = 0x10000000 | 广播Accessibility事件，请求主动播报指定的内容。 |
-| ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_FOCUS_NODE_UPDATE = 0x10000001 | 焦点更新事件，用于焦点更新场景。该事件仅对当前已获取焦点的组件生效：组件必须先持有焦点，再发送此事件才能触发焦点更新；若组件未持有焦点，发送此事件不生效。 |
+| ARKUI_ACCESSIBILITY_NATIVE_EVENT_TYPE_FOCUS_NODE_UPDATE = 0x10000001 | 焦点更新事件，用于焦点更新场景。建议在组件已获取焦点的情况下发送此事件，以确保焦点更新能够正常生效。 |
 
 ### ArkUI_AcessbilityErrorCode
 
