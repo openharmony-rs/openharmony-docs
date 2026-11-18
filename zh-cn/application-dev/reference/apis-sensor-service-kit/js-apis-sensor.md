@@ -6315,7 +6315,7 @@ try {
   }
 } catch(error) {
     let e: BusinessError = error as BusinessError;
-    console.error(`Failed to get singleSensor . Code: ${e.code}, message: ${e.message}`);
+    console.error(`Failed to get list of sensors. Code: ${e.code}, message: ${e.message}`);
 }
 ```
 
@@ -6342,7 +6342,7 @@ getSingleSensor(type: SensorId, callback: AsyncCallback&lt;Sensor&gt;): void
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
-| 14500102 | The sensor is not supported by the device. [since 12]                  |
+| 14500102 | The sensor is not supported by the device. <br>适用版本：12+                  |
 
 **示例**：
 
@@ -6401,7 +6401,7 @@ try {
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 | 14500101 | Service exception.Possible causes:1. Sensor hdf service exception;2. Sensor service ipc exception;3.Sensor data channel exception. |
-| 14500102 | The sensor is not supported by the device. [since 12]                   |
+| 14500102 | The sensor is not supported by the device. <br>适用版本：12+                   |
 
 **示例**：
 
