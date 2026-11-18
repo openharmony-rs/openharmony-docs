@@ -1,17 +1,18 @@
 # Atomic Layout
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-11-12T04:21:33.092Z pushedAt=2026-11-17T11:12:32.007Z nl=1 -->
 
 >  **NOTE**
 >
 >  This component is supported since API version 5. Updates will be marked with a superscript to indicate their earliest API version.
 
 The atomic layout implements adaptive layout for screens of different sizes and types. Designers can use the atomic layout to define adaptive rules for elements on UIs of different forms. Developers can use the atomic layout to implement the adaptive UI features matching the design effect for a variety of screens.
+
 
 ## Hiding Components
 
