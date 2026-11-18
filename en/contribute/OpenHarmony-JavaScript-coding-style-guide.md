@@ -294,7 +294,7 @@ let pointY = 0;
 
 **Note:** Spaces reduce code density and increase code readability. The general rules are as follows:
 
-1. Add a spaces after keywords `if`, `elseif`, `else`, `switch`, `while`, `for`.
+1. Add a space after keywords `if`, `elseif`, `else`, `switch`, `while`, `for`.
 2. No space is added between the parentheses.
 3. Spaces must be added on both sides of the braces, except for simple scenarios such as `{}`.
 4. No space is added between multiple parentheses.
