@@ -361,7 +361,7 @@ X.509中定义的GeneralName类型的枚举，这些类型可出现在“使用�
 | REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | 支持通过访问网络获取CRL或OCSP响应进行吊销状态的校验，默认为关闭。仅支持通过证书中的CDP扩展中获取首个CRL分发点地址以检查证书吊销状态，或通过AIA扩展获取首个OCSP服务器地址以进行吊销状态验证，且仅支持http协议。必须声明ohos.permission.INTERNET权限。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | 当ACCESS_NETWORK选项打开时有效，如果优选的校验方法由于网络原因导致无法校验证书状态，则采用备选的方案进行校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | 当ACCESS_NETWORK选项打开时有效，如果在线获取CRL和OCSP响应都由于网络的原因导致无法校验证书状态，则采用本地设置的CRL和OCSP响应进行校验。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | 当ACCESS_NETWORK选项打开时有效。如果开启了该能力，对终端实体证书OCSP或CRL校验失败，则会继续校验中间证书的吊销情况。默认关闭。<br>**注意**：当前能力与REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT不能同时开启。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
+| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | 当ACCESS_NETWORK选项打开时有效。如果开启了该能力，对终端实体证书OCSP或CRL校验成功，则会继续校验中间证书的吊销情况。默认关闭。<br>**注意**：当前能力与REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT不能同时开启。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
 | REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | 如果开启了该能力，则会拿本地吊销列表校验终端实体证书的吊销情况。默认关闭。<br>**注意**：当前能力与REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE不能同时开启。<br> **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。  |
 | REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR<sup>23+</sup> | 6 | 如果开启了该能力，通过访问网络获取CRL或OCSP响应进行吊销状态的校验时，忽略网络不可达错误。默认关闭，默认情况下，网络不可达可能导致证书链校验失败。<br> **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 
@@ -13131,7 +13131,7 @@ getName(type: string, encodingType: EncodingType): Array\<string>
 | -------- | ------------- |
 | 19020001 | Memory malloc failed. |
 | 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
-| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is invalid. |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range. |
 | 19030001 | Crypto operation error. |
 
 **示例：**
