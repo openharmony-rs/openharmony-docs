@@ -2701,7 +2701,10 @@ struct AtlasFrameMaskDemo {
 
   private async loadPixelMapFromRawfile(fileName: string): Promise<image.PixelMap | null> {
     try {
-      const ctx = getContext(this);
+      const ctx = this.getUIContext().getHostContext();
+      if (ctx == undefined) {
+        return null;
+      }
       const buf: Uint8Array = await ctx.resourceManager.getRawFileContent(fileName);
       const src = image.createImageSource(buf.buffer);
       const pm = await src.createPixelMap();
@@ -2751,7 +2754,7 @@ struct AtlasFrameMaskDemo {
     this.contentFrameState = this.makeContentFrameParam(0);
 
     // 单次播放：0 → 299
-    animateTo({ duration: 4000, curve: Curve.Linear }, () => {
+    this.getUIContext().animateTo({ duration: 4000, curve: Curve.Linear }, () => {
       this.contentFrameState = this.makeContentFrameParam(299);
     });
   }
@@ -2869,7 +2872,7 @@ BrightnessBlender的参数列表，用于配置提亮效果的各项属性，包
 
 | 名称          | 类型   | 只读 | 可选 | 说明                                                                                              |
 | ------------- | ------ | ---- | ---- | ------------------------------------------------------------------------------------------------- |
-| maskRadius    | number | 否   | 否   | 棱镜遮罩的归一化半径。取值范围为[0.0, 10.0]，超出该区间的值将被自动截断至最近边界值。当值为1.0时，表示棱镜遮罩的归一化半径等于组件宽度 |
+| maskRadius    | number | 否   | 否   | 棱镜遮罩的归一化半径。取值范围为[0.0, 10.0]，超出该区间的值将被自动截断至最近边界值。当值为1.0时，表示棱镜遮罩的归一化半径等于组件高度。 |
 | edgeThickness | number | 否   | 否   | 棱镜的归一化边缘厚度。取值范围为[1.0, 1000.0]，超出该区间的值将被自动截断至最近边界值。 |
 | refractAmount | number | 否   | 否   | 棱镜的折射强度。取值范围为[0.0, 1.0]，超出该区间的值将被自动截断至最近边界值。 |
 | rippleWidth   | number | 否   | 否   | 扫光波纹的宽度。取值范围为[0.01, 1.0]，超出该区间的值将被自动截断至最近边界值。 |
