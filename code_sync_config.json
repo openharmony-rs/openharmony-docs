@@ -5346,9 +5346,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/FixingPageFlickering.ets",
 				"functions":[
 					{
-						"end_line":29,
+						"end_line":25,
 						"name":"FixingPageFlickeringButton",
-						"start_line":26
+						"start_line":22
 					}
 				]
 			}
