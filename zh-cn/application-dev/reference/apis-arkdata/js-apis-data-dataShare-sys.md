@@ -985,13 +985,17 @@ if (dataShareHelper != undefined) {
 }
 ```
 
-### cleanInvalidData<sup>26.1.0+</sup>
+### cleanInvalidData
 
 cleanInvalidData(validSubscribers: Array&lt;string&gt;): Promise&lt;void&gt;
 
-使用有效的订阅者ID，清理无效订阅者ID的数据。
+使用有效的订阅者ID去清理无效订阅者ID的数据。
 
 订阅者ID不在有效订阅者ID列表中的模板将从服务端移除。仅支持静默访问。
+
+**起始版本：** 26.1.0
+
+**系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
@@ -1005,7 +1009,7 @@ cleanInvalidData(validSubscribers: Array&lt;string&gt;): Promise&lt;void&gt;
 
 | 类型             | 说明                                                         |
 | ---------------- | ------------------------------------------------------------ |
-| Promise&lt;void&gt; | Promise对象。无返回结果。                         |
+| Promise&lt;void&gt; | Promise对象，无返回结果。                         |
 
 **错误码：**
 
