@@ -556,7 +556,7 @@ setMaxSelected(maxSelected: MaxSelected): void
 
 setPhotoBrowserItem(uri: string, photoBrowserRange?: PhotoBrowserRange): void
 
-应用可通过该接口,切换图片选择器组件至大图浏览模式浏览图片；当已处于大图浏览模式时，切换浏览的图片。
+应用可通过该接口，切换图片选择器组件至大图浏览模式浏览图片；当已处于大图浏览模式时，切换浏览的图片。
 
 > **说明：**
 >
@@ -738,13 +738,13 @@ completed(): Promise\<CompletedResult>
 
 应用可通过该接口，在Picker界面完成选择操作后获取完整现场数据，下一次启动Picker时可以使用该数据恢复现场。
 
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**模型约束：** 此接口仅可在Stage模型下使用。
+**起始版本：** 26.0.0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-**起始版本：** 26.0.0
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **返回值：**
 
@@ -940,6 +940,23 @@ Picker上次退出时现场的信息。
 | photoUris | Array&lt;string&gt; | 否   | 否 | 已选择的图片或视频URI。该URI数组仅支持通过临时授权方式调用photoAccessHelper.getAssets使用。 |
 | contextRecoveryInfo |  [photoAccessHelper.ContextRecoveryInfo](arkts-apis-photoAccessHelper-class.md#contextrecoveryinfo21)   | 否   | 否 | 图片选择器组件退出状态的上下文信息。  |
 | movingPhotoBadgeStates | Array&lt;[photoAccessHelper.MovingPhotoBadgeStateType](arkts-apis-photoAccessHelper-e.md#movingphotobadgestatetype22)&gt;  | 否   | 否 | 已选择媒体文件的动态照片状态。当isMovingPhotoBadgeShown为true时，movingPhotoBadgeStates包含动态照片状态；否则为空。 |
+
+## UnselectableItemInfo
+ 
+被点击的不可选中的图片详情。
+ 
+**起始版本：** 26.0.1
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+ 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+ 
+| 名称 | 类型                                             | 只读 | 可选 | 说明      |
+| ---- | ------------------------------------------------ | ---- | ---- |---------|
+| mimeType | string | 否   | 是 | 媒体文件类型。 |
+| photoSubType | [photoAccessHelper.PhotoSubtype](arkts-apis-photoAccessHelper-e.md#photosubtype12)  | 否   | 是 | 图片资源的子类型。|
 
 ## UnselectableItemInfo
  
