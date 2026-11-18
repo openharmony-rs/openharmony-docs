@@ -46,8 +46,6 @@ export default class EntryAbility extends UIAbility {
   onCreate(): void {
     // 开启应用的恢复能力，未开启时应用被终止后不会恢复
     this.context.setRestoreEnabled(true);
-    // 初始化页面内容存储，异常退出后的恢复依赖此调用
-    this.context.restoreWindowStage(new LocalStorage());
   }
 
   onWindowStageCreate(windowStage: window.WindowStage): void {
@@ -191,7 +189,12 @@ struct CartPage {
 [\@ObservedV2](./arkts-new-observedV2-and-trace.md)装饰的类配合[\@Trace](./arkts-new-observedV2-and-trace.md#trace)与[\@Type](./arkts-new-observedV2-and-trace.md#type)使用，嵌套对象由\@Type元数据驱动重建。
 
 ```ts
-import { RecoverableStorage } from '@kit.ArkUI';
+import { RecoverableStorage, Type } from '@kit.ArkUI';
+
+@ObservedV2
+class Attachment {
+  @Trace name: string = '';
+}
 
 // @ObservedV2装饰的类，嵌套成员使用@Type标注
 @ObservedV2
@@ -199,11 +202,6 @@ class Envelope {
   @Trace title: string = '';
   @Type(Attachment)
   attach: Attachment = new Attachment();
-}
-
-@ObservedV2
-class Attachment {
-  @Trace name: string = '';
 }
 
 @Entry
