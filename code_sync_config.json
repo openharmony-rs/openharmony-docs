@@ -54078,7 +54078,7 @@
 						"start_line":51
 					},
 					{
-						"end_line":165,
+						"end_line":167,
 						"name":"movingphotoview_component",
 						"start_line":36
 					}
@@ -60064,24 +60064,24 @@
 						"start_line":30
 					},
 					{
-						"end_line":109,
+						"end_line":105,
 						"name":"register_listener",
-						"start_line":97
+						"start_line":93
 					},
 					{
-						"end_line":123,
+						"end_line":119,
 						"name":"unregister_listener",
-						"start_line":111
+						"start_line":107
 					},
 					{
-						"end_line":95,
+						"end_line":91,
 						"name":"get_trusted_devices",
 						"start_line":75
 					},
 					{
-						"end_line":148,
+						"end_line":144,
 						"name":"send_message",
-						"start_line":125
+						"start_line":121
 					}
 				]
 			}
