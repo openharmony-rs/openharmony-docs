@@ -310,16 +310,10 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        (void)codec;
        AVCODEC_SAMPLE_LOGI("On codec format change");
        auto *codecUserData = static_cast<CodecUserData *>(userData);
-       if (codecUserData == nullptr || codecUserData->isDestroyed.load() || format == nullptr) {
-           return;
-       }
 
-       // 可通过format获取到变化后的视频宽、高、跨距等。
+       // 可通过format获取到变化后的视频宽、高等。
        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_WIDTH, &codecUserData->width);
        OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PIC_HEIGHT, &codecUserData->height);
-       OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_STRIDE, &codecUserData->widthStride);
-       OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_SLICE_HEIGHT, &codecUserData->heightStride);
-       const int32_t pixelFormat = static_cast<int32_t>(codecUserData->outputPixelFormat);
    }
 
    // 编码输入回调OH_AVCodecOnNeedInputBuffer实现。
@@ -335,13 +329,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    void SampleCallback::OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
        auto *codecUserData = static_cast<CodecUserData *>(userData);
-       if (codecUserData == nullptr || codecUserData->isDestroyed.load()) {
-           return;
-       }
-       if (codec == nullptr || buffer == nullptr) {
-           AVCODEC_SAMPLE_LOGE("Invalid codec output callback argument");
-           return;
-       }
 
         // 将输出帧的数据buffer和对应的index送入outputBufferQueue队列。
        codecUserData->outputBufferQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
@@ -385,7 +372,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    // 4.2 注册随帧参数回调。
    OH_VideoEncoder_OnNeedInputParameter inParaCb = OnNeedInputParameter;
-   OH_VideoEncoder_RegisterParameterCallback(videoEnc, inParaCb, nullptr); // nullptr:开发者执行回调所依赖的数据userData为空。
+   OH_VideoEncoder_RegisterParameterCallback(encoder_, inParaCb, nullptr); // nullptr:开发者执行回调所依赖的数据userData为空。
    ```
    <!--RP7End-->
 
@@ -522,7 +509,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     // 值由开发者决定。
     int32_t isIFrame;
     OH_AVFormat_SetIntValue(bufferInfo->parameter, OH_MD_KEY_REQUEST_I_FRAME, isIFrame);
-    OH_AVErrCode ret = OH_VideoEncoder_PushInputParameter(videoEnc, bufferInfo->index);
+    OH_AVErrCode ret = OH_VideoEncoder_PushInputParameter(encoder_, bufferInfo->index);
     if (ret != AV_ERR_OK) {
         // 异常处理。
     }
@@ -556,23 +543,14 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     编码器出帧处理循环：
 
-    <!-- @[encoder_output_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
+    <!-- @[encoder_output_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/output/video/RecorderVideoOutput.cpp) -->
 
     ```c++
-    while (true) {
-        CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
-        // 获取输出buffer。
-        const int64_t waitStart = RecorderClockUs();
-        std::shared_ptr<CodecBufferInfo> bufferInfo = context->outputBufferQueue.Dequeue();
-        // 开发者可根据业务需要，对输出数据进行保存/释放处理。
-        // 示例：将编码完成帧数据buffer写入到对应输出文件中。
-        // outputFile->write(reinterpret_cast<char *>(OH_AVBuffer_GetAddr(bufferInfo->buffer)), bufferInfo->attr.size);
-        // ...
-
-        if (!ProcessVideoOutputBuffer(encoder, context, muxer, *bufferInfo, isPrimary, receivedAtUs)) {
-            break;
-        }
-    }
+    // 获取输出buffer。
+    std::shared_ptr<CodecBufferInfo> bufferInfo = encContext_->outputBufferQueue.Dequeue();
+    // 开发者可根据业务需要，对输出数据进行保存/释放处理。
+    // 示例：将编码完成帧数据buffer写入到对应输出文件中。
+    // outputFile->write(reinterpret_cast<char *>(OH_AVBuffer_GetAddr(bufferInfo->buffer)), bufferInfo->attr.size);
     ```
 
     释放处理：
@@ -669,13 +647,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     ```c++
     int32_t VideoEncoder::Stop()
     {
-        // Stop前先清除缓存，确保已排队但尚未输出的编码数据不会落入下一次Start。
         CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
-
-        int32_t ret = OH_VideoEncoder_Flush(encoder_);
-        CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Flush failed, ret: %{public}d", ret);
-
-        ret = OH_VideoEncoder_Stop(encoder_);
+        const int32_t ret = OH_VideoEncoder_Stop(encoder_);
         CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Stop failed, ret: %{public}d", ret);
         return AVCODEC_SAMPLE_ERR_OK;
     }
@@ -697,7 +670,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 17. 调用OH_VideoEncoder_Destroy()销毁编码器实例，释放资源。
 
-    <!-- @[recorder_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
+    <!-- @[recorder_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/core/RecorderRelease.cpp) -->
 
     ```c++
     void Recorder::ReleaseVideoEncoder()
@@ -714,7 +687,11 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                 encContext_->ClearQueue();
             }
             // codec销毁前仍可能访问其输出surface，因此先释放codec，再归还应用持有的窗口引用。
-            videoEncoder_->Release();
+            const int32_t ret = videoEncoder_->Release();
+            if (ret != AVCODEC_SAMPLE_ERR_OK) {
+                releaseResult_ = ret;
+                failure_.Record("recorder.video.destroy", ret, "Destroy video encoder failed");
+            }
             videoEncoder_.reset();
             if (sampleInfo_.video.window != nullptr) {
                 OH_NativeWindow_DestroyNativeWindow(sampleInfo_.video.window);
@@ -827,14 +804,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    void SampleCallback::OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
        auto *codecUserData = static_cast<CodecUserData *>(userData);
-       if (codecUserData == nullptr || codecUserData->isDestroyed.load()) {
-           return;
-       }
-       if (codec == nullptr || buffer == nullptr) {
-           AVCODEC_SAMPLE_LOGE("Invalid codec input callback argument");
-           return;
-       }
-       // 视频编码首帧：从输入描述中读取宽高/stride信息。
+
+       // 视频编码首帧：从输入描述中读取宽高、跨距信息。
        if (codecUserData->isEncFirstFrame) {
            OH_AVFormat *format = OH_VideoEncoder_GetInputDescription(codec);
            if (format != nullptr) {
@@ -855,13 +826,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    void SampleCallback::OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
        auto *codecUserData = static_cast<CodecUserData *>(userData);
-       if (codecUserData == nullptr || codecUserData->isDestroyed.load()) {
-           return;
-       }
-       if (codec == nullptr || buffer == nullptr) {
-           AVCODEC_SAMPLE_LOGE("Invalid codec output callback argument");
-           return;
-       }
 
         // 将输出帧的数据buffer和对应的index送入outputBufferQueue队列。
        codecUserData->outputBufferQueue.Enqueue(std::make_shared<CodecBufferInfo>(index, buffer));
@@ -942,21 +906,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 6. 调用OH_VideoEncoder_Start()启动编码器，进入运行态。
 
-   启动编码器后，回调函数将开始响应事件。所以，需要先配置输入文件、输出文件。
-
-   ```c++
-   // 配置待编码文件路径。
-   std::string_view inputFilePath = "/*yourpath*.yuv";
-   std::string_view outputFilePath = "/*yourpath*.h264";
-   std::unique_ptr<std::ifstream> inputFile = std::make_unique<std::ifstream>();
-   std::unique_ptr<std::ofstream> outputFile = std::make_unique<std::ofstream>();
-   if (inputFile != nullptr) {
-       inputFile->open(inputFilePath.data(), std::ios::in | std::ios::binary);
-   }
-   if (outputFile != nullptr) {
-       outputFile->open(outputFilePath.data(), std::ios::out | std::ios::binary | std::ios::ate);
-   }
-   ```
+   启动编码器后，回调函数将开始响应事件。
 
    <!-- @[encoder_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
@@ -981,7 +931,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    }
    // 支持动态请求IDR帧。
    OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_REQUEST_I_FRAME, true);
-   OH_AVErrCode ret = OH_VideoEncoder_SetParameter(videoEnc, format.get());
+   OH_AVErrCode ret = OH_VideoEncoder_SetParameter(encoder_, format.get());
    if (ret != AV_ERR_OK) {
        // 异常处理。
    }
@@ -997,74 +947,74 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    - bufferIndex：回调函数OnNeedInputBuffer传入的参数，与buffer唯一对应的标识；
    - attr：buffer的输入尺寸（size）、偏移量（offset）、时间戳（pts）、缓冲区标记（flags）信息。
 
-   <!-- @[recorder_video_buffer_input_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/RecorderVideoInput.cpp) -->
+   <!-- @[recorder_video_buffer_input_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/input/video/RecorderVideoInput.cpp) -->
 
    ```c++
-   void Recorder::VideoEncInputAsyncThread()
-   {
-       VideoInputState state;
-       // 先初始化心跳时间，避免启动瞬间被误判为停滞。
-       state.lastSubmittedUs = RecorderClockUs();
-       while (isStarted_.load() && !videoInputStopping_.load()) {
-           // 示例：读取相机最新视频帧数据。
-           const CameraImage image(ReadVideoInputImage(state.lastSubmittedUs), OH_ImageNative_Release);
-           if (image == nullptr) {
-               continue;
-           }
-           /**
-            * 示例：配置输入文件。
-            * std::string_view inputFilePath = "/*yourpath*.yuv";
-            * std::unique_ptr<std::ifstream> inputFile = std::make_unique<std::ifstream>();
-            * if (inputFile != nullptr) {
-            *     inputFile->open(inputFilePath.data(), std::ios::in | std::ios::binary);
-            * }
-            */
-           const int64_t receivedAtUs = RecorderClockUs();
-           // 异步模式只消费OnNeedInputBuffer回调入队的Buffer和索引，不调用Query/Get接口。
-           const auto input = encContext_->inputBufferQueue.Dequeue(INPUT_WAIT_MS);
-           if (input == nullptr || input->buffer == nullptr) {
-               continue;
-           }
-           if (!SubmitVideoInputImage(image.get(), *input, state, receivedAtUs)) {
-               break;
-           }
-       }
+   // 异步模式只消费OnNeedInputBuffer回调入队的Buffer和索引，不调用Query/Get接口。
+   const auto bufferInfo = encContext_->inputBufferQueue.Dequeue(INPUT_WAIT_MS);
+   if (input == nullptr || input->buffer == nullptr) {
+       continue;
    }
+    /**
+    * // 示例：读取输入文件数据，将数据写入buffer，设置属性后送入编码器。
+    * // 输入文件配置。
+    * std::string_view inputFilePath = "/*yourpath*.yuv";
+    * std::unique_ptr<std::ifstream> inputFile = std::make_unique<std::ifstream>();
+    * if (inputFile != nullptr) {
+    *     inputFile->open(inputFilePath.data(), std::ios::in | std::ios::binary);
+    * }
+    *
+    * // 将数据写入buffer，设置属性后送入编码器。
+    * int32_t frameSize = 0;
+    * if (widthStride == width && heightStride == height) {
+    *     frameSize = width * height * 3 / 2; // NV12像素格式下，每帧数据大小的计算公式。
+    *     int32_t capacity = OH_AVBuffer_GetCapacity(bufferInfo->buffer);
+    *     if (frameSize > capacity) {
+    *         // 异常处理。
+    *     }
+    *     // 处理文件流得到帧的长度，再将需要编码的数据写入到对应index的buffer中。
+    *     uint8_t *addr = OH_AVBuffer_GetAddr(bufferInfo->buffer);
+    *     if (addr == nullptr) {
+    *        // 异常处理。
+    *     }
+    *     if (inputFile != nullptr && inputFile->is_open()) {
+    *        inputFile->read(reinterpret_cast<char *>(addr), frameSize);
+    *     }
+    * } else {
+    *     // 如果跨距不等于宽，需要开发者按照跨距进行跨距对齐处理。
+    * }
+    * // 配置buffer info信息。
+    * OH_AVCodecBufferAttr info;
+    * info.size = frameSize;
+    * info.offset = 0;
+    * // 注意此处和Surface模式不同，pts需要应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
+    * info.pts = 0;
+    * // 避免flags随机初始化为AVCODEC_BUFFER_FLAGS_EOS导致使用异常，flags需要赋值如0（普通帧标识）。
+    * info.flags = 0;
+    * OH_AVErrCode setBufferRet = OH_AVBuffer_SetBufferAttr(bufferInfo->buffer, &info);
+    * if (setBufferRet != AV_ERR_OK) {
+    *     // 异常处理。
+    * }
+    * // 配置buffer随帧信息。
+    * // 值由开发者决定。
+    * int32_t isIFrame;
+    * auto parameter =
+    *     std::shared_ptr<OH_AVFormat>(OH_AVBuffer_GetParameter(bufferInfo->buffer), OH_AVFormat_Destroy);
+    * if (parameter == nullptr) {
+    *     // 异常处理。
+    * }
+    * OH_AVFormat_SetIntValue(parameter.get(), OH_MD_KEY_REQUEST_I_FRAME, isIFrame);
+    * OH_AVErrCode parameterRet = OH_AVBuffer_SetParameter(bufferInfo->buffer, parameter.get());
+    * if (parameterRet != AV_ERR_OK) {
+    *     // 异常处理。
+    * }
+    * // 送入编码输入队列进行编码，index为对应输入队列的下标。
+    * OH_AVErrCode pushInputRet = OH_VideoEncoder_PushInputBuffer(videoEnc, bufferInfo->index);
+    * if (pushInputRet != AV_ERR_OK) {
+    *     // 异常处理。
+    * }
+    */
    ```
-
-   <!-- @[recorder_video_buffer_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/RecorderVideoInput.cpp) -->
-
-   ```c++
-   bool Recorder::SubmitVideoInputImage(OH_ImageNative *image, CodecBufferInfo &info, VideoInputState &state,
-       int64_t receivedAtUs)
-   {
-       int64_t timestampNs = 0;
-       if (OH_ImageNative_GetTimestamp(image, &timestampNs) != IMAGE_SUCCESS || timestampNs < 0) {
-           AbortRecording("Read camera image timestamp failed");
-           return false;
-       }
-       if (state.stride == 0 && !ReadVideoInputLayout(state.stride, state.sliceHeight)) {
-           AbortRecording("Encoder did not report a valid NV12 input layout");
-           return false;
-       }
-       if (!frameReceiver_->Copy(image, info.buffer, state.stride, state.sliceHeight, info.attr.size)) {
-           AbortRecording("Camera YUV image is not CPU-readable or has an unsupported layout");
-           return false;
-       }
-       // ...
-       info.attr.pts = ptsUs;
-       info.attr.offset = 0;
-       info.attr.flags = AVCODEC_BUFFER_FLAGS_NONE;
-       // 注意输入的buffer需跨距对齐。
-       if (videoEncoder_->PushInputBuffer(info) != AVCODEC_SAMPLE_ERR_OK) {
-           AbortRecording("Submit camera frame to video encoder failed");
-           return false;
-       }
-       // ...
-       return true;
-   }
-   ```
-
    <!-- @[encoder_push_input_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_encoder.cpp) -->
 
    ```c++
@@ -1182,7 +1132,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    以下示例中，info的成员变量：
    - attr：buffer的输入尺寸（size）、偏移量（offset）、时间戳（pts）、缓冲区标记（flags）信息。
 
-   <!-- @[recorder_video_buffer_eos_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/RecorderVideoInput.cpp) -->
+   <!-- @[recorder_video_buffer_eos_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/input/video/RecorderVideoInput.cpp) -->
 
    ```c++
    int32_t Recorder::SendBufferVideoEndOfStreamAsync()
@@ -1191,9 +1141,11 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
        if (input == nullptr || input->buffer == nullptr) {
            return AVCODEC_SAMPLE_ERR_ERROR;
        }
+       // 配置buffer info信息，设置AVCODEC_BUFFER_FLAGS_EOS标识。
        CodecBufferInfo info = *input;
        info.attr.size = 0;
        info.attr.offset = 0;
+       // 注意此处和Surface模式不同，pts需要应用填充，可根据预期显示的时间进行计算写入，如：帧数 * 1000000 / frameRate。
        info.attr.pts = lastVideoInputPtsUs_;
        info.attr.flags = AVCODEC_BUFFER_FLAGS_EOS;
        return videoEncoder_->PushInputBuffer(info);
@@ -1204,23 +1156,13 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
     与Surface模式相同，此处不再赘述。
 
-    <!-- @[encoder_output_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
+    <!-- @[encoder_output_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/sample/recorder/output/video/RecorderVideoOutput.cpp) -->
 
     ```c++
-    while (true) {
-        CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
-        // 获取输出buffer。
-        const int64_t waitStart = RecorderClockUs();
-        std::shared_ptr<CodecBufferInfo> bufferInfo = context->outputBufferQueue.Dequeue();
-        // 开发者可根据业务需要，对输出数据进行保存/释放处理。
-        // 示例：将编码完成帧数据buffer写入到对应输出文件中。
-        // outputFile->write(reinterpret_cast<char *>(OH_AVBuffer_GetAddr(bufferInfo->buffer)), bufferInfo->attr.size);
-        // ...
-
-        if (!ProcessVideoOutputBuffer(encoder, context, muxer, *bufferInfo, isPrimary, receivedAtUs)) {
-            break;
-        }
-    }
+    std::shared_ptr<CodecBufferInfo> bufferInfo = encContext_->outputBufferQueue.Dequeue();
+    // 开发者可根据业务需要，对输出数据进行保存/释放处理。
+    // 示例：将编码完成帧数据buffer写入到对应输出文件中。
+    // outputFile->write(reinterpret_cast<char *>(OH_AVBuffer_GetAddr(bufferInfo->buffer)), bufferInfo->attr.size);
     ```
 
     释放处理：
