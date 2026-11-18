@@ -1269,10 +1269,10 @@ static napi_value UnregisterCallbackTable(napi_env env, napi_callback_info info)
 
 > **注意：**
 >
-> - 数据分多次传输时，需重复调用直至fetchDataRsp.isComplete为true；单次回传数据块不能超过128 KiB，超出返回CLOUD_DISK_INVALID_ARG。
+> - 数据分多次传输时，需重复调用直至fetchDataRsp.isComplete为true。
 > - 水合总量以首次调用OH_CloudDisk_Execute()回传的fetchDataRsp.totalSize为准，后续回传的totalSize必须与首次一致，否则返回CLOUD_DISK_INVALID_ARG。
 > - 占位符logicalSize仅为创建占位符时的预设值，不参与水合总量控制；若预设值与回传totalSize不一致，可能导致水合后文件体积异常，详见[占位符元数据一致性建议](#占位符元数据一致性建议)。
-> - 系统不保障水合后本地文件实际数据大小与占位符logicalSize预设值的一致性。应用需通过OH_CloudDisk_UpdatePlaceholder()接口及时更新占位符元数据，使其与云侧文件的真实大小保持一致。
+> - 系统不保障水合后本地文件实际数据大小与占位符logicalSize预设值的一致性。应用需通过OH_CloudDisk_UpdatePlaceholder()接口及时更新占位符元数据，使其与云侧文件的真实大小保持一致，详见[占位符元数据一致性建议](#占位符元数据一致性建议)。
 
 调用OH_CloudDisk_Execute()回传数据前，需了解网盘服务底座对占位符与水合任务的以下限制：
 
@@ -1283,7 +1283,7 @@ static napi_value UnregisterCallbackTable(napi_env env, napi_callback_info info)
 | 同一应用并发水合任务上限（水合中状态） | 5个 | 超过后新任务排队等待、不报错，取数回调延后下发。 |
 | 水合任务空闲超时 | 5分钟（自上次成功回传起计时，每次Execute回传刷新，排队任务不计入） | 任务被取消，并通过回调表下发取消取数请求。 |
 
-调用OH_CloudDisk_Execute()回传数据的核心流程如下（示例为简化演示，未体现分块逻辑，分块要求见上方注意事项）：
+调用OH_CloudDisk_Execute()回传数据的核心流程如下（示例为简化演示，未体现分块逻辑）：
 
 <!-- @[execute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/CloudDisk/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -1340,8 +1340,6 @@ static napi_value Execute(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-
-水合总量与占位符logicalSize的关系及一致性要求，参见[占位符元数据一致性建议](#占位符元数据一致性建议)。
 
 **取消水合**
 
