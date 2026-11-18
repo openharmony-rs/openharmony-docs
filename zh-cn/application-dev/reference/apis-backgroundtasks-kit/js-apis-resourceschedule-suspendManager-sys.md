@@ -201,7 +201,7 @@ try {
 
 ### onActive
 
-onActive(pidList: Array&lt;number&gt;, uid: number): void;
+onActive(pidList: Array&lt;number&gt;, uid: number): void
 
 当应用状态转换到活动状态时回调。
 
@@ -209,7 +209,7 @@ onActive(pidList: Array&lt;number&gt;, uid: number): void;
 
 **系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -238,7 +238,7 @@ let observer: suspendManager.SuspendStateObserver = {
 
 ### onDoze
 
-onDoze(pidList: Array&lt;number&gt;, uid: number): void;
+onDoze(pidList: Array&lt;number&gt;, uid: number): void
 
 当应用程序进入doze状态时回调。
 
@@ -246,7 +246,7 @@ onDoze(pidList: Array&lt;number&gt;, uid: number): void;
 
 **系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
@@ -275,7 +275,7 @@ let observer: suspendManager.SuspendStateObserver = {
 
 ### onFrozen
 
-onFrozen(pidList: Array&lt;number&gt;, uid: number): void;
+onFrozen(pidList: Array&lt;number&gt;, uid: number): void
 
 当应用程序完全冻结时回调。
 
@@ -283,7 +283,7 @@ onFrozen(pidList: Array&lt;number&gt;, uid: number): void;
 
 **系统能力:** SystemCapability.Resourceschedule.BackgroundProcessManager
 
-**系统接口：** 此接口为系统接口
+**系统接口：** 此接口为系统接口。
 
 **参数：**
 
