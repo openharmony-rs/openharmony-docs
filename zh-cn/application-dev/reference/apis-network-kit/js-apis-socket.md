@@ -5077,12 +5077,13 @@ let client: socket.LocalSocket = socket.constructLocalSocketInstance();
 client.on('message', (value: socket.LocalSocketMessageInfo) => {
   const uintArray = new Uint8Array(value.message)
   let messageView = '';
-  for (let i = 0; i < uintArray.length; i++) {
-    messageView += String.fromCharCode(uintArray[i]);
-  }
+  uintArray.forEach((code:number) => {
+    messageView += String.fromCharCode(code);
+    });
   console.info('total: ' + JSON.stringify(value));
   console.info('message information: ' + messageView);
 });
+
 ```
 
 ### off('message')<sup>11+</sup>
@@ -5118,9 +5119,9 @@ let messageView = '';
 let callback = (value: socket.LocalSocketMessageInfo) => {
   const uintArray = new Uint8Array(value.message)
   let messageView = '';
-  for (let i = 0; i < uintArray.length; i++) {
-    messageView += String.fromCharCode(uintArray[i]);
-  }
+  uintArray.forEach((code:number) => {
+    messageView += String.fromCharCode(code);
+    });
   console.info('total: ' + JSON.stringify(value));
   console.info('message information: ' + messageView);
 }
@@ -6221,28 +6222,34 @@ on(type: 'message', callback: Callback\<LocalSocketMessageInfo\>): void
 import { socket } from '@kit.NetworkKit';
 import { common } from '@kit.AbilityKit';
 
-let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
-let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let sandboxPath: string = context.filesDir + '/testSocket';
-let listenAddr: socket.LocalAddress = {
-  address: sandboxPath
-}
-server.listen(listenAddr).then(() => {
-  console.info("listen success");
-}).catch((err: Object) => {
-  console.error("listen fail: " + JSON.stringify(err));
-});
-server.on('connect', (connection: socket.LocalSocketConnection) => {
-  connection.on('message', (value: socket.LocalSocketMessageInfo) => {
-    const uintArray = new Uint8Array(value.message);
-    let messageView = '';
-    for (let i = 0; i < uintArray.length; i++) {
-      messageView += String.fromCharCode(uintArray[i]);
+@Entry
+@Component
+struct Index {
+    aboutToAppear():void {
+    let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
+    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    let sandboxPath: string = context.filesDir + '/testSocket';
+    let listenAddr: socket.LocalAddress = {
+      address: sandboxPath
     }
-    console.info('total: ' + JSON.stringify(value));
-    console.info('message information: ' + messageView);
-  });
-});
+    server.listen(listenAddr).then(() => {
+      console.info("listen success");
+    }).catch((err: Object) => {
+      console.error("listen fail: " + JSON.stringify(err));
+    });
+    server.on('connect', (connection: socket.LocalSocketConnection) => {
+      connection.on('message', (value: socket.LocalSocketMessageInfo) => {
+        const uintArray = new Uint8Array(value.message);
+        let messageView = '';
+        uintArray.forEach((code:number) => {
+          messageView += String.fromCharCode(code);
+        });
+        console.info('total: ' + JSON.stringify(value));
+        console.info('message information: ' + messageView);
+      });
+  	});
+ }
+}
 ```
 
 ### off('message')<sup>11+</sup>
