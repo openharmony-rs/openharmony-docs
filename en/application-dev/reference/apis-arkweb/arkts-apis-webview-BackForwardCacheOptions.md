@@ -2,11 +2,12 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:00:18.115Z pushedAt=2026-11-10T02:05:06.285Z nl=1 -->
 
-Implements a **BackForwardCacheOptions** object to set back-forward cache options of the **Web** component.
+BackForwardCacheOptions is a parameter class in the ArkWeb framework used to configure the forward/backward cache (BFCache) behavior of Web components. BFCache is a page caching mechanism that caches a complete snapshot of a page (including its JavaScript state) when the user navigates forward or backward in the browsing history, enabling instant loading and significantly improving user experience. With BackForwardCacheOptions, developers can control the maximum number of pages allowed to be cached for each Web component and the maximum duration a page can remain in the cache.
 
 > **NOTE**
 >
@@ -22,7 +23,7 @@ Implements a **BackForwardCacheOptions** object to set back-forward cache option
 
 | Name| Type| Read-Only| Optional| Description|
 |------|------|------|------|------|
-| size<sup>12+</sup> | number | No| No| The maximum number of pages that can be cached in a **Web** component.<br>The default value is **1**, and the maximum value is **50**.<br>If this parameter is set to **0** or a negative value, the back-forward cache is disabled.<br>The **Web** component reclaims the cache for memory pressure.|
+| size<sup>12+</sup> | number | No | No | Sets the maximum number of pages that each Web component can cache.<br>The default value is 1, and the maximum configurable value is 50.<br>When set to 0 or a negative number, the forward/backward cache feature does not take effect.<br>The Web component reclaims the cache based on memory pressure. |
 | timeToLive<sup>12+</sup> | number | No| No| The time that a **Web** component allows a page to stay in the back-forward cache.<br>If this parameter is set to **0** or a negative value, the back-forward cache is disabled.<br>Default value: **600**<br>Unit: second|
 
 ## constructor<sup>12+</sup>

@@ -2,11 +2,12 @@
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=24d41a0bca6541c58a989fa09a384d3cf0eeb920 translatedAt=2026-11-03T03:37:17.348Z pushedAt=2026-11-04T03:11:46.923Z nl=1 -->
 
-This interface implements audio routing management.
+AudioRoutingManager is the device routing management module in the audio system. This module provides audio device routing management capabilities, including obtaining the audio device list, listening for device connection state changes, and obtaining priority devices. When developers need to select audio device routes in scenarios such as media recording and media playback, they can use the APIs of this module to complete the related operations.
 
 Before calling any API in AudioRoutingManager, you must use [getRoutingManager](arkts-apis-audio-AudioManager.md#getroutingmanager9) to obtain an AudioRoutingManager instance.
 
@@ -43,10 +44,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err: BusinessError, audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
   if (err) {
-    console.error(`Failed to get devices. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in getting devices, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+    console.error(`Failed to obtain the device list. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info(`Succeeded in obtaining the device list, deviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 });
 ```
 
@@ -68,7 +69,7 @@ Obtains the audio devices with a specific flag. This API uses a promise to retur
 
 | Type                                                        | Description                     |
 | ------------------------------------------------------------ | ------------------------- |
-| Promise&lt;[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)&gt; | Promise used to return the device list.|
+| Promise&lt;[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)&gt; | Promise used to return the audio device list. |
 
 **Example**
 
@@ -76,9 +77,9 @@ Obtains the audio devices with a specific flag. This API uses a promise to retur
 import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
-  console.info(`Succeeded in getting devices, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Succeeded in obtaining the device list, deviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get devices. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to obtain the device list. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -100,7 +101,7 @@ Obtains the audio devices with a specific flag. This API returns the result sync
 
 | Type                                                        | Description                     |
 | ------------------------------------------------------------ | ------------------------- |
-| [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) | Device list.|
+| [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) | Audio device list. |
 
 **Error codes**
 
@@ -118,10 +119,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let audioDeviceDescriptors = audioRoutingManager.getDevicesSync(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
-  console.info(`Succeeded in getting devices, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Succeeded in obtaining the device list, deviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get devices. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the device list. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -142,8 +143,12 @@ Checks whether the current device supports microphone blocking detection. This A
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioRoutingManager.isMicBlockDetectionSupported().then((value: boolean) => {
-  console.info(`Query whether microphone block detection is supported on current device result is ${value}.`);
+  console.info(`Succeeded in querying whether microphone block detection is supported, isSupported: ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query whether microphone block detection is supported. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -153,7 +158,7 @@ on(type: 'micBlockStatusChanged', callback: Callback<DeviceBlockStatusInfo\>): v
 
 Subscribes to the microphone blocked status change event. This API uses an asynchronous callback to return the result.
 
-Before using this API, check whether the current device supports microphone blocking detection. This event is triggered when the microphone blocked status changes during recording. Currently, this API takes effect only for the microphone on the local device.
+Before using this feature, use [isMicBlockDetectionSupported](#ismicblockdetectionsupported13) to check whether the device supports detection. When an application is recording with the microphone, this event is triggered if the microphone blocked status changes. Currently, this detection feature supports only microphones located on the local device.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
@@ -178,12 +183,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 // Before the subscription, check whether the current device supports detection.
 audioRoutingManager.isMicBlockDetectionSupported().then((value: boolean) => {
-  console.info(`Query whether microphone block detection is supported on current device result is ${value}.`);
+  console.info(`Succeeded in querying whether microphone block detection is supported, isSupported: ${value}.`);
   if (value) {
-    audioRoutingManager.on('micBlockStatusChanged', (micBlockStatusChanged: audio.DeviceBlockStatusInfo) => {
-      console.info(`block status : ${micBlockStatusChanged.blockStatus} `);
+    audioRoutingManager.on('micBlockStatusChanged', (deviceBlockStatusInfo: audio.DeviceBlockStatusInfo) => {
+      console.info(`MicBlockStatus changed, deviceBlockStatusInfo: ${JSON.stringify(deviceBlockStatusInfo)}.`);
     });
   }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to query whether microphone block detection is supported. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -191,7 +198,7 @@ audioRoutingManager.isMicBlockDetectionSupported().then((value: boolean) => {
 
 off(type: 'micBlockStatusChanged', callback?: Callback<DeviceBlockStatusInfo\>): void
 
-Unsubscribes from the microphone blocked status change event. This API uses an asynchronous callback to return the result.
+Unsubscribes from the microphone blocked status change event.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
@@ -199,8 +206,8 @@ Unsubscribes from the microphone blocked status change event. This API uses an a
 
 | Name  | Type                                               | Mandatory| Description                                      |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| type     | string                                              | Yes  | Event type. The event **'micBlockStatusChanged'** is triggered when the microphone blocked status is changed.|
-| callback | Callback<[DeviceBlockStatusInfo](arkts-apis-audio-i.md#deviceblockstatusinfo13)\> | No  | Callback used to return the microphone blocked status and device information.|
+| type     | string                                              | Yes   | Event callback type. The supported event is 'micBlockStatusChanged'. |
+| callback | Callback<[DeviceBlockStatusInfo](arkts-apis-audio-i.md#deviceblockstatusinfo13)\> | No   | Callback function. When a callback is passed, only the listener corresponding to this callback is unsubscribed, and it must be the same callback bound to [on('micBlockStatusChanged')](#onmicblockstatuschanged13); when no parameter is passed, all subscribed listeners of this event type are unsubscribed. |
 
 **Error codes**
 
@@ -218,8 +225,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 audioRoutingManager.off('micBlockStatusChanged');
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
-let micBlockStatusCallback = (micBlockStatusChanged: audio.DeviceBlockStatusInfo) => {
-  console.info(`block status : ${micBlockStatusChanged.blockStatus} `);
+let micBlockStatusCallback = (deviceBlockStatusInfo: audio.DeviceBlockStatusInfo) => {
+  console.info(`MicBlockStatus changed, deviceBlockStatusInfo: ${JSON.stringify(deviceBlockStatusInfo)}.`);
 };
 
 audioRoutingManager.on('micBlockStatusChanged', micBlockStatusCallback);
@@ -255,11 +262,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-audioRoutingManager.on('deviceChange', audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (deviceChanged: audio.DeviceChangeAction) => {
-  console.info('device change type : ' + deviceChanged.type);
-  console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+audioRoutingManager.on('deviceChange', audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (deviceChangeAction: audio.DeviceChangeAction) => {
+  console.info(`Device changed, deviceChangeAction: ${JSON.stringify(deviceChangeAction)}.`);
 });
 ```
 
@@ -267,7 +271,7 @@ audioRoutingManager.on('deviceChange', audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (de
 
 off(type: 'deviceChange', callback?: Callback<DeviceChangeAction\>): void
 
-Unsubscribes from the event indicating that the connection status of an audio device is changed. This API uses an asynchronous callback to return the result.
+Unsubscribes from the audio device connection state change event.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
@@ -275,8 +279,8 @@ Unsubscribes from the event indicating that the connection status of an audio de
 
 | Name  | Type                                               | Mandatory| Description                                      |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| type     | string                                              | Yes  | Event type. The event **'deviceChange'** is triggered when the connection status of an audio device is changed.|
-| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)> | No  | Callback used to return the device change details.|
+| type     | string                                              | Yes   | Event callback type. The supported event is 'deviceChange'. |
+| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)> | No   | Callback function. If a callback is passed in, only the listening event corresponding to this callback is unsubscribed, and the callback must be the same as the one bound in [on('deviceChange')](#ondevicechange9). If no parameter is passed, all listening events subscribed under this event type are unsubscribed. |
 
 **Error codes**
 
@@ -294,11 +298,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 audioRoutingManager.off('deviceChange');
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
-let deviceChangeCallback = (deviceChanged: audio.DeviceChangeAction) => {
-  console.info('device change type : ' + deviceChanged.type);
-  console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+let deviceChangeCallback = (deviceChangeAction: audio.DeviceChangeAction) => {
+  console.info(`Device changed, deviceChangeAction: ${JSON.stringify(deviceChangeAction)}.`);
 };
 
 audioRoutingManager.on('deviceChange', audio.DeviceFlag.OUTPUT_DEVICES_FLAG, deviceChangeCallback);
@@ -333,10 +334,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRoutingManager.setCommunicationDevice(audio.CommunicationDeviceType.SPEAKER, true, (err: BusinessError) => {
   if (err) {
-    console.error(`Failed to set the active status of the device. ${err}`);
+    console.error(`Failed to set the active status of the communication device. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Callback invoked to indicate that the device is set to the active status.');
+  console.info('Succeeded in setting the active status of the communication device.');
 });
 ```
 
@@ -358,7 +359,7 @@ Obtains the available audio devices. This API returns the result synchronously.
 
 | Type                                                        | Description                     |
 | ------------------------------------------------------------ | ------------------------- |
-| [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) | Device list.|
+| [AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) | List of selectable audio devices. |
 
 **Error codes**
 
@@ -376,10 +377,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let data: audio.AudioDeviceDescriptors = audioRoutingManager.getAvailableDevices(audio.DeviceUsage.MEDIA_OUTPUT_DEVICES);
-  console.info('Succeeded in doing getAvailableDevices.');
+  console.info(`Succeeded in obtaining available devices, audioDeviceDescriptors: ${JSON.stringify(data)}.`);
 } catch (err) {
   let error = err as BusinessError;
-   console.error(`Failed to getAvailableDevices. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain available devices. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -411,11 +412,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-audioRoutingManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_OUTPUT_DEVICES, (deviceChanged: audio.DeviceChangeAction) => {
-  console.info('device change type : ' + deviceChanged.type);
-  console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+audioRoutingManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_OUTPUT_DEVICES, (deviceChangeAction: audio.DeviceChangeAction) => {
+  console.info(`Available device changed, deviceChangeAction: ${JSON.stringify(deviceChangeAction)}.`);
 });
 ```
 
@@ -423,7 +421,7 @@ audioRoutingManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_OUTPUT_D
 
 off(type: 'availableDeviceChange', callback?: Callback<DeviceChangeAction\>): void
 
-Unsubscribes from the event indicating that the connection status of an available audio device is changed. This API uses an asynchronous callback to return the result.
+Unsubscribes from the audio available device connection state change event.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
@@ -431,8 +429,8 @@ Unsubscribes from the event indicating that the connection status of an availabl
 
 | Name  | Type                                               | Mandatory| Description                                      |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| type     | string                                              | Yes  | Event type. The event **'availableDeviceChange'** is triggered when the connection status of available audio devices is changed.|
-| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)> | No  | Callback used to return the available device change details.|
+| type     | string                                              | Yes   | Event callback type. The supported event is 'availableDeviceChange'. |
+| callback | Callback<[DeviceChangeAction](arkts-apis-audio-i.md#devicechangeaction)> | No   | Callback for the availableDeviceChange event. When a callback is passed in, only the listener bound to this callback is canceled, and it must be the same callback bound to [on('availableDeviceChange')](#onavailabledevicechange12). When no parameter is passed in, all listeners subscribed to this event type are canceled. |
 
 **Error codes**
 
@@ -450,11 +448,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 audioRoutingManager.off('availableDeviceChange');
 
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
-let availableDeviceChangeCallback = (deviceChanged: audio.DeviceChangeAction) => {
-  console.info('device change type : ' + deviceChanged.type);
-  console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);
-  console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);
+let availableDeviceChangeCallback = (deviceChangeAction: audio.DeviceChangeAction) => {
+  console.info(`Available device changed, deviceChangeAction: ${JSON.stringify(deviceChangeAction)}.`);
 };
 
 audioRoutingManager.on('availableDeviceChange', audio.DeviceUsage.MEDIA_OUTPUT_DEVICES, availableDeviceChangeCallback);
@@ -485,13 +480,17 @@ You are advised to use the [AVCastPicker component](../../media/avsession/using-
 
 | Type               | Description                           |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioRoutingManager.setCommunicationDevice(audio.CommunicationDeviceType.SPEAKER, true).then(() => {
-  console.info('Promise returned to indicate that the device is set to the active status.');
+  console.info('Succeeded in setting the active status of the communication device.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set the active status of the communication device. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -507,7 +506,7 @@ Checks whether a communication device is active. This API uses an asynchronous c
 
 | Name    | Type                                                 | Mandatory| Description                    |
 | ---------- | ---------------------------------------------------- | ---- | ------------------------ |
-| deviceType | [CommunicationDeviceType](arkts-apis-audio-e.md#communicationdevicetype9) | Yes  | Active audio device type.      |
+| deviceType | [CommunicationDeviceType](arkts-apis-audio-e.md#communicationdevicetype9) | Yes | Communication device type. |
 | callback   | AsyncCallback&lt;boolean&gt;                         | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is **true** if the device is active or **false** if not active; otherwise, **err** is an error object.|
 
 **Example**
@@ -517,10 +516,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 audioRoutingManager.isCommunicationDeviceActive(audio.CommunicationDeviceType.SPEAKER, (err: BusinessError, value: boolean) => {
   if (err) {
-    console.error(`Failed to obtain the active status of the device. ${err}`);
+    console.error(`Failed to check whether the communication device is active. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Callback invoked to indicate that the active status of the device is obtained.');
+  console.info(`Succeeded in checking whether the communication device is active, isActive: ${value}.`);
 });
 ```
 
@@ -547,8 +546,12 @@ Checks whether a communication device is active. This API uses a promise to retu
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 audioRoutingManager.isCommunicationDeviceActive(audio.CommunicationDeviceType.SPEAKER).then((value: boolean) => {
-  console.info(`Promise returned to indicate that the active status of the device is obtained ${value}.`);
+  console.info(`Succeeded in checking whether the communication device is active, isActive: ${value}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to check whether the communication device is active. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -588,10 +591,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let value: boolean = audioRoutingManager.isCommunicationDeviceActiveSync(audio.CommunicationDeviceType.SPEAKER);
-  console.info(`Indicate that the active status of the device is obtained ${value}.`);
+  console.info(`Succeeded in checking whether the communication device is active, isActive: ${value}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to obtain the active status of the device ${error}.`);
+  console.error(`Failed to check whether the communication device is active. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -631,10 +634,10 @@ let rendererInfo: audio.AudioRendererInfo = {
 
 audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo, (err: BusinessError, audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
   if (err) {
-    console.error(`Failed to get prefer output device for renderer info. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in getting prefer output device for renderer info, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+    console.error(`Failed to obtain the preferred output device for renderer info. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info(`Succeeded in obtaining the preferred output device for renderer info, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 });
 ```
 
@@ -678,10 +681,10 @@ let rendererInfo: audio.AudioRendererInfo = {
 };
 
 audioRoutingManager.getPreferOutputDeviceForRendererInfo(rendererInfo).then((audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
-  console.info(`Succeeded in getting prefer output device for renderer info, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Succeeded in obtaining the preferred output device for renderer info, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get prefer output device for renderer info. Code: ${err.code}, message: ${err.message}`);
-})
+  console.error(`Failed to obtain the preferred output device for renderer info. Code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## getPreferredOutputDeviceForRendererInfoSync<sup>10+</sup>
@@ -724,10 +727,10 @@ let rendererInfo: audio.AudioRendererInfo = {
 
 try {
   let audioDeviceDescriptors = audioRoutingManager.getPreferredOutputDeviceForRendererInfoSync(rendererInfo);
-  console.info(`Succeeded in getting prefer output device for renderer info, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Succeeded in obtaining the preferred output device for renderer info, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get prefer output device for renderer info. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the preferred output device for renderer info. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -765,7 +768,7 @@ let rendererInfo: audio.AudioRendererInfo = {
 };
 
 audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', rendererInfo, (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
-  console.info(`Succeeded in using on function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Preferred output device changed, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 });
 ```
 
@@ -773,7 +776,7 @@ audioRoutingManager.on('preferOutputDeviceChangeForRendererInfo', rendererInfo, 
 
 off(type: 'preferOutputDeviceChangeForRendererInfo', callback?: Callback<AudioDeviceDescriptors\>): void
 
-Unsubscribes from the change event of the output device with the highest priority. This API uses an asynchronous callback to return the result.
+Unsubscribes from the highest-priority output audio device change event.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
@@ -781,8 +784,8 @@ Unsubscribes from the change event of the output device with the highest priorit
 
 | Name  | Type                                               | Mandatory| Description                                      |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| type     | string | Yes  | Event type. The event **'preferOutputDeviceChangeForRendererInfo'** is triggered when the output device with the highest priority is changed.|
-| callback | Callback<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | No  | Callback used to return the information about the output device with the highest priority.|
+| type     | string | Yes  | Event callback type. The supported event is 'preferOutputDeviceChangeForRendererInfo'. |
+| callback | Callback<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | No  | Callback for the preferOutputDeviceChangeForRendererInfo event. When a callback is passed in, only the listener bound to this callback is unsubscribed, and it must be the same callback bound to [on('preferOutputDeviceChangeForRendererInfo')](#onpreferoutputdevicechangeforrendererinfo10); when no parameter is passed in, all listeners subscribed to this event type are unsubscribed. |
 
 **Error codes**
 
@@ -799,7 +802,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 // If multiple subscriptions are made to the same event, you can call audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo'); to cancel all of them.
 let preferOutputDeviceChangeForRendererInfoCallback = (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
-  console.info(`Succeeded in using on or off function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Preferred output device changed, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 };
 let rendererInfo: audio.AudioRendererInfo = {
   usage: audio.StreamUsage.STREAM_USAGE_MUSIC, // Audio stream usage type: music. Set this parameter based on the service scenario.
@@ -847,10 +850,10 @@ let capturerInfo: audio.AudioCapturerInfo = {
 
 audioRoutingManager.getPreferredInputDeviceForCapturerInfo(capturerInfo, (err: BusinessError, audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
   if (err) {
-    console.error(`Failed to get preferred input device for capturer info. Code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`Succeeded in getting preferred input device for capturer info, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+    console.error(`Failed to obtain the preferred input device for capturer info. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info(`Succeeded in obtaining the preferred input device for capturer info, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 });
 ```
 
@@ -895,9 +898,9 @@ let capturerInfo: audio.AudioCapturerInfo = {
 };
 
 audioRoutingManager.getPreferredInputDeviceForCapturerInfo(capturerInfo).then((audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
-  console.info(`Succeeded in getting preferred input device for capturer info, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Succeeded in obtaining the preferred input device for capturer info, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 }).catch((err: BusinessError) => {
-  console.error(`Failed to get preferred input device for capturer info. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to obtain the preferred input device for capturer info. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -942,10 +945,10 @@ let capturerInfo: audio.AudioCapturerInfo = {
 
 try {
   let audioDeviceDescriptors = audioRoutingManager.getPreferredInputDeviceForCapturerInfoSync(capturerInfo);
-  console.info(`Succeeded in getting preferred input device for capturer info, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Succeeded in obtaining the preferred input device for capturer info, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get preferred input device for capturer info. Code: ${error.code}, message: ${error.message}`);
+  console.error(`Failed to obtain the preferred input device for capturer info. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -983,7 +986,7 @@ let capturerInfo: audio.AudioCapturerInfo = {
 };
 
 audioRoutingManager.on('preferredInputDeviceChangeForCapturerInfo', capturerInfo, (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
-  console.info(`Succeeded in using on function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Preferred input device changed, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 });
 ```
 
@@ -991,7 +994,7 @@ audioRoutingManager.on('preferredInputDeviceChangeForCapturerInfo', capturerInfo
 
 off(type: 'preferredInputDeviceChangeForCapturerInfo', callback?: Callback<AudioDeviceDescriptors\>): void
 
-Unsubscribes from the change event of the input device with the highest priority. This API uses an asynchronous callback to return the result.
+Unsubscribes from the highest-priority input audio device change event.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
@@ -999,8 +1002,8 @@ Unsubscribes from the change event of the input device with the highest priority
 
 | Name  | Type                                               | Mandatory| Description                                      |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------ |
-| type     | string | Yes  | Event type. The event **'preferredInputDeviceChangeForCapturerInfo'** is triggered when the input device with the highest priority is changed.|
-| callback | Callback<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | No  | Callback used to return the information about the input device with the highest priority.|
+| type     | string | Yes   | Event callback type. The supported event is 'preferredInputDeviceChangeForCapturerInfo'. |
+| callback | Callback<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors)> | No   | Callback for the preferred input device change event for capturer. When a callback is passed in, only the listener corresponding to this callback is unsubscribed, and it must be the same callback bound in [on('preferredInputDeviceChangeForCapturerInfo')](#onpreferredinputdevicechangeforcapturerinfo10). When no parameter is passed in, all listeners subscribed to this event type are unsubscribed. |
 
 **Error codes**
 
@@ -1017,7 +1020,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // For the same event, if the callback parameter passed to the off API is the same as that passed to the on API, the off API cancels the subscription registered with the specified callback parameter.
 // If multiple subscriptions are made to the same event, you can call audioRoutingManager.off('preferredInputDeviceChangeForCapturerInfo'); to cancel all of them.
 let preferredInputDeviceChangeForCapturerInfoCallback = (audioDeviceDescriptors: audio.AudioDeviceDescriptors) => {
-  console.info(`Succeeded in using on or off function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
+  console.info(`Preferred input device changed, audioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 };
 let capturerInfo: audio.AudioCapturerInfo = {
   source: audio.SourceType.SOURCE_TYPE_MIC, // Audio source type: microphone. Set this parameter based on the service scenario.
@@ -1027,4 +1030,44 @@ let capturerInfo: audio.AudioCapturerInfo = {
 audioRoutingManager.on('preferredInputDeviceChangeForCapturerInfo', capturerInfo, preferredInputDeviceChangeForCapturerInfoCallback);
 
 audioRoutingManager.off('preferredInputDeviceChangeForCapturerInfo', preferredInputDeviceChangeForCapturerInfoCallback);
+```
+
+## declareDeviceTypesCompatibility
+
+declareDeviceTypesCompatibility(deviceTypes: DeviceTypeArray): void
+
+Declares the device types that the application needs to be compatible with.
+
+> **NOTE**
+>
+> For device types added in API version 20 or later, when an application calls an API for obtaining devices (for example, [getAvailableDevices](arkts-apis-audio-AudioSessionManager.md#getavailabledevices21)), the device types returned by default are anonymous types. To obtain specific device types, call this method first to declare device type compatibility.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Multimedia.Audio.Device
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| --------------------------- | ------------------------------------------------------------ | ---- | ------------------------- |
+| deviceTypes | [DeviceTypeArray](arkts-apis-audio-t.md#devicetypearray) | Yes | Array of [DeviceType](arkts-apis-audio-e.md#devicetype). |
+
+**Error codes**
+
+For details about the following error codes, see [Audio Error Codes](errorcode-audio.md).
+
+| Error Code ID | Error Message |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed, the param deviceTypes contains value that is invalid enum or is not device type introduced in API 20 onwards. |
+
+**Example**
+
+```ts
+let deviceTypes = [
+  audio.DeviceType.NEARLINK
+];
+
+audioRoutingManager.declareDeviceTypesCompatibility(deviceTypes);
 ```

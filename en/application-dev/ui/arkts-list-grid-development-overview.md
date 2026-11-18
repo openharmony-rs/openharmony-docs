@@ -6,6 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=db32d4b39846271cb4d9b597951fc6d9af23f82e translatedAt=2026-11-04T01:26:20.974Z pushedAt=2026-11-04T01:45:23.329Z nl=1 -->
 
 Many applications require scrollable views to display collections of similar items, such as images, videos, music, news, or products. Depending on the layout requirements, these scenarios can be implemented using [List](arkts-layout-development-create-list.md), [Grid](arkts-layout-development-create-grid.md), or [WaterFlow](arkts-layout-development-create-waterflow.md). For circular screens, [ArcList](arkts-layout-development-create-arclist.md) is recommended.
 
@@ -43,7 +44,7 @@ An arc list is a specialized list designed for circular screens. It supports aut
 
 ## Lazy Loading Layout
 
-A lazy loading layout container is a type of layout container that is nested within a scrollable parent component (**Scroll**, **List**, or **WaterFlow**) and is responsible for loading child components on demand. Such containers do not provide scrolling capability themselves; scrolling is handled uniformly by the parent component. They create and lay out only the child components that fall within the visible area of the scrollable parent component, and pre‑load content half a screen above and below the visible area during idle time between frames, thereby reducing first‑frame rendering time and memory overhead. ArkUI provides four types of layout containers that support lazy loading: [LazyColumnLayout](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md) (supported from API version 26.0.0), [LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md) (supported from API version 19), [LazyVWaterFlowLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvwaterflowlayout.md), and [LazyDynamicLayout](../reference/apis-arkui/arkui-ts/ts-container-lazydynamiclayout.md) (supported from API version 26.0.0). Different lazy loading layout containers offer different layout modes, allowing you to combine multiple types of lazy loading layout containers within the same parent component to flexibly implement mixed layouts.
+A lazy loading layout container is a type of layout container nested inside a scrollable parent component (Scroll, List, WaterFlow) and responsible for loading child components on demand. This type of container does not provide scrolling capability itself; scrolling is handled uniformly by the parent component. It creates and lays out only the child components within the visible area of the scrollable parent component, and preloads half a screen of content above and below the visible area during idle time slots between frames, thereby reducing first-frame rendering time and memory overhead. ArkUI provides four layout container components that support lazy loading: the vertical linear layout [LazyColumnLayout](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md) (supported since API version 26.0.0), the vertical grid layout [LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md) (supported since API version 19), the vertical waterfall layout [LazyVWaterFlowLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvwaterflowlayout.md) (supported since API version 26.0.0), and the custom layout [LazyDynamicLayout](../reference/apis-arkui/arkui-ts/ts-container-lazydynamiclayout.md) (supported since API version 26.0.0). Different lazy loading layout containers provide different layout modes, and developers can combine multiple types of lazy loading layout containers within the same parent component to flexibly implement mixed layouts.
 
 ![](figures/list-nested-lazy-layout.gif)
 
@@ -58,5 +59,3 @@ A lazy loading layout container is a type of layout container that is nested wit
 |Swipe actions|Supported via the [swipeAction](../reference/apis-arkui/arkui-ts/ts-container-listitem.md#swipeaction9) attribute|Not supported|Not supported|Not supported|
 |Item spacing|Supported|Supported|Supported|Supported|
 |Item dividers|Supported|Not supported|Not supported|Not supported|
-
-<!--no_check-->

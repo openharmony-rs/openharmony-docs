@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=4c1f08fcf9b2e36ccd83092dd38f04e3fb630b79 translatedAt=2026-08-26T04:56:14.388Z pushedAt=2026-08-28T08:52:18.888Z -->
+<!-- md-trans-meta sourceCommit=3d88c7ae24e860f42daeed81a30fca056541e740 translatedAt=2026-11-03T08:37:12.927Z pushedAt=2026-11-03T08:37:12.927Z -->
 
 The stage model is supported since API version 9. It is the mainstream model with a long evolution plan. This model is object-oriented and provides open application components as classes. You can derive application components for capability expansion.
 
@@ -624,7 +624,7 @@ Suppose a widget displays Mr. Zhang's course information for July 18, as shown i
       }
   }
   ```
-To update the widget content to the course information of Mr. Li on July 18, you must pass the complete data as follows, instead of only a single date item such as **name** or **course**:
+To update the widget content to the course information of Mr. Li on July 18, you must pass the complete data as follows, instead of only a single data item such as **name** or **course**:
   ```ts
   "teacher": {
       "name": "Mr.Li",

@@ -24,6 +24,8 @@ import { dialog } from '@kit.ArkUI';
 
 在Dialog中定义文本样式属性，可作为消息内容的文字样式。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -37,6 +39,8 @@ import { dialog } from '@kit.ArkUI';
 ## DialogButton
 
 固定样式弹出框的按钮配置。
+
+**起始版本：** 26.0.1
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
@@ -58,6 +62,8 @@ import { dialog } from '@kit.ArkUI';
 
 弹出框列表配置项，用于ActionSheet样式的弹出框。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -74,7 +80,7 @@ import { dialog } from '@kit.ArkUI';
 
 所有弹出框共享的基本选项，定义弹出框的背景、边框、对齐、蒙层、避让等通用属性。[DialogStyleOptions](#dialogstyleoptions)与[DialogCustomOptions](#dialogcustomoptions)均继承自本接口。
 
-**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -82,47 +88,104 @@ import { dialog } from '@kit.ArkUI';
 
 | 名称                    | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| controller              | [DialogBaseController](#dialogbasecontroller)                | 否   | 是   | Dialog控制器。                                               |
-| width                   | [Dimension](arkui-ts/ts-types.md#dimension10)                | 否   | 是   | 弹出框的宽度。<br/>默认值：根据内容自适应。                                               |
-| height                  | [Dimension](arkui-ts/ts-types.md#dimension10)                | 否   | 是   | 弹出框的高度。<br/>默认值：根据内容自适应。                                               |
-| backgroundColor         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)          | 否   | 是   | 弹出框的背景颜色。<br/>默认值：Color.Transparent<br/>**说明：** 当backgroundColor设置为非透明色时，backgroundBlurStyle必须设置为BlurStyle.NONE。 |
-| backgroundBlurStyle     | [BlurStyle](arkui-ts/ts-universal-attributes-background.md#blurstyle9) | 否   | 是   | 弹出框的背景模糊样式。<br/>默认值：BlurStyle.COMPONENT_ULTRA_THICK<br/>**说明：** 设置为BlurStyle.NONE即可关闭背景模糊。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。当设置系统材质systemMaterial时，backgroundBlurStyle不生效。 |
-| backgroundBlurStyleOptions | [BackgroundBlurStyleOptions](arkui-ts/ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否   | 是   | 带选项的背景模糊样式。默认值与BackgroundBlurStyleOptions类型说明中的默认值一致。 |
-| backgroundEffect        | [BackgroundEffectOptions](arkui-ts/ts-universal-attributes-background.md#backgroundeffectoptions11) | 否   | 是   | 带选项的背景效果。默认值与BackgroundEffectOptions类型说明中的默认值一致。|
-| borderRadius            | [Dimension](arkui-ts/ts-types.md#dimension10)&nbsp;\|&nbsp;[BorderRadiuses](arkui-ts/ts-types.md#borderradiuses9)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](arkui-ts/ts-types.md#localizedborderradiuses12) | 否   | 是   | 背景的边框圆角半径。<br>默认值：{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' } |
-| borderWidth             | [Dimension](arkui-ts/ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeWidths](arkui-ts/ts-types.md#edgewidths9)&nbsp;\|&nbsp;[LocalizedEdgeWidths](arkui-ts/ts-types.md#localizededgewidths12) | 否   | 是   | 弹出框边框宽度。<br>默认值：0                               |
-| borderColor             | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](arkui-ts/ts-types.md#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](arkui-ts/ts-types.md#localizededgecolors12) | 否   | 是   | 弹出框的边框颜色。<br/>默认值：Color.Black                   |
-| borderStyle             | [BorderStyle](arkui-ts/ts-appendix-enums.md#borderstyle)&nbsp;\|&nbsp;[EdgeStyles](arkui-ts/ts-types.md#edgestyles9) | 否   | 是   | 弹出框边框样式。<br/>默认值：BorderStyle.Solid               |
-| shadow                  | [ShadowOptions](arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle](arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) | 否   | 是   | 弹出框的阴影。<br/>当设备为PC/2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。 |
-| alignment               | [DialogBaseAlignment](#dialogbasealignment)                  | 否   | 是   | 弹出框的对齐模式。<br/>默认值：DialogBaseAlignment.DEFAULT                                           |
-| offset                  | [Offset](arkui-ts/ts-types.md#offset)                        | 否   | 是   | 弹出框相对于对齐位置的偏移。<br/>默认值：{ dx: 0, dy: 0 } |
-| maskRect                | [Rectangle](arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明) | 否   | 是   | 弹出框的蒙层区域。<br>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } |
-| maskColor               | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)          | 否   | 是   | 弹出框的蒙层颜色。<br/>默认值：跟随系统主题的默认蒙层颜色。                                           |
-| isModal                 | boolean                                                      | 否   | 是   | 弹出框是否为模态。值为true表示为模态且有蒙层，值为false表示为非模态且无蒙层。<br/>默认值：true |
-| showInSubWindow         | boolean                                                      | 否   | 是   | 是否在子窗口中显示。值为true表示在子窗口中显示，值为false表示在应用内显示。<br/>默认值：false<br/>**说明：** isModal为true和showInSubWindow为true不能同时使用。 |
-| displayModeInSubWindow  | [DialogDisplayMode](arkui-ts/ts-appendix-enums.md#dialogdisplaymode) | 否   | 是   | 定义在子窗口中显示时的弹出框显示模式。<br/>默认值：DialogDisplayMode.SCREEN_BASED |
-| autoCancel              | boolean                                                      | 否   | 是   | 是否允许通过触摸蒙层或按返回键退出。值为true表示允许退出，值为false表示不允许退出。<br/>默认值：true |
-| focusable               | boolean                                                      | 否   | 是   | 弹出框是否可以获得焦点。值为true表示可以获得焦点，值为false表示不可以获得焦点。<br/>默认值：true |
-| dialogTransition        | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是   | 用于打开/关闭弹出框内容区域的弹出框过渡动效参数。<br/>默认值：系统默认过渡动效。            |
-| maskTransition          | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是   | 用于打开/关闭遮罩的蒙层过渡动效参数。<br/>默认值：系统默认蒙层过渡动效。                       |
-| keyboardAvoidMode       | [KeyboardAvoidMode](arkui-ts/ts-universal-attributes-popup.md#keyboardavoidmode12枚举说明) | 否   | 是   | 键盘避让模式。<br/>默认值：KeyboardAvoidMode.DEFAULT         |
-| keyboardAvoidDistance   | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 弹出框与系统键盘之间的距离。<br/>默认值：系统默认避让距离。 |
-| onWillAppear            | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)          | 否   | 是   | 弹出框打开动画开始前的回调函数。                             |
-| onDidAppear             | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)          | 否   | 是   | 弹出框出现时的回调函数。                                     |
-| onWillDisappear         | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)          | 否   | 是   | 弹出框关闭动画开始前的回调函数。                             |
-| onDidDisappear          | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)          | 否   | 是   | 弹出框消失时的回调函数。                                     |
-| onWillDismiss           | Callback&lt;[DialogDismissal](#dialogdismissal)&gt;          | 否   | 是   | 弹出框交互关闭的回调。<br/>**说明：** 如果注册了此回调，则用户点击蒙层或返回按钮后弹出框不会立即关闭，回调中的reason参数用于判断是否可以关闭弹出框。 |
-| enableHoverMode         | boolean                                                      | 否   | 是   | 是否启用悬停模式。值为true表示启用，值为false表示不启用。<br/>默认值：false |
-| hoverModeArea           | [HoverModeAreaType](arkui-ts/ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | 否   | 是   | 悬停模式下弹出框的显示区域。<br/>默认值：HoverModeAreaType.BOTTOM_SCREEN |
-| levelMode               | [LevelMode](js-apis-promptAction.md#levelmode15)     | 否   | 是   | 弹出框的显示级别。<br/>默认值：LevelMode.OVERLAY             |
-| levelUniqueId           | number                                                       | 否   | 是   | 页面级弹出框显示层下节点的唯一标识。<br/>取值范围：大于等于0的整数。<br/>**说明：** 该参数仅在levelMode为LevelMode.EMBEDDED时生效。 |
-| immersiveMode           | [ImmersiveMode](js-apis-promptAction.md#immersivemode15) | 否   | 是   | 页面级弹出框蒙层效果。<br/>默认值：ImmersiveMode.DEFAULT<br/>**说明：** 该参数仅在levelMode为LevelMode.EMBEDDED时生效。     |
-| levelOrder              | [LevelOrder](js-apis-promptAction.md#levelorder18)           | 否   | 是   | 弹出框的显示顺序。<br/>默认值：`LevelOrder.clamp(0)`返回的值。 |
-| systemMaterial          | [SystemUiMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | 否   | 是   | 为弹出框设置系统材质，不同的材质有不同的效果，会影响背景色、边框、阴影和弹出框的其他视觉属性。<br/>**说明：**<br/>- 默认值：[ImmersiveOptions](arkts-apis-uimaterial.md#immersiveoptions)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持一致。<br/>- 该参数影响背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、背景模糊[backgroundBlurStyle](arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)、背景效果[backgroundEffect](arkui-ts/ts-universal-attributes-background.md#backgroundeffect11)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)，当设置系统材质时，上述属性不生效。 |
+| controller              | [DialogBaseController](#dialogbasecontroller)                | 否   | 是   | Dialog控制器。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| width                   | [Dimension](arkui-ts/ts-types.md#dimension10)                | 否   | 是   | 弹出框的宽度。<br/>默认值：根据内容自适应。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| height                  | [Dimension](arkui-ts/ts-types.md#dimension10)                | 否   | 是   | 弹出框的高度。<br/>默认值：根据内容自适应。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| backgroundColor         | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)          | 否   | 是   | 弹出框的背景颜色。<br/>默认值：Color.Transparent<br/>**说明：** 当backgroundColor设置为非透明色时，backgroundBlurStyle必须设置为BlurStyle.NONE。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| backgroundBlurStyle     | [BlurStyle](arkui-ts/ts-universal-attributes-background.md#blurstyle9) | 否   | 是   | 弹出框的背景模糊样式。<br/>默认值：BlurStyle.COMPONENT_ULTRA_THICK<br/>**说明：** 设置为BlurStyle.NONE即可关闭背景模糊。当设置了backgroundBlurStyle为非NONE值时，则不要设置backgroundColor，否则颜色显示将不符合预期效果。当设置系统材质systemMaterial时，backgroundBlurStyle不生效。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| backgroundBlurStyleOptions | [BackgroundBlurStyleOptions](arkui-ts/ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明) | 否   | 是   | 带选项的背景模糊样式。默认值与BackgroundBlurStyleOptions类型说明中的默认值一致。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| backgroundEffect        | [BackgroundEffectOptions](arkui-ts/ts-universal-attributes-background.md#backgroundeffectoptions11) | 否   | 是   | 带选项的背景效果。默认值与BackgroundEffectOptions类型说明中的默认值一致。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| borderRadius            | [Dimension](arkui-ts/ts-types.md#dimension10)&nbsp;\|&nbsp;[BorderRadiuses](arkui-ts/ts-types.md#borderradiuses9)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](arkui-ts/ts-types.md#localizedborderradiuses12) | 否   | 是   | 背景的边框圆角半径。<br>默认值：{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' }<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| borderWidth             | [Dimension](arkui-ts/ts-types.md#dimension10)&nbsp;\|&nbsp;[EdgeWidths](arkui-ts/ts-types.md#edgewidths9)&nbsp;\|&nbsp;[LocalizedEdgeWidths](arkui-ts/ts-types.md#localizededgewidths12) | 否   | 是   | 弹出框边框宽度。<br>默认值：0<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| borderColor             | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](arkui-ts/ts-types.md#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](arkui-ts/ts-types.md#localizededgecolors12) | 否   | 是   | 弹出框的边框颜色。<br/>默认值：Color.Black<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| borderStyle             | [BorderStyle](arkui-ts/ts-appendix-enums.md#borderstyle)&nbsp;\|&nbsp;[EdgeStyles](arkui-ts/ts-types.md#edgestyles9) | 否   | 是   | 弹出框边框样式。<br/>默认值：BorderStyle.Solid<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| shadow                  | [ShadowOptions](arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle](arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) | 否   | 是   | 弹出框的阴影。<br/>当设备为PC/2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| alignment               | [DialogBaseAlignment](#dialogbasealignment)                  | 否   | 是   | 弹出框的对齐模式。<br/>默认值：DialogBaseAlignment.DEFAULT<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| offset                  | [Offset](arkui-ts/ts-types.md#offset)                        | 否   | 是   | 弹出框相对于对齐位置的偏移。<br/>默认值：{ dx: 0, dy: 0 }<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| maskRect                | [Rectangle](arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明) | 否   | 是   | 弹出框的蒙层区域。<br>默认值：{ x: 0, y: 0, width: '100%', height: '100%' }<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| maskColor               | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)          | 否   | 是   | 弹出框的蒙层颜色。<br/>默认值：跟随系统主题的默认蒙层颜色。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| isModal                 | boolean                                                      | 否   | 是   | 弹出框是否为模态。值为true表示为模态且有蒙层，值为false表示为非模态且无蒙层。<br/>默认值：true<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| showInSubWindow         | boolean                                                      | 否   | 是   | 是否在子窗口中显示。值为true表示在子窗口中显示，值为false表示在应用内显示。<br/>默认值：false<br/>**说明：** isModal为true和showInSubWindow为true不能同时使用。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| displayModeInSubWindow  | [DialogDisplayMode](arkui-ts/ts-appendix-enums.md#dialogdisplaymode) | 否   | 是   | 定义在子窗口中显示时的弹出框显示模式。<br/>默认值：DialogDisplayMode.SCREEN_BASED<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| autoCancel              | boolean                                                      | 否   | 是   | 是否允许通过触摸蒙层或按返回键退出。值为true表示允许退出，值为false表示不允许退出。<br/>默认值：true<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| focusable               | boolean                                                      | 否   | 是   | 弹出框是否可以获得焦点。值为true表示可以获得焦点，值为false表示不可以获得焦点。<br/>默认值：true<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| dialogTransition        | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是   | 用于打开/关闭弹出框内容区域的弹出框过渡动效参数。<br/>默认值：系统默认过渡动效。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| maskTransition          | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是   | 用于打开/关闭遮罩的蒙层过渡动效参数。<br/>默认值：系统默认蒙层过渡动效。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| keyboardAvoidMode       | [KeyboardAvoidMode](arkui-ts/ts-universal-attributes-popup.md#keyboardavoidmode12枚举说明) | 否   | 是   | 键盘避让模式。<br/>默认值：KeyboardAvoidMode.DEFAULT<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| keyboardAvoidDistance   | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 弹出框与系统键盘之间的距离。<br/>默认值：系统默认避让距离。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| onWillAppear            | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)          | 否   | 是   | 弹出框打开动画开始前的回调函数。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| onDidAppear             | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)          | 否   | 是   | 弹出框出现时的回调函数。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| onWillDisappear         | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)          | 否   | 是   | 弹出框关闭动画开始前的回调函数。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| onDidDisappear          | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)          | 否   | 是   | 弹出框消失时的回调函数。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| onWillDismiss           | Callback&lt;[DialogDismissal](#dialogdismissal)&gt;          | 否   | 是   | 弹出框交互关闭的回调。<br/>**说明：** 如果注册了此回调，则用户点击蒙层或返回按钮后弹出框不会立即关闭，回调中的reason参数用于判断是否可以关闭弹出框。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| enableHoverMode         | boolean                                                      | 否   | 是   | 是否启用悬停模式。值为true表示启用，值为false表示不启用。<br/>默认值：false<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| hoverModeArea           | [HoverModeAreaType](arkui-ts/ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | 否   | 是   | 悬停模式下弹出框的显示区域。<br/>默认值：HoverModeAreaType.BOTTOM_SCREEN<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| levelMode               | [LevelMode](js-apis-promptAction.md#levelmode15)     | 否   | 是   | 弹出框的显示级别。<br/>默认值：LevelMode.OVERLAY<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| levelUniqueId           | number                                                       | 否   | 是   | 页面级弹出框显示层下节点的唯一标识。<br/>取值范围：大于等于0的整数。<br/>**说明：** 该参数仅在levelMode为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| immersiveMode           | [ImmersiveMode](js-apis-promptAction.md#immersivemode15) | 否   | 是   | 页面级弹出框蒙层效果。<br/>默认值：ImmersiveMode.DEFAULT<br/>**说明：** 该参数仅在levelMode为LevelMode.EMBEDDED时生效。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| levelOrder              | [LevelOrder](js-apis-promptAction.md#levelorder18)           | 否   | 是   | 弹出框的显示顺序。<br/>默认值：`LevelOrder.clamp(0)`返回的值。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| systemMaterial          | [SystemUiMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemuimaterial) | 否   | 是   | 为弹出框设置系统材质，不同的材质有不同的效果，会影响背景色、边框、阴影和弹出框的其他视觉属性。<br/>**说明：**<br/>- 默认值：[ImmersiveOptions](arkts-apis-uimaterial.md#immersiveoptions)的style为ImmersiveStyle.ULTRA_THICK的[ImmersiveMaterial](arkts-apis-uimaterial.md#immersivematerial)对象。设置undefined时与默认值保持一致。<br/>- 该参数影响背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、背景模糊[backgroundBlurStyle](arkui-ts/ts-universal-attributes-background.md#backgroundblurstyle9)、背景效果[backgroundEffect](arkui-ts/ts-universal-attributes-background.md#backgroundeffect11)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)，当设置系统材质时，上述属性不生效。<br/>**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。 |
+| adaptToHandedness | [HandednessFollowMode](#handednessfollowmode) | 否 | 是 | 弹出框是否以及如何适配握持习惯。<br>默认值：HandednessFollowMode.NONE<br>**说明：**<br>当[customStyle](#dialogcustomoptions)为true，或者alignment不为DialogBaseAlignment.DEFAULT，或者offset值不为0时，该接口不生效。<br>**起始版本：** 26.1.0<br>**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。 |
+
+**示例：**
+
+该示例通过[DialogBaseOptions](#dialogbaseoptions)中的adaptToHandedness属性设置弹出框适配握持习惯，使弹出框跟随触发它的组件的位置偏移。
+
+从API版本26.1.0开始，在[DialogBaseOptions](#dialogbaseoptions)中新增了adaptToHandedness属性。
+
+```ts
+import { DialogPresenter, DialogResult, HandednessFollowMode } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  private ctx: UIContext = this.getUIContext();
+  private dialogPresenter: DialogPresenter = this.ctx.getDialogPresenter();
+
+  build() {
+    Column() {
+      Button('Present dialog with adaptToHandedness')
+        .margin(20)
+        .onClick(() => {
+          this.dialogPresenter.present({
+            title: 'Tips',
+            message: { content: 'This is a dialog with adaptToHandedness' },
+            buttons: [
+              {
+                value: 'Cancel',
+                action: () => {
+                  console.info('Cancel button clicked');
+                }
+              },
+              {
+                value: 'OK',
+                action: () => {
+                  console.info('OK button clicked');
+                }
+              }
+            ],
+            adaptToHandedness: HandednessFollowMode.FOLLOW_ANCHOR
+          })
+            .then((result: DialogResult) => {
+              console.info('present success, dialogId: ' + result.dialogId);
+            })
+            .catch((error: BusinessError) => {
+              console.error(`present error code is ${error.code}, message is ${error.message}`);
+            })
+        })
+    }.width('100%').height('100%')
+  }
+}
+```
+
+![设置弹出框适配握持习惯](arkui-ts/figures/presentdialoghandedness.gif)
 
 ## DialogMessage
 
 弹出框的消息内容与文字样式，继承自[DialogTextStyleOptions](#dialogtextstyleoptions)。
+
+**起始版本：** 26.0.1
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
@@ -137,6 +200,8 @@ import { dialog } from '@kit.ArkUI';
 ## DialogStyleOptions
 
 固定样式弹出框的选项，继承自[DialogBaseOptions](#dialogbaseoptions)。具体用法可参考DialogPresenter的[present](arkts-apis-uicontext-dialogpresenter.md#present)接口示例。
+
+**起始版本：** 26.0.1
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
@@ -160,6 +225,8 @@ import { dialog } from '@kit.ArkUI';
 
 弹出框的内容由[DialogPresenter.present](arkts-apis-uicontext-dialogpresenter.md#present)方法的第一个参数提供，不在此选项对象中。具体用法可参考DialogPresenter的[present](arkts-apis-uicontext-dialogpresenter.md#present)接口示例。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -180,6 +247,8 @@ constructor()
 
 控制器的构造函数。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -192,6 +261,8 @@ close(): void
 
 关闭相应的弹出框。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -203,6 +274,8 @@ close(): void
 getState(): DialogState
 
 获取弹出框的状态。
+
+**起始版本：** 26.0.1
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
@@ -284,6 +357,8 @@ struct Index {
 
 对话的响应结果。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -297,6 +372,8 @@ struct Index {
 ## DialogDismissal
 
 提供关闭弹出框操作的信息与关闭接口。
+
+**起始版本：** 26.0.1
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
@@ -312,6 +389,8 @@ struct Index {
 ## DialogBaseAlignment
 
 弹出框的对齐方式。
+
+**起始版本：** 26.0.1
 
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
@@ -336,6 +415,8 @@ struct Index {
 
 弹出框中按钮的排列方式。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -352,6 +433,8 @@ struct Index {
 
 Dialog状态的枚举。
 
+**起始版本：** 26.0.1
+
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -366,3 +449,21 @@ Dialog状态的枚举。
 | APPEARED      | 3    | 表示已出现。           |
 | DISAPPEARING  | 4    | 表示正在消失。         |
 | DISAPPEARED   | 5    | 表示已消失。           |
+
+## HandednessFollowMode
+
+弹出框适配握持习惯的模式的枚举。
+
+**起始版本：** 26.1.0
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| NONE | 0 | 不适配。弹出框保持当前布局。 |
+| FOLLOW_ANCHOR | 1 | 弹出框跟随触发它的组件（最近交互的组件）的位置。 |
+| FOLLOW_GRIP_HAND | 2 | 弹出框跟随握持手（持握设备的手，区别于与屏幕交互的操作手）。 |

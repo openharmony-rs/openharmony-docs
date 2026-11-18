@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=d92fd96c7713dc18450281df98f1c9ed5f77b2c9 translatedAt=2026-09-29T09:38:57.952Z pushedAt=2026-10-08T04:38:23.323Z -->
+<!-- md-trans-meta sourceCommit=75c0f0cf34944e262b28608d43f8d720a6e6e07e translatedAt=2026-11-12T03:47:42.088Z pushedAt=2026-11-12T12:00:15.515Z nl=1 -->
 
 This document provides indexes for predefined system common events.
 
@@ -464,7 +464,7 @@ Common event types are defined in [Support](../js-apis-commonEvent.md#support) o
 
   > **NOTE**
   >
-  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use **COMMON_EVENT_USER_SWITCHED** instead.
+  > This type is supported since API version 7 and deprecated since API version 9. You are advised to use COMMON_EVENT_USER_SWITCHED instead.
 
   - Value: **usual.event.USER_SWITCHED**
   - Required permissions: **ohos.permission.MANAGE_LOCAL_ACCOUNTS** (for system applications only)

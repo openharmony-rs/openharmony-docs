@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍使用XmlPullParser解析XML的方法：包括解析XML标签和标签值、解析XML属性和属性值、解析XML事件类型和元素信息，并提供调用所有解析选项的完整场景示例，适用于从XML中提取业务数据。"
+keywords: [XML解析, XmlPullParser, 标签解析, 属性解析, 事件类型, 元素信息, 解析选项]
+doctype: guide
+status: active
+---
+
 # XML解析
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

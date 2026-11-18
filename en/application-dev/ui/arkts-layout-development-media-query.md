@@ -5,6 +5,7 @@
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=49c5f7d49379bf46ee09613baaf3f1f2e5940454 translatedAt=2026-11-12T03:40:54.968Z pushedAt=2026-11-13T06:14:31.488Z nl=1 -->
 
 
 ## Overview
@@ -171,6 +172,7 @@ In this example, media queries are used to apply different content and styles to
 import { mediaquery } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -210,9 +212,15 @@ struct MediaQueryExample {
     // Obtain the context information of the UIAbility instance.
     let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // Invoke this API to manually change the landscape/portrait mode of the device.
-    window.getLastWindow(context).then((lastWindow) => {
-      lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT)
-    });
+    try {
+      window.getLastWindow(context).then((lastWindow) => {
+        lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT)
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`)
+      });
+    } catch (exception) {
+      console.error(`Failed to obtain the top window. Cause code: ${exception.code}, message: ${exception.message}`)
+    }
   }
 
   build() {
@@ -230,13 +238,14 @@ struct MediaQueryExample {
     .width('100%').height('100%')
   }
 }
+
 ```
 
-  **Figure 1** Portrait mode 
+  **Figure 1** Portrait mode
 
-![portralit](figures/portralit.jpg)
+![portrait](figures/portrait.jpg)
 
-  **Figure 2** Landscape mode 
+  **Figure 2** Landscape mode
 
 ![landscape](figures/landscape.jpg)
 
@@ -247,6 +256,7 @@ In this example, media queries are used to implement different layouts of the **
 ``` TypeScript
 import { LengthMetrics, mediaquery, window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -294,9 +304,15 @@ struct MediaQueryFlex {
     // Obtain the context information of the UIAbility instance.
     let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // Invoke this API to manually change the landscape/portrait mode of the device.
-    window.getLastWindow(context).then((lastWindow) => {
-      lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT)
-    });
+    try {
+      window.getLastWindow(context).then((lastWindow) => {
+        lastWindow.setPreferredOrientation(isLandscape ? window.Orientation.LANDSCAPE : window.Orientation.PORTRAIT)
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to obtain the top window. Cause code: ${err.code}, message: ${err.message}`)
+      });
+    } catch (exception) {
+      console.error(`Failed to obtain the top window. Cause code: ${exception.code}, message: ${exception.message}`)
+    }
   }
 
   build() {
@@ -332,13 +348,14 @@ struct MediaQueryFlex {
     .width('100%').height('100%')
   }
 }
+
 ```
 
-  **Figure 3** Portrait mode 
+  **Figure 3** Portrait mode
 
-![portralit](figures/PortraitWidthFlex.png)
+![portrait](figures/PortraitWidthFlex.png)
 
-  **Figure 4** Landscape mode 
+  **Figure 4** Landscape mode
 
 ![landscape](figures/LandscapeWidthFlex.png)
 

@@ -6,20 +6,22 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=205f3acb276420a792c1ba70147af638f33c6902 translatedAt=2026-08-07T03:30:38.708Z pushedAt=2026-08-10T09:22:24.387Z -->
+<!-- md-trans-meta sourceCommit=99672258e158c110c5ee74a166a44dafda8d8dee translatedAt=2026-10-30T03:47:54.976Z pushedAt=2026-10-30T07:25:39.136Z nl=1 -->
 
 For details about the corresponding algorithm specifications, see [HKDF](crypto-key-derivation-overview.md#hkdf).
+
+## Linking Related Dynamic Libraries in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 ## How to Develop
 
 1. Call [OH_CryptoKdfParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_create) with the string parameter **HKDF** to create a key derivation parameter object.
 
 2. Call [OH_CryptoKdfParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_setparam) to set the parameters required by HKDF. Example:
-
    - **CRYPTO_KDF_KEY_DATABLOB**: original key material used to generate a derived key.
-
    - **CRYPTO_KDF_SALT_DATABLOB**: salt value.
-
    - **CRYPTO_KDF_INFO_DATABLOB**: (optional) application-specific information.
 
 3. Call [OH_CryptoKdf_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_create) with the string parameter **HKDF|SHA256|EXTRACT_AND_EXPAND** to create a key derivation function object.

@@ -5,6 +5,7 @@
 <!--Designer: @liu-binjun-->
 <!--Tester: @mhy123456789-->
 <!--Adviser: @RayShih-->
+<!-- md-trans-meta sourceCommit=018cf6704825ff3d82842e6150ca59994fa23d90 translatedAt=2026-11-03T04:39:24.908Z pushedAt=2026-11-03T12:08:25.502Z nl=1 -->
 
 The **geoLocationManager** module provides location services such as Global Navigation Satellite System (GNSS)-based positioning, network positioning, geofencing, as well as geocoding and reverse geocoding.
 
@@ -62,16 +63,209 @@ Geocoding address information.
 | isFromMock | Boolean | No| Yes| **true**: The geographic address is obtained from the mock reverse geocoding function.<br>**false**: The geographic address is not obtained from the mock reverse geocoding function.<br>**System API**: This is a system API.|
 
 
-## Location
+## GeofenceTransitionEvent<sup>12+</sup>
 
-Location information.
+Geofence transition event.
+
+**System capability:** SystemCapability.Location.Location.Geofence
+
+| Name | Value | Description |
+| -------- | -------- | -------- |
+| GEOFENCE_TRANSITION_EVENT_APPROACHING_GEOFENCE    | 8 | This event indicates that the device is approaching a geofence area.<br/>**System API**: This API is a system API. |
+| GEOFENCE_TRANSITION_EVENT_LEAVING_GEOFENCE    | 16 | This event indicates that the device has left a geofence area.<br/>**System API**: This API is a system API. |
+| GEOFENCE_TRANSITION_EVENT_NEAR_WANDER    | 32 | This event indicates that the device is approaching a geofence area and has been wandering for more than 15 minutes.<br/>**System API**: This API is a system API. |
+
+
+## FusionFenceRequestParams
+
+Defines the fused fence request information.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Location.Location.Geofence
+
+**Model restriction**: This API is only available under the Stage model.
+
+| Name | Type | Read-Only | Optional | Description |
+| -------- | -------- | -------- | -------- | -------- |
+| identifier | string | No | No | Indicates the unique identifier of the fused fence.<br/>**System API**: This is a system API. |
+| scene | FusionFenceScene&lt;[FusionFenceScene](#fusionfencescene)&gt; | No | No | Indicates the fused fence scene.<br/>**System API**: This is a system API. |
+| fenceType | number | No | No | Indicates the fused fence type. For details, see FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt;. Set the value by binary bit. For example, 3 (binary 11) indicates both the GNSS fence and the CELLULAR fence.<br/>**System API**: This is a system API. |
+| poiType | string | No | Yes | Indicates the POI type.<br/>**System API**: This is a system API. |
+| poiLocation | Point&lt;[Point](#point)&gt; | No | No | Indicates the POI location information.<br/>**System API**: This is a system API. |
+| monitorTransitionEvents | number | No | No | Indicates the fence events to monitor. For details, see GeofenceTransitionEvent&lt;[GeofenceTransitionEvent](#geofencetransitionevent12)&gt;. Set the value by binary bit. For example, 3 (binary 11) indicates monitoring both the fence entering and fence leaving events.<br/>**System API**: This is a system API. |
+| loiterTimeMs | number | No | No | Indicates the loitering time. The unit is milliseconds. The value range is greater than 0. If the loitering event is monitored, the loitering event is reported when the time the device loiters in the fence reaches this value.<br/>**System API**: This is a system API. |
+| gnssFences | Array&lt;[GnssFence](#gnssfence)&gt; | No | Yes | Indicates the GNSS fence information set. If GNSS is selected in FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt;, this parameter is mandatory.<br/>**System API**: This is a system API. |
+| cellFences | Array&lt;[CellFence](#cellfence)&gt; | No | Yes | Indicates the CELL fence information set. If CELLULAR is selected in FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt;, this parameter is mandatory.<br/>**System API**: This is a system API. |
+| wifiFences | Array&lt;[WifiFence](#wififence)&gt; | No | Yes | Indicates the Wi-Fi fence information set. If WIFI is selected in FusionFenceType&lt;[FusionFenceType](#fusionfencetype)&gt;, this parameter is mandatory.<br/>**System API**: This is a system API. |
+| expirationMs | number | No | No | Indicates the fence lifetime. The unit is milliseconds. The value range is greater than 0.<br/>**System API**: This is a system API. |
+| fenceTransitionCallback | Callback&lt;[FusionFenceTransition](#fusionfencetransition)&gt; | No | No | Indicates the callback function used to receive fence events.<br/>**System API**: This is a system API. |
+
+
+## FusionFenceScene
+
+Fused fence scene.
+
+**Since:** 26.0.0
+
+**System capability:** SystemCapability.Location.Location.Geofence
+
+**Model restriction:** This API is only available under the Stage model.
+
+| Name | Value | Description |
+| -------- | -------- | -------- |
+| AIRPORT    | 1 | Indicates the airport scene.<br/>**System API**: This is a system API. |
+| TRAIN_STATION    | 2 | Indicates the train station scene.<br/>**System API**: This is a system API. |
+| SUBWAY    | 3 | Indicates the subway scene.<br/>**System API**: This is a system API. |
+| SHOP    | 4 | Indicates the shopping mall scene.<br/>**System API**: This is a system API. |
+
+
+## FusionFenceType
+
+The fused fence type uses binary flags. When this type is used, the bit corresponding to each supported fence type is set to 1. For example, if GNSS and CELLULAR fences are supported, the value is 0011 (binary), which is 3 in decimal; if all four fence types are supported, the value is 1111 (binary), which is 15 in decimal.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Location.Location.Geofence
+
+**Model restriction**: This API is only available under the Stage model.
+
+| Name | Value | Description |
+| -------- | -------- | -------- |
+| GNSS    | 1 | The lowest bit of the four-bit binary number, indicating a GNSS fence.<br/>**System API**: This API is a system API. |
+| CELLULAR    | 2 | The second bit from low to high of the four-bit binary number, indicating a CELLULAR fence.<br/>**System API**: This API is a system API. |
+| WIFI    | 4 | The third bit from low to high of the four-bit binary number, indicating a Wi-Fi fence.<br/>**System API**: This API is a system API. |
+| BLUETOOTH    | 8 | The highest bit of the four-bit binary number, indicating a Bluetooth fence.<br/>**System API**: This API is a system API. |
+
+
+## Point
+
+POI location information.
+
+**Since:** 26.0.0
 
 **System capability**: SystemCapability.Location.Location.Core
 
-| Name| Type| Read Only| Optional| Description|
-| -------- | -------- | -------- | -------- | -------- |
-| isFromMock | Boolean | No| Yes| **true**: The location information is obtained from the mock location switch.<br>**false**: The location information is not obtained from the mock location switch.<br>**System API**: This is a system API.|
+**Model restriction**: This API is only available under the Stage model.
 
+| Name | Type | Read-Only | Optional | Description |
+| -------- | -------- | -------- | -------- | -------- |
+| latitude | number | No | No | Indicates the latitude. The value range is -90 to 90. |
+| longitude | number | No | No | Indicates the longitude. The value range is -180 to 180. |
+
+
+## GnssFence
+
+GNSS fence information.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Location.Location.Geofence
+
+**Model restriction**: This API is only available under the Stage model.
+
+| Name | Type | Read-Only | Optional | Description |
+| -------- | -------- | -------- | -------- | -------- |
+| gnssFenceType | number | No | No | Indicates the GNSS fence type. For details, see GnssFenceType&lt;[GnssFenceType](#gnssfencetype)&gt;. Multiple GNSS fence types are supported. For example, 3 indicates that both circular and polygon fences are included.<br/>**System API**: This API is a system API. |
+| circularFence | Geofence&lt;[Geofence](js-apis-geoLocationManager.md#geofence)&gt; | No | Yes | Indicates the set of circular fence information. If CIRCULAR is selected in GnssFenceType&lt;[GnssFenceType](#gnssfencetype)&gt;, this parameter is mandatory.<br/>**System API**: This API is a system API. |
+| polygon | Array&lt;[Point](#point)&gt; | No | Yes | Indicates the set of polygon fence information. If POLYGON is selected in GnssFenceType&lt;[GnssFenceType](#gnssfencetype)&gt;, this parameter is mandatory.<br/>**System API**: This API is a system API. |
+
+
+## GnssFenceType
+
+Enumerates the GNSS fence types.
+
+**Since:** 26.0.0
+
+**System capability:** SystemCapability.Location.Location.Geofence
+
+**Model restriction:** This API is only available under the Stage model.
+
+| Name | Value | Description |
+| -------- | -------- | -------- |
+| POLYGON    | 1 | Indicates a polygon fence.<br/>**System API**: This API is a system API. |
+| CIRCULAR    | 2 | Indicates a circular fence.<br/>**System API**: This API is a system API. |
+
+
+## CellFence
+
+CELL fence information.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Location.Location.Geofence
+
+**Model restriction**: This API is only available under the stage model.
+
+| Name| Type| Read-Only| Optional| Description|
+| -------- | -------- | -------- | -------- | -------- |
+| cellInfos | Array&lt;[CellInfo](#cellinfo23)&gt; | No | No | Indicates the CELL fence information set.<br/>**System API**: This API is a system API. |
+
+
+## WifiFence
+
+Wi-Fi fence information.
+
+**Since:** 26.0.0
+
+**System capability:** SystemCapability.Location.Location.Geofence
+
+**Model restriction:** This API is only available under the Stage model.
+
+| Name | Type | Read-Only | Optional | Description |
+| -------- | -------- | -------- | -------- | -------- |
+| type | WifiFingerprintType&lt;[WifiFingerprintType](#wififingerprinttype)&gt; | No | No | Indicates the Wi-Fi fingerprint algorithm type.<br/>**System API**: This is a system API. |
+| wifiFeatures | Array&lt;[WirelessSignalFeature](#wirelesssignalfeature)&gt; | No | No | Indicates the Wi-Fi fingerprint information set.<br/>**System API**: This is a system API. |
+
+
+## WifiFingerprintType
+
+Wi-Fi fingerprint algorithm type.
+
+**Since:** 26.0.0
+
+**System capability:** SystemCapability.Location.Location.Geofence
+
+**Model restriction:** This API is only available under the Stage model.
+
+| Name | Value | Description |
+| -------- | -------- | -------- |
+| SEMANTIC    | 1 | Indicates the semantic algorithm.<br/>**System API**: This API is a system API. |
+| LOCATION    | 2 | Indicates the high-precision fingerprint algorithm.<br/>**System API**: This API is a system API. |
+
+
+## WirelessSignalFeature
+
+Wi-Fi fingerprint information.
+
+**Since:** 26.0.0
+
+**System capability:** SystemCapability.Location.Location.Geofence
+
+**Model restriction:** This API is only available under the Stage model.
+
+| Name | Type | Read-Only | Optional | Description |
+| -------- | -------- | -------- | -------- | -------- |
+| rssiAvg | number | No | No | Indicates the average RSSI.<br/>**System API**: This is a system API. |
+| rssiStandardDeviation | number | No | No | Indicates the standard deviation of RSSI.<br/>**System API**: This is a system API. |
+| mac | Array&lt;string&gt; | No | No | Indicates the set of device MAC address information.<br/>**System API**: This is a system API. |
+
+
+## FusionFenceTransition
+
+Fused fence callback event information.
+
+**Since:** 26.0.0
+
+**System capability:** SystemCapability.Location.Location.Geofence
+
+**Model restriction:** This API is only available under the Stage model.
+
+| Name | Type | Read-Only | Optional | Description |
+| -------- | -------- | -------- | -------- | -------- |
+| identifier | string | No | No | Indicates the unique identifier of the fused fence.<br/>**System API**: This is a system API. |
+| scene | FusionFenceScene&lt;[FusionFenceScene](#fusionfencescene)&gt; | No | No | Indicates the fused fence scene.<br/>**System API**: This is a system API. |
+| transitionEvent | GeofenceTransitionEvent&lt;[GeofenceTransitionEvent](#geofencetransitionevent12)&gt; | No | No | Indicates the fence event.<br/>**System API**: This is a system API. |
 
 ## ReverseGeocodingMockInfo
 
@@ -95,10 +289,10 @@ Defines the configuration of the mock location switch.
 
 **System API**: This is a system API.
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | timeInterval | number | No| No| Time interval at which mock locations are reported, in seconds.<br>**System API**: This is a system API.|
-| locations | Array&lt;[Location](#location)&gt; | No| No| Array of mocked locations.<br>**System API**: This is a system API.|
+| locations | Array&lt;[Location](js-apis-geoLocationManager.md#location)&gt; | No | No | Indicates the array of simulated locations. <br>**System API:** This API is a system API.|
 
 ## LocatingRequiredDataConfig<sup>10+</sup>
 
@@ -119,19 +313,6 @@ Defines the configuration for obtaining the required data of the location servic
 | plmnId<sup>23+</sup> |  Array&lt;number&gt; | No| Yes| Public Land Mobile Network Identifier (PLMN ID) of a SIM card.<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
 
 
-## ContinuousLocationRequest<sup>12+</sup>
-
-Defines a continuous location request.
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.Location.Location.Core
-
-| Name| Type| Read Only| Optional| Description|
-| -------- | -------- | -------- | -------- | -------- |
-| sportsType<sup>18+</sup> | [SportsType](#sportstype18) | No| Yes| Sports type.<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>**System API**: This is a system API.|
-
-
 ## LocatingRequiredData<sup>10+</sup>
 
 Defines the required data of the location service, including the Wi-Fi or Bluetooth scanning result. After obtaining the data, an application can use the data for services such as network positioning.
@@ -140,13 +321,13 @@ Defines the required data of the location service, including the Wi-Fi or Blueto
 
 **System API**: This is a system API.
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | wifiData | [WifiScanInfo](#wifiscaninfo10) | No| Yes| Wi-Fi scanning result.<br>**System API**: This is a system API.|
 | bluetoothData |  [BluetoothScanInfo](#bluetoothscaninfo10) | No| Yes| Bluetooth scanning result.<br>**System API**: This is a system API.|
 | slotId<sup>23+</sup> |  number | No| Yes| Slot ID of a SIM card.<br>**0**: slot 1.<br>**1**: slot 2.<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
-| campedCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | No| Yes| Camped cell information.<br> **System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
-| neighboringCellInfo<sup>23+</sup> |  Array&lt;CellInfo&gt; | No| Yes| Neighboring cell information.<br> **System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.|
+| campedCellInfo<sup>23+</sup> |  [CellInfo](#cellinfo23)| No | Yes | Indicates the camped cell information.<br> **System API**: This API is a system API.<br>**Model restriction:** This API is only available under the Stage model.|
+| neighboringCellInfo<sup>23+</sup> |  Array&lt;[CellInfo](#cellinfo23)&gt; | No | Yes | Indicates the neighboring cell information.<br> **System API**: This API is a system API.<br>**Model restriction:** This API is only available under the Stage model.|
 
 
 ## WifiScanInfo<sup>10+</sup>
@@ -192,7 +373,7 @@ Defines cellular cell information.
 
 **Model restriction**: This API can be used only in the stage model.
 
-| Name| Type| Read Only| Optional| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | timeSinceBoot | number | No| No| Duration from the time when the device is started to the time when the location is successfully obtained, in nanoseconds. Enabling and then disabling the airplane mode is not considered as a device restart.<br>**System API**: This is a system API.|
 | cellId | number | No| No| Cellular cell ID.<br> **System API**: This is a system API.|
@@ -203,7 +384,8 @@ Defines cellular cell information.
 | signalIntensity | number | No| No| Signal strength.<br>**System API**: This is a system API.|
 | arfcn | number | No| No| Absolute Radio Frequency Channel Number (ARFCN).<br> **System API**: This is a system API.|
 | pci | number | No| No| Physical cell ID.<br>**System API**: This is a system API.|
-| additionsMap | Map&lt;string, string&gt; | No| No| Additional information.<br>**System API**: This is a system API.|
+| tac | number | No | Yes | Indicates the tracking area code. <br>**System API**: This API is a system API.<br />**Since:** 26.0.0 <br />**Model restriction:** This API is only available under the Stage model.|
+| additionsMap | Map&lt;string, string&gt; | No | Yes | Additional information. <br>**System API**: This API is a system API.|
 
 
 ## LocationPrivacyType
@@ -248,21 +430,6 @@ Defines the location icon status.
 | LOCATING_NOT_STARTED  | 0 | No location services are available and the location icon does not need to be displayed.<br> **System API**: This is a system API.|
 | LOCATING_STARTED | 1 | Common location is in progress, and the common location icon needs to be displayed.<br> **System API**: This is a system API.|
 | HD_LOCATING_STARTED | 2 | High-precision location is in progress, and the high-precision location icon needs to be displayed.<br> **System API**: This is a system API.|
-
-
-## SportsType<sup>18+</sup>
-
-Enumerates sports types.
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
-**System capability**: SystemCapability.Location.Location.Core
-
-| Name| Value| Description|
-| -------- | -------- | -------- |
-| RUNNING   | 1 |  Running.|
-| WALKING    | 2 | Walking.|
-| CYCLING     | 3 | Cycling.|
 
 
 ## geoLocationManager.on('locatingRequiredDataChange')<sup>10+</sup>
@@ -508,7 +675,7 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>Applicable versions: 20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |801 | Capability not supported. Failed to call ${geoLocationManager.enableLocationMock} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                            |
@@ -545,7 +712,7 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>Applicable versions: 20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |801 | Capability not supported. Failed to call ${geoLocationManager.disableLocationMock} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                            |
@@ -590,7 +757,7 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>Applicable versions: 20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.setMockedLocations} due to limited device capabilities.          |
@@ -692,7 +859,7 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>Applicable versions: 20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |801 | Capability not supported. Failed to call ${geoLocationManager.enableReverseGeocodingMock} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                            |
@@ -728,7 +895,7 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>Applicable versions: 20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |801 | Capability not supported. Failed to call ${geoLocationManager.disableReverseGeocodingMock} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                            |
@@ -772,7 +939,7 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.<br/>Applicable versions: 20+                 |
 |202 | Permission verification failed. A non-system application calls a system API. |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.setReverseGeocodingMockInfo} due to limited device capabilities.          |
@@ -868,7 +1035,7 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
 
 isLocationPrivacyConfirmed(type: LocationPrivacyType): boolean
 
-Checks whether a user agrees with the privacy statement of the location service. This API can only be called by system applications.
+Queries whether the user agrees to the location service privacy statement and whether to enable the location service. Only system applications can call this API.
 
 **System API**: This is a system API.
 
@@ -878,13 +1045,13 @@ Checks whether a user agrees with the privacy statement of the location service.
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | type |  [LocationPrivacyType](#locationprivacytype)| Yes| Privacy statement type, for example, privacy statement displayed in the startup wizard or privacy statement displayed when the location service is enabled.|
+  | type |  [LocationPrivacyType](#locationprivacytype)| Yes | Specifies the privacy statement scenario, for example, the privacy statement in the startup wizard, the privacy statement displayed when enabling the network location function, etc. |
 
 **Return value**
 
   | Type| Description|
   | -------- | -------- |
-  | boolean | **true**: The user agrees to the privacy statement of the location service.<br>**false**: The user does not agree to the privacy statement of the location service.|
+  | boolean | true: The user agrees to the location service privacy statement.<br/>false: The user does not agree to the location service privacy statement. |
 
 **Error codes**
 
@@ -914,7 +1081,7 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
 
 setLocationPrivacyConfirmStatus(type: LocationPrivacyType, isConfirmed: boolean): void
 
-Sets the user confirmation status for the privacy statement of the location service. This API can only be called by system applications.
+Sets the status of the user's selection of the location service privacy statement and records whether the user agrees to enable the location service. Only system applications can call this API.
 
 **System API**: This is a system API.
 
@@ -926,8 +1093,8 @@ Sets the user confirmation status for the privacy statement of the location serv
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | type | [LocationPrivacyType](#locationprivacytype) | Yes| Privacy statement type, for example, privacy statement displayed in the startup wizard or privacy statement displayed when the location service is enabled.|
-  | isConfirmed | boolean | Yes| **true**: The user agrees to the privacy statement of the location service.<br>**false**: The user does not agree to the privacy statement of the location service.|
+  | type | [LocationPrivacyType](#locationprivacytype) | Yes | Specifies the privacy statement scenario, for example, the privacy statement in the startup wizard and the privacy statement displayed when the network location function is enabled. |
+  | isConfirmed | boolean | Yes | true: the user agrees to the location service privacy statement.<br/>false: the user disagrees with the location service privacy statement. |
 
 **Error codes**
 
@@ -1326,5 +1493,239 @@ For details about the error codes, see [Location Kit Error Codes](errorcode-geoL
     geoLocationManager.setLocationSwitchIgnored(isIgnored);
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
+  }
+  ```
+
+
+## geoLocationManager.addFusionFence
+
+addFusionFence(fenceRequestParams: FusionFenceRequestParams): Promise&lt;void&gt;
+
+Adds a fused fence and subscribes to fence events. This API uses a promise to return the result asynchronously. Before calling this API, you are advised to call [geoLocationManager.isFusionFenceSupported](#geolocationmanagerisfusionfencesupported) to check whether the corresponding capability is supported.
+
+A fused fence supports setting multiple types of fences, including GNSS fences, Wi-Fi fences, and CELL fences.
+
+**Since:** 26.0.0
+
+**System API:** This API is a system API.
+
+**Required permissions:** ohos.permission.LOCATION
+
+**System capability:** SystemCapability.Location.Location.Geofence
+
+**Model restriction:** This API is only available under the stage model.
+
+**Parameters**
+
+  | Name | Type | Mandatory | Description |
+  | -------- | -------- | -------- | -------- |
+  | fenceRequestParams | FusionFenceRequestParams&lt;[FusionFenceRequestParams](#fusionfencerequestparams)&gt; | Yes | Fused fence request information. |
+
+**Error code**
+
+For details about the following error codes, see [Location service error code](errorcode-geoLocationManager.md).
+
+| Error code ID | Error message |
+| -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|202 | Permission verification failed. A non-system application calls a system API. |
+|801 | Capability not supported. Failed to call ${geoLocationManager.addFusionFence} due to limited device.          |
+|3301000 | The location service is unavailable.                                            |
+|3301100 | The location switch is off.|
+|3301601 | The number of geofences exceeds the maximum.                                            |
+|3501603 | Duplicate fusion fence identifier.                                            |
+
+**Example**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  // Create fence request information.
+  let latitude = 30.07;
+  let longitude = 119.98;
+  // Polygon fence location information.
+  let point: geoLocationManager.Point = {
+    latitude:latitude,
+    longitude:longitude
+  }
+  // Circular fence information, including latitude and longitude, radius, and survival time.
+  let geofence: geoLocationManager.Geofence = {
+    "latitude": latitude, "longitude": longitude, "radius": 2000, "expiration": 500000000
+  }
+  // Polygon fence location information set.
+  let polygon: Array<geoLocationManager.Point> = [point];
+  // GNSS fence request information.
+  let gnssFence: geoLocationManager.GnssFence = {
+    gnssFenceType: geoLocationManager.GnssFenceType.CIRCULAR, // GnssFenceType
+    circularFence: geofence,
+    polygon: polygon
+  }
+  // GNSS fence request information set.
+  let gnssFences: Array<geoLocationManager.GnssFence> = [gnssFence];
+  // CELL fence information extension field, optional, can be empty.
+  let additionsMap: Map<string, string> = new Map<string, string>();
+  // CELL information.
+  let cellInfo: geoLocationManager.CellInfo = {
+    timeSinceBoot:1781062881671, cellId:9999, lac:1024, mcc: 460, mnc: 1, rat: 13, signalIntensity: -75, arfcn: 1850, pci: 256, tac: 888,
+    additionsMap: additionsMap
+  }
+  // CELL information set.
+  let cellInfos: Array<geoLocationManager.CellInfo> = [cellInfo];
+  // CELL fence request information.
+  let cellFence: geoLocationManager.CellFence = {
+    cellInfos: cellInfos,
+  };
+  // CELL fence request information set.
+  let cellFences: Array<geoLocationManager.CellFence> = [cellFence];
+  // MAC address.
+  let mac: Array<string> = ["FA:C4:D0:0E:BF:DF"];
+  // Wi-Fi fingerprint information.
+  let wifiFeature: geoLocationManager.WirelessSignalFeature = {
+    rssiAvg: 1,
+    rssiStandardDeviation:2.0,
+    mac:mac
+  };
+  // Wi-Fi fingerprint information set.
+  let wifiFeatures: Array<geoLocationManager.WirelessSignalFeature> = [wifiFeature];
+  // Wi-Fi fence request information.
+  let wifiFence: geoLocationManager.WifiFence = {
+    type: geoLocationManager.WifiFingerprintType.LOCATION,
+    wifiFeatures:wifiFeatures
+  };
+  // Wi-Fi fence request information set.
+  let wifiFences: Array<geoLocationManager.WifiFence> = [wifiFence];
+  // Construct the fence request parameter fenceRequestParams.
+  let fenceRequestParams: geoLocationManager.FusionFenceRequestParams = {
+    // Fused fence unique identifier.
+    identifier: "123456789",
+    // Fused fence scenario.
+    scene: geoLocationManager.FusionFenceScene.AIRPORT,
+    // Fused fence type. For details, see FusionFenceType.
+    fenceType: 1,
+    // POI type, optional.
+    poiType: "1",
+    // POI location information.
+    poiLocation: point,
+    // Fence events to listen for. For details, see GeofenceTransitionEvent. Each bit indicates a fence event. For example, 3 indicates listening for both fence entry and fence exit events.
+    monitorTransitionEvents: 63,
+    // Indicates the lingering time. The unit is milliseconds.
+    loiterTimeMs: 10000,
+    // GNSS fence information set, optional. Mandatory if fenceType is GNSS.
+    gnssFences: gnssFences,
+    // CELL fence information set, optional. Mandatory if fenceType is CELLULAR.
+    cellFences: cellFences,
+    // Wi-Fi fence information set, optional. Mandatory if fenceType is WIFI.
+    wifiFences: wifiFences,
+    // Indicates the fence survival time. The unit is milliseconds.
+    expirationMs: 100000000,
+    // Callback used to receive fence events.
+    fenceTransitionCallback: (transition : geoLocationManager.FusionFenceTransition) => {
+      if (transition) {
+        console.info("GeofenceTransition: ", JSON.stringify(transition));
+      }
+    },
+  }
+  try {
+    // Add a fence.
+    await geoLocationManager.addFusionFence(fenceRequestParams).then(() => {
+      // Fence added successfully.
+      console.info("addFusionFence success");
+    }).catch((error : BusinessError) => {
+      console.error("addFusionFence: BusinessError=" + JSON.stringify(error));
+    });
+  } catch(error) {
+    console.error("addFusionFence: error=" + JSON.stringify(error));
+  }
+  ```
+
+
+## geoLocationManager.removeFusionFence
+
+removeFusionFence(identifier: string): Promise&lt;void&gt;
+
+Deletes a fused fence and unsubscribes from its events. This API uses a promise to return the result asynchronously. Before calling this API, you are advised to call [geoLocationManager.isFusionFenceSupported](#geolocationmanagerisfusionfencesupported) to check whether the corresponding capability is supported.
+
+**Since:** 26.0.0
+
+**System API**: This API is a system API.
+
+**System capability:** SystemCapability.Location.Location.Geofence
+
+**Model restriction**: This API is only available under the Stage model.
+
+**Parameters**
+
+  | Name | Type | Mandatory | Description |
+  | -------- | -------- | -------- | -------- |
+  | identifier | string | Yes | Unique identifier of the fused fence. It must be the same as the identifier passed to addFusionFence to successfully delete the fence.|
+
+**Error codes**
+
+For details about the following error codes, see [Location service error code](errorcode-geoLocationManager.md).
+
+| Error code ID | Error message |
+| -------- | ---------------------------------------- |
+|202 | Permission verification failed. A non-system application calls a system API. |
+|801 | Capability not supported. Failed to call ${geoLocationManager.removeFusionFence} due to limited device.          |
+|3301000 | The location service is unavailable.                                            |
+|3301602 | Failed to delete a fusion fence due to an incorrect identifier.                                          |
+
+**Example**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+
+  try {
+    // The identifier must be the same as that passed to addFusionFence to delete the fence successfully.
+    let identifier = "123456789";
+    await geoLocationManager.removeFusionFence(identifier).then(() => {
+      // Fence deleted successfully.
+      console.info("removeFusionFence success");
+    }).catch((error : BusinessError) => {
+      console.error("removeFusionFence: BusinessError=" + JSON.stringify(error));
+    });
+  } catch(error) {
+    console.error("removeFusionFence: error=" + JSON.stringify(error));
+  }
+  ```
+
+
+## geoLocationManager.isFusionFenceSupported
+
+isFusionFenceSupported(): boolean
+
+Checks whether the system supports the fused fence capability.
+
+**Since:** 26.0.0
+
+**System API**: This API is a system API.
+
+**System capability:** SystemCapability.Location.Location.Core
+
+**Model restriction:** This API is only available under the Stage model.
+
+**Return value**:
+
+  | Type | Description |
+  | -------- | -------- |
+  | boolean | true: supports the fused fence capability.<br/>false: does not support the fused fence capability. |
+  
+  **Error code**:
+
+For details about the following error codes, see [Location service error code](errorcode-geoLocationManager.md).
+
+| Error code ID | Error message |
+| -------- | ---------------------------------------- |
+|202 | Permission verification failed. A non-system application calls a system API. |
+|3301000 | The location service is unavailable.                                            |
+
+**Example**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+
+  try {
+    let isFusionFenceSupported = geoLocationManager.isFusionFenceSupported();
+  } catch (err) {
+    console.error("errCode:" + err.code + ", message:"  + err.message);
   }
   ```

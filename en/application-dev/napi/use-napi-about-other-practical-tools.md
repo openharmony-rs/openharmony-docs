@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "Describes utility APIs provided by Node-API for obtaining module loading paths, comparing ArkTS values for strict equality, handling asynchronous operations, and implementing event loops."
+keywords: [Node-API, utility APIs, module loading paths, strict equality, node_api_get_module_file_name, Libuv, event loop]
+doctype: guide
+status: active
+---
+
 # Working with Other Node-API Utilities
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=168caf601a8ed7899a458e51351d604fc48a1943 translatedAt=2026-11-09T08:52:17.379Z nl=1 -->
 
 ## Introduction
 
@@ -68,8 +77,12 @@ ArkTS code:
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import testNapi from 'libentry.so';
 
-let filename = testNapi.getModuleFileName();
-hilog.info(0x0000, 'testTag', 'Test Node-API node_api_get_module_file_name:%{public}s', filename);
+try {
+    let filename = testNapi.getModuleFileName();
+    hilog.info(0x0000, 'testTag', 'Test Node-API node_api_get_module_file_name:%{public}s', filename);
+} catch (error) {
+    hilog.error(0x0000, 'testTag', 'Test Node-API node_api_get_module_file_name error: %{public}s', error.message);
+}
 ```
 
 ### napi_strict_equals

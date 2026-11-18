@@ -15,6 +15,10 @@
 ### 申请蓝牙权限
 需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，具体操作请参考[声明权限](../../security/AccessToken/declare-permissions.md)和[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 
+### 查询是否支持蓝牙
+
+调用[isBluetoothSupported](../../reference/apis-connectivity-kit/js-apis-bluetooth-access.md#accessisbluetoothsupported)接口查询该设备是否支持蓝牙，支持后再进行后续步骤；不支持时，请勿使用相关接口。
+
 ### 导入所需API模块
 导入connection、a2dp、 hfp、 hid、baseProfile、constant和错误码模块。
 ```ts

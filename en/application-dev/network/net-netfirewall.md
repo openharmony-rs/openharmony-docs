@@ -5,6 +5,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=56d220eb7fc5b803b5669625f58fadf4239bc785 translatedAt=2026-10-31T06:41:24.028Z pushedAt=2026-10-31T06:41:24.028Z nl=1 -->
 
 ## Introduction
 
@@ -21,8 +22,8 @@ The network firewall module provides the following functions:
 Typical firewall scenarios include:
 - IP address-based access control
 1. Restricting network access for specific applications
-2. Restricting network communication to specific IP addresses, protocols, and ports
-3. Restricting network communication of specific applications to specific IP addresses, protocols, and ports
+2. Restricting network communication to specific IP addresses, protocols, ports, and physical NICs.
+3. Restricting network communication of specific applications to specific IP addresses, protocols, ports, and physical NICs.
 4. Applying interception rules immediately after they are delivered. For TCP, any existing intercepted TCP connections must be disconnected.
 - Domain name-based access control
 1. Restricting DNS resolution for specific domain names. Only standard unencrypted DNS is restricted. Encrypted DNS and private DNS are not affected.
@@ -135,7 +136,8 @@ The following describes the development procedure specific to each application s
          startPort: 443,
          endPort: 443
        }] as IpPort[],
-     userId: 100
+     userId: 100,
+     interface:'wlan0' // Supported since API version 26.0.0.
    };
    // Add firewall rules.
    netFirewall.addNetFirewallRule(ipRule).then((result: number) => {
@@ -202,10 +204,20 @@ The following describes the development procedure specific to each application s
          isWildcard: false,
          domain: 'www.HarmonyOS.cn'
        },{
-       isWildcard: true,
-       domain: '*.HarmonyOS.cn'
+         isWildcard: true,
+         domain: '*.HarmonyOS.cn'
+       },{
+         isWildcard: true,
+         domain: '*w.HarmonyOS.cn' // Supported starting from API version 26.0.1.
+       },{
+         isWildcard: true,
+         domain: 'www.HarmonyOS.*' // Supported starting from API version 26.0.1.
+       },{
+         isWildcard: true,
+         domain: 'www.HarmonyOS.c*' // Supported starting from API version 26.0.1.
      }] as domain[],
-     userId: 100
+     userId: 100,
+     interface:'wlan0' // Supported since API version 26.0.0.
    };
    
    // Add firewall rules.
@@ -229,7 +241,7 @@ The following describes the development procedure specific to each application s
     import { BusinessError } from '@kit.BasicServicesKit';
     ```
 
-3. Call **getInterceptRecords** to query firewall interception records in user mode.
+3. In user space, call **getInterceptedRecords** to query interception records.
 
     ```ts
     // Call getInterceptedRecords to perform pagination query on firewall interception records.

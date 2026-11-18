@@ -6,6 +6,7 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=380302020c3e797188855ad9895a83c0437ababa translatedAt=2026-11-03T13:00:53.698Z pushedAt=2026-11-03T13:00:53.698Z nl=1 -->
 
 ## Overview
 
@@ -44,11 +45,11 @@ Which of the collection processes is triggered depends on the processing duratio
 
    ![sample_stack_1](figures/sample_stack_1.png)
 
-   (2) If a main thread timeout event (main thread processing duration > 150 ms) is detected during the second check, the stack collection starts and is performed every 150 ms for 10 times. The stack data is collected and an event is reported at the next interval. Then the check ends.
+   (2) If no main thread timeout event is detected during the first check (main thread processing duration < 150 ms), but one is detected during the second check (main thread processing duration > 150 ms), stack collection starts. The stack is sampled every 150 ms for a total of 10 samples. During the 12th check, the stack data is collected and an event is reported. Then the check ends.
 
    ![sample_stack_2](figures/sample_stack_2.png)
 
-   (3) If no main thread timeout event (main thread processing duration > 150 ms) is detected during the first two checks, the check ends.
+   (3) If no main thread timeout event is detected during either of the first two checks (main thread processing duration < 150 ms), the check ends.
 
    ![sample_stack_3](figures/sample_stack_3.png)
 
@@ -56,7 +57,7 @@ Which of the collection processes is triggered depends on the processing duratio
 
    When the main thread processing times out (main thread processing duration > 450 ms), the API for enabling trace collection is invoked to check every 150 ms for 20 times whether the duration exceeds 150 ms. The possible cases are as follows:
 
-   (1) If no main thread timeout event (main thread processing duration > 150 ms) is detected during the 20 checks, no trace file is generated, and the check ends.
+   (1) If no main thread timeout event is detected during any of the 20 checks (main thread processing duration < 150 ms), no trace file is generated, and the check ends.
 
    ![dump-trace1](figures/dump-trace1.PNG)
 
@@ -68,7 +69,7 @@ Which of the collection processes is triggered depends on the processing duratio
 
 Main thread timeout logs are saved in the app sandbox directory and can be obtained in the following ways.
 
-**Subscribing to Main Thread Jank Events using HiAppEvent APIs**
+**Subscribing to Task Execution Timeout Events using HiAppEvent APIs**
 
 HiAppEvent provides APIs for subscribing to faults. For details, see [Introduction to HiAppEvent](hiappevent-intro.md). You can subscribe to the main thread timeout event by referring to [Subscribing to Main Thread Jank Events (ArkTS)](hiappevent-watcher-mainthreadjank-events-arkts.md) or [Subscribing to Main Thread Jank Events (C/C++)](hiappevent-watcher-mainthreadjank-events-ndk.md), and read the fault log file using the [external_log](hiappevent-watcher-mainthreadjank-events.md#event-fields) field in the event.
 

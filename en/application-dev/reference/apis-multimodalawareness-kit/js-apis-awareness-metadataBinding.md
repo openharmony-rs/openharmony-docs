@@ -5,9 +5,9 @@
 <!--Designer: @yuxiaoyang-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=2216975af6485dc85c0ac70af19ecc4dbc873a78 translatedAt=2026-09-14T01:58:38.822Z pushedAt=2026-09-14T10:03:33.575Z -->
+<!-- md-trans-meta sourceCommit=535da5fa1a4f632e9b32ff60824cd7d59fa27647 translatedAt=2026-11-03T06:00:18.158Z pushedAt=2026-11-03T12:08:25.581Z nl=1 -->
 
-This module provides metadata binding capability invocation, including encoded content transfer, event subscription, and event unsubscription. Metadata binding allows system applications to obtain encoded content from third-party applications, supports real-time event listening and callback mechanisms, and is suitable for scenarios where a system application makes a request (such as a screenshot) and obtains application binding data, improving user experience through cross-application data transfer.
+This module provides metadata binding capabilities, including encoded content transfer, event subscription, and event unsubscription. Metadata binding allows a system application to obtain the encoded content of a third-party application, and supports real-time event listening and callback mechanisms. It applies to scenarios where a system application makes a request (for example, a screenshot) and obtains the application link data, improving user experience through cross-application data transfer.
 
 > **NOTE**
 >
@@ -34,7 +34,7 @@ A third-party application passes the content to be encoded to the API service, w
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | metadata     | string                           | Yes   | Content to be encoded. The string length does not exceed 128 bytes. |
 
-**Error codes** 
+**Error codes**  
 
 For details about the error codes, see [Metadata Binding Error Codes](errorcode-metadataBinding.md).
 
@@ -64,9 +64,9 @@ Subscribes to the event of a system application requesting to obtain encoded con
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.MultimodalAwareness.MetadataBinding 
+**System capability**: SystemCapability.MultimodalAwareness.MetadataBinding  
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
@@ -83,7 +83,7 @@ For details about the error codes, see [Metadata Binding Error Codes](errorcode-
 | 32100001 | Internal handling failed. |
 | 32100004 | Subscribe Failed. Possible causes: 1. Abnormal system capability. 2. IPC communication abnormality. 3. Algorithm loading exception. |
 
-**Example** 
+**Example**  
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
@@ -109,7 +109,7 @@ Unsubscribes from the event of the system obtaining encoded content. The **on('o
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.MultimodalAwareness.MetadataBinding 
+**System capability**: SystemCapability.MultimodalAwareness.MetadataBinding  
 
 **Parameters**
 
@@ -119,7 +119,7 @@ Unsubscribes from the event of the system obtaining encoded content. The **on('o
 |bundleName|string|Yes| Application bundle name, which identifies the bundle name of the registered application. It must be the same as the bundle name passed in during subscription.|
 |callback|Callback&lt;number&gt;|No| Callback function used to return the event code. The callback function to be unsubscribed must be the same as the one passed in during subscription. It is recommended that you save the callback function reference during subscription and use the same reference when unsubscribing. If this parameter is not specified, all callback functions currently listening for this event are unsubscribed. |
 
-**Error codes** 
+**Error codes**  
 
 For details about the error codes, see [Metadata Binding Error Codes](errorcode-metadataBinding.md).
 

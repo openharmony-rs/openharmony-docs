@@ -205,7 +205,7 @@ Obtains the OEID from an OE document object.
 | Parameter| Description|
 | -- | -- |
 | [const ContentEmbed_Document](capi-contentembed-contentembed-document.md) *document | Pointer to the OE document object.|
-| char *oeid |  Array used to store the OEID values, in characters. This is an output parameter. It is recommended that the array length be [MAX_OEID_LENGTH](capi-content-embed-common-h.md#macros).|
+| char *oeid |  Array used to store the OEID values. This is an output parameter. It is recommended that the array length be [MAX_OEID_LENGTH](capi-content-embed-common-h.md#macros).|
 
 **Returns**
 
@@ -255,7 +255,7 @@ Obtains the path of the embedded source file stored in the client sandbox direct
 | Parameter| Description|
 | -- | -- |
 | [const ContentEmbed_Document](capi-contentembed-contentembed-document.md) *document | Pointer to the OE document object.|
-| char *nativeFilePath |  Array used to store the source file path, in characters. This is an output parameter. It is recommended that the array length be [MAX_PATH_LENGTH](#macros).|
+| char *nativeFilePath |  Array used to store the source file path. This is an output parameter. It is recommended that the array length be [MAX_PATH_LENGTH](#macros).|
 
 **Returns**
 
@@ -683,7 +683,7 @@ Obtains the OEID of the document to which the OE document storage object belongs
 | Parameter| Description|
 | -- | -- |
 | [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) *storage | Pointer to the storage object of an OE document.|
-| char *oeid |  Array for storing OEIDs, in characters. This is an output parameter. It is recommended that the array length be [MAX_OEID_LENGTH](capi-content-embed-common-h.md#macros).|
+| char *oeid |  Array for storing OEIDs. This is an output parameter. It is recommended that the array length be [MAX_OEID_LENGTH](capi-content-embed-common-h.md#macros).|
 | size_t oeidSize | Length of the OEID array, in bytes.|
 
 **Returns**
@@ -709,7 +709,7 @@ Sets the OEID of the document to which the OE document storage object belongs.
 | Parameter| Description|
 | -- | -- |
 | [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) *storage | Pointer to the storage object of an OE document.|
-| char *oeid | Array of the OEIDs to be set, in characters. This is an output parameter. It is recommended that the array length be [MAX_OEID_LENGTH](capi-content-embed-common-h.md#macros).|
+| char *oeid | Array of the OEIDs to be set. It is recommended that the array length be [MAX_OEID_LENGTH](capi-content-embed-common-h.md#macros).|
 | size_t oeidSize | Length of the OEID array, in bytes.|
 
 **Returns**
@@ -858,7 +858,7 @@ Obtains the name of a [ContentEmbed_StorageElement](capi-contentembed-contentemb
 
 | Parameter| Description|
 | -- | -- |
-| [const ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) *storageElement | Pointer to the [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) instance. This is an output parameter.|
+| [const ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) *storageElement | Pointer to the [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) instance.|
 | char *name |  Element name string. This is an output parameter.|
 | size_t nameSize | Size of the name buffer, in bytes.|
 
@@ -884,7 +884,7 @@ Obtains the creation timestamp of a [ContentEmbed_StorageElement](capi-contentem
 
 | Parameter| Description|
 | -- | -- |
-| [const ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) *element | Pointer to the [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) instance. This is an output parameter.|
+| [const ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) *element | Pointer to the [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) instance.|
 | uint64_t *ctime |  Pointer to the creation timestamp of the element, in milliseconds. This is an output parameter.|
 
 **Returns**
@@ -909,7 +909,7 @@ Obtains the last modification timestamp of a [ContentEmbed_StorageElement](capi-
 
 | Parameter| Description|
 | -- | -- |
-| [const ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) *element | Pointer to the [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) instance. This is an output parameter.|
+| [const ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) *element | Pointer to the [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) instance.|
 | uint64_t *mtime |  Pointer to the last modification timestamp of the element, in milliseconds. This is an output parameter.|
 
 **Returns**
@@ -934,7 +934,7 @@ Checks whether a [ContentEmbed_StorageElement](capi-contentembed-contentembed-st
 
 | Parameter| Description|
 | -- | -- |
-| [const ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) *storageElement | Pointer to the [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) instance. This is an output parameter.|
+| [const ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) *storageElement | Pointer to the [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) instance.|
 | bool *isStorage | Output parameter. The value **true** indicates that the object is an OE document storage object, and **false** indicates the opposite.|
 
 **Returns**
@@ -959,7 +959,7 @@ Checks whether a [ContentEmbed_StorageElement](capi-contentembed-contentembed-st
 
 | Parameter| Description|
 | -- | -- |
-| [const ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) *element | Pointer to the [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) instance. This is an output parameter.|
+| [const ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) *element | Pointer to the [ContentEmbed_StorageElement](capi-contentembed-contentembed-storageelement.md) instance.|
 | bool *isStream | Output parameter. The value **true** indicates that the object is an OE document stream object, and **false** indicates the opposite.|
 
 **Returns**

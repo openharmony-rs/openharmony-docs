@@ -1,11 +1,11 @@
 # !! Syntax: Enabling Two-Way Binding
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @Cuecuexiaoyu-->
+<!--Owner: @BIYynNe-->
 <!--Designer: @VictorS67-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=843d6fa3247ca83eb1fb22363d3e4b77bc027d58 translatedAt=2026-09-21T11:07:14.484Z pushedAt=2026-09-23T08:33:55.425Z -->
+<!-- md-trans-meta sourceCommit=d842580cc8ee05f69976d9458c9fcd43c930e94f translatedAt=2026-11-03T06:33:11.733Z pushedAt=2026-11-03T07:54:28.357Z nl=1 -->
 
 In state management V1, [$$](./arkts-two-way-sync.md) is recommended for implementing two-way binding for built-in components.
 
@@ -31,14 +31,14 @@ The `!!` two-way binding syntax is syntactic sugar that facilitates two-way data
    Two-way binding syntax sugar used with the \@Param and \@Event decorators.
 
    <!-- @[ArkUI_Star_binding1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star_Param_Event.ets) -->  
-
+   
    ``` TypeScript
    Star({ value: this.value, $value: (val: number) => { this.value = val; } })
    ```
    The preceding syntax can be simplified as the **!!** syntactic sugar:
-
+   
     <!-- @[ArkUI_Star_binding3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star.ets) -->
-
+    
     ``` TypeScript
     Star({ value: this.value!! })
     ```
@@ -46,7 +46,7 @@ The `!!` two-way binding syntax is syntactic sugar that facilitates two-way data
 2. Use the **@Param value** and **@Event $value** syntax to implement two-way binding of customized components.
 
     <!-- @[ArkUI_Star_binding4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star_Param_Event.ets) -->  
-
+    
     ``` TypeScript
     @Entry
     @ComponentV2
@@ -88,7 +88,7 @@ The `!!` two-way binding syntax is syntactic sugar that facilitates two-way data
 3. Use the **!!** syntax sugar to implement two-way binding of custom components.
 
    <!-- @[ArkUI_Star_binding2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star.ets) -->
-
+   
    ``` TypeScript
    @Entry
    @ComponentV2

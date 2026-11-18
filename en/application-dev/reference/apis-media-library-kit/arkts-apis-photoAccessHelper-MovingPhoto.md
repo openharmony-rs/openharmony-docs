@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=d036437fca9f1387f05ed5f1104d3980c50e5643 translatedAt=2026-11-03T07:07:46.838Z pushedAt=2026-11-04T03:11:19.967Z nl=1 -->
 
 MovingPhoto provides APIs for managing a moving photo instance.
 
@@ -41,7 +42,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 |  System inner fail.         |
 
 **Example**
@@ -92,7 +93,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 requestContent(imageFileUri: string, videoFileUri: string): Promise\<void>
 
-Requests the image data and video data of this moving photo and writes them to the specified URIs, respectively. This API uses a promise to return the result.
+Requests both the image content and video content of a moving photo simultaneously, and writes them to the URIs specified by the parameters. This API uses a promise to return the result asynchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -107,8 +108,8 @@ Requests the image data and video data of this moving photo and writes them to t
 
 | Name  | Type                                                                  | Mandatory| Description                     |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
-| imageFileUri | string                      | Yes  | URI to which the image data of the moving photo is to be written. Example: **"file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg"**.|
-| videoFileUri | string                                            | Yes  | URI to which the video data of the moving photo is to be written. Example: **"file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4"**.|
+| imageFileUri | string                      | Yes   | URI of the image content to be written to the Moving Photo. Example imageFileUri: "file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg". |
+| videoFileUri | string                                            | Yes   | URI of the video content to be written to the Moving Photo. It must be a valid, writable file path in the application sandbox. Example videoFileUri: "file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4". |
 
 **Return value**
 
@@ -122,9 +123,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied   |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 |  System inner fail.        |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 |  System inner fail.<br>Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out.  |
 
 **Example**
 
@@ -139,7 +140,7 @@ class MovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<phot
       console.error('Error occurred when preparing data');
       return;
     }
-    // The URIs must be valid.
+    // The application should ensure that the URI to be written is valid.
     let imageFileUri: string = "file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg";
     let videoFileUri: string = "file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4";
     try {
@@ -202,7 +203,7 @@ Requests the moving photo content of the specified resource type and writes it t
 | Name  | Type                                                                  | Mandatory| Description                     |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
 | resourceType | [ResourceType](arkts-apis-photoAccessHelper-e.md#resourcetype11)                      | Yes  | Resource type of the moving photo content to request.|
-| fileUri | string                                                    | Yes  |URI to which the moving photo content is to be written.|
+| fileUri | string                                                    | Yes   | URI of the Moving Photo content to be written. It must be a valid, writable file path within the application sandbox. |
 
 **Return value**
 
@@ -216,9 +217,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied   |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 |  System inner fail.        |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 |  System inner fail.<br>Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out.  |
 
 **Example**
 
@@ -304,9 +305,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 201      |  Permission denied   |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 |  System inner fail.        |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 |  System inner fail.<br>Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out.       |
 
 **Example**
 

@@ -14,7 +14,7 @@ typedef struct ContentEmbed_ExtensionInstance ContentEmbed_ExtensionInstance
 
 ## Overview
 
-Defines the struct type of the OE extension instance. This method can be used to manage core functions such as the lifecycle of the extension, callback registration, and association with the client OE object. This method is applicable to scenarios where server apps need to embed OE extension capabilities and complete lifecycle synchronization, callback listening, and object association and binding between the extension and the client OE document.
+Defines the struct type of the OE extension instance. This struct can be used to manage core functions such as the lifecycle of the extension, callback registration, and association with the client OE object. This method is applicable to scenarios where server apps need to embed OE extension capabilities and complete lifecycle synchronization, callback listening, and object association and binding between the extension and the client OE document.
 
 **Since**: 24
 

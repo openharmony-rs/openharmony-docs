@@ -5,6 +5,7 @@
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=e6566e1e6d71ba79155072f015b0201715b0cb40 translatedAt=2026-11-03T04:48:00.714Z pushedAt=2026-11-03T12:08:25.514Z nl=1 -->
 
 The **adminManager** module provides administrator permission management capabilities for enterprise MDM applications, including enabling or disabling administrator permissions, subscribing to events, delegating applications, and granting permissions.
 
@@ -26,8 +27,8 @@ disableAdmin(admin: Want, userId?: number): Promise\<void>
 
 Disables a device administrator application for the specified user. This API uses a promise to return the result. After this API is called successfully, the specified device administrator application will be deactivated and no longer have the device management capability.
 
-**Required permissions**: ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN (available only for system applications), ohos.permission.START_PROVISIONING_MESSAGE, or ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN
-<br>- Since API version 23, the ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN permission can be requested. This permission can be requested only after a [SDA](../../mdm/mdm-kit-term.md#super-device-admin-sda) or [DA](../../mdm/mdm-kit-term.md#device-admin-da) application administrator application deactivates itself.<br>- **ohos.permission.START_PROVISIONING_MESSAGE** is supported since API version 20. This permission can be requested only when the [BYOD](../../mdm/mdm-kit-term.md#bring-your-own-device-byod) device management app is deactivated.<br>- **ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN** is required for API version 19 and earlier. (This permission can be requested only by system applications.)
+**Required permissions:** ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN (available only to system applications), ohos.permission.START_PROVISIONING_MESSAGE, or ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN
+<br/>- Since API version 23, the ohos.permission.ENTERPRISE_DEACTIVATE_DEVICE_ADMIN permission is supported. This permission can be applied for only when an [SDA](../../mdm/mdm-kit-term.md#super-device-admin-sda) or [DA](../../mdm/mdm-kit-term.md#device-admin-da) device administrator application deactivates itself.<br/>- Since API version 20, the ohos.permission.START_PROVISIONING_MESSAGE permission is supported. This permission can be applied for only when a [BYOD](../../mdm/mdm-kit-term.md#bring-your-own-device-byod) device administrator application deactivates itself.<br/>- For API version 19 and earlier, the ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN permission (available only to system applications) is required.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -145,7 +146,7 @@ Since API version 26.0.0, error code 9200002 is returned when a non-super device
 | Name       | Type                                                   | Mandatory| Description                  |
 | ------------- | ------------------------------------------------------- | ---- | ---------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| managedEvents | Array\<[ManagedEvent](#managedevent)>                   | Yes  | Array of system management events to be subscribed to. Each element in the array is a value from the [ManagedEvent](#managedevent) enumeration. Multiple event types can be subscribed to, such as application installation/uninstallation/start/stop events, system update events, and more.        |
+| managedEvents | Array\<[ManagedEvent](#managedevent)>                   | Yes   | Array of subscribed events, used to specify the system management events to subscribe to. The array elements are [ManagedEvent](#managedevent) enum values, and multiple event types can be subscribed to, such as application install/uninstall/start/stop events and system update events.         |
 
 **Error codes**
 
@@ -170,7 +171,8 @@ let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
-let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
+let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED,
+  adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
 try {
   adminManager.subscribeManagedEventSync(wantTemp, events);
@@ -221,7 +223,8 @@ let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
-let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED, adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
+let events: Array<adminManager.ManagedEvent> = [adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_ADDED,
+  adminManager.ManagedEvent.MANAGED_EVENT_BUNDLE_REMOVED];
 
 try {
   adminManager.unsubscribeManagedEventSync(wantTemp, events);
@@ -361,7 +364,7 @@ Queries the delegated applications that can access a delegation policy and outpu
 | Name       | Type                                                   | Mandatory| Description              |
 | ------------- | ------------------------------------------------------- | ---- | ------------------ |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| policy | string                   | Yes  | Delegation policy.|
+| policy | string | Yes | [Delegation policy](../../mdm/mdm-kit-appendix.md#delegable-policy-list). |
 
 
 **Return value**
@@ -423,7 +426,7 @@ Enables the device administrator application to open a page for the BYOD adminis
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
 | type  | [AdminType](#admintype15)             | Yes   | Type of the activated device administrator application. Only the **ADMIN_TYPE_BYOD** type is supported. |
 | context  | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context) | Yes| Context information of the administrator application.|
-| parameters  | Record\<string, string> | Yes| Custom parameters. The key value must contain **activateId** and may optionally include **customizedInfo** and **localDeactivationPolicy**.<br>- **activateId**: project activation ID.<br>- **customizedInfo**: enterprise-defined information.<br>- **localDeactivationPolicy**: local deactivation delay (unit: hour). This parameter is supported since API version 22<!--RP1--><!--RP1End-->.|
+| parameters  | Record\<string, string> | Yes | Custom parameter information. The Key value must include "activateId", and can include "customizedInfo" and "localDeactivationPolicy".<br/>- activateId: project activation ID.<br/>- customizedInfo: enterprise-defined custom information.<br/>- localDeactivationPolicy: local delayed deactivation time (unit: hour). The duration passed in on the device side must be less than or equal to the duration configured on the cloud side; otherwise, activation fails and an invalid activation parameter is reported. The actual effective value is based on the duration passed in on the device side. This is supported since API version 22.<!--RP1--><!--RP1End--> |
 
 **Error codes**
 
@@ -456,9 +459,9 @@ const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 try {
   console.info('context:' + JSON.stringify(context));
   adminManager.startAdminProvision(wantTemp, adminManager.AdminType.ADMIN_TYPE_BYOD, context, recordParameters);
-  console.info('startAdminProvision::success');
+  console.info('Succeeded in starting Admin Provision');
 } catch (error) {
-  console.error('startAdminProvision::errorCode: ' + error.code + ' errorMessage: ' + error.message);
+  console.error('Failed to start Admin Provision::errorCode: ' + error.code + ' errorMessage: ' + error.message);
 }
 ```
 
@@ -619,7 +622,6 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 ```ts
 import { Want } from '@kit.AbilityKit';
 import { adminManager } from '@kit.MDMKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
@@ -632,9 +634,90 @@ let credential: string = '{"enterpriseId": "123456", "appIdentifier": "123456", 
 
 try {
   adminManager.enableSelfDeviceAdmin(wantTemp, credential);
-  console.info(`succeed in enable self device admin.`);
+  console.info(`succeed in enabling self device admin.`);
 } catch (err) {
   console.error(`Failed to enable self device admin. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## adminManager.getAdminInfos
+
+getAdminInfos(): Array&lt;AdminInfo&gt;
+
+Queries the list of activated device management applications under the current user. The list contains only super device management applications and normal device management applications, and does not include BYOD device management applications. This API can be called only by a super device management application.
+
+**Since:** 26.0.1
+
+**Required permissions:** ohos.permission.ENTERPRISE_MANAGE_DEVICE_ADMIN
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Return value**
+
+| Type                          | Description                       |
+| ----------------------------- | -------------------------- |
+| Array&lt;[AdminInfo](#admininfo)&gt; | List of activated device management applications. |
+
+**Error codes**
+
+For details about the following error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| Error Code ID | Error Message                                                |
+| ------------ | ------------------------------------------------------------ |
+| 201          | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001      | The application is not an administrator application of the device. |
+| 9200002      | The administrator application does not have permission to manage the device. |
+| 9200016      | Service timeout. |
+
+
+**Example**
+
+```ts
+import { adminManager } from '@kit.MDMKit';
+
+try {
+  let result: boolean = adminManager.isSelfSuperAdmin();
+  if (result) {
+    let adminInfos: Array<adminManager.AdminInfo> = adminManager.getAdminInfos();
+    console.info(`Succeeded in getting admin infos :${JSON.stringify(adminInfos)}`);
+  } else {
+    console.error('current application is not SDA');
+  }
+} catch (err) {
+  console.error(`Failed to get admin infos. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## adminManager.isSelfSuperAdmin
+
+isSelfSuperAdmin(): boolean
+
+Queries whether the current application is activated as a [super device management application](../../mdm/mdm-kit-term.md#super-device-admin-sda).
+
+**Since:** 26.0.1
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Return value**
+
+| Type    | Description                                                       |
+| ------- | ---------------------------------------------------------- |
+| boolean | Returns true if the current application is activated as a super device management application; returns false otherwise. |
+
+**Example**
+
+```ts
+import { adminManager } from '@kit.MDMKit';
+
+try {
+  let result: boolean = adminManager.isSelfSuperAdmin();
+  console.info(`Succeeded in querying admin is super admin or not : ${result}`);
+} catch (err) {
+  console.error(`Failed to query admin is super admin or not. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -643,8 +726,6 @@ try {
 Enumerates the system management events that can be subscribed to.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-
 
 | Name                                        | Value  | Description          |
 | -------------------------------------------- | ---- | -------------- |
@@ -663,17 +744,19 @@ Enumerates the system management events that can be subscribed to.
 
 ## AdminType<sup>15+</sup>
 
-Enumerates the types of device administrator applications.
+Enumerates the types of device administrator applications. 
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 | Name               | Value | Description   |
 | ----------------- | ---- | ----- |
+| ADMIN_TYPE_NORMAL  | 0x00  | [Normal device management application](../../mdm/mdm-kit-term.md#device-admin-da).<br> **Since:** 26.0.1  |
+| ADMIN_TYPE_SUPER   | 0x01  |  [Super device management application](../../mdm/mdm-kit-term.md#super-device-admin-sda).<br> **Since:** 26.0.1     |
 | ADMIN_TYPE_BYOD  | 0x02 | BYOD device administrator application.|
 
 ## Policy<sup>20+</sup>
 
-Defines the policy type for the trustlist or blocklist.
+Policy type for allowing or disabling the list.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -683,4 +766,19 @@ Defines the policy type for the trustlist or blocklist.
 | ----------------- | ---- | ----- |
 | BLOCK_LIST  | 0 | Blocklist.|
 | TRUST_LIST  | 1 | Trustlist.|
-<!--no_check-->
+
+## AdminInfo
+
+Describes the device management application information.
+
+**Since:** 26.0.1
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Name        | Type                  | Readable | Optional | Description                                       |
+| ----------- | --------------------- | ---- | ---- | ------------------------------------------ |
+| type        | [AdminType](#admintype15) | No   | No   | Type of the device management application.                         |
+| bundleName  | string                | No   | No   | Bundle name of the application where the device management application resides.               |
+| abilityName | string                | No   | No   | Ability name of the enterprise device management extension ability.        |

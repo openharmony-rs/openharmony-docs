@@ -73,9 +73,9 @@ Text(content?: string \| Resource, value?: TextOptions)
 | fontVariations | 设置可变字体的属性。**起始版本：** 26.0.0 |
 | letterSpacing | 设置文本字符间距。 |
 | shaderStyle<sup>20+</sup> | 设置文本渐变或纯色效果。 |
-| strokeColor | 设置文本描边的颜色。<br>**起始版本：** 26.2.0 |
-| strokeJoinStyle | 设置文本描边的拐角样式。<br>**起始版本：** 26.2.0 |
-| strokeWidth | 设置文本描边的宽度。<br>**起始版本：** 26.2.0 |
+| strokeColor | 设置文本描边的颜色。<br>**起始版本：** 26.1.0 |
+| strokeJoinStyle | 设置文本描边的拐角样式。<br>**起始版本：** 26.1.0 |
+| strokeWidth | 设置文本描边的宽度。<br>**起始版本：** 26.1.0 |
 | textCase | 设置文本大小写。 |
 | textShadow<sup>10+</sup> | 设置文字阴影效果。 |
 
@@ -386,6 +386,8 @@ ellipsisMode(value: EllipsisMode)
 ellipsisMode属性需要与overflow设置为TextOverflow.Ellipsis以及maxLines属性一起使用，单独设置ellipsisMode属性不生效。
 
 EllipsisMode.START和EllipsisMode.CENTER仅在单行文本超长时生效。
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -782,25 +784,7 @@ heightAdaptivePolicy(value: TextHeightAdaptivePolicy)
 
 规则如下：
 
-```mermaid
-graph TD
-  A[文本自适应布局] --> B{模式选择}
-  B -->|MAX_LINES_FIRST| C[优先用maxLines调整高度]
-  C --> D{布局是否超过约束?}
-  D -->|是| E[在minFontSize~maxFontSize范围内缩小字体以显示更多文本]
-  D -->|否| F[保持当前布局]
-  B -->|MIN_FONT_SIZE_FIRST| G[优先用minFontSize调整高度]
-  G --> H{能否一行显示?}
-  H -->|是| I[在minFontSize~maxFontSize范围内增大字体至最大]
-  H -->|否| J[按minFontSize显示]
-  B -->|LAYOUT_CONSTRAINT_FIRST| K[优先用布局约束调整高度]
-  K --> L{布局是否超过约束?}
-  L -->|是| M[缩小字体以满足约束]
-  M --> N{缩小到minFontSize后仍超约束?}
-  N -->|是| O[删除超过布局约束的行]
-  N -->|否| F
-  L -->|否| F
-```
+![](figures/heightAdaptivePolicy-flowchart.png)
 
 - MAX_LINES_FIRST模式：优先使用[maxLines](#maxlines)属性来调整文本高度。如果使用maxLines属性的布局大小超过了布局约束，则尝试在[minFontSize](#minfontsize)和[maxFontSize](#maxfontsize)的范围内缩小字体以显示更多文本。
 
@@ -1201,6 +1185,16 @@ includeFontPadding(include: Optional\<boolean>)
 
 设置是否在首行和尾行增加间距以避免文字截断。不通过该接口设置，默认不增加间距。
 
+从API版本26.1.0开始，该接口与[fallbackLineSpacing](#fallbacklinespacing23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
+```json
+"metadata": [
+  {
+    "name": "configTextStyleOptimizeFlagInArkUI",
+    "value": "true"
+  }
+]
+```
+
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -1218,6 +1212,16 @@ includeFontPadding(include: Optional\<boolean>)
 fallbackLineSpacing(enabled: Optional\<boolean>)
 
 针对多行文字叠加，支持行高基于文字实际高度自适应。此接口仅当行高小于文字实际高度时生效。不通过该接口设置，默认行高不基于文字实际高度自适应。
+
+从API版本26.1.0开始，该接口与[includeFontPadding](#includefontpadding23)支持通过module.json5中配置[metadata](../../../../application-dev/quick-start/module-structure.md#metadata对象内部结构)字段统一开启，两个能力同时生效，不支持单独开启。配置后，[Text](ts-basic-components-text.md)、[TextArea](ts-basic-components-textarea.md)、[TextInput](ts-basic-components-textinput.md)、[RichEditor](ts-basic-components-richeditor.md)、[Search](ts-basic-components-search.md)等文本类组件在未显式设置对应属性时默认按true处理；组件显式设置的值优先于metadata开关；未配置metadata的应用行为不变。配置如下：
+```json
+"metadata": [
+  {
+    "name": "configTextStyleOptimizeFlagInArkUI",
+    "value": "true"
+  }
+]
+```
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -1292,8 +1296,6 @@ orphanCharOptimization(enabled: Optional\<boolean>)
 孤字优化通过更高效地处理孤立字符（即段落最后一行的首个字符）来改善文本布局。开启后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[wordBreak](#wordbreak11)为非BREAK_ALL并且待排版文本首个[TextStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)的[locale](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)为“zh-Hans”或“zh-Hant”时生效。
 
 **起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -1419,11 +1421,11 @@ strokeColor(color: Optional\<ResourceColor>)
 
 设置文本描边的颜色。未通过该接口设置时，默认为字体颜色。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
-**卡片能力：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1441,9 +1443,9 @@ strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle \| undefined)
 
 设置文本描边的拐角样式。未通过该接口设置时，默认值为StrokeJoinStyle.MITER_JOIN，文本拐角处表现为尖角。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1461,11 +1463,11 @@ strokeWidth(width: Optional\<LengthMetrics>)
 
 设置文本描边的宽度。未通过该接口设置时，默认值为0，无描边效果。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.1.0
 
-**卡片能力：** 从API版本26.2.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1729,6 +1731,8 @@ wordBreak(value: WordBreak)
 默认情况下，不调用wordBreak或者设置WordBreak.BREAK_WORD时，文本截断按字进行。例如，英文以单词为最小单位进行截断。
 
 WordBreak.BREAK_ALL与{overflow:&nbsp;TextOverflow.Ellipsis}、maxLines组合使用，可实现英文单词按字母截断，超出部分以省略号显示。
+
+**卡片能力：** 从API版本26.1.0开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -4095,7 +4099,7 @@ struct Utf16GlyphHighlightPage {
 
 该示例通过[strokeWidth](#strokewidth)、[strokeColor](#strokecolor)和[strokeJoinStyle](#strokejoinstyle)属性为Text设置文本描边样式，分别展示描边宽度、描边颜色和描边拐角样式的效果，并演示了将描边宽度设为负值时显示实心字的效果。
 
-从API版本26.2.0开始，新增[strokeColor](#strokecolor)、[strokeWidth](#strokewidth)和[strokeJoinStyle](#strokejoinstyle)属性。
+从API版本26.1.0开始，新增[strokeColor](#strokecolor)、[strokeWidth](#strokewidth)和[strokeJoinStyle](#strokejoinstyle)属性。
 
 ```ts
 // xxx.ets

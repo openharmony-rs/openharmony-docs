@@ -104,6 +104,6 @@
 
 - [SQLite Debugging Tool](sqlite-database-debug-tool.md)
 
-- [ArkData Glossary](data-terminology.md)
+- [Glossary](data-terminology.md)
 
 - [ArkData FAQs](data-faq.md)

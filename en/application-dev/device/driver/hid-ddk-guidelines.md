@@ -5,11 +5,11 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:10.501Z pushedAt=2026-06-25T06:57:09.523Z -->
+<!-- md-trans-meta sourceCommit=f78ab21ce47ccf91f4a9260cbc609297b8e86f9f translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Overview
 
-The Human Interface Device (HID) Driver Development Kit (HidDdk) is a toolset that helps you develop HID drivers at the application layer based on the user mode. It provides APIs for accessing HID devices on a host, including creating a HID device, sending events to a device, destroying a device, opening or closing a device, reading and writing a report, and obtaining device information.
+The Human Interface Device (HID) Driver Development Kit (HidDdk) is a toolkit that helps you develop HID drivers at the application layer based on the user mode. It provides APIs for accessing HID devices on a host, including creating a HID device, sending events to a device, destroying a device, opening or closing a device, reading and writing a report, and obtaining device information.
 
 The HidDdk can be used to develop drivers for devices that use HID protocol to transfer data over a USB bus, or for devices that use peripheral drivers to create virtual devices to exchange information with non-standard devices.
 
@@ -45,24 +45,24 @@ A non-standard peripheral application obtains the HID device ID by using the per
 
 | Name| Description|
 | -------- | -------- |
-| OH_Hid_CreateDevice(Hid_Device *hidDevice, Hid_EventProperties *hidEventProperties) | Creates a HID device. When the device is no longer required, call **OH_Hid_DestroyDevice** to destroy it.|
-| OH_Hid_EmitEvent(int32_t deviceId, const Hid_EmitItem items[], uint16_t length) | Sends an event to a HID device.|
-| OH_Hid_DestroyDevice(int32_t deviceId) | Destroys a HID device.|
+| int32_t OH_Hid_CreateDevice(Hid_Device *hidDevice, Hid_EventProperties *hidEventProperties) | Creates a HID device. When the device is no longer required, call **OH_Hid_DestroyDevice** to destroy it.|
+| int32_t OH_Hid_EmitEvent(int32_t deviceId, const Hid_EmitItem items[], uint16_t length) | Sends an event to a HID device.|
+| int32_t OH_Hid_DestroyDevice(int32_t deviceId) | Destroys a HID device.|
 | int32_t OH_Hid_Init(void) | Initializes the HidDdk.|
 | int32_t OH_Hid_Release(void) | Releases the HidDdk.|
 | int32_t OH_Hid_Open(uint64_t deviceId, uint8_t interfaceIndex, Hid_DeviceHandle **dev) | Opens the device specified by **deviceId** and **interfaceIndex**.|
 | int32_t OH_Hid_Close(Hid_DeviceHandle **dev) | Closes a HID device.|
 | int32_t OH_Hid_Write(Hid_DeviceHandle *dev, uint8_t *data, uint32_t length, uint32_t *bytesWritten) | Writes a report to a HID device.|
-| int32_t OH_Hid_ReadTimeout(Hid_DeviceHandle *dev, uint8_t *data, uint32_t buffSize, int timeout, uint32_t *bytesRead) | Reads a report from a HID device within the specified time.|
-| int32_t OH_Hid_Read(Hid_DeviceHandle *dev, uint8_t *data, uint32_t buffSize, uint32_t *bytesRead) | Reads a report from a HID device in the specified mode. The blocking mode (that is, blocking remains active until data can be read) is used by default. You can call **OH_Hid_SetNonBlocking** to change the mode.|
-| int32_t OH_Hid_SetNonBlocking(Hid_DeviceHandle *dev, int nonblock) | Sets the device read mode to non-blocking mode.|
+| int32_t OH_Hid_ReadTimeout(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, int timeout, uint32_t *bytesRead) | Reads a report from a HID device within the specified time.|
+| int32_t OH_Hid_Read(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, uint32_t *bytesRead) | Reads a report from a HID device in the specified mode. The blocking mode (that is, blocking remains active until data can be read) is used by default. You can call **OH_Hid_SetNonBlocking** to change the mode.|
+| int32_t OH_Hid_SetNonBlocking(Hid_DeviceHandle *dev, int nonBlock) | Sets the device read mode to non-blocking mode.|
 | int32_t OH_Hid_GetRawInfo(Hid_DeviceHandle *dev, Hid_RawDevInfo *rawDevInfo) | Obtains the raw information of a HID device.|
-| int32_t OH_Hid_GetRawName(Hid_DeviceHandle *dev, char *data, uint32_t buffSize) | Obtains the raw name of a HID device.|
-| int32_t OH_Hid_GetPhysicalAddress(Hid_DeviceHandle *dev, char *data, uint32_t buffSize) | Obtains the physical address of a HID device.|
-| int32_t OH_Hid_GetRawUniqueId(Hid_DeviceHandle *dev, uint8_t *data, uint32_t buffSize) | Obtains the raw unique identifier of a HID device.|
+| int32_t OH_Hid_GetRawName(Hid_DeviceHandle *dev, char *data, uint32_t bufSize) | Obtains the raw name of a HID device.|
+| int32_t OH_Hid_GetPhysicalAddress(Hid_DeviceHandle *dev, char *data, uint32_t bufSize) | Obtains the physical address of a HID device.|
+| int32_t OH_Hid_GetRawUniqueId(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize) | Obtains the raw unique identifier of a HID device.|
 | int32_t OH_Hid_SendReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, const uint8_t *data, uint32_t length) | Sends a report to a HID device.|
-| int32_t OH_Hid_GetReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, uint8_t *data, uint32_t buffSize) | Obtains a report from a HID device.|
-| int32_t OH_Hid_GetReportDescriptor(Hid_DeviceHandle *dev, uint8_t *buf, uint32_t buffSize, uint32_t *bytesRead) | Obtains the report descriptor of a HID device.|
+| int32_t OH_Hid_GetReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, uint8_t *data, uint32_t bufSize) | Obtains a report from a HID device.|
+| int32_t OH_Hid_GetReportDescriptor(Hid_DeviceHandle *dev, uint8_t *buf, uint32_t bufSize, uint32_t *bytesRead) | Obtains the report descriptor of a HID device.|
 
 For details about the APIs, see [HidDdk](../../reference/apis-driverdevelopment-kit/capi-hidddk.md).
 
@@ -183,7 +183,7 @@ libhid.z.so
    uint32_t bInterfaceNum1 = 0x00;
    // Open the HID device specified by deviceId and interfaceIndex1. Generally, it is a /dev/hidraw0 file.
    ret = OH_Hid_Open(deviceID_, bInterfaceNum1, &hid_);
-   if (ret != 0) {
+   if (ret != HID_DDK_SUCCESS) {
        OH_LOG_ERROR(LOG_APP, "Failed to open hid device, interface number:%{public}u ret:%{public}d",
            bInterfaceNum1, ret);
        return ret;
@@ -191,7 +191,7 @@ libhid.z.so
    uint32_t bInterfaceNum2 = 0x01;
    // Open the HID device specified by deviceId and interfaceIndex2. Generally, it is a /dev/hidraw1 file.
    ret = OH_Hid_Open(deviceID_, bInterfaceNum2, &hid2_);
-   if (ret != 0) {
+   if (ret != HID_DDK_SUCCESS) {
        OH_LOG_ERROR(LOG_APP, "Failed to open hid device, interface number:%{public}u ret:%{public}d",
            bInterfaceNum2, ret);
        return ret;

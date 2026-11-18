@@ -5,6 +5,7 @@
 <!--Designer: @YanSanzo-->
 <!--Tester: @tinygreyy-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=f2c7727dff910038fdcf1b75fb074e51aa470331 translatedAt=2026-11-03T07:29:03.543Z pushedAt=2026-11-04T03:11:19.995Z nl=1 -->
 
 The **MovingPhotoView** component is used to play moving photos and control the playback status.
 
@@ -54,7 +55,7 @@ Enumerates the extended range modes available for the cover image of the **Movin
 | ---------------------- | ------ | ----------------- |
 | HIGH                | 0      | Enables unrestricted extended range for HDR effects. The recommended decoding format is YCBCR_P010.|
 | CONSTRAINT         | 1      | Allows limited extended range for the image content.|
-| STANDARD            | 2      | Keeps the image content within the standard dynamic range for SDR effects. The recommended decoding formats are UNKNOWN and RGBA_8888.|
+| STANDARD            | 2      | Allows the image content dynamic range to be limited to the standard range, displaying the SDR effect. The decoding format to use is UNKNOWN or RGBA_8888. |
 
 ## MovingPhotoViewAttribute
 
@@ -73,7 +74,7 @@ Sets the strategy for processing a moving photo while it is being played.
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters**
- 	 
+  
 | Name| Type                                                                         | Mandatory| Description                            |
 | ------ | ----------------------------------------------------------------------------- | ---- | -------------------------------- |
 | strategy  | [media.PlaybackStrategy](../../../application-dev/reference/apis-media-kit/arkts-apis-media-i.md#playbackstrategy12) | Yes  | Strategy for processing a moving photo while it is being played.|
@@ -278,14 +279,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Non-system applications are not allowed to use system APIs. |
 
 ### notifyMovingPhotoTransition<sup>23+</sup>
- 	 
+  
 notifyMovingPhotoTransition(): void
 
 Notifies the component to execute the transition animation for the cover image.
 
 **System API**: This is a system API.
-
-**Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 

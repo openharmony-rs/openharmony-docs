@@ -1,10 +1,11 @@
 # @ohos.multimedia.audioHaptic (Audio-Haptic) (System API)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=fda8b356100ee979180a8b59209046cd3008e3cf translatedAt=2026-11-03T04:34:49.164Z pushedAt=2026-11-04T03:11:47.062Z nl=1 -->
 
 Audio-haptic enables users to get rhythmic auditory and haptic feedback while having incoming calls or messages.
 
@@ -88,7 +89,7 @@ const result: boolean = audioHapticPlayerInstance.isHapticsRampSupported();
 
 enableHapticsInSilentMode(enable: boolean): void
 
-Enables the audio-haptic player to provide haptic feedback even when the device is in silent mode.
+Sets whether to enable haptics in silent mode.
 
 > **NOTE**
 >
@@ -127,7 +128,7 @@ Sets the intensity of haptic feedback for this audio-haptic player. This API use
 
 > **NOTE**
 >
->This API must be called before the audio-haptic player is released. It can be called only once during a single playback.
+> This method must be called before the audio-haptic player is released, and it can be called only once for each playback.
 
 **System API**: This is a system API.
 
@@ -176,8 +177,8 @@ Sets the haptic ramp for this audio-haptic player. This API uses a promise to re
 
 > **NOTE**
 >
->- This API must be called before and after the audio-haptic player plays and before the player is released.
->- This API can be called only once.
+> - This method must be used before or after playback of the audio-haptic player, and before the player is released.
+> - This method can be called only once.
 
 **System API**: This is a system API.
 

@@ -1,10 +1,11 @@
 # Class (FocusController)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-02T12:42:14.502Z pushedAt=2026-11-05T07:49:56.990Z nl=1 -->
 
 Provides the capability to control focus, including clearing, moving, and activating focus. This is suitable for scenarios where you need to manage the focus state of a page or component and control focus navigation. It helps you optimize focus interaction experiences with input methods such as keyboards.
 
@@ -180,7 +181,7 @@ Sets the [focus activation state](../../ui/arkts-common-events-focus-event.md) o
 **Example**
 
 ```ts
-// This example demonstrates how to enter the focus activation state when the page loading is completed. In this state, arrow keys can be used for focus navigation.
+// This example demonstrates how to enter the focus activation state when the component is about to appear, and focus navigation between buttons can be performed using the arrow keys.
 @Entry
 @Component
 struct ActivateExample {
@@ -310,7 +311,7 @@ struct CustomDialogExample {
       Text('This is a custom dialog box')
         .fontSize(30)
         .height(100)
-      Text('The dialog box should not automatically acquire focus')
+      Text('The dialog box should not automatically obtain focus')
         .fontSize(20)
         .height(100)
       Button('Close Dialog Box')
@@ -370,7 +371,7 @@ Sets the priority of key event handling. This is suitable for scenarios where bo
 
 ```ts
 
-// This example demonstrates how to set the key event processing priority after page loading is complete.
+// This example demonstrates how to set the key event processing priority when a component is about to appear.
 @Entry
 @Component
 struct Index {

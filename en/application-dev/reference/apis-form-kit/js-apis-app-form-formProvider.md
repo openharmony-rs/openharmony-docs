@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=37d639b1fd701402e23a0dda5aa6090d613d1923 translatedAt=2026-09-15T01:53:02.220Z pushedAt=2026-09-15T08:28:34.685Z -->
+<!-- md-trans-meta sourceCommit=33704350bc26c6dbfbf1006f9e73defcee31ebbd translatedAt=2026-11-03T06:58:03.877Z pushedAt=2026-11-04T03:11:19.940Z nl=1 -->
 
 The formProvider module provides capabilities such as obtaining widget information, updating widgets, and setting the widget refresh time. As a bridge between the widget provider and the widget management service, this module communicates with FormExtension through the IPC mechanism to update widgets and obtain information. It applies to scenarios where the widget provider needs to proactively update widget content, manage the widget lifecycle, and obtain the widget running status, helping you implement dynamic widget updates and status management.
 
@@ -132,10 +132,7 @@ try {
 
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback&lt;void&gt;): void
 
-Updates the specified widget. This API uses an asynchronous callback to return the result. It applies to scenarios where the widget content is proactively updated when widget data changes, such as weather data changes, stock price updates, and task progress updates.
-> **NOTE**
->
-> Since API version 20, if the widget update data is updated through shared memory, the total size of the update data must not exceed 10 MB, and the number of images to update must not exceed 20. In API version 19 and earlier, the maximum number of image files is 5, each limited to 2 MB of memory. Images exceeding the limit may be displayed abnormally.
+Updates the specified card. This API uses an asynchronous callback to return the result. This is applicable to scenarios where the card content is proactively updated when card data changes, such as weather data changes, stock price updates, and task progress updates.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -146,7 +143,7 @@ Updates the specified widget. This API uses an asynchronous callback to return t
 | Name| Type                                                                   | Mandatory| Description            |
 | ------ | ---------------------------------------------------------------------- | ---- | ---------------- |
 | formId | string                                                                 | Yes  | ID of the widget to update.|
-| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | Yes | Data used for the update. For details about the restrictions, see the description above. |
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | Yes   | Data used for the update.    |
 | callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the update result. If the operation is successful, error is undefined. |
 
 **Error codes**
@@ -192,10 +189,7 @@ try {
 
 updateForm(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
 
-Updates the specified widget. This API uses a promise to return the result. It applies to scenarios where the widget content is proactively updated when widget data changes, such as weather data changes, stock price updates, and task progress updates.
-> **NOTE**
->
-> Since API version 20, if the widget update data is updated through shared memory, the total size of the update data must not exceed 10 MB, and the number of images to update must not exceed 20. In API version 19 and earlier, the maximum number of image files is 5, each limited to 2 MB of memory. Images exceeding the limit may be displayed abnormally.
+Updates the specified card. This API uses a promise to return the result. This is applicable to scenarios where the card content is proactively updated when card data changes, such as weather data changes, stock price updates, and task progress updates.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -206,7 +200,7 @@ Updates the specified widget. This API uses a promise to return the result. It a
 | Name| Type                                                                   | Mandatory| Description            |
 | ------ | ---------------------------------------------------------------------- | ---- | ---------------- |
 | formId | string                                                                 | Yes  | ID of the widget to update.|
-| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | Yes | Data used for the update. For details about the restrictions, see the description above. |
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | Yes | Data used for the update. |
 
 **Return value**
 
@@ -706,7 +700,7 @@ Requests a scene-based widget animation effect by the widget provider. This API 
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
-**Device behavior differences:** This API is supported on certain phone models. On unsupported devices, it returns error code [801](../errorcode-universal.md#801-api-not-supported).
+**Device behavior:** This API is supported on some phone models. If the API is called on an unsupported device, error code [801](../errorcode-universal.md#801-api-not-supported-on-some-devices) is returned.
 
 **System capability**: SystemCapability.Ability.Form
 
@@ -780,7 +774,7 @@ Cancels an animation. This API takes effect only for [scene-based widgets](../..
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
-**Device behavior differences:** This API is supported on certain phone models. On unsupported devices, it returns error code [801](../errorcode-universal.md#801-api-not-supported).
+**Device behavior:** This API is supported on some phone models. If the API is called on an unsupported device, error code [801](../errorcode-universal.md#801-api-not-supported-on-some-devices) is returned.
 
 **System capability**: SystemCapability.Ability.Form
 

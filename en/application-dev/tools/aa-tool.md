@@ -5,8 +5,8 @@
 <!--Owner: @lidongrui-->
 <!--Designer: @ccllee1-->
 <!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
-<!-- md-trans-meta sourceCommit=2845f22b3a6c7c573421bce7ff3e32f73246613d translatedAt=2026-07-20T10:51:34.078Z pushedAt=2026-07-21T08:51:22.436Z -->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=9475b58747157bfd14bf8bbea9278bd5015b1d7a translatedAt=2026-11-02T07:54:52.500Z pushedAt=2026-11-03T01:19:20.250Z nl=1 -->
 
 Ability Assistant (aa) is a tool used to start applications and test cases. It provides basic application debugging and testing capabilities, for example, starting application components, forcibly stopping processes, and printing application component information.
 
@@ -26,20 +26,20 @@ hdc shell "aa process -b com.example.myapplication -a EntryAbility -p perf-cmd"
 
 ## aa Commands
 
-| Command| Description|
+| Command | Description |
 |--------|--------|
-| -h/help |  Displays the help information of the aa tool.|
-| start | Starts an application component. The target component can be the PageAbility and ServiceAbility components of the FA model or the UIAbility and ServiceExtensionAbility components of the Stage model. The **exported** tag in the configuration file of the target component cannot be set to **false**.|
-| stop-service | Stops the service. Stops an application component. The target component can be the **ServiceAbility** component of the FA model or the **ExtensionAbility** component of the Stage model.|
-| dump<sup>(deprecated)</sup> |  Prints information about an application component.|
-| force-stop |  Forcibly stops a process based on the bundle name.|
-| test |  Starts the test framework based on the carried parameters.|
-| attach |  Attaches an application to enable it to enter the debugging mode.|
-| detach |  Detaches an application to enable it to exit the debugging mode.|
-| appdebug |  Sets or cancels the waiting-for-debugging state of an application, and obtains the bundle name and persistence flag of an application in the waiting-for-debugging state. The waiting-for-debugging state takes effect only for debugging applications. The setting command of **appdebug** takes effect only for a single application. Once the command is executed repeatedly, the bundle name and persistence flag are replaced with the latest settings.|
-| process | Debugs or optimizes an application. In DevEco Studio, this command is used to integrate debugging and optimization tools.|
-| send-memory-level | Triggers the **onMemoryLevel** lifecycle callback of a process based on its PID and memory usage level.  |
-| pre-start | Pre-starts an application. Pre-starts an application in the background to a specific lifecycle phase, to improve the startup speed when the user clicks the application.|
+| -h/help | Displays the help information of the aa tool. |
+| start | Starts an application component. The target component can be the PageAbility and ServiceAbility components of the FA model or the UIAbility and ServiceExtensionAbility components of the Stage model. The **exported** tag in the configuration file of the target component cannot be set to **false**. |
+| stop-service | Stops the service. Stops an application component. The target component can be the **ServiceAbility** component of the FA model or the **ExtensionAbility** component of the Stage model. |
+| dump<sup>(deprecated)</sup> | Prints information about an application component. |
+| force-stop | Forcibly stops a process based on the bundle name. |
+| test | Starts the test framework based on the carried parameters. |
+| attach | Attaches an application to enable it to enter the debug mode. |
+| detach | Detaches an application to enable it to exit the debug mode. |
+| appdebug | Sets or cancels the waiting-for-debugging state of an application, and obtains the bundle name and persistence flag of an application in the waiting-for-debugging state. The waiting-for-debugging state takes effect only for debugging applications. The setting command of **appdebug** takes effect only for a single application. Once the command is executed repeatedly, the bundle name and persistence flag are replaced with the latest settings. |
+| process | Debugs or optimizes an application. In DevEco Studio, this command is used to integrate debugging and optimization tools. |
+| send-memory-level | onMemoryLevel() callback command. Triggers the **onMemoryLevel()** lifecycle callback of a process based on its PID and memory usage level. |
+| pre-start | Pre-starts an application. Pre-starts an application in the background to a specific lifecycle phase, to improve the startup speed when the user clicks the application. |
 
 ## help
 
@@ -55,7 +55,7 @@ Starts an application component. The target component can be the PageAbility and
 ```bash
 # Start an ability explicitly.
 # To enable an application clone, use [--pi ohos.extra.param.key.appCloneIndex <unsigned integer-value>] to specify the index of the application clone.
- [-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-u <userId>] [-c] [-E] [-D] [-R] [-S] [-W] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f (case-insensitive)] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
+[-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-u <userId>] [-c] [-E] [-D] [-R] [-S] [-W] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f (case-insensitive)] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
 
 # Implicitly start an ability. If none of the parameters in the command is set, the startup fails.
 aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-u <userId>] [-c] [-D] [-E] [-R] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f (case-insensitive)] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>] 
@@ -249,7 +249,7 @@ aa dump -a
   | -------- | -------- | -------- |
   | -h/--help | - | Help information.|
   | -a/--all | - | Application component information in all missions.|
-  | -l/--mission-list | type (All logs are printed if this parameter is left unspecified.)| For better management, the service side maintains four types of MissionLists,<br>as described below:<br>- **NORMAL**: MissionList that is started normally. For example, if A starts B and C, the corresponding MissionList is A->B->C.<br>- **DEFAULT_STANDARD**: If a MissionList is damaged, missions with the launch type set to **multiton** are removed to this MissionList. The Missions in it are not associated with each other.<br>- **DEFAULT_SINGLE**: If a MissionList is damaged, missions with the launch type set to **singleton** are removed to this MissionList. The Missions in it are not associated with each other.<br>- **LAUNCHER**: MissionList for launcher abilities.|
+  | -l/--mission-list | type (all by default) | To facilitate task chain management, the service side maintains four types of task chains.<br/>Possible values:<br/>-&nbsp;NORMAL: a task chain started normally (for example, if A starts B and B starts C, the corresponding task chain is A->B->C)<br/>-&nbsp;DEFAULT_STANDARD: tasks in a broken task chain whose startup mode is `multiton` are placed in this task chain, and these tasks are not associated with each other<br/>-&nbsp;DEFAULT_SINGLE: tasks in a broken task chain whose startup mode is `singleton` are placed in this task chain, and these tasks are not associated with each other<br/>-&nbsp;LAUNCHER: the task chain of the launcher |
   | -e/--extension | elementName | Extended component information.|
   | -u/--userId | UserId | Mission stack information of a specified user ID. This parameter must be used together with other parameters. Example commands: **aa dump -a -u 100** and **aa dump -d -u 100**.|
   | -d/--data | - | DataAbility information.|
@@ -294,7 +294,7 @@ aa dump -a
 Forcibly stops a process based on the bundle name.
 
 ```bash
-aa force-stop <bundle-name> [-p pid] [-r kill-reason]
+aa force-stop <bundle-name> [-p pid] [-r kill-reason] [-u userId]
 ```
 
   **Parameters**
@@ -303,6 +303,7 @@ aa force-stop <bundle-name> [-p pid] [-r kill-reason]
   | -------- |-------------------|
   | -p | Specifies the PID. This parameter must be used together with **-r** to set the exit reason of the process with the specified PID.|
   | -r | Specifies the exit reason of the process. This parameter must be used together with **-p** to set the exit reason of the process with the specified PID.|
+  | -u | Optional parameter. `userId` indicates the ID of the user whose process is to be terminated. In multi-user scenarios, it distinguishes applications under different user accounts on the same device, so that the process of the specified user can be terminated.<br>**Note:** Support for this parameter starts from API version 26.1.0. |
 
   **Return value**
 
@@ -352,6 +353,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
   | -s \<any-key> | Any key-value pair. This parameter is optional.|
   | -w | Test running time, in ms. This parameter is optional.|
   | -D | Debugging mode. This parameter is optional.|
+  | -u | Optional parameter, userId, indicating the user ID, specifying the user where the test suite or test case to be executed resides.<br>**NOTE:** This parameter is supported since API version 26.0.0.|
 
   **Return value**
 
@@ -365,6 +367,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
   | 10105001 | Failed to connect to the ability service. |
   | 10106002 | The aa start command's window option or the aa test command does not support app with release signature. |
   | 10108501 | An internal error occurs during the execution of the aa test command. |
+  | 10104005 | The userId specified by the aa test command is not currently a foreground user. |
 
   **Example**
 
@@ -375,6 +378,8 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
   aa test -b com.example.myapplication -m entry_test -s unittest ActsAbilityTest
   # Start the test framework and specify the timeout interval.
   aa test -b com.example.myapplication -m entry_test -s timeout 10000 -s unittest ActsAbilityTest
+  # Start the Test Framework and Specify the User
+  aa test -b com.example.myapplication -m entry_test -s timeout 10000 -s unittest ActsAbilityTest -u 100
   ```
 
 ## attach
@@ -538,10 +543,10 @@ aa process -b <bundleName> -a <abilityName> [-m <moduleName>] [-p <perf-cmd>] [-
 
 ## send-memory-level
 
-Since API version 13, you can use this command to debug the [onMemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel) lifecycle of an application. You can specify the PID and memory usage level of a process to trigger the **onMemoryLevel** lifecycle callback of the process. This command provides only basic application debugging capabilities and cannot completely simulate real memory pressure test scenarios.
+Since API version 13, you can use this command to debug the [onMemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel) lifecycle of an application. You can specify the PID and memory usage level of a process to trigger the **onMemoryLevel()** lifecycle callback of the process. This command provides only basic application debugging capabilities and cannot completely simulate real memory pressure test scenarios.
 
 ```bash
-# Trigger the onMemoryLevel callback.
+# Triggering the onMemoryLevel() Callback
 aa send-memory-level -p <processId> -l <memoryLevel>
 ```
 
@@ -565,7 +570,7 @@ aa send-memory-level -p <processId> -l <memoryLevel>
 **Example**
 
 ```bash
-# Trigger the onMemoryLevel callback of the application whose process ID is 6066. The callback level is 0.
+# Trigger the onMemoryLevel() callback of the process with PID 6066, where the callback level is 0
 aa send-memory-level -p 6066 -l 0
 ```
 
@@ -1198,3 +1203,21 @@ The value of the **type** parameter in the signing tool is not **debug**.
 Use the signing certificate of the **debug** type and install the newly signed HAP. Then, run the command again.
 
 For details about the signing tool and certificate, see [Signing Your App/Atomic Service](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing).
+
+### 10104005 The specified userId is not a foreground user
+
+**Error Message**
+
+The specified userId is not a foreground user.
+
+**Error Description**
+
+The specified userId is not a foreground user.
+
+**Possible Causes**
+
+The specified userId user is not currently in the foreground.
+
+**Solution**
+
+Check whether the specified userId user is in the foreground

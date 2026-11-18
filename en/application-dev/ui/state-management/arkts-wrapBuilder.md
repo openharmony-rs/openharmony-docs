@@ -5,11 +5,11 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=f40d976a55afa9474832553b7faba446f7655708 translatedAt=2026-09-21T11:54:31.514Z pushedAt=2026-09-23T09:58:54.529Z -->
+<!-- md-trans-meta sourceCommit=85829ecc69be975331761318a4754507166212af translatedAt=2026-10-28T04:12:48.665Z pushedAt=2026-10-28T08:21:23.332Z nl=1 -->
 
-When multiple global \@Builder functions are used within a single struct to implement different UI effects, code maintenance becomes challenging and the page structure appears cluttered. In this case, you can use [wrapBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md) to encapsulate the global \@Builder.
+  When multiple global \@Builder functions are used within a single struct to implement different UI effects, code maintenance becomes challenging and the page structure appears cluttered. In this case, you can use [wrapBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md) to encapsulate the global \@Builder.
 
- Before reading this topic, you are advised to read [\@Builder](./arkts-builder.md).
+  Before reading this topic, you are advised to read [\@Builder](./arkts-builder.md).
 
 > **NOTE**
 >
@@ -37,7 +37,7 @@ function testBuilder() {
 
 In the preceding code, **builderArr** is an array of \@Builder methods. When you obtain each \@Builder method in the ForEach loop, an issue arises where the \@Builder method cannot be used in the UI method.
 
-To address this issue, **wrapBuilder** is introduced as a global \@Builder encapsulation function. wrapBuilder returns a **WrappedBuilder** object, which is used to assign and transfer the [global \@Builder decorated function](arkts-builder.md#global-custom-builder-function).
+To address this issue, **wrapBuilder** is introduced as a global \@Builder encapsulation function. wrapBuilder returns a **WrappedBuilder** object, which is used to assign and transfer the [global \@Builder decorated function](arkts-builder.md#global-custom-builder-function). 
 
 ## Available APIs
 
@@ -74,14 +74,14 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
 
 1. **wrapBuilder** only accepts a [global \@Builder decorated function](arkts-builder.md#global-custom-builder-function) as its parameter.
 
-2. The **builder** property of the **WrappedBuilder** object can be used only in the struct.
+2. The **builder** attribute of the **WrappedBuilder** object can be used only in the struct.
 
 ## Assigning a Value to a Variable Using the @Builder Method
 
 Use the **myBuilder** method decorated with the \@Builder decorator as the parameter of **wrapBuilder**, and assign the return value of **wrapBuilder** to the **globalBuilder** variable. In this way, the \@Builder method can be used after being assigned to a variable.
 
  <!-- @[wrapbuilder_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageTwo.ets) -->  
-
+ 
  ``` TypeScript
  @Builder
  function myBuilder(value: string, size: number) {
@@ -164,7 +164,7 @@ struct IndexItem {
 
 ## Assigning a Value to a Class or API Attribute Using the @Builder Method
 
-Use the \@Builder-decorated method `myBuilder` as the parameter of **wrapBuilder**, and assign the return value of **wrapBuilder** to the property in the `ChildOptions` API. The property can be transferred to other child components in the form of data.
+Use the \@Builder-decorated method `myBuilder` as the parameter of **wrapBuilder**, and assign the return value of **wrapBuilder** to the attribute in the `ChildOptions` API. The attribute can be transferred to other child components in the form of data.
 
 <!-- @[wrapbuilder_as_field](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/WrapBuilderAsField.ets) --> 
 
@@ -259,7 +259,7 @@ struct Parent {
 
 ### Failure of Duplicate wrapBuilder Initialization
 
-Within the same custom component, the same **wrapBuilder** can be initialized only once. For example, after `builderObj` is initialized with `wrapBuilder(myBuilderFirst)`, assigning `wrapBuilder(myBuilderSecond)` to `builderObj` again will not take effect.
+Within the same custom component, the same wrapBuilder can be initialized only once. For example, after the `globalBuilder` attribute of `builderObj` is initialized through `wrapBuilder(myBuilderFirst)`, assigning `wrapBuilder(myBuilderSecond)` to the attribute again will not trigger a UI refresh.
 
 <!-- @[wrapbuilder_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFive.ets) --> 
 

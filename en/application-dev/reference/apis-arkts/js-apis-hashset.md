@@ -1,16 +1,17 @@
 # @ohos.util.HashSet (Nonlinear Container HashSet)
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong; @lijin1039-->
+<!--Designer: @Malzahar; @lijin1039-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=d1445e627393d0b704d7fd66f2f8322beeeda048 translatedAt=2026-11-06T09:20:55.742Z pushedAt=2026-11-13T06:39:01.060Z nl=1 -->
 
-HashSet is implemented based on [HashMap](js-apis-hashmap.md). In HashSet, only the **value** object is processed.
+HashSet is a non-linear container used to store a collection of non-duplicate elements, supporting efficient element addition, removal, and existence checking. HashSet is implemented based on [HashMap](js-apis-hashmap.md) and operates only on the value objects of elements, without involving the concept of keys.
 
-Unlike [TreeSet](js-apis-treeset.md), which stores and accesses data in sorted order, HashSet sorts data by hash value. This means that HashSet may use a different order when storing and accessing elements. Both of them allow only unique elements. However, null values are allowed in HashSet, but not in TreeSet, because null values may affect the order of elements in the container.
+Compared with [TreeSet](js-apis-treeset.md), the data in HashSet is distributed and stored by hash value, so the insertion order of elements may be inconsistent with the traversal order, whereas TreeSet stores elements in an ordered manner according to their natural ordering or a custom comparator. Elements in both collections are not allowed to be duplicated. HashSet allows inserting null values, while TreeSet does not recommend inserting null values, as this affects the sorting result.
 
-**Recommended use case**: Use HashSet when you need a set that has only unique elements or need to deduplicate a set.
+**Recommended use cases:** When you need to ensure that elements in a collection are not duplicated, or need to remove duplicate elements from an existing collection, HashSet is recommended. You can also leverage the hash-based O(1) lookup feature of HashSet for efficient element existence checking.
 
 This topic uses the following to identify the use of generics:
 - T: Type
@@ -43,21 +44,22 @@ import { HashSet } from '@kit.ArkTS';
 **Example**
 
 ```ts
+// Create a HashSet instance and add elements.
 let hashSet = new HashSet<number>();
 hashSet.add(1);
 hashSet.add(2);
 hashSet.add(3);
 hashSet.add(4);
 hashSet.add(5);
-let res = hashSet.length;
-console.info("length:", res);  // length: 5
+let result = hashSet.length;
+console.info("length:", result);  // length: 5
 ```
 
 ### constructor
 
 constructor()
 
-A constructor used to create a **HashSet** instance.
+The constructor of HashSet, used to create an empty HashSet instance.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -92,7 +94,7 @@ Checks whether this HashSet is empty (contains no element).
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Check result. The value **true** is returned if the HashSet is empty; otherwise, **false** is returned.|
+| boolean | Returns true when empty, and returns false when not empty. |
 
 **Error codes**
 
@@ -105,6 +107,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
+// Create a HashSet instance and check whether it is empty.
 const hashSet = new HashSet<number>();
 let result = hashSet.isEmpty();
 console.info("result:", result);  // result: true
@@ -115,7 +118,7 @@ console.info("result:", result);  // result: true
 
 has(value: T): boolean
 
-Checks whether this HashSet has the specified element.
+Checks whether the HashSet contains the specified element. The lookup is based on the hash value and has O(1) time complexity.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -125,26 +128,26 @@ Checks whether this HashSet has the specified element.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | T | Yes| Target element.|
+| value | T | Yes | Specifies the element to find. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Operation result. The value **true** is returned if the specified element is contained; otherwise, **false** is returned.|
+| boolean | Returns true if the specified element is contained; returns false otherwise. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200011 | The has method cannot be bound. |
 
 **Example**
 
 ```ts
+// Create a HashSet instance and add elements.
 let hashSet = new HashSet<string>();
 hashSet.add("squirrel");
 let result = hashSet.has("squirrel");
@@ -156,7 +159,7 @@ console.info("result:", result);  // result: true
 
 add(value: T): boolean
 
-Adds elements to this HashSet.
+Adds an element to the HashSet. After a successful addition, the length of the HashSet increases by 1. If the element to be added already exists, it will not be added again, false is returned, and the length remains unchanged.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -166,27 +169,28 @@ Adds elements to this HashSet.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | T | Yes| Target element.|
+| value | T | Yes | Element to add. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Operation result. The value **true** is returned if the element is added; otherwise, **false** is returned.|
+| boolean | Returns true if the element is added successfully, and returns false if the element already exists. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200011 | The add method cannot be bound. |
 
 **Example**
 
 ```ts
+// Create a HashSet instance.
 let hashSet = new HashSet<string>();
+// Add elements to the HashSet.
 let result = hashSet.add("squirrel");
 console.info("result:", result);  // result: true
 ```
@@ -196,7 +200,7 @@ console.info("result:", result);  // result: true
 
 remove(value: T): boolean
 
-Removes an element from this HashSet.
+Removes the specified element from the HashSet. After a successful removal, the length of the HashSet decreases by 1. If the specified element does not exist, the collection remains unchanged and false is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -206,26 +210,26 @@ Removes an element from this HashSet.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | T | Yes| Target element.|
+| value | T | Yes | Specifies the element to delete. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| boolean | Operation result. The value **true** is returned if the element is removed; otherwise, **false** is returned.|
+| boolean | Returns true if the specified element is deleted successfully, and returns false if the specified element does not exist. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200011 | The remove method cannot be bound. |
 
 **Example**
 
 ```ts
+// Create a HashSet instance and add elements.
 let hashSet = new HashSet<string>();
 hashSet.add("squirrel");
 hashSet.add("sparrow");
@@ -255,6 +259,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
+// Create a HashSet instance and add elements.
 let hashSet = new HashSet<string>();
 hashSet.add("squirrel");
 hashSet.add("sparrow");
@@ -268,7 +273,11 @@ console.info("result:", result);  // result: true
 
 values(): IterableIterator&lt;T&gt;
 
-Returns an iterator that contains all the values in this HashSet.
+Returns a new iterator object that contains all the values in this HashSet.
+
+> **NOTE**
+>
+> It is not recommended to use the add and remove methods during the values iteration process, as this may cause an abnormal state during the iteration process. It is recommended to use a for loop for safe insertion and deletion operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -278,7 +287,7 @@ Returns an iterator that contains all the values in this HashSet.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;T&gt; | Iterator obtained.|
+| IterableIterator&lt;T&gt; | Returns an iterator object that contains all the values in this HashSet. |
 
 **Error codes**
 
@@ -291,6 +300,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
+// Create a HashSet instance and add elements.
 let hashSet = new HashSet<string>();
 hashSet.add("squirrel");
 hashSet.add("sparrow");
@@ -307,7 +317,7 @@ for (let value of values) {
 
 forEach(callbackFn: (value?: T, key?: T, set?: HashSet&lt;T&gt;) => void, thisArg?: Object): void
 
-Uses a callback to traverse each element.
+Calls the callback function once for each element during the iteration process. It is not recommended to use the add and remove methods to modify the HashSet in the forEach callback, because this may cause an abnormal state during the iteration process.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -317,39 +327,39 @@ Uses a callback to traverse each element.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| callbackFn | function | Yes| Callback invoked to traverse the elements in the HashSet.|
-| thisArg | Object | No| Value of **this** to use when **callbackFn** is invoked. The default value is this instance.|
+| callbackFn | function | Yes | Callback function, invoked once for each element during the iteration process. The callback parameters include value, key, and set. For details, see the parameter description of callbackFn. |
+| thisArg | Object | No | Used as the this value when callbackFn is invoked. Pass this parameter when you need to change the this reference inside the callback function. If not passed, the default value is the current instance object. |
 
 callbackFn parameters
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | T | No| Value of the element that is currently traversed.|
-| key | T | No| Key of the element that is currently traversed (same as **value**).|
-| set | HashSet&lt;T&gt; | No| Instance that calls the **forEach** API. The default value is this instance.|
+| value | T | No | Value of the element currently being traversed. This parameter is always passed in during forEach traversal. |
+| key | T | No | Value of the element currently being traversed (same as value). This parameter is always passed in during forEach traversal. |
+| set | [HashSet&lt;T&gt;](#hashset) | No | Instance object that currently calls the forEach method. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Utils Error Codes](errorcode-utils.md).
+For details about the following error codes, see [Language Basics Library Error Codes](errorcode-utils.md).
 
 | ID| Error Message|
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **Example**
 
 ```ts
+// Create a HashSet instance and add elements
 let hashSet = new HashSet<string>();
 hashSet.add("sparrow");
 hashSet.add("squirrel");
 hashSet.forEach((value: string, key: string): void => {
-  console.info("value:" + value, "key:" + key);
+  console.info("value:", value, "key:", key);
 });
 // value:squirrel key:squirrel
 // value:sparrow key:sparrow
 ```
 ```ts
-// You are not advised to use the add and remove APIs in forEach because they may cause unpredictable risks such as infinite loops. You can use the for loop when inserting or deleting data.
+// It is not recommended to use add and remove in forEach, because they may cause an abnormal state during the iteration process. Use a for loop for safe insertion and deletion.
 let hashSet = new HashSet<string>();
 for(let i = 0; i < 10; i++) {
   hashSet.add("sparrow" + i);
@@ -360,9 +370,13 @@ for(let i = 0; i < 10; i++) {
 ```
 
 ### entries
-entries(): IterableIterator<[T, T]>
+entries(): IterableIterator&lt;[T, T]&gt;
 
-Returns an iterator that contains all the elements in this HashSet.
+Returns a new iterator object that contains all the elements in this HashSet, with each element returned in the form of [value, value].
+
+> **NOTE**
+>
+> It is not recommended to use the add and remove methods during the entries iteration process, because this may cause an abnormal state during the iteration process. It is recommended to use a for loop for safe insertion and deletion operations.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -372,7 +386,7 @@ Returns an iterator that contains all the elements in this HashSet.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator<[T, T]> | Iterator obtained.|
+| IterableIterator&lt;[T, T]&gt; | Returns an iterator object that contains all the elements in this HashSet. |
 
 **Error codes**
 
@@ -385,15 +399,16 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
+// Create a HashSet instance and add elements.
 let hashSet = new HashSet<string>();
 hashSet.add("squirrel");
 hashSet.add("sparrow");
-let iter = hashSet.entries();
-let temp: IteratorResult<[string, string]> = iter.next();
-while(!temp.done) {
-  console.info("key:" + temp.value[0]);
-  console.info("value:" + temp.value[1]);
-  temp = iter.next();
+let entriesIterator = hashSet.entries();
+let iterResult: IteratorResult<[string, string]> = entriesIterator.next();
+while(!iterResult.done) {
+  console.info("key:" + iterResult.value[0]);
+  console.info("value:" + iterResult.value[1]);
+  iterResult = entriesIterator.next();
 }
 // key:squirrel
 // value:squirrel
@@ -401,7 +416,7 @@ while(!temp.done) {
 // value:sparrow
 ```
 ```ts
-// You are not advised to use the set or remove APIs in entries because they may cause unpredictable risks such as infinite loops. You can use the for loop when inserting or deleting data.
+// Not recommended to use add and remove in entries, as they may cause abnormal state during the iteration process. Use a for loop for safe insertion and deletion operations.
 let hashSet = new HashSet<string>();
 for(let i = 0; i < 10; i++) {
   hashSet.add("sparrow" + i);
@@ -415,7 +430,7 @@ for(let i = 0; i < 10; i++) {
 
 [Symbol.iterator]\(): IterableIterator&lt;T&gt;
 
-Returns an iterator, each item of which is a JavaScript object.
+Returns an iterator, each item of which is an element in the HashSet.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -425,7 +440,7 @@ Returns an iterator, each item of which is a JavaScript object.
 
 | Type| Description|
 | -------- | -------- |
-| IterableIterator&lt;T&gt; | Iterator obtained.|
+| IterableIterator&lt;T&gt; | Returns an iterator object that contains all the elements in this HashSet. |
 
 **Error codes**
 
@@ -438,6 +453,7 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 **Example**
 
 ```ts
+// Create a HashSet instance and add elements.
 let hashSet = new HashSet<string>();
 hashSet.add("squirrel");
 hashSet.add("sparrow");
@@ -450,23 +466,23 @@ for (let item of hashSet) {
 // value: sparrow
 
 // Method 2:
-let iter = hashSet[Symbol.iterator]();
-let temp: IteratorResult<string> = iter.next();
-while(!temp.done) {
-  console.info("value: " + temp.value);
-  temp = iter.next();
+let symbolIterator = hashSet[Symbol.iterator]();
+let iterResult: IteratorResult<string> = symbolIterator.next();
+while(!iterResult.done) {
+  console.info("value: " + iterResult.value);
+  iterResult = symbolIterator.next();
 }
 // value: squirrel
 // value: sparrow
 ```
 
 ```ts
-// You are not advised to use the set or remove APIs in Symbol.iterator because they may cause unpredictable risks such as infinite loops. You can use the for loop when inserting or deleting data.
+// Not recommended to use add and remove methods in Symbol.iterator, as they may cause abnormal state during the iteration process. It is recommended to use a for loop for safe insertion and deletion operations.
 let hashSet = new HashSet<string>();
-for(let i = 0;i < 10;i++) {
+for(let i = 0; i < 10; i++) {
   hashSet.add("sparrow" + i);
 }
-for(let i = 0;i < 10;i++) {
+for(let i = 0; i < 10; i++) {
   hashSet.remove("sparrow" + i);
 }
 ```

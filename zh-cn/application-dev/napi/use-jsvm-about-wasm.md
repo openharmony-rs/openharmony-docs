@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍JSVM-API的WebAssembly能力，涵盖Wasm字节码编译、函数级优化编译及wasm cache序列化与反序列化，适用于运行和优化Wasm模块的场景。"
+keywords: [OH_JSVM_CompileWasmModule, OH_JSVM_CompileWasmFunction, OH_JSVM_CreateWasmCache, OH_JSVM_IsWasmModuleObject, OH_JSVM_ReleaseCache, WebAssembly, wasm cache, JIT权限]
+doctype: guide
+status: active
+---
+
 # 使用JSVM-API接口进行WebAssembly模块相关开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

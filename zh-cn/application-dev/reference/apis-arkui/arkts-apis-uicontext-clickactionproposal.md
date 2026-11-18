@@ -44,8 +44,7 @@ import {
   BaseGestureHandlingProposal,
   ClickActionProposal,
   GestureHandlingResolution,
-  TargetedGestureProposal,
-  GestureShortcut,
+  TargetedGestureProposal
 } from '@kit.ArkUI';
 
 @Entry

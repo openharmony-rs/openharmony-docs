@@ -4,9 +4,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=ada336886a6e06f7fda77a14a7da94471e31c791 translatedAt=2026-08-11T10:12:27.761Z pushedAt=2026-08-11T11:34:06.138Z -->
+<!-- md-trans-meta sourceCommit=2c7b6e1a6f31a0a22accd5c528de907f3e12b5c5 translatedAt=2026-11-03T02:54:56.696Z pushedAt=2026-11-03T03:01:27.006Z nl=1 -->
 
 ## Overview
 
@@ -55,6 +55,7 @@ The flow of the main window's lifecycle events is as shown in the following figu
 
 ![lifecycleEvent](figures/window-lifecycle-event.png)
 
+
 ### Listening for the Main Window's Lifecycle State Changes
 
 You can use the following APIs to listen for lifecycle changes of the **WindowStage**.
@@ -71,6 +72,7 @@ You can use the following APIs to listen for lifecycle changes of the **WindowSt
 
   - For the focused and unfocused states of **WindowStage**, it is recommended to use [on('windowEvent')](../reference/apis-arkui/arkts-apis-window-Window.md#onwindowevent10) for listening.
 
+
 ### Differentiated Behavior of UIAbility Lifecycle on Different Devices
 
 In the stage model, when the main window transitions from foreground to background, it also drives the **UIAbility** lifecycle. In this model, extra attention should be paid to the differentiated behavior of this mechanism on different device types.
@@ -79,15 +81,15 @@ In the stage model, when the main window transitions from foreground to backgrou
 
 - **On tablets:**
 
-  - For apps that do not support running on PCs/2-in-1 devices, or apps that support running on both phone and PCs/2-in-1 devices, when the window transitions from the foreground to background, it drives the **UIAbility** to background.
+  - For apps that do not support running on PCs/2-in-1 devices, or apps that support running on both Phone and PCs/2-in-1 devices, when the window transitions from the foreground to background, it drives the **UIAbility** to background.
 
-  - For apps that do not support running on phones but support running on PCs/2-in-1 devices, when the window transitions from foreground to background, it does not drive the **UIAbility** to background.
+  - For apps that do not support running on Phone devices but support running on PCs/2-in-1 devices, when the window transitions from the foreground to background, if the device is in the unlocked state, it does not drive the **UIAbility** to background; if the device is in the locked state, it does not drive the **UIAbility** to background when the app has integrated the status bar, and otherwise it drives the **UIAbility** to background.
 
 - **On PC/2-in-1 devices:**
 
-  - For apps that support running on phones, when the window transitions from foreground to background, it drives the **UIAbility** to background.
+  - For apps that support running on Phone devices, when the window transitions from foreground to background, it drives the **UIAbility** to background.
 
-  - For apps that do not support running on phones, when the window transitions from foreground to background, it does not drive the **UIAbility** to background.
+  - For apps that do not support running on Phone devices, when the window transitions from foreground to background, it does not drive the **UIAbility** to background.
 
 ## Managing the Lifecycle of Secondary Windows
 
@@ -117,3 +119,175 @@ The lifecycle of a secondary window is managed by the app itself, typically incl
 | Global floating window | It does not follow the main window in displaying and hiding.<br>It follows the main window in being destroyed. |
 | Picture-in-picture | It does not follow the main window in displaying and hiding.<br>It follows the main window in being destroyed. |
 | Flash control ball | It does not follow the main window in displaying and hiding.<br>It follows the main window in being destroyed. |
+
+## Use Cases
+
+### Restore the Application Main Window to the Foreground (PC/2in1)
+
+On PC/2in1 devices, when the application main window is in the background state, if an event is received that requires the main window to be restored to the foreground display, you can call the [restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14) interface to restore it to the size and position it had before entering the background state. If the main window is already in the foreground state, calling this interface only raises the main window's z-order.
+
+For example, an application whose icon has been added to the status bar can listen for status bar icon click events and call the [restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14) interface to restore the application main window when the user clicks the status bar icon.
+
+> **Description:**
+> 
+> - The [restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14) interface can be called normally only on PC/2in1 devices and in [PC mode](window-terminology.md#desktop-mode) on Phone/Tablet devices. Calling it on other devices or in other modes returns error code 801.
+> 
+> - When developing cross-device applications, it is recommended to use the [canIUse()](../reference/common/js-apis-syscap.md#caniuse) interface to determine whether the current device supports the system capability corresponding to the permission, so as to avoid unexpected behavior on unsupported devices.
+
+The sample code is as follows:
+
+<!-- @[WindowRestore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowRestoreSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const DOMAIN: number = 0xFF00;
+const TAG: string = '[Sample_WindowRestore]';
+
+@Entry
+@Component
+struct Index {
+  mainWindow: window.Window | undefined;
+
+  aboutToAppear() {
+    // Save the main window in EntryAbility.ets by calling windowStage.getMainWindowSync().
+    this.mainWindow = AppStorage.get('mainWindow_Restore') as window.Window;
+  }
+
+  minimizeAndRestore() {
+    if (!this.mainWindow) {
+      hilog.error(DOMAIN, TAG, '%{public}s', 'Main window is not available.');
+      return;
+    }
+    try {
+      // Call the minimize() interface to move the main window to the background state.
+      this.mainWindow.minimize();
+      // Set a delay function to restore the main window after 5 seconds.
+      setTimeout(() => {
+        // Call the restore() interface to restore the main window to foreground display.
+        this.mainWindow?.restore().then(() => {
+          hilog.info(DOMAIN, TAG, '%{public}s', 'Succeeded in restoring the window.');
+        }).catch((err: BusinessError) => {
+          hilog.error(DOMAIN, TAG, 'Failed to restore the window. Code: %{public}s, message: %{public}s',
+            `${err.code}`, `${err.message}`);
+        });
+      }, 5000);
+    } catch (error) {
+      const err: BusinessError = error as BusinessError;
+      hilog.error(DOMAIN, TAG, 'Failed to minimize and restore the window. Code: %{public}s, message: %{public}s',
+        `${err.code}`, `${err.message}`);
+    }
+  }
+
+  build() {
+    Column() {
+      Text($r('app.string.minimize_text'))
+        .id('minimizeText')
+        .fontSize(17)
+      Button($r('app.string.minimize_button'))
+        .id('minimizeButton')
+        .onClick(() => {
+          hilog.info(DOMAIN, TAG, '%{public}s', 'Click: Minimize and restore');
+          this.minimizeAndRestore();
+        })
+        .margin({ top: 20 })
+    }
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### Starting an Application in the Lock Screen State (PC/2in1)
+
+On PC/2in1 devices, when events such as schedule reminders are received in the lock screen state, other applications may need to launch the target application by calling interfaces such as [startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability). If the target application needs to be started in the lock screen state, the permission [ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN](../security/AccessToken/permissions-for-all.md#ohospermissionstart_window_below_lock_screen) must be requested; otherwise, the application cannot be launched.
+
+This permission allows an application to be started to the foreground in the lock screen state on PC/2in1 devices. After the device is unlocked, the application window remains in the foreground state. The permission must be declared in the requestPermissions tag of the [module.json5 configuration file](../quick-start/module-configuration-file.md). For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
+
+> **Description:**
+> 
+> When developing cross-device applications, it is recommended that you use the [canIUse()](../reference/common/js-apis-syscap.md#caniuse) interface to determine whether the current device supports the system capability corresponding to this permission, so as to avoid unexpected behavior on unsupported devices.
+
+The following uses application A (StartAbilityBelowLockScreenSample) launching application B (BelowLockScreenTargetSample) through startAbility() 5 seconds after a button is clicked as an example to simulate the scenario in which another application responds to an event and launches the target application in the lock screen state.
+
+The sample code is as follows:
+
+<!-- @[StartAbilityBelowLockScreen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/StartAbilityBelowLockScreenSample/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { common, Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const DOMAIN: number = 0xFF00;
+const TAG: string = '[Sample_StartAbilityBelowLockScreen]';
+
+// The bundleName and abilityName of the target application.
+const TARGET_BUNDLE_NAME: string = 'com.samples.belowlockscreentarget';
+const TARGET_ABILITY_NAME: string = 'EntryAbility';
+
+@Entry
+@Component
+struct Index {
+  private context: common.UIAbilityContext = AppStorage.get('context') as common.UIAbilityContext;
+
+  startTargetAbility(): void {
+    if (!this.context) {
+      hilog.error(DOMAIN, TAG, '%{public}s', 'Context is not available.');
+      return;
+    }
+    hilog.info(DOMAIN, TAG, '%{public}s', 'Start to delay 5 seconds before startAbility.');
+    // Set a delay function to launch the target application after 5 seconds, simulating launching the target application in response to an event.
+    setTimeout(() => {
+      const want: Want = {
+        deviceId: '',
+        bundleName: TARGET_BUNDLE_NAME,
+        abilityName: TARGET_ABILITY_NAME,
+        moduleName: 'entry'
+      };
+      try {
+        this.context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            hilog.error(DOMAIN, TAG, 'Failed to startAbility. Code: %{public}s, message: %{public}s',
+              `${err.code}`, `${err.message}`);
+            return;
+          }
+          hilog.info(DOMAIN, TAG, '%{public}s', 'Succeeded in starting target ability.');
+        });
+      } catch (error) {
+        const err: BusinessError = error as BusinessError;
+        hilog.error(DOMAIN, TAG, 'Failed to startAbility. Code: %{public}s, message: %{public}s',
+          `${err.code}`, `${err.message}`);
+      }
+    }, 5000);
+  }
+
+  build() {
+    Column() {
+      Text($r('app.string.start_ability_text'))
+        .id('startAbilityText')
+        .fontSize(24)
+      Button($r('app.string.start_ability_button'))
+        .id('startAbilityButton')
+        .fontSize(20)
+        .onClick(() => {
+          hilog.info(DOMAIN, TAG, '%{public}s', 'Click: Start ability below lock screen');
+          this.startTargetAbility();
+        })
+        .margin({ top: 20 })
+    }
+    .justifyContent(FlexAlign.Center)
+    .alignItems(HorizontalAlign.Center)
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+**Figure 1** Starting an application in the lock screen state
+
+![StartAbilityBelowLockScreen](figures/StartAbilityBelowLockScreen.gif)

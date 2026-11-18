@@ -1,8 +1,16 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍fdsan（文件描述符检测器）的原理与使用方法，通过tag机制检测文件描述符的重复关闭和关闭后使用问题，涵盖错误等级设置、owner tag管理、标准库接口集成、日志分析及多线程场景注意事项，适用于Native代码文件句柄泄漏排查。"
+keywords: [fdsan, 文件描述符, double-close, use-after-close, owner tag, fdsan_close_with_tag, fdsan_exchange_owner_tag, error_level, 文件句柄泄漏]
+doctype: guide
+status: active
+---
+
 # fdsan使用指导
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @liyiming13-->
-<!--Designer: @lijin1039-->
+<!--Owner: @da_wei_li11-->
+<!--Designer: @liyiming13-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
@@ -191,7 +199,7 @@ void bad_close()
     int fd = open("/dev/null", O_RDONLY);
     close(fd);
     sleep(2);
-    // This close expected to be detect by fdsan
+    // 预期此处close会被fdsan检测到
     close(fd);
 }
 
@@ -231,7 +239,7 @@ int main()
 
 void good_write()
 {
-    // fopen is protected by fdsan, replace open with fopen
+    // fopen受fdsan保护，使用fopen替代open
     // int fd = open(TEMP_FILE, O_RDWR);
     FILE *f = fopen(TEMP_FILE, "w+");
     if (f == NULL) {
@@ -422,7 +430,7 @@ struct fdsan_fd {
         if (move.fd_ != -1) {
             fd_ = move.fd_;
             move.fd_ = -1;
-            // Acquire ownership from the moved-from object.
+            // 从被移动的对象处获取所有权。
             exchange_tag(fd_, move.tag(), tag());
         }
         return *this;
@@ -441,7 +449,7 @@ struct fdsan_fd {
         }
         if (new_fd != -1) {
             fd_ = new_fd;
-            // Acquire ownership of the presumably unowned fd.
+            // 获取假定无属主的fd的所有权。
             exchange_tag(fd_, 0, tag());
         }
     }
@@ -449,7 +457,7 @@ struct fdsan_fd {
   private:
     int fd_ = -1;
 
-    // Use the address of object as the file tag
+    // 使用对象地址作为文件tag
     uint64_t tag()
     {
         return reinterpret_cast<uint64_t>(this);

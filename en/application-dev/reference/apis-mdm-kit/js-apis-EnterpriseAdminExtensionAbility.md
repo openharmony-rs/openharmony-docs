@@ -1,15 +1,16 @@
-# @ohos.enterprise.EnterpriseAdminExtensionAbility (EnterpriseAdminExtensionAbility)
+# @ohos.enterprise.EnterpriseAdminExtensionAbility (Enterprise Device Management Extension Ability)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->
 <!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=a894d7980411a2984f50dafd44488a2990ac825c translatedAt=2026-11-03T05:50:41.300Z pushedAt=2026-11-03T12:08:25.566Z nl=1 -->
 
 This module provides the [enterprise device management extension ability](../../mdm/mdm-kit-term.md#enterpriseadminextensionability) and is the core component of the enterprise device administrator application.
 
 **Main functions**:
-- Provides lifecycle management capabilities for device administrator applications (enabling, disabling, startup, and so on).
+- Provides lifecycle management capabilities for device management applications (activation, deactivation, startup, and other events).
 - Provides application lifecycle event listening capabilities (installation, uninstallation, startup, stop, update).
 - Provides system account management event listening capabilities (account addition, switch, removal).
 - Provides system-level event callbacks for Kiosk mode, key events, log collection, and system updates.
@@ -21,7 +22,7 @@ To have the capabilities provided by this module, for example, to receive a noti
 
 > **NOTE**
 > 
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version. 
 > 
 > The APIs of this module can be used only in the stage model.
 > 
@@ -34,11 +35,13 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 
 ## EnterpriseAdminExtensionAbility
 
-**EnterpriseAdminExtensionAbility** is an essential component for device administrator applications. When developing an MDM device administrator application, you need to create an **EnterpriseAdminExtensionAbility** instance and implement MDM service logic in this instance. **EnterpriseAdminExtensionAbility** implements notifications of system management status changes and defines the callbacks to be invoked when a device administrator application is enabled or disabled or an application is installed or uninstalled.
+The enterprise device management extension ability component is a mandatory component of a device management application. When developing a device management application for enterprises, developers need to inherit EnterpriseAdminExtensionAbility and implement MDM business logic in the EnterpriseAdminExtensionAbility instance. EnterpriseAdminExtensionAbility implements the system management state change notification function and defines callback interfaces for management application activation, deactivation, application installation, and uninstall events.
 
 ### Properties
 
-**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
@@ -671,6 +674,7 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onDeviceAdminEnabled(bundleName: string) {
+    console.info(`Succeeded in calling onDeviceAdminEnabled callback, bundleName:${bundleName}`);
   }
 }
 ```
@@ -698,6 +702,7 @@ import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onDeviceAdminDisabled(bundleName: string) {
+    console.info(`Succeeded in calling onDeviceAdminDisabled callback, bundleName:${bundleName}`);
   }
 }
 ```
@@ -727,8 +732,7 @@ Long-press event. When a single key or key combination is pressed for an extende
 **Example**
 
 ```ts
-import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
-import { systemManager } from '@kit.MDMKit';
+import { EnterpriseAdminExtensionAbility, systemManager } from '@kit.MDMKit';
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
 
@@ -848,7 +852,7 @@ Callback triggered upon completion of log collection, after a log collection tas
 ```ts
 import { Want } from '@kit.AbilityKit';
 import { EnterpriseAdminExtensionAbility, common, systemManager } from '@kit.MDMKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   /**
@@ -863,10 +867,10 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
       // Replace the app sandbox path with the actual one.
       let targetPath = this.context.tempDir;
       try {
-        let files: string[] = fs.listFileSync(filesDir);
+        let files: string[] = fileIo.listFileSync(filesDir);
         // Obtain logs from the /data/edm/log sandbox directory.
         files.forEach(value => {
-          fs.copyFileSync(filesDir + '/' + value, targetPath + '/' + value);
+          fileIo.copyFileSync(filesDir + '/' + value, targetPath + '/' + value);
         });
         let wantTemp: Want = {
           // Replace with actual values.
@@ -875,11 +879,11 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
         };
         systemManager.finishLogCollected(wantTemp);
       } catch (error) {
-        console.info("onLogCollected", "error: " + JSON.stringify(error))
+        console.error("onLogCollected", "error: " + JSON.stringify(error));
       }
     }
     if (result === common.Result.FAIL) {
-      console.error("onLogCollected", "Failed to collect log.")
+      console.error("onLogCollected", "Failed to collect log.");
     }
   }
 }
@@ -1059,8 +1063,39 @@ try {
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
   onAdminPolicyChanged(event: common.PolicyChangedEvent) {
-    //For example, when the MDM application calls the setPasswordPolicy API to set a password policy, the output is as follows: Policy changed, bundleName : com.example.test, functionName: setPasswordPolicy, parameters: {"policy":{"complexityRegex":"^(?=.*[a-zA-Z])(?=.*\\d).{8},$","validityPeriod":1808309786000,"additionalDescription":"Must contain at least 8 characters, including digits and letters."}}, time: 1776773305379.
+    // For example, when an MDM application calls the setPasswordPolicy API to set a password policy, the output is as follows: Policy changed, bundleName : com.example.test, functionName: setPasswordPolicy, parameters: {"policy":{"complexityRegex":"^(?=.*[a-zA-Z])(?=.*\\d).{8},$","validityPeriod":1808309786000,"additionalDescription":"At least 8 characters, including digits and letters."}}, time: 1776773305379.
     console.info(`Policy changed, bundleName : ${event.bundleName}, functionName: ${event.functionName}, parameters: ${event.parameters}, time: ${event.time}.`);
+  }
+}
+```
+
+### onUnmountExternalStorageDevice
+
+onUnmountExternalStorageDevice(deviceInfo: common.ExternalStorageDeviceInfo): void
+
+Callback for the external storage device insertion event. After external storage device interception is enabled through the [usbManager.setExternalStorageInterceptEnable](./js-apis-enterprise-usbManager.md#usbmanagersetexternalstorageinterceptenable) API, when an external storage device is inserted, the system reports the information about the inserted external storage device to the management application that has enabled the interception through this callback. This callback is triggered for reporting only when the type of the inserted external storage device is one of the three types listed in the [DiskType](./js-apis-enterprise-common.md#disktype) enum (SD card, USB flash drive, and optical disc).
+
+**Since:** 26.0.1
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction:** This API can be used only in the stage model.
+
+
+**Parameters**
+
+| Name       | Type                                                                                                 | Mandatory | Description                                 |
+| ---------- | ---------------------------------------------------------------------------------------------------- | ---- | ------------------------------------ |
+| deviceInfo | [common.ExternalStorageDeviceInfo](./js-apis-enterprise-common.md#externalstoragedeviceinfo)         | Yes  | Information about the inserted but not yet mounted external storage device, including the disk type (type), mount path (devicePath), volume ID (volumeId), mount status (mountStatus), vendor ID (vendorId), product ID (productId), and serial number (serial). The management application can identify the inserted device based on this information and handle it accordingly.       |
+
+**Example**
+
+```ts
+import { EnterpriseAdminExtensionAbility, common } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onUnmountExternalStorageDevice(deviceInfo: common.ExternalStorageDeviceInfo): void {
+    console.info(`Succeeded in calling onUnmountExternalStorageDevice callback, deviceInfo:${JSON.stringify(deviceInfo)}`);
   }
 }
 ```

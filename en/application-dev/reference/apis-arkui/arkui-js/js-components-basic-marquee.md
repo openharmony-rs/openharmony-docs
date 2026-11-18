@@ -1,12 +1,11 @@
 # marquee
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=0e195b413ac684e2f8f44c9b887d66d23c5fa72f translatedAt=2026-06-22T03:29:18.814Z pushedAt=2026-06-22T06:53:32.341Z -->
+<!-- md-trans-meta sourceCommit=87f36412b9792c0776f707878176294c4360c8f0 translatedAt=2026-11-12T04:15:58.075Z pushedAt=2026-11-12T06:42:27.813Z nl=1 -->
 
 >  **NOTE**
 >
@@ -19,9 +18,11 @@ The **\<marquee>** component is used to display a scrolling piece of text.
 
 None
 
+
 ## Child Components
 
 Not supported
+
 
 ## Attributes
 
@@ -30,8 +31,9 @@ In addition to the [universal attributes](js-components-common-attributes.md), t
 | Name          | Type    | Default Value | Mandatory  | Description                                      |
 | ------------ | ------ | ---- | ---- | ---------------------------------------- |
 | scrollamount | number | 6    | No    | Step length of each scroll.                         |
-| loop         | number | -1   | No   | Number of rolling times. If this parameter is not set, the default value **-1** is used. When the value is less than or equal to **0**, the marquee scrolls continuously.|
+| loop         | number | -1   | No    | Number of times the marquee scrolls. If not specified, the default value is **-1**. When the value is less than or equal to 0, the marquee scrolls continuously. |
 | direction    | string | left | No   | Direction in which the marquee scrolls, which can be **left** or **right**.            |
+
 
 ## Styles
 
@@ -44,6 +46,7 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 | allow-scale | boolean                    | true       | No   | Whether the font size changes with the system's font size settings.<br>If the **config-changes** tag of **fontSize** is configured for abilities in the **config.json** file, the setting takes effect without application restart.|
 | font-weight | number \| string | normal     | No   | Font weight of the scrolling text. For details, see **font-weight** of the **[\<text> component](js-components-basic-text.md#styles)**.|
 | font-family | string                     | sans-serif | No   | Font family, in which fonts are separated by commas (,). Each font is set using a font name or font family name. The first font in the family or the specified [custom font](js-components-common-customizing-font.md) is used for the text.|
+
 
 ## Events
 
@@ -64,21 +67,22 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
 | start | -    | Starts scrolling.|
 | stop  | -    | Stops scrolling.|
 
+
 ## Example
 
 ```html
 <!-- xxx.hml -->
 <div class="tutorial-page">
-  <div class="mymarquee">
-    <marquee  style="color: {{color1}}" loop="{{loopval}}" scrollamount="{{scroll}}" direction="{{isleft}}" class="marqueetext" 
-    id="testmarquee" onfinish="setfinish">
-      Life is a journey, not the destination.
-    </marquee>
-  </div>
-  <div style="width: 600px;height: 150px;flex-direction: row;justify-content: space-around;">
-    <button onclick="makestart"  value="start"></button>
-    <button onclick="makestop" value="stop"></button>
-  </div>
+    <div class="myMarquee">
+        <marquee  style="color: {{color1}}" loop="{{loopVal}}" scrollamount="{{scroll}}" direction="{{isLeft}}" class="marqueeText"
+                  id="testMarquee" onfinish="setFinish">
+            Life is a journey, not the destination.
+        </marquee>
+    </div>
+    <div style="width: 600px;height: 150px;flex-direction: row;justify-content: space-around;">
+        <button onclick="makeStart"  value="start"></button>
+        <button onclick="makeStop" value="stop"></button>
+    </div>
 </div>
 ```
 
@@ -91,10 +95,10 @@ In addition to the [universal methods](js-components-common-methods.md), the fol
   align-items: center;
   justify-content: center;
 }
-.marqueetext {
-  font-size: 37px;
+.marqueeText {
+  font-size: 40px;
 }
-.mymarquee {
+.myMarquee {
   margin-top: 20px;
   width:100%;
   height: 100px;
@@ -114,29 +118,35 @@ button{
 ```js
 // xxx.js
 export default {
-  private: {
-    loopval: 1,
-    scroll: 8,
-    color1: 'red'
-  },
-  onInit(){
-  },
-  setfinish(e) {
-    this.loopval=  this.loopval + 1,
-    this.r = Math.floor(Math.random()*255),
-    this.g = Math.floor(Math.random()*255),
-    this.b = Math.floor(Math.random()*255),
-    this.color1 = 'rgba('+ this.r +','+ this.g +','+ this.b +',0.8)',
-    this.$element('testmarquee').start(),
-    this.loopval=  this.loopval - 1
-  },
-  makestart(e) {
-    this.$element('testmarquee').start()
-  },
-  makestop(e) {
-    this.$element('testmarquee').stop()
-  }
+    private: {
+        loopVal: 1,
+        scroll: 8,
+        color1: 'red',
+        isLeft: 'left',
+        r: 255,
+        g: 0,
+        b: 0
+    },
+    onInit(){
+    },
+    setFinish(e) {
+        this.loopVal=  this.loopVal + 1,
+        this.r = Math.floor(Math.random()*255),
+        this.g = Math.floor(Math.random()*255),
+        this.b = Math.floor(Math.random()*255),
+        this.color1 = 'rgba('+ this.r +','+ this.g +','+ this.b +',0.8)',
+        this.$element('testMarquee').start(),
+        this.loopVal=  this.loopVal - 1
+    },
+    makeStart(e) {
+        this.$element('testMarquee').start()
+    },
+    makeStop(e) {
+        this.$element('testMarquee').stop()
+    }
 }
 ```
 
 ![marquee](figures/marquee.gif)
+
+

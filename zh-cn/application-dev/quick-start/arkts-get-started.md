@@ -1,11 +1,19 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍ArkTS作为OpenHarmony默认开发语言的定位：基于TypeScript生态扩展静态检查与分析，提升稳定性和性能，并提供学习路线指引。"
+keywords: [ArkTS, 初识ArkTS, TypeScript, 开发语言, 静态检查, OpenHarmony, 学习路线]
+doctype: guide
+status: active
+---
+
 # 初识ArkTS语言
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @oatuwwutao-->
-<!--Designer: @oatuwwutao; @cy917474985-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @k1ngqaquuu-->
 
 ArkTS是OpenHarmony应用的默认开发语言，在[TypeScript](https://www.typescriptlang.org/)（简称TS）生态基础上做了扩展，保持TS的基本风格。通过规范定义，从而强化了开发期的静态检查和分析，提升了程序执行的稳定性和性能。
 

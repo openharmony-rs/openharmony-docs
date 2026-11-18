@@ -73,17 +73,17 @@ struct Parent {
   @State showChild: boolean = true;
   @State btnColor: string = '#FF007DFF';
 
-  // 组件生命周期
+  // Parent即将出现时，回调该方法
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', 'Parent aboutToAppear');
   }
 
-  // 组件生命周期
+  // Parent首次渲染触发的build函数执行完成之后，回调该方法
   onDidBuild() {
     hilog.info(0x0000, 'testTag', 'Parent onDidBuild');
   }
 
-  // 组件生命周期
+  // Parent销毁之前，回调该方法
   aboutToDisappear() {
     hilog.info(0x0000, 'testTag', 'Parent aboutToDisappear');
   }
@@ -112,17 +112,17 @@ struct Parent {
 struct Child {
   @State title: string = 'Hello World';
 
-  // 组件生命周期
+  // Child销毁之前，回调该方法
   aboutToDisappear() {
     hilog.info(0x0000, 'testTag', 'Child aboutToDisappear');
   }
 
-  // 组件生命周期
+  // Child首次渲染触发的build函数执行完成之后，回调该方法
   onDidBuild() {
     hilog.info(0x0000, 'testTag', 'Child onDidBuild');
   }
 
-  // 组件生命周期
+  // Child即将出现时，回调该方法
   aboutToAppear() {
     hilog.info(0x0000, 'testTag', 'Child aboutToAppear');
   }

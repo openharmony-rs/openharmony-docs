@@ -31,7 +31,7 @@
 
 ```ts
 import {
-  BaseGestureHandlingProposal, GestureHandlingResolution, GestureShortcut,
+  BaseGestureHandlingProposal, GestureHandlingResolution
 } from '@kit.ArkUI';
 
 @Entry

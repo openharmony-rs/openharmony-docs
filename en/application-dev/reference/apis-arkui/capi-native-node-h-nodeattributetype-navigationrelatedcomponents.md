@@ -1,12 +1,11 @@
 # ArkUI_NodeAttributeType (Navigation Component Attribute)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=0db97a5b7fb8643c5f5eff515ac260c481581357 translatedAt=2026-08-25T02:22:56.719Z pushedAt=2026-08-26T09:08:15.385Z -->
+<!-- md-trans-meta sourceCommit=98ff61bd36bbd771771ed522e76fd3e1089adb47 translatedAt=2026-11-03T08:48:53.217Z pushedAt=2026-11-04T02:19:33.933Z nl=1 -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -33,6 +32,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -55,6 +55,7 @@ Whether to enable automatic playback for child component switching in the **Swip
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -81,6 +82,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -105,6 +107,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -128,6 +131,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -150,6 +154,7 @@ Duration of the animation for switching child components in the **Swiper** compo
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -175,6 +180,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -197,6 +203,7 @@ Spacing between child components in the **Swiper** component. This attribute can
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -221,6 +228,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -244,6 +252,7 @@ Number of elements to display per page for the **Swiper** component. This attrib
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -272,6 +281,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -294,6 +304,7 @@ Whether to show the arrow when the mouse pointer hovers over the navigation indi
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -320,6 +331,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -344,6 +356,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -366,6 +379,7 @@ Number of cached items in the adapter of the **Swiper** component. This attribut
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -394,6 +408,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -418,6 +433,7 @@ Trailing margin of the **Swiper** component. This attribute can be set, reset, a
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -444,6 +460,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -469,6 +486,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -491,6 +509,7 @@ Sets the **Swiper** component to switch to the specified page. The format of the
 
 **Since**: 12
 
+
 **Parameters**
 
 | Name| Description|
@@ -508,6 +527,7 @@ Whether the navigation indicator of a component is interactive.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
+
 
 **Parameters**
 
@@ -531,6 +551,7 @@ Page flipping mode using the mouse wheel. This attribute can be set, reset, and 
 
 **Since**: 15
 
+
 **Parameters**
 
 | Name| Description|
@@ -553,6 +574,7 @@ Configures the **Swiper** component to automatically adjust the number of elemen
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 19
+
 
 **Parameters**
 
@@ -579,6 +601,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since**: 20
 
+
 **Parameters**
 
 | Name| Description|
@@ -601,6 +624,7 @@ Responsive layout policy of the **Swiper** component, used to automatically adju
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 22
+
 
 **Parameters**
 
@@ -654,7 +678,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name | Description |
 | -- | -- |
-| .value[0].u32 | Text color, in 0xARGB format. The default value is **0xFFFFFFFF**, which indicates white. |
+| .value[0].u32 | Text color, in 0xARGB format. The default value is **0x99182431**, which indicates dark blue with slight transparent. |
 
 **Returns**
 
@@ -677,7 +701,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name | Description |
 | -- | -- |
-| .value[0].u32 | Text color, in 0xARGB format. The default value is **0xFFFFFFFF**, which indicates white. |
+| .value[0].u32 | Text color, in 0xARGB format. The default value is **0xFF007DFF**, which indicates blue. |
 
 **Returns**
 
@@ -700,7 +724,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name | Description |
 | -- | -- |
-| .value[0].u32 | Text color, in 0xARGB format. The default value is **0xFFFFFFFF**, which indicates white. |
+| .value[0].u32 | Text color, in 0xARGB format. The default value is **0xFF007DFF**, which indicates blue. |
 
 **Returns**
 
@@ -723,7 +747,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name | Description |
 | -- | -- |
-| .value[0].u32 | Background color, in 0xARGB format. The default value is **0xFF1F71FF**, which indicates blue. |
+| .value[0].u32 | Background color, in 0xARGB format. The default value is **0xFF1F71FF**, which indicates dark blue. |
 
 **Returns**
 
@@ -746,7 +770,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name | Description |
 | -- | -- |
-| .value[0].u32 | Background color, in 0xARGB format. The default value is **0xD8404040**, which indicates dark gray. |
+| .value[0].u32 | Background color, in 0xARGB format. The default value is **0xD8404040**, which indicates dark gray with slight transparent. |
 
 **Returns**
 
@@ -793,7 +817,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name | Description |
 | -- | -- |
 | .string | Font family. Multiple fonts are separated by comma (,). This is an optional parameter. The default value is **"HarmonyOS Sans"**. |
-| .value[0].f32 | Font size, in fp. This is an optional parameter. The default value is **13**. |
+| .value[0].f32 | Font size, in fp. This is an optional parameter. The default value is **13.0**. |
 | .value[1].i32 | Font weight. This is an optional parameter. The parameter type is [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_W500**. |
 | .value[2].i32 | Font style. This is an optional parameter. The parameter type is [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). The default value is **ARKUI_FONT_STYLE_NORMAL**. |
 
@@ -822,7 +846,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name | Description |
 | -- | -- |
 | .string | Font family. Multiple fonts are separated by comma (,). This is an optional parameter. The default value is **"HarmonyOS Sans"**. |
-| .value[0].f32 | Font size, in fp. This is an optional parameter. The default value is 19. |
+| .value[0].f32 | Font size, in fp. This is an optional parameter. The default value is **19.0**. |
 | .value[1].i32 | Font weight. This is an optional parameter. The parameter type is [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_W500**. |
 | .value[2].i32 | Font style. This is an optional parameter. The parameter type is [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). The default value is **ARKUI_FONT_STYLE_NORMAL**. |
 
@@ -851,7 +875,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name | Description |
 | -- | -- |
 | .string | Font family. Multiple fonts are separated by comma (,). This is an optional parameter. The default value is **"HarmonyOS Sans"**. |
-| .value[0].f32 | Font size, in fp. This is an optional parameter. The default value is **13**. |
+| .value[0].f32 | Font size, in fp. This is an optional parameter. The default value is **13.0**. |
 | .value[1].i32 | Font weight. This is an optional parameter. The parameter type is [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_W500**. |
 | .value[2].i32 | Font style. This is an optional parameter. The parameter type is [ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle). The default value is **ARKUI_FONT_STYLE_NORMAL**. |
 
@@ -879,7 +903,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name | Description |
 | -- | -- |
-| .value[0].f32 | Diameter of the circle when the letter area is circular, in vp. The default value is **24**. |
+| .value[0].f32 | Diameter of the circle when the letter area is circular, in vp. The default value is **24.0**. |
 
 **Returns**
 
@@ -971,7 +995,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name | Description |
 | -- | -- |
-| .value[0].i32 | Index of the child component. The default value is **0**. |
+| .value[0].i32 | Index of the child component. The default value is **0**. When the **index** value is less than 0 or greater than or equal to the number of child components, it is processed as the default value **0**. |
 
 **Returns**
 
@@ -1027,7 +1051,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name | Description |
 | -- | -- |
-| .value[0].i32 | Animation duration for child component switching, in milliseconds. The value range is [0, +∞). When not set, the default value is **400**. |
+| .value[0].i32 | Animation duration for child component switching, in milliseconds. The value range is [0, +∞). The default value is **400**. When a value outside the range is set, it is processed as the default value **400**. |
 
 **Returns**
 
@@ -1142,7 +1166,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name | Description |
 | -- | -- |
-| .value[0].i32 | Whether to disable the transition animation. The value **1** indicates to disable, and **0** indicates the opposite. The default value is **0**. |
+| .value[0].i32 | Whether to disable the transition animation. The value **1** indicates to disable the transition animation, **0** indicates the opposite. The default value is **0**. If a value outside the range is passed, it is processed as the default value **0**. |
 
 **Returns**
 

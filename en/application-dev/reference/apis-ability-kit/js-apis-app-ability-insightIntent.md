@@ -61,7 +61,7 @@ You can define intent entities by inheriting this class. The child class must be
 
 ## IntentResult\<T><sup>20+</sup>
 
-Return result of intent execution, which supports [generic types](../../quick-start/arkts-language-guide-generics.md#generic-class).
+Return result of intent execution, which supports [generic types](../../quick-start/arkts-language-guide-generics.md#generic-classes).
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -259,4 +259,3 @@ export class AppIntentEntityImpl extends insightIntent.AppIntentEntity<AppIntent
   }
 }
 ```
-<!--no_check-->

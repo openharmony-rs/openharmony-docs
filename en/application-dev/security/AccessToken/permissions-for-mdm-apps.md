@@ -955,7 +955,7 @@ With this permission, the application can read user disk sectors, including the 
  
 **Supported devices**: PCs/2-in-1 devices
 
-**Since**: 26.2.0
+**Since**: 26.1.0
 
 ## ohos.permission.ENTERPRISE_EXTERNAL_READ
 
@@ -973,3 +973,54 @@ Allows an MDM application to copy large files from USB drives during the OOBE ph
 **Supported devices**: PCs/2-in-1 devices
 
 **Since**: 26.0.1
+
+## ohos.permission.ENTERPRISE_ATTEST_KEY
+
+Allows a device management application to use the non-anonymous key attestation capability and use device certificates to issue key attestation certificate chains.
+
+<!--RP1--><!--RP1End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.1.0
+
+## ohos.permission.MANAGE_DATA_ENCRYPTION_POLICY
+
+Allows an enterprise application to configure data encryption policies for ToB devices.
+
+<!--RP1--><!--RP1End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.1.0
+
+## ohos.permission.ENTERPRISE_CONTROL_DEVICE
+ 
+Allows a device management application to control user behavior.
+
+<!--RP1--><!--RP1End-->
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+ 
+**Supported devices**: PCs/2-in-1 devices | tablets
+ 
+**Since**: 26.1.0

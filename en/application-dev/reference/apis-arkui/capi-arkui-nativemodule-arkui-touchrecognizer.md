@@ -1,12 +1,11 @@
 # ArkUI_TouchRecognizer
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=307c96700aa31ceaed2d16437f8e9e4fabcbd960 translatedAt=2026-08-21T01:44:48.600Z pushedAt=2026-08-21T03:02:49.282Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-09T11:48:25.204Z pushedAt=2026-11-10T03:36:45.556Z nl=1 -->
 
 ```c
 typedef struct ArkUI_TouchRecognizer ArkUI_TouchRecognizer
@@ -21,3 +20,4 @@ Defines a touch recognizer. A touch recognizer is used to represent the touch ev
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [native_gesture.h](capi-native-gesture-h.md)
+

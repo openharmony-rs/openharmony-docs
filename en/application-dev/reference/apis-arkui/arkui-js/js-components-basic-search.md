@@ -1,10 +1,11 @@
 # search
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9a5da59cdf4f4c3dc0f87035f85ddf06f80ecfc4 translatedAt=2026-11-12T04:18:03.658Z pushedAt=2026-11-12T08:09:21.317Z nl=1 -->
 
 >  **NOTE**
 >
@@ -77,7 +78,7 @@ The [universal methods](js-components-common-methods.md) are supported.
 ```html
 <!-- xxx.hml -->
 <div class="container">
-    <search hint="Enter keywords" searchbutton="Search" @search="search">
+  <search hint="Enter keywords" searchbutton="Search" @search="search">
   </search>
 </div>
 ```

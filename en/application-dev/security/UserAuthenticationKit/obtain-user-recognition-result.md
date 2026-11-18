@@ -6,9 +6,9 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=b8934297006844e2d00705613379f4bacf074b5e translatedAt=2026-09-20T11:04:28.768Z pushedAt=2026-09-20T11:12:03.482Z -->
+<!-- md-trans-meta sourceCommit=b799bd137584a338db2107c2101b1d6091a6feea translatedAt=2026-11-03T05:46:31.248Z pushedAt=2026-11-03T07:44:37.184Z nl=1 -->
 
-Starting from API version 26.0.1, the system supports user recognition. The system continuously recognizes the current user. Applications can query the latest recognition result or subscribe to recognition result changes to determine whether the current user matches the logged-in system user.
+Starting from API version 26.0.1, the system supports user identification. The system continuously identifies the current user. Applications can query the latest identification result or subscribe to changes in the identification result to determine whether the current user matches the logged-in system user.
 
 ## Interface Description
 
@@ -64,6 +64,4 @@ async obtainingUserRecognitionResult(): Promise<string> {
 
 ## Sample Code
 
-For sample code, see [Querying and Subscribing to User Recognition Results](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication).
-
-<!--no_check-->
+  - You can refer to the [User Authentication Service](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication) sample code.

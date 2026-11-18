@@ -1,12 +1,11 @@
 # error_code.h
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyang2022-->
 <!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=3dd9574e5142ac71240b4c5e94aace0a54828acc translatedAt=2026-08-19T04:18:16.424Z pushedAt=2026-08-19T07:35:33.589Z -->
+<!-- md-trans-meta sourceCommit=07cb5ef0ecc6524c0d465d1376b4e4a6c4ba79e7 translatedAt=2026-11-09T11:42:19.106Z pushedAt=2026-11-10T02:27:03.142Z nl=1 -->
 
 ## Overview
 
@@ -72,6 +71,12 @@ Enumerates error codes of ArkUI native APIs, which are used to indicate the resu
 | ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED = 106208 | The node cannot be accepted as an auxiliary node. For details about the error code, see [106208 The Node Cannot Be Accepted as an Auxiliary Node](errorcode-adopt.md#106208-the-node-cannot-be-accepted-as-an-auxiliary-node).<br>**Since:** 22|
 | ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO = 106209 | The node cannot accept other nodes. For details about the error code, see [106209 The Node Cannot Accept Other Nodes](errorcode-adopt.md#106209-the-node-cannot-accept-other-nodes).<br>**Since:** 22|
 | ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN = 106210 | The node is not an auxiliary node accepted by the target node. For details about the error code, see [106210 The Node Is Not an Affiliated Node Accepted by the Parent Node](errorcode-adopt.md#106210-the-node-is-not-an-affiliated-node-accepted-by-the-parent-node).<br>**Since:** 22 |
+| ARKUI_ERROR_CODE_NO_ATTRIBUTE_FOUND = 106211 | Unable to obtain the attribute because it was not set previously. For details about the error code, see [106211 Attribute Not Found](errorcode-animation.md#106211-attribute-not-found).<br>**Since:** 26.0.1 |
+| ARKUI_ERROR_CODE_SUB_ANIMATION_INVALID = 106212 | Invalid child animation parameter. For details about the error code, see [106212 Invalid Sub-animation Parameter](errorcode-animation.md#106212-invalid-sub-animation-parameter).<br>**Since:** 26.0.1 |
+| ARKUI_ERROR_CODE_ANIMATION_GROUP_NOT_FOUND = 106213 | The specified animation group is not found on [ArkUI_ContextHandle](capi-arkui-nativemodule-arkui-context8h.md). For details about the error code, see [106213 Specified Animation Group Not Found on the UIContext](errorcode-animation.md#106213-specified-animation-group-not-found-on-the-uicontext).<br>**Since:** 26.0.1 |
+| ARKUI_ERROR_CODE_ANIMATION_GROUP_REENTRANT_CALL = 106214 | A re-entrant call to the animation group API is detected on the same thread. For details about the error code, see [106214 Re-entrant Call to Animation Group APIs Detected on the Same Thread](errorcode-animation.md#106214-re-entrant-call-to-animation-group-apis-detected-on-the-same-thread).<br>**Since:** 26.0.1 |
+| ARKUI_ERROR_CODE_ANIMATION_GROUP_INVALID_STATE = 106215 | The animation group is not in the required state for operation. For details about the error code, see [106215 Animation Group Not in the Required State for the Operation](errorcode-animation.md#106215-animation-group-not-in-the-required-state-for-the-operation).<br>**Since:** 26.0.1 |
+| ARKUI_ERROR_CODE_TARGET_NODE_NOT_IN_SAME_CONTEXT = 106216 | The resolved target node does not belong to the UIContext of the context passed in when registering the animation group. For details about the error code, see [106216 Resolved Target Node Not Belong to the UIContext of the Context Passed for Registering the Animation Group](errorcode-animation.md#106216-resolved-target-node-not-belong-to-the-uicontext-of-the-context-passed-for-registering-the-animation-group).<br>**Since:** 26.0.1 |
 | ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 | The current node is not a custom node. For details, see [Render Node Error Codes](errorcode-node-render.md).<br>**Since:** 20|
 | ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 | The current node already has child nodes. For details, see [Render Node Error Codes](errorcode-node-render.md).<br>**Since:** 20|
 | ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 | The current render node has a parent component. For details, see [Render Node Error Codes](errorcode-node-render.md).<br>**Since:** 20|
@@ -80,6 +85,14 @@ Enumerates error codes of ArkUI native APIs, which are used to indicate the resu
 | ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 | The current render node is obtained from a [FrameNode](js-apis-arkui-frameNode.md). For details about the error code, see [106406 Current Render Node Is Obtained from FrameNode](errorcode-node-render.md#106406-current-render-node-is-obtained-from-framenode).<br>**Since:** 22|
 | ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 | The current render node is obtained from a [FrameNode](js-apis-arkui-frameNode.md) and the [FrameNode](js-apis-arkui-frameNode.md) has not been adopted as an affiliated node or has been disposed of. For details about the error code, see [106407 Current Render Node Is Obtained from FrameNode and the FrameNode Is Disposed or No Longer Adopted](errorcode-node-render.md#106407-current-render-node-is-obtained-from-framenode-and-the-framenode-is-disposed-or-no-longer-adopted).<br>**Since:** 22|
 | ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 | The current node is not in the adopted state. For details about the error code, see [106408 Current Node Is Not in Adopted State](errorcode-node-render.md#106408-current-node-is-not-in-adopted-state).<br>**Since:** 22|
+| ARKUI_ERROR_CODE_COMMAND_UNFINISHED = 106409 | The previous request has not been completed.<br>**Since:** 26.1.0 |
+| ARKUI_ERROR_CODE_NODE_NOT_FOUND = 106410 | The ArkUI node corresponding to the node ID is not found.<br>**Since:** 26.1.0 |
+| ARKUI_ERROR_CODE_RESULT_TOO_LARGE = 106411 | The result data is too large.<br>**Since:** 26.1.0 |
+| ARKUI_ERROR_CODE_RESOURCE_EXHAUSTED = 106412 | Resources are exhausted.<br>**Since:** 26.1.0 |
+| ARKUI_ERROR_CODE_DUPLICATE_NODE_ID = 106413 | Duplicate node ID.<br>**Since:** 26.1.0 |
+| ARKUI_ERROR_CODE_COLLECTION_PARTIAL_FAILED = 106414 | Some collection items failed.<br>**Since:** 26.1.0 |
+| ARKUI_ERROR_CODE_COLLECTION_ITEM_NOT_FOUND = 106415 | The collection item is not found.<br>**Since:** 26.1.0 |
+| ARKUI_ERROR_CODE_COLLECTION_ITEM_ALREADY_TAKEN = 106416 | The collection item has been taken for use.<br>**Since:** 26.1.0 |
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 | The current node is not focusable. For details about the error code, see [150001 Component Not Focusable](errorcode-focus.md#150001-component-not-focusable).<br>**Since:** 15|
 | ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 | An ancestor of the current node is not focusable. For details about the error code, see [150002 Ancestor Component Not Focusable](errorcode-focus.md#150002-ancestor-component-not-focusable).<br>**Since:** 15|
 | ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT = 150003 | The current node does not exist. For details about the error code, see [150003 Component Does Not Exist](errorcode-focus.md#150003-component-does-not-exist).<br>**Since:** 15|
@@ -97,5 +110,5 @@ Enumerates error codes of ArkUI native APIs, which are used to indicate the resu
 | ARKUI_ERROR_CODE_CALLBACK_INVALID = 190002 | Invalid callback function. For details about the error code, see [UI Context Error Codes](errorcode-uicontext.md).<br>**Since:** 18|
 | ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED = 180102 | The gesture recognizer type is not supported. For details about the error code, see [Interaction Event Error Codes](errorcode-event.md).<br>**Since:** 18|
 | ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED = 190004 | The requested operation is not allowed in the current drag and drop event processing phase. For details about the error code, see [Drag Event Error Codes](errorcode-drag-event.md).<br>**Since:** 19 |
-| ARKUI_ERROR_CODE_DIALOG_NODE_MOUNT_FAILURE = 103306 | The dialog box cannot be opened because the node fails to be mounted. For details about the error code, see [Popup Window Error Codes](errorcode-promptAction.md).<br>**Since:** 26.0.1 |
-| ARKUI_ERROR_CODE_DIALOG_SUBWINDOW_CREATE_FAILURE = 103308 | The dialog box cannot be opened because the subwindow fails to be created. For details about the error code, see [Popup Window Error Codes](errorcode-promptAction.md).<br>**Since:** 26.0.1 |
+| ARKUI_ERROR_CODE_DIALOG_NODE_MOUNT_FAILURE = 103306 |  The node fails to be mounted, so the dialog box cannot be opened. For details about the error code, see [Popup Window Error Codes](errorcode-promptAction.md).<br>**Since:** 26.0.1 |
+| ARKUI_ERROR_CODE_DIALOG_SUBWINDOW_CREATE_FAILURE = 103308 |  The child window fails to be created, so the dialog box cannot be opened. For details about the error code, see [Popup Window Error Codes](errorcode-promptAction.md).<br>**Since:** 26.0.1 |

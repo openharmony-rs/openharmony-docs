@@ -5,6 +5,7 @@
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=ecf5d58a25055daa53a34747272770e0f3c1f57a translatedAt=2026-11-12T04:17:48.156Z pushedAt=2026-11-12T08:28:47.361Z nl=1 -->
 
 The **<select\>** component provides a drop-down list that allows users to select among multiple options.
 
@@ -29,7 +30,7 @@ In addition to the [universal styles](js-components-common-styles.md), the follo
 
 | Name       | Type  | Mandatory| Description                                                        |
 | ----------- | ------ | ---- | ------------------------------------------------------------ |
-| font-family | string | No  | Font family, in which fonts are separated by commas (,). The first font in the family or the specified [custom font](./js-components-common-customizing-font.md) is used for the text.<br>Default value: **sans-serif**|
+| font-family | string | No | Font family, in which fonts are separated by commas (,). The first font style that exists in the system or is specified by a [custom font](./js-components-common-customizing-font.md) in the family is selected as the font style of the current text.<br/>Default value: **sans-serif** |
 
 
 ## Events

@@ -145,7 +145,7 @@ export class ClassForLink {
 | 名称               | 类型            | 只读         | 可选 | 说明                                                         |
 | ------------------ | ----------------| ---------- | ---- | ------------------------------------------------------------ |
 | intentName         | string          | 否       | 否   | 表示意图名称，是意图的唯一标识。 |
-| domain             | string          | 否       | 否   | 表示意图垂域，用于将意图按垂直领域分类（例如：视频、音乐、游戏），取值范围参见[各垂域的智慧分发特性列表](https://developer.huawei.com/consumer/cn/doc/service/intents-ai-distribution-characteristic-0000001901922213#section2656133582215)中的垂域字段。    |
+| domain             | string          | 否       | 否   | 表示意图垂域，用于将意图按垂直领域分类（例如：视频、音乐、游戏），取值范围参见[各垂域的智慧分发特性列表](https://developer.huawei.com/consumer/cn/doc/doccenter-celia/intents-ai-distribution-characteristic-0000002733287140#section2656133582215)中的垂域字段。    |
 | intentVersion      | string          | 否       | 否   | 表示意图版本号。当意图能力演进时，可通过版本号进行区分和管理。                        |
 | displayName        | string          | 否       | 否   | 表示显示给用户的意图名称。                                       |
 | displayDescription | string         | 否        | 是   | 表示显示给用户的意图描述。                                       |
@@ -153,7 +153,7 @@ export class ClassForLink {
 | icon               | ResourceStr | 否   | 是   | 表示意图图标，用于在AI入口显示。<br>- 当取值为字符串类型时，表示图标读取网络资源。<br>- 当取值为[Resource](../../reference/apis-localization-kit/js-apis-resource-manager.md)时，表示图标读取本地资源。 |
 | llmDescription     | string      | 否           | 是   | 表示意图的功能描述，用于大型语言模型理解该意图。                  |
 | keywords           | string[]     | 否          | 是   | 表示意图的搜索关键字。                                       |
-| parameters         | Record\<string, Object\>| 否 | 是   | 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。取值参见[各垂域意图Schema](https://developer.huawei.com/consumer/cn/doc/service/intents-schema-0000001901962713)。 |
+| parameters         | Record\<string, Object\>| 否 | 是   | 表示意图参数的数据格式声明，用于意图调用时定义入参的数据格式。取值参见[各垂域意图Schema](https://developer.huawei.com/consumer/cn/doc/doccenter-celia/intents-schema-0000002762846649)。 |
 | result           | Record\<string, Object\>     | 否          | 是   | 表示意图调用返回结果的数据格式声明，用于定义意图调用返回结果的数据格式。                                       |
 
 ## LinkIntentDecoratorInfo
@@ -267,6 +267,7 @@ PageIntentDecoratorInfo继承自[IntentDecoratorInfo](#intentdecoratorinfo)，�
 | pagePath           | string        | 否          | 否   | 表示与意图绑定的页面路径，该页面需要是一个实际存在的文件。 |
 | navigationId       | string        | 否        | 是   | 表示与意图绑定的[Navigation](../apis-arkui/arkui-ts/ts-basic-components-navigation.md)组件的id属性。 |
 | navDestinationName | string         | 否       | 是   | 表示与意图绑定的[navDestination](../apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)组件的名称。 |
+| permissions        | string[]       | 否       | 是   | 调用该意图所需的权限列表，为可选字段。该字段仅用于调用方查询或参考。系统不会自动校验这些权限。权限校验必须由意图提供方（服务端）实现。<br>**起始版本：** 26.1.0 |
 
 ## @InsightIntentFunction
 
@@ -334,11 +335,15 @@ export class ClassForFuncDemo {
 
 ## FunctionIntentDecoratorInfo
 
-[@InsightIntentFunctionMethod](#insightintentfunctionmethod)装饰器的参数类型，当前全部属性均继承自[IntentDecoratorInfo](#intentdecoratorinfo)。
+[@InsightIntentFunctionMethod](#insightintentfunctionmethod)装饰器的参数类型，继承自[IntentDecoratorInfo](#intentdecoratorinfo)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 **原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。
+
+| 名称               | 类型         | 只读       | 可选 | 说明                                                         |
+| ------------------ | -------------| --------- | ---- | ------------------------------------------------------------ |
+| permissions        | string[]       | 否       | 是   | 调用该意图所需的权限列表，为可选字段。该字段仅用于调用方查询或参考。系统不会自动校验这些权限。权限校验必须由意图提供方（服务端）实现。<br>**起始版本：** 26.1.0 |
 
 ## @InsightIntentEntry
 
@@ -431,6 +436,7 @@ EntryIntentDecoratorInfo继承自[IntentDecoratorInfo](#intentdecoratorinfo)，�
 | ------------------ | -------------| --------- | ---- | ------------------------------------------------------------ |
 | abilityName        | string       | 否        | 否   | 表示与意图绑定的Ability名称。                                  |
 | executeMode        | [insightIntent.ExecuteMode](./js-apis-app-ability-insightIntent.md#executemode)[]| 否        | 否   | 表示意图调用执行模式。即拉起绑定的Ability时支持的执行模式。 |
+| permissions        | string[]       | 否       | 是   | 调用该意图所需的权限列表，为可选字段。该字段仅用于调用方查询或参考。系统不会自动校验这些权限。权限校验必须由意图提供方（服务端）实现。<br>**起始版本：** 26.1.0 |
 
 ## @InsightIntentForm
 

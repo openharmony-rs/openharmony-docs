@@ -117,18 +117,24 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   async function testConvertHmacKey() {
-    // 对称密钥长度为64字节，512比特
-    let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
-    let keyBlob: cryptoFramework.DataBlob = {
-      data: new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
+    try {
+      // 对称密钥长度为64字节，512比特
+      let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
+      let keyBlob: cryptoFramework.DataBlob = {
+        data: new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
+      }
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
+      let key = await symKeyGenerator.convertKey(keyBlob);
+      let encodedKey = key.getEncoded();
+      console.info('key encoded data: ' + encodedKey.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
-    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
-    let key = await symKeyGenerator.convertKey(keyBlob);
-    let encodedKey = key.getEncoded();
-    console.info('key encoded data: ' + encodedKey.data);
   }
   ```
 
@@ -139,18 +145,24 @@
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
   function testConvertKeySync() {
-    // 对称密钥长度为64字节，512比特
-    let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
-    let keyBlob: cryptoFramework.DataBlob = {
-      data : new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
+    try {
+      // 对称密钥长度为64字节，512比特
+      let keyMessage = '12345678abcdefgh12345678abcdefgh12345678abcdefgh12345678abcdefgh';
+      let keyBlob: cryptoFramework.DataBlob = {
+        data : new Uint8Array(buffer.from(keyMessage, 'utf-8').buffer)
+      }
+      let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
+      let key = symKeyGenerator.convertKeySync(keyBlob);
+      let encodedKey = key.getEncoded();
+      console.info('key encoded data: ' + encodedKey.data);
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
-    let symKeyGenerator = cryptoFramework.createSymKeyGenerator('HMAC');
-    let key = symKeyGenerator.convertKeySync(keyBlob);
-    let encodedKey = key.getEncoded();
-    console.info('key encoded data: ' + encodedKey.data);
   }
   ```
 

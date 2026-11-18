@@ -2,11 +2,11 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
 <!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=2dd275ce017b43144b8b5631392ae3d24fe5affc translatedAt=2026-09-01T03:31:10.243Z pushedAt=2026-09-07T02:34:15.901Z -->
+<!-- md-trans-meta sourceCommit=5618c9fdb4c9f994d48984cc769916e7ae8246d3 translatedAt=2026-11-12T04:13:37.143Z pushedAt=2026-11-12T12:16:13.372Z nl=1 -->
 
 This module provides the APIs for calling the print extension ability. **PrintExtensionAbility** runs based on the lifecycle callback mechanism. The system invokes the corresponding callback methods to connect to the print extension, discover printers, connect to or disconnect from printers, query printer capabilities, and start or cancel print jobs. You need to implement the print extension logic in each callback.
 
@@ -239,6 +239,7 @@ Defines an API called when the capabilities supported by the printer (such as co
 | printerId | number | Yes | Printer ID, which is a valid printer ID reported during the printer discovery process. |
 
 **Return value**
+
 | **Type** | **Description**|
 | -------- | -------- |
 | [print.PrinterCapability](js-apis-print.md#printercapability24) | Capability supported by the printer, such as the color mode, duplex mode, and paper size. |

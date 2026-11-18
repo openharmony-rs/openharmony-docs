@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍SourceMap Splitter命令行工具，将DevEco Studio构建生成的聚合sourceMaps.map拆分为符合SourceMap v3规范的独立.map文件，涵盖命令参数、输出目录规则、退出码及常见问题。"
+keywords: ["SourceMap Splitter", 聚合SourceMap, sourceMaps.map, "SourceMap v3", split-sourcemaps.js, 堆栈还原, 命令行工具]
+doctype: guide
+status: active
+---
+
 # SourceMap Splitter工具
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->

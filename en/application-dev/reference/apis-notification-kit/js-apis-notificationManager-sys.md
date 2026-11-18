@@ -5,9 +5,9 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:35:30.892Z pushedAt=2026-10-12T01:59:47.233Z -->
+<!-- md-trans-meta sourceCommit=c840b9a8f02f445d6c590b1f99e03469a633d5eb translatedAt=2026-11-13T02:26:33.764Z pushedAt=2026-11-13T09:44:30.435Z nl=1 -->
 
-This module provides system APIs for notification management, including publishing notifications to specified users, publishing [proxy notification](../../notification/notification-glossary.md#notification-proxy), canceling proxy notifications, creating, obtaining, and removing [notification slot](../../notification/notification-glossary.md#notification-slot), setting and querying the notification enabled status, badge enabled status, and slot enabled status, setting and querying the Do Not Disturb time and Do Not Disturb mode configuration, managing [distributed notification](../../notification/notification-glossary.md#distributed-notification) collaboration, managing notification publish permission control, obtaining active notification information, setting the [notification reminder mode](../../notification/notification-glossary.md#notification-reminder-mode), subscribing to [system live view](../../notification/notification-glossary.md#system-live-view), registering [notification check](../../notification/notification-glossary.md#notification-check) callbacks, managing notification priority policies, and setting advanced features such as [geofence](../../notification/notification-glossary.md#geofence), ringtone information, and [silent reminder](../../notification/notification-glossary.md#silent-reminder).
+This module provides system APIs for notification management, including publishing a notification to a specified user, publishing and canceling proxy notifications, creating, obtaining, and removing [notification slots](../../notification/notification-glossary.md#notification-slot), setting and querying the enabled states of the notification, badge, and slot, setting and querying the Do Not Disturb time and Do Not Disturb mode configuration, managing [distributed notification](../../notification/notification-glossary.md#distributed-notification) collaboration, managing notification publishing permission control, obtaining active notification information, setting the [notification reminder method](../../notification/notification-glossary.md#notification-reminder-mode), subscribing to [system live view](../../notification/notification-glossary.md#system-live-view), registering notification verification callbacks, managing notification priority policies, and setting advanced functions such as [geofence](../../notification/notification-glossary.md#geofence), ringtone information, and silent reminder.
 
 > **NOTE**
 >
@@ -432,6 +432,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |
 | 202      | Not system application to call the interface.                                      |
+| 203      | This function is prohibited by enterprise management policies.                     |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
@@ -489,6 +490,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      | Permission denied.     |
 | 202      | Not system application to call the interface.                                      |
+| 203      | This function is prohibited by enterprise management policies.                     |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
 | 1600001  | Internal error.                          |
 | 1600002  | Marshalling or unmarshalling error.      |
@@ -1596,6 +1598,61 @@ notificationManager.getAllActiveNotifications().then((data: Array<notificationMa
     console.info(`getAllActiveNotifications success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getAllActiveNotifications failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getActiveNotification
+
+getActiveNotification(hashCode: string): Promise\<NotificationRequest\>
+
+Obtains the notification information that has not been deleted based on the unique identifier **hashCode** of the notification. This API uses a promise to return the result.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name     | Type   | Mandatory| Description                    |
+| -------- | ------ | -------- | ------------------------------ |
+| hashCode | string | Yes      | Unique identifier of the notification. |
+
+**Return value**
+
+| Type                                                                                                          | Description                             |
+| ------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| Promise\<[NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest)\> | Promise object. Returns the obtained notification information. |
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201      | Permission denied. |
+| 202      | Not system application to call the interface. |
+| 1600001  | Internal error. |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service. |
+| 1600007  | The notification does not exist. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Change this to the unique identifier of the notification that the developer needs to query.
+let hashCode: string = 'hashCode';
+notificationManager.getActiveNotification(hashCode).then((data: notificationManager.NotificationRequest) => {
+    console.info(`getActiveNotification success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getActiveNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -2829,7 +2886,7 @@ notificationManager.getDeviceRemindType().then((data: notificationManager.Device
 
 publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: number, callback: AsyncCallback\<void\>): void
 
-Publishes a [proxy notification](../../notification/notification-glossary.md#notification-proxy). This API uses an asynchronous callback to return the result.
+Publishes a proxy notification. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2913,7 +2970,7 @@ notificationManager.publishAsBundle(request, representativeBundle, userId, callb
 
 publishAsBundle(request: NotificationRequest, representativeBundle: string, userId: number): Promise\<void\>
 
-Publishes a [proxy notification](../../notification/notification-glossary.md#notification-proxy). This API uses a promise to return the result.
+Publishes a proxy notification. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2999,7 +3056,7 @@ notificationManager.publishAsBundle(request, representativeBundle, userId).then(
 
 publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest): Promise\<void\>
 
-Publishes a [proxy notification](../../notification/notification-glossary.md#notification-proxy). This API uses a promise to return the result.
+Publishes a proxy notification. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3082,7 +3139,7 @@ notificationManager.publishAsBundle(representativeBundle, request).then(() => {
 
 cancelAsBundle(id: number, representativeBundle: string, userId: number, callback: AsyncCallback\<void\>): void
 
-Cancels a [proxy notification](../../notification/notification-glossary.md#notification-proxy). This API uses an asynchronous callback to return the result.
+Cancels a proxy notification. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3139,7 +3196,7 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId, cancelAsBund
 
 cancelAsBundle(id: number, representativeBundle: string, userId: number): Promise\<void\>
 
-Cancels a [proxy notification](../../notification/notification-glossary.md#notification-proxy). This API uses a promise to return the result.
+Cancels a proxy notification. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3198,7 +3255,7 @@ notificationManager.cancelAsBundle(0, representativeBundle, userId).then(() => {
 
 cancelAsBundle(representativeBundle: BundleOption, id: number): Promise\<void\>
 
-Cancels a [proxy notification](../../notification/notification-glossary.md#notification-proxy). This API uses a promise to return the result.
+Cancels a proxy notification. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -5315,7 +5372,7 @@ notificationManager.isDistributedEnabledBySlot(slot, deviceType).then((data: boo
 
 setSilentReminderEnabled(bundle: BundleOption, enabled: boolean): Promise\<void\>
 
-Sets the switch status of [silent reminder](../../notification/notification-glossary.md#silent-reminder). This API uses a promise to return the result.
+Sets the enabled status of the silent reminder. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -5370,7 +5427,7 @@ notificationManager.setSilentReminderEnabled(bundle, true).then(() => {
 
 isSilentReminderEnabled(bundle: BundleOption): Promise\<SwitchState\>
 
-Queries the switch status of [silent reminder](../../notification/notification-glossary.md#silent-reminder). This API uses a promise to return the result.
+Queries the enabled status of the silent reminder. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -5535,6 +5592,65 @@ notificationManager.getNotificationSwitch(switchName, userId).then((data: notifi
     console.info(`getNotificationSwitch success, switchState: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getNotificationSwitchLimitedBundles
+
+getNotificationSwitchLimitedBundles(userId: number): Promise\<Map\<string, boolean\>\>
+
+Obtains the list of applications whose notification switch is limited. This API uses a promise to return the result asynchronously.
+
+**Since:** 26.1.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | ------ | ---- | ---- |
+| userId | number | Yes | User ID. |
+
+**Return value**
+
+| Type | Description |
+|-----------------|-------------------------|
+| Promise\<Map\<string, boolean\>\> | Promise used to return a key-value pair set of application notification enabled states.<br>**true**: The application notification is enabled.<br>**false**: The application notification is disabled. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID | Error Message |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. Possible cause: 1.IPC communication failed. 2.Memory operation error. |
+| 1600002 | Marshalling or unmarshalling error. |
+| 1600003 | Failed to connect to the service. |
+| 1600008 | The user does not exist. |
+| 1600012 | No memory space. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let userId: number = 100;
+
+notificationManager.getNotificationSwitchLimitedBundles(userId).then((data: Map<string, boolean>) => {
+    console.info(`getNotificationSwitchLimitedBundles success`);
+    data.forEach((state: boolean, bundleName: string) => {
+        console.info(`bundle: ${bundleName}, state: ${state}`);
+    });  
+}).catch((err: BusinessError) => {
+    console.error(`getNotificationSwitchLimitedBundles failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -6088,7 +6204,7 @@ Checks whether the priority notification is enabled.
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<boolean\> | Promise object that returns the enabled status of the notification priority master switch.<br> - **true**: allowed to be set as [priority notification](../../notification/notification-glossary.md#priority-notification).<br> - **false**: prohibited from being set as priority notification. |
+| Promise\<boolean\> | Promise used to return whether the priority notification is enabled for all notifications.<br> - **true**: The priority notification is enabled.<br> - **false**: The priority notification is disabled. |
 
 **Error codes**
 
@@ -6130,7 +6246,7 @@ Sets the enabling status of the priority notification.
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| enable   | boolean | Yes  | Whether all notifications are allowed to be set as priority notifications.<br> - **true**: allows the notification to be set as a [priority notification](../../notification/notification-glossary.md#priority-notification).<br> - **false**: forbids the notification from being set as a priority notification. |
+| enable   | boolean | Yes  | Whether the priority notification is enabled for all notifications.<br> - - **true**: The priority notification is enabled.<br> - **false**: The priority notification is disabled. |
 
 **Return value**
 
@@ -6231,7 +6347,7 @@ Sets the enabling status of the priority notification for an application.
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
 | bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
-| enableStatus | [PriorityEnableStatus](#priorityenablestatus23) | Yes | Priority switch status of application notifications.<br> - **DISABLE**: The notification cannot be set as a [priority notification](../../notification/notification-glossary.md#priority-notification).<br> - **ENABLE_BY_INTELLIGENT**: The notification can be set as a priority notification through intelligent recognition, user keyword matching, application rule matching, and other methods.<br> - **ENABLE**: All application notifications are set as priority notifications. |
+| enableStatus | [PriorityEnableStatus](#priorityenablestatus23) | Yes | Enabled state of the application priority notification.<br> - **DISABLE**: The application notification cannot be set as a priority notification.<br> - **ENABLE_BY_INTELLIGENT**: The application notification can be set as a priority notification through smart recognition, user keyword matching, application rule matching, and other methods.<br> - **ENABLE**: All application notifications are set as priority notifications. |
 
 **Return value**
 
@@ -6373,7 +6489,7 @@ notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').t
 
 isPriorityIntelligentEnabled(): Promise\<boolean\>
 
-Obtains the enabled status of the intelligent [priority notification](../../notification/notification-glossary.md#priority-notification) service. This API uses a promise to return the result.
+Obtains whether the priority notification smart service is enabled. This API uses a promise to return the result asynchronously.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -6418,7 +6534,7 @@ notificationManager.isPriorityIntelligentEnabled().then((result: boolean) => {
 
 setPriorityIntelligentEnabled(enable: boolean): Promise\<void\>
 
-Sets the enabled status of the intelligent service for [priority notifications](../../notification/notification-glossary.md#priority-notification). This API uses a promise to return the result.
+Sets whether to enable the priority notification smart service. This API uses a promise to return the result asynchronously.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -6875,7 +6991,7 @@ notificationManager.getNotificationStatisticsByBundle(bundles).then(
 
 snoozeNotification(hashCode: string, delayTime: number): Promise\<void\>
 
-Sets [notification snooze](../../notification/notification-glossary.md#notification-snooze). The notification is reminded again after the specified time. Each setting triggers only one reminder, and the reminder mode is the same as that of the notification.<br/>After the setting, the notification is deleted.
+Snoozes a notification. The notification is reminded again after the specified time. Each setting triggers only one reminder, and the reminder method is the same as that of the notification.<br/>After the setting, the notification is deleted.
 
 **Since**: 26.0.0
 
@@ -6990,7 +7106,7 @@ Defines the notification source type.
 
 ## NotificationCheckInfo<sup>10+</sup>
 
-Defines the [notification check](../../notification/notification-glossary.md#notification-check) parameters.
+Defines the notification check parameters.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -7010,7 +7126,7 @@ Defines the [notification check](../../notification/notification-glossary.md#not
 
 ## NotificationCheckResult<sup>10+</sup>
 
-Defines the [notification check](../../notification/notification-glossary.md#notification-check) result.
+Defines the notification check result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -7181,7 +7297,7 @@ Describes the information about the application reminder.
 | --------- | ------ | ---- | ---- | ------------- |
 | bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | No | No | Bundle information of the application.|
 | reminderFlags | number | No | No | Flags of the [notification reminder mode](../../notification/notification-glossary.md#notification-reminder-mode).<br>- Bit 0: sound alert. The value **0** means to disable the feature, and **1** means the opposite. <br>- Bit 1: locking the screen. The value **0** means to disable the feature, and **1** means the opposite. <br>- Bit 2: banner. The value **0** means to disable the feature, and **1** means the opposite. <br>- Bit 3: turning on the screen. The value **0** means to disable the feature, and **1** means the opposite. <br>- Bit 4: vibration. The value **0** means to disable the feature, and **1** means the opposite. <br>- Bit 5: notification icon in the status bar. The value **0** means to disable the feature, and **1** means the opposite. |
-| silentReminderEnabled | boolean | No | No | Whether the [silent reminder](../../notification/notification-glossary.md#silent-reminder) switch is enabled (**true**: enabled, **false**: disabled). |
+| silentReminderEnabled | boolean | No | No | Whether the silent reminder is enabled (**true**: enabled; **false**: disabled). |
 
 ## BundleNotificationStatistics
 
@@ -7233,7 +7349,7 @@ Describes the enabling status of the priority notification for an application.
 | Name                | Value | Description                              |
 | --------------------| --- | --------------------------------- |
 | DISABLE    | 0   | The priority notification is disabled.|
-| ENABLE_BY_INTELLIGENT  | 1  | The priority switch of the application notification is in the intelligent recognition state. It can be set to [priority notification](../../notification/notification-glossary.md#priority-notification) through intelligent recognition, user keyword matching, application rule matching, and other methods. |
+| ENABLE_BY_INTELLIGENT  | 1  | The application priority notification is in the smart recognition state. The application notification is allowed to be set as a priority notification through smart recognition, user keyword matching, application rule matching, and other methods. |
 | ENABLE   | 2   | All application notifications are set as priority notifications. |
 
 ## NotificationIconButton<sup>23+</sup>

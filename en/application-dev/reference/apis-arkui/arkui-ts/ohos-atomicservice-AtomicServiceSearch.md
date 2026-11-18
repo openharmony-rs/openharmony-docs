@@ -6,7 +6,7 @@
 <!--Designer: @autojuan-->
 <!--Tester: @tinygreyy-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=94b9b81a21843ee0652cc7284da3432d3de7d621 translatedAt=2026-08-28T01:36:17.283Z pushedAt=2026-08-28T07:15:35.176Z -->
+<!-- md-trans-meta sourceCommit=a9e64d9949bb7122908af3acb8cd44ce378cf9b7 translatedAt=2026-11-03T01:42:30.611Z pushedAt=2026-11-13T01:05:59.889Z nl=1 -->
 
 **AtomicServiceSearch** allows you to customize the default search area, customizable selection area, and function area (a maximum of two).
 
@@ -14,14 +14,15 @@
 >
 > This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
 
+
 ## Modules to Import
 
 ``` ts
 import { AtomicServiceSearch } from '@kit.ArkUI';
 ```
 
-## AtomicServiceSearch
 
+## AtomicServiceSearch
 ``` ts
 AtomicServiceSearch({
   value?: ResourceStr,
@@ -50,6 +51,7 @@ AtomicServiceSearch({
 | search      | [SearchParams](#searchparams) | No| @Prop | Events and styles supported by the search area. Default value: **undefined**.|
 | operation   | [OperationParams](#operationparams) | No | - | Functional settings of the functional area (right side). The default value is `undefined`. |
 
+
 ## SelectParams
 
 Provides optional attributes for the selection area.
@@ -68,7 +70,7 @@ Provides optional attributes for the selection area.
 | divider                 | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[DividerOptions](ts-basic-components-textpicker.md#divideroptions12)&gt; \| null | No | Yes | 1. When **DividerOptions** is set, the divider is displayed in the set style. Default value: `{strokeWidth: '1px', color: '#33182431'}`. When the **menuItemContentModifier** attribute is set, this attribute does not take effect.<br>2. When set to **null**, the divider is not displayed.<br>3. When **strokeWidth** is set too wide, it covers the text. The divider starts from the bottom of each item and is drawn both upward and downward.<br>4. The default values of **startMargin** and **endMargin** are consistent with the divider style when the **divider** attribute is not set. When the sum of **startMargin** and **endMargin** equals the value of **optionWidth**, the divider is not displayed. When the sum of **startMargin** and **endMargin** exceeds the value of **optionWidth**, the divider is displayed in the default style. |
 | font                    | [Font](ts-types.md#font) | No| Yes| Text font of the drop-down list button. Default value: **{size: $r('sys.float.ohos_id_text_size_body1')}**|
 | fontColor               | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Text color of the dropdown button itself. Default value: `{fontColor: $r('sys.color.ohos_id_color_text_primary')}`.   |
-| selectedOptionBgColor   | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Background color of the selected item in the dropdown menu. Default value: the transparency of `$r('sys.color.ohos_id_color_component_activated')` mixed with `$r('sys.color.ohos_id_alpha_highlight_bg')`. When the **menuItemContentModifier** attribute is set, this attribute does not take effect. |
+| selectedOptionBgColor   | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Background color of the selected item in the dropdown menu. Default value: the opacity of `$r('sys.color.ohos_id_color_component_activated')` mixed with `$r('sys.color.ohos_id_alpha_highlight_bg')`. When the **menuItemContentModifier** attribute is set, this attribute does not take effect. |
 | selectedOptionFont      | [Font](ts-types.md#font) | No | Yes | Text style of the selected item in the dropdown menu. Default value: `{size: $r('sys.float.ohos_id_text_size_body1'), weight: FontWeight.Regular}`. When the **menuItemContentModifier** attribute is set, this attribute does not take effect. |
 | selectedOptionFontColor | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Text color of the selected item in the dropdown menu. Default value: `$r('sys.color.ohos_id_color_text_primary_activated')`. When the **menuItemContentModifier** attribute is set, this attribute does not take effect. |
 | optionBgColor           | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Background color of the dropdown menu items. Default value: `Color.Transparent`. When the **menuItemContentModifier** attribute is set, this attribute does not take effect. |
@@ -81,6 +83,7 @@ Provides optional attributes for the selection area.
 | menuAlign               | [MenuAlignParams](#menualignparams) | No| Yes| Alignment between the drop-down list button and the drop-down list box. Default value: **{alignType: MenuAlignType.START,   offset: {dx: 0, dy: 0}}**.|
 | menuBackgroundColor     | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Background color of the drop-down list box. Default value: **Color.Transparent**  |
 | menuBackgroundBlurStyle | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | No| Yes| Background blur style of the drop-down list box. Default value: **BlurStyle.COMPONENT_ULTRA_THICK**|
+
 
 ## SearchParams
 
@@ -111,9 +114,9 @@ Provides optional attributes for the search area.
 | maxLength                | number | No| Yes| Maximum number of characters in the text input. By default, there is no maximum number of characters. When the maximum number is reached, no more characters can be entered. Default value: **-1**. |
 | enterKeyType             | [EnterKeyType](ts-basic-components-textinput.md#enterkeytype)| No| Yes| Type of the Enter key. Default value: **EnterKeyType.Search**.  |
 | decoration               | [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12) | No| Yes|  Text decorative line options. Default value: **{type: TextDecorationType.None, color: Color.Black, style: TextDecorationStyle.SOLID}**.  |
-| letterSpacing            | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| Yes| Letter spacing. A positive value causes characters to spread farther apart, and a negative value bring characters closer together. The value for floating point numbers is **0.0**, in units of px. If the input is not a number and cannot be parsed as a number, the default value will be used. |
+| letterSpacing            | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| Yes| Letter spacing. A positive value causes characters to spread farther apart, and a negative value bring characters closer together. The value for floating point numbers is **0.0**, in units of px. If the input is not a number and cannot be parsed as a number, the default value is used. |
 | fontFeature              | [ResourceStr](ts-types.md#resourcestr) | No | Yes | Text feature effect, for example, the monospaced digit feature.<br>The format is: normal \| \<feature-tag-value\><br>The format of \<feature-tag-value\> is: \<string\> \[ \<integer\> \| on \| off ]<br>There can be multiple \<feature-tag-value\> values, separated by ','.<br>For example, the input format for using monospaced digits is: "ss01" on. Default value: `undefined`. |
-| selectedBackgroundColor  | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Background color of the selected text. Default value: the system default background color with 20% opacity. |
+| selectedBackgroundColor  | [ResourceColor](ts-types.md#resourcecolor) | No | Yes | Highlight color of the selected text. Default value: system default highlight color with 20% opacity. |
 | inputFilter              | [InputFilterParams](#inputfilterparams) | No | Yes | Input filter through a regular expression. Input that matches the expression is allowed to be displayed, and input that does not match is filtered out. Only single-character matching is supported, and string matching is not supported. Default value: `undefined`.<br> -**value**: regular expression. <br> -**error**: filtered content returned when the regular expression matching fails. |
 | textIndent               | [Dimension](ts-types.md#dimension10) | No | Yes | Indentation of the first line of text. Default value: `0`. Unit: vp. |
 | minFontSize              | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No | Yes | Minimum font size for text display. It needs to be used with **maxFontSize** and layout size constraints; setting it alone does not take effect. Default value: `undefined`. When the value is of the number type, the unit is fp. |
@@ -147,6 +150,7 @@ Sets initialization parameters of the function area.
 | auxiliaryItem | [OperationOption ](ohos-arkui-advanced-SubHeader.md#operationoption)| No| Yes| Auxiliary item on the right of the search area. Default value: **undefined**.|
 | independentItem | [OperationOption ](ohos-arkui-advanced-SubHeader.md#operationoption)| No| Yes| Independent item on the right of the search area. Default value: **undefined**.|
 
+
 ## InputFilterParams
 
 Sets regular expression for input filtering.
@@ -173,6 +177,7 @@ Sets the search button located next to the search text box.
 | searchButtonValue | [ResourceStr](ts-types.md#resourcestr) | No| No| Text on the search button located next to the search text box.|
 | options | [SearchButtonOptions](ts-basic-components-search.md#searchbuttonoptions10)| No| Yes| Font of the search text box. Default value: **{fontSize: '16fp',fontColor: '#ff3f97e9'}**|
 
+
 ## MenuAlignParams
 
 Sets the alignment between the drop-down list button and the drop-down list box.
@@ -186,6 +191,7 @@ Sets the alignment between the drop-down list button and the drop-down list box.
 | alignType | [MenuAlignType](ts-basic-components-select.md#menualigntype10)| No| No| Alignment type. Default value: **MenuAlignType.START**|
 | offset | [Offset](ts-types.md#offset) | No| Yes| Offset of the drop-down list box relative to the drop-down list button after alignment based on the alignment type. Default value: **{dx: 0, dy: 0}**|
 
+
 ## OnSelectCallback
 
 type OnSelectCallback = (index: number, selectValue: string) => void
@@ -196,12 +202,13 @@ Called when an item in the drop-down list box is selected.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                    |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------------- |
 | index | number | Yes| Index of the selected option. The index is zero-based.|
 | selectValue | string | Yes| Value of the selected option.|
+
 
 ## OnPasteCallback
 
@@ -213,12 +220,13 @@ Called when a paste operation is performed.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                    |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------------- |
 | pasteValue | string | Yes| Text to be pasted.|
 | event | [PasteEvent](ts-basic-components-richeditor.md#pasteevent11) | Yes| Custom paste event.|
+
 
 ## OnTextSelectionChangeCallback
 
@@ -230,12 +238,13 @@ Called when the position of the text selection changes or when the cursor positi
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                    |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------------- |
 | selectionStart | number | Yes| Start position of the text to be selected.|
 | selectionEnd | number | Yes| End position of the text to be selected.|
+
 
 ## OnContentScrollCallback
 
@@ -247,17 +256,17 @@ Called when the text content is scrolled.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type                                                        | Mandatory| Description                                                    |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------------- |
 | totalOffsetX | number | Yes | Horizontal offset of the upper-left corner of the text relative to the upper-left corner of the entire content input area. Unit: px. |
 | totalOffsetY | number | Yes | Vertical offset of the upper-left corner of the text relative to the upper-left corner of the entire content input area. Unit: px. |
 
+
 ## Examples
 
 ### Example 1: Adding a Selection Area to AtomicServiceSearch
-
 This example demonstrates how to use the **select** parameter to add a selection area on the left to the **AtomicServiceSearch** component.
 
 ```ts
@@ -308,8 +317,9 @@ struct Index {
 
 ![](figures/AtomicServiceSearchDemo01.gif)
 
-### Example 2: Adding a Function Item to AtomicServiceSearch
 
+
+### Example 2: Adding a Function Item to AtomicServiceSearch
 This example demonstrates how to use the **operation** parameter to add a function item on the right to the **AtomicServiceSearch** component.
 
 ```ts
@@ -355,8 +365,9 @@ struct Index {
 
 ![](figures/AtomicServiceSearchDemo02.gif)
 
-### Example 3: Adding a Selection Area and Function Item to AtomicServiceSearch
 
+
+### Example 3: Adding a Selection Area and Function Item to AtomicServiceSearch
 This example demonstrates how to add the selection area and function items on the left and right to the AtomicServiceSearch component.
 
 ```ts
@@ -421,8 +432,9 @@ struct Index {
 
 ![](figures/AtomicServiceSearchDemo03.gif)
 
-### Example 4: Binding the Search Callback Events to AtomicServiceSearch
 
+
+### Example 4: Binding the Search Callback Events to AtomicServiceSearch
 This example demonstrates how to use the **onWillInsert**, **onDidInsert**, **onWillDelete**, and **onDidDelete** APIs to implement insert and delete operations.
 
 The **onSubmit** API is used to submit content in the search area.
@@ -552,8 +564,8 @@ struct Index {
 
 ![](figures/AtomicServiceSearchDemo04.gif)
 
-### Example 5: Customizing the Style of AtomicServiceSearch
 
+### Example 5: Customizing the Style of AtomicServiceSearch
 This example demonstrates how to use the **search**, **select**, **value**, and **placeholder** parameters to customize the style of the **AtomicServiceSearch** component.
 
 ```ts
@@ -673,9 +685,12 @@ struct Index {
 
 ![](figures/AtomicServiceSearchDemo05.gif)
 
-### Example 6: Setting the Caret Position Using controller
 
+
+
+### Example 6: Setting the Caret Position Using controller
 This example demonstrates how to use the **controller** parameter to set the caret position, select the content in the specified area, and disable the editing state.
+
 
 ```ts
 import { AtomicServiceSearch } from '@kit.ArkUI';
@@ -721,8 +736,10 @@ struct Index {
 
 ![](figures/AtomicServiceSearchDemo06.gif)
 
-### Example 7: Setting the Enter Key Type
 
+
+
+### Example 7: Setting the Enter Key Type
 This example demonstrates how to use the **enterKeyType** attribute to dynamically change the effect of the Enter key on the soft keyboard.
 
 ```ts
@@ -760,8 +777,9 @@ struct Index {
 
 ![](figures/AtomicServiceSearchDemo07.gif)
 
-### Example 8: Setting Text Feature Effects
 
+
+### Example 8: Setting Text Feature Effects
 This example demonstrates how to use the **fontFeature** attribute to display text with various typographic features.
 
 ```ts
@@ -812,8 +830,9 @@ struct Index {
 
 ![](figures/AtomicServiceSearchDemo08_frac.png)
 
-### Example 9: Setting Text Auto-Adaptation
 
+
+### Example 9: Setting Text Auto-Adaptation
 This example demonstrates how to use the **minFontSize** and **maxFontSize** attributes to implement the text auto-adaptation features.
 
 ```ts
@@ -848,8 +867,9 @@ struct Index {
 
 ![](figures/AtomicServiceSearchDemo09.png)
 
-### Example 10: Setting Custom Menu Extensions
 
+
+### Example 10: Setting Custom Menu Extensions
 This example demonstrates how to use the **editMenuOptions** API to create custom menu extensions for text settings. It includes customizing text content, icons, and callbacks for these extensions.
 
 ```ts
@@ -917,8 +937,11 @@ struct Index {
 
 ![](figures/AtomicServiceSearchDemo10.gif)
 
-### Example 11: Setting the Horizontal Alignment, Caret Style, and Background Color of the Selected Text
 
+
+
+
+### Example 11: Setting the Horizontal Alignment, Caret Style, and Background Color of the Selected Text
 This example shows how to set the horizontal alignment, caret style, and background color of the selected text using **textAlign**, **caretStyle**, and **selectedBackgroundColor**.
 
 ```ts
@@ -954,8 +977,9 @@ struct Index {
 
 ![](figures/AtomicServiceSearchDemo11.png)
 
-### Example 12: Setting Input Filtering
 
+
+### Example 12: Setting Input Filtering
 This example shows how to set input filtering using **inputFilter**.
 
 ```ts

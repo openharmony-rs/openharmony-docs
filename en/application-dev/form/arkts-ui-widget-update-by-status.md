@@ -5,7 +5,7 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=4c1f08fcf9b2e36ccd83092dd38f04e3fb630b79 translatedAt=2026-08-26T04:55:40.129Z pushedAt=2026-08-28T08:50:57.025Z -->
+<!-- md-trans-meta sourceCommit=036e50fadd0779b00a607ecdffcb119d268ad0d4 translatedAt=2026-11-03T07:51:08.458Z pushedAt=2026-11-03T07:51:08.458Z -->
 
 Multiple copies of the same widget can be added to the home screen to serve different purposes. For example, you can add two copies of a weather widget, with one displaying the weather for Hangzhou and the other for Beijing. A scheduled refresh is configured to trigger at 10:30 AM every day. The widget must detect whether its current configuration is for Hangzhou or Beijing, and then refresh the corresponding city's weather information on the widget. The following example demonstrates how to dynamically select the content to refresh based on the widget status.
 
@@ -27,7 +27,7 @@ Multiple copies of the same widget can be added to the home screen to serve diff
           "isDefault": true,
           "updateEnabled": true,
           "scheduledUpdateTime": "10:30",
-          "updateDuration": 1,
+          "updateDuration": 0,
           "defaultDimension": "2*2",
           "supportDimensions": [
             "2*2"

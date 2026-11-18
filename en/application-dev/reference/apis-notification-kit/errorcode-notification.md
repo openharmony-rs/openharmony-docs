@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:17:01.946Z pushedAt=2026-10-08T09:16:37.144Z -->
+<!-- md-trans-meta sourceCommit=23b90a9f0d809e2f9c0564bfb86befaf8a00ba9e translatedAt=2026-11-13T02:20:44.623Z pushedAt=2026-11-13T09:44:30.416Z nl=1 -->
 
 > **NOTE**
 >
@@ -543,7 +543,7 @@ The current notification does not support this API.
 
 **Possible Causes**
 
-When setting [notification snooze](../../notification/notification-glossary.md#notification-snooze), the notification type is a third-party live view, a system live view, or another type that cannot be deleted.
+The notification is a third-party live view notification, a system live view notification, or another type that cannot be deleted when the user snoozes the notification.
 
 **Solution**
 

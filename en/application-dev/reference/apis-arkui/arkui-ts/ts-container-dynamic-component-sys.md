@@ -1,12 +1,11 @@
 # DynamicComponent (System API)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=ef5506642718b24289c6aa216632b7a5e19e795e translatedAt=2026-08-21T02:22:42.372Z pushedAt=2026-08-21T07:27:56.358Z -->
+<!-- md-trans-meta sourceCommit=33898b66eb6c0bf66810bb0d90faa36b55a4ad07 translatedAt=2026-11-03T01:57:14.121Z pushedAt=2026-11-13T01:05:59.929Z nl=1 -->
 
 **DynamicComponent** is designed to support the embedding and display of UIs provided by independent Abc (Ark bytecode, .abc files) within the current page, with the displayed content running in a worker thread.
 
@@ -87,7 +86,7 @@ Defines the parameters to be passed during **DynamicComponent** construction.
 | -------- | -------- | -------- | -------- | -------- |
 | entryPoint | string | No | No | The .abc page entry to load. The value format is 'bundleName/moduleName/pagePath', for example, 'com.example.myapplication/entry/ets/pages/DynamicPage'. |
 | worker | [Worker](#worker) | No | No | Worker thread object used to run the .abc, which must be created through **worker.ThreadWorker**. The Worker executes the UI logic of the .abc in an independent thread and communicates with the main thread. |
-| backgroundTransparent | boolean | No | Yes | Whether to enable background transparency for the component.<br>**true**: enable background transparency; **false**: disable background transparency.<br>Default value: **false** |
+| backgroundTransparent | boolean | No | Yes | Whether to enable background opacity for the component.<br>**true**: enable background opacity; **false**: disable background opacity.<br>Default value: **false** |
 | allowCrossProcessNesting | boolean | No | Yes | Whether to allow cross-process [UIExtensionComponent](./ts-container-ui-extension-component-sys.md) nesting.<br>**true**: allow cross-process nesting; **false**: disallow cross-process nesting.<br>Default value: **false** |
 | allowOccupied | boolean | No | Yes | Whether to allow the **DynamicComponent** to avoid the keyboard internally.<br>**true**: allow avoiding the keyboard; **false**: do not allow avoiding the keyboard.<br>Default value: **false** |
 
@@ -209,7 +208,7 @@ struct Index {
   }
   ```
 
-- Configure the route for the provider page in **main_pages.json**.
+- Configure the route `main_pages.json` for the embedded .abc page.
 
   ``` JSON
   {

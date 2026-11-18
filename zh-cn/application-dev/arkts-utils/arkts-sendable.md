@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "系统介绍Sendable对象的概念与实现原理：涵盖Sendable协议、ISendable、Sendable类、函数、接口、支持的数据类型及Sendable装饰器用法，实现并发实例间引用传递的高性能对象共享。"
+keywords: [Sendable对象, ISendable, Sendable类, Sendable接口, Sendable函数, Sendable装饰器, 支持的数据类型, 引用传递, 实现原理]
+doctype: guide
+status: active
+---
+
 # Sendable对象简介
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

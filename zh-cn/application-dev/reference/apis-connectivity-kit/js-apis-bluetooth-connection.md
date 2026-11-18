@@ -132,7 +132,7 @@ pairDevice(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 需要配对的对端蓝牙设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 需要配对的对端蓝牙设备地址，例如："11:22:33:44:55:66"。 |
 | callback | AsyncCallback&lt;void&gt;  | 是    | 回调函数。当配对成功，err为undefined，否则为错误对象。 |
 
 **错误码**：
@@ -155,7 +155,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // callback
 try {
     connection.pairDevice('11:22:33:44:55:66', (err: BusinessError) => {
-        console.info('pairDevice, device name err:' + JSON.stringify(err));
+        console.error('pairDevice, device name err:' + JSON.stringify(err));
     });
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -184,7 +184,7 @@ pairDevice(deviceId: string): Promise&lt;void&gt;
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 需要配对的对端蓝牙设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 需要配对的对端蓝牙设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值**：
 
@@ -283,6 +283,67 @@ try {
 ```
 
 
+## connection.cancelPairedDevice
+
+cancelPairedDevice(deviceId: string): Promise&lt;void&gt;
+
+删除已配对的对端设备。使用Promise异步回调。
+
+删除行为因调用方的身份而异：对于第三方应用，删除配对前会弹出系统确认对话框，只有在用户确认对话框后，配对才会被移除。
+
+**起始版本**： 26.1.0
+
+**模型约束**： 此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**参数：**
+
+| 参数名      | 类型     | 必填   | 说明                                    |
+| -------- | ------ | ---- | ------------------------------------- |
+| deviceId | string | 是    | 表示要删除的远程设备的地址，例如："11:22:33:44:55:66"。 |
+
+**返回值：**
+
+| 类型                  | 说明            |
+| ------------------- | ------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|202 | Non-system applications are not allowed to use system APIs.<br>适用版本：10-26.0.1 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|801 | Capability not supported.          |
+|2900001 | Service stopped.                         |
+|2900003 | Bluetooth disabled.                 |
+|2900013 | The user does not respond.<br>适用版本：26.1.0+ |
+|2900014 | User refuse the action.<br>适用版本：26.1.0+ |
+|2900016 | Device unpaired.<br>适用版本：26.1.0+ |
+|2900099 | Operation failed.                        |
+
+**示例：**
+
+```js
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+    connection.cancelPairedDevice('11:22:33:44:55:66').then(() => {
+        console.info('cancelPairedDevice');
+    }, (error: BusinessError) => {
+        console.error('cancelPairedDevice: errCode:' + error.code + ',errMessage' + error.message);
+    })
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + err.message);
+}
+```
+
+
 ## connection.getRemoteDeviceName
 
 getRemoteDeviceName(deviceId: string): string
@@ -303,7 +364,7 @@ getRemoteDeviceName(deviceId: string): string
 
 | 参数名      | 类型     | 必填   | 说明                                |
 | -------- | ------ | ---- | --------------------------------- |
-| deviceId | string | 是    | 表示对端设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示对端设备的地址，例如："11:22:33:44:55:66"。 |
 
 **返回值**：
 
@@ -329,7 +390,7 @@ getRemoteDeviceName(deviceId: string): string
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-    let remoteDeviceName: string = connection.getRemoteDeviceName('XX:XX:XX:XX:XX:XX');
+    let remoteDeviceName: string = connection.getRemoteDeviceName('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -356,7 +417,7 @@ getRemoteDeviceName(deviceId: string, alias?: boolean): string
 
 | 参数名      | 类型     | 必填   | 说明                                |
 | -------- | ------ | ---- | --------------------------------- |
-| deviceId | string | 是    | 表示对端设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示对端设备的地址，例如："11:22:33:44:55:66"。 |
 | alias | boolean | 否    | 表示是否获取对端蓝牙设备别名。<br>- 如果携带alias，则根据alias判断是否获取对端蓝牙设备别名：true表示获取对端蓝牙设备别名，false表示获取对端蓝牙设备原始名称。<br>- 如果未携带alias，则默认值为true，返回对端蓝牙设备别名。 |
 
 **返回值**：
@@ -383,7 +444,7 @@ getRemoteDeviceName(deviceId: string, alias?: boolean): string
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-    let remoteDeviceName: string = connection.getRemoteDeviceName('XX:XX:XX:XX:XX:XX', true);
+    let remoteDeviceName: string = connection.getRemoteDeviceName('11:22:33:44:55:66', true);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -396,8 +457,11 @@ getRemoteDeviceClass(deviceId: string): DeviceClass
 
 获取对端蓝牙设备的类别。
 
-- 从API version 18开始，此接口不再校验ohos.permission.ACCESS_BLUETOOTH权限。
-- 从API version 21开始，此接口支持使用对端设备的实际MAC地址获取设备类别信息。
+从API version 21开始，此接口支持使用对端设备的实际MAC地址获取设备类别信息。
+
+**需要权限**：
+- API版本10-17：ohos.permission.ACCESS_BLUETOOTH
+- API版本18+：N/A
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -407,7 +471,7 @@ getRemoteDeviceClass(deviceId: string): DeviceClass
 
 | 参数名      | 类型     | 必填   | 说明                                |
 | -------- | ------ | ---- | --------------------------------- |
-| deviceId | string | 是    | 表示对端设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示对端设备的地址，例如："11:22:33:44:55:66"。 |
 
 **返回值**：
 
@@ -433,7 +497,7 @@ getRemoteDeviceClass(deviceId: string): DeviceClass
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-    let remoteDeviceClass: connection.DeviceClass = connection.getRemoteDeviceClass('XX:XX:XX:XX:XX:XX');
+    let remoteDeviceClass: connection.DeviceClass = connection.getRemoteDeviceClass('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -455,7 +519,7 @@ getRemoteDeviceTransport(deviceId: string): BluetoothTransport
 
 | 参数名      | 类型     | 必填   | 说明                                |
 | -------- | ------ | ---- | --------------------------------- |
-| deviceId | string | 是    | 表示对端设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示对端设备的地址，例如："11:22:33:44:55:66"。 |
 
 **返回值**：
 
@@ -479,7 +543,7 @@ getRemoteDeviceTransport(deviceId: string): BluetoothTransport
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-    let transport: connection.BluetoothTransport = connection.getRemoteDeviceTransport('XX:XX:XX:XX:XX:XX');
+    let transport: connection.BluetoothTransport = connection.getRemoteDeviceTransport('11:22:33:44:55:66');
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
@@ -503,7 +567,7 @@ getRemoteProfileUuids(deviceId: string, callback: AsyncCallback&lt;Array&lt;Prof
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示对端设备地址，例如："11:22:33:44:55:66"。 |
 | callback | AsyncCallback&lt;Array&lt;[ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12)&gt;&gt; | 是    | 回调函数。当获取UUID成功，err为undefined，获取到的是Profile协议能力集合；否则为错误对象。 |
 
 **错误码**：
@@ -524,7 +588,7 @@ getRemoteProfileUuids(deviceId: string, callback: AsyncCallback&lt;Array&lt;Prof
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-    connection.getRemoteProfileUuids('XX:XX:XX:XX:XX:XX', (err: BusinessError, data: Array<connection.ProfileUuids>) => {
+    connection.getRemoteProfileUuids('11:22:33:44:55:66', (err: BusinessError, data: Array<connection.ProfileUuids>) => {
         console.info('getRemoteProfileUuids, err: ' + JSON.stringify(err) + ', data: ' + JSON.stringify(data));
     });
 } catch (err) {
@@ -552,7 +616,7 @@ getRemoteProfileUuids(deviceId: string): Promise&lt;Array&lt;ProfileUuids&gt;&gt
 
 | 参数名      | 类型     | 必填   | 说明                                  |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是    | 表示对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示对端设备地址，例如："11:22:33:44:55:66"。 |
 
 **返回值**：
 
@@ -578,7 +642,7 @@ getRemoteProfileUuids(deviceId: string): Promise&lt;Array&lt;ProfileUuids&gt;&gt
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-    connection.getRemoteProfileUuids('XX:XX:XX:XX:XX:XX').then(() => {
+    connection.getRemoteProfileUuids('11:22:33:44:55:66').then(() => {
         console.info('getRemoteProfileUuids');
     }, (err: BusinessError) => {
         console.error('getRemoteProfileUuids: errCode' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -694,7 +758,7 @@ getPairState(deviceId: string): BondState
 
 | 参数名      | 类型     | 必填   | 说明                                |
 | -------- | ------ | ---- | --------------------------------- |
-| deviceId | string | 是    | 表示对端设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是    | 表示对端设备的地址，例如："11:22:33:44:55:66"。 |
 
 **返回值**：
 
@@ -720,7 +784,7 @@ getPairState(deviceId: string): BondState
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-    let res: connection.BondState = connection.getPairState("XX:XX:XX:XX:XX:XX");
+    let res: connection.BondState = connection.getPairState("11:22:33:44:55:66");
     console.info('getPairState: ' + res);
 } catch (err) {
     console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
@@ -797,7 +861,7 @@ setDevicePairingConfirmation(deviceId: string, accept: boolean): void
 
 | 参数名    | 类型      | 必填   | 说明                               |
 | ------   | ------- | ---- | -------------------------------- |
-| deviceId | string | 是 | 表示对端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string | 是 | 表示对端设备地址，例如："11:22:33:44:55:66"。 |
 | accept   | boolean | 是    | 是否接受对端设备的配对请求。true表示接受，false表示不接受。       |
 
 **错误码**：
@@ -846,7 +910,7 @@ setDevicePinCode(deviceId: string, code: string, callback: AsyncCallback&lt;void
 
 | 参数名    | 类型      | 必填   | 说明                               |
 | ------ | ------- | ---- | -------------------------------- |
-| deviceId | string  | 是    | 表示对端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string  | 是    | 表示对端设备MAC地址，例如："11:22:33:44:55:66"。 |
 | code   | string  | 是    | 用户输入的PIN码，该字符串的字符个数范围为(0, 16]，例如："12345"。        |
 | callback   | AsyncCallback&lt;void&gt;  | 是    | 回调函数，当设置PinCode成功，err为undefined，否则为错误对象。        |
 
@@ -894,7 +958,7 @@ setDevicePinCode(deviceId: string, code: string): Promise&lt;void&gt;
 
 | 参数名    | 类型      | 必填   | 说明                               |
 | ------ | ------- | ---- | -------------------------------- |
-| deviceId | string  | 是    | 表示对端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string  | 是    | 表示对端设备MAC地址，例如："11:22:33:44:55:66"。 |
 | code   | string  | 是    | 用户输入的PIN码，该字符串的字符个数范围为(0, 16]，例如："12345"。        |
 
 **返回值**：
@@ -1216,7 +1280,7 @@ setRemoteDeviceName(deviceId: string, name: string): Promise&lt;void&gt;
 
 | 参数名      | 类型                                  | 必填   | 说明                                     |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
-| deviceId     | string                              | 是    | 表示对端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId     | string                              | 是    | 表示对端设备MAC地址，例如："11:22:33:44:55:66"。 |
 | name | string | 是    | 修改对端设备名称，名称长度范围：(0, 64]，单位：Byte。    |
 
 **返回值**：
@@ -1271,7 +1335,7 @@ getRemoteDeviceBatteryInfo(deviceId: string): Promise&lt;BatteryInfo&gt;
 
 | 参数名    | 类型      | 必填   | 说明                               |
 | ------ | ------- | ---- | -------------------------------- |
-| deviceId | string  | 是    | 表示对端蓝牙设备的MAC地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string  | 是    | 表示对端蓝牙设备的MAC地址，例如："11:22:33:44:55:66"。 |
 
 **返回值**：
 
@@ -1296,7 +1360,7 @@ getRemoteDeviceBatteryInfo(deviceId: string): Promise&lt;BatteryInfo&gt;
 import { BusinessError } from '@kit.BasicServicesKit';
 // promise
 try {
-    connection.getRemoteDeviceBatteryInfo('11:22:33:AA:BB:FF').then((data: connection.BatteryInfo) => {
+    connection.getRemoteDeviceBatteryInfo('11:22:33:44:55:66').then((data: connection.BatteryInfo) => {
         console.info('getRemoteDeviceBatteryInfo success, DeviceType:' + JSON.stringify(data));
     });
 } catch (err) {
@@ -1863,7 +1927,7 @@ getLastConnectionTime(deviceId: string): Promise&lt;number&gt;
 
 | 参数名    | 类型      | 必填   | 说明                               |
 | ------ | ------- | ---- | -------------------------------- |
-| deviceId | string  | 是    | 表示对端设备MAC地址。例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string  | 是    | 表示对端设备MAC地址。例如："11:22:33:44:55:66"。 |
 
 **返回值**：
 
@@ -1918,7 +1982,7 @@ connectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;): v
 
 | 参数名     | 类型    | 必填  | 说明                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是   | 表示需要连接的对端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。|
+| deviceId | string | 是   | 表示需要连接的对端设备MAC地址，例如："11:22:33:44:55:66"。|
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。当发起连接成功，err为undefined，否则为错误对象。  |
 
 **错误码**：
@@ -1939,7 +2003,7 @@ connectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;): v
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  connection.connectAllowedProfiles('68:13:24:79:4C:8C', (err: BusinessError) => {
+  connection.connectAllowedProfiles('11:22:33:44:55:66', (err: BusinessError) => {
     if (err) {
       console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
       return;
@@ -1973,7 +2037,7 @@ connectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
 | 参数名     | 类型    | 必填  | 说明                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是   | 表示需要连接的对端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。|
+| deviceId | string | 是   | 表示需要连接的对端设备MAC地址，例如："11:22:33:44:55:66"。|
 
 **返回值**：
 
@@ -1999,7 +2063,7 @@ connectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 ```js
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  connection.connectAllowedProfiles('68:13:24:79:4C:8C').then(() => {
+  connection.connectAllowedProfiles('11:22:33:44:55:66').then(() => {
       console.info('connectAllowedProfiles');
     }, (err: BusinessError) => {
       console.error('connectAllowedProfiles:errCode' + err.code + ', errMessage: ' + err.message);
@@ -2029,7 +2093,7 @@ disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
 | 参数名     | 类型    | 必填  | 说明                                 |
 | -------- | ------ | ---- | ----------------------------------- |
-| deviceId | string | 是   | 表示需要断开连接的对端设备MAC地址，例如："XX:XX:XX:XX:XX:XX"。|
+| deviceId | string | 是   | 表示需要断开连接的对端设备MAC地址，例如："11:22:33:44:55:66"。|
 
 **返回值**：
 
@@ -2044,6 +2108,8 @@ disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 | 错误码ID| 错误信息|
 | -------- | ---------------------------- |
 |201     | Permission denied.                       |
+|202     | Non-system applications are not allowed to use system APIs.<br>适用版本：11-24                      |
+|401     | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>适用版本：11-24                      |
 |801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.               |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -2052,8 +2118,13 @@ disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 **示例**：
 
 ```js
+import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  await connection.disconnectAllowedProfiles('68:13:24:79:4C:8C');
+  connection.disconnectAllowedProfiles('11:22:33:44:55:66').then(() => {
+      console.info('disconnectAllowedProfiles success');
+    }, (err: BusinessError) => {
+      console.error('disconnectAllowedProfiles:errCode' + err.code + ', errMessage: ' + err.message);
+  });
 } catch (err) {
   console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
@@ -2084,7 +2155,7 @@ getVirtualAddressByHash(algorithmType: HashAlgorithmType, hashValue: string): st
 
 | 类型                                             | 说明               |
 | ------------------------------------------------- | ------------------- |
-| string | 返回与哈希值相对应的设备虚拟MAC地址，例如："XX:XX:XX:XX:XX:XX"，返回地址为大写。|
+| string | 返回与哈希值相对应的设备虚拟MAC地址，例如："11:22:33:44:55:66"，返回地址为大写。|
 
 **错误码**：
 
@@ -2362,6 +2433,7 @@ try {
 | rssi     | number      | 否    | 否    | 扫描到的设备信号强度，单位：dBm。|
 | deviceName     | string      | 否    | 否    | 扫描到的设备名称。|
 | deviceClass     | [DeviceClass](#deviceclass)      | 否    | 否    | 扫描到的设备类型。|
+| transport      | [BluetoothTransport](#bluetoothtransport)      | 否    | 是    | 扫描到的设备的传输类型。<br>默认为TRANSPORT_UNKNOWN<br>**起始版本**： 26.1.0 |
 
 ## HashAlgorithmType<sup>24+</sup>
 
@@ -2390,7 +2462,7 @@ try {
 
 | 名称       | 类型   | 只读 | 可选   | 说明          |
 | -------- | ------ | ---- | ---- | ----------- |
-| deviceId | string      | 否    | 否    | 表示对端设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
+| deviceId | string      | 否    | 否    | 表示对端设备的地址，例如："11:22:33:44:55:66"。 |
 | state    | [AclState](#aclstate)   | 否    | 否    | 连接状态。 |
 
 

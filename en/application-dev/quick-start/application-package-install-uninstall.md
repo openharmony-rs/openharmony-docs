@@ -3,8 +3,9 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=850c7d4f71d6bc50d82f299a21bb9cea3a266f3d translatedAt=2026-10-30T06:21:33.935Z pushedAt=2026-10-30T06:21:33.935Z nl=1 -->
 
 This topic describes application installation, uninstallation, and two update modes.
 
@@ -25,7 +26,7 @@ After an application is released to AppGallery, users can install the applicatio
 ## Updating an Application
 
 
-For developers, you need to first update the **versionCode** field in the [app.json5 configuration file](./app-configuration-file.md), package the application using DevEco Studio, and release it on AppGallery. For users, you can update the application in either of the following ways after a new version is released:
+To update an application, first update the **versionCode** field in the [app.json5 configuration file](./app-configuration-file.md), package the application using DevEco Studio, and release it on AppGallery using the same process as the initial release. After a new version is released, users can update the application in either of the following ways:
 
 - On AppGallery: AppGallery notifies the user of an available update, and the user can install the update by following the on-screen instructions.
-- In the application: <!--RP1-->When the application for which an update is available starts up, it notifies the user of the update, and the user can install the update by following the on-screen instructions.<!--RP1End-->
+- In the application: <!--RP1-->After the application starts or when the user checks for a new version in the application, an update dialog box is displayed. The user can follow the prompts to update the application.<!--RP1End-->

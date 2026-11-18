@@ -1,12 +1,11 @@
 # ArkUI_ImmersiveMaterial*
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-08-19T08:23:49.815Z pushedAt=2026-08-20T07:17:58.453Z -->
+<!-- md-trans-meta sourceCommit=2495040792c8da8de232a60f3eafa9d33ca50fa6 translatedAt=2026-11-09T11:43:52.788Z pushedAt=2026-11-10T02:30:43.687Z nl=1 -->
 
 ```c
 typedef struct ArkUI_ImmersiveMaterial* ArkUI_ImmersiveMaterialHandle

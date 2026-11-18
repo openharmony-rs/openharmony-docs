@@ -5,11 +5,11 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=6482e1478c8300c06759225778677b39973d7297 translatedAt=2026-09-18T01:48:45.852Z pushedAt=2026-09-18T06:43:46.185Z -->
+<!-- md-trans-meta sourceCommit=d55c5f62f740ed238efabe694bb55cba967e3150 translatedAt=2026-10-22T02:39:12.209Z pushedAt=2026-10-22T03:39:27.284Z nl=1 -->
 
 Starting from API version 10, low-latency audio recording is available.
 
-Low-latency audio recording is an audio rendering solution that leverages software-hardware-chip synergy. By reducing buffer sizes and optimizing the data read/write architecture, this mode delivers significantly lower audio recording latency.
+Low-latency audio recording is an audio capture solution implemented through software-hardware co-design. Its core mechanism reduces the buffer size and optimizes the data read/write architecture, so that audio recording in this mode has lower latency.
 
 ## Prerequisites
 
@@ -91,7 +91,7 @@ int32_t MyOnReadData_Legacy(
 
 - To prevent audio stuttering, do not perform time-consuming operations in the callback function **OH_AudioCapturer_OnReadData**.
 - To maintain independence between data writing logic and stream state control, do not call the audio stream control APIs in the callback function **OH_AudioCapturer_OnReadData**.
-
+  
     | Audio Stream Control API                                                   | Description        |
     | ------------------------------------------------------------ | ------------ |
     | OH_AudioStream_Result OH_AudioCapturer_Start(OH_AudioCapturer* capturer) | Starts the audio capturer.    |

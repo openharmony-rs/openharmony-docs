@@ -1,12 +1,11 @@
 # arkweb_interface.h
-
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui; @zourongchun-->
-<!--Designer: @yaomingliu; @zhufenghao-->
+<!--Designer: @xuefuzhang; @zhufenghao-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d1b85ec7ea193eefc4ef0fcb99c42629d3e17584 translatedAt=2026-08-03T09:48:45.252Z pushedAt=2026-08-05T09:33:52.588Z -->
+<!-- md-trans-meta sourceCommit=f18d113dd90e7361c74b830ab39cc318edd40714 translatedAt=2026-11-06T11:35:54.327Z pushedAt=2026-11-13T11:14:57.755Z nl=1 -->
 
 ## Overview
 
@@ -66,6 +65,7 @@ Enumerates the native API types.
 | ARKWEB_NATIVE_COOKIE_MANAGER | API type related to CookieManager. |
 | ARKWEB_NATIVE_JAVASCRIPT_VALUE | API type related to JavaScriptValue.<br>**Since:** 18 |
 
+
 ## Function Description
 
 ### OH_ArkWeb_GetNativeAPI()
@@ -76,7 +76,7 @@ ArkWeb_AnyNativeAPI* OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind type)
 
 **Description**
 
-Obtains the corresponding Native API struct based on the API type passed in. It is used in scenarios such as obtaining a Controller in native code to control Web component behavior, obtaining a CookieManager to manage cookies, obtaining a WebMessagePort for message communication, and obtaining a JavaScriptValue to operate JavaScript objects.
+Based on the input API type, obtains the corresponding Native API structure. It is used in scenarios such as obtaining a Controller in native code to control Web component behavior, obtaining a CookieManager to manage cookies, obtaining a WebMessagePort to implement message communication, and obtaining a JavaScriptValue to operate JavaScript objects. This interface may return a null pointer. Developers must perform null-check handling before using the return value to avoid application crashes caused by null pointer dereference.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -108,6 +108,7 @@ Registers a callback for the component scroll event. It is used in scenarios suc
 
 **Since**: 18
 
+
 **Parameters**
 
 | Name| Description|
@@ -121,3 +122,5 @@ Registers a callback for the component scroll event. It is used in scenarios suc
 | Type| Description|
 | -- | -- |
 | bool | **true** is returned if the operation is successful; otherwise, **false** is returned.|
+
+

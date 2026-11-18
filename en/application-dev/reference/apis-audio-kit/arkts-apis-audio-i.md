@@ -5,6 +5,7 @@
 <!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=632412f4225506a7a166a97b0ef799fa2f61532f translatedAt=2026-11-03T03:42:33.351Z pushedAt=2026-11-04T03:11:46.933Z nl=1 -->
 
 > **NOTE**
 >
@@ -286,15 +287,21 @@ Describes input parameters of audio interruption events.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. No substitute is provided.
+> Supported since API version 7, deprecated since API version 9.
+>
+> When requesting audio focus, it is recommended to use [AudioRendererOptions](arkts-apis-audio-i.md#audiorendereroptions8).rendererInfo as a replacement, and [StreamUsage](arkts-apis-audio-e.md#streamusage) determines the focus policy of the audio stream.
+>
+> It is recommended to use the [on('audioInterrupt')](arkts-apis-audio-AudioRenderer.md#onaudiointerrupt9) API to listen for audio focus events [InterruptEvent](arkts-apis-audio-i.md#interruptevent9), as a replacement for audio interruption events.
+>
+> Using the deprecated API [on('interrupt')](arkts-apis-audio-AudioManager.md#oninterruptdeprecated) does not interrupt audio streams of the new mechanism, nor does it receive focus interruption events.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
 
 | Name           | Type                       | Read-Only| Optional| Description                                                        |
 | --------------- | --------------------------- | ----|---| ------------------------------------------------------------ |
-| streamUsage     | [StreamUsage](arkts-apis-audio-e.md#streamusage) | No| No| Audio stream usage.                                            |
-| contentType     | [ContentType](arkts-apis-audio-e.md#contenttypedeprecated) | No| No| Audio content type.                                          |
-| pauseWhenDucked | boolean                     | No| No| Whether audio playback can be paused during an audio interruption. **true** if audio playback can be paused, **false** otherwise.|
+| streamUsage     | [StreamUsage](arkts-apis-audio-e.md#streamusage) | No | No | Audio stream usage type.<br> **Note:** Supported since API version 7 and deprecated since API version 9. It is recommended to use [AudioRendererOptions](arkts-apis-audio-i.md#audiorendereroptions8).rendererInfo as a replacement. |
+| contentType     | [ContentType](arkts-apis-audio-e.md#contenttypedeprecated) | No | No | Media type of the audio interruption.<br> **Note:** Supported since API version 7 and deprecated since API version 9. It is recommended to use [AudioRendererOptions](arkts-apis-audio-i.md#audiorendereroptions8).rendererInfo as a replacement. |
+| pauseWhenDucked | boolean                     | No | No | Whether audio playback can be paused during audio interruption. The value true means that audio playback can be paused during audio interruption, and the value false means that audio playback cannot be paused during audio interruption.<br> **Note:** Supported since API version 7 and deprecated since API version 9. It is recommended to use [InterruptEvent](arkts-apis-audio-i.md#interruptevent9).hintType as a replacement. |
 
 ## CaptureFilterOptions<sup>(deprecated)</sup>
 
@@ -337,7 +344,7 @@ Describes the callback invoked for audio interruption or focus gain events.
 | actionType | [InterruptActionType](arkts-apis-audio-e.md#interruptactiontypedeprecated) | No| No| Returned event type. The value **TYPE_ACTIVATED** means the focus gain event, and **TYPE_INTERRUPT** means the audio interruption event.|
 | type       | [InterruptType](arkts-apis-audio-e.md#interrupttype)             | No| Yes| Type of the audio interruption event.                                              |
 | hint       | [InterruptHint](arkts-apis-audio-e.md#interrupthint)             | No| Yes| Hint provided along with the audio interruption event.                                              |
-| activated  | boolean                                     | No| Yes| Whether the focus is gained or released. **true** if the focus is gained or released, **false** if the focus fails to be gained or released.|
+| activated  | boolean                                     | No | Yes | Whether the focus is acquired or released successfully. The value **true** indicates that the focus is acquired or released successfully, and **false** indicates the opposite. |
 
 ## SystemRecordControllerConfig
 

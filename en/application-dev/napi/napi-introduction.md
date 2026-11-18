@@ -1,20 +1,29 @@
+---
+kits: ["ArkTS Kit"]
+description: "Introduces OpenHarmony Node-API, an extension of the Node.js specification that enables cross-language interaction between ArkTS/JS and C/C++ modules for performance-sensitive scenarios and low-level system calls."
+keywords: [Node-API, cross-language interaction, C/C++ interaction, module registration, ArkTS, napi_env, native modules]
+doctype: guide
+status: active
+---
+
 # Node-API Overview
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=168caf601a8ed7899a458e51351d604fc48a1943 translatedAt=2026-11-09T08:52:17.309Z nl=1 -->
 
 ## When to Use
 
-Developed based on the Node.js 18.x LTS [Node-API](https://nodejs.org/docs/latest-v12.x/api/n-api.html), OpenHarmony Node-API allows interaction between ArkTS/JS and C/C++ modules. It provides a set of stable APIs that can be used on different operating systems.
+OpenHarmony Node-API is a mechanism extended from the [Node-API](https://nodejs.org/docs/latest-v18.x/api/n-api.html) specification of Node.js 18.x LTS. It provides the interaction capability between ArkTS/JS and C/C++ modules, and offers a set of stable, cross-platform APIs that can be used on different operating systems.
 
 Unless otherwise specified, Node-API in this document refers to OpenHarmony Node-API.
 
 > **NOTE**
 >
-> For details about the differences between OpenHarmony Node-API and Node.js 18.x LTS Node-API, see [Node-API](../reference/native-lib/napi.md).
+> For details about the differences between OpenHarmony Node-API and the Node-API specification of Node.js 18.x LTS, see [Node-API](../reference/native-lib/napi.md).
 
 Generally, ArkTS/JS is used for OpenHarmony application development. However, in compute-intensive scenarios, such as games and physical simulations, the existing C/C++ libraries are required to meet the requirements for performance and efficiency. Node-API encapsulates I/O, CPU-intensive, and OS underlying capabilities and exposes these capabilities in the form of C APIs. It uses the C/C++ module registration mechanism to mount properties and methods to ArkTS/JS objects to implement interaction between ArkTS/JS and C/C++. Node-API provides the following benefits:
 
@@ -25,7 +34,7 @@ Generally, ArkTS/JS is used for OpenHarmony application development. However, in
 ## Node-API Architecture
 
 **Figure 1** Node-API architecture
-  
+  
 ![napi_mechanism](figures/napi_mechanism.png)
 
 - Native module: a module developed using Node-API and imported to ArkTS.
@@ -45,7 +54,7 @@ Generally, ArkTS/JS is used for OpenHarmony application development. However, in
 ## Key Interaction Process of Node-API
 
 **Figure 2** Key interaction process of Node-API
-  
+  
 ![process_napi](figures/process_napi.png)
 
 The interaction between ArkTS and C++ consists of the following two steps:
@@ -53,3 +62,5 @@ The interaction between ArkTS and C++ consists of the following two steps:
 1. Initialization: When a native module is imported to ArkTS, the ArkTS engine calls the ModuleManager to load the .so file and dependencies of the module. When the module is loaded for the first time, the module registration is triggered. Then, the method properties defined by the module are embedded to an **exports** object and the object is returned.
 
 2. Invocation: When an ArkTS method is called using the **exports** object, the ArkTS engine locates and calls the embedded C/C++ method.
+
+<!--RP1--><!--RP1End-->

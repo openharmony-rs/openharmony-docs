@@ -5,6 +5,7 @@
 <!--Designer: @YanSanzo-->
 <!--Tester: @ybhou1993-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=9757d8aeae77731ea66bc1954b3a35b8879a497f translatedAt=2026-11-03T01:30:21.513Z pushedAt=2026-11-13T01:05:59.864Z nl=1 -->
 
 
 **GridObjectSortComponent** is a grid object organizer that you can use to edit, drag to sort, add, and delete grid objects.
@@ -15,8 +16,6 @@
 >  - This component is supported since API version 11. Updates will be marked with a superscript to indicate their earliest API version.
 >
 > - This component can be used only in the stage model.
->
-> - If the **GridObjectSortComponent** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **GridObjectSortComponent** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **GridObjectSortComponent** component.
 
 
 ## Modules to Import
@@ -102,6 +101,10 @@ Provides data item configuration for the **GridObjectSortComponent** component.
 | symbolStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Symbol resource of the image. Required when **GridObjectSortComponentType** is set to **IMAGE_TEXT**. The priority of this property is higher than that of **url**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | order    | number                                 | No| No| Sequence number.<br>The value must be greater than or equal to 0.<br>Default value: **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                  |
 
+## Attributes
+
+The [universal attributes](ts-component-general-attributes.md) are not supported.
+
 ## Events
 
 The [universal events](ts-component-general-events.md) are not supported.
@@ -167,11 +170,11 @@ struct Index {
           select: Array<GridObjectSortComponentItem>,
           unselect: Array<GridObjectSortComponentItem>
         ) => {
-          // save ToDo
+          // Implement the logic for saving data.
         },
         // Callback invoked when changes are canceled.
         onCancel: () =>{
-          // cancel ToDo
+          // Implement the logic for canceling editing.
         }
       })
     }

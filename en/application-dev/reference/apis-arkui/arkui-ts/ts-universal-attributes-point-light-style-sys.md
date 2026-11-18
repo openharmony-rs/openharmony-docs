@@ -1,11 +1,11 @@
 # Point Light Style (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=9430c77017ca73641537d932a3d7d8a4c99c078b translatedAt=2026-09-02T12:02:45.630Z -->
+<!-- md-trans-meta sourceCommit=3b17ae247298f1cf952b1cbdcb60f1ff0e80beac translatedAt=2026-11-03T03:26:49.317Z pushedAt=2026-11-13T01:06:00.115Z nl=1 -->
 
 Sets a point light style to illuminate surrounding components and produce lighting effects by configuring light source attributes and whether a component can be illuminated. It is applicable to scenarios where you need to highlight the visual focus of a component or create decorative lighting effects.
 
@@ -29,7 +29,7 @@ You apply a point light style by setting the light source that emits illuminatio
 | ----------- | ----------------------------------------------------------- | ---- |  ---- | ------------------------------------------------------------ |
 | lightSource | [LightSource](#lightsource)                         | No   |  Yes   | Sets the light source properties. The light source affects the surrounding components marked as illuminable and produces a light effect on them.<br>Default Value: no light source |
 | illuminated | [IlluminatedType](./ts-appendix-enums-sys.md#illuminatedtype) | No   |  Yes  | Sets whether the current component can be illuminated by a light source and the illumination type.<br>Default Value: IlluminatedType.NONE |
-| bloom       | number                                                      | No   |  Yes   | Sets the glow intensity of the component. The value ranges from 0 to 1. If the value is out of range, the default value is used.<br>Default Value: 0        |
+| bloom       | number                                                      | No   |  Yes   | Sets the luminous intensity of the component. The value ranges from 0 to 1. If the value is out of range, the default value is used.<br>Default Value: 0        |
 
 ## LightSource
 

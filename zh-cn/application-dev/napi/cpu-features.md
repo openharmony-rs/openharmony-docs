@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍在OpenHarmony原生库开发中如何检测和使用CPU硬件扩展特性，通过引入开源cpu_features库或读取/proc/cpuinfo、调用getauxval接口获取设备CPU特性，并基于条件编译实现不同架构的兼容性适配。"
+keywords: [CPU特性, cpu_features库, NEON, ARM架构, getauxval, /proc/cpuinfo, 硬件扩展, cpuinfo, AARCH64]
+doctype: guide
+status: active
+---
+
 # CPU特性
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->

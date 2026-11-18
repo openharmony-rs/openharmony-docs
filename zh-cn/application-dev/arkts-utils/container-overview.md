@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "概述容器类库的定位与特点：容器由静态语言实现、不支持自定义属性和方法，具备高效的数据访问性能，分为线性容器和非线性容器两类且均非线程安全，帮助开发者进行容器选型。"
+keywords: [容器类库, 线性容器, 非线性容器, 数据结构, 高性能访问, 静态语言实现, 容器选型]
+doctype: guide
+status: active
+---
+
 # 容器类库概述
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "How to manage JSVM_Value lifecycles with HandleScope and JSVM_Ref, including escapable scopes, reference counting, and garbage collection callbacks to help avoid memory leaks."
+keywords: [OH_JSVM_OpenHandleScope, OH_JSVM_CloseHandleScope, OH_JSVM_CreateReference, OH_JSVM_EscapeHandle, OH_JSVM_AddFinalizer, HandleScope, reference counting, lifecycle management, escapable scopes]
+doctype: guide
+status: active
+---
+
 # Performing Lifecycle Management Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=23d7ff60c67cd3075712762902e4e8f21f8c70ac translatedAt=2026-11-09T08:52:17.351Z nl=1 -->
 
 ## Introduction
 
@@ -57,14 +66,17 @@ Call **OH_JSVM_OpenHandleScope** to create a context and call **OH_JSVM_CloseHan
 
 CPP code:
 
-```cpp
-// Define OH_JSVM_OpenHandleScope and OH_JSVM_CloseHandleScope.
-static JSVM_Value HandleScopeFor(JSVM_Env env, JSVM_CallbackInfo info) {
+<!-- @[oh_jsvm_open_handle_scope_and_oh_jsvm_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/openhandlescope/src/main/cpp/hello.cpp) -->
+
+``` C++
+// Sample methods for OH_JSVM_OpenHandleScope and OH_JSVM_CloseHandleScope
+static JSVM_Value HandleScopeFor(JSVM_Env env, JSVM_CallbackInfo info)
+{
     // When JSVM-API is frequently called to create JS objects in the for loop, use handle_scope to release resources in a timely manner when they are no longer required.
     // In the following example, the lifecycle of the local variable res ends at the end of each loop. To prevent memory leaks, scope is used to release the JS object in a timely manner.
-    constexpr uint32_t DIFF_VALUE_TEN_THOUSAND = 10000;
+    constexpr uint32_t ITERATION_COUNT = 10000;
     JSVM_Value checked = nullptr;
-    for (int i = 0; i < DIFF_VALUE_TEN_THOUSAND; i++) {
+    for (int i = 0; i < ITERATION_COUNT; i++) {
         JSVM_HandleScope scope = nullptr;
         JSVM_Status status = OH_JSVM_OpenHandleScope(env, &scope);
         if (status != JSVM_OK || scope == nullptr) {
@@ -95,9 +107,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"HandleScopeFor", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
-const char *srcCallNative = "HandleScopeFor()";
+const char *SRC_CALL_NATIVE = "HandleScopeFor()";
 ```
-<!-- @[oh_jsvm_open_handle_scope_and_oh_jsvm_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/openhandlescope/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```txt
@@ -106,13 +117,15 @@ JSVM HandleScopeFor: success
 
 ### OH_JSVM_OpenEscapableHandleScope, OH_JSVM_CloseEscapableHandleScope, and OH_JSVM_EscapeHandle
 
-Call **OH_JSVM_OpenEscapableHandleScope** to create an escapable handle scope, which allows the declared values in a scope to be returned to its parent scope. <br>Call **OH_JSVM_CloseEscapableHandleScope** to close the created scope. Call **OH_JSVM_EscapeHandle** to promote the lifecycle of the passed-in JS object to its parent scope.
+Call **OH_JSVM_OpenEscapableHandleScope** to create an escapable handle scope, which allows one value declared in a scope to be returned to its parent scope. <br>Call **OH_JSVM_CloseEscapableHandleScope** to close the created scope. Call **OH_JSVM_EscapeHandle** to promote the lifecycle of the passed-in JS object to its parent scope.
 
 These APIs are helpful for managing JS objects more flexibly in C/C++, especially when passing cross-scope values.
 
 CPP code:
 
-```cpp
+<!-- @[oh_jsvm_open_escapable_handle_scope_close_escapable_handle_scope_escape_handle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/openescapablehandlescope/src/main/cpp/hello.cpp) -->
+
+``` C++
 // Define OH_JSVM_OpenEscapableHandleScope, OH_JSVM_CloseEscapableHandleScope, and OH_JSVM_EscapeHandle.
 static JSVM_Value EscapableHandleScopeTest(JSVM_Env env, JSVM_CallbackInfo info)
 {
@@ -159,9 +172,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"escapableHandleScopeTest", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
-const char *srcCallNative = "escapableHandleScopeTest()";
+const char *SRC_CALL_NATIVE = "escapableHandleScopeTest()";
 ```
-<!-- @[oh_jsvm_open_escapable_handle_scope_close_escapable_handle_scope_escape_handle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/openescapablehandlescope/src/main/cpp/hello.cpp) -->
 
 Expected result:
 
@@ -183,7 +195,9 @@ Call **OH_JSVM_ReferenceRef** to increment the reference count of a reference an
 
 CPP code:
 
-```cpp
+<!-- @[oh_jsvm_reference_ref_and_oh_jsvm_reference_unref](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/referenceref/src/main/cpp/hello.cpp) -->
+
+``` C++
 static JSVM_Value UseReference(JSVM_Env env, JSVM_CallbackInfo info)
 {
     // Create a JS object.
@@ -192,7 +206,7 @@ static JSVM_Value UseReference(JSVM_Env env, JSVM_CallbackInfo info)
     JSVM_Value value = nullptr;
     OH_JSVM_CreateStringUtf8(env, "UseReference", JSVM_AUTO_LENGTH, &value);
     OH_JSVM_SetNamedProperty(env, obj, "name", value);
-    
+
     JSVM_Ref g_ref = nullptr;
     // Create a reference to the JS object.
     JSVM_Status status = OH_JSVM_CreateReference(env, obj, 1, &g_ref);
@@ -201,16 +215,17 @@ static JSVM_Value UseReference(JSVM_Env env, JSVM_CallbackInfo info)
     }
 
     // Increment the reference count and return the new reference count.
-    uint32_t result = 0u;
+    uint32_t result = 0;
     OH_JSVM_ReferenceRef(env, g_ref, &result);
     OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_ReferenceRef, count = %{public}d.", result);
-    if (result != 2) {
+    const int resultValue = 2;
+    if (result != resultValue) {
         OH_LOG_ERROR(LOG_APP, "JSVM OH_JSVM_ReferenceRef: failed");
         return nullptr;
     }
 
-    // Decrement the reference count and return the new reference count.
-    uint32_t num = 0u;
+    // Decrement the reference count of the passed-in reference and return the resulting reference count
+    uint32_t num = 0;
     OH_JSVM_ReferenceUnref(env, g_ref, &num);
     OH_LOG_INFO(LOG_APP, "JSVM OH_JSVM_ReferenceUnref, count = %{public}d.", num);
     if (num != 1) {
@@ -237,19 +252,18 @@ static JSVM_Value UseReference(JSVM_Env env, JSVM_CallbackInfo info)
     return object;
 }
 
-// Register the CreateReference, UseReference, and DeleteReference callbacks.
+// Register callback for UseReference
 static JSVM_CallbackStruct param[] = {
     {.callback = UseReference, .data = nullptr},
 };
 static JSVM_CallbackStruct *method = param;
-// Aliases for the CreateReference, UseReference, and DeleteReference methods, which cal be called from JS.
+// Alias for the UseReference method, for JS invocation
 static JSVM_PropertyDescriptor descriptor[] = {
     {"useReference", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
-const char *srcCallNative = "useReference()";
+const char *SRC_CALL_NATIVE = "useReference()";
 ```
-<!-- @[oh_jsvm_reference_ref_and_oh_jsvm_reference_unref](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/referenceref/src/main/cpp/hello.cpp) -->
 
 Expected result:
 
@@ -267,8 +281,11 @@ The Finalizer method cannot be canceled after being registered. If it is not exe
 
 CPP code:
 
-```cpp
-static int AddFinalizer(JSVM_VM vm, JSVM_Env env) {
+<!-- @[oh_jsvm_add_finalizer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/addfinalizer/src/main/cpp/hello.cpp) -->
+
+``` C++
+static int AddFinalizer(JSVM_VM vm, JSVM_Env env)
+{
     // Open the handle scope.
     JSVM_HandleScope handleScope;
     CHECK_RET(OH_JSVM_OpenHandleScope(env, &handleScope));
@@ -292,11 +309,12 @@ static int AddFinalizer(JSVM_VM vm, JSVM_Env env) {
     return 0;
 }
 
-static JSVM_Value RunDemo(JSVM_Env env, JSVM_CallbackInfo info) {
+static JSVM_Value RunDemo(JSVM_Env env, JSVM_CallbackInfo info)
+{
     JSVM_VM vm;
     OH_JSVM_GetVM(env, &vm);
     if (AddFinalizer(vm, env) != 0) {
-        OH_LOG_INFO(LOG_APP, "Run PromiseRegisterHandler failed");
+        OH_LOG_ERROR(LOG_APP, "Run AddFinalizer failed");
     }
 
     return nullptr;
@@ -313,9 +331,8 @@ static JSVM_PropertyDescriptor descriptor[] = {
 };
 
 // Call C++ code from JS.
-const char *srcCallNative = R"JS(RunDemo();)JS";
+const char *SRC_CALL_NATIVE = R"JS(RunDemo();)JS";
 ```
-<!-- @[oh_jsvm_add_finalizer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmLifeCycle/addfinalizer/src/main/cpp/hello.cpp) -->
 
 Expected result:
 ```ts

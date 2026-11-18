@@ -50,7 +50,7 @@
 | [OH_UsbManager_ErrorCode OH_UsbManager_HasPermission(const char *deviceName, bool *result)](#oh_usbmanager_haspermission) | - | 检查应用是否有权限访问指定设备。 |
 | [typedef void (\*OH_UsbManager_PermissionCallback)(OH_UsbManager_ErrorCode errorCode, bool result, void *userContext)](#oh_usbmanager_permissioncallback) | OH_UsbManager_PermissionCallback | 定义用于返回[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission)结果的回调类型。 |
 | [OH_UsbManager_ErrorCode OH_UsbManager_RequestPermission(const char *deviceName, OH_UsbManager_PermissionCallback callback, void *userContext)](#oh_usbmanager_requestpermission) | - | 异步请求访问指定USB设备的权限。这可能触发系统弹窗询问用户是否授权。函数立即返回，结果通过回调传递。 |
-| [OH_UsbManager_ErrorCode OH_UsbManager_GetFileDescriptor(const OH_UsbManager_UsbPipe *pipe, int32_t *fd)](#oh_usbmanager_getfiledescriptor) | - | 获取已打开USB设备管道的文件描述符。该fd可用于基于ioctl的低层USB传输。 |
+| [OH_UsbManager_ErrorCode OH_UsbManager_GetFileDescriptor(const OH_UsbManager_UsbPipe *pipe, int32_t *fd)](#oh_usbmanager_getfiledescriptor) | - | 获取已打开USB设备管道的文件描述符。该fd可用于基于ioctl的底层USB传输。 |
 | [OH_UsbManager_ErrorCode OH_UsbManager_ClosePipe(const OH_UsbManager_UsbPipe *pipe)](#oh_usbmanager_closepipe) | - | 关闭USB设备管道并释放底层资源。该管道必须从[OH_UsbManager_ConnectDevice](capi-ohusb-manager-h.md#oh_usbmanager_connectdevice)获取。 |
 
 ## 枚举类型说明
@@ -116,7 +116,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_GetUsbDeviceList(OH_UsbManager_UsbDevice *
 | [OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md) **devices | [出参] 指向[OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md)数组的二级指针。成功时，函数会分配该数组及所有内部字符串缓冲区。调用者不得单独释放各个字段；请改用[OH_UsbManager_FreeUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_freeusbdevicelist)。不得为空。 |
 | uint32_t *deviceCount | [出参] 指向返回设备数量的指针。成功时，该值被设置为数组中的元素个数。为0表示当前没有设备。不得为空。 |
 
-**释放资源：** 调用[OH_UsbManager_FreeUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_freeusbdevicelist)释放devices。
+**资源释放：** [OH_UsbManager_FreeUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_freeusbdevicelist)
 
 **返回：**
 
@@ -184,7 +184,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_HasPermission(const char *deviceName, bool
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *deviceName | [入参] 设备名称，格式为<总线编号>-<设备地址>。不得为空。 |
+| const char *deviceName | [入参] 设备名称，格式为\<总线编号\>-\<设备地址\>。不得为空。 |
 | bool *result | [出参] 用于接收结果的指针。如果应用已被授予访问设备的权限则为true；如果权限未被授予或未被请求则为false。不得为空。 |
 
 **返回：**
@@ -229,7 +229,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_RequestPermission(const char *deviceName, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *deviceName | [入参] 设备名称，格式为<总线编号>-<设备地址>。不得为空。 |
+| const char *deviceName | [入参] 设备名称，格式为\<总线编号\>-\<设备地址\>。不得为空。 |
 | [OH_UsbManager_PermissionCallback](capi-ohusb-manager-h.md#oh_usbmanager_permissioncallback) callback | [入参] 请求完成时调用的[OH_UsbManager_PermissionCallback](capi-ohusb-manager-h.md#oh_usbmanager_permissioncallback)。不得为空。 |
 | void *userContext | [入参] 传递给回调的用户上下文指针。可以为空。 |
 
@@ -247,7 +247,7 @@ OH_UsbManager_ErrorCode OH_UsbManager_GetFileDescriptor(const OH_UsbManager_UsbP
 
 **描述：**
 
-获取已打开USB设备管道的文件描述符。该fd可用于基于ioctl的低层USB传输。
+获取已打开USB设备管道的文件描述符。该fd可用于基于ioctl的底层USB传输。
 
 **起始版本：** 26.0.1
 

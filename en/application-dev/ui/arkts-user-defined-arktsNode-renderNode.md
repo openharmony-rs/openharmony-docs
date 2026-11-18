@@ -1,12 +1,11 @@
 # Custom Render Node (RenderNode)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sunbees-->
 <!--Designer: @sunbees-->
 <!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=39f66a31c4cd77f8015af575d95ace022de7992b translatedAt=2026-08-05T01:23:45.403Z pushedAt=2026-08-05T01:44:22.900Z -->
+<!-- md-trans-meta sourceCommit=0ade3bea7748333e85428e30651ba8b6f27a27e4 translatedAt=2026-11-12T04:07:02.508Z pushedAt=2026-11-13T09:00:00.411Z nl=1 -->
 
 ## Overview
 
@@ -16,7 +15,7 @@ This is where [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md) 
 
 ## Creating and Removing Nodes
 
-You can create and remove nodes with **RenderNode**. You can create a custom instance of **RenderNode** using its constructor, and the instance thereby created corresponds to an entity node. You can use the [dispose](../reference/apis-arkui/js-apis-arkui-renderNode.md#dispose12) API in **RenderNode** to break the binding with the entity node.
+You can create and remove nodes with **RenderNode**. You can create a custom instance of **RenderNode** using its constructor, and the instance thereby created corresponds to an entity node. You can use the [dispose](../reference/apis-arkui/js-apis-arkui-renderNode.md#dispose12) API in **RenderNode** to release the reference to the entity node.
 
 ## Operating the Node Tree
 
@@ -113,7 +112,6 @@ export struct OperationNodeTree {
   }
 }
 ```
-
 ![](figures/operation_node_tree.png)
 
 ## Setting and Obtaining Rendering-related Attributes
@@ -334,7 +332,6 @@ export struct RenderingProperties {
   }
 }
 ```
-
 ![](figures/rendering_properties.gif)
 
 ## Using Custom Drawing
@@ -440,7 +437,6 @@ export struct CustomDraw {
   }
 }
 ```
-
 ![](figures/custom_draw.gif)
 
 ## Adjusting the Transformation Matrix of the Custom Drawing Canvas
@@ -697,7 +693,6 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 ```
 
 Add the following content to the **src/main/cpp/CMakeLists.txt** file of the project:
-
 ```cmake
 # the minimum version of CMake.
 cmake_minimum_required(VERSION 3.4.1)
@@ -715,7 +710,6 @@ target_link_libraries(entry PUBLIC libnative_drawing.so)
 ```
 
 Add the definition of the custom drawing API on the ArkTS side to the **src/main/cpp/types/libentry/index.d.ts** file of the project. The following is an example:
-
 <!-- @[index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomRenderNode/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
@@ -835,7 +829,6 @@ export struct SetLabel {
   }
 }
 ```
-
 ![](figures/set_label.png)
 
 ## Checking RenderNode Reference Status

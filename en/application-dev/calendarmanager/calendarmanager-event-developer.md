@@ -6,7 +6,7 @@
 <!--Designer: @qq_42718467-->
 <!--Tester: @z30055209-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=1261675227cc6cdcc1de52f55ec6ca59a8d9110a translatedAt=2026-07-28T06:43:41.722Z pushedAt=2026-07-28T07:09:41.906Z -->
+<!-- md-trans-meta sourceCommit=0e12eb4ffbcdbc501a791d9eb7362520089059a1 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 An event refers to a specific event or activity arrangement. Event management is to arrange events or activities to effectively use related resources, improve productivity and efficiency, and enable users to better manage time and tasks.
 
@@ -185,11 +185,11 @@ The table below lists the main APIs used for event management. For details about
      recurrenceRule: {
        // Event recurrence frequency, which can be daily, weekly, monthly, or yearly.
        recurrenceFrequency: calendarManager.RecurrenceFrequency.DAILY,
-       // Number of event recurrence times. Either count or expire needs to be set. If both attributes are set, the value of the count attribute is used.
+       // Number of event recurrences. If count, interval, and expire are all set, the earliest limit reached takes effect.
        count: 100,
        // Interval for event recurrence, which is related to recurrenceFrequency. This example indicates that the event is repeated every two days.
        interval: 2,
-       // Event expiration time. Either count or expire needs to be set. If both attributes are set, the value of the count attribute is used.
+       // Event expiration time. If expire, count, and interval are all set, the earliest limit reached takes effect.
        expire: date.getTime() + 60 * 60 * 1000 * 3,
        // Excluded date. If set, the specified date is excluded from the repeated event.
        excludedDates: [date.getTime() + 60 * 60 * 1000 * 2]

@@ -1,3 +1,10 @@
+---
+kits: ["Audio Kit / 音频服务"]
+description: "指导ArkTS开发者使用AudioRenderer播放PCM音频，包括创建渲染器、写入数据、状态监听等播放全流程。"
+keywords: [AudioRenderer, 音频播放, 音频渲染, 音频数据写入, StreamUsage, 音频采样率]
+doctype: guide
+status: active
+---
 # 使用AudioRenderer开发音频播放功能(ArkTS)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
@@ -84,12 +91,12 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
      > - 在无法填满回调所需长度数据的情况下，建议开发者返回audio.AudioDataCallbackResult.INVALID，系统不会处理该段音频数据，然后会再次向应用请求数据，确认数据填满后返回audio.AudioDataCallbackResult.VALID。
      > - 回调函数结束后，音频服务会把缓冲中数据放入队列里等待播放，因此请勿在回调外再次更改缓冲中的数据。对于最后一帧，如果数据不够填满缓冲长度，开发者需要使用剩余数据拼接空数据的方式，将缓冲填满，避免缓冲内的历史脏数据对播放效果产生不良的影响。
 
-     <!-- @[init_oncallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->
+     <!-- @[init_oncallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) -->  
      
      ``` TypeScript
      import { audio } from '@kit.AudioKit';
      import { BusinessError } from '@kit.BasicServicesKit';
-     import { fileIo as fs } from '@kit.CoreFileKit';
+     import { fileIo } from '@kit.CoreFileKit';
      import { common } from '@kit.AbilityKit';
      // ...
      class Options {
@@ -108,7 +115,7 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
            return audio.AudioDataCallbackResult.INVALID;
          }
          try {
-           let bufferLength = fs.readSync(file.fd, buffer, options);
+           let bufferLength = fileIo.readSync(file.fd, buffer, options);
            bufferSize += buffer.byteLength;
            // 系统会判定buffer有效，正常播放。
            // ...
@@ -215,6 +222,46 @@ AudioRenderer是音频渲染器，用于播放PCM（Pulse Code Modulation）音�
        // 关闭沙箱文件。
        await context.resourceManager.closeRawFd('S16LE_2_48000.pcm');
    ```
+
+### 等待音频数据场景的处理建议
+
+在音频播放过程中，应用可能因网络下载等待等原因暂时无法提供音频数据。从API版本26.1.0开始，应用可以调用[standby](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#standby)接口让音频流进入standby状态，暂停数据回调，避免空转。已写入系统的缓存数据会继续播放完毕。退出standby后，数据回调恢复。仅STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_GAME、STREAM_USAGE_AUDIOBOOK类型的播放流支持standby。
+
+**进入standby状态：**
+
+<!-- @[render_standby_enter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) --> 
+
+``` TypeScript
+async function enterStandby() {
+  if (audioRenderer !== undefined) {
+    // 进入standby状态。仅在STATE_RUNNING状态下可调用。
+    audioRenderer.standby(true).then(() => {
+      console.info('Succeeded in entering standby.');
+      // 数据回调已暂停，已写入的缓存继续播放。
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to enter standby. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
+
+**退出standby状态：**
+
+<!-- @[render_standby_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleJS/entry/src/main/ets/pages/renderer.ets) --> 
+
+``` TypeScript
+async function exitStandby() {
+  if (audioRenderer !== undefined) {
+    // 退出standby状态。仅在standby状态下可调用。
+    audioRenderer.standby(false).then(() => {
+      console.info('Succeeded in exiting standby.');
+      // 数据回调恢复。
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to exit standby. Code: ${err.code}, message: ${err.message}`);
+    });
+  }
+}
+```
 
 ### 选择正确的StreamUsage
 

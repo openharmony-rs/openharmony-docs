@@ -5,14 +5,16 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=377173573bb25c86fb73a55ea2ff70448730e3f0 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
+<!--RP1-->
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
 Preview is the image you see after you start the camera application but before you take photos or record videos.
 
 ## How to Develop
 
-Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API reference.
+For detailed API descriptions, see [@ohos.multimedia.camera (Camera Management)](../../reference/apis-camera-kit/arkts-apis-camera.md).
 
 1. Import the camera module, which provides camera-related properties and methods.
      
@@ -57,7 +59,23 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
     }
     ```
 
-3. Use **previewProfiles** in [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability) to obtain the preview output capabilities, in the format of an **previewProfilesArray** array, supported by the current device. Then call [createPreviewOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput) to create a PreviewOutput object, with the first parameter set to the preview profile supported by the camera and the second parameter set to the surface ID obtained in step 2.
+3. Call [getSupportedOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11) to obtain the [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability) list supported by the camera.
+
+   ```ts
+   function getSupportedOutputCapability(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice): camera.CameraOutputCapability | undefined
+   {
+     try {
+       // Pass the mode to enable to the API. This example uses photo mode.
+       return cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO);
+     } catch (error) {
+       let err = error as BusinessError;
+       console.error(`failed to getSupportedOutputCapability, err code: ${err.code}`);
+       return undefined;
+     }
+   }
+   ```
+
+4. Obtain the supported preview capabilities through previewProfiles in [CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability), which returns previewProfilesArray. Call [createPreviewOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput) to create a preview output stream. Its two parameters are a supported previewProfile and the surfaceId obtained in step 2.
      
    ```ts
    function getPreviewOutput(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability, surfaceId: string): camera.PreviewOutput | undefined {
@@ -71,7 +89,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
      }
      let previewOutput: camera.PreviewOutput | undefined = undefined;
      try {
-       // Choose the preview profile from previewProfilesArray that matches the aspect ratio set in Step 2. Selecting the first item in the array is for illustrative purposes only.
+       // The previewProfilesArray should use a previewProfile configuration with the same aspect ratio as set in step 2. The first array item is selected here only for API usage demonstration purposes.
        previewOutput = cameraManager.createPreviewOutput(previewProfilesArray[0], surfaceId);
      } catch (error) {
        let err = error as BusinessError;
@@ -81,7 +99,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
    }
    ```
 
-4. Call [Session.start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11) to start outputting the preview stream. If the call fails, an error code is returned. For details, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
+5. Start the preview stream by calling [Session.start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11). If the call fails, the corresponding error code is returned. For error code types, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
      
    ```ts
    async function startPreviewOutput(cameraManager: camera.CameraManager, previewOutput: camera.PreviewOutput): Promise<void> {
@@ -129,7 +147,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
 
 During camera application development, you can listen for the preview output stream status, including preview stream start, preview stream end, and preview stream output errors.
 
-- Register the **'frameStart'** event to listen for preview start events. This event can be registered when a PreviewOutput object is created and is triggered when the bottom layer starts exposure for the first time. The preview stream starts as long as a result is returned.
+- Register the fixed [on('frameStart')](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframestart) callback function to listen for preview start results. This callback can be registered when a PreviewOutput object is created and is triggered upon the first preview exposure. When this event returns a result, the preview stream is considered started.
     
   ```ts
   function onPreviewOutputFrameStart(previewOutput: camera.PreviewOutput): void {
@@ -142,7 +160,7 @@ During camera application development, you can listen for the preview output str
   }
   ```
 
-- Register the **'frameEnd'** event to listen for preview end events. This event can be registered when a PreviewOutput object is created and is triggered when the last frame of preview ends. The preview stream ends as long as a result is returned.
+- Register the fixed [on('frameEnd')](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframeend) callback function to listen for preview end results. This callback can be registered when a PreviewOutput object is created and is triggered when the last frame of preview completes. When this event returns a result, the preview stream is considered ended.
     
   ```ts
   function onPreviewOutputFrameEnd(previewOutput: camera.PreviewOutput): void {
@@ -155,7 +173,7 @@ During camera application development, you can listen for the preview output str
   }
   ```
 
-- Register the **'error'** event to listen for preview output errors. The callback function returns an error code when an API is incorrectly used. For details about the error code types, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
+- Register the fixed error callback function to listen for preview output error results. The callback returns the corresponding error code when a preview output API is incorrectly used. For details about the error code types, see [CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode).
     
   ```ts
   function onPreviewOutputError(previewOutput: camera.PreviewOutput): void {
@@ -181,7 +199,7 @@ struct Index {
   @State imageWidth: number = 1920;
   @State imageHeight: number = 1080;
   private cameraManager: camera.CameraManager | undefined = undefined;
-  private cameras: Array<camera.CameraDevice> | Array<camera.CameraDevice> = [];
+  private cameras: Array<camera.CameraDevice> | undefined = [];
   private cameraInput: camera.CameraInput | undefined = undefined;
   private previewOutput: camera.PreviewOutput | undefined = undefined;
   private session: camera.VideoSession | undefined = undefined;
@@ -337,3 +355,4 @@ struct Index {
   }
 }
 ```
+<!--RP1End-->

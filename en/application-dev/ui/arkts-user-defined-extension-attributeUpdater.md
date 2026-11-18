@@ -1,12 +1,11 @@
 # Attribute Updater (AttributeUpdater)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @wangyang2022-->
-<!--Designer: @wangyang2022-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=82cbd61bf5a97c687ddb974e4186cc744a8f06f2 translatedAt=2026-08-05T01:24:50.321Z pushedAt=2026-08-05T01:59:53.956Z -->
+<!-- md-trans-meta sourceCommit=c1d045ee34ba178ea0d50ccb33a0b38e16ab0af6 translatedAt=2026-11-03T07:52:52.321Z pushedAt=2026-11-03T07:58:40.009Z nl=1 -->
 
 ## Overview
 
@@ -38,15 +37,10 @@ export declare class AttributeUpdater<T, C = Initializer<T>> implements Attribut
 ## How to Use
 
 - You can extend the **AttributeUpdater\<T>** class and set it up through the universal method **AttributeModifier** of the component. When the binding is first established, the **initializeModifier** API is triggered to initialize attributes. This is followed by a series of lifecycle events that are consistent with those of **AttributeModifier**.
-
 - After the component is initialized, you can obtain the attribute object through the **attribute** method of the **AttributeUpdater** instance. If the component is not initialized, the method will return **undefined**.
-
 - Modifying attributes through **attribute** will store the latest settings within the current object and immediately trigger an update of the component's attributes.
-
 - If an `AttributeUpdater` instance is marked as a state variable for modification, or if the attributes of the corresponding component are updated through other state variables, the [applyNormalAttribute](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#applynormalattribute) process is triggered. If the developer does not override this logic, all attributes recorded in the attribute object are updated in a batch by default.
-
 - If you override the [applyNormalAttribute](../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#applynormalattribute) logic without calling the super class's implementation of this method, the ability to obtain the `attribute` property object is lost, and the `initializeModifier` method is not called.
-
 - A single **AttributeUpdater** object can be associated with only one component. If it is associated with multiple components, attribute settings will be applied to only one of these components.
 
 ## Directly Modifying Attributes Through Modifier
@@ -88,8 +82,8 @@ struct updaterDemo {
   }
 }
 ```
-
 ![AttributeUpdater](figures/AttributeUpdater.gif)
+
 
 ## Updating Component Constructor Parameters Through Modifier
 
@@ -134,5 +128,4 @@ struct updaterDemo {
   }
 }
 ```
-
 ![AttributeUpdater](figures/AttributeUpdater2.gif)

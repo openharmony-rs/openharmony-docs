@@ -1,4 +1,12 @@
-# B-Frame Video Encoding
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Describes B-frame encoding, which uses bidirectional prediction from preceding and following frames to reduce temporal redundancy and improve compression for recording, export after editing, transcoding, and live streaming without low-latency requirements. B-frames increase end-to-end latency."
+keywords: [B-frame encoding, bidirectional prediction, maximum B-frame count, bitrate control modes]
+doctype: guide
+status: active
+---
+
+# High-Compression-Ratio B-Frame Encoding
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
@@ -6,8 +14,9 @@
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=908020b331b2d0fc8a0193a96bfbc54ad6afbbd3 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
-Starting from API version 20, B-frame video encoding is supported.
+B-frame video encoding is supported from API version 20.
 
 B-frames, short for Bidirectional Predictive Frames, are one of the primary frame types defined in video encoding standards. The main difference between B-frames and P-frames is that while P-frames support only forward prediction, B-frames support bidirectional prediction.
 
@@ -27,9 +36,9 @@ Enabling B-frames has the following impacts:
 ## Constraints
 
 - **Supported platforms**: This feature is platform-dependent. You can query the support using the [OH_AVCapability_IsFeatureSupported](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_isfeaturesupported) API.
-- **Supported API versions**: API version 20 and later.
+- **Supported API version**: API version 20 and later.
 - **Supported encoders**: This feature is encoder-dependent. You can query the support using the [OH_AVCodec_GetCapabilityByCategory](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapabilitybycategory) API.
-- **Supported bit rate control modes**: VBR, CBR, SQR, and CQ.
+- **Supported rate control modes**: VBR, CBR, SQR, and CQ. Starting from API version 26.0.0, CBR_HIGH_QUALITY is additionally supported.
 - B-frame encoding is not supported alongside temporally scalable video encoding.
 - B-frame encoding is not supported alongside long-term reference frames.
 
@@ -41,12 +50,12 @@ The configuration parameters are as follows:
 
 |Parameter|Description|Format|
 |------- |------- |------- |
-|OH_MD_KEY_VIDEO_ENCODER_ENABLE_B_FRAME |Enabled status of B-frame video recording.<br>B-frame encoding can be enabled only when it is supported.|int |
+|OH_MD_KEY_VIDEO_ENCODER_ENABLE_B_FRAME |Enabled status of B-frame video encoding.<br>B-frame encoding can be enabled only when it is supported.|int |
 |OH_MD_KEY_VIDEO_ENCODER_MAX_B_FRAMES |Maximum number of B-frames supported by video encoding.<br>It is used only for query.|int |
 
 ## How to Develop
 
-For details about basic encoding functionality, see [Video Encoding](video-encoding.md). The following are specific instructions for B-frame encoding.
+For details about basic encoding functionality, see [Asynchronous Video Encoding](video-encoding.md). The following are specific instructions for B-frame encoding.
 
 1. When creating an encoder instance, check whether the video encoder supports B-frame encoding.
 

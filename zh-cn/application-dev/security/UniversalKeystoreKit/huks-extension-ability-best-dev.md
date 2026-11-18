@@ -40,32 +40,54 @@
 
 1. 端侧应用调用证书管理的能力，拉起证书选择弹框[certificateManagerDialog.openAuthorizeDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22)，等待用户选择证书。
 
-   ```ts
+   <!-- @[open_authorize_dialog_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/OpenAuthorizeDialog.ets) -->
+
+   ``` TypeScript
    import { certificateManagerDialog, certificateManager } from '@kit.DeviceCertificateKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
-   import { UIContext } from '@kit.ArkUI';
 
-   /* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
-   let context: common.Context = new UIContext().getHostContext() as common.Context;
-   let certTypes: Array<certificateManagerDialog.CertificateType> = [
-     certificateManagerDialog.CertificateType.CREDENTIAL_USER,
-     certificateManagerDialog.CertificateType.CREDENTIAL_APP,
-     certificateManagerDialog.CertificateType.CREDENTIAL_UKEY
-   ];
-   let certPurpose: certificateManager.CertificatePurpose = certificateManager.CertificatePurpose.PURPOSE_DEFAULT;
-   let authorizeRequest: certificateManagerDialog.AuthorizeRequest = { certTypes: certTypes, certPurpose: certPurpose };
-   try {
-     certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest).then((certReference: certificateManagerDialog.CertReference) => {
-       /* 需要记录选择证书弹窗中获取到的keyUri，方便后续使用 */
-       let keyUri = certReference.keyUri;
-       console.info('Succeeded in opening authorize dialog.');
-     }).catch((err: BusinessError) => {
-       console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
-     });
-   } catch (err) {
-     let error = err as BusinessError;
-     console.error(`Failed to open authorize dialog. Code: ${error.code}, message: ${error.message}`);
+   @Entry
+   @Component
+   struct AuthorizeDialogPage {
+     private context: common.Context = getContext(this) as common.Context;
+
+     build() {
+       Column() {
+         Button($r('app.string.open_authorize_dialog'))
+           .onClick(() => {
+             this.openAuthorizeDialog();
+           })
+       }
+       .width('100%')
+       .height('100%')
+     }
+
+     private openAuthorizeDialog(): void {
+       let certTypes: certificateManagerDialog.CertificateType[] = [
+         certificateManagerDialog.CertificateType.CREDENTIAL_USER,
+         certificateManagerDialog.CertificateType.CREDENTIAL_APP,
+         certificateManagerDialog.CertificateType.CREDENTIAL_UKEY
+       ];
+       let certPurpose: certificateManager.CertificatePurpose =
+         certificateManager.CertificatePurpose.PURPOSE_DEFAULT;
+       let authorizeRequest: certificateManagerDialog.AuthorizeRequest = {
+         certTypes: certTypes, certPurpose: certPurpose
+       };
+       try {
+         certificateManagerDialog.openAuthorizeDialog(this.context, authorizeRequest)
+           .then((certReference: certificateManagerDialog.CertReference) => {
+             /* 需要记录选择证书弹窗中获取到的keyUri，方便后续使用 */
+             let keyUri = certReference.keyUri;
+             console.info('Succeeded in opening authorize dialog.');
+           }).catch((err: BusinessError) => {
+             console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
+           });
+       } catch (err) {
+         let error = err as BusinessError;
+         console.error(`Failed to open authorize dialog. Code: ${error.code}, message: ${error.message}`);
+       }
+     }
    }
    ```
 
@@ -74,19 +96,14 @@
    首先调用证书管理的NDK接口解析用户选择的证书[OH_CertManager_GetUkeyCertificate](../../reference/apis-device-certificate-kit/capi-cm-native-api-h.md#oh_certmanager_getukeycertificate)，获取对应的证书数据。
 
    其次，根据用户选中的keyUri作为resourceId调用HUKS的NDK接口打开资源[OH_Huks_OpenResource](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_openresource)。
-   
+
    最后，调用HUKS的NDK接口查询PIN认证状态[OH_Huks_GetUkeyPinAuthState](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_getukeypinauthstate)。
- 
-   ```c
-   #include "huks/native_huks_external_crypto_api.h"
-   #include "huks/native_huks_param.h"
-   #include <device_certificate/certmanager/cm_native_api.h>
-   #include <device_certificate/certmanager/cm_native_type.h>
-   #include "napi/native_api.h"
-   #include <string.h>
-   
-   /* 1. 调用证书管理的NDK接口解析用户选择的证书，获取对应的证书数据 */
-   static napi_value GetUkeyCert(napi_env env, napi_callback_info info) 
+
+   <!-- @[ukey_best_practice_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/cpp/napi_init.cpp) -->
+
+   ``` C++
+   /* 1. 调用证书管理接口解析用户选择的证书，获取对应的证书数据 */
+   static napi_value GetUkeyCert(napi_env env, napi_callback_info info)
    {
        size_t argc = 1;
        napi_value argv[1] = { nullptr };
@@ -97,14 +114,20 @@
        /* 获取keyUri长度 */
        size_t length = 0;
        napi_get_value_string_utf8(env, argv[0], nullptr, 0, &length);
+       if (length == 0 || length >= SIZE_MAX) {
+           return nullptr;
+       }
        /* 获取keyUri值 */
        char *keyUriBuffer = static_cast<char*>(malloc(length + 1));
+       if (keyUriBuffer == nullptr) {
+           return nullptr;
+       }
        size_t result = 0;
        napi_get_value_string_utf8(env, argv[0], keyUriBuffer, length + 1, &result);
-       OH_CM_Blob keyUri = { static_cast<uint32_t>(length + 1), (uint8_t*)keyUriBuffer };
+       OH_CM_Blob keyUri = { static_cast<uint32_t>(length), (uint8_t*)keyUriBuffer };
 
        /* 定义UkeyInfo入参 */
-       OH_CM_UkeyInfo ukeyInfo = { OH_CM_CERT_PURPOSE_SIGN }; /* USB凭据的属性信息，此处省略 */
+       OH_CM_UkeyInfo ukeyInfo = { OH_CM_CERT_PURPOSE_SIGN };
 
        /* 获取keyUri对应的UKey证书详情 */
        OH_CM_CredentialDetailList credentialList = { 0, nullptr };
@@ -119,30 +142,10 @@
        return retNapi;
    }
 
-   /* 2. 根据用户选中的keyUri作为resourceId，调用HUKS的NDK接口打开资源 */
-   OH_Huks_Result InitParamSet(struct OH_Huks_ExternalCryptoParamSet **paramSet,
-       const struct OH_Huks_ExternalCryptoParam *params, uint32_t paramCount)
-   {
-       OH_Huks_Result ret = OH_Huks_InitExternalCryptoParamSet(paramSet);
-       if (ret.errorCode != OH_HUKS_SUCCESS) {
-           return ret;
-       }
-       ret = OH_Huks_AddExternalCryptoParams(*paramSet, params, paramCount);
-       if (ret.errorCode != OH_HUKS_SUCCESS) {
-           OH_Huks_FreeExternalCryptoParamSet(paramSet);
-           return ret;
-       }
-       ret = OH_Huks_BuildExternalCryptoParamSet(paramSet);
-       if (ret.errorCode != OH_HUKS_SUCCESS) {
-           OH_Huks_FreeExternalCryptoParamSet(paramSet);
-           return ret;
-       }
-       return ret;
-   }
+   /* 2. 根据用户选中的keyUri作为resourceId，调用HUKS接口打开资源 */
+   static struct OH_Huks_ExternalCryptoParam g_bpOpenResourceParamsTest[] = {};
 
-   static struct OH_Huks_ExternalCryptoParam g_openResourceParamsTest[] = {};
-
-   static napi_value OpenResource(napi_env env, napi_callback_info info)
+   static napi_value BpOpenResource(napi_env env, napi_callback_info info)
    {
        size_t argc = 1;
        napi_value argv[1] = { nullptr };
@@ -153,17 +156,26 @@
        /* 获取keyUri长度 */
        size_t length = 0;
        napi_get_value_string_utf8(env, argv[0], nullptr, 0, &length);
+       if (length == 0 || length >= SIZE_MAX) {
+           return nullptr;
+       }
        /* 获取keyUri值 */
        char *keyUriBuffer = static_cast<char*>(malloc(length + 1));
+       if (keyUriBuffer == nullptr) {
+           return nullptr;
+       }
        size_t result = 0;
        napi_get_value_string_utf8(env, argv[0], keyUriBuffer, length + 1, &result);
-       OH_Huks_Blob resourceId = {.size = static_cast<uint32_t>(length), .data = (uint8_t*)keyUriBuffer};
+       OH_Huks_Blob resourceId = {
+           .size = static_cast<uint32_t>(length),
+           .data = (uint8_t*)keyUriBuffer
+       };
 
        struct OH_Huks_ExternalCryptoParamSet *openResourceParamSet = nullptr;
        OH_Huks_Result ohResult;
        do {
-           ohResult = InitParamSet(&openResourceParamSet, g_openResourceParamsTest,
-               sizeof(g_openResourceParamsTest) / sizeof(OH_Huks_ExternalCryptoParam));
+           ohResult = InitParamSet(&openResourceParamSet, g_bpOpenResourceParamsTest,
+               sizeof(g_bpOpenResourceParamsTest) / sizeof(OH_Huks_ExternalCryptoParam));
            if (ohResult.errorCode != OH_HUKS_SUCCESS) {
                break;
            }
@@ -175,16 +187,15 @@
        free(keyUriBuffer);
        OH_Huks_FreeExternalCryptoParamSet(&openResourceParamSet);
 
-       OH_Huks_Result res = OH_Huks_OpenResource(&resourceId, openResourceParamSet);
        napi_value ret;
-       napi_create_int32(env, res.errorCode, &ret);
+       napi_create_int32(env, ohResult.errorCode, &ret);
        return ret;
    }
 
-   /* 3. 调用HUKS的NDK接口查询PIN认证状态 */
-   static struct OH_Huks_ExternalCryptoParam g_getPinStateParamsTest[] = {};
+   /* 3. 调用HUKS接口查询PIN认证状态 */
+   static struct OH_Huks_ExternalCryptoParam g_bpGetPinStateParamsTest[] = {};
 
-   static napi_value GetUkeyPinAuthState(napi_env env, napi_callback_info info) 
+   static napi_value BpGetUkeyPinAuthState(napi_env env, napi_callback_info info)
    {
        size_t argc = 1;
        napi_value argv[1] = { nullptr };
@@ -195,18 +206,27 @@
        /* 获取keyUri长度 */
        size_t length = 0;
        napi_get_value_string_utf8(env, argv[0], nullptr, 0, &length);
+       if (length == 0 || length >= SIZE_MAX) {
+           return nullptr;
+       }
        /* 获取keyUri值 */
        char *keyUriBuffer = static_cast<char*>(malloc(length + 1));
+       if (keyUriBuffer == nullptr) {
+           return nullptr;
+       }
        size_t result = 0;
        napi_get_value_string_utf8(env, argv[0], keyUriBuffer, length + 1, &result);
-       OH_Huks_Blob resourceId = {.size = static_cast<uint32_t>(length), .data = (uint8_t*)keyUriBuffer};
+       OH_Huks_Blob resourceId = {
+           .size = static_cast<uint32_t>(length),
+           .data = (uint8_t*)keyUriBuffer
+       };
 
        struct OH_Huks_ExternalCryptoParamSet *pinStateParamSet = nullptr;
        OH_Huks_ExternalPinAuthState authState = OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH;
        OH_Huks_Result ohResult;
        do {
-           ohResult = InitParamSet(&pinStateParamSet, g_getPinStateParamsTest,
-               sizeof(g_getPinStateParamsTest) / sizeof(OH_Huks_ExternalCryptoParam));
+           ohResult = InitParamSet(&pinStateParamSet, g_bpGetPinStateParamsTest,
+               sizeof(g_bpGetPinStateParamsTest) / sizeof(OH_Huks_ExternalCryptoParam));
            if (ohResult.errorCode != OH_HUKS_SUCCESS) {
                break;
            }
@@ -228,19 +248,19 @@
    {
        napi_property_descriptor desc[] = {
            { "getUkeyCert", nullptr, GetUkeyCert, nullptr, nullptr, nullptr, napi_default, nullptr },
-           { "openResource", nullptr, OpenResource, nullptr, nullptr, nullptr, napi_default, nullptr },
-           { "getUkeyPinAuthState", nullptr, GetUkeyPinAuthState, nullptr, nullptr, nullptr, napi_default, nullptr },
+           { "openResource", nullptr, BpOpenResource, nullptr, nullptr, nullptr, napi_default, nullptr },
+           { "getUkeyPinAuthState", nullptr, BpGetUkeyPinAuthState, nullptr, nullptr, nullptr, napi_default, nullptr },
        };
        napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
        return exports;
    }
 
    static napi_module demoModule = {
-       .nm_version =1,
+       .nm_version = 1,
        .nm_flags = 0,
        .nm_filename = nullptr,
        .nm_register_func = Init,
-       .nm_modname = "hello",
+       .nm_modname = "entry",
        .nm_priv = ((void*)0),
        .reserved = { 0 },
    };
@@ -252,7 +272,7 @@
 
    对应的d.ts接口声明如下：
 
-   ```ts
+   ``` TypeScript
    export function getUkeyCert(keyUri: string): number;
 
    export function openResource(keyUri: string): number;
@@ -262,8 +282,10 @@
 
    调用方式如下：
 
-   ```ts
-   import testNapi from "libentry.so";
+   <!-- @[ukey_best_practice_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/UkeyBestPractice.ets) -->
+
+   ``` TypeScript
+   import testNapi from 'libentry.so';
    @Entry
    @Component
    struct Index {
@@ -273,13 +295,13 @@
            Row() {
            Column() {
                Text('Hello World')
-               .fontSize(50)
-               .fontWeight(FontWeight.Bold)
-               .onClick(() => {
-                   testNapi.getUkeyCert(keyUri);
-                   testNapi.openResource(keyUri);
-                   testNapi.getUkeyPinAuthState(keyUri);
-               })
+                   .fontSize(50)
+                   .fontWeight(FontWeight.Bold)
+                   .onClick(() => {
+                       testNapi.getUkeyCert(this.keyUri);
+                       testNapi.openResource(this.keyUri);
+                       testNapi.getUkeyPinAuthState(this.keyUri);
+                   })
            }
            .width('100%')
            }
@@ -292,60 +314,54 @@
 
    如果未认证，需让端侧应用拉起PIN认证，此时端侧应用收到认证请求，处理事件，调用证书管理能力拉起PIN认证弹窗[certificateManagerDialog.openUkeyAuthDialog](../../reference/apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenukeyauthdialog22)，获得认证结果之后返回给Web组件，接着执行已认证的流程。
 
-   ```ts
-   /* 拉起证书管理PIN认证弹窗 */
+   <!-- @[open_ukey_auth_dialog_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/ets/pages/UkeyAuthDialog.ets) -->
+
+   ``` TypeScript
    import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { common } from '@kit.AbilityKit';
-   import { UIContext } from '@kit.ArkUI';
 
-   /* context为应用的上下文信息，调用方自行获取，此处仅为示例 */
-   let context: common.Context = new UIContext().getHostContext() as common.Context;
-   /* keyUri为证书凭据的唯一标识符，在第一步中已记录了keyUri，此处仅为示例 */
-   let keyUri: string = "testKeyAlias";
-   let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = { keyUri: keyUri };
-   try {
-     certificateManagerDialog.openUkeyAuthDialog(context, ukeyAuthRequest)
-       .then(() => {
-         console.info('Succeeded in opening ukey authorization dialog.');
-       }).catch((err: BusinessError) => {
-         console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
-       });
-   } catch (err) {
-     let error = err as BusinessError;
-     console.error(`Failed to open ukey authorization dialog. Code: ${error.code}, message: ${error.message}`);
+   @Entry
+   @Component
+   struct UkeyAuthDialogPage {
+     private context: common.Context = getContext(this) as common.Context;
+     /* keyUri为证书凭据的唯一标识符，在第一步中已记录了keyUri，此处仅为示例 */
+     private keyUri: string = 'testKeyAlias';
+
+     build() {
+       Column() {
+         Button($r('app.string.open_ukey_auth_dialog'))
+           .onClick(() => {
+             this.openUkeyAuthDialog();
+           })
+       }
+       .width('100%')
+       .height('100%')
+     }
+
+     private openUkeyAuthDialog(): void {
+       let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = { keyUri: this.keyUri };
+       try {
+         certificateManagerDialog.openUkeyAuthDialog(this.context, ukeyAuthRequest)
+           .then(() => {
+             console.info('Succeeded in opening ukey authorization dialog.');
+           }).catch((err: BusinessError) => {
+             console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
+           });
+       } catch (err) {
+         let error = err as BusinessError;
+         console.error(`Failed to open ukey authorization dialog. Code: ${error.code}, message: ${error.message}`);
+       }
+     }
    }
    ```
 
    如果已认证，Web组件可以直接调用HUKS的三段式接口进行签名。
 
-   ```c
+   <!-- @[ukey_sign_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/UkeyExtension/entry/src/main/cpp/napi_init.cpp) -->
+
+   ``` C++
    /* 调用huks三段式接口获取签名后的数据 */
-   #include "huks/native_huks_api.h"
-   #include "huks/native_huks_param.h"
-   #include "napi/native_api.h"
-   #include <string.h>
-
-   OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet,
-       const struct OH_Huks_Param *params, uint32_t paramCount)
-   {
-       OH_Huks_Result ret = OH_Huks_InitParamSet(paramSet);
-       if (ret.errorCode != OH_HUKS_SUCCESS) {
-           return ret;
-       }
-       ret = OH_Huks_AddParams(*paramSet, params, paramCount);
-       if (ret.errorCode != OH_HUKS_SUCCESS) {
-           OH_Huks_FreeParamSet(paramSet);
-           return ret;
-       }
-       ret = OH_Huks_BuildParamSet(paramSet);
-       if (ret.errorCode != OH_HUKS_SUCCESS) {
-           OH_Huks_FreeParamSet(paramSet);
-           return ret;
-       }
-       return ret;
-   }
-
    static struct OH_Huks_Param g_signParamsTest[] = {
        {
            .tag = OH_HUKS_TAG_ALGORITHM,
@@ -370,12 +386,10 @@
 
    static const uint32_t RSA_COMMON_SIZE = 1024;
    static const char *DATA_TO_SIGN = "testData";
-   // 此处的keyAlias可以参考第二步的resourceId获取方法，此处仅为示例
    static const char *KEY_ALIAS = "testKeyAlias";
 
    static napi_value Sign(napi_env env, napi_callback_info info)
    {
-       // 假设g_keyAlias是获取的resourceId
        struct OH_Huks_Blob keyAlias = {
            (uint32_t)strlen(KEY_ALIAS),
            (uint8_t *)KEY_ALIAS
@@ -387,18 +401,17 @@
        struct OH_Huks_ParamSet *signParamSet = nullptr;
        OH_Huks_Result ohResult;
        do {
-           ohResult = InitParamSet(&signParamSet, g_signParamsTest, sizeof(g_signParamsTest) / sizeof(OH_Huks_Param));
+           ohResult = InitHuksParamSet(&signParamSet, g_signParamsTest,
+               sizeof(g_signParamsTest) / sizeof(OH_Huks_Param));
            if (ohResult.errorCode != OH_HUKS_SUCCESS) {
                break;
            }
-           // Init
            uint8_t handleS[sizeof(uint64_t)] = {0};
            struct OH_Huks_Blob handleSign = { (uint32_t)sizeof(uint64_t), handleS };
            ohResult = OH_Huks_InitSession(&keyAlias, signParamSet, &handleSign, nullptr);
            if (ohResult.errorCode != OH_HUKS_SUCCESS) {
                break;
            }
-           // Finish
            uint8_t outDataS[RSA_COMMON_SIZE] = {0};
            struct OH_Huks_Blob outDataSign = { RSA_COMMON_SIZE, outDataS };
            ohResult = OH_Huks_FinishSession(&handleSign, signParamSet, &inData, &outDataSign);
@@ -407,7 +420,7 @@
            }
        } while (0);
        OH_Huks_FreeParamSet(&signParamSet);
-       
+
        napi_value ret;
        napi_create_int32(env, ohResult.errorCode, &ret);
        return ret;

@@ -1,11 +1,20 @@
+---
+kits: ["AVCodec Kit / Audio and Video Codec Services"]
+description: "Describes using NativeImage to create a temporary Surface and start a video decoder before XComponent or OpenGL post-processing is ready, then redirecting output when the actual consumer is ready to remove decoder creation dependencies."
+keywords: [NativeWindow, NativeImage, temporary Surface, parallel decoder creation, XComponent, SetSurface, playback startup optimization, OpenGL post-processing]
+doctype: faq
+status: active
+---
+
 # Concurrently Creating a Video Decoder and Initializing NativeWindow
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=2c04b527b6f2d3c7497499a7f8545dfbe8374945 translatedAt=2026-11-02T02:33:31.187Z pushedAt=2026-11-02T02:33:31.187Z nl=1 -->
 
 ## When to Use
 
@@ -145,10 +154,16 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     }
     ```
 
-9. Destroy the OH_NativeImage instance.
+9. Unregister the callback of NativeImage and destroy the **OH_NativeImage** instance.
    
-   After calling **OH_VideoDecoder_Destroy**, call **OH_NativeImage_Destroy** to destroy the OH_NativeImage instance.
+   After calling **OH_VideoDecoder_Destroy**, call **OH_NativeImage_UnsetOnFrameAvailableListener** to unregister the frame available callback, and then call **OH_NativeImage_Destroy** to destroy the **OH_NativeImage** instance.
    ```c++
+   // Cancel the frame-available callback listener.
+   ret = OH_NativeImage_UnsetOnFrameAvailableListener(image);
+   if (ret != AV_ERR_OK) {
+      // Handle exceptions.
+   }
+
    // Destroy the OH_NativeImage instance.
    OH_NativeImage_Destroy(&image);
    ```

@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS Kit"]
+description: "How to use JSVM-API functions such as OH_JSVM_GetSymbolToStringTag to obtain native references to 11 JavaScript well-known symbols, including Symbol.toStringTag and Symbol.iterator, for extending object behavior."
+keywords: [OH_JSVM_GetSymbolToStringTag, OH_JSVM_GetSymbolIterator, OH_JSVM_GetSymbolToPrimitive, OH_JSVM_GetSymbolHasInstance, Well-known symbols, Symbol.toStringTag, Symbol.iterator]
+doctype: guide
+status: active
+---
+
 # Working with Well-Known Symbols Using JSVM-API
-<!--Kit: NDK Development-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @yuanxiaogou; @string_sz-->
+<!--Owner: @yuanxiaogou-->
 <!--Designer: @knightaoko-->
 <!--Tester: @test_lzz-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=1bcf41641a10f17d0f56bfc82362dc9488eaf7eb translatedAt=2026-11-09T08:52:17.342Z nl=1 -->
 
 ## Introduction
 
@@ -82,6 +91,6 @@ const char *srcCallNative = R"JS(wellKnownSymbols();)JS";
 ```
 
 Expected result:
-```
+```txt
 JSVM OH_JSVM_GetSymbolToStringTag result is correct : 1
 ```

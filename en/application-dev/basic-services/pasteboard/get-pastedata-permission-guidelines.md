@@ -2,9 +2,10 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
-<!--Designer: @guo867-->
+<!--Designer: @zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=8a0160f9776d1ece1c95affa2a8a209208ec57be translatedAt=2026-11-06T12:04:12.744Z pushedAt=2026-11-09T12:25:01.095Z nl=1 -->
 
 ## Overview
 
@@ -16,7 +17,7 @@ Related APIs:
 | -------- |----------------------------------------------------------------------------------------------------------------------------------------|
 | [getData(callback: AsyncCallback&lt;PasteData&gt;): void](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9) | Reads a **PasteData** object from the pasteboard. This API uses an asynchronous callback to return the result.|
 | [getData(): Promise&lt;PasteData&gt;](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdata9-1) | Reads a **PasteData** object from the pasteboard. This API uses a promise to return the result.|
-| [getDataSync(): PasteData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdatasync11) | Reads data from the system pasteboard. This API returns the result synchronously.|
+| [getDataSync(): PasteData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getdatasync11) | Reads the system clipboard content. This API is a synchronous interface. |
 | [getUnifiedData(): Promise\<unifiedDataChannel.UnifiedData\>](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddata12) | Reads the data of a unified data object from the system pasteboard.|
 | [getUnifiedDataSync(): unifiedDataChannel.UnifiedData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddatasync12) | Reads the data of a unified data object from the system pasteboard. This API returns the result synchronously.|
 | [OH_UdmfData* OH_Pasteboard_GetData (OH_Pasteboard *pasteboard, int *status)](../../reference/apis-basic-services-kit/capi-oh-pasteboard-h.md#oh_pasteboard_getdata) | Obtains data from the pasteboard.|
@@ -25,7 +26,7 @@ Related APIs:
 
 > **NOTE**
 >
-> Before requesting the pasteboard permission, an application needs to check whether the pasteboard contains the required data. For example, use **hasData** to check whether there is data in the pasteboard, **hasDataType** or **getMimeTypes** to check whether required data types are contained, and **getChangeCount** to check whether the data changes. For details, see [Optimizing Pasteboard Dialog Box Adaptation](#optimizing-pasteboard-dialog-box-adaptation).
+> Before applying for the clipboard permission, determine in advance whether the clipboard content contains the data required by your application. For example, use hasData to check whether data exists, hasDataType/getMimeTypes to check whether the required type exists, and getChangeCount to check whether the data has changed. For details, see [Optimizing Pasteboard Dialog Box Adaptation](#optimizing-pasteboard-dialog-box-adaptation).
 
 ## Accessing Pasteboard Content
 
@@ -43,11 +44,11 @@ Applications can access the pasteboard content in either of the following ways:
 
     How to request permissions:
     <!--RP1-->
-    1. Request high-level permissions through [ACL](../../security/AccessToken/declare-permissions-in-acl.md).
+    1. Apply for a high-level permission through the [ACL method](../../security/AccessToken/declare-permissions-in-acl.md).
     
-    2. [Declare permissions](../../security/AccessToken/declare-permissions.md) in the **module.json5** configuration file.
+    2. [Declare the permission](../../security/AccessToken/declare-permissions.md) in the module.json5 configuration file.
     
-    3. [Request user authorization](../../security/AccessToken/request-user-authorization.md) via a dialog box.
+    3. [Request user authorization](../../security/AccessToken/request-user-authorization.md) through a popup.
     <!--RP1End-->
 
 ## Optimizing Pasteboard Dialog Box Adaptation
@@ -86,7 +87,7 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
     }
     // Obtain the number of content changes in the pasteboard.
     let result: number = systemPasteboard.getChangeCount();
-    hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in getting the ChangeCount. Result: ${result}');
+    hilog.info(0xFF00, '[Sample_pasteboard]', `Succeeded in getting the ChangeCount. Result: ${result}`);
     // Read the value of changeCount stored last time from Preferences.
     let storedChangeCount: number = dataPreferences ? Number(dataPreferences.getSync('pasteboardChangeCount', 0)) : 0;
     if (result === storedChangeCount) {
@@ -94,7 +95,7 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
       return false;
     }
   } catch (err) {
-    hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get the ChangeCount. Cause: ${err.message}');
+    hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to get the ChangeCount. Cause: ${err.message}`);
     return false;
   };
 
@@ -102,19 +103,19 @@ async function isNeedGetPermissionFromUser(): Promise<boolean> {
   try {
     // (Optional) Check whether the data type required by the application exists.
     let result: boolean = systemPasteboard.hasDataType(pasteboard.MIMETYPE_TEXT_PLAIN);
-    hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in checking the DataType. Result: ${result}');
+    hilog.info(0xFF00, '[Sample_pasteboard]', `Succeeded in checking the DataType. Result: ${result}`);
     if (!result) {
       // The pasteboard does not contain the data type required by the application. No permission is required.
       return false;
     }
     // (Optional) If the copied contents contain passwords or other special contents, use detectPatterns to filter out the unwanted contents.
     let data: pasteboard.Pattern[] = await systemPasteboard.detectPatterns(patterns);
-    if (patterns.sort().join('') != data.sort().join('')) {
+    if (!patterns.every(p => data.includes(p))) {
       hilog.info(0xFF00, '[Sample_pasteboard]', 'Not all needed patterns detected, no need to get data.');
       return false;
     }
   } catch (err) {
-    hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to check the DataType. Cause:' + err.message);
+    hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to check the DataType. Cause: ${err.message}`);
     return false;
   };
   return true;
@@ -131,44 +132,57 @@ struct Index {
         // ...
         Button('Paste')
           // ...
-          .onClick(() => {
+          .onClick(async () => {
             const context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
-            if (!isNeedGetPermissionFromUser()) {
+            let needPermission: boolean = false;
+            try {
+              needPermission = await isNeedGetPermissionFromUser();
+            } catch (err) {
+              hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to check permission. Cause: ${err.message}`);
+            }
+            if (!needPermission) {
               hilog.info(0xFF00, '[Sample_pasteboard]', 'No need to bring up the permission pop-up window');
               return;
             }
             let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-            // Determine whether to display a user authorization dialog box based on the return value of requestPermissionsFromUser.
-            atManager.requestPermissionsFromUser(context, permissions).then((data) => {
+            // requestPermissionsFromUser determines whether to show the popup based on the authorization status of the permission.
+            try {
+              let data = await atManager.requestPermissionsFromUser(context, permissions);
               let grantStatus: number[] = data.authResults;
-              for (const status of grantStatus) {
-                if (status === 0) {
-                  // Use the get operation to read the pasteboard content after user authorization.
-                  // ...
-                  // Determine whether the password is of the current application and use the cleardata API to clear the password in the pasteboard after obtaining the data.
-                  systemPasteboard.clearData().then((data: void) => {
-                    hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in clearing the pasteboard.');
-                  }).catch((err: BusinessError) => {
-                    hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to clear the pasteboard. Cause: ${err.message}');
-                  });
-                  // Obtain the value of current ChangeCount.
-                  let currentChangeCount: number = systemPasteboard.getChangeCount();
-                  hilog.info(0xFF00, '[Sample_pasteboard]', 'Current ChangeCount: ' + currentChangeCount);
-                  // Update the value of ChangeCount in Preferences.
-                  if (dataPreferences) {
-                    dataPreferences.putSync('pasteboardChangeCount', currentChangeCount);
-                    dataPreferences.flushSync(); // Flush data to Preferences for persistent storage.
-                    hilog.info(0xFF00, '[Sample_pasteboard]', 'ChangeCount has been updated to: ' + currentChangeCount);
-                  }
-                } else {
-                  // If the user denies the permission, display a message indicating that user authorization is required, and direct the user to set the permission in Settings.
-                  return;
-                }
+
+              let allGranted: boolean = grantStatus.some(status => status === 0);
+              if (!allGranted) {
+                // The user denies authorization. Prompt the user that authorization is required to access the features on the current page, and guide the user to enable the corresponding permission in system settings.
+                hilog.error(0xFF00, '[Sample_pasteboard]', 'All permissions denied');
+                return;
               }
               // Authorization is successful.
-            }).catch((err: BusinessError) => {
-              hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to request permissions from user. ');
-            })
+            } catch (err) {
+              hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to request permissions from user.');
+              return;
+            }
+            // The user grants authorization. Use the get operation to read the clipboard content.
+            // ...
+            // Execute the password verification logic. If it is the password of this application, it is recommended to use clearData to clear the password content from the clipboard after obtaining the data.
+            try {
+              await systemPasteboard.clearData();
+              hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in clearing the pasteboard.');
+            } catch (err) {
+              hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to clear the pasteboard. Cause: ${err.message}`);
+            }
+            try {
+              // Obtain the current ChangeCount.
+              let currentChangeCount: number = systemPasteboard.getChangeCount();
+              hilog.info(0xFF00, '[Sample_pasteboard]', `Current ChangeCount: ${currentChangeCount}`);
+              // Update the ChangeCount in Preferences.
+              if (dataPreferences) {
+                dataPreferences.putSync('pasteboardChangeCount', currentChangeCount);
+                dataPreferences.flushSync(); // Ensure that the data is written to persistent storage.
+                hilog.info(0xFF00, '[Sample_pasteboard]', `ChangeCount has been updated to: ${currentChangeCount}`);
+              }
+            } catch (err) {
+              hilog.error(0xFF00, '[Sample_pasteboard]', `Failed to update ChangeCount. Cause: ${err.message}`);
+            }
           })
         // ...
       }

@@ -1,10 +1,19 @@
+---
+kits: ["ArkTS / Ark Programming Language"]
+description: "Introduces the feature comparison and usage of seven linear containers: ArrayList, List, LinkedList, Deque, Queue, Stack, and Vector, covering differences in insertion/deletion efficiency and applicable scenarios to help developers choose the appropriate linear container based on data access characteristics."
+keywords: [linear container, ArrayList, List, LinkedList, Deque, Queue, Stack, Vector, container comparison]
+doctype: guide
+status: active
+---
+
 # Linear Containers
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
-<!--Designer: @yuanyao14-->
+<!--Owner: @wang_zhaoyong-->
+<!--Designer: @wang_zhaoyong-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
+<!-- md-trans-meta sourceCommit=f8431cb42cf0d545a37a384860003cd8449b0b43 translatedAt=2026-11-06T10:36:30.122Z pushedAt=2026-11-12T07:32:14.440Z nl=1 -->
 
 
 Linear containers, underpinned by arrays, implement a data structure that enables sequential access. There are several types of linear containers: ArrayList, Vector, List, LinkedList, Deque, Queue, and Stack.
@@ -37,7 +46,7 @@ Common APIs for adding, removing, modifying, and accessing elements in ArrayList
 | Adding elements| add(element: T) | Adds an element to the end of the array.|
 | Adding elements| insert(element: T, index: number) | Inserts an element at the specified index.|
 | Accessing elements| arr[index: number] | Obtains the value at the specified index.|
-| Accessing elements| forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) =&gt; void, thisArg?: Object) | Iterates over all elements in the ArrayList. `callbackFn` is a callback function used to process each element in the `forEach` method. It receives the current element, index, and original list as parameters.|
+| access element | forEach(callbackFn: (value: T, index?: number, arrlist?: ArrayList&lt;T&gt;) =&gt; void, thisArg?: Object) | Accesses the elements of the entire ArrayList container, where `callbackFn` is the callback function used in the `forEach()` method to process each element, receiving the current element, index, and original list as parameters. |
 | Accessing elements| \[Symbol.iterator]():IterableIterator&lt;T&gt; | Creates an iterator for data access.|
 | Modifying elements| arr[index] = xxx | Modifies the value at the specified index.|
 | Removing elements| remove(element: T) | Removes the first matching element.|
@@ -63,10 +72,10 @@ Common APIs for adding, removing, modifying, and accessing elements in List are 
 | Accessing elements| getLast() | Obtains the last element.|
 | Accessing elements| getIndexOf(element: T) | Obtains the index of the first matching element.|
 | Accessing elements| getLastIndexOf(element: T) | Obtains the index of the last matching element.|
-| Accessing elements| forEach(callbackfn: (value:T, index?: number, list?: List&lt;T&gt;)=&gt; void,thisArg?: Object) | Iterates over each element in the List and executes the specified callback function.|
+| Access element | forEach(callbackFn: (value:T, index?: number, list?: List&lt;T&gt;)=&gt; void,thisArg?: Object) | Traverse and access each element in the entire List container and execute the specified callback function. |
 | Accessing elements| \[Symbol.iterator]():IterableIterator&lt;T&gt; | Creates an iterator for data access.|
 | Modifying elements| set(index:number, element: T) | Modifies the element at the specified index.|
-| Modifying elements| list[index] = element | Modifies the element at the specified index. This API does not make any actual changes to the nodes in the linked list. Instead, it simply adds a property to the object. This can cause the program's state to become inconsistent with the actual contents of the linked list, leading to undefined behavior.|
+| Modify element | list[index] = element | When modifying the element value at the specified index position to element, no actual changes are made to the nodes in the linked list; only a property is added to the object, which may cause the program state to be inconsistent with the internal data of the linked list and lead to unpredictable behavior. |
 | Modifying elements| replaceAllElements(callbackFn:(value: T,index?: number,list?: List&lt;T&gt;)=&gt;T,thisArg?: Object) | Replaces all elements in the List.|
 | Removing elements| remove(element: T) | Compares each element in the linked list using the === operator and removes the first node that matches. For object types, the element will only be removed if the provided object reference is identical to the node's reference in the linked list.|
 | Removing elements| removeByIndex(index:number) | Removes the element at the specified index. If the index is out of range, an "out of range" error is reported|
@@ -86,7 +95,7 @@ You can use the **get**/**set** APIs to modify the stored elements. Common APIs 
 | Operation| API| Description|
 | --------- | ------- | ------- |
 | Adding elements| add(element: T) | Adds an element to the end of the array.|
-| Adding elements| insert(element: T, index: number) | Inserts an element at the specified index.|
+| Add element | insert(index: number, element: T) | Inserts an element at the specified position. |
 | Accessing elements| get(index: number) | Obtains the element at the specified index.|
 | Accessing elements| list[index: number] | Obtains the element at the specified index. If the index is out of range (index < 0 or index >= list.length) or the array is sparse (there are unassigned indexes), undefined is returned.|
 | Accessing elements| getFirst() | Obtains the first element.|
@@ -112,7 +121,7 @@ Compared with [Vector](../reference/apis-arkts/js-apis-vector.md), both support 
 
 Deque is recommended for frequent insertions and deletions at both ends.
 
-Common APIs for adding, deleting, modifying, and accessing elements in Deque are as follows.  
+Common APIs for adding, deleting, modifying, and accessing elements in Deque are as follows.
 
 | Operation| API| Description|
 | --------- | ------- | ------- |
@@ -162,11 +171,11 @@ Common APIs for adding, removing, modifying, and accessing elements in Stack are
 | Operation| API| Description|
 | --------- | ------- | ------- |
 | Adding elements| push(item: T) | Adds an element to the top of the Stack.|
-| Accessing elements| peek() | Obtains the top element of the Stack without dequeuing.|
+| Access element | peek() | Obtains the top element of the stack without popping it. |
 | Accessing elements| locate(element: T) | Obtains the position of an element.|
 | Accessing elements| forEach(callbackFn: (value: T, index?: number, stack?: Stack&lt;T&gt;) =&gt; void, thisArg?: Object) | Iterates over each element in the Stack and executes the specified callback function.|
 | Accessing elements| \[Symbol.iterator]():IterableIterator&lt;T&gt; | Creates an iterator for data access.|
-| Removing elements| pop() | Removes the first element from the Stack and returns it.|
+| Removing elements| pop() | Returns the top element of the stack and removes it.|
 
 ## Vector
 
@@ -190,7 +199,7 @@ Common APIs for adding, removing, modifying, and accessing elements in Vector ar
 | Accessing elements| getLastElement() | Obtains the last element.|
 | Accessing elements| getIndexOf(element: T) | Obtains the index of the first matching element.|
 | Accessing elements| getLastIndexOf(element: T) | Obtains the index of the last matching element.|
-| Accessing elements| forEach(callbackFn: (value: T, index?: number, Vector?: Vector&lt;T&gt;) =&gt; void, thisArg?: Object) | Iterates over each element in the Stack and executes the specified callback function.|
+| Accessing elements| forEach(callbackFn: (value: T, index?: number, Vector?: Vector&lt;T&gt;) =&gt; void, thisArg?: Object) | Iterates over each element in the Vector and executes the specified callback function.|
 | Accessing elements| \[Symbol.iterator]():IterableIterator&lt;T&gt; | Creates an iterator for data access.|
 | Modifying elements| set(index:number, element: T) | Modifies the element at the specified index.|
 | Modifying elements| vec[index] = element | Modifies the element at the specified index.|
@@ -198,18 +207,19 @@ Common APIs for adding, removing, modifying, and accessing elements in Vector ar
 | Modifying elements| setLength(newSize:number) | Sets the length of the Vector.|
 | Removing elements| remove(element: T) | Removes the first matching element.|
 | Removing elements| removeByIndex(index:number) | Removes the element at the specified index.|
-| Removing elements| removeByRange(fromIndex:number,toIndex:number) | Removes elements within the specified range.|
+| remove element | removeByRange(fromIndex:number, toIndex:number) | Removes elements within the specified range. |
 
 ## Use of Linear Containers
 
 This section provides usage examples for common linear containers, including ArrayList, Deque, Stack, and List, covering importing modules, adding elements, accessing elements, and modifying elements. The example code is as follows:
 
-<!-- @[linear_container](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/ArkTsContainerLibrary/LinearContainers/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[linear_container](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/ArkTsContainerLibrary/LinearContainers/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { ArrayList, Deque, Stack, List } from '@kit.ArkTS'; // Import the ArrayList, Deque, Stack, and List modules.
 
-// ...
+  // ...
+  // ArrayList
   let arrayList1: ArrayList<string> = new ArrayList();
   arrayList1.add('a'); // Add an element with the value 'a'.
   let arrayList2: ArrayList<number> = new ArrayList();
@@ -219,29 +229,32 @@ import { ArrayList, Deque, Stack, List } from '@kit.ArkTS'; // Import the ArrayL
   arrayList1[0] = 'one'; // Modify the element at index 0.
   console.info(`result: ${arrayList1[0]}`); // Output: result: one
   // ...
+  // Deque
   let deque1: Deque<string> = new Deque();
-  deque1.insertFront('a'); // Add an element with the value 'a' to the header.
+  deque1.insertFront('a'); // Add an element with the value 'a' at the front.
   let deque2: Deque<number> = new Deque();
-  deque2.insertFront(1); // Add an element with the value 1 to the header.
-  console.info(`result: ${deque2.getFirst()}`); // Access the first element. Output: result: 1
+  deque2.insertFront(1); // Add an element with the value 1 at the front.
+  console.info(`result: ${deque2.getFirst()}`); // Access the element at the front of the queue. Output: result: 1
   // ...
-  deque1.insertEnd('one'); // Add an element with the value 'one'.
-  console.info(`result: ${deque1.getLast()}`); // Access the last element. Output: result: one
+  deque1.insertEnd('one'); // Add an element with the value 'one' at the end.
+  console.info(`result: ${deque1.getLast()}`); // Access the element at the end of the queue. Output: result: one
   // ...
+  // Stack
   let stack1: Stack<string> = new Stack();
-  stack1.push('a'); // Add an element with the value 'a' to the Stack.
+  stack1.push('a'); // Push an element with the value 'a' onto the stack.
   let stack2: Stack<number> = new Stack();
-  stack2.push(1); // Add an element with the value 1 to the Stack.
-  console.info(`result: ${stack1.peek()}`); // Access the top element of the Stack. Output: result: a
+  stack2.push(1); // Push an element with the value 1 onto the stack.
+  console.info(`result: ${stack1.peek()}`); // Access the top element of the stack. Output: result: a
   // ...
-  console.info(`result: ${stack2.pop()}`); // Remove and return the top element. Output: result: 1
+  console.info(`result: ${stack2.pop()}`); // Remove the top element of the stack and return the removed element. Output: result: 1
   // ...
   console.info(`result: ${stack2.length}`); // Output: result: 0
   // ...
+  // List
   let list1: List<string> = new List();
   list1.add('a'); // Add an element with the value 'a'.
   let list2: List<number> = new List();
-  list2.insert(0, 0); // Insert an element with the value 0 at index 0.
+  list2.insert(0, 0); // Insert (add) an element with the value 0 at position 0.
   let list3: List<Array<number>> = new List();
   let b2 = [1, 2, 3];
   list3.add(b2); // Add an element of the Array type.

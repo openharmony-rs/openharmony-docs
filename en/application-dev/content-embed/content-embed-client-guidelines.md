@@ -6,7 +6,7 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=068eaaa3611f352f0dd1b78149184a8ea814bbff translatedAt=2026-08-20T06:21:50.389Z pushedAt=2026-08-20T12:06:28.830Z -->
+<!-- md-trans-meta sourceCommit=2e23c2b6aa53f33aac5a467fbcaf0f2f7a3d3bf0 translatedAt=2026-10-30T03:21:54.321Z pushedAt=2026-08-20T12:06:28.830Z nl=1 -->
 
 ## When to Use
 
@@ -15,16 +15,12 @@ The [OH_ContentEmbed](../reference/apis-content-embed-kit/capi-contentembed.md) 
 An OE client application embeds external documents into its own application. By calling the APIs provided by [content_embed_proxy.h](../reference/apis-content-embed-kit/capi-content-embed-proxy-h.md) in the OE framework layer, it can embed external documents, display document snapshots, and launch an OE server application on demand to edit the documents.
 
 Typical use cases include:
-
 - Embedding an Excel spreadsheet into a CAD document and starting Excel to edit the spreadsheet by clicking the embedded object.
-
 - Embedding documents in various formats, such as images and tables, into a document editor.
-
 - Embedding documents from other applications into a note-taking application for cross-application collaboration.
 
 ## Constraints
-
-Before calling the APIs, ensure that the device supports the `SystemCapability.ContentEmbed.ObjectEditor` system capability. For details about checking whether a system capability is supported, see [canIUse()](../reference/common/syscap__ndk_8h.md#caniuse). You must also declare the `ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION` permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
+Before using the APIs, ensure that the device supports the `SystemCapability.ContentEmbed.ObjectEditor` system capability. Call [canIUse()](../reference/common/syscap-ndk-8h.md#caniuse) to check whether the specified capability is supported. Also request the `ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION` permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
 ## Available APIs
 
@@ -35,7 +31,7 @@ Common APIs are listed in the following table. For more API details, see [OH_Con
 | API | Description |
 | ------- | ---- |
 | OH_ContentEmbed_CreateDocumentByFile | Creates an [OE document](content-embed-kit-terminology.md#oe-document) based on the path of the embedded document. |
-| OH_ContentEmbed_CreateDocumentByOEId | Creates an OE document based on an [OEID](content-embed-kit-terminology.md#oeid). |
+| OH_ContentEmbed_CreateDocumentByOEid | Creates an OE document using an [OEID](content-embed-kit-terminology.md#oeid).|
 | OH_ContentEmbed_LoadDocumentFromFile | Loads an OE document from an existing [OE format file](content-embed-kit-terminology.md#oe-format-file). |
 | OH_ContentEmbed_CreateExtensionProxy | Creates a [client OE object](content-embed-kit-terminology.md#client-oe-object). |
 | OH_ContentEmbed_DestroyExtensionProxy | Destroys the client OE object and releases related resources. |
@@ -56,18 +52,15 @@ Common APIs are listed in the following table. For more API details, see [OH_Con
 The following example shows the complete process of developing an OE client application using Native APIs.
 
 ### Adding Dynamic Libraries
+Add the following libraries to `src/main/cpp/CMakeLists.txt` in the native project:
 
-Add the following libraries to `CMakeLists.txt`.
-
-```text
-# content embed
-libcontent_embed_ndk.so
-# hilog
-libhilog_ndk.z.so
-# ace
-libace_napi.z.so
-# pixelmap
-libpixelmap.so
+```txt
+target_link_libraries(entry PUBLIC
+    libcontent_embed_ndk.so
+    libhilog_ndk.z.so
+    libace_napi.z.so
+    libpixelmap.so
+)
 ```
 
 ### Including Header Files
@@ -281,7 +274,7 @@ void ClientCallBack_OnUpdateFunc(ContentEmbed_ExtensionProxy *proxy)
 
 void ClientCallBack_OnErrorFunc(ContentEmbed_ExtensionProxy *proxy, ContentEmbed_ErrorCode error)
 {
-    OH_LOG_INFO(LOG_APP, "Enter ClientCallBack_OnErrorFunc, error: %{public}d", error);
+    OH_LOG_ERROR(LOG_APP, "Enter ClientCallBack_OnErrorFunc, error: %{public}d", error);
 }
 
 void ClientCallBack_OnEditingFinishedFunc(ContentEmbed_ExtensionProxy *proxy, bool dataModified)
@@ -393,13 +386,9 @@ EXTERN_C_END
 ### Implementing Interaction Between the Client OE Object and the OE Extension
 
 1. Start the OE Extension component.
-
 2. Query the capabilities of the OE Extension component.
-
 3. Edit a document by notifying the OE server to start a UIAbility.
-
 4. Query the editing status of the OE document.
-
 5. Obtain the OE document snapshot.
 
 ```cpp

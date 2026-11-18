@@ -1,3 +1,11 @@
+---
+kits: ["ArkTS / 方舟编程语言"]
+description: "介绍Sendable对象改造实践：使用TurboTrans三方库实现TurboTransJSON序列化反序列化、TurboTransProtobuf编解码并生成Sendable对象，结合makeObserved将Sendable对象转换为观察对象驱动UI实时更新。"
+keywords: [Sendable改造, TurboTrans, TurboTransJSON, TurboTransProtobuf, makeObserved, 可观察对象, UI实时更新]
+doctype: guide
+status: active
+---
+
 # Sendable对象改造实践
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
@@ -283,11 +291,11 @@
      return obj;
    }
    
-   function testencode(obj: test_pb) {
+   function testEncode(obj: test_pb) {
      return test_pb.encode(obj);
    }
    
-   function testdecode(data: ArrayBuffer | collections.ArrayBuffer) {
+   function testDecode(data: ArrayBuffer | collections.ArrayBuffer) {
      let obj = test_pb.decode(data);
      console.info(`expect value_int32 ${obj?.value_int32} = 1`);
      console.info(`expect value_double ${obj?.value_double} = 12`);
@@ -298,9 +306,9 @@
    
    export function testProtobuf(): test_pb {
      let obj = testCreate();
-     let buf = testencode(obj);
+     let buf = testEncode(obj);
      if (buf) {
-       testdecode(buf);
+       testDecode(buf);
      }
      return obj;
    }

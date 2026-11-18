@@ -6,7 +6,7 @@
 <!--Designer: @yuxiaoyang-->
 <!--Tester: @zhaodengqi-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=aafa18cca50e669e3fd5470a9d1248e0885402aa translatedAt=2026-08-20T06:25:59.259Z pushedAt=2026-08-20T13:29:04.466Z -->
+<!-- md-trans-meta sourceCommit=0cd629748510c06967e06722f613d7a538adc358 translatedAt=2026-11-03T07:13:41.907Z pushedAt=2026-11-03T07:13:41.907Z -->
 
 ## Overview
 
@@ -46,8 +46,7 @@ Third-party apps can use the metadata binding function to map App Linking links 
 
    ``` TypeScript
    import { metadataBinding } from '@kit.MultimodalAwarenessKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   import { Callback } from '@kit.BasicServicesKit';
+   import { BusinessError, Callback } from '@kit.BasicServicesKit';
    ```
 
 2. Define the callback used to return the encoded metadata and the bundle name. The function receives the encoded content returned.   
@@ -56,7 +55,7 @@ Third-party apps can use the metadata binding function to map App Linking links 
 
    ``` TypeScript
    let callback : Callback<number> = (event: number) => {};
-   let bundleName: string = '';
+   let bundleName: string = 'com.example.app';
    ```
 
 3. Subscribe to system events that are used to obtain the encoded metadata.
@@ -80,7 +79,7 @@ Third-party apps can use the metadata binding function to map App Linking links 
    <!-- @[metadata_binding_submit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/MetadataBinding/entry/src/main/ets/pages/Index.ets) --> 
 
    ``` TypeScript
-   let metadata: string = '';
+   let metadata: string = 'sample metadata';
    try {
      metadataBinding.submitMetadata(metadata);
      // ...

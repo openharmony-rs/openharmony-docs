@@ -28,6 +28,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | 名称  | 值   | 说明    |
 | ----- | ---- | -------- |
 | HUKS_EXT_CRYPTO_TAG_TYPE_INT | 1 << 28   | 表示TAG的值为整数类型。 |
+| HUKS_EXT_CRYPTO_TAG_TYPE_UINT | 2 << 28   | 表示TAG的值为无符号整数类型。<br>**起始版本：** 26.0.1 |
 | HUKS_EXT_CRYPTO_TAG_TYPE_BYTES | 5 << 28  | 表示TAG的值为字节数组。 |
 
 ## HuksExternalCryptoTag
@@ -45,7 +46,7 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 | HUKS_EXT_CRYPTO_TAG_PURPOSE | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_INT \| 200005    | 表示证书链对应密钥的使用类型，具体类型详见[CertificatePurpose](../apis-device-certificate-kit/js-apis-certManager.md#certificatepurpose22)。 |
 | HUKS_EXT_CRYPTO_TAG_TIMEOUT | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_UINT \| 200006    | 表示异步超时时间，单位为秒，可由业务逻辑自定义。<br>**起始版本：** 26.0.1 |
 | HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200007    | 表示获取资源ID所需的信息，格式和内容由厂商自定义。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
-| HUKS_EXT_CRYPTO_TAG_ABILITY_INFO | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200008    | 表示密钥管理扩展自定义PIN码弹窗相关Ability列表信息，在注册密钥管理扩展时，同步注册，详见[provider注册示例](../../security/UniversalKeystoreKit/huks-extension-registration-and-unregistration-arkts-ndk.md)。注册了自定义弹窗，则在PIN码认证时允许拉起自定义弹窗，进行PIN码认证等操作。<br>HUKS_EXT_CRYPTO_TAG_ABILITY_INFO<br> 1.abilityName：长度范围为1~128字节。<br> 2.index：其值为resourceId，最大长度为512字节。该字段不允许重复，允许单个CryptoExtension下该字段为空，为空时传输空字符串。在搜索时优先匹配index对应的UIAbility，当不存在时返回index为空的UIAbility。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| HUKS_EXT_CRYPTO_TAG_ABILITY_INFO | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200008    | 表示密钥管理扩展自定义PIN码弹窗相关Ability列表信息，在注册密钥管理扩展时，同步注册，详见[provider注册示例](../../security/UniversalKeystoreKit/huks-extension-registration-and-unregistration-arkts-ndk.md)。注册了自定义弹窗，则在PIN码认证时允许拉起自定义弹窗，进行PIN码认证等操作。<br>HUKS_EXT_CRYPTO_TAG_ABILITY_INFO<br> 1.abilityName：长度范围为1~128字节。<br> 2.index：其值为resourceId，最大长度为512字节。该字段不允许重复，允许单个CryptoExtension下该字段为空，为空时传输空字符串。在搜索时优先匹配index对应的UIAbility，当不存在时返回index为空的UIAbility。<br>3.abilityType：表示Ability类型，0表示UIAbility类型，1表示UkeyAuthExtensionAbility类型，未传入时默认按0处理。（从API版本26.0.1开始支持abilityType）<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 | HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME | HuksExternalCryptoTagType.HUKS_EXT_CRYPTO_TAG_TYPE_BYTES \| 200009    | 表示CryptoExtensionAbility所属的HAP Bundle名称。<br>**起始版本：** 26.0.0<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## HuksExternalCryptoParam
@@ -134,8 +135,8 @@ registerProvider(providerName: string, params: Array\<HuksExternalCryptoParam>):
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | check permission failed. |
-| 801 | api is not supported. |
+| 201 | Permission verification failed: call the registerProvider API, missing Permission: ohos.permission.CRYPTO_EXTENSION_REGISTER. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000002 | the ability name param is missing. |
 | 12000005 | IPC communication failed. |
 | 12000014 | memory is insufficient. |
@@ -199,8 +200,8 @@ unregisterProvider(providerName: string, params?: Array\<HuksExternalCryptoParam
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 201 | check permission failed. |
-| 801 | api is not supported. |
+| 201 | Permission verification failed: call the unregisterProvider API, missing Permission: ohos.permission.CRYPTO_EXTENSION_REGISTER. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000011 | the provider is not found. |
 | 12000012 | Device environment or input parameter is abnormal. This may happen for several reasons, such as the model already being unloaded. |
@@ -260,7 +261,7 @@ getUkeyPinAuthState(resourceId: string, params?: Array\<HuksExternalCryptoParam>
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 801 | api is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000006 | the UKey driver operation failed. |
 | 12000011 | queried entity does not exist. This may happen because the resource ID has not been opened. |
@@ -329,7 +330,7 @@ propertyId表示查询属性的ID信息，推荐使用GMT 0016-2023中定义的S
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 801 | API is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000006 | If the UKey driver operation failed. Possible causes: 1. Error reported when the provider accesses the SKF interface of UKey. |
 | 12000011 | If the cached resource ID is not found. |
@@ -402,7 +403,7 @@ clearUkeyPinAuthState(resourceId: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 801 | API is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000006 | Failed to call the UKey driver interface. Please check the UKey connection and driver status. |
 | 12000011 | The cached resource ID not found. |
@@ -463,7 +464,7 @@ getResourceId(providerName: string, params: HuksExternalCryptoParam[]): Promise&
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 801 | API is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000002 | The ability name, bundle name parameter or resource information is missing. |
 | 12000005 | IPC communication failed. |
 | 12000011 | The provider is not found. |
@@ -548,7 +549,7 @@ openResource(resourceId: string, params?: HuksExternalCryptoParam[]): Promise&lt
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 801 | API is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000006 | Failed to call the UKey driver interface. Please check the UKey connection and driver status. |
 | 12000011 | The cached resource ID is not found. This may happen because the resource ID has not been opened. |
@@ -613,7 +614,7 @@ closeResource(resourceId: string, params?: HuksExternalCryptoParam[]): Promise&l
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 801 | API is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000006 | Failed to call the UKey driver interface. Please check the UKey connection and driver status. |
 | 12000012 | Device environment or input parameters are abnormal. This error may occur if the process function is not found, or due to other issues. |
@@ -674,7 +675,7 @@ setProperty(resourceId: string, propertyId: string, params?: HuksExternalCryptoP
 
 | 错误码ID | 错误信息      |
 | -------- | ------------- |
-| 801 | API is not supported. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
 | 12000005 | IPC communication failed. |
 | 12000006 | Failed to call the UKey driver interface. Please check the UKey connection and driver status. |
 | 12000011 | The cached resource ID not found. |

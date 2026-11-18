@@ -1,7 +1,15 @@
+---
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
+description: "介绍如何获取系统VSync信号"
+keywords: [VSync, NativeVsync, 系统VSync信号, VSync线程, VSync回调函数]
+doctype: guide
+status: active
+---
+
 # NativeVSync开发指导 (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Felix-fangyang; @BruceXu; @alexci-->
+<!--Owner: @opasser; @zlGiteelz-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
