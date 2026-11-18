@@ -48,7 +48,7 @@
 3. 调用[OH_CameraManager_CreateCaptureSession()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createcapturesession)方法创建一个会话。
 
    <!-- @[create_capture_session_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    Camera_CaptureSession* NDKCamera::CreateCaptureSession(Camera_Manager* cameraManager)
    {
@@ -83,7 +83,7 @@
 5. 调用[OH_CaptureSession_BeginConfig()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_beginconfig)方法配置会话。
 
    <!-- @[begin_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    Camera_ErrorCode NDKCamera::BeginConfig(Camera_CaptureSession* captureSession)
    {
@@ -100,7 +100,7 @@
    调用[OH_CaptureSession_CommitConfig()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)和[OH_CaptureSession_Start()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_start)方法提交相关配置，并启动会话。
 
    <!-- @[start_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    Camera_ErrorCode NDKCamera::StartSession(Camera_CaptureSession* captureSession, Camera_Input* cameraInput,
        Camera_PreviewOutput* previewOutput, Camera_PhotoOutput* photoOutput)
@@ -111,28 +111,28 @@
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddInput failed.");
            return ret;
        }
-
+   
        // 向会话中添加预览输出流。
        ret = OH_CaptureSession_AddPreviewOutput(captureSession, previewOutput);
        if (ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPreviewOutput failed.");
            return ret;
        }
-
+   
        // 向会话中添加拍照输出流。
        ret = OH_CaptureSession_AddPhotoOutput(captureSession, photoOutput);
        if (ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPhotoOutput failed.");
            return ret;
        }
-
+   
        // 提交会话配置。
        ret = OH_CaptureSession_CommitConfig(captureSession);
        if (ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_CommitConfig failed.");
            return ret;
        }
-
+   
        // 启动会话。
        ret = OH_CaptureSession_Start(captureSession);
        if (ret != CAMERA_OK) {
@@ -145,7 +145,7 @@
 7. 会话控制。调用[OH_CaptureSession_Stop()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_stop)方法可以停止当前会话。调用[OH_CaptureSession_RemovePhotoOutput()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_removephotooutput)和[OH_CaptureSession_AddVideoOutput()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_addvideooutput)方法可以完成会话切换控制。以下示例代码以移除拍照流photoOutput，添加视频流videoOutput为例，完成了拍照到录像的切换。
 
    <!-- @[reload_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    Camera_ErrorCode NDKCamera::ReloadSession(Camera_CaptureSession* captureSession, Camera_PhotoOutput* photoOutput,
        Camera_VideoOutput* videoOutput)
@@ -189,7 +189,7 @@
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_CommitConfig failed.");
            return ret;
        }
-
+   
        // 启动会话。
        ret = OH_CaptureSession_Start(captureSession);
        if (ret != CAMERA_OK) {
