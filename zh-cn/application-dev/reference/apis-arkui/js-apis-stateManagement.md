@@ -2775,7 +2775,7 @@ type ReusableComponentConstructor = Function
 
 ## RecoverableStorage
 
-提供在应用被资源管控终止或异常退出时自动保存与恢复所声明的状态变量的能力。通过[connect](#connect-1)声明变量后，其值在系统恢复链路的保存时机自动保存，并在下一次恢复重启时自动恢复。具体UI使用说明，详见[RecoverableStorage: 可恢复存储UI状态](../../ui/state-management/arkts-new-recoverablestorage.md)。
+提供在应用被资源管控终止或异常退出时自动保存与恢复所声明的状态变量的能力。通过[connect](#connect-1)声明变量后，其值在系统恢复链路的保存时机自动保存，并在下一次恢复重启时自动恢复。具体UI使用说明，详见[RecoverableStorage: 可恢复的UI状态存储](../../ui/state-management/arkts-new-recoverablestorage.md)。
 
 >**说明：**
 >

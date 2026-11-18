@@ -75,6 +75,7 @@
       - 管理应用拥有的状态<!--arkts-v2-manage-application-state-->
         - [AppStorageV2: 应用全局UI状态存储](state-management/arkts-new-appstoragev2.md)
         - [PersistenceV2: 持久化存储UI状态](state-management/arkts-new-persistencev2.md)
+        - [RecoverableStorage: 可恢复的UI状态存储](state-management/arkts-new-recoverablestorage.md)
     - 辅助接口<!--arkts-state-management-uiutils-->
       - [getTarget接口：获取状态管理框架代理前的原始对象](state-management/arkts-new-getTarget.md)
       - [makeObserved接口：将非观察数据变为可观察数据](state-management/arkts-new-makeObserved.md)
@@ -287,7 +288,7 @@
     - 嵌入式组件<!--arkts-ui-cross-process-->
       - [全屏启动原子化服务 (FullScreenLaunchComponent)](arkts-FullScreenComponent.md)
       - [同应用进程嵌入式组件 (EmbeddedComponent)](arkts-embedded-components.md)
-    <!--Del-->
+      <!--Del-->
     - [跨进程应用能力扩展（UIExtension，仅对系统应用开放）](arkts-ui-extension-components-sys.md)
     - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)](arkts-isolated-components-sys.md)
     - [景深组件 (DepthComponent，仅对系统应用开放)](arkts-depth-components-sys.md)
@@ -426,7 +427,7 @@
     - [动态属性设置常见问题](arkts-attribute-modifier-faq.md)
     - [命令式节点常见问题](arkts-arkui-frameNode-faq.md)
     - [UI并行化常见问题](multi-thread-ui-build-faq.md)<!--RP6--><!--RP6End-->
-    
+  
 - [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
 - [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->
 - [ArkUI术语](arkui-glossary.md)

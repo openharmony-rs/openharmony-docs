@@ -1,4 +1,4 @@
-# RecoverableStorage: 可恢复存储UI状态
+# RecoverableStorage: 可恢复的UI状态存储
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
@@ -31,7 +31,7 @@ RecoverableStorage是应用启动时创建的单例，提供资源管控终止/�
 | 数据生命周期 | 临时（上滑删除/重启后清除） | 持久（写入磁盘） |
 | 适用场景 | 页面草稿、滚动位置等轻量UI状态 | 用户设置、历史记录等持久数据 |
 
-## 使能恢复能力
+## 使用前提
 
 ### 使能资源管控终止恢复
 
@@ -57,6 +57,10 @@ export default class EntryAbility extends UIAbility {
 完成上述配置后，应用退后台时自动存档；被资源管控终止后，从最近任务重新打开即恢复。
 
 ### 使能异常退出恢复
+
+>**注意：**
+>
+>[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)必须在AbilityStage的onCreate（应用级入口）调用，否则异常退出场景不保存、不自动重启。
 
 在UIAbility的onCreate中调用[restoreWindowStage](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#restorewindowstage)初始化页面内容存储，以及在AbilityStage的onCreate中调用[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)：
 
@@ -92,10 +96,6 @@ export default class MyAbilityStage extends AbilityStage {
   }
 }
 ```
-
->**注意：**
->
->[enableAppRecovery](../../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md#enableapprecovery)必须在AbilityStage的onCreate（应用级入口）调用，否则异常退出场景不保存、不自动重启。
 
 ## 使用限制
 
