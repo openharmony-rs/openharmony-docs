@@ -317,8 +317,8 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    ```
 
    <!-- @[decoder_sync_get_inputbuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
-
-   ```c++
+   
+   ``` C++
    int32_t VideoDecoder::GetInputBuffer(CodecBufferInfo &info, int64_t timeoutUs)
    {
        info.buffer = nullptr;
@@ -358,7 +358,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                return AVCODEC_SAMPLE_ERR_OK;
            }
            case AV_ERR_TRY_AGAIN_LATER: {
-               AVCODEC_SAMPLE_LOGE("Get input buffer timeout.");
                return AVCODEC_SAMPLE_ERR_AGAIN;
            }
            default: {
@@ -426,13 +425,13 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    ```
 
    <!-- @[decoder_sync_get_outputbuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
-
-   ```c++
+   
+   ``` C++
    int32_t VideoDecoder::GetOutputBuffer(CodecBufferInfo &info, int64_t timeoutUs)
    {
        info.buffer = nullptr;
        CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null.");
-
+   
        int32_t ret = OH_VideoDecoder_QueryOutputBuffer(decoder_, &info.bufferIndex, timeoutUs);
        switch (ret) {
            case AV_ERR_OK: {
@@ -446,7 +445,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                return AVCODEC_SAMPLE_ERR_OK;
            }
            case AV_ERR_TRY_AGAIN_LATER: {
-               AVCODEC_SAMPLE_LOGD("Get output buffer timeout.");
                return AVCODEC_SAMPLE_ERR_AGAIN;
            }
            case AV_ERR_STREAM_CHANGED: {
@@ -792,8 +790,8 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    ```
 
    <!-- @[decoder_sync_get_inputbuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
-
-   ```c++
+   
+   ``` C++
    int32_t VideoDecoder::GetInputBuffer(CodecBufferInfo &info, int64_t timeoutUs)
    {
        info.buffer = nullptr;
@@ -833,7 +831,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                return AVCODEC_SAMPLE_ERR_OK;
            }
            case AV_ERR_TRY_AGAIN_LATER: {
-               AVCODEC_SAMPLE_LOGE("Get input buffer timeout.");
                return AVCODEC_SAMPLE_ERR_AGAIN;
            }
            default: {
@@ -901,13 +898,13 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    ```
 
    <!-- @[decoder_sync_get_outputbuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp)-->
-
-   ```c++
+   
+   ``` C++
    int32_t VideoDecoder::GetOutputBuffer(CodecBufferInfo &info, int64_t timeoutUs)
    {
        info.buffer = nullptr;
        CHECK_AND_RETURN_RET_LOG(decoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Decoder is null.");
-
+   
        int32_t ret = OH_VideoDecoder_QueryOutputBuffer(decoder_, &info.bufferIndex, timeoutUs);
        switch (ret) {
            case AV_ERR_OK: {
@@ -921,7 +918,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
                return AVCODEC_SAMPLE_ERR_OK;
            }
            case AV_ERR_TRY_AGAIN_LATER: {
-               AVCODEC_SAMPLE_LOGD("Get output buffer timeout.");
                return AVCODEC_SAMPLE_ERR_AGAIN;
            }
            case AV_ERR_STREAM_CHANGED: {
