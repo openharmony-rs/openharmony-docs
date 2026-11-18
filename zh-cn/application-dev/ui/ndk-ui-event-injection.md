@@ -26,7 +26,9 @@
 
 | 接口 | 说明 |
 | --- | --- |
-| [OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction) | 向当前UI实例注入交互命令。 |
+| [ArkUI_ErrorCode OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction(ArkUI_ContextHandle uiContext, const OH_ArkUI_NativeModule_UIJsonWrapper \*command, OH_ArkUI_NativeModule_UIEventInjectionCallback callback, void \*userData)](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction) | 向当前UI实例注入交互命令。 |
+
+各参数的详细说明请参考[ui_event_injection.h](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction)。
 
 命令执行完成后，结果通过[OH_ArkUI_NativeModule_UIEventInjectionCallback](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback)回调通知，取值为[OH_ArkUI_NativeModule_UIEventInjection_ResultCode](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)枚举。callback可以为NULL，表示不关注执行结果。
 
