@@ -65,7 +65,7 @@ build(): void
 
 **系统能力：**  SystemCapability.Advertising.Ads
 
- ## 示例
+## 示例
 
 ```typescript
 import { AdComponent, advertising } from '@kit.AdsKit';
