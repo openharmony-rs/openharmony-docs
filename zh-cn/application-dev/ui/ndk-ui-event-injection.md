@@ -115,7 +115,7 @@ mode决定命令的执行方式，仅click和scroll使用，content_switch固定
 #include <arkui/ui_json_wrapper.h>
 ```
 
-<!-- @[inject_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkUiEventInjection/entry/src/main/cpp/NativeEntry.cpp) -->
+<!-- @[inject_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InjectGestureCommand/entry/src/main/cpp/NativeEntry.cpp) -->
 
 ```C++
 // 定义完成回调：命令执行完成后回调一次，result为执行结果。
