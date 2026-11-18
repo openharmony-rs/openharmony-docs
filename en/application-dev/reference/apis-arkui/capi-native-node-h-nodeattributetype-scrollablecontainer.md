@@ -852,7 +852,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[0].i32 | Index of the item to be scrolled to in the container. If the value is **-1**, the last item in the container is scrolled to.|
 | .value[1]?.i32 | Whether to enable the smooth animation for scrolling to the item with the specified index. The value **1** means to enable the smooth animation, and **0** means the opposite. The default value is **0**.|
 | .value[2]?.i32 | How the item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment). The default value is [ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment).|
-| .value[3]?.f32 | Extra offset, in px. The default value is **0**. A positive number indicates an extra offset toward the end, and a negative number indicates an extra offset toward the start. This parameter is supported since API version 15. |
+| .value[3]?.f32 | Extra offset, in vp. The default value is **0**. A positive number indicates an extra offset toward the end, and a negative number indicates an extra offset toward the start. This parameter is supported since API version 15. |
 
 ## NODE_LIST_ALIGN_LIST_ITEM
 
@@ -1779,7 +1779,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[0].i32 | Index of the item to be scrolled to in the container.|
 | .value[1]?.i32 | Whether to enable the smooth animation for scrolling to the item with the specified index. The value **1** means to enable the smooth animation, and **0** means the opposite. The default value is **0**.|
 | .value[2]?.i32 | How the item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment). The default value is [ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment).|
-| .value[3]?.f32 | Extra offset after the target item is scrolled to, in px. The default value is **0**. A positive value offsets the scroll position downward (or toward the end); a negative value offsets it upward (or toward the start). This parameter is supported since API version 23.|
+| .value[3]?.f32 | Extra offset after the target item is scrolled to, in vp. The default value is **0**. A positive value offsets the scroll position downward (or toward the end); a negative value offsets it upward (or toward the start). This parameter is supported since API version 23.|
 
 ## NODE_WATER_FLOW_ITEM_CONSTRAINT_SIZE
 
@@ -2252,7 +2252,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[0].i32 | Index of the item to be scrolled to in the container.|
 | .value[1]?.i32 | Whether to enable the animation for scrolling to the target item. The value **1** means to enable, and **0** means the opposite. The default value is **0**.|
 | .value[2]?.i32 | How the target item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment). The default value is **ARKUI_SCROLL_ALIGNMENT_AUTO**.|
-| .value[3]?.f32 | Extra offset after the target item is scrolled to, in px. The default value is **0**. A positive value offsets the scroll position downward (or toward the end); a negative value offsets it upward (or toward the start).|
+| .value[3]?.f32 | Extra offset after the target item is scrolled to, in vp. The default value is **0**. A positive value offsets the scroll position downward (or toward the end); a negative value offsets it upward (or toward the start).|
 
 ## NODE_GRID_SUPPORT_EMPTY_BRANCH_IN_LAZY_LOADING
 
@@ -2481,7 +2481,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | .value[0].i32 | Index of the item to be scrolled to in the container. If the value is **-1**, the last item in the container is scrolled to.|
 | .value[1]?.i32 | Whether there is an animation effect when the list item corresponding to the specified index value is scrolled to. The value **1** indicates there is an animation effect, and **0** indicates the opposite. The default value is **0**.|
 | .value[2]?.i32 | How the list item to scroll to is aligned with the container. The parameter type is [ArkUI_ScrollAlignment](capi-scroll-h.md#arkui_scrollalignment). The default value is [ARKUI_SCROLL_ALIGNMENT_START](capi-scroll-h.md#arkui_scrollalignment).|
-| .value[3]?.f32 | Extra offset, in px. The default value is **0**. A positive number indicates an extra offset toward the end, and a negative number indicates an extra offset toward the start. |
+| .value[3]?.f32 | Extra offset, in vp. The default value is **0**. A positive number indicates an extra offset toward the end, and a negative number indicates an extra offset toward the start. |
 
 ## NODE_ARC_LIST_CHAIN_ANIMATION
 
