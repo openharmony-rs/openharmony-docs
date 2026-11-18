@@ -5,7 +5,8 @@
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=459a1b84bb1fdaf6470e0875b1b737fa8ac4f0f7 translatedAt=2026-11-03T04:30:46.252Z pushedAt=2026-11-03T04:30:46.252Z nl=2 -->
+<!-- md-trans-meta sourceCommit=719afb6014e5fc7832501f2b23253a69d7269de9 translatedAt=2026-11-16T01:46:03.582Z pushedAt=2026-11-16T13:20:12.814Z nl=1 -->
+
 
 ## When to Use
 
@@ -38,9 +39,9 @@ The **DatamgrService** reads the data to be synced from the application sandbox 
 
 When data is added, deleted, or modified, a notification is sent to the subscriber. The notifications can be classified into the following types:
 
-- **Local data change notification**: subscription of the application data changes on the local device. When the data in the local RDB store is added, deleted, or modified in the database, a notification is received.
+- Local data change notification: subscription of the application data changes on the local device. When the data in the local RDB store is added, deleted, or modified in the database, a notification is received.
 
-- **Distributed data change notification**: subscription of the application data changes of other devices in the network. When data is added, deleted, or modified on another device, a notification is received on the local device.
+- Distributed data change notification: subscription of the application data changes of other devices in the network. When data is added, deleted, or modified on another device, a notification is received on the local device.
 
 ### Data Sync Storage Mechanism
 
@@ -340,7 +341,6 @@ When using the single-version table mode to perform data sync, you need to confi
 The schema file name and path cannot be customized. If they are changed, the file cannot be read in single-version table mode and distributed table creation fails.
 
 - File name: `sync_schema.json`
-
 - File path: **../entry/src/main/resources/rawfile/arkdata/schema/sync_schema.json**
 
 ### Schema File Content Hierarchy and Directory Structure

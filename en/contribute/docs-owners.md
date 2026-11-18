@@ -1,5 +1,7 @@
 # List of Owners
 
+<!-- md-trans-meta sourceCommit=3194fdbc42d6357f420eb498f6d963c04a35b419 translatedAt=2026-11-17T02:46:33.905Z nl=2 -->
+
 ## Kit
 Ability Kit<br>
 Performance Analysis Kit<br>
@@ -59,6 +61,9 @@ TEE Kit<br>
 Neural Network Runtime Kit<br>
 Standard Libraries<br>
 Kernel Enhance Kit<br>
+Game Controller Kit<br>
+Content Embed Kit<br>
+Automatic Scene Configuration Kit<br>
 
 ## Subsystem
 Location<br>
@@ -79,6 +84,7 @@ Advertising<br>
 WindowManager<br>
 ResourceSchedule<br>
 USB<br>
+BusManager<br>
 DistributedDataManager<br>
 Common<br>
 Window<br>
@@ -121,3 +127,5 @@ AGC<br>
 Kernel<br>
 DistributedAbilityManager<br>
 commonlibrary<br>
+Game<br>
+officeservice<br>
