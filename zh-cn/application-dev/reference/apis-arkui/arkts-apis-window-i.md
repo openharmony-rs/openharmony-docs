@@ -454,7 +454,7 @@
 | 名称     | 类型                                                      | 只读 | 可选 | 说明                                                         |
 | -------- | --------------------------------------------------------- | ---- | ---- |------------------------------------------------------------ |
 | curve    | [WindowAnimationCurve](arkts-apis-window-e.md#windowanimationcurve20)           |  否  |  否   | 动画曲线类型。                                               |
-| duration | number                                                    |  否  |  是   | 动画播放的时长，单位毫秒（ms）。<br/>取值范围为[0, 3000]。默认值为0，表示不播放动画。<br/>根据动画曲线类型决定是否必填。 |
+| duration | number                                                    |  否  |  是   | 动画播放的时长，单位毫秒（ms）。<br/>取值范围为[0, 3000]，超出取值范围时会返回错误码1300016。默认值为0，表示不播放动画。<br/>根据动画曲线类型决定是否必填。 |
 | param    | [WindowAnimationCurveParam](arkts-apis-window-t.md#windowanimationcurveparam20) |  否  |  是   | 动画曲线参数，根据动画曲线类型决定是否必填。不设置，则默认为空。                 |
 
 ## WindowSnapshotAnimationConfig
@@ -517,7 +517,7 @@
 | 名称    | 类型                                              | 只读 | 可选 | 说明                                                         |
 | ------- | ------------------------------------------------- | ---- | ---- |------------------------------------------------------------ |
 | config  | [WindowAnimationConfig](arkts-apis-window-i.md#windowanimationconfig20) |  否  |  否   | 本次转场动画配置。                                           |
-| opacity | number                                            |  否  |  是   | 不透明度，转场动画作用的窗口属性，值为0时窗口完全透明，默认值为1.0。当动画类型为WindowTransitionType.DESTROY时，代表动画终点的不透明度。取值范围0~1.0，在动画结束时恢复为1.0。 |
+| opacity | number                                            |  否  |  是   | 不透明度，转场动画作用的窗口属性，值为0时窗口完全透明，默认值为1.0。当动画类型为WindowTransitionType.DESTROY时，代表动画终点的不透明度。取值范围0~1.0，超出取值范围时会返回错误码1300016。在动画结束时恢复为1.0。<br/>该参数以float32精度存储，通过[getWindowTransitionAnimation()](arkts-apis-window-Window.md#getwindowtransitionanimation20)获取的值可能因double→float→double的精度截断而与传入值存在微小差异。 |
 
 ## StartAnimationParams<sup>20+</sup>
 
