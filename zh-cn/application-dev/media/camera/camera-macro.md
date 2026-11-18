@@ -30,7 +30,7 @@
 3. 通过[enableMacro](../../reference/apis-camera-kit/arkts-apis-camera-Macro.md#enablemacro19)接口，开启或关闭微距能力。
 
    <!-- @[camera_enableMacro](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+   
    ``` TypeScript
    enableMacro(photoSession: camera.PhotoSession): void {
      let isSupported: boolean = photoSession.isMacroSupported();
@@ -48,7 +48,7 @@
 注册macroStatusChanged事件监听微距能力变化，事件监听可参考[on('macroStatusChanged')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md#onmacrostatuschanged20)。
 
    <!-- @[camera_macroStatusChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+   
    ``` TypeScript
    macroStatusCallback(err: BusinessError, macroStatus: boolean): void {
      if (err !== undefined && err.code !== 0) {
@@ -57,12 +57,12 @@
      }
      console.info(`Macro state: ${macroStatus}`);
    }
- 
+   
    // 注册回调函数。
    registerMacroStatusChanged(photoSession: camera.PhotoSession): void {
      photoSession.on('macroStatusChanged', this.macroStatusCallback);
    }
- 
+   
    // 解注册。
    unregisterMacroStatusChanged(photoSession: camera.PhotoSession): void {
      photoSession.off('macroStatusChanged');

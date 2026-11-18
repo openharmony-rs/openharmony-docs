@@ -30,7 +30,7 @@
 1. 导入依赖，需要导入相机框架、媒体库、图片相关领域依赖。
 
    <!-- @[camera_deferredCaptureImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/deferredCapture.ets) -->
-
+   
    ``` TypeScript
    import { camera } from '@kit.CameraKit';
    import { BusinessError } from '@kit.BasicServicesKit';

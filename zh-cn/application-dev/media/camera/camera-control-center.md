@@ -24,7 +24,7 @@
 2. 通过[isControlCenterSupported](../../reference/apis-camera-kit/arkts-apis-camera-ControlCenterQuery.md#iscontrolcentersupported20)接口，查询当前设备及当前场景是否支持相机控制器。
 
    <!-- @[camera_controlCenterSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-
+   
    ``` TypeScript
    isControlCenterSupported(videoSession: camera.VideoSession): boolean {
      let isSupported: boolean = videoSession.isControlCenterSupported();
