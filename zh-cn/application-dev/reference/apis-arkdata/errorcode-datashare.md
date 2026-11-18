@@ -177,11 +177,11 @@ No permission to access the data specified by the URI.
 
 **错误信息**
 
-Parameter error. Possible causes: 1. The array parameter exceeds the allowed length. 2. The array parameter is empty.
+Parameter error.
 
 **错误描述**
 
-参数错误。可能原因：1. 数组参数长度超出范围；2. 数组参数为空。
+参数错误。
 
 **可能原因**
 
