@@ -3008,7 +3008,7 @@ struct MyPage {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此类型仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------| ---- | ---------------------- |
@@ -3029,7 +3029,7 @@ struct MyPage {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此类型仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 参数名 | 类型 | 必填 | 说明 |
 |--------|------| ---- | ---------------------- |
@@ -3050,7 +3050,7 @@ type&nbsp;NotifyOnErrorCallback&nbsp;=&nbsp;(error:&nbsp;RecoverableStorageError
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**模型约束：** 此类型仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
