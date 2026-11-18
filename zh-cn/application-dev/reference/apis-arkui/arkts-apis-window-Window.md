@@ -5270,14 +5270,15 @@ onAvoidAreaInsetsChange(callback: Callback&lt;void&gt;): void
 ArkTS-Dyn示例：
 
 ```ts
+const callback = () => {
+  let avoidAreaInsets = windowClass.getAvoidAreaInsets();
+  console.info('onAvoidAreaInsetsChange triggered. top: ' + avoidAreaInsets.top +
+  ', left: ' + avoidAreaInsets.left + ', right: ' + avoidAreaInsets.right +
+  ', bottom: ' + avoidAreaInsets.bottom);
+}
 try {
   // windowClass为已获取的Window实例，获取方式请参考本文档开头说明
-  windowClass.onAvoidAreaInsetsChange(() => {
-    let avoidAreaInsets = windowClass.getAvoidAreaInsets();
-    console.info('onAvoidAreaInsetsChange triggered. top: ' + avoidAreaInsets.top +
-    ', left: ' + avoidAreaInsets.left + ', right: ' + avoidAreaInsets.right +
-    ', bottom: ' + avoidAreaInsets.bottom);
-  });
+  windowClass.onAvoidAreaInsetsChange(callback);
 } catch (exception) {
   console.error(`Failed to enable the listener for avoid area insets changes. Cause code: ${exception.code}, message: ${exception.message}`);
 }
@@ -5286,14 +5287,15 @@ try {
 ArkTS-Sta示例：
 
 ```ts
+const callback = () => {
+  let avoidAreaInsets = windowClass.getAvoidAreaInsets();
+  console.info('onAvoidAreaInsetsChange triggered. top: ' + avoidAreaInsets.top +
+  ', left: ' + avoidAreaInsets.left + ', right: ' + avoidAreaInsets.right +
+  ', bottom: ' + avoidAreaInsets.bottom);
+}
 try {
   // windowClass为已获取的Window实例，获取方式请参考本文档开头说明
-  windowClass.onAvoidAreaInsetsChange(() => {
-    let avoidAreaInsets = windowClass.getAvoidAreaInsets();
-    console.info('onAvoidAreaInsetsChange triggered. top: ' + avoidAreaInsets.top +
-    ', left: ' + avoidAreaInsets.left + ', right: ' + avoidAreaInsets.right +
-    ', bottom: ' + avoidAreaInsets.bottom);
-  });
+  windowClass.onAvoidAreaInsetsChange(callback);
 } catch (exception) {
   let error = exception as BusinessError;
   console.error(`Failed to enable the listener for avoid area insets changes. Cause code: ${error.code}, message: ${error.message}`);
