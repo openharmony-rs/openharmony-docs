@@ -52,10 +52,12 @@
         console.info('x25519 output: ' + secret1.data);
       } else {
         console.error('x25519 result is not equal.');
+        // ...
       }
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -94,10 +96,12 @@
         console.info('x25519 output: ' + secret1.data);
       } else {
         console.error('x25519 result is not equal.');
+        // ...
       }
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
