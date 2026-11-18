@@ -1,5 +1,5 @@
 ---
-kits: ["ArkTS / 方舟编程语言"]
+kits: ["ArkTS Kit / 方舟编程语言"]
 description: "介绍通过use shared指令声明的共享模块机制：模块内对象在编译期确定布局，可在并发实例间共享访问，适用于全局配置等进程单例场景，并说明共享模块的约束限制与使用示例。"
 keywords: [共享模块, use shared, Sendable, 进程单例, 全局配置, 并发实例共享, 编译期布局]
 doctype: guide
