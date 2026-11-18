@@ -168,7 +168,7 @@
 
 > **说明：**
 >
-> 避让区边衬的计算不包含[TYPE_KEYBOARD](arkts-apis-window-e.md#avoidareatype7)类型的避让区。
+> 避让区边衬的计算不包括[TYPE_KEYBOARD](arkts-apis-window-e.md#avoidareatype7)类型的避让区。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
