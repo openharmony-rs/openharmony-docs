@@ -86,21 +86,26 @@
   }
   
   // 根据RSA公钥规格生成RSA公钥，获取密钥规格，并与预期值进行比较
-  function rsaUsePubKeySpecGetCallback() {
-    let rsaPubKeySpec = genRsa2048PubKeySpec();
-    let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaPubKeySpec);
-    rsaGeneratorSpec.generatePubKey((error, key) => {
-      if (error) {
-        console.error('generate pubKey failed, ' + 'error code: ' + error.code + 'error message' + error.message);
-      }
-      let pubKey = key;
-      let nBN = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.RSA_N_BN);
-      let eBN = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.RSA_PK_BN);
-      if (compareRsaPubKeyBySpec(rsaPubKeySpec, nBN, eBN) != true) {
-        console.error('error pub key big number');
-      } else {
-        console.info('n, e in the pubKey are same as the spec.');
-      }
+  function rsaUsePubKeySpecGetCallback(): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      let rsaPubKeySpec = genRsa2048PubKeySpec();
+      let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaPubKeySpec);
+      rsaGeneratorSpec.generatePubKey((error, key) => {
+        if (error) {
+          console.error(`generate pubKey failed: errCode: ${error.code}, message: ${error.message}`);
+          // ...
+          return;
+        }
+        let pubKey = key;
+        let nBN = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.RSA_N_BN);
+        let eBN = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.RSA_PK_BN);
+        if (compareRsaPubKeyBySpec(rsaPubKeySpec, nBN, eBN) != true) {
+          console.error('error pub key big number');
+        } else {
+          console.info('n, e in the pubKey are same as the spec.');
+        }
+        resolve();
+      });
     });
   }
   ```
@@ -162,23 +167,27 @@
   
   // 根据RSA公钥规格生成RSA公钥，获取密钥规格，并与预期值进行比较
   function rsaUsePubKeySpecGetSync() {
-    let rsaPubKeySpec = genRsa2048PubKeySpec();
-    let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaPubKeySpec);
+    
     try {
+      let rsaPubKeySpec = genRsa2048PubKeySpec();
+      let rsaGeneratorSpec = cryptoFramework.createAsyKeyGeneratorBySpec(rsaPubKeySpec);
       let pubKey = rsaGeneratorSpec.generatePubKeySync();
       if (pubKey != null) {
         let nBN = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.RSA_N_BN);
         let eBN = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.RSA_PK_BN);
         if (compareRsaPubKeyBySpec(rsaPubKeySpec, nBN, eBN) != true) {
           console.error('error pub key big number');
+          // ...
         } else {
           console.info('n, e in the pubKey are same as the spec.');
         }
       } else {
         console.error('get pub key result: fail!');
+        // ...
       }
     } catch (e) {
       console.error(`get pub key result failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -286,22 +295,18 @@
   }
   
   // 根据EccCommonSpec实例生成ECC密钥对，获取密钥规格
-  function testEccUseCommKeySpecGet() {
+  async function testEccUseCommKeySpecGet() {
     try {
       let commKeySpec = genEccCommonSpec(); // 使用参数属性，构造ECC公私钥公共密钥参数对象
       let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // 使用密钥参数对象创建生成器
-      let keyPairPromise = generatorBySpec.generateKeyPair(); // 生成ECC密钥对。
-      keyPairPromise.then(keyPair => { // 使用生成器创建ECC密钥对
-        showEccSpecDetailInfo(keyPair.priKey, 'priKey'); // 对私钥获取相关密钥参数属性
-        showEccSpecDetailInfo(keyPair.pubKey, 'pubKey'); // 对公钥获取相关密钥参数属性
-      }).catch((error: BusinessError) => {
-        // 逻辑错误等异步异常在此捕获
-        console.error(`generateComm failed: errCode: ${error.code}, message: ${error.message}`);
-      })
-    } catch (error) {
-      // 参数错误等同步异常在此捕获
-      let e: BusinessError = error as BusinessError;
+      let keyPair = await generatorBySpec.generateKeyPair(); // 生成ECC密钥对。
+      showEccSpecDetailInfo(keyPair.priKey, 'priKey'); // 对私钥获取相关密钥参数属性
+      showEccSpecDetailInfo(keyPair.pubKey, 'pubKey'); // 对公钥获取相关密钥参数属性
+    } catch (err) {
+      // 参数错误等同步异常、逻辑错误等异步异常均在此捕获
+      let e: BusinessError = err as BusinessError;
       console.error(`ecc comm spec failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -400,10 +405,12 @@
         showEccSpecDetailInfo(keyPair.pubKey, 'pubKey'); // 对公钥获取相关密钥参数属性
       } else {
         console.error('get key pair result: fail!');
+        // ...
       }
     } catch (e) {
       // 逻辑错误等异常在此捕获
       console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -458,6 +465,7 @@
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -494,9 +502,11 @@
         console.info('ECC_CURVE_NAME_STR: ' + sm2CurveName); // NID_sm2
       } else {
         console.error('get key pair result: fail!');
+        // ...
       }
     } catch (e) {
       console.error(`get key pair failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
