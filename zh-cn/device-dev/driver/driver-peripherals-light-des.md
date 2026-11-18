@@ -883,7 +883,7 @@ Light驱动模型支持获取系统中所有灯的信息、动态配置闪烁模
     external_deps = [
       "c_utils:utils",
       "hdf_core:libhdf_utils",
-       "hiviewdfx_hilog_native:libhilog",
+      "hiviewdfx_hilog_native:libhilog",
     ]
   
     cflags = [
