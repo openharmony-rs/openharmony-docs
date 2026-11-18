@@ -67,6 +67,7 @@
     } catch(error) {
       let e: BusinessError = error as BusinessError;
       console.error('key derivation failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      // ...
     }
   }
   ```
@@ -81,24 +82,26 @@
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   
-  function scryptPromise() {
-    let spec: cryptoFramework.ScryptSpec = {
-      algName: 'SCRYPT',
-      passphrase: '123456',
-      salt: new Uint8Array(16),
-      n:1024,
-      p:16,
-      r:8,
-      maxMemory:1024 * 16 * 8 * 10, //n * p * r * 10
-      keySize: 64
-    };
-    let kdf = cryptoFramework.createKdf('SCRYPT');
-    let kdfPromise = kdf.generateSecret(spec);
-    kdfPromise.then((secret) => {
+  async function scryptPromise() {
+    try {
+      let spec: cryptoFramework.ScryptSpec = {
+        algName: 'SCRYPT',
+        passphrase: '123456',
+        salt: new Uint8Array(16),
+        n:1024,
+        p:16,
+        r:8,
+        maxMemory:1024 * 16 * 8 * 10, //n * p * r * 10
+        keySize: 64
+      };
+      let kdf = cryptoFramework.createKdf('SCRYPT');
+      let secret = await kdf.generateSecret(spec);
       console.info('key derivation output: ' + secret.data);
-    }).catch((error: BusinessError) => {
-      console.error(`key derivation failed: errCode: ${error.code}, message: ${error.message}`);
-    });
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`key derivation failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
+    }
   }
   ```
 
@@ -126,9 +129,10 @@
       let kdf = cryptoFramework.createKdf('SCRYPT');
       let secret = kdf.generateSecretSync(spec);
       console.info('[Sync]key derivation output: ' + secret.data);
-    } catch(error) {
+    } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error('key derivation failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+      // ...
     }
   }
   ```

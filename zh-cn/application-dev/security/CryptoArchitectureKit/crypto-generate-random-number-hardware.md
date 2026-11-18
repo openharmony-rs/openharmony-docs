@@ -76,6 +76,7 @@
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
+      // ...
     }
   }
   ```
@@ -99,10 +100,12 @@
         console.info('[Sync]: rand result: ' + randData.data);
       } else {
         console.error('[Sync]: get rand result: fail!');
+        // ...
       }
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`do rand failed: errCode: ${e.code}, message: ${e.message}`);
+      // ...
     }
   }
   ```
