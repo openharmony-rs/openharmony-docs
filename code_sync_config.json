@@ -71128,7 +71128,7 @@
 						"start_line":431
 					},
 					{
-						"end_line":352,
+						"end_line":351,
 						"name":"decoder_sync_get_inputbuffer",
 						"start_line":302
 					},
@@ -71138,9 +71138,9 @@
 						"start_line":475
 					},
 					{
-						"end_line":429,
+						"end_line":427,
 						"name":"decoder_sync_get_outputbuffer",
-						"start_line":378
+						"start_line":377
 					},
 					{
 						"end_line":537,
