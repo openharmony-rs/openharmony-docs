@@ -62,7 +62,7 @@ status: active
 1. 判断当前设备和当前音频场景是否支持低时延。
 
     <!-- @[Render_IsFastPlaybackSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->  
-
+    
     ``` C++
     // 构造与待创建播放流一致的音频流参数。
     const int samplingRate48K = 48000;
@@ -72,7 +72,7 @@ status: active
     streamInfo.encodingType = AUDIOSTREAM_ENCODING_TYPE_RAW;
     streamInfo.sampleFormat = AUDIOSTREAM_SAMPLE_S16LE;
      
-    // 查询当前设备是否支持低时延播放。
+    // 查询当前设备是否支持超低时延播放。
     bool supported = false;
     supported = OH_AudioStreamManager_IsFastPlaybackSupported(
         audioStreamManager, &streamInfo, AUDIOSTREAM_USAGE_MUSIC);
@@ -101,8 +101,9 @@ status: active
 
     音频流创建并启动后，可通过[OH_AudioRenderer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus)来获取音频播放流是否正在低时延状态下工作。其返回值为OH_AudioStream_FastStatus枚举：AUDIOSTREAM_FASTSTATUS_NORMAL表示运行在普通模式，AUDIOSTREAM_FASTSTATUS_FAST表示运行在低时延模式，AUDIOSTREAM_FASTSTATUS_ULTRA_FAST表示运行在超低时延模式（从API版本26.1.0起，该接口可返回该值）。
     <!-- @[Render_GetFastStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
+    
     ``` C++
+    // 查询音频流实际运行的低时延状态。
     OH_AudioStream_FastStatus fastStatus = AUDIOSTREAM_FASTSTATUS_NORMAL;
     OH_AudioStream_Result result = OH_AudioRenderer_GetFastStatus(audioRenderer, &fastStatus);
     ```
@@ -116,7 +117,7 @@ status: active
 2. 判断当前设备和当前音频场景是否支持超低时延。
 
     <!-- @[Render_IsUltraFastPlaybackSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
+    
     ``` C++
     // 构造与待创建播放流一致的音频流参数。
     const int samplingRate48K = 48000;
@@ -125,7 +126,7 @@ status: active
     streamInfo.channelLayout = CH_LAYOUT_STEREO;
     streamInfo.encodingType = AUDIOSTREAM_ENCODING_TYPE_RAW;
     streamInfo.sampleFormat = AUDIOSTREAM_SAMPLE_S16LE;
- 
+     
     // 查询当前设备是否支持超低时延播放。
     bool supported = false;
     OH_AudioCommon_Result result = OH_AudioStreamManager_IsUltraFastPlaybackSupported(
@@ -136,7 +137,7 @@ status: active
 
     在查询结果为支持的前提下，通过 `OH_AudioStreamBuilder_SetLatencyMode` 设置超低时延模式。
     <!-- @[Render_SetUltraFastLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
+    
     ``` C++
     OH_AudioStream_LatencyMode latencyMode = AUDIOSTREAM_LATENCY_MODE_ULTRA_FAST;
     OH_AudioStreamBuilder_SetLatencyMode(g_ultraBuilder, latencyMode);
@@ -155,8 +156,9 @@ status: active
 
     音频流创建并启动后，可通过[OH_AudioRenderer_GetFastStatus()](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getfaststatus)来获取音频播放流是否正在超低时延状态下工作。其返回值为OH_AudioStream_FastStatus枚举：AUDIOSTREAM_FASTSTATUS_NORMAL表示运行在普通模式，AUDIOSTREAM_FASTSTATUS_FAST表示运行在低时延模式，AUDIOSTREAM_FASTSTATUS_ULTRA_FAST表示运行在超低时延模式（从API版本26.1.0起，该接口可返回该值）。
     <!-- @[Render_GetUltraFastStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
-
+    
     ``` C++
+    // 查询音频流实际运行的低时延状态。
     OH_AudioStream_FastStatus fastStatus = AUDIOSTREAM_FASTSTATUS_NORMAL;
     OH_AudioStream_Result result = OH_AudioRenderer_GetFastStatus(g_ultraAudioRenderer, &fastStatus);
     ```
