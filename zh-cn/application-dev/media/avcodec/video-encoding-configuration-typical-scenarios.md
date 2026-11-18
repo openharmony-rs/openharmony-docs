@@ -39,6 +39,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 **添加头文件**
 
+<!-- @[config_include_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/include/EncodingConfigQuery.h) -->
+
 ```c++
 #include <multimedia/player_framework/native_avcodec_videoencoder.h>
 #include <multimedia/player_framework/native_avcapability.h>
@@ -84,6 +86,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    videoEnc：视频编码器实例的指针。创建方式可参考异步模式视频编码[Surface模式](video-encoding.md#surface模式)“步骤-2：创建编码器实例对象”。
 
+   <!-- @[config_low_latency_cbr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/EncodingConfigQuery.cpp) -->
+
    ```c++
    // 1. 创建AVFormat参数实例。
    OH_AVFormat *format = OH_AVFormat_Create(); 
@@ -116,6 +120,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    详情可参考异步模式视频编码[Surface模式](video-encoding.md#surface模式)“步骤-9：OH_VideoEncoder_SetParameter()在运行过程中动态配置编码器参数”。
 
+   <!-- @[config_dynamic_request_idr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/EncodingConfigQuery.cpp) -->
+
    ```c++
    // 1. 创建AVFormat参数实例。
    OH_AVFormat *format = OH_AVFormat_Create();
@@ -145,6 +151,8 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 | 320x180  | 20       | 200     | -1 |  CBRHQ  |
 
 CBRHQ码控方式配置如下：
+
+<!-- @[config_cbrhq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/EncodingConfigQuery.cpp) -->
 
 ```c++
 // 1. 创建AVFormat参数实例。
@@ -207,6 +215,8 @@ OH_AVFormat_Destroy(format);
 | ------------------| -------- | -------- | ------ | ------ |
 | 1920x1080  | 60      | 6000     | 5000 |  VBR  |
 
+<!-- @[config_live_vbr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/EncodingConfigQuery.cpp) -->
+
 ```c++
 // 1. 创建AVFormat参数实例。
 OH_AVFormat *format = OH_AVFormat_Create();
@@ -250,6 +260,8 @@ OH_AVFormat_Destroy(format);
 | 1920x1080  | 60   |  25   | 6000     | 5000 |  SQR  |
 
 SQR码控方式配置如下：
+
+<!-- @[config_live_sqr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/EncodingConfigQuery.cpp) -->
 
 ```c++
 // 1. 创建AVFormat参数实例。
@@ -318,6 +330,8 @@ OH_AVFormat_Destroy(format);
 | 1280x720  | 30       | 1400     | 5000 |  VBR  |
 | 854x480  | 30       | 400     | 5000 |  VBR  |
 
+<!-- @[config_offline_vbr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/EncodingConfigQuery.cpp) -->
+
 ```c++
 // 1. 创建AVFormat参数实例。
 OH_AVFormat *format = OH_AVFormat_Create();
@@ -366,6 +380,8 @@ OH_AVFormat_Destroy(format);
 | 854x480  | 30   | 25    | 400     | 5000 |  SQR  |
 
 SQR码控方式配置如下：
+
+<!-- @[config_offline_sqr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/EncodingConfigQuery.cpp) -->
 
 ```c++
 // 1. 创建AVFormat参数实例。

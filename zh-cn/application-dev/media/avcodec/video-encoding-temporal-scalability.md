@@ -123,6 +123,8 @@ status: active
 
 1. 在初始阶段创建编码实例时，校验视频编码器是否支持全局时域可分层特性。
 
+    <!-- @[temporal_scalability_feature_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
+
     ```c++
     // 1.1 获取对应视频编码器能力实例，此处以H.264为例。
     OH_AVCapability *cap = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true);
@@ -132,12 +134,16 @@ status: active
 
     如果支持，则可以使能全局时域可分层特性。
 
+    <!-- @[temporal_scalability_create_encoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
+
     ```c++
     // 创建硬件编码器实例。
     OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     ```
 
 2. 在配置阶段，设置全局时域可分层编码特性参数。
+
+    <!-- @[temporal_scalability_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
 
     ```c++
     constexpr int32_t TGOP_SIZE = 3; 
@@ -161,6 +167,8 @@ status: active
 3. （可选）在运行过程中，支持动态开启或关闭时域可分层能力。
 
     动态使能时域可分层能力的示例代码如下：
+
+    <!-- @[temporal_scalability_dynamic_enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
 
     ```c++
     std::unique_lock<std::shared_mutex> lock(codecMutex);
@@ -194,6 +202,8 @@ status: active
 
     动态关闭时域可分层能力的示例代码如下：
 
+    <!-- @[temporal_scalability_dynamic_disable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
+
     ```c++
     std::unique_lock<std::shared_mutex> lock(codecMutex);
     // 重置编码器videoEnc。
@@ -226,6 +236,8 @@ status: active
     开发者可利用已配置的TGOP参数和编码出帧数目获取时域层级信息。
 
     示例代码如下：
+
+    <!-- @[temporal_scalability_output_layer_by_tgop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
 
     ```c++
     constexpr int32_t TGOP_SIZE = 3;
@@ -318,6 +330,8 @@ status: active
 
 1. 在初始阶段创建编码实例时，校验当前视频编码器是否支持LTR特性。
 
+    <!-- @[ltr_feature_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
+
     ```c++
     constexpr int32_t NEEDED_LTR_COUNT = 5;
     bool isSupported = false;
@@ -343,6 +357,8 @@ status: active
 2. 在配置之前注册回调时，注册随帧通路回调。
 
     Buffer输入模式示例：
+
+    <!-- @[ltr_buffer_callback_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
 
     ```c++
     // 2.1 编码输入回调OH_AVCodecOnNeedInputBuffer实现。
@@ -385,6 +401,8 @@ status: active
 
     Surface输入模式示例：
 
+    <!-- @[ltr_surface_callback_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
+
     ```c++
     // 2.1 编码输入参数回调OH_VideoEncoder_OnNeedInputParameter实现。
     static void OnNeedInputParameter(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData)
@@ -424,6 +442,8 @@ status: active
     ```
 
 3. 在配置阶段，设置最大LTR数目。
+
+    <!-- @[ltr_configure_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/TemporalScalabilityQuery.cpp) -->
 
     ```c++
     constexpr int32_t NEEDED_LTR_COUNT = 5;

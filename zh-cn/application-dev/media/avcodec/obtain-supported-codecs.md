@@ -23,6 +23,8 @@ status: active
 
 1. 在CMake脚本中链接动态库。
 
+   <!-- @[capability_cmake_link_libraries](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/CMakeLists.txt) -->
+
    ``` cmake
    target_link_libraries(sample PUBLIC libnative_media_codecbase.so)
    target_link_libraries(sample PUBLIC libnative_media_core.so)
@@ -35,6 +37,8 @@ status: active
    > 上述'sample'字样仅为示例，此处由开发者根据实际工程目录自定义。
 
 2. 添加头文件。
+
+   <!-- @[capability_include_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/include/CapabilityQuery.h) -->
 
    ```c++
    #include <algorithm>
@@ -50,6 +54,8 @@ status: active
 
    方式一：通过[OH_AVCodec_GetCapability](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapability)获取系统推荐的音视频编解码器能力实例。
    
+   <!-- @[capability_get_by_mime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityQuery.cpp) -->
+
    ```c++
    // 获取系统推荐的音频AAC解码器能力实例。
    OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
@@ -57,12 +63,16 @@ status: active
 
    方式二：通过[OH_AVCodec_GetCapabilityByCategory](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapabilitybycategory)获取指定软硬件的编解码能力实例。
 
+   <!-- @[capability_get_by_category](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityQuery.cpp) -->
+
    ```c++
    // 获取指定硬件的视频AVC编码器能力实例。
    OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
    ```
 
    方式三：从API version 24开始，开发者可调用[OH_AVCodec_GetCapabilityList](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapabilitylist)接口，获取指定编解码器类型（如视频解码器）的全量能力实例列表。
+
+   <!-- @[capability_get_capability_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityQuery.cpp) -->
 
    ```c++
    // 获取系统中所有视频解码器的能力实例列表。
@@ -85,6 +95,8 @@ status: active
 | OH_AVCapability_GetName     | 获取对应的编解码器名称。 |
 
 当H.264软件解码器和H.264硬件解码器同时存在时，创建H.264软件解码器的示例代码如下。
+
+<!-- @[capability_create_decoder_by_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityQuery.cpp) -->
 
 ```c++
 // 1. 获取H.264软件解码器能力实例。
@@ -112,6 +124,8 @@ if (capability != nullptr) {
 | OH_AVCapability_IsHardware  | 确认能力实例对应的编解码器是否为硬件编解码器。 |
 
 视频编码的软硬件类别差异化配置帧率示例如下。
+
+<!-- @[capability_config_by_category](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityQuery.cpp) -->
 
 ```c++
 // 1. 确认推荐的H.264编码器的软硬件类别。
@@ -148,6 +162,8 @@ OH_AVFormat_Destroy(format);
 | OH_AVCapability_GetMaxSupportedInstances  | 获取能力实例对应编解码器的最大实例数。实际创建数还受系统内存、处理器和带宽等资源的约束。 |
 
 优先创建硬件解码器实例，资源不足时创建软件解码器实例。示例如下。
+
+<!-- @[capability_create_multi_decoders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityQuery.cpp) -->
 
 ```c++
 constexpr int32_t NEEDED_VDEC_NUM = 8;
@@ -197,6 +213,8 @@ if (createdVDecNum < NEEDED_VDEC_NUM) {
 
 CBR和VBR码控模式示例如下。
 
+<!-- @[capability_bitrate_mode_cbr_vbr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityConfigQuery.cpp) -->
+
 ```c++
 OH_BitrateMode bitrateMode = BITRATE_MODE_CBR;
 int32_t bitrate = 3000000;
@@ -239,6 +257,8 @@ OH_AVFormat_Destroy(format);
 
 CQ码控模式示例如下。
 
+<!-- @[capability_bitrate_mode_cq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityConfigQuery.cpp) -->
+
 ```c++
 OH_BitrateMode bitrateMode = BITRATE_MODE_CQ;
 int32_t quality = 0;
@@ -280,6 +300,8 @@ OH_AVFormat_Destroy(format);
 ```
 
 SQR码控模式示例如下。
+
+<!-- @[capability_bitrate_mode_sqr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityConfigQuery.cpp) -->
 
 ```c++
 OH_BitrateMode bitrateMode = BITRATE_MODE_SQR;
@@ -354,6 +376,8 @@ if (ret != AV_ERR_OK) {
 OH_AVFormat_Destroy(dynamicFormat);
 ```
 CBRHQ码控模式示例如下：
+<!-- @[capability_bitrate_mode_cbrhq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityConfigQuery.cpp) -->
+
 ```c++
 OH_BitrateMode bitrateMode = BITRATE_MODE_CBR_HIGH_QUALITY;
 int32_t bitrate = 3000000;
@@ -406,6 +430,8 @@ OH_AVFormat_Destroy(format);
 | -------- | ---------------------------- |
 | OH_AVCapability_GetEncoderComplexityRange | 获取当前编码器支持的复杂度等级范围。 | 
 
+<!-- @[capability_complexity_range](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityConfigQuery.cpp) -->
+
 ```c++
 OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, true);
 if (capability == nullptr) {
@@ -427,6 +453,8 @@ int32_t ret = OH_AVCapability_GetEncoderComplexityRange(capability, &complexityR
 | OH_AVCapability_GetEncoderBitrateRange     | 获取当前编码器支持的码率范围。 |
 
 音频编解码参数查询示例如下。
+
+<!-- @[capability_audio_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityConfigQuery.cpp) -->
 
 ```c++
 int32_t sampleRate = 44100;
@@ -505,6 +533,8 @@ OH_AVFormat_Destroy(format);
 
 确认待配置的档次是否支持，并查询该档次下支持的级别，示例如下。
 
+<!-- @[capability_profile_and_level](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityVideoQuery.cpp) -->
+
 ```c++
 OH_AVCProfile profile = AVC_PROFILE_MAIN;
 OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true);
@@ -569,6 +599,8 @@ OH_AVFormat_Destroy(format);
 
 已知需要的编码档次和级别组合，直接查询支持情况示例如下。
 
+<!-- @[capability_profile_level_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityVideoQuery.cpp) -->
+
 ```c++
 // 1. 获取H.264编码器能力实例。
 OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true);
@@ -603,6 +635,8 @@ bool isSupported = OH_AVCapability_AreProfileAndLevelSupported(capability, AVC_P
 
 校验视频高度和宽度是否支持，示例如下。
 
+<!-- @[capability_video_size_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityVideoQuery.cpp) -->
+
 ```c++
 int32_t width = 1920;
 int32_t height = 1080;
@@ -620,6 +654,8 @@ if (!isSupported) {
 如果视频高度和视频宽度校验不支持或配置失败，可尝试以下方法确定正确的视频宽高范围。
 
 已知视频宽度，可以按照以下示例找到正确的尺寸配置。
+
+<!-- @[capability_video_size_for_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityVideoQuery.cpp) -->
 
 ```c++
 int32_t width = 1920;
@@ -655,6 +691,8 @@ if (ret != AV_ERR_OK || heightRange.maxVal <= 0) {
 ```
 
 已知视频高度，可以按照以下示例找到正确的尺寸配置。
+
+<!-- @[capability_video_size_for_height](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityVideoQuery.cpp) -->
 
 ```c++
 int32_t height = 1080;
@@ -707,6 +745,8 @@ if (ret != AV_ERR_OK || widthRange.maxVal <= 0) {
 
 有帧率目标需求时，校验帧率是否在可选范围内。示例如下。
 
+<!-- @[capability_frame_rate_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityVideoQuery.cpp) -->
+
 ```c++
 int32_t frameRate = 120;
 OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true);
@@ -724,6 +764,8 @@ bool isSupported = frameRate >= frameRateRange.minVal && frameRate <= frameRateR
 ```
 
 根据待配置的尺寸选择合适的帧率配置，示例代码如下。
+
+<!-- @[capability_size_frame_rate_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityVideoQuery.cpp) -->
 
 ```c++
 constexpr int32_t width = 1920;
@@ -772,6 +814,8 @@ OH_AVFormat_Destroy(format);
 | OH_AVCapability_GetVideoSupportedPixelFormats             | 获取当前视频编解码器支持的像素格式。 |
 | OH_AVCapability_GetVideoSupportedNativeBufferFormats      | 获取视频编解码器支持的OH_NativeBuffer格式。 |
 
+<!-- @[capability_pixel_formats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityVideoQuery.cpp) -->
+
 ```c++
 constexpr OH_AVPixelFormat DEFAULT_PIXELFORMAT = AV_PIXEL_FORMAT_NV12;
 OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true);
@@ -811,6 +855,8 @@ if (!isMatched) {
 | OH_AVCapability_GetFeatureProperties            | 获取当前编解码器支持的指定特性的属性。|
 
 查询H.264编码器是否支持长期参考帧特性，示例如下。
+
+<!-- @[capability_feature_ltr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityVideoQuery.cpp) -->
 
 ```c++
 constexpr int32_t NEEDED_LTR_NUM = 2;
@@ -857,6 +903,8 @@ if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
 | OH_AVCapability_IsSecure                  | 检查该能力实例是否描述了一个支持处理DRM资源的安全解码器。 |
 
 开发者可通过以下代码实现H.264安全解码器的查询与初始化：
+
+<!-- @[capability_secure_decoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/CapabilityVideoQuery.cpp) -->
 
 ```c++
 // 1. 定义期望的MIME类型。

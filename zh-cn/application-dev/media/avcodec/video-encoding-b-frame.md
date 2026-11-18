@@ -58,6 +58,8 @@ B帧编码预测过程同时利用前后帧的信息，可以显著降低信号�
 
 1. 在初始阶段创建编码实例时，校验当前视频编码器是否支持B帧编码特性。
 
+    <!-- @[bframe_feature_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/BFrameQuery.cpp) -->
+
     ```c++
     // 1.1 获取对应视频编码器能力实例，此处以H.265为例。
     OH_AVCapability *cap = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true, HARDWARE);
@@ -85,6 +87,8 @@ B帧编码预测过程同时利用前后帧的信息，可以显著降低信号�
     若支持，则可以使能B帧编码特性。
 
 2. 在配置阶段，配置使能B帧编码特性的参数。
+
+    <!-- @[bframe_configure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVCodec/CodecCapabilitySample/entry/src/main/cpp/capability/BFrameQuery.cpp) -->
 
     ```c++
     // 2.1 创建配置用临时AVFormat。
