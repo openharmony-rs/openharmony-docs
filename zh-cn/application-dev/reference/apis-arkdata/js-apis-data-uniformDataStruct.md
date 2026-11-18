@@ -346,7 +346,9 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 表示虚拟文件或目录的公共元数据。
 
-**起始版本**：26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -362,7 +364,9 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 表示虚拟文件的基础信息。继承自[VirtualBaseItem](#virtualbaseitem)。
 
-**起始版本**：26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -380,7 +384,9 @@ let record = new unifiedDataChannel.UnifiedRecord(uniformTypeDescriptor.UniformD
 
 单棵虚拟文件树最多4096个节点，包含根节点和全部目录、文件节点。根节点深度为0，子节点深度逐层加1，最大深度为64。
 
-**起始版本**：26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -399,7 +405,9 @@ type VirtualItemType = VirtualFileItem | VirtualDirItem
 
 取值类型为下表类型的并集，每个节点可以是虚拟文件或虚拟目录。
 
-**起始版本**：26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -416,7 +424,9 @@ type VirtualFileOnStat = (id: string) => Promise&lt;VirtualFileItem&gt;
 
 通过文件id返回对应虚拟文件的信息，如文件名、大小和修改时间。使用Promise异步回调。
 
-**起始版本**：26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -442,7 +452,9 @@ ArkTS-Sta: type VirtualFileOnRead = (id: string, offset: long, length: int) => P
 
 从虚拟文件读取至多length字节，单次请求最大为5MiB。使用Promise异步回调。
 
-**起始版本**：26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -468,7 +480,9 @@ type VirtualFileOnCancel = (idList: Array&lt;string&gt;) => Promise&lt;void&gt;
 
 根据文件标识列表取消对应文件的待处理任务。
 
-**起始版本**：26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -490,7 +504,9 @@ type VirtualFileOnCancel = (idList: Array&lt;string&gt;) => Promise&lt;void&gt;
 
 用于配置虚拟文件或目录的根节点信息，以及获取文件元数据、读取文件内容和取消待处理任务的回调。
 
-**起始版本**：26.1.0
+**ArkTS-Dyn起始版本：** 26.1.0
+
+**ArkTS-Sta起始版本：** 26.1.0
 
 **系统能力**：SystemCapability.DistributedDataManager.UDMF.Core
 
@@ -516,7 +532,7 @@ type VirtualFileOnCancel = (idList: Array&lt;string&gt;) => Promise&lt;void&gt;
 | fileType   | string | 否   | 否  | 文件类型必须是标准化数据类型（即[UTD预置列表](../../database/uniform-data-type-list.md)中各类型对应的UTD-ID或自定义UTD-ID）。fileType最大长度限制为1024个字节，超出限制时抛出异常。<br/>**ArkTS-Dyn起始版本**：15<br/>**ArkTS-Sta起始版本**：23<br/>|
 | details | ArkTS-Dyn: Record<string, number \| string \| Uint8Array> <br/>ArkTS-Sta: Record<string, int \| long \| double \| string \| Uint8Array> | 否   | 是   | 字典类型对象，key为string类型，value可包含number（数值类型）、string（字符串类型）或Uint8Array（二进制字节数组）类型数据。非必填字段，默认值为空字典对象。<br/>**ArkTS-Dyn起始版本**：15<br/>**ArkTS-Sta起始版本**：23<br/>|
 | uriAuthorizationPolicies | ArkTS-Dyn: Array<number\> <br/>ArkTS-Sta: Array<int\> | 否 | 是 | 用于拖拽场景的URI授权策略。默认值为READ+WRITE+PERSIST（读+写+持久化授权）。只针对单个record使用，优先级最高，具体策略见[UriPermission](js-apis-data-unifiedDataChannel.md#uripermission)。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0<br/>|
-| virtualEntry | [VirtualFileInfo](#virtualfileinfo) | 否 | 是 | 提供内容的虚拟文件信息。<br/>**起始版本**：26.1.0 |
+| virtualEntry | [VirtualFileInfo](#virtualfileinfo) | 否 | 是 | 提供内容的虚拟文件信息。<br/>**ArkTS-Dyn起始版本：** 26.1.0<br/>**ArkTS-Sta起始版本：** 26.1.0 |
 
 **示例：**
 
