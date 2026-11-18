@@ -14,7 +14,7 @@
 1. 导入依赖，本篇文档需要用到worker和相机框架等相关依赖包。
 
    <!-- @[camera_workerImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/cameraByWorker.ets) -->
-  
+   
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    import { camera } from '@kit.CameraKit';
@@ -24,7 +24,7 @@
 2. 创建相机服务代理类，调用CameraKit方法都放在这个类里执行。
 
    <!-- @[camera_cameraService](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/cameraByWorker.ets) -->
-  
+   
    ``` TypeScript
    class CameraService {
      private imageWidth: number = 1920;
@@ -137,7 +137,7 @@
    CameraWorker.ets实现参考：
 
    <!-- @[camera_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/cameraByWorker.ets) -->
-  
+   
    ``` TypeScript
    let cameraService = new CameraService();
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
@@ -178,7 +178,7 @@
 4. 创建组件，用于显示预览流，在页面相关生命周期中构造ThreadWorker实例，在worker线程中完成相机初始化和释放。
 
    <!-- @[camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/sample/cameraByWorker.ets) -->    
-  
+   
    ``` TypeScript
    @Entry
    @Component

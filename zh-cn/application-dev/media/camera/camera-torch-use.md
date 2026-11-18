@@ -28,7 +28,7 @@
 2. 通过[CameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)中的[isTorchSupported](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#istorchsupported11)方法，检测当前设备是否支持手电筒功能。
 
    <!-- @[camera_isTorchSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-  
+   
    ``` TypeScript
    isTorchSupported(cameraManager: camera.CameraManager) : boolean {
      let torchSupport: boolean = false;
@@ -46,7 +46,7 @@
 3. 通过[CameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)中的[isTorchModeSupported](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#istorchmodesupported11)方法，检测是否支持指定的手电筒模式[TorchMode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#torchmode11)。
 
    <!-- @[camera_isTorchModeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-  
+   
    ``` TypeScript
    isTorchModeSupported(cameraManager: camera.CameraManager, torchMode: camera.TorchMode) : boolean {
      let isTorchModeSupport: boolean = false;
@@ -66,7 +66,7 @@
     > 在使用[getTorchMode](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#gettorchmode11)方法前，需要先注册监听手电筒的状态变化，请参考[状态监听](camera-torch-use.md#状态监听)。
 
    <!-- @[camera_setTorchMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/PhotoSameSource/entry/src/main/ets/mode/CameraService.ets) -->
-  
+   
    ``` TypeScript
    setTorchMode(cameraManager: camera.CameraManager, torchMode: camera.TorchMode) : void {
      try {
