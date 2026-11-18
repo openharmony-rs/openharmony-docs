@@ -408,7 +408,20 @@
 
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- |------------------------------------------ |
-| focusOnShow | boolean  |  否  |  是  | 窗口调用[showWindow()](arkts-apis-window-Window.md#showwindow20)显示时是否自动获焦。true表示自动获焦，false表示不自动获焦，默认为true。该参数对主窗口不生效，对子窗口(设置了模态属性[isModal](#subwindowoptions11))、模态窗[TYPE_DIALOG](arkts-apis-window-e.md#windowtype7)返回1300004错误码。|
+| focusOnShow | boolean  |  否 |  是 | 窗口调用[showWindow()](arkts-apis-window-Window.md#showwindow20)显示时是否自动获焦。true表示自动获焦，false表示不自动获焦，默认为true。该参数对主窗口不生效，对子窗口(设置了模态属性[isModal](#subwindowoptions11))、模态窗[TYPE_DIALOG](arkts-apis-window-e.md#windowtype7)返回1300004错误码。|
+
+## WindowShowParams<sup>20+</sup>
+
+showAbility拉起显示UIAbility时传递的窗口显示参数。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**系统API：** 此接口为系统接口，三方应用不支持调用。
+
+| 名称   | 类型   | 只读 | 可选 | 说明                                       |
+| ------ | ------ | ---- | ---- |------------------------------------------ |
+| windowFocused | boolean  |  否 |  是 | showAbility显示UIAbility时其窗口是否获取焦点。true表示获取焦点，false表示不获取焦点，默认为true。|
+| raiseTop | boolean  |  否 |  是 | showAbility显示UIAbility时其窗口是否抬升至最顶层。true表示抬升至最顶层，false表示恢复至隐藏前的层级（若此前无层级记录则置于所有主窗口的最底层），默认为true。|
 
 ## WindowAnimationConfig<sup>20+</sup>
 
