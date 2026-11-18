@@ -121,26 +121,12 @@ mode决定命令的执行方式，仅click和scroll使用，content_switch固定
 
 ## 开发步骤
 
-### 添加动态链接库
-
-在CMakeLists.txt中链接libace_ndk.z.so。
-
-```Text
-target_link_libraries(entry PUBLIC libace_ndk.z.so)
-```
-
-### 头文件
+以注入一次点击为例。
 
 ```C++
 #include <arkui/ui_event_injection.h>
 #include <arkui/ui_json_wrapper.h>
-```
 
-### 完整示例
-
-以注入一次点击为例。
-
-```C++
 // 定义完成回调：命令执行完成后回调一次，result为执行结果
 static void OnInjectionResult(OH_ArkUI_NativeModule_UIEventInjection_ResultCode result, void* userData)
 {
