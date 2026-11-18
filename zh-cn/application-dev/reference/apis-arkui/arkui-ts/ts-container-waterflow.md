@@ -630,7 +630,25 @@ scrollPlaceholder(provider?: PlaceholderProvider)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| provider | [PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider) | 否   | 瀑布流子组件的占位提供者，返回undefined表示该瀑布流子组件不需要占位；返回的id为空、未注册时，使用系统默认占位，且滚动不中断。未设置此属性时，关闭滚动占位，WaterFlow保持既有行为，并且不会影响[syncLoad](#syncload20)的行为。 |
+| provider | [PlaceholderProvider](#placeholderprovider) | 否   | 瀑布流子组件的占位提供者，返回undefined表示该瀑布流子组件不需要占位；返回的id为空、未注册时，使用系统默认占位，且滚动不中断。未设置此属性时，关闭滚动占位，WaterFlow保持既有行为，并且不会影响[syncLoad](#syncload20)的行为。 |
+
+## PlaceholderProvider
+
+type PlaceholderProvider = import('../api/@ohos.arkui.placeholderRegister').PlaceholderProvider
+
+瀑布流子组件占位信息的提供函数。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [PlaceholderProvider](../arkts-apis-placeholderregister.md#placeholderprovider) | 瀑布流子组件占位信息的提供函数。 |
 
 ## 事件
 
