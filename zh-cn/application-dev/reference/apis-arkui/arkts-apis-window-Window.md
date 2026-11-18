@@ -1478,7 +1478,7 @@ getAvoidAreaInsets(): AvoidAreaInsets
 **返回值：**
 
 | 类型 | 说明 |
-|----------------------------------| ----------------- |
+| ---------------------------------- | ----------------- |
 | [AvoidAreaInsets](arkts-apis-window-i.md#avoidareainsets) | 避让区边衬。 |
 
 **错误码：**
