@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件的Cookie管理与数据存储方案，涵盖Cookie配置与持久化、缓存模式设置与清除，以及开启DOM Storage键值存储的方法。"
+keywords: [Cookie管理, WebCookieManager, configCookieSync, saveCookieAsync, setLazyInitializeWebEngine, cacheMode, removeCache, domStorageAccess, DOM Storage]
+doctype: guide
+status: active
+---
+
 # 管理Cookie及数据存储
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

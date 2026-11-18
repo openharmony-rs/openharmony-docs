@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件的智能分词能力，开启H5页面文本实体识别，支持电话、网址、邮箱等实体高亮、分词长按预览及文本选择菜单扩展，提升页面交互体验。"
+keywords: [智能分词, enableDataDetector, dataDetectorConfig, 文本实体识别, 分词高亮, enableSelectedDataDetector, TextDataDetectorType]
+doctype: guide
+status: active
+---
+
 # 使用Web组件的智能分词能力
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

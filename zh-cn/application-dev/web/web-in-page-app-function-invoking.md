@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍通过javaScriptProxy等接口将应用侧对象注册到前端页面供其调用，涵盖注册时机、权限配置及Array、Promise等复杂类型传递。"
+keywords: [ArkWeb, javaScriptProxy, registerJavaScriptProxy, deleteJavaScriptRegister, JSBridge注册, 权限配置, 复杂类型传递, Promise]
+doctype: guide
+status: active
+---
+
 # 前端页面调用应用侧函数
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->

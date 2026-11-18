@@ -1,3 +1,11 @@
+---
+kits: ["ArkWeb Kit / 方舟Web"]
+description: "介绍Web组件隐私模式的开启与使用，该模式下Cookie、缓存等数据不持久化存储，组件销毁后即清除，并涵盖地理位置授权、内存数据清除与Cookie读写。"
+keywords: [隐私模式, incognitoMode, isIncognitoMode, 无痕浏览, allowGeolocation, deleteAllData, configCookieSync, clearAllCookiesSync, WebStorage]
+doctype: guide
+status: active
+---
+
 # 使用隐私模式 
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
