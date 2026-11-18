@@ -1089,6 +1089,66 @@ showSidebarControlButton(value: Optional\<boolean>)
 | ------ | -------- | ---- | --------- |
 | value   | Optional\<boolean> | 是 | 侧边页签栏是否显示控制按钮。<br/>true表示显示按钮；false表示不显示按钮。<br/>设置undefined时，取默认值false。 |
 
+### sidebarTitleBar
+
+sidebarTitleBar(value: Optional\<TabsSidebarTitleBarOptions>)
+
+设置侧边页签栏的标题栏，标题栏显示在[sidebarHeader](#sidebarheader)设置的头部区域上方。设置标题栏后，[showSidebarControlButton](#showsidebarcontrolbutton)控制的展开或收起按钮会从其显示时的默认左侧位置移动到标题栏的右侧。未通过该接口设置时，侧边页签栏不显示标题栏。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | --------- |
+| value   | Optional\<[TabsSidebarTitleBarOptions](#tabssidebartitlebaroptionst)> | 是 | 侧边页签栏的标题栏配置。<br/>设置undefined时，侧边页签栏不显示标题栏。 |
+
+**示例：**
+
+该示例通过[sidebarTitleBar](#sidebartitlebar)接口给Tabs侧边页签栏设置标题栏，并配合[showSidebarControlButton](#showsidebarcontrolbutton)接口显示侧边页签栏的展开或收起按钮。设置标题栏后，展开或收起按钮会从其显示时的默认左侧位置移动到标题栏的右侧。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct SidebarTitleBarExample {
+  @State titleIcon: ResourceStr = $r('sys.media.ohos_app_icon');
+  @State titleText: ResourceStr = 'TitleBar';
+
+  build() {
+    Column() {
+      Tabs({ barPosition: BarPosition.End }) {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#EBF5FF')
+        }.tabBar('Tab1')
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#EBF5FF')
+        }.tabBar('Tab2')
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor('#EBF5FF')
+        }.tabBar('Tab3')
+      }
+      // 设置Tabs为侧边页签栏样式
+      .barStyle(TabBarStyle.SIDEBAR)
+      // 设置侧边页签栏的标题栏
+      .sidebarTitleBar({icon: this.titleIcon, text: this.titleText})
+      // 显示侧边页签栏的展开或收起按钮
+      .showSidebarControlButton(true)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![sidebarTitleBar](figures/tabsSidebarTitleBar.png)
+
 ### tabViewCustomization
 
 tabViewCustomization(value: Optional\<TabViewCustomization>)
@@ -1337,6 +1397,23 @@ TabBar顶部悬浮样式的配置选项。
 | maskHeight | [Length](ts-types.md#length) | 否 | 是 | 蒙层的高度。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>未设置时，不显示蒙层。 |
 | maxWidth | [Length](ts-types.md#length) | 否 | 是 | TabBar的最大宽度。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>未设置时，TabBar最大宽度由barSideMargin计算得到。 |
 | offset | [Position](ts-types.md#position) \| [Edges](ts-types.md#edges12) \| [LocalizedEdges](ts-types.md#localizededges12) | 否 | 是 | TabBar的偏移量。<br/>单位：vp<br/>默认值为{ x: 0, y: 0 }。<br/>x、y的取值范围：(-∞, +∞) |
+
+## TabsSidebarTitleBarOptions\<T>
+
+侧边页签栏标题栏的配置选项。
+
+**起始版本：** 26.1.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.1.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 标题栏的图标。未设置时不显示图标。 |
+| text | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 标题栏的文本。未设置时不显示文本。 |
 
 ## TabViewCustomization
 
