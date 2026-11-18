@@ -388,7 +388,7 @@ XComponent持有的Surface通过buffer队列进行渲染上屏：生产侧（应
 
 enableSurfaceVisibilityLifecycle(isVisibilityLifecycle: Optional\<boolean\>)
 
-为XComponent启用surface可见性生命周期。未通过该接口设置时，默认禁用surface可见性生命周期。
+为XComponent启用Surface可见性生命周期。未通过该接口设置时，默认禁用Surface可见性生命周期。
 
 默认情况下，XComponent持有的Surface生命周期回调跟随组件的挂载与卸载触发。启用后，Surface生命周期回调跟随组件的可见性变化触发：组件不可见时触发[onSurfaceDestroyed](#onsurfacedestroyed12)回调，组件重新可见时触发[onSurfaceCreated](#onsurfacecreated12)回调，可在组件不显示时释放Surface资源，降低内存占用。
 
@@ -402,7 +402,7 @@ enableSurfaceVisibilityLifecycle(isVisibilityLifecycle: Optional\<boolean\>)
 
 | 参数名   | 类型    | 必填 | 说明                   |
 | -------- | ------- | ---- | ---------------------- |
-| isVisibilityLifecycle | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否启用surface可见性生命周期。<br>true：启用，Surface生命周期回调跟随组件可见性变化；false：关闭，Surface生命周期回调跟随组件挂载与卸载。传入undefined时按false处理。 |
+| isVisibilityLifecycle | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否启用Surface可见性生命周期。<br>true：启用，Surface生命周期回调跟随组件可见性变化；false：关闭，Surface生命周期回调跟随组件挂载与卸载。传入undefined时按false处理。 |
 
 **示例：**
 
@@ -413,8 +413,8 @@ enableSurfaceVisibilityLifecycle(isVisibilityLifecycle: Optional\<boolean\>)
 struct Index {
   build() {
     Column({ space: 20 }) {
-      XComponent({ type: XComponentType.SURFACE, libraryname: 'nativerender' })
-        // 启用surface可见性生命周期，组件不可见时销毁Surface，重新可见时创建Surface。
+      XComponent({ id: 'enableSurfaceVisibilityLifecycle', type: XComponentType.SURFACE, libraryname: 'nativerender' })
+        // 启用Surface可见性生命周期，组件不可见时销毁Surface，重新可见时创建Surface。
         .enableSurfaceVisibilityLifecycle(true)
         .width('90%')
         .height('40%')
@@ -1104,11 +1104,9 @@ setXComponentSurfaceConfig(config: SurfaceConfig): void
 
 使用enableAnalyzer属性开启图像AI分析功能。可通过XComponentController控制开始、停止图像AI分析。
 
-<!--RP1-->
 > **说明：**
 >
-> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)。
-<!--RP1End-->
+> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[自定义渲染（XComponent）开发示例](../../../ui/napi-xcomponent-guidelines.md#开发示例)。
 
 ```ts
 // xxx.ets
@@ -1239,7 +1237,7 @@ struct XComponentExample {
 
 > **说明：**
 >
-> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考<!--RP2-->[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)。<!--RP2End-->
+> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[自定义渲染（XComponent）开发示例](../../../ui/napi-xcomponent-guidelines.md#开发示例)。
 
 ```ts
 // xxx.ets
@@ -1399,7 +1397,7 @@ struct Index {
 
 > **说明：**
 >
-> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考<!--RP2-->[ArkTS XComponent示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)。<!--RP2End-->
+> 本示例画图逻辑具体实现（和nativeRender相关的函数实现）可以参考[自定义渲染（XComponent）开发示例](../../../ui/napi-xcomponent-guidelines.md#开发示例)。
 
 ```ts
 // xxx.ets
