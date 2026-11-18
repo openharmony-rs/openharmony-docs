@@ -529,7 +529,7 @@
 | 名称   | 类型   | 只读 | 可选 | 说明                                       |
 | ------ | ------ | ---- | ---- |------------------------------------------ |
 | windowFocused | boolean  |  否  |  是  | 窗口显示时是否自动获取焦点。true表示窗口显示时自动获取焦点，false表示窗口显示时不自动获取焦点。默认为true。|
-| raiseTop | boolean  |  否  |  是  | 窗口显示时是否自动抬升至顶层。true表示窗口显示时自动抬升至顶层，false表示窗口显示时不自动抬升至顶层。默认为true。<br>**说明：**<br>1.该参数仅对应用主窗口生效。<br>2.该参数仅调整应用主窗口之间的前后层级，不会使窗口位于层级更高的系统窗口（如画中画窗口、全局悬浮窗）之上；如需跨应用置顶，请使用[setWindowTopmost()](arkts-apis-window-Window.md#setwindowtopmost14)。<br>3.该参数不用于调整应用内子窗口的层级；如需提升子窗口到应用内顶层，请使用[raiseToAppTop()](arkts-apis-window-Window.md#raisetoapptop14)。|
+| raiseTop | boolean  |  否  |  是  | 窗口显示时是否自动抬升至顶层。true表示窗口显示时自动抬升至顶层，false表示窗口显示时不自动抬升至顶层。默认为true。<br>**说明：**<br>1.该参数仅对应用主窗口生效；如需提升子窗口到应用内顶层，请使用[raiseToAppTop()](arkts-apis-window-Window.md#raisetoapptop14)。<br>2.该参数仅调整应用主窗口之间的前后层级，不会使窗口位于层级更高的窗口（如画中画窗口、全局悬浮窗）之上；如需跨应用置顶，请使用[setWindowTopmost()](arkts-apis-window-Window.md#setwindowtopmost14)。|
 
 ## WindowAnimationConfig<sup>20+</sup>
 
