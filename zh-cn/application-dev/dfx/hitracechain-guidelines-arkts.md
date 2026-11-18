@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @yu_haoqiaida-->
+<!--Owner: @mcai_wu-->
 <!--Designer: @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -146,7 +146,7 @@ HiTraceChain在ArkTS中的使用方法参考以下示例，开发者可参考[�
       - hilog日志前附加的[chainId spanId parentSpanId]格式的信息即为HiTraceId信息，例如[a92ab104a53adf0 23e9386 32a835e]表示跟踪链标识chainId值为a92ab104a53adf0，分支标识spanId值为23e9386，父分支标识parentSpanId值为32a835e。
       - 示例得到的跟踪链标识chainId值为a92ab104a53adf0，可使用chainId值过滤日志，查看业务完整的调用链hilog日志。
       - promise/then和async/await异步机制都会自动传递HiTraceId，并生成分支标识，例如示例hilog日志中的32a835e、23e9386、38a1eb2等，均为异步任务自动生成的分支标识，且通过parentSpanId信息可以推断该分支标识的生成链路。
-      - hiTraceChain.end()和hiTraceChain.clear()都可以结束跟踪，跟踪结束后，hilog日志不再携带HiTraceId信息，例如日志“hiTraceChain end in main thread”不再携带HiTraceId信息。
+      - hiTraceChain.end()和hiTraceChain.clearId()都可以结束跟踪，跟踪结束后，hilog日志不再携带HiTraceId信息，例如日志“hiTraceChain end in main thread”不再携带HiTraceId信息。
    
    - HiTraceId未支持自动传递场景：
 
