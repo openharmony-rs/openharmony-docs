@@ -25,3 +25,4 @@ ArkUI框架提供了丰富的接口，用于处理用户通过不同外设生成
 - [绑定手势事件](ndk-bind-gesture-events.md)：通过NDK为组件添加手势交互。
 - [绑定拖拽事件](ndk-drag-event.md)：通过NDK为组件支持统一拖拽。
 - [感知用户交互事件](ndk-sense-interaction-events.md)：通过NDK以观察者方式感知全局用户交互事件并获取命中节点。
+- [监听UI内容变化事件](ndk-listen-to-content-change-events.md)：通过NDK监听页面切换、滚动和浮层显示隐藏等UI内容变化事件。

@@ -326,6 +326,7 @@
     - [绑定手势事件](ndk-bind-gesture-events.md)
     - [绑定拖拽事件](ndk-drag-event.md)
     - [感知用户交互事件](ndk-sense-interaction-events.md)
+    - [监听UI内容变化事件](ndk-listen-to-content-change-events.md)
   - 使用自定义能力<!--arkts-build-custom-ndk-->
     - [构建自定义组件](ndk-build-custom-components.md)
     - [自定义绘制](arkts-user-defined-draw.md)

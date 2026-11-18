@@ -72,12 +72,13 @@ ArkUI提供了面向NDK的交互事件感知接口（[ui_info_collection.h](../r
 
 ## 开发步骤
 
-以下步骤介绍如何注册交互事件观察者并处理回调。
+以下步骤介绍如何注册交互事件观察者并处理回调，示例代码来自[应用示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkUIEventObserver)。
 
 1. 准备开发环境，引入头文件并链接动态库。
 
     ```c
-    #include <arkui/native_node.h>          // OH_ArkUI_GetContextByNode
+    #include <hilog/log.h>                  // 日志输出
+    #include <arkui/native_type.h>          // ArkUI_ContextHandle
     #include <arkui/ui_info_collection.h>   // 交互感知接口
     #include <arkui/ui_json_wrapper.h>      // JSON封装对象访问
     ```
@@ -90,10 +91,12 @@ ArkUI提供了面向NDK的交互事件感知接口（[ui_info_collection.h](../r
 
 2. 实现事件回调。回调通过JSON封装对象接收事件数据，在回调内完成解析或拷贝。
 
+    <!-- @[interaction_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkUIEventObserver/entry/src/main/cpp/InteractionObserver.h) -->
+
     ```c
+    // 事件回调：json为借用对象，仅在本函数执行期间有效
     static void OnInteractionEvent(const OH_ArkUI_NativeModule_UIJsonWrapper *json, void *userData)
     {
-        // json为借用对象，仅在本函数执行期间有效
         const char *data = OH_ArkUI_NativeModule_UIJsonWrapperGetData(json);
         uint32_t size = OH_ArkUI_NativeModule_UIJsonWrapperGetSize(json);
         if (data == nullptr || size == 0) {
@@ -102,20 +105,19 @@ ArkUI提供了面向NDK的交互事件感知接口（[ui_info_collection.h](../r
         // 需要留存数据时必须在本回调内拷贝，例如：
         // std::string payload(data, size);
         // 此处仅打印事件JSON
-        printf("interaction event: %.*s\n", (int)size, data);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "InteractionObserver",
+            "interaction event: %{public}s", data);
     }
     ```
 
-3. 获取UI上下文，注册观察者（须在UI线程调用）。
+3. 注册观察者（须在UI线程调用）。
+
+    <!-- @[interaction_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkUIEventObserver/entry/src/main/cpp/InteractionObserver.h) -->
 
     ```c
-    static uint32_t g_observerId = 0;
-
-    void RegisterInteractionObserver(ArkUI_NodeHandle node)
+    // 注册观察者（须在UI线程调用），context为当前UI实例的上下文
+    static void RegisterInteractionObserver(ArkUI_ContextHandle context)
     {
-        // 通过任意已挂载节点获取所属UI实例的上下文
-        ArkUI_ContextHandle context = OH_ArkUI_GetContextByNode(node);
-
         // 按需组合关注的事件类型，此处以全部事件为例
         uint32_t eventMask =
             OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TAP |
@@ -129,20 +131,48 @@ ArkUI提供了面向NDK的交互事件感知接口（[ui_info_collection.h](../r
             OH_ARKUI_NATIVEMODULE_UIINFOCOLLECTION_INTERACTION_EVENT_TOUCH;
 
         ArkUI_ErrorCode code = OH_ArkUI_NativeModule_UIInfoCollectionRegisterInteractionObserver(
-            context, eventMask, &g_observerId, OnInteractionEvent, nullptr);
+            context, eventMask, &g_interactionObserverId, OnInteractionEvent, nullptr);
         if (code != ARKUI_ERROR_CODE_NO_ERROR) {
-            printf("register failed, error code: %d\n", (int)code);
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "InteractionObserver",
+                "register failed, error code: %{public}d", static_cast<int>(code));
         }
+    }
+    ```
+
+    ArkTS侧将`getUIContext()`返回的UIContext对象传给Native模块，在Native侧通过[OH_ArkUI_GetContextFromNapiValue()](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getcontextfromnapivalue)映射为`ArkUI_ContextHandle`后再注册：
+
+    <!-- @[interaction_napi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkUIEventObserver/entry/src/main/cpp/napi_init.cpp) -->
+
+    ```c
+    // ArkTS侧传入getUIContext()获取的UIContext对象，映射为ArkUI_ContextHandle后注册观察者
+    static napi_value RegisterInteractionObserverJs(napi_env env, napi_callback_info info)
+    {
+        size_t argc = 1;
+        napi_value args[1] = { nullptr };
+        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+        if (argc < 1) {
+            return nullptr;
+        }
+        ArkUI_ContextHandle context = nullptr;
+        int32_t ret = OH_ArkUI_GetContextFromNapiValue(env, args[0], &context);
+        if (ret != ARKUI_ERROR_CODE_NO_ERROR || context == nullptr) {
+            return nullptr;
+        }
+        RegisterInteractionObserver(context);
+        return nullptr;
     }
     ```
 
 4. 不再使用时注销观察者（须在UI线程调用）。
 
+    <!-- @[interaction_unregister](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkUIEventObserver/entry/src/main/cpp/InteractionObserver.h) -->
+
     ```c
-    void UnregisterInteractionObserver()
+    // 注销观察者（须在UI线程调用）
+    static void UnregisterInteractionObserver()
     {
-        OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObserver(g_observerId);
-        g_observerId = 0;
+        OH_ArkUI_NativeModule_UIInfoCollectionUnregisterInteractionObserver(g_interactionObserverId);
+        g_interactionObserverId = 0;
     }
     ```
 
@@ -199,5 +229,6 @@ ArkUI提供了面向NDK的交互事件感知接口（[ui_info_collection.h](../r
 - [ui_info_collection.h参考文档](../reference/apis-arkui/capi-ui-info-collection-h.md)
 - [ui_json_wrapper.h参考文档](../reference/apis-arkui/capi-ui-json-wrapper-h.md)
 - [ArkUI_ErrorCode错误码](../reference/apis-arkui/capi-arkui-nativemodule-arkui-error-code-h.md#arkui_errorcode)
+- [监听UI内容变化事件](ndk-listen-to-content-change-events.md)
 - [绑定手势事件](ndk-bind-gesture-events.md)
 - [绑定拖拽事件](ndk-drag-event.md)
