@@ -10,7 +10,9 @@
 
 UI事件注入接口为应用内智能体和UI自动化场景提供UI控制能力，应用可以通过NDK接口，向本应用的UI实例异步注入交互命令（点击、滚动、内容切换、返回、按键）。命令采用JSON格式描述，只声明交互意图，不指定具体组件，由系统根据执行模式决定如何执行；执行结果通过回调异步通知。
 
-## 约束与限制
+## 注入手势命令
+
+### 约束与限制
 
 | 约束项 | 说明 |
 | --- | --- |
@@ -22,17 +24,9 @@ UI事件注入接口为应用内智能体和UI自动化场景提供UI控制能�
 | 回调时机 | 回调在命令执行完成时触发一次，不等待组件的延迟效果或渲染完成；在目标UI线程上调用时，回调发生在接口返回之后，在其他线程上调用时，回调可能早于接口返回。 |
 | 坐标 | 所有位置坐标相对于窗口，单位为物理像素（px）。 |
 
-命令采用JSON格式，顶层schemaVersion字段必须为1，仅支持五种命令类型，具体格式见接口规格。
+命令采用JSON格式，顶层schemaVersion字段必须为1，仅支持五种命令类型，具体格式见指令结构。
 
-## 接口规格
-
-| 接口 | 说明 |
-| --- | --- |
-| [OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction) | 异步向UI实例注入非精确目标的交互命令。 |
-| [OH_ArkUI_NativeModule_UIJsonWrapperCreate](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate) | 从JSON字符串创建命令对象。 |
-| [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy) | 销毁命令对象并释放资源。 |
-
-命令执行完成后，结果通过[OH_ArkUI_NativeModule_UIEventInjectionCallback](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback)回调通知，取值为[OH_ArkUI_NativeModule_UIEventInjection_ResultCode](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)枚举。callback可以为NULL，表示不关注执行结果。
+### 指令结构
 
 命令采用JSON格式，顶层结构如下。
 
@@ -66,8 +60,6 @@ mode决定命令的执行方式，仅click和scroll使用，content_switch固定
 | auto（默认） | 系统决定执行方式：优先定位坐标处命中的组件并直接执行，未命中时降级为模拟触摸事件。 |
 | simulating | 不定位组件，直接派发完整的触摸事件序列（按下、移动、抬起）。 |
 | target | 直接触发坐标处命中的组件手势，未命中组件时回调收到TARGET_NOT_FOUND。 |
-
-### 命令示例
 
 点击坐标(100, 200)的示例。
 
@@ -104,7 +96,15 @@ mode决定命令的执行方式，仅click和scroll使用，content_switch固定
 
 如果JSON不合法、缺少必填字段或数值超出有效范围，接口同步返回ARKUI_ERROR_CODE_PARAM_INVALID，命令不会执行，也不会触发回调。
 
-### 错误码
+### 接口说明
+
+| 接口 | 说明 |
+| --- | --- |
+| [OH_ArkUI_NativeModule_UIEventInjectRelaxedInteraction](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectrelaxedinteraction) | 异步向UI实例注入非精确目标的交互命令。 |
+| [OH_ArkUI_NativeModule_UIJsonWrapperCreate](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrappercreate) | 从JSON字符串创建命令对象。 |
+| [OH_ArkUI_NativeModule_UIJsonWrapperDestroy](../reference/apis-arkui/capi-ui-json-wrapper-h.md#oh_arkui_nativemodule_uijsonwrapperdestroy) | 销毁命令对象并释放资源。 |
+
+命令执行完成后，结果通过[OH_ArkUI_NativeModule_UIEventInjectionCallback](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjectioncallback)回调通知，取值为[OH_ArkUI_NativeModule_UIEventInjection_ResultCode](../reference/apis-arkui/capi-ui-event-injection-h.md#oh_arkui_nativemodule_uieventinjection_resultcode)枚举。callback可以为NULL，表示不关注执行结果。
 
 同步返回值表示命令是否被接受。
 
@@ -123,9 +123,9 @@ mode决定命令的执行方式，仅click和scroll使用，content_switch固定
 | OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_COMMAND_NOT_SUPPORTED | 命令本身合法，但当前UI状态下无法执行。 |
 | OH_ARKUI_NATIVE_MODULE_UI_EVENT_INJECTION_RESULT_INTERRUPTED_BY_USER | 命令被用户操作中断。 |
 
-## 开发步骤
+### 开发步骤
 
-### 添加动态链接库
+#### 添加动态链接库
 
 在CMakeLists.txt中链接libace_ndk.z.so。
 
@@ -133,14 +133,14 @@ mode决定命令的执行方式，仅click和scroll使用，content_switch固定
 target_link_libraries(entry PUBLIC libace_ndk.z.so)
 ```
 
-### 头文件
+#### 头文件
 
 ```C++
 #include <arkui/ui_event_injection.h>
 #include <arkui/ui_json_wrapper.h>
 ```
 
-### 完整示例
+#### 完整示例
 
 下面以注入一次点击为例。
 
@@ -176,7 +176,7 @@ if (ret != ARKUI_ERROR_CODE_NO_ERROR) {
 
 示例中的uiContext为目标UI实例的ArkUI_ContextHandle。接口返回ARKUI_ERROR_CODE_NO_ERROR只表示命令已入队，实际执行结果以回调中的result为准。
 
-## 异常处理
+## 常见问题
 
 高频调用时需要注意：
 
