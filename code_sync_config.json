@@ -37769,6 +37769,36 @@
 						"end_line":468,
 						"name":"SetCapturerReadDataCallback",
 						"start_line":147
+					},
+					{
+						"end_line":574,
+						"name":"IsFastRecordingSupported",
+						"start_line":559
+					},
+					{
+						"end_line":546,
+						"name":"SetCapturerFastStatusChangeCallback_Fast",
+						"start_line":544
+					},
+					{
+						"end_line":684,
+						"name":"GetFastStatus_UltraFast",
+						"start_line":681
+					},
+					{
+						"end_line":605,
+						"name":"IsUltraFastRecordingSupported",
+						"start_line":592
+					},
+					{
+						"end_line":633,
+						"name":"latencyMode_UltraFast_Capture",
+						"start_line":631
+					},
+					{
+						"end_line":655,
+						"name":"SetCapturerFastStatusChangeCallback_UltraFast",
+						"start_line":653
 					}
 				]
 			}
