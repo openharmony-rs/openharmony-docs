@@ -1346,7 +1346,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyShort(OH_ImageSourceNative 
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为空。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是短整型的值。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为nullptr。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是短整型的值。 |
 
 ### OH_ImageSourceNative_GetImagePropertyLong()
 
@@ -1420,7 +1420,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyDouble(OH_ImageSourceNative
 
 | 类型 | 说明 |
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或size为nullptr。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是浮点型的值。 |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：执行成功。 <br>         IMAGE_SOURCE_INVALID_PARAMETER：source、key或value为nullptr。<br>         IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE：不支持查询当前mimetype的图像属性。<br>         IMAGE_SOURCE_UNSUPPORTED_METADATA：指定的元数据不存在，或者不是浮点型的值。 |
 
 ### OH_ImageSourceNative_GetImagePropertyArraySize()
 
