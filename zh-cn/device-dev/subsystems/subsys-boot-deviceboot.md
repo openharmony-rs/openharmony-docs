@@ -45,7 +45,7 @@
 
 | 名称 | 适配平台 |
 | -------- | -------- |
-| base/startup/appspawne | 小型系统设备（参考内存≥1MB）、 标准系统，如Hi3516DV300&nbsp、Hi3518EV300、 RK3568 |
+| base/startup/appspawn | 小型系统设备（参考内存≥1MB）、 标准系统，如Hi3516DV300、Hi3518EV300、 RK3568 |
 | base/startup/bootstrap_lite | 轻量系统设备（参考内存≥128KB），如Hi3861V100 |
 | base/startup/init | 小型系统设备（参考内存≥1MB）、标准系统，如Hi3516DV300、Hi3518EV300、RK3568 |
 
@@ -103,7 +103,7 @@
 
       2. Mkimage打包工具
 
-         能够解析its文件，将其中按照其中镜像的配置将对应镜像打包生成itb文件，这里也就是`boot.img`文件。
+         能够解析its文件，按照其中镜像的配置将对应镜像打包生成itb文件，这里也就是`boot.img`文件。
 
       3. ramdisk
 
@@ -144,7 +144,7 @@
   | init        | /init                                                        |                                                              |
   | blkdevparts | mmcblk0:1M(boot),15M(kernel),200M(system),200M(vendor),<br/>2M(misc),20M(updater),-(userdata) | 分区表信息，kernel会根据此信息创建物理分区                 |
   | hardware    | Hi3516DV300、rk3568等                                                  | （必要信息）硬件平台 |
-  | root        | /dev/ram0（Hi3516DV00)、root=PARTUUID=614e0000-0000 rw（rk3568）                                                    | kernel加载的启动设备 |
+  | root        | /dev/ram0（Hi3516DV300)、root=PARTUUID=614e0000-0000 rw（rk3568）                                                    | kernel加载的启动设备 |
   | rootfstype  | ext4                                                         | 根文件系统类型 |
   | default_boot_device | soc/10100000.himci.eMMC | （建议配置信息）默认启动设备，在启动第一阶段会根据这个参数创建required设备的软链接 |
   | ohos.required_mount.xxx | /dev/block/platform/soc/10100000.himci.eMMC/by-name/xxx@/usr@ext4@ro,barrier=1@wait,required |  现支持从cmdline中读取fstab信息，获取失败的情况下，会继续尝试从fstab.required文件中读取 |
@@ -352,11 +352,11 @@
 
   | 字段                  | 说明                                                         |
   | --------------------- | ------------------------------------------------------------ |
-  | src                   | 挂在分区的地址或文件系统的设备的路径                         |
+  | src                   | 挂载分区的地址或文件系统的设备的路径                         |
   | mnt_point             | 在根文件系统中的挂载点                                       |
   | type                  | 文件系统的类型(常见有ext2、vfat、NTFS等)                     |
   | mnt_flags and options | 挂载的参数,详细的如下说明                                    |
-  | fs_mgr_flags          | 文化系统管理的标识<br />可用值有：{"check","wait,"required","nofail","hvb"} |
+  | fs_mgr_flags          | 文件系统管理的标识<br />可用值有：{"check","wait","required","nofail","hvb"} |
 
 - mnt_flags and options 参数说明
 
@@ -367,7 +367,7 @@
   noexec 不允许执行此文件系统上的二进制文件
   ro 以只读模式挂载文件系统
   rw 以读写模式挂载文件系统
-  user 允许任意用户挂载此文件系统，若无显示定义，隐含启用noexec nosuid nodev参数
+  user 允许任意用户挂载此文件系统，若无显式定义，隐含启用noexec nosuid nodev参数
   users 允许所有users组中的用户挂载文件系统
   nouser 只能被root挂载
   owner 允许设备所有者挂载

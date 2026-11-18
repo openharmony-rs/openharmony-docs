@@ -58,7 +58,7 @@ OHOS系统参数为各系统服务提供简单易用的键值对访问接口，�
 
 | 类别 | 示例 | 说明 |
 | -------- | -------- | -------- |
-| 字符串   | const.product.name=OHOS-PRODUCT | 多行字符串需要通过引号扩起来。 |
+| 字符串   | const.product.name=OHOS-PRODUCT | 多行字符串需要通过引号括起来。 |
 | 数字     | const.os.version.api=26         | 数字不需要。|
 | 布尔     | const.telephony.enable=false    | 布尔型的可以为0,1,false,true。|
 
@@ -159,7 +159,7 @@ Other进程对默认权限参数的访问行为列举如下：
 
 #### 系统参数标签文件大小配置
 
-每个标签默认分配1K内存，能存放5个左右的系统参数。如果标签下支持的系统参数较多，需在ohso.para.size文件中按照标签扩大内存大小。
+每个标签默认分配1K内存，能存放5个左右的系统参数。如果标签下支持的系统参数较多，需在ohos.para.size文件中按照标签扩大内存大小。
 
 支持/system/etc/param/ohos.para.size和/sys_prod/etc/param/ohos.para.size进行扩展。
 
@@ -238,7 +238,7 @@ hilog_param=40960
     | 内核参数    | /proc/cmdline | 将内核参数中的部分值转化成系统参数，并保存。内核参数中.xxx=valXXX类型的参数都转换成ohos.boot.xxx=valXXX系统参数。 |
     | OS系统参数 | /system/etc/param/ohos_const/*.para | OS固定系统参数值参数优先加载。                               |
     | vendor参数 | /vendor/etc/param/*.para | 厂商定义的系统参数次优先级加载。                             |
-    | system参数 | /system/etc/param/*.para | 加载各子系统定义的参数参数。如果系统参数已经存在，则忽略掉。 |
+    | system参数 | /system/etc/param/*.para | 加载各子系统定义的参数。如果系统参数已经存在，则忽略掉。 |
     | persist参数 | /data/parameters/ | 如果持久化参数存在，则最后加载持久化系统参数。持久化系统参数会覆盖加载的默认系统参数。 |
    ```
 ### 参数和标签的展示
@@ -388,7 +388,7 @@ hilog_param=40960
     char valueGet1[128] = {0};
     ret = GetParameter(key1, "version=10.1.0", valueGet1, 128);
 
-    // get sysparm
+    // get sysparam
     char* value1 = GetDeviceType();
     printf("Product type =%s\n", value1);
 
@@ -458,9 +458,6 @@ hilog_param=40960
     char* value23 = GetBuildRootHash();
     printf("build root later..., %s\n", value23);
 
-    char* value24 = GetOsReleaseType();
-    printf("OS release type =%s\n", value24);
-
     char* value25 = GetOsReleaseType();
     printf("OS release type =%s\n", value25);
 
@@ -516,7 +513,7 @@ hilog_param=40960
 
 - system parameter get:
 
-    GetParameter_ failed! the errNum is: xx!
+    GetParameter failed! the errNum is: xx!
 
     SystemReadParam failed! name is: xxxx, errNum is: xx!
 
@@ -575,4 +572,4 @@ hilog_param=40960
 
 ### 三方应用为何无法访问系统参数
 
-默认DAC规则只允许三方应用对参数具有get, watch 的权限，因此三方应用若需要set权限需要重新设置DAC规则。 此外, 三方应用的selinux权限默认是未设置的，因此需要参照mac访问控制权限设置进行设置
+默认DAC规则只允许三方应用对参数具有get, watch 的权限，因此三方应用若需要set权限，需要重新设置DAC规则。 此外, 三方应用的selinux权限默认是未设置的，因此需要参照mac访问控制权限设置进行设置

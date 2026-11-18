@@ -37,7 +37,7 @@
    | disabled | 可选 | 小型系统和标准系统 | 预留字段，无实际意义。 | 无。 |
    | sandbox | 可选 | 标准系统 | 沙盒功能是否打开。 | 1：打开服务的沙盒功能 （默认值）。<br>0：关闭服务的沙盒功能。 |
    | socket | 可选 | 标准系统 | 配置socket属性相关设置。 | 由socket创建流程的服务需配置此项。 |
-   | env | 可选 | 标准系统 | 配置服务的环境变量。 | 类型：键值对型数组。 <br>支持同时配置多个环境变量，如：<br>"env" : [{<br> "name" : "SERVICE_NALE", <br>"value" : "ueventd"},{<br> "name" : "TEST",<br> "value" : "test_value" <br>}]。|
+   | env | 可选 | 标准系统 | 配置服务的环境变量。 | 类型：键值对型数组。 <br>支持同时配置多个环境变量，如：<br>"env" : [{<br> "name" : "SERVICE_NAME", <br>"value" : "ueventd"},{<br> "name" : "TEST",<br> "value" : "test_value" <br>}]。|
    | period | 可选 | 标准系统 | 配置服务退出后的定时启动。 | 类型：int型，表示定时启动周期，单位：秒。<br>使能后，服务退出后，会启动定时器，定时拉起服务,如："period" : 60，表示服务退出后，60s后定时拉起。|
    | cgroup | 可选 | 标准系统 | 按需配置cgroup的标志。    | 类型：bool，如"cgroup" : true。<br>使能后，服务退出后，会管控服务进程的子进程，同步销毁。|
 
@@ -203,7 +203,7 @@
   | 第四个字段 | GID       | 表示初始组组ID号，指用户登陆时就拥有这个用户组的相关权限。每个用户的初始组只能有一个，通常将和此用户的用户名相同的组名作为该用户的初始组。 |
   | 第五个字段 | 描述信息  | 表示此用户的意义，多数情况为空。                                               |
   | 第六个字段 | 主目录    | 通常称为用户的主(家)目录，如root的主目录为/root，多数情况为空                          |
-  | 第七个字段 | 默认shell | shell是linux的命令解释器，用户和Linux内核之间沟通的桥梁shell命令解释器用于将用户输入的命令转换成系统可识别的机器语言通常情况下，Linux系统默认使用的命令解释器是/bin/bash |
+  | 第七个字段 | 默认shell | shell是linux的命令解释器，用户和Linux内核之间沟通的桥梁，shell命令解释器用于将用户输入的命令转换成系统可识别的机器语言，通常情况下，Linux系统默认使用的命令解释器是/bin/bash |
 
   - group 文件说明：
 
@@ -220,11 +220,11 @@
   |    序号    | 字段      |                         含义                       |
   | ---------- | --------- | -------------------------------------------------- |
   | 第一个字段 | 组名 | 用户组的名称，例如：servicectrl就表示组名为servicectrl |
-  | 第二个字段 | 组密码标志 | 和/etc/passwd文件一样，这里的“x”仅仅是密码标志，真正的加密之后的组密码保在/etc/gshdow文件中 |
+  | 第二个字段 | 组密码标志 | 和/etc/passwd文件一样，这里的“x”仅仅是密码标志，真正的加密之后的组密码保在/etc/gshadow文件中 |
   | 第三个字段 | GID | 通过GID来区别不同的用户组的 |
   | 第四个字段 | 组中的用户 | 表示的就是这个用户组中到底包含了哪些用户，例如：servicectrl 组的成员有root,shell,system,samgr,hdf_devmgr,foundation,update |
 
-  - 若gid,uid设置为root或system，则需要在对应产品目录下的security_config/high_privilege_process_list.json文件种添加白名单，例如：
+  - 若gid,uid设置为root或system，则需要在对应产品目录下的security_config/high_privilege_process_list.json文件中添加白名单，例如：
 
   ```
     {
