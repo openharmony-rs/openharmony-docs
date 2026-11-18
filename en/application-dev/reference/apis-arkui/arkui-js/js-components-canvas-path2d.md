@@ -1,12 +1,12 @@
 # Path2D
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @camlostshi-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=236b1482bf31e926fd91d5f29276a56a58780a2f translatedAt=2026-06-22T07:52:23.275Z pushedAt=2026-06-23T02:49:01.057Z -->
+<!-- md-trans-meta sourceCommit=36e7207cad20c4ef453cb5bda48f835acde97674 translatedAt=2026-11-12T04:21:06.308Z pushedAt=2026-11-17T10:50:19.428Z nl=1 -->
+
 
 **Path2D** allows you to describe a path through an existing path. This path can be drawn through the [stroke](js-components-canvas-canvasrenderingcontext2d.md#stroke) API of **Canvas**.
 
@@ -16,7 +16,7 @@
 
 ## addPath
 
-addPath(path: Object): void
+addPath(path: Path2D): void
 
 Adds a path to this path.
 
@@ -24,9 +24,9 @@ Adds a path to this path.
 
 | Name  | Type    | Description            |
 | ---- | ------ | -------------- |
-| path | Object | Path to be added to this path.|
+| path | Path2D | Path object to be added to the current path. |
 
-**Example**
+**Example** 
 
 ```html
 <!-- xxx.hml -->
@@ -49,7 +49,7 @@ export default {
 }
 ```
 
-  ![addPath](figures/addPath.png)
+![addPath](figures/addPath.png)
 
 ## setTransform
 
@@ -68,7 +68,7 @@ Sets the path transformation matrix.
 | translateX | number | Translation distance along the x-axis.|
 | translateY | number | Translation distance along the y-axis.|
 
-**Example** 
+**Example**  
 
 ```html
 <!-- xxx.hml -->
@@ -92,13 +92,14 @@ export default {
 
 ![Yellow-triangle-02](figures/Yellow-triangle-02.png)
 
+
 ## closePath
 
 closePath(): void
 
 Moves the current point of the path back to the start point of the path, and draws a straight line between the current point and the start point. If the shape has already been closed or has only one point, this method does nothing.
 
-**Example** 
+**Example**  
 
 ```html
 <!-- xxx.hml -->
@@ -123,7 +124,8 @@ export default {
 }
 ```
 
-  ![Yellow-triangle-01](figures/Yellow-triangle-01.png)
+![Yellow-triangle-01](figures/Yellow-triangle-01.png)
+
 
 ## moveTo
 
@@ -138,7 +140,7 @@ Moves the current coordinate point of the path to the target point, without draw
 | x    | number | X-coordinate of the target point.|
 | y    | number | Y-coordinate of the target point.|
 
-**Example** 
+**Example**  
 
 ```html
 <!-- xxx.hml -->
@@ -163,7 +165,8 @@ export default {
 }
 ```
 
-  ![moveTo01](figures/moveTo01.png)
+![moveTo01](figures/moveTo01.png)
+
 
 ## lineTo
 
@@ -204,7 +207,8 @@ export default {
 }
 ```
 
-  ![lineto](figures/lineto.png)
+![lineto](figures/lineto.png)
+
 
 ## bezierCurveTo
 
@@ -212,7 +216,7 @@ bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number,
 
 Draws a cubic bezier curve on the canvas.
 
-**Parameters**
+**Parameters** 
 
 | Name  | Type    | Description            |
 | ---- | ------ | -------------- |
@@ -223,7 +227,7 @@ Draws a cubic bezier curve on the canvas.
 | x    | number | X-coordinate of the end point on the bezier curve.   |
 | y    | number | Y-coordinate of the end point on the bezier curve.   |
 
-**Example** 
+**Example**  
 
 ```html
 <!-- xxx.hml -->
@@ -246,7 +250,8 @@ export default {
 }
 ```
 
-  ![bezierCurveTo](figures/bezierCurveTo.png)
+![bezierCurveTo](figures/bezierCurveTo.png)
+
 
 ## quadraticCurveTo
 
@@ -254,7 +259,7 @@ quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void
 
 Draws a quadratic Bezier curve on the canvas.
 
-**Parameters** 
+**Parameters**  
 
 | Name  | Type    | Description         |
 | ---- | ------ | ----------- |
@@ -263,7 +268,7 @@ Draws a quadratic Bezier curve on the canvas.
 | x    | number | X-coordinate of the end point on the Bezier curve.|
 | y    | number | Y-coordinate of the end point on the Bezier curve.|
 
-**Example**
+**Example** 
 
 ```html
 <!-- xxx.hml -->
@@ -286,7 +291,8 @@ export default {
 }
 ```
 
-  ![quadraticCurveTo-01](figures/quadraticCurveTo-01.png)
+![quadraticCurveTo-01](figures/quadraticCurveTo-01.png)
+
 
 ## arc
 
@@ -294,7 +300,7 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
 
 Draws an arc on the canvas.
 
-**Parameters** 
+**Parameters**  
 
 | Name | Type    | Mandatory | Description                         |
 | ------ | ------- | ---- | ---------------------------- |
@@ -305,7 +311,7 @@ Draws an arc on the canvas.
 | endAngle      | number  | Yes | End radian of the arc.  |
 | counterclockwise | boolean | No | Whether to draw the arc counterclockwise. The value **true** means counterclockwise, and **false** means clockwise. Default value: **false**.|
 
-**Example** 
+**Example**  
 
 ```html
 <!-- xxx.hml -->
@@ -327,25 +333,26 @@ export default {
 }
 ```
 
-  ![arc01](figures/arc01.png)
+![arc01](figures/arc01.png)
+
 
 ## arcTo
 
 arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
 
-Draws an arc based on the radius and points on the arc.
+Creates an arc path based on the arc control point and arc radius.
 
-**Parameters**
+**Parameters** 
 
 | Parameter    | Type    | Description             |
 | ------ | ------ | --------------- |
-| x1     | number | X-coordinate of the first point on the arc.|
-| y1     | number | Y-coordinate of the first point on the arc.|
-| x2     | number | X-coordinate of the second point on the arc.|
-| y2     | number | Y-coordinate of the second point on the arc.|
+| x1     | number | X-axis coordinate of the first point of the arc control. |
+| y1     | number | Y-axis coordinate of the first point of the arc control. |
+| x2     | number | X-axis coordinate of the second point of the arc control. |
+| y2     | number | Y-axis coordinate of the second point of the arc control. |
 | radius | number | Radius of the arc.       |
 
-**Example** 
+**Example**  
 
 ```html
 <!-- xxx.hml -->
@@ -367,28 +374,29 @@ export default {
 }
 ```
 
-  ![Yellow-Curve](figures/Yellow-Curve.png)
+![Yellow-Curve](figures/Yellow-Curve.png)
+
 
 ## ellipse
 
 ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number, startAngle: number, endAngle: number, counterclockwise?: number): void
 
-Draws an ellipse in the specified rectangular region on the canvas.
+Draws an ellipse in the specified area.
 
-**Parameters**
+**Parameters** 
 
-| Name           | Type    | Description                                  |
-| ------------- | ------ | ------------------------------------ |
-| x             | number | X-coordinate of the ellipse center.                          |
-| y             | number | Y-coordinate of the ellipse center.                          |
-| radiusX       | number | Ellipse radius on the x-axis.                          |
-| radiusY       | number | Ellipse radius on the y-axis.                          |
-| rotation      | number | Rotation angle of the ellipse, in radians.                      |
-| startAngle    | number | Angle of the start point for drawing the ellipse, in radians.                   |
-| endAngle      | number | Angle of the end point for drawing the ellipse, in radians.                   |
-| counterclockwise | number | Whether to draw the ellipse counterclockwise. The value **0** means clockwise, and **1** means counterclockwise. Other values are treated as the default. The default value is **0**.|
+| Name | Type    | Mandatory | Description                         |
+| ------ | ------- | ---- | ---------------------------- |
+| x             | number | Yes | X-coordinate of the ellipse center.                          |
+| y             | number | Yes | Y-coordinate of the ellipse center.                          |
+| radiusX       | number | Yes | Ellipse radius on the x-axis.                          |
+| radiusY       | number | Yes | Ellipse radius on the y-axis.                          |
+| rotation      | number | Yes | Rotation angle of the ellipse, in radians.                      |
+| startAngle    | number | Yes | Angle of the start point for drawing the ellipse, in radians.                   |
+| endAngle      | number | Yes | Angle of the end point for drawing the ellipse, in radians.                   |
+| counterclockwise | number | No | Whether to draw the ellipse counterclockwise. The value **0** means clockwise, and **1** means counterclockwise. Other values are treated as the default. The default value is **0**.|
 
-**Example** 
+**Example**  
 
 ```html
 <!-- xxx.hml -->
@@ -410,7 +418,8 @@ export default {
 }
 ```
 
-  ![ellipse01](figures/ellipse01.png)
+![ellipse01](figures/ellipse01.png)
+
 
 ## rect
 
@@ -418,7 +427,7 @@ rect(x: number, y: number, width: number, height: number): void
 
 Creates a rectangle on the canvas.
 
-**Parameters**
+**Parameters** 
 
 | Name    | Type    | Description           |
 | ------ | ------ | ------------- |
@@ -427,7 +436,7 @@ Creates a rectangle on the canvas.
 | width  | number | Width of the rectangle.     |
 | height | number | Height of the rectangle.     |
 
-**Example** 
+**Example**  
 
 ```html
 <!-- xxx.hml -->
@@ -449,4 +458,4 @@ export default {
 }
 ```
 
-  ![Yellow-square](figures/Yellow-square.png)
+![Yellow-square](figures/Yellow-square.png)

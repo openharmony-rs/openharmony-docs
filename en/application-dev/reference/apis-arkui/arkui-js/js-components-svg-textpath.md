@@ -1,14 +1,14 @@
 # textPath
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyujie43-->
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:35:44.996Z pushedAt=2026-06-24T03:01:52.490Z -->
+<!-- md-trans-meta sourceCommit=61f91cca6aea307c81b473df54b72148114a4082 translatedAt=2026-11-12T04:47:20.684Z pushedAt=2026-11-18T07:04:49.930Z nl=1 -->
 
 The **\<textPath>** component is used to draw text along the path.
+
 
 >  **NOTE**
 >  - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
@@ -21,27 +21,32 @@ The **\<textPath>** component is used to draw text along the path.
 
 None
 
+
 ## Child Components
 
 The **[\<tspan>](js-components-svg-tspan.md)** child component is supported.
 
+
 ## Attributes
 
+
 The attributes in the following table are supported.
+
 
 | Name          | Type                              | Default Value| Description                                                        |
 | -------------- | ---------------------------------- | ------ | ------------------------------------------------------------ |
 | id             | string                             | -      | Unique ID of the component.                                            |
-| path           | string                             | 0      | Shape of the path.<br>The meanings of the letters are as follows:<br>- M = moveto<br>- L = lineto<br>- H = horizontal lineto<br>- V = vertical lineto<br>- C = curveto<br>- S = smooth curveto<br>- Q = quadratic Bezier curve<br>- T = smooth quadratic Bezier curveto<br>- A = elliptical Arc<br>- Z = closepath<br>Default value: **0**|
+| path           | string                             | -      | Shape of the path.<br/>The meanings of the letters are as follows:<br/>-&nbsp;M&nbsp;=&nbsp;moveto<br/>-&nbsp;L&nbsp;=&nbsp;lineto<br/>-&nbsp;H&nbsp;=&nbsp;horizontal&nbsp;lineto<br/>-&nbsp;V&nbsp;=&nbsp;vertical&nbsp;lineto<br/>-&nbsp;C&nbsp;=&nbsp;curveto<br/>-&nbsp;S&nbsp;=&nbsp;smooth&nbsp;curveto<br/>-&nbsp;Q&nbsp;=&nbsp;quadratic&nbsp;Bezier&nbsp;curve<br/>-&nbsp;T&nbsp;=&nbsp;smooth&nbsp;quadratic&nbsp;Bezier&nbsp;curveto<br/>-&nbsp;A&nbsp;=&nbsp;elliptical&nbsp;Arc<br/>-&nbsp;Z&nbsp;=&nbsp;closepath |
 | startOffset    | &lt;length&gt;\|&lt;percentage&gt; | 0      | Offset of the text start point relative to the path start point.<br>Default value: **0**                |
 | font-size      | &lt;length&gt;                     | 30px   | Font size.<br>Default value: **30px**                           |
 | fill           | &lt;color&gt;                      | black  | Font fill color.<br>Default value: **black**                            |
 | by             | number                             | -      | Attribute offset relative to the specified animation. By default, **from** is the original attribute value.            |
 | opacity        | number                             | 1      | Opacity of an element. The value ranges from **0** to **1**. The value **1** means opaque, and **0** means completely transparent. Attribute animations are supported.<br>Default value: **1**|
 | fill-opacity   | number                             | 1.0    | Font fill opacity.<br>Default value: **1.0**                            |
-| stroke         | &lt;color&gt;                      | black  | Stroke color.<br>Default value: **black**                  |
-| stroke-width   | number                             | 1px    | Stroke width.<br>Default value: **1px**                              |
-| stroke-opacity | number                             | 1.0    | Stroke opacity.<br>Default value: **1.0**                            |
+| stroke         | &lt;color&gt;                      | black  | Font stroke with a color.<br/>Default value: black                   |
+| stroke-width   | number                             | 1      | Font stroke width.<br/>Default value: **1**, in px.                          |
+| stroke-opacity | number                             | 1.0    | Font stroke opacity.<br/>Default value: **1.0**                             |
+
 
 ## Example
 
@@ -71,6 +76,7 @@ The following is an example of the **\<textspan>** attributes, where text is dra
     width: 600px;
 }
 ```
+
 
 ![textpath-part1](figures/textpath-part1.png)
 
@@ -200,7 +206,7 @@ Attribute animation of the **\<textPath>** and **\<tspan>** in combination
 
 (1) **"tspan attribute x|rotate"**: The beginning of the text is offset from 50 px to 100 px, and the text rotates clockwise by 0 degrees to 360 degrees.
 
-(2) **"tspan attribute dx|opacity"**: The text is drawn after the "tspan static." drawing is complete. The horizontal offset moves from 0% to 30%, and the opacity changes from shallow to deep.
+(2) **"tspan attribute dx|opacity"**: The text is drawn after the "tspan static." drawing is complete. The horizontal offset moves from 0% to 30%, and the opacity changes from light to deep.
 
 (3) **"tspan move"**: After the previous **\<tspan>** is drawn, the next **\<tspan>** is drawn with an offset of 5%, creating the effect of following the previous **\<tspan>**.
 
@@ -273,4 +279,4 @@ Attribute animation of the **\<textPath>** and **\<tspan>** in combination
 
 (1) **"tspan attribute stroke"**: The stroke color gradually changes from red to green.
 
-(2) **"tspan attribute stroke-width-opacity"**: The stroke width changes from 1px to 5px, and the opacity changes from shallow to deep.
+(2) **"tspan attribute stroke-width-opacity"**: The stroke width changes from 1px to 5px, and the opacity changes from light to deep.
