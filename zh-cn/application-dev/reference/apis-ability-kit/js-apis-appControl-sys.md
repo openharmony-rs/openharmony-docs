@@ -1267,7 +1267,7 @@ try {
 | recoverComponentType | [RecoverComponentType](#recovercomponenttype)  | 否   | 否   | 拦截时被拉起的功能组件类型。 |
 | priority | number | 否 | 否 | 恢复处置规则的优先级，用于规则列表查询结果排序。取值为整数，数值越小，优先级越高，排序越靠前。 |
 
-### RecoverComponentType
+## RecoverComponentType
 
 标识恢复时的功能组件类型。
 
