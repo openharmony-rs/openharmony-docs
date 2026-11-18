@@ -937,4 +937,4 @@ struct Index {
 - [后台播放](avsession-background-scene.md)
 - [媒体会话提供方(ArkTS)](using-avsession-developer.md)
 - [应用接入歌词组件](avsession-desktop-lyrics.md)
-- [AVSession Kit示例代码汇总](avsession-kit-samples.md)
+- [AVSession Kit指南配套示例代码](avsession-kit-samples.md)
