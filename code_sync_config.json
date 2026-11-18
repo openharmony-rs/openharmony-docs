@@ -33387,6 +33387,46 @@
 						"end_line":192,
 						"name":"Render_SetRendererWriteDataCallback",
 						"start_line":60
+					},
+					{
+						"end_line":117,
+						"name":"Render_IsFastPlaybackSupported",
+						"start_line":104
+					},
+					{
+						"end_line":326,
+						"name":"OH_AudioStreamBuilder_SetLatencyMode",
+						"start_line":323
+					},
+					{
+						"end_line":330,
+						"name":"Render_SetRendererFastStatusChangeCallback",
+						"start_line":328
+					},
+					{
+						"end_line":147,
+						"name":"Render_GetFastStatus",
+						"start_line":143
+					},
+					{
+						"end_line":510,
+						"name":"Render_IsUltraFastPlaybackSupported",
+						"start_line":497
+					},
+					{
+						"end_line":572,
+						"name":"Render_SetUltraFastLatencyMode",
+						"start_line":569
+					},
+					{
+						"end_line":576,
+						"name":"Render_SetRendererUltraFastStatusChangeCallback",
+						"start_line":574
+					},
+					{
+						"end_line":631,
+						"name":"Render_GetUltraFastStatus",
+						"start_line":627
 					}
 				]
 			}
