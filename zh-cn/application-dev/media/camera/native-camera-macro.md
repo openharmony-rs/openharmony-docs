@@ -39,6 +39,7 @@
    #include "ohcamera/video_output.h"
    #include "napi/native_api.h"
    #include "ohcamera/camera_manager.h"
+   #include "ohcamera/camera_device.h"
    #include <window_manager/oh_display_info.h>
    #include <window_manager/oh_display_manager.h>
    
@@ -127,7 +128,7 @@ void MacroStatusCallback(Camera_CaptureSession *captureSession, bool isMacroDete
     OH_LOG_INFO(LOG_APP, "MacroStatusCallback isMacro: %{public}d", isMacroDetected);
 }
 
-// 注册回调函数。
+// 注册微距状态变化回调。
 Camera_ErrorCode NDKCamera::RegisterMacroStatusCallback()
 {
     Camera_ErrorCode ret = OH_CaptureSession_RegisterMacroStatusChangeCallback(captureSession_, MacroStatusCallback);
@@ -137,7 +138,7 @@ Camera_ErrorCode NDKCamera::RegisterMacroStatusCallback()
     return ret;
 }
 
-// 解注册
+// 解注册微距状态变化回调。
 Camera_ErrorCode NDKCamera::UnregisterMacroStatusCallback()
 {
     Camera_ErrorCode ret = OH_CaptureSession_UnregisterMacroStatusChangeCallback(captureSession_, MacroStatusCallback);
