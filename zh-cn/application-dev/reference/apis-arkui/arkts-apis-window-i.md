@@ -150,7 +150,7 @@
 
 > **说明：**
 >
-> 避让区边衬的计算不包含[TYPE_KEYBOARD](arkts-apis-window-e.md#avoidareatype7)类型的避让区。
+> 避让区边衬的计算不包括[TYPE_KEYBOARD](arkts-apis-window-e.md#avoidareatype7)类型的避让区。
 
 **起始版本：** 26.1.0
 
