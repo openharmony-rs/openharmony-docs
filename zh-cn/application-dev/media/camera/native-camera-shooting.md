@@ -373,7 +373,7 @@
        } else {
            OH_LOG_ERROR(LOG_APP, "hasFlash fail-----");
        }
-   
+
        // 查询闪光灯模式是否支持。
        bool isSupported = false;
        ret = OH_CaptureSession_IsFlashModeSupported(captureSession_, flashMode, &isSupported);
@@ -385,25 +385,25 @@
        } else {
            OH_LOG_ERROR(LOG_APP, "isFlashModeSupported fail-----");
        }
-   
+
        // 设置闪光灯模式。
        ret = OH_CaptureSession_SetFlashMode(captureSession_, flashMode);
        if (ret == CAMERA_OK) {
            OH_LOG_INFO(LOG_APP, "OH_CaptureSession_SetFlashMode success.");
        } else {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetFlashMode failed. %{public}d ", ret);
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetFlashMode failed. %{public}d.", ret);
        }
    
        // 获取当前设备的闪光灯模式。
        ret = OH_CaptureSession_GetFlashMode(captureSession_, &flashMode);
        if (ret == CAMERA_OK) {
-           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetFlashMode success. flashMode：%{public}d ", flashMode);
+           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetFlashMode success. flashMode: %{public}d.", flashMode);
        } else {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetFlashMode failed. %d ", ret);
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetFlashMode failed. %{public}d.", ret);
        }
        return ret;
    }
-   
+
    // 对焦模式。
    Camera_ErrorCode NDKCamera::IsFocusModeSupported(uint32_t mode)
    {
@@ -415,7 +415,7 @@
        }
        return ret_;
    }
-   
+
    Camera_ErrorCode NDKCamera::IsFocusMode(uint32_t mode)
    {
        OH_LOG_INFO(LOG_APP, "IsFocusMode start.");
@@ -438,7 +438,7 @@
        OH_LOG_INFO(LOG_APP, "IsFocusMode end.");
        return ret_;
    }
-   
+
    Camera_ErrorCode NDKCamera::setZoomRatioFn(uint32_t zoomRatio)
    {
        float zoom = float(zoomRatio);
@@ -449,24 +449,24 @@
        if (captureSession_ == nullptr || ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetZoomRatioRange failed.");
        } else {
-           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatioRange success. minZoom: %{public}f, maxZoom:%{public}f",
+           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatioRange success. minZoom: %{public}f, maxZoom: %{public}f.",
                minZoom, maxZoom);
        }
-   
+
        // 设置缩放比例。
        ret = OH_CaptureSession_SetZoomRatio(captureSession_, zoom);
        if (ret == CAMERA_OK) {
            OH_LOG_INFO(LOG_APP, "OH_CaptureSession_SetZoomRatio success.");
        } else {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetZoomRatio failed. %{public}d ", ret);
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetZoomRatio failed. %{public}d.", ret);
        }
-   
+
        // 获取当前设备的缩放比例。
        ret = OH_CaptureSession_GetZoomRatio(captureSession_, &zoom);
        if (ret == CAMERA_OK) {
-           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatio success. zoom：%{public}f ", zoom);
+           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatio success. zoom: %{public}f.", zoom);
        } else {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetZoomRatio failed. %{public}d ", ret);
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetZoomRatio failed. %{public}d.", ret);
        }
        return ret;
    }
